@@ -1,69 +1,81 @@
-/* https://jsxgraph.uni-bayreuth.de/wiki/index.php/B-splines */
-/* Accessed August 2017                                      */
+/* 
+Interactive Script illustrating the concepts of
+	> Family of Solutions
+	> Initial Conditions
+	> Particular Solutions
+*/
 
-var brd = JXG.JSXGraph.initBoard('jsxgraph-IC',
-{boundingbox:[-4,8,4,-4],
-  keepaspectratio:false,
-  axis:true,
-  showNavigation:false,
-  showCopyright:false});
+// Create the JSXGraph board
+var board = JXG.JSXGraph.initBoard(
+	'jsxgraph-IC',
+	{
+		boundingbox:[-4,8,4,-4],
+		keepaspectratio:false,
+		axis:true,
+		showNavigation:false,
+		showCopyright:false
+	}
+);
 
-  var x0 = 0;
-  var y0 = brd.create('slider',[[0,-3],[0,6],[-3,0,6]],
-                    { // Slider Properties
-                      //name: 'y(0)',
-                      withLabel: false,
-                      size: 3,
-                      highline: {strokeWidth: 0},
-                      snapWidth: 0.5
-                    });
+// Plot a static subset from the family of solutions at each specified y-value
+const y_list = [-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.3, 2.5, 2.8, 2.9, 2.99, 2.999, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7];
+for (let i=0; i < y_list.length; i++) {
+	var f_family = function(x){ return (y_list[i] - 3)*Math.exp(x*x)+3; };
+	var graph = board.create(
+		'functiongraph',
+		[f_family,-4, 4],
+		{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3}
+	);
+}
 
-  var x_i = 1.6;
-  var y_i = 4.2;
-  var x_s = 1.6;
-  var y_s = 3.5;
+// Create the interactive slider along the y-axis
+var y_slider = board.create(
+	'slider',
+	[[0,-3],[0,7],[-3,0,7]],
+	{ 	// Slider Properties
+		withLabel: false,
+		size: 5,
+		highline: {strokeWidth: 0},
+		snapWidth: 0.01
+	}
+);
+
+// Currently selected y(0) = slider value, corresponding constant C, and the particular solution
+var y0 = y_slider.Value();//Math.round((y_slider.Value() + Number.EPSILON) * 100) / 100;
+var C0 = y_slider.Value() - 3;
+var f0 = function(x){ 
+	return (y_slider.Value() - 3)*Math.exp(x*x) + 3; 
+};
+
+// Update the particular solution
+var plot_soln = board.create(
+	'functiongraph',
+	[f0, -4, 4],
+	{strokecolor: 'blue', strokeOpacity: 0.6, strokeWidth: 4}
+);
+
+var label_x = 1.6;
+	label_y = 4.2;
 
 
-  var C = function(x,y){ return (y-3)/Math.exp(x*x); }
-  var f = function(x){ return C(x0,y0.Value())*Math.exp(x*x)+3; };
+var label_line = function(x){ return ( (label_y - y_slider.Value())/label_x )*x + y_slider.Value(); }
 
-  var L1 = function(x){ return ((y_i-y0.Value())/x_i)*x + y0.Value(); }
-  var L2 = function(x){ return ((y_s-f(0.5))/(x_s-0.5))*x + y_s - ((y_s-f(0.5))/(x_s-0.5))*x_s ; }
-  //var L2 = function(x){ return ((y_s-f(0.5))/0.5)*x + y_s - (y_s-f(0.5))/0.5)*x_s; }
-  var f1 = function(x){ return C(0,-2)*Math.exp(x*x)+3; };
-  var f2 = function(x){ return C(0,0)*Math.exp(x*x)+3; };
-  var f3 = function(x){ return C(0,2)*Math.exp(x*x)+3; };
-  var f4 = function(x){ return C(0,2.8)*Math.exp(x*x)+3; };
-  var f5 = function(x){ return C(0,3)*Math.exp(x*x)+3; };
-  var f6 = function(x){ return C(0,3.4)*Math.exp(x*x)+3; };
-  var f7 = function(x){ return C(0,4)*Math.exp(x*x)+3; };
-  var f8 = function(x){ return C(0,6)*Math.exp(x*x)+3; };
-
-  var plot_soln = brd.create('functiongraph',[f,-4, 4],
-                          {strokecolor:'blue', strokeOpacity:0.6, strokeWidth:4});
-
-  var plot_ic_label_line = brd.create('functiongraph',[L1,0,x_i],
-                          {strokecolor:'black', strokeOpacity:1, strokeWidth:1});
-
-  var plot = brd.create('functiongraph',[f1,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f2,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f3,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f4,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f5,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f6,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f7,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-  var plot = brd.create('functiongraph',[f8,-4, 4],{strokecolor:'green', strokeOpacity:0.35, strokeWidth:3});
-
-  brd.create('text',[x_i+0.1,y_i,function(){ return 'y(0) = '+(y0.Value()); }],{fontSize: 16});
-  brd.create('text',[x_s+0.1,y_s,function(){ return 'y = '+(C(0,y0.Value())).toFixed(1)+'e^{x^2} + 3'; }],{fontSize: 16});
-
-p.push(brd.create('point',[2,1],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[0.75,2.5],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[-0.3,0.3],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[-3,1],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[-0.75,-2.5],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[1.5,-2.8],{strokeColor:col,fillColor:col}));
-p.push(brd.create('point',[2,-0.5],{strokeColor:col,fillColor:col}));
-
-//var c = brd.create('curve', JXG.Math.Numerics.bspline(p,4),
-//               {strokecolor:'blue', strokeOpacity:0.6, strokeWidth:5});
+board.create(
+	'functiongraph',
+	[label_line, 0, label_x],
+	{
+		strokecolor:	'black', 
+		strokeOpacity:	1, 
+		strokeWidth:	1
+	});
+	
+board.create(
+	'text',
+	[label_x + 0.1, label_y, function(){ return 'y(0) = ' + (y_slider.Value()).toFixed(2); }],
+	{fontSize: 16}
+);
+board.create(
+	'text',
+	[label_x + 0.1, label_y - 0.7 ,function(){ return 'y = ' + (y_slider.Value() - 3).toFixed(2) + 'e^{x^2} + 3'; }],
+	{fontSize: 16}
+);
