@@ -12,7 +12,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-3-4-2",
   "level": "2",
-  "url": "main-3-3-3-4.html#main-3-3-3-4-2",
+  "url": "main-3-3-3.html#main-3-3-3-4-2",
   "type": "Reading Question",
   "number": "1.1.1.1",
   "title": "<em class=\"emphasis\">Differential equations differ from standard equations in that they have <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
@@ -21,7 +21,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-3-4-3",
   "level": "2",
-  "url": "main-3-3-3-4.html#main-3-3-3-4-3",
+  "url": "main-3-3-3.html#main-3-3-3-4-3",
   "type": "Reading Question",
   "number": "1.1.1.2",
   "title": "<em class=\"emphasis\">In general, a “solution” to a differential equation is a <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
@@ -30,7 +30,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-3-4-4",
   "level": "2",
-  "url": "main-3-3-3-4.html#main-3-3-3-4-4",
+  "url": "main-3-3-3.html#main-3-3-3-4-4",
   "type": "Reading Question",
   "number": "1.1.1.3",
   "title": "<em class=\"emphasis\">Which of the following best describes a differential equation?<\/em>",
@@ -50,7 +50,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-4.html#def-de",
   "type": "Definition",
-  "number": "1",
+  "number": "1.1",
   "title": "Differential Equation.",
   "body": "Differential Equation   A differential equation (DE) is an equation that contains one or more derivatives of some unknown function. When this unknown function depends on only one variable, we call the DE an ordinary differential equation (ODE) .  Notation . Since this text only focuses on ordinary differential equations, the short-hand DE will always imply ODE. Otherwise, the DE is called a partial differential equation (PDE) .   "
 },
@@ -59,14 +59,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-4.html#main-3-3-4-4",
   "type": "Note",
-  "number": "2",
+  "number": "1.2",
   "title": "Higher Order Derivative Notation.",
   "body": "Higher Order Derivative Notation  In this text, we will use either the prime or Leibniz ( ) notation to denote derivatives. When higher order derivatives are needed, we will use the standard conventions listed below.      Derivative Order     1  2  3  4   n    prime          Leibniz            Be careful not to confuse, say , with to the power of 7.   "
 },
 {
   "id": "main-3-3-4-5-2",
   "level": "2",
-  "url": "main-3-3-4-5.html#main-3-3-4-5-2",
+  "url": "main-3-3-4.html#main-3-3-4-5-2",
   "type": "Reading Question",
   "number": "1.1.2.1",
   "title": "<em class=\"emphasis\">True or False<\/em>.",
@@ -75,7 +75,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-4-5-3",
   "level": "2",
-  "url": "main-3-3-4-5.html#main-3-3-4-5-3",
+  "url": "main-3-3-4.html#main-3-3-4-5-3",
   "type": "Reading Question",
   "number": "1.1.2.2",
   "title": "<em class=\"emphasis\">Select the Differential Equations<\/em>.",
@@ -95,7 +95,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-5.html#types-of-variables",
   "type": "Definition",
-  "number": "3",
+  "number": "1.3",
   "title": "Types of Variables.",
   "body": "Types of Variables     Dependent Variable  The variable representing the unknown function we want to find. It will always have a derivative applied to it.    Independent Variable  The variable that the unknown function depends on.     "
 },
@@ -104,7 +104,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-5.html#main-3-3-5-7",
   "type": "Example",
-  "number": "4",
+  "number": "1.4",
   "title": "<em class=\"emphasis\">Identify the Variables<\/em>.",
   "body": " Identify the Variables   Identify the dependent and independent variables in the differential equation , and state which variable represents the solution.   Since appears in this equation, it is implied that   is a function that depends on and must be the dependent variable ,   is the independent variable , and   represents the solution to this differential equation.     "
 },
@@ -113,7 +113,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-5.html#main-3-3-5-8",
   "type": "Example",
-  "number": "5",
+  "number": "1.5",
   "title": "<em class=\"emphasis\">Identify the Variables<\/em>.",
   "body": " Identify the Variables   Identify the dependent and independent variables in the differential equation , and state which variable represents the solution.   Since appears in this equation, it is implied that   is a function that depends on and must be the dependent variable ,   is the independent variable , and   represents the solution to this differential equation.     "
 },
@@ -122,14 +122,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-3-5.html#main-3-3-5-9",
   "type": "Example",
-  "number": "6",
+  "number": "1.6",
   "title": "<em class=\"emphasis\">Identify the Variables<\/em>.",
   "body": " Identify the Variables   Identify the dependent and independent variables in the differential equation , and state which variable represents the solution.   Since appears in this equation, we know that is the dependent variable , but there is no sign of an independent variable. Typically the context of the problem will tell us the independent variable. Otherwise, we are free to select our own independent variable, say . Now we can say that would be the solution .   "
 },
 {
   "id": "main-3-3-5-10-2",
   "level": "2",
-  "url": "main-3-3-5-10.html#main-3-3-5-10-2",
+  "url": "main-3-3-5.html#main-3-3-5-10-2",
   "type": "Reading Question",
   "number": "1.1.3.1",
   "title": "<em class=\"emphasis\">Variable Concept 1<\/em>.",
@@ -138,7 +138,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-5-10-3",
   "level": "2",
-  "url": "main-3-3-5-10.html#main-3-3-5-10-3",
+  "url": "main-3-3-5.html#main-3-3-5-10-3",
   "type": "Reading Question",
   "number": "1.1.3.2",
   "title": "<em class=\"emphasis\">Variable Concept 2<\/em>.",
@@ -147,7 +147,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-5-10-4",
   "level": "2",
-  "url": "main-3-3-5-10.html#main-3-3-5-10-4",
+  "url": "main-3-3-5.html#main-3-3-5-10-4",
   "type": "Reading Question",
   "number": "1.1.3.3",
   "title": "<em class=\"emphasis\">Identify the Independent Variable<\/em>.",
@@ -156,7 +156,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-5-10-5",
   "level": "2",
-  "url": "main-3-3-5-10.html#main-3-3-5-10-5",
+  "url": "main-3-3-5.html#main-3-3-5-10-5",
   "type": "Reading Question",
   "number": "1.1.3.4",
   "title": "<em class=\"emphasis\">Identify the Dependent Variable<\/em>.",
@@ -165,7 +165,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-5-10-6",
   "level": "2",
-  "url": "main-3-3-5-10.html#main-3-3-5-10-6",
+  "url": "main-3-3-5.html#main-3-3-5-10-6",
   "type": "Reading Question",
   "number": "1.1.3.5",
   "title": "<em class=\"emphasis\">Identify the Solution<\/em>.",
@@ -174,7 +174,7 @@ var ptx_lunr_docs = [
 {
   "id": "match-variables",
   "level": "2",
-  "url": "main-3-3-5-10.html#match-variables",
+  "url": "main-3-3-5.html#match-variables",
   "type": "Reading Question",
   "number": "1.1.3.6",
   "title": "<em class=\"emphasis\">Match the Variables<\/em>.",
@@ -201,7 +201,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-1-2",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-1-2",
+  "url": "main-3-3-6.html#main-3-3-6-3-1-2",
   "type": "Exercise",
   "number": "1.1.4.1",
   "title": "<em class=\"emphasis\">Fill in the blanks<\/em>.",
@@ -210,7 +210,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-1-3",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-1-3",
+  "url": "main-3-3-6.html#main-3-3-6-3-1-3",
   "type": "Exercise",
   "number": "1.1.4.2",
   "title": "<em class=\"emphasis\">True or False<\/em>.",
@@ -219,7 +219,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-1-4",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-1-4",
+  "url": "main-3-3-6.html#main-3-3-6-3-1-4",
   "type": "Exercise",
   "number": "1.1.4.3",
   "title": "",
@@ -228,7 +228,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-2",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-2",
+  "url": "main-3-3-6.html#main-3-3-6-3-2",
   "type": "Exercise",
   "number": "1.1.4.4",
   "title": "<em class=\"emphasis\">Identify the Variable<\/em>.",
@@ -237,7 +237,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-3",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-3",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-3",
   "type": "Exercise",
   "number": "1.1.4.5",
   "title": "",
@@ -246,7 +246,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-4",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-4",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-4",
   "type": "Exercise",
   "number": "1.1.4.6",
   "title": "",
@@ -255,7 +255,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-5",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-5",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-5",
   "type": "Exercise",
   "number": "1.1.4.7",
   "title": "",
@@ -264,7 +264,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-6",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-6",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-6",
   "type": "Exercise",
   "number": "1.1.4.8",
   "title": "",
@@ -273,7 +273,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-7",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-7",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-7",
   "type": "Exercise",
   "number": "1.1.4.9",
   "title": "",
@@ -282,7 +282,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-8",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-8",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-8",
   "type": "Exercise",
   "number": "1.1.4.10",
   "title": "",
@@ -291,7 +291,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-9",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-9",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-9",
   "type": "Exercise",
   "number": "1.1.4.11",
   "title": "",
@@ -300,7 +300,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-3-6-3-3-10",
   "level": "2",
-  "url": "main-3-3-6-3.html#main-3-3-6-3-3-10",
+  "url": "main-3-3-6.html#main-3-3-6-3-3-10",
   "type": "Exercise",
   "number": "1.1.4.12",
   "title": "",
@@ -318,7 +318,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-3-5-2",
   "level": "2",
-  "url": "main-3-4-3-5.html#main-3-4-3-5-2",
+  "url": "main-3-4-3.html#main-3-4-3-5-2",
   "type": "Reading Question",
   "number": "1.2.1.1",
   "title": "What is a Solution?",
@@ -327,7 +327,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-3-5-3",
   "level": "2",
-  "url": "main-3-4-3-5.html#main-3-4-3-5-3",
+  "url": "main-3-4-3.html#main-3-4-3-5-3",
   "type": "Reading Question",
   "number": "1.2.1.2",
   "title": "Does the function satisfy the equation?",
@@ -347,7 +347,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-4.html#main-3-4-4-5",
   "type": "Example",
-  "number": "7",
+  "number": "1.7",
   "title": "<em class=\"emphasis\">Solution Verification 1<\/em>.",
   "body": " Solution Verification 1   Is a solution to ?   Let's follow the steps outlined above.   :    : Find since it appears in the DE.    : Plug and into the DE and simplify. Therefore, is a solution to    "
 },
@@ -356,7 +356,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-4.html#main-3-4-4-6",
   "type": "Example",
-  "number": "8",
+  "number": "1.8",
   "title": "<em class=\"emphasis\">Solution Verification 2<\/em>.",
   "body": " Solution Verification 2   Is a solution to ?    :    . Find since it appears in the DE.    . Plug and into the DE and simplify. Therefore, is not a solution to    "
 },
@@ -365,7 +365,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-4.html#de-two-solutions",
   "type": "Example",
-  "number": "9",
+  "number": "1.9",
   "title": "<em class=\"emphasis\">Two Solutions for One DE<\/em>.",
   "body": " Two Solutions for One DE   Verify that both and are solutions to .    . Find and since they appear in the DE.    . Plug and into the DE and simplify. Therefore, is a solution to      . Find and since they appear in the DE.    . Plug and into the DE and simplify. Therefore, is a solution to    "
 },
@@ -374,14 +374,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-4.html#main-3-4-4-8",
   "type": "Example",
-  "number": "10",
+  "number": "1.10",
   "title": "<em class=\"emphasis\">Solution Verification<\/em>.",
   "body": " Solution Verification   Is a solution to the DE ?    :    . Find and since they appear in the DE.    . Plug and into the DE and simplify. Therefore, is a solution to    "
 },
 {
   "id": "main-3-4-4-9-2",
   "level": "2",
-  "url": "main-3-4-4-9.html#main-3-4-4-9-2",
+  "url": "main-3-4-4.html#main-3-4-4-9-2",
   "type": "Reading Question",
   "number": "1.2.2.1",
   "title": "<em class=\"emphasis\">True\/False.<\/em> A differential equation has one solution.",
@@ -390,7 +390,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-4-9-3",
   "level": "2",
-  "url": "main-3-4-4-9.html#main-3-4-4-9-3",
+  "url": "main-3-4-4.html#main-3-4-4-9-3",
   "type": "Reading Question",
   "number": "1.2.2.2",
   "title": "<em class=\"emphasis\">True\/False.<\/em> <span class=\"process-math\">\\(y = x^2 + 3\\)<\/span> is a solution to <span class=\"process-math\">\\(\\frac{dy}{dx} - 3 = 2x\\)<\/span>.",
@@ -399,7 +399,7 @@ var ptx_lunr_docs = [
 {
   "id": "verify-steps-matching",
   "level": "2",
-  "url": "main-3-4-4-9.html#verify-steps-matching",
+  "url": "main-3-4-4.html#verify-steps-matching",
   "type": "Reading Question",
   "number": "1.2.2.3",
   "title": "<em class=\"emphasis\">Matching.<\/em> List the general steps (in the correct order) that verifies <span class=\"process-math\">\\(s = \\cos(3x)\\)<\/span> is a solution to <span class=\"process-math\">\\(s'' - 6s' + 9s = 0\\)<\/span>.",
@@ -408,7 +408,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-4-9-5",
   "level": "2",
-  "url": "main-3-4-4-9.html#main-3-4-4-9-5",
+  "url": "main-3-4-4.html#main-3-4-4-9-5",
   "type": "Reading Question",
   "number": "1.2.2.4",
   "title": "<em class=\"emphasis\">Fill-In.<\/em> Consider the differential equation with missing right-hand side:<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - \\frac{4}{x}y' = \\fillinmath{XXXXX}\\text{.}\n\\end{equation*}\n<\/div>Assuming <span class=\"process-math\">\\(y = 2x^3\\)<\/span> is a solution to this equation, which of the following is a possible right-hand side?",
@@ -417,10 +417,10 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-4-9-6",
   "level": "2",
-  "url": "main-3-4-4-9.html#main-3-4-4-9-6",
+  "url": "main-3-4-4.html#main-3-4-4-9-6",
   "type": "Reading Question",
   "number": "1.2.2.5",
-  "title": "<em class=\"emphasis\">Multiple-Choice.<\/em> In Example 11 we verified that <span class=\"process-math\">\\(y = Ce^{2x}\\)<\/span> was a solution to<div class=\"displaymath process-math\" data-contains-math-knowls=\".\/knowl\/xref\/verification-with-a-constant.html\">\n\\begin{equation*}\ny''' - 4y' = 0\n\\end{equation*}\n<\/div>Based on this, how many solutions must this equation have?",
+  "title": "<em class=\"emphasis\">Multiple-Choice.<\/em> In Example 1.11 we verified that <span class=\"process-math\">\\(y = Ce^{2x}\\)<\/span> was a solution to<div class=\"displaymath process-math\" data-contains-math-knowls=\".\/knowl\/xref\/verification-with-a-constant.html\">\n\\begin{equation*}\ny''' - 4y' = 0\n\\end{equation*}\n<\/div>Based on this, how many solutions must this equation have?",
   "body": " Multiple-Choice. In we verified that was a solution to Based on this, how many solutions must this equation have?     One.  Incorrect. Reason?     Two.  Incorrect. Reason?     Infinitely-Many.  Correct! We can choose any value of C and it will still satisfy this equation. Since there are infinitely-many of numbers to choose from, there are infinitely-many solutions.     Unknown since we don't know .  Incorrect. Reason?    "
 },
 {
@@ -437,7 +437,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-5.html#verification-with-a-constant",
   "type": "Example",
-  "number": "11",
+  "number": "1.11",
   "title": "<em class=\"emphasis\">Solution Verification with a Constant<\/em>.",
   "body": " Solution Verification with a Constant   Show that the functions  are solutions to the differential equation .  You could verify all of these functions one-by-one, but you will quickly find the process repetitive since each function has the pattern where could be any of the numbers, , above. So let's show that is a solution.   . Find since it appears in the DE.    . Plug and into the DE and simplify. Therefore, is a solution to where is any constant. Notice that the specific value of did not matter in the end.    "
 },
@@ -446,41 +446,41 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-5.html#types-of-solutions",
   "type": "Definition",
-  "number": "12",
+  "number": "1.12",
   "title": "Types of Solutions.",
   "body": "Types of Solutions     Family of Solutions  The collection of all possible solutions of a DE.    General Solution  The common form of the solutions in the family. By \"form\", we mean the common pattern (up to constants) that all solutions share.     Particular Solution  A single solution in the family.     "
 },
 {
   "id": "main-3-4-5-8-2",
   "level": "2",
-  "url": "main-3-4-5-8.html#main-3-4-5-8-2",
+  "url": "main-3-4-5.html#main-3-4-5-8-2",
   "type": "Note",
-  "number": "13",
+  "number": "1.13",
   "title": "EDIT.",
   "body": "EDIT Convert these remarks into check your understanding questions. "
 },
 {
   "id": "remark-general-solution-01",
   "level": "2",
-  "url": "main-3-4-5-8.html#remark-general-solution-01",
+  "url": "main-3-4-5.html#remark-general-solution-01",
   "type": "Remark",
-  "number": "14",
+  "number": "1.14",
   "title": "",
   "body": " A family of solutions can be viewed as the collection of all particular solutions . Conversely, a particular solution can be viewed as a member of the family of solutions .  "
 },
 {
   "id": "remark-general-solution-02",
   "level": "2",
-  "url": "main-3-4-5-8.html#remark-general-solution-02",
+  "url": "main-3-4-5.html#remark-general-solution-02",
   "type": "Remark",
-  "number": "15",
+  "number": "1.15",
   "title": "",
   "body": " When working on your own problems, remember that the following three statements are referring to the exact same thing.  Solve the following DE.  Find the general solution to the following DE.  Find the family of solutions for the following DE.    "
 },
 {
   "id": "main-3-4-5-8-5-1-1",
   "level": "2",
-  "url": "main-3-4-5-8.html#main-3-4-5-8-5-1-1",
+  "url": "main-3-4-5.html#main-3-4-5-8-5-1-1",
   "type": "Reading Question",
   "number": "1.2.3.1",
   "title": "True or False. An equation that contains an \"=\" sign and at least one derivative is called a differential equation.",
@@ -489,7 +489,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-5-8-5-2-1",
   "level": "2",
-  "url": "main-3-4-5-8.html#main-3-4-5-8-5-2-1",
+  "url": "main-3-4-5.html#main-3-4-5-8-5-2-1",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
@@ -509,14 +509,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-6.html#family-of-solutions-figure-1",
   "type": "Figure",
-  "number": "16",
+  "number": "1.16",
   "title": "",
   "body": "  Plots of for .  "
 },
 {
   "id": "main-3-4-6-5-2",
   "level": "2",
-  "url": "main-3-4-6-5.html#main-3-4-6-5-2",
+  "url": "main-3-4-6.html#main-3-4-6-5-2",
   "type": "Reading Question",
   "number": "1.2.4.1",
   "title": "Find the particular solution.",
@@ -545,14 +545,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-7.html#main-3-4-7-3",
   "type": "Example",
-  "number": "17",
+  "number": "1.17",
   "title": "Real World Initial Conditions.",
   "body": "Real World Initial Conditions  An introductory physics problem is the free fall of an object due to gravity. Let be the position (distance from the ground) of this object at time . Since acceleration is the second derivative of position, we get the DE   Assuming the ball is dropped from the top of a 100 ft building, what initial information do you know? That is, what are the initial conditions?   You know the starting position and starting velocity of the ball. That is, you have the initial conditions    "
 },
 {
   "id": "main-3-4-7-4-2",
   "level": "2",
-  "url": "main-3-4-7-4.html#main-3-4-7-4-2",
+  "url": "main-3-4-7.html#main-3-4-7-4-2",
   "type": "Reading Question",
   "number": "1.2.1.1",
   "title": "Is it an IVP?",
@@ -561,7 +561,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-7-4-3",
   "level": "2",
-  "url": "main-3-4-7-4.html#main-3-4-7-4-3",
+  "url": "main-3-4-7.html#main-3-4-7-4-3",
   "type": "Reading Question",
   "number": "1.2.1.2",
   "title": "What are the dependent and independent variable in this case?",
@@ -570,7 +570,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-7-4-4",
   "level": "2",
-  "url": "main-3-4-7-4.html#main-3-4-7-4-4",
+  "url": "main-3-4-7.html#main-3-4-7-4-4",
   "type": "Reading Question",
   "number": "1.2.1.3",
   "title": "What is one value for the number of infected we should know?",
@@ -579,7 +579,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-7-4-5",
   "level": "2",
-  "url": "main-3-4-7-4.html#main-3-4-7-4-5",
+  "url": "main-3-4-7.html#main-3-4-7-4-5",
   "type": "Reading Question",
   "number": "1.2.1.4",
   "title": "",
@@ -599,14 +599,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-8.html#initial-conditions-figure-1",
   "type": "Figure",
-  "number": "18",
+  "number": "1.18",
   "title": "",
   "body": "  The family of solutions (green curves) and a particular solution (blue curve) passing through .  "
 },
 {
   "id": "main-3-4-8-8-2",
   "level": "2",
-  "url": "main-3-4-8-8.html#main-3-4-8-8-2",
+  "url": "main-3-4-8.html#main-3-4-8-8-2",
   "type": "Reading Question",
   "number": "1.2.2.1",
   "title": "Is it an IVP?",
@@ -615,7 +615,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-8-8-3",
   "level": "2",
-  "url": "main-3-4-8-8.html#main-3-4-8-8-3",
+  "url": "main-3-4-8.html#main-3-4-8-8-3",
   "type": "Reading Question",
   "number": "1.2.2.2",
   "title": "What are the dependent and independent variable in this case?",
@@ -624,7 +624,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-8-8-4",
   "level": "2",
-  "url": "main-3-4-8-8.html#main-3-4-8-8-4",
+  "url": "main-3-4-8.html#main-3-4-8-8-4",
   "type": "Reading Question",
   "number": "1.2.2.3",
   "title": "What is one value for the number of infected we should know?",
@@ -633,7 +633,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-8-8-5",
   "level": "2",
-  "url": "main-3-4-8-8.html#main-3-4-8-8-5",
+  "url": "main-3-4-8.html#main-3-4-8-8-5",
   "type": "Reading Question",
   "number": "1.2.2.4",
   "title": "",
@@ -653,7 +653,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#two-constant-solution-verification",
   "type": "Example",
-  "number": "19",
+  "number": "1.19",
   "title": "<em class=\"emphasis\">Solution Verification with Two Constants<\/em>.",
   "body": " Solution Verification with Two Constants   Verify that is a solution to .    :    . Find since it appears in the DE.    . Plug into the DE and simplify. Therefore, is a solution to . In fact, it is the general solution, but we don't show that here.    "
 },
@@ -662,7 +662,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-4",
   "type": "Example",
-  "number": "20",
+  "number": "1.20",
   "title": "",
   "body": " Solve    The general solution to this DE was already found to be . Notice that two initial conditions are provided in this example. This extra piece of information is needed since our general solution contains two constants.  Since one initial condition involves the derivative, we will need to compute this before applying this condition.   Now let's apply the initial conditions:   We now have two equations and two unknowns, There are multiple ways to solve this system of equations, and the reader is encouraged to verify that and . Here is one We will solve for in the first equation and then substitute into the second.    Thus, the solution we that satisfies the DE and both of the provided initial conditions is    "
 },
@@ -671,7 +671,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-5",
   "type": "Note",
-  "number": "21",
+  "number": "1.21",
   "title": "<em class=\"emphasis\">Don’t assume a function that satisfies a DE is a general solution!<\/em>",
   "body": " Don't assume a function that satisfies a DE is a general solution!   A function that contains constants and satisfies a differential equation does not mean it is the general solution since it could be missing a term. For example, you could easily show that is also a solution to , but you already know from that is a solution, which is more general than .  "
 },
@@ -680,7 +680,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-6",
   "type": "Example",
-  "number": "22",
+  "number": "1.22",
   "title": "",
   "body": " Verify that , where is any constant, is a solution to the DE    We'll approach this the same way we approached the algebraic equation in the example above: we will to substitute the function in on the left and right hand sides of the equation        Since both the and turn out to be , we have shown that satisfies and is, thus, a solution to    "
 },
@@ -689,7 +689,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-7",
   "type": "Note",
-  "number": "23",
+  "number": "1.23",
   "title": "Example Notes.",
   "body": "Example Notes  Since we used a generic constant , we have shown that is a solution for any value we like for the constant . In particular,  for is a solution.  for is a solution.  for is a solution.  Since there is no limit to what we can choose, this DE must have an infinite number of solutions. In the next section, we will describe this idea further.  "
 },
@@ -698,7 +698,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-8",
   "type": "Example",
-  "number": "24",
+  "number": "1.24",
   "title": "",
   "body": " Determine if is a solution to the DE where and are constants.   Find .   and substitute Which shows that is a solution to    "
 },
@@ -707,7 +707,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-9",
   "type": "Note",
-  "number": "25",
+  "number": "1.25",
   "title": "Example Notes.",
   "body": "Example Notes  In this example, we showed that the function was a solution .  Notice that we were able to verify the solution, even though the constants, and , were not known. This suggests that you can substitute any values of and into the solution and it will still be a solution to the DE. Try it!   Now, since there are infinitely many choices for and , then, logically, there must be infinitely many solutions to the DE, .  "
 },
@@ -716,7 +716,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-9.html#main-3-4-9-10",
   "type": "Example",
-  "number": "26",
+  "number": "1.26",
   "title": "",
   "body": "  Verify that is a solution to the DE     Working out the left and right hand sides of this DE, we have:          Since , we have verified that is a solution to    "
 },
@@ -743,14 +743,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-4-10.html#sect-01-04-01-remark-01",
   "type": "Remark",
-  "number": "27",
+  "number": "1.27",
   "title": "",
   "body": " Typically, the number of constants present in the general solution is equal to the order of the differential equation .  This is illustrated in ? since is of 2nd order and the general solution, , has 2 constants, and .  "
 },
 {
   "id": "main-3-4-10-3-1",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-1",
+  "url": "main-3-4-10.html#main-3-4-10-3-1",
   "type": "Exercise",
   "number": "1.2.6.1",
   "title": "",
@@ -759,7 +759,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-2",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-2",
+  "url": "main-3-4-10.html#main-3-4-10-3-2",
   "type": "Exercise",
   "number": "1.2.6.2",
   "title": "",
@@ -768,7 +768,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-3",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-3",
+  "url": "main-3-4-10.html#main-3-4-10-3-3",
   "type": "Exercise",
   "number": "1.2.6.3",
   "title": "",
@@ -777,7 +777,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-4",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-4",
+  "url": "main-3-4-10.html#main-3-4-10-3-4",
   "type": "Exercise",
   "number": "1.2.6.4",
   "title": "",
@@ -786,7 +786,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-5",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-5",
+  "url": "main-3-4-10.html#main-3-4-10-3-5",
   "type": "Exercise",
   "number": "1.2.6.5",
   "title": "",
@@ -795,7 +795,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-6",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-6",
+  "url": "main-3-4-10.html#main-3-4-10-3-6",
   "type": "Exercise",
   "number": "1.2.6.6",
   "title": "",
@@ -804,7 +804,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-7",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-7",
+  "url": "main-3-4-10.html#main-3-4-10-3-7",
   "type": "Exercise",
   "number": "1.2.6.7",
   "title": "",
@@ -813,7 +813,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-8",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-8",
+  "url": "main-3-4-10.html#main-3-4-10-3-8",
   "type": "Exercise",
   "number": "1.2.6.8",
   "title": "",
@@ -822,7 +822,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-9",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-9",
+  "url": "main-3-4-10.html#main-3-4-10-3-9",
   "type": "Exercise",
   "number": "1.2.6.9",
   "title": "",
@@ -831,7 +831,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-10",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-10",
+  "url": "main-3-4-10.html#main-3-4-10-3-10",
   "type": "Exercise",
   "number": "1.2.6.10",
   "title": "",
@@ -840,7 +840,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-11",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-11",
+  "url": "main-3-4-10.html#main-3-4-10-3-11",
   "type": "Exercise",
   "number": "1.2.6.11",
   "title": "",
@@ -849,7 +849,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-12",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-12",
+  "url": "main-3-4-10.html#main-3-4-10-3-12",
   "type": "Exercise",
   "number": "1.2.6.12",
   "title": "",
@@ -858,7 +858,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-3",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-3",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-3",
   "type": "Exercise",
   "number": "1.2.6.13",
   "title": "",
@@ -867,7 +867,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-4",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-4",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-4",
   "type": "Exercise",
   "number": "1.2.6.14",
   "title": "",
@@ -876,7 +876,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-5",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-5",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-5",
   "type": "Exercise",
   "number": "1.2.6.15",
   "title": "",
@@ -885,7 +885,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-6",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-6",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-6",
   "type": "Exercise",
   "number": "1.2.6.16",
   "title": "",
@@ -894,7 +894,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-7",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-7",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-7",
   "type": "Exercise",
   "number": "1.2.6.17",
   "title": "",
@@ -903,7 +903,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-13-8",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-13-8",
+  "url": "main-3-4-10.html#main-3-4-10-3-13-8",
   "type": "Exercise",
   "number": "1.2.6.18",
   "title": "",
@@ -912,7 +912,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-14",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-14",
+  "url": "main-3-4-10.html#main-3-4-10-3-14",
   "type": "Exercise",
   "number": "1.2.6.19",
   "title": "",
@@ -921,7 +921,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-15",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-15",
+  "url": "main-3-4-10.html#main-3-4-10-3-15",
   "type": "Exercise",
   "number": "1.2.6.20",
   "title": "",
@@ -930,7 +930,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-16",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-16",
+  "url": "main-3-4-10.html#main-3-4-10-3-16",
   "type": "Exercise",
   "number": "1.2.6.21",
   "title": "",
@@ -939,7 +939,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-17",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-17",
+  "url": "main-3-4-10.html#main-3-4-10-3-17",
   "type": "Exercise",
   "number": "1.2.6.22",
   "title": "",
@@ -948,7 +948,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-18-3",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-18-3",
+  "url": "main-3-4-10.html#main-3-4-10-3-18-3",
   "type": "Exercise",
   "number": "1.2.6.23",
   "title": "",
@@ -957,7 +957,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-18-4",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-18-4",
+  "url": "main-3-4-10.html#main-3-4-10-3-18-4",
   "type": "Exercise",
   "number": "1.2.6.24",
   "title": "",
@@ -966,7 +966,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-18-5",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-18-5",
+  "url": "main-3-4-10.html#main-3-4-10-3-18-5",
   "type": "Exercise",
   "number": "1.2.6.25",
   "title": "",
@@ -975,7 +975,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-18-6",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-18-6",
+  "url": "main-3-4-10.html#main-3-4-10-3-18-6",
   "type": "Exercise",
   "number": "1.2.6.26",
   "title": "",
@@ -984,7 +984,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-4-10-3-18-7",
   "level": "2",
-  "url": "main-3-4-10-3.html#main-3-4-10-3-18-7",
+  "url": "main-3-4-10.html#main-3-4-10-3-18-7",
   "type": "Exercise",
   "number": "1.2.6.27",
   "title": "",
@@ -1004,7 +1004,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-order.html#def-order",
   "type": "Definition",
-  "number": "28",
+  "number": "1.28",
   "title": "",
   "body": "  The order of a differential equation is the highest order derivative that appears in the equation.  If the highest derivative in an equation is the first derivative, we say the differential equation has first-order . If the highest derivative is the second derivative, we say it has second-order , and so on.   "
 },
@@ -1013,7 +1013,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-order.html#example-order-1",
   "type": "Example",
-  "number": "29",
+  "number": "1.29",
   "title": "",
   "body": " Give the order of the differential equation,    This DE has order 1 ( the highest derivative that appears in the equation is a first derivative ) and is called a \"first-order differential equation\".   "
 },
@@ -1022,7 +1022,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-order.html#example-order-3",
   "type": "Example",
-  "number": "30",
+  "number": "1.30",
   "title": "",
   "body": " Give the order of the differential equation,    This DE has order 3 ( the highest derivative that appears in the equation is a third derivative ) and is called a \"third-order differential equation\".   Note : Be careful not to confuse exponents with derivatives. The term just indicates that the dependent variable raised to the 8th power; this has nothing to do with the order of the DE.   "
 },
@@ -1031,14 +1031,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "sec-order.html#example-order-2",
   "type": "Example",
-  "number": "31",
+  "number": "1.31",
   "title": "",
   "body": " Give the order of the differential equation,    Since the highest derivative is a second derivative, we say this is a second-order DE. Notice that in this notation, the exponent is used to indicate the second derivative.    "
 },
 {
   "id": "sec-order-7-2",
   "level": "2",
-  "url": "sec-order-7.html#sec-order-7-2",
+  "url": "sec-order.html#sec-order-7-2",
   "type": "Reading Question",
   "number": "1.3.1.1",
   "title": "<em class=\"emphasis\">Find the order<\/em>.",
@@ -1067,14 +1067,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-5-4.html#main-3-5-4-6",
   "type": "Example",
-  "number": "32",
+  "number": "1.32",
   "title": "",
   "body": " Determine the linearity of each term in the following differential equations.                    "
 },
 {
   "id": "main-3-5-4-7-3-2",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-3-2",
+  "url": "main-3-5-4.html#main-3-5-4-7-3-2",
   "type": "Reading Question",
   "number": "1.3.2.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(3t\\)<\/span> is a linear term<\/em>.",
@@ -1083,7 +1083,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-3-3",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-3-3",
+  "url": "main-3-5-4.html#main-3-5-4-7-3-3",
   "type": "Reading Question",
   "number": "1.3.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y \\sin(t)\\)<\/span> is a linear term<\/em>.",
@@ -1092,7 +1092,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-3-4",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-3-4",
+  "url": "main-3-5-4.html#main-3-5-4-7-3-4",
   "type": "Reading Question",
   "number": "1.3.2.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(t\\sin(y')\\)<\/span> is a linear term<\/em>.",
@@ -1101,7 +1101,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-3-5",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-3-5",
+  "url": "main-3-5-4.html#main-3-5-4-7-3-5",
   "type": "Reading Question",
   "number": "1.3.2.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{ty}\\)<\/span> is a linear term<\/em>.",
@@ -1110,7 +1110,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-3-6",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-3-6",
+  "url": "main-3-5-4.html#main-3-5-4-7-3-6",
   "type": "Reading Question",
   "number": "1.3.2.5",
   "title": "<em class=\"emphasis\">A linear term can contain the dependent variable multiplied by the independent variable<\/em>.",
@@ -1119,7 +1119,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-2",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-2",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-2",
   "type": "Reading Question",
   "number": "1.3.2.6",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
@@ -1128,7 +1128,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-3",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-3",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-3",
   "type": "Reading Question",
   "number": "1.3.2.7",
   "title": "<em class=\"emphasis\">Identify the linear term from the following options<\/em>.",
@@ -1137,7 +1137,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-4",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-4",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-4",
   "type": "Reading Question",
   "number": "1.3.2.8",
   "title": "<em class=\"emphasis\">Which term is NOT considered linear?<\/em>",
@@ -1146,7 +1146,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-5",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-5",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-5",
   "type": "Reading Question",
   "number": "1.3.2.9",
   "title": "<em class=\"emphasis\">Which of the following is a characteristic of a nonlinear term?<\/em>",
@@ -1155,7 +1155,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-6",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-6",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-6",
   "type": "Reading Question",
   "number": "1.3.2.10",
   "title": "<em class=\"emphasis\">Which term is an example of a nonlinear term?<\/em>",
@@ -1164,7 +1164,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-4-7",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-4-7",
+  "url": "main-3-5-4.html#main-3-5-4-7-4-7",
   "type": "Reading Question",
   "number": "1.3.2.11",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
@@ -1173,7 +1173,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-5-2",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-5-2",
+  "url": "main-3-5-4.html#main-3-5-4-7-5-2",
   "type": "Reading Question",
   "number": "1.3.2.12",
   "title": "<em class=\"emphasis\">Select the Linear Terms<\/em>.",
@@ -1182,7 +1182,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-4-7-5-3",
   "level": "2",
-  "url": "main-3-5-4-7.html#main-3-5-4-7-5-3",
+  "url": "main-3-5-4.html#main-3-5-4-7-5-3",
   "type": "Reading Question",
   "number": "1.3.2.13",
   "title": "<em class=\"emphasis\">Select the Nonlinear Terms<\/em>.",
@@ -1202,7 +1202,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-5-5.html#def-linear",
   "type": "Definition",
-  "number": "33",
+  "number": "1.33",
   "title": "",
   "body": " A differential equation is said to be linear if it only contains linear terms. That is, it can be written as If one of the terms is not linear, then the differential equation is nonlinear .  "
 },
@@ -1211,14 +1211,14 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-3-5-5.html#main-3-5-5-5",
   "type": "Example",
-  "number": "34",
+  "number": "1.34",
   "title": "",
   "body": " Determine if the following differential equation is linear.  .  To answer this question, we need either to verify that all the terms are linear or find one term that is not linear. Let's rewrite this equation like and check each term one-by-one. Since every term is linear, this differential equation is linear.   "
 },
 {
   "id": "main-3-5-5-6-2",
   "level": "2",
-  "url": "main-3-5-5-6.html#main-3-5-5-6-2",
+  "url": "main-3-5-5.html#main-3-5-5-6-2",
   "type": "Reading Question",
   "number": "1.3.3.1",
   "title": "Now you Try.",
@@ -1227,7 +1227,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-5-6-3",
   "level": "2",
-  "url": "main-3-5-5-6.html#main-3-5-5-6-3",
+  "url": "main-3-5-5.html#main-3-5-5-6-3",
   "type": "Reading Question",
   "number": "1.3.3.2",
   "title": "",
@@ -1245,7 +1245,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-3",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-3",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-3",
   "type": "Exercise",
   "number": "1.3.4.1",
   "title": "",
@@ -1254,7 +1254,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-4",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-4",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-4",
   "type": "Exercise",
   "number": "1.3.4.2",
   "title": "",
@@ -1263,7 +1263,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-5",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-5",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-5",
   "type": "Exercise",
   "number": "1.3.4.3",
   "title": "",
@@ -1272,7 +1272,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-6",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-6",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-6",
   "type": "Exercise",
   "number": "1.3.4.4",
   "title": "",
@@ -1281,7 +1281,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-7",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-7",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-7",
   "type": "Exercise",
   "number": "1.3.4.5",
   "title": "",
@@ -1290,7 +1290,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-8",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-8",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-8",
   "type": "Exercise",
   "number": "1.3.4.6",
   "title": "",
@@ -1299,7 +1299,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-9",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-9",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-9",
   "type": "Exercise",
   "number": "1.3.4.7",
   "title": "",
@@ -1308,7 +1308,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-10",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-10",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-10",
   "type": "Exercise",
   "number": "1.3.4.8",
   "title": "",
@@ -1317,7 +1317,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-11",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-11",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-11",
   "type": "Exercise",
   "number": "1.3.4.9",
   "title": "",
@@ -1326,7 +1326,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-12",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-12",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-12",
   "type": "Exercise",
   "number": "1.3.4.10",
   "title": "",
@@ -1335,7 +1335,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-13",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-13",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-13",
   "type": "Exercise",
   "number": "1.3.4.11",
   "title": "",
@@ -1344,7 +1344,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-3-2-14",
   "level": "2",
-  "url": "main-3-5-6-3.html#main-3-5-6-3-2-14",
+  "url": "main-3-5-6.html#main-3-5-6-3-2-14",
   "type": "Exercise",
   "number": "1.3.4.12",
   "title": "",
@@ -1353,7 +1353,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-2",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-2",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-2",
   "type": "Exercise",
   "number": "1.3.4.1",
   "title": "",
@@ -1362,7 +1362,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-3",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-3",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-3",
   "type": "Exercise",
   "number": "1.3.4.2",
   "title": "",
@@ -1371,7 +1371,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-4",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-4",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-4",
   "type": "Exercise",
   "number": "1.3.4.3",
   "title": "",
@@ -1380,7 +1380,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-5",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-5",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-5",
   "type": "Exercise",
   "number": "1.3.4.4",
   "title": "",
@@ -1389,7 +1389,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-6",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-6",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-6",
   "type": "Exercise",
   "number": "1.3.4.5",
   "title": "",
@@ -1398,7 +1398,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-7",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-7",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-7",
   "type": "Exercise",
   "number": "1.3.4.6",
   "title": "",
@@ -1407,7 +1407,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-8",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-8",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-8",
   "type": "Exercise",
   "number": "1.3.4.7",
   "title": "",
@@ -1416,7 +1416,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-9",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-9",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-9",
   "type": "Exercise",
   "number": "1.3.4.8",
   "title": "",
@@ -1425,7 +1425,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-10",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-10",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-10",
   "type": "Exercise",
   "number": "1.3.4.9",
   "title": "",
@@ -1434,7 +1434,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-11",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-11",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-11",
   "type": "Exercise",
   "number": "1.3.4.10",
   "title": "",
@@ -1443,7 +1443,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-12",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-12",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-12",
   "type": "Exercise",
   "number": "1.3.4.11",
   "title": "",
@@ -1452,7 +1452,7 @@ var ptx_lunr_docs = [
 {
   "id": "main-3-5-6-4-2-13",
   "level": "2",
-  "url": "main-3-5-6-4.html#main-3-5-6-4-2-13",
+  "url": "main-3-5-6.html#main-3-5-6-4-2-13",
   "type": "Exercise",
   "number": "1.3.4.12",
   "title": "",
