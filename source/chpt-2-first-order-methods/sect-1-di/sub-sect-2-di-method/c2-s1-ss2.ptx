@@ -1,56 +1,71 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Additional Examples </title>
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Solutions by Direct Integration </title>
 
-	<example xml:id="di-method-01"><title> Anti-derivative as Direct Integration </title>
+	<p>
+		As seen in the <xref ref="antiderivative-example" text="custom">previous example</xref>, if a differential equation can be written in the form:
+		<me>
+			\frac{d}{dx}[y] = f(x)
+		</me>, 
+		then the solution can be found by integrating both sides. This principle extends to more complex equations of the form:
+		<men xml:id="direct-integration-anything-equation">
+			\frac{d}{dx}\left[\text{anything}\right] = f(x)
+		</men>.
+		<assemblage><title>Notation</title>
+			<p>
+				The <m>f(x)</m> indicates that <em>only</em> <m>x</m> variables can appear on the right-hand side of these equations. If <m>y</m> could appear on the right side, we would use the notation <m>f(x,y)</m> instead. In fact, <xref ref="direct-integration-anything-equation"/> could be represented by 
+				<men xml:id="direct-integration-general-equation">
+					\frac{d}{dx}\left[g(x,y)\right] = f(x)
+				</men>
+				since both <m>x</m> and <m>y</m> can appear inside the derivative.
+			</p>
+		</assemblage>
+		
+	</p>
 
+	<p>
+		Consider the following examples to see how the same approach applies to these more interesting problems.
+	</p>
+
+	<example xml:id="direct-integration-example-1"><title>Solve by Direct Integration</title>
 		<statement>
 			<p>
-				Solve the differential equation
-				<me> \frac{dy}{dx} = x^2 </me>
+				Find the particular solution to the differential equation
 			</p>
+			<me>
+				\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2} , \quad y\left(1\right) = -4
+			</me>.
 		</statement>
 
 		<solution>
-
 			<p>
-				First note that our differential equation is equivalen  Recall that solving a differential equation involves isolating <m>y</m>. In this context, you can think of <m>y</m> as being "trapped" inside the derivative <m>\frac{dy}{dx}</m>. Calculus allows us to "remove" <m>y</m> from the derivative via integration. So, let's integrate both sides with respect to <m>x</m> to get
+				In order to isolate <m>y</m>, we need to release it from the derivative by integrating both sides as before.
 				<md>
-					<mrow> \int\frac{dy}{dx}\ dx \amp = \int x^2\ dx</mrow>
-					<mrow> 
-						\overset{<xref ref="integral-of-dy"/>}{\hookrightarrow}\qquad 
-						y + C_1    \amp = \frac13 x^3 + C_2
-					</mrow>.
+					<mrow> \int \frac{d}{dx}\left[5x \cdot y\right]\ dx \amp = \int x^{-2}\ dx </mrow>
+					<mrow> 5x \cdot y + C_1 \amp = -x^{-1} + C_2 </mrow>
+					<mrow>  y \amp = \frac{1}{5x}\Big(-\frac{1}{x} + \overset{=\ C}{\overbrace{C_2 - C_1}}\Big) </mrow>
+					<mrow>  y \amp = \frac{1}{5x}\left(-\frac{1}{x} + C\right) </mrow>
 				</md>
-			</p>
-
-			<p>
-				Finally, we isolate <m>y</m> and combine constants.
+				Finally, we use the condition, <m>y\left(1\right) = -4</m>, to find the particular solution.
 				<md>
-				<mrow>  y \amp = \frac13 x^3 + C_2 - C_1 </mrow>
+					<mrow>  -4 \amp = \frac{1}{5}\left(-1 + C\right) </mrow>
+					<mrow>  -20 \amp = -1 + C </mrow>
+					<mrow>  C \amp = -19 </mrow>
 				</md>
+				Therefore, the particular solution is
+				<m>
+					\quad \displaystyle y = \frac{1}{5x}\left(-\frac{1}{x} - 19\right)
+				</m>.
+				
 			</p>
-	
-			<p>
-				Since <m> C_2 - C_1 </m> is still a constant, we combine it into a single constant, <m>C</m>, and write our solution as
-				<me>
-				y = \frac13 x^3 + C
-				</me>
-			</p>
-
 		</solution>
-
 	</example>
 
-	<p>
-		This example may seem like overkill for such a simple problem, but it illustrates the basic idea of solving a differential equation that we will use throughout this text. The process always involves isolating the dependent variable, in this case <m>y</m>, on one side of the equation and writing it as a function of the independent variable, <m>x</m>, and possibly some constants.
-	</p>
-
-	<example xml:id="di-method-02"><title> Solve by Direct Integration </title>
+	<example xml:id="direct-integration-example-2"><title> Solve by Direct Integration </title>
 
 		<statement>
 			<p>
-				Solve the differential equation
-				<me> \frac{d}{dx}\Big[y\sin(2x)\Big] = \cos x </me>
+				Compute the general solution of the differential equation
 			</p>
+			<me> \frac{d}{dx}\Big[y\sin(2x)\Big] = \cos x</me>
 		</statement>
 
 		<solution>

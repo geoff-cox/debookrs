@@ -1,36 +1,69 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Solutions by Integration </title>
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Antiderivatives </title>
 
 	<p>
-		The simplest type of differential equation to solve is one that you encountered many times in your calculus class whenever you were asked to find an anti-derivative of a function. For example, suppose you wanted the anti-derivative of <m>x^2</m>. If you remember from calculus, this is the same as asking: "What function, when differentiated, gives you <m>x^2</m>?" or
-		<me>\frac{d}{dx}\Big[\quad ? \quad \Big] = x^2</me>,
-		but this is just the differential equation
-		<me>\frac{dy}{dx} = x^2</me>
-		where you must solve for <m>y</m>.
+		When you find an antiderivative, you're actually solving a basic differential equation. For example, consider finding the general antiderivative of <m>x^2</m>. The calculus approach would compute the integral
+		<me>
+			\int x^2\ dx = \frac13 x^3 + C
+		</me>.
+		The differential equations approach, on the other hand, seeks all functions whose derivative is <m>x^2</m>. This means solving for <m>y</m> in the equation:
+		<men xml:id="antiderivative-eqn">\frac{d}{dx}[y] = x^2</men>
+		Note, we could also express this equation in the following equivalent ways:
+		<me>\frac{dy}{dx} = x^2 \quad \text{or} \quad y^\prime = x^2</me>.
 	</p>
 		
 	<p>
-		Even though we already know that the anti-derivative of <m>x^2</m> is <m>\displaystyle \frac13 x^3 + C</m>, we will walk through how it would be solved as a differential equation. To prepare, review the following concepts from calculus.
+		To solve for <m>y</m>, we integrate both sides with respect to <m>x</m>, like so:
+		<md>
+			<mrow> \int\frac{d}{dx}[y]\ dx	\amp = \int x^2\ dx				</mrow>
+			<mrow> 					y + C_1	\amp = \frac13 x^3 + C_2		</mrow>
+			<mrow> 						y	\amp = \frac13 x^3 + C_2-C_1 \quad \implies \quad y = \frac13 x^3 + C	</mrow>
+		</md>
+		where <m>C = C_2-C_1</m> is a constant.
+		<fn>
+			Combining constants like this is a common practice in differential equations and is something you'll see often in this text.
+		</fn>
+		Although this method might seem excessive for simple problems, it illustrates the core concept of isolating the dependent variable and expressing it in terms of the independent variable, <m>x</m>.
 	</p>
 
-	<lemma>
-		<statement>
-			<p>
-				All of the expressions below are equivalent ways to represent the derivative of a function <m>y</m> with respect to <m>x</m>. 
-				<me> \frac{d}{dx}[y] = \frac{dy}{dx} = y^\prime </me>
-			</p>
-		</statement>
-	</lemma>
+	<example xml:id="antiderivative-example"><title> Solve by Antiderivatives </title>
 
-	<lemma>
 		<statement>
 			<p>
-				The indefinite integral (i.e. anti-derivative) of the derivative of a function is the function itself, up to a constant. That is, 
-				<men xml:id="integral-of-dy">\displaystyle\int\frac{dy}{dx}\ dx = y + C</men>,
-				or
-				<men xml:id="integral-of-df">\displaystyle\int\frac{d}{dx}\left[f(x)\right]\ dx = f(x) + C</men>.
+				Solve the differential equation
+				<me> 2y' - 4\sin x = 2, \quad y(0) = 5 </me>
 			</p>
 		</statement>
-	</lemma>
+
+		<solution>
+			
+			<p>
+				Start by isolating the derivative <m>y'</m> on one side of the equation
+				<md>
+					<mrow> y' \amp = 1 + 2 \sin x </mrow>.
+				</md>
+				Next, we integrate both sides with respect to <m>x</m> to get
+				<md>
+					<mrow> \int y'\ dx \amp = \int \left(1 + 2 \sin x\right) \ dx </mrow>
+					<mrow> y + C_1 \amp = x - 2 \cos x + C_2 </mrow>.
+					<mrow> y \amp  = x - 2 \cos x + C \quad \left(C = C_2-C_1\right)</mrow>.
+				</md>
+			</p>
+
+			<p>
+				Finally, apply the initial condition <m>y(0) = 5</m> to find the value of <m>C</m>
+				<md>
+					<mrow> y(0) \amp = 5 </mrow>
+					<mrow> (0) - 2 \cos(0) + C \amp = 5 </mrow>
+					<mrow> 0 - 2 + C \amp = 5 </mrow>
+					<mrow> C \amp = 7 </mrow>.
+				</md>
+				Thus, the solution to the differential equation is <m>\quad y = x - 4 \cos x + 7 </m>.
+			</p>
+				
+
+		</solution>
+
+	</example>
 
 	<xi:include href="./c2-s1-ss1-interactives.ptx" />
   
