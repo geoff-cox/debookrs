@@ -1,198 +1,289 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="subsec-if-method"><title> Integrating Factor Method </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method </title>
 
-	<introduction>
+	<outcomes>
+		<ul>
+			<li> Determine whether a DE can be solved by integrating factor. </li>
+			<li> Solve separable DEs using integrating factor (including , doing math with constants correctly, and getting the solution in its simplest form). </li>
+			<li> Correctly apply initial condition(s), if they are provided. </li>
+		</ul>
+	</outcomes>
 
-		<outcomes>
-			<ul>
-				<li> Determine whether a DE can be solved by integrating factor. </li>
-				<li> Solve separable DEs using integrating factor (including , doing math with constants correctly, and getting the solution in its simplest form). </li>
-				<li> Correctly apply initial condition(s), if they are provided. </li>
-			</ul>
-		</outcomes>
+	<p>
+		The integrating factor method can be used to solve any first order linear differential equation of the form
 
+		<men xml:id="EQ-1st-order-de"> y' + P(x)y = Q(x)</men>
+
+		and the technique can be broken down into the following steps.
+	</p>
+
+	<p>
+		Edit Notes:
+		<ul>
+			<li>Greg: I wonder if students will grasp how powerful this technique is. We say we can solve DEs of the form <m>y' + P(x)y = Q(x)</m>. On one hand, that looks really specific, and one may think that's really a special form. On the other, it's incredibly general. We have <m>y'</m> plus <m>y</m> times some function of <m>x</m>, and that sum is equal to some function of <m>x</m>. Would a small gallery of applicable DEs be appropriate here?</li>
+		</ul>
+	</p>
+
+	<outcomes>
+		<ul>
+			<li> 
+				Identify a differential equation as first order and linear.
+			</li>
+			<li> 
+				Master <xref text="custom" ref="if-step-1"> Step 1 </xref> of <xref ref="if-method" text="title"/>
+			</li>
+		</ul>
+	</outcomes>
+
+	<p>
+		This section will be focused on solving first order linear differential equations. Recall, a linear differential equation has the form
+		<me> a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)</me>
+		and the first-order version of this is
+		<me> a_1(x)y' + a_0(x)y = f(x).</me>
+		To simplify the notation for a first-order DE a bit further, it is common to divide both sides of this equation by <m>a_1(x)</m> and rename the resulting quotients as <m>P(x)</m> and <m>Q(x)</m>. In particular, we have
+		<me>y' + \US{P(x)}{\UB{\frac{a_0(x)}{a_1(x)}}}y = \US{Q(x)}{\UB{\frac{f(x)}{a_1(x)}}}</me>
+		and so our goal for this section is to solve DEs in the form
+
+		<men xml:id="if-standard-eqn"> y' + P(x)y = Q(x), </men>
+
+		applying a method known as the "integrating factor technique".
+	</p>
+
+	<example xml:id="euler-example-motivation">
+	
+		<statement>
+			<p>
+				Determine if the integrating factor method can be applied to the differential equation 
+				<me>
+					y' = y^2 + x.
+				</me>
+			</p>
+		</statement>
+
+		<solution>
+	
+			<p>
+				As always, we start by trying to classify the equation to determine which method applies. A quick observation shows us that we are dealing with a first order, nonlinear differential equation.
+				<aside>
+					<p>
+						The <m>y^2</m> term makes the DE nonlinear.
+					</p>
+				</aside>
+				This leaves separation of variables as the remaining possibility, but it is also easy to see that the <m>x</m> and <m>y</m> terms cannot be separated by multiplication. 
+			</p>
+	
+			<p>
+				Since the classification falls outside the requirements of any of our known methods, we are not equipped to solve it at this time.   
+			</p>
+	
+		</solution>
+
+	</example>
+
+	<exploration xml:id="if-method"><title> Separation of Variables </title>
 		<p>
-			The integrating factor method can be used to solve any first order linear differential equation of the form
-	
-			<men xml:id="EQ-1st-order-de"> y' + P(x)y = Q(x)</men>
-	
-			and the technique can be broken down into the following steps.
+			The general solution to the first-order linear differential equation,
+			<men xml:id="if-method-de">
+				\frac{dy}{dx} + P(x)\ y = Q(x),
+			</men>
+			can be determined through the following steps...
+		
+			<dl width="narrow">
+				<li xml:id="if-step-1"><title> Step 1: Verify Method </title>
+					<p>
+						Show the DE has order 1 and is linear.
+					</p>
+				</li>
+				<li xml:id="if-step-2"><title> Step 2: Find Integrating Factor </title>
+					<p>
+						Multiply both sides of <xref ref="if-method-de"/> by <m>\mu</m>, set <m>\mu' = \mu P(x)</m>, and find <m>\mu</m>.
+						<men xml:id="if-method-de-with-mu">
+							\underset{\text{product rule}}{\underbrace{\mu\ y' + \underset{\mu'}{\fbox{$\mu P(x)$}} \ y}} = \mu\ Q(x)
+						</men>
+					</p>
+				</li>
+				<li xml:id="if-step-3"><title> Step 3: Rewrite DE </title>
+					<p>
+						"Undo the product rule" on the left side of <xref ref="if-method-de-with-mu"/> with this <m>\mu</m>,
+						<men xml:id="if-method-de-rewrite"> 
+							\frac{d}{dx}\left[\mu\ y\right] = \mu\ Q(x). 
+						</men>
+					</p>
+				</li>
+				<li xml:id="if-step-4"><title> Step 4: Integrate &amp; Finalize Solution </title>
+					<p>
+						Integrate both sides of <xref ref="if-method-de-rewrite"/> and solve for <m>y</m>.
+					</p>
+				</li>
+			</dl>
 		</p>
-	
-		<p>
-			Edit Notes:
-			<ul>
-				<li>Greg: I wonder if students will grasp how powerful this technique is. We say we can solve DEs of the form <m>y' + P(x)y = Q(x)</m>. On one hand, that looks really specific, and one may think that's really a special form. On the other, it's incredibly general. We have <m>y'</m> plus <m>y</m> times some function of <m>x</m>, and that sum is equal to some function of <m>x</m>. Would a small gallery of applicable DEs be appropriate here?</li>
-			</ul>
-		</p>
-	
-		<p>
-			<assemblage>
-				<title>Integrating Factor Method</title>
-				
-				<p>
-					Given the first order linear DE
-					<me> y' + P(x)y = Q(x) </me>
-					<ol>
-						<li>
-							Multiply both sides of DE by <m>\mu</m> to "complete" the product rule
-							<me>  \underset{\text{product rule: } [y \cdot \mu]'}{\underbrace{\mu y' + \overset{\mu'}{\fbox{$\mu P(x)$}} \ y}} = \mu Q(x) </me>
-						</li>
-						<li>
-							Find a <m>\mu</m> by solving the separable DE: <m> \quad \mu' = \mu P(x) </m>
-						</li>
-						<li>
-							With <m>\mu</m> known, rewrite the left-side of the DE as a single derivative.
-							<me> \frac{d}{dx}\left[\mu y\right] = \mu Q(x) </me>
-						</li>
-						<li>
-							Integrate both sides of this equation to get
-							<me> \mu y = \int \mu Q(x)\ dx </me>
-						</li>
-						<li>
-							Compute the integral on the right and isolate <m>y</m>.
-						</li>
-					</ol>
-				</p>
-				
-			</assemblage>
-			Now let's apply this to some examples.
-		</p>
-	
-		<p>
-			As we've been un-doing the product rule, we've
-			always had two terms, one containing the dependent variable, usually <m>y</m>, and one
-			containing its derivative, <m>y'</m>, as in <xref ref="undo_prod3" />.  In order to use this process
-			to solve DEs, we'll want to have DEs that also have these properties.  In other words,
-			we'll need a first order DE.  Further, we need to make sure the function itself is in a separate
-			term from the derivative, and it needs to be to the first power and not inside another function.
-			Hopefully these characteristics are jogging your memory, because these are precisely
-			the characteristics we have in a linear DE.  In summary, we'll be able to use this method
-			when we have a first order linear DE.  Let's work through one and we can summarize at the end.
-		</p>
-	
-		<p>
-			Consider the following DE.
-			<me>x^2y' = 5x^3 + 2x^3y </me>
-		</p>
-	
-		<p>
-			First we note that this equation is first order and linear.
-		</p>
-	
-		<p>
-			Our first step would be to move closer to seeing the form shown in <xref ref="undo_prod3" />.
-			As such, we will put the terms containing the derivative, <m>y'</m>, and the function, <m>y</m>, on the same of the equation.
-			<me>x^2 y' - 2x^3 y = 5x^3</me>
-		</p>
-	
-		<p>
-			In an ideal world, we would immediately be able to un-do the product rule on the left hand
-			side of the equation.  Unfortunately, this doesn't work right now, so we need to do a little work to
-			force it to work. %Obviously this sentence is awful.
-			We would still like to push this into the form shown in (<xref ref="undo_prod3" />), so we can first divide the entire equation by the coefficient on <m>y'</m>,
-			<me>y' - 2x y = 5x,</me>
-			and then multiply by the function <m>z</m> that will help us un-do the product rule.
-			<men xml:id="int_factor_ex1"> z\cdot y' - 2x z\cdot y = z\cdot 5x </men>
-		</p>
-	
-		<p>
-			In Example 6, we showed that the function <m>z</m> we need is given by <m>z = e^{\int P(x) dx}</m>.  We need only identify the function <m>P(x)</m> as in (<xref ref="undo_prod3" />).
-			For this DE, we have <m>P(x) = -2x</m>.  Take special note of the inclusion of the negative sign.
-			Hence, we have
-			<me>z = e^{\int P(x) dx} = e^{\int -2x dx} = e^{-x^2}.</me>
-		</p>
-	
-		<p>
-			Note that we have assumed that the constant of integration is zero because we
-			know we need just one function <m>z</m>, and we choose the simplest one.  Now we can replace
-			the replace the <m>z</m>'s in Equation (<xref ref="int_factor_ex1" />) with <m>z = e^{-x^2}</m> to yield
-			<me>e^{-x^2}\cdot y' - 2x e^{-x^2}\cdot y = 5xe^{-x^2}.</me>
-		</p>
-	
-		<p>
-			If we've done everything correctly so far, we should be able to undo the product rule
-			on the left hand side.  We can identify functions <m>f</m> and <m>g</m> as follows:
-			<me>\underbrace{e^{-x^2}}_{\scriptsize f}\cdot \underbrace{y'}_{\scriptsize g'}
-				- \underbrace{2x e^{-x^2}}_{\scriptsize f'}\cdot \underbrace{y}_{\scriptsize g}
-					= 5xe^{-x^2}.</me>
-		</p>
-	
-		<p>
-			We need to verify at this step that if we take the derivative of <m>f(x) = e^{-x^2}</m>, we
-			do actually get the expression we've labeled as <m>f'</m>.  In this case, we do get <m>f'(x) = -2xe^{-x^2}</m>,
-			as expected, so we have correctly determined the function <m>z</m> that will help us un-do the
-			product rule.  This function, that plays a central role in this solution technique, is called the
-			<term> integrating factor </term>.
-		</p>
-	
-		<p>
-			We have identified how we can un-do the product rule so now we need to do just that.
-			<me>\frac{d}{dx}\Big( \underbrace{e^{-x^2}}_{\scriptsize f}\cdot \underbrace{y}_{\scriptsize g} \Big)
+	</exploration> 
+
+	<p>
+		<assemblage>
+			<title>Integrating Factor Method</title>
+			
+			<p>
+				Given the first order linear DE
+				<me> y' + P(x)y = Q(x) </me>
+				<ol>
+					<li>
+						Multiply both sides of DE by <m>\mu</m> to "complete" the product rule
+						<me>  \underset{\text{product rule: } [y \cdot \mu]'}{\underbrace{\mu y' + \overset{\mu'}{\fbox{$\mu P(x)$}} \ y}} = \mu Q(x) </me>
+					</li>
+					<li>
+						Find a <m>\mu</m> by solving the separable DE: <m> \quad \mu' = \mu P(x) </m>
+					</li>
+					<li>
+						With <m>\mu</m> known, rewrite the left-side of the DE as a single derivative.
+						<me> \frac{d}{dx}\left[\mu y\right] = \mu Q(x) </me>
+					</li>
+					<li>
+						Integrate both sides of this equation to get
+						<me> \mu y = \int \mu Q(x)\ dx </me>
+					</li>
+					<li>
+						Compute the integral on the right and isolate <m>y</m>.
+					</li>
+				</ol>
+			</p>
+			
+		</assemblage>
+		Now let's apply this to some examples.
+	</p>
+
+	<p>
+		As we've been un-doing the product rule, we've
+		always had two terms, one containing the dependent variable, usually <m>y</m>, and one
+		containing its derivative, <m>y'</m>, as in <xref ref="undo_prod3" />.  In order to use this process
+		to solve DEs, we'll want to have DEs that also have these properties.  In other words,
+		we'll need a first order DE.  Further, we need to make sure the function itself is in a separate
+		term from the derivative, and it needs to be to the first power and not inside another function.
+		Hopefully these characteristics are jogging your memory, because these are precisely
+		the characteristics we have in a linear DE.  In summary, we'll be able to use this method
+		when we have a first order linear DE.  Let's work through one and we can summarize at the end.
+	</p>
+
+	<p>
+		Consider the following DE.
+		<me>x^2y' = 5x^3 + 2x^3y </me>
+	</p>
+
+	<p>
+		First we note that this equation is first order and linear.
+	</p>
+
+	<p>
+		Our first step would be to move closer to seeing the form shown in <xref ref="undo_prod3" />.
+		As such, we will put the terms containing the derivative, <m>y'</m>, and the function, <m>y</m>, on the same of the equation.
+		<me>x^2 y' - 2x^3 y = 5x^3</me>
+	</p>
+
+	<p>
+		In an ideal world, we would immediately be able to un-do the product rule on the left hand
+		side of the equation.  Unfortunately, this doesn't work right now, so we need to do a little work to
+		force it to work. %Obviously this sentence is awful.
+		We would still like to push this into the form shown in (<xref ref="undo_prod3" />), so we can first divide the entire equation by the coefficient on <m>y'</m>,
+		<me>y' - 2x y = 5x,</me>
+		and then multiply by the function <m>z</m> that will help us un-do the product rule.
+		<men xml:id="int_factor_ex1"> z\cdot y' - 2x z\cdot y = z\cdot 5x </men>
+	</p>
+
+	<p>
+		In Example 6, we showed that the function <m>z</m> we need is given by <m>z = e^{\int P(x) dx}</m>.  We need only identify the function <m>P(x)</m> as in (<xref ref="undo_prod3" />).
+		For this DE, we have <m>P(x) = -2x</m>.  Take special note of the inclusion of the negative sign.
+		Hence, we have
+		<me>z = e^{\int P(x) dx} = e^{\int -2x dx} = e^{-x^2}.</me>
+	</p>
+
+	<p>
+		Note that we have assumed that the constant of integration is zero because we
+		know we need just one function <m>z</m>, and we choose the simplest one.  Now we can replace
+		the replace the <m>z</m>'s in Equation (<xref ref="int_factor_ex1" />) with <m>z = e^{-x^2}</m> to yield
+		<me>e^{-x^2}\cdot y' - 2x e^{-x^2}\cdot y = 5xe^{-x^2}.</me>
+	</p>
+
+	<p>
+		If we've done everything correctly so far, we should be able to undo the product rule
+		on the left hand side.  We can identify functions <m>f</m> and <m>g</m> as follows:
+		<me>\underbrace{e^{-x^2}}_{\scriptsize f}\cdot \underbrace{y'}_{\scriptsize g'}
+			- \underbrace{2x e^{-x^2}}_{\scriptsize f'}\cdot \underbrace{y}_{\scriptsize g}
 				= 5xe^{-x^2}.</me>
-		</p>
-	
-		<p>
-			We have just made a huge step forward in solving this DE!  We have made it so that
-			the unknown function <m>y</m> now appears in the equation only once, so we can now work to solve
-			for <m>y</m>.  As it stands, the function <m>y</m> is inside a derivative, so we can integrate both sides
-			(with respect to the independent variable).
-			<me>\int \frac{d}{dx}\Big( e^{-x^2} \cdot y \Big)dx = \int 5xe^{-x^2}dx</me>
-		</p>
-	
-		<p>
-			The integration and differentiation will un-do each other on the left hand side.  On
-			the right hand side, we need a substitution, <m>u = -x^2</m>, in order to achieve the integration.
-			This means <m>du = -2x dx</m>, or equivalently <m>-\frac{1}{2}du =x dx.</m>
-			<md>
-				<mrow>	e^{-x^2} \cdot y	\amp = \int 5xe^{-x^2}dx	</mrow>
-				<mrow>			\amp = 5\int e^{-x^2}\cdot x dx	</mrow>
-				<mrow>			\amp = 5 \int e^{u}\cdot -\frac{1}{2} du	</mrow>
-				<mrow>			\amp = -\frac{5}{2}\int e^u du	</mrow>
-				<mrow>			\amp = -\frac{5}{2}\int e^u + C	</mrow>
-				<mrow>			\amp = -\frac{5}{2}e^{-x^2} + C	</mrow>
-			</md>
-		</p>
-	
-		<p>
-			We are almost done; we need only divide both sides of the equation by <m>e^{-x^2}</m>
-			to solve for <m>y</m>.
-			<me>y = -\frac{5}{2} + \frac{C}{e^{-x^2}}</me>
-		</p>
-	
-		<p>
-			While the equation above is a valid solution, we may prefer to rewrite the second
-			term using rules of exponents to yield
-			<me>y = -\frac{5}{2} + Ce^{x^2}.</me>
-		</p>
-	
-		<p>
-			We have now found the general solution to the DE.  As always, we can verify that
-			we have found the correct solution by substituting back into the original DE. %Put this in a collapsible?
-			<md>
-				<mrow> \mbox{LHS}	\amp = x^2y'	</mrow>
-				<mrow>			\amp = x^2 \cdot \frac{d}{dx}\left( -\frac{5}{2} + Ce^{x^2} \right)	</mrow>
-				<mrow>			\amp = x^2 \cdot \left( 0 + 2Cxe^{x^2} \right)	</mrow>
-				<mrow>			\amp = 2C x^3 e^{x^2}	</mrow>
-			</md>
-	
-			<md>
-				<mrow>	\mbox{RHS}	\amp = 5x^3 + 2x^3y	</mrow>
-				<mrow>			\amp = 5x^3 + 2x^3\left( -\frac{5}{2} + Ce^{x^2} \right)	</mrow>
-				<mrow>			\amp = 5x^3 - 5x^3+ 2C x^3 e^{x^2}	</mrow>
-				<mrow>			\amp = 2C x^3 e^{x^2}	</mrow>
-			</md>
-		</p>
-	
-		<p>
-			Since we get the same result when we substitute our solution in on the right and left
-			hand sides of the DE, we confirm that we did find the solution.
-		</p>
-	
-		<p>
-			Let's look at another example, and this time we will slightly streamline the process.
-		</p>
-	
-	</introduction>
+	</p>
+
+	<p>
+		We need to verify at this step that if we take the derivative of <m>f(x) = e^{-x^2}</m>, we
+		do actually get the expression we've labeled as <m>f'</m>.  In this case, we do get <m>f'(x) = -2xe^{-x^2}</m>,
+		as expected, so we have correctly determined the function <m>z</m> that will help us un-do the
+		product rule.  This function, that plays a central role in this solution technique, is called the
+		<term> integrating factor </term>.
+	</p>
+
+	<p>
+		We have identified how we can un-do the product rule so now we need to do just that.
+		<me>\frac{d}{dx}\Big( \underbrace{e^{-x^2}}_{\scriptsize f}\cdot \underbrace{y}_{\scriptsize g} \Big)
+			= 5xe^{-x^2}.</me>
+	</p>
+
+	<p>
+		We have just made a huge step forward in solving this DE!  We have made it so that
+		the unknown function <m>y</m> now appears in the equation only once, so we can now work to solve
+		for <m>y</m>.  As it stands, the function <m>y</m> is inside a derivative, so we can integrate both sides
+		(with respect to the independent variable).
+		<me>\int \frac{d}{dx}\Big( e^{-x^2} \cdot y \Big)dx = \int 5xe^{-x^2}dx</me>
+	</p>
+
+	<p>
+		The integration and differentiation will un-do each other on the left hand side.  On
+		the right hand side, we need a substitution, <m>u = -x^2</m>, in order to achieve the integration.
+		This means <m>du = -2x dx</m>, or equivalently <m>-\frac{1}{2}du =x dx.</m>
+		<md>
+			<mrow>	e^{-x^2} \cdot y	\amp = \int 5xe^{-x^2}dx	</mrow>
+			<mrow>			\amp = 5\int e^{-x^2}\cdot x dx	</mrow>
+			<mrow>			\amp = 5 \int e^{u}\cdot -\frac{1}{2} du	</mrow>
+			<mrow>			\amp = -\frac{5}{2}\int e^u du	</mrow>
+			<mrow>			\amp = -\frac{5}{2}\int e^u + C	</mrow>
+			<mrow>			\amp = -\frac{5}{2}e^{-x^2} + C	</mrow>
+		</md>
+	</p>
+
+	<p>
+		We are almost done; we need only divide both sides of the equation by <m>e^{-x^2}</m>
+		to solve for <m>y</m>.
+		<me>y = -\frac{5}{2} + \frac{C}{e^{-x^2}}</me>
+	</p>
+
+	<p>
+		While the equation above is a valid solution, we may prefer to rewrite the second
+		term using rules of exponents to yield
+		<me>y = -\frac{5}{2} + Ce^{x^2}.</me>
+	</p>
+
+	<p>
+		We have now found the general solution to the DE.  As always, we can verify that
+		we have found the correct solution by substituting back into the original DE. %Put this in a collapsible?
+		<md>
+			<mrow> \mbox{LHS}	\amp = x^2y'	</mrow>
+			<mrow>			\amp = x^2 \cdot \frac{d}{dx}\left( -\frac{5}{2} + Ce^{x^2} \right)	</mrow>
+			<mrow>			\amp = x^2 \cdot \left( 0 + 2Cxe^{x^2} \right)	</mrow>
+			<mrow>			\amp = 2C x^3 e^{x^2}	</mrow>
+		</md>
+
+		<md>
+			<mrow>	\mbox{RHS}	\amp = 5x^3 + 2x^3y	</mrow>
+			<mrow>			\amp = 5x^3 + 2x^3\left( -\frac{5}{2} + Ce^{x^2} \right)	</mrow>
+			<mrow>			\amp = 5x^3 - 5x^3+ 2C x^3 e^{x^2}	</mrow>
+			<mrow>			\amp = 2C x^3 e^{x^2}	</mrow>
+		</md>
+	</p>
+
+	<p>
+		Since we get the same result when we substitute our solution in on the right and left
+		hand sides of the DE, we confirm that we did find the solution.
+	</p>
+
+	<p>
+		Let's look at another example, and this time we will slightly streamline the process.
+	</p>
 
 	<example xml:id="example-if-examples-01">
 		<p>
@@ -471,6 +562,6 @@
 		</solution>
 	</example>
 
-	<xi:include href="../interactives/if-interactives.ptx" />
+	<xi:include href="./c2-s3-ss3-interactives.ptx" />
 
 </subsection>
