@@ -1,52 +1,141 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method </title>
 
-	<outcomes>
-		<ul>
-			<li> Determine whether a DE can be solved by integrating factor. </li>
-			<li> Solve separable DEs using integrating factor (including , doing math with constants correctly, and getting the solution in its simplest form). </li>
-			<li> Correctly apply initial condition(s), if they are provided. </li>
-		</ul>
-	</outcomes>
-
 	<p>
-		The integrating factor method can be used to solve any first order linear differential equation of the form
+		The integrating factor method uses a three-step strategy to solve first order linear differential equation in the <em>standard form</em>
+		<fn>
+			<p>
+				Every linear differential equation looks like
+				<me> 
+					a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
+				</me>.
+				The first-order version of this is
+				<me> 
+					a_1(x)y' + a_0(x)y = f(x)
+				</me>,
+				but we can divide both sides of this equation by <m>a_1(x)</m>, like so
+				<me>
+					y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y = \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}
+				</me>.
+				Since every first-order linear differential equations can always be written as
+				<me> 
+					y' + P(x)y = Q(x) 
+				</me>,
+				we call this the first-order linear <em>standard form</em>.
+			</p>
+		</fn>
 
-		<men xml:id="EQ-1st-order-de"> y' + P(x)y = Q(x)</men>
+		<men xml:id="if-standard-form"> 
+			y' + P(x)y = Q(x)
+		</men>.
 
-		and the technique can be broken down into the following steps.
+		The heart of this method is the first step where you must find the correct integrating factor. The second step uses this factor to write the left side as a single derivative. Finally, the last step finds the solution by <xref ref="direct-integration" text="custom">direct integration</xref>. 
 	</p>
 
-	<p>
-		Edit Notes:
-		<ul>
-			<li>Greg: I wonder if students will grasp how powerful this technique is. We say we can solve DEs of the form <m>y' + P(x)y = Q(x)</m>. On one hand, that looks really specific, and one may think that's really a special form. On the other, it's incredibly general. We have <m>y'</m> plus <m>y</m> times some function of <m>x</m>, and that sum is equal to some function of <m>x</m>. Would a small gallery of applicable DEs be appropriate here?</li>
-		</ul>
-	</p>
+	<paragraphs><title> Step 1 Details </title>
+		
+		<p>
+			For most beginners, the tricky part of this method is understanding the math behind how the integrating factor, in step 1, is found. So, let's carfully walk through this important process.
+		</p>
 
-	<outcomes>
-		<ul>
-			<li> 
-				Identify a differential equation as first order and linear.
-			</li>
-			<li> 
-				Master <xref text="custom" ref="if-step-1"> Step 1 </xref> of <xref ref="if-method" text="title"/>
-			</li>
-		</ul>
-	</outcomes>
+		<p>
+			Consider the differential equations (specific on the left, general on the right):
+			<sidebyside>
+				<p>
+					<me> 
+						y' + x^2 y = 5x 
+					</me>,
+				</p>
+				<p>
+					<me> 
+						y' + P(x)y = Q(x) 
+					</me>.
+				</p>
+			</sidebyside>
+			Our goal is to rewrite the left side as a single derivative <m>\left(\left[ f \cdot g \right]'\right)</m> using the <xref ref="if-product-rule" text="custom"> backward product rule </xref>. However, this is impossible in its current form, so we need to multiply by a factor that will make it possible. Since we don't know what this factor is <em>yet</em>, we will call it <m>\mu</m>.
+			<sidebyside>
+				<p>
+					<me> 
+						\mu y' + 3x^2 \mu y = 5x\mu 
+					</me>.
+				</p>
+				<p>
+					<me> 
+						\mu y' + P(x)\mu y = Q(x)\mu 
+					</me>.
+				</p>
+			</sidebyside>
+			Looking at the first term, <m>\mu y'</m>, you should see that the left side is almost the product rule <m>\left[ \mu y \right]'</m>, since the first term of this product rule is <m>\mu y'</m>. The second term is off, however, since it should be <m>\mu' y</m>. Let's take a closer look.
+			<sidebyside>
+				<p>
+					<me> 
+						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\fbox{\(3x^2 \mu\)}}}}	\cdot 
+						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+						5x\mu 
+					</me>,
+				</p>
+				<p>
+					<me> 
+						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\fbox{\(P(x) \mu\)}}}}	\cdot 
+						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+						Q(x)\mu 
+					</me>.
+				</p>
+			</sidebyside>
+			Notice that the product rule requires that the boxed functions be <m>\mu'</m>. That is, we must choose <m>\mu</m> so that its derivative is <m>3x^2 \mu</m> (left) or <m>P(x) \mu</m> (left). Amazing, we just found a separable differential equation hiding inside the original equation. In particular, we can solve
+			<sidebyside>
+				<p>
+					<me> 
+						\mu' = 3x^2 \mu
+					</me>
+				</p>
+				<p>
+					<me> 
+						\mu' = P(x) \mu
+					</me>.
+				</p>
+			</sidebyside>
+			for <m>\mu</m> using separation of variables! Let's do it.
+			<sidebyside>
+				<p>
+					<md>
+						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int 3x^2\ dx	</mrow>
+						<mrow>	\ln|\mu|	\amp = x^3 + C	</mrow>
+						<mrow>	\mu	\amp = \pm e^{x^3 + C}	</mrow>
+						<mrow>	\mu	\amp = {\color{green} \us{C}{\fbox{\(\pm e^C\)}}} e^{x^3}	</mrow>
+						<mrow>	\mu	\amp = Ce^{x^3}	</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	</mrow>
+						<mrow>	\ln|\mu|	\amp = \int P(x) dx	</mrow>
+						<mrow>	\mu	\amp = \pm e^{\int P(x) dx}	</mrow>
+					</md>
+				</p>
+			</sidebyside>
+			Since we only need one integrating factor, we can choose <m>C = 1</m> (left) and drop the <m>\pm</m> (right). By finding the missing piece to write the left side of each DE as a single derivative, we have completed step 1.
+		</p>
+	</paragraphs>
+	
+	<paragraphs><title> Step 2 Details </title>
 
-	<p>
-		This section will be focused on solving first order linear differential equations. Recall, a linear differential equation has the form
-		<me> a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)</me>
-		and the first-order version of this is
-		<me> a_1(x)y' + a_0(x)y = f(x).</me>
-		To simplify the notation for a first-order DE a bit further, it is common to divide both sides of this equation by <m>a_1(x)</m> and rename the resulting quotients as <m>P(x)</m> and <m>Q(x)</m>. In particular, we have
-		<me>y' + \US{P(x)}{\UB{\frac{a_0(x)}{a_1(x)}}}y = \US{Q(x)}{\UB{\frac{f(x)}{a_1(x)}}}</me>
-		and so our goal for this section is to solve DEs in the form
+		<p>
+			With the integrating factor in hand, we are now ready to write the left side as a single derivative using the <xref ref="if-product-rule" text="custom"> backward product rule </xref>.
+		</p>
+	
+	</paragraphs>
+	
+	<paragraphs><title> Step 3 Details </title>
 
-		<men xml:id="if-standard-eqn"> y' + P(x)y = Q(x), </men>
-
-		applying a method known as the "integrating factor technique".
-	</p>
+		<p>
+			PISS.
+		</p>
+	
+	</paragraphs>
 
 	<example xml:id="euler-example-motivation">
 	
@@ -79,78 +168,9 @@
 
 	</example>
 
-	<exploration xml:id="if-method"><title> Separation of Variables </title>
-		<p>
-			The general solution to the first-order linear differential equation,
-			<men xml:id="if-method-de">
-				\frac{dy}{dx} + P(x)\ y = Q(x),
-			</men>
-			can be determined through the following steps...
-		
-			<dl width="narrow">
-				<li xml:id="if-step-1"><title> Step 1: Verify Method </title>
-					<p>
-						Show the DE has order 1 and is linear.
-					</p>
-				</li>
-				<li xml:id="if-step-2"><title> Step 2: Find Integrating Factor </title>
-					<p>
-						Multiply both sides of <xref ref="if-method-de"/> by <m>\mu</m>, set <m>\mu' = \mu P(x)</m>, and find <m>\mu</m>.
-						<men xml:id="if-method-de-with-mu">
-							\underset{\text{product rule}}{\underbrace{\mu\ y' + \underset{\mu'}{\fbox{$\mu P(x)$}} \ y}} = \mu\ Q(x)
-						</men>
-					</p>
-				</li>
-				<li xml:id="if-step-3"><title> Step 3: Rewrite DE </title>
-					<p>
-						"Undo the product rule" on the left side of <xref ref="if-method-de-with-mu"/> with this <m>\mu</m>,
-						<men xml:id="if-method-de-rewrite"> 
-							\frac{d}{dx}\left[\mu\ y\right] = \mu\ Q(x). 
-						</men>
-					</p>
-				</li>
-				<li xml:id="if-step-4"><title> Step 4: Integrate &amp; Finalize Solution </title>
-					<p>
-						Integrate both sides of <xref ref="if-method-de-rewrite"/> and solve for <m>y</m>.
-					</p>
-				</li>
-			</dl>
-		</p>
-	</exploration> 
+	
 
-	<p>
-		<assemblage>
-			<title>Integrating Factor Method</title>
-			
-			<p>
-				Given the first order linear DE
-				<me> y' + P(x)y = Q(x) </me>
-				<ol>
-					<li>
-						Multiply both sides of DE by <m>\mu</m> to "complete" the product rule
-						<me>  \underset{\text{product rule: } [y \cdot \mu]'}{\underbrace{\mu y' + \overset{\mu'}{\fbox{$\mu P(x)$}} \ y}} = \mu Q(x) </me>
-					</li>
-					<li>
-						Find a <m>\mu</m> by solving the separable DE: <m> \quad \mu' = \mu P(x) </m>
-					</li>
-					<li>
-						With <m>\mu</m> known, rewrite the left-side of the DE as a single derivative.
-						<me> \frac{d}{dx}\left[\mu y\right] = \mu Q(x) </me>
-					</li>
-					<li>
-						Integrate both sides of this equation to get
-						<me> \mu y = \int \mu Q(x)\ dx </me>
-					</li>
-					<li>
-						Compute the integral on the right and isolate <m>y</m>.
-					</li>
-				</ol>
-			</p>
-			
-		</assemblage>
-		Now let's apply this to some examples.
-	</p>
-
+	
 	<p>
 		As we've been un-doing the product rule, we've
 		always had two terms, one containing the dependent variable, usually <m>y</m>, and one
@@ -285,282 +305,7 @@
 		Let's look at another example, and this time we will slightly streamline the process.
 	</p>
 
-	<example xml:id="example-if-examples-01">
-		<p>
-			Solve
-			<me>-\frac{4}{t^2} \cdot M =  t^5 - \frac{1}{t} \cdot\frac{dM}{dt} + 1.</me>
-		</p>
-
-		<solution>
-			<p>
-				We always begin by classifying the DE.  You should confirm that this DE is
-				first order and linear, and therefore it is appropriate to use our integrating factor technique.
-				Keep in mind that our goal is to find an unknown function <m>M(t)</m> that satisfies this
-				equation.
-			</p>
-
-			<p>
-				We work first to get the DE in an appropriate form so that we can un-do the product rule.
-				We begin by getting the dependent variable, <m>M</m> and its derivative on the same side of
-				the equation, and then we multiply both sides of the equation by <m>t</m> so that the coefficient
-				on the derivative is 1.
-				<mdn>
-					<mrow xml:id="this_equn1">	\frac{1}{t}\cdot \frac{dM}{dt} - \frac{4}{t^2} \cdot M	\amp =  t^5 + 1	</mrow>
-					<mrow>					\frac{dM}{dt} - \frac{4}{t} \cdot M	\amp = t^6 + t </mrow>
-				</mdn>
-			</p>
-
-			<p>
-				If follow the process we took in the previous example, we would first multiply by
-				the unknown function <m>z</m> that will help us un-do the product rule, then we would determine
-				<m>z</m>.  Instead, let's first determine <m>z</m>, and then we'll multiply by it.  As in (<xref ref="undo_prod3" />),
-				we need to identify the function <m>P</m> that is attached to the independent variable by
-				multiplication.  In equation (<xref ref="this_equn1" />), we have <m>P(t) = -\frac{4}{t}</m>, (note the inclusion
-				of the negative sign) so we know that
-				the function <m>z</m> that will help us un-do the product rule is given by
-				<me>z = e^{\int P(t) dt} = e^{\int -\frac{4}{t} dt} = e^{-4\ln t}.</me>
-				(Note, again, that we seek only one function <m>z</m>, so we omit the absolute value and the <m>+C</m>
-				that we normally see when we integrate the function  <m>P(t) = -\frac{4}{t}.</m>)
-			</p>
-
-			<p>
-				While our integrating factor <m>z</m> is technically correct, it can (and should) be simplified
-				using rules of logarithms as follows.
-				<me>z = e^{-4\ln t} = e^{\ln (t^{-4})} = t^{-4}.</me>
-			</p>
-
-			<p>
-				We'll end up using lots of rules of logarithms throughout this chapter; review those
-				rules (HERE) if you need a refresher.
-			</p>
-
-			<p>
-				Now that we have identified the integrating factor <m>z</m>, we can multiply both
-				sides of the DE (which we put in standard form in (<xref ref="this_equn1" />)) by it.
-				<md>
-					<mrow>	t^{-4} \cdot \frac{dM}{dt} - t^{-4}\cdot \frac{4}{t} \cdot M	\amp = t^{-4}(t^6 + t)	</mrow>
-					<mrow>	t^{-4} \cdot \frac{dM}{dt} - \cdot \frac{4}{t^5} \cdot M	\amp = t^2 + t^{-3}	</mrow>
-				</md>
-			</p>
-
-			<p>
-				If we have correctly determined the integrating factor, then we should be able to
-				un-do the product rule on the left hand side.  Notice that we can identify the functions
-				<m>f</m> and <m>g</m> as follows.
-				<me>\underbrace{t^{-4}}_{\scriptsize f}\cdot \underbrace{\frac{dM}{dt}}_{\scriptsize g'}
-					+ \underbrace{- \frac{4}{t^5}}_{\scriptsize f'}\cdot \underbrace{M}_{\scriptsize g}
-						= t^2 + t^{-3}.</me>
-			</p>
-
-			<p>
-				It is critical that you verify that the function <m>z</m> does, in fact, create a situation
-				where we see a function <m>f</m> and its derivative <m>f'</m> as shown above.  In this case,
-				<md>
-					<mrow>	f'(t)	\amp = \frac{d}{dt} \Big(f(t)\Big)	</mrow>
-					<mrow>				\amp = \frac{d}{dt}\Big( t^{-4} \Big)	</mrow>
-					<mrow>				\amp = -4t^{-5}	</mrow>
-					<mrow>				\amp = -\frac{4}{t^5},	</mrow>
-				</md>
-				so we can confirm that we have correctly identified the functions <m>f</m> and <m>g</m> to un-do
-				the product rule.  This, we can re-write the left hand side of the equation as follows.
-				<me>\frac{d}{dt}\Big( t^{-4}\cdot M \Big) = t^2 + t^{-3}.</me>
-			</p>
-
-			<p>
-				We've made a big step forward, here!  Remember that our goal is to find the
-				unknown function <m>M</m>, so we are much closer since we <m>M</m> appears in only one place
-				in this equation.  In order to un-do the differentiation, we can integrate both sides of the
-				equation.
-				<md>
-					<mrow>	\int  \frac{d}{dt}\Big( t^{-4}\cdot M \Big)dt	\amp = \int t^2 + t^{-3} dt	</mrow>
-					<mrow>					t^{-4}\cdot M	\amp = \frac{1}{3}t^{3} - \frac{1}{2}t^{-2} + C	</mrow>
-					<mrow>					\frac{M}{t^4}	\amp = \frac{1}{3}t^{3} - \frac{1}{2}t^{-2} + C	</mrow>
-				</md>
-			</p>
-
-			<p>
-				Finally, we can solve for <m>M</m> by multiplying both sides of the equation by <m>t^4.</m>
-				<me>M = \frac{1}{3}t^{7} - \frac{1}{2}t^2 + Ct^4</me>
-			</p>
-
-			<p>
-				We have made a point of simplifying whenever possible, and you should look to
-				do that as you work.  You may be tempted to replace the <m>Ct^3</m> with a single constant;
-				remember, however, that a constant times a function is not a constant, so we cannot
-				simplify that last term any further.
-			</p>
-
-			<p>
-				Hence, we have found the solution to the DE.  We can always verify our solution
-				by substituting back in to the original DE.  This is optional, but the details are included here.
-				<md>
-					<mrow>	LHS	\amp = -\frac{4}{t^2} \cdot M 	</mrow>
-					<mrow>	\amp = -\frac{4}{t^2} \cdot \left( \frac{1}{3}t^{7} - \frac{1}{2}t^2 + Ct^4 \right)	</mrow>
-					<mrow>	\amp = -\frac{4}{3}t^5 + 2 - 4Ct^2	</mrow>
-				</md>
-
-				<md>
-					<mrow>	RHS	\amp =  t^5 - \frac{1}{t} \cdot\frac{dM}{dt} + 1	</mrow>
-					<mrow>	\amp = t^5 - \frac{1}{t} \cdot\frac{d}{dt}\left( \frac{1}{3}t^{7} - \frac{1}{2}t^2 + Ct^4 \right) + 1	</mrow>
-					<mrow>	\amp = t^5 - \frac{1}{t} \cdot \left( \frac{7}{3}t^{6} - t + 4Ct^3 \right) + 1	</mrow>
-					<mrow>	\amp = t^5 -\frac{7}{3}t^{5} +1 - 4Ct^2 + 1	</mrow>
-					<mrow>	\amp = -\frac{4}{3}t^5 + 2 - 4Ct^2	</mrow>
-					<mrow>	\amp = LHS	</mrow>
-				</md>
-			</p>
-		</solution>
-	</example>
-
-	<example xml:id="example-if-examples-02">
-		<p>
-			Solve the following initial value problem.
-			<me>A = \sec\theta A' - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}, \hspace{1cm} A(0) = -\frac{1}{2}</me>
-		</p>
-
-		<solution>
-			<p>
-				As always, we begin by identifying the independent and dependent variables
-				and classifying the DE.
-				<ul>
-					<li>  independent variable:  <m>\theta</m>	</li>
-					<li>  dependent variable:  <m>A</m>	</li>
-					<li>  order:  first order	</li>
-					<li>  linearity:  linear	</li>
-					<li>  goal:  solve for the unknown function <m>A(\theta)</m>	</li>
-				</ul>
-			</p>
-
-			<p>
-				Since this DE is first order and linear, we can use the integrating factor technique.
-				We begin to put the DE in <em> standard form</em> for this technique by getting
-				the dependent variable and its derivative on the left hand side of the equals sign.
-				<md>
-					<mrow>	A	\amp = \sec\theta A' - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	-\sec\theta A' + A	\amp =  - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-				</md>
-			</p>
-
-			<p>
-				Next we want to make the coefficient on the <m>A'</m> term equal to 1.  We can divide by
-				<m>-\sec \theta</m>, which is equivalent to multiplying by <m>-\cos \theta.</m>
-				<men xml:id="this_st_form"> A' - \cos\theta A	=  \theta e^{\theta^2 + \sin\theta}</men>
-			</p>
-
-			<p>
-				Now we can identify the function <m>P(\theta)</m>, which consists of whatever is attached to the dependent
-				variable <m>A</m> by multiplication.  In this case, <m>P(\theta) = - \cos \theta</m>.  Then we find <m>z</m> as follows.
-				<me>z = e^{\int P(\theta) d\theta} = e^{\int -\cos \theta d\theta} = e^{-\sin \theta}</me>
-			</p>
-
-			<p>
-				(As before, we need only one integrating factor <m>z</m>, so we omit the <m>+C</m> we normally see when we	evaluate an indefinite integral).
-			</p>
-
-			<p>
-				Once we have identified our integrating factor, we can multiply both sides of the DE in its standard form (as in equation (<xref ref="this_st_form" />)) by the function <m>z</m>.
-				<md>
-					<mrow>	e^{-\sin \theta}A' - \cos\theta e^{-\sin \theta}A	\amp =  \theta e^{\theta^2 + \sin\theta}e^{-\sin \theta}	</mrow>
-					<mrow>									\amp =  \theta e^{\theta^2 + \sin\theta-\sin \theta}	</mrow>
-					<mrow>									\amp = \theta e^{\theta^2}	</mrow>
-				</md>
-			</p>
-
-			<p>
-				If we have correctly determined the integrating factor <m>z</m>, we should be able to un-do the product
-				rule on the left hand side.  We can identify the functions <m>f</m> and <m>g</m> below:
-				<me>\underbrace{e^{-\sin \theta}}_{\scriptsize f}\cdot \underbrace{A'}_{\scriptsize g'}
-					+ \underbrace{- \cos\theta e^{-\sin \theta}}_{\scriptsize f'}\cdot \underbrace{A}_{\scriptsize g}
-						= \theta e^{\theta^2}.</me>
-			</p>
-
-			<p>
-				It is critical that you verify that the function <m>z</m> does, in fact, create a situation
-				where we see a function <m>f</m> and its derivative <m>f'</m> as shown above.  In this case,
-				<md>
-					<mrow>	f'(t)	\amp = \frac{d}{dt} \Big(f(t)\Big)	</mrow>
-					<mrow>				\amp = \frac{d}{dt}\Big( e^{-\sin \theta} \Big)	</mrow>
-					<mrow>				\amp = e^{-\sin \theta} \cdot \frac{d}{dt}\Big( -\sin\theta \Big)	</mrow>
-					<mrow>				\amp = e^{-\sin \theta} \cdot \Big( -\cos\theta \Big)	</mrow>
-					<mrow>				\amp = -\cos\theta e^{-\sin \theta},	</mrow>
-				</md>
-				so we can confirm that we have correctly identified the functions <m>f</m> and <m>g</m> to un-do
-				the product rule.  This, we can re-write the left hand side of the equation as follows.
-				<me>\frac{d}{dt}\Big( e^{-\sin \theta}\cdot A \Big) = \theta e^{\theta^2}.</me>
-			</p>
-
-			<p>
-				Our goal is to solve for <m>A</m>.  Since it is currently inside the derivative, we will integrate
-				both sides of the equation.
-				<md>
-					<mrow>	\int \frac{d}{dt}\Big( e^{-\sin \theta}\cdot A \Big) d\theta	\amp = \int \theta e^{\theta^2} d\theta	</mrow>
-					<mrow>						e^{-\sin \theta}\cdot A	\amp =  \int \theta e^{\theta^2} d\theta	</mrow>
-				</md>
-			</p>
-
-			<p>
-				In order to evaluate the integral on the right hand side, we can make the substitution
-				<m>u = \theta^2</m>, which means that <m>du = 2\theta d\theta</m>, or equivalently <m>\frac{1}{2}du = \theta d\theta</m>.
-				<md>
-					<mrow>	e^{-\sin \theta}\cdot A	\amp =  \int  \underbrace{e^{\theta^2}}_{\scriptsize e^u} \underbrace{\theta d\theta}_{\scriptsize \frac{1}{2}du}	</mrow>
-					<mrow>					\amp = \int \frac{1}{2}e^u du	</mrow>
-					<mrow>					\amp = \frac{1}{2}e^u + C	</mrow>
-					<mrow>					\amp = \frac{1}{2}e^{\theta^2} + C	</mrow>
-				</md>
-			</p>
-
-			<p>
-				Now we can solve for <m>A</m>.
-				<md>
-					<mrow>	A	\amp = \frac{1}{2}\frac{e^{\theta^2}}{e^{-\sin \theta}} + \frac{C}{e^{- \sin \theta}}	</mrow>
-					<mrow>				\amp = \frac{1}{2}e^{\theta^2 + \sin \theta} + Ce^{\sin \theta}	</mrow>
-				</md>
-			</p>
-
-			<p>
-				Finally, we need to apply the initial condition we are provided so that we can determine the constant <m>C</m>.
-				<md>
-					<mrow>	-\frac{1}{2}	\amp = A(0)	</mrow>
-					<mrow>			\amp = \frac{1}{2}e^{0^2 + \sin(0)} + Ce^{\sin(0)}	</mrow>
-					<mrow>			\amp = \frac{1}{2}e^0 + Ce^0	</mrow>
-					<mrow>			\amp = \frac{1}{2} + C	</mrow>
-					<mrow>		-1	\amp = C	</mrow>
-				</md>
-			</p>
-
-			<p>
-				We can then write the particular solution to the initial value problem.
-				<me>A = \frac{1}{2}e^{\theta^2 + \sin \theta} - e^{\sin \theta}</me>
-			</p>
-
-			<p>
-				As usual, we can check our answer by substituting back into the original DE.  While this step is
-				not required, it is always a good idea to check and we include the details here.
-				<md>
-					<mrow>	LHS	\amp = A	</mrow>
-					<mrow>	\amp = \frac{1}{2}e^{\theta^2 + \sin \theta} - e^{\sin \theta}	</mrow>
-				</md>
-
-				<md>
-					<mrow>	RHS	\amp = \sec\theta A' - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \sec\theta\cdot \frac{d}{d\theta}\left( \frac{1}{2}e^{\theta^2 + \sin \theta} - e^{\sin \theta} \right) - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \sec\theta\cdot \left[ \frac{1}{2}e^{\theta^2 + \sin \theta}\cdot\frac{d}{d\theta}\left( \theta^2 + \sin \theta \right) 	</mrow>
-					<mrow>				- e^{\sin\theta} \cdot \frac{d}{d\theta}\left( \sin \theta \right) \right]
-									- \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \sec\theta\cdot \left[ \theta e^{\theta^2 + \sin \theta} + \frac{1}{2}\cos \theta e^{\theta^2 + \sin \theta}
-									- \cos \theta e^{\sin\theta} \right]
-									- \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \frac{1}{\cos\theta}\cdot \left[ \theta e^{\theta^2 + \sin \theta} + \frac{1}{2}\cos \theta e^{\theta^2 + \sin \theta}
-									- \cos \theta e^{\sin\theta} \right]
-									- \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \frac{\theta e^{\theta^2 + \sin \theta}}{\cos\theta} + \frac{1}{2}e^{\theta^2 + \sin \theta}
-									- e^{\sin\theta}
-									- \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	</mrow>
-					<mrow>	\amp = \frac{1}{2}e^{\theta^2 + \sin \theta} - e^{\sin\theta}	</mrow>
-					<mrow>	\amp = LHS	</mrow>
-				</md>
-			</p>
-		</solution>
-	</example>
+	
 
 	<xi:include href="./c2-s3-ss3-interactives.ptx" />
 
