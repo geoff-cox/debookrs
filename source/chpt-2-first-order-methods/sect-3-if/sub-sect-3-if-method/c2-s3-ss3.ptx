@@ -39,16 +39,16 @@
 			<sidebyside>
 				<p>
 					<me> 
-						y' + x^2 y = 5x^2 
+						\us{\text{product rule?}}{\ub{y' + x^2 y}} = 5x^2 
 					</me>,
 				</p>
 				<p>
 					<me> 
-						y' + P(x)y = Q(x) 
+						\us{\text{product rule?}}{\ub{y' + P(x)y}} = Q(x) 
 					</me>.
 				</p>
 			</sidebyside>
-			Our goal is to rewrite the left side as a single derivative <m>\left(\left[ f \cdot g \right]'\right)</m> using the <xref ref="if-product-rule" text="custom">backward product rule</xref>. However, this is impossible in its current form, so we need to multiply by a factor that will make it possible. We call this factor <m>\mu</m>.
+			We would like to rewrite the left side as a single derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>. However, the <m>y'</m> alone suggests there is a missing second function that the product rule needs. Maybe there is a function that we can multiply both sides of the equation by to get the desired product rule. Let's call it <m>\mu</m> for now and see if we can find it. We start by multiplying both sides by <m>\mu</m>:
 			<sidebyside>
 				<p>
 					<me> 
@@ -62,7 +62,7 @@
 				</p>
 			</sidebyside>
 
-			Look at the first term, <m>\mu y'</m>. It is almost the product rule <m>\left[ \mu y \right]'</m>, but the second term should be <m>\mu' y</m>. Let's take a closer look.
+			Notice that the left side almost looks like the product rule <m>\left[ \mu y \right]' = \mu y' + \mu' y</m>, except for the boxed value where <m>\mu'</m> should be (see below).
 
 			<sidebyside>
 				<p>
@@ -85,7 +85,7 @@
 				</p>
 			</sidebyside>
 
-			Notice that the product rule requires that the boxed functions be <m>\mu'</m>. We must choose <m>\mu</m> so that its derivative is <m>3x^2 \mu</m> (left) or <m>P(x) \mu</m> (right). Amazingly, we just found a separable differential equation hiding inside the original equation. We can solve:
+			This shows that the <m>\mu</m> that works is the one that satisfies
 			<sidebyside>
 				<p>
 				<me> 
@@ -99,7 +99,7 @@
 				</p>
 			</sidebyside>
 
-			for <m>\mu</m> using separation of variables. Let's do it:
+			Careful inspection shows that these are separable differential equations where the unknown <m>\mu</m> can be found using separation of variables!
 
 			<sidebyside>
 				<p>
@@ -113,14 +113,14 @@
 				</p>
 				<p>
 					<md>
-						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx		</mrow>
-						<mrow>				\ln|\mu|	\amp = \int P(x) dx			</mrow>
-						<mrow>						\mu	\amp = \pm e^{\int P(x) dx}	</mrow>
+						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	</mrow>
+						<mrow>				\ln|\mu|	\amp = \int P(x)\ dx		</mrow>
+						<mrow>						\mu	\amp = e^{\int P(x)\ dx}	</mrow>
 					</md>
 				</p>
 			</sidebyside>
 
-			We only need one integrating factor, so we can choose <m>C = 1</m> (left) and drop the <m>\pm</m> (right). By finding the missing piece to write the left side of each DE as a single derivative, we have completed step 1.
+			Although the solution conatains a constant, we only need one function that works, so we set <m>C = 1</m>. The function <m>\mu</m> is called the <em>integrating factor</em> and finding it is the first step toward solving a first order differential equation.
 		</p>
 
 		<assemblage xml:id="integrating-factor"><title> The Integrating Factor </title>
@@ -129,34 +129,32 @@
 			</p>
 			<p>
 				<me> y' + P(x)y = Q(x) </me>
-				is given by	<m>\ds \mu = e^{\int P(x) dx} </m>.
+				is given by	<m>\ds \mu = e^{\int P(x)\ dx} </m> and represents the function, when multiplied onto both sides of the equation, needed to write the left side as a derivative.
 			</p>
 		</assemblage>
 	</paragraphs>
 
 	<paragraphs><title> Step 2: Rewriting the Equation </title>
 	
-		<p>
-			With the integrating factor in hand, we are now ready to write the left side as a single derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>.
-			<sidebyside>
-				<p>
-					Integrating Factor: <m>\mu = e^{x^3}</m>
-					<md>
-						<mrow>					y' + x^2 y	=\ \amp 5x^2		</mrow>
-						<mrow>	e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	</mrow>
-						<mrow>	\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	</mrow>
-					</md>
-				</p>
-				<p>
-					Integrating Factor: <m>\mu = e^{\int P(x) dx}</m>
-					<md>
-						<mrow>				y' + P(x)y	=\ \amp Q(x)		</mrow>
-						<mrow>		\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	</mrow>
-						<mrow>	\left[ \mu y \right]'	=\ \amp Q(x) \mu	</mrow>
-					</md>.
-				</p>
-			</sidebyside>
-		</p>
+		With the integrating factor in hand, we are ready to write the left side as a derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>.
+		<sidebyside>
+			<p>
+				Integrating Factor: <m>\mu = e^{x^3}</m>
+				<md>
+					<mrow>					y' + x^2 y	=\ \amp 5x^2		</mrow>
+					<mrow>	e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	</mrow>
+					<mrow>	\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	</mrow>
+				</md>
+			</p>
+			<p>
+				Integrating Factor: <m>\mu = e^{\int P(x)\ dx}</m>
+				<md>
+					<mrow>				y' + P(x)y	=\ \amp Q(x)		</mrow>
+					<mrow>		\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	</mrow>
+					<mrow>	\left[ \mu y \right]'	=\ \amp Q(x) \mu	</mrow>
+				</md>.
+			</p>
+		</sidebyside>
 	</paragraphs>
 
 	<paragraphs><title> Step 3: Solving the Equation </title>
@@ -179,7 +177,7 @@
 					<mrow>							\mu y	=\ \amp \int Q(x) \mu \ dx					</mrow>
 					<mrow>								y	=\ \amp \frac{1}{\mu} \int Q(x) \mu \ dx	</mrow>
 				</md>
-				where <m>\mu = e^{\int P(x) dx}</m>.
+				where <m>\mu = e^{\int P(x)\ dx}</m>.
 			</p>
 		</sidebyside>
 
@@ -195,7 +193,7 @@
 					is given by	
 					<me>
 						y = \frac{1}{\mu} \int Q(x) \mu \ dx 
-					</me> where <m>\mu = e^{\int P(x) dx}</m> is the integrating factor.
+					</me> where <m>\mu = e^{\int P(x)\ dx}</m> is the integrating factor.
 				</p>
 			</assemblage>
 		</p>
