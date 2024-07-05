@@ -1,0 +1,208 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method </title>
+
+	<p>
+		The integrating factor method uses a three-step strategy to solve first-order linear differential equations in the <em>standard form</em>:
+		<fn>
+			<p>
+				Every linear differential equation looks like
+				<me> 
+					a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
+				</me>.
+				The first-order version of this is
+				<me> 
+					a_1(x)y' + a_0(x)y = f(x)
+				</me>,
+				but we can divide both sides of this equation by <m>a_1(x)</m>:
+				<me>
+					y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y = \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}
+				</me>.
+				Since every first-order linear differential equation can always be written as
+				<me> 
+					y' + P(x)y = Q(x) 
+				</me>,
+				we call this the first-order linear <em>standard form</em>.
+			</p>
+		</fn>
+		<men xml:id="if-standard-form"> 
+			y' + P(x)y = Q(x)
+		</men>.
+		The heart of this method is the first step: finding the correct integrating factor. The second step uses this factor to write the left side as a single derivative. Finally, the last step finds the solution by <xref ref="direct-integration" text="custom">direct integration</xref>.
+	</p>
+
+	<paragraphs><title> Step 1: Finding the Integrating Factor </title>
+	
+		<p>
+			Understanding how to find the integrating factor is crucial. Let's carefully walk through this important process.
+		</p>
+		<p>
+			Consider the differential equations (specific on the left, general on the right):
+			<sidebyside>
+				<p>
+					<me> 
+						\us{\text{product rule?}}{\ub{y' + x^2 y}} = 5x^2 
+					</me>,
+				</p>
+				<p>
+					<me> 
+						\us{\text{product rule?}}{\ub{y' + P(x)y}} = Q(x) 
+					</me>.
+				</p>
+			</sidebyside>
+			We would like to rewrite the left side as a single derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>. However, the <m>y'</m> alone suggests there is a missing second function that the product rule needs. Maybe there is a function that we can multiply both sides of the equation by to get the desired product rule. Let's call it <m>\mu</m> for now and see if we can find it. We start by multiplying both sides by <m>\mu</m>:
+			<sidebyside>
+				<p>
+					<me> 
+						\mu y' + 3x^2 \mu y = 5x^2\mu 
+					</me>.
+				</p>
+				<p>
+					<me> 
+						\mu y' + P(x)\mu y = Q(x)\mu 
+					</me>.
+				</p>
+			</sidebyside>
+
+			Notice that the left side almost looks like the product rule <m>\left[ \mu y \right]' = \mu y' + \mu' y</m>, except for the boxed value where <m>\mu'</m> should be (see below).
+
+			<sidebyside>
+				<p>
+					<me> 
+						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\fbox{\(3x^2 \mu\)}}}}	\cdot 
+						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+						5x^2\mu 
+					</me>,
+				</p>
+				<p>
+					<me> 
+						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\fbox{\(P(x) \mu\)}}}}	\cdot 
+						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+						Q(x)\mu 
+					</me>.
+				</p>
+			</sidebyside>
+
+			This shows that the <m>\mu</m> that works is the one that satisfies
+			<sidebyside>
+				<p>
+					<me> 
+						\mu' = 3x^2 \mu
+					</me>
+				</p>
+				<p>
+					<me> 
+						\mu' = P(x) \mu
+					</me>.
+				</p>
+			</sidebyside>
+
+			Careful inspection shows that these are separable differential equations where the unknown <m>\mu</m> can be found using separation of variables!
+
+			<sidebyside>
+				<p>
+					<md>
+						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int 3x^2\ dx										</mrow>
+						<mrow>				\ln|\mu|	\amp = x^3 + C												</mrow>
+						<mrow>						\mu	\amp = \pm e^{x^3 + C}										</mrow>
+						<mrow>						\mu	\amp = {\color{green} \us{C}{\fbox{\(\pm e^C\)}}} e^{x^3}	</mrow>
+						<mrow>						\mu	\amp = Ce^{x^3}												</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	</mrow>
+						<mrow>				\ln|\mu|	\amp = \int P(x)\ dx		</mrow>
+						<mrow>						\mu	\amp = e^{\int P(x)\ dx}	</mrow>
+					</md>
+				</p>
+			</sidebyside>
+
+			Although the solution conatains a constant, we only need one function that works, so we set <m>C = 1</m>. The function <m>\mu</m> is called the <em>integrating factor</em> and finding it is the first step toward solving a first order differential equation.
+		</p>
+
+		<assemblage xml:id="integrating-factor"><title> The Integrating Factor </title>
+			<p>
+				The <term>integrating factor</term> for the first-order linear differential equation
+			</p>
+			<p>
+				<me> y' + P(x)y = Q(x) </me>
+				is given by	<m>\ds \mu = e^{\int P(x)\ dx} </m> and represents the function, when multiplied onto both sides of the equation, needed to write the left side as a derivative.
+			</p>
+		</assemblage>
+	</paragraphs>
+
+	<paragraphs><title> Step 2: Rewriting the Equation </title>
+	
+		With the integrating factor in hand, we are ready to write the left side as a derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>.
+		<sidebyside>
+			<p>
+				Integrating Factor: <m>\mu = e^{x^3}</m>
+				<md>
+					<mrow>					y' + x^2 y	=\ \amp 5x^2		</mrow>
+					<mrow>	e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	</mrow>
+					<mrow>	\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	</mrow>
+				</md>
+			</p>
+			<p>
+				Integrating Factor: <m>\mu = e^{\int P(x)\ dx}</m>
+				<md>
+					<mrow>				y' + P(x)y	=\ \amp Q(x)		</mrow>
+					<mrow>		\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	</mrow>
+					<mrow>	\left[ \mu y \right]'	=\ \amp Q(x) \mu	</mrow>
+				</md>.
+			</p>
+		</sidebyside>
+	</paragraphs>
+
+	<paragraphs><title> Step 3: Solving the Equation </title>
+	
+		<p>
+			The final step is to apply <xref ref="direct-integration" text="custom">direct integration</xref>. This was covered in a previous section, so we will skip some of the details here.
+		</p>
+
+		<sidebyside widths="50% 38%">
+			<p>
+				<md>
+					<mrow>	\int \left[ e^{x^3}y \right]' \ dx	=\ \amp \int 5x^2e^{x^3} \ dx	</mrow>
+					<mrow>							e^{x^3}y	=\ \amp \frac{5}{3} e^{x^3} + C	</mrow>
+					<mrow>									y	=\ \amp \frac{5}{3} + Ce^{-x^3}	</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow>	\int \left[ \mu y \right]' \ dx	=\ \amp \int Q(x) \mu \ dx					</mrow>
+					<mrow>							\mu y	=\ \amp \int Q(x) \mu \ dx					</mrow>
+					<mrow>								y	=\ \amp \frac{1}{\mu} \int Q(x) \mu \ dx	</mrow>
+				</md>
+				where <m>\mu = e^{\int P(x)\ dx}</m>.
+			</p>
+		</sidebyside>
+
+		<p>
+			<assemblage xml:id="integrating-factor-general-solution"><title> General Solution </title>
+				<p>
+					The general solution for the first-order linear differential equation
+				</p>
+				<p>
+					<me> 
+						y' + P(x)y = Q(x) 
+					</me>
+					is given by	
+					<me>
+						y = \frac{1}{\mu} \int Q(x) \mu \ dx 
+					</me> where <m>\mu = e^{\int P(x)\ dx}</m> is the integrating factor.
+				</p>
+			</assemblage>
+		</p>
+	</paragraphs>
+
+	<p>
+		In summary, the integrating factor method is a three-step process that utilizes the integrating factor to rewrite the left side of the equation, enabling direct integration and leading to the general solution.
+	</p>
+
+	<xi:include href="./c2-s3-ss3-interactives.ptx" />
+	
+</subsection>
