@@ -1,57 +1,52 @@
 import os
-import sqlite3
+import shutil
 import xml.etree.ElementTree as ET
 
-# Function to scan directory and create/update the database
-def scan_directory(base_path, db_path):
-    # Connect to the database
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
+# Register namespaces
+ET.register_namespace('xi', 'http://www.w3.org/2001/XInclude')
 
-    # Create table if not exists
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS file_structure (
-            id INTEGER PRIMARY KEY,
-            path TEXT UNIQUE,
-            parent_id INTEGER,
-            FOREIGN KEY(parent_id) REFERENCES file_structure(id)
-        )
-    ''')
-
-    # Function to recursively scan directory and update database
-    def scan_and_update(current_path, parent_id=None):
-        for entry in os.listdir(current_path):
-            full_path = os.path.join(current_path, entry)
-            if os.path.isdir(full_path):
-                cursor.execute('INSERT OR IGNORE INTO file_structure (path, parent_id) VALUES (?, ?)', (full_path, parent_id))
-                new_parent_id = cursor.lastrowid if cursor.lastrowid else cursor.execute('SELECT id FROM file_structure WHERE path = ?', (full_path,)).fetchone()[0]
-                scan_and_update(full_path, new_parent_id)
-            else:
-                cursor.execute('INSERT OR IGNORE INTO file_structure (path, parent_id) VALUES (?, ?)', (full_path, parent_id))
+# Function to parse the main-focus.ptx file to determine the directory structure
+def parse_main_focus(file_path, source_base):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
     
-    # Start scanning from the base path
-    scan_and_update(base_path)
-    conn.commit()
-    conn.close()
+    paths = []
+    def extract_paths(element, base_path=source_base):
+        for child in element:
+            if 'href' in child.attrib:
+                href = child.attrib['href']
+                paths.append(os.path.normpath(os.path.join(base_path, href)))
+            extract_paths(child, base_path)
+    
+    extract_paths(root)
+    return paths
 
-# Function to detect changes in directory structure
-def detect_changes(base_path, db_path):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
+# Function to detect changes between old and new structures
+def detect_specific_changes(old_structure, new_structure):
+    changes = []
+    old_set = set(old_structure)
+    new_set = set(new_structure)
 
-    current_structure = []
-    for root, dirs, files in os.walk(base_path):
-        for name in dirs + files:
-            current_structure.append(os.path.join(root, name))
+    removed = old_set - new_set
+    added = new_set - old_set
 
-    cursor.execute('SELECT path FROM file_structure')
-    db_structure = [row[0] for row in cursor.fetchall()]
+    for old_path in removed:
+        old_name, old_ext = os.path.splitext(os.path.basename(old_path))
+        possible_matches = [new_path for new_path in added if os.path.splitext(os.path.basename(new_path))[0] == old_name]
+        for new_path in possible_matches:
+            changes.append((old_path, new_path))
+            added.remove(new_path)
+            break
 
-    added = set(current_structure) - set(db_structure)
-    removed = set(db_structure) - set(current_structure)
+    for old_path in removed:
+        old_dir = os.path.dirname(old_path)
+        possible_matches = [new_path for new_path in added if os.path.dirname(new_path) == old_dir]
+        for new_path in possible_matches:
+            changes.append((old_path, new_path))
+            added.remove(new_path)
+            break
 
-    conn.close()
-    return added, removed
+    return changes
 
 # Function to update references in XML files
 def update_references(base_path, changes):
@@ -59,53 +54,102 @@ def update_references(base_path, changes):
         for file in files:
             if file.endswith('.ptx'):
                 file_path = os.path.join(root, file)
-                tree = ET.parse(file_path)
-                root_element = tree.getroot()
-                updated = False
-                for elem in root_element.iter():
-                    if elem.tag == '{http://www.w3.org/2001/XInclude}include':
-                        href = elem.attrib.get('href', '')
-                        for old, new in changes:
-                            if old in href:
-                                elem.attrib['href'] = href.replace(old, new)
-                                updated = True
-                if updated:
-                    tree.write(file_path)
+                try:
+                    tree = ET.parse(file_path)
+                    root_element = tree.getroot()
+                    updated = False
+                    for elem in root_element.iter():
+                        if 'href' in elem.attrib:
+                            href = elem.attrib['href']
+                            for old, new in changes:
+                                old_name, old_ext = os.path.splitext(os.path.basename(old))
+                                new_name, new_ext = os.path.splitext(os.path.basename(new))
+                                if old_name in href:
+                                    elem.attrib['href'] = href.replace(old_name, new_name)
+                                    elem.tag = '{http://www.w3.org/2001/XInclude}include'  # Ensure the tag is correct
+                                    updated = True
+                    if updated:
+                        tree.write(file_path)
+                except ET.ParseError as e:
+                    print(f"Error parsing {file_path}: {e}")
+
+# Function to rename files and folders
+def rename_files_and_folders(base_path, changes):
+    def rename_path(old, new):
+        old_path = os.path.abspath(old)
+        new_path = os.path.abspath(new)
+        print(f"Attempting to rename: {old_path} -> {new_path}")
+        if os.path.exists(old_path):
+            if os.path.isdir(old_path):
+                if not os.path.exists(new_path):
+                    os.makedirs(new_path)
+                for item in os.listdir(old_path):
+                    old_item_path = os.path.join(old_path, item)
+                    new_item_path = os.path.join(new_path, item.replace(old_name, new_name))
+                    rename_path(old_item_path, new_item_path)
+                shutil.rmtree(old_path)
+            else:
+                new_dir = os.path.dirname(new_path)
+                if not os.path.exists(new_dir):
+                    os.makedirs(new_dir)
+                shutil.move(old_path, new_path)
+            print(f"Successfully renamed: {old_path} -> {new_path}")
+        else:
+            print(f"Error: {old_path} does not exist.")
+
+    # Rename initial changes
+    for old, new in changes:
+        old_name, old_ext = os.path.splitext(os.path.basename(old))
+        new_name, new_ext = os.path.splitext(os.path.basename(new))
+        rename_path(old, new)
+
+    # Rename any additional files containing the changed names
+    for root, _, files in os.walk(base_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            for old, new in changes:
+                old_name, old_ext = os.path.splitext(os.path.basename(old))
+                new_name, new_ext = os.path.splitext(os.path.basename(new))
+                if old_name in file:
+                    new_file_path = file_path.replace(old_name, new_name)
+                    rename_path(file_path, new_file_path)
 
 # Main function to execute the script
-def main(base_path, db_path):
-    if not os.path.exists(db_path):
-        scan_directory(base_path, db_path)
+def main(base_path, main_focus_file):
+    old_main_focus_file = main_focus_file + '.old'
+    source_base = os.path.join(base_path, 'source')
+    
+    # Save the current main-focus.ptx as the old version if it doesn't exist
+    if not os.path.exists(old_main_focus_file):
+        shutil.copy2(main_focus_file, old_main_focus_file)
+    
+    # Parse the old and new main-focus files to get the structures
+    old_structure = parse_main_focus(old_main_focus_file, source_base)
+    new_structure = parse_main_focus(main_focus_file, source_base)
+    
+    # Detect specific changes between old and new structures
+    specific_changes = detect_specific_changes(old_structure, new_structure)
+
+    if specific_changes:
+        print("Detected changes:")
+        for old, new in specific_changes:
+            print(f"  {old} -> {new}")
+
+        # Confirm changes
+        confirm = input("Do you want to apply these changes? (yes/no): ").strip().lower()
+        if confirm == 'yes':
+            update_references(source_base, specific_changes)
+            rename_files_and_folders(source_base, specific_changes)
+            print("References and file names updated successfully.")
+            # Update the old main-focus file to the current one for future comparisons
+            shutil.copy2(main_focus_file, old_main_focus_file)
+        else:
+            print("No changes applied.")
     else:
-        added, removed = detect_changes(base_path, db_path)
-        changes = []
-
-        if added or removed:
-            print("Detected changes in the directory structure:")
-            if added:
-                print("Added:")
-                for item in added:
-                    print(f"  {item}")
-            if removed:
-                print("Removed:")
-                for item in removed:
-                    print(f"  {item}")
-
-            # Assuming changes are renames or moves
-            for item in removed:
-                new_name = input(f"Enter new name or path for '{item}' if it was renamed or moved (leave empty if not applicable): ").strip()
-                if new_name:
-                    changes.append((item, new_name))
-
-            # Confirm changes
-            if changes:
-                confirm = input("Do you want to apply these changes? (yes/no): ").strip().lower()
-                if confirm == 'yes':
-                    update_references(base_path, changes)
-                    scan_directory(base_path, db_path)  # Update the database with the new structure
+        print("No changes detected in the directory structure.")
 
 # Example usage
-base_path = 'path/to/book_directory'  # Replace with the path to the book's directory
-db_path = 'file_structure.db'
+base_path = '/home/gcox/runestone/books/debookrs'  # Replace with the path to the book's directory
+main_focus_file = '/home/gcox/runestone/books/debookrs/source/main-focus.ptx'  # Replace with the path to the main-focus.ptx file
 
-main(base_path, db_path)
+main(base_path, main_focus_file)
