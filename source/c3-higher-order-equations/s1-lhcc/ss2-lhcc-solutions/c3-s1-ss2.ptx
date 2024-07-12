@@ -1,23 +1,19 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> LHCC Solutions </title>
-	
+
 	<p>
-		Our goal is to eventually be able to solve the new class of <xref ref="def-lhcc" text="custom">LHCC equations</xref>. However, we need to to develop some inituition as to what kind of solutions to expect, which we will cover here.
+		Our goal is to solve a new class of <xref ref="def-lhcc" text="custom">LHCC equations</xref>. Before diving into solutions, let's develop some intuition about the nature of these solutions.
 	</p>
 
 	<p>
-		To begin, think back to your calculus class and try to think of a function whose derivative is itself? If you remembered <m>e^x</m>, you are correct and if you think about it, this question can also be rephrased as a differential equation. Specifically, find the function <m>y</m> such that the derivative of <m>y</m> is <m>y</m>, or
+		Recall from calculus the function whose derivative is itself. If you thought of <m>e^x</m>, you are correct! This idea can be framed as a differential equation: find the function <m>y</m> such that the derivative of <m>y</m> is <m>y</m>. In other words, solve the LHCC equation
 		<me>
-			y' = y.
+			y' = y \quad \text{or} \quad y' - y = 0.
 		</me>
-		As mentioned already, <m>y=e^x</m> is the answer, but it is not hard to verify that <m>y = c e^x</m> is too. Let's go a bit further and try to think of a function whose derivative is a multiple of itself, say <m>3y</m>. A little thought may lead you to <m>y = e^{3x}</m> because of the chain rule, but if it didn't, you could solve the equation
-		<me>
-			y' = 3y
-		</me>
-		using separation of variables to get the general solutoin, <m>y = c e^{3x}</m>.
+		The solution is <m>y = e^x</m>, but it's also true that <m>y = c e^x</m> for any constant <m>c</m>. Now, consider a function whose derivative is a multiple of itself, say <m>3y</m>. You might think of <m>y = e^{3x}</m>, which follows from the chain rule. If this isn't obvious, you can solve the equation <m>y' = 3y</m> using separation of variables to find the general solution <m>y = c e^{3x}</m>.
 	</p>
 
 	<p>
-		The point of this discussion is to lead you to the following important concept: 
+		This leads us to an important concept:
 		<assemblage><title> Property of the Exponential Function </title>
 			<p>
 				<ul marker="square">
@@ -28,23 +24,93 @@
 					</li>
 					<li>
 						<p>
-							<m>e^{rx}</m> and its derivatives are <q>like terms</q> that can be <em>combined/simplified.</em>
+							<m>e^{rx}</m> and its derivatives are <q>like terms</q> that can be combined.
 						</p>
 					</li>
 				</ul>
 			</p>
 		</assemblage>
-		Consequently, all other functions are fundamentally changed by differentiation and do not result in <q>like terms</q> that can be combined or simplified in the same way. For example, the derivative of <m>x^8</m> is <m>8x^7</m>, which cannot be combined or simplified. However, <m>e^{3x}</m> and its derivative <m>3e^{3x}</m>, can be added together to give <m>e^{3x} + 3e^{3x} = 4e^{3x}</m>.
+		Most functions change fundamentally when differentiated and do not yield <q>like terms</q> that can be combined. For example, the derivative of <m>x^8</m> is <m>8x^7</m>, which cannot be combined or simplified in the same way. However, <m>e^{3x}</m> and its derivative <m>3e^{3x}</m> can be added together as <m>e^{3x} + 3e^{3x} = 4e^{3x}</m>.
 	</p>
 
-	<p> 
-		This brings us back to the LHCC equation, which has the form
+	<p>
+		Going back to the LHCC equation,
 		<men xml:id="lhcc-equation-like-terms">
-			\us{\text{must sum to } 0 \text{ after plugging in } y}{\ub{
+			\us{\text{must sum to } 0 \text{ after substituting } y}{\ub{
 				a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y
 			}}	= 0
-		</men>.
-		The right side of the equation is zero, which means the left side must sum to zero after plugging in <m>y</m>. This can only happen if the solution, <m>y</m>, and its derivatives combine to cancel each other out. As discussed, the only functions that can be combined like this are <m>e^{rx}</m> and its derivatives.
+		</men>,
+		we see the right-hand side is zero, so the left-hand side must sum to zero after substituting <m>y</m>. This can only happen if the solution <m>y</m> and its derivatives combine to cancel each other out. However, the only possible functions that can be substituted for <m>y</m> are ones that contain <m>e^{rx}</m>.
+	</p>
+
+	<p>
+		Let's look at a concrete example to illustrate why <m>e^{rx}</m> simplifies nicely in these equations, while other functions may not.
+	</p>
+
+	<example>
+		<statement>
+			<p>
+				Consider the LHCC equation:
+			</p>
+			<me>
+				y'' + 3y' - 4y = 0.
+			</me>
+			<p>
+				Verify that <m>y = e^{4x}</m> is a solution, but <m>y = x^4</m> and <m>y = \sin(4x)</m> are not.
+			</p>
+		</statement>
+		<solution>
+			<p>
+				Let's check each function:
+			</p>
+			<sidebyside>
+				<p>
+					<md>
+						<mrow> 	[e^{4x}]'' + 3\left[e^{4x}\right]' - 4\left[e^{4x}\right]	\amp= 0	</mrow>
+						<mrow> 	
+							\us{\text{like terms simplify to }0}{\ub{
+								16e^{4x} + 12e^{4x} - 4e^{4x}	
+							}}
+							\amp= 0	
+						</mrow>
+						<mrow> 	0	\amp= 0	\ \ ✅ </mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow> 	[x^4]'' + 3\left[x^4\right]' - 4\left[x^4\right]	\amp= 0	</mrow>
+						<mrow> 	
+							\us{\text{not like terms}}{\ub{
+								24x^2 + 12x^3 - 4x^4	
+							}}
+							\amp= 0	\ \ ❌
+						</mrow>
+					</md>
+				</p>
+			</sidebyside>
+			<p>
+				<md>
+					<mrow> 	[\sin(4x)]'' + 3\left[\sin(4x)\right]' - 4\left[\sin(4x)\right]	\amp= 0	</mrow>
+					<mrow> 	
+						\us{\text{not like terms}}{\ub{
+							-16\sin(4x) + 12\cos(4x) - 4\sin(4x)	
+						}}
+						\amp= 0	\ \ ❌
+					</mrow>
+				</md>
+			</p>
+			<p>
+				Of these three, only <m>y = e^{4x}</m> is a solution.
+			</p>
+		</solution>
+	</example>
+
+	<p>
+		This example shows that <m>e^{rx}</m> is best suited for LHCC equations, but it doesn't tell the whole story. In some cases, if <m>e^{rx}</m> is a solution, then it is possible that <m>xe^{rx}</m> could also be a solution.
+	</p>
+
+	<p>
+		The takeaway from this section should be that solutions to LHCC equations must involve <m>e^{rx}</m>, but not every value of <m>r</m> works. In the next section, we will see that the key to finding the general solution lies in finding the values of <m>r</m> that correspond to solutions.
 	</p>
 
 	<xi:include href="./c3-s1-ss2-interactives.ptx" />
