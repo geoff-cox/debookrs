@@ -19,13 +19,29 @@
 		<md>
 			<mrow> y\  &amp;= C_1 e^{(\alpha + \beta i) x} + C_2 e^{(\alpha - \beta i) x} </mrow>
 			<mrow> &amp;= C_1 e^{\alpha x} e^{i \beta x} + C_2 e^{\alpha x} e^{-i \beta x} </mrow>
-			<mrow> &amp;= e^{\alpha x} (C_1 e^{i \beta x} + C_2 e^{-i \beta x}) </mrow>
-			<mrow> &amp;= e^{\alpha x} (C_1 (\cos(\beta x) + i\sin(\beta x)) + C_2 (\cos(-\beta x) + i\sin(-\beta x))) </mrow>
-			<mrow> &amp;= e^{\alpha x} (C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(-\beta x) + i C_2 \sin(-\beta x)) </mrow>
-			<mrow> &amp;= e^{\alpha x} (C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(\beta x) - i C_2 \sin(\beta x)) </mrow>
-			<mrow> &amp;= e^{\alpha x} ((\us{C_1}{\ub{C_1 + C_2}}) \cos(\beta x) + \us{C_2}{\ub{i (C_1 - C_2)}} \sin(\beta x)) </mrow>
+			<mrow> &amp;= e^{\alpha x} \Big{[}C_1 e^{i \beta x} + C_2 e^{-i \beta x}\Big{]} </mrow>
+			<mrow> &amp;= e^{\alpha x} \Big{[}C_1 (\cos(\beta x) + i\sin(\beta x)) + C_2 (\cos(-\beta x) + i\sin(-\beta x))\Big{]} </mrow>
+			<mrow> &amp;= e^{\alpha x} \Big{[}C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(-\beta x) + i C_2 \sin(-\beta x)\Big{]} </mrow>
+			<mrow> &amp;= e^{\alpha x} \Big{[}C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(\beta x) - i C_2 \sin(\beta x)\Big{]} </mrow>
+			<mrow> &amp;= e^{\alpha x} \Big{[}(\us{C_1}{\ub{C_1 + C_2}}) \cos(\beta x) + \us{C_2}{\ub{i (C_1 - C_2)}} \sin(\beta x)\Big{]} </mrow>
 			<mrow> &amp;= e^{\alpha x} (C_1 \cos(\beta x) + C_2 \sin(\beta x)) </mrow>
 		</md>.
+	</paragraphs>
+
+	<paragraphs xml:id="poly-factor"><title>Polynomial Factoring Calculator</title>
+		<interactive platform="sage" width="93%" aspect_ratio="1:1">
+			<slate surface="sage" height="20">
+				r = var('r')
+				INI_func = 'r^2 - 2*r - 8'
+				@interact
+				def _(ce = input_box(INI_func, label="Characteristic Polynomial:", type=str, width=20)):
+
+					ce_poly = sage_eval('lambda r: ' + ce)
+					pretty_print( html( 'Factored Characteristic Equation:') )
+					pretty_print( html( r'$ %s = 0 $'%latex(ce_poly(r) ) ) )
+					pretty_print( html( r'$ %s = 0 $'%latex(ce_poly(r).factor()) ) )
+			</slate>
+		</interactive>
 	</paragraphs>
 
 </section>

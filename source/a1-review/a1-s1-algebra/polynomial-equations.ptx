@@ -1,0 +1,435 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title>Solving Polynomial Equations</title>
+
+    <p>
+        Higher-degree polynomial equations have the form
+        <md>
+            <mrow> \text{degree 3:} \quad	\amp a\ r^3 + b\ r + c\ r + d = 0,                      </mrow>
+            <mrow> \text{degree 4:} \quad	\amp a\ r^4 + b\ r^3 + c\ r^2 + d\ r + e  = 0,          </mrow>
+            <mrow> \text{degree 5:} \quad	\amp a\ r^5 + b\ r^4 + c\ r^3 + d\ r^2 + e\ r + f = 0,  </mrow>
+            <mrow> 							\amp \vdots                                             </mrow>
+        </md>
+        and it turns out that these equations can always be factored into simpler polynomials. In particular, a polynomial of degree <m>n</m> can always be factored into <m>n</m> linear factors:
+        <md>
+            <mrow> \text{degree 3:} \quad	\amp (r - r_1)(r - r_2)(r - r_3) = 0,                   </mrow>
+            <mrow> \text{degree 4:} \quad	\amp (r - r_1)(r - r_2)(r - r_3)(r - r_4)  = 0,         </mrow>
+            <mrow> \text{degree 5:} \quad	\amp (r - r_1)(r - r_2)(r - r_3)(r - r_4)(r - r_5) = 0, </mrow>
+            <mrow> 							\amp \vdots                                             </mrow>
+        </md>
+        where <m>r_1, r_2, r_3, ...</m> are the solutions and can be real or complex.
+        <fn>This fact is known as the Fundamental Theorem of Algebra.</fn>
+        <fn>
+            <p>
+                A "complex" solution is one that can contain <m>\sqrt{-1}</m> (imaginary part).
+            </p>
+            <p>
+                For example, the equation <m>x^2 = -4</m> has two complex solutions since 
+                <md>
+                    <mrow> x	\amp= \pm \sqrt{-4} 				</mrow>
+                    <mrow>   	\amp= \pm \sqrt{4\cdot -1}			</mrow>
+                    <mrow>   	\amp= \pm \sqrt{4}\cdot \sqrt{-1}	</mrow>
+                    <mrow>   	\amp= \pm 2\ i						</mrow>
+                </md>
+            </p>
+        </fn>
+        While knowing this is powerful, the process of factoring them can be quite challenging. However, there are some special forms and strategies that can help. A few are summarized below.
+    </p>
+
+    <assemblage><title>Techniques for Solving Higher-Degree Polynomials</title>
+        <p>
+            <dl width="narrow">
+                <li xml:id="technique-1"><title>Recognizing Special Forms</title>
+                    <p>
+                        Some polynomials can be factored using special patterns. Common forms include:
+                        <ul>
+                            <li>Common Factoring: <m>ax^n + bx^{n-1} = x^{n-1}(ax + b)</m></li>
+                            <li>Difference of Squares: <m>a^2 - b^2 = (a - b)(a + b)</m></li>
+                            <li>Sum/Difference of Cubes: <m>a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)</m></li>
+                        </ul>
+                        Recognizing these forms can help simplify the factorization process.
+                    </p>
+                </li>
+                <li xml:id="technique-2"><title>Known Factors</title>
+                    <p>
+                        If you know one factor, then you can <q>divide-out</q> the polynomial by this factor. For example, suppose we know that <m>x = 1</m> is a root of the polynomial
+                        <me>
+                            x^3 - 6x^2 + 11x - 6 = 0
+                        </me>.
+                        Then, we know that <m>(x - 1)</m> is a factor, so
+                        <me>
+                            x^3 - 6x^2 + 11x - 6 = (x - 1)p(x)
+                        </me>
+                        where <m>p(x)</m> is some second-degree polynomial you multiply by <m>(x - 1)</m> to get our original polynomial. We can find <m>p(x)</m> by dividing both sides by <m>x - 1</m>, like so
+                        <me>
+                            p(x) = \frac{x^3 - 6x^2 + 11x - 6}{x - 1} \os{<xref ref="poly-div" text="custom">how?</xref>}{=} x^2 - 5x + 6
+                        </me>
+                        Therefore,
+                        <md>
+                            <mrow>x^3 - 6x^2 + 11x - 6  \amp = (x - 1)(x^2 - 5x + 6)</mrow>
+                            <mrow>                      \amp = (x - 1)(x - 2)(x - 3)</mrow>
+                        </md>
+                    </p>
+                </li>
+                <li xml:id="technique-3"><title>Possible Rational Roots</title>
+                    <p>
+                        There is a theorem that tells us potential fractional roots of the polynomial. If <m>r = \frac{p}{q}</m> is a solution, then <m>r</m> must be of the form
+                        <me>
+                            r = \pm \frac{\text{factor of } a_0}{\text{factor of } a_n}
+                        </me>.
+                        This gives us a list of possible solutions to test. For example, if we have the polynomial
+                        <me>
+                            2x^3 - 3x^2 - 11x + 6 = 0
+                        </me>
+                        then the possible factors of <m>a_0 = 6</m> are <m>1, 2, 3, 6</m> and the possible factors of <m>a_n = 2</m> are <m>1, 2</m>. Therefore, the possible fractional solutions are
+                        <me>
+                            \pm \frac{\text{factor of 6}}{\text{factor of 2}} = \pm \frac11, \pm \frac12, \pm \frac21, \pm \frac22, \pm \frac31, \pm \frac32, \pm \frac61, \pm \frac62
+                        </me>
+                        We can test each of these values to find up to 3 solutions. Once we find one, we can use the previous technique to help find more.
+
+                    </p>
+                </li>
+                <li xml:id="technique-4"><title>Use Technology</title>
+                    <p>
+                        Factoring higher-order polynomials can be very difficult to do by and this is one skill that may be better suited for a computer. There are many software packages that can factor polynomials for you. For example, the <a href="https://www.wolframalpha.com/input/?i=factor+x%5E3+-+6x%5E2+%2B+11x+-+6">Wolfram Alpha</a> website will do it with ease.
+                    </p>
+                </li>
+            </dl>
+        </p>
+    </assemblage>
+
+    <example>
+        <statement>
+            <p>
+                Completely factor and solve the following characteristic equations
+                <ol>
+                    <li> <m> 4\ r^2 - 9 = 0 </m> </li>
+                    <li> <m> r^2 - 3 = 0 </m> </li>
+                    <li> <m> r^3 + 3\ r^2 - 4\ r = 0 </m> </li>
+                    <li> <m> r^5 + 10\ r^4 = 0 </m> </li>
+                    <li> <m> r^4 - 100\ r^2 = 0 </m> </li>
+                    <li> <m> r^5 - 4\ r^3 = 0 </m> </li>
+                    <li> <m> r^4 - 32 = 0 </m> </li>
+                </ol>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                The degree of each equation tells you how many factors you should have.
+                <ol>
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> 4\ r^2 - 9 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> (2\ r + 3)(2\ r - 3) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> 2\ r + 3 = 0, \quad 2\ r - 3 = 0 </m></cell>
+                                    <cell><m>\leftarrow</m> set each factor to 0 </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = -\frac32, \quad r_2 = \frac32 </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^2 - 3 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> (r + \sqrt{3})(r - \sqrt{3}) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = -\sqrt{3}, \quad r_2 = \sqrt{3} </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^3 + 3\ r^2 - 4\ r = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> r\ (r^2 + 3\ r - 4) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> common factor </cell>
+                                </row>
+                                <row>
+                                    <cell><m> r\ (r + 4)(r - 1) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> standard quadratic factoring </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = 0, \quad r_2 = -4, \quad r_3 = 1 </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+                    
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^5 + 10\ r^4 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> r^4\ (r + 10) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> common factor </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = 0\ (\text{4 repeats}), \quad r_2 = -10 </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                        <p>
+                            <em> Technically, <m>r^4 = (r-0)^4</m> and represents 4 repeated factors. </em>
+                        </p>
+                    </li>
+
+
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^4 - 100\ r^2 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> r^2\ (r^2 - 100) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> common factor </cell>
+                                </row>
+                                <row>
+                                    <cell><m> r^2\ (r + 10)(r - 10) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = 0\ (\text{2 repeats}), \quad r_2 = -10, \quad r_3 = 10 </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^5 - 4\ r^3 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> r^3\ (r^2  - 4) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> common factor </cell>
+                                </row>
+                                <row>
+                                    <cell><m> r^3\ (r + 2)(r - 2) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = 0\ (\text{3 repeats}), \quad r_2 = -2, \quad r_3 = 2 </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            <tabular>
+                                <row>
+                                    <cell><m> r^4 - 25 = 0 </m></cell>
+                                    <cell/>
+                                </row>
+                                <row>
+                                    <cell><m> (r^2 + 5)(r^2  - 5) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> (r^2 + 5)(r - \sqrt{5})(r + \sqrt{5}) = 0 </m></cell>
+                                    <cell> <m>\leftarrow</m> difference of squares </cell>
+                                </row>
+                                <row>
+                                    <cell><m> r^2 + 5 = 0, \quad r - \sqrt{5} = 0, \quad r + \sqrt{5} = 0 </m></cell>
+                                    <cell><m>\leftarrow</m> set each factor to 0 </cell>
+                                </row>
+                                <row>
+                                    <cell><m> \displaystyle r_1 = -i\sqrt{5}, \quad r_2 = i\sqrt{5}, \quad r_3 = -\sqrt{5}, \quad r_4 = \sqrt{5} </m></cell>
+                                    <cell><m>\leftarrow</m> solutions </cell>
+                                </row>
+                            </tabular>
+                        </p>
+                    </li>
+
+                </ol>
+            </p>
+        </solution>
+    </example>
+
+    <p>
+        An important concept to remember is that any polynomial can be factored into the product of linear factors, allowing for complex solutions. This is known as the Fundamental Theorem of Algebra. However, factoring higher-degree polynomials can sometimes be challenging and may require the use of technology, such as computer algebra systems or graphing calculators, to find complex or irrational roots.
+    </p>
+
+    <p>
+        By combining these techniques, we can solve for the roots of any higher-degree polynomial. Once we have the roots, we can construct the general solution to the higher-order LHCC equation.
+    </p>
+
+    <p>
+        For a higher-order LHCC equation like:
+        <men xml:id="higher-order-lhcc-equation">
+            a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = 0
+        </men>,
+        the characteristic equation is the polynomial equation we just discussed. Finding the roots <m>r_1, r_2, \ldots, r_n</m> of this polynomial gives us the general solution:
+        <me>
+            y = C_1 e^{r_1 x} + C_2 e^{r_2 x} + \cdots + C_n e^{r_n x}
+        </me>,
+        where <m>C_1, C_2, \ldots, C_n</m> are constants determined by initial conditions.
+    </p>
+
+    <p>
+        Let's see an example to solidify these concepts.
+    </p>
+
+    <example><title>Solving a Third-Degree Polynomial Equation</title>
+        <statement>
+            <p>
+                Find the general solution to the third-order LHCC equation:
+            </p>
+            <p>
+                <m> y''' - 6y'' + 11y' - 6y = 0 </m>
+            </p>
+        </statement>
+        <solution>
+            <p>
+                First, write down the characteristic equation:
+                <md>
+                    <mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
+                </md>.
+                Factoring the polynomial, we get:
+                <me>
+                    (r - 1)(r - 2)(r - 3) = 0
+                </me>.
+                Therefore, the roots are <m>r = 1, 2, 3</m>.
+            </p>
+            <p>
+                Since we have three distinct real roots, the general solution to the LHCC equation is:
+                <me>
+                    y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}
+                </me>,
+                where <m>C_1, C_2, C_3</m> are constants determined by initial conditions.
+            </p>
+        </solution>
+    </example>
+
+    <paragraphs xml:id="poly-div"><title>Polynomail Division</title>
+        <p>
+            Use polynomial divison to compute
+            <me>
+                \frac{x^3 - 6x^2 + 11x - 6}{x-1} =\ ?
+            </me>
+        </p>
+        <tabular halign="right">
+            <row>
+                <cell />
+                <cell bottom="medium" />
+                <cell bottom="medium" />
+                <cell bottom="medium"><m>x^2</m></cell>
+                <cell bottom="medium"><m>-</m></cell>
+                <cell bottom="medium"><m>5x</m></cell>
+                <cell bottom="medium"><m>+</m></cell>
+                <cell bottom="medium"><m>6</m></cell>
+            </row>
+            <row>
+                <cell right="medium"><m>x-1</m></cell>
+                <cell><m>x^3</m></cell>
+                <cell><m>-</m></cell>
+                <cell><m>6x^2</m></cell>
+                <cell><m>+</m></cell>
+                <cell><m>11x</m></cell>
+                <cell><m>-</m></cell>
+                <cell><m>6</m></cell>
+            </row>
+            <row>
+                <cell />
+                <cell bottom="minor"><m>x^3</m></cell>
+                <cell bottom="minor"><m>-</m></cell>
+                <cell bottom="minor"><m>x^2</m></cell>
+                <cell bottom="minor" />
+                <cell bottom="minor" />
+                <cell bottom="minor" />
+                <cell bottom="minor" />
+            </row>
+            <row>
+                <cell />
+                <cell />
+                <cell />
+                <cell><m>-5x^2</m></cell>
+                <cell><m>+</m></cell>
+                <cell><m>11x</m></cell>
+                <cell><m>-</m></cell>
+                <cell><m>6</m></cell>
+            </row>
+            <row>
+                <cell />
+                <cell />
+                <cell />
+                <cell bottom="minor"><m>-5x^2</m></cell>
+                <cell bottom="minor"><m>+</m></cell>
+                <cell bottom="minor"><m>5x</m></cell>
+                <cell bottom="minor" />
+                <cell bottom="minor" />
+            </row>
+            <row>
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell><m>6x</m></cell>
+                <cell><m>-</m></cell>
+                <cell><m>6</m></cell>
+            </row>
+            <row>
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell bottom="minor"><m>6x</m></cell>
+                <cell bottom="minor"><m>-</m></cell>
+                <cell bottom="minor"><m>6</m></cell>
+            </row>
+            <row>
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell />
+                <cell><m>0</m></cell>
+            </row>
+        </tabular>
+        <p>
+            Therefore, 
+            <me>
+                \frac{x^3 - 6x^2 + 11x - 6}{x-1} = x^2 - 5x + 6
+            </me>.
+        </p>
+    </paragraphs>
+</subsection>
