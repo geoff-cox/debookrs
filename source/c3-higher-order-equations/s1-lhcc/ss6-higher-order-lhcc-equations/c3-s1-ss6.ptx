@@ -329,7 +329,21 @@
 		</statement>
 	</lemma>
 
-	<xref ref="poly-factor" text="title"/>
+	<paragraphs xml:id="poly-factor-p"><title>Polynomial Factoring Calculator</title>
+		<interactive xml:id="poly-factor" platform="sage" width="95%" aspect="3.25:1">
+			<slate surface="sage">
+				r = var('r')
+				r = PolynomialRing(RationalField(), 'r').gen()
+				F = 'r^2 - 2*r - 8'
+				P = r^2 - 2*r - 8
+				@interact
+				def _(ce = input_box(P, label="    Polynomial:", type=str, width=30)):
+					ce_poly = sage_eval('lambda r: ' + ce)
+					pretty_print( html( r'Polynomial: $ %s = 0 $'%latex(ce_poly(r) ) ) )
+					pretty_print( html( r'Factored Polynomial: $ %s = 0 $'%latex(ce_poly(r).factor()) ) )
+			</slate>
+		</interactive>
+	</paragraphs>
 
 	<xi:include href="./c3-s1-ss6-interactives.ptx" />
 
