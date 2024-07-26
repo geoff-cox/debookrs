@@ -1,7 +1,85 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Adjusting <m>y_p</m> Forms </title>
 
 	<p>
-		Write this section.
+		Everything we have done up to this point has been geared toward solving linear nonhomogeneous constant coefficient equations where the right-hand side contains some combination of polynomial, exponential, sine, and cosine functions. However, there is one last detail that we still need to address. In particular, we need to know what to do when the selected form of <m>y_p</m> has overlapping <q>like-terms</q> with the homogeneous solution, <m>y_h</m>. In this section we will explain why this is a problem and how to fix it.
+	</p>
+
+	<p>
+		To illustrate this concept, note that the differential equation
+		<me>
+			y'' - 4y' + 3y = e^{3x}
+		</me>.
+		has a particular solution of the form <m>y_p = A e^{3x}</m>. Plugging it in gives
+		<md>
+			<mrow>								y'' - 4y' + 3y	=\ \amp e^{3x} </mrow>
+			<mrow> (A e^{3x})'' - 4(A e^{3x})' + 3(A e^{3x}) 	=\ \amp e^{3x} </mrow>
+			<mrow> (9A e^{3x}) - 4(3A e^{3x}) + 3(A e^{3x}) 	=\ \amp e^{3x} </mrow>
+			<mrow> 						(9A - 12A + 3A) e^{3x}	=\ \amp e^{3x} </mrow>
+			<mrow> 									0 e^{3x}	=\ \amp e^{3x} </mrow>
+			<mrow> 											0	=\ \amp e^{3x} \quad \leftarrow \text{problem!}</mrow>
+		</md>
+		which leads to an obvious problem. Recall that the <xref ref="lncc-general-solution-parts"  text="custom">parts of an LNCC general solution</xref> tells you that if <m>y_p</m> simplifies to <m>0</m>, then it must be part of the homogeneous solution!
+	</p>
+	
+	<p>
+		Now, let's attempt <xref ref="def-linear"/> to find a particular solution, <m>y_p</m>. Since the right-hand side of the original equation is <m>e^{3x}</m>, we might initially guess:
+		<me>
+			y_p = A e^{3x}
+		</me>
+		However, this term <m>e^{3x}</m> is already part of the homogeneous solution, <m>y_h</m>. If we use this guess, we will not obtain a valid particular solution because it will be absorbed into the homogeneous part. To circumvent this, we adjust our guess by multiplying by <m>x</m> to ensure linear independence:
+		<me>
+			y_p = A x e^{3x}
+		</me>
+	</p>
+
+	<p>
+		Let's verify if this adjusted guess works by plugging it into the original equation. We find the necessary derivatives:
+		<me>
+			y_p = A x e^{3x}
+		</me>
+		<me>
+			y_p' = A e^{3x} + 3A x e^{3x}
+		</me>
+		<me>
+			y_p'' = 6A e^{3x} + 9A x e^{3x}
+		</me>
+		Substituting these into the differential equation:
+		<me>
+			(6A e^{3x} + 9A x e^{3x}) - 4(A e^{3x} + 3A x e^{3x}) + 3(A x e^{3x}) = e^{3x}
+		</me>
+		Simplifying, we get:
+		<me>
+			(6A e^{3x} + 9A x e^{3x}) - (4A e^{3x} + 12A x e^{3x}) + (3A x e^{3x}) = e^{3x}
+		</me>
+		<me>
+			(6A e^{3x} - 4A e^{3x}) + (9A x e^{3x} - 12A x e^{3x} + 3A x e^{3x}) = e^{3x}
+		</me>
+		<me>
+			2A e^{3x} + 0 = e^{3x}
+		</me>
+		This simplifies to:
+		<me>
+			2A e^{3x} = e^{3x}
+		</me>
+		Thus, we find:
+		<me>
+			A = \frac{1}{2}
+		</me>
+	</p>
+
+	<p>
+		Therefore, the particular solution is:
+		<me>
+			y_p = \frac{1}{2} x e^{3x}
+		</me>
+	</p>
+
+	<p>
+		This example demonstrates the importance of adjusting the form of <m>y_p</m> when it overlaps with <m>y_h</m>. In general, if our initial guess for <m>y_p</m> contains any term that is also part of <m>y_h</m>, we multiply that term by <m>x</m> to ensure independence. If the overlap persists, we multiply by higher powers of <m>x</m> (e.g., <m>x^2</m>, <m>x^3</m>) until the terms are linearly independent.
+	</p>
+
+	<p>
+		This adjustment process ensures that our particular solution remains valid and that we can correctly solve the differential equation. By recognizing when to adjust <m>y_p</m>, we refine our approach to handling linear nonhomogeneous constant coefficient equations effectively.
 	</p>
 
 	<xi:include href="./c3-s2-ss6-interactives.ptx" />
