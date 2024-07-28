@@ -1,75 +1,62 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-lt-defn"><title> DEFNITION </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Definition </title>
 	
-	<introduction>
+	
+	<remark>
+		This section heavily relies on understanding how to compute improper integrals. If you need to review this concept, please go here...
+	</remark>
 
 	<p>
 		Give some statement leading to the definition....
 	</p>
 
-	<p>
-		Edit Notes:
-		<ul>
-			<li> We should probably address the <m>s</m> in the integral somewhere.</li>
-		</ul>
-	</p>
-
-	<definition>
-	<title> Laplace Transform </title>
+	<definition><title> Laplace Transform </title>
 		<statement>
-		The <term>Laplace Transform</term> of a function <m>y(t)</m> is given by
+			The <term>Laplace Transform</term> of a function <m>y(t)</m> is given by
 
-		<me> \lap\left\{ y(t) \right\} = \int_0^{\infty} \left(y(t)\right) e^{-st}dt, </me>
+			<me> \lap\left\{ {\color{blue} y(t)} \right\} = \int_0^{\infty} {\color{blue} y(t)}\ e^{-st}dt, </me>
 
-		given that the integral exists (i.e. the improper integral is finite).
+			given that the integral exists (i.e. the improper integral is finite).
 		</statement>
 	</definition>
 
 	<p>
-		There's a lot to unpack with this definition, but let's begin with a few examples illustrating the definition before diving into the details.
-	<!--
-		As we work through the following examples, we will practice using the definition, as well as gathering facts about how the Laplace transform works. You will no doubt find the solutions to these examples a bit cumbersome We hope to draw some conclusions as we move forward that help us find the Laplace transform quickly without having to use the (admittedly somewhat cumbersome) definition every time.
-	-->
+		There's a lot to unpack with this definition, but let's begin with a few examples illustrating the definition before diving into the details.As we work through the following examples, we will practice using the definition, as well as gathering facts about how the Laplace transform works. You will no doubt find the solutions to these examples a bit cumbersome We hope to draw some conclusions as we move forward that help us find the Laplace transform quickly without having to use the (admittedly somewhat cumbersome) definition every time.
 	</p>
-
-
-	</introduction>
 
 	<example xml:id="ex_lt_defn_01">
 		<p>
 			Find the Laplace transform of the function <m>g(t) = 15</m>.
 		</p>
-		<p/>
 	
 		<solution>
 			<p>
 				By the above definition, we have
-			<md>
-				<mrow> \lap\{ g(t) \}	\amp= \lap\{ 15 \} 								</mrow>
-				<mrow>		\amp= \int_0^{\infty} \left(15\right)e^{-st}dt
-											\qquad \text{(improper integral)}</mrow>
-					<mrow>		\amp= \lim_{b \to \infty}\int_0^b 15 e^{-st}dt	</mrow>
-					<mrow>		\amp= 15 \lim_{b \to \infty}\int_0^b e^{-st}dt
-											\qquad (s\text{ is constant here})</mrow>
-			</md>
+				<md>
+					<mrow> \lap\{ g(t) \}	\amp= \lap\{ 15 \}	</mrow>
+					<mrow>					\amp= \int_0^{\infty} \left(15\right)e^{-st}dt \qquad \text{(improper integral)}	</mrow>
+					<mrow>					\amp= \lim_{b \to \infty}\int_0^b 15 e^{-st}dt	</mrow>
+					<mrow>					\amp= 15 \lim_{b \to \infty}\int_0^b e^{-st}dt \qquad (s\text{ is constant here})	</mrow>
+				</md>
 				At this point, we need to assume that <m>s\ne0</m> in order to continue. If you are curious as to why, see this <xref text="custom" ref="LT-s-ne-0-15">note</xref> for an explanation. Next, we integrate using the substitution <m>u=-st</m>.
-		  </p>
+		  	</p>
 	
 			<p>
 				<md>
-					<mrow>		\amp= 15\lim_{b \to \infty} -\frac{1}{s}e^{-st}\Big|_0^b</mrow>
-					<mrow>		\amp= 15\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]</mrow>
-					<mrow>		\amp= -\frac{15}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] \qquad \leftarrow
-						<xref text="custom" ref="reason-factor-out-s">why can -1/s be pulled out?</xref></mrow>
-				<mrow>		\amp= -\frac{15}{s}	\left[ \left(\lim_{b \to \infty} e^{-sb} \right) - \left( \lim_{b \to \infty} 1 \right)\right]</mrow>
-				<mrow>		\amp= -\frac{15}{s}	\left[ \left(\lim_{b \to \infty} e^{-sb} \right) - 1 \right]</mrow>
-			</md>
+					<mrow>	\amp= 15\lim_{b \to \infty} -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}	</mrow>
+					<mrow>	\amp= 15\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]	</mrow>
+					<mrow>	
+							\amp= 15 \cdot -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] \qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+					</mrow>
+					<mrow>	
+							\amp= -\frac{15}{s}	\Big[ \lim_{b \to \infty} e^{-sb} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big]
+					</mrow>
+				</md>
 			</p>
 	
 			<p>
 				Now let's focus on the remaining limit. It turns out that we have to put one more restriction on <m>s</m> since the limit will change based on whether <m>s</m> is positive or negative. Let's consider both cases.
 			</p>
-	
-	
+
 			<p>
 				Case 1: <m>\quad s\lt 0</m>, If <m>b \to \infty</m>, then <m>-sb \to +\infty</m> and so <m>\ds\lim_{b \to \infty} e^{-sb} = \infty</m>.
 				<me> = -\frac{15}{s} \left[\left( \lim_{b \to \infty} e^{-sb} \right) - 1 \right] = \infty</me>
@@ -97,41 +84,35 @@
 		<p>
 			Find the Laplace transform of <m>x(t) = e^{7t}</m>.
 		</p>
-		<p/>
 	
 		<solution>
 			<p>
 				We use the definition of Laplace transform to get us started.
-			<md>
-				<mrow> \lap\{ x(t) \} \amp= \lap\{ e^{7t} \} 				</mrow>
-				<mrow> 		\amp= \int_0^{\infty} \left(e^{7t}\right)e^{-st}\ dt 				</mrow>
-				<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{-st + 7t}\ dt	</mrow>
-				<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt 		</mrow>
-			</md>
-	
+				<md>
+					<mrow> \lap\{ x(t) \} \amp= \lap\{ e^{7t} \} 				</mrow>
+					<mrow> 		\amp= \int_0^{\infty} \left(e^{7t}\right)e^{-st}\ dt 				</mrow>
+					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{-st + 7t}\ dt	</mrow>
+					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt 		</mrow>
+				</md>
 				As before, we need restrict some values of <m>s</m> in order for this
 				improper integral to exist . In this case, we will need <m>7 - s</m>, in the exponent, to be non-zero and negative. That is, we need
-	
 				<me> 7 - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm}7 \lt s. </me>
-	
 				Hence, we move forward with the assumption that <m>s \gt 7</m>.
-	
-			<md>
-				<mrow> 	\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}dt </mrow>
-				<mrow>	\amp= \lim_{b \to \infty} \frac{1}{7-s}e^{(7-s)t}\Bigg|_0^b</mrow>
-				<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
-										\left[ e^{(7-s)b} - e^{(7-s)\cdot 0}\right]</mrow>
-				<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
-										\left[ e^{(7-s)b} - 1\right]</mrow>
-				<mrow>	\amp= \frac{1}{7-s}
-										\left[\lim_{b \to \infty}e^{(7-s)b}
-										- \lim_{b \to \infty}1\right]</mrow>
-				<mrow>	\amp= \frac{1}{7-s} \left[ 0 - 1\right] \quad
-										<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
-				<mrow>	\amp= \frac{-1}{7-s} \hspace{4.4cm}	</mrow>
-				<mrow>	\amp= \frac{1}{s - 7}, 					\quad s \gt 7 	</mrow>
-			</md>
-	
+				<md>
+					<mrow> 	\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}dt </mrow>
+					<mrow>	\amp= \lim_{b \to \infty} \frac{1}{7-s}e^{(7-s)t}\Bigg|_0^b</mrow>
+					<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
+											\left[ e^{(7-s)b} - e^{(7-s)\cdot 0}\right]</mrow>
+					<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
+											\left[ e^{(7-s)b} - 1\right]</mrow>
+					<mrow>	\amp= \frac{1}{7-s}
+											\left[\lim_{b \to \infty}e^{(7-s)b}
+											- \lim_{b \to \infty}1\right]</mrow>
+					<mrow>	\amp= \frac{1}{7-s} \left[ 0 - 1\right] \quad
+											<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
+					<mrow>	\amp= \frac{-1}{7-s} \hspace{4.4cm}	</mrow>
+					<mrow>	\amp= \frac{1}{s - 7}, 					\quad s \gt 7 	</mrow>
+				</md>
 				Thus, the Laplace transform of <m>x(t) = e^{7t}</m> is
 				<me>\ds \lap\{e^{7t}\} = \frac{1}{s - 7}</me>.
 			</p>
@@ -143,26 +124,27 @@
 		<p>
 			Find the Laplace transform of <m>q(t) = 11t</m>.
 		</p>
-		<p/>
 	
 		<solution>
 			<p>
-			Let's use the definition of Laplace transform to get us going.
-	
+				Let's use the definition of Laplace transform to get us going.
 				<md>
-					<mrow> \lap\{ 11t \} \amp= \int_0^{\infty} \left(11t\right) e^{-st}\ dt </mrow>
-					<mrow> 						 \amp= 11\lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0
-																	\quad <xref text="custom" ref="LT-s-ne-0-11t">why is <m>s \ne 0</m>?</xref>
-																	\hspace{4.8cm}</mrow>
+					<mrow> 
+						\lap\{ 11t \}
+							\amp= \int_0^{\infty} \left(11t\right) e^{-st}\ dt 
+					</mrow>
+					<mrow> 				
+							\amp= 11\lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0 \quad <xref text="custom" ref="LT-s-ne-0-11t">why is <m>s \ne 0</m>?</xref>\hspace{4.8cm}
+					</mrow>
 				</md>
-					<md>
-					<mrow> \phantom{\lap\{11t\}}\amp= 11\lim_{b \to \infty}
-									\left[-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}\right]\quad
-											<xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>
-											\hspace{2.5cm}</mrow>
-					</md>
-					<md>
-						<mrow> \phantom{\lap\{11t\}}\amp= 11 \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}
+				<md>
+					<mrow> 
+						\phantom{\lap\{11t\}}
+							\amp= 11\lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}\right]\quad <xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>\hspace{2.5cm}
+					</mrow>
+				</md>
+				<md>
+					<mrow> \phantom{\lap\{11t\}}\amp= 11 \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}
 										- \lim_{b \to \infty}\frac{1}{s^2}e^{-sb}
 										+ \lim_{b \to \infty}\frac{1}{s^2}\right]</mrow>
 					<mrow> \amp= 11 \left[-\frac{1}{s}\lim_{b \to \infty}be^{-sb}
@@ -170,17 +152,14 @@
 										+ \frac{1}{s^2}\right]\quad s > 0 \quad
 											<xref text="custom" ref="LT-s-gt-0-11t">why is s > 0?</xref>\hspace{1.0cm}</mrow>
 				</md>
-					<md>
+				<md>
 					<mrow> \phantom{\lap\{11t\}}\amp= 11 \left[-\frac{1}{s}\cdot 0
 										- \frac{1}{s^2}\cdot 0 + \frac{1}{s^2}\right]\quad
 											<xref text="custom" ref="reason-limit-to-zero-11t">why are the limits 0?</xref>
 											\hspace{3.6cm}</mrow>
-						<mrow> 		\amp= \frac{11}{s^2}, \quad s \gt 0 						</mrow>
+					<mrow> 		\amp= \frac{11}{s^2}, \quad s \gt 0 						</mrow>
 				</md>
-	
-	
-	
-			Hence, we have <m>\ds \lap\{ 11t \} = \frac{11}{s^2}</m>, under the condition that <m>s>0</m>.
+				Hence, we have <m>\ds \lap\{ 11t \} = \frac{11}{s^2}</m>, under the condition that <m>s>0</m>.
 			</p>
 		</solution>
 	</example>
@@ -190,7 +169,7 @@
 	</p>
 	
 	<p>
-		 Before moving forward, let's conclude this section by listing out a few important take-aways from the examples of this section.
+		Before moving forward, let's conclude this section by listing out a few important take-aways from the examples of this section.
 		<ul>
 			<li>
 				In every example, we started with a function of <m>t</m> and after computing the Laplace transform, we ended up with a function of a new variable <m>s</m>. A common convention is to use upper case function names for the Laplace transform of a given lower case function. For example,
@@ -212,4 +191,6 @@
 		</ul>
 	</p>
 
-</section>
+	<xi:include href="./c4-s1-ss1-interactives.ptx" />
+
+</subsection>
