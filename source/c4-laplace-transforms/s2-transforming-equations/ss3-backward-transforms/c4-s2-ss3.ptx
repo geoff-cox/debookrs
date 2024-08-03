@@ -1,0 +1,136 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Backward Transforms </title>
+
+	<p>
+		Let's review the <xref ref="lt-diagram-roadmap" text="custom">Laplace transform diagram</xref> to remember how we will leverage Laplace transforms to solve differential equations.
+	</p>
+
+	<p>
+		The one last piece we need in order to solve DEs is to be able to take inverse Laplace transforms. We will focus on that piece now, and in the next section we will put all of our new skills together to solve DEs using Laplace transforms.
+	</p>
+
+	<p>
+		When we take the inverse Laplace transform, we begin with a function of <m>s</m>, say <m>Y(s)</m>, and what we seek is a function of <m>y(t)</m> such that if we took the Laplace transform of <m>y</m>, we would get <m>Y</m>. That is, we seek to un-do the the Laplace transform. The notation looks similar:
+		<me> y(t) = \lap^{-1}\{ Y(s) \}, </me>
+	</p>
+
+	<p>
+		and, as with the forward Laplace transform, the curly braces are not optional. Like the forward Laplace transform, the inverse Laplace transform is also a linear transform.
+	</p>
+
+	<p>
+		In order to take inverse Laplace transforms, we will rely on the table we have been using.
+	</p>
+
+	<example>
+        <p>
+            Find the inverse Laplace transform of <m>\ds F(s) = \frac{24}{s^5}.</m>
+        </p>
+
+        <solution>
+            <p>
+                We look in the right column of the table and determine which of the forms the given function most closely matches. In this case, the form is like <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>, so we can find the inverse Laplace transform as follows:
+                <md>
+                    <mrow>f(t)	\amp= \lap^{-1}\left\{ F(s) \right\}</mrow>
+                    <mrow>\amp= \lap^{-1}\left\{ \frac{24}{s^5} \right\}</mrow>
+                    <mrow>\amp= \lap^{-1}\left\{ \frac{4!}{s^{4+1}} \right\}</mrow>
+                    <mrow>\amp= t^4 \quad (<xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>).</mrow>
+                </md>
+                Thus, we have shown that 
+                <m>\ds \lap^{-1}\left\{ \frac{24}{s^5} \right\} = t^4.</m>
+            </p>
+
+        </solution>
+    </example>
+
+    <p>
+        In the previous example, the function <m>F(s)</m> matched with one of the properties in the table exactly. This is rare, and we need to develop strategies for when the function is not an exact match.
+    </p>
+
+    <example>
+        <p>
+            Find the inverse Laplace transform of <m>\ds G(s) = \frac{17}{s^4}.</m>
+        </p>
+
+        <solution>
+            <p>
+                When we look in the right column of the table, this one seems to line up best with <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>...but it's not a perfect match. If we were going to use <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>, then <m>n</m> would have to be 3 (because this gives us the <m>s^4</m> that we have). We would have <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref> perfectly if we the numerator was <m>3! = 6,</m> but our numerator is 17. Luckily, we can use the linearity property to help. Since the 17 is not helpful to us, we can factor it out.
+                <md>
+                    <mrow>g(t)	\amp= \lap^{-1}\{ G(s) \}</mrow>
+                    <mrow>\amp= \lap^{-1}\left\{ \frac{17}{s^4} \right\}</mrow>
+                    <mrow>\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\} </mrow>
+                </md> 
+            </p>
+
+            <p>
+                We have the 17 out of the way, so we are halfway done. Now we need to (carefully) get a 6 in that numerator. We will again lean on linearity, but we will also use a little trick mathematicians use from time to time:  multiplying by 1. It's always safe to multiply any expression by 1 because multiplying by 1 doesn't change the <em>value</em> of an expression. The form of 1 that will be useful here is the form <m>\ds \frac{6}{6},</m> as below.
+                
+
+                <md>
+                    <mrow>g(t)	\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
+                    <mrow>\amp= \frac{6}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
+                    <mrow>\amp= \frac{1}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{6}{s^4} \right\} </mrow>
+                    <mrow>\amp= \frac{17}{6}\cdot \lap^{-1}\left\{ \frac{3!}{s^{3+1}} \right\}</mrow>
+                    <mrow>\amp= \frac{17}{6}t^3. </mrow>
+                </md>
+                Thus, we have shown that 
+                <m>\ds \lap^{-1}\left\{ \frac{17}{s^4} \right\} = \frac{17}{6}t^3.</m>
+            </p>
+        </solution>
+    </example>
+
+    <example>
+        <p>
+            Find <m>\ds \lap^{-1} \left\{\frac{7}{s^2 + 25}\right\}.</m>
+        </p>
+        <solution>
+            <p>
+                Our first goal is to identify which property in the table is going to be the closest match to the expression we are given. If we look in the right hand column of the Laplace transform table, the right choice seems to be either <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> or <xref ref="LT-Table-L5" text="custom"><m>L5</m></xref>. The distinguishing factor between the two is whether or not we have an <m>s</m> in the numerator. In this case, we do not, so we aim to drive toward <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref>.
+            </p>
+
+            <p>
+                Note that we don't have a perfect match with that property, so we will have to do a little manipulation, as we did in the previous example, to get our function to match up perfectly. In order for us to do that manipulation, we do need to have in mind what exactly we are aiming for. That is, do we want to make our expression like <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 7</m> or with <m>b = 5</m>?  If we think about the kind of manipulation we did in the previous example, where we multiplied by a form of 1, we might guess that it's easier to manipulate the constant in the numerator. (If we manipulate constants in the denominator, we need to worry about two terms).
+            </p>
+
+            <p>
+                If we agree that we would like to match <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 5,</m> then we proceed using linearity in much the same way we did the previous example.
+                <md>
+                    <mrow>\lap^{-1} \left\{\frac{7}{s^2 + 25}\right\}	\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 25}\right\}</mrow>  
+                                                    
+                    <mrow>\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
+                    <mrow>\amp=  \frac{5}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
+                    <mrow>\amp=  \frac{1}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{5}{s^2 + 5^2}\right\}</mrow>
+                                                
+                    <mrow>\amp=  \frac{7}{5}\sin(5t).</mrow>
+                                                    
+                </md>
+            </p>
+        </solution>
+    </example>
+
+    <example>
+        <p>
+            Find the inverse Laplace transform of <m>\ds G(s) = \frac{2}{(s+7)^5}</m>.
+        </p>
+        <solution>
+            <p>
+                We aim to make this function match <xref ref="LT-Table-L6" text="custom"><m>L6</m></xref>, as follows.
+                <md>
+                    <mrow>g(t)	\amp= \lap^{-1}\left\{G(s) \right\}</mrow>
+                    <mrow>\amp= \lap^{-1}\left\{ \frac{2}{(s+7)^5} \right\}</mrow>
+                    <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^5} \right\}</mrow>
+                            
+                    <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
+                    <mrow>\amp= \frac{4!}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
+                    <mrow>\amp= \frac{1}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{4!}{\Big(s-(-7)\Big)^{4+1}} \right\}</mrow>
+                            
+                    <mrow>\amp= \frac{1}{12} e^{-7t}t^4.</mrow>
+                            
+                </md>
+                
+            </p>
+        </solution>
+    </example>
+
+	<xi:include href="./c4-s2-ss3-interactives.ptx" />
+
+</subsection>
