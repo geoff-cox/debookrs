@@ -1,0 +1,150 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> <m>\lap\{t^n f(t)\}</m> </title>
+
+	<p>
+		Let's build on what we did in the previous section.
+	</p>
+
+	<example>
+			
+		<m>\quad</m> Show that <m>\ds \lap\{tf(t)\} = -\frac{d}{ds}\left[\lap\{f(t)\}\right]</m>.
+
+		<solution>
+			<p>
+				For this problem it is actually easier to start on the right side and show it is equal to the left.
+			</p>
+			<tabular>
+				<col width="30%" halign="right" valign="top"/>
+				<col width="60%" halign="left" valign="top"/>
+				<row>
+					<cell valign="top"><p><m>\ds -\frac{d}{ds}\left[\lap\{f(t)\}\right] =</m></p></cell>
+					<cell>
+						<m>\ds -\frac{d}{ds}\left[\int_0^{\infty} e^{-st} f(t) dt\right] </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds -\int_0^{\infty} \frac{\partial}{\partial s}\left[e^{-st} f(t)\right] dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds -\int_0^{\infty} f(t)\frac{\partial}{\partial s}\left[e^{-st}\right] dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds -\int_0^{\infty} f(t) \left(-te^{-st}\right)  dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \int_0^{\infty} e^{-st} tf(t) dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \lap\{tf(t)\} </m>
+					</cell>
+				</row>
+			</tabular>
+		</solution>
+	</example>
+
+	<p>
+		This shows that multiplying a function by <m>t</m> inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by <m>-1</m>. It turns our that each power of <m>t</m> adds another neagtive one and derivative.
+	</p>
+
+	<example>
+			
+		<m>\quad</m> Show that <m>\ds \lap\{t^2f(t)\} = \frac{d^2}{ds^2}\left[\lap\{f(t)\}\right]</m>.
+
+		<solution>
+			<p>
+				For this problem it is actually easier to start on the right side and show it is equal to the left.
+			</p>
+			<tabular>
+				<col width="30%" halign="right" valign="top"/>
+				<col width="60%" halign="left" valign="top"/>
+				<row>
+					<cell valign="top"><p><m>\ds \frac{d^2}{ds^2}\left[\lap\{f(t)\}\right] =</m></p></cell>
+					<cell>
+						<m>\ds \frac{d^2}{ds^2}\left[\int_0^{\infty} e^{-st} f(t) dt\right] </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \int_0^{\infty} \frac{\partial^2}{\partial s^2}\left[e^{-st} f(t)\right] dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \int_0^{\infty} f(t)\frac{\partial^2}{\partial s^2}\left[e^{-st}\right] dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \int_0^{\infty} f(t) \left((-t)^2e^{-st}\right)  dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \int_0^{\infty} e^{-st} t^2f(t) dt </m>
+					</cell>
+				</row>
+				<row>
+					<cell><m>=</m></cell>
+					<cell>
+						<m>\ds \lap\{t^2f(t)\} </m>
+					</cell>
+				</row>
+			</tabular>
+		</solution>
+	</example>
+
+	<p>
+		A similar process shows that for any power of <m>t</m>, the Laplace transform is the <m>n</m>-th derivative of the Laplace transform of the function, with the sign alternating. The general property is given by
+		<me> \lap\{t^n f(t)\} = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad n = 1, 2, 3, \ldots </me>.
+		The only difference is that you are taking the <m>n</m>-th derivative of <m>e^{-st}f(t)</m> inside the integral.
+	</p>
+
+	<assemblage xml:id="lt-properties-P1-P6"><title>Laplace Transform Properties</title>
+		<p>
+			Let <m>F(s) = \lap\{f(t)\}</m> and <m>G(s) = \lap\{g(t)\}</m>.
+		</p>
+
+		<p>
+			<dl width="narrow">
+				<li><title><m>P_1.</m></title>
+					<m>\ds \lap\{ a f(t) \pm b g(t) \} = a F(s) \pm b G(s), \quad a, b </m> are constants
+				</li>
+				<li><title><m>P_2.</m></title>
+					<m>\ds \lap\{ e^{at} f(t) \} = F(s-a), \quad a </m> is a constant
+				</li>
+				<li><title><m>P_3.</m></title>
+					<m>\ds \lap\{ f'(t) \} = sF(s) - f(0) </m>
+				</li>
+				<li><title><m>P_4.</m></title>
+					<m>\ds \lap\{ f''(t) \} = s^2F(s) - sf(0) - f'(0) </m>
+				</li>
+				<li><title><m>P_5.</m></title>
+					<m>\ds \lap\{ f'''(t) \} = s^3F(s) - s^2f(0) - sf'(0) - f''(0) </m>
+				</li>
+				<li xml:id="P6"><title><m>{\LARGE \vphantom{\int}}P_6.</m></title>
+					<m>\ds \lap\{ t^n f(t) \} = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad n = 1, 2, 3, \ldots </m>
+				</li>
+			</dl>
+		</p>
+	</assemblage>
+
+	<xi:include href="./c4-s2-ss4-interactives.ptx" />
+
+</subsection>
