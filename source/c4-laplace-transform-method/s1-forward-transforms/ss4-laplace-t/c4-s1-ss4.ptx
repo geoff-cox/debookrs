@@ -1,0 +1,118 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> <m>\lap\{t^n\}</m> </title>
+
+	<p>
+		The next type of function we will consider is the power function. In particular, we will compute the Laplace transform of <m>t^n</m>, where <m>n</m> is a non-negative integer. We already know the transform for <m>n = 0</m> since <m>t^0 = 1</m> and this is <xref ref="L1" text="custom"><m>L_1</m></xref>. So it makes sense to start with <m>n = 1</m> and work our way up to the general formula.
+	</p>
+
+	<example>
+		<p>
+			Compute <m>\lap\{t\}</m>.
+		</p>
+	
+		<solution>
+			<p>
+				Let's use the definition of Laplace transform to get us going.
+				<md>
+					<mrow> 
+						\lap\{ t \}
+							\amp= \int_0^{\infty} \left(t\right) e^{-st}\ dt 
+					</mrow>
+					<mrow> 				
+							\amp= \lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0 \quad <xref text="custom" ref="LT-s-ne-0-t">why is <m>s \ne 0</m>?</xref>\hspace{4.8cm}
+					</mrow>
+				</md>
+				<md>
+					<mrow> 
+						\phantom{\lap\{t\}}
+							\amp= \lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} + \frac{1}{s^2}\right]\quad <xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>\hspace{2.5cm}
+					</mrow>
+				</md>
+				<md>
+					<mrow> 
+						\phantom{\lap\{t\}}
+							\amp=  \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}	+ \lim_{b \to \infty}\frac{1}{s^2}\right]
+					</mrow>
+					<mrow> 
+							\amp=  \left[-\frac{1}{s}\lim_{b \to \infty}\frac{b}{e^{sb}} + \frac{1}{s^2}\right]\quad s &gt; 0 \quad
+								<xref text="custom" ref="LT-s-gt-0-t">why is s &gt; 0?</xref>\hspace{2.5cm}
+					</mrow>
+				</md>
+				<md>
+					<mrow> 
+						\phantom{\lap\{t\}}
+							\amp=  \left[-\frac{1}{s}\cdot 0 + \frac{1}{s^2}\right]\quad
+								<xref text="custom" ref="reason-limit-to-zero-t">why is the limits 0?</xref>
+								\hspace{4cm}
+					</mrow>
+					<mrow> 		
+							\amp= \frac{1}{s^2}, \quad s \gt 0
+					</mrow>
+				</md>
+				Hence, we have <m>\ds \lap\{ t \} = \frac{1}{s^2}</m>, under the condition that <m>s&gt;0</m>.
+			</p>
+		</solution>
+	</example>
+	
+	<p>
+		We can also show the following.
+	</p>
+
+	<example>
+		<p>
+			<ul marker="square">
+				<li>	
+					<m> \ds \lap\{t^2\} = \frac{2}{s^3} \quad s \gt 0 \qquad </m>
+					<xref ref="std_LT_01" text="custom">Solution</xref> 
+				</li>
+				<li>	
+					<m> \ds \lap\{t^3\} = \frac{6}{s^4} \quad s \gt 0 \qquad </m> 
+					<xref ref="std_LT_02" text="custom">Solution</xref> 
+				</li>
+				<li>
+					<m> \ds \lap\{t^4\} = \frac{24}{s^5} \quad s \gt 0 \qquad </m> 
+					<xref ref="std_LT_03" text="custom">Solution</xref> 
+				</li>
+			</ul>
+		</p>
+	</example>
+
+	<p>
+		Do you see the emerging pattern?  Rewriting the numerators may help.
+		<ul marker="">
+			<li>	
+				<m> \ds \lap\{t^2\} = \frac{2}{s^3} = \frac{2 \cdot 1}{s^3} = \frac{2!}{s^3} </m>
+			</li>
+			<li>	
+				<m> \ds \lap\{t^3\} = \frac{6}{s^4} = \frac{3 \cdot 2 \cdot 1}{s^4} = \frac{3!}{s^4} </m>
+			</li>
+			<li>
+				<m> \ds \lap\{t^4\} = \frac{24}{s^5} = \frac{4 \cdot 3 \cdot 2 \cdot 1}{s^5} = \frac{4!}{s^5} </m>
+			</li>
+			<li>
+				<m> \hspace{6em} \vdots </m>
+			</li>
+			<li>
+				<m> \ds \lap\{t^n\} = \frac{n!}{s^{n+1}} </m>
+			</li>
+		</ul>
+	</p>
+
+	<assemblage xml:id="lt-table-L1-L3"><title>Common Laplace Transforms</title>
+		<p>
+			<dl width="narrow">
+				<li><title><m>{\LARGE \vphantom{\int}}L_1</m></title>
+					<m>\ds \lap\{ 1 \} = \frac{1}{s}, \quad s &gt;0 </m>
+				</li>
+				<li><title><m>{\LARGE \vphantom{\int}}L_2</m></title>
+					<m>\ds \lap\{ e^{at} \} = \frac{1}{s - a}, \quad s &gt;a, \quad a \text{ is a constant} </m>
+				</li>
+				<li xml:id="L3"><title><m>{\LARGE \vphantom{\int}}L_3</m></title>
+					<m>\ds \lap\{ t^n \} = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
+				</li>
+			</dl>
+		</p>
+	</assemblage>
+
+	<xi:include href="./c4-s1-ss4-interactives.ptx" />
+
+</subsection>
