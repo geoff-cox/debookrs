@@ -1,7 +1,7 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> <m>\lap\{e^{at}\}</m> </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title><m>\lap\{e^{at}\}</m></title>
 
 	<p>
-		A very common function associated to differential equations is the exponential function. So it makes sense to consider the Laplace transform of <m>e^{at}</m>, where <m>a</m> is a constant. Let's start with an example where <m>a = 7</m> and then generalize the result.
+		The exponential function is commonly encountered in differential equations, making its Laplace transform especially important. Let's explore the Laplace transform of the exponential function <m>e^{at}</m>, where <m>a</m> is a constant. We'll start with a specific example, setting <m>a = 7</m>, and then generalize the result.
 	</p>
 
 	<example>
@@ -10,94 +10,85 @@
 
 		<solution>
 			<p>
-				We use the definition of Laplace transform to get us started.
+				We begin by applying the definition of the Laplace transform:
 				<md>
-					<mrow> \lap\{ x(t) \} \amp= \lap\{ e^{7t} \} 				</mrow>
-					<mrow> 		\amp= \int_0^{\infty} \left(e^{7t}\right)e^{-st}\ dt 				</mrow>
-					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{-st + 7t}\ dt	</mrow>
-					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt 		</mrow>
+					<mrow> \lap\{ e^{7t} \} \amp= \int_0^{\infty} e^{7t} \cdot e^{-st}\, dt </mrow>
+					<mrow> \amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\, dt </mrow>
 				</md>
-				As before, we need restrict some values of <m>s</m> in order for this
-				improper integral to exist . In this case, we will need <m>7 - s</m>, in the exponent, to be non-zero and negative. That is, we need
-				<me> 7 - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm}7 \lt s. </me>
-				Hence, we move forward with the assumption that <m>s \gt 7</m>.
+				For this improper integral to converge, the exponent <m>7-s</m> must be negative, meaning:
+				<me> 7 - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} s \gt 7. </me>
+				Thus, we proceed under the assumption that <m>s \gt 7</m>.
 				<md>
-					<mrow> 	\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}dt </mrow>
-					<mrow>	\amp= \lim_{b \to \infty} \frac{1}{7-s}e^{(7-s)t}\Bigg|_0^b</mrow>
-					<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
-											\left[ e^{(7-s)b} - e^{(7-s)\cdot 0}\right]</mrow>
-					<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
-											\left[ e^{(7-s)b} - 1\right]</mrow>
-					<mrow>	\amp= \frac{1}{7-s}
-											\left[\lim_{b \to \infty}e^{(7-s)b}
-											- \lim_{b \to \infty}1\right]</mrow>
-					<mrow>	\amp= \frac{1}{7-s} \left[ 0 - 1\right] \quad
-											<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
-					<mrow>	\amp= \frac{-1}{7-s} \hspace{4.4cm}	</mrow>
-					<mrow>	\amp= \frac{1}{s - 7}, 					\quad s \gt 7 	</mrow>
+					<mrow> 
+						\lap\{ e^{7t} \} 
+							\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\, dt
+					</mrow>
+					<mrow> 
+							\amp= \lim_{b \to \infty} \frac{1}{7-s} e^{(7-s)t} \Bigg|_0^b
+					</mrow>
+					<mrow> 
+							\amp= \frac{1}{7-s} \left[ \lim_{b \to \infty} \left( e^{(7-s)b} - e^{0} \right) \right]
+					</mrow>
+					<mrow> 
+							\amp= \frac{1}{7-s} \left[ \lim_{b \to \infty} e^{(7-s)b} - 1 \right]
+					</mrow>
+					<mrow>
+							\amp= \frac{1}{7-s} \left[ 0 - 1 \right] \qquad \Big(e^{(\text{negative})b} \to 0\Big)
+					</mrow>
+					<mrow>
+							\amp= \frac{-1}{7-s} = \frac{1}{s-7}. \quad \text{for } s \gt 7
+					</mrow>
 				</md>
-				Thus, the Laplace transform of <m>x(t) = e^{7t}</m> is
-				<me>\ds \lap\{e^{7t}\} = \frac{1}{s - 7}</me>.
+				Thus, the Laplace transform of <m>e^{7t}</m> is:
+				<me>\ds \lap\{e^{7t}\} = \frac{1}{s - 7}, \quad s \gt 7.</me>
 			</p>
 		</solution>
 
 	</example>
 
 	<p>
-		Replacing <m>7</m> with <m>a</m> in the above example, we can generalize the result.
+		To generalize this result, let's replace <m>7</m> with a constant <m>a</m>.
 	</p>
 
 	<example>
 
-		<m>\quad</m> Show <m>\ds \lap \{ e^{at} \} = \frac{1}{s - a} </m>.
+		<m>\quad</m> Show that <m>\ds \lap \{ e^{at} \} = \frac{1}{s - a} </m>.
 
 		<solution>
 			<p>
-				We use the definition of Laplace transform to get us started.
+				We follow a similar process, starting with the definition of the Laplace transform:
 				<md>
-					<mrow> \lap\{ x(t) \} \amp= \lap\{ e^{at} \} 				</mrow>
-					<mrow> 		\amp= \int_0^{\infty} \left(e^{at}\right)e^{-st}\ dt 				</mrow>
-					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{-st + at}\ dt	</mrow>
-					<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{(a-s)t}\ dt 		</mrow>
+					<mrow> \lap\{ e^{at} \} \amp= \int_0^{\infty} e^{at} \cdot e^{-st}\, dt </mrow>
+					<mrow> \amp= \lim_{b \to \infty}\int_0^b e^{(a-s)t}\, dt </mrow>
 				</md>
-				As before, we need restrict some values of <m>s</m> in order for this
-				improper integral to exist . In this case, we will need <m>a - s</m>, in the exponent, to be non-zero and negative. That is, we need
-				<me> a - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm}a \lt s. </me>
-				Hence, we move forward with the assumption that <m>s \gt a</m>.
+				For the integral to converge, the exponent <m>a-s</m> must be negative, which requires <m>\ a - s \lt 0\ </m> or <m>\ s \gt a</m> to proceed
 				<md>
-					<mrow> 	\amp= \lim_{b \to \infty}\int_0^b e^{(a-s)t}dt </mrow>
-					<mrow>	\amp= \lim_{b \to \infty} \frac{1}{a-s}e^{(a-s)t}\Bigg|_0^b</mrow>
-					<mrow>	\amp= \frac{1}{a-s}\lim_{b \to \infty}
-											\left[ e^{(a-s)b} - e^{(a-s)\cdot 0}\right]</mrow>
-					<mrow>	\amp= \frac{1}{a-s}\lim_{b \to \infty}
-											\left[ e^{(a-s)b} - 1\right]</mrow>
-					<mrow>	\amp= \frac{1}{a-s}
-											\left[\lim_{b \to \infty}e^{(a-s)b}
-											- \lim_{b \to \infty}1\right]</mrow>
-					<mrow>	\amp= \frac{1}{a-s} \left[ 0 - 1\right] \quad
-											<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
-					<mrow>	\amp= \frac{-1}{a-s} \hspace{4.4cm}	</mrow>
-					<mrow>	\amp= \frac{1}{s - a}, 					\quad s \gt a 	</mrow>
+					<mrow> \lap\{ e^{at} \} \amp= \lim_{b \to \infty}\int_0^b e^{(a-s)t}\, dt </mrow>
+					<mrow> \amp= \lim_{b \to \infty} \frac{1}{a-s} e^{(a-s)t} \Bigg|_0^b </mrow>
+					<mrow> \amp= \frac{1}{a-s} \left[ \lim_{b \to \infty} \left( e^{(a-s)b} - e^{0} \right) \right] </mrow>
+					<mrow> \amp= \frac{1}{a-s} \left[ \lim_{b \to \infty} e^{(a-s)b} - 1 \right] </mrow>
+					<mrow> \amp= \frac{1}{a-s} \left[ 0 - 1 \right] </mrow>
+					<mrow> \amp= \frac{-1}{a-s} = \frac{1}{s-a}. \quad \text{for } s \gt a </mrow>
 				</md>
-				Thus, the Laplace transform of <m>x(t) = e^{at}</m> is
-				<me>\ds \lap\{e^{at}\} = \frac{1}{s - a}</me>.			
+				Thus, the Laplace transform of <m>e^{at}</m> is:
+				<me>\ds \lap\{e^{at}\} = \frac{1}{s - a}, \quad s \gt a.</me>
 			</p>
 		</solution>
 
 	</example>
 
 	<p>
-		We can now add this result to our list of common Laplace transforms.
+		With this result, we can now add the Laplace transform of <m>e^{at}</m> to our list of common Laplace transforms.
 	</p>
 
 	<assemblage xml:id="lt-table-L1-L2"><title>Common Laplace Transforms</title>
 		<p>
 			<dl width="narrow">
 				<li><title><m>{\LARGE \vphantom{\int}}L_1</m></title>
-					<m>\ds \lap\{ 1 \} = \frac{1}{s}, \quad s &gt;0 </m>
+					<m>\ds \lap\{ 1 \} = \frac{1}{s}, \quad s &gt; 0 </m>
 				</li>
 				<li xml:id="L2"><title><m>{\LARGE \vphantom{\int}}L_2</m></title>
-					<m>\ds \lap\{ e^{at} \} = \frac{1}{s - a}, \quad s &gt;a, \quad a \text{ is a constant} </m>
+					<m>\ds \lap\{ e^{at} \} = \frac{1}{s - a}, \quad s \gt a, \quad a \text{ is a constant} </m>
 				</li>
 			</dl>
 		</p>

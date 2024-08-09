@@ -1,7 +1,7 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> <m>\lap\{t^n\}</m> </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title><m>\lap\{t^n\}</m></title>
 
 	<p>
-		The next type of function we will consider is the power function. In particular, we will compute the Laplace transform of <m>t^n</m>, where <m>n</m> is a non-negative integer. We already know the transform for <m>n = 0</m> since <m>t^0 = 1</m> and this is <xref ref="L1" text="custom"><m>L_1</m></xref>. So it makes sense to start with <m>n = 1</m> and work our way up to the general formula.
+		Next, we'll explore the Laplace transform of the power function <m>t^n</m>, where <m>n</m> is a non-negative integer. We've already encountered the case where <m>n = 0</m>, since <m>t^0 = 1</m> and its transform is given by <xref ref="L1" text="custom"><m>L_1</m></xref>. Now, let's start with <m>n = 1</m> and work our way up to find a general formula for the Laplace transform of <m>t^n</m>.
 	</p>
 
 	<example>
@@ -11,73 +11,64 @@
 	
 		<solution>
 			<p>
-				Let's use the definition of Laplace transform to get us going.
+				We'll begin by applying the definition of the Laplace transform:
 				<md>
 					<mrow> 
 						\lap\{ t \}
-							\amp= \int_0^{\infty} \left(t\right) e^{-st}\ dt 
+							\amp= \int_0^{\infty} t \cdot e^{-st}\, dt 
 					</mrow>
 					<mrow> 				
-							\amp= \lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0 \quad <xref text="custom" ref="LT-s-ne-0-t">why is <m>s \ne 0</m>?</xref>\hspace{4.8cm}
+							\amp= \lim_{b \to \infty} \int_0^b t e^{-st}\, dt \quad (s \ne 0) \quad <xref text="custom" ref="LT-s-ne-0-t">Why is <m>s \ne 0</m>?</xref>
 					</mrow>
 				</md>
+				Using integration by parts, we have:
 				<md>
 					<mrow> 
 						\phantom{\lap\{t\}}
-							\amp= \lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} + \frac{1}{s^2}\right]\quad <xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>\hspace{2.5cm}
+							\amp= \lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} + \frac{1}{s^2}\right] \quad <xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>
 					</mrow>
 				</md>
+				As <m>b</m> approaches infinity:
 				<md>
 					<mrow> 
 						\phantom{\lap\{t\}}
-							\amp=  \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}	+ \lim_{b \to \infty}\frac{1}{s^2}\right]
+							\amp= \left[-\frac{1}{s}\lim_{b \to \infty}\frac{b}{e^{sb}} + \frac{1}{s^2}\right] \quad (s &gt; 0) \quad <xref text="custom" ref="LT-s-gt-0-t">\text{Why is } s &gt; 0?</xref>
 					</mrow>
-					<mrow> 
-							\amp=  \left[-\frac{1}{s}\lim_{b \to \infty}\frac{b}{e^{sb}} + \frac{1}{s^2}\right]\quad s &gt; 0 \quad
-								<xref text="custom" ref="LT-s-gt-0-t">why is s &gt; 0?</xref>\hspace{2.5cm}
-					</mrow>
-				</md>
-				<md>
 					<mrow> 
 						\phantom{\lap\{t\}}
-							\amp=  \left[-\frac{1}{s}\cdot 0 + \frac{1}{s^2}\right]\quad
-								<xref text="custom" ref="reason-limit-to-zero-t">why is the limits 0?</xref>
-								\hspace{4cm}
+							\amp= \left[0 + \frac{1}{s^2}\right] \quad <xref text="custom" ref="reason-limit-to-zero-t">Why is the limit 0?</xref>
 					</mrow>
 					<mrow> 		
 							\amp= \frac{1}{s^2}, \quad s \gt 0
 					</mrow>
 				</md>
-				Hence, we have <m>\ds \lap\{ t \} = \frac{1}{s^2}</m>, under the condition that <m>s&gt;0</m>.
+				Therefore, <m>\ds \lap\{ t \} = \frac{1}{s^2}</m>, valid for <m>s &gt; 0</m>.
 			</p>
 		</solution>
 	</example>
 	
 	<p>
-		We can also show the following.
+		Using similar steps, we can derive the following results:
 	</p>
 
 	<example>
 		<p>
 			<ul marker="square">
 				<li>	
-					<m> \ds \lap\{t^2\} = \frac{2}{s^3} \quad s \gt 0 \qquad </m>
-					<xref ref="std_LT_01" text="custom">Solution</xref> 
+					<m> \ds \lap\{t^2\} = \frac{2}{s^3}, \quad s \gt 0 \quad </m> <xref ref="std_LT_01" text="custom">Solution</xref>
 				</li>
 				<li>	
-					<m> \ds \lap\{t^3\} = \frac{6}{s^4} \quad s \gt 0 \qquad </m> 
-					<xref ref="std_LT_02" text="custom">Solution</xref> 
+					<m> \ds \lap\{t^3\} = \frac{6}{s^4}, \quad s \gt 0 \quad </m> <xref ref="std_LT_02" text="custom">Solution</xref> 
 				</li>
 				<li>
-					<m> \ds \lap\{t^4\} = \frac{24}{s^5} \quad s \gt 0 \qquad </m> 
-					<xref ref="std_LT_03" text="custom">Solution</xref> 
+					<m> \ds \lap\{t^4\} = \frac{24}{s^5}, \quad s \gt 0 \quad </m> <xref ref="std_LT_03" text="custom">Solution</xref> 
 				</li>
 			</ul>
 		</p>
 	</example>
 
 	<p>
-		Do you see the emerging pattern?  Rewriting the numerators may help.
+		Do you notice the emerging pattern? Let's rewrite the numerators:
 		<ul marker="">
 			<li>	
 				<m> \ds \lap\{t^2\} = \frac{2}{s^3} = \frac{2 \cdot 1}{s^3} = \frac{2!}{s^3} </m>
@@ -95,6 +86,8 @@
 				<m> \ds \lap\{t^n\} = \frac{n!}{s^{n+1}} </m>
 			</li>
 		</ul>
+		Thus, the general formula for the Laplace transform of <m>t^n</m> is:
+		<me>\ds \lap\{t^n\} = \frac{n!}{s^{n+1}}, \quad s &gt; 0.</me>
 	</p>
 
 	<assemblage xml:id="lt-table-L1-L3"><title>Common Laplace Transforms</title>
