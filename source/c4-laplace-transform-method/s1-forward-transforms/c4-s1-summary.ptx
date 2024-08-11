@@ -2,17 +2,57 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Summary &amp; Exercises </title>
 
 	<introduction>
-		
+
+		<p>
+			In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:
+		</p>
+
 		<p>
 			<assemblage color="green"><title>Summary of the Key Ideas</title>
 				<p>
-					<term> <em> Method</em> </term>
-					<p>
-						
-					</p>
+					<ul>
+						<li>
+							<term>Differential <m>\to</m> Algebraic Equations</term>. The Laplace transform converts a differential equation into an algebraic equation.
+						</li>
+						<li>
+							<term>Laplace Transform Concept</term>. Applying the Laplace transform to a differential equation is equivalent to multiplying the equation by <m>e^{-st}</m> and integrating with respect to <m>t</m> from <m>0</m> to <m>\infty</m>.
+						</li>
+						<li>
+							<term>Derivative Transfer via IBP</term>. Laplace transforms work by transferring derivatives from the dependent variable onto exponential functions using integration by parts (IBP).
+						</li>
+						<li>
+							<term>Common Function Transforms</term>. Demonstrated the conversion of specific functions listed in the table below.
+						</li>
+					</ul>
 				</p>
 			</assemblage>
 		</p>
+
+		<p>
+			The table below summarizes the common Laplace transforms that we derived in this section.
+		</p>
+
+		<assemblage xml:id="lt-table-L1-L5"><title>Common Laplace Transforms <m>L_1-L_5</m></title>
+			<p>
+				<dl width="narrow">
+					<li><title><m>{\LARGE \vphantom{\int}}L_1</m></title>
+						<m>\ds \lap\{ 1 \} = \frac{1}{s}, \quad s &gt;0 </m>
+					</li>
+					<li><title><m>{\LARGE \vphantom{\int}}L_2</m></title>
+						<m>\ds \lap\{ e^{at} \} = \frac{1}{s - a}, \quad s &gt;a, \quad a \text{ is a constant} </m>
+					</li>
+					<li><title><m>{\LARGE \vphantom{\int}}L_3</m></title>
+						<m>\ds \lap\{ t^n \} = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
+					</li>
+					<li><title><m>{\LARGE \vphantom{\int}}L_4</m></title>
+						<m>\ds \lap\{ \sin(bt) \} = \frac{b}{s^2+b^2}, \quad s &gt;0, \quad b \text{ is a constant} </m>
+					</li>
+					<li><title><m>{\LARGE \vphantom{\int}}L_5</m></title>
+						<m>\ds \lap\{ \cos(bt) \} = \frac{s}{s^2+b^2}, \quad s &gt;0, \quad b \text{ is a constant} </m>
+					</li>
+				</dl>
+			</p>
+		</assemblage>
 		
 	</introduction>
 
@@ -130,7 +170,158 @@
 				</answer>
 		
 			</exercise>
+
+			<exercise>
+				<statement>
+					<m>\ds \lap\{-40e^{3t}\}</m>
+				</statement>
+				<solution>
+					To compute this, we use the definition of the Laplace transform.
+					<md>
+						<mrow> \lap\{-40e^{3t}\} \amp = \int_0^{\infty} e^{-st} \cdot (-40e^{3t}) \ dt </mrow>
+						<mrow> \amp = -40 \int_0^{\infty} e^{-st+3t} \ dt </mrow>
+						<mrow> \amp = -40 \int_0^{\infty} e^{-(s-3)t} \ dt </mrow>
+						<mrow> \amp = -40 \left[ \frac{1}{s-3} e^{-(s-3)t} \right]_0^{\infty} </mrow>
+						<mrow> \amp = -40 \left( \lim_{t \to \infty} \frac{1}{s-3} e^{-(s-3)t} - \frac{1}{s-3} \right) </mrow>
+						<mrow> \amp = -40 \left( 0 - \frac{1}{s-3} \right) </mrow>
+						<mrow> \amp = \frac{40}{s-3} </mrow>
+					</md>
+				</solution>
+				<answer>
+					<m>\ds \frac{40}{s-3}</m>
+				</answer>
+			</exercise>
 			
+			<exercise>
+				<statement>
+					<m>\ds \lap\{15\}</m>
+				</statement>
+				<solution>
+					<p>
+						By the above definition, we have
+						<md>
+							<mrow>	\lap\{ 15 \}	\amp= \int_0^{\infty} \left(15\right)e^{-st}dt \qquad \text{(improper integral)}	</mrow>
+							<mrow>					\amp= \lim_{b \to \infty}\int_0^b 15 e^{-st}dt	</mrow>
+							<mrow>					\amp= 15 \lim_{b \to \infty}\int_0^b e^{-st}dt \qquad (s\text{ is constant here})	</mrow>
+						</md>
+						At this point, we need to assume that <m>s\ne0</m> in order to continue. If you are curious as to why, see this <xref text="custom" ref="LT-s-ne-0-15">note</xref> for an explanation. Next, we integrate using the substitution <m>u=-st</m>.
+					  </p>
+			
+					<p>
+						<md>
+							<mrow>	\amp= 15\lim_{b \to \infty} -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}	</mrow>
+							<mrow>	\amp= 15\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]	</mrow>
+							<mrow>	
+									\amp= 15 \cdot -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] \qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+							</mrow>
+							<mrow>	
+									\amp= -\frac{15}{s}	\Big[ \lim_{b \to \infty} e^{-sb} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big] \qquad(s &gt; 0)
+							</mrow>
+							<mrow>	
+								\amp= -\frac{15}{s} \left[0 - 1\right] = \frac{15}{s}
+							</mrow>
+						</md>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{15}{s}</m>
+					</p>
+				</answer>
+			
+			</exercise>
+			
+			<exercise>
+				<statement>
+					<m>\ds \lap\{e^{7t}\}</m>
+				</statement>
+				<solution>
+					<p>
+						We use the definition of Laplace transform to get us started.
+						<md>
+							<mrow> 	\lap\{ e^{7t} \}	\amp= \int_0^{\infty} \left(e^{7t}\right)e^{-st}\ dt 				</mrow>
+							<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{-st + 7t}\ dt	</mrow>
+							<mrow> 		\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt 		</mrow>
+						</md>
+						As before, we need restrict some values of <m>s</m> in order for this
+						improper integral to exist . In this case, we will need <m>7 - s</m>, in the exponent, to be non-zero and negative. That is, we need
+						<me> 7 - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm}7 \lt s. </me>
+						Hence, we move forward with the assumption that <m>s \gt 7</m>.
+						<md>
+							<mrow> 	\amp= \lim_{b \to \infty}\int_0^b e^{(7-s)t}dt </mrow>
+							<mrow>	\amp= \lim_{b \to \infty} \frac{1}{7-s}e^{(7-s)t}\Bigg|_0^b</mrow>
+							<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
+													\left[ e^{(7-s)b} - e^{(7-s)\cdot 0}\right]</mrow>
+							<mrow>	\amp= \frac{1}{7-s}\lim_{b \to \infty}
+													\left[ e^{(7-s)b} - 1\right]</mrow>
+							<mrow>	\amp= \frac{1}{7-s}
+													\left[\lim_{b \to \infty}e^{(7-s)b}
+													- \lim_{b \to \infty}1\right]</mrow>
+							<mrow>	\amp= \frac{1}{7-s} \left[ 0 - 1\right] \quad
+													<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
+							<mrow>	\amp= \frac{-1}{7-s} \hspace{4.4cm}	</mrow>
+							<mrow>	\amp= \frac{1}{s - 7}, 					\quad s \gt 7 	</mrow>
+						</md>
+						Thus, 
+						<me>\ds \lap\{e^{7t}\} = \frac{1}{s - 7}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{1}{s - 7}</m>
+					</p>
+				</answer>
+			
+			</exercise>
+			
+			<exercise>
+				<statement>
+					<m>\ds \lap\{11t\}</m>
+				</statement>
+				<solution>
+					<p>
+						Let's use the definition of Laplace transform to get us going.
+						<md>
+							<mrow> 
+								\lap\{ 11t \}
+									\amp= \int_0^{\infty} \left(11t\right) e^{-st}\ dt 
+							</mrow>
+							<mrow> 				
+									\amp= 11\lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0 \quad <xref text="custom" ref="LT-s-ne-0-t">why is <m>s \ne 0</m>?</xref>\hspace{4.8cm}
+							</mrow>
+						</md>
+						<md>
+							<mrow> 
+								\phantom{\lap\{11t\}}
+									\amp= 11\lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}\right]\quad <xref text="custom" ref="reason-int-by-parts-texpt">Integration by parts</xref>\hspace{2.5cm}
+							</mrow>
+						</md>
+						<md>
+							<mrow> \phantom{\lap\{11t\}}\amp= 11 \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}
+												- \lim_{b \to \infty}\frac{1}{s^2}e^{-sb}
+												+ \lim_{b \to \infty}\frac{1}{s^2}\right]</mrow>
+							<mrow> \amp= 11 \left[-\frac{1}{s}\lim_{b \to \infty}be^{-sb}
+												- \frac{1}{s^2}\lim_{b \to \infty}e^{-sb}
+												+ \frac{1}{s^2}\right]\quad s > 0 \quad
+													<xref text="custom" ref="LT-s-gt-0-t">why is s > 0?</xref>\hspace{1.0cm}</mrow>
+						</md>
+						<md>
+							<mrow> \phantom{\lap\{11t\}}\amp= 11 \left[-\frac{1}{s}\cdot 0
+												- \frac{1}{s^2}\cdot 0 + \frac{1}{s^2}\right]\quad
+													<xref text="custom" ref="reason-limit-to-zero-t">why are the limits 0?</xref>
+													\hspace{3.6cm}</mrow>
+							<mrow> 		\amp= \frac{11}{s^2}, \quad s \gt 0 						</mrow>
+						</md>
+						Hence, we have <m>\ds \lap\{ 11t \} = \frac{11}{s^2}</m>, under the condition that <m>s>0</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{11}{s^2}</m>
+					</p>
+				</answer>
+			</exercise>
+
 		</exercisegroup>
 
 		<exercisegroup cols="2"><title>Forward Transform</title>
@@ -241,6 +432,91 @@
 					<me>\lap\{e^{0.0001 t}\} = \frac{1}{s-0.0001} </me>
 				</answer>
 
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title>Exploring the Forward Laplace Transform</title>
+
+			<introduction>
+				<p>
+					Use the concepts discussed in the section to solve the following exercises.
+				</p>
+			</introduction>
+		
+			<exercise>
+				<statement>
+					Answer the following questions related to the Laplace transform of <m>y'</m>.
+					<ol>
+						<li>
+							<p>
+								Show that 
+								<me>\lap\{y'(t)\} = \lim_{b\to \infty}\ub{\int_0^{b} y'(t) \cdot e^{-st} \ dt}_{I}</me>.
+							</p>
+							<solution>
+								<p>
+									This follows directly from the definition of the Laplace transform.
+									<me>\lap\{y'(t)\} = \int_0^{\infty} y'(t) \cdot e^{-st} \ dt = \lim_{b\to \infty}\ub{\int_0^{b} y'(t) \cdot e^{-st} \ dt}_{I}</me>.
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								Use integration by parts to show that
+								<me>I = e^{-sb} \cdot y(b) - y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt</me>.
+							</p>
+							<solution>
+								<p>
+									Select <m>u = e^{-st}</m> and <m>dv = y'(t) \ dt</m>. Then
+									<md>
+										<mrow> \int_0^{b} e^{-st} \cdot y' \ dt \amp = e^{-st} \cdot y(t)\bigg|_0^{b} - \int_0^{b} y(t) \cdot (-s e^{-st}) \ dt </mrow>
+										<mrow> \amp = e^{-sb} \cdot y(b) - e^{0} \cdot y(0) - (-s) \int_0^{b} y(t) \cdot e^{-st} \ dt </mrow>
+										<mrow> \amp = e^{-sb} \cdot y(b) - \cdot y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt </mrow>
+									</md>
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								Plug <m>I</m> from (b) into the limit from (a) to show that
+								<me>\lap\{y'\} = \ub{\lim_{b \to \infty} \left(\frac{y(b)}{e^{sb}}\right)}_L - y(0) + s \lap\{y\}</me>.
+							</p>
+							<solution>
+								<p>
+									Substitute <m>I</m> from (b) into the limit from (a).
+									<md>
+										<mrow> 
+											\lap\{	 \amp y'\}
+										</mrow>
+										<mrow>  
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) - y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt \right) 
+										</mrow>
+										<mrow> 
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) \right)  - \lim_{b\to \infty} y(0) + \lim_{b\to \infty} \left(s \int_0^{b} y(t) \cdot e^{-st} \ dt \right) 
+										</mrow>
+										<mrow> 
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) \right)  - y(0) + s\lim_{b\to \infty} \left(\int_0^{b} y(t) \cdot e^{-st} \ dt \right) 
+										</mrow>
+										<mrow> 
+													=\amp \ub{\lim_{b \to \infty} \left(\frac{y(b)}{e^{sb}}\right)}_L - y(0) + s \lap\{y\} 
+										</mrow>
+									</md>
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								In order for <m>\lap\{y'\}</m> to exist, what must be true?
+							</p>
+							<answer>
+								<p>
+									The limit, <m>L</m>, must converge. That is, as <m>t</m> gets large, the ratio, <m>\frac{y(t)}{e^{st}}</m>, flattens out to some number. In order to maintain this ratio, growth rate of <m>y(t)</m> must be less than or equal to <m>e^{st}</m>.
+								</p>
+							</answer>
+						</li>
+					</ol>
+					
+				</statement>
 			</exercise>
 		
 		</exercisegroup>
