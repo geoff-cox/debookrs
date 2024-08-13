@@ -39,44 +39,6 @@
 		Since <m>b \to \infty</m>, then <m>\os{negative}{\ob{(7-s)}}b \to -\infty</m> and therefore,
 		<m>\ds e^{\!\!\os{\Large negative}{\ob{(7-s)}}\!\!b} \to 0</m>
 	</paragraphs>
-	
-	<paragraphs xml:id="reason-limit-to-zero-t">
-		<title/>
-		We've seen the second limit, but let's review it again. If  <m>s \gt 0</m>, then <m>sb \to \infty</m> and
-		<me>
-		\lim_{b \to \infty} e^{-sb} = \lim_{b \to \infty}
-		\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
-		</me>
-	
-		The first limit requires L'Hopital's rule. Remember, when using L'Hopital's rule here, we must take derivatives with respect to <m>b</m> (where <m>s</m> is constant). Here are the details:
-		<md>
-		<mrow> \lim_{b \to \infty}be^{-sb}
-			\amp= \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-			\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
-			= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-			= 0, \quad s \gt 0</mrow>
-		</md>
-	</paragraphs>
-	
-	<paragraphs xml:id="reason-int-by-parts-texpt">
-		<title/>
-		<md>
-			<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
-			<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
-		</md>
-		<md>
-			<mrow>  
-				\int_0^b te^{-st} dt
-					\amp= t \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
-			</mrow>
-			<mrow> 	
-					\amp= -\frac{b}{s}e^{-sb} + \frac{1}{s}\ub{\int_0^b e^{-st} dt}_{\lap\{1\}}
-			</mrow>
-			<mrow> 		
-					\amp= -\frac{b}{s}e^{-sb} + \frac{1}{s^2}
-			</mrow>
-		</md>
-	</paragraphs>
 
 	<paragraphs xml:id="std_LT_01">
 		<title/>
@@ -558,6 +520,153 @@
 		</p>
 	</paragraphs>
 	
-		
+	<paragraphs  xml:id="laplace-transform-of-exponential"><title><m>\lap\{e^{at}\}</m> Details</title>
+		<p>
+			Using the definition of the Laplace transform:
+			<md>
+				<mrow> 
+					\lap\{ e^{at} \} 
+					\amp= \int_0^{\infty} e^{-st} \cdot e^{at}\ dt
+				</mrow>
+				<mrow> 
+					\amp= \lim_{b \to \infty}\int_0^b e^{(-s+a)t}\ dt
+				</mrow>
+			</md>
+			For the integral to converge, the exponent <m>-s+a</m> must be negative, leading to the condition <m>s \gt a</m>. Proceeding with the integration:
+			<md>
+				<mrow> 
+					\lap\{ e^{at} \} 
+					\amp= \lim_{b \to \infty}\int_0^b e^{(-s+a)t}\ dt
+				</mrow>
+				<mrow> 
+					\amp= \lim_{b \to \infty} \frac{1}{a-s} e^{(-s+a)t} \Bigg|_0^b
+				</mrow>
+				<mrow> 
+					\amp= \frac{1}{a-s} \left[ \lim_{b \to \infty} \left( e^{(a-s)b} - 1 \right) \right]
+				</mrow>
+				<mrow>
+					\amp= \frac{1}{a-s} \left[ 0 - 1 \right]
+				</mrow>
+				<mrow>
+					\amp= -\frac{1}{a-s} = \frac{1}{s-a}. \quad \text{for } s \gt a
+				</mrow>
+			</md>
+			Thus, the Laplace transform of <m>e^{at}</m> is:
+			<me>\ds \lap\{e^{at}\} = \frac{1}{s - a}, \quad s \gt a.</me>
+		</p>
+	</paragraphs>
 
+	<paragraphs  xml:id="laplace-transform-of-t-power-1"><title><m>\lap\{t\}</m> Details</title>
+		<p>
+			Using the definition of the Laplace transform:
+			<me>
+				\lap\{ t \}	= \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t\ dt}_{I}
+			</me>
+			<xref text="custom" ref="laplace-transform-of-t-power-1-IBP">Integration by parts on <m>I</m></xref>, gives us
+			<md>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= \lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} + \frac{1}{s}\int_0^b e^{-st} dt\right]
+				</mrow>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b}{e^{sb}}\right] + \frac{1}{s}\lim_{b \to \infty}\int_0^b e^{-st}\ dt
+				</mrow>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b}{e^{sb}}}_{L} + \frac{1}{s}\ub{\int_0^\infty e^{-st}\ dt}_{\lap\{1\}}
+				</mrow>
+			</md>
+			<xref text="custom" ref="laplace-transform-of-t-power-1-LH">L'Hopital's Rule shows <m>L=0</m></xref> and <xref ref="L1" text="custom"><m>\lap\{1\}</m></xref> is known. Therefore, 
+			<me>\lap\{ t \} = \frac{1}{s^2}, \quad s &gt; 0</me>.
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="laplace-transform-of-t-power-1-IBP"><title/>
+		<md>
+			<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
+			<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+		</md>
+		<md>
+			<mrow>  
+				\int_0^b e^{-st} \cdot t\ dt
+					\amp= t \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
+			</mrow>
+			<mrow> 	
+					\amp= -\frac{b}{s}e^{-sb} + \frac{1}{s}\int_0^b e^{-st} dt
+			</mrow>
+		</md>
+	</paragraphs>
+
+	<paragraphs xml:id="laplace-transform-of-t-power-1-LH"><title/>
+		Since <m>b</m> is the limit variable, we must take derivatives with respect to <m>b</m> (where <m>s</m> is constant). Assuming <m>s \gt 0</m>,
+		<me>
+			L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
+				= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				= 0
+		</me>
+	</paragraphs>
+
+	<paragraphs  xml:id="laplace-transform-of-t-power-2"><title><m>\lap\{t^2\}</m> Details</title>
+		<p>
+			Using the definition of the Laplace transform:
+			<me>
+				\lap\{ t^2 \} = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t^2\ dt}_{I}
+			</me>
+			<xref text="custom" ref="laplace-transform-of-t-power-2-IBP">Integration by parts on <m>I</m></xref>, gives us
+			<md>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= \lim_{b \to \infty} \left[-\frac{b^2}{s}e^{-sb} + \frac{2}{s}\int_0^b e^{-st}\cdot t\ dt\right]
+				</mrow>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b^2}{e^{sb}}\right] + \frac{2}{s}\lim_{b \to \infty}\int_0^b e^{-st}\cdot t\ dt
+				</mrow>
+				<mrow> 
+					\phantom{\lap\{t\}}
+						\amp= -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b^2}{e^{sb}}}_{L} + \frac{2}{s}\ub{\int_0^\infty e^{-st}\cdot t\ dt}_{\lap\{t\}}
+				</mrow>
+			</md>
+			<xref text="custom" ref="laplace-transform-of-t-power-2-LH">L'Hopital's Rule shows <m>L=0</m></xref> and <m>\lap\{t\}=1/s^2</m>. Therefore, 
+			<me>\lap\{ t^2 \} = \frac{2}{s^3}, \quad s &gt; 0</me>.
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="laplace-transform-of-t-power-2-IBP"><title/>
+		<md>
+			<mrow> u = t^2,		\quad\amp	dv = e^{-st}dt, 		</mrow>
+			<mrow> du = 2t\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+		</md>
+		<md>
+			<mrow>  
+				\int_0^b e^{-st} \cdot t^2\ dt
+					\amp= t^2 \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) 2t\ dt
+			</mrow>
+			<mrow> 	
+					\amp= -\frac{b^2}{s}e^{-sb} + \frac{2}{s} \int_0^b e^{-st} \cdot t\ dt
+			</mrow>
+		</md>
+	</paragraphs>
+
+	<paragraphs xml:id="laplace-transform-of-t-power-2-LH"><title/>
+		This time we apply L'Hopital's rule twice. Assuming <m>s \gt 0</m>,
+		<md>
+			<mrow> 
+				L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b^2}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}\ 
+				\amp\us{LH}{=}\ \lim_{b \to \infty}\frac{2b}{se^{sb}}\
+				= \frac{2}{s}\lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+			</mrow>
+			<mrow> 
+				\amp\us{LH}{=}\ \frac{2}{s}\lim_{b \to \infty}\frac{1}{se^{sb}}
+				= \frac{2}{s^2}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				= 0
+			</mrow>
+		</md>
+	</paragraphs>
+
+	<paragraphs xml:id="factorial"><title>factorial</title>
+		The factorial of <m>n</m>, denoted <m>n!</m>, is the product of all positive integers less than or equal to <m>n</m>. For example, <m>5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120</m>.
+	</paragraphs>
 </section>
