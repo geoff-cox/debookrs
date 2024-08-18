@@ -1,94 +1,259 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Properties </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Minor Modifications to Match Common Forms </title>
 
     <p>
-        In the previous section, the function <m>F(s)</m> matched with one of the properties in the table exactly. This is rare, and we need to develop strategies for when the function is not an exact match.
+        In the previous section, we explored how to directly compute backward Laplace transforms when the function of <m>s</m> matches a form in the common forward transform table. However, in practice, not all <m>s</m>-functions will align perfectly with these forms. In fact, the most challenging part of the Laplace Transform Method lies in preparing the <m>s</m>-function for the backward step, so that we can recover the solution. This process involves modifications of the function before matching the known forms in our table. In this discussion, we will cover some of the minor modifications that will need for the Laplace Transform Method.
     </p>
 
-    <example>
+    <p>
+        Before diving into specifics, we need to mention the linearity property of the inverse Laplace transform, which will be crucial in this discussion.
+        <assemblage xml:id="ilt-properties-P1"><title>Inverse Laplace Transform Property</title>
+            <p>
+                For any constants <m>a</m> and <m>b</m> and functions of <m>s</m> <m>F(s)</m> and <m>G(s)</m>, 
+                <dl width="narrow">
+                    <li xml:id="iP1">
+                        <m>\ds \ilap{ a f(t) \pm b g(t) } = a \ilap{f(t)} \pm b \ilap{g(t)}</m>
+                    </li>
+                </dl>
+            </p>
+        </assemblage>
+    </p>
+
+    <paragraphs><title>Part 1: Modification by a Missing Constant</title>
+
         <p>
-            Find the inverse Laplace transform of <m>\ds G(s) = \frac{17}{s^4}.</m>
+            One common issue is that the function might be missing a constant that is necessary to match a form in the table. In these cases, you can introduce any missing constants via multiplication, and then rebalance the expression by dividing by the same constant. This simple modification will be used in nearly every backward transform step you encounter.
         </p>
 
-        <solution>
-            <p>
-                When we look in the right column of the table, this one seems to line up best with <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>...but it's not a perfect match. If we were going to use <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>, then <m>n</m> would have to be 3 (because this gives us the <m>s^4</m> that we have). We would have <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref> perfectly if we the numerator was <m>3! = 6,</m> but our numerator is 17. Luckily, we can use the linearity property to help. Since the 17 is not helpful to us, we can factor it out.
-                <md>
-                    <mrow>g(t)	\amp= \lap^{-1}\{ G(s) \}</mrow>
-                    <mrow>\amp= \lap^{-1}\left\{ \frac{17}{s^4} \right\}</mrow>
-                    <mrow>\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\} </mrow>
-                </md> 
-            </p>
+        <example>
 
-            <p>
-                We have the 17 out of the way, so we are halfway done. Now we need to (carefully) get a 6 in that numerator. We will again lean on linearity, but we will also use a little trick mathematicians use from time to time:  multiplying by 1. It's always safe to multiply any expression by 1 because multiplying by 1 doesn't change the <em>value</em> of an expression. The form of 1 that will be useful here is the form <m>\ds \frac{6}{6},</m> as below.
-                
+            <m>\quad</m>Compute the inverse Laplace transforms for each.
 
-                <md>
-                    <mrow>g(t)	\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
-                    <mrow>\amp= \frac{6}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
-                    <mrow>\amp= \frac{1}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{6}{s^4} \right\} </mrow>
-                    <mrow>\amp= \frac{17}{6}\cdot \lap^{-1}\left\{ \frac{3!}{s^{3+1}} \right\}</mrow>
-                    <mrow>\amp= \frac{17}{6}t^3. </mrow>
-                </md>
-                Thus, we have shown that 
-                <m>\ds \lap^{-1}\left\{ \frac{17}{s^4} \right\} = \frac{17}{6}t^3.</m>
-            </p>
-        </solution>
-    </example>
-
-    <example>
-        <p>
-            Find <m>\ds \lap^{-1} \left\{\frac{7}{s^2 + 25}\right\}.</m>
-        </p>
-        <solution>
-            <p>
-                Our first goal is to identify which property in the table is going to be the closest match to the expression we are given. If we look in the right hand column of the Laplace transform table, the right choice seems to be either <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> or <xref ref="LT-Table-L5" text="custom"><m>L5</m></xref>. The distinguishing factor between the two is whether or not we have an <m>s</m> in the numerator. In this case, we do not, so we aim to drive toward <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref>.
-            </p>
-
-            <p>
-                Note that we don't have a perfect match with that property, so we will have to do a little manipulation, as we did in the previous example, to get our function to match up perfectly. In order for us to do that manipulation, we do need to have in mind what exactly we are aiming for. That is, do we want to make our expression like <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 7</m> or with <m>b = 5</m>?  If we think about the kind of manipulation we did in the previous example, where we multiplied by a form of 1, we might guess that it's easier to manipulate the constant in the numerator. (If we manipulate constants in the denominator, we need to worry about two terms).
-            </p>
-
-            <p>
-                If we agree that we would like to match <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 5,</m> then we proceed using linearity in much the same way we did the previous example.
-                <md>
-                    <mrow>\lap^{-1} \left\{\frac{7}{s^2 + 25}\right\}	\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 25}\right\}</mrow>  
-                                                    
-                    <mrow>\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
-                    <mrow>\amp=  \frac{5}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
-                    <mrow>\amp=  \frac{1}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{5}{s^2 + 5^2}\right\}</mrow>
+            <tabular>
+                <col width="20%" halign="center"/>
+                <col width="75%"/>
+                <row>
+                    <cell><m>\ds \frac{5}{s^2 + 4}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    This doesn't immediately match the <xref ref="L4" text="custom">common sine form</xref>, <m>\ds \frac{b}{s^2 + b^2}</m>, because the numerator should be <m>2</m> instead of <m>5</m>. To fix this, factor out the constant <m>5</m>:
+                                    <me>\ds \frac{5}{s^2 + 4} = 5 \cdot \frac{1}{s^2 + 4}.</me>
+                                    Now, notice that <m>\frac{1}{s^2 + 4}</m> matches the sine form with <m>b = 2</m>. The inverse transform is:
+                                    <me>\lap^{-1}\left\{5 \cdot \frac{1}{s^2 + 4}\right\} = 5 \cdot \sin(2t).</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{10}{(s - 3)^2 + 25}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    The numerator here is <m>10</m>, but for the cosine form, we need the numerator to be <m>5</m>. Factor out the <m>10</m> and adjust the numerator:
+                                    <me>\ds \frac{10}{(s - 3)^2 + 25} = 10 \cdot \frac{1}{(s - 3)^2 + 25} = 10 \cdot \frac{1}{5} \cdot \frac{5}{(s - 3)^2 + 25}.</me>
+                                    Now, this matches the <xref ref="L7" text="custom">cosine form</xref> with <m>a = 3</m> and <m>b = 5</m>. The inverse transform is:
+                                    <me>\lap^{-1}\left\{10 \cdot \frac{1}{5} \cdot \frac{5}{(s - 3)^2 + 25}\right\} = 2 \cdot e^{3t}\cos(5t).</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{12}{s^3}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    This doesn't directly match the <xref ref="L3" text="custom">polynomial form</xref>, <m>\frac{n!}{s^{n+1}}</m>, because the numerator should be <m>2!</m> instead of <m>12</m>. We can fix this by factoring out the constant <m>12</m>:
+                                    <me>\ds \frac{12}{s^3} = 12 \cdot \frac{1}{s^3} = 12 \cdot \frac{1}{2!} \cdot \frac{2!}{s^3}.</me>
+                                    Now, this matches the polynomial form with <m>n = 2</m>. The inverse transform is:
+                                    <me>\lap^{-1}\left\{12 \cdot \frac{1}{2!} \cdot \frac{2!}{s^3}\right\} = 6t^2.</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{17}{s^4}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    When we look in the right column of the table, this one seems to line up best with <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>...but it's not a perfect match. If we were going to use <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>, then <m>n</m> would have to be 3 (because this gives us the <m>s^4</m> that we have). We would have <xref ref="LT-Table-L3" text="custom"><m>L3</m></xref> perfectly if we the numerator was <m>3! = 6,</m> but our numerator is 17. Luckily, we can use the linearity property to help. Since the 17 is not helpful to us, we can factor it out.
+                                    <md>
+                                        <mrow>g(t)	\amp= \lap^{-1}\{ G(s) \}</mrow>
+                                        <mrow>\amp= \lap^{-1}\left\{ \frac{17}{s^4} \right\}</mrow>
+                                        <mrow>\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\} </mrow>
+                                    </md> 
+                                </p>
+                    
+                                <p>
+                                    We have the 17 out of the way, so we are halfway done. Now we need to (carefully) get a 6 in that numerator. We will again lean on linearity, but we will also use a little trick mathematicians use from time to time:  multiplying by 1. It's always safe to multiply any expression by 1 because multiplying by 1 doesn't change the <em>value</em> of an expression. The form of 1 that will be useful here is the form <m>\ds \frac{6}{6},</m> as below.
+                                    
+                    
+                                    <md>
+                                        <mrow>g(t)	\amp= 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
+                                        <mrow>\amp= \frac{6}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{1}{s^4} \right\}</mrow>
+                                        <mrow>\amp= \frac{1}{6}\cdot 17 \cdot \lap^{-1}\left\{ \frac{6}{s^4} \right\} </mrow>
+                                        <mrow>\amp= \frac{17}{6}\cdot \lap^{-1}\left\{ \frac{3!}{s^{3+1}} \right\}</mrow>
+                                        <mrow>\amp= \frac{17}{6}t^3. </mrow>
+                                    </md>
+                                    Thus, we have shown that 
+                                    <m>\ds \lap^{-1}\left\{ \frac{17}{s^4} \right\} = \frac{17}{6}t^3.</m>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{7}{s^2 + 25}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    Our first goal is to identify which property in the table is going to be the closest match to the expression we are given. If we look in the right hand column of the Laplace transform table, the right choice seems to be either <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> or <xref ref="LT-Table-L5" text="custom"><m>L5</m></xref>. The distinguishing factor between the two is whether or not we have an <m>s</m> in the numerator. In this case, we do not, so we aim to drive toward <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref>.
+                                </p>
+                    
+                                <p>
+                                    Note that we don't have a perfect match with that property, so we will have to do a little manipulation, as we did in the previous example, to get our function to match up perfectly. In order for us to do that manipulation, we do need to have in mind what exactly we are aiming for. That is, do we want to make our expression like <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 7</m> or with <m>b = 5</m>?  If we think about the kind of manipulation we did in the previous example, where we multiplied by a form of 1, we might guess that it's easier to manipulate the constant in the numerator. (If we manipulate constants in the denominator, we need to worry about two terms).
+                                </p>
+                    
+                                <p>
+                                    If we agree that we would like to match <xref ref="LT-Table-L4" text="custom"><m>L4</m></xref> with <m>b = 5,</m> then we proceed using linearity in much the same way we did the previous example.
+                                    <md>
+                                        <mrow>\lap^{-1} \left\{\frac{7}{s^2 + 25}\right\}	\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 25}\right\}</mrow>  
+                                                                        
+                                        <mrow>\amp=  7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
+                                        <mrow>\amp=  \frac{5}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{1}{s^2 + 5^2}\right\}</mrow>
+                                        <mrow>\amp=  \frac{1}{5}\cdot 7\cdot \lap^{-1} \left\{\frac{5}{s^2 + 5^2}\right\}</mrow>
+                                                                    
+                                        <mrow>\amp=  \frac{7}{5}\sin(5t).</mrow>
+                                                                        
+                                    </md>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{2}{(s+7)^5}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    We aim to make this function match <xref ref="LT-Table-L6" text="custom"><m>L6</m></xref>, as follows.
+                                    <md>
+                                        <mrow>g(t)	\amp= \lap^{-1}\left\{G(s) \right\}</mrow>
+                                        <mrow>\amp= \lap^{-1}\left\{ \frac{2}{(s+7)^5} \right\}</mrow>
+                                        <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^5} \right\}</mrow>
                                                 
-                    <mrow>\amp=  \frac{7}{5}\sin(5t).</mrow>
-                                                    
-                </md>
-            </p>
-        </solution>
-    </example>
+                                        <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
+                                        <mrow>\amp= \frac{4!}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
+                                        <mrow>\amp= \frac{1}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{4!}{\Big(s-(-7)\Big)^{4+1}} \right\}</mrow>
+                                                
+                                        <mrow>\amp= \frac{1}{12} e^{-7t}t^4.</mrow>
+                                                
+                                    </md>
+                                    
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+            </tabular>
+        </example>
 
-    <example>
+    </paragraphs>
+
+    <xi:include href="./c4-s2-ss2-1-interactives.ptx" />
+
+    <paragraphs><title>Part 2: Splitting a Fraction</title>
+
         <p>
-            Find the inverse Laplace transform of <m>\ds G(s) = \frac{2}{(s+7)^5}</m>.
+            Another common modification is when the <m>s</m>-function is a fraction that combines multiple common forms. In these cases, you can usually split the fraction as the sum of forms that match known forms from the table.
         </p>
-        <solution>
-            <p>
-                We aim to make this function match <xref ref="LT-Table-L6" text="custom"><m>L6</m></xref>, as follows.
-                <md>
-                    <mrow>g(t)	\amp= \lap^{-1}\left\{G(s) \right\}</mrow>
-                    <mrow>\amp= \lap^{-1}\left\{ \frac{2}{(s+7)^5} \right\}</mrow>
-                    <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^5} \right\}</mrow>
-                            
-                    <mrow>\amp= 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
-                    <mrow>\amp= \frac{4!}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{1}{(s+7)^{4+1}} \right\}</mrow>
-                    <mrow>\amp= \frac{1}{4!}\cdot 2 \cdot \lap^{-1}\left\{ \frac{4!}{\Big(s-(-7)\Big)^{4+1}} \right\}</mrow>
-                            
-                    <mrow>\amp= \frac{1}{12} e^{-7t}t^4.</mrow>
-                            
-                </md>
-                
-            </p>
-        </solution>
-    </example>
-	
-	<xi:include href="./c4-s2-ss2-interactives.ptx" />
 
+        <example>
+
+            <m>\quad</m>Compute the inverse Laplace transforms for each.
+
+            <tabular>
+                <col width="20%" halign="center"/>
+                <col width="75%"/>
+                <row>
+                    <cell><m>\ds \frac{s - 4}{s^2 + 16}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    Split the fraction into two separate terms:
+                                    <me>\ds \frac{s - 4}{s^2 + 16} = \frac{s}{s^2 + 16} - \frac{4}{s^2 + 16}.</me>
+                                    Now, apply the inverse Laplace transform to each term. The first term matches the cosine form, and the second term matches the sine form:
+                                    <me>\lap^{-1}\left\{\frac{s}{s^2 + 16}\right\} = \cos(4t), \quad \lap^{-1}\left\{\frac{4}{s^2 + 16}\right\} = \sin(4t).</me>
+                                    Therefore, the overall inverse transform is:
+                                    <me>\lap^{-1}\left\{\frac{s - 4}{s^2 + 16}\right\} = \cos(4t) - \sin(4t).</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{s + 3}{s^2 - 9}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    First, factor the denominator:
+                                    <me>\ds \frac{s + 3}{s^2 - 9} = \frac{s + 3}{(s - 3)(s + 3)}.</me>
+                                    Now, split the fraction into two terms:
+                                    <me>\ds \frac{s + 3}{(s - 3)(s + 3)} = \frac{1}{s - 3} + \frac{1}{s + 3}.</me>
+                                    Apply the inverse Laplace transform to each term:
+                                    <me>\lap^{-1}\left\{\frac{1}{s - 3}\right\} = e^{3t}, \quad \lap^{-1}\left\{\frac{1}{s + 3}\right\} = e^{-3t}.</me>
+                                    Therefore, the overall inverse transform is:
+                                    <me>\lap^{-1}\left\{\frac{s + 3}{s^2 - 9}\right\} = e^{3t} + e^{-3t}.</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+                <row>
+                    <cell><m>\ds \frac{s + 2}{s^2 + 9}</m></cell>
+                    <cell>
+                        <p>
+                            <m>\hspace{27em}</m>
+                            <solution>
+                                <p>
+                                    Split the fraction into two terms:
+                                    <me>\ds \frac{s + 2}{s^2 + 9} = \frac{s}{s^2 + 9} + \frac{2}{s^2 + 9}.</me>
+                                    The first term matches the cosine form, and the second term matches the sine form:
+                                    <me>\lap^{-1}\left\{\frac{s}{s^2 + 9}\right\} = \cos(3t), \quad \lap^{-1}\left\{\frac{2}{s^2 + 9}\right\} = \frac{2}{3}\sin(3t).</me>
+                                    Therefore, the overall inverse transform is:
+                                    <me>\lap^{-1}\left\{\frac{s + 2}{s^2 + 9}\right\} = \cos(3t) + \frac{2}{3}\sin(3t).</me>
+                                </p>
+                            </solution>
+                        </p>
+                    </cell>
+                </row>
+            </tabular>
+        </example>
+
+    </paragraphs>
+
+    <p>
+        In this subsection, we explored two minor modifications: introducing missing constants and splitting fractions to match known forms in the backward Laplace transform table. These techniques allow us to simplify functions of <m>s</m> and prepare them for inversion. However, not all functions can be handled with these minor adjustments. In the next subsection, we will discuss more advanced techniques, starting with completing the square, to handle more complex <m>s</m>-functions that don't immediately match the table.
+    </p>
+
+    <xi:include href="./c4-s2-ss2-2-interactives.ptx" />
+   
 </subsection>

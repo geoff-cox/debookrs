@@ -1,4 +1,4 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Completing the Square </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Finding Inverse Laplace Transforms by Completing the Square </title>
 
     <p>
         We have shown how you can manipulate functions of <m>s</m>  to match properties in the Laplace transform table by taking advantage of the linearity of the Laplace transform. However, there are other algebraic manipulations you can (and sometimes must!) do, so we look at more examples here.
@@ -335,4 +335,159 @@
 
 	<xi:include href="./c4-s2-ss2-interactives.ptx" />
 
+        <p>
+            As we progress through the Laplace Transform Method, the modifications required to match the s-function to a known form in the backward transform table become more intricate. One of the first major modifications we encounter is completing the square. This technique allows us to transform quadratic expressions in the denominator into a recognizable form that corresponds to the sine or cosine entries in the common Laplace transforms table.
+        </p>
+    
+        <p>
+            Completing the square is a powerful tool when faced with quadratic expressions that don’t immediately match any of the standard forms. For example, if you see a quadratic expression like <m>s^2 + 4s + 8</m>, you can use completing the square to rewrite it as something resembling <m>(s+a)^2 + b^2</m>. The key to recognizing when this technique is needed lies in the structure of the quadratic expression: if the quadratic has both linear and constant terms but cannot be factored easily, completing the square is often the next step.
+        </p>
+    
+        <p>
+            The strategy is straightforward: first, identify the coefficient of the linear term, then use it to complete the square. Specifically, given a quadratic of the form <m>s^2 + as + b</m>, you would take half of the linear coefficient, square it, and add and subtract it within the expression. This transforms the quadratic into a perfect square trinomial plus a constant, making it easier to handle in the context of Laplace transforms.
+        </p>
+    
+        <p>
+            Let's walk through a few examples to illustrate how completing the square can simplify the inverse Laplace transform process.
+        </p>
+    
+        <example>
+            <m>\quad</m>Rewrite <m>s^2 + 6s + 10</m> by completing the square.
+            
+            <solution>
+                <p>
+                    Start by taking half of the linear coefficient, <m>6/2 = 3</m>, and squaring it to get <m>9</m>. Then add and subtract <m>9</m> inside the expression:
+                    <md>
+                        s^2 + 6s + 10 = (s^2 + 6s + 9) + 1 = (s + 3)^2 + 1.
+                    </md>
+                    Now, the expression is in a form that matches the cosine or sine entries in the Laplace transform table.
+                </p>
+            </solution>
+        </example>
+    
+        <example>
+            <m>\quad</m>Rewrite <m>s^2 - 4s + 13</m> by completing the square.
+            
+            <solution>
+                <p>
+                    Take half of the linear coefficient, <m>-4/2 = -2</m>, and square it to get <m>4</m>. Add and subtract <m>4</m>:
+                    <md>
+                        s^2 - 4s + 13 = (s^2 - 4s + 4) + 9 = (s - 2)^2 + 9.
+                    </md>
+                    This expression now matches the standard form for inverse Laplace transforms involving sine or cosine.
+                </p>
+            </solution>
+        </example>
+    
+        <example>
+            <m>\quad</m>Rewrite <m>s^2 + 8s + 20</m> by completing the square.
+            
+            <solution>
+                <p>
+                    Take half of the linear coefficient, <m>8/2 = 4</m>, and square it to get <m>16</m>. Add and subtract <m>16</m>:
+                    <md>
+                        s^2 + 8s + 20 = (s^2 + 8s + 16) + 4 = (s + 4)^2 + 4.
+                    </md>
+                    This allows you to apply the inverse Laplace transform for sine or cosine functions.
+                </p>
+            </solution>
+        </example>
+    
+        <p>
+            Completing the square is an essential technique for transforming quadratic expressions that don't directly match a form in the table of common Laplace transforms. However, it's not the only strategy available. In the next subsection, we'll explore another important technique: partial fraction decomposition. This method is useful for breaking down complex fractions into simpler components that can each be matched with forms in the Laplace transform table.
+        </p>
+    
+
+
+            <p>
+                In the previous subsections, we discussed minor modifications that could be made to the <m>s</m>-function in order to match it with a known form in the backward Laplace transform table. However, not all modifications are as simple. One such modification is completing the square in the denominator of an expression. This technique is particularly useful when dealing with quadratic expressions in the denominator that don't immediately fit a recognizable form in the Laplace transform table.
+            </p>
+        
+            <p>
+                The goal of completing the square is to rewrite the quadratic expression in a form that can be matched with a sine or cosine Laplace transform. This typically involves expressing the quadratic as <m>(s-a)^2 + b^2</m>, which corresponds to the standard forms for the inverse transforms of sine and cosine functions.
+            </p>
+        
+            <p>
+                Recognizing when completing the square is necessary usually comes down to noticing a quadratic expression in the denominator that doesn't factor easily or match any of the simple forms. In these cases, completing the square becomes a powerful tool to transform the expression into a usable form.
+            </p>
+        
+            <example>
+                <p>
+                    Find the inverse Laplace transform of <m>\ds H(s) = \frac{s-1}{s^2 - 2s + 5}</m>.
+                </p>
+                <solution>
+                    <p>
+                        To solve this, we first complete the square in the denominator. The quadratic expression <m>s^2 - 2s + 5</m> can be rewritten as:
+                        <md>
+                            s^2 - 2s + 5 = (s - 1)^2 + 4.
+                        </md>
+                        Now, the expression for <m>H(s)</m> becomes:
+                        <md>
+                            H(s) = \frac{s-1}{(s - 1)^2 + 4}.
+                        </md>
+                        This matches the form of the cosine Laplace transform, so we apply the inverse Laplace transform:
+                        <md>
+                            h(t) = \lap^{-1}\left\{ H(s) \right\} = e^{t}\cos(2t).
+                        </md>
+                    </p>
+                </solution>
+            </example>
+        
+            <example>
+                <p>
+                    Find the inverse Laplace transform of <m>\ds P(s) = \frac{3s+2}{s^2 + 2s + 10}</m>.
+                </p>
+                <solution>
+                    <p>
+                        First, complete the square in the denominator:
+                        <md>
+                            s^2 + 2s + 10 = (s + 1)^2 + 9.
+                        </md>
+                        Now, the expression becomes:
+                        <md>
+                            P(s) = \frac{3s+2}{(s+1)^2 + 9}.
+                        </md>
+                        The numerator does not exactly match the standard form, so we decompose it:
+                        <md>
+                            P(s) = 3 \cdot \frac{s+1}{(s+1)^2 + 9} - \frac{1}{(s+1)^2 + 9}.
+                        </md>
+                        Applying the inverse Laplace transform gives:
+                        <md>
+                            p(t) = 3e^{-t}\cos(3t) - \frac{1}{3}e^{-t}\sin(3t).
+                        </md>
+                    </p>
+                </solution>
+            </example>
+        
+            <example>
+                <p>
+                    Find the inverse Laplace transform of <m>\ds Q(s) = \frac{s-11}{s^2 - 6s + 14}</m>.
+                </p>
+                <solution>
+                    <p>
+                        Completing the square in the denominator:
+                        <md>
+                            s^2 - 6s + 14 = (s - 3)^2 + 5.
+                        </md>
+                        The expression becomes:
+                        <md>
+                            Q(s) = \frac{s-11}{(s - 3)^2 + 5}.
+                        </md>
+                        We can decompose the numerator:
+                        <md>
+                            Q(s) = \frac{s-3 - 8}{(s - 3)^2 + 5}.
+                        </md>
+                        Applying the inverse Laplace transform gives:
+                        <md>
+                            q(t) = e^{3t}\cos(\sqrt{5}t) - \frac{8}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t).
+                        </md>
+                    </p>
+                </solution>
+            </example>
+        
+            <p>
+                Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows us to rewrite the expression in a form that matches known inverse Laplace transforms, making the backward transformation process more manageable. In the next subsection, we will explore another essential technique: partial fraction decomposition, which helps in breaking down more complex fractions into simpler components that can be easily transformed.
+            </p>
+
+        
 </subsection>
