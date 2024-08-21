@@ -1,413 +1,231 @@
-<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Partial Fraction Decomposition </title>
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title>Finding Inverse Laplace Transforms Using Partial Fraction Decomposition</title>
+
+    <p>
+        When working with the Laplace Transform Method, you will sometimes encounter rational functions where the denominator is a polynomial that can be factored into simpler linear or quadratic factors. In such cases, partial fraction decomposition is a powerful technique that allows us to express the complex rational function as a sum of simpler fractions. These simpler fractions often correspond directly to known forms in the table of Laplace transforms, making it easier to apply the inverse transform.
+    </p>
+
+    <p>
+        The key idea behind partial fraction decomposition is to break down the original rational function into a sum of fractions, each with a simpler denominator. For example, if the denominator can be factored as <m>(s - a)(s - b)</m>, we can express the rational function as a sum of fractions with these linear factors as denominators. The goal is to match each of these fractions with a form in the Laplace transform table, allowing us to compute the inverse transform.
+    </p>
 
 	<p>
-	Two other forms we may wish to match when we study Laplace transforms are
-	<me> \frac{b}{(s-a)^2 + b^2} \mbox{ and } \frac{s-a}{(s-a)^2 + b^2}. </me>
-	As before, we work toward <em> making the denominator match first</em>, and then we sort
-	out the numerator second.
+		Let's explore this technique through a series of examples, starting with a quadratic denominator and gradually increasing the complexity.
+	</p>
 
+    <example>
+
+		<m>\quad</m>Find the inverse Laplace transforms of each function.
+        <me>
+			Y(s) = \frac{2s + 5}{(s + 1)(s + 4)}, \quad 
+			P(s) = \frac{2s + 3}{s^2 + 5s + 6}, \quad 
+			Q(s) = \frac{3s + 4}{s^2 - 2s + 1}
+		</me>
+    
+		<solution>
+            <p>
+                First, we decompose <m>Y(s)</m> into partial fractions:
+                <me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{A}{s + 1} + \frac{B}{s + 4}.</me>
+            </p>
+
+            <p>
+                To find <m>A</m> and <m>B</m>, we multiply both sides by the denominator <m>(s + 1)(s + 4)</m> and solve for the coefficients:
+                <me>
+                    2s + 5 = A(s + 4) + B(s + 1).
+                </me>
+            </p>
+
+            <p>
+                Expanding and collecting like terms, we get:
+                <me>
+                    2s + 5 = (A + B)s + (4A + B).
+                </me>
+                Comparing coefficients, we find:
+                <me>A + B = 2, \quad 4A + B = 5.</me>
+                Solving this system of equations, we obtain:
+                <me>A = 1, \quad B = 1.</me>
+            </p>
+
+            <p>
+                Therefore, the partial fraction decomposition of <m>Y(s)</m> is:
+                <me>\frac{1}{s + 1} + \frac{1}{s + 4}.</me>
+            </p>
+
+            <p>
+                Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+                <me>\ilap{Y(s)} = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}} = e^{-t} + e^{-4t}.</me>
+            </p>
+        </solution>
+
+		<solution>
+			<p>
+				First, factor the quadratic denominator:
+				<me>s^2 + 5s + 6 = (s + 2)(s + 3).</me>
+			</p>
+
+			<p>
+				Next, decompose <m>P(s)</m> into partial fractions:
+				<me>\frac{2s + 3}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}.</me>
+			</p>
+
+			<p>
+				To find <m>A</m> and <m>B</m>, multiply both sides by the denominator <m>(s + 2)(s + 3)</m> and solve for the coefficients:
+				<me>
+					2s + 3 = A(s + 3) + B(s + 2).
+				</me>
+			</p>
+
+			<p>
+				Expanding and collecting like terms, we get:
+				<me>
+					2s + 3 = (A + B)s + (3A + 2B).
+				</me>
+				Comparing coefficients, we find:
+				<me>A + B = 2, \quad 3A + 2B = 3.</me>
+				Solving this system of equations, we obtain:
+				<me>A = 1, \quad B = 1.</me>
+			</p>
+
+			<p>
+				Therefore, the partial fraction decomposition of <m>P(s)</m> is:
+				<me>\frac{1}{s + 2} + \frac{1}{s + 3}.</me>
+			</p>
+
+			<p>
+				Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+				<me>\ilap{P(s)} = e^{-2t} + e^{-3t}.</me>
+			</p>
+		</solution>
+
+		<solution>
+			<p>
+				First, factor the quadratic denominator:
+				<me>s^2 - 2s + 1 = (s - 1)^2.</me>
+			</p>
+
+			<p>
+				Next, decompose <m>Q(s)</m> into partial fractions:
+				<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
+			</p>
+
+			<p>
+				To find <m>A</m> and <m>B</m>, multiply both sides by the denominator <m>(s - 1)^2</m> and solve for the coefficients:
+				<me>
+					3s + 4 = A(s - 1) + B.
+				</me>
+			</p>
+
+			<p>
+				Expanding and collecting like terms, we get:
+				<me>
+					3s + 4 = As - A + B.
+				</me>
+				Comparing coefficients, we find:
+				<me>A = 3, \quad B - A = 4.</me>
+				Solving this system, we find <m>A = 3</m> and <m>B = 7.</m>
+			</p>
+
+			<p>
+				Therefore, the partial fraction decomposition of <m>Q(s)</m> is:
+				<me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
+			</p>
+
+			<p>
+				Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+				<me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
+			</p>
+		</solution>
+
+    </example>
+
+	<p>
+		Partial fraction decompostion also works for functions with higher-degree polynomials in the denominator. The key is to factor each denominator into as many linear and/or quadratic factors as possible. Here are a few examples to illustrate this concept.
 	</p>
 
 	<example>
-        <p>
-            Find <m>\ds \lap^{-1}\left\{ \frac{s+9}{s^2 - 2s - 3} \right\}.</m>
-        </p>
-        <solution>
-            <p>
-                As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.
-                <md>
-                    <mrow>\frac{s+9}{s^2 - 2s - 3}	\amp= \frac{s+9}{(s^2 - 2s) - 3}</mrow>
-                    <mrow>\amp= \frac{s+9}{(s^2 - 2s + 1) - 3 - 1}</mrow>
-                    <mrow>\amp= \frac{s+9}{(s-1)^2 - 4}</mrow>
-                    <mrow>\amp=  \frac{s+9}{(s-1)^2 - 2^2}.</mrow>
-                </md>
-            </p>
+		
+		<m>\quad</m>Find the inverse Laplace transforms of each function.
+        <me>
+			R(s) = \frac{2s^2 + 5s + 1}{s^3 - s}, \quad 
+			S(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}
+		</me>
 
-            <p>
-                Take a careful look at the denominator here. It's really close to matching <xref ref="LT-Table-L7" text="custom"><m>L7</m></xref> or <xref ref="LT-Table-L8" text="custom"><m>L8</m></xref>, but it is not a match because of the negative sign in front of the <m>2^2.</m>  We need to change course when this happens. Another algebraic manipulation that we might consider is a <em> partial fraction decomposition.</em>  
-                <aside>
-                    <p>
-                        Margin note:  If you need to review partial fraction decomposition, go HERE.
-                    </p>
-                </aside>
-            </p>
+		<solution>
+			<p>
+				First, factor the cubic denominator:
+				<me>s^3 - s = s(s - 1)(s + 1).</me>
+			</p>
 
-            <p>
-                We revert to the original expression, but this time, instead of completing the square, we factor the denominator.
-                <me> \frac{s+9}{s^2 - 2s - 3}	= \frac{s+9}{(s-3)(s+1)}.</me>
-            </p>
+			<p>
+				Next, decompose <m>R(s)</m> into partial fractions:
+				<me>\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}.</me>
+			</p>
 
-            <p>
-                Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is
-                <me> \frac{s+9}{(s-3)(s+1)} = \frac{A}{s-3} + \frac{B}{s+1}. </me>
-            </p>
+			<p>
+				To find <m>A</m>, <m>B</m>, and <m>C</m>, multiply both sides by the denominator <m>s(s - 1)(s + 1)</m> and solve for the coefficients:
+				<me>
+					2s^2 + 5s + 1 = A(s - 1)(s + 1) + Bs(s + 1) + Cs(s - 1).
+				</me>
+			</p>
 
-            <p>
-                Our next goal is to determine the coefficients <m>A</m> and <m>B</m> in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, <m>(s-3)(s+1)</m>, and then expand and collect like terms, as shown.
-                <md>
-                (s-3)(s+1) \cdot \frac{s+9}{(s-3)(s+1)}	
-                    <mrow>\amp= \frac{A}{s-3}\cdot (s-3)(s+1) + \frac{B}{s+1} \cdot (s-3)(s+1)</mrow>
-                    <mrow>s+9	\amp= A(s+1) + B(s-3)</mrow>
-                    <mrow>s+9	\amp= As + A + Bs - 3B</mrow>
-                    <mrow>s+9	\amp= (As + Bs) + (A - 3B)</mrow>
-                    <mrow>1s+9	\amp= (A+B)s + (A - 3B).</mrow>
-                </md>
-            </p>
+			<p>
+				Expanding and collecting like terms, we get:
+				<me>
+					2s^2 + 5s + 1 = (A + B + C)s^2 + (B - C)s + A.
+				</me>
+				Comparing coefficients, we find:
+				<me>A + B + C = 2, \quad B - C = 5, \quad A = 1.</me>
+				Solving this system, we find <m>A = 1</m>, <m>B = 2</m>, and <m>C = 3.</m>
+			</p>
 
-            <p>
-                At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on <m>s</m> on the left hand side is 1, while the coefficient on <m>s</m> on the right hand side of the equation is <m>A+B</m>. Since the polynomials are equal, we know that these are equal. That is, <m>A + B = 1.</m> Similarly, if we equate the constants, we have <m>A - 3B = 9.</m>  Thus, we have the following system of two linear equations in terms of two unknown variables, <m>A</m> and <m>B</m>.
-                <md>
-                    <mrow>A + B	\amp= 1</mrow>
-                    <mrow>A - 3B	\amp= 9.</mrow>
-                </md>
-            </p>
+			<p>
+				Therefore, the partial fraction decomposition of <m>R(s)</m> is:
+				<me>\frac{1}{s} + \frac{2}{s - 1} + \frac{3}{s + 1}.</me>
+			</p>
 
-            <p>
-                There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for <m>A</m>, and then substitute into the second equation,
-                <md>
-                    <mrow>A + B	\amp= 1		\amp 	A - 3B	\amp= 9</mrow>
-                    <mrow>A	\amp= 1 - B	\amp 			\amp</mrow>
-                    <mrow>\amp		\amp (1 - B) - 3B	\amp= 9</mrow>
-                    <mrow>\amp		\amp 	1 - 4B	\amp= 9</mrow>
-                    <mrow>\amp		\amp		-4B	\amp= 8</mrow>
-                    <mrow>\amp		\amp		B	\amp= -2</mrow>
-                    <mrow>A	\amp= 1 - (-2)	\amp			\amp</mrow>
-                    <mrow>\amp= 3		\amp			\amp</mrow>
-                </md>
-                hence we have
-                <me> \frac{s+9}{(s-3)(s+1)} = \frac{3}{s-3} + \frac{-2}{s+1}. </me>
-            </p>
+			<p>
+				Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+				<me>\ilap{R(s)} = 1 + 2e^{t} + 3e^{-t}.</me>
+			</p>
+		</solution>
+	
+		<solution>
+			<p>
+				First, factor the quartic denominator:
+				<me>s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1).</me>
+			</p>
 
-            <p>
-                Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use <xref ref="LT-Table-L2" text="custom"><m>L2</m></xref> to find the inverse Laplace transform as follows.
-                <md>
-                \lap^{-1}\left\{ \frac{s+9}{s^2 - 2s - 3} \right\}
-                    <mrow>\amp= \lap^{-1}\left\{ \frac{3}{s-3} + \frac{-2}{s+1} \right\}</mrow>
-                    <mrow>\amp=3 \lap^{-1}\left\{ \frac{1}{s-3} \right\} - 2 \lap^{-1}\left\{ \frac{1}{s+1} \right\}</mrow>
-                        <xref ref="LT-Table-L9" text="custom"><m>L9</m></xref>
-                    <mrow>\amp= 3e^{3t} - 2e^{-t}</mrow>
-                        by <xref ref="LT-Table-L2" text="custom"><m>L2</m></xref>
-                </md>
-            </p>
+			<p>
+				Next, decompose <m>S(s)</m> into partial fractions:
+				<me>\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}.</me>
+			</p>
 
-        </solution>
-    </example>
+			<p>
+				To find <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m>, multiply both sides by the denominator <m>(s - 1)(s + 1)(s^2 + 1)</m> and solve for the coefficients:
+				<me>
+					4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2 + 1) + B(s - 1)(s^2 + 1) + (Cs + D)(s - 1)(s + 1).
+				</me>
+			</p>
 
-	<example>
-		<title>
-			Write <m>\ds\frac{s-6}{s^2 - 4s + 29}</m> in the form 
-			<m>\ds\frac{s-a}{(s-a)^2 + b^2}</m>
-		</title>
-		
-		<p>
-		If you prefer to see a video of this example, 
-		<xref ref="video-matching_terms_02" text="custom"> click here </xref>
-		</p>
-			
-		<p>
-		<aside>
-		Since <m>\ds\frac{s-6}{s^2 - 4s + 29}</m> has a quadratic function in the 
-		denominator, it makes sense that we would try to match it with one of the 
-		forms above, however, the form of the numerator suggests matching it with the 
-		second expression.
-		</aside>
-		
-		As we mentioned earlier, we'll try to make the denominator match first. Since both 
-		of the forms we're trying to match are of the form <m>(s-a)^2 + b^2,</m> we will 
-		complete the square first:
-		
-			<me> s^2 - 4s + 29 = (s-2)^2 + 25. </me>
-		
-		(If you still don't remember how to complete the square, look up that primer and 
-		do the previous exercises in that section above.)
-		</p>
-		
-		<p>
-		Let's rewrite the given expression as follows.
-			
-		<md> 
-			<mrow>\frac{s-6}{s^2 - 4s + 29}	\amp= \frac{s-6}{(s-2)^2 + 25}			</mrow>
-			<mrow>							\amp= \frac{s-6}{(s-2)^2 + 5^2}			</mrow>
-		</md>
-		</p>
-		
-		<p>
-		We've got the denominator in exactly the right form--it looks just like
-		<m>(s-a)^2 + b^2,</m> with <m>a = 2</m> and <m>b = 5</m>. As in the previous 
-		section, once we've gotten the denominator in shape, we turn our attention to 
-		the numerator. If we look back at the two forms we are trying to match, we see 
-		that our expression has an <m>s</m> in the numerator, so it's more like 
-		<m>\ds \frac{s-a}{(s-a)^2 + b^2}</m>. It would be exactly right if we had
-		<m>s-a</m> in the numerator, which in this case would be <m>s-2</m>.
-		</p>
-		
-		<p>
-		What we do have in the numerator is <m>s-6</m>; and we would like it to be 
-		<m>s-2,</m> which means if we added 4, we'd have exactly the right thing. If we 
-		want to add 4, we'll need to compensate by also subtracting 4, like this:
-			
-		<md>
-			<mrow> \frac{s-6}{(s-2)^2 + 5^2}\amp= \frac{s-6+4-4}{(s-2)^2 + 5^2},	</mrow>
-			<mrow>							\amp= \frac{(s-6+4)-4}{(s-2)^2 + 5^2},	</mrow>
-			<mrow>							\amp= \frac{(s-2) - 4}{(s-2)^2 + 5^2}.	</mrow>
-		</md>
-		
-		</p>
-		
-		<p>
-		Great!  Now we can split this single fraction into two separate fractions:
-			
-		<me> \frac{(s-2) - 4}{(s-2)^2 + 5^2} = 
-			\underbrace{\frac{s-2}{(s-2)^2 + 5^2}}_{match!} - \frac{4}{(s-2)^2 + 5^2} </me>
-		
-		We're almost there!  The first fraction is a perfect match for the form 
-		<m>\frac{s-a}{(s-a)^2 + b^2}</m> (with <m>a = 2</m> and <m>b = 5</m>); but we 
-		still have another expression that is not yet a match. The remaining fraction 
-		looks like it could eventually match the form <m>\frac{b}{(s-a)^2 + b^2}</m>.
-		We would need to have a 5 in the numerator, and we currently have a 4. But we 
-		can fix that as we did in the previous section:
-			
-		<md>
-			<mrow>\frac{4}{(s-2)^2 + 5^2}	\amp= 4\cdot\frac{1}{(s-2)^2 + 5^2}		</mrow>
-			<mrow>							\amp= 4\cdot\frac{5}{5}\cdot 
-															\frac{1}{(s-2)^2 + 5^2}	</mrow>
-			<mrow>							\amp= 4\cdot\frac{1}{5}\cdot 
-															\frac{5}{(s-2)^2 + 5^2}	</mrow>
-			<mrow>							\amp= \frac{4}{5}\cdot 
-															\frac{5}{(s-2)^2 + 5^2}	</mrow>
-		</md>
-			
-		Now let's put it all together. Here's everything we did:
+			<p>
+				Expanding and collecting like terms, we find <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m> by comparing coefficients. Solving the system of equations, we find:
+				<me>A = 1, \quad B = -1, \quad C = 4, \quad D = 3.</me>
+			</p>
 
-		<md>	
-			<mrow>\frac{s-6}{s^2 - 4s + 9}	\amp= \frac{s-6}{(s-2)^2 + 25} \mbox{</mrow>
-									(we completed the square)}
-			<mrow>\amp= \frac{s-6}{(s-2)^2 + 5^2} \mbox{</mrow>
-									(we rewrote the denominator)}
-			<mrow>\amp=  \frac{s-6+4-4}{(s-2)^2 + 5^2} \mbox{</mrow>
-									(we added and subtracted 4 in the numerator...)}
-			<mrow>\amp= \frac{(s-2) - 4}{(s-2)^2 + 5^2} \mbox{</mrow>
-									(...so that we could make the numerator match part of the denom)}
-			<mrow>\amp= \frac{s-2}{(s-2)^2 + 5^2} - \frac{4}{(s-2)^2 + 5^2} \mbox{</mrow>
-									(split into fractions)}
-			<mrow>\amp= \frac{s-2}{(s-2)^2 + 5^2} - 4\cdot\frac{5}{5}\cdot \frac{1}{(s-2)^2 + 5^2}</mrow>
-									\mbox{(work on the second fraction...)}
-			<mrow>\amp= \frac{s-2}{(s-2)^2 + 5^2} - \frac{4}{5}\cdot \frac{5}{(s-2)^2 + 5^2}
-									\mbox{(...so now it is also in form)}
-									</mrow>
-		</md>
-		
-		</p>
-		
-		<p>
-		As mentioned before, being able to use appropriate algebra to 
-		"match" forms is <em> really</em> important when we work with Laplace Transforms. Since it's really
-		just algebra, now is a great time to practice that skill--so when we are in the middle of studying 
-		Laplace Transforms, you can just focus on the "new" stuff.
-		</p>
+			<p>
+				Therefore, the partial fraction decomposition of <m>S(s)</m> is:
+				<me>\frac{1}{s - 1} - \frac{1}{s + 1} + \frac{4s + 3}{s^2 + 1}.</me>
+			</p>
+
+			<p>
+				Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+				<me>\ilap{S(s)} = e^{t} - e^{-t} + 4\cos(t) + 3\sin(t).</me>
+			</p>
+		</solution>
+
 	</example>
 
 	<p>
-	Now you try some!
-
-	<ol>
-		<li> 
-		<p>
-		Manipulate each of the following expressions to make it match 
-		the form <m>\ds \frac{b}{(s-a)^2 + b^2}</m> and/or <m>\ds \frac{s-a}{(s-a)^2 + b^2}.</m>
-		<ol>	
-			<li> <m>\ds \frac{s+3}{s^2 - 6s + 10}</m>		
-			<solution>		
-			<md>	
-				<mrow>\frac{s+3}{s^2 - 6s + 10}	\amp= \frac{s+3}{(s^2 - 6s) + 10}</mrow>
-				<mrow>\amp= \frac{s+3}{(s^2 - 6s + 9 - 9) + 10}</mrow>
-				<mrow>\amp= \frac{s+3}{(s^2 - 6s + 9) - 9 + 10}</mrow>
-				<mrow>\amp= \frac{s+3}{(s - 3)^2 - 9 + 10}</mrow>
-				<mrow>\amp= \frac{s+3}{(s - 3)^2 + 1}</mrow>
-				<mrow>\amp= \frac{s+3}{(s - 3)^2 + 1^2}</mrow>
-				<mrow>\amp= \frac{(s-3+3)+3}{(s - 3)^2 + 1^2}</mrow>
-				<mrow>\amp= \frac{(s-3)+3+3}{(s - 3)^2 + 1^2}</mrow>
-				<mrow>\amp= \frac{(s-3)+6}{(s - 3)^2 + 1^2}</mrow>
-				<mrow>\amp= \frac{s-3}{(s - 3)^2 + 1^2} +  \frac{6}{(s - 3)^2 + 1^2}</mrow>
-				<mrow>\amp= \frac{s-3}{(s - 3)^2 + 1^2} +  6\cdot \frac{1}{(s - 3)^2 + 1^2}						</mrow>
-				<mrow>\amp= \frac{s - a}{(s - a)^2 +b^2} + 6\cdot \frac{b}{(s - a)^2 +b^2}, 
-										\mbox{ where <m>a = 3</m> and <m>b = 1</m>}</mrow>
-			</md>
-			</solution>
-			<answer>
-				<me>  \frac{s-3}{(s - 3)^2 + 1^2} +  6\cdot \frac{1}{(s - 3)^2 + 1^2} </me>
-			</answer>
-			</li>
-		
-			<li> <m>\ds \frac{s}{s^2 - 8s + 25}</m> 		
-			<solution>		
-			<md>	
-				<mrow>\frac{s}{s^2 - 8s + 25}	\amp= \frac{s}{(s^2 - 8s) + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s^2 - 8s + 16 - 16) + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s^2 - 8s + 16) - 16 + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s - 4)^2 - 16 + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s - 4)^2 +9}</mrow>
-				<mrow>\amp= \frac{s}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{(s - 4) + 4}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - 4}{(s - 4)^2 +3^2} + 4\cdot \frac{1}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - 4}{(s - 4)^2 +3^2} + \frac{3}{3}\cdot 4\cdot \frac{1}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - 4}{(s - 4)^2 +3^2} + \frac{1}{3}\cdot 4\cdot \frac{3}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{3}\cdot \frac{3}{(s - 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - a}{(s - a)^2 +b^2} + \frac{4}{3}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
-										\mbox{ where <m>a = 4</m> and <m>b = 3</m>}
-			</md>
-			</solution>
-			<answer>
-				<me> \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{3}\cdot \frac{3}{(s - 4)^2 +3^2} </me>
-				
-			</answer>
-			</li>
-		
-			<li> <m>\ds \frac{s}{s^2 + 8s + 25}</m>		
-			<solution>		
-			<md>	
-				<mrow>\frac{s}{s^2 + 8s + 25}	\amp= \frac{s}{(s^2 + 8s) + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s^2 + 8s + 16 - 16) + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s^2 + 8s + 16) - 16 + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s + 4)^2 - 16 + 25}</mrow>
-				<mrow>\amp= \frac{s}{(s + 4)^2 +9}</mrow>
-				<mrow>\amp= \frac{s}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{(s + 4) - 4}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s + 4}{(s + 4)^2 +3^2} - 4\cdot \frac{1}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s + 4}{(s + 4)^2 +3^2} - \frac{3}{3}\cdot 4\cdot \frac{1}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s + 4}{(s + 4)^2 +3^2} - \frac{1}{3}\cdot 4\cdot \frac{3}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{3}\cdot \frac{3}{(s + 4)^2 +3^2}</mrow>
-				<mrow>\amp= \frac{s - a}{(s - a)^2 +b^2} - \frac{4}{3}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
-										\mbox{ where <m>a = -4</m> and <m>b = 3</m>}
-			</md>
-				
-				
-			</solution>
-			<answer>
-				<me> \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{3}\cdot \frac{3}{(s + 4)^2 +3^2} </me>
-				
-			</answer>
-			</li>
-		
-			<li> <m>\ds \frac{s-5}{s^2 +12s + 72}</m> 		
-			<solution>		
-			<md>	
-				<mrow>\frac{s-5}{s^2 +12s + 72}	\amp= \frac{s-5}{(s^2 +12s) + 72}</mrow>
-				<mrow>\amp=  \frac{s-5}{(s^2 +12s + 36 - 36) + 72}</mrow>
-				<mrow>\amp=  \frac{s-5}{(s^2 +12s + 36) - 36 + 72}</mrow>
-				<mrow>\amp=  \frac{s-5}{(s + 6)^2 - 36 + 72}</mrow>
-				<mrow>\amp=  \frac{s-5}{(s + 6)^2 + 36}</mrow>
-				<mrow>\amp=  \frac{s-5}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{(s+6-6)-5}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{(s+6)-6-5}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{(s+6)-11}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{s+6}{(s + 6)^2 + 6^2} + \frac{-11}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{s+6}{(s + 6)^2 + 6^2} -11\cdot \frac{1}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{6}{6} \cdot 11\cdot \frac{1}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{1}{6} \cdot 11\cdot \frac{6}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp=  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{11}{6}\cdot \frac{6}{(s + 6)^2 + 6^2}</mrow>
-				<mrow>\amp= \frac{s - a}{(s - a)^2 +b^2} - \frac{11}{6}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
-										\mbox{ where <m>a = -6</m> and <m>b = 6</m>}
-			</md>
-			</solution>
-			<answer>
-				<me> \frac{s+6}{(s + 6)^2 + 6^2} - \frac{11}{6}\cdot \frac{6}{(s + 6)^2 + 6^2} </me>
-			</answer>
-			</li>
-		</ol>
-		</p>
-		</li>
-
-		<li> 
-		<p>
-		Now that's you've been practicing manipulating expressions to get them to match a particular,
-		specific form, it's time to practice picking out which form an expression is most like.
-		
-		Find the form(s) on the right that best match the expression on the left. It may not be a perfect
-		match, but could be manipulated (as we did above) to get into the correct form(s).
-		<ol>
-			<li> (EXAMPLE)  <m>\ds \frac{1}{(s-3)^5}</m>
-			<answer> This best matches form F. </answer>
-			</li>
-		
-			<li> <m>\ds \frac{12}{s^2 + 15}</m>%D
-			</li>
-		
-			<li> <m>\ds \frac{7}{1-s}</m> %B
-			</li>
-		
-			<li> <m>\ds \frac{-1}{s}</m> %A
-			</li>
-		
-			<li> <m>\ds \frac{s-1}{s^2  + 4s + 1}</m> %forms G and H
-			</li>
-		
-			<li> <m>\ds \frac{7}{2s^2}</m> %C
-			</li>
-		
-			<li> <m>\ds \frac{s+2}{s^2 + 9}</m> %forms D and E
-			</li>
-		</ol>
-		<ol>
-			<li> <m>\ds \frac{1}{s}</m>
-			</li>
-		
-			<li> <m>\ds \frac{1}{s-a}</m>
-			</li>
-		
-			<li> <m>\ds \frac{n!}{s^{n+1}}</m>
-			</li>
-		
-			<li> <m>\ds \frac{b}{s^2 + b^2}</m>
-			</li>
-		
-			<li> <m>\ds \frac{s}{s^2 + b^2}</m>
-			</li>
-		
-			<li> <m>\ds \frac{n!}{(s-a)^{n+1}}</m>
-			</li>
-		
-			<li> <m>\ds \frac{b}{(s-a)^2 + b^2}</m>
-			</li>
-		
-			<li> <m>\ds \frac{s-a}{(s-a)^2 + b^2}</m>
-			</li>
-		</ol>
-		<solution>		
-		<ol>
-			<li> This best matches form F.
-			
-			</li>
-		
-			<li> This best matches form D.
-		
-			</li>
-		
-			<li> This best matches form B.
-		
-			</li>
-		
-			<li> This best matches form A.
-		
-			</li>
-		
-			<li> This best matches form forms G and H.
-		
-			</li>
-		
-			<li> This best matches form C.
-		
-			</li>
-		
-			<li> This best matches form forms D and E.
-			</li>
-		</ol>
-		</solution>
-		</p>
-		</li>
-	</ol>
+		Partial fraction decomposition is a powerful technique when working with rational functions in Laplace transforms. By breaking down complex expressions into simpler fractions, you can match them to known inverse Laplace transforms, making the backward transformation process much easier. In the next subsection, we will explore more advanced techniques for handling cases with repeated roots and higher-order polynomials.
 	</p>
 
 	<xi:include href="./c4-s2-ss3-interactives.ptx" />
