@@ -2,13 +2,32 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Summary &amp; Exercises </title>
 
 	<introduction>
+
+		<p>
+			This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function <m>Y(s)</m> back to the original function <m>y(t)</m>. Several methods and techniques are introduced to handle different cases where direct computation isn't possible.
+		</p>
 		
 		<p>
 			<assemblage color="green"><title>Summary of the Key Ideas</title>
 				<p>
-					<term> <em> Method</em> </term>
 					<p>
-						
+						<term>Common Forms:</term> A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like <m>\sin(bt), \cos(bt)</m>, and others.
+					</p>
+
+					<p>
+						<term>Direct Computation:</term> When the function of <m>s</m> directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.
+					</p>
+					
+					<p>
+						<term>Modifying Functions:</term> When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.
+					</p>
+					
+					<p>
+						<term>Completing the Square:</term> When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.
+					</p>
+
+					<p>
+						<term>Partial Fraction Decomposition:</term> For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.
 					</p>
 				</p>
 			</assemblage>
@@ -457,6 +476,141 @@
 				<answer>
 					<m>\ds f(t) = \frac{5}{4}(1 - e^{-4t})</m>
 				</answer>
+			</exercise>
+	
+		</exercisegroup>
+
+		<exercisegroup>
+		
+			<introduction>
+				<p>
+					Find the inverse Laplace transforms of each function.
+				</p>
+			</introduction>
+		
+			<exercise>
+				<statement>
+					<p>
+						<m>\ds R(s) = \frac{3s + 2}{s^2 + 4s + 4} </m>
+					</p>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds r(t) = 3e^{-2t} + 2te^{-2t} </m>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement>
+					<p>
+						<m>\ds  S(s) = \frac{4s + 1}{s^2 + 6s + 9} </m>
+					</p>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds  s(t) = 4e^{-3t} + (t + 1)e^{-3t} </m>
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title>Conceptual Questions</title>
+	
+			<exercise>
+				<statement>
+					<p>True or False: The inverse Laplace transform is always a unique function.</p>
+				</statement>
+				<answer>
+					<p>True</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Which of the following is true about the inverse Laplace transform?</p>
+					<choice>
+						<li>It converts a function from the frequency domain to the time domain.</li>
+						<li>It is a method to solve algebraic equations.</li>
+						<li>It is used to differentiate a function with respect to time.</li>
+						<li>It only works for polynomials.</li>
+					</choice>
+				</statement>
+				<answer>
+					<p>It converts a function from the frequency domain to the time domain.</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Explain the significance of completing the square in finding inverse Laplace transforms.</p>
+				</statement>
+				<answer>
+					<p>Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Why is partial fraction decomposition helpful in finding inverse Laplace transforms?</p>
+				</statement>
+				<answer>
+					<p>Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.</p>
+				</answer>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title>Computational Problems</title>
+	
+			<exercise>
+				<statement>
+					<p>Find the inverse Laplace transform of <m>\ds \frac{5}{s^2 + 16}</m>.</p>
+				</statement>
+				<solution>
+					<p>This expression matches the form <m>\ds \frac{b}{s^2 + b^2} </m> with <m>\ds b = 4 </m>, so the inverse Laplace transform is <m>\ds 5 \cdot \sin(4t) </m>.</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Compute the inverse Laplace transform of <m>\ds \frac{2s + 7}{(s + 3)^2 + 4} </m>.</p>
+				</statement>
+				<solution>
+					<p>This expression can be split into two parts: <m>\ds \frac{2(s + 3)}{(s + 3)^2 + 4} </m> and <m>\ds \frac{7}{(s + 3)^2 + 4} </m>. The first part corresponds to <m>\ds e^{-3t} \cdot \cos(2t) </m> and the second part corresponds to <m>\ds e^{-3t} \cdot \sin(2t) </m>, so the inverse Laplace transform is <m>\ds 2e^{-3t} \cos(2t) + 7e^{-3t} \sin(2t) </m>.</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Use partial fraction decomposition to find the inverse Laplace transform of <m>\ds \frac{3s + 4}{s^2 + 2s + 1} </m>.</p>
+				</statement>
+				<solution>
+					<p>First, factor the denominator as <m>\ds (s + 1)^2 </m>. Then, decompose the expression into <m>\ds \frac{A}{s + 1} + \frac{B}{(s + 1)^2} </m>. Solving for <m>\ds A </m> and <m>\ds B </m>, you get the inverse Laplace transform as <m>\ds 3e^{-t} + 4te^{-t} </m>.</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title>Application-Based Problems</title>
+	
+			<exercise>
+				<statement>
+					<p>Given the function <m>\ds Y(s) = \frac{7}{(s - 2)^2 + 9} </m>, describe the behavior of the corresponding time-domain function.</p>
+				</statement>
+				<solution>
+					<p>The inverse Laplace transform is <m>\ds 7e^{2t} \sin(3t) </m>, which indicates a sinusoidal function modulated by an exponential growth factor.</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Find the inverse Laplace transform of the function <m>\ds F(s) = \frac{6s + 10}{(s + 4)(s^2 + 9)} </m> using partial fraction decomposition.</p>
+				</statement>
+				<solution>
+					<p>Decompose the function into <m>\ds \frac{A}{s + 4} + \frac{Bs + C}{s^2 + 9} </m>. Solving for the constants <m> A </m>, <m> B </m>, and <m> C </m>, the inverse Laplace transform will be a combination of exponential and sinusoidal functions.</p>
+				</solution>
 			</exercise>
 	
 		</exercisegroup>
