@@ -1,0 +1,390 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title>Detailed Examples</title>
+
+	<p>
+		Now that we've explored the theory behind the Laplace Transform Method, it's time to put it into action by solving some initial-value problems. We'll walk through two examples that will illustrate each of the four key steps in the method. Along the way, we'll highlight how the forward and backward Laplace transforms work together to convert a differential equation into an algebraic problem and then back to a solution. Let's get started!
+	</p>
+	
+	<example><m>\quad</m>Compute the solution to the initial-value problem
+		<p>
+			<men xml:id="lt-example-2-eqn">
+				y' + y = 4, \quad y(0) = 2
+			</men>
+			using the <xref ref="lt-method" text="title"/>.
+		</p>
+		
+		<solution><title>Step 1: Apply the Forward Transform</title>
+			
+			<p>
+				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-2-eqn"/>, we have 
+				<md>
+					<mrow>\lap{y' + y} = \lap{4}</mrow>
+					<mrow>\lap{y'} + \lap{y} = \lap{4}</mrow>
+					<mrow>sY(s) - 2 + Y(s) = \frac{4}{s}</mrow>
+				</md>
+			</p>
+		</solution>
+		
+		<solution><title>Step 2: Solve for <m>Y(s)</m></title>
+
+			<p>
+				<xref ref="lt-step-2" text="custom">Step 2</xref>. Next, we isolate <m>Y(s)</m> on one side of the equation:
+				<md>
+					<mrow> sY(s) - 2 + Y(s)	=\amp\ \frac{4}{s}													</mrow>
+					<mrow>		(s + 1)Y(s)	=\amp\ \frac{4}{s} + 2												</mrow>
+					<mrow> 			Y(s)	=\amp\ \frac{1}{s + 1}\left(\frac{4}{s} + 2\right)					</mrow>
+					<mrow> 			Y(s)	=\amp\ \ub{\frac{4}{s(s + 1)}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}	</mrow>
+				</md>
+			</p>
+
+		</solution>
+
+		<solution><title>Step 3: Prepare for the Backward Transform</title>
+			
+			<p>
+				<xref ref="lt-step-3" text="custom">Step 3</xref>. We need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, <m>(**)</m> is ready to go, but <m>(*)</m> requires partial fraction decomposition. We start by writing down the form of the decomposition,
+				<me>
+					(*) = \frac{4}{s(s + 1)} = \frac{A}{s} + \frac{B}{s + 1} \quad \text{or}
+				</me>
+				<men xml:id="lt-example-2-eqn-2">
+					4 = A(s + 1) + Bs
+				</men>
+				Now, we find <m>A</m> and <m>B</m> by plugging in values of <m>s</m> into <xref ref="lt-example-2-eqn-2"/>,
+			</p>
+			<tabular>
+				<col halign="right"/>
+				<col halign="right"/>
+				<col halign="center"/>
+				<col halign="left"/>
+				<row>
+					<cell><m>s=0</m> :</cell>
+					<cell><m>4</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A(0 + 1) + B(0)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>4</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A</m></cell>
+				</row>
+				<row>
+					<cell><m>s=-1</m> :</cell>
+					<cell><m>4</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A(-1 + 1) + B(-1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>-4</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>B</m></cell>
+				</row>
+			</tabular>
+			<p>
+				Thus, the prepared <m>Y(s)</m> is
+				<me>Y(s) = \frac{4}{s} + \frac{-4}{s + 1}</me>
+			</p>
+		</solution>
+	
+		<solution><title>Step 4: Apply the Backward Transform</title>
+			
+			<p>
+				<xref ref="lt-step-4" text="custom">Step 4</xref>. Finally, we apply the backward step to get the solution:
+				<md>
+					<mrow>\ilap{Y(s)}	=\amp\ \ilap{\frac{4}{s} + \frac{-4}{s + 1}}</mrow>
+					<mrow>		y(t)	=\amp\ 4 - 4e^{-t}</mrow>
+				</md>
+			</p>
+		</solution>
+	
+	</example>
+
+	<example><m>\quad</m>Compute the solution to the initial-value problem
+		<p>
+			<men xml:id="lt-example-1-eqn">
+				y'' - 3y' + 2y = e^{2t}, \quad y(0) = 1, \quad y'(0) = 0
+			</men>
+			using the <xref ref="lt-method" text="title"/>.
+		</p>
+		
+		<solution><title>Step 1: Apply the Forward Transform</title>
+		
+			<p>
+				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-1-eqn"/>, we have 
+				<md>
+					<mrow>\lap{y'' - 3y' + 2y} =\amp\ \lap{e^{2t}}</mrow>
+					<mrow>\lap{y''} - 3\lap{y'} + 2\lap{y} =\amp\ \frac{1}{s - 2}</mrow>
+				</md>
+				where <m>\lap{y(t)} = Y(s)</m> and
+				<ul>
+					<li><m>\lap{y'} = sY(s) - y(0) = sY(s) - 1</m>,</li>
+					<li><m>\ds \lap{y''} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s</m>.</li>
+				</ul>
+				So the complete forward transform of <xref ref="lt-example-1-eqn"/> is
+				<me>s^2Y(s) - s - 3[sY(s) - 1] + 2Y(s) = \frac{1}{s - 2}</me>
+			</p>
+		</solution>
+
+		<solution><title>Step 2: Solve for <m>Y(s)</m></title>
+			
+			<p>
+				<xref ref="lt-step-2" text="custom">Step 2</xref>. Next, we isolate <m>Y(s)</m> on one side of the equation:
+			</p>
+			<md>
+				<mrow>s^2Y(s) - s - 3sY(s) + 3 + 2Y(s) = \frac{1}{s - 2}</mrow>
+				<mrow>[s^2 - 3s + 2]Y(s) - s + 3 = \frac{1}{s - 2}</mrow>
+				<mrow>Y(s)[(s - 1)(s - 2)] = \frac{1}{s - 2} + s - 3</mrow>
+				<mrow>Y(s) = \frac{1}{(s - 1)(s - 2)}\ub{\left(\frac{1}{s - 2} + s - 3\right)}_{(*)}</mrow>
+			</md>
+		</solution>
+
+		<solution><title>Step 3: Prepare for the Backward Transform</title>
+			
+			<p>
+				<xref ref="lt-step-3" text="custom">Step 3</xref>. Now, we need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in <m>(*)</m> as a single fraction, like so
+				<me>
+					(*)	= \frac{1}{s - 2} + \frac{(s - 3)(s - 2)}{s - 2}
+						= \frac{1 + s^2 - 5s + 6}{s - 2} = \frac{s^2 - 5s + 7}{s - 2}
+				</me>.
+				Plugging this back into the equation for <m>(*)</m> gives the new <m>Y(s)</m>,
+				<me>Y(s) = \frac{1}{(s - 1)(s - 2)}\cdot \frac{s^2 - 5s + 7}{s - 2} = \frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}</me>
+				and we are ready to apply partial fraction decomposition. The form of the decomposition is
+				<md>
+					<mrow>
+						\frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}	
+							=\amp\ \frac{A}{s - 1} + \frac{B}{s - 2} + \frac{C}{(s - 2)^2} \quad \text{or}
+					</mrow>
+					<mrow>
+						s^2 - 5s + 7
+							=\amp\ A(s - 2)^2 + B(s - 1)(s - 2) + C(s - 1).
+					</mrow>
+				</md>
+				Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
+			</p>
+			<tabular>
+				<col halign="right"/>
+				<col halign="right"/>
+				<col halign="center"/>
+				<col halign="left"/>
+				<row>
+					<cell><m>s=1</m> :</cell>
+					<cell><m>1 - 5 + 7</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A(1 - 2)^2 + B(1 - 1)(1 - 2) + C(1 - 1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>3</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A</m></cell>
+				</row>
+				<row>
+					<cell><m>s=2</m> :</cell>
+					<cell><m>4 - 10 + 7</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>3(2 - 2)^2 + B(2 - 1)(2 - 2) + C(2 - 1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>1</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>C</m></cell>
+				</row>
+				<row>
+					<cell><m>s=0</m> :</cell>
+					<cell><m>7</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>3(0 - 2)^2 + B(0 - 1)(0 - 2) + 1(0 - 1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>7</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>12 + 2B - 1</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>-2</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>B</m></cell>
+				</row>
+			</tabular>
+			<p>
+				Thus, the prepared <m>Y(s)</m> is
+				<me>Y(s) = \frac{3}{s - 1} + \frac{-2}{s - 2} + \frac{1}{(s - 2)^2}</me>
+			</p>
+		</solution>
+
+		<solution><title>Step 4: Apply the Backward Transform</title>
+			
+			<p>
+				<xref ref="lt-step-4" text="custom">Step 4</xref>. Finally, we perform the backward step to get the solution:
+				<md>
+					<mrow>
+						\ilap{Y(s)}
+					</mrow>
+					<mrow>
+						=\amp\ \ilap{\frac{3}{s - 1}} + \ilap{\frac{-2}{s - 2}} + \ilap{\frac{1}{(s - 2)^2}}
+					</mrow>
+					<mrow>
+						y(t) =\amp\ 3\, e^{t} - 2\, e^{2t} + t\, e^{2t}
+					</mrow>
+				</md>
+			</p>
+		</solution>
+
+	</example>
+
+	<example><m>\quad</m>Compute the solution to the initial-value problem
+		<p>
+			<men xml:id="lt-example-3-eqn">
+				x'' - 4x' + 13x = 54e^{-t}, \quad x(0) = 0, \quad x'(0) = 0
+			</men>
+			using the <xref ref="lt-method" text="title"/>.
+		</p>
+
+		<solution><title>Step 1: Apply the Forward Transform</title>
+
+			<p>
+				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-3-eqn"/>, we have 
+				<md>
+					<mrow>\lap{x'' - 4x' + 13x} = \lap{54e^{-t}}</mrow>
+					<mrow>\lap{x''} - 4\lap{x'} + 13\lap{x} = \frac{54}{s + 1}</mrow>
+				</md>
+				where <m>\lap{x(t)} = X(s)</m> and
+				<ul>
+					<li><m>\lap{x'} = sX(s) - x(0) = sX(s)</m>,</li>
+					<li><m>\ds \lap{x''} = s^2X(s) - sx(0) - x'(0) = s^2X(s)</m>.</li>
+				</ul>
+				So the complete forward transform of <xref ref="lt-example-3-eqn"/> is
+				<me>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</me>
+			</p>
+		</solution>
+
+		<solution><title>Step 2: Solve for <m>X(s)</m></title>
+
+			<p>
+				<xref ref="lt-step-2" text="custom">Step 2</xref>. Next, we isolate <m>X(s)</m> on one side of the equation:
+			</p>
+			<md>
+				<mrow>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</mrow>
+				<mrow>[s^2 - 4s + 13]X(s) = \frac{54}{s + 1}</mrow>
+				<mrow>X(s) = \frac{54}{(s + 1)(s^2 - 4s + 13)}</mrow>
+			</md>
+		</solution>
+
+		<solution><title>Step 3: Prepare for the Backward Transform</title>
+
+			<p>
+				<xref ref="lt-step-3" text="custom">Step 3</xref>. Now, we need to express <m>X(s)</m> as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition,
+				<md>
+					<mrow>
+						\frac{54}{(s + 1)(s^2 - 4s + 13)} = \frac{A}{s + 1} + \frac{Bs + C}{s^2 - 4s + 13} \quad \text{or}
+					</mrow>
+					<mrow>
+						54 = A(s^2 - 4s + 13) + (Bs + C)(s + 1)
+					</mrow>
+				</md>
+				Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
+			</p>
+			<tabular>
+				<col halign="right"/>
+				<col halign="right"/>
+				<col halign="center"/>
+				<col halign="left"/>
+				<row>
+					<cell><m>s=-1</m> :</cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A(-1)^2 - 4(-1) + 13</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A + 4 + 13</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>37</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>A</m></cell>
+				</row>
+				<row>
+					<cell><m>s=0</m> :</cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>37(13) + (B(0) + C)(0 + 1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>481 + C</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>-427</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>C</m></cell>
+				</row>
+				<row>
+					<cell><m>s=1</m> :</cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>37(-10) + (B(1) - 427)(1 + 1)</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>54</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>-370 + 2B - 854</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>1170</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>2B</m></cell>
+				</row>
+				<row>
+					<cell></cell>
+					<cell><m>585</m></cell>
+					<cell><m>=</m></cell>
+					<cell><m>B</m></cell>
+				</row>
+			</tabular>
+			<p>
+				So the updated <m>X(s)</m> is
+				<me>X(s) = \frac{37}{s + 1} + \frac{585s - 427}{s^2 - 4s + 13}</me>.
+				Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.
+				<md>
+					<mrow> X(s)	=\amp\ \frac{37}{s + 1} + \frac{585s - 427}{(s - 2)^2 + 9}</mrow>
+					<mrow> 		=\amp\ \frac{37}{s + 1} + \frac{585s - 2(585) + 2(585)- 427}{(s - 2)^2 + 9}</mrow>
+					<mrow> 		=\amp\ \frac{37}{s + 1} + \frac{585s - 2(585)}{(s - 2)^2 + 9} + \frac{2(585)- 427}{(s - 2)^2 + 9}</mrow>
+					<mrow> 		=\amp\ \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + 743\frac{1}{(s - 2)^2 + 9}</mrow>
+					<mrow> 		=\amp\ \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + \frac{743}{3}\frac{3}{(s - 2)^2 + 9}</mrow>
+				</md>
+			</p>
+		</solution>
+
+		<solution><title>Step 4: Apply the Backward Transform</title>
+
+			<p>
+				<xref ref="lt-step-4" text="custom">Step 4</xref>. Now for the backward step to get the solution:
+				<md>
+					<mrow>
+						x(t) =\amp\ 37e^{-t} + 585\cos(3t) + \frac{743}{3}\sin(3t)
+					</mrow>
+				</md>
+			</p>
+		</solution>
+		
+	</example>
+	
+	<p>
+		These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
+	</p>
+
+	<xi:include href="./c4-s3-ss2-interactives.ptx" />
+
+</subsection>
