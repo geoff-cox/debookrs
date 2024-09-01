@@ -1,0 +1,98 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title>Direct Computation</title>
+    
+    <p>
+        The Laplace transforms method begins with the <xref ref="lt-roadmap-step1" text="custom">forward transformation</xref> of a differential equation with unknown <m>y(t)</m>, into an algebra equation with unknown <m>Y(s)</m>. Once the <m>Y(s)</m> is found, the final step is to recover the solution, <m>y(t)</m>, by reversing the transformation (<xref ref="lt-roadmap-step4"/>). The operation that does this is called an inverse or backward Laplace transform, denoted as <m>\laplacesym^{-1}</m>.
+    </p>
+
+    <figure xml:id="lt-roadmap-step4">
+        <caption>
+            The Backward Laplace Transform. Recovering the solution, <m>y(t)</m>, by reversing the transform that converted the <m>y(t)</m>-equation into the <m>Y(s)</m>-equation. 
+        </caption>
+        <image source="figures/LT-Diagram-Focused-Step-4.png" width="100%">
+            <shortdescription>The Backward Laplace Transform</shortdescription>
+        </image>
+    </figure>
+
+    <p>
+        Applying an inverse Laplace transform is no different from applying any inverse. For example, applying <m>\cos^{-1}</m> to both sides of
+        <md>
+            <mrow> \cos(\pi/4) = \sqrt{2}/2 \quad \implies\amp \quad \cos^{-1}(\cos(\pi/4)) = \cos^{-1}(\sqrt{2}/2) </mrow>
+            <mrow>                          \quad \implies\amp \quad \pi/4 = \cos^{-1}(\sqrt{2}/2)                  </mrow>
+        </md>,
+        is analogous to applying <m>\laplacesym^{-1}</m> to both sides of
+        <md>
+            <mrow> \lap{e^{-3t}} = \frac{1}{s+3}  \quad \implies\amp \quad \ilap{\lap{e^{-3t}}} = \ilap{\frac{1}{s+3}}  </mrow>
+            <mrow>                                  \quad \implies\amp \quad e^{-3t} = \ilap{\frac{1}{s+3}}                 </mrow>
+        </md>,
+        and we would say that the inverse Laplace transform of <m>\frac{1}{s+3}</m> is <m>e^{-3t}</m>.
+    </p>
+
+    <p>
+        The <xref ref="lt-table-L1-L8" text="custom">table</xref> that gives us the common forward transforms is the same table that gives us the common backward tranforms. The difference is that you start with the function of <m>s</m> (right) and seek the function of <m>t</m> (left). Let's explore this through some examples.
+    </p>
+
+    <example>
+        <m>\ \ </m>Find the inverse Laplace transforms of each function. 
+        
+        <tabular>
+            <col width="20%" halign="center"/>
+            <col width="75%"/>
+            <row>
+                <cell><m>\ds \frac{3}{s^2 + 9}</m></cell>
+                <cell>
+                    <p>
+                        <m>\hspace{27em}</m>
+                        <solution>
+                            <p>
+                                This matches the <m>L_4</m> form with <m>b=3</m>. So,
+                                <me>
+                                    \text{By } <xref ref="L4" text="custom">L_4</xref>, \quad \lap^{-1}\left\{\frac{3}{s^2 + 9}\right\} = \sin(3t).
+                                </me>
+                            </p>
+                        </solution>
+                    </p>
+                </cell>
+            </row>
+            <row>
+                <cell><m>\ds \frac{s - 2}{(s - 2)^2 + 16}</m></cell>
+                <cell>
+                    <p>
+                        <m>\hspace{27em}</m>
+                        <solution>
+                            <p>
+                                This matches the <m>L_7</m> form with <m>a=2</m> and <m>b=4</m>. So,
+                                <me>
+                                    \text{By } <xref ref="L7" text="custom">L_7</xref>, \quad \lap^{-1}\left\{\frac{s - 2}{(s - 2)^2 + 16}\right\} = e^{2t}\cos(4t)
+                                </me>.
+                            </p>
+                        </solution>
+                    </p>
+                </cell>
+            </row>
+            <row>
+                <cell><m>\ds \frac{24}{s^5}</m></cell>
+                <cell>
+                    <p>
+                        <m>\hspace{27em}</m>
+                        <solution>
+                            <p>
+                                The <m>s^5</m> in the denominator points us toward <m>L_3</m> with <m>n=4</m>.
+                                <me>
+                                    \text{By } <xref ref="L3" text="custom">L_3</xref>, \quad \ilap{\frac{24}{s^5}} = \ilap{\frac{4!}{s^{4+1}}} = t^4.
+                                </me>
+                            </p>
+                        </solution>
+                    </p>
+                </cell>
+            </row>
+        </tabular>
+        
+    </example>
+
+    <p>
+        These examples demonstrate how straightforward finding a backward Laplace Transforms can be when the function of <m>s</m> matches one of the forms in the table of common forward transforms. However, not all functions will match the table perfectly, and sometimes additional steps are needed to account for missing constants or adjustments. The next few subsections will be dedicated to the different ways of modifying the function in order to use the table to determine backward transforms.
+    </p>
+
+    <xi:include href="./p4-c2-s1-interactives.ptx" />
+
+</section>

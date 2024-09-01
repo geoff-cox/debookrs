@@ -1,0 +1,167 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title>Additional Examples</title>
+
+	<note>
+		This section has not been started. It will contain additional examples to aid with understanding the material.
+	</note>
+
+	<example>
+		<p>
+		Solve 
+		<me> y'' + 3y' + 2y = 4t,  y(0) = 1,  y'(0) = 0 </me>
+		</p>
+		<solution>
+			<p>
+				We intend to use Laplace transforms to solve this IVP, but we need to verify that  this is an appropriate technique. We can verify that this is
+				<ul>
+					<li>
+						the DE is linear, 
+					</li>
+					<li>
+						the DE has constant coefficients, and
+					</li>
+					<li>
+						initial conditions are provided.
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that <m>y</m> is the dependent variable and <m>t</m> is the independent variable, so our goal is to find a function <m>y(t)</m> that satisfies the DE and the initial conditions.
+			</p>
+
+			<aside>
+				<p>
+					Margin note:  We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.
+				</p>
+			</aside>
+
+			<p>
+				We begin by taking the Laplace transform of both sides of the DE, using linearity as needed.
+				<md>
+					<mrow>\lap{y'' + 3y' + 2y}	=\amp\ \lap{ 4t }</mrow>
+					<mrow>\lap{y''} + 3\lap{y'} + 2\lap{y}	=\amp\ 4\cdot\lap{ t }</mrow>
+					<mrow>\Big[s^2Y(s) - sy(0) - y'(0) \Big] + 3\Big[ sY(s) - y(0) \Big] + 2Y(s)	=\amp\ \frac{4}{s^2}</mrow>
+				</md>
+			</p>
+
+			<p>
+				Now we use the provided initial conditions. 
+				<md>
+					<mrow>\Big[s^2Y(s) - s\cdot 1 - 0 \Big] + 3\Big[ sY(s) - 1 \Big] + 2Y(s)	=\amp\ \frac{4}{s^2}</mrow>
+					<mrow>s^2Y(s) - s  + 3sY(s) - 3 + 2Y(s)	=\amp\ \frac{4}{s^2}</mrow>
+				</md>
+			</p>
+
+			<p>
+				Next we will use algebra to solve for <m>Y(s).</m> 
+				<md>
+					<mrow>s^2Y(s)+ 3sY(s) + 2Y(s)	=\amp\ \frac{4}{s^2} + s + 3</mrow>
+					<mrow>Y(s)\Big[ s^2 + 3s + 2 \Big]	=\amp\ \frac{4}{s^2} + \frac{s^3}{s^2} + \frac{3s^2}{s^2}</mrow>
+					<mrow>=\amp\ \frac{4 + s^3 + 3s^2}{s^2}</mrow>
+					<mrow>Y(s)	=\amp\ \frac{s^3 + 3s^2 + 4}{s^2(s^2 + 3s + 2)}</mrow>
+					<mrow>=\amp\ \frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)}</mrow>
+				</md>
+			</p>
+
+			<p>
+				We need to find the inverse Laplace transform of both sides of the equation. In order to do that, we apply partial fraction decomposition to the rational function on the right hand side, giving
+				<me>\frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}.</me>
+			</p>
+				
+				
+			<!-- OMITTED PDF DETAILS
+			<p>
+				We have a repeated linear factor, <m>s^2</m>, and two other linear factors, so the form of the partial fraction decomposition can be written as
+				<me> \frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s+2} + \frac{D}{s+1} </me>
+			</p>
+
+			<p>
+				(PFD details...can be omitted?) 
+				<md>
+					<mrow>s^3 + 3s^2 + 4	=\amp\ A(s)(s+2)(s+1) + B(s+2)(s+1) + C(s^2)(s+1) + D(s^2)(s+2)</mrow>
+					<mrow>=\amp\ As(s^2 + 3s + 2) + B(s^2 + 3s + 2) + Cs^3 + Cs^2 + Ds^3 + 2Ds^2</mrow>
+					<mrow>=\amp\ As^3 + 3As^2 + 2As + Bs^2 + 3Bs + 2B + Cs^3 + Cs^2 + Ds^3 + 2Ds^2</mrow>
+					<mrow>s^3 + 3s^2 + 0s + 4	=\amp\ (A + C + D)s^3 + (3A + B + C+ 2D)s^2 + (2A + 3B)s + (2B)</mrow>
+				</md>
+
+				<md>
+					<mrow>A+C+D	=\amp\ 1		\amp 3A+B+C+2D	=\amp\ 3	\amp 	2A+3B	=\amp\ 0		\amp 2B	=\amp\ 4</mrow>
+					<mrow>\amp		\amp			\amp	\amp			\amp		\amp B	=\amp\ 2</mrow>
+					<mrow>\amp		\amp 3A+2+C+2D	=\amp\ 3	\amp	2A+ 3(2)	=\amp\ 0		\amp	\amp</mrow>
+					<mrow>\amp		\amp 3A+C+2D	=\amp\ 1	\amp		2A	=\amp\ -6	\amp	\amp</mrow>
+					<mrow>\amp		\amp			\amp	\amp		A	=\amp\ -3	\amp	\amp</mrow>
+					<mrow>-3+C+D	=\amp\ 1		\amp 3(-3)+C+ 2D	=\amp\ 1	\amp			\amp		\amp	\amp</mrow>
+					<mrow>C+D	=\amp\ 4		\amp	C+2D	=\amp\ 10 \amp			\amp		\amp	\amp</mrow>
+					<mrow>C	=\amp\ 4 - D	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
+					<mrow>\amp		\amp (4-D) + 2D	=\amp\ 10 \amp			\amp		\amp	\amp</mrow>
+					<mrow>\amp		\amp 	4 + D	=\amp\ 10 \amp			\amp		\amp	\amp</mrow>
+					<mrow>\amp		\amp		D	=\amp\ 6	\amp			\amp		\amp	\amp</mrow>
+					<mrow>C	=\amp\ 4-6	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
+					<mrow>=\amp\ -2	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
+				</md>
+			</p>
+
+			<p>
+				Hence, we have 
+				<me>\frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1} </me>
+			</p>
+			-->
+
+			<p>
+				Now we are prepared to take the inverse Laplace transform. 
+				<md>
+					<mrow>Y(s)	=\amp\ \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}</mrow>
+				\lap^{-1}\left\{ Y(s) \right\}	
+					<mrow>=\amp\ \lap^{-1}\left\{ \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1} \right\}</mrow>
+					<mrow>y(t)	=\amp\ -3\cdot\lap^{-1}\left\{ \frac{1}{s} \right\}</mrow> 
+						+ 2\lap^{-1}\left\{ \frac{1}{s^2} \right\}
+						- 2\cdot \lap^{-1}\left\{ \frac{1}{s+2} \right\}
+						+ 6 \cdot \lap^{-1}\left\{ \frac{1}{s+1} \right\}
+					<mrow>=\amp\ -3 + 2t - 2e^{-2t} + 6e^{-t}</mrow>
+				</md>
+			</p>
+
+			<p>
+				Thus, we have found the desired unknown function 
+				<me> y(t) = -3 + 2t - 2e^{-2t} + 6e^{-t}. </me>
+			</p>
+
+			<p>
+				Optional:  verify the solution 
+				<md>
+					<mrow>y'(t)	=\amp\ 0 + 2 + 4e^{-2t} - 6e^{-t}</mrow>
+					<mrow>y''(t)	=\amp\ 0 - 8e^{-2t}+ 6e^{-t}</mrow>
+				</md>
+				
+				<md>
+					<mrow>LHS	=\amp\ y'' + 3y' + 2y</mrow>
+					<mrow>=\amp\ \left( - 8e^{-2t}+ 6e^{-t} \right) </mrow>
+						+ 3\left( 2 + 4e^{-2t} - 6e^{-t} \right) 
+						+ 2\left( -3 + 2t - 2e^{-2t} + 6e^{-t} \right)		
+					<mrow>=\amp\ -8e^{-2t}+ 6e^{-t}</mrow>
+						+ 6 + 12e^{-2t} - 18e^{-t}
+						- 6 + 4t - 4e^{-2t} + 12e^{-t}
+					<mrow>=\amp\ 4t</mrow>
+					<mrow>=\amp\ RHS</mrow>
+				</md>
+			</p>
+
+			<p>
+				We also verify the initial conditions: 
+				<md>
+					<mrow>y(0)	=\amp\ -3 + 2(0) - 2e^{-2(0)} + 6e^{-0}</mrow>
+					<mrow>=\amp\ -3 + 0 - 2+ 6</mrow>
+					<mrow>=\amp\ 1</mrow>
+					<mrow>\amp</mrow>
+					<mrow>y'(0)	=\amp\ 2 + 4e^{-2(0)} - 6e^{-0}</mrow>
+					<mrow>=\amp\ 2 + 4 - 6</mrow>
+					<mrow>=\amp\ 0</mrow>
+				</md>
+			</p>
+
+		</solution>
+	</example>
+
+	<xi:include href="./p4-c3-s3-interactives.ptx" />
+
+</section>
