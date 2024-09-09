@@ -1,7 +1,7 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> The Integrating Factor </title>
 
 	<p>
-		As revealed in the previous section, the integrating factor method aims to rewrite a differential equation so that direct integration can be used to solve it. We also saw that this is accomplished by applying a <q>backward</q> product rule to the left side of the equation. Unfortunately, the left side of the equation is usually missing a piece that is required for the backward product rule to apply. This missing piece is called the <em>integrating factor</em> and it is the focus of the current discussion.
+		In the previous section, we introduced the idea of solving first-order linear differential equations by manipulating the equation into a form that allows direct integration. This process involved applying a <q>backward</q> product rule to make the left-hand side a perfect derivative. However, most equations are not in the form to do this directly. Instead, there is a missing piece, called the <em>integrating factor</em> that is required for transformation to take place and is the focus of this section.
 	</p>
 
 	<p>
@@ -11,21 +11,27 @@
 		</men>.
 		We would like to apply the backward product rule to the left side, but it seems to be missing something. Let's try to figure out what this missing piece is by multipying both sides by something:
 		<men xml:id="if-example-eqn-w-missing-piece">
-			\us{?}{\boxed{\phantom{\Large |P}}}\frac{dy}{dx} + 2\ \us{?}{\boxed{\phantom{\Large |P}}}\ y = 5\ \us{?}{\boxed{\phantom{\Large |P}}}
+			\us{?}{\boxed{\phantom{\large |P}}}\frac{dy}{dx} + 2\ \us{?}{\boxed{\phantom{\large |P}}}\ y = 5\ \us{?}{\boxed{\phantom{\large |P}}}
 		</men>.
 		With this missing piece and the fact that <m>y</m> and <m>dy/dx</m> appear in the equation, we should be able to rewrite the equation as:
 		<men xml:id="if-example-eqn-goal-w-missing-piece">
-			\frac{d}{dx} \Big[\ \us{?}{\boxed{\phantom{\Large |P}}} \cdot y\ \Big] = 5\ \us{?}{\boxed{\phantom{\Large |P}}}
+			\frac{d}{dx} \Big[\ \us{?}{\boxed{\phantom{\large |P}}} \cdot y\ \Big] = 5\ \us{?}{\boxed{\phantom{\large |P}}}
 		</men>.
-		To determine what this missing piece is, we need to see where <xref ref="if-example-eqn"/> (start) and <xref ref="if-example-eqn-goal-w-missing-piece"/> (goal) meet in the middle. This is shown in the figure below.
+		To determine what this missing piece is, we need to see where <xref ref="if-example-eqn"/> (start) and <xref ref="if-example-eqn-goal-w-missing-piece"/> (goal) meet in the middle. This is shown below.
 		<sidebyside widths="45% 55%" valign="middle">
 			<p>
-				Notice that the two middle equations agree everywhere except for the expressions in blue. In order for the start and goal equations to be the same, these expressions must be equal. So, the missing piece that we seek must satisfy
-				<me> {\color{blue} \frac{d\ \boxed{\phantom{\Large |P}}}{dx} = 2\ \boxed{\phantom{\Large |P}}} </me>.
-				But, this is a differential equation where the missing function that goes in the box is the solution.
+				Notice, the two middle equations agree everywhere except for the expressions in blue. In order for the start and goal equations to be the same, these expressions must match. In other words, the piece that we need to get <xref ref="if-example-eqn-goal-w-missing-piece"/> must satisfy
+				<me> 
+					{\color{blue} \frac{d\ \boxed{\phantom{|P}}}{dx} = 2\ \boxed{\phantom{|P}}} 
+				</me>.
+				But, this is the differential equation
+				<me>
+					\frac{d\mu}{dx} = 2 \mu
+				</me>
+				where <m>\mu</m> is the unknown!
 			</p>
 			<p>
-				<image source="figures/IF-Idea-GIF-1-repeat.gif" width="55%">
+				<image source="figures/IF-Idea-GIF-1-repeat.gif" width="100%">
 					<shortdescription>(for accessibility)</shortdescription>
 				</image>
 			</p>
@@ -33,56 +39,57 @@
 	</p>
 
 	<p>
-		So, to find the missing piece, we solve the separable differential equation 
-		<me>\ds\frac{d\mu}{dx} = 2\ \mu</me>
-		for <m>\mu</m>. In this case, the solution is <m>\mu = e^{2x}</m> and this is exactly what goes in all the boxes above to rewrite <xref ref="if-example-eqn"/> as
+		Solving this requires you to notice that it is separable and a <xref ref="if-intro-example-details" text="custom">quick calculation</xref> shows that <m>\mu = e^{2x}</m> is the solution. Therefore, if you multiply both sides of <xref ref="if-example-eqn"/> by <m>\mu = e^{2x}</m>, you can use the backward product rule to write the equation as
 		<me> \frac{d}{dx}\left[ e^{2x} \cdot y \right] = 5e^{2x} </me>,
-		which can be solved by <xref ref="direct-integration" text="custom">direct integration</xref>. 
+		which can then be solved by <xref ref="direct-integration" text="custom">direct integration</xref>. 
 	</p>
 
 	<p>
-		The missing piece, <m>\mu = e^{2x}</m>, is called the <em>integrating factor</em> for equation <xref ref="if-example-eqn"/> and the general form of the integrating factor is found in a similar way, as we will show now. 
-	</p>
-	
-	<p>
-		Note, all first-order linear differential equations can be written in the form:
-		<men xml:id="if-general-eqn"> 
-			\frac{dy}{dx} + P(x) y = Q(x)
-		</men>,
-		where <m>P(x)</m> and <m>Q(x)</m> are functions of <m>x</m>. Just as above, the goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, <m>\mu(x)</m>, that we still need to find. We find <m>\mu(x)</m> by multiplying it onto <xref ref="if-general-eqn"/>, like so
-		<sidebyside widths="50% 50%">
-			<p>
-				<md>
-					<mrow> \frac{dy}{dx} + P(x)\amp\ y = Q(x) </mrow>
-					<mrow> \mu \frac{dy}{dx} + {\color{blue} \mu P(} \amp\ {\color{blue}\! x)} y = \mu Q(x) </mrow>
-					<mrow> {\color{blue} \updownarrow}\ \ \amp \ {\color{blue} \text{match &amp; solve}}</mrow>
-					<mrow> \mu \frac{dy}{dx} + {\color{blue} \frac{d\mu}{dx}}\amp\ y = \mu Q(x) </mrow>
-					<mrow> \frac{d}{dx}\big[\mu \cdot \amp\ y\big] = \mu Q(x) </mrow>
-				</md>
-			</p>
-			
-			<p>
-				<md>
-					<mrow> {\color{blue} \frac{d\mu}{dx} =}\amp\ {\color{blue} \mu P(x)} </mrow>
-					<mrow> {\color{blue} \frac{1}{\mu}d\mu =}\amp\ {\color{blue} P(x) dx} </mrow>
-					<mrow> {\color{blue} \int \frac{1}{\mu}d\mu =}\amp\ {\color{blue} \int P(x) dx} </mrow>
-					<mrow> {\color{blue} \ln|\mu| =}\amp\ {\color{blue} \int P(x) dx} </mrow>
-					<mrow> {\color{blue} \mu =}\amp\ {\color{blue} e^{\int P(x) dx}} </mrow>
-				</md>
-			</p>
-		</sidebyside>
-			
+		The function, <m>\mu = e^{2x}</m>, that allowed us to rewrite the equation is called the <em>integrating factor</em>. The general form for this factor is outlined as follows. 
 	</p>
 
-	<assemblage xml:id="integrating-factor"><title> The Integrating Factor </title>
-		<p>
-			The <term>integrating factor</term> for the first-order linear differential equation
-		</p>
-		<p>
-			<me> y' + P(x)y = Q(x) </me>
-			is given by	<m>\ds \mu = e^{\int P(x)\ dx} </m> and represents the function, when multiplied onto both sides of the equation, needed to write the left side as a derivative.
-		</p>
-	</assemblage>
+	<theorem xml:id="integrating-factor"><title>The Integrating Factor</title>
+		<statement>
+			<p>
+				The <term>integrating factor</term> for the first-order linear differential equation
+				<me xml:id="standard-first-order-linear-de">y' + P(x)y = Q(x)</me>
+				is <m>\mu = e^{\int P(x) dx}</m>. Multiplying both sides by <m>\mu</m> transforms the equation into:
+				<me>\frac{d}{dx}\left[\mu(x) \cdot y\right] = \mu(x)Q(x)</me>.
+			</p>
+		</statement>
+		
+		<proof><title>Derivation of the Integrating Factor</title>
+			<p>
+				Note, all first-order linear differential equations can be written in the form
+				<men xml:id="if-general-eqn"> 
+					\frac{dy}{dx} + P(x) y = Q(x)
+				</men>,
+				where <m>P(x)</m> and <m>Q(x)</m> are functions of <m>x</m>. The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, <m>\mu(x)</m>, that we still need to find. We find <m>\mu(x)</m> by multiplying it onto <xref ref="if-general-eqn"/>, like so
+				<sidebyside widths="50% 50%">
+					<p>
+						<md>
+							<mrow> \frac{dy}{dx} + P(x)\amp\ y = Q(x) </mrow>
+							<mrow> \mu \frac{dy}{dx} + {\color{blue} \mu P(} \amp\ {\color{blue}\! x)} y = \mu Q(x) </mrow>
+							<mrow> {\color{blue} \updownarrow}\ \ \amp \ {\color{blue} \text{match &amp; solve}}</mrow>
+							<mrow> \mu \frac{dy}{dx} + {\color{blue} \frac{d\mu}{dx}}\amp\ y = \mu Q(x) </mrow>
+							<mrow> \frac{d}{dx}\big[\mu \cdot \amp\ y\big] = \mu Q(x) </mrow>
+						</md>
+					</p>
+					
+					<p>
+						<md>
+							<mrow> {\color{blue} \frac{d\mu}{dx} =}\amp\ {\color{blue} \mu P(x)} </mrow>
+							<mrow> {\color{blue} \frac{1}{\mu}d\mu =}\amp\ {\color{blue} P(x) dx} </mrow>
+							<mrow> {\color{blue} \int \frac{1}{\mu}d\mu =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+							<mrow> {\color{blue} \ln|\mu| =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+							<mrow> {\color{blue} \mu =}\amp\ {\color{blue} e^{\int P(x) dx}} </mrow>
+						</md>
+					</p>
+				</sidebyside>
+					
+			</p>
+		</proof>
+	</theorem>
 
 	<xi:include href="./p2-c3-s2-interactives.ptx" />
 
