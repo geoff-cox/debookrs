@@ -8002,6 +8002,456 @@ var ptx_lunr_docs = [
   "body": "Error Analysis  "
 },
 {
+  "id": "main-11-2",
+  "level": "1",
+  "url": "main-11-2.html",
+  "type": "Chapter",
+  "number": "19",
+  "title": "Miscellaneous Exercises",
+  "body": "Miscellaneous Exercises   Exercises          Find the general solution t   (o ) This DE is linear, homogeneous, and has constant coefficients, so we can start by solving the characteristic equation. Thus, the general solution is       Solve the following boundary value problems. Explain whetheryou found a unique solution, an infinite number of solutions, or no solution.         the unique solution i  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. Hence, the (unique) particular solution is       no solution We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, the first condition leads t while the second condition leads t These cannot both be true, so there is no solution .      there are an infinite number of solutions of the for  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, both of the conditions lead t and we don't learn anything abou Thus could still take on any value, and therefore there are an infinite number of solutions of the form      Exercises     Suppose a mixture containing 0.3 kg of sugar per liter runs into a tank initially filled with 400 L of water containing 2 kg of sugar. The liquid enters at 10 L\/min,the mixture is kept uniform by stirring, and the mixture flows out at the same rate.     Find the mass of sugar in the tank afte minutes. \\label{Q2a}  Find the mass of sugar in the tank afte minutes. \\label{Q2a}  Find the concentration of sugar in the tank after 10 minutes.  Find the concentration of sugar in the tank after 10 minutes.  Use your answer to question \\ref{Q2a} to determine the concentration of sugar in the tank after a long time. Does your answer make sensein terms of the physical scenario? Explain.\\\\             A brine solution of salt flows at a constant rate of 4 L\/min into a large tank that initially he of pure water. The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L\/min. If the concentration of salt in the brine entering the tank is 0.2 kg\/L: Determine the mass of the salt in the tank afte minutes.  What is the concentration of salt after one hour?         Two large tanks, each holding 100 L of liquid, are interconnected by pipes, with the liquid flowing from tank 1 into tank 2 at a rate of 3 L\/min and from tank 2 into tank 1 at a rate of 1 L\/min. The liquid inside each tank is kept well-stirred. A brine solution with salt concentration of 0.01 kg\/L flows into tank 1 at a rate of 4 L\/min. The (diluted) solution flows out of the system from tank 1 at 2 L\/min and from tank 2 at 2 L\/min.Initially, tank 1 contains pure water and tank 2 contains 6 kg of salt.     Write a system of differential equations fo (the amount of salt, in kg, in tank 1 at tim )an (the amount of salt, in kg, in tank 2 at tim ).   \\\\ We consider the rate of change in the amount of salt in tank 1. Similarly, we consider the rate of change in the amount of salt in tank 2. Hence, our system is:   How many initial conditions will you need to find a particularsolution? Write the initial conditions. two an  \\\\ There are two first-order DEs, so we will need two initial conditions. They are:   Why can't we solve each of the DEs you found individually usingtechniques we already know?  an are both unknown functions, and each DE contains BOTH of the unknowns \\\\ We can't solve this system using techniques we already know becaus an are both unknown functions, and each DE contains BOTH of the unknowns. All of the techniques we have so far help us solve for a single unknown function.           A simplified mathematical model for an arms race between two countries whose expenditures for % defense are expressed by the variable an is given by the linear system %  with initial condition Here an are constants that measure the trust % (or distrust!) each country has for the other. % \\ben[label=(\\alph*)]  What might be appropriate units fo an ? %  How can we interpret the fact that the coefficient o is positive in the equation fo ? % Does it make sense? Would the DE make sense if the coefficient was negative instead? %  How can we interpret the fact that the coefficient o is negative in the equation fo ? % Does it make sense? Would the DE make sense if the coefficient was positive instead? %  Suppose country X trusts country Y, but country Y doesn't trust country X. What can we say abou an ? % Should they be positive, negative or zero? %  Rewrite the system of differential equations in matrix form by using the vector % % Notice that for this system, the right hand side should be of the for %  Write the initial conditions in a vector, also. That is, complete the following. %               The following is a modified version of a question that appears on page 113 in your textbook.\\\\ % % Suppose compartments A and B are filled with fluids and are separated by a permeable membrane. % The figure is a compartmental representation of the exterior and interior of a cell. Suppose, too, that % a nutrient necessary for cell growth passes through the membrane. % \\begin{center}\\includegraphics[scale = 0.35, trim = 0in 2.5in 0 0.4in]{concentration.png} % \\end{center} % % % A model for the concentration an of the nutrient in compartments A and B, % respectively, at tim is given by the linear system of differential equations %  where an are the volumes of the compartments, an is a % permeability factor. Le an % % \\ben[label=(\\alph*)] %  In the first equation, explain why it makes sense fo to have a positive coefficient % an to have a negative coefficient. %  Notice that if we add these two equations, we get % % or, equivalently, % % Explain what this means and why it makes sense. %  Rewrite the system of differential equations in matrix form by using the vector % %  Write the initial conditions in a vector, also. That is, complete the following. %      A tank contains 100 liters of water. Salt is being added at a rate of 5 grams per minute. If the mixture is kept uniform by stirring and salt is being removed from the tank at a rate of 2 liters per minute, set up the differential equation that models the amount of salt \\(y(t)\\) in the tank at any time \\(t\\).       Exercises     Basic Euler's Method Consider the IVP below.     Compute 2 iterations of Euler's method using step siz \\label{Q1a}    %  What is the meaning of your answer in part \\ref{Q1a}?  What is the meaning of your answer in part \\ref{Q1a}?  Compute 2 iterations of Euler's method using step siz \\label{Q1b}      What is the meaning of your answer in part \\ref{Q1b}?  What is the meaning of your answer in part \\ref{Q1b}?  (This one is good review for the final!) Find the analytic solution to the IVP. Use your solution to compare the exact value o with and your answersfrom parts \\ref{Q1a} and \\ref{Q1b}.   This DE is first order and linear, so we can solve it using an integrating factor. (There are other solution techniques, as well.)\\\\ We begin by putting the DE in the standard form for a first-order linear DE so that we can identif . We can see tha Then we can find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq14-1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: We would like to integrate both sides of the equation so we can isolat . On the right hand side, we will need to use integration by parts. We choos an as follows: by taking the derivative o an by taking the antiderivative o : Now we proceed by integrating as follows. Now we use the initial condition to find the value o . Hence, the solution is We can use this to fin  Note that the two numerical approximations wer (found using ) an (found using ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.     Consider the IVP below.     Use Euler's method to approximate using step size \\label{Q2a}    Hence   Use Euler's method to approximate using step size \\label{Q2b}    Hence   Which of the approximations above do you trust more?  Which of the approximations above do you trust more?  (This one is good review for the final!) Find the analytic solutionto the IVP, find and \\\\compare with your answers from parts \\ref{Q2a} and \\ref{Q2b}.   There are multiple solution techniques that will work to solve this DE. We will separate variables here. Now we can apply the initial condition to find the value of the constant . Therefore the solution is We can use this to find  Note that the two numerical approximations wer (found usin ) an (found usin ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.      Euler's Method for Systems of DEs Consider the system below.     Compute two iterations of Euler's method using step size   Compute two iterations of Euler's method using step size   What is the meaning of your answer?  What is the meaning of your answer?         Consider the system below. Approximat and using      Therefore an       Reduction of Order Reduce each of the following to a system of first-order differential equations.                   where an  We have one second-order and one first-order DE, which means we will need three variables to generate a systemof three first-order DEs.\\\\ Let  an . Then we have the following. Substituting into the first DE yields the following. Substituting into the second DE yields the following. Then equations (\\ref{eq14-9}), (\\ref{eq14-10}) and (\\ref{eq14-11}) constitute a system of first-order DEs in the variable  , and , as below:           Euler's Method for Higher Order DEs \\amp Systems Consider the IVP below. using step size .   First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-12} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-13} \\end{equation} Substituting equations (\\ref{eq14-12}) and (\\ref{eq14-13}) into the DE yields the following. Then equations (\\ref{eq14-12}) and (\\ref{eq14-14}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore an This mean (and, even though we were not asked for it specifically ).     Use Euler's Method to approximate wher is the solution to     usin \\label{partA_euler}   First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-15} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-16} \\end{equation} Substituting equations (\\ref{eq14-14}) and (\\ref{eq14-15}) into the DE yields the following. Then equations (\\ref{eq14-15}) and (\\ref{eq14-17}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).  using    We will use the system of DEs developed in part \\ref{partA_euler} Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).\\\\ %     Exercises      Solve the following systems of differential equations.          We can take the LT of each DE. The result is two algebraic equations in two unknowns an We will solve the equations simultaneously as shown below. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition fo   Hence, Now we need only find the inverse LT of equations (\\ref{eq13-1}) and (\\ref{eq13-2}). This, the solution to this system is (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote}   showto{student}{\\vspace{0.5cm}}   We can take the LT of each DE, starting with the first DE. We will then solve fo  Now we take the LT of the second DE. We will substitute in fo using the result we found above. We now substitute this back into equation (\\ref{eq13-3}). We need only take the inverse LT of each function in order to solve for the desired functions an   Thus, the solution to this system is \\vfill (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote}      We can take the LT of each DE, starting with the first DE. We will then solve fo  Now we take the LT of the second DE. We will substitute in fo using the result we found above. We now substitute this back into equation (\\ref{eq13-5}). We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition fo   Hence, Now we need only find the inverse LT of equations (\\ref{eq13-5}) and (\\ref{eq13-6}). Thus, the solution to this system is (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify that this is the solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote}    "
+},
+{
+  "id": "main-11-2-2-2-2",
+  "level": "2",
+  "url": "main-11-2-2.html#main-11-2-2-2-2",
+  "type": "Exercise",
+  "number": "19.1",
+  "title": "",
+  "body": "Find the general solution t   (o ) This DE is linear, homogeneous, and has constant coefficients, so we can start by solving the characteristic equation. Thus, the general solution is  "
+},
+{
+  "id": "main-11-2-2-3-2",
+  "level": "2",
+  "url": "main-11-2-2.html#main-11-2-2-3-2",
+  "type": "Exercise",
+  "number": "19.2",
+  "title": "",
+  "body": "    the unique solution i  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. Hence, the (unique) particular solution is  "
+},
+{
+  "id": "main-11-2-2-3-3",
+  "level": "2",
+  "url": "main-11-2-2.html#main-11-2-2-3-3",
+  "type": "Exercise",
+  "number": "19.3",
+  "title": "",
+  "body": "    no solution We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, the first condition leads t while the second condition leads t These cannot both be true, so there is no solution . "
+},
+{
+  "id": "main-11-2-2-3-4",
+  "level": "2",
+  "url": "main-11-2-2.html#main-11-2-2-3-4",
+  "type": "Exercise",
+  "number": "19.4",
+  "title": "",
+  "body": "    there are an infinite number of solutions of the for  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, both of the conditions lead t and we don't learn anything abou Thus could still take on any value, and therefore there are an infinite number of solutions of the form  "
+},
+{
+  "id": "main-11-2-3-2-2",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-2-2",
+  "type": "Exercise",
+  "number": "19.1",
+  "title": "",
+  "body": "Find the mass of sugar in the tank afte minutes. \\label{Q2a}  Find the mass of sugar in the tank afte minutes. \\label{Q2a} "
+},
+{
+  "id": "main-11-2-3-2-3",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-2-3",
+  "type": "Exercise",
+  "number": "19.2",
+  "title": "",
+  "body": "Find the concentration of sugar in the tank after 10 minutes.  Find the concentration of sugar in the tank after 10 minutes. "
+},
+{
+  "id": "main-11-2-3-2-4",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-2-4",
+  "type": "Exercise",
+  "number": "19.3",
+  "title": "",
+  "body": "Use your answer to question \\ref{Q2a} to determine the concentration of sugar in the tank after a long time. Does your answer make sensein terms of the physical scenario? Explain.\\\\   "
+},
+{
+  "id": "main-11-2-3-3-2",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-3-2",
+  "type": "Exercise",
+  "number": "19.4",
+  "title": "",
+  "body": "A brine solution of salt flows at a constant rate of 4 L\/min into a large tank that initially he of pure water. The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L\/min. If the concentration of salt in the brine entering the tank is 0.2 kg\/L: Determine the mass of the salt in the tank afte minutes.  What is the concentration of salt after one hour?    "
+},
+{
+  "id": "main-11-2-3-4-2",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-4-2",
+  "type": "Exercise",
+  "number": "19.5",
+  "title": "",
+  "body": "Write a system of differential equations fo (the amount of salt, in kg, in tank 1 at tim )an (the amount of salt, in kg, in tank 2 at tim ).   \\\\ We consider the rate of change in the amount of salt in tank 1. Similarly, we consider the rate of change in the amount of salt in tank 2. Hence, our system is:  "
+},
+{
+  "id": "main-11-2-3-4-3",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-4-3",
+  "type": "Exercise",
+  "number": "19.6",
+  "title": "",
+  "body": "How many initial conditions will you need to find a particularsolution? Write the initial conditions. two an  \\\\ There are two first-order DEs, so we will need two initial conditions. They are:  "
+},
+{
+  "id": "main-11-2-3-4-4",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-4-4",
+  "type": "Exercise",
+  "number": "19.7",
+  "title": "",
+  "body": "Why can't we solve each of the DEs you found individually usingtechniques we already know?  an are both unknown functions, and each DE contains BOTH of the unknowns \\\\ We can't solve this system using techniques we already know becaus an are both unknown functions, and each DE contains BOTH of the unknowns. All of the techniques we have so far help us solve for a single unknown function. "
+},
+{
+  "id": "main-11-2-3-5-2",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-5-2",
+  "type": "Exercise",
+  "number": "19.8",
+  "title": "",
+  "body": "A simplified mathematical model for an arms race between two countries whose expenditures for % defense are expressed by the variable an is given by the linear system %  with initial condition Here an are constants that measure the trust % (or distrust!) each country has for the other. % \\ben[label=(\\alph*)]  What might be appropriate units fo an ? %  How can we interpret the fact that the coefficient o is positive in the equation fo ? % Does it make sense? Would the DE make sense if the coefficient was negative instead? %  How can we interpret the fact that the coefficient o is negative in the equation fo ? % Does it make sense? Would the DE make sense if the coefficient was positive instead? %  Suppose country X trusts country Y, but country Y doesn't trust country X. What can we say abou an ? % Should they be positive, negative or zero? %  Rewrite the system of differential equations in matrix form by using the vector % % Notice that for this system, the right hand side should be of the for %  Write the initial conditions in a vector, also. That is, complete the following. %     "
+},
+{
+  "id": "main-11-2-3-6-2",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-6-2",
+  "type": "Exercise",
+  "number": "19.9",
+  "title": "",
+  "body": "The following is a modified version of a question that appears on page 113 in your textbook.\\\\ % % Suppose compartments A and B are filled with fluids and are separated by a permeable membrane. % The figure is a compartmental representation of the exterior and interior of a cell. Suppose, too, that % a nutrient necessary for cell growth passes through the membrane. % \\begin{center}\\includegraphics[scale = 0.35, trim = 0in 2.5in 0 0.4in]{concentration.png} % \\end{center} % % % A model for the concentration an of the nutrient in compartments A and B, % respectively, at tim is given by the linear system of differential equations %  where an are the volumes of the compartments, an is a % permeability factor. Le an % % \\ben[label=(\\alph*)] %  In the first equation, explain why it makes sense fo to have a positive coefficient % an to have a negative coefficient. %  Notice that if we add these two equations, we get % % or, equivalently, % % Explain what this means and why it makes sense. %  Rewrite the system of differential equations in matrix form by using the vector % %  Write the initial conditions in a vector, also. That is, complete the following. %     "
+},
+{
+  "id": "main-11-2-3-6-3",
+  "level": "2",
+  "url": "main-11-2-3.html#main-11-2-3-6-3",
+  "type": "Exercise",
+  "number": "19.10",
+  "title": "",
+  "body": "A tank contains 100 liters of water. Salt is being added at a rate of 5 grams per minute. If the mixture is kept uniform by stirring and salt is being removed from the tank at a rate of 2 liters per minute, set up the differential equation that models the amount of salt \\(y(t)\\) in the tank at any time \\(t\\).   "
+},
+{
+  "id": "main-11-2-4-2-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-2-2",
+  "type": "Exercise",
+  "number": "19.1",
+  "title": "",
+  "body": "Compute 2 iterations of Euler's method using step siz \\label{Q1a}    % "
+},
+{
+  "id": "main-11-2-4-2-3",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-2-3",
+  "type": "Exercise",
+  "number": "19.2",
+  "title": "",
+  "body": "What is the meaning of your answer in part \\ref{Q1a}?  What is the meaning of your answer in part \\ref{Q1a}? "
+},
+{
+  "id": "main-11-2-4-2-4",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-2-4",
+  "type": "Exercise",
+  "number": "19.3",
+  "title": "",
+  "body": "Compute 2 iterations of Euler's method using step siz \\label{Q1b}     "
+},
+{
+  "id": "main-11-2-4-2-5",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-2-5",
+  "type": "Exercise",
+  "number": "19.4",
+  "title": "",
+  "body": "What is the meaning of your answer in part \\ref{Q1b}?  What is the meaning of your answer in part \\ref{Q1b}? "
+},
+{
+  "id": "main-11-2-4-2-6",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-2-6",
+  "type": "Exercise",
+  "number": "19.5",
+  "title": "",
+  "body": "(This one is good review for the final!) Find the analytic solution to the IVP. Use your solution to compare the exact value o with and your answersfrom parts \\ref{Q1a} and \\ref{Q1b}.   This DE is first order and linear, so we can solve it using an integrating factor. (There are other solution techniques, as well.)\\\\ We begin by putting the DE in the standard form for a first-order linear DE so that we can identif . We can see tha Then we can find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq14-1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: We would like to integrate both sides of the equation so we can isolat . On the right hand side, we will need to use integration by parts. We choos an as follows: by taking the derivative o an by taking the antiderivative o : Now we proceed by integrating as follows. Now we use the initial condition to find the value o . Hence, the solution is We can use this to fin  Note that the two numerical approximations wer (found using ) an (found using ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer. "
+},
+{
+  "id": "main-11-2-4-3-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-3-2",
+  "type": "Exercise",
+  "number": "19.6",
+  "title": "",
+  "body": "Use Euler's method to approximate using step size \\label{Q2a}    Hence  "
+},
+{
+  "id": "main-11-2-4-3-3",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-3-3",
+  "type": "Exercise",
+  "number": "19.7",
+  "title": "",
+  "body": "Use Euler's method to approximate using step size \\label{Q2b}    Hence  "
+},
+{
+  "id": "main-11-2-4-3-4",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-3-4",
+  "type": "Exercise",
+  "number": "19.8",
+  "title": "",
+  "body": "Which of the approximations above do you trust more?  Which of the approximations above do you trust more? "
+},
+{
+  "id": "main-11-2-4-3-5",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-3-5",
+  "type": "Exercise",
+  "number": "19.9",
+  "title": "",
+  "body": "(This one is good review for the final!) Find the analytic solutionto the IVP, find and \\\\compare with your answers from parts \\ref{Q2a} and \\ref{Q2b}.   There are multiple solution techniques that will work to solve this DE. We will separate variables here. Now we can apply the initial condition to find the value of the constant . Therefore the solution is We can use this to find  Note that the two numerical approximations wer (found usin ) an (found usin ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer. "
+},
+{
+  "id": "main-11-2-4-4-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-4-2",
+  "type": "Exercise",
+  "number": "19.10",
+  "title": "",
+  "body": "Compute two iterations of Euler's method using step size   Compute two iterations of Euler's method using step size  "
+},
+{
+  "id": "main-11-2-4-4-3",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-4-3",
+  "type": "Exercise",
+  "number": "19.11",
+  "title": "",
+  "body": "What is the meaning of your answer?  What is the meaning of your answer? "
+},
+{
+  "id": "main-11-2-4-5-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-5-2",
+  "type": "Exercise",
+  "number": "19.12",
+  "title": "",
+  "body": "Consider the system below. Approximat and using      Therefore an  "
+},
+{
+  "id": "main-11-2-4-6-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-6-2",
+  "type": "Exercise",
+  "number": "19.13",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-11-2-4-6-3",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-6-3",
+  "type": "Exercise",
+  "number": "19.14",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-11-2-4-6-4",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-6-4",
+  "type": "Exercise",
+  "number": "19.15",
+  "title": "",
+  "body": "   where an  We have one second-order and one first-order DE, which means we will need three variables to generate a systemof three first-order DEs.\\\\ Let  an . Then we have the following. Substituting into the first DE yields the following. Substituting into the second DE yields the following. Then equations (\\ref{eq14-9}), (\\ref{eq14-10}) and (\\ref{eq14-11}) constitute a system of first-order DEs in the variable  , and , as below:  "
+},
+{
+  "id": "main-11-2-4-7-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-7-2",
+  "type": "Exercise",
+  "number": "19.16",
+  "title": "",
+  "body": " Euler's Method for Higher Order DEs \\amp Systems Consider the IVP below. using step size .   First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-12} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-13} \\end{equation} Substituting equations (\\ref{eq14-12}) and (\\ref{eq14-13}) into the DE yields the following. Then equations (\\ref{eq14-12}) and (\\ref{eq14-14}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore an This mean (and, even though we were not asked for it specifically ). "
+},
+{
+  "id": "main-11-2-4-8-2",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-8-2",
+  "type": "Exercise",
+  "number": "19.17",
+  "title": "",
+  "body": "usin \\label{partA_euler}   First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-15} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-16} \\end{equation} Substituting equations (\\ref{eq14-14}) and (\\ref{eq14-15}) into the DE yields the following. Then equations (\\ref{eq14-15}) and (\\ref{eq14-17}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ). "
+},
+{
+  "id": "main-11-2-4-8-3",
+  "level": "2",
+  "url": "main-11-2-4.html#main-11-2-4-8-3",
+  "type": "Exercise",
+  "number": "19.18",
+  "title": "",
+  "body": "using    We will use the system of DEs developed in part \\ref{partA_euler} Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).\\\\ % "
+},
+{
+  "id": "main-11-2-5-2-2",
+  "level": "2",
+  "url": "main-11-2-5.html#main-11-2-5-2-2",
+  "type": "Exercise",
+  "number": "19.1",
+  "title": "",
+  "body": "    We can take the LT of each DE. The result is two algebraic equations in two unknowns an We will solve the equations simultaneously as shown below. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition fo   Hence, Now we need only find the inverse LT of equations (\\ref{eq13-1}) and (\\ref{eq13-2}). This, the solution to this system is (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote} "
+},
+{
+  "id": "main-11-2-5-2-3",
+  "level": "2",
+  "url": "main-11-2-5.html#main-11-2-5-2-3",
+  "type": "Exercise",
+  "number": "19.2",
+  "title": "",
+  "body": " showto{student}{\\vspace{0.5cm}}   We can take the LT of each DE, starting with the first DE. We will then solve fo  Now we take the LT of the second DE. We will substitute in fo using the result we found above. We now substitute this back into equation (\\ref{eq13-3}). We need only take the inverse LT of each function in order to solve for the desired functions an   Thus, the solution to this system is \\vfill (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote} "
+},
+{
+  "id": "main-11-2-5-2-4",
+  "level": "2",
+  "url": "main-11-2-5.html#main-11-2-5-2-4",
+  "type": "Exercise",
+  "number": "19.3",
+  "title": "",
+  "body": "    We can take the LT of each DE, starting with the first DE. We will then solve fo  Now we take the LT of the second DE. We will substitute in fo using the result we found above. We now substitute this back into equation (\\ref{eq13-5}). We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition fo   Hence, Now we need only find the inverse LT of equations (\\ref{eq13-5}) and (\\ref{eq13-6}). Thus, the solution to this system is (The following is not required, but is useful!)\\\\ \\begin{quote} We can verify that this is the solution. Hence, the solution satisfies both DEs and both initial conditions. \\end{quote} "
+},
+{
+  "id": "main-12-3-2",
+  "level": "1",
+  "url": "main-12-3-2.html",
+  "type": "Section",
+  "number": "20.1",
+  "title": "Modeling",
+  "body": "Modeling  Many times, a quantity is connected to how it changes (its derivative). When these connections are expressed mathematically, they result in a differential equation. For example, consider this statement:   The rate of change of a function is equal to the function itself.     Mathematically, if we give this function a name, say , this statement can be transformed into a differential equation, as shown.   The  to the itself.      A solution to this differential equation would be any function equal to its own derivative. Do you know a function like that? Since then is a solution!   Here is another example from physics:   A force acting on an object is equal to the object's mass (constant) multiplied by its acceleration.     If we let be the force on the object, be the position of the object, and remembering that acceleration is the second derivative of position, then this statement can be written as the differential equation . The solution to this differential equation would involve finding the position function .  Check your Understanding   Statement DE 1   Which equation below best represents the statement:  The rate of change of a population is equal to a constant times the population itself.        Incorrect. This represents a constant rate of change, not one proportional to the population.       Correct. The rate of change is equal to a constant times the population itself.       Incorrect. This does not represent the relationship given in the statement.       Incorrect. This represents a second derivative relationship.      Statement DE 2   Which equation below best represents the statement:  The acceleration of a car, with position , is equal to a constant, , times the velocity of the car.        Incorrect. This indicates that velocity is constant.       Incorrect. This indicates that velocity is a constant times acceleration.       Incorrect. This indicates that acceleration is a constant times position.       Correct. The acceleration is equal to a constant times the velocity.      Statement DE 3   Which equation below best represents the statement:  The rate at which a substance cools is equal to a constant times the difference between its temperature and the ambient temperature .        Correct. The rate of cooling is equal to a constant times the temperature difference.       Incorrect. This represents a second derivative relationship.       Incorrect. This does not represent the rate of change.       Incorrect. This implies the rate of change is directly proportional to the temperature, not the temperature difference.      Statement Differential Equation   Which equation below best represents the statement:  The rate of decay of a radioactive substance is equal to a constant times the amount of the substance.        Incorrect. This represents growth, not decay.       Incorrect. This represents a second derivative relationship.       Correct. The rate of decay is equal to a negative constant times the amount of the substance.       Incorrect. This does not represent the rate of change.      Statement Differential Equation   Which equation below best represents the statement:  The rate of change of the amount of money in a bank account is equal to a constant times the amount of money in the account.        Incorrect. This represents a constant rate of change, not one dependent on the amount of money.       Incorrect. This does not represent the rate of change.       Correct. The rate of change is equal to a constant times the amount of money in the account.       Incorrect. This represents a second derivative relationship.      Statement Differential Equation   Which equation below best represents the statement:  The velocity of an object with position, , in free fall is equal to a constant times the time .        Incorrect. This says the position is equal to a constant times the time.       Incorrect. The statement says nothing about adding a constant, .       Correct.       Incorrect. is acceleration, not velocity.      "
+},
+{
+  "id": "main-12-3-2-7-2",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-2",
+  "type": "Reading Question",
+  "number": "20.1.1",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> DE 1<\/em>.",
+  "body": " Statement DE 1   Which equation below best represents the statement:  The rate of change of a population is equal to a constant times the population itself.        Incorrect. This represents a constant rate of change, not one proportional to the population.       Correct. The rate of change is equal to a constant times the population itself.       Incorrect. This does not represent the relationship given in the statement.       Incorrect. This represents a second derivative relationship.    "
+},
+{
+  "id": "main-12-3-2-7-3",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-3",
+  "type": "Reading Question",
+  "number": "20.1.2",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> DE 2<\/em>.",
+  "body": " Statement DE 2   Which equation below best represents the statement:  The acceleration of a car, with position , is equal to a constant, , times the velocity of the car.        Incorrect. This indicates that velocity is constant.       Incorrect. This indicates that velocity is a constant times acceleration.       Incorrect. This indicates that acceleration is a constant times position.       Correct. The acceleration is equal to a constant times the velocity.    "
+},
+{
+  "id": "main-12-3-2-7-4",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-4",
+  "type": "Reading Question",
+  "number": "20.1.3",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> DE 3<\/em>.",
+  "body": " Statement DE 3   Which equation below best represents the statement:  The rate at which a substance cools is equal to a constant times the difference between its temperature and the ambient temperature .        Correct. The rate of cooling is equal to a constant times the temperature difference.       Incorrect. This represents a second derivative relationship.       Incorrect. This does not represent the rate of change.       Incorrect. This implies the rate of change is directly proportional to the temperature, not the temperature difference.    "
+},
+{
+  "id": "main-12-3-2-7-5",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-5",
+  "type": "Reading Question",
+  "number": "20.1.4",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> Differential Equation<\/em>.",
+  "body": " Statement Differential Equation   Which equation below best represents the statement:  The rate of decay of a radioactive substance is equal to a constant times the amount of the substance.        Incorrect. This represents growth, not decay.       Incorrect. This represents a second derivative relationship.       Correct. The rate of decay is equal to a negative constant times the amount of the substance.       Incorrect. This does not represent the rate of change.    "
+},
+{
+  "id": "main-12-3-2-7-6",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-6",
+  "type": "Reading Question",
+  "number": "20.1.5",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> Differential Equation<\/em>.",
+  "body": " Statement Differential Equation   Which equation below best represents the statement:  The rate of change of the amount of money in a bank account is equal to a constant times the amount of money in the account.        Incorrect. This represents a constant rate of change, not one dependent on the amount of money.       Incorrect. This does not represent the rate of change.       Correct. The rate of change is equal to a constant times the amount of money in the account.       Incorrect. This represents a second derivative relationship.    "
+},
+{
+  "id": "main-12-3-2-7-7",
+  "level": "2",
+  "url": "main-12-3-2.html#main-12-3-2-7-7",
+  "type": "Reading Question",
+  "number": "20.1.6",
+  "title": "<em class=\"emphasis\">Statement <span class=\"process-math\">\\(\\to\\)<\/span> Differential Equation<\/em>.",
+  "body": " Statement Differential Equation   Which equation below best represents the statement:  The velocity of an object with position, , in free fall is equal to a constant times the time .        Incorrect. This says the position is equal to a constant times the time.       Incorrect. The statement says nothing about adding a constant, .       Correct.       Incorrect. is acceleration, not velocity.    "
+},
+{
+  "id": "sov-modeling",
+  "level": "1",
+  "url": "sov-modeling.html",
+  "type": "Section",
+  "number": "21.1",
+  "title": "Modeling",
+  "body": "Modeling    ~~~~~~~~~~~~ WORK IN PROGRESS ~~~~~~~~~~~~   In this section, we will discuss how we can use separation of variables to solve differential equations that model the spread of diseases. We will be modeling the spread of the fictional disease Math Excitis by running a simulation in class.    Questions    Explain the meaning of each of the variables and .  Write an initial condition based on the experimental data collected in class.  Explain why the differential equation makes sense. What is the meaning of (in terms of the real-world scenario) and why does the right-hand side of the DE make sense?   There are two values of that would make equal to zero. In calculus, we would have called these critical values.  Name the two critical values.  For each of the values you named in question 4a, explain their significance in terms of the spread of the illness, and explain why it makes sense that for those values.     Find the general solution for the differential equation. Use the number of people in our class as , and use the initial condition you wrote in question 2. You'll likely end up needing to do a partial fraction decomposition. This is a perfect time to review this skill because we'll need it soon. Note that you will not yet have a value for .  Using the time at which half (or approximately half) of the class was infected, determine a value for .  Now that you have , write down the solution to the DE.   Now that you have a solution, compare the solution to the data that was collected.  Plot both the data and the solution curve on the same axes. Make sure your axes are labeled, your plot has an appropriate title and a legend. Make sure your font is big enough and that the plot is readable. Recall that data is usually plotted with markers only, while we use lines to connect points on the model solution curve.  Imagine that you are a scientist trying to understand the spread of a disease. You find data on several small, localized outbreaks like the one in our class. Which is better in helping to understand the nature of the disease: the model or the data? Be sure to explain and justify your thoughts on this question.     Variations on the Outbreak   Suppose that the original scenario is modified slightly in the following way. Instead of flipping a coin, students must roll a die to determine if they have contracted the disease. If they roll a one or a two, then they become infected; otherwise, they remain disease-free.  How would you expect the data to change?  What parameter(s) change in the DE and\/or initial condition to account for this change, and would they increase or decrease?      Suppose that the original scenario is modified slightly in the following way. Instead of having 8 stations, there are only three stations.  How would you expect the data to change?  What parameter(s) change in the DE and\/or initial condition to account for this change, and would they increase or decrease?      Suppose that the original scenario is modified slightly in the following way. The number of students initially infected is 10.  How would you expect the data to change?  What parameter(s) change in the DE and\/or initial condition to account for this change, and would they increase or decrease?         Modeling Data Collection and Tasks  At least one student was infected with the incurable illness Math Excitis. Each round will consist of the following.  Students report to the station number they have been assigned for this round (station numbers are randomly generated).  If there is at least one infected person at the station, all non-infected students flip a coin.  If the coin lands heads up, the student becomes infected.  If the coin lands tails up, the student remains healthy.  The total number of infected students is recorded.    This scenario yields the following differential equation: .    Write-Up  Write a report that includes the mathematical solutions and ideas above, presented seamlessly. This should not as numbered or lettered problems, nor as a bulleted list, but as a report with an introduction to the concept, the meaning of the equations, how they are solved, and how the differential equation can be adapted in the three different scenarios - dice roll, fewer stations, more students infected initially.  At a minimum, you should do the following.  Have an introduction to the concept. This is the part where you tell the reader why this topic matters and who cares. Also, explain to the reader what is going to be in the report they are about to read.  Describe the differential equation(s), and why they represent the scenario(s).  Explain the meaning of the critical numbers.  Explain what the parameters in your model mean, and how they change if the scenario(s) change, specifically in the three scenarios (dice rolled, fewer stations, more students infected initially)  Include the math you used to get your general and particular solutions. You may hand-write this part and include it as an appendix, referring to it in the text of your paper.  Include your plot(s). Include a title, a legend, etc.  Include a summary\/conclusion.     "
+},
+{
+  "id": "if-modeling-tasks",
+  "level": "1",
+  "url": "if-modeling-tasks.html",
+  "type": "Section",
+  "number": "22.1",
+  "title": "Modeling Data Collection and Tasks",
+  "body": " Modeling Data Collection and Tasks  At a recent meeting, several plans were proposed to handle the deer population. In this project, you will use differential equations to model the deer population under each of the plans.   The default reaction to the deer heard is to implement no population control methods. Under this model, the deer population will grow without constraint at least in the near future. Develop an initial value problem to model the deer population. A data set with population estimates for the deer heard should be compared to your model.    Currently, hunting is not allowed inside of the park. There has been interest from several local hunters to allow for a fixed number of tags to be sold. Each tag, would allow a hunter to harvest one adult deer. In this senario, the park office would like an estimate for the number of tags to sell to keep the population constant.    Several animal rights activist groups have complained about the plan to harvest deer. Additionally, hunting has become less popular in the area in recent years. This raises conserns over the feasibility of approach 2. A potential solution is to use a birth control dart, to prevent the female deer from concieving for a year. This would change the growth rate for the deer population. The park rangers would like to know what percentage of deer should be darted to effectively control the population.    A combination of harversting and darting could also be used to control the population of deer in the park.     "
+},
+{
+  "id": "if-modeling-questions",
+  "level": "1",
+  "url": "if-modeling-questions.html",
+  "type": "Section",
+  "number": "22.2",
+  "title": "Questions",
+  "body": " Questions    "
+},
+{
+  "id": "if-modeling-writeup",
+  "level": "1",
+  "url": "if-modeling-writeup.html",
+  "type": "Section",
+  "number": "22.3",
+  "title": "Write-Up",
+  "body": " Write-Up    "
+},
+{
+  "id": "uc-modeling-tasks",
+  "level": "1",
+  "url": "uc-modeling-tasks.html",
+  "type": "Section",
+  "number": "23.1",
+  "title": "Modeling Data Collection and Tasks",
+  "body": " Modeling Data Collection and Tasks    "
+},
+{
+  "id": "uc-modeling-questions",
+  "level": "1",
+  "url": "uc-modeling-questions.html",
+  "type": "Section",
+  "number": "23.2",
+  "title": "Questions",
+  "body": " Questions    "
+},
+{
+  "id": "uc-modeling-writeup",
+  "level": "1",
+  "url": "uc-modeling-writeup.html",
+  "type": "Section",
+  "number": "23.3",
+  "title": "Write-Up",
+  "body": " Write-Up    "
+},
+{
   "id": "review-exp-and-logs",
   "level": "1",
   "url": "review-exp-and-logs.html",
@@ -8047,9 +8497,9 @@ var ptx_lunr_docs = [
   "body": "Euler's Formula       "
 },
 {
-  "id": "main-11-3",
+  "id": "main-13-3",
   "level": "1",
-  "url": "main-11-3.html",
+  "url": "main-13-3.html",
   "type": "Section",
   "number": "A.2",
   "title": "Rational Functions",
@@ -8058,25 +8508,25 @@ var ptx_lunr_docs = [
 {
   "id": "rational-function",
   "level": "2",
-  "url": "main-11-3.html#rational-function",
+  "url": "main-13-3.html#rational-function",
   "type": "Definition",
   "number": "A.4",
   "title": "Rational Function.",
   "body": "Rational Function  A rational function is a function that is the division of two polynomials.  For example, the following are rational functions: .  "
 },
 {
-  "id": "main-11-4",
+  "id": "main-13-4",
   "level": "1",
-  "url": "main-11-4.html",
+  "url": "main-13-4.html",
   "type": "Section",
   "number": "A.3",
   "title": "Quadratic equations",
   "body": "Quadratic equations  We will be solving quadratic equations as we solve differential equations. If we want to solve a quadratic equation like there are several different methods we might use, including:  factoring  quadratic formula,   completing the square  Most students prefer the first two methods, which is fine. We will end up completing the square later in the semester, so if you want to review that method now, you'll reap the benefits later!   Solve the following quadratic equations. Note: It's OK if the solutions are complex or imaginary.     You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:         You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:         This one doesn't factor easily... You might use the quadratic formula: You could even complete the square:        Name at least two methods for solving quadratic equations. factoring, using the quadratic formula, completing the square   How many solutions does a quadratic equation have? There are three possible outcomes when solving a quadratic equation:  two distinct real roots  one repeated real root (i.e., a double root)  complex conjugate roots       Solving Quadratic Equations  The solution to the quadratic equation is given by the quadratic formula: . Notes:   The gives two solutions, say and .     and are also known as the roots of .    The value, , under the root in is called the discriminant .    Equation can be written as .    If , then and are different real numbers.    If , then and are the same real number (repeated).    If , then and are complex and can be written as .       "
 },
 {
-  "id": "main-11-4-3",
+  "id": "main-13-4-3",
   "level": "2",
-  "url": "main-11-4.html#main-11-4-3",
+  "url": "main-13-4.html#main-13-4-3",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
@@ -8085,43 +8535,43 @@ var ptx_lunr_docs = [
 {
   "id": "solving-the-quadratic-equation-2",
   "level": "2",
-  "url": "main-11-4.html#solving-the-quadratic-equation-2",
+  "url": "main-13-4.html#solving-the-quadratic-equation-2",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
   "body": "roots discriminant "
 },
 {
-  "id": "main-11-5",
+  "id": "main-13-5",
   "level": "1",
-  "url": "main-11-5.html",
+  "url": "main-13-5.html",
   "type": "Section",
   "number": "A.4",
   "title": "Trigonometric Identities",
   "body": "Trigonometric Identities  Pythagorean Identities  The following trigonometric identities are useful in solving differential equations:                Even and Odd Properties                                     "
 },
 {
-  "id": "main-11-6",
+  "id": "main-13-6",
   "level": "1",
-  "url": "main-11-6.html",
+  "url": "main-13-6.html",
   "type": "Section",
   "number": "A.5",
   "title": "Solving Polynomial Equations",
   "body": "Solving Polynomial Equations  Higher-degree polynomial equations have the form and it turns out that these equations can always be factored into simpler polynomials. In particular, a polynomial of degree can always be factored into linear factors: where are the solutions and can be real or complex. This fact is known as the Fundamental Theorem of Algebra.   A \"complex\" solution is one that can contain (imaginary part).  For example, the equation has two complex solutions since   While knowing this is powerful, the process of factoring them can be quite challenging. However, there are some special forms and strategies that can help. A few are summarized below.  Techniques for Solving Higher-Degree Polynomials    Recognizing Special Forms  Some polynomials can be factored using special patterns. Common forms include:  Common Factoring:  Difference of Squares:  Sum\/Difference of Cubes:  Recognizing these forms can help simplify the factorization process.   Known Factors  If you know one factor, then you can divide-out the polynomial by this factor. For example, suppose we know that is a root of the polynomial . Then, we know that is a factor, so where is some second-degree polynomial you multiply by to get our original polynomial. We can find by dividing both sides by , like so Therefore,    Possible Rational Roots  There is a theorem that tells us potential fractional roots of the polynomial. If is a solution, then must be of the form . This gives us a list of possible solutions to test. For example, if we have the polynomial then the possible factors of are and the possible factors of are . Therefore, the possible fractional solutions are We can test each of these values to find up to 3 solutions. Once we find one, we can use the previous technique to help find more.   Use Technology  Factoring higher-order polynomials can be very difficult to do by and this is one skill that may be better suited for a computer. There are many software packages that can factor polynomials for you. For example, the Wolfram Alpha website will do it with ease.        Completely factor and solve the following characteristic equations                           The degree of each equation tells you how many factors you should have.            difference of squares     set each factor to 0     solutions                difference of squares     solutions                common factor      standard quadratic factoring     solutions                common factor     solutions      Technically, and represents 4 repeated factors.              common factor      difference of squares     solutions                common factor      difference of squares     solutions                difference of squares      difference of squares     set each factor to 0     solutions          An important concept to remember is that any polynomial can be factored into the product of linear factors, allowing for complex solutions. This is known as the Fundamental Theorem of Algebra. However, factoring higher-degree polynomials can sometimes be challenging and may require the use of technology, such as computer algebra systems or graphing calculators, to find complex or irrational roots.  By combining these techniques, we can solve for the roots of any higher-degree polynomial. Once we have the roots, we can construct the general solution to the higher-order LHCC equation.  For a higher-order LHCC equation like: , the characteristic equation is the polynomial equation we just discussed. Finding the roots of this polynomial gives us the general solution: , where are constants determined by initial conditions.  Let's see an example to solidify these concepts.  Solving a Third-Degree Polynomial Equation   Find the general solution to the third-order LHCC equation:       First, write down the characteristic equation: . Factoring the polynomial, we get: . Therefore, the roots are .  Since we have three distinct real roots, the general solution to the LHCC equation is: , where are constants determined by initial conditions.    Polynomail Division  Use polynomial divison to compute                                                                                     Therefore, .   "
 },
 {
-  "id": "main-11-6-4",
+  "id": "main-13-6-4",
   "level": "2",
-  "url": "main-11-6.html#main-11-6-4",
+  "url": "main-13-6.html#main-13-6-4",
   "type": "Example",
   "number": "A.5",
   "title": "",
   "body": "  Completely factor and solve the following characteristic equations                           The degree of each equation tells you how many factors you should have.            difference of squares     set each factor to 0     solutions                difference of squares     solutions                common factor      standard quadratic factoring     solutions                common factor     solutions      Technically, and represents 4 repeated factors.              common factor      difference of squares     solutions                common factor      difference of squares     solutions                difference of squares      difference of squares     set each factor to 0     solutions         "
 },
 {
-  "id": "main-11-6-9",
+  "id": "main-13-6-9",
   "level": "2",
-  "url": "main-11-6.html#main-11-6-9",
+  "url": "main-13-6.html#main-13-6-9",
   "type": "Example",
   "number": "A.6",
   "title": "Solving a Third-Degree Polynomial Equation.",
@@ -8137,45 +8587,45 @@ var ptx_lunr_docs = [
   "body": " Product Rule  The next technique for solving DEs we will study relies heavily on you knowing the Product Rule for differentiation inside and out, forward and backward (literally!). These problems are intended to help you review the Product Rule. (Don't forget about the chain rule, too!) Let's warm up by practicing using the product rule.   Write down the product rule.   Evaluate the following derivatives.                              Suppose is a function of and use the product rule to rewrite the following:          Suppose is a function of and use the product rule to rewrite the following:          Now let's look at the product rule \"in the other direction\"... Or we can think about this as \"un-doing\" the product rule.  For example, if we have the expression then we can see that if we think identify as then Then we might label the expression as follows: This now looks like the result of having taken the derivative of a product. That is:   Now you try some.  Rewrite each of the following as the derivative of a product:                      "
 },
 {
-  "id": "main-13-2",
+  "id": "main-15-2",
   "level": "1",
-  "url": "main-13-2.html",
+  "url": "main-15-2.html",
   "type": "Section",
   "number": "C.1",
   "title": "Direct Integration",
   "body": "Direct Integration  "
 },
 {
-  "id": "main-13-3",
+  "id": "main-15-3",
   "level": "1",
-  "url": "main-13-3.html",
+  "url": "main-15-3.html",
   "type": "Section",
   "number": "C.2",
   "title": "Visualizing Solutions",
   "body": "Visualizing Solutions  Verification Details for Visualization DE  To verify that is a solution, we move all terms to one side of the equation to get Now, substitute it into the differential equation: This shows that satisfies and is, thus, a solution to    "
 },
 {
-  "id": "main-13-4",
+  "id": "main-15-4",
   "level": "1",
-  "url": "main-13-4.html",
+  "url": "main-15-4.html",
   "type": "Section",
   "number": "C.3",
   "title": "Integrating Factor",
   "body": "Integrating Factor  Standard Form Every linear differential equation looks like . The first-order version of this is , but we can divide both sides of this equation by , like so . Since every first-order linear differential equations can always be written as , we call this the first-order linear standard form .  Integrating Factor Calculation Details  Since we only need one integrating factor, we are free to pick any value of .  "
 },
 {
-  "id": "main-13-5",
+  "id": "main-15-5",
   "level": "1",
-  "url": "main-13-5.html",
+  "url": "main-15-5.html",
   "type": "Section",
   "number": "C.4",
   "title": "Linear Homogeneous Constant Coefficients",
   "body": "Linear Homogeneous Constant Coefficients  N-th Derivative of  Each derivative of adds a multiple of , so .  2nd Order LHCC Complex Case Assume that and are complex and so they can be written as . Substituting these into , using , the even property of cosine and odd property of sine , we can rewrite the general solution as .  "
 },
 {
-  "id": "main-13-6",
+  "id": "main-15-6",
   "level": "1",
-  "url": "main-13-6.html",
+  "url": "main-15-6.html",
   "type": "Section",
   "number": "C.5",
   "title": "Laplace Transforms",
