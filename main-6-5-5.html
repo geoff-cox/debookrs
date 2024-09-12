@@ -8,11 +8,12 @@
 <html lang="en-US" dir="ltr">
 <head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DE-BOOK Solving DEs via Laplace Transforms</title>
+<title>DE-BOOK Integrating Factor Method</title>
 <meta name="Keywords" content="Authored in PreTeXt">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:type" content="book">
-<meta property="book:title" content="FOCUSED DEVELOPEMENT">
+<meta property="book:title" content="Interactive Differential Equations">
+<meta property="book:author" content="Geoffrey W. Cox, Ph.D.">
 <script>
 var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
 window.MathJax = {
@@ -104,7 +105,7 @@ window.MathJax = {
 <link href="_static/pretext/css/style_custom-styles.css" rel="stylesheet" type="text/css">
 <link href="_static/pretext/css/colors_pastel_blue_orange.css" rel="stylesheet" type="text/css">
 <link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="external/custom-styles.css">
+<link rel="stylesheet" type="text/css" href="external/custom-styles2.css">
 <!--** eBookCongig is necessary to configure interactive       **-->
 <!--** Runestone components to run locally in reader's browser **-->
 <!--** No external communication:                              **-->
@@ -127,112 +128,100 @@ eBookConfig.allow_pairs = false;
 eBookConfig.enableScratchAC = false;
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '7.3.6';
+eBookConfig.runestone_version = '7.4.0';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.3.6/prefix-runtime.00db6230172ad960.bundle.js"></script><script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.3.6/prefix-347.8328b60515045466.bundle.js"></script><script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.3.6/prefix-runestone.5d3fd44c34d81620.bundle.js"></script><link rel="stylesheet" type="text/css" href="https://runestone.academy/cdn/runestone/7.3.6/prefix-347.f9add1ca35d5ad93.css">
-<link rel="stylesheet" type="text/css" href="https://runestone.academy/cdn/runestone/7.3.6/prefix-runestone.f64dcc3632d7a0c3.css">
+<script src="_static/prefix-runtime.00db6230172ad960.bundle.js"></script><script src="_static/prefix-347.8328b60515045466.bundle.js"></script><script src="_static/prefix-runestone.04737dc219c2d2eb.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-347.f9add1ca35d5ad93.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.f64dcc3632d7a0c3.css">
 <style>
-#main-3-3-5-4-3 { counter-set: main-3-3-5-4-3 0; }
-#main-3-3-5-4-3 > li::marker { content: ""counter(main-3-3-5-4-3,decimal)"."; }
-#main-3-3-5-4-3 > li { counter-increment: main-3-3-5-4-3; }
-#main-3-3-10-3-1-2-2-1-2 { counter-set: main-3-3-10-3-1-2-2-1-2 0; }
-#main-3-3-10-3-1-2-2-1-2 > li::marker { content: "("counter(main-3-3-10-3-1-2-2-1-2,lower-alpha)")"; }
-#main-3-3-10-3-1-2-2-1-2 > li { counter-increment: main-3-3-10-3-1-2-2-1-2; }
-#main-3-3-10-3-1-3-2-1 { counter-set: main-3-3-10-3-1-3-2-1 0; }
-#main-3-3-10-3-1-3-2-1 > li::marker { content: "("counter(main-3-3-10-3-1-3-2-1,lower-alpha)")"; }
-#main-3-3-10-3-1-3-2-1 > li { counter-increment: main-3-3-10-3-1-3-2-1; }
-#main-3-4-10-2-1-2-1 { counter-set: main-3-4-10-2-1-2-1 0; }
-#main-3-4-10-2-1-2-1 > li::marker { content: ""counter(main-3-4-10-2-1-2-1,decimal)"."; }
-#main-3-4-10-2-1-2-1 > li { counter-increment: main-3-4-10-2-1-2-1; }
-#main-3-4-10-3-4-1-1-1-1 { counter-set: main-3-4-10-3-4-1-1-1-1 0; }
-#main-3-4-10-3-4-1-1-1-1 > li::marker { content: "\("counter(main-3-4-10-3-4-1-1-1-1,upper-alpha)".\)"; }
-#main-3-4-10-3-4-1-1-1-1 > li { counter-increment: main-3-4-10-3-4-1-1-1-1; }
-#main-3-4-10-3-16-1-2 { counter-set: main-3-4-10-3-16-1-2 0; }
-#main-3-4-10-3-16-1-2 > li::marker { content: "("counter(main-3-4-10-3-16-1-2,lower-alpha)")"; }
-#main-3-4-10-3-16-1-2 > li { counter-increment: main-3-4-10-3-16-1-2; }
-#main-3-4-10-3-17-1-2 { counter-set: main-3-4-10-3-17-1-2 0; }
-#main-3-4-10-3-17-1-2 > li::marker { content: "("counter(main-3-4-10-3-17-1-2,lower-alpha)")"; }
-#main-3-4-10-3-17-1-2 > li { counter-increment: main-3-4-10-3-17-1-2; }
-#main-4-4-2-4-1-2 { counter-set: main-4-4-2-4-1-2 0; }
-#main-4-4-2-4-1-2 > li::marker { content: ""counter(main-4-4-2-4-1-2,decimal)"."; }
-#main-4-4-2-4-1-2 > li { counter-increment: main-4-4-2-4-1-2; }
-#main-4-4-8-3-7-8-1-2 { counter-set: main-4-4-8-3-7-8-1-2 0; }
-#main-4-4-8-3-7-8-1-2 > li::marker { content: "("counter(main-4-4-8-3-7-8-1-2,lower-alpha)")"; }
-#main-4-4-8-3-7-8-1-2 > li { counter-increment: main-4-4-8-3-7-8-1-2; }
-#main-4-4-8-3-7-11-1-2 { counter-set: main-4-4-8-3-7-11-1-2 0; }
-#main-4-4-8-3-7-11-1-2 > li::marker { content: "("counter(main-4-4-8-3-7-11-1-2,lower-alpha)")"; }
-#main-4-4-8-3-7-11-1-2 > li { counter-increment: main-4-4-8-3-7-11-1-2; }
-#main-4-4-8-3-7-14-1-2 { counter-set: main-4-4-8-3-7-14-1-2 0; }
-#main-4-4-8-3-7-14-1-2 > li::marker { content: "("counter(main-4-4-8-3-7-14-1-2,lower-alpha)")"; }
-#main-4-4-8-3-7-14-1-2 > li { counter-increment: main-4-4-8-3-7-14-1-2; }
-#extracted-ww_5-1-1-1-1 { counter-set: extracted-ww_5-1-1-1-1 0; }
-#extracted-ww_5-1-1-1-1 > li::marker { content: ""counter(extracted-ww_5-1-1-1-1,decimal)"."; }
-#extracted-ww_5-1-1-1-1 > li { counter-increment: extracted-ww_5-1-1-1-1; }
-#extracted-ww_6_2-1-1-1-1 { counter-set: extracted-ww_6_2-1-1-1-1 0; }
-#extracted-ww_6_2-1-1-1-1 > li::marker { content: ""counter(extracted-ww_6_2-1-1-1-1,decimal)"."; }
-#extracted-ww_6_2-1-1-1-1 > li { counter-increment: extracted-ww_6_2-1-1-1-1; }
-#main-4-5-3-5-2-1 { counter-set: main-4-5-3-5-2-1 0; }
-#main-4-5-3-5-2-1 > li::marker { content: ""counter(main-4-5-3-5-2-1,decimal)"."; }
-#main-4-5-3-5-2-1 > li { counter-increment: main-4-5-3-5-2-1; }
-#main-4-5-3-7-3-1 { counter-set: main-4-5-3-7-3-1 0; }
-#main-4-5-3-7-3-1 > li::marker { content: ""counter(main-4-5-3-7-3-1,decimal)"."; }
-#main-4-5-3-7-3-1 > li { counter-increment: main-4-5-3-7-3-1; }
-#main-4-5-7-3-6-1-1 { counter-set: main-4-5-7-3-6-1-1 0; }
-#main-4-5-7-3-6-1-1 > li::marker { content: "("counter(main-4-5-7-3-6-1-1,lower-alpha)")"; }
-#main-4-5-7-3-6-1-1 > li { counter-increment: main-4-5-7-3-6-1-1; }
-#main-5-3-7-7-2-2-1 { counter-set: main-5-3-7-7-2-2-1 0; }
-#main-5-3-7-7-2-2-1 > li::marker { content: ""counter(main-5-3-7-7-2-2-1,decimal)"."; }
-#main-5-3-7-7-2-2-1 > li { counter-increment: main-5-3-7-7-2-2-1; }
-#main-5-3-8-5-1-1-1 { counter-set: main-5-3-8-5-1-1-1 0; }
-#main-5-3-8-5-1-1-1 > li::marker { content: ""counter(main-5-3-8-5-1-1-1,decimal)"."; }
-#main-5-3-8-5-1-1-1 > li { counter-increment: main-5-3-8-5-1-1-1; }
-#main-5-3-8-5-2-1-1 { counter-set: main-5-3-8-5-2-1-1 0; }
-#main-5-3-8-5-2-1-1 > li::marker { content: ""counter(main-5-3-8-5-2-1-1,decimal)"."; }
-#main-5-3-8-5-2-1-1 > li { counter-increment: main-5-3-8-5-2-1-1; }
-#main-5-4-6-3-2-1-2 { counter-set: main-5-4-6-3-2-1-2 0; }
-#main-5-4-6-3-2-1-2 > li::marker { content: ""counter(main-5-4-6-3-2-1-2,decimal)"."; }
-#main-5-4-6-3-2-1-2 > li { counter-increment: main-5-4-6-3-2-1-2; }
-#main-5-4-6-5-2-1 { counter-set: main-5-4-6-5-2-1 0; }
-#main-5-4-6-5-2-1 > li::marker { content: ""counter(main-5-4-6-5-2-1,decimal)"."; }
-#main-5-4-6-5-2-1 > li { counter-increment: main-5-4-6-5-2-1; }
-#main-5-4-7-7-3-1 { counter-set: main-5-4-7-7-3-1 0; }
-#main-5-4-7-7-3-1 > li::marker { content: ""counter(main-5-4-7-7-3-1,decimal)"."; }
-#main-5-4-7-7-3-1 > li { counter-increment: main-5-4-7-7-3-1; }
-#main-5-4-10-2-3 { counter-set: main-5-4-10-2-3 0; }
-#main-5-4-10-2-3 > li::marker { content: ""counter(main-5-4-10-2-3,decimal)"."; }
-#main-5-4-10-2-3 > li { counter-increment: main-5-4-10-2-3; }
-#main-5-4-11-6-7-1-2 { counter-set: main-5-4-11-6-7-1-2 0; }
-#main-5-4-11-6-7-1-2 > li::marker { content: ""counter(main-5-4-11-6-7-1-2,decimal)"."; }
-#main-5-4-11-6-7-1-2 > li { counter-increment: main-5-4-11-6-7-1-2; }
-#main-5-4-11-6-9-1-3 { counter-set: main-5-4-11-6-9-1-3 0; }
-#main-5-4-11-6-9-1-3 > li::marker { content: ""counter(main-5-4-11-6-9-1-3,decimal)"."; }
-#main-5-4-11-6-9-1-3 > li { counter-increment: main-5-4-11-6-9-1-3; }
-#main-5-4-11-6-11-1-1 { counter-set: main-5-4-11-6-11-1-1 0; }
-#main-5-4-11-6-11-1-1 > li::marker { content: ""counter(main-5-4-11-6-11-1-1,decimal)"."; }
-#main-5-4-11-6-11-1-1 > li { counter-increment: main-5-4-11-6-11-1-1; }
-#main-6-3-8-3-3-3-1-2 { counter-set: main-6-3-8-3-3-3-1-2 0; }
-#main-6-3-8-3-3-3-1-2 > li::marker { content: "("counter(main-6-3-8-3-3-3-1-2,lower-alpha)")"; }
-#main-6-3-8-3-3-3-1-2 > li { counter-increment: main-6-3-8-3-3-3-1-2; }
-#main-6-4-6-5-1 { counter-set: main-6-4-6-5-1 0; }
-#main-6-4-6-5-1 > li::marker { content: ""counter(main-6-4-6-5-1,decimal)"."; }
-#main-6-4-6-5-1 > li { counter-increment: main-6-4-6-5-1; }
-#main-6-4-6-5-1-1-1-3 { counter-set: main-6-4-6-5-1-1-1-3 0; }
-#main-6-4-6-5-1-1-1-3 > li::marker { content: "("counter(main-6-4-6-5-1-1-1-3,lower-alpha)")"; }
-#main-6-4-6-5-1-1-1-3 > li { counter-increment: main-6-4-6-5-1-1-1-3; }
-#main-6-4-6-5-1-2-1-1 { counter-set: main-6-4-6-5-1-2-1-1 0; }
-#main-6-4-6-5-1-2-1-1 > li::marker { content: "("counter(main-6-4-6-5-1-2-1-1,lower-alpha)")"; }
-#main-6-4-6-5-1-2-1-1 > li { counter-increment: main-6-4-6-5-1-2-1-1; }
-#main-6-4-6-5-1-2-1-2 { counter-set: main-6-4-6-5-1-2-1-2 0; }
-#main-6-4-6-5-1-2-1-2 > li::marker { content: "("counter(main-6-4-6-5-1-2-1-2,lower-alpha)")"; }
-#main-6-4-6-5-1-2-1-2 > li { counter-increment: main-6-4-6-5-1-2-1-2; }
-#main-6-4-6-5-1-2-1-3-1 { counter-set: main-6-4-6-5-1-2-1-3-1 0; }
-#main-6-4-6-5-1-2-1-3-1 > li::marker { content: "("counter(main-6-4-6-5-1-2-1-3-1,lower-alpha)")"; }
-#main-6-4-6-5-1-2-1-3-1 > li { counter-increment: main-6-4-6-5-1-2-1-3-1; }
+#main-5-3-5-4-3 { counter-set: main-5-3-5-4-3 0; }
+#main-5-3-5-4-3 > li::marker { content: ""counter(main-5-3-5-4-3,decimal)"."; }
+#main-5-3-5-4-3 > li { counter-increment: main-5-3-5-4-3; }
+#main-5-3-10-3-1-2-2-1-2 { counter-set: main-5-3-10-3-1-2-2-1-2 0; }
+#main-5-3-10-3-1-2-2-1-2 > li::marker { content: "("counter(main-5-3-10-3-1-2-2-1-2,lower-alpha)")"; }
+#main-5-3-10-3-1-2-2-1-2 > li { counter-increment: main-5-3-10-3-1-2-2-1-2; }
+#main-5-3-10-3-1-3-2-1 { counter-set: main-5-3-10-3-1-3-2-1 0; }
+#main-5-3-10-3-1-3-2-1 > li::marker { content: "("counter(main-5-3-10-3-1-3-2-1,lower-alpha)")"; }
+#main-5-3-10-3-1-3-2-1 > li { counter-increment: main-5-3-10-3-1-3-2-1; }
+#main-5-3-10-4-1-2-2-1-2 { counter-set: main-5-3-10-4-1-2-2-1-2 0; }
+#main-5-3-10-4-1-2-2-1-2 > li::marker { content: "("counter(main-5-3-10-4-1-2-2-1-2,lower-alpha)")"; }
+#main-5-3-10-4-1-2-2-1-2 > li { counter-increment: main-5-3-10-4-1-2-2-1-2; }
+#main-5-3-10-4-1-3-2-1 { counter-set: main-5-3-10-4-1-3-2-1 0; }
+#main-5-3-10-4-1-3-2-1 > li::marker { content: "("counter(main-5-3-10-4-1-3-2-1,lower-alpha)")"; }
+#main-5-3-10-4-1-3-2-1 > li { counter-increment: main-5-3-10-4-1-3-2-1; }
+#main-5-4-8-3-4-1-1-1-1 { counter-set: main-5-4-8-3-4-1-1-1-1 0; }
+#main-5-4-8-3-4-1-1-1-1 > li::marker { content: ""counter(main-5-4-8-3-4-1-1-1-1,upper-alpha)"."; }
+#main-5-4-8-3-4-1-1-1-1 > li { counter-increment: main-5-4-8-3-4-1-1-1-1; }
+#main-5-4-8-3-16-1-2 { counter-set: main-5-4-8-3-16-1-2 0; }
+#main-5-4-8-3-16-1-2 > li::marker { content: "("counter(main-5-4-8-3-16-1-2,lower-alpha)")"; }
+#main-5-4-8-3-16-1-2 > li { counter-increment: main-5-4-8-3-16-1-2; }
+#main-5-4-8-3-17-1-2 { counter-set: main-5-4-8-3-17-1-2 0; }
+#main-5-4-8-3-17-1-2 > li::marker { content: "("counter(main-5-4-8-3-17-1-2,lower-alpha)")"; }
+#main-5-4-8-3-17-1-2 > li { counter-increment: main-5-4-8-3-17-1-2; }
+#extracted-p2-c1-s2-i5-ww-1-1-1-1 { counter-set: extracted-p2-c1-s2-i5-ww-1-1-1-1 0; }
+#extracted-p2-c1-s2-i5-ww-1-1-1-1 > li::marker { content: ""counter(extracted-p2-c1-s2-i5-ww-1-1-1-1,decimal)"."; }
+#extracted-p2-c1-s2-i5-ww-1-1-1-1 > li { counter-increment: extracted-p2-c1-s2-i5-ww-1-1-1-1; }
+#sov-method-basic-examples-2 { counter-set: sov-method-basic-examples-2 0; }
+#sov-method-basic-examples-2 > li::marker { content: ""counter(sov-method-basic-examples-2,upper-alpha)"."; }
+#sov-method-basic-examples-2 > li { counter-increment: sov-method-basic-examples-2; }
+#main-6-4-7-3-7-8-1-2 { counter-set: main-6-4-7-3-7-8-1-2 0; }
+#main-6-4-7-3-7-8-1-2 > li::marker { content: "("counter(main-6-4-7-3-7-8-1-2,lower-alpha)")"; }
+#main-6-4-7-3-7-8-1-2 > li { counter-increment: main-6-4-7-3-7-8-1-2; }
+#main-6-4-7-3-7-11-1-2 { counter-set: main-6-4-7-3-7-11-1-2 0; }
+#main-6-4-7-3-7-11-1-2 > li::marker { content: "("counter(main-6-4-7-3-7-11-1-2,lower-alpha)")"; }
+#main-6-4-7-3-7-11-1-2 > li { counter-increment: main-6-4-7-3-7-11-1-2; }
+#main-6-4-7-3-7-14-1-2 { counter-set: main-6-4-7-3-7-14-1-2 0; }
+#main-6-4-7-3-7-14-1-2 > li::marker { content: "("counter(main-6-4-7-3-7-14-1-2,lower-alpha)")"; }
+#main-6-4-7-3-7-14-1-2 > li { counter-increment: main-6-4-7-3-7-14-1-2; }
+#main-6-5-3-5-2-1 { counter-set: main-6-5-3-5-2-1 0; }
+#main-6-5-3-5-2-1 > li::marker { content: ""counter(main-6-5-3-5-2-1,decimal)"."; }
+#main-6-5-3-5-2-1 > li { counter-increment: main-6-5-3-5-2-1; }
+#main-6-5-3-6-3-1 { counter-set: main-6-5-3-6-3-1 0; }
+#main-6-5-3-6-3-1 > li::marker { content: ""counter(main-6-5-3-6-3-1,decimal)"."; }
+#main-6-5-3-6-3-1 > li { counter-increment: main-6-5-3-6-3-1; }
+#main-6-5-7-3-6-1-1 { counter-set: main-6-5-7-3-6-1-1 0; }
+#main-6-5-7-3-6-1-1 > li::marker { content: "("counter(main-6-5-7-3-6-1-1,lower-alpha)")"; }
+#main-6-5-7-3-6-1-1 > li { counter-increment: main-6-5-7-3-6-1-1; }
+#main-7-3-7-7-2-2-1 { counter-set: main-7-3-7-7-2-2-1 0; }
+#main-7-3-7-7-2-2-1 > li::marker { content: ""counter(main-7-3-7-7-2-2-1,decimal)"."; }
+#main-7-3-7-7-2-2-1 > li { counter-increment: main-7-3-7-7-2-2-1; }
+#main-7-3-8-5-1-1-1 { counter-set: main-7-3-8-5-1-1-1 0; }
+#main-7-3-8-5-1-1-1 > li::marker { content: ""counter(main-7-3-8-5-1-1-1,decimal)"."; }
+#main-7-3-8-5-1-1-1 > li { counter-increment: main-7-3-8-5-1-1-1; }
+#main-7-3-8-5-2-1-1 { counter-set: main-7-3-8-5-2-1-1 0; }
+#main-7-3-8-5-2-1-1 > li::marker { content: ""counter(main-7-3-8-5-2-1-1,decimal)"."; }
+#main-7-3-8-5-2-1-1 > li { counter-increment: main-7-3-8-5-2-1-1; }
+#main-7-4-6-3-2-1-2 { counter-set: main-7-4-6-3-2-1-2 0; }
+#main-7-4-6-3-2-1-2 > li::marker { content: ""counter(main-7-4-6-3-2-1-2,decimal)"."; }
+#main-7-4-6-3-2-1-2 > li { counter-increment: main-7-4-6-3-2-1-2; }
+#main-7-4-6-5-2-1 { counter-set: main-7-4-6-5-2-1 0; }
+#main-7-4-6-5-2-1 > li::marker { content: ""counter(main-7-4-6-5-2-1,decimal)"."; }
+#main-7-4-6-5-2-1 > li { counter-increment: main-7-4-6-5-2-1; }
+#main-7-4-7-7-3-1 { counter-set: main-7-4-7-7-3-1 0; }
+#main-7-4-7-7-3-1 > li::marker { content: ""counter(main-7-4-7-7-3-1,decimal)"."; }
+#main-7-4-7-7-3-1 > li { counter-increment: main-7-4-7-7-3-1; }
+#main-7-4-10-2-3 { counter-set: main-7-4-10-2-3 0; }
+#main-7-4-10-2-3 > li::marker { content: ""counter(main-7-4-10-2-3,decimal)"."; }
+#main-7-4-10-2-3 > li { counter-increment: main-7-4-10-2-3; }
+#main-7-4-11-6-7-1-2 { counter-set: main-7-4-11-6-7-1-2 0; }
+#main-7-4-11-6-7-1-2 > li::marker { content: ""counter(main-7-4-11-6-7-1-2,decimal)"."; }
+#main-7-4-11-6-7-1-2 > li { counter-increment: main-7-4-11-6-7-1-2; }
+#main-7-4-11-6-9-1-3 { counter-set: main-7-4-11-6-9-1-3 0; }
+#main-7-4-11-6-9-1-3 > li::marker { content: ""counter(main-7-4-11-6-9-1-3,decimal)"."; }
+#main-7-4-11-6-9-1-3 > li { counter-increment: main-7-4-11-6-9-1-3; }
+#main-7-4-11-6-11-1-1 { counter-set: main-7-4-11-6-11-1-1 0; }
+#main-7-4-11-6-11-1-1 > li::marker { content: ""counter(main-7-4-11-6-11-1-1,decimal)"."; }
+#main-7-4-11-6-11-1-1 > li { counter-increment: main-7-4-11-6-11-1-1; }
+#main-8-3-8-3-3-3-1-2 { counter-set: main-8-3-8-3-3-3-1-2 0; }
+#main-8-3-8-3-3-3-1-2 > li::marker { content: "("counter(main-8-3-8-3-3-3-1-2,lower-alpha)")"; }
+#main-8-3-8-3-3-3-1-2 > li { counter-increment: main-8-3-8-3-3-3-1-2; }
+#main-8-5-6-3-5-3-1-1 { counter-set: main-8-5-6-3-5-3-1-1 0; }
+#main-8-5-6-3-5-3-1-1 > li::marker { content: "("counter(main-8-5-6-3-5-3-1-1,lower-alpha)")"; }
+#main-8-5-6-3-5-3-1-1 > li { counter-increment: main-8-5-6-3-5-3-1-1; }
 #ex_unit_step_01-1-1 { counter-set: ex_unit_step_01-1-1 0; }
 #ex_unit_step_01-1-1 > li::marker { content: ""counter(ex_unit_step_01-1-1,decimal)"."; }
 #ex_unit_step_01-1-1 > li { counter-increment: ex_unit_step_01-1-1; }
@@ -260,28 +249,37 @@ eBookConfig.enable_chatcodes =  false;
 #review-exp-and-logs-9-2 { counter-set: review-exp-and-logs-9-2 0; }
 #review-exp-and-logs-9-2 > li::marker { content: ""counter(review-exp-and-logs-9-2,decimal)"."; }
 #review-exp-and-logs-9-2 > li { counter-increment: review-exp-and-logs-9-2; }
-#main-9-3-2-2 { counter-set: main-9-3-2-2 0; }
-#main-9-3-2-2 > li::marker { content: ""counter(main-9-3-2-2,decimal)"."; }
-#main-9-3-2-2 > li { counter-increment: main-9-3-2-2; }
-#main-9-3-3-2 { counter-set: main-9-3-3-2 0; }
-#main-9-3-3-2 > li::marker { content: ""counter(main-9-3-3-2,decimal)"."; }
-#main-9-3-3-2 > li { counter-increment: main-9-3-3-2; }
-#main-9-3-3-2-5-1-1 { counter-set: main-9-3-3-2-5-1-1 0; }
-#main-9-3-3-2-5-1-1 > li::marker { content: "("counter(main-9-3-3-2-5-1-1,lower-alpha)")"; }
-#main-9-3-3-2-5-1-1 > li { counter-increment: main-9-3-3-2-5-1-1; }
-#main-9-5-4-1-1-1 { counter-set: main-9-5-4-1-1-1 0; }
-#main-9-5-4-1-1-1 > li::marker { content: ""counter(main-9-5-4-1-1-1,decimal)"."; }
-#main-9-5-4-1-1-1 > li { counter-increment: main-9-5-4-1-1-1; }
-#main-9-5-4-2-1-1 { counter-set: main-9-5-4-2-1-1 0; }
-#main-9-5-4-2-1-1 > li::marker { content: ""counter(main-9-5-4-2-1-1,decimal)"."; }
-#main-9-5-4-2-1-1 > li { counter-increment: main-9-5-4-2-1-1; }
+#main-11-4-2-2 { counter-set: main-11-4-2-2 0; }
+#main-11-4-2-2 > li::marker { content: ""counter(main-11-4-2-2,decimal)"."; }
+#main-11-4-2-2 > li { counter-increment: main-11-4-2-2; }
+#main-11-4-3-2 { counter-set: main-11-4-3-2 0; }
+#main-11-4-3-2 > li::marker { content: ""counter(main-11-4-3-2,decimal)"."; }
+#main-11-4-3-2 > li { counter-increment: main-11-4-3-2; }
+#main-11-4-3-2-5-1-1 { counter-set: main-11-4-3-2-5-1-1 0; }
+#main-11-4-3-2-5-1-1 > li::marker { content: "("counter(main-11-4-3-2-5-1-1,lower-alpha)")"; }
+#main-11-4-3-2-5-1-1 > li { counter-increment: main-11-4-3-2-5-1-1; }
+#solving-the-quadratic-equation-2-3 { counter-set: solving-the-quadratic-equation-2-3 0; }
+#solving-the-quadratic-equation-2-3 > li::marker { content: ""counter(solving-the-quadratic-equation-2-3,decimal)".\"; }
+#solving-the-quadratic-equation-2-3 > li { counter-increment: solving-the-quadratic-equation-2-3; }
+#main-11-6-4-1-1-1 { counter-set: main-11-6-4-1-1-1 0; }
+#main-11-6-4-1-1-1 > li::marker { content: ""counter(main-11-6-4-1-1-1,decimal)"."; }
+#main-11-6-4-1-1-1 > li { counter-increment: main-11-6-4-1-1-1; }
+#main-11-6-4-2-1-1 { counter-set: main-11-6-4-2-1-1 0; }
+#main-11-6-4-2-1-1 > li::marker { content: ""counter(main-11-6-4-2-1-1,decimal)"."; }
+#main-11-6-4-2-1-1 > li { counter-increment: main-11-6-4-2-1-1; }
+#calculus-review-product-rule-3 { counter-set: calculus-review-product-rule-3 0; }
+#calculus-review-product-rule-3 > li::marker { content: ""counter(calculus-review-product-rule-3,decimal)"."; }
+#calculus-review-product-rule-3 > li { counter-increment: calculus-review-product-rule-3; }
+#calculus-review-product-rule-7-1 { counter-set: calculus-review-product-rule-7-1 0; }
+#calculus-review-product-rule-7-1 > li::marker { content: ""counter(calculus-review-product-rule-7-1,decimal)"."; }
+#calculus-review-product-rule-7-1 > li { counter-increment: calculus-review-product-rule-7-1; }
 </style>
 </head>
 <body id="debookrs" class="pretext book ignore-math">
 <a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
 <a id="logo-link" class="logo-link" target="_blank" href="https://www.vmi.edu/"><img src="external/figures/VMI-spider.png" alt="Logo image"></a><div class="title-container">
-<h1 class="heading"><a href="main.html"><span class="title">FOCUSED DEVELOPEMENT</span></a></h1>
-<p class="byline"></p>
+<h1 class="heading"><a href="main.html"><span class="title">Interactive Differential Equations:</span> <span class="subtitle">A Step-by-Step Approach to Methods &amp; Modeling</span></a></h1>
+<p class="byline">Geoffrey W. Cox, Ph.D.</p>
 </div>
 </div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
 <div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
@@ -317,12 +315,13 @@ true);
 \newcommand\ub{\underbrace}
 \newcommand\ubt{\underbracket}
 \newcommand\ul{\underline}
-\newcommand\lap{\mathscr{L}}
-\newcommand\ilap[1]{\lap^{-1}\left\{#1\right\}}
+\newcommand\laplacesym{\mathscr{L}}
+\newcommand\lap[1]{\laplacesym\left\{#1\right\}}
+\newcommand\ilap[1]{\laplacesym^{-1}\left\{#1\right\}}
 \newcommand\tikznode[3][]
-    {\tikz[remember picture,baseline=(#2.base)]
-        \node[minimum size=0pt,inner sep=0pt,#1](#2){#3};
-    }
+	{\tikz[remember picture,baseline=(#2.base)]
+		\node[minimum size=0pt,inner sep=0pt,#1](#2){#3};
+	}
 \newcommand{\lt}{&lt;}
 \newcommand{\gt}{&gt;}
 \newcommand{\amp}{&amp;}
@@ -330,678 +329,642 @@ true);
 \newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
 \)</span></div>
 <div class="ptx-page">
-<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 focused" data-preexpanded-levels="0" data-max-levels="3"><ul class="structural contains-active toc-item-list">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts focused" data-preexpanded-levels="0" data-max-levels="3"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="front-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="preface.html" class="internal"><span class="title">Preface</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="main-5.html" class="internal"><span class="codenumber">I</span> <span class="title">Fundamentals</span></a></div>
+<ul class="structural toc-item-list">
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="main-3.html" class="internal"><span class="codenumber">1</span> <span class="title">Fundamentals</span></a></div>
+<div class="toc-title-box"><a href="main-5-3.html" class="internal"><span class="codenumber">1</span> <span class="title">What’s a Differential Equation?</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-3.html" class="internal"><span class="codenumber">1.1</span> <span class="title">What’s a Differential Equation?</span></a></div>
+<div class="toc-title-box"><a href="main-5-3-3.html" class="internal"><span class="codenumber">1.1</span> <span class="title">An Analogy</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-3.html#main-5-3-3-9" class="internal"><span class="codenumber">1.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-4.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Definition</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-4.html#main-5-3-4-6" class="internal"><span class="codenumber">1.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-5.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Variables</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-5.html#main-5-3-5-8" class="internal"><span class="codenumber">1.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-6.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Terms &amp; Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-6.html#main-5-3-6-6" class="internal"><span class="codenumber">1.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-7.html" class="internal"><span class="codenumber">1.5</span> <span class="title">Order</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-7.html#main-5-3-7-6" class="internal"><span class="codenumber">1.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-8.html" class="internal"><span class="codenumber">1.6</span> <span class="title">Linear Terms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-8.html#main-5-3-8-12" class="internal"><span class="codenumber">1.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-9.html" class="internal"><span class="codenumber">1.7</span> <span class="title">Linearity</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-9.html#main-5-3-9-7" class="internal"><span class="codenumber">1.7</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-3-10.html" class="internal"><span class="codenumber">1.8</span> <span class="title">Summary &amp; Exercises</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-3.html" class="internal"><span class="codenumber">1.1.1</span> <span class="title">An Analogy</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-3.html#main-3-3-3-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-4.html" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Definition</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-4.html#main-3-3-4-5" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-5.html" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Variables</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-5.html#main-3-3-5-10" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-6.html" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Terms &amp; Coefficients</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-6.html#main-3-3-6-6" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-7.html" class="internal"><span class="codenumber">1.1.5</span> <span class="title">Order</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-7.html#main-3-3-7-6" class="internal"><span class="codenumber">1.1.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-8.html" class="internal"><span class="codenumber">1.1.6</span> <span class="title">Linear Terms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-8.html#main-3-3-8-10" class="internal"><span class="codenumber">1.1.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-9.html" class="internal"><span class="codenumber">1.1.7</span> <span class="title">Linearity</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-3-9.html#main-3-3-9-6" class="internal"><span class="codenumber">1.1.7</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-3-10.html" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-3-3-10.html#main-3-3-10-3" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Exercises</span></a></div></li>
-<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-3-3-10.html#main-3-3-10-4" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Order</span></a></div></li>
-<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-3-3-10.html#main-3-3-10-5" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Linearity</span></a></div></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Solutions</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4-3.html" class="internal"><span class="codenumber">1.2.1</span> <span class="title">What is a Solution?</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-3.html#main-3-4-3-5" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4-4.html" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Verifying Solutions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-4.html#main-3-4-4-9" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4-5.html" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Types of Solutions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-5.html#main-3-4-5-8" class="internal"><span class="codenumber">1.2.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4-6.html" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Visualizing Solutions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-6.html#main-3-4-6-5" class="internal"><span class="codenumber">1.2.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-4-7.html" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Initial Conditions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-7.html#main-3-4-7-4" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-3-4-8.html" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Particular Solutions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-3-4-8.html#main-3-4-8-8" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-3-4-9.html" class="internal"><span class="codenumber">1.2.5</span> <span class="title">Additional Examples</span></a></div></li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-3-4-10.html" class="internal"><span class="codenumber">1.2.6</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-3-4-10.html#main-3-4-10-3" class="internal"><span class="codenumber">1.2.6</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-3-10.html#main-5-3-10-3" class="internal"><span class="codenumber">1.8</span> <span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-3-10.html#main-5-3-10-4" class="internal"><span class="codenumber">1.8</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="main-4.html" class="internal"><span class="codenumber">2</span> <span class="title">First-Order Methods</span></a></div>
+<div class="toc-title-box"><a href="main-5-4.html" class="internal"><span class="codenumber">2</span> <span class="title">Solutions</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-4-3.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Direct Integration</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-4-3-3.html" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Antiderivatives</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-3-3.html#main-4-3-3-5" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-5-4-3.html" class="internal"><span class="codenumber">2.1</span> <span class="title">What is a Solution?</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-3.html#main-5-4-3-6" class="internal"><span class="codenumber">2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-4-3-4.html" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Solutions by Direct Integration</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-3-4.html#main-4-3-4-7" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-5-4-4.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Verifying Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-4.html#main-5-4-4-10" class="internal"><span class="codenumber">2.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-3-5.html" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-4-3-5.html#main-4-3-5-3" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Exercises</span></a></div></li></ul>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-4-5.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Types of Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-5.html#main-5-4-5-9" class="internal"><span class="codenumber">2.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-4-6.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Visualizing Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-6.html#main-5-4-6-6" class="internal"><span class="codenumber">2.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-4-7.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Initial Conditions &amp; Particular Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-7.html#main-5-4-7-12" class="internal"><span class="codenumber">2.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-5-4-8.html" class="internal"><span class="codenumber">2.6</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-4-8.html#main-5-4-8-3" class="internal"><span class="codenumber">2.6</span> <span class="title">Exercises</span></a></div></li></ul>
 </li>
 </ul>
 </li>
-<li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-4-4.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Separation of Variables</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-3.html" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Separable Form</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-3.html#main-4-4-3-7" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-4.html" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Special Separable Forms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-4.html#main-4-4-4-4" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-5.html" class="internal"><span class="codenumber">2.2.3</span> <span class="title">Verifying Separable</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-5.html#main-4-4-5-5" class="internal"><span class="codenumber">2.2.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-6.html" class="internal"><span class="codenumber">2.2.4</span> <span class="title">SOV Method</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-6.html#main-4-4-6-11" class="internal"><span class="codenumber">2.2.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-7.html" class="internal"><span class="codenumber">2.2.5</span> <span class="title">SOV Examples</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-7.html#main-4-4-7-12" class="internal"><span class="codenumber">2.2.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-8.html" class="internal"><span class="codenumber">2.2.6</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-4-4-8.html#main-4-4-8-3" class="internal"><span class="codenumber">2.2.6</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-4-9.html" class="internal"><span class="codenumber">2.2.7</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-4-9.html#main-4-4-9-4" class="internal"><span class="codenumber">2.2.7</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
 </ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="main-6.html" class="internal"><span class="codenumber">II</span> <span class="title">First-Order Methods</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="main-6-3.html" class="internal"><span class="codenumber">3</span> <span class="title">Direct Integration</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-6-3-3.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-3.html#main-6-3-3-6" class="internal"><span class="codenumber">3.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-4-5.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Integrating Factor</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-3.html" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Product Rule</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-3.html#main-4-5-3-6" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Check your Understanding</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-3.html#main-4-5-3-8" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Check your Understanding</span></a></div></li>
-</ul>
+<div class="toc-title-box"><a href="main-6-3-4.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Solutions by Direct Integration</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-4.html#main-6-3-4-8" class="internal"><span class="codenumber">3.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-4.html" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Reversing the Product Rule</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-4.html#main-4-5-4-8" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-5.html" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Integrating Factor Method</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-5.html#main-4-5-5-7" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-6.html" class="internal"><span class="codenumber">2.3.4</span> <span class="title">IF: Step-By-Step</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-6.html#main-4-5-6-9" class="internal"><span class="codenumber">2.3.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-7.html" class="internal"><span class="codenumber">2.3.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-4-5-7.html#main-4-5-7-3" class="internal"><span class="codenumber">2.3.5</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-4-5-8.html" class="internal"><span class="codenumber">2.3.6</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-4-5-8.html#main-4-5-8-4" class="internal"><span class="codenumber">2.3.6</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
-</ul>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-6-3-5.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-3-5.html#main-6-3-5-3" class="internal"><span class="codenumber">3.3</span> <span class="title">Exercises</span></a></div></li></ul>
 </li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="main-5.html" class="internal"><span class="codenumber">3</span> <span class="title">Linear Constant Coefficient Methods</span></a></div>
+<div class="toc-title-box"><a href="main-6-4.html" class="internal"><span class="codenumber">4</span> <span class="title">Separation of Variables</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-5-3.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Homogeneous</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-3.html" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Classification</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-3.html#main-5-3-3-8" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-4.html" class="internal"><span class="codenumber">3.1.2</span> <span class="title">General Solutions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-4.html#main-5-3-4-10" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-5.html" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Characteristic Equation</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-5.html#main-5-3-5-7" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-6.html" class="internal"><span class="codenumber">3.1.4</span> <span class="title">First-Order Equations</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-6.html#main-5-3-6-6" class="internal"><span class="codenumber">3.1.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-7.html" class="internal"><span class="codenumber">3.1.5</span> <span class="title">Second-Order LHCC</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-7.html#main-5-3-7-8" class="internal"><span class="codenumber">3.1.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-8.html" class="internal"><span class="codenumber">3.1.6</span> <span class="title">Higher-Order LHCC</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-8.html#main-5-3-8-13" class="internal"><span class="codenumber">3.1.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-9.html" class="internal"><span class="codenumber">3.1.7</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-3-9.html#main-5-3-9-3" class="internal"><span class="codenumber">3.1.7</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-3-10.html" class="internal"><span class="codenumber">3.1.8</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-3-10.html#main-5-3-10-4" class="internal"><span class="codenumber">3.1.8</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
-</ul>
+<div class="toc-title-box"><a href="main-6-4-3.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Separable Form</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-3.html#main-6-4-3-8" class="internal"><span class="codenumber">4.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-5-4.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Nonhomogeneous</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-3.html" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Introduction</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-3.html#main-5-4-3-8" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-4.html" class="internal"><span class="codenumber">3.2.2</span> <span class="title">General Solution Parts</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-4.html#main-5-4-4-8" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-5.html" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Selecting <span class="process-math">\(y_p\)</span> Forms, Part 1</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-5.html#main-5-4-5-5" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-6.html" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Selecting <span class="process-math">\(y_p\)</span> Forms, Part 2</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-6.html#main-5-4-6-6" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-7.html" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Finding <span class="process-math">\(y_p\)</span> Coefficients</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-7.html#main-5-4-7-8" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-8.html" class="internal"><span class="codenumber">3.2.6</span> <span class="title">Adjusting <span class="process-math">\(y_p\)</span> Forms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-8.html#main-5-4-8-10" class="internal"><span class="codenumber">3.2.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-9.html" class="internal"><span class="codenumber">3.2.7</span> <span class="title">Undetermined Coefficients</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-9.html#main-5-4-9-3" class="internal"><span class="codenumber">3.2.7</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-10.html" class="internal"><span class="codenumber">3.2.8</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-4-10.html#main-5-4-10-3" class="internal"><span class="codenumber">3.2.8</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-4-11.html" class="internal"><span class="codenumber">3.2.9</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-4-11.html#main-5-4-11-7" class="internal"><span class="codenumber">3.2.9</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
-</ul>
+<div class="toc-title-box"><a href="main-6-4-4.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Verifying Separable</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-4.html#main-6-4-4-5" class="internal"><span class="codenumber">4.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-5-5.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Variation of Parameters</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-5-3.html" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-5-5-3.html#main-5-5-3-3" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Exercises</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-6-4-5.html" class="internal"><span class="codenumber">4.3</span> <span class="title">Separation of Variables Method (SOV)</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-5.html#main-6-4-5-8" class="internal"><span class="codenumber">4.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-5-5-4.html" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-5-5-4.html#main-5-5-4-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Additional Practice</span></a></div></li></ul>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-6-4-6.html" class="internal"><span class="codenumber">4.4</span> <span class="title">Additional Examples</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-6.html#main-6-4-6-12" class="internal"><span class="codenumber">4.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
-</ul>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-6-4-7.html" class="internal"><span class="codenumber">4.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-4-7.html#main-6-4-7-3" class="internal"><span class="codenumber">4.5</span> <span class="title">Exercises</span></a></div></li></ul>
 </li>
 </ul>
 </li>
 <li class="toc-item toc-chapter contains-active">
-<div class="toc-title-box"><a href="main-6.html" class="internal"><span class="codenumber">4</span> <span class="title">Laplace Transform Method</span></a></div>
+<div class="toc-title-box"><a href="main-6-5.html" class="internal"><span class="codenumber">5</span> <span class="title">Integrating Factor</span></a></div>
 <ul class="structural toc-item-list contains-active">
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-6-3.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Forward Transforms</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-3.html" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Motivation</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-3.html#main-6-3-3-5" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-4.html" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Definition</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-4.html#main-6-3-4-9" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-5.html" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Common Transforms</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-5.html#main-6-3-5-7" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Check-Point Questions</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-5.html#main-6-3-5-12" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Check-Point Questions</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-5.html#main-6-3-5-18" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Check-Point Questions</span></a></div></li>
-</ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-6.html" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Properties of Laplace Transforms</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-6.html#main-6-3-6-7" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Check your Understanding</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-6.html#main-6-3-6-14" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Check your Understanding</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-6.html#main-6-3-6-20" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Check your Understanding</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-6.html#main-6-3-6-27" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Check your Understanding</span></a></div></li>
-</ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-7.html" class="internal"><span class="codenumber">4.1.5</span> <span class="title">Transforming Equations</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-3-7.html#main-6-3-7-9" class="internal"><span class="codenumber">4.1.5</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-3-8.html" class="internal"><span class="codenumber">4.1.6</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-3-8.html#main-6-3-8-3" class="internal"><span class="codenumber">4.1.6</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-</ul>
+<div class="toc-title-box"><a href="main-6-5-3.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Product Rule</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-3.html#main-6-5-3-10" class="internal"><span class="codenumber">5.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-6-4.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Backward Transforms</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-3.html" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Common Forms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-3.html#main-6-4-3-10" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-6-5-4.html" class="internal"><span class="codenumber">5.2</span> <span class="title">The Integrating Factor</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-4.html#main-6-5-4-7" class="internal"><span class="codenumber">5.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-4.html" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Matching Forms</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-4.html#main-6-4-4-5" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Check your Understanding</span></a></div></li>
-<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-4.html#main-6-4-4-8" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Check your Understanding</span></a></div></li>
-</ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-5.html" class="internal"><span class="codenumber">4.2.3</span> <span class="title">Finding Inverse Laplace Transforms by Completing the Square</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-5.html#main-6-4-5-13" class="internal"><span class="codenumber">4.2.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-6.html" class="internal"><span class="codenumber">4.2.4</span> <span class="title">Partial Fraction Decomposition</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-6.html#main-6-4-6-6" class="internal"><span class="codenumber">4.2.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-7.html" class="internal"><span class="codenumber">4.2.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-4-7.html#main-6-4-7-3" class="internal"><span class="codenumber">4.2.5</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-4-8.html" class="internal"><span class="codenumber">4.2.6</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-4-8.html#main-6-4-8-4" class="internal"><span class="codenumber">4.2.6</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
-</ul>
-</li>
-<li class="toc-item toc-section contains-active">
-<div class="toc-title-box"><a href="main-6-5.html" class="internal"><span class="codenumber">4.3</span> <span class="title">Solving Equations</span></a></div>
-<ul class="structural toc-item-list contains-active">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-5-3.html" class="internal"><span class="codenumber">4.3.1</span> <span class="title">Overview</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-3.html#main-6-5-3-5" class="internal"><span class="codenumber">4.3.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-5-4.html" class="internal"><span class="codenumber">4.3.2</span> <span class="title">Solving DEs via Laplace Transforms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-4.html#main-6-5-4-7" class="internal"><span class="codenumber">4.3.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection active">
-<div class="toc-title-box"><a href="main-6-5-5.html" class="internal"><span class="codenumber">4.3.3</span> <span class="title">Solving DEs via Laplace Transforms</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-5.html#main-6-5-5-7" class="internal"><span class="codenumber">4.3.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-5-6.html" class="internal"><span class="codenumber">4.3.4</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-5-6.html#main-6-5-6-3" class="internal"><span class="codenumber">4.3.4</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-5-7.html" class="internal"><span class="codenumber">4.3.5</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-7.html#main-6-5-7-4" class="internal"><span class="codenumber">4.3.5</span> <span class="title">Additional Practice</span></a></div></li></ul>
-</li>
-</ul>
+<li class="toc-item toc-section active">
+<div class="toc-title-box"><a href="main-6-5-5.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Integrating Factor Method</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-5.html#main-6-5-5-7" class="internal"><span class="codenumber">5.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="main-6-6.html" class="internal"><span class="codenumber">4.4</span> <span class="title">Piecewise Forcing Functions</span></a></div>
-<ul class="structural toc-item-list">
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="s-04-07-lt-unit-step-funcs.html" class="internal"><span class="codenumber">4.4.1</span> <span class="title">Unit Step Functions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-07-lt-unit-step-funcs.html#s-04-07-lt-unit-step-funcs-24" class="internal"><span class="codenumber">4.4.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="s-04-08-lt-lts-involving-unit-step-funcs.html" class="internal"><span class="codenumber">4.4.2</span> <span class="title">Laplace Transforms Involving Unit Step Functions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-08-lt-lts-involving-unit-step-funcs.html#s-04-08-lt-lts-involving-unit-step-funcs-14" class="internal"><span class="codenumber">4.4.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="s-04-09-lt-piecewise-and-unit-step-funcs.html" class="internal"><span class="codenumber">4.4.3</span> <span class="title">Piecewise and Unit Step Functions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-09-lt-piecewise-and-unit-step-funcs.html#s-04-09-lt-piecewise-and-unit-step-funcs-5" class="internal"><span class="codenumber">4.4.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-6-5-6.html" class="internal"><span class="codenumber">5.4</span> <span class="title">IF: Step-By-Step</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-6.html#main-6-5-6-9" class="internal"><span class="codenumber">5.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
 </li>
 <li class="toc-item toc-section">
-<div class="toc-title-box"><a href="sec-lt-piecewise-funcs-pt2.html" class="internal"><span class="codenumber">4.4.1</span> <span class="title">Solving DEs with Piecewise Functions</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="sec-lt-piecewise-funcs-pt2.html#sec-lt-piecewise-funcs-pt2-4" class="internal"><span class="codenumber">4.4.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+<div class="toc-title-box"><a href="main-6-5-7.html" class="internal"><span class="codenumber">5.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-5-7.html#main-6-5-7-3" class="internal"><span class="codenumber">5.5</span> <span class="title">Exercises</span></a></div></li></ul>
 </li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-6-7.html" class="internal"><span class="codenumber">4.4.4</span> <span class="title">Summary &amp; Exercises</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-6-6-7.html#main-6-6-7-3" class="internal"><span class="codenumber">4.4.4</span> <span class="title">Exercises</span></a></div></li></ul>
-</li>
-<li class="toc-item toc-subsection">
-<div class="toc-title-box"><a href="main-6-6-8.html" class="internal"><span class="codenumber">4.4.5</span> <span class="title">Orphaned Content</span></a></div>
-<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-6-8.html#main-6-6-8-4" class="internal"><span class="codenumber">4.4.5</span> <span class="title">Additional Practice</span></a></div></li></ul>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-6-5-8.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Orphaned Content</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-6-5-8.html#main-6-5-8-4" class="internal"><span class="codenumber">5.6</span> <span class="title">Additional Practice</span></a></div></li></ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="main-7.html" class="internal"><span class="codenumber">III</span> <span class="title">Linear Constant Coefficient Methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="main-7-3.html" class="internal"><span class="codenumber">6</span> <span class="title">Homogeneous</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-3.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Classification</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-3.html#main-7-3-3-8" class="internal"><span class="codenumber">6.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-4.html" class="internal"><span class="codenumber">6.2</span> <span class="title">General Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-4.html#main-7-3-4-10" class="internal"><span class="codenumber">6.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-5.html" class="internal"><span class="codenumber">6.3</span> <span class="title">Characteristic Equation</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-5.html#main-7-3-5-7" class="internal"><span class="codenumber">6.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-6.html" class="internal"><span class="codenumber">6.4</span> <span class="title">First-Order Equations</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-6.html#main-7-3-6-6" class="internal"><span class="codenumber">6.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-7.html" class="internal"><span class="codenumber">6.5</span> <span class="title">Second-Order LHCC</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-7.html#main-7-3-7-8" class="internal"><span class="codenumber">6.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-8.html" class="internal"><span class="codenumber">6.6</span> <span class="title">Higher-Order LHCC</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-8.html#main-7-3-8-13" class="internal"><span class="codenumber">6.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-9.html" class="internal"><span class="codenumber">6.7</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-7-3-9.html#main-7-3-9-3" class="internal"><span class="codenumber">6.7</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-3-10.html" class="internal"><span class="codenumber">6.8</span> <span class="title">Orphaned Content</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-3-10.html#main-7-3-10-4" class="internal"><span class="codenumber">6.8</span> <span class="title">Additional Practice</span></a></div></li></ul>
 </li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="main-7.html" class="internal"><span class="codenumber">5</span> <span class="title">Systems of Equations</span></a></div>
+<div class="toc-title-box"><a href="main-7-4.html" class="internal"><span class="codenumber">7</span> <span class="title">Nonhomogeneous</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-7-3.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Linear Systems</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-7-4.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Nonlinear Systems</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-7-5.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Applications</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-3.html" class="internal"><span class="codenumber">7.1</span> <span class="title">Introduction</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-3.html#main-7-4-3-8" class="internal"><span class="codenumber">7.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-4.html" class="internal"><span class="codenumber">7.2</span> <span class="title">General Solution Parts</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-4.html#main-7-4-4-8" class="internal"><span class="codenumber">7.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-5.html" class="internal"><span class="codenumber">7.3</span> <span class="title">Selecting <span class="process-math">\(y_p\)</span> Forms, Part 1</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-5.html#main-7-4-5-5" class="internal"><span class="codenumber">7.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-6.html" class="internal"><span class="codenumber">7.4</span> <span class="title">Selecting <span class="process-math">\(y_p\)</span> Forms, Part 2</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-6.html#main-7-4-6-6" class="internal"><span class="codenumber">7.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-7.html" class="internal"><span class="codenumber">7.5</span> <span class="title">Finding <span class="process-math">\(y_p\)</span> Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-7.html#main-7-4-7-8" class="internal"><span class="codenumber">7.5</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-8.html" class="internal"><span class="codenumber">7.6</span> <span class="title">Adjusting <span class="process-math">\(y_p\)</span> Forms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-8.html#main-7-4-8-10" class="internal"><span class="codenumber">7.6</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-9.html" class="internal"><span class="codenumber">7.7</span> <span class="title">Undetermined Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-9.html#main-7-4-9-3" class="internal"><span class="codenumber">7.7</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-10.html" class="internal"><span class="codenumber">7.8</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-7-4-10.html#main-7-4-10-3" class="internal"><span class="codenumber">7.8</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-7-4-11.html" class="internal"><span class="codenumber">7.9</span> <span class="title">Orphaned Content</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-7-4-11.html#main-7-4-11-7" class="internal"><span class="codenumber">7.9</span> <span class="title">Additional Practice</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-7-5.html" class="internal"><span class="codenumber">8</span> <span class="title">Variation of Parameters</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="main-8.html" class="internal"><span class="codenumber">IV</span> <span class="title">Laplace Transform Method</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="main-8-3.html" class="internal"><span class="codenumber">9</span> <span class="title">Forward Transforms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-3.html" class="internal"><span class="codenumber">9.1</span> <span class="title">Motivation</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-3.html#main-8-3-3-5" class="internal"><span class="codenumber">9.1</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-4.html" class="internal"><span class="codenumber">9.2</span> <span class="title">Definition</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-4.html#main-8-3-4-9" class="internal"><span class="codenumber">9.2</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-5.html" class="internal"><span class="codenumber">9.3</span> <span class="title">Common Transforms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-5.html#main-8-3-5-7" class="internal"><span class="codenumber">9.3</span> <span class="title">Check-Point Questions</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-5.html#main-8-3-5-12" class="internal"><span class="codenumber">9.3</span> <span class="title">Check-Point Questions</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-5.html#main-8-3-5-18" class="internal"><span class="codenumber">9.3</span> <span class="title">Check-Point Questions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-6.html" class="internal"><span class="codenumber">9.4</span> <span class="title">Properties of Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-6.html#main-8-3-6-7" class="internal"><span class="codenumber">9.4</span> <span class="title">Check your Understanding</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-6.html#main-8-3-6-14" class="internal"><span class="codenumber">9.4</span> <span class="title">Check your Understanding</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-6.html#main-8-3-6-20" class="internal"><span class="codenumber">9.4</span> <span class="title">Check your Understanding</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-6.html#main-8-3-6-27" class="internal"><span class="codenumber">9.4</span> <span class="title">Check your Understanding</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-7.html" class="internal"><span class="codenumber">9.5</span> <span class="title">Transforming Equations</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-3-7.html#main-8-3-7-9" class="internal"><span class="codenumber">9.5</span> <span class="title">Check-Point Questions</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-3-8.html" class="internal"><span class="codenumber">9.6</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-8-3-8.html#main-8-3-8-3" class="internal"><span class="codenumber">9.6</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-chapter">
-<div class="toc-title-box"><a href="main-8.html" class="internal"><span class="codenumber">6</span> <span class="title">Numerical Methods</span></a></div>
+<div class="toc-title-box"><a href="main-8-4.html" class="internal"><span class="codenumber">10</span> <span class="title">Backward Transforms</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-8-3.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Euler’s Method</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-8-4.html" class="internal"><span class="codenumber">6.2</span> <span class="title">Runge-Kutta Methods</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-8-5.html" class="internal"><span class="codenumber">6.3</span> <span class="title">Error Analysis</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-4-3.html" class="internal"><span class="codenumber">10.1</span> <span class="title">Common Forms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-4-3.html#main-8-4-3-11" class="internal"><span class="codenumber">10.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-4-4.html" class="internal"><span class="codenumber">10.2</span> <span class="title">Matching Forms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-4-4.html#main-8-4-4-8" class="internal"><span class="codenumber">10.2</span> <span class="title">Check your Understanding</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-4-4.html#main-8-4-4-11" class="internal"><span class="codenumber">10.2</span> <span class="title">Check your Understanding</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-4-5.html" class="internal"><span class="codenumber">10.3</span> <span class="title">Finding Inverse Laplace Transforms by Completing the Square</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-4-5.html#main-8-4-5-6" class="internal"><span class="codenumber">10.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-4-6.html" class="internal"><span class="codenumber">10.4</span> <span class="title">Finding Inverse Laplace Transforms Using Partial Fraction Decomposition</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-4-6.html#main-8-4-6-9" class="internal"><span class="codenumber">10.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-4-7.html" class="internal"><span class="codenumber">10.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-8-4-7.html#main-8-4-7-3" class="internal"><span class="codenumber">10.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="main-8-5.html" class="internal"><span class="codenumber">11</span> <span class="title">Solving Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-5-3.html" class="internal"><span class="codenumber">11.1</span> <span class="title">Overview</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-5-3.html#main-8-5-3-7" class="internal"><span class="codenumber">11.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-5-4.html" class="internal"><span class="codenumber">11.2</span> <span class="title">Detailed Examples</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-5-4.html#main-8-5-4-7" class="internal"><span class="codenumber">11.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-5-5.html" class="internal"><span class="codenumber">11.3</span> <span class="title">Additional Examples</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="main-8-5-5.html#main-8-5-5-4" class="internal"><span class="codenumber">11.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-5-6.html" class="internal"><span class="codenumber">11.4</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-8-5-6.html#main-8-5-6-3" class="internal"><span class="codenumber">11.4</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="main-8-6.html" class="internal"><span class="codenumber">12</span> <span class="title">Piecewise Forcing Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s-04-07-lt-unit-step-funcs.html" class="internal"><span class="codenumber">12.1</span> <span class="title">Unit Step Functions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-07-lt-unit-step-funcs.html#s-04-07-lt-unit-step-funcs-24" class="internal"><span class="codenumber">12.1</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s-04-08-lt-lts-involving-unit-step-funcs.html" class="internal"><span class="codenumber">12.2</span> <span class="title">Laplace Transforms Involving Unit Step Functions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-08-lt-lts-involving-unit-step-funcs.html#s-04-08-lt-lts-involving-unit-step-funcs-14" class="internal"><span class="codenumber">12.2</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s-04-09-lt-piecewise-and-unit-step-funcs.html" class="internal"><span class="codenumber">12.3</span> <span class="title">Piecewise and Unit Step Functions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="s-04-09-lt-piecewise-and-unit-step-funcs.html#s-04-09-lt-piecewise-and-unit-step-funcs-5" class="internal"><span class="codenumber">12.3</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-lt-piecewise-funcs-pt2.html" class="internal"><span class="codenumber">12.4</span> <span class="title">Solving DEs with Piecewise Functions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="sec-lt-piecewise-funcs-pt2.html#sec-lt-piecewise-funcs-pt2-4" class="internal"><span class="codenumber">12.4</span> <span class="title">Check your Understanding</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="main-8-6-7.html" class="internal"><span class="codenumber">12.5</span> <span class="title">Summary &amp; Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="main-8-6-7.html#main-8-6-7-3" class="internal"><span class="codenumber">12.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="main-9.html" class="internal"><span class="codenumber">V</span> <span class="title">Systems of Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-9-3.html" class="internal"><span class="codenumber">13</span> <span class="title">Linear Systems</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-9-4.html" class="internal"><span class="codenumber">14</span> <span class="title">Nonlinear Systems</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-9-5.html" class="internal"><span class="codenumber">15</span> <span class="title">Applications</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="main-10.html" class="internal"><span class="codenumber">VI</span> <span class="title">Numerical Methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-10-3.html" class="internal"><span class="codenumber">16</span> <span class="title">Euler’s Method</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-10-4.html" class="internal"><span class="codenumber">17</span> <span class="title">Runge-Kutta Methods</span></a></div></li>
+<li class="toc-item toc-chapter"><div class="toc-title-box"><a href="main-10-5.html" class="internal"><span class="codenumber">18</span> <span class="title">Error Analysis</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-appendix">
-<div class="toc-title-box"><a href="main-9.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<div class="toc-title-box"><a href="main-11.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="review-exp-and-logs.html" class="internal"><span class="codenumber">A.1</span> <span class="title">Exponential and Logarithmic Functions</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="main-9-3.html" class="internal"><span class="codenumber">A.2</span> <span class="title">Quadratic equations</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="main-9-4.html" class="internal"><span class="codenumber">A.3</span> <span class="title">Trigonometric Identities</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="main-9-5.html" class="internal"><span class="codenumber">A.4</span> <span class="title">Solving Polynomial Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-exp-and-logs.html" class="internal"><span class="codenumber">A.1</span> <span class="title">Exponential and Logarithmic Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-11-3.html" class="internal"><span class="codenumber">A.2</span> <span class="title">Rational Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-11-4.html" class="internal"><span class="codenumber">A.3</span> <span class="title">Quadratic equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-11-5.html" class="internal"><span class="codenumber">A.4</span> <span class="title">Trigonometric Identities</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-11-6.html" class="internal"><span class="codenumber">A.5</span> <span class="title">Solving Polynomial Equations</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-appendix">
-<div class="toc-title-box"><a href="main-10.html" class="internal"><span class="codenumber">B</span> <span class="title">Details</span></a></div>
+<div class="toc-title-box"><a href="main-12.html" class="internal"><span class="codenumber">B</span> <span class="title">Calculus Review</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-product-rule.html" class="internal"><span class="codenumber">B.1</span> <span class="title">Product Rule</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="main-13.html" class="internal"><span class="codenumber">C</span> <span class="title">Details</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-10-2.html" class="internal"><span class="codenumber">B.1</span> <span class="title">Direct Integration</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-10-3.html" class="internal"><span class="codenumber">B.2</span> <span class="title">Integrating Factor</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-10-4.html" class="internal"><span class="codenumber">B.3</span> <span class="title">Linear Homogeneous Constant Coefficients</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-10-5.html" class="internal"><span class="codenumber">B.4</span> <span class="title">Laplace Transforms</span></a></div></li>
-<li class="toc-item toc-section"><div class="toc-title-box"><a href="s-zz-videos.html" class="internal"><span class="codenumber">B.5</span> <span class="title">Videos</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-13-2.html" class="internal"><span class="codenumber">C.1</span> <span class="title">Direct Integration</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-13-3.html" class="internal"><span class="codenumber">C.2</span> <span class="title">Visualizing Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-13-4.html" class="internal"><span class="codenumber">C.3</span> <span class="title">Integrating Factor</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-13-5.html" class="internal"><span class="codenumber">C.4</span> <span class="title">Linear Homogeneous Constant Coefficients</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="main-13-6.html" class="internal"><span class="codenumber">C.5</span> <span class="title">Laplace Transforms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s-zz-videos.html" class="internal"><span class="codenumber">C.6</span> <span class="title">Videos</span></a></div></li>
 </ul>
 </li>
 </ul></nav></div>
-<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="subsection" id="main-6-5-5"><h2 class="heading hide-type">
-<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">4.3.3</span><span class="space"> </span><span class="title">Solving DEs via Laplace Transforms</span>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="main-6-5-5"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">5.3</span><span class="space"> </span><span class="title">Integrating Factor Method</span>
 </h2>
-<div class="para" id="main-6-5-5-2">So far we’ve learned the definition of Laplace transform, developed a table so that we could more easily find Laplace transforms, and then figured out how to use the table to take inverse Laplace transforms. We are finally ready to use all of this to actually solve some DEs. First, let’s refer once more to <a href="main-6.html#lt-roadmap" class="xref" data-knowl="./knowl/xref/lt-roadmap.html" data-reveal-label="Reveal" data-close-label="Close" title="Assemblage: Laplace Transform Big Picture Roadmap">the roadmap</a>.</div>
-<div class="para" id="main-6-5-5-3">Before we begin, we should take note of when it’s appropriate to use this technique. We can use Laplace transforms to solve DEs that are linear, have constant coefficients, and for which we have initial conditions. (We can relax this last condition if we want to, but for the most part we will focus on solving initial value problems.)</div>
-<article class="example example-like" id="main-6-5-5-4"><h3 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.38</span><span class="period">.</span>
-</h3>
-<div class="para logical" id="main-6-5-5-4-1">
-<div class="para">Solve the following initial value problem.</div>
+<div class="para logical" id="main-6-5-5-2">
+<div class="para">The integrating factor method uses a three-step strategy to solve first-order linear differential equations in the <em class="emphasis">standard form</em>: <details class="ptx-footnote" aria-live="polite" id="main-6-5-5-2-2"><summary class="ptx-footnote__number" title="Footnote 4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="main-6-5-5-2-2"><div class="para logical" id="main-6-5-5-2-2-1">
+<div class="para">Every linear differential equation looks like</div>
 <div class="displaymath process-math">
 \begin{equation*}
-x'' - 4x' + 13x = 54e^{-t},  x(0) = 0,  x'(0) = 0 
+a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)\text{.}
 \end{equation*}
 </div>
-</div> <details id="main-6-5-5-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
-<div class="para logical" id="main-6-5-5-4-2-1">
-<div class="para">We intend to use Laplace transforms to solve this IVP, but we need to verify that  this is an appropriate technique. We can verify that this is</div>
-<ul class="disc" id="main-6-5-5-4-2-1-1">
-<li id="main-6-5-5-4-2-1-1-1"><div class="para" id="p-derived-main-6-5-5-4-2-1-1-1">the DE is linear,</div></li>
-<li id="main-6-5-5-4-2-1-1-2"><div class="para" id="p-derived-main-6-5-5-4-2-1-1-2">the DE has constant coefficients, and</div></li>
-<li id="main-6-5-5-4-2-1-1-3"><div class="para" id="p-derived-main-6-5-5-4-2-1-1-3">initial conditions are <span class="process-math">\(\ds x(0) = 0,  x'(0) = 0 \text{.}\)</span>
-</div></li>
-</ul>
-</div> <div class="para" id="main-6-5-5-4-2-2">Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that <span class="process-math">\(x\)</span> is the dependent variable and <span class="process-math">\(t\)</span> is the independent variable, so our goal is to find a function <span class="process-math">\(x(t)\)</span> that satisfies the DE and the initial conditions.</div> <aside class="aside aside-like" id="main-6-5-5-4-2-3"><div class="para" id="main-6-5-5-4-2-3-1">Margin note:  We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.</div></aside> <div class="para logical" id="main-6-5-5-4-2-4">
-<div class="para">Following the <a href="main-6.html#lt-roadmap" class="xref" data-knowl="./knowl/xref/lt-roadmap.html" data-reveal-label="Reveal" data-close-label="Close" title="Assemblage: Laplace Transform Big Picture Roadmap">diagram</a>, we begin by taking the Laplace transform of the DE. Let’s look at some of the individual pieces.</div>
-<ul class="disc" id="main-6-5-5-4-2-4-2">
-<li id="main-6-5-5-4-2-4-2-1"><div class="para" id="p-derived-main-6-5-5-4-2-4-2-1">We will need to take the Laplace transform of <span class="process-math">\(x''\text{.}\)</span> Keep in mind that while it	is not explicitly written, we do know that <span class="process-math">\(x\)</span> is a function of <span class="process-math">\(t\text{,}\)</span> so this could be written <span class="process-math">\(x''(t).\)</span>  For the first time, we will use  <a href="main-10-5.html#LT-Table-L11" class="xref" data-knowl="./knowl/xref/LT-Table-L11.html" data-reveal-label="Reveal" data-close-label="Close" title="Item: \LARGE \vphantom{\int}L11."><span class="process-math">\(L11\)</span></a>, being careful with our naming convention.<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/LT-Table-L11.html">
-\begin{equation*}
-\lap\{ x'' \} = s^2X(s) - sx(0) - x'(0) 
-\end{equation*}
-</div>
-</div></li>
-<li id="main-6-5-5-4-2-4-2-2"><div class="para" id="p-derived-main-6-5-5-4-2-4-2-2">Similarly,<div class="displaymath process-math">
-\begin{equation*}
-\lap\{ x' \} = sX(s) - x(0). 
-\end{equation*}
-</div>
-</div></li>
-<li id="main-6-5-5-4-2-4-2-3"><div class="para" id="p-derived-main-6-5-5-4-2-4-2-3">We also need to be careful about taking the Laplace transform of <span class="process-math">\(x\)</span> itself.	Since <span class="process-math">\(x(t)\)</span> is our unknown function, we don’t know what we get when we take its Laplace transform,  The only thing we can do is use the naming convention we have established:  the Laplace transform of a function <span class="process-math">\(x(t)\)</span> is the function <span class="process-math">\(X(s).\)</span> That is,<div class="displaymath process-math">
-\begin{equation*}
-\lap\{ x \} = X(s). 
-\end{equation*}
-</div>
-</div></li>
-</ul>
-</div> <div class="para logical" id="main-6-5-5-4-2-5">
-<div class="para">With these facts in mind, we proceed to take the Laplace transform of both sides of the DE, using linearity as needed.</div>
-<div class="displaymath process-math" id="main-6-5-5-4-2-5-1">
-\begin{align*}
-\lap\{x'' - 4x' + 13x\}	\amp= \lap\{54e^{-t}\}\\
-\lap\{x''\} - 4\lap\{x'\} + 13\lap\{x\}	\amp= 54\cdot\lap\{e^{-t}\}\\
-\Big[s^2X(s) - sx(0) - x'(0) \Big] - 4\Big[ sX(s) - x(0) \Big] + 13X(s)	\amp= \frac{54}{s+1}
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-4-2-6">
-<div class="para">We can use the provided initial conditions and then simplify the equation.</div>
-<div class="displaymath process-math" id="main-6-5-5-4-2-6-1">
-\begin{align*}
-\Big[ s^2X(s) - s\cdot 0 - 0 \Big] - 4\Big[ sX(s) - 0 \Big] + 13X(s)	\amp= \frac{54}{s+1}\\
-s^2X(s)  - 4sX(s) + 13X(s)	\amp= \frac{54}{s+1}
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-4-2-7">
-<div class="para">Now we are prepared to move on to the second step suggested in the roadmap in  (<a href="main-6.html#lt-roadmap" class="xref" data-knowl="./knowl/xref/lt-roadmap.html" data-reveal-label="Reveal" data-close-label="Close" title="Assemblage: Laplace Transform Big Picture Roadmap">the figure</a>):  use algebra to solve for <span class="process-math">\(X(s).\)</span>
-</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/lt-roadmap.html" id="main-6-5-5-4-2-7-3">
-\begin{align*}
-X(s)\Big[ s^2  - 4s + 13\Big]	\amp= \frac{54}{s+1}\\
-X(s)	\amp= \frac{54}{(s+1)(s^2  - 4s + 13)}
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-4-2-8">
-<div class="para">The next step we need to take is to find the inverse Laplace transform of both sides of the equation.</div>
-<div class="displaymath process-math" id="main-6-5-5-4-2-8-1">
-\begin{align*}
-\lap^{-1}\{X(s)\}	\amp= \lap^{-1}\left\{\frac{54}{(s+1)(s^2  - 4s + 13)} \right\}\\
-x(t)	\amp=\lap^{-1}\left\{\frac{54}{(s+1)(s^2  - 4s + 13)} \right\}
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-4-2-9">
-<div class="para">We are almost done!  Our goal is to find the unknown function <span class="process-math">\(x(t)\text{,}\)</span> and we have isolated <span class="process-math">\(x(t)\)</span> on the left hand side of the equation. The only thing we have left to do is find the inverse Laplace transform of the right hand side. Here we refer back to the techniques we learned in the previous section. In particular, we are going to need to find the partial fraction decomposition of the rational function. First we note that the quadratic expression is irreducible, confirmed by the addition outside the parentheses when we complete the  square (which we will use later).</div>
-<div class="displaymath process-math" id="main-6-5-5-4-2-9-3">
-\begin{align*}
-s^2  - 4s + 13	\amp= (s^2  - 4s) + 13\\
-\amp= (s^2  - 4s + 4) + 13 - 4\\
-\amp= (s-2)^2 + 9\\
-\amp= (s-2)^2 + 3^2
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-4-2-10">
-<div class="para">After applying partial fraction decomposition, we obtain </div>
+<div class="para">The first-order version of this is</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\frac{54}{(s+1)(s^2  - 4s + 13)} = \frac{3}{s+1} + \frac{-3s + 15}{s^2 - 4s + 13}.
+a_1(x)y' + a_0(x)y = f(x)\text{,}
 \end{equation*}
 </div>
-</div> <div class="para logical" id="main-6-5-5-4-2-11">
-<div class="para">Now we proceed to do more algebraic manipulation to find the inverse Laplace transform.</div>
-<div class="displaymath process-math" id="main-6-5-5-4-2-11-1">
-\begin{align*}
-x(t)	\amp= \lap^{-1}\left\{\frac{54}{(s+1)(s^2  - 4s + 13)} \right\}\\
-\amp= \lap^{-1}\left\{\frac{3}{s+1} + \frac{-3s + 15}{s^2 - 4s + 13} \right\}\\
-\amp= 3\cdot \lap^{-1}\left\{\frac{1}{s+1}\right\} -3\cdot \lap^{-1}\left\{\frac{s - 5}{s^2 - 4s + 13} \right\}\\
-\amp= 3e^{-t} - 3 \cdot \lap^{-1}\left\{\frac{s - 5}{(s - 2)^2 + 3^2} \right\}\\
-\amp= 3e^{-t} - 3 \cdot \lap^{-1}\left\{\frac{(s - 2) - 3}{(s - 2)^2 + 3^2} \right\}\\
-\amp= 3e^{-t} - 3 \cdot \lap^{-1}\left\{\frac{s - 2}{(s - 2)^2 + 3^2} - \frac{3}{(s - 2)^2 + 3^2}\right\}\\
-\amp= 3e^{-t} - 3 \cdot \left[\lap^{-1}\left\{\frac{s - 2}{(s - 2)^2 + 3^2} \right\} - \lap^{-1}\left\{\frac{3}{(s - 2)^2 + 3^2}\right\} \right]\\
-\amp= 3e^{-t} - 3 \cdot \left[e^{2t}\cos(3t) - e^{2t}\sin(3t) \right]\\
-\amp= 3e^{-t} - 3e^{2t}\cos(3t) + 3e^{2t}\sin(3t)
-\end{align*}
+<div class="para">but we can divide both sides of this equation by <span class="process-math">\(a_1(x)\text{:}\)</span>
 </div>
-</div> <div class="para logical" id="main-6-5-5-4-2-12">
-<div class="para">Thus, we have found the desired unknown function</div>
 <div class="displaymath process-math">
 \begin{equation*}
-x(t) = 3e^{-t} - 3e^{2t}\cos(3t) + 3e^{2t}\sin(3t). 
+y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y = \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}\text{.}
 \end{equation*}
 </div>
-<div class="para">this isn’t correct...?</div>
-</div> <div class="para" id="main-6-5-5-4-2-13"><a href="main-10-5.html#LT-Solving_w_LTs_verify_soln" class="xref" data-knowl="./knowl/xref/LT-Solving_w_LTs_verify_soln.html" data-reveal-label="Reveal" data-close-label="Close" title="Paragraphs: ">Optional: verify the solution.</a></div> <div class="para" id="main-6-5-5-4-2-14">In this example, we used LTs to solve the differential equation with algebra, not integration. We then confirmed our solution was correct by verifying it satisfied both the original DE and the initial conditions.</div>
-</div></details></article><div class="para logical" id="main-6-5-5-5">
-<div class="para">In summary, if we have a DE that is linear, has constant coefficients,  and has initial conditions, we can solve using the Laplace transform solution technique. For the purposes of this discussion, we will assume that <span class="process-math">\(t\)</span> is the independent variable and  that <span class="process-math">\(y\)</span> is the dependent variable. We solve via the Laplace transform as follows.</div>
-<ul class="disc" id="main-6-5-5-5-3">
-<li id="main-6-5-5-5-3-1"><div class="para" id="p-derived-main-6-5-5-5-3-1">Take the Laplace transform of the DE. This should yield an algebraic equation that contains <span class="process-math">\(s\text{,}\)</span> <span class="process-math">\(Y(s)\)</span> and the initial conditions <span class="process-math">\(y(0),\)</span> <span class="process-math">\(y'(0),\)</span> etc.</div></li>
-<li id="main-6-5-5-5-3-2"><div class="para" id="p-derived-main-6-5-5-5-3-2">Substitute in the given values for the initial conditions.</div></li>
-<li id="main-6-5-5-5-3-3"><div class="para" id="p-derived-main-6-5-5-5-3-3">Use algebra to solve for <span class="process-math">\(Y(s).\)</span>
-</div></li>
-<li id="main-6-5-5-5-3-4"><div class="para" id="p-derived-main-6-5-5-5-3-4">Take the inverse Laplace transform of both sides of the equation to yield the solution <span class="process-math">\(y(t).\)</span>
-</div></li>
-<li id="main-6-5-5-5-3-5"><div class="para" id="p-derived-main-6-5-5-5-3-5">If desired, check that you have the correct solution by verifying that it satisfies the DE and the initial conditions.</div></li>
-</ul>
-</div>
-<article class="example example-like" id="main-6-5-5-6"><h3 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.39</span><span class="period">.</span>
-</h3>
-<div class="para logical" id="main-6-5-5-6-1">
-<div class="para">Solve</div>
+<div class="para">Since every first-order linear differential equation can always be written as</div>
 <div class="displaymath process-math">
 \begin{equation*}
-y'' + 3y' + 2y = 4t,  y(0) = 1,  y'(0) = 0 
+y' + P(x)y = Q(x) \text{,}
 \end{equation*}
 </div>
-</div> <details id="main-6-5-5-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
-<div class="para logical" id="main-6-5-5-6-2-1">
-<div class="para">We intend to use Laplace transforms to solve this IVP, but we need to verify that  this is an appropriate technique. We can verify that this is</div>
-<ul class="disc" id="main-6-5-5-6-2-1-1">
-<li id="main-6-5-5-6-2-1-1-1"><div class="para" id="p-derived-main-6-5-5-6-2-1-1-1">the DE is linear,</div></li>
-<li id="main-6-5-5-6-2-1-1-2"><div class="para" id="p-derived-main-6-5-5-6-2-1-1-2">the DE has constant coefficients, and</div></li>
-<li id="main-6-5-5-6-2-1-1-3"><div class="para" id="p-derived-main-6-5-5-6-2-1-1-3">initial conditions are provided.</div></li>
-</ul>
-</div> <div class="para" id="main-6-5-5-6-2-2">Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that <span class="process-math">\(y\)</span> is the dependent variable and <span class="process-math">\(t\)</span> is the independent variable, so our goal is to find a function <span class="process-math">\(y(t)\)</span> that satisfies the DE and the initial conditions.</div> <aside class="aside aside-like" id="main-6-5-5-6-2-3"><div class="para" id="main-6-5-5-6-2-3-1">Margin note:  We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.</div></aside> <div class="para logical" id="main-6-5-5-6-2-4">
-<div class="para">We begin by taking the Laplace transform of both sides of the DE, using linearity as needed.</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-4-1">
+<div class="para">we call this the first-order linear <em class="emphasis">standard form</em>.</div>
+</div></div></details>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/direct-integration.html" id="if-standard-form">
+\begin{equation}
+y' + P(x)y = Q(x)\text{.}\tag{21}
+\end{equation}
+</div>
+<div class="para">The heart of this method is the first step: finding the correct integrating factor. The second step uses this factor to write the left side as a single derivative. Finally, the last step finds the solution by <a href="main-6-3-4.html#direct-integration" class="xref" data-knowl="./knowl/xref/direct-integration.html" data-reveal-label="Reveal" data-close-label="Close" title="Method 1: Direct Integration">direct integration</a>.</div>
+</div>
+<section class="paragraphs" id="main-6-5-5-3"><h3 class="heading"><span class="title">Step 1: Finding the Integrating Factor.</span></h3> <div class="para" id="main-6-5-5-3-2">Understanding how to find the integrating factor is crucial. Let’s carefully walk through this important process.</div> <div class="para" id="main-6-5-5-3-3">Consider the differential equations (specific on the left, general on the right): <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-1-1"><div class="displaymath process-math">
+\begin{equation*}
+\us{\text{product rule?}}{\ub{y' + x^2 y}} = 5x^2 \text{,}
+\end{equation*}
+</div></div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-1-2"><div class="displaymath process-math">
+\begin{equation*}
+\us{\text{product rule?}}{\ub{y' + P(x)y}} = Q(x) \text{.}
+\end{equation*}
+</div></div></div>
+</div></div> We would like to rewrite the left side as a single derivative using the <a href="main-6-5-3.html#if-product-rule" class="xref" data-knowl="./knowl/xref/if-product-rule.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 15">backward product rule</a>. However, the <span class="process-math">\(y'\)</span> alone suggests there is a missing second function that the product rule needs. Maybe there is a function that we can multiply both sides of the equation by to get the desired product rule. Let’s call it <span class="process-math">\(\mu\)</span> for now and see if we can find it. We start by multiplying both sides by <span class="process-math">\(\mu\text{:}\)</span> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-6-1"><div class="displaymath process-math">
+\begin{equation*}
+\mu y' + 3x^2 \mu y = 5x^2\mu \text{.}
+\end{equation*}
+</div></div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-6-2"><div class="displaymath process-math">
+\begin{equation*}
+\mu y' + P(x)\mu y = Q(x)\mu \text{.}
+\end{equation*}
+</div></div></div>
+</div></div> Notice that the left side almost looks like the product rule <span class="process-math">\(\left[ \mu y \right]' = \mu y' + \mu' y\text{,}\)</span> except for the boxed value where <span class="process-math">\(\mu'\)</span> should be (see below). <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-9-1"><div class="displaymath process-math">
+\begin{equation*}
+\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{3x^2 \mu}}}}	\cdot 
+\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+5x^2\mu \text{,}
+\end{equation*}
+</div></div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-9-2"><div class="displaymath process-math">
+\begin{equation*}
+\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
+\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
+\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{P(x) \mu}}}}	\cdot 
+\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
+Q(x)\mu \text{.}
+\end{equation*}
+</div></div></div>
+</div></div> This shows that the <span class="process-math">\(\mu\)</span> that works is the one that satisfies <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-11-1"><div class="displaymath process-math">
+\begin{equation*}
+\mu' = 3x^2 \mu
+\end{equation*}
+</div></div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-11-2"><div class="displaymath process-math">
+\begin{equation*}
+\mu' = P(x) \mu\text{.}
+\end{equation*}
+</div></div></div>
+</div></div> Careful inspection shows that these are separable differential equations where the unknown <span class="process-math">\(\mu\)</span> can be found using separation of variables! <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-13-1"><div class="displaymath process-math" id="main-6-5-5-3-3-13-1-1">
 \begin{align*}
-\lap\{y'' + 3y' + 2y\}	\amp= \lap\{ 4t \}\\
-\lap\{y''\} + 3\lap\{y'\} + 2\lap\{y\}	\amp= 4\cdot\lap\{ t \}\\
-\Big[s^2Y(s) - sy(0) - y'(0) \Big] + 3\Big[ sY(s) - y(0) \Big] + 2Y(s)	\amp= \frac{4}{s^2}
+\int \frac{1}{\mu}d\mu	\amp = \int 3x^2\ dx										\\
+\ln|\mu|	\amp = x^3 + C												\\
+\mu	\amp = \pm e^{x^3 + C}										\\
+\mu	\amp = {\color{green} \us{C}{\boxed{\pm e^C}}} e^{x^3}	\\
+\mu	\amp = Ce^{x^3}												
 \end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-6-2-5">
-<div class="para">Now we use the provided initial conditions.</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-5-1">
+</div></div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-3-3-13-2"><div class="displaymath process-math" id="main-6-5-5-3-3-13-2-1">
 \begin{align*}
-\Big[s^2Y(s) - s\cdot 1 - 0 \Big] + 3\Big[ sY(s) - 1 \Big] + 2Y(s)	\amp= \frac{4}{s^2}\\
-s^2Y(s) - s  + 3sY(s) - 3 + 2Y(s)	\amp= \frac{4}{s^2}
+\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	\\
+\ln|\mu|	\amp = \int P(x)\ dx		\\
+\mu	\amp = e^{\int P(x)\ dx}	
 \end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-6-2-6">
-<div class="para">Next we will use algebra to solve for <span class="process-math">\(Y(s).\)</span>
-</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-6-2">
-\begin{align*}
-s^2Y(s)+ 3sY(s) + 2Y(s)	\amp= \frac{4}{s^2} + s + 3\\
-Y(s)\Big[ s^2 + 3s + 2 \Big]	\amp= \frac{4}{s^2} + \frac{s^3}{s^2} + \frac{3s^2}{s^2}\\
-\amp= \frac{4 + s^3 + 3s^2}{s^2}\\
-Y(s)	\amp= \frac{s^3 + 3s^2 + 4}{s^2(s^2 + 3s + 2)}\\
-\amp= \frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)}
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-6-2-7">
-<div class="para">We need to find the inverse Laplace transform of both sides of the equation. In order to do that, we apply partial fraction decomposition to the rational function on the right hand side, giving</div>
+</div></div></div>
+</div></div> Although the solution conatains a constant, we only need one function that works, so we set <span class="process-math">\(C = 1\text{.}\)</span> The function <span class="process-math">\(\mu\)</span> is called the <em class="emphasis">integrating factor</em> and finding it is the first step toward solving a first order differential equation.</div> <article class="assemblage assemblage-like" id="integrating-factor-1"><h4 class="heading"><span class="title">The Integrating Factor.</span></h4>
+<div class="para" id="integrating-factor-1-2">The <dfn class="terminology">integrating factor</dfn> for the first-order linear differential equation</div>
+<div class="para logical" id="integrating-factor-1-3">
 <div class="displaymath process-math">
 \begin{equation*}
-\frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}.
+y' + P(x)y = Q(x) 
 \end{equation*}
 </div>
-</div>  <div class="para logical" id="main-6-5-5-6-2-8">
-<div class="para">Now we are prepared to take the inverse Laplace transform.</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-8-1">
+<div class="para">is given by	<span class="process-math">\(\ds \mu = e^{\int P(x)\ dx} \)</span> and represents the function, when multiplied onto both sides of the equation, needed to write the left side as a derivative.</div>
+</div></article></section><section class="paragraphs" id="main-6-5-5-4"><h3 class="heading"><span class="title">Step 2: Rewriting the Equation.</span></h3> With the integrating factor in hand, we are ready to write the left side as a derivative using the <a href="main-6-5-3.html#if-product-rule" class="xref" data-knowl="./knowl/xref/if-product-rule.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 15">backward product rule</a>. <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-4-3-1">
+<div class="para">Integrating Factor: <span class="process-math">\(\mu = e^{x^3}\)</span>
+</div>
+<div class="displaymath process-math" id="main-6-5-5-4-3-1-2">
 \begin{align*}
-Y(s)	\amp= \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}\\
-\amp= \lap^{-1}\left\{ \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1} \right\}\\
-y(t)	\amp= -3\cdot\lap^{-1}\left\{ \frac{1}{s} \right\}\\
-\amp= -3 + 2t - 2e^{-2t} + 6e^{-t}
+y' + x^2 y	=\ \amp 5x^2		\\
+e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	\\
+\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	
 \end{align*}
 </div>
-</div> <div class="para logical" id="main-6-5-5-6-2-9">
-<div class="para">Thus, we have found the desired unknown function</div>
+</div></div>
+<div class="sbspanel top" style="width:50%;"><div class="para logical" id="main-6-5-5-4-3-2">
+<div class="para">Integrating Factor: <span class="process-math">\(\mu = e^{\int P(x)\ dx}\)</span>
+</div>
+<div class="displaymath process-math" id="main-6-5-5-4-3-2-2">
+\begin{align*}
+y' + P(x)y	=\ \amp Q(x)		\\
+\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	\\
+\left[ \mu y \right]'	=\ \amp Q(x) \mu	\text{.}
+\end{align*}
+</div>
+</div></div>
+</div></div></section><section class="paragraphs" id="main-6-5-5-5"><h3 class="heading"><span class="title">Step 3: Solving the Equation.</span></h3> <div class="para" id="main-6-5-5-5-2">The final step is to apply <a href="main-6-3-4.html#direct-integration" class="xref" data-knowl="./knowl/xref/direct-integration.html" data-reveal-label="Reveal" data-close-label="Close" title="Method 1: Direct Integration">direct integration</a>. This was covered in a previous section, so we will skip some of the details here.</div> <div class="sidebyside"><div class="sbsrow" style="margin-left:3%;margin-right:3%;">
+<div class="sbspanel top" style="width:53.1914893617021%;"><div class="para logical" id="main-6-5-5-5-3-1"><div class="displaymath process-math" id="main-6-5-5-5-3-1-1">
+\begin{align*}
+\int \left[ e^{x^3}y \right]' \ dx	=\ \amp \int 5x^2e^{x^3} \ dx	\\
+e^{x^3}y	=\ \amp \frac{5}{3} e^{x^3} + C	\\
+y	=\ \amp \frac{5}{3} + Ce^{-x^3}	
+\end{align*}
+</div></div></div>
+<div class="sbspanel top" style="width:40.4255319148936%;"><div class="para logical" id="main-6-5-5-5-3-2">
+<div class="displaymath process-math" id="main-6-5-5-5-3-2-1">
+\begin{align*}
+\int \left[ \mu y \right]' \ dx	=\ \amp \int Q(x) \mu \ dx					\\
+\mu y	=\ \amp \int Q(x) \mu \ dx					\\
+y	=\ \amp \frac{1}{\mu} \int Q(x) \mu \ dx	
+\end{align*}
+</div>
+<div class="para">where <span class="process-math">\(\mu = e^{\int P(x)\ dx}\text{.}\)</span>
+</div>
+</div></div>
+</div></div> <div class="para" id="main-6-5-5-5-4"><article class="assemblage assemblage-like" id="integrating-factor-general-solution"><h4 class="heading"><span class="title">General Solution.</span></h4>
+<div class="para" id="integrating-factor-general-solution-2">The general solution for the first-order linear differential equation</div>
+<div class="para logical" id="integrating-factor-general-solution-3">
 <div class="displaymath process-math">
 \begin{equation*}
-y(t) = -3 + 2t - 2e^{-2t} + 6e^{-t}. 
+y' + P(x)y = Q(x) 
 \end{equation*}
 </div>
-</div> <div class="para logical" id="main-6-5-5-6-2-10">
-<div class="para">Optional:  verify the solution</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-10-1">
-\begin{align*}
-y'(t)	\amp= 0 + 2 + 4e^{-2t} - 6e^{-t}\\
-y''(t)	\amp= 0 - 8e^{-2t}+ 6e^{-t}
-\end{align*}
+<div class="para">is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = \frac{1}{\mu} \int Q(x) \mu \ dx 
+\end{equation*}
 </div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-10-2">
-\begin{align*}
-LHS	\amp= y'' + 3y' + 2y\\
-\amp= \left( - 8e^{-2t}+ 6e^{-t} \right) \\
-\amp= -8e^{-2t}+ 6e^{-t}\\
-\amp= 4t\\
-\amp= RHS
-\end{align*}
-</div>
-</div> <div class="para logical" id="main-6-5-5-6-2-11">
-<div class="para">We also verify the initial conditions:</div>
-<div class="displaymath process-math" id="main-6-5-5-6-2-11-1">
-\begin{align*}
-y(0)	\amp= -3 + 2(0) - 2e^{-2(0)} + 6e^{-0}\\
-\amp= -3 + 0 - 2+ 6\\
-\amp= 1\\
-\amp\\
-y'(0)	\amp= 2 + 4e^{-2(0)} - 6e^{-0}\\
-\amp= 2 + 4 - 6\\
-\amp= 0
-\end{align*}
-</div>
-</div>
-</div></details></article><section class="reading-questions" id="main-6-5-5-7"><h3 class="heading hide-type">
+<div class="para">where <span class="process-math">\(\mu = e^{\int P(x)\ dx}\)</span> is the integrating factor.</div>
+</div></article></div></section><div class="para" id="main-6-5-5-6">In summary, the integrating factor method is a three-step process that utilizes the integrating factor to rewrite the left side of the equation, enabling direct integration and leading to the general solution.</div>
+<section class="reading-questions" id="main-6-5-5-7"><h3 class="heading hide-type">
 <span class="type">Reading Questions</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">Check your Understanding</span>
 </h3>
-<article class="example example-like" id="main-6-5-5-7-2"><h4 class="heading">
-<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.40</span><span class="period">.</span>
-</h4>
-<div class="para" id="main-6-5-5-7-2-1-1">What is the first step in the Laplace transform solution technique?</div>
-<div class="solutions"><details id="main-6-5-5-7-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="main-6-5-5-7-2-2-1">The first step in the Laplace transform solution technique is to take the Laplace transform of the differential equation.</div></div></details></div></article></section></section></div>
+<details id="Integrating Factor 1" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">True/False.</span>
+</h4></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone multiplechoice_section"><ul data-component="multiplechoice" data-multipleanswers="false" id="Integrating Factor 1">
+<div class="para" id="Integrating Factor 1-3-1">The differential equation <span class="process-math">\(y'+2y=3x\)</span> can be solved using integrating factor.</div>
+<li data-component="answer" id="Integrating Factor 1_opt_t" data-correct=""><p>True.</p></li>
+<li data-component="feedback" id="Integrating Factor 1_opt_t"><div class="para" id="Integrating Factor 1-4-1">This differential equation is first order and linear, so it can be solved using integrating factor.</div></li>
+<li data-component="answer" id="Integrating Factor 1_opt_f"><p>False.</p></li>
+<li data-component="feedback" id="Integrating Factor 1_opt_f"><div class="para" id="Integrating Factor 1-4-1">This differential equation is first order and linear, so it can be solved using integrating factor.</div></li>
+</ul></div></div>
+<div class="solutions"><details id="Integrating Factor 1-5" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="Integrating Factor 1-5-1">Check to see that the differential equation is first order and linear.</div></div></details></div></article></details><details id="Integrating Factor 2" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">True/False.</span>
+</h4></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone multiplechoice_section"><ul data-component="multiplechoice" data-multipleanswers="false" id="Integrating Factor 2">
+<div class="para" id="Integrating Factor 2-3-1">The differential equation <span class="process-math">\(y''+2y=3x\)</span> can be solved using integrating factor.</div>
+<li data-component="answer" id="Integrating Factor 2_opt_t"><p>True.</p></li>
+<li data-component="feedback" id="Integrating Factor 2_opt_t"><div class="para" id="Integrating Factor 2-4-1">This differential equation is linear but not first order, so it cannot be solved using integrating factor.</div></li>
+<li data-component="answer" id="Integrating Factor 2_opt_f" data-correct=""><p>False.</p></li>
+<li data-component="feedback" id="Integrating Factor 2_opt_f"><div class="para" id="Integrating Factor 2-4-1">This differential equation is linear but not first order, so it cannot be solved using integrating factor.</div></li>
+</ul></div></div>
+<div class="solutions"><details id="Integrating Factor 2-5" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="Integrating Factor 2-5-1">Check to see that the differential equation is first order and linear.</div></div></details></div></article></details><details id="Integrating Factor 3" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">True/False.</span>
+</h4></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone multiplechoice_section"><ul data-component="multiplechoice" data-multipleanswers="false" id="Integrating Factor 3">
+<div class="para" id="Integrating Factor 3-3-1">The differential equation <span class="process-math">\(y'+3xy=e^{5x}\)</span> is in standard form for the integrating factor method.</div>
+<li data-component="answer" id="Integrating Factor 3_opt_t" data-correct=""><p>True.</p></li>
+<li data-component="feedback" id="Integrating Factor 3_opt_t"><div class="para" id="Integrating Factor 3-4-1">This differential equation is in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></li>
+<li data-component="answer" id="Integrating Factor 3_opt_f"><p>False.</p></li>
+<li data-component="feedback" id="Integrating Factor 3_opt_f"><div class="para" id="Integrating Factor 3-4-1">This differential equation is in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></li>
+</ul></div></div>
+<div class="solutions"><details id="Integrating Factor 3-5" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="Integrating Factor 3-5-1">Check to see that the differential equation is in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></div></details></div></article></details><details id="Integrating Factor 4" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="codenumber">4<span class="period">.</span></span><span class="space"> </span><span class="title">True/False.</span>
+</h4></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone multiplechoice_section"><ul data-component="multiplechoice" data-multipleanswers="false" id="Integrating Factor 4">
+<div class="para" id="Integrating Factor 4-3-1">The differential equation <span class="process-math">\(xy'+2xy=x^2\)</span> is in standard form for the integrating factor method.</div>
+<li data-component="answer" id="Integrating Factor 4_opt_t"><p>True.</p></li>
+<li data-component="feedback" id="Integrating Factor 4_opt_t"><div class="para" id="Integrating Factor 4-4-1">This differential equation is not in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></li>
+<li data-component="answer" id="Integrating Factor 4_opt_f" data-correct=""><p>False.</p></li>
+<li data-component="feedback" id="Integrating Factor 4_opt_f"><div class="para" id="Integrating Factor 4-4-1">This differential equation is not in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></li>
+</ul></div></div>
+<div class="solutions"><details id="Integrating Factor 4-5" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="Integrating Factor 4-5-1">Check to see that the differential equation is in the form <span class="process-math">\(y'+P(x)y=Q(x)\text{.}\)</span>
+</div></div></details></div></article></details><details id="Separation of Variables 5" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="codenumber">5<span class="period">.</span></span><span class="space"> </span><span class="title">Multiple Choice.</span>
+</h4></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone multiplechoice_section"><ul data-component="multiplechoice" id="Separation of Variables 5" data-multipleanswers="false">Determine the integrating factor for the differential equation <span class="process-math">\(y'=\frac{y}{x}+2x+1\text{.}\)</span><li data-component="answer" id="Separation of Variables 5_opt_a"><span class="process-math">\(x\)</span></li>
+<li data-component="feedback" id="Separation of Variables 5_opt_a"><div class="para" id="Separation of Variables 5-4-1-2-1">The integrating factor is <span class="process-math">\(e^{\int-\frac{1}{x}dx}=e^{-\ln(x)}=x^{-1}\text{.}\)</span>
+</div></li>
+<li data-component="answer" id="Separation of Variables 5_opt_b"><span class="process-math">\(-x\)</span></li>
+<li data-component="feedback" id="Separation of Variables 5_opt_b"><div class="para" id="Separation of Variables 5-4-2-2-1">TThe integrating factor is <span class="process-math">\(e^{\int-\frac{1}{x}dx}=e^{-\ln(x)}=x^{-1}\text{.}\)</span>
+</div></li>
+<li data-component="answer" id="Separation of Variables 5_opt_c" data-correct=""><span class="process-math">\(x^{-1}\)</span></li>
+<li data-component="feedback" id="Separation of Variables 5_opt_c"><div class="para" id="Separation of Variables 5-4-3-2-1">TThe integrating factor is <span class="process-math">\(e^{\int-\frac{1}{x}dx}=e^{-\ln(x)}=x^{-1}\text{.}\)</span>
+</div></li>
+</ul></div></div>
+<div class="solutions"><details id="Separation of Variables 5-5" class="hint solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Hint</span><span class="period">.</span></summary><div class="hint solution-like knowl__content"><div class="para" id="Separation of Variables 5-5-1">Write the differential equation in the form <span class="process-math">\(y'+P(x)y=Q(x)\)</span> and compute <span class="process-math">\(e^{\int P(x)}dx\text{.}\)</span>
+</div></div></details></div></article></details></section></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="main-6-5-4.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="main-6-5-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
