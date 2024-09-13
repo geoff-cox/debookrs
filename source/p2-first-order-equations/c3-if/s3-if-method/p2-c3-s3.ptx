@@ -1,208 +1,294 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method </title>
 
 	<p>
-		The integrating factor method uses a three-step strategy to solve first-order linear differential equations in the <em>standard form</em>:
+		The integrating factor method provides a systematic approach to solving first-order linear differential equations. These equations can be written in the <em>standard form</em> as:
 		<fn>
 			<p>
-				Every linear differential equation looks like
+				A general linear differential equation looks like:
 				<me> 
 					a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
 				</me>.
-				The first-order version of this is
+				The first-order case simplifies to:
 				<me> 
 					a_1(x)y' + a_0(x)y = f(x)
 				</me>,
-				but we can divide both sides of this equation by <m>a_1(x)</m>:
+				By dividing through by <m>a_1(x)</m>, this reduces to:
 				<me>
 					y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y = \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}
 				</me>.
-				Since every first-order linear differential equation can always be written as
+				This form is called the **standard form** of a first-order linear differential equation:
 				<me> 
-					y' + P(x)y = Q(x) 
-				</me>,
-				we call this the first-order linear <em>standard form</em>.
+					y' + P(x)y = Q(x)
+				</me>.
 			</p>
 		</fn>
 		<men xml:id="if-standard-form"> 
 			y' + P(x)y = Q(x)
 		</men>.
-		The heart of this method is the first step: finding the correct integrating factor. The second step uses this factor to write the left side as a single derivative. Finally, the last step finds the solution by <xref ref="direct-integration" text="custom">direct integration</xref>.
+		The key to solving such equations lies in finding an <xref ref="integrating-factor" text="custom">integrating factor</xref> that simplifies the left-hand side of the equation into a form that can be solve via <xref ref="direct-integration" text="custom">direct integration</xref>.
 	</p>
 
-	<paragraphs><title> Step 1: Finding the Integrating Factor </title>
-	
+	<p>
+		Now that we've introduced the integrating factor method, let's break down the step-by-step process:
+	</p>
+
+	<exploration xml:id="if-method"><title> Integrating Factor Method </title>
 		<p>
-			Understanding how to find the integrating factor is crucial. Let's carefully walk through this important process.
-		</p>
-		<p>
-			Consider the differential equations (specific on the left, general on the right):
-			<sidebyside>
-				<p>
-					<me> 
-						\us{\text{product rule?}}{\ub{y' + x^2 y}} = 5x^2 
-					</me>,
-				</p>
-				<p>
-					<me> 
-						\us{\text{product rule?}}{\ub{y' + P(x)y}} = Q(x) 
-					</me>.
-				</p>
-			</sidebyside>
-			We would like to rewrite the left side as a single derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>. However, the <m>y'</m> alone suggests there is a missing second function that the product rule needs. Maybe there is a function that we can multiply both sides of the equation by to get the desired product rule. Let's call it <m>\mu</m> for now and see if we can find it. We start by multiplying both sides by <m>\mu</m>:
-			<sidebyside>
-				<p>
-					<me> 
-						\mu y' + 3x^2 \mu y = 5x^2\mu 
-					</me>.
-				</p>
-				<p>
-					<me> 
-						\mu y' + P(x)\mu y = Q(x)\mu 
-					</me>.
-				</p>
-			</sidebyside>
-
-			Notice that the left side almost looks like the product rule <m>\left[ \mu y \right]' = \mu y' + \mu' y</m>, except for the boxed value where <m>\mu'</m> should be (see below).
-
-			<sidebyside>
-				<p>
-					<me> 
-						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
-						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
-						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{3x^2 \mu}}}}	\cdot 
-						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
-						5x^2\mu 
-					</me>,
-				</p>
-				<p>
-					<me> 
-						\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot 
-						\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+ 
-						\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{P(x) \mu}}}}	\cdot 
-						\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		= 
-						Q(x)\mu 
-					</me>.
-				</p>
-			</sidebyside>
-
-			This shows that the <m>\mu</m> that works is the one that satisfies
-			<sidebyside>
-				<p>
-					<me> 
-						\mu' = 3x^2 \mu
-					</me>
-				</p>
-				<p>
-					<me> 
-						\mu' = P(x) \mu
-					</me>.
-				</p>
-			</sidebyside>
-
-			Careful inspection shows that these are separable differential equations where the unknown <m>\mu</m> can be found using separation of variables!
-
-			<sidebyside>
-				<p>
+			Here's the procedure for solving a first-order linear differential equation:
+		
+			<dl width="narrow">
+				<li xml:id="if-step-1"><title> Get the Standard Form &amp; Identify <m>P</m> </title>
+					<m>
+						\ds\hspace{8.5em}\frac{dy}{dx} + P(x) y = Q(x)
+					</m>
+				</li>
+				<li xml:id="if-step-2"><title> Find the Integrating Factor <m>\mu</m> </title>
+					<m>
+						\ds\hspace{8.5em}\mu(x) = e^{\int P(x) dx}
+					</m>
+				</li>
+				<li xml:id="if-step-3"><title> Multiply the Equation by <m>\mu</m> &amp; Reverse the Product Rule </title>
 					<md>
-						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int 3x^2\ dx										</mrow>
-						<mrow>				\ln|\mu|	\amp = x^3 + C												</mrow>
-						<mrow>						\mu	\amp = \pm e^{x^3 + C}										</mrow>
-						<mrow>						\mu	\amp = {\color{green} \us{C}{\boxed{\pm e^C}}} e^{x^3}	</mrow>
-						<mrow>						\mu	\amp = Ce^{x^3}												</mrow>
+						<mrow> \mu(x)\frac{dy}{dx} + \mu(x) P(x) y 			=\amp\ \mu(x) Q(x)	</mrow>
+						<mrow> \frac{d}{dx}\left[\mu(x)\cdot y\right] 		=\amp\ \mu(x) Q(x) 	</mrow>
 					</md>
-				</p>
-				<p>
-					<md>
-						<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	</mrow>
-						<mrow>				\ln|\mu|	\amp = \int P(x)\ dx		</mrow>
-						<mrow>						\mu	\amp = e^{\int P(x)\ dx}	</mrow>
-					</md>
-				</p>
-			</sidebyside>
-
-			Although the solution conatains a constant, we only need one function that works, so we set <m>C = 1</m>. The function <m>\mu</m> is called the <em>integrating factor</em> and finding it is the first step toward solving a first order differential equation.
+				</li>
+				<li xml:id="if-step-4"><title> Apply Direct Integration </title>
+					<m> 
+						\ds\hspace{8.5em}\int \frac{d}{dx}\left[\mu(x)\cdot y\right]\ dx = \int\mu(x) Q(x)\ dx
+					</m>
+				</li>
+			</dl>
 		</p>
-
-		<assemblage xml:id="integrating-factor-1"><title> The Integrating Factor </title>
-			<p>
-				The <term>integrating factor</term> for the first-order linear differential equation
-			</p>
-			<p>
-				<me> y' + P(x)y = Q(x) </me>
-				is given by	<m>\ds \mu = e^{\int P(x)\ dx} </m> and represents the function, when multiplied onto both sides of the equation, needed to write the left side as a derivative.
-			</p>
-		</assemblage>
-	</paragraphs>
-
-	<paragraphs><title> Step 2: Rewriting the Equation </title>
-	
-		With the integrating factor in hand, we are ready to write the left side as a derivative using the <xref ref="if-product-rule" text="custom">backward product rule</xref>.
-		<sidebyside>
-			<p>
-				Integrating Factor: <m>\mu = e^{x^3}</m>
-				<md>
-					<mrow>					y' + x^2 y	=\ \amp 5x^2		</mrow>
-					<mrow>	e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	</mrow>
-					<mrow>	\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	</mrow>
-				</md>
-			</p>
-			<p>
-				Integrating Factor: <m>\mu = e^{\int P(x)\ dx}</m>
-				<md>
-					<mrow>				y' + P(x)y	=\ \amp Q(x)		</mrow>
-					<mrow>		\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	</mrow>
-					<mrow>	\left[ \mu y \right]'	=\ \amp Q(x) \mu	</mrow>
-				</md>.
-			</p>
-		</sidebyside>
-	</paragraphs>
-
-	<paragraphs><title> Step 3: Solving the Equation </title>
-	
-		<p>
-			The final step is to apply <xref ref="direct-integration" text="custom">direct integration</xref>. This was covered in a previous section, so we will skip some of the details here.
-		</p>
-
-		<sidebyside widths="50% 38%">
-			<p>
-				<md>
-					<mrow>	\int \left[ e^{x^3}y \right]' \ dx	=\ \amp \int 5x^2e^{x^3} \ dx	</mrow>
-					<mrow>							e^{x^3}y	=\ \amp \frac{5}{3} e^{x^3} + C	</mrow>
-					<mrow>									y	=\ \amp \frac{5}{3} + Ce^{-x^3}	</mrow>
-				</md>
-			</p>
-			<p>
-				<md>
-					<mrow>	\int \left[ \mu y \right]' \ dx	=\ \amp \int Q(x) \mu \ dx					</mrow>
-					<mrow>							\mu y	=\ \amp \int Q(x) \mu \ dx					</mrow>
-					<mrow>								y	=\ \amp \frac{1}{\mu} \int Q(x) \mu \ dx	</mrow>
-				</md>
-				where <m>\mu = e^{\int P(x)\ dx}</m>.
-			</p>
-		</sidebyside>
-
-		<p>
-			<assemblage xml:id="integrating-factor-general-solution"><title> General Solution </title>
-				<p>
-					The general solution for the first-order linear differential equation
-				</p>
-				<p>
-					<me> 
-						y' + P(x)y = Q(x) 
-					</me>
-					is given by	
-					<me>
-						y = \frac{1}{\mu} \int Q(x) \mu \ dx 
-					</me> where <m>\mu = e^{\int P(x)\ dx}</m> is the integrating factor.
-				</p>
-			</assemblage>
-		</p>
-	</paragraphs>
+	</exploration> 
 
 	<p>
-		In summary, the integrating factor method is a three-step process that utilizes the integrating factor to rewrite the left side of the equation, enabling direct integration and leading to the general solution.
+		Now that we've laid out the method, let's apply it to some concrete examples. In each case, we will follow the four steps outlined above: (1) put the equation into standard form, (2) compute the integrating factor, (3) multiply the equation and simplify using the product rule, and (4) integrate to find the solution.
+	</p>
+
+	<example xml:id="if-intro-exercise">
+		<m>\ \ </m> Find the general solution to the equation:
+		<p> 
+			<me>y' + 6y = 1</me>.
+		</p>
+
+		<solution>
+
+			<p>
+				This is a first-order linear equation, so the integrating factor method applies. Since it's already in standard form, we proceed by identifying <m>P(x)</m>.
+			</p>
+
+			<p>
+				<xref ref="if-step-1" text="title"/>.
+				<md>
+					<mrow> y' + \os{P}{\boxed{6}}\ y = 1	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-2" text="title"/>.
+				<md>
+					<mrow> \mu(x) = e^{\int 6\ dx} = e^{6x}	</mrow>
+				</md>
+				<em>Note: We ignore the constant from integration since we only need one integrating factor to reverse the product rule.</em>
+			</p>
+
+			<p>
+				<xref ref="if-step-3" text="title"/>.
+				<md>
+					<mrow> e^{6x}y' + 6e^{6x}y						=\amp\ e^{6x}	</mrow>
+					<mrow> \frac{d}{dx}\left[e^{6x}\cdot y\right]	=\amp\ e^{6x}	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-4" text="title"/>.
+				<md>
+					<mrow> \int \frac{d}{dx}\left[e^{6x}\cdot y\right]\ dx	=\amp\ \int e^{6x}\ dx			</mrow>
+					<mrow> e^{6x}\cdot y									=\amp\ \frac{1}{6} e^{6x} + c	</mrow>
+					<mrow> y												=\amp\ \frac{1}{6} + ce^{-6x}.	</mrow>
+				</md>
+			</p>
+
+		</solution>
+
+	</example>
+
+	<example>
+		<m>\ \ </m> Solve the equation:
+		<p> 
+			<me>x^2y' = 5x^3 + 2x^3y </me>.
+		</p>
+
+		<solution>
+
+			<p>
+				Rewriting this equation in standard form, we apply the integrating factor method.
+			</p>
+
+			<p>
+				<xref ref="if-step-1" text="title"/>.
+				<md>
+					<mrow> y' + \os{P}{\boxed{-2x}} y = 5x	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-2" text="title"/>.
+				<md>
+					<mrow> \mu(x) = e^{\int -2x\ dx} = e^{-x^2}	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-3" text="title"/>.
+				<md>
+					<mrow> e^{-x^2}y' - 2x e^{-x^2}y				=\amp\ 5xe^{-x^2}	</mrow>
+					<mrow> \frac{d}{dx}\left[e^{-x^2}\cdot y\right]	=\amp\ 5xe^{-x^2}	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-4" text="title"/>.
+				<md>
+					<mrow> \int \frac{d}{dx}\left[e^{-x^2}\cdot y\right]dx	=\amp\ \int 5xe^{-x^2}dx		</mrow>
+					<mrow> e^{-x^2}\cdot y									=\amp\ -\frac{5}{2}e^{-x^2} + c	</mrow>
+					<mrow> y												=\amp\ -\frac{5}{2} + ce^{x^2}	</mrow>
+				</md>
+			</p>
+
+			<solution>
+		
+				<p>
+					First we note that this equation is first order and linear, so the integrating factor method applies.
+				</p>
+	
+				<p>
+					<xref ref="if-step-1" text="title"/>.
+					<md>
+						<mrow> y' + \os{P}{\boxed{-2x}} y = 5x	</mrow>
+					</md>
+				</p>
+	
+				<p>
+					<xref ref="if-step-2" text="title"/>.
+					<md>
+						<mrow> \mu = e^{\int -2x dx} = e^{-x^2}	</mrow>
+					</md>
+				</p>
+	
+				<p>
+					<xref ref="if-step-3" text="title"/>.
+					<md>
+						<mrow> e^{-x^2}y' - 2x e^{-x^2}y				=\amp\ 5xe^{-x^2}	</mrow>
+						<mrow> \frac{d}{dx}\left[e^{-x^2}\cdot y\right]	=\amp\ 5xe^{-x^2}	</mrow>
+					</md>
+				</p>
+	
+				<p>
+					<xref ref="if-step-4" text="title"/>.
+					<md>
+						<mrow> \int \frac{d}{dx}\left[e^{-x^2}\cdot y\right]dx	=\amp\ \int 5xe^{-x^2}dx		</mrow>
+						<mrow> e^{-x^2}\cdot y									=\amp\ -\frac{5}{2}e^{-x^2} + c	</mrow>
+						<mrow> y												=\amp\ -\frac{5}{2} + ce^{x^2}	</mrow>
+					</md>
+				</p>
+	
+				<solution><title>Verify the Solution</title>
+					<p>
+						We have found the general solution, but it is worth remembering that we can always verify that we have the correct solution by substituting back into the original equation.
+						<md>
+							<mrow> \mbox{LHS}	\amp = x^2y'														</mrow>
+							<mrow>				\amp = x^2 \cdot \frac{d}{dx}\left( -\frac{5}{2} + ce^{x^2} \right)	</mrow>
+							<mrow>				\amp = x^2 \cdot \left( 0 + 2cxe^{x^2} \right)						</mrow>
+							<mrow>				\amp = 2c x^3 e^{x^2}												</mrow>
+						</md>
+		
+						<md>
+							<mrow>	\mbox{RHS}	\amp = 5x^3 + 2x^3y											</mrow>
+							<mrow>				\amp = 5x^3 + 2x^3\left( -\frac{5}{2} + ce^{x^2} \right)	</mrow>
+							<mrow>				\amp = 5x^3 - 5x^3+ 2c x^3 e^{x^2}							</mrow>
+							<mrow>				\amp = 2c x^3 e^{x^2} = \mbox{LHS}							</mrow>
+						</md>
+						Since we get the same result when we substitute our solution in on the right and left hand sides of the DE, we confirm that we did find the solution.
+					</p>
+				</solution>
+			
+			</solution>
+
+		</solution>
+
+	</example>
+
+	<example>
+
+		<m>\ \ </m> Find the general solution to the differential equation 
+		<p> 
+			<me>-\frac{4}{t^2} \cdot M =  t^5 - \frac{1}{t} \cdot\frac{dM}{dt} + 1.</me>
+		</p>
+
+		<solution>
+
+			<p>
+				Since the equation is first order and linear, we can apply the integrating factor method. Here are the steps to solve for <m>M(t)</m>.
+			</p>
+
+			<p>
+				<xref ref="if-step-1" text="title"/>.
+				<md>
+					<mrow> \frac{1}{t}\cdot \frac{dM}{dt} - \frac{4}{t^2} \cdot M	\amp =  t^5 + 1	</mrow>
+					<mrow> \frac{dM}{dt} + \us{P}{\boxed{-\frac{4}{t}}} \cdot M		\amp = t^6 + t	</mrow>
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-2" text="title"/>.
+				<md>
+					<mrow> \mu = e^{\large \int \sfrac{-4}{t}\ dt} = e^{-4\ln t} = e^{\ln t^{-4}} = t^{-4} = \frac{1}{t^4}	</mrow>
+				</md>
+				<em>Note: Since we only need one integrating factor, we ignore absolute value you would normally get from integrating <m>\sfrac{1}{t}</m>.</em>
+			</p>
+
+			<p>
+				<xref ref="if-step-3" text="title"/>.
+				<md>
+					<mrow>
+						\frac{1}{t^4} \cdot \frac{dM}{dt} - \frac{1}{t^4}\cdot \frac{4}{t} \cdot M	\amp = \frac{1}{t^4}(t^6 + t)
+					</mrow>
+					<mrow>
+						\frac{1}{t^4}\cdot \frac{dM}{dt} - \frac{4}{t^5} \cdot M					\amp = t^2 + t^{-3}
+					</mrow>
+					<mrow>
+						\frac{d}{dt}\left[ \frac{1}{t^4}\cdot M \right]								\amp = t^2 + t^{-3}
+					</mrow>
+					
+				</md>
+			</p>
+
+			<p>
+				<xref ref="if-step-4" text="title"/>.
+				<md>
+					<mrow>
+						\int  \frac{d}{dt}\left[ \frac{1}{t^4}\cdot M \right]\ dt	\amp = \int t^2 + t^{-3} dt
+					</mrow>
+					<mrow> 
+						\frac{1}{t^4}\cdot M	\amp = \frac{1}{3}t^{3} - \frac{1}{2}t^{-2} + c
+					</mrow>
+					<mrow> 
+						M	\amp = \frac{1}{3}t^{7} - \frac{1}{2}t^2 + ct^4 
+					</mrow>
+
+				</md>
+			</p>
+
+		</solution>
+
+	</example>
+
+	<p>
+		In summary, the integrating factor method can be used to solve any first-order linear equation by transforming it into a form that can be easily solved through direct integration.
 	</p>
 
 	<xi:include href="./p2-c3-s3-interactives.ptx" />
-	
+
 </section>
