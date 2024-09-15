@@ -3319,7 +3319,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "5.3",
   "title": "Integrating Factor Method",
-  "body": "Integrating Factor Method  The integrating factor method provides a systematic approach to solving first-order linear differential equations. These equations can be written in the standard form as:  A general linear differential equation looks like: . The first-order case simplifies to: , By dividing through by , this reduces to: . This form is called the **standard form** of a first-order linear differential equation: .   . The key to solving such equations lies in finding an integrating factor that simplifies the left-hand side of the equation into a form that can be solve via direct integration .  Now that we've introduced the integrating factor method, let's break down the step-by-step process:  Integrating Factor Method  Here's the procedure for solving a first-order linear differential equation:  Get the Standard Form & Identify     Find the Integrating Factor     Multiply the Equation by & Reverse the Product Rule    Apply Direct Integration       Now that we've laid out the method, let's apply it to some concrete examples. In each case, we will follow the four steps outlined above: (1) put the equation into standard form, (2) compute the integrating factor, (3) multiply the equation and simplify using the product rule, and (4) integrate to find the solution.   Find the general solution to the equation:  .   This is a first-order linear equation, so the integrating factor method applies. Since it's already in standard form, we proceed by identifying .   .    .  Note: We ignore the constant from integration since we only need one integrating factor to reverse the product rule.    .    .      Solve the equation:  .   Rewriting this equation in standard form, we apply the integrating factor method.   .    .    .    .    First we note that this equation is first order and linear, so the integrating factor method applies.   .    .    .    .   Verify the Solution  We have found the general solution, but it is worth remembering that we can always verify that we have the correct solution by substituting back into the original equation.  Since we get the same result when we substitute our solution in on the right and left hand sides of the DE, we confirm that we did find the solution.       Find the general solution to the differential equation     Since the equation is first order and linear, we can apply the integrating factor method. Here are the steps to solve for .   .    .  Note: Since we only need one integrating factor, we ignore absolute value you would normally get from integrating .    .    .     In summary, the integrating factor method can be used to solve any first-order linear equation by transforming it into a form that can be easily solved through direct integration.  Check your Understanding   The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is first order and linear, so it can be solved using integrating factor.   Check to see that the differential equation is first order and linear.    Why is it important to put the differential equation in standard form before using the integrating factor method?    Why is it important to put the differential equation in standard form before using the integrating factor method?      It allows us to easily identify the coefficient of and compute the integrating factor.   Correct! The standard form highlights , which is needed to calculate the integrating factor.     It makes it easier to find the general solution directly without using integration.   Incorrect. The standard form doesn't eliminate the need for integration; it helps set up the equation for the integrating factor method.     It ensures the differential equation has a unique solution.   Incorrect. Putting the equation in standard form does not guarantee uniqueness; that depends on initial conditions.     It reduces the degree of the differential equation, making it easier to solve.   Incorrect. The standard form doesn't reduce the degree of the equation but helps organize terms for applying the integrating factor.     The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is linear but not first order, so it cannot be solved using integrating factor.   Check to see that the differential equation is first order and linear.    The differential equation is in standard form for the integrating factor method    The differential equation is in standard form for the integrating factor method.    This differential equation is not in the form .   Check to see that the differential equation is in the form .    Determine the integrating factor for the differential equation    Determine the integrating factor for the differential equation .       The integrating factor is .       TThe integrating factor is .       TThe integrating factor is .     Write the differential equation in the form and compute .    Why do we need to compute the integrating factor?   Why is it necessary to compute the integrating factor when using the integrating factor method?     It allows us to rewrite the left-hand side of the differential equation as a single derivative.   Correct! The integrating factor simplifies the equation into a form where direct integration can be applied.     It eliminates the need for initial conditions in the equation.   Incorrect. The integrating factor does not eliminate the need for initial conditions; it helps simplify the equation.     It ensures the equation has a unique solution.   Incorrect. The integrating factor doesn't guarantee uniqueness; initial conditions determine uniqueness.     It changes the equation into a second-order differential equation.   Incorrect. The integrating factor keeps the equation as a first-order differential equation.     What is the final step in solving a differential equation using the integrating factor method?   What is the final step after multiplying the differential equation by the integrating factor?     Apply direct integration to both sides of the equation.   Correct! The final step is to integrate both sides to find the solution.     Factor out the integrating factor from the equation.   Incorrect. The integrating factor helps rewrite the equation, but it is not factored out at the final step.     Solve for the integrating factor using initial conditions.   Incorrect. The integrating factor is computed before applying initial conditions.     Substitute into the original equation to check for errors.   Incorrect. Verifying the solution is optional, but the final required step is integration.     "
+  "body": "Integrating Factor Method  The integrating factor method provides a systematic approach to solving first-order linear differential equations. These equations can be written in the standard form as:  A general linear differential equation looks like: . The first-order case simplifies to: , By dividing through by , this reduces to: . This form is called the **standard form** of a first-order linear differential equation: .   . The key to solving such equations lies in finding an integrating factor that simplifies the left-hand side of the equation into a form that can be solve via direct integration .  Now that we've introduced the integrating factor method, let's break down the step-by-step process:  Integrating Factor Method  Here's the procedure for solving a first-order linear differential equation:  Get the Standard Form & Identify     Find the Integrating Factor     Multiply the Equation by & Reverse the Product Rule    Apply Direct Integration       Now that we've laid out the method, let's apply it to some concrete examples. In each case, we will follow the four steps outlined above: (1) put the equation into standard form, (2) compute the integrating factor, (3) multiply the equation and simplify using the product rule, and (4) integrate to find the solution.   Find the general solution to the equation:  .   This is a first-order linear equation, so the integrating factor method applies. Since it's already in standard form, we proceed by identifying .   .    .  Note: We ignore the constant from integration since we only need one integrating factor to reverse the product rule.    .    .      Solve the equation:  .   Rewriting this equation in standard form, we apply the integrating factor method.   .    .    .    .    First we note that this equation is first order and linear, so the integrating factor method applies.   .    .    .    .   Verify the Solution  We have found the general solution, but it is worth remembering that we can always verify that we have the correct solution by substituting back into the original equation.  Since we get the same result when we substitute our solution in on the right and left hand sides of the DE, we confirm that we did find the solution.       Find the general solution to the differential equation     Since the equation is first order and linear, we can apply the integrating factor method. Here are the steps to solve for .   .    .  Note: Since we only need one integrating factor, we ignore absolute value you would normally get from integrating .    .    .     In summary, the integrating factor method can be used to solve any first-order linear equation by transforming it into a form that can be easily solved through direct integration.  Check your Understanding   The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is first order and linear, so it can be solved using integrating factor.   Check to see that the differential equation is first order and linear.    Why is it important to put the differential equation in standard form before using the integrating factor method?    Why is it important to put the differential equation in standard form before using the integrating factor method?      It allows us to easily identify the coefficient of and compute the integrating factor.   Correct! The standard form highlights , which is needed to calculate the integrating factor.     It makes it easier to find the general solution directly without using integration.   Incorrect. The standard form doesn't eliminate the need for integration; it helps set up the equation for the integrating factor method.     It ensures the differential equation has a unique solution.   Incorrect. Putting the equation in standard form does not guarantee uniqueness; that depends on initial conditions.     It reduces the degree of the differential equation, making it easier to solve.   Incorrect. The standard form doesn't reduce the degree of the equation but helps organize terms for applying the integrating factor.     The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is linear but not first order, so it cannot be solved using integrating factor.   Check to see that the differential equation is first order and linear.    The differential equation is in standard form for the integrating factor method    The differential equation is in standard form for the integrating factor method.    This differential equation is not in the form .   Check to see that the differential equation is in the form .    Determine the integrating factor for the differential equation    Determine the integrating factor for the differential equation .       The integrating factor is .       TThe integrating factor is .       TThe integrating factor is .     Write the differential equation in the form and compute .    Why do we need to compute the integrating factor?   Why is it necessary to compute the integrating factor when using the integrating factor method?     It allows us to rewrite the left-hand side of the differential equation as a single derivative.   Correct! The integrating factor simplifies the equation into a form where direct integration can be applied.     It eliminates the need for initial conditions in the equation.   Incorrect. The integrating factor does not eliminate the need for initial conditions; it helps simplify the equation.     It ensures the equation has a unique solution.   Incorrect. The integrating factor doesn't guarantee uniqueness; initial conditions determine uniqueness.     It changes the equation into a second-order differential equation.   Incorrect. The integrating factor keeps the equation as a first-order differential equation.     What is the final step in solving a differential equation using the integrating factor method?   What is the final step after multiplying the differential equation by the integrating factor?     Apply direct integration to both sides of the equation.   Correct! The final step is to integrate both sides to find the solution.     Factor out the integrating factor from the equation.   Incorrect. The integrating factor helps rewrite the equation, but it is not factored out at the final step.     Solve for the integrating factor using initial conditions.   Incorrect. The integrating factor is computed before applying initial conditions.     Substitute into the original equation to check for errors.   Incorrect. Verifying the solution is optional, but the final required step is integration.      "
 },
 {
   "id": "if-method",
@@ -3419,6 +3419,240 @@ var ptx_lunr_docs = [
   "number": "5.3.7",
   "title": "<em class=\"emphasis\">What is the final step in solving a differential equation using the integrating factor method?<\/em>",
   "body": " What is the final step in solving a differential equation using the integrating factor method?   What is the final step after multiplying the differential equation by the integrating factor?     Apply direct integration to both sides of the equation.   Correct! The final step is to integrate both sides to find the solution.     Factor out the integrating factor from the equation.   Incorrect. The integrating factor helps rewrite the equation, but it is not factored out at the final step.     Solve for the integrating factor using initial conditions.   Incorrect. The integrating factor is computed before applying initial conditions.     Substitute into the original equation to check for errors.   Incorrect. Verifying the solution is optional, but the final required step is integration.   "
+},
+{
+  "id": "main-6-5-6",
+  "level": "1",
+  "url": "main-6-5-6.html",
+  "type": "Section",
+  "number": "5.4",
+  "title": "Additional Examples",
+  "body": "Additional Examples  In this section, we will look at more advanced examples of the integrating factor method. These examples will demonstrate how the technique applies to a wider variety of differential equations, including those with more complex functions or integration techniques. Each example will follow the four-step process outlined in the previous section.   Solve the differential equation:  .   This is a first-order linear differential equation, so we can apply the integrating factor method.   .    .    .    . Now, we can solve for :      Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .  +  .    .    . Using integration by parts on the integral with gives us      Solve the initial value problem.  .   Before applying the integration factor method, we note that the equation is first order and linear.   .    .    .    .   Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.     The integrating factor method is a versatile tool for solving first-order linear differential equations. By reducing the equation to a form that allows for direct integration, we can tackle a wide variety of problems with confidence. The examples in this chapter illustrate the broad applicability of this technique, and practice with a range of equations will solidify your understanding of how to use it effectively.  Check your Understanding  Which of the following steps comes first when solving a differential equation using the integration factor method?  Which of the following steps comes first when solving a differential equation using the integration factor method?    Identify the integrating factor.   Correct! The first step is always to identify the integrating factor based on the equation's form.     Multiply both sides by the integrating factor.   Incorrect. You need to identify the integrating factor before multiplying it by both sides of the equation.     Integrate both sides.   Incorrect. Integration occurs later in the process after manipulating the equation using the integrating factor.     Find the constant of integration using initial conditions.   Incorrect. This step comes after solving the equation using the integrating factor.      After determining the integration factor, what is the next step in the process?  After determining the integration factor, what is the next step in the process?    The original equation is multiplied by the integrating factor.   Incorrect. You should apply the integrating factor to the equation after transforming it into the standard form.     The standard form of the equation is multiplied by the integrating factor.   Correct! Once the equation is in the standard form, you multiply both sides by the integrating factor.     Apply direct integration to solve the equation.   Incorrect. Direct integration is the final step, after applying the integrating factor.     The reverse product rule is used to rewrite the equation.   Incorrect. The reverse product rule is not part of this process. Use the integrating factor first.      In solving the equation , what form does the general solution take after direct integration?  In solving the equation , what form does the general solution take after direct integration?    .   Incorrect. This is not the correct form. You need to account for the integrating factor as well.     .   Correct! This is the general solution after applying the integrating factor and performing direct integration.     .   Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.     .   Incorrect. This form does not represent the general solution to this type of equation.      What is the purpose of the integrating factor in the first-order linear differential equation ?  What is the purpose of the integrating factor in the first-order linear differential equation ?    To simplify the differential equation into a separable form.   Incorrect. The integrating factor is not used to separate variables in this case.     To eliminate the non-linear terms in the equation.   Incorrect. This equation is already linear, and the integrating factor does not eliminate non-linear terms.     To transform the equation into a direct integration problem.   Correct! The integrating factor transforms the equation into a form that allows for direct integration.     To find the value of the constant of integration.   Incorrect. The constant of integration is found after the equation is solved, not by using the integrating factor.      What technique is used to evaluate the integral ?  What technique is used to evaluate the integral ?    Substitution.   Incorrect. Substitution is not the technique used here.     Integration by parts.   Correct! Integration by parts is the appropriate technique for this integral.     Partial fraction decomposition.   Incorrect. Partial fraction decomposition is not useful for this integral.     The Product Rule.   Incorrect. The product rule is a differentiation technique, not an integration technique.          "
+},
+{
+  "id": "main-6-5-6-3",
+  "level": "2",
+  "url": "main-6-5-6.html#main-6-5-6-3",
+  "type": "Example",
+  "number": "22",
+  "title": "",
+  "body": " Solve the differential equation:  .   This is a first-order linear differential equation, so we can apply the integrating factor method.   .    .    .    . Now, we can solve for :    "
+},
+{
+  "id": "main-6-5-6-4",
+  "level": "2",
+  "url": "main-6-5-6.html#main-6-5-6-4",
+  "type": "Example",
+  "number": "23",
+  "title": "",
+  "body": " Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .  +  .    .    . Using integration by parts on the integral with gives us    "
+},
+{
+  "id": "main-6-5-6-5",
+  "level": "2",
+  "url": "main-6-5-6.html#main-6-5-6-5",
+  "type": "Example",
+  "number": "24",
+  "title": "",
+  "body": " Solve the initial value problem.  .   Before applying the integration factor method, we note that the equation is first order and linear.   .    .    .    .   Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.    "
+},
+{
+  "id": "p2-c3-s4-i1",
+  "level": "2",
+  "url": "main-6-5-6.html#p2-c3-s4-i1",
+  "type": "Reading Question",
+  "number": "5.4.1",
+  "title": "<em class=\"emphasis\">Which of the following steps comes first when solving a differential equation using the integration factor method?<\/em>",
+  "body": "Which of the following steps comes first when solving a differential equation using the integration factor method?  Which of the following steps comes first when solving a differential equation using the integration factor method?    Identify the integrating factor.   Correct! The first step is always to identify the integrating factor based on the equation's form.     Multiply both sides by the integrating factor.   Incorrect. You need to identify the integrating factor before multiplying it by both sides of the equation.     Integrate both sides.   Incorrect. Integration occurs later in the process after manipulating the equation using the integrating factor.     Find the constant of integration using initial conditions.   Incorrect. This step comes after solving the equation using the integrating factor.    "
+},
+{
+  "id": "p2-c3-s4-i2",
+  "level": "2",
+  "url": "main-6-5-6.html#p2-c3-s4-i2",
+  "type": "Reading Question",
+  "number": "5.4.2",
+  "title": "<em class=\"emphasis\">After determining the integration factor, what is the next step in the process?<\/em>",
+  "body": "After determining the integration factor, what is the next step in the process?  After determining the integration factor, what is the next step in the process?    The original equation is multiplied by the integrating factor.   Incorrect. You should apply the integrating factor to the equation after transforming it into the standard form.     The standard form of the equation is multiplied by the integrating factor.   Correct! Once the equation is in the standard form, you multiply both sides by the integrating factor.     Apply direct integration to solve the equation.   Incorrect. Direct integration is the final step, after applying the integrating factor.     The reverse product rule is used to rewrite the equation.   Incorrect. The reverse product rule is not part of this process. Use the integrating factor first.    "
+},
+{
+  "id": "p2-c3-s4-i3",
+  "level": "2",
+  "url": "main-6-5-6.html#p2-c3-s4-i3",
+  "type": "Reading Question",
+  "number": "5.4.3",
+  "title": "<em class=\"emphasis\">In solving the equation <span class=\"process-math\">\\(\\ds y' + P(x)y = Q(x)\\text{,}\\)<\/span> what form does the general solution take after direct integration?<\/em>",
+  "body": "In solving the equation , what form does the general solution take after direct integration?  In solving the equation , what form does the general solution take after direct integration?    .   Incorrect. This is not the correct form. You need to account for the integrating factor as well.     .   Correct! This is the general solution after applying the integrating factor and performing direct integration.     .   Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.     .   Incorrect. This form does not represent the general solution to this type of equation.    "
+},
+{
+  "id": "p2-c3-s4-i4",
+  "level": "2",
+  "url": "main-6-5-6.html#p2-c3-s4-i4",
+  "type": "Reading Question",
+  "number": "5.4.4",
+  "title": "<em class=\"emphasis\">What is the purpose of the integrating factor in the first-order linear differential equation <span class=\"process-math\">\\(\\ds x^2 y' - y = 1\\text{?}\\)<\/span><\/em>",
+  "body": "What is the purpose of the integrating factor in the first-order linear differential equation ?  What is the purpose of the integrating factor in the first-order linear differential equation ?    To simplify the differential equation into a separable form.   Incorrect. The integrating factor is not used to separate variables in this case.     To eliminate the non-linear terms in the equation.   Incorrect. This equation is already linear, and the integrating factor does not eliminate non-linear terms.     To transform the equation into a direct integration problem.   Correct! The integrating factor transforms the equation into a form that allows for direct integration.     To find the value of the constant of integration.   Incorrect. The constant of integration is found after the equation is solved, not by using the integrating factor.    "
+},
+{
+  "id": "p2-c3-s4-i5",
+  "level": "2",
+  "url": "main-6-5-6.html#p2-c3-s4-i5",
+  "type": "Reading Question",
+  "number": "5.4.5",
+  "title": "<em class=\"emphasis\">What technique is used to evaluate the integral <span class=\"process-math\">\\(\\ds \\int t^3 \\ln t \\, dt\\text{?}\\)<\/span><\/em>",
+  "body": "What technique is used to evaluate the integral ?  What technique is used to evaluate the integral ?    Substitution.   Incorrect. Substitution is not the technique used here.     Integration by parts.   Correct! Integration by parts is the appropriate technique for this integral.     Partial fraction decomposition.   Incorrect. Partial fraction decomposition is not useful for this integral.     The Product Rule.   Incorrect. The product rule is a differentiation technique, not an integration technique.    "
+},
+{
+  "id": "main-6-5-7",
+  "level": "1",
+  "url": "main-6-5-7.html",
+  "type": "Section",
+  "number": "5.5",
+  "title": "Summary &amp; Exercises",
+  "body": "Summary & Exercises   Throughout the chapter, we worked through several examples, each demonstrating how to apply the integrating factor method in different contexts. In each case, the systematic process of identifying the standard form, computing the integrating factor, and applying integration was key to solving the differential equation.   Summary of the Key Ideas    First-Order Linear Differential Equations   First-order linear differential equations take the standard form , where and are functions of .  The goal is to find the unknown function .    The Product Rule   The integrating factor method works by rewriting the left side of the standard form as a reversed product rule.  Unfortunately, most equations are not given in a form where a reversed product rule is possible.    Integrating Factor   The integrating factor, , is the missing function needed for the reverse product rule and is found from .  Multiplying the standard form of the equation by leads to a new equation where the left-side can be written as     Integrating Factor Method    The integrating factor method is the process of solving a first order linear differential equation by turning it into a direct integration problem.           Forward Product Rule  Compute the derivative of each of the following functions.        The Integrating Factor  Find the integrating factor of each of the following differential equations.          Conceptual Questions  Answer the following questions.  Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.              order is 1  it is linear    What classification of DEs be solved by applying an integrating factor?  We can use an integrating factor to solve DEs that are linear and first order.    General Solution  Use an integrating factor to find the general solution to each equation.       First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.    , where     First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.    where     First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.        First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.    Initial-Value Problems  Solve each initial value problem   where and     where and           Which Method Applies  For each differential equation below, identify the appropriate statement and explain how you know. You do not need to solve any of the equations.   Can be solved by separating variables, but not using an integrating factor.  Can be solved using an integrating factor, but not by separating variables.  Can be solved both by using integrating factor and by separating variables.  Cannot be solved using either technique.       b. Can be solved using an integrating factor, but not by separating variables.  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.      d. Cannot be solved using either technique.  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.      c. Can be solved both by using integrating factor and by separating variables.  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.      a. Can be solved by separating variables, but not using an integrating factor.  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.        This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.     "
+},
+{
+  "id": "main-6-5-7-2-2",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "First-Order Linear Differential Equations The Product Rule Integrating Factor Integrating Factor Method "
+},
+{
+  "id": "main-6-5-7-3-1-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-1-3",
+  "type": "Exercise",
+  "number": "5.5.1",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-6-5-7-3-2-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-2-3",
+  "type": "Exercise",
+  "number": "5.5.2",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "main-6-5-7-3-3-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-3-3",
+  "type": "Exercise",
+  "number": "5.5.3",
+  "title": "",
+  "body": "Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.              order is 1  it is linear   "
+},
+{
+  "id": "main-6-5-7-3-3-4",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-3-4",
+  "type": "Exercise",
+  "number": "5.5.4",
+  "title": "",
+  "body": "What classification of DEs be solved by applying an integrating factor?  We can use an integrating factor to solve DEs that are linear and first order.  "
+},
+{
+  "id": "main-6-5-7-3-4-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-4-3",
+  "type": "Exercise",
+  "number": "5.5.5",
+  "title": "",
+  "body": "     First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.  "
+},
+{
+  "id": "main-6-5-7-3-4-4",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-4-4",
+  "type": "Exercise",
+  "number": "5.5.6",
+  "title": "",
+  "body": " , where     First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.  "
+},
+{
+  "id": "main-6-5-7-3-4-5",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-4-5",
+  "type": "Exercise",
+  "number": "5.5.7",
+  "title": "",
+  "body": " where     First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.  "
+},
+{
+  "id": "main-6-5-7-3-4-6",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-4-6",
+  "type": "Exercise",
+  "number": "5.5.8",
+  "title": "",
+  "body": "     First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.  "
+},
+{
+  "id": "main-6-5-7-3-5-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-5-3",
+  "type": "Exercise",
+  "number": "5.5.9",
+  "title": "",
+  "body": " where and     where and  "
+},
+{
+  "id": "main-6-5-7-3-5-4",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-5-4",
+  "type": "Exercise",
+  "number": "5.5.10",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "main-6-5-7-3-6-3",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-6-3",
+  "type": "Exercise",
+  "number": "5.5.11",
+  "title": "",
+  "body": "   b. Can be solved using an integrating factor, but not by separating variables.  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
+},
+{
+  "id": "main-6-5-7-3-6-4",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-6-4",
+  "type": "Exercise",
+  "number": "5.5.12",
+  "title": "",
+  "body": "   d. Cannot be solved using either technique.  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.  "
+},
+{
+  "id": "main-6-5-7-3-6-5",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-6-5",
+  "type": "Exercise",
+  "number": "5.5.13",
+  "title": "",
+  "body": "   c. Can be solved both by using integrating factor and by separating variables.  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.  "
+},
+{
+  "id": "main-6-5-7-3-6-6",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-6-6",
+  "type": "Exercise",
+  "number": "5.5.14",
+  "title": "",
+  "body": "   a. Can be solved by separating variables, but not using an integrating factor.  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.  "
+},
+{
+  "id": "main-6-5-7-3-6-7",
+  "level": "2",
+  "url": "main-6-5-7.html#main-6-5-7-3-6-7",
+  "type": "Exercise",
+  "number": "5.5.15",
+  "title": "",
+  "body": "     This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
 },
 {
   "id": "main-7-3",
@@ -3716,6 +3950,33 @@ var ptx_lunr_docs = [
   "number": "B.1",
   "title": "Product Rule",
   "body": " Product Rule  The next technique for solving DEs we will study relies heavily on you knowing the Product Rule for differentiation inside and out, forward and backward (literally!). These problems are intended to help you review the Product Rule. (Don't forget about the chain rule, too!) Let's warm up by practicing using the product rule.   Write down the product rule.   Evaluate the following derivatives.                              Suppose is a function of and use the product rule to rewrite the following:          Suppose is a function of and use the product rule to rewrite the following:          Now let's look at the product rule \"in the other direction\"... Or we can think about this as \"un-doing\" the product rule.  For example, if we have the expression then we can see that if we think identify as then Then we might label the expression as follows: This now looks like the result of having taken the derivative of a product. That is:   Now you try some.  Rewrite each of the following as the derivative of a product:                      "
+},
+{
+  "id": "r-01-03",
+  "level": "1",
+  "url": "r-01-03.html",
+  "type": "Section",
+  "number": "B.2",
+  "title": "Integration by parts",
+  "body": "Integration by parts  Integration by parts may be a good choice when the integrand contains a product. Recall the formula for integration by parts.   Let's consider the following example.  Evaluate  We choose and as follows: Then we find by taking the derivative of and by taking the antiderivative of : Thus we have:    Now you try some.   Evaluate each of the following integrals. Use proper notation.     We choose and as follows: Then we find by taking the derivative of and by taking the antiderivative of : Thus we have:         We choose and as follows: Then we find by taking the derivative of and by taking the antiderivative of : Thus we have: The remaining integral, is simpler than the one we started with, but we will need to do another integration by parts in order to evaluate it. Here we choose Then we find by taking the derivative of and by taking the antiderivative of : Now we pick up where we left off:         "
+},
+{
+  "id": "r-01-03-IBP_ex_01",
+  "level": "2",
+  "url": "r-01-03.html#r-01-03-IBP_ex_01",
+  "type": "Example",
+  "number": "B.7",
+  "title": "Evaluate <span class=\"process-math\">\\(\\ds \\int t^3 \\ln t \\ dt \\)<\/span>.",
+  "body": "Evaluate  We choose and as follows: Then we find by taking the derivative of and by taking the antiderivative of : Thus we have:   "
+},
+{
+  "id": "r-01-03-6",
+  "level": "2",
+  "url": "r-01-03.html#r-01-03-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Evaluate each of the following integrals. Use proper notation. "
 },
 {
   "id": "main-15-2",
