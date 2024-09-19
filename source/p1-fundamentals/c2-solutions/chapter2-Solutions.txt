@@ -1,0 +1,2188 @@
+<introduction>
+	<p>
+		The primary goal of any introductory differential equations course is to explore a variety of techniques for solving differential equations. In fact, the majority of questions you will see in this course begin with "Solve the following Differential Equation." You may be so conditioned to this statement that you will find the solution, circle the answer and move on. This leads many students to struggle with the following natural follow-up question:
+		<blockquote>
+			<em> <q>What does it mean to be a solution to a Differential Equation?</q> </em>
+		</blockquote>
+		This section will guide you through different aspects of solutions, including general solutions, particular solutions, and the role of initial conditions in specifying a unique solution. By the end of this section, you will have a deeper understanding of how solutions behave and how they are characterized, which will set the stage for more advanced methods of finding these solutions in later chapters.
+	</p>
+</introduction>
+
+<chapter><title> Solutions </title>
+	<introduction>
+		<p>
+			The primary goal of any introductory differential equations course is to explore a variety of techniques for solving differential equations. In fact, the majority of questions you will see in this course begin with "Solve the following Differential Equation." You may be so conditioned to this statement that you will find the solution, circle the answer and move on. This leads many students to struggle with the following natural follow-up question:
+			<blockquote>
+				<em> <q>What does it mean to be a solution to a Differential Equation?</q> </em>
+			</blockquote>
+			This section will guide you through different aspects of solutions, including general solutions, particular solutions, and the role of initial conditions in specifying a unique solution. By the end of this section, you will have a deeper understanding of how solutions behave and how they are characterized, which will set the stage for more advanced methods of finding these solutions in later chapters.
+		</p>
+	</introduction>
+	
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> What is a Solution? </title>
+		<p>
+			Regardless what kind of equation you are working with, a solution is a value or function that <q>satisfies</q> the equation. The term <em>satisfies</em> simply means that when you plug the value into the equation, it simplifies to a statement that is undeniably true.
+			<fn>This <q>undeniably true</q> statement is sometimes called an identity.</fn> 
+			For example, suppose I want to check if <m>y=2</m> and <m>y = 0</m> are solutions to the equation 
+			<me>
+				y^3 = 3y + 2 
+			</me>.
+			To do this, we verify that both <m>2</m> and <m>0</m> <em>satisfy</em> the equation by separately plugging <m>2</m> and <m>0</m> in for each <m>y</m>, simplify and see if we end up with an undeniably true statement, like so
+			<sidebyside>
+				<p>
+					<md>
+						<mrow> (2)^3 	=\amp\ 3(2) + 2								</mrow>
+						<mrow> 8 		=\amp\ 6 + 2								</mrow>
+						<mrow> 8 		=\amp\ 8	\quad \leftarrow \text{true}	</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow> (0)^3 	=\amp\ 3(0) + 2								</mrow>
+						<mrow> 0 		=\amp\ 0 + 2								</mrow>
+						<mrow> 0 		=\amp\ 2	\quad \leftarrow \text{false}	</mrow>
+					</md>
+				</p>
+			</sidebyside>
+			Since <m>y=2</m> yields an true statement we say it satisfies the equation and is a solution. In contrast, <m>y=0</m> does not give a true statement, so it does not satisfy the equation and is not a solution.
+		</p>
+
+		<p>
+			The same idea applies to differential equations, except in that <em>solutions to differential equations are functions instead of numbers</em>. To see this, let's verify if <m>y = 3x</m> and <m>y = e^{3x}</m> are solutions to the differential equation
+			<m>
+				\displaystyle y^\prime = 3y
+			</m>.
+		</p>
+
+		<p>
+			Separately plugging <m>3x</m> and <m>e^{3x}</m> into the equation yields
+			<sidebyside>
+				<p>
+					<md>
+						<mrow>				y^\prime 	=\amp\ 3y									</mrow>
+						<mrow> \left[3x\right]^\prime 	=\amp\ 3(3x)								</mrow>
+						<mrow> 3 						=\amp\ 9x	\quad \leftarrow \text{false}	</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>							y^\prime 	=\amp\ 3y										</mrow>
+						<mrow> \left[e^{3x}\right]^\prime 			=\amp\ 3e^{3x}									</mrow>
+						<mrow> e^{3x} \cdot \left[3x\right]^\prime	=\amp\ 3e^{3x}									</mrow>
+						<mrow> e^{3x} \cdot 3						=\amp\ 3e^{3x}									</mrow>
+						<mrow> 3e^{3x}								=\amp\ 3e^{3x}	\quad \leftarrow \text{true}	</mrow>
+					</md>
+				</p>
+			</sidebyside>
+			Since <m>y=3x</m> results in a false statement, it does not satisfy the equation and is not a solution. However, <m>y=e^{3x}</m> does satisfy the equation and is a solution.
+		</p>
+
+		<p>
+			To summarize, verifying a solution involves substituting the function into the differential equation and ensuring that the equality is satisfied.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p1-c2-s1-i1"><title> <em>A solution to a differential equation is a function that <fillin characters="10" /> the equation</em> </title>
+				<statement>
+					<p>Fill-in Answer: <fillin mode="text" answer="satisfies" /> <em>(Only lower case letters)</em></p>
+				</statement>
+				
+				<evaluation>
+					<evaluate>
+						<test>
+							<strcmp>\s*satisf(y|ies|ied|ying)?\s*</strcmp>
+							<feedback>
+								<p>
+									A solution to a differential equation is a function that <term>satisfies</term> the equation.
+								</p>
+							</feedback>
+						</test>
+						<test>
+							<strcmp>\s*solves\s*</strcmp>
+							<feedback>
+								<p>
+									Close and technically not incorrect, but we are looking for <q>satisfies</q>.
+								</p>
+							</feedback>
+						</test>
+						<test>
+							<strcmp>.*</strcmp>
+							<feedback>
+								<p>
+									Incorrect. Carefully review the term we use in the first paragraph.
+								</p>
+							</feedback>
+						</test>
+					</evaluate>
+				</evaluation>
+			</exercise>
+
+			<exercise label="p1-c2-s1-i2"><title> <em>What does it mean for a function to satisfy a differential equation?</em> </title>
+				<statement>
+					<p><em>What does it mean for a function to satisfy a differential equation?</em></p>
+				</statement>
+				
+				<choices>
+
+					<choice correct="yes">
+						<statement>If you plug the function into the equation, you get a true statement.</statement>
+						<feedback>
+							<p>
+								Yes, a function that satisfies a differential equation yields a true statement when plugged into the equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>If you plug the function into the equation, you get the solution.</statement>
+						<feedback>
+							<p>
+								Incorrect. The function is being checked to see if it is a solution, you do not get the solution by plugging it in.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>If you take the derivative of the function, you get a true statement.</statement>
+						<feedback>
+							<p>
+								Incorrect. Carefully read the section again.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>If you integrate the function, you get a true statement.</statement>
+						<feedback>
+							<p>
+								Incorrect. Carefully read the section again.
+							</p>
+						</feedback>
+					</choice>
+
+				</choices>
+
+			</exercise>
+
+			<exercise label="p1-c2-s1-i3"><title> <em>The function, <m>y = x^3</m>, satisfies the differential equation <m>y' = 3y</m></em> </title>
+				<statement correct="no"/>
+				<feedback>
+					<p>
+						<m>y = x^3</m> is not a solution since
+						<md>
+							<mrow>							y'	=\amp\ 3y							 		</mrow>
+							<mrow>	\left[x^3\right]^{\prime}	=\amp\ 3(x^3)						   	</mrow>
+							<mrow>						3x^2	=\amp\ 3x^3 \quad \leftarrow \text{false}	</mrow>
+						</md>
+					</p>
+				</feedback>
+			</exercise>
+
+			<exercise label="p1-c2-s1-i4"><title> <em>Which variable in equation <m>\ds u'' + t^2 u = 0 </m> represents the solution?</em> </title>
+				<statement>
+					<p>variable that represents the solution: <fillin mode="text" answer="u" /></p>
+				</statement>
+				
+				<evaluation>
+					<evaluate>
+						<test>
+							<strcmp>\s*u\s*</strcmp>
+							<feedback>
+								<p>
+									Yes, the solution to the differential equation is the dependent variable <m>u</m>.
+								</p>
+							</feedback>
+						</test>
+						<test>
+							<strcmp>\s*t\s*</strcmp>
+							<feedback>
+								<p>
+									No, <m>t</m> is what the solution depends on, but it is not the solution itself.
+								</p>
+							</feedback>
+						</test>
+						<test>
+							<strcmp>.*</strcmp>
+							<feedback>
+								<p>
+									Incorrect. Carefully review the section and try again.
+								</p>
+							</feedback>
+						</test>
+					</evaluate>
+				</evaluation>
+			</exercise>
+
+			<exercise label="p1-c2-s1-i5"><title> <em>In general, a <q>solution</q> to a differential equation is a <fillin characters="8" /></em> </title>
+				<statement>
+					<p><em>In general, a <q>solution</q> to a differential equation is a <fillin characters="8" /></em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement>constant </statement>
+						<feedback>
+							<p>
+								It is possible for a solution to be a constant, but not in general.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>function</statement>
+						<feedback>
+							<p>
+								Yes, when you solve a differential equation, you get a function.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>number</statement>
+						<feedback>
+							<p>
+								It is possible for a solution to be a number, but not in general.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>limit</statement>
+						<feedback>
+							<p>
+								Sorry, no.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s1-i6"><title> <em>Which variable in <m>\ds \frac{dP}{ds} + \frac{P}{s^2} = 17s </m> does the solution depend on?</em> </title>
+				<statement>
+					<p><em>Which variable in <m>\ds \frac{dP}{ds} + \frac{P}{s^2} = 17s </m> does the solution depend on?</em></p>
+				</statement>
+				
+				<choices>
+
+					<choice>
+						<statement>dependent variable, <m>s</m></statement>
+						<feedback><p>Incorrect. The solution depends on <m>s</m>, but <m>s</m> is not a dependent variable.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>independent variable, <m>s</m></statement>
+						<feedback><p>Yes! the solution, <m>P</m>, depends on the independent variable <m>s</m>.</p></feedback>
+					</choice>
+					<choice>
+						<statement>dependent variable, <m>P</m></statement>
+						<feedback><p>Incorrect. <m>P</m> is the solution, so it does not depend on <m>P</m>. </p></feedback>
+					</choice>
+					<choice>
+						<statement>independent variable, <m>P</m></statement>
+						<feedback><p>Incorrect. The variable <m>P</m> is not the independent variable.</p></feedback>
+					</choice>
+
+				</choices>
+
+			</exercise>
+
+			<exercise label="p1-c2-s1-i7"><title><em>What is the primary goal of solving a differential equation?</em></title>
+				<statement>
+					<p><em>What is the primary goal of solving a differential equation?</em></p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement>To find an unknown function that satisfies the equation.</statement>
+						<feedback><p>Correct! The goal of solving a differential equation is to find the function that meets the equation's conditions.</p></feedback>
+					</choice>
+					<choice>
+						<statement>To find the derivative of a function.</statement>
+						<feedback><p>Incorrect. While derivatives are involved, the goal is to find the function, not just its derivative.</p></feedback>
+					</choice>
+					<choice>
+						<statement>To identify the constants in an equation.</statement>
+						<feedback><p>Incorrect. Identifying constants might be part of the process, but it is not the primary goal.</p></feedback>
+					</choice>
+					<choice>
+						<statement>To determine the independent variable.</statement>
+						<feedback><p>Incorrect. The independent variable is usually known; we solve for the dependent variable.</p></feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+		</reading-questions>
+	</section>
+	
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Verifying Solutions </title>
+		<p>
+			In the previous section, we discussed what it means for a function to be a solution to a differential equation. Now, we turn our attention to how we can verify that a proposed function is indeed a solution.
+		</p>
+
+		<p>
+			The process of verifying a solution is straightforward: you substitute the proposed function into the differential equation and check whether the equation holds true. This simple test helps ensure that the function satisfies the relationship defined by the differential equation.
+
+			<note xml:id="move-terms-when-verifying"><title>Tip: Before verifying, move all terms to one side</title>
+				Remember, the following differential equations are identical:
+				<me>
+					y^\prime = 3y \quad \text{and} \quad y^\prime - 3y = 0
+				</me>.
+				Meaning that you are free to use either form when verifying solutions. For beginners, it is often easier to verify solutions using the second form, as you just have to show the left-side of equation simplifies to zero, giving you <m>0=0</m>.
+			</note>
+			Let's look at a few examples.
+		</p>
+
+		<example>
+
+			<m>\ \ </m>Verify the given solutions for each differential equation.
+
+			<p>
+				A. Verify that <m>\ y= 2x^2\ </m> is a solution to <m>\ xy' - 2x^2 = y</m>.
+			</p>
+			
+			<solution>
+
+				<p>
+					Let's begin by moving all terms to the left-side of the equation.
+					<me>xy' - 2x^2 - y = 0</me>
+				</p>
+
+				<p>
+					To reduce errors and break the problem into more manageable steps, we will compute and simplify the derivatives appearing in the equation.
+					<me>
+						y	= 2x^2,	\quad	y' = 4x
+					</me>
+				</p>
+
+				<p>
+					Finally, we substitute in <m>y</m> and <m>y'</m> and simplify.
+					<md>
+						<mrow> 									xy' - 2x^2 - y	=\amp\ 0								</mrow>
+						<mrow> x\left(4x\right) - 2x^2 - \left( 2x^2 \right)	=\amp\ 0 								</mrow>
+						<mrow>								4x^2 - 2x^2 - 2x^2	=\amp\ 0								</mrow>
+						<mrow>												0	=\amp\ 0\quad \leftarrow \text{true}	</mrow>
+					</md>
+					Therefore, <m>y= 2x^2</m> is a solution to <m>xy' - 2x^2 = y.</m>
+				</p>
+
+			</solution>
+
+			<p>
+				B. Verify that <m>\ P = \sin t\ </m> is a solution to <m>\ 2P'' + P = \sin t</m>.
+			</p>
+
+			<solution>
+
+				<p>
+					As before, we compute <m>P''</m> since it appears in the equation and move all terms to the left-side.
+					<me>	
+						P = \sin t, \quad P' = \cos t, \quad P'' = -\sin t
+					</me>
+				</p>
+
+				<p>
+					Plug <m>P</m> and <m>P''</m> in and simplify.
+					<md>
+						<mrow> 							2P'' + P - \sin t	=\amp\ 0									</mrow>
+						<mrow> 2\left( -\sin t \right) + \sin t - \sin t	=\amp\ 0									</mrow>
+						<mrow> -2\sin t + \cancel{\sin t} - \cancel{\sin t}	=\amp\ 0									</mrow>
+						<mrow> 									-2\sin t	=\amp\ 0\quad \leftarrow \text{false}	</mrow>
+					</md>
+					Therefore, <m>P = \sin t</m> is <term> not a solution </term> to <m>2P'' + P = \sin t.</m>
+				</p>
+
+			</solution>
+
+		</example>
+
+		<example xml:id="de-two-solutions">
+
+			<m>\ \ </m>Verify that both <m>y= 2e^{-3t}</m> and <m>y= e^{4t}</m> are solutions to
+			<me>\quad y'' - y' - 12y = 0</me>.
+
+			<solution><title><m>\quad y= 2e^{-3t}</m></title>
+
+				<p>
+					Find <m>y'</m> and <m>y''</m> since they appear in the equation.
+					<md>
+						<mrow>	y	=\amp\	2e^{-3t}</mrow>
+						<mrow>	y' 	=\amp\	2e^{-3t}\left(-3\right)	=	-6e^{-3t}	</mrow>
+						<mrow>	y'' =\amp\ -6e^{-3t}\left(-3\right)	=	18e^{-3t}	</mrow>
+					</md>
+				</p>
+
+				<p>
+					Plug <m>y, y',</m> and <m>y''</m> into the DE and simplify.
+					<md>
+						<mrow>y'' - y' - 12y	=\amp\ 0</mrow>
+						<mrow> 18e^{-3t} - \left( -6e^{-3t} \right) - 12\left( 2e^{-3t} \right)	=\amp\ 0</mrow>
+						<mrow>18e^{-3t} + 6e^{-3t} - 24e^{-3t}	=\amp\ 0</mrow>
+						<mrow>0	=\amp\ 0	\quad \leftarrow \text{true}</mrow>
+					</md>
+					Therefore, <m>y= 2e^{-3t}</m> is a solution to <m>y'' - y' - 12y = 0.</m>
+				</p>
+				</solution>
+
+			<solution><title><m>\quad y= e^{4t}</m></title>
+		
+				<p>
+					Find <m>y'</m> and <m>y''</m> since they appear in the DE.
+					<md>
+						<mrow>	y	=\amp\	e^{4t}								</mrow>
+						<mrow>	y' 	=\amp\	e^{4t}\left(4\right)	=	4e^{4t}	</mrow>
+						<mrow>	y'' =\amp\ 4e^{4t}\left(4\right)	=	16e^{4t}</mrow>
+					</md>
+				</p>
+
+				<p>
+					Plug <m>y, y',</m> and <m>y''</m> into the DE and simplify.
+					<md>
+						<mrow>y'' - y' - 12y	=\amp\ 0</mrow>
+						<mrow> 16e^{4t} - 4e^{4t} - 12\left( e^{4t} \right)	=\amp\ 0</mrow>
+						<mrow>16e^{4t} - 4e^{4t} - 12e^{4t}	=\amp\ 0</mrow>
+						<mrow>0	=\amp\ 0\quad \leftarrow \text{true}</mrow>
+					</md>
+					Therefore, <m>y= e^{4t}</m> is a solution to <m>y'' - y' - 12y = 0.</m>
+				</p>
+
+			</solution>
+
+		</example>
+
+		<example>
+
+			<m>\ \ </m>Verify that <m>\ds\ y = 3\sin(x^2) </m> is a solution to 
+			<p>
+				<me>y' - xy'' = 12x^2\sin(x^2)</me>.
+			</p>
+
+			<solution>
+
+				<p>
+					Find <m>y'</m> and <m>y''</m> since they appear in the equation and move all terms to the left-side.
+					<md>
+						<mrow>	y	=\amp\	3\sin(x^2)									</mrow>
+						<mrow>	y' 	=\amp\	3\cos(x^2) \cdot 2x	=	6x\cos(x^2)	</mrow>
+						<mrow>	y'' =\amp\ 6\cos(x^2) - 12x\sin(x^2)	=	6\cos(x^2) - 12x\sin(x^2)	</mrow>
+					</md>
+				</p>
+
+				<p>
+					Plug in <m>y, y',</m> and <m>y''</m> and simplify.
+					<md>
+						<mrow> 												
+							y' - xy'' - 12x^2\sin(x^2) 	
+								=\amp\ 0	
+						</mrow>
+						<mrow> 
+							6x\cos(x^2) - x\left( 6\cos(x^2) - 12x\sin(x^2) \right) - 12x^2\sin(x^2)
+								=\amp\ 0																
+						</mrow>
+						<mrow> 
+							\cancel{6x\cos(x^2)} - \cancel{6x\cos(x^2)} - \cancel{12x^2\sin(x^2)} - \cancel{12x^2\sin(x^2)}	
+								=\amp\ 0
+							</mrow>
+						<mrow> 
+							0	=\amp\ 0
+						</mrow>
+					</md>
+					Therefore, <m>y= 3\sin(x^2)</m> is a solution to <m>y' - 12x^2\sin(x^2) = xy''.</m>
+				</p>
+
+			</solution>
+
+		</example>
+
+		<p>
+			You can even verify that a function is a solution to a differential equation when the function contains constants as the following example shows.
+		</p>
+
+		<example xml:id="two-constant-solution-verification">
+
+			<m>\ \ </m>Verify that <m>\ds y = \frac{1}{2}x^2 + c_1 x + c_2</m> is a solution to <m>\ y'' = 1</m>.
+
+			<solution>
+
+				<p>
+					Move terms to left: <m>\quad y'' - 1 = 0</m>
+				</p>
+		
+				<p>
+					Find <m>y''</m> since it appears in the DE.
+					<md>
+						<mrow>	y	=\amp\	\frac{1}{2}x^2 + c_1 x + c_2									</mrow>
+						<mrow>	y' 	=\amp\	x + c_1													</mrow>
+						<mrow>	y'' =\amp\	1														</mrow>
+					</md>
+				</p>
+				<p>
+					Plug <m>y''</m> into the DE and simplify.
+					<md>
+						<mrow> 	y'' - 1	=\amp\ 0	</mrow>
+						<mrow> 	1 - 1	=\amp\ 0	</mrow>
+						<mrow> 		0	=\amp\ 0	</mrow>
+					</md>
+					Therefore, <m>\ds y = \frac{1}{2}x^2 + c_1 x + c_2</m> is a solution to <m>y'' = 1</m>. 
+					<fn>
+						In fact, it is the general solution, but we don't show that here. 
+					</fn>
+				</p>
+		
+			</solution>
+
+		</example>
+
+		<p>
+			As you work through more complex differential equations, this verification process becomes a valuable tool. In the next section, we'll discuss the different types of solutions you will encounter and how you can visualize them.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+		
+			<exercise label="p1-c2-s2-i1"><title> <em>Moving all terms of a differential equation to one side of the equation is a required step for verifying the solution to a differential equation.</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback> Incorrect.
+							<p>
+								Read the note provided in this section.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback>Correct! This is not a required step, but it can sometimes simplify the process.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s2-i2"><title> <em><m>y = x^2 + 3</m> is a solution to <m>\ds\frac{dy}{dx} - 3 = 2x</m></em> </title>
+				<statement>
+					<p>
+						<m>y = x^2 + 3</m> is a solution to the differential equation <m>\displaystyle \frac{dy}{dx} - 3 = 2x</m>.
+					</p>
+				</statement>
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback> Incorrect.
+							<p>
+								<m>y = x^2 + 3</m> is not a solution since
+								<md>
+									<mrow>						\frac{dy}{dx} - 3	 =\amp\	 2x								 </mrow>
+									<mrow>	\frac{d}{dx}\left[x^2 + 3\right] - 3	=\amp\	 2x								 </mrow>
+									<mrow>									2x - 3	=\amp\	 2x \quad \leftarrow \text{false} </mrow>
+								</md>
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback> Correct!
+							<p>
+								<m>y = x^2 + 3</m> is not a solution since
+								<md>
+									<mrow>						\frac{dy}{dx} - 3	 =\amp\	 2x								 </mrow>
+									<mrow>	\frac{d}{dx}\left[x^2 + 3\right] - 3	=\amp\	 2x								 </mrow>
+									<mrow>									2x - 3	=\amp\	 2x \quad \leftarrow \text{false} </mrow>
+								</md>
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s2-i3"><title> <em>List the steps needed to verify <m>s = \cos(3x)</m> is a solution to <m>s'' - 6s' + 9s = 0</m></em> </title>
+				<statement>
+					<p>
+						<em>Drag the step on the left to the appropriate step order on the right.</em>
+					</p>
+				</statement>
+				<feedback>
+					<p>
+						Review the examples above to see the steps in verifying a solution.
+					</p>
+				</feedback>
+				<matches>
+					<match>
+						<premise>Compute <m>s'</m></premise>
+						<response>Step 1</response>
+					</match>
+					<match>
+						<premise>Compute <m>s''</m></premise>
+						<response>Step 2</response>
+					</match>
+					<match>
+						<premise>Plug in <m>s, s', s''</m></premise>
+						<response>Step 3</response>
+					</match>
+					<match>
+						<premise>Simplify both sides</premise>
+						<response>Step 4</response>
+					</match>
+					<match>
+						<premise>Check for <m>0=0</m></premise>
+						<response>Step 5</response>
+					</match>
+				</matches>
+			</exercise>
+
+			<exercise label="p1-c2-s2-i4"><title> <em>A differential equation has one solution</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback> Incorrect.
+							<p>
+								<xref ref="de-two-solutions"/> shows a differential equation with two solutions.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback>Correct!</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s2-i5"><title> <em>Consider the differential equation with missing right-hand side: <me>y'' - \frac{4}{x}y' = <fillin characters="5" /></me>. Assuming <m>y = 2x^3</m> is a solution to this equation, which of the following is a possible right-hand side?</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement>
+							<p>
+								<m> 2x^3 + 4x^2 </m>
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect.
+								Plug <m>y'</m> and <m>y''</m> into the left-side and simplify.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								<m> 0 </m>
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect.
+								Plug <m>y'</m> and <m>y''</m> into the left-side and simplify.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							<p>
+								<m> -12x </m>
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct!
+								Plugging <m>y' = 6x^2</m> and <m>y'' = 12x</m> into the left-side gives
+								<md>
+									<mrow>	(12x) - \frac{4}{x}(6x^2)	 =\amp\	<fillin characters="5" />								</mrow>
+									<mrow>					12x - 24x	 =\amp\	<fillin characters="5" />								</mrow>
+									<mrow>						-12x	=\amp\	<fillin characters="5" /> \quad \leftarrow \text{true}	 </mrow>
+								</md>
+								and to get a true statement, the right-hand side must be <m>-12x</m>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+		</reading-questions>
+	</section>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Types of Solutions </title>
+		<p>
+			At this point, you should comfortable with the idea that <em> a solution to a differential equation is a function that satisfies it </em>. You have also seen that <xref ref="de-two-solutions" text="custom"> a single differential equation can have more than one solution </xref>. However, this begs the question: 
+			<blockquote>
+				<p>
+					<em><q>How many solutions does a differential equation have?</q></em>
+				</p>
+			</blockquote>
+			The answer depends on the context of the problem, and that's what we will explore in this section. Let's kick things off with an example.
+		</p>
+
+		<example xml:id="verification-with-a-constant">
+			<m>\ \ </m> Show that the functions 
+			<me>y = e^{2x},\ \ y = 2e^{2x},\ \ y = 3e^{2x},\ \ y = -7e^{2x},\ \ y = 0.3e^{2x},\ \ y = \pi e^{2x} </me> 
+			are solutions to the differential equation
+			<m>\quad y' - 2y = 0</m>.
+			<solution>
+				
+				<p>
+					Verifying each function individually would be repetitive because they all follow the same pattern: 
+					<me>y = (\text{some number})\ e^{2x} \quad \text{or} \quad y = c e^{2x} </me>, where <m>c</m> can be any constant. Let’s prove that <m>y = c e^{2x}</m> is a solution.
+				</p>
+				<p>
+					First, compute <m>y'</m>:
+					<md>
+						<mrow>	y		=\amp\	c e^{2x}						</mrow>
+						<mrow>	y'		=\amp\	2c e^{2x}	</mrow>
+					</md>
+				</p>
+				<p>
+					Now, substitute <m>y</m> and <m>y'</m> into the differential equation:
+					<md>
+						<mrow> 					y' - 2y	=\amp\ 0	</mrow>
+						<mrow> 	2c e^{2x} - 2(c e^{2x})	=\amp\ 0	</mrow>
+						<mrow> 	2c e^{2x} - 2c e^{2x}	=\amp\ 0	</mrow>
+						<mrow> 						0	=\amp\ 0	</mrow>
+					</md>
+					<p>
+						Therefore, <m>y = c e^{2x}</m> is a solution, and the specific value of <m>c</m> does not matter.
+					</p>
+				</p>
+
+			</solution>
+
+		</example>
+
+		<p>
+			From the above example, you can see that the function <m>y = c e^{2x}</m> satisfies the differential equation for any value of <m>c</m>. This leads to an important observation:
+			<blockquote>
+				<em><q>How many choices for <m>c</m> are there?</q></em>
+			</blockquote>
+			<p>Of course, the answer is infinitely many! This means the equation <m>y' - 2y = 0</m> has an infinite number of solutions. This brings us to some key terms related to solutions of differential equations.</p>
+		</p>
+
+		<note><title> <em>Don't assume a function that satisfies a DE is a general solution!</em> </title>
+			<p>
+				A function that contains constants and satisfies a differential equation <em>does not mean it is the general solution</em> since it could be missing a term. For example, you could easily show that <m>y = \frac{1}{2}x^2 + c_1 x</m> is a solution to 
+				<me>\quad y'' = 1</me>, 
+				but you already know from <xref ref="two-constant-solution-verification"/> that <m>y = \frac{1}{2}x^2 + c_1 x + c_2</m> is a solution, which is more general than <m>y = \frac{1}{2}x^2 + c_1 x</m>.
+			</p>
+		</note>
+
+		<definition xml:id="types-of-solutions"><title>Types of Solutions</title>
+			<statement>
+				<dl>
+					<li xml:id="family-of-solutions">
+						<title>Family of Solutions</title>
+						<p>The collection of all possible solutions of a differential equation.</p>
+					</li>
+					<li xml:id="general-solution">
+						<title>General Solution</title>
+						<p>The common form of all the solutions in the family. This includes arbitrary constants that can take any value.</p>
+					</li>
+					<li xml:id="particular-solution">
+						<title>Particular Solution</title>
+						<p>A single solution obtained by assigning specific values to the constants in the general solution.</p>
+					</li>
+				</dl>
+			</statement>
+		</definition>
+
+		<p>
+			Applying these terms to our previous example, we can summarize that:
+			<ul>
+				<li><m>y = c e^{2x}</m> is the <em>general solution</em> of the equation <m>y' - 2y = 0</m>.</li>
+				<li><m>y = 5e^{2x}</m> is one <em>particular solution</em> in the <em>family of solutions</em>.</li>
+				<li>The <em>family of solutions</em> consists of all functions of the form <m>y = c e^{2x}</m>.</li>
+			</ul>
+		</p>
+
+		<p>
+			Understanding the different types of solutions—general, particular, and families of solutions—is crucial as you continue to explore differential equations. In the upcoming sections, we'll talk more about where particular solutions come from.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+		
+			<exercise label="p1-c2-s3-i1"><title> <em>A family of solutions can be viewed as the collection of all particular solutions</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>True</p></statement>
+						<feedback> Correct! A family of solutions includes all possible particular solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>False</p></statement>
+						<feedback> Incorrect. A family of solutions is a set of all possible solutions, not just one particular solution.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i2"><title> <em>A particular solution can be viewed as a member of the family of solutions</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>True</p></statement>
+						<feedback> Correct! A particular solution is one of the many solutions in the family of solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>False</p></statement>
+						<feedback> Incorrect. A particular solution is a specific member of the family of solutions.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i3"><title> <em>Which task is fundamentally different from the others?</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>Solving a differential equation.</p></statement>
+						<feedback>Incorrect. Solving a differential equation involves finding solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>Finding the general solution to a differential equation.</p></statement>
+						<feedback>Incorrect. Finding the general solution is part of finding solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>Finding a family of solutions to a differential equation.</p></statement>
+						<feedback>Incorrect. Finding a family of solutions is related to identifying all possible solutions.</feedback>
+					</choice>
+					<choice correct="yes">
+					<statement><p>Verifying a solution to a differential equation.</p></statement>
+					<feedback>Correct! Verifying a solution checks if a proposed function satisfies the equation, rather than finding a new one.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+				
+			<exercise label="p1-c2-s3-i4"><title> <em>What is the difference between a general solution and a particular solution?</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>A general solution is a specific solution to a differential equation, while a particular solution is a general form of the solution.</p></statement>
+						<feedback> Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.</p></statement>
+						<feedback> Correct! The general solution represents all possible solutions, while a particular solution is one specific solution.</feedback>
+					</choice>
+					<choice>
+						<statement><p>A general solution is a specific member of the family of solutions, while a particular solution is a form of the solution.</p></statement>
+						<feedback> Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>A general solution is a specific solution to a differential equation, while a particular solution is a general form of the solution.</p></statement>
+						<feedback> Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i5"><title> <em>Fill in the Blank</em> </title>
+				<statement>
+					When you find the general solution of a differential equation, you are finding the common <var width="3"/> of each particular solution.
+				</statement>
+				<setup>
+				<var case="insensitive">
+					<condition string="forms?"> 
+					<feedback> <p>Good Work!</p> </feedback> 
+					</condition>
+					<condition string=".*"> 
+					<feedback> <p>Incorrect. The correct answer starts with an <q>f</q></p> </feedback>
+					</condition>
+				</var>
+				</setup>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i6"><title><em>What role does the general solution play in solving a differential equation?</em></title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>It provides the exact value of the function.</p></statement>
+						<feedback><p>Incorrect. The general solution provides a family of functions, not just one specific value.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>It represents a family of functions that satisfy the differential equation.</p></statement>
+						<feedback><p>Correct! The general solution includes all possible solutions, depending on the values of the constants.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>It simplifies the differential equation.</p></statement>
+						<feedback><p>Incorrect. While solving the equation involves simplification, the general solution represents the functions that satisfy the equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>It eliminates the constants from the solution.</p></statement>
+						<feedback><p>Incorrect. The general solution still includes arbitrary constants.</p></feedback>
+					</choice>
+				</choices>
+			</exercise>
+			
+			<exercise label="p1-c2-s3-i7"><title> <em>What is a family of solutions?</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>A collection of all possible solutions to a differential equation.</p></statement>
+						<feedback>Correct! The family of solutions includes every possible particular solution.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The general solution to a differential equation.</p></statement>
+						<feedback>Incorrect. The general solution represents a form of the family of solutions, not the entire set.</feedback>
+					</choice>
+					<choice>
+						<statement><p>A single specific solution to a differential equation.</p></statement>
+						<feedback>Incorrect. This describes a particular solution, not the family of solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>A solution without any constants.</p></statement>
+						<feedback>Incorrect. A solution without constants is typically a particular solution, not the entire family.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i8"><title> <em>A general solution always includes arbitrary constants</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>True</p></statement>
+						<feedback>Correct! The general solution represents the form that includes arbitrary constants.</feedback>
+					</choice>
+					<choice>
+						<statement><p>False</p></statement>
+						<feedback>Incorrect. A general solution must include arbitrary constants to represent all possible particular solutions.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i9"><title> <em>Fill in the Blank</em></title>
+				<statement>
+					A <var width="10"/> solution is a single solution obtained by assigning specific values to the constants in the general solution.
+				</statement>
+				<setup>
+				<var case="insensitive">
+					<condition string="particular"> 
+						<feedback> <p>Good Work!</p> </feedback> 
+					</condition>
+					<condition string=".*"> 
+						<feedback> <p>Incorrect. The correct answer starts with a <q>p</q></p> </feedback>
+					</condition>
+				</var>
+				</setup>
+			</exercise>
+
+			<exercise label="p1-c2-s3-i10"><title> <em>In <xref ref="verification-with-a-constant"/>, we verified that <m>y = Ce^{2x}</m> was a solution to <me>y''' - 4y' = 0</me>
+				Based on this, how many solutions must this equation have?</em></title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>One</p></statement>
+						<feedback> Incorrect.
+							<p>
+							Reason? 
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p>Two</p></statement>
+						<feedback> Incorrect.
+							<p>
+								Reason?
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>Infinitely-Many</p></statement>
+						<feedback> Correct!
+							<p>
+								We can choose any value of C and it will still satisfy this equation. Since there are infinitely-many of numbers to choose from, there are infinitely-many solutions. 
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p>Unknown since we don't know <m>C</m></p></statement>
+						<feedback> Incorrect.
+							<p>
+								Reason? 
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		
+		</reading-questions>
+	</section>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Visualizing Solutions </title>
+		<p>
+			A powerful way to understand solutions to differential equations is by visualizing them. Consider the differential equation
+			<me> \frac{dy}{dx} = 2xy - 6x </me>,
+			which has the general solution, <m> y = ce^{x^2} + 3</m> (<xref ref="p1-c2-s4-details-1" text="custom">solution verification details</xref>).
+		</p>	
+
+		<p>
+			Since each member of the family of solutions comes from a different value of <m>c</m>, we can plot a few of them to see how they differ (see <xref ref="family-of-solutions-figure-1" />).
+		</p>
+		
+		<sidebyside widths="46% 2% 50%" margins="0%">
+			<stack>
+				<p>
+					<em> Hover over the green curves in the figure to see each particular solution and corresponding value of <m>c</m>. </em>
+				</p>
+				<p>
+					In terms of the types of solutions, 
+				</p>
+				<ul marker="square">
+					<li> 
+						Each green curve in the figure represents a particular solution, with its own specific value of <m>c</m>.
+					</li>
+					<li> 
+						The general solution, <m>y = ce^{x^2} + 3</m>, provides the framework for all these individual solutions.
+					</li>
+				</ul>
+			</stack>
+			<p />
+			<figure xml:id="family-of-solutions-figure-1">
+				<interactive xml:id="interactive-family" platform="jsxgraph" source="code/family-of-solutions.js">
+					<slate xml:id="interactive-family-slate" surface="jsxboard" />
+				</interactive>
+				<caption>Plots of <m>y = ce^{x^2} + 3</m> for <m>c = -4, -3, -2, -1, -0.5, 0, 0.5, 1, 2, 3</m>.</caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			Although the figure only shows a few members of the infinite family of solutions, notice that the green curves never overlap. This means that each curve represents a unique solution. If you were to randomly select a point on the plot, you would, in effect, be selecting a single curve—only one solution can pass through that specific point. This idea is at the heart of where particular solution come from and it will be the focus of the next section.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+		
+			<introduction>
+				<p>
+					Answer the following questions using the figure and the fact that <m>\ds y = ce^{x^2} + 3</m> is the general solution to the differential equation
+				</p>
+				<men xml:id="visual-de"> \ds \frac{dy}{dx} = 2xy - 6x. </men>
+			</introduction>
+			
+			<exercise><title> <em>Select the particular solution in <xref ref="family-of-solutions-figure-1" /> that passes through the point <m>(0,5)</m></em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p><m>\ds y = -2e^{x^2}+3</m></p></statement>
+						<feedback>Incorrect. The value of <m>c</m> must make the solution pass through <m>(0, 5)</m>. Hover over the curve in the figure that passes through <m>(0,5)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\ds y = 0.5e^{x^2}+3</m></p></statement>
+						<feedback>Incorrect. Remember that at <m>x = 0</m>, the exponential term <m>e^{x^2}</m> equals 1, so <m>y(0) = c + 3</m>. What value of <m>c</m> gives <m>y(0) = 5</m>? Hover over the curve in the figure that passes through <m>(0,5)</m>.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>\ds y = 2e^{x^2}+3</m></p></statement>
+						<feedback>Correct! The value <m>c = 2</m> ensures that <m>y(0) = 2 + 3 = 5</m>, so this solution passes through <m>(0, 5)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\ds y = 5e^{x^2}+3</m></p></statement>
+						<feedback>Incorrect. The general solution would pass through <m>(0, 4)</m> if <m>c = 1</m>. Hover over the curve in the figure that passes through <m>(0,5)</m>.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise><title> <em>Select the <m>c</m>-value for the solution in <xref ref="family-of-solutions-figure-1" /> that passes through the point <m>(1,1)</m></em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p><m>c = -2</m></p></statement>
+						<feedback>Incorrect. Hover over the curve in the figure that passes through <m>(1,1)</m> and look at the coefficient on <m>e^{x^2}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>c = 0.5</m></p></statement>
+						<feedback>Incorrect. Hover over the curve in the figure that passes through <m>(1,1)</m> and look at the coefficient on <m>e^{x^2}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>c = 2</m></p></statement>
+						<feedback>Incorrect. Hover over the curve in the figure that passes through <m>(1,1)</m> and look at the coefficient on <m>e^{x^2}</m>.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>c = -1</m></p></statement>
+						<feedback>Correct! Hovering over the curve passing through <m>(1,1)</m> shows the particular solution <m>\ds y = -e^{x^2}+3</m>, so <m>c=1</m>.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise><title> <em>Two different particular solutions of <xref ref="visual-de"/> could have the same <m>c</m>-value</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback>Incorrect. The value of <m>c</m> is what makes each particular solution different.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback>Correct! Different particular solutions have different values of <m>c</m>.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise><title> <em>There are infinitely-many particular solutions in a family</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>True</p></statement>
+						<feedback>Correct! Each value of <m>c</m> corresponds to a different particular solution.</feedback>
+					</choice>
+					<choice>
+						<statement><p>False</p></statement>
+						<feedback>Incorrect. There are infinitely many particular solutions in a family.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise><title> <em>Which of the following is the best visual description of a family of solutions?</em> </title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>Collection of all the possible solution curves.</p></statement>
+						<feedback>Correct! A family of solutions includes all possible solutions so visually it would be the collection of all solution curves.</feedback>
+					</choice>
+					<choice>
+						<statement><p>A single solution curve.</p></statement>
+						<feedback>Incorrect. A family of solutions includes all possible particular solutions, not just one.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The intersection of all the possible solution curves.</p></statement>
+						<feedback>Incorrect. A family of solutions includes all possible solutions, not just their intersections.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The curve of the general solution.</p></statement>
+						<feedback>Incorrect. The general solution is a framework for all possible solutions, but it is not the family of solutions itself. Also, since a general solution includes constants, doesn't have <q>a curve</q>.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise><title> <em>Which of the following is the best visual description of a particular solution?</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>A curve that represents the solution with a specific constant value.</p></statement>
+						<feedback>
+							Correct! A particular solution is a single curve that satisfies the differential equation with a specific constant value, distinguishing it from the general solution.
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p>A family of curves that represents all possible solutions to the differential equation.</p></statement>
+						<feedback>
+							Incorrect. This description fits a general solution, which encompasses all particular solutions by varying the parameter.
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p>A straight line that intersects all solutions to the differential equation.</p></statement>
+						<feedback>
+							Incorrect. A particular solution is not necessarily a straight line, and it does not intersect all other solutions. It's a unique curve based on specific conditions.
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p>A set of discrete points that satisfy the differential equation for various parameter values.</p></statement>
+						<feedback>
+							Incorrect. A particular solution is typically represented by a continuous curve, not a set of discrete points.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+			
+			<exercise><title> <em>The solution <m>y = ce^{x^2} + 3</m> where <m>c = -1</m> will pass through the origin <m>(0, 0)</m></em> </title>
+				<statement />
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback>
+							Incorrect. Try recalculating <m>y(0)</m> when <m>c = -1</m>. Which point does it pass through on the <m>y</m>-axis?
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback>
+							Correct. If <m>c = -1</m>, then <m>y(0) = -1 + 3 = 2</m>, which passes through <m>(0,2)</m>.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		
+		</reading-questions>
+	</section>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Initial Conditions &amp; Particular Solutions </title>
+		<p>
+			Solving a differential equation typically starts with finding the general solution that defines all the possible solutions (family of solutions). For example, later on in this text, we will show that the differential equation
+			<men xml:id="initial-condition-de">y'' - y' - 12y = 0</men>
+			has the general solution
+			<men xml:id="initial-condition-gen-sol">y(t) = c_1e^{-3t} + c_2e^{4t}.</men>
+			While the general solution gives us a family of possible solutions, in practical scenarios, we are usually interested in the specific solution where the constants are known. This is where initial conditions come into play—they allow us to determine the particular solution that applies to the problem at hand.
+		</p>
+
+		<p>
+			An <term>initial condition</term> is a starting value of the solution or its derivatives. For example, consider the free fall of an object due to gravity where <m>s(t)</m> is the position (distance from the ground) of this object at time <m>t</m>. Assuming the ball is dropped from the top of a 100 ft building, what initial information do you know? Let <m>t=0</m> be the time when the ball is dropped, then the initial conditions are given in the following table.
+		</p>
+
+		<p>
+			The following table summarizes the initial conditions for our example, highlighting the key information required to determine the particular solution:
+		</p>
+
+		<p>
+			<tabular>
+				<col right="minor" halign="center"/>
+				<col halign="center"/>
+				<row bottom="minor">
+				<cell>Information at <m>t=0</m></cell>
+				<cell>Initial Condition</cell>
+				</row>
+				<row>
+				<cell>The ball is at the top of a 100 ft building.</cell>
+				<cell><m>s(0) = 100 \text{ ft}</m></cell>
+				</row>
+				<row>
+				<cell>The ball is dropped from rest (initial velocity is zero).</cell>
+				<cell><m>s'(0) = 0 \text{ ft/s}</m></cell>
+				</row>
+			</tabular>
+		</p>
+		
+		<p>
+			Without these initial conditions, the solution is incomplete and not applicable to any specific scenario. Assuming the solution must be consistent with these conditions forces the constants in the general solution to take specific values, giving us a particular solution.
+		</p>
+		
+		<example>
+		
+			<m>\ \ </m>Solve the initial value problem
+			<me> y'' - y' - 12y = 0, \quad y(0) = 4, \quad y'(0) = -2</me>. 
+			
+			<solution>
+		
+				<p>
+					Since we already know the general solution to <xref ref="initial-condition-de"/> is given by 
+					<me>y = c_1e^{-3t} + c_2e^{4t}</me>. 
+					If you are interested in the verification steps, see the solution below.
+				</p>
+			
+				<solution><title>Verification as a solution</title>
+
+					<p>
+						First find <m>y, y', \text{ and } y''</m>:
+						<md>
+							<mrow> y	=\amp\ c_1e^{-3t} + c_2e^{4t}		</mrow>
+							<mrow> y'	=\amp\ -3c_1e^{-3t} + 4c_2e^{4t}	</mrow>
+							<mrow> y''	=\amp\ 9c_1e^{-3t} + 16c_2e^{4t}	</mrow>
+						</md>
+					</p>
+				
+					<p>
+						and substitute these into <m>y'' - y' - 12y</m> and simplify:
+						<md>
+							<mrow>
+								y'' - y' - 12y =\amp\ \left(9c_1e^{-3t} + 16c_2e^{4t}\right) 
+							</mrow>
+							<mrow>		
+								\amp\ \hspace{1em} - \left( -3c_1e^{-3t} + 4c_2e^{4t} \right) -12\left( c_1e^{-3t} + c_2e^{4t} \right)
+							</mrow>
+							<mrow>
+								=\amp\ \ul{\ul{9c_1e^{-3t}}} + \ul{16c_2e^{4t}} 
+							</mrow>
+							<mrow>
+								\amp\ \hspace{1em} + \ul{\ul{3c_1e^{-3t}}} - \ul{4c_2e^{4t}} - \ul{\ul{12c_1e^{-3t}}} - \ul{12c_2e^{4t}}
+							</mrow>
+							<mrow>
+								=\amp\ 0
+							</mrow>
+						</md>
+						Which shows <m>0 = 0</m> and so <m>y = c_1e^{-3t} + c_2e^{4t}</m> is a solution.
+					</p>
+			
+				</solution>
+
+				<p>
+					We would like determine the spcific values of <m>c_1</m> and <m>c_2</m> that correspond to the initial conditions <m>y(0) = 4</m> and <m>y'(0) = -2</m>. 
+				</p>
+
+				<p>
+					Since one initial condition involves the derivative, we will need to compute this before applying this condition.
+					<me>y' = -3c_1e^{-3t} + 4c_2e^{4t}.</me>
+				</p>
+			
+				<p>
+					Now let's apply the initial conditions:
+					<md>
+					<mrow>y(0)	=\amp\ 4		\amp\Rightarrow \hspace{0.2cm} 	4
+						=\amp\ c_1e^{-3\cdot 0} + c_2e^{4\cdot 0}</mrow>
+					<mrow>			\amp	\amp	4
+						=\amp\ c_1 + c_2		</mrow>
+					<mrow>			\amp	\amp	\amp	</mrow>
+					<mrow>y'(0)	=\amp\ -5	\amp\Rightarrow \hspace{0.2cm} 	-5
+						=\amp\ -3c_1e^{-3\cdot} + 4c_2e^{4\cdot}	</mrow>
+					<mrow>			\amp	\amp	-5	=\amp\ -3c_1 + 4c_2	</mrow>
+					</md>
+				</p>
+			
+				<p>
+					We now have two equations and two unknowns,
+					<md>
+						<mrow>	 c_1 +	c_2	=\amp\ 	4 	</mrow>
+						<mrow> -3c_1 + 4c_2	=\amp\ -5 	</mrow>
+					</md>
+					There are multiple ways to solve this system of equations, and the reader is encouraged to verify that	<m>c_1 = 3</m> and <m>c_2 = 1</m>. Here is one
+			
+					<solution><title>Solving for <m>c_1</m> and <m>c_2</m></title>
+						We will solve for <m>c_2</m> in the first equation and then
+						substitute into the second.
+						<md>
+							<mrow>4					=\amp\ c_1 + c_2										</mrow>
+							<mrow>\Rightarrow c_2	=\amp\ 4 - c_1								</mrow>
+							<mrow>					\amp															</mrow>
+							<mrow>-5				=\amp\ -3c_1 + 4c_2								</mrow>
+							<mrow>\Rightarrow -5	=\amp\ -3c_1 + 4(4 - c_1)		</mrow>
+							<mrow>-5				=\amp\ -3c_1 + 16 - 4c_1						</mrow>
+							<mrow>-21				=\amp\ -7c_1												</mrow>
+							<mrow>3					=\amp\ c_1													</mrow>
+							<mrow>					\amp															</mrow>
+							<mrow>c_2				=\amp\ 4 - c_1											</mrow>
+							<mrow>					=\amp\ 4 - 3												</mrow>
+							<mrow>					=\amp\ 1														</mrow>
+						</md>
+					</solution>
+			
+				</p>
+			
+				<p>
+					Thus, the solution we that satisfies the DE and both of the provided initial conditions is	<me> y = 3e^{-3t} + e^{4t}. </me>
+				</p>
+		
+			</solution>
+		
+		</example>
+
+		<example xml:id="p1-c2-s5-example-1">
+
+			<m>\ \ </m>Solve the initial value problem
+			<men xml:id="p1-c2-s5-example-1-de"> \frac{dy}{dx} = 2xy - 6x, \quad y(0) = 2</men>
+			Given that the general solution is <m>\ds\ y = ce^{x^2} + 3</m>. 
+
+			<solution>
+				<p>
+					The general solution to the differential equation. The general solution is 
+					<me>y = ce^{x^2} + 3.</me>
+				</p>
+				<p>
+					The initial condition, <m>y(0) = 2</m>, tells us that <q><m>y</m> must equal 2 when <m>x</m> is 0</q>. When we substitute <m>y=2</m> and <m>x=0</m> into the general solution, we see that we can solve for <m>c</m>.
+					<md>
+						<mrow> y =	ce^{x^2} + 3 \quad \overset{y\ =\ 2,\ x\ =\ 0}{\Rightarrow} \quad	2	=\amp\	ce^{0^2} + 3	</mrow>
+						<mrow>							 												2	=\amp\	c + 3		</mrow>
+						<mrow>																			-1	=\amp\	c			</mrow>
+					</md>
+				</p>
+			
+				<p>
+					Therefore, <m>y(0) = 2</m> forces <m>c = -1</m> and we get the particular solution
+					<me>y = -e^{x^2} + 3</me>.
+				</p>
+			</solution>
+
+		</example>
+
+		<p>
+			Initial conditions can also be visualized. <xref ref="initial-conditions-figure-1" /> the initial condition, <m>y(0) = 2</m>, is shown as the point <m>(0,2)</m> on the <m>y</m>-axis. The blue curve is the particular solution we found above and is the only solution in the family that passes through this point.
+		</p>
+
+		<sidebyside widths="46% 2% 50%" margins="0%">
+			<stack>
+			<p>
+				<em>In the graph, the point on the <m>y</m>-axis is the initial condition. You can change the initial condition by dragging the point up and down along the <m>y</m>-axis.</em>
+			</p>
+
+			<p>
+				As you drag the point, make the following observations:
+			</p>
+
+			<ul marker="square">
+				<li> 
+				Each new value of <m>y(0)</m> gives a new value of <m>c</m>, which corresponds to a new particular solution (blue curve). 
+				</li>
+				<li> 
+				Only one particular solution from the family of solutions (green curves) passes through the initial condition.	
+				</li>
+			</ul>
+			</stack>
+			<p />
+			<figure xml:id="initial-conditions-figure-1">
+			<interactive xml:id="interactive-drag-ic" platform="jsxgraph" source="code/initial-condition.js">
+				<slate xml:id="interactive-drag-ic-slate" surface="jsxboard" />
+				
+			</interactive>
+			<caption>The family of solutions (green curves) and a particular solution (blue curve) passing through <m>y(0)</m>.</caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			In summary, the process of solving a differential equation typically begins with finding a general solution. However, to apply this solution to real-world problems, we rely on initial conditions to determine a particular solution that accurately represents the system's specific circumstances.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+		
+			<exercise label="p1-c2-s5-i1"><title> <em>What is an initial condition?</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>The starting point of the independent variable.</p></statement>
+						<feedback>Incorrect. The initial condition is related to the solution or its derivatives at a specific point.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>The starting value of the solution or its derivatives.</p></statement>
+						<feedback>Correct! An initial condition specifies the value of the solution or its derivative at a particular point.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The final value of the solution.</p></statement>
+						<feedback>Incorrect. The initial condition is at the starting point, not the end.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The point where the solution intersects the x-axis.</p></statement>
+						<feedback>Incorrect. The initial condition is about the value at a specific point, not necessarily where it intersects the x-axis.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+			
+			<exercise label="p1-c2-s5-i2"><title> <em>The differential equation, <m>\ds\frac{dy}{dx} = 2xy - 6x</m>, is an initial value problem</em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>True</p></statement>
+						<feedback>Incorrect. An initial value problem includes specific initial conditions, which are not provided in this equation.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>False</p></statement>
+						<feedback>Correct! The equation is a differential equation without initial conditions, so it is not an initial value problem.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s5-i3"><title> <em>The solution to the initial value problem, <m>\ds\frac{dy}{dx} = 2xy - 6x, \hspace{0.25cm} y(5) = -10</m>, is a function whose curve passes through the point <fillin characters="5" /></em> </title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p><m>(5, 0)</m></p></statement>
+						<feedback><p>Incorrect. The solution curve does not pass through the point (5, 0).</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>(0, 5)</m></p></statement>
+						<feedback><p>Correct! The solution curve passes through the point (0, 5).</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>(0, 0)</m></p></statement>
+						<feedback><p>Incorrect. The solution curve does not pass through the point (0, 0).</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>(2, 6)</m></p></statement>
+						<feedback><p>Incorrect. The solution curve does not pass through the point (2, 6).</p></feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s5-i4"><title><em>In which case would you need to find a particular solution rather than just a general solution?</em></title>
+				<statement/>
+				<choices>
+					<choice>
+						<statement><p>When the differential equation is linear.</p></statement>
+						<feedback><p>Incorrect. Linearity doesn't determine whether you need a particular solution.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>When initial conditions are provided.</p></statement>
+						<feedback><p>Correct! A particular solution is found when you need to satisfy initial conditions.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>When the differential equation is has a general solution.</p></statement>
+						<feedback><p>Incorrect. The existence of a general solution doesn't determine whether you need a particular solution.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>When the function depends on more than one variable.</p></statement>
+						<feedback><p>Incorrect. Multivariable functions are not the reason for finding a particular solution.</p></feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p1-c2-s5-i5"><title> <em>What role do initial conditions play in solving differential equations?</em> </title>
+				<statement>
+					<p>
+						<em>Select all that apply.</em>
+					</p>
+				</statement>
+				<choices>
+					<choice>
+						<statement><p>They determine the general form of the solution.</p></statement>
+						<feedback>Incorrect. Initial conditions are not used to find the general solution.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>They used to determine the constants in the general solution.</p></statement>
+						<feedback>Correct! Initial conditions are used to find specific values for constants in the general solution.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>They are used to find the particular solution.</p></statement>
+						<feedback>Correct! Initial conditions are used to find the specific solution that applies to a particular scenario.</feedback>
+					</choice>
+					<choice>
+						<statement><p>They are not needed if the general solution is already known.</p></statement>
+						<feedback>Incorrect. If provided, initial conditions are always needed to get the particular solution from the general solution.</feedback>
+					</choice>
+				</choices>
+				<answer>C</answer>
+			</exercise>
+
+			<exercise label="p1-c2-s5-i6"><title><em>What happens if you do not apply initial conditions to the general solution of a differential equation?</em></title>
+				<statement/>
+				<choices>
+					<choice correct="yes">
+						<statement><p>You get a family of solutions without identifying the particular solution.</p></statement>
+						<feedback>Correct! Without initial conditions, you only have the general solution, which represents a family of possible solutions.</feedback>
+					</choice>
+					<choice>
+						<statement><p>You cannot find any solution to the differential equation.</p></statement>
+						<feedback>Incorrect. You can find the general solution without initial conditions, but not the specific one.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The solution to the differential equation does not exist.</p></statement>
+						<feedback>Incorrect. The solution exists, but you need initial conditions to find the specific one.</feedback>
+					</choice>
+					<choice>
+						<statement><p>The solution to the differential equation is unique.</p></statement>
+						<feedback>Incorrect. The general solution represents a family of possible solutions, not a unique one.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		
+		</reading-questions>
+	</section>
+			
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Summary &amp; Exercises </title>
+		<introduction>
+
+			<assemblage color="green"><title>Summary of the Key Ideas</title>
+				<p>
+					<ul marker="">
+						<li xml:id="summary-solution">
+							<term><em>What is a Solution?</em></term>
+							<ul marker="square">
+								<li>A solution to a differential equation is a function that, when substituted into the equation, satisfies the equation.</li>
+							</ul>
+						</li>
+						<li xml:id="summary-verification">
+							<term><em>Verifying Solutions</em></term>
+							<ul marker="square">
+								<li>Verification of a solution involves substituting the function into the equation and simplifying to check if a true statement is obtained.</li>
+								<li>To verify a solution, all terms should ideally be moved to one side of the equation, simplifying the process.</li>
+							</ul>
+						</li>
+						<li xml:id="summary-types-of-solutions">
+							<term><em>Types of Solutions</em></term>
+							<ul marker="square">
+								<li>Differential equations can have different types of solutions: general and particular.</li>
+								<li>The general solution includes arbitrary constants and represents a family of solutions.</li>
+								<li>A particular solution is obtained by assigning specific values to these constants.</li>
+							</ul>
+						</li>
+						<li xml:id="summary-initial-conditions">
+							<term><em>Initial Conditions</em></term>
+							<ul marker="square">
+								<li>Initial conditions are values given for the solution or its derivatives at a specific point, often used to find a particular solution.</li>
+								<li>They help specify which member of the general solution family is applicable in a specific context.</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</assemblage>
+			
+		</introduction>
+
+		<exercises>
+
+			<exercise>
+				<p>
+					Discuss the difference between a general solution, family of solutions,
+					and a particualr solution.
+				</p>
+			</exercise>
+
+			<exercise>
+				<p>
+					Given the differential equation
+					<me> y''-9y = 0 </me>
+					determine if the following functions are solutions of this differential equation.
+				</p>
+				<p>
+					<sidebyside width="30%">
+						<p>
+							<line> a. <m>\ds \,\, y = 3</m> </line>
+							<line> b. <m>\ds \,\, y = 0</m> </line>
+							<line> c. <m>\ds \,\, y = e^{3x}</m> </line>
+						</p>
+						<p>
+							<line> d. <m>\ds \,\, y = 3x</m> </line>
+							<line> e. <m>\ds \,\, y = 9e^x</m> </line>
+							<line> f. <m>\ds \,\, y = x^9</m> </line>
+						</p>
+						<p>
+							<line> g. <m>\ds \,\, y = 4e^{3x}</m> </line>
+							<line> h. <m>\ds \,\, y = e^{-3x}</m> </line>
+							<line> i. <m>\ds \,\, y = e^{3x} - 2e^{-3x}</m> </line>
+						</p>
+					</sidebyside>
+				</p>
+
+				<answer>
+					<sidebyside width="30%">
+						<p>
+							<line> a. No </line>
+							<line> b. Yes </line>
+							<line> c. Yes </line>
+						</p>
+						<p>
+							<line> d. No </line>
+							<line> e. No </line>
+							<line> f. No </line>
+						</p>
+						<p>
+							<line> g. Yes </line>
+							<line> h. Yes </line>
+							<line> i. Yes </line>
+						</p>
+					</sidebyside>
+				</answer>
+			</exercise>
+
+			<exercise>
+
+				<p>
+					Given the differential equation
+					<me> y'' - 10y' + 25y = 0 </me>
+					determine if the following functions are solutions of this differential	equation.
+				</p>
+
+				<p>
+					<sidebyside width="30%">
+						<p>
+							<line> a. <m>\ds \,\, y = 0</m> </line>
+							<line> b. <m>\ds \,\, y = x^2e^{5x}</m> </line>
+							<line> c. <m>\ds \,\, y = e^{5x}</m> </line>
+						</p>
+						<p>
+							<line> d. <m>\ds \,\, y = 5x</m> </line>
+							<line> e. <m>\ds \,\, y = xe^{5x}</m> </line>
+							<line> f. <m>\ds \,\, y = 5e^{5x}</m> </line>
+						</p>
+						<p>
+							<line> g. <m>\ds \,\, y = 1/25</m> </line>
+							<line> h. <m>\ds \,\, y = e^{-5x}</m> </line>
+							<line> i. <m>\ds \,\, y = (1+x)e^{5x}</m> </line>
+						</p>
+					</sidebyside>
+				</p>
+
+				<answer>
+					<p>
+						<sidebyside width="30%">
+							<p>
+								<line> a. Yes </line>
+								<line> b. No </line>
+								<line> c. Yes </line>
+							</p>
+							<p>
+								<line> d. No </line>
+								<line> e. Yes </line>
+								<line> f. Yes </line>
+							</p>
+							<p>
+								<line> g. No </line>
+								<line> h. No </line>
+								<line> i. Yes </line>
+							</p>
+						</sidebyside>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				<p>
+					Match each function on the left with a DE on the right if this function is a solution (i.e. is in the family of solutions) for this DE.
+				
+					<sidebyside widths="40% 40%">
+						<p>
+							<ol marker="A.">
+								<li> <m>y = 3x+x^2</m>	</li>
+								<li> <m>y = e^{-8x}</m>	</li>
+								<li> <m>y = \sin x</m>	</li>
+								<li> <m>y = x^{1/2}</m>	</li>
+								<li> <m>y = 6e^{8x}</m>	</li>
+							</ol>
+						</p>
+						<p>
+							<ul marker="">
+								<li> <m>\boxed{\phantom{D}} \quad 2x^2y'' + 3xy' = y</m>				</li>
+								<li> <m>\boxed{\phantom{B}} \quad y'' + 10 y' + 16 y = 0</m>			</li>
+								<li> <m>\boxed{\phantom{E}} \quad y' = 8 y</m>						</li>
+								<li> <m>\boxed{\phantom{C}} \quad y'' + y = 0</m>					</li>
+								<li> <m>\boxed{\phantom{A}} \quad 3y'' - 2y + \frac{4}{x}y = 12</m>	</li>
+							</ul>
+						</p>
+					</sidebyside>
+				</p>
+			
+				<answer>
+					<ul marker="">
+						<li> <m>\boxed{D} \quad  2x^2y'' + 3xy' = y</m> 				</li>
+						<li> <m>\boxed{B} \quad  y'' + 10 y' + 16 y = 0</m> 			</li>
+						<li> <m>\boxed{E} \quad  y' = 8 y</m> 						</li>
+						<li> <m>\boxed{C} \quad  y'' + y = 0</m> 					</li>
+						<li> <m>\boxed{A} \quad  3y'' - 2y + \frac{4}{x}y = 12</m>	</li>
+					</ul>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y=e^{rx}</m> is a solution to
+					<me>y''' - 10y'' + 24y' = 0</me>.
+				</p>
+				
+				<answer>
+					<m>r = 0, 6, 4</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y = k e^{rx}</m> is a solution	to
+					<me>y'' - 25y = 0</me>.
+				</p>
+			
+				<answer>
+						<m>r = -5, 5</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y(x) = c_1 e^{r x} + c_2</m> is a solution to
+					<me>7y'' = 8y</me>.
+				</p>
+			
+				<answer>
+						<m>r = 8/7</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y = t^{r}</m> is a solution to
+					<me>t^{2}y''- 11ty' + 32y = 0 \quad (t>0)</me>.
+				</p>
+			
+				<answer>
+						<m>r = 4, 8</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y = rx^{2}</m> is a solution to
+					<me>y' = 5x</me>.
+				</p>
+			
+				<answer>
+					<m>r = 2.5</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find all values of <m>r</m> such that <m>y = \sin(rt)</m> is a solution to
+					<me>y'' + 9y = 0</me>.
+				</p>
+			
+				<answer>
+					<m>r = 2.5</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Find the value of the constant <m>k</m> in order for the differential equation
+					<me> \frac{d^2y}{dt^2} - 8 \frac{dy}{dt} + ky = 0</me>
+					to have the solution <m>y = e^{3t}</m>.
+				</p>
+			
+				<answer>
+					<m>k = 15</m>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<p>
+					Is <m>\ds y = c_{1}e^{2x} + c_{2}xe^{2x}</m> a solution of the
+					differential equation
+					<me>\ds \frac{d^{2}y}{dx^{2}} - 4\frac{dy}{dx} + 4y = 0?</me>
+				</p>
+			
+				<answer>
+						Yes
+				</answer>
+			</exercise>
+				
+			<exercisegroup><title> Find the value of <m>r</m> </title>
+			
+				<introduction>
+					<p>
+						For each of the differential equations and function pairs, find all the possible values of <m>r</m> such that the function is a solution to the DE.
+					</p>
+				</introduction>
+
+				<exercise>
+					<m>y''' - 10y'' + 24y' = 0; \quad y=e^{rx}</m>
+					<answer>
+						<m>r = 0, 6, 4</m>
+					</answer>
+				</exercise>
+			
+				<exercise>
+					<m>y'' - 25y = 0; \quad y = k e^{rx}</m>
+					<answer>
+						<m>r = -5, 5</m>
+					</answer>
+				</exercise>
+				
+				<exercise>
+					<m>7y'' = 8y; \quad y(x) = c_1 e^{r x} + c_2</m>
+					<answer>
+						<m>r = 8/7</m>
+					</answer>
+				</exercise>
+				
+				<exercise>
+					<m>t^{2}y''- 11ty' + 32y = 0; \quad y = t^{r} \quad (t>0)</m>
+					<answer>
+						<m>r = 4, 8</m>
+					</answer>
+				</exercise>
+				
+				<exercise>
+					Let <m>y' = 5x; \quad y = rx^{2}</m>
+					<answer>
+						<m>r = 2.5</m>
+					</answer>
+				</exercise>
+
+				<exercise>
+					<m>y'' + 9y = 0; \quad y = \sin(rt)</m>
+					<answer>
+						<m>r = 2.5</m>
+					</answer>
+				</exercise>
+
+			</exercisegroup>
+
+			<exercise>
+				<p>
+					Explain the significance of initial condition(s) as they relate to the general solution of a differential equation.
+				</p>
+				<answer>
+					<line>
+						The initial condition(s) specify one or more points that the graph of the
+						solution must pass through. This often allows one to solve for the
+						constants in the general solution.
+						</line>
+						<line>
+						Therefore, the initial condition(s) act to reduce the
+						family of solutions down to a smaller set of solutions or, ideally, a
+						single particular solution.
+					</line>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<p>
+					Does an initial condition always give you a particular solution?
+				</p>
+				<answer>
+					<line>When there is one constant in the general solution, yes.</line>
+					<line>When there is more than one constant in the general solution, no.<m>^{1}</m></line>
+					<aside>
+					It does, however, limit the possible values of the constants.
+					</aside>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<p>
+					Consider the differential equation
+					<me>x^2y' + xy = 1</me>
+				<ol>
+					<li>
+						Verify that the family of functions
+						<me>y = \frac{\ln x + C}{x}</me>
+						a solution to this differential equation.
+					</li>
+					<li>
+						Find the particular solution that corresponds to the initial condition <m>y(9)=8</m>.
+					</li>
+				</ol>
+				</p>
+				<answer>
+					<line>Yes</line>
+					<line>
+						<m>C = 72-\ln(9) \approx 69.803</m>, so
+						<m>\ds y = \frac{\ln x + 69.803}{x} </m> is the particular solution
+					</line>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<p>
+					Consider the differential equation
+					<me>y^\prime = y-y^2</me>
+					Which of the following is a family of solutions for this DE?
+						<ol>
+							<li> <m>\ds y=c\sin(-x)</m></li>
+							<li> <m>\ds y=\frac{1}{1+ce^{-x}}</m></li>
+							<li> <m>\ds y=\frac{1}{c+x^2}</m></li>
+						</ol>
+					Find the particular solution such that <m>y(0) = 7</m>.
+				</p>
+				<answer>
+					<line>b. <m>\ds y=\frac{1}{1+ce^{-x}}</m></line>
+					<line>
+					<m>c = \frac{1}{7}-1 \approx -0.857</m>, so
+					<m>\ds y = \frac{1}{1+(-0.857)e^{-x}} </m> is the particular solution
+					</line>
+				</answer>
+				<solution>
+					<line>Try <m>y=\frac{1}{c+x^2}</m> first.</line>
+					<line>Compute</line>
+					<line> <m>y^\prime = \frac{-4x}{(c+x^2)^2}</m> </line>
+					<line> <m>y-y^2 = \frac{1}{c+x^2} - \frac{1}{(c+x^2)^2}
+									= \frac{c+x^2}{(c+x^2)^2} - \frac{1}{(c+x^2)^2}
+									= \frac{c+x^2-1}{(c+x^2)^2}</m></line>
+					<line>So <m>y^\prime\neq y-y^2</m> for this function, it is not the solution.</line>
+					<line>Now try <m>y=\frac{1}{1+ce^{-x}}</m>. Then</line>
+
+					<line><m>y^\prime = \frac{ce^{-x}}{1+ce^{-x}}</m></line>
+					<line>while</line>
+					<line><m>y-y^2=\frac{1}{1+ce^{-x}}-\frac{1}{(1+ce^{-x})^2}
+								=\frac{1+ce^{-x}}{(1+ce^{-x})^2}-\frac{1}{(1+ce^{-x})^2}
+								=\frac{ce^{-x}}{(1+ce^{-x})^2}</m></line>
+					<line>So this function is the solution</line>
+					<line>Setting <m>y(0)=$y0</m> we get</line>
+					<line><m>$y0 = \frac{1}{1+c}</m></line>
+					<line>Solve for c, <m>c = \frac{1}{$y0}-1=$c</m></line>
+					<line>So the solution for the IVP is <m>y = \frac{1}{1+(-0.857)e^{-x}}</m></line>
+				</solution>
+			</exercise>
+			
+			<exercisegroup><title> Understanding what it means to Solve a DE </title>
+				<introduction>
+					<p>
+						We spend a lot of time solving equations, but do you even remember what it means to be a solution? Let's review what it means to be a solution to an algebraic equation (as in question <xref ref="alg_eqn_soln"/>), and then what it means to be a solution to a differential equation (as in question <xref ref="diff_eqn_soln"/>), and then we'll extend those ideas in questions <xref ref="soln_form1"/> and <xref ref="soln_form2"/>.
+					</p>
+				</introduction>
+
+				<exercise>
+					<p>
+						Verify that <m>x = 3</m> is a solution to the equation 
+						
+						<men xml:id="alg_eqn_soln">2x^2 + 3 = 7x.</men>
+					
+					</p>
+				
+					<p>
+						What confirms that <m>x = 3</m> is a solution? 
+						<answer>
+						the LHS = RHS after substituting <m>x = 3</m> into both sides of the equation.
+						</answer>	
+					</p>
+				
+					<p>	
+						(<em> Note: Do not rearrange the equation to solve for <m>x</m>. That would be the
+						process of finding a solution; you are asked to verify a solution.</em>)
+					</p>
+
+					<solution>
+						We substitute <m>x = 3</m> into the left hand side (LHS) of the equation, 
+						and then into the right hand side (RHS) of the equation:
+						
+						<md>
+							<mrow>\text{LHS}	=\amp\ 2x^2 + 3										</mrow>
+							<mrow>				=\amp\ 2(3)^2 + 3									</mrow>
+							<mrow>				=\amp\ 18 + 3										</mrow>
+							<mrow>				=\amp\ 21											</mrow>
+							<mrow>				\amp 												</mrow>
+							<mrow>\text{RHS}	=\amp\ 7x											</mrow>
+							<mrow>				=\amp\ 7(3)											</mrow>
+							<mrow>				=\amp\ 21											</mrow>	
+						</md>
+						
+						Since we get the same result when we substitute the solution into the RHS and 
+						into the LHS, we have confirmed that <m>x = 3</m> is a solution to the equation.
+					</solution>
+
+					<answer>
+						Since we get the same result (21) when we substitute the solution into the 
+						RHS and into the LHS, we confirm that <m>x = 3</m> is a solution to the equation.
+					</answer>
+				
+				</exercise>
+
+				<exercise>
+					<p>
+						Verify that <m>y = c_1 \sin x + c_2 \cos x</m> is a solution to the DE 
+						<men xml:id="diff_eqn_soln">\ds \frac{d^2y}{dx^2} + y = 0.</men>
+					</p>
+					
+					<hint>
+						Look back at the previous question and think about what it means to be a solution to a DE.
+					</hint>
+					<solution>
+						We need to substitute into the DE. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that.
+						
+						<md>
+						<mrow>						y	=\amp\ c_1 \sin x + c_2 \cos x			</mrow>
+						<mrow>	\Rightarrow \quad   y'	=\amp\ c_1 \cos x - c_2 \sin x			</mrow>
+						<mrow>	\Rightarrow \quad   y''	=\amp\ -c_1 \sin x - c_2 \cos x			</mrow>	
+						</md>
+						
+						Now we can substitute into the DE:
+						
+						<md>
+						<mrow>\text{LHS}=\amp\ \frac{d^2y}{dx^2} + y								</mrow>
+						<mrow>			=\amp\ \Big[ -c_1 \sin x - c_2 \cos x \Big] 
+								+ \Big[ c_1 \sin x + c_2 \cos x \Big]		</mrow>
+						<mrow>			=\amp\ 0													</mrow>
+						<mrow>			=\amp\ \text{RHS}										</mrow>	
+						</md>
+						
+						Since when we substitute in to the DE, we find that the LHS is equal to the RHS, we have verified that <m>y = c_1 \sin x + c_2 \cos x</m> is a solution to the DE <m>\ds \frac{d^2y}{dx^2} + y = 0.</m>
+					</solution>
+
+					<answer>
+						Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that <m>y = c_1 \sin x + c_2 \cos x</m> is a solution to the DE.
+					</answer>
+
+				</exercise>
+			
+				<exercise> 
+					<p>
+						Consider the DE 
+						<men xml:id="soln_form1">\ds \frac{d^2 y}{dx^2} + 6 \frac{dy}{dx} + 5y = 0.</men>
+					</p>
+					
+					<p>		
+						Find all values of <m>m</m> such that <m>y = e^{mx}</m> is a solution to the DE by taking derivatives and substituting into the DE, and then solving for <m>m</m>.
+					</p>
+						
+					<hint>
+						<m>e^{mx} \ne 0,</m> no matter the value of <m>x</m> or <m>m.</m> Therefore we might want to factor it out as it won't contribute to our answer.
+					</hint>
+					<solution>
+
+						First we take derivatives so that we can substitute into the DE.
+						<md>
+						<mrow>						y	=\amp\ e^{mx}							</mrow>
+						<mrow>	\Rightarrow \quad   y'	=\amp\ me^{mx}							</mrow>
+						<mrow>	\Rightarrow \quad   y''	=\amp\ m^2 e^{mx}						</mrow>	
+						</md> 
+						Now we can substitute into the DE and solve for <m>m</m>:
+						<md>
+						<mrow>\frac{d^2 y}{dx^2} 
+							+ 6 \frac{dy}{dx} + 5y	=\amp\ 0							</mrow>
+						<mrow>\Big[ m^2 e^{mx} \Big] + 6\Big[ m e^{mx} \Big] 
+							+ 5\Big[ e^{mx} \Big]	=\amp\ 0							</mrow>
+						<mrow>	e^{mx} \Big[ m^2 + 6m + 5 Big]	=\amp\ 0							</mrow>
+						<mrow>				e^{mx} (m+5)(m+1)	=\amp\ 0							</mrow>	
+						</md>
+						Recall that <m>e^{mx} \ne 0,</m> no matter the value of <m>x</m> or <m>m.</m>
+						Thus we have:
+						<md>
+						<mrow>	m+5 = 0 \amp \text{ or } m+1 = 0								</mrow>
+						<mrow>	m = -5,	\amp \text{ or } m = -1									</mrow>	
+						</md>
+						So the two solutions are <m>m = -5, -1.</m>
+
+					</solution>
+
+					<answer>
+						<me> m = -5, -1 </me>
+					</answer>
+
+				</exercise>
+
+				<exercise>
+					<p>
+						Now that you have (hopefully!) two values for <m>m,</m> choose one of the two values and then verify that <m>y = e^{mx}</m> is a solution for that value of <m>m.</m>
+					</p>
+
+					<solution>
+						<p>
+						The work here is for <m>m = -5,</m> and the work for <m>m = -1</m> is similar.
+						</p>
+						<p>
+						First we take derivatives so that we can substitute into the DE.
+						<md>
+							<mrow>							y	=\amp\ e^{-5x}						</mrow>
+							<mrow>		\Rightarrow \quad   y'	=\amp\ -5e^{-5x}						</mrow>
+							<mrow>		\Rightarrow \quad 	y''	=\amp\ 25 e^{-5x}					</mrow>	
+						</md> 	
+						Now we can substitute into the DE:
+						<md>
+							<mrow>\text{LHS}=\amp\ \frac{d^2 y}{dx^2} + 6 \frac{dy}{dx} + 5y			</mrow>
+							<mrow>			=\amp\ \Big[ 25e^{-5x} \Big] + 6\Big[ -5e^{-5x} \Big] 
+									+ 5\Big[ e^{-5x} \Big]		</mrow>
+							<mrow>			=\amp\ 25e^{-5x} - 30 e^{-5x} + 5e^{-5x}					</mrow>
+							<mrow>			=\amp\ 0													</mrow>
+							<mrow>			=\amp\ \text{RHS}										</mrow>	
+						</md>
+						Hence, we have shown that <m>y = e^{-5x}</m> is a solution to the DE 
+						<m>\ds  \frac{d^2 y}{dx^2} + 6 \frac{dy}{dx} + 5y = 0.</m>
+						</p>
+					</solution>
+
+					<answer>
+						Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that <m>y = e^{-5x}</m> (or <m>y = e^{-x}</m>) is a solution to the DE.
+					</answer>
+
+				</exercise>
+
+				<exercise>
+					<p>
+						<em> Assuming the form of the solution of DE. </em>
+					</p>
+					
+					
+					<p>
+						Find all values of <m>m</m> such that <m>y = x^m</m> is a solution of the DE 
+						<men xml:id="soln_form2">\ds 3x^2 \frac{d^2y}{dx^2} = -11x \frac{dy}{dx} + 3y.</men>
+					</p>
+
+					<solution>
+						<p>
+						We proceed as in the previous question. First we take derivatives so that we can substitute into the DE.
+						<md>
+							<mrow>						y	=\amp\ x^m								</mrow>
+							<mrow>	\Rightarrow \quad   y'	=\amp\ mx^{m-1}							</mrow>
+							<mrow>	\Rightarrow \quad   y''	=\amp\ m(m-1)x^{m-2}						</mrow>	
+						</md> 
+						Now we can substitute into the DE:
+						<md>
+							<mrow>				3x^2 \frac{d^2y}{dx^2}	=\amp\ 
+								-11x \frac{dy}{dx} + 3y						</mrow>
+							<mrow>		3x^2\Big[ m(m-1)x^{m-2} \Big]	=\amp\ 
+								-11x\Big[ mx^{m-1} \Big] + 3\Big[ x^m \Big]	</mrow>
+							<mrow>					3m(m-1)x^2 x^{m-2}	=\amp\ 
+								-11mx^1\cdot x^{m-1} + 3x^m					</mrow>
+							<mrow>				(3m^2 - 3m)x^{2+(m-2)}	=\amp\ 
+								-11m x^{1 + (m-1)} + 3x^m					</mrow>
+							<mrow>					(3m^2 - 3m)x^{m}	=\amp\ -11m x^{m} + 3x^m		</mrow>
+							<mrow>(3m^2 - 3m)x^{m} + 11m x^{m} - 3x^m	=\amp\ 0						</mrow>
+							<mrow>			(3m^2 - 3m + 11m - 3)x^m	=\amp\ 0						</mrow>
+							<mrow>					(3m^2 +8m - 3)x^m	=\amp\ 0						</mrow>
+							<mrow>						(3m -1)(m+3)x^m	=\amp\ 0						</mrow>	
+						</md>
+						Note that there is no value of <m>m</m> that can guarantee that <m>x^m</m> is 0.
+						Hence we have
+						<md>
+							<mrow>			3m-1 = 0 \amp \quad\text{or}\quad m+3 = 0				</mrow>
+							<mrow>	m = \frac{1}{3}, \amp \quad\text{or}\quad m = -3				</mrow>	
+						</md>
+						So the two solutions are <m>m = -3, \frac{1}{3}.</m>
+						</p>
+
+					</solution>
+
+					<answer>
+						<me> m = -3, \frac{1}{3} </me>
+					</answer>
+				
+				</exercise>
+
+			</exercisegroup>
+			
+		</exercises>
+	</section>
+</chapter>

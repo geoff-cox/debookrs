@@ -1,0 +1,2166 @@
+<introduction> 
+	<p>
+		The next technique we will explore is the <em>separation of variables</em> method, a powerful tool for solving certain types of differential equations. The essence of this approach lies in the ability to isolate the dependent and independent variables on opposite sides of the equation. When this separation is possible, the equation is called <em>separable</em>, and we can solve it by integrating both sides independently.
+	</p>
+
+	<p>
+		In this chapter, we will delve into the process of identifying separable differential equations and the steps needed to rewrite them in a form suitable for separation. You'll learn how to apply the separation of variables method to find solutions, accompanied by practical examples that illustrate its effectiveness.
+	</p>
+</introduction>
+
+<chapter><title> Separation of Variables </title>
+	<introduction> 
+		<p>
+			The next technique we will explore is the <em>separation of variables</em> method, a powerful tool for solving certain types of differential equations. The essence of this approach lies in the ability to isolate the dependent and independent variables on opposite sides of the equation. When this separation is possible, the equation is called <em>separable</em>, and we can solve it by integrating both sides independently.
+		</p>
+
+		<p>
+			In this chapter, we will delve into the process of identifying separable differential equations and the steps needed to rewrite them in a form suitable for separation. You'll learn how to apply the separation of variables method to find solutions, accompanied by practical examples that illustrate its effectiveness.
+		</p>
+	</introduction>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Separable Form </title>
+		<p>
+			The separation of variables method works when we can separate the dependent and independent variables by multiplication. Let's define this property formally.
+		</p>
+
+		<definition xml:id="separable">
+			<statement>
+				A first-order differential equation is <term>separable</term> if it can be written in the <term>separable form</term>:
+				<men xml:id="separable-form">\frac{dy}{dx} = f(x) \cdot g(y)</men>
+			</statement>
+		</definition>
+
+		<p>
+			The notation <m>f(x)</m> and <m>g(y)</m> are place-holders for expressions that only contain the variable <m>x</m> and the variable <m>y</m>, respectively. Equivalently, the definition could be written as
+			<me> \frac{dy}{dx} = \left(
+			\begin{array}{c}
+				\text{ONLY } x \text{ terms} \\
+				\text{ and/or constants}\\
+			\end{array} \right) \cdot \left(
+			\begin{array}{c}
+				\text{ONLY } y \text{ terms} \\
+				\text{and/or constants}\\
+			\end{array} \right),
+			</me>
+			but it is much easier to just write <m>f(x) \cdot g(y)</m>.
+		</p>
+
+		<p>
+			For example, the following differential equations are separable:
+			<me>
+				\frac{dy}{dx} = 6xy, \quad \frac{dy}{dx} = (x^2 + 1)(y - 6)^3, \quad \frac{dy}{dx} = \sin(y)\cos(x)
+			</me>.
+			Whereas the following differential equations are not separable:
+			<me>
+				\frac{dy}{dx} = 6x + y, \quad \frac{dy}{dx} = (x + y)(y - 6)^3, \quad \frac{dy}{dx} = \cos(x - y)
+			</me>.
+		</p>
+
+		<paragraphs><title> Special Separable Forms </title>
+			
+			<p>
+				A differential equation can still be separable even if one or both of the variables, <m>x</m> or <m>y</m>, do not appear in the equation. For example, the differential equation,
+				<me> \frac{dy}{dx} = y^2 </me>
+				is still separable since it can be written as 
+				<me> \frac{dy}{dx} = (\underset{f(x)}{\underset{\uparrow}{ \vphantom{|} 1 }}) \cdot (\underset{g(y)}{\underset{\uparrow}{ \vphantom{|} y^2 }}) </me>.
+			</p>
+
+			<p>
+				Similarly, the following equations are also separable:
+				<me>
+					\frac{dy}{dx} = 6x + 5, \quad \frac{dy}{dx} = (y - 6)^3, \quad \frac{dy}{dx} = 15
+				</me>.
+			</p>
+			
+		</paragraphs>
+
+		<p>
+			Understanding the separable form of differential equations is crucial for effectively applying the separation of variables method. By recognizing when an equation can be expressed as a product of functions involving only the independent and dependent variables, you unlock a straightforward path to finding solutions.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c2-s1-i1"><title> <em>The term separable refers to the idea that the dependent and independent variables can be separated by <fillin characters="15" /></em> </title>
+				<statement>
+					<p><em>The term separable refers to the idea that the dependent and independent variables can be separated by <fillin characters="15" />.</em></p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement>multiplication</statement>
+						<feedback>
+							<p>Correct!</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>addition</statement>
+						<feedback>
+							<p>Read the first sentence of this page.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>integration</statement>
+						<feedback>
+							<p>Read the first sentence of this page.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>gender</statement>
+						<feedback>
+							<p>Really?</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s1-i2"><title> <em>Which of the following differential equations is not separable?</em> </title>
+				<statement>
+					<p><em>Which of the following differential equations is not separable?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = \sin(x)\cos(y)</m></statement>
+						<feedback>
+							<p>Incorrect. This equation is separable because it can be expressed as a product of functions involving only <m>x</m> and <m>y</m>.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = e^x \cdot y^2</m></statement>
+						<feedback>
+							<p>Incorrect. This equation is separable as the variables are already separated by multiplication.</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><m>\ds \frac{dy}{dx} = x + y</m></statement>
+						<feedback>
+							<p>Correct! This equation is not separable because the terms involving <m>x</m> and <m>y</m> are added together, not multiplied.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = \frac{x}{y}</m></statement>
+						<feedback>
+							<p>Incorrect. This equation is separable because the variables are divided, which can still be separated into a product of functions.</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s1-i3"><title> <em>The differential equation, <m>\ds\frac{dz}{dt} = \cos^2 z </m>, is separable</em> </title>
+				<statement correct="yes">
+					<p><em>The differential equation, <m>\displaystyle \frac{dz}{dt} = \cos^2 z </m>, is separable</em></p>
+				</statement>
+				<feedback>
+					<p>
+						We can show it is separable by rewriting it as
+						<me>
+						\frac{dz}{dt} = \underset{f(t)}{\underbrace{(\ \pi + 5 \ )}} \cdot \underset{g(t)}{\underbrace{(\ 1 \ )}} \qquad \text{ or } \qquad \frac{dP}{dt} = \underset{f(z)}{\underbrace{(\ \cos^2 z \ )}} \cdot \underset{g(t)}{\underbrace{(\ \pi + 5 \ )}} 
+						</me>
+					</p>
+				</feedback>
+			</exercise>
+
+			<exercise label="p2-c2-s1-i4"> <title> <em>How can the equation <m>\ds\frac{dy}{dx} = \frac{y}{x+y}</m> be rewritten in separable form?</em> </title>
+				<statement>
+					<p><em>How can the equation <m>\ds\frac{dy}{dx} = \frac{y}{x+y}</m> be rewritten in separable form?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = y\left(\frac{1}{x} + \frac{1}{y}\right)</m></statement>
+						<feedback>
+							<p>Incorrect. This rewriting does not separate the variables effectively.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = \frac{1}{x}\left(y + 1\right)</m></statement>
+						<feedback>
+							<p>Incorrect. This form still combines <m>x</m> and <m>y</m> terms in a way that is not separable.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{dy}{dx} = \frac{1}{x}\cdot y - \frac{1}{x}</m></statement>
+						<feedback>
+							<p>Correct! This form separates the variables, making it possible to identify whether the equation is separable.</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>None of the above.</statement>
+						<feedback>
+							<p>Correct! This equation is not separable, so it is impossible to write it in separable form.</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s1-i5"><title> <em>Select the Separable Differential Equations</em> </title>
+				<statement>Click on each of the separable differential equations below.</statement>
+				<areas>
+					<tabular>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = xy^2</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = \frac{3+e^x}{x}</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = \ln(x)\tan(y)</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\displaystyle \frac{dy}{dx} = (x - y)x^2</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = \frac{y}{x}</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = 15\sqrt{y}\left(x + \ln x\right)</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = y^2</m></area></cell><cell/>
+							<cell><area correct="no"><m>\displaystyle \frac{dy}{dx} = \frac{3}{x+y}</m></area></cell><cell/>
+							<cell><area correct="no"><m>\displaystyle \frac{dy}{dx} = \sin(xy)</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\displaystyle \frac{dy}{dx} = x - 3y</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\displaystyle \frac{dy}{dx} = -44</m></area></cell><cell/>
+							<cell><area correct="no"><m>\displaystyle \frac{dy}{dx} = x^2 + y</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+					</tabular>
+				</areas>
+				<feedback>
+					<p>
+						Remember, a differential equation is separable if you can express it as a product of functions of <m>x</m> and <m>y</m> separately. Look for equations where the variables are separated by multiplication, not addition or other operations.
+					</p>
+				</feedback>
+			</exercise>
+
+		</reading-questions>
+	</section>
+	
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Verifying Separable </title>
+		<p>
+			Many differential equations will not be handed to you in <xref ref="separable-form" text="custom">separable form</xref>, so various algebra techniques will be required to put the equations into this form. The following set of examples illustrate this idea.
+		</p>
+		
+		<example xml:id="example-verify-separable-1">
+		
+			<m>\ \ </m> Show the differential equations are separable using various algebra techniques.
+			<p>
+				<me> 
+					\frac{dy}{dx} = x + xy^2, \qquad 
+					\frac{dP}{dt} = \frac{Pt}{P^2 + 1}, \qquad 
+					\frac{dy}{dx} = 11e^{4x + 3y} 
+				</me>.
+			</p>
+			
+			
+			<solution><title> <em>Factor</em> </title>
+				<p>
+					Since <m>x</m> is common in both terms of the sum, we can factor it out as
+					<me>
+						\frac{dy}{dx} = \underset{not\ separated}{\underbrace{x + xy^2}}
+						\quad \overset{algebra}{\longrightarrow} \quad 
+						\frac{dy}{dx} = \underset{separated}{\underbrace{
+							{\color{blue} x } ({\color{green} 1 + y^2 })
+						}}
+					</me>
+					showing that the differential equation is <em>separable</em>.
+				</p>
+			</solution>
+			<solution><title> <em>Split the Fraction</em> </title>
+				<p>
+					This example uses the following rule for multiplying fractions:
+					<me>
+						\frac{A\cdot B}{C\cdot D} = \frac{A}{C} \cdot \frac{B}{D}.
+					</me>
+					First, we split <m>P</m> and <m>t</m> in the numerator and denominator, then use the rule above to separate the fraction, like so
+					<me>
+						\frac{dP}{dt}
+						= \underset{not\ separated}{\underbrace{\frac{Pt}{P^2 + 1}}} 
+						= \frac{P\cdot t}{(P^2 + 1) \cdot (1) }
+						= \underset{separated}{\underbrace{
+							{\color{blue} \frac{P}{P^2 + 1} } \left({\color{green} \frac{t}{1} }\right)
+						}}
+					</me>
+					and the equation is <em>separable</em>.
+				</p>
+			</solution>
+			<solution><title> <em>Separate the Exponents</em> </title>
+				<p>
+					Applying the rule
+					<me>
+						e^{A + B} = e^{A} \cdot e^{B}
+					</me>
+					to this differential equation allows us to show it is separable as follows:
+					
+					<me>
+						\frac{dy}{dx}
+						= \underset{not\ separated}{\underbrace{11e^{4x + 3y}}} 
+						= 11(e^{4x} \cdot e^{3y})
+						= \underset{separated}{\underbrace{
+							{\color{blue} 11e^{4x} } \cdot {\color{green} e^{3y} }
+						}}.
+					</me>
+				</p>
+			</solution>
+		
+		</example>
+
+		<example xml:id="example-verify-separable-2">
+		
+			<m>\ \ </m> Show the differential equations are separable by isolating the derivative first.
+			<p>
+				<me> 
+					\frac{d^2y}{dx^2} \sin x = y, \qquad 
+					t - \frac{ds}{dt} = - s, \qquad 
+					x\frac{dy}{dx} + 10x^2y = 6x^2
+				</me>.
+			</p>
+			
+			
+			<solution><title> <em>Attention to Detail</em> </title>
+				<p>
+					This is sort of a trick question to get you in the habit of checking the order of a differential equation. Since this DE is not first-order, <em>it is not separable</em>.
+				</p>
+			</solution>
+			<solution><title> <em>Isolate the Derivative First</em> </title>
+				<p>
+					We see that this DE is first-order, so now we need to see if it can be rearranged in <xref ref="separable-form" text="custom">separable form</xref>. Isolating <m> \frac{ds}{dt} </m> we get
+					<me> \frac{ds}{dt} = s + t </me>
+					and it should be clear that there is no way to separate <m>t</m> and <m>s</m> by <em>multiplication</em>, and therefore this DE <em>is not separable</em>.
+				</p>
+			</solution>
+			<solution><title> <em>Isolate, Simplify, &amp; Factor</em> </title>
+				<p>
+					As before, let's isolate <m>dy/dx</m> on the left side of the equation, like so
+					<me>  x\frac{dy}{dx} = 6x^2 - 10x^2y</me>
+					<me> \frac{dy}{dx} = \frac{1}{x}\left(6x^2 - 10x^2y\right) </me>
+					<me> \frac{dy}{dx} = 6x - 10xy. </me>
+					Now that the derivative is isolated on the left, we attempt to separate the variables on the right. Factoring <m>2x</m> out of both terms gives
+					<me> \frac{dy}{dx} = 2x \cdot \left( 3 - 5y \right) </me>
+					and we see that the differential equation <em>is separable</em>.
+				</p>
+				
+				<p>
+					In general, there is more than one way to separate a differential equation. This example could have been separated in either of the following ways:
+					<me>\frac{dy}{dx} = x \cdot ( 6 - 10y ), \qquad \frac{dy}{dx} = ( -2x )\cdot ( 5y - 3 ) </me>
+					The only thing that matters is that <m>x</m> and <m>y</m> are separated.
+				</p>
+			</solution>
+		
+		</example>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c2-s2-i1"><title> <em>The differential equation, <m>\ds \frac{dy}{dx} - x(y^2 + y) = 0</m>, is in separable form</em> </title>
+				<statement correct="no">
+					<p>
+						<em>The differential equation, <m>\ds \frac{dy}{dx} - x(y^2 + y) = 0</m>, is in separable form</em>.
+					</p>
+				</statement>
+				<feedback>
+					<p>
+						This equation is not currently in <xref ref="separable-form" text="custom">separable form</xref>. However, it can be put in separable form by moving the <m>x(y^2 + y)</m> term to the right-side of the equation.
+					</p>
+				</feedback>
+			</exercise>
+
+			<exercise label="p2-c2-s2-i2"><title> <em>Match each equation to the algebra technique needed to show the equation is separable</em> </title>
+				<statement>
+					<p>
+						<em>Drag the algebra technique to the corresponding differential equation.</em>
+					</p>
+				</statement>
+				<matches>
+					<match order="4">
+						<premise><m>e^{A+B} = e^A \cdot e^B</m></premise>
+						<response><m>\ds w' = w e^{t+w} </m></response>
+					</match>
+					<match order="3">
+						<premise> <m>\frac{A\cdot B}{C\cdot D} = \frac{A}{C} \cdot \frac{B}{D}</m> </premise>
+						<response><m>\ds \frac{dy}{d\theta} = \frac{3y}{(y+9)\theta} </m></response>
+					</match>
+					<match order="1">
+						<premise> Isolate the derivative </premise>
+						<response><m>\ds xr' + 2r = 0 </m></response>
+					</match>
+					<match order="2">
+						<premise> Factor </premise>
+						<response><m>\ds \frac{dP}{dt} = e^t P^2 - e^t </m></response>
+					</match>
+					<match order="5">
+						<premise> No technique is needed </premise>
+						<response><m>\ds w' = e^Q e^{x} </m></response>
+					</match>
+				</matches>
+			</exercise>
+
+			<exercise label="p2-c2-s2-i3"><title><em>Select the Separable Differential Equations</em></title>
+				<statement>Click on each of the separable differential equations below.</statement>
+				<areas>
+					<tabular>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = \frac{x + y}{xy}</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\ds \frac{dy}{dx} = \frac{1}{x^2} + \frac{y}{x^2}</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = x^2 + y^2</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = x\left(\frac{y}{x} + 1\right)</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = \frac{\sin(x+y)}{x}</m></area></cell><cell/>
+							<cell><area correct="yes"><m>\ds \frac{dy}{dx} = y \cdot e^{-x}</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes"><m>\ds x^2\frac{dy}{dx} - y = x^2y</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = y^2 - xy</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = \cos(xy)</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes"><m>\ds \frac{dy}{dx} = \frac{y}{\sqrt{x^2+1}}</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = x + \frac{y^2}{x}</m></area></cell><cell/>
+							<cell><area correct="no"><m>\ds \frac{dy}{dx} = \frac{1}{x} + \frac{1}{y}</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+					</tabular>
+				</areas>
+				<feedback>
+					<p>
+						A differential equation is separable if you can rearrange it to express it as a product of functions involving only <m>x</m> and <m>y</m> separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.
+					</p>
+				</feedback>
+			</exercise>
+					
+			<exercise label="p2-c2-s2-i4"><title> <em>Write the differential equation, <m>\ds\frac{dy}{dx} - y\cos(x) = y</m>, in separable form</em> </title>
+
+				<introduction>
+					<p>
+						Write the differential equation,
+						<me> \frac{dy}{dx} - y\cos(x) = y </me>,
+						in <xref ref="separable-form" text="custom">separable form</xref> by identifying <m>f(x)</m> and <m>g(y)</m>.
+					</p><p/>
+				</introduction>
+					
+				<webwork xml:id="p2-c2-s1-i4-ww">
+					<description>
+						Show that the DE is separable by giving the separable form.
+					</description>
+			
+					<pg-code>
+						Context()->variables->add(y => 'Real');
+						= Formula("1 + cos(x)");
+						= Formula("y");
+					</pg-code>
+			
+					<statement>
+
+						<p>
+							<tabular halign="center">
+							
+								<row>
+									<cell><m>\displaystyle \frac{dy}{dx} = \Big( </m></cell>
+									<cell><var name="" width="10" /></cell>
+									<cell><m>\Big) \cdot \Big( </m></cell>
+									<cell><var name="" width="10" /></cell>
+									<cell><m>\Big)</m></cell>
+								</row>
+								<row>
+									<cell/>
+									<cell><m>f(x)</m></cell>
+									<cell/>
+									<cell><m>g(y)</m></cell>
+									<cell/>
+								</row>
+
+							</tabular>
+						
+						</p>
+
+					</statement>
+
+					<solution>
+						Move the <m> y\cos x </m> term to the right and factor out <m>y</m>.
+						<md>
+							<mrow> \frac{dy}{dx} - y\cos(x) = y \amp \implies \frac{dy}{dx} = y + y\cos(x) </mrow>
+							<mrow>							  \amp \implies \frac{dy}{dx} = (1 + \cos(x))y </mrow>
+						</md>
+					</solution>
+					
+				</webwork>
+			</exercise>
+
+			<exercise label="p2-c4-s1-i5"><title> <em>Write the differential equation, <m>\ds tP\frac{dP}{dt} = e^tP^2 - e^ty</m>, in separable form</em> </title>
+				
+				<feedback>
+					
+				</feedback>
+				<introduction>
+					<p>
+						Write the differential equation,
+						<me> tP\frac{dP}{dt} = e^tP^2 - e^t </me>,
+						in <xref ref="separable-form" text="custom">separable form</xref> by identifying <m>f(t)</m> and <m>g(P)</m>.
+					</p><p/>
+				</introduction>
+					
+				<webwork xml:id="p2-c2-s1-i5-ww">
+					<description>
+						Show that the DE is separable by giving the separable form.
+					</description>
+			
+					<pg-code>
+						Context()->variables->add(t => 'Real');
+						Context()->variables->add(P => 'Real');
+						= Formula("e^(t)/t");
+						= Formula("(P^2 - 1)/P");
+					</pg-code>
+			
+					<statement>
+
+						<p>
+							<tabular halign="center">
+							
+								<row>
+									<cell><m>\displaystyle \frac{dP}{dt} = \Big( </m></cell>
+									<cell><var name="" width="5" /></cell>
+									<cell><m>\Big) \cdot \Big( </m></cell>
+									<cell><var name="" width="5" /></cell>
+									<cell><m>\Big)</m></cell>
+								</row>
+								<row>
+									<cell/>
+									<cell><m>f(t)</m></cell>
+									<cell/>
+									<cell><m>g(P)</m></cell>
+									<cell/>
+								</row>
+
+							</tabular>
+						
+						</p>
+
+					</statement>
+			
+					<solution>
+						<p>
+							We isolate the derivative and group the terms as shown below. Notice how we separated the product of two fractions <m>\left(\frac{AB}{CD} = \frac{A}{C}\cdot \frac{B}{D}\right)</m>.
+							<me>
+								tP\frac{dP}{dt}
+									= e^tP^2 - e^t 
+									= \frac{e^t \cdot (P^2 - 1)}{t \cdot P} 
+									= \frac{e^t}{t} \cdot \frac{P^2 - 1}{P} 
+									= \underset{f(t)}{\boxed{\frac{e^t}{t}}}\underset{g(P)}{\left(\boxed{\frac{P^2 - 1}{P}}\right)}
+							</me>.
+						</p>
+					</solution>
+					
+				</webwork>
+			</exercise>
+
+		</reading-questions>
+	</section>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Separation of Variables Method (SOV) </title>
+		<p>
+			We are now going to discuss the steps involved in the <em>separation of variables</em> method. In order to use this method, the differential equation must be first-order and be <xref ref="separable" text="custom">separable</xref>.
+		</p>
+
+		<p>
+			Identifying a differential equation as first-order is as simple as observing the presence of a first derivative and no higher derivatives. In comparison, determining that an equation is separable is not always immediately apparent. Sometimes, it requires some algebra to rearrange the equation into a form where the method can be applied. 
+		</p>
+
+		<exploration xml:id="sov-method"><title> Separation of Variables (SOV) </title>
+			<p>
+				If a differential equation can be written in the separable form
+				<me xml:id="sov-method-de">
+					\frac{dy}{dx} = f(x) \cdot g(y)
+				</me>,
+				then the general solution can be determined through the steps below.
+			</p>
+			<dl>
+				<li xml:id="sov-step-1"><title> Step 1: Separate </title>
+					<p>
+						<m>\ds \frac{1}{g(y)}\ dy = f(x)\ dx</m>
+					</p>
+				</li>
+				<li xml:id="sov-step-2"><title> Step 2: Integrate </title>
+					<p>
+						<m>\ds \int \frac{1}{g(y)}\ dy = \int f(x) \ dx</m>
+					</p>
+				</li>
+				<li xml:id="sov-step-3"><title> Step 3: Isolate  </title>
+					<p>
+						Isolate <m>y</m> (if possible), and combine constants.
+					</p>
+				</li>
+			</dl>
+		</exploration> 
+
+		<p>
+			These problems serve as warm-up examples to familiarize you with the separation of variables method. You won't encounter any tricky algebra or calculus steps, allowing you to focus solely on the general steps needed to apply this technique. However, pay close attention to the new concept of "combining constants", as it will appear frequently throughout this course.
+		</p>
+
+		<example xml:id="sov-method-basic-examples">
+
+			<m>\ \ </m>Find the general solution to the following differential equations using the separation of variables method.
+
+			<ol marker="A.">
+				<li>
+					<p>
+						<m>\ds \frac{dy}{dx} = x^2 </m>
+						<solution>
+
+							<p>
+								You actually don't need separation of variables to solve for <m>y</m>. In fact, you might recognize that finding <m>y</m> is the same as finding the anti-derivative of <m>x^2</m>, which we know is <m>y = \frac13x^3 + c</m>. Nevertheless, let's apply separation of variables to make sure we get the same answer.
+							</p>
+				
+							<p>
+								The differential equation has order 1 and is separable since
+								<me>\ds  \frac{dy}{dx} = \underset{f(x)}{\underset{\uparrow}{\big( x^2 \big)}} \cdot \underset{g(y)}{\underset{\uparrow}{\big( 1 \big)}}</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-1" text="title" />.	We use algebra to move all the <m>y</m> terms to the left and all the <m>x</m> terms to the right, giving
+								<me>\ds  \frac{1}{\underset{g(y)}{\underset{\uparrow}{ 1 }}} \frac{dy}{dx} = \underset{f(x)}{\underset{\uparrow}{ x^2 }}</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-2" text="title" />. We now integrate both sides with respect to <m>x</m>, like so
+								<md>
+									<mrow> \int 1 \underset{=\ dy}{\underbrace{\frac{dy}{dx}dx}} \amp = \int x^2\ dx</mrow>
+									<mrow> \int 1\ dy \amp = \int x^2\ dx</mrow>
+									<mrow> y + c_1	\amp = \frac13 x^3 + c_2. </mrow>
+								</md>
+							</p>
+				
+							<p>
+								<xref ref="sov-step-3" text="title" />. Finally, we isolate <m>y</m> and combine constants.
+								<md>
+								<mrow>  y \amp = \frac13 x^3 + c_2 - c_1 </mrow>
+								</md>
+							</p>
+					
+							<p>
+								Since <m> c_2 - c_1 </m> is still a constant, we combine it into a single constant, <m>c</m>, and write our solution as
+								<me>
+								y = \frac13 x^3 + c
+								</me>
+							</p>
+				
+						</solution>
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>\ds \frac{dy}{dx} = y^2 </m>
+						<solution>
+
+							<p>
+								The differential equation has order 1 and is separable since
+								<me>
+									\frac{dy}{dx} = \underset{f(x)}{\underset{\uparrow}{\big( 1 \big)}} \cdot \underset{g(y)}{\underset{\uparrow}{\big( y^2 \big)}}
+								</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-1" text="title" />. We use algebra to move all the <m>y</m> terms to the left and all the <m>x</m> terms to the right, giving
+								<me>
+									\frac{1}{\underset{g(y)}{\underset{\uparrow}{ y^2 }}} \frac{dy}{dx} = \underset{f(x)}{\underset{\uparrow}{ 1 }}
+								</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-2" text="title" />. We now integrate both sides with respect to <m>x</m>, like so
+								<md>
+									<mrow> \int 1\frac{1}{y^2} \underset{=\ dy}{\underbrace{\frac{dy}{dx}dx}} \amp = \int 1\ dx</mrow>
+									<mrow> \int y^{-2}\ dy \amp = \int 1\ dx</mrow>
+									<mrow> \frac{y^{-1}}{-1} + c_1	\amp = x + c_2. </mrow>
+								</md>
+							</p>
+				
+							<p>
+								<xref ref="sov-step-3" text="title" />. Finally, we isolate <m>y</m> and combine constants.
+								<md>
+									<mrow>  -\frac{1}{y} \amp = x + c_2 - c_1 </mrow>
+									<mrow>  -\frac{1}{y} \amp = x - (c_2 - c_1) </mrow>
+									<mrow>  \frac{1}{y} \amp = -x + c \quad \leftarrow \text{combined constant} </mrow>
+									<mrow>  y \amp = \frac{1}{-x + c} </mrow>
+								</md>
+							</p>
+				
+						</solution>
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>\ds \frac{dy}{dx} + \frac{x}{y^2} = 0 </m>
+						<solution>
+
+							<p>
+								<me>
+									\frac{dy}{dx} = - \frac{x}{y} = -x\left(\frac{1}{y^2}\right) \quad \leftarrow \text{separable}
+								</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-1" text="title" />. 
+								<me>
+									y^2\frac{dy}{dx} = -x
+								</me>
+							</p>
+					
+							<p>
+								<xref ref="sov-step-2" text="title" />. 
+								<md>
+									<mrow> \int y^2 \underset{=\ dy}{\underbrace{\frac{dy}{dx}dx}}	\amp = \int -x\ dx</mrow>
+									<mrow> 											\int y^2 \ dy 	\amp = \int -x\ dx</mrow>
+									<mrow> 									\frac{y^{3}}{3} + c_1	\amp = -\frac{x^{2}}{2} + c_2. </mrow>
+								</md>
+							</p>
+				
+							<p>
+								<xref ref="sov-step-3" text="title" />. 
+								<md>
+									<mrow> 	\frac{y^{3}}{3}	\amp = -\frac{x^{2}}{2} + \underset{=\ c_3}{\underbrace{c_2 - c_1}}  	</mrow>
+									<mrow>  		y^{3}	\amp = -3\cdot\frac{x^{2}}{2} + \underset{=\ c}{\underbrace{3\cdot c_3}} 	</mrow>
+									<mrow>  		y^{3}	\amp = -\frac32 x^2 + c 						</mrow>
+									<mrow>  		y		\amp = \left(-\frac32 x^2 + c \right)^{1/3} 						</mrow>
+								</md>
+							</p>
+				
+						</solution>
+					</p>
+				</li>
+			</ol>
+
+		</example>
+
+		<p>
+			These examples illustrate the fundamental steps of the separation of variables method, giving you a solid foundation for solving simple separable differential equations. As you progress, the techniques you've learned here will be essential for tackling more challenging problems. In the next section, we'll explore more complex examples that require additional algebraic manipulation and deeper understanding.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c2-s3-i1"><title> <em>Why is it important to verify if a differential equation is separable?</em> </title>
+				<statement>
+					<p><em>Why is it important to verify if a differential equation is separable?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement>Separable equations are easier to solve.</statement>
+						<feedback>Incorrect. While separable equations can be easier to solve, the main reason to verify separability is to ensure that the separation of variables method can be applied.</feedback>
+					</choice>
+					<choice>
+						<statement>It helps to identify the order of the differential equation.</statement>
+						<feedback>Incorrect. Verifying separability does not necessarily relate to identifying the order of the differential equation.</feedback>
+					</choice>
+					<choice>
+						<statement>It simplifies the differential equation.</statement>
+						<feedback>Incorrect. Verifying separability does not simplify the equation itself but confirms if the equation can be solved by separation of variables.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>Not all differential equations are separable, and this method only works on separable equations.</statement>
+						<feedback>Correct! The separation of variables method is only applicable to separable differential equations, making it important to verify separability first.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s3-i2"><title> <em>What are the two key requirements for using the separation of variables method?</em> </title>
+				<statement>
+					<p><em>What are the two key requirements for using the separation of variables method?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement>The differential equation must be linear and separable.</statement>
+						<feedback>Incorrect. Separable is required, but the equation does not need to be linear.</feedback>
+					</choice>
+					<choice>
+						<statement>The differential equation must be first-order and linear.</statement>
+						<feedback>Incorrect. First-order is required, but the equation does not need to be linear for the separation of variables method to be applied.</feedback>
+					</choice>
+					<choice>
+						<statement>The differential equation must be second-order and separable.</statement>
+						<feedback>Incorrect. Separable is required, but the equation cannot be second-order for the separation of variables method to be applied.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>The differential equation must be first-order and separable.</statement>
+						<feedback>Correct! The separation of variables method applies only to first-order differential equations thatare separable.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s3-i6"><title> <em>In the differential equation <m>\ds\frac{dy}{dx} + \frac{x}{y^2} = 0</m>, which step is crucial for verifying that it is separable?</em> </title>
+				<statement>
+					<p><em>In the differential equation <m>\frac{dy}{dx} + \frac{x}{y^2} = 0</m>, which step is crucial for verifying that it is separable?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement>Integrating both sides immediately.</statement>
+						<feedback>Incorrect. Integration should come after the equation is verified to be separable.</feedback>
+					</choice>
+					<choice>
+						<statement>Substituting a value for <m>x</m>.</statement>
+						<feedback>Incorrect. Substitution is not part of the separation process; the goal is to separate the variables first.</feedback>
+					</choice>
+					<choice>
+						<statement>Expanding the terms on both sides.</statement>
+						<feedback>Incorrect. Expansion is not necessary here; the focus should be on separating the variables.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>Rearranging the equation to isolate <m>\frac{dy}{dx}</m> and separate the variables.</statement>
+						<feedback>Correct! Rearranging the equation is key to verifying that it can be separated into functions of <m>x</m> and <m>y</m>.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s3-i8" randomize="true" adaptive="yes"><title>Separation of Variables Method Steps</title>
+				
+				<statement>
+					<p>
+						List the order of tasks that you should perform to apply separation of variables method.
+					</p>
+					<p>
+						<em>Drag each task on the left to the correct order on the right.</em>
+					</p>
+				</statement>
+
+				<feedback>
+				<p>
+					Review
+				</p>
+				</feedback>
+
+				<matches>
+					<match>
+						<premise>Verify the DE is separable.</premise>
+						<response>Task 1</response>
+					</match>
+					<match>
+						<premise>
+							Separate the variables on different sides of the equation.
+						</premise>
+						<response>Task 2</response>
+					</match>
+					<match>
+						<premise>Integrate both sides of the DE</premise>
+						<response>Task 3</response>
+					</match>
+					<match>
+						<premise>Solve for <m>y</m>, if possible</premise>
+						<response>Task 4</response>
+					</match>
+					<match>
+						<premise>Apply initial conditions, if given.</premise>
+						<response>Task 5</response>
+					</match>
+				</matches>
+			</exercise>
+			
+		</reading-questions>
+	</section>
+	
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Additional Examples </title>
+		<p>
+			The following problems go beyond the basics and require more advanced algebraic manipulations or integration techniques to solve. Each example will deepen your understanding of the separation of variables method (SOV) and its application to more complex differential equations.
+		</p>
+
+		<example>
+
+			<m>\ \ </m> Solve the differential equations using the SOV method.
+			<p>
+				A. <m>\ \ds\frac{dy}{dx} = \frac{\cos x}{y} </m>
+			</p>
+		
+			<solution>
+		
+				<p>
+					The equation is separable since it can be written as:
+					<me>\ds  \frac{dy}{dx} = \big( \cos x \big) \cdot \left( \frac{1}{y} \right).</me>
+					Now we apply the separation of variables method.
+				</p>
+
+				<sidebyside widths="40% 45% 15%">
+
+					<p>
+						<md>
+							<mrow><xref ref="sov-step-1" text="title" />  \vphantom{y\ dy = \cos(x)\ dx} \rightarrow</mrow>
+							<mrow><xref ref="sov-step-2" text="title" /> \vphantom{\int y\ dy = \int \cos(x)\ dx} \rightarrow</mrow>
+							<mrow><xref ref="sov-step-3" text="title" />  \vphantom{\frac{y^2}{2} + c_1 = \sin(x) + c_2} \rightarrow</mrow>
+							<mrow> \vphantom{y^2 = 2\sin(x) + 2c} </mrow>
+							<mrow> \vphantom{y = \pm\sqrt{2\sin(x) + c}} </mrow>
+						</md>
+					</p>
+
+					<p>
+						<md>
+							<mrow> y\ dy				=\amp\ \cos(x)\ dx			  </mrow>
+							<mrow> \int y\ dy		   =\amp\ \int \cos(x)\ dx		 </mrow>
+							<mrow> \frac{y^2}{2} + c_1  =\amp\ \sin(x) + c_2			</mrow>
+							<mrow> \frac{y^2}{2}		=\amp\ \sin(x) + \os{\large c}{\boxed{c_2-c_1}}		</mrow>
+							<mrow> y^2				  =\amp\ 2\sin(x) + 2c			</mrow>
+							<mrow> y(x)				 =\amp\ \pm\sqrt{2\sin(x) + c}   </mrow>
+						</md>.
+					</p>
+
+					<p/>
+				</sidebyside>
+		
+			</solution>
+		
+			<p>
+				B. <m>\ \ds y^2 y' - 1 = 6x^2 </m>
+			</p>
+
+			<solution>
+
+				<p>
+					This differential equation is separable as it can be written as:
+					<md>
+						<mrow> y^2 y' - 1 =\amp\ 6x^2														</mrow>
+						<mrow> y' =\amp\ \frac{6x^2 + 1}{y^2}												</mrow>
+						<mrow> \frac{dy}{dx} =\amp\ \big( 6x^2 + 1 \big)\cdot \left( \frac{1}{y^2} \right)	</mrow>
+					</md>
+					Therefore, we can apply the separation of variables method.
+				</p>
+
+
+				<sidebyside widths="40% 45% 15%">
+
+					<p>
+						<md>
+							<mrow><xref ref="sov-step-1" text="title" />  \vphantom{y\ dy = \cos(x)\ dx} \rightarrow</mrow>
+							<mrow><xref ref="sov-step-2" text="title" /> \vphantom{\int y\ dy = \int \cos(x)\ dx} \rightarrow</mrow>
+							<mrow><xref ref="sov-step-3" text="title" />  \vphantom{\frac{y^2}{2} + c_1 = \sin(x) + c_2} \rightarrow</mrow>
+							<mrow> \vphantom{y^2 = 2\sin(x) + 2c} </mrow>
+							<mrow> \vphantom{y = \pm\sqrt{2\sin(x) + c}} </mrow>
+						</md>
+					</p>
+
+					<p>
+						<md>
+							<mrow> y^2\ dy				=\amp\ (6x^2+1)\ dx			  </mrow>
+							<mrow> \int y^2\ dy		   =\amp\ \int (6x^2+1)\ dx		 </mrow>
+							<mrow> \frac{y^3}{3} + c_1  =\amp\ 2x^3 + x + c_2			</mrow>
+							<mrow> \frac{y^3}{3}		=\amp\ 2x^3 + x + \os{\large c}{\boxed{c_2-c_1}}		</mrow>
+							<mrow> y^3				  =\amp\ 6x^3 + 3x + 3c			</mrow>
+							<mrow> y					=\amp\ \sqrt[3]{6x^3 + 3x + c}   </mrow>
+						</md>.
+					</p>
+
+					<p/>
+					
+				</sidebyside>
+
+			</solution>
+
+		</example>
+
+		<note><title>Common Pitfall: Don't Split Square Roots!</title>
+		
+			<p>
+				In the first example, we found the general solution to
+				<me>\frac{dy}{dx} = \frac{\cos x}{y}</me>
+				as <m>y(x) = \pm\sqrt{2\sin(x) + c}</m>. Some students are tempted to simplify this incorrectly, like so:
+				<md>
+					<mrow> y(x) =\amp\ \pm\sqrt{2\sin(x) + c} </mrow>
+					<mrow> y(x) =\amp\ \pm\sqrt{2\sin(x)} + \sqrt{c} \quad \leftarrow \text{Error} </mrow>
+					<mrow> y(x) =\amp\ \pm\sqrt{2\sin(x)} + c \quad \leftarrow \text{Incorrect} </mrow>
+				</md>
+				The constant <m>c</m> must remain inside the square root, as this separation over addition or subtraction violates the square root's mathematical properties.
+			</p>
+			
+		</note>
+
+		<p>
+			The following problems introduce initial conditions, allowing you to solve for specific solutions using the SOV method.
+		</p>
+
+		<example>
+
+			<m>\ \ </m> Solve the initial-value problems using the SOV method.
+		
+			<p>
+				A. <m>\ \ds \frac{dy}{dx} = \frac{\cos x}{y}, \quad y(0) = -5 </m>
+			</p>
+
+			<solution>
+
+				<p>
+					From previous example, the general solution is
+					<me>y(x) = \pm\sqrt{2\sin(x) + c}.</me>
+					where the <m>\pm</m> sign means that the general solution includes both the positive and negative square roots. However, when finding a particular solution, only one applies. In this case, the initial condition <m>y(0) = -5</m> indicates that <m>y</m> is negative when <m>x = 0</m>. Therefore, the particular solution must come from the form containing the negative sign. Substituting the initial condition:
+					<md>
+						<mrow> -5 = -\sqrt{2\sin(0) + c} = -\sqrt{0 + c} = -\sqrt{c} </mrow>
+						<mrow> 5 = \sqrt{c} \implies c = 25 </mrow>
+					</md>
+					Therefore, the solution to the initial-value problem is:
+					<me>y(x) = -\sqrt{2\sin(x) + 25}</me>
+				</p>
+
+			</solution>
+
+			<p>
+				B. <m>\ \ds z' - 1 = z^2, \quad z(4) = 9</m>
+			</p>
+			
+			<solution>
+
+				<p>
+					This differential equation is first order and separable since
+					<md>
+						<mrow> z' - 1 =\amp\ z^2							</mrow>
+						<mrow> z' =\amp\ z^2 + 1							</mrow>
+						<mrow> z' =\amp\ \big( 1 \big) \big( z^2 + 1 \big)  </mrow>
+					</md>
+					Therefore, we can apply the separation of variables method.
+				</p>
+
+				<sidebyside widths="30% 55% 15%">
+
+					<p>
+						<md>
+							<mrow> \text{Separate} \vphantom{\frac{1}{z^2}} \rightarrow								</mrow>
+							<mrow> \text{Integrate} \vphantom{\int\frac{1}{z^2}} \rightarrow						</mrow>
+							<mrow> \text{Isolate} \vphantom{\arctan z} \rightarrow									</mrow>
+							<mrow> \vphantom{\arctan z}																</mrow>
+							<mrow> \text{General Solution} \vphantom{\os{\large c}{\boxed{c_2-c_1}}} \rightarrow	</mrow>
+						</md>
+					</p>
+
+					<p>
+						<md>
+							<mrow> \frac{1}{z^2+1}dz		=\amp\ 1dt									</mrow>
+							<mrow> \int\frac{1}{z^2+1}\ dz  =\amp\ \int 1\ dt							</mrow>
+							<mrow> \arctan z + c_1		  =\amp\ t + c_2								</mrow>
+							<mrow> \arctan z				=\amp\ t + \os{\large c}{\boxed{c_2-c_1}}   </mrow>
+							<mrow> z						=\amp\ \tan(t+c)							</mrow>	
+						</md>.
+					</p>
+
+					<p/>
+
+				</sidebyside>
+
+				<p>
+					Substituting, <m>z(4) = 9</m>, into the general solution, we get
+					<md>
+						<mrow> 9 = \tan(4+c) </mrow>
+						<mrow> \arctan(9) = 4+c \implies c = \arctan(9) - 4 </mrow>
+					</md>
+					Therefore, the solution to the intial-valued problem is
+					<me>
+						z = \tan(t+\arctan(9) - 4)
+					</me>
+				</p>
+
+			</solution>
+
+		</example>
+
+		<p>
+			In the previous examples, we were able to explicitly solve for the dependent variable in terms of the independent variable. However, in some cases, we may only be able to provide an implicit solution, as shown in the next example.
+		</p>
+		
+		<example>
+
+			<m>\ \ </m> Solve the initial-value problem using the SOV method.
+		
+			<p>
+				<me> Q Q' + e^Q Q' = t, \quad Q(0) = 0 </me>
+			</p>
+		
+			<solution>
+		
+				<p>
+					Since all the <m>Q</m> terms are on the left and all the <m>t</m> terms are on the right, we can just factor out <m>Q'</m> on the left to separate the equation.
+			
+					<sidebyside widths="30% 55% 15%">
+
+						<p>
+							<md>
+								<mrow> \text{Separate}  \vphantom{\left(Q + e^Q\right)} \rightarrow		 </mrow>
+								<mrow> \text{Integrate} \vphantom{\int \left(Q + e^Q\right)} \rightarrow	</mrow>
+								<mrow> \text{Isolate}   \vphantom{\frac{1}{2}} \rightarrow				  </mrow>
+							</md>
+						</p>
+
+						<p>
+							<md>
+								<mrow> \left(Q + e^Q\right)dQ =\amp\ tdt								   </mrow>
+								<mrow> \int \left(Q + e^Q\right)dQ =\amp\ \int tdt						 </mrow>
+								<mrow> \frac12 Q^2 + e^Q =\amp\ \frac{1}{2}t^2 + c_1						 </mrow>
+								<mrow> Q^2 + 2e^Q =\amp\ t^2 + \us{c}{\boxed{2c_1}}					  </mrow>.
+							</md>
+						</p>
+
+						<p/>
+
+					</sidebyside>
+
+					So, the general solution is
+					<me> Q^2 + 2e^Q = t^2 + c </me>.
+					Note that there is no nice way to find <m>Q</m> explicitly. In these cases, it is ok to leave the general solution in this implicit form. We can still find <m>c</m> using initial condition. Recall, that <m>Q(0) = 0</m> means that when <m>t = 0</m>, <m>Q = 0</m>. Substituting these values in, we get
+					<md>
+						<mrow> 0^2 + 2e^0 = 0^2 + c </mrow>
+						<mrow> 2 = c </mrow>
+					</md>
+					Therefore, the solution to the initial-valued problem is
+					<me> Q^2 + 2e^Q = t^2 + 2 </me>.
+				</p>
+		
+			</solution>
+		
+		</example>
+
+		<p>
+			The final example highlights some of the subtle details of combining constants and dealing with absolute values that arise when solving differential equations.
+		</p>
+
+		<example>
+			
+			<m>\ \ </m> Solve the differential equation using the SOV method.
+			<p>
+				<me> x\frac{dy}{dx} + 10x^2y = 6x^2 </me>
+			</p>
+
+			<solution>
+
+				<p>
+					This differential equation is first order and separable since 
+					<md>
+						<mrow> x\frac{dy}{dx} + 10x^2y =\amp\ 6x^2 </mrow>
+						<mrow> \frac{dy}{dx} =\amp\ \frac{6x^2}{x}\left(6x^2 - 10x^2y\right) </mrow>
+						<mrow> \frac{dy}{dx} =\amp\ 6x - 10xy = (2x)(3 - 5y)</mrow>
+					
+					</md>
+					Therefore, we can apply the separation of variables method.
+			
+					<sidebyside widths="30% 55% 15%">
+
+						<p>
+							<md>
+								<mrow> \vphantom{\frac{1}{3 - 5y}dy}										</mrow>
+								<mrow> \begin{array}{c}u = 3-5y,\\ du = -5dx\end{array} \ \ \rightarrow		</mrow>
+								<mrow> \vphantom{\frac{1}{5}}												</mrow>
+								<mrow> \vphantom{\ln|5y|}													</mrow>
+								<mrow> \vphantom{ye^{5}}													</mrow>
+								<mrow> \vphantom{ye^{5}}													</mrow>
+								<mrow> c_2 = \pm e^{-5c_1} \vphantom{\boxed{\pm e^{-5c_1}}}\ \ \rightarrow	</mrow>
+							</md>
+						</p>
+
+						<p>
+							<md>
+								<mrow> \frac{1}{3 - 5y}dy =\amp\ 2x\ dx										</mrow>
+								<mrow> \int \frac{1}{3 - 5y}dy =\amp\ \int 2x\ dx							</mrow>
+								<mrow> -\frac{1}{5}\ln|3 - 5y| =\amp\ x^2 + c_1								</mrow>
+								<mrow> \ln|3 - 5y| =\amp\ -5x^2 - 5c_1										</mrow>
+								<mrow> |3 - 5y| =\amp\ e^{-5x^2 - 5c_1}										</mrow>
+								<mrow> 3 - 5y =\amp\ \pm e^{-5x^2 - 5c_1}									</mrow>
+								<mrow> 3 - 5y =\amp\ \boxed{\pm e^{-5c_1}}e^{-5x^2}							</mrow>
+								<mrow> 5y =\amp\ c_2 e^{-5x^2} + 3											</mrow>
+								<mrow> y =\amp\ \us{\large c}{\boxed{\frac{c_2}{5}}} e^{-5x^2} + \frac35	</mrow>
+							</md>.
+						</p>
+
+						<p/>
+					</sidebyside>
+
+					Finally, the general solution is
+					<me>
+						y = ce^{-5x^2} + \frac35
+					</me>
+				</p>
+
+			</solution>
+		
+		</example>
+
+		<p>
+			These examples demonstrate a range of techniques and complexities involved in solving separable differential equations. Depending on the form of the equation, the solution might be explicit or implicit, but the method of separation of variables remains a powerful tool for finding solutions to many types of differential equations.
+		</p>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c2-s4-i1"><title> <em>What is the first step to solve <m>y^2 y' - 1 = 6x^2</m>, using the separation of variables method?</em> </title>
+				<statement>
+					<p><em>In the equation <m>y^2 y' - 1 = 6x^2</m>, what is the first step to solve it using the separation of variables method?</em></p>
+				</statement>
+				<choices>
+					<choice>
+						<statement><p>Integrate both sides.</p></statement>
+						<feedback>Incorrect. You need to separate the variables before integrating.</feedback>
+					</choice>
+					<choice>
+						<statement><p>Isolate <m>y</m>, if possible.</p></statement>
+						<feedback>Incorrect. You should first separate the variables.</feedback>
+					</choice>
+					<choice>
+						<statement><p>Divide both sides by <m>y^2</m></p></statement>
+						<feedback>Incorrect. You should first separate the variables.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>Show it is separable.</p></statement>
+						<feedback>Correct! This rearrangement allows us to apply separation of variables.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s4-i2"><title> <em>Which of the following are valid ways to combine constants in a differential equation?</em> </title>
+				<statement>
+					<p><em>Which of the following are valid ways to combine constants in a differential equation? Select ALL that apply.</em></p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement>
+							<p>
+								<m>\ds \vphantom{\frac{y^2}{2}} y = e^{2x + c_1} \ \rightarrow\ y = c_2 e^{2x}\ </m> where <m>\ c_2 = e^{c_1}</m>
+							</p>
+						</statement>
+						<feedback>Correct! </feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							<p>
+								<m>\ds\frac{y^2}{2} = \sin(x) + c_1  \ \rightarrow\ y^2 = 2\sin(x) + c_2 \ </m> where <m>\ c_2 = 2c_1</m>
+							</p>
+						</statement>
+						<feedback>Correct! </feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								<m>\ds \vphantom{\frac{y^2}{2}} y = \sqrt{2\sin(x) + c_1}  \ \rightarrow\ y = \sqrt{2\sin(x)} + c_2 \ </m> where <m>\ c_2 = \sqrt{c_1}</m>
+							</p>
+						</statement>
+						<feedback>Incorrect. <m>\sqrt{A + B} \neq \sqrt{A} + \sqrt{B}</m></feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								<m>\ds \vphantom{\frac{y^2}{2}} y = \ln(3y + c_1) \ \rightarrow\ y = \ln(3y) + c_2 \ </m> where <m>\ c_2 = \ln(c_1)</m>
+							</p>
+						</statement>
+						<feedback>Incorrect. <m>\ln(A + B) \neq \ln(A) + \ln(B)</m></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							<p>
+								<m>\ds \vphantom{\frac{y^2}{2}} \sqrt{y} = c_1e^{3x} \ \rightarrow\ y = c_2(e^{3x})^2 \ </m> where <m>\ c_2 = c_1^2</m>
+							</p>
+						</statement>
+						<feedback>Correct! </feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c2-s4-i3"><title> <em>Solve <m>\ \ds \frac{dy}{dx} - y\cos(x) = y\ </m> using separation of variables</em> </title>
+				<introduction>
+					<p>
+						Complete each step below to solve the differential equation
+						<me> \frac{dy}{dx} - y\cos(x) = y.</me>
+					</p>
+				</introduction>
+					
+				<webwork xml:id="p2-c2-s4-i3-ww"> 
+					<description>
+						Solve a separable DE using separation of variables.
+					</description>
+
+					<pg-code>
+						Context()->variables->add(y => 'Real');
+						Context()->variables->add(c => 'Real');
+						$ans1a = 1;
+						$ans1b = Formula("1+cos(x)");
+						$ans1c = Formula("y");
+						$ans2a = Formula("1+cos(x)");
+						$ans2b = Formula("1/y");
+						$ans3a = Formula("x+sin(x)");
+						$ans3b = Formula("ln|y|");
+						$ans = Formula("c*e^(x+sin(x))");
+					</pg-code>
+
+					<statement>
+						<p>
+							Verify that the differential equation is separable.
+						</p>
+
+						<p>
+							<tabular>
+								<col halign="right"/>
+								<col halign="right"/>
+								<col halign="left"/>
+								<row>
+									<cell>order:</cell>
+									<cell><var name="$ans1a"  width="5" /></cell>
+									<cell/>
+									<cell/>
+								</row>
+								<row>
+									<cell><m>\phantom{.}</m></cell>
+								</row>
+								<row>
+									<cell>separable form:</cell>
+									<cell><m>\displaystyle \frac{dy}{dx} = </m></cell>
+									<cell><m>\Big(</m><var name="$ans1b" width="10" /><m>\Big)</m></cell>
+									<cell><m>\Big(</m><var name="$ans1c" width="10" /><m>\Big)</m></cell>
+								</row>
+								<row>
+									<cell/>
+									<cell/>
+									<cell><m>f(x)</m></cell>
+									<cell><m>g(y)</m></cell>
+								</row>
+							</tabular>
+						</p>
+
+						<p>
+							Separate and integrate. Give the integrals and antiderivatives.
+						</p>
+
+						<p>
+							<tabular>
+								<col halign="right"/>
+								<row>
+									<cell>
+										<m>\displaystyle\int</m> <var name="$ans2b" width="10" /> <m>dy</m>
+									</cell>
+									<cell>
+										<m>=</m>
+									</cell>
+									<cell>
+										<m>\displaystyle\int</m> <var name="$ans2a" width="10" /> <m>dx</m>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<var name="$ans3b" width="10" /> <m> + c_1</m>
+									</cell>
+									<cell>
+										<m>=</m>
+									</cell>
+									<cell>
+										<var name="$ans3a" width="10" /> <m> + c_2 </m>
+									</cell>
+								</row>
+							</tabular>
+						</p>
+
+						<p>
+							<em>Don't forget the absolute value on the left antiderivative.</em>
+						</p>
+
+						<p>
+							Isolate. Give the general solution. <em>Use <m>c</m> for the combined constant.</em>
+						</p>
+
+						<p>
+							<tabular>
+								<col halign="right"/>
+								<row>
+									<cell>
+										<m>y(x) = </m> <var name="$ans" width="10" />
+									</cell>
+								</row>
+							</tabular>
+						</p>
+
+					</statement>
+
+				</webwork>
+			</exercise>
+
+		</reading-questions>
+	</section>
+	
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Summary &amp; Exercises </title>
+		<introduction>
+			<p>
+				<assemblage color="green"><title>Summary of the Key Ideas</title>
+					<p>
+						<term> <em>Separation of Variables Method</em> </term>
+						<p>
+							The general solution of a differential equation that is first-order and <xref ref="separable" text="custom">separable</xref> can be found using the <xref ref="sov-method" text="custom">separation of variables method</xref>.
+						</p>
+					</p>
+				</assemblage>
+			</p>
+			
+		</introduction>
+
+		<exercises>
+
+			<exercisegroup cols="2"><title> Separable </title>
+				<introduction>
+					<p>
+						Determine whether the given differential equation is separable or not. As demonstrated in the examples, if the equation is separable, use parentheses to explicitly show the separable form.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<m> \ds \frac{dz}{dt} = \sin(z+t) </m>
+					</statement>
+					<solution>
+						<alert>not</alert> separable; there's no way to separate th <m> \ds z </m> an <m> \ds t </m> inside the sine term.
+					</solution>
+					<answer>
+						<alert>not</alert> separable
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \ds s' = t\ln(s^{2t}) + 8t^2 </m>
+					</statement>
+					<solution>
+						This doesn't look separable; but if we use a property of logarithms we can re-write as follows.
+						<md>
+							<mrow>  s'	 \amp =  t\ln(s^{2t}) + 8t^2 </mrow>
+							<mrow>  \frac{ds}{dt}	 \amp =  t \cdot 2t\ln(s) + 8t^2 </mrow>
+							<mrow>   \amp =  2t^2 \ln(s) + 8t^2 </mrow>
+							<mrow>   \amp =  \big(t^2\big)\big(2\ln(s) + 8\big) </mrow>
+						</md>
+						Hence, this DE is <alert>separable</alert>.
+					</solution>
+					<answer>
+						<alert>separable</alert>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \ds \frac{dy}{dx} = 2y^3 + y + 4 </m>
+					</statement>
+					<solution>
+						We can rearrange as follows.
+						<md>
+							<mrow>  \frac{dy}{dx}	 \amp =  \big(1\big)\big(2y^3 + y + 4\big) </mrow>
+						</md>
+						Hence, this DE is <alert>separable</alert>.
+					</solution>
+					<answer>
+						<alert>separable</alert>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \ds y' - xy = 0 </m>
+					</statement>
+					<solution>
+						We can rearrange as follows.
+						<md>
+							<mrow>  y' - xy	 \amp =  0 </mrow>
+							<mrow>  y'	 \amp =  \big(x\big)\big(y\big) </mrow>
+						</md>
+						Hence, this DE is <alert>separable</alert>.
+					</solution>
+					<answer>
+						<alert>separable</alert>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \ds y' = x+y </m>
+					</statement>
+					<solution>
+						<alert>not</alert> separable; there's no way to separate <m> \ds x </m> and <m> \ds y </m> via multiplication/division
+					</solution>
+					<answer>
+						<alert>not</alert> separable
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \ds y'' + y' + y = 0 </m>
+					</statement>
+					<solution>
+						<alert>not</alert> separable; this DE is second order, and DEs must be first order to be separable
+					</solution>
+					<answer>
+						<alert>not</alert> separable
+					</answer>
+				</exercise>
+		
+			</exercisegroup>
+
+			<exercisegroup><title> Step-by-Step </title>
+
+				<introduction>
+					<p>
+						Maybe write 1 or 2 simple scaffolded problems here?
+					</p>
+				</introduction>
+		
+				<exercise>
+					<p>
+						<statement>
+							Given the differential equation <m> \displaystyle \frac{dy}{dx} = xy^2 </m>, determine if it is separable. If so, rewrite it in the separated form.
+						</statement>
+						<solution>
+							<p>
+								The equation is separable because we can write it as:
+								<me> \frac{1}{y^2} dy = x dx </me>
+							</p>
+						</solution>
+						<answer>
+							<m> \displaystyle \frac{1}{y^2} dy = x dx </m>
+						</answer>
+					</p>
+					<p>
+						<statement>
+							Continuing from the previous problem, integrate the left side of the separated equation with respect to <m>y</m>.
+						</statement>
+						<solution>
+							<p>
+								Integrating <m> \displaystyle \frac{1}{y^2} dy </m> with respect to <m>y</m>, we get:
+								<me> -\frac{1}{y} + C_1 </me>
+							</p>
+						</solution>
+						<answer>
+							<m> \displaystyle -\frac{1}{y} + C_1 </m>
+						</answer>
+					</p>
+					<p>
+						<statement>
+							Now, integrate the right side of the separated equation with respect to <m>x</m>.
+						</statement>
+						<solution>
+							<p>
+								Integrating <m> x dx </m> with respect to <m>x</m>, we get:
+								<me> \frac{1}{2}x^2 + C_2 </me>
+							</p>
+						</solution>
+						<answer>
+							<m> \displaystyle \frac{1}{2}x^2 + C_2 </m>
+						</answer>
+					</p>
+					<p>
+						<statement>
+							Combine the results from the previous exercises to form the general solution to the differential equation.
+						</statement>
+						<solution>
+							<p>
+								Equating the two integrals, we get:
+								<me> -\frac{1}{y} + C_1 = \frac{1}{2}x^2 + C_2 </me>
+								By grouping constants, we can represent them with a single constant:
+								<me> -\frac{1}{y} = \frac{1}{2}x^2 + C </me>
+								Where <m>C = C_2 - C_1</m>.
+							</p>
+						</solution>
+						<answer>
+							<m> \displaystyle -\frac{1}{y} = \frac{1}{2}x^2 + C </m>
+						</answer>
+					</p>
+				</exercise>
+			
+			</exercisegroup>
+		
+			<exercisegroup cols="2"><title> Warm Ups </title>
+		
+				<introduction>
+					<p>
+						Solve using separation of variables, if possible.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = y^2 </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = x^2y </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = e^{x+y} </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = \frac{x}{y} </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = \cos(x) \sec(y) </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = \frac{2x}{1+y^2} </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = 2-y </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = \frac{y-x}{y+x} </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = y^2 \sec^2(x) </m></p>
+					</statement>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<p><m> \displaystyle \frac{dy}{dx} = \frac{1}{xy} </m></p>
+					</statement>
+				</exercise>
+		
+			</exercisegroup>
+		
+			<exercisegroup><title> Further Practice </title>
+		
+				<introduction>
+					<p>
+						Solve using separation of variables, if possible.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = x y </m>
+					</statement>
+					<solution>
+						<md>
+							<mrow>  \frac{dy}{y} \amp = x dx </mrow>
+							<mrow>  \int \frac{dy}{y} \amp = \int x dx </mrow>
+							<mrow>  \ln|y| \amp = \frac{1}{2}x^2 + C_1 </mrow>
+							<mrow>  y \amp = Ce^{\frac{1}{2}x^2} </mrow>
+						</md>
+					</solution>
+					<answer>
+						<m> \displaystyle y = Ce^{\frac{1}{2}x^2} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = \frac{x^2 + 1}{y} </m>
+					</statement>
+					<solution>
+						<md>
+							<mrow>  y dy \amp = (x^2 + 1) dx </mrow>
+							<mrow>  \int y dy \amp = \int (x^2 + 1) dx </mrow>
+							<mrow>  \frac{1}{2}y^2 \amp = \frac{1}{3}x^3 + x + C_1 </mrow>
+							<mrow>  y^2 \amp = \frac{2}{3}x^3 + 2x + 2C_1 </mrow>
+						</md>
+					</solution>
+					<answer>
+						<m> \displaystyle y^2 = \frac{2}{3}x^3 + 2x + C_2 </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = \frac{1 - x^2}{y^2} </m>
+					</statement>
+					<solution>
+		
+						<md>
+							<mrow>  \frac{dy}{dx}	 \amp =  \frac{1 - x^2}{y^2} </mrow>
+							<mrow>  y^2 dy	 \amp =  (1-x^2)dx </mrow>
+							<mrow>  \int y^2 dy	 \amp =  \int (1-x^2)dx </mrow>
+							<mrow>  \frac{1}{3}y^3	 \amp =  x - \frac{1}{3}x^3 + C_1 </mrow>
+							<mrow>  y^3	 \amp =  3x - x^3 + 3C_1 </mrow>
+							<mrow>  y	 \amp =  \sqrt[3]{3x - x^3 + 3C_1}, \mbox{ or} </mrow>
+							<mrow>  y	 \amp =  \sqrt[3]{3x - x^3 + C_2} </mrow>
+		
+						</md>
+						<em> Note:  since, in general <m> \displaystyle \sqrt[3]{a+b} \ne \sqrt[3]{a} + \sqrt[3]{b} </m> , we CANNOT simplify the solution to <m> \displaystyle y  = \sqrt[3]{3x - x^3} + C.</m> </em>
+					</solution>
+					<answer>
+						<m> \displaystyle y = \sqrt[3]{3x - x^3 + C_2} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle y' - 2y = y\sin x </m>
+					</statement>
+					<solution>
+		
+						<md>
+							<mrow>  y' - 2y	 \amp =  y\sin x </mrow>
+							<mrow>  y'	 \amp =  2y + y\sin x </mrow>
+							<mrow>  \frac{dy}{dx}	 \amp =  y(2 + \sin x) </mrow>
+							<mrow>  \frac{1}{y} dy	 \amp =  (2 + \sin x)dx </mrow>
+							<mrow>  \int \frac{1}{y} dy	 \amp =  \int (2 + \sin x)dx </mrow>
+							<mrow>  \ln|y|	 \amp =  2x - \cos x + C_1 </mrow>
+							<mrow>  e^{\ln|y|}	 \amp =  e^{2x - \cos x + C_1} </mrow>
+							<mrow>  |y|	 \amp =  e^{2x - \cos x}\cdot e^{C_1} </mrow>
+							<mrow>  y	 \amp =  \pm e^{2x - \cos x}\cdot e^{C_1} </mrow>
+							<mrow>  y	 \amp =  \underbrace{\pm e^{C_1}}_{\scriptsize = C_2}\cdot e^{2x - \cos x} </mrow>
+							<mrow>  y	 \amp =  C_2e^{2x - \cos x} </mrow>
+						</md>
+		
+					</solution>
+					<answer>
+						<m> \displaystyle y = C_2e^{2x - \cos x}  </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle x\frac{dv}{dx} = \frac{1-4v^2}{3v} </m>
+					</statement>
+					<solution>
+		
+						<md>
+							<mrow>  x\frac{dv}{dx}	 \amp =  \frac{1-4v^2}{3v} </mrow>
+							<mrow>  \frac{dv}{dx}	 \amp =  \frac{1-4v^2}{3v}\cdot \frac{1}{x} </mrow>
+							<mrow>  \frac{3v}{1-4v^2} dv	 \amp =  \frac{1}{x} dx </mrow>
+							<mrow>  \int \frac{3v}{1-4v^2} dv	 \amp =  \int \frac{1}{x} dx </mrow>
+		
+						</md>
+						For the integral on the left hand side, we will need to do a substitution.  If we le <m> \displaystyle u = 1-4v^2, </m> the <m> \displaystyle du = -8vdv, </m> and therefor <m> \displaystyle -\frac{1}{8}du = vdv. </m>  Then we have the following:
+						<md>
+							<mrow>  3\int \frac{v}{1-4v^2} dv	 \amp =  \int \frac{1}{x} dx </mrow>
+							<mrow>  3\int \underbrace{\frac{1}{1-4v^2}}_{\scriptsize 1/u} \underbrace{vdv}_{\scriptsize -\frac{1}{8}du}  \amp =  \int \frac{1}{x} dx </mrow>
+							<mrow>  3\int \frac{1}{u}\cdot -\frac{1}{8}du	 \amp =  \int \frac{1}{x} dx </mrow>
+							<mrow>  -\frac{3}{8} \int \frac{1}{u}du	 \amp =  \int \frac{1}{x} dx </mrow>
+							<mrow>  -\frac{3}{8} \ln|u|	 \amp =  \ln|x| + C_1 </mrow>
+							<mrow>  -\frac{3}{8} \ln|1 - 4v^2|	 \amp =  \ln|x| + C_1 </mrow>
+							<mrow>  \ln|1 - 4v^2|	 \amp =  -\frac{8}{3} \left(\ln|x| + C_1\right) </mrow>
+							<mrow>  \ln|1 - 4v^2|	 \amp =  -\frac{8}{3}\ln|x| + -\frac{8}{3}C_1 </mrow>
+							<mrow>  \ln|1 - 4v^2|	 \amp =  \ln\left(|x|^{-8/3}\right) + -\frac{8}{3}C_1 </mrow>
+							<mrow>  \ln|1 - 4v^2|	 \amp =  \ln\left(x^{-8/3}\right) + -\frac{8}{3}C_1  \mbox <m> \hspace{1cm} \displaystyle x^{-8/3} =|x|^{-8/3} </m> )} </mrow>
+							<mrow>  e^{\ln|1 - 4v^2|}	 \amp =  e^{\ln\left(x^{-8/3}\right) + -\frac{8}{3}C_1} </mrow>
+							<mrow>  |1 - 4v^2|	 \amp =  e^{\ln\left(x^{-8/3}\right)}\cdot e^{-\frac{8}{3}C_1} </mrow>
+							<mrow>  |1 - 4v^2|	 \amp =  x^{-8/3}\cdot e^{-\frac{8}{3}C_1} </mrow>
+							<mrow>  1 - 4v^2	 \amp =  \pm e^{-\frac{8}{3}C_1}\cdot x^{-8/3} </mrow>
+							<mrow>  1 - 4v^2	 \amp =  \underbrace{\pm e^{-\frac{8}{3}C_1}}_{\scriptsize = C_2}\cdot x^{-8/3} </mrow>
+							<mrow>  1 - 4v^2	 \amp =  C_2x^{-8/3} </mrow>
+		
+						</md>
+		
+						<md>
+							<mrow>  - 4v^2	 \amp =  C_2x^{-8/3} - 1 </mrow>
+							<mrow>  v^2	 \amp =  \frac{C_2}{-4}x^{-8/3} + \frac{1}{4} </mrow>
+							<mrow>  v^2	 \amp =  \underbrace{\frac{C_2}{-4}}_{\scriptsize = C_3}x^{-8/3} + \frac{1}{4} </mrow>
+							<mrow>  v^2	 \amp =  C_3x^{-8/3} + \frac{1}{4} </mrow>
+							<mrow>  v	 \amp =  \pm \sqrt{C_3x^{-8/3} + \frac{1}{4}} </mrow>
+						</md>
+		
+					</solution>
+					<answer>
+						<m> \displaystyle v = \pm \sqrt{C_3x^{-8/3} + \frac{1}{4}}  </m>
+					</answer>
+				</exercise>
+		
+		
+				<exercise>
+					<statement>
+						<m>\displaystyle \frac{dy}{dx} = \frac{4-2x}{3y^2-5} </m>
+					</statement>
+					<solution>
+						When we separate the variables and integrate both sides, we get
+						<me> \int (3y^2-5)dy =  \int (4-2x)dx</me>
+						<me> y^3-5y=4x-x^2+C </me>
+						Since the equation cannot readily be solved for <m>y</m> as an explicit function of <m>x</m>, we are done.
+					</solution>
+					<answer>
+						<m> y^3-5y=4x-x^2+C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m>\displaystyle \frac{dy}{dx} = 6x(y-1)^{2/3}</m>
+					</statement>
+					<solution>
+						Separation of variables gives:
+						<md>
+							<mrow>\displaystyle\int  \frac{1}{3(y-1)^2/3} dy = \int 2xdx</mrow>
+							<mrow>				(y-1)^1/3=\amp\ \displaystyle x^2+C</mrow>
+							<mrow>				y(x)=\amp\ \displaystyle 1+(x^2+C)^3</mrow>
+						</md>
+					</solution>
+					<answer>
+						<m>\displaystyle y(x)=\amp\ \displaystyle 1+(x^2+C)^3</m>
+					</answer>
+				</exercise>
+		
+			</exercisegroup>
+		
+			<exercisegroup><title> Initial Value Problems </title>
+		
+				<introduction>
+					<p>
+						Solve each of the following initial value problems using separation of variables, if possible.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<m>\displaystyle \frac{dy}{dx} = -6xy,  \hspace{0.5cm} y(0)=7.</m>
+					</statement>
+					<solution>
+						Informally, we divide both side of the differential equation by <m>y</m> and multiply each side by <m>dx</m> to get
+						<me> \frac{dy}y = -6xdx.	</me>
+						<me> \int \frac{dy}y =  \int (-6x)dx</me>
+						<me> \ln|y|=-3x^2+C </me>
+						<me>\ln|y|=-3x^2+C</me>
+						<me>|y|=e^{-3x^2+C}</me>
+						<me>y=\pm e^C e^{-3x^2}</me>
+		
+						and hence
+		
+						<me>y(x) = Ae^{-3x^2} \qquad (A = \pm e^C)</me>
+		
+						The condition <m>y(0) = 7</m> yields <m>A =7</m>, so the desired solution is
+		
+						<me>y(x) = 7e^{-3x^2}</me>
+		
+					</solution>
+					<answer>
+						<me>y(x) = 7e^{-3x^2}</me>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dz}{dt} = 2tz^2, \hspace{0.5cm} z(1) = 2 </m>
+					</statement>
+					<solution>
+						First we find the general solution:
+						<md>
+							<mrow>  \frac{dz}{dt}	 \amp =  2tz^2 </mrow>
+							<mrow>  \frac{1}{z^2}dz	 \amp =  2tdt </mrow>
+							<mrow>  \int \frac{1}{z^2}dz	 \amp =  \int 2tdt </mrow>
+							<mrow>  -\frac{1}{z}	 \amp =  t^2 + C_1 </mrow>
+							<mrow>  z	 \amp =  -\frac{1}{t^2 + C_1} </mrow>
+						</md>
+		
+						Using the initial condition <m>z(1) = 2</m>:
+						<md>
+							<mrow>  2	 \amp =  -\frac{1}{1^2 + C_1} </mrow>
+							<mrow>  2	 \amp =  -\frac{1}{1 + C_1} </mrow>
+							<mrow>  C_1	 \amp =  -\frac{1}{2} - 1 </mrow>
+							<mrow>  C_1	 \amp =  -\frac{3}{2} </mrow>
+						</md>
+		
+						So the solution to the initial value problem is:
+						<md>
+							<mrow>  z(t)	 \amp =  -\frac{1}{t^2 - \frac{3}{2}} </mrow>
+						</md>
+					</solution>
+					<answer>
+						<m> z(t) = -\frac{1}{t^2 - \frac{3}{2}} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{d\theta} = y\sin\theta, \hspace{0.5cm} \displaystyle y(\pi) = -3 </m>
+					</statement>
+					<solution>
+						First we find the general solution:
+						<md>
+							<mrow>  \frac{dy}{d\theta}	 \amp =  y\sin\theta </mrow>
+							<mrow>  \frac{1}{y}dy	 \amp =  \sin\theta d\theta </mrow>
+							<mrow>  \int \frac{1}{y}dy	 \amp =  \int \sin\theta d\theta </mrow>
+							<mrow>  \ln|y|	 \amp =  -\cos\theta + C_1 </mrow>
+							<mrow>  e^{\ln|y|}	 \amp =  e^{-\cos\theta + C_1} </mrow>
+							<mrow>  |y|	 \amp =  e^{-\cos\theta}\cdot e^{C_1} </mrow>
+							<mrow>  y	 \amp =  \pm e^{C_1}e^{-\cos\theta} </mrow>
+							<mrow>   \amp =  \underbrace{\pm e^{C_1}}_{\scriptsize = C_2}e^{-\cos\theta} </mrow>
+							<mrow>   \amp =  C_2e^{-\cos\theta}  </mrow>
+						</md>
+						Then we use the initial conditio <m> \displaystyle y(\pi) = -3 </m> .
+						<md>
+							<mrow>  -3	 \amp =  y(\pi) </mrow>
+							<mrow>   \amp =  C_2e^{-\cos\pi} </mrow>
+							<mrow>   \amp =  C_2e^{-(-1)} </mrow>
+							<mrow>   \amp =  C_2e </mrow>
+							<mrow>  -\frac{3}{e}	 \amp =  C_2, \mbox{ or} </mrow>
+							<mrow>  C_2	 \amp =  -3e^{-1} </mrow>
+		
+						</md>
+						Hence, the solution i <m> \displaystyle y = -3e^{-1}e^{-\cos\theta} </m> , or <m> \displaystyle y = -3e^{-\cos\theta-1} </m> .
+					</solution>
+					<answer>
+						<m> \displaystyle y = -3e^{-1}e^{-\cos\theta} </m>, or  <m> \displaystyle y = -3e^{-\cos\theta-1} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} - 8x^3e^{-2y} = 0, \hspace{0.5cm} \displaystyle y(1) = 0 </m>
+					</statement>
+					<solution>
+						First we find the general solution:
+						<md>
+							<mrow>  \frac{dy}{dx} - 8x^3e^{-2y}	 \amp =  0 </mrow>
+							<mrow>  \frac{dy}{dx}	 \amp =  8x^3e^{-2y} </mrow>
+							<mrow>  \frac{1}{e^{-2y}}dy	 \amp =  8x^3dx </mrow>
+							<mrow>  e^{2y}dy	 \amp =  8x^3dx </mrow>
+							<mrow>  \int e^{2y}dy	 \amp =  \int 8x^3dx </mrow>
+							<mrow>  \frac{1}{2}e^{2y}	 \amp =  2x^4 + C_1 </mrow>
+							<mrow>  e^{2y}	 \amp =  4x^4 + 2C_1 </mrow>
+							<mrow>  \ln(e^{2y})	 \amp =  \ln(4x^4 + 2C_1) </mrow>
+							<mrow>  2y	 \amp =  \ln(4x^4 + 2C_1) </mrow>
+							<mrow>  y	 \amp =  \frac{1}{2}\ln(4x^4 + 2C_1), \mbox{ or} </mrow>
+							<mrow>   \amp =  \frac{1}{2}\ln(4x^4 + C_2), \mbox{ or} </mrow>
+							<mrow>   \amp =  \ln\Big[(4x^4 + C_2)^{1/2}\Big], \mbox{ or} </mrow>
+							<mrow>   \amp =  \ln\Big[\sqrt{4x^4 + C_2}\Big] </mrow>
+		
+						</md>
+						Then we use the initial conditio <m> \displaystyle y(1) = 0 </m> .
+						<md>
+							<mrow>  0	 \amp =  y(1) </mrow>
+							<mrow>  0	 \amp =  \ln\Big[\sqrt{4\cdot 1^4 + C_2}\Big] </mrow>
+							<mrow>  0	 \amp =  \ln\Big[\sqrt{4 + C_2}\Big] </mrow>
+							<mrow>  e^0	 \amp =  e^{\ln\Big[\sqrt{4 + C_2}\Big]} </mrow>
+							<mrow>  1	 \amp =  \sqrt{4 + C_2} </mrow>
+							<mrow>  1^2	 \amp =  \Big[\sqrt{4 + C_2}\Big]^2 </mrow>
+							<mrow>  1	 \amp =  4+C_2 </mrow>
+							<mrow>  -3	 \amp =  C_2 </mrow>
+		
+						</md>
+						Hence, the solution i <m> \displaystyle y = \frac{1}{2}\ln(4x^4 - 3) </m> , or <m> \displaystyle y = \ln\Big[\sqrt{4x^4 - 3}\Big] </m> .
+					</solution>
+					<answer>
+						<m> \displaystyle y = \frac{1}{2}\ln(4x^4 - 3) </m> , or <m> \displaystyle y = \ln\Big[\sqrt{4x^4 - 3}\Big] </m>
+					</answer>
+				</exercise>
+		
+			</exercisegroup>
+		
+			<exercisegroup><title> Applications </title>
+		
+				<exercise>
+					<statement>
+						A 4-lb roast, initially at <m>50^{\circ}F</m>, is placed in a <m>375^{\circ} F</m> oven at 5:00 PM After 75 minutes it is found that the temperature <m>T(t)</m> of the roast is <m>125^{\circ}</m> F. When will the roast be <m>150^{\circ}F</m> (medium rate)?
+					</statement>
+		
+					<solution>
+						We take time <m>t</m> in minutes, with <m>t = 0</m> corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature <m>T(t)</m> of the roast is uniform throughout. We have <m>T(t) \lt A = 375</m>, <m>T(0)=50</m>, and <m>T(75) =125</m>.
+		
+						Hence
+						<md>
+							<mrow>\displaystyle  \frac{dT}{dt}  = k(375-T)</mrow>
+							<mrow>				\int \frac{1}{375-T}dT=\amp\ \displaystyle \int kdt</mrow>
+							<mrow>				y(x)=\amp\ \displaystyle 1+(x^2+C)^3</mrow>
+							<mrow>			-\ln(375-T)=\amp kt+C</mrow>
+						</md>
+		
+						Now <m>T(0)=50</m>, implies that <m>B = 325</m>, so <m>T(t) = 375-325e^{kt}</m>. We also know that <m>T = 125</m> when <m>t = 75</m>. Substitution of these values in the preceding equation yields
+		
+						<me> k=-\frac{1}{75}\ln\left(\frac{250}{325}\right)\approx 0.0035.</me>
+		
+						Hence we finally solve the equation
+		
+						<me>150=375-325e^{(-0.0035)t}</me>
+		
+						for <m>t = -[\ln(225/325)]/[0.0035] \approx 105</m> (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM
+					</solution>
+					<answer>
+						<m>t = -[\ln(225/325)]/[0.0035] \approx 105(min)</m>
+					</answer>
+				</exercise>
+			</exercisegroup>
+				
+			<exercisegroup><title> Conceptual Questions </title>
+		
+				<exercise>
+					<statement>
+						Explain why separating variables works as a method for solving ordinary differential equations. 
+					</statement>
+					<solution>
+						<p>
+							Separation of variables works by isolating all terms involving <m>y</m> to one side and all terms involving <m>x</m> to the other. When this can be done, both sides can be integrated independently, allowing for the solution of the differential equation. This method effectively transforms the problem of solving a differential equation into the simpler task of integrating functions.
+						</p>
+					</solution>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						Why is it important for the equation to be "separable" in order to use the method of separation of variables? What does it mean for a differential equation to be separable?
+					</statement>
+					<solution>
+						<p>
+							For the method of separation of variables to be used, we must be able to write the differential equation in the form <m>g(y) dy = h(x) dx</m>, effectively separating the variables <m>y</m> and <m>x</m> onto different sides of the equation. When a differential equation can be written in this way, it is called separable. Separability is crucial because it allows us to integrate each side with respect to its own variable, leading to a solution for <m>y</m> in terms of <m>x</m>.
+						</p>
+					</solution>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						Provide an example of a differential equation that is not separable and explain why the method of separation of variables cannot be applied to it.
+					</statement>
+					<solution>
+						<p>
+							
+						</p>
+					</solution>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						In solving a differential equation using separation of variables, why might the constant of integration appear on both sides of the resulting equation?
+					</statement>
+					<solution>
+						<p>
+							After separating variables, we integrate both sides of the equation. Each integration will typically introduce its own constant of integration. Therefore, when we combine the results of these integrations, we often see a constant on both sides. These constants can often be combined into a single constant by subtracting one from the other.
+						</p>
+					</solution>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						Some differential equations solved using separation of variables yield implicit solutions, while others yield explicit solutions. Explain the difference between implicit and explicit solutions, and provide examples of each.
+					</statement>
+					<solution>
+						<p>
+							
+						</p>
+					</solution>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						True/False: Every first-order ordinary differential equation can be solved using the method of separation of variables.
+					</statement>
+					<solution>
+						<p>
+							
+						</p>
+					</solution>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>Which of the following differential equations is <em>not</em> separable?</p>
+						<ol type="a">
+							<li><m> \frac{dy}{dx} = y \cos(x) </m></li>
+							<li><m> \frac{dy}{dx} = y + e^x </m></li>
+							<li><m> \frac{dy}{dx} = \sin(x) \sin(y) </m></li>
+							<li><m> \frac{dy}{dx} = x^2y </m></li>
+						</ol>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>True/False: If a differential equation is separable, its solution will always be an explicit function of <m> x </m>.</p>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>The process of writing a differential equation in the form <m> M(y)dy = N(x)dx </m> is called _________ of variables.</p>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>Which of the following cannot be directly solved by separation of variables?</p>
+						<ol type="a">
+							<li><m> \frac{dy}{dx} = x + y </m></li>
+							<li><m> \frac{dy}{dx} = xy </m></li>
+							<li><m> \frac{dy}{dx} = \sin(x)y </m></li>
+							<li><m> \frac{dy}{dx} = \frac{x}{y} </m></li>
+						</ol>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>True/False: The method of separation of variables can be directly applied to higher-order differential equations.</p>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>True/False: If you can write a differential equation in the form <m> h(y) \frac{dy}{dx} = g(x) </m>, then it is separable.</p>
+					</statement>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<p>A differential equation of the form <m> \frac{dy}{dx} = g(x) </m> without a <m> y </m> term:</p>
+						<ol type="a">
+							<li>Is always separable</li>
+							<li>Is never separable</li>
+							<li>Can be separable depending on <m> g(x) </m></li>
+							<li>Is an implicit equation</li>
+						</ol>
+					</statement>
+				</exercise>
+		
+			</exercisegroup>
+		
+			<exercise><title> <em>A structured exercise</em> </title>
+				<introduction>
+				<p>
+					Here is where we give the student the background information
+					required to start accomplishing tasks.
+				</p>
+				</introduction>
+			
+				<task>
+				<p>
+					Solve a separable DE using separation of variables.
+				</p>
+				<p>
+					<webwork xml:id="ww_piss">
+				
+						<pg-code>
+						$a = random(4,9,1);
+						$b = random(2,9,1);
+						$ans = FormulaUpToConstant("1/$a e^{$a x}- $b/2 x^2");
+						</pg-code>
+				
+						<statement><m>y(x) =</m> <var name="$ans" width="25" /></statement>
+				
+						<solution>
+						<m></m>.
+						</solution>
+					</webwork>
+				</p>
+		
+			
+				</task>
+			
+				<task>
+				<statement>
+					<p>
+					The second step to do.
+					We'll be lazy and just include an answer.
+					</p>
+				</statement>
+				<answer>
+					<p>
+					Just the answer.
+					</p>
+				</answer>
+				</task>
+			
+				<conclusion>
+				<p>
+					A little wrap up.
+				</p>
+				</conclusion>
+			
+			</exercise>
+		
+		</exercises>
+	</section>
+</chapter>

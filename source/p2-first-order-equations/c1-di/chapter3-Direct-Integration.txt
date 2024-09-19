@@ -1,0 +1,750 @@
+<introduction>
+	<p>
+		Solving differential equations can be complex because there is no one-size-fits-all technique for solving them. The method used depends on the characteristics of the specific equation, such as its order and linearity. For instance, one of the first techniques that we will explore can only be applied to linear, first-order equations. Therefore, it's important to first ensure that the equation meets the requirements of the chosen technique before attempting to solve it. 
+	</p>
+
+	<p>
+		Solving these equations often involves using concepts from various mathematical disciplines, including calculus, algebra, and trigonometry. To simplify the process, we break down each technique into smaller, manageable parts and then assemble them step by step to obtain the complete solution.
+	</p>
+
+	<p>
+		When appropriate, we will go over the details of the integration and algebra steps, but it is assumed that you are already familiar with these topics. If not, we encourage you to seek out resources to brush up on these skills.
+	</p>
+</introduction>
+
+<chapter><title> Direct Integration </title>
+	<introduction> 
+		<p>
+			In some cases, differential equations can be solved by integrating both sides of the equation with respect to the independent variable. This approach, which we will refer to as <em>direct integration</em>, requires a specific form that allows integration to "remove" the derivatives from the dependent variable, providing direct access to the solution. Although it is rare to encounter equations that can be approached in this way, it serves as a great starting point for learning the solution process. This section will explain this concept and guide you through your first complete example of solving a differential equation from start to finish.
+		</p>
+	</introduction>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Antiderivatives </title>
+		<p>
+			When you find an antiderivative, you're actually solving a basic differential equation. For example, consider finding the general antiderivative of <m>x^2</m>. The calculus approach would compute the integral
+			<me>
+				\int x^2\ dx = \frac13 x^3 + c
+			</me>.
+			The differential equations approach, on the other hand, seeks all functions whose derivative is <m>x^2</m>. This means solving any of the following equivalent equations for <m>y</m>:
+			<men xml:id="antiderivative-eqn">\frac{d}{dx}[y] = x^2, \quad \frac{dy}{dx} = x^2, \quad \text{or} \quad y^\prime = x^2</men>
+		</p>
+			
+		<p>
+			To solve for <m>y</m>, we integrate both sides with respect to <m>x</m>, like so:
+			<md>
+				<mrow> \int\frac{d}{dx}[y]\ dx	\amp = \int x^2\ dx				</mrow>
+				<mrow> 					y + c_1	\amp = \frac13 x^3 + c_2		</mrow>
+				<mrow> 						y	\amp = \frac13 x^3 + c_2-c_1 \quad \implies \quad y = \frac13 x^3 + c	</mrow>
+			</md>
+			where <m>c = c_2-c_1</m> is a constant.	Although this method might seem excessive for simple problems, it illustrates the core concept of isolating the dependent variable and expressing it in terms of the independent variable, <m>x</m>.
+		</p>
+
+		<note><title>Combining Constants is very common in differential equations</title>
+			Combining constants like we did above is a common practice in differential equations and is something you'll see often in this text.
+		</note>
+
+		<example xml:id="antiderivative-example">
+				<m>\ \ </m> Solve the initial-value problem 
+				<p>
+					<me>2y' - 4\sin x = 2, \quad y(0) = 5 </me>.
+				</p>
+				
+			<solution>
+				
+				<p>
+					Start by isolating the derivative, <m>y'</m>, on one side of the equation
+					<md>
+						<mrow> y' \amp = 1 + 2 \sin x </mrow>.
+					</md>
+					Integrate both sides with respect to <m>x</m> to leave us with <m>y</m> on the left side
+					<md>
+						<mrow> \int y'\ dx 	\amp = \int \left(1 + 2 \sin x\right) \ dx 				</mrow>
+						<mrow> 	y + c_1 	\amp = x - 2 \cos x + c_2 								</mrow>
+						<mrow> 			y 	\amp = x - 2 \cos x + \boxed{c_2 - c_1}\leftarrow c		</mrow>
+						<mrow> 		y(x)	\amp  = x - 2 \cos x + c 								</mrow>.
+					</md>
+				</p>
+
+				<p>
+					Finally, apply the initial condition <m>y(0) = 5</m> to find <m>c</m>
+					<md>
+						<mrow> 				y(0)	\amp = 5 </mrow>
+						<mrow> (0) - 2 \cos(0) + c	\amp = 5 </mrow>
+						<mrow> 			0 - 2 + c	\amp = 5 </mrow>
+						<mrow> 					c	\amp = 7 </mrow>.
+					</md>
+					Thus, the solution to the differential equation is <m>\quad y = x - 2 \cos x + 7 </m>.
+				</p>
+					
+			</solution>
+
+		</example>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c1-s1-i1"><title> <em>We can solve <m>\ds \frac{dy}{dx} = x^3 - 7</m> for <m>y</m> by differentiating both sides with respect to <m>x</m></em> </title>
+				<statement>
+					<p>
+						<em>We can solve <m>\ds \frac{dy}{dx} = x^3 - 7</m> for <m>y</m> by differentiating both sides with respect to <m>x</m>.</em>
+					</p>
+				</statement>
+				<choices>
+					<choice>
+						<statement> True </statement>
+						<feedback>
+							<p>
+								Incorrect, we integrate both sides with respect to <m>x</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Correct!
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s1-i2"><title> <em>The equation <m>\ds\frac{dy}{dx} = \ln(3x+1)</m> implies that the solution, <m>y</m>, is the antiderivative of <m>\ln(3x+1)</m></em> </title>
+				<statement>
+					<em>The equation <m>\ds\frac{dy}{dx} = \ln(3x+1)</m> implies that the solution, <m>y</m>, is the antiderivative of <m>\ln(3x+1)</m>.</em>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement> True </statement>
+						<feedback>
+							<p>
+								Correct, integrating both sides gives 
+								<me>
+									y = \int \ln(3x+1)\ dx \quad \leftarrow \text{anti-derivative of } \ln(3x+1)
+								</me>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Incorrect.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+
+			</exercise>
+
+			<exercise label="p2-c1-s1-i3"><title> <em>Combining constants is a common practice in differential equations.</em> </title>
+				<statement>
+					<em>Combining constants is a common practice in differential equations.</em>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement> True </statement>
+						<feedback>
+							<p>
+								Correct!
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Incorrect, see the footnote above.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+
+			</exercise>
+
+			<exercise label="p2-c1-s1-i4"><title> <em>What is the process to solve for <m>y</m> in the equation <m>\ds\frac{dy}{dx} = \tan(2x)</m>?</em> </title>
+				<statement>
+					<em>What is the process to solve for <m>y</m> in the equation <m>\ds\frac{dy}{dx} = \tan(2x)</m>?</em>
+				</statement>
+				<choices>
+					<choice>
+						<statement>
+							<p>Differentiating both sides with respect to <m>x</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, we integrate both sides with respect to <m>x</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement> 
+							<p>Integrating both sides with respect to <m>x</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct!
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							<p>Integrating both sides with respect to <m>y</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, this is not part of the process.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							<p>Multiplying both sides by <m>dx</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, this is not part of the process.
+							</p>
+						</feedback>
+					</choice>
+
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s1-i5"><title> <em>How do we start solving the differential equation	<m>\ds\frac13 y'+ 7x + x^2 = 1</m>?</em> </title>
+				<statement>
+					<em>How do we start solving the differential equation	<m>\ds\frac13 y'+ 7x + x^2 = 1</m>?</em>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement> 
+							<p>By isolating the derivative, <m>y'</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct! Isolate <m>y'</m> first, then integrate both sides.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							<p>By Integrating both sides with respect to <m>x</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. While you could do this, we suggest isolating the derivative first.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							<p>Differentiate both sides with respect to <m>x</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, we would like to remove derivatives, not add more.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							<p>Convert <m>y'</m> to <m>dy/dx</m>.</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, the notation for the derivative does not matter.
+							</p>
+						</feedback>
+					</choice>
+
+				</choices>
+
+			</exercise>
+			
+		</reading-questions>
+	</section>
+
+	<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Solutions by Direct Integration </title>
+		<p>
+			As seen in the <xref ref="antiderivative-example" text="custom">previous example</xref>, if a differential equation can be written in the form:
+			<me>
+				\frac{d}{dx}[y] = f(x)
+			</me>, 
+			then the solution can be found by integrating both sides. This principle extends to more complex equations of the form:
+			<me>
+				\frac{d}{dx}\left[g(x,y)\right] = f(x)
+			</me>.
+			Here, <m>f(x)</m> is a placeholder that indicates that <em>only</em> <m>x</m> variables can appear on the right-hand side of this equation. Similarly, <m>g(x,y)</m> indicates that <em>only</em> <m>x</m> or <m>y</m> variables can appear inside the derivative.
+		</p>
+
+		<p>
+			This leads us to our first method for solving first-order differential equations—<em>direct integration</em>.
+		</p>
+
+		<exploration xml:id="direct-integration"><title> Direct Integration </title>
+			<p>
+				The general solution of a differential equation in the form
+				<men xml:id="direct-integration-equation">
+					\frac{d}{dx}\left[g(x,y)\right] = f(x)
+				</men>,
+				can be determined by integrating both sides with respect to <m>x</m>.
+			</p>
+		</exploration> 
+
+		<p>
+			Consider the following examples to see how the same approach applies to these more interesting problems.
+		</p>
+
+		<example xml:id="direct-integration-example-1">
+			<m>\ \ </m>	Find the particular solution to the differential equation
+			<p>
+				<me>
+					\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2} , \quad y\left(1\right) = -4
+				</me>.
+			</p>
+			
+			<solution>
+				<p>
+					In order to isolate <m>y</m>, we need to release it from the derivative by integrating both sides as before.
+					<md>
+						<mrow> \int \frac{d}{dx}\left[5x \cdot y\right]\ dx \amp = \int x^{-2}\ dx </mrow>
+						<mrow> 5x \cdot y + c_1 \amp = -x^{-1} + c_2 </mrow>
+						<mrow>  y \amp = \frac{1}{5x}\Big(-\frac{1}{x} + \overset{=\ c}{\overbrace{c_2 - c_1}}\Big) </mrow>
+						<mrow>  y \amp = \frac{1}{5x}\left(-\frac{1}{x} + c\right) </mrow>
+					</md>
+					Finally, we use the condition, <m>y\left(1\right) = -4</m>, to find the particular solution.
+					<md>
+						<mrow>  -4 \amp = \frac{1}{5}\left(-1 + c\right) </mrow>
+						<mrow>  -20 \amp = -1 + c </mrow>
+						<mrow>  c \amp = -19 </mrow>
+					</md>
+					Therefore, the particular solution is
+					<m>
+						\quad \displaystyle y = \frac{1}{5x}\left(-\frac{1}{x} - 19\right)
+					</m>.
+					
+				</p>
+			</solution>
+		</example>
+
+		<example xml:id="direct-integration-example-2">
+
+			<m>\ \ </m>	Compute the general solution of the differential equation
+			<p>
+				<me> \frac{d}{dx}\Big[y\sin(2x)\Big] = \cos x</me>
+			</p>
+
+			<solution>
+				
+				<p>
+					To solve the differential equation 
+					<me>\frac{d}{dx}\Big[y\sin(2x)\Big] = \cos x</me>, 
+					we integrate both sides with respect to <m>x</m> to get
+					<md>
+						<mrow> \int \frac{d}{dx}\Big[y\sin(2x)\Big]dx \amp = \int \cos x\ dx</mrow>
+						<mrow> y\sin(2x) + c_1 \amp = \sin x + c_2 </mrow>
+					</md>
+				</p>
+
+				<p>
+					Finally, we isolate <m>y</m> and combine constants.
+					<md>
+						<mrow>  y\sin(2x) \amp = \sin x + \underset{=\ c}{\underbrace{c_2 - c_1}} </mrow>
+						<mrow>  y \amp = \frac{\sin x + c}{\sin(2x)} </mrow>
+					</md>
+				</p>
+		
+			</solution>
+
+		</example>
+
+		<reading-questions><title> Check your Understanding </title>
+
+			<exercise label="p2-c1-s2-i1"><title> <em>Solving a differential equation by direct integration involves computing a derivative</em> </title>
+				<statement>
+					<em>Solving a differential equation by direct integration involves computing a derivative.</em>
+				</statement>
+				<choices>
+					<choice>
+						<statement> True </statement>
+						<feedback>
+							<p>
+								Incorrect, direct integration involves integrating both sides of the equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Correct! Direct integration involves integrating both sides of the equation.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s2-i2"><title> <em>Direct integration could be used to solve the equation <m>\ds\frac{d}{dx}\left[y^2 + x^3\right] = \sqrt{x}</m></em> </title>
+				<statement>
+					<em>Direct integration could be used to solve the equation <me>\frac{d}{dx}\left[y^2 + x^3\right] = \sqrt{x}</me>.</em>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement> True </statement>
+						<feedback>
+							<p>
+								Correct!
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Incorrect. This equation is in the form <xref ref="direct-integration-equation"/>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s2-i3"><title> <em>Why shouldn't direct integration be applied to <m>\ds\frac{d}{dx}\left[\frac{x}{y^2}\right] = \sin(x+y)</m></em> </title>
+				<statement>
+					<em>Why shouldn't direct integration be applied to the equation <me>\frac{d}{dx}\left[\frac{x}{y^2}\right] = \sin(x+y)</me>.</em>
+				</statement>
+
+				<choices>
+					<choice>
+						<statement> 
+							The equation is not linear.
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, direct integration can handle this.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							The <m>y</m> term is squared.
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, direct integration can handle this.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement> 
+							The <m>y</m> term cannot be in the denominator.
+						</statement>
+						<feedback>
+							<p>
+								Incorrect, direct integration can handle this.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement> 
+							The right-hand side contains <m>y</m>.
+						</statement>
+						<feedback>
+							<p>
+								Correct! Direct integration only works when the right-hand side contains only <m>x</m>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s2-i4"><title> <em>In the equation <m>\ds\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2}</m>, what is the first step in solving for <m>y</m>?</em> </title>
+				<statement>
+					<p><em>In the differential equation <me>\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2}</me>, what is the first step in solving for <m>y</m>?</em></p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement>Integrate both sides with respect to <m>x</m>.</statement>
+						<feedback>Correct! Integrating both sides is the first step in solving for <m>y</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Differentiate both sides with respect to <m>x</m>.</statement>
+						<feedback>Incorrect. Differentiating would not help solve the equation; integration is the correct approach.</feedback>
+					</choice>
+					<choice>
+						<statement>Factor the expression <m>5x \cdot y</m>.</statement>
+						<feedback>Incorrect. Factoring is not necessary here; integration is the correct step.</feedback>
+					</choice>
+					<choice>
+						<statement>Substitute a new variable for <m>5x \cdot y</m>.</statement>
+						<feedback>Incorrect. Substitution is not needed; direct integration is the correct step.</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<exercise label="p2-c1-s2-i5"><title> <em>Solve <m>\ \ds y'= e^{2x} - 5x\ </m> using direct integration</em> </title>
+
+				<introduction>
+					<p>
+						Complete each step below to solve the differential equation
+						<me> y'= e^{2x} - 4x. </me>
+					</p>
+				</introduction>
+					
+				<webwork xml:id="p2-c1-s2-i5-ww"> 
+
+					<pg-code>
+						Context()->variables->add(y => 'Real');
+						= Formula("y");
+						= Formula("x");
+						= FormulaUpToConstant("1/2 e^{2x} - 2 x^2");
+					</pg-code>
+
+					<statement>
+						<ol marker="1.">
+							<li>
+								<p>
+									The dependent variable is <var name="" width="5" /> , 
+								</p>
+								<p>
+									The independent variable is <var name="" width="5" /> , 
+								</p>
+							</li>
+							<li>
+								<p>
+									Give the general solution. <em>Don't forget the constant of integration.</em>
+								</p>
+								<p>
+									<m>y(x) = </m> <var name="" width="25" />
+								</p>
+							</li>
+						</ol>
+
+					</statement>
+
+				</webwork>
+
+			</exercise>
+
+		</reading-questions>
+	</section>
+	
+	<section><title> Summary &amp; Exercises </title>
+		<introduction>
+			<p>
+				<assemblage color="green"><title>Summary of the Key Ideas</title>
+					<p>
+						<ul marker="">
+							<li xml:id="summary-antiderivatives">
+								<term> <em>Antiderivatives as Solutions to Differential Equations</em> </term>
+								<ul marker="square">
+									<li>
+										Finding the general antiderivative of a function, <m>f(x)</m>, is equivalent to finding the general solution to the differential equation
+										<me> \frac{dy}{dx} = f(x) </me>.
+									</li>
+								</ul>
+							</li>
+							<li xml:id="summary-direct-integration"> 
+								<term> <em>Direct Integration</em> </term>
+								<ul marker="square">
+									<li>
+										Process of integrating both sides of a differential equation to directly solve for the dependent variable, <m>y</m>.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</p>
+				</assemblage>
+			</p>
+			
+		</introduction>
+
+		<exercises>
+
+			<exercisegroup cols="2"><title> General Solution </title>
+		
+				<introduction>
+					<p>
+						Find the general solution for each of the following differential equations. Combine constants where appropriate.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = 2x - 5 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = x^2 - 5x + C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dx}[y] = e^{2x} </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{1}{2}e^{2x} + C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dx}[x \cdot y] = \cos(x) </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{\sin(x)}{x} + \frac{C}{x} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dt} = \frac{1}{t^2} + t </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = -\frac{1}{t} + \frac{1}{2}t^2 + C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = x e^x </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = (x - 1)e^x + C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \left[\sin(x) \cdot y\right]^\prime = \cos^2(x) </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{\sin(x)}{2} + \frac{C}{\sin(x)} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle y' = \ln(x) + x^2 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = x \ln(x) - x + \frac{1}{3}x^3 + C </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dP}\left[e^P \cdot Q\right] = P </m>
+					</statement>
+					<answer>
+						<m> \displaystyle Q = e^{-P} \left(\frac{P}{e^P} + C \right) </m>
+					</answer>
+				</exercise>
+		
+			</exercisegroup>
+
+			<exercisegroup cols="2"><title> Particular Solution </title>
+		
+				<introduction>
+					<p>
+						Find the particular solution for each of the following differential equations with the given initial condition.
+					</p>
+				</introduction>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = 3x^2 + 2, \ \ y(1) = 4 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = x^3 + 2x + 1 </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dt}[y] = \sin(t), \ \ y(0) = 2 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = -\cos(t) + 3 </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dx}[x \cdot y] = e^x, \ \ y(1) = 0 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{e^x}{x} - \frac{e}{x} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dy}{dx} = x^3 - 4, \ \ y(2) = 1 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{x^4}{4} - 4x + 5 </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{dR}{dh} = \frac{1}{h} + h, \ \ R(1) = 3 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle R = \ln|h| + \frac{h^2}{2} + \frac{5}{2} </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dx}\left[e^x \cdot y\right] = \sin(x), \ \ y(0) = 2 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = e^{-x} \left(-\cos(x) + 3 \right) </m>
+					</answer>
+				</exercise>
+
+				<exercise>
+					<statement>
+						<m> \displaystyle y' = \cos(x) + x^2, \ \ y(0) = -2 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \sin(x) + \frac{x^3}{3} - 2 </m>
+					</answer>
+				</exercise>
+		
+				<exercise>
+					<statement>
+						<m> \displaystyle \frac{d}{dx}\left[\tan(x) \cdot y\right] = \sec^2(x), \quad y\left(\frac{\pi}{4}\right) = 1 </m>
+					</statement>
+					<answer>
+						<m> \displaystyle y = \frac{x \sec^2(x)}{\tan(x)} + \frac{\pi/4 - 1}{\tan(x)} </m>
+					</answer>
+				</exercise>
+		
+			</exercisegroup>
+
+			<exercise>
+				<statement>
+					<p>
+						Attempt to apply direct integration to the differential equation
+						<me> \frac{dy}{dx} = x + y</me>.
+						Get to the point where it becomes clear that you cannot solve for <m>y</m> directly. What is the obstacle?
+					</p>
+				</statement>
+				<answer>
+					<p>
+						Integrating both sides gives
+						<md>
+							<mrow> \int \frac{dy}{dx}\ dx	\amp = \int\left(x + y\right)\ dx 		</mrow>
+							<mrow> 					y + C_1	\amp = \int x\ dx + \int y\ dx 			</mrow>
+							<mrow> 					y + C_1	\amp = \frac12 x^2 + C_2 + \int y\ dx	</mrow>
+							<mrow> 			y - \int y\ dx	\amp = \frac12 x^2 + C_2 - C_1  		</mrow>
+						</md>
+						Without knowing <m>y</m>, we cannot simplify <m>\int y\ dx</m>. So the obstacle is that we are unable to combine the these <m>y</m> variables into a single <m>y</m> on the left side. 
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercises>
+	</section>
+</chapter>
