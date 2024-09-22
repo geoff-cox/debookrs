@@ -1,197 +1,159 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> 2nd-Order LHCC Equations </title>
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> 2nd-Order Equations </title>
 
 	<p>
-        Now let’s look at a second-order equation:
-    </p>
-
-    <me> y'' - 5y' + 6y = 0 </me>
-
-    <p>
-        Substituting <m>y = e^{rx}</m> into this equation gives:
-    </p>
-
-    <md>
-        <mrow> \left[e^{rx}\right]'' - 5 \left[e^{rx}\right]' + 6 \left[e^{rx}\right] = 0 </mrow>
-        <mrow> r^2 e^{rx} - 5r e^{rx} + 6 e^{rx} = 0 </mrow>
-        <mrow> (r^2 - 5r + 6) e^{rx} = 0 </mrow>
-    </md>
-
-    <p>
-        Again, since <m>e^{rx}</m> is never zero, we solve the quadratic equation <m>r^2 - 5r + 6 = 0</m>, which gives <m>r = 2</m> and <m>r = 3</m>. So, the solutions are <m>y = e^{2x}</m> and <m>y = e^{3x}</m>.
-    </p>
-
-    <p>
-        In general, for any LHCC equation, substituting <m>y = e^{rx}</m> leads to a polynomial equation in terms of <m>r</m>. This polynomial is called the <em>characteristic equation</em>. To solve an LHCC equation, we first solve the characteristic equation to find the values of <m>r</m>, which then give us the solutions of the form <m>e^{rx}</m>.
-    </p>
-
-    <definition xml:id="def-characteristic-equation"><title>Characteristic Equation</title>
-        <statement>
-            <p>
-                The <term>characteristic equation</term> of a linear homogeneous differential equation with constant coefficients (LHCC) is the polynomial equation:
-            </p>
-            <men xml:id="characteristic-equation"> 
-                a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1\ r + a_0 = 0
-            </men>
-        </statement>
-    </definition>
-
-    <p>
-        The solutions to this equation provide the <m>r</m>-values needed to form the general solution of the LHCC equation.
-    </p>
-
-    <example>
-        <p>
-            Find the characteristic equation for the differential equation:
-            <me> y'' + 5y' - y = 0 </me>
-        </p>
-
-        <solution>
-            <p>
-                The characteristic equation is obtained by substituting <m>y = e^{rx}</m> into the differential equation:
-                <me> r^2 + 5r - 1 = 0 </me>.
-                Solving this quadratic equation gives the <m>r</m>-values, which correspond to the solutions <m>e^{2x}</m> and <m>e^{3x}</m>.
-            </p>
-        </solution>
-    </example>
-
-
-
-	<p>
-		After mastering first-order LHCC equations, we are now ready to tackle second-order LHCC equations. These equations are slightly more complex but follow a similar approach. We'll see how the characteristic equation helps us find solutions and explore the different cases that arise based on its solutions.
+		Now that we've mastered first-order LHCC equations, it's time to explore second-order LHCC equations. These are slightly more complex but follow a similar approach. We'll see how the characteristic equation helps us find solutions and look at the different cases that arise depending on the nature of the roots.
 	</p>
+
 	<p>
-		A second-order LHCC equation has the form:
-		<men xml:id="second-order-lhcc-equation"> 
-			a_2 y'' + a_1 y' + a_0 y = 0 \qquad (a_2, a_1, a_0 \text{ constants}) 
-		</men>.
-		The characteristic equation for this is:
-		<men xml:id="second-order-lhcc-characteristic-equation"> 
-			a_2 r^2 + a_1 r + a_0 = 0 
-		</men>,
-		a quadratic equation with the unknown <m>r</m>. Quadratic equations have two solutions (possibly repeated), leading to a general solution with two terms. The exact form of these terms depends on the solutions to the characteristic equation <xref ref="second-order-lhcc-characteristic-equation"/>. To prepare for the next discussion, review <xref ref="solving-the-quadratic-equation" text="title"/>.
+        Consider the following second-order equation:
+		<men xml:id="second-order-lhcc-intro-de"> y'' - 5y' + 6y = 0 </men>
+		Substituting <m>y = e^{rx}</m> into this equation, we get:
+		<md>
+			<mrow> \left[e^{rx}\right]'' - 5 \left[e^{rx}\right]' + 6 \left[e^{rx}\right] =	\amp\ 0							</mrow>
+			<mrow> r^2 e^{rx} - 5r e^{rx} + 6 e^{rx} =										\amp\ 0							</mrow>
+			<mrow> (r^2 - 5r + 6) e^{rx} =													\amp\ 0 \qquad (e^{rx} \ne 0)	</mrow>
+			<mrow> \text{characteristic equation} \rightarrow \qquad r^2 - 5r + 6 =			\amp\ 0							</mrow>
+			<mrow> r_1 = 2, \quad  r_2 =													\amp\ 3							</mrow>
+		</md>.
+        Therefore, <m>y = e^{2x}</m> and <m>y = e^{3x}</m> are solutions, and the general solution is the combination of these two:
+		<me> y = C_1 e^{2x} + C_2 e^{3x} </me>.
+    </p>
+
+	<p>
+		In general, for any second-order LHCC equation of the form:
+		<men xml:id="second-order-lhcc-de"> a y'' + b y' + c y = 0 </men>
+		The characteristic equation is:
+		<men xml:id="second-order-lhcc-characteristic-equation"> a r^2 + b r + c = 0 </men>
+		This quadratic equation will have two solutions, which could be either real or complex. The general solution depends on the nature of these solutions, and we will now explore the different  cases. Before moving on, we highly recommend taking a minute to review some <xref ref="solving-the-quadratic-equation" text="custom">concepts related to solving quadratic equations</xref>.
 	</p>
+
 	<p>
-		You might think that if <m>r_1</m> and <m>r_2</m> are the solutions to the characteristic equation, then the general solution is simply:
-		<men xml:id="naive-second-order-lhcc-solution"> 
-			y = C_1 e^{r_1 x} + C_2 e^{r_2 x} 
-		</men>.
-		And you'd be correct most of the time. However, if <m>r_1 = r_2</m>, the terms combine, giving you:
+		Let <m>r_1</m> and <m>r_2</m> be the solutions to the characteristic equation. When <m>r_1 \ne r_2</m>, the general solution is:
+		<men xml:id="second-order-lhcc-solution-r1-notequalto-r2"> y = C_1\, e^{r_1 x} + C_2\, e^{r_2 x} </men>
+		However, if <m>r_1 = r_2</m>, the terms combine into like terms, 
 		<me> 
-			y = \color{blue}\us{ \large \text{like terms}}{\us{\nwarrow}{\ul{C_1 e^{r_1 x}}} + \us{\nearrow}{\ul{C_2 e^{r_1 x}}}} = (\us{C}{\ub{C_1 + C_2}}) e^{r_1 x}
-		</me>.
-		But the solution must have two non-like terms (i.e., terms that cannot be combined into a single term with addition).
+			y = C_1\, e^{r_1 x} + C_2\, e^{r_2 x} = \color{blue}\us{ \large \text{like terms}}{\us{\nwarrow}{\ul{C_1\, e^{r_1 x}}} + \us{\nearrow}{\ul{C_2\, e^{r_1 x}}}} = (\us{C}{\ub{C_1 + C_2}})\, e^{r_1 x}
+		</me>,
+		which is an incomplete solution. To fix this, we multiply the second term by <m>x</m>, resulting in the correct general solution:
 		<fn>
-			Formally, "like" and "non-like" are related to the concept of linearly dependence.
+			<p>
+				See <xref ref="tba"/> for an outline of why the extra <m>x</m> is required in the general solution of a second order LHCC equation when <m>r_1=r_2</m>.
+			</p>
 		</fn>
-		The general solution is corrected by adding an <m>x</m> to the second term, like so
-		<me> 
-			y = \color{blue}\us{\large \text{non-like terms}}{\us{\uparrow}{\ul{C_1 e^{r_1 x}}} + \us{\uparrow}{\ul{C_2 x e^{r_1 x}}}}
-		</me>.
-		The reason for adding <m>x</m> is oultined in <xref ref="tba"/>.
+		<me> y = C_1\, e^{r_1 x} + C_2\, x e^{r_1 x} </me>
 	</p>
+
 	<p>
-		Therefore, depending on whether <m>r_1 = r_2</m>, the general solution to a second-order LHCC equation is either:
-		<mdn>
-			<mrow xml:id="r1-not-equal-to-r2">
-				r_1 \ne r_2: \amp \quad y = C_1 e^{r_1 x} + C_2 e^{r_2 x}, \quad \text{or}
-			</mrow>
-			<mrow xml:id="r1-equal-to-r2">
-				r_1 = r_2: \amp \quad y = (C_1 + C_2 x) e^{r_1 x}.
-			</mrow>
-		</mdn>
-		With the help of Euler's formula, the first case is often split into real and complex cases. If you are curious about where the complex general form comes from, <xref ref="second-order-lhcc-complex-case" text="custom">here are the details</xref>. All three cases are summarized below.
+		Although, the above explanation covers the situation when <m>r_1</m> and <m>r_2</m> are equal or not, we will split the <m>r_1 \ne r_2</m> case into <xref ref="second-order-lhcc-complex-case" text="custom">two cases that treat real or complex values separately</xref>. The three cases are summarized below.
 	</p>
-	<assemblage>
-		<title> Summary of Cases </title>
+
+	<assemblage><title> Summary of Cases </title>
 		<p>
-			Let <m>r_1</m> and <m>r_2</m> be the two solutions of the characteristic equation associated with the second-order LHCC equation <xref ref="second-order-lhcc-equation"/>. Then <xref ref="second-order-lhcc-equation"/> has one of the following general solutions:
-			<dl width="narrow">
-				<li xml:id="lhcc-case-1"><title>Case 1</title>
-					<m>r_1, r_2</m> are real and not equal
+			Let <m>r_1</m> and <m>r_2</m> be the solutions of the characteristic equation associated with the second-order LHCC equation. The general solution is:
+			<dl width="wide">
+				<li xml:id="lhcc-case-1"><title>Case 1 (real &amp; <m>\ne</m>)</title>
 					<m>
-						\quad \ds y = C_1 e^{r_1 x} + C_2 e^{r_2 x}
+						\ds y = C_1 e^{r_1 x} + C_2 e^{r_2 x} \quad (r_1 \ne r_2)
 					</m>
 				</li>
-				<li xml:id="lhcc-case-2"><title>Case 2</title>
-					<m>r_1, r_2</m> are real and equal
+				<li xml:id="lhcc-case-2"><title>Case 2 (real &amp; <m>=</m>)</title>
 					<m>
-						\quad \ds y = (C_1 + C_2 x) e^{r_1 x}
+						\ds y = (C_1 + C_2 x) e^{r_1 x} \quad (r_1 = r_2)
 					</m>
 				</li>
-				<li xml:id="lhcc-case-3"><title>Case 3</title>
-					<m>r_1, r_2</m> are complex
-					<m>
-						\quad \ds y = e^{\alpha x} (C_1 \cos(\beta x) + C_2 \sin(\beta x))
-					</m>
+				<li xml:id="lhcc-case-3"><title>Case 3 (complex)</title>
+					<line>
+						<m>
+							\ds y = e^{\alpha x} (C_1 \cos(\beta x) + C_2 \sin(\beta x))
+						</m>
+					</line>
+					<line>
+						<m>
+							\ds (r = \alpha \pm i\beta \implies r_1 = \alpha + i\beta, \ r_2 = \alpha - i\beta)
+						</m>
+					</line>
 				</li>
 			</dl>
 		</p>
 	</assemblage>
+
+	<p>
+		Let's now practice solving some second-order LHCC equations.
+	</p>
+
 	<example>
-		<title> <em>Examples of the Different Cases</em> </title>
-		<statement>
-			<p>
-				Find the general solutions to each of these second-order LHCC equations:
-			</p>
-			<p>
-				<ol>
-					<li>
-						<p>
-							<m> y'' - 5y' + 6y = 0 </m>
-						</p>
-					</li>
-					<li>
-						<p>
-							<m> y'' + 4y' + 4y = 0 </m>
-						</p>
-					</li>
-					<li>
-						<p>
-							<m> y'' + 2y' + 5y = 0 </m>
-						</p>
-					</li>
-				</ol>
-			</p>
-		</statement>
-		<solution>
-			<solution>
+
+
+		<m>\ \ </m> Find the general solutions for each LHCC equation.
+
+		<p>
+			<sidebyside widths="30% 70%">
 				<p>
-					First, write down and solve the characteristic equation:
-					<md>
-						<mrow> r^2 - 5r + 6 = 0 </mrow>
-						<mrow> (r-2)(r-3) = 0 </mrow>
-						<mrow> r_1 = 2 \quad \text{and} \quad r_2 = 3 </mrow>
-					</md>.
-					Since <m>r_1</m> and <m>r_2</m> are real and <m>r_1 \ne r_2</m>, we are in <xref ref="lhcc-case-1" text="custom">Case 1</xref>. Therefore, the general solution is:
-					<me> y = C_1 e^{2x} + C_2 e^{3x} </me>.
+					<m> y'' - 5y' + 6y = 0 </m>
 				</p>
-			</solution>
-			<solution>
 				<p>
-					The characteristic equation is:
-					<md>
-						<mrow> r^2 + 4r + 4 = 0 </mrow>
-						<mrow> (r+2)(r+2) = 0 </mrow>
-						<mrow> r_1 = -2 \quad \text{and} \quad r_2 = -2 \quad \leftarrow <xref ref="lhcc-case-2" text="custom">Case 2</xref> </mrow>
-					</md>.
-					Therefore, the general solution is:
-					<me> y = (C_1 + C_2 x) e^{-2x} </me>.
+					<solution>
+						<p>
+							First, write down and solve the characteristic equation:
+							<md>
+								<mrow> r^2 - 5r + 6 =\amp\ 0 </mrow>
+								<mrow> (r-2)(r-3) =\amp\ 0 </mrow>
+								<mrow> r_1 = 2 \quad \text{and} \quad r_2 =\amp\ 3 </mrow>
+							</md>.
+							Since <m>r_1</m> and <m>r_2</m> are real and <m>r_1 \ne r_2</m>, we are in <xref ref="lhcc-case-1" text="custom">Case 1</xref>. Therefore, the general solution is:
+							<me> y = C_1 e^{2x} + C_2 e^{3x} </me>.
+						</p>
+					</solution>
 				</p>
-			</solution>
-			<solution>
+			</sidebyside>
+		</p>
+		
+		<p>
+			<sidebyside widths="30% 70%">
 				<p>
-					The characteristic equation in this problem is:
-					<md>
-						<mrow> r^2 + 2r + 5 = 0 </mrow>
-						<mrow> r = \us{\alpha}{\boxed{-1}} \pm \us{\beta}{\boxed{2}}i \quad \leftarrow <xref ref="lhcc-case-3" text="custom">Case 3</xref> </mrow>
-					</md>.
-					Here, <m>\alpha = -1</m> and <m>\beta = 2</m>. So the general solution is:
-					<me> y = e^{-x} (C_1 \cos(2x) + C_2 \sin(2x)) </me>.
+					<m> y'' + 4y' + 4y = 0 </m>
 				</p>
-			</solution>
-		</solution>
+
+				<p>
+					<solution>
+						<p>
+							The characteristic equation is:
+							<md>
+								<mrow> r^2 + 4r + 4 =\amp\ 0 </mrow>
+								<mrow> (r+2)(r+2) =\amp\ 0 </mrow>
+								<mrow> r_1 = -2 \quad \text{and} \quad r_2 =\amp\ -2 \quad \leftarrow <xref ref="lhcc-case-2" text="custom">Case 2</xref> </mrow>
+							</md>.
+							Therefore, the general solution is:
+							<me> y = (C_1 + C_2 x) e^{-2x} </me>.
+						</p>
+					</solution>
+				</p>
+			</sidebyside>
+		</p>
+
+		<p>
+			<sidebyside widths="30% 70%">
+				<p>
+					<m> y'' + 2y' + 5y = 0 </m>
+				</p>
+		
+				<p>
+					<solution>
+						<p>
+							The characteristic equation in this problem is:
+							<md>
+								<mrow> r^2 + 2r + 5 = 0\amp </mrow>
+								<mrow> r = \us{\alpha}{\boxed{-1}} \pm \us{\beta}{\boxed{2}}i \amp\ \quad \leftarrow <xref ref="lhcc-case-3" text="custom">Case 3</xref> </mrow>
+							</md>.
+							Here, <m>\alpha = -1</m> and <m>\beta = 2</m>. So the general solution is:
+							<me> y = e^{-x} (C_1 \cos(2x) + C_2 \sin(2x)) </me>.
+						</p>
+					</solution>
+				</p>
+			</sidebyside>
+		</p>
 	</example>
 
 	<xi:include href="./p3-c1-s4-interactives.ptx" />
 
-</section>
+</section> 
