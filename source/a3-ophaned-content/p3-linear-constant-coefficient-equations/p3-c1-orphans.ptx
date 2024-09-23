@@ -8,7 +8,7 @@
 
 	<paragraphs><title> Additional Examples </title>
 
-	<example>
+		<example>
 		<m>\ \ </m> 					Which of the linear differential equations have constant coefficients?
 		<statement>
 				<me> 
@@ -106,6 +106,37 @@
 				</p>
 			</solution>
 		</example>
+
+		<paragraphs xml:id="poly-root-solver"><title>Polynomial Factoring Calculator</title>
+			<interactive xml:id="poly-root" platform="sage" width="95%" aspect="3.25:1">
+				<slate surface="sage">
+r = var('r')
+n = 100
+a = -50
+b = 50
+dx = (b - a)/(n-1)
+partition = [a+k*dx for k in range(n)]
+char_poly = r^2 - 2*r - 8
+char_eqn = char_poly == 0
+def get_roots(eqn, partition):
+	roots=list()
+	for i in range(n-1):
+		try:
+			roots.append(eqn.find_root(partition[i], partition[i+1]))
+		except:
+			pass
+	return roots
+
+roots = get_roots(char_eqn, partition)
+
+@interact
+def _(ce = input_box(char_poly, label="	Polynomial:", type=str, width=30)):
+	ce_poly = sage_eval('lambda r: ' + ce)
+	pretty_print( html( r'Characteristic Equation: $ %s = 0 $'%latex(ce_poly(r) ) ) )
+	pretty_print( html( r'Roots: $ %s $'%latex(get_roots(ce_poly(r)==0, partition)) ) )
+				</slate>
+			</interactive>
+		</paragraphs>
 		
 	</paragraphs>
 	

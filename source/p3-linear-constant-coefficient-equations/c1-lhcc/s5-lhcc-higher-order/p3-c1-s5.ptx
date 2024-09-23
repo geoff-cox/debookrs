@@ -14,7 +14,7 @@
 		<me>
 			9 r^5 - 4 r^4 + r + 10 = 0
 		</me>,
-		which very challenging to solve by hand. However, if you knew that it factors as
+		which challenging to solve by hand. However, if you knew that it factors as
 		<me>
 			2\left(r+3\right)^2 \left(r-1\right) \left(r-\frac12\right) = 0
 		</me>,
@@ -291,43 +291,25 @@
 
 		<solution>
 			<p>
-			The characteristic equation is:
+				The characteristic equation is:
+				<me> r^5 - 4r^3 + 3r^2 - 1 = 0 </me>.
+				Solving this polynomial equation analytically is challenging, so we use a numerical solver (<url href="https://www.wolframalpha.com/input?i=r%5E5-4*r%5E3%2B3*r%5E2-1">Wolfram Alpha</url>). This equation has five roots. Three are real:
+				<me> r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52, </me>
+				and two are complex:
+				<me> r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i </me>.
+				The general solution, incorporating these roots, is:
+				<md> 
+					<mrow> y = c_1 e^{-2.29x} + c_2 e^{-0.46x}	+\amp\ c_3 e^{1.52x}								</mrow>
+					<mrow> 										+\amp\ e^{0.61x} (c_4 \cos(0.5x) + c_5 \sin(0.5x))	</mrow>
+				</md>.
 			</p>
-			<md>
-			<mrow> r^5 - 4r^3 + 3r^2 - 1 = 0 </mrow>
-			</md>.
-			<p>
-			Solving this polynomial equation analytically is challenging, so we use a numerical solver. The roots are found to be approximately:
-			</p>
-			<md>
-			<mrow> r_1 = 1, \quad r_2 \approx 1.5, \quad r_3 \approx -1, \quad r_4 \approx 0.5 + 0.5i, \quad r_5 \approx 0.5 - 0.5i </mrow>
-			</md>.
-			<p>
-			The general solution, incorporating these roots, is:
-			</p>
-			<me> y = C_1 e^{x} + C_2 e^{1.5x} + C_3 e^{-x} + e^{0.5x} (C_4 \cos(0.5x) + C_5 \sin(0.5x)) </me>.
 		</solution>
 	</example>
 	
 	<p>
 		By recognizing the type of roots and using technology to solve higher-degree polynomials, we can extend our approach to solve any higher-order LHCC equation effectively.
+		<xref ref="poly-factor-p" text="title"/>
 	</p>
-
-	<paragraphs xml:id="poly-factor-p"><title>Polynomial Factoring Calculator</title>
-		<interactive xml:id="poly-factor" platform="sage" width="95%" aspect="3.25:1">
-			<slate surface="sage">
-				r = var('r')
-				r = PolynomialRing(RationalField(), 'r').gen()
-				F = 'r^2 - 2*r - 8'
-				P = r^2 - 2*r - 8
-				@interact
-				def _(ce = input_box(P, label="	Polynomial:", type=str, width=30)):
-					ce_poly = sage_eval('lambda r: ' + ce)
-					pretty_print( html( r'Polynomial: $ %s = 0 $'%latex(ce_poly(r) ) ) )
-					pretty_print( html( r'Factored Polynomial: $ %s = 0 $'%latex(ce_poly(r).factor()) ) )
-			</slate>
-		</interactive>
-	</paragraphs>
 
 	<xi:include href="./p3-c1-s5-interactives.ptx" />
 
