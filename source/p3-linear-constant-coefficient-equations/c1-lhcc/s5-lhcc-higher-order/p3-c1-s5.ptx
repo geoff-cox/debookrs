@@ -1,67 +1,121 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Higher-Order Equations </title>
 
-
 	<p>
-		As in the previous section, the approach to solving higher-order linear homogeneous constant coefficient (LHCC) equations is fairly straightforward. Find the solutions to the characteristic equation and use them to write down each term of the general solution. The key difference lies in the fact that you must solve a high-degree polynomial equation, which can be challenging since you no longer have a simple formula to give you the solutions.
-	</p>
-	
-	<p>
-		For example, the 4th order LHCC equation,
-		<me>
-			2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y  = 0
-		</me>,
-		has a 4th degree characteristic equation
-		<me>
-			9 r^5 - 4 r^4 + r + 10 = 0
-		</me>,
-		which challenging to solve by hand. However, if you knew that it factors as
-		<me>
-			2\left(r+3\right)^2 \left(r-1\right) \left(r-\frac12\right) = 0
-		</me>,
-		you could easily find the roots and write down the general solution.
-	</p>
-
-	<p>
-        There are some algebraic tricks you can use to factor higher-order polynomials, but they apply only to special forms of higher-order polynomials and it is unlikely that you will be lucky enough to encounter these <q>special</q> forms in practice. Therefore, it is more practical to use technology when solving such high-order characteristic equations.
+        Solving higher-order linear homogeneous constant coefficient (LHCC) equations is an extension of the methods used for second-order equations. The basic strategy remains the same: solve the characteristic equation, then construct the general solution. However, for higher-order equations, the characteristic equation is a higher-degree polynomial, which can make finding the solutions more challenging.
     </p>
 
-    <p>
-        The solutions to this equation provide the <m>r</m>-values needed to form the general solution of the LHCC equation.
+	<theorem xml:id="def-characteristic-equation">
+        <title><em>LHCC Characteristic Equation</em></title>
+        <statement>
+            <p>
+                The <term>characteristic equation</term> of an <m>n</m>-th order LHCC equation
+                <me>a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = 0</me>
+                is the <m>n</m>-th degree polynomial
+				<fn>
+					<xref ref="characteristic-eqn-details" text="custom">Click here for an explanation.</xref>
+				</fn>
+                <me>a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1 r + a_0 = 0</me>.
+                The solutions to this polynomial, <m>r_1, r_2, \dots r_n</m>, correspond to the roots that determine the form of the general solution.
+            </p>
+        </statement>
+    </theorem>
+	
+	<p>
+        In general, the characteristic equation will have <m>n</m> roots, which may be real or complex and may also include repeated roots. Each root of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of roots.
+    </p>
+
+	<table xml:id="higher-order-lhcc-general-solution-examples"><title>Examples of LHCC General Solutions</title>
+        <tabular left="minor" right="minor" top="minor" bottom="minor" halign="center">
+            <row>
+                <cell>
+					<line>Characteristic Equation</line>
+					<line>Solutions</line>
+				</cell>
+                <cell>General Solution</cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = 3, -3, 5.3</m></line>
+                    <line><em>(3rd order)</em></line>
+                </cell>
+                <cell><me>c_1e^{3t} + c_2e^{-3t} + c_3e^{5.3t}</me></cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = 6 \pm i\sqrt{7.7}, 0</m></line>
+                    <line><em>(3rd order)</em></line>
+                </cell>
+                <cell><me>e^{6t}\left(c_1\sin(\sqrt{7.7}t) + c_2\cos(\sqrt{7.7}t)\right) + c_3</me></cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = -4 \text{ (triple)}, 5.3</m></line>
+                    <line><em>(4th order)</em></line>
+                </cell>
+                <cell><me>(c_1t^2 + c_2t + c_3)e^{-4t} + c_4e^{5.3t}</me></cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = \pm \frac{i}{2}, 2 \pm i</m></line>
+                    <line><em>(4th order)</em></line>
+                </cell>
+                <cell><me>c_1\sin\left(\frac{t}{2}\right) + c_2\cos\left(\frac{t}{2}\right) + e^{2t}(c_3\sin t + c_4\cos t)</me></cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = 0 \text{ (double)}, 3 \text{ (triple)}</m></line>
+                    <line><em>(5th order)</em></line>
+                </cell>
+                <cell><me>c_1t + c_2 + (c_3t^4 + c_4t^3 + c_5t^2 + c_6t + c_7)e^{3t}</me></cell>
+            </row>
+            <row>
+                <cell>
+                    <line><m>r = \pm i, \pi \text{ (double)}, 5</m></line>
+                    <line><em>(5th order)</em></line>
+                </cell>
+                <cell><me>c_1\sin t + c_2\cos t + (c_3t + c_4)e^{\pi t} + c_5e^{5t}</me></cell>
+            </row>
+        </tabular>
+    </table>
+
+	<p>
+        As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the roots of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.
     </p>
 
 	<example>
 
-		<m>\ \ </m> Use the difference of squares and common factor techniques to factor and solve the following characteristic equations.
+		<m>\ \ </m> Solve the following characteristic equations.
 		
 		<p>
 			<ol>
-				<li> <m> 4\ r^2 - 9 = 0 </m> </li>
+				<li> <m> 4 r^2 - 9 = 0 </m> </li>
 				<li> <m> r^2 - 3 = 0 </m> </li>
-				<li> <m> r^3 + 3\ r^2 - 4\ r = 0 </m> </li>
-				<li> <m> r^5 + 10\ r^4 = 0 </m> </li>
-				<li> <m> r^4 - 100\ r^2 = 0 </m> </li>
-				<li> <m> r^5 - 4\ r^3 = 0 </m> </li>
+				<li> <m> r^3 + 3 r^2 - 4 r = 0 </m> </li>
+				<li> <m> r^5 + 10 r^4 = 0 </m> </li>
+				<li> <m> r^4 - 100 r^2 = 0 </m> </li>
+				<li> <m> r^5 - 4 r^3 = 0 </m> </li>
 				<li> <m> r^4 - 32 = 0 </m> </li>
+				<li> <m> r^4 - 5r^2 + 4 = 0 </m> </li>
 			</ol>
 		</p>
 
 		<solution>
 			<p>
-				The degree of each equation tells you how many factors you should have.
+				Note: DoS = Difference of Squares.
 				<ol>
 					<li>
 						<p>
 							<tabular>
 								<row>
-									<cell><m> 4\ r^2 - 9 = 0 </m></cell>
-									<cell/>
-								</row>
-								<row>
-									<cell><m> (2\ r + 3)(2\ r - 3) = 0 </m></cell>
+									<cell><m> 4 r^2 - 9 = 0 </m></cell>
 									<cell> <m>\leftarrow</m> DoS </cell>
 								</row>
 								<row>
-									<cell><m> 2\ r + 3 = 0, \quad 2\ r - 3 = 0 </m></cell>
+									<cell><m> (2 r + 3)(2 r - 3) = 0 </m></cell>
+									<cell/>
+								</row>
+								<row>
+									<cell><m> 2 r + 3 = 0, \quad 2 r - 3 = 0 </m></cell>
 									<cell></cell>
 								</row>
 								<row>
@@ -77,11 +131,11 @@
 							<tabular>
 								<row>
 									<cell><m> r^2 - 3 = 0 </m></cell>
-									<cell/>
+									<cell> <m>\leftarrow</m> DoS </cell>
 								</row>
 								<row>
 									<cell><m> (r + \sqrt{3})(r - \sqrt{3}) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> DoS </cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> \displaystyle r_1 = -\sqrt{3}, \quad r_2 = \sqrt{3} </m></cell>
@@ -95,12 +149,12 @@
 						<p>
 							<tabular>
 								<row>
-									<cell><m> r^3 + 3\ r^2 - 4\ r = 0 </m></cell>
-									<cell/>
+									<cell><m> r^3 + 3 r^2 - 4 r = 0 </m></cell>
+									<cell> <m>\leftarrow r </m> common </cell>
 								</row>
 								<row>
-									<cell><m> r\ (r^2 + 3\ r - 4) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> common </cell>
+									<cell><m> r\ (r^2 + 3 r - 4) = 0 </m></cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> r\ (r + 4)(r - 1) = 0 </m></cell>
@@ -118,12 +172,12 @@
 						<p>
 							<tabular>
 								<row>
-									<cell><m> r^5 + 10\ r^4 = 0 </m></cell>
-									<cell/>
+									<cell><m> r^5 + 10 r^4 = 0 </m></cell>
+									<cell> <m>\leftarrow r^4 </m> common </cell>
 								</row>
 								<row>
 									<cell><m> r^4\ (r + 10) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> common </cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> \displaystyle r_1 = 0\ (\text{4 repeats}), \quad r_2 = -10 </m></cell>
@@ -136,21 +190,20 @@
 						</p>
 					</li>
 
-
 					<li>
 						<p>
 							<tabular>
 								<row>
-									<cell><m> r^4 - 100\ r^2 = 0 </m></cell>
-									<cell/>
+									<cell><m> r^4 - 100 r^2 = 0 </m></cell>
+									<cell> <m>\leftarrow r^2 </m> common </cell>
 								</row>
 								<row>
 									<cell><m> r^2\ (r^2 - 100) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> common </cell>
+									<cell> <m>\leftarrow</m> DoS </cell>
 								</row>
 								<row>
 									<cell><m> r^2\ (r + 10)(r - 10) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> DoS </cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> \displaystyle r_1 = 0\ (\text{2 repeats}), \quad r_2 = -10, \quad r_3 = 10 </m></cell>
@@ -164,16 +217,16 @@
 						<p>
 							<tabular>
 								<row>
-									<cell><m> r^5 - 4\ r^3 = 0 </m></cell>
-									<cell/>
-								</row>
-								<row>
-									<cell><m> r^3\ (r^2  - 4) = 0 </m></cell>
+									<cell><m> r^5 - 4 r^3 = 0 </m></cell>
 									<cell> <m>\leftarrow</m> common </cell>
 								</row>
 								<row>
-									<cell><m> r^3\ (r + 2)(r - 2) = 0 </m></cell>
+									<cell><m> r^3\ (r^2  - 4) = 0 </m></cell>
 									<cell> <m>\leftarrow</m> DoS </cell>
+								</row>
+								<row>
+									<cell><m> r^3\ (r + 2)(r - 2) = 0 </m></cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> \displaystyle r_1 = 0\ (\text{3 repeats}), \quad r_2 = -2, \quad r_3 = 2 </m></cell>
@@ -188,7 +241,7 @@
 							<tabular>
 								<row>
 									<cell><m> r^4 - 25 = 0 </m></cell>
-									<cell/>
+									<cell> <m>\leftarrow</m> DoS </cell>
 								</row>
 								<row>
 									<cell><m> (r^2 + 5)(r^2  - 5) = 0 </m></cell>
@@ -196,7 +249,7 @@
 								</row>
 								<row>
 									<cell><m> (r^2 + 5)(r - \sqrt{5})(r + \sqrt{5}) = 0 </m></cell>
-									<cell> <m>\leftarrow</m> DoS </cell>
+									<cell/>
 								</row>
 								<row>
 									<cell><m> r^2 + 5 = 0, \quad r - \sqrt{5} = 0, \quad r + \sqrt{5} = 0 </m></cell>
@@ -210,85 +263,94 @@
 						</p>
 					</li>
 
+					<li>
+						<p>
+							<md>
+								<mrow> r^4 - 5r^2 + 4 = 0 </mrow>
+							</md>.
+							Let <m>u = r^2</m>, then we can rewrite the equation as:
+							<md>
+								<mrow> u^2 - 5u + 4 = 0 </mrow>
+							</md>.
+							Solving for <m>u</m>, we get:
+							<md>
+								<mrow> u = 1, \quad u = 4 </mrow>
+							</md>.
+							Thus, <m>r^2 = 1</m> gives <m>r = \pm 1</m>, and <m>r^2 = 4</m> gives <m>r = \pm 2</m>. The general solution is:
+							<me> y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2x} + c_4 e^{-2x} </me>.
+						</p>
+					</li>
 				</ol>
 			</p>
 		</solution>
 	</example>
 
+	<p>
+		These factoring techniques useful, but they only apply to specific forms of polynomials and it is unlikely that you will be lucky enough to encounter such forms in practice. Therefore, it is reasonable to use technology to aid you with these tyes of problems. Many software tools are available and you are encouraged to use any that you are familiar with.
+	</p>
+
 	<example>
-		<m>\ \ </m> Let's solve a third-order LHCC equation:
 
+		<m>\ \ </m> Find the general solution to the LHCC equations
+		
 		<p>
-			<me> y''' - 6y'' + 11y' - 6y = 0 </me>.
-		</p>
-	<solution>
-		<p>
-		First, write down the characteristic equation:
-		</p>
-		<md>
-		<mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
-		</md>.
-		<p>
-		Solving for <m>r</m>, we get three distinct real roots:
-		</p>
-		<md>
-		<mrow> r = 1, \quad r = 2, \quad r = 3 </mrow>
-		</md>.
-		<p>
-		Therefore, the general solution is:
-		</p>
-		<me> y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x} </me>.
-	</solution>
-	</example>
-	
-	<example>
-		<m>\ \ </m> Consider another example, a fourth-order LHCC equation:
-
-		<p>
-			<me>  y^{(4)} - 5y'' + 4y = 0 </me>.
+			<ol>
+				<li> <m> y''' - 6y'' + 11y' - 6y = 0 </m> </li>
+				<li> <m> 2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y  = 0 </m> </li>
+			</ol>
 		</p>
 
-	<solution>
-		<p>
-		The characteristic equation is:
-		</p>
-		<md>
-		<mrow> r^4 - 5r^2 + 4 = 0 </mrow>
-		</md>.
-		<p>
-		Let <m>u = r^2</m>, then we can rewrite the equation as:
-		</p>
-		<md>
-		<mrow> u^2 - 5u + 4 = 0 </mrow>
-		</md>.
-		<p>
-		Solving for <m>u</m>, we get:
-		</p>
-		<md>
-		<mrow> u = 1, \quad u = 4 </mrow>
-		</md>.
-		<p>
-		Thus, <m>r^2 = 1</m> gives <m>r = \pm 1</m>, and <m>r^2 = 4</m> gives <m>r = \pm 2</m>. The general solution is:
-		</p>
-		<me> y = C_1 e^{x} + C_2 e^{-x} + C_3 e^{2x} + C_4 e^{-2x} </me>.
-	</solution>
+		<solution>
+
+			<ol>
+				<li> 
+					<p>
+						First, write down the characteristic equation:
+						<md>
+							<mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
+						</md>.
+						Solving for <m>r</m>, we get three distinct real roots:
+						<md>
+							<mrow> r = 1, \quad r = 2, \quad r = 3 </mrow>
+						</md>.
+						Therefore, the general solution is:
+						<me> y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} </me>.
+					</p>
+				</li>
+				<li> 
+					<p>
+						The characteristic equation is:
+						<me>
+							9 r^5 - 4 r^4 + r + 10 = 0
+						</me>
+						which is challenging to solve by hand. However, typing it into <xref ref="poly-factor-p" text="title"/> shows that it can be factored as
+						<me>
+							2\left(r+3\right)^2 \left(r-1\right) \left(r-\frac12\right) = 0
+						</me>,
+						which gives the solutions
+						<me>
+							r = -3, \quad r = -3, \quad r = 1, \quad r = \frac12
+						</me>.
+						Therefore, the general solution is:
+						<me>
+							y = (c_1x + c_2) e^{-3x} + c_3 e^{x} + c_4 e^{\frac12 x}
+						</me>.
+					</p>
+				</li>
+			</ol>
+			
+		</solution>
 	</example>
 	
 	<p>
-		As seen in these examples, solving the characteristic equation for higher-order LHCC equations follows the same principles as for lower-order equations. However, as the degree of the polynomial increases, solving the characteristic equation analytically can become impractical due to the complexity of the roots.
-	</p>
-	
-	<p>
-		For higher-degree characteristic equations, numerical methods and computer algebra systems are typically employed to find the roots. Software tools like MATLAB, Mathematica, and even graphing calculators can assist in solving these polynomial equations, allowing us to focus on interpreting and utilizing the solutions.
-	</p>
+        Besides factoring software, another options is to use numerical solvers. The next example illustrates this.
+    </p>
 	
 	<example>
 		<m>\ \ </m> Consider the fifth-order LHCC equation:
-
 		<p>
 			<me> y^{(5)} - 4y''' + 3y'' - y = 0 </me>.
 		</p>
-
 		<solution>
 			<p>
 				The characteristic equation is:
@@ -302,14 +364,14 @@
 					<mrow> y = c_1 e^{-2.29x} + c_2 e^{-0.46x}	+\amp\ c_3 e^{1.52x}								</mrow>
 					<mrow> 										+\amp\ e^{0.61x} (c_4 \cos(0.5x) + c_5 \sin(0.5x))	</mrow>
 				</md>.
+				<me>y = c_1e^{-2.29t} + c_2e^{-0.46t} + c_3e^{1.52t} + e^{0.61t}(c_4\cos(0.5t) + c_5\sin(0.5t))</me>.
 			</p>
 		</solution>
 	</example>
 	
 	<p>
-		By recognizing the type of roots and using technology to solve higher-degree polynomials, we can extend our approach to solve any higher-order LHCC equation effectively.
-		<xref ref="poly-factor-p" text="title"/>
-	</p>
+        By recognizing the nature of the roots and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.
+    </p>
 
 	<xi:include href="./p3-c1-s5-interactives.ptx" />
 
