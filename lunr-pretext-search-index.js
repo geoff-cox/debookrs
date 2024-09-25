@@ -61,7 +61,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.2",
   "title": "Definition",
-  "body": "Definition  Here is the formal definition of a differential equation.   Differential Equation   A differential equation (DE) is an equation that involves one or more derivatives of an unknown function. If the function depends on a single variable, the equation is an ordinary differential equation (ODE) . Otherwise, it is called a partial differential equation (PDE) .     Convention: DE means ODE  Since this text focuses exclusively on ordinary differential equations, any use of DE will imply ODE .  According to the definition, a differential equation must include at least one derivative (e.g., , ) and an equality sign (\"=\"). This distinction helps us identify the following expressions as differential equations: In contrast, the following are not differential equations because they either lack a derivative or an equality sign:   Derivative Notation  We will use either prime notation or Leibniz notation to denote derivatives. For higher-order derivatives, the following conventions apply:     Derivative Order     1  2  3  4   n    Prime          Leibniz           Be careful not to confuse with raised to the power of 7!    Check your Understanding   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation    True   Incorrect, derivative equation is not a standard term in mathematics.     False   Correct!       The expression is the same as to the power of 18   The expression is the same as to the power of 18    True   Incorrect. Please read the note on derivative notation.     False   Correct!       Identify the differential equation   Identify the differential equation      Correct! This equation involves a derivative, making it a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.      In this textbook, what does the abbreviation \"DE\" stand for?   In this textbook, what does the abbreviation \"DE\" stand for?    An Ordinary Differential Equation   Correct! In this book, DE is shorthand for Differential Equation.     An Partial Differential Equation   Incorrect! Please review the note Convention: DE means ODE .     Dependent Equation   Incorrect. While DE could theoretically stand for Dependent Equation, in this book it always refers to Differential Equation.     Derivative Equation   Incorrect. While DE could theoretically stand for Derivative Equation, is not a standard term in mathematics. In this book it always refers to Differential Equation.      What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?   What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.   Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.     The number of derivatives in the equation.   Incorrect. Please review the definition of ODEs and PDEs.     The number of solutions the equation has.   Incorrect. Please review the definition of ODEs and PDEs.     The number of hours it takes to solve the equation.   Incorrect. Please review the definition of ODEs and PDEs.      Which of the following is NOT required for an equation to be classified as a differential equation?   Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.   Incorrect. A differential equation does include an unknown function, which we are solving for.     An -variable.   Correct! An -variable is not a requirement for a differential equation.     A derivative.   Incorrect. The presence of at least one derivative is essential to define a differential equation.     An \"=\" sign.   Incorrect. An equality sign is required for an equation to be classified as a differential equation.      What notation will this textbook primarily use for derivatives?   What notation will this textbook primarily use for derivatives?    Both prime and Leibniz notation.   Correct! The textbook will use both prime and Leibniz notation for derivatives.     Only prime notation.   Incorrect. While prime notation will be used, Leibniz notation will also be utilized.     Only Leibniz notation.   Incorrect. The book will use both Leibniz and prime notation for derivatives.     Subscript notation.   Incorrect. Subscript notation is not used for derivatives in this textbook.      Click on all the Differential Equations   Click on all the Differential Equations                                       There are only 5 Differential Equations in this set.    "
+  "body": "Definition  Here is the formal definition of a differential equation.   Differential Equation   A differential equation (DE) is an equation that involves one or more derivatives of an unknown function. If the function depends on a single variable, the equation is an ordinary differential equation (ODE) . Otherwise, it is called a partial differential equation (PDE) .     Convention: DE means ODE  Since this text focuses exclusively on ordinary differential equations, any use of DE will imply ODE .  According to the definition, a differential equation must include at least one derivative (e.g., , ) and an equality sign (\"=\"). This distinction helps us identify the following expressions as differential equations: In contrast, the following are not differential equations because they either lack a derivative or an equality sign:   Derivative Notation  We will use either prime notation or Leibniz notation to denote derivatives. For higher-order derivatives, the following conventions apply:     Derivative Order     1  2  3  4   n    Prime          Leibniz           Be careful not to confuse with raised to the power of 7!    Check your Understanding   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation    True   Incorrect, derivative equation is not a standard term in mathematics.     False   Correct!       The expression is the same as to the power of 18   The expression is the same as to the power of 18    True   Incorrect. Please read the note on derivative notation.     False   Correct!       Identify the differential equation   Identify the differential equation      Correct! This equation involves a derivative, making it a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.      Which of the following is NOT required for an equation to be classified as a differential equation?   Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.   Incorrect. A differential equation does include an unknown function, which we are solving for.     An -variable.   Correct! An -variable is not a requirement for a differential equation.     A derivative.   Incorrect. The presence of at least one derivative is essential to define a differential equation.     An \"=\" sign.   Incorrect. An equality sign is required for an equation to be classified as a differential equation.      Click on all the Differential Equations   Click on all the Differential Equations                                       There are only 5 Differential Equations in this set.    "
 },
 {
   "id": "def-de",
@@ -123,8 +123,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-4.html#p1-c1-s2-i4",
   "type": "Reading Question",
   "number": "1.2.4",
-  "title": "<em class=\"emphasis\">In this textbook, what does the abbreviation \"DE\" stand for?<\/em>",
-  "body": " In this textbook, what does the abbreviation \"DE\" stand for?   In this textbook, what does the abbreviation \"DE\" stand for?    An Ordinary Differential Equation   Correct! In this book, DE is shorthand for Differential Equation.     An Partial Differential Equation   Incorrect! Please review the note Convention: DE means ODE .     Dependent Equation   Incorrect. While DE could theoretically stand for Dependent Equation, in this book it always refers to Differential Equation.     Derivative Equation   Incorrect. While DE could theoretically stand for Derivative Equation, is not a standard term in mathematics. In this book it always refers to Differential Equation.    "
+  "title": "<em class=\"emphasis\">Which of the following is NOT required for an equation to be classified as a differential equation?<\/em>",
+  "body": " Which of the following is NOT required for an equation to be classified as a differential equation?   Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.   Incorrect. A differential equation does include an unknown function, which we are solving for.     An -variable.   Correct! An -variable is not a requirement for a differential equation.     A derivative.   Incorrect. The presence of at least one derivative is essential to define a differential equation.     An \"=\" sign.   Incorrect. An equality sign is required for an equation to be classified as a differential equation.    "
 },
 {
   "id": "p1-c1-s2-i5",
@@ -132,33 +132,6 @@ var ptx_lunr_docs = [
   "url": "main-5-3-4.html#p1-c1-s2-i5",
   "type": "Reading Question",
   "number": "1.2.5",
-  "title": "<em class=\"emphasis\">What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?<\/em>",
-  "body": " What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?   What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.   Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.     The number of derivatives in the equation.   Incorrect. Please review the definition of ODEs and PDEs.     The number of solutions the equation has.   Incorrect. Please review the definition of ODEs and PDEs.     The number of hours it takes to solve the equation.   Incorrect. Please review the definition of ODEs and PDEs.    "
-},
-{
-  "id": "p1-c1-s2-i6",
-  "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i6",
-  "type": "Reading Question",
-  "number": "1.2.6",
-  "title": "<em class=\"emphasis\">Which of the following is NOT required for an equation to be classified as a differential equation?<\/em>",
-  "body": " Which of the following is NOT required for an equation to be classified as a differential equation?   Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.   Incorrect. A differential equation does include an unknown function, which we are solving for.     An -variable.   Correct! An -variable is not a requirement for a differential equation.     A derivative.   Incorrect. The presence of at least one derivative is essential to define a differential equation.     An \"=\" sign.   Incorrect. An equality sign is required for an equation to be classified as a differential equation.    "
-},
-{
-  "id": "p1-c1-s2-i7",
-  "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i7",
-  "type": "Reading Question",
-  "number": "1.2.7",
-  "title": "<em class=\"emphasis\">What notation will this textbook primarily use for derivatives?<\/em>",
-  "body": " What notation will this textbook primarily use for derivatives?   What notation will this textbook primarily use for derivatives?    Both prime and Leibniz notation.   Correct! The textbook will use both prime and Leibniz notation for derivatives.     Only prime notation.   Incorrect. While prime notation will be used, Leibniz notation will also be utilized.     Only Leibniz notation.   Incorrect. The book will use both Leibniz and prime notation for derivatives.     Subscript notation.   Incorrect. Subscript notation is not used for derivatives in this textbook.    "
-},
-{
-  "id": "p1-c1-s2-i8",
-  "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i8",
-  "type": "Reading Question",
-  "number": "1.2.8",
   "title": "<em class=\"emphasis\">Click on all the Differential Equations<\/em>.",
   "body": " Click on all the Differential Equations   Click on all the Differential Equations                                       There are only 5 Differential Equations in this set.  "
 },
@@ -3211,7 +3184,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "5.2",
   "title": "The Integrating Factor",
-  "body": "The Integrating Factor  In the previous section, we introduced the idea of solving first-order linear differential equations by manipulating the equation into a form that allows direct integration. This process involved applying a backward product rule to make the left-hand side a perfect derivative. However, most equations are not in the form to do this directly. Instead, there is a missing piece, called the integrating factor that is required for transformation to take place and is the focus of this section.  To see this missing piece, lets consider the differential equation: . We would like to apply the backward product rule to the left side, but it seems to be missing something. Let's try to figure out what this missing piece is by multipying both sides by something: . With this missing piece and the fact that and appear in the equation, we should be able to rewrite the equation as: . To determine what this missing piece is, we need to see where (start) and (goal) meet in the middle. This is shown below.  Notice, the two middle equations agree everywhere except for the expressions in blue. In order for the start and goal equations to be the same, these expressions must match. In other words, the piece that we need to get must satisfy . But, this is the differential equation where is the unknown!    (for accessibility)      Solving this requires you to notice that it is separable and a quick calculation shows that is the solution. Therefore, if you multiply both sides of by , you can use the backward product rule to write the equation as , which can then be solved by direct integration .  The function, , that allowed us to rewrite the equation is called the integrating factor and it is derived by solving a simple separable equation based on the coefficient of the dependent variable in the differential equation. Once the integrating factor is found, it allows us to rewrite the equation into a form that is straightforward to solve.  The Integrating Factor   The integrating factor for the first-order linear differential equation is . Multiplying both sides by transforms the equation into: .   Derivation of the Integrating Factor  Note, all first-order linear differential equations can be written in the form , where and are functions of . The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, , that we still need to find. We find by multiplying it onto , like so            Check your Understanding   What is the main purpose of an integrating factor?   What is the main purpose of an integrating factor in solving first-order linear differential equations?    To transform the equation into one that can be solved using the backward product rule.   Correct! The integrating factor allows us to manipulate the equation so that it becomes a perfect derivative, which can then be integrated directly.     To simplify the coefficients of the equation.   Not quite. While the integrating factor simplifies the process, its primary goal is to enable the use of the backward product rule, not to simplify the coefficients directly.     To eliminate the constant term from the differential equation.   Incorrect. The integrating factor is used to transform the equation into a solvable form, not to remove constant terms.     To reduce the equation to a second-order differential equation.   Incorrect. The integrating factor helps solve first-order differential equations, not reduce them to second-order equations.      Which of the following is the differential equation for the integrating factor ?   Which differential equation do you solve to find the integrating factor, , for the first-order linear equation ?        Incorrect. Try again.         Correct!         Incorrect. Try again.         Incorrect. Try again.      What form does the first-order linear differential equation take after multiplying by the integrating factor?   After multiplying both sides of a first-order linear differential equation by the integrating factor, the equation takes the form:        Correct! Multiplying by the integrating factor transforms the equation into this form.         Incorrect. The correct form is .         Incorrect. This is the form of the original equation before multiplying by the integrating factor.         Incorrect. This form does not represent the transformed equation after multiplying by the integrating factor.      What is the integrating factor for the equation ?   Find the integrating factor for the equation .        Incorrect. This is not the correct expression for the integrating factor.         Correct! The integrating factor is .         Incorrect. The correct integrating factor should involve the integral of the coefficient of , which is , not .         Incorrect. This is not the correct form for the integrating factor.      If we solve a differential equation to find the integrating factor, then why doesn't it contain an integration constant?   When solving a differential equation to find the integrating factor, why is there no constant of integration in the solution?    Since any value of this constant would give a valid integrating factor, we set the constant to the simplest value.   Correct! The integrating factor is used to multiply both sides of the equation, and any constant would cancel out during this process, making the constant irrelevant.     Because the integrating factor must be a specific function with no additional constants.   Incorrect. The integrating factor is determined by the form of the differential equation, but the lack of a constant is not because it must be a specific function—it's because any constant would cancel out when multiplying both sides.     Because the integrating factor equation doesn't have an initial condition.   Incorrect. Although the integrating factor equation doesn't have an initial condition, this is not the reason it does not have one.     Because the constant of integration is already included in the solution for .   Incorrect. The constant of integration appears in the final solution for , but it is not related to why the integrating factor does not include a constant.      Fill in the missing part of the equation after multiplying by the integrating factor.   After multiplying the differential equation by the integrating factor , the left-hand side becomes .     \\s*\\frac{d}{dx}\\[\\mu(x)\\cdot y\\]\\s*  Correct! Multiplying by the integrating factor transforms the left-hand side into a single derivative.    .*  Incorrect. Review how multiplying by the integrating factor allows us to rewrite the left-hand side as a single derivative.      What is the general formula for the integrating factor?   The general formula for the integrating factor in the equation is .     \\s*e\\^{\\int P\\(x\\) dx}\\s*  Correct! The integrating factor is given by .    .*  Incorrect. The integrating factor is .      Identify the integrating factor in the equation .   For the equation , the integrating factor is .     \\s*e\\^4x\\s*  Correct! The integrating factor is .    .*  Incorrect. The integrating factor for this equation is , where is the coefficient of .      How do we use the integrating factor to rewrite the equation ?   After multiplying by the integrating factor, the equation can be rewritten as .     \\s*\\frac{d}{dx}\\[e\\^{2x}\\cdot y\\] = 5e\\^{2x}\\s*  Correct! After multiplying by the integrating factor, the equation becomes .    .*  Incorrect. The equation after multiplying by the integrating factor should be .      What is the purpose of multiplying by the integrating factor?   Multiplying both sides of the differential equation by the integrating factor allows us to .     \\s*rewrite the left-hand side as a derivative\\s*  Correct! Multiplying by the integrating factor allows us to rewrite the left-hand side of the equation as a derivative, making it easier to solve.    .*  Incorrect. Multiplying by the integrating factor helps us rewrite the left-hand side as a derivative.      "
+  "body": "The Integrating Factor  In the previous section, we introduced the idea of solving first-order linear differential equations by manipulating the equation into a form that allows direct integration. This process involved applying a backward product rule to make the left-hand side a perfect derivative. However, most equations are not in the form to do this directly. Instead, there is a missing piece, called the integrating factor that is required for transformation to take place and is the focus of this section.  To see this missing piece, lets consider the differential equation: . We would like to apply the backward product rule to the left side, but it seems to be missing something. Let's try to figure out what this missing piece is by multipying both sides by something: . With this missing piece and the fact that and appear in the equation, we should be able to rewrite the equation as: . To determine what this missing piece is, we need to see where (start) and (goal) meet in the middle. This is shown below.  Notice, the two middle equations agree everywhere except for the expressions in blue. In order for the start and goal equations to be the same, these expressions must match. In other words, the piece that we need to get must satisfy . But, this is the differential equation where is the unknown!    (for accessibility)      Solving this requires you to notice that it is separable and a quick calculation shows that is the solution. Therefore, if you multiply both sides of by , you can use the backward product rule to write the equation as , which can then be solved by direct integration .  The function, , that allowed us to rewrite the equation is called the integrating factor and it is derived by solving a simple separable equation based on the coefficient of the dependent variable in the differential equation. Once the integrating factor is found, it allows us to rewrite the equation into a form that is straightforward to solve.  The Integrating Factor   The integrating factor for the first-order linear differential equation is . Multiplying both sides by transforms the equation into: .   Derivation of the Integrating Factor  Note, all first-order linear differential equations can be written in the form , where and are functions of . The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, , that we still need to find. We find by multiplying it onto , like so            Check your Understanding   What is the main purpose of an integrating factor?   What is the main purpose of an integrating factor in solving first-order linear differential equations?    To transform the equation into one that can be solved using the backward product rule.   Correct! The integrating factor allows us to manipulate the equation so that it becomes a perfect derivative, which can then be integrated directly.     To simplify the coefficients of the equation.   Not quite. While the integrating factor simplifies the process, its primary goal is to enable the use of the backward product rule, not to simplify the coefficients directly.     To eliminate the constant term from the differential equation.   Incorrect. The integrating factor is used to transform the equation into a solvable form, not to remove constant terms.     To reduce the equation to a second-order differential equation.   Incorrect. The integrating factor helps solve first-order differential equations, not reduce them to second-order equations.      Which of the following is the differential equation for the integrating factor ?   Which differential equation do you solve to find the integrating factor, , for the first-order linear equation ?        Incorrect. Try again.         Correct!         Incorrect. Try again.         Incorrect. Try again.      What form does the first-order linear differential equation take after multiplying by the integrating factor?   After multiplying both sides of a first-order linear differential equation by the integrating factor, the equation takes the form:        Correct! Multiplying by the integrating factor transforms the equation into this form.         Incorrect. The correct form is .         Incorrect. This is the form of the original equation before multiplying by the integrating factor.         Incorrect. This form does not represent the transformed equation after multiplying by the integrating factor.      What is the integrating factor for the equation ?   Find the integrating factor for the equation .        Incorrect. This is not the correct expression for the integrating factor.         Correct! The integrating factor is .         Incorrect. The correct integrating factor should involve the integral of the coefficient of , which is , not .         Incorrect. This is not the correct form for the integrating factor.      If we solve a differential equation to find the integrating factor, then why doesn't it contain an integration constant?   When solving a differential equation to find the integrating factor, why is there no constant of integration in the solution?    Since any value of this constant would give a valid integrating factor, we set the constant to the simplest value.   Correct! The integrating factor is used to multiply both sides of the equation, and any constant would cancel out during this process, making the constant irrelevant.     Because the integrating factor must be a specific function with no additional constants.   Incorrect. The integrating factor is determined by the form of the differential equation, but the lack of a constant is not because it must be a specific function—it's because any constant would cancel out when multiplying both sides.     Because the integrating factor equation doesn't have an initial condition.   Incorrect. Although the integrating factor equation doesn't have an initial condition, this is not the reason it does not have one.     Because the constant of integration is already included in the solution for .   Incorrect. The constant of integration appears in the final solution for , but it is not related to why the integrating factor does not include a constant.           "
 },
 {
   "id": "integrating-factor",
@@ -3266,51 +3239,6 @@ var ptx_lunr_docs = [
   "number": "5.2.5",
   "title": "<em class=\"emphasis\">If we solve a differential equation to find the integrating factor, then why doesn’t it contain an integration constant?<\/em>",
   "body": " If we solve a differential equation to find the integrating factor, then why doesn't it contain an integration constant?   When solving a differential equation to find the integrating factor, why is there no constant of integration in the solution?    Since any value of this constant would give a valid integrating factor, we set the constant to the simplest value.   Correct! The integrating factor is used to multiply both sides of the equation, and any constant would cancel out during this process, making the constant irrelevant.     Because the integrating factor must be a specific function with no additional constants.   Incorrect. The integrating factor is determined by the form of the differential equation, but the lack of a constant is not because it must be a specific function—it's because any constant would cancel out when multiplying both sides.     Because the integrating factor equation doesn't have an initial condition.   Incorrect. Although the integrating factor equation doesn't have an initial condition, this is not the reason it does not have one.     Because the constant of integration is already included in the solution for .   Incorrect. The constant of integration appears in the final solution for , but it is not related to why the integrating factor does not include a constant.    "
-},
-{
-  "id": "p2-c3-s2-i6",
-  "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i6",
-  "type": "Reading Question",
-  "number": "5.2.6",
-  "title": "<em class=\"emphasis\">Fill in the missing part of the equation after multiplying by the integrating factor.<\/em>.",
-  "body": " Fill in the missing part of the equation after multiplying by the integrating factor.   After multiplying the differential equation by the integrating factor , the left-hand side becomes .     \\s*\\frac{d}{dx}\\[\\mu(x)\\cdot y\\]\\s*  Correct! Multiplying by the integrating factor transforms the left-hand side into a single derivative.    .*  Incorrect. Review how multiplying by the integrating factor allows us to rewrite the left-hand side as a single derivative.    "
-},
-{
-  "id": "p2-c3-s2-i7",
-  "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i7",
-  "type": "Reading Question",
-  "number": "5.2.7",
-  "title": "<em class=\"emphasis\">What is the general formula for the integrating factor?<\/em>",
-  "body": " What is the general formula for the integrating factor?   The general formula for the integrating factor in the equation is .     \\s*e\\^{\\int P\\(x\\) dx}\\s*  Correct! The integrating factor is given by .    .*  Incorrect. The integrating factor is .    "
-},
-{
-  "id": "p2-c3-s2-i8",
-  "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i8",
-  "type": "Reading Question",
-  "number": "5.2.8",
-  "title": "<em class=\"emphasis\">Identify the integrating factor in the equation <span class=\"process-math\">\\(y' + 4y = 2\\text{.}\\)<\/span><\/em>.",
-  "body": " Identify the integrating factor in the equation .   For the equation , the integrating factor is .     \\s*e\\^4x\\s*  Correct! The integrating factor is .    .*  Incorrect. The integrating factor for this equation is , where is the coefficient of .    "
-},
-{
-  "id": "p2-c3-s2-i9",
-  "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i9",
-  "type": "Reading Question",
-  "number": "5.2.9",
-  "title": "<em class=\"emphasis\">How do we use the integrating factor to rewrite the equation <span class=\"process-math\">\\(y' + 2y = 5\\text{?}\\)<\/span><\/em>",
-  "body": " How do we use the integrating factor to rewrite the equation ?   After multiplying by the integrating factor, the equation can be rewritten as .     \\s*\\frac{d}{dx}\\[e\\^{2x}\\cdot y\\] = 5e\\^{2x}\\s*  Correct! After multiplying by the integrating factor, the equation becomes .    .*  Incorrect. The equation after multiplying by the integrating factor should be .    "
-},
-{
-  "id": "p2-c3-s2-i10",
-  "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i10",
-  "type": "Reading Question",
-  "number": "5.2.10",
-  "title": "<em class=\"emphasis\">What is the purpose of multiplying by the integrating factor?<\/em>",
-  "body": " What is the purpose of multiplying by the integrating factor?   Multiplying both sides of the differential equation by the integrating factor allows us to .     \\s*rewrite the left-hand side as a derivative\\s*  Correct! Multiplying by the integrating factor allows us to rewrite the left-hand side of the equation as a derivative, making it easier to solve.    .*  Incorrect. Multiplying by the integrating factor helps us rewrite the left-hand side as a derivative.    "
 },
 {
   "id": "main-6-5-5",
@@ -3427,7 +3355,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "5.4",
   "title": "Additional Examples",
-  "body": "Additional Examples  In this section, we will look at more advanced examples of the integrating factor method. These examples will demonstrate how the technique applies to a wider variety of differential equations, including those with more complex functions or integration techniques. Each example will follow the four-step process outlined in the previous section.   Solve the differential equation:  .   This is a first-order linear differential equation, so we can apply the integrating factor method.   .    .    .    . Now, we can solve for :      Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .  +  .    .    . Using integration by parts on the integral with gives us      Solve the initial value problem.  .   Before applying the integration factor method, we note that the equation is first order and linear.   .    .    .    .   Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.     The integrating factor method is a versatile tool for solving first-order linear differential equations. By reducing the equation to a form that allows for direct integration, we can tackle a wide variety of problems with confidence. The examples in this chapter illustrate the broad applicability of this technique, and practice with a range of equations will solidify your understanding of how to use it effectively.  Check your Understanding  Which of the following steps comes first when solving a differential equation using the integration factor method?  Which of the following steps comes first when solving a differential equation using the integration factor method?    Identify the integrating factor.   Correct! The first step is always to identify the integrating factor based on the equation's form.     Multiply both sides by the integrating factor.   Incorrect. You need to identify the integrating factor before multiplying it by both sides of the equation.     Integrate both sides.   Incorrect. Integration occurs later in the process after manipulating the equation using the integrating factor.     Find the constant of integration using initial conditions.   Incorrect. This step comes after solving the equation using the integrating factor.      After determining the integration factor, what is the next step in the process?  After determining the integration factor, what is the next step in the process?    The original equation is multiplied by the integrating factor.   Incorrect. You should apply the integrating factor to the equation after transforming it into the standard form.     The standard form of the equation is multiplied by the integrating factor.   Correct! Once the equation is in the standard form, you multiply both sides by the integrating factor.     Apply direct integration to solve the equation.   Incorrect. Direct integration is the final step, after applying the integrating factor.     The reverse product rule is used to rewrite the equation.   Incorrect. The reverse product rule is not part of this process. Use the integrating factor first.      In solving the equation , what form does the general solution take after direct integration?  In solving the equation , what form does the general solution take after direct integration?    .   Incorrect. This is not the correct form. You need to account for the integrating factor as well.     .   Correct! This is the general solution after applying the integrating factor and performing direct integration.     .   Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.     .   Incorrect. This form does not represent the general solution to this type of equation.      What is the purpose of the integrating factor in the first-order linear differential equation ?  What is the purpose of the integrating factor in the first-order linear differential equation ?    To simplify the differential equation into a separable form.   Incorrect. The integrating factor is not used to separate variables in this case.     To eliminate the non-linear terms in the equation.   Incorrect. This equation is already linear, and the integrating factor does not eliminate non-linear terms.     To transform the equation into a direct integration problem.   Correct! The integrating factor transforms the equation into a form that allows for direct integration.     To find the value of the constant of integration.   Incorrect. The constant of integration is found after the equation is solved, not by using the integrating factor.      What technique is used to evaluate the integral ?  What technique is used to evaluate the integral ?    Substitution.   Incorrect. Substitution is not the technique used here.     Integration by parts.   Correct! Integration by parts is the appropriate technique for this integral.     Partial fraction decomposition.   Incorrect. Partial fraction decomposition is not useful for this integral.     The Product Rule.   Incorrect. The product rule is a differentiation technique, not an integration technique.          "
+  "body": "Additional Examples  In this section, we will look at more advanced examples of the integrating factor method. These examples will demonstrate how the technique applies to a wider variety of differential equations, including those with more complex functions or integration techniques. Each example will follow the four-step process outlined in the previous section.   Solve the differential equation:  .   This is a first-order linear differential equation, so we can apply the integrating factor method.   .    .    .    . Now, we can solve for :      Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .    .    .    . Using integration by parts on the integral with gives us      Solve the initial value problem.  .   Before applying the integration factor method, we note that the equation is first order and linear.   .    .    .    .   Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.     The integrating factor method is a versatile tool for solving first-order linear differential equations. By reducing the equation to a form that allows for direct integration, we can tackle a wide variety of problems with confidence. The examples in this chapter illustrate the broad applicability of this technique, and practice with a range of equations will solidify your understanding of how to use it effectively.  Check your Understanding  Which of the following steps comes first when solving a differential equation using the integration factor method?  Which of the following steps comes first when solving a differential equation using the integration factor method?    Identify the integrating factor.   Correct! The first step is always to identify the integrating factor based on the equation's form.     Multiply both sides by the integrating factor.   Incorrect. You need to identify the integrating factor before multiplying it by both sides of the equation.     Integrate both sides.   Incorrect. Integration occurs later in the process after manipulating the equation using the integrating factor.     Find the constant of integration using initial conditions.   Incorrect. This step comes after solving the equation using the integrating factor.     After determining the integration factor, what is the next step in the process?  After determining the integration factor, what is the next step in the process?    The original equation is multiplied by the integrating factor.   Incorrect. You should apply the integrating factor to the equation after transforming it into the standard form.     The standard form of the equation is multiplied by the integrating factor.   Correct! Once the equation is in the standard form, you multiply both sides by the integrating factor.     Apply direct integration to solve the equation.   Incorrect. Direct integration is the final step, after applying the integrating factor.     The reverse product rule is used to rewrite the equation.   Incorrect. The reverse product rule is not part of this process. Use the integrating factor first.     In solving the equation , what form does the general solution take after direct integration?  In solving the equation , what form does the general solution take after direct integration?    .   Incorrect. This is not the correct form. You need to account for the integrating factor as well.     .   Correct! This is the general solution after applying the integrating factor and performing direct integration.     .   Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.     .   Incorrect. This form does not represent the general solution to this type of equation.     What is the purpose of the integrating factor in the first-order linear differential equation ?  What is the purpose of the integrating factor in the first-order linear differential equation ?    To simplify the differential equation into a separable form.   Incorrect. The integrating factor is not used to separate variables in this case.     To eliminate the non-linear terms in the equation.   Incorrect. This equation is already linear, and the integrating factor does not eliminate non-linear terms.     To transform the equation into a direct integration problem.   Correct! The integrating factor transforms the equation into a form that allows for direct integration.     To find the value of the constant of integration.   Incorrect. The constant of integration is found after the equation is solved, not by using the integrating factor.     What technique is used to evaluate the integral ?  What technique is used to evaluate the integral ?    Substitution.   Incorrect. Substitution is not the technique used here.     Integration by parts.   Correct! Integration by parts is the appropriate technique for this integral.     Partial fraction decomposition.   Incorrect. Partial fraction decomposition is not useful for this integral.     The Product Rule.   Incorrect. The product rule is a differentiation technique, not an integration technique.          "
 },
 {
   "id": "main-6-5-6-3",
@@ -3445,7 +3373,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "23",
   "title": "",
-  "body": " Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .  +  .    .    . Using integration by parts on the integral with gives us    "
+  "body": " Solve the equation:  .   This is a linear equation, and we will solve it using the integrating factor method.   .    .    .    . Using integration by parts on the integral with gives us    "
 },
 {
   "id": "main-6-5-6-5",
@@ -3655,13 +3583,643 @@ var ptx_lunr_docs = [
   "body": "     This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
 },
 {
-  "id": "main-7-3",
+  "id": "main-7-3-3",
   "level": "1",
-  "url": "main-7-3.html",
-  "type": "Chapter",
+  "url": "main-7-3-3.html",
+  "type": "Section",
+  "number": "6.1",
+  "title": "Classification",
+  "body": "Classification  Now that we've tackled some foundational techniques for solving differential equations, it's time to introduce a new type: linear homogeneous differential equations with constant coefficients, or LHCC equations for short. But how do we recognize them? Let's break down each part of the term linear , homogeneous , and constant coefficients to understand these equations fully.  First, recall that a linear differential equation looks like this: The key idea here is that each term involves either a derivative of or itself, all multiplied by coefficients that depend on .  Next, the equation is homogeneous if the constant term is zero, meaning . This ensures the left-hand side of the equation equals zero.  Finally, if all the coefficients are constants (i.e., numbers, not functions of ), the equation is said to have constant coefficients .  Combining these ideas, we arrive at the formal definition of an LHCC equation.   LHCC Equation   A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:   where are constants.    Now that we have the definition, let's practice identifying these equations with a few examples.   Identify which of the following are linear homogeneous differential equations.     The trick is to check if the constant term is zero and the equation has only and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:   .  The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.     Determine which of the following equations have constant coefficients.     Check if each coefficient is constant:   . The second equation has constant coefficients, while the others do not.    Check your Understanding   Select all the true statements below  Select all the true statements below.    An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      If an equation contains non-linear terms like \\( y^2 \\), it can still be classified as LHCC.    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like \\( y^2 \\).      The equation \\( y' + 3y = 0 \\) is both linear and homogeneous.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a constant term that is not zero.    Correct! If the constant term is not zero, the equation is non-homogeneous.      Fill in the Blank: Classifying a DE   The differential equation is classified as a _______ homogeneous differential equation with _______ coefficients.     linear, constant    Correct! The equation is linear (because there are no powers or products of the dependent variable and its derivatives) and has constant coefficients.      non-linear, constant    Incorrect. Try again.      linear, variable    Incorrect. Try again.      non-linear, variable    Incorrect. Try again.      Identifying a Homogeneous Equation  Which of the following equations is homogeneous?   \\( y'' + 4y^2 + 3 = 0 \\)   Incorrect. This equation has a non-linear term (\\(y^2\\)), so it is not linear.     \\( y'' + 4y' + 3y = 7 \\)   Incorrect. The equation has a non-zero constant term, making it non-homogeneous.     \\( y' + 2y = x^2 \\)   Incorrect. The right-hand side has a non-zero function of \\(x\\), so this is non-homogeneous.     \\( y'' + 4y' + 3y = 0 \\)   Correct! This equation has no constant term and is homogeneous.      Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.     CC     LH, order 1     LHCC     LH, order 2     LCC     L      Select the LHCC Equations  Select all of the LHCC Differential Equations.                                       "
+},
+{
+  "id": "main-7-3-3-3",
+  "level": "2",
+  "url": "main-7-3-3.html#main-7-3-3-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "linear differential equation "
+},
+{
+  "id": "main-7-3-3-4",
+  "level": "2",
+  "url": "main-7-3-3.html#main-7-3-3-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homogeneous "
+},
+{
+  "id": "main-7-3-3-5",
+  "level": "2",
+  "url": "main-7-3-3.html#main-7-3-3-5",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "constant coefficients "
+},
+{
+  "id": "def-lhcc",
+  "level": "2",
+  "url": "main-7-3-3.html#def-lhcc",
+  "type": "Definition",
+  "number": "1",
+  "title": "LHCC Equation.",
+  "body": " LHCC Equation   A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:   where are constants.   "
+},
+{
+  "id": "main-7-3-3-9",
+  "level": "2",
+  "url": "main-7-3-3.html#main-7-3-3-9",
+  "type": "Example",
+  "number": "2",
+  "title": "",
+  "body": " Identify which of the following are linear homogeneous differential equations.     The trick is to check if the constant term is zero and the equation has only and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:   .  The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.   "
+},
+{
+  "id": "main-7-3-3-10",
+  "level": "2",
+  "url": "main-7-3-3.html#main-7-3-3-10",
+  "type": "Example",
+  "number": "3",
+  "title": "",
+  "body": " Determine which of the following equations have constant coefficients.     Check if each coefficient is constant:   . The second equation has constant coefficients, while the others do not.   "
+},
+{
+  "id": "p3-c1-s1-i1",
+  "level": "2",
+  "url": "main-7-3-3.html#p3-c1-s1-i1",
+  "type": "Reading Question",
+  "number": "6.1.1",
+  "title": "<em class=\"emphasis\">Select all the true statements below<\/em>.",
+  "body": " Select all the true statements below  Select all the true statements below.    An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      If an equation contains non-linear terms like \\( y^2 \\), it can still be classified as LHCC.    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like \\( y^2 \\).      The equation \\( y' + 3y = 0 \\) is both linear and homogeneous.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a constant term that is not zero.    Correct! If the constant term is not zero, the equation is non-homogeneous.    "
+},
+{
+  "id": "p3-c1-s1-i2",
+  "level": "2",
+  "url": "main-7-3-3.html#p3-c1-s1-i2",
+  "type": "Reading Question",
+  "number": "6.1.2",
+  "title": "<em class=\"emphasis\">Fill in the Blank: Classifying a DE<\/em>.",
+  "body": " Fill in the Blank: Classifying a DE   The differential equation is classified as a _______ homogeneous differential equation with _______ coefficients.     linear, constant    Correct! The equation is linear (because there are no powers or products of the dependent variable and its derivatives) and has constant coefficients.      non-linear, constant    Incorrect. Try again.      linear, variable    Incorrect. Try again.      non-linear, variable    Incorrect. Try again.    "
+},
+{
+  "id": "p3-c1-s1-i3",
+  "level": "2",
+  "url": "main-7-3-3.html#p3-c1-s1-i3",
+  "type": "Reading Question",
+  "number": "6.1.3",
+  "title": "<em class=\"emphasis\">Identifying a Homogeneous Equation<\/em>.",
+  "body": " Identifying a Homogeneous Equation  Which of the following equations is homogeneous?   \\( y'' + 4y^2 + 3 = 0 \\)   Incorrect. This equation has a non-linear term (\\(y^2\\)), so it is not linear.     \\( y'' + 4y' + 3y = 7 \\)   Incorrect. The equation has a non-zero constant term, making it non-homogeneous.     \\( y' + 2y = x^2 \\)   Incorrect. The right-hand side has a non-zero function of \\(x\\), so this is non-homogeneous.     \\( y'' + 4y' + 3y = 0 \\)   Correct! This equation has no constant term and is homogeneous.    "
+},
+{
+  "id": "p3-c1-s1-i4",
+  "level": "2",
+  "url": "main-7-3-3.html#p3-c1-s1-i4",
+  "type": "Reading Question",
+  "number": "6.1.4",
+  "title": "<em class=\"emphasis\">Match the Label to the DE<\/em>.",
+  "body": " Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.     CC     LH, order 1     LHCC     LH, order 2     LCC     L    "
+},
+{
+  "id": "p3-c1-s1-i5",
+  "level": "2",
+  "url": "main-7-3-3.html#p3-c1-s1-i5",
+  "type": "Reading Question",
+  "number": "6.1.5",
+  "title": "<em class=\"emphasis\">Select the LHCC Equations<\/em>.",
+  "body": " Select the LHCC Equations  Select all of the LHCC Differential Equations.                                     "
+},
+{
+  "id": "main-7-3-4",
+  "level": "1",
+  "url": "main-7-3-4.html",
+  "type": "Section",
+  "number": "6.2",
+  "title": "Solutions",
+  "body": "Solutions  Before diving into how to solve LHCC equations , let's develop some intuition about what the solutions should look like. We begin with the simple first-order LHCC equation, and note that this equation requires to sum to zero. Recall from algebra that only like terms can combine to simplify to zero. So, for the equation to hold, and must be like terms.  Let's test a few guesses for : , , and .             As you can see, only produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.   Consider the LHCC equation:  Verify that is a solution, but and are not.   Let's check each function:             Of these three, only is a solution.    This example further supports the claim that exponential functions, like , are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if is a solution then, in some cases, it is possible for to be a solution as well.  We conclude this section with an important concept that will guide us in the sections to follow. Terms of the Solution to an LHCC Equation  The general solution to an LHCC equation involves terms of the form: where is a constant.    Check your Understanding   is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.    and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.    The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.    Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.     "
+},
+{
+  "id": "main-7-3-4-6",
+  "level": "2",
+  "url": "main-7-3-4.html#main-7-3-4-6",
+  "type": "Example",
+  "number": "4",
+  "title": "",
+  "body": " Consider the LHCC equation:  Verify that is a solution, but and are not.   Let's check each function:             Of these three, only is a solution.   "
+},
+{
+  "id": "p3-c1-s2-i1",
+  "level": "2",
+  "url": "main-7-3-4.html#p3-c1-s2-i1",
+  "type": "Reading Question",
+  "number": "6.2.1",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{rx} \\)<\/span> is the only function whose derivative is a multiple of itself<\/em>.",
+  "body": " is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.  "
+},
+{
+  "id": "p3-c1-s2-i2",
+  "level": "2",
+  "url": "main-7-3-4.html#p3-c1-s2-i2",
+  "type": "Reading Question",
+  "number": "6.2.2",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{rx} \\)<\/span> and its derivatives are \"like terms\" that can be combined<\/em>.",
+  "body": " and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.  "
+},
+{
+  "id": "p3-c1-s2-i3",
+  "level": "2",
+  "url": "main-7-3-4.html#p3-c1-s2-i3",
+  "type": "Reading Question",
+  "number": "6.2.3",
+  "title": "<em class=\"emphasis\">The hundredth derivative of <span class=\"process-math\">\\(e^{7x} \\)<\/span> is equal to a constant times <span class=\"process-math\">\\(e^{7x} \\)<\/span><\/em>.",
+  "body": " The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.  "
+},
+{
+  "id": "p3-c1-s2-i4",
+  "level": "2",
+  "url": "main-7-3-4.html#p3-c1-s2-i4",
+  "type": "Reading Question",
+  "number": "6.2.4",
+  "title": "<em class=\"emphasis\">Without solving it, which function satisfies the property <span class=\"process-math\">\\(y' = -2y \\text{?}\\)<\/span><\/em>",
+  "body": " Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.   "
+},
+{
+  "id": "main-7-3-5",
+  "level": "1",
+  "url": "main-7-3-5.html",
+  "type": "Section",
+  "number": "6.3",
+  "title": "1st-Order Equations",
+  "body": "1st-Order Equations  In the previous section, we learned that solutions to Linear Homogeneous Constant Coefficient (LHCC) equations often involve terms of the form . However, not every value of will work. The correct values of arise from solving an important algebraic equation, obtained by substituting into the differential equation. In this section, we will focus on this process for first-order equations before building up to higher-order cases.  Let’s start with a simple first-order equation: We want to find the value of such that is a solution. Substituting into the differential equation gives: Since is never zero, we must have: This tells us that is a solution. Therefore, the general solution is:   The equation , which gave us the value of , is called the characteristic equation . Every LHCC equation has one. The characteristic equation gives us the values of that we need to construct the general solution.  Applying the same approach to the general first-order LHCC equation gives us: This results in the characteristic equation and general solution:   Now, let's apply this method to a couple of examples.   Find the general solution for each LHCC equation.     First, rewrite the equations in standard form:   Now solve the characteristic equations:   Thus, the general solutions are:     This straightforward method works for any first-order LHCC equation by using the characteristic equation. In the next sections, we'll extend this technique to higher-order equations.  Check your Understanding   Characteristic equation for first-order LHCC  What is the characteristic equation for ?    Correct! The characteristic equation is .     Incorrect. Check the sign of the coefficient of .     Incorrect. The characteristic equation for a first-order LHCC is linear, not quadratic.     Incorrect. Make sure to use the correct coefficients from the original equation.     Select the characteristic equation  Select the characteristic equation for the first-order LHCC equation ?    Incorrect. Remember, the characteristic equation should be formed by setting the equation to zero.     Correct! The characteristic equation is found by substituting into the differential equation.     Incorrect. Check the signs of the coefficients.     Incorrect. Ensure you have used the correct coefficients from the original equation.     Select the general solution  Give the general solution for the first-order LHCC equation ?    Incorrect. Check the sign of the exponent.     Correct! The solution has the form , where is found from the characteristic equation.     Incorrect. Make sure to solve the characteristic equation correctly.     Incorrect. Check the coefficient of in the original equation.     Identify the first-order LHCC equation  Which of the following is a first-order LHCC equation?    Incorrect. This is a second-order equation.     Correct! This is a first-order linear homogeneous equation with constant coefficients.     Incorrect. This equation is not homogeneous.     Incorrect. This is not a constant coefficient equation.     What exponential term is in the solution   What exponential term in the solution of the equation ?     Correct! Solving gives . So is the exponential term in the solution.     Incorrect. Check the signs when solving the characteristic equation.     Incorrect. Ensure you are solving the characteristic equation correctly.     Incorrect. Revisit the steps to solve the characteristic equation.     "
+},
+{
+  "id": "main-7-3-5-4",
+  "level": "2",
+  "url": "main-7-3-5.html#main-7-3-5-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "characteristic equation "
+},
+{
+  "id": "main-7-3-5-7",
+  "level": "2",
+  "url": "main-7-3-5.html#main-7-3-5-7",
+  "type": "Example",
+  "number": "5",
+  "title": "",
+  "body": " Find the general solution for each LHCC equation.     First, rewrite the equations in standard form:   Now solve the characteristic equations:   Thus, the general solutions are:    "
+},
+{
+  "id": "p3-c1-s3-i1",
+  "level": "2",
+  "url": "main-7-3-5.html#p3-c1-s3-i1",
+  "type": "Reading Question",
+  "number": "6.3.1",
+  "title": "<em class=\"emphasis\">Characteristic equation for first-order LHCC<\/em>.",
+  "body": " Characteristic equation for first-order LHCC  What is the characteristic equation for ?    Correct! The characteristic equation is .     Incorrect. Check the sign of the coefficient of .     Incorrect. The characteristic equation for a first-order LHCC is linear, not quadratic.     Incorrect. Make sure to use the correct coefficients from the original equation.   "
+},
+{
+  "id": "p3-c1-s3-i2",
+  "level": "2",
+  "url": "main-7-3-5.html#p3-c1-s3-i2",
+  "type": "Reading Question",
+  "number": "6.3.2",
+  "title": "<em class=\"emphasis\">Select the characteristic equation<\/em>.",
+  "body": " Select the characteristic equation  Select the characteristic equation for the first-order LHCC equation ?    Incorrect. Remember, the characteristic equation should be formed by setting the equation to zero.     Correct! The characteristic equation is found by substituting into the differential equation.     Incorrect. Check the signs of the coefficients.     Incorrect. Ensure you have used the correct coefficients from the original equation.   "
+},
+{
+  "id": "p3-c1-s3-i3",
+  "level": "2",
+  "url": "main-7-3-5.html#p3-c1-s3-i3",
+  "type": "Reading Question",
+  "number": "6.3.3",
+  "title": "<em class=\"emphasis\">Select the general solution<\/em>.",
+  "body": " Select the general solution  Give the general solution for the first-order LHCC equation ?    Incorrect. Check the sign of the exponent.     Correct! The solution has the form , where is found from the characteristic equation.     Incorrect. Make sure to solve the characteristic equation correctly.     Incorrect. Check the coefficient of in the original equation.   "
+},
+{
+  "id": "p3-c1-s3-i4",
+  "level": "2",
+  "url": "main-7-3-5.html#p3-c1-s3-i4",
+  "type": "Reading Question",
+  "number": "6.3.4",
+  "title": "<em class=\"emphasis\">Identify the first-order LHCC equation<\/em>.",
+  "body": " Identify the first-order LHCC equation  Which of the following is a first-order LHCC equation?    Incorrect. This is a second-order equation.     Correct! This is a first-order linear homogeneous equation with constant coefficients.     Incorrect. This equation is not homogeneous.     Incorrect. This is not a constant coefficient equation.   "
+},
+{
+  "id": "p3-c1-s3-i5",
+  "level": "2",
+  "url": "main-7-3-5.html#p3-c1-s3-i5",
+  "type": "Reading Question",
+  "number": "6.3.5",
+  "title": "<em class=\"emphasis\">What exponential term is in the solution<\/em>.",
+  "body": " What exponential term is in the solution   What exponential term in the solution of the equation ?     Correct! Solving gives . So is the exponential term in the solution.     Incorrect. Check the signs when solving the characteristic equation.     Incorrect. Ensure you are solving the characteristic equation correctly.     Incorrect. Revisit the steps to solve the characteristic equation.   "
+},
+{
+  "id": "main-7-3-6",
+  "level": "1",
+  "url": "main-7-3-6.html",
+  "type": "Section",
+  "number": "6.4",
+  "title": "2nd-Order Equations",
+  "body": "2nd-Order Equations  Now that we've mastered first-order LHCC equations, it's time to explore second-order LHCC equations. These are slightly more complex but follow a similar approach. We'll see how the characteristic equation helps us find solutions and look at the different cases that arise depending on the nature of the roots.  Consider the following second-order equation: Substituting into this equation, we get: . Therefore, and are solutions, and the general solution is the combination of these two: .  In general, for any second-order LHCC equation of the form: The characteristic equation is: This quadratic equation will have two solutions, which could be either real or complex. The general solution depends on the nature of these solutions, and we will now explore the different cases. Before moving on, we highly recommend taking a minute to review some concepts related to solving quadratic equations .  Let and be the solutions to the characteristic equation. When , the general solution is: However, if , the terms combine into like terms, , which is an incomplete solution. To fix this, we multiply the second term by , resulting in the correct general solution:  See for an outline of why the extra is required in the general solution of a second order LHCC equation when .     Although, the above explanation covers the situation when and are equal or not, we will split the case into two cases that treat real or complex values separately . The three cases are summarized below.  Summary of Cases  Let and be the solutions of the characteristic equation associated with the second-order LHCC equation. The general solution is:  Case 1 (real & )    Case 2 (real & )    Case 3 (complex)            Let's now practice solving some second-order LHCC equations.   Find the general solutions for each LHCC equation.        First, write down and solve the characteristic equation: . Since and are real and , we are in Case 1 . Therefore, the general solution is: .             The characteristic equation is: . Therefore, the general solution is: .             The characteristic equation in this problem is: . Here, and . So the general solution is: .       Check your Understanding   Match the DE to Its Characteristic Equation   Match each LHCC differential equation on the left to its corresponding characteristic equation on the right.   Note: Each DE has a unique characteristic equation.                      Solving the characteristic equation  If the characteristic equation for an LHCC equation is , what are the roots?   (double root)  Correct! The root has a multiplicity of 2.     Incorrect. Check the quadratic equation carefully.    and  Incorrect. Ensure you solve the quadratic equation correctly.     Incorrect. These are not the correct roots for this equation.     Match the Characteristic Equation Roots to the General Solution   Match each set of characteristic equation roots on the left to the corresponding general solution on the right.   Note: One of the differential equations is first-order, and the rest are second-order.                              Discriminant of the characteristic equation  If the discriminant of the characteristic equation is , then what kind of solutions does the characteristic equation have?   Real and equal solutions  Incorrect. The discriminant is the number under the square root in the quadratic formula.    Real and unequal solutions  Incorrect. The discriminant is the number under the square root in the quadratic formula.    Complex solutions  Correct! A negative discriminant indicates the square root of a negative number in the quadratic formula, which results in the complex number .     "
+},
+{
+  "id": "main-7-3-6-9",
+  "level": "2",
+  "url": "main-7-3-6.html#main-7-3-6-9",
+  "type": "Example",
   "number": "6",
-  "title": "Homogeneous",
-  "body": "Homogeneous   "
+  "title": "",
+  "body": " Find the general solutions for each LHCC equation.        First, write down and solve the characteristic equation: . Since and are real and , we are in Case 1 . Therefore, the general solution is: .             The characteristic equation is: . Therefore, the general solution is: .             The characteristic equation in this problem is: . Here, and . So the general solution is: .      "
+},
+{
+  "id": "p3-c1-s4-i1",
+  "level": "2",
+  "url": "main-7-3-6.html#p3-c1-s4-i1",
+  "type": "Reading Question",
+  "number": "6.4.1",
+  "title": "<em class=\"emphasis\">Match the DE to Its Characteristic Equation<\/em>.",
+  "body": " Match the DE to Its Characteristic Equation   Match each LHCC differential equation on the left to its corresponding characteristic equation on the right.   Note: Each DE has a unique characteristic equation.                    "
+},
+{
+  "id": "p3-c1-s4-i2",
+  "level": "2",
+  "url": "main-7-3-6.html#p3-c1-s4-i2",
+  "type": "Reading Question",
+  "number": "6.4.2",
+  "title": "<em class=\"emphasis\">Solving the characteristic equation<\/em>.",
+  "body": " Solving the characteristic equation  If the characteristic equation for an LHCC equation is , what are the roots?   (double root)  Correct! The root has a multiplicity of 2.     Incorrect. Check the quadratic equation carefully.    and  Incorrect. Ensure you solve the quadratic equation correctly.     Incorrect. These are not the correct roots for this equation.   "
+},
+{
+  "id": "p3-c1-s4-i3",
+  "level": "2",
+  "url": "main-7-3-6.html#p3-c1-s4-i3",
+  "type": "Reading Question",
+  "number": "6.4.3",
+  "title": "<em class=\"emphasis\">Match the Characteristic Equation Roots to the General Solution<\/em>.",
+  "body": " Match the Characteristic Equation Roots to the General Solution   Match each set of characteristic equation roots on the left to the corresponding general solution on the right.   Note: One of the differential equations is first-order, and the rest are second-order.                            "
+},
+{
+  "id": "p3-c1-s4-i4",
+  "level": "2",
+  "url": "main-7-3-6.html#p3-c1-s4-i4",
+  "type": "Reading Question",
+  "number": "6.4.4",
+  "title": "<em class=\"emphasis\">Discriminant of the characteristic equation<\/em>.",
+  "body": " Discriminant of the characteristic equation  If the discriminant of the characteristic equation is , then what kind of solutions does the characteristic equation have?   Real and equal solutions  Incorrect. The discriminant is the number under the square root in the quadratic formula.    Real and unequal solutions  Incorrect. The discriminant is the number under the square root in the quadratic formula.    Complex solutions  Correct! A negative discriminant indicates the square root of a negative number in the quadratic formula, which results in the complex number .   "
+},
+{
+  "id": "main-7-3-7",
+  "level": "1",
+  "url": "main-7-3-7.html",
+  "type": "Section",
+  "number": "6.5",
+  "title": "Higher-Order Equations",
+  "body": "Higher-Order Equations  Solving higher-order linear homogeneous constant coefficient (LHCC) equations is an extension of the methods used for second-order equations. The basic strategy remains the same: solve the characteristic equation, then construct the general solution. However, for higher-order equations, the characteristic equation is a higher-degree polynomial, which can make finding the solutions more challenging.   LHCC Characteristic Equation   The characteristic equation of an -th order LHCC equation is the -th degree polynomial  Click here for an explanation.   . The solutions to this polynomial, , correspond to the roots that determine the form of the general solution.    In general, the characteristic equation will have roots, which may be real or complex and may also include repeated roots. Each root of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of roots.  Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (5th order)        (5th order)       As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the roots of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.   Solve the following characteristic equations.                              Note: DoS = Difference of Squares.        DoS                        DoS                    common                        common              Technically, and represents 4 repeated factors.          common      DoS                    common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .       These factoring techniques useful, but they only apply to specific forms of polynomials and it is unlikely that you will be lucky enough to encounter such forms in practice. Therefore, it is reasonable to use technology to aid you with these tyes of problems. Many software tools are available and you are encouraged to use any that you are familiar with.   Find the general solution to the LHCC equations              First, write down the characteristic equation: . Solving for , we get three distinct real roots: . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .      Besides factoring software, another options is to use numerical solvers. The next example illustrates this.   Consider the fifth-order LHCC equation:  .   The characteristic equation is: . Solving this polynomial equation analytically is challenging, so we use a numerical solver ( Wolfram Alpha ). This equation has five roots. Three are real: and two are complex: . The general solution, incorporating these roots, is: . .    By recognizing the nature of the roots and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.  Check your Understanding   Match the Differential Equation to its Characteristic Equation  Match each differential equation on the left to its characteristic equation on the right.                            Give the general solution for a 3rd-order LHCC equation whose..  Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solution: .    Correct! This is the form when there are three distinct real roots.     Incorrect.     Incorrect.     Incorrect.     Give the general solution for a 4th-order LHCC equation whose..  Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect.     Incorrect. Not enough constants.     Incorrect.     Correct! This is the form when the characteristic equation has complex roots.     Give the general solution for a 5th-order LHCC equation whose..  Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect. This form does not account for the multiplicity of the roots.     Incorrect. The multiplicity should be reflected for each root.     Correct! This is the form when there are repeated real roots with appropriate multiplicity.     Incorrect. Make sure to account for the cubic multiplicity for .     "
+},
+{
+  "id": "def-characteristic-equation",
+  "level": "2",
+  "url": "main-7-3-7.html#def-characteristic-equation",
+  "type": "Concept",
+  "number": "7",
+  "title": "<em class=\"emphasis\">LHCC Characteristic Equation<\/em>.",
+  "body": " LHCC Characteristic Equation   The characteristic equation of an -th order LHCC equation is the -th degree polynomial  Click here for an explanation.   . The solutions to this polynomial, , correspond to the roots that determine the form of the general solution.   "
+},
+{
+  "id": "higher-order-lhcc-general-solution-examples",
+  "level": "2",
+  "url": "main-7-3-7.html#higher-order-lhcc-general-solution-examples",
+  "type": "Table",
+  "number": "8",
+  "title": "Examples of LHCC General Solutions",
+  "body": "Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (5th order)        (5th order)      "
+},
+{
+  "id": "main-7-3-7-7",
+  "level": "2",
+  "url": "main-7-3-7.html#main-7-3-7-7",
+  "type": "Example",
+  "number": "9",
+  "title": "",
+  "body": " Solve the following characteristic equations.                              Note: DoS = Difference of Squares.        DoS                        DoS                    common                        common              Technically, and represents 4 repeated factors.          common      DoS                    common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .      "
+},
+{
+  "id": "main-7-3-7-9",
+  "level": "2",
+  "url": "main-7-3-7.html#main-7-3-7-9",
+  "type": "Example",
+  "number": "10",
+  "title": "",
+  "body": " Find the general solution to the LHCC equations              First, write down the characteristic equation: . Solving for , we get three distinct real roots: . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .     "
+},
+{
+  "id": "main-7-3-7-11",
+  "level": "2",
+  "url": "main-7-3-7.html#main-7-3-7-11",
+  "type": "Example",
+  "number": "11",
+  "title": "",
+  "body": " Consider the fifth-order LHCC equation:  .   The characteristic equation is: . Solving this polynomial equation analytically is challenging, so we use a numerical solver ( Wolfram Alpha ). This equation has five roots. Three are real: and two are complex: . The general solution, incorporating these roots, is: . .   "
+},
+{
+  "id": "p3-c1-s5-i1",
+  "level": "2",
+  "url": "main-7-3-7.html#p3-c1-s5-i1",
+  "type": "Reading Question",
+  "number": "6.5.1",
+  "title": "<em class=\"emphasis\">Match the Differential Equation to its Characteristic Equation<\/em>.",
+  "body": " Match the Differential Equation to its Characteristic Equation  Match each differential equation on the left to its characteristic equation on the right.                          "
+},
+{
+  "id": "p3-c1-s5-i2",
+  "level": "2",
+  "url": "main-7-3-7.html#p3-c1-s5-i2",
+  "type": "Reading Question",
+  "number": "6.5.2",
+  "title": "<em class=\"emphasis\">Give the general solution for a 3rd-order LHCC equation whose..<\/em>.",
+  "body": " Give the general solution for a 3rd-order LHCC equation whose..  Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solution: .    Correct! This is the form when there are three distinct real roots.     Incorrect.     Incorrect.     Incorrect.   "
+},
+{
+  "id": "p3-c1-s5-i3",
+  "level": "2",
+  "url": "main-7-3-7.html#p3-c1-s5-i3",
+  "type": "Reading Question",
+  "number": "6.5.3",
+  "title": "<em class=\"emphasis\">Give the general solution for a 4th-order LHCC equation whose..<\/em>.",
+  "body": " Give the general solution for a 4th-order LHCC equation whose..  Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect.     Incorrect. Not enough constants.     Incorrect.     Correct! This is the form when the characteristic equation has complex roots.   "
+},
+{
+  "id": "p3-c1-s5-i4",
+  "level": "2",
+  "url": "main-7-3-7.html#p3-c1-s5-i4",
+  "type": "Reading Question",
+  "number": "6.5.4",
+  "title": "<em class=\"emphasis\">Give the general solution for a 5th-order LHCC equation whose..<\/em>.",
+  "body": " Give the general solution for a 5th-order LHCC equation whose..  Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect. This form does not account for the multiplicity of the roots.     Incorrect. The multiplicity should be reflected for each root.     Correct! This is the form when there are repeated real roots with appropriate multiplicity.     Incorrect. Make sure to account for the cubic multiplicity for .   "
+},
+{
+  "id": "main-7-3-8",
+  "level": "1",
+  "url": "main-7-3-8.html",
+  "type": "Section",
+  "number": "6.6",
+  "title": "Summary &amp; Exercises",
+  "body": "Summary & Exercises    The method discussed in this section does not have a formal name, but it is a common technique with a wide array of applications. For ease of discussion, we will refer to it as the \"LHCC method.\" \"LHCC\" is an acronym indicating the properties of DE it solves. The properties are linear (L), homogeneous (H), and constant coefficients (CC).   LHCC Method  A general solution to the linear homogeneous differential equation with constant coefficients (LHCC), can be found through the following steps...   Step 1: Verify Method  Check that the DE is linear, homogeneous and has constant coefficients.   Step 2: Solve CE  Solve the characteristic equation (CE) corresponding to ?.   Step 3: Give Solution  Write down the general solution and apply initial conditions.     Summary of the Key Ideas    Method           Show why is needed in the general solution for repeated roots of the CE     Classify the following differential equations as either homogeneous or nonhomogeneous  *NEED EXERCISES        Find the general solution for each of the following                          Solve the following initial value problems   an that satisfy thegiven initial conditions.  o  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.         Boundary Value Problems  Solve the following boundary value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution    Solve the following DEs               Initial Value Problems  Solve the following initial value problem.   or  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution    Solve the following DEs               Solve the following DEs                           Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation               Compute the derivative of each of the following functions        True\/False vector space  The differential equation is linear.   Each of the terms are linear.   Check to see that each of the terms involving are linear.   True\/False vector space  The differential equation is linear.   The term is not linear.   Check to see that each of the terms involving are linear.   True\/False vector space  The differential equation is homogeneous.   Every term contains the independent variable, .   Check to see that each of the terms contains the dependent variable, .   True\/False vector space  The differential equation is homogeneous.   The 6 on the right hand side of the equation makes the DE nonhomogeneous.   Check to see that each of the terms contains the dependent variable, .   True\/False vector space  The differential equation has constant coefficients.   The coefficients for each of the terms are constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.   True\/False vector space  The differential equation has constant coefficients.   The coefficients for the term on the right hand side of the equation is not constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.    "
+},
+{
+  "id": "main-7-3-8-2-1",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": " Method  "
+},
+{
+  "id": "tba",
+  "level": "2",
+  "url": "main-7-3-8.html#tba",
+  "type": "Exercise",
+  "number": "6.6.1",
+  "title": "",
+  "body": " Show why is needed in the general solution for repeated roots of the CE    "
+},
+{
+  "id": "main-7-3-8-3-2-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-2-3",
+  "type": "Exercise",
+  "number": "6.6.2",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-7-3-8-3-3-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-3-2",
+  "type": "Exercise",
+  "number": "6.6.3",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-3-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-3-3",
+  "type": "Exercise",
+  "number": "6.6.4",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-3-4",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-3-4",
+  "type": "Exercise",
+  "number": "6.6.5",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-3-5",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-3-5",
+  "type": "Exercise",
+  "number": "6.6.6",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-7-3-8-3-4-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-4-2",
+  "type": "Exercise",
+  "number": "6.6.7",
+  "title": "",
+  "body": " an that satisfy thegiven initial conditions.  o  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.  "
+},
+{
+  "id": "main-7-3-8-3-4-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-4-3",
+  "type": "Exercise",
+  "number": "6.6.8",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-7-3-8-3-5-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-5-2",
+  "type": "Exercise",
+  "number": "6.6.9",
+  "title": "",
+  "body": "Solve the following boundary value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution  "
+},
+{
+  "id": "main-7-3-8-3-6-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-6-2",
+  "type": "Exercise",
+  "number": "6.6.10",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-6-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-6-3",
+  "type": "Exercise",
+  "number": "6.6.11",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-7-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-7-2",
+  "type": "Exercise",
+  "number": "6.6.12",
+  "title": "",
+  "body": "Solve the following initial value problem.   or  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution  "
+},
+{
+  "id": "main-7-3-8-3-8-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-8-2",
+  "type": "Exercise",
+  "number": "6.6.13",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-8-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-8-3",
+  "type": "Exercise",
+  "number": "6.6.14",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-9-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-9-2",
+  "type": "Exercise",
+  "number": "6.6.15",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-9-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-9-3",
+  "type": "Exercise",
+  "number": "6.6.16",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-9-4",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-9-4",
+  "type": "Exercise",
+  "number": "6.6.17",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-9-5",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-9-5",
+  "type": "Exercise",
+  "number": "6.6.18",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-10-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-10-2",
+  "type": "Exercise",
+  "number": "6.6.19",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-10-3",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-10-3",
+  "type": "Exercise",
+  "number": "6.6.20",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-7-3-8-3-11-2",
+  "level": "2",
+  "url": "main-7-3-8.html#main-7-3-8-3-11-2",
+  "type": "Exercise",
+  "number": "6.6.21",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "LHCC1",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC1",
+  "type": "Exercise",
+  "number": "6.6.22",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation is linear.   Each of the terms are linear.   Check to see that each of the terms involving are linear.  "
+},
+{
+  "id": "LHCC2",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC2",
+  "type": "Exercise",
+  "number": "6.6.23",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation is linear.   The term is not linear.   Check to see that each of the terms involving are linear.  "
+},
+{
+  "id": "LHCC3",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC3",
+  "type": "Exercise",
+  "number": "6.6.24",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation is homogeneous.   Every term contains the independent variable, .   Check to see that each of the terms contains the dependent variable, .  "
+},
+{
+  "id": "LHCC4",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC4",
+  "type": "Exercise",
+  "number": "6.6.25",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation is homogeneous.   The 6 on the right hand side of the equation makes the DE nonhomogeneous.   Check to see that each of the terms contains the dependent variable, .  "
+},
+{
+  "id": "LHCC5",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC5",
+  "type": "Exercise",
+  "number": "6.6.26",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation has constant coefficients.   The coefficients for each of the terms are constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.  "
+},
+{
+  "id": "LHCC6",
+  "level": "2",
+  "url": "main-7-3-8.html#LHCC6",
+  "type": "Exercise",
+  "number": "6.6.27",
+  "title": "True\/False.",
+  "body": "True\/False vector space  The differential equation has constant coefficients.   The coefficients for the term on the right hand side of the equation is not constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.  "
 },
 {
   "id": "main-7-4",
@@ -4004,6 +4562,33 @@ var ptx_lunr_docs = [
   "number": "C.3",
   "title": "Integrating Factor",
   "body": "Integrating Factor  Standard Form Every linear differential equation looks like . The first-order version of this is , but we can divide both sides of this equation by , like so . Since every first-order linear differential equations can always be written as , we call this the first-order linear standard form .  Integrating Factor Calculation Details  Since we only need one integrating factor, we are free to pick any value of .  "
+},
+{
+  "id": "main-15-5",
+  "level": "1",
+  "url": "main-15-5.html",
+  "type": "Section",
+  "number": "C.4",
+  "title": "Linear Homogeneous Constant Coefficients",
+  "body": "Linear Homogeneous Constant Coefficients  N-th Derivative of  Each derivative of adds a multiple of , so .  2nd Order LHCC Complex Case 3  The following explains how comes directly from .  Since and are complex, they can be written as . Substituting these into , using , the even property of cosine and odd property of sine , we can rewrite the general solution as .   Like Terms  Terms are called like terms if they have identical variable parts. That is, they differ only by a coefficient. Like terms can be combined via addition and subtraction. For example, the and terms below are pairs of like terms, which can be combined as follows: .   Polynomial Factoring Calculator   Numerical integrals using the midpoint rule      To find the characteristic equation, we substitute into the -th order LHCC equation and solve for . Doing this gives us . Since is never zero, we must have which is an -th order polynomial in .   "
+},
+{
+  "id": "like-terms-2",
+  "level": "2",
+  "url": "main-15-5.html#like-terms-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "like terms "
+},
+{
+  "id": "figure-pp",
+  "level": "2",
+  "url": "main-15-5.html#figure-pp",
+  "type": "Figure",
+  "number": "C.8",
+  "title": "",
+  "body": " Numerical integrals using the midpoint rule   "
 },
 {
   "id": "main-16",
