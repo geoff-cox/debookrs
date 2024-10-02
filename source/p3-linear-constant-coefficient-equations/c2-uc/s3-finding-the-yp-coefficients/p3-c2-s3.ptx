@@ -1,0 +1,221 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Finding the Coefficients of the Particular Solution </title>
+
+	<p>
+		When solving a non-homogeneous linear differential equation, selecting the correct form for the particular solution, <m>y_p</m>, is just the beginning. The next important task is determining the values of its unknown coefficients, such as <m>A</m> and <m>B</m>. In this section, we'll explore how to compute these coefficients by plugging the guessed particular solution into the original equation.
+	</p>
+
+	<p>
+		Let's revisit the example we discussed earlier. Consider the differential equation:
+		<men xml:id="finding-yps-coefficients-de">
+			y'' - 4y' + 3y = 9x
+		</men>.
+		We guessed that the particular solution would be linear, so we set
+		<me>
+			y_p = Ax + B
+		</me>.
+	</p>
+
+	<p>
+		Our goal now is to determine the values of <m>A</m> and <m>B</m>. To do this, we substitute <m>y_p = Ax + B</m> into the original differential equation. Here's how it works:
+		<md>
+			<mrow> y_p = Ax + B \quad \implies \quad y_p' = A \quad \implies \quad y_p'' = 0</mrow>
+		</md>
+		Substituting <m>y_p</m>, <m>y_p'</m>, and <m>y_p''</m> into <xref ref="finding-yps-coefficients-de"/> results in:
+		<md>
+			<mrow> 0 - 4A + 3(Ax + B) = 9x </mrow>
+			<mrow> -4A + 3Ax + 3B = 9x </mrow>
+		</md>
+		The next step is to collect the like terms and compare the coefficients of <m>x</m> on both sides of the equation. For the left-hand side to equal the right-hand side, the coefficients of <m>x</m> must be the same, and the constant terms must also match, as follows:
+		<image width="50%">
+			<latex-image>
+			
+				\begin{tikzpicture}[join=round,rounded corners,&gt;=stealth,shorten &gt;=1pt,shorten &lt;=1pt,thick]
+					\node (text1) 	at (1.4,0.5) 	{\scriptsize equal};
+					\node (text2) 	at (3.4,0.7) 	{\scriptsize equal};
+					
+					\def\LA{0.1}
+					\def\WA{0.64}
+					\def\LB{1.27}
+					\def\WB{1.65}
+					\def\LC{3.33}
+					\def\WC{0.3}
+					\def\LD{4.2}
+					\def\WD{0.28}
+
+					\node[anchor=west] (eqn)	at (0,0)	{$\,3A\ x + \,- 4A + 3B\, = \ 9\ x + 0\ .$};
+					\node (xterm1) at (\LA+\WA/2,0.1) {};
+					\node (xterm2) at (\LC+\WC/2,0.1) {};
+					\node (cterm1) at (\LB+\WB/2,0.1) {};
+					\node (cterm2) at (\LD+\WD/2,0.1) {};
+					
+					\filldraw[fill=red!20,fill opacity=0.2,thin,draw=red]
+						(\LA,-0.2)--(\WA,-0.2)--(\WA,0.2)--(\LA,0.2)--cycle;
+					\filldraw[fill=blue!20,fill opacity=0.2,thin,draw=blue]
+						(\LB,-0.2)--(\LB+\WB,-0.2)--(\LB+\WB,0.2)--(\LB,0.2)--cycle;
+					\filldraw[fill=red!20,fill opacity=0.2,thin,draw=red]
+						(\LC,-0.2)--(\LC+\WC,-0.2)--(\LC+\WC,0.2)--(\LC,0.2)--cycle;
+					\filldraw[fill=blue!20,fill opacity=0.2,thin,draw=blue]
+						(\LD,-0.2)--(\LD+\WD,-0.2)--(\LD+\WD,0.2)--(\LD,0.2)--cycle;
+					
+					\draw[-&gt;,thin] (text1.west)		--	+(-0.06,0.0) -| (xterm1);
+					\draw[-&gt;,thin] (text1.east)		--	+(0.06,0.0) -| (xterm2);
+					\draw[-&gt;,thin] (text2.west)		--	+(-0.06,0.0) -| (cterm1);
+					\draw[-&gt;,thin] (text2.east)		--	+(0.06,0.0) -| (cterm2);
+					
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+		Setting the approriate terms equal, gives us the following system of equations:
+		<md>
+			<mrow>	3A		=\amp\ 9 \quad \implies \quad A = 3</mrow>
+			<mrow> -4A + 3B	=\amp\ 0 \quad \implies \quad B = 4</mrow>
+		</md>
+		Therefore, the particular solution is:
+		<me>
+			y_p = 3x + 4
+		</me>
+	</p>
+
+	<p>
+		Regardless of <m>y_p</m>'s form, the process of finding the coefficients is the same. 
+		<ul marker="square">
+			<li>
+				<p>
+					Plug selected <m>y_p</m> into the differential equation.
+				</p>
+			</li>
+			<li>
+				<p>
+					Collect and match the coefficients of the like terms on opposite sides of the equation.
+				</p>
+			</li>
+			<li>
+				<p>
+					Solve the resulting system of equations to find <m>A, B, C, \ldots</m>.
+				</p>
+			</li>
+		</ul>
+	</p>
+
+	<assemblage><title>Tip: Identifying when things are Amiss</title>
+		<p>
+			Each coefficient should have exactly one solution. If you end up with conflicting values or unsolvable equations, it's a good idea to double-check your choice of <m>y_p</m> and computations.
+		</p>
+	</assemblage>
+
+	<xi:include href="./p3-c2-s3-interactives.ptx" />
+	
+	<example>
+
+		<m>\ \ </m> Find the particular solution to the LNCC equation below.
+
+		<p>
+			<me> y'' + 3y' + 2y = 6e^{2x} </me>.
+		</p>
+			
+		<solution>
+			<p>
+				Since the right-hand side is an exponential function, we set <m>y_p</m> below and compute the needed derivatives
+				<md>
+					<mrow> y_p		=\amp\ A e^{2x}		</mrow>
+					<mrow> y_p'		=\amp\ 2A e^{2x}	</mrow>
+					<mrow> y_p''	=\amp\ 4A e^{2x}	</mrow>
+				</md>
+			</p>
+			<p>
+				Substituting these into the equation and collecting like terms, we get
+				<md>
+					<mrow> 4A e^{2x} + 3(2A e^{2x}) + 2(A e^{2x}) = 6e^{2x} </mrow>
+					<mrow> 4A e^{2x} + 6A e^{2x} + 2A e^{2x} = 6e^{2x} </mrow>
+					<mrow> \ul{12A} e^{2x} = \ul{6} e^{2x} </mrow>
+				</md>.
+				Matching the underlined coefficients leads to an equation to find <m>A</m>
+				<md>
+					<mrow> 12A = 6 \quad \implies \quad A = \frac{1}{2} </mrow>
+				</md>.
+			</p>
+			<p>
+				Finally, we write the particular solution as
+				<me> y_p = \frac{1}{2} e^{2x} </me>.
+			</p>
+		</solution>
+	</example>
+		
+	<example>
+
+		<m>\ \ </m> Find the particular solution to the LNCC equation below.
+
+		<p>
+			<me> y'' - 3y' + y = 2x^2 + 3x </me>.
+		</p>
+		
+		<solution>
+
+			<p>
+				This time the right-hand side is a polynomial of degree 2, so we select <m>y_p</m> and compute its derivatives as follows:
+				<md>
+					<mrow> y_p = Ax^2 + Bx + C		</mrow>
+					<mrow> y_p' = 2Ax + B, \quad y_p'' = 2A	</mrow>
+				</md>
+			</p>
+			<p>
+				Substituting these into the equation and collecting like terms, we get
+				<md>
+					<mrow> 2A - 3(2Ax + B) + (Ax^2 + Bx + C) = 2x^2 + 3x </mrow>
+					<mrow> 2A - 6Ax - 3B + Ax^2 + Bx + C = 2x^2 + 3x </mrow>
+					<mrow> \us{1}{\ul{A}}x^2 + \us{2}{\ul{(- 6A + B)}}x + \us{3}{\ul{(2A - 3B + C)}} = \us{[1]}{\ul{2}}x^2 + \us{[2]}{\ul{3}}x + \us{[3]}{\ul{0}} </mrow>
+				</md>.
+				Matching the underlined coefficients leads to an equation to find <m>A</m>
+				<ol>
+					<li><m>A = 2</m></li>
+					<li><m>-6A + B = 3</m></li>
+					<li><m>2A - 3B + C = 0</m></li>
+				</ol>
+				<md>
+					<mrow> A = 2, \quad B = 9, \quad C = 13 </mrow>
+				</md>.
+			</p>
+			<p>
+				Finally, we write the particular solution as
+				<me> y_p = 2x^2 + 9x + 13 </me>.
+			</p>
+		</solution>
+	</example>
+		
+	<example>
+		<statement>
+			Solve the non-homogeneous differential equation:
+			<me> y'' + y = 3 \cos x </me>. Find the particular solution.
+		</statement>
+		<solution>
+			<p>
+			Step 1: The right-hand side is trigonometric, so we guess:
+			<me> y_p = A \cos x + B \sin x </me>.
+			</p>
+			<p>
+			Step 2: Differentiate the guessed solution:
+			<md>
+				<mrow> y_p' = -A \sin x + B \cos x, \quad y_p'' = -A \cos x - B \sin x </mrow>
+			</md>
+			</p>
+			<p>
+			Step 3: Substitute into the original equation:
+			<md>
+				<mrow> (-A \cos x - B \sin x) + (A \cos x + B \sin x) = 3 \cos x </mrow>
+				<mrow> 0A \sin x + 0B \cos x = 3 \cos x </mrow>
+			</md>
+			</p>
+			<p>
+			Step 4: Solve for <m> A </m> and <m> B </m>:
+			<md>
+				<mrow> A = 3, \quad B = 0 </mrow>
+			</md>
+			</p>
+			<p>
+			Step 5: Write the particular solution:
+			<me> y_p = 3 \cos x </me>.
+			</p>
+		</solution>
+	</example>
+
+</section>
