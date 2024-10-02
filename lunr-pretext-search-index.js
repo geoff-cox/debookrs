@@ -28,27 +28,27 @@ var ptx_lunr_docs = [
   "body": "An Analogy  When you're learning something new, it's often helpful to connect it to concepts you already know. To grasp what a differential equation is, let's first compare it to standard equations that might feel more familiar. Consider the following three equations, where we aim to solve for :       All three are equations with the same goal—finding the unknown . However, only the third equation is a differential equation because it contains a derivative.  Now, let's try solving for in each case.             In the first equation, we found that is a number, and in the second, it's a function of . But in the third equation, how do we solve for when there is a derivative attached to it? This is exactly the kind of question that differential equations aim to answer.  We'll dive deeper into solving these types of equations soon. For now, there's still plenty more to learn about the basics, so let's keep going!  Check your Understanding   Differential equations differ from standard equations in that they have   Differential equations differ from standard equations in that they have    a solution   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     a variable   Incorrect. Any equation could contain a variable.     an unknown   Incorrect. Most equations contain an unknown.     a derivative   Correct! If an equation contains a derivative, it is a differential equation.      Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.        An equation involving functions and their derivatives.        An equation involving trigonometric functions.        An equation that changes over time.         What distinguishes a differential equation from a standard equation?   What distinguishes a differential equation from a standard equation?    It contains an unknown variable.  Incorrect. Both standard and differential equations contain unknown variables.    It contains a derivative.  Correct! A differential equation contains one or more derivatives, which differentiates it from a standard equation.    It contains a variable.  Incorrect. Any equation could contain a variable.     "
 },
 {
-  "id": "p1-c1-s1-i1",
+  "id": "p1-c1-s1-rq1",
   "level": "2",
-  "url": "main-5-3-3.html#p1-c1-s1-i1",
+  "url": "main-5-3-3.html#p1-c1-s1-rq1",
   "type": "Reading Question",
   "number": "1.1.1",
   "title": "<em class=\"emphasis\">Differential equations differ from standard equations in that they have <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
   "body": " Differential equations differ from standard equations in that they have   Differential equations differ from standard equations in that they have    a solution   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     a variable   Incorrect. Any equation could contain a variable.     an unknown   Incorrect. Most equations contain an unknown.     a derivative   Correct! If an equation contains a derivative, it is a differential equation.    "
 },
 {
-  "id": "p1-c1-s1-i2",
+  "id": "p1-c1-s1-rq2",
   "level": "2",
-  "url": "main-5-3-3.html#p1-c1-s1-i2",
+  "url": "main-5-3-3.html#p1-c1-s1-rq2",
   "type": "Reading Question",
   "number": "1.1.2",
   "title": "<em class=\"emphasis\">Which of the following best describes a differential equation?<\/em>",
   "body": " Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.        An equation involving functions and their derivatives.        An equation involving trigonometric functions.        An equation that changes over time.       "
 },
 {
-  "id": "p1-c1-s1-i3",
+  "id": "p1-c1-s1-rq3",
   "level": "2",
-  "url": "main-5-3-3.html#p1-c1-s1-i3",
+  "url": "main-5-3-3.html#p1-c1-s1-rq3",
   "type": "Reading Question",
   "number": "1.1.3",
   "title": "<em class=\"emphasis\">What distinguishes a differential equation from a standard equation?<\/em>",
@@ -91,45 +91,45 @@ var ptx_lunr_docs = [
   "body": "Derivative Notation  We will use either prime notation or Leibniz notation to denote derivatives. For higher-order derivatives, the following conventions apply:     Derivative Order     1  2  3  4   n    Prime          Leibniz           Be careful not to confuse with raised to the power of 7!   "
 },
 {
-  "id": "p1-c1-s2-i1",
+  "id": "p1-c1-s2-rq1",
   "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i1",
+  "url": "main-5-3-4.html#p1-c1-s2-rq1",
   "type": "Reading Question",
   "number": "1.2.1",
   "title": "<em class=\"emphasis\">An equation that contains an \"=\" sign and at least one derivative is called a derivative equation<\/em>.",
   "body": " An equation that contains an \"=\" sign and at least one derivative is called a derivative equation   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation    True   Incorrect, derivative equation is not a standard term in mathematics.     False   Correct!     "
 },
 {
-  "id": "p1-c1-s2-i2",
+  "id": "p1-c1-s2-rq2",
   "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i2",
+  "url": "main-5-3-4.html#p1-c1-s2-rq2",
   "type": "Reading Question",
   "number": "1.2.2",
   "title": "<em class=\"emphasis\">The expression <span class=\"process-math\">\\(z^{(18)}\\)<\/span> is the same as <span class=\"process-math\">\\(z\\)<\/span> to the power of 18<\/em>.",
   "body": " The expression is the same as to the power of 18   The expression is the same as to the power of 18    True   Incorrect. Please read the note on derivative notation.     False   Correct!     "
 },
 {
-  "id": "p1-c1-s2-i3",
+  "id": "p1-c1-s2-rq3",
   "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i3",
+  "url": "main-5-3-4.html#p1-c1-s2-rq3",
   "type": "Reading Question",
   "number": "1.2.3",
   "title": "<em class=\"emphasis\">Identify the differential equation<\/em>.",
   "body": " Identify the differential equation   Identify the differential equation      Correct! This equation involves a derivative, making it a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.       Incorrect. This equation does not contain any derivatives, so it is not a differential equation.    "
 },
 {
-  "id": "p1-c1-s2-i4",
+  "id": "p1-c1-s2-rq4",
   "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i4",
+  "url": "main-5-3-4.html#p1-c1-s2-rq4",
   "type": "Reading Question",
   "number": "1.2.4",
   "title": "<em class=\"emphasis\">Which of the following is NOT required for an equation to be classified as a differential equation?<\/em>",
   "body": " Which of the following is NOT required for an equation to be classified as a differential equation?   Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.   Incorrect. A differential equation does include an unknown function, which we are solving for.     An -variable.   Correct! An -variable is not a requirement for a differential equation.     A derivative.   Incorrect. The presence of at least one derivative is essential to define a differential equation.     An \"=\" sign.   Incorrect. An equality sign is required for an equation to be classified as a differential equation.    "
 },
 {
-  "id": "p1-c1-s2-i5",
+  "id": "p1-c1-s2-rq5",
   "level": "2",
-  "url": "main-5-3-4.html#p1-c1-s2-i5",
+  "url": "main-5-3-4.html#p1-c1-s2-rq5",
   "type": "Reading Question",
   "number": "1.2.5",
   "title": "<em class=\"emphasis\">Click on all the Differential Equations<\/em>.",
@@ -163,45 +163,45 @@ var ptx_lunr_docs = [
   "body": " Identify the dependent and independent variables in each equation and state which variable represents the unknown.         Since the derivative appears, it implies that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.             The second derivative suggests that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.              Here, implies that is the dependent variable . Since no independent variable is explicitly shown, typically the context of the problem would provide it. If not, we can assume it ourselves—perhaps , making the unknown .       "
 },
 {
-  "id": "p1-c1-s3-i1",
+  "id": "p1-c1-s3-rq1",
   "level": "2",
-  "url": "main-5-3-5.html#p1-c1-s3-i1",
+  "url": "main-5-3-5.html#p1-c1-s3-rq1",
   "type": "Reading Question",
   "number": "1.3.1",
   "title": "<em class=\"emphasis\">Which variable in <span class=\"process-math\">\\(\\ds (1 - x)y'' - 4xy' + 5y = \\cos x \\)<\/span> is the independent variable?<\/em>",
   "body": " Which variable in is the independent variable?   Which variable in is the independent variable?     Yes! is the independent variable.     Incorrect. Review the examples.     Incorrect. Review the examples.   "
 },
 {
-  "id": "p1-c1-s3-i2",
+  "id": "p1-c1-s3-rq2",
   "level": "2",
-  "url": "main-5-3-5.html#p1-c1-s3-i2",
+  "url": "main-5-3-5.html#p1-c1-s3-rq2",
   "type": "Reading Question",
   "number": "1.3.2",
   "title": "<em class=\"emphasis\">Which variable in <span class=\"process-math\">\\(\\ds \\frac{dy}{dx} + 2y = 3x^2 \\)<\/span> is the dependent variable?<\/em>",
   "body": " Which variable in is the dependent variable?   Which variable in is the dependent variable?     Incorrect. represents the derivative of the dependent variable with respect to the independent variable.       Incorrect. The dependent variable is the one being differentiated.       Correct! is the dependent variable in this equation.   "
 },
 {
-  "id": "p1-c1-s3-i3",
+  "id": "p1-c1-s3-rq3",
   "level": "2",
-  "url": "main-5-3-5.html#p1-c1-s3-i3",
+  "url": "main-5-3-5.html#p1-c1-s3-rq3",
   "type": "Reading Question",
   "number": "1.3.3",
   "title": "<em class=\"emphasis\">In a differential equation, the dependent variable has a derivative applied to it<\/em>.",
   "body": " In a differential equation, the dependent variable has a derivative applied to it   In a differential equation, the dependent variable has a derivative applied to it    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.   "
 },
 {
-  "id": "p1-c1-s3-i4",
+  "id": "p1-c1-s3-rq4",
   "level": "2",
-  "url": "main-5-3-5.html#p1-c1-s3-i4",
+  "url": "main-5-3-5.html#p1-c1-s3-rq4",
   "type": "Reading Question",
   "number": "1.3.4",
   "title": "<em class=\"emphasis\">Which variable in <span class=\"process-math\">\\(\\ds \\frac{dP}{ds} + \\frac{P}{s^2} = 17s \\)<\/span> are we solving for?<\/em>",
   "body": " Which variable in are we solving for?   Which variable in are we solving for?    dependent variable,  Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,  Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,  Yes! We are solving for the unknown, .    independent variable,  Incorrect. We are solving for , but it is not the independent variable.   "
 },
 {
-  "id": "p1-c1-s3-i5",
+  "id": "p1-c1-s3-rq5",
   "level": "2",
-  "url": "main-5-3-5.html#p1-c1-s3-i5",
+  "url": "main-5-3-5.html#p1-c1-s3-rq5",
   "type": "Reading Question",
   "number": "1.3.5",
   "title": "<em class=\"emphasis\">In the differential equation <span class=\"process-math\">\\(\\ds \\frac{dx}{dy} = 2xy + 1\\text{,}\\)<\/span> the dependent variable is <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
@@ -235,81 +235,81 @@ var ptx_lunr_docs = [
   "body": " Terms & Coefficients in a Differential Equation    Identify the terms and coefficients of the differential equation     The equation can be broken down as follows: . The coefficients are , , and . Notice that and are functions of the independent variable , whereas is a constant.   "
 },
 {
-  "id": "p1-c1-s4-i1",
+  "id": "p1-c1-s4-rq1",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i1",
+  "url": "main-5-3-6.html#p1-c1-s4-rq1",
   "type": "Reading Question",
   "number": "1.4.1",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds 5y'' + 2y' - \\cos(t) y = 7\\text{,}\\)<\/span> what is the coefficient of <span class=\"process-math\">\\(\\ds y'\\text{?}\\)<\/span><\/em>",
   "body": " Given , what is the coefficient of ?   Given , what is the coefficient of ?    Incorrect. is the coefficient of .    Correct! is the coefficient of the term involving .    Incorrect. is the coefficient of .    Incorrect. is the constant on the right-hand side of the equation.   "
 },
 {
-  "id": "p1-c1-s4-i2",
+  "id": "p1-c1-s4-rq2",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i2",
+  "url": "main-5-3-6.html#p1-c1-s4-rq2",
   "type": "Reading Question",
   "number": "1.4.2",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds 3t^2 y' + \\frac{1}{t} y - 4 = 0\\text{,}\\)<\/span> which of the following is considered a constant term?<\/em>",
   "body": " Given , which of the following is considered a constant term?   Given , which of the following is considered a constant term?    Incorrect. This term contains a derivative of the dependent variable , so it is not a constant term.    Incorrect. This term involves the dependent variable , so it is not a constant term.    Correct! is the constant term because it does not depend on the dependent variable or its derivatives.   "
 },
 {
-  "id": "p1-c1-s4-i3",
+  "id": "p1-c1-s4-rq3",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i3",
+  "url": "main-5-3-6.html#p1-c1-s4-rq3",
   "type": "Reading Question",
   "number": "1.4.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(3t\\)<\/span> is an example of a constant term<\/em>.",
   "body": " is an example of a constant term   is an example of a constant term   True  Correct! In the context of differential equations, is a constant term since it is not multiplied by the dependent variable or one of its derivatives.   False  Incorrect. While is not a constant function, it is a constant term in the context of differential equations.   "
 },
 {
-  "id": "p1-c1-s4-i4",
+  "id": "p1-c1-s4-rq4",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i4",
+  "url": "main-5-3-6.html#p1-c1-s4-rq4",
   "type": "Reading Question",
   "number": "1.4.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y\\)<\/span> is the coefficient of the term <span class=\"process-math\">\\(y \\sin(t)\\)<\/span><\/em>.",
   "body": " is the coefficient of the term   is the coefficient of the term   True  Incorrect. The coefficient is the factor multiplying the entire term involving the dependent variable, not the dependent variable itself.   False  Correct! The coefficient is what multiplies the term involving the dependent variable, so in this case, the coefficient of is , not .   "
 },
 {
-  "id": "p1-c1-s4-i5",
+  "id": "p1-c1-s4-rq5",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i5",
+  "url": "main-5-3-6.html#p1-c1-s4-rq5",
   "type": "Reading Question",
   "number": "1.4.5",
   "title": "<em class=\"emphasis\">The term <span class=\"process-math\">\\(\\ds y'''\\)<\/span> does not have a coefficient<\/em>.",
   "body": " The term does not have a coefficient   The term does not have a coefficient   True  Incorrect. Every term in a differential equation has a coefficient, even if that coefficient is simply 1.   False  Correct! The coefficient of is 1, even if it is not explicitly written.   "
 },
 {
-  "id": "p1-c1-s4-i6",
+  "id": "p1-c1-s4-rq6",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i6",
+  "url": "main-5-3-6.html#p1-c1-s4-rq6",
   "type": "Reading Question",
   "number": "1.4.6",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds e^t y''' + 4y' - 3y = \\sin(t)\\text{,}\\)<\/span> which terms has a function as its coefficient?<\/em>",
   "body": " Given , which terms has a function as its coefficient?   Given , which terms has a function as its coefficient?    Correct! is a function of and acts as the coefficient of .    Incorrect. is a constant coefficient, not a function.    Incorrect. is a constant coefficient, not a function.    Incorrect. is on the right-hand side of the equation and is not acting as a coefficient for any term.   "
 },
 {
-  "id": "p1-c1-s4-i7",
+  "id": "p1-c1-s4-rq7",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i7",
+  "url": "main-5-3-6.html#p1-c1-s4-rq7",
   "type": "Reading Question",
   "number": "1.4.7",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds t^3 y'' + 6 y' - \\ln(t) y = 0\\text{,}\\)<\/span> which statement best describes the coefficient of <span class=\"process-math\">\\(y\\text{?}\\)<\/span><\/em>",
   "body": " Given , which statement best describes the coefficient of ?   Given , which statement best describes the coefficient of ?   It is a constant coefficient  Incorrect. A constant coefficient does not depend on the independent variable.   It is a function of the independent variable  Correct! The coefficient depends on the independent variable .   There is no coefficient  Incorrect. The term has a coefficient, which is .   It is an arbitrary constant  Incorrect. is a specific function of , not an arbitrary constant.   "
 },
 {
-  "id": "p1-c1-s4-i8",
+  "id": "p1-c1-s4-rq8",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i8",
+  "url": "main-5-3-6.html#p1-c1-s4-rq8",
   "type": "Reading Question",
   "number": "1.4.8",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds\\frac{d^2y}{dt^2} - 3t^2 y' + 4y = 0\\text{,}\\)<\/span> which of the following statements is true?<\/em>",
   "body": " Given , which of the following statements is true?   Given , which of the following statements is true?   The coefficient of is .  Correct! The term has a coefficient of .   The coefficient of is .  Incorrect. The coefficient of is , not .   The coefficient of is .  Incorrect. The correct coefficient of is , not .   There is no constant term in the equation.  Incorrect. The equation does not include a constant term since all terms involve the dependent variable or its derivatives.   "
 },
 {
-  "id": "p1-c1-s4-i9",
+  "id": "p1-c1-s4-rq9",
   "level": "2",
-  "url": "main-5-3-6.html#p1-c1-s4-i9",
+  "url": "main-5-3-6.html#p1-c1-s4-rq9",
   "type": "Reading Question",
   "number": "1.4.9",
   "title": "<em class=\"emphasis\">Select all the coefficients in the differential equation<\/em>.",
@@ -361,45 +361,45 @@ var ptx_lunr_docs = [
   "body": "Caution, Don't Confuse Exponents with Derivatives  It's important to distinguish between exponents and derivatives. For example, in the second example, indicates that the dependent variable is raised to the 8th power, but this is not related to the order of the differential equation.  "
 },
 {
-  "id": "p1-c1-s5-i1",
+  "id": "p1-c1-s5-rq1",
   "level": "2",
-  "url": "main-5-3-7.html#p1-c1-s5-i1",
+  "url": "main-5-3-7.html#p1-c1-s5-rq1",
   "type": "Reading Question",
   "number": "1.5.1",
   "title": "<em class=\"emphasis\">Which of the following equations is a third-order differential equation?<\/em>",
   "body": " Which of the following equations is a third-order differential equation?   Which of the following equations is a third-order differential equation?     Correct! The highest derivative here is the third derivative, making it a third-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a first-order differential equation.   "
 },
 {
-  "id": "p1-c1-s5-i2",
+  "id": "p1-c1-s5-rq2",
   "level": "2",
-  "url": "main-5-3-7.html#p1-c1-s5-i2",
+  "url": "main-5-3-7.html#p1-c1-s5-rq2",
   "type": "Reading Question",
   "number": "1.5.2",
   "title": "<em class=\"emphasis\">The order of a differential equation is determined by the number of terms it contains<\/em>.",
   "body": " The order of a differential equation is determined by the number of terms it contains   The order of a differential equation is determined by the number of terms it contains    True  Incorrect. The order is based on the highest derivative, regardless of the number of terms.    False  Correct! The order is determined by the highest derivative, not the number of terms.   "
 },
 {
-  "id": "p1-c1-s5-i3",
+  "id": "p1-c1-s5-rq3",
   "level": "2",
-  "url": "main-5-3-7.html#p1-c1-s5-i3",
+  "url": "main-5-3-7.html#p1-c1-s5-rq3",
   "type": "Reading Question",
   "number": "1.5.3",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds (1 - x)y'' - x^4y' + y^5 = \\cos x \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
   "body": " The differential equation has order  order:      Correct! The most derivatives applied are two in .     5   Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.     .*   Carefully review the definition of order.     "
 },
 {
-  "id": "p1-c1-s5-i4",
+  "id": "p1-c1-s5-rq4",
   "level": "2",
-  "url": "main-5-3-7.html#p1-c1-s5-i4",
+  "url": "main-5-3-7.html#p1-c1-s5-rq4",
   "type": "Reading Question",
   "number": "1.5.4",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds y''' + 3y' - 4y = 0 \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
   "body": " The differential equation has order  order:      Correct! The highest derivative is the third derivative .     2   Incorrect. The highest derivative is the third derivative, not the second.     .*   Carefully review the definition of order.     "
 },
 {
-  "id": "p1-c1-s5-i5",
+  "id": "p1-c1-s5-rq5",
   "level": "2",
-  "url": "main-5-3-7.html#p1-c1-s5-i5",
+  "url": "main-5-3-7.html#p1-c1-s5-rq5",
   "type": "Reading Question",
   "number": "1.5.5",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds t^3 \\frac{d^2y}{dt^2} + \\frac{d^5y}{dt^5} = \\sin(t) \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
@@ -451,117 +451,117 @@ var ptx_lunr_docs = [
   "body": " Determine the linearity of each term in the following differential equations.                   "
 },
 {
-  "id": "p1-c1-s6-i1",
+  "id": "p1-c1-s6-rq1",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i1",
+  "url": "main-5-3-8.html#p1-c1-s6-rq1",
   "type": "Reading Question",
   "number": "1.6.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(3t\\)<\/span> is a linear term<\/em>.",
   "body": " is a linear term   is a linear term   True  Correct! The term is linear because it is a function of the independent variable only.   False  Incorrect, review the examples of linear terms in the section on Linear Terms.   "
 },
 {
-  "id": "p1-c1-s6-i2",
+  "id": "p1-c1-s6-rq2",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i2",
+  "url": "main-5-3-8.html#p1-c1-s6-rq2",
   "type": "Reading Question",
   "number": "1.6.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y \\sin(t)\\)<\/span> is a linear term<\/em>.",
   "body": " is a linear term   is a linear term   True  Correct! The term is linear.   False  Incorrect. The term is indeed linear.   "
 },
 {
-  "id": "p1-c1-s6-i3",
+  "id": "p1-c1-s6-rq3",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i3",
+  "url": "main-5-3-8.html#p1-c1-s6-rq3",
   "type": "Reading Question",
   "number": "1.6.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(t\\sin(y')\\)<\/span> is a linear term<\/em>.",
   "body": " is a linear term   is a linear term   True  Incorrect, review the rules for identifying nonlinear terms.   False  Correct! A term that includes the derivative of the dependent variable inside another function is nonlinear.   "
 },
 {
-  "id": "p1-c1-s6-i4",
+  "id": "p1-c1-s6-rq4",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i4",
+  "url": "main-5-3-8.html#p1-c1-s6-rq4",
   "type": "Reading Question",
   "number": "1.6.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{ty}\\)<\/span> is a linear term<\/em>.",
   "body": " is a linear term   is a linear term   False  Correct! The term is nonlinear because the dependent variable is inside an exponential function.   True  Incorrect. Review the rules for identifying nonlinear terms.   "
 },
 {
-  "id": "p1-c1-s6-i5",
+  "id": "p1-c1-s6-rq5",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i5",
+  "url": "main-5-3-8.html#p1-c1-s6-rq5",
   "type": "Reading Question",
   "number": "1.6.5",
   "title": "<em class=\"emphasis\">Identify the linear term in the equation: <span class=\"process-math\">\\(\\ds\\frac{1}{t}y'' + y^2 + \\ln(y') = e^t\\)<\/span><\/em>.",
   "body": " Identify the linear term in the equation:   Identify the linear term in the equation:    Correct! The term is linear because it involves a single derivative of the dependent variable.    Incorrect. This term is nonlinear.    Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.    Incorrect. This term is linear because it involves the independent variable only.   "
 },
 {
-  "id": "p1-c1-s6-i6",
+  "id": "p1-c1-s6-rq6",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i6",
+  "url": "main-5-3-8.html#p1-c1-s6-rq6",
   "type": "Reading Question",
   "number": "1.6.6",
   "title": "<em class=\"emphasis\">Which of the following is a nonlinear term?<\/em>",
   "body": " Which of the following is a nonlinear term?   Which of the following is a nonlinear term?    Incorrect. This is a linear term.    I The term is nonlinear because it involves a derivative inside a trigonometric function.    Incorrect. This is a linear term.    Incorrect. This is a linear term.   "
 },
 {
-  "id": "p1-c1-s6-i7",
+  "id": "p1-c1-s6-rq7",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i7",
+  "url": "main-5-3-8.html#p1-c1-s6-rq7",
   "type": "Reading Question",
   "number": "1.6.7",
   "title": "<em class=\"emphasis\">A linear term can contain the dependent variable multiplied by the independent variable<\/em>.",
   "body": " A linear term can contain the dependent variable multiplied by the independent variable   A linear term can contain the dependent variable multiplied by the independent variable   True  Correct! For example, is a linear term.   False  Incorrect. Carefully review the examples above.   "
 },
 {
-  "id": "p1-c1-s6-i8",
+  "id": "p1-c1-s6-rq8",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i8",
+  "url": "main-5-3-8.html#p1-c1-s6-rq8",
   "type": "Reading Question",
   "number": "1.6.8",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
   "body": " Which of the following terms is linear?   Which of the following terms is linear?    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Correct! is linear because it is a function of the independent variable multiplied by the first derivative of the dependent variable.    Incorrect. is nonlinear because it includes the dependent variable inside another function.    Incorrect. is nonlinear because it involves the product of the dependent variable and its derivative.   "
 },
 {
-  "id": "p1-c1-s6-i9",
+  "id": "p1-c1-s6-rq9",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i9",
+  "url": "main-5-3-8.html#p1-c1-s6-rq9",
   "type": "Reading Question",
   "number": "1.6.9",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
   "body": " Which of the following terms is linear?   Which of the following terms is linear?    Correct! is linear because it is a function of the independent variable multiplied by the second derivative of the dependent variable.    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Incorrect. is nonlinear because the dependent variable is squared.    Incorrect. is nonlinear because it involves the product of the dependent variable and a function of the dependent variable.   "
 },
 {
-  "id": "p1-c1-s6-i10",
+  "id": "p1-c1-s6-rq10",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i10",
+  "url": "main-5-3-8.html#p1-c1-s6-rq10",
   "type": "Reading Question",
   "number": "1.6.10",
   "title": "<em class=\"emphasis\">Which of the following is a characteristic of a nonlinear term?<\/em>",
   "body": " Which of the following is a characteristic of a nonlinear term?   Which of the following is a characteristic of a nonlinear term?   It involves the dependent variable raised to the first power.  Incorrect. This is a characteristic of a linear term.   It involves the dependent variable only as a constant.  Incorrect. This is a characteristic of a linear term.   It includes the dependent variable inside another function.  Correct! A nonlinear term includes the dependent variable inside another function.   It involves the independent variable only.  Incorrect. This is a characteristic of a linear term.   "
 },
 {
-  "id": "p1-c1-s6-i11",
+  "id": "p1-c1-s6-rq11",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i11",
+  "url": "main-5-3-8.html#p1-c1-s6-rq11",
   "type": "Reading Question",
   "number": "1.6.11",
   "title": "<em class=\"emphasis\">Which term is an example of a nonlinear term?<\/em>",
   "body": " Which term is an example of a nonlinear term?   Which term is an example of a nonlinear term?    Incorrect. is linear because it is a constant.    Incorrect. is linear because it is a function of the independent variable only.    Correct! is nonlinear because the dependent variable is squared.    Incorrect. is linear because it is a function of the independent variable multiplied by the dependent variable.   "
 },
 {
-  "id": "p1-c1-s6-i12",
+  "id": "p1-c1-s6-rq12",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i12",
+  "url": "main-5-3-8.html#p1-c1-s6-rq12",
   "type": "Reading Question",
   "number": "1.6.12",
   "title": "<em class=\"emphasis\">Select the Linear Terms<\/em>.",
   "body": " Select the Linear Terms  Click on all of the linear terms in the following differential equation.                      In this equation, , , , and are linear terms.   Review   "
 },
 {
-  "id": "p1-c1-s6-i13",
+  "id": "p1-c1-s6-rq13",
   "level": "2",
-  "url": "main-5-3-8.html#p1-c1-s6-i13",
+  "url": "main-5-3-8.html#p1-c1-s6-rq13",
   "type": "Reading Question",
   "number": "1.6.13",
   "title": "<em class=\"emphasis\">Select the Nonlinear Terms<\/em>.",
@@ -595,72 +595,72 @@ var ptx_lunr_docs = [
   "body": " Let's determine whether the following differential equation is linear:   To classify this equation, we need to verify if every term involving and its derivatives is linear. Let's break it down term by term:   Since each term involving or its derivatives is linear, this differential equation is indeed linear.   "
 },
 {
-  "id": "p1-c1-s7-i1",
+  "id": "p1-c1-s7-rq1",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i1",
+  "url": "main-5-3-9.html#p1-c1-s7-rq1",
   "type": "Reading Question",
   "number": "1.7.1",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\frac{dy}{dt} + t^2 y = e^t\\)<\/span> is linear<\/em>.",
   "body": "The differential equation is linear  The differential equation is linear    True  Correct! This equation is linear as all terms involving and its derivatives appear to the first power, and there are no nonlinear functions of .    False  Incorrect. This equation is indeed linear because both and are to the first power and are not inside any nonlinear functions.   "
 },
 {
-  "id": "p1-c1-s7-i2",
+  "id": "p1-c1-s7-rq2",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i2",
+  "url": "main-5-3-9.html#p1-c1-s7-rq2",
   "type": "Reading Question",
   "number": "1.7.2",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + y' \\cos t = 7y \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
   "body": " The differential equation, , is   The differential equation, , is   Linear   Yes! This DE is linear. Each term involving or its derivatives, such as , , and , is linear. A linear differential equation contains terms where the dependent variable and its derivatives appear to the first power and are not multiplied by each other.    Nonlinear   No, this is linear. Looking carefully at each term, we see:   Since every term is linear, this differential equation is linear. Review the definition of linear differential equations.    "
 },
 {
-  "id": "p1-c1-s7-i3",
+  "id": "p1-c1-s7-rq3",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i3",
+  "url": "main-5-3-9.html#p1-c1-s7-rq3",
   "type": "Reading Question",
   "number": "1.7.3",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + \\sin(y) = 17t \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
   "body": " The differential equation, , is   The differential equation, , is   Linear   No, this is nonlinear. Looking carefully at each term, we see:   Since one term is not linear, this differential equation is nonlinear. Revisit the rules for linearity and nonlinearity.    Nonlinear   Yes! This DE is nonlinear since the term is not linear. Nonlinear terms involve functions like sine, logarithms, or powers greater than one when applied to the dependent variable .    "
 },
 {
-  "id": "p1-c1-s7-i4",
+  "id": "p1-c1-s7-rq4",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i4",
+  "url": "main-5-3-9.html#p1-c1-s7-rq4",
   "type": "Reading Question",
   "number": "1.7.4",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds \\frac{d^2x}{dt^2} + e^x = 0 \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
   "body": "The differential equation, , is   The differential equation, , is    Linear  Incorrect. The term makes this equation nonlinear, as it involves the exponential function of the dependent variable.    Nonlinear  Correct! The term introduces nonlinearity into the equation, as it involves the dependent variable inside an exponential function.   "
 },
 {
-  "id": "p1-c1-s7-i5",
+  "id": "p1-c1-s7-rq5",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i5",
+  "url": "main-5-3-9.html#p1-c1-s7-rq5",
   "type": "Reading Question",
   "number": "1.7.5",
   "title": "<em class=\"emphasis\">Select the linear differential equation<\/em>.",
   "body": "Select the linear differential equation  Select the linear differential equation     Incorrect. The term makes this equation nonlinear.     Incorrect. The term makes this equation nonlinear.     Correct! All terms are linear in this equation, making it a linear differential equation.     Incorrect. The term introduces nonlinearity in this equation.   "
 },
 {
-  "id": "p1-c1-s7-i6",
+  "id": "p1-c1-s7-rq6",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i6",
+  "url": "main-5-3-9.html#p1-c1-s7-rq6",
   "type": "Reading Question",
   "number": "1.7.6",
   "title": "<em class=\"emphasis\">Which term makes the equation <span class=\"process-math\">\\(\\ds y''' + 3y' \\sin(t) + y^2 = 0\\)<\/span> nonlinear?<\/em>",
   "body": "Which term makes the equation nonlinear?  Which term makes the equation nonlinear?     Correct! The term is nonlinear because the dependent variable is raised to the second power.     Incorrect. While this term includes a function of , it is still linear because appears to the first power.     Incorrect. The term is linear because and its derivatives are to the first power.   "
 },
 {
-  "id": "p1-c1-s7-i7",
+  "id": "p1-c1-s7-rq7",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i7",
+  "url": "main-5-3-9.html#p1-c1-s7-rq7",
   "type": "Reading Question",
   "number": "1.7.7",
   "title": "<em class=\"emphasis\">Select all the linear differential equations<\/em>.",
   "body": " Select all the linear differential equations   Select all the linear differential equations                Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.   Remember that a linear differential equation contains only linear terms. Four of these equations are linear.  "
 },
 {
-  "id": "p1-c1-s7-i8",
+  "id": "p1-c1-s7-rq8",
   "level": "2",
-  "url": "main-5-3-9.html#p1-c1-s7-i8",
+  "url": "main-5-3-9.html#p1-c1-s7-rq8",
   "type": "Reading Question",
   "number": "1.7.8",
   "title": "<em class=\"emphasis\">Select all the nonlinear differential equations<\/em>.",
@@ -1342,63 +1342,63 @@ var ptx_lunr_docs = [
   "body": "What is a Solution?  Regardless what kind of equation you are working with, a solution is a value or function that satisfies the equation. The term satisfies simply means that when you plug the value into the equation, it simplifies to a statement that is undeniably true. This undeniably true statement is sometimes called an identity. For example, suppose I want to check if and are solutions to the equation . To do this, we verify that both and  satisfy the equation by separately plugging and in for each , simplify and see if we end up with an undeniably true statement, like so        Since yields a true statement we say it satisfies the equation and is a solution. In contrast, does not give a true statement, so it does not satisfy the equation and is not a solution.  The same idea applies to differential equations, except in that solutions to differential equations are functions instead of numbers . To see this, let's verify if and are solutions to the differential equation .  Separately plugging and into the equation yields        Since results in a false statement, it does not satisfy the equation and is not a solution. However, does satisfy the equation and is a solution.  To summarize, verifying a solution involves substituting the function into the differential equation and ensuring that the equality is satisfied.  Check your Understanding   A solution to a differential equation is a function that the equation   Fill-in Answer:  (Only lower case letters)     \\s*satisf(y|ies|ied|ying)?\\s*   A solution to a differential equation is a function that satisfies the equation.     \\s*solves\\s*   Close and technically not incorrect, but we are looking for satisfies .     .*   Incorrect. Carefully review the term we use in the first paragraph.       What does it mean for a function to satisfy a differential equation?   What does it mean for a function to satisfy a differential equation?    If you plug the function into the equation, you get a true statement.   Yes, a function that satisfies a differential equation yields a true statement when plugged into the equation.     If you plug the function into the equation, you get the solution.   Incorrect. The function is being checked to see if it is a solution, you do not get the solution by plugging it in.     If you take the derivative of the function, you get a true statement.   Incorrect. Carefully read the section again.     If you integrate the function, you get a true statement.   Incorrect. Carefully read the section again.      The function, , satisfies the differential equation    is not a solution since     Which variable in equation represents the solution?   variable that represents the solution:     \\s*u\\s*   Yes, the solution to the differential equation is the dependent variable .     \\s*t\\s*   No, is what the solution depends on, but it is not the solution itself.     .*   Incorrect. Carefully review the section and try again.       In general, a solution to a differential equation is a   In general, a solution to a differential equation is a    constant   It is possible for a solution to be a constant, but not in general.     function   Yes, when you solve a differential equation, you get a function.     number   It is possible for a solution to be a number, but not in general.     limit   Sorry, no.      Which variable in does the solution depend on?   Which variable in does the solution depend on?    dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    independent variable,  Yes! the solution, , depends on the independent variable .    dependent variable,  Incorrect. is the solution, so it does not depend on .    independent variable,  Incorrect. The variable is not the independent variable.    What is the primary goal of solving a differential equation?  What is the primary goal of solving a differential equation?    To find an unknown function that satisfies the equation.  Correct! The goal of solving a differential equation is to find the function that meets the equation's conditions.    To find the derivative of a function.  Incorrect. While derivatives are involved, the goal is to find the function, not just its derivative.    To identify the constants in an equation.  Incorrect. Identifying constants might be part of the process, but it is not the primary goal.    To determine the independent variable.  Incorrect. The independent variable is usually known; we solve for the dependent variable.     "
 },
 {
-  "id": "p1-c2-s1-i1",
+  "id": "p1-c2-s1-rq1",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i1",
+  "url": "main-5-4-3.html#p1-c2-s1-rq1",
   "type": "Reading Question",
   "number": "2.1.1",
   "title": "<em class=\"emphasis\">A solution to a differential equation is a function that <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> the equation<\/em>.",
   "body": " A solution to a differential equation is a function that the equation   Fill-in Answer:  (Only lower case letters)     \\s*satisf(y|ies|ied|ying)?\\s*   A solution to a differential equation is a function that satisfies the equation.     \\s*solves\\s*   Close and technically not incorrect, but we are looking for satisfies .     .*   Incorrect. Carefully review the term we use in the first paragraph.     "
 },
 {
-  "id": "p1-c2-s1-i2",
+  "id": "p1-c2-s1-rq2",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i2",
+  "url": "main-5-4-3.html#p1-c2-s1-rq2",
   "type": "Reading Question",
   "number": "2.1.2",
   "title": "<em class=\"emphasis\">What does it mean for a function to satisfy a differential equation?<\/em>",
   "body": " What does it mean for a function to satisfy a differential equation?   What does it mean for a function to satisfy a differential equation?    If you plug the function into the equation, you get a true statement.   Yes, a function that satisfies a differential equation yields a true statement when plugged into the equation.     If you plug the function into the equation, you get the solution.   Incorrect. The function is being checked to see if it is a solution, you do not get the solution by plugging it in.     If you take the derivative of the function, you get a true statement.   Incorrect. Carefully read the section again.     If you integrate the function, you get a true statement.   Incorrect. Carefully read the section again.    "
 },
 {
-  "id": "p1-c2-s1-i3",
+  "id": "p1-c2-s1-rq3",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i3",
+  "url": "main-5-4-3.html#p1-c2-s1-rq3",
   "type": "Reading Question",
   "number": "2.1.3",
   "title": "<em class=\"emphasis\">The function, <span class=\"process-math\">\\(y = x^3\\text{,}\\)<\/span> satisfies the differential equation <span class=\"process-math\">\\(y' = 3y\\)<\/span><\/em>.",
   "body": " The function, , satisfies the differential equation    is not a solution since   "
 },
 {
-  "id": "p1-c2-s1-i4",
+  "id": "p1-c2-s1-rq4",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i4",
+  "url": "main-5-4-3.html#p1-c2-s1-rq4",
   "type": "Reading Question",
   "number": "2.1.4",
   "title": "<em class=\"emphasis\">Which variable in equation <span class=\"process-math\">\\(\\ds u'' + t^2 u = 0 \\)<\/span> represents the solution?<\/em>",
   "body": " Which variable in equation represents the solution?   variable that represents the solution:     \\s*u\\s*   Yes, the solution to the differential equation is the dependent variable .     \\s*t\\s*   No, is what the solution depends on, but it is not the solution itself.     .*   Incorrect. Carefully review the section and try again.     "
 },
 {
-  "id": "p1-c2-s1-i5",
+  "id": "p1-c2-s1-rq5",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i5",
+  "url": "main-5-4-3.html#p1-c2-s1-rq5",
   "type": "Reading Question",
   "number": "2.1.5",
   "title": "<em class=\"emphasis\">In general, a “solution” to a differential equation is a <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
   "body": " In general, a solution to a differential equation is a   In general, a solution to a differential equation is a    constant   It is possible for a solution to be a constant, but not in general.     function   Yes, when you solve a differential equation, you get a function.     number   It is possible for a solution to be a number, but not in general.     limit   Sorry, no.    "
 },
 {
-  "id": "p1-c2-s1-i6",
+  "id": "p1-c2-s1-rq6",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i6",
+  "url": "main-5-4-3.html#p1-c2-s1-rq6",
   "type": "Reading Question",
   "number": "2.1.6",
   "title": "<em class=\"emphasis\">Which variable in <span class=\"process-math\">\\(\\ds \\frac{dP}{ds} + \\frac{P}{s^2} = 17s \\)<\/span> does the solution depend on?<\/em>",
   "body": " Which variable in does the solution depend on?   Which variable in does the solution depend on?    dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    independent variable,  Yes! the solution, , depends on the independent variable .    dependent variable,  Incorrect. is the solution, so it does not depend on .    independent variable,  Incorrect. The variable is not the independent variable.   "
 },
 {
-  "id": "p1-c2-s1-i7",
+  "id": "p1-c2-s1-rq7",
   "level": "2",
-  "url": "main-5-4-3.html#p1-c2-s1-i7",
+  "url": "main-5-4-3.html#p1-c2-s1-rq7",
   "type": "Reading Question",
   "number": "2.1.7",
   "title": "<em class=\"emphasis\">What is the primary goal of solving a differential equation?<\/em>",
@@ -1459,45 +1459,45 @@ var ptx_lunr_docs = [
   "body": " Verify that is a solution to .  Move terms to left:   Find since it appears in the DE.   Plug into the DE and simplify. Therefore, is a solution to . In fact, it is the general solution, but we don't show that here.    "
 },
 {
-  "id": "p1-c2-s2-i1",
+  "id": "p1-c2-s2-rq1",
   "level": "2",
-  "url": "main-5-4-4.html#p1-c2-s2-i1",
+  "url": "main-5-4-4.html#p1-c2-s2-rq1",
   "type": "Reading Question",
   "number": "2.2.1",
   "title": "<em class=\"emphasis\">Moving all terms of a differential equation to one side of the equation is a required step for verifying the solution to a differential equation.<\/em>.",
   "body": " Moving all terms of a differential equation to one side of the equation is a required step for verifying the solution to a differential equation.   Moving all terms of a differential equation to one side of the equation is a required step for verifying the solution to a differential equation.    True  Incorrect. Read the note provided in this section.     False  Correct! This is not a required step, but it can sometimes simplify the process.   "
 },
 {
-  "id": "p1-c2-s2-i2",
+  "id": "p1-c2-s2-rq2",
   "level": "2",
-  "url": "main-5-4-4.html#p1-c2-s2-i2",
+  "url": "main-5-4-4.html#p1-c2-s2-rq2",
   "type": "Reading Question",
   "number": "2.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y = x^2 + 3\\)<\/span> is a solution to <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} - 3 = 2x\\)<\/span><\/em>.",
   "body": " is a solution to  is a solution to the differential equation .   True  Incorrect.  is not a solution since      False  Correct!  is not a solution since     "
 },
 {
-  "id": "p1-c2-s2-i3",
+  "id": "p1-c2-s2-rq3",
   "level": "2",
-  "url": "main-5-4-4.html#p1-c2-s2-i3",
+  "url": "main-5-4-4.html#p1-c2-s2-rq3",
   "type": "Reading Question",
   "number": "2.2.3",
   "title": "<em class=\"emphasis\">List the steps needed to verify <span class=\"process-math\">\\(s = \\cos(3x)\\)<\/span> is a solution to <span class=\"process-math\">\\(s'' - 6s' + 9s = 0\\)<\/span><\/em>.",
   "body": " List the steps needed to verify is a solution to     Drag the step on the left to the appropriate step order on the right.    Review the examples above to see the steps in verifying a solution.    Compute  Step 1    Compute  Step 2    Plug in  Step 3    Simplify both sides  Step 4    Check for  Step 5   "
 },
 {
-  "id": "p1-c2-s2-i4",
+  "id": "p1-c2-s2-rq4",
   "level": "2",
-  "url": "main-5-4-4.html#p1-c2-s2-i4",
+  "url": "main-5-4-4.html#p1-c2-s2-rq4",
   "type": "Reading Question",
   "number": "2.2.4",
   "title": "<em class=\"emphasis\">A differential equation has one solution<\/em>.",
   "body": " A differential equation has one solution      True  Incorrect.  shows a differential equation with two solutions.     False  Correct!   "
 },
 {
-  "id": "p1-c2-s2-i5",
+  "id": "p1-c2-s2-rq5",
   "level": "2",
-  "url": "main-5-4-4.html#p1-c2-s2-i5",
+  "url": "main-5-4-4.html#p1-c2-s2-rq5",
   "type": "Reading Question",
   "number": "2.2.5",
   "title": "<em class=\"emphasis\">Consider the differential equation with missing right-hand side:<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - \\frac{4}{x}y' = \\fillinmath{XXXXX}\\text{.}\n\\end{equation*}\n<\/div>Assuming <span class=\"process-math\">\\(y = 2x^3\\)<\/span> is a solution to this equation, which of the following is a possible right-hand side?<\/em>",
@@ -1540,90 +1540,90 @@ var ptx_lunr_docs = [
   "body": "Types of Solutions     Family of Solutions  The collection of all possible solutions of a differential equation.    General Solution  The common form of all the solutions in the family. This includes arbitrary constants that can take any value.    Particular Solution  A single solution obtained by assigning specific values to the constants in the general solution.     "
 },
 {
-  "id": "p1-c2-s3-i1",
+  "id": "p1-c2-s3-rq1",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i1",
+  "url": "main-5-4-5.html#p1-c2-s3-rq1",
   "type": "Reading Question",
   "number": "2.3.1",
   "title": "<em class=\"emphasis\">A family of solutions can be viewed as the collection of all particular solutions<\/em>.",
   "body": " A family of solutions can be viewed as the collection of all particular solutions   A family of solutions can be viewed as the collection of all particular solutions    True  Correct! A family of solutions includes all possible particular solutions.    False  Incorrect. A family of solutions is a set of all possible solutions, not just one particular solution.   "
 },
 {
-  "id": "p1-c2-s3-i2",
+  "id": "p1-c2-s3-rq2",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i2",
+  "url": "main-5-4-5.html#p1-c2-s3-rq2",
   "type": "Reading Question",
   "number": "2.3.2",
   "title": "<em class=\"emphasis\">A particular solution can be viewed as a member of the family of solutions<\/em>.",
   "body": " A particular solution can be viewed as a member of the family of solutions   A particular solution can be viewed as a member of the family of solutions    True  Correct! A particular solution is one of the many solutions in the family of solutions.    False  Incorrect. A particular solution is a specific member of the family of solutions.   "
 },
 {
-  "id": "p1-c2-s3-i3",
+  "id": "p1-c2-s3-rq3",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i3",
+  "url": "main-5-4-5.html#p1-c2-s3-rq3",
   "type": "Reading Question",
   "number": "2.3.3",
   "title": "<em class=\"emphasis\">Which task is fundamentally different from the others?<\/em>",
   "body": " Which task is fundamentally different from the others?   Which task is fundamentally different from the others?    Solving a differential equation.  Incorrect. Solving a differential equation involves finding solutions.    Finding the general solution to a differential equation.  Incorrect. Finding the general solution is part of finding solutions.    Finding a family of solutions to a differential equation.  Incorrect. Finding a family of solutions is related to identifying all possible solutions.    Verifying a solution to a differential equation.  Correct! Verifying a solution checks if a proposed function satisfies the equation, rather than finding a new one.   "
 },
 {
-  "id": "p1-c2-s3-i4",
+  "id": "p1-c2-s3-rq4",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i4",
+  "url": "main-5-4-5.html#p1-c2-s3-rq4",
   "type": "Reading Question",
   "number": "2.3.4",
   "title": "<em class=\"emphasis\">What is the difference between a general solution and a particular solution?<\/em>",
   "body": " What is the difference between a general solution and a particular solution?   What is the difference between a general solution and a particular solution?    A general solution is a specific solution to a differential equation, while a particular solution is a general form of the solution.  Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.    A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.  Correct! The general solution represents all possible solutions, while a particular solution is one specific solution.    A general solution is a specific member of the family of solutions, while a particular solution is a form of the solution.  Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.    A general solution is a specific solution to a differential equation, while a particular solution is a general form of the solution.  Incorrect. A general solution is a form of the solution that includes arbitrary constants, while a particular solution is a specific member of the family of solutions.   "
 },
 {
-  "id": "p1-c2-s3-i5",
+  "id": "p1-c2-s3-rq5",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i5",
+  "url": "main-5-4-5.html#p1-c2-s3-rq5",
   "type": "Reading Question",
   "number": "2.3.5",
   "title": "<em class=\"emphasis\">Fill in the Blank<\/em>.",
   "body": " Fill in the Blank  When you find the general solution of a differential equation, you are finding the common of each particular solution.     Good Work!      Incorrect. The correct answer starts with an f     "
 },
 {
-  "id": "p1-c2-s3-i6",
+  "id": "p1-c2-s3-rq6",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i6",
+  "url": "main-5-4-5.html#p1-c2-s3-rq6",
   "type": "Reading Question",
   "number": "2.3.6",
   "title": "<em class=\"emphasis\">What role does the general solution play in solving a differential equation?<\/em>",
   "body": "What role does the general solution play in solving a differential equation?  What role does the general solution play in solving a differential equation?    It provides the exact value of the function.  Incorrect. The general solution provides a family of functions, not just one specific value.    It represents a family of functions that satisfy the differential equation.  Correct! The general solution includes all possible solutions, depending on the values of the constants.    It simplifies the differential equation.  Incorrect. While solving the equation involves simplification, the general solution represents the functions that satisfy the equation.    It eliminates the constants from the solution.  Incorrect. The general solution still includes arbitrary constants.   "
 },
 {
-  "id": "p1-c2-s3-i7",
+  "id": "p1-c2-s3-rq7",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i7",
+  "url": "main-5-4-5.html#p1-c2-s3-rq7",
   "type": "Reading Question",
   "number": "2.3.7",
   "title": "<em class=\"emphasis\">What is a family of solutions?<\/em>",
   "body": " What is a family of solutions?   What is a family of solutions?    A collection of all possible solutions to a differential equation.  Correct! The family of solutions includes every possible particular solution.    The general solution to a differential equation.  Incorrect. The general solution represents a form of the family of solutions, not the entire set.    A single specific solution to a differential equation.  Incorrect. This describes a particular solution, not the family of solutions.    A solution without any constants.  Incorrect. A solution without constants is typically a particular solution, not the entire family.   "
 },
 {
-  "id": "p1-c2-s3-i8",
+  "id": "p1-c2-s3-rq8",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i8",
+  "url": "main-5-4-5.html#p1-c2-s3-rq8",
   "type": "Reading Question",
   "number": "2.3.8",
   "title": "<em class=\"emphasis\">A general solution always includes arbitrary constants<\/em>.",
   "body": " A general solution always includes arbitrary constants   A general solution always includes arbitrary constants    True  Correct! The general solution represents the form that includes arbitrary constants.    False  Incorrect. A general solution must include arbitrary constants to represent all possible particular solutions.   "
 },
 {
-  "id": "p1-c2-s3-i9",
+  "id": "p1-c2-s3-rq9",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i9",
+  "url": "main-5-4-5.html#p1-c2-s3-rq9",
   "type": "Reading Question",
   "number": "2.3.9",
   "title": "<em class=\"emphasis\">Fill in the Blank<\/em>.",
   "body": " Fill in the Blank A solution is a single solution obtained by assigning specific values to the constants in the general solution.     Good Work!      Incorrect. The correct answer starts with a p     "
 },
 {
-  "id": "p1-c2-s3-i10",
+  "id": "p1-c2-s3-rq10",
   "level": "2",
-  "url": "main-5-4-5.html#p1-c2-s3-i10",
+  "url": "main-5-4-5.html#p1-c2-s3-rq10",
   "type": "Reading Question",
   "number": "2.3.10",
   "title": "<em class=\"emphasis\">In Example 22, we verified that <span class=\"process-math\">\\(y = Ce^{2x}\\)<\/span> was a solution to<div class=\"displaymath process-math\" data-contains-math-knowls=\".\/knowl\/xref\/verification-with-a-constant.html\">\n\\begin{equation*}\ny''' - 4y' = 0\n\\end{equation*}\n<\/div>Based on this, how many solutions must this equation have?<\/em>",
@@ -1756,54 +1756,54 @@ var ptx_lunr_docs = [
   "body": "  The family of solutions (green curves) and a particular solution (blue curve) passing through .  "
 },
 {
-  "id": "p1-c2-s5-i1",
+  "id": "p1-c2-s5-rq1",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i1",
+  "url": "main-5-4-7.html#p1-c2-s5-rq1",
   "type": "Reading Question",
   "number": "2.5.1",
   "title": "<em class=\"emphasis\">What is an initial condition?<\/em>",
   "body": " What is an initial condition?   What is an initial condition?    The starting point of the independent variable.  Incorrect. The initial condition is related to the solution or its derivatives at a specific point.    The starting value of the solution or its derivatives.  Correct! An initial condition specifies the value of the solution or its derivative at a particular point.    The final value of the solution.  Incorrect. The initial condition is at the starting point, not the end.    The point where the solution intersects the x-axis.  Incorrect. The initial condition is about the value at a specific point, not necessarily where it intersects the x-axis.   "
 },
 {
-  "id": "p1-c2-s5-i2",
+  "id": "p1-c2-s5-rq2",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i2",
+  "url": "main-5-4-7.html#p1-c2-s5-rq2",
   "type": "Reading Question",
   "number": "2.5.2",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} = 2xy - 6x\\text{,}\\)<\/span> is an initial value problem<\/em>.",
   "body": " The differential equation, , is an initial value problem   The differential equation, , is an initial value problem    True  Incorrect. An initial value problem includes specific initial conditions, which are not provided in this equation.    False  Correct! The equation is a differential equation without initial conditions, so it is not an initial value problem.   "
 },
 {
-  "id": "p1-c2-s5-i3",
+  "id": "p1-c2-s5-rq3",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i3",
+  "url": "main-5-4-7.html#p1-c2-s5-rq3",
   "type": "Reading Question",
   "number": "2.5.3",
   "title": "<em class=\"emphasis\">The solution to the initial value problem, <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} = 2xy - 6x, \\hspace{0.25cm} y(5) = -10\\text{,}\\)<\/span> is a function whose curve passes through the point <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
   "body": " The solution to the initial value problem, , is a function whose curve passes through the point   The solution to the initial value problem, , is a function whose curve passes through the point     Incorrect. The solution curve does not pass through the point (5, 0).     Correct! The solution curve passes through the point (0, 5).     Incorrect. The solution curve does not pass through the point (0, 0).     Incorrect. The solution curve does not pass through the point (2, 6).   "
 },
 {
-  "id": "p1-c2-s5-i4",
+  "id": "p1-c2-s5-rq4",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i4",
+  "url": "main-5-4-7.html#p1-c2-s5-rq4",
   "type": "Reading Question",
   "number": "2.5.4",
   "title": "<em class=\"emphasis\">In which case would you need to find a particular solution rather than just a general solution?<\/em>",
   "body": "In which case would you need to find a particular solution rather than just a general solution?  In which case would you need to find a particular solution rather than just a general solution?    When the differential equation is linear.  Incorrect. Linearity doesn't determine whether you need a particular solution.    When initial conditions are provided.  Correct! A particular solution is found when you need to satisfy initial conditions.    When the differential equation is has a general solution.  Incorrect. The existence of a general solution doesn't determine whether you need a particular solution.    When the function depends on more than one variable.  Incorrect. Multivariable functions are not the reason for finding a particular solution.   "
 },
 {
-  "id": "p1-c2-s5-i5",
+  "id": "p1-c2-s5-rq5",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i5",
+  "url": "main-5-4-7.html#p1-c2-s5-rq5",
   "type": "Reading Question",
   "number": "2.5.5",
   "title": "<em class=\"emphasis\">What role do initial conditions play in solving differential equations?<\/em>",
   "body": " What role do initial conditions play in solving differential equations?  Select all that apply.   They determine the general form of the solution.  Incorrect. Initial conditions are not used to find the general solution.    They used to determine the constants in the general solution.  Correct! Initial conditions are used to find specific values for constants in the general solution.    They are used to find the particular solution.  Correct! Initial conditions are used to find the specific solution that applies to a particular scenario.    They are not needed if the general solution is already known.  Incorrect. If provided, initial conditions are always needed to get the particular solution from the general solution.   C "
 },
 {
-  "id": "p1-c2-s5-i6",
+  "id": "p1-c2-s5-rq6",
   "level": "2",
-  "url": "main-5-4-7.html#p1-c2-s5-i6",
+  "url": "main-5-4-7.html#p1-c2-s5-rq6",
   "type": "Reading Question",
   "number": "2.5.6",
   "title": "<em class=\"emphasis\">What happens if you do not apply initial conditions to the general solution of a differential equation?<\/em>",
@@ -2098,45 +2098,45 @@ var ptx_lunr_docs = [
   "body": " Solve the initial-value problem  .   Start by isolating the derivative, , on one side of the equation Integrate both sides with respect to to leave us with on the left side   Finally, apply the initial condition to find  Thus, the solution to the differential equation is .   "
 },
 {
-  "id": "p2-c1-s1-i1",
+  "id": "p2-c1-s1-rq1",
   "level": "2",
-  "url": "main-6-3-3.html#p2-c1-s1-i1",
+  "url": "main-6-3-3.html#p2-c1-s1-rq1",
   "type": "Reading Question",
   "number": "3.1.1",
   "title": "<em class=\"emphasis\">We can solve <span class=\"process-math\">\\(\\ds \\frac{dy}{dx} = x^3 - 7\\)<\/span> for <span class=\"process-math\">\\(y\\)<\/span> by differentiating both sides with respect to <span class=\"process-math\">\\(x\\)<\/span><\/em>.",
   "body": " We can solve for by differentiating both sides with respect to    We can solve for by differentiating both sides with respect to .     True   Incorrect, we integrate both sides with respect to .     False   Correct!    "
 },
 {
-  "id": "p2-c1-s1-i2",
+  "id": "p2-c1-s1-rq2",
   "level": "2",
-  "url": "main-6-3-3.html#p2-c1-s1-i2",
+  "url": "main-6-3-3.html#p2-c1-s1-rq2",
   "type": "Reading Question",
   "number": "3.1.2",
   "title": "<em class=\"emphasis\">The equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} = \\ln(3x+1)\\)<\/span> implies that the solution, <span class=\"process-math\">\\(y\\text{,}\\)<\/span> is the antiderivative of <span class=\"process-math\">\\(\\ln(3x+1)\\)<\/span><\/em>.",
   "body": " The equation implies that the solution, , is the antiderivative of   The equation implies that the solution, , is the antiderivative of .    True   Correct, integrating both sides gives .     False   Incorrect.    "
 },
 {
-  "id": "p2-c1-s1-i3",
+  "id": "p2-c1-s1-rq3",
   "level": "2",
-  "url": "main-6-3-3.html#p2-c1-s1-i3",
+  "url": "main-6-3-3.html#p2-c1-s1-rq3",
   "type": "Reading Question",
   "number": "3.1.3",
   "title": "<em class=\"emphasis\">Combining constants is a common practice in differential equations.<\/em>.",
   "body": " Combining constants is a common practice in differential equations.   Combining constants is a common practice in differential equations.    True   Correct!     False   Incorrect, see the footnote above.    "
 },
 {
-  "id": "p2-c1-s1-i4",
+  "id": "p2-c1-s1-rq4",
   "level": "2",
-  "url": "main-6-3-3.html#p2-c1-s1-i4",
+  "url": "main-6-3-3.html#p2-c1-s1-rq4",
   "type": "Reading Question",
   "number": "3.1.4",
   "title": "<em class=\"emphasis\">What is the process to solve for <span class=\"process-math\">\\(y\\)<\/span> in the equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} = \\tan(2x)\\text{?}\\)<\/span><\/em>",
   "body": " What is the process to solve for in the equation ?   What is the process to solve for in the equation ?     Differentiating both sides with respect to .    Incorrect, we integrate both sides with respect to .      Integrating both sides with respect to .    Correct!      Integrating both sides with respect to .    Incorrect, this is not part of the process.      Multiplying both sides by .    Incorrect, this is not part of the process.    "
 },
 {
-  "id": "p2-c1-s1-i5",
+  "id": "p2-c1-s1-rq5",
   "level": "2",
-  "url": "main-6-3-3.html#p2-c1-s1-i5",
+  "url": "main-6-3-3.html#p2-c1-s1-rq5",
   "type": "Reading Question",
   "number": "3.1.5",
   "title": "<em class=\"emphasis\">How do we start solving the differential equation\t<span class=\"process-math\">\\(\\ds\\frac13 y'+ 7x + x^2 = 1\\text{?}\\)<\/span><\/em>",
@@ -2179,45 +2179,45 @@ var ptx_lunr_docs = [
   "body": " Compute the general solution of the differential equation     To solve the differential equation , we integrate both sides with respect to to get   Finally, we isolate and combine constants.    "
 },
 {
-  "id": "p2-c1-s2-i1",
+  "id": "p2-c1-s2-rq1",
   "level": "2",
-  "url": "main-6-3-4.html#p2-c1-s2-i1",
+  "url": "main-6-3-4.html#p2-c1-s2-rq1",
   "type": "Reading Question",
   "number": "3.2.1",
   "title": "<em class=\"emphasis\">Solving a differential equation by direct integration involves computing a derivative<\/em>.",
   "body": " Solving a differential equation by direct integration involves computing a derivative   Solving a differential equation by direct integration involves computing a derivative.    True   Incorrect, direct integration involves integrating both sides of the equation.     False   Correct! Direct integration involves integrating both sides of the equation.    "
 },
 {
-  "id": "p2-c1-s2-i2",
+  "id": "p2-c1-s2-rq2",
   "level": "2",
-  "url": "main-6-3-4.html#p2-c1-s2-i2",
+  "url": "main-6-3-4.html#p2-c1-s2-rq2",
   "type": "Reading Question",
   "number": "3.2.2",
   "title": "<em class=\"emphasis\">Direct integration could be used to solve the equation <span class=\"process-math\">\\(\\ds\\frac{d}{dx}\\left[y^2 + x^3\\right] = \\sqrt{x}\\)<\/span><\/em>.",
   "body": " Direct integration could be used to solve the equation   Direct integration could be used to solve the equation .    True   Correct!     False   Incorrect. This equation is in the form .    "
 },
 {
-  "id": "p2-c1-s2-i3",
+  "id": "p2-c1-s2-rq3",
   "level": "2",
-  "url": "main-6-3-4.html#p2-c1-s2-i3",
+  "url": "main-6-3-4.html#p2-c1-s2-rq3",
   "type": "Reading Question",
   "number": "3.2.3",
   "title": "<em class=\"emphasis\">Why shouldn’t direct integration be applied to <span class=\"process-math\">\\(\\ds\\frac{d}{dx}\\left[\\frac{x}{y^2}\\right] = \\sin(x+y)\\)<\/span><\/em>.",
   "body": " Why shouldn't direct integration be applied to   Why shouldn't direct integration be applied to the equation .    The equation is not linear.   Incorrect, direct integration can handle this.     The term is squared.   Incorrect, direct integration can handle this.     The term cannot be in the denominator.   Incorrect, direct integration can handle this.     The right-hand side contains .   Correct! Direct integration only works when the right-hand side contains only .    "
 },
 {
-  "id": "p2-c1-s2-i4",
+  "id": "p2-c1-s2-rq4",
   "level": "2",
-  "url": "main-6-3-4.html#p2-c1-s2-i4",
+  "url": "main-6-3-4.html#p2-c1-s2-rq4",
   "type": "Reading Question",
   "number": "3.2.4",
   "title": "<em class=\"emphasis\">In the equation <span class=\"process-math\">\\(\\ds\\frac{d}{dx}\\left[5x \\cdot y\\right] = \\frac{1}{x^2}\\text{,}\\)<\/span> what is the first step in solving for <span class=\"process-math\">\\(y\\text{?}\\)<\/span><\/em>",
   "body": " In the equation , what is the first step in solving for ?   In the differential equation , what is the first step in solving for ?    Integrate both sides with respect to .  Correct! Integrating both sides is the first step in solving for .    Differentiate both sides with respect to .  Incorrect. Differentiating would not help solve the equation; integration is the correct approach.    Factor the expression .  Incorrect. Factoring is not necessary here; integration is the correct step.    Substitute a new variable for .  Incorrect. Substitution is not needed; direct integration is the correct step.   "
 },
 {
-  "id": "p2-c1-s2-i5",
+  "id": "p2-c1-s2-rq5",
   "level": "2",
-  "url": "main-6-3-4.html#p2-c1-s2-i5",
+  "url": "main-6-3-4.html#p2-c1-s2-rq5",
   "type": "Reading Question",
   "number": "3.2.5",
   "title": "<em class=\"emphasis\">Solve <span class=\"process-math\">\\(\\ \\ds y'= e^{2x} - 5x\\ \\)<\/span> using direct integration<\/em>.",
@@ -2422,45 +2422,45 @@ var ptx_lunr_docs = [
   "body": " A first-order differential equation is separable if it can be written in the separable form :   "
 },
 {
-  "id": "p2-c2-s1-i1",
+  "id": "p2-c2-s1-rq1",
   "level": "2",
-  "url": "main-6-4-3.html#p2-c2-s1-i1",
+  "url": "main-6-4-3.html#p2-c2-s1-rq1",
   "type": "Reading Question",
   "number": "4.1.1",
   "title": "<em class=\"emphasis\">The term separable refers to the idea that the dependent and independent variables can be separated by <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
   "body": " The term separable refers to the idea that the dependent and independent variables can be separated by   The term separable refers to the idea that the dependent and independent variables can be separated by .    multiplication   Correct!     addition   Read the first sentence of this page.     integration   Read the first sentence of this page.     gender   Really?    "
 },
 {
-  "id": "p2-c2-s1-i2",
+  "id": "p2-c2-s1-rq2",
   "level": "2",
-  "url": "main-6-4-3.html#p2-c2-s1-i2",
+  "url": "main-6-4-3.html#p2-c2-s1-rq2",
   "type": "Reading Question",
   "number": "4.1.2",
   "title": "<em class=\"emphasis\">Which of the following differential equations is not separable?<\/em>",
   "body": " Which of the following differential equations is not separable?   Which of the following differential equations is not separable?      Incorrect. This equation is separable because it can be expressed as a product of functions involving only and .       Incorrect. This equation is separable as the variables are already separated by multiplication.       Correct! This equation is not separable because the terms involving and are added together, not multiplied.       Incorrect. This equation is separable because the variables are divided, which can still be separated into a product of functions.    "
 },
 {
-  "id": "p2-c2-s1-i3",
+  "id": "p2-c2-s1-rq3",
   "level": "2",
-  "url": "main-6-4-3.html#p2-c2-s1-i3",
+  "url": "main-6-4-3.html#p2-c2-s1-rq3",
   "type": "Reading Question",
   "number": "4.1.3",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds\\frac{dz}{dt} = \\cos^2 z \\text{,}\\)<\/span> is separable<\/em>.",
   "body": " The differential equation, , is separable   The differential equation, , is separable   We can show it is separable by rewriting it as   "
 },
 {
-  "id": "p2-c2-s1-i4",
+  "id": "p2-c2-s1-rq4",
   "level": "2",
-  "url": "main-6-4-3.html#p2-c2-s1-i4",
+  "url": "main-6-4-3.html#p2-c2-s1-rq4",
   "type": "Reading Question",
   "number": "4.1.4",
   "title": "<em class=\"emphasis\">How can the equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} = \\frac{y}{x+y}\\)<\/span> be rewritten in separable form?<\/em>",
   "body": " How can the equation be rewritten in separable form?   How can the equation be rewritten in separable form?      Incorrect. This rewriting does not separate the variables effectively.       Incorrect. This form still combines and terms in a way that is not separable.       Correct! This form separates the variables, making it possible to identify whether the equation is separable.     None of the above.   Correct! This equation is not separable, so it is impossible to write it in separable form.    "
 },
 {
-  "id": "p2-c2-s1-i5",
+  "id": "p2-c2-s1-rq5",
   "level": "2",
-  "url": "main-6-4-3.html#p2-c2-s1-i5",
+  "url": "main-6-4-3.html#p2-c2-s1-rq5",
   "type": "Reading Question",
   "number": "4.1.5",
   "title": "<em class=\"emphasis\">Select the Separable Differential Equations<\/em>.",
@@ -2494,45 +2494,45 @@ var ptx_lunr_docs = [
   "body": " Show the differential equations are separable by isolating the derivative first.  .   Attention to Detail   This is sort of a trick question to get you in the habit of checking the order of a differential equation. Since this DE is not first-order, it is not separable .    Isolate the Derivative First   We see that this DE is first-order, so now we need to see if it can be rearranged in separable form . Isolating we get and it should be clear that there is no way to separate and by multiplication , and therefore this DE is not separable .    Isolate, Simplify, & Factor   As before, let's isolate on the left side of the equation, like so   Now that the derivative is isolated on the left, we attempt to separate the variables on the right. Factoring out of both terms gives and we see that the differential equation is separable .  In general, there is more than one way to separate a differential equation. This example could have been separated in either of the following ways: The only thing that matters is that and are separated.   "
 },
 {
-  "id": "p2-c2-s2-i1",
+  "id": "p2-c2-s2-rq1",
   "level": "2",
-  "url": "main-6-4-4.html#p2-c2-s2-i1",
+  "url": "main-6-4-4.html#p2-c2-s2-rq1",
   "type": "Reading Question",
   "number": "4.2.1",
   "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds \\frac{dy}{dx} - x(y^2 + y) = 0\\text{,}\\)<\/span> is in separable form<\/em>.",
   "body": " The differential equation, , is in separable form    The differential equation, , is in separable form .   This equation is not currently in separable form . However, it can be put in separable form by moving the term to the right-side of the equation.  "
 },
 {
-  "id": "p2-c2-s2-i2",
+  "id": "p2-c2-s2-rq2",
   "level": "2",
-  "url": "main-6-4-4.html#p2-c2-s2-i2",
+  "url": "main-6-4-4.html#p2-c2-s2-rq2",
   "type": "Reading Question",
   "number": "4.2.2",
   "title": "<em class=\"emphasis\">Match each equation to the algebra technique needed to show the equation is separable<\/em>.",
   "body": " Match each equation to the algebra technique needed to show the equation is separable    Drag the algebra technique to the corresponding differential equation.               Isolate the derivative     Factor     No technique is needed    "
 },
 {
-  "id": "p2-c2-s2-i3",
+  "id": "p2-c2-s2-rq3",
   "level": "2",
-  "url": "main-6-4-4.html#p2-c2-s2-i3",
+  "url": "main-6-4-4.html#p2-c2-s2-rq3",
   "type": "Reading Question",
   "number": "4.2.3",
   "title": "<em class=\"emphasis\">Select the Separable Differential Equations<\/em>.",
   "body": "Select the Separable Differential Equations Click on each of the separable differential equations below.                              A differential equation is separable if you can rearrange it to express it as a product of functions involving only and separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.  "
 },
 {
-  "id": "p2-c2-s2-i4",
+  "id": "p2-c2-s2-rq4",
   "level": "2",
-  "url": "main-6-4-4.html#p2-c2-s2-i4",
+  "url": "main-6-4-4.html#p2-c2-s2-rq4",
   "type": "Reading Question",
   "number": "4.2.4",
   "title": "<em class=\"emphasis\">Write the differential equation, <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} - y\\cos(x) = y\\text{,}\\)<\/span> in separable form<\/em>.",
   "body": " Write the differential equation, , in separable form   Write the differential equation, , in separable form by identifying and .                                     Move the term to the right and factor out       "
 },
 {
-  "id": "p2-c4-s1-i5",
+  "id": "p2-c4-s1-rq5",
   "level": "2",
-  "url": "main-6-4-4.html#p2-c4-s1-i5",
+  "url": "main-6-4-4.html#p2-c4-s1-rq5",
   "type": "Reading Question",
   "number": "4.2.5",
   "title": "<em class=\"emphasis\">Write the differential equation, <span class=\"process-math\">\\(\\ds tP\\frac{dP}{dt} = e^tP^2 - e^ty\\text{,}\\)<\/span> in separable form<\/em>.",
@@ -2566,36 +2566,36 @@ var ptx_lunr_docs = [
   "body": " Find the general solution to the following differential equations using the separation of variables method.      You actually don't need separation of variables to solve for . In fact, you might recognize that finding is the same as finding the anti-derivative of , which we know is . Nevertheless, let's apply separation of variables to make sure we get the same answer.  The differential equation has order 1 and is separable since    . We use algebra to move all the terms to the left and all the terms to the right, giving    . We now integrate both sides with respect to , like so    . Finally, we isolate and combine constants.   Since is still a constant, we combine it into a single constant, , and write our solution as          The differential equation has order 1 and is separable since    . We use algebra to move all the terms to the left and all the terms to the right, giving    . We now integrate both sides with respect to , like so    . Finally, we isolate and combine constants.              .    .    .       "
 },
 {
-  "id": "p2-c2-s3-i1",
+  "id": "p2-c2-s3-rq1",
   "level": "2",
-  "url": "main-6-4-5.html#p2-c2-s3-i1",
+  "url": "main-6-4-5.html#p2-c2-s3-rq1",
   "type": "Reading Question",
   "number": "4.3.1",
   "title": "<em class=\"emphasis\">Why is it important to verify if a differential equation is separable?<\/em>",
   "body": " Why is it important to verify if a differential equation is separable?   Why is it important to verify if a differential equation is separable?    Separable equations are easier to solve.  Incorrect. While separable equations can be easier to solve, the main reason to verify separability is to ensure that the separation of variables method can be applied.    It helps to identify the order of the differential equation.  Incorrect. Verifying separability does not necessarily relate to identifying the order of the differential equation.    It simplifies the differential equation.  Incorrect. Verifying separability does not simplify the equation itself but confirms if the equation can be solved by separation of variables.    Not all differential equations are separable, and this method only works on separable equations.  Correct! The separation of variables method is only applicable to separable differential equations, making it important to verify separability first.   "
 },
 {
-  "id": "p2-c2-s3-i2",
+  "id": "p2-c2-s3-rq2",
   "level": "2",
-  "url": "main-6-4-5.html#p2-c2-s3-i2",
+  "url": "main-6-4-5.html#p2-c2-s3-rq2",
   "type": "Reading Question",
   "number": "4.3.2",
   "title": "<em class=\"emphasis\">What are the two key requirements for using the separation of variables method?<\/em>",
   "body": " What are the two key requirements for using the separation of variables method?   What are the two key requirements for using the separation of variables method?    The differential equation must be linear and separable.  Incorrect. Separable is required, but the equation does not need to be linear.    The differential equation must be first-order and linear.  Incorrect. First-order is required, but the equation does not need to be linear for the separation of variables method to be applied.    The differential equation must be second-order and separable.  Incorrect. Separable is required, but the equation cannot be second-order for the separation of variables method to be applied.    The differential equation must be first-order and separable.  Correct! The separation of variables method applies only to first-order differential equations thatare separable.   "
 },
 {
-  "id": "p2-c2-s3-i6",
+  "id": "p2-c2-s3-rq6",
   "level": "2",
-  "url": "main-6-4-5.html#p2-c2-s3-i6",
+  "url": "main-6-4-5.html#p2-c2-s3-rq6",
   "type": "Reading Question",
   "number": "4.3.3",
   "title": "<em class=\"emphasis\">In the differential equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} + \\frac{x}{y^2} = 0\\text{,}\\)<\/span> which step is crucial for verifying that it is separable?<\/em>",
   "body": " In the differential equation , which step is crucial for verifying that it is separable?   In the differential equation , which step is crucial for verifying that it is separable?    Integrating both sides immediately.  Incorrect. Integration should come after the equation is verified to be separable.    Substituting a value for .  Incorrect. Substitution is not part of the separation process; the goal is to separate the variables first.    Expanding the terms on both sides.  Incorrect. Expansion is not necessary here; the focus should be on separating the variables.    Rearranging the equation to isolate and separate the variables.  Correct! Rearranging the equation is key to verifying that it can be separated into functions of and .   "
 },
 {
-  "id": "p2-c2-s3-i8",
+  "id": "p2-c2-s3-rq8",
   "level": "2",
-  "url": "main-6-4-5.html#p2-c2-s3-i8",
+  "url": "main-6-4-5.html#p2-c2-s3-rq8",
   "type": "Reading Question",
   "number": "4.3.4",
   "title": "Separation of Variables Method Steps.",
@@ -2656,27 +2656,27 @@ var ptx_lunr_docs = [
   "body": " Solve the differential equation using the SOV method.     This differential equation is first order and separable since Therefore, we can apply the separation of variables method.      .   Finally, the general solution is    "
 },
 {
-  "id": "p2-c2-s4-i1",
+  "id": "p2-c2-s4-rq1",
   "level": "2",
-  "url": "main-6-4-6.html#p2-c2-s4-i1",
+  "url": "main-6-4-6.html#p2-c2-s4-rq1",
   "type": "Reading Question",
   "number": "4.4.1",
   "title": "<em class=\"emphasis\">What is the first step to solve <span class=\"process-math\">\\(y^2 y' - 1 = 6x^2\\text{,}\\)<\/span> using the separation of variables method?<\/em>",
   "body": " What is the first step to solve , using the separation of variables method?   In the equation , what is the first step to solve it using the separation of variables method?    Integrate both sides.  Incorrect. You need to separate the variables before integrating.    Isolate , if possible.  Incorrect. You should first separate the variables.    Divide both sides by  Incorrect. You should first separate the variables.    Show it is separable.  Correct! This rearrangement allows us to apply separation of variables.   "
 },
 {
-  "id": "p2-c2-s4-i2",
+  "id": "p2-c2-s4-rq2",
   "level": "2",
-  "url": "main-6-4-6.html#p2-c2-s4-i2",
+  "url": "main-6-4-6.html#p2-c2-s4-rq2",
   "type": "Reading Question",
   "number": "4.4.2",
   "title": "<em class=\"emphasis\">Which of the following are valid ways to combine constants in a differential equation?<\/em>",
   "body": " Which of the following are valid ways to combine constants in a differential equation?   Which of the following are valid ways to combine constants in a differential equation? Select ALL that apply.      where    Correct!      where    Correct!      where    Incorrect.      where    Incorrect.      where    Correct!   "
 },
 {
-  "id": "p2-c2-s4-i3",
+  "id": "p2-c2-s4-rq3",
   "level": "2",
-  "url": "main-6-4-6.html#p2-c2-s4-i3",
+  "url": "main-6-4-6.html#p2-c2-s4-rq3",
   "type": "Reading Question",
   "number": "4.4.3",
   "title": "<em class=\"emphasis\">Solve <span class=\"process-math\">\\(\\ \\ds \\frac{dy}{dx} - y\\cos(x) = y\\ \\)<\/span> using separation of variables<\/em>.",
@@ -3124,54 +3124,54 @@ var ptx_lunr_docs = [
   "body": " Rewrite the left side of the equation in the form .  .   As before, noticing and in different terms of immediately tells us that the left side can be rewritten as and the observation that gives us the other term. Therefore, the differential equation can be rewritten as .  Do you see that direct integration can be used here to solve the differential equation?   "
 },
 {
-  "id": "p2-c3-s1-i1",
+  "id": "p2-c3-s1-rq1",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i1",
+  "url": "main-6-5-3.html#p2-c3-s1-rq1",
   "type": "Reading Question",
   "number": "5.1.1",
   "title": "<em class=\"emphasis\">Fill-in the missing parts of each product rule<\/em>.",
   "body": " Fill-in the missing parts of each product rule   Fill in the missing parts of each product rule below.                             Correct!    Incorrect, try again.      Correct!    Incorrect, try again.      Correct!    Incorrect, expecting to see the independent variable .    Incorrect, use the natural log instead.    Incorrect, try again.      Correct!    Incorrect, don't forget the chain rule.      Correct!    Put in the other blank!    The variable should be a capitol .    Incorrect, try again.      Correct!    Put in the other blank!    Incorrect, try again.    "
 },
 {
-  "id": "p2-c3-s1-i2",
+  "id": "p2-c3-s1-rq2",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i2",
+  "url": "main-6-5-3.html#p2-c3-s1-rq2",
   "type": "Reading Question",
   "number": "5.1.2",
   "title": "<em class=\"emphasis\">What is the main purpose of the product rule in the integrating factor method?<\/em>",
   "body": "What is the main purpose of the product rule in the integrating factor method?  What is the main purpose of the product rule in the integrating factor method?    To simplify a differential equation.   Incorrect. Simplification is a result, but the main purpose is to rewrite the equation as the derivative of a product.     To rewrite the differential equation so that one side of the equation is the derivative of a product.   Correct! The product rule is used to express the differential equation in a form suitable for direct integration.     To find the derivative of the solution.   Incorrect. The product rule helps us manipulate the equation into a solvable form, not to find the derivative of the solution.     To eliminate constants from the equation.   Incorrect. The product rule does not eliminate constants; it helps combine terms involving the dependent and independent variables.    "
 },
 {
-  "id": "p2-c3-s1-i3",
+  "id": "p2-c3-s1-rq3",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i3",
+  "url": "main-6-5-3.html#p2-c3-s1-rq3",
   "type": "Reading Question",
   "number": "5.1.3",
   "title": "<em class=\"emphasis\">Which version of the product rule is used in the integrating factor method?<\/em>",
   "body": "Which version of the product rule is used in the integrating factor method?  Which version of the product rule is used in the integrating factor method?    The forward version.   Incorrect. The forward version computes the derivative of a product, but the backward version is used to reverse this process.     The backward version.   Correct! The backward version is used to combine terms and express the equation as the derivative of a product.     Neither version is used.   Incorrect. The product rule is essential in the integrating factor method.     Both versions are equally used.   Incorrect. While both directions are important, the integrating factor method specifically uses the backward version.    "
 },
 {
-  "id": "p2-c3-s1-i4",
+  "id": "p2-c3-s1-rq4",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i4",
+  "url": "main-6-5-3.html#p2-c3-s1-rq4",
   "type": "Reading Question",
   "number": "5.1.4",
   "title": "<em class=\"emphasis\">How does the product rule help solve the equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dx} \\cdot e^{5x^2} + 10x e^{5x^2} \\cdot y = 3x\\text{?}\\)<\/span><\/em>",
   "body": "How does the product rule help solve the equation ?  How does the product rule help solve the equation ?    It eliminates the dependent variable, .   Incorrect. The product rule does not eliminate , but rather combines terms involving and .     It rewrites the left side of the equation as .   Correct! The product rule helps combine terms so that the equation can be rewritten as a derivative of a product, which can then be integrated.     It changes the equation to .   Incorrect. The product rule does not solve for directly; it helps rewrite the equation in a form suitable for solving.     It differentiates both sides of the equation.   Incorrect. The product rule is used in reverse here to combine terms, not to take derivatives.    "
 },
 {
-  "id": "p2-c3-s1-i5",
+  "id": "p2-c3-s1-rq5",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i5",
+  "url": "main-6-5-3.html#p2-c3-s1-rq5",
   "type": "Reading Question",
   "number": "5.1.5",
   "title": "<em class=\"emphasis\">Which expression can be rewritten as <span class=\"process-math\">\\(\\ds [\\mu e^{P(x)}]'\\)<\/span> using the product rule?<\/em>",
   "body": "Which expression can be rewritten as using the product rule?  Which expression can be rewritten as using the product rule?        Correct! Using the product rule, expands to .         Incorrect. The second term should include the derivative of , not just .         Incorrect. This does not account for the derivative of , which is needed for the correct application of the product rule.         Incorrect. The exponent of should be in both terms, not in the second term.    "
 },
 {
-  "id": "p2-c3-s1-i6",
+  "id": "p2-c3-s1-rq6",
   "level": "2",
-  "url": "main-6-5-3.html#p2-c3-s1-i6",
+  "url": "main-6-5-3.html#p2-c3-s1-rq6",
   "type": "Reading Question",
   "number": "5.1.6",
   "title": "<em class=\"emphasis\">How can <span class=\"process-math\">\\(\\ \\ds\\frac{dQ}{dz}\\ln z + \\frac{Q}{z}\\ \\)<\/span> be rewritten using the backward product rule?<\/em>",
@@ -3196,45 +3196,45 @@ var ptx_lunr_docs = [
   "body": "The Integrating Factor   The integrating factor for the first-order linear differential equation is . Multiplying both sides by transforms the equation into: .   Derivation of the Integrating Factor  Note, all first-order linear differential equations can be written in the form , where and are functions of . The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, , that we still need to find. We find by multiplying it onto , like so           "
 },
 {
-  "id": "p2-c3-s2-i1",
+  "id": "p2-c3-s2-rq1",
   "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i1",
+  "url": "main-6-5-4.html#p2-c3-s2-rq1",
   "type": "Reading Question",
   "number": "5.2.1",
   "title": "<em class=\"emphasis\">What is the main purpose of an integrating factor?<\/em>",
   "body": " What is the main purpose of an integrating factor?   What is the main purpose of an integrating factor in solving first-order linear differential equations?    To transform the equation into one that can be solved using the backward product rule.   Correct! The integrating factor allows us to manipulate the equation so that it becomes a perfect derivative, which can then be integrated directly.     To simplify the coefficients of the equation.   Not quite. While the integrating factor simplifies the process, its primary goal is to enable the use of the backward product rule, not to simplify the coefficients directly.     To eliminate the constant term from the differential equation.   Incorrect. The integrating factor is used to transform the equation into a solvable form, not to remove constant terms.     To reduce the equation to a second-order differential equation.   Incorrect. The integrating factor helps solve first-order differential equations, not reduce them to second-order equations.    "
 },
 {
-  "id": "p2-c3-s2-i2",
+  "id": "p2-c3-s2-rq2",
   "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i2",
+  "url": "main-6-5-4.html#p2-c3-s2-rq2",
   "type": "Reading Question",
   "number": "5.2.2",
   "title": "<em class=\"emphasis\">Which of the following is the differential equation for the integrating factor <span class=\"process-math\">\\(\\mu\\text{?}\\)<\/span><\/em>",
   "body": " Which of the following is the differential equation for the integrating factor ?   Which differential equation do you solve to find the integrating factor, , for the first-order linear equation ?        Incorrect. Try again.         Correct!         Incorrect. Try again.         Incorrect. Try again.    "
 },
 {
-  "id": "p2-c3-s2-i3",
+  "id": "p2-c3-s2-rq3",
   "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i3",
+  "url": "main-6-5-4.html#p2-c3-s2-rq3",
   "type": "Reading Question",
   "number": "5.2.3",
   "title": "<em class=\"emphasis\">What form does the first-order linear differential equation take after multiplying by the integrating factor?<\/em>",
   "body": " What form does the first-order linear differential equation take after multiplying by the integrating factor?   After multiplying both sides of a first-order linear differential equation by the integrating factor, the equation takes the form:        Correct! Multiplying by the integrating factor transforms the equation into this form.         Incorrect. The correct form is .         Incorrect. This is the form of the original equation before multiplying by the integrating factor.         Incorrect. This form does not represent the transformed equation after multiplying by the integrating factor.    "
 },
 {
-  "id": "p2-c3-s2-i4",
+  "id": "p2-c3-s2-rq4",
   "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i4",
+  "url": "main-6-5-4.html#p2-c3-s2-rq4",
   "type": "Reading Question",
   "number": "5.2.4",
   "title": "<em class=\"emphasis\">What is the integrating factor for the equation <span class=\"process-math\">\\(y' + 3y = e^x\\text{?}\\)<\/span><\/em>",
   "body": " What is the integrating factor for the equation ?   Find the integrating factor for the equation .        Incorrect. This is not the correct expression for the integrating factor.         Correct! The integrating factor is .         Incorrect. The correct integrating factor should involve the integral of the coefficient of , which is , not .         Incorrect. This is not the correct form for the integrating factor.    "
 },
 {
-  "id": "p2-c3-s2-i5",
+  "id": "p2-c3-s2-rq5",
   "level": "2",
-  "url": "main-6-5-4.html#p2-c3-s2-i5",
+  "url": "main-6-5-4.html#p2-c3-s2-rq5",
   "type": "Reading Question",
   "number": "5.2.5",
   "title": "<em class=\"emphasis\">If we solve a differential equation to find the integrating factor, then why doesn’t it contain an integration constant?<\/em>",
@@ -3286,63 +3286,63 @@ var ptx_lunr_docs = [
   "body": " Find the general solution to the differential equation     Since the equation is first order and linear, we can apply the integrating factor method. Here are the steps to solve for .   .    .  Note: Since we only need one integrating factor, we ignore absolute value you would normally get from integrating .    .    .    "
 },
 {
-  "id": "p2-c3-s3-i1",
+  "id": "p2-c3-s3-rq1",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i1",
+  "url": "main-6-5-5.html#p2-c3-s3-rq1",
   "type": "Reading Question",
   "number": "5.3.1",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(y'+2y=3x\\)<\/span> can be solved using integrating factor<\/em>.",
   "body": " The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is first order and linear, so it can be solved using integrating factor.   Check to see that the differential equation is first order and linear.  "
 },
 {
-  "id": "p2-c3-s3-i2",
+  "id": "p2-c3-s3-rq2",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i2",
+  "url": "main-6-5-5.html#p2-c3-s3-rq2",
   "type": "Reading Question",
   "number": "5.3.2",
   "title": "<em class=\"emphasis\">Why is it important to put the differential equation in standard form before using the integrating factor method?<\/em>",
   "body": " Why is it important to put the differential equation in standard form before using the integrating factor method?    Why is it important to put the differential equation in standard form before using the integrating factor method?      It allows us to easily identify the coefficient of and compute the integrating factor.   Correct! The standard form highlights , which is needed to calculate the integrating factor.     It makes it easier to find the general solution directly without using integration.   Incorrect. The standard form doesn't eliminate the need for integration; it helps set up the equation for the integrating factor method.     It ensures the differential equation has a unique solution.   Incorrect. Putting the equation in standard form does not guarantee uniqueness; that depends on initial conditions.     It reduces the degree of the differential equation, making it easier to solve.   Incorrect. The standard form doesn't reduce the degree of the equation but helps organize terms for applying the integrating factor.   "
 },
 {
-  "id": "p2-c3-s3-i3",
+  "id": "p2-c3-s3-rq3",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i3",
+  "url": "main-6-5-5.html#p2-c3-s3-rq3",
   "type": "Reading Question",
   "number": "5.3.3",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(y''+3xy=e^{5x}\\)<\/span> can be solved using integrating factor<\/em>.",
   "body": " The differential equation can be solved using integrating factor    The differential equation can be solved using integrating factor.    This differential equation is linear but not first order, so it cannot be solved using integrating factor.   Check to see that the differential equation is first order and linear.  "
 },
 {
-  "id": "p2-c3-s3-i4",
+  "id": "p2-c3-s3-rq4",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i4",
+  "url": "main-6-5-5.html#p2-c3-s3-rq4",
   "type": "Reading Question",
   "number": "5.3.4",
   "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(xy'+2xy=x^2\\)<\/span> is in standard form for the integrating factor method<\/em>.",
   "body": " The differential equation is in standard form for the integrating factor method    The differential equation is in standard form for the integrating factor method.    This differential equation is not in the form .   Check to see that the differential equation is in the form .  "
 },
 {
-  "id": "p2-c3-s3-i5",
+  "id": "p2-c3-s3-rq5",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i5",
+  "url": "main-6-5-5.html#p2-c3-s3-rq5",
   "type": "Reading Question",
   "number": "5.3.5",
   "title": "<em class=\"emphasis\">Determine the integrating factor for the differential equation <span class=\"process-math\">\\(\\ds y'=\\frac{y}{x}+2x+1\\)<\/span><\/em>.",
   "body": " Determine the integrating factor for the differential equation    Determine the integrating factor for the differential equation .       The integrating factor is .       TThe integrating factor is .       TThe integrating factor is .     Write the differential equation in the form and compute .  "
 },
 {
-  "id": "p2-c3-s3-i6",
+  "id": "p2-c3-s3-rq6",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i6",
+  "url": "main-6-5-5.html#p2-c3-s3-rq6",
   "type": "Reading Question",
   "number": "5.3.6",
   "title": "<em class=\"emphasis\">Why do we need to compute the integrating factor?<\/em>",
   "body": " Why do we need to compute the integrating factor?   Why is it necessary to compute the integrating factor when using the integrating factor method?     It allows us to rewrite the left-hand side of the differential equation as a single derivative.   Correct! The integrating factor simplifies the equation into a form where direct integration can be applied.     It eliminates the need for initial conditions in the equation.   Incorrect. The integrating factor does not eliminate the need for initial conditions; it helps simplify the equation.     It ensures the equation has a unique solution.   Incorrect. The integrating factor doesn't guarantee uniqueness; initial conditions determine uniqueness.     It changes the equation into a second-order differential equation.   Incorrect. The integrating factor keeps the equation as a first-order differential equation.   "
 },
 {
-  "id": "p2-c3-s3-i7",
+  "id": "p2-c3-s3-rq7",
   "level": "2",
-  "url": "main-6-5-5.html#p2-c3-s3-i7",
+  "url": "main-6-5-5.html#p2-c3-s3-rq7",
   "type": "Reading Question",
   "number": "5.3.7",
   "title": "<em class=\"emphasis\">What is the final step in solving a differential equation using the integrating factor method?<\/em>",
@@ -3385,45 +3385,45 @@ var ptx_lunr_docs = [
   "body": " Solve the initial value problem.  .   Before applying the integration factor method, we note that the equation is first order and linear.   .    .    .    .   Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.    "
 },
 {
-  "id": "p2-c3-s4-i1",
+  "id": "p2-c3-s4-rq1",
   "level": "2",
-  "url": "main-6-5-6.html#p2-c3-s4-i1",
+  "url": "main-6-5-6.html#p2-c3-s4-rq1",
   "type": "Reading Question",
   "number": "5.4.1",
   "title": "<em class=\"emphasis\">Which of the following steps comes first when solving a differential equation using the integration factor method?<\/em>",
   "body": "Which of the following steps comes first when solving a differential equation using the integration factor method?  Which of the following steps comes first when solving a differential equation using the integration factor method?    Identify the integrating factor.   Correct! The first step is always to identify the integrating factor based on the equation's form.     Multiply both sides by the integrating factor.   Incorrect. You need to identify the integrating factor before multiplying it by both sides of the equation.     Integrate both sides.   Incorrect. Integration occurs later in the process after manipulating the equation using the integrating factor.     Find the constant of integration using initial conditions.   Incorrect. This step comes after solving the equation using the integrating factor.    "
 },
 {
-  "id": "p2-c3-s4-i2",
+  "id": "p2-c3-s4-rq2",
   "level": "2",
-  "url": "main-6-5-6.html#p2-c3-s4-i2",
+  "url": "main-6-5-6.html#p2-c3-s4-rq2",
   "type": "Reading Question",
   "number": "5.4.2",
   "title": "<em class=\"emphasis\">After determining the integration factor, what is the next step in the process?<\/em>",
   "body": "After determining the integration factor, what is the next step in the process?  After determining the integration factor, what is the next step in the process?    The original equation is multiplied by the integrating factor.   Incorrect. You should apply the integrating factor to the equation after transforming it into the standard form.     The standard form of the equation is multiplied by the integrating factor.   Correct! Once the equation is in the standard form, you multiply both sides by the integrating factor.     Apply direct integration to solve the equation.   Incorrect. Direct integration is the final step, after applying the integrating factor.     The reverse product rule is used to rewrite the equation.   Incorrect. The reverse product rule is not part of this process. Use the integrating factor first.    "
 },
 {
-  "id": "p2-c3-s4-i3",
+  "id": "p2-c3-s4-rq3",
   "level": "2",
-  "url": "main-6-5-6.html#p2-c3-s4-i3",
+  "url": "main-6-5-6.html#p2-c3-s4-rq3",
   "type": "Reading Question",
   "number": "5.4.3",
   "title": "<em class=\"emphasis\">In solving the equation <span class=\"process-math\">\\(\\ds y' + P(x)y = Q(x)\\text{,}\\)<\/span> what form does the general solution take after direct integration?<\/em>",
   "body": "In solving the equation , what form does the general solution take after direct integration?  In solving the equation , what form does the general solution take after direct integration?    .   Incorrect. This is not the correct form. You need to account for the integrating factor as well.     .   Correct! This is the general solution after applying the integrating factor and performing direct integration.     .   Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.     .   Incorrect. This form does not represent the general solution to this type of equation.    "
 },
 {
-  "id": "p2-c3-s4-i4",
+  "id": "p2-c3-s4-rq4",
   "level": "2",
-  "url": "main-6-5-6.html#p2-c3-s4-i4",
+  "url": "main-6-5-6.html#p2-c3-s4-rq4",
   "type": "Reading Question",
   "number": "5.4.4",
   "title": "<em class=\"emphasis\">What is the purpose of the integrating factor in the first-order linear differential equation <span class=\"process-math\">\\(\\ds x^2 y' - y = 1\\text{?}\\)<\/span><\/em>",
   "body": "What is the purpose of the integrating factor in the first-order linear differential equation ?  What is the purpose of the integrating factor in the first-order linear differential equation ?    To simplify the differential equation into a separable form.   Incorrect. The integrating factor is not used to separate variables in this case.     To eliminate the non-linear terms in the equation.   Incorrect. This equation is already linear, and the integrating factor does not eliminate non-linear terms.     To transform the equation into a direct integration problem.   Correct! The integrating factor transforms the equation into a form that allows for direct integration.     To find the value of the constant of integration.   Incorrect. The constant of integration is found after the equation is solved, not by using the integrating factor.    "
 },
 {
-  "id": "p2-c3-s4-i5",
+  "id": "p2-c3-s4-rq5",
   "level": "2",
-  "url": "main-6-5-6.html#p2-c3-s4-i5",
+  "url": "main-6-5-6.html#p2-c3-s4-rq5",
   "type": "Reading Question",
   "number": "5.4.5",
   "title": "<em class=\"emphasis\">What technique is used to evaluate the integral <span class=\"process-math\">\\(\\ds \\int t^3 \\ln t \\, dt\\text{?}\\)<\/span><\/em>",
@@ -3646,45 +3646,45 @@ var ptx_lunr_docs = [
   "body": " Determine which of the following equations have constant coefficients.     Check if each coefficient is constant:   . The second equation has constant coefficients, while the others do not.   "
 },
 {
-  "id": "p3-c1-s1-i1",
+  "id": "p3-c1-s1-rq1",
   "level": "2",
-  "url": "main-7-3-3.html#p3-c1-s1-i1",
+  "url": "main-7-3-3.html#p3-c1-s1-rq1",
   "type": "Reading Question",
   "number": "6.1.1",
   "title": "<em class=\"emphasis\">Select all the true statements below<\/em>.",
   "body": " Select all the true statements below  Select all the true statements below.    An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      If an equation contains non-linear terms like \\( y^2 \\), it can still be classified as LHCC.    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like \\( y^2 \\).      The equation \\( y' + 3y = 0 \\) is both linear and homogeneous.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a constant term that is not zero.    Correct! If the constant term is not zero, the equation is non-homogeneous.    "
 },
 {
-  "id": "p3-c1-s1-i2",
+  "id": "p3-c1-s1-rq2",
   "level": "2",
-  "url": "main-7-3-3.html#p3-c1-s1-i2",
+  "url": "main-7-3-3.html#p3-c1-s1-rq2",
   "type": "Reading Question",
   "number": "6.1.2",
   "title": "<em class=\"emphasis\">Fill in the Blank: Classifying a DE<\/em>.",
   "body": " Fill in the Blank: Classifying a DE   The differential equation is classified as a _______ homogeneous differential equation with _______ coefficients.     linear, constant    Correct! The equation is linear (because there are no powers or products of the dependent variable and its derivatives) and has constant coefficients.      non-linear, constant    Incorrect. Try again.      linear, variable    Incorrect. Try again.      non-linear, variable    Incorrect. Try again.    "
 },
 {
-  "id": "p3-c1-s1-i3",
+  "id": "p3-c1-s1-rq3",
   "level": "2",
-  "url": "main-7-3-3.html#p3-c1-s1-i3",
+  "url": "main-7-3-3.html#p3-c1-s1-rq3",
   "type": "Reading Question",
   "number": "6.1.3",
   "title": "<em class=\"emphasis\">Identifying a Homogeneous Equation<\/em>.",
   "body": " Identifying a Homogeneous Equation  Which of the following equations is homogeneous?   \\( y'' + 4y^2 + 3 = 0 \\)   Incorrect. This equation has a non-linear term (\\(y^2\\)), so it is not linear.     \\( y'' + 4y' + 3y = 7 \\)   Incorrect. The equation has a non-zero constant term, making it non-homogeneous.     \\( y' + 2y = x^2 \\)   Incorrect. The right-hand side has a non-zero function of \\(x\\), so this is non-homogeneous.     \\( y'' + 4y' + 3y = 0 \\)   Correct! This equation has no constant term and is homogeneous.    "
 },
 {
-  "id": "p3-c1-s1-i4",
+  "id": "p3-c1-s1-rq4",
   "level": "2",
-  "url": "main-7-3-3.html#p3-c1-s1-i4",
+  "url": "main-7-3-3.html#p3-c1-s1-rq4",
   "type": "Reading Question",
   "number": "6.1.4",
   "title": "<em class=\"emphasis\">Match the Label to the DE<\/em>.",
   "body": " Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.     CC     LH, order 1     LHCC     LH, order 2     LCC     L    "
 },
 {
-  "id": "p3-c1-s1-i5",
+  "id": "p3-c1-s1-rq5",
   "level": "2",
-  "url": "main-7-3-3.html#p3-c1-s1-i5",
+  "url": "main-7-3-3.html#p3-c1-s1-rq5",
   "type": "Reading Question",
   "number": "6.1.5",
   "title": "<em class=\"emphasis\">Select the LHCC Equations<\/em>.",
@@ -3697,48 +3697,48 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.2",
   "title": "Solutions",
-  "body": "Solutions  Before diving into how to solve LHCC equations , let's develop some intuition about what the solutions should look like. We begin with the simple first-order LHCC equation, and note that this equation requires to sum to zero. Recall from algebra that only like terms can combine to simplify to zero. So, for the equation to hold, and must be like terms.  Let's test a few guesses for : , , and .             As you can see, only produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.   Consider the LHCC equation:  Verify that is a solution, but and are not.   Let's check each function:             Of these three, only is a solution.    This example further supports the claim that exponential functions, like , are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if is a solution then, in some cases, it is possible for to be a solution as well.  We conclude this section with an important concept that will guide us in the sections to follow. Terms of the Solution to an LHCC Equation  The general solution to an LHCC equation involves terms of the form: where is a constant.    Check your Understanding   is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.    and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.    The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.    Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.     "
+  "body": "Solutions  Before diving into how to solve LHCC equations , let's develop some intuition about what the solutions should look like. For this discussion we will assume that the equations contain a term. If they didn't, then you could repeatedly integrate both sides of the equation until you are left with a term and a nonhomogeneous equation. For example, the following shows how an LHCC equation with no term can be reduced to a nonhomogeneous equation with a term. .   We begin with the simple first-order LHCC equation, and note that this equation requires to sum to zero. Recall from algebra that only like terms can combine to simplify to zero. So, for the equation to hold, and must be like terms.  Let's test a few guesses for : , , and .             As you can see, only produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.   Consider the LHCC equation:  Verify that is a solution, but is not.   Let's check each function:          Therefore, only is a solution.    This example further supports the claim that exponential functions, like , are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if is a solution then, in some cases, it is possible for to be a solution as well.  We conclude this section with an important concept that will guide us in the sections to follow. Terms of the Solution to an LHCC Equation  The general solution to an LHCC equation involves terms of the form: where is a constant. Note, if is complex, then , and by Euler's formula , . In this case, it is common to see a solution written with sine and cosine terms.     Check your Understanding   is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.    and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.    The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.    Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.     "
 },
 {
-  "id": "main-7-3-4-6",
+  "id": "main-7-3-4-7",
   "level": "2",
-  "url": "main-7-3-4.html#main-7-3-4-6",
+  "url": "main-7-3-4.html#main-7-3-4-7",
   "type": "Example",
   "number": "4",
   "title": "",
-  "body": " Consider the LHCC equation:  Verify that is a solution, but and are not.   Let's check each function:             Of these three, only is a solution.   "
+  "body": " Consider the LHCC equation:  Verify that is a solution, but is not.   Let's check each function:          Therefore, only is a solution.   "
 },
 {
-  "id": "p3-c1-s2-i1",
+  "id": "p3-c1-s2-rq1",
   "level": "2",
-  "url": "main-7-3-4.html#p3-c1-s2-i1",
+  "url": "main-7-3-4.html#p3-c1-s2-rq1",
   "type": "Reading Question",
   "number": "6.2.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{rx} \\)<\/span> is the only function whose derivative is a multiple of itself<\/em>.",
   "body": " is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.  "
 },
 {
-  "id": "p3-c1-s2-i2",
+  "id": "p3-c1-s2-rq2",
   "level": "2",
-  "url": "main-7-3-4.html#p3-c1-s2-i2",
+  "url": "main-7-3-4.html#p3-c1-s2-rq2",
   "type": "Reading Question",
   "number": "6.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{rx} \\)<\/span> and its derivatives are \"like terms\" that can be combined<\/em>.",
   "body": " and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.  "
 },
 {
-  "id": "p3-c1-s2-i3",
+  "id": "p3-c1-s2-rq3",
   "level": "2",
-  "url": "main-7-3-4.html#p3-c1-s2-i3",
+  "url": "main-7-3-4.html#p3-c1-s2-rq3",
   "type": "Reading Question",
   "number": "6.2.3",
   "title": "<em class=\"emphasis\">The hundredth derivative of <span class=\"process-math\">\\(e^{7x} \\)<\/span> is equal to a constant times <span class=\"process-math\">\\(e^{7x} \\)<\/span><\/em>.",
   "body": " The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.  "
 },
 {
-  "id": "p3-c1-s2-i4",
+  "id": "p3-c1-s2-rq4",
   "level": "2",
-  "url": "main-7-3-4.html#p3-c1-s2-i4",
+  "url": "main-7-3-4.html#p3-c1-s2-rq4",
   "type": "Reading Question",
   "number": "6.2.4",
   "title": "<em class=\"emphasis\">Without solving it, which function satisfies the property <span class=\"process-math\">\\(y' = -2y \\text{?}\\)<\/span><\/em>",
@@ -3772,45 +3772,45 @@ var ptx_lunr_docs = [
   "body": " Find the general solution for each LHCC equation.     First, rewrite the equations in standard form:   Now solve the characteristic equations:   Thus, the general solutions are:    "
 },
 {
-  "id": "p3-c1-s3-i1",
+  "id": "p3-c1-s3-rq1",
   "level": "2",
-  "url": "main-7-3-5.html#p3-c1-s3-i1",
+  "url": "main-7-3-5.html#p3-c1-s3-rq1",
   "type": "Reading Question",
   "number": "6.3.1",
   "title": "<em class=\"emphasis\">Characteristic equation for first-order LHCC<\/em>.",
   "body": " Characteristic equation for first-order LHCC  What is the characteristic equation for ?    Correct! The characteristic equation is .     Incorrect. Check the sign of the coefficient of .     Incorrect. The characteristic equation for a first-order LHCC is linear, not quadratic.     Incorrect. Make sure to use the correct coefficients from the original equation.   "
 },
 {
-  "id": "p3-c1-s3-i2",
+  "id": "p3-c1-s3-rq2",
   "level": "2",
-  "url": "main-7-3-5.html#p3-c1-s3-i2",
+  "url": "main-7-3-5.html#p3-c1-s3-rq2",
   "type": "Reading Question",
   "number": "6.3.2",
   "title": "<em class=\"emphasis\">Select the characteristic equation<\/em>.",
   "body": " Select the characteristic equation  Select the characteristic equation for the first-order LHCC equation ?    Incorrect. Remember, the characteristic equation should be formed by setting the equation to zero.     Correct! The characteristic equation is found by substituting into the differential equation.     Incorrect. Check the signs of the coefficients.     Incorrect. Ensure you have used the correct coefficients from the original equation.   "
 },
 {
-  "id": "p3-c1-s3-i3",
+  "id": "p3-c1-s3-rq3",
   "level": "2",
-  "url": "main-7-3-5.html#p3-c1-s3-i3",
+  "url": "main-7-3-5.html#p3-c1-s3-rq3",
   "type": "Reading Question",
   "number": "6.3.3",
   "title": "<em class=\"emphasis\">Select the general solution<\/em>.",
   "body": " Select the general solution  Give the general solution for the first-order LHCC equation ?    Incorrect. Check the sign of the exponent.     Correct! The solution has the form , where is found from the characteristic equation.     Incorrect. Make sure to solve the characteristic equation correctly.     Incorrect. Check the coefficient of in the original equation.   "
 },
 {
-  "id": "p3-c1-s3-i4",
+  "id": "p3-c1-s3-rq4",
   "level": "2",
-  "url": "main-7-3-5.html#p3-c1-s3-i4",
+  "url": "main-7-3-5.html#p3-c1-s3-rq4",
   "type": "Reading Question",
   "number": "6.3.4",
   "title": "<em class=\"emphasis\">Identify the first-order LHCC equation<\/em>.",
   "body": " Identify the first-order LHCC equation  Which of the following is a first-order LHCC equation?    Incorrect. This is a second-order equation.     Correct! This is a first-order linear homogeneous equation with constant coefficients.     Incorrect. This equation is not homogeneous.     Incorrect. This is not a constant coefficient equation.   "
 },
 {
-  "id": "p3-c1-s3-i5",
+  "id": "p3-c1-s3-rq5",
   "level": "2",
-  "url": "main-7-3-5.html#p3-c1-s3-i5",
+  "url": "main-7-3-5.html#p3-c1-s3-rq5",
   "type": "Reading Question",
   "number": "6.3.5",
   "title": "<em class=\"emphasis\">What exponential term is in the solution<\/em>.",
@@ -3835,36 +3835,36 @@ var ptx_lunr_docs = [
   "body": " Find the general solutions for each LHCC equation.        First, write down and solve the characteristic equation: . Since and are real and , we are in Case 1 . Therefore, the general solution is: .             The characteristic equation is: . Therefore, the general solution is: .             The characteristic equation in this problem is: . Here, and . So the general solution is: .      "
 },
 {
-  "id": "p3-c1-s4-i1",
+  "id": "p3-c1-s4-rq1",
   "level": "2",
-  "url": "main-7-3-6.html#p3-c1-s4-i1",
+  "url": "main-7-3-6.html#p3-c1-s4-rq1",
   "type": "Reading Question",
   "number": "6.4.1",
   "title": "<em class=\"emphasis\">Match the DE to Its Characteristic Equation<\/em>.",
   "body": " Match the DE to Its Characteristic Equation   Match each LHCC differential equation on the left to its corresponding characteristic equation on the right.   Note: Each DE has a unique characteristic equation.                    "
 },
 {
-  "id": "p3-c1-s4-i2",
+  "id": "p3-c1-s4-rq2",
   "level": "2",
-  "url": "main-7-3-6.html#p3-c1-s4-i2",
+  "url": "main-7-3-6.html#p3-c1-s4-rq2",
   "type": "Reading Question",
   "number": "6.4.2",
   "title": "<em class=\"emphasis\">Solving the characteristic equation<\/em>.",
   "body": " Solving the characteristic equation  If the characteristic equation for an LHCC equation is , what are the roots?   (double root)  Correct! The root has a multiplicity of 2.     Incorrect. Check the quadratic equation carefully.    and  Incorrect. Ensure you solve the quadratic equation correctly.     Incorrect. These are not the correct roots for this equation.   "
 },
 {
-  "id": "p3-c1-s4-i3",
+  "id": "p3-c1-s4-rq3",
   "level": "2",
-  "url": "main-7-3-6.html#p3-c1-s4-i3",
+  "url": "main-7-3-6.html#p3-c1-s4-rq3",
   "type": "Reading Question",
   "number": "6.4.3",
   "title": "<em class=\"emphasis\">Match the Characteristic Equation Roots to the General Solution<\/em>.",
   "body": " Match the Characteristic Equation Roots to the General Solution   Match each set of characteristic equation roots on the left to the corresponding general solution on the right.   Note: One of the differential equations is first-order, and the rest are second-order.                            "
 },
 {
-  "id": "p3-c1-s4-i4",
+  "id": "p3-c1-s4-rq4",
   "level": "2",
-  "url": "main-7-3-6.html#p3-c1-s4-i4",
+  "url": "main-7-3-6.html#p3-c1-s4-rq4",
   "type": "Reading Question",
   "number": "6.4.4",
   "title": "<em class=\"emphasis\">Discriminant of the characteristic equation<\/em>.",
@@ -3877,7 +3877,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.5",
   "title": "Higher-Order Equations",
-  "body": "Higher-Order Equations  Solving higher-order linear homogeneous constant coefficient (LHCC) equations is an extension of the methods used for second-order equations. The basic strategy remains the same: solve the characteristic equation, then construct the general solution. However, for higher-order equations, the characteristic equation is a higher-degree polynomial, which can make finding the solutions more challenging.   LHCC Characteristic Equation   The characteristic equation of an -th order LHCC equation is the -th degree polynomial  Click here for an explanation.   . The solutions to this polynomial, , correspond to the roots that determine the form of the general solution.    In general, the characteristic equation will have roots, which may be real or complex and may also include repeated roots. Each root of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of roots.  Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (5th order)        (5th order)       As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the roots of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.   Solve the following characteristic equations.                              Note: DoS = Difference of Squares.        DoS                        DoS                    common                        common              Technically, and represents 4 repeated factors.          common      DoS                    common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .       These factoring techniques useful, but they only apply to specific forms of polynomials and it is unlikely that you will be lucky enough to encounter such forms in practice. Therefore, it is reasonable to use technology to aid you with these tyes of problems. Many software tools are available and you are encouraged to use any that you are familiar with.   Find the general solution to the LHCC equations              First, write down the characteristic equation: . Solving for , we get three distinct real roots: . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .      Besides factoring software, another options is to use numerical solvers. The next example illustrates this.   Consider the fifth-order LHCC equation:  .   The characteristic equation is: . Solving this polynomial equation analytically is challenging, so we use a numerical solver ( Wolfram Alpha ). This equation has five roots. Three are real: and two are complex: . The general solution, incorporating these roots, is: . .    By recognizing the nature of the roots and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.  Check your Understanding   Match the Differential Equation to its Characteristic Equation  Match each differential equation on the left to its characteristic equation on the right.                            Give the general solution for a 3rd-order LHCC equation whose..  Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solution: .    Correct! This is the form when there are three distinct real roots.     Incorrect.     Incorrect.     Incorrect.     Give the general solution for a 4th-order LHCC equation whose..  Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect.     Incorrect. Not enough constants.     Incorrect.     Correct! This is the form when the characteristic equation has complex roots.     Give the general solution for a 5th-order LHCC equation whose..  Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect. This form does not account for the multiplicity of the roots.     Incorrect. The multiplicity should be reflected for each root.     Correct! This is the form when there are repeated real roots with appropriate multiplicity.     Incorrect. Make sure to account for the cubic multiplicity for .     "
+  "body": "Higher-Order Equations  Solving higher-order linear homogeneous constant coefficient (LHCC) equations is an extension of the methods used for second-order equations. The basic strategy remains the same: solve the characteristic equation, then construct the general solution. However, for higher-order equations, the characteristic equation is a higher-degree polynomial, which can make finding the solutions more challenging.   LHCC Characteristic Equation   The characteristic equation of an -th order LHCC equation is the -th degree polynomial  Click here for an explanation.   . The solutions to this polynomial, , correspond to the roots that determine the form of the general solution.    In general, the characteristic equation will have roots, which may be real or complex and may also include repeated roots. Each root of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of roots.  Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (5th order)        (5th order)       As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the roots of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.   Solve the following characteristic equations.                        Note: DoS = Difference of Squares.        DoS                        common                        common              Technically, and represents 4 repeated factors.          common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .       These factoring techniques useful, but they only apply to specific forms of polynomials and it is unlikely that you will be lucky enough to encounter such forms in practice. Therefore, it is reasonable to use technology to aid you with these tyes of problems. Many software tools are available and you are encouraged to use any that you are familiar with.   Find the general solution to the LHCC equations         using the .     First, write down the characteristic equation: . Plugging this into to the factoring tool shows that it factors as . Solving for , we get . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into factoring tool above shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .      Besides factoring software, another options is to use numerical solvers. The next example illustrates this.   Consider the fifth-order LHCC equation:  .   The characteristic equation is: . Solving this polynomial equation analytically is challenging, so we use a numerical solver ( Wolfram Alpha ). This equation has five roots. Three are real: and two are complex: . The general solution, incorporating these roots, is: . .    By recognizing the nature of the roots and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.  Check your Understanding   Match the Differential Equation to its Characteristic Equation  Match each differential equation on the left to its characteristic equation on the right.                            Give the general solution for a 3rd-order LHCC equation whose..  Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solution: .    Correct! This is the form when there are three distinct real roots.     Incorrect.     Incorrect.     Incorrect.     Give the general solution for a 4th-order LHCC equation whose..  Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect.     Incorrect. Not enough constants.     Incorrect.     Correct! This is the form when the characteristic equation has complex roots.     Give the general solution for a 5th-order LHCC equation whose..  Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect. This form does not account for the multiplicity of the roots.     Incorrect. The multiplicity should be reflected for each root.     Correct! This is the form when there are repeated real roots with appropriate multiplicity.     Incorrect. Make sure to account for the cubic multiplicity for .     "
 },
 {
   "id": "def-characteristic-equation",
@@ -3904,7 +3904,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "9",
   "title": "",
-  "body": " Solve the following characteristic equations.                              Note: DoS = Difference of Squares.        DoS                        DoS                    common                        common              Technically, and represents 4 repeated factors.          common      DoS                    common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .      "
+  "body": " Solve the following characteristic equations.                        Note: DoS = Difference of Squares.        DoS                        common                        common              Technically, and represents 4 repeated factors.          common      DoS                    DoS      DoS                    . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .      "
 },
 {
   "id": "main-7-3-7-9",
@@ -3913,7 +3913,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "10",
   "title": "",
-  "body": " Find the general solution to the LHCC equations              First, write down the characteristic equation: . Solving for , we get three distinct real roots: . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .     "
+  "body": " Find the general solution to the LHCC equations         using the .     First, write down the characteristic equation: . Plugging this into to the factoring tool shows that it factors as . Solving for , we get . Therefore, the general solution is: .    The characteristic equation is: which is challenging to solve by hand. However, typing it into factoring tool above shows that it can be factored as , which gives the solutions . Therefore, the general solution is: .     "
 },
 {
   "id": "main-7-3-7-11",
@@ -3925,36 +3925,36 @@ var ptx_lunr_docs = [
   "body": " Consider the fifth-order LHCC equation:  .   The characteristic equation is: . Solving this polynomial equation analytically is challenging, so we use a numerical solver ( Wolfram Alpha ). This equation has five roots. Three are real: and two are complex: . The general solution, incorporating these roots, is: . .   "
 },
 {
-  "id": "p3-c1-s5-i1",
+  "id": "p3-c1-s5-rq1",
   "level": "2",
-  "url": "main-7-3-7.html#p3-c1-s5-i1",
+  "url": "main-7-3-7.html#p3-c1-s5-rq1",
   "type": "Reading Question",
   "number": "6.5.1",
   "title": "<em class=\"emphasis\">Match the Differential Equation to its Characteristic Equation<\/em>.",
   "body": " Match the Differential Equation to its Characteristic Equation  Match each differential equation on the left to its characteristic equation on the right.                          "
 },
 {
-  "id": "p3-c1-s5-i2",
+  "id": "p3-c1-s5-rq2",
   "level": "2",
-  "url": "main-7-3-7.html#p3-c1-s5-i2",
+  "url": "main-7-3-7.html#p3-c1-s5-rq2",
   "type": "Reading Question",
   "number": "6.5.2",
   "title": "<em class=\"emphasis\">Give the general solution for a 3rd-order LHCC equation whose..<\/em>.",
   "body": " Give the general solution for a 3rd-order LHCC equation whose..  Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solution: .    Correct! This is the form when there are three distinct real roots.     Incorrect.     Incorrect.     Incorrect.   "
 },
 {
-  "id": "p3-c1-s5-i3",
+  "id": "p3-c1-s5-rq3",
   "level": "2",
-  "url": "main-7-3-7.html#p3-c1-s5-i3",
+  "url": "main-7-3-7.html#p3-c1-s5-rq3",
   "type": "Reading Question",
   "number": "6.5.3",
   "title": "<em class=\"emphasis\">Give the general solution for a 4th-order LHCC equation whose..<\/em>.",
   "body": " Give the general solution for a 4th-order LHCC equation whose..  Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .    Incorrect.     Incorrect. Not enough constants.     Incorrect.     Correct! This is the form when the characteristic equation has complex roots.   "
 },
 {
-  "id": "p3-c1-s5-i4",
+  "id": "p3-c1-s5-rq4",
   "level": "2",
-  "url": "main-7-3-7.html#p3-c1-s5-i4",
+  "url": "main-7-3-7.html#p3-c1-s5-rq4",
   "type": "Reading Question",
   "number": "6.5.4",
   "title": "<em class=\"emphasis\">Give the general solution for a 5th-order LHCC equation whose..<\/em>.",
@@ -4570,7 +4570,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "C.4",
   "title": "Linear Homogeneous Constant Coefficients",
-  "body": "Linear Homogeneous Constant Coefficients  N-th Derivative of  Each derivative of adds a multiple of , so .  2nd Order LHCC Complex Case 3  The following explains how comes directly from .  Since and are complex, they can be written as . Substituting these into , using , the even property of cosine and odd property of sine , we can rewrite the general solution as .   Like Terms  Terms are called like terms if they have identical variable parts. That is, they differ only by a coefficient. Like terms can be combined via addition and subtraction. For example, the and terms below are pairs of like terms, which can be combined as follows: .   Polynomial Factoring Calculator   Numerical integrals using the midpoint rule      To find the characteristic equation, we substitute into the -th order LHCC equation and solve for . Doing this gives us . Since is never zero, we must have which is an -th order polynomial in .   "
+  "body": "Linear Homogeneous Constant Coefficients  N-th Derivative of  Each derivative of adds a multiple of , so .  2nd Order LHCC Complex Case 3  The following explains how comes directly from .  Since and are complex, they can be written as . Substituting these into , using , the even property of cosine and odd property of sine , we can rewrite the general solution as .   Like Terms  Terms are called like terms if they have identical variable parts. That is, they differ only by a coefficient. Like terms can be combined via addition and subtraction. For example, the and terms below are pairs of like terms, which can be combined as follows: .   Polynomial Factoring Calculator   Type in any polynomial of . Use for multiplication. If the polynomial has rational roots, it will show the factors.      To find the characteristic equation, we substitute into the -th order LHCC equation and solve for . Doing this gives us . Since is never zero, we must have which is an -th order polynomial in .   "
 },
 {
   "id": "like-terms-2",
@@ -4588,7 +4588,7 @@ var ptx_lunr_docs = [
   "type": "Figure",
   "number": "C.8",
   "title": "",
-  "body": " Numerical integrals using the midpoint rule   "
+  "body": " Type in any polynomial of . Use for multiplication. If the polynomial has rational roots, it will show the factors.   "
 },
 {
   "id": "main-16",
