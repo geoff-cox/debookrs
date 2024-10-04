@@ -1,153 +1,95 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> General Solutions </title>
+
+	<p>
+		In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.
+	</p>
+
+	<p>
+		To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart:
+		<mdn>
+			<mrow xml:id="lncc-eqn1"> y'' - 4y' + 3y =\amp\ 9x</mrow>
+			<mrow xml:id="lncc-eqn2"> y'' - 4y' + 3y =\amp\ 0</mrow>
+		</mdn>.
+		We already know that <m>y = 3x + 4</m> is a solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, while the solution to the homogeneous equation <xref ref="lncc-eqn2" /> is <m>y = c_1e^{x} + c_2e^{3x}</m>. Let's plug these solutions into their respective equations:
+		<md>
+			<mrow> 
+				3x+4 \quad \os{\text{into}}{\longrightarrow} \quad \amp y'' - 4y' + 3y  \quad \os{\text{simplifies to}}{\longrightarrow}  \quad 9x
+			</mrow>
+			<mrow> 
+				c_1e^{x} + c_2e^{3x} \quad \os{\hphantom{\text{into}}}{\longrightarrow} \quad \amp y'' - 4y' + 3y  \quad \os{\hphantom{\text{simplifies to}}}{\longrightarrow}  \quad 0
+			</mrow>
+		</md>
+		Now, what happens if we combine these solutions into one? That is, can we form a single solution that satisfies the nonhomogeneous equation?
+		<md>
+			<mrow>
+			c_1e^{x} + c_2e^{3x} + 3x + 4 \quad \os{\text{into}}{\longrightarrow} \quad y'' - 4y' + 3y \quad \os{\text{simplifies to}}{\longrightarrow} \quad ?
+			</mrow>
+		</md>
+	</p>
+
+	<p>
+		Given that derivatives distribute over addition, the homogeneous terms will simplify to zero, and the particular terms will simplify to <m>9x</m>, as they did individually. Therefore, the combined solution <m>y = c_1e^{x} + c_2e^{3x} + 3x + 4</m> must be a valid solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />.
+	</p>
+
+	<p>
+		This leads us to the fundamental principle of LNCC equations: the general solution is made up of two parts:
+		<me>
+			y = \ub{c_1e^{x} + c_2e^{3x}}_{\text{homogeneous part}} + \ub{3x + 4}_{\text{particular part}}
+		</me>
+		Here, the <em>homogeneous part</em> (<m>y_h</m>) cancels out when substituted into the original equation, while the <em>particular part</em> (<m>y_p</m>) accounts for the non-zero right-hand side.
+	</p>
 	
 	<p>
-		As discussed in the last section, every solution to a nonhomogeneous differential equation must account for the non-zero term on the right-hand side. However, hidden within these solutions could be terms that cancel out with each other instead of contributing to the term on the right-hand side.
-	</p>
-
-	<p>
-		To see this, let's bring back the equation from the last section,
-		<men xml:id="lncc-eqn1">
-			y'' - 4y' + 3y = 9x
-		</men>,
-		which we know has <m>y=3x+4</m> as a solution. Would it still be a solution if we tossed another term, say <m>e^{3x}</m>, onto it so that <m>y=e^{3x} + 3x + 4</m>? To find out, we plug it in and track this new term (in blue), like so 
-		<md>
-			<mrow> 
-				\left( {\color{blue} e^{3x}} + 3x + 4 \right)'' 
-				-4\left( {\color{blue} e^{3x}} + 3x + 4 \right)' 
-				+3\left( {\color{blue} e^{3x}} + 3x + 4 \right) =\ &amp; 9x 
-			</mrow>
-			<mrow> 
-				\left( {\color{blue} e^{3x}} \right)'' + \left( 3x + 4 \right)''
-				-4\left( {\color{blue} e^{3x}} \right)' - 4\left( 3x + 4 \right)'
-				+3\left( {\color{blue} e^{3x}} \right) + 3\left( 3x + 4 \right) =\ &amp; 9x 
-			</mrow>
-			<mrow> 
-				\us{\large e^{3x} \text{ in the LHS of } <xref ref="lncc-eqn1"/>}{\ub{
-					\left( {\color{blue} e^{3x}} \right)'' 
-					-4\left( {\color{blue} e^{3x}} \right)' 
-					+3\left( {\color{blue} e^{3x}} \right)}
-				} + 
-				\us{\large 3x + 4 \text{ in the LHS of } <xref ref="lncc-eqn1"/>}{\ub{
-					\left( 3x + 4 \right)'' 
-					-4\left( 3x + 4 \right)' 
-					+3\left( 3x + 4 \right)
-				 }} =\ &amp; 9x 
-			</mrow>
-		</md>
-		<!-- Before simplifying, notice that it looks like we plugged <m>e^{3x}</m> and <m>3x+4</m> separately into <xref ref="lncc-eqn1"/>. Now, let's finish simplifying to see if <m>y=e^{3x} + 3x + 4</m> is a solution. -->
-		<md>
-			<mrow> 
-				\left( {\color{blue} 9e^{3x}} \right)
-				-4\left( {\color{blue} 3e^{3x}} \right)
-				+3\left( {\color{blue} e^{3x}} \right) + 
-				0 -4\left( 3 \right) +3\left( 3x + 4 \right) =\ &amp; 9x 
-			</mrow>
-			<mrow> 
-				{\color{blue} 9e^{3x} - 12e^{3x} + 3e^{3x}} - 12 + 9x + 12 =\ &amp; 9x 
-			</mrow>
-			<mrow> 
-				{\color{blue} 0} + 9x =\ &amp; 9x 
-			</mrow>
-		</md>
-		There is a lot built into this result, so let's carefully break it down. 
-		<ul marker="square">
-			<li>
-				<p>
-					First, <m>y=e^{3x} + 3x + 4</m> is a solution since it satisfies <xref ref="lncc-eqn1"/>.
-				</p>
-			</li>
-			<li>
-				<p>
-					The solution contains the two parts
-					<me>
-						y=\us{(1)}{\ul{e^{3x}}} + \us{(2)}{\ul{3x + 4}}
-					</me>,
-					where part (1) contains the terms that simplifies to <m>0</m> and part (2) contains the terms that simplify to <m>9x</m> when plugged into <xref ref="lncc-eqn1"/>.
-				</p>
-			</li>
-			<li>
-				<p>
-					The third step looks like <m>e^{3x}</m> and <m>3x+4</m> were separately plugged into <xref ref="lncc-eqn1"/>. As long as the equation is linear, this separation can happen.
-				</p>
-			</li>
-		</ul>
-	</p>
-
-	<men xml:id="lncc-order2-gen-soln-parts">
-		\underset{\text{terms that cancel}}{\underbrace{a_2 y_h'' + a_1 y_h' + a_0 y_h}} + 
-		\underset{\text{terms that account for } f(x)}{\underbrace{a_2 y_p'' + a_1 y_p' + a_0 y_p}} = f(x)
-	</men>
-
-	<p>
-		This example illustrates the following general principle of LNCC equations.
-		
 		<assemblage xml:id="lncc-general-solution-parts"><title>LNCC General Solution Parts</title>
 			<p>
-				The linear nonhomogeneous constant coefficient equation
-			</p>
-
-			<p>
+				The linear nonhomogeneous constant coefficient (LNCC) equation 
 				<men xml:id="lncc-general-equation">
 					a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
 				</men>
-				has a two-part general solution that can be written as
+				has a solution with a <term>homogeneous</term> and <term>particular</term> part given by
 				<men xml:id="lncc-general-solution">
 					y = y_h + y_p
 				</men>.
-				Plugging this into <xref ref="lncc-general-equation"/>, we can separate <m>y_h</m> and <m>y_p</m> like so
-				<me>
-					\us{\large \text{terms of } <xref ref="lncc-general-solution"/> \text{ that give } 0}{\ub{a_n y_h^{(n)} + \cdots + a_1 y_h' + a_0 y_h}} + 
-					\us{\large \text{terms of } <xref ref="lncc-general-solution"/> \text{ that give } f(x)}{\ub{a_n y_p^{(n)} + \cdots + a_1 y_p' + a_0 y_p}} = f(x)
-				</me>.
-				We call <m>y_h</m> the <term>homogeneous part</term> of <xref ref="lncc-general-solution"/> and find it by solving
+				where <m>y_h</m>, found by solving the LHCC equation
 				<me>
 					a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = 0
-				</me>.
-				The part, <m>y_p</m>, is the <term>particular solution</term> of <xref ref="lncc-general-solution"/>, which accounts for <m>f(x)</m>.
+				</me>,
+				contains the terms of the solution that cancel out, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <xref ref="lncc-general-solution"/> is plugged into <xref ref="lncc-general-equation"/>
 			</p>
 		</assemblage>
 	</p>
 
+
 	<example>
-		<m>\ \ </m> Give the general solution to the differential equation
-		<statement>
+		<m>\ \ </m> Find the general solution to the differential equation
+
+		<p>
 			<me>
-				y'' - 4y' + 3y = 9x
-			</me>.
-		</statement>
+				y'' - 4y' - 12y = 3{e^{5t}}
+			</me>
+			given that the the particular solution is known to be <m>y_p(t) =  -\frac{3}{7}{{e}^{5t}}</m>.
+		</p>
 		<solution>
 			<p>
-				The general solution has the form 
-				<me>
-					y = y_h + y_p
-				</me>
-				where <m>y_p</m> is the particular solution that gives <m>9x</m>, is already known as
-				<me>
-					y_p = 3x + 4
-				</me>.
-				The homogeneous part, <m>y_h</m>, that gives <m>0</m>, is found by solving
-				<me>
-					y'' - 4y' + 3y = 0
-				</me>
-				using the characteristic equation, as follows 
-				<me>
-					r^2 - 4r + 3 = 0 \ \ \implies \ \ (r - 3)(r - 1) = 0 \ \ \implies \ \ r = 3, r = 1
-				</me>.
-				So the homogeneous part is
-				<me>
-					y_h = c_1e^{3x} + c_2e^x
-				</me>
-				and the general solution is given by
-				<me>
-					y = y_h + y_p = \us{\text{terms cancel}}{\ub{c_1e^{3x} + c_2e^x}} + \us{\text{terms give }9x}{\ub{3x + 4}}
-				</me>
+				The general solution has the form:
+				<me>y = y_h + y_p</me>
+				Since <m>y_p</m> is given, we only need to solve the homogeneous equation:
+				<me>y'' - 4y' - 12y = 0</me>
+				Using the characteristic equation:
+				<md>
+					<mrow> r^2 - 4r - 12 	=\amp\ 0											</mrow>
+					<mrow> (r - 6)(r + 2) 	=\amp\ 0 \quad \Rightarrow \quad r_1 = 6, r_2 = -2	</mrow>
+				</md>
+				The homogeneous solution is:
+				<me> y_h(t) = c_1e^{-2t} + c_2e^{6t} </me>
+				Therefore, the general solution is:
+				<me> y = c_1e^{-2t} + c_2e^{6t} -\frac{3}{7}{e^{5t}} </me>
 			</p>
-
 		</solution>
 	</example>
 
 	<p>
-		Before we can start solving these equations, we still need a strategy for finding the particular solution, <m>y_p</m>. This will be the focus of the next few sections.
+		Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution <m>y_p</m>, which will be covered in the upcoming sections.
 	</p>
 
 	<xi:include href="./p3-c2-s2-interactives.ptx" />

@@ -153,6 +153,77 @@
 		</ul>
 	</p>
 
+	<p>
+		concept into the left-side of <xref ref="lncc-eqn2"/> simplifies to <m>0</m>.
+		Would it still be a solution if we tossed another term, say <m>e^{3x}</m>, onto it so that <m>y=e^{3x} + 3x + 4</m>? To find out, we plug it in and track this new term (in blue), like so 
+		<md>
+			<mrow> 
+				\left( {\color{blue} c_1e^{x} + c_2e^{3x}} + 3x + 4 \right)'' 
+				-4\left( {\color{blue} c_1e^{x} + c_2e^{3x}} + 3x + 4 \right)' 
+				+3\left( {\color{blue} c_1e^{x} + c_2e^{3x}} + 3x + 4 \right) 
+			</mrow>
+			<mrow> 
+				\left( {\color{blue} e^{3x}} \right)'' + \left( 3x + 4 \right)''
+				-4\left( {\color{blue} e^{3x}} \right)' - 4\left( 3x + 4 \right)'
+				+3\left( {\color{blue} e^{3x}} \right) + 3\left( 3x + 4 \right) =\ &amp; 9x 
+			</mrow>
+			<mrow> 
+				\us{\large e^{3x} \text{ in the LHS of } <xref ref="lncc-eqn1"/>}{\ub{
+					\left( {\color{blue} e^{3x}} \right)'' 
+					-4\left( {\color{blue} e^{3x}} \right)' 
+					+3\left( {\color{blue} e^{3x}} \right)}
+				} + 
+				\us{\large 3x + 4 \text{ in the LHS of } <xref ref="lncc-eqn1"/>}{\ub{
+					\left( 3x + 4 \right)'' 
+					-4\left( 3x + 4 \right)' 
+					+3\left( 3x + 4 \right)
+				 }} =\ &amp; 9x 
+			</mrow>
+		</md>
+		<!-- Before simplifying, notice that it looks like we plugged <m>e^{3x}</m> and <m>3x+4</m> separately into <xref ref="lncc-eqn1"/>. Now, let's finish simplifying to see if <m>y=e^{3x} + 3x + 4</m> is a solution. -->
+		<md>
+			<mrow> 
+				\left( {\color{blue} 9e^{3x}} \right)
+				-4\left( {\color{blue} 3e^{3x}} \right)
+				+3\left( {\color{blue} e^{3x}} \right) + 
+				0 -4\left( 3 \right) +3\left( 3x + 4 \right) =\ &amp; 9x 
+			</mrow>
+			<mrow> 
+				{\color{blue} 9e^{3x} - 12e^{3x} + 3e^{3x}} - 12 + 9x + 12 =\ &amp; 9x 
+			</mrow>
+			<mrow> 
+				{\color{blue} 0} + 9x =\ &amp; 9x 
+			</mrow>
+		</md>
+		There is a lot built into this result, so let's carefully break it down. 
+		<ul marker="square">
+			<li>
+				<p>
+					First, <m>y=e^{3x} + 3x + 4</m> is a solution since it satisfies <xref ref="lncc-eqn1"/>.
+				</p>
+			</li>
+			<li>
+				<p>
+					The solution contains the two parts
+					<me>
+						y=\us{(1)}{\ul{e^{3x}}} + \us{(2)}{\ul{3x + 4}}
+					</me>,
+					where part (1) contains the terms that simplifies to <m>0</m> and part (2) contains the terms that simplify to <m>9x</m> when plugged into <xref ref="lncc-eqn1"/>.
+				</p>
+			</li>
+			<li>
+				<p>
+					The third step looks like <m>e^{3x}</m> and <m>3x+4</m> were separately plugged into <xref ref="lncc-eqn1"/>. As long as the equation is linear, this separation can happen.
+				</p>
+			</li>
+		</ul>
+	</p>
+
+	<men>
+		\underset{\text{terms that cancel}}{\underbrace{a_2 y_h'' + a_1 y_h' + a_0 y_h}} + 
+		\underset{\text{terms that account for } f(x)}{\underbrace{a_2 y_p'' + a_1 y_p' + a_0 y_p}} = f(x)
+	</men>
+
 	<paragraphs><title> Additional Examples </title>
 
 		<example>
@@ -362,64 +433,6 @@
 	
 			</solution>
 		</example>
-	  
-		<example>
-			<statement> 
-				Find a particular solution for the following differential equation.
-				<me>y'' - 4y' - 12y = t{{\bf{e}}^{4t}}</me>
-			</statement>
-			  
-			<solution>
-				<p>
-					You're probably getting tired of the opening comment, but again finding the homogeneous solution first really a good idea but again we've already done the work in the first example so we won't do it again here.  We promise that eventually you'll see why we keep using the same homogeneous problem and why we say it's a good idea to have the homogeneous solution in hand first.  At this point all we're trying to do is reinforce the habit of finding the homogeneous solution first.
-				</p>
-			  
-				<p>
-					Okay, let's start off by writing down the guesses for the individual pieces of the function.  The guess for the <me>t</me> would be
-				</p>
-				<me>At + B</me>
-				  <p>while the guess for the exponential would be</p>
-				<me>C{{\bf{e}}^{4t}}</me>
-			  
-				<p>Now, since we've got a product of two functions it seems like taking a product of the guesses for the individual pieces might work.  Doing this would give</p>
-			  
-				<me>C{{\bf{e}}^{4t}}\left( {At + B} \right)</me>
-			  
-				  <p>
-					However, we will have problems with this.  As we will see, when we plug our guess into the differential equation we will only get two equations out of this.  The problem is that with this guess we've got three unknown constants.  With only two equations we won't be able to solve for all the constants.
-				</p>
-			  
-				  <p>
-					This is easy to fix however.  Let's notice that we could do the following
-				</p>
-			  
-				<me>C{{\bf{e}}^{4t}}\left( {At + B} \right) = {{\bf{e}}^{4t}}\left( {ACt + BC} \right)</me>
-			  
-				  <p>
-					If we multiply the <me>C</me> through, we can see that the guess can be written in such a way that there are really only two constants.  So, we will use the following for our guess.
-				</p>
-			  
-				<me>{Y_P}\left( t \right) = {{\bf{e}}^{4t}}\left( {At + B} \right)</me>
-			  
-				  <p>Notice that this is nothing more than the guess for the <me>t</me> with an exponential tacked on for good measure.</p>
-			  
-				  <p>Now that we've got our guess, let's differentiate, plug into the differential equation and collect like terms.</p>
-			  
-				<md>
-	<mrow>{{\bf{e}}^{4t}}\left( {16At + 16B + 8A} \right) - 4\left( {{{\bf{e}}^{4t}}\left( {4At + 4B + A} \right)} \right) - 12\left( {{{\bf{e}}^{4t}}\left( {At + B} \right)} \right) <mrow> &amp;  = t{{\bf{e}}^{4t}}\\ \left( {16A - 16A - 12A} \right)t{{\bf{e}}^{4t}} + \left( {16B + 8A - 16B - 4A - 12B} \right){{\bf{e}}^{4t}} &amp; = t{{\bf{e}}^{4t}}</mrow> - 12At{{\bf{e}}^{4t}} + \left( {4A - 12B} \right){{\bf{e}}^{4t}} &amp; = t{{\bf{e}}^{4t}}</mrow>
-	</md>
-			  
-				  <p>Note that when we're collecting like terms we want the coefficient of each term to have only constants in it.  Following this rule we will get two terms when we collect like terms.  Now, set coefficients equal.</p>
-			  
-				<md> 
-					<mrow> &amp;  t{{\bf{e}}^{4t}}\,: &amp; - 12A &amp; = 1 &amp; \Rightarrow  \hspace{0.25in}A &amp; =  - \frac{1}{{12}}</mrow>
-					<mrow> &amp;  {{\bf{e}}^{4t}}\,: &amp;  4A - 12B &amp; = 0 &amp; \Rightarrow \hspace{0.25in}B &amp; =  - \frac{1}{{36}}</mrow>
-				</md>
-				<p>A particular solution for this differential equation is then</p>
-				
-					<me>{Y_P}\left( t \right) = {{\bf{e}}^{4t}}\left( { - \frac{t}{{12}} - \frac{1}{{36}}} \right) =  - \frac{1}{{36}}\left( {3t + 1} \right){{\bf{e}}^{4t}}</me>
-			</solution>
-		</example>
 		
 		<example>
 			<statement> 
@@ -499,21 +512,6 @@
 						<p>Notice that we put the exponential on both terms.</p>
 					</solution>
 				</li>
-		</example>
-		
-		  <example>
-			<statement> 
-				Find a particular solution for the following differential equation.
-				<me>y'' - 4y' - 12y = 3{{\bf{e}}^{5t}} + \sin \left( {2t} \right) + t{{\bf{e}}^{4t}}</me>
-			</statement>
-		  
-			<solution>
-				<p>This example is the reason that we've been using the same homogeneous differential equation for all the previous examples.  There is nothing to do with this problem.  All that we need to do it go back to the appropriate examples above and get the particular solution from that example and add them all together.</p>
-				
-				<p>Doing this gives</p>
-				
-					<me>{Y_P}\left( t \right) =  - \frac{3}{7}{{\bf{e}}^{5t}} + \frac{1}{{40}}\cos \left( {2t} \right) - \frac{1}{{20}}\sin \left( {2t} \right) - \frac{1}{{36}}\left( {3t + 1} \right){{\bf{e}}^{4t}}</me>
-			</solution>
 		</example>
 		
 		<example>
