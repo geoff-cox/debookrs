@@ -3883,7 +3883,7 @@ var ptx_lunr_docs = [
   "id": "def-characteristic-equation",
   "level": "2",
   "url": "main-7-3-7.html#def-characteristic-equation",
-  "type": "Concept",
+  "type": "Definition",
   "number": "7",
   "title": "<em class=\"emphasis\">LHCC Characteristic Equation<\/em>.",
   "body": " LHCC Characteristic Equation   The characteristic equation of an -th order LHCC equation is the -th degree polynomial  Click here for an explanation.   . The solutions to this polynomial, , correspond to the roots that determine the form of the general solution.   "
@@ -3967,7 +3967,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.6",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises    The method discussed in this section does not have a formal name, but it is a common technique with a wide array of applications. For ease of discussion, we will refer to it as the \"LHCC method.\" \"LHCC\" is an acronym indicating the properties of DE it solves. The properties are linear (L), homogeneous (H), and constant coefficients (CC).   LHCC Method  A general solution to the linear homogeneous differential equation with constant coefficients (LHCC), can be found through the following steps...   Step 1: Verify Method  Check that the DE is linear, homogeneous and has constant coefficients.   Step 2: Solve CE  Solve the characteristic equation (CE) corresponding to ?.   Step 3: Give Solution  Write down the general solution and apply initial conditions.     Summary of the Key Ideas    Method           Show why is needed in the general solution for repeated roots of the CE     Classify the following differential equations as either homogeneous or nonhomogeneous  *NEED EXERCISES        Find the general solution for each of the following                          Solve the following initial value problems   an that satisfy thegiven initial conditions.  o  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.         Boundary Value Problems  Solve the following boundary value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution    Solve the following DEs               Initial Value Problems  Solve the following initial value problem.   or  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution    Solve the following DEs               Solve the following DEs                           Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation               Compute the derivative of each of the following functions        True\/False vector space  The differential equation is linear.   Each of the terms are linear.   Check to see that each of the terms involving are linear.   True\/False vector space  The differential equation is linear.   The term is not linear.   Check to see that each of the terms involving are linear.   True\/False vector space  The differential equation is homogeneous.   Every term contains the independent variable, .   Check to see that each of the terms contains the dependent variable, .   True\/False vector space  The differential equation is homogeneous.   The 6 on the right hand side of the equation makes the DE nonhomogeneous.   Check to see that each of the terms contains the dependent variable, .   True\/False vector space  The differential equation has constant coefficients.   The coefficients for each of the terms are constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.   True\/False vector space  The differential equation has constant coefficients.   The coefficients for the term on the right hand side of the equation is not constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.    "
+  "body": "Summary & Exercises    The LHCC chapter (Linear Homogeneous Differential Equations with Constant Coefficients) in \"Linear Constant Coefficient Methods\" introduces a systematic method to solve higher-order linear differential equations. Here's a summary based on the content:  Summary of the Key Ideas      Linear Homogeneous Differential Equations with Constant Coefficients (LHCC)   These are differential equations where each term consists of a derivative of the unknown function multiplied by a constant.  The general form of an LHCC equation is: .     The Characteristic Equation   By assuming a solution of the form , an LHCC can be reduced to a characteristic polynomial in .  The solutions to the characteristic equation determine the form of the general solution.     Solution Types   Let be a solution to the characteristic equation (CE).  If is different from all other solutions of the CE, then is a term of the general solution.  If is equal to, say, three other solutions of the CE, then are terms of the general solution.  If or , then the general solution contains .        LHCC Method  The general solution to a linear homogeneous differential equation with constant coefficients (LHCC) of the form can be found through the following steps...   Step 1: Solve the Characteristic Equation  Solve the characteristic equation (CE)    Step 2: Write Down the General Solution     Real & Different:   .   Real & Repeated:  (multiplicity ) .   Complex:   .   For mixed root types , combine the corresponding terms to form the complete general solution.           Show why is needed in the general solution for repeated roots of the CE     Classify the following differential equations as either homogeneous or nonhomogeneous  *NEED EXERCISES        Find the general solution for each of the following                          Solve the following initial value problems   an that satisfy thegiven initial conditions.  o  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.         Boundary Value Problems  Solve the following boundary value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution    Solve the following DEs               Initial Value Problems  Solve the following initial value problem.   or  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution    Solve the following DEs               Solve the following DEs                           Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation               Compute the derivative of each of the following functions        Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!    Classifying Practice  Select each classification label that applies to the equation     Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the constant term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, all terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.     "
 },
 {
   "id": "main-7-3-8-2-1",
@@ -3976,7 +3976,7 @@ var ptx_lunr_docs = [
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
-  "body": " Method  "
+  "body": "Linear Homogeneous Differential Equations with Constant Coefficients (LHCC) The Characteristic Equation Solution Types "
 },
 {
   "id": "tba",
@@ -4168,67 +4168,283 @@ var ptx_lunr_docs = [
   "body": "    "
 },
 {
-  "id": "LHCC1",
+  "id": "p3-c1-summary-rq1",
   "level": "2",
-  "url": "main-7-3-8.html#LHCC1",
+  "url": "main-7-3-8.html#p3-c1-summary-rq1",
   "type": "Exercise",
   "number": "6.6.22",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation is linear.   Each of the terms are linear.   Check to see that each of the terms involving are linear.  "
+  "title": "Classifying Practice.",
+  "body": "Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!   "
 },
 {
-  "id": "LHCC2",
+  "id": "p3-c1-summary-rq2",
   "level": "2",
-  "url": "main-7-3-8.html#LHCC2",
+  "url": "main-7-3-8.html#p3-c1-summary-rq2",
   "type": "Exercise",
   "number": "6.6.23",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation is linear.   The term is not linear.   Check to see that each of the terms involving are linear.  "
+  "title": "Classifying Practice.",
+  "body": "Classifying Practice  Select each classification label that applies to the equation     Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.   "
 },
 {
-  "id": "LHCC3",
+  "id": "p3-c1-summary-rq3",
   "level": "2",
-  "url": "main-7-3-8.html#LHCC3",
+  "url": "main-7-3-8.html#p3-c1-summary-rq3",
   "type": "Exercise",
   "number": "6.6.24",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation is homogeneous.   Every term contains the independent variable, .   Check to see that each of the terms contains the dependent variable, .  "
+  "title": "Classifying Practice.",
+  "body": "Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the constant term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.   "
 },
 {
-  "id": "LHCC4",
+  "id": "p3-c1-summary-rq4",
   "level": "2",
-  "url": "main-7-3-8.html#LHCC4",
+  "url": "main-7-3-8.html#p3-c1-summary-rq4",
   "type": "Exercise",
   "number": "6.6.25",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation is homogeneous.   The 6 on the right hand side of the equation makes the DE nonhomogeneous.   Check to see that each of the terms contains the dependent variable, .  "
+  "title": "Classifying Practice.",
+  "body": "Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, all terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.   "
 },
 {
-  "id": "LHCC5",
-  "level": "2",
-  "url": "main-7-3-8.html#LHCC5",
-  "type": "Exercise",
-  "number": "6.6.26",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation has constant coefficients.   The coefficients for each of the terms are constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.  "
-},
-{
-  "id": "LHCC6",
-  "level": "2",
-  "url": "main-7-3-8.html#LHCC6",
-  "type": "Exercise",
-  "number": "6.6.27",
-  "title": "True\/False.",
-  "body": "True\/False vector space  The differential equation has constant coefficients.   The coefficients for the term on the right hand side of the equation is not constants.   Check to see that each of the terms that contain the dependent variable, , have constant coefficients.  "
-},
-{
-  "id": "main-7-4",
+  "id": "main-7-4-2",
   "level": "1",
-  "url": "main-7-4.html",
-  "type": "Chapter",
-  "number": "7",
-  "title": "Nonhomogeneous",
-  "body": "Nonhomogeneous   "
+  "url": "main-7-4-2.html",
+  "type": "Section",
+  "number": "7.1",
+  "title": "Nonhomogeneous Equations",
+  "body": "Nonhomogeneous Equations  In the previous chapter, we solved linear homogeneous constant coefficient equations of the form . Such equations are called homogeneous because of the zero on the right-hand side. In this chapter, we explore how to solve the more general case of nonhomogeneous equations, which include a non-zero function on the right-hand side, like so . For ease of discussion, will use the shorthand LNCC equations to refer to Linear Nonhomogeneous Constant Coefficient equations.  Recall, the solution of a homogeneous equation is made up of terms which have the unique property of being like terms with its derivatives. This is needed so the terms on the left-hand side can cancel out to zero.   Comparison of a homogeneous equation ( left ) and a nonhomogeneous equation ( right ). In both, the solutions must simplify in a specific way when substituted into the equation.           In contrast, nonhomogeneous equations must have solutions that make the left-hand side simplify to , rather than zero. For this to happen, the solution should be like in the sense that it shares terms with . For example, consider the equation . When the solution, , is plugged into the equation, the left-side terms must simplify to . So, must be like , but what is does like mean? As you will see in the sections that follow, it means has the form . For now, let's just verify that is the like solution that corresponds to this equation.   Verify that is a particular solution to the equation  .   To verify, we substitute into the equation:     Check your Understanding   Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?  Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?    The homogeneous equation has a zero constant term, while the nonhomogeneous equation has a non-zero constant term.  Correct! Homogeneous equations have a zero constant term, while nonhomogeneous equations include a non-zero function like on the right-hand side.    In a nonhomogeneous equation, all terms contain a dependent variable, but in a homogeneous equation, only one term can contain a dependent variable.  Incorrect. This is not an accurate description of either equation type.    A nonhomogeneous equation has a higher order than a homogeneous equation.  Incorrect. The order of the equation does not determine whether it is homogeneous or nonhomogeneous.    Homogeneous equations are always linear, while nonhomogeneous equations are nonlinear.  Incorrect. Both homogeneous and nonhomogeneous equations can be linear.    Which equation is nonhomogeneous? Select the equation that is nonhomogeneous.    Incorrect. This is a homogeneous equation because the right-hand side is zero.     Correct! This equation is nonhomogeneous because it has a non-zero term, , on the right-hand side.     Incorrect. This is a homogeneous equation because the right-hand side is zero.     Incorrect. This is a homogeneous equation because the right-hand side is zero.     Select the solution to the equation ..  Select the solution to the equation  .    Incorrect, the particular solution is .     Correct!     Incorrect, the particular solution is .     Incorrect, the particular solution is .     A solution of the equation ..  A solution to the equation  should contain a polynomial of what degree?    Incorrect, review row 1 of the table above.     Incorrect, plugging (degree 1 polynomial) into the LHS would simplify to another degree 1 polynomial, but the RHS is a degree 3 polynomial.     Incorrect, plugging (degree 2 polynomial) into the LHS would simplify to another degree 2 polynomial, but the RHS is a degree 3 polynomial.     Correct! Plugging (degree 3 polynomial) into the LHS would simplify to a degree 3 polynomial, which is the degree of the polynomial on the RHS.     Incorrect, plugging (degree 4 polynomial) into the LHS would leave you with a term, not seen on the RHS.      "
+},
+{
+  "id": "lhcc-vs-lcc-solution-type",
+  "level": "2",
+  "url": "main-7-4-2.html#lhcc-vs-lcc-solution-type",
+  "type": "Figure",
+  "number": "12",
+  "title": "",
+  "body": " Comparison of a homogeneous equation ( left ) and a nonhomogeneous equation ( right ). In both, the solutions must simplify in a specific way when substituted into the equation.          "
+},
+{
+  "id": "main-7-4-2-6",
+  "level": "2",
+  "url": "main-7-4-2.html#main-7-4-2-6",
+  "type": "Example",
+  "number": "13",
+  "title": "",
+  "body": " Verify that is a particular solution to the equation  .   To verify, we substitute into the equation:    "
+},
+{
+  "id": "p3-c2-s1-rq9",
+  "level": "2",
+  "url": "main-7-4-2.html#p3-c2-s1-rq9",
+  "type": "Reading Question",
+  "number": "7.1.1",
+  "title": "<em class=\"emphasis\">Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?<\/em>",
+  "body": " Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?  Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?    The homogeneous equation has a zero constant term, while the nonhomogeneous equation has a non-zero constant term.  Correct! Homogeneous equations have a zero constant term, while nonhomogeneous equations include a non-zero function like on the right-hand side.    In a nonhomogeneous equation, all terms contain a dependent variable, but in a homogeneous equation, only one term can contain a dependent variable.  Incorrect. This is not an accurate description of either equation type.    A nonhomogeneous equation has a higher order than a homogeneous equation.  Incorrect. The order of the equation does not determine whether it is homogeneous or nonhomogeneous.    Homogeneous equations are always linear, while nonhomogeneous equations are nonlinear.  Incorrect. Both homogeneous and nonhomogeneous equations can be linear.   "
+},
+{
+  "id": "p3-c2-s1-rq1",
+  "level": "2",
+  "url": "main-7-4-2.html#p3-c2-s1-rq1",
+  "type": "Reading Question",
+  "number": "7.1.2",
+  "title": "<em class=\"emphasis\">Which equation is nonhomogeneous?<\/em>",
+  "body": "Which equation is nonhomogeneous? Select the equation that is nonhomogeneous.    Incorrect. This is a homogeneous equation because the right-hand side is zero.     Correct! This equation is nonhomogeneous because it has a non-zero term, , on the right-hand side.     Incorrect. This is a homogeneous equation because the right-hand side is zero.     Incorrect. This is a homogeneous equation because the right-hand side is zero.   "
+},
+{
+  "id": "p3-c2-s1-rq2",
+  "level": "2",
+  "url": "main-7-4-2.html#p3-c2-s1-rq2",
+  "type": "Reading Question",
+  "number": "7.1.3",
+  "title": "<em class=\"emphasis\">Select the solution to the equation<\/em>...",
+  "body": " Select the solution to the equation ..  Select the solution to the equation  .    Incorrect, the particular solution is .     Correct!     Incorrect, the particular solution is .     Incorrect, the particular solution is .   "
+},
+{
+  "id": "p3-c2-s1-rq3",
+  "level": "2",
+  "url": "main-7-4-2.html#p3-c2-s1-rq3",
+  "type": "Reading Question",
+  "number": "7.1.4",
+  "title": "<em class=\"emphasis\">A solution of the equation<\/em>...",
+  "body": " A solution of the equation ..  A solution to the equation  should contain a polynomial of what degree?    Incorrect, review row 1 of the table above.     Incorrect, plugging (degree 1 polynomial) into the LHS would simplify to another degree 1 polynomial, but the RHS is a degree 3 polynomial.     Incorrect, plugging (degree 2 polynomial) into the LHS would simplify to another degree 2 polynomial, but the RHS is a degree 3 polynomial.     Correct! Plugging (degree 3 polynomial) into the LHS would simplify to a degree 3 polynomial, which is the degree of the polynomial on the RHS.     Incorrect, plugging (degree 4 polynomial) into the LHS would leave you with a term, not seen on the RHS.   "
+},
+{
+  "id": "main-7-4-3",
+  "level": "1",
+  "url": "main-7-4-3.html",
+  "type": "Section",
+  "number": "7.2",
+  "title": "General Solutions",
+  "body": "General Solutions  In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.  To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart: . We already know that is a solution to the nonhomogeneous equation , while the solution to the homogeneous equation is . Let's plug these solutions into their respective equations: Now, what happens if we combine these solutions into one? That is, can we form a single solution that satisfies the nonhomogeneous equation?   Given that derivatives distribute over addition, the homogeneous terms will simplify to zero, and the particular terms will simplify to , as they did individually. Therefore, the combined solution must be a valid solution to the nonhomogeneous equation .  This leads us to the fundamental principle of LNCC equations: the general solution is made up of two parts: Here, the homogeneous part ( ) cancels out when substituted into the original equation, while the particular part ( ) accounts for the non-zero right-hand side.   LNCC General Solution Parts  The linear nonhomogeneous constant coefficient (LNCC) equation has a solution with a homogeneous and particular part given by . where , found by solving the LHCC equation , contains the terms of the solution that cancel out, whereas, contains the terms that simplify to when is plugged into      Find the general solution to the differential equation  given that the the particular solution is known to be .   The general solution has the form: Since is given, we only need to solve the homogeneous equation: Using the characteristic equation: The homogeneous solution is: Therefore, the general solution is:     Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution , which will be covered in the upcoming sections.  Check your Understanding  If and , what is the general solution to the LNCC equation?   .  Correct! The general solution combines the homogeneous and particular parts.    .  Incorrect. The signs in the particular solution are wrong.    .  Incorrect. This is only the homogeneous solution, not the complete general solution.    .  Incorrect. This is only the particular solution, not the full general solution.     What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?    To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.    How is the homogeneous solution of an LNCC equation typically found?   By solving the characteristic equation associated with the homogeneous equation.  Correct! The characteristic equation provides the exponents for the homogeneous solution.    By integrating the equation twice.  Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.    By guessing the solution and checking.  Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.    By using boundary conditions.  Incorrect. Boundary conditions are used to find specific constants, not to find .     Which of the following statements are true about the particular part of the solution, , of an LNCC equation?   Which of the following statements are true about the particular part of the solution, , of an LNCC equation?    It is part of the general solution of an LNCC equation.  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the original equation.  Incorrect. is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for the constant term (usually on the right-side of the equation).  Incorrect. is related to the homogeneous equation, while solves the nonhomogeneous equation.    It is found by solving an LHCC equation.  Incorrect. is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles the constant term (usually on the right-side of the equation).  Correct! The particular solution accounts for the non-zero right-hand side of the equation.     Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?    It is part of the general solution of an LNCC equation.  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the original equation.  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for the constant term (usually on the right-side of the equation).  Incorrect. is related to the homogeneous equation, while solves the nonhomogeneous equation.    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles the constant term (usually on the right-side of the equation).  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.     "
+},
+{
+  "id": "main-7-4-3-6",
+  "level": "2",
+  "url": "main-7-4-3.html#main-7-4-3-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homogeneous particular "
+},
+{
+  "id": "main-7-4-3-7",
+  "level": "2",
+  "url": "main-7-4-3.html#main-7-4-3-7",
+  "type": "Example",
+  "number": "14",
+  "title": "",
+  "body": " Find the general solution to the differential equation  given that the the particular solution is known to be .   The general solution has the form: Since is given, we only need to solve the homogeneous equation: Using the characteristic equation: The homogeneous solution is: Therefore, the general solution is:    "
+},
+{
+  "id": "p3-c2-s2-rq1",
+  "level": "2",
+  "url": "main-7-4-3.html#p3-c2-s2-rq1",
+  "type": "Reading Question",
+  "number": "7.2.1",
+  "title": "If <span class=\"process-math\">\\(y_h = c_1e^{-x} + c_2e^{2x}\\)<\/span> and <span class=\"process-math\">\\(y_p = 5x - 3\\text{,}\\)<\/span> what is the general solution to the LNCC equation?",
+  "body": "If and , what is the general solution to the LNCC equation?   .  Correct! The general solution combines the homogeneous and particular parts.    .  Incorrect. The signs in the particular solution are wrong.    .  Incorrect. This is only the homogeneous solution, not the complete general solution.    .  Incorrect. This is only the particular solution, not the full general solution.   "
+},
+{
+  "id": "p3-c2-s2-rq2",
+  "level": "2",
+  "url": "main-7-4-3.html#p3-c2-s2-rq2",
+  "type": "Reading Question",
+  "number": "7.2.2",
+  "title": "<em class=\"emphasis\">What is the purpose of the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> in solving a non-homogeneous linear differential equation?<\/em>",
+  "body": " What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?    To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.   "
+},
+{
+  "id": "p3-c2-s2-rq3",
+  "level": "2",
+  "url": "main-7-4-3.html#p3-c2-s2-rq3",
+  "type": "Reading Question",
+  "number": "7.2.3",
+  "title": "How is the homogeneous solution <span class=\"process-math\">\\(y_h\\)<\/span> of an LNCC equation typically found?",
+  "body": "How is the homogeneous solution of an LNCC equation typically found?   By solving the characteristic equation associated with the homogeneous equation.  Correct! The characteristic equation provides the exponents for the homogeneous solution.    By integrating the equation twice.  Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.    By guessing the solution and checking.  Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.    By using boundary conditions.  Incorrect. Boundary conditions are used to find specific constants, not to find .   "
+},
+{
+  "id": "p3-c2-s2-rq4",
+  "level": "2",
+  "url": "main-7-4-3.html#p3-c2-s2-rq4",
+  "type": "Reading Question",
+  "number": "7.2.4",
+  "title": "<em class=\"emphasis\">Which of the following statements are true about the particular part of the solution, <span class=\"process-math\">\\(y_p\\text{,}\\)<\/span> of an LNCC equation?<\/em>",
+  "body": " Which of the following statements are true about the particular part of the solution, , of an LNCC equation?   Which of the following statements are true about the particular part of the solution, , of an LNCC equation?    It is part of the general solution of an LNCC equation.  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the original equation.  Incorrect. is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for the constant term (usually on the right-side of the equation).  Incorrect. is related to the homogeneous equation, while solves the nonhomogeneous equation.    It is found by solving an LHCC equation.  Incorrect. is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles the constant term (usually on the right-side of the equation).  Correct! The particular solution accounts for the non-zero right-hand side of the equation.   "
+},
+{
+  "id": "p3-c2-s2-rq5",
+  "level": "2",
+  "url": "main-7-4-3.html#p3-c2-s2-rq5",
+  "type": "Reading Question",
+  "number": "7.2.5",
+  "title": "<em class=\"emphasis\">Which of the following statements are true about the homogeneous part of the solution, <span class=\"process-math\">\\(y_h\\text{,}\\)<\/span> of an LNCC equation?<\/em>",
+  "body": " Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?    It is part of the general solution of an LNCC equation.  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the original equation.  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for the constant term (usually on the right-side of the equation).  Incorrect. is related to the homogeneous equation, while solves the nonhomogeneous equation.    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles the constant term (usually on the right-side of the equation).  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.   "
+},
+{
+  "id": "main-7-4-4",
+  "level": "1",
+  "url": "main-7-4-4.html",
+  "type": "Section",
+  "number": "7.3",
+  "title": "Selecting Particular Solutions",
+  "body": "Selecting Particular Solutions  As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation: . The challenge is that the terms on the left side need to combine in just the right way to match on the right. This means the form of the particular solution must resemble closely. When contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.  The specific function that accounts for on the right side is known as the particular solution , denoted . The form of this solution depends on the type of function represents. To help select the correct form of , refer to , which outlines the most common types of and their corresponding forms.   Selecting the form of based on the form of .       Particular Solution Form,                                 In this table, the constants , , , , , and are assumed to be known, while , , , etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.   Find the form of for each of the equations below.       Since has the form , we set .            has the form , so .            has the form , so .           Since is of the form , we set .           Even though only has an term, we consider it to be of the form , where . Therefore, .      When is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct by simply adding together the particular solutions corresponding to each term in . Let’s look at an example to clarify this approach.   Given each of the constant terms, , of an LNCC equation below, find the form of you would use.       Since is the sum of an term and a constant term, we set .           Since is the sum of an term and a term, we set .           Since is the sum of a term and a term, we set .      When involves products of functions, constructing can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.   Find the form of for the equation  .   Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .    Here are a few tips to help you avoid redundant coefficients when constructing the form of .  Tips to Avoid Redundant Coefficients    When is the product of an exponential and another function, avoid writing a coefficient for the exponential term.  For products of polynomials and sine\/cosine functions, use: where the polynomial form on each term uses different coefficients.  When working with sums, look for redundant overlapping terms.     Let's put these tips into practice with a couple of examples.   Find the form of for each of the equations below.   Since is the product of an exponential and a cosine function, we apply tip 1 and set: .     Since is the product of two exponential functions, we ignore one of the coefficients and set: . Note, is the same as , so we could also write .     Since is the product of a polynomial and a cosine function, we apply tip 2 and set: .     When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set: and you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to: .    Check your Understanding  Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.    If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.    Which of the following would be the correct form for if ?    Correct! The particular solution should combine the polynomial with the exponential function in the same way as .     Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial .     Incorrect. This form only accounts for the polynomial part of , not the exponential part.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .     Match the form   Suppose we want the form of particular solution, , for the equation . On the left are possible functions. Drag each of these functions to the correct form of that you would use.                                             Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                         "
+},
+{
+  "id": "main-7-4-4-3",
+  "level": "2",
+  "url": "main-7-4-4.html#main-7-4-4-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "particular solution "
+},
+{
+  "id": "yp-table",
+  "level": "2",
+  "url": "main-7-4-4.html#yp-table",
+  "type": "Table",
+  "number": "15",
+  "title": "Selecting the form of <span class=\"process-math\">\\(y_p\\)<\/span> based on the form of <span class=\"process-math\">\\(f(x)\\text{.}\\)<\/span>",
+  "body": " Selecting the form of based on the form of .       Particular Solution Form,                                "
+},
+{
+  "id": "main-7-4-4-6",
+  "level": "2",
+  "url": "main-7-4-4.html#main-7-4-4-6",
+  "type": "Example",
+  "number": "16",
+  "title": "",
+  "body": " Find the form of for each of the equations below.       Since has the form , we set .            has the form , so .            has the form , so .           Since is of the form , we set .           Even though only has an term, we consider it to be of the form , where . Therefore, .     "
+},
+{
+  "id": "main-7-4-4-8",
+  "level": "2",
+  "url": "main-7-4-4.html#main-7-4-4-8",
+  "type": "Example",
+  "number": "17",
+  "title": "",
+  "body": " Given each of the constant terms, , of an LNCC equation below, find the form of you would use.       Since is the sum of an term and a constant term, we set .           Since is the sum of an term and a term, we set .           Since is the sum of a term and a term, we set .     "
+},
+{
+  "id": "main-7-4-4-10",
+  "level": "2",
+  "url": "main-7-4-4.html#main-7-4-4-10",
+  "type": "Example",
+  "number": "18",
+  "title": "",
+  "body": " Find the form of for the equation  .   Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .   "
+},
+{
+  "id": "main-7-4-4-14",
+  "level": "2",
+  "url": "main-7-4-4.html#main-7-4-4-14",
+  "type": "Example",
+  "number": "19",
+  "title": "",
+  "body": " Find the form of for each of the equations below.   Since is the product of an exponential and a cosine function, we apply tip 1 and set: .     Since is the product of two exponential functions, we ignore one of the coefficients and set: . Note, is the same as , so we could also write .     Since is the product of a polynomial and a cosine function, we apply tip 2 and set: .     When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set: and you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to: .   "
+},
+{
+  "id": "p3-c2-s3-rq1",
+  "level": "2",
+  "url": "main-7-4-4.html#p3-c2-s3-rq1",
+  "type": "Reading Question",
+  "number": "7.3.1",
+  "title": "<em class=\"emphasis\">Which of the following functions would be an appropriate form for the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> if <span class=\"process-math\">\\(f(x) = 5x^2 + 3x + 1\\text{?}\\)<\/span><\/em>",
+  "body": "Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.   "
+},
+{
+  "id": "p3-c2-s3-rq2",
+  "level": "2",
+  "url": "main-7-4-4.html#p3-c2-s3-rq2",
+  "type": "Reading Question",
+  "number": "7.3.2",
+  "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(f(x) = 3e^{4x} + 2\\sin(3x)\\text{,}\\)<\/span> what should be the form of the particular solution <span class=\"process-math\">\\(y_p\\text{?}\\)<\/span><\/em>",
+  "body": "If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.   "
+},
+{
+  "id": "p3-c2-s3-rq3",
+  "level": "2",
+  "url": "main-7-4-4.html#p3-c2-s3-rq3",
+  "type": "Reading Question",
+  "number": "7.3.3",
+  "title": "<em class=\"emphasis\">Which of the following would be the correct form for <span class=\"process-math\">\\(y_p\\)<\/span> if <span class=\"process-math\">\\(f(x) = x^2 e^{x}\\text{?}\\)<\/span><\/em>",
+  "body": "Which of the following would be the correct form for if ?    Correct! The particular solution should combine the polynomial with the exponential function in the same way as .     Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial .     Incorrect. This form only accounts for the polynomial part of , not the exponential part.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .   "
+},
+{
+  "id": "p3-c2-s3-rq4",
+  "level": "2",
+  "url": "main-7-4-4.html#p3-c2-s3-rq4",
+  "type": "Reading Question",
+  "number": "7.3.4",
+  "title": "<em class=\"emphasis\">Match the <span class=\"process-math\">\\(y_p\\)<\/span> form<\/em>.",
+  "body": " Match the form   Suppose we want the form of particular solution, , for the equation . On the left are possible functions. Drag each of these functions to the correct form of that you would use.                                           "
+},
+{
+  "id": "p3-c2-s3-rq5",
+  "level": "2",
+  "url": "main-7-4-4.html#p3-c2-s3-rq5",
+  "type": "Reading Question",
+  "number": "7.3.5",
+  "title": "<em class=\"emphasis\">Match the <span class=\"process-math\">\\(y_p\\)<\/span> form<\/em>.",
+  "body": " Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                       "
 },
 {
   "id": "main-7-5",
