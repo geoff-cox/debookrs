@@ -1,199 +1,142 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Adjusting Particular Solutions </title>
 
 	<p>
-		Now that we know how to select the form of the particular part of the solution of a linear nonhomogeneous constant coefficient (LNCC) equation, we must now discuss a situation where this form may need to be adjusted so that it does not overlap with the homogeneous part of the solution. This is a crucial step ensures that the particular solution does not get absorbed into the homogeneous part of the solution.
+		As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, <m>y_h</m>, and the particular solution, <m>y_p</m>. This relationship is expressed as:
+		<me>
+			y = y_h + y_p
+		</me>.
+		However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.
 	</p>
 
 	<p>
-		Everything we have done up to this point has been geared toward solving linear nonhomogeneous constant coefficient equations where the right-hand side contains some combination of polynomial, exponential, sine, and cosine functions. However, there is one last detail that we still need to address. In particular, we need to know what to do when the selected form of <m>y_p</m> has overlapping <q>like-terms</q> with the homogeneous solution, <m>y_h</m>. In this section we will explain why this is a problem and how to fix it.
-	</p>
-
-	<p>
-		To illustrate this concept, note that the differential equation
+		To illustrate this, consider the LNCC equation:
 		<me>
 			y'' - 4y' + 3y = e^{3x}
 		</me>.
-		has a particular solution of the form <m>y_p = A e^{3x}</m>. Plugging it in gives
-		<md>
-			<mrow>								y'' - 4y' + 3y	=\ \amp e^{3x} </mrow>
-			<mrow> (A e^{3x})'' - 4(A e^{3x})' + 3(A e^{3x}) 	=\ \amp e^{3x} </mrow>
-			<mrow> (9A e^{3x}) - 4(3A e^{3x}) + 3(A e^{3x}) 	=\ \amp e^{3x} </mrow>
-			<mrow> 						(9A - 12A + 3A) e^{3x}	=\ \amp e^{3x} </mrow>
-			<mrow> 									0 e^{3x}	=\ \amp e^{3x} </mrow>
-			<mrow> 											0	=\ \amp e^{3x} \quad \leftarrow \text{problem!}</mrow>
-		</md>
-		which leads to an obvious problem. Recall that the <xref ref="lncc-general-solution-parts"  text="custom">parts of an LNCC general solution</xref> tells you that if <m>y_p</m> simplifies to <m>0</m>, then it must be part of the homogeneous solution!
-	</p>
-	
-	<p>
-		Now, let's attempt <xref ref="def-linear"/> to find a particular solution, <m>y_p</m>. Since the right-hand side of the original equation is <m>e^{3x}</m>, we might initially guess:
+		Here, the homogeneous and particular solutions are:
 		<me>
-			y_p = A e^{3x}
-		</me>
-		However, this term <m>e^{3x}</m> is already part of the homogeneous solution, <m>y_h</m>. If we use this guess, we will not obtain a valid particular solution because it will be absorbed into the homogeneous part. To circumvent this, we adjust our guess by multiplying by <m>x</m> to ensure linear independence:
+			y_h = c_1 e^{x} + c_2 e^{3x}, \qquad y_p = A e^{3x}
+		</me>.
+		The problem arises when you observe that <m>Ae^{3x}</m> in <m>y_p</m> is similar to <m>c_2 e^{3x}</m> in <m>y_h</m>, causing the general solution to become:
 		<me>
-			y_p = A x e^{3x}
+			y = y_h + y_p = c_1 e^{x} + c_2 e^{3x} + A e^{3x} = c_1 e^{x} + (c_2 + A) e^{3x}.
 		</me>
+		As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term <m>e^{3x}</m>.
 	</p>
 
 	<p>
-		Let's verify if this adjusted guess works by plugging it into the original equation. We find the necessary derivatives:
+		To address this, we adjust the form of <m>y_p</m> by multiplying it by <m>x</m> until there are no overlapping terms between <m>y_h</m> and <m>y_p</m>. In this example, multiplying <m>y_p</m> by <m>x</m> once is sufficient to make it independent of <m>y_h</m>. The adjusted form of <m>y_p</m> is:
 		<me>
-			y_p = A x e^{3x}
-		</me>
-		<me>
-			y_p' = A e^{3x} + 3A x e^{3x}
-		</me>
-		<me>
-			y_p'' = 6A e^{3x} + 9A x e^{3x}
-		</me>
-		Substituting these into the differential equation:
-		<me>
-			(6A e^{3x} + 9A x e^{3x}) - 4(A e^{3x} + 3A x e^{3x}) + 3(A x e^{3x}) = e^{3x}
-		</me>
-		Simplifying, we get:
-		<me>
-			(6A e^{3x} + 9A x e^{3x}) - (4A e^{3x} + 12A x e^{3x}) + (3A x e^{3x}) = e^{3x}
-		</me>
-		<me>
-			(6A e^{3x} - 4A e^{3x}) + (9A x e^{3x} - 12A x e^{3x} + 3A x e^{3x}) = e^{3x}
-		</me>
-		<me>
-			2A e^{3x} + 0 = e^{3x}
-		</me>
-		This simplifies to:
-		<me>
-			2A e^{3x} = e^{3x}
-		</me>
-		Thus, we find:
-		<me>
-			A = \frac{1}{2}
+			y_p = A x e^{3x}.
 		</me>
 	</p>
 
-	<p>
-		Therefore, the particular solution is:
-		<me>
-			y_p = \frac{1}{2} x e^{3x}
-		</me>
-	</p>
+	<theorem><title> Adjusting Particular Solutions </title>
+		<statement>
+			<p>
+				When the particular solution, <m>y_p</m>, contains terms in common with the homogeneous solution, <m>y_h</m>, adjust the form of <m>y_p</m> by repeatedly multiplying the overlapping terms by <m>x</m> until <m>y_h</m> and <m>y_p</m> share no terms in common.
+			</p>
+		</statement>
+	</theorem>
 
 	<p>
-		This example demonstrates the importance of adjusting the form of <m>y_p</m> when it overlaps with <m>y_h</m>. In general, if our initial guess for <m>y_p</m> contains any term that is also part of <m>y_h</m>, we multiply that term by <m>x</m> to ensure independence. If the overlap persists, we multiply by higher powers of <m>x</m> (e.g., <m>x^2</m>, <m>x^3</m>) until the terms are linearly independent.
+		Let's explore this adjustment process through a few examples.
 	</p>
 
+	<example>
+		<m>\ \ </m> Find the adjusted form of the particular solution, <m>y_p</m>, for each of the following LNCC equations.
+		<ol>
+			<li>
+				<p>
+					<m>\ds y'' - 2y' + y = e^x </m>.
+					<solution>
+						<p>
+							First, determine <m>y_h</m> by solving the characteristic equation:
+							<me>r^2 - 2r + 1 = 0</me>,
+							which yields a repeated root <m>r_1 = 1</m>, giving the homogeneous solution:
+							<me>y_h = c_1 e^x + c_2 x e^x</me>.
+						</p>
+						<p>
+							Since the nonhomogeneous term is <m>e^x</m>, the initial guess for the particular solution is:
+							<me> y_p = A e^x</me>.
+							However, this form overlaps with <m>c_1 e^x</m> in <m>y_h</m>. To resolve this, multiply <m>y_p</m> by <m>x</m>:
+							<me> y_p = A x e^x</me>,
+							which now overlaps with <m>c_2 x e^x</m>. Multiplying by <m>x</m> again gives:
+							<me> y_p = A x^2 e^x</me>,
+							which has no terms in common with <m>y_h</m>. This is the correct form to use for <m>y_p</m>.
+						</p>
+					</solution>
+				</p>
+			</li>
+			<li>
+				<p>
+					<m>\ds y''' + 4y' = \cos(2x) - \sin(x) </m>.
+					<solution>
+						<p>
+							First, solve the characteristic equation:
+							<me>r^3 + 4r = 0</me>,
+							which yields the roots <m>r_1 = 0</m>, <m>r_2 = 2i</m>, and <m>r_3 = -2i</m>. This results in the homogeneous solution:
+							<me>y_h = c_1 + c_2 \cos(2x) + c_3 \sin(2x)</me>.
+						</p>
+						<p>
+							For the nonhomogeneous term <m>\cos(2x) - \sin(x)</m>, the initial guess for <m>y_p</m> is:
+							<me> y_p = \ub{A \cos(2x) + B \sin(2x)}_{\text{common terms with } y_h} + \ub{D \cos(x) + E \sin(x)}_{\text{NO common terms with } y_h}</me>.
+							Since <m>A \cos(2x)</m> and <m>B \sin(2x)</m> overlap with terms in <m>y_h</m>, multiply these terms by <m>x</m>:
+							<me> y_p = \ub{Ax \cos(2x) + B x \sin(2x)}_{\text{now independent}} + \ub{D \cos(x) + E \sin(x)}_{\text{already independent}}</me>.
+							The terms in <m>y_h</m> and <m>y_p</m> are now independent, making this the correct form for <m>y_p</m>.
+						</p>
+					</solution>
+				</p>
+			</li>
+			<li>
+				<p>
+					<m>\ds y'' + y = x e^x </m>.
+					<solution>
+						<p>
+							Begin by solving the characteristic equation:
+							<me>r^2 + 1 = 0</me>,
+							which yields the roots <m>r_1 = i</m> and <m>r_2 = -i</m>, leading to the homogeneous solution:
+							<me>y_h = c_1 \cos(x) + c_2 \sin(x)</me>.
+						</p>
+						<p>
+							Since the nonhomogeneous term is <m>x e^x</m>, the initial guess for <m>y_p</m> is:
+							<me> y_p = (Ax + B) e^x </me>.
+							This form is not present in <m>y_h</m>, so no further adjustment is needed. To determine the coefficients <m>A</m> and <m>B</m>, substitute <m>y_p</m> back into the differential equation and solve for these values.
+						</p>
+					</solution>
+				</p>
+			</li>
+			<li>
+				<p>
+					<m>\ds y'' - 6y' + 9y = x^2 e^{3x} </m>.
+					<solution>
+						<p>
+							First, determine <m>y_h</m> by solving the characteristic equation:
+							<me>r^2 - 6r + 9 = 0</me>,
+							which yields a repeated root <m>r = 3</m>, giving the homogeneous solution:
+							<me>y_h = (c_1 + c_2 x) e^{3x}</me>.
+						</p>
+						<p>
+							Since the nonhomogeneous term is <m>x^2 e^{3x}</m>, the initial guess for the particular solution is:
+							<me>y_p = (Ax^2 + Bx + C) e^{3x}</me>.
+							However, notice that <m>e^{3x}</m> and <m>x e^{3x}</m> are already present in <m>y_h</m>.
+							To avoid overlap, multiply <m>y_p</m> by <m>x^2</m>, giving:
+							<me>y_p = (Ax^4 + Bx^3 + Cx^2) e^{3x}</me>.
+							This form is now independent of <m>y_h</m>, ensuring that there are no overlapping terms.
+						</p>
+						<p>
+							To determine the coefficients <m>A</m>, <m>B</m>, and <m>C</m>, substitute <m>y_p</m> back into the original differential equation and solve for these values.
+						</p>
+					</solution>
+				</p>
+			</li>
+		</ol>
+	</example>
+
 	<p>
-		This adjustment process ensures that our particular solution remains valid and that we can correctly solve the differential equation. By recognizing when to adjust <m>y_p</m>, we refine our approach to handling linear nonhomogeneous constant coefficient equations effectively.
+		This adjustment process ensures that <m>y_h</m> and <m>y_p</m> are independent, allowing the general solution <m>y = y_h + y_p</m> to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.
 	</p>
 
 	<xi:include href="./p3-c2-s4-interactives.ptx" />
-
-	<example>
-
-		<m>\ \ </m> Find the particular solution to the LNCC equation below.
-
-		<p>
-			<me> y'' - 2y' + y = e^x </me>. 
-		</p>
-
-		<solution>
-			<p>
-			Step 1: Since the right-hand side is an exponential function, we guess the particular solution is of the form:
-			<me> y_p = Ae^x </me>.
-			</p>
-			<p>
-			Step 2: Differentiate the guessed solution:
-			<md>
-				<mrow> y_p' = Ae^x, \quad y_p'' = Ae^x </mrow>
-			</md>
-			</p>
-			<p>
-			Step 3: Substitute these into the original equation:
-			<md>
-				<mrow> Ae^x - 2Ae^x + Ae^x = e^x </mrow>
-				<mrow> 0 = e^x </mrow>
-			</md>
-			</p>
-			<p>
-			Step 4: Since this doesn't work, we modify our guess to:
-			<me> y_p = A x e^x </me>, to avoid conflicts with the complementary solution.
-			</p>
-			<p>
-			Step 5: Differentiate again:
-			<md>
-				<mrow> y_p' = A e^x + A x e^x, \quad y_p'' = 2A e^x + A x e^x </mrow>
-			</md>
-			</p>
-			<p>
-			Step 6: Substitute into the original equation:
-			<md>
-				<mrow> (2A e^x + A x e^x) - 2(A e^x + A x e^x) + A x e^x = e^x </mrow>
-				<mrow> A e^x = e^x </mrow>
-			</md>
-			</p>
-			<p>
-			Step 7: Solve for \( A \):
-			<md>
-				<mrow> A = 1 </mrow>
-			</md>
-			</p>
-			<p>
-			Step 8: Write the particular solution:
-			<me> y_p = x e^x </me>.
-			</p>
-		</solution>
-	</example>
-
-	<example>
-		<statement>
-			Solve the non-homogeneous differential equation:
-			<me> y'' + y = \sin x </me>. Find the particular solution.
-		</statement>
-		<solution>
-			<p>
-				The right-hand side is <m>\sin x</m>, so we set our <m>y_p</m> and find its derivatives as follows:
-				<md>
-					<mrow> y_p		=\amp\ A \sin x + B \cos x </mrow>
-					<mrow> y_p'		=\amp\ A \cos x - B \sin x </mrow>
-					<mrow> y_p''	=\amp\ -A \sin x - B \cos x </mrow>
-				</md>
-			</p>
-			<p>
-				Substitute these into the original equation:
-				<md>
-					<mrow> (-A \sin x - B \cos x) + (A \sin x + B \cos x) = \sin x </mrow>
-					<mrow> 0 = \sin x </mrow>
-				</md>
-			</p>
-			<p>
-				Step 4: Since the terms cancel out, we adjust the guess to:
-				<me> y_p = x(A \sin x + B \cos x) </me>.
-			</p>
-			<p>
-				Step 5: Differentiate again:
-				<md>
-					<mrow> y_p' = A \sin x + B \cos x + x(A \cos x - B \sin x) </mrow>
-					<mrow> y_p'' = 2A \cos x - 2B \sin x + x(-A \sin x - B \cos x) </mrow>
-				</md>
-			</p>
-			<p>
-				Step 6: Substitute into the original equation:
-				<md>
-					<mrow> (2A \cos x - 2B \sin x + x(-A \sin x - B \cos x)) + x(A \sin x + B \cos x) = \sin x </mrow>
-					<mrow> 2A \cos x = \sin x </mrow>
-				</md>
-			</p>
-			<p>
-				Step 7: Solve for <m> A </m> and <m> B </m>:
-				<md>
-					<mrow> 2A = 1 \quad \implies \quad A = \frac{1}{2}, \quad B = 0 </mrow>
-				</md>
-			</p>
-			<p>
-				Step 8: Write the particular solution:
-				<me> y_p = \frac{x}{2} \sin x </me>.
-			</p>
-		</solution>
-	</example>
 
 </section>

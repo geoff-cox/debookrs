@@ -487,7 +487,7 @@
 			</p>
 			
 			<p>
-				Let’s start with a simple first-order equation:
+				Let's start with a simple first-order equation:
 				<me> y' - 5y = 0 </me>
 				We want to find the value of <m>r</m> such that <m>y = e^{rx}</m> is a solution. Substituting <m>y = e^{rx}</m> into the differential equation gives:
 				<md>
@@ -1751,6 +1751,991 @@
 				</exercise>
 			</reading-questions>
 		</section>
+
+		<section><title> General Solutions </title>
+			<p>
+				In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.
+			</p>
+
+			<p>
+				To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart:
+				<mdn>
+					<mrow xml:id="lncc-eqn1"> y'' - 4y' + 3y =\amp\ 9x</mrow>
+					<mrow xml:id="lncc-eqn2"> y'' - 4y' + 3y =\amp\ 0</mrow>
+				</mdn>
+				Let <m>y_h</m> be the solution to the homogeneous equation <xref ref="lncc-eqn2" />, and <m>y_p</m> be the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, so we have
+				<md>
+					<mrow> y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
+					<mrow> y_h'' - 4y_h' + 3y_h =\amp\ 0 </mrow>
+				</md>
+				Now, adding these equations together and rearranging the terms gives us
+				<md>
+					<mrow> y_h'' - 4y_h' + 3y_h + y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
+					<mrow> y_h'' + y_p'' - 4y_h' + 4y_p' + 3y_h + 3y_p =\amp\ 9x </mrow>
+					<mrow> (y_h + y_p)'' - 4(y_h + y_p)' + 3(y_h + y_p) =\amp\ 9x </mrow>
+				</md>
+				This shows that not only is <m>y_p</m> the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, but so is <m>y_h+y_p</m>. This happens because the terms in <m>y_h</m> simplify to zero and the terms in <m>y_p</m> simplify to <m>9x</m>.
+			</p>
+
+			<p>
+				From the previous section, we know <m>y_p = 3x + 4</m> is a solution to the LNCC equation <xref ref="lncc-eqn1" /> and <m>y_h = c_1e^{x} + c_2e^{3x}</m> is the solution to the LHCC equation <xref ref="lncc-eqn2" />. Therefore, the combined solution 
+				<me>
+					y = y_h + y_p = \ub{c_1e^{x} + c_2e^{3x}}_{\text{simplify to } 0} + \ub{3x + 4}_{\text{simplify to }9x}
+				</me>
+				is a solution to the LNCC equation <xref ref="lncc-eqn1" /> where  <m>y_h</m> contains the terms that simplify to zero, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <m>y</m> is substituted into <xref ref="lncc-eqn1" />. 
+			</p>
+
+			<p>
+				This example leads us to the following concept for the general solution of a LNCC differential equation.
+			</p>
+			
+			<p>
+				<assemblage xml:id="lncc-general-solution-parts"><title>LNCC General Solution Parts</title>
+					<p>
+						The linear nonhomogeneous constant coefficient (LNCC) equation 
+						<men xml:id="lncc-general-equation">
+							a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
+						</men>
+						has a solution with a <term>homogeneous</term> and <term>particular</term> part given by
+						<men xml:id="lncc-general-solution">
+							y = y_h + y_p
+						</men>.
+						where <m>y_h</m>, found by solving the LHCC equation
+						<me>
+							a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = 0
+						</me>.
+						Here, <m>y_h</m> contains the terms of the solution that cancel out, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <xref ref="lncc-general-solution"/> is substituted into <xref ref="lncc-general-equation"/>.
+					</p>
+				</assemblage>
+			</p>
+
+
+			<example>
+				<m>\ \ </m> Find the general solution to the differential equation
+
+				<p>
+					<me>
+						y'' - 4y' - 12y = 3{e^{5t}}
+					</me>
+					given that the the particular solution is known to be <m>y_p(t) =  -\frac{3}{7}{{e}^{5t}}</m>.
+				</p>
+				<solution>
+					<p>
+						The general solution has the form:
+						<me>y = y_h + y_p</me>
+						Since <m>y_p</m> is given, we only need to solve the homogeneous equation:
+						<me>y'' - 4y' - 12y = 0</me>
+						Using the characteristic equation:
+						<md>
+							<mrow> r^2 - 4r - 12 	=\amp\ 0											</mrow>
+							<mrow> (r - 6)(r + 2) 	=\amp\ 0 \quad \Rightarrow \quad r_1 = 6, r_2 = -2	</mrow>
+						</md>
+						The homogeneous solution is:
+						<me> y_h(t) = c_1e^{-2t} + c_2e^{6t} </me>
+						Therefore, the general solution is:
+						<me> y = c_1e^{-2t} + c_2e^{6t} -\frac{3}{7}{e^{5t}} </me>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution <m>y_p</m>, which will be covered in the upcoming sections.
+			</p>
+
+			<reading-questions><title> Check your Understanding </title>
+				<exercise label="p3-c2-s2-rq1"><title>If <m>y_h = c_1e^{-x} + c_2e^{2x}</m> and <m>y_p = 5x - 3</m>, what is the general solution to the LNCC equation?</title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement><m>y = c_1e^{-x} + c_2e^{2x} + 5x - 3</m>.</statement>
+							<feedback>Correct! The general solution combines the homogeneous and particular parts.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y = c_1e^{-x} + c_2e^{2x} - 5x + 3</m>.</statement>
+							<feedback>Incorrect. The signs in the particular solution are wrong.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y = c_1e^{-x} + c_2e^{2x}</m>.</statement>
+							<feedback>Incorrect. This is only the homogeneous solution, not the complete general solution.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y = 5x - 3</m>.</statement>
+							<feedback>Incorrect. This is only the particular solution, not the full general solution.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s2-rq2"><title> <em>What is the purpose of the particular solution <m>y_p</m> in solving a non-homogeneous linear differential equation?</em> </title>
+					<statement/>
+					<choices>
+						<choice>
+							<statement><p>To represent the general solution of the homogeneous equation.</p></statement>
+							<feedback>Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.</feedback>
+						</choice>
+						<choice>
+							<statement><p>To determine the coefficients of the characteristic equation.</p></statement>
+							<feedback>Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>To account for the non-homogeneous term <m>f(x)</m> on the right-hand side of the equation.</p></statement>
+							<feedback>Correct! The particular solution is chosen to match the form of <m>f(x)</m> and account for its influence in the equation.</feedback>
+						</choice>
+						<choice>
+							<statement><p>To simplify the process of solving the differential equation.</p></statement>
+							<feedback>Incorrect. The particular solution addresses the specific form of <m>f(x)</m> and is part of solving the non-homogeneous equation, but its purpose isn't simplification.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s2-rq3"><title>How is the homogeneous solution <m>y_h</m> of an LNCC equation typically found?</title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement>By solving the characteristic equation associated with the homogeneous equation.</statement>
+							<feedback>Correct! The characteristic equation provides the exponents for the homogeneous solution.</feedback>
+						</choice>
+						<choice>
+							<statement>By integrating the equation twice.</statement>
+							<feedback>Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.</feedback>
+						</choice>
+						<choice>
+							<statement>By guessing the solution and checking.</statement>
+							<feedback>Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.</feedback>
+						</choice>
+						<choice>
+							<statement>By using boundary conditions.</statement>
+							<feedback>Incorrect. Boundary conditions are used to find specific constants, not to find <m>y_h</m>.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s2-rq4"><title> <em>Which of the following statements are true about the particular part of the solution, <m>y_p</m>, of an LNCC equation?</em> </title>
+					<statement>
+						<p>
+							Which of the following statements are true about the particular part of the solution, <m>y_p</m>, of the LNCC equation
+							<men xml:id="rq4-eq">
+								a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
+							</men>
+						</p>
+					</statement>
+					<choices>
+						<choice correct="yes">
+							<statement><p>It is part of the general solution of <xref ref="rq4-eq"/>.</p></statement>
+							<feedback>Correct! The general solution is the sum of the homogeneous solution <m>y_h</m> and the particular solution <m>y_p</m>.</feedback>
+						</choice>
+						<choice>
+							<statement><p>It contains the terms in the general solution that simplify to zero when you plug it into the left-side of <xref ref="rq4-eq"/>.</p></statement>
+							<feedback>Incorrect. <m>y_h</m> is the solution to the homogeneous part, while <m>y_p</m> is the particular solution.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>It contains the terms in the general solution that account for <m>f</m>.</p></statement>
+							<feedback>Correct. The terms of <m>y_p</m> simplify to <m>f</m> when plugged into <xref ref="rq4-eq"/>.</feedback>
+						</choice>
+						<choice>
+							<statement><p>It is found by solving an LHCC equation.</p></statement>
+							<feedback>Incorrect. <m>y_h</m> is the solution to the homogeneous equation, and <m>y_p</m> solves the nonhomogeneous equation.</feedback>
+						</choice>
+						<choice>
+							<statement><p>It contains constants of integration.</p></statement>
+							<feedback>Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>It resembles <m>f</m>.</p></statement>
+							<feedback>Correct! The particular solution looks like the non-zero right-hand side of the equation.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s2-rq5"><title> <em>Which of the following statements are true about the homogeneous part of the solution, <m>y_h</m>, of an LNCC equation?</em> </title>
+					<statement>
+						<p>
+							Which of the following statements are true about the homogeneous part of the solution,, <m>y_p</m>, of the LNCC equation
+							<men xml:id="rq5-eq">
+								a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
+							</men>
+						</p>
+					</statement>
+					<choices>
+						<choice correct="yes">
+							<statement><p>It is part of the general solution of <xref ref="rq5-eq"/></p></statement>
+							<feedback>Correct! The general solution is the sum of the homogeneous solution <m>y_h</m> and the particular solution <m>y_p</m>.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>It contains the terms in the general solution that simplify to zero when you plug it into the left-side of <xref ref="rq5-eq"/>.</p></statement>
+							<feedback>Correct! <m>y_h</m> is the solution to the homogeneous part, while <m>y_p</m> is the particular solution.</feedback>
+						</choice>
+						<choice>
+							<statement><p>It contains the terms in the general solution that account for <m>f</m>.</p></statement>
+							<feedback>Incorrect. <m>y_h</m> is related to the homogeneous equation, while the terms of <m>y_p</m> simplify to <m>f</m> when plugged into <xref ref="rq5-eq"/>.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>It is found by solving an LHCC equation.</p></statement>
+							<feedback>Correct! <m>y_h</m> is the solution to the homogeneous equation, and <m>y_p</m> solves the nonhomogeneous equation.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>It contains constants of integration.</p></statement>
+							<feedback>Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.</feedback>
+						</choice>
+						<choice>
+							<statement><p>It resembles <m>f</m>.</p></statement>
+							<feedback>Incorrect The particular solution accounts for the non-zero right-hand side of the equation.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</reading-questions>
+		</section>
+
+		<section><title> Selecting Particular Solutions </title>
+			<p>
+				As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation:
+				<me>
+					a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = f(x)
+				</me>.
+				The challenge is that the terms on the left side need to combine in just the right way to match <m>f(x)</m> on the right. This means the form of the particular solution must resemble <m>f(x)</m> closely. When <m>f(x)</m> contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.
+			</p>
+
+			<p>
+				The specific function that accounts for <m>f(x)</m> on the right side is known as the <term>particular solution</term>, denoted <m>y_p</m>. The form of this solution depends on the type of function <m>f(x)</m> represents. To help select the correct form of <m>y_p</m>, refer to <xref ref="yp-table"/>, which outlines the most common types of <m>f(x)</m> and their corresponding <m>y_p</m> forms.
+			</p>
+
+			<table xml:id="yp-table">
+				<title>Selecting the form of <m>y_p</m> based on the form of <m>f(x)</m>.</title>
+				<tabular top="medium" left="medium" right="medium" bottom="minor">
+					<col halign="center" right="medium"/>
+					<col halign="center"/>
+					<row bottom="medium">
+						<cell><m>f(x)</m></cell>
+						<cell><term>Particular Solution Form, </term><m>y_p</m></cell>
+					</row>
+					<row>
+						<cell><m>a</m></cell>
+						<cell><m>A</m></cell>
+					</row>
+					<row>
+						<cell><m>ax+b</m></cell>
+						<cell><m>Ax+B</m></cell>
+					</row>
+					<row>
+						<cell><m>ax^2+bx+c</m></cell>
+						<cell><m>Ax^2+Bx+C</m></cell>
+					</row>
+					<row>
+						<cell><m>ax^3+bx^2+cx+d</m></cell>
+						<cell><m>Ax^3+Bx^2+Cx+D</m></cell>
+					</row>
+					<row>
+						<cell><m>a e^{\alpha x}</m></cell>
+						<cell><m>A e^{\alpha x}</m></cell>
+					</row>
+					<row>
+						<cell><m>a \sin(\beta x)</m></cell>
+						<cell><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
+					</row>
+					<row bottom="medium">
+						<cell><m>a \cos(\beta x)</m></cell>
+						<cell><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
+					</row>
+				</tabular>
+			</table>
+
+			<p>
+				In this table, the constants <m>a</m>, <m>b</m>, <m>c</m>, <m>d</m>, <m>\alpha</m>, and <m>\beta</m> are assumed to be known, while <m>A</m>, <m>B</m>, <m>C</m>, etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.
+			</p>
+
+			<example>
+
+				<m>\ \ </m>Find the form of <m>y_p</m> for each of the equations below.
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds y'' + y' + 5y = 3e^{6x} </m>
+						</p>
+						<p>
+							<solution>
+								Since <m>f(x) = 3e^{6x}</m> has the form <m>a e^{\alpha x}</m>, we set <me>y_p = Ae^{6x}</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+				
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds y'' + 3y' - y = 2\sin(2x) </m>
+						</p>
+
+						<p>
+							<solution>
+								<m>2\sin(2x)</m> has the form <m>a \sin(\beta x)</m>, so <me>y_p = A\sin(2x) + B\cos(2x)</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds \omega''' + \omega' = 5\theta^2 + \theta + 1 </m>
+						</p>
+				
+						<p>
+							<solution>
+								<m>5\theta^2 + \theta + 1</m> has the form <m>a\theta^2+b\theta+c</m>, so <me>\omega_p = A\theta^2 + B\theta + C</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds 2\frac{dy}{dx} + 5y = -3 </m>
+						</p>
+				
+						<p>
+							<solution>
+								Since <m>f(x) = -3</m> is of the form <m>a</m>, we set <me>y_p = A</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds y'' -3y' + 0.5y = 14x^4 </m>
+						</p>
+				
+						<p>
+							<solution>
+								Even though <m>f(x) = 14x^4</m> only has an <m>x^4</m> term, we consider it to be of the form 
+								<me>ax^4+bx^3+cx^2+dx+e</me>, 
+								where <m>b = c = d = e = 0</m>. Therefore,
+								<me>y_p = Ax^4+Bx^3+Cx^2+Dx+E</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</example>
+
+			<p>
+				When <m>f(x)</m> is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct <m>y_p</m> by simply adding together the particular solutions corresponding to each term in <m>f(x)</m>. Let's look at an example to clarify this approach.
+			</p>
+
+			<example>
+				<m>\ \ </m>Given each of the constant terms, <m>f</m>, of an LNCC equation below, find the form of <m>y_p</m> you would use.
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds 2e^{w} - 1 </m>
+						</p>
+						<p>
+							<solution>
+								Since <m>f(w)</m> is the sum of an <m>e^{w}</m> term and a constant term, we set 
+								<me>y_p = Ae^{w} + B</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+				
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds 3e^{6x} + 2\sin(2x) </m>
+						</p>
+
+						<p>
+							<solution>
+								Since <m>f(x)</m> is the sum of an <m>e^{6x}</m> term and a <m>\sin(2x)</m> term, we set 
+								<me>y_p = Ae^{6x} + B\sin(2x) + C\cos(2x)</me>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					<sidebyside widths="36% 64%">
+						<p>
+							<m> \ds 2\sin(-2x) - 6\cos(3x) </m>
+						</p>
+				
+						<p>
+							<solution>
+								Since <m>f(x)</m> is the sum of a <m>\sin(-2x)</m> term and a <m>\cos(3x)</m> term, we set 
+								<md>
+									<mrow> y_p = A\sin(-2x)	\amp\ + B\cos(-2x)			</mrow>
+									<mrow>				+	\amp\ C\sin(3x) + D\cos(3x)	</mrow>
+								</md>.
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</example>
+
+			<p>
+				When <m>f(x)</m> involves products of functions, constructing <m>y_p</m> can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.
+			</p>
+
+			<example>
+
+				<m>\ \ </m>Find the form of <m>y_p</m> for the equation
+
+				<p>
+					<me>y'' + y' + 5y = 10x^2 e^{6x}</me>.
+				</p>
+
+				<solution>
+					<p>
+						Since <m>f(x) = 10x^2 e^{6x}</m> is the product of a polynomial and an exponential, we initially set:
+						<me>y_p = (Ax^2 + Bx + C)(D e^{6x})</me>.
+						However, <m>D</m> is redundant because if we multiply it onto the polynomial, it can be absorbed into <m>A, B, </m> and <m>C</m>, as follows:
+						<me>y_p = (Ax^2 + Bx + C)(D e^{6x}) = \left(AD x^2 + BD x + CD\right) e^{6x}</me>.
+						So, the form of <m>y_p</m> simplifies to:
+						<me>y_p = \left(A x^2 + B x + C\right) e^{6x}</me>.
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				Here are a few tips to help you avoid redundant coefficients when constructing the form of <m>y_p</m>.
+			</p>
+
+			<assemblage><title>Tips to Avoid Redundant Coefficients</title>
+				<p>
+					<ol>
+						<li>
+							When <m>f(x)</m> is the product of an exponential and another function, avoid writing a coefficient for the exponential term.
+						</li>
+						<li>
+							For products of polynomials and sine/cosine functions, use:
+							<me>(\text{polynomial form}) \sin(\beta x) + (\text{polynomial form}) \cos(\beta x)</me>
+							where the polynomial form on each term uses different coefficients. 
+						</li>
+						<li>
+							When working with sums, look for redundant overlapping terms.
+						</li>
+					</ol>
+				</p>
+			</assemblage>
+
+			<p>
+				Let's put these tips into practice with a couple of examples.
+			</p>
+
+			<example>
+				<m>\ \ </m>Find the form of <m>y_p</m> for each of the equations below.
+
+				<p>
+					<m> \ds y'' + y = e^{-x}\cos(x) </m>
+					<solution>
+						Since <m>f(x) = e^{-x}\cos(x)</m> is the product of an exponential and a cosine function, we apply tip 1 and set:
+						<me>y_p = e^{-x}(A\sin x + B\cos x)</me>.
+					</solution>
+				</p>
+				<p>
+					<m> \ds y'' - 4y = e^{6x}e^{-3x} </m>
+					<solution>
+						Since <m>f(x) = e^{6x}e^{-3x}</m> is the product of two exponential functions, we ignore one of the coefficients and set:
+						<me>y_p = Ae^{6x}e^{-3x}</me>.
+						Note, <m>e^{6x}e^{-3x}</m> is the same as <m>e^{3x}</m>, so we could also write <m>y_p = Ae^{3x}</m>.
+					</solution>
+				</p>
+				
+				<p>
+					<m> \ds 9P' - P = t^{3}\cos(t) </m>
+					<solution>
+						Since <m>f(t) = t^{3}\cos(t)</m> is the product of a polynomial and a cosine function, we apply tip 2 and set:
+						<me>P_p = (At^3 + Bt^2 + Ct + D)\sin t + (Et^3 + Ft^2 + Gt + H)\cos t</me>.
+					</solution>
+				</p>
+
+				<p>
+					<m> \ds 2y'' + 3y' - 15y = x^2\cos x + x \sin x </m>
+					<solution>
+						When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set:
+						<md>
+							<mrow> y_p = (Ax^2 + \ul{Bx + C) \sin x} + (Dx^2 + \ul{Ex + F)\cos x} </mrow>
+						</md>
+						and
+						<md>
+							<mrow> (\ul{Gx + H)\sin x} + (\ul{Ix + J)\cos x}, </mrow>
+						</md>
+						you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to:
+						<me>y_p = (Ax^2 + Bx + C)\sin x + (Dx^2 + Ex + F)\cos x</me>.
+					</solution>
+				</p>
+			</example>
+			
+			<reading-questions><title> Check your Understanding </title>
+				<exercise label="p3-c2-s3-rq1"><title><em>Which of the following functions would be an appropriate form for the particular solution <m>y_p</m> if <m>f(x) = 5x^2 + 3x + 1</m>?</em></title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement><m>y_p = Ax^2 + Bx + C</m></statement>
+							<feedback>Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = A e^{x} + B</m></statement>
+							<feedback>Incorrect. This form would be appropriate if <m>f(x)</m> was an exponential function, not a polynomial.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = A \sin(x) + B \cos(x)</m></statement>
+							<feedback>Incorrect. This form would be appropriate if <m>f(x)</m> was a trigonometric function.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = Ax^3 + Bx^2 + Cx + D</m></statement>
+							<feedback>Incorrect. This form would be too complex, as the given function is quadratic, not cubic.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s3-rq2"><title><em>If <m>f(x) = 3e^{4x} + 2\sin(3x)</m>, what should be the form of the particular solution <m>y_p</m>?</em></title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement><m>y_p = A e^{4x} + B \sin(3x) + C \cos(3x)</m></statement>
+							<feedback>Correct! The particular solution should account for both the exponential and trigonometric terms in <m>f(x)</m>.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = A e^{4x} + B e^{3x}</m></statement>
+							<feedback>Incorrect. The second term should include sine and cosine, not another exponential.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = A \sin(3x) + B \cos(3x)</m></statement>
+							<feedback>Incorrect. This form only accounts for the trigonometric part of <m>f(x)</m>, not the exponential.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = A e^{4x}\sin(3x)</m></statement>
+							<feedback>Incorrect. This form is not appropriate, as the terms in <m>f(x)</m> are separate, not a product of exponential and trigonometric terms.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s3-rq3"><title><em>Which of the following would be the correct form for <m>y_p</m> if <m>f(x) = x^2 e^{x}</m>?</em></title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement><m>y_p = (Ax^2 + Bx + C)e^{x}</m></statement>
+							<feedback>Correct! The particular solution should combine the polynomial with the exponential function in the same way as <m>f(x)</m>.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = Ae^{x}</m></statement>
+							<feedback>Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial <m>x^2</m>.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = Ax^2 + Bx + C</m></statement>
+							<feedback>Incorrect. This form only accounts for the polynomial part of <m>f(x)</m>, not the exponential part.</feedback>
+						</choice>
+						<choice>
+							<statement><m>y_p = (Ax^2 + Bx + C)(De^{x})</m></statement>
+							<feedback>Incorrect. The extra coefficient <m>D</m> is unnecessary, as it can be absorbed into the constants <m>A, B,</m> and <m>C</m>.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s3-rq4"><title> <em>Match the <m>y_p</m> form</em> </title>
+					<statement>
+						<p>
+							Suppose we want the form of particular solution, <m>y_p</m>, for the equation
+							<me>
+								y'' + y' + 5y = f(x)
+							</me>.
+							On the left are possible <m>f(x)</m> functions. Drag each of these functions to the correct form of <m>y_p</m> that you would use.
+						</p>
+					</statement>
+					<matches>
+						<match>
+							<premise>	<m> 15 						</m>	</premise>
+							<response>	<m> A 						</m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x^2			</m>	</premise>
+							<response>	<m> Ax^2 + Bx + C  					</m>	</response>
+						</match>
+						<match>
+							<premise>	<m> \cos(2x) 				</m>	</premise>
+							<response>	<m> A\sin(2x) + B\cos(2x) 	</m>	</response>
+						</match>
+						<match>
+							<premise>	<m> \sin x 					</m>	</premise>
+							<response>	<m> A\sin(x) + B\cos(x)		</m>	</response>
+						</match>
+						<match>
+							<premise>	<m> 3 e^{6x}				</m>	</premise>
+							<response>	<m> Ae^{6x}					</m>	</response>
+						</match>
+					</matches>
+				</exercise>
+
+				<exercise label="p3-c2-s3-rq5"><title> <em>Match the <m>y_p</m> form</em> </title>
+					<statement>
+						<p>
+							Suppose we want the form of particular solution, <m>y_p</m>, for the equation
+							<me>
+								y'' + y' + 5y = f(x)
+							</me>.
+							Drag the form of <m>y_p</m> that you would use for each function, <m>f(x)</m>.
+						</p>
+					</statement>
+					<matches>
+						<match>
+							<premise>	<m> x e^{2x} 				</m>	</premise>
+							<response>	<m> \scriptsize (Ax + B)e^{2x} 		</m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x^2 \cos(3x) 			</m>	</premise>
+							<response>
+								<line><m> \scriptsize (Ax^2 + Bx + C)\cos(3x) </m></line>
+								<line><m> \scriptsize \hspace{3.2em} + (Dx^2 + Ex + F)\sin(3x) </m></line>
+							</response>
+						</match>
+						<match>
+							<premise>	<m> e^{x} \sin(4x) 		</m>	</premise>
+							<response>	<m> \scriptsize e^{x}(A\sin(4x) + B\cos(4x)) </m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x^2 e^{-x} 			</m>	</premise>
+							<response>	<m> \scriptsize (Ax^2 + Bx + C)e^{-x} </m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x \cos(4x) 			</m>	</premise>
+							<response>
+								<line><m> \scriptsize (Ax + B)\cos(4x) </m></line>
+								<line><m> \scriptsize \hspace{5.2em} + (Cx + D)\sin(4x) </m></line>
+							</response>
+						</match>
+						<match>
+							<premise>	<m> e^{x} \sin(x) 		</m>	</premise>
+							<response>	<m> \scriptsize e^{x}(A\sin(x) + B\cos(x)) </m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x^3 e^{2x} 			</m>	</premise>
+							<response>	<m> \scriptsize (Ax^3 + Bx^2 + Cx + D)e^{2x} </m>	</response>
+						</match>
+						<match>
+							<premise>	<m> x e^{x} \cos(x) 		</m>	</premise>
+							<response>
+								<line><m> \scriptsize e^{x}(Ax + B)\cos(x) </m></line>
+								<line><m> \scriptsize \hspace{5.5em} + e^{x}(Cx + D)\sin(x) </m></line>
+							</response>
+						</match>
+						<match>
+							<premise>	<m> x^2 \sin(2x) 			</m>	</premise>
+							<response>
+								<line><m> \scriptsize (Ax^2 + Bx + C)\sin(2x) </m></line>
+								<line><m> \scriptsize \hspace{3.2em} + (Dx^2 + Ex + F)\cos(2x) </m></line>
+							</response>
+						</match>
+						<match>
+							<premise>	<m> e^{3x} \cos(2x) 		</m>	</premise>
+							<response>	<m> \scriptsize e^{3x}(A\cos(2x) + B\sin(2x)) </m>	</response>
+						</match>
+					</matches>
+				</exercise>
+			</reading-questions>
+		</section>
+
+		<section><title> Adjusting Particular Solutions </title>
+			<p>
+				As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, <m>y_h</m>, and the particular solution, <m>y_p</m>. This relationship is expressed as:
+				<me>
+					y = y_h + y_p
+				</me>.
+				However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.
+			</p>
+
+			<p>
+				To illustrate this, consider the LNCC equation:
+				<me>
+					y'' - 4y' + 3y = e^{3x}
+				</me>.
+				Here, the homogeneous and particular solutions are:
+				<me>
+					y_h = c_1 e^{x} + c_2 e^{3x}, \qquad y_p = A e^{3x}
+				</me>.
+				The problem arises when you observe that <m>Ae^{3x}</m> in <m>y_p</m> is similar to <m>c_2 e^{3x}</m> in <m>y_h</m>, causing the general solution to become:
+				<me>
+					y = y_h + y_p = c_1 e^{x} + c_2 e^{3x} + A e^{3x} = c_1 e^{x} + (c_2 + A) e^{3x}.
+				</me>
+				As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term <m>e^{3x}</m>.
+			</p>
+
+			<p>
+				To address this, we adjust the form of <m>y_p</m> by multiplying it by <m>x</m> until there are no overlapping terms between <m>y_h</m> and <m>y_p</m>. In this example, multiplying <m>y_p</m> by <m>x</m> once is sufficient to make it independent of <m>y_h</m>. The adjusted form of <m>y_p</m> is:
+				<me>
+					y_p = A x e^{3x}.
+				</me>
+			</p>
+
+			<theorem><title> Adjusting Particular Solutions </title>
+				<statement>
+					<p>
+						When the particular solution, <m>y_p</m>, contains terms in common with the homogeneous solution, <m>y_h</m>, adjust the form of <m>y_p</m> by repeatedly multiplying the overlapping terms by <m>x</m> until <m>y_h</m> and <m>y_p</m> share no terms in common.
+					</p>
+				</statement>
+			</theorem>
+
+			<p>
+				Let's explore this adjustment process through a few examples.
+			</p>
+
+			<example>
+				<m>\ \ </m> Find the adjusted form of the particular solution, <m>y_p</m>, for each of the following LNCC equations.
+				<ol>
+					<li>
+						<p>
+							<m>\ds y'' - 2y' + y = e^x </m>.
+							<solution>
+								<p>
+									First, determine <m>y_h</m> by solving the characteristic equation:
+									<me>r^2 - 2r + 1 = 0</me>,
+									which yields a repeated root <m>r_1 = 1</m>, giving the homogeneous solution:
+									<me>y_h = c_1 e^x + c_2 x e^x</me>.
+								</p>
+								<p>
+									Since the nonhomogeneous term is <m>e^x</m>, the initial guess for the particular solution is:
+									<me> y_p = A e^x</me>.
+									However, this form overlaps with <m>c_1 e^x</m> in <m>y_h</m>. To resolve this, multiply <m>y_p</m> by <m>x</m>:
+									<me> y_p = A x e^x</me>,
+									which now overlaps with <m>c_2 x e^x</m>. Multiplying by <m>x</m> again gives:
+									<me> y_p = A x^2 e^x</me>,
+									which has no terms in common with <m>y_h</m>. This is the correct form to use for <m>y_p</m>.
+								</p>
+							</solution>
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\ds y''' + 4y' = \cos(2x) - \sin(x) </m>.
+							<solution>
+								<p>
+									First, solve the characteristic equation:
+									<me>r^3 + 4r = 0</me>,
+									which yields the roots <m>r_1 = 0</m>, <m>r_2 = 2i</m>, and <m>r_3 = -2i</m>. This results in the homogeneous solution:
+									<me>y_h = c_1 + c_2 \cos(2x) + c_3 \sin(2x)</me>.
+								</p>
+								<p>
+									For the nonhomogeneous term <m>\cos(2x) - \sin(x)</m>, the initial guess for <m>y_p</m> is:
+									<me> y_p = \ub{A \cos(2x) + B \sin(2x)}_{\text{common terms with } y_h} + \ub{D \cos(x) + E \sin(x)}_{\text{NO common terms with } y_h}</me>.
+									Since <m>A \cos(2x)</m> and <m>B \sin(2x)</m> overlap with terms in <m>y_h</m>, multiply these terms by <m>x</m>:
+									<me> y_p = \ub{Ax \cos(2x) + B x \sin(2x)}_{\text{now independent}} + \ub{D \cos(x) + E \sin(x)}_{\text{already independent}}</me>.
+									The terms in <m>y_h</m> and <m>y_p</m> are now independent, making this the correct form for <m>y_p</m>.
+								</p>
+							</solution>
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\ds y'' + y = x e^x </m>.
+							<solution>
+								<p>
+									Begin by solving the characteristic equation:
+									<me>r^2 + 1 = 0</me>,
+									which yields the roots <m>r_1 = i</m> and <m>r_2 = -i</m>, leading to the homogeneous solution:
+									<me>y_h = c_1 \cos(x) + c_2 \sin(x)</me>.
+								</p>
+								<p>
+									Since the nonhomogeneous term is <m>x e^x</m>, the initial guess for <m>y_p</m> is:
+									<me> y_p = (Ax + B) e^x </me>.
+									This form is not present in <m>y_h</m>, so no further adjustment is needed. To determine the coefficients <m>A</m> and <m>B</m>, substitute <m>y_p</m> back into the differential equation and solve for these values.
+								</p>
+							</solution>
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\ds y'' - 6y' + 9y = x^2 e^{3x} </m>.
+							<solution>
+								<p>
+									First, determine <m>y_h</m> by solving the characteristic equation:
+									<me>r^2 - 6r + 9 = 0</me>,
+									which yields a repeated root <m>r = 3</m>, giving the homogeneous solution:
+									<me>y_h = (c_1 + c_2 x) e^{3x}</me>.
+								</p>
+								<p>
+									Since the nonhomogeneous term is <m>x^2 e^{3x}</m>, the initial guess for the particular solution is:
+									<me>y_p = (Ax^2 + Bx + C) e^{3x}</me>.
+									However, notice that <m>e^{3x}</m> and <m>x e^{3x}</m> are already present in <m>y_h</m>.
+									To avoid overlap, multiply <m>y_p</m> by <m>x^2</m>, giving:
+									<me>y_p = (Ax^4 + Bx^3 + Cx^2) e^{3x}</me>.
+									This form is now independent of <m>y_h</m>, ensuring that there are no overlapping terms.
+								</p>
+								<p>
+									To determine the coefficients <m>A</m>, <m>B</m>, and <m>C</m>, substitute <m>y_p</m> back into the original differential equation and solve for these values.
+								</p>
+							</solution>
+						</p>
+					</li>
+				</ol>
+			</example>
+
+			<p>
+				This adjustment process ensures that <m>y_h</m> and <m>y_p</m> are independent, allowing the general solution <m>y = y_h + y_p</m> to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.
+			</p>
+
+			<reading-questions><title> Check your Understanding </title>
+				<exercise label="p3-c2-s4-rq1"><title> Understanding Overlap in Solutions </title>
+					<statement> 
+						Which of the following is true when a particular solution <m>y_p</m> overlaps with the homogeneous solution <m>y_h</m> in an LNCC equation?
+					</statement>
+					<choices>
+						<choice correct="yes">
+							<statement> The particular solution needs to be multiplied by <m>x</m> until there are no terms in common with <m>y_h</m>. </statement>
+						</choice>
+						<choice>
+							<statement> The particular solution should be left as is, even if it overlaps with <m>y_h</m>. </statement>
+						</choice>
+						<choice>
+							<statement> The overlapping terms in <m>y_h</m> should be removed. </statement>
+						</choice>
+						<choice>
+							<statement> <m>y_h</m> should be multiplied by <m>x</m> to match the particular solution. </statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq2"><title> Adjusting Solutions </title>
+					<statement> 
+						What is the adjusted form of <m>y_p</m> for the LNCC equation <m>y'' - 4y' + 3y = e^{3x}</m>?
+					</statement>
+					<choices>
+						<choice>
+							<statement> <m>y_p = A e^{3x}</m> </statement>
+						</choice>
+						<choice correct="yes">
+							<statement> <m>y_p = A x e^{3x}</m> </statement>
+						</choice>
+						<choice>
+							<statement> <m>y_p = A x^2 e^{3x}</m> </statement>
+						</choice>
+						<choice>
+							<statement> <m>y_p = A e^{x}</m> </statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq3"><title> Choosing the Correct Particular Solution </title>
+					<statement> 
+						If the nonhomogeneous term in an LNCC equation is <m>x^2 e^{3x}</m> and <m>y_h = (c_1 + c_2 x) e^{3x}</m>, what should be the adjusted form of <m>y_p</m>?
+					</statement>
+					<choices>
+						<choice>
+							<statement> <m>y_p = A x^2 e^{3x}</m> </statement>
+						</choice>
+						<choice correct="yes">
+							<statement> <m>y_p = (A x^4 + B x^3 + C x^2) e^{3x}</m> </statement>
+						</choice>
+						<choice>
+							<statement> <m>y_p = (A x^3 + B x^2) e^{3x}</m> </statement>
+						</choice>
+						<choice>
+							<statement> <m>y_p = (A x^2 + B x) e^{3x}</m> </statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq4"><title> Adjusting Overlapping Terms </title>
+					<statement> 
+						Why is it necessary to multiply the initial form of <m>y_p</m> by <m>x</m> in some cases?
+					</statement>
+					<choices>
+						<choice correct="yes">
+							<statement> To ensure that <m>y_p</m> does not share terms with <m>y_h</m>, making them independent. </statement>
+						</choice>
+						<choice>
+							<statement> To make <m>y_p</m> smaller than <m>y_h</m>. </statement>
+						</choice>
+						<choice>
+							<statement> To change the characteristic equation. </statement>
+						</choice>
+						<choice>
+							<statement> To remove the nonhomogeneous term from the equation. </statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq5"><title> True or False: Adjustments </title>
+					<statement>
+						<p> <em>The particular solution <m>y_p</m> should always be adjusted by multiplying it by <m>x</m> even if it does not overlap with the homogeneous solution <m>y_h</m>.</em> </p>
+					</statement>
+					<choices>
+						<choice>
+							<statement> True </statement>
+						</choice>
+						<choice correct="yes">
+							<statement> False </statement>
+							<feedback> 
+								False. Adjustment is only necessary when <m>y_p</m> has terms that overlap with <m>y_h</m>. 
+							</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq6"><title> True or False: Independence of Terms </title>
+					<statement>
+						<p> <em>Multiplying the particular solution <m>y_p</m> by <m>x</m> ensures that <m>y_h</m> and <m>y_p</m> do not have terms in common.</em> </p>
+					</statement>
+					<choices>
+						<choice correct="yes">
+							<statement> True </statement>
+							<feedback> 
+								True. This adjustment process makes the solutions independent and prevents them from being absorbed into each other. 
+							</feedback>
+						</choice>
+						<choice>
+							<statement> False </statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq7"><title> Completing the Statement </title>
+					<statement>
+						To adjust the particular solution <m>y_p</m> when it overlaps with the homogeneous solution <m>y_h</m>, multiply <m>y_p</m> by <fillin characters="5" /> until <m>y_p</m> and <m>y_h</m> have no terms in common.
+					</statement>
+					<choices>
+						<choice correct="yes"> x </choice>
+						<choice> x^2 </choice>
+						<choice> x + 1 </choice>
+						<choice> x^3 </choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq8"><title> Identifying Characteristics </title>
+					<statement>
+						When solving <m>y'' - 2y' + y = e^x</m>, the initial guess for <m>y_p</m> is adjusted to <m>Ax^2 e^x</m> because <m>e^x</m> overlaps with <fillin characters="10" />.
+					</statement>
+					<choices>
+						<choice correct="yes"> c_1 e^x </choice>
+						<choice> c_2 x^2 e^x </choice>
+						<choice> y_h </choice>
+						<choice> c_1 \cos(x) </choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq9"><title> Explanation of Adjustments </title>
+					<statement>
+						Why do we adjust the particular solution <m>y_p</m> by multiplying it by <m>x</m> when solving LNCC equations?
+					</statement>
+					<answer>
+						We adjust <m>y_p</m> by multiplying it by <m>x</m> to ensure that the particular solution does not share any terms with the homogeneous solution <m>y_h</m>. This adjustment makes <m>y_h</m> and <m>y_p</m> independent, ensuring that the general solution properly represents the nonhomogeneous term of the differential equation.
+					</answer>
+				</exercise>
+
+				<exercise label="p3-c2-s4-rq10"><title> Describing the Role of <m>y_h</m> and <m>y_p</m> </title>
+					<statement>
+						In the general solution of an LNCC equation, what roles do <m>y_h</m> and <m>y_p</m> play, and why is it important that they are independent?
+					</statement>
+					<answer>
+						<p>
+							<m>y_h</m> represents the solution to the homogeneous equation (where the nonhomogeneous term is zero), while <m>y_p</m> represents a particular solution that accounts for the nonhomogeneous term. It is important that they are independent so that their combined terms accurately reflect the behavior of both the homogeneous and nonhomogeneous parts of the original differential equation.
+						</p>
+					</answer>
+				</exercise>
+			</reading-questions>
+		</section>
+
 	</chapter>
 
 	<chapter><title> Variation of Parameters </title>
