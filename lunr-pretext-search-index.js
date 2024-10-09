@@ -4204,9 +4204,9 @@ var ptx_lunr_docs = [
   "body": "Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, all terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.   "
 },
 {
-  "id": "main-7-4-2",
+  "id": "main-7-4-3",
   "level": "1",
-  "url": "main-7-4-2.html",
+  "url": "main-7-4-3.html",
   "type": "Section",
   "number": "7.1",
   "title": "Nonhomogeneous Equations",
@@ -4215,16 +4215,16 @@ var ptx_lunr_docs = [
 {
   "id": "lhcc-vs-lcc-solution-type",
   "level": "2",
-  "url": "main-7-4-2.html#lhcc-vs-lcc-solution-type",
+  "url": "main-7-4-3.html#lhcc-vs-lcc-solution-type",
   "type": "Figure",
   "number": "12",
   "title": "",
   "body": " Comparison of a homogeneous equation ( left ) and a nonhomogeneous equation ( right ). In both, the solutions must simplify in a specific way when substituted into the equation.          "
 },
 {
-  "id": "main-7-4-2-6",
+  "id": "main-7-4-3-6",
   "level": "2",
-  "url": "main-7-4-2.html#main-7-4-2-6",
+  "url": "main-7-4-3.html#main-7-4-3-6",
   "type": "Example",
   "number": "13",
   "title": "",
@@ -4233,7 +4233,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s1-rq9",
   "level": "2",
-  "url": "main-7-4-2.html#p3-c2-s1-rq9",
+  "url": "main-7-4-3.html#p3-c2-s1-rq9",
   "type": "Reading Question",
   "number": "7.1.1",
   "title": "<em class=\"emphasis\">Which of the following statements best describes the difference between a homogeneous and a nonhomogeneous LNCC equation?<\/em>",
@@ -4242,7 +4242,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s1-rq1",
   "level": "2",
-  "url": "main-7-4-2.html#p3-c2-s1-rq1",
+  "url": "main-7-4-3.html#p3-c2-s1-rq1",
   "type": "Reading Question",
   "number": "7.1.2",
   "title": "<em class=\"emphasis\">Which equation is nonhomogeneous?<\/em>",
@@ -4251,7 +4251,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s1-rq2",
   "level": "2",
-  "url": "main-7-4-2.html#p3-c2-s1-rq2",
+  "url": "main-7-4-3.html#p3-c2-s1-rq2",
   "type": "Reading Question",
   "number": "7.1.3",
   "title": "<em class=\"emphasis\">Select the solution to the equation<\/em>...",
@@ -4260,34 +4260,34 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s1-rq3",
   "level": "2",
-  "url": "main-7-4-2.html#p3-c2-s1-rq3",
+  "url": "main-7-4-3.html#p3-c2-s1-rq3",
   "type": "Reading Question",
   "number": "7.1.4",
   "title": "<em class=\"emphasis\">A solution of the equation<\/em>...",
   "body": " A solution of the equation ..  A solution to the equation  should contain a polynomial of what degree?    Incorrect, review row 1 of the table above.     Incorrect, plugging (degree 1 polynomial) into the LHS would simplify to another degree 1 polynomial, but the RHS is a degree 3 polynomial.     Incorrect, plugging (degree 2 polynomial) into the LHS would simplify to another degree 2 polynomial, but the RHS is a degree 3 polynomial.     Correct! Plugging (degree 3 polynomial) into the LHS would simplify to a degree 3 polynomial, which is the degree of the polynomial on the RHS.     Incorrect, plugging (degree 4 polynomial) into the LHS would leave you with a term, not seen on the RHS.   "
 },
 {
-  "id": "main-7-4-3",
+  "id": "main-7-4-4",
   "level": "1",
-  "url": "main-7-4-3.html",
+  "url": "main-7-4-4.html",
   "type": "Section",
   "number": "7.2",
   "title": "General Solutions",
   "body": "General Solutions  In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.  To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart: Let be the solution to the homogeneous equation , and be the solution to the nonhomogeneous equation , so we have Now, adding these equations together and rearranging the terms gives us This shows that not only is the solution to the nonhomogeneous equation , but so is . This happens because the terms in simplify to zero and the terms in simplify to .  From the previous section, we know is a solution to the LNCC equation and is the solution to the LHCC equation . Therefore, the combined solution is a solution to the LNCC equation where contains the terms that simplify to zero, whereas, contains the terms that simplify to when is substituted into .  This example leads us to the following concept for the general solution of a LNCC differential equation.   LNCC General Solution Parts  The linear nonhomogeneous constant coefficient (LNCC) equation has a solution with a homogeneous and particular part given by . where , found by solving the LHCC equation . Here, contains the terms of the solution that cancel out, whereas, contains the terms that simplify to when is substituted into .     Find the general solution to the differential equation  given that the the particular solution is known to be .   The general solution has the form: Since is given, we only need to solve the homogeneous equation: Using the characteristic equation: The homogeneous solution is: Therefore, the general solution is:     Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution , which will be covered in the upcoming sections.  Check your Understanding  If and , what is the general solution to the LNCC equation?   .  Correct! The general solution combines the homogeneous and particular parts.    .  Incorrect. The signs in the particular solution are wrong.    .  Incorrect. This is only the homogeneous solution, not the complete general solution.    .  Incorrect. This is only the particular solution, not the full general solution.     What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?    To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.    How is the homogeneous solution of an LNCC equation typically found?   By solving the characteristic equation associated with the homogeneous equation.  Correct! The characteristic equation provides the exponents for the homogeneous solution.    By integrating the equation twice.  Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.    By guessing the solution and checking.  Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.    By using boundary conditions.  Incorrect. Boundary conditions are used to find specific constants, not to find .     Which of the following statements are true about the particular part of the solution, , of an LNCC equation?   Which of the following statements are true about the particular part of the solution, , of the LNCC equation     It is part of the general solution of .  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Incorrect. is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Correct. The terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Incorrect. is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Correct! The particular solution looks like the non-zero right-hand side of the equation.     Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution,, , of the LNCC equation     It is part of the general solution of  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Incorrect. is related to the homogeneous equation, while the terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.     "
 },
 {
-  "id": "main-7-4-3-6",
+  "id": "main-7-4-4-6",
   "level": "2",
-  "url": "main-7-4-3.html#main-7-4-3-6",
+  "url": "main-7-4-4.html#main-7-4-4-6",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
   "body": "homogeneous particular "
 },
 {
-  "id": "main-7-4-3-7",
+  "id": "main-7-4-4-7",
   "level": "2",
-  "url": "main-7-4-3.html#main-7-4-3-7",
+  "url": "main-7-4-4.html#main-7-4-4-7",
   "type": "Example",
   "number": "14",
   "title": "",
@@ -4296,7 +4296,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s2-rq1",
   "level": "2",
-  "url": "main-7-4-3.html#p3-c2-s2-rq1",
+  "url": "main-7-4-4.html#p3-c2-s2-rq1",
   "type": "Reading Question",
   "number": "7.2.1",
   "title": "If <span class=\"process-math\">\\(y_h = c_1e^{-x} + c_2e^{2x}\\)<\/span> and <span class=\"process-math\">\\(y_p = 5x - 3\\text{,}\\)<\/span> what is the general solution to the LNCC equation?",
@@ -4305,7 +4305,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s2-rq2",
   "level": "2",
-  "url": "main-7-4-3.html#p3-c2-s2-rq2",
+  "url": "main-7-4-4.html#p3-c2-s2-rq2",
   "type": "Reading Question",
   "number": "7.2.2",
   "title": "<em class=\"emphasis\">What is the purpose of the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> in solving a non-homogeneous linear differential equation?<\/em>",
@@ -4314,7 +4314,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s2-rq3",
   "level": "2",
-  "url": "main-7-4-3.html#p3-c2-s2-rq3",
+  "url": "main-7-4-4.html#p3-c2-s2-rq3",
   "type": "Reading Question",
   "number": "7.2.3",
   "title": "How is the homogeneous solution <span class=\"process-math\">\\(y_h\\)<\/span> of an LNCC equation typically found?",
@@ -4323,7 +4323,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s2-rq4",
   "level": "2",
-  "url": "main-7-4-3.html#p3-c2-s2-rq4",
+  "url": "main-7-4-4.html#p3-c2-s2-rq4",
   "type": "Reading Question",
   "number": "7.2.4",
   "title": "<em class=\"emphasis\">Which of the following statements are true about the particular part of the solution, <span class=\"process-math\">\\(y_p\\text{,}\\)<\/span> of an LNCC equation?<\/em>",
@@ -4332,25 +4332,25 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s2-rq5",
   "level": "2",
-  "url": "main-7-4-3.html#p3-c2-s2-rq5",
+  "url": "main-7-4-4.html#p3-c2-s2-rq5",
   "type": "Reading Question",
   "number": "7.2.5",
   "title": "<em class=\"emphasis\">Which of the following statements are true about the homogeneous part of the solution, <span class=\"process-math\">\\(y_h\\text{,}\\)<\/span> of an LNCC equation?<\/em>",
   "body": " Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution,, , of the LNCC equation     It is part of the general solution of  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Incorrect. is related to the homogeneous equation, while the terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.   "
 },
 {
-  "id": "main-7-4-4",
+  "id": "main-7-4-5",
   "level": "1",
-  "url": "main-7-4-4.html",
+  "url": "main-7-4-5.html",
   "type": "Section",
   "number": "7.3",
   "title": "Selecting Particular Solutions",
   "body": "Selecting Particular Solutions  As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation: . The challenge is that the terms on the left side need to combine in just the right way to match on the right. This means the form of the particular solution must resemble closely. When contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.  The specific function that accounts for on the right side is known as the particular solution , denoted . The form of this solution depends on the type of function represents. To help select the correct form of , refer to , which outlines the most common types of and their corresponding forms.   Selecting the form of based on the form of .       Particular Solution Form,                                 In this table, the constants , , , , , and are assumed to be known, while , , , etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.   Find the form of for each of the equations below.       Since has the form , we set .            has the form , so .            has the form , so .           Since is of the form , we set .           Even though only has an term, we consider it to be of the form , where . Therefore, .      When is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct by simply adding together the particular solutions corresponding to each term in . Let's look at an example to clarify this approach.   Given each of the constant terms, , of an LNCC equation below, find the form of you would use.       Since is the sum of an term and a constant term, we set .           Since is the sum of an term and a term, we set .           Since is the sum of a term and a term, we set .      When involves products of functions, constructing can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.   Find the form of for the equation  .   Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .    Here are a few tips to help you avoid redundant coefficients when constructing the form of .  Tips to Avoid Redundant Coefficients    When is the product of an exponential and another function, avoid writing a coefficient for the exponential term.  For products of polynomials and sine\/cosine functions, use: where the polynomial form on each term uses different coefficients.  When working with sums, look for redundant overlapping terms.     Let's put these tips into practice with a couple of examples.   Find the form of for each of the equations below.   Since is the product of an exponential and a cosine function, we apply tip 1 and set: .     Since is the product of two exponential functions, we ignore one of the coefficients and set: . Note, is the same as , so we could also write .     Since is the product of a polynomial and a cosine function, we apply tip 2 and set: .     When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set: and you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to: .    Check your Understanding  Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.    If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.    Which of the following would be the correct form for if ?    Correct! The particular solution should combine the polynomial with the exponential function in the same way as .     Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial .     Incorrect. This form only accounts for the polynomial part of , not the exponential part.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .     Match the form   Suppose we want the form of particular solution, , for the equation . On the left are possible functions. Drag each of these functions to the correct form of that you would use.                                             Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                         "
 },
 {
-  "id": "main-7-4-4-3",
+  "id": "main-7-4-5-3",
   "level": "2",
-  "url": "main-7-4-4.html#main-7-4-4-3",
+  "url": "main-7-4-5.html#main-7-4-5-3",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
@@ -4359,43 +4359,43 @@ var ptx_lunr_docs = [
 {
   "id": "yp-table",
   "level": "2",
-  "url": "main-7-4-4.html#yp-table",
+  "url": "main-7-4-5.html#yp-table",
   "type": "Table",
   "number": "15",
   "title": "Selecting the form of <span class=\"process-math\">\\(y_p\\)<\/span> based on the form of <span class=\"process-math\">\\(f(x)\\text{.}\\)<\/span>",
   "body": " Selecting the form of based on the form of .       Particular Solution Form,                                "
 },
 {
-  "id": "main-7-4-4-6",
+  "id": "main-7-4-5-6",
   "level": "2",
-  "url": "main-7-4-4.html#main-7-4-4-6",
+  "url": "main-7-4-5.html#main-7-4-5-6",
   "type": "Example",
   "number": "16",
   "title": "",
   "body": " Find the form of for each of the equations below.       Since has the form , we set .            has the form , so .            has the form , so .           Since is of the form , we set .           Even though only has an term, we consider it to be of the form , where . Therefore, .     "
 },
 {
-  "id": "main-7-4-4-8",
+  "id": "main-7-4-5-8",
   "level": "2",
-  "url": "main-7-4-4.html#main-7-4-4-8",
+  "url": "main-7-4-5.html#main-7-4-5-8",
   "type": "Example",
   "number": "17",
   "title": "",
   "body": " Given each of the constant terms, , of an LNCC equation below, find the form of you would use.       Since is the sum of an term and a constant term, we set .           Since is the sum of an term and a term, we set .           Since is the sum of a term and a term, we set .     "
 },
 {
-  "id": "main-7-4-4-10",
+  "id": "main-7-4-5-10",
   "level": "2",
-  "url": "main-7-4-4.html#main-7-4-4-10",
+  "url": "main-7-4-5.html#main-7-4-5-10",
   "type": "Example",
   "number": "18",
   "title": "",
   "body": " Find the form of for the equation  .   Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .   "
 },
 {
-  "id": "main-7-4-4-14",
+  "id": "main-7-4-5-14",
   "level": "2",
-  "url": "main-7-4-4.html#main-7-4-4-14",
+  "url": "main-7-4-5.html#main-7-4-5-14",
   "type": "Example",
   "number": "19",
   "title": "",
@@ -4404,7 +4404,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s3-rq1",
   "level": "2",
-  "url": "main-7-4-4.html#p3-c2-s3-rq1",
+  "url": "main-7-4-5.html#p3-c2-s3-rq1",
   "type": "Reading Question",
   "number": "7.3.1",
   "title": "<em class=\"emphasis\">Which of the following functions would be an appropriate form for the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> if <span class=\"process-math\">\\(f(x) = 5x^2 + 3x + 1\\text{?}\\)<\/span><\/em>",
@@ -4413,7 +4413,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s3-rq2",
   "level": "2",
-  "url": "main-7-4-4.html#p3-c2-s3-rq2",
+  "url": "main-7-4-5.html#p3-c2-s3-rq2",
   "type": "Reading Question",
   "number": "7.3.2",
   "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(f(x) = 3e^{4x} + 2\\sin(3x)\\text{,}\\)<\/span> what should be the form of the particular solution <span class=\"process-math\">\\(y_p\\text{?}\\)<\/span><\/em>",
@@ -4422,7 +4422,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s3-rq3",
   "level": "2",
-  "url": "main-7-4-4.html#p3-c2-s3-rq3",
+  "url": "main-7-4-5.html#p3-c2-s3-rq3",
   "type": "Reading Question",
   "number": "7.3.3",
   "title": "<em class=\"emphasis\">Which of the following would be the correct form for <span class=\"process-math\">\\(y_p\\)<\/span> if <span class=\"process-math\">\\(f(x) = x^2 e^{x}\\text{?}\\)<\/span><\/em>",
@@ -4431,7 +4431,7 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s3-rq4",
   "level": "2",
-  "url": "main-7-4-4.html#p3-c2-s3-rq4",
+  "url": "main-7-4-5.html#p3-c2-s3-rq4",
   "type": "Reading Question",
   "number": "7.3.4",
   "title": "<em class=\"emphasis\">Match the <span class=\"process-math\">\\(y_p\\)<\/span> form<\/em>.",
@@ -4440,11 +4440,164 @@ var ptx_lunr_docs = [
 {
   "id": "p3-c2-s3-rq5",
   "level": "2",
-  "url": "main-7-4-4.html#p3-c2-s3-rq5",
+  "url": "main-7-4-5.html#p3-c2-s3-rq5",
   "type": "Reading Question",
   "number": "7.3.5",
   "title": "<em class=\"emphasis\">Match the <span class=\"process-math\">\\(y_p\\)<\/span> form<\/em>.",
   "body": " Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                       "
+},
+{
+  "id": "main-7-4-6",
+  "level": "1",
+  "url": "main-7-4-6.html",
+  "type": "Section",
+  "number": "7.4",
+  "title": "Adjusting Particular Solutions",
+  "body": "Adjusting Particular Solutions  As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, , and the particular solution, . This relationship is expressed as: . However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.  To illustrate this, consider the LNCC equation: . Here, the homogeneous and particular solutions are: . The problem arises when you observe that in is similar to in , causing the general solution to become: As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term .  To address this, we adjust the form of by multiplying it by until there are no overlapping terms between and . In this example, multiplying by once is sufficient to make it independent of . The adjusted form of is:   Adjusting Particular Solutions   When the particular solution, , contains terms in common with the homogeneous solution, , adjust the form of by repeatedly multiplying the overlapping terms by until and share no terms in common.    Let's explore this adjustment process through a few examples.   Find the adjusted form of the particular solution, , for each of the following LNCC equations.    .  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       .  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       .  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       .  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.       This adjustment process ensures that and are independent, allowing the general solution to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.  Check your Understanding   Which of the following is the correct particular solution form for the differential equation ?  Which of the following is the correct particular solution form for the differential equation ?      Correct! The right-hand side is linear, so the particular solution takes the form .       Incorrect. The right-hand side of the equation is a polynomial, not exponential.       Incorrect. This form would be used if the non-homogeneous term were trigonometric.       Incorrect. This form would be used if the right-hand side was exponential.     Which of the following is true when a particular solution overlaps with the homogeneous solution in an LNCC equation?  Which of the following is true when a particular solution overlaps with the homogeneous solution in an LNCC equation?   The particular solution should be left as is, even if it overlaps with .    The overlapping terms in should be removed.    The particular solution needs to be multiplied by until there are no terms in common with .    should be multiplied by to match the particular solution.     What is the adjusted form of for the LNCC equation ?  What is the adjusted form of for the LNCC equation ?                If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?  If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?                Why is it necessary to multiply the initial form of by in some cases?  Why is it necessary to multiply the initial form of by in some cases?   To ensure that does not share terms with , making them independent.    To make smaller than .    To change the characteristic equation.    To remove the nonhomogeneous term from the equation.     "
+},
+{
+  "id": "main-7-4-6-5",
+  "level": "2",
+  "url": "main-7-4-6.html#main-7-4-6-5",
+  "type": "Concept",
+  "number": "20",
+  "title": "Adjusting Particular Solutions.",
+  "body": "Adjusting Particular Solutions   When the particular solution, , contains terms in common with the homogeneous solution, , adjust the form of by repeatedly multiplying the overlapping terms by until and share no terms in common.   "
+},
+{
+  "id": "main-7-4-6-7",
+  "level": "2",
+  "url": "main-7-4-6.html#main-7-4-6-7",
+  "type": "Example",
+  "number": "21",
+  "title": "",
+  "body": " Find the adjusted form of the particular solution, , for each of the following LNCC equations.    .  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       .  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       .  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       .  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.      "
+},
+{
+  "id": "p3-c2-s4-rq1",
+  "level": "2",
+  "url": "main-7-4-6.html#p3-c2-s4-rq1",
+  "type": "Reading Question",
+  "number": "7.4.1",
+  "title": "<em class=\"emphasis\">Which of the following is the correct particular solution form for the differential equation <span class=\"process-math\">\\(y'' - 4y' + 3y = 9x \\text{?}\\)<\/span><\/em>",
+  "body": " Which of the following is the correct particular solution form for the differential equation ?  Which of the following is the correct particular solution form for the differential equation ?      Correct! The right-hand side is linear, so the particular solution takes the form .       Incorrect. The right-hand side of the equation is a polynomial, not exponential.       Incorrect. This form would be used if the non-homogeneous term were trigonometric.       Incorrect. This form would be used if the right-hand side was exponential.   "
+},
+{
+  "id": "p3-c2-s4-rq2",
+  "level": "2",
+  "url": "main-7-4-6.html#p3-c2-s4-rq2",
+  "type": "Reading Question",
+  "number": "7.4.2",
+  "title": "<em class=\"emphasis\">Which of the following is true when a particular solution <span class=\"process-math\">\\(y_p\\)<\/span> overlaps with the homogeneous solution <span class=\"process-math\">\\(y_h\\)<\/span> in an LNCC equation?<\/em>",
+  "body": " Which of the following is true when a particular solution overlaps with the homogeneous solution in an LNCC equation?  Which of the following is true when a particular solution overlaps with the homogeneous solution in an LNCC equation?   The particular solution should be left as is, even if it overlaps with .    The overlapping terms in should be removed.    The particular solution needs to be multiplied by until there are no terms in common with .    should be multiplied by to match the particular solution.   "
+},
+{
+  "id": "p3-c2-s4-rq3",
+  "level": "2",
+  "url": "main-7-4-6.html#p3-c2-s4-rq3",
+  "type": "Reading Question",
+  "number": "7.4.3",
+  "title": "<em class=\"emphasis\">What is the adjusted form of <span class=\"process-math\">\\(y_p\\)<\/span> for the LNCC equation <span class=\"process-math\">\\(y'' - 4y' + 3y = e^{3x}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the adjusted form of for the LNCC equation ?  What is the adjusted form of for the LNCC equation ?              "
+},
+{
+  "id": "p3-c2-s4-rq4",
+  "level": "2",
+  "url": "main-7-4-6.html#p3-c2-s4-rq4",
+  "type": "Reading Question",
+  "number": "7.4.4",
+  "title": "<em class=\"emphasis\">If the nonhomogeneous term in an LNCC equation is <span class=\"process-math\">\\(x^2 e^{3x}\\)<\/span> and <span class=\"process-math\">\\(y_h = (c_1 + c_2 x) e^{3x}\\text{,}\\)<\/span> what should be the adjusted form of <span class=\"process-math\">\\(y_p\\text{?}\\)<\/span><\/em>",
+  "body": " If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?  If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?              "
+},
+{
+  "id": "p3-c2-s4-rq5",
+  "level": "2",
+  "url": "main-7-4-6.html#p3-c2-s4-rq5",
+  "type": "Reading Question",
+  "number": "7.4.5",
+  "title": "<em class=\"emphasis\">Why is it necessary to multiply the initial form of <span class=\"process-math\">\\(y_p\\)<\/span> by <span class=\"process-math\">\\(x\\)<\/span> in some cases?<\/em>",
+  "body": " Why is it necessary to multiply the initial form of by in some cases?  Why is it necessary to multiply the initial form of by in some cases?   To ensure that does not share terms with , making them independent.    To make smaller than .    To change the characteristic equation.    To remove the nonhomogeneous term from the equation.   "
+},
+{
+  "id": "main-7-4-7",
+  "level": "1",
+  "url": "main-7-4-7.html",
+  "type": "Section",
+  "number": "7.5",
+  "title": "Method of Undetermined Coefficients",
+  "body": "Method of Undetermined Coefficients  When solving a non-homogeneous linear differential equation, selecting the correct form for the particular solution, , is just the beginning. The next step is determining the values of its unknown coefficients, such as and . In this section, we'll explore how to compute these coefficients by substituting the guessed particular solution into the original equation.  Let's revisit the example we discussed earlier. Consider the differential equation: . We guessed that the particular solution would be linear, so we set .  Our goal now is to determine the values of and . To do this, we substitute into the original differential equation. Here's how it works: Substituting , , and into results in: By matching the coefficients of like terms on opposite sides of the equation,   we solve: Thus, the particular solution is: .  Regardless of 's form, the process of finding the coefficients remains consistent:  Substitute the chosen into the differential equation.  Collect and match coefficients of like terms on both sides of the equation.  Solve the resulting system to find .    This is why the method is called the \"method of undetermined coefficients.\" and the complete process is summarized as follows.  Undetermined Coefficients  The linear nonhomogeneous equation with constant coefficients, has a general solution given by where is the solution to the homogeneous equation and is the particular solution found through the following steps...   Select Initial   Select the initial form of that generalizes .   Adjust   If shares terms with , repeatedly multiply the terms by until there are no terms in common.   Find the Coefficients of   Plug into and match terms on each side to solve for the unknown coefficients of .     Now for a few examples to illustrate the complete application of the nndetermined coefficients method.   Find the general solution to each LNCC equation using the method of undetermined coefficients.  .  Following the method of , we first find as . Next, we select the initial form of as and adjust , if necessary. A quick check shows that has no terms in common with .  Finally, we find the coefficients of . To do this, let's compute , , plug these into the equation, and collect the , , and constant terms as follows:  . Matching the underlined coefficients leads to the following system of equations and solution for the coefficients , , and :                The general solution is then .     .  Following the method of , we find as and then find through the steps that follow.   . The initial form of is ,   . Notice that has an term, which overlaps with . Therefore, we need to adjust by multiplying the term by , . Now that and are independent, we can proceed to find the coefficients , , and .   . Before plugging in , let's find and : . Now, substituting these into the equation and collecting like terms, to get , which leads to the following equations for , , and :                Finally, the general solution is .      Check your Understanding   After substituting into the equation , you find the system of equations..  After substituting into the equation , you find the system of equations: and . What are the values of and ?      Correct! Solving the system yields and .       Incorrect. Double-check your algebra when solving the system of equations.       Incorrect. While is correct, you need to solve for as well.       Incorrect. , not 2.     Which of the following is NOT a step in finding the coefficients of the particular solution?  Which of the following is NOT a step in finding the coefficients of the particular solution?    Plugging into the differential equation.   Incorrect. This is the first step in determining the coefficients.     Solving the homogeneous equation first.   Correct! The homogeneous solution is separate from finding the particular solution's coefficients.     Collecting and matching like terms.   Incorrect. This is a crucial step for finding the values of and .     Solving the resulting system of equations.   Incorrect. This is the final step in finding the coefficients.     Consider the equation..  Consider the equation . If the particular solution is assumed to be , which of the following represents the correct coefficient-matching equations when substituting into the differential equation?       Incorrect. Remember to match coefficients of like terms separately (i.e., coefficients of and constant terms).         Correct! Matching coefficients of gives 3A = 9, and matching constant terms gives -4A + 3B = 0.         Incorrect. Re-check the coefficients and ensure you match the terms correctly.         Incorrect. Verify which terms correspond to coefficients of and the constant terms.      Why do we adjust the form of by multiplying terms by when there is overlap with ?  Why do we adjust the form of by multiplying terms by when there is overlap with ?   To make the computation of derivatives easier.   Incorrect. The adjustment is not made for the ease of differentiation but to ensure the independence of terms.     To ensure that and remain independent.   Correct! Multiplying by ensures that the particular solution does not overlap with the homogeneous solution.     To match the degree of the polynomial in .   Incorrect. While the degree of is related to , the adjustment addresses overlap with .     To simplify the resulting system of equations.   Incorrect. The adjustment is made to maintain independence between and , not for simplification purposes.      Suppose . Which of the following is the correct initial guess for ?  Suppose . Which of the following is the correct initial guess for ?     Incorrect. Remember to consider whether overlaps with any terms in .       Correct! Since is a term in , we need to multiply the particular solution by to ensure independence.       Incorrect. This form is more suited for a polynomial right-hand side like .       Incorrect. A constant form of would only be appropriate if were a constant.      What are the three main steps of the method of undetermined coefficients?  What are the three main steps of the method of undetermined coefficients?   Select the particular solution, integrate it, and solve for coefficients.   Incorrect. Integration is not a part of the method of undetermined coefficients.     Select the particular solution, adjust it if necessary, and find its coefficients.   Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.     Select the homogeneous solution, adjust for , and differentiate.   Incorrect. The focus is on selecting and solving for , not guessing the homogeneous solution.     Choose , integrate the result, and verify the solution.   Incorrect. Integration is not a step in this method; it's about solving for coefficients of .      "
+},
+{
+  "id": "uc-method",
+  "level": "2",
+  "url": "main-7-4-7.html#uc-method",
+  "type": "Method",
+  "number": "5",
+  "title": "Undetermined Coefficients.",
+  "body": "Undetermined Coefficients  The linear nonhomogeneous equation with constant coefficients, has a general solution given by where is the solution to the homogeneous equation and is the particular solution found through the following steps...   Select Initial   Select the initial form of that generalizes .   Adjust   If shares terms with , repeatedly multiply the terms by until there are no terms in common.   Find the Coefficients of   Plug into and match terms on each side to solve for the unknown coefficients of .    "
+},
+{
+  "id": "main-7-4-7-9",
+  "level": "2",
+  "url": "main-7-4-7.html#main-7-4-7-9",
+  "type": "Example",
+  "number": "22",
+  "title": "",
+  "body": " Find the general solution to each LNCC equation using the method of undetermined coefficients.  .  Following the method of , we first find as . Next, we select the initial form of as and adjust , if necessary. A quick check shows that has no terms in common with .  Finally, we find the coefficients of . To do this, let's compute , , plug these into the equation, and collect the , , and constant terms as follows:  . Matching the underlined coefficients leads to the following system of equations and solution for the coefficients , , and :                The general solution is then .     .  Following the method of , we find as and then find through the steps that follow.   . The initial form of is ,   . Notice that has an term, which overlaps with . Therefore, we need to adjust by multiplying the term by , . Now that and are independent, we can proceed to find the coefficients , , and .   . Before plugging in , let's find and : . Now, substituting these into the equation and collecting like terms, to get , which leads to the following equations for , , and :                Finally, the general solution is .    "
+},
+{
+  "id": "p3-c2-s5-rq3",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq3",
+  "type": "Reading Question",
+  "number": "7.5.1",
+  "title": "<em class=\"emphasis\">After substituting <span class=\"process-math\">\\(y_p = Ax + B \\)<\/span> into the equation <span class=\"process-math\">\\(y'' - 4y' + 3y = 9x \\text{,}\\)<\/span> you find the system of equations..<\/em>.",
+  "body": " After substituting into the equation , you find the system of equations..  After substituting into the equation , you find the system of equations: and . What are the values of and ?      Correct! Solving the system yields and .       Incorrect. Double-check your algebra when solving the system of equations.       Incorrect. While is correct, you need to solve for as well.       Incorrect. , not 2.   "
+},
+{
+  "id": "p3-c2-s5-rq4",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq4",
+  "type": "Reading Question",
+  "number": "7.5.2",
+  "title": "<em class=\"emphasis\">Which of the following is NOT a step in finding the coefficients of the particular solution?<\/em>",
+  "body": " Which of the following is NOT a step in finding the coefficients of the particular solution?  Which of the following is NOT a step in finding the coefficients of the particular solution?    Plugging into the differential equation.   Incorrect. This is the first step in determining the coefficients.     Solving the homogeneous equation first.   Correct! The homogeneous solution is separate from finding the particular solution's coefficients.     Collecting and matching like terms.   Incorrect. This is a crucial step for finding the values of and .     Solving the resulting system of equations.   Incorrect. This is the final step in finding the coefficients.   "
+},
+{
+  "id": "p3-c2-s5-rq5",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq5",
+  "type": "Reading Question",
+  "number": "7.5.3",
+  "title": "<em class=\"emphasis\">Consider the equation..<\/em>.",
+  "body": " Consider the equation..  Consider the equation . If the particular solution is assumed to be , which of the following represents the correct coefficient-matching equations when substituting into the differential equation?       Incorrect. Remember to match coefficients of like terms separately (i.e., coefficients of and constant terms).         Correct! Matching coefficients of gives 3A = 9, and matching constant terms gives -4A + 3B = 0.         Incorrect. Re-check the coefficients and ensure you match the terms correctly.         Incorrect. Verify which terms correspond to coefficients of and the constant terms.    "
+},
+{
+  "id": "p3-c2-s5-rq6",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq6",
+  "type": "Reading Question",
+  "number": "7.5.4",
+  "title": "<em class=\"emphasis\">Why do we adjust the form of <span class=\"process-math\">\\(y_p\\)<\/span> by multiplying terms by <span class=\"process-math\">\\(x\\)<\/span> when there is overlap with <span class=\"process-math\">\\(y_h\\text{?}\\)<\/span><\/em>",
+  "body": " Why do we adjust the form of by multiplying terms by when there is overlap with ?  Why do we adjust the form of by multiplying terms by when there is overlap with ?   To make the computation of derivatives easier.   Incorrect. The adjustment is not made for the ease of differentiation but to ensure the independence of terms.     To ensure that and remain independent.   Correct! Multiplying by ensures that the particular solution does not overlap with the homogeneous solution.     To match the degree of the polynomial in .   Incorrect. While the degree of is related to , the adjustment addresses overlap with .     To simplify the resulting system of equations.   Incorrect. The adjustment is made to maintain independence between and , not for simplification purposes.    "
+},
+{
+  "id": "p3-c2-s5-rq7",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq7",
+  "type": "Reading Question",
+  "number": "7.5.5",
+  "title": "<em class=\"emphasis\">Suppose<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - 4y' + 3y = 6e^x\\text{.}\n\\end{equation*}\n<\/div>Which of the following is the correct initial guess for <span class=\"process-math\">\\(y_p\\text{?}\\)<\/span><\/em>",
+  "body": " Suppose . Which of the following is the correct initial guess for ?  Suppose . Which of the following is the correct initial guess for ?     Incorrect. Remember to consider whether overlaps with any terms in .       Correct! Since is a term in , we need to multiply the particular solution by to ensure independence.       Incorrect. This form is more suited for a polynomial right-hand side like .       Incorrect. A constant form of would only be appropriate if were a constant.    "
+},
+{
+  "id": "p3-c2-s5-rq8",
+  "level": "2",
+  "url": "main-7-4-7.html#p3-c2-s5-rq8",
+  "type": "Reading Question",
+  "number": "7.5.6",
+  "title": "<em class=\"emphasis\">What are the three main steps of the method of undetermined coefficients?<\/em>",
+  "body": " What are the three main steps of the method of undetermined coefficients?  What are the three main steps of the method of undetermined coefficients?   Select the particular solution, integrate it, and solve for coefficients.   Incorrect. Integration is not a part of the method of undetermined coefficients.     Select the particular solution, adjust it if necessary, and find its coefficients.   Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.     Select the homogeneous solution, adjust for , and differentiate.   Incorrect. The focus is on selecting and solving for , not guessing the homogeneous solution.     Choose , integrate the result, and verify the solution.   Incorrect. Integration is not a step in this method; it's about solving for coefficients of .    "
 },
 {
   "id": "main-7-5",
