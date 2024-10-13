@@ -1,7 +1,11 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title>Definition</title>
 
 	<p>
-		In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. In fact, applying a Laplace transform to an equation is equivalent to multiplying both sides by <m>e^{-st}</m> and integrating with respect to <m>t</m>. For example, applying this to our model equation gives:
+		In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation 
+		<me>
+			e^{-st} \left( y'' + 3y' + 2y \right) = -40e^{3t}
+		</me>
+		would look like this:
 		<md>
 			<mrow> 
 				e^{-st} \left( y'' + 3y' + 2y \right) 
@@ -18,7 +22,7 @@
 					=\amp\ \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
 			</mrow>
 		</md>.
-		We formalize this with the following definition.
+		As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
 	</p>
 
 	<definition><title>Laplace Transform</title>
@@ -32,11 +36,15 @@
 	</definition>
 
 	<p>
-		This definition might seem intimidating at first, but let's break it down. The <m>\infty</m> in the upper limit indicates that the Laplace transform is an improper integral. In calculus, we learn that such an integral can be rewritten as a limit. Specifically,
-		<me>
-			\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}.
-		</me>
-		Also, note that the integral involves two variables, <m>s</m> and <m>t</m>, but we integrate with respect to <m>t</m>. If you haven't encountered this before, simply treat <m>s</m> as a constant during the integration. Let's dive into an example to clarify this further.
+		This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
+	</p>
+	
+	<me>
+		\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
+	</me>
+	
+	<p>
+		Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
 	</p>
 	
 	<example>
@@ -49,35 +57,25 @@
 				<men xml:id="lt-1-example-eqn-1"> 
 					\lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
 				</men>.
-				To compute <m>I</m>, treat <m>s</m> as a constant and integrate with respect to <m>t</m>.
+				To evaluate this, we treat <m>s</m> as a constant and integrate with respect to <m>t</m>.
 				<md>
-
 					<mrow>				
-						\int_0^b e^{-st}dt
-							=\amp\ \int_0^b e^{-st}dt  \qquad (u = -st)	
-					</mrow>
-					<mrow>				
-							=\amp\  -\frac{1}{s} \int_0^b e^{u} dt
-					</mrow>
-					<mrow>				
-							=\amp\  -\frac{1}{s} e^{u}\Big|_{t=0}^{t=b}
+						I = \int_0^b e^{-st}dt
+						=\amp\ -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}
 					</mrow>
 					<mrow>			
-							=\amp\ -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}	
+						=\amp\ -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]
 					</mrow>
 					<mrow>			
-							=\amp\ -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right] = -\frac{1}{s}\left[ e^{-sb} - 1 \right] = I
+						=\amp\ -\frac{1}{s}\left[ e^{-sb} - 1 \right]
 					</mrow>
 				</md>
 				Now that we have <m>I</m>, we can plug it into the limit above.
 				<md>
 					<mrow> 
-						\lim_{b \to \infty} \int_0^b e^{-st}dt 
-							=\amp\ \lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]	
-					</mrow>
-					<mrow> 
-							=\amp\ -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] 
-								\qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+						\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+						=\amp\ -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] 
+						\qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
 					</mrow>
 					<mrow> 
 							=\amp\ -\frac{1}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big] 
@@ -86,8 +84,7 @@
 			</p>
 	
 			<p>
-				Let's analyze the remaining limit, <m>L</m>, which depends on the value of <m>s</m>. 
-				<line>Note: the <m>\frac{1}{s}</m> term in front of the limit implies <m>s \ne 0</m>.</line>
+				The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
 				<ul>
 					<li>
 						<p>
@@ -114,30 +111,32 @@
 	</example>
 
 	<p>
-		Now that you've seen an example, let's discuss a few important points:
-
-		<ul marker="square">
-			<li>
-				<p>
-					The integral, <m>I</m>, in <xref ref="lt-1-example-eqn-1"/> was initially a function of both <m>s</m> and <m>b</m>, but after evaluating the limit, it became a function of <m>s</m> alone. In general, every Laplace transform results in a function of <m>s</m>, and it's customary to denote the Laplace transform of a function <m>f(t)</m> as <m>F(s)</m>. For example,
-					<me> \lap{f(t)} = F(s) \quad \text{or} \quad \lap{q(t)} = Q(s).</me>
-				</p>
-			</li>
-			<li>
-				<p>
-					We also identified the values of <m>s</m> for which the integral converges. While these values are important, they generally do not affect the solution of the differential equations in practice. Nonetheless, we will continue to note them as we build our Laplace transform toolbox.
-				</p>
-			</li>
-			<li>
-				<p>
-					The notation for the Laplace transform involves the symbol <m>\lap.</m> The curly braces that accompany it are not optional; they indicate precisely which function we are transforming.
-				</p>
-			</li>
-		</ul>
+		Now that we've worked through an example, here are a few key takeaways:
 	</p>
-
+	
+	<ul marker="square">
+		<li>
+		<p>
+			The Laplace transform always results in a function of <m>s</m>. We typically denote the Laplace transform of <m>f(t)</m> as <m>F(s)</m>. For instance,
+			<me> \lap{f(t)} = F(s) \quad \text{or} \quad \lap{q(t)} = Q(s).</me>
+		</p>
+		</li>
+	
+		<li>
+		<p>
+			The values of <m>s</m> for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.
+		</p>
+		</li>
+	
+		<li>
+		<p>
+			The notation <m>\lap{}</m> includes curly braces to indicate the function being transformed. These braces are essential, not optional.
+		</p>
+		</li>
+	</ul>
+	
 	<p>
-		At this point, we've introduced our first Laplace transform. In the next section, we will build a collection of the most common tranforms used to solve differential equations. 
+		With this, we've introduced our first Laplace transform. In the next section, we will explore a collection of common transforms that are used to solve differential equations.
 	</p>
 
 	<assemblage xml:id="lt-table-L1"><title>Common Laplace Transform <m>L_1</m></title>
@@ -150,6 +149,19 @@
 		</p>
 	</assemblage>
 
+
 	<xi:include href="./p4-c1-s2-interactives.ptx" />
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </section>

@@ -1,0 +1,266 @@
+<part><title> Laplace Transform Method </title>
+	<introduction>
+		<p>
+			Solving an algebraic equation often involves isolating the unknown variable. However, in differential equations, the unknown is entangled within derivatives, making isolation more challenging. The Laplace Transform offers a powerful technique to temporarily reframe the equation, effectively <q>unwrapping</q> the derivatives and enabling a more straightforward isolation of the unknown, similar to algebra.
+		</p>
+
+		<p>
+			By applying the Laplace Transform, the dependent variable is extracted from its derivatives and embedded within a special integral. This integral serves as a <q>container</q> that encapsulates the unknown function we seek. In this transformed state, these containers can be manipulated algebraically, allowing us to isolate the unknown function within. Once isolated, we can then revert the transform, releasing the function and revealing the solution.
+		</p>
+
+		<p>
+			In essence, the Laplace Transform alters the mathematical landscape of a differential equation, simplifying the process of solving for the unknown function. This method is particularly powerful for tackling linear non-constant coefficient (LNCC) equations with discontinuous right-hand side functions.
+		</p>
+
+		<p>
+			<assemblage xml:id="lt-roadmap"><title>Laplace Transform Big Picture Roadmap</title>
+				<image source="figures/LT-Diagram-Steps-GIF.gif" width="100%">
+					<shortdescription>(for accessibility)</shortdescription>
+				</image>
+			</assemblage>
+		</p>
+
+		<p>
+			Throughout this chapter, we will frequently refer to this roadmap and apply it to the initial-value problem,
+			<mdn xml:id="lt-model-ivp">
+				<mrow xml:id="lt-model-equation">
+					y'' + 3y' + 2y = -40e^{3t},
+				</mrow>
+				<mrow xml:id="lt-model-initial-values">
+					y(0) = 0, \quad y'(0) = 1,
+				</mrow>,
+			</mdn>
+			as a guiding example to illustrate the key concepts.
+		</p>
+			<me>s^2Y + 3sY + 2Y = \frac{-40}{s-3}.</me>
+	</introduction>
+
+	<chapter><title> Forward Transforms </title>
+
+		<introduction>
+			<p>
+				To begin our exploration of the Laplace Transform, we start with the first step in the <xref ref="lt-roadmap" text="custom">Laplace Transform Roadmap</xref>, known as the forward Laplace transform. This step is foundational, as it sets the stage for the subsequent transformations outlined in the roadmap.
+			</p>
+
+			<p>
+				<figure xml:id="lt-roadmap-step1">
+					<caption>The Forward Laplace Transform. Converting the <m>y(t)</m>-differential equation into the <m>Y(s)</m>-algebra equation.</caption>
+					<image source="figures/LT-Diagram-Focused-Step-1.png" width="100%">
+						<shortdescription>The Forward Laplace Transform</shortdescription>
+					</image>
+				</figure>
+			</p>
+
+			<p>
+				Applying the forward Laplace transform to a differential equation involves converting both the left-hand side (LHS) and right-hand side (RHS) of the equation into their Laplace-transformed counterparts.
+			</p>
+
+			<p>
+				This section investigates how individual functions, like <m>-40e^{3t}</m> in step 1, are transformed into expressions such as <m>-\frac{40}{s-3}</m>. In the next section, we will show where the <m>s^2Y + 3sY + 2Y + 9</m> comes from in the forward transform.
+			</p>
+		</introduction>
+
+		<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Motivation </title>
+			<p>
+				The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
+				<me>\int u\ dv = uv - \int v\ du</me>.
+			</p>
+
+			<p>
+				In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
+				<me> 
+					\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
+				</me>.
+			</p>
+
+			<p>
+				Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
+			</p>
+
+			<p>
+				Let's see this concept in action. Consider an integral of the form:
+				<me>\int e^{-st} y' \, dt</me>,
+				where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
+				<me> 
+					\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} = 
+					\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} - 
+					\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
+					e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
+				</me>.
+			</p>
+
+			<p>
+				What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>. 
+			</p>
+
+			<p>
+				This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations. 
+			</p>
+
+			<reading-questions><title> Check-Point Questions </title>
+				<exercise label="p4-c1-s1-rq1"><title> <em>The Laplace transform method is leverages which concepts to solve differential equations?</em> </title>
+					<statement/>
+					<choices>
+						<choice>
+							<statement><p>Chain Rule</p></statement>
+							<feedback>
+								<p>
+									Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><p>Product Rule</p></statement>
+							<feedback>
+								<p>
+									No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>Integration by Parts</p></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>Properties of Exponential Functions</p></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p4-c1-s1-rq2"><title> <em>Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?</em> </title>
+					<statement/>
+
+					<choices>
+						<choice>
+							<statement><p>Chain Rule</p></statement>
+							<feedback>
+								<p>
+									Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><p>L'Hopital's Rule</p></statement>
+							<feedback>
+								<p>
+									Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><p>Integration by Parts</p></statement>
+							<feedback>
+								<p>
+									Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><p>Implicit Differentiation</p></statement>
+							<feedback>
+								<p>
+									Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p4-c1-s1-rq3"><title> <em><m>\ds\frac{d}{dt}\left[e^{-st}\right] =</m> <fillin characters="10" /></em> </title>
+					<statement/>
+					<choices>
+						<choice correct="yes">
+							<statement><m>-se^{-st}</m></statement>
+							<feedback>
+								<p>
+									Correct! The derivative of <m>e^{-st}</m> with respect to <m>t</m> is <m>-se^{-st}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>e^{-st}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. The derivative should include a factor of <m>-s</m> due to the chain rule. 
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>se^{-st}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. The derivative should be negative because the exponent of <m>e^{-st}</m> has a negative sign.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>-\frac{1}{s}e^{-st}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. This expression incorrectly represents the derivative of <m>e^{-st}</m>. Think about applying the chain rule to the exponent.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</exercise>
+
+				<exercise label="p4-c1-s1-rq4"><title> <em>Select the result of applying integration by parts to the integral, <m>\ \ \ds \int t^2 \ y'\ dt</m></em> </title>
+					<statement/>
+					<choices>
+						<choice>
+							<statement>
+								<m>\ds \int t^2 \ y'\ dt = t^2\, y - \int y \ dt</m>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. Pay close attention to how integration by parts is applied. Try again.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2\, y \ dt</m>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. You need to transfer the derivative correctly by choosing the appropriate <m>u</m> and <m>dv</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<m>\ds \int t^2 \ y'\ dt = 2\int t\, y \ dt</m>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<m>\ds \int t^2 \ y'\ dt = t^2\, y - 2\int t\, y \ dt</m>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The result of applying integration by parts to <m>\ds \int t^2 \ y'\ dt</m> is <m>t^2 y - 2\int t \ y \ dt</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</reading-questions>
+		</section>
+
+	</chapter>
+
+</part>
