@@ -66,7 +66,7 @@
 	<assemblage xml:id="lt-table-L2"><title>Common Laplace Transform (Exponential)</title>
 		<p>
 			<dl width="narrow">
-				<li xml:id="L2"><title><m>L_2.</m></title>
+				<li xml:id="L2"><title><m>L_2</m></title>
 					<m>\ds \lap{ e^{at} } = \frac{1}{s - a}, \quad s \gt a, \quad <xref ref="laplace-transform-of-exponential" text="custom">\text{details}</xref></m>
 				</li>
 			</dl>
@@ -75,56 +75,57 @@
 
 	<xi:include href="./p4-c1-s3-1-interactives.ptx" />
 
-	<paragraphs><title>Laplace Transform of the Power Function, <m>t^{n}</m></title>
+	<paragraphs>
+        <title>Laplace Transform of the Power Function, <m>t^{n}</m></title>
+        <p>
+            The power function <m>t^n</m> is another common function type found in differential equations. The Laplace transform of <m>t^n</m> follows a recursive pattern, which simplifies the computation for higher powers. We've already seen that <m>\ds\lap{1} = \sfrac{1}{s}</m>. Now, let's compute the transforms for <m>t</m> and <m>t^2</m>.
+        </p>
 
-		The power function <m>t^n</m> appears frequently in differential equations, particularly in polynomial solutions. We've already encountered the case when <m>n = 0</m>, since <m>t^0 = 1</m>. Now, let's explore the transform for the first and second powers.
+        <example>
 
-	</paragraphs>
+			<m>\ \ </m> The Laplace transforms for <m>t</m> and <m>t^2</m> are as follows:
+	
+			<p>
+				<ul marker="square">
+					<li>	
+						<m> \ds \lap{t} 	= \frac{1}{s^2}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-1" text="custom">Details</xref>
+					</li>
+					<li>	
+						<m> \ds \lap{t^2} = \frac{2}{s^3}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-2" text="custom">Details</xref>
+					</li>
+				</ul>
+			</p>
+		</example>
 
-	<example>
-
-		<m>\ \ </m> The Laplace transforms for <m>t</m> and <m>t^2</m> are as follows:
-
-		<p>
-			<ul marker="square">
-				<li>	
-					<m> \ds \lap{t} 	= \frac{1}{s^2}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-1" text="custom">Details</xref>
-				</li>
-				<li>	
-					<m> \ds \lap{t^2} = \frac{2}{s^3}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-2" text="custom">Details</xref>
-				</li>
-			</ul>
+        <p>
+			If you look in each solution, before computing <m>L = 0</m>, you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely,
+			<me>
+				\lap{t} = \frac{1}{s}\lap{1} \quad \text{and} \quad \lap{t^2} = \frac{2}{s}\lap{t}
+			</me>,
+			and if you compute the Laplace transform of <m>t^3</m>, you'll find that
+			<me>
+				\lap{t^3} = \frac{3}{s}\lap{t^2}
+			</me>.
+			In general, this recursive pattern continues for any power <m>n</m> as
+			<me>
+				\lap{t^n} = \frac{n}{s}\lap{t^{n-1}}
+			</me>.
+			So if we wanted the Laplace transform of <m>t^4</m>, we could find it like so
+			<md>
+				<mrow> 
+					\lap{t^4}
+						=\amp\ \frac{4}{s}\lap{t^3}
+				</mrow>
+				<mrow> 				
+						=\amp\ \frac{4}{s}\left[\frac{3}{s}\lap{t^2}\right] 
+						= \frac{4\cdot 3}{s^2}\left[\frac{2}{s}\lap{t}\right] 
+						= \frac{4\cdot 3\cdot 2}{s^3}\cdot\frac{1}{s^2} 
+						= \ob{\frac{4\cdot 3\cdot 2\cdot 1}{s^5}}^{\text{factorial}}
+				</mrow>
+			</md>.
+			This pattern is true for higher powers of <m>t</m>, leading to the next laplace transform rule which makes use of the <xref ref="factorial" text="title"/>.
 		</p>
-	</example>
-
-	<p>
-		If you look in each solution, before computing <m>L = 0</m>, you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely,
-		<me>
-			\lap{t} = \frac{1}{s}\lap{1} \quad \text{and} \quad \lap{t^2} = \frac{2}{s}\lap{t}
-		</me>,
-		and if you compute the Laplace transform of <m>t^3</m>, you'll find that
-		<me>
-			\lap{t^3} = \frac{3}{s}\lap{t^2}
-		</me>.
-		In general, this recursive pattern continues for any power <m>n</m> as
-		<me>
-			\lap{t^n} = \frac{n}{s}\lap{t^{n-1}}
-		</me>.
-		So if we wanted the Laplace transform of <m>t^4</m>, we could find it like so
-		<md>
-			<mrow> 
-				\lap{t^4}
-					=\amp\ \frac{4}{s}\lap{t^3}
-			</mrow>
-			<mrow> 				
-					=\amp\ \frac{4}{s}\left[\frac{3}{s}\lap{t^2}\right] 
-					= \frac{4\cdot 3}{s^2}\left[\frac{2}{s}\lap{t}\right] 
-					= \frac{4\cdot 3\cdot 2}{s^3}\cdot\frac{1}{s^2} 
-					= \ob{\frac{4\cdot 3\cdot 2\cdot 1}{s^5}}^{\text{factorial}}
-			</mrow>
-		</md>.
-		This pattern is true for higher powers of <m>t</m>, leading to the next laplace transform rule which makes use of the <xref ref="factorial" text="title"/>.
-	</p>
+    </paragraphs>
 
 	<assemblage xml:id="lt-table-L3"><title>Common Laplace Transform (Power)</title>
 		<p>
@@ -138,103 +139,110 @@
 
 	<xi:include href="./p4-c1-s3-2-interactives.ptx" />
 
-	<paragraphs><title>Laplace Transform of Sine and Cosine, <m>\sin(bt),\ \cos(bt)</m></title>
-	
-		Finally, let's consider the Laplace transforms of the famous sine and cosine functions.
+	<paragraphs>
+        <title>Laplace Transform of Sine and Cosine, <m>\sin(bt),\ \cos(bt)</m></title>
+        <p>
+            Now, let's turn to the Laplace transforms of trigonometric functions, which frequently arise in systems involving oscillations or wave equations.
+        </p>
 
-	</paragraphs>
-
-	<example>
+		<example>
 	
-		<m>\ \ </m>Compute <m>\lap{\cos(3t)}</m>.
+			<m>\ \ </m>Compute <m>\lap{\cos(3t)}</m>.
+			
+			<solution>
+				<p>
+					We start by applying the definition of the Laplace transform:
+					<me>
+						\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt 
+					</me>.
+					Rather than directly integrating, we will use a modified <xref ref="eulers-formula" text="title"></xref> to express cosine in terms of <m>e</m>
+					<me>
+						\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right).
+					</me>
+					Substituting this into the integral gives:
+					<md>
+						<mrow> 
+							\lap{ \cos(3t)} 
+							=\amp\ \frac12 \int_0^{\infty} e^{-st} \frac12\left(e^{3it} + e^{-3it}\right)\ dt 
+						</mrow>
+						<mrow>
+							=\amp\ \frac12\left[\int_0^{\infty} e^{-st}\cdot e^{3it}\ dt + \int_0^{\infty} e^{-st}\cdot e^{-3it}\ dt\right]
+						</mrow>
+						<mrow>
+							=\amp\ \frac{1}{2} \left[\lap{e^{3it}} + \lap{e^{-3it}}\right]
+						</mrow>
+						<mrow>
+							=\amp\ \frac{1}{2} \left[\frac{1}{s - 3i} + \frac{1}{s + 3i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+						</mrow>
+						<mrow>
+							=\amp\ \frac{1}{2} \left[\frac{s + 3i + s - 3i}{(s - 3i)(s + 3i)}\right]
+						</mrow>
+						<mrow>
+							=\amp\ \frac{s}{s^2 + 9}.
+						</mrow>
+					</md>
+					Therefore, the Laplace transform of <m>\cos(3t)</m> is:
+					<me>
+						\lap{\cos(3t)} = \frac{s}{s^2 + 9}.
+					</me>
+				</p>
+			</solution>
+		</example>
+
+        <p>
+            The sine function is handled in a similar way, as the next example shows.
+        </p>
+
+		<example>
+
+			<m>\ \ </m>Compute <m>\lap{\sin(-4t)}</m>.
 		
-		<solution>
-			<p>
-				We start by applying the definition of the Laplace transform:
-				<me>
-					\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt 
-				</me>.
-				Rather than directly integrating, we will use a modified <xref ref="eulers-formula" text="title"></xref> to express cosine in terms of <m>e</m>
-				<me>
-					\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right).
-				</me>
-				Substituting this into the integral gives:
-				<md>
-					<mrow> 
-						\lap{ \cos(3t)} 
-						=\amp\ \frac12 \int_0^{\infty} e^{-st} \frac12\left(e^{3it} + e^{-3it}\right)\ dt 
-					</mrow>
-					<mrow>
-						=\amp\ \frac12\left[\int_0^{\infty} e^{-st}\cdot e^{3it}\ dt + \int_0^{\infty} e^{-st}\cdot e^{-3it}\ dt\right]
-					</mrow>
-					<mrow>
-						=\amp\ \frac{1}{2} \left[\lap{e^{3it}} + \lap{e^{-3it}}\right]
-					</mrow>
-					<mrow>
-						=\amp\ \frac{1}{2} \left[\frac{1}{s - 3i} + \frac{1}{s + 3i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
-					</mrow>
-					<mrow>
-						=\amp\ \frac{1}{2} \left[\frac{s + 3i + s - 3i}{(s - 3i)(s + 3i)}\right]
-					</mrow>
-					<mrow>
-						=\amp\ \frac{s}{s^2 + 9}.
-					</mrow>
-				</md>
-				Therefore, the Laplace transform of <m>\cos(3t)</m> is:
-				<me>
-					\lap{\cos(3t)} = \frac{s}{s^2 + 9}.
-				</me>
-			</p>
-		</solution>
-	</example>
+			<solution>
+				<p>
+					As with cosine, we begin with the definition of the Laplace transform,
+					<me>
+						\lap{ \sin(-4t)} = \int_0^{\infty} e^{-st} \cdot \sin(-4t)\ dt
+					</me>
+					and rewrite sine using Euler's formula,
+					<me>
+						\sin(-4t) = \frac{e^{-4it} - e^{4it}}{2i}.
+					</me>
+					Substituting this into the integral, we get:
+					<md>
+						<mrow> 
+							\lap{ \sin(-4t)} 
+							=\amp \frac{1}{2i} \int_0^{\infty} e^{-st} \left(e^{-4it} - e^{4it}\right)\, dt 
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\int_0^{\infty} e^{-(s + 4i)t}\, dt - \int_0^{\infty} e^{-(s - 4i)t}\, dt\right]
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\lap{e^{-4it}} - \lap{e^{4it}}\right].
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\frac{1}{s + 4i} - \frac{1}{s - 4i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\frac{s - 4i - (s + 4i)}{(s + 4i)(s - 4i)}\right]
+						</mrow>
+						<mrow>
+							=\amp \frac{4}{s^2 + 16}.
+						</mrow>
+					</md>
+					Thus, the Laplace transform of <m>\sin(-4t)</m> is:
+					<me>
+						\lap{\sin(-4t)} = \frac{4}{s^2 + 16}.
+					</me>
+				</p>
+			</solution>
+		</example>
 
-	<example>
+		<p>
+			Both of these approaches can be generalized to show that the formula for the Laplace transforms of sine and cosine are given as follows:
+		</p>
+    </paragraphs>
 
-		<m>\ \ </m>Compute <m>\lap{\sin(-4t)}</m>.
 	
-		<solution>
-			<p>
-				As with cosine, we begin with the definition of the Laplace transform,
-				<me>
-					\lap{ \sin(-4t)} = \int_0^{\infty} e^{-st} \cdot \sin(-4t)\ dt
-				</me>
-				and rewrite sine using Euler's formula,
-				<me>
-					\sin(-4t) = \frac{e^{-4it} - e^{4it}}{2i}.
-				</me>
-				Substituting this into the integral, we get:
-				<md>
-					<mrow> 
-						\lap{ \sin(-4t)} 
-						=\amp \frac{1}{2i} \int_0^{\infty} e^{-st} \left(e^{-4it} - e^{4it}\right)\, dt 
-					</mrow>
-					<mrow>
-						=\amp \frac{1}{2i} \left[\int_0^{\infty} e^{-(s + 4i)t}\, dt - \int_0^{\infty} e^{-(s - 4i)t}\, dt\right]
-					</mrow>
-					<mrow>
-						=\amp \frac{1}{2i} \left[\lap{e^{-4it}} - \lap{e^{4it}}\right].
-					</mrow>
-					<mrow>
-						=\amp \frac{1}{2i} \left[\frac{1}{s + 4i} - \frac{1}{s - 4i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
-					</mrow>
-					<mrow>
-						=\amp \frac{1}{2i} \left[\frac{s - 4i - (s + 4i)}{(s + 4i)(s - 4i)}\right]
-					</mrow>
-					<mrow>
-						=\amp \frac{4}{s^2 + 16}.
-					</mrow>
-				</md>
-				Thus, the Laplace transform of <m>\sin(-4t)</m> is:
-				<me>
-					\lap{\sin(-4t)} = \frac{4}{s^2 + 16}.
-				</me>
-			</p>
-		</solution>
-	</example>
-
-	<p>
-		A similar approach can be used to show the general formula for the Laplace transforms of sine and cosine are given as follows
-	</p>
 
 	<assemblage xml:id="lt-table-L4-L5"><title>Common Laplace Transform (Sine, Cosine)</title>
 		<p>
@@ -250,5 +258,5 @@
 	</assemblage>
 
 	<xi:include href="./p4-c1-s3-3-interactives.ptx" />
-	
+
 </section>
