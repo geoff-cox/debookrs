@@ -36,7 +36,6 @@
 	</introduction>
 
 	<chapter><title> Forward Transforms </title>
-
 		<introduction>
 			<p>
 				To begin our exploration of the Laplace Transform, we start with the first step in the <xref ref="lt-roadmap" text="custom">Laplace Transform Roadmap</xref>, known as the forward Laplace transform. This step is foundational, as it sets the stage for the subsequent transformations outlined in the roadmap.
@@ -60,565 +59,1260 @@
 			</p>
 		</introduction>
 
-		<section><title> Motivation </title>
-			<p>
-				The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
-				<me>\int u\ dv = uv - \int v\ du</me>.
-			</p>
+		<section><title> Introduction </title>
+			<introduction>
+				<p>
+					Differential equations are often difficult to solve because they involve unknown functions entangled with their derivatives. This complexity grows when the equation involves discontinuities or initial conditions. The Laplace Transform simplifies this process by converting the differential equation into an algebraic form, making it easier to solve. One of the key motivations for using the Laplace Transform is its ability to handle these discontinuities seamlessly, transforming functions piecewise into a single, continuous function in the complex plane. Through this, we can solve problems that would otherwise be very challenging with traditional methods.
+				</p>
+			</introduction>
 
-			<p>
-				In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
-				<me> 
-					\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
-				</me>.
-			</p>
+			<subsection><title> Motivation </title>
+				<p>
+					The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
+					<me>\int u\ dv = uv - \int v\ du</me>.
+				</p>
 
-			<p>
-				Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
-			</p>
+				<p>
+					In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
+					<me> 
+						\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
+					</me>.
+				</p>
 
-			<p>
-				Let's see this concept in action. Consider an integral of the form:
-				<me>\int e^{-st} y' \, dt</me>,
-				where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
-				<me> 
-					\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} = 
-					\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} - 
-					\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
-					e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
-				</me>.
-			</p>
+				<p>
+					Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
+				</p>
 
-			<p>
-				What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>. 
-			</p>
+				<p>
+					Let's see this concept in action. Consider an integral of the form:
+					<me>\int e^{-st} y' \, dt</me>,
+					where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
+					<me> 
+						\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} = 
+						\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} - 
+						\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
+						e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
+					</me>.
+				</p>
 
-			<p>
-				This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations. 
-			</p>
+				<p>
+					What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>. 
+				</p>
 
-			<reading-questions><title> Check-Point Questions </title>
-				<exercise label="p4-c1-s1-rq1"><title> <em>The Laplace transform method is leverages which concepts to solve differential equations?</em> </title>
-					<statement/>
-					<choices>
-						<choice>
-							<statement><p>Chain Rule</p></statement>
-							<feedback>
-								<p>
-									Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>Product Rule</p></statement>
-							<feedback>
-								<p>
-									No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p>Integration by Parts</p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p>Properties of Exponential Functions</p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
+				<p>
+					This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations. 
+				</p>
 
-				<exercise label="p4-c1-s1-rq2"><title> <em>Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?</em> </title>
-					<statement/>
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s1-1-rq1"><title> <em>The Laplace transform method is leverages which concepts to solve differential equations?</em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><p>Chain Rule</p></statement>
+								<feedback>
+									<p>
+										Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>Product Rule</p></statement>
+								<feedback>
+									<p>
+										No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p>Integration by Parts</p></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p>Properties of Exponential Functions</p></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
 
-					<choices>
-						<choice>
-							<statement><p>Chain Rule</p></statement>
-							<feedback>
-								<p>
-									Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>L'Hopital's Rule</p></statement>
-							<feedback>
-								<p>
-									Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p>Integration by Parts</p></statement>
-							<feedback>
-								<p>
-									Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>Implicit Differentiation</p></statement>
-							<feedback>
-								<p>
-									Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
+					<exercise label="p4-c1-s1-1-rq2"><title> <em>Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?</em> </title>
+						<statement/>
 
-				<exercise label="p4-c1-s1-rq3"><title> <em><m>\ds\frac{d}{dt}\left[e^{-st}\right] =</m> <fillin characters="10" /></em> </title>
-					<statement/>
-					<choices>
-						<choice correct="yes">
-							<statement><m>-se^{-st}</m></statement>
-							<feedback>
-								<p>
-									Correct! The derivative of <m>e^{-st}</m> with respect to <m>t</m> is <m>-se^{-st}</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>e^{-st}</m></statement>
-							<feedback>
-								<p>
-									Incorrect. The derivative should include a factor of <m>-s</m> due to the chain rule. 
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>se^{-st}</m></statement>
-							<feedback>
-								<p>
-									Incorrect. The derivative should be negative because the exponent of <m>e^{-st}</m> has a negative sign.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>-\frac{1}{s}e^{-st}</m></statement>
-							<feedback>
-								<p>
-									Incorrect. This expression incorrectly represents the derivative of <m>e^{-st}</m>. Think about applying the chain rule to the exponent.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
+						<choices>
+							<choice>
+								<statement><p>Chain Rule</p></statement>
+								<feedback>
+									<p>
+										Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>L'Hopital's Rule</p></statement>
+								<feedback>
+									<p>
+										Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p>Integration by Parts</p></statement>
+								<feedback>
+									<p>
+										Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>Implicit Differentiation</p></statement>
+								<feedback>
+									<p>
+										Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
 
-				<exercise label="p4-c1-s1-rq4"><title> <em>Select the result of applying integration by parts to the integral, <m>\ \ \ds \int t^2 \ y'\ dt</m></em> </title>
-					<statement/>
-					<choices>
-						<choice>
-							<statement>
-								<m>\ds \int t^2 \ y'\ dt = t^2\, y - \int y \ dt</m>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. Pay close attention to how integration by parts is applied. Try again.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2\, y \ dt</m>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. You need to transfer the derivative correctly by choosing the appropriate <m>u</m> and <m>dv</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<m>\ds \int t^2 \ y'\ dt = 2\int t\, y \ dt</m>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement>
-								<m>\ds \int t^2 \ y'\ dt = t^2\, y - 2\int t\, y \ dt</m>
-							</statement>
-							<feedback>
-								<p>
-									Correct! The result of applying integration by parts to <m>\ds \int t^2 \ y'\ dt</m> is <m>t^2 y - 2\int t \ y \ dt</m>.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
-			</reading-questions>
+					<exercise label="p4-c1-s1-1-rq3"><title> <em><m>\ds\frac{d}{dt}\left[e^{-st}\right] =</m> <fillin characters="10" /></em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>-se^{-st}</m></statement>
+								<feedback>
+									<p>
+										Correct! The derivative of <m>e^{-st}</m> with respect to <m>t</m> is <m>-se^{-st}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>e^{-st}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The derivative should include a factor of <m>-s</m> due to the chain rule. 
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>se^{-st}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The derivative should be negative because the exponent of <m>e^{-st}</m> has a negative sign.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>-\frac{1}{s}e^{-st}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. This expression incorrectly represents the derivative of <m>e^{-st}</m>. Think about applying the chain rule to the exponent.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+
+					<exercise label="p4-c1-s1-1-rq4"><title> <em>Select the result of applying integration by parts to the integral, <m>\ \ \ds \int t^2 \ y'\ dt</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement>
+									<m>\ds \int t^2 \ y'\ dt = t^2\, y - \int y \ dt</m>
+								</statement>
+								<feedback>
+									<p>
+										Incorrect. Pay close attention to how integration by parts is applied. Try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement>
+									<m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2\, y \ dt</m>
+								</statement>
+								<feedback>
+									<p>
+										Incorrect. You need to transfer the derivative correctly by choosing the appropriate <m>u</m> and <m>dv</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement>
+									<m>\ds \int t^2 \ y'\ dt = 2\int t\, y \ dt</m>
+								</statement>
+								<feedback>
+									<p>
+										Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement>
+									<m>\ds \int t^2 \ y'\ dt = t^2\, y - 2\int t\, y \ dt</m>
+								</statement>
+								<feedback>
+									<p>
+										Correct! The result of applying integration by parts to <m>\ds \int t^2 \ y'\ dt</m> is <m>t^2 y - 2\int t \ y \ dt</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+				</reading-questions>
+			</subsection>
+
+			<subsection><title> Definition </title>
+				<p>
+					In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation 
+					<me>
+						e^{-st} \left( y'' + 3y' + 2y \right) = -40e^{3t}
+					</me>
+					would look like this:
+					<md>
+						<mrow> 
+							e^{-st} \left( y'' + 3y' + 2y \right) 
+								=\amp\ e^{-st} \left( -40e^{3t} \right)
+						</mrow>
+						<mrow> 
+							\int e^{-st} \left( y'' + 3y' + 2y \right) \, dt 
+								=\amp\ \int e^{-st} \left( -40e^{3t} \right) \, dt
+						</mrow>
+						<mrow> 
+							\ub{\int e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} + 
+							3\ub{\int e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} + 
+							2\ub{\int e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}} 
+								=\amp\ \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
+						</mrow>
+					</md>.
+					As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
+				</p>
+
+				<definition><title>Laplace Transform</title>
+					<statement>
+						The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
+
+						<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
+
+						provided that the integral exists (i.e., the improper integral converges).
+					</statement>
+				</definition>
+
+				<p>
+					This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
+				</p>
+				
+				<me>
+					\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
+				</me>
+				
+				<p>
+					Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
+				</p>
+
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s1-2-rq1"><title> <em>The Laplace transform only exists if the improper integral converges</em> </title>
+						<statement correct="yes"/>
+						<feedback>
+							<p>
+								This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.
+							</p>
+						</feedback>
+					</exercise>
+
+					<exercise label="p4-c1-s1-2-rq2"><title> <em>The Laplace transform is defined as <m>\ds\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt</m>, provided the <fillin characters="10" /> exists</em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><p>integral</p></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform is defined only if the integral converges.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>function</p></statement>
+								<feedback>
+									<p>
+										No, it is the convergence of the integral that determines whether the Laplace transform is defined.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>s</m>-value</p></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform is defined by an integral, not by a specific <m>s</m>-value.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>derivative</p></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform is defined by an integral, not by a derivative.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+					
+					<exercise label="p4-c1-s1-2-rq3"><title> <em>Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><p><m>\ds \ e^{-t}, \ </m> integrating</p></statement>
+								<feedback>
+									<p>
+										No, the correct expression involves the exponential function <m>\ds e^{-st}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p><m>\ds \ e^{-st}, \ </m> integrating</p></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform involves multiplying the original function by <m>\ds e^{-st}</m> and integrating with respect to <m>t</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>\ds \ e^{st}, \ </m> integrating</p></statement>
+								<feedback>
+									<p>
+										No, the correct expression involves the exponential function <m>\ds e^{-st}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>\ds \ e^{-st}, \ </m> differentiating</p></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform involves integrating with respect to <m>t</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>\ds \ s, \ </m> differentiating</p></statement>
+								<feedback>
+									<p>
+										No, the correct form involves the exponential function <m>\ds e^{-st}</m> and integrating with respect to <m>t</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+				</reading-questions>
+			</subsection>
 		</section>
 
-		<section><title> Definition </title>
-			<p>
-				In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation 
-				<me>
-					e^{-st} \left( y'' + 3y' + 2y \right) = -40e^{3t}
-				</me>
-				would look like this:
-				<md>
-					<mrow> 
-						e^{-st} \left( y'' + 3y' + 2y \right) 
-							=\amp\ e^{-st} \left( -40e^{3t} \right)
-					</mrow>
-					<mrow> 
-						\int e^{-st} \left( y'' + 3y' + 2y \right) \, dt 
-							=\amp\ \int e^{-st} \left( -40e^{3t} \right) \, dt
-					</mrow>
-					<mrow> 
-						\ub{\int e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} + 
-						3\ub{\int e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} + 
-						2\ub{\int e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}} 
-							=\amp\ \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
-					</mrow>
-				</md>.
-				As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
-			</p>
+		<section><title> Common Transforms </title>
+			<introduction>
+				<p>
+					In this section, we will explore some of the most commonly encountered Laplace transforms. These functions frequently appear in differential equations, making their transforms especially valuable tools for solving such equations. Let's start with the Laplace transform of the exponential function, <m>e^{at}</m>, and gradually build up to more complex functions like power functions, sine, and cosine.
+				</p>
+			</introduction>
 
-			<definition><title>Laplace Transform</title>
-				<statement>
-					The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
+			<subsection><title> Constant Function, <m>1</m> </title>
+				<example>
+					<m>\ \ </m>Compute <m>\ds \lap{1}</m>.
 
-					<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
+					<solution>
+						<p>
+							By the definition above, we have the improper integral
+							<men xml:id="lt-1-example-eqn-1"> 
+								\lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
+							</men>.
+							To evaluate this, we treat <m>s</m> as a constant and integrate with respect to <m>t</m>.
+							<md>
+								<mrow>				
+									I = \int_0^b e^{-st}dt
+									=\amp\ -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}
+								</mrow>
+								<mrow>			
+									=\amp\ -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]
+								</mrow>
+								<mrow>			
+									=\amp\ -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+								</mrow>
+							</md>
+							Now that we have <m>I</m>, we can plug it into the limit above.
+							<md>
+								<mrow> 
+									\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+									=\amp\ -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] 
+									\qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+								</mrow>
+								<mrow> 
+										=\amp\ -\frac{1}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big] 
+								</mrow>
+							</md>
+						</p>
+				
+						<p>
+							The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
+							<ul>
+								<li>
+									<p>
+										<line><m>s &lt; 0:\ </m> Since <m>\ds e^{-(\text{negative})b} = e^{(\text{positive})b} \to \infty</m> as <m>b \to \infty</m></line>
+										<line><m>\hspace{4.0em} \implies\ </m> limit diverges (does not exist) when <m>s &lt; 0</m>.</line>
+									</p>
+								</li>
+								<li>
+									<p>
+										<line><m>s &gt; 0:\ </m> Since <m>\ds e^{-(\text{positive})b} = e^{(\text{negative})b} \to 0</m> as <m>b \to \infty</m></line>
+										<line><m>\hspace{4.0em} \implies\ </m> limit converges (exists) when <m>s &gt; 0</m>.</line>
+									</p>
+								</li>
+							</ul>
+							To visualize this, here is a <xref ref="compare-exp-graphs" text="custom">graph</xref> comparing <m>s=-1.2\ </m> versus <m>\, +1.2</m>.
+						</p>
+				
+						<p>
+							Therefore, when <m>s &gt; 0</m> the Laplace transform exists and evaluates to
+							<me>\lap{1} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0.</me>
+						</p>
+					</solution>
+				</example>
 
-					provided that the integral exists (i.e., the improper integral converges).
-				</statement>
-			</definition>
-
-			<p>
-				This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
-			</p>
-			
-			<me>
-				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
-			</me>
-			
-			<p>
-				Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
-			</p>
-			
-			<example>
-				<m>\ \ </m>Compute <m>\ds \lap{1}</m>.
-
-				<solution>
+				<p>
+					Now that we've worked through an example, here are a few key takeaways:
+				</p>
+				
+				<ul marker="square">
+					<li>
 					<p>
-						By the definition above, we have the improper integral
-						<men xml:id="lt-1-example-eqn-1"> 
-							\lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
-						</men>.
-						To evaluate this, we treat <m>s</m> as a constant and integrate with respect to <m>t</m>.
-						<md>
-							<mrow>				
-								I = \int_0^b e^{-st}dt
-								=\amp\ -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}
-							</mrow>
-							<mrow>			
-								=\amp\ -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]
-							</mrow>
-							<mrow>			
-								=\amp\ -\frac{1}{s}\left[ e^{-sb} - 1 \right]
-							</mrow>
-						</md>
-						Now that we have <m>I</m>, we can plug it into the limit above.
-						<md>
-							<mrow> 
-								\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]
-								=\amp\ -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] 
-								\qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
-							</mrow>
-							<mrow> 
-									=\amp\ -\frac{1}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big] 
-							</mrow>
-						</md>
+						The Laplace transform always results in a function of <m>s</m>. We typically denote the Laplace transform of <m>f(t)</m> as <m>F(s)</m>. For instance,
+						<me> \lap{f(t)} = F(s) \quad \text{or} \quad \lap{q(t)} = Q(s).</me>
 					</p>
+					</li>
+				
+					<li>
+					<p>
+						The values of <m>s</m> for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.
+					</p>
+					</li>
+				
+					<li>
+					<p>
+						The notation <m>\lap{}</m> includes curly braces to indicate the function being transformed. These braces are essential, not optional.
+					</p>
+					</li>
+				</ul>
+				
+				<p>
+					With this, we've introduced our first Laplace transform. In the next section, we will explore a collection of common transforms that are used to solve differential equations.
+				</p>
+
+				<assemblage xml:id="lt-table-L1"><title>Common Laplace Transform <m>L_1</m></title>
+					<p>
+						<dl width="narrow">
+							<li xml:id="L1"><title><m>{\LARGE \vphantom{\int}}L_1</m></title>
+								<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt; 0 </m>
+							</li>
+						</dl>
+					</p>
+				</assemblage>
+
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s2-1-rq1"><title> <em>What is the result of the Laplace transform of the constant function 1?</em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><p><m>\ds \frac{1}{t}</m></p></statement>
+								<feedback>
+									<p>
+										No, <m>\ds \frac{1}{t}</m> is not the result of the Laplace transform of 1.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p><m>\ds \frac{1}{s}</m></p></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of the constant function 1 is <m>\ds \frac{1}{s}</m> for <m>s &gt; 0</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>\ds \frac{1}{t+s}</m></p></statement>
+								<feedback>
+									<p>
+										No, this is not the correct expression for the Laplace transform of 1.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p><m>\ds \frac{1}{t-s}</m></p></statement>
+								<feedback>
+									<p>
+										No, this expression does not represent the Laplace transform of 1.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+					
+					<exercise label="p4-c1-s2-1-rq2"><title> <em>In the Laplace transform integral, the variable <m>s</m> is treated as a <fillin characters="10" /> during the integration process</em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><p>constant</p></statement>
+								<feedback>
+									<p>
+										Correct! The variable <m>s</m> is treated as a constant when performing the integration in the Laplace transform.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>variable</p></statement>
+								<feedback>
+									<p>
+										No, while <m>s</m> is technically a variable, it is treated as a constant during the integration with respect to <m>t</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>coefficient</p></statement>
+								<feedback>
+									<p>
+										No, <m>s</m> is treated as a constant, not as a coefficient, during the integration process.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><p>limit</p></statement>
+								<feedback>
+									<p>
+										No, <m>s</m> does not represent a limit in this context; it is treated as a constant.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+				</reading-questions>
+			</subsection>
+
+			<subsection><title> Exponential Function, <m>e^{at}</m> </title>
+				
+				<p>
+					The exponential function <m>e^{at}</m> is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example. 
+				</p>
+
+				<example>
+					<m>\ \ </m> Compute <m> \lap{ e^{7t}} </m>.
+			
+					<solution>
+						<p>
+							We begin by applying the definition of the Laplace transform:
+							<md>
+								<mrow> 
+									\lap{ e^{7t} } 
+									=\amp\ \int_0^{\infty} e^{-st} \cdot e^{7t}\ dt
+								</mrow>
+								<mrow> 
+									=\amp\ \lim_{b \to \infty}\int_0^b e^{(-s+7)t}\ dt
+								</mrow>
+							</md>
+							For this improper integral to converge, the exponent <m>-s+7</m> must be negative, meaning:
+							<me> 
+								-s+7 \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} -s \lt -7 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} s \gt 7
+							</me>.
+							Thus, we proceed under the assumption that <m>s \gt 7</m>.
+							<md>
+								<mrow> 
+									\lap{ e^{7t} } 
+										=\amp\ \lim_{b \to \infty}\int_0^b e^{(-s+7)t}\, dt
+								</mrow>
+								<mrow> 
+										=\amp\ \lim_{b \to \infty} \frac{1}{7-s} e^{(-s+7)t} \Bigg|_0^b
+								</mrow>
+								<mrow> 
+										=\amp\ \frac{1}{-s+7} \left[ \lim_{b \to \infty} \left( e^{(-s+7)b} - e^{0} \right) \right]
+								</mrow>
+								<mrow> 
+										=\amp\ \frac{1}{-s+7} \left[ \lim_{b \to \infty} e^{(-s+7)b} - 1 \right]
+								</mrow>
+								<mrow>
+										=\amp\ \frac{1}{-s+7} \left[ 0 - 1 \right] \qquad \Big(e^{(\text{negative})b} \to 0\Big)
+								</mrow>
+								<mrow>
+										=\amp\ -\frac{1}{-s+7} = \frac{1}{s-7}. \quad \text{for } s \gt 7
+								</mrow>
+							</md>
+							Thus, the Laplace transform of <m>e^{7t}</m> is:
+							<me>\ds \lap{e^{7t}} = \frac{1}{s - 7}, \quad s \gt 7.</me>
+						</p>
+					</solution>
+				</example>
+			
+				<p>
+					This result can be generalized for any constant <m>a</m>, giving us the Laplace transform of <m>e^{at}</m>. <xref ref="laplace-transform-of-exponential" text="custom">Here are the details.</xref>
+				</p>
+			
+				<assemblage xml:id="lt-table-L2"><title>Common Laplace Transform (Exponential)</title>
+					<p>
+						<dl width="narrow">
+							<li xml:id="L2"><title><m>L_2</m></title>
+								<m>\ds \lap{ e^{at} } = \frac{1}{s - a}, \quad s \gt a, \quad <xref ref="laplace-transform-of-exponential" text="custom">\text{details}</xref></m>
+							</li>
+						</dl>
+					</p>
+				</assemblage>
+			
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s2-2-rq1"><title> <em>True/False. <m>\ds\lap{e^{at}} = \frac{1}{s + a}</m></em> </title>
+						<statement correct="no"/>
+						<feedback>
+							<p>
+								False. The correct formula is <m>\ds\frac{1}{s - a}</m>, not <m>\ds\frac{1}{s + a}</m>.
+							</p>
+						</feedback>
+					</exercise>
+
+					<exercise label="p4-c1-s2-2-rq2"><title> <em>What must be true about <m>s</m> for <m>\lap{e^{137t}}</m> to exist?</em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>s \lt 137</m></statement>
+								<feedback>
+									<p>
+										No, <m>s</m> must be greater than 137 for the Laplace transform of <m>e^{137t}</m> to exist.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s = 137</m></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform does not exist at <m>s = 137</m> because the integral does not converge.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>s \gt 137</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>e^{137t}</m> exists only when <m>s \gt 137</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s \lt 0</m></statement>
+								<feedback>
+									<p>
+										No, <m>s</m> must be greater than 7, not less than 0, for the Laplace transform to exist.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+
+					<exercise label="p4-c1-s2-2-rq3"><title> <em><m>\lap{e^{-3t}} = </m> ?</em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>\ds\frac{1}{s+3}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>e^{-3t}</m> is <m>\ds\frac{1}{s+3}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{1}{s-3}</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{1}{s-3t}</m></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform should not contain the variable <m>t</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{3}{s+3}</m></statement>
+								<feedback>
+									<p>
+										No, double-check the numerator.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+				</reading-questions>
+			</subsection>
+
+			<subsection><title> Power Function, <m>t^{n}</m> </title>
+				<p>
+					The power function <m>t^n</m> is another common function type found in differential equations. The Laplace transform of <m>t^n</m> follows a recursive pattern, which simplifies the computation for higher powers. We've already seen that <m>\ds\lap{1} = \sfrac{1}{s}</m>. Now, let's compute the transforms for <m>t</m> and <m>t^2</m>.
+				</p>
+
+				<example>
+
+					<m>\ \ </m> The Laplace transforms for <m>t</m> and <m>t^2</m> are as follows:
 			
 					<p>
-						The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
-						<ul>
-							<li>
-								<p>
-									<line><m>s &lt; 0:\ </m> Since <m>\ds e^{-(\text{negative})b} = e^{(\text{positive})b} \to \infty</m> as <m>b \to \infty</m></line>
-									<line><m>\hspace{4.0em} \implies\ </m> limit diverges (does not exist) when <m>s &lt; 0</m>.</line>
-								</p>
+						<ul marker="square">
+							<li>	
+								<m> \ds \lap{t} 	= \frac{1}{s^2}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-1" text="custom">Details</xref>
 							</li>
-							<li>
-								<p>
-									<line><m>s &gt; 0:\ </m> Since <m>\ds e^{-(\text{positive})b} = e^{(\text{negative})b} \to 0</m> as <m>b \to \infty</m></line>
-									<line><m>\hspace{4.0em} \implies\ </m> limit converges (exists) when <m>s &gt; 0</m>.</line>
-								</p>
+							<li>	
+								<m> \ds \lap{t^2} = \frac{2}{s^3}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-2" text="custom">Details</xref>
 							</li>
 						</ul>
-						To visualize this, here is a <xref ref="compare-exp-graphs" text="custom">graph</xref> comparing <m>s=-1.2\ </m> versus <m>\, +1.2</m>.
 					</p>
-			
+				</example>
+
+				<p>
+					If you look in each solution, before computing <m>L = 0</m>, you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely,
+					<me>
+						\lap{t} = \frac{1}{s}\lap{1} \quad \text{and} \quad \lap{t^2} = \frac{2}{s}\lap{t}
+					</me>,
+					and if you compute the Laplace transform of <m>t^3</m>, you'll find that
+					<me>
+						\lap{t^3} = \frac{3}{s}\lap{t^2}
+					</me>.
+					In general, this recursive pattern continues for any power <m>n</m> as
+					<me>
+						\lap{t^n} = \frac{n}{s}\lap{t^{n-1}}
+					</me>.
+					So if we wanted the Laplace transform of <m>t^4</m>, we could find it like so
+					<md>
+						<mrow> 
+							\lap{t^4}
+								=\amp\ \frac{4}{s}\lap{t^3}
+						</mrow>
+						<mrow> 				
+								=\amp\ \frac{4}{s}\left[\frac{3}{s}\lap{t^2}\right] 
+								= \frac{4\cdot 3}{s^2}\left[\frac{2}{s}\lap{t}\right] 
+								= \frac{4\cdot 3\cdot 2}{s^3}\cdot\frac{1}{s^2} 
+								= \ob{\frac{4\cdot 3\cdot 2\cdot 1}{s^5}}^{\text{factorial}}
+						</mrow>
+					</md>.
+					This pattern is true for higher powers of <m>t</m>, leading to the next laplace transform rule which makes use of the <xref ref="factorial" text="title"/>.
+				</p>
+
+				<assemblage xml:id="lt-table-L3"><title>Common Laplace Transform (Power)</title>
 					<p>
-						Therefore, when <m>s &gt; 0</m> the Laplace transform exists and evaluates to
-						<me>\lap{1} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0.</me>
+						<dl width="narrow">
+							<li xml:id="L3"><title><m>{\LARGE \vphantom{\int}}L_3</m></title>
+								<m>\ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s >0, \quad n = 1, 2, 3, \ldots </m>
+							</li>
+						</dl>
 					</p>
-				</solution>
-			</example>
+				</assemblage>
+			
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s2-3-rq1"><title> <em><m>\ds\lap{t^4} = </m><m>\ds\frac{<fillin characters="1" /> !}{s^5}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>4</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>t^4</m> is <m>\ds\frac{4!}{s^5}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>5</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>24</m></statement>
+								<feedback>
+									<p>
+										No, notice the factorial in the numerator.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>120</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+					
+					<exercise label="p4-c1-s2-3-rq2"><title> <em><m>\ds\lap{t^3} = </m><m>\ds\frac{6}{<fillin characters="1" />}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>s^4</m></statement>
+								<feedback>
+									<p>
+										No, the power of <m>s</m> in the denominator should be <m>4</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>s^4</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>t^3</m> is <m>\ds\frac{6}{s^4}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s^3</m></statement>
+								<feedback>
+									<p>
+										No, the power of <m>s</m> in the denominator should be <m>4</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s^5</m></statement>
+								<feedback>
+									<p>
+										No, the power of <m>s</m> in the denominator should be <m>4</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+					
+					<exercise label="p4-c1-s2-3-rq3"><title> <em><m>\ds\lap{<fillin characters="1" />} = \ \frac{479001600}{s^{13}}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>t^9</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>t^{10}</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>t^{11}</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>t^{12}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>t^{12}</m> is <m>\ds\frac{479001600}{s^{13}}</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
 
-			<p>
-				Now that we've worked through an example, here are a few key takeaways:
-			</p>
-			
-			<ul marker="square">
-				<li>
-				<p>
-					The Laplace transform always results in a function of <m>s</m>. We typically denote the Laplace transform of <m>f(t)</m> as <m>F(s)</m>. For instance,
-					<me> \lap{f(t)} = F(s) \quad \text{or} \quad \lap{q(t)} = Q(s).</me>
-				</p>
-				</li>
-			
-				<li>
-				<p>
-					The values of <m>s</m> for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.
-				</p>
-				</li>
-			
-				<li>
-				<p>
-					The notation <m>\lap{}</m> includes curly braces to indicate the function being transformed. These braces are essential, not optional.
-				</p>
-				</li>
-			</ul>
-			
-			<p>
-				With this, we've introduced our first Laplace transform. In the next section, we will explore a collection of common transforms that are used to solve differential equations.
-			</p>
+					<exercise label="p4-c1-s2-3-rq4"><title> <em><m>\ds\lap{t} = </m> ?</em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>\ds\frac{1}{s^2}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>t</m> is <m>\ds\frac{1}{s^2}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{1}{s}</m></statement>
+								<feedback>
+									<p>
+										No, the power of <m>s</m> in the denominator is not <m>1</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>1</m></statement>
+								<feedback>
+									<p>
+										No, the Laplace transform of <m>t</m> is not a constant.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{2}{s^2}</m></statement>
+								<feedback>
+									<p>
+										No, there should not be a <m>2</m> in the numerator.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
 
-			<assemblage xml:id="lt-table-L1"><title>Common Laplace Transform <m>L_1</m></title>
-				<p>
-					<dl width="narrow">
-						<li xml:id="L1"><title><m>{\LARGE \vphantom{\int}}L_1</m></title>
-							<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt; 0 </m>
-						</li>
-					</dl>
-				</p>
-			</assemblage>
+					<exercise label="p4-c1-s2-3-rq5"><title> <em><m>\ds\lap{t^2} = </m> ?</em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>\ds\frac{1}{s^3}</m></statement>
+								<feedback>
+									<p>
+										No, the correct transform is <m>\ds\frac{2}{s^3}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>\ds\frac{2}{s^3}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>t^2</m> is <m>\ds\frac{2}{s^3}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{1}{s^2}</m></statement>
+								<feedback>
+									<p>
+										No, the correct transform has a <m>2</m> in the numerator.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{2}{s^2}</m></statement>
+								<feedback>
+									<p>
+										No, the power of <m>s</m> in the denominator should be <m>3</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>	
+				</reading-questions>
+			</subsection>
 
-			<reading-questions><title> Check-Point Questions </title>
-				<exercise><title> <em>The Laplace transform only exists if the improper integral converges</em> </title>
-					<statement correct="yes"/>
-					<feedback>
+			<subsection><title> Sine and Cosine, <m>\sin(bt),\ \cos(bt)</m> </title>
+				<p>
+					Now, let's turn to the Laplace transforms of trigonometric functions, which frequently arise in systems involving oscillations or wave equations.
+				</p>
+
+				<example>
+			
+					<m>\ \ </m>Compute <m>\lap{\cos(3t)}</m>.
+					
+					<solution>
 						<p>
-							This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.
+							We start by applying the definition of the Laplace transform:
+							<me>
+								\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt 
+							</me>.
+							Rather than directly integrating, we will use a modified <xref ref="eulers-formula" text="title"></xref> to express cosine in terms of <m>e</m>
+							<me>
+								\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right).
+							</me>
+							Substituting this into the integral gives:
+							<md>
+								<mrow> 
+									\lap{ \cos(3t)} 
+									=\amp\ \frac12 \int_0^{\infty} e^{-st} \frac12\left(e^{3it} + e^{-3it}\right)\ dt 
+								</mrow>
+								<mrow>
+									=\amp\ \frac12\left[\int_0^{\infty} e^{-st}\cdot e^{3it}\ dt + \int_0^{\infty} e^{-st}\cdot e^{-3it}\ dt\right]
+								</mrow>
+								<mrow>
+									=\amp\ \frac{1}{2} \left[\lap{e^{3it}} + \lap{e^{-3it}}\right]
+								</mrow>
+								<mrow>
+									=\amp\ \frac{1}{2} \left[\frac{1}{s - 3i} + \frac{1}{s + 3i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+								</mrow>
+								<mrow>
+									=\amp\ \frac{1}{2} \left[\frac{s + 3i + s - 3i}{(s - 3i)(s + 3i)}\right]
+								</mrow>
+								<mrow>
+									=\amp\ \frac{s}{s^2 + 9}.
+								</mrow>
+							</md>
+							Therefore, the Laplace transform of <m>\cos(3t)</m> is:
+							<me>
+								\lap{\cos(3t)} = \frac{s}{s^2 + 9}.
+							</me>
 						</p>
-					</feedback>
-				</exercise>
+					</solution>
+				</example>
 
-				<exercise><title> <em>Which of the following best describes the Laplace transform of <m>f(t)</m>?</em> </title>
-					<statement/>
-					<choices>
-						<choice>
-							<statement><p>A function of <m>t</m> that solves differential equations.</p></statement>
-							<feedback>
-								<p>
-									No, the Laplace transform is a function of <m>s</m> and is used to simplify the process of solving differential equations.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p>A function of <m>s</m> found by integrating <m>f(t)</m> multiplied by <m>\ds e^{-st}</m>.</p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform converts a function of <m>t</m> into a function of <m>s</m> by integrating <m>f(t)</m> multiplied by <m>\ds e^{-st}</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>A quadratic function of <m>s</m>.</p></statement>
-							<feedback>
-								<p>
-									No, the Laplace transform is not necessarily a quadratic function; it depends on the original function <m>f(t)</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>The anti-derivative of <m>f(t)</m>.</p></statement>
-							<feedback>
-								<p>
-									While the Laplace transform involves integration, it is not the anti-derivative of <m>f(t)</m>.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
-				
-				<exercise><title> <em>What is the result of the Laplace transform of the constant function 1?</em> </title>
-					<statement/>
-					<choices>
-						<choice>
-							<statement><p><m>\ds \frac{1}{t}</m></p></statement>
-							<feedback>
-								<p>
-									No, <m>\ds \frac{1}{t}</m> is not the result of the Laplace transform of 1.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p><m>\ds \frac{1}{s}</m></p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform of the constant function 1 is <m>\ds \frac{1}{s}</m> for <m>s &gt; 0</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>\ds \frac{1}{t+s}</m></p></statement>
-							<feedback>
-								<p>
-									No, this is not the correct expression for the Laplace transform of 1.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>\ds \frac{1}{t-s}</m></p></statement>
-							<feedback>
-								<p>
-									No, this expression does not represent the Laplace transform of 1.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
+				<p>
+					The sine function is handled in a similar way, as the next example shows.
+				</p>
 
-				<exercise><title> <em>The Laplace transform is defined as <m>\ds\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt</m>, provided the <fillin characters="10" /> exists</em> </title>
-					<statement/>
-					<choices>
-						<choice correct="yes">
-							<statement><p>integral</p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform is defined only if the integral converges.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>function</p></statement>
-							<feedback>
-								<p>
-									No, it is the convergence of the integral that determines whether the Laplace transform is defined.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>s</m>-value</p></statement>
-							<feedback>
-								<p>
-									No, the Laplace transform is defined by an integral, not by a specific <m>s</m>-value.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>derivative</p></statement>
-							<feedback>
-								<p>
-									No, the Laplace transform is defined by an integral, not by a derivative.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
+				<example>
+
+					<m>\ \ </m>Compute <m>\lap{\sin(-4t)}</m>.
 				
-				<exercise><title> <em>In the Laplace transform integral, the variable <m>s</m> is treated as a <fillin characters="10" /> during the integration process</em> </title>
-					<statement/>
-					<choices>
-						<choice correct="yes">
-							<statement><p>constant</p></statement>
-							<feedback>
-								<p>
-									Correct! The variable <m>s</m> is treated as a constant when performing the integration in the Laplace transform.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>variable</p></statement>
-							<feedback>
-								<p>
-									No, while <m>s</m> is technically a variable, it is treated as a constant during the integration with respect to <m>t</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>coefficient</p></statement>
-							<feedback>
-								<p>
-									No, <m>s</m> is treated as a constant, not as a coefficient, during the integration process.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p>limit</p></statement>
-							<feedback>
-								<p>
-									No, <m>s</m> does not represent a limit in this context; it is treated as a constant.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
-				
-				<exercise><title> <em>Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m></em> </title>
-					<statement/>
-					<choices>
-						<choice>
-							<statement><p><m>\ds \ e^{-t}, \ </m> integrating</p></statement>
-							<feedback>
-								<p>
-									No, the correct expression involves the exponential function <m>\ds e^{-st}</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><p><m>\ds \ e^{-st}, \ </m> integrating</p></statement>
-							<feedback>
-								<p>
-									Correct! The Laplace transform involves multiplying the original function by <m>\ds e^{-st}</m> and integrating with respect to <m>t</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>\ds \ e^{st}, \ </m> integrating</p></statement>
-							<feedback>
-								<p>
-									No, the correct expression involves the exponential function <m>\ds e^{-st}</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>\ds \ e^{-st}, \ </m> differentiating</p></statement>
-							<feedback>
-								<p>
-									No, the Laplace transform involves integrating with respect to <m>t</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><p><m>\ds \ s, \ </m> differentiating</p></statement>
-							<feedback>
-								<p>
-									No, the correct form involves the exponential function <m>\ds e^{-st}</m> and integrating with respect to <m>t</m>.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</exercise>
-			</reading-questions>
+					<solution>
+						<p>
+							As with cosine, we begin with the definition of the Laplace transform,
+							<me>
+								\lap{ \sin(-4t)} = \int_0^{\infty} e^{-st} \cdot \sin(-4t)\ dt
+							</me>
+							and rewrite sine using Euler's formula,
+							<me>
+								\sin(-4t) = \frac{e^{-4it} - e^{4it}}{2i}.
+							</me>
+							Substituting this into the integral, we get:
+							<md>
+								<mrow> 
+									\lap{ \sin(-4t)} 
+									=\amp \frac{1}{2i} \int_0^{\infty} e^{-st} \left(e^{-4it} - e^{4it}\right)\, dt 
+								</mrow>
+								<mrow>
+									=\amp \frac{1}{2i} \left[\int_0^{\infty} e^{-(s + 4i)t}\, dt - \int_0^{\infty} e^{-(s - 4i)t}\, dt\right]
+								</mrow>
+								<mrow>
+									=\amp \frac{1}{2i} \left[\lap{e^{-4it}} - \lap{e^{4it}}\right].
+								</mrow>
+								<mrow>
+									=\amp \frac{1}{2i} \left[\frac{1}{s + 4i} - \frac{1}{s - 4i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+								</mrow>
+								<mrow>
+									=\amp \frac{1}{2i} \left[\frac{s - 4i - (s + 4i)}{(s + 4i)(s - 4i)}\right]
+								</mrow>
+								<mrow>
+									=\amp \frac{4}{s^2 + 16}.
+								</mrow>
+							</md>
+							Thus, the Laplace transform of <m>\sin(-4t)</m> is:
+							<me>
+								\lap{\sin(-4t)} = \frac{4}{s^2 + 16}.
+							</me>
+						</p>
+					</solution>
+				</example>
+
+				<p>
+					Both of these approaches can be generalized to show that the formula for the Laplace transforms of sine and cosine are given as follows:
+				</p>
+
+				<assemblage xml:id="lt-table-L4-L5"><title>Common Laplace Transform (Sine, Cosine)</title>
+					<p>
+						<dl width="narrow">
+							<li xml:id="L4"><title><m>{\LARGE \vphantom{\int}}L_4</m></title>
+								<m>\ds \lap{\sin(bt)} = \frac{b}{s^2+b^2}, \quad s \gt 0 </m>
+							</li>
+							<li xml:id="L5"><title><m>{\LARGE \vphantom{\int}}L_5</m></title>
+								<m>\ds \lap{\cos(bt)} = \frac{s}{s^2+b^2}, \quad s \gt 0 </m>
+							</li>
+						</dl>
+					</p>
+				</assemblage>
+			
+				<reading-questions><title> Check-Point Questions </title>
+					<exercise label="p4-c1-s2-4-rq1"><title> <em><m>\ds\lap{\sin(t)} = </m><m>\ds\frac{<fillin characters="1" />}{s^2 + 1}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>1</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>\sin(t)</m> is <m>\ds\frac{1}{s^2 + 1}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s</m></statement>
+								<feedback>
+									<p>
+										No, the correct numerator should be <m>1</m>, not <m>s</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>b</m></statement>
+								<feedback>
+									<p>
+										No, the correct numerator should be <m>1</m>, not <m>b</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>s^2</m></statement>
+								<feedback>
+									<p>
+										No, the correct numerator should be <m>1</m>, not <m>s^2</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+
+					<exercise label="p4-c1-s2-4-rq2"><title> <em><m>\ds\lap{\cos(-2t)} = </m><m>\ds\frac{<fillin characters="1" />}{s^2 + 4}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>2</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>4</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>s</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>\cos(-2t)</m> is <m>\ds\frac{s}{s^2 + 4}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>2s</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+
+					<exercise label="p4-c1-s2-4-rq3"><title> <em><m>\ds\lap{<fillin characters="1" />} = </m><m>\ds\frac{s}{s^2 + \frac14}</m></em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>\sin\left(\frac12t\right)</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>\cos\left(\frac12t\right)</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\cos\left(2t\right)</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>\cos(2t)</m> is <m>\ds\frac{s}{s^2 + \frac14}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\sin\left(2t\right)</m></statement>
+								<feedback>
+									<p>
+										No, try again.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+					
+					<exercise label="p4-c1-s2-4-rq4"><title> <em><m>\ds\lap{\sin(5t)} = </m> ?</em> </title>
+						<statement/>
+						<choices>
+							<choice correct="yes">
+								<statement><m>\ds\frac{5}{s^2 + 25}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>\sin(5t)</m> is <m>\ds\frac{5}{s^2 + 25}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{s}{s^2 + 25}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. This is the Laplace transform of <m>\cos(5t)</m>, not <m>\sin(5t)</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{1}{s^2 + 25}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The correct numerator is <m>\ds5</m>, not <m>\ds1</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{5}{s^2 + 5^2}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. While <m>\ds25</m> is <m>\ds5^2</m>, the answer should simplify to <m>\ds\frac{5}{s^2 + 25}</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+
+					<exercise label="p4-c1-s2-4-rq5"><title> <em><m>\ds\lap{\cos(-3t)} = </m> ?</em> </title>
+						<statement/>
+						<choices>
+							<choice>
+								<statement><m>\ds\frac{3}{s^2 + 9}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The correct numerator should be <m>\dss</m>, not <m>\ds3</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{s}{s^2 - 9}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The denominator should be <m>\ds9</m>, not <m>\ds-9</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>\ds\frac{s}{s^2 + 9}</m></statement>
+								<feedback>
+									<p>
+										Correct! The Laplace transform of <m>\cos(-3t)</m> is <m>\ds\frac{s}{s^2 + 9}</m>.
+									</p>
+								</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ds\frac{3}{s^2 - 9}</m></statement>
+								<feedback>
+									<p>
+										Incorrect. The correct numerator should be <m>\dss</m>, not <m>\ds3</m>.
+									</p>
+								</feedback>
+							</choice>
+						</choices>
+					</exercise>
+				</reading-questions>
+			</subsection>
 		</section>
-
 	</chapter>
-
 </part>

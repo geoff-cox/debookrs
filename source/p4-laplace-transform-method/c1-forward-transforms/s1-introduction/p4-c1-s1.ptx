@@ -1,0 +1,106 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Introduction </title>
+
+	<introduction>
+
+		<p>
+			Differential equations are often difficult to solve because they involve unknown functions entangled with their derivatives. This complexity grows when the equation involves discontinuities or initial conditions. The Laplace Transform simplifies this process by converting the differential equation into an algebraic form, making it easier to solve. One of the key motivations for using the Laplace Transform is its ability to handle these discontinuities seamlessly, transforming functions piecewise into a single, continuous function in the complex plane. Through this, we can solve problems that would otherwise be very challenging with traditional methods.
+		</p>
+
+	</introduction>
+
+	<subsection><title> Motivation </title>
+
+		<p>
+			The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
+			<me>\int u\ dv = uv - \int v\ du</me>.
+		</p>
+
+		<p>
+			In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
+			<me> 
+				\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
+			</me>.
+		</p>
+
+		<p>
+			Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
+		</p>
+
+		<p>
+			Let's see this concept in action. Consider an integral of the form:
+			<me>\int e^{-st} y' \, dt</me>,
+			where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
+			<me> 
+				\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} = 
+				\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} - 
+				\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
+				e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
+			</me>.
+		</p>
+
+		<p>
+			What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>. 
+		</p>
+
+		<p>
+			This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations. 
+		</p>
+
+		<xi:include href="./p4-c1-s1-1-interactives.ptx" />
+
+	</subsection>
+
+	<subsection><title> Definition </title>
+
+		<p>
+			In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation 
+			<me>
+				e^{-st} \left( y'' + 3y' + 2y \right) = -40e^{3t}
+			</me>
+			would look like this:
+			<md>
+				<mrow> 
+					e^{-st} \left( y'' + 3y' + 2y \right) 
+						=\amp\ e^{-st} \left( -40e^{3t} \right)
+				</mrow>
+				<mrow> 
+					\int e^{-st} \left( y'' + 3y' + 2y \right) \, dt 
+						=\amp\ \int e^{-st} \left( -40e^{3t} \right) \, dt
+				</mrow>
+				<mrow> 
+					\ub{\int e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} + 
+					3\ub{\int e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} + 
+					2\ub{\int e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}} 
+						=\amp\ \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
+				</mrow>
+			</md>.
+			As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
+		</p>
+
+		<definition><title>Laplace Transform</title>
+			<statement>
+				The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
+
+				<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
+
+				provided that the integral exists (i.e., the improper integral converges).
+			</statement>
+		</definition>
+
+		<p>
+			This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
+		</p>
+		
+		<me>
+			\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
+		</me>
+		
+		<p>
+			Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
+		</p>
+
+		<xi:include href="./p4-c1-s1-2-interactives.ptx" />
+
+	</subsection>
+
+</section>
