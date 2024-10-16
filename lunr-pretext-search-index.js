@@ -3589,7 +3589,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.1",
   "title": "Classification",
-  "body": "Classification  Now that we've tackled some foundational techniques for solving differential equations, it's time to introduce a new type: linear homogeneous differential equations with constant coefficients, or LHCC equations for short. But how do we recognize them? Let's break down each part of the term linear , homogeneous , and constant coefficients to understand these equations fully.  First, recall that a linear differential equation looks like this: The key idea here is that each term involves either a derivative of or itself, all multiplied by coefficients that depend on .  Next, the equation is homogeneous if the constant term is zero, meaning . This ensures the left-hand side of the equation equals zero.  Finally, if all the coefficients are constants (i.e., numbers, not functions of ), the equation is said to have constant coefficients .  Combining these ideas, we arrive at the formal definition of an LHCC equation.   LHCC Equation   A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:   where are constants.    Now that we have the definition, let's practice identifying these equations with a few examples.   Identify which of the following are linear homogeneous differential equations.     The trick is to check if the constant term is zero and the equation has only and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:   .  The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.     Determine which of the following equations have constant coefficients.     Check if each coefficient is constant:   . The second equation has constant coefficients, while the others do not.    Check-Point Questions   Select all the true statements below  Select all the true statements below.    An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      If an equation contains non-linear terms like \\( y^2 \\), it can still be classified as LHCC.    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like \\( y^2 \\).      The equation \\( y' + 3y = 0 \\) is both linear and homogeneous.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a constant term that is not zero.    Correct! If the constant term is not zero, the equation is non-homogeneous.      Fill in the Blank: Classifying a DE   The differential equation is classified as a _______ homogeneous differential equation with _______ coefficients.     linear, constant    Correct! The equation is linear (because there are no powers or products of the dependent variable and its derivatives) and has constant coefficients.      non-linear, constant    Incorrect. Try again.      linear, variable    Incorrect. Try again.      non-linear, variable    Incorrect. Try again.      Identifying a Homogeneous Equation  Which of the following equations is homogeneous?   \\( y'' + 4y^2 + 3 = 0 \\)   Incorrect. This equation has a non-linear term (\\(y^2\\)), so it is not linear.     \\( y'' + 4y' + 3y = 7 \\)   Incorrect. The equation has a non-zero constant term, making it non-homogeneous.     \\( y' + 2y = x^2 \\)   Incorrect. The right-hand side has a non-zero function of \\(x\\), so this is non-homogeneous.     \\( y'' + 4y' + 3y = 0 \\)   Correct! This equation has no constant term and is homogeneous.      Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.     CC     LH, order 1     LHCC     LH, order 2     LCC     L      Select the LHCC Equations  Select all of the LHCC Differential Equations.                                       "
+  "body": "Classification  Now that we've tackled some foundational techniques for solving differential equations, it's time to introduce a new type: linear homogeneous differential equations with constant coefficients, or LHCC equations for short. But how do we recognize them? Let's break down each part of the term linear , homogeneous , and constant coefficients to understand these equations fully.  First, recall that a linear differential equation looks like this: The key idea here is that each term involves either a derivative of or itself, all multiplied by coefficients that depend on .  Next, the equation is homogeneous if the constant term is zero, meaning . This ensures the left-hand side of the equation equals zero.  Finally, if all the coefficients are constants (i.e., numbers, not functions of ), the equation is said to have constant coefficients .  Combining these ideas, we arrive at the formal definition of an LHCC equation.   LHCC Equation   A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:   where are constants.    Now that we have the definition, let's practice identifying these equations with a few examples.   Identify which of the following are linear homogeneous differential equations.     The trick is to check if the constant term is zero and the equation has only and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:   .  The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.     Determine which of the following equations have constant coefficients.     Check if each coefficient is constant:   . The second equation has constant coefficients, while the others do not.    Check your Understanding   Select all the true statements below  Select all the true statements below.    An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      If an equation contains non-linear terms like \\( y^2 \\), it can still be classified as LHCC.    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like \\( y^2 \\).      The equation \\( y' + 3y = 0 \\) is both linear and homogeneous.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a constant term that is not zero.    Correct! If the constant term is not zero, the equation is non-homogeneous.      Fill in the Blank: Classifying a DE   The differential equation is classified as a _______ homogeneous differential equation with _______ coefficients.     linear, constant    Correct! The equation is linear (because there are no powers or products of the dependent variable and its derivatives) and has constant coefficients.      non-linear, constant    Incorrect. Try again.      linear, variable    Incorrect. Try again.      non-linear, variable    Incorrect. Try again.      Identifying a Homogeneous Equation  Which of the following equations is homogeneous?   \\( y'' + 4y^2 + 3 = 0 \\)   Incorrect. This equation has a non-linear term (\\(y^2\\)), so it is not linear.     \\( y'' + 4y' + 3y = 7 \\)   Incorrect. The equation has a non-zero constant term, making it non-homogeneous.     \\( y' + 2y = x^2 \\)   Incorrect. The right-hand side has a non-zero function of \\(x\\), so this is non-homogeneous.     \\( y'' + 4y' + 3y = 0 \\)   Correct! This equation has no constant term and is homogeneous.      Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.     CC     LH, order 1     LHCC     LH, order 2     LCC     L      Select the LHCC Equations  Select all of the LHCC Differential Equations.                                       "
 },
 {
   "id": "main-7-3-3-3",
@@ -4827,7 +4827,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-1-rq1",
   "level": "2",
-  "url": "main-8-3-3-3.html#p4-c1-s1-1-rq1",
+  "url": "main-8-3-3-3-8.html#p4-c1-s1-1-rq1",
   "type": "Reading Question",
   "number": "9.1.1.1",
   "title": "<em class=\"emphasis\">The Laplace transform method is leverages which concepts to solve differential equations?<\/em>",
@@ -4836,7 +4836,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-1-rq2",
   "level": "2",
-  "url": "main-8-3-3-3.html#p4-c1-s1-1-rq2",
+  "url": "main-8-3-3-3-8.html#p4-c1-s1-1-rq2",
   "type": "Reading Question",
   "number": "9.1.1.2",
   "title": "<em class=\"emphasis\">Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?<\/em>",
@@ -4845,7 +4845,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-1-rq3",
   "level": "2",
-  "url": "main-8-3-3-3.html#p4-c1-s1-1-rq3",
+  "url": "main-8-3-3-3-8.html#p4-c1-s1-1-rq3",
   "type": "Reading Question",
   "number": "9.1.1.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\frac{d}{dt}\\left[e^{-st}\\right] =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
@@ -4854,7 +4854,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-1-rq4",
   "level": "2",
-  "url": "main-8-3-3-3.html#p4-c1-s1-1-rq4",
+  "url": "main-8-3-3-3-8.html#p4-c1-s1-1-rq4",
   "type": "Reading Question",
   "number": "9.1.1.4",
   "title": "<em class=\"emphasis\">Select the result of applying integration by parts to the integral, <span class=\"process-math\">\\(\\ \\ \\ds \\int t^2 \\ y'\\ dt\\)<\/span><\/em>.",
@@ -4881,7 +4881,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-2-rq1",
   "level": "2",
-  "url": "main-8-3-3-4.html#p4-c1-s1-2-rq1",
+  "url": "main-8-3-3-4-7.html#p4-c1-s1-2-rq1",
   "type": "Reading Question",
   "number": "9.1.2.1",
   "title": "<em class=\"emphasis\">The Laplace transform only exists if the improper integral converges<\/em>.",
@@ -4890,7 +4890,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-2-rq2",
   "level": "2",
-  "url": "main-8-3-3-4.html#p4-c1-s1-2-rq2",
+  "url": "main-8-3-3-4-7.html#p4-c1-s1-2-rq2",
   "type": "Reading Question",
   "number": "9.1.2.2",
   "title": "<em class=\"emphasis\">The Laplace transform is defined as <span class=\"process-math\">\\(\\ds\\lap{ f(t) } = \\int_0^{\\infty} e^{-st} f(t)\\, dt\\text{,}\\)<\/span> provided the <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> exists<\/em>.",
@@ -4899,7 +4899,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s1-2-rq3",
   "level": "2",
-  "url": "main-8-3-3-4.html#p4-c1-s1-2-rq3",
+  "url": "main-8-3-3-4-7.html#p4-c1-s1-2-rq3",
   "type": "Reading Question",
   "number": "9.1.2.3",
   "title": "<em class=\"emphasis\">Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by <span class=\"process-math\">\\(\\ul{\\hspace{5em}}\\)<\/span> and <span class=\"process-math\">\\(\\ul{\\hspace{5em}}\\)<\/span> with respect to <span class=\"process-math\">\\(t\\)<\/span><\/em>.",
@@ -4926,7 +4926,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-1-rq1",
   "level": "2",
-  "url": "main-8-3-4-3.html#p4-c1-s2-1-rq1",
+  "url": "main-8-3-4-3-6.html#p4-c1-s2-1-rq1",
   "type": "Reading Question",
   "number": "9.2.1.1",
   "title": "<em class=\"emphasis\">What is the result of the Laplace transform of the constant function 1?<\/em>",
@@ -4935,7 +4935,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-1-rq2",
   "level": "2",
-  "url": "main-8-3-4-3.html#p4-c1-s2-1-rq2",
+  "url": "main-8-3-4-3-6.html#p4-c1-s2-1-rq2",
   "type": "Reading Question",
   "number": "9.2.1.2",
   "title": "<em class=\"emphasis\">In the Laplace transform integral, the variable <span class=\"process-math\">\\(s\\)<\/span> is treated as a <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> during the integration process<\/em>.",
@@ -4944,7 +4944,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-1-rq3",
   "level": "2",
-  "url": "main-8-3-4-3.html#p4-c1-s2-1-rq3",
+  "url": "main-8-3-4-3-6.html#p4-c1-s2-1-rq3",
   "type": "Reading Question",
   "number": "9.2.1.3",
   "title": "<em class=\"emphasis\">Based on this discussion, <span class=\"process-math\">\\(\\ds\\lap{f(t)}\\)<\/span> is a <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
@@ -4953,7 +4953,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-1-rq4",
   "level": "2",
-  "url": "main-8-3-4-3.html#p4-c1-s2-1-rq4",
+  "url": "main-8-3-4-3-6.html#p4-c1-s2-1-rq4",
   "type": "Reading Question",
   "number": "9.2.1.4",
   "title": "<em class=\"emphasis\">In a Laplace transform, where does the variable <span class=\"process-math\">\\(s\\)<\/span> come from?<\/em>",
@@ -4966,7 +4966,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.2.2",
   "title": "Exponential Function, <span class=\"process-math\">\\(e^{at}\\)<\/span>",
-  "body": "Exponential Function,   The exponential function is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example.   Compute .  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:     This result can be generalized for any constant , giving us the Laplace transform of . Here are the details.   Common Laplace Transform (Exponential)          Check-Point Questions   True\/False.   False. The correct formula is , not .    What must be true about for to exist?      No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.      ?      Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.      "
+  "body": "Exponential Function,   The exponential function is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example.   Compute .  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:     This result can be generalized for any constant , giving us the Laplace transform of . Here are the details.   Common Laplace Transform (Exponential)          Check-Point Questions   True\/False.   False. The correct formula is , not .    What must be true about for to exist?      No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.      ?      Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.          3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.      "
 },
 {
   "id": "main-8-3-4-4-3",
@@ -4980,7 +4980,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-2-rq1",
   "level": "2",
-  "url": "main-8-3-4-4.html#p4-c1-s2-2-rq1",
+  "url": "main-8-3-4-4-6.html#p4-c1-s2-2-rq1",
   "type": "Reading Question",
   "number": "9.2.2.1",
   "title": "<em class=\"emphasis\">True\/False. <span class=\"process-math\">\\(\\ds\\quad \\lap{e^{at}} = \\frac{1}{s + a}\\)<\/span><\/em>.",
@@ -4989,7 +4989,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-2-rq2",
   "level": "2",
-  "url": "main-8-3-4-4.html#p4-c1-s2-2-rq2",
+  "url": "main-8-3-4-4-6.html#p4-c1-s2-2-rq2",
   "type": "Reading Question",
   "number": "9.2.2.2",
   "title": "<em class=\"emphasis\">What must be true about <span class=\"process-math\">\\(s\\)<\/span> for <span class=\"process-math\">\\(\\lap{e^{137t}}\\)<\/span> to exist?<\/em>",
@@ -4998,11 +4998,20 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-2-rq3",
   "level": "2",
-  "url": "main-8-3-4-4.html#p4-c1-s2-2-rq3",
+  "url": "main-8-3-4-4-6.html#p4-c1-s2-2-rq3",
   "type": "Reading Question",
   "number": "9.2.2.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\lap{e^{-3t}} = \\)<\/span> ?<\/em>",
   "body": " ?      Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.    "
+},
+{
+  "id": "p4-c1-s2-2-rq4",
+  "level": "2",
+  "url": "main-8-3-4-4-6.html#p4-c1-s2-2-rq4",
+  "type": "Reading Question",
+  "number": "9.2.2.4",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\lap{e^{3t}} = \\frac{1}{s - \\fillinmath{X}}\\)<\/span><\/em>.",
+  "body": "     3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.    "
 },
 {
   "id": "main-8-3-4-5",
@@ -5025,7 +5034,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-3-rq1",
   "level": "2",
-  "url": "main-8-3-4-5.html#p4-c1-s2-3-rq1",
+  "url": "main-8-3-4-5-6.html#p4-c1-s2-3-rq1",
   "type": "Reading Question",
   "number": "9.2.3.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^4} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X} !}{s^5}\\)<\/span><\/em>.",
@@ -5034,7 +5043,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-3-rq2",
   "level": "2",
-  "url": "main-8-3-4-5.html#p4-c1-s2-3-rq2",
+  "url": "main-8-3-4-5-6.html#p4-c1-s2-3-rq2",
   "type": "Reading Question",
   "number": "9.2.3.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^3} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{6}{\\fillinmath{X}}\\)<\/span><\/em>.",
@@ -5043,7 +5052,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-3-rq3",
   "level": "2",
-  "url": "main-8-3-4-5.html#p4-c1-s2-3-rq3",
+  "url": "main-8-3-4-5-6.html#p4-c1-s2-3-rq3",
   "type": "Reading Question",
   "number": "9.2.3.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\fillinmath{X}} = \\ \\frac{479001600}{s^{13}}\\)<\/span><\/em>.",
@@ -5052,7 +5061,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-3-rq4",
   "level": "2",
-  "url": "main-8-3-4-5.html#p4-c1-s2-3-rq4",
+  "url": "main-8-3-4-5-6.html#p4-c1-s2-3-rq4",
   "type": "Reading Question",
   "number": "9.2.3.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t} = \\)<\/span> ?<\/em>",
@@ -5061,7 +5070,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-3-rq5",
   "level": "2",
-  "url": "main-8-3-4-5.html#p4-c1-s2-3-rq5",
+  "url": "main-8-3-4-5-6.html#p4-c1-s2-3-rq5",
   "type": "Reading Question",
   "number": "9.2.3.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^2} = \\)<\/span> ?<\/em>",
@@ -5097,7 +5106,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-4-rq1",
   "level": "2",
-  "url": "main-8-3-4-6.html#p4-c1-s2-4-rq1",
+  "url": "main-8-3-4-6-8.html#p4-c1-s2-4-rq1",
   "type": "Reading Question",
   "number": "9.2.4.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\sin(t)} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X}}{s^2 + 1}\\)<\/span><\/em>.",
@@ -5106,7 +5115,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-4-rq2",
   "level": "2",
-  "url": "main-8-3-4-6.html#p4-c1-s2-4-rq2",
+  "url": "main-8-3-4-6-8.html#p4-c1-s2-4-rq2",
   "type": "Reading Question",
   "number": "9.2.4.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\cos(-2t)} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X}}{s^2 + 4}\\)<\/span><\/em>.",
@@ -5115,7 +5124,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-4-rq3",
   "level": "2",
-  "url": "main-8-3-4-6.html#p4-c1-s2-4-rq3",
+  "url": "main-8-3-4-6-8.html#p4-c1-s2-4-rq3",
   "type": "Reading Question",
   "number": "9.2.4.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\fillinmath{X}} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{s}{s^2 + \\frac14}\\)<\/span><\/em>.",
@@ -5124,7 +5133,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-4-rq4",
   "level": "2",
-  "url": "main-8-3-4-6.html#p4-c1-s2-4-rq4",
+  "url": "main-8-3-4-6-8.html#p4-c1-s2-4-rq4",
   "type": "Reading Question",
   "number": "9.2.4.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\sin(5t)} = \\)<\/span> ?<\/em>",
@@ -5133,7 +5142,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s2-4-rq5",
   "level": "2",
-  "url": "main-8-3-4-6.html#p4-c1-s2-4-rq5",
+  "url": "main-8-3-4-6-8.html#p4-c1-s2-4-rq5",
   "type": "Reading Question",
   "number": "9.2.4.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\cos(-3t)} = \\)<\/span> ?<\/em>",
@@ -5160,7 +5169,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-1-rq1",
   "level": "2",
-  "url": "main-8-3-5-3.html#p4-c1-s3-1-rq1",
+  "url": "main-8-3-5-3-6.html#p4-c1-s3-1-rq1",
   "type": "Reading Question",
   "number": "9.3.1.1",
   "title": "<em class=\"emphasis\">The Laplace transform of a constant is the constant times <span class=\"process-math\">\\(\\lap{1}\\)<\/span><\/em>.",
@@ -5169,7 +5178,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-1-rq2",
   "level": "2",
-  "url": "main-8-3-5-3.html#p4-c1-s3-1-rq2",
+  "url": "main-8-3-5-3-6.html#p4-c1-s3-1-rq2",
   "type": "Reading Question",
   "number": "9.3.1.2",
   "title": "<em class=\"emphasis\">The linearity property can be used to rewrite a Laplace transform as the sum of simpler Laplace transforms<\/em>.",
@@ -5178,7 +5187,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-1-rq3",
   "level": "2",
-  "url": "main-8-3-5-3.html#p4-c1-s3-1-rq3",
+  "url": "main-8-3-5-3-6.html#p4-c1-s3-1-rq3",
   "type": "Reading Question",
   "number": "9.3.1.3",
   "title": "<em class=\"emphasis\">Which of the following are NOT correct applications of the linearity property?<\/em>",
@@ -5187,7 +5196,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-1-rq4",
   "level": "2",
-  "url": "main-8-3-5-3.html#p4-c1-s3-1-rq4",
+  "url": "main-8-3-5-3-6.html#p4-c1-s3-1-rq4",
   "type": "Reading Question",
   "number": "9.3.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{7\\cos t + 2} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
@@ -5214,7 +5223,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-2-rq1",
   "level": "2",
-  "url": "main-8-3-5-4.html#p4-c1-s3-2-rq1",
+  "url": "main-8-3-5-4-8.html#p4-c1-s3-2-rq1",
   "type": "Reading Question",
   "number": "9.3.2.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{5t} \\sin(2t)} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
@@ -5223,7 +5232,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-2-rq2",
   "level": "2",
-  "url": "main-8-3-5-4.html#p4-c1-s3-2-rq2",
+  "url": "main-8-3-5-4-8.html#p4-c1-s3-2-rq2",
   "type": "Reading Question",
   "number": "9.3.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{2t} t^3} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
@@ -5232,7 +5241,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-2-rq3",
   "level": "2",
-  "url": "main-8-3-5-4.html#p4-c1-s3-2-rq3",
+  "url": "main-8-3-5-4-8.html#p4-c1-s3-2-rq3",
   "type": "Reading Question",
   "number": "9.3.2.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{4t} \\cos(5t)} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
@@ -5241,7 +5250,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-2-rq4",
   "level": "2",
-  "url": "main-8-3-5-4.html#p4-c1-s3-2-rq4",
+  "url": "main-8-3-5-4-8.html#p4-c1-s3-2-rq4",
   "type": "Reading Question",
   "number": "9.3.2.4",
   "title": "<em class=\"emphasis\">The translation property only works for exponential functions multiplied by sine and cosine functions<\/em>.",
@@ -5250,7 +5259,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-2-rq5",
   "level": "2",
-  "url": "main-8-3-5-4.html#p4-c1-s3-2-rq5",
+  "url": "main-8-3-5-4-8.html#p4-c1-s3-2-rq5",
   "type": "Reading Question",
   "number": "9.3.2.5",
   "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(\\ds\\lap{f(t)}=\\frac{1}{s(s+1)}\\text{,}\\)<\/span> what is the Laplace transform of <span class=\"process-math\">\\(e^{2t}f(t)\\text{?}\\)<\/span><\/em>",
@@ -5263,7 +5272,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.3.3",
   "title": "Derivative Transform",
-  "body": "Derivative Transform  The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.   Show that .                                            This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more—this property also works recursively, allowing us to handle higher-order derivatives as well.  For example, let's see how this property extends to second and third derivatives: And the pattern continues for higher derivatives.  Laplace Transform Properties  Let .                Check-Point Questions   The Laplace transform of the derivative is given by   False. The correct formula is .    The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations   True. The derivative property simplifies differential equations into algebraic equations by transforming derivatives into powers of .          No, try again.       No, try again.       Correct! .       No, try again.      "
+  "body": "Derivative Transform  The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.   Show that .                                            This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more—this property also works recursively, allowing us to handle higher-order derivatives as well.  For example, let's see how this property extends to second and third derivatives: And the pattern continues for higher derivatives.  Laplace Transform Properties  Let .                Check-Point Questions   The Laplace transform of the derivative is given by   False. The correct formula is .    The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations   True. The derivative property simplifies differential equations into algebraic equations by transforming derivatives into powers of .          No, try again.       No, try again.       Correct! .       No, try again.      If and , then     1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .        "
 },
 {
   "id": "main-8-3-5-5-3",
@@ -5277,7 +5286,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-3-rq1",
   "level": "2",
-  "url": "main-8-3-5-5.html#p4-c1-s3-3-rq1",
+  "url": "main-8-3-5-5-7.html#p4-c1-s3-3-rq1",
   "type": "Reading Question",
   "number": "9.3.3.1",
   "title": "<em class=\"emphasis\">The Laplace transform of the derivative <span class=\"process-math\">\\(f'(t) \\)<\/span> is given by <span class=\"process-math\">\\(s\\lap{f(t)}+f(0)\\)<\/span><\/em>.",
@@ -5286,7 +5295,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-3-rq2",
   "level": "2",
-  "url": "main-8-3-5-5.html#p4-c1-s3-3-rq2",
+  "url": "main-8-3-5-5-7.html#p4-c1-s3-3-rq2",
   "type": "Reading Question",
   "number": "9.3.3.2",
   "title": "<em class=\"emphasis\">The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations<\/em>.",
@@ -5295,11 +5304,20 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-3-rq3",
   "level": "2",
-  "url": "main-8-3-5-5.html#p4-c1-s3-3-rq3",
+  "url": "main-8-3-5-5-7.html#p4-c1-s3-3-rq3",
   "type": "Reading Question",
   "number": "9.3.3.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds\\lap{\\frac{d}{dt}[e^t\\cos (t)]} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
   "body": "       No, try again.       No, try again.       Correct! .       No, try again.    "
+},
+{
+  "id": "p4-c1-s3-3-rq4",
+  "level": "2",
+  "url": "main-8-3-5-5-7.html#p4-c1-s3-3-rq4",
+  "type": "Reading Question",
+  "number": "9.3.3.4",
+  "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(y(0) = 0\\)<\/span> and <span class=\"process-math\">\\(y'(0) = 1\\text{,}\\)<\/span> then <span class=\"process-math\">\\(\\ds\\lap{y''} = s^2Y - \\fillinmath{X} \\)<\/span><\/em>.",
+  "body": " If and , then     1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .    "
 },
 {
   "id": "main-8-3-5-6",
@@ -5331,7 +5349,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-4-rq1",
   "level": "2",
-  "url": "main-8-3-5-6.html#p4-c1-s3-4-rq1",
+  "url": "main-8-3-5-6-8.html#p4-c1-s3-4-rq1",
   "type": "Reading Question",
   "number": "9.3.4.1",
   "title": "<em class=\"emphasis\">The Laplace transform of <span class=\"process-math\">\\(\\ds t^2 f(t) \\)<\/span> is equal to <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> derivative of the Laplace transform of <span class=\"process-math\">\\(\\ds f(t) \\)<\/span> with respect to <span class=\"process-math\">\\(\\ds s \\)<\/span><\/em>.",
@@ -5340,7 +5358,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-4-rq2",
   "level": "2",
-  "url": "main-8-3-5-6.html#p4-c1-s3-4-rq2",
+  "url": "main-8-3-5-6-8.html#p4-c1-s3-4-rq2",
   "type": "Reading Question",
   "number": "9.3.4.2",
   "title": "<em class=\"emphasis\">What is the Laplace transform of <span class=\"process-math\">\\(\\ds t^3 f(t) \\)<\/span> in terms of <span class=\"process-math\">\\(\\ds \\lap{ f(t) } \\text{?}\\)<\/span><\/em>",
@@ -5349,7 +5367,7 @@ var ptx_lunr_docs = [
 {
   "id": "p4-c1-s3-4-rq3",
   "level": "2",
-  "url": "main-8-3-5-6.html#p4-c1-s3-4-rq3",
+  "url": "main-8-3-5-6-8.html#p4-c1-s3-4-rq3",
   "type": "Reading Question",
   "number": "9.3.4.3",
   "title": "<em class=\"emphasis\">Hypothetically, if <span class=\"process-math\">\\(\\ds \\lap{f(t)} = \\cos(2s) \\)<\/span> then <span class=\"process-math\">\\(\\ds \\lap{ tf(t) } = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
