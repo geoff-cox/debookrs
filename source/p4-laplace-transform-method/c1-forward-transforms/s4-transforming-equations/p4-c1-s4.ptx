@@ -1,61 +1,63 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title>Transforming Equations</title>
-		
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title>Forward Transforming Equations</title>
+ 
 	<p>
-		Throughout this section, we learned how to apply Laplace transforms to individual functions. However, our goal is to solve differential equations, which means we need to understand how to transform an entire differential equation, including its initial conditions. This brings us back to the first step in the Laplace Transform Method roadmap.
+		In the previous sections, we've focused on applying Laplace transforms to individual functions. Now, we shift our focus to solving differential equations by transforming the entire equation, along with its initial conditions. This process brings us back to the first step of the Laplace Transform Method roadmap.
 	</p>
-	
+
 	<p>
-		<image source="figures/LT-Diagram-Focused-Step-1.png" width="100%">
+		<image source="figures/Laplace-Roadmap-Step-1.png" width="100%">
 			<shortdescription>Step 1: The Forward Laplace Transform</shortdescription>
 		</image>
 	</p>
 
 	<p>
-		Our goal here is to apply the Laplace transform to both sides of this equation using the common transforms and properties we've discussed. Recall that applying a Laplace transform to a function can be thought of as multiplying the function by <m>e^{-st}</m> and integrating with respect to <m>t</m>. However, instead of explicitly writing out this process for every term, we simply apply the Laplace operator, <m>\laplacesym</m>, to both sides of the equation. Let's break this down with an example.
+		To solve a differential equation using Laplace transforms, we apply the Laplace transform to both sides of the equation, leveraging the common transforms and properties we've discussed so far. Applying the transform to a function can be thought of as multiplying the function by <m>e^{-st}</m> and integrating with respect to <m>t</m>. However, instead of rewriting this process for each term, we simply apply the Laplace operator, <m>\laplacesym</m>, to both sides of the equation. Let's illustrate this with an example.
 	</p>
 
 	<example>
-	
-		<m>\ \ </m>Apply the Laplace Transform to the initial-value problem
+		<m>\ \ </m>Apply the Laplace Transform to the initial-value problem:
 		<me>
-			y'' + 3y' + 2y = -40e^{3t}, \quad y(0) = 0, \quad y'(0) = 1,
+			y'' + 3y' + 2y = -40e^{3t}, \quad y(0) = 0, \quad y'(0) = 1.
 		</me>
-		
+
 		<solution>
 			<p>
-				First, apply <m>\laplacesym</m> to both sides of the equation
+				First, we apply <m>\laplacesym</m> to both sides:
 				<me>
-					\lap{y'' + 3y' + 2y} = \lap{-40e^{3t}}
-				</me>,
-				and use the <xref ref="P1" text="custom"> linearity property, <m>P_1</m> </xref> 
+					\lap{y'' + 3y' + 2y} = \lap{-40e^{3t}}.
+				</me>
+				Using the linearity property <xref ref="P1" text="custom">P<sub>1</sub></xref>, we break this into four separate transforms:
 				<me>
-					\ub{\lap{y''}}_{(1)} + 3\ub{\lap{y'}}_{(2)} + 2\ub{\lap{y}}_{(3)} = -40\ub{\lap{e^{3t}}}_{(4)}
-				</me>,
-				to split this into four separate transforms. For this example, we will look at each one individually.
+					\ub{\lap{y''}}_{(1)} + 3\ub{\lap{y'}}_{(2)} + 2\ub{\lap{y}}_{(3)} = -40\ub{\lap{e^{3t}}}_{(4)}.
+				</me>
+			</p>
+
+			<p>
+				Now, let's compute each transform:
 				<md>
-					<mrow> 
-						(1)\ :\quad \amp \lap{y''} = s^2Y - s\os{\large 0}{\os{\Large \shortparallel}{y(0)}} - \os{\large 1}{\os{\Large \shortparallel}{y'(0)}} = s^2 Y - 1 \vphantom{\frac{1}{1}} \quad <xref ref="P4" text="title"/>
+					<mrow>
+						(1):\quad \amp\ \lap{y''} = s^2Y - s\os{\large 0}{\os{\Large \shortparallel}{y(0)}} - \os{\large 1}{\os{\Large \shortparallel}{y'(0)}} = s^2Y - 1 \quad <xref ref="P4" text="title"/>.
 					</mrow>
-					<mrow> 
-						(2)\ :\quad \amp \lap{y'} = sY - y(0) = sY \vphantom{\frac{1}{1}} \quad <xref ref="P3" text="title"/>
+					<mrow>
+						(2):\quad \amp\ \lap{y'} = sY - y(0) = sY \quad <xref ref="P3" text="title"/>.
 					</mrow>
-					<mrow> 
-						(3)\ :\quad \amp \lap{y} = Y \vphantom{\frac{1}{1}}
+					<mrow>
+						(3):\quad \amp\ \lap{y} = Y.
 					</mrow>
-					<mrow> 
-						(4)\ :\quad \amp \lap{e^{3t}} = \frac{1}{s - 3} \quad <xref ref="L2" text="title"/>
+					<mrow>
+						(4):\quad \amp\ \lap{e^{3t}} = \frac{1}{s - 3} \quad <xref ref="L2" text="title"/>.
 					</mrow>
 				</md>
 			</p>
 
 			<p>
-				Plugging <m>(1) - (4)</m> back into the equation, we get
+				Substituting these results back into the equation, we get:
 				<md>
 					<mrow>
 						s^2Y - 1 + 3sY + 2Y =\amp\ \frac{-40}{s - 3}, \quad \text{or}
 					</mrow>
 					<mrow>
-						s^2Y + 3sY + 2Y - 1 =\amp\ \frac{-40}{s - 3}
+						s^2Y + 3sY + 2Y - 1 =\amp\ \frac{-40}{s - 3}.
 					</mrow>
 				</md>
 			</p>
@@ -63,44 +65,35 @@
 	</example>
 
 	<p>
-		To further illustrate this process, consider one more example.
+		Let's look at one more example for additional clarity.
 	</p>
 
 	<example>
-	
-		<m>\ \ </m>Apply the Laplace Transform to the initial-value problem
+		<m>\ \ </m>Apply the Laplace Transform to the initial-value problem:
 		<me>
-			y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = 0
-		</me>. 
-		
+			y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = 0.
+		</me>
+
 		<solution>
 			<p>
-				Applying the Laplace transform to both sides gives:
+				Applying the Laplace transform to both sides:
 				<md>
-					<mrow> 
-						\lap{y'' - 4y' + 6y} =\amp\ \lap{t^2}
-					</mrow>
-					<mrow> 
-						\lap{y''} - 4\lap{y'} + 6\lap{y} =\amp\ \lap{t^2}
-					</mrow>
-					<mrow> 
-						s^2Y - s\os{\large 2}{\os{\Large \shortparallel}{y(0)}} - \os{\large 0}{\os{\Large \shortparallel}{y'(0)}} - 4(sY - \os{\large 2}{\os{\Large \shortparallel}{y(0)}}) + 6Y =\amp\ \frac{2}{s^3}
-					</mrow>
 					<mrow>
-						s^2Y - 2s - 4sY + 8 + 6Y =\amp\ \frac{2}{s^3}	 
-					</mrow>
-					<mrow> 
-						s^2Y - 4sY + 6Y - 2s + 8 =\amp\ \frac{2}{s^3}
+						\lap{y'' - 4y' + 6y} =\amp\ \lap{t^2}, \\
+						\lap{y''} - 4\lap{y'} + 6\lap{y} =\amp\ \lap{t^2}, \\
+						s^2Y - s\os{\large 2}{\os{\Large \shortparallel}{y(0)}} - \os{\large 0}{\os{\Large \shortparallel}{y'(0)}} - 4(sY - \os{\large 2}{\os{\Large \shortparallel}{y(0)}}) + 6Y =\amp\ \frac{2}{s^3}, \\
+						s^2Y - 2s - 4sY + 8 + 6Y =\amp\ \frac{2}{s^3}, \\
+						s^2Y - 4sY + 6Y - 2s + 8 =\amp\ \frac{2}{s^3}.
 					</mrow>
 				</md>
 			</p>
 		</solution>
 	</example>
-	
+
 	<p>
-		In both examples, the differential equations have been transformed into algebraic equations, where solving for <m>Y</m> will be the next step in the Laplace Transform Roadmap.
+		In both examples, the differential equations have been transformed into algebraic equations. Solving for <m>Y(s)</m> is the next step in the Laplace Transform Roadmap.
 	</p>
 
 	<xi:include href="./p4-c1-s4-interactives.ptx" />
-	  
+	
 </section>
