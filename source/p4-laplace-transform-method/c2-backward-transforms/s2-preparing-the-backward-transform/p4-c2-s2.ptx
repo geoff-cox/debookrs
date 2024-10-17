@@ -1,0 +1,426 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Preparing the Backward Transform </title>
+
+	<introduction>
+		<p>
+			One of the key challenges in applying the inverse Laplace transform is recognizing the form of the transformed function and selecting the appropriate formula to reverse the transformation. This process often involves matching the given function to a standard form from a table of Laplace transforms, or manipulating it into such a form. 
+		</p>
+	
+		<p>
+			The process of selecting forms is similar to solving puzzles: it requires both pattern recognition and knowledge of the fundamental transforms. In this section, we will explore various techniques for transforming functions into recognizable patterns, including the use of partial fraction decomposition and shifts. By the end, you'll be able to identify the correct inverse transform quickly and accurately.
+		</p>
+	
+		<p>
+			As we progress, you'll develop an intuitive understanding of how certain types of expressions in the <m>s</m>-domain correspond to functions in the <m>t</m>-domain. This skill is essential for successfully applying the backward Laplace transform to solve differential equations.
+		</p>
+	</introduction>
+
+	<subsection><title> Splitting Fractions </title>
+
+		<p>
+			In the book, I want to describe the Laplace Transform Method as having the following 3 steps:
+
+			Step 1: Forward Transform
+			Step 2a: Solve for Y
+			Step 2b: Prepare Y for the Backwards Transform
+			Step 3: Backward Transform
+
+			Please rewrite the introduction to describe this section as step 3. Steps 2a and 2b will correspond to a different section.
+		</p>
+		
+		<p>
+			Another common modification is when the <m>s</m>-function contains a sum of different common forms. In these cases, you can usually split the fraction as the sum of these forms.
+		</p>
+
+		<example>
+
+			<m>\ \ </m>Compute the inverse Laplace transforms for each.
+
+			<tabular>
+				<col width="20%" halign="center"/>
+				<col width="75%"/>
+				<row>
+					<cell><m>\ds \frac{2s - 3}{s^2 + 16}</m></cell>
+					<cell>
+						<p>
+							<m>\hspace{27em}</m>
+							<solution>
+								<p>
+									The key to this problem is to split the fraction into two separate terms:
+									<me>\ds \frac{2s - 3}{s^2 + 16} = \frac{2s}{s^2 + 16} - \frac{3}{s^2 + 16}.</me>
+									Notice the first term matches with <m>L_5</m> and the second term matches with <m>L_4</m>, so
+									<md>
+										<mrow>  \amp\ \ilap{\frac{2s-3}{s^2 + 16}}											 </mrow>
+										<mrow>  \amp \hspace{3em}= 2\ \ilap{\frac{s}{s^2 + 16}} - 3\ \ilap{\frac{1}{4}\frac{4}{s^2 + 16}}   </mrow>
+										<mrow>  \amp \hspace{3em}= 2\ \cos(4t) - \frac{3}{4} \sin(2t)									   </mrow>
+									</md>
+								</p>
+							</solution>
+						</p>
+					</cell>
+				</row>
+				<row>
+					<cell><m>\ds \frac{s^3 + 2s - 7}{s^7}</m></cell>
+					<cell>
+						<p>
+							<m>\hspace{27em}</m>
+							<solution>
+								<p>
+									We can split the fraction into the terms,
+									<me>\ds \frac{s^3 + 2s - 7}{s^7} = \frac{s^3}{s^7} + \frac{2s}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} + \frac{2}{s^6} - \frac{7}{s^7}.</me>
+									and apply the inverse Laplace transform to each
+									<md>
+										<mrow> \ilap{\frac{1}{s^4}} = \frac{1}{3!}\ilap{\frac{3!}{s^4}} = \frac{1}{3!}t^3</mrow>
+										<mrow> \ilap{\frac{2}{s^6}} = \frac{2}{5!}\ilap{\frac{5!}{s^6}} = \frac{2}{5!}t^5</mrow>
+										<mrow> \ilap{\frac{7}{s^7}} = \frac{7}{6!}\ilap{\frac{6!}{s^7}} = \frac{7}{6!}t^6</mrow>
+									</md>
+									Therefore, the inverse transform is
+									<me>\ds \ilap{\frac{s^3 + 2s - 7}{s^7}} = \frac{1}{3!}t^3 + \frac{2}{5!}t^5 - \frac{7}{6!}t^6.</me>
+								</p>
+							</solution>
+						</p>
+					</cell>
+				</row>
+			</tabular>
+		</example>
+
+		<p>
+			This section explored two relatively minor modifications needed to match and find the backward Laplace transform. However, some <m>s</m>-functions require more complex techniques to reach the desired form. In the next section, we will discuss how completing the square can help us match the form where the <m>s</m>-variable is shifted.
+		</p>
+	
+		<xi:include href="./p4-c2-s2-1-interactives.ptx" />
+
+	</subsection>
+
+	<subsection><title>Completing the Square</title>
+		<p>
+			As you progress through the Laplace Transform Method, you will often encounter <xref ref="rational-function" text="custom">rational functions</xref> that do not immediately match any known form in the table of Laplace transforms. For example, the <m>s</m>-function 
+			<me>\frac{s-6}{s^2 + 5s + 1}</me> 
+			does not align with the forms in the <xref ref="common-lt-table" text="custom">common forward transform table</xref>. One common way to address this is by rewriting the denominator in the form <m>(s-a)^2 + b^2</m> to match known transforms like <m>L_7</m> or <m>L_8</m>. This technique, called completing the square, is essential in transforming quadratic expressions to forms that are easier to work with in inverse Laplace computations.
+		</p>
+	
+		<p>
+			This approach is appropriate when the roots of the quadratic expression in the denominator are complex. Recall from <xref ref="solving-the-quadratic-equation" text="custom">solving quadratic equations</xref>, if the discriminant 
+			<me>b^2 - 4ac</me> 
+			is negative, then the quadratic function has complex roots. Therefore, a quick compuation of this value provides a good signal that completing the square is the correct approach as the following examples demonstrate.
+		</p>
+	
+		<example>
+			<m>\ \ </m>Compute the inverse Laplace transforms of the following functions:
+			<me>H(s) = \frac{s-1}{s^2 - 2s + 5}, \quad K(s) = \frac{11}{s^2 - 6s + 14}, \quad P(s) = \frac{s+3}{s^2 + 2s + 10}.</me>
+			
+			<solution><title><m>\ilap{H(s)}</m></title>
+				<p>
+					The discriminant of the denominator <m>s^2 - 2s + 5</m> is 
+					<me>b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16</me>, 
+					which is negative. Therefore, completing the square is necessary:
+					<md>
+						<mrow> s^2 - 2s + 5 = (s^2 - 2s) + 5	=\amp\ (\ob{s^2 - 2s + 1}^{(s - 1)^2} - 1) + 5   </mrow>
+						<mrow>								  =\amp\ (s - 1)^2 + 4							 </mrow>
+					</md>.
+					Rewriting <m>H(s)</m> gives:
+					<me>\frac{s-1}{s^2 - 2s + 5} = \frac{s-1}{(s - 1)^2 + 4},</me>
+					which matches <xref ref="L8" text="title"/> (<m>a=1, b=2</m>). Therefore,
+					<me>h(t) = \ilap{H(s)} = e^{t}\cos(2t).</me>
+				</p>
+			</solution>
+	
+			<solution><title><m>\ilap{K(s)}</m></title>
+				<p>
+					The discriminant of the denominator <m>s^2 - 6s + 14</m> is 
+					<me>b^2 - 4ac = (-6)^2 - 4(1)(14) = 36 - 56 = -20</me>, 
+					which is negative. Completing the square gives:
+					<md>
+						<mrow> s^2 - 6s + 14 = (s^2 - 6s) + 14  =\amp (\ob{s^2 - 6s + 9}^{(s - 3)^2} - 9) + 14  </mrow>
+						<mrow>								  =\amp (s - 3)^2 + 5							 </mrow>
+					</md>.
+					Rewriting <m>K(s)</m> as:
+					<me>
+						\frac{11}{s^2 - 6s + 14} 
+							= \ub{\frac{11}{(s - 3)^2 + 5}}_{\large \text{Match with } L_7} 
+							= \frac{11}{\sqrt{5}}\ub{\frac{\sqrt{5}}{(s - 3)^2 + 5}}_{\large <xref ref="L7" text="custom">L_7</xref> (a\,=\,3,\ b\,=\,\sqrt{5})}
+					</me>. 
+					Therefore,
+					<md>
+						<mrow>
+							k(t) = \ilap{K(s)}  =\amp\ \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)
+						</mrow>
+					</md>.
+				</p>
+			</solution>
+	
+			<solution><title><m>\ilap{P(s)}</m></title>
+				<p>
+					Completing the square for the denominator of <m>P(s)</m> gives:
+					<me>
+						\frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
+					</me>,
+					and leaves us in a tricky situation where the numerator is not <m>s+1</m>. This situation is addressed by rewriting <m>3</m> as <m>1 + 2</m> and grouping the <m>1</m> with the <m>s</m>. We then split the fraction. Here are all the details:
+					<md>
+						<mrow>  
+							\frac{s+3}{s^2 + 2s + 10}
+								=\amp\ \frac{s + 1 + 2}{(s + 1)^2 + 9}
+						</mrow>
+						<mrow>
+								=\amp\ \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
+						</mrow>
+						<mrow>
+								=\amp\ \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref ref="L8" text="title"/>\ (a=-1, b=3)} 
+									+ \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref ref="L7" text="title"/>\ (a=-1, b=3)}
+						</mrow>	
+					</md>,
+					Therefore,
+					<md>
+						<mrow>  
+							p(t) =\amp\ \ilap{P(s)}
+						</mrow>
+						<mrow>
+								=\amp\ \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
+						</mrow>
+						<mrow>
+								=\amp\ e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
+						</mrow>	
+					</md>
+				</p>
+			</solution>
+		</example>
+	
+		<p>
+			Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows the backward transformations to be found by rewriting the <m>s</m>-function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down even more complex rational functions into simpler parts that can be easily matched to common inverse transforms.
+		</p>
+	
+		<xi:include href="./p4-c2-s2-2-interactives.ptx" />
+	</subsection>
+	
+	<subsection><title>Partial Fraction Decomposition</title>
+		<p>
+			When working with the Laplace Transform Method, you will sometimes encounter rational functions where the denominator is a polynomial that can be factored into simpler linear or quadratic factors. In such cases, partial fraction decomposition is a powerful technique that allows us to express the complex rational function as a sum of simpler fractions. These simpler fractions often correspond directly to known forms in the table of Laplace transforms, making it easier to apply the inverse transform.
+		</p>
+	
+		<p>
+			The key idea behind partial fraction decomposition is to break down the original rational function into a sum of fractions, each with a simpler denominator. For example, if the denominator can be factored as <m>(s - a)(s - b)</m>, we can express the rational function as a sum of fractions with these linear factors as denominators. The goal is to match each of these fractions with a form in the Laplace transform table, allowing us to compute the inverse transform.
+		</p>
+	
+		<p>
+			Let's explore this technique through a series of examples, starting with a quadratic denominator and gradually increasing the complexity.
+		</p>
+	
+		<example>
+	
+			<m>\ \ </m>Find the inverse Laplace transforms of each function.
+			<me>
+				Y(s) = \frac{2s + 5}{(s + 1)(s + 4)}, \quad 
+				P(s) = \frac{2s + 3}{s^2 + 5s + 6}, \quad 
+				Q(s) = \frac{3s + 4}{s^2 - 2s + 1}
+			</me>
+		
+			<solution>
+				<p>
+					First, we decompose <m>Y(s)</m> into partial fractions:
+					<me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{A}{s + 1} + \frac{B}{s + 4}.</me>
+				</p>
+	
+				<p>
+					To find <m>A</m> and <m>B</m>, we multiply both sides by the denominator <m>(s + 1)(s + 4)</m> and solve for the coefficients:
+					<me>
+						2s + 5 = A(s + 4) + B(s + 1).
+					</me>
+				</p>
+	
+				<p>
+					Expanding and collecting like terms, we get:
+					<me>
+						2s + 5 = (A + B)s + (4A + B).
+					</me>
+					Comparing coefficients, we find:
+					<me>A + B = 2, \quad 4A + B = 5.</me>
+					Solving this system of equations, we obtain:
+					<me>A = 1, \quad B = 1.</me>
+				</p>
+	
+				<p>
+					Therefore, the partial fraction decomposition of <m>Y(s)</m> is:
+					<me>\frac{1}{s + 1} + \frac{1}{s + 4}.</me>
+				</p>
+	
+				<p>
+					Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+					<me>\ilap{Y(s)} = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}} = e^{-t} + e^{-4t}.</me>
+				</p>
+			</solution>
+	
+			<solution>
+				<p>
+					First, factor the quadratic denominator:
+					<me>s^2 + 5s + 6 = (s + 2)(s + 3).</me>
+				</p>
+	
+				<p>
+					Next, decompose <m>P(s)</m> into partial fractions:
+					<me>\frac{2s + 3}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}.</me>
+				</p>
+	
+				<p>
+					To find <m>A</m> and <m>B</m>, multiply both sides by the denominator <m>(s + 2)(s + 3)</m> and solve for the coefficients:
+					<me>
+						2s + 3 = A(s + 3) + B(s + 2).
+					</me>
+				</p>
+	
+				<p>
+					Expanding and collecting like terms, we get:
+					<me>
+						2s + 3 = (A + B)s + (3A + 2B).
+					</me>
+					Comparing coefficients, we find:
+					<me>A + B = 2, \quad 3A + 2B = 3.</me>
+					Solving this system of equations, we obtain:
+					<me>A = 1, \quad B = 1.</me>
+				</p>
+	
+				<p>
+					Therefore, the partial fraction decomposition of <m>P(s)</m> is:
+					<me>\frac{1}{s + 2} + \frac{1}{s + 3}.</me>
+				</p>
+	
+				<p>
+					Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+					<me>\ilap{P(s)} = e^{-2t} + e^{-3t}.</me>
+				</p>
+			</solution>
+	
+			<solution>
+				<p>
+					First, factor the quadratic denominator:
+					<me>s^2 - 2s + 1 = (s - 1)^2.</me>
+				</p>
+	
+				<p>
+					Next, decompose <m>Q(s)</m> into partial fractions:
+					<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
+				</p>
+	
+				<p>
+					To find <m>A</m> and <m>B</m>, multiply both sides by the denominator <m>(s - 1)^2</m> and solve for the coefficients:
+					<me>
+						3s + 4 = A(s - 1) + B.
+					</me>
+				</p>
+	
+				<p>
+					Expanding and collecting like terms, we get:
+					<me>
+						3s + 4 = As - A + B.
+					</me>
+					Comparing coefficients, we find:
+					<me>A = 3, \quad B - A = 4.</me>
+					Solving this system, we find <m>A = 3</m> and <m>B = 7.</m>
+				</p>
+	
+				<p>
+					Therefore, the partial fraction decomposition of <m>Q(s)</m> is:
+					<me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
+				</p>
+	
+				<p>
+					Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+					<me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
+				</p>
+			</solution>
+	
+		</example>
+	
+		<p>
+			Partial fraction decompostion also works for functions with higher-degree polynomials in the denominator. The key is to factor each denominator into as many linear and/or quadratic factors as possible. Here are a few examples to illustrate this concept.
+		</p>
+	
+		<example>
+			
+			<m>\ \ </m>Find the inverse Laplace transforms of each function.
+			<me>
+				R(s) = \frac{2s^2 + 5s + 1}{s^3 - s}, \quad 
+				S(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}
+			</me>
+	
+			<solution>
+				<p>
+					First, factor the cubic denominator:
+					<me>s^3 - s = s(s - 1)(s + 1).</me>
+				</p>
+	
+				<p>
+					Next, decompose <m>R(s)</m> into partial fractions:
+					<me>\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}.</me>
+				</p>
+	
+				<p>
+					To find <m>A</m>, <m>B</m>, and <m>C</m>, multiply both sides by the denominator <m>s(s - 1)(s + 1)</m> and solve for the coefficients:
+					<me>
+						2s^2 + 5s + 1 = A(s - 1)(s + 1) + Bs(s + 1) + Cs(s - 1).
+					</me>
+				</p>
+	
+				<p>
+					Expanding and collecting like terms, we get:
+					<me>
+						2s^2 + 5s + 1 = (A + B + C)s^2 + (B - C)s + A.
+					</me>
+					Comparing coefficients, we find:
+					<me>A + B + C = 2, \quad B - C = 5, \quad A = 1.</me>
+					Solving this system, we find <m>A = 1</m>, <m>B = 2</m>, and <m>C = 3.</m>
+				</p>
+	
+				<p>
+					Therefore, the partial fraction decomposition of <m>R(s)</m> is:
+					<me>\frac{1}{s} + \frac{2}{s - 1} + \frac{3}{s + 1}.</me>
+				</p>
+	
+				<p>
+					Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+					<me>\ilap{R(s)} = 1 + 2e^{t} + 3e^{-t}.</me>
+				</p>
+			</solution>
+		
+			<solution>
+				<p>
+					First, factor the quartic denominator:
+					<me>s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1).</me>
+				</p>
+	
+				<p>
+					Next, decompose <m>S(s)</m> into partial fractions:
+					<me>\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}.</me>
+				</p>
+	
+				<p>
+					To find <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m>, multiply both sides by the denominator <m>(s - 1)(s + 1)(s^2 + 1)</m> and solve for the coefficients:
+					<me>
+						4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2 + 1) + B(s - 1)(s^2 + 1) + (Cs + D)(s - 1)(s + 1).
+					</me>
+				</p>
+	
+				<p>
+					Expanding and collecting like terms, we find <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m> by comparing coefficients. Solving the system of equations, we find:
+					<me>A = 1, \quad B = -1, \quad C = 4, \quad D = 3.</me>
+				</p>
+	
+				<p>
+					Therefore, the partial fraction decomposition of <m>S(s)</m> is:
+					<me>\frac{1}{s - 1} - \frac{1}{s + 1} + \frac{4s + 3}{s^2 + 1}.</me>
+				</p>
+	
+				<p>
+					Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:
+					<me>\ilap{S(s)} = e^{t} - e^{-t} + 4\cos(t) + 3\sin(t).</me>
+				</p>
+			</solution>
+	
+		</example>
+	
+		<p>
+			Partial fraction decomposition is a powerful technique when working with rational functions in Laplace transforms. By breaking down complex expressions into simpler fractions, you can match them to known inverse Laplace transforms, making the backward transformation process much easier. In the next subsection, we will explore more advanced techniques for handling cases with repeated roots and higher-order polynomials.
+		</p>
+	
+		<xi:include href="./p4-c2-s2-3-interactives.ptx" />
+	</subsection>
+
+</section>
