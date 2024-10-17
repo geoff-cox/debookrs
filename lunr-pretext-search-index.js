@@ -5374,13 +5374,1210 @@ var ptx_lunr_docs = [
   "body": " Hypothetically, if then        Incorrect. The correct answer should involve a derivative of .       Correct!        Incorrect. The Laplace transform of is .       Incorrect. The correct answer should involve a factor of in the transform.    "
 },
 {
-  "id": "main-8-4",
+  "id": "main-8-3-6",
   "level": "1",
-  "url": "main-8-4.html",
-  "type": "Chapter",
-  "number": "10",
-  "title": "Backward Transforms",
-  "body": "Backward Transforms   "
+  "url": "main-8-3-6.html",
+  "type": "Section",
+  "number": "9.4",
+  "title": "Forward Transforming Equations",
+  "body": "Forward Transforming Equations  In the previous sections, we've focused on applying Laplace transforms to individual functions. Now, we shift our focus to solving differential equations by transforming the entire equation, along with its initial conditions. This process brings us back to the first step of the Laplace Transform Method roadmap.    Step 1: The Forward Laplace Transform    To solve a differential equation using Laplace transforms, we apply the Laplace transform to both sides of the equation, leveraging the common transforms and properties we've discussed so far. Applying the transform to a function can be thought of as multiplying the function by and integrating with respect to . However, instead of rewriting this process for each term, we simply apply the Laplace operator, , to both sides of the equation. Let's illustrate this with an example.   Apply the Laplace Transform to the initial-value problem:   First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:     Let's look at one more example for additional clarity.   Apply the Laplace Transform to the initial-value problem:   Applying the Laplace transform to both sides:     In both examples, the differential equations have been transformed into algebraic equations. Solving for is the next step in the Laplace Transform Roadmap.  Check-Point Questions   Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   True. The Laplace transform converts a differential equation into an algebraic equation in .    Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. Where are the initial conditions?       Correct! This is the correct transformation of the given differential equation.       No, this is close to the answer, but it is off by a sign.       Incorrect, look closely at the initial conditions.      Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.      What is the Laplace transform of the initial-value problem ?      No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.      "
+},
+{
+  "id": "main-8-3-6-5",
+  "level": "2",
+  "url": "main-8-3-6.html#main-8-3-6-5",
+  "type": "Example",
+  "number": "13",
+  "title": "",
+  "body": " Apply the Laplace Transform to the initial-value problem:   First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:    "
+},
+{
+  "id": "main-8-3-6-7",
+  "level": "2",
+  "url": "main-8-3-6.html#main-8-3-6-7",
+  "type": "Example",
+  "number": "14",
+  "title": "",
+  "body": " Apply the Laplace Transform to the initial-value problem:   Applying the Laplace transform to both sides:    "
+},
+{
+  "id": "p4-c1-s4-1-rq1",
+  "level": "2",
+  "url": "main-8-3-6-9.html#p4-c1-s4-1-rq1",
+  "type": "Reading Question",
+  "number": "9.4.1",
+  "title": "<em class=\"emphasis\">Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of <span class=\"process-math\">\\(s\\)<\/span><\/em>.",
+  "body": " Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   True. The Laplace transform converts a differential equation into an algebraic equation in .  "
+},
+{
+  "id": "p4-c1-s4-1-rq2",
+  "level": "2",
+  "url": "main-8-3-6-9.html#p4-c1-s4-1-rq2",
+  "type": "Reading Question",
+  "number": "9.4.2",
+  "title": "<em class=\"emphasis\">Which of the following represents the correct Laplace transform of the equation<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' + 3y' + 2y = -40e^{3t}, \\quad y(0) = 1, \\quad y'(0) = 0\\text{?}\n\\end{equation*}\n<\/div><\/em>",
+  "body": " Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. Where are the initial conditions?       Correct! This is the correct transformation of the given differential equation.       No, this is close to the answer, but it is off by a sign.       Incorrect, look closely at the initial conditions.    "
+},
+{
+  "id": "p4-c1-s4-1-rq3",
+  "level": "2",
+  "url": "main-8-3-6-9.html#p4-c1-s4-1-rq3",
+  "type": "Reading Question",
+  "number": "9.4.3",
+  "title": "<em class=\"emphasis\">Which of the following represents the correct Laplace transform of the equation<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - 4y' + 6y = t^2, \\quad y(0) = 2, \\quad y'(0) = -1\\text{?}\n\\end{equation*}\n<\/div><\/em>",
+  "body": " Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.    "
+},
+{
+  "id": "p4-c1-s4-1-rq4",
+  "level": "2",
+  "url": "main-8-3-6-9.html#p4-c1-s4-1-rq4",
+  "type": "Reading Question",
+  "number": "9.4.4",
+  "title": "<em class=\"emphasis\">What is the Laplace transform of the initial-value problem<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - 4y' + 6y = \\sin t, \\quad y(0) = 2, \\quad y'(0) = 0\\text{?}\n\\end{equation*}\n<\/div><\/em>",
+  "body": " What is the Laplace transform of the initial-value problem ?      No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.    "
+},
+{
+  "id": "main-8-3-7",
+  "level": "1",
+  "url": "main-8-3-7.html",
+  "type": "Section",
+  "number": "9.5",
+  "title": "Summary &amp; Exercises",
+  "body": "Summary & Exercises   In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:   Summary of the Key Ideas     Differential Algebraic Equations . The Laplace transform converts a differential equation into an algebraic equation, simplifying the solution process by eliminating derivatives.   Laplace Transform Concept . Applying the Laplace transform to a differential equation involves transforming each term by multiplying by and integrating with respect to from to , but is often simplified by directly applying the Laplace operator, .   Linearity Property . The Laplace transform is linear, meaning it distributes across addition and subtraction, and allows for constants to be factored out. This property is essential for transforming complex equations.   Transforming Initial Conditions . Initial conditions are incorporated directly into the Laplace-transformed equation, modifying the transformed terms to include initial values, making it easier to solve the resulting algebraic equation.   Common Function Transforms . The Laplace transforms of common functions, such as exponentials, sines, cosines, and polynomials, are essential tools in transforming differential equations and are summarized in the provided table.   Transforming Derivatives . The Laplace transform of a derivative, or higher, transfers the derivative onto the Laplace variable , reducing the order of the equation while introducing initial condition terms.   Multiplication by and . When multiplying a function by an exponential , the Laplace transform shifts by in the -domain, and multiplying by corresponds to differentiating the transform times with respect to , introducing a sign change.   Transforming the Entire Equation . The process of applying the Laplace transform to an entire differential equation with initial conditions involves systematically transforming each term and leads to a simplified algebraic equation in the -domain, ready for solving.      The table below summarizes the common Laplace transforms that we derived in this section.  Common Laplace Transforms  Let and be constant.                             Laplace Transform Property  Let and .   are constants   is a constant                   Definition of the Laplace Transform   Use the definition to compute each of the following Laplace Transforms.       In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for         \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms.      \\\\       To compute this, we use the definition of the Laplace transform.          By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .             We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .          Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .    Forward Transform   Compute the forward Laplace Transforms using the common Laplace transform table .                                                    Exploring the Forward Laplace Transform   Use the concepts discussed in the section to solve the following exercises.   Answer the following questions related to the Laplace transform of .   Show that .   This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .   Select and . Then      Plug from (b) into the limit from (a) to show that .   Substitute from (b) into the limit from (a).      In order for to exist, what must be true?   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .       Forward Transform   Compute the forward Laplace Transforms using the common transform table and properties .            Use the first shifting theorem: .      Use the integration by parts method: .      Apply the second shifting theorem: .                    For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .       For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.    Forward Transforming Equations   Use the forward Laplace transform to solve the following differential equations.   Solve the differential equation given the initial conditions and .   Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .  Solve the differential equation with the initial condition .   Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .    "
+},
+{
+  "id": "main-8-3-7-2-2",
+  "level": "2",
+  "url": "main-8-3-7.html#main-8-3-7-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Differential Algebraic Equations Laplace Transform Concept Linearity Property Transforming Initial Conditions Common Function Transforms Transforming Derivatives Multiplication by and Transforming the Entire Equation "
+},
+{
+  "id": "main-8-3-7-3-1-3",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-3",
+  "type": "Exercise",
+  "number": "9.5.1",
+  "title": "",
+  "body": "    In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for    "
+},
+{
+  "id": "main-8-3-7-3-1-4",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-4",
+  "type": "Exercise",
+  "number": "9.5.2",
+  "title": "",
+  "body": "    \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms. "
+},
+{
+  "id": "main-8-3-7-3-1-5",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-5",
+  "type": "Exercise",
+  "number": "9.5.3",
+  "title": "",
+  "body": "    \\\\  "
+},
+{
+  "id": "main-8-3-7-3-1-6",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-6",
+  "type": "Exercise",
+  "number": "9.5.4",
+  "title": "",
+  "body": "    To compute this, we use the definition of the Laplace transform.  "
+},
+{
+  "id": "main-8-3-7-3-1-7",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-7",
+  "type": "Exercise",
+  "number": "9.5.5",
+  "title": "",
+  "body": "       By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .     "
+},
+{
+  "id": "main-8-3-7-3-1-8",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-8",
+  "type": "Exercise",
+  "number": "9.5.6",
+  "title": "",
+  "body": "       We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .  "
+},
+{
+  "id": "main-8-3-7-3-1-9",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-1-9",
+  "type": "Exercise",
+  "number": "9.5.7",
+  "title": "",
+  "body": "       Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .  "
+},
+{
+  "id": "main-8-3-7-3-2-3",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-3",
+  "type": "Exercise",
+  "number": "9.5.8",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-4",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-4",
+  "type": "Exercise",
+  "number": "9.5.9",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-5",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-5",
+  "type": "Exercise",
+  "number": "9.5.10",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-6",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-6",
+  "type": "Exercise",
+  "number": "9.5.11",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-7",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-7",
+  "type": "Exercise",
+  "number": "9.5.12",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-8",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-8",
+  "type": "Exercise",
+  "number": "9.5.13",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-9",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-9",
+  "type": "Exercise",
+  "number": "9.5.14",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-2-10",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-2-10",
+  "type": "Exercise",
+  "number": "9.5.15",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-3-7-3-3-3",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-3-3",
+  "type": "Exercise",
+  "number": "9.5.16",
+  "title": "",
+  "body": "Answer the following questions related to the Laplace transform of .   Show that .   This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .   Select and . Then      Plug from (b) into the limit from (a) to show that .   Substitute from (b) into the limit from (a).      In order for to exist, what must be true?   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .     "
+},
+{
+  "id": "main-8-3-7-3-4-3",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-3",
+  "type": "Exercise",
+  "number": "9.5.17",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-3-7-3-4-4",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-4",
+  "type": "Exercise",
+  "number": "9.5.18",
+  "title": "",
+  "body": "    Use the first shifting theorem: . "
+},
+{
+  "id": "main-8-3-7-3-4-5",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-5",
+  "type": "Exercise",
+  "number": "9.5.19",
+  "title": "",
+  "body": "    Use the integration by parts method: . "
+},
+{
+  "id": "main-8-3-7-3-4-6",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-6",
+  "type": "Exercise",
+  "number": "9.5.20",
+  "title": "",
+  "body": "    Apply the second shifting theorem: . "
+},
+{
+  "id": "main-8-3-7-3-4-7",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-7",
+  "type": "Exercise",
+  "number": "9.5.21",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-3-7-3-4-8",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-8",
+  "type": "Exercise",
+  "number": "9.5.22",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "main-8-3-7-3-4-9",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-9",
+  "type": "Exercise",
+  "number": "9.5.23",
+  "title": "",
+  "body": "     For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .  "
+},
+{
+  "id": "main-8-3-7-3-4-10",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-4-10",
+  "type": "Exercise",
+  "number": "9.5.24",
+  "title": "",
+  "body": "    For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.  "
+},
+{
+  "id": "main-8-3-7-3-5-3",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-5-3",
+  "type": "Exercise",
+  "number": "9.5.25",
+  "title": "",
+  "body": "Solve the differential equation given the initial conditions and .   Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : . "
+},
+{
+  "id": "main-8-3-7-3-5-4",
+  "level": "2",
+  "url": "main-8-3-7-3.html#main-8-3-7-3-5-4",
+  "type": "Exercise",
+  "number": "9.5.26",
+  "title": "",
+  "body": "Solve the differential equation with the initial condition .   Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: . "
+},
+{
+  "id": "main-8-4-3-3",
+  "level": "1",
+  "url": "main-8-4-3-3.html",
+  "type": "Subsection",
+  "number": "10.1.1",
+  "title": "Matched Forms",
+  "body": "Matched Forms  The Laplace Transform Method begins with the forward Laplace transform of a differential equation with an unknown function into an algebraic equation involving the transformed function . Once we have solved for , the final step is to recover the original function, , by applying the backward (inverse) Laplace transform, denoted as .  Much like how reverses the cosine function, applying to both sides of a Laplace-transformed expression brings us back to the original function. For example, if then, applying the inverse Laplace transform gives: To identify the appropriate inverse Laplace transform, we rely on the common transforms in the table below, where we match the function of on the right and the inverse is the function of on the left.   Common Laplace Transforms. are constant,      -functions  -functions                                                                Many functions can be matched by simply observing the denominator. The following table summarizes common patterns for matching denominators with their associated inverse transforms:  Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes          Now, let's look at some examples.   Find the inverse Laplace transforms of each function.        This matches the form with . So,            This matches the L_7 form with and . So, .           This matches the L_3 with .        These examples demonstrate how to find the inverse Laplace Transform when the -function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the -function to match the common forms in the table.  Check-Point Questions   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.    The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .    In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.      The inverse Laplace transform of is given by      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.        True. The inverse Laplace transform of is indeed .          Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.            No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.            Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .     What is the Laplace transform of ?   \\frac{1}{s-3}    \\frac{1}{s+3}    \\frac{1}{s-2}    \\frac{1}{s}    In the equation , what is the Laplace transform of the right-hand side?   \\frac{s}{s^2 + 4}    \\frac{4}{s^2 + 4}    \\frac{s}{s^2 + 1}    \\frac{1}{s^2 + 4}     "
+},
+{
+  "id": "common-lt-table",
+  "level": "2",
+  "url": "main-8-4-3-3.html#common-lt-table",
+  "type": "Table",
+  "number": "16",
+  "title": "<em class=\"emphasis\">Common Laplace Transforms. <span class=\"process-math\">\\(a, b\\)<\/span> are constant, <span class=\"process-math\">\\(n = 1, 2, \\ldots\\)<\/span><\/em>",
+  "body": " Common Laplace Transforms. are constant,      -functions  -functions                                                               "
+},
+{
+  "id": "backward-lt-rules-of-thumb",
+  "level": "2",
+  "url": "main-8-4-3-3.html#backward-lt-rules-of-thumb",
+  "type": "Table",
+  "number": "17",
+  "title": "Matching Guide: <span class=\"process-math\">\\(s\\)<\/span>-function <span class=\"process-math\">\\(\\rightarrow\\)<\/span> Inverse Transform",
+  "body": "Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes         "
+},
+{
+  "id": "main-8-4-3-3-8",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-8",
+  "type": "Example",
+  "number": "18",
+  "title": "",
+  "body": " Find the inverse Laplace transforms of each function.        This matches the form with . So,            This matches the L_7 form with and . So, .           This matches the L_3 with .       "
+},
+{
+  "id": "main-8-4-3-3-10-2",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-2",
+  "type": "Reading Question",
+  "number": "10.1.1.1",
+  "title": "<em class=\"emphasis\">The table of common forward Laplace transforms can also be used to find inverse Laplace transforms<\/em>.",
+  "body": " The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.  "
+},
+{
+  "id": "main-8-4-3-3-10-3",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-3",
+  "type": "Reading Question",
+  "number": "10.1.1.2",
+  "title": "<em class=\"emphasis\">The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function <span class=\"process-math\">\\(y(t)\\)<\/span> from <span class=\"process-math\">\\(Y(s)\\)<\/span><\/em>.",
+  "body": " The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .  "
+},
+{
+  "id": "main-8-4-3-3-10-4",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-4",
+  "type": "Reading Question",
+  "number": "10.1.1.3",
+  "title": "<em class=\"emphasis\">In the Laplace Transform Method, the backward transform  <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": " In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.    "
+},
+{
+  "id": "main-8-4-3-3-10-5",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-5",
+  "type": "Reading Question",
+  "number": "10.1.1.4",
+  "title": "<em class=\"emphasis\">The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{3}{s^2 + 9}\\)<\/span> is given by <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": " The inverse Laplace transform of is given by      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.    "
+},
+{
+  "id": "main-8-4-3-3-10-6",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-6",
+  "type": "Reading Question",
+  "number": "10.1.1.5",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{e^{2t}\\cos(4t)} = \\frac{s - 2}{(s - 2)^2 + 16}\\)<\/span><\/em>.",
+  "body": "   True. The inverse Laplace transform of is indeed .  "
+},
+{
+  "id": "main-8-4-3-3-10-7",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-7",
+  "type": "Reading Question",
+  "number": "10.1.1.6",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s+3}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": "       Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.    "
+},
+{
+  "id": "main-8-4-3-3-10-8",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-8",
+  "type": "Reading Question",
+  "number": "10.1.1.7",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{24}{s^5}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": "       No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.    "
+},
+{
+  "id": "main-8-4-3-3-10-9",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-9",
+  "type": "Reading Question",
+  "number": "10.1.1.8",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{2}{s^2 + 4}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": "       Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
+},
+{
+  "id": "main-8-4-3-3-10-10",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-10",
+  "type": "Reading Question",
+  "number": "10.1.1.9",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s - 5}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": "       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .    "
+},
+{
+  "id": "main-8-4-3-3-10-11",
+  "level": "2",
+  "url": "main-8-4-3-3.html#main-8-4-3-3-10-11",
+  "type": "Reading Question",
+  "number": "10.1.1.10",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{(s+4)^2}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "body": "       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
+},
+{
+  "id": "p4-c1-s3-rq1",
+  "level": "2",
+  "url": "main-8-4-3-3.html#p4-c1-s3-rq1",
+  "type": "Reading Question",
+  "number": "10.1.1.11",
+  "title": "What is the Laplace transform of <span class=\"process-math\">\\(e^{3t}\\text{?}\\)<\/span>",
+  "body": "What is the Laplace transform of ?   \\frac{1}{s-3}    \\frac{1}{s+3}    \\frac{1}{s-2}    \\frac{1}{s}   "
+},
+{
+  "id": "p4-c1-s3-rq2",
+  "level": "2",
+  "url": "main-8-4-3-3.html#p4-c1-s3-rq2",
+  "type": "Reading Question",
+  "number": "10.1.1.12",
+  "title": "In the equation <span class=\"process-math\">\\(y'' + 4y = \\cos(2t)\\text{,}\\)<\/span> what is the Laplace transform of the right-hand side?",
+  "body": "In the equation , what is the Laplace transform of the right-hand side?   \\frac{s}{s^2 + 4}    \\frac{4}{s^2 + 4}    \\frac{s}{s^2 + 1}    \\frac{1}{s^2 + 4}   "
+},
+{
+  "id": "main-8-4-3-4",
+  "level": "1",
+  "url": "main-8-4-3-4.html",
+  "type": "Subsection",
+  "number": "10.1.2",
+  "title": "Mismatched Forms",
+  "body": "Mismatched Forms  When working with Laplace transforms, it's common to encounter algebraic expressions that don't perfectly match the standard forms we use for the inverse Laplace transform. In these cases, we need to manipulate the expression to make it fit one of the known forms.  For example, consider the expression: While it's not an exact match, we can observe from the denominator that   However, the numerator doesn't match yet. To correct this, we need a 5 in the numerator. We can't just multiply the numerator by 5 without changing the value, so instead, we multiply the entire expression by , which is equivalent to multiplying by 1: Multiplying by doesn’t change the value of the expression, but it allows us to match the standard form.  One of the most common adjustments is introducing a missing constant in the numerator, as we did earlier. By multiplying both the numerator and denominator by this constant, we maintain the expression's value while transforming it into a recognizable form. Let’s look at some examples:   Compute the inverse Laplace transforms for each.          The in the denominator tells us that we need . Before we do, let's factor out : .            Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so             This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so             The denominator here is , which matches with . Therefore, .            The form of this denominator is and has no in the numerator. This matches with and . Therefore,             The denominator, , matches with and . Therefore,         Check-Point Questions   The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.          Incorrect.       Incorrect.       Correct!       Incorrect.      Fill-in-the-blank.      Incorrect.       Incorrect.       Incorrect.       Correct!      Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?      Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.            Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.      Fill-in-the-blank.      Correct!       Incorrect.       Incorrect.       Incorrect.      "
+},
+{
+  "id": "main-8-4-3-4-6",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-6",
+  "type": "Example",
+  "number": "19",
+  "title": "",
+  "body": " Compute the inverse Laplace transforms for each.          The in the denominator tells us that we need . Before we do, let's factor out : .            Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so             This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so             The denominator here is , which matches with . Therefore, .            The form of this denominator is and has no in the numerator. This matches with and . Therefore,             The denominator, , matches with and . Therefore,        "
+},
+{
+  "id": "main-8-4-3-4-7-2",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-2",
+  "type": "Reading Question",
+  "number": "10.1.2.1",
+  "title": "<em class=\"emphasis\">The most challenging part of the Laplace transform method is preparing the <span class=\"process-math\">\\(s\\)<\/span>-function for the backward Laplace transform<\/em>.",
+  "body": " The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.  "
+},
+{
+  "id": "main-8-4-3-4-7-3",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-3",
+  "type": "Reading Question",
+  "number": "10.1.2.2",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{7}{s^2}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
+  "body": "       Incorrect.       Incorrect.       Correct!       Incorrect.    "
+},
+{
+  "id": "main-8-4-3-4-7-4",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-4",
+  "type": "Reading Question",
+  "number": "10.1.2.3",
+  "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{5}{s^4}} = \\frac{5}{6}\\ilap{\\frac{\\fillinmath{X}}{s^4}} \\)<\/span><\/em>.",
+  "body": " Fill-in-the-blank.      Incorrect.       Incorrect.       Incorrect.       Correct!    "
+},
+{
+  "id": "main-8-4-3-4-7-5",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-5",
+  "type": "Reading Question",
+  "number": "10.1.2.4",
+  "title": "<em class=\"emphasis\">Which of the following <span class=\"process-math\">\\(s\\)<\/span>-functions require adjustment to match one of the common inverse Laplace transforms?<\/em>",
+  "body": " Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?      Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.    "
+},
+{
+  "id": "main-8-4-3-4-7-6",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-6",
+  "type": "Reading Question",
+  "number": "10.1.2.5",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{(s - 2)^2 + 25}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
+  "body": "       Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.    "
+},
+{
+  "id": "main-8-4-3-4-7-7",
+  "level": "2",
+  "url": "main-8-4-3-4.html#main-8-4-3-4-7-7",
+  "type": "Reading Question",
+  "number": "10.1.2.6",
+  "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{s^2 + 25}} = \\frac{\\fillinmath{X}}{5}\\ilap{\\frac{5}{s^2 + 25}} \\)<\/span><\/em>.",
+  "body": " Fill-in-the-blank.      Correct!       Incorrect.       Incorrect.       Incorrect.    "
+},
+{
+  "id": "main-8-4-4-3",
+  "level": "1",
+  "url": "main-8-4-4-3.html",
+  "type": "Subsection",
+  "number": "10.2.1",
+  "title": "Splitting Fractions",
+  "body": "Splitting Fractions  In the book, I want to describe the Laplace Transform Method as having the following 3 steps: Step 1: Forward Transform Step 2a: Solve for Y Step 2b: Prepare Y for the Backwards Transform Step 3: Backward Transform Please rewrite the introduction to describe this section as step 3. Steps 2a and 2b will correspond to a different section.  Another common modification is when the -function contains a sum of different common forms. In these cases, you can usually split the fraction as the sum of these forms.   Compute the inverse Laplace transforms for each.          The key to this problem is to split the fraction into two separate terms: Notice the first term matches with and the second term matches with , so             We can split the fraction into the terms, and apply the inverse Laplace transform to each Therefore, the inverse transform is         This section explored two relatively minor modifications needed to match and find the backward Laplace transform. However, some -functions require more complex techniques to reach the desired form. In the next section, we will discuss how completing the square can help us match the form where the -variable is shifted.  Check-Point Questions   The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .      Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.            Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.            Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
+},
+{
+  "id": "main-8-4-4-3-4",
+  "level": "2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-4",
+  "type": "Example",
+  "number": "20",
+  "title": "",
+  "body": " Compute the inverse Laplace transforms for each.          The key to this problem is to split the fraction into two separate terms: Notice the first term matches with and the second term matches with , so             We can split the fraction into the terms, and apply the inverse Laplace transform to each Therefore, the inverse transform is        "
+},
+{
+  "id": "main-8-4-4-3-6-2",
+  "level": "2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-6-2",
+  "type": "Reading Question",
+  "number": "10.2.1.1",
+  "title": "<em class=\"emphasis\">The function <span class=\"process-math\">\\(\\ds \\frac{s - 4}{s^2 - 16}\\)<\/span> can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms<\/em>.",
+  "body": " The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .    "
+},
+{
+  "id": "main-8-4-4-3-6-3",
+  "level": "2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-6-3",
+  "type": "Reading Question",
+  "number": "10.2.1.2",
+  "title": "<em class=\"emphasis\">Which of the following functions can be split into separate terms that match known inverse Laplace transforms?<\/em>",
+  "body": " Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.    "
+},
+{
+  "id": "main-8-4-4-3-6-4",
+  "level": "2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-6-4",
+  "type": "Reading Question",
+  "number": "10.2.1.3",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\frac{s - 6}{s^2 - 36} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
+  "body": "       Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.    "
+},
+{
+  "id": "main-8-4-4-3-6-5",
+  "level": "2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-6-5",
+  "type": "Reading Question",
+  "number": "10.2.1.4",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\ilap{\\frac{s + 2}{s^2 + 1}} = \\)<\/span>  <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
+  "body": "       Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.    "
+},
+{
+  "id": "main-8-4-4-4",
+  "level": "1",
+  "url": "main-8-4-4-4.html",
+  "type": "Subsection",
+  "number": "10.2.2",
+  "title": "Completing the Square",
+  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms. For example, the -function does not align with the forms in the common forward transform table . One common way to address this is by rewriting the denominator in the form to match known transforms like or . This technique, called completing the square, is essential in transforming quadratic expressions to forms that are easier to work with in inverse Laplace computations.  This approach is appropriate when the roots of the quadratic expression in the denominator are complex. Recall from solving quadratic equations , if the discriminant is negative, then the quadratic function has complex roots. Therefore, a quick compuation of this value provides a good signal that completing the square is the correct approach as the following examples demonstrate.   Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is , which is negative. Completing the square gives: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: , and leaves us in a tricky situation where the numerator is not . This situation is addressed by rewriting as and grouping the with the . We then split the fraction. Here are all the details: , Therefore,     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows the backward transformations to be found by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down even more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions    True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.     True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.     True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.    Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.     The discriminant of the denominator of is discriminant      Correct!      Please review the reading.        What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.       Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.       Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.       Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .       Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.      "
+},
+{
+  "id": "main-8-4-4-4-4",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-4",
+  "type": "Example",
+  "number": "21",
+  "title": "",
+  "body": " Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is , which is negative. Completing the square gives: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: , and leaves us in a tricky situation where the numerator is not . This situation is addressed by rewriting as and grouping the with the . We then split the fraction. Here are all the details: , Therefore,    "
+},
+{
+  "id": "main-8-4-4-4-6-2",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-2",
+  "type": "Reading Question",
+  "number": "10.2.2.1",
+  "title": "<em class=\"emphasis\">True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.<\/em>.",
+  "body": " True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.  "
+},
+{
+  "id": "main-8-4-4-4-6-3",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-3",
+  "type": "Reading Question",
+  "number": "10.2.2.2",
+  "title": "<em class=\"emphasis\">True or False: The expression <span class=\"process-math\">\\(\\frac{s-1}{(s-1)^2 + 4}\\)<\/span> matches the form required to apply the inverse Laplace transform found in the common transform table.<\/em>.",
+  "body": " True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.  "
+},
+{
+  "id": "main-8-4-4-4-6-4",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-4",
+  "type": "Reading Question",
+  "number": "10.2.2.3",
+  "title": "<em class=\"emphasis\">True or False: After completing the square on the denominator of <span class=\"process-math\">\\(\\frac{s+3}{s^2 + 2s + 10}\\text{,}\\)<\/span> the numerator needs to be split to match the forms in the Laplace transform table.<\/em>.",
+  "body": " True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.  "
+},
+{
+  "id": "main-8-4-4-4-6-5",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-5",
+  "type": "Reading Question",
+  "number": "10.2.2.4",
+  "title": "<em class=\"emphasis\">Which of the following steps is necessary to apply the inverse Laplace transform to <span class=\"process-math\">\\(\\frac{s-1}{s^2 - 2s + 5}\\text{?}\\)<\/span><\/em>",
+  "body": " Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.    "
+},
+{
+  "id": "fillin-p4-c2-s3-1",
+  "level": "2",
+  "url": "main-8-4-4-4.html#fillin-p4-c2-s3-1",
+  "type": "Reading Question",
+  "number": "10.2.2.5",
+  "title": "The discriminant of the denominator of <span class=\"process-math\">\\(\\ds\\frac{-19}{s^2-3s+1}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/>.",
+  "body": "The discriminant of the denominator of is discriminant      Correct!      Please review the reading.     "
+},
+{
+  "id": "main-8-4-4-4-6-7",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-7",
+  "type": "Reading Question",
+  "number": "10.2.2.6",
+  "title": "<em class=\"emphasis\">What is the correct result after completing the square for the denominator of <span class=\"process-math\">\\(\\frac{11}{s^2 - 6s + 14}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.    "
+},
+{
+  "id": "main-8-4-4-4-6-8",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-8",
+  "type": "Reading Question",
+  "number": "10.2.2.7",
+  "title": "<em class=\"emphasis\">When splitting the fraction <span class=\"process-math\">\\(\\frac{s+3}{(s + 1)^2 + 9}\\)<\/span> into two terms, which of the following is NOT true?<\/em>",
+  "body": " When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.    "
+},
+{
+  "id": "main-8-4-4-4-6-9",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-9",
+  "type": "Reading Question",
+  "number": "10.2.2.8",
+  "title": "<em class=\"emphasis\">Fill in the blank: To complete the square for the expression <span class=\"process-math\">\\(s^2 - 6s + 14\\text{,}\\)<\/span> we add and subtract <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/> inside the parentheses.<\/em>.",
+  "body": " Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.    "
+},
+{
+  "id": "main-8-4-4-4-6-10",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-10",
+  "type": "Reading Question",
+  "number": "10.2.2.9",
+  "title": "<em class=\"emphasis\">Fill in the blank: After completing the square, the denominator of <span class=\"process-math\">\\(\\frac{11}{s^2 - 6s + 14}\\)<\/span> becomes <span class=\"process-math\">\\((s - 3)^2 + \\fillinmath{X}\\text{.}\\)<\/span><\/em>.",
+  "body": " Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.    "
+},
+{
+  "id": "main-8-4-4-4-6-11",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-11",
+  "type": "Reading Question",
+  "number": "10.2.2.10",
+  "title": "<em class=\"emphasis\">Fill in the blank: The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{s-1}{(s-1)^2 + 4}\\)<\/span> is <span class=\"process-math\">\\(\\fillinmath{XXXXXXXXXXXXXXXXXXXX}\\text{.}\\)<\/span><\/em>.",
+  "body": " Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .    "
+},
+{
+  "id": "main-8-4-4-4-6-12",
+  "level": "2",
+  "url": "main-8-4-4-4.html#main-8-4-4-4-6-12",
+  "type": "Reading Question",
+  "number": "10.2.2.11",
+  "title": "<em class=\"emphasis\">Fill in the blank: The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{11}{(s - 3)^2 + 5}\\)<\/span> is <span class=\"process-math\">\\(\\frac{11}{\\sqrt{5}}e^{3t}\\sin(\\sqrt{5}t)\\text{,}\\)<\/span> which matches the form in the table when <span class=\"process-math\">\\(b = \\fillinmath{XXXXX}\\text{.}\\)<\/span><\/em>.",
+  "body": " Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.    "
+},
+{
+  "id": "main-8-4-4-5",
+  "level": "1",
+  "url": "main-8-4-4-5.html",
+  "type": "Subsection",
+  "number": "10.2.3",
+  "title": "Partial Fraction Decomposition",
+  "body": "Partial Fraction Decomposition  When working with the Laplace Transform Method, you will sometimes encounter rational functions where the denominator is a polynomial that can be factored into simpler linear or quadratic factors. In such cases, partial fraction decomposition is a powerful technique that allows us to express the complex rational function as a sum of simpler fractions. These simpler fractions often correspond directly to known forms in the table of Laplace transforms, making it easier to apply the inverse transform.  The key idea behind partial fraction decomposition is to break down the original rational function into a sum of fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can express the rational function as a sum of fractions with these linear factors as denominators. The goal is to match each of these fractions with a form in the Laplace transform table, allowing us to compute the inverse transform.  Let's explore this technique through a series of examples, starting with a quadratic denominator and gradually increasing the complexity.   Find the inverse Laplace transforms of each function.   First, we decompose into partial fractions:   To find and , we multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     Partial fraction decompostion also works for functions with higher-degree polynomials in the denominator. The key is to factor each denominator into as many linear and\/or quadratic factors as possible. Here are a few examples to illustrate this concept.   Find the inverse Laplace transforms of each function.   First, factor the cubic denominator:   Next, decompose into partial fractions:   To find , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find , , and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quartic denominator:   Next, decompose into partial fractions:   To find , , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we find , , , and by comparing coefficients. Solving the system of equations, we find:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     Partial fraction decomposition is a powerful technique when working with rational functions in Laplace transforms. By breaking down complex expressions into simpler fractions, you can match them to known inverse Laplace transforms, making the backward transformation process much easier. In the next subsection, we will explore more advanced techniques for handling cases with repeated roots and higher-order polynomials.  Check-Point Questions   True or False: Partial fraction decomposition can only be used for quadratic denominators.   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      Multiple Choice: What is the first step when finding the inverse Laplace transform of ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.      Fill-in-the-Blank: The partial fraction decomposition of is \/ + \/ .    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Multiple Choice: Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .      Fill-in-the-Blank: After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3 .    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .      True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    Multiple Choice: What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.      Fill-in-the-Blank: The inverse Laplace transform of is __________.    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.      "
+},
+{
+  "id": "main-8-4-4-5-5",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-5",
+  "type": "Example",
+  "number": "22",
+  "title": "",
+  "body": " Find the inverse Laplace transforms of each function.   First, we decompose into partial fractions:   To find and , we multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:    "
+},
+{
+  "id": "main-8-4-4-5-7",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-7",
+  "type": "Example",
+  "number": "23",
+  "title": "",
+  "body": " Find the inverse Laplace transforms of each function.   First, factor the cubic denominator:   Next, decompose into partial fractions:   To find , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find , , and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quartic denominator:   Next, decompose into partial fractions:   To find , , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we find , , , and by comparing coefficients. Solving the system of equations, we find:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:    "
+},
+{
+  "id": "main-8-4-4-5-9-2",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-2",
+  "type": "Reading Question",
+  "number": "10.2.3.1",
+  "title": "<em class=\"emphasis\">True or False: Partial fraction decomposition can only be used for quadratic denominators.<\/em>.",
+  "body": " True or False: Partial fraction decomposition can only be used for quadratic denominators.   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
+},
+{
+  "id": "main-8-4-4-5-9-3",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-3",
+  "type": "Reading Question",
+  "number": "10.2.3.2",
+  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.<\/em>.",
+  "body": " Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
+},
+{
+  "id": "main-8-4-4-5-9-4",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-4",
+  "type": "Reading Question",
+  "number": "10.2.3.3",
+  "title": "<em class=\"emphasis\">Multiple Choice: What is the first step when finding the inverse Laplace transform of <span class=\"process-math\">\\(P(s) = \\frac{2s + 3}{s^2 + 5s + 6}\\text{?}\\)<\/span><\/em>",
+  "body": " Multiple Choice: What is the first step when finding the inverse Laplace transform of ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.    "
+},
+{
+  "id": "main-8-4-4-5-9-5",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-5",
+  "type": "Reading Question",
+  "number": "10.2.3.4",
+  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The partial fraction decomposition of <span class=\"process-math\">\\(\\frac{2s + 3}{(s + 2)(s + 3)}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/>\/<span class=\"process-math\">\\(s + 2\\)<\/span> + <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/>\/<span class=\"process-math\">\\(s + 3\\text{.}\\)<\/span><\/em>.",
+  "body": " Fill-in-the-Blank: The partial fraction decomposition of is \/ + \/ .    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
+},
+{
+  "id": "main-8-4-4-5-9-6",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-6",
+  "type": "Reading Question",
+  "number": "10.2.3.5",
+  "title": "<em class=\"emphasis\">True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.<\/em>.",
+  "body": " True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.  "
+},
+{
+  "id": "main-8-4-4-5-9-7",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-7",
+  "type": "Reading Question",
+  "number": "10.2.3.6",
+  "title": "<em class=\"emphasis\">Multiple Choice: Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(Q(s) = \\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
+  "body": " Multiple Choice: Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .    "
+},
+{
+  "id": "main-8-4-4-5-9-8",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-8",
+  "type": "Reading Question",
+  "number": "10.2.3.7",
+  "title": "<em class=\"emphasis\">Fill-in-the-Blank: After finding the partial fraction decomposition of <span class=\"process-math\">\\(\\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)}\\text{,}\\)<\/span> the correct inverse Laplace transform is <span class=\"fillin underline\" role=\"img\" aria-label=\"1-character blank\" style=\"width: 0.454545454545455em;\" \/> + 2<span class=\"fillin underline\" role=\"img\" aria-label=\"6-character blank\" style=\"width: 2.727272727272727em;\" \/> + 3<span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/>.<\/em>.",
+  "body": " Fill-in-the-Blank: After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3 .    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .    "
+},
+{
+  "id": "main-8-4-4-5-9-9",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-9",
+  "type": "Reading Question",
+  "number": "10.2.3.8",
+  "title": "<em class=\"emphasis\">True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.<\/em>.",
+  "body": " True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.  "
+},
+{
+  "id": "main-8-4-4-5-9-10",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-10",
+  "type": "Reading Question",
+  "number": "10.2.3.9",
+  "title": "<em class=\"emphasis\">Multiple Choice: What is the correct inverse Laplace transform of <span class=\"process-math\">\\(\\frac{1}{s - 1} - \\frac{1}{s + 1} + \\frac{4s + 3}{s^2 + 1}\\text{?}\\)<\/span><\/em>",
+  "body": " Multiple Choice: What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.    "
+},
+{
+  "id": "main-8-4-4-5-9-11",
+  "level": "2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-9-11",
+  "type": "Reading Question",
+  "number": "10.2.3.10",
+  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The inverse Laplace transform of <span class=\"process-math\">\\(S(s) = \\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}\\)<\/span> is __________.<\/em>.",
+  "body": " Fill-in-the-Blank: The inverse Laplace transform of is __________.    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.    "
+},
+{
+  "id": "main-8-4-5",
+  "level": "1",
+  "url": "main-8-4-5.html",
+  "type": "Section",
+  "number": "10.3",
+  "title": "Summary &amp; Exercises",
+  "body": "Summary & Exercises   This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function back to the original function . Several methods and techniques are introduced to handle different cases where direct computation isn't possible.   Summary of the Key Ideas    Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.       Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.          Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Backward Transforms- Level 1                                             Backward Transforms- Level 2                                                   Backward Transforms- Level 3                     Steps 3 & 4               Inverse Laplace Transforms   Determine the original time-domain functions from the given Laplace-transformed functions.       Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .      Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .     Find the inverse Laplace transforms of each function.              Conceptual Questions   True or False: The inverse Laplace transform is always a unique function.   True    Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.    Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.    Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Computational Problems   Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .    Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .    Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .    Application-Based Problems   Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.    Find the inverse Laplace transform of the function using partial fraction decomposition.   Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.     "
+},
+{
+  "id": "main-8-4-5-2-2",
+  "level": "2",
+  "url": "main-8-4-5.html#main-8-4-5-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Common Forms: Direct Computation: Modifying Functions: Completing the Square: Partial Fraction Decomposition: "
+},
+{
+  "id": "main-8-4-5-3-1-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-1-3",
+  "type": "Exercise",
+  "number": "10.3.1",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-1-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-1-4",
+  "type": "Exercise",
+  "number": "10.3.2",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-1-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-1-5",
+  "type": "Exercise",
+  "number": "10.3.3",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-2-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-2-3",
+  "type": "Exercise",
+  "number": "10.3.4",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-2-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-2-4",
+  "type": "Exercise",
+  "number": "10.3.5",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-3-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-3-3",
+  "type": "Exercise",
+  "number": "10.3.6",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-3-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-3-4",
+  "type": "Exercise",
+  "number": "10.3.7",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-3-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-3-5",
+  "type": "Exercise",
+  "number": "10.3.8",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-4-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-2",
+  "type": "Exercise",
+  "number": "10.3.9",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-3",
+  "type": "Exercise",
+  "number": "10.3.10",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-4",
+  "type": "Exercise",
+  "number": "10.3.11",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-5",
+  "type": "Exercise",
+  "number": "10.3.12",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-6",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-6",
+  "type": "Exercise",
+  "number": "10.3.13",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-7",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-7",
+  "type": "Exercise",
+  "number": "10.3.14",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-4-8",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-4-8",
+  "type": "Exercise",
+  "number": "10.3.15",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-2",
+  "type": "Exercise",
+  "number": "10.3.16",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-3",
+  "type": "Exercise",
+  "number": "10.3.17",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-4",
+  "type": "Exercise",
+  "number": "10.3.18",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-5",
+  "type": "Exercise",
+  "number": "10.3.19",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-6",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-6",
+  "type": "Exercise",
+  "number": "10.3.20",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-7",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-7",
+  "type": "Exercise",
+  "number": "10.3.21",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-8",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-8",
+  "type": "Exercise",
+  "number": "10.3.22",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-5-9",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-5-9",
+  "type": "Exercise",
+  "number": "10.3.23",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-6-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-6-2",
+  "type": "Exercise",
+  "number": "10.3.24",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-6-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-6-3",
+  "type": "Exercise",
+  "number": "10.3.25",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-6-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-6-4",
+  "type": "Exercise",
+  "number": "10.3.26",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-7-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-7-2",
+  "type": "Exercise",
+  "number": "10.3.27",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-7-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-7-3",
+  "type": "Exercise",
+  "number": "10.3.28",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-8-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-3",
+  "type": "Exercise",
+  "number": "10.3.29",
+  "title": "",
+  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+},
+{
+  "id": "main-8-4-5-3-8-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-4",
+  "type": "Exercise",
+  "number": "10.3.30",
+  "title": "",
+  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+},
+{
+  "id": "main-8-4-5-3-9-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-2",
+  "type": "Exercise",
+  "number": "10.3.31",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-4-5-3-9-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-3",
+  "type": "Exercise",
+  "number": "10.3.32",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-4-5-3-10-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-10-2",
+  "type": "Exercise",
+  "number": "10.3.33",
+  "title": "",
+  "body": " True or False: The inverse Laplace transform is always a unique function.   True  "
+},
+{
+  "id": "main-8-4-5-3-10-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-10-3",
+  "type": "Exercise",
+  "number": "10.3.34",
+  "title": "",
+  "body": " Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.  "
+},
+{
+  "id": "main-8-4-5-3-10-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-10-4",
+  "type": "Exercise",
+  "number": "10.3.35",
+  "title": "",
+  "body": " Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.  "
+},
+{
+  "id": "main-8-4-5-3-10-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-10-5",
+  "type": "Exercise",
+  "number": "10.3.36",
+  "title": "",
+  "body": " Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.  "
+},
+{
+  "id": "main-8-4-5-3-11-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-11-2",
+  "type": "Exercise",
+  "number": "10.3.37",
+  "title": "",
+  "body": " Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .  "
+},
+{
+  "id": "main-8-4-5-3-11-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-11-3",
+  "type": "Exercise",
+  "number": "10.3.38",
+  "title": "",
+  "body": " Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .  "
+},
+{
+  "id": "main-8-4-5-3-11-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-11-4",
+  "type": "Exercise",
+  "number": "10.3.39",
+  "title": "",
+  "body": " Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .  "
+},
+{
+  "id": "main-8-4-5-3-12-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-12-2",
+  "type": "Exercise",
+  "number": "10.3.40",
+  "title": "",
+  "body": " Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.  "
+},
+{
+  "id": "main-8-4-5-3-12-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-12-3",
+  "type": "Exercise",
+  "number": "10.3.41",
+  "title": "",
+  "body": " Find the inverse Laplace transform of the function using partial fraction decomposition.   Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.  "
 },
 {
   "id": "main-8-5",
@@ -5731,7 +6928,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "D.1",
   "title": "Orphaned Content",
-  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative  We can write this solution as . Substituting this into the equation and separating the and parts gives   Notice that each part looks like we separately plugged and into the left side of . Now, suppose the part simplified to and the part gave you , then the sum of these parts still equal . This of as the parts of the solution that cancel out with each other and as the parts that simplify to (like in the previous section).  We can get these two parts by separately solving the equations, , for and . Adding these together gives the general solution, . The next example summarizes this process.  Verifying that, say , is a solution to the homogeneous equation , involves plugging it into the left-hand side of the equation and simplifying. If it is a solution, then you would expect all the terms to cancel out, leaving you with zero so that the equation is satisfied.  In the case of a nonhomogeneous equation, , you would instead expect the left side to simplify to after plugging in a solution. Let's brainstorm some functions that might simplify to .  Since we need the left side to simplify to , it seems reasonable to consider functions that have terms, such as polynomials. Let's try some below.             LHS  LHS    1     No    2     No    3     No    4     No    5     No    6     Yes     Based on this table, we note that the correct solution is and   Row 1 shows that a constant term alone could never produce an term.    Derivatives reduce the power of a polynomial, so the highest power term (highlighted in blue) comes from the term.       Rows 3 & 4 illustrate the solution can't have a or higher-degree term.    Row 6 shows the solution ( ) needed an term and constant term even though the right-hand side, , has only an term.     concept into the left-side of simplifies to . Would it still be a solution if we tossed another term, say , onto it so that ? To find out, we plug it in and track this new term (in blue), like so   There is a lot built into this result, so let's carefully break it down.   First, is a solution since it satisfies .    The solution contains the two parts , where part (1) contains the terms that simplifies to and part (2) contains the terms that simplify to when plugged into .    The third step looks like and were separately plugged into . As long as the equation is linear, this separation can happen.      Now, let's attempt to find a particular solution, . Since the right-hand side of the original equation is , we might initially guess: However, this term is already part of the homogeneous solution, . If we use this guess, we will not obtain a valid particular solution because it will be absorbed into the homogeneous part. To circumvent this, we adjust our guess by multiplying by to ensure linear independence:   Let's verify if this adjusted guess works by plugging it into the original equation. We find the necessary derivatives:   Substituting these into the differential equation: Simplifying, we get:   This simplifies to: Thus, we find:   Therefore, the particular solution is:   This example demonstrates the importance of adjusting the form of when it overlaps with . In general, if our initial guess for contains any term that is also part of , we multiply that term by to ensure independence. If the overlap persists, we multiply by higher powers of (e.g., , ) until the terms are linearly independent.   Additional Examples    Determine a particular solution to     The point here is to find a particular solution, however the first thing that we're going to do is find the homogeneous solution to this differential equation. Recall that the homogeneous solution comes from solving,   The characteristic equation for this differential equation and its roots are.   The homogeneous solution is then,   At this point the reason for doing this first will not be apparent, however we want you in the habit of finding it before we start the work to find a particular solution. Eventually, as we'll see, having the homogeneous solution in hand will be helpful and so it's best to be in the habit of finding it first prior to doing the work for undetermined coefficients.  Now, let's proceed with finding a particular solution. As mentioned prior to the start of this example we need to make a guess as to the form of a particular solution to this differential equation. Since is an exponential and we know that exponentials never just appear or disappear in the differentiation process it seems that a likely form of the particular solution would be   Now, all that we need to do is do a couple of derivatives, plug this into the differential equation and see if we can determine what needs to be.  Plugging into the differential equation gives   So, in order for our guess to be a solution we will need to choose so that, Okay, we found a value for the coefficient. This means that we guessed correctly. A particular solution to the differential equation is then,       Solve the following initial value problem.     We know that the general solution will be of the form,   and we already have both the homogeneous and particular solution from the first example so we don't really need to do any extra work for this problem.  One of the more common mistakes in these problems is to find the homogeneous solution and then, because we're probably in the habit of doing it, apply the initial conditions to the homogeneous solution to find the constants. This however, is incorrect. The homogeneous solution is only the solution to the homogeneous differential equation and we are after a solution to the nonhomogeneous differential equation and the initial conditions must satisfy that solution instead of the homogeneous solution.  So, we need the general solution to the nonhomogeneous differential equation. Taking the homogeneous solution and the particular solution that we found in the previous example we get the following for a general solution and its derivative.   Now, apply the initial conditions to these.   Solving this system gives . The actual solution is then.      Find a particular solution for the equation    Again, let's note that we should probably find the homogeneous solution before we proceed onto the guess for a particular solution. However, because the homogeneous differential equation for this example is the same as that for the first example we won't bother with that here.  Now, let's take our experience from the first example and apply that here. The first example had an exponential function in the and our guess was an exponential. This differential equation has a sine so let's try the following guess for the particular solution.   Differentiating and plugging into the differential equation gives,   Collecting like terms yields   We need to pick so that we get the same function on both sides of the equal sign. This means that the coefficients of the sines and cosines must be equal. Or,   Notice two things. First, since there is no cosine on the right hand side this means that the coefficient must be zero on that side. More importantly we have a serious problem here. In order for the cosine to drop out, as it must in order for the guess to satisfy the differential equation, we need to set to keep the sine around will also keep the cosine around.  What this means is that our initial guess was wrong. If we get multiple values of the same constant or are unable to find the value of a constant then we have guessed wrong.  One of the nicer aspects of this method is that when we guess wrong our work will often suggest a fix. In this case the problem was the cosine that cropped up. So, to counter this let's add a cosine to our guess. Our new guess is   Plugging this into the differential equation and collecting like terms gives,   Now, set the coefficients equal   Solving this system gives us   We found constants and this time we guessed correctly. A particular solution to the differential equation is then,      Find a particular solution for the following differential equation.    Once, again we will generally want the homogeneous solution in hand first, but again we're working with the same homogeneous differential equation (you'll eventually see why we keep working with the same homogeneous problem) so we'll again just refer to the first example.  For this example, is a cubic polynomial. For this we will need the following guess for the particular solution.   Notice that even though in it our guess will still need one! So, differentiate and plug into the differential equation.   Now, as we've done in the previous examples we will need the coefficients of the terms on both sides of the equal sign to be the same so set coefficients equal and solve. Notice that in this case it was very easy to solve for the constants. The first equation gave , etc . A particular solution for this differential equation is then      Write down the form of the particular solution to        a g\\left( t \\right) = 16{{\\bf{e}}^{7t}}\\sin \\left( {10t} \\right)  So, we have an exponential in the function. Remember the rule. We will ignore the exponential and write down a guess for then put the exponential back in.  The guess for the sine is   Now, for the actual guess for the particular solution we'll take the above guess and tack an exponential onto it. This gives,   One final note before we move onto the next part. The 16 in front of the function has absolutely no bearing on our guess. Any constants multiplying the whole function are ignored.    b g\\left( t \\right) = \\left( {9{t^2} - 103t} \\right)\\cos t  We will start this one the same way that we initially started the previous example. The guess for the polynomial is   and the guess for the cosine is   If we multiply the two guesses we get.   Let's simplify things up a little. First multiply the polynomial through as follows.   Notice that everywhere one of the unknown constants occurs it is in a product of unknown constants. This means that if we went through and used this as our guess the system of equations that we would need to solve for the unknown constants would have products of the unknowns in them. These types of systems are generally very difficult to solve.  So, to avoid this we will do the same thing that we did in the previous example. Everywhere we see a product of constants we will rename it and call it a single constant. The guess that we'll use for this function will be.   This is a general rule that we will use when faced with a product of a polynomial and a trig function. We write down the guess for the polynomial and then multiply that by a cosine. We then write down the guess for the polynomial again, using different coefficients, and multiply this by a sine.    c g\\left( t \\right) = - {{\\bf{e}}^{ - 2t}}\\left( {3 - 5t} \\right)\\cos \\left( {9t} \\right)  This final part has all three parts to it. First, we will ignore the exponential and write down a guess for.   The minus sign can also be ignored. The guess for this is   Now, tack an exponential back on and we're done.   Notice that we put the exponential on both terms.      Write down the form of the particular solution to  for the following 's.            a g\\left( t \\right) = 4\\cos \\left( {6t} \\right) - 9\\sin \\left( {6t} \\right)  This first one we've actually already told you how to do. This is in the table of the basic functions. However, we wanted to justify the guess that we put down there. Using the fact on sums of function we would be tempted to write down a guess for the cosine and a guess for the sine. This would give.   So, we would get a cosine from each guess and a sine from each guess. The problem with this as a guess is that we are only going to get two equations to solve after plugging into the differential equation and yet we have 4 unknowns. We will never be able to solve for each of the constants.  To fix this notice that we can combine some terms as follows.   Upon doing this we can see that we've really got a single cosine with a coefficient and a single sine with a coefficient and so we may as well just use   The general rule of thumb for writing down guesses for functions that involve sums is to always combine like terms into single terms with single coefficients. This will greatly simplify the work required to find the coefficients.    b g\\left( t \\right) = - 2\\sin t + \\sin \\left( {14t} \\right) - 5\\cos \\left( {14t} \\right)  For this one we will get two sets of sines and cosines. This will arise because we have two different arguments in them. We will get one set for the sine with just a as their arguments.  The guess for this function is     c g\\left( t \\right) = {{\\bf{e}}^{7t}} + 6  The main point of this problem is dealing with the constant. But that isn't too bad. We just wanted to make sure that an example of that is somewhere in the notes. If you recall that a constant is nothing more than a zeroth degree polynomial the guess becomes clear.  The guess for this function is     d g\\left( t \\right) = 6{t^2} - 7\\sin \\left( {3t} \\right) + 9  This one can be a little tricky if you aren't paying attention. Let's first rewrite the function   All we did was move the 9. However, upon doing that we see that the function is really a sum of a quadratic polynomial and a sine. The guess for this is then   If we don't do this and treat the function as the sum of three terms we would get   and as with the first part in this example we would end up with two terms that are essentially the same (the ) and so would need to be combined. An added step that isn't really necessary if we first rewrite the function.  Look for problems where rearranging the function can simplify the initial guess.    e g\\left( t \\right) = 10{{\\bf{e}}^t} - 5t{{\\bf{e}}^{ - 8t}} + 2{{\\bf{e}}^{ - 8t}}  So, this look like we've got a sum of three terms here. Let's write down a guess for that.   Notice however that if we were to multiply the exponential in the second term through we would end up with two terms that are essentially the same and would need to be combined. This is a case where the guess for one term is completely contained in the guess for a different term. When this happens we just drop the guess that's already included in the other term.  So, the guess here is actually.   Notice that this arose because we had two terms in our whose only difference was the polynomial that sat in front of them. When this happens we look at the term that contains the largest degree polynomial, write down the guess for that and don't bother writing down the guess for the other term as that guess will be completely contained in the first guess.    f g\\left( t \\right) = {t^2}\\cos t - 5t\\sin t  In this case we've got two terms whose guess without the polynomials in front of them would be the same. Therefore, we will take the one with the largest degree polynomial in front of it and write down the guess for that one and ignore the other term. So, the guess for the function is     g g\\left( t \\right) = 5{{\\bf{e}}^{ - 3t}} + {{\\bf{e}}^{ - 3t}}\\cos \\left( {6t} \\right) - \\sin \\left( {6t} \\right)  This last part is designed to make sure you understand the general rule that we used in the last two parts. This time there really are three terms and we will need a guess for each term. The guess here is   We can only combine guesses if they are identical up to the constant. So, we can't combine the first exponential with the second because the second is really multiplied by a cosine and a sine and so the two exponentials are in fact different functions. Likewise, the last sine and cosine can't be combined with those in the middle term because the sine and cosine in the middle term are in fact multiplied by an exponential and so are different.      Find a particular solution for the following differential equation.    This problem seems almost too simple to be given this late in the section. This is especially true given the ease of finding a particular solution for )'s that are just exponential functions. Also, because the point of this example is to illustrate why it is generally a good idea to have the homogeneous solution in hand first we'll let's go ahead and recall the homogeneous solution first. Here it is,   Now, without worrying about the homogeneous solution for a couple more seconds let's go ahead and get to work on the particular solution. There is not much to the guess here. From our previous work we know that the guess for the particular solution should be,   Plugging this into the differential equation gives,   Hmmmm…. Something seems wrong here. Clearly an exponential can't be zero. So, what went wrong? We finally need the homogeneous solution. Notice that the second term in the homogeneous solution (listed above) is exactly our guess for the form of the particular solution and now recall that both portions of the homogeneous solution are solutions to the homogeneous differential equation,   In other words, we had better have gotten zero by plugging our guess into the differential equation, it is a solution to the homogeneous differential equation!  So, how do we fix this? The way that we fix this is to add a to our guess as follows.   Plugging this into our differential equation gives,   Now, we can set coefficients equal.   So, the particular solution in this case is,      Find the general solution to each LNCC equation using the method of undetermined coefficients.    .  To select the appropriate form for , we should find to ensure that and have no terms in common. Solving the LHCC version of our equation, we find . Next, we select the initial form of . Since the right-hand side is an function, we initially set and note that has no terms, so we proceed to find by calculating two derivatives of , , and substituting these into the equation and collecting like terms, to get . Matching the underlined coefficients leads to the equation .  Finally, we write the particular solution as .       .  As before, we first find the homogeneous solution, which is . Next, we select the initial form of as and note that has no terms in common with , so we compute , , plug these into the equation, and collect the , , and constant terms to get  . Matching the underlined coefficients leads to the following system of equations and solution for the coefficients , , and :                Finally, we write the particular solution as .       .  First find the homogeneous solution, . For this example we need to select a particular solution that is a polynomial times an exponential. So, we'll guess that the particular solution is   Now, we need to compute the first and second derivatives of this and plug them into the differential equation. Doing this gives Substituting these into the differential equation gives Grouping the and terms together gives us Matching coefficients gives us . So, the particular solution is We now need to find . To do this we'll need to plug this into the differential equation and solve for . Doing this gives Matching coefficients gives us . So, the particular solution is then   A particular solution for this differential equation is then        .  This example is the reason that we've been using the same homogeneous differential equation for all the previous examples. There is nothing to do with this problem. All that we need to do it go back to the appropriate examples above and get the particular solution from that example and add them all together.  Doing this gives        .  Step 1: The right-hand side is trigonometric, so we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Solve for and :   Step 5: Write the particular solution: .       .  Following the method of , we find as and then find through the steps that follow.   . The initial form of is ,   . Notice that has an term, which overlaps with . Therefore, we need to adjust by multiplying the term by , . Now that and are independent, we can proceed to find the coefficients , , and .   . Before plugging in , let's find and : . Now, substituting these into the equation and collecting like terms, to get , which leads to the following equations for , , and :                Finally, the general solution is .       .     .     .     .      Solve the non-homogeneous differential equation: . Find the particular solution.   Step 1: Since the right-hand side is a polynomial of degree 1, we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Collect like terms and solve for and :   Step 5: Write the particular solution: .     Additional Practice   When solving , the initial guess for is adjusted to because overlaps with  When solving , the initial guess for is adjusted to because overlaps with .                Why do we adjust the particular solution by multiplying it by when solving LNCC equations?  Why do we adjust the particular solution by multiplying it by when solving LNCC equations? We adjust by multiplying it by to ensure that the particular solution does not share any terms with the homogeneous solution . This adjustment makes and independent, ensuring that the general solution properly represents the nonhomogeneous term of the differential equation.   In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?  In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?   represents the solution to the homogeneous equation (where the nonhomogeneous term is zero), while represents a particular solution that accounts for the nonhomogeneous term. It is important that they are independent so that their combined terms accurately reflect the behavior of both the homogeneous and nonhomogeneous parts of the original differential equation.    "
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative  So far, we have seen three examples of how to find a Laplace transform of a given function, but we have not discussed why this idea is relevant to differential equations. In the next section, we will tie these two concepts together and illustrate how Laplace transform can be used to solve a differential equation.   Additional Examples   Find the Laplace transform of the function    We will use properties in the table as follows.      Find    We will use properties in the table as follows.      Find the Laplace transform of the function    Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both and we can simply multiply those together to get the desired Laplace transform. However, this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property , with and    We need to know what is before we can proceed. Let's go back to the naming system we have instituted. If we have a capital that is the Laplace transform of a function lower case We identified that function previously: We use to find its Laplace transform. Then we continue finding by taking two derivatives (using the quotient rule for derivatives; details are omitted here).      Additional Practice   "
 },
 {
   "id": "main-16-2-4-2",
@@ -5740,7 +6937,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "D.9",
   "title": "",
-  "body": "  Determine a particular solution to     The point here is to find a particular solution, however the first thing that we're going to do is find the homogeneous solution to this differential equation. Recall that the homogeneous solution comes from solving,   The characteristic equation for this differential equation and its roots are.   The homogeneous solution is then,   At this point the reason for doing this first will not be apparent, however we want you in the habit of finding it before we start the work to find a particular solution. Eventually, as we'll see, having the homogeneous solution in hand will be helpful and so it's best to be in the habit of finding it first prior to doing the work for undetermined coefficients.  Now, let's proceed with finding a particular solution. As mentioned prior to the start of this example we need to make a guess as to the form of a particular solution to this differential equation. Since is an exponential and we know that exponentials never just appear or disappear in the differentiation process it seems that a likely form of the particular solution would be   Now, all that we need to do is do a couple of derivatives, plug this into the differential equation and see if we can determine what needs to be.  Plugging into the differential equation gives   So, in order for our guess to be a solution we will need to choose so that, Okay, we found a value for the coefficient. This means that we guessed correctly. A particular solution to the differential equation is then,    "
+  "body": " Find the Laplace transform of the function    We will use properties in the table as follows.    "
 },
 {
   "id": "main-16-2-4-3",
@@ -5749,7 +6946,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "D.10",
   "title": "",
-  "body": "  Solve the following initial value problem.     We know that the general solution will be of the form,   and we already have both the homogeneous and particular solution from the first example so we don't really need to do any extra work for this problem.  One of the more common mistakes in these problems is to find the homogeneous solution and then, because we're probably in the habit of doing it, apply the initial conditions to the homogeneous solution to find the constants. This however, is incorrect. The homogeneous solution is only the solution to the homogeneous differential equation and we are after a solution to the nonhomogeneous differential equation and the initial conditions must satisfy that solution instead of the homogeneous solution.  So, we need the general solution to the nonhomogeneous differential equation. Taking the homogeneous solution and the particular solution that we found in the previous example we get the following for a general solution and its derivative.   Now, apply the initial conditions to these.   Solving this system gives . The actual solution is then.    "
+  "body": " Find    We will use properties in the table as follows.    "
 },
 {
   "id": "main-16-2-4-4",
@@ -5758,88 +6955,97 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "D.11",
   "title": "",
-  "body": " Find a particular solution for the equation    Again, let's note that we should probably find the homogeneous solution before we proceed onto the guess for a particular solution. However, because the homogeneous differential equation for this example is the same as that for the first example we won't bother with that here.  Now, let's take our experience from the first example and apply that here. The first example had an exponential function in the and our guess was an exponential. This differential equation has a sine so let's try the following guess for the particular solution.   Differentiating and plugging into the differential equation gives,   Collecting like terms yields   We need to pick so that we get the same function on both sides of the equal sign. This means that the coefficients of the sines and cosines must be equal. Or,   Notice two things. First, since there is no cosine on the right hand side this means that the coefficient must be zero on that side. More importantly we have a serious problem here. In order for the cosine to drop out, as it must in order for the guess to satisfy the differential equation, we need to set to keep the sine around will also keep the cosine around.  What this means is that our initial guess was wrong. If we get multiple values of the same constant or are unable to find the value of a constant then we have guessed wrong.  One of the nicer aspects of this method is that when we guess wrong our work will often suggest a fix. In this case the problem was the cosine that cropped up. So, to counter this let's add a cosine to our guess. Our new guess is   Plugging this into the differential equation and collecting like terms gives,   Now, set the coefficients equal   Solving this system gives us   We found constants and this time we guessed correctly. A particular solution to the differential equation is then,    "
+  "body": " Find the Laplace transform of the function    Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both and we can simply multiply those together to get the desired Laplace transform. However, this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property , with and    We need to know what is before we can proceed. Let's go back to the naming system we have instituted. If we have a capital that is the Laplace transform of a function lower case We identified that function previously: We use to find its Laplace transform. Then we continue finding by taking two derivatives (using the quotient rule for derivatives; details are omitted here).    "
 },
 {
-  "id": "main-16-2-4-5",
+  "id": "main-16-3",
+  "level": "1",
+  "url": "main-16-3.html",
+  "type": "Section",
+  "number": "D.2",
+  "title": "Orphaned Content",
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative  Before diving into specifics, we need to mention the linearity property of the inverse Laplace transform, which will be crucial in this discussion. Inverse Laplace Transform Property  For any constants and and functions of  and ,           Common Laplace Transforms. are constant,      -functions  -functions                                                                   Laplace Transforms Properties,      Properties                              Completing the square is an essential technique for transforming quadratic expressions that don't directly match a form in the table of common Laplace transforms. However, it's not the only strategy available. In this section, we'll explore another important technique: partial fraction decomposition. This method is useful for breaking down complex fractions into simpler components that can each be matched with forms in the Laplace transform table.  Two other forms we may wish to match when we study Laplace transforms are As before, we work toward making the denominator match first , and then we sort out the numerator second.   Find    As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.      Write in the form      Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form--it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.    Now you try some!   Manipulate each of the following expressions to make it match the form and\/or                                           Now that's you've been practicing manipulating expressions to get them to match a particular, specific form, it's time to practice picking out which form an expression is most like. Find the form(s) on the right that best match the expression on the left. It may not be a perfect match, but could be manipulated (as we did above) to get into the correct form(s).  (EXAMPLE)  This best matches form F.    %D   %B   %A   %forms G and H   %C   %forms D and E                               This best matches form F.  This best matches form D.  This best matches form B.  This best matches form A.  This best matches form forms G and H.  This best matches form C.  This best matches form forms D and E.        If you have a rational function where the denominator is of higher degree, then partial fraction decomposition should be used to break the single fraction into several simpler fractions.   Find the inverse Laplace transform of    Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details.   With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.     In summary, when we want to take the inverse Laplace transform of a rational function with a second-degree polynomial in the denominator, we may complete the square or we may do a partial fraction decomposition. How will we know which is appropriate? Here are a few guidelines for you to consider.  Does the denominator factor in an obvious way? If so, factor the denominator and do a partial fraction decomposition if necessary.  If the denominator does not factor in an obvious way, try completing the square.  If you end up with addition outside of the parentheses, as in then you should aim to match and\/or .  If instead you end up with subtraction outside the parentheses, as in then you should factor and do a partial fraction decomposition. You may consider using the quadratic formula if the factorization is not obvious to you.  If you end up with no terms outside the parentheses, as in then use .     Additional Examples   Additional Practice   "
+},
+{
+  "id": "common-lt-table-copy",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-5",
-  "type": "Example",
+  "url": "main-16-3.html#common-lt-table-copy",
+  "type": "Table",
   "number": "D.12",
-  "title": "",
-  "body": " Find a particular solution for the following differential equation.    Once, again we will generally want the homogeneous solution in hand first, but again we're working with the same homogeneous differential equation (you'll eventually see why we keep working with the same homogeneous problem) so we'll again just refer to the first example.  For this example, is a cubic polynomial. For this we will need the following guess for the particular solution.   Notice that even though in it our guess will still need one! So, differentiate and plug into the differential equation.   Now, as we've done in the previous examples we will need the coefficients of the terms on both sides of the equal sign to be the same so set coefficients equal and solve. Notice that in this case it was very easy to solve for the constants. The first equation gave , etc . A particular solution for this differential equation is then    "
+  "title": "<em class=\"emphasis\">Common Laplace Transforms. <span class=\"process-math\">\\(a, b\\)<\/span> are constant, <span class=\"process-math\">\\(n = 1, 2, \\ldots\\)<\/span><\/em>",
+  "body": " Common Laplace Transforms. are constant,      -functions  -functions                                                               "
 },
 {
-  "id": "main-16-2-4-6",
+  "id": "main-16-3-3-4",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-6",
-  "type": "Example",
-  "number": "D.13",
+  "url": "main-16-3.html#main-16-3-3-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
   "title": "",
-  "body": " Write down the form of the particular solution to        a g\\left( t \\right) = 16{{\\bf{e}}^{7t}}\\sin \\left( {10t} \\right)  So, we have an exponential in the function. Remember the rule. We will ignore the exponential and write down a guess for then put the exponential back in.  The guess for the sine is   Now, for the actual guess for the particular solution we'll take the above guess and tack an exponential onto it. This gives,   One final note before we move onto the next part. The 16 in front of the function has absolutely no bearing on our guess. Any constants multiplying the whole function are ignored.    b g\\left( t \\right) = \\left( {9{t^2} - 103t} \\right)\\cos t  We will start this one the same way that we initially started the previous example. The guess for the polynomial is   and the guess for the cosine is   If we multiply the two guesses we get.   Let's simplify things up a little. First multiply the polynomial through as follows.   Notice that everywhere one of the unknown constants occurs it is in a product of unknown constants. This means that if we went through and used this as our guess the system of equations that we would need to solve for the unknown constants would have products of the unknowns in them. These types of systems are generally very difficult to solve.  So, to avoid this we will do the same thing that we did in the previous example. Everywhere we see a product of constants we will rename it and call it a single constant. The guess that we'll use for this function will be.   This is a general rule that we will use when faced with a product of a polynomial and a trig function. We write down the guess for the polynomial and then multiply that by a cosine. We then write down the guess for the polynomial again, using different coefficients, and multiply this by a sine.    c g\\left( t \\right) = - {{\\bf{e}}^{ - 2t}}\\left( {3 - 5t} \\right)\\cos \\left( {9t} \\right)  This final part has all three parts to it. First, we will ignore the exponential and write down a guess for.   The minus sign can also be ignored. The guess for this is   Now, tack an exponential back on and we're done.   Notice that we put the exponential on both terms.    "
+  "body": "Properties "
 },
 {
-  "id": "main-16-2-4-7",
+  "id": "main-16-3-3-7",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-7",
+  "url": "main-16-3.html#main-16-3-3-7",
   "type": "Example",
   "number": "D.14",
   "title": "",
-  "body": " Write down the form of the particular solution to  for the following 's.            a g\\left( t \\right) = 4\\cos \\left( {6t} \\right) - 9\\sin \\left( {6t} \\right)  This first one we've actually already told you how to do. This is in the table of the basic functions. However, we wanted to justify the guess that we put down there. Using the fact on sums of function we would be tempted to write down a guess for the cosine and a guess for the sine. This would give.   So, we would get a cosine from each guess and a sine from each guess. The problem with this as a guess is that we are only going to get two equations to solve after plugging into the differential equation and yet we have 4 unknowns. We will never be able to solve for each of the constants.  To fix this notice that we can combine some terms as follows.   Upon doing this we can see that we've really got a single cosine with a coefficient and a single sine with a coefficient and so we may as well just use   The general rule of thumb for writing down guesses for functions that involve sums is to always combine like terms into single terms with single coefficients. This will greatly simplify the work required to find the coefficients.    b g\\left( t \\right) = - 2\\sin t + \\sin \\left( {14t} \\right) - 5\\cos \\left( {14t} \\right)  For this one we will get two sets of sines and cosines. This will arise because we have two different arguments in them. We will get one set for the sine with just a as their arguments.  The guess for this function is     c g\\left( t \\right) = {{\\bf{e}}^{7t}} + 6  The main point of this problem is dealing with the constant. But that isn't too bad. We just wanted to make sure that an example of that is somewhere in the notes. If you recall that a constant is nothing more than a zeroth degree polynomial the guess becomes clear.  The guess for this function is     d g\\left( t \\right) = 6{t^2} - 7\\sin \\left( {3t} \\right) + 9  This one can be a little tricky if you aren't paying attention. Let's first rewrite the function   All we did was move the 9. However, upon doing that we see that the function is really a sum of a quadratic polynomial and a sine. The guess for this is then   If we don't do this and treat the function as the sum of three terms we would get   and as with the first part in this example we would end up with two terms that are essentially the same (the ) and so would need to be combined. An added step that isn't really necessary if we first rewrite the function.  Look for problems where rearranging the function can simplify the initial guess.    e g\\left( t \\right) = 10{{\\bf{e}}^t} - 5t{{\\bf{e}}^{ - 8t}} + 2{{\\bf{e}}^{ - 8t}}  So, this look like we've got a sum of three terms here. Let's write down a guess for that.   Notice however that if we were to multiply the exponential in the second term through we would end up with two terms that are essentially the same and would need to be combined. This is a case where the guess for one term is completely contained in the guess for a different term. When this happens we just drop the guess that's already included in the other term.  So, the guess here is actually.   Notice that this arose because we had two terms in our whose only difference was the polynomial that sat in front of them. When this happens we look at the term that contains the largest degree polynomial, write down the guess for that and don't bother writing down the guess for the other term as that guess will be completely contained in the first guess.    f g\\left( t \\right) = {t^2}\\cos t - 5t\\sin t  In this case we've got two terms whose guess without the polynomials in front of them would be the same. Therefore, we will take the one with the largest degree polynomial in front of it and write down the guess for that one and ignore the other term. So, the guess for the function is     g g\\left( t \\right) = 5{{\\bf{e}}^{ - 3t}} + {{\\bf{e}}^{ - 3t}}\\cos \\left( {6t} \\right) - \\sin \\left( {6t} \\right)  This last part is designed to make sure you understand the general rule that we used in the last two parts. This time there really are three terms and we will need a guess for each term. The guess here is   We can only combine guesses if they are identical up to the constant. So, we can't combine the first exponential with the second because the second is really multiplied by a cosine and a sine and so the two exponentials are in fact different functions. Likewise, the last sine and cosine can't be combined with those in the middle term because the sine and cosine in the middle term are in fact multiplied by an exponential and so are different.    "
+  "body": " Find    As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.    "
 },
 {
-  "id": "main-16-2-4-8",
+  "id": "main-16-3-3-8",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-8",
+  "url": "main-16-3.html#main-16-3-3-8",
   "type": "Example",
   "number": "D.15",
   "title": "",
-  "body": " Find a particular solution for the following differential equation.    This problem seems almost too simple to be given this late in the section. This is especially true given the ease of finding a particular solution for )'s that are just exponential functions. Also, because the point of this example is to illustrate why it is generally a good idea to have the homogeneous solution in hand first we'll let's go ahead and recall the homogeneous solution first. Here it is,   Now, without worrying about the homogeneous solution for a couple more seconds let's go ahead and get to work on the particular solution. There is not much to the guess here. From our previous work we know that the guess for the particular solution should be,   Plugging this into the differential equation gives,   Hmmmm…. Something seems wrong here. Clearly an exponential can't be zero. So, what went wrong? We finally need the homogeneous solution. Notice that the second term in the homogeneous solution (listed above) is exactly our guess for the form of the particular solution and now recall that both portions of the homogeneous solution are solutions to the homogeneous differential equation,   In other words, we had better have gotten zero by plugging our guess into the differential equation, it is a solution to the homogeneous differential equation!  So, how do we fix this? The way that we fix this is to add a to our guess as follows.   Plugging this into our differential equation gives,   Now, we can set coefficients equal.   So, the particular solution in this case is,    "
+  "body": " Write in the form      Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form--it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.   "
 },
 {
-  "id": "main-16-2-4-9",
+  "id": "main-16-3-3-11",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-9",
+  "url": "main-16-3.html#main-16-3-3-11",
   "type": "Example",
   "number": "D.16",
   "title": "",
-  "body": " Find the general solution to each LNCC equation using the method of undetermined coefficients.    .  To select the appropriate form for , we should find to ensure that and have no terms in common. Solving the LHCC version of our equation, we find . Next, we select the initial form of . Since the right-hand side is an function, we initially set and note that has no terms, so we proceed to find by calculating two derivatives of , , and substituting these into the equation and collecting like terms, to get . Matching the underlined coefficients leads to the equation .  Finally, we write the particular solution as .       .  As before, we first find the homogeneous solution, which is . Next, we select the initial form of as and note that has no terms in common with , so we compute , , plug these into the equation, and collect the , , and constant terms to get  . Matching the underlined coefficients leads to the following system of equations and solution for the coefficients , , and :                Finally, we write the particular solution as .       .  First find the homogeneous solution, . For this example we need to select a particular solution that is a polynomial times an exponential. So, we'll guess that the particular solution is   Now, we need to compute the first and second derivatives of this and plug them into the differential equation. Doing this gives Substituting these into the differential equation gives Grouping the and terms together gives us Matching coefficients gives us . So, the particular solution is We now need to find . To do this we'll need to plug this into the differential equation and solve for . Doing this gives Matching coefficients gives us . So, the particular solution is then   A particular solution for this differential equation is then        .  This example is the reason that we've been using the same homogeneous differential equation for all the previous examples. There is nothing to do with this problem. All that we need to do it go back to the appropriate examples above and get the particular solution from that example and add them all together.  Doing this gives        .  Step 1: The right-hand side is trigonometric, so we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Solve for and :   Step 5: Write the particular solution: .       .  Following the method of , we find as and then find through the steps that follow.   . The initial form of is ,   . Notice that has an term, which overlaps with . Therefore, we need to adjust by multiplying the term by , . Now that and are independent, we can proceed to find the coefficients , , and .   . Before plugging in , let's find and : . Now, substituting these into the equation and collecting like terms, to get , which leads to the following equations for , , and :                Finally, the general solution is .       .     .     .     .    "
+  "body": " Find the inverse Laplace transform of    Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details.   With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.    "
 },
 {
-  "id": "main-16-2-4-10",
+  "id": "main-16-4",
+  "level": "1",
+  "url": "main-16-4.html",
+  "type": "Section",
+  "number": "D.3",
+  "title": "Orphaned Content",
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative   Additional Examples   Example 1: Solving a First-Order Linear Differential Equation  Consider the differential equation:   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:     Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:     Additional Practice   "
+},
+{
+  "id": "main-16-4-4-2",
   "level": "2",
-  "url": "main-16-2.html#main-16-2-4-10",
+  "url": "main-16-4.html#main-16-4-4-2",
   "type": "Example",
   "number": "D.17",
-  "title": "",
-  "body": " Solve the non-homogeneous differential equation: . Find the particular solution.   Step 1: Since the right-hand side is a polynomial of degree 1, we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Collect like terms and solve for and :   Step 5: Write the particular solution: .   "
+  "title": "Example 1: Solving a First-Order Linear Differential Equation.",
+  "body": " Example 1: Solving a First-Order Linear Differential Equation  Consider the differential equation:   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:   "
 },
 {
-  "id": "p3-c2-s4-rq8",
+  "id": "main-16-4-4-3",
   "level": "2",
-  "url": "main-16-2-5.html#p3-c2-s4-rq8",
-  "type": "Reading Question",
-  "number": "D.1.1",
-  "title": "<em class=\"emphasis\">When solving <span class=\"process-math\">\\(y'' - 2y' + y = e^x\\text{,}\\)<\/span> the initial guess for <span class=\"process-math\">\\(y_p\\)<\/span> is adjusted to <span class=\"process-math\">\\(Ax^2 e^x\\)<\/span> because <span class=\"process-math\">\\(e^x\\)<\/span> overlaps with <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": " When solving , the initial guess for is adjusted to because overlaps with  When solving , the initial guess for is adjusted to because overlaps with .              "
+  "url": "main-16-4.html#main-16-4-4-3",
+  "type": "Example",
+  "number": "D.18",
+  "title": "Example 2: Second-Order Differential Equation.",
+  "body": " Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:   "
 },
 {
-  "id": "p3-c2-s4-rq9",
-  "level": "2",
-  "url": "main-16-2-5.html#p3-c2-s4-rq9",
-  "type": "Reading Question",
-  "number": "D.1.2",
-  "title": "<em class=\"emphasis\">Why do we adjust the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> by multiplying it by <span class=\"process-math\">\\(x\\)<\/span> when solving LNCC equations?<\/em>",
-  "body": " Why do we adjust the particular solution by multiplying it by when solving LNCC equations?  Why do we adjust the particular solution by multiplying it by when solving LNCC equations? We adjust by multiplying it by to ensure that the particular solution does not share any terms with the homogeneous solution . This adjustment makes and independent, ensuring that the general solution properly represents the nonhomogeneous term of the differential equation. "
-},
-{
-  "id": "p3-c2-s4-rq10",
-  "level": "2",
-  "url": "main-16-2-5.html#p3-c2-s4-rq10",
-  "type": "Reading Question",
-  "number": "D.1.3",
-  "title": "<em class=\"emphasis\">In the general solution of an LNCC equation, what roles do <span class=\"process-math\">\\(y_h\\)<\/span> and <span class=\"process-math\">\\(y_p\\)<\/span> play, and why is it important that they are independent?<\/em>",
-  "body": " In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?  In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?   represents the solution to the homogeneous equation (where the nonhomogeneous term is zero), while represents a particular solution that accounts for the nonhomogeneous term. It is important that they are independent so that their combined terms accurately reflect the behavior of both the homogeneous and nonhomogeneous parts of the original differential equation.  "
+  "id": "main-16-5",
+  "level": "1",
+  "url": "main-16-5.html",
+  "type": "Section",
+  "number": "D.4",
+  "title": "Orphaned Content",
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative   Additional Examples   Additional Practice   "
 }
 ]
 
