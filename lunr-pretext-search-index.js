@@ -5911,48 +5911,48 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.1",
   "title": "Splitting Fractions",
-  "body": "Splitting Fractions  In the book, I want to describe the Laplace Transform Method as having the following 3 steps: Step 1: Forward Transform Step 2a: Solve for Y Step 2b: Prepare Y for the Backwards Transform Step 3: Backward Transform Please rewrite the introduction to describe this section as step 3. Steps 2a and 2b will correspond to a different section.  Another common modification is when the -function contains a sum of different common forms. In these cases, you can usually split the fraction as the sum of these forms.   Compute the inverse Laplace transforms for each.          The key to this problem is to split the fraction into two separate terms: Notice the first term matches with and the second term matches with , so             We can split the fraction into the terms, and apply the inverse Laplace transform to each Therefore, the inverse transform is         This section explored two relatively minor modifications needed to match and find the backward Laplace transform. However, some -functions require more complex techniques to reach the desired form. In the next section, we will discuss how completing the square can help us match the form where the -variable is shifted.  Check-Point Questions   The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .      Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.            Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.            Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
+  "body": "Splitting Fractions  One useful algebraic manipulation in preparing for the inverse Laplace transform is splitting a rational function that has a sum or difference in the numerator. This technique simplifies the expression into recognizable forms, making it easier to apply known Laplace transform pairs. Let's explore two examples where splitting fractions proves useful.   Compute the inverse Laplace transforms for each.        The key to solving this problem is to split the fraction into two simpler terms: Now, we can apply the inverse Laplace transform to each term separately. The first term matches the Laplace transform of ( ), and the second term corresponds to the Laplace transform of ( ):            We can split the fraction into the terms, and apply the inverse Laplace transform ( ) to each        This section demonstrates how relatively simple modifications, such as splitting fractions, can make it easier to find the inverse Laplace transform. However, some functions of may require more advanced techniques. In the next section, we will explore how completing the square can help match the forms needed for a backward transform when the -variable is shifted.  Check-Point Questions   The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .      Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.            Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.            Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
 },
 {
-  "id": "main-8-4-4-3-4",
+  "id": "main-8-4-4-3-3",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-4",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-3",
   "type": "Example",
   "number": "20",
   "title": "",
-  "body": " Compute the inverse Laplace transforms for each.          The key to this problem is to split the fraction into two separate terms: Notice the first term matches with and the second term matches with , so             We can split the fraction into the terms, and apply the inverse Laplace transform to each Therefore, the inverse transform is        "
+  "body": " Compute the inverse Laplace transforms for each.        The key to solving this problem is to split the fraction into two simpler terms: Now, we can apply the inverse Laplace transform to each term separately. The first term matches the Laplace transform of ( ), and the second term corresponds to the Laplace transform of ( ):            We can split the fraction into the terms, and apply the inverse Laplace transform ( ) to each       "
 },
 {
-  "id": "main-8-4-4-3-6-2",
+  "id": "main-8-4-4-3-5-2",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-6-2",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-5-2",
   "type": "Reading Question",
   "number": "10.2.1.1",
   "title": "<em class=\"emphasis\">The function <span class=\"process-math\">\\(\\ds \\frac{s - 4}{s^2 - 16}\\)<\/span> can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms<\/em>.",
   "body": " The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .    "
 },
 {
-  "id": "main-8-4-4-3-6-3",
+  "id": "main-8-4-4-3-5-3",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-6-3",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-5-3",
   "type": "Reading Question",
   "number": "10.2.1.2",
   "title": "<em class=\"emphasis\">Which of the following functions can be split into separate terms that match known inverse Laplace transforms?<\/em>",
   "body": " Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.    "
 },
 {
-  "id": "main-8-4-4-3-6-4",
+  "id": "main-8-4-4-3-5-4",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-6-4",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-5-4",
   "type": "Reading Question",
   "number": "10.2.1.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\frac{s - 6}{s^2 - 36} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
   "body": "       Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.    "
 },
 {
-  "id": "main-8-4-4-3-6-5",
+  "id": "main-8-4-4-3-5-5",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-6-5",
+  "url": "main-8-4-4-3.html#main-8-4-4-3-5-5",
   "type": "Reading Question",
   "number": "10.2.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\ilap{\\frac{s + 2}{s^2 + 1}} = \\)<\/span>  <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
@@ -5965,7 +5965,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.2",
   "title": "Completing the Square",
-  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms. For example, the -function does not align with the forms in the common forward transform table . One common way to address this is by rewriting the denominator in the form to match known transforms like or . This technique, called completing the square, is essential in transforming quadratic expressions to forms that are easier to work with in inverse Laplace computations.  This approach is appropriate when the roots of the quadratic expression in the denominator are complex. Recall from solving quadratic equations , if the discriminant is negative, then the quadratic function has complex roots. Therefore, a quick compuation of this value provides a good signal that completing the square is the correct approach as the following examples demonstrate.   Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is , which is negative. Completing the square gives: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: , and leaves us in a tricky situation where the numerator is not . This situation is addressed by rewriting as and grouping the with the . We then split the fraction. Here are all the details: , Therefore,     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows the backward transformations to be found by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down even more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions    True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.     True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.     True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.    Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.     The discriminant of the denominator of is discriminant      Correct!      Please review the reading.        What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.       Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.       Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.       Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .       Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.      "
+  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms . For example, the function does not align with standard forms. A common approach is to rewrite the denominator in the form , allowing it to match known transforms like or . This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.  Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from solving quadratic equations that if the discriminant is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.   Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions    True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.     True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.     True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.    Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.     The discriminant of the denominator of is discriminant      Correct!      Please review the reading.        What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.       Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.       Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.       Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .       Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.      "
 },
 {
   "id": "main-8-4-4-4-4",
@@ -5974,7 +5974,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "21",
   "title": "",
-  "body": " Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is , which is negative. Completing the square gives: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: , and leaves us in a tricky situation where the numerator is not . This situation is addressed by rewriting as and grouping the with the . We then split the fraction. Here are all the details: , Therefore,    "
+  "body": " Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:    "
 },
 {
   "id": "main-8-4-4-4-6-2",
@@ -6082,115 +6082,115 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.3",
   "title": "Partial Fraction Decomposition",
-  "body": "Partial Fraction Decomposition  When working with the Laplace Transform Method, you will sometimes encounter rational functions where the denominator is a polynomial that can be factored into simpler linear or quadratic factors. In such cases, partial fraction decomposition is a powerful technique that allows us to express the complex rational function as a sum of simpler fractions. These simpler fractions often correspond directly to known forms in the table of Laplace transforms, making it easier to apply the inverse transform.  The key idea behind partial fraction decomposition is to break down the original rational function into a sum of fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can express the rational function as a sum of fractions with these linear factors as denominators. The goal is to match each of these fractions with a form in the Laplace transform table, allowing us to compute the inverse transform.  Let's explore this technique through a series of examples, starting with a quadratic denominator and gradually increasing the complexity.   Find the inverse Laplace transforms of each function.   First, we decompose into partial fractions:   To find and , we multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     Partial fraction decompostion also works for functions with higher-degree polynomials in the denominator. The key is to factor each denominator into as many linear and\/or quadratic factors as possible. Here are a few examples to illustrate this concept.   Find the inverse Laplace transforms of each function.   First, factor the cubic denominator:   Next, decompose into partial fractions:   To find , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find , , and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quartic denominator:   Next, decompose into partial fractions:   To find , , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we find , , , and by comparing coefficients. Solving the system of equations, we find:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     Partial fraction decomposition is a powerful technique when working with rational functions in Laplace transforms. By breaking down complex expressions into simpler fractions, you can match them to known inverse Laplace transforms, making the backward transformation process much easier. In the next subsection, we will explore more advanced techniques for handling cases with repeated roots and higher-order polynomials.  Check-Point Questions   True or False: Partial fraction decomposition can only be used for quadratic denominators.   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      Multiple Choice: What is the first step when finding the inverse Laplace transform of ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.      Fill-in-the-Blank: The partial fraction decomposition of is \/ + \/ .    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Multiple Choice: Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .      Fill-in-the-Blank: After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3 .    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .      True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    Multiple Choice: What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.      Fill-in-the-Blank: The inverse Laplace transform of is __________.    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.      "
+  "body": "Partial Fraction Decomposition  In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.  The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can rewrite the function as: Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let’s explore a series of examples to demonstrate this approach.   Find the inverse Laplace transforms of each function.   First, decompose into partial fractions: Multiply both sides by and solve for and : Expanding both sides: Comparing coefficients, we have: Solving this system of equations gives and .  Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:     First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving the system yields and .  The partial fraction decomposition is: Therefore:     Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving gives and .  The partial fraction decomposition is: Therefore:     Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.   Find the inverse Laplace transforms of each function.   First, factor the cubic denominator: Now decompose into partial fractions: Solving for , , and gives: Therefore:     Factor the quartic denominator: Decompose into partial fractions: Solving gives: Therefore:     Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.  Check-Point Questions   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      What is the first step in computing ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.      The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .      After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .      In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.      The inverse Laplace transform of is __________    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.      "
 },
 {
-  "id": "main-8-4-4-5-5",
+  "id": "main-8-4-4-5-4",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-5",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-4",
   "type": "Example",
   "number": "22",
   "title": "",
-  "body": " Find the inverse Laplace transforms of each function.   First, we decompose into partial fractions:   To find and , we multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system of equations, we obtain:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quadratic denominator:   Next, decompose into partial fractions:   To find and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:    "
+  "body": " Find the inverse Laplace transforms of each function.   First, decompose into partial fractions: Multiply both sides by and solve for and : Expanding both sides: Comparing coefficients, we have: Solving this system of equations gives and .  Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:     First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving the system yields and .  The partial fraction decomposition is: Therefore:     Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving gives and .  The partial fraction decomposition is: Therefore:    "
 },
 {
-  "id": "main-8-4-4-5-7",
+  "id": "main-8-4-4-5-6",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-7",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-6",
   "type": "Example",
   "number": "23",
   "title": "",
-  "body": " Find the inverse Laplace transforms of each function.   First, factor the cubic denominator:   Next, decompose into partial fractions:   To find , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we get: Comparing coefficients, we find: Solving this system, we find , , and   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:     First, factor the quartic denominator:   Next, decompose into partial fractions:   To find , , , and , multiply both sides by the denominator and solve for the coefficients:   Expanding and collecting like terms, we find , , , and by comparing coefficients. Solving the system of equations, we find:   Therefore, the partial fraction decomposition of is:   Finally, using the table of Laplace transforms, we find the inverse Laplace transform of each term:    "
+  "body": " Find the inverse Laplace transforms of each function.   First, factor the cubic denominator: Now decompose into partial fractions: Solving for , , and gives: Therefore:     Factor the quartic denominator: Decompose into partial fractions: Solving gives: Therefore:    "
 },
 {
-  "id": "main-8-4-4-5-9-2",
+  "id": "main-8-4-4-5-8-2",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-2",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-2",
   "type": "Reading Question",
   "number": "10.2.3.1",
-  "title": "<em class=\"emphasis\">True or False: Partial fraction decomposition can only be used for quadratic denominators.<\/em>.",
-  "body": " True or False: Partial fraction decomposition can only be used for quadratic denominators.   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
+  "title": "<em class=\"emphasis\">Partial fraction decomposition can only be used for quadratic denominators<\/em>.",
+  "body": " Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
 },
 {
-  "id": "main-8-4-4-5-9-3",
+  "id": "main-8-4-4-5-8-3",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-3",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-3",
   "type": "Reading Question",
   "number": "10.2.3.2",
-  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.<\/em>.",
-  "body": " Fill-in-the-Blank: The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms.    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
+  "title": "<em class=\"emphasis\">The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms<\/em>.",
+  "body": " The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
 },
 {
-  "id": "main-8-4-4-5-9-4",
+  "id": "main-8-4-4-5-8-4",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-4",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-4",
   "type": "Reading Question",
   "number": "10.2.3.3",
-  "title": "<em class=\"emphasis\">Multiple Choice: What is the first step when finding the inverse Laplace transform of <span class=\"process-math\">\\(P(s) = \\frac{2s + 3}{s^2 + 5s + 6}\\text{?}\\)<\/span><\/em>",
-  "body": " Multiple Choice: What is the first step when finding the inverse Laplace transform of ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.    "
+  "title": "<em class=\"emphasis\">What is the first step in computing <span class=\"process-math\">\\(\\ds\\ilap{\\frac{2s + 3}{s^2 + 5s + 6}}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the first step in computing ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.    "
 },
 {
-  "id": "main-8-4-4-5-9-5",
+  "id": "main-8-4-4-5-8-5",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-5",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-5",
   "type": "Reading Question",
   "number": "10.2.3.4",
-  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The partial fraction decomposition of <span class=\"process-math\">\\(\\frac{2s + 3}{(s + 2)(s + 3)}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/>\/<span class=\"process-math\">\\(s + 2\\)<\/span> + <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/>\/<span class=\"process-math\">\\(s + 3\\text{.}\\)<\/span><\/em>.",
-  "body": " Fill-in-the-Blank: The partial fraction decomposition of is \/ + \/ .    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
+  "title": "<em class=\"emphasis\">The partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{2s + 3}{(s + 2)(s + 3)}\\)<\/span> is <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 2}\\)<\/span> + <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 3}\\)<\/span><\/em>.",
+  "body": " The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
 },
 {
-  "id": "main-8-4-4-5-9-6",
+  "id": "main-8-4-4-5-8-6",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-6",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-6",
   "type": "Reading Question",
   "number": "10.2.3.5",
-  "title": "<em class=\"emphasis\">True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.<\/em>.",
-  "body": " True or False: When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms.   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.  "
+  "title": "<em class=\"emphasis\">When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms<\/em>.",
+  "body": " When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.  "
 },
 {
-  "id": "main-8-4-4-5-9-7",
+  "id": "main-8-4-4-5-8-7",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-7",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-7",
   "type": "Reading Question",
   "number": "10.2.3.6",
-  "title": "<em class=\"emphasis\">Multiple Choice: Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(Q(s) = \\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
-  "body": " Multiple Choice: Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .    "
+  "title": "<em class=\"emphasis\">Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(\\ds Q(s) = \\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
+  "body": " Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .    "
 },
 {
-  "id": "main-8-4-4-5-9-8",
+  "id": "main-8-4-4-5-8-8",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-8",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-8",
   "type": "Reading Question",
   "number": "10.2.3.7",
-  "title": "<em class=\"emphasis\">Fill-in-the-Blank: After finding the partial fraction decomposition of <span class=\"process-math\">\\(\\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)}\\text{,}\\)<\/span> the correct inverse Laplace transform is <span class=\"fillin underline\" role=\"img\" aria-label=\"1-character blank\" style=\"width: 0.454545454545455em;\" \/> + 2<span class=\"fillin underline\" role=\"img\" aria-label=\"6-character blank\" style=\"width: 2.727272727272727em;\" \/> + 3<span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/>.<\/em>.",
-  "body": " Fill-in-the-Blank: After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3 .    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .    "
+  "title": "<em class=\"emphasis\">After finding the partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)}\\text{,}\\)<\/span> the correct inverse Laplace transform is <span class=\"fillin underline\" role=\"img\" aria-label=\"1-character blank\" style=\"width: 0.454545454545455em;\" \/> + 2<span class=\"fillin underline\" role=\"img\" aria-label=\"6-character blank\" style=\"width: 2.727272727272727em;\" \/> + 3<span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
+  "body": " After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .    "
 },
 {
-  "id": "main-8-4-4-5-9-9",
+  "id": "main-8-4-4-5-8-9",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-9",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-9",
   "type": "Reading Question",
   "number": "10.2.3.8",
-  "title": "<em class=\"emphasis\">True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.<\/em>.",
-  "body": " True or False: In partial fraction decomposition, the numerator of each term must have a degree less than the denominator.   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.  "
+  "title": "<em class=\"emphasis\">In partial fraction decomposition, the numerator of each term must have a degree less than the denominator<\/em>.",
+  "body": " In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.  "
 },
 {
-  "id": "main-8-4-4-5-9-10",
+  "id": "main-8-4-4-5-8-10",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-10",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-10",
   "type": "Reading Question",
   "number": "10.2.3.9",
-  "title": "<em class=\"emphasis\">Multiple Choice: What is the correct inverse Laplace transform of <span class=\"process-math\">\\(\\frac{1}{s - 1} - \\frac{1}{s + 1} + \\frac{4s + 3}{s^2 + 1}\\text{?}\\)<\/span><\/em>",
-  "body": " Multiple Choice: What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.    "
+  "title": "<em class=\"emphasis\">What is the correct inverse Laplace transform of <span class=\"process-math\">\\(\\ds\\frac{1}{s - 1} - \\frac{1}{s + 1} + \\frac{4s + 3}{s^2 + 1}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.    "
 },
 {
-  "id": "main-8-4-4-5-9-11",
+  "id": "main-8-4-4-5-8-11",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-9-11",
+  "url": "main-8-4-4-5.html#main-8-4-4-5-8-11",
   "type": "Reading Question",
   "number": "10.2.3.10",
-  "title": "<em class=\"emphasis\">Fill-in-the-Blank: The inverse Laplace transform of <span class=\"process-math\">\\(S(s) = \\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}\\)<\/span> is __________.<\/em>.",
-  "body": " Fill-in-the-Blank: The inverse Laplace transform of is __________.    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.    "
+  "title": "<em class=\"emphasis\">The inverse Laplace transform of <span class=\"process-math\">\\(\\ds S(s) = \\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}\\)<\/span> is __________<\/em>.",
+  "body": " The inverse Laplace transform of is __________    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.    "
 },
 {
   "id": "main-8-4-5",
@@ -6823,6 +6823,267 @@ var ptx_lunr_docs = [
   "body": "Solving a Third-Degree Polynomial Equation   Find the general solution to the third-order LHCC equation:       First, write down the characteristic equation: . Factoring the polynomial, we get: . Therefore, the roots are .  Since we have three distinct real roots, the general solution to the LHCC equation is: , where are constants determined by initial conditions.   "
 },
 {
+  "id": "r-01-10",
+  "level": "1",
+  "url": "r-01-10.html",
+  "type": "Section",
+  "number": "A.6",
+  "title": "Partial Fraction Decomposition",
+  "body": "Partial Fraction Decomposition  Partial fraction decomposition is a method used to express a rational function as a sum of simpler fractions. This process is especially useful when solving integrals and applying inverse Laplace transforms. The following steps outline the process to find the partial fraction decomposition of a rational function.   Check the Degree of the Numerator and Denominator  Ensure the degree of the numerator is less than the degree of the denominator. If the numerator has a degree greater than or equal to the denominator, first perform polynomial long division to reduce the degree of the numerator.   Factor the Denominator  Factor the denominator into irreducible linear or quadratic factors.   Linear factors: Expressions of the form .   Irreducible quadratic factors: Expressions of the form where the discriminant is negative.     Set up the Partial Fraction Decomposition  Based on the factors of the denominator, write the decomposition:  For each linear factor , include a term of the form .  For repeated linear factors , include terms like:   For irreducible quadratic factors , include a term of the form .  For repeated quadratic factors , include terms like:      Solve for the Constants  Multiply both sides of the equation by the common denominator and expand to eliminate fractions. Group terms by powers of and set up a system of equations to solve for the unknown constants , , and .   Final Result  Once the constants are found, write the final partial fraction decomposition. This decomposition can now be used for further calculations such as integrals or inverse Laplace transforms.    Reference: Partial Fraction General Form Terms  For each type of factor in the denominator, add the following terms to the partial fraction decomposition:    Factor Type  Factor  Term(s) In General Form    Linear      Repeated Linear      Irreducible Quadratic      Repeated Quadratic        Find the partial fraction decomposition form for each.     First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:      Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:       Find the partial fraction decomposition of .  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:      General Form   Find the FORM of the partial fraction decomposition for each of the following. Make sure you completely factor each denominator before determining the decomposition. You need not find the values of the coefficients  etc.         Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:           First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:           First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:    Partial Fraction Decomposition   Find the partial fraction decomposition for each of the following rational functions.           First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and         Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and         Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and         Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and                and                                                       "
+},
+{
+  "id": "r-01-10-3-2-2",
+  "level": "2",
+  "url": "r-01-10.html#r-01-10-3-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Linear factors: Irreducible quadratic factors: "
+},
+{
+  "id": "partial-fraction-table-3",
+  "level": "2",
+  "url": "r-01-10.html#partial-fraction-table-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Factor Type Factor Term(s) In General Form Linear Repeated Linear Irreducible Quadratic Repeated Quadratic "
+},
+{
+  "id": "r-01-10-5",
+  "level": "2",
+  "url": "r-01-10.html#r-01-10-5",
+  "type": "Example",
+  "number": "A.7",
+  "title": "",
+  "body": " Find the partial fraction decomposition form for each.     First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:      Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:     "
+},
+{
+  "id": "r-01-10-6",
+  "level": "2",
+  "url": "r-01-10.html#r-01-10-6",
+  "type": "Example",
+  "number": "A.8",
+  "title": "",
+  "body": " Find the partial fraction decomposition of .  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:    "
+},
+{
+  "id": "r-01-10-7-1-3",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-3",
+  "type": "Exercise",
+  "number": "A.6.1",
+  "title": "",
+  "body": "      Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-4",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-4",
+  "type": "Exercise",
+  "number": "A.6.2",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-5",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-5",
+  "type": "Exercise",
+  "number": "A.6.3",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-6",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-6",
+  "type": "Exercise",
+  "number": "A.6.4",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-7",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-7",
+  "type": "Exercise",
+  "number": "A.6.5",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-8",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-8",
+  "type": "Exercise",
+  "number": "A.6.6",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-9",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-9",
+  "type": "Exercise",
+  "number": "A.6.7",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-10",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-10",
+  "type": "Exercise",
+  "number": "A.6.8",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-11",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-11",
+  "type": "Exercise",
+  "number": "A.6.9",
+  "title": "",
+  "body": "        First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-1-12",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-1-12",
+  "type": "Exercise",
+  "number": "A.6.10",
+  "title": "",
+  "body": "        First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:  "
+},
+{
+  "id": "r-01-10-7-2-3",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-3",
+  "type": "Exercise",
+  "number": "A.6.11",
+  "title": "",
+  "body": "        First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and  "
+},
+{
+  "id": "r-01-10-7-2-4",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-4",
+  "type": "Exercise",
+  "number": "A.6.12",
+  "title": "",
+  "body": "      Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and  "
+},
+{
+  "id": "r-01-10-7-2-5",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-5",
+  "type": "Exercise",
+  "number": "A.6.13",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-6",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-6",
+  "type": "Exercise",
+  "number": "A.6.14",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and  "
+},
+{
+  "id": "r-01-10-7-2-7",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-7",
+  "type": "Exercise",
+  "number": "A.6.15",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-8",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-8",
+  "type": "Exercise",
+  "number": "A.6.16",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-9",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-9",
+  "type": "Exercise",
+  "number": "A.6.17",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-10",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-10",
+  "type": "Exercise",
+  "number": "A.6.18",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-11",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-11",
+  "type": "Exercise",
+  "number": "A.6.19",
+  "title": "",
+  "body": "      Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and  "
+},
+{
+  "id": "r-01-10-7-2-12",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-12",
+  "type": "Exercise",
+  "number": "A.6.20",
+  "title": "",
+  "body": "             and        "
+},
+{
+  "id": "r-01-10-7-2-13",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-13",
+  "type": "Exercise",
+  "number": "A.6.21",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "r-01-10-7-2-14",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-14",
+  "type": "Exercise",
+  "number": "A.6.22",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "r-01-10-7-2-15",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-15",
+  "type": "Exercise",
+  "number": "A.6.23",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "r-01-10-7-2-16",
+  "level": "2",
+  "url": "r-01-10-7.html#r-01-10-7-2-16",
+  "type": "Exercise",
+  "number": "A.6.24",
+  "title": "",
+  "body": "          "
+},
+{
   "id": "calculus-review-product-rule",
   "level": "1",
   "url": "calculus-review-product-rule.html",
@@ -6908,7 +7169,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-15-5.html#figure-pp",
   "type": "Figure",
-  "number": "C.8",
+  "number": "C.10",
   "title": "",
   "body": " Type in any polynomial of . Use for multiplication. If the polynomial has rational roots, it will show the factors.   "
 },
@@ -6935,7 +7196,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-2.html#main-16-2-4-2",
   "type": "Example",
-  "number": "D.9",
+  "number": "D.11",
   "title": "",
   "body": " Find the Laplace transform of the function    We will use properties in the table as follows.    "
 },
@@ -6944,7 +7205,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-2.html#main-16-2-4-3",
   "type": "Example",
-  "number": "D.10",
+  "number": "D.12",
   "title": "",
   "body": " Find    We will use properties in the table as follows.    "
 },
@@ -6953,7 +7214,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-2.html#main-16-2-4-4",
   "type": "Example",
-  "number": "D.11",
+  "number": "D.13",
   "title": "",
   "body": " Find the Laplace transform of the function    Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both and we can simply multiply those together to get the desired Laplace transform. However, this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property , with and    We need to know what is before we can proceed. Let's go back to the naming system we have instituted. If we have a capital that is the Laplace transform of a function lower case We identified that function previously: We use to find its Laplace transform. Then we continue finding by taking two derivatives (using the quotient rule for derivatives; details are omitted here).    "
 },
@@ -6971,7 +7232,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-3.html#common-lt-table-copy",
   "type": "Table",
-  "number": "D.12",
+  "number": "D.14",
   "title": "<em class=\"emphasis\">Common Laplace Transforms. <span class=\"process-math\">\\(a, b\\)<\/span> are constant, <span class=\"process-math\">\\(n = 1, 2, \\ldots\\)<\/span><\/em>",
   "body": " Common Laplace Transforms. are constant,      -functions  -functions                                                               "
 },
@@ -6989,7 +7250,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-3.html#main-16-3-3-7",
   "type": "Example",
-  "number": "D.14",
+  "number": "D.16",
   "title": "",
   "body": " Find    As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.    "
 },
@@ -6998,7 +7259,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-3.html#main-16-3-3-8",
   "type": "Example",
-  "number": "D.15",
+  "number": "D.17",
   "title": "",
   "body": " Write in the form      Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form--it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.   "
 },
@@ -7007,7 +7268,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-3.html#main-16-3-3-11",
   "type": "Example",
-  "number": "D.16",
+  "number": "D.18",
   "title": "",
   "body": " Find the inverse Laplace transform of    Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details.   With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.    "
 },
@@ -7025,7 +7286,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-4.html#main-16-4-4-2",
   "type": "Example",
-  "number": "D.17",
+  "number": "D.19",
   "title": "Example 1: Solving a First-Order Linear Differential Equation.",
   "body": " Example 1: Solving a First-Order Linear Differential Equation  Consider the differential equation:   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:   "
 },
@@ -7034,7 +7295,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-16-4.html#main-16-4-4-3",
   "type": "Example",
-  "number": "D.18",
+  "number": "D.20",
   "title": "Example 2: Second-Order Differential Equation.",
   "body": " Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:   "
 },
