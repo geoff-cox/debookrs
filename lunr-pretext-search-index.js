@@ -5695,7 +5695,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.1.1",
   "title": "Matched Forms",
-  "body": "Matched Forms  The Laplace Transform Method begins with the forward Laplace transform of a differential equation with an unknown function into an algebraic equation involving the transformed function . Once we have solved for , the final step is to recover the original function, , by applying the backward (inverse) Laplace transform, denoted as .  Much like how reverses the cosine function, applying to both sides of a Laplace-transformed expression brings us back to the original function. For example, if then, applying the inverse Laplace transform gives: To identify the appropriate inverse Laplace transform, we rely on the common transforms in the table below, where we match the function of on the right and the inverse is the function of on the left.   Common Laplace Transforms. are constant,      -functions  -functions                                                                Many functions can be matched by simply observing the denominator. The following table summarizes common patterns for matching denominators with their associated inverse transforms:  Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes          Now, let's look at some examples.   Find the inverse Laplace transforms of each function.        This matches the form with . So,            This matches the L_7 form with and . So, .           This matches the L_3 with .        These examples demonstrate how to find the inverse Laplace Transform when the -function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the -function to match the common forms in the table.  Check-Point Questions   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.    The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .    In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.      The inverse Laplace transform of is given by      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.        True. The inverse Laplace transform of is indeed .          Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.            No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.            Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .     What is the Laplace transform of ?   \\frac{1}{s-3}    \\frac{1}{s+3}    \\frac{1}{s-2}    \\frac{1}{s}    In the equation , what is the Laplace transform of the right-hand side?   \\frac{s}{s^2 + 4}    \\frac{4}{s^2 + 4}    \\frac{s}{s^2 + 1}    \\frac{1}{s^2 + 4}     "
+  "body": "Matched Forms  The Laplace Transform Method begins with the forward Laplace transform of a differential equation with an unknown function into an algebraic equation involving the transformed function . Once we have solved for , the final step is to recover the original function, , by applying the backward (inverse) Laplace transform, denoted as .  Much like how reverses the cosine function, applying to both sides of a Laplace-transformed expression brings us back to the original function. For example, if then, applying the inverse Laplace transform gives: To identify the appropriate inverse Laplace transform, we rely on the common transforms in the table below, where we match the function of on the right and the inverse is the function of on the left.   Common Laplace Transforms. are constant,      -functions  -functions                                                                Many functions can be matched by simply observing the denominator. The following table summarizes common patterns for matching denominators with their associated inverse transforms:  Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes          Now, let's look at some examples.   Find the inverse Laplace transforms of each function.        This matches the form with . So,            This matches the L_7 form with and . So, .           This matches the L_3 with .        These examples demonstrate how to find the inverse Laplace Transform when the -function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the -function to match the common forms in the table.  Check-Point Questions   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.    The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .    In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.           Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.           Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.           No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.           Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .           Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .           Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .      "
 },
 {
   "id": "common-lt-table",
@@ -5725,112 +5725,85 @@ var ptx_lunr_docs = [
   "body": " Find the inverse Laplace transforms of each function.        This matches the form with . So,            This matches the L_7 form with and . So, .           This matches the L_3 with .       "
 },
 {
-  "id": "main-8-4-3-3-10-2",
+  "id": "p4-c2-s1-1-rq1",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-2",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq1",
   "type": "Reading Question",
   "number": "10.1.1.1",
   "title": "<em class=\"emphasis\">The table of common forward Laplace transforms can also be used to find inverse Laplace transforms<\/em>.",
   "body": " The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.  "
 },
 {
-  "id": "main-8-4-3-3-10-3",
+  "id": "p4-c2-s1-1-rq2",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-3",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq2",
   "type": "Reading Question",
   "number": "10.1.1.2",
   "title": "<em class=\"emphasis\">The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function <span class=\"process-math\">\\(y(t)\\)<\/span> from <span class=\"process-math\">\\(Y(s)\\)<\/span><\/em>.",
   "body": " The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .  "
 },
 {
-  "id": "main-8-4-3-3-10-4",
+  "id": "p4-c2-s1-1-rq3",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-4",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq3",
   "type": "Reading Question",
   "number": "10.1.1.3",
-  "title": "<em class=\"emphasis\">In the Laplace Transform Method, the backward transform  <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
+  "title": "<em class=\"emphasis\">In the Laplace Transform Method, the backward transform <span class=\"process-math\">\\(\\fillinmath{XXXXX}\\)<\/span><\/em>.",
   "body": " In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.    "
 },
 {
-  "id": "main-8-4-3-3-10-5",
+  "id": "p4-c2-s1-1-rq4",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-5",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq4",
   "type": "Reading Question",
   "number": "10.1.1.4",
-  "title": "<em class=\"emphasis\">The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{3}{s^2 + 9}\\)<\/span> is given by <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": " The inverse Laplace transform of is given by      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.    "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{3}{s^2 + 9}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.    "
 },
 {
-  "id": "main-8-4-3-3-10-6",
+  "id": "p4-c2-s1-1-rq6",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-6",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq6",
   "type": "Reading Question",
   "number": "10.1.1.5",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{e^{2t}\\cos(4t)} = \\frac{s - 2}{(s - 2)^2 + 16}\\)<\/span><\/em>.",
-  "body": "   True. The inverse Laplace transform of is indeed .  "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s+3}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.    "
 },
 {
-  "id": "main-8-4-3-3-10-7",
+  "id": "p4-c2-s1-1-rq7",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-7",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq7",
   "type": "Reading Question",
   "number": "10.1.1.6",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s+3}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.    "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{24}{s^5}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.    "
 },
 {
-  "id": "main-8-4-3-3-10-8",
+  "id": "p4-c2-s1-1-rq8",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-8",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq8",
   "type": "Reading Question",
   "number": "10.1.1.7",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{24}{s^5}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.    "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{2}{s^2 + 4}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
 },
 {
-  "id": "main-8-4-3-3-10-9",
+  "id": "p4-c2-s1-1-rq9",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-9",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq9",
   "type": "Reading Question",
   "number": "10.1.1.8",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{2}{s^2 + 4}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s - 5}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .    "
 },
 {
-  "id": "main-8-4-3-3-10-10",
+  "id": "p4-c2-s1-1-rq10",
   "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-10",
+  "url": "main-8-4-3-3.html#p4-c2-s1-1-rq10",
   "type": "Reading Question",
   "number": "10.1.1.9",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s - 5}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .    "
-},
-{
-  "id": "main-8-4-3-3-10-11",
-  "level": "2",
-  "url": "main-8-4-3-3.html#main-8-4-3-3-10-11",
-  "type": "Reading Question",
-  "number": "10.1.1.10",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{(s+4)^2}} =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
-},
-{
-  "id": "p4-c1-s3-rq1",
-  "level": "2",
-  "url": "main-8-4-3-3.html#p4-c1-s3-rq1",
-  "type": "Reading Question",
-  "number": "10.1.1.11",
-  "title": "What is the Laplace transform of <span class=\"process-math\">\\(e^{3t}\\text{?}\\)<\/span>",
-  "body": "What is the Laplace transform of ?   \\frac{1}{s-3}    \\frac{1}{s+3}    \\frac{1}{s-2}    \\frac{1}{s}   "
-},
-{
-  "id": "p4-c1-s3-rq2",
-  "level": "2",
-  "url": "main-8-4-3-3.html#p4-c1-s3-rq2",
-  "type": "Reading Question",
-  "number": "10.1.1.12",
-  "title": "In the equation <span class=\"process-math\">\\(y'' + 4y = \\cos(2t)\\text{,}\\)<\/span> what is the Laplace transform of the right-hand side?",
-  "body": "In the equation , what is the Laplace transform of the right-hand side?   \\frac{s}{s^2 + 4}    \\frac{4}{s^2 + 4}    \\frac{s}{s^2 + 1}    \\frac{1}{s^2 + 4}   "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{(s+4)^2}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
 },
 {
   "id": "main-8-4-3-4",
@@ -5851,54 +5824,54 @@ var ptx_lunr_docs = [
   "body": " Compute the inverse Laplace transforms for each.          The in the denominator tells us that we need . Before we do, let's factor out : .            Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so             This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so             The denominator here is , which matches with . Therefore, .            The form of this denominator is and has no in the numerator. This matches with and . Therefore,             The denominator, , matches with and . Therefore,        "
 },
 {
-  "id": "main-8-4-3-4-7-2",
+  "id": "p4-c2-s1-2-rq1",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-2",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq1",
   "type": "Reading Question",
   "number": "10.1.2.1",
   "title": "<em class=\"emphasis\">The most challenging part of the Laplace transform method is preparing the <span class=\"process-math\">\\(s\\)<\/span>-function for the backward Laplace transform<\/em>.",
   "body": " The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.  "
 },
 {
-  "id": "main-8-4-3-4-7-3",
+  "id": "p4-c2-s1-2-rq2",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-3",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq2",
   "type": "Reading Question",
   "number": "10.1.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{7}{s^2}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
   "body": "       Incorrect.       Incorrect.       Correct!       Incorrect.    "
 },
 {
-  "id": "main-8-4-3-4-7-4",
+  "id": "p4-c2-s1-2-rq3",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-4",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq3",
   "type": "Reading Question",
   "number": "10.1.2.3",
   "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{5}{s^4}} = \\frac{5}{6}\\ilap{\\frac{\\fillinmath{X}}{s^4}} \\)<\/span><\/em>.",
   "body": " Fill-in-the-blank.      Incorrect.       Incorrect.       Incorrect.       Correct!    "
 },
 {
-  "id": "main-8-4-3-4-7-5",
+  "id": "p4-c2-s1-2-rq4",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-5",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq4",
   "type": "Reading Question",
   "number": "10.1.2.4",
   "title": "<em class=\"emphasis\">Which of the following <span class=\"process-math\">\\(s\\)<\/span>-functions require adjustment to match one of the common inverse Laplace transforms?<\/em>",
   "body": " Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?      Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.    "
 },
 {
-  "id": "main-8-4-3-4-7-6",
+  "id": "p4-c2-s1-2-rq5",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-6",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq5",
   "type": "Reading Question",
   "number": "10.1.2.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{(s - 2)^2 + 25}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
   "body": "       Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.    "
 },
 {
-  "id": "main-8-4-3-4-7-7",
+  "id": "p4-c2-s1-2-rq6",
   "level": "2",
-  "url": "main-8-4-3-4.html#main-8-4-3-4-7-7",
+  "url": "main-8-4-3-4.html#p4-c2-s1-2-rq6",
   "type": "Reading Question",
   "number": "10.1.2.6",
   "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{s^2 + 25}} = \\frac{\\fillinmath{X}}{5}\\ilap{\\frac{5}{s^2 + 25}} \\)<\/span><\/em>.",
@@ -5923,36 +5896,36 @@ var ptx_lunr_docs = [
   "body": " Compute the inverse Laplace transforms for each.        The key to solving this problem is to split the fraction into two simpler terms: Now, we can apply the inverse Laplace transform to each term separately. The first term matches the Laplace transform of ( ), and the second term corresponds to the Laplace transform of ( ):            We can split the fraction into the terms, and apply the inverse Laplace transform ( ) to each       "
 },
 {
-  "id": "main-8-4-4-3-5-2",
+  "id": "p4-c2-s2-1-rq1",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-5-2",
+  "url": "main-8-4-4-3.html#p4-c2-s2-1-rq1",
   "type": "Reading Question",
   "number": "10.2.1.1",
   "title": "<em class=\"emphasis\">The function <span class=\"process-math\">\\(\\ds \\frac{s - 4}{s^2 - 16}\\)<\/span> can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms<\/em>.",
   "body": " The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .    "
 },
 {
-  "id": "main-8-4-4-3-5-3",
+  "id": "p4-c2-s2-1-rq2",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-5-3",
+  "url": "main-8-4-4-3.html#p4-c2-s2-1-rq2",
   "type": "Reading Question",
   "number": "10.2.1.2",
   "title": "<em class=\"emphasis\">Which of the following functions can be split into separate terms that match known inverse Laplace transforms?<\/em>",
   "body": " Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.    "
 },
 {
-  "id": "main-8-4-4-3-5-4",
+  "id": "p4-c2-s2-1-rq3",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-5-4",
+  "url": "main-8-4-4-3.html#p4-c2-s2-1-rq3",
   "type": "Reading Question",
   "number": "10.2.1.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\frac{s - 6}{s^2 - 36} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
   "body": "       Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.    "
 },
 {
-  "id": "main-8-4-4-3-5-5",
+  "id": "p4-c2-s2-1-rq4",
   "level": "2",
-  "url": "main-8-4-4-3.html#main-8-4-4-3-5-5",
+  "url": "main-8-4-4-3.html#p4-c2-s2-1-rq4",
   "type": "Reading Question",
   "number": "10.2.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\ilap{\\frac{s + 2}{s^2 + 1}} = \\)<\/span>  <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
@@ -5965,7 +5938,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.2",
   "title": "Completing the Square",
-  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms . For example, the function does not align with standard forms. A common approach is to rewrite the denominator in the form , allowing it to match known transforms like or . This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.  Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from solving quadratic equations that if the discriminant is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.   Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions    True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.     True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.     True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.    Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.     The discriminant of the denominator of is discriminant      Correct!      Please review the reading.        What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.       Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.       Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.       Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .       Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.      "
+  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms . For example, the function does not align with standard forms. A common approach is to rewrite the denominator in the form , allowing it to match known transforms like or . This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.  Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from solving quadratic equations that if the discriminant is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.   Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions   To complete the square:  missing number      Correct!      Please review the reading.       After completing the square of the denominator:  missing number       Correct!      Incorrect. Write it down carefully      Please review the reading.       Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.    The discriminant of the denominator of is  discriminant      Correct!      Please review the reading.       After completing the square of the denominator,      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.      What is the next step to compute ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.      What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.      "
 },
 {
   "id": "main-8-4-4-4-4",
@@ -5977,103 +5950,67 @@ var ptx_lunr_docs = [
   "body": " Compute the inverse Laplace transforms of the following functions:   The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,     The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .    Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:    "
 },
 {
-  "id": "main-8-4-4-4-6-2",
+  "id": "p4-c2-s2-2-rq1",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-2",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq1",
   "type": "Reading Question",
   "number": "10.2.2.1",
-  "title": "<em class=\"emphasis\">True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.<\/em>.",
-  "body": " True or False: Completing the square is used when the discriminant of the quadratic expression in the denominator is positive.   False. Completing the square is used when the discriminant is negative, indicating complex roots.  "
+  "title": "<em class=\"emphasis\">To complete the square: <span class=\"process-math\">\\(\\quad s^2-s+1 = s^2-s+\\fillinmath{X}-\\fillinmath{X} + 1\\)<\/span><\/em>.",
+  "body": " To complete the square:  missing number      Correct!      Please review the reading.     "
 },
 {
-  "id": "main-8-4-4-4-6-3",
+  "id": "p4-c2-s2-2-rq2",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-3",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq2",
   "type": "Reading Question",
   "number": "10.2.2.2",
-  "title": "<em class=\"emphasis\">True or False: The expression <span class=\"process-math\">\\(\\frac{s-1}{(s-1)^2 + 4}\\)<\/span> matches the form required to apply the inverse Laplace transform found in the common transform table.<\/em>.",
-  "body": " True or False: The expression matches the form required to apply the inverse Laplace transform found in the common transform table.   True. This expression matches the form in the table and can be directly transformed.  "
+  "title": "<em class=\"emphasis\">After completing the square of the denominator: <span class=\"process-math\">\\(\\ds\\frac{11}{s^2 + 18s + 400} = \\frac{11}{(s + 9)^2 + \\fillinmath{X}} \\)<\/span><\/em>.",
+  "body": " After completing the square of the denominator:  missing number       Correct!      Incorrect. Write it down carefully      Please review the reading.     "
 },
 {
-  "id": "main-8-4-4-4-6-4",
+  "id": "p4-c2-s2-2-rq3",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-4",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq3",
   "type": "Reading Question",
   "number": "10.2.2.3",
-  "title": "<em class=\"emphasis\">True or False: After completing the square on the denominator of <span class=\"process-math\">\\(\\frac{s+3}{s^2 + 2s + 10}\\text{,}\\)<\/span> the numerator needs to be split to match the forms in the Laplace transform table.<\/em>.",
-  "body": " True or False: After completing the square on the denominator of , the numerator needs to be split to match the forms in the Laplace transform table.   True. The numerator needs to be adjusted to match the form for inverse Laplace transforms.  "
+  "title": "<em class=\"emphasis\">Completing the square is used when the discriminant of the quadratic expression in the denominator is positive<\/em>.",
+  "body": " Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.  "
 },
 {
-  "id": "main-8-4-4-4-6-5",
+  "id": "p4-c2-s2-2-rq4",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-5",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq4",
   "type": "Reading Question",
   "number": "10.2.2.4",
-  "title": "<em class=\"emphasis\">Which of the following steps is necessary to apply the inverse Laplace transform to <span class=\"process-math\">\\(\\frac{s-1}{s^2 - 2s + 5}\\text{?}\\)<\/span><\/em>",
-  "body": " Which of the following steps is necessary to apply the inverse Laplace transform to ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Add constants to the numerator   Incorrect. The numerator is already in the correct form.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.    "
+  "title": "<em class=\"emphasis\">The discriminant of the denominator of <span class=\"process-math\">\\(\\ds\\frac{-19}{s^2-3s+1}\\)<\/span> is <span class=\"process-math\">\\(\\fillinmath{X}\\)<\/span><\/em>.",
+  "body": " The discriminant of the denominator of is  discriminant      Correct!      Please review the reading.     "
 },
 {
-  "id": "fillin-p4-c2-s3-1",
+  "id": "p4-c2-s2-2-rq5",
   "level": "2",
-  "url": "main-8-4-4-4.html#fillin-p4-c2-s3-1",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq5",
   "type": "Reading Question",
   "number": "10.2.2.5",
-  "title": "The discriminant of the denominator of <span class=\"process-math\">\\(\\ds\\frac{-19}{s^2-3s+1}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/>.",
-  "body": "The discriminant of the denominator of is discriminant      Correct!      Please review the reading.     "
+  "title": "<em class=\"emphasis\">After completing the square of the denominator, <span class=\"process-math\">\\(\\ds\\frac{11}{s^2 - 6s + 14} = \\fillinmath{XXXXX}\\)<\/span><\/em>.",
+  "body": " After completing the square of the denominator,      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.    "
 },
 {
-  "id": "main-8-4-4-4-6-7",
+  "id": "p4-c2-s2-2-rq6",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-7",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq6",
   "type": "Reading Question",
   "number": "10.2.2.6",
-  "title": "<em class=\"emphasis\">What is the correct result after completing the square for the denominator of <span class=\"process-math\">\\(\\frac{11}{s^2 - 6s + 14}\\text{?}\\)<\/span><\/em>",
-  "body": " What is the correct result after completing the square for the denominator of ?      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.    "
+  "title": "<em class=\"emphasis\">What is the next step to compute <span class=\"process-math\">\\(\\ds\\ilap{\\frac{s-1}{s^2 - 2s + 5}}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the next step to compute ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.    "
 },
 {
-  "id": "main-8-4-4-4-6-8",
+  "id": "p4-c2-s2-2-rq7",
   "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-8",
+  "url": "main-8-4-4-4.html#p4-c2-s2-2-rq7",
   "type": "Reading Question",
   "number": "10.2.2.7",
-  "title": "<em class=\"emphasis\">When splitting the fraction <span class=\"process-math\">\\(\\frac{s+3}{(s + 1)^2 + 9}\\)<\/span> into two terms, which of the following is NOT true?<\/em>",
-  "body": " When splitting the fraction into two terms, which of the following is NOT true?    The first term corresponds to   Correct! The correct value for is 3, not 9.     The numerator can be split as   Incorrect. This is a correct statement.     The first term matches the form for   Incorrect. This is a correct statement.     The second term matches the form for   Incorrect. This is a correct statement.    "
-},
-{
-  "id": "main-8-4-4-4-6-9",
-  "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-9",
-  "type": "Reading Question",
-  "number": "10.2.2.8",
-  "title": "<em class=\"emphasis\">Fill in the blank: To complete the square for the expression <span class=\"process-math\">\\(s^2 - 6s + 14\\text{,}\\)<\/span> we add and subtract <span class=\"fillin underline\" role=\"img\" aria-label=\"2-character blank\" style=\"width: 0.909090909090909em;\" \/> inside the parentheses.<\/em>.",
-  "body": " Fill in the blank: To complete the square for the expression , we add and subtract inside the parentheses.    9   Correct! Adding and subtracting 9 completes the square.     4   Incorrect. The correct value is 9, not 4.     16   Incorrect. The correct value is 9, not 16.    "
-},
-{
-  "id": "main-8-4-4-4-6-10",
-  "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-10",
-  "type": "Reading Question",
-  "number": "10.2.2.9",
-  "title": "<em class=\"emphasis\">Fill in the blank: After completing the square, the denominator of <span class=\"process-math\">\\(\\frac{11}{s^2 - 6s + 14}\\)<\/span> becomes <span class=\"process-math\">\\((s - 3)^2 + \\fillinmath{X}\\text{.}\\)<\/span><\/em>.",
-  "body": " Fill in the blank: After completing the square, the denominator of becomes .    5   Correct! The correct value is 5.     9   Incorrect. The correct value is 5, not 9.     3   Incorrect. The correct value is 5, not 3.    "
-},
-{
-  "id": "main-8-4-4-4-6-11",
-  "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-11",
-  "type": "Reading Question",
-  "number": "10.2.2.10",
-  "title": "<em class=\"emphasis\">Fill in the blank: The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{s-1}{(s-1)^2 + 4}\\)<\/span> is <span class=\"process-math\">\\(\\fillinmath{XXXXXXXXXXXXXXXXXXXX}\\text{.}\\)<\/span><\/em>.",
-  "body": " Fill in the blank: The inverse Laplace transform of is .    e^{t}\\cos(2t)   Correct! The inverse Laplace transform of this expression is .     e^{-t}\\sin(2t)   Incorrect. The correct inverse Laplace transform is .     \\cos(2t)   Incorrect. The correct inverse Laplace transform is .    "
-},
-{
-  "id": "main-8-4-4-4-6-12",
-  "level": "2",
-  "url": "main-8-4-4-4.html#main-8-4-4-4-6-12",
-  "type": "Reading Question",
-  "number": "10.2.2.11",
-  "title": "<em class=\"emphasis\">Fill in the blank: The inverse Laplace transform of <span class=\"process-math\">\\(\\frac{11}{(s - 3)^2 + 5}\\)<\/span> is <span class=\"process-math\">\\(\\frac{11}{\\sqrt{5}}e^{3t}\\sin(\\sqrt{5}t)\\text{,}\\)<\/span> which matches the form in the table when <span class=\"process-math\">\\(b = \\fillinmath{XXXXX}\\text{.}\\)<\/span><\/em>.",
-  "body": " Fill in the blank: The inverse Laplace transform of is , which matches the form in the table when .    \\sqrt{5}   Correct! The correct value for is .     5   Incorrect. The correct value is , not 5.     3   Incorrect. The correct value is , not 3.    "
+  "title": "<em class=\"emphasis\">What is the next step needed to compute <span class=\"process-math\">\\(\\ds\\ilap{\\frac{s+3}{(s - 1)^2 + 9}}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.    "
 },
 {
   "id": "main-8-4-4-5",
@@ -6082,7 +6019,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.3",
   "title": "Partial Fraction Decomposition",
-  "body": "Partial Fraction Decomposition  In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.  The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can rewrite the function as: Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let’s explore a series of examples to demonstrate this approach.   Find the inverse Laplace transforms of each function.   First, decompose into partial fractions: Multiply both sides by and solve for and : Expanding both sides: Comparing coefficients, we have: Solving this system of equations gives and .  Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:     First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving the system yields and .  The partial fraction decomposition is: Therefore:     Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving gives and .  The partial fraction decomposition is: Therefore:     Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.   Find the inverse Laplace transforms of each function.   First, factor the cubic denominator: Now decompose into partial fractions: Solving for , , and gives: Therefore:     Factor the quartic denominator: Decompose into partial fractions: Solving gives: Therefore:     Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.  Check-Point Questions   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      What is the first step in computing ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.      The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .      After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .      In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.      The inverse Laplace transform of is __________    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.      "
+  "body": "Partial Fraction Decomposition  In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.  The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can rewrite the function as: Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let’s explore a series of examples to demonstrate this approach.   Find the inverse Laplace transforms of each function.   First, decompose into partial fractions: Multiply both sides by and solve for and : Expanding both sides: Comparing coefficients, we have: Solving this system of equations gives and .  Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:     First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving the system yields and .  The partial fraction decomposition is: Therefore:     Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by and solve for and : Expanding and comparing coefficients: Solving gives and .  The partial fraction decomposition is: Therefore:     Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.   Find the inverse Laplace transforms of each function.   First, factor the cubic denominator: Now decompose into partial fractions: Solving for , , and gives: Therefore:     Factor the quartic denominator: Decompose into partial fractions: Solving gives: Therefore:     Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.  Check-Point Questions   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      What is the first step in computing ?    Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.      The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Which of the following is the correct partial fraction decomposition of ?      No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .      In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    "
 },
 {
   "id": "main-8-4-4-5-4",
@@ -6103,94 +6040,67 @@ var ptx_lunr_docs = [
   "body": " Find the inverse Laplace transforms of each function.   First, factor the cubic denominator: Now decompose into partial fractions: Solving for , , and gives: Therefore:     Factor the quartic denominator: Decompose into partial fractions: Solving gives: Therefore:    "
 },
 {
-  "id": "main-8-4-4-5-8-2",
+  "id": "p4-c2-s2-3-rq1",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-2",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq1",
   "type": "Reading Question",
   "number": "10.2.3.1",
   "title": "<em class=\"emphasis\">Partial fraction decomposition can only be used for quadratic denominators<\/em>.",
   "body": " Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
 },
 {
-  "id": "main-8-4-4-5-8-3",
+  "id": "p4-c2-s2-3-rq2",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-3",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq2",
   "type": "Reading Question",
   "number": "10.2.3.2",
   "title": "<em class=\"emphasis\">The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms<\/em>.",
   "body": " The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
 },
 {
-  "id": "main-8-4-4-5-8-4",
+  "id": "p4-c2-s2-3-rq3",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-4",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq3",
   "type": "Reading Question",
   "number": "10.2.3.3",
-  "title": "<em class=\"emphasis\">What is the first step in computing <span class=\"process-math\">\\(\\ds\\ilap{\\frac{2s + 3}{s^2 + 5s + 6}}\\text{?}\\)<\/span><\/em>",
-  "body": " What is the first step in computing ?    Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Apply the Laplace transform.   No, you need to factor the denominator first before any further decomposition.     Multiply both sides by the denominator.   No, multiplying by the denominator is a later step after decomposition, not the first step.    "
+  "title": "<em class=\"emphasis\">What is the first step in computing <span class=\"process-math\">\\(\\ds\\ilap{\\frac{s + 6}{s^2 + 7s + 6}}\\text{?}\\)<\/span><\/em>",
+  "body": " What is the first step in computing ?    Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.    "
 },
 {
-  "id": "main-8-4-4-5-8-5",
+  "id": "p4-c2-s2-3-rq4",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-5",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq4",
   "type": "Reading Question",
   "number": "10.2.3.4",
   "title": "<em class=\"emphasis\">The partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{2s + 3}{(s + 2)(s + 3)}\\)<\/span> is <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 2}\\)<\/span> + <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 3}\\)<\/span><\/em>.",
   "body": " The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
 },
 {
-  "id": "main-8-4-4-5-8-6",
+  "id": "p4-c2-s2-3-rq5",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-6",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq5",
   "type": "Reading Question",
   "number": "10.2.3.5",
   "title": "<em class=\"emphasis\">When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms<\/em>.",
   "body": " When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.  "
 },
 {
-  "id": "main-8-4-4-5-8-7",
+  "id": "p4-c2-s2-3-rq6",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-7",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq6",
   "type": "Reading Question",
   "number": "10.2.3.6",
-  "title": "<em class=\"emphasis\">Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(\\ds Q(s) = \\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
-  "body": " Which of the following is the correct partial fraction decomposition of ?    \\frac{3}{s - 1} + \\frac{7}{(s - 1)^2}   Correct! The correct decomposition includes terms with both and .     \\frac{3}{(s - 1)^2}   No, this decomposition is incomplete. It should also include a term with .     \\frac{7}{s - 1} + \\frac{3}{(s - 1)^3}   No, this is incorrect. The correct decomposition involves instead of .    "
+  "title": "<em class=\"emphasis\">Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
+  "body": " Which of the following is the correct partial fraction decomposition of ?      No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .    "
 },
 {
-  "id": "main-8-4-4-5-8-8",
+  "id": "p4-c2-s2-3-rq7",
   "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-8",
+  "url": "main-8-4-4-5.html#p4-c2-s2-3-rq7",
   "type": "Reading Question",
   "number": "10.2.3.7",
-  "title": "<em class=\"emphasis\">After finding the partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)}\\text{,}\\)<\/span> the correct inverse Laplace transform is <span class=\"fillin underline\" role=\"img\" aria-label=\"1-character blank\" style=\"width: 0.454545454545455em;\" \/> + 2<span class=\"fillin underline\" role=\"img\" aria-label=\"6-character blank\" style=\"width: 2.727272727272727em;\" \/> + 3<span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
-  "body": " After finding the partial fraction decomposition of , the correct inverse Laplace transform is + 2 + 3    1, e^{t}, e^{-t}   Correct! The inverse Laplace transform is .     s, t, s^2   Incorrect. The correct inverse Laplace transform should involve exponential terms.     3, 1, 0   Incorrect. The correct inverse Laplace transform is .    "
-},
-{
-  "id": "main-8-4-4-5-8-9",
-  "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-9",
-  "type": "Reading Question",
-  "number": "10.2.3.8",
   "title": "<em class=\"emphasis\">In partial fraction decomposition, the numerator of each term must have a degree less than the denominator<\/em>.",
   "body": " In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.  "
-},
-{
-  "id": "main-8-4-4-5-8-10",
-  "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-10",
-  "type": "Reading Question",
-  "number": "10.2.3.9",
-  "title": "<em class=\"emphasis\">What is the correct inverse Laplace transform of <span class=\"process-math\">\\(\\ds\\frac{1}{s - 1} - \\frac{1}{s + 1} + \\frac{4s + 3}{s^2 + 1}\\text{?}\\)<\/span><\/em>",
-  "body": " What is the correct inverse Laplace transform of ?    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform matches the forms in the table.     e^{t} + e^{t} + \\cos(t) + \\sin(t)   No, this does not match the correct inverse Laplace transform.     e^{-t} - e^{t} + \\cos(t)   Incorrect. This does not account for all terms in the inverse Laplace transform.    "
-},
-{
-  "id": "main-8-4-4-5-8-11",
-  "level": "2",
-  "url": "main-8-4-4-5.html#main-8-4-4-5-8-11",
-  "type": "Reading Question",
-  "number": "10.2.3.10",
-  "title": "<em class=\"emphasis\">The inverse Laplace transform of <span class=\"process-math\">\\(\\ds S(s) = \\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}\\)<\/span> is __________<\/em>.",
-  "body": " The inverse Laplace transform of is __________    e^{t} - e^{-t} + 4\\cos(t) + 3\\sin(t)   Correct! The inverse Laplace transform is .     1 + e^{-t} + \\cos(t)   Incorrect. This does not match the correct inverse Laplace transform.     2\\cos(t) + 3\\sin(t)   Incorrect. This does not include the full inverse Laplace transform.    "
 },
 {
   "id": "main-8-4-5",
@@ -6199,7 +6109,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "10.3",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function back to the original function . Several methods and techniques are introduced to handle different cases where direct computation isn't possible.   Summary of the Key Ideas    Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.       Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.          Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Backward Transforms- Level 1                                             Backward Transforms- Level 2                                                   Backward Transforms- Level 3                     Steps 3 & 4               Inverse Laplace Transforms   Determine the original time-domain functions from the given Laplace-transformed functions.       Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .      Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .     Find the inverse Laplace transforms of each function.              Conceptual Questions   True or False: The inverse Laplace transform is always a unique function.   True    Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.    Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.    Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Computational Problems   Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .    Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .    Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .    Application-Based Problems   Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.    Find the inverse Laplace transform of the function using partial fraction decomposition.   Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.     "
+  "body": "Summary & Exercises   This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function back to the original function . Several methods and techniques are introduced to handle different cases where direct computation isn't possible.   Summary of the Key Ideas    Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.             Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.     What is the Laplace transform of ?               In the equation , what is the Laplace transform of the right-hand side?                The expression matches the form required to apply the inverse Laplace transform found in the common transform table   True. This expression matches the form in the table and can be directly transformed.   Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.          Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Backward Transforms- Level 1                                             Backward Transforms- Level 2                                                   Backward Transforms- Level 3                     Steps 3 & 4               Inverse Laplace Transforms   Determine the original time-domain functions from the given Laplace-transformed functions.       Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .      Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .     Find the inverse Laplace transforms of each function.              Conceptual Questions   True or False: The inverse Laplace transform is always a unique function.   True    Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.    Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.    Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Computational Problems   Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .    Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .    Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .    Application-Based Problems   Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.    Find the inverse Laplace transform of the function using partial fraction decomposition.   Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.          Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.           Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .      , which matches the form in the table when      Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.      "
 },
 {
   "id": "main-8-4-5-2-2",
@@ -6211,254 +6121,119 @@ var ptx_lunr_docs = [
   "body": "Common Forms: Direct Computation: Modifying Functions: Completing the Square: Partial Fraction Decomposition: "
 },
 {
-  "id": "main-8-4-5-3-1-3",
+  "id": "main-8-4-5-3-1",
   "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-1-3",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-1",
   "type": "Exercise",
   "number": "10.3.1",
-  "title": "",
-  "body": "  "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds \\ilap{\\frac{1}{s - 1} - \\frac{1}{s + 1} + \\frac{4s + 3}{s^2 + 1}} = \\fillinmath{XXXXXXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.    "
 },
 {
-  "id": "main-8-4-5-3-1-4",
+  "id": "p4-c1-s1-1-rq11",
   "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-1-4",
+  "url": "main-8-4-5-3.html#p4-c1-s1-1-rq11",
   "type": "Exercise",
   "number": "10.3.2",
-  "title": "",
-  "body": "  "
+  "title": "What is the Laplace transform of <span class=\"process-math\">\\(e^{3t}\\text{?}\\)<\/span>",
+  "body": "What is the Laplace transform of ?              "
 },
 {
-  "id": "main-8-4-5-3-1-5",
+  "id": "p4-c1-s1-1-rq12",
   "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-1-5",
+  "url": "main-8-4-5-3.html#p4-c1-s1-1-rq12",
   "type": "Exercise",
   "number": "10.3.3",
-  "title": "",
-  "body": "  "
+  "title": "In the equation <span class=\"process-math\">\\(y'' + 4y = \\cos(2t)\\text{,}\\)<\/span> what is the Laplace transform of the right-hand side?",
+  "body": "In the equation , what is the Laplace transform of the right-hand side?              "
 },
 {
-  "id": "main-8-4-5-3-2-3",
+  "id": "p4-c1-s1-1-rq13",
   "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-2-3",
+  "url": "main-8-4-5-3.html#p4-c1-s1-1-rq13",
   "type": "Exercise",
   "number": "10.3.4",
-  "title": "",
-  "body": "  "
-},
-{
-  "id": "main-8-4-5-3-2-4",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-2-4",
-  "type": "Exercise",
-  "number": "10.3.5",
-  "title": "",
-  "body": "  "
-},
-{
-  "id": "main-8-4-5-3-3-3",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-3-3",
-  "type": "Exercise",
-  "number": "10.3.6",
-  "title": "",
-  "body": "  "
-},
-{
-  "id": "main-8-4-5-3-3-4",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-3-4",
-  "type": "Exercise",
-  "number": "10.3.7",
-  "title": "",
-  "body": "  "
-},
-{
-  "id": "main-8-4-5-3-3-5",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-3-5",
-  "type": "Exercise",
-  "number": "10.3.8",
-  "title": "",
-  "body": "  "
-},
-{
-  "id": "main-8-4-5-3-4-2",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-2",
-  "type": "Exercise",
-  "number": "10.3.9",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-3",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-3",
-  "type": "Exercise",
-  "number": "10.3.10",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-4",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-4",
-  "type": "Exercise",
-  "number": "10.3.11",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-5",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-5",
-  "type": "Exercise",
-  "number": "10.3.12",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-6",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-6",
-  "type": "Exercise",
-  "number": "10.3.13",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-7",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-7",
-  "type": "Exercise",
-  "number": "10.3.14",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-4-8",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-4-8",
-  "type": "Exercise",
-  "number": "10.3.15",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-5-2",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-5-2",
-  "type": "Exercise",
-  "number": "10.3.16",
-  "title": "",
-  "body": "     "
+  "title": "<em class=\"emphasis\">The expression <span class=\"process-math\">\\(\\ds\\frac{s-1}{(s-1)^2 + 4}\\)<\/span> matches the form required to apply the inverse Laplace transform found in the common transform table<\/em>.",
+  "body": " The expression matches the form required to apply the inverse Laplace transform found in the common transform table   True. This expression matches the form in the table and can be directly transformed.  "
 },
 {
   "id": "main-8-4-5-3-5-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-5-3",
   "type": "Exercise",
-  "number": "10.3.17",
+  "number": "10.3.5",
   "title": "",
-  "body": "     "
+  "body": "  "
 },
 {
   "id": "main-8-4-5-3-5-4",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-5-4",
   "type": "Exercise",
-  "number": "10.3.18",
+  "number": "10.3.6",
   "title": "",
-  "body": "     "
+  "body": "  "
 },
 {
   "id": "main-8-4-5-3-5-5",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-5-5",
   "type": "Exercise",
-  "number": "10.3.19",
+  "number": "10.3.7",
   "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-5-6",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-5-6",
-  "type": "Exercise",
-  "number": "10.3.20",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-5-7",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-5-7",
-  "type": "Exercise",
-  "number": "10.3.21",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-5-8",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-5-8",
-  "type": "Exercise",
-  "number": "10.3.22",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-5-9",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-5-9",
-  "type": "Exercise",
-  "number": "10.3.23",
-  "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-6-2",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-6-2",
-  "type": "Exercise",
-  "number": "10.3.24",
-  "title": "",
-  "body": "     "
+  "body": "  "
 },
 {
   "id": "main-8-4-5-3-6-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-6-3",
   "type": "Exercise",
-  "number": "10.3.25",
+  "number": "10.3.8",
   "title": "",
-  "body": "     "
+  "body": "  "
 },
 {
   "id": "main-8-4-5-3-6-4",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-6-4",
   "type": "Exercise",
-  "number": "10.3.26",
+  "number": "10.3.9",
   "title": "",
-  "body": "     "
-},
-{
-  "id": "main-8-4-5-3-7-2",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-7-2",
-  "type": "Exercise",
-  "number": "10.3.27",
-  "title": "",
-  "body": "     "
+  "body": "  "
 },
 {
   "id": "main-8-4-5-3-7-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-7-3",
   "type": "Exercise",
-  "number": "10.3.28",
+  "number": "10.3.10",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-7-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-7-4",
+  "type": "Exercise",
+  "number": "10.3.11",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-7-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-7-5",
+  "type": "Exercise",
+  "number": "10.3.12",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "main-8-4-5-3-8-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-2",
+  "type": "Exercise",
+  "number": "10.3.13",
   "title": "",
   "body": "     "
 },
@@ -6467,117 +6242,315 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-8-3",
   "type": "Exercise",
-  "number": "10.3.29",
+  "number": "10.3.14",
   "title": "",
-  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-8-4",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-8-4",
   "type": "Exercise",
-  "number": "10.3.30",
+  "number": "10.3.15",
   "title": "",
-  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-8-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-5",
+  "type": "Exercise",
+  "number": "10.3.16",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-8-6",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-6",
+  "type": "Exercise",
+  "number": "10.3.17",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-8-7",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-7",
+  "type": "Exercise",
+  "number": "10.3.18",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-8-8",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-8-8",
+  "type": "Exercise",
+  "number": "10.3.19",
+  "title": "",
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-9-2",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-9-2",
   "type": "Exercise",
-  "number": "10.3.31",
+  "number": "10.3.20",
   "title": "",
-  "body": "    "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-9-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-9-3",
   "type": "Exercise",
-  "number": "10.3.32",
+  "number": "10.3.21",
   "title": "",
-  "body": "    "
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-4",
+  "type": "Exercise",
+  "number": "10.3.22",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-5",
+  "type": "Exercise",
+  "number": "10.3.23",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-6",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-6",
+  "type": "Exercise",
+  "number": "10.3.24",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-7",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-7",
+  "type": "Exercise",
+  "number": "10.3.25",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-8",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-8",
+  "type": "Exercise",
+  "number": "10.3.26",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "main-8-4-5-3-9-9",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-9-9",
+  "type": "Exercise",
+  "number": "10.3.27",
+  "title": "",
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-10-2",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-10-2",
   "type": "Exercise",
-  "number": "10.3.33",
+  "number": "10.3.28",
   "title": "",
-  "body": " True or False: The inverse Laplace transform is always a unique function.   True  "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-10-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-10-3",
   "type": "Exercise",
-  "number": "10.3.34",
+  "number": "10.3.29",
   "title": "",
-  "body": " Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.  "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-10-4",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-10-4",
   "type": "Exercise",
-  "number": "10.3.35",
+  "number": "10.3.30",
   "title": "",
-  "body": " Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.  "
-},
-{
-  "id": "main-8-4-5-3-10-5",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-10-5",
-  "type": "Exercise",
-  "number": "10.3.36",
-  "title": "",
-  "body": " Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.  "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-11-2",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-11-2",
   "type": "Exercise",
-  "number": "10.3.37",
+  "number": "10.3.31",
   "title": "",
-  "body": " Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .  "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-11-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-11-3",
   "type": "Exercise",
-  "number": "10.3.38",
+  "number": "10.3.32",
   "title": "",
-  "body": " Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .  "
-},
-{
-  "id": "main-8-4-5-3-11-4",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-11-4",
-  "type": "Exercise",
-  "number": "10.3.39",
-  "title": "",
-  "body": " Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .  "
-},
-{
-  "id": "main-8-4-5-3-12-2",
-  "level": "2",
-  "url": "main-8-4-5-3.html#main-8-4-5-3-12-2",
-  "type": "Exercise",
-  "number": "10.3.40",
-  "title": "",
-  "body": " Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.  "
+  "body": "     "
 },
 {
   "id": "main-8-4-5-3-12-3",
   "level": "2",
   "url": "main-8-4-5-3.html#main-8-4-5-3-12-3",
   "type": "Exercise",
+  "number": "10.3.33",
+  "title": "",
+  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+},
+{
+  "id": "main-8-4-5-3-12-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-12-4",
+  "type": "Exercise",
+  "number": "10.3.34",
+  "title": "",
+  "body": "    Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: . "
+},
+{
+  "id": "main-8-4-5-3-13-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-13-2",
+  "type": "Exercise",
+  "number": "10.3.35",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-4-5-3-13-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-13-3",
+  "type": "Exercise",
+  "number": "10.3.36",
+  "title": "",
+  "body": "    "
+},
+{
+  "id": "main-8-4-5-3-14-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-14-2",
+  "type": "Exercise",
+  "number": "10.3.37",
+  "title": "",
+  "body": " True or False: The inverse Laplace transform is always a unique function.   True  "
+},
+{
+  "id": "main-8-4-5-3-14-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-14-3",
+  "type": "Exercise",
+  "number": "10.3.38",
+  "title": "",
+  "body": " Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.  "
+},
+{
+  "id": "main-8-4-5-3-14-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-14-4",
+  "type": "Exercise",
+  "number": "10.3.39",
+  "title": "",
+  "body": " Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.  "
+},
+{
+  "id": "main-8-4-5-3-14-5",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-14-5",
+  "type": "Exercise",
+  "number": "10.3.40",
+  "title": "",
+  "body": " Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.  "
+},
+{
+  "id": "main-8-4-5-3-15-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-15-2",
+  "type": "Exercise",
   "number": "10.3.41",
   "title": "",
+  "body": " Find the inverse Laplace transform of .   This expression matches the form with , so the inverse Laplace transform is .  "
+},
+{
+  "id": "main-8-4-5-3-15-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-15-3",
+  "type": "Exercise",
+  "number": "10.3.42",
+  "title": "",
+  "body": " Compute the inverse Laplace transform of .   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .  "
+},
+{
+  "id": "main-8-4-5-3-15-4",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-15-4",
+  "type": "Exercise",
+  "number": "10.3.43",
+  "title": "",
+  "body": " Use partial fraction decomposition to find the inverse Laplace transform of .   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .  "
+},
+{
+  "id": "main-8-4-5-3-16-2",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-16-2",
+  "type": "Exercise",
+  "number": "10.3.44",
+  "title": "",
+  "body": " Given the function , describe the behavior of the corresponding time-domain function.   The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.  "
+},
+{
+  "id": "main-8-4-5-3-16-3",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-16-3",
+  "type": "Exercise",
+  "number": "10.3.45",
+  "title": "",
   "body": " Find the inverse Laplace transform of the function using partial fraction decomposition.   Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.  "
+},
+{
+  "id": "main-8-4-5-3-17",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-17",
+  "type": "Exercise",
+  "number": "10.3.46",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds \\ilap{\\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.    "
+},
+{
+  "id": "main-8-4-5-3-18",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-18",
+  "type": "Exercise",
+  "number": "10.3.47",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds \\ilap{\\frac{s-1}{(s-1)^2 + 4}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
+  "body": "      Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .    "
+},
+{
+  "id": "main-8-4-5-3-19",
+  "level": "2",
+  "url": "main-8-4-5-3.html#main-8-4-5-3-19",
+  "type": "Exercise",
+  "number": "10.3.48",
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds \\ilap{\\frac{11}{(s - 3)^2 + 5}} = \\frac{11}{\\sqrt{5}}e^{3t}\\sin(\\sqrt{5}t)\\text{,}\\)<\/span> which matches the form in the table when <span class=\"process-math\">\\(b = \\fillinmath{X}\\)<\/span><\/em>.",
+  "body": " , which matches the form in the table when      Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.    "
 },
 {
   "id": "main-8-5",
