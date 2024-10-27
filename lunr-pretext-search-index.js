@@ -25,7 +25,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.1",
   "title": "An Analogy",
-  "body": "An Analogy  When you're learning something new, it's often helpful to connect it to concepts you already know. To grasp what a differential equation is, let's first compare it to standard equations that might feel more familiar. Consider the following three equations, where we aim to solve for :       All three are equations with the same goal—finding the unknown . However, only the third equation is a differential equation because it contains a derivative.  Now, let's try solving for in each case.             In the first equation, we found that is a number, and in the second, it's a function of . But in the third equation, how do we solve for when there is a derivative attached to it? This is exactly the kind of question that differential equations aim to answer.  We'll dive deeper into solving these types of equations soon. For now, there's still plenty more to learn about the basics, so let's keep going!  Check-Point Questions   Differential equations differ from standard equations in that they have   Differential equations differ from standard equations in that they have    a solution   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     a variable   Incorrect. Any equation could contain a variable.     an unknown   Incorrect. Most equations contain an unknown.     a derivative   Correct! If an equation contains a derivative, it is a differential equation.      Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.        An equation involving functions and their derivatives.        An equation involving trigonometric functions.        An equation that changes over time.         What distinguishes a differential equation from a standard equation?   What distinguishes a differential equation from a standard equation?    It contains an unknown variable.  Incorrect. Both standard and differential equations contain unknown variables.    It contains a derivative.  Correct! A differential equation contains one or more derivatives, which differentiates it from a standard equation.    It contains a variable.  Incorrect. Any equation could contain a variable.     "
+  "body": "An Analogy  When you're learning something new, it's often helpful to connect it to concepts you already know. To grasp what a differential equation is, let's first compare it to standard equations that might feel more familiar. Consider the following three equations, where we aim to solve for :       All three are equations with the same goal—finding the unknown . However, only the third equation is a differential equation because it contains a derivative.  Now, let's try solving for in each case.             In the first equation, we found that is a number, and in the second, it's a function of . But in the third equation, how do we solve for when there is a derivative attached to it? This is exactly the kind of question that differential equations aim to answer.  We'll dive deeper into solving these types of equations soon. For now, there's still plenty more to learn about the basics, so let's keep going!  Check-Point Questions   Differential equations differ from standard equations in that they contain   Differential equations differ from standard equations in that they contain    solutions   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.      variables   Incorrect. Any equation could contain a variable.     unknowns   Incorrect. Most equations contain an unknown.     derivatives   Correct! If an equation contains a derivative, it is a differential equation.      Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.   Incorrect. A differential equation involves derivatives.     An equation involving functions and their derivatives.   Correct! A differential equation involves functions and their derivatives.     An equation involving trigonometric functions.   Incorrect. A differential equation could involve trigonometric functions, but it is not a defining characteristic.     An equation that changes over time.   Incorrect. A differential equation could describe a system that changes over time, but it is not a defining characteristic.      What distinguishes a differential equation from a standard equation?    What distinguishes a differential equation from a standard equation?     It contains an unknown variable.  Incorrect. Both standard and differential equations contain unknown variables.    It contains a derivative.  Correct! A differential equation contains one or more derivatives, which differentiates it from a standard equation.    It contains a variable.  Incorrect. Any equation could contain a variable.     "
 },
 {
   "id": "p1-c1-s1-rq1",
@@ -33,8 +33,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-3-9.html#p1-c1-s1-rq1",
   "type": "Reading Question",
   "number": "1.1.1",
-  "title": "<em class=\"emphasis\">Differential equations differ from standard equations in that they have <span class=\"fillin underline\" role=\"img\" aria-label=\"5-character blank\" style=\"width: 2.272727272727273em;\" \/><\/em>.",
-  "body": " Differential equations differ from standard equations in that they have   Differential equations differ from standard equations in that they have    a solution   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     a variable   Incorrect. Any equation could contain a variable.     an unknown   Incorrect. Most equations contain an unknown.     a derivative   Correct! If an equation contains a derivative, it is a differential equation.    "
+  "title": "<em class=\"emphasis\">Differential equations differ from standard equations in that they contain <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " Differential equations differ from standard equations in that they contain   Differential equations differ from standard equations in that they contain    solutions   Incorrect. While this statement is generally true, it is not what makes it different from any other equation.      variables   Incorrect. Any equation could contain a variable.     unknowns   Incorrect. Most equations contain an unknown.     derivatives   Correct! If an equation contains a derivative, it is a differential equation.    "
 },
 {
   "id": "p1-c1-s1-rq2",
@@ -43,7 +43,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.1.2",
   "title": "<em class=\"emphasis\">Which of the following best describes a differential equation?<\/em>",
-  "body": " Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.        An equation involving functions and their derivatives.        An equation involving trigonometric functions.        An equation that changes over time.       "
+  "body": " Which of the following best describes a differential equation?   Which of the following best describes a differential equation?    An equation involving only algebraic expressions.   Incorrect. A differential equation involves derivatives.     An equation involving functions and their derivatives.   Correct! A differential equation involves functions and their derivatives.     An equation involving trigonometric functions.   Incorrect. A differential equation could involve trigonometric functions, but it is not a defining characteristic.     An equation that changes over time.   Incorrect. A differential equation could describe a system that changes over time, but it is not a defining characteristic.    "
 },
 {
   "id": "p1-c1-s1-rq3",
@@ -52,7 +52,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.1.3",
   "title": "<em class=\"emphasis\">What distinguishes a differential equation from a standard equation?<\/em>",
-  "body": " What distinguishes a differential equation from a standard equation?   What distinguishes a differential equation from a standard equation?    It contains an unknown variable.  Incorrect. Both standard and differential equations contain unknown variables.    It contains a derivative.  Correct! A differential equation contains one or more derivatives, which differentiates it from a standard equation.    It contains a variable.  Incorrect. Any equation could contain a variable.   "
+  "body": " What distinguishes a differential equation from a standard equation?    What distinguishes a differential equation from a standard equation?     It contains an unknown variable.  Incorrect. Both standard and differential equations contain unknown variables.    It contains a derivative.  Correct! A differential equation contains one or more derivatives, which differentiates it from a standard equation.    It contains a variable.  Incorrect. Any equation could contain a variable.   "
 },
 {
   "id": "main-5-3-4",
@@ -142,7 +142,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.3",
   "title": "Variables",
-  "body": "Variables  In this section, we'll explore the two types of variables found in differential equations: dependent and independent variables. Understanding the roles of these variables is crucial when solving and interpreting differential equations.  Consider the differential equation: This equation involves two variables: and . One of these variables is the unknown that we are trying to solve for, but which one?  Typically, the variable you want to solve for is the one with a derivative applied to it. Here, the term in indicates:  The derivative is being taken with respect to , and  is a function of (since it wouldn't make sense to take the derivative of with respect to unless depends on ).    Therefore, is called the dependent variable because it depends on . On the other hand, is the independent variable .  Dependent & Independent Variables    Dependent Variable:  The variable representing the unknown function we are trying to find. It is always the variable with a derivative applied to it.   Independent Variable:  The variable that the dependent variable is a function of. It does not have a derivative applied to it.       Identify the dependent and independent variables in each equation and state which variable represents the unknown.         Solution  Since the derivative appears, it implies that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.             Solution  The second derivative suggests that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.             Solution  Here, implies that is the dependent variable . Since no independent variable is explicitly shown, typically the context of the problem would provide it. If not, we can assume it ourselves—perhaps , making the unknown .        Check-Point Questions   Which variable in is the independent variable?   Which variable in is the independent variable?     Yes! is the independent variable.     Incorrect. Review the examples.     Incorrect. Review the examples.     Which variable in is the dependent variable?   Which variable in is the dependent variable?     Incorrect. represents the derivative of the dependent variable with respect to the independent variable.       Incorrect. The dependent variable is the one being differentiated.       Correct! is the dependent variable in this equation.     In a differential equation, the dependent variable has a derivative applied to it   In a differential equation, the dependent variable has a derivative applied to it    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.     Which variable in are we solving for?   Which variable in are we solving for?    dependent variable,  Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,  Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,  Yes! We are solving for the unknown, .    independent variable,  Incorrect. We are solving for , but it is not the independent variable.     In the differential equation , the dependent variable is  dependent variable:      Correct! The dependent variable is , which depends on .     .*   Incorrect. Review the definitions of dependent and independent variables in the context of differential equations.       "
+  "body": "Variables  In this section, we'll explore the two types of variables found in differential equations: dependent and independent variables. Understanding the roles of these variables is crucial when solving and interpreting differential equations.  Consider the differential equation: This equation involves two variables: and . One of these variables is the unknown that we are trying to solve for, but which one?  Typically, the variable you want to solve for is the one with a derivative applied to it. Here, the term in indicates:  The derivative is being taken with respect to , and  is a function of (since it wouldn't make sense to take the derivative of with respect to unless depends on ).    Therefore, is called the dependent variable because it depends on . On the other hand, is the independent variable .  Dependent & Independent Variables    Dependent Variable:  The variable representing the unknown function we are trying to find. It is always the variable with a derivative applied to it.   Independent Variable:  The variable that the dependent variable is a function of. It does not have a derivative applied to it.       Identify the Dependent and Independent Variables      Since the derivative appears, it implies that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.        The second derivative suggests that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.        Here, implies that is the dependent variable . Since no independent variable is explicitly shown, typically the context of the problem would provide it. If not, we can assume it ourselves—perhaps , making the unknown .    Check-Point Questions   Which variable in is the independent variable?   Which variable in is the independent variable?     Yes! is the independent variable.     Incorrect. Review the examples.     Incorrect. Review the examples.     Which variable in is the dependent variable?   Which variable in is the dependent variable?     Incorrect. represents the derivative of the dependent variable with respect to the independent variable.       Incorrect. The dependent variable is the one being differentiated.       Correct! is the dependent variable in this equation.     In a differential equation, the dependent variable has a derivative applied to it   In a differential equation, the dependent variable has a derivative applied to it    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.     Which variable in are we solving for?   Which variable in are we solving for?    dependent variable,  Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,  Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,  Yes! We are solving for the unknown, .    independent variable,  Incorrect. We are solving for , but it is not the independent variable.     In the differential equation , the dependent variable is  dependent variable:      Correct! The dependent variable is , which depends on .     .*   Incorrect. Review the definitions of dependent and independent variables in the context of differential equations.       "
 },
 {
   "id": "types-of-variables",
@@ -159,8 +159,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-5.html#main-5-3-5-7",
   "type": "Example",
   "number": "5",
-  "title": "",
-  "body": " Identify the dependent and independent variables in each equation and state which variable represents the unknown.         Solution  Since the derivative appears, it implies that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.             Solution  The second derivative suggests that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.             Solution  Here, implies that is the dependent variable . Since no independent variable is explicitly shown, typically the context of the problem would provide it. If not, we can assume it ourselves—perhaps , making the unknown .       "
+  "title": "<em class=\"emphasis\">Identify the Dependent and Independent Variables<\/em>.",
+  "body": " Identify the Dependent and Independent Variables      Since the derivative appears, it implies that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.        The second derivative suggests that:  is a function of and is the dependent variable .  is the independent variable .  represents the unknown to this differential equation.        Here, implies that is the dependent variable . Since no independent variable is explicitly shown, typically the context of the problem would provide it. If not, we can assume it ourselves—perhaps , making the unknown .   "
 },
 {
   "id": "p1-c1-s3-rq1",
@@ -214,7 +214,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.4",
   "title": "Terms &amp; Coefficients",
-  "body": "Terms & Coefficients  This text will frequently refer to terms and coefficients . Here is the definition.  Terms & Coefficients   In differential equations, terms and coefficients are defined as follows:   Terms  The expressions separated by , , or signs.   Coefficients  The objects multiplied by the dependent variable or one of its derivatives.   Constant Term  A term without a dependent variable is called a constant term and is not a coefficient.      Consider the differential equation: . This equation has five terms and four coefficients: , , , and . Notice that coefficients can be functions of the independent variable (like and ) or constants (like and ). The distinction between constant and variable coefficients will become crucial when we study a group of differential equations known as constant-coefficient equations .   Terms & Coefficients in a Differential Equation    Identify the terms and coefficients of the differential equation    Solution  The equation can be broken down as follows: . The coefficients are , , and . Notice that and are functions of the independent variable , whereas is a constant.    Check-Point Questions   For the following, assume is the dependent variable as a function of .    Given , what is the coefficient of ?   Given , what is the coefficient of ?    Incorrect. is the coefficient of .    Correct! is the coefficient of the term involving .    Incorrect. is the coefficient of .    Incorrect. is the constant on the right-hand side of the equation.     Given , which of the following is considered a constant term?   Given , which of the following is considered a constant term?    Incorrect. This term contains a derivative of the dependent variable , so it is not a constant term.    Incorrect. This term involves the dependent variable , so it is not a constant term.    Correct! is the constant term because it does not depend on the dependent variable or its derivatives.     is an example of a constant term   is an example of a constant term   True  Correct! In the context of differential equations, is a constant term since it is not multiplied by the dependent variable or one of its derivatives.   False  Incorrect. While is not a constant function, it is a constant term in the context of differential equations.     is the coefficient of the term   is the coefficient of the term   True  Incorrect. The coefficient is the factor multiplying the entire term involving the dependent variable, not the dependent variable itself.   False  Correct! The coefficient is what multiplies the term involving the dependent variable, so in this case, the coefficient of is , not .     The term does not have a coefficient   The term does not have a coefficient   True  Incorrect. Every term in a differential equation has a coefficient, even if that coefficient is simply 1.   False  Correct! The coefficient of is 1, even if it is not explicitly written.     Given , which terms has a function as its coefficient?   Given , which terms has a function as its coefficient?    Correct! is a function of and acts as the coefficient of .    Incorrect. is a constant coefficient, not a function.    Incorrect. is a constant coefficient, not a function.    Incorrect. is on the right-hand side of the equation and is not acting as a coefficient for any term.     Given , which statement best describes the coefficient of ?   Given , which statement best describes the coefficient of ?   It is a constant coefficient  Incorrect. A constant coefficient does not depend on the independent variable.   It is a function of the independent variable  Correct! The coefficient depends on the independent variable .   There is no coefficient  Incorrect. The term has a coefficient, which is .   It is an arbitrary constant  Incorrect. is a specific function of , not an arbitrary constant.     Given , which of the following statements is true?   Given , which of the following statements is true?   The coefficient of is .  Correct! The term has a coefficient of .   The coefficient of is .  Incorrect. The coefficient of is , not .   The coefficient of is .  Incorrect. The correct coefficient of is , not .   There is no constant term in the equation.  Incorrect. The equation does not include a constant term since all terms involve the dependent variable or its derivatives.     Select all the coefficients in the differential equation   Select all the coefficients in the differential equation                           The coefficients in this equation are , , and . Remember, coefficients are the factors multiplied by the dependent variable or its derivatives.   Review the example in this section for more guidance on identifying coefficients.    "
+  "body": "Terms & Coefficients  This text will frequently refer to terms and coefficients . Here is the definition.  Terms & Coefficients   In differential equations, terms and coefficients are defined as follows:   Terms  The expressions separated by , , or signs.   Coefficients  The objects multiplied by the dependent variable or one of its derivatives.   Constant Term  A term without a dependent variable is called a constant term and is not a coefficient.      Consider the differential equation: . This equation has five terms and four coefficients: , , , and . Notice that coefficients can be functions of the independent variable (like and ) or constants (like and ). The distinction between constant and variable coefficients will become crucial when we study a group of differential equations known as constant-coefficient equations .   Identify the Terms and Coefficients      The equation can be broken down as follows: . The coefficients are , , and . Notice that and are functions of the independent variable , whereas is a constant.    Check-Point Questions   For the following, assume is the dependent variable as a function of .    Given , what is the coefficient of ?   Given , what is the coefficient of ?     Incorrect. is the coefficient of .    Correct! is the coefficient of the term involving .     Incorrect. is the coefficient of .     Incorrect. is the constant on the right-hand side of the equation.     Given , which of the following is considered a constant term?   Given , which of the following is considered a constant term?     Incorrect. This term contains a derivative of the dependent variable , so it is not a constant term.     Incorrect. This term involves the dependent variable , so it is not a constant term.     Correct! is the constant term because it does not depend on the dependent variable or its derivatives.     is an example of a constant term   is an example of a constant term    True  Correct! In the context of differential equations, is a constant term since it is not multiplied by the dependent variable or one of its derivatives.    False  Incorrect. While is not a constant function, it is a constant term in the context of differential equations.     is the coefficient of the term   is the coefficient of the term    True  Incorrect. The coefficient is the factor multiplying the entire term involving the dependent variable, not the dependent variable itself.    False  Correct! The coefficient is what multiplies the term involving the dependent variable, so in this case, the coefficient of is , not .     The term does not have a coefficient   The term does not have a coefficient    True  Incorrect. Every term in a differential equation has a coefficient, even if that coefficient is simply 1.    False  Correct! The coefficient of is 1, even if it is not explicitly written.     Given , which terms has a function as its coefficient?   Given , which terms has a function as its coefficient?     Correct! is a function of and acts as the coefficient of .     Incorrect. is a constant coefficient, not a function.     Incorrect. is a constant coefficient, not a function.     Incorrect. is on the right-hand side of the equation and is not acting as a coefficient for any term.     Given , which statement best describes the coefficient of ?   Given , which statement best describes the coefficient of ?    It is a constant coefficient  Incorrect. A constant coefficient does not depend on the independent variable.    It is a function of the independent variable  Correct! The coefficient depends on the independent variable .    There is no coefficient  Incorrect. The term has a coefficient, which is .    It is an arbitrary constant  Incorrect. is a specific function of , not an arbitrary constant.     Given , which of the following statements is true?   Given , which of the following statements is true?    The coefficient of is .  Correct! The term has a coefficient of .    The coefficient of is .  Incorrect. The coefficient of is , not .    The coefficient of is .  Incorrect. The correct coefficient of is , not .    There is no constant term in the equation.  Incorrect. The equation does not include a constant term since all terms involve the dependent variable or its derivatives.     Select all the coefficients in the differential equation   Select all the coefficients in the differential equation                           The coefficients in this equation are , , and . Remember, coefficients are the factors multiplied by the dependent variable or its derivatives.   Review the example in this section for more guidance on identifying coefficients.    "
 },
 {
   "id": "def-terms-coefficients",
@@ -231,8 +231,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-6.html#terms-and-coefficients",
   "type": "Example",
   "number": "7",
-  "title": "<em class=\"emphasis\">Terms & Coefficients in a Differential Equation<\/em>.",
-  "body": " Terms & Coefficients in a Differential Equation    Identify the terms and coefficients of the differential equation    Solution  The equation can be broken down as follows: . The coefficients are , , and . Notice that and are functions of the independent variable , whereas is a constant.   "
+  "title": "<em class=\"emphasis\">Identify the Terms and Coefficients<\/em>.",
+  "body": " Identify the Terms and Coefficients      The equation can be broken down as follows: . The coefficients are , , and . Notice that and are functions of the independent variable , whereas is a constant.   "
 },
 {
   "id": "p1-c1-s4-rq1",
@@ -241,7 +241,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.1",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds 5y'' + 2y' - \\cos(t) y = 7\\text{,}\\)<\/span> what is the coefficient of <span class=\"process-math\">\\(\\ds y'\\text{?}\\)<\/span><\/em>",
-  "body": " Given , what is the coefficient of ?   Given , what is the coefficient of ?    Incorrect. is the coefficient of .    Correct! is the coefficient of the term involving .    Incorrect. is the coefficient of .    Incorrect. is the constant on the right-hand side of the equation.   "
+  "body": " Given , what is the coefficient of ?   Given , what is the coefficient of ?     Incorrect. is the coefficient of .    Correct! is the coefficient of the term involving .     Incorrect. is the coefficient of .     Incorrect. is the constant on the right-hand side of the equation.   "
 },
 {
   "id": "p1-c1-s4-rq2",
@@ -250,7 +250,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.2",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds 3t^2 y' + \\frac{1}{t} y - 4 = 0\\text{,}\\)<\/span> which of the following is considered a constant term?<\/em>",
-  "body": " Given , which of the following is considered a constant term?   Given , which of the following is considered a constant term?    Incorrect. This term contains a derivative of the dependent variable , so it is not a constant term.    Incorrect. This term involves the dependent variable , so it is not a constant term.    Correct! is the constant term because it does not depend on the dependent variable or its derivatives.   "
+  "body": " Given , which of the following is considered a constant term?   Given , which of the following is considered a constant term?     Incorrect. This term contains a derivative of the dependent variable , so it is not a constant term.     Incorrect. This term involves the dependent variable , so it is not a constant term.     Correct! is the constant term because it does not depend on the dependent variable or its derivatives.   "
 },
 {
   "id": "p1-c1-s4-rq3",
@@ -259,7 +259,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(3t\\)<\/span> is an example of a constant term<\/em>.",
-  "body": " is an example of a constant term   is an example of a constant term   True  Correct! In the context of differential equations, is a constant term since it is not multiplied by the dependent variable or one of its derivatives.   False  Incorrect. While is not a constant function, it is a constant term in the context of differential equations.   "
+  "body": " is an example of a constant term   is an example of a constant term    True  Correct! In the context of differential equations, is a constant term since it is not multiplied by the dependent variable or one of its derivatives.    False  Incorrect. While is not a constant function, it is a constant term in the context of differential equations.   "
 },
 {
   "id": "p1-c1-s4-rq4",
@@ -268,7 +268,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y\\)<\/span> is the coefficient of the term <span class=\"process-math\">\\(y \\sin(t)\\)<\/span><\/em>.",
-  "body": " is the coefficient of the term   is the coefficient of the term   True  Incorrect. The coefficient is the factor multiplying the entire term involving the dependent variable, not the dependent variable itself.   False  Correct! The coefficient is what multiplies the term involving the dependent variable, so in this case, the coefficient of is , not .   "
+  "body": " is the coefficient of the term   is the coefficient of the term    True  Incorrect. The coefficient is the factor multiplying the entire term involving the dependent variable, not the dependent variable itself.    False  Correct! The coefficient is what multiplies the term involving the dependent variable, so in this case, the coefficient of is , not .   "
 },
 {
   "id": "p1-c1-s4-rq5",
@@ -277,7 +277,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.5",
   "title": "<em class=\"emphasis\">The term <span class=\"process-math\">\\(\\ds y'''\\)<\/span> does not have a coefficient<\/em>.",
-  "body": " The term does not have a coefficient   The term does not have a coefficient   True  Incorrect. Every term in a differential equation has a coefficient, even if that coefficient is simply 1.   False  Correct! The coefficient of is 1, even if it is not explicitly written.   "
+  "body": " The term does not have a coefficient   The term does not have a coefficient    True  Incorrect. Every term in a differential equation has a coefficient, even if that coefficient is simply 1.    False  Correct! The coefficient of is 1, even if it is not explicitly written.   "
 },
 {
   "id": "p1-c1-s4-rq6",
@@ -286,7 +286,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.6",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds e^t y''' + 4y' - 3y = \\sin(t)\\text{,}\\)<\/span> which terms has a function as its coefficient?<\/em>",
-  "body": " Given , which terms has a function as its coefficient?   Given , which terms has a function as its coefficient?    Correct! is a function of and acts as the coefficient of .    Incorrect. is a constant coefficient, not a function.    Incorrect. is a constant coefficient, not a function.    Incorrect. is on the right-hand side of the equation and is not acting as a coefficient for any term.   "
+  "body": " Given , which terms has a function as its coefficient?   Given , which terms has a function as its coefficient?     Correct! is a function of and acts as the coefficient of .     Incorrect. is a constant coefficient, not a function.     Incorrect. is a constant coefficient, not a function.     Incorrect. is on the right-hand side of the equation and is not acting as a coefficient for any term.   "
 },
 {
   "id": "p1-c1-s4-rq7",
@@ -295,7 +295,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.7",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds t^3 y'' + 6 y' - \\ln(t) y = 0\\text{,}\\)<\/span> which statement best describes the coefficient of <span class=\"process-math\">\\(y\\text{?}\\)<\/span><\/em>",
-  "body": " Given , which statement best describes the coefficient of ?   Given , which statement best describes the coefficient of ?   It is a constant coefficient  Incorrect. A constant coefficient does not depend on the independent variable.   It is a function of the independent variable  Correct! The coefficient depends on the independent variable .   There is no coefficient  Incorrect. The term has a coefficient, which is .   It is an arbitrary constant  Incorrect. is a specific function of , not an arbitrary constant.   "
+  "body": " Given , which statement best describes the coefficient of ?   Given , which statement best describes the coefficient of ?    It is a constant coefficient  Incorrect. A constant coefficient does not depend on the independent variable.    It is a function of the independent variable  Correct! The coefficient depends on the independent variable .    There is no coefficient  Incorrect. The term has a coefficient, which is .    It is an arbitrary constant  Incorrect. is a specific function of , not an arbitrary constant.   "
 },
 {
   "id": "p1-c1-s4-rq8",
@@ -304,7 +304,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.4.8",
   "title": "<em class=\"emphasis\">Given <span class=\"process-math\">\\(\\ds\\frac{d^2y}{dt^2} - 3t^2 y' + 4y = 0\\text{,}\\)<\/span> which of the following statements is true?<\/em>",
-  "body": " Given , which of the following statements is true?   Given , which of the following statements is true?   The coefficient of is .  Correct! The term has a coefficient of .   The coefficient of is .  Incorrect. The coefficient of is , not .   The coefficient of is .  Incorrect. The correct coefficient of is , not .   There is no constant term in the equation.  Incorrect. The equation does not include a constant term since all terms involve the dependent variable or its derivatives.   "
+  "body": " Given , which of the following statements is true?   Given , which of the following statements is true?    The coefficient of is .  Correct! The term has a coefficient of .    The coefficient of is .  Incorrect. The coefficient of is , not .    The coefficient of is .  Incorrect. The correct coefficient of is , not .    There is no constant term in the equation.  Incorrect. The equation does not include a constant term since all terms involve the dependent variable or its derivatives.   "
 },
 {
   "id": "p1-c1-s4-rq9",
@@ -322,7 +322,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.5",
   "title": "Order",
-  "body": "Order  In this section, we'll explore a key concept in differential equations known as order . Think of the order of a differential equation as the number of layers or steps you need to peel away to reveal the original function. The more layers there are, the higher the order, and usually, the more complex the equation.   The order of a differential equation refers to the highest derivative that appears in the equation. For example, if the highest derivative is the first derivative, it's called a first-order differential equation. If the highest derivative is the second derivative, it's called a second-order differential equation, and so on.    Give the order of the following differential equations:         Solution   Order = 1. This is a first-order differential equation because the highest derivative is .           Solution   Order = 3 . This is a third-order differential equation because the highest derivative is .           Solution   Order = 2 This is a second-order differential equation because the highest derivative is .        Caution, Don't Confuse Exponents with Derivatives  It's important to distinguish between exponents and derivatives. For example, in the second example, indicates that the dependent variable is raised to the 8th power, but this is not related to the order of the differential equation.   Check-Point Questions   Which of the following equations is a third-order differential equation?   Which of the following equations is a third-order differential equation?     Correct! The highest derivative here is the third derivative, making it a third-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a first-order differential equation.     The order of a differential equation is determined by the number of terms it contains   The order of a differential equation is determined by the number of terms it contains    True  Incorrect. The order is based on the highest derivative, regardless of the number of terms.    False  Correct! The order is determined by the highest derivative, not the number of terms.     The differential equation has order  order:      Correct! The most derivatives applied are two in .     5   Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.     .*   Carefully review the definition of order.       The differential equation has order  order:      Correct! The highest derivative is the third derivative .     2   Incorrect. The highest derivative is the third derivative, not the second.     .*   Carefully review the definition of order.       The differential equation has order  order:      Correct! The highest derivative is the fifth derivative .     2   Incorrect. There is a higher derivative in this equation.     3   Incorrect. The third derivative does not appear in this equation.     .*   Carefully review the definition of order.       "
+  "body": "Order  In this section, we'll explore a key concept in differential equations known as order . Think of the order of a differential equation as the number of layers or steps you need to peel away to reveal the original function. The more layers there are, the higher the order, and usually, the more complex the equation.   The order of a differential equation refers to the highest derivative that appears in the equation. For example, if the highest derivative is the first derivative, it's called a first-order differential equation. If the highest derivative is the second derivative, it's called a second-order differential equation, and so on.    Identify the Order       Order = 1. This is a first-order differential equation because the highest derivative is .       Order = 3 . This is a third-order differential equation because the highest derivative is .       Order = 2 This is a second-order differential equation because the highest derivative is .    Caution, Don't Confuse Exponents with Derivatives  It's important to distinguish between exponents and derivatives. For example, in the second example, indicates that the dependent variable is raised to the 8th power, but this is not related to the order of the differential equation.   Check-Point Questions   Which of the following equations is a third-order differential equation?   Which of the following equations is a third-order differential equation?     Correct! The highest derivative here is the third derivative, making it a third-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a second-order differential equation.     Incorrect. This is a first-order differential equation.     The order of a differential equation is determined by the number of terms it contains   The order of a differential equation is determined by the number of terms it contains    True  Incorrect. The order is based on the highest derivative, regardless of the number of terms.    False  Correct! The order is determined by the highest derivative, not the number of terms.     The differential equation has order    The differential equation has order        Correct! The most derivatives applied are two in .     5   Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.     .*   Carefully review the definition of order.       The differential equation has order    The differential equation has order        Correct! The highest derivative is the third derivative .     2   Incorrect. The highest derivative is the third derivative, not the second.     .*   Carefully review the definition of order.       The differential equation has order    The differential equation has order        Correct! The highest derivative is the fifth derivative .     2   Incorrect. There is a higher derivative in this equation.     3   Incorrect. The third derivative does not appear in this equation.     .*   Carefully review the definition of order.       "
 },
 {
   "id": "main-5-3-7-2",
@@ -348,8 +348,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-7.html#main-5-3-7-4",
   "type": "Example",
   "number": "9",
-  "title": "",
-  "body": " Give the order of the following differential equations:         Solution   Order = 1. This is a first-order differential equation because the highest derivative is .           Solution   Order = 3 . This is a third-order differential equation because the highest derivative is .           Solution   Order = 2 This is a second-order differential equation because the highest derivative is .       "
+  "title": "<em class=\"emphasis\">Identify the Order<\/em>.",
+  "body": " Identify the Order       Order = 1. This is a first-order differential equation because the highest derivative is .       Order = 3 . This is a third-order differential equation because the highest derivative is .       Order = 2 This is a second-order differential equation because the highest derivative is .   "
 },
 {
   "id": "main-5-3-7-5",
@@ -384,8 +384,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-7-6.html#p1-c1-s5-rq3",
   "type": "Reading Question",
   "number": "1.5.3",
-  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds (1 - x)y'' - x^4y' + y^5 = \\cos x \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
-  "body": " The differential equation has order  order:      Correct! The most derivatives applied are two in .     5   Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.     .*   Carefully review the definition of order.     "
+  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds (1 - x)y'' - x^4y' + y^5 = \\cos x \\)<\/span> has order <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " The differential equation has order    The differential equation has order        Correct! The most derivatives applied are two in .     5   Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.     .*   Carefully review the definition of order.     "
 },
 {
   "id": "p1-c1-s5-rq4",
@@ -393,8 +393,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-7-6.html#p1-c1-s5-rq4",
   "type": "Reading Question",
   "number": "1.5.4",
-  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds y''' + 3y' - 4y = 0 \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
-  "body": " The differential equation has order  order:      Correct! The highest derivative is the third derivative .     2   Incorrect. The highest derivative is the third derivative, not the second.     .*   Carefully review the definition of order.     "
+  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds y''' + 3y' - 4y = 0 \\)<\/span> has order <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " The differential equation has order    The differential equation has order        Correct! The highest derivative is the third derivative .     2   Incorrect. The highest derivative is the third derivative, not the second.     .*   Carefully review the definition of order.     "
 },
 {
   "id": "p1-c1-s5-rq5",
@@ -402,8 +402,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-7-6.html#p1-c1-s5-rq5",
   "type": "Reading Question",
   "number": "1.5.5",
-  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds t^3 \\frac{d^2y}{dt^2} + \\frac{d^5y}{dt^5} = \\sin(t) \\)<\/span> has order <span class=\"fillin underline\" role=\"img\" aria-label=\"3-character blank\" style=\"width: 1.363636363636364em;\" \/><\/em>.",
-  "body": " The differential equation has order  order:      Correct! The highest derivative is the fifth derivative .     2   Incorrect. There is a higher derivative in this equation.     3   Incorrect. The third derivative does not appear in this equation.     .*   Carefully review the definition of order.     "
+  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds t^3 \\frac{d^2y}{dt^2} + \\frac{d^5y}{dt^5} = \\sin(t) \\)<\/span> has order <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " The differential equation has order    The differential equation has order        Correct! The highest derivative is the fifth derivative .     2   Incorrect. There is a higher derivative in this equation.     3   Incorrect. The third derivative does not appear in this equation.     .*   Carefully review the definition of order.     "
 },
 {
   "id": "main-5-3-8",
@@ -412,7 +412,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.6",
   "title": "Linear Terms",
-  "body": "Linear Terms  The most informative label you can place on a differential equation is whether it is linear or nonlinear. While linearity often refers to equations that graph as straight lines, the concept of linearity in differential equations is more nuanced. Understanding this distinction is crucial as it significantly influences how the equations are solved and interpreted.  Before jumping in, it may be helpful to revisit meaning of dependent variables, terms and coefficients as we will be referencing them throughout this discussion.  Now, let's define what it means for a term in a differential equation to be linear.  Linear Term    Linear Term  A term that has one of the forms     where is the dependent variable. The coefficient, , can be a function of the independent variable, , but not the dependent variable.      The linearity of a term depends entirely on the dependent variable  The linearity of a term is determined by the presence of a single or derivative of to the power of . The coefficients, play no part in the linearity.    Given the differential equation, , identify each term and label the term as linear or nonlinear. Solution  To determine the linearity of a term we only need to consider the dependent variables (column below). We are looking for a single or derivative of raised to the power of . If we find such a term, we label it as linear. Otherwise, it is nonlinear. Let's separate the different parts in the following table.        Term  Coefficient  Dependent Variables  Linearity       linear       nonlinear       nonlinear       linear       nonlinear       nonlinear             Linearity depends  on this column only      Note, since constant terms do not contain a dependent variable, they are necessarily linear. So, in the context of differential equations, is also a linear term.    To help identify nonlinear terms, here are some common characteristics:  Identifying Nonlinear Terms  A term is nonlinear if it contains a dependent variable, or , that is     Raised to a power other than 1, e.g., or .    Inside another function, e.g., or .    Multiplied or divided by another or , e.g., or .      Let's practice this with one more example.   Determine the linearity of each term in the following differential equations.    Solution         Solution         Check-Point Questions   Assume that and are the dependent and independent variables, respectively.    is a linear term   is a linear term   True  Correct! The term is linear because it is a function of the independent variable only.   False  Incorrect, review the examples of linear terms in the section on Linear Terms.     is a linear term   is a linear term   True  Correct! The term is linear.   False  Incorrect. The term is indeed linear.     is a linear term   is a linear term   True  Incorrect, review the rules for identifying nonlinear terms.   False  Correct! A term that includes the derivative of the dependent variable inside another function is nonlinear.     is a linear term   is a linear term   False  Correct! The term is nonlinear because the dependent variable is inside an exponential function.   True  Incorrect. Review the rules for identifying nonlinear terms.     Identify the linear term in the equation:   Identify the linear term in the equation:    Correct! The term is linear because it involves a single derivative of the dependent variable.    Incorrect. This term is nonlinear.    Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.    Incorrect. This term is linear because it involves the independent variable only.     Which of the following is a nonlinear term?   Which of the following is a nonlinear term?    Incorrect. This is a linear term.    I The term is nonlinear because it involves a derivative inside a trigonometric function.    Incorrect. This is a linear term.    Incorrect. This is a linear term.     A linear term can contain the dependent variable multiplied by the independent variable   A linear term can contain the dependent variable multiplied by the independent variable   True  Correct! For example, is a linear term.   False  Incorrect. Carefully review the examples above.     Which of the following terms is linear?   Which of the following terms is linear?    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Correct! is linear because it is a function of the independent variable multiplied by the first derivative of the dependent variable.    Incorrect. is nonlinear because it includes the dependent variable inside another function.    Incorrect. is nonlinear because it involves the product of the dependent variable and its derivative.     Which of the following terms is linear?   Which of the following terms is linear?    Correct! is linear because it is a function of the independent variable multiplied by the second derivative of the dependent variable.    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Incorrect. is nonlinear because the dependent variable is squared.    Incorrect. is nonlinear because it involves the product of the dependent variable and a function of the dependent variable.     Which of the following is a characteristic of a nonlinear term?   Which of the following is a characteristic of a nonlinear term?   It involves the dependent variable raised to the first power.  Incorrect. This is a characteristic of a linear term.   It involves the dependent variable only as a constant.  Incorrect. This is a characteristic of a linear term.   It includes the dependent variable inside another function.  Correct! A nonlinear term includes the dependent variable inside another function.   It involves the independent variable only.  Incorrect. This is a characteristic of a linear term.     Which term is an example of a nonlinear term?   Which term is an example of a nonlinear term?    Incorrect. is linear because it is a constant.    Incorrect. is linear because it is a function of the independent variable only.    Correct! is nonlinear because the dependent variable is squared.    Incorrect. is linear because it is a function of the independent variable multiplied by the dependent variable.     Select the Linear Terms  Click on all of the linear terms in the following differential equation.                      In this equation, , , , and are linear terms.   Review     Select the Nonlinear Terms  Click on all of the nonlinear terms in the following differential equation.                         In this equation, and are nonlinear terms.   Review     "
+  "body": "Linear Terms  The most informative label you can place on a differential equation is whether it is linear or nonlinear. While linearity often refers to equations that graph as straight lines, the concept of linearity in differential equations is more nuanced. Understanding this distinction is crucial as it significantly influences how the equations are solved and interpreted.  Before jumping in, it may be helpful to revisit meaning of dependent variables, terms and coefficients as we will be referencing them throughout this discussion.  Now, let's define what it means for a term in a differential equation to be linear.  Linear Term    Linear Term  A term that has one of the forms     where is the dependent variable. The coefficient, , can be a function of the independent variable, , but not the dependent variable.      The linearity of a term depends entirely on the dependent variable  The linearity of a term is determined by the presence of a single or derivative of to the power of . The coefficients, play no part in the linearity.   Identify the Linear and Nonlinear Terms     To determine the linearity of a term we only need to consider the dependent variables (column below). We are looking for a single or derivative of raised to the power of . If we find such a term, we label it as linear. Otherwise, it is nonlinear. Let's separate the different parts in the following table.        Term  Coefficient  Dependent Variables  Linearity       linear       nonlinear       nonlinear       linear       nonlinear       nonlinear             Linearity depends  on this column only      Note, since constant terms do not contain a dependent variable, they are necessarily linear. So, in the context of differential equations, is also a linear term.    To help identify nonlinear terms, here are some common characteristics:  Identifying Nonlinear Terms  A term is nonlinear if it contains a dependent variable, or , that is     Raised to a power other than 1, e.g., or .    Inside another function, e.g., or .    Multiplied or divided by another or , e.g., or .      Let's practice this with one more example.  Determine the Linearity of Each Term in the following Equations                       Check-Point Questions   Assume that and are the dependent and independent variables, respectively.    is a linear term    is a linear term    True  Correct! The term is linear because it is a function of the independent variable only.   False  Incorrect, review the examples of linear terms in the section on Linear Terms.     is a linear term    is a linear term    True  Correct! The term is linear.   False  Incorrect. The term is indeed linear.     is a linear term    is a linear term    True  Incorrect, review the rules for identifying nonlinear terms.   False  Correct! A term that includes the derivative of the dependent variable inside another function is nonlinear.     is a linear term    is a linear term    False  Correct! The term is nonlinear because the dependent variable is inside an exponential function.   True  Incorrect. Review the rules for identifying nonlinear terms.     Identify the linear term in the equation:    Identify the linear term in the equation:     Correct! The term is linear because it involves a single derivative of the dependent variable.    Incorrect. This term is nonlinear.    Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.    Incorrect. This term is linear because it involves the independent variable only.     Which of the following is a nonlinear term?    Which of the following is a nonlinear term?     Incorrect. This is a linear term.    I The term is nonlinear because it involves a derivative inside a trigonometric function.    Incorrect. This is a linear term.    Incorrect. This is a linear term.     A linear term can contain the dependent variable multiplied by the independent variable    A linear term can contain the dependent variable multiplied by the independent variable    True  Correct! For example, is a linear term.   False  Incorrect. Carefully review the examples above.     Which of the following terms is linear?    Which of the following terms is linear?     Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Correct! is linear because it is a function of the independent variable multiplied by the first derivative of the dependent variable.    Incorrect. is nonlinear because it includes the dependent variable inside another function.    Incorrect. is nonlinear because it involves the product of the dependent variable and its derivative.     Which of the following terms is linear?    Which of the following terms is linear?     Correct! is linear because it is a function of the independent variable multiplied by the second derivative of the dependent variable.    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Incorrect. is nonlinear because the dependent variable is squared.    Incorrect. is nonlinear because it involves the product of the dependent variable and a function of the dependent variable.     Which of the following is a characteristic of a nonlinear term?    Which of the following is a characteristic of a nonlinear term?    It involves the dependent variable raised to the first power.  Incorrect. This is a characteristic of a linear term.   It involves the dependent variable only as a constant.  Incorrect. This is a characteristic of a linear term.   It includes the dependent variable inside another function.  Correct! A nonlinear term includes the dependent variable inside another function.   It involves the independent variable only.  Incorrect. This is a characteristic of a linear term.     Which term is an example of a nonlinear term?    Which term is an example of a nonlinear term?     Incorrect. is linear because it is a constant.    Incorrect. is linear because it is a function of the independent variable only.    Correct! is nonlinear because the dependent variable is squared.    Incorrect. is linear because it is a function of the independent variable multiplied by the dependent variable.     Select the Linear Terms   Click on all of the linear terms in the following differential equation.                       In this equation, , , , and are linear terms.   Review     Select the Nonlinear Terms   Click on all of the nonlinear terms in the following differential equation.                          In this equation, and are nonlinear terms.   Review     "
 },
 {
   "id": "main-5-3-8-5",
@@ -438,8 +438,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-8.html#main-5-3-8-7",
   "type": "Example",
   "number": "13",
-  "title": "",
-  "body": " Given the differential equation, , identify each term and label the term as linear or nonlinear. Solution  To determine the linearity of a term we only need to consider the dependent variables (column below). We are looking for a single or derivative of raised to the power of . If we find such a term, we label it as linear. Otherwise, it is nonlinear. Let's separate the different parts in the following table.        Term  Coefficient  Dependent Variables  Linearity       linear       nonlinear       nonlinear       linear       nonlinear       nonlinear             Linearity depends  on this column only      Note, since constant terms do not contain a dependent variable, they are necessarily linear. So, in the context of differential equations, is also a linear term.   "
+  "title": "Identify the Linear and Nonlinear Terms.",
+  "body": "Identify the Linear and Nonlinear Terms     To determine the linearity of a term we only need to consider the dependent variables (column below). We are looking for a single or derivative of raised to the power of . If we find such a term, we label it as linear. Otherwise, it is nonlinear. Let's separate the different parts in the following table.        Term  Coefficient  Dependent Variables  Linearity       linear       nonlinear       nonlinear       linear       nonlinear       nonlinear             Linearity depends  on this column only      Note, since constant terms do not contain a dependent variable, they are necessarily linear. So, in the context of differential equations, is also a linear term.   "
 },
 {
   "id": "main-5-3-8-11",
@@ -447,8 +447,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-8.html#main-5-3-8-11",
   "type": "Example",
   "number": "14",
-  "title": "",
-  "body": " Determine the linearity of each term in the following differential equations.    Solution         Solution        "
+  "title": "Determine the Linearity of Each Term in the following Equations.",
+  "body": "Determine the Linearity of Each Term in the following Equations                      "
 },
 {
   "id": "p1-c1-s6-rq1",
@@ -457,7 +457,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(3t\\)<\/span> is a linear term<\/em>.",
-  "body": " is a linear term   is a linear term   True  Correct! The term is linear because it is a function of the independent variable only.   False  Incorrect, review the examples of linear terms in the section on Linear Terms.   "
+  "body": " is a linear term    is a linear term    True  Correct! The term is linear because it is a function of the independent variable only.   False  Incorrect, review the examples of linear terms in the section on Linear Terms.   "
 },
 {
   "id": "p1-c1-s6-rq2",
@@ -466,7 +466,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(y \\sin(t)\\)<\/span> is a linear term<\/em>.",
-  "body": " is a linear term   is a linear term   True  Correct! The term is linear.   False  Incorrect. The term is indeed linear.   "
+  "body": " is a linear term    is a linear term    True  Correct! The term is linear.   False  Incorrect. The term is indeed linear.   "
 },
 {
   "id": "p1-c1-s6-rq3",
@@ -475,7 +475,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(t\\sin(y')\\)<\/span> is a linear term<\/em>.",
-  "body": " is a linear term   is a linear term   True  Incorrect, review the rules for identifying nonlinear terms.   False  Correct! A term that includes the derivative of the dependent variable inside another function is nonlinear.   "
+  "body": " is a linear term    is a linear term    True  Incorrect, review the rules for identifying nonlinear terms.   False  Correct! A term that includes the derivative of the dependent variable inside another function is nonlinear.   "
 },
 {
   "id": "p1-c1-s6-rq4",
@@ -484,7 +484,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(e^{ty}\\)<\/span> is a linear term<\/em>.",
-  "body": " is a linear term   is a linear term   False  Correct! The term is nonlinear because the dependent variable is inside an exponential function.   True  Incorrect. Review the rules for identifying nonlinear terms.   "
+  "body": " is a linear term    is a linear term    False  Correct! The term is nonlinear because the dependent variable is inside an exponential function.   True  Incorrect. Review the rules for identifying nonlinear terms.   "
 },
 {
   "id": "p1-c1-s6-rq5",
@@ -493,7 +493,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.5",
   "title": "<em class=\"emphasis\">Identify the linear term in the equation: <span class=\"process-math\">\\(\\ds\\frac{1}{t}y'' + y^2 + \\ln(y') = e^t\\)<\/span><\/em>.",
-  "body": " Identify the linear term in the equation:   Identify the linear term in the equation:    Correct! The term is linear because it involves a single derivative of the dependent variable.    Incorrect. This term is nonlinear.    Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.    Incorrect. This term is linear because it involves the independent variable only.   "
+  "body": " Identify the linear term in the equation:    Identify the linear term in the equation:     Correct! The term is linear because it involves a single derivative of the dependent variable.    Incorrect. This term is nonlinear.    Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.    Incorrect. This term is linear because it involves the independent variable only.   "
 },
 {
   "id": "p1-c1-s6-rq6",
@@ -502,7 +502,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.6",
   "title": "<em class=\"emphasis\">Which of the following is a nonlinear term?<\/em>",
-  "body": " Which of the following is a nonlinear term?   Which of the following is a nonlinear term?    Incorrect. This is a linear term.    I The term is nonlinear because it involves a derivative inside a trigonometric function.    Incorrect. This is a linear term.    Incorrect. This is a linear term.   "
+  "body": " Which of the following is a nonlinear term?    Which of the following is a nonlinear term?     Incorrect. This is a linear term.    I The term is nonlinear because it involves a derivative inside a trigonometric function.    Incorrect. This is a linear term.    Incorrect. This is a linear term.   "
 },
 {
   "id": "p1-c1-s6-rq7",
@@ -511,7 +511,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.7",
   "title": "<em class=\"emphasis\">A linear term can contain the dependent variable multiplied by the independent variable<\/em>.",
-  "body": " A linear term can contain the dependent variable multiplied by the independent variable   A linear term can contain the dependent variable multiplied by the independent variable   True  Correct! For example, is a linear term.   False  Incorrect. Carefully review the examples above.   "
+  "body": " A linear term can contain the dependent variable multiplied by the independent variable    A linear term can contain the dependent variable multiplied by the independent variable    True  Correct! For example, is a linear term.   False  Incorrect. Carefully review the examples above.   "
 },
 {
   "id": "p1-c1-s6-rq8",
@@ -520,7 +520,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.8",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
-  "body": " Which of the following terms is linear?   Which of the following terms is linear?    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Correct! is linear because it is a function of the independent variable multiplied by the first derivative of the dependent variable.    Incorrect. is nonlinear because it includes the dependent variable inside another function.    Incorrect. is nonlinear because it involves the product of the dependent variable and its derivative.   "
+  "body": " Which of the following terms is linear?    Which of the following terms is linear?     Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Correct! is linear because it is a function of the independent variable multiplied by the first derivative of the dependent variable.    Incorrect. is nonlinear because it includes the dependent variable inside another function.    Incorrect. is nonlinear because it involves the product of the dependent variable and its derivative.   "
 },
 {
   "id": "p1-c1-s6-rq9",
@@ -529,7 +529,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.9",
   "title": "<em class=\"emphasis\">Which of the following terms is linear?<\/em>",
-  "body": " Which of the following terms is linear?   Which of the following terms is linear?    Correct! is linear because it is a function of the independent variable multiplied by the second derivative of the dependent variable.    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Incorrect. is nonlinear because the dependent variable is squared.    Incorrect. is nonlinear because it involves the product of the dependent variable and a function of the dependent variable.   "
+  "body": " Which of the following terms is linear?    Which of the following terms is linear?     Correct! is linear because it is a function of the independent variable multiplied by the second derivative of the dependent variable.    Incorrect. is nonlinear because the dependent variable is raised to a power other than one.    Incorrect. is nonlinear because the dependent variable is squared.    Incorrect. is nonlinear because it involves the product of the dependent variable and a function of the dependent variable.   "
 },
 {
   "id": "p1-c1-s6-rq10",
@@ -538,7 +538,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.10",
   "title": "<em class=\"emphasis\">Which of the following is a characteristic of a nonlinear term?<\/em>",
-  "body": " Which of the following is a characteristic of a nonlinear term?   Which of the following is a characteristic of a nonlinear term?   It involves the dependent variable raised to the first power.  Incorrect. This is a characteristic of a linear term.   It involves the dependent variable only as a constant.  Incorrect. This is a characteristic of a linear term.   It includes the dependent variable inside another function.  Correct! A nonlinear term includes the dependent variable inside another function.   It involves the independent variable only.  Incorrect. This is a characteristic of a linear term.   "
+  "body": " Which of the following is a characteristic of a nonlinear term?    Which of the following is a characteristic of a nonlinear term?    It involves the dependent variable raised to the first power.  Incorrect. This is a characteristic of a linear term.   It involves the dependent variable only as a constant.  Incorrect. This is a characteristic of a linear term.   It includes the dependent variable inside another function.  Correct! A nonlinear term includes the dependent variable inside another function.   It involves the independent variable only.  Incorrect. This is a characteristic of a linear term.   "
 },
 {
   "id": "p1-c1-s6-rq11",
@@ -547,7 +547,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.11",
   "title": "<em class=\"emphasis\">Which term is an example of a nonlinear term?<\/em>",
-  "body": " Which term is an example of a nonlinear term?   Which term is an example of a nonlinear term?    Incorrect. is linear because it is a constant.    Incorrect. is linear because it is a function of the independent variable only.    Correct! is nonlinear because the dependent variable is squared.    Incorrect. is linear because it is a function of the independent variable multiplied by the dependent variable.   "
+  "body": " Which term is an example of a nonlinear term?    Which term is an example of a nonlinear term?     Incorrect. is linear because it is a constant.    Incorrect. is linear because it is a function of the independent variable only.    Correct! is nonlinear because the dependent variable is squared.    Incorrect. is linear because it is a function of the independent variable multiplied by the dependent variable.   "
 },
 {
   "id": "p1-c1-s6-rq12",
@@ -556,7 +556,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.12",
   "title": "<em class=\"emphasis\">Select the Linear Terms<\/em>.",
-  "body": " Select the Linear Terms  Click on all of the linear terms in the following differential equation.                      In this equation, , , , and are linear terms.   Review   "
+  "body": " Select the Linear Terms   Click on all of the linear terms in the following differential equation.                       In this equation, , , , and are linear terms.   Review   "
 },
 {
   "id": "p1-c1-s6-rq13",
@@ -565,7 +565,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.6.13",
   "title": "<em class=\"emphasis\">Select the Nonlinear Terms<\/em>.",
-  "body": " Select the Nonlinear Terms  Click on all of the nonlinear terms in the following differential equation.                         In this equation, and are nonlinear terms.   Review   "
+  "body": " Select the Nonlinear Terms   Click on all of the nonlinear terms in the following differential equation.                          In this equation, and are nonlinear terms.   Review   "
 },
 {
   "id": "main-5-3-9",
@@ -574,7 +574,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.7",
   "title": "Linearity",
-  "body": "Linearity  In the world of differential equations, distinguishing between linear and nonlinear equations is vital. This distinction will often guide you on how to approach solving the equation and what methods to use. The good news is, all the work we did in the previous section will make this task much easier.   A differential equation is linear if it contains only linear terms. That is, it can be expressed as If just one of the terms in the equation is nonlinear, then the entire differential equation is nonlinear .   This definition might seem abstract at first, but it encompasses all possible linear differential equations. In practice, most equations you'll encounter will involve only a few terms, and the challenge lies in identifying whether any of those terms break the rule of linearity. If they do, the equation is nonlinear.   Let's determine whether the following differential equation is linear:  Solution  To classify this equation, we need to verify if every term involving and its derivatives is linear. Let's break it down term by term:   Since each term involving or its derivatives is linear, this differential equation is indeed linear.    In summary, recognizing whether a differential equation is linear or nonlinear will help you determine the appropriate methods for solving it. Linear equations allow for a more straightforward approach, while nonlinear equations often require specialized techniques.  Check-Point Questions  The differential equation is linear  The differential equation is linear    True  Correct! This equation is linear as all terms involving and its derivatives appear to the first power, and there are no nonlinear functions of .    False  Incorrect. This equation is indeed linear because both and are to the first power and are not inside any nonlinear functions.     The differential equation, , is   The differential equation, , is   Linear   Yes! This DE is linear. Each term involving or its derivatives, such as , , and , is linear. A linear differential equation contains terms where the dependent variable and its derivatives appear to the first power and are not multiplied by each other.    Nonlinear   No, this is linear. Looking carefully at each term, we see:   Since every term is linear, this differential equation is linear. Review the definition of linear differential equations.      The differential equation, , is   The differential equation, , is   Linear   No, this is nonlinear. Looking carefully at each term, we see:   Since one term is not linear, this differential equation is nonlinear. Revisit the rules for linearity and nonlinearity.    Nonlinear   Yes! This DE is nonlinear since the term is not linear. Nonlinear terms involve functions like sine, logarithms, or powers greater than one when applied to the dependent variable .     The differential equation, , is   The differential equation, , is    Linear  Incorrect. The term makes this equation nonlinear, as it involves the exponential function of the dependent variable.    Nonlinear  Correct! The term introduces nonlinearity into the equation, as it involves the dependent variable inside an exponential function.    Select the linear differential equation  Select the linear differential equation     Incorrect. The term makes this equation nonlinear.     Incorrect. The term makes this equation nonlinear.     Correct! All terms are linear in this equation, making it a linear differential equation.     Incorrect. The term introduces nonlinearity in this equation.    Which term makes the equation nonlinear?  Which term makes the equation nonlinear?     Correct! The term is nonlinear because the dependent variable is raised to the second power.     Incorrect. While this term includes a function of , it is still linear because appears to the first power.     Incorrect. The term is linear because and its derivatives are to the first power.     Select all the linear differential equations   Select all the linear differential equations                Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.   Remember that a linear differential equation contains only linear terms. Four of these equations are linear.    Select all the nonlinear differential equations  Click on all of the linear differential equations.                             Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.   First identify the dependent variable, then carefully look at each term to determine if it is nonlinear.    "
+  "body": "Linearity  In the world of differential equations, distinguishing between linear and nonlinear equations is vital. This distinction will often guide you on how to approach solving the equation and what methods to use. The good news is, all the work we did in the previous section will make this task much easier.   A differential equation is linear if it contains only linear terms. That is, it can be expressed as If just one of the terms in the equation is nonlinear, then the entire differential equation is nonlinear .   This definition might seem abstract at first, but it encompasses all possible linear differential equations. In practice, most equations you'll encounter will involve only a few terms, and the challenge lies in identifying whether any of those terms break the rule of linearity. If they do, the equation is nonlinear.  Determine if the equation is linear or nonlinear     To classify this equation, we need to verify if every term involving and its derivatives is linear. Let's break it down term by term:   Since each term involving or its derivatives is linear, this differential equation is indeed linear.    In summary, recognizing whether a differential equation is linear or nonlinear will help you determine the appropriate methods for solving it. Linear equations allow for a more straightforward approach, while nonlinear equations often require specialized techniques.  Check-Point Questions  The differential equation is linear   The differential equation is linear     True  Correct! This equation is linear as all terms involving and its derivatives appear to the first power, and there are no nonlinear functions of .    False  Incorrect. This equation is indeed linear because both and are to the first power and are not inside any nonlinear functions.     The differential equation, , is    The differential equation, , is    Linear   Yes! This DE is linear. Each term involving or its derivatives, such as , , and , is linear. A linear differential equation contains terms where the dependent variable and its derivatives appear to the first power and are not multiplied by each other.    Nonlinear   No, this is linear. Looking carefully at each term, we see:   Since every term is linear, this differential equation is linear. Review the definition of linear differential equations.      The differential equation, , is    The differential equation, , is    Linear   No, this is nonlinear. Looking carefully at each term, we see:   Since one term is not linear, this differential equation is nonlinear. Revisit the rules for linearity and nonlinearity.    Nonlinear   Yes! This DE is nonlinear since the term is not linear. Nonlinear terms involve functions like sine, logarithms, or powers greater than one when applied to the dependent variable .     The differential equation, , is    The differential equation, , is     Linear  Incorrect. The term makes this equation nonlinear, as it involves the exponential function of the dependent variable.    Nonlinear  Correct! The term introduces nonlinearity into the equation, as it involves the dependent variable inside an exponential function.    Select the linear differential equation   Select the linear differential equation      Incorrect. The term makes this equation nonlinear.     Incorrect. The term makes this equation nonlinear.     Correct! All terms are linear in this equation, making it a linear differential equation.     Incorrect. The term introduces nonlinearity in this equation.    Which term makes the equation nonlinear?   Which term makes the equation nonlinear?      Correct! The term is nonlinear because the dependent variable is raised to the second power.     Incorrect. While this term includes a function of , it is still linear because appears to the first power.     Incorrect. The term is linear because and its derivatives are to the first power.     Click-on all the linear differential equations    Click-on all the linear differential equations                 Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.   Remember that a linear differential equation contains only linear terms. Four of these equations are linear.    Click-on all the nonlinear differential equations    Click-on all the nonlinear differential equations                               Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.  Hint  First identify the dependent variable, then carefully look at each term to determine if it is nonlinear.    "
 },
 {
   "id": "def-linear",
@@ -591,8 +591,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9.html#main-5-3-9-5",
   "type": "Example",
   "number": "16",
-  "title": "",
-  "body": " Let's determine whether the following differential equation is linear:  Solution  To classify this equation, we need to verify if every term involving and its derivatives is linear. Let's break it down term by term:   Since each term involving or its derivatives is linear, this differential equation is indeed linear.   "
+  "title": "Determine if the equation is linear or nonlinear.",
+  "body": "Determine if the equation is linear or nonlinear     To classify this equation, we need to verify if every term involving and its derivatives is linear. Let's break it down term by term:   Since each term involving or its derivatives is linear, this differential equation is indeed linear.   "
 },
 {
   "id": "p1-c1-s7-rq1",
@@ -600,8 +600,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq1",
   "type": "Reading Question",
   "number": "1.7.1",
-  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\frac{dy}{dt} + t^2 y = e^t\\)<\/span> is linear<\/em>.",
-  "body": "The differential equation is linear  The differential equation is linear    True  Correct! This equation is linear as all terms involving and its derivatives appear to the first power, and there are no nonlinear functions of .    False  Incorrect. This equation is indeed linear because both and are to the first power and are not inside any nonlinear functions.   "
+  "title": "<em class=\"emphasis\">The differential equation <span class=\"process-math\">\\(\\ds\\frac{dy}{dt} + t^2 y = e^t\\)<\/span> is linear<\/em>.",
+  "body": "The differential equation is linear   The differential equation is linear     True  Correct! This equation is linear as all terms involving and its derivatives appear to the first power, and there are no nonlinear functions of .    False  Incorrect. This equation is indeed linear because both and are to the first power and are not inside any nonlinear functions.   "
 },
 {
   "id": "p1-c1-s7-rq2",
@@ -609,8 +609,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq2",
   "type": "Reading Question",
   "number": "1.7.2",
-  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + y' \\cos t = 7y \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
-  "body": " The differential equation, , is   The differential equation, , is   Linear   Yes! This DE is linear. Each term involving or its derivatives, such as , , and , is linear. A linear differential equation contains terms where the dependent variable and its derivatives appear to the first power and are not multiplied by each other.    Nonlinear   No, this is linear. Looking carefully at each term, we see:   Since every term is linear, this differential equation is linear. Review the definition of linear differential equations.    "
+  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + y' \\cos t = 7y \\text{,}\\)<\/span> is <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " The differential equation, , is    The differential equation, , is    Linear   Yes! This DE is linear. Each term involving or its derivatives, such as , , and , is linear. A linear differential equation contains terms where the dependent variable and its derivatives appear to the first power and are not multiplied by each other.    Nonlinear   No, this is linear. Looking carefully at each term, we see:   Since every term is linear, this differential equation is linear. Review the definition of linear differential equations.    "
 },
 {
   "id": "p1-c1-s7-rq3",
@@ -618,8 +618,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq3",
   "type": "Reading Question",
   "number": "1.7.3",
-  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + \\sin(y) = 17t \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
-  "body": " The differential equation, , is   The differential equation, , is   Linear   No, this is nonlinear. Looking carefully at each term, we see:   Since one term is not linear, this differential equation is nonlinear. Revisit the rules for linearity and nonlinearity.    Nonlinear   Yes! This DE is nonlinear since the term is not linear. Nonlinear terms involve functions like sine, logarithms, or powers greater than one when applied to the dependent variable .    "
+  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds y'' + \\sin(y) = 17t \\text{,}\\)<\/span> is <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": " The differential equation, , is    The differential equation, , is    Linear   No, this is nonlinear. Looking carefully at each term, we see:   Since one term is not linear, this differential equation is nonlinear. Revisit the rules for linearity and nonlinearity.    Nonlinear   Yes! This DE is nonlinear since the term is not linear. Nonlinear terms involve functions like sine, logarithms, or powers greater than one when applied to the dependent variable .    "
 },
 {
   "id": "p1-c1-s7-rq4",
@@ -627,8 +627,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq4",
   "type": "Reading Question",
   "number": "1.7.4",
-  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds \\frac{d^2x}{dt^2} + e^x = 0 \\text{,}\\)<\/span> is <span class=\"fillin underline\" role=\"img\" aria-label=\"8-character blank\" style=\"width: 3.636363636363636em;\" \/><\/em>.",
-  "body": "The differential equation, , is   The differential equation, , is    Linear  Incorrect. The term makes this equation nonlinear, as it involves the exponential function of the dependent variable.    Nonlinear  Correct! The term introduces nonlinearity into the equation, as it involves the dependent variable inside an exponential function.   "
+  "title": "<em class=\"emphasis\">The differential equation, <span class=\"process-math\">\\(\\ds \\frac{d^2x}{dt^2} + e^x = 0 \\text{,}\\)<\/span> is <span class=\"process-math\">\\(\\ul{\\qquad}\\)<\/span><\/em>.",
+  "body": "The differential equation, , is    The differential equation, , is     Linear  Incorrect. The term makes this equation nonlinear, as it involves the exponential function of the dependent variable.    Nonlinear  Correct! The term introduces nonlinearity into the equation, as it involves the dependent variable inside an exponential function.   "
 },
 {
   "id": "p1-c1-s7-rq5",
@@ -637,7 +637,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.7.5",
   "title": "<em class=\"emphasis\">Select the linear differential equation<\/em>.",
-  "body": "Select the linear differential equation  Select the linear differential equation     Incorrect. The term makes this equation nonlinear.     Incorrect. The term makes this equation nonlinear.     Correct! All terms are linear in this equation, making it a linear differential equation.     Incorrect. The term introduces nonlinearity in this equation.   "
+  "body": "Select the linear differential equation   Select the linear differential equation      Incorrect. The term makes this equation nonlinear.     Incorrect. The term makes this equation nonlinear.     Correct! All terms are linear in this equation, making it a linear differential equation.     Incorrect. The term introduces nonlinearity in this equation.   "
 },
 {
   "id": "p1-c1-s7-rq6",
@@ -646,7 +646,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "1.7.6",
   "title": "<em class=\"emphasis\">Which term makes the equation <span class=\"process-math\">\\(\\ds y''' + 3y' \\sin(t) + y^2 = 0\\)<\/span> nonlinear?<\/em>",
-  "body": "Which term makes the equation nonlinear?  Which term makes the equation nonlinear?     Correct! The term is nonlinear because the dependent variable is raised to the second power.     Incorrect. While this term includes a function of , it is still linear because appears to the first power.     Incorrect. The term is linear because and its derivatives are to the first power.   "
+  "body": "Which term makes the equation nonlinear?   Which term makes the equation nonlinear?      Correct! The term is nonlinear because the dependent variable is raised to the second power.     Incorrect. While this term includes a function of , it is still linear because appears to the first power.     Incorrect. The term is linear because and its derivatives are to the first power.   "
 },
 {
   "id": "p1-c1-s7-rq7",
@@ -654,8 +654,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq7",
   "type": "Reading Question",
   "number": "1.7.7",
-  "title": "<em class=\"emphasis\">Select all the linear differential equations<\/em>.",
-  "body": " Select all the linear differential equations   Select all the linear differential equations                Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.   Remember that a linear differential equation contains only linear terms. Four of these equations are linear.  "
+  "title": "<em class=\"emphasis\">Click-on all the linear differential equations<\/em>.",
+  "body": " Click-on all the linear differential equations    Click-on all the linear differential equations                 Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.   Remember that a linear differential equation contains only linear terms. Four of these equations are linear.  "
 },
 {
   "id": "p1-c1-s7-rq8",
@@ -663,8 +663,8 @@ var ptx_lunr_docs = [
   "url": "main-5-3-9-7.html#p1-c1-s7-rq8",
   "type": "Reading Question",
   "number": "1.7.8",
-  "title": "<em class=\"emphasis\">Select all the nonlinear differential equations<\/em>.",
-  "body": " Select all the nonlinear differential equations  Click on all of the linear differential equations.                             Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.   First identify the dependent variable, then carefully look at each term to determine if it is nonlinear.  "
+  "title": "<em class=\"emphasis\">Click-on all the nonlinear differential equations<\/em>.",
+  "body": " Click-on all the nonlinear differential equations    Click-on all the nonlinear differential equations                               Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.  Hint  First identify the dependent variable, then carefully look at each term to determine if it is nonlinear.  "
 },
 {
   "id": "main-5-3-10",
@@ -673,7 +673,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.8",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises    Summary of the Key Ideas     Differential Equation   Differential equations are equations that contain derivatives, where the unknowns are functions.  They describe how quantities change over time or space.     An Analogy   Like standard equations, differential equations aim to solve for an unknown, but this unknown is a function rather than a number.     Dependent & Independent Variables   Differential equations involve both dependent (unknown function) and independent variables.  The derivatives in the equation apply to the dependent variable.     Terms & Coefficients   Terms in a differential equation are separated by , , or signs.  Coefficients are constants or functions that multiply the dependent variable or its derivatives.     Order of a Differential Equation   The order of a differential equation is determined by the highest derivative present.     Linearity of a Differential Equation   A differential equation is linear if it contains only linear combinations of the dependent variable and its derivatives.  Otherwise, it is nonlinear.          Conceptual Review   Fill in the blanks   Fill in each blank with one of the following terms:   dependent, independent, function, or differential equation .    In this book, DE stands for .  differential equation    The solution to a differential equation is a .  function    The solution to a differential equation is represented by the variable of the equation.  dependent    Solving a differential equation means finding the variable as a function of the variable.  dependent , independent        True or False    A differential equation is an equation that involves one or more integrals of an unknown function.  False . A differential equation is an equation that involves one or more derivatives of an unknown function, not integrals.   The dependent variable is a function of the independent varaible.  True .   The independent variable is a function of the dependent varaible.  False . The dependent variable is the function, which depends on the independent variable.   An Ordinary Differential Equation (ODE) contains more than one independent variable.  False . An Ordinary Differential Equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a Partial Differential Equation (PDE).      What is the dependent variable in the following differential equation?   The dependent variable in this equation is .       Identify the Variable   Identify the dependent and independent variables of the following DEs:   Solution  The first equation has dependent variable and independent variable .  The second has dependent variable and independent variable .    Identify the Variables    For each of the following differential equations, identify the independent variable and the dependent variable.      independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:     Determine the Order   For each of the following differential equations, identify the dependent variable and the order.      dependent variable:   2nd order      dependent variable:   3rd order      dependent variable:   4th order      dependent variable:   2nd order      dependent variable:   2nd order      dependent variable:   2nd order      dependent variable:   3rd order      dependent variable:   2nd order      dependent variable:   1st order      dependent variable:   2nd order      dependent variable:   1st order      dependent variable:   1st order    Variables & Linearity   For each of the following differential equations, identify the independent and dependent variables, the order, and whether it is linear or nonlinear. If nonlinear, give one term in the expression that breaks the linearity.      independent variable:   dependent variable:   2nd order  linear      independent variable:   dependent variable:   3rd order  nonlinear, term:       independent variable:   dependent variable:   4th order  linear      independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   2nd order  nonlinear, term: or       independent variable:   dependent variable:   3rd order  linear      independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   1st order  nonlinear, term:       independent variable:   dependent variable:   2nd order  linear      independent variable:   dependent variable:   1st order  linear      independent variable:   dependent variable:   1st order  nonlinear, term:       Conceptual Review   Fill in the blanks   Fill in each blank with one of the following terms:   dependent, independent, function, or differential equation .    In this book, DE stands for .  differential equation    The solution to a differential equation is a .  function    The solution to a differential equation is represented by the variable of the equation.  dependent    Solving a differential equation means finding the variable as a function of the variable.  dependent , independent        True or False    A differential equation is an equation that involves one or more integrals of an unknown function.  False . A differential equation is an equation that involves one or more derivatives of an unknown function, not integrals.   The dependent variable is a function of the independent varaible.  True .   The independent variable is a function of the dependent varaible.  False . The dependent variable is the function, which depends on the independent variable.   An Ordinary Differential Equation (ODE) contains more than one independent variable.  False . An Ordinary Differential Equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a Partial Differential Equation (PDE).      What is the dependent variable in the following differential equation?   The dependent variable in this equation is .       Identify the Variable   Identify the dependent and independent variables of the following DEs:   Solution  The first equation has dependent variable and independent variable .  The second has dependent variable and independent variable .    Identify the Variables    For each of the following differential equations, identify the independent variable and the dependent variable.      independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:       independent variable:   dependent variable:     Determine the Order   For each of the following differential equations, identify the dependent variable and the order.      dependent variable:   2nd order      dependent variable:   3rd order      dependent variable:   4th order      dependent variable:   2nd order      dependent variable:   2nd order      dependent variable:   2nd order      dependent variable:   3rd order      dependent variable:   2nd order      dependent variable:   1st order      dependent variable:   2nd order      dependent variable:   1st order      dependent variable:   1st order    Variables & Linearity   For each of the following differential equations, identify the independent and dependent variables, the order, and whether it is linear or nonlinear. If nonlinear, give one term in the expression that breaks the linearity.      independent variable:   dependent variable:   2nd order  linear      independent variable:   dependent variable:   3rd order  nonlinear, term:       independent variable:   dependent variable:   4th order  linear      independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   2nd order  nonlinear, term: or       independent variable:   dependent variable:   3rd order  linear      independent variable:   dependent variable:   2nd order  nonlinear, term:       independent variable:   dependent variable:   1st order  nonlinear, term:       independent variable:   dependent variable:   2nd order  linear      independent variable:   dependent variable:   1st order  linear      independent variable:   dependent variable:   1st order  nonlinear, term:      "
+  "body": "Summary & Exercises    Summary of the Key Ideas     Differential Equation   Differential equations are equations that contain derivatives, where the unknowns are functions.  They describe how quantities change over time or space.     An Analogy   Like standard equations, differential equations aim to solve for an unknown, but this unknown is a function rather than a number.     Dependent & Independent Variables   Differential equations involve both dependent (unknown function) and independent variables.  The derivatives in the equation apply to the dependent variable.     Terms & Coefficients   Terms in a differential equation are separated by , , or signs.  Coefficients are constants or functions that multiply the dependent variable or its derivatives.     Order of a Differential Equation   The order of a differential equation is determined by the highest derivative present.     Linearity of a Differential Equation   A differential equation is linear if it contains only linear combinations of the dependent variable and its derivatives.  Otherwise, it is nonlinear.          Conceptual Review   Fill in the blanks   Fill in each blank with one of the following terms:   dependent, independent, function, or differential equation .    In this book, DE stands for .  differential equation    The solution to a differential equation is a .  function    The solution to a differential equation is represented by the variable of the equation.  dependent    Solving a differential equation means finding the variable as a function of the variable.  dependent , independent        True or False    A differential equation is an equation that involves one or more integrals of an unknown function.  False . A differential equation is an equation that involves one or more derivatives of an unknown function, not integrals.   The dependent variable is a function of the independent varaible.  True .   The independent variable is a function of the dependent varaible.  False . The dependent variable is the function, which depends on the independent variable.   An Ordinary Differential Equation (ODE) contains more than one independent variable.  False . An Ordinary Differential Equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a Partial Differential Equation (PDE).      What is the dependent variable in the following differential equation?  Answer   The dependent variable in this equation is .        Identify the Variable   Identify the dependent and independent variables of the following DEs:   Solution  The first equation has dependent variable and independent variable .  The second has dependent variable and independent variable .    Identify the Variables    For each of the following differential equations, identify the independent variable and the dependent variable.     Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:      Determine the Order   For each of the following differential equations, identify the dependent variable and the order.     Answer   dependent variable:   2nd order      Answer   dependent variable:   3rd order      Answer   dependent variable:   4th order      Answer   dependent variable:   2nd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   3rd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   1st order      Answer   dependent variable:   2nd order      Answer   dependent variable:   1st order      Answer   dependent variable:   1st order     Variables & Linearity   For each of the following differential equations, identify the independent and dependent variables, the order, and whether it is linear or nonlinear. If nonlinear, give one term in the expression that breaks the linearity.     Answer   independent variable:   dependent variable:   2nd order  linear      Answer   independent variable:   dependent variable:   3rd order  nonlinear, term:       Answer   independent variable:   dependent variable:   4th order  linear      Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  nonlinear, term: or       Answer   independent variable:   dependent variable:   3rd order  linear      Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   1st order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  linear      Answer   independent variable:   dependent variable:   1st order  linear      Answer   independent variable:   dependent variable:   1st order  nonlinear, term:        Conceptual Review   Fill in the blanks   Fill in each blank with one of the following terms:   dependent, independent, function, or differential equation .    In this book, DE stands for .  differential equation    The solution to a differential equation is a .  function    The solution to a differential equation is represented by the variable of the equation.  dependent    Solving a differential equation means finding the variable as a function of the variable.  dependent , independent        True or False    A differential equation is an equation that involves one or more integrals of an unknown function.  False . A differential equation is an equation that involves one or more derivatives of an unknown function, not integrals.   The dependent variable is a function of the independent varaible.  True .   The independent variable is a function of the dependent varaible.  False . The dependent variable is the function, which depends on the independent variable.   An Ordinary Differential Equation (ODE) contains more than one independent variable.  False . An Ordinary Differential Equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a Partial Differential Equation (PDE).      What is the dependent variable in the following differential equation?  Answer   The dependent variable in this equation is .        Identify the Variable   Identify the dependent and independent variables of the following DEs:   Solution  The first equation has dependent variable and independent variable .  The second has dependent variable and independent variable .    Identify the Variables    For each of the following differential equations, identify the independent variable and the dependent variable.     Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:       Answer   independent variable:   dependent variable:      Determine the Order   For each of the following differential equations, identify the dependent variable and the order.     Answer   dependent variable:   2nd order      Answer   dependent variable:   3rd order      Answer   dependent variable:   4th order      Answer   dependent variable:   2nd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   3rd order      Answer   dependent variable:   2nd order      Answer   dependent variable:   1st order      Answer   dependent variable:   2nd order      Answer   dependent variable:   1st order      Answer   dependent variable:   1st order     Variables & Linearity   For each of the following differential equations, identify the independent and dependent variables, the order, and whether it is linear or nonlinear. If nonlinear, give one term in the expression that breaks the linearity.     Answer   independent variable:   dependent variable:   2nd order  linear      Answer   independent variable:   dependent variable:   3rd order  nonlinear, term:       Answer   independent variable:   dependent variable:   4th order  linear      Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  nonlinear, term: or       Answer   independent variable:   dependent variable:   3rd order  linear      Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:       Answer   independent variable:   dependent variable:   1st order  nonlinear, term:       Answer   independent variable:   dependent variable:   2nd order  linear      Answer   independent variable:   dependent variable:   1st order  linear      Answer   independent variable:   dependent variable:   1st order  nonlinear, term:       "
 },
 {
   "id": "main-5-3-10-2-1",
@@ -709,7 +709,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.3",
   "title": "",
-  "body": " What is the dependent variable in the following differential equation?   The dependent variable in this equation is .    "
+  "body": " What is the dependent variable in the following differential equation?  Answer   The dependent variable in this equation is .     "
 },
 {
   "id": "main-5-3-10-3-2",
@@ -727,7 +727,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.5",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-4",
@@ -736,7 +736,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.6",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-5",
@@ -745,7 +745,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.7",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-6",
@@ -754,7 +754,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.8",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-7",
@@ -763,7 +763,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.9",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-8",
@@ -772,7 +772,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.10",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-9",
@@ -781,7 +781,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.11",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-3-10",
@@ -790,7 +790,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.12",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-3-4-3",
@@ -799,7 +799,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.13",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-4",
@@ -808,7 +808,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.14",
   "title": "",
-  "body": "   dependent variable:   3rd order  "
+  "body": "  Answer   dependent variable:   3rd order   "
 },
 {
   "id": "main-5-3-10-3-4-5",
@@ -817,7 +817,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.15",
   "title": "",
-  "body": "   dependent variable:   4th order  "
+  "body": "  Answer   dependent variable:   4th order   "
 },
 {
   "id": "main-5-3-10-3-4-6",
@@ -826,7 +826,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.16",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-7",
@@ -835,7 +835,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.17",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-8",
@@ -844,7 +844,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.18",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-9",
@@ -853,7 +853,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.19",
   "title": "",
-  "body": "   dependent variable:   3rd order  "
+  "body": "  Answer   dependent variable:   3rd order   "
 },
 {
   "id": "main-5-3-10-3-4-10",
@@ -862,7 +862,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.20",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-11",
@@ -871,7 +871,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.21",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-3-4-12",
@@ -880,7 +880,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.22",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-3-4-13",
@@ -889,7 +889,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.23",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-3-4-14",
@@ -898,7 +898,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.24",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-3-5-3",
@@ -907,7 +907,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.25",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  linear   "
 },
 {
   "id": "main-5-3-10-3-5-4",
@@ -916,7 +916,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.26",
   "title": "",
-  "body": "   independent variable:   dependent variable:   3rd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   3rd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-3-5-5",
@@ -925,7 +925,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.27",
   "title": "",
-  "body": "   independent variable:   dependent variable:   4th order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   4th order  linear   "
 },
 {
   "id": "main-5-3-10-3-5-6",
@@ -934,7 +934,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.28",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-3-5-7",
@@ -943,7 +943,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.29",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-3-5-8",
@@ -952,7 +952,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.30",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term: or   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term: or    "
 },
 {
   "id": "main-5-3-10-3-5-9",
@@ -961,7 +961,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.31",
   "title": "",
-  "body": "   independent variable:   dependent variable:   3rd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   3rd order  linear   "
 },
 {
   "id": "main-5-3-10-3-5-10",
@@ -970,7 +970,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.32",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-3-5-11",
@@ -979,7 +979,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.33",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-3-5-12",
@@ -988,7 +988,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.34",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  linear   "
 },
 {
   "id": "main-5-3-10-3-5-13",
@@ -997,7 +997,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.35",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  linear   "
 },
 {
   "id": "main-5-3-10-3-5-14",
@@ -1006,7 +1006,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.36",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-1-2",
@@ -1033,7 +1033,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.3",
   "title": "",
-  "body": " What is the dependent variable in the following differential equation?   The dependent variable in this equation is .    "
+  "body": " What is the dependent variable in the following differential equation?  Answer   The dependent variable in this equation is .     "
 },
 {
   "id": "main-5-3-10-4-2",
@@ -1051,7 +1051,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.5",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-4",
@@ -1060,7 +1060,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.6",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-5",
@@ -1069,7 +1069,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.7",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-6",
@@ -1078,7 +1078,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.8",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-7",
@@ -1087,7 +1087,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.9",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-8",
@@ -1096,7 +1096,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.10",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-9",
@@ -1105,7 +1105,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.11",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-3-10",
@@ -1114,7 +1114,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.12",
   "title": "",
-  "body": "   independent variable:   dependent variable:   "
+  "body": "  Answer   independent variable:   dependent variable:    "
 },
 {
   "id": "main-5-3-10-4-4-3",
@@ -1123,7 +1123,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.13",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-4",
@@ -1132,7 +1132,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.14",
   "title": "",
-  "body": "   dependent variable:   3rd order  "
+  "body": "  Answer   dependent variable:   3rd order   "
 },
 {
   "id": "main-5-3-10-4-4-5",
@@ -1141,7 +1141,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.15",
   "title": "",
-  "body": "   dependent variable:   4th order  "
+  "body": "  Answer   dependent variable:   4th order   "
 },
 {
   "id": "main-5-3-10-4-4-6",
@@ -1150,7 +1150,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.16",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-7",
@@ -1159,7 +1159,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.17",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-8",
@@ -1168,7 +1168,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.18",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-9",
@@ -1177,7 +1177,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.19",
   "title": "",
-  "body": "   dependent variable:   3rd order  "
+  "body": "  Answer   dependent variable:   3rd order   "
 },
 {
   "id": "main-5-3-10-4-4-10",
@@ -1186,7 +1186,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.20",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-11",
@@ -1195,7 +1195,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.21",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-4-4-12",
@@ -1204,7 +1204,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.22",
   "title": "",
-  "body": "   dependent variable:   2nd order  "
+  "body": "  Answer   dependent variable:   2nd order   "
 },
 {
   "id": "main-5-3-10-4-4-13",
@@ -1213,7 +1213,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.23",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-4-4-14",
@@ -1222,7 +1222,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.24",
   "title": "",
-  "body": "   dependent variable:   1st order  "
+  "body": "  Answer   dependent variable:   1st order   "
 },
 {
   "id": "main-5-3-10-4-5-3",
@@ -1231,7 +1231,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.25",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  linear   "
 },
 {
   "id": "main-5-3-10-4-5-4",
@@ -1240,7 +1240,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.26",
   "title": "",
-  "body": "   independent variable:   dependent variable:   3rd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   3rd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-5-5",
@@ -1249,7 +1249,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.27",
   "title": "",
-  "body": "   independent variable:   dependent variable:   4th order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   4th order  linear   "
 },
 {
   "id": "main-5-3-10-4-5-6",
@@ -1258,7 +1258,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.28",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-5-7",
@@ -1267,7 +1267,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.29",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-5-8",
@@ -1276,7 +1276,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.30",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term: or   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term: or    "
 },
 {
   "id": "main-5-3-10-4-5-9",
@@ -1285,7 +1285,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.31",
   "title": "",
-  "body": "   independent variable:   dependent variable:   3rd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   3rd order  linear   "
 },
 {
   "id": "main-5-3-10-4-5-10",
@@ -1294,7 +1294,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.32",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-5-11",
@@ -1303,7 +1303,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.33",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  nonlinear, term:    "
 },
 {
   "id": "main-5-3-10-4-5-12",
@@ -1312,7 +1312,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.34",
   "title": "",
-  "body": "   independent variable:   dependent variable:   2nd order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   2nd order  linear   "
 },
 {
   "id": "main-5-3-10-4-5-13",
@@ -1321,7 +1321,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.35",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  linear  "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  linear   "
 },
 {
   "id": "main-5-3-10-4-5-14",
@@ -1330,7 +1330,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1.8.36",
   "title": "",
-  "body": "   independent variable:   dependent variable:   1st order  nonlinear, term:   "
+  "body": "  Answer   independent variable:   dependent variable:   1st order  nonlinear, term:    "
 },
 {
   "id": "main-5-4-3",
@@ -1816,7 +1816,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.6",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   Summary of the Key Ideas     What is a Solution?   A solution to a differential equation is a function that, when substituted into the equation, satisfies the equation.     Verifying Solutions   Verification of a solution involves substituting the function into the equation and simplifying to check if a true statement is obtained.  To verify a solution, all terms should ideally be moved to one side of the equation, simplifying the process.     Types of Solutions   Differential equations can have different types of solutions: general and particular.  The general solution includes arbitrary constants and represents a family of solutions.  A particular solution is obtained by assigning specific values to these constants.     Initial Conditions   Initial conditions are values given for the solution or its derivatives at a specific point, often used to find a particular solution.  They help specify which member of the general solution family is applicable in a specific context.         Discuss the difference between a general solution, family of solutions, and a particualr solution.  Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.        a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes     Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.         a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes      Match each function on the left with a DE on the right if this function is a solution (i.e. is in the family of solutions) for this DE.                                                            Find all values of such that is a solution to .    Find all values of such that is a solution to .    Find all values of such that is a solution to .    Find all values of such that is a solution to .    Find all values of such that is a solution to .    Find all values of such that is a solution to .    Find the value of the constant in order for the differential equation to have the solution .    Is a solution of the differential equation  Yes  Find the value of    For each of the differential equations and function pairs, find all the possible values of such that the function is a solution to the DE.                      Explain the significance of initial condition(s) as they relate to the general solution of a differential equation.  The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution.  Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.   Does an initial condition always give you a particular solution?  When there is one constant in the general solution, yes.  When there is more than one constant in the general solution, no.  It does, however, limit the possible values of the constants.   Consider the differential equation   Verify that the family of functions a solution to this differential equation.  Find the particular solution that corresponds to the initial condition .    Yes   , so is the particular solution   Consider the differential equation Which of the following is a family of solutions for this DE?        Find the particular solution such that .  b.   , so is the particular solution  Solution   Try first.  Compute       So for this function, it is not the solution.  Now try . Then   while   So this function is the solution  Setting we get   Solve for c,  So the solution for the IVP is    Understanding what it means to Solve a DE   We spend a lot of time solving equations, but do you even remember what it means to be a solution? Let's review what it means to be a solution to an algebraic equation (as in question ), and then what it means to be a solution to a differential equation (as in question ), and then we'll extend those ideas in questions and .   Verify that is a solution to the equation  What confirms that is a solution? the LHS = RHS after substituting into both sides of the equation.  ( Note: Do not rearrange the equation to solve for . That would be the process of finding a solution; you are asked to verify a solution. ) Since we get the same result (21) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the equation. Solution  We substitute into the left hand side (LHS) of the equation, and then into the right hand side (RHS) of the equation: Since we get the same result when we substitute the solution into the RHS and into the LHS, we have confirmed that is a solution to the equation.   Verify that is a solution to the DE  Look back at the previous question and think about what it means to be a solution to a DE. Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the DE. Solution  We need to substitute into the DE. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the DE: Since when we substitute in to the DE, we find that the LHS is equal to the RHS, we have verified that is a solution to the DE    Consider the DE  Find all values of such that is a solution to the DE by taking derivatives and substituting into the DE, and then solving for .  no matter the value of or Therefore we might want to factor it out as it won't contribute to our answer.   Solution  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE and solve for : Recall that no matter the value of or Thus we have: So the two solutions are    Now that you have (hopefully!) two values for choose one of the two values and then verify that is a solution for that value of  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that (or ) is a solution to the DE. Solution  The work here is for and the work for is similar.  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Hence, we have shown that is a solution to the DE     Assuming the form of the solution of DE.  Find all values of such that is a solution of the DE    Solution  We proceed as in the previous question. First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are      "
+  "body": "Summary & Exercises   Summary of the Key Ideas     What is a Solution?   A solution to a differential equation is a function that, when substituted into the equation, satisfies the equation.     Verifying Solutions   Verification of a solution involves substituting the function into the equation and simplifying to check if a true statement is obtained.  To verify a solution, all terms should ideally be moved to one side of the equation, simplifying the process.     Types of Solutions   Differential equations can have different types of solutions: general and particular.  The general solution includes arbitrary constants and represents a family of solutions.  A particular solution is obtained by assigning specific values to these constants.     Initial Conditions   Initial conditions are values given for the solution or its derivatives at a specific point, often used to find a particular solution.  They help specify which member of the general solution family is applicable in a specific context.         Discuss the difference between a general solution, family of solutions, and a particualr solution.  Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.     Answer     a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes      Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.     Answer      a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes       Match each function on the left with a DE on the right if this function is a solution (i.e. is in the family of solutions) for this DE.                                         Answer                      Find all values of such that is a solution to . Answer      Find all values of such that is a solution to . Answer      Find all values of such that is a solution to . Answer      Find all values of such that is a solution to . Answer      Find all values of such that is a solution to . Answer      Find all values of such that is a solution to . Answer      Find the value of the constant in order for the differential equation to have the solution . Answer      Is a solution of the differential equation  Answer  Yes   Find the value of    For each of the differential equations and function pairs, find all the possible values of such that the function is a solution to the DE.   Answer      Answer      Answer      Answer      Answer      Answer       Explain the significance of initial condition(s) as they relate to the general solution of a differential equation. Answer   The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution.  Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.    Does an initial condition always give you a particular solution? Answer   When there is one constant in the general solution, yes.  When there is more than one constant in the general solution, no.  It does, however, limit the possible values of the constants.    Consider the differential equation   Verify that the family of functions a solution to this differential equation.  Find the particular solution that corresponds to the initial condition .   Answer   Yes   , so is the particular solution    Consider the differential equation Which of the following is a family of solutions for this DE?        Find the particular solution such that . Answer   b.   , so is the particular solution   Solution   Try first.  Compute       So for this function, it is not the solution.  Now try . Then   while   So this function is the solution  Setting we get   Solve for c,  So the solution for the IVP is    Understanding what it means to Solve a DE   We spend a lot of time solving equations, but do you even remember what it means to be a solution? Let's review what it means to be a solution to an algebraic equation (as in question ), and then what it means to be a solution to a differential equation (as in question ), and then we'll extend those ideas in questions and .   Verify that is a solution to the equation  What confirms that is a solution? Answer  the LHS = RHS after substituting into both sides of the equation.   ( Note: Do not rearrange the equation to solve for . That would be the process of finding a solution; you are asked to verify a solution. ) Answer  Since we get the same result (21) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the equation.  Solution  We substitute into the left hand side (LHS) of the equation, and then into the right hand side (RHS) of the equation: Since we get the same result when we substitute the solution into the RHS and into the LHS, we have confirmed that is a solution to the equation.   Verify that is a solution to the DE  Look back at the previous question and think about what it means to be a solution to a DE. Answer  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the DE.  Solution  We need to substitute into the DE. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the DE: Since when we substitute in to the DE, we find that the LHS is equal to the RHS, we have verified that is a solution to the DE    Consider the DE  Find all values of such that is a solution to the DE by taking derivatives and substituting into the DE, and then solving for .  no matter the value of or Therefore we might want to factor it out as it won't contribute to our answer. Answer     Solution  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE and solve for : Recall that no matter the value of or Thus we have: So the two solutions are    Now that you have (hopefully!) two values for choose one of the two values and then verify that is a solution for that value of  Answer  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that (or ) is a solution to the DE.  Solution  The work here is for and the work for is similar.  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Hence, we have shown that is a solution to the DE     Assuming the form of the solution of DE.  Find all values of such that is a solution of the DE  Answer     Solution  We proceed as in the previous question. First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are      "
 },
 {
   "id": "main-5-4-8-2-1-2",
@@ -1843,7 +1843,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.2",
   "title": "",
-  "body": "Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.        a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes    "
+  "body": "Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.     Answer     a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes     "
 },
 {
   "id": "main-5-4-8-3-3",
@@ -1852,7 +1852,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.3",
   "title": "",
-  "body": "Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.         a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes     "
+  "body": "Given the differential equation determine if the following functions are solutions of this differential equation.    a.   b.   c.     d.   e.   f.     g.   h.   i.     Answer      a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes      "
 },
 {
   "id": "main-5-4-8-3-4",
@@ -1861,7 +1861,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.4",
   "title": "",
-  "body": "Match each function on the left with a DE on the right if this function is a solution (i.e. is in the family of solutions) for this DE.                                                           "
+  "body": "Match each function on the left with a DE on the right if this function is a solution (i.e. is in the family of solutions) for this DE.                                         Answer                     "
 },
 {
   "id": "main-5-4-8-3-5",
@@ -1870,7 +1870,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.5",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-6",
@@ -1879,7 +1879,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.6",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-7",
@@ -1888,7 +1888,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.7",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-8",
@@ -1897,7 +1897,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.8",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-9",
@@ -1906,7 +1906,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.9",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-10",
@@ -1915,7 +1915,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.10",
   "title": "",
-  "body": "Find all values of such that is a solution to .   "
+  "body": "Find all values of such that is a solution to . Answer     "
 },
 {
   "id": "main-5-4-8-3-11",
@@ -1924,7 +1924,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.11",
   "title": "",
-  "body": "Find the value of the constant in order for the differential equation to have the solution .   "
+  "body": "Find the value of the constant in order for the differential equation to have the solution . Answer     "
 },
 {
   "id": "main-5-4-8-3-12",
@@ -1933,7 +1933,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.12",
   "title": "",
-  "body": "Is a solution of the differential equation  Yes "
+  "body": "Is a solution of the differential equation  Answer  Yes  "
 },
 {
   "id": "main-5-4-8-3-13-3",
@@ -1942,7 +1942,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.13",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-13-4",
@@ -1951,7 +1951,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.14",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-13-5",
@@ -1960,7 +1960,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.15",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-13-6",
@@ -1969,7 +1969,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.16",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-13-7",
@@ -1978,7 +1978,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.17",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-13-8",
@@ -1987,7 +1987,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.18",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-5-4-8-3-14",
@@ -1996,7 +1996,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.19",
   "title": "",
-  "body": "Explain the significance of initial condition(s) as they relate to the general solution of a differential equation.  The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution.  Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.  "
+  "body": "Explain the significance of initial condition(s) as they relate to the general solution of a differential equation. Answer   The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution.  Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.   "
 },
 {
   "id": "main-5-4-8-3-15",
@@ -2005,7 +2005,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.20",
   "title": "",
-  "body": "Does an initial condition always give you a particular solution?  When there is one constant in the general solution, yes.  When there is more than one constant in the general solution, no.  It does, however, limit the possible values of the constants.  "
+  "body": "Does an initial condition always give you a particular solution? Answer   When there is one constant in the general solution, yes.  When there is more than one constant in the general solution, no.  It does, however, limit the possible values of the constants.   "
 },
 {
   "id": "main-5-4-8-3-16",
@@ -2014,7 +2014,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.21",
   "title": "",
-  "body": "Consider the differential equation   Verify that the family of functions a solution to this differential equation.  Find the particular solution that corresponds to the initial condition .    Yes   , so is the particular solution  "
+  "body": "Consider the differential equation   Verify that the family of functions a solution to this differential equation.  Find the particular solution that corresponds to the initial condition .   Answer   Yes   , so is the particular solution   "
 },
 {
   "id": "main-5-4-8-3-17",
@@ -2023,7 +2023,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.22",
   "title": "",
-  "body": "Consider the differential equation Which of the following is a family of solutions for this DE?        Find the particular solution such that .  b.   , so is the particular solution  Solution   Try first.  Compute       So for this function, it is not the solution.  Now try . Then   while   So this function is the solution  Setting we get   Solve for c,  So the solution for the IVP is   "
+  "body": "Consider the differential equation Which of the following is a family of solutions for this DE?        Find the particular solution such that . Answer   b.   , so is the particular solution   Solution   Try first.  Compute       So for this function, it is not the solution.  Now try . Then   while   So this function is the solution  Setting we get   Solve for c,  So the solution for the IVP is   "
 },
 {
   "id": "main-5-4-8-3-18-3",
@@ -2032,7 +2032,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.23",
   "title": "",
-  "body": "Verify that is a solution to the equation  What confirms that is a solution? the LHS = RHS after substituting into both sides of the equation.  ( Note: Do not rearrange the equation to solve for . That would be the process of finding a solution; you are asked to verify a solution. ) Since we get the same result (21) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the equation. Solution  We substitute into the left hand side (LHS) of the equation, and then into the right hand side (RHS) of the equation: Since we get the same result when we substitute the solution into the RHS and into the LHS, we have confirmed that is a solution to the equation.  "
+  "body": "Verify that is a solution to the equation  What confirms that is a solution? Answer  the LHS = RHS after substituting into both sides of the equation.   ( Note: Do not rearrange the equation to solve for . That would be the process of finding a solution; you are asked to verify a solution. ) Answer  Since we get the same result (21) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the equation.  Solution  We substitute into the left hand side (LHS) of the equation, and then into the right hand side (RHS) of the equation: Since we get the same result when we substitute the solution into the RHS and into the LHS, we have confirmed that is a solution to the equation.  "
 },
 {
   "id": "main-5-4-8-3-18-4",
@@ -2041,7 +2041,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.24",
   "title": "",
-  "body": "Verify that is a solution to the DE  Look back at the previous question and think about what it means to be a solution to a DE. Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the DE. Solution  We need to substitute into the DE. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the DE: Since when we substitute in to the DE, we find that the LHS is equal to the RHS, we have verified that is a solution to the DE   "
+  "body": "Verify that is a solution to the DE  Look back at the previous question and think about what it means to be a solution to a DE. Answer  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that is a solution to the DE.  Solution  We need to substitute into the DE. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the DE: Since when we substitute in to the DE, we find that the LHS is equal to the RHS, we have verified that is a solution to the DE   "
 },
 {
   "id": "main-5-4-8-3-18-5",
@@ -2050,7 +2050,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.25",
   "title": "",
-  "body": "Consider the DE  Find all values of such that is a solution to the DE by taking derivatives and substituting into the DE, and then solving for .  no matter the value of or Therefore we might want to factor it out as it won't contribute to our answer.   Solution  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE and solve for : Recall that no matter the value of or Thus we have: So the two solutions are   "
+  "body": "Consider the DE  Find all values of such that is a solution to the DE by taking derivatives and substituting into the DE, and then solving for .  no matter the value of or Therefore we might want to factor it out as it won't contribute to our answer. Answer     Solution  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE and solve for : Recall that no matter the value of or Thus we have: So the two solutions are   "
 },
 {
   "id": "main-5-4-8-3-18-6",
@@ -2059,7 +2059,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.26",
   "title": "",
-  "body": "Now that you have (hopefully!) two values for choose one of the two values and then verify that is a solution for that value of  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that (or ) is a solution to the DE. Solution  The work here is for and the work for is similar.  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Hence, we have shown that is a solution to the DE   "
+  "body": "Now that you have (hopefully!) two values for choose one of the two values and then verify that is a solution for that value of  Answer  Since we get the same result (0) when we substitute the solution into the RHS and into the LHS, we confirm that (or ) is a solution to the DE.  Solution  The work here is for and the work for is similar.  First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Hence, we have shown that is a solution to the DE   "
 },
 {
   "id": "main-5-4-8-3-18-7",
@@ -2068,7 +2068,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2.6.27",
   "title": "",
-  "body": " Assuming the form of the solution of DE.  Find all values of such that is a solution of the DE    Solution  We proceed as in the previous question. First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are   "
+  "body": " Assuming the form of the solution of DE.  Find all values of such that is a solution of the DE  Answer     Solution  We proceed as in the previous question. First we take derivatives so that we can substitute into the DE. Now we can substitute into the DE: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are   "
 },
 {
   "id": "main-6-3-3",
@@ -2230,7 +2230,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "3.3",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises    Summary of the Key Ideas      Antiderivatives as Solutions to Differential Equations    Finding the general antiderivative of a function, , is equivalent to finding the general solution to the differential equation .      Direct Integration    Process of integrating both sides of a differential equation to directly solve for the dependent variable, .          General Solution   Find the general solution for each of the following differential equations. Combine constants where appropriate.                                            Particular Solution   Find the particular solution for each of the following differential equations with the given initial condition.                                             Attempt to apply direct integration to the differential equation . Get to the point where it becomes clear that you cannot solve for directly. What is the obstacle?   Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine the these variables into a single on the left side.     Convert this idea from the integrating factor into some exercises for the direct integration method.    To Readers: This is not an exercise (yet). Ignore it.  In this chapter, we will study a solution technique that will help us solve differential equations that are first order and linear. Consider this (carefully selected) example. Notice that the dependent variable is and the independent variable is , so we seek to find a formula for in terms of . The DE is also first order and linear.  Solution  What makes this DE special is that the left hand side can be rewritten as follows. We can verify this by actually using the product rule to take the derivative on the left hand side:   Now that we have confirmed that Equation is equivalent to Equation , we can proceed in solving the DE.  The unknown function we want to solve for is , and it is part of the product we are taking the derivative of in Equation . So we begin by undoing that differentiation by integrating both sides of Equation with respect to :   We can now just divide both sides of Equation by the coefficient on to obtain the general solution.   Recall that we said this was a carefully selected DE. This very special DE had the property that we could undo the product rule on its left hand side. This is not, in general, the case when we encounter a first order linear DE. For example, consider this DE.     "
+  "body": "Summary & Exercises    Summary of the Key Ideas      Antiderivatives as Solutions to Differential Equations    Finding the general antiderivative of a function, , is equivalent to finding the general solution to the differential equation .      Direct Integration    Process of integrating both sides of a differential equation to directly solve for the dependent variable, .          General Solution   Find the general solution for each of the following differential equations. Combine constants where appropriate.     Answer        Answer        Answer        Answer        Answer        Answer        Answer        Answer       Particular Solution   Find the particular solution for each of the following differential equations with the given initial condition.     Answer        Answer        Answer        Answer        Answer        Answer        Answer        Answer        Attempt to apply direct integration to the differential equation . Get to the point where it becomes clear that you cannot solve for directly. What is the obstacle?  Answer   Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine the these variables into a single on the left side.      Convert this idea from the integrating factor into some exercises for the direct integration method.    To Readers: This is not an exercise (yet). Ignore it.  In this chapter, we will study a solution technique that will help us solve differential equations that are first order and linear. Consider this (carefully selected) example. Notice that the dependent variable is and the independent variable is , so we seek to find a formula for in terms of . The DE is also first order and linear.  Solution  What makes this DE special is that the left hand side can be rewritten as follows. We can verify this by actually using the product rule to take the derivative on the left hand side:   Now that we have confirmed that Equation is equivalent to Equation , we can proceed in solving the DE.  The unknown function we want to solve for is , and it is part of the product we are taking the derivative of in Equation . So we begin by undoing that differentiation by integrating both sides of Equation with respect to :   We can now just divide both sides of Equation by the coefficient on to obtain the general solution.   Recall that we said this was a carefully selected DE. This very special DE had the property that we could undo the product rule on its left hand side. This is not, in general, the case when we encounter a first order linear DE. For example, consider this DE.     "
 },
 {
   "id": "main-6-3-5-2-1",
@@ -2248,7 +2248,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.1",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-4",
@@ -2257,7 +2257,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.2",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-5",
@@ -2266,7 +2266,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.3",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-6",
@@ -2275,7 +2275,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.4",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-7",
@@ -2284,7 +2284,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.5",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-8",
@@ -2293,7 +2293,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.6",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-9",
@@ -2302,7 +2302,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.7",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-1-10",
@@ -2311,7 +2311,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.8",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-3",
@@ -2320,7 +2320,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.9",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-4",
@@ -2329,7 +2329,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.10",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-5",
@@ -2338,7 +2338,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.11",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-6",
@@ -2347,7 +2347,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.12",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-7",
@@ -2356,7 +2356,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.13",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-8",
@@ -2365,7 +2365,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.14",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-9",
@@ -2374,7 +2374,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.15",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-2-10",
@@ -2383,7 +2383,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.16",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-3-5-3-3",
@@ -2392,7 +2392,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "3.3.17",
   "title": "",
-  "body": " Attempt to apply direct integration to the differential equation . Get to the point where it becomes clear that you cannot solve for directly. What is the obstacle?   Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine the these variables into a single on the left side.  "
+  "body": " Attempt to apply direct integration to the differential equation . Get to the point where it becomes clear that you cannot solve for directly. What is the obstacle?  Answer   Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine the these variables into a single on the left side.   "
 },
 {
   "id": "main-6-3-5-3-4-2",
@@ -2689,7 +2689,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "4.5",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises    Summary of the Key Ideas    Separation of Variables Method  The general solution of a differential equation that is first-order and separable can be found using the separation of variables method .      Separable   Determine whether the given differential equation is separable or not. As demonstrated in the examples, if the equation is separable, use parentheses to explicitly show the separable form.      not separable Solution   not separable; there's no way to separate th an inside the sine term.      separable  Solution  This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .      separable  Solution  We can rearrange as follows. Hence, this DE is separable .      separable  Solution  We can rearrange as follows. Hence, this DE is separable .      not separable Solution   not separable; there's no way to separate and via multiplication\/division      not separable Solution   not separable; this DE is second order, and DEs must be first order to be separable    Step-by-Step   Maybe write 1 or 2 simple scaffolded problems here?    Given the differential equation , determine if it is separable. If so, rewrite it in the separated form.  Solution  The equation is separable because we can write it as:        Continuing from the previous problem, integrate the left side of the separated equation with respect to .  Solution  Integrating with respect to , we get:        Now, integrate the right side of the separated equation with respect to .  Solution  Integrating with respect to , we get:        Combine the results from the previous exercises to form the general solution to the differential equation.  Solution  Equating the two integrals, we get: By grouping constants, we can represent them with a single constant: Where .        Warm Ups   Solve using separation of variables, if possible.                                  Further Practice   Solve using separation of variables, if possible.       Solution          Solution          Solution    Note: since, in general , we CANNOT simplify the solution to         Solution          Solution   For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:         Solution  When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.       Solution  Separation of variables gives:     Initial Value Problems   Solve each of the following initial value problems using separation of variables, if possible.       Solution  Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is        Solution  First we find the general solution: Using the initial condition : So the solution to the initial value problem is:       , or  Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .      , or  Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .    Applications  A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)?   Solution  We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM    Conceptual Questions  Explain why separating variables works as a method for solving ordinary differential equations. Solution  Separation of variables works by isolating all terms involving to one side and all terms involving to the other. When this can be done, both sides can be integrated independently, allowing for the solution of the differential equation. This method effectively transforms the problem of solving a differential equation into the simpler task of integrating functions.   Why is it important for the equation to be \"separable\" in order to use the method of separation of variables? What does it mean for a differential equation to be separable? Solution  For the method of separation of variables to be used, we must be able to write the differential equation in the form , effectively separating the variables and onto different sides of the equation. When a differential equation can be written in this way, it is called separable. Separability is crucial because it allows us to integrate each side with respect to its own variable, leading to a solution for in terms of .   Provide an example of a differential equation that is not separable and explain why the method of separation of variables cannot be applied to it. Solution     In solving a differential equation using separation of variables, why might the constant of integration appear on both sides of the resulting equation? Solution  After separating variables, we integrate both sides of the equation. Each integration will typically introduce its own constant of integration. Therefore, when we combine the results of these integrations, we often see a constant on both sides. These constants can often be combined into a single constant by subtracting one from the other.   Some differential equations solved using separation of variables yield implicit solutions, while others yield explicit solutions. Explain the difference between implicit and explicit solutions, and provide examples of each. Solution     True\/False: Every first-order ordinary differential equation can be solved using the method of separation of variables. Solution       Which of the following differential equations is not separable?           True\/False: If a differential equation is separable, its solution will always be an explicit function of .     The process of writing a differential equation in the form is called _________ of variables.     Which of the following cannot be directly solved by separation of variables?           True\/False: The method of separation of variables can be directly applied to higher-order differential equations.     True\/False: If you can write a differential equation in the form , then it is separable.     A differential equation of the form without a term:   Is always separable  Is never separable  Can be separable depending on  Is an implicit equation      A structured exercise   Here is where we give the student the background information required to start accomplishing tasks.  Solve a separable DE using separation of variables.                   The second step to do. We'll be lazy and just include an answer.   Just the answer.   A little wrap up.    "
+  "body": "Summary & Exercises    Summary of the Key Ideas    Separation of Variables Method  The general solution of a differential equation that is first-order and separable can be found using the separation of variables method .      Separable   Determine whether the given differential equation is separable or not. As demonstrated in the examples, if the equation is separable, use parentheses to explicitly show the separable form.     Answer   not separable  Solution   not separable; there's no way to separate th an inside the sine term.     Answer   separable   Solution  This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .     Answer   separable   Solution  We can rearrange as follows. Hence, this DE is separable .     Answer   separable   Solution  We can rearrange as follows. Hence, this DE is separable .     Answer   not separable  Solution   not separable; there's no way to separate and via multiplication\/division     Answer   not separable  Solution   not separable; this DE is second order, and DEs must be first order to be separable    Step-by-Step   Maybe write 1 or 2 simple scaffolded problems here?    Given the differential equation , determine if it is separable. If so, rewrite it in the separated form.  Solution  The equation is separable because we can write it as:    Answer       Continuing from the previous problem, integrate the left side of the separated equation with respect to .  Solution  Integrating with respect to , we get:    Answer       Now, integrate the right side of the separated equation with respect to .  Solution  Integrating with respect to , we get:    Answer       Combine the results from the previous exercises to form the general solution to the differential equation.  Solution  Equating the two integrals, we get: By grouping constants, we can represent them with a single constant: Where .   Answer        Warm Ups   Solve using separation of variables, if possible.                                  Further Practice   Solve using separation of variables, if possible.     Answer     Solution        Answer     Solution        Answer     Solution    Note: since, in general , we CANNOT simplify the solution to       Answer     Solution        Answer     Solution   For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:       Answer     Solution  When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.     Answer     Solution  Separation of variables gives:     Initial Value Problems   Solve each of the following initial value problems using separation of variables, if possible.     Answer     Solution  Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is      Answer     Solution  First we find the general solution: Using the initial condition : So the solution to the initial value problem is:      Answer   , or   Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .     Answer   , or   Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .    Applications  A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)? Answer     Solution  We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM    Conceptual Questions  Explain why separating variables works as a method for solving ordinary differential equations. Solution  Separation of variables works by isolating all terms involving to one side and all terms involving to the other. When this can be done, both sides can be integrated independently, allowing for the solution of the differential equation. This method effectively transforms the problem of solving a differential equation into the simpler task of integrating functions.   Why is it important for the equation to be \"separable\" in order to use the method of separation of variables? What does it mean for a differential equation to be separable? Solution  For the method of separation of variables to be used, we must be able to write the differential equation in the form , effectively separating the variables and onto different sides of the equation. When a differential equation can be written in this way, it is called separable. Separability is crucial because it allows us to integrate each side with respect to its own variable, leading to a solution for in terms of .   Provide an example of a differential equation that is not separable and explain why the method of separation of variables cannot be applied to it. Solution     In solving a differential equation using separation of variables, why might the constant of integration appear on both sides of the resulting equation? Solution  After separating variables, we integrate both sides of the equation. Each integration will typically introduce its own constant of integration. Therefore, when we combine the results of these integrations, we often see a constant on both sides. These constants can often be combined into a single constant by subtracting one from the other.   Some differential equations solved using separation of variables yield implicit solutions, while others yield explicit solutions. Explain the difference between implicit and explicit solutions, and provide examples of each. Solution     True\/False: Every first-order ordinary differential equation can be solved using the method of separation of variables. Solution       Which of the following differential equations is not separable?           True\/False: If a differential equation is separable, its solution will always be an explicit function of .     The process of writing a differential equation in the form is called _________ of variables.     Which of the following cannot be directly solved by separation of variables?           True\/False: The method of separation of variables can be directly applied to higher-order differential equations.     True\/False: If you can write a differential equation in the form , then it is separable.     A differential equation of the form without a term:   Is always separable  Is never separable  Can be separable depending on  Is an implicit equation      A structured exercise   Here is where we give the student the background information required to start accomplishing tasks.  Solve a separable DE using separation of variables.                   The second step to do. We'll be lazy and just include an answer.  Answer   Just the answer.    A little wrap up.    "
 },
 {
   "id": "main-6-4-7-2-1",
@@ -2707,7 +2707,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.1",
   "title": "",
-  "body": "   not separable Solution   not separable; there's no way to separate th an inside the sine term.  "
+  "body": "  Answer   not separable  Solution   not separable; there's no way to separate th an inside the sine term.  "
 },
 {
   "id": "main-6-4-7-3-1-4",
@@ -2716,7 +2716,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.2",
   "title": "",
-  "body": "   separable  Solution  This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .  "
+  "body": "  Answer   separable   Solution  This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .  "
 },
 {
   "id": "main-6-4-7-3-1-5",
@@ -2725,7 +2725,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.3",
   "title": "",
-  "body": "   separable  Solution  We can rearrange as follows. Hence, this DE is separable .  "
+  "body": "  Answer   separable   Solution  We can rearrange as follows. Hence, this DE is separable .  "
 },
 {
   "id": "main-6-4-7-3-1-6",
@@ -2734,7 +2734,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.4",
   "title": "",
-  "body": "   separable  Solution  We can rearrange as follows. Hence, this DE is separable .  "
+  "body": "  Answer   separable   Solution  We can rearrange as follows. Hence, this DE is separable .  "
 },
 {
   "id": "main-6-4-7-3-1-7",
@@ -2743,7 +2743,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.5",
   "title": "",
-  "body": "   not separable Solution   not separable; there's no way to separate and via multiplication\/division  "
+  "body": "  Answer   not separable  Solution   not separable; there's no way to separate and via multiplication\/division  "
 },
 {
   "id": "main-6-4-7-3-1-8",
@@ -2752,7 +2752,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.6",
   "title": "",
-  "body": "   not separable Solution   not separable; this DE is second order, and DEs must be first order to be separable  "
+  "body": "  Answer   not separable  Solution   not separable; this DE is second order, and DEs must be first order to be separable  "
 },
 {
   "id": "main-6-4-7-3-2-3",
@@ -2761,7 +2761,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.7",
   "title": "",
-  "body": " Given the differential equation , determine if it is separable. If so, rewrite it in the separated form.  Solution  The equation is separable because we can write it as:        Continuing from the previous problem, integrate the left side of the separated equation with respect to .  Solution  Integrating with respect to , we get:        Now, integrate the right side of the separated equation with respect to .  Solution  Integrating with respect to , we get:        Combine the results from the previous exercises to form the general solution to the differential equation.  Solution  Equating the two integrals, we get: By grouping constants, we can represent them with a single constant: Where .      "
+  "body": " Given the differential equation , determine if it is separable. If so, rewrite it in the separated form.  Solution  The equation is separable because we can write it as:    Answer       Continuing from the previous problem, integrate the left side of the separated equation with respect to .  Solution  Integrating with respect to , we get:    Answer       Now, integrate the right side of the separated equation with respect to .  Solution  Integrating with respect to , we get:    Answer       Combine the results from the previous exercises to form the general solution to the differential equation.  Solution  Equating the two integrals, we get: By grouping constants, we can represent them with a single constant: Where .   Answer      "
 },
 {
   "id": "main-6-4-7-3-3-3",
@@ -2860,7 +2860,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.18",
   "title": "",
-  "body": "    Solution     "
+  "body": "  Answer     Solution     "
 },
 {
   "id": "main-6-4-7-3-4-4",
@@ -2869,7 +2869,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.19",
   "title": "",
-  "body": "    Solution     "
+  "body": "  Answer     Solution     "
 },
 {
   "id": "main-6-4-7-3-4-5",
@@ -2878,7 +2878,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.20",
   "title": "",
-  "body": "    Solution    Note: since, in general , we CANNOT simplify the solution to    "
+  "body": "  Answer     Solution    Note: since, in general , we CANNOT simplify the solution to    "
 },
 {
   "id": "main-6-4-7-3-4-6",
@@ -2887,7 +2887,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.21",
   "title": "",
-  "body": "    Solution     "
+  "body": "  Answer     Solution     "
 },
 {
   "id": "main-6-4-7-3-4-7",
@@ -2896,7 +2896,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.22",
   "title": "",
-  "body": "    Solution   For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:    "
+  "body": "  Answer     Solution   For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:    "
 },
 {
   "id": "main-6-4-7-3-4-8",
@@ -2905,7 +2905,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.23",
   "title": "",
-  "body": "    Solution  When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.  "
+  "body": "  Answer     Solution  When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.  "
 },
 {
   "id": "main-6-4-7-3-4-9",
@@ -2914,7 +2914,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.24",
   "title": "",
-  "body": "    Solution  Separation of variables gives:   "
+  "body": "  Answer     Solution  Separation of variables gives:   "
 },
 {
   "id": "main-6-4-7-3-5-3",
@@ -2923,7 +2923,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.25",
   "title": "",
-  "body": "    Solution  Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is   "
+  "body": "  Answer     Solution  Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is   "
 },
 {
   "id": "main-6-4-7-3-5-4",
@@ -2932,7 +2932,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.26",
   "title": "",
-  "body": "    Solution  First we find the general solution: Using the initial condition : So the solution to the initial value problem is:   "
+  "body": "  Answer     Solution  First we find the general solution: Using the initial condition : So the solution to the initial value problem is:   "
 },
 {
   "id": "main-6-4-7-3-5-5",
@@ -2941,7 +2941,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.27",
   "title": "",
-  "body": "   , or  Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .  "
+  "body": "  Answer   , or   Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .  "
 },
 {
   "id": "main-6-4-7-3-5-6",
@@ -2950,7 +2950,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.28",
   "title": "",
-  "body": "   , or  Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .  "
+  "body": "  Answer   , or   Solution  First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .  "
 },
 {
   "id": "main-6-4-7-3-6-2",
@@ -2959,7 +2959,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.29",
   "title": "",
-  "body": "A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)?   Solution  We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM  "
+  "body": "A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)? Answer     Solution  We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM  "
 },
 {
   "id": "main-6-4-7-3-7-2",
@@ -3085,7 +3085,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "4.5.43",
   "title": "<em class=\"emphasis\">A structured exercise<\/em>.",
-  "body": " A structured exercise   Here is where we give the student the background information required to start accomplishing tasks.  Solve a separable DE using separation of variables.                   The second step to do. We'll be lazy and just include an answer.   Just the answer.   A little wrap up.  "
+  "body": " A structured exercise   Here is where we give the student the background information required to start accomplishing tasks.  Solve a separable DE using separation of variables.                   The second step to do. We'll be lazy and just include an answer.  Answer   Just the answer.    A little wrap up.  "
 },
 {
   "id": "main-6-5-3",
@@ -3436,7 +3436,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "5.5",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   Throughout the chapter, we worked through several examples, each demonstrating how to apply the integrating factor method in different contexts. In each case, the systematic process of identifying the standard form, computing the integrating factor, and applying integration was key to solving the differential equation.   Summary of the Key Ideas    First-Order Linear Differential Equations   First-order linear differential equations take the standard form , where and are functions of .  The goal is to find the unknown function .    The Product Rule   The integrating factor method works by rewriting the left side of the standard form as a reversed product rule.  Unfortunately, most equations are not given in a form where a reversed product rule is possible.    Integrating Factor   The integrating factor, , is the missing function needed for the reverse product rule and is found from .  Multiplying the standard form of the equation by leads to a new equation where the left-side can be written as     Integrating Factor Method    The integrating factor method is the process of solving a first order linear differential equation by turning it into a direct integration problem.           Forward Product Rule  Compute the derivative of each of the following functions.        The Integrating Factor  Find the integrating factor of each of the following differential equations.          Conceptual Questions  Answer the following questions.  Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.              order is 1  it is linear    What classification of DEs be solved by applying an integrating factor?  We can use an integrating factor to solve DEs that are linear and first order.    General Solution  Use an integrating factor to find the general solution to each equation.       Solution  First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     , where     Solution  First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     where     Solution  First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.         Solution  First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     Initial-Value Problems  Solve each initial value problem   where and    Solution   where and        Solution       Which Method Applies  For each differential equation below, identify the appropriate statement and explain how you know. You do not need to solve any of the equations.   Can be solved by separating variables, but not using an integrating factor.  Can be solved using an integrating factor, but not by separating variables.  Can be solved both by using integrating factor and by separating variables.  Cannot be solved using either technique.       b. Can be solved using an integrating factor, but not by separating variables. Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.      d. Cannot be solved using either technique. Solution  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.      c. Can be solved both by using integrating factor and by separating variables. Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.      a. Can be solved by separating variables, but not using an integrating factor. Solution  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.       Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.     "
+  "body": "Summary & Exercises   Throughout the chapter, we worked through several examples, each demonstrating how to apply the integrating factor method in different contexts. In each case, the systematic process of identifying the standard form, computing the integrating factor, and applying integration was key to solving the differential equation.   Summary of the Key Ideas    First-Order Linear Differential Equations   First-order linear differential equations take the standard form , where and are functions of .  The goal is to find the unknown function .    The Product Rule   The integrating factor method works by rewriting the left side of the standard form as a reversed product rule.  Unfortunately, most equations are not given in a form where a reversed product rule is possible.    Integrating Factor   The integrating factor, , is the missing function needed for the reverse product rule and is found from .  Multiplying the standard form of the equation by leads to a new equation where the left-side can be written as     Integrating Factor Method    The integrating factor method is the process of solving a first order linear differential equation by turning it into a direct integration problem.           Forward Product Rule  Compute the derivative of each of the following functions.    Answer       The Integrating Factor  Find the integrating factor of each of the following differential equations.    Answer         Conceptual Questions  Answer the following questions.  Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.   Answer             order is 1  it is linear     What classification of DEs be solved by applying an integrating factor?  Answer  We can use an integrating factor to solve DEs that are linear and first order.     General Solution  Use an integrating factor to find the general solution to each equation.     Answer     Solution  First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     , where   Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     where   Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.       Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.     Initial-Value Problems  Solve each initial value problem   where and   Answer    Solution   where and       Answer    Solution       Which Method Applies  For each differential equation below, identify the appropriate statement and explain how you know. You do not need to solve any of the equations.   Can be solved by separating variables, but not using an integrating factor.  Can be solved using an integrating factor, but not by separating variables.  Can be solved both by using integrating factor and by separating variables.  Cannot be solved using either technique.       Answer  b. Can be solved using an integrating factor, but not by separating variables.  Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.      Answer  d. Cannot be solved using either technique.  Solution  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.      Answer  c. Can be solved both by using integrating factor and by separating variables.  Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.      Answer  a. Can be solved by separating variables, but not using an integrating factor.  Solution  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.      Answer    Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.     "
 },
 {
   "id": "main-6-5-7-2-2",
@@ -3454,7 +3454,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.1",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-6-5-7-3-2-3",
@@ -3463,7 +3463,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.2",
   "title": "",
-  "body": "      "
+  "body": "  Answer       "
 },
 {
   "id": "main-6-5-7-3-3-3",
@@ -3472,7 +3472,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.3",
   "title": "",
-  "body": "Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.              order is 1  it is linear   "
+  "body": "Write the differential equation below in the form and identify and . Also, state the order and whether it is linear or not.   Answer             order is 1  it is linear    "
 },
 {
   "id": "main-6-5-7-3-3-4",
@@ -3481,7 +3481,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.4",
   "title": "",
-  "body": "What classification of DEs be solved by applying an integrating factor?  We can use an integrating factor to solve DEs that are linear and first order.  "
+  "body": "What classification of DEs be solved by applying an integrating factor?  Answer  We can use an integrating factor to solve DEs that are linear and first order.   "
 },
 {
   "id": "main-6-5-7-3-4-3",
@@ -3490,7 +3490,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.5",
   "title": "",
-  "body": "     Solution  First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
+  "body": "   Answer     Solution  First we note that this DE is already in standard form for a first-order linear DE, with Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
 },
 {
   "id": "main-6-5-7-3-4-4",
@@ -3499,7 +3499,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.6",
   "title": "",
-  "body": " , where     Solution  First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
+  "body": " , where   Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq2}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
 },
 {
   "id": "main-6-5-7-3-4-5",
@@ -3508,7 +3508,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.7",
   "title": "",
-  "body": " where     Solution  First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
+  "body": " where   Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify Notice that for this DE is the independent variable (i.e., it is like the ) and is the dependent variable (i.e., it is like the ). Hence the standard form we will aim for is and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq3}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
 },
 {
   "id": "main-6-5-7-3-4-6",
@@ -3517,7 +3517,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.8",
   "title": "",
-  "body": "     Solution  First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
+  "body": "   Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identify ...EXCEPT for this DE, the roles of and are switched. Notice that here is the independent variable and is the dependent variable. So we will aim for the standard for and we want to identify  Thus, Then we find the integrating factor  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq4}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable.   "
 },
 {
   "id": "main-6-5-7-3-5-3",
@@ -3526,7 +3526,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.9",
   "title": "",
-  "body": " where and    Solution   where and   "
+  "body": " where and   Answer    Solution   where and   "
 },
 {
   "id": "main-6-5-7-3-5-4",
@@ -3535,7 +3535,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.10",
   "title": "",
-  "body": "    Solution     "
+  "body": "   Answer    Solution     "
 },
 {
   "id": "main-6-5-7-3-6-3",
@@ -3544,7 +3544,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.11",
   "title": "",
-  "body": "   b. Can be solved using an integrating factor, but not by separating variables. Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
+  "body": "   Answer  b. Can be solved using an integrating factor, but not by separating variables.  Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
 },
 {
   "id": "main-6-5-7-3-6-4",
@@ -3553,7 +3553,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.12",
   "title": "",
-  "body": "   d. Cannot be solved using either technique. Solution  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.  "
+  "body": "   Answer  d. Cannot be solved using either technique.  Solution  This DE is first order but it is not linear (because the dependent variable, , appears inside a function--in the term), so it cannot be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE cannot be solved using either technique.  "
 },
 {
   "id": "main-6-5-7-3-6-5",
@@ -3562,7 +3562,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.13",
   "title": "",
-  "body": "   c. Can be solved both by using integrating factor and by separating variables. Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.  "
+  "body": "   Answer  c. Can be solved both by using integrating factor and by separating variables.  Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved both by using integrating factor and by separating variables.  "
 },
 {
   "id": "main-6-5-7-3-6-6",
@@ -3571,7 +3571,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.14",
   "title": "",
-  "body": "   a. Can be solved by separating variables, but not using an integrating factor. Solution  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.  "
+  "body": "   Answer  a. Can be solved by separating variables, but not using an integrating factor.  Solution  This DE is first order but it is not linear (because the dependent variable, , is raised to a power--in the term), so it cannot be solved using an integrating factor.  It is separable, as shown: because when we solve for the derivative, we see that we can separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved by separating variables, but not using an integrating factor.  "
 },
 {
   "id": "main-6-5-7-3-6-7",
@@ -3580,7 +3580,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "5.5.15",
   "title": "",
-  "body": "    Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
+  "body": "   Answer    Solution  This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable because when we solve for the derivative, we see that there is no way to separate the variables on the right hand side via multiplication.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.  "
 },
 {
   "id": "main-7-3-3",
@@ -3697,7 +3697,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.2",
   "title": "Solutions",
-  "body": "Solutions  Before diving into how to solve LHCC equations , let's develop some intuition about what the solutions should look like. For this discussion we will assume that the equations contain a term. If they didn't, then you could repeatedly integrate both sides of the equation until you are left with a term and a nonhomogeneous equation. For example, the following shows how an LHCC equation with no term can be reduced to a nonhomogeneous equation with a term. .   We begin with the simple first-order LHCC equation, and note that this equation requires to sum to zero. Recall from algebra that only like terms can combine to simplify to zero. So, for the equation to hold, and must be like terms.  Let's test a few guesses for : , , and .             As you can see, only produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.   Consider the LHCC equation:  Verify that is a solution, but is not.  Solution  Let's check each function:          Therefore, only is a solution.    This example further supports the claim that exponential functions, like , are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if is a solution then, in some cases, it is possible for to be a solution as well.  We conclude this section with an important concept that will guide us in the sections to follow. Terms of the Solution to an LHCC Equation  The general solution to an LHCC equation involves terms of the form: where is a constant. Note, if is complex, then , and by Euler's formula , . In this case, it is common to see a solution written with sine and cosine terms.     Check-Point Questions   is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.    and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.    The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.    Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.     "
+  "body": "Solutions  Before diving into how to solve LHCC equations , let's develop some intuition about what the solutions should look like. For this discussion we will assume that the equations contain a term. If they didn't, then you could repeatedly integrate both sides of the equation until you are left with a term and a nonhomogeneous equation. For example, the following shows how an LHCC equation with no term can be reduced to a nonhomogeneous equation with a term. .   We begin with the simple first-order LHCC equation, and note that this equation requires to sum to zero. Recall from algebra that only like terms can combine to simplify to zero. So, for the equation to hold, and must be like terms.  Let's test a few guesses for : , , and .             As you can see, only produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.   Consider the LHCC equation:   Verify that is a solution, but is not.  Solution  Let's check each function:          Therefore, only is a solution.    This example further supports the claim that exponential functions, like , are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if is a solution then, in some cases, it is possible for to be a solution as well.  We conclude this section with an important concept that will guide us in the sections to follow. Terms of the Solution to an LHCC Equation  The general solution to an LHCC equation involves terms of the form: where is a constant. Note, if is complex, then , and by Euler's formula , . In this case, it is common to see a solution written with sine and cosine terms.     Check-Point Questions   is the only function whose derivative is a multiple of itself   is the only function whose derivative is a multiple of itself   True Correct!  False Incorrect.    and its derivatives are \"like terms\" that can be combined   and its derivatives are \"like terms\" that can be combined   True Correct!  False Incorrect.    The hundredth derivative of is equal to a constant times   The hundredth derivative of is equal to a constant times   True Correct!  False Incorrect.    Without solving it, which function satisfies the property ?  Without solving it, which function satisfies the property ?      Incorrect.       Correct! The derivative of is times itself.       Incorrect.       Incorrect.     "
 },
 {
   "id": "main-7-3-4-7",
@@ -3706,7 +3706,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "4",
   "title": "",
-  "body": " Consider the LHCC equation:  Verify that is a solution, but is not.  Solution  Let's check each function:          Therefore, only is a solution.   "
+  "body": " Consider the LHCC equation:   Verify that is a solution, but is not.  Solution  Let's check each function:          Therefore, only is a solution.   "
 },
 {
   "id": "p3-c1-s2-rq1",
@@ -3967,7 +3967,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "6.6",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   The LHCC chapter (Linear Homogeneous Differential Equations with Constant Coefficients) in \"Linear Constant Coefficient Methods\" introduces a systematic method to solve higher-order linear differential equations. Here's a summary based on the content:  Summary of the Key Ideas     Linear Homogeneous Differential Equations with Constant Coefficients (LHCC)   These are differential equations where each term consists of a derivative of the unknown function multiplied by a constant.  The general form of an LHCC equation is: .     The Characteristic Equation   By assuming a solution of the form , an LHCC can be reduced to a characteristic polynomial in .  The solutions to the characteristic equation determine the form of the general solution.     Solution Types   Let be a solution to the characteristic equation (CE).  If is different from all other solutions of the CE, then is a term of the general solution.  If is equal to, say, three other solutions of the CE, then are terms of the general solution.  If or , then the general solution contains .       LHCC Method  The general solution to a linear homogeneous differential equation with constant coefficients (LHCC) of the form can be found through the following steps...   Step 1: Solve the Characteristic Equation  Solve the characteristic equation (CE)    Step 2: Write Down the General Solution     Real & Different:   .   Real & Repeated:  (multiplicity ) .   Complex:   .   For mixed root types , combine the corresponding terms to form the complete general solution.          Show why is needed in the general solution for repeated roots of the CE   Solution     Classify the following differential equations as either homogeneous or nonhomogeneous  *NEED EXERCISES     Solution      Find the general solution for each of the following     Solution         Solution         Solution         Solution      Solve the following initial value problems   an that satisfy thegiven initial conditions.  o  Solution  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.       Solution      Boundary Value Problems  Solve the following boundary value problem.    Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution     Solve the following DEs     Solution         Solution       Initial Value Problems  Solve the following initial value problem.   or  Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution     Solve the following DEs     Solution         Solution       Solve the following DEs     Solution         Solution         Solution         Solution       Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation     Solution         Solution       Compute the derivative of each of the following functions        Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!    Classifying Practice  Select each classification label that applies to the equation     Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the constant term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, all terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.     "
+  "body": "Summary & Exercises   The LHCC chapter (Linear Homogeneous Differential Equations with Constant Coefficients) in \"Linear Constant Coefficient Methods\" introduces a systematic method to solve higher-order linear differential equations. Here's a summary based on the content:  Summary of the Key Ideas     Linear Homogeneous Differential Equations with Constant Coefficients (LHCC)   These are differential equations where each term consists of a derivative of the unknown function multiplied by a constant.  The general form of an LHCC equation is: .     The Characteristic Equation   By assuming a solution of the form , an LHCC can be reduced to a characteristic polynomial in .  The solutions to the characteristic equation determine the form of the general solution.     Solution Types   Let be a solution to the characteristic equation (CE).  If is different from all other solutions of the CE, then is a term of the general solution.  If is equal to, say, three other solutions of the CE, then are terms of the general solution.  If or , then the general solution contains .       LHCC Method  The general solution to a linear homogeneous differential equation with constant coefficients (LHCC) of the form can be found through the following steps...   Step 1: Solve the Characteristic Equation  Solve the characteristic equation (CE)    Step 2: Write Down the General Solution     Real & Different:   .   Real & Repeated:  (multiplicity ) .   Complex:   .   For mixed root types , combine the corresponding terms to form the complete general solution.          Show why is needed in the general solution for repeated roots of the CE  Answer    Solution     Classify the following differential equations as either homogeneous or nonhomogeneous  *NEED EXERCISES    Answer    Solution      Find the general solution for each of the following    Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution      Solve the following initial value problems   an that satisfy thegiven initial conditions. Answer   o   Solution  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.      Answer    Solution      Boundary Value Problems  Solve the following boundary value problem.  Answer     Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution     Solve the following DEs    Answer    Solution        Answer    Solution       Initial Value Problems  Solve the following initial value problem.  Answer   or   Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution     Solve the following DEs    Answer    Solution        Answer    Solution       Solve the following DEs    Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution       Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation    Answer    Solution        Answer    Solution       Compute the derivative of each of the following functions    Answer       Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!    Classifying Practice  Select each classification label that applies to the equation     Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the constant term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.    Classifying Practice  Select each classification label that applies to the equation     Linear  Correct, all terms are linear.    Homogeneous  Correct, the constant term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.     "
 },
 {
   "id": "main-7-3-8-2-2-2",
@@ -3994,7 +3994,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.1",
   "title": "",
-  "body": " Show why is needed in the general solution for repeated roots of the CE   Solution    "
+  "body": " Show why is needed in the general solution for repeated roots of the CE  Answer    Solution    "
 },
 {
   "id": "main-7-3-8-3-2-3",
@@ -4003,7 +4003,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.2",
   "title": "",
-  "body": "   Solution    "
+  "body": "  Answer    Solution    "
 },
 {
   "id": "main-7-3-8-3-3-2",
@@ -4012,7 +4012,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.3",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-3-3",
@@ -4021,7 +4021,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.4",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-3-4",
@@ -4030,7 +4030,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.5",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-3-5",
@@ -4039,7 +4039,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.6",
   "title": "",
-  "body": "   Solution    "
+  "body": "  Answer    Solution    "
 },
 {
   "id": "main-7-3-8-3-4-2",
@@ -4048,7 +4048,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.7",
   "title": "",
-  "body": " an that satisfy thegiven initial conditions.  o  Solution  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.   "
+  "body": " an that satisfy thegiven initial conditions. Answer   o   Solution  We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.   "
 },
 {
   "id": "main-7-3-8-3-4-3",
@@ -4057,7 +4057,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.8",
   "title": "",
-  "body": "   Solution    "
+  "body": "  Answer    Solution    "
 },
 {
   "id": "main-7-3-8-3-5-2",
@@ -4066,7 +4066,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.9",
   "title": "",
-  "body": "Solve the following boundary value problem.    Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution   "
+  "body": "Solve the following boundary value problem.  Answer     Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve fo in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution   "
 },
 {
   "id": "main-7-3-8-3-6-2",
@@ -4075,7 +4075,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.10",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-6-3",
@@ -4084,7 +4084,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.11",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-7-2",
@@ -4093,7 +4093,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.12",
   "title": "",
-  "body": "Solve the following initial value problem.   or  Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution   "
+  "body": "Solve the following initial value problem.  Answer   or   Solution  We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution   "
 },
 {
   "id": "main-7-3-8-3-8-2",
@@ -4102,7 +4102,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.13",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-8-3",
@@ -4111,7 +4111,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.14",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-9-2",
@@ -4120,7 +4120,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.15",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-9-3",
@@ -4129,7 +4129,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.16",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-9-4",
@@ -4138,7 +4138,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.17",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-9-5",
@@ -4147,7 +4147,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.18",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-10-2",
@@ -4156,7 +4156,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.19",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-10-3",
@@ -4165,7 +4165,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.20",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-3-8-3-11-2",
@@ -4174,7 +4174,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "6.6.21",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "p3-c1-summary-rq1",
@@ -4282,7 +4282,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "7.2",
   "title": "General Solutions",
-  "body": "General Solutions  In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.  To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart: Let be the solution to the homogeneous equation , and be the solution to the nonhomogeneous equation , so we have Now, adding these equations together and rearranging the terms gives us This shows that not only is the solution to the nonhomogeneous equation , but so is . This happens because the terms in simplify to zero and the terms in simplify to .  From the previous section, we know is a solution to the LNCC equation and is the solution to the LHCC equation . Therefore, the combined solution is a solution to the LNCC equation where contains the terms that simplify to zero, whereas, contains the terms that simplify to when is substituted into .  This example leads us to the following concept for the general solution of a LNCC differential equation.   LNCC General Solution Parts  The linear nonhomogeneous constant coefficient (LNCC) equation has a solution with a homogeneous and particular part given by . where , found by solving the LHCC equation . Here, contains the terms of the solution that cancel out, whereas, contains the terms that simplify to when is substituted into .     Find the general solution to the differential equation given that the the particular solution is known to be .  Solution  The general solution has the form: Since is given, we only need to solve the homogeneous equation: Using the characteristic equation: The homogeneous solution is: Therefore, the general solution is:     Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution , which will be covered in the upcoming sections.  Check-Point Questions  If and , what is the general solution to the LNCC equation?   .  Correct! The general solution combines the homogeneous and particular parts.    .  Incorrect. The signs in the particular solution are wrong.    .  Incorrect. This is only the homogeneous solution, not the complete general solution.    .  Incorrect. This is only the particular solution, not the full general solution.     What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?    To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.    How is the homogeneous solution of an LNCC equation typically found?   By solving the characteristic equation associated with the homogeneous equation.  Correct! The characteristic equation provides the exponents for the homogeneous solution.    By integrating the equation twice.  Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.    By guessing the solution and checking.  Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.    By using boundary conditions.  Incorrect. Boundary conditions are used to find specific constants, not to find .     Which of the following statements are true about the particular part of the solution, , of an LNCC equation?   Which of the following statements are true about the particular part of the solution, , of the LNCC equation     It is part of the general solution of .  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Incorrect. is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Correct. The terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Incorrect. is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Correct! The particular solution looks like the non-zero right-hand side of the equation.     Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution,, , of the LNCC equation     It is part of the general solution of  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Incorrect. is related to the homogeneous equation, while the terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.     "
+  "body": "General Solutions  In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.  To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart: Let be the solution to the homogeneous equation , and be the solution to the nonhomogeneous equation , so we have Now, adding these equations together and rearranging the terms gives us This shows that not only is the solution to the nonhomogeneous equation , but so is . This happens because the terms in simplify to zero and the terms in simplify to .  From the previous section, we know is a solution to the LNCC equation and is the solution to the LHCC equation . Therefore, the combined solution is a solution to the LNCC equation where contains the terms that simplify to zero, whereas, contains the terms that simplify to when is substituted into .  This example leads us to the following concept for the general solution of a LNCC differential equation.   LNCC General Solution Parts  The linear nonhomogeneous constant coefficient (LNCC) equation has a solution with a homogeneous and particular part given by . where , found by solving the LHCC equation . Here, contains the terms of the solution that cancel out, whereas, contains the terms that simplify to when is substituted into .     Find the general solution to the differential equation given that the the particular solution is known to be .  Solution  The general solution has the form: Since is given, we only need to solve the homogeneous equation: Using the characteristic equation: The homogeneous solution is: Therefore, the general solution is:     Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution , which will be covered in the upcoming sections.  Check-Point Questions  If and , what is the general solution to the LNCC equation?   .  Correct! The general solution combines the homogeneous and particular parts.    .  Incorrect. The signs in the particular solution are wrong.    .  Incorrect. This is only the homogeneous solution, not the complete general solution.    .  Incorrect. This is only the particular solution, not the full general solution.     What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?  What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?   To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.    How is the homogeneous solution of an LNCC equation typically found?   By solving the characteristic equation associated with the homogeneous equation.  Correct! The characteristic equation provides the exponents for the homogeneous solution.    By integrating the equation twice.  Incorrect. Solving the characteristic equation is the standard method for homogeneous solutions.    By guessing the solution and checking.  Incorrect. The characteristic equation is the systematic way to find the homogeneous solution.    By using boundary conditions.  Incorrect. Boundary conditions are used to find specific constants, not to find .     Which of the following statements are true about the particular part of the solution, , of an LNCC equation?   Which of the following statements are true about the particular part of the solution, , of the LNCC equation     It is part of the general solution of .  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Incorrect. is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Correct. The terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Incorrect. is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Incorrect The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Correct! The particular solution looks like the non-zero right-hand side of the equation.     Which of the following statements are true about the homogeneous part of the solution, , of an LNCC equation?   Which of the following statements are true about the homogeneous part of the solution,, , of the LNCC equation     It is part of the general solution of  Correct! The general solution is the sum of the homogeneous solution and the particular solution .    It contains the terms in the general solution that simplify to zero when you plug it into the left-side of .  Correct! is the solution to the homogeneous part, while is the particular solution.    It contains the terms in the general solution that account for .  Incorrect. is related to the homogeneous equation, while the terms of simplify to when plugged into .    It is found by solving an LHCC equation.  Correct! is the solution to the homogeneous equation, and solves the nonhomogeneous equation.    It contains constants of integration.  Correct! The homogeneous solution includes constants of integration that are determined by the initial conditions.    It resembles .  Incorrect The particular solution accounts for the non-zero right-hand side of the equation.     "
 },
 {
   "id": "main-7-4-4-6",
@@ -4318,7 +4318,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "7.2.2",
   "title": "<em class=\"emphasis\">What is the purpose of the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> in solving a non-homogeneous linear differential equation?<\/em>",
-  "body": " What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?    To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.   "
+  "body": " What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?  What is the purpose of the particular solution in solving a non-homogeneous linear differential equation?   To represent the general solution of the homogeneous equation.  Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.    To determine the coefficients of the characteristic equation.  Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.    To account for the non-homogeneous term on the right-hand side of the equation.  Correct! The particular solution is chosen to match the form of and account for its influence in the equation.    To simplify the process of solving the differential equation.  Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.   "
 },
 {
   "id": "p3-c2-s2-rq3",
@@ -4354,7 +4354,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "7.3",
   "title": "Selecting Particular Solutions",
-  "body": "Selecting Particular Solutions  As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation: . The challenge is that the terms on the left side need to combine in just the right way to match on the right. This means the form of the particular solution must resemble closely. When contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.  The specific function that accounts for on the right side is known as the particular solution , denoted . The form of this solution depends on the type of function represents. To help select the correct form of , refer to , which outlines the most common types of and their corresponding forms.   Selecting the form of based on the form of .       Particular Solution Form,                                 In this table, the constants , , , , , and are assumed to be known, while , , , etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.   Determine the initial form of      Since has the form , we set .       has the form , so .       has the form , so .      Since is of the form , we set .      Even though only has an term, we consider it to be of the form , where . Therefore, .    When is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct by simply adding together the particular solutions corresponding to each term in . Let's look at an example to clarify this approach.   Determine the initial form of   For some LNCC equation of the form: , give the form of for each below.     Since is the sum of an term and a constant term, we set .      Since is the sum of a term and a term, we set .      Since is the sum of an term and a term, we set .      Since is the sum of a term and a term, we set .    When involves products of functions, constructing can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.   Find the initial form of for the given equation      Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .    Here are a few tips to help you avoid redundant coefficients when constructing the form of .  Tips to Avoid Redundant Coefficients    When is the product of an exponential and another function, avoid writing a coefficient for the exponential term.  For products of polynomials and sine\/cosine functions, use: where the polynomial form on each term uses different coefficients.  When working with sums, look for redundant overlapping terms.     Let's put these tips into practice with a couple of examples.   Find the initial form of for each equation      Since is the product of an exponential and a cosine function, we apply tip 1 and set: .      Since is the product of two exponential functions, we ignore one of the coefficients and set: . Note, is the same as , so we could also write .      Since is the product of a polynomial and a cosine function, we apply tip 2 and set: .      When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set: and you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to: .    Check-Point Questions  Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.    If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.    Which of the following would be the correct form for if ?    Correct! The particular solution should combine the polynomial with the exponential function in the same way as .     Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial .     Incorrect. This form only accounts for the polynomial part of , not the exponential part.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .     Match the form   Suppose we want the form of particular solution, , for the equation . On the left are possible functions. Drag each of these functions to the correct form of that you would use.                                             Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                         "
+  "body": "Selecting Particular Solutions  As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation: . The challenge is that the terms on the left side need to combine in just the right way to match on the right. This means the form of the particular solution must resemble closely. When contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.  The specific function that accounts for on the right side is known as the particular solution , denoted . The form of this solution depends on the type of function represents. To help select the correct form of , refer to , which outlines the most common types of and their corresponding forms.   Selecting the form of based on the form of .       Particular Solution Form,                                 In this table, the constants , , , , , and are assumed to be known, while , , , etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.   Determine the initial form of      Since has the form , we set .       has the form , so .       has the form , so .      Since is of the form , we set .      Even though only has an term, we consider it to be of the form , where . Therefore, .    When is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct by simply adding together the particular solutions corresponding to each term in . Let's look at an example to clarify this approach.   Determine the initial form of   For some LNCC equation of the form: , give the form of for each below.     Since is the sum of an term and a constant term, we set .      Since is the sum of a term and a term, we set .      Since is the sum of an term and a term, we set .      Since is the sum of a term and a term, we set .    When involves products of functions, constructing can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.   Find the initial form of for the given equation      Since is the product of a polynomial and an exponential, we initially set: . However, is redundant because if we multiply it onto the polynomial, it can be absorbed into and , as follows: . So, the form of simplifies to: .    Here are a few tips to help you avoid redundant coefficients when constructing the form of .  Tips to Avoid Redundant Coefficients    When is the product of an exponential and another function, avoid writing a coefficient for the exponential term.  For products of polynomials and sine\/cosine functions, use: where the polynomial form on each term uses different coefficients.  When working with sums, look for redundant overlapping terms.     Let's put these tips into practice with a couple of examples.   Find the initial form of for each equation      Since is the product of an exponential and a cosine function, we apply tip 1 and set: .      Since is the product of two exponential functions, we ignore one of the coefficients and set: . Note, is the same as , so we could also write .      Since is the product of a polynomial and a cosine function, we apply tip 2 and set: .      When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set: and you may notice that the underlined terms introduce unnecessary repetition. By grouping like terms, we can simplify this to: .    Check-Point Questions   Which of the following functions would be an appropriate form for the particular solution if ?  Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.     If , what should be the form of the particular solution ?  If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.    Which of the following would be the correct form for if ?    Correct! The particular solution should combine the polynomial with the exponential function in the same way as .     Incorrect. This form would be appropriate for an exponential function, but it doesn't account for the polynomial .     Incorrect. This form only accounts for the polynomial part of , not the exponential part.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .     Match the form   Suppose we want the form of particular solution, , for the equation . On the left are possible functions. Drag each of these functions to the correct form of that you would use.                                             Match the form   Suppose we want the form of particular solution, , for the equation . Drag the form of that you would use for each function, .                                                                                         "
 },
 {
   "id": "main-7-4-5-3",
@@ -4417,7 +4417,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "7.3.1",
   "title": "<em class=\"emphasis\">Which of the following functions would be an appropriate form for the particular solution <span class=\"process-math\">\\(y_p\\)<\/span> if <span class=\"process-math\">\\(f(x) = 5x^2 + 3x + 1\\text{?}\\)<\/span><\/em>",
-  "body": "Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.   "
+  "body": " Which of the following functions would be an appropriate form for the particular solution if ?  Which of the following functions would be an appropriate form for the particular solution if ?    Correct! The form of the particular solution for a quadratic polynomial should match the degree of the polynomial.     Incorrect. This form would be appropriate if was an exponential function, not a polynomial.     Incorrect. This form would be appropriate if was a trigonometric function.     Incorrect. This form would be too complex, as the given function is quadratic, not cubic.   "
 },
 {
   "id": "p3-c2-s3-rq2",
@@ -4426,7 +4426,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "7.3.2",
   "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(f(x) = 3e^{4x} + 2\\sin(3x)\\text{,}\\)<\/span> what should be the form of the particular solution <span class=\"process-math\">\\(y_p\\text{?}\\)<\/span><\/em>",
-  "body": "If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.   "
+  "body": " If , what should be the form of the particular solution ?  If , what should be the form of the particular solution ?    Correct! The particular solution should account for both the exponential and trigonometric terms in .     Incorrect. The second term should include sine and cosine, not another exponential.     Incorrect. This form only accounts for the trigonometric part of , not the exponential.     Incorrect. This form is not appropriate, as the terms in are separate, not a product of exponential and trigonometric terms.   "
 },
 {
   "id": "p3-c2-s3-rq3",
@@ -4462,7 +4462,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "7.4",
   "title": "Adjusting Particular Solutions",
-  "body": "Adjusting Particular Solutions  As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, , and the particular solution, . This relationship is expressed as: . However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.  To illustrate this, consider the LNCC equation: . Here, the homogeneous and particular solutions are: . The problem arises when you observe that in is similar to in , causing the general solution to become: As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term .  To address this, we adjust the form of by multiplying it by until there are no overlapping terms between and . In this example, multiplying by once is sufficient to make it independent of . The adjusted form of is:   Adjusting Particular Solutions   When the particular solution, , contains terms in common with the homogeneous solution, , adjust the form of by repeatedly multiplying the overlapping terms by until and share no terms in common.    Let's explore this adjustment process through a few examples.   Find the adjusted form of the particular solution, , for each of the following LNCC equations.    . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       . Solution  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       . Solution  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.       This adjustment process ensures that and are independent, allowing the general solution to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.  Check-Point Questions   Which of the following is the correct particular solution form for the differential equation ?  Which of the following is the correct particular solution form for the differential equation ?      Correct! The right-hand side is linear, so the particular solution takes the form .       Incorrect. The right-hand side of the equation is a polynomial, not exponential.       Incorrect. This form would be used if the non-homogeneous term were trigonometric.       Incorrect. This form would be used if the right-hand side was exponential.     What should be done when the particular part, , overlaps with the homogeneous part, , of a solution to an LNCC equation?  What should be done when the particular part, , overlaps with the homogeneous part, , of a solution to an LNCC equation?   The particular solution, , should be left as is.  Incorrect. The cannot have terms in common with .    The overlapping terms in should be removed.  Incorrect. No terms in should ever be removed.    The particular solution needs to be multiplied by until there are no terms in common with .  Correct!    should be multiplied by to match the particular solution.  Incorrect. The particular solution should be adjusted, not the homogeneous solution.     What is the adjusted form of for the LNCC equation ?  What is the adjusted form of for the LNCC equation ?     Incorrect. The nonhomogeneous term is , so the initial guess for should be . However, this form overlaps with . To resolve this, multiply by until there are no terms in common with .       Correct! The adjusted form of is .       Incorrect.       Incorrect.      If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?   If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?      Incorrect. The form of should be adjusted until there are no terms in common with .       Correct! The adjusted form of is .       Incorrect. The form of should be adjusted until there are no terms in common with .       Incorrect. The form of should be adjusted until there are no terms in common with .      Why is it necessary to multiply the initial form of by in some cases?   Why is it necessary to multiply the initial form of by in some cases?    To ensure that does not share terms with , making them independent.   Correct! Multiplying by ensures that and have no terms in common.     To make smaller than .   Incorrect. The size of is not the issue.     To change the characteristic equation.   Incorrect. Multiplying by does not affect the characteristic equation.     To remove the nonhomogeneous term from the equation.   Incorrect. The nonhomogeneous term should remain in the equation.      "
+  "body": "Adjusting Particular Solutions  As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, , and the particular solution, . This relationship is expressed as: . However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.  To illustrate this, consider the LNCC equation: . Here, the homogeneous and particular solutions are: . The problem arises when you observe that in is similar to in , causing the general solution to become: As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term .  To address this, we adjust the form of by multiplying it by until there are no overlapping terms between and . In this example, multiplying by once is sufficient to make it independent of . The adjusted form of is:   Adjusting Particular Solutions   When the particular solution, , contains terms in common with the homogeneous solution, , adjust the form of by repeatedly multiplying the overlapping terms by until and share no terms in common.    Let's explore this adjustment process through a few examples.   Find the adjusted form of the particular solution, , for each of the following LNCC equations.     . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       . Solution  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       . Solution  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.       This adjustment process ensures that and are independent, allowing the general solution to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.  Check-Point Questions   Which of the following is the correct particular solution form for the differential equation ?  Which of the following is the correct particular solution form for the differential equation ?      Correct! The right-hand side is linear, so the particular solution takes the form .       Incorrect. The right-hand side of the equation is a polynomial, not exponential.       Incorrect. This form would be used if the non-homogeneous term were trigonometric.       Incorrect. This form would be used if the right-hand side was exponential.     What should be done when the particular part, , overlaps with the homogeneous part, , of a solution to an LNCC equation?  What should be done when the particular part, , overlaps with the homogeneous part, , of a solution to an LNCC equation?   The particular solution, , should be left as is.  Incorrect. The cannot have terms in common with .    The overlapping terms in should be removed.  Incorrect. No terms in should ever be removed.    The particular solution needs to be multiplied by until there are no terms in common with .  Correct!    should be multiplied by to match the particular solution.  Incorrect. The particular solution should be adjusted, not the homogeneous solution.     What is the adjusted form of for the LNCC equation ?  What is the adjusted form of for the LNCC equation ?     Incorrect. The nonhomogeneous term is , so the initial guess for should be . However, this form overlaps with . To resolve this, multiply by until there are no terms in common with .       Correct! The adjusted form of is .       Incorrect.       Incorrect.      If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?   If the nonhomogeneous term in an LNCC equation is and , what should be the adjusted form of ?      Incorrect. The form of should be adjusted until there are no terms in common with .       Correct! The adjusted form of is .       Incorrect. The form of should be adjusted until there are no terms in common with .       Incorrect. The form of should be adjusted until there are no terms in common with .      Why is it necessary to multiply the initial form of by in some cases?   Why is it necessary to multiply the initial form of by in some cases?    To ensure that does not share terms with , making them independent.   Correct! Multiplying by ensures that and have no terms in common.     To make smaller than .   Incorrect. The size of is not the issue.     To change the characteristic equation.   Incorrect. Multiplying by does not affect the characteristic equation.     To remove the nonhomogeneous term from the equation.   Incorrect. The nonhomogeneous term should remain in the equation.      "
 },
 {
   "id": "main-7-4-6-5",
@@ -4480,7 +4480,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "21",
   "title": "",
-  "body": " Find the adjusted form of the particular solution, , for each of the following LNCC equations.    . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       . Solution  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       . Solution  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.      "
+  "body": " Find the adjusted form of the particular solution, , for each of the following LNCC equations.     . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, this form overlaps with in . To resolve this, multiply by : , which now overlaps with . Multiplying by again gives: , which has no terms in common with . This is the correct form to use for .       . Solution  First, solve the characteristic equation: , which yields the roots , , and . This results in the homogeneous solution: .  For the nonhomogeneous term , the initial guess for is: . Since and overlap with terms in , multiply these terms by : . The terms in and are now independent, making this the correct form for .       . Solution  Begin by solving the characteristic equation: , which yields the roots and , leading to the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for is: . This form is not present in , so no further adjustment is needed. To determine the coefficients and , substitute back into the differential equation and solve for these values.       . Solution  First, determine by solving the characteristic equation: , which yields a repeated root , giving the homogeneous solution: .  Since the nonhomogeneous term is , the initial guess for the particular solution is: . However, notice that and are already present in . To avoid overlap, multiply by , giving: . This form is now independent of , ensuring that there are no overlapping terms.  To determine the coefficients , , and , substitute back into the original differential equation and solve for these values.      "
 },
 {
   "id": "p3-c2-s4-rq1",
@@ -4615,7 +4615,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "7.6",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises    Summary of the Key Ideas    The method of undetermined coefficients is used to solve non-homogeneous linear differential equations.  The general solution to a non-homogeneous equation is the sum of the general solution to the corresponding homogeneous equation and a particular solution.  The method involves guessing the form of the particular solution based on the form of the non-homogeneous term and solving for the coefficients.  The method is applicable when the non-homogeneous term can be expressed as a linear combination of known functions.        Describe the difference between a homogeneous and a non-homogeneous differential equation. Solution  A differential equation is termed \"homogeneous\" if all the terms of the equation are either derivatives of the unknown function or multiples of the unknown function itself, and the equation can be set equal to zero. In other words, there are no terms in the equation that are solely functions of the independent variable or constants. For example, the equation is homogeneous because all its terms involve or its derivatives and the equation is set equal to zero. A differential equation is termed \"non-homogeneous\" if it contains terms that are solely functions of the independent variable or constants which are not multiples of the unknown function or its derivatives. For example, the equation is non-homogeneous because of the term on the right side, which is not a derivative or multiple of . The distinction between homogeneous and non-homogeneous differential equations is crucial as the methods used to solve them can differ.   Solve the IVP  Consider the initial-value problem, and answer the following questions.  Find the homogeneous part, , of the general solution of .    Select the initial form of the particular solution, , by looking at the non-homogenous term of equation .   Solution  We look at the non-homogenous terms in the DE. In this case, the non-homogeneous part of the DE is Based on this function, we would assume that the particular solutio has a similar form, so we would guess We refer back to th we found previously and we make sure there are no terms like this that are i . In this case, our choice o is not a repeat of terms i , so we are satisfied with our choice o    Substitute into to find the coefficient, . Then give .   Solution  We need to substitute into the original DE, so we need to find the first and second derivatives. No we sub in to the original DE and solve for the coefficien . Hence, the particular solution is    Form the general solution    Solution  We simply ad an to form the general solution.    Use the initial conditions to find the particular solution to this IVP.   Solution      Find the Initial Form of .  Find the initial Form of . for each differential equation below. DO NOT determine the values of the coefficients etc.       Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Since an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a 2nd degree polynomial and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows.        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a first degree polynomial and the product of an exponential and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo       Solution          Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of the product of an exponential and the product of a 2nd degree polynomial and an exponential, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is roots, the general solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of both the product of a 1st degree polynomial and an exponential function and the product of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the form of the product of an exponential and a trig function. Therefore, we need to adjust our guess to account for that repeat, as follows.        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a second degree polynomial and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Now we again compar an and see that they both contain terms of the for Therefore, we need to again adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.       Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential function and the product of a 2nd degree polynomial and an exponential function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo     Find the general solution for each differential equation      Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 2nd degree polynomial, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first derivative, so we find that now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. Since we kno we can fin using the second equation Then we can solve fo using the third equation Hence, the particular solution is The general solution is given b :        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 1st degree polynomial, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha an Then we can solve fo using the second equation. Hence, the particular solution is The general solution is given b :        Solution  We are used to seeing second order DEs in a different orientation. It may help to re-write the DE as follows. Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of two equations and two unknowns. There are many ways to solve this system of equations. One way is to solve fo in the first equation and then substitute into the second equation as follows. using the second equation. Hence, the particular solution is The general solution is given b :        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. We again compar an and see that they both contain terms of the for Therefore, we need to adjust our guess once more. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha , and we can use the first two equations to solve fo an . There are many ways to do this; one way is to solve fo in the second equation and then substitute into the first equation. Hence, the particular solution is The general solution is given b :        Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a a first degree polynomial and two exponential functions, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for an Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient   , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of four equations and four unknowns. We can easily see tha  an . We can use the second equation to solve fo . Hence, the particular solution is The general solution is given b :      Find the solution to the IVP: .   Solution  In question (\\ref{particular_soln}), we found the general solution We need only use the given initial condition in order to fin  Thus, the solution is %     Notice that the DE in Question is actually a first-order linear differential equation, so we can use another method of solution to solve it (and we should get the same answer!). Solve the same IVP using an integrating factor and compareyour answers.   Solution  First we put DE in standard form for a first-order linear DE so we can identif In this case is the dependent variable (i.e., it behaves lik ) an is the independent variable (i.e., it behaves lik ), so the standard form we seek i so we can identif  Thus Then we find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq20}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable. On the left hand side we will need to integration by parts. We begin by choosin an and then we can find th the derivative o , an , the antiderivative o as follows. Hence we have The new integral is an improvement, but will require another integration by parts. Again, we choose an as follows. Hence we continue solving our DE as follows: We now take the general solution and apply the initial conditio so that we can solve for the particular solution. Hence, the solution to this IVP i (which is the same answer we got using the method of undetermined coefficients).     "
+  "body": "Summary & Exercises    Summary of the Key Ideas    The method of undetermined coefficients is used to solve non-homogeneous linear differential equations.  The general solution to a non-homogeneous equation is the sum of the general solution to the corresponding homogeneous equation and a particular solution.  The method involves guessing the form of the particular solution based on the form of the non-homogeneous term and solving for the coefficients.  The method is applicable when the non-homogeneous term can be expressed as a linear combination of known functions.        Describe the difference between a homogeneous and a non-homogeneous differential equation. Solution  A differential equation is termed \"homogeneous\" if all the terms of the equation are either derivatives of the unknown function or multiples of the unknown function itself, and the equation can be set equal to zero. In other words, there are no terms in the equation that are solely functions of the independent variable or constants. For example, the equation is homogeneous because all its terms involve or its derivatives and the equation is set equal to zero. A differential equation is termed \"non-homogeneous\" if it contains terms that are solely functions of the independent variable or constants which are not multiples of the unknown function or its derivatives. For example, the equation is non-homogeneous because of the term on the right side, which is not a derivative or multiple of . The distinction between homogeneous and non-homogeneous differential equations is crucial as the methods used to solve them can differ.   Solve the IVP  Consider the initial-value problem, and answer the following questions.  Find the homogeneous part, , of the general solution of . Answer      Select the initial form of the particular solution, , by looking at the non-homogenous term of equation . Answer     Solution  We look at the non-homogenous terms in the DE. In this case, the non-homogeneous part of the DE is Based on this function, we would assume that the particular solutio has a similar form, so we would guess We refer back to th we found previously and we make sure there are no terms like this that are i . In this case, our choice o is not a repeat of terms i , so we are satisfied with our choice o    Substitute into to find the coefficient, . Then give . Answer     Solution  We need to substitute into the original DE, so we need to find the first and second derivatives. No we sub in to the original DE and solve for the coefficien . Hence, the particular solution is    Form the general solution  Answer     Solution  We simply ad an to form the general solution.    Use the initial conditions to find the particular solution to this IVP. Answer     Solution      Find the Initial Form of .  Find the initial Form of . for each differential equation below. DO NOT determine the values of the coefficients etc.     Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Since an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a 2nd degree polynomial and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows.      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a first degree polynomial and the product of an exponential and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo      Answer    Solution        Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of the product of an exponential and the product of a 2nd degree polynomial and an exponential, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is roots, the general solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of both the product of a 1st degree polynomial and an exponential function and the product of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the form of the product of an exponential and a trig function. Therefore, we need to adjust our guess to account for that repeat, as follows.      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a second degree polynomial and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Now we again compar an and see that they both contain terms of the for Therefore, we need to again adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.     Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential function and the product of a 2nd degree polynomial and an exponential function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo     Find the general solution for each differential equation    Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 2nd degree polynomial, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first derivative, so we find that now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. Since we kno we can fin using the second equation Then we can solve fo using the third equation Hence, the particular solution is The general solution is given b :      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 1st degree polynomial, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha an Then we can solve fo using the second equation. Hence, the particular solution is The general solution is given b :      Answer     Solution  We are used to seeing second order DEs in a different orientation. It may help to re-write the DE as follows. Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of two equations and two unknowns. There are many ways to solve this system of equations. One way is to solve fo in the first equation and then substitute into the second equation as follows. using the second equation. Hence, the particular solution is The general solution is given b :      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. We again compar an and see that they both contain terms of the for Therefore, we need to adjust our guess once more. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha , and we can use the first two equations to solve fo an . There are many ways to do this; one way is to solve fo in the second equation and then substitute into the first equation. Hence, the particular solution is The general solution is given b :      Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a a first degree polynomial and two exponential functions, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for an Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient   , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of four equations and four unknowns. We can easily see tha  an . We can use the second equation to solve fo . Hence, the particular solution is The general solution is given b :      Find the solution to the IVP: . Answer     Solution  In question (\\ref{particular_soln}), we found the general solution We need only use the given initial condition in order to fin  Thus, the solution is %     Notice that the DE in Question is actually a first-order linear differential equation, so we can use another method of solution to solve it (and we should get the same answer!). Solve the same IVP using an integrating factor and compareyour answers. Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identif In this case is the dependent variable (i.e., it behaves lik ) an is the independent variable (i.e., it behaves lik ), so the standard form we seek i so we can identif  Thus Then we find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq20}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable. On the left hand side we will need to integration by parts. We begin by choosin an and then we can find th the derivative o , an , the antiderivative o as follows. Hence we have The new integral is an improvement, but will require another integration by parts. Again, we choose an as follows. Hence we continue solving our DE as follows: We now take the general solution and apply the initial conditio so that we can solve for the particular solution. Hence, the solution to this IVP i (which is the same answer we got using the method of undetermined coefficients).     "
 },
 {
   "id": "main-7-4-8-3-1",
@@ -4633,7 +4633,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.2",
   "title": "",
-  "body": "Find the homogeneous part, , of the general solution of .   "
+  "body": "Find the homogeneous part, , of the general solution of . Answer     "
 },
 {
   "id": "main-7-4-8-3-2-4",
@@ -4642,7 +4642,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.3",
   "title": "",
-  "body": "Select the initial form of the particular solution, , by looking at the non-homogenous term of equation .   Solution  We look at the non-homogenous terms in the DE. In this case, the non-homogeneous part of the DE is Based on this function, we would assume that the particular solutio has a similar form, so we would guess We refer back to th we found previously and we make sure there are no terms like this that are i . In this case, our choice o is not a repeat of terms i , so we are satisfied with our choice o   "
+  "body": "Select the initial form of the particular solution, , by looking at the non-homogenous term of equation . Answer     Solution  We look at the non-homogenous terms in the DE. In this case, the non-homogeneous part of the DE is Based on this function, we would assume that the particular solutio has a similar form, so we would guess We refer back to th we found previously and we make sure there are no terms like this that are i . In this case, our choice o is not a repeat of terms i , so we are satisfied with our choice o   "
 },
 {
   "id": "main-7-4-8-3-2-5",
@@ -4651,7 +4651,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.4",
   "title": "",
-  "body": "Substitute into to find the coefficient, . Then give .   Solution  We need to substitute into the original DE, so we need to find the first and second derivatives. No we sub in to the original DE and solve for the coefficien . Hence, the particular solution is   "
+  "body": "Substitute into to find the coefficient, . Then give . Answer     Solution  We need to substitute into the original DE, so we need to find the first and second derivatives. No we sub in to the original DE and solve for the coefficien . Hence, the particular solution is   "
 },
 {
   "id": "main-7-4-8-3-2-6",
@@ -4660,7 +4660,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.5",
   "title": "",
-  "body": "Form the general solution    Solution  We simply ad an to form the general solution.   "
+  "body": "Form the general solution  Answer     Solution  We simply ad an to form the general solution.   "
 },
 {
   "id": "main-7-4-8-3-2-7",
@@ -4669,7 +4669,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.6",
   "title": "",
-  "body": "Use the initial conditions to find the particular solution to this IVP.   Solution    "
+  "body": "Use the initial conditions to find the particular solution to this IVP. Answer     Solution    "
 },
 {
   "id": "main-7-4-8-3-3-3",
@@ -4678,7 +4678,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.7",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Since an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a 2nd degree polynomial and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Since an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a 2nd degree polynomial and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
 },
 {
   "id": "main-7-4-8-3-3-4",
@@ -4687,7 +4687,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.8",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows.   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows.   "
 },
 {
   "id": "main-7-4-8-3-3-5",
@@ -4696,7 +4696,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.9",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a first degree polynomial and the product of an exponential and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a first degree polynomial and the product of an exponential and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
 },
 {
   "id": "main-7-4-8-3-3-6",
@@ -4705,7 +4705,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.10",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-7-4-8-3-3-7",
@@ -4714,7 +4714,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.11",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of the product of an exponential and the product of a 2nd degree polynomial and an exponential, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of the product of an exponential and the product of a 2nd degree polynomial and an exponential, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
 },
 {
   "id": "main-7-4-8-3-3-8",
@@ -4723,7 +4723,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.12",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is roots, the general solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of both the product of a 1st degree polynomial and an exponential function and the product of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the form of the product of an exponential and a trig function. Therefore, we need to adjust our guess to account for that repeat, as follows.   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is roots, the general solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of both the product of a 1st degree polynomial and an exponential function and the product of an exponential and a trig function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the form of the product of an exponential and a trig function. Therefore, we need to adjust our guess to account for that repeat, as follows.   "
 },
 {
   "id": "main-7-4-8-3-3-9",
@@ -4732,7 +4732,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.13",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a second degree polynomial and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Now we again compar an and see that they both contain terms of the for Therefore, we need to again adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.  "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a second degree polynomial and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Now we again compar an and see that they both contain terms of the for Therefore, we need to again adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.  "
 },
 {
   "id": "main-7-4-8-3-3-10",
@@ -4741,7 +4741,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.14",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential function and the product of a 2nd degree polynomial and an exponential function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of an exponential function and the product of a 2nd degree polynomial and an exponential function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
 },
 {
   "id": "main-7-4-8-3-3-11",
@@ -4750,7 +4750,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.15",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ Even though we are asked only about the form o we must first fin to confirm there are no repeats. So we solve the associated homogeneous DE (by omitting terms that do not contain the dependent variable). We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo   "
 },
 {
   "id": "main-7-4-8-3-4-2",
@@ -4759,7 +4759,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.16",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 2nd degree polynomial, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first derivative, so we find that now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. Since we kno we can fin using the second equation Then we can solve fo using the third equation Hence, the particular solution is The general solution is given b :   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 2nd degree polynomial, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first derivative, so we find that now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. Since we kno we can fin using the second equation Then we can solve fo using the third equation Hence, the particular solution is The general solution is given b :   "
 },
 {
   "id": "main-7-4-8-3-4-3",
@@ -4768,7 +4768,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.17",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 1st degree polynomial, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha an Then we can solve fo using the second equation. Hence, the particular solution is The general solution is given b :   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a constant and a 1st degree polynomial, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha an Then we can solve fo using the second equation. Hence, the particular solution is The general solution is given b :   "
 },
 {
   "id": "main-7-4-8-3-4-4",
@@ -4777,7 +4777,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.18",
   "title": "",
-  "body": "    Solution  We are used to seeing second order DEs in a different orientation. It may help to re-write the DE as follows. Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of two equations and two unknowns. There are many ways to solve this system of equations. One way is to solve fo in the first equation and then substitute into the second equation as follows. using the second equation. Hence, the particular solution is The general solution is given b :   "
+  "body": "  Answer     Solution  We are used to seeing second order DEs in a different orientation. It may help to re-write the DE as follows. Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a complex conjugate pair, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function, we would want to mirror that i as follows. We look at the terms o and see tha doesn't contain any terms that are repeats of terms i so we will not need to adjust our guess fo In order to determine the coefficient an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of two equations and two unknowns. There are many ways to solve this system of equations. One way is to solve fo in the first equation and then substitute into the second equation as follows. using the second equation. Hence, the particular solution is The general solution is given b :   "
 },
 {
   "id": "main-7-4-8-3-4-5",
@@ -4786,7 +4786,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.19",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. We again compar an and see that they both contain terms of the for Therefore, we need to adjust our guess once more. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha , and we can use the first two equations to solve fo an . There are many ways to do this; one way is to solve fo in the second equation and then substitute into the first equation. Hence, the particular solution is The general solution is given b :   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc is a repeated real root, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a trig function and an exponential function, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for Therefore, we need to adjust our guess to account for that repeat, as follows. We again compar an and see that they both contain terms of the for Therefore, we need to adjust our guess once more. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient  , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of three equations and three unknowns. We can easily see tha , and we can use the first two equations to solve fo an . There are many ways to do this; one way is to solve fo in the second equation and then substitute into the first equation. Hence, the particular solution is The general solution is given b :   "
 },
 {
   "id": "main-7-4-8-3-4-6",
@@ -4795,7 +4795,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.20",
   "title": "",
-  "body": "    Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a a first degree polynomial and two exponential functions, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for an Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient   , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of four equations and four unknowns. We can easily see tha  an . We can use the second equation to solve fo . Hence, the particular solution is The general solution is given b :   "
+  "body": "  Answer     Solution  Before we can begin, we should confirm that the DE is linear,  the DE has constant coefficients. Now we know that it would be appropriate to solve the DE using the method of undetermined coefficients.\\\\ We begin by findin the solution to the the associated homogeneous DE (by omitting terms that do not contain the dependent variable): We write the characteristic equation and then solve it. Sinc an are distinct, real roots, the complementary solution is Now we bring our attention to the non-homogeneous parts of the DE, Since it consists of a a first degree polynomial and two exponential functions, we would want to mirror that i as follows. We compar an and see that they both contain terms of the for an Therefore, we need to adjust our guess to account for that repeat, as follows. Since we have now eliminated all repeats, we do not need to adjus further.\\\\ In order to determine the coefficient   , an , we will su into the DE. Therefore we need the first and second derivatives, so we find those now. We will need to use the product rule. Now we sub into the original DE: We have collected like terms, and now we can equate coefficients to yield a system of four equations and four unknowns. We can easily see tha  an . We can use the second equation to solve fo . Hence, the particular solution is The general solution is given b :   "
 },
 {
   "id": "ex-1",
@@ -4804,7 +4804,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.21",
   "title": "",
-  "body": "Find the solution to the IVP: .   Solution  In question (\\ref{particular_soln}), we found the general solution We need only use the given initial condition in order to fin  Thus, the solution is %  "
+  "body": "Find the solution to the IVP: . Answer     Solution  In question (\\ref{particular_soln}), we found the general solution We need only use the given initial condition in order to fin  Thus, the solution is %  "
 },
 {
   "id": "main-7-4-8-3-6-1",
@@ -4813,16 +4813,43 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "7.6.22",
   "title": "",
-  "body": "Notice that the DE in Question is actually a first-order linear differential equation, so we can use another method of solution to solve it (and we should get the same answer!). Solve the same IVP using an integrating factor and compareyour answers.   Solution  First we put DE in standard form for a first-order linear DE so we can identif In this case is the dependent variable (i.e., it behaves lik ) an is the independent variable (i.e., it behaves lik ), so the standard form we seek i so we can identif  Thus Then we find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq20}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable. On the left hand side we will need to integration by parts. We begin by choosin an and then we can find th the derivative o , an , the antiderivative o as follows. Hence we have The new integral is an improvement, but will require another integration by parts. Again, we choose an as follows. Hence we continue solving our DE as follows: We now take the general solution and apply the initial conditio so that we can solve for the particular solution. Hence, the solution to this IVP i (which is the same answer we got using the method of undetermined coefficients).  "
+  "body": "Notice that the DE in Question is actually a first-order linear differential equation, so we can use another method of solution to solve it (and we should get the same answer!). Solve the same IVP using an integrating factor and compareyour answers. Answer     Solution  First we put DE in standard form for a first-order linear DE so we can identif In this case is the dependent variable (i.e., it behaves lik ) an is the independent variable (i.e., it behaves lik ), so the standard form we seek i so we can identif  Thus Then we find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq20}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: Now we can integrate both sides of the equation and then solve for the dependent variable. On the left hand side we will need to integration by parts. We begin by choosin an and then we can find th the derivative o , an , the antiderivative o as follows. Hence we have The new integral is an improvement, but will require another integration by parts. Again, we choose an as follows. Hence we continue solving our DE as follows: We now take the general solution and apply the initial conditio so that we can solve for the particular solution. Hence, the solution to this IVP i (which is the same answer we got using the method of undetermined coefficients).  "
 },
 {
-  "id": "main-7-5",
+  "id": "main-7-5-3",
   "level": "1",
-  "url": "main-7-5.html",
-  "type": "Chapter",
-  "number": "8",
-  "title": "Variation of Parameters",
-  "body": "Variation of Parameters   "
+  "url": "main-7-5-3.html",
+  "type": "Section",
+  "number": "8.1",
+  "title": "Summary &amp; Exercises",
+  "body": "Summary & Exercises    Summary of the Key Ideas    Method        Do something  *NEED EXERCISES    Answer    Solution       "
+},
+{
+  "id": "main-7-5-3-2-1",
+  "level": "2",
+  "url": "main-7-5-3.html#main-7-5-3-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": " Method  "
+},
+{
+  "id": "main-7-5-3-3-1-3",
+  "level": "2",
+  "url": "main-7-5-3-3.html#main-7-5-3-3-1-3",
+  "type": "Exercise",
+  "number": "8.1.1",
+  "title": "",
+  "body": "  Answer    Solution    "
+},
+{
+  "id": "main-7-5-4",
+  "level": "1",
+  "url": "main-7-5-4.html",
+  "type": "Section",
+  "number": "8.2",
+  "title": "Orphaned Content",
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Examples   Additional Practice   "
 },
 {
   "id": "main-8-3-3-3",
@@ -4831,7 +4858,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.1.1",
   "title": "Motivation",
-  "body": "Motivation  The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts: .  In this equation, and are functions of . So , and . Now, we can rewrite this formula as: .  Notice how the derivative initially applied to on the left-hand side shifts over to on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.  Let's see this concept in action. Consider an integral of the form: , where is a constant. By setting and in our integration by parts formula, we get: .  What's happening here? The derivative on in integral is effectively transferred to the exponential function in integral , leaving an extra factor of next to integral .  This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations.  Check-Point Questions   The Laplace transform method is leverages which concepts to solve differential equations?    Chain Rule   Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.     Product Rule   No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.     Integration by Parts   Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.     Properties of Exponential Functions   Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.      Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?    Chain Rule   Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.     L'Hopital's Rule   Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.     Integration by Parts   Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.     Implicit Differentiation   Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.            Correct! The derivative of with respect to is .       Incorrect. The derivative should include a factor of due to the chain rule.       Incorrect. The derivative should be negative because the exponent of has a negative sign.       Incorrect. This expression incorrectly represents the derivative of . Think about applying the chain rule to the exponent.      Select the result of applying integration by parts to the integral,        Incorrect. Pay close attention to how integration by parts is applied. Try again.         Incorrect. You need to transfer the derivative correctly by choosing the appropriate and .         Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.         Correct! The result of applying integration by parts to is .      "
+  "body": "Motivation  The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts: .  In this equation, and are functions of . So , and . Now, we can rewrite this formula as: .  Notice how the derivative initially applied to on the left-hand side shifts over to on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.  Let's see this concept in action. Consider an integral of the form: , where is a constant. By setting and in our integration by parts formula, we get: .  What's happening here? The derivative on in integral is effectively transferred to the exponential function in integral , leaving an extra factor of next to integral .  This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations.  Check-Point Questions   The Laplace transform method is leverages which concepts to solve differential equations?    The Laplace transform method is leverages which concepts to solve differential equations?     Chain Rule   Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.     Product Rule   No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.     Integration by Parts   Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.     Properties of Exponential Functions   Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.      Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?    Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?     Chain Rule   Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.     L'Hopital's Rule   Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.     Integration by Parts   Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.     Implicit Differentiation   Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.                 Correct! The derivative of with respect to is .       Incorrect. The derivative should include a factor of due to the chain rule.       Incorrect. The derivative should be negative because the exponent of has a negative sign.       Incorrect. This expression incorrectly represents the derivative of . Think about applying the chain rule to the exponent.      Select the result of applying integration by parts to    Select the result of applying integration by parts to         Incorrect. Pay close attention to how integration by parts is applied. Try again.         Incorrect. You need to transfer the derivative correctly by choosing the appropriate and .         Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.         Correct! The result of applying integration by parts to is .      "
 },
 {
   "id": "p4-c1-s1-1-rq1",
@@ -4840,7 +4867,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.1.1.1",
   "title": "<em class=\"emphasis\">The Laplace transform method is leverages which concepts to solve differential equations?<\/em>",
-  "body": " The Laplace transform method is leverages which concepts to solve differential equations?    Chain Rule   Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.     Product Rule   No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.     Integration by Parts   Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.     Properties of Exponential Functions   Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.    "
+  "body": " The Laplace transform method is leverages which concepts to solve differential equations?    The Laplace transform method is leverages which concepts to solve differential equations?     Chain Rule   Incorrect. The chain rule is not a key feature of the Laplace transform method. Think about a process that allows you to transfer derivatives.     Product Rule   No, the product rule is not a key concept in the Laplace transform method. Consider a method related to integration.     Integration by Parts   Correct! The Laplace transform method leverages integration by parts to move derivatives from one function to another inside integrals.     Properties of Exponential Functions   Correct! The Laplace transform method uses the properties of exponential functions, especially their behavior under differentiation and integration, to solve differential equations.    "
 },
 {
   "id": "p4-c1-s1-1-rq2",
@@ -4849,7 +4876,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.1.1.2",
   "title": "<em class=\"emphasis\">Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?<\/em>",
-  "body": " Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?    Chain Rule   Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.     L'Hopital's Rule   Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.     Integration by Parts   Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.     Implicit Differentiation   Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.    "
+  "body": " Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?    Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?     Chain Rule   Incorrect. The chain rule is used for compositions of functions, not for transferring derivatives within integrals. Try again.     L'Hopital's Rule   Incorrect. L'Hopital's Rule is used to evaluate limits of indeterminate forms, not to transfer derivatives within integrals.     Integration by Parts   Correct! Integration by Parts allows the transfer of a derivative from one function to another inside an integral, a fundamental tool in the Laplace transform method.     Implicit Differentiation   Incorrect. Implicit differentiation is used to differentiate equations where the variable isn’t isolated, not to transfer derivatives within integrals.    "
 },
 {
   "id": "p4-c1-s1-1-rq3",
@@ -4857,8 +4884,8 @@ var ptx_lunr_docs = [
   "url": "main-8-3-3-3.html#p4-c1-s1-1-rq3",
   "type": "Reading Question",
   "number": "9.1.1.3",
-  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\frac{d}{dt}\\left[e^{-st}\\right] =\\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The derivative of with respect to is .       Incorrect. The derivative should include a factor of due to the chain rule.       Incorrect. The derivative should be negative because the exponent of has a negative sign.       Incorrect. This expression incorrectly represents the derivative of . Think about applying the chain rule to the exponent.    "
+  "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\frac{d}{dt}\\left[e^{-st}\\right] = \\fillinmath{XXXX}\\)<\/span><\/em>.",
+  "body": "            Correct! The derivative of with respect to is .       Incorrect. The derivative should include a factor of due to the chain rule.       Incorrect. The derivative should be negative because the exponent of has a negative sign.       Incorrect. This expression incorrectly represents the derivative of . Think about applying the chain rule to the exponent.    "
 },
 {
   "id": "p4-c1-s1-1-rq4",
@@ -4866,8 +4893,8 @@ var ptx_lunr_docs = [
   "url": "main-8-3-3-3.html#p4-c1-s1-1-rq4",
   "type": "Reading Question",
   "number": "9.1.1.4",
-  "title": "<em class=\"emphasis\">Select the result of applying integration by parts to the integral, <span class=\"process-math\">\\(\\ \\ \\ds \\int t^2 \\ y'\\ dt\\)<\/span><\/em>.",
-  "body": " Select the result of applying integration by parts to the integral,        Incorrect. Pay close attention to how integration by parts is applied. Try again.         Incorrect. You need to transfer the derivative correctly by choosing the appropriate and .         Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.         Correct! The result of applying integration by parts to is .    "
+  "title": "<em class=\"emphasis\">Select the result of applying integration by parts to <span class=\"process-math\">\\(\\ \\ds\\int t^2 \\ y'\\ dt\\)<\/span><\/em>.",
+  "body": " Select the result of applying integration by parts to    Select the result of applying integration by parts to         Incorrect. Pay close attention to how integration by parts is applied. Try again.         Incorrect. You need to transfer the derivative correctly by choosing the appropriate and .         Incorrect. This result is incorrect due to a missing term. Try applying integration by parts again.         Correct! The result of applying integration by parts to is .    "
 },
 {
   "id": "main-8-3-3-4",
@@ -4876,7 +4903,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.1.2",
   "title": "Definition",
-  "body": "Definition  In the previous section, we mentioned the importance of integration by parts and to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by and integrate with respect to . For instance, applying this process to the equation would look like this: . As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.  Laplace Transform  The Laplace Transform of a given function is defined as provided that the integral exists (i.e., the improper integral converges).   This definition may appear daunting at first glance, but let's break it down. The in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:   Notice that while the integral involves both and , the integration is performed with respect to . If you're unfamiliar with handling multiple variables like this, simply treat as a constant during the integration process. Now, let's walk through an example to see this concept in action.  Check-Point Questions   The Laplace transform only exists if the improper integral converges   This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.    The Laplace transform is defined as , provided the exists    integral   Correct! The Laplace transform is defined only if the integral converges.     function   No, it is the convergence of the integral that determines whether the Laplace transform is defined.     -value   No, the Laplace transform is defined by an integral, not by a specific -value.     derivative   No, the Laplace transform is defined by an integral, not by a derivative.      Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to    integrating   No, the correct expression involves the exponential function .     integrating   Correct! The Laplace transform involves multiplying the original function by and integrating with respect to .     integrating   No, the correct expression involves the exponential function .     differentiating   No, the Laplace transform involves integrating with respect to .     differentiating   No, the correct form involves the exponential function and integrating with respect to .      "
+  "body": "Definition  In the previous section, we mentioned the importance of integration by parts and to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by and integrate with respect to . For instance, applying this process to the equation would look like this: . As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.  Laplace Transform  The Laplace Transform of a given function is defined as provided that the integral exists (i.e., the improper integral converges).   This definition may appear daunting at first glance, but let's break it down. The in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:   Notice that while the integral involves both and , the integration is performed with respect to . If you're unfamiliar with handling multiple variables like this, simply treat as a constant during the integration process. Now, let's walk through an example to see this concept in action.  Check-Point Questions   The Laplace transform only exists if the improper integral converges   The Laplace transform only exists if the improper integral converges   This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.    The Laplace transform is defined as , provided the exists    The Laplace transform is defined as , provided the exists     integral   Correct! The Laplace transform is defined only if the integral converges.     function   No, it is the convergence of the integral that determines whether the Laplace transform is defined.     -value   No, the Laplace transform is defined by an integral, not by a specific -value.     derivative   No, the Laplace transform is defined by an integral, not by a derivative.      Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to    Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to     integrating   No, the correct expression involves the exponential function .     integrating   Correct! The Laplace transform involves multiplying the original function by and integrating with respect to .     integrating   No, the correct expression involves the exponential function .     differentiating   No, the Laplace transform involves integrating with respect to .     differentiating   No, the correct form involves the exponential function and integrating with respect to .      "
 },
 {
   "id": "main-8-3-3-4-3",
@@ -4894,7 +4921,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.1.2.1",
   "title": "<em class=\"emphasis\">The Laplace transform only exists if the improper integral converges<\/em>.",
-  "body": " The Laplace transform only exists if the improper integral converges   This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.  "
+  "body": " The Laplace transform only exists if the improper integral converges   The Laplace transform only exists if the improper integral converges   This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform is not defined.  "
 },
 {
   "id": "p4-c1-s1-2-rq2",
@@ -4903,7 +4930,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.1.2.2",
   "title": "<em class=\"emphasis\">The Laplace transform is defined as <span class=\"process-math\">\\(\\ds\\lap{ f(t) } = \\int_0^{\\infty} e^{-st} f(t)\\, dt\\text{,}\\)<\/span> provided the <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> exists<\/em>.",
-  "body": " The Laplace transform is defined as , provided the exists    integral   Correct! The Laplace transform is defined only if the integral converges.     function   No, it is the convergence of the integral that determines whether the Laplace transform is defined.     -value   No, the Laplace transform is defined by an integral, not by a specific -value.     derivative   No, the Laplace transform is defined by an integral, not by a derivative.    "
+  "body": " The Laplace transform is defined as , provided the exists    The Laplace transform is defined as , provided the exists     integral   Correct! The Laplace transform is defined only if the integral converges.     function   No, it is the convergence of the integral that determines whether the Laplace transform is defined.     -value   No, the Laplace transform is defined by an integral, not by a specific -value.     derivative   No, the Laplace transform is defined by an integral, not by a derivative.    "
 },
 {
   "id": "p4-c1-s1-2-rq3",
@@ -4912,7 +4939,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.1.2.3",
   "title": "<em class=\"emphasis\">Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by <span class=\"process-math\">\\(\\ul{\\hspace{5em}}\\)<\/span> and <span class=\"process-math\">\\(\\ul{\\hspace{5em}}\\)<\/span> with respect to <span class=\"process-math\">\\(t\\)<\/span><\/em>.",
-  "body": " Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to    integrating   No, the correct expression involves the exponential function .     integrating   Correct! The Laplace transform involves multiplying the original function by and integrating with respect to .     integrating   No, the correct expression involves the exponential function .     differentiating   No, the Laplace transform involves integrating with respect to .     differentiating   No, the correct form involves the exponential function and integrating with respect to .    "
+  "body": " Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to    Fill-in-the-Blank. The process of finding a Laplace transform involves multiplying the original function by and with respect to     integrating   No, the correct expression involves the exponential function .     integrating   Correct! The Laplace transform involves multiplying the original function by and integrating with respect to .     integrating   No, the correct expression involves the exponential function .     differentiating   No, the Laplace transform involves integrating with respect to .     differentiating   No, the correct form involves the exponential function and integrating with respect to .    "
 },
 {
   "id": "main-8-3-4-3",
@@ -4921,7 +4948,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.2.1",
   "title": "Constant Function, <span class=\"process-math\">\\(1\\)<\/span>",
-  "body": "Constant Function,    Compute . Solution  By the definition above, we have the improper integral . To evaluate this, we treat as a constant and integrate with respect to . Now that we have , we can plug it into the limit above.   The value of the remaining limit, , depends on whether is positive or negative. So we consider both cases:               Therefore, when the Laplace transform exists and evaluates to     Now that we've worked through an example, here are a few key takeaways:   The Laplace transform always results in a function of . We typically denote the Laplace transform using the capitalized letter of the function we are transforming. For instance,     The values of for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.    The notation includes curly braces to indicate the function being transformed.     With this, we've introduced our first Laplace transform. In the next few sections, we will explore more of the common transforms that are used to solve differential equations.  Common Laplace Transform          Check-Point Questions   What is the result of the Laplace transform of the constant function 1?      No, is not the result of the Laplace transform of 1.       Correct! The Laplace transform of the constant function 1 is for .       No, this is not the correct expression for the Laplace transform of 1.       No, this expression does not represent the Laplace transform of 1.      In the Laplace transform integral, the variable is treated as a during the integration process    constant   Correct! The variable is treated as a constant when performing the integration in the Laplace transform.     variable   No, while is technically a variable, it is treated as a constant during the integration with respect to .     coefficient   No, is treated as a constant, not as a coefficient, during the integration process.     limit   No, does not represent a limit in this context; it is treated as a constant.      Based on this discussion, is a    function of   No, while is a function of , is not a function of .     function of and   No, is not a function of .     function of   Correct! The Laplace transform of a function is a function of .     constant   No, is not a constant.      In a Laplace transform, where does the variable come from?    It is an integration constant   No, is not an integration constant.     It is a placeholder for the function   No, is not a placeholder for the function .     It comes from in the definition   Correct! The variable is introduced as a parameter in the Laplace transform definition to transform the function .     replaces in an improper integral   No, is not a replacement for .      "
+  "body": "Constant Function,    Compute .  Solution  By the definition above, we have the improper integral . To evaluate this, we treat as a constant and integrate with respect to . Now that we have , we can plug it into the limit above.   The value of the remaining limit, , depends on whether is positive or negative. So we consider both cases:               Therefore, when the Laplace transform exists and evaluates to     Now that we've worked through an example, here are a few key takeaways:   The Laplace transform always results in a function of . We typically denote the Laplace transform using the capitalized letter of the function we are transforming. For instance,     The values of for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.    The notation includes curly braces to indicate the function being transformed.     With this, we've introduced our first Laplace transform. In the next few sections, we will explore more of the common transforms that are used to solve differential equations.  Common Laplace Transform          Check-Point Questions   What is the result of the Laplace transform of the constant function 1?    What is the result of the Laplace transform of the constant function 1?       No, is not the result of the Laplace transform of 1.       Correct! The Laplace transform of the constant function 1 is for .       No, this is not the correct expression for the Laplace transform of 1.       No, this expression does not represent the Laplace transform of 1.      In the Laplace transform integral, the variable is treated as a during the integration process    In the Laplace transform integral, the variable is treated as a during the integration process     constant   Correct! The variable is treated as a constant when performing the integration in the Laplace transform.     variable   No, while is technically a variable, it is treated as a constant during the integration with respect to .     coefficient   No, is treated as a constant, not as a coefficient, during the integration process.     limit   No, does not represent a limit in this context; it is treated as a constant.      Based on this discussion, is a    Based on this discussion, is a     function of   No, while is a function of , is not a function of .     function of and   No, is not a function of .     function of   Correct! The Laplace transform of a function is a function of .     constant   No, is not a constant.      In a Laplace transform, where does the variable come from?    In a Laplace transform, where does the variable come from?     It is an integration constant   No, is not an integration constant.     It is a placeholder for the function   No, is not a placeholder for the function .     It comes from in the definition   Correct! The variable is introduced as a parameter in the Laplace transform definition to transform the function .     replaces in an improper integral   No, is not a replacement for .      "
 },
 {
   "id": "main-8-3-4-3-2",
@@ -4930,7 +4957,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "3",
   "title": "",
-  "body": " Compute . Solution  By the definition above, we have the improper integral . To evaluate this, we treat as a constant and integrate with respect to . Now that we have , we can plug it into the limit above.   The value of the remaining limit, , depends on whether is positive or negative. So we consider both cases:               Therefore, when the Laplace transform exists and evaluates to    "
+  "body": " Compute .  Solution  By the definition above, we have the improper integral . To evaluate this, we treat as a constant and integrate with respect to . Now that we have , we can plug it into the limit above.   The value of the remaining limit, , depends on whether is positive or negative. So we consider both cases:               Therefore, when the Laplace transform exists and evaluates to    "
 },
 {
   "id": "p4-c1-s2-1-rq1",
@@ -4939,7 +4966,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.1.1",
   "title": "<em class=\"emphasis\">What is the result of the Laplace transform of the constant function 1?<\/em>",
-  "body": " What is the result of the Laplace transform of the constant function 1?      No, is not the result of the Laplace transform of 1.       Correct! The Laplace transform of the constant function 1 is for .       No, this is not the correct expression for the Laplace transform of 1.       No, this expression does not represent the Laplace transform of 1.    "
+  "body": " What is the result of the Laplace transform of the constant function 1?    What is the result of the Laplace transform of the constant function 1?       No, is not the result of the Laplace transform of 1.       Correct! The Laplace transform of the constant function 1 is for .       No, this is not the correct expression for the Laplace transform of 1.       No, this expression does not represent the Laplace transform of 1.    "
 },
 {
   "id": "p4-c1-s2-1-rq2",
@@ -4948,7 +4975,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.1.2",
   "title": "<em class=\"emphasis\">In the Laplace transform integral, the variable <span class=\"process-math\">\\(s\\)<\/span> is treated as a <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> during the integration process<\/em>.",
-  "body": " In the Laplace transform integral, the variable is treated as a during the integration process    constant   Correct! The variable is treated as a constant when performing the integration in the Laplace transform.     variable   No, while is technically a variable, it is treated as a constant during the integration with respect to .     coefficient   No, is treated as a constant, not as a coefficient, during the integration process.     limit   No, does not represent a limit in this context; it is treated as a constant.    "
+  "body": " In the Laplace transform integral, the variable is treated as a during the integration process    In the Laplace transform integral, the variable is treated as a during the integration process     constant   Correct! The variable is treated as a constant when performing the integration in the Laplace transform.     variable   No, while is technically a variable, it is treated as a constant during the integration with respect to .     coefficient   No, is treated as a constant, not as a coefficient, during the integration process.     limit   No, does not represent a limit in this context; it is treated as a constant.    "
 },
 {
   "id": "p4-c1-s2-1-rq3",
@@ -4957,7 +4984,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.1.3",
   "title": "<em class=\"emphasis\">Based on this discussion, <span class=\"process-math\">\\(\\ds\\lap{f(t)}\\)<\/span> is a <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": " Based on this discussion, is a    function of   No, while is a function of , is not a function of .     function of and   No, is not a function of .     function of   Correct! The Laplace transform of a function is a function of .     constant   No, is not a constant.    "
+  "body": " Based on this discussion, is a    Based on this discussion, is a     function of   No, while is a function of , is not a function of .     function of and   No, is not a function of .     function of   Correct! The Laplace transform of a function is a function of .     constant   No, is not a constant.    "
 },
 {
   "id": "p4-c1-s2-1-rq4",
@@ -4966,7 +4993,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.1.4",
   "title": "<em class=\"emphasis\">In a Laplace transform, where does the variable <span class=\"process-math\">\\(s\\)<\/span> come from?<\/em>",
-  "body": " In a Laplace transform, where does the variable come from?    It is an integration constant   No, is not an integration constant.     It is a placeholder for the function   No, is not a placeholder for the function .     It comes from in the definition   Correct! The variable is introduced as a parameter in the Laplace transform definition to transform the function .     replaces in an improper integral   No, is not a replacement for .    "
+  "body": " In a Laplace transform, where does the variable come from?    In a Laplace transform, where does the variable come from?     It is an integration constant   No, is not an integration constant.     It is a placeholder for the function   No, is not a placeholder for the function .     It comes from in the definition   Correct! The variable is introduced as a parameter in the Laplace transform definition to transform the function .     replaces in an improper integral   No, is not a replacement for .    "
 },
 {
   "id": "main-8-3-4-4",
@@ -4975,7 +5002,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.2.2",
   "title": "Exponential Function, <span class=\"process-math\">\\(e^{at}\\)<\/span>",
-  "body": "Exponential Function,   The exponential function is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example.   Compute . Solution  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:     This result can be generalized for any constant , giving us the Laplace transform of . Here are the details.   Common Laplace Transform (Exponential)          Check-Point Questions   True\/False.   False. The correct formula is , not .    What must be true about for to exist?      No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.      ?      Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.          3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.      "
+  "body": "Exponential Function,   The exponential function is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example.   Compute .  Solution  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:     This result can be generalized for any constant , giving us the Laplace transform of . Here are the details.   Common Laplace Transform (Exponential)          Check-Point Questions   True\/False.   True\/False.    False. The correct formula is , not .    What must be true about for to exist?    What must be true about for to exist?       No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.      ?    ?       Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.               3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.      "
 },
 {
   "id": "main-8-3-4-4-3",
@@ -4984,7 +5011,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "4",
   "title": "",
-  "body": " Compute . Solution  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:    "
+  "body": " Compute .  Solution  We begin by applying the definition of the Laplace transform: For this improper integral to converge, the exponent must be negative, meaning: . Thus, we proceed under the assumption that . Thus, the Laplace transform of is:    "
 },
 {
   "id": "p4-c1-s2-2-rq1",
@@ -4993,7 +5020,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.2.1",
   "title": "<em class=\"emphasis\">True\/False. <span class=\"process-math\">\\(\\ds\\quad \\lap{e^{at}} = \\frac{1}{s + a}\\)<\/span><\/em>.",
-  "body": " True\/False.   False. The correct formula is , not .  "
+  "body": " True\/False.   True\/False.    False. The correct formula is , not .  "
 },
 {
   "id": "p4-c1-s2-2-rq2",
@@ -5002,7 +5029,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.2.2",
   "title": "<em class=\"emphasis\">What must be true about <span class=\"process-math\">\\(s\\)<\/span> for <span class=\"process-math\">\\(\\lap{e^{137t}}\\)<\/span> to exist?<\/em>",
-  "body": " What must be true about for to exist?      No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.    "
+  "body": " What must be true about for to exist?    What must be true about for to exist?       No, must be greater than 137 for the Laplace transform of to exist.       No, the Laplace transform does not exist at because the integral does not converge.       Correct! The Laplace transform of exists only when .       No, must be greater than 7, not less than 0, for the Laplace transform to exist.    "
 },
 {
   "id": "p4-c1-s2-2-rq3",
@@ -5011,7 +5038,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.2.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\lap{e^{-3t}} = \\)<\/span> ?<\/em>",
-  "body": " ?      Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.    "
+  "body": " ?    ?       Correct! The Laplace transform of is .       No, try again.       No, the Laplace transform should not contain the variable .       No, double-check the numerator.    "
 },
 {
   "id": "p4-c1-s2-2-rq4",
@@ -5020,7 +5047,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.2.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\lap{e^{3t}} = \\frac{1}{s - \\fillinmath{X}}\\)<\/span><\/em>.",
-  "body": "     3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.    "
+  "body": "          3   Correct! The Laplace transform of is .     1   No, this is incorrect. The exponent in the denominator should match the exponent in .     0   No, this is incorrect. The correct value is , not .     -3   No, this is incorrect. The value should be positive , not negative.    "
 },
 {
   "id": "main-8-3-4-5",
@@ -5029,7 +5056,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.2.3",
   "title": "Power Function, <span class=\"process-math\">\\(t^{n}\\)<\/span>",
-  "body": "Power Function,   The power function is another common function type found in differential equations. The Laplace transform of follows a recursive pattern, which simplifies the computation for higher powers. We've already seen that . Now, let's compute the transforms for and .   The Laplace transforms for and are as follows:    Details     Details      If you look in each solution, before computing , you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely, , and if you compute the Laplace transform of , you'll find that . In general, this recursive pattern continues for any power as . So if we wanted the Laplace transform of , we could find it like so . This pattern is true for higher powers of , leading to the next laplace transform rule which makes use of the .  Common Laplace Transform (Power)          Check-Point Questions        Correct! The Laplace transform of is .       No, try again.       No, notice the factorial in the numerator.       No, try again.           No, the power of in the denominator should be .       Correct! The Laplace transform of is .       No, the power of in the denominator should be .       No, the power of in the denominator should be .           No, try again.       No, try again.       No, try again.       Correct! The Laplace transform of is .      ?      Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.      ?      No, the correct transform is .       Correct! The Laplace transform of is .       No, the correct transform has a in the numerator.       No, the power of in the denominator should be .      "
+  "body": "Power Function,   The power function is another common function type found in differential equations. The Laplace transform of follows a recursive pattern, which simplifies the computation for higher powers. We've already seen that . Now, let's compute the transforms for and .   The Laplace transforms for and are as follows:    Details     Details      If you look in each solution, before computing , you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely, , and if you compute the Laplace transform of , you'll find that . In general, this recursive pattern continues for any power as . So if we wanted the Laplace transform of , we could find it like so . This pattern is true for higher powers of , leading to the next laplace transform rule which makes use of the .  Common Laplace Transform (Power)          Check-Point Questions            Correct! The Laplace transform of is .       No, try again.       No, notice the factorial in the numerator.       No, try again.               No, the power of in the denominator should be .       Correct! The Laplace transform of is .       No, the power of in the denominator should be .       No, the power of in the denominator should be .               No, try again.       No, try again.       No, try again.       Correct! The Laplace transform of is .      ?    ?       Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.      ?    ?       Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.      "
 },
 {
   "id": "main-8-3-4-5-3",
@@ -5047,7 +5074,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.3.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^4} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X} !}{s^5}\\)<\/span><\/em>.",
-  "body": "      Correct! The Laplace transform of is .       No, try again.       No, notice the factorial in the numerator.       No, try again.    "
+  "body": "          Correct! The Laplace transform of is .       No, try again.       No, notice the factorial in the numerator.       No, try again.    "
 },
 {
   "id": "p4-c1-s2-3-rq2",
@@ -5056,7 +5083,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.3.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^3} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{6}{\\fillinmath{X}}\\)<\/span><\/em>.",
-  "body": "      No, the power of in the denominator should be .       Correct! The Laplace transform of is .       No, the power of in the denominator should be .       No, the power of in the denominator should be .    "
+  "body": "          No, the power of in the denominator should be .       Correct! The Laplace transform of is .       No, the power of in the denominator should be .       No, the power of in the denominator should be .    "
 },
 {
   "id": "p4-c1-s2-3-rq3",
@@ -5065,7 +5092,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.3.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\fillinmath{X}} = \\ \\frac{479001600}{s^{13}}\\)<\/span><\/em>.",
-  "body": "      No, try again.       No, try again.       No, try again.       Correct! The Laplace transform of is .    "
+  "body": "          No, try again.       No, try again.       No, try again.       Correct! The Laplace transform of is .    "
 },
 {
   "id": "p4-c1-s2-3-rq4",
@@ -5074,7 +5101,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.3.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t} = \\)<\/span> ?<\/em>",
-  "body": " ?      Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.    "
+  "body": " ?    ?       Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.    "
 },
 {
   "id": "p4-c1-s2-3-rq5",
@@ -5083,7 +5110,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.3.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{t^2} = \\)<\/span> ?<\/em>",
-  "body": " ?      No, the correct transform is .       Correct! The Laplace transform of is .       No, the correct transform has a in the numerator.       No, the power of in the denominator should be .    "
+  "body": " ?    ?       Correct! The Laplace transform of is .       No, the power of in the denominator is not .       No, the Laplace transform of is not a constant.       No, there should not be a in the numerator.    "
 },
 {
   "id": "main-8-3-4-6",
@@ -5092,7 +5119,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.2.4",
   "title": "Sine and Cosine, <span class=\"process-math\">\\(\\sin(bt),\\ \\cos(bt)\\)<\/span>",
-  "body": "Sine and Cosine,   Now, let's turn to the Laplace transforms of trigonometric functions, which frequently arise in systems involving oscillations or wave equations.   Compute . Solution  We start by applying the definition of the Laplace transform: . Rather than directly integrating, we will use a modified to express cosine in terms of  Substituting this into the integral gives: Therefore, the Laplace transform of is:     The sine function is handled in a similar way, as the next example shows.   Compute . Solution  As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:     Both of these approaches can be generalized to show that the formula for the Laplace transforms of sine and cosine are given as follows:  Common Laplace Transform (Sine, Cosine)             Check-Point Questions        Correct! The Laplace transform of is .       No, the correct numerator should be , not .       No, the correct numerator should be , not .       No, the correct numerator should be , not .           No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.           No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.      ?      Correct! The Laplace transform of is .       Incorrect. This is the Laplace transform of , not .       Incorrect. The correct numerator is , not .       Incorrect. While is , the answer should simplify to .      ?      Incorrect. The correct numerator should be , not .       Incorrect. The denominator should be , not .       Correct! The Laplace transform of is .       Incorrect. The correct numerator should be , not .      "
+  "body": "Sine and Cosine,   Now, let's turn to the Laplace transforms of trigonometric functions, which frequently arise in systems involving oscillations or wave equations.   Compute . Solution  We start by applying the definition of the Laplace transform: . Rather than directly integrating, we will use a modified to express cosine in terms of  Substituting this into the integral gives: Therefore, the Laplace transform of is:     The sine function is handled in a similar way, as the next example shows.   Compute .  Solution  As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:     Both of these approaches can be generalized to show that the formula for the Laplace transforms of sine and cosine are given as follows:  Common Laplace Transform (Sine, Cosine)             Check-Point Questions            Correct! The Laplace transform of is .       No, the correct numerator should be , not .       No, the correct numerator should be , not .       No, the correct numerator should be , not .               No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.               No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.      ?    ?       Correct! The Laplace transform of is .       Incorrect. This is the Laplace transform of , not .       Incorrect. The correct numerator is , not .       Incorrect. While is , the answer should simplify to .      ?    ?       Incorrect. The correct numerator should be , not .       Incorrect. The denominator should be , not .       Correct! The Laplace transform of is .       Incorrect. The correct numerator should be , not .      "
 },
 {
   "id": "main-8-3-4-6-3",
@@ -5110,7 +5137,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "7",
   "title": "",
-  "body": " Compute . Solution  As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:    "
+  "body": " Compute .  Solution  As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:    "
 },
 {
   "id": "p4-c1-s2-4-rq1",
@@ -5119,7 +5146,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.4.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\sin(t)} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X}}{s^2 + 1}\\)<\/span><\/em>.",
-  "body": "      Correct! The Laplace transform of is .       No, the correct numerator should be , not .       No, the correct numerator should be , not .       No, the correct numerator should be , not .    "
+  "body": "          Correct! The Laplace transform of is .       No, the correct numerator should be , not .       No, the correct numerator should be , not .       No, the correct numerator should be , not .    "
 },
 {
   "id": "p4-c1-s2-4-rq2",
@@ -5128,7 +5155,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.4.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\cos(-2t)} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{X}}{s^2 + 4}\\)<\/span><\/em>.",
-  "body": "      No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.    "
+  "body": "          No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.    "
 },
 {
   "id": "p4-c1-s2-4-rq3",
@@ -5137,7 +5164,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.4.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\fillinmath{X}} = \\)<\/span><span class=\"process-math\">\\(\\ds\\frac{s}{s^2 + \\frac14}\\)<\/span><\/em>.",
-  "body": "      No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.    "
+  "body": "          No, try again.       No, try again.       Correct! The Laplace transform of is .       No, try again.    "
 },
 {
   "id": "p4-c1-s2-4-rq4",
@@ -5146,7 +5173,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.4.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\sin(5t)} = \\)<\/span> ?<\/em>",
-  "body": " ?      Correct! The Laplace transform of is .       Incorrect. This is the Laplace transform of , not .       Incorrect. The correct numerator is , not .       Incorrect. While is , the answer should simplify to .    "
+  "body": " ?    ?       Correct! The Laplace transform of is .       Incorrect. This is the Laplace transform of , not .       Incorrect. The correct numerator is , not .       Incorrect. While is , the answer should simplify to .    "
 },
 {
   "id": "p4-c1-s2-4-rq5",
@@ -5155,7 +5182,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.2.4.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{\\cos(-3t)} = \\)<\/span> ?<\/em>",
-  "body": " ?      Incorrect. The correct numerator should be , not .       Incorrect. The denominator should be , not .       Correct! The Laplace transform of is .       Incorrect. The correct numerator should be , not .    "
+  "body": " ?    ?       Incorrect. The correct numerator should be , not .       Incorrect. The denominator should be , not .       Correct! The Laplace transform of is .       Incorrect. The correct numerator should be , not .    "
 },
 {
   "id": "main-8-3-5-3",
@@ -5164,7 +5191,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.3.1",
   "title": "Linearity of the Laplace Transform",
-  "body": "Linearity of the Laplace Transform  The first property we'll explore is linearity. This property is foundational because it allows us to break down and combine transforms easily. The linearity of the Laplace transform is similar to the linearity of integrals, where we can distribute the transform across addition and subtraction, and pull out constants.   Use the definition of the Laplace transform to compute:  Solution  Let's start by applying the definition of the Laplace transform: Here, we've expanded the expression inside the integral. Notice that each term is something we've already encountered in previous sections. We can now use the linearity property to separate the integral: We already know the Laplace transforms of these individual functions: To satisfy all the conditions on , we must have since that ensures all terms are defined. Therefore:     This example demonstrates the linearity property in action. The general statement of the linearity property is as follows: if and are constants, then: or, equivalently:   Laplace Transform Property          Check-Point Questions   The Laplace transform of a constant is the constant times   True. By the linearity property: .    The linearity property can be used to rewrite a Laplace transform as the sum of simpler Laplace transforms   True. The linearity property allows you to separate the Laplace transform into the sum (or difference) of the transforms of each term.    Which of the following are NOT correct applications of the linearity property?      No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the product of functions.       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the power of functions.            Correct! The Laplace transform of a constant is the constant times .       No, the constant 2 should be added to the Laplace transform of 7 cos t.       No, the constant 2 should be added to the Laplace transform of 7 cos t, not multiplied by .       No, the constant 2 should be added to the Laplace transform of 7 cos t.      "
+  "body": "Linearity of the Laplace Transform  The first property we'll explore is linearity. This property is foundational because it allows us to break down and combine transforms easily. The linearity of the Laplace transform is similar to the linearity of integrals, where we can distribute the transform across addition and subtraction, and pull out constants.   Use the definition of the Laplace transform to compute:   Solution  Let's start by applying the definition of the Laplace transform: Here, we've expanded the expression inside the integral. Notice that each term is something we've already encountered in previous sections. We can now use the linearity property to separate the integral: We already know the Laplace transforms of these individual functions: To satisfy all the conditions on , we must have since that ensures all terms are defined. Therefore:     This example demonstrates the linearity property in action. The general statement of the linearity property is as follows: if and are constants, then: or, equivalently:   Laplace Transform Property          Check-Point Questions   The Laplace transform of a constant is the constant times   The Laplace transform of a constant is the constant times    True. By the linearity property: .    The linearity property can be used to rewrite a Laplace transform as the sum of simpler Laplace transforms   True. The linearity property allows you to separate the Laplace transform into the sum (or difference) of the transforms of each term.    Which of the following are NOT correct applications of the linearity property?    Which of the following are NOT correct applications of the linearity property?       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the product of functions.       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the power of functions.                 Correct! The Laplace transform of a constant is the constant times .       No, the constant 2 should be added to the Laplace transform of 7 cos t.       No, the constant 2 should be added to the Laplace transform of 7 cos t, not multiplied by .       No, the constant 2 should be added to the Laplace transform of 7 cos t.      "
 },
 {
   "id": "main-8-3-5-3-3",
@@ -5173,7 +5200,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "8",
   "title": "",
-  "body": " Use the definition of the Laplace transform to compute:  Solution  Let's start by applying the definition of the Laplace transform: Here, we've expanded the expression inside the integral. Notice that each term is something we've already encountered in previous sections. We can now use the linearity property to separate the integral: We already know the Laplace transforms of these individual functions: To satisfy all the conditions on , we must have since that ensures all terms are defined. Therefore:    "
+  "body": " Use the definition of the Laplace transform to compute:   Solution  Let's start by applying the definition of the Laplace transform: Here, we've expanded the expression inside the integral. Notice that each term is something we've already encountered in previous sections. We can now use the linearity property to separate the integral: We already know the Laplace transforms of these individual functions: To satisfy all the conditions on , we must have since that ensures all terms are defined. Therefore:    "
 },
 {
   "id": "p4-c1-s3-1-rq1",
@@ -5182,7 +5209,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.1.1",
   "title": "<em class=\"emphasis\">The Laplace transform of a constant is the constant times <span class=\"process-math\">\\(\\lap{1}\\)<\/span><\/em>.",
-  "body": " The Laplace transform of a constant is the constant times   True. By the linearity property: .  "
+  "body": " The Laplace transform of a constant is the constant times   The Laplace transform of a constant is the constant times    True. By the linearity property: .  "
 },
 {
   "id": "p4-c1-s3-1-rq2",
@@ -5200,7 +5227,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.1.3",
   "title": "<em class=\"emphasis\">Which of the following are NOT correct applications of the linearity property?<\/em>",
-  "body": " Which of the following are NOT correct applications of the linearity property?      No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the product of functions.       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the power of functions.    "
+  "body": " Which of the following are NOT correct applications of the linearity property?    Which of the following are NOT correct applications of the linearity property?       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the product of functions.       No, this is a correct application of the linearity property.       Correct! The linearity property does not apply to the power of functions.    "
 },
 {
   "id": "p4-c1-s3-1-rq4",
@@ -5209,7 +5236,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\lap{7\\cos t + 2} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": "       Correct! The Laplace transform of a constant is the constant times .       No, the constant 2 should be added to the Laplace transform of 7 cos t.       No, the constant 2 should be added to the Laplace transform of 7 cos t, not multiplied by .       No, the constant 2 should be added to the Laplace transform of 7 cos t.    "
+  "body": "            Correct! The Laplace transform of a constant is the constant times .       No, the constant 2 should be added to the Laplace transform of 7 cos t.       No, the constant 2 should be added to the Laplace transform of 7 cos t, not multiplied by .       No, the constant 2 should be added to the Laplace transform of 7 cos t.    "
 },
 {
   "id": "main-8-3-5-4",
@@ -5218,7 +5245,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.3.2",
   "title": "Multiplication by <span class=\"process-math\">\\(e^{at}\\)<\/span>",
-  "body": "Multiplication by   The translation property, also known as the first shifting theorem, allows us to handle functions multiplied by an exponential term, . This property is particularly useful for simplifying the Laplace transforms of products of exponential functions and other functions, such as sine, cosine, or polynomials.   Compute . Solution  By the definition of the Laplace transform, we have: Thus, the Laplace transform of is:     The translation property can be generalized for any function multiplied by . The property is formally stated as: where is the Laplace transform of .  Laplace Transform Property  Let .     is a constant.     By applying this property to the functions , , and , we can derive additional common Laplace transforms:  Common Laplace Transforms                Check-Point Questions         Correct! The translation property shifts the transform of by 5 units, giving        No, the translation property involves shifting the transform of by 5, not by 2.       No, the correct shift should be , not .       No, the denominator should have , not 2.             Correct! The translation property applied to gives        No, the correct shift should be , not .       No, the denominator should have , not 3.       No, the correct shift should be and the power should be 4.             Correct! The Laplace transform of is        No, the correct shift should be , not .       No, the shift should be and the denominator should have        No, the correct denominator should be , not       The translation property only works for exponential functions multiplied by sine and cosine functions   False. The translation property applies to any function multiplied by an exponential term     If , what is the Laplace transform of ?      No, the correct shift should be , not .       No, the correct shift should be , not .       No, the correct shift should be , not .       Correct! The translation property shifts the transform of by 2 units, giving       "
+  "body": "Multiplication by   The translation property, also known as the first shifting theorem, allows us to handle functions multiplied by an exponential term, . This property is particularly useful for simplifying the Laplace transforms of products of exponential functions and other functions, such as sine, cosine, or polynomials.   Compute . Solution  By the definition of the Laplace transform, we have: Thus, the Laplace transform of is:     The translation property can be generalized for any function multiplied by . The property is formally stated as: where is the Laplace transform of .  Laplace Transform Property  Let .     is a constant.     By applying this property to the functions , , and , we can derive additional common Laplace transforms:  Common Laplace Transforms                Check-Point Questions              Correct! The translation property shifts the transform of by 5 units, giving        No, the translation property involves shifting the transform of by 5, not by 2.       No, the correct shift should be , not .       No, the denominator should have , not 2.                   Correct! The translation property applied to gives        No, the correct shift should be , not .       No, the denominator should have , not 3.       No, the correct shift should be and the power should be 4.                   Correct! The Laplace transform of is        No, the correct shift should be , not .       No, the shift should be and the denominator should have        No, the correct denominator should be , not       The translation property only works for exponential functions multiplied by sine and cosine functions    The translation property only works for exponential functions multiplied by sine and cosine functions    False. The translation property applies to any function multiplied by an exponential term     If , what is the Laplace transform of ?    If , what is the Laplace transform of ?       No, the correct shift should be , not .       No, the correct shift should be , not .       No, the correct shift should be , not .       Correct! The translation property shifts the transform of by 2 units, giving       "
 },
 {
   "id": "main-8-3-5-4-3",
@@ -5236,7 +5263,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.2.1",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{5t} \\sin(2t)} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "       Correct! The translation property shifts the transform of by 5 units, giving        No, the translation property involves shifting the transform of by 5, not by 2.       No, the correct shift should be , not .       No, the denominator should have , not 2.    "
+  "body": "            Correct! The translation property shifts the transform of by 5 units, giving        No, the translation property involves shifting the transform of by 5, not by 2.       No, the correct shift should be , not .       No, the denominator should have , not 2.    "
 },
 {
   "id": "p4-c1-s3-2-rq2",
@@ -5245,7 +5272,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{2t} t^3} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "        Correct! The translation property applied to gives        No, the correct shift should be , not .       No, the denominator should have , not 3.       No, the correct shift should be and the power should be 4.    "
+  "body": "              Correct! The translation property applied to gives        No, the correct shift should be , not .       No, the denominator should have , not 3.       No, the correct shift should be and the power should be 4.    "
 },
 {
   "id": "p4-c1-s3-2-rq3",
@@ -5254,7 +5281,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.2.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad \\lap{e^{4t} \\cos(5t)} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "        Correct! The Laplace transform of is        No, the correct shift should be , not .       No, the shift should be and the denominator should have        No, the correct denominator should be , not     "
+  "body": "              Correct! The Laplace transform of is        No, the correct shift should be , not .       No, the shift should be and the denominator should have        No, the correct denominator should be , not     "
 },
 {
   "id": "p4-c1-s3-2-rq4",
@@ -5263,7 +5290,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.2.4",
   "title": "<em class=\"emphasis\">The translation property only works for exponential functions multiplied by sine and cosine functions<\/em>.",
-  "body": " The translation property only works for exponential functions multiplied by sine and cosine functions   False. The translation property applies to any function multiplied by an exponential term   "
+  "body": " The translation property only works for exponential functions multiplied by sine and cosine functions    The translation property only works for exponential functions multiplied by sine and cosine functions    False. The translation property applies to any function multiplied by an exponential term   "
 },
 {
   "id": "p4-c1-s3-2-rq5",
@@ -5272,7 +5299,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.2.5",
   "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(\\ds\\lap{f(t)}=\\frac{1}{s(s+1)}\\text{,}\\)<\/span> what is the Laplace transform of <span class=\"process-math\">\\(e^{2t}f(t)\\text{?}\\)<\/span><\/em>",
-  "body": " If , what is the Laplace transform of ?      No, the correct shift should be , not .       No, the correct shift should be , not .       No, the correct shift should be , not .       Correct! The translation property shifts the transform of by 2 units, giving     "
+  "body": " If , what is the Laplace transform of ?    If , what is the Laplace transform of ?       No, the correct shift should be , not .       No, the correct shift should be , not .       No, the correct shift should be , not .       Correct! The translation property shifts the transform of by 2 units, giving     "
 },
 {
   "id": "main-8-3-5-5",
@@ -5281,7 +5308,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.3.3",
   "title": "Derivative Transform",
-  "body": "Derivative Transform  The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.   Show that . Solution                                              This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more—this property also works recursively, allowing us to handle higher-order derivatives as well.  For example, let's see how this property extends to second and third derivatives: And the pattern continues for higher derivatives.  Laplace Transform Properties  Let .                Check-Point Questions   The Laplace transform of the derivative is given by   False. The correct formula is .    The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations   True. The derivative property simplifies differential equations into algebraic equations by transforming derivatives into powers of .          No, try again.       No, try again.       Correct! .       No, try again.      If and , then     1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .        "
+  "body": "Derivative Transform  The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.   Show that .  Solution                                  This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more—this property also works recursively, allowing us to handle higher-order derivatives as well.  For example, let's see how this property extends to second and third derivatives: And the pattern continues for higher derivatives.  Laplace Transform Properties  Let .                Check-Point Questions   The Laplace transform of the derivative is given by   The Laplace transform of the derivative is given by    False. The correct formula is .    The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations   True. The derivative property simplifies differential equations into algebraic equations by transforming derivatives into powers of .               No, try again.       No, try again.       Correct! .       No, try again.      If and , then     If and , then      1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .        "
 },
 {
   "id": "main-8-3-5-5-3",
@@ -5290,7 +5317,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "10",
   "title": "",
-  "body": " Show that . Solution                                             "
+  "body": " Show that .  Solution                                 "
 },
 {
   "id": "p4-c1-s3-3-rq1",
@@ -5299,7 +5326,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.3.1",
   "title": "<em class=\"emphasis\">The Laplace transform of the derivative <span class=\"process-math\">\\(f'(t) \\)<\/span> is given by <span class=\"process-math\">\\(s\\lap{f(t)}+f(0)\\)<\/span><\/em>.",
-  "body": " The Laplace transform of the derivative is given by   False. The correct formula is .  "
+  "body": " The Laplace transform of the derivative is given by   The Laplace transform of the derivative is given by    False. The correct formula is .  "
 },
 {
   "id": "p4-c1-s3-3-rq2",
@@ -5317,7 +5344,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.3.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds\\lap{\\frac{d}{dt}[e^t\\cos (t)]} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "       No, try again.       No, try again.       Correct! .       No, try again.    "
+  "body": "            No, try again.       No, try again.       Correct! .       No, try again.    "
 },
 {
   "id": "p4-c1-s3-3-rq4",
@@ -5326,7 +5353,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.3.4",
   "title": "<em class=\"emphasis\">If <span class=\"process-math\">\\(y(0) = 0\\)<\/span> and <span class=\"process-math\">\\(y'(0) = 1\\text{,}\\)<\/span> then <span class=\"process-math\">\\(\\ds\\lap{y''} = s^2Y - \\fillinmath{X} \\)<\/span><\/em>.",
-  "body": " If and , then     1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .    "
+  "body": " If and , then     If and , then      1   Correct! The Laplace transform of with the given initial conditions is .     0   No, this is incorrect. Remember to account for the initial condition .     s   No, this is incorrect. The constant term should be , not .     -1   No, this is incorrect. The correct constant term is positive .    "
 },
 {
   "id": "main-8-3-5-6",
@@ -5335,7 +5362,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "9.3.4",
   "title": "Multiplication by <span class=\"process-math\">\\(t^n\\)<\/span>",
-  "body": "Multiplication by   The final property we'll explore is how the Laplace transform handles functions multiplied by a power of . This property is especially useful when dealing with polynomial terms in differential equations.   Show that . Solution  For this problem, it's easier to start on the right side and show that it equals the left:                                            This shows that multiplying a function by inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by . It turns out that each additional power of adds another negative sign and derivative.   Show that . Solution  Again, it's easier to start on the right side and work our way to the left:                                            A similar process shows that for any power of , the Laplace transform is the -th derivative of the Laplace transform of the function, with the sign alternating. The general property is given by: . The only difference is that you are taking the -th derivative of inside the integral.  Laplace Transform Property  Let .          Check-Point Questions   The Laplace transform of is equal to derivative of the Laplace transform of with respect to    second   Correct! The Laplace transform of is equal to the second derivative of with respect to .     first   Incorrect. The Laplace transform of involves the second derivative, not the first.     third   Incorrect. The Laplace transform of involves the second derivative, not the third.     fourth   Incorrect. The Laplace transform of involves the second derivative, not the fourth.      What is the Laplace transform of in terms of ?      Correct! The Laplace transform of is .       Incorrect. The correct expression includes a factor of .       Incorrect. This would be the transform for , not .       Incorrect. The correct transform involves a third derivative, not the second.      Hypothetically, if then        Incorrect. The correct answer should involve a derivative of .       Correct!        Incorrect. The Laplace transform of is .       Incorrect. The correct answer should involve a factor of in the transform.      "
+  "body": "Multiplication by   The final property we'll explore is how the Laplace transform handles functions multiplied by a power of . This property is especially useful when dealing with polynomial terms in differential equations.   Show that .  Solution  For this problem, it's easier to start on the right side and show that it equals the left:                                            This shows that multiplying a function by inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by . It turns out that each additional power of adds another negative sign and derivative.   Show that . Solution  Again, it's easier to start on the right side and work our way to the left:                                            A similar process shows that for any power of , the Laplace transform is the -th derivative of the Laplace transform of the function, with the sign alternating. The general property is given by: . The only difference is that you are taking the -th derivative of inside the integral.  Laplace Transform Property  Let .          Check-Point Questions   The Laplace transform of is equal to derivative of the Laplace transform of with respect to    The Laplace transform of is equal to derivative of the Laplace transform of with respect to     second   Correct! The Laplace transform of is equal to the second derivative of with respect to .     first   Incorrect. The Laplace transform of involves the second derivative, not the first.     third   Incorrect. The Laplace transform of involves the second derivative, not the third.     fourth   Incorrect. The Laplace transform of involves the second derivative, not the fourth.      What is the Laplace transform of in terms of ?    What is the Laplace transform of in terms of ?       Correct! The Laplace transform of is .       Incorrect. The correct expression includes a factor of .       Incorrect. This would be the transform for , not .       Incorrect. The correct transform involves a third derivative, not the second.      Hypothetically, if then      Hypothetically, if then         Incorrect. The correct answer should involve a derivative of .       Correct!        Incorrect. The Laplace transform of is .       Incorrect. The correct answer should involve a factor of in the transform.      "
 },
 {
   "id": "main-8-3-5-6-3",
@@ -5344,7 +5371,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "11",
   "title": "",
-  "body": " Show that . Solution  For this problem, it's easier to start on the right side and show that it equals the left:                                           "
+  "body": " Show that .  Solution  For this problem, it's easier to start on the right side and show that it equals the left:                                           "
 },
 {
   "id": "main-8-3-5-6-5",
@@ -5362,7 +5389,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.4.1",
   "title": "<em class=\"emphasis\">The Laplace transform of <span class=\"process-math\">\\(\\ds t^2 f(t) \\)<\/span> is equal to <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/> derivative of the Laplace transform of <span class=\"process-math\">\\(\\ds f(t) \\)<\/span> with respect to <span class=\"process-math\">\\(\\ds s \\)<\/span><\/em>.",
-  "body": " The Laplace transform of is equal to derivative of the Laplace transform of with respect to    second   Correct! The Laplace transform of is equal to the second derivative of with respect to .     first   Incorrect. The Laplace transform of involves the second derivative, not the first.     third   Incorrect. The Laplace transform of involves the second derivative, not the third.     fourth   Incorrect. The Laplace transform of involves the second derivative, not the fourth.    "
+  "body": " The Laplace transform of is equal to derivative of the Laplace transform of with respect to    The Laplace transform of is equal to derivative of the Laplace transform of with respect to     second   Correct! The Laplace transform of is equal to the second derivative of with respect to .     first   Incorrect. The Laplace transform of involves the second derivative, not the first.     third   Incorrect. The Laplace transform of involves the second derivative, not the third.     fourth   Incorrect. The Laplace transform of involves the second derivative, not the fourth.    "
 },
 {
   "id": "p4-c1-s3-4-rq2",
@@ -5371,7 +5398,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.4.2",
   "title": "<em class=\"emphasis\">What is the Laplace transform of <span class=\"process-math\">\\(\\ds t^3 f(t) \\)<\/span> in terms of <span class=\"process-math\">\\(\\ds \\lap{ f(t) } \\text{?}\\)<\/span><\/em>",
-  "body": " What is the Laplace transform of in terms of ?      Correct! The Laplace transform of is .       Incorrect. The correct expression includes a factor of .       Incorrect. This would be the transform for , not .       Incorrect. The correct transform involves a third derivative, not the second.    "
+  "body": " What is the Laplace transform of in terms of ?    What is the Laplace transform of in terms of ?       Correct! The Laplace transform of is .       Incorrect. The correct expression includes a factor of .       Incorrect. This would be the transform for , not .       Incorrect. The correct transform involves a third derivative, not the second.    "
 },
 {
   "id": "p4-c1-s3-4-rq3",
@@ -5380,7 +5407,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.3.4.3",
   "title": "<em class=\"emphasis\">Hypothetically, if <span class=\"process-math\">\\(\\ds \\lap{f(t)} = \\cos(2s) \\)<\/span> then <span class=\"process-math\">\\(\\ds \\lap{ tf(t) } = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"10-character blank\" style=\"width: 4.545454545454546em;\" \/><\/em>.",
-  "body": " Hypothetically, if then        Incorrect. The correct answer should involve a derivative of .       Correct!        Incorrect. The Laplace transform of is .       Incorrect. The correct answer should involve a factor of in the transform.    "
+  "body": " Hypothetically, if then      Hypothetically, if then         Incorrect. The correct answer should involve a derivative of .       Correct!        Incorrect. The Laplace transform of is .       Incorrect. The correct answer should involve a factor of in the transform.    "
 },
 {
   "id": "main-8-3-6",
@@ -5389,7 +5416,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "9.4",
   "title": "Forward Transforming Equations",
-  "body": "Forward Transforming Equations  In the previous sections, we've focused on applying Laplace transforms to individual functions. Now, we shift our focus to solving differential equations by transforming the entire equation, along with its initial conditions. This process brings us back to the first step of the Laplace Transform Method roadmap.    Step 1: The Forward Laplace Transform    To solve a differential equation using Laplace transforms, we apply the Laplace transform to both sides of the equation, leveraging the common transforms and properties we've discussed so far. Applying the transform to a function can be thought of as multiplying the function by and integrating with respect to . However, instead of rewriting this process for each term, we simply apply the Laplace operator, , to both sides of the equation. Let's illustrate this with an example.   Apply the Laplace Transform to the initial-value problem:  Solution  First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:     Let's look at one more example for additional clarity.   Apply the Laplace Transform to the initial-value problem:  Solution  Applying the Laplace transform to both sides:     In both examples, the differential equations have been transformed into algebraic equations. Solving for is the next step in the Laplace Transform Roadmap.  Check-Point Questions   Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   True. The Laplace transform converts a differential equation into an algebraic equation in .    Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. Where are the initial conditions?       Correct! This is the correct transformation of the given differential equation.       No, this is close to the answer, but it is off by a sign.       Incorrect, look closely at the initial conditions.      Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.      What is the Laplace transform of the initial-value problem ?      No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.      "
+  "body": "Forward Transforming Equations  In the previous sections, we've focused on applying Laplace transforms to individual functions. Now, we shift our focus to solving differential equations by transforming the entire equation, along with its initial conditions. This process brings us back to the first step of the Laplace Transform Method roadmap.    Step 1: The Forward Laplace Transform    To solve a differential equation using Laplace transforms, we apply the Laplace transform to both sides of the equation, leveraging the common transforms and properties we've discussed so far. Applying the transform to a function can be thought of as multiplying the function by and integrating with respect to . However, instead of rewriting this process for each term, we simply apply the Laplace operator, , to both sides of the equation. Let's illustrate this with an example.   Apply the Laplace Transform to the initial-value problem:   Solution  First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:     Let's look at one more example for additional clarity.   Apply the Laplace Transform to the initial-value problem:   Solution  Applying the Laplace transform to both sides:     In both examples, the differential equations have been transformed into algebraic equations. Solving for is the next step in the Laplace Transform Roadmap.  Check-Point Questions   Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of    True. The Laplace transform converts a differential equation into an algebraic equation in .    Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. Where are the initial conditions?       Correct! This is the correct transformation of the given differential equation.       No, this is close to the answer, but it is off by a sign.       Incorrect, look closely at the initial conditions.      Which of the following represents the correct Laplace transform of the equation ?    Which of the following represents the correct Laplace transform of the equation ?       No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.      What is the Laplace transform of the initial-value problem ?    What is the Laplace transform of the initial-value problem ?       No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.      "
 },
 {
   "id": "main-8-3-6-5",
@@ -5398,7 +5425,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "13",
   "title": "",
-  "body": " Apply the Laplace Transform to the initial-value problem:  Solution  First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:    "
+  "body": " Apply the Laplace Transform to the initial-value problem:   Solution  First, we apply to both sides: Using the linearity property P 1 , we break this into four separate transforms:   Now, let's compute each transform:   Substituting these results back into the equation, we get:    "
 },
 {
   "id": "main-8-3-6-7",
@@ -5407,7 +5434,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "14",
   "title": "",
-  "body": " Apply the Laplace Transform to the initial-value problem:  Solution  Applying the Laplace transform to both sides:    "
+  "body": " Apply the Laplace Transform to the initial-value problem:   Solution  Applying the Laplace transform to both sides:    "
 },
 {
   "id": "p4-c1-s4-1-rq1",
@@ -5416,7 +5443,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.4.1",
   "title": "<em class=\"emphasis\">Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of <span class=\"process-math\">\\(s\\)<\/span><\/em>.",
-  "body": " Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   True. The Laplace transform converts a differential equation into an algebraic equation in .  "
+  "body": " Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of   Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of    True. The Laplace transform converts a differential equation into an algebraic equation in .  "
 },
 {
   "id": "p4-c1-s4-1-rq2",
@@ -5434,7 +5461,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.4.3",
   "title": "<em class=\"emphasis\">Which of the following represents the correct Laplace transform of the equation<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - 4y' + 6y = t^2, \\quad y(0) = 2, \\quad y'(0) = -1\\text{?}\n\\end{equation*}\n<\/div><\/em>",
-  "body": " Which of the following represents the correct Laplace transform of the equation ?      No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.    "
+  "body": " Which of the following represents the correct Laplace transform of the equation ?    Which of the following represents the correct Laplace transform of the equation ?       No, this is incorrect. You are missing a term.       No, this is close to the answer. Double check the signs of the initial conditions.       No, this is incorrect. You are missing a term.       Correct! This is the correct transformation using the Laplace transform and applying initial conditions.    "
 },
 {
   "id": "p4-c1-s4-1-rq4",
@@ -5443,7 +5470,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "9.4.4",
   "title": "<em class=\"emphasis\">What is the Laplace transform of the initial-value problem<div class=\"displaymath process-math\">\n\\begin{equation*}\ny'' - 4y' + 6y = \\sin t, \\quad y(0) = 2, \\quad y'(0) = 0\\text{?}\n\\end{equation*}\n<\/div><\/em>",
-  "body": " What is the Laplace transform of the initial-value problem ?      No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.    "
+  "body": " What is the Laplace transform of the initial-value problem ?    What is the Laplace transform of the initial-value problem ?       No, this is incorrect. Double-check the signs and the initial condition terms.       Correct! This is the correct transformation of the initial-value problem.       No, this is incorrect. You are missing the initial condition terms on the left-hand side.       No, this is incorrect. This only represents the transform of and does not account for the left-hand side of the equation.    "
 },
 {
   "id": "main-8-3-7",
@@ -5452,7 +5479,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "9.5",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:   Summary of the Key Ideas     Differential Algebraic Equations . The Laplace transform converts a differential equation into an algebraic equation, simplifying the solution process by eliminating derivatives.   Laplace Transform Concept . Applying the Laplace transform to a differential equation involves transforming each term by multiplying by and integrating with respect to from to , but is often simplified by directly applying the Laplace operator, .   Linearity Property . The Laplace transform is linear, meaning it distributes across addition and subtraction, and allows for constants to be factored out. This property is essential for transforming complex equations.   Transforming Initial Conditions . Initial conditions are incorporated directly into the Laplace-transformed equation, modifying the transformed terms to include initial values, making it easier to solve the resulting algebraic equation.   Common Function Transforms . The Laplace transforms of common functions, such as exponentials, sines, cosines, and polynomials, are essential tools in transforming differential equations and are summarized in the provided table.   Transforming Derivatives . The Laplace transform of a derivative, or higher, transfers the derivative onto the Laplace variable , reducing the order of the equation while introducing initial condition terms.   Multiplication by and . When multiplying a function by an exponential , the Laplace transform shifts by in the -domain, and multiplying by corresponds to differentiating the transform times with respect to , introducing a sign change.   Transforming the Entire Equation . The process of applying the Laplace transform to an entire differential equation with initial conditions involves systematically transforming each term and leads to a simplified algebraic equation in the -domain, ready for solving.      The table below summarizes the common Laplace transforms that we derived in this section.  Common Laplace Transforms  Let and be constant.                             Laplace Transform Property  Let and .   are constants   is a constant                   Definition of the Laplace Transform   Use the definition to compute each of the following Laplace Transforms.       Solution  In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for          Solution  \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms.       Solution  \\\\        Solution  To compute this, we use the definition of the Laplace transform.          Solution  By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .            Solution  We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .         Solution  Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .    Forward Transform   Compute the forward Laplace Transforms using the common Laplace transform table .                                                    Exploring the Forward Laplace Transform   Use the concepts discussed in the section to solve the following exercises.   Answer the following questions related to the Laplace transform of .   Show that .  Solution  This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .  Solution  Select and . Then      Plug from (b) into the limit from (a) to show that .  Solution  Substitute from (b) into the limit from (a).      In order for to exist, what must be true?   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .       Forward Transform   Compute the forward Laplace Transforms using the common transform table and properties .            Solution  Use the first shifting theorem: .       Solution  Use the integration by parts method: .       Solution  Apply the second shifting theorem: .     Solution           Solution           Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .        Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.     Forward Transforming Equations   Use the forward Laplace transform to solve the following differential equations.   Solve the differential equation given the initial conditions and .   Solution  Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .   Solve the differential equation with the initial condition .   Solution  Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .     "
+  "body": "Summary & Exercises   In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:   Summary of the Key Ideas     Differential Algebraic Equations . The Laplace transform converts a differential equation into an algebraic equation, simplifying the solution process by eliminating derivatives.   Laplace Transform Concept . Applying the Laplace transform to a differential equation involves transforming each term by multiplying by and integrating with respect to from to , but is often simplified by directly applying the Laplace operator, .   Linearity Property . The Laplace transform is linear, meaning it distributes across addition and subtraction, and allows for constants to be factored out. This property is essential for transforming complex equations.   Transforming Initial Conditions . Initial conditions are incorporated directly into the Laplace-transformed equation, modifying the transformed terms to include initial values, making it easier to solve the resulting algebraic equation.   Common Function Transforms . The Laplace transforms of common functions, such as exponentials, sines, cosines, and polynomials, are essential tools in transforming differential equations and are summarized in the provided table.   Transforming Derivatives . The Laplace transform of a derivative, or higher, transfers the derivative onto the Laplace variable , reducing the order of the equation while introducing initial condition terms.   Multiplication by and . When multiplying a function by an exponential , the Laplace transform shifts by in the -domain, and multiplying by corresponds to differentiating the transform times with respect to , introducing a sign change.   Transforming the Entire Equation . The process of applying the Laplace transform to an entire differential equation with initial conditions involves systematically transforming each term and leads to a simplified algebraic equation in the -domain, ready for solving.      The table below summarizes the common Laplace transforms that we derived in this section.  Common Laplace Transforms  Let and be constant.                             Laplace Transform Property  Let and .   are constants   is a constant                   Definition of the Laplace Transform   Use the definition to compute each of the following Laplace Transforms.     Answer     Solution  In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for        Answer     Solution  \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms.     Answer     Solution  \\\\      Answer     Solution  To compute this, we use the definition of the Laplace transform.      Answer       Solution  By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .        Answer       Solution  We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .     Answer       Solution  Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .    Forward Transform   Compute the forward Laplace Transforms using the common Laplace transform table .     Answer         Answer         Answer         Answer         Answer         Answer         Answer         Answer        Exploring the Forward Laplace Transform   Use the concepts discussed in the section to solve the following exercises.   Answer the following questions related to the Laplace transform of .   Show that .  Solution  This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .  Solution  Select and . Then      Plug from (b) into the limit from (a) to show that .  Solution  Substitute from (b) into the limit from (a).      In order for to exist, what must be true?  Answer   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .        Forward Transform   Compute the forward Laplace Transforms using the common transform table and properties .     Answer        Answer     Solution  Use the first shifting theorem: .     Answer     Solution  Use the integration by parts method: .     Answer     Solution  Apply the second shifting theorem: .     Solution        Answer      Solution        Answer      Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .      Answer     Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.     Forward Transforming Equations   Use the forward Laplace transform to solve the following differential equations.   Solve the differential equation given the initial conditions and . Answer     Solution  Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .   Solve the differential equation with the initial condition . Answer     Solution  Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .     "
 },
 {
   "id": "main-8-3-7-2-2",
@@ -5470,7 +5497,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.1",
   "title": "",
-  "body": "    Solution  In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for     "
+  "body": "  Answer     Solution  In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose an Then we take the derivative o to fin and the antiderivative o to fin , as follows. Note also that we will use L'Hospital's Rule when we have a limit of for     "
 },
 {
   "id": "main-8-3-7-3-1-4",
@@ -5479,7 +5506,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.2",
   "title": "",
-  "body": "    Solution  \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms.  "
+  "body": "  Answer     Solution  \\\\ We will use the results from the previous two questions. Notice that what we showed in the middle of all this is that This is an example of the linearity property of Laplace Transforms.  "
 },
 {
   "id": "main-8-3-7-3-1-5",
@@ -5488,7 +5515,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.3",
   "title": "",
-  "body": "    Solution  \\\\   "
+  "body": "  Answer     Solution  \\\\   "
 },
 {
   "id": "main-8-3-7-3-1-6",
@@ -5497,7 +5524,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.4",
   "title": "",
-  "body": "    Solution  To compute this, we use the definition of the Laplace transform.   "
+  "body": "  Answer     Solution  To compute this, we use the definition of the Laplace transform.   "
 },
 {
   "id": "main-8-3-7-3-1-7",
@@ -5506,7 +5533,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.5",
   "title": "",
-  "body": "      Solution  By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .     "
+  "body": "  Answer       Solution  By the above definition, we have At this point, we need to assume that in order to continue. If you are curious as to why, see this note for an explanation. Next, we integrate using the substitution .     "
 },
 {
   "id": "main-8-3-7-3-1-8",
@@ -5515,7 +5542,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.6",
   "title": "",
-  "body": "      Solution  We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .  "
+  "body": "  Answer       Solution  We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need Hence, we move forward with the assumption that . Thus, .  "
 },
 {
   "id": "main-8-3-7-3-1-9",
@@ -5524,7 +5551,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.7",
   "title": "",
-  "body": "      Solution  Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .  "
+  "body": "  Answer       Solution  Let's use the definition of Laplace transform to get us going.    Hence, we have , under the condition that .  "
 },
 {
   "id": "main-8-3-7-3-2-3",
@@ -5533,7 +5560,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.8",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-4",
@@ -5542,7 +5569,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.9",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-5",
@@ -5551,7 +5578,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.10",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-6",
@@ -5560,7 +5587,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.11",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-7",
@@ -5569,7 +5596,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.12",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-8",
@@ -5578,7 +5605,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.13",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-9",
@@ -5587,7 +5614,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.14",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-2-10",
@@ -5596,7 +5623,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.15",
   "title": "",
-  "body": "     "
+  "body": "  Answer      "
 },
 {
   "id": "main-8-3-7-3-3-3",
@@ -5605,7 +5632,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.16",
   "title": "",
-  "body": "Answer the following questions related to the Laplace transform of .   Show that .  Solution  This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .  Solution  Select and . Then      Plug from (b) into the limit from (a) to show that .  Solution  Substitute from (b) into the limit from (a).      In order for to exist, what must be true?   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .     "
+  "body": "Answer the following questions related to the Laplace transform of .   Show that .  Solution  This follows directly from the definition of the Laplace transform. .     Use integration by parts to show that .  Solution  Select and . Then      Plug from (b) into the limit from (a) to show that .  Solution  Substitute from (b) into the limit from (a).      In order for to exist, what must be true?  Answer   The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .      "
 },
 {
   "id": "main-8-3-7-3-4-3",
@@ -5614,7 +5641,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.17",
   "title": "",
-  "body": "    "
+  "body": "  Answer     "
 },
 {
   "id": "main-8-3-7-3-4-4",
@@ -5623,7 +5650,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.18",
   "title": "",
-  "body": "    Solution  Use the first shifting theorem: .  "
+  "body": "  Answer     Solution  Use the first shifting theorem: .  "
 },
 {
   "id": "main-8-3-7-3-4-5",
@@ -5632,7 +5659,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.19",
   "title": "",
-  "body": "    Solution  Use the integration by parts method: .  "
+  "body": "  Answer     Solution  Use the integration by parts method: .  "
 },
 {
   "id": "main-8-3-7-3-4-6",
@@ -5641,7 +5668,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.20",
   "title": "",
-  "body": "    Solution  Apply the second shifting theorem: .  "
+  "body": "  Answer     Solution  Apply the second shifting theorem: .  "
 },
 {
   "id": "main-8-3-7-3-4-7",
@@ -5659,7 +5686,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.22",
   "title": "",
-  "body": "     Solution     "
+  "body": "  Answer      Solution     "
 },
 {
   "id": "main-8-3-7-3-4-9",
@@ -5668,7 +5695,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.23",
   "title": "",
-  "body": "     Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .   "
+  "body": "  Answer      Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .   "
 },
 {
   "id": "main-8-3-7-3-4-10",
@@ -5677,7 +5704,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.24",
   "title": "",
-  "body": "    Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.   "
+  "body": "  Answer     Solution  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.   "
 },
 {
   "id": "main-8-3-7-3-5-3",
@@ -5686,7 +5713,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.25",
   "title": "",
-  "body": "Solve the differential equation given the initial conditions and .   Solution  Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .  "
+  "body": "Solve the differential equation given the initial conditions and . Answer     Solution  Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .  "
 },
 {
   "id": "main-8-3-7-3-5-4",
@@ -5695,7 +5722,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "9.5.26",
   "title": "",
-  "body": "Solve the differential equation with the initial condition .   Solution  Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .  "
+  "body": "Solve the differential equation with the initial condition . Answer     Solution  Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .  "
 },
 {
   "id": "main-8-4-3-3",
@@ -5704,7 +5731,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.1.1",
   "title": "Matched Forms",
-  "body": "Matched Forms  The Laplace Transform Method begins with the forward Laplace transform of a differential equation with an unknown function into an algebraic equation involving the transformed function . Once we have solved for , the final step is to recover the original function, , by applying the backward (inverse) Laplace transform, denoted as .  Much like how reverses the cosine function, applying to both sides of a Laplace-transformed expression brings us back to the original function. For example, if then, applying the inverse Laplace transform gives: To identify the appropriate inverse Laplace transform, we rely on the common transforms in the table below, where we match the function of on the right and the inverse is the function of on the left.   Common Laplace Transforms. are constant,      -functions  -functions                                                                Many functions can be matched by simply observing the denominator. The following table summarizes common patterns for matching denominators with their associated inverse transforms:  Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes          Now, let's look at some examples.   Find the inverse Laplace transforms of each function.      Solution  This matches the form with . So,           Solution  This matches the form with and . So, .          Solution  This matches the with .        These examples demonstrate how to find the inverse Laplace Transform when the -function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the -function to match the common forms in the table.  Check-Point Questions   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.    The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .    In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.           Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.           Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.           No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.           Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .           Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .           Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .      "
+  "body": "Matched Forms  The Laplace Transform Method begins with the forward Laplace transform of a differential equation with an unknown function into an algebraic equation involving the transformed function . Once we have solved for , the final step is to recover the original function, , by applying the backward (inverse) Laplace transform, denoted as .  Much like how reverses the cosine function, applying to both sides of a Laplace-transformed expression brings us back to the original function. For example, if then, applying the inverse Laplace transform gives: To identify the appropriate inverse Laplace transform, we rely on the common transforms in the table below, where we match the function of on the right and the inverse is the function of on the left.   Common Laplace Transforms. are constant,      -functions  -functions                                                                Many functions can be matched by simply observing the denominator. The following table summarizes common patterns for matching denominators with their associated inverse transforms:  Matching Guide: -function Inverse Transform    Denominator   in Numerator?  Transform     -      -      -      -       no  yes           no  yes          Now, let's look at some examples.   Find the inverse Laplace transforms of each function.      Solution  This matches the form with . So,           Solution  This matches the form with and . So, .          Solution  This matches the with .        These examples demonstrate how to find the inverse Laplace Transform when the -function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the -function to match the common forms in the table.  Check-Point Questions   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.    The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from    True. The inverse Laplace transform reverses the forward transformation, converting back into .    In the Laplace Transform Method, the backward transform    In the Laplace Transform Method, the backward transform     converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.               Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.               Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.               No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.               Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .               Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .             Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .      "
 },
 {
   "id": "common-lt-table",
@@ -5740,7 +5767,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.1",
   "title": "<em class=\"emphasis\">The table of common forward Laplace transforms can also be used to find inverse Laplace transforms<\/em>.",
-  "body": " The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.  "
+  "body": " The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   The table of common forward Laplace transforms can also be used to find inverse Laplace transforms   True. The same table used for forward transforms is used for backward transforms, but in reverse order.  "
 },
 {
   "id": "p4-c2-s1-1-rq2",
@@ -5749,7 +5776,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.2",
   "title": "<em class=\"emphasis\">The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function <span class=\"process-math\">\\(y(t)\\)<\/span> from <span class=\"process-math\">\\(Y(s)\\)<\/span><\/em>.",
-  "body": " The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   True. The inverse Laplace transform reverses the forward transformation, converting back into .  "
+  "body": " The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from   The inverse Laplace transform undoes the effect of the forward Laplace transform, allowing us to recover the original function from    True. The inverse Laplace transform reverses the forward transformation, converting back into .  "
 },
 {
   "id": "p4-c2-s1-1-rq3",
@@ -5758,7 +5785,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.3",
   "title": "<em class=\"emphasis\">In the Laplace Transform Method, the backward transform <span class=\"process-math\">\\(\\fillinmath{XXXXX}\\)<\/span><\/em>.",
-  "body": " In the Laplace Transform Method, the backward transform    converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.    "
+  "body": " In the Laplace Transform Method, the backward transform    In the Laplace Transform Method, the backward transform     converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.    "
 },
 {
   "id": "p4-c2-s1-1-rq4",
@@ -5767,7 +5794,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{3}{s^2 + 9}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.    "
+  "body": "          Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.    "
 },
 {
   "id": "p4-c2-s1-1-rq6",
@@ -5776,7 +5803,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s+3}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.    "
+  "body": "          Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.    "
 },
 {
   "id": "p4-c2-s1-1-rq7",
@@ -5785,7 +5812,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.6",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{24}{s^5}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.    "
+  "body": "          No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.    "
 },
 {
   "id": "p4-c2-s1-1-rq8",
@@ -5794,7 +5821,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.7",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{2}{s^2 + 4}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
+  "body": "          Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
 },
 {
   "id": "p4-c2-s1-1-rq9",
@@ -5803,7 +5830,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.8",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{s - 5}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .    "
+  "body": "          Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .    "
 },
 {
   "id": "p4-c2-s1-1-rq10",
@@ -5812,7 +5839,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.1.9",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{1}{(s+4)^2}} = \\fillinmath{XXXXXX}\\)<\/span><\/em>.",
-  "body": "      Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
+  "body": "        Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .    "
 },
 {
   "id": "main-8-4-3-4",
@@ -5821,7 +5848,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.1.2",
   "title": "Mismatched Forms",
-  "body": "Mismatched Forms  When working with Laplace transforms, it's common to encounter algebraic expressions that don't perfectly match the standard forms we use for the inverse Laplace transform. In these cases, we need to manipulate the expression to make it fit one of the known forms.  For example, consider the expression: While it's not an exact match, we can observe from the denominator that   However, the numerator doesn't match yet. To correct this, we need a 5 in the numerator. We can't just multiply the numerator by 5 without changing the value, so instead, we multiply the entire expression by , which is equivalent to multiplying by 1: Multiplying by doesn’t change the value of the expression, but it allows us to match the standard form.  One of the most common adjustments is introducing a missing constant in the numerator, as we did earlier. By multiplying both the numerator and denominator by this constant, we maintain the expression's value while transforming it into a recognizable form. Let’s look at some examples:   Compute the inverse Laplace transforms for each.         Solution  The in the denominator tells us that we need . Before we do, let's factor out : .           Solution  Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so            Solution  This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so            Solution               Solution  The form of this denominator is and has no in the numerator. Therefore,            Solution  The denominator, , indicates an and a term. Therefore,         Check-Point Questions   The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.          Incorrect.       Incorrect.       Correct!       Incorrect.      Fill-in-the-blank.      Incorrect.       Incorrect.       Incorrect.       Correct!      Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?      Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.            Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.      Fill-in-the-blank.      Correct!       Incorrect.       Incorrect.       Incorrect.      "
+  "body": "Mismatched Forms  When working with Laplace transforms, it's common to encounter algebraic expressions that don't perfectly match the standard forms we use for the inverse Laplace transform. In these cases, we need to manipulate the expression to make it fit one of the known forms.  For example, consider the expression: While it's not an exact match, we can observe from the denominator that   However, the numerator doesn't match yet. To correct this, we need a 5 in the numerator. We can't just multiply the numerator by 5 without changing the value, so instead, we multiply the entire expression by , which is equivalent to multiplying by 1: Multiplying by doesn’t change the value of the expression, but it allows us to match the standard form.  One of the most common adjustments is introducing a missing constant in the numerator, as we did earlier. By multiplying both the numerator and denominator by this constant, we maintain the expression's value while transforming it into a recognizable form. Let’s look at some examples:   Compute the inverse Laplace transforms for each.          Solution  The in the denominator tells us that we need . Before we do, let's factor out : .           Solution  Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so            Solution  This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so            Solution               Solution  The form of this denominator is and has no in the numerator. Therefore,            Solution  The denominator, , indicates an and a term. Therefore,         Check-Point Questions   The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.               Incorrect.       Incorrect.       Correct!       Incorrect.      Fill-in-the-blank.    Fill-in-the-blank.       Incorrect.       Incorrect.       Incorrect.       Correct!      Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?    Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?       Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.                 Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.      Fill-in-the-blank.    Fill-in-the-blank.       Correct!       Incorrect.       Incorrect.       Incorrect.      "
 },
 {
   "id": "main-8-4-3-4-6",
@@ -5830,7 +5857,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "19",
   "title": "",
-  "body": " Compute the inverse Laplace transforms for each.         Solution  The in the denominator tells us that we need . Before we do, let's factor out : .           Solution  Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so            Solution  This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so            Solution               Solution  The form of this denominator is and has no in the numerator. Therefore,            Solution  The denominator, , indicates an and a term. Therefore,        "
+  "body": " Compute the inverse Laplace transforms for each.          Solution  The in the denominator tells us that we need . Before we do, let's factor out : .           Solution  Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so            Solution  This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so            Solution               Solution  The form of this denominator is and has no in the numerator. Therefore,            Solution  The denominator, , indicates an and a term. Therefore,        "
 },
 {
   "id": "p4-c2-s1-2-rq1",
@@ -5839,7 +5866,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.1",
   "title": "<em class=\"emphasis\">The most challenging part of the Laplace transform method is preparing the <span class=\"process-math\">\\(s\\)<\/span>-function for the backward Laplace transform<\/em>.",
-  "body": " The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.  "
+  "body": " The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   The most challenging part of the Laplace transform method is preparing the -function for the backward Laplace transform   True. Preparing the s-function to match a known form in the backward Laplace transform table can be the most challenging step in the Laplace transform method.  "
 },
 {
   "id": "p4-c2-s1-2-rq2",
@@ -5848,7 +5875,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.2",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{7}{s^2}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "       Incorrect.       Incorrect.       Correct!       Incorrect.    "
+  "body": "            Incorrect.       Incorrect.       Correct!       Incorrect.    "
 },
 {
   "id": "p4-c2-s1-2-rq3",
@@ -5857,7 +5884,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.3",
   "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{5}{s^4}} = \\frac{5}{6}\\ilap{\\frac{\\fillinmath{X}}{s^4}} \\)<\/span><\/em>.",
-  "body": " Fill-in-the-blank.      Incorrect.       Incorrect.       Incorrect.       Correct!    "
+  "body": " Fill-in-the-blank.    Fill-in-the-blank.       Incorrect.       Incorrect.       Incorrect.       Correct!    "
 },
 {
   "id": "p4-c2-s1-2-rq4",
@@ -5866,7 +5893,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.4",
   "title": "<em class=\"emphasis\">Which of the following <span class=\"process-math\">\\(s\\)<\/span>-functions require adjustment to match one of the common inverse Laplace transforms?<\/em>",
-  "body": " Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?      Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.    "
+  "body": " Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?    Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?       Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.    "
 },
 {
   "id": "p4-c2-s1-2-rq5",
@@ -5875,7 +5902,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.5",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{(s - 2)^2 + 25}} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"15-character blank\" style=\"width: 6.818181818181818em;\" \/><\/em>.",
-  "body": "       Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.    "
+  "body": "            Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.    "
 },
 {
   "id": "p4-c2-s1-2-rq6",
@@ -5884,7 +5911,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.1.2.6",
   "title": "<em class=\"emphasis\">Fill-in-the-blank. <span class=\"process-math\">\\(\\ds\\quad \\ilap{\\frac{10}{s^2 + 25}} = \\frac{\\fillinmath{X}}{5}\\ilap{\\frac{5}{s^2 + 25}} \\)<\/span><\/em>.",
-  "body": " Fill-in-the-blank.      Correct!       Incorrect.       Incorrect.       Incorrect.    "
+  "body": " Fill-in-the-blank.    Fill-in-the-blank.       Correct!       Incorrect.       Incorrect.       Incorrect.    "
 },
 {
   "id": "main-8-4-4-3",
@@ -5893,7 +5920,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.1",
   "title": "Splitting Fractions",
-  "body": "Splitting Fractions  One useful algebraic manipulation in preparing for the inverse Laplace transform is splitting a rational function that has a sum or difference in the numerator. This technique simplifies the expression into recognizable forms, making it easier to apply known Laplace transform pairs. Let's explore two examples where splitting fractions proves useful.   Find the Inverse Laplce Transform      To do this, we split the fraction into two simpler terms: Now, we can apply the inverse Laplace transform to each term separately. The first term matches with , and the second term corresponds to :       We can split the fraction into the terms, and apply the inverse Laplace transform, , to each     This section demonstrates how relatively simple modifications, such as splitting fractions, can make it easier to find the inverse Laplace transform. However, some functions of may require more advanced techniques. In the next section, we will explore how completing the square can help match the forms needed for a backward transform when the -variable is shifted.  Check-Point Questions   The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .      Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.            Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.            Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
+  "body": "Splitting Fractions  One useful algebraic manipulation in preparing for the inverse Laplace transform is splitting a rational function that has a sum or difference in the numerator. This technique simplifies the expression into recognizable forms, making it easier to apply known Laplace transform pairs. Let's explore two examples where splitting fractions proves useful.   Find the Inverse Laplce Transform      To do this, we split the fraction into two simpler terms: Now, we can apply the inverse Laplace transform to each term separately. The first term matches with , and the second term corresponds to :       We can split the fraction into the terms, and apply the inverse Laplace transform, , to each     This section demonstrates how relatively simple modifications, such as splitting fractions, can make it easier to find the inverse Laplace transform. However, some functions of may require more advanced techniques. In the next section, we will explore how completing the square can help match the forms needed for a backward transform when the -variable is shifted.  Check-Point Questions   The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms     True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .      Which of the following functions can be split into separate terms that match known inverse Laplace transforms?    Which of the following functions can be split into separate terms that match known inverse Laplace transforms?       Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.                 Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.                 Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
 },
 {
   "id": "main-8-4-4-3-3",
@@ -5911,7 +5938,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.1.1",
   "title": "<em class=\"emphasis\">The function <span class=\"process-math\">\\(\\ds \\frac{s - 4}{s^2 - 16}\\)<\/span> can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms<\/em>.",
-  "body": " The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .    "
+  "body": " The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms    The function can be split into separate terms that match the forms for sine and cosine inverse Laplace transforms     True   Incorrect. To match with the forms for sine and cosine inverse Laplace transforms, the denominator should have the form .     False   Correct! The denominator should have the form , not .    "
 },
 {
   "id": "p4-c2-s2-1-rq2",
@@ -5920,7 +5947,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.1.2",
   "title": "<em class=\"emphasis\">Which of the following functions can be split into separate terms that match known inverse Laplace transforms?<\/em>",
-  "body": " Which of the following functions can be split into separate terms that match known inverse Laplace transforms?      Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.    "
+  "body": " Which of the following functions can be split into separate terms that match known inverse Laplace transforms?    Which of the following functions can be split into separate terms that match known inverse Laplace transforms?       Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function matches with the and doesn't require splitting.    "
 },
 {
   "id": "p4-c2-s2-1-rq3",
@@ -5929,7 +5956,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.1.3",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\frac{s - 6}{s^2 - 36} = \\)<\/span> <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
-  "body": "       Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.    "
+  "body": "            Correct! Splitting the function into these two terms allows you to use cosine and sine inverse Laplace transforms on each.       Incorrect. The second term should be subtracted, not added.       Incorrect.       Incorrect.    "
 },
 {
   "id": "p4-c2-s2-1-rq4",
@@ -5938,7 +5965,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.1.4",
   "title": "<em class=\"emphasis\"><span class=\"process-math\">\\(\\quad\\ds \\ilap{\\frac{s + 2}{s^2 + 1}} = \\)<\/span>  <span class=\"fillin underline\" role=\"img\" aria-label=\"12-character blank\" style=\"width: 5.454545454545454em;\" \/><\/em>.",
-  "body": "       Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.    "
+  "body": "            Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.    "
 },
 {
   "id": "main-8-4-4-4",
@@ -5947,7 +5974,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.2",
   "title": "Completing the Square",
-  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms . For example, the function does not align with standard forms. A common approach is to rewrite the denominator in the form , allowing it to match known transforms like or . This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.  Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from solving quadratic equations that if the discriminant is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.   Find the Inverse Laplce Transform   . Find  The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,    . Find  The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .   . Find  Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions   To complete the square:  missing number      Correct!      Please review the reading.       After completing the square of the denominator:  missing number       Correct!      Incorrect. Write it down carefully      Please review the reading.       Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.    The discriminant of the denominator of is  discriminant      Correct!      Please review the reading.       After completing the square of the denominator,      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.      What is the next step to compute ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.      What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.      "
+  "body": "Completing the Square  As you progress through the Laplace Transform Method, you will often encounter rational functions that do not immediately match any known form in the table of Laplace transforms . For example, the function does not align with standard forms. A common approach is to rewrite the denominator in the form , allowing it to match known transforms like or . This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.  Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from solving quadratic equations that if the discriminant is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.   Find the Inverse Laplce Transform   . Find  The discriminant of the denominator is , which is negative. Therefore, completing the square is necessary: . Rewriting gives: which matches ( ). Therefore,    . Find  The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .   . Find  Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:     Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the -function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.  Check-Point Questions   To complete the square:   missing number        Correct!      Please review the reading.       After completing the square of the denominator:   missing number        Correct!      Incorrect. Write it down carefully      Please review the reading.       Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.    The discriminant of the denominator of is   discriminant        Correct!      Please review the reading.       After completing the square of the denominator,    After completing the square of the denominator,       Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.      What is the next step to compute ?    What is the next step to compute ?     Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.      What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.      "
 },
 {
   "id": "main-8-4-4-4-4",
@@ -5965,7 +5992,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.1",
   "title": "<em class=\"emphasis\">To complete the square: <span class=\"process-math\">\\(\\quad s^2-s+1 = s^2-s+\\fillinmath{X}-\\fillinmath{X} + 1\\)<\/span><\/em>.",
-  "body": " To complete the square:  missing number      Correct!      Please review the reading.     "
+  "body": " To complete the square:   missing number        Correct!      Please review the reading.     "
 },
 {
   "id": "p4-c2-s2-2-rq2",
@@ -5974,7 +6001,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.2",
   "title": "<em class=\"emphasis\">After completing the square of the denominator: <span class=\"process-math\">\\(\\ds\\frac{11}{s^2 + 18s + 400} = \\frac{11}{(s + 9)^2 + \\fillinmath{X}} \\)<\/span><\/em>.",
-  "body": " After completing the square of the denominator:  missing number       Correct!      Incorrect. Write it down carefully      Please review the reading.     "
+  "body": " After completing the square of the denominator:   missing number        Correct!      Incorrect. Write it down carefully      Please review the reading.     "
 },
 {
   "id": "p4-c2-s2-2-rq3",
@@ -5983,7 +6010,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.3",
   "title": "<em class=\"emphasis\">Completing the square is used when the discriminant of the quadratic expression in the denominator is positive<\/em>.",
-  "body": " Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.  "
+  "body": " Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   Completing the square is used when the discriminant of the quadratic expression in the denominator is positive   False. Completing the square is used when the discriminant is negative, indicating complex roots.  "
 },
 {
   "id": "p4-c2-s2-2-rq4",
@@ -5992,7 +6019,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.4",
   "title": "<em class=\"emphasis\">The discriminant of the denominator of <span class=\"process-math\">\\(\\ds\\frac{-19}{s^2-3s+1}\\)<\/span> is <span class=\"process-math\">\\(\\fillinmath{X}\\)<\/span><\/em>.",
-  "body": " The discriminant of the denominator of is  discriminant      Correct!      Please review the reading.     "
+  "body": " The discriminant of the denominator of is   discriminant        Correct!      Please review the reading.     "
 },
 {
   "id": "p4-c2-s2-2-rq5",
@@ -6001,7 +6028,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.5",
   "title": "<em class=\"emphasis\">After completing the square of the denominator, <span class=\"process-math\">\\(\\ds\\frac{11}{s^2 - 6s + 14} = \\fillinmath{XXXXX}\\)<\/span><\/em>.",
-  "body": " After completing the square of the denominator,      Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.    "
+  "body": " After completing the square of the denominator,    After completing the square of the denominator,       Incorrect. This is not the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.       Correct! This is the correct result after completing the square.       Incorrect. This is not the correct result after completing the square.    "
 },
 {
   "id": "p4-c2-s2-2-rq6",
@@ -6010,7 +6037,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.2.6",
   "title": "<em class=\"emphasis\">What is the next step to compute <span class=\"process-math\">\\(\\ds\\ilap{\\frac{s-1}{s^2 - 2s + 5}}\\text{?}\\)<\/span><\/em>",
-  "body": " What is the next step to compute ?    Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.    "
+  "body": " What is the next step to compute ?    What is the next step to compute ?     Factor the denominator   Incorrect. Factoring the denominator is not applicable in this case.     Complete the square in the denominator   Correct! Completing the square is necessary to match the form in the Laplace transform table.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Differentiate the entire function   Incorrect. Differentiation is not needed for this problem.    "
 },
 {
   "id": "p4-c2-s2-2-rq7",
@@ -6028,7 +6055,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "10.2.3",
   "title": "Partial Fraction Decomposition",
-  "body": "Partial Fraction Decomposition  In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.  The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can rewrite the function as: Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let’s explore a series of examples to demonstrate this approach.   Find the Inverse Laplce Transform   . Find  First, decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :       > Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:    . Find  First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:    . Find  Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:     Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.   Find and     First, factor the cubic denominator: Now decompose into partial fractions: and multiply both sides by to get and solve for and by selecting convenient values for :           Therefore,     Factor the quartic denominator: Decompose into partial fractions: and multiply both sides by to get and solve for and by selecting convenient values for :        Therefore,     Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.  Check-Point Questions   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      What is the first step in computing ?    Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.      The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Which of the following is the correct partial fraction decomposition of ?      No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .      In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    "
+  "body": "Partial Fraction Decomposition  In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.  The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as , we can rewrite the function as: Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let’s explore a series of examples to demonstrate this approach.   Find the Inverse Laplce Transform   . Find  First, decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :       > Therefore, the partial fraction decomposition is: Applying the inverse Laplace transform to each term:    . Find  First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:    . Find  Factor the quadratic denominator: Decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:     Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.   Find and     First, factor the cubic denominator: Now decompose into partial fractions: and multiply both sides by to get and solve for and by selecting convenient values for :           Therefore,     Factor the quartic denominator: Decompose into partial fractions: and multiply both sides by to get and solve for and by selecting convenient values for :        Therefore,     Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.  Check-Point Questions   Partial fraction decomposition can only be used for quadratic denominators   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms     simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.      What is the first step in computing ?    What is the first step in computing ?     Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.      The partial fraction decomposition of is +    The partial fraction decomposition of is +     1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.      When using partial fraction decomposition for a cubic denominator, the function is always decomposed into three terms   False. The number of terms in the decomposition depends on the factorization of the denominator, not just its degree.    Which of the following is the correct partial fraction decomposition of ?    Which of the following is the correct partial fraction decomposition of ?       No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .      In partial fraction decomposition, the numerator of each term must have a degree less than the denominator   True. In partial fraction decomposition, each term's numerator must have a lower degree than the corresponding denominator.    "
 },
 {
   "id": "main-8-4-4-5-4",
@@ -6055,7 +6082,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.3.1",
   "title": "<em class=\"emphasis\">Partial fraction decomposition can only be used for quadratic denominators<\/em>.",
-  "body": " Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
+  "body": " Partial fraction decomposition can only be used for quadratic denominators   Partial fraction decomposition can only be used for quadratic denominators   False. Partial fraction decomposition can be used for any polynomial denominator, including linear, quadratic, cubic, and higher degrees.  "
 },
 {
   "id": "p4-c2-s2-3-rq2",
@@ -6064,7 +6091,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.3.2",
   "title": "<em class=\"emphasis\">The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms<\/em>.",
-  "body": " The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
+  "body": " The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms    The purpose of partial fraction decomposition is to break down complex rational functions into __________ that can be easily matched to known inverse Laplace transforms     simpler fractions   Correct! Partial fraction decomposition simplifies the rational function into fractions that match known Laplace forms.     more complex fractions   No, the goal is to simplify the function, not to make it more complex.     linear equations   No, the decomposition simplifies fractions, not into linear equations.    "
 },
 {
   "id": "p4-c2-s2-3-rq3",
@@ -6073,7 +6100,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.3.3",
   "title": "<em class=\"emphasis\">What is the first step in computing <span class=\"process-math\">\\(\\ds\\ilap{\\frac{s + 6}{s^2 + 7s + 6}}\\text{?}\\)<\/span><\/em>",
-  "body": " What is the first step in computing ?    Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.    "
+  "body": " What is the first step in computing ?    What is the first step in computing ?     Find a common denominator.   No, you need to factor the denominator first before any further decomposition.     Factor the denominator.   Correct! The first step is to factor the quadratic denominator .     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.     Cancel out the in the numerator and denominator.   No, canceling out the in the the function is not a valid operation.    "
 },
 {
   "id": "p4-c2-s2-3-rq4",
@@ -6082,7 +6109,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.3.4",
   "title": "<em class=\"emphasis\">The partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{2s + 3}{(s + 2)(s + 3)}\\)<\/span> is <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 2}\\)<\/span> + <span class=\"process-math\">\\(\\ds\\frac{\\fillinmath{XX}}{s + 3}\\)<\/span><\/em>.",
-  "body": " The partial fraction decomposition of is +    1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
+  "body": " The partial fraction decomposition of is +    The partial fraction decomposition of is +     1, 1   Correct! The partial fraction decomposition is .     2, 3   Incorrect. The correct coefficients for the partial fraction decomposition are both 1.     0, 1   No, the coefficients should be 1 for both terms in the decomposition.    "
 },
 {
   "id": "p4-c2-s2-3-rq5",
@@ -6100,7 +6127,7 @@ var ptx_lunr_docs = [
   "type": "Reading Question",
   "number": "10.2.3.6",
   "title": "<em class=\"emphasis\">Which of the following is the correct partial fraction decomposition of <span class=\"process-math\">\\(\\ds\\frac{3s + 4}{(s - 1)^2}\\text{?}\\)<\/span><\/em>",
-  "body": " Which of the following is the correct partial fraction decomposition of ?      No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .    "
+  "body": " Which of the following is the correct partial fraction decomposition of ?    Which of the following is the correct partial fraction decomposition of ?       No, this decomposition is incomplete. It should also include a term with .       No, this is incorrect. The correct decomposition involves instead of .       Correct! The correct decomposition includes terms with both and .       No, this decomposition is incorrect. The correct decomposition should have instead of .    "
 },
 {
   "id": "p4-c2-s2-3-rq7",
@@ -6118,7 +6145,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "10.3",
   "title": "Summary &amp; Exercises",
-  "body": "Summary & Exercises   This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function back to the original function . Several methods and techniques are introduced to handle different cases where direct computation isn't possible.   Summary of the Key Ideas   Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.            Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.     What is the Laplace transform of ?               In the equation , what is the Laplace transform of the right-hand side?                The expression matches the form required to apply the inverse Laplace transform found in the common transform table   True. This expression matches the form in the table and can be directly transformed.   Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.          Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.             Backward Transforms- Level 1     Solution         Solution         Solution         Solution         Solution         Solution         Solution       Backward Transforms- Level 2     Solution         Solution         Solution         Solution         Solution         Solution         Solution         Solution       Backward Transforms- Level 3     Solution         Solution         Solution       Steps 3 & 4     Solution         Solution       Inverse Laplace Transforms   Determine the original time-domain functions from the given Laplace-transformed functions.       Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .       Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .      Find the inverse Laplace transforms of each function.              Conceptual Questions   True or False: The inverse Laplace transform is always a unique function.   True    Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.    Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.    Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Computational Problems   Find the inverse Laplace transform of .  Solution  This expression matches the form with , so the inverse Laplace transform is .    Compute the inverse Laplace transform of .  Solution  This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .    Use partial fraction decomposition to find the inverse Laplace transform of .  Solution  First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .    Application-Based Problems   Given the function , describe the behavior of the corresponding time-domain function.  Solution  The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.    Find the inverse Laplace transform of the function using partial fraction decomposition.  Solution  Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.          Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.           Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .      , which matches the form in the table when      Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.      "
+  "body": "Summary & Exercises   This section covers the final step in solving differential equations using the Laplace Transform Method: finding the inverse Laplace transform. The focus is on converting the algebraic equation with unknown function back to the original function . Several methods and techniques are introduced to handle different cases where direct computation isn't possible.   Summary of the Key Ideas   Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.            Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.     What is the Laplace transform of ?               In the equation , what is the Laplace transform of the right-hand side?                The expression matches the form required to apply the inverse Laplace transform found in the common transform table   True. This expression matches the form in the table and can be directly transformed.   Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.      Answer      Answer       Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.   Answer      Answer       Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.   Answer      Answer      Answer       Backward Transforms- Level 1    Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution       Backward Transforms- Level 2    Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution        Answer    Solution       Backward Transforms- Level 3    Answer    Solution        Answer    Solution        Answer    Solution       Steps 3 & 4    Answer    Solution        Answer    Solution       Inverse Laplace Transforms   Determine the original time-domain functions from the given Laplace-transformed functions.     Answer     Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .     Answer     Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .      Find the inverse Laplace transforms of each function.   Answer        Answer         Conceptual Questions   True or False: The inverse Laplace transform is always a unique function.  Answer   True     Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.   Answer   It converts a function from the frequency domain to the time domain.     Explain the significance of completing the square in finding inverse Laplace transforms.  Answer   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.     Why is partial fraction decomposition helpful in finding inverse Laplace transforms?  Answer   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.     Computational Problems   Find the inverse Laplace transform of .  Solution  This expression matches the form with , so the inverse Laplace transform is .    Compute the inverse Laplace transform of .  Solution  This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .    Use partial fraction decomposition to find the inverse Laplace transform of .  Solution  First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .    Application-Based Problems   Given the function , describe the behavior of the corresponding time-domain function.  Solution  The inverse Laplace transform is , which indicates a sinusoidal function modulated by an exponential growth factor.    Find the inverse Laplace transform of the function using partial fraction decomposition.  Solution  Decompose the function into . Solving for the constants , , and , the inverse Laplace transform will be a combination of exponential and sinusoidal functions.          Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.           Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .      , which matches the form in the table when      Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.      "
 },
 {
   "id": "main-8-4-5-2-2",
@@ -6181,7 +6208,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.6",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-5-5",
@@ -6190,7 +6217,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.7",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-6-3",
@@ -6199,7 +6226,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.8",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-6-4",
@@ -6208,7 +6235,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.9",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-7-3",
@@ -6217,7 +6244,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.10",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-7-4",
@@ -6226,7 +6253,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.11",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-7-5",
@@ -6235,7 +6262,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.12",
   "title": "",
-  "body": "  "
+  "body": "Answer     "
 },
 {
   "id": "main-8-4-5-3-8-2",
@@ -6244,7 +6271,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.13",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-3",
@@ -6253,7 +6280,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.14",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-4",
@@ -6262,7 +6289,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.15",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-5",
@@ -6271,7 +6298,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.16",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-6",
@@ -6280,7 +6307,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.17",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-7",
@@ -6289,7 +6316,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.18",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-8-8",
@@ -6298,7 +6325,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.19",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-2",
@@ -6307,7 +6334,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.20",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-3",
@@ -6316,7 +6343,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.21",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-4",
@@ -6325,7 +6352,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.22",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-5",
@@ -6334,7 +6361,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.23",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-6",
@@ -6343,7 +6370,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.24",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-7",
@@ -6352,7 +6379,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.25",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-8",
@@ -6361,7 +6388,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.26",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-9-9",
@@ -6370,7 +6397,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.27",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-10-2",
@@ -6379,7 +6406,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.28",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-10-3",
@@ -6388,7 +6415,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.29",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-10-4",
@@ -6397,7 +6424,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.30",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-11-2",
@@ -6406,7 +6433,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.31",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-11-3",
@@ -6415,7 +6442,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.32",
   "title": "",
-  "body": "   Solution     "
+  "body": "  Answer    Solution     "
 },
 {
   "id": "main-8-4-5-3-12-3",
@@ -6424,7 +6451,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.33",
   "title": "",
-  "body": "    Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .  "
+  "body": "  Answer     Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .  "
 },
 {
   "id": "main-8-4-5-3-12-4",
@@ -6433,7 +6460,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.34",
   "title": "",
-  "body": "    Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .  "
+  "body": "  Answer     Solution  Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .  "
 },
 {
   "id": "main-8-4-5-3-13-2",
@@ -6442,7 +6469,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.35",
   "title": "",
-  "body": "    "
+  "body": "Answer       "
 },
 {
   "id": "main-8-4-5-3-13-3",
@@ -6451,7 +6478,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.36",
   "title": "",
-  "body": "    "
+  "body": "Answer       "
 },
 {
   "id": "main-8-4-5-3-14-2",
@@ -6460,7 +6487,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.37",
   "title": "",
-  "body": " True or False: The inverse Laplace transform is always a unique function.   True  "
+  "body": " True or False: The inverse Laplace transform is always a unique function.  Answer   True   "
 },
 {
   "id": "main-8-4-5-3-14-3",
@@ -6469,7 +6496,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.38",
   "title": "",
-  "body": " Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.    It converts a function from the frequency domain to the time domain.  "
+  "body": " Which of the following is true about the inverse Laplace transform?   It converts a function from the frequency domain to the time domain.  It is a method to solve algebraic equations.  It is used to differentiate a function with respect to time.  It only works for polynomials.   Answer   It converts a function from the frequency domain to the time domain.   "
 },
 {
   "id": "main-8-4-5-3-14-4",
@@ -6478,7 +6505,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.39",
   "title": "",
-  "body": " Explain the significance of completing the square in finding inverse Laplace transforms.   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.  "
+  "body": " Explain the significance of completing the square in finding inverse Laplace transforms.  Answer   Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.   "
 },
 {
   "id": "main-8-4-5-3-14-5",
@@ -6487,7 +6514,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "10.3.40",
   "title": "",
-  "body": " Why is partial fraction decomposition helpful in finding inverse Laplace transforms?   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.  "
+  "body": " Why is partial fraction decomposition helpful in finding inverse Laplace transforms?  Answer   Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.   "
 },
 {
   "id": "main-8-4-5-3-15-2",
@@ -6562,13 +6589,157 @@ var ptx_lunr_docs = [
   "body": " , which matches the form in the table when      Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.    "
 },
 {
-  "id": "main-8-5",
+  "id": "main-8-5-3",
   "level": "1",
-  "url": "main-8-5.html",
-  "type": "Chapter",
-  "number": "11",
-  "title": "Solving Equations",
-  "body": "Solving Equations   "
+  "url": "main-8-5-3.html",
+  "type": "Section",
+  "number": "11.1",
+  "title": "Overview",
+  "body": "Overview  At this point, the roadmap introduced at the beginning of this chapter should start to come together. The steps have been explored in previous sections, and now it is time to apply them in sequence to solve a complete initial-value problem. We start by applying the forward Laplace transform to the entire differential equation (Step 1), which temporarily encases the unknown inside . Next, you use algebra to isolate (Step 2a). After that, you prepare for the backward transform by breaking into a sum of functions that correspond to known Laplace transforms (Step 2b). Finally, you apply the backward transform to to recover the solution, (Step 3).  The complete strategy for this method is outlined as follows:  Laplace Transform Method  The particular solution to the initial-valued differential equation and given initial conditions, follows from these steps:  Step 1: Apply the Forward Transform  Apply the Laplace transform, , to both sides of . Use the table and properties to convert each term into a function of .   Step 2a: Solve for  Use algebra to isolate as a function of .   Step 2b: Prepare for the Backward Transform  Use techniques such as completing the square or partial fraction decompoition to rewrite as a sum of -functions found in the table of common transforms .   Step 3: Apply the Backward Transform  Apply the inverse Laplace transform, , to both sides of the equation to get the solution .      By following these steps, the Laplace Transform Method provides a clear path from the original differential equation to its solution, leveraging the power of both forward and backward transforms.  Check-Point Questions  The following questions refer to the steps of the Laplace Transform Method discussed above. Assume the dependent variable is .   Which of the following best summarizes the Laplace Transform Method?    Which of the following best summarizes the Laplace Transform Method?     Apply the forward transform, solve for , prepare for the backward transform, and apply the inverse transform to find .   Correct! The Laplace Transform Method involves applying the forward transform, solving for , preparing for the backward transform, and applying the inverse transform to find .     Differentiate the equation, apply the forward transform, solve for , and find the inverse.   Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.     Solve the differential equation directly, then use the Laplace transform to verify the solution.   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.     Use algebra to find the solution, then apply the Laplace transform to check the solution.   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.      Match the steps of Laplace Transform Method   List the steps of the Laplace transform method by dragging each task on the left to the corresponding step on the right.   Review the Steps.    Forward Transform  Step 1    Solve for   Step 2a    Prep for Backward Transform  Step 2b    Apply Backward Transform  Step 3     After isolating , which step follows in the Laplace Transform Method?    After isolating , which step follows in the Laplace Transform Method?     Apply the backward transform directly.   Not quite. After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Use integration to find the solution.   Incorrect. After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Prepare for the backward transform by rewriting .   Correct! After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Check the initial conditions.   Not quite. Checking the initial conditions is done in Step 1.      Which of the following best describes the purpose of Step 3 in the Laplace Transform Method?    What is the purpose of Step 3 in the Laplace Transform Method?     To solve for using algebra.   Incorrect. Step 2a involves solving for using algebra.     To rewrite the equation as a sum of -functions.   Incorrect. Step 2b involves rewriting as a sum of known Laplace transforms.     To recover the solution, , inside .   Correct! Step 3 involves applying the inverse Laplace transform to recover the solution .     To apply the forward Laplace transform to .   Incorrect. The forward Laplace transform is applied in Step 1.      What is the primary goal of applying the forward Laplace transform to a differential equation?    What is the primary goal of applying the forward Laplace transform to a differential equation?     To find the solution directly.   Not quite. The forward Laplace transform is used to convert the differential equation into an algebraic equation, not to find the solution directly.     To convert the differential equation into an algebraic equation involving .   Correct! The forward Laplace transform simplifies the differential equation by converting it into an algebraic form in terms of .     To rewrite the differential equation as a sum of functions.   Close, but the main purpose of the forward transform is to convert the differential equation into an algebraic equation involving , not just to rewrite it as a sum of functions.     To simplify the coefficients of the differential equation.   Incorrect. The Laplace transform does not directly simplify the coefficients but rather transforms the entire differential equation into an algebraic equation in terms of .      What is the primary goal of Step 2a in the Laplace Transform Method?    What is the primary goal of Step 2a in the Laplace Transform Method?     To isolate as a function of   Correct! Step 2a involves isolating on one side of the equation.     To apply the inverse Laplace transform   Incorrect. Applying the inverse Laplace transform is done in Step 3.     To account for the initial conditions   Incorrect. The initial conditions are accounted for in Step 1.     To rewrite as a sum of known transforms   Incorrect. Rewriting is done in Step 2b.      Match the Next Step in the Method  Drag the task, on the left, that directly follows the task on the right.  Review the Steps.     ... The result is your solution.   After applying the inverse laplace transform to ...     ... Use algebra to isolate it.   After transforming the differential equation to introduce ...     ... Rewrite it as a sum of expressions resembling common Laplace transforms.   Once you have isolated ...     ... Apply the Laplace Transform to it   Given an initial-valued problem ...     "
+},
+{
+  "id": "lt-method",
+  "level": "2",
+  "url": "main-8-5-3.html#lt-method",
+  "type": "Method",
+  "number": "6",
+  "title": "Laplace Transform Method.",
+  "body": "Laplace Transform Method  The particular solution to the initial-valued differential equation and given initial conditions, follows from these steps:  Step 1: Apply the Forward Transform  Apply the Laplace transform, , to both sides of . Use the table and properties to convert each term into a function of .   Step 2a: Solve for  Use algebra to isolate as a function of .   Step 2b: Prepare for the Backward Transform  Use techniques such as completing the square or partial fraction decompoition to rewrite as a sum of -functions found in the table of common transforms .   Step 3: Apply the Backward Transform  Apply the inverse Laplace transform, , to both sides of the equation to get the solution .     "
+},
+{
+  "id": "p4-c3-s1-1-rq1",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq1",
+  "type": "Reading Question",
+  "number": "11.1.1",
+  "title": "<em class=\"emphasis\">Which of the following best summarizes the Laplace Transform Method?<\/em>",
+  "body": " Which of the following best summarizes the Laplace Transform Method?    Which of the following best summarizes the Laplace Transform Method?     Apply the forward transform, solve for , prepare for the backward transform, and apply the inverse transform to find .   Correct! The Laplace Transform Method involves applying the forward transform, solving for , preparing for the backward transform, and applying the inverse transform to find .     Differentiate the equation, apply the forward transform, solve for , and find the inverse.   Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.     Solve the differential equation directly, then use the Laplace transform to verify the solution.   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.     Use algebra to find the solution, then apply the Laplace transform to check the solution.   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.    "
+},
+{
+  "id": "p4-c3-s1-1-rq2",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq2",
+  "type": "Reading Question",
+  "number": "11.1.2",
+  "title": "<em class=\"emphasis\">Match the steps of Laplace Transform Method<\/em>.",
+  "body": " Match the steps of Laplace Transform Method   List the steps of the Laplace transform method by dragging each task on the left to the corresponding step on the right.   Review the Steps.    Forward Transform  Step 1    Solve for   Step 2a    Prep for Backward Transform  Step 2b    Apply Backward Transform  Step 3   "
+},
+{
+  "id": "p4-c3-s1-1-rq3",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq3",
+  "type": "Reading Question",
+  "number": "11.1.3",
+  "title": "<em class=\"emphasis\">After isolating <span class=\"process-math\">\\(Y(s) \\text{,}\\)<\/span> which step follows in the Laplace Transform Method?<\/em>",
+  "body": " After isolating , which step follows in the Laplace Transform Method?    After isolating , which step follows in the Laplace Transform Method?     Apply the backward transform directly.   Not quite. After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Use integration to find the solution.   Incorrect. After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Prepare for the backward transform by rewriting .   Correct! After isolating , you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.     Check the initial conditions.   Not quite. Checking the initial conditions is done in Step 1.    "
+},
+{
+  "id": "p4-c3-s1-1-rq4",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq4",
+  "type": "Reading Question",
+  "number": "11.1.4",
+  "title": "<em class=\"emphasis\">Which of the following best describes the purpose of Step 3 in the Laplace Transform Method?<\/em>",
+  "body": " Which of the following best describes the purpose of Step 3 in the Laplace Transform Method?    What is the purpose of Step 3 in the Laplace Transform Method?     To solve for using algebra.   Incorrect. Step 2a involves solving for using algebra.     To rewrite the equation as a sum of -functions.   Incorrect. Step 2b involves rewriting as a sum of known Laplace transforms.     To recover the solution, , inside .   Correct! Step 3 involves applying the inverse Laplace transform to recover the solution .     To apply the forward Laplace transform to .   Incorrect. The forward Laplace transform is applied in Step 1.    "
+},
+{
+  "id": "p4-c3-s1-1-rq5",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq5",
+  "type": "Reading Question",
+  "number": "11.1.5",
+  "title": "<em class=\"emphasis\">What is the primary goal of applying the forward Laplace transform to a differential equation?<\/em>",
+  "body": " What is the primary goal of applying the forward Laplace transform to a differential equation?    What is the primary goal of applying the forward Laplace transform to a differential equation?     To find the solution directly.   Not quite. The forward Laplace transform is used to convert the differential equation into an algebraic equation, not to find the solution directly.     To convert the differential equation into an algebraic equation involving .   Correct! The forward Laplace transform simplifies the differential equation by converting it into an algebraic form in terms of .     To rewrite the differential equation as a sum of functions.   Close, but the main purpose of the forward transform is to convert the differential equation into an algebraic equation involving , not just to rewrite it as a sum of functions.     To simplify the coefficients of the differential equation.   Incorrect. The Laplace transform does not directly simplify the coefficients but rather transforms the entire differential equation into an algebraic equation in terms of .    "
+},
+{
+  "id": "p4-c3-s1-1-rq6",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq6",
+  "type": "Reading Question",
+  "number": "11.1.6",
+  "title": "<em class=\"emphasis\">What is the primary goal of Step 2a in the Laplace Transform Method?<\/em>",
+  "body": " What is the primary goal of Step 2a in the Laplace Transform Method?    What is the primary goal of Step 2a in the Laplace Transform Method?     To isolate as a function of   Correct! Step 2a involves isolating on one side of the equation.     To apply the inverse Laplace transform   Incorrect. Applying the inverse Laplace transform is done in Step 3.     To account for the initial conditions   Incorrect. The initial conditions are accounted for in Step 1.     To rewrite as a sum of known transforms   Incorrect. Rewriting is done in Step 2b.    "
+},
+{
+  "id": "p4-c3-s1-1-rq7",
+  "level": "2",
+  "url": "main-8-5-3-6.html#p4-c3-s1-1-rq7",
+  "type": "Reading Question",
+  "number": "11.1.7",
+  "title": "<em class=\"emphasis\">Match the Next Step in the Method<\/em>.",
+  "body": " Match the Next Step in the Method  Drag the task, on the left, that directly follows the task on the right.  Review the Steps.     ... The result is your solution.   After applying the inverse laplace transform to ...     ... Use algebra to isolate it.   After transforming the differential equation to introduce ...     ... Rewrite it as a sum of expressions resembling common Laplace transforms.   Once you have isolated ...     ... Apply the Laplace Transform to it   Given an initial-valued problem ...   "
+},
+{
+  "id": "main-8-5-4",
+  "level": "1",
+  "url": "main-8-5-4.html",
+  "type": "Section",
+  "number": "11.2",
+  "title": "Step-by-Step Examples",
+  "body": "Step-by-Step Examples  Now that we've explored the theory behind the Laplace Transform Method, it's time to put it into action by solving some initial-value problems. We'll walk through two examples that will illustrate each of the four key steps in the method. Along the way, we'll highlight how the forward and backward Laplace transforms work together to convert a differential equation into an algebraic problem and then back to a solution. Let's get started!  Solve the initial-value problem   .  Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . We need to express as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, is ready to go, but requires partial fraction decomposition. We start by writing down the form of the decomposition,  Now, we find and by plugging in values of into ,        :             :             Thus, the prepared is    Step 3: Apply the Backward Transform   Step 4 . Finally, we apply the backward step to get the solution:     Solve the initial-value problem     Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have where and  ,  .  So the complete forward transform of is    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . Now, we need to express as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in as a single fraction, like so . Plugging this back into the equation for gives the new , and we are ready to apply partial fraction decomposition. The form of the decomposition is Now, we find and by plugging in values of ,        :             :             :                   Thus, the prepared is    Step 3: Apply the Backward Transform   Step 4 . Finally, we perform the backward step to get the solution:     Solve the initial-value problem     Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have where and  ,  .  So the complete forward transform of is    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . Now, we need to express as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition, Now, we find and by plugging in values of ,        :                   :                   :                         So the updated is . Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.    Step 3: Apply the Backward Transform   Step 4 . Now for the backward step to get the solution:     These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.  Check-Point Questions   Which step in this method accounts for the initial conditions?    Which step in this method accounts for the initial conditions?     Applying the Forward Transform   That's correct! The initial conditions are accounted for when you apply the forward transform of the derivatives.     Solving for   Incorrect. Please carefully review the Method.     Preparing for the Backward Transform   Incorrect. Please carefully review the Method.     Applying the Backward Transform   Incorrect. Please carefully review the Method.      It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?    It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?    This is true! Both techniques are commonly used in the Laplace Transform Method to simplify the algebraic equation.    Which mathematical technique would you not expect to see in Step 2b?    Which mathematical technique would you not expect to see in Step 2b?     Partial fraction decomposition   Incorrect. Partial fraction decomposition is commonly used in Step 2b.     Completing the square   Incorrect. Completing the square is often used in Step 2b.     Finding a common denominator.   Incorrect. This technique is also used in Step 2b.     Integration by Parts   Correct! Only algebra techniques are used in Step 2b.      The Laplace Transform Method can be used to solve nonhomogeneous differential equations    The Laplace Transform Method can be used to solve nonhomogeneous differential equations     True   Correct! The Laplace Transform Method is especially useful for solving nonhomogeneous differential equations.     False   Incorrect. The method can indeed be used to solve nonhomogeneous differential equations.      "
+},
+{
+  "id": "main-8-5-4-3",
+  "level": "2",
+  "url": "main-8-5-4.html#main-8-5-4-3",
+  "type": "Example",
+  "number": "24",
+  "title": "Solve the initial-value problem.",
+  "body": "Solve the initial-value problem   .  Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . We need to express as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, is ready to go, but requires partial fraction decomposition. We start by writing down the form of the decomposition,  Now, we find and by plugging in values of into ,        :             :             Thus, the prepared is    Step 3: Apply the Backward Transform   Step 4 . Finally, we apply the backward step to get the solution:    "
+},
+{
+  "id": "main-8-5-4-4",
+  "level": "2",
+  "url": "main-8-5-4.html#main-8-5-4-4",
+  "type": "Example",
+  "number": "25",
+  "title": "Solve the initial-value problem.",
+  "body": "Solve the initial-value problem     Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have where and  ,  .  So the complete forward transform of is    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . Now, we need to express as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in as a single fraction, like so . Plugging this back into the equation for gives the new , and we are ready to apply partial fraction decomposition. The form of the decomposition is Now, we find and by plugging in values of ,        :             :             :                   Thus, the prepared is    Step 3: Apply the Backward Transform   Step 4 . Finally, we perform the backward step to get the solution:    "
+},
+{
+  "id": "main-8-5-4-5",
+  "level": "2",
+  "url": "main-8-5-4.html#main-8-5-4-5",
+  "type": "Example",
+  "number": "26",
+  "title": "Solve the initial-value problem.",
+  "body": "Solve the initial-value problem     Step 1: Apply the Forward Transform   Step 1 . Applying to both sides of , we have where and  ,  .  So the complete forward transform of is    Step 2a: Solve for   Step 2 . Next, we isolate on one side of the equation:    Step 2b: Prepare for the Backward Transform   Step 3 . Now, we need to express as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition, Now, we find and by plugging in values of ,        :                   :                   :                         So the updated is . Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.    Step 3: Apply the Backward Transform   Step 4 . Now for the backward step to get the solution:    "
+},
+{
+  "id": "p4-c3-s2-1-rq1",
+  "level": "2",
+  "url": "main-8-5-4-7.html#p4-c3-s2-1-rq1",
+  "type": "Reading Question",
+  "number": "11.2.1",
+  "title": "<em class=\"emphasis\">Which step in this method accounts for the initial conditions?<\/em>",
+  "body": " Which step in this method accounts for the initial conditions?    Which step in this method accounts for the initial conditions?     Applying the Forward Transform   That's correct! The initial conditions are accounted for when you apply the forward transform of the derivatives.     Solving for   Incorrect. Please carefully review the Method.     Preparing for the Backward Transform   Incorrect. Please carefully review the Method.     Applying the Backward Transform   Incorrect. Please carefully review the Method.    "
+},
+{
+  "id": "p4-c3-s2-1-rq2",
+  "level": "2",
+  "url": "main-8-5-4-7.html#p4-c3-s2-1-rq2",
+  "type": "Reading Question",
+  "number": "11.2.2",
+  "title": "<em class=\"emphasis\">It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?<\/em>",
+  "body": " It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?    It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?    This is true! Both techniques are commonly used in the Laplace Transform Method to simplify the algebraic equation.  "
+},
+{
+  "id": "p4-c3-s2-1-rq3",
+  "level": "2",
+  "url": "main-8-5-4-7.html#p4-c3-s2-1-rq3",
+  "type": "Reading Question",
+  "number": "11.2.3",
+  "title": "<em class=\"emphasis\">Which mathematical technique would you not expect to see in Step 2b?<\/em>",
+  "body": " Which mathematical technique would you not expect to see in Step 2b?    Which mathematical technique would you not expect to see in Step 2b?     Partial fraction decomposition   Incorrect. Partial fraction decomposition is commonly used in Step 2b.     Completing the square   Incorrect. Completing the square is often used in Step 2b.     Finding a common denominator.   Incorrect. This technique is also used in Step 2b.     Integration by Parts   Correct! Only algebra techniques are used in Step 2b.    "
+},
+{
+  "id": "p4-c3-s2-1-rq4",
+  "level": "2",
+  "url": "main-8-5-4-7.html#p4-c3-s2-1-rq4",
+  "type": "Reading Question",
+  "number": "11.2.4",
+  "title": "<em class=\"emphasis\">The Laplace Transform Method can be used to solve nonhomogeneous differential equations<\/em>.",
+  "body": " The Laplace Transform Method can be used to solve nonhomogeneous differential equations    The Laplace Transform Method can be used to solve nonhomogeneous differential equations     True   Correct! The Laplace Transform Method is especially useful for solving nonhomogeneous differential equations.     False   Incorrect. The method can indeed be used to solve nonhomogeneous differential equations.    "
 },
 {
   "id": "main-8-6",
@@ -6577,7 +6748,7 @@ var ptx_lunr_docs = [
   "type": "Chapter",
   "number": "12",
   "title": "Piecewise Forcing Functions",
-  "body": "Piecewise Forcing Functions   "
+  "body": "Piecewise Forcing Functions        "
 },
 {
   "id": "main-9-3",
@@ -6685,7 +6856,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "A.1",
   "title": "Exponential and Logarithmic Functions",
-  "body": "Exponential and Logarithmic Functions  Recall the following rules for exponential and logarithmic functions. Exponential Rules        General   Natural ( )                                               Logarithmic Rules        General   Natural ( )                                                        Let's look at a couple of examples, starting with an equation containing exponentials.   Solve for :   Solution  If you prefer to see a video of this example, click here   We might begin by isolating the exponential that contains and then taking the natural log of both sides.   It's worth noting that we cannot break up that log on the right hand side. There's no \"rule\" that helps when we have addition inside a logarithm.  There is another way to approach this if notice that appears inside both exponential terms. The answers may look different, but they are equivalent and both are correct.    Now let's look at an example involving logarithms.   Solve for :   Solution  If you prefer to see a video of this example, click here   We'll carefully apply the rules above. We want to get our hands on , and right now its inside a logarithm. In order to undo that, we'll exponentiate both sides.     Now you should try. Be careful!   Use algebra and the rules above to solve for in each of the following equations.    Solution            Solution            Solution            Solution            Solution            Solution            Solution            Euler's Formula        "
+  "body": "Exponential and Logarithmic Functions  Recall the following rules for exponential and logarithmic functions. Exponential Rules        General   Natural ( )                                               Logarithmic Rules        General   Natural ( )                                                        Let's look at a couple of examples, starting with an equation containing exponentials.   Solve for :   Solution  If you prefer to see a video of this example, click here   We might begin by isolating the exponential that contains and then taking the natural log of both sides.   It's worth noting that we cannot break up that log on the right hand side. There's no \"rule\" that helps when we have addition inside a logarithm.  There is another way to approach this if notice that appears inside both exponential terms. The answers may look different, but they are equivalent and both are correct.    Now let's look at an example involving logarithms.   Solve for :   Solution  If you prefer to see a video of this example, click here   We'll carefully apply the rules above. We want to get our hands on , and right now its inside a logarithm. In order to undo that, we'll exponentiate both sides.     Now you should try. Be careful!   Use algebra and the rules above to solve for in each of the following equations.    Solution      Answer         Solution      Answer         Solution      Answer         Solution      Answer         Solution      Answer         Solution      Answer         Solution      Answer         Euler's Formula        "
 },
 {
   "id": "r-01-04-exp_logs_ex_01",
@@ -6748,7 +6919,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "A.3",
   "title": "Quadratic equations",
-  "body": "Quadratic equations  We will be solving quadratic equations as we solve differential equations. If we want to solve a quadratic equation like there are several different methods we might use, including:  factoring  quadratic formula,   completing the square  Most students prefer the first two methods, which is fine. We will end up completing the square later in the semester, so if you want to review that method now, you'll reap the benefits later!   Solve the following quadratic equations. Note: It's OK if the solutions are complex or imaginary.     Solution  You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:          Solution  You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:          Solution  This one doesn't factor easily... You might use the quadratic formula: You could even complete the square:        Name at least two methods for solving quadratic equations. factoring, using the quadratic formula, completing the square   How many solutions does a quadratic equation have? There are three possible outcomes when solving a quadratic equation:  two distinct real roots  one repeated real root (i.e., a double root)  complex conjugate roots       Solving Quadratic Equations  The solution to the quadratic equation is given by the quadratic formula: . Notes:   The gives two solutions, say and .     and are also known as the roots of .    The value, , under the root in is called the discriminant .    Equation can be written as .    If , then and are different real numbers.    If , then and are the same real number (repeated).    If , then and are complex and can be written as .       "
+  "body": "Quadratic equations  We will be solving quadratic equations as we solve differential equations. If we want to solve a quadratic equation like there are several different methods we might use, including:  factoring  quadratic formula,   completing the square  Most students prefer the first two methods, which is fine. We will end up completing the square later in the semester, so if you want to review that method now, you'll reap the benefits later!   Solve the following quadratic equations. Note: It's OK if the solutions are complex or imaginary.     Solution  You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:    Answer         Solution  You might solve via factoring: Alternately, you might use the quadratic formula: You could even complete the square:    Answer         Solution  This one doesn't factor easily... You might use the quadratic formula: You could even complete the square:    Answer       Name at least two methods for solving quadratic equations. Answer  factoring, using the quadratic formula, completing the square    How many solutions does a quadratic equation have? Answer  There are three possible outcomes when solving a quadratic equation:  two distinct real roots  one repeated real root (i.e., a double root)  complex conjugate roots        Solving Quadratic Equations  The solution to the quadratic equation is given by the quadratic formula: . Notes:   The gives two solutions, say and .     and are also known as the roots of .    The value, , under the root in is called the discriminant .    Equation can be written as .    If , then and are different real numbers.    If , then and are the same real number (repeated).    If , then and are complex and can be written as .       "
 },
 {
   "id": "main-13-4-3",
@@ -6811,7 +6982,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "A.6",
   "title": "Partial Fraction Decomposition",
-  "body": "Partial Fraction Decomposition  Partial fraction decomposition is a method used to express a rational function as a sum of simpler fractions. This process is especially useful when solving integrals and applying inverse Laplace transforms. The following steps outline the process to find the partial fraction decomposition of a rational function.   Check the Degree of the Numerator and Denominator  Ensure the degree of the numerator is less than the degree of the denominator. If the numerator has a degree greater than or equal to the denominator, first perform polynomial long division to reduce the degree of the numerator.   Factor the Denominator  Factor the denominator into irreducible linear or quadratic factors.   Linear factors: Expressions of the form .   Irreducible quadratic factors: Expressions of the form where the discriminant is negative.     Set up the Partial Fraction Decomposition  Based on the factors of the denominator, write the decomposition:  For each linear factor , include a term of the form .  For repeated linear factors , include terms like:   For irreducible quadratic factors , include a term of the form .  For repeated quadratic factors , include terms like:      Solve for the Constants  Multiply both sides of the equation by the common denominator and expand to eliminate fractions. Group terms by powers of and set up a system of equations to solve for the unknown constants , , and .   Final Result  Once the constants are found, write the final partial fraction decomposition. This decomposition can now be used for further calculations such as integrals or inverse Laplace transforms.    Reference: Partial Fraction General Form Terms  For each type of factor in the denominator, add the following terms to the partial fraction decomposition:    Factor Type  Factor  Term(s) In General Form    Linear      Repeated Linear      Irreducible Quadratic      Repeated Quadratic        Find the partial fraction decomposition form for each.    Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:        Find the partial fraction decomposition of . Solution  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:      General Form   Find the FORM of the partial fraction decomposition for each of the following. Make sure you completely factor each denominator before determining the decomposition. You need not find the values of the coefficients  etc.         Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:            Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:            Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:     Partial Fraction Decomposition   Find the partial fraction decomposition for each of the following rational functions.           Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and          Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and          Solution         and                Solution              Solution              Solution              Solution          "
+  "body": "Partial Fraction Decomposition  Partial fraction decomposition is a method used to express a rational function as a sum of simpler fractions. This process is especially useful when solving integrals and applying inverse Laplace transforms. The following steps outline the process to find the partial fraction decomposition of a rational function.   Check the Degree of the Numerator and Denominator  Ensure the degree of the numerator is less than the degree of the denominator. If the numerator has a degree greater than or equal to the denominator, first perform polynomial long division to reduce the degree of the numerator.   Factor the Denominator  Factor the denominator into irreducible linear or quadratic factors.   Linear factors: Expressions of the form .   Irreducible quadratic factors: Expressions of the form where the discriminant is negative.     Set up the Partial Fraction Decomposition  Based on the factors of the denominator, write the decomposition:  For each linear factor , include a term of the form .  For repeated linear factors , include terms like:   For irreducible quadratic factors , include a term of the form .  For repeated quadratic factors , include terms like:      Solve for the Constants  Multiply both sides of the equation by the common denominator and expand to eliminate fractions. Group terms by powers of and set up a system of equations to solve for the unknown constants , , and .   Final Result  Once the constants are found, write the final partial fraction decomposition. This decomposition can now be used for further calculations such as integrals or inverse Laplace transforms.    Reference: Partial Fraction General Form Terms  For each type of factor in the denominator, add the following terms to the partial fraction decomposition:    Factor Type  Factor  Term(s) In General Form    Linear      Repeated Linear      Irreducible Quadratic      Repeated Quadratic        Find the partial fraction decomposition form for each.     Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:        Find the partial fraction decomposition of .  Solution  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:      General Form   Find the FORM of the partial fraction decomposition for each of the following. Make sure you completely factor each denominator before determining the decomposition. You need not find the values of the coefficients  etc.       Answer     Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:        Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:        Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:     Partial Fraction Decomposition   Find the partial fraction decomposition for each of the following rational functions.       Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and        Answer     Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and        Answer     Solution         and              Answer     Solution            Answer     Solution            Answer     Solution            Answer     Solution          "
 },
 {
   "id": "r-01-10-3-2-2",
@@ -6838,7 +7009,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "A.7",
   "title": "",
-  "body": " Find the partial fraction decomposition form for each.    Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:      "
+  "body": " Find the partial fraction decomposition form for each.     Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:       Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:       Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:      "
 },
 {
   "id": "r-01-10-6",
@@ -6847,7 +7018,7 @@ var ptx_lunr_docs = [
   "type": "Example",
   "number": "A.8",
   "title": "",
-  "body": " Find the partial fraction decomposition of . Solution  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:    "
+  "body": " Find the partial fraction decomposition of .  Solution  Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:    "
 },
 {
   "id": "r-01-10-7-1-3",
@@ -6856,7 +7027,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.1",
   "title": "",
-  "body": "      Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-4",
@@ -6865,7 +7036,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.2",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-5",
@@ -6874,7 +7045,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.3",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-6",
@@ -6883,7 +7054,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.4",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-7",
@@ -6892,7 +7063,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.5",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-8",
@@ -6901,7 +7072,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.6",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-9",
@@ -6910,7 +7081,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.7",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-10",
@@ -6919,7 +7090,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.8",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-11",
@@ -6928,7 +7099,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.9",
   "title": "",
-  "body": "        Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-1-12",
@@ -6937,7 +7108,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.10",
   "title": "",
-  "body": "        Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:   "
+  "body": "    Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:   "
 },
 {
   "id": "r-01-10-7-2-3",
@@ -6946,7 +7117,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.11",
   "title": "",
-  "body": "        Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
+  "body": "    Answer       Solution  First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
 },
 {
   "id": "r-01-10-7-2-4",
@@ -6955,7 +7126,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.12",
   "title": "",
-  "body": "      Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
+  "body": "    Answer     Solution  Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
 },
 {
   "id": "r-01-10-7-2-5",
@@ -6964,7 +7135,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.13",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-6",
@@ -6973,7 +7144,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.14",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for  and   "
 },
 {
   "id": "r-01-10-7-2-7",
@@ -6982,7 +7153,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.15",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-8",
@@ -6991,7 +7162,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.16",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-9",
@@ -7000,7 +7171,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.17",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-10",
@@ -7009,7 +7180,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.18",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-11",
@@ -7018,7 +7189,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.19",
   "title": "",
-  "body": "      Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
+  "body": "    Answer     Solution  Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, single)   (linear, single)   (irreducible quadratic, single)  Hence, the FORM of the partial fraction decomposition is: Multiply both sides by the common denominator and solve for   and   "
 },
 {
   "id": "r-01-10-7-2-12",
@@ -7027,7 +7198,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.20",
   "title": "",
-  "body": "      Solution         and         "
+  "body": "    Answer     Solution         and         "
 },
 {
   "id": "r-01-10-7-2-13",
@@ -7036,7 +7207,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.21",
   "title": "",
-  "body": "      Solution       "
+  "body": "    Answer     Solution       "
 },
 {
   "id": "r-01-10-7-2-14",
@@ -7045,7 +7216,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.22",
   "title": "",
-  "body": "      Solution       "
+  "body": "    Answer     Solution       "
 },
 {
   "id": "r-01-10-7-2-15",
@@ -7054,7 +7225,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.23",
   "title": "",
-  "body": "      Solution       "
+  "body": "    Answer     Solution       "
 },
 {
   "id": "r-01-10-7-2-16",
@@ -7063,7 +7234,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "A.6.24",
   "title": "",
-  "body": "      Solution       "
+  "body": "    Answer     Solution       "
 },
 {
   "id": "calculus-review-product-rule",
@@ -7072,7 +7243,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "B.1",
   "title": "Product Rule",
-  "body": " Product Rule  The next technique for solving DEs we will study relies heavily on you knowing the Product Rule for differentiation inside and out, forward and backward (literally!). These problems are intended to help you review the Product Rule. (Don't forget about the chain rule, too!) Let's warm up by practicing using the product rule.   Write down the product rule.   Evaluate the following derivatives.    Solution            Solution            Solution           Suppose is a function of and use the product rule to rewrite the following:          Suppose is a function of and use the product rule to rewrite the following:          Now let's look at the product rule \"in the other direction\"... Or we can think about this as \"un-doing\" the product rule.  For example, if we have the expression then we can see that if we think identify as then Then we might label the expression as follows: This now looks like the result of having taken the derivative of a product. That is:   Now you try some.  Rewrite each of the following as the derivative of a product:                      "
+  "body": " Product Rule  The next technique for solving DEs we will study relies heavily on you knowing the Product Rule for differentiation inside and out, forward and backward (literally!). These problems are intended to help you review the Product Rule. (Don't forget about the chain rule, too!) Let's warm up by practicing using the product rule.   Write down the product rule.   Evaluate the following derivatives.    Solution      Answer         Solution      Answer         Solution      Answer        Suppose is a function of and use the product rule to rewrite the following:    Answer         Suppose is a function of and use the product rule to rewrite the following:    Answer         Now let's look at the product rule \"in the other direction\"... Or we can think about this as \"un-doing\" the product rule.  For example, if we have the expression then we can see that if we think identify as then Then we might label the expression as follows: This now looks like the result of having taken the derivative of a product. That is:   Now you try some.  Rewrite each of the following as the derivative of a product:    Answer         Answer         Answer         "
 },
 {
   "id": "breakdown-of-formula",
@@ -7207,7 +7378,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "D.2",
   "title": "Orphaned Content",
-  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative  Before diving into specifics, we need to mention the linearity property of the inverse Laplace transform, which will be crucial in this discussion. Inverse Laplace Transform Property  For any constants and and functions of  and ,           Common Laplace Transforms. are constant,      -functions  -functions                                                                   Laplace Transforms Properties,      Properties                              Completing the square is an essential technique for transforming quadratic expressions that don't directly match a form in the table of common Laplace transforms. However, it's not the only strategy available. In this section, we'll explore another important technique: partial fraction decomposition. This method is useful for breaking down complex fractions into simpler components that can each be matched with forms in the Laplace transform table.  Two other forms we may wish to match when we study Laplace transforms are As before, we work toward making the denominator match first , and then we sort out the numerator second.   Find   Solution  As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.      Write in the form   Solution    Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form--it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.    Now you try some!   Manipulate each of the following expressions to make it match the form and\/or     Solution            Solution            Solution            Solution              Now that's you've been practicing manipulating expressions to get them to match a particular, specific form, it's time to practice picking out which form an expression is most like. Find the form(s) on the right that best match the expression on the left. It may not be a perfect match, but could be manipulated (as we did above) to get into the correct form(s).  (EXAMPLE)  This best matches form F.    %D   %B   %A   %forms G and H   %C   %forms D and E                             Solution    This best matches form F.  This best matches form D.  This best matches form B.  This best matches form A.  This best matches form forms G and H.  This best matches form C.  This best matches form forms D and E.         If you have a rational function where the denominator is of higher degree, then partial fraction decomposition should be used to break the single fraction into several simpler fractions.   Find the inverse Laplace transform of   Solution  Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details.   With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.     In summary, when we want to take the inverse Laplace transform of a rational function with a second-degree polynomial in the denominator, we may complete the square or we may do a partial fraction decomposition. How will we know which is appropriate? Here are a few guidelines for you to consider.  Does the denominator factor in an obvious way? If so, factor the denominator and do a partial fraction decomposition if necessary.  If the denominator does not factor in an obvious way, try completing the square.  If you end up with addition outside of the parentheses, as in then you should aim to match and\/or .  If instead you end up with subtraction outside the parentheses, as in then you should factor and do a partial fraction decomposition. You may consider using the quadratic formula if the factorization is not obvious to you.  If you end up with no terms outside the parentheses, as in then use .     Additional Examples   Additional Practice   "
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative  Before diving into specifics, we need to mention the linearity property of the inverse Laplace transform, which will be crucial in this discussion. Inverse Laplace Transform Property  For any constants and and functions of  and ,           Common Laplace Transforms. are constant,      -functions  -functions                                                                   Laplace Transforms Properties,      Properties                              Completing the square is an essential technique for transforming quadratic expressions that don't directly match a form in the table of common Laplace transforms. However, it's not the only strategy available. In this section, we'll explore another important technique: partial fraction decomposition. This method is useful for breaking down complex fractions into simpler components that can each be matched with forms in the Laplace transform table.  Two other forms we may wish to match when we study Laplace transforms are As before, we work toward making the denominator match first , and then we sort out the numerator second.   Find   Solution  As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.      Write in the form   Solution    Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form--it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.    Now you try some!   Manipulate each of the following expressions to make it match the form and\/or     Solution      Answer         Solution      Answer         Solution      Answer         Solution      Answer           Now that's you've been practicing manipulating expressions to get them to match a particular, specific form, it's time to practice picking out which form an expression is most like. Find the form(s) on the right that best match the expression on the left. It may not be a perfect match, but could be manipulated (as we did above) to get into the correct form(s).  (EXAMPLE)  This best matches form F.    %D   %B   %A   %forms G and H   %C   %forms D and E                             Solution    This best matches form F.  This best matches form D.  This best matches form B.  This best matches form A.  This best matches form forms G and H.  This best matches form C.  This best matches form forms D and E.         If you have a rational function where the denominator is of higher degree, then partial fraction decomposition should be used to break the single fraction into several simpler fractions.   Find the inverse Laplace transform of   Solution  Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details.   With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.     In summary, when we want to take the inverse Laplace transform of a rational function with a second-degree polynomial in the denominator, we may complete the square or we may do a partial fraction decomposition. How will we know which is appropriate? Here are a few guidelines for you to consider.  Does the denominator factor in an obvious way? If so, factor the denominator and do a partial fraction decomposition if necessary.  If the denominator does not factor in an obvious way, try completing the square.  If you end up with addition outside of the parentheses, as in then you should aim to match and\/or .  If instead you end up with subtraction outside the parentheses, as in then you should factor and do a partial fraction decomposition. You may consider using the quadratic formula if the factorization is not obvious to you.  If you end up with no terms outside the parentheses, as in then use .     Additional Examples   Additional Practice   "
 },
 {
   "id": "common-lt-table-copy",
@@ -7261,7 +7432,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "D.3",
   "title": "Orphaned Content",
-  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative   Additional Examples   Example 1: Solving a First-Order Linear Differential Equation  Consider the differential equation:   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:     Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:     Additional Practice   "
+  "body": "Orphaned Content   This is just a place to put content that was written and may or not be used.   Additional Narrative   Additional Examples   Example 1: Solving a First-Order Linear Differential Equation  Consider the differential equation:   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:     Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:     Additional Practice   Which of the following is NOT a technique mentioned for preparing for the backward transform?    Which of the following is NOT a technique mentioned for preparing for the backward transform?     Completing the square   Incorrect. Completing the square is a technique used to rewrite as a sum of known Laplace transforms.     Partial fraction decomposition   Incorrect. Partial fraction decomposition is another technique used to prepare for the inverse transform.     Integration by Parts   Correct! Integration by parts is not a technique used to prepare for the backward transform.     Rewriting as a sum of -functions   Incorrect. Rewriting is a technique used in Step 2b.      What is the goal of Step 2b in the Laplace Transform Method?    What is the goal of Step 2b in the Laplace Transform Method?     To apply the forward Laplace transform   Incorrect. Applying the forward transform is done in Step 1.     To solve for   Incorrect. Solving for is not the goal of Step 2b.     To rewrite as a sum of -functions found in the table of common transforms   Correct! Step 2b involves breaking down into simpler components that match known Laplace transforms.     To find the particular solution to the differential equation   Incorrect. Finding the particular solution is the ultimate goal of the Laplace Transform Method, not just Step 2b.      After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation    After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation       Correct! The backward Laplace transform reverts back to the solution .      Remember that the inverse Laplace transform recovers the solution from .       Which of the following is the main purpose of Step 2b in the Laplace Transform Method?    Which of the following is the main purpose of Step 2b in the Laplace Transform Method?     To solve the algebraic equation for   Incorrect. Solving for happens in Step 2a.     To prepare for the inverse Laplace transform by rewriting it as a sum of known forms   Correct! Step 2b involves breaking down into simpler components that match known Laplace transforms.     To apply the forward Laplace transform   Incorrect. Applying the forward transform happens in Step 1.     To account for initial conditions   Incorrect. Initial conditions are accounted for in Step 1.      Which of the statements are true?    Which of the statements are true?      The forward Laplace transform converts a differential equation into an algebraic equation    This statement is true. The forward Laplace transform simplifies the differential equation by converting it into an algebraic equation in terms of .      In Step 2a, you isolate .    This statement is false. In Step 2a, you solve for , not .       Step 2a involves applying the backward Laplace transform     This statement is false. Step 2a involves solving for as a function of .       Step 2b involves rewriting to match forms in the common Laplace transform table     This statement is true. Step 2b prepares for the backward transform by breaking it into known forms found in the table of common Laplace transforms.       The final step involves applying the inverse Laplace transform to recover the solution     This statement is true. The final step of the Laplace Transform Method involves applying the inverse Laplace transform to recover the solution .      Which step is likely to involve completing the square?    Which step is likely to involve completing the square?     Step 1: Apply the Forward Transform   Incorrect. Completing the square is not part of applying the forward transform.     Step 2a: Solve for   Incorrect. Completing the square typically happens in Step 2b.     Step 2b: Prepare for the Backward Transform   Correct! Completing the square is a technique used in Step 2b to simplify .     Step 3: Apply the Backward Transform   Incorrect. Completing the square should be done before applying the backward transform.      Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution    Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution     True   Incorrect.     False   Correct! The Laplace Transform Method accounts for initial conditions in Step 1.      "
 },
 {
   "id": "main-16-4-4-2",
@@ -7280,6 +7451,69 @@ var ptx_lunr_docs = [
   "number": "D.20",
   "title": "Example 2: Second-Order Differential Equation.",
   "body": " Example 2: Second-Order Differential Equation  Consider the second-order differential equation:   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:   "
+},
+{
+  "id": "p4-c3-s1-1-rq8",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s1-1-rq8",
+  "type": "Reading Question",
+  "number": "D.3.1",
+  "title": "<em class=\"emphasis\">Which of the following is NOT a technique mentioned for preparing <span class=\"process-math\">\\(Y(s) \\)<\/span> for the backward transform?<\/em>",
+  "body": " Which of the following is NOT a technique mentioned for preparing for the backward transform?    Which of the following is NOT a technique mentioned for preparing for the backward transform?     Completing the square   Incorrect. Completing the square is a technique used to rewrite as a sum of known Laplace transforms.     Partial fraction decomposition   Incorrect. Partial fraction decomposition is another technique used to prepare for the inverse transform.     Integration by Parts   Correct! Integration by parts is not a technique used to prepare for the backward transform.     Rewriting as a sum of -functions   Incorrect. Rewriting is a technique used in Step 2b.    "
+},
+{
+  "id": "p4-c3-s1-1-rq9",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s1-1-rq9",
+  "type": "Reading Question",
+  "number": "D.3.2",
+  "title": "<em class=\"emphasis\">What is the goal of Step 2b in the Laplace Transform Method?<\/em>",
+  "body": " What is the goal of Step 2b in the Laplace Transform Method?    What is the goal of Step 2b in the Laplace Transform Method?     To apply the forward Laplace transform   Incorrect. Applying the forward transform is done in Step 1.     To solve for   Incorrect. Solving for is not the goal of Step 2b.     To rewrite as a sum of -functions found in the table of common transforms   Correct! Step 2b involves breaking down into simpler components that match known Laplace transforms.     To find the particular solution to the differential equation   Incorrect. Finding the particular solution is the ultimate goal of the Laplace Transform Method, not just Step 2b.    "
+},
+{
+  "id": "p4-c3-s1-1-rq10",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s1-1-rq10",
+  "type": "Reading Question",
+  "number": "D.3.3",
+  "title": "<em class=\"emphasis\">After applying the backward Laplace transform in Step 3, you obtain <span class=\"process-math\">\\(y(t)\\text{,}\\)<\/span> the <span class=\"process-math\">\\(\\ul{\\hspace{3em}}\\)<\/span> to the differential equation<\/em>.",
+  "body": " After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation    After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation       Correct! The backward Laplace transform reverts back to the solution .      Remember that the inverse Laplace transform recovers the solution from .     "
+},
+{
+  "id": "p4-c3-s1-1-rq11",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s1-1-rq11",
+  "type": "Reading Question",
+  "number": "D.3.4",
+  "title": "<em class=\"emphasis\">Which of the following is the main purpose of Step 2b in the Laplace Transform Method?<\/em>",
+  "body": " Which of the following is the main purpose of Step 2b in the Laplace Transform Method?    Which of the following is the main purpose of Step 2b in the Laplace Transform Method?     To solve the algebraic equation for   Incorrect. Solving for happens in Step 2a.     To prepare for the inverse Laplace transform by rewriting it as a sum of known forms   Correct! Step 2b involves breaking down into simpler components that match known Laplace transforms.     To apply the forward Laplace transform   Incorrect. Applying the forward transform happens in Step 1.     To account for initial conditions   Incorrect. Initial conditions are accounted for in Step 1.    "
+},
+{
+  "id": "p4-c3-s1-1-rq12",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s1-1-rq12",
+  "type": "Reading Question",
+  "number": "D.3.5",
+  "title": "<em class=\"emphasis\">Which of the statements are true?<\/em>",
+  "body": " Which of the statements are true?    Which of the statements are true?      The forward Laplace transform converts a differential equation into an algebraic equation    This statement is true. The forward Laplace transform simplifies the differential equation by converting it into an algebraic equation in terms of .      In Step 2a, you isolate .    This statement is false. In Step 2a, you solve for , not .       Step 2a involves applying the backward Laplace transform     This statement is false. Step 2a involves solving for as a function of .       Step 2b involves rewriting to match forms in the common Laplace transform table     This statement is true. Step 2b prepares for the backward transform by breaking it into known forms found in the table of common Laplace transforms.       The final step involves applying the inverse Laplace transform to recover the solution     This statement is true. The final step of the Laplace Transform Method involves applying the inverse Laplace transform to recover the solution .    "
+},
+{
+  "id": "p4-c3-s2-1-rq6",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s2-1-rq6",
+  "type": "Reading Question",
+  "number": "D.3.6",
+  "title": "<em class=\"emphasis\">Which step is likely to involve completing the square?<\/em>",
+  "body": " Which step is likely to involve completing the square?    Which step is likely to involve completing the square?     Step 1: Apply the Forward Transform   Incorrect. Completing the square is not part of applying the forward transform.     Step 2a: Solve for   Incorrect. Completing the square typically happens in Step 2b.     Step 2b: Prepare for the Backward Transform   Correct! Completing the square is a technique used in Step 2b to simplify .     Step 3: Apply the Backward Transform   Incorrect. Completing the square should be done before applying the backward transform.    "
+},
+{
+  "id": "p4-c3-s2-1-rq5",
+  "level": "2",
+  "url": "main-16-4-5.html#p4-c3-s2-1-rq5",
+  "type": "Reading Question",
+  "number": "D.3.7",
+  "title": "<em class=\"emphasis\">Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution<\/em>.",
+  "body": " Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution    Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution     True   Incorrect.     False   Correct! The Laplace Transform Method accounts for initial conditions in Step 1.    "
 },
 {
   "id": "main-16-5",
