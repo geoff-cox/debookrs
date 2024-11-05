@@ -1,64 +1,226 @@
 <section xml:id="s-04-07-lt-unit-step-funcs" xmlns:xi="http://www.w3.org/2001/XInclude">
 <title>Unit Step Functions</title>
 
+	<aside>
+		<p><xref ref="audio-test1" text="custom"><em>Read Aloud</em></xref>.</p>
+		<figure xml:id="audio-test1">
+			<caption>Listen to the Audio</caption>
+			<audio xml:id="audio-test" source="audio/test-recording-1.mp3" width="100%" />
+		</figure>
+	</aside>
+
 	<p>
-		The two solution techniques we have been studying most recently (the Method of Undetermined Coefficients and solution via Laplace transforms) can be used to solve DEs that are linear and have constant coefficients. Recall, however, that we would not be able to use the Method of Undetermined Coefficients to solve DEs where the nonhomogeneous function	is discontinuous.  We will be able to use Laplace transforms to solve such DEs, but we first need	to understand the <em> unit step function</em>, which will be used to rewrite discontinuous functions	in a particular way.
+		The two solution techniques we have been studying most recently (undetermined coefficients and laplace transform methods) can be used to solve differential equations that are linear and have constant coefficients. Recall, however, that we would not be able to use the method of undetermined coefficients when the nonhomogeneous function is discontinuous. We will be able to use Laplace transforms to solve such equations, but we first need	to understand the <em>unit step function</em>, which will be used to rewrite discontinuous functions in a particular way.
+	</p>
+	
+	<p>
+		We begin by introducing the definition of the standard unit step function.
 	</p>
 
-	<aside><p>make a definition box for the unit step function. add a graph</p></aside>
-
-	<p>
-		We begin by introducing the definition of the standard unit step function.	The <em> unit step function</em>, <m>U(t)</m>, is defined to be
-		<me> 
-			U(t) = \left\{ 
-				\begin{array}{ll}
-					0,	&amp; t \lt 0\\
-					1,	&amp; t \ge 0
-				\end{array} \right.
-		</me>
-	</p>
-
-	<example xml:id="ex_unit_step_01">
-		<p>
-			For the unit step function defined above, complete the following:
-			<ol>
-				<li>evaluate <m>U(2)</m></li>
-				<li>evaluate <m>U(5.32)</m></li>
-				<li>evaluate <m>U(-1.2)</m></li>
-				<li>evaluate <m>U(k)</m>, where <m>k</m> is a positive constant</li>
-				<li>evaluate <m>U(k)</m>, where <m>k</m> is a negative constant</li>
-				<li>Sketch <m>U(t).</m></li>
-			</ol>
-		</p>
-		
-		<p/>
-		<solution><title> Solution </title>
+	<definition xml:id="unit-step-function">
+		<statement>
 			<p>
-				<ol>
-					<li>Since the input to the unit step function, <m>2</m>, is positive, <m>U(2) = 1.</m></li>
-					<li>Similarly, since the input to the function is positive, <m>U(5.32) = 1</m></li>
-					<li>The input to the function is negative, so <m>U(-1.2) = 0.</m></li>
-					<li>If <m>k</m> is <em>any</em> positive constant, then <m>U(k) = 1.</m></li>
-					<li>If <m>k</m> is <em>any</em> negative constant, then <m>U(k) = 0.</m></li>
-					<li> Sketch:
-						<sidebyside widths="90%" margins="auto" valign="middle">
-							<image source="figures/soln_fig1.png" />
-						</sidebyside>
-						How about this?
-						<image xml:id="unit-step-plot" width="60%">
-							<sageplot>
-								U = plot(0, (x, -2, -0.1), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
-								U += plot(1, (x, 0, 5), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
-								U += point([0,0], color = "blue", faceted=True, size = 80)
-								U += point([0,0], color = "white", faceted=True, size = 15)
-								U += point([0,1], color = "blue", faceted=True, size = 80)
-								U
-							</sageplot>
-						</image>
-					</li>
-				</ol>
+				The <em> unit step function</em>, <m>U(t)</m>, is defined and graphed as below.
+			</p>
+			<sidebyside widths="40% 50%">
+				<p>
+					<me> 
+						U(t) = \left\{ 
+						\begin{array}{ll}
+							0,	&amp; t \lt 0\\
+							1,	&amp; t \ge 0
+						\end{array} \right.
+					</me>
+				</p>
+				<p>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[domain=-3:3]
+								\def\a{-2.5}
+								\def\b{2.5}
+								\def\c{0}
+
+								% Draw the axes
+								\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right] {$t$};
+								\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+				
+								% Draw the grid
+								\draw[very thin,color=gray] (\a,-0.5) grid (\b,1.5);
+				
+								% Unit step function
+								\draw[very thick,blue] (\a,0) -- (\c,0);
+								\draw[dashed, blue] (\c,0) -- (\c,1);
+								\draw[very thick,blue] (\c,1) -- (\b,1) node[above] {$U(t)$};
+								
+								% Open circle at the step
+								\draw[fill=white] (\c,0) circle (0.08);
+								
+								% Solid dot at the point of the step
+								\filldraw[blue] (\c,1) circle (0.08) node[left] {$1$};
+				
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+			</sidebyside>
+		</statement>
+	</definition>
+
+	<sidebyside width="60%">
+		<stack>
+
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[domain=-4:4]
+						\def\a{-3}
+						\def\b{-2}
+						\def\c{1}
+						\def\d{3}
+
+						% Draw the axes
+						\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+						\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+		
+						% Draw the grid
+						\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+		
+						% Unit step function
+						\draw[very thick,blue] (\a,0) -- (\b,0);
+						\draw[dashed, blue] (\b,0) -- (\b,1);
+						\draw[very thick,blue] (\b,1) -- (\d,1);
+						\draw[blue] (2,1) node[above] {$U(t+2)$};
+						
+						% Open circle at the step
+						\draw[fill=white] (\b,0) circle (0.08) node[below] {$\b$};
+						
+						% Solid dot at the point of the step
+						\filldraw[blue] (\b,1) circle (0.08) node[left] {$1$};
+		
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+	
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[domain=-4:4]
+						\def\a{-3}
+						\def\b{-2}
+						\def\c{1}
+						\def\d{3}
+
+						% Draw the axes
+						\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+						\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+		
+						% Draw the grid
+						\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+		
+						% Unit step function
+						\draw[very thick,blue] (\a,0) -- (\c,0);
+						\draw[dashed, blue] (\c,0) -- (\c,1);
+						\draw[very thick,blue] (\c,1) -- (\d,1);
+						\draw[blue] (2,1) node[above] {$U(t-1)$};
+						
+						% Open circle at the step
+						\draw[fill=white] (\c,0) circle (0.08) node[below] {$\c$};
+						
+						% Solid dot at the point of the step
+						\filldraw[blue] (\c,1) circle (0.08) node[left] {$1$};
+		
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[domain=-4:4]
+						\def\a{-3}
+						\def\b{-2}
+						\def\c{1}
+						\def\d{3}
+
+						% Draw the axes
+						\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+						\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+		
+						% Draw the grid
+						\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+		
+						% Unit step function
+						\draw[very thick,blue] (\a,0) -- (\b,0);
+						\draw[dashed, blue] (\b,0) -- (\b,1);
+						\draw[very thick,blue] (\b,1) -- (\c,1);
+						\draw[dashed, blue] (\c,1) -- (\c,0);
+						\draw[very thick,blue] (\c,0) -- (\d,0);
+						\draw[blue] (-0.5,1) node[above] {$U(t+2)-U(t-1)$};
+						
+						% Open circle at the step
+						\draw[fill=white] (\b,0) circle (0.08) node[below] {$\b$};
+						\draw[fill=white] (\c,1) circle (0.08);
+						
+						% Solid dot at the point of the step
+						\filldraw[blue] (\b,1) circle (0.08) node[left] {$1$};
+						\filldraw[blue] (\c,0) circle (0.08) node[below] {$\c$};
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+		</stack>
+		
+	</sidebyside>
+
+	<example xml:id="ex_unit_step_01"><title>Let <m>U(t)</m> be the unit step function and <m> f(t) = t^2-2 </m>. Then compute the following values</title>
+
+		<solution><title> <m>U(2.7)</m> </title>
+			<p>
+				Since <m>t = 2.7 \ge 0</m> (positive),
+				<me>U(2.7) = 1.</me>
 			</p>
 		</solution>
+
+		<solution><title> <m>U(-5.32)</m> </title>
+
+			<p>
+				Since <m>-5.32 &lt; 0</m> (negative), 
+				<me>U(-5.32) = 0.</me>
+			</p>
+		
+		</solution>
+
+		<solution><title> <m>U(2)\cdot f(2)</m> </title>
+
+			<p>
+				<me> U(2)\cdot f(2) = 1\cdot f(2) = (2)^2 - 2 = (4 - 2) = 2.</me>
+			</p>
+
+		</solution>
+
+		<solution><title> <m>U(-3)\cdot f(-3)</m> </title>
+
+			<p>
+				<me> U(-3)\cdot f(-3) = 0\cdot ((-3)^2 - 2) = 0\cdot (9 - 2) = 0.</me>
+			</p>
+
+		</solution>
+
+		<solution><title> <m>U(k)\cdot f(k)</m>, where <m>k \ge 0</m> </title>
+
+			<p>
+				Since <m>k \ge 0,</m> we know that <m>U(k) = 1,</m> so
+				<me> U(k)\cdot f(k) = 1\cdot f(k) = k^2 - 2.</me>
+			</p>
+
+		</solution>
+
+		<solution><title> <m>U(k)\cdot f(k)</m>, where <m>k &lt; 0</m> </title>
+
+			<p>
+				Since <m>k \lt 0,</m> we know that <m>U(k) = 0,</m> so
+				<me> U(k)\cdot f(k) = 0\cdot f(k) = 0.</me>
+			</p>
+
+		</solution>
+
 	</example>
 
 	<aside><p>Re-word this and/or move it near the definition. Compare to e^x as well as sine.</p></aside>
