@@ -1,6 +1,10 @@
 Common Reg Ex Replacements
 
-Multiline Statements
+Multiline Statements needing <p> tags
+(\t+)<statement>.*\n(\t+.+\n).*<\/statement>?
+$1<statement>\n$1\t<p>\n\t$2$1\t</p>\n$1</statement>
+
+Multiline Feedback needing <p> tags
 (\t+)<statement>.*\n(\t+.+\n).*<\/statement>?
 $1<statement>\n$1\t<p>\n\t$2$1\t</p>\n$1</statement>
 
@@ -15,3 +19,7 @@ $1<statement>\n$1\t<p>\n$1\t\t$2\n$1\t</p>\n$1</statement>
 Single Line Paragraphs
 (\t+)<p>(.*)</p>?
 $1<p>\n$1\t$2\n$1</p>
+
+Single Line Statements not beginning with <statement>
+(\t*)(.*)<statement>(.*)</statement>?
+$1$2\n$1\t<statement>\n$1\t\t<p>\n$1\t\t\t$3\n$1\t\t</p>\n$1\t</statement>
