@@ -1,0 +1,125 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Direct Integration </title>
+
+	<p>
+		The previous section showed us that if we can isolate the derivative of the dependent variable, <m>y</m>, in the form
+		<me>
+			\frac{d}{dx}[y] = f(x)
+		</me>, 
+		then the solution can be found by integrating both sides. This principle extends to more complex equations of the form:
+		<me>
+			\frac{d}{dx}\left[g(x,y)\right] = f(x)
+		</me>.
+		Here, <m>f(x)</m> is a placeholder that indicates that <em>only</em> <m>x</m> variables can appear on the right-hand side of this equation. Similarly, <m>g(x,y)</m> indicates that <em>only</em> <m>x</m> or <m>y</m> variables can appear inside the derivative. This leads us to our first method for solving first-order differential equations—<em>direct integration</em>.
+	</p>
+
+	<exploration xml:id="direct-integration"><title> Direct Integration </title>
+		<p>
+			The general solution of a differential equation in the form
+			<men xml:id="direct-integration-equation">
+				\frac{d}{dx}\left[g(x,y)\right] = f(x)
+			</men>,
+			can be determined by through the following steps:
+			<dl>
+				<li xml:id="di-step-1"><title>integrate</title>
+					<p>
+						Integrate both sides with respect to the independent variable, <m>x</m>, to eliminate the derivative containing <m>y</m>.
+					</p>
+				</li>
+				<li xml:id="di-step-2"><title>isolate</title>
+					<p>
+						Isolate the dependent variable, <m>y</m>, to find the solution.
+					</p>
+				</li>
+			</dl>
+		</p>
+	</exploration> 
+
+	<p>
+		Consider the following examples to see how this approach applies to some more interesting problems.
+	</p>
+
+	<example xml:id="direct-integration-example-1">
+		<statement>
+			<p>
+				Find the particular solution to the differential equation
+				<me>
+					\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2} , \quad y\left(1\right) = -4
+				</me>.
+			</p>
+		</statement>
+		
+		<solution>
+
+			<p>
+				First, observe that this problem is in the form
+				<me>
+					\frac{d}{dx}\left[g(x,y)\right] = f(x)
+				</me>
+				since there are only <m>x</m> and <m>y</m> variables inside the derivative (<m>5x \cdot y</m>) and only <m>x</m> variables on the right-hand side (<m>\frac{1}{x^2}</m>).
+			</p>
+			<p>
+				So, to solve for <m>y</m>, we <xref ref="di-step-1" text="title"/> both sides with respect to <m>x</m>.
+				<md>
+					<mrow> \int \frac{d}{dx}\left[5x \cdot y\right]\ dx \amp = \int x^{-2}\ dx </mrow>
+					<mrow> 5x \cdot y + c_1 \amp = -x^{-1} + c_2 </mrow>
+				</md>
+				Then <xref ref="di-step-2" text="title"/> <m>y</m>, remembering to combine constants,
+				<md>
+					<mrow>  y \amp = \frac{1}{5x}\Big(-\frac{1}{x} + \overset{=\ c}{\overbrace{c_2 - c_1}}\Big) </mrow>
+					<mrow>  y \amp = \frac{1}{5x}\left(-\frac{1}{x} + c\right) \quad \leftarrow \ \text{general solution}</mrow>
+				</md>
+				Finally, we use the condition, <m>y\left(1\right) = -4</m>, to find <m>c</m>.
+				<md>
+					<mrow>  -4 \amp = \frac{1}{5}\left(-1 + c\right) </mrow>
+					<mrow>  -20 \amp = -1 + c </mrow>
+					<mrow>  c \amp = -19 </mrow>
+				</md>
+				Therefore, the particular solution (for <m>c=-19</m>) is
+				<me>
+					y = \frac{1}{5x}\left(-\frac{1}{x} - 19\right)
+				</me>.
+				
+			</p>
+		</solution>
+
+	</example>
+
+	<example xml:id="direct-integration-example-2">
+
+		<statement>
+			<p>
+				Compute the general solution of the differential equation
+				<me>
+					\frac{d}{dx}\Big[y\sin(2x)\Big] - \cos x = 1
+				</me>
+			</p>
+		</statement>
+
+		<solution>
+
+			<p>
+				First, we get the derivative by itself on the left-hand side:
+				<me>
+					\frac{d}{dx}\Big[y\sin(2x)\Big] = \ub{\cos x + 1}_{\text{only } x}
+				</me>
+				As before, we <xref ref="di-step-1" text="title"/>, releasing <m>y</m> from the derivative
+				<md>
+					<mrow> \int \frac{d}{dx}\Big[y\sin(2x)\Big]dx \amp = \int \left(\cos x + 1\right) \ dx</mrow>
+					<mrow> y\sin(2x) + c_1 \amp = \sin x + x + c_2 </mrow>
+				</md>
+			</p>
+
+			<p>
+				then <xref ref="di-step-2" text="title"/> <m>y</m>
+				<md>
+					<mrow>  y \amp = \frac{\sin x + x + c}{\sin(2x)} \quad (\text{where } c = c_2 - c_1). </mrow>
+				</md>
+			</p>
+
+		</solution>
+
+	</example>
+
+	<xi:include href="./chkpts-2-direct-integration.ptx" />
+
+</subsection>
