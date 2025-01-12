@@ -1,0 +1,255 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> The Missing Factor </title>
+
+	<introduction>
+		<p>
+			The integrating factor method relies on an essential calculus concept: the product rule for derivatives. Since this rule is at the heart of the method, let's take a moment to review it and see how it helps transform a differential equation into one that can be directly integrated.
+		</p>
+	</introduction>
+
+	<subsubsection><title> Product Rule </title>
+
+		<p>
+			The product rule is used to compute the derivative of a product of two functions. In the context of solving first-order linear differential equations, we use the product rule in reverse to combine terms involving the dependent and independent variables. This allows us to rewrite the equation as the derivative of a product, making integration straightforward. Let's begin by recalling the two directions of the product rule.
+		</p>
+
+		<p>
+			Suppose <m>f</m> and <m>g</m> are differentiable functions. The product rule states that
+			<men xml:id="if-product-rule">
+				\underset{\xrightarrow[\LARGE\text{forward}]{} }{\ds [f \cdot g ]'} = 
+				\underset{\xleftarrow[\LARGE\text{backward}]{} }{\ds f \cdot g' + f' \cdot g}.
+			</men>
+			The <q>forward</q> version goes from left to right, while the <q>backward</q> version, which we'll focus on, goes from right to left. Let's practice applying both versions with a few examples.
+		</p>
+
+		<example>
+
+			<p>
+				Compute each derivative.
+				<ol>
+					<li>
+						<p>
+							<m>\left[\ln x \tan x\right]' = </m>
+						</p>
+						<solution><title> Solution </title>
+							<p>
+								Using the <xref ref="if-product-rule" text="custom"> forward product rule </xref>, we have
+								<md>
+									<mrow>
+										\big[ 
+										\overset{\color{blue}{f}}{\ln x \vphantom{\big]'}}\ 
+										\overset{\color{blue}{g}}{\tan x \vphantom{\big]'}} 
+										\big]'	\amp = 
+										\overset{\color{blue}{f}}{\ln x \vphantom{\big]'}}\  
+										\overset{\color{blue}{g'}}{\big[\tan x\big]'} + 
+										\overset{\color{blue}{f'}}{\big[\ln x \big]'}
+										\overset{\color{blue}{g}}{\tan x \vphantom{\big]'}}	
+									</mrow>
+									<mrow>	
+										\amp = \ln x (\sec^2 x)+\left(\frac{1}{x}\right) \tan x.
+									</mrow>
+								</md>
+							</p>
+						</solution>
+					</li>
+					<li>
+						<p>
+							<m>\ds \frac{d}{dx}\left[x^3 \mu\right]' = </m>
+						</p>
+						<solution><title> Solution </title>
+							<p>
+								Using the <xref ref="if-product-rule" text="custom"> forward product rule </xref>, we have
+								<md>
+									<mrow>
+										\left[x^3 \mu\right]' = x^3 \mu' + 3x^2 \mu.
+									</mrow>
+								</md>
+							</p>
+						</solution>
+					</li>
+					
+				</ol>
+			</p>
+
+		</example>
+
+		<example>
+
+			<p>
+				Rewrite each expression in the form <m> [f \cdot g]' </m>.
+				<ol>
+					<li>
+						<p>
+							<m>e^x\cos x + \sin x\ e^x = \big[\ \us{?}{\ul{\qquad}} \cdot \us{?}{\ul{\qquad}}\ \big]'</m>
+							<solution><title> Solution </title>
+								<p>
+									Trial and error with different combinations of <m>e^x, \sin x, </m> and <m>\cos x</m> inside <m>\big[\ \us{?}{\ul{\qquad}} \cdot \us{?}{\ul{\qquad}}\ \big]'</m> is one approach, but a little thought should lead you to the answer
+									<me>
+										e^x\cos x + \sin x\ e^x = e^x[\sin x]' + \sin x [e^x]' = [e^x\sin x]'
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\ds\frac{\mu}{x} + \mu' \ln x = \frac{d}{dx}\big[\ \us{?}{\ul{\qquad}} \cdot \us{?}{\ul{\qquad}}\ \big], \quad</m> where <m>\mu</m> is a function of <m>x</m>.
+
+							<solution><title> Solution </title>
+								<p>
+									It may help to first rewrite the expression as
+									<me>
+										\mu \cdot\frac{1}{x} + \mu' \ln x
+									</me>.
+								</p>
+								<p>
+									Since <m>\mu</m> and <m>\mu'</m> appear in different terms, you know 
+									<me>\frac{\mu}{x} + \mu' \ln x = \big[\ \mu \cdot \us{?}{\ul{\qquad}}\ \big]'</me>
+									and since <m>[\ln x]' = 1/x</m>, we must have
+									<me>\frac{\mu}{x} + \mu' \ln x = \big[\ \mu \cdot \ln x \ \big]'</me>.
+								</p>
+							</solution>
+						</p>
+					</li>
+				</ol>
+			</p>
+
+		</example>
+
+		<p>
+			Finally, let's see what this looks like on an actual differential equation.
+		</p>
+
+		<example>
+		
+			<p>
+				Rewrite the left side of the equation in the form <m>\ds\frac{d}{dx}[f \cdot g] </m>.
+				<men xml:id="example-if-product-rule-reverse-02-eq">
+					\frac{dy}{dx} \cdot e^{5x^2} + 10xe^{5x^2}\cdot y = 3x
+				</men>.
+			</p>
+
+			<solution><title> Solution </title>
+				<p>
+					As before, noticing <m>y</m> and <m>dy/dx</m> in different terms of
+					<me>
+						\frac{dy}{dx} \cdot e^{5x^2} + 10xe^{5x^2}\cdot y = 3x
+					</me>
+					immediately tells us that the left side can be rewritten as
+					<me>\frac{d}{dx}\big[\ \us{?}{\ul{\qquad}} \cdot y\ \big]' = 3x</me>
+					and the observation that <m>[e^{5x^2}]' = 10xe^{5x^2}</m> gives us the other term. Therefore, the differential equation can be rewritten as
+					<me>\frac{d}{dx}\big[\ e^{5x^2} \cdot\ y \big]' = 3x</me>.
+				</p>
+
+				<p>
+					Do you see that direct integration can be used here to solve the differential equation?
+				</p>
+			</solution>
+
+		</example>
+
+		<p>
+			By understanding how the product rule works in both directions, we can transform a differential equation into one that is easy to solve through integration. This transformation is the core of the integrating factor method, which we will explore next.
+		</p>
+
+		<xi:include href="./chkpts-1-1-product-rule.ptx" />  
+
+	</subsubsection>
+
+	<subsubsection><title> The Integrating Factor </title>
+
+		<p>
+			In the previous section, we introduced the idea of solving first-order linear differential equations by manipulating the equation into a form that allows direct integration. This process involved applying a <q>backward</q> product rule to make the left-hand side a perfect derivative. However, most equations are not in the form to do this directly. Instead, there is a missing piece, called the <em>integrating factor</em> that is required for transformation to take place and is the focus of this section.
+		</p>
+
+		<p>
+			To see this <q>missing</q> piece, lets consider the differential equation:
+			<men xml:id="if-example-eqn"> 
+				\frac{dy}{dx} + 2y = 5 
+			</men>.
+			We would like to apply the backward product rule to the left side, but it seems to be missing something. Let's try to figure out what this missing piece is by multipying both sides by something:
+			<men xml:id="if-example-eqn-w-missing-piece">
+				\us{?}{\boxed{\phantom{\large |P}}}\frac{dy}{dx} + 2\ \us{?}{\boxed{\phantom{\large |P}}}\ y = 5\ \us{?}{\boxed{\phantom{\large |P}}}
+			</men>.
+			With this missing piece and the fact that <m>y</m> and <m>dy/dx</m> appear in the equation, we should be able to rewrite the equation as:
+			<men xml:id="if-example-eqn-goal-w-missing-piece">
+				\frac{d}{dx} \Big[\ \us{?}{\boxed{\phantom{\large |P}}} \cdot y\ \Big] = 5\ \us{?}{\boxed{\phantom{\large |P}}}
+			</men>.
+			To determine what this missing piece is, we need to see where <xref ref="if-example-eqn"/> (start) and <xref ref="if-example-eqn-goal-w-missing-piece"/> (goal) meet in the middle. This is shown below.
+			<sidebyside widths="45% 55%" valign="middle">
+				<p>
+					Notice, the two middle equations agree everywhere except for the expressions in blue. In order for the start and goal equations to be the same, these expressions must match. In other words, the piece that we need to get <xref ref="if-example-eqn-goal-w-missing-piece"/> must satisfy
+					<me> 
+						{\color{blue} \frac{d\ \boxed{\phantom{|P}}}{dx} = 2\ \boxed{\phantom{|P}}} 
+					</me>.
+					But, this is the differential equation
+					<me>
+						\frac{d\mu}{dx} = 2 \mu
+					</me>
+					where <m>\mu</m> is the unknown!
+				</p>
+				<p>
+					<image source="figures/IF-Idea-GIF-1-repeat.gif" width="100%">
+						<shortdescription>(for accessibility)</shortdescription>
+					</image>
+				</p>
+			</sidebyside>
+		</p>
+
+		<p>
+			Solving this requires you to notice that it is separable and a <xref ref="if-intro-example-details" text="custom">quick calculation</xref> shows that <m>\mu = e^{2x}</m> is the solution. Therefore, if you multiply both sides of <xref ref="if-example-eqn"/> by <m>\mu = e^{2x}</m>, you can use the backward product rule to write the equation as
+			<me> \frac{d}{dx}\left[ e^{2x} \cdot y \right] = 5e^{2x} </me>,
+			which can then be solved by <xref ref="direct-integration" text="custom">direct integration</xref>. 
+		</p>
+
+		<p>
+			The function, <m>\mu = e^{2x}</m>, that allowed us to rewrite the equation is called the <em>integrating factor</em> and it is derived by solving a simple separable equation based on the coefficient of the dependent variable in the differential equation. Once the integrating factor is found, it allows us to rewrite the equation into a form that is straightforward to solve.
+		</p>
+
+		<theorem xml:id="integrating-factor"><title>The Integrating Factor</title>
+			<statement>
+				<p>
+					The <term>integrating factor</term> for the first-order linear differential equation
+					<me xml:id="standard-first-order-linear-de">y' + P(x)y = Q(x)</me>
+					is <m>\mu = e^{\int P(x) dx}</m>. Multiplying both sides by <m>\mu</m> transforms the equation into:
+					<me>\frac{d}{dx}\left[\mu(x) \cdot y\right] = \mu(x)Q(x)</me>.
+				</p>
+			</statement>
+			
+			<proof><title>Derivation of the Integrating Factor</title>
+				<p>
+					Note, all first-order linear differential equations can be written in the form
+					<men xml:id="if-general-eqn"> 
+						\frac{dy}{dx} + P(x) y = Q(x)
+					</men>,
+					where <m>P(x)</m> and <m>Q(x)</m> are functions of <m>x</m>. The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, <m>\mu(x)</m>, that we still need to find. We find <m>\mu(x)</m> by multiplying it onto <xref ref="if-general-eqn"/>, like so
+					<sidebyside widths="50% 50%">
+						<p>
+							<md>
+								<mrow> \frac{dy}{dx} + P(x)\amp\ y = Q(x) </mrow>
+								<mrow> \mu \frac{dy}{dx} + {\color{blue} \mu P(} \amp\ {\color{blue}\! x)} y = \mu Q(x) </mrow>
+								<mrow> {\color{blue} \updownarrow}\ \ \amp \ {\color{blue} \text{match &amp; solve}}</mrow>
+								<mrow> \mu \frac{dy}{dx} + {\color{blue} \frac{d\mu}{dx}}\amp\ y = \mu Q(x) </mrow>
+								<mrow> \frac{d}{dx}\big[\mu \cdot \amp\ y\big] = \mu Q(x) </mrow>
+							</md>
+						</p>
+						
+						<p>
+							<md>
+								<mrow> {\color{blue} \frac{d\mu}{dx} =}\amp\ {\color{blue} \mu P(x)} </mrow>
+								<mrow> {\color{blue} \frac{1}{\mu}d\mu =}\amp\ {\color{blue} P(x) dx} </mrow>
+								<mrow> {\color{blue} \int \frac{1}{\mu}d\mu =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+								<mrow> {\color{blue} \ln|\mu| =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+								<mrow> {\color{blue} \mu =}\amp\ {\color{blue} e^{\int P(x) dx}} </mrow>
+							</md>
+						</p>
+					</sidebyside>
+						
+				</p>
+			</proof>
+		</theorem>
+
+		<xi:include href="./chkpts-1-2-integrating-factor.ptx" />
+
+	</subsubsection>
+
+</subsection>
