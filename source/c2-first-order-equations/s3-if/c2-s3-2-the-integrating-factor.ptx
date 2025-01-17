@@ -1,19 +1,15 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> The Integrating Factor </title>
 
 	<introduction>
-		
-		<p>
-			The integrating factor method relies on an essential calculus concept: the product rule for derivatives. Since this rule is at the heart of the method, let's take a moment to review it and see how it helps transform a differential equation into one that can be directly integrated.
-		</p>
 
 		<p>
-			In the previous section, we introduced the idea of solving first-order linear differential equations by manipulating the equation into a form that allows direct integration. This process involved applying a <q>backward</q> product rule to make the left-hand side a perfect derivative. However, most equations are not in the form to do this directly. Instead, there is a missing piece, called the <em>integrating factor</em> that is required for transformation to take place and is the focus of this section.
+			The last example in the previous section demonstrated how some differential equations can be solved by rewriting the left-hand side as a <q>reversed</q> product rule, followed by direct integration, summarized in the diagram below:
 		</p>
 
-		<sidebyside valigns="top middle middle middle" widths="10% 12% 3% 65%">
+		<sidebyside valigns="top middle middle middle bottom top" widths="10% 12% 3% 36% 20% 10%">
 			<p/>
 			<p>
-				reverse product rule
+				<q>reverse</q> product rule
 			</p>
 			<p>
 				<me>
@@ -22,39 +18,40 @@
 			</p>
 			<p>
 				<md>
-					<mrow xml:id="if-example-complete-eqn"> e^{2x} \frac{dy}{dx}\ \amp + \ 2e^{2x} y = 5e^{2x} </mrow>
-					<mrow> \amp\downarrow</mrow>
-					<mrow> \frac{d}{dx}\amp\left[e^{2x} y \right] = 5e^{2x} \quad \leftarrow\ \text{ direct integration}</mrow>
+					<mrow xml:id="if-example-complete-eqn">	e^{2x} 
+						\frac{dy}{dx}	\amp	+ \ 2e^{2x} y = 5e^{2x}
+					</mrow>
+					<mrow>
+						\amp	\downarrow
+					</mrow>
+					<mrow>
+						\frac{d}{dx}	\amp	\left[e^{2x} y \right] = 5e^{2x}\quad \leftarrow
+					</mrow>
 				</md>
 			</p>
-			
+			<p>
+				Solve by direct integration
+			</p>
+			<p/>
 		</sidebyside>
 
+		<p>
+			Unfortunately, most equations are not initially in a form where the reverse product rule can be directly applied. However, every first-order linear differential equation is just one function away from completing this form. This missing function is called the <term>integrating factor</term>, and finding it is key to solving such equations.
+		</p>
+
 	</introduction>
-
-	<subsubsection><title> Incomplete Product Rule </title>
-
-		<p>
-			All first-order linear differential equations can be written in the form
-			<me>
-				\frac{dy}{dx} + P y = Q
-			</me>
-			where <m>P</m> and <m>Q</m> can be functions of independent variable, <m>x</m>, or constants.
-		</p>
+	
+	<subsubsection><title> Completing the Product Rule </title>
 
 		<p>
-			Another fact about these equations is the left-side can always be thought of as an incomplete product rule. Meaning that if the equation is provided with the missing piece, the left-side can always be rewritten using the reverse product rule we discussed in the previous section.
-		</p>
-
-		<p>
-			To see what we mean by an incomplete product rule, imagine you wanted to apply the reverse product rule to the left-side of the differential equation
+			To understand the concept of the integrating factor, consider the differential equation:
 			<men xml:id="if-example-incomplete-eqn"> 
 				\frac{dy}{dx} + 2y = 5 
 			</men>.
 		</p>
 
 		<p>
-			Attempting to label <m>f</m> and <m>g</m> as we did in the previous section, we label <m>y</m> as <m>g</m> and <m>dy/dx</m> as <m>g'</m>, but as you can see, there is nothing next to <m>dy/dx</m> for <m>f</m>:
+			The left-hand side of the equation resembles a product rule, but it is incomplete. Labeling <m>y</m> as <m>g</m> and <m>\frac{dy}{dx}</m> as <m>g'</m>, we see that no corresponding <m>f</m> satisfies:
 			<md>
 				<mrow>	
 					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} ? \ }}}\
@@ -63,26 +60,29 @@
 					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 }}}\
 					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
 					=\amp\ 5
-				</mrow>
+				</mrow>.
 			</md>
 		</p>
 		
 		<p>
-			Clearly, something missing, but what is it? Let's imagine multiplying both sides by something and see if we can figure out what this missing piece must be.
+			The left-hand side lacks the function <m>f</m> that satisfies both parts of the product rule. To resolve this, let's create our own <m>f</m> function by multiplying both sides by it, like so
 			<md>
 				<mrow>	
-					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} ? \phantom{\large|}}}}}\
+					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
 					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
 					+
-					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} ? \phantom{\large|}} }}}\
+					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} }}}\
 					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5\ \boxed{\phantom{\large|} ? \phantom{\large|}}
+					=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}
 				</mrow>
 			</md>
 		</p>
 
 		<p>
-			Looking carefully, the function that we multiply both sides by (labeled <m>f</m>) must have a derivative that is <m>2</m> times the function itself. Only one function has such a property, and that function is <m>e^{2x}</m> <m>\big(\text{since } [e^{2x}]^{\prime} = 2 \cdot e^{2x}\big)</m>.
+			For this to be a valid product rule, the derivative of <m>f</m> must be in the <m>f'</m> position. Can you think of a function has a derivative that is <m>2</m> times itself? There is only one, and that function is <m>e^{2x}</m>, since
+			<me>
+				\frac{d}{dx} \big[ {\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}} \big] = 2{\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}}
+			</me>
 		</p>
 
 		<p>
@@ -90,47 +90,54 @@
 			<me>
 				e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
 			</me>,
-			but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which we know can be rewritten as
+			but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which we already know can be rewritten as
 			<me>
 				\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
 			</me>
 			and solved using direct integration.
 		</p>
-
-		<p>
-			To reiterate, every first-order linear differential equation contains an incomplete product rule waiting to be completed by multiplying by some function. In the previous example, it wasn't too difficult to see what the missing piece had to be, but we would like a more systematic way to find it.
-		</p>
 			
-		<xi:include href="./chkpts-2-1-the-missing-piece.ptx" />
+		<xi:include href="./chkpts-2-1-completing-the-product-rule.ptx" />
 
 	</subsubsection>
 
-	<subsubsection><title> The Missing Piece </title>
+	<subsubsection><title> The General Integrating Factor </title>
 
 		<p>
-			In the previous section you saw that we had to multiply both sides of the differential equation by <m>e^{2x}</m> to complete the product rule. However, this was done by inspection and we would like to know how to determine this function in general. To begin, let's go back to the same equation in the previous section,
-			<me>
-				\frac{dy}{dx} + 2y = 5
-			</me>,
-			and recall that we multiplied both sides by some function. Let's call this unknown function, <m>\mu</m> and update the labels to match the variables in the equation, like so 
-			<md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \mu }}}\
-					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \mu }}}\
-					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5\ \mu
-				</mrow>
-			</md>
+			The previous example shows that multiplying both sides of the equation by <m>e^{2x}</m> introduced the missing piece need to reverse the product rule. However, this was done by inspection and we are now going to show how to determine this function, in general. 
 		</p>
 
 		<p>
-			All parts of the product rule match perfectly, except for <m>\mu'</m>. Therefore, this product rule is only valid if <m>\mu^{\prime}</m> is equal to <m>2\mu</m>. But this is a differential equation! Namely, it is the first-order separable equation
+			Consider same <xref ref="if-example-incomplete-eqn"/> as before and recall that we multiplied both sides by some function, <m>f</m>, to get
+			<md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
+					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} }}}\
+					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} \,
+				</mrow>
+			</md>.
+		</p>
+
+		<p>
+			To align with the context of this method, let's change <m>f</m> to <m>\mu</m> and <m>g</m> to <m>y</m>, so that the equation and labeling is now
+			<md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}}}}}\
+					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}} }}}\
+					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}} \,
+				</mrow>
+			</md>.
+			Now, recall that in order for this to be a valid product rule, we must have
 			<me>
-				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d\mu}{dx} = 2\mu
+				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
 			</me>
-			with dependent variable, <m>\mu</m>, which can be solved using separation of variables!
+			where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
 		</p>
 
 		<p>
@@ -212,23 +219,22 @@
 		</p>
 		
 		<p>
-			Since any non-zero choice of <m>c</m> will lead to a function that will complete the product rule, we always chose <m>c=1</m>. Thus, confirming that <m>e^{2x}</m> is the piece that our differential equation was missing in order to reverse the product rule.
-		</p>
-
-	</subsubsection>
-
-	<subsubsection><title> The Integrating Factor </title>
-
-		<p>
-			The missing function we found in the previous section is commonly called the <term>integrating factor</term> and will be denoted by <m>\mu</m>. This factor represents the function that can be multiplied to both sides of a first-order linear differential equation to allow a reverse product rule take place. We found the integrating factor for a specific equation, but the general form of the integrating factor is found in a similar manner.
+			Since any non-zero <m>c</m> will be a solution, we chose <m>c=1</m>. Thus, the integrating factor that we multiply <xref ref="if-example-incomplete-eqn"/> by to complete the product rule is
+			<me>
+				\mu(x) = e^{2x}.
+			</me>
 		</p>
 
 		<p>
-			To find the integrating factor for the general first-order linear differential equation
+			While this integrating factor is specific to <xref ref="if-example-incomplete-eqn"/>, the general integrating factor is found in a similar manner, which we will now show.
+		</p>
+
+		<p>
+			Every first-order linear differential equation has the form
 			<me>
 				y' + P(x)y = Q(x)
 			</me>,
-			we multiply both sides by <m>\mu</m>, and label the pieces of the product rule, as before, giving us
+			and the left side is always one piece away from a complete product rule. To find this piece, we multiply both sides by <m>\mu</m>, and label the pieces of the product rule, as before,
 			<md>
 				<mrow>	
 					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \mu }}}\
@@ -237,31 +243,36 @@
 					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} P(x)\ \mu }}}\
 					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
 					=\amp\ Q(x)\ \mu
-				</mrow>
+				</mrow>.
 			</md>
-			and reason that in order for this to be a valid product rule, we must have
+			We reason that in order for this to be a valid product rule, we must have
 			<men xml:id="if-sov-eqn">
 				\mu^{\prime} = P(x)\ \mu
 			</men>.
 			which is a differential equation that can be solved by separation of variables to find the integrating factor, <m>\mu</m>, as
-			<me>
-				\mu = e^{\int P(x)\ dx}
-			</me>.
+			<men xml:id="def-integrating-factor">
+				\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}
+			</men>.
 		</p>
 
-		<theorem xml:id="integrating-factor"><title>Solving <xref ref="if-sov-eqn"/></title>
+		<theorem xml:id="integrating-factor"><title>Solution to Equation <xref ref="if-sov-eqn"/></title>
 
 			<statement>
+
+				<p>
+					To solve the differential equation <xref ref="if-sov-eqn"/> for the integrating factor, <m>\mu</m>, we apply seperation of variables, as follows
+				</p>
+
 				<p>
 					<md>
-						<mrow>	\frac{d\mu}{dx}			=\amp\ \mu P(x)				</mrow>
-						<mrow>	\frac{1}{\mu}d\mu		=\amp\ P(x) dx				</mrow>
-						<mrow>	\int \frac{1}{\mu}d\mu	=\amp\ \int P(x) dx			</mrow>
-						<mrow>	\ln|\mu|				=\amp\ \int P(x) dx			</mrow>
-						<mrow>	\mu						=\amp\ \pm e^{\int P(x) dx}	</mrow>
-						<mrow>	\mu						=\amp\ e^{\int P(x) dx}		</mrow>
+						<mrow>			\frac{d\mu}{dx}	=\amp\ \mu P(x)								</mrow>
+						<mrow>		\frac{1}{\mu}d\mu	=\amp\ P(x) dx								</mrow>
+						<mrow>	\int \frac{1}{\mu}d\mu	=\amp\ \int P(x) dx							</mrow>
+						<mrow>				\ln|\mu|	=\amp\ \int P(x) dx							</mrow>
+						<mrow>						\mu	=\amp\ \pm e^{\int P(x) dx}	\qquad ^{(*)}	</mrow>
+						<mrow>						\mu	=\amp\ e^{\int P(x) dx}						</mrow>
 					</md>
-					Since either the positive or negative exponential will work, the positive is always chosen by convention.
+					<m>^{(*)}</m> Since both the positive or negative versions of the solution will produce a valid integrating factor, the positive is chosen by convention.
 				</p>
 			</statement>
 			
