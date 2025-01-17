@@ -1,40 +1,17 @@
 <subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor (IF) Method </title>	
 	
 	<introduction>
+
 		<p>
-			The integrating factor method provides a systematic approach to solving any first-order linear differential equations. These equations can always be written in the following <term>standard form</term>
-			
-			<men xml:id="if-standard-form"> 
-				y' + P(x)\ y = Q(x)
-			</men>.
+			The integrating factor (IF) method is a powerful and systematic approach to solving any first-order linear differential equation. These equations can always be expressed in the <term>standard form</term>:
 		</p>
+		
+		<men xml:id="if-standard-form"> 
+			y' + P(x)\ y = Q(x) \qquad <xref ref="std-form-explained" text="custom">\text{why?}</xref>
+		</men>
 
-
-		<theorem><title>Standard Form Explained</title>
-				
-			<statement>
-				<p>
-					A general linear differential equation looks like:
-					<me> 
-						a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
-					</me>.
-					The first-order case simplifies to:
-					<me> 
-						a_1(x)y' + a_0(x)y = f(x)
-					</me>,
-					Dividing by the coefficient of <m>y'</m>, gives the standard form, since
-					<me>
-						y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y	= \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}	
-						\quad \implies \quad 
-						y' + P(x)y	= Q(x)
-					</me>.
-				</p>
-			</statement>
-
-		</theorem>
-
-		<p>	
-			The key to solving such equations lies in providing an <xref ref="def-integrating-factor" text="custom">integrating factor</xref> that permits an <q>un-doing</q> of a product rule on the left-hand side of the equation, leading to an equation that can be solved by <xref ref="direct-integration" text="custom">direct integration</xref>.
+		<p>
+			When in standard form, the equation can be solved by providing it with a specially constructed function, called the <xref ref="def-integrating-factor" text="custom">integrating factor</xref>. This function allows us to <q>reverse</q> the product rule on the left-hand side of the equation, leading to a form that can be solved by <xref ref="direct-integration" text="custom">direct integration</xref>.
 		</p>
 
 	</introduction>
@@ -42,65 +19,72 @@
 	<subsubsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method Steps </title>
 
 		<p>
-			Now that we've introduced the integrating factor method, let's break down the step-by-step process:
+			The integrating factor method is a step-by-step process that works for all first-order linear differential equations and is summarized here.
 		</p>
 
-		<exploration xml:id="if-method"><title> Integrating Factor (IF) </title>
+		<exploration xml:id="if-method0"><title> Integrating Factor (IF) </title>
+
 			<p>
 				A differential equation that is first-order and linear can be written as
 				<men xml:id="if-standard-eqn">
 					\frac{dy}{dx} + P(x) y = Q(x)
 				</men>
-				and its general solution can be found through the steps below.
-				<dl width="narrow">
-					<li xml:id="if-step-1"><title> Get the Integrating Factor </title>
-						<p>
-							Identify <m>P(x)</m> and compute the integrating factor
-							<me>
-								\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}
-							</me>
-							
-						</p>
-					</li>
-					<li xml:id="if-step-2"><title> Reverse the Product Rule </title>
-						<p>
-							Multiply <xref ref="if-standard-eqn"/> by <m>\mu</m> and reverse the product rule on the left-side of the new equation.
-						</p>
-
-						<p>
-							<sidebyside valigns="middle middle middle top" widths="15% 5% 55% 10%">
-								<p>
-									<q>reverse</q> product rule
-								</p>
-								<p>
-									<me>
-										\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.
-									</me>
-								</p>
-								<p>
-									<md>
-										<mrow>	\mu\frac{dy}{dx} + P(x) \mu y	=\amp\ Q(x)	\mu	</mrow>
-										<mrow>\frac{d}{dx}\left[\mu \cdot y\right]	=\amp\ Q(x) \mu	</mrow>
-									</md>
-								</p>
-								<p/>
-							</sidebyside>
-						</p>
-					</li>
-					<li xml:id="if-step-3"><title> Apply Direct Integration </title>
-						<p>
-							Finally, apply <xref ref="direct-integration" text="custom">direct integration</xref> to remove the derivative and isolate <m>y</m>.
-						</p>
-
-						<p>
-							<me> 
-								\int \frac{d}{dx}\left[\mu \cdot y\right]\ dx = \int Q(x) \mu\ dx
-							</me>
-						</p>
-					</li>
-				</dl>
+				and its general solution can be found through the following steps:
 			</p>
+
+			<dl width="narrow">
+				<li xml:id="if-step-1"><title> Get the Integrating Factor </title>
+					<p>
+						Identify <m>P(x)</m> and compute the integrating factor
+						<me>
+							\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}.
+						</me>
+						This function, found from <m>\mu' = P(x)\mu</m>, enables the reverse product rule in the next step.
+					</p>
+				</li>
+				<li xml:id="if-step-2"><title> Reverse the Product Rule </title>
+					<p>
+						Multiply the entire equation by <m>\mu</m>. The presense of this function ensures that the left-hand side becomes the derivative of a product:
+					</p>
+					<p>
+						<sidebyside valigns="middle middle middle top" widths="15% 5% 55% 10%">
+							<p>
+								<q>reverse</q> product rule
+							</p>
+							<p>
+								<me>
+									\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.
+								</me>
+							</p>
+							<p>
+								<md>
+									<mrow>	\mu\frac{dy}{dx} + P(x) \mu y	=\amp\ Q(x)	\mu	</mrow>
+									<mrow>\frac{d}{dx}\left[\mu \cdot y\right]	=\amp\ Q(x) \mu	</mrow>
+								</md>
+							</p>
+							<p/>
+						</sidebyside>
+					</p>
+				</li>
+				<li xml:id="if-step-3"><title> Apply Direct Integration </title>
+					<p>
+						Integrate both sides of the equation, as follows
+					</p>
+					<p>
+						<me> 
+							\int \frac{d}{dx}\left[\mu \cdot y\right]\ dx = \int Q(x) \mu\ dx.
+						</me>
+					</p>
+					<p>
+						This step releases <m>y</m> from the derivative, allowing you to isolate the general solution.
+					</p>
+				</li>
+			</dl>
 		</exploration>
+
+		<p>
+			These three steps—constructing the integrating factor, transforming the equation, and solving via integration—are the foundation of the method. Now, let's explore this process in action with examples.
+		</p>
 
 		<xi:include href="./chkpts-3-1-if-method-steps.ptx" />
 
@@ -109,11 +93,11 @@
 	<subsubsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method Examples </title>
 
 		<p>
-			Now that we've laid out the method, let's apply it to some concrete examples. In each case, we will put the equation into standard form, compute the integrating factor, use it to rewrite the equation, and integrate to find the solution.
+			Let's start with a straightforward example to demonstrate how the integrating factor method works in practice. This example requires minimal manipulation since the equation is already in standard form.
 		</p>
 
-		<example xml:id="if-intro-exercise">
-
+		<example xml:id="if-intro-exercise"><title> Minimal Example </title>
+		
 			<p>
 				<statement>
 					<p>
@@ -174,7 +158,11 @@
 
 		</example>
 
-		<example>
+		<p>
+			Now, let's tackle an equation that requires you to put it into standard form.
+		</p>
+
+		<example><title> Not initially in Standard Form </title>
 
 			<p>
 				<statement>
@@ -272,7 +260,11 @@
 
 		</example>
 
-		<example>
+		<p>
+			In the next example, we'll work with an equation with a slightly more complex integrating factor.
+		</p>
+
+		<example><title> Integrating Factor that contains <m>\ln</m> </title>
 
 			<p>
 				<statement>
@@ -296,7 +288,6 @@
 						</md>
 						and now we can apply the integrating factor method.
 					</p>
-					
 
 					<p>
 						<sidebyside widths="20% 80%" valigns="top middle">
@@ -326,10 +317,6 @@
 									<mrow>
 										\frac{1}{t^4} \frac{dM}{dt} - \frac{1}{t^4} \frac{4}{t} M
 											\amp = \frac{1}{t^4}(t^6 + t)
-									</mrow>
-									<mrow>
-										\frac{1}{t^4} \frac{dM}{dt} - \frac{4}{t^5} M
-											\amp = t^2 + t^{-3}
 									</mrow>
 									<mrow>
 										\frac{d}{dt}\left[ \frac{1}{t^4} M \right]
@@ -386,7 +373,7 @@
 		</example>
 
 		<p>
-			The next set of examples will require more advanced algebra and/or calculus techniques, but they will still follow the same three-step process illustrated in the previous examples.
+			The next two examples introduce scenarios where more advanced integration techniques are required to determine the solution.
 		</p>
 
 		<example>
@@ -402,26 +389,20 @@
 			
 			<p>
 				<solution>
+
 					<p>
-						This is a first-order linear differential equation, so we can apply the integrating factor method.
+						We put the equation in standard form to identify <m>P(x)</m> and compute the integrating factor.
 					</p>
 				
 					<p>
-						<xref ref="if-step-1" text="title"/>.
-						<md>
-							<mrow> y' + \us{P}{\boxed{-\frac{1}{x^2}}}\ y = \frac{1}{x^2}	</mrow>
-						</md>
+						<me>
+							y' + \us{P}{\boxed{-\frac{1}{x^2}}}\ y = \frac{1}{x^2} \quad \implies \quad 
+							\mu(x) = e^{\large \int -\sfrac{1}{x^2} dx} = e^{1/x}
+						</me>
 					</p>
 				
 					<p>
-						<xref ref="if-step-1" text="title"/>.
-						<md>
-							<mrow> \mu(x) = e^{\large \int -\sfrac{1}{x^2} dx} = e^{1/x}	</mrow>
-						</md>
-					</p>
-				
-					<p>
-						<xref ref="if-step-2" text="title"/>.
+						Multiply by <m>e^{1/x}</m> and reverse the product rule on the left side.
 						<md>
 							<mrow> e^{1/x}y' - \frac{e^{1/x}}{x^2} y	=\amp\ \frac{e^{1/x}}{x^2}	</mrow>
 							<mrow> \frac{d}{dx}\left[e^{1/x} y\right]	=\amp\ \frac{e^{1/x}}{x^2}	</mrow>
@@ -429,18 +410,37 @@
 					</p>
 				
 					<p>
-						<xref ref="if-step-3" text="title"/>.
-						<md>
-							<mrow> \int \frac{d}{dx}\left[e^{1/x} y\right] dx =\amp\ \int \frac{e^{1/x}}{x^2} dx \quad \left(u = \sfrac{1}{x}\right)	</mrow>
-							<mrow> e^{1/x} y =\amp\ \int -e^u du	</mrow>
-							<mrow> e^{1/x} y =\amp\ -e^u + c	</mrow>
-							<mrow> e^{1/x} y =\amp\ -e^{1/x} + c	</mrow>
-						</md>
-						Now, we can solve for <m>y</m>:
+						Next, integrate both sides and use <m>u</m>-substitution on the right side.
+						<sidebyside widths="10% 60% 25% 5%" valigns="top top top top">
+
+							<p/>
+							<p>
+								<md>
+									<mrow> 
+										\int \frac{d}{dx}\left[e^{1/x} y\right] dx 
+														=\amp\ \int \frac{e^{1/x}}{x^2} dx \qquad \rightarrow
+									</mrow>
+									<mrow>	e^{1/x} y	=\amp\ \int -e^u du </mrow>
+									<mrow>	e^{1/x} y	=\amp\ -e^u + c		</mrow>
+									<mrow>	e^{1/x} y	=\amp\ -e^{1/x} + c	</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>	u	=\amp\ \frac{1}{x}			</mrow>
+									<mrow>	du	=\amp\ -\frac{1}{x^2} dx	</mrow>
+								</md>
+							</p>
+							<p/>
+
+						</sidebyside>
+						
+						Finally, solve for <m>y</m>:
 						<md>
 							<mrow> y = -1 + ce^{-1/x}	</mrow>
 						</md>
 					</p>
+
 				</solution>
 			</p>
 
@@ -459,55 +459,80 @@
 
 			<p>
 				<solution>
-					<p>
-						This is a linear equation, and we will solve it using the integrating factor method.
-					</p>
 
 					<p>
-						<xref ref="if-step-1" text="title"/>.
-						<md>
-							<mrow> y' + \frac{2}{t} y = t \ln t </mrow>
-						</md>
+						We put the equation in standard form to identify <m>P(x)</m> and compute the integrating factor.
 					</p>
-
+				
 					<p>
-						<xref ref="if-step-1" text="title"/>.
-						<md>
-							<mrow> \mu(t) = e^{\large \int (\sfrac{2}{t})\, dt} = e^{2 \ln t} = t^2	</mrow>
-						</md>
+						<me>
+							y' + \us{P}{\boxed{\frac{2}{t}}}\ y = t \ln t \quad \implies \quad 
+							\mu(t) = e^{\large \int (\sfrac{2}{t})\, dt} = e^{2 \ln t} = t^2
+						</me>
 					</p>
-
+				
 					<p>
-						<xref ref="if-step-2" text="title"/>.
+						Multiply by <m>e^{1/x}</m> and reverse the product rule on the left side.
 						<md>
 							<mrow> t^2 y' + 2t y					=\amp\ t^3 \ln t	</mrow>
 							<mrow> \frac{d}{dt} \left[t^2 y\right]	=\amp\ t^3 \ln t	</mrow>
 						</md>
 					</p>
+				
+					<p>
+						Now, integrate both sides and use <xref ref="ibp-formula" text="custom">integration by parts</xref> on the right.
+					</p>
 
 					<p>
-						<xref ref="if-step-3" text="title"/>.
+						<sidebyside widths="3% 60% 35% 2%" valigns="top top top top">
+
+							<p/>
+							<p>
+								<md>
+									<mrow>
+										\int \frac{d}{dt} \big[t^2 y\big] dt =\amp\ \int t^3 \ln t\ dt
+									</mrow>
+									<mrow>	
+										t^2 y	= 
+										\us{\textcolor{BurntOrange}{ u}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\vphantom{\frac11}\ln t}}}
+										\cdot
+										\us{\textcolor{BurntOrange}{ v}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac14 t^4}}}
+										\amp\ - \int 
+										\us{\textcolor{BurntOrange}{ v}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac14 t^4}}}
+										\cdot 
+										\us{\textcolor{BurntOrange}{du}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac{1}{t}\ dt}}}
+									</mrow>
+									<mrow>	t^2 y	= \frac14 t^4 \ln t \amp\ - \frac14 \int  t^3\ dt					</mrow>
+									<mrow>	t^2 y	= \frac{t^4}{4} \ln t \amp\ - \frac{t^4}{16} + c						</mrow>
+									<mrow>		y	= \frac{t^2}{4} \ln t \amp\ - \frac{t^2}{16} + c\,t^2				</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>	\small\textcolor{BurntOrange}{				u = \ln t,}	\amp \ \ \small\textcolor{BurntOrange}{v = \frac14t^4}	</mrow>
+									<mrow>	\small\textcolor{BurntOrange}{	du = \frac{1}{t}\ dt,}	\amp \ \ \small\textcolor{BurntOrange}{dv = t^3\ dt}	</mrow>
+								</md> 
+							</p>
+							<p/>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						Finally, solve for <m>y</m>:
 						<md>
-							<mrow> \int \frac{d}{dt} \left[t^2 y\right] dt	=\amp\ \int t^3 \ln t\ dt	</mrow>
-							<mrow> t^2 y									=\amp\ \int t^3 \ln t\ dt	</mrow>
-						</md>
-						Using <xref ref="ibp-formula" text="custom">integration by parts</xref> on the integral with
-						<md>
-							<mrow>u = \ln t,			\amp \quad v = \frac14t^4	</mrow>
-							<mrow>du = \frac{1}{t}\ dt,	\amp \quad dv = t^3\ dt		</mrow>
-						</md>
-						gives us
-						<md>
-							<mrow> t^2 y	=\amp\ \frac14 t^4 \ln t - \int \frac14 t^4 \cdot \frac{1}{t}\ dt	</mrow>
-							<mrow> t^2 y	=\amp\ \frac14 t^4 \ln t - \frac14 \int  t^3\ dt	</mrow>
-							<mrow> t^2 y	=\amp\ \frac{t^4}{4} \ln t - \frac{t^4}{16} + c	</mrow>
-							<mrow> y		=\amp\ \frac{t^2}{4} \ln t - \frac{t^2}{16} + c\,t^2	</mrow>
+							<mrow>	y = \frac{t^2}{4} \ln t - \frac{t^2}{16} + c\,t^2	</mrow>
 						</md>
 					</p>
+
 				</solution>
 			</p>
 
 		</example>
+
+		<p>
+			To conclude, we'll examining one more equation that involves trigonometric functions and an initial condition. Luckily, initial conditions are handled in the same way as in the separable equation case: find the general solution first, then apply the initial condition to determine the constant.
+		</p>
 
 		<example>
 
@@ -515,72 +540,88 @@
 				<statement>
 					<p>
 						Solve the initial value problem. 
-						<me>A = \sec\theta A' - \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}, \hspace{1cm} A(0) = -\frac{1}{2}</me>.
+						<me>
+							A = \sec\theta A' - \frac{\theta e^{\large\theta^2 + \sin\theta}}{\cos \theta}, \hspace{1cm} A(0) = -\frac{1}{2}
+						</me>.
 					</p>
 				</statement>
 			</p>
 
 			<p>
 				<solution>
+
 					<p>
-						Before applying the integration factor method, we note that the equation is first order and linear.
+						Let's put the equation in standard form. After replacing <m>\sec\theta</m> with <m>\frac{1}{\cos\theta}</m>and moving the <m>A'</m> term to the left, we have
+					</p>
+				
+					<p>
+						<me>
+							\frac{1}{\cos\theta} A' - A = \frac{\theta e^{\large\theta^2 + \sin\theta}}{\cos \theta} 
+						</me>.
 					</p>
 
 					<p>
-						<xref ref="if-step-1" text="title"/>.
-						<md>
-							<mrow>
-								\sec\theta A' - A
-									=\amp\ \frac{\theta e^{\theta^2 + \sin\theta}}{\cos \theta}	\qquad \text{Note: } \sec\theta = \frac{1}{\cos\theta}
-							</mrow>
-							<mrow>
-								A' + \us{P}{\boxed{- \cos\theta}}\ A	
-									=\amp\ \theta e^{\theta^2 + \sin\theta}
-							</mrow>
-						</md>
+						Multiplying this by <m>\cos\theta</m> allows us to identify <m>P</m> and compute <m>\mu</m> as
+						<me>
+							A' + \us{P}{\boxed{- \cos\theta}}\ A = \theta e^{\large \theta^2 + \sin\theta}
+							\quad \implies \quad
+							\mu = e\vphantom{\large|}^{\large\int -\cos\theta d\theta} = e^{\large -\sin\theta}
+						</me>
 					</p>
 
 					<p>
-						<xref ref="if-step-1" text="title"/>.
+						Multiply by <m>e^{1/x}</m> and reverse the product rule on the left side.
 						<md>
-							<mrow> \mu = e^{\int -\cos\theta d\theta} = e^{-\sin\theta}	</mrow>
-						</md>
+							<mrow> e^{\large -\sin\theta}A' - \cos\theta e^{\large -\sin\theta}A = \theta e^{\large\theta^2 + \sin\theta}	</mrow>
+							<mrow> \frac{d}{d\theta}\left[ e^{\large -\sin\theta}A \right] = \theta e^{\large\theta^2}	</mrow>
+						</md>.
+					</p>
+				
+					<p>
+						Integrate both sides and use <m>u</m>-substitution on the right side.
 					</p>
 
 					<p>
-						<xref ref="if-step-2" text="title"/>.
-						<md>
-							<mrow> e^{-\sin\theta}A' - \cos\theta e^{-\sin\theta}A = \theta e^{\theta^2 + \sin\theta}	</mrow>
-							<mrow> \frac{d}{d\theta}\left[ e^{-\sin\theta}A \right] = \theta e^{\theta^2}	</mrow>
-						</md>
-					</p>
+						<sidebyside widths="10% 60% 25% 5%" valigns="top top top top">
 
-					<p>
-						<xref ref="if-step-3" text="title"/>.
-						<md>
-							<mrow>
-								\int \frac{d}{d\theta}\left[ e^{-\sin\theta}A \right] d\theta = \int \theta e^{\theta^2} d\theta
-							</mrow>
-							<mrow>
-								e^{-\sin\theta}A = \frac{1}{2}e^{\theta^2} + c
-							</mrow>
-							<mrow>
-								A = \frac{1}{2}e^{\theta^2 + \sin\theta} + ce^{\sin\theta}
-							</mrow>
-						</md>
+							<p/>
+							<p>
+								<md>
+									<mrow>
+										\int \frac{d}{d\theta}\left[ e^{\large -\sin\theta}A \right] d\theta = \int \theta e^{\large\theta^2} d\theta
+									</mrow>
+									<mrow>
+										e^{\large -\sin\theta}A = \frac{1}{2}e^{\large\theta^2} + c
+									</mrow>
+									<mrow>
+										A = \frac{1}{2}e^{\large\theta^2 + \sin\theta} + ce^{\large\sin\theta}
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>	u	=\amp\ \theta^2			</mrow>
+									<mrow>	du	=\amp\ 2\theta\ d\theta	</mrow>
+								</md>
+							</p>
+							<p/>
+
+						</sidebyside>
+
 					</p>
 
 					<p>
 						Finally, we apply the initial condition to determine the constant <m>c</m>.
 						<md>
-							<mrow> -\frac{1}{2} = A(0) = \frac{1}{2}e^{0^2 + \sin(0)} + ce^{\sin(0)} = \frac{1}{2}e^0 + ce^0= \frac{1}{2} + c	</mrow>
-							<mrow> -1 = c	</mrow>
+							<mrow> -\frac{1}{2} = A(0) =\amp\ \frac{1}{2}e^{\large 0^2 + \sin(0)} + ce^{\large\sin(0)}	</mrow>
+							<mrow>  =\amp\ \frac{1}{2}e^0 + ce^0 	</mrow>
+							<mrow> =\amp\ \frac{1}{2} + c\quad \implies \quad c = -1	</mrow>
 						</md>
 					</p>
 
 					<p>
 						We can then write the particular solution to the initial value problem.
-						<me>A(\theta) = \frac{1}{2}e^{\theta^2 + \sin\theta} - e^{\sin\theta}</me>
+						<me>A(\theta) = \frac{1}{2}e^{\large\theta^2 + \sin\theta} - e^{\large\sin\theta}</me>
 					</p>
 				</solution>
 			</p>
@@ -590,8 +631,6 @@
 		<p>
 			The integrating factor method is a versatile tool for solving first-order linear differential equations. By reducing the equation to a form that allows for direct integration, we can tackle a wide variety of problems with confidence. The examples in this chapter illustrate the broad applicability of this technique, and practice with a range of equations will solidify your understanding of how to use it effectively.
 		</p>
-
-		<xi:include href="./chkpts-3-2-if-method-examples.ptx" />
 
 	</subsubsection>
 
