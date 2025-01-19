@@ -1,698 +1,698 @@
-<subsection><title> 1st Order DEs - Additional Examples &amp; Notes </title>
+<subsection><title> Additional Examples </title>
 
-	<example xml:id="antiderivative-example">
-	
-		<statement>
-			<p>
-				Solve the initial-value problem 
-				<me>2y' - 4\sin x = 2, \quad y(0) = 5 </me>.
-			</p>
-		</statement>
-			
-		<solution>
+	<subsubsection><title> Direct Integration </title>
 
-			<p>
-				Start by isolating the derivative, <m>y'</m>, on one side of the equation
-				<md>
-					<mrow> y' \amp = 1 + 2 \sin x </mrow>.
-				</md>
-				Integrate both sides with respect to <m>x</m> to leave us with <m>y</m> on the left side
-				<md>
-					<mrow> \int y'\ dx 	\amp = \int \left(1 + 2 \sin x\right) \ dx 				</mrow>
-					<mrow> 	y + c_1 	\amp = x - 2 \cos x + c_2 								</mrow>
-					<mrow> 			y 	\amp = x - 2 \cos x + \boxed{c_2 - c_1}\leftarrow c		</mrow>
-					<mrow> 		y(x)	\amp  = x - 2 \cos x + c 								</mrow>.
-				</md>
-			</p>
-
-			<p>
-				Finally, apply the initial condition <m>y(0) = 5</m> to find <m>c</m>
-				<md>
-					<mrow> 				y(0)	\amp = 5 </mrow>
-					<mrow> (0) - 2 \cos(0) + c	\amp = 5 </mrow>
-					<mrow> 			0 - 2 + c	\amp = 5 </mrow>
-					<mrow> 					c	\amp = 7 </mrow>.
-				</md>
-				Thus, the solution to the differential equation is <m>\quad y = x - 2 \cos x + 7 </m>.
-			</p>
-
-		</solution>
-
-	</example>
-
-	<example xml:id="show-separable-example">
-	
-		<statement>
-			<p>
-				Show the differential equations are separable.
-				<me> 
-					y^2\frac{d^2y}{dx^2} = x, \qquad 
-					t - ss' = - s, \qquad 
-					y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
-				</me>.
-			</p>
-		</statement>
-		
-		<solution><title> <term>Attention to Detail</term> </title>
-			<p>
-				This is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, <em>separability does not apply</em>.
-			</p>
-		</solution>
-
-		<solution><title> <term>Isolate the Derivative First</term> </title>
-			<p>
-				To see that this equation is separable, we need to check that it can be rearranged in <xref ref="separable-form" text="custom">separable form</xref>. Isolating <m> s' </m> we get
-				<me> s' = \frac{s + t}{s} </me>
-				and it should be clear that there is no way to separate <m>t</m> and <m>s</m> by <em>multiplication</em> in the numerator, so this equation <em>is not separable</em>.
-			</p>
-		</solution>
-
-		<solution><title> <term>Everything but the Kitchen Sink</term> </title>
-
-			<p>
-				This example uses a little of everything we discussed, so strap in. 
-			</p>
-
-			<p>
-				Noticing that the equation is first-order, we start by isolating <m>dy/dx</m>
-				<md>
-					<mrow>
-						y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x 
-					</mrow>
-					<mrow>
-						\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x + \cos y}}{y}
-					</mrow>
-				</md>
-			</p>
-
-			<p>
-				Next, we can rewrite the exponent in the numerator as a product
-				<me>
-					\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x}e^{\cos y}}{y}
-				</me>
-				and recognize that there is a common factor in the numerator
-				<me>
-					\frac{dy}{dx} = \frac{2x^2e^x(3 - 4e^{\cos y})}{y}
-				</me>.
-			</p>
-
-			<p>
-				From here, we write the result as a product of fractions,
-				<me>
-					\frac{dy}{dx} = \frac{2x^2e^x}{1} \cdot \frac{3 - 4e^{\cos y}}{y} 
-				</me>,
-				and see that the equation is now <em>separable</em>.
-			</p>
-
-		</solution>
-	
-	</example>
-
-	<exercise label="chkpt-separable-form-showing-forms-5"><title> <em>WebWork Problem</em> </title>
-
-		<introduction>
-			<p>
-				Write the differential equation,
-				<me> 
-					\frac{dy}{dx} - y\cos(x) = y
-				</me>,
-				in <xref ref="separable-form" text="custom">separable form</xref> by identifying <m>f(x)</m> and <m>g(y)</m>.
-			</p>
-		</introduction>
-			
-		<webwork xml:id="p2-c2-s1-i4-ww">
-			<description>
-				Show that the DE is separable by giving the separable form.
-			</description>
-	
-			<pg-code>
-				Context()->variables->add(y => 'Real');
-				$fx = Formula("1 + cos(x)");
-				$gy = Formula("y");
-			</pg-code>
+		<example xml:id="antiderivative-example">
 	
 			<statement>
+				<p>
+					Solve the initial-value problem 
+					<me>2y' - 4\sin x = 2, \quad y(0) = 5 </me>.
+				</p>
+			</statement>
+				
+			<solution>
 
 				<p>
-					<tabular halign="center">
-					
-						<row>
-							<cell><m>\displaystyle \frac{dy}{dx} = \Big( </m></cell>
-							<cell><var name="$fx" width="10" /></cell>
-							<cell><m>\Big) \cdot \Big( </m></cell>
-							<cell><var name="$gy" width="10" /></cell>
-							<cell><m>\Big)</m></cell>
-						</row>
-						<row>
-							<cell/>
-							<cell><m>f(x)</m></cell>
-							<cell/>
-							<cell><m>g(y)</m></cell>
-							<cell/>
-						</row>
-
-					</tabular>
-				
+					Start by isolating the derivative, <m>y'</m>, on one side of the equation
+					<md>
+						<mrow> y' \amp = 1 + 2 \sin x </mrow>.
+					</md>
+					Integrate both sides with respect to <m>x</m> to leave us with <m>y</m> on the left side
+					<md>
+						<mrow> \int y'\ dx 	\amp = \int \left(1 + 2 \sin x\right) \ dx 				</mrow>
+						<mrow> 	y + c_1 	\amp = x - 2 \cos x + c_2 								</mrow>
+						<mrow> 			y 	\amp = x - 2 \cos x + \boxed{c_2 - c_1}\leftarrow c		</mrow>
+						<mrow> 		y(x)	\amp  = x - 2 \cos x + c 								</mrow>.
+					</md>
 				</p>
 
-			</statement>
-
-			<solution><title> Solution </title>
 				<p>
-					Move the <m> y\cos x </m> term to the right and factor out <m>y</m>.
+					Finally, apply the initial condition <m>y(0) = 5</m> to find <m>c</m>
 					<md>
-						<mrow> \frac{dy}{dx} - y\cos(x) = y \amp \implies \frac{dy}{dx} = y + y\cos(x) </mrow>
-						<mrow>							  \amp \implies \frac{dy}{dx} = (1 + \cos(x))y </mrow>
+						<mrow> 				y(0)	\amp = 5 </mrow>
+						<mrow> (0) - 2 \cos(0) + c	\amp = 5 </mrow>
+						<mrow> 			0 - 2 + c	\amp = 5 </mrow>
+						<mrow> 					c	\amp = 7 </mrow>.
+					</md>
+					Thus, the solution to the differential equation is <m>\quad y = x - 2 \cos x + 7 </m>.
+				</p>
+
+			</solution>
+
+		</example>
+
+	</subsubsection>
+
+	<subsubsection><title> Separation of Variables </title>
+
+		<example xml:id="show-separable-example">
+		
+			<statement>
+				<p>
+					Show the differential equations are separable.
+					<me> 
+						y^2\frac{d^2y}{dx^2} = x, \qquad 
+						t - ss' = - s, \qquad 
+						y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
+					</me>.
+				</p>
+			</statement>
+			
+			<solution><title> <term>Attention to Detail</term> </title>
+				<p>
+					This is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, <em>separability does not apply</em>.
+				</p>
+			</solution>
+
+			<solution><title> <term>Isolate the Derivative First</term> </title>
+				<p>
+					To see that this equation is separable, we need to check that it can be rearranged in <xref ref="separable-form" text="custom">separable form</xref>. Isolating <m> s' </m> we get
+					<me> s' = \frac{s + t}{s} </me>
+					and it should be clear that there is no way to separate <m>t</m> and <m>s</m> by <em>multiplication</em> in the numerator, so this equation <em>is not separable</em>.
+				</p>
+			</solution>
+
+			<solution><title> <term>Everything but the Kitchen Sink</term> </title>
+
+				<p>
+					This example uses a little of everything we discussed, so strap in. 
+				</p>
+
+				<p>
+					Noticing that the equation is first-order, we start by isolating <m>dy/dx</m>
+					<md>
+						<mrow>
+							y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x 
+						</mrow>
+						<mrow>
+							\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x + \cos y}}{y}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Next, we can rewrite the exponent in the numerator as a product
+					<me>
+						\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x}e^{\cos y}}{y}
+					</me>
+					and recognize that there is a common factor in the numerator
+					<me>
+						\frac{dy}{dx} = \frac{2x^2e^x(3 - 4e^{\cos y})}{y}
+					</me>.
+				</p>
+
+				<p>
+					From here, we write the result as a product of fractions,
+					<me>
+						\frac{dy}{dx} = \frac{2x^2e^x}{1} \cdot \frac{3 - 4e^{\cos y}}{y} 
+					</me>,
+					and see that the equation is now <em>separable</em>.
+				</p>
+
+			</solution>
+		
+		</example>
+
+		<example>
+
+			<p>
+				Determine if the following DE is separable.
+				<me> \frac{dz}{dt} = \cos^2 z </me>
+			</p>
+	
+			<solution>
+				<p>
+					This differential equation is first order. Since the derivative is already isolated, we need to determine if we can express the right-hand side as a product of functions where one function does not contain the dependent variable <m>z</m>, and the other does not contain the independent variable <m>t</m>. Consider the equivalent equation:
+					<me> \frac{dz}{dt} = \big( 1 \big) \cdot \big( \cos^2 z \big) </me>
+					It may seem trivial, but this satisfies the definition of separable. The first factor is a function that does not contain <m>z</m>, and the second factor is a function that does not contain <m>t</m>. The first factor is a constant function, which is perfectly acceptable. Therefore, this differential equation <em>is separable</em>.
+				</p>
+			</solution>
+	
+		</example>
+
+		<example><title> Verify our solution </title>
+
+			<p>
+				Verify that 
+				<me>z = \tan(t+C)</me>
+				is the particular solution to the initial value problem
+				<me>z' - 1 = z^2, \quad z(4) = 9</me>
+			</p>
+
+			<solution>
+				<p>
+					As in the previous example, we don't have to check our answer, but one of the best parts about DEs is that we always can check, which means we can really know if we have the right solution. Let's check this one. We will substitute our solution back into the DE and verify that when we do, we get the same thing on both sides of the equation.
+		
+					<md>
+						<mrow> LHS	=\amp\ z' -1</mrow>
+						<mrow> =\amp\ \frac{d}{dt}\Big( \tan(t+C) \Big) - 1</mrow>
+						<mrow> =\amp\ \sec^2(t+C)\cdot \frac{d}{dt}(t+C) - 1</mrow>
+						<mrow> =\amp\ \sec^2(t+C)\cdot (1+0) - 1</mrow>
+						<mrow> =\amp\ \sec^2(t+C) - 1</mrow>
+					</md>
+		
+					<md>
+						<mrow> RHS	=\amp\ z^2</mrow>
+						<mrow> =\amp\ \Big( \tan(t+C) \Big)^2</mrow>
+						<mrow> =\amp\ \tan^2(t+C)</mrow>
+					</md>
+		
+				</p>
+		
+				<p>
+					At first glance, it looks like we have different expressions on the left and right hand sides of the equation. However, if we recall the trigonometric identity
+		
+						<me>\tan^2 x = \sec^2 x - 1,</me>
+		
+					then we can see that these expressions are, in fact equivalent. Thus, we have verified that <m>z = \tan(t+C)</m>, where <m>C</m> is any constant, is a solution to the DE <m>z' -1 = z^2</m>.
+				</p>
+		
+				<p>
+					Now that we've practiced this solution technique a couple of times, let's summarize.
+				</p>
+			</solution>
+	
+		</example>
+
+		<example>
+
+			<p>
+				Solve the following initial value problem.
+				<me>\frac{dz}{dy} - yz = y, \hspace{1cm} z(0) = 5</me>
+			</p>
+	
+			<solution>
+				<p>
+					It's always worth it when you first start solving DEs to step back and make sure you identify independent and dependent variables. Here <m>z</m> is dependent and <m>y</m> is independent. That means when we're done we hope to have a function
+					<me>
+					z = \underbrace{\hspace{4.0cm}}_{\text{some function of } y}
+					</me>
+				</p>
+	
+				<p>
+					Also, even though the terminology we use is <em>initial</em> condition, we typically won't use that piece of information until the very end.
+	
+					<aside>
+						<p>
+							* Until we get to Laplace Transforms...
+						</p>
+					</aside>
+				</p>
+	
+				<p>
+					First let's verify that the DE is first order (it is!), and then we go about solving for the derivative.
+					<md>
+						<mrow> \frac{dz}{dy} - yz	=\amp\ y</mrow>
+						<mrow> \frac{dz}{dy} 	=\amp\ y + yz</mrow>
+					</md>
+				</p>
+	
+				<p>
+					Now that we have solved for the derivative, is it possible write the right hand side of the equation as a product of functions where one of the functions does not contain the dependent variable, <m>z</m> and the other function does not contain the independent variable, <m>y</m>?  That is, we'd like to write the DE in the form suggested below.
+					<me>
+						\frac{dz}{dy} = \Big( \underbrace{\hspace{2.0cm}}_{\mbox{no z's}} \Big) \cdot
+						\Big( \underbrace{\hspace{2.0cm}}_{\mbox{no x's}} \Big)
+					</me>
+					Hopefully you can see that there is a way, by factoring <m>y</m> out of each term on the right hand side, as below.
+					<me>\frac{dz}{dy} = y(1 + z)</me>
+				</p>
+	
+				<p>
+					Now we need to completely separate variables.
+					<me>\frac{1}{1+z}dz = ydy</me>
+				</p>
+	
+				<p>
+					The next step will be to integrate both sides of the equation. (If the integral on the right hand side is at all questionable to you, you should do take an extra step and actually do the substitution <m>u = 1+z.</m>)
+					<md>
+						<mrow> \int \frac{1}{1+z}dz	=\amp\ \int ydy</mrow>
+						<mrow> \ln|1+z|	=\amp\ \frac{1}{2}y^2 + c</mrow>
+					</md>
+				</p>
+	
+				<p>
+					As before, we write only one constant of integration (recall that we're skipping a couple of steps here; details provided in Example 6).
+				</p>
+	
+				<p>
+					Remember that our goal is to solve for the unknown function <m>z</m>. Since it's currently inside of a logarithm, we exponentiate both sides of the equation.
+					<md>
+						<mrow> \ln|1+z|	=\amp\ \frac{1}{2}y^2 + c</mrow>
+						<mrow> e^{\ln|1+z|}	=\amp\ e^{\frac{1}{2}y^2 + c}</mrow>
+						<mrow> |1+z|	=\amp\ e^{\frac{1}{2}y^2}\cdot e^c</mrow>
+					</md>
+				</p>
+	
+				<p>
+					We continue solving for <m>z</m>.
+					<md>
+						<mrow> 1+z	=\amp\ \underbrace{\pm e^c}_{\text{rename } A} \cdot e^{\frac{1}{2}y^2}</mrow>
+						<mrow> 1+z	=\amp\ Ae^{\frac{1}{2}y^2}		</mrow>
+						<mrow> z	=\amp\ Ae^{\frac{1}{2}y^2} - 1	</mrow>
+					</md>
+				</p>
+	
+				<p>
+					Now we can use that initial condition, <m>z(0) = 5</m>, to solve for <m>A</m>. The initial condition can be read,
+					"when <m>y</m> is zero, <m>z</m> is 5."  We substitute into our solution accordingly.
+					<md>
+						<mrow> z	=\amp\ Ae^{\frac{1}{2}y^2} - 1</mrow>
+						<mrow> 5	=\amp\ Ae^{\frac{1}{2}\cdot 0^2} - 1</mrow>
+						<mrow> 5	=\amp\ Ae^0 - 1</mrow>
+						<mrow> 6	=\amp\ A\cdot 1</mrow>
+						<mrow> 6	=\amp\ A</mrow>
+					</md>
+					<aside>
+						<p>
+							* mention that we can't call <m>A = 6</m> our solution!
+						</p>
+					</aside>
+				</p>
+	
+				<p>
+					Therefore, the solution to the IVP is
+					<me>z = 6e^{\frac{1}{2}y^2} - 1.</me>
+				</p>
+			</solution>
+	
+		</example>
+	
+	</subsubsection>
+
+	<subsubsection><title> Integrating Factor </title>
+	
+		<example><title> Reversed Product Rule in a Differential Equation </title>
+
+			<p>
+				<statement>
+					<p>
+						Rewrite the left-side of the differential equation
+						<me>
+							e^{\sin x} \frac{dy}{dx} + \cos x\ e^{\sin x} y = 0
+						</me>
+						as a reversed product rule. Then find the general solution of the equation by <xref ref="direct-integration" text="custom">direct integration</xref>.
+					</p>
+				</statement>
+			</p>
+
+			<p>
+				<solution>
+
+					<ol>
+						<li>
+							<p>
+								To reverse the product rule on the left-side, let's label <m>f</m> and <m>g</m> as before. This time, we get
+							</p>
+
+							<p>
+								<md>
+									<mrow>	
+										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{\sin x}}}}\
+										\frac{dy}{dx} + 
+										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
+										\cos x
+										=\amp\ \big[ 
+										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{\sin x}}}}\
+										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
+										\big]'
+									</mrow>
+								</md>
+								which allows us to update the left-side of the equation as
+								<me>
+									\frac{d}{dx}\big[e^{\sin x} \cdot y \big]' = 0
+								</me>.
+							</p>
+						</li>
+						<li>
+							<p>
+								To solve the differential equation, we can directly integrate both sides of the equation with respect to <m>x</m>. This gives us
+								<me>
+									\int e^{\sin x} \, dx = c
+								</me>
+								and then divide by <m>e^{\sin x}</m> to isolate <m>y</m>:
+								<me>
+									y = c e^{-\sin x}
+								</me>.
+							</p>
+						</li>
+					</ol>
+				</solution>
+			</p>
+
+		</example>
+
+		<example>
+	
+			<statement>
+				<p>
+					Determine if the integrating factor method can be applied to the differential equation 
+					<me>
+						y' = y^2 + x.
+					</me>
+				</p>
+			</statement>
+	
+			<solution>
+				<p>
+					As always, we start by trying to classify the equation to determine which method applies. A quick observation shows us that we are dealing with a first order, nonlinear differential equation.
+					<aside>
+						<p>
+							The <m>y^2</m> term makes the DE nonlinear.
+						</p>
+					</aside>
+					This leaves separation of variables as the remaining possibility, but it is also easy to see that the <m>x</m> and <m>y</m> terms cannot be separated by multiplication. 
+				</p>
+		
+				<p>
+					Since the classification falls outside the requirements of any of our known methods, we are not equipped to solve it at this time.   
+				</p>
+			</solution>
+	
+		</example>
+
+		<example>
+			<p>
+			Given that <m>y</m> is some unknown function of <m>x</m>, compute <m>\left[y\sin x\right]'</m>.
+			</p>
+	
+			<solution>
+				<p>
+				
+				<md>
+					<mrow>
+					\left[ y\sin x \right]'
+						= y \cdot \left[ \sin x \right]'+\left[ y \right]'\cdot \sin x
+						= y\cos x + y'\cdot \sin x
+				</mrow>
+				</md>
+	
+			</p>
+			</solution>
+	
+		</example>
+
+		<example>
+
+			<p>
+				Suppose some product rule produced the following derivative
+		
+				<men xml:id="example-if-product-rule-reverse-01-eq">
+					2e^{2x} \cdot \sin x + e^{2x}\cdot \cos x.
+				</men>
+	
+				Write down the product rule that this came from. That is, rewrite it in the form 
+				<me>[f \cdot g]^{\prime}.</me>
+				
+			</p>
+	
+			<solution>
+				<p>
+					Our goal is to find <m>f</m> and <m>g</m> so that the <xref ref="if-product-rule" text="custom"> product rule </xref> gives us <xref ref="example-if-product-rule-reverse-01-eq"/>. This requires that we match the terms of <m>f' \cdot g + f \cdot g'</m> and <xref ref="example-if-product-rule-reverse-01-eq"/>.
+				</p>
+	
+				<p>
+					Observing that <m>[e^{2x}]^{\prime} = 2e^{2x}</m>, and <m>[\sin x]^{\prime} = \cos x,</m> then it makes sense to match the terms like so
+					<me>
+						\underset{f^{'}}{\underline{2e^{2x}}} \cdot \underset{g}{\underline{\sin x}} + \underset{f}{\underline{e^{2x}}} \cdot \underset{g^\prime}{\underline{\cos x}}.
+					</me>
+				</p>
+	
+				<p>
+					Therefore, we can rewrite <xref ref="example-if-product-rule-reverse-01-eq"/> like so 
+					<me>
+						2e^{2x} \cdot \sin x + e^{2x}\cdot \cos x = [e^{2x} \cdot \sin x]^{\prime},
+					</me>
+					and we have "reversed the product rule".
+				</p>
+	
+			</solution>
+	
+		</example>
+
+		<example>
+
+			<p>
+				Suppose the following expression is the derivative of a product of two functions, where <m>z</m> is a function of <m>t</m>:
+				<me>6ze^{6t} + e^{6t} z'</me>
+				Find the two functions and write down the derivative of their product, explicitly showing the steps involving the product rule.
+			</p>
+	
+			<solution>
+				<p>
+					We are still trying to identify two functions, <m>f</m> and <m>g</m>, such that we see each function and its derivative as in the product rule. We may need to rearrange a little bit, but we do in fact have such functions, as shown below.
+					<me>
+						\us{\large f'}{\us{\uparrow}{\ul{6e^{6t}}}} 	\cdot \us{\large g}{\us{\uparrow}{z}}
+							+ \us{\large f}{\us{\uparrow}{\ul{e^{6t}}}}	\cdot \us{\large g'}{\us{\uparrow}{z'}}
+					</me>
+					Hence, <m>f=e^{6t}</m> and <m>g=z</m> and the derivative, using the product rule, is
+					<me>
+						\frac{d}{dt}\Big( e^{6t}\cdot z \Big) = 6ze^{6t} + e^{6t} z'
+					</me>
+				</p>
+	
+				<p>
+					Warning:  You've been looking at a very special class of expressions! Not every sum of terms comes from the product rule. For example, we cannot un-do the product rule in the expression
+					<me>x^3\cdot y' + x^2\cdot y,</me>
+					because the derivative of <m>x^3</m> is not <m>x^2</m>. You should pay close attention to whether you can or cannot un-do the product rule; this can help confirm if you have or have not made a mistake in solving a DE. We'll discuss this further later.
+				</p>
+			</solution>
+	
+		</example>
+
+		<example>
+
+			<p>
+				Rewrite the expression
+				<men xml:id="example-if-product-rule-reverse-03-eq">
+					e^{h(x)} \cdot y' + 3x^2 e^{h(x)}\cdot y
+				</men>
+				as a "reversed product rule" in the form 
+				<me>\frac{d}{dx}\left[y \cdot e^{h(x)}\right].</me>
+			</p>
+	
+			<solution>
+				<p>
+					We will approach this as before and attempt to match the appropriate terms.
+				</p>
+	
+				<p>
+					The <xref ref="if-product-rule" text="custom"> product rule </xref> tells us that <m>\ds\frac{d}{dx}\left[y \cdot e^{h(x)}\right]</m> is the same as 
+					<me>y' \cdot e^{h(x)} + y \cdot e^{h(x)} \cdot h'.</me>
+					<aside>
+						<p>
+							We used the chain rule to compute <m>\ds\frac{d}{dx}\left[e^{h(x)}\right].</m>
+						</p>
+					</aside>
+					After arranging the terms, we match <xref ref="example-if-product-rule-reverse-03-eq"/> with
+					<me>e^{h(x)} \cdot y' + \underline{h'(x)} e^{h(x)} \cdot y.</me>
+					and see that <m>h'(x)</m> can only be matched to <m>3x^2</m>. So, 
+					<me>h'(x) = 3x^2,</me>
+					and this means that <m>h</m> is the anti-derivative of <m>3x^2</m>, or 
+					<me>h(x) = x^3 + C.</me>
+					This shows that there are many possible answers (one for each value of <m>C</m>), but only one is required. So we pick <m>C=0</m> which makes <m>h(x) = x^3</m> and conclude that
+					<me>e^{h(x)} \cdot y' + 3x^2 e^{h(x)}\cdot y = \frac{d}{dx}\left[y \cdot e^{x^3}\right].</me>
+				</p>
+			</solution>
+	
+		</example>
+
+		<example>
+
+			<p>
+				Find a function, <m>\mu</m>, such that tbe product rule applied to <m>\ds\frac{d}{dx}\left[y \cdot \mu\right]</m> gives
+				<men xml:id="example-if-product-rule-reverse-04-eq">
+					\mu \cdot y' + 6 \mu \cdot y.
+				</men>
+			</p>
+	
+			<solution>
+				<p>
+					As we did before, we need to identify functions  such that we see each function and its derivative as in the product rule. We might label them as follows.
+					<me>
+						\begin{array}{ccccccc}
+						z \!\!\!\! \amp \cdot \amp \!\!\!\! y' \!\!\!\! \amp + \amp \!\!\!\! 6z \!\!\!\! \amp \cdot \amp \!\!\!\! y \\
+						\underset{\large f }{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large g'}{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large f'}{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large g }{\uparrow} \\
+						\end{array}
+					</me>
+				</p>
+		
+				<p>
+					Based on the labeling in the question above, if we are going to be able to un-do the product rule, we need the function <m>z</m> to be such that its derivative is <m>6z</m>. We can translate that into a mathematical statement:
+					<me>
+						\text{"the derivative of } z \text{ is } 6z \text{"}\hspace{0.1cm} \Rightarrow \hspace{0.1cm}\frac{dz}{dx} = 6z.
+					</me>
+				</p>
+		
+				<p>
+					In order to determine the unknown function <m>z</m>, we need to solve a differential equation! It turns out that this DE is first order and separable, so we can solve it using separation of variables.
+					<md>
+						<mrow> \frac{dz}{dx}			\amp = 6z				</mrow>
+						<mrow> \frac{dz}{dx} \cdot dx	\amp = 6z \cdot dx		</mrow>
+						<mrow> \frac 1z\ dz				\amp = 6 \cdot dx		</mrow>
+						<mrow> \int\frac1z\ dz			\amp = \int 6\ dx		</mrow>
+						<mrow> \ln|z|					\amp = 6x+C				</mrow>
+						<mrow> |z|						\amp = e^{6x+C}			</mrow>
+						<mrow> z						\amp = \pm e^C e^{6x}	</mrow>
+						<mrow> z						\amp = A e^{6x}			</mrow>
+					</md>
+				</p>
+		
+				<p>
+					While we could choose any value for <m>A</m> that we like, we are looking for just one function <m>z</m>, so we will simplify things by choosing <m>A = 1</m>. Thus, the function we found is <m>z = e^{6x}</m>.
+					Now let's confirm that it works. If we substitute our function in for <m>z</m> in <xref ref="example-if-product-rule-reverse-04-eq" />, then we can un-do the product rule as follows:
+					<me>
+						\begin{array}{cccccccccccc}
+						e^{6x} \!\!\!\! \amp \cdot \amp \!\!\!\! y' \!\!\!\! \amp + \amp \!\!\!\! 6e^{6x} \!\!\!\! \amp \cdot \amp \!\!\!\! y \!\!\!\! \amp \ds = \frac{d}{dx}\Big( \amp \!\!\!\! e^{6x} \!\!\!\! \amp \cdot \amp \!\!\!\! y \!\!\!\!\! \amp \Big). \\
+						\underset{\large f }{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large g'}{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large f'}{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large g }{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large f }{\uparrow} \!\!\!\! \amp \amp \!\!\!\! \underset{\large g }{\uparrow} \!\!\!\!\! \amp \\
+						\end{array}
+					</me>
+				</p>
+		
+				<p>
+					Notice that if we identify <m>e^{6x}</m> as the function <m>f</m>, then we do indeed see its derivative, <m>6e^{6x}</m> in the other term. If we made a mistake in finding the function <m>z</m>, this would be the point where we could catch our mistake.
+				</p>
+			</solution>
+	
+		</example>
+	
+		<example>
+	
+			<p>
+				Suppose <m>y</m> is a function of <m>x</m>. Find one function <m>z(x)</m> such that the derivative of <m>z(x)\cdot y</m> has the form
+				<men xml:id="undo_prod3"> z\cdot y' + z\sec^2 x\cdot y</men>
+			</p>
+		
+			<solution>
+				<p>
+					It may be easier to sort this out if we label parts of the equation to align with the product rule, as below.
+					<me>
+						\ub{z}_{\scriptsize f}\cdot \ub{y'}_{\scriptsize g'} + \ub{z\sec^2 x}_{\scriptsize f'}\cdot \ub{y}_{\scriptsize g}
+					</me>
+				</p>
+		
+				<p>
+					If we're going to be able to undo the product rule, we will need to find a function <m>z</m> such that
+					<me>\frac{dz}{dx} = z\sec^2 x.</me>
+				</p>
+		
+				<p>
+					This is a first order, separable DE, and we solve it accordingly.
+					<md>
+						<mrow>\frac{1}{z}dz			\amp = \sec^2 x dx	</mrow>
+						<mrow>\int \frac{1}{z}dz	\amp = \int \sec^2 x dx	</mrow>
+						<mrow> \ln|z|				\amp = \tan x + C	</mrow>
+						<mrow> |z|					\amp =e^{\tan x + C}	</mrow>
+						<mrow> z					\amp = \pm e^C\cdot e^{\tan x}	</mrow>
+						<mrow> z					\amp = A e^{\tan x}	</mrow>
+					</md>
+				</p>
+		
+				<p>
+					Since we need only one function <m>z</m>, we can choose any value we like for <m>A</m>. Here we will choose <m>A = 1</m>, and therefore the function <m>z</m> is <m>z = e^{\tan x}</m>. We can check by un-doing the product rule.
+					<md>
+						<mrow>
+							\ub{e^{\tan x}}_{\scriptsize f}\cdot \ub{y'}_{\scriptsize g'} 
+								+ \ub{e^{\tan x}\sec^2 x}_{\scriptsize f'}\cdot \ub{y}_{\scriptsize g}	
+								\amp = \frac{d}{dx}\Big( \ub{e^{\tan x}}_{\scriptsize f}\cdot \ub{y}_{\scriptsize g} \Big)
+						</mrow>
 					</md>
 				</p>
 			</solution>
-			
-		</webwork>
-
-	</exercise>
-
-	<exercise label="chkpt-separable-form-showing-forms-6"><title> <em>WebWork Problem</em> </title>
-		
-		<introduction>
+	
+		</example>
+	
+		<example>
+	
 			<p>
-				Write the differential equation,
+				Suppose <m>P</m> and <m>y</m> are functions of <m>x</m>. Find one function <m>z(x)</m> such that the derivative of <m>z(x)\cdot y</m> has the form
+				<men xml:id="undo_prod4"> z\cdot y' + z P(x)\cdot y	</men>
+			</p>
+	
+		<solution>
+
+			<p>
+				This is a generic version of the previous example. If we can draw a conclusion using this generic version, we might be able to use it in future examples.
+			</p>
+	
+			<p>
+				As before, it may be easier to sort this out if we label parts of the equation to align with the product rule, as below.
 				<me>
-					tP\frac{dP}{dt} = e^tP^2 - e^t
-				</me>,
-				in <xref ref="separable-form" text="custom">separable form</xref> by identifying <m>f(t)</m> and <m>g(P)</m>.
-			</p><p/>
-		</introduction>
-		
-		<webwork xml:id="p2-c2-s1-i5-ww">
-			<description>
-				Show that the DE is separable by giving the separable form.
-			</description>
-	
-			<pg-code>
-				Context()->variables->add(t => 'Real');
-				Context()->variables->add(P => 'Real');
-				$ft = Formula("e^(t)/t");
-				$gP = Formula("(P^2 - 1)/P");
-			</pg-code>
-	
-			<statement>
-
-				<p>
-					<tabular halign="center">
-					
-						<row>
-							<cell><m>\quad\ds \frac{dP}{dt} = \Big( </m></cell>
-							<cell><var name="$ft" width="5" /></cell>
-							<cell><m>\Big) \cdot \Big( </m></cell>
-							<cell><var name="$gP" width="5" /></cell>
-							<cell><m>\Big)</m></cell>
-						</row>
-						<row>
-							<cell/>
-							<cell><m>f(t)</m></cell>
-							<cell/>
-							<cell><m>g(P)</m></cell>
-							<cell/>
-						</row>
-
-					</tabular>
-				
-				</p>
-
-			</statement>
-
-			<!-- <hint>
-				Isolate the derivative, factor out <m>e^t</m>, and split the fraction.
-			</hint> -->
-	
-			<solution><title> Solution </title>
-				<p>
-					We isolate the derivative and group the terms as shown below. Notice how we separated the product of two fractions <m>\left(\frac{AB}{CD} = \frac{A}{C}\cdot \frac{B}{D}\right)</m>.
-					<me>
-						tP\frac{dP}{dt}
-							= e^tP^2 - e^t 
-							= \frac{e^t \cdot (P^2 - 1)}{t \cdot P} 
-							= \frac{e^t}{t} \cdot \frac{P^2 - 1}{P} 
-							= \underset{f(t)}{\boxed{\frac{e^t}{t}}}\underset{g(P)}{\left(\boxed{\frac{P^2 - 1}{P}}\right)}
-					</me>.
-				</p>
-			</solution>
-			
-		</webwork>
-		
-	</exercise>
-
-	<exercise label="chkpt-sov-method-examples-3"><title> <em>WebWork Problem</em> </title>
-
-		<introduction>
-			<p>
-				Complete each step below to solve the differential equation
-				<me> \frac{dy}{dx} - y\cos(x) = y.</me>
+					\ub{z}_{\scriptsize f}\cdot \ub{y'}_{\scriptsize g'} + \ub{zP(x)}_{\scriptsize f'}\cdot \ub{y}_{\scriptsize g}
+				</me>
 			</p>
-		</introduction>
-			
-		<webwork xml:id="p2-c2-s4-i3-ww"> 
-			<description>
-				Solve a separable DE using separation of variables.
-			</description>
-
-			<pg-code>
-				Context()->variables->add(y => 'Real');
-				Context()->variables->add(c => 'Real');
-				$ans1a = 1;
-				$ans1b = Formula("1+cos(x)");
-				$ans1c = Formula("y");
-				$ans2a = Formula("1+cos(x)");
-				$ans2b = Formula("1/y");
-				$ans3a = Formula("x+sin(x)");
-				$ans3b = Formula("ln|y|");
-				$ans = Formula("c*e^(x+sin(x))");
-			</pg-code>
-
-			<statement>
-				<p>
-					Verify that the differential equation is separable.
-				</p>
-
-				<p>
-					<tabular>
-						<col halign="right"/>
-						<col halign="right"/>
-						<col halign="left"/>
-						<row>
-							<cell>order:</cell>
-							<cell><var name="$ans1a"  width="5" /></cell>
-							<cell/>
-							<cell/>
-						</row>
-						<row>
-							<cell><m>\phantom{.}</m></cell>
-						</row>
-						<row>
-							<cell>separable form:</cell>
-							<cell><m>\ds \frac{dy}{dx} = </m></cell>
-							<cell><m>\Big(</m><var name="$ans1b" width="10" /><m>\Big)</m></cell>
-							<cell><m>\Big(</m><var name="$ans1c" width="10" /><m>\Big)</m></cell>
-						</row>
-						<row>
-							<cell/>
-							<cell/>
-							<cell><m>f(x)</m></cell>
-							<cell><m>g(y)</m></cell>
-						</row>
-					</tabular>
-				</p>
-
-				<p>
-					Separate and integrate. Give the integrals and antiderivatives.
-				</p>
-
-				<p>
-					<tabular>
-						<col halign="right"/>
-						<row>
-							<cell>
-								<m>\ds\int</m> <var name="$ans2b" width="10" /> <m>dy</m>
-							</cell>
-							<cell>
-								<m>=</m>
-							</cell>
-							<cell>
-								<m>\ds\int</m> <var name="$ans2a" width="10" /> <m>dx</m>
-							</cell>
-						</row>
-						<row>
-							<cell>
-								<var name="$ans3b" width="10" /> <m> + c_1</m>
-							</cell>
-							<cell>
-								<m>=</m>
-							</cell>
-							<cell>
-								<var name="$ans3a" width="10" /> <m> + c_2 </m>
-							</cell>
-						</row>
-					</tabular>
-				</p>
-
-				<p>
-					Don't forget the absolute value on the left antiderivative.
-				</p>
-
-				<p>
-					Isolate. Give the general solution. <em>Use <m>c</m> for the combined constant.</em>
-				</p>
-
-				<p>
-					<tabular>
-						<col halign="right"/>
-						<row>
-							<cell>
-								<m>y(x) = </m> <var name="$ans" width="10" />
-							</cell>
-						</row>
-					</tabular>
-				</p>
-
-			</statement>
-
-		</webwork>
-
-	</exercise>
-
-	<exercise label="chkpt-sov-method-examples-4"><title> <em>WebWork Problem</em> </title>
-
-		<introduction>
+	
 			<p>
-				Complete each step below to solve the differential equation
-				<me> \frac{dy}{dx} - y\cos(x) = y.</me>
+				If we're going to be able to undo the product rule, we will need to find a function <m>z</m> such that
+				<me>\frac{dz}{dx} = zP(x).</me>
 			</p>
-		</introduction>
-			
-		<webwork xml:id="p2-c2-s4-i4-ww"> 
-			<description>
-				Solve a separable DE using separation of variables.
-			</description>
-
-			<pg-code>
-				Context()->variables->add(y => 'Real');
-				Context()->variables->add(t => 'Real');
-				$a = random(2,8,1);
-				$ans1 = 1;
-				$ans2a = Formula("t^{$a}");
-				$ans2b = Formula("1-y");
-				$ans3a = Formula("1/(1-y)");
-				$ans3b = Formula("t^{$a}");
-				$ans4a = Formula("-ln(1-y)");
-				$ans4b = FormulaUpToConstant("1/($a + 1)* t^{$a + 1}");
-				$ans = Formula("1 - C*exp(-t^{$a+1}/($a + 1)) "); 
-			</pg-code>
-
-			<statement>
-				<ol marker="1.">
-					<li>
-						Verify that the DE has first order. 
-						<me> \frac{dy}{dt}= t^{<var name="$a" /> }-yt^{<var name="$a" /> } .</me>
-						Order <m>=</m> <var name="$ans1"  width="15" />
-					</li>
-
-					<li>
-						<p>
-							Attempt to re-write the DE into the separable form
-							<me> y'= f(t) \cdot g(y).</me>
-							<m>f(t) =</m> <var name="$ans2a" width="15" /> , 
-							<m>g(y) =</m> <var name="$ans2b" width="15" />
-						</p>
-					</li>
-
-					<li>
-						<p>
-							Use algebra to move the <m>y</m> terms to the left
-							<me> \frac{1}{g(y)} \cdot y'= f(t).</me>
-							<var name="$ans3a" width="15" /> <m> \cdot y' = </m> <var name="$ans3b" width="15" />
-						</p>
-					</li>
-
-					<li>
-						<p>
-							Integrate both sides with respect to <m>t</m>. Hint: Don't forget the +C after doing the indefinite integral. 
-							<var name="$ans4a" width="25" /> <m> = </m> <var name="$ans4b" width="25" />
-						</p>
-					</li>
-
-					<li>
-						<p>
-							After working out the integrals on each side of the equation, you will be left with <m>y</m>'s on the left and <m>t</m>'s on the right. Finish the problem by using algebra to solve for <m>y</m>.
-						</p>
-						<p>
-							<m>y(t) = </m> <var name="$ans" width="25" />
-						</p>
-					</li>
-					
-				</ol>
-
-			</statement>
-
-		</webwork>
-		
-	</exercise>
-
-	<example><title> Reversed Product Rule in a Differential Equation </title>
-
+	
+			<p>
+				This is a first order, separable DE, and we solve it accordingly.
+				<md>
+					<mrow>	\frac{1}{z}dz	\amp = P(x) dx	</mrow>
+					<mrow>	\int \frac{1}{z}dz	\amp = \int P(x) dx	</mrow>
+					<mrow>		\ln|z|	\amp = \int P(x) dx	</mrow>
+					<mrow>		|z|	\amp =e^{\int P(x) dx}	</mrow>
+					<mrow>		z	\amp = \pm e^{\int P(x) dx}	</mrow>
+				</md>
+			</p>
+	
+			<p>
+				Since we need only one function <m>z</m>, we usually choose the positive one and therefore we write <m>z = e^{\int P(x) dx}</m>.
+			</p>
+	
+			<p>
+				This may not look like much, but let's see if it would work for the previous examples already did. Recall that we were trying to un-do the product rule in the expression
+				<men> z\cdot y' + z\sec^2 x\cdot y	</men>
+			</p>
+	
+			<p>
+				In this example, we would identify the function <m>P(x)</m> as <m>P(x) = \sec^2 x</m>. Then the function <m>z</m> we desire would be given by
+				<me>\ds z = e^{\int P(x) dx} = e^{\int \sec^2 x dx} = e^{\tan x + C} = e^{\tan x}.</me>
+			</p>
+	
+			<p>
+				(Notice that we chose <m>C = 0</m> because we need only one function <m>z</m>, and this is the simplest choice for <m>C</m>).
+			</p>
+	
+			<p>
+				So our formula does give the same function <m>z</m> we found previously. Let's practice one more.
+			</p>
+	
+		</solution>
+	
+		</example>
+	
+		<example>
+	
 		<p>
-			<statement>
-				<p>
-					Rewrite the left-side of the differential equation
-					<me>
-						e^{\sin x} \frac{dy}{dx} + \cos x\ e^{\sin x} y = 0
-					</me>
-					as a reversed product rule. Then find the general solution of the equation by <xref ref="direct-integration" text="custom">direct integration</xref>.
-				</p>
-			</statement>
+			Suppose <m>y</m> is a function of <m>x</m>. Find one function <m>z(x)</m> such that the derivative of <m>z(x)\cdot y</m> has the form
+			<me>z\cdot y' + z\cdot\frac{1}{x}\cdot y</me>
 		</p>
-
-		<p>
-			<solution>
-
-				<ol>
-					<li>
-						<p>
-							To reverse the product rule on the left-side, let's label <m>f</m> and <m>g</m> as before. This time, we get
-						</p>
-
-						<p>
-							<md>
-								<mrow>	
-									\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{\sin x}}}}\
-									\frac{dy}{dx} + 
-									\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
-									\cos x
-									=\amp\ \big[ 
-									\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{\sin x}}}}\
-									\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
-									\big]'
-								</mrow>
-							</md>
-							which allows us to update the left-side of the equation as
-							<me>
-								\frac{d}{dx}\big[e^{\sin x} \cdot y \big]' = 0
-							</me>.
-						</p>
-					</li>
-					<li>
-						<p>
-							To solve the differential equation, we can directly integrate both sides of the equation with respect to <m>x</m>. This gives us
-							<me>
-								\int e^{\sin x} \, dx = c
-							</me>
-							and then divide by <m>e^{\sin x}</m> to isolate <m>y</m>:
-							<me>
-								y = c e^{-\sin x}
-							</me>.
-						</p>
-					</li>
-				</ol>
-			</solution>
-		</p>
-
-	</example>
-
-	<exercise label="p2-c3-s4-rq3"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				In solving the equation <m>\ds y' + P(x)y = Q(x)</m>, what form does the general solution take after direct integration?
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						<m>\ds y(x) = ∫Q(x)dx</m>.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This is not the correct form. You need to account for the integrating factor as well.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\ds y(x) = e^{∫P(x) dx} ∫e^{-∫P(x)dx} Q(x) dx</m>.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! This is the general solution after applying the integrating factor and performing direct integration.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\ds y(x) = ∫e^{P(x)} Q(x) dx</m>.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The correct general solution includes the integrating factor in both the exponent and the integral.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\ds y(x) = Ce^{Q(x)}</m>.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This form does not represent the general solution to this type of equation.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</exercise>
-
-	<exercise label="p2-c3-s4-rq5"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				What technique was used to evaluate the integral 
-				<me>
-					\int t^3 \ln t \, dt
-				</me>?
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						Substitution.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. Substitution is not the technique used here.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						Integration by parts.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! Integration by parts is the appropriate technique for this integral.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						Partial fraction decomposition.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. Partial fraction decomposition is not useful for this integral.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						The Product Rule.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The product rule is a differentiation technique, not an integration technique.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</exercise>
-
-	<exercise label="p2-c3-s4-rq6"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				After finding the integrating factor, how is the general solution to the differential equation found?
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						By directly solving for the constant of integration.
-					</p>
-				</statement>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						By integrating both sides of the equation with respect to the independent variable.
-					</p>
-				</statement>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						By factoring the equation.
-					</p>
-				</statement>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						By solving for the dependent variable directly.
-					</p>
-				</statement>
-			</choice>
-		</choices>
-	</exercise>
 	
-	<exercise label="p2-c3-s4-rq8"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
+		<solution>
+			
 			<p>
-				Select the integrating factor for the equation
-				<me>
-					x^2 y' - y = 1
-				</me>.
+				In this example, the <m>\ds \frac{1}{x}</m> plays the same role as <m>P(x)</m> (in the previous EXAMPLE). Thus we can find <m>z</m> in a similar way.
+				<me>\ds z = e^{\int 1/x\ dx} = e^{\ln|x| + C}.</me>
 			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds e^{1/x^2} </m>
-					</p>
-				</statement>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds x^2 </m>
-					</p>
-				</statement>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\quad\ds e^{1/x} </m>
-					</p>
-				</statement>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds \frac{1}{x} </m>
-					</p>
-				</statement>
-			</choice>
-		</choices>
-	</exercise>
+	
+			<p>
+				As in the previous example, we need only one function <m>z</m>, so we can simplify this expression. In this case, we can choose <m>C = 0</m>, and we can also eliminate the absolute value. This lead us to <m>z = e^{\ln x}</m>, which further simplifies to <m>z = x</m>. As in the previous examples, we can replace <m>z</m> in the original expression and then actually un-do the product rule.
+				<md>
+					<mrow> 
+						z\cdot y' + z\cdot\frac{1}{x}\cdot y	\amp = x\cdot y' + x\cdot\frac{1}{x}\cdot y
+					</mrow>
+					<mrow>										\amp = x\cdot y' +  y				</mrow>
+					<mrow>										\amp = \frac{d}{dx}\Big( xy \Big)	</mrow>
+				</md>
+			</p>
+
+		</solution>
+	
+		</example>
+
+	</subsubsection>
 
 </subsection>
