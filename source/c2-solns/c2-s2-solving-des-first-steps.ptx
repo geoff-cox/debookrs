@@ -1,0 +1,284 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> An Introduction to the Solution Process </title>
+
+	<introduction>
+		
+		<p>
+			Solving a differential equation might sound like a new challenge, but chances are you've already encountered it without even realizing it. In calculus, when computing an antiderivative, you were actually solving a simple differential equation. 
+		</p>
+
+		<p>
+			In this section, we will revisit this familiar concept and expand it to cover slightly more complex equations. You will learn how to isolate the dependent variable and find the general solution by integrating both sides of the equation. Throughout this process, we will also discuss the importance of constants of integration and demonstrate how initial conditions can be applied to find a specific solution.
+		</p>
+
+		<p>
+			By the end of this section, you'll see that solving first-order differential equations often builds directly on the skills you already have from calculus. These techniques provide a foundation for more advanced methods, including the integrating factor method, which we'll explore later.
+		</p>
+	
+	</introduction>
+
+	<subsection><title> Antiderivatives </title>
+
+		<p>
+			You might not realize it, but solving some differential equations is a skill you already have! For example, when you compute the antiderivative of <m>x^2</m>, you are finding a function <m>y</m> whose derivative is <m>x^2</m>. In other words:
+		</p>
+
+		<blockquote>
+			<p>
+				<q>Find <m>y</m> such that the derivative of <m>y</m> is <m>x^2</m>?</q>
+			</p>
+		</blockquote>
+
+		<p>
+			However, this directly translates into the differential equation problem:
+		</p>
+
+		<blockquote>
+			<p>
+				<q>Find <m>y</m> such that <m>\ \ds \frac{d}{dx}[y] = x^2</m>.</q>
+			</p>
+		</blockquote>
+		
+		<p>
+			To find <m>y</m>, you can integrate both sides of the equation with respect to <m>x</m>,
+		</p>
+		
+		<md>
+			<mrow> \int\frac{d}{dx}[y]\ dx	\amp = \int x^2\ dx				</mrow>
+			<mrow> 					y + c_1	\amp = \frac13 x^3 + c_2		</mrow>
+			<mrow> 						y	\amp = \frac13 x^3 + c_2 - c_1 \quad \implies \quad y = \frac13 x^3 + c	</mrow>
+		</md>
+		
+		<p>
+			Here, <m>c = c_2 - c_1</m>, which is just another constant. Therefore, the solution is the antiderivative of <m>x^2</m> with a single constant of integration:
+		</p>
+
+		<me>
+			y = \frac{1}{3}x^3 + c
+		</me>.
+
+		<p>
+			Now, let's look at a slightly more complex example.
+		</p>
+		
+		<example><title> Isolate <m>y</m> </title>
+			<p>
+				<statement>
+					<p>
+						Find the function, <m>y</m>, such that 
+						<me>
+							2y' - 4\sin x = 2
+						</me>.
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					This is another antiderivative problem where we first have to isolate <m>y'</m> before integrating, like so
+				</p>
+				
+				<me>
+					y' = 1 + 2 \sin x
+				</me>.
+				
+				<p>
+					This equation now says <q>The unknown <m>y</m> is the function whose derivative is <m>1 + 2 \sin x</m></q> or, in other words,
+				</p>
+
+				<blockquote>
+					<p>
+						<q>The unknown <m>y</m> is the antiderivative of <m>1 + 2 \sin x</m></q>.
+					</p>
+				</blockquote>
+
+				<p>
+					Instead of writing down the antiderivative as our solution, let's take the differential equations approach and integrate both sides of the equation with respect to <m>x</m>
+				</p>
+				
+				<md>
+					<mrow> \int y'\ dx 	\amp = \int \left(1 + 2 \sin x\right) \ dx 				</mrow>
+					<mrow> 	y + c_1 	\amp = x - 2 \cos x + c_2 								</mrow>
+					<mrow> 			y 	\amp = x - 2 \cos x + \boxed{c_2 - c_1}\leftarrow c		</mrow>
+					<mrow> 		y(x)	\amp  = x - 2 \cos x + c 								</mrow>.
+				</md>
+				
+				<p>
+					As before, the constants of integration are combined into a single constant <m>c</m>. This practice of merging constants is standard in solving differential equations and simplifies the final result.
+				</p>
+
+			</solution>
+		
+		</example>
+
+		<xi:include href="./c2-exercises/c2-chkpts-2-1-antiderivatives.ptx" />
+
+		<p>
+			In summary, solving simple differential equations often reduces to finding the antiderivative of a function. By integrating both sides and simplifying constants, you can find the general solution.
+		</p>
+
+	</subsection>
+
+	<subsection><title> Direct Integration Method </title>
+
+		<p>
+			The previous section showed us that if we can isolate the derivative of the dependent variable, <m>y</m>, in the form
+			<me>
+				\frac{d}{dx}[y] = f(x)
+			</me>, 
+			then the solution can be found by integrating both sides. This principle extends to more complex equations of the form:
+			<me>
+				\frac{d}{dx}\left[g(x,y)\right] = f(x)
+			</me>.
+		</p>
+
+		<p>
+			Here, <m>f(x)</m> is a placeholder that indicates that <em>only</em> <m>x</m> variables can appear on the right-hand side of this equation. Similarly, <m>g(x,y)</m> indicates that <em>only</em> <m>x</m> or <m>y</m> variables can appear inside the derivative. This leads us to our first method for solving first-order differential equations—<em>direct integration</em>.
+		</p>
+
+		<exploration xml:id="direct-integration"><title> Direct Integration </title>
+			<p>
+				The general solution of a differential equation in the form
+				<men xml:id="direct-integration-equation">
+					\frac{d}{dx}\left[g(x,y)\right] = f(x)
+				</men>,
+				can be determined by through the following steps:
+				<dl>
+					<li xml:id="di-step-1"><title> Integrate both Sides </title>
+						<p>
+							Integrate both sides with respect to the independent variable, <m>x</m>, to eliminate the derivative containing <m>y</m>.
+						</p>
+					</li>
+					<li xml:id="di-step-2"><title> Isolate the Solution </title>
+						<p>
+							Now, isolate the dependent variable, <m>y</m>, to find the general solution.
+						</p>
+					</li>
+				</dl>
+			</p>
+		</exploration> 
+
+		<p>
+			Consider the following examples to see how this approach applies to some more interesting problems.
+		</p>
+
+		<example xml:id="direct-integration-example-1"><title> Integrate both sides to Recover <m>y</m> </title>
+		
+			<p>
+				<statement>
+					<p>
+						Find the particular solution to the differential equation
+						<me>
+							\frac{d}{dx}\left[5x \cdot y\right] = \frac{1}{x^2} , \quad y\left(1\right) = -4
+						</me>.
+					</p>
+				</statement>
+			</p>
+			<solution>
+
+				<p>
+					First, observe that this problem is in the form
+					<me>
+						\frac{d}{dx}\left[g(x,y)\right] = f(x)
+					</me>
+					where
+					<me>
+						g(x,y) = 5x \cdot y \quad \text{ and } \quad f(x) = \frac{1}{x^2}
+					</me>.
+				</p>
+				<p>
+					So, we can solve for <m>y</m> using direct integration:
+				</p>
+
+				<p>
+					<term> <xref ref="di-step-1" text="custom">Step 1: Integrate both Sides</xref> </term>
+				</p>
+
+				<p>
+					Integrating both sides with respect to <m>x</m>, we get
+					<md>
+						<mrow> \int \frac{d}{dx}\left[5x \cdot y\right]\ dx \amp = \int x^{-2}\ dx </mrow>
+						<mrow> 5x \cdot y + c_1 \amp = -x^{-1} + c_2 </mrow>
+					</md>
+				</p>
+
+				<p>
+					<term> <xref ref="di-step-2" text="custom">Step 2: Isolate the Solution</xref> </term>
+				</p>
+
+				<p>
+					Now that the dependent variable <m>y</m> is free from the derivative, we can isolate it to find the general solution, as follows
+					<md>
+						<mrow>  y \amp = \frac{1}{5x}\Big(-\frac{1}{x} + \overset{=\ c}{\overbrace{c_2 - c_1}}\Big) </mrow>
+						<mrow>  y \amp = \frac{1}{5x}\left(-\frac{1}{x} + c\right) \quad \leftarrow \ \text{general solution}</mrow>
+					</md>
+				</p>
+
+				<p>
+					Since we are given the condition <m>y\left(1\right) = -4</m>, we need to find <m>c</m>.
+					<md>
+						<mrow>  -4	\amp = \frac{1}{5}\left(-1 + c\right)\qquad \leftarrow \small\text{ multiply both sides by } 5	</mrow>
+						<mrow>  -20	\amp = -1 + c \quad \implies \quad c = -19	</mrow>
+					</md>
+					Therefore, the particular solution (for <m>c=-19</m>) is
+					<me>
+						y = \frac{1}{5x}\left(-\frac{1}{x} - 19\right)
+					</me>.
+				</p>
+
+			</solution>
+
+		</example>
+
+		<example xml:id="direct-integration-example-2"><title> Isolate the Derivative before Integrating </title>
+			<p>
+				<statement>
+					<p>
+						Compute the general solution of the differential equation
+						<me>
+							\frac{1}{\cos x}\frac{d}{dx}\Big[y\sin(2x)\Big] - 1 = \sec x
+						</me>
+					</p>
+				</statement>
+			</p>
+			<solution>
+				<p>
+					First, we get the derivative by itself on the left-hand side
+					<aside><title>☝️ Recall the Identity </title>
+						<p>
+							<me>
+								\sec x = \frac{1}{\cos x}
+							</me>
+						</p>
+					</aside>
+					<md>
+						<mrow> 
+							\frac{d}{dx}\Big[ y \sin(2x) \Big] =\amp\ \cos x\left( 1 + \frac{1}{\cos x} \right)
+						</mrow>
+						<mrow> 
+							\frac{d}{dx}\Big[
+								\us{\textcolor{BurntOrange}{g(x,y)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{y\sin(2x)}}}
+							\Big] =\amp\ \us{\textcolor{BurntOrange}{f(x)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{\cos x + 1}}}
+						</mrow>
+					</md>
+					Now, we integrate by sides with respect to <m>x</m>, releasing <m>y</m> from the derivative and allowing us to isolate the general solution.
+					<md>
+						<mrow>	\int \frac{d}{dx}\Big[y\sin(2x)\Big]dx	\amp = \int \left(\cos x + 1\right) \ dx	</mrow>
+						<mrow>							y\sin(2x) + c_1	\amp = \sin x + x + c_2						</mrow>
+						<mrow>										y	\amp = \frac{\sin x + x + c}{\sin(2x)} 
+																					\qquad (c = c_2 - c_1)
+						</mrow>
+					</md>.
+				</p>
+			</solution>
+
+		</example>
+
+		<xi:include href="./c2-exercises/c2-chkpts-2-2-direct-integration.ptx" />
+
+		<p>
+			The direct integration method is one of the simplest ways to solve a differential equation when the derivative of the dependent variable or an expression involving it is isolated. By integrating both sides and solving for <m>y</m>, you can find either the general solution or a particular solution if initial conditions are provided. This method highlights the close relationship between differentiation and integration, making it a natural starting point for understanding how to solve differential equations.
+		</p>
+
+	</subsection>
+
+</section>
