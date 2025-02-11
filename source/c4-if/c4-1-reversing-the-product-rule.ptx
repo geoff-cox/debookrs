@@ -1,199 +1,163 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Completing the Derivative </title>
 
 	<introduction>
-
-		<paragraphs><title>Intro 1</title>
 	
 		<p>
-			As you will see in the discussion that follow, the integrating factor method is essentially a direct integration problem in disguise. The difference here is that you must perform an initial step to rewrite the differential equation into a form for which direct integration applies.
+			The integrating factor method is a systematic process that converts a first-order linear differential equation into a direct integration problem. In terms of equation, it looks like
+			<men xml:id="if-completed-derivative-eqn">
+				\ub{\frac{dy}{dx} + P(x) y = Q(x)}_{\text{Given Equation}} \quad 
+				\os{\text{Integrating}}{\us{\text{Factor Method}}{\longrightarrow}} \quad 
+				\ub{\frac{d}{dx}[ \mu(x) y ] = \mu(x) Q(x)}_{\text{Completed Derivative Equation}}
+			</men>.
 		</p>
 
 		<p>
-			The integrating factor method relies on an essential calculus concept: the product rule for derivatives. 
+			The method gets its name from the function <m>\mu(x)</m> that must be included to get the <q>completed derivative equation</q> in <xref ref="if-completed-derivative-eqn"/>.
 		</p>
 
 		<p>
-			The key idea is to multiply the differential equation by an integrating factor that simplifies it into a form that can be solved by direct integration. In the next sections, we will explore how this is done, step by step.
+			The goal of this section is to develop an intuition for the integrating factor method by first exploring the idea of <q>completing the derivative</q>. We will start by drawing a parallel to completing the square, then move on to reversing the product rule, and finally examine how to introduce the missing component—<em>the integrating factor</em>—that makes the method work.
 		</p>
 
-		<p> 
-			We begin our discussion with a familiar concept that lies at the heart of the integrating factor (IF) method—the product rule. Recall that the product rule helps you differentiate the product of two functions. The IF method, however, does the reverse: it <q>undoes</q> the product rule to rewrite one side of the equation as a single derivative.
-		</p>
-
-		<p>
-			This reversal is central to this method and can be challenging to grasp in the context of solving differential equations. In this section, we will first revisit the product rule, then practice reversing it in simple expressions, and finally, apply it in the context of differential equations.
-		</p>
-
-		</paragraphs>
-		
-		
-		<paragraphs><title>Intro 2</title>
-
-			<p>
-			The last example in the previous section demonstrated how some differential equations can be solved by rewriting the left-hand side as a <q>reversed</q> product rule, followed by direct integration, summarized in the diagram below:
-		</p>
-
-		<sidebyside valigns="top middle middle middle bottom top" widths="10% 12% 3% 36% 20% 10%">
-			<p/>
-			<p>
-				<q>reverse</q> product rule
-			</p>
-			<p>
-				<me>
-					\left\lbrace\vphantom{\begin{array}{c}\\\\\\\\\end{array}}\right.
-				</me>
-			</p>
-			<p>
-				<md>
-					<mrow xml:id="if-example-complete-eqn">	e^{2x} 
-						\frac{dy}{dx}	\amp	+ \ 2e^{2x} y = 5e^{2x}
-					</mrow>
-					<mrow>
-						\amp	\downarrow
-					</mrow>
-					<mrow>
-						\frac{d}{dx}	\amp	\left[e^{2x} y \right] = 5e^{2x}\quad \leftarrow
-					</mrow>
-				</md>
-			</p>
-			<p>
-				Solve by direct integration
-			</p>
-			<p/>
-		</sidebyside>
-
-		<p>
-			Unfortunately, most equations are not initially in a form where the reverse product rule can be directly applied. However, every first-order linear differential equation is just one function away from completing this form. This missing function is called the <term>integrating factor</term>, and finding it is key to solving such equations.
-		</p>
-		
-		</paragraphs>
-
-		<objectives>
-			<p>
-				After completing this section, you will be able to:
-			</p>
+		<outcomes>
 			<ul>
 				<li>
 					<p>
-						Describe how solving a differential equation using the integrating factor method is analogous to solving a quadratic equation by <q>completing the square</q>.
+						Explain the analogy between solving a quadratic equation by completing the square and solving a differential equation using the integrating factor method.
 					</p>
 				</li>
 				<li>
 					<p>
-						Explain how the product rule from calculus is used <q>complete the derivative</q> of a first-order linear differential equation.
+						Recognize how the product rule from calculus plays a central role in <q>completing the derivative</q> of a first-order linear differential equation.
 					</p>
 				</li>
 				<li>
 					<p>
-						Reverse the product rule in simple expressions.
+						Practice reversing the product rule to rewrite expressions as a single derivative.
 					</p>
 				</li>
 				<li>
 					<p>
-						<q>Complete the derivative</q> on the left-hand side of a first-order linear differential equation.
+						Apply the concept of <q>completing the derivative</q> to transform a first-order linear differential equation into a form that can be solved by direct integration.
 					</p>
 				</li>
 			</ul>
-		</objectives>
-		
+		</outcomes>
+
+		<p>
+			Let's begin by exploring the completing the square analogy and how it relates to the integrating factor method.
+		</p>
 
 	</introduction>
 
-	<subsection><title> An Analogy </title>
+	<subsection><title> <q>Completing the Square</q> Analogy </title>
 
 		<p>
-			Solving a differential equation using the integrating factor method is analogous to solving a quadratic equation by <q>completing the square</q>. In both cases, you are including some missing component to get the equation into a form that makes it easier to solve. For example, consider the equation
+			Solving a differential equation using the integrating factor method is similar to solving a quadratic equation by <q>completing the square</q>. In both cases, you are including some missing component to get the equation into a form that makes it easier to solve. For example, consider the equation
 			<men xml:id="if-analogy-quadratic-eqn">
 				x^2 + 6x = -1
 			</men>.
 		</p>
 
 		<p>
-			We could solve this equation by moving <m>-1</m> to the left and applying the quadratic formula. However, another approach is to <q><xref ref="completing-the-square" text="custom">complete the square</xref></q> by adding a number to both sides of the equation that makes the left side a perfect square. For this equation, we add <m>9</m> to both sides to get
-			<aside>
-				<p>
-					To complete the square of <me>x^2 + bx + c = 0</me>, you add and subtract <m>(\frac12b)^2</m> to get <me>x^2 + bx + (\frac12b)^2 = -c + (\frac12b)^2</me>. This simplifies to <me>(x + \frac12b)^2 = -c + (\frac12b)^2</me>.
-				</p>
-			</aside>
-			<me>
-				x^2 + 6x + 9 = -1 + 9
-			</me>.
+			One approach to solving this equation is to move <m>-1</m> to the left side and apply the quadratic formula. However, another way is to <q>complete the square</q> by strategically adding the one number to both sides in order to make the left-hand side a perfect square. In this case, adding <m>9</m> gives:
+		</p>
+
+		<me>
+			x^2 + 6x + 9 = -1 + 9
+		</me>.
+
+		<p>
+			This allows us to rewrite the left-hand side as
+		</p>
+
+		<men xml:id="if-analogy-perfect-sqr-eqn">
+			(x + 3)^2 = 8
+		</men>,
+
+		<p>
+			which is much easier to solve (take the square root of both sides).
 		</p>
 
 		<p>
-			Adding <m>9</m> <q>completes the square</q> of <m>x^2 + 6x</m>, since the equation can now be rewritten as
-			<men xml:id="if-analogy-perfect-sqr-eqn">
-				(x + 3)^2 = 8
-			</men>
-			and easily solved by taking the square root of both sides.
+			The key idea here is that we artifically added the specific number needed to create the prefect square. This is useful since the square can be eliminated by a square root, allowing us to isolate <m>x</m>.
 		</p>
 
 		<p>
-			In the case of the first-order differential equation, 
-			<men xml:id="if-analogy-first-order-linear-eqn">
-				\frac{dy}{dx} + 6y = -1
-			</men>,
-			instead of <q>completing the square</q>, our goal is to <q>complete the derivative</q>. That is, we want to add something to the equation that allows us to rewrite the left side as the perfect derivative,
-			<men xml:id="if-analogy-di-eqn">
-				\frac{d}{dx}[e^{6x} y] = -e^{6x}
-			</men>,
-			which can be directly solved by integrating both sides. To summarize, here is a breakdown of the analogy:
+			The integrating factor method follows a similar approach but applied to differential equations. Instead of <q>completing the square</q>, we aim to <q>complete the derivative</q> and use an integral to eliminate the derivative, allowing us to isolate for <m>y</m>. For example, the first-order linear differential equation,
+		</p>
+
+		<men xml:id="if-analogy-first-order-linear-eqn">
+			\frac{dy}{dx} + 6y = -1
+		</men>,
+
+		<p>
+			resembles a product rule derivative but is missing a key component. Our goal is to find and introduce this missing piece so that the left-hand side becomes a perfect derivative:
+		</p>
+
+		<men xml:id="if-analogy-di-eqn">
+			\frac{d}{dx}[e^{6x} y] = -e^{6x}
+		</men>.
+
+		<p>
+			This new form is immediately solvable through direct integration. The function we introduced, <m>e^{6x}</m>, is called the <term>integrating factor</term>, and its role is analogous to the <m>9</m> that we added to complete the square in the quadratic example.
 		</p>
 
 		<assemblage><title>Integrating Factor Analogy</title>
 			<p>
-				Based on how <q>completing the square</q> works to solve a quadratic equation, the integrating factor method could be thought of as the completing the derivative method.
-				<tabular halign="center">
-					<col right="minor"/>
-					<col right="minor"/>
-					<row bottom="minor">
-						<cell/>
-						<cell>Complete the Square</cell>
-						<cell>Complete the Derivative</cell>
-					</row>
-					<row>
-						<cell>Equation</cell>
-						<cell><m>x^2 + 6x = -1</m></cell>
-						<cell><m>\ds\frac{dy}{dx} + 6y = -1</m></cell>
-					</row>
-					<row>
-						<cell>
-							<line>Missing</line>
-							<line>Part</line>
-						</cell>
-						<cell><m>9\ </m> (add)</cell>
-						<cell><m>e^{6x}\ </m> (multiply)</cell>
-					</row>
-					<row>
-						<cell>Result</cell>
-						<cell><m>x^2 + 6x + \boxed{9} = -1 + \boxed{9}</m></cell>
-						<cell><m>\ds\boxed{e^{6x}}\frac{dy}{dx} + 6\boxed{e^{6x}}y = -1 \boxed{e^{6x}}</m></cell>
-					</row>
-					<row>
-						<cell>Goal</cell>
-						<cell><m>(x + 3)^2 = 8</m></cell>
-						<cell><m>\ds\frac{d}{dx}[e^{6x} y] = -e^{6x}</m></cell>
-					</row>
-					<row>
-						<cell>
-							<line>Solution</line>
-							<line>Method</line>
-						</cell>
-						<cell>
-							<line>Solve for <m>x</m> by</line>
-							<line>Taking the Square Root</line>
-						</cell>
-						<cell>
-							<line>Solve for <m>y</m> by</line>
-							<line>Direct Integration</line>
-						</cell>
-					</row>
-				</tabular>
+				The table below summarizes the analogy between completing the square and completing the derivative:
 			</p>
+
+			<tabular halign="center">
+				<col right="minor"/>
+				<col right="minor"/>
+				<row bottom="minor">
+					<cell/>
+					<cell>Completing the Square</cell>
+					<cell>Completing the Derivative</cell>
+				</row>
+				<row>
+					<cell>Equation</cell>
+					<cell><m>x^2 + 6x = -1</m></cell>
+					<cell><m>\ds\frac{dy}{dx} + 6y = -1</m></cell>
+				</row>
+				<row>
+					<cell>
+						<line>Missing</line>
+						<line>Part</line>
+					</cell>
+					<cell><m>9\ </m> (add)</cell>
+					<cell><m>e^{6x}\ </m> (multiply)</cell>
+				</row>
+				<row>
+					<cell>Result</cell>
+					<cell><m>x^2 + 6x + \boxed{9} = -1 + \boxed{9}</m></cell>
+					<cell><m>\ds\boxed{e^{6x}}\frac{dy}{dx} + 6\boxed{e^{6x}}y = -1 \boxed{e^{6x}}</m></cell>
+				</row>
+				<row>
+					<cell>Goal</cell>
+					<cell><m>(x + 3)^2 = 8</m></cell>
+					<cell><m>\ds\frac{d}{dx}[e^{6x} y] = -e^{6x}</m></cell>
+				</row>
+				<row>
+					<cell>
+						<line>Solution</line>
+						<line>Method</line>
+					</cell>
+					<cell>
+						<line>Solve for <m>x</m> by</line>
+						<line>Taking the Square Root</line>
+					</cell>
+					<cell>
+						<line>Solve for <m>y</m> by</line>
+						<line>Direct Integration</line>
+					</cell>
+				</row>
+			</tabular>
 		</assemblage>
 
 		<p>
-			Comparing the integrating factor method to <q>completing the square</q> is a useful tool to help you understand the goal of this method, but we still need to figure out how to find the missing component (e.g., <m>\boxed{e^{6x}}</m>) that allows us to <q>complete the derivative</q>. Before we do this, it is helpful to review the product rule from calculus, as this is the exact the derivative we are trying to complete.
+			Just as completing the square helps solve quadratic equations by rewriting them in a more convenient form, completing the derivative helps solve first-order linear differential equations by making the left-hand side a perfect derivative. The next step is reviewing the product rule and exploring how to use it in the reverse direction.
 		</p>
 
 	</subsection>
@@ -201,85 +165,74 @@
 	<subsection><title> Reversed Product Rule </title>
 
 		<p>
-			Let <m>f(x)</m> and <m>g(x)</m> be two functions of <m>x</m>. The product rule states that
-			<men xml:id="if-product-rule00">
-				[f \cdot g]^{\prime} = f \cdot g^{\prime} + f^{\prime} \cdot g
-			</men>.
+			At the heart of the integrating factor method lies the product rule, which states that if <m>f(x)</m> and <m>g(x)</m> are two differentiable functions, then
 		</p>
+
+		<men xml:id="if-product-rule">
+			\left[ f(x) g(x) \right]^{\prime} = f(x) g'(x) + f'(x) g(x).
+		</men>
 
 		<p>
-			A typical calculus problem looks something like this:
+			Most calculus problems apply the product rule in the <em>forward direction</em>: given <m>f(x)</m> and <m>g(x)</m>, compute their derivative. However, the integrating factor method requires us to work <em>in reverse</em>: given an expression that resembles the result of a product rule, attempt to undo it. For example, if
 		</p>
 
-		<men xml:id="if-product-rule-example">
-			\big[ \sin x \cdot \ln x \big]' = \sin x \cdot \frac{1}{x} + \cos x \cdot \ln x
+		<men xml:id="if-reverse-product-rule-before">
+			\sin x \cdot \frac{1}{x} + \cos x \cdot \ln x
+		</men>,
+
+		<p>
+			then we want the product rule it came from. In this case, we want to rewrite it as
+		</p>
+
+		<men xml:id="if-reverse-product-rule-after">
+			\big[ \sin x \cdot \ln x \big]'
 		</men>.
 
 		<p>
-			However, to understand how the integrating factor method works, you will need to get in the mindset of the reversing this process. That is, given an expanded product rule, recombine it into a single derivative. In terms of our example, this would look like
-		</p>
-		
-		<me>
-			\ub{\sin x \cdot \frac{1}{x} + \cos x \cdot \ln x}_{\text{starting here}} = \ub{\big[ \sin x \cdot \ln x \big]'}_{\text{get here}}
-		</me>.
-
-		<p>
-			To build some intuition for the reversed direction, we'll begin with examples of the product rule in its usual forward direction.
+			To build confidence in reversing the product rule, let's practice a few examples.
 		</p>
 
 		<example><title> Forward Product Rule </title>
+
 			<p>
 				<statement>
 					<p>
 						Compute each of the derivatives below.
-						<me>
-							1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y(x)\right]
-						</me>
 					</p>
+					<me>
+						1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y(x)\right]
+					</me>
 				</statement>
 			</p>
 
-			<p>
-				<solution>
-					<p>
-						Using the <xref ref="if-product-rule" text="custom"> forward product rule </xref> and simplifying, we have
-						<ol>
-							<li>
-								<p>
-									<m>\ds
-										\big[ 
-											\overset{\color{BurntOrange}{f}}{\ln x \vphantom{\frac11}}\ 
-											\overset{\color{BurntOrange}{g}}{\tan x \vphantom{\frac11}} 
-										\big]' = 
-											\overset{\color{BurntOrange}{f}}{\ln x \vphantom{\frac11}}\  
-											\overset{\color{BurntOrange}{g'}}{\left(\sec^2 x\right) \vphantom{\frac11}} + 
-											\overset{\color{BurntOrange}{f'}}{\left(\frac{1}{x}\right)}
-											\overset{\color{BurntOrange}{g}}{\tan x \vphantom{\frac11}}
-									</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds\frac{d}{dx}
-										\big[ 
-											\overset{\color{BurntOrange}{f}}{e^{x^3} \vphantom{\frac11}}\ 
-											\overset{\color{BurntOrange}{g}}{y(x) \vphantom{\frac11}} 
-										\big] = 
-											\overset{\color{BurntOrange}{f}}{e^{x^3} \vphantom{\frac11}}\  
-											\overset{\color{BurntOrange}{g'}}{y'(x) \vphantom{\frac11}} + 
-											\overset{\color{BurntOrange}{f'}}{\left(3x^2\right)e^{x^3} \vphantom{\frac11}}
-											\overset{\color{BurntOrange}{g}}{y(x) \vphantom{\frac11}}	
-									</m>
-								</p>
-							</li>
-						</ol>
-					</p>
-				</solution>
-			</p>
+			<solution>
+				<p>
+					Using the product rule:
+					<ol>
+						<li>
+							<p>
+								<m>\ds
+									\left( x^6 e^{3x} \right)' =
+									x^6 \cdot 3e^{3x} + 6x^5 e^{3x}
+								</m>
+							</p>
+						</li>
+						<li>
+							<p>
+								<m>\ds\frac{d}{dx}
+									\left( e^{x^3} y(x) \right) =
+									e^{x^3} y'(x) + 3x^2 e^{x^3} y(x)
+								</m>
+							</p>
+						</li>
+					</ol>
+				</p>
+			</solution>
+
 		</example>
 
 		<p>
-			Now that we've discussed the standard product rule, let's practice reversing it.
+			Now, let's reverse this process.
 		</p>
 
 		<example><title> Reversed Product Rule </title>
@@ -287,7 +240,7 @@
 			<p>
 				<statement>
 					<p>
-						Rewrite each expression in the form <m>[f(x) \cdot g(x)]'</m>.
+						Rewrite each expression in the form <m>[f(x) g(x)]'</m>.
 						<me>
 							1. \quad e^{x}\cos x + e^{x}\sin x \hspace{5em} 2. \quad \frac{e^{x^2}}{x} + 2 x \ln(x) e^{x^2}
 						</me>
@@ -298,8 +251,9 @@
 			<solution>
 				<p>
 					<solution>
+
 						<p>
-							We want to apply the reversed product rule. One approach is to use trail-and-error to label <m>f</m> and <m>g</m>. Then double-check that <m>f'</m> and <m>g'</m> are the other terms in the product rule.
+							One approach is to use trail-and-error to label <m>f</m> and <m>g</m>, then check that the rest of the product rule is valid.
 						</p>
 
 						<p>
@@ -307,31 +261,32 @@
 							<md>
 								<mrow>	
 										e^x
-										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\cos x}}}\  
-										+ 
+										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\cos x}}}\
+										+
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^x}}}
 										\sin x
-										\amp = \big[ 
-										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\cos x}}}\  
+										\amp = \big[
+										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\cos x}}}\
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^x}}}
-										\big]'  \quad \leftarrow \text{doesn't work,}
-								</mrow>
+										\big]'
+								</mrow>,
 							</md>
 							but this doesn't work since <m>[\cos x\ e^x]' = \cos x\ e^x + (-\sin x)\ e^x</m>.
 						</p>
+
 						<p>
 							Next, try the labels
 							<md>
 								<mrow>	
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^x}}}
-										\cos x + 
+										\cos x +
 										e^x
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\sin x}}}\
-										\amp = \big[ 
+										\amp = \big[
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^x}}}\
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\sin x}}}
-										\big]'  \quad \leftarrow \text{works.}
-								</mrow>
+										\big]'
+								</mrow>.
 							</md>
 							A quick check of <m>[e^x \sin x]' = e^x\cos x + e^x \sin x</m>, confirms this works.
 						</p>
@@ -339,8 +294,9 @@
 					</solution>
 
 					<solution>
+
 						<p>
-							The labels are easier to determine if we first rewrite the expression as
+							The labels are easier to determine if we first rewrite the expression
 							<me>
 								\frac{1}{x} e^{x^2} + \ln(x) (2 x e^{x^2})
 							</me>.
@@ -352,17 +308,17 @@
 								<mrow>	
 									\underset{\color{BurntOrange}{\text{verify } g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}\frac{1}{x}}}}
 									\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}e^{x^2}}}} +
-									\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ln(x)}}}\
-									\underset{\color{BurntOrange}{\text{verify } f'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{(2 x e^{x^2})}}}
-									\amp = \big[ 
-										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{x^2}}}} \
-										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ln(x)}}} 
+									\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}\ln(x)}}}\
+									\underset{\color{BurntOrange}{\text{verify } f'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}(2 x e^{x^2})}}}
+									\amp = \big[
+										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}e^{x^2}}}} \
+										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11}\ln(x)}}}
 									\big]'
 								</mrow>
 							</md>
 							then verify the derivatives of <m>f</m> and <m>g</m>
 							<me>
-								f: \quad [e^{x^2}]' = 2 x e^{x^2} \qquad g:\quad [\ln(x)]' = \frac{1}{x} 
+								f: \quad [e^{x^2}]' = 2 x e^{x^2} \qquad g:\quad [\ln(x)]' = \frac{1}{x}
 							</me>
 							we see that <m>[e^{x^2} \ln(x)]'</m> works.
 						</p>
@@ -381,7 +337,7 @@
 			<p>
 				<statement>
 					<p>
-						Rewrite each expression in the form <m>[f(x) \cdot y(x)]'</m>.
+						Rewrite each expression in the form <m>[f(x) y(x)]'</m>.
 						<me>
 							1. \quad e^{x^2}\frac{dy}{dx} + 2 xy e^{x^2} \hspace{5em} 2. \quad e^{1/x}y' - \frac{e^{1/x}}{x^2}y
 						</me>
@@ -397,10 +353,10 @@
 							<md>
 								<mrow>	
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{x^2}}}}\
-										\frac{dy}{dx} + 
+										\frac{dy}{dx} +
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
 										\underset{\color{BurntOrange}{\text{verified } f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{(2xe^{x^2})}}}
-										=\amp\ \frac{d}{dx}\Big[ 
+										=\amp\ \frac{d}{dx}\Big[
 											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{x^2}}}}\
 											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
 											\Big] \quad \leftarrow \text{answer.}
@@ -415,10 +371,10 @@
 							<md>
 								<mrow>	
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{1/x}}}}\
-										y' + 
+										y' +
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
 										\underset{\color{BurntOrange}{\text{verified } f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\left(\ul{-\frac{e^{1/x}}{x^2}}\right)}}
-										=\amp\ \big[ 
+										=\amp\ \big[
 											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{1/x}}}}\
 											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
 											\big]' \quad \leftarrow \text{answer.}
@@ -466,10 +422,10 @@
 								<md>
 									<mrow>	
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{2x}}}}\
-										\frac{dy}{dx} + 
+										\frac{dy}{dx} +
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
 										\underset{\color{BurntOrange}{\text{verify}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{(2e^{2x})}}}
-										=\amp\ \frac{d}{dx}\big[ 
+										=\amp\ \frac{d}{dx}\big[
 										\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{2x}}}}\
 										\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
 										\big]
@@ -483,7 +439,7 @@
 						</li>
 						<li>
 							<p>
-								To get the general solution, we directly integrate both sides of the equation with respect to <m>x</m>, like so 
+								To get the general solution, we directly integrate both sides of the equation with respect to <m>x</m>, like so
 								<md>
 									<mrow>	\int \frac{d}{dx}\left[e^{2x} \cdot y \right]\ dx	=\amp \int \frac{5}{2} e^{2x}\ dx	</mrow>
 									<mrow>	e^{2x} y											=\amp \frac{5}{2} e^{2x} + c		</mrow>
@@ -498,7 +454,7 @@
 		</example>
 
 		<p>
-			This example demonstrates how reversing the product rule on one side of a differential equation opens a path to finding its solution. However, we were lucky in that the equation was already in a form where the product rule could be reversed directly. In general, first-order linear equations do not contain a complete derivative that can be reversed so easily. In the next section we show you an example where we introduce a missing piece that <q>completes the derivative</q>.
+			This example illustrates the power of recognizing when an equation is already in a form that allows us to reverse the product rule. However, most differential equations do not start in this form. In the next section, we discuss how to modify an equation so that it becomes a perfect derivative.
 		</p>
 
 		<xi:include href="./c4-exercises/c4-chkpts-1-1-reversed-product-rule.ptx" />
@@ -508,25 +464,31 @@
 	<subsection><title> An Incomplete Derivative </title>
 
 		<p>
-			The previous examples illustrated how to solve a differential equation by combining one side as a single derivative and integrating. However, the left side was conveniently given as a perfectly expanded product rule, which is not the case for most differential equations. For a more typical example, consider the equation 
-			<men xml:id="if-example-incomplete-eqn"> 
-				\frac{dy}{dx} + 2y = 5 
-			</men>.
+			In the previous section, we saw how reversing the product rule allows us to rewrite a differential equation in a form that can be directly integrated. However, in many cases, the left-hand side of a differential equation is <em>not yet a complete derivative</em>, meaning that it does not immediately match the product rule.
 		</p>
 
 		<p>
-			The left-hand side of the equation resembles a product rule, but it is incomplete. Labeling <m>y</m> as <m>g</m> and <m>\frac{dy}{dx}</m> as <m>g'</m>, we see that no corresponding <m>f</m> satisfies:
-			<md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} ? \ }}}\
-					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 }}}\
-					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5
-				</mrow>.
-			</md>
+			Consider the first-order linear equation:
 		</p>
+
+		<men xml:id="if-example-incomplete-eqn">
+			\frac{dy}{dx} + 2y = 5
+		</men>.
+
+		<p>
+			The left-hand side <em>almost</em> resembles the result of the product rule, but something is missing. If we attempt to rewrite it in the form <m>\frac{d}{dx} [f(x) y]</m>, we quickly run into a problem. Labeling <m>y</m> as <m>g</m> and <m>\frac{dy}{dx}</m> as <m>g'</m>, we see that no corresponding <m>f</m> satisfies:
+		</p>
+
+		<md>
+			<mrow>	
+				\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} ? \ }}}\
+				\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+				+
+				\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 }}}\
+				\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+				=\amp\ 5
+			</mrow>.
+		</md>
 		
 		<p>
 			The left-hand side lacks the function <m>f</m> that satisfies both parts of the product rule. To resolve this, let's create our own <m>f</m> function by multiplying both sides by it, like so
@@ -544,24 +506,37 @@
 
 		<p>
 			For this to be a valid product rule, the derivative of <m>f</m> must be in the <m>f'</m> position. Can you think of a function has a derivative that is <m>2</m> times itself? There is only one, and that function is <m>e^{2x}</m>, since
-			<me>
-				\frac{d}{dx} \big[ {\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}} \big] = 2{\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}}
-			</me>
 		</p>
+
+		<me>
+			\frac{d}{dx} \big[ {\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}} \big] = 2{\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}}
+		</me>
 
 		<p>
 			Multiplying both sides of the equation by <m>e^{2x}</m> gives us
-			<me>
-				e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
-			</me>,
-			but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which we already know can be rewritten as
-			<me>
-				\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
-			</me>
+		</p>
+
+		<me>
+			e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
+		</me>,
+
+		<p>
+			but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which can be written as
+		</p>
+
+		<me>
+			\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
+		</me>
+
+		<p>
 			and solved using direct integration.
 		</p>
 			
-		<xi:include href="./c4-exercises/c4-chkpts-1-3-completing-the-product-rule.ptx" />
+		<xi:include href="./c4-exercises/c4-chkpts-1-2-incomplete-derivative.ptx" />
+
+		<p>
+			This example demonstrates that <em>multiplying by the right function can complete a missing derivative</em>, allowing us to solve the equation. This function is called the <em>integrating factor</em>, and in the next section, we will formally define it and derive a general formula.
+		</p>
 
 	</subsection>
 

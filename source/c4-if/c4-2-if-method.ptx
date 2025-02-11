@@ -3,29 +3,29 @@
 	<introduction>
 
 		<p>
-			The integrating factor (IF) method is a powerful and systematic approach to solving any first-order linear differential equation. These equations can always be expressed in the <term>standard form</term>:
+			The <term>Integrating Factor (IF) Method</term> is an essential technique for solving <em>any</em> first-order linear differential equation. Such equations can <em>always</em> be written in the <term>standard form</term> given by
 		</p>
-		
-		<men xml:id="if-standard-form"> 
+
+		<men xml:id="if-standard-form">
 			y' + P(x)\ y = Q(x)
-		</men>
+		</men>.
 
 		<theorem xml:id="std-form-explained"><title> <em>1st-Order Linear Standard Form Explained</em> </title>
 		
 			<statement>
 				<p>
 					Since a general linear differential equation looks like
-					<me> 
+					<me>
 						a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
 					</me>,
 					the first-order case (<m>n=1</m>), simplifies to
-					<me> 
+					<me>
 						a_1(x)y' + a_0(x)y = f(x)
 					</me>.
 					Dividing by the coefficient of <m>y'</m>, and renaming the new coefficients as <m>P</m> and <m>Q</m>, gives the standard form
 					<me>
 						y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y	= \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}	
-						\quad \implies \quad 
+						\quad \implies \quad
 						y' + P(x)y	= Q(x)
 					</me>.
 				</p>
@@ -34,7 +34,38 @@
 		</theorem>
 
 		<p>
-			When in standard form, the equation can be solved by providing it with a specially constructed function, called the <xref ref="def-integrating-factor" text="custom">integrating factor</xref>. This function allows us to <q>reverse</q> the product rule on the left-hand side of the equation, leading to a form that can be solved by <xref ref="direct-integration" text="custom">direct integration</xref>.
+			Assuming your equation is in this standard form, this method introduces a function, called the <em>integrating factor</em>, which helps <q>complete the derivative</q> in the equation so that direct integration can be used to solve for the unknown function. The general process is summarized in the diagram below: 
+		</p>
+
+		<sidebyside valign="middle" margins="2% 10%" widths="10% 3% 66%">
+			<p>
+				Complete Derivative
+			</p>
+			<p>
+				<me>
+					\left\lbrace\vphantom{\begin{array}{c}\\\\\\\\\\\end{array}}\right.
+				</me>
+			</p>
+			<p>
+				<md>
+					<mrow>
+						\frac{dy}{dx} + 2 y = 5 						\,\,\,\quad\qquad 
+						\amp \leftarrow \text{Multiply by } e^{2x}
+					</mrow>
+					<mrow>
+						e^{2x}\frac{dy}{dx}	+ \ 2e^{2x} y = 5e^{2x}		\quad
+						\amp\leftarrow \text{Reverse Product Rule}
+					</mrow>
+					<mrow>
+						\frac{d}{dx} \left[e^{2x} y \right] = 5e^{2x}	\,\,\qquad
+						\amp\leftarrow \text{Direct Integration}
+					</mrow>
+				</md>
+			</p>
+		</sidebyside>
+
+		<p>
+			In this section, we'll break down this process, guiding you through finding the integrating factor, applying it to the equation, and then solving the equation by direct integration.
 		</p>
 
 	</introduction>
@@ -42,11 +73,164 @@
 	<subsection><title> The Integrating Factor </title>
 
 		<p>
-			The previous example shows that multiplying both sides of the equation by <m>e^{2x}</m> introduced the missing piece need to reverse the product rule. However, this was done by inspection and we are now going to show how to determine this function, in general. 
+			So far, we've applied the integrating factor method using intuition or by recognizing patterns. However, a natural question arises: <q>How do we determine the integrating factor for any first-order linear differential equation?</q> Fortunately, their is <em>a general formula</em> that can be derived using the ideas we've developed so far—namely, reversing the product rule and applying separation of variables.
 		</p>
 
 		<p>
-			Consider same <xref ref="if-example-incomplete-eqn"/> as before and recall that we multiplied both sides by some function, <m>f</m>, to get
+			In this section, we will first <em>derive the formula for the integrating factor</em> in the context of a specific example, then generalize it to apply to any first-order linear differential equation.
+		</p>
+
+		<subsubsection><title> A Motivating Example </title>
+
+			<p>
+				Recall from the previous section that we encountered the equation:
+			</p>
+
+			<men xml:id="if-example-incomplete-eqn00">
+				\frac{dy}{dx} + 2y = 5
+			</men>
+
+			<p>
+				The left-hand side <em>almost</em> resembles the result of the product rule, but it is missing a function that would allow us to rewrite it as a single derivative. Specifically, we want to introduce a function <m>\mu(x)</m> such that:
+			</p>
+
+			<me>
+				\frac{d}{dx} \left[ \mu(x) y \right] = 5 \mu(x)
+			</me>.
+
+			<p>
+				Our goal is to determine a general method to <em>find</em> <m>\mu(x)</m> so that this transformation always works.
+			</p>
+
+			<p>
+				To achieve this, let's multiply both sides of the equation by <m>\mu(x)</m> and imagine the left-hand side as the result of the product rule <m>\frac{d}{dx} \left[ \mu(x) y \right]</m>. Using the same labeling strategy as before, we have
+			</p>
+
+			<!-- <md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \color{BurntOrange}{\mu}}}}\
+					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 \color{BurntOrange}{\mu} }}}\
+					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5 \color{BurntOrange}{\mu} \,
+				</mrow>
+			</md>. -->
+
+			<md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large\uparrow}}{ \ul{\vphantom{\frac11} \mu}}\
+					\underset{\color{BurntOrange}{\uparrow}}{ \ul{\frac{dy}{dx}}}
+					\amp \ + \
+					\underset{\color{BurntOrange}{\uparrow}}{ \ul{\vphantom{\frac11} \, 2 \mu }}\,
+					\underset{\color{BurntOrange}{\large\uparrow}}{ \ul{\vphantom{\frac11} \, y \, }}
+					= 5 \mu \,
+				</mrow>
+				<mrow>
+					\color{BurntOrange}{{\mu \ \frac{dy}{dx}}}
+					\amp
+					\color{BurntOrange}{{ \ + \ \frac{d\mu}{dx} \, y \ }}
+					= 5 \color{BurntOrange}{\mu} \,
+				</mrow>
+				<mrow>\amp \color{BurntOrange}{\nwarrow \nearrow}</mrow>
+				<mrow>
+					\color{BurntOrange}{\frac{d}{dx}}\amp 
+					\color{BurntOrange}{[ \mu \ y ]}
+					= 5 \color{BurntOrange}{\mu} \,
+				</mrow>
+			</md>
+
+
+			<md>
+				<mrow>	5 \mu =	\amp \ \color{blue}{\mu}\ \color{green}{\left|\overline{\frac{dy}{dx}}\right|} + \color{BurntOrange}{\left|\overline{\vphantom{\frac{dy}{dx}}\ 2 \mu\ }\right|} \, \color{red}{y}	</mrow>
+				<mrow>			\amp \ \color{blue}{\mu} \ \color{green}{\left|\ul{\frac{dy}{dx}}\right|} + \color{BurntOrange}{\left|\ul{\frac{d\mu}{dx}}\right|} \, \color{red}{y} = \frac{d}{dx} [\mu \ y]	</mrow>
+			</md>
+
+			<md>
+				<mrow>	5 \mu =	\amp \ \color{blue}{\mu}\ \color{green}{\frac{dy}{dx}} + \color{BurntOrange}{\left|\overline{\vphantom{\frac{dy}{dx}}\ 2 \mu\ }\right|} \, \color{red}{y}	</mrow>
+				<mrow>			\amp \ \color{blue}{\mu} \ \color{green}{\frac{dy}{dx}} + \color{BurntOrange}{\left|\ul{\frac{d\mu}{dx}}\right|} \, \color{red}{y} = \frac{d}{dx} [\mu \ y]	</mrow>
+			</md>
+
+			<p>
+				Now, recall that in order for this to be a valid product rule, we must have
+			</p>
+
+			<me>
+				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
+			</me>,
+			
+			<p>
+				where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
+			</p>
+
+			<me>
+				\frac{d}{dx} [\mu(x) y] = \mu(x) \frac{dy}{dx} + \mu'(x) y.
+			</me>
+
+			<p>
+				Comparing this with the left-hand side of our given equation,
+			</p>
+
+			<me>
+				\mu(x) \frac{dy}{dx} + \mu(x) \cdot 2y = \mu(x) \cdot 5,
+			</me>
+
+			<p>
+				we see that for these to match, <m>\mu(x)</m> must satisfy the equation:
+			</p>
+
+			<me>
+				\mu'(x) = 2\mu(x).
+			</me>
+
+			<p>
+				This is a <em>separable differential equation</em>, which we solve as follows:
+			</p>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Separate Variables:
+				</p>
+				<p>
+					<me> \frac{d\mu}{\mu} = 2 dx. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Integrate Both Sides:
+				</p>
+				<p>
+					<me> \int \frac{d\mu}{\mu} = \int 2dx. </me>  
+					<me> \ln|\mu| = 2x + C. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Solve for <m>\mu(x)</m>:
+				</p>
+				<p>
+					<me> \mu(x) = e^{2x + C} = e^C e^{2x}. </me>
+				</p>
+			</sidebyside>
+
+			<p>
+				Since <m>e^C</m> is an arbitrary constant, we can choose <m>C = 0</m> (since any constant multiple of an integrating factor still works), giving us:
+			</p>
+
+			<men xml:id="first-integrating-factor00">
+				\mu(x) = e^{2x}.
+			</men>
+
+			<p>
+				This function is called the <term>integrating factor</term>. It allows us to transform our equation into a perfect derivative, which can then be solved by direct integration.
+			</p>
+
+		</subsubsection>
+
+		<p>
+			Once again, consider equation <xref ref="if-example-incomplete-eqn"/>, from the previous section and recall that we multiplied both sides by some function, <m>f</m>, to get
 			<md>
 				<mrow>	
 					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
@@ -59,24 +243,7 @@
 			</md>.
 		</p>
 
-		<p>
-			To align with the context of this method, let's change <m>f</m> to <m>\mu</m> and <m>g</m> to <m>y</m>, so that the equation and labeling is now
-			<md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}}}}}\
-					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}} }}}\
-					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{\mu} \phantom{\large|}} \,
-				</mrow>
-			</md>.
-			Now, recall that in order for this to be a valid product rule, we must have
-			<me>
-				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
-			</me>
-			where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
-		</p>
+		
 
 		<p>
 			<sidebyside widths="20% 25% 35% 20%" valigns="top middle middle top">
@@ -216,9 +383,122 @@
 			
 		</theorem>
 
-		<xi:include href="./c4-exercises/c4-chkpts-2-1-the-integrating-factor.ptx" />
+		<xi:include href="./c4-exercises/c4-chkpts-2-1-integrating-factor.ptx" />
 
 	</subsection>
+
+	<subsection><title> The Integrating Factor </title>
+
+		
+
+		
+
+		<subsubsection><title> The General Case </title>
+
+			<p>
+				The function <m>\mu(x) = e^{2x}</m> worked in our example because it allowed us to transform the equation into a perfect derivative. But <em>how do we find the integrating factor for any equation of the form</em>:
+			</p>
+
+			<men xml:id="if-standard-form00">
+				y' + P(x)y = Q(x)?
+			</men>
+
+			<p>
+				The same reasoning applies: multiplying both sides by some function <m>\mu(x)</m> should allow us to write the left-hand side as a product derivative:
+			</p>
+
+			<me>
+				\mu(x)y' + \mu(x) P(x) y = \mu(x) Q(x).
+			</me>
+
+			<p>
+				Comparing this with the product rule:
+			</p>
+
+			<me>
+				\frac{d}{dx} [\mu(x) y] = \mu(x) y' + \mu'(x) y,
+			</me>
+
+			<p>
+				we conclude that <m>\mu(x)</m> must satisfy the equation:
+			</p>
+
+			<men xml:id="if-general-eqn00">
+				\mu'(x) = P(x) \mu(x).
+			</men>
+
+			<p>
+				This is again a separable differential equation, which we solve as follows:
+			</p>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Separate Variables:
+				</p>
+				<p>
+					<me> \frac{d\mu}{\mu} = P(x) dx. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Integrate Both Sides:
+				</p>
+				<p>
+					<me> \int \frac{d\mu}{\mu} = \int P(x) dx. </me>  
+					<me> \ln|\mu| = \int P(x) dx + C. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Solve for <m>\mu(x)</m>:
+				</p>
+				<p>
+					<me> \mu(x) = e^{\int P(x) dx + C} = e^C e^{\int P(x) dx}. </me>
+				</p>
+			</sidebyside>
+
+			<p>
+				Again, since <m>e^C</m> is an arbitrary constant, we choose <m>C = 0</m> by convention, giving us the <em>general formula for the integrating factor</em>:
+			</p>
+
+			<men xml:id="if-general-formula00">
+				\mu(x) = e^{\int P(x) dx}.
+			</men>
+
+		</subsubsection>
+
+		<theorem xml:id="integrating-factor00"><title>Integrating Factor Formula</title>
+
+			<statement>
+
+				<p>
+					The solution to the differential equation:
+				</p>
+
+				<me>
+					\mu'(x) = P(x) \mu(x)
+				</me>
+
+				<p>
+					is given by:
+				</p>
+
+				<men xml:id="if-final-integrating-factor">
+					\mu(x) = e^{\int P(x) dx}.
+				</men>
+
+				<p>
+					This function is called the <term>integrating factor</term>, and it is guaranteed to exist for any first-order linear differential equation.
+				</p>
+
+			</statement>
+
+		</theorem>
+
+	</subsection>
+
 
 	<subsection><title> Integrating Factor Method Steps </title>
 
@@ -275,7 +555,7 @@
 						Integrate both sides of the equation, as follows
 					</p>
 					<p>
-						<me> 
+						<me>
 							\int \frac{d}{dx}\left[\mu \cdot y\right]\ dx = \int Q(x) \mu\ dx.
 						</me>
 					</p>
@@ -308,7 +588,7 @@
 						Find the general solution to the equation
 					</p>
 					<p>
-						<me> 
+						<me>
 							y' + 6y = 1
 						</me>.
 					</p>
@@ -497,11 +777,11 @@
 						<sidebyside widths="20% 80%" valigns="top middle">
 							
 							<p>
-								Integrating <m>\rightarrow</m> Factor 
+								Integrating <m>\rightarrow</m> Factor
 							</p>
 
 							<p>
-								<me> 
+								<me>
 									\mu = e\vphantom{\large|}^{\int \sfrac{-4}{t}\ dt} = e^{-4\ln t} = e^{\ln t^{-4}} = t^{-4} = \frac{1}{t^4}
 								</me>
 							</p>
@@ -536,7 +816,7 @@
 						<sidebyside widths="20% 80%" valigns="top middle">
 							
 							<p>
-								Direct <m>\rightarrow</m> Integration 
+								Direct <m>\rightarrow</m> Integration
 							</p>
 
 							<p>
@@ -545,7 +825,7 @@
 										\int \frac{d}{dt}\left[ \frac{1}{t^4} M \right]\ dt
 											\amp = \int \left(t^2 + t^{-3}\right) dt
 									</mrow>
-									<mrow> 
+									<mrow>
 										\frac{1}{t^4} M
 											\amp = \frac{1}{3}t^{3} - \frac{1}{2}t^{-2} + c
 									</mrow>
@@ -585,7 +865,7 @@
 			<p>
 				<statement>
 					<p>
-						Solve the differential equation: 
+						Solve the differential equation:
 						<me>x^2 y' - y = 1, \quad x > 0</me>.
 					</p>
 				</statement>
@@ -600,7 +880,7 @@
 				
 					<p>
 						<me>
-							y' + \us{P}{\boxed{-\frac{1}{x^2}}}\ y = \frac{1}{x^2} \quad \implies \quad 
+							y' + \us{P}{\boxed{-\frac{1}{x^2}}}\ y = \frac{1}{x^2} \quad \implies \quad
 							\mu(x) = e^{\large \int -\sfrac{1}{x^2} dx} = e^{1/x}
 						</me>
 					</p>
@@ -620,8 +900,8 @@
 							<p/>
 							<p>
 								<md>
-									<mrow> 
-										\int \frac{d}{dx}\left[e^{1/x} y\right] dx 
+									<mrow>
+										\int \frac{d}{dx}\left[e^{1/x} y\right] dx
 														=\amp\ \int \frac{e^{1/x}}{x^2} dx \qquad \rightarrow
 									</mrow>
 									<mrow>	e^{1/x} y	=\amp\ \int -e^u du </mrow>
@@ -655,7 +935,7 @@
 			<p>
 				<statement>
 					<p>
-						Solve the equation: 
+						Solve the equation:
 						<me> t^2 y' + 2ty = t^3 \ln t </me>.
 					</p>
 				</statement>
@@ -670,7 +950,7 @@
 				
 					<p>
 						<me>
-							y' + \us{P}{\boxed{\frac{2}{t}}}\ y = t \ln t \quad \implies \quad 
+							y' + \us{P}{\boxed{\frac{2}{t}}}\ y = t \ln t \quad \implies \quad
 							\mu(t) = e^{\large \int (\sfrac{2}{t})\, dt} = e^{2 \ln t} = t^2
 						</me>
 					</p>
@@ -697,13 +977,13 @@
 										\int \frac{d}{dt} \big[t^2 y\big] dt =\amp\ \int t^3 \ln t\ dt
 									</mrow>
 									<mrow>	
-										t^2 y	= 
+										t^2 y	=
 										\us{\textcolor{BurntOrange}{ u}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\vphantom{\frac11}\ln t}}}
 										\cdot
 										\us{\textcolor{BurntOrange}{ v}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac14 t^4}}}
-										\amp\ - \int 
+										\amp\ - \int
 										\us{\textcolor{BurntOrange}{ v}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac14 t^4}}}
-										\cdot 
+										\cdot
 										\us{\textcolor{BurntOrange}{du}}{\us{\textcolor{BurntOrange} \uparrow}{\ul{\frac{1}{t}\ dt}}}
 									</mrow>
 									<mrow>	t^2 y	= \frac14 t^4 \ln t \amp\ - \frac14 \int  t^3\ dt					</mrow>
@@ -715,7 +995,7 @@
 								<md>
 									<mrow>	\small\textcolor{BurntOrange}{				u = \ln t,}	\amp \ \ \small\textcolor{BurntOrange}{v = \frac14t^4}	</mrow>
 									<mrow>	\small\textcolor{BurntOrange}{	du = \frac{1}{t}\ dt,}	\amp \ \ \small\textcolor{BurntOrange}{dv = t^3\ dt}	</mrow>
-								</md> 
+								</md>
 							</p>
 							<p/>
 
@@ -743,7 +1023,7 @@
 			<p>
 				<statement>
 					<p>
-						Solve the initial value problem. 
+						Solve the initial value problem.
 						<me>
 							A = \sec\theta A' - \frac{\theta e^{\large\theta^2 + \sin\theta}}{\cos \theta}, \hspace{1cm} A(0) = -\frac{1}{2}
 						</me>.
@@ -760,7 +1040,7 @@
 				
 					<p>
 						<me>
-							\frac{1}{\cos\theta} A' - A = \frac{\theta e^{\large\theta^2 + \sin\theta}}{\cos \theta} 
+							\frac{1}{\cos\theta} A' - A = \frac{\theta e^{\large\theta^2 + \sin\theta}}{\cos \theta}
 						</me>.
 					</p>
 
