@@ -1,0 +1,203 @@
+<paragraphs><title>JavaScript Testing</title>
+	
+	<figure xml:id="figure-simple-eigenvector">
+		<caption>A simple eigenvector demonstration</caption>
+		<interactive xml:id="interactive-simple-eigenvector" platform="javascript" width="60%" source="code/figures.js code/simple-ev.js" preview="figures/simple-eigenvector-preview.jpg">
+			<slate xml:id="eigenvector" surface="canvas" />
+			<instructions>
+			<p>
+				Let <m>\vec{x}</m> be represented by the red arrow,
+				and <m>A\vec{x}</m> by the grey arrow,
+				for some particular <m>2\times 2</m> matrix <m>A</m>.
+				Drag the <em>tip</em> of the red arrow to see the grey arrow change.
+			</p>
+			</instructions>
+		</interactive>
+	</figure>
+
+	<figure xml:id="figure-simple-js-script"> 
+		<caption>A simple embedded script example</caption>
+		<interactive aspect="6:2" xml:id="interactive-simple-js-script" platform="javascript">
+			<slate aspect="6:2" xml:id="simple-js-script" surface="canvas" />
+			<script>
+				const canvas = document.getElementById("simple-js-script");
+				const ctx = canvas.getContext("2d");
+				ctx.font = "40px sans-serif";
+
+				// Messages to cycle through
+				const messages = ["Hello world", "Welcome to PreTeXt!", "JavaScript in action", "Enjoy coding!"];
+				let currentIndex = 0;
+
+				// Button dimensions
+				const buttonX = 10, buttonY = 80, buttonWidth = 200, buttonHeight = 40;
+
+				// Function to update the canvas text
+				function updateCanvas() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+					// Draw message
+					ctx.fillText(messages[currentIndex], 10, 50);
+
+					// Draw button
+					ctx.fillStyle = "lightgray";
+					ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+					ctx.strokeStyle = "black";
+					ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+
+					// Draw button text
+					ctx.fillStyle = "black";
+					ctx.font = "20px sans-serif";
+					ctx.fillText("Next Message", buttonX + 15, buttonY + 25);
+				}
+
+				// Handle mouse clicks
+				canvas.addEventListener("click", function(event) {
+					const rect = canvas.getBoundingClientRect();
+					const x = event.clientX - rect.left;
+					const y = event.clientY - rect.top;
+
+					// Check if click is inside button
+					if (x &gt;= buttonX &amp;&amp; x &lt;= buttonX + buttonWidth &amp;&amp;
+						y &gt;= buttonY &amp;&amp; y &lt;= buttonY + buttonHeight) {
+						currentIndex = (currentIndex + 1) % messages.length;
+						updateCanvas();
+					}
+				});
+
+				// Initial draw
+				updateCanvas();
+			</script>
+		</interactive>
+	</figure>
+
+	<figure xml:id="figure-slideshow">
+		<caption>Deriving the integrating factor for equation <xref ref="if-example-incomplete-eqn00"/>.</caption>
+		<interactive aspect="2.1:1" xml:id="interactive-slideshow" platform="javascript">
+			<slate aspect="2.1:1" xml:id="slideshow-canvas" surface="canvas" />
+			<script>
+				const canvas = document.getElementById("slideshow-canvas");
+				const ctx = canvas.getContext("2d");
+
+				// Define slides as objects with an image and text
+				const slides = [
+					{ 
+						image: "../../assets/figures/NEW-IF-Strategy-Step-1.png", 
+						text: 
+							"Every first-order linear\n" +
+							"differential equation can\n" + 
+							"be transformed into a\n" + 
+							"direct integration problem,\n" + 
+							"but how?\n" + 
+							"\n" + 
+							"Click \"Next\" to find out."
+					},
+					{ 
+						image: "../../assets/figures/NEW-IF-Strategy-Step-2.png",
+						text: 
+							"1. Multiply the original\n" + 
+							"equation by the function\n" + 
+							"that will help us\n" + 
+							"\"complete the derivative\"\n" + 
+							"you see in the last equation.\n" + 
+							"This function is called the\n" +
+							"integrating factor."
+					},
+					{
+						image: "../../assets/figures/NEW-IF-Strategy-Step-3.png",
+						text:
+							"2. Working backwards\n" + 
+							"from the bottom,\n" + 
+							"apply the product rule\n" + 
+							"to the left side of the last\n" + 
+							"equation. This will help us\n" + 
+							"see how the two equations\n" + 
+							"meet in the middle."
+					},
+					{
+						image: "../../assets/figures/NEW-IF-Strategy-Step-4.png",
+						text:
+							"3. The equations that meet\n" + 
+							"in the middle must be\n" +
+							"identical. Everything matches\n" + 
+							"except the boxed terms. For\n" + 
+							"this to be a valid product\n" +
+							"rule, these must also be equal."
+					},
+					{
+						image: "../../assets/figures/NEW-IF-Strategy-Step-5.png",
+						text:
+							"4. Matching the boxed\n" + 
+							"terms, we get a separable\n" + 
+							"differential equation\n" + 
+							"where the solution is the\n" + 
+							"integrating factor!"
+					}
+				];
+
+				let currentSlide = 0;
+
+				// Button properties
+				const buttonX = 340, buttonY = 260, buttonWidth = 50, buttonHeight = 25;
+
+				function drawSlide() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+					// Draw text
+					ctx.fillStyle = "black";
+					ctx.font = "16px sans-serif";
+					const lines = slides[currentSlide].text.split("\n");
+					let textX = 340, textY = 20;
+					for (let i = 0; i &lt; lines.length; i++) {
+						ctx.fillText(lines[i], textX, textY + i * 25);
+					}
+					//ctx.fillText(slides[currentSlide].text, 340, 20);
+
+					// Load and draw image
+					const img = new Image();
+					img.onload = function () {
+						ctx.drawImage(img, 5, 5, 320, 280);
+						
+						// Draw button after image loads
+						drawButton();
+					};
+					img.onerror = function () {
+						console.error("Image failed to load: " + slides[currentSlide].image);
+						drawButton(); // Still show button if image fails
+					};
+					img.src = slides[currentSlide].image;
+				}
+
+				function drawButton() {
+					// Draw button
+					ctx.fillStyle = "lightgray";
+					ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+					ctx.strokeStyle = "black";
+					ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
+
+					// Draw button text
+					ctx.fillStyle = "black";
+					ctx.font = "18px sans-serif";
+					ctx.fillText("Next", buttonX + 6, buttonY + 19);
+				}
+
+				// Handle click to advance slides
+				canvas.addEventListener("click", function (event) {
+					const rect = canvas.getBoundingClientRect();
+					const x = event.clientX - rect.left;
+					const y = event.clientY - rect.top;
+
+					// Check if click is inside button
+					if (x &gt;= buttonX &amp;&amp; x &lt;= buttonX + buttonWidth &amp;&amp;
+						y &gt;= buttonY &amp;&amp; y &lt;= buttonY + buttonHeight) {
+						currentSlide = (currentSlide + 1) % slides.length;
+						drawSlide();
+					}
+				});
+
+				// Initial draw
+				drawSlide();
+			</script>
+		</interactive>
+	</figure>
+
+</paragraphs>
