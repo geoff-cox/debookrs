@@ -1,4 +1,4 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor (IF) Method </title>	
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integrating Factor Method </title>	
 	
 	<introduction>
 
@@ -80,309 +80,6 @@
 			In this section, we will first <em>derive the formula for the integrating factor</em> in the context of a specific example, then generalize it to apply to any first-order linear differential equation.
 		</p>
 
-		<subsubsection><title> A Motivating Example </title>
-
-			<p>
-				Recall from the previous section that we encountered the equation:
-			</p>
-
-			<men xml:id="if-example-incomplete-eqn00">
-				\frac{dy}{dx} + 2y = 5
-			</men>
-
-			<p>
-				The left-hand side <em>almost</em> resembles the result of the product rule, but it is missing a function that would allow us to rewrite it as a single derivative. Specifically, we want to introduce a function <m>\mu(x)</m> such that:
-			</p>
-
-			<me>
-				\frac{d}{dx} \left[ \mu(x) y \right] = 5 \mu(x)
-			</me>.
-
-			<p>
-				Our goal is to determine a general method to <em>find</em> <m>\mu(x)</m> so that this transformation always works.
-			</p>
-
-			<p>
-				To achieve this, let's multiply both sides of the equation by <m>\mu(x)</m> and imagine the left-hand side as the result of the product rule <m>\frac{d}{dx} \left[ \mu(x) y \right]</m>. Using the same labeling strategy as before, we have
-			</p>
-
-			<!-- <md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \color{BurntOrange}{\mu}}}}\
-					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 \color{BurntOrange}{\mu} }}}\
-					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5 \color{BurntOrange}{\mu} \,
-				</mrow>
-			</md>. -->
-
-			<md>
-				<mrow>	5 \mu =	\amp \ \ob{\mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\frac{d}{dx} [\mu \ y]}}^{\large \text{reverse product rule} }	</mrow>
-				<mrow>	5 \mu =	\amp \ \mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\ub{\mu\ \frac{dy}{dx} + \frac{d\mu}{dx}  y = \frac{d}{dx} [\mu \ y]}_{\large \text{product rule}}}	</mrow>
-			</md>
-			
-			<p>
-				<!-- <line> -->
-				<sidebyside valign="middle" widths="24% 28% 25%" margin="14%">
-
-					<p>
-						<md>
-							<mrow>	\mu\ \frac{dy}{dx} + 2 \mu  y \amp = 5 \mu	</mrow>
-						</md>
-					</p>
-					
-					<p>
-						<m>\ds\vphantom{\Large\frac{|}{|}}</m> Product Rule
-					</p>	
-
-					<p>
-						<md>
-							<mrow>	\mu\ \frac{dy}{dx} \amp + 2 \mu  y = 5 \mu	</mrow>
-						</md>
-					</p>
-					
-				</sidebyside>
-				<!-- </line> -->
-
-				<!-- <line> -->
-				<sidebyside valign="middle" widths="24% 27% 26%" margin="14%">
-
-					<p>
-						<md>
-							<mrow>	{\color{green} \frac{d}{dx} [\mu \ y]} = 5 \mu	</mrow>
-						</md>
-					</p>
-
-					<p>
-						<line><m>{\color{green} \frac{d}{dx} [\mu \ y] }  </m></line>
-						<line><m>{\color{green} \quad = \mu\ \frac{dy}{dx} + \frac{d\mu}{dx}  y} \rightarrow </m></line>
-					</p>
-					
-					<p>
-						<md>
-							<mrow>	{\color{green} \mu\ \frac{dy}{dx} + \frac{d\mu}{dx}  y} = 5 \mu	</mrow>
-						</md>
-					</p>
-
-				</sidebyside>
-				<!-- </line> -->
-
-			</p>
-
-			<assemblage><title> Deriving the Integrating Factor </title>
-				<p>
-					<!-- <figure xml:id="if-derivation-figure"> -->
-				<caption>Deriving the integrating factor for equation <xref ref="if-example-incomplete-eqn00"/>.</caption>
-				<interactive aspect="2.1:1" xml:id="if-derivation-interactive" platform="javascript">
-					<slate aspect="2.1:1" xml:id="if-derivation-canvas" surface="canvas" />
-					<script>
-						const canvas = document.getElementById("if-derivation-canvas");
-						const ctx = canvas.getContext("2d");
-
-						// Define slides as objects with an image and text
-						const slides = [
-							{ 
-								image: "../../assets/figures/NEW-IF-Strategy-Step-1.png", 
-								text: 
-									"Every first-order linear\n" +
-									"differential equation can\n" + 
-									"be transformed into a\n" + 
-									"direct integration problem,\n" + 
-									"but how?\n" + 
-									"\n" + 
-									"Click \"Next\" to find out."
-							},
-							{ 
-								image: "../../assets/figures/NEW-IF-Strategy-Step-2.png",
-								text: 
-									"1. Multiply the original\n" + 
-									"equation by the function\n" + 
-									"that will help us\n" + 
-									"\"complete the derivative\"\n" + 
-									"you see in the last equation.\n" + 
-									"This function is called the\n" +
-									"integrating factor."
-							},
-							{
-								image: "../../assets/figures/NEW-IF-Strategy-Step-3.png",
-								text:
-									"2. Working backwards\n" + 
-									"from the bottom,\n" + 
-									"apply the product rule\n" + 
-									"to the left side of the last\n" + 
-									"equation. This will help us\n" + 
-									"see how the two equations\n" + 
-									"meet in the middle."
-							},
-							{
-								image: "../../assets/figures/NEW-IF-Strategy-Step-4.png",
-								text:
-									"3. The equations that meet\n" + 
-									"in the middle must be\n" +
-									"identical. Everything matches\n" + 
-									"except the boxed terms. For\n" + 
-									"this to be a valid product\n" +
-									"rule, these must also be equal."
-							},
-							{
-								image: "../../assets/figures/NEW-IF-Strategy-Step-5.png",
-								text:
-									"4. Matching the boxed\n" + 
-									"terms, we get a separable\n" + 
-									"differential equation\n" + 
-									"where the solution is the\n" + 
-									"integrating factor!"
-							}
-						];
-
-						let currentSlide = 0;
-
-						// Button properties
-						const buttonX = 340, buttonY = 260, buttonWidth = 50, buttonHeight = 25;
-
-						function drawSlide() {
-							ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-							// Draw text
-							ctx.fillStyle = "black";
-							ctx.font = "16px sans-serif";
-							const lines = slides[currentSlide].text.split("\n");
-							let textX = 340, textY = 20;
-							for (let i = 0; i &lt; lines.length; i++) {
-								ctx.fillText(lines[i], textX, textY + i * 25);
-							}
-							//ctx.fillText(slides[currentSlide].text, 340, 20);
-
-							// Load and draw image
-							const img = new Image();
-							img.onload = function () {
-								ctx.drawImage(img, 5, 5, 320, 280);
-								
-								// Draw button after image loads
-								drawButton();
-							};
-							img.onerror = function () {
-								console.error("Image failed to load: " + slides[currentSlide].image);
-								drawButton(); // Still show button if image fails
-							};
-							img.src = slides[currentSlide].image;
-						}
-
-						function drawButton() {
-							// Draw button
-							ctx.fillStyle = "lightgray";
-							ctx.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
-							ctx.strokeStyle = "black";
-							ctx.strokeRect(buttonX, buttonY, buttonWidth, buttonHeight);
-
-							// Draw button text
-							ctx.fillStyle = "black";
-							ctx.font = "18px sans-serif";
-							ctx.fillText("Next", buttonX + 6, buttonY + 19);
-						}
-
-						// Handle click to advance slides
-						canvas.addEventListener("click", function (event) {
-							const rect = canvas.getBoundingClientRect();
-							const x = event.clientX - rect.left;
-							const y = event.clientY - rect.top;
-
-							// Check if click is inside button
-							if (x &gt;= buttonX &amp;&amp; x &lt;= buttonX + buttonWidth &amp;&amp;
-								y &gt;= buttonY &amp;&amp; y &lt;= buttonY + buttonHeight) {
-								currentSlide = (currentSlide + 1) % slides.length;
-								drawSlide();
-							}
-						});
-
-						// Initial draw
-						drawSlide();
-					</script>
-				</interactive>
-			<!-- </figure> -->
-				</p>
-			</assemblage>
-			
-
-			<p>
-				Now, recall that in order for this to be a valid product rule, we must have
-			</p>
-
-			<me>
-				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
-			</me>,
-			
-			<p>
-				where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
-			</p>
-
-			<me>
-				\frac{d}{dx} [\mu(x) y] = \mu(x) \frac{dy}{dx} + \mu'(x) y.
-			</me>
-
-			<p>
-				Comparing this with the left-hand side of our given equation,
-			</p>
-
-			<me>
-				\mu(x) \frac{dy}{dx} + \mu(x) \cdot 2y = \mu(x) \cdot 5,
-			</me>
-
-			<p>
-				we see that for these to match, <m>\mu(x)</m> must satisfy the equation:
-			</p>
-
-			<me>
-				\mu'(x) = 2\mu(x).
-			</me>
-
-			<p>
-				This is a <em>separable differential equation</em>, which we solve as follows:
-			</p>
-
-			<sidebyside widths="30% 70%" valigns="top middle">
-				<p>
-					Separate Variables:
-				</p>
-				<p>
-					<me> \frac{d\mu}{\mu} = 2 dx. </me>
-				</p>
-			</sidebyside>
-
-			<sidebyside widths="30% 70%" valigns="top middle">
-				<p>
-					Integrate Both Sides:
-				</p>
-				<p>
-					<me> \int \frac{d\mu}{\mu} = \int 2dx. </me>  
-					<me> \ln|\mu| = 2x + C. </me>
-				</p>
-			</sidebyside>
-
-			<sidebyside widths="30% 70%" valigns="top middle">
-				<p>
-					Solve for <m>\mu(x)</m>:
-				</p>
-				<p>
-					<me> \mu(x) = e^{2x + C} = e^C e^{2x}. </me>
-				</p>
-			</sidebyside>
-
-			<p>
-				Since <m>e^C</m> is an arbitrary constant, we can choose <m>C = 0</m> (since any constant multiple of an integrating factor still works), giving us:
-			</p>
-
-			<men xml:id="first-integrating-factor00">
-				\mu(x) = e^{2x}.
-			</men>
-
-			<p>
-				This function is called the <term>integrating factor</term>. It allows us to transform our equation into a perfect derivative, which can then be solved by direct integration.
-			</p>
-
-		</subsubsection>
-
 		<p>
 			Once again, consider equation <xref ref="if-example-incomplete-eqn"/>, from the previous section and recall that we multiplied both sides by some function, <m>f</m>, to get
 			<md>
@@ -396,8 +93,6 @@
 				</mrow>
 			</md>.
 		</p>
-
-		
 
 		<p>
 			<sidebyside widths="20% 25% 35% 20%" valigns="top middle middle top">
@@ -543,9 +238,265 @@
 
 	<subsection><title> The Integrating Factor </title>
 
-		
+		<subsubsection><title> An Equation with an Incomplete Derivative/A Motivating Example </title>
 
+			<p>
+				In the previous section, we saw how reversing the product rule allows us to rewrite a differential equation in a form that can be directly integrated. However, in many cases, the left-hand side of a differential equation is <em>not yet a complete derivative</em>, meaning that it does not immediately match the product rule.
+			</p>
+
+			<p>
+				Consider the first-order linear equation:
+			</p>
+
+			<me>
+				\frac{dy}{dx} + 2y = 5
+			</me>.
+
+			<p>
+				The left-hand side <em>almost</em> resembles the result of the product rule, but something is missing. If we attempt to rewrite it in the form <m>\frac{d}{dx} [f(x) y]</m>, we quickly run into a problem. Labeling <m>y</m> as <m>g</m> and <m>\frac{dy}{dx}</m> as <m>g'</m>, we see that no corresponding <m>f</m> satisfies:
+			</p>
+
+			<md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} ? \ }}}\
+					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 }}}\
+					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5
+				</mrow>.
+			</md>
+			
+			<p>
+				The left-hand side lacks the function <m>f</m> that satisfies both parts of the product rule. To resolve this, let's create our own <m>f</m> function by multiplying both sides by it, like so
+				<md>
+					<mrow>	
+						\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
+						\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+						+
+						\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} }}}\
+						\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+						=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				For this to be a valid product rule, the derivative of <m>f</m> must be in the <m>f'</m> position. Can you think of a function has a derivative that is <m>2</m> times itself? There is only one, and that function is <m>e^{2x}</m>, since
+			</p>
+
+			<me>
+				\frac{d}{dx} \big[ {\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}} \big] = 2{\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}}
+			</me>
+
+			<p>
+				Multiplying both sides of the equation by <m>e^{2x}</m> gives us
+			</p>
+
+			<me>
+				e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
+			</me>,
+
+			<p>
+				but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which can be written as
+			</p>
+
+			<me>
+				\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
+			</me>
+
+			<p>
+				and solved using direct integration.
+			</p>
+				
+			<xi:include href="./c4-exercises/c4-chkpts-1-2-incomplete-derivative.ptx" />
+
+			<p>
+				This example demonstrates that <em>multiplying by the right function can complete a missing derivative</em>, allowing us to solve the equation. This function is called the <em>integrating factor</em>, and in the next section, we will formally define it and derive a general formula.
+			</p>
+
+			<p>
+				<term>---------------------------------------------------------</term>
+			</p>
 		
+			<p>
+				Recall from the previous section that we encountered the equation:
+			</p>
+
+			<men xml:id="if-example-incomplete-eqn">
+				\frac{dy}{dx} + 2y = 5
+			</men>
+
+			<p>
+				The left-hand side <em>almost</em> resembles the result of the product rule, but it is missing a function that would allow us to rewrite it as a single derivative. To determine this function must be, we multiply the original equation by an unknown variable and see if it is possible to deduce what is must beSpecifically, we want to introduce a function <m>\mu(x)</m> such that:
+			</p>
+
+			<me>
+				\frac{d}{dx} \left[ \mu(x) y \right] = 5 \mu(x)
+			</me>.
+
+			<p>
+				Our goal is to determine a general method to <em>find</em> <m>\mu(x)</m> so that this transformation always works.
+			</p>
+
+			<p>
+				To achieve this, let's multiply both sides of the equation by <m>\mu(x)</m> and imagine the left-hand side as the result of the product rule <m>\frac{d}{dx} \left[ \mu(x) y \right]</m>. Using the same labeling strategy as before, we have
+			</p>
+
+			<!-- <md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \color{BurntOrange}{\mu}}}}\
+					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 \color{BurntOrange}{\mu} }}}\
+					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5 \color{BurntOrange}{\mu} \,
+				</mrow>
+			</md>. -->
+
+			<md>
+				<mrow>	5 \mu =	\amp \ \ob{\mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\frac{d}{dx} [\mu \ y]}}^{\large \text{reverse product rule} }	</mrow>
+				<mrow>	5 \mu =	\amp \ \mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\ub{\mu\ \frac{dy}{dx} + \frac{d\mu}{dx}  y = \frac{d}{dx} [\mu \ y]}_{\large \text{product rule}}}	</mrow>
+			</md>
+
+			<p>
+				<sidebyside valign="middle" halign="right left" widths="13% 23% 50% 13%">
+					<p/>
+					<p>
+						<m>\ds\text{Multiply by }\mu\quad\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
+					</p>
+					<p>
+						<md>
+							<mrow>
+								\frac{dy}{dx} + 2 y
+									\amp = 5 \quad \leftarrow\text{Start Here}
+							</mrow>
+							<mrow>
+								\mu\frac{dy}{dx} + {\color{blue} \us{\downarrow}{\boxed{ 2\mu }}} y
+									\amp = 5\mu
+							</mrow>
+						</md>
+					</p>
+					<p/>
+				</sidebyside>
+
+				<sidebyside valign="middle" halign="right left" widths="13% 20% 3% 50% 13%">
+					<p/>
+					<p>
+						Condition on <m>\mu</m> for this to work
+					</p>
+					<p>
+						<m>\rightarrow</m>
+					</p>
+					<p>
+						<me>
+							\qquad{\color{blue} \boxed{\frac{d\mu}{dx} = 2\mu}} \quad \leftarrow\text{Solve for } \mu
+						</me>
+					</p>
+					<p/>
+				</sidebyside>
+
+				<sidebyside valign="bottom" halign="right left" widths="13% 23% 50% 13%">
+					<p/>
+					<p>
+						<m>\text{Product Rule}\quad\ds\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
+					</p>
+					<p>
+						<md>
+							<mrow>	\mu\frac{dy}{dx} + {\color{blue} \os{\uparrow}{\boxed{\frac{d\mu}{dx}}}} y	\amp = 5 \mu	</mrow>
+							<mrow>		\frac{d}{dx} \left[\mu y \right]	\amp = 5\mu	\quad \leftarrow\text{Goal}	</mrow>
+						</md>
+					</p>
+					<p/>
+				</sidebyside>
+			</p>
+
+			<assemblage><title> Deriving the Integrating Factor for Equation <xref ref="if-example-incomplete-eqn"/></title>
+				<p>
+					<interactive xml:id="if-derivation-interactive" platform="javascript" aspect="2.1:1" source="code/if-example-slide-show-1.js" preview="figures/if-strategy-3.png">
+						<slate aspect="2.1:1" xml:id="if-derivation-canvas" surface="canvas" />
+					</interactive>
+				</p>
+			</assemblage>
+			
+
+			<p>
+				Now, recall that in order for this to be a valid product rule, we must have
+			</p>
+
+			<me>
+				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
+			</me>,
+			
+			<p>
+				where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
+			</p>
+
+			<me>
+				\frac{d}{dx} [\mu(x) y] = \mu(x) \frac{dy}{dx} + \mu'(x) y.
+			</me>
+
+			<p>
+				Comparing this with the left-hand side of our given equation,
+			</p>
+
+			<me>
+				\mu(x) \frac{dy}{dx} + \mu(x) \cdot 2y = \mu(x) \cdot 5,
+			</me>
+
+			<p>
+				we see that for these to match, <m>\mu(x)</m> must satisfy the equation:
+			</p>
+
+			<me>
+				\mu'(x) = 2\mu(x).
+			</me>
+
+			<p>
+				This is a <em>separable differential equation</em>, which we solve as follows:
+			</p>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Separate Variables:
+				</p>
+				<p>
+					<me> \frac{d\mu}{\mu} = 2 dx. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Integrate Both Sides:
+				</p>
+				<p>
+					<me> \int \frac{d\mu}{\mu} = \int 2dx. </me>  
+					<me> \ln|\mu| = 2x + C. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Solve for <m>\mu(x)</m>:
+				</p>
+				<p>
+					<me> \mu(x) = e^{2x + C} = e^C e^{2x}. </me>
+				</p>
+			</sidebyside>
+
+			<p>
+				Since <m>e^C</m> is an arbitrary constant, we can choose <m>C = 0</m> (since any constant multiple of an integrating factor still works), giving us:
+			</p>
+
+			<men xml:id="first-integrating-factor00">
+				\mu(x) = e^{2x}.
+			</men>
+
+			<p>
+				This function is called the <term>integrating factor</term>. It allows us to transform our equation into a perfect derivative, which can then be solved by direct integration.
+			</p>
+
+		</subsubsection>
 
 		<subsubsection><title> The General Case </title>
 
@@ -652,7 +603,6 @@
 		</theorem>
 
 	</subsection>
-
 
 	<subsection><title> Integrating Factor Method Steps </title>
 
