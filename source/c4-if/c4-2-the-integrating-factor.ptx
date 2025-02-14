@@ -1,583 +1,16 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Completing the Derivative </title>	
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Finding the Integrating Factor </title>	
 	
 	<introduction>
 		<p>
-			
+			Intro
 		</p>
 	</introduction>
-
-	<subsection><title> Reversing the Product Rule </title>
-
-		<introduction>
-			<p>
-				The integrating factor method relies on rewriting a differential equation so that the left-hand side becomes the 
-				<q>derivative of a product</q>. To do this, we need to recognize when an expression 
-				<q>can be written as a product rule in reverse</q>.
-			</p>
-
-			<p>
-				In this subsection, we will:
-			</p>
-
-			<p>
-				<line>✅ Review the product rule from calculus.</line>
-				<line>✅ Practice reversing the product rule on different expressions.</line>
-				<line>✅ Apply this idea to transform differential equations into a solvable form.</line>
-			</p>
-			
-		</introduction>
-
-		<subsubsection><title>The Product Rule: A Quick Review</title>
-			<p>
-				The product rule states that if <m>f(x)</m> and <m>g(x)</m> are differentiable functions, then:
-			</p>
-
-			<men xml:id="product-rule">
-				\frac{d}{dx} [ f(x) g(x) ] = f(x) g'(x) + f'(x) g(x).
-			</men>
-
-			<p>
-				Most calculus problems apply the product rule <q>in the forward direction</q>—given <m>f(x)</m> and <m>g(x)</m>, compute their derivative. However, in the integrating factor method, we must <q>work in reverse</q>. For example, you can rewrite the expression
-			</p>
-
-			<me>
-				\frac{1}{x} \sin x + \cos x \ln x
-			</me>
-
-			<p>
-				in terms of the derivative of the product of two functions: <m>\big[\sin x \cdot \ln x \big]'</m>.
-			</p>
-
-			<p>
-				To get in the mindset of reversing the product rule, let's warm-up with a few forward product rule problems.
-			</p>
-
-			<example><title> Forward Product Rule </title>
-
-				<p>
-					<statement>
-						<p>
-							Compute each of the derivatives below.
-						</p>
-						<me>
-							1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y(x)\right]
-						</me>
-					</statement>
-				</p>
-
-				<solution>
-					<p>
-						Using the product rule:
-						<ol>
-							<li>
-								<p>
-									<m>\ds
-										\left( x^6 e^{3x} \right)' =
-										x^6 \cdot 3e^{3x} + 6x^5 e^{3x}
-									</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds\frac{d}{dx}
-										\left( e^{x^3} y(x) \right) =
-										e^{x^3} y'(x) + 3x^2 e^{x^3} y(x)
-									</m>
-								</p>
-							</li>
-						</ol>
-					</p>
-				</solution>
-
-			</example>
-
-		</subsubsection>
-
-		<subsubsection><title>Recognizing and Reversing the Product Rule</title>
-
-			<p>
-				Now, let's try reversing the product rule in the next few examples.
-			</p>
-
-			<example><title> Basic Reverse Product Rule </title>
-
-				<p>
-					<statement>
-						<p>
-							Rewrite each expression in the form <m>[f(x) g(x)]'</m>.
-							<me>
-								1. \quad e^{x}\cos x + e^{x}\sin x \hspace{5em} 2. \quad \frac{e^{x^2}}{x} + 2 x \ln x e^{x^2}
-							</me>
-						</p>
-					</statement>
-				</p>
-
-				<solution>
-					<p>
-						<solution>
-
-							<p>
-								One approach is to guess <m>f</m> and <m>g</m> on different terms, then check that the corresponding <m>f'</m> and <m>g'</m> are in the other terms.
-							</p>
-
-							<p>
-								First, try guessing <m>f</m> and <m>g</m> as follows
-							</p>
-
-							<p>
-								<me>
-									e^x\
-									\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}\cos x}}}
-									+
-									\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}e^x}}}\
-									\sin x
-								</me>.
-							</p>
-
-							<p>
-								To be a valid product rule, <m>f'</m> needs to be <m>\sin x</m>, but our choice of <m>f</m> results in <m>f' = [\cos x]' = -\sin x</m>, so this guess doesn't work.
-							</p>
-
-							<p>
-								Next, try the labels
-							</p>
-
-							<p>
-								<me>
-									\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}e^x}}}\
-									\cos x
-									+
-									e^x\
-									\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}\sin x}}}
-								</me>.
-							</p>
-
-							<p>
-								A quick check of <m>f' = [e^x]' = e^x</m> and <m>g' = [\sin x]' = \cos x</m> confirms this guess is a valid product rule. Therefore, we can reverse the product rule as
-							</p>
-
-							<me>
-								e^x \cos x + e^x \sin x = [e^x \cos x]'
-							</me>.
-
-
-						</solution>
-
-						<solution>
-
-							<p>
-								To make this easier, let's separate the terms as
-								<me>
-									\frac{1}{x} e^{x^2} + \ln x (2 x e^{x^2})
-								</me>.
-							</p>
-							
-							<p>
-								So, as before, we first set <m>f</m> and <m>g</m>
-
-								<me>
-									\frac{1}{x}\
-									\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}e^{x^2}}}}
-									+
-									\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}\ln x}}}\
-									2 x e^{x^2}
-								</me>.
-								then verify the derivatives of <m>f</m> and <m>g</m>
-								<me>
-									f' = \left[e^{x^2}\right]' = 2 x e^{x^2} \quad ✅ \qquad g' = \left[\ln x\right]' = \frac{1}{x} \quad ✅
-								</me>
-								and therefore,
-								<me>
-									\frac{e^{x^2}}{x} + 2 x \ln x e^{x^2} = \left[e^{x^2} \ln x\right]'
-								</me>.
-							</p>
-						</solution>
-					</p>
-				</solution>
-				
-			</example>
-
-			<p>
-				Here is an example that includes a variable in the expression. This is more like what you will see in a the integrating factor method.
-			</p>
-
-			<example><title> Reversed Product Rule with a Variable </title>
-
-				<p>
-					<statement>
-						<p>
-							Rewrite each expression in the form <m>[f(x) y(x)]'</m>.
-							<me>
-								1. \quad e^{x^2}\frac{dy}{dx} + 2 xy e^{x^2} \hspace{5em} 2. \quad e^{1/x}y' - \frac{e^{1/x}}{x^2}y
-							</me>
-						</p>
-					</statement>
-				</p>
-
-				<solution>
-					<p>
-						<solution>
-							<p>
-								The fact that we see <m>dy/dx</m> in the first term makes the labeling even easier since <m>f</m> must be <m>e^{x^2}</m> and <m>g</m> must be <m>y</m>. Confirming that the derivative of this <m>f</m> is <m>2xe^{x^2}</m> justifies the following reversed product rule
-								<md>
-									<mrow>	
-											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{x^2}}}}\
-											\frac{dy}{dx} +
-											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
-											\underset{\color{BurntOrange}{\text{verified } f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{(2xe^{x^2})}}}
-											=\amp\ \frac{d}{dx}\Big[
-												\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{x^2}}}}\
-												\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
-												\Big] \quad \leftarrow \text{answer.}
-									</mrow>
-								</md>	
-							</p>
-						</solution>
-
-						<solution>
-							<p>
-								Again, seeing <m>y'</m> in the first term means <m>f</m> must be <m>e^{1/x}</m> and <m>g</m> must be <m>y</m>. So we try the labeling
-								<md>
-									<mrow>	
-											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{1/x}}}}\
-											y' +
-											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
-											\underset{\color{BurntOrange}{\text{verified } f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\left(\ul{-\frac{e^{1/x}}{x^2}}\right)}}
-											=\amp\ \big[
-												\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{1/x}}}}\
-												\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
-												\big]' \quad \leftarrow \text{answer.}
-									</mrow>
-								</md>
-								As a review, here are the details of the derivative of <m>f</m>:
-								<me>
-									f' = \left[e^{1/x}\right]' = e^{1/x}\left[\frac{1}{x}\right]^\prime = e^{1/x}\left(-\frac{1}{x^2}\right) = -\frac{e^{1/x}}{x^2}
-								</me>.
-							</p>
-						</solution>
-					</p>
-				</solution>
-				
-			</example>
-			
-			<p>
-				Let's extend this skill to an actual differential equation.
-			</p>
-
-		
-		</subsubsection>
-
-		<subsubsection><title>Why This Matters for Differential Equations</title>
-			<p>
-				Now, let's see how this concept applies to solving a differential equation.
-			</p>
-
-			<men xml:id="reverse-product-rule-DE">
-				e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}.
-			</men>
-
-			<p>
-				The left-hand side <q>already matches</q> the product rule:
-			</p>
-
-			<men xml:id="reverse-product-rule-DE-solution">
-				\frac{d}{dx} [ e^{2x} y ] = 5e^{2x}.
-			</men>
-
-			<p>
-				Now, we can <em>directly integrate both sides</em>:
-			</p>
-
-			<md>
-				\int \frac{d}{dx} [ e^{2x} y ] dx = \int 5e^{2x} dx.
-			</md>
-
-			<md>
-				e^{2x} y = \frac{5}{2} e^{2x} + C.
-			</md>
-
-			<p>
-				Finally, solving for <m>y</m>:
-			</p>
-
-			<men xml:id="reverse-product-rule-final-solution">
-				y = \frac{5}{2} + C e^{-2x}.
-			</men>
-
-			<example xml:id="reversing-the-product-rule-in-a-DE-example"><title> Reversed Product Rule in a Differential Equation </title>
-
-				<p>
-					<statement>
-						<p>
-							Rewrite the left-side of the differential equation
-							<men xml:id="reversing-the-product-rule-in-a-DE-example-eqn">
-								e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
-							</men>
-							as a reversed product rule. Then find the general solution of the equation by <xref ref="direct-integration" text="custom">direct integration</xref>.
-						</p>
-					</statement>
-				</p>
-
-				<p>
-					<solution>
-
-						<ol>
-							<li>
-								<p>
-									To reverse the product rule on the left-side, let's label <m>f</m> and <m>g</m> as before. This time, we get
-								</p>
-
-								<p>
-									<md>
-										<mrow>	
-											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{2x}}}}\
-											\frac{dy}{dx} +
-											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}\
-											\underset{\color{BurntOrange}{\text{verify}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{(2e^{2x})}}}
-											=\amp\ \frac{d}{dx}\big[
-											\underset{\color{BurntOrange}{f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{e^{2x}}}}\
-											\underset{\color{BurntOrange}{g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{y}}}
-											\big]
-										</mrow>
-									</md>
-									which allows us to rewrite the the equation as
-									<me>
-										\frac{d}{dx}\left[e^{2x} y \right] = 5e^{2x}
-									</me>.
-								</p>
-							</li>
-							<li>
-								<p>
-									To get the general solution, we directly integrate both sides of the equation with respect to <m>x</m>, like so
-									<md>
-										<mrow>	\int \frac{d}{dx}\left[e^{2x} \cdot y \right]\ dx	=\amp \int \frac{5}{2} e^{2x}\ dx	</mrow>
-										<mrow>	e^{2x} y											=\amp \frac{5}{2} e^{2x} + c		</mrow>
-										<mrow>	y													=\amp \frac{5}{2} + c e^{-2x}		</mrow>
-									</md>.
-								</p>
-							</li>
-						</ol>
-					</solution>
-				</p>
-
-			</example>
-
-			<p>
-				This example illustrates the power of recognizing when an equation is already in a form that allows us to reverse the product rule. However, most differential equations do not start in this form. In the next section, we discuss how to modify an equation so that it becomes a perfect derivative.
-			</p>
-
-		</subsubsection>
-
-		<conclusion>
-			<p>
-				<ul>
-					<li>
-						<p>The product rule allows us to <q>recognize when an expression is already a derivative</q>.</p>
-					</li>
-					<li>
-						<p><q>Reversing</q> the product rule is a key step in the <em>integrating factor method</em>.</p>
-					</li>
-					<li>
-						<p>Once we rewrite a differential equation in the form <m>\frac{d}{dx} [\mu(x) y]</m>, we can <em>solve by integration</em>.</p>
-					</li>
-				</ul>
-			</p>
-
-			<p>
-				This prepares us for the <q>next step</q>: finding the <q>correct integrating factor</q> for any first-order linear equation.
-			</p>
-		</conclusion>
-
-		<xi:include href="./c4-exercises/c4-chkpts-1-1-reversed-product-rule.ptx" />
-
-	</subsection>
-
-	<subsection><title> <q>Completing the Square</q> Analogy </title>
-
-		<introduction>
-			<p>
-				Solving a differential equation using the integrating factor method is similar to solving a quadratic equation by 
-				<q>completing the square</q>. In both cases, we strategically modify the equation by introducing a missing component 
-				to rewrite it in a form that is easier to solve.
-			</p>
-
-			<p>
-				In this subsection, we will:
-			</p>
-			<ul>
-				<li>
-					<p>Review the technique of completing the square for quadratic equations.</p>
-				</li>
-				<li>
-					<p>Compare it to the process of completing the derivative using an integrating factor.</p>
-				</li>
-				<li>
-					<p>Establish an analogy that helps us understand why the integrating factor method works.</p>
-				</li>
-			</ul>
-		</introduction>
-
-		<subsubsection xml:id="quadratic-completing-square"><title>Completing the Square for Quadratic Equations</title>
-			<p>
-				Consider the quadratic equation:
-			</p>
-
-			<men xml:id="quadratic-example">
-				x^2 + 6x = -1
-			</men>
-
-			<p>
-				One way to solve this equation is to move <m>-1</m> to the left-hand side and apply the quadratic formula. However, 
-				another approach is to <q>complete the square</q> by strategically adding a number that turns the left-hand side into 
-				a perfect square trinomial.
-			</p>
-
-			<p>
-				Since the coefficient of <m>x</m> is <m>6</m>, we add <m>\left(\frac{6}{2}\right)^2 = 9</m> to both sides:
-			</p>
-
-			<me>
-				x^2 + 6x + 9 = -1 + 9.
-			</me>
-
-			<p>
-				Now, the left-hand side is a perfect square:
-			</p>
-
-			<men xml:id="perfect-square">
-				(x + 3)^2 = 8.
-			</men>
-
-			<p>
-				Taking the square root on both sides yields:
-			</p>
-
-			<me>
-				x + 3 = \pm\sqrt{8}.
-			</me>
-
-			<p>
-				This allows us to solve for <m>x</m> easily. The key idea here is that we added a carefully chosen number to turn the 
-				expression into a perfect square, making the equation easier to solve.
-			</p>
-		</subsubsection>
-
-		<subsubsection xml:id="completing-the-derivative"><title>Completing the Derivative: The Integrating Factor</title>
-			<p>
-				The integrating factor method follows a similar idea, but instead of completing the square, we <q>complete the derivative</q>.
-				Our goal is to introduce a missing function that allows us to rewrite the left-hand side of a differential equation 
-				as the derivative of a product.
-			</p>
-
-			<p>
-				Consider the first-order linear differential equation:
-			</p>
-
-			<men xml:id="first-order-linear">
-				\frac{dy}{dx} + 6y = -1.
-			</men>
-
-			<p>
-				The left-hand side is almost the result of the product rule, but not quite. Our goal is to multiply by a function 
-				<m>\mu(x)</m> so that the left-hand side becomes a perfect derivative:
-			</p>
-
-			<men xml:id="completed-derivative">
-				\frac{d}{dx} [\mu(x) y] = -\mu(x).
-			</men>
-
-			<p>
-				Just like in completing the square, we identify the missing component and introduce it to simplify the problem. 
-				The function <m>\mu(x)</m> that we introduce is called the <term>integrating factor</term>. It plays a role similar to the 
-				<m>9</m> we added in the quadratic equation—it transforms the equation into a form that is easy to solve.
-			</p>
-		</subsubsection>
-
-		<subsubsection xml:id="integrating-factor-analogy"><title>Analogy Between Completing the Square and Completing the Derivative</title>
-			<assemblage><title>Integrating Factor Analogy</title>
-				<p>
-					The table below summarizes the analogy between completing the square and completing the derivative:
-				</p>
-
-				<tabular halign="center">
-					<col right="minor"/>
-					<col right="minor"/>
-					<row bottom="minor">
-						<cell/>
-						<cell>Completing the Square</cell>
-						<cell>Completing the Derivative</cell>
-					</row>
-					<row>
-						<cell>Equation</cell>
-						<cell><m>x^2 + 6x = -1</m></cell>
-						<cell><m>\ds\frac{dy}{dx} + 6y = -1</m></cell>
-					</row>
-					<row>
-						<cell>
-							<line>Missing</line>
-							<line>Part</line>
-						</cell>
-						<cell><m>9</m> (add)</cell>
-						<cell><m>e^{6x}</m> (multiply)</cell>
-					</row>
-					<row>
-						<cell>Result</cell>
-						<cell><m>x^2 + 6x + \boxed{9} = -1 + \boxed{9}</m></cell>
-						<cell><m>\ds\boxed{e^{6x}}\frac{dy}{dx} + 6\boxed{e^{6x}}y = -1 \boxed{e^{6x}}</m></cell>
-					</row>
-					<row>
-						<cell>Goal</cell>
-						<cell><m>(x + 3)^2 = 8</m></cell>
-						<cell><m>\ds\frac{d}{dx} [e^{6x} y] = -e^{6x}</m></cell>
-					</row>
-					<row>
-						<cell>
-							<line>Solution</line>
-							<line>Method</line>
-						</cell>
-						<cell>
-							<line>Solve for <m>x</m> by</line>
-							<line>taking the square root</line>
-						</cell>
-						<cell>
-							<line>Solve for <m>y</m> by</line>
-							<line>direct integration</line>
-						</cell>
-					</row>
-				</tabular>
-			</assemblage>
-		</subsubsection>
-
-		<conclusion>
-			<p>
-				Just as completing the square helps solve quadratic equations by rewriting them in a more convenient form, 
-				completing the derivative helps solve first-order linear differential equations by making the left-hand side a 
-				perfect derivative.
-			</p>
-
-			<p>
-				The next step is to formally define the integrating factor and derive a general formula for finding it.
-			</p>
-		</conclusion>
-
-	</subsection>
-
-	<section><title>Finding the Integrating Factor</title>
-
-		
-		
-	</section>
-
-
-	<subsection><title> <q>Completing the Square</q> Analogy </title>
-
-	</subsection>
 
 	<introduction>
 	
 		<p>
 			The integrating factor method is a systematic process that converts a first-order linear differential equation into a direct integration problem. In terms of equation, it looks like
-			<men xml:id="if-completed-derivative-eqn">
+			<men xml:id="if-completed-derivative-eqn2">
 				\ub{\frac{dy}{dx} + P(x) y = Q(x)}_{\text{Given Equation}} \quad 
 				\os{\text{Integrating}}{\us{\text{Factor Method}}{\longrightarrow}} \quad 
 				\ub{\frac{d}{dx}[ \mu(x) y ] = \mu(x) Q(x)}_{\text{Completed Derivative Equation}}
@@ -585,7 +18,7 @@
 		</p>
 
 		<p>
-			The method gets its name from the function <m>\mu(x)</m> that must be included to get the <q>completed derivative equation</q> in <xref ref="if-completed-derivative-eqn"/>.
+			The method gets its name from the function <m>\mu(x)</m> that must be included to get the <q>completed derivative equation</q> in <xref ref="if-completed-derivative-eqn1"/>.
 		</p>
 
 		<p>
@@ -623,298 +56,159 @@
 
 	</introduction>
 
-	<subsection><title> <q>Completing the Square</q> Analogy </title>
+	<subsection><title> Finding the Integrating Factor </title>
 
-		<p>
-			Solving a differential equation using the integrating factor method is similar to solving a quadratic equation by <q>completing the square</q>. In both cases, you are including some missing component to get the equation into a form that makes it easier to solve. For example, consider the equation
-			<men xml:id="if-analogy-quadratic-eqn">
-				x^2 + 6x = -1
-			</men>.
-		</p>
+		<introduction>
 
-		<p>
-			One approach to solving this equation is to move <m>-1</m> to the left side and apply the quadratic formula. However, another way is to <q>complete the square</q> by strategically adding the one number to both sides in order to make the left-hand side a perfect square. In this case, adding <m>9</m> gives:
-		</p>
-
-		<me>
-			x^2 + 6x + 9 = -1 + 9
-		</me>.
-
-		<p>
-			This allows us to rewrite the left-hand side as
-		</p>
-
-		<men xml:id="if-analogy-perfect-sqr-eqn">
-			(x + 3)^2 = 8
-		</men>,
-
-		<p>
-			which is much easier to solve (take the square root of both sides).
-		</p>
-
-		<p>
-			The key idea here is that we artifically added the specific number needed to create the prefect square. This is useful since the square can be eliminated by a square root, allowing us to isolate <m>x</m>.
-		</p>
-
-		<p>
-			The integrating factor method follows a similar approach but applied to differential equations. Instead of <q>completing the square</q>, we aim to <q>complete the derivative</q> and use an integral to eliminate the derivative, allowing us to isolate for <m>y</m>. For example, the first-order linear differential equation,
-		</p>
-
-		<men xml:id="if-analogy-first-order-linear-eqn">
-			\frac{dy}{dx} + 6y = -1
-		</men>,
-
-		<p>
-			resembles a product rule derivative but is missing a key component. Our goal is to find and introduce this missing piece so that the left-hand side becomes a perfect derivative:
-		</p>
-
-		<men xml:id="if-analogy-di-eqn">
-			\frac{d}{dx}[e^{6x} y] = -e^{6x}
-		</men>.
-
-		<p>
-			This new form is immediately solvable through direct integration. The function we introduced, <m>e^{6x}</m>, is called the <term>integrating factor</term>, and its role is analogous to the <m>9</m> that we added to complete the square in the quadratic example.
-		</p>
-
-		<assemblage><title>Integrating Factor Analogy</title>
 			<p>
-				The table below summarizes the analogy between completing the square and completing the derivative:
+				Before we begin with the next topic, make sure the following points are clear:
 			</p>
 
-			<tabular halign="center">
-				<col right="minor"/>
-				<col right="minor"/>
-				<row bottom="minor">
-					<cell/>
-					<cell>Completing the Square</cell>
-					<cell>Completing the Derivative</cell>
-				</row>
-				<row>
-					<cell>Equation</cell>
-					<cell><m>x^2 + 6x = -1</m></cell>
-					<cell><m>\ds\frac{dy}{dx} + 6y = -1</m></cell>
-				</row>
-				<row>
-					<cell>
-						<line>Missing</line>
-						<line>Part</line>
-					</cell>
-					<cell><m>9\ </m> (add)</cell>
-					<cell><m>e^{6x}\ </m> (multiply)</cell>
-				</row>
-				<row>
-					<cell>Result</cell>
-					<cell><m>x^2 + 6x + \boxed{9} = -1 + \boxed{9}</m></cell>
-					<cell><m>\ds\boxed{e^{6x}}\frac{dy}{dx} + 6\boxed{e^{6x}}y = -1 \boxed{e^{6x}}</m></cell>
-				</row>
-				<row>
-					<cell>Goal</cell>
-					<cell><m>(x + 3)^2 = 8</m></cell>
-					<cell><m>\ds\frac{d}{dx}[e^{6x} y] = -e^{6x}</m></cell>
-				</row>
-				<row>
-					<cell>
-						<line>Solution</line>
-						<line>Method</line>
-					</cell>
-					<cell>
-						<line>Solve for <m>x</m> by</line>
-						<line>Taking the Square Root</line>
-					</cell>
-					<cell>
-						<line>Solve for <m>y</m> by</line>
-						<line>Direct Integration</line>
-					</cell>
-				</row>
-			</tabular>
-		</assemblage>
+			<p>
+				<line> 1️⃣ A derivative can be <q>completed</q> in <em>ANY</em> first order linear equation.</line>
+				<line> 2️⃣ The equation must be multiplied by a function to complete the derivative.</line>
+				<line> 3️⃣ The completed derivative is formed as a reverse product rule.</line>
+			</p>
 
-		<p>
-			Just as completing the square helps solve quadratic equations by rewriting them in a more convenient form, completing the derivative helps solve first-order linear differential equations by making the left-hand side a perfect derivative. The next step is reviewing the product rule and exploring how to use it in the reverse direction.
-		</p>
+			<p>
+				These ideas make up the fundamental strategy behind the integrating factor method. In fact, you have already seen examples of this strategy in action. What you haven't seen, however, is how to find the function that completes the derivative for any given first order linear equation. So the next step is to come up with a formula for finding it.
+			</p>
 
-	</subsection>
+		</introduction>
 
-	<introduction>
-
-		<p>
-			So far, we've applied the integrating factor method using intuition or by recognizing patterns. However, a natural question arises: <q>How do we determine the integrating factor for any first-order linear differential equation?</q> Fortunately, their is <em>a general formula</em> that can be derived using the ideas we've developed so far—namely, reversing the product rule and applying separation of variables.
-		</p>
-
-		<p>
-			In this section, we will first <em>derive the formula for the integrating factor</em> in the context of a specific example, then generalize it to apply to any first-order linear differential equation.
-		</p>
-
-		<p>
-			In the previous section, we saw how reversing the product rule allows us to rewrite a differential equation in a form that can be directly integrated. However, it is rare to encounter a differential equation where we can directly <q>complete the derivative</q> apply the  <em>not yet a complete derivative</em>, meaning that it does not immediately match the product rule.
-		</p>
-
-	</introduction>
-
-	<subsection><title> The Integrating Factor </title>
-
-		
-		<p>
-			Once again, consider equation <xref ref="if-example-incomplete-eqn"/>, from the previous section and recall that we multiplied both sides by some function, <m>f</m>, to get
-			<md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
-					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} }}}\
-					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} \,
-				</mrow>
-			</md>.
-		</p>
-
-		<p>
-			<sidebyside widths="20% 25% 35% 20%" valigns="top middle middle top">
-				
-				<p/>
-				<p>
-					Separate <m>\rightarrow</m>
-				</p>
-
-				<p>
-					<md>
-						<mrow> \frac{1}{\mu}\ d\mu	=\amp\ 2 dx	</mrow>
-					</md>
-				</p>
-				<p/>
-
-			</sidebyside>
-		</p>
-
-		<p>
-			<sidebyside widths="20% 25% 35% 20%" valigns="top top middle top">
-				
-				<p/>
-				<p>
-					Integrate <m>\rightarrow</m>
-				</p>
-
-				<p>
-					<md>
-						<mrow>	\int \frac{1}{\mu}\ d\mu	=\amp\ \int 2\ dx	</mrow>
-						<mrow>	\ln|\mu|					=\amp\ 2x + c		</mrow>
-					</md>
-				</p>
-				<p/>
-
-			</sidebyside>
-		</p>
-
-		<p>
-
-			<sidebyside widths="20% 25% 35% 20%" valigns="top top middle top">
-				
-				<p/>
-				<p>
-					Isolate <m>\rightarrow</m>
-				</p>
-
-				<p>
-					<md>
-						<mrow>	\mu	=\amp\ \pm e^{2x + c}	</mrow>
-						<mrow>	\mu	=\amp\ \pm e^c e^{2x}	</mrow>
-					</md>
-				</p>
-				<p/>
-
-			</sidebyside>
-
-		</p>
-
-		<p>
+		<subsubsection><title> A Motivating Example </title>
 			
-			<sidebyside widths="20% 25% 35% 20%" valigns="top middle middle top">
+			<p>
+				Recall from the previous section that we encountered the equation:
+			</p>
 
-				<p/>
-				<p>
-					General Solution <m>\rightarrow</m>
-				</p>
+			<men xml:id="if-example-incomplete-eqn">
+				\frac{dy}{dx} + 2y = 5
+			</men>.
 
-				<p>
-					<md>
-						<mrow>	\mu(x)	=\amp\ ce^{2x}	</mrow>
-					</md>.
-				</p>
-				<p/>
+			<p>
+				Even though we have already seen which function completes the derivative, assume it is unknown and it call <m>\mu</m>. Our goal is to find <m>\mu</m> as a function of <m>x</m> such that <xref ref="if-example-incomplete-eqn"/> can be rewritten as
+			</p>
 
-			</sidebyside>
-
-		</p>
-		
-		<p>
-			Since any non-zero <m>c</m> will be a solution, we chose <m>c=1</m>. Thus, the integrating factor that we multiply <xref ref="if-example-incomplete-eqn"/> by to complete the product rule is
 			<me>
-				\mu(x) = e^{2x}.
+				\frac{d}{dx} \left[\mu y \right] = 5\mu
 			</me>
-		</p>
 
-		<p>
-			While this integrating factor is specific to <xref ref="if-example-incomplete-eqn"/>, the general integrating factor is found in a similar manner, which we will now show.
-		</p>
+			<p>
+				The strategy for determining <m>\mu</m> is visualized in the following diagram
+			</p>
 
-		<p>
-			Every first-order linear differential equation has the form
-			<me>
-				y' + P(x)y = Q(x)
-			</me>,
-			and the left side is always one piece away from a complete product rule. To find this piece, we multiply both sides by <m>\mu</m>, and label the pieces of the product rule, as before,
+			<figure xml:id="if-strategy-1">
+				<caption>The following diagram gives a visual illustration of how to find <m>\mu</m> given that we want to rewrite the <em>Starting Equation</em> as the <em>Goal Equation</em>.</caption>
+				
+				<sidebyside valign="middle" halign="right left" widths="5% 31% 60% 4%">
+					<p/>
+					<p>
+						<m>\ds\text{Multiply by }\mu\quad\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
+					</p>
+					<p>
+						<md>
+							<mrow>
+								\frac{dy}{dx} + 2 y \amp = 5 \quad \leftarrow\text{Starting Equation}
+							</mrow>
+							<mrow>
+								\mu\frac{dy}{dx} + {\color{blue} \us{\downarrow}{\boxed{ 2\mu }}} y
+									\amp = 5\mu \quad \leftarrow\text{Middle Equation 1}
+							</mrow>
+						</md>
+					</p>
+					<p/>
+				</sidebyside>
+
+				<sidebyside valign="middle" halign="right left" widths="40% 50% 10%">
+					<p/>
+					<p>
+						<me>
+							{\color{blue} \boxed{\frac{d\mu}{dx} = 2\mu}} \qquad\leftarrow\text{Condition Equation}
+						</me>
+					</p>
+					<p/>
+				</sidebyside>
+
+				<sidebyside valign="bottom" halign="right left" widths="5% 22% 60% 11%">
+					<p/>
+					<p>
+						<m>\text{Product Rule}\quad\ds\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
+					</p>
+					<p>
+						<md>
+							<mrow>	\mu\frac{dy}{dx} + {\color{blue} \os{\uparrow}{\boxed{\frac{d\mu}{dx}}}} y	\amp = 5 \mu\quad \leftarrow\text{Middle Equation 2} </mrow>
+							<mrow>		\frac{d}{dx} \left[\mu y \right]	\amp = 5\mu	\quad \leftarrow\text{Goal Equation}	</mrow>
+						</md>
+					</p>
+					<p/>
+				</sidebyside>
+			</figure>
+
+			<p>
+				The steps in <xref ref="if-strategy-1"/> are broken down, in order, as follows:
+			</p>
+			
+			<p>
+				<sidebyside widths="2% 6% 92%">
+					<p/>
+					<p>
+						1️⃣
+					</p>
+					<p>
+						Multiply the original equation by <m>\mu</m> to get Middle Equation 1.
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="2% 6% 92%">
+					<p/>
+					<p>
+						2️⃣
+					</p>
+					<p>
+						Use the product rule on Goal Equation's left side to get Middle Equation 2.
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="2% 6% 92%">
+					<p/>
+					<p>
+						3️⃣
+					</p>
+					<p>
+						In order for the Starting and Goal Equations to be equal, Middle Equations 1 and 2 must also be equal, which gives the Condition Equation:
+						<me>
+							\frac{d\mu}{dx} = 2\mu
+						</me>.
+						This is a separable differential equation that can be solved to find <m>\mu</m>!
+					</p>
+				</sidebyside>
+			</p>
+
+		
+			
+			<p>	
+				Next, we find <m>\mu</m> by solving the Condition Equation using separation of variables.
+			</p>
+
 			<md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \mu }}}\
-					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y'}}}
-					+
-					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} P(x)\ \mu }}}\
-					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ Q(x)\ \mu
-				</mrow>.
+				<mrow>	\frac{d\mu}{dx} = 2\mu \quad \implies \quad
+						\frac{1}{\mu}\ d\mu			\amp = 2 dx			</mrow>
+				<mrow>	\int \frac{1}{\mu}\ d\mu	\amp = \int 2 dx	</mrow>
+				<mrow>	\ln|\mu|					\amp = 2x + c		</mrow>
+				<mrow>	\mu							\amp = ce^{2x}		</mrow>
 			</md>
-			We reason that in order for this to be a valid product rule, we must have
-			<men xml:id="if-sov-eqn">
-				\mu^{\prime} = P(x)\ \mu
-			</men>.
-			which is a differential equation that can be solved by separation of variables to find the integrating factor, <m>\mu</m>, as
-			<men xml:id="def-integrating-factor">
-				\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}
-			</men>.
-		</p>
-
-		<theorem xml:id="integrating-factor"><title>Solution to Equation <xref ref="if-sov-eqn"/></title>
-
-			<statement>
-
-				<p>
-					To solve the differential equation <xref ref="if-sov-eqn"/> for the integrating factor, <m>\mu</m>, we apply separation of variables, as follows
-				</p>
-
-				<p>
-					<md>
-						<mrow>			\frac{d\mu}{dx}	=\amp\ \mu P(x)								</mrow>
-						<mrow>		\frac{1}{\mu}d\mu	=\amp\ P(x) dx								</mrow>
-						<mrow>	\int \frac{1}{\mu}d\mu	=\amp\ \int P(x) dx							</mrow>
-						<mrow>				\ln|\mu|	=\amp\ \int P(x) dx							</mrow>
-						<mrow>						\mu	=\amp\ \pm e^{\int P(x) dx}	\qquad ^{(*)}	</mrow>
-						<mrow>						\mu	=\amp\ e^{\int P(x) dx}						</mrow>
-					</md>
-					<m>^{(*)}</m> Since both the positive or negative versions of the solution will produce a valid integrating factor, the positive is chosen by convention.
-				</p>
-			</statement>
 			
-		</theorem>
+			<p>
+				Since any non-zero <m>c</m> will be a solution, we chose <m>c=1</m>. Thus, the integrating factor that we multiply <xref ref="if-example-incomplete-eqn"/> by to complete the product rule is
+				<me>
+					\mu(x) = e^{2x}.
+				</me>
+			</p>
 
-		<xi:include href="./c4-exercises/c4-chkpts-2-1-integrating-factor.ptx" />
-
-	</subsection>
-
-	<subsection><title> The Integrating Factor </title>
-
-		<subsubsection><title> An Equation with an Incomplete Derivative/A Motivating Example </title>
-
-			
+			<p>
+				While this integrating factor is specific to <xref ref="if-example-incomplete-eqn"/>, the general integrating factor is found in a similar manner, which we will now show.
+			</p>
 
 			<p>
 				Consider the first-order linear equation:
@@ -981,8 +275,6 @@
 				and solved using direct integration.
 			</p>
 				
-			<xi:include href="./c4-exercises/c4-chkpts-1-2-incomplete-derivative.ptx" />
-
 			<p>
 				This example demonstrates that <em>multiplying by the right function can complete a missing derivative</em>, allowing us to solve the equation. This function is called the <em>integrating factor</em>, and in the next section, we will formally define it and derive a general formula.
 			</p>
@@ -991,102 +283,16 @@
 				<term>---------------------------------------------------------</term>
 			</p>
 		
-			<p>
-				Recall from the previous section that we encountered the equation:
-			</p>
+			
 
-			<men xml:id="if-example-incomplete-eqn">
-				\frac{dy}{dx} + 2y = 5
-			</men>
+			
 
-			<p>
-				The left-hand side <em>almost</em> resembles the result of the product rule, but it is missing a function that would allow us to rewrite it as a single derivative. To determine this function must be, we multiply the original equation by an unknown variable and see if it is possible to deduce what is must beSpecifically, we want to introduce a function <m>\mu(x)</m> such that:
-			</p>
-
-			<me>
-				\frac{d}{dx} \left[ \mu(x) y \right] = 5 \mu(x)
-			</me>.
-
-			<p>
-				Our goal is to determine a general method to <em>find</em> <m>\mu(x)</m> so that this transformation always works.
-			</p>
-
-			<p>
-				To achieve this, let's multiply both sides of the equation by <m>\mu(x)</m> and imagine the left-hand side as the result of the product rule <m>\frac{d}{dx} \left[ \mu(x) y \right]</m>. Using the same labeling strategy as before, we have
-			</p>
-
-			<!-- <md>
-				<mrow>	
-					\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \color{BurntOrange}{\mu}}}}\
-					\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
-					+
-					\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 \color{BurntOrange}{\mu} }}}\
-					\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
-					=\amp\ 5 \color{BurntOrange}{\mu} \,
-				</mrow>
-			</md>. -->
-
-			<md>
-				<mrow>	5 \mu =	\amp \ \ob{\mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\frac{d}{dx} [\mu \ y]}}^{\large \text{reverse product rule} }	</mrow>
-				<mrow>	5 \mu =	\amp \ \mu\ \frac{dy}{dx} + 2 \mu  y = \color{green}{\ub{\mu\ \frac{dy}{dx} + \frac{d\mu}{dx}  y = \frac{d}{dx} [\mu \ y]}_{\large \text{product rule}}}	</mrow>
-			</md>
-
-			<p>
-				<sidebyside valign="middle" halign="right left" widths="13% 23% 50% 13%">
-					<p/>
-					<p>
-						<m>\ds\text{Multiply by }\mu\quad\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
-					</p>
-					<p>
-						<md>
-							<mrow>
-								\frac{dy}{dx} + 2 y
-									\amp = 5 \quad \leftarrow\text{Start Here}
-							</mrow>
-							<mrow>
-								\mu\frac{dy}{dx} + {\color{blue} \us{\downarrow}{\boxed{ 2\mu }}} y
-									\amp = 5\mu
-							</mrow>
-						</md>
-					</p>
-					<p/>
-				</sidebyside>
-
-				<sidebyside valign="middle" halign="right left" widths="13% 20% 3% 50% 13%">
-					<p/>
-					<p>
-						Condition on <m>\mu</m> for this to work
-					</p>
-					<p>
-						<m>\rightarrow</m>
-					</p>
-					<p>
-						<me>
-							\qquad{\color{blue} \boxed{\frac{d\mu}{dx} = 2\mu}} \quad \leftarrow\text{Solve for } \mu
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
-
-				<sidebyside valign="bottom" halign="right left" widths="13% 23% 50% 13%">
-					<p/>
-					<p>
-						<m>\text{Product Rule}\quad\ds\left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
-					</p>
-					<p>
-						<md>
-							<mrow>	\mu\frac{dy}{dx} + {\color{blue} \os{\uparrow}{\boxed{\frac{d\mu}{dx}}}} y	\amp = 5 \mu	</mrow>
-							<mrow>		\frac{d}{dx} \left[\mu y \right]	\amp = 5\mu	\quad \leftarrow\text{Goal}	</mrow>
-						</md>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
+			
 
 			<assemblage><title> Deriving the Integrating Factor for Equation <xref ref="if-example-incomplete-eqn"/></title>
 				<p>
-					<interactive xml:id="if-derivation-interactive" platform="javascript" aspect="2.1:1" source="code/if-example-slide-show-1.js" preview="figures/if-strategy-3.png">
-						<slate aspect="2.1:1" xml:id="if-derivation-canvas" surface="canvas" />
+					<interactive xml:id="if-derivation-interactive" platform="javascript" width="88%" aspect="1.75:1" source="code/if-example-slide-show-1.js" preview="figures/if-strategy-3.png">
+						<slate width="88%" aspect="1.75:1" xml:id="if-derivation-canvas" surface="canvas" />
 					</interactive>
 				</p>
 			</assemblage>
@@ -1171,6 +377,55 @@
 		</subsubsection>
 
 		<subsubsection><title> The General Case </title>
+
+			<p>
+				Every first-order linear differential equation has the form
+				<me>
+					y' + P(x)y = Q(x)
+				</me>,
+				and the left side is always one piece away from a complete product rule. To find this piece, we multiply both sides by <m>\mu</m>, and label the pieces of the product rule, as before,
+				<md>
+					<mrow>	
+						\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \mu }}}\
+						\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y'}}}
+						+
+						\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} P(x)\ \mu }}}\
+						\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+						=\amp\ Q(x)\ \mu
+					</mrow>.
+				</md>
+				We reason that in order for this to be a valid product rule, we must have
+				<men xml:id="if-sov-eqn">
+					\mu^{\prime} = P(x)\ \mu
+				</men>.
+				which is a differential equation that can be solved by separation of variables to find the integrating factor, <m>\mu</m>, as
+				<men xml:id="def-integrating-factor">
+					\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}
+				</men>.
+			</p>
+
+			<theorem xml:id="integrating-factor"><title>Solution to Equation <xref ref="if-sov-eqn"/></title>
+
+				<statement>
+
+					<p>
+						To solve the differential equation <xref ref="if-sov-eqn"/> for the integrating factor, <m>\mu</m>, we apply separation of variables, as follows
+					</p>
+
+					<p>
+						<md>
+							<mrow>			\frac{d\mu}{dx}	=\amp\ \mu P(x)								</mrow>
+							<mrow>		\frac{1}{\mu}d\mu	=\amp\ P(x) dx								</mrow>
+							<mrow>	\int \frac{1}{\mu}d\mu	=\amp\ \int P(x) dx							</mrow>
+							<mrow>				\ln|\mu|	=\amp\ \int P(x) dx							</mrow>
+							<mrow>						\mu	=\amp\ \pm e^{\int P(x) dx}	\qquad ^{(*)}	</mrow>
+							<mrow>						\mu	=\amp\ e^{\int P(x) dx}						</mrow>
+						</md>
+						<m>^{(*)}</m> Since both the positive or negative versions of the solution will produce a valid integrating factor, the positive is chosen by convention.
+					</p>
+				</statement>
+				
+			</theorem>
 
 			<p>
 				The function <m>\mu(x) = e^{2x}</m> worked in our example because it allowed us to transform the equation into a perfect derivative. But <em>how do we find the integrating factor for any equation of the form</em>:

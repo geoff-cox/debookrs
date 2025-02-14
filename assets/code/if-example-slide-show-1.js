@@ -4,67 +4,65 @@ const ctx = canvas.getContext("2d");
 // Define slides as objects with an image and text
 const slides = [
     { 
-        image: "../../assets/figures/if-strategy-0.png", 
+        image: "../../assets/figures/if-strategy-10.png", 
         text: 
             "Every first-order linear\n" +
-            "differential equation can\n" + 
-            "be transformed into a\n" + 
-            "direct integration problem,\n" + 
-            "but how?\n" + 
+            "differential equation\n" + 
+            "can be transformed into\n" + 
+            "a direct integration\n" + 
+            "problem, but how?\n" + 
             "\n" + 
             "Click \"Next\" to find out."
     },
     { 
-        image: "../../assets/figures/if-strategy-1.png",
+        image: "../../assets/figures/if-strategy-11.png",
         text: 
             "1. Multiply the original\n" + 
             "equation by an unknown\n" + 
-            "function (integrating\n" + 
+            "function (the integrating\n" + 
             "factor) that makes a\n" + 
-            "path for reversing the\n" + 
-            "product rule.\n" + 
-            "\n" +
-            "Thus,\n" + 
-            "\"completing the derivative.\""
+            "path to our goal of \n" + 
+            "reversing the product\n" + 
+            "rule."
     },
     {
-        image: "../../assets/figures/if-strategy-2.png",
+        image: "../../assets/figures/if-strategy-12.png",
         text:
-            "2. Now, working backwards\n" + 
-            "from the bottom, apply\n" + 
-            "the product rule to the\n" + 
-            "left side of the last\n" + 
-            "equation.\n" + 
+            "2. Now, working\n" + 
+            "backwards, apply the\n" + 
+            "product rule to the\n" + 
+            "left side of our final\n" + 
+            "goal equation.\n" + 
             "\n" +
             "This will bridge the gap\n" + 
-            "between the given equation\n" + 
-            "and our goal."
+            "between our starting\n" + 
+            "equation and goal."
     },
     {
-        image: "../../assets/figures/if-strategy-3.png",
+        image: "../../assets/figures/if-strategy-13.png",
         text:
-            "3. The equations that meet\n" + 
-            "in the middle must be\n" +
-            "identical. Everything in\n" + 
-            "these equations match\n" + 
-            "except for what's in the\n" + 
-            "boxes.\n" + 
+            "3. The equations that\n" + 
+            "meet in the middle are\n" +
+            "identical except for\n" + 
+            "the boxed expressions.\n" + 
             "\n" +
-            "For this method to work,\n" +
-            "these must also be equal."
+            "This tells us that\n" + 
+            "the μ we are looking\n" +
+            "for is the one that\n" +
+            "makes the boxes equal."
     },
     {
-        image: "../../assets/figures/if-strategy-4.png",
+        image: "../../assets/figures/if-strategy-14.png",
         text:
-            "4. Matching the boxed\n" + 
-            "expressions gives us a\n" + 
-            "condition for what the\n" + 
-            "integrating factor can be\n" + 
-            "in the form of a separable\n" + 
-            "differential equation.\n" + 
-            "\n" + 
-            "Solving this gives us the\n" + 
-            "integrating factor!"
+            "4. The condition\n" + 
+            "that requires the\n" + 
+            "boxed expressions to\n" + 
+            "be equal is in the\n" + 
+            "form of a separable\n" + 
+            "differential equation\n" + 
+            "that we can solve\n" + 
+            "to get the\n" + 
+            "integrating factor, μ!"
     }
 ];
 
