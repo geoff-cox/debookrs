@@ -1,0 +1,180 @@
+<subsection xml:id="r-01-03" xmlns:xi="http://www.w3.org/2001/XInclude"><title> Integration by parts </title>
+
+	<p>
+		Integration by parts may be a good choice when the integrand contains a product. Recall the formula for integration by parts.
+		<men xml:id="ibp-formula">
+			\int u \cdot dv = u\cdot v - \int v \cdot du
+		</men>
+	</p>
+
+	<p>
+		Let's consider the following example.
+	</p>
+
+	<example xml:id="r-01-03-IBP_ex_01"><title>Evaluate <m>\ds \int t^3 \ln t \ dt </m></title>
+		
+		<p>
+			We choose <m>u</m> and <m>dv</m> as follows:
+			<me>  u = \ln t \hspace{2cm} dv = t^3 \ dt. </me>
+			Then we find <m>du</m> by taking the derivative of <m>u</m> and <m>v</m> by taking the antiderivative of <m>dv</m>:
+			<me> du = \frac{1}{t}dt  \hspace{2cm} v = \frac{1}{4}t^4. </me>
+			Thus we have:
+			<md>
+				<mrow>\int t^3 \ln t dt	=\amp\ \int  \ln t \cdot t^3dt					</mrow>
+				<mrow>=\amp\ \int \ub{\ln t}_{u} \cdot \ub{t^3 dt}_{dv}					</mrow>
+				<mrow>=\amp\ \int u\cdot dv												</mrow>
+				<mrow>=\amp\ u\cdot v - \int v \cdot du									</mrow>
+				<mrow>=\amp\ \ln t \cdot \frac{1}{4}t^4 - \int \frac{1}{4}t^4
+								\cdot \frac{1}{t}dt									</mrow>
+				<mrow>=\amp\ \frac{1}{4}t^4\ln t - \frac{1}{4}\int t^3 dt				</mrow>
+				<mrow>=\amp\ \frac{1}{4}t^4\ln t - \frac{1}{4}\cdot \frac{1}{4}t^4 + C	</mrow>
+				<mrow>=\amp\ \frac{1}{4}t^4\ln t - \frac{1}{16}t^4 + C					</mrow>	
+			</md>
+		</p>
+	</example>
+				
+	<p> Now you try some. </p>
+
+	<p>
+		<term> Evaluate each of the following integrals.  Use proper notation.</term>
+		<ol>
+			<li>
+				<m>\ds \int (x - 1)e^x \ dx \qquad</m>
+				<solution>
+					<p>
+				We choose <m>u</m> and <m>dv</m> as follows:
+					<me>  u = x-1 \hspace{2cm} dv = e^x dx. </me>
+					Then we find <m>du</m> by taking the derivative of <m>u</m> and <m>v</m> by
+					taking the antiderivative of <m>dv</m>:
+					<me> du = dx  \hspace{2cm} v = e^x. </me>
+					Thus we have:
+					<md>
+						<mrow>\int (x - 1)e^x dx	=\amp\ \int \ub{(x - 1)}_{u}
+															\ub{e^x dx}_{dv}					</mrow>
+						<mrow>						=\amp\ \int u\cdot dv						</mrow>
+						<mrow>						=\amp\ u\cdot v - \int v \cdot du			</mrow>
+						<mrow>						=\amp\ (x-1)e^x - \int e^x dx				</mrow>
+						<mrow>						=\amp\ (x-1)e^x - e^x + C					</mrow>
+						<mrow>						=\amp\ xe^x - e^x - e^x + C					</mrow>
+						<mrow>						=\amp\ (x-2)e^x + C							</mrow>	
+					</md>
+					</p>
+				</solution>
+				<answer> <me> (x-2)e^x + C </me> </answer>
+			</li>
+			<li>
+				<m>\ds \int x^2 \sin x \ dx \qquad</m>
+				<solution>
+					<p>
+				We choose <m>u</m> and <m>dv</m> as follows:
+					<me>  u = x^2 \hspace{2cm} dv = \sin x \ dx. </me>
+					Then we find <m>du</m> by taking the derivative of <m>u</m> and <m>v</m> by
+					taking the antiderivative of <m>dv</m>:
+					<me> du = 2xdx  \hspace{2cm} v = -\cos x. </me>
+					Thus we have:
+					<md>
+						<mrow>\int x^2 \sin x dx=\amp\ \int \ub{x^2}_{u}
+																\ub{\sin x dx}_{dv}				</mrow>
+						<mrow>					=\amp\ \int u\cdot dv							</mrow>
+						<mrow>					=\amp\ u\cdot v - \int v \cdot du				</mrow>
+						<mrow>					=\amp\ x^2(-\cos x) - \int -\cos x \cdot 2x dx	</mrow>
+						<mrow>					=\amp\ -x^2\cos x + \int 2x\cos x dx				</mrow>	
+					</md>
+					The remaining integral, <m>\int 2x\cos x dx,</m> is simpler than the one we
+					started with, but we will need to do another integration by parts in order to
+					evaluate it.  Here we choose
+					<me>  u = 2x \hspace{2cm} dv = \cos x dx. </me>
+					Then we find <m>du</m> by taking the derivative of <m>u</m> and <m>v</m> by
+					taking the antiderivative of <m>dv</m>:
+					<me> du = 2dx  \hspace{2cm} v = \sin x. </me>
+					Now we pick up where we left off:
+					<md>
+						<mrow>\int x^2 \sin x dx=\amp\ -x^2\cos x + \int 2x\cos x dx</mrow>
+						<mrow>					=\amp\ -x^2\cos x + \int \ub{2x}_{u}
+																		\ub{\cos x dx}_{dv}		</mrow>
+						<mrow>					=\amp\ -x^2\cos x + \int u\cdot dv</mrow>
+						<mrow>					=\amp\  -x^2\cos x + u\cdot v - \int v \cdot du	</mrow>
+						<mrow>					=\amp\ -x^2\cos x + 2x(\sin x)
+																	- \int \sin x \cdot 2 dx	</mrow>
+						<mrow>					=\amp\ -x^2\cos x + 2x\sin x - 2\int \sin x dx	</mrow>
+						<mrow>					=\amp\ -x^2\cos x + 2x\sin x - 2(-\cos x) +C		</mrow>
+						<mrow>					=\amp\ -x^2\cos x + 2x\sin x + 2\cos x +C		</mrow>
+						<mrow>					=\amp\ (2-x^2)\cos x + 2x\sin x +C				</mrow>	
+					</md>
+					</p>
+				</solution>
+				<answer> <me> (2-x^2)\cos x + 2x\sin x +C </me> </answer>
+			</li>
+		</ol>
+	</p>
+	
+	<p>
+	Integration by parts is a technique for transforming integrals in a way that makes them easier to solve. A good way to think about it is like redistributing "work" between two functions. One function takes on the derivative, while the other gets simplified through integration.
+	</p>
+	<p>
+	Imagine you have two workers. One is skilled at hard, repetitive tasks (like differentiating), and the other is better at creative problem-solving (like integrating). Integration by parts is like swapping their roles so that the right person handles the right task.
+	</p>
+		
+		<subsubsection xml:id="breakdown-of-formula">
+			<title>Breaking Down the Integration by Parts Formula</title>
+			<p>
+			Let's break down the formula for integration by parts:
+			<me> \int u\, dv = uv - \int v\, du </me>.
+			</p>
+			<p>
+			Here's how it works:
+			</p>
+			<ul>
+			<li><m>u</m> is a function that you choose to differentiate (it should get simpler when differentiated).</li>
+			<li><m>dv</m> is a part of the integrand that you choose to integrate (it should get easier when integrated).</li>
+			<li><m>uv</m> is the new term after applying the product of <m>u</m> and the integral of <m>dv</m>.</li>
+			<li><m>\int v\, du</m> is the remaining integral, now simpler than the original.</li>
+			</ul>
+		</subsubsection>
+		
+		<subsubsection xml:id="integration-by-parts-example">
+			<title>Example: Applying Integration by Parts</title>
+			<p>
+			Consider the integral:
+			<me> \int t \, e^t \, dt </me>.
+			</p>
+			<p>
+			We'll apply integration by parts, following these steps:
+			</p>
+		
+			<dl>
+			<li>
+				<title>Step 1: Identify <m>u</m> and <m>dv</m>. In this case, we choose <m>u = t</m> and <m>dv = e^t \, dt</m>. This makes <m>du = dt</m> and <m>v = e^t</m>.</title>
+			</li>
+			<li>
+				<title>Step 2: Substitute into the integration by parts formula:</title>
+				<me> \int t \, e^t \, dt = t \, e^t - \int e^t \, dt </me>.
+			</li>
+			<li>
+				<title>Step 3: Solve the remaining integral:</title>
+				<me> \int e^t \, dt = e^t </me>.
+			</li>
+			<li>
+				<title>Step 4: Combine the results:</title>
+				<me> t \, e^t - e^t + C </me>.
+			</li>
+			</dl>
+			
+			<p>
+			And that's the final result:
+			<me> \int t \, e^t \, dt = t \, e^t - e^t + C </me>.
+			</p>
+		</subsubsection>
+		
+		<subsubsection xml:id="analogy-for-laplace">
+			<title>Laplace Transform and Integration by Parts: An Analogy</title>
+			<p>
+			When applying the Laplace Transform, think of it as a way of "unwrapping" the derivatives of a function. Just like how you can redistribute "work" between functions using integration by parts, the Laplace Transform temporarily converts a differential equation into an algebraic one, allowing you to solve it more easily.
+			</p>
+			<p>
+			Once the problem is solved in the transformed space, we can "repackage" the function by applying the inverse Laplace Transform, revealing the solution in its original form.
+			</p>
+		</subsubsection>
+		
+
+</subsection>

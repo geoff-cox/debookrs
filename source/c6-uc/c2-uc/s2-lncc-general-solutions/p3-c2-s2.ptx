@@ -1,0 +1,93 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> General Solutions </title>
+
+	<p>
+		In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.
+	</p>
+
+	<p>
+		To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart:
+		<mdn>
+			<mrow xml:id="lncc-eqn1"> y'' - 4y' + 3y =\amp\ 9x</mrow>
+			<mrow xml:id="lncc-eqn2"> y'' - 4y' + 3y =\amp\ 0</mrow>
+		</mdn>
+		Let <m>y_h</m> be the solution to the homogeneous equation <xref ref="lncc-eqn2" />, and <m>y_p</m> be the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, so we have
+		<md>
+			<mrow> y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
+			<mrow> y_h'' - 4y_h' + 3y_h =\amp\ 0 </mrow>
+		</md>
+		Now, adding these equations together and rearranging the terms gives us
+		<md>
+			<mrow> y_h'' - 4y_h' + 3y_h + y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
+			<mrow> y_h'' + y_p'' - 4y_h' + 4y_p' + 3y_h + 3y_p =\amp\ 9x </mrow>
+			<mrow> (y_h + y_p)'' - 4(y_h + y_p)' + 3(y_h + y_p) =\amp\ 9x </mrow>
+		</md>
+		This shows that not only is <m>y_p</m> the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, but so is <m>y_h+y_p</m>. This happens because the terms in <m>y_h</m> simplify to zero and the terms in <m>y_p</m> simplify to <m>9x</m>.
+	</p>
+
+	<p>
+		From the previous section, we know <m>y_p = 3x + 4</m> is a solution to the LNCC equation <xref ref="lncc-eqn1" /> and <m>y_h = c_1e^{x} + c_2e^{3x}</m> is the solution to the LHCC equation <xref ref="lncc-eqn2" />. Therefore, the combined solution
+		<me>
+			y = y_h + y_p = \ub{c_1e^{x} + c_2e^{3x}}_{\text{simplify to } 0} + \ub{3x + 4}_{\text{simplify to }9x}
+		</me>
+		is a solution to the LNCC equation <xref ref="lncc-eqn1" /> where  <m>y_h</m> contains the terms that simplify to zero, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <m>y</m> is substituted into <xref ref="lncc-eqn1" />.
+	</p>
+
+	<p>
+		This example leads us to the following concept for the general solution of a LNCC differential equation.
+	</p>
+	
+	<p>
+		<assemblage xml:id="lncc-general-solution-parts"><title>LNCC General Solution Parts</title>
+			<p>
+				The linear nonhomogeneous constant coefficient (LNCC) equation
+				<men xml:id="lncc-general-equation">
+					a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
+				</men>
+				has a solution with a <term>homogeneous</term> and <term>particular</term> part given by
+				<men xml:id="lncc-general-solution">
+					y = y_h + y_p
+				</men>.
+				where <m>y_h</m>, found by solving the LHCC equation
+				<me>
+					a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = 0
+				</me>.
+				Here, <m>y_h</m> contains the terms of the solution that cancel out, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <xref ref="lncc-general-solution"/> is substituted into <xref ref="lncc-general-equation"/>.
+			</p>
+		</assemblage>
+	</p>
+
+
+	<example>
+		<p>
+			Find the general solution to the differential equation
+			<me>
+				y'' - 4y' - 12y = 3{e^{5t}}
+			</me>
+			given that the the particular solution is known to be <m>y_p(t) =  -\frac{3}{7}{{e}^{5t}}</m>.
+		</p>
+		<solution>
+			<p>
+				The general solution has the form:
+				<me>y = y_h + y_p</me>
+				Since <m>y_p</m> is given, we only need to solve the homogeneous equation:
+				<me>y'' - 4y' - 12y = 0</me>
+				Using the characteristic equation:
+				<md>
+					<mrow> r^2 - 4r - 12 	=\amp\ 0											</mrow>
+					<mrow> (r - 6)(r + 2) 	=\amp\ 0 \quad \Rightarrow \quad r_1 = 6, r_2 = -2	</mrow>
+				</md>
+				The homogeneous solution is:
+				<me> y_h(t) = c_1e^{-2t} + c_2e^{6t} </me>
+				Therefore, the general solution is:
+				<me> y = c_1e^{-2t} + c_2e^{6t} -\frac{3}{7}{e^{5t}} </me>
+			</p>
+		</solution>
+	</example>
+
+	<p>
+		Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution <m>y_p</m>, which will be covered in the upcoming sections.
+	</p>
+
+	<xi:include href="./p3-c2-s2-interactives.ptx" />
+
+</subsection>

@@ -1,0 +1,2250 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Introduction to LHCC Equations </title>
+
+	<introduction>
+
+		<p>
+			In this subsection, we take our first steps into understanding <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations. 
+			Before we fully define and analyze these equations, it is important to explore their fundamental building blocks: 
+			<term>linearity</term> and <term>constant coefficients</term>. These two properties determine the structure of LHCC equations 
+			and play a crucial role in their solutions.
+		</p>
+
+		<p>
+			First, we will examine what it means for a differential equation to be <em>linear</em>. This means that the dependent variable 
+			and its derivatives appear in a straightforward manner—without being raised to powers, multiplied together, or appearing inside 
+			nonlinear functions such as exponentials or trigonometric expressions. Next, we will define what it means for a differential equation 
+			to have <em>constant coefficients</em>—where the coefficients of each derivative remain fixed rather than varying with the independent variable.
+		</p>
+
+		<p>
+			Once we establish these two ideas, we will formally introduce <term>Linear Constant Coefficient (LCC)</term> equations, 
+			which form the foundation for studying LHCC equations. Finally, we will distinguish between <em>homogeneous</em> and <em>nonhomogeneous</em> equations, 
+			a key classification that influences solution techniques.
+		</p>
+
+		<p>
+			By the end of this subsection, you will have a clear understanding of the fundamental concepts underlying LHCC equations, 
+			preparing you to explore their solutions in later sections.
+		</p>
+
+	</introduction>
+
+	<subsection><title> Identifying LHCC Equations </title>
+
+		<introduction>
+			<p>
+				Before diving into the methods for solving linear homogeneous differential equations with constant coefficients (LHCC equations), we first need to understand what these equations look like and how to recognize them. The term "LHCC" captures three essential characteristics: <em>linearity</em>, <em>homogeneity</em>, and <em>constant coefficients</em>. Let's break these down one by one.
+			</p>
+		</introduction>
+
+		<subsubsection><title> The <q>L</q> in LHCC </title>
+			
+			<p>
+				Recall, a differential equation is called <term>linear</term> if it can be written as 
+				<me>
+					\text{Sum of Linear Terms } = \text{ Constant Term}
+				</me>
+				where a term is linear if it contains, at most, a single dependent variable raised to power of one and not inside another function. The constant term is the collection of all terms that do not contain a dependent variable. 
+			</p>
+
+			<p>
+				So, every <m>n</m>-th order linear differential equation can be organized as follows:
+			</p>
+
+			<men xml:id="linear-equation-w-coefficents">
+				\us{	\large\text{of } y^{(n)}	}{
+				\us{	\large\text{coefficient }	}{ 
+						\us{\uparrow}{ {\color{BurntOrange} \ul{a_n(x)}	}}\ y^{(n)}
+				}}	+ \cdots +
+				\us{	\large\text{of } y''		}{
+				\us{	\large\text{coefficient }	}{
+						\us{\uparrow}{ {\color{BurntOrange} \ul{a_2(x)}	}}\ y''
+				}}	+
+				\us{	\large\text{of } y'			}{
+				\us{	\large\text{coefficient }	}{
+						\us{\uparrow}{ {\color{BurntOrange} \ul{a_1(x)}	}}\ y'
+				}}	+
+				\us{	\large\text{of } y			}{
+				\us{	\large\text{coefficient }	}{
+						\us{\uparrow}{ {\color{BurntOrange} \ul{a_0(x)}	}}\ y
+				}}	=
+				\us{	\large\text{term}			}{ 
+				\us{	\large\text{constant }		}{
+						\us{\uparrow}{ {\color{BurntOrange} \ul{f(x)}	}}
+				}}
+			</men>
+
+			<p>
+				where the coefficients, <m>a_n(x), a_{n-1}(x), \dots, a_1(x), a_0(x)</m> and the constant term, <m>f(x)</m>, are functions that depend only on the independent variable <m>x</m>.
+			</p>
+
+			<p>
+				Examples of <m>\quad</m> 
+				<xref ref="linear-equation-examples" text="custom">		👉 Linear Equations		</xref> <m>\quad</m> 
+				<xref ref="nonlinear-equation-examples" text="custom">	👉 Nonlinear Equations	</xref>
+			</p>
+
+			
+		</subsubsection>
+
+		<subsubsection><title> The <q>CC</q> in LHCC </title>
+
+			<p>
+				A linear differential equation is said to have <term>constant coefficients</term> if all of the coefficients in the equation are constant (i.e., numbers, not functions of <m>x</m>). 
+				<aside>
+					<p>
+						☝️ <term>Remember!</term> Constant terms are not coefficients.
+					</p>
+				</aside>
+				This condition results in dropping <q><m>(x)</m></q> on each coefficient in equation <xref ref="linear-equation-w-coefficents"/>.
+			</p>
+
+			<p>
+				So, every linear differential equation with constant coefficients has the form
+			</p>
+
+			<men xml:id="constant-coefficient-de">
+				a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = f(x),
+			</men>
+
+			<p>
+				where <m>a_n, a_{n-1}, \dots, a_0</m> are constants. Here are some examples of linear differential equations with constant coefficients:
+			</p>
+
+			<me>
+				2y'' - 3y' + 5y = 0, \qquad y''' + 4y'' - 2y' + 7y = e^x
+			</me>
+
+		</subsubsection>
+
+		<subsubsection><title> The <q>H</q> in LHCC </title>
+
+			<p>
+				To state that a linear differential equation is <term>homogeneous</term> is to say that the constant term, <m>f(x)</m>, is zero. When the constant is nonzero (i.e., <m>f(x) \neq 0</m>), we say the equation is <term>nonhomogeneous</term>. Therefore, setting <m>f(x) = 0</m> in <xref ref="linear-equation-w-coefficents"/> leads to the form for any linear homogeneous differential equation:
+			</p>
+
+			<men xml:id="homogeneous-de">
+				a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = 0.
+			</men>
+
+			<p>
+				This condition implies that every term in the equation must involve the dependent variable <m>y</m> or one of its derivatives. 
+			</p>
+
+		</subsubsection>
+
+		<subsubsection><title> LHCC Equations </title>
+			
+			<p>
+				Combining these ideas, we arrive at the formal definition of an LHCC equation.
+			</p>
+			
+			<definition xml:id="def-lhcc"><title>LHCC Equation</title>
+				<statement>
+					<p>
+						A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:
+					</p>
+					<men xml:id="lhcc-equation">
+						a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
+					</men>
+					<p>
+						where <m>a_n,\ a_{n-1},\ \ldots,\ a_2,\ a_1,\ a_0</m> are constants.
+					</p>
+				</statement>
+			</definition>
+			
+			<p>
+				Since LHCC equations are the types of equations that our next method will solve, let's make sure we can identify these equations with an example.
+			</p>
+			
+		</subsubsection>
+
+		<example>
+			<p>
+				<statement>
+					<p>
+						Identify which of the following are linear homogeneous differential equations.
+					</p>
+					<me>
+						3y'' - 2ty' + y = 0, \quad
+						\frac{dg}{dx} + 3x^2 = 0, \quad
+						\frac{d^2s}{dt^2} + \frac{ds}{dt} = 4s
+					</me>
+					<p>
+						Determine which of the following equations have constant coefficients.
+					</p>
+					<me>
+						3y'' - 2\tau y' + y = \tau, \quad
+						\sqrt{t} - \frac{dP}{dt} - \frac{P^2}{2} = 1, \quad
+						s''' = \frac{7s}{w}
+					</me>
+					<p>
+						For each of the following differential equations, identify the coefficients and state whether they are constants or functions of the independent variable:
+					</p>
+					<ol>
+						<li> <m>y'' + 4y' + 6y = 0</m>, </li>
+						<li> <m>x^2 y'' + xy' + y = \ln(x)</m>, </li>
+						<li> <m>u'' + 2xu' + u = 5x</m>. </li>
+					</ol>
+				</statement>
+			</p>
+			<p>
+				<solution>
+					<p>
+						The trick is to check if the constant term is zero and the equation has only <m>y</m> and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:
+					</p>
+					<p>
+						<me>
+						3y'' - 2ty' + y = {\color{BurntOrange} 0}, \quad
+						\frac{dg}{dx} = {\color{BurntOrange} -3x^2}, \quad
+						\frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = {\color{BurntOrange} 0}
+						</me>.
+					</p>
+					<p>
+						The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.
+					</p>
+				</solution>
+				<solution>
+					<p>
+						Check if each coefficient is constant:
+					</p>
+					<p>
+						<me>
+							\os{\text{yes}}{\os{\downarrow}{\ul{3}}} y'' -
+							\os{\text{no}}{\os{\downarrow}{\ul{2\tau}}}\ y' +
+							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} y = \tau, \quad
+							\sqrt{t} -
+							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} \frac{dP}{dt} -
+							\os{\text{yes}}{\os{\downarrow}{\ul{\frac{1}{2}}}} P^2 = 1, \quad
+							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} s''' =
+							\os{\text{no}}{\os{\downarrow}{\ul{\frac{7}{w}}}} s
+						</me>.
+						The second equation has constant coefficients, while the others do not.
+					</p>
+				</solution>
+				<solution>
+					<dl>
+						<li>
+							<title>Equation 1:</title>
+							<p>
+								<dl>
+									<li>Coefficient of <m>y''</m>: <m>1</m> (constant).</li>
+									<li>Coefficient of <m>y'</m>: <m>4</m> (constant).</li>
+									<li>Coefficient of <m>y</m>: <m>6</m> (constant).</li>
+								</dl>
+							</p>
+						</li>
+						<li>
+							<title>Equation 2:</title>
+							<p>
+								<dl>
+									<li>Coefficient of <m>y''</m>: <m>x^2</m> (variable).</li>
+									<li>Coefficient of <m>y'</m>: <m>x</m> (variable).</li>
+									<li>Coefficient of <m>y</m>: <m>1</m> (constant).</li>
+								</dl>
+							</p>
+						</li>
+						<li>
+							<title>Equation 3:</title>
+							<p>
+								<dl>
+									<li>Coefficient of <m>u''</m>: <m>1</m> (constant).</li>
+									<li>Coefficient of <m>u'</m>: <m>2x</m> (variable).</li>
+									<li>Coefficient of <m>u</m>: <m>1</m> (constant).</li>
+								</dl>
+							</p>
+						</li>
+					</dl>
+				</solution>
+			</p>
+		</example>
+
+		<conclusion>
+			<p>
+				In summary, a differential equation is classified as an <xref ref="lhcc-equation">LHCC equation</xref> if it satisfies three criteria:
+			</p>
+			
+			<ul>
+				<li>It is <em>linear</em>: each term involves <m>y</m> or its derivatives to the first power only.</li>
+				<li>It is <em>homogeneous</em>: the right-hand side is zero.</li>
+				<li>It has <em>constant coefficients</em>: the coefficients of <m>y</m> and its derivatives do not depend on <m>x</m>.</li>
+			</ul>
+
+			<p>
+				With this understanding, we are now ready to explore how to find solutions to LHCC equations. The next section introduces an 
+				intuitive approach to understanding what the solutions to these equations look like.
+			</p>
+		</conclusion>
+
+	</subsection>
+
+	<subsection><title> Solutions to LHCC Equations </title>
+
+		<!-- <introduction>
+
+			<p>
+				Now that we understand the structure of linear homogeneous constant coefficient (LHCC) equations, we turn our attention 
+				to their solutions. A natural question arises: <q>What types of functions satisfy these equations?</q> 
+				While differential equations in general may have a variety of solutions, we will see that LHCC equations 
+				have solutions that follow a specific pattern—exponential functions.
+			</p>
+
+			<p>
+				Now that we have established the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, 
+				the next step is to explore how to solve them. While differential equations can sometimes have complex or unpredictable solutions, 
+				LHCC equations exhibit a remarkable property: their solutions follow a systematic and predictable pattern, making them easier to analyze.
+			</p>
+
+			<p>
+				The key insight in solving LHCC equations is recognizing that their solutions are often <em>exponential functions</em>. 
+				By assuming solutions of the form <m>y = e^{rx}</m>, we can transform a differential equation into an algebraic equation known as the 
+				<term>characteristic equation</term>. Solving this equation gives us values for <m>r</m>, which in turn determine the form of the 
+				general solution.
+			</p>
+
+			<p>
+				In this section, we will explore why exponentials naturally arise as solutions, develop techniques for solving LHCC equations systematically, 
+				and examine how different types of characteristic roots—real, repeated, and complex—affect the nature of the solutions.
+			</p>
+
+			<p>
+				By the end of this section, you will have a solid understanding of the solution process for LHCC equations, enabling you to solve them efficiently 
+				and interpret their behavior in various applied contexts.
+			</p>
+		</introduction> -->
+
+		<!-- <introduction>
+
+			<p>
+				Now that we understand the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, 
+				we turn our attention to their solutions. What kinds of functions satisfy these equations? How do we determine the general form of solutions?
+			</p>
+
+			<p>
+				Now that we have established the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, 
+				the next step is to explore how to solve them. While differential equations can sometimes have complex or unpredictable solutions, 
+				LHCC equations exhibit a remarkable property: their solutions follow a systematic and predictable pattern, making them easier to analyze.
+			</p>
+
+			<p>
+				The key insight in solving LHCC equations is recognizing that their solutions are often <em>exponential functions</em>. 
+				By assuming solutions of the form <m>y = e^{rx}</m>, we can transform a differential equation into an algebraic equation known as the 
+				<term>characteristic equation</term>. Solving this equation gives us values for <m>r</m>, which in turn determine the form of the 
+				general solution.
+			</p>
+
+			<p>
+				In this section, we will explore why exponentials naturally arise as solutions, develop techniques for solving LHCC equations systematically, 
+				and examine how different types of characteristic roots—real, repeated, and complex—affect the nature of the solutions.
+			</p>
+
+			<p>
+				By the end of this section, you will have a solid understanding of the solution process for LHCC equations, enabling you to solve them efficiently 
+				and interpret their behavior in various applied contexts.
+			</p>
+		</introduction> -->
+
+		<subsubsection><title> What Do Solutions Look Like? </title>
+
+			<!-- <introduction>
+				<p>
+					Before we develop a systematic approach to solving linear homogeneous constant coefficient (LHCC) equations, 
+					it helps to build intuition about the nature of their solutions. Instead of jumping straight into formulas, 
+					let's explore what kind of functions naturally satisfy these equations.
+				</p>
+
+				<p>
+					Unlike many other types of differential equations, LHCC equations have a highly structured solution method. 
+					Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. 
+					Through examples and analysis, we will discover that <em>exponential functions</em> play a central role in solving LHCC equations. 
+					By assuming solutions of the form <m>y = e^{rx}</m> and substituting into the equation, we obtain an algebraic equation for <m>r</m>—the <em>characteristic equation</em>. 
+					The solutions to this characteristic equation directly determine the general solution to the differential equation.
+				</p>
+
+				<p>
+					In this subsection, we will explore why exponentials naturally arise as solutions, examine what happens when different types of characteristic roots appear, 
+					and build an intuitive understanding of why other function types (such as polynomials or trigonometric functions) do not generally satisfy LHCC equations. 
+					By the end of this discussion, you will have a clear picture of what solutions to LHCC equations look like and why they take the forms they do.
+				</p>
+			</introduction> -->
+
+			<p>
+				The reason exponentials work is because their derivatives maintain the same functional form. 
+				This means that if we assume a solution of the form <m>y = e^{rx}</m>, we can derive an algebraic 
+				equation for <m>r</m> that determines the general solution.
+			</p>
+
+			<subsubsection><title> Like Terms </title>
+
+				<p>
+					Before diving into how to solve <xref ref="def-lhcc" text="custom">LHCC equations</xref>, let's develop some intuition about what the solutions should look like. For this discussion we will assume that the equations contain a <m>y</m> term. If they didn't, then you could repeatedly integrate both sides of the equation until you are left with a <m>y</m> term and a nonhomogeneous equation.
+					<fn>
+						For example, the following shows how an LHCC equation with no <m>y</m> term can be reduced to a nonhomogeneous equation with a <m>y</m> term.
+						<md>
+							<mrow> y''' - 2y'' = 0 \ \ \rightarrow \ \ (y' - 2y)''	=\amp\ 0 \quad \text{(direct integration x2)}	</mrow>
+							<mrow> (y' - 2y)'										=\amp\ c_1										</mrow>
+							<mrow> y' - 2y											=\amp\ c_1x + c_2								</mrow>
+						</md>.
+					</fn>
+				</p>
+
+				<p>
+					We begin with the simple first-order LHCC equation,
+					<men xml:id="lhcc-intro-de">
+						y' - 2 y = 0
+					</men>
+					and note that this equation requires <m>y' - 2y</m> to sum to zero. Recall from algebra that only <xref ref="like-terms" text="custom">like terms</xref> can combine to simplify to zero.
+					So, for the equation to hold, <m>y'</m> and <m>y</m> must be like terms.
+				</p>
+
+				<theorem xml:id="like-terms"><title>Like Terms</title>
+
+					<p>
+						Terms are called <term>like terms</term> if they have identical variable parts. That is, they differ only by a coefficient. Like terms can be combined via addition and subtraction. For example, the <m>x^2</m> and <m>e^{-3x}</m> terms below are pairs of like terms, which can be combined as follows:
+						<md>
+							<mrow> \underline{3x^2} + \underline{\underline{5e^{-3x}}} - 2 + \underline{7x^2} - \underline{\underline{4e^{-3x}}}</mrow>
+							<mrow> \underline{10x^2} + \underline{\underline{e^{-3x}}} - 2 </mrow>
+						</md>.
+					</p>
+
+				</theorem>
+
+				<p>
+					Let's test a few guesses for <m>y</m>:
+					<m>y = x^2</m>, <m>y = 2 \ln x</m>, and <m>y = e^{2x}</m>.
+				</p>
+
+				<sidebyside widths="30% 40% 30%">
+					<p>
+						<md>
+							<mrow> \left[x^2\right]' - 2 \left[x^2\right] = 0 </mrow>
+							<mrow> \ub{2x - 2x^2}_{\text{not like terms}} = 0 </mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow> \left[2\ln x\right]' - 4\ln x = 0 </mrow>
+							<mrow> \ub{\frac{2}{x} - 4\ln x}_{\text{not like terms}} = 0 </mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow> \left[e^{2x}\right]' - 2 \left[e^{2x}\right] = 0 </mrow>
+							<mrow> \ub{2e^{2x} - 2e^{2x}}_{\text{like terms}\, =\, 0} = 0 </mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<p>
+					As you can see, only <m>y = e^{2x}</m> produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to expand on this idea.
+				</p>
+
+				<example>
+					<p>
+						<statement>
+							<p>
+								Consider the LHCC equation:
+							</p>
+							<me>
+								y'' - 3y' - 4y = 0.
+							</me>
+							<p>
+								Verify that <m>y = e^{4x}</m> is a solution, but <m>y = x^4</m> is not.
+							</p>
+						</statement>
+					</p>
+					<solution>
+						<p>
+							Let's check each function:
+						</p>
+						<sidebyside>
+							<p>
+								<md>
+									<mrow> 	[e^{4x}]'' - 3\left[e^{4x}\right]' - 4\left[e^{4x}\right]	=\amp\ 0	</mrow>
+									<mrow> 	
+										\us{\text{like terms simplify to }0}{\ub{
+											16e^{4x} - 12e^{4x} - 4e^{4x}	
+										}}
+										=\amp\ 0	
+									</mrow>
+									<mrow> 	0	=\amp\ 0	\ \ ✅ </mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> 	[x^4]'' - 3\left[x^4\right]' - 4\left[x^4\right]	=\amp\ 0	</mrow>
+									<mrow> 	
+										\us{\text{not like terms, do not combine}}{\ub{
+											12x^2 - 12x^3 - 4x^4	
+										}}
+										=\amp\ 0	\ \ ❌
+									</mrow>
+								</md>
+							</p>
+						</sidebyside>
+						<p>
+							Therefore, only <m>y = e^{-4x}</m> is a solution.
+						</p>
+					</solution>
+				</example>
+
+				<p>
+					This example further supports the claim that exponential functions, like <m>e^{rx}</m>, are well-suited for LHCC equations because they produce like terms when differentiated. Later, we will see that if <m>e^{rx}</m> is a solution then, in some cases, it is possible for <m>xe^{rx}</m> to be a solution as well.
+				</p>
+
+				<p>
+					We conclude this section with an important concept that will guide us in the sections to follow.
+					<assemblage><title> Terms of the Solution to an LHCC Equation </title>
+						<p>
+							The general solution to an LHCC equation involves terms of the form:
+							<me> e^{rx}, \quad \ub{xe^{rx}, \quad x^2e^{rx}, \quad x^3e^{rx},\  \ldots}_{\text{For Special Cases}} </me>
+							where <m>r</m> is a constant. Note, if <m>r</m> is complex, then <m>r=a+\theta i</m>, and by <xref ref="eulers-formula" text="custom">Euler's formula</xref>,
+							<me> e^{rx} = e^{(a+\theta i)x} = e^{ax}\cdot e^{\theta i x} = e^{ax}(\cos(bx) + i\sin(bx)) </me>.
+							In this case, it is common to see a solution written with sine and cosine terms.
+						</p>
+						<p>
+							When <m>r</m> is complex, then <m>r=a+\theta i</m>, and by <xref ref="eulers-formula" text="custom">Euler's formula</xref>, <m> e^{rx} = e^{(a+\theta i)x} = e^{ax}\cdot e^{\theta i x} = e^{ax}(\cos(bx) + i\sin(bx)) </m>.
+							In this case, the general solution may also contain sine and cosine terms.
+						</p>
+					</assemblage>
+				</p>
+
+			</subsubsection>
+
+			<subsubsection><title> Using "Like Terms" to Explain This Behavior </title>
+
+				<p>
+					A useful way to understand why exponential functions work is by considering the concept of <term>like terms</term>. 
+					In algebra, only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+					must have compatible forms in order to sum to zero.
+				</p>
+
+				<p>
+					Let's revisit our previous example, but now with this perspective. The equation:
+				</p>
+
+				<men>
+					y' - 2y = 0
+				</men>
+
+				<p>
+					requires that the two terms, <m>y'</m> and <m>y</m>, cancel each other out. This means they must be <q>like terms</q>—they must 
+					share the same functional form. Since the derivative of an exponential function remains an exponential, this explains 
+					why exponentials naturally satisfy LHCC equations.
+				</p>
+
+				<example><title> Exponential vs. Polynomial vs. Trigonometric Functions </title>
+
+					<p>
+						Consider the second-order equation:
+					</p>
+
+					<men>
+						y'' - 5y' + 6y = 0.
+					</men>
+
+					<p>
+						Suppose we try polynomial, trigonometric, and exponential functions:
+					</p>
+
+					<me>
+						1.\quad y = x^3
+					</me>
+					<me>
+						2.\quad y = \cos x
+					</me>
+					<me>
+						3.\quad y = e^{2x}
+					</me>
+
+					<solution>
+						<p>
+							Computing the derivatives:
+						</p>
+
+						<sidebyside>
+							<p>
+								<md>
+									<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+									<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+									<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+									<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+								</md>
+							</p>
+						</sidebyside>
+
+						<p>
+							The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+							This further illustrates that solutions to LHCC equations must be exponentials.
+						</p>
+					</solution>
+
+				</example>
+
+			</subsubsection>
+
+			<!-- <subsubsection><title> What Do Solutions Look Like? </title>
+
+				<introduction>
+					<p>
+						Now that we understand the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, 
+						we turn our attention to their solutions. What kinds of functions satisfy these equations? How do we determine the general form of solutions?
+					</p>
+
+					<p>
+						Unlike many other types of differential equations, LHCC equations have a highly structured solution method. 
+						Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. 
+						Through examples and analysis, we will discover that <em>exponential functions</em> play a central role in solving LHCC equations. 
+						By assuming solutions of the form <m>y = e^{rx}</m> and substituting into the equation, we obtain an algebraic equation for <m>r</m>—the <em>characteristic equation</em>. 
+						The solutions to this characteristic equation directly determine the general solution to the differential equation.
+					</p>
+
+					<p>
+						In this subsection, we will explore why exponentials naturally arise as solutions, examine what happens when different types of characteristic roots appear, 
+						and build an intuitive understanding of why other function types (such as polynomials or trigonometric functions) do not generally satisfy LHCC equations. 
+						By the end of this discussion, you will have a clear picture of what solutions to LHCC equations look like and why they take the forms they do.
+					</p>
+				</introduction>
+
+				<subsubsection><title> Why Exponentials? </title>
+
+					<p>
+						In this section, we explore what kinds of functions satisfy linear homogeneous constant coefficient (LHCC) differential equations.
+						While differential equations can have a wide range of solutions, LHCC equations exhibit a remarkable property: their solutions
+						are always exponential functions. We will see why this is true by examining concrete examples and using the concept of 
+						<q>like terms</q> to explain why only exponentials can satisfy these equations.
+					</p>
+
+					<paragraphs><title> A Simple Example </title>
+
+						<p>
+							Consider the first-order LHCC equation:
+						</p>
+
+						<men xml:id="lhcc-first-order">
+							y' - 3y = 0.
+						</men>
+
+						<p>
+							Our goal is to find a function <m>y(x)</m> that satisfies this equation. Notice that the equation requires <m>y'</m> 
+							to be proportional to <m>y</m>. A natural candidate for such a function is an exponential:
+						</p>
+
+						<me>
+							y = e^{rx}.
+						</me>
+
+						<p>
+							Substituting this into the differential equation, we compute:
+						</p>
+
+						<md>
+							<mrow> y' = r e^{rx}. </mrow>
+							<mrow> y' - 3y = r e^{rx} - 3 e^{rx} = (r - 3) e^{rx}. </mrow>
+						</md>
+
+						<p>
+							Since <m>e^{rx}</m> is never zero, the equation is satisfied only if <m>r - 3 = 0</m>, which implies <m>r = 3</m>. 
+							This means <m>y = e^{3x}</m> is a solution to the equation. This key observation generalizes to higher-order equations 
+							as well.
+						</p>
+
+					</paragraphs>
+
+					<paragraphs><title> Why Other Functions Do Not Work </title>
+
+						<p>
+							To see why exponentials are the only functions that work, let's try substituting other function types into 
+							<xref ref="lhcc-first-order"/>.
+						</p>
+
+						<example><title> Testing Polynomial and Trigonometric Functions </title>
+
+							<p>
+								Consider the differential equation:
+							</p>
+
+							<men>
+								y' - 3y = 0.
+							</men>
+
+							<p>
+								Suppose we try polynomial and trigonometric functions:
+							</p>
+
+							<me>
+								1.\quad y = x^2
+							</me>
+							<me>
+								2.\quad y = \sin x
+							</me>
+							<me>
+								3.\quad y = e^{3x}
+							</me>
+
+							<solution>
+								<p>
+									Computing the derivatives:
+								</p>
+
+								<sidebyside>
+									<p>
+										<md>
+											<mrow> y = x^2, \quad y' = 2x. </mrow>
+											<mrow> y' - 3y = 2x - 3x^2 \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+											<mrow> y' - 3y = \cos x - 3\sin x \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = e^{3x}, \quad y' = 3e^{3x}. </mrow>
+											<mrow> y' - 3y = 3e^{3x} - 3e^{3x} = 0. </mrow>
+										</md>
+									</p>
+								</sidebyside>
+
+								<p>
+									Only <m>y = e^{3x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+								</p>
+							</solution>
+
+						</example>
+
+					</paragraphs>
+
+					<paragraphs><title> The Role of Like Terms </title>
+
+						<p>
+							The reason exponentials work can be understood using the concept of <term>like terms</term>. In algebra, 
+							only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+							must have compatible forms to sum to zero.
+						</p>
+
+						<p>
+							Looking at the equation:
+						</p>
+
+						<men>
+							y' - 3y = 0,
+						</men>
+
+						<p>
+							we see that the two terms, <m>y'</m> and <m>y</m>, must cancel each other out. This means they must be <q>like terms</q>, 
+							meaning they must share the same functional form. Since the derivative of an exponential function remains an exponential, 
+							it is the only function type that meets this requirement.
+						</p>
+
+						<example><title> Another Example: A Second-Order Equation </title>
+
+							<p>
+								Consider the second-order equation:
+							</p>
+
+							<men>
+								y'' - 5y' + 6y = 0.
+							</men>
+
+							<p>
+								Suppose we try polynomial, trigonometric, and exponential functions:
+							</p>
+
+							<me>
+								1.\quad y = x^3
+							</me>
+							<me>
+								2.\quad y = \cos x
+							</me>
+							<me>
+								3.\quad y = e^{2x}
+							</me>
+
+							<solution>
+								<p>
+									Computing the derivatives:
+								</p>
+
+								<sidebyside>
+									<p>
+										<md>
+											<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+											<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+											<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+											<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+										</md>
+									</p>
+								</sidebyside>
+
+								<p>
+									The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+									This further illustrates that solutions to LHCC equations must be exponentials.
+								</p>
+							</solution>
+
+						</example>
+
+					</paragraphs>
+
+					<outcomes><title> Key Takeaways </title>
+						<ul>
+							<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+							<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+							<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+						</ul>
+					</outcomes>
+
+					<p>
+						Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+						the next step is to understand how multiple exponential solutions combine to form the general solution.
+					</p>
+
+				</subsubsection>
+
+			</subsubsection>
+
+			<subsubsection><title> What Do Solutions Look Like? </title>
+
+				<p>
+					Now that we understand the structure of linear homogeneous constant coefficient (LHCC) equations, we turn our attention	to their solutions. A natural question arises: <q>What types of functions satisfy these equations?</q> While differential equations in general may have a variety of solutions, we will see that LHCC equations have solutions that follow a specific pattern—exponential functions.
+				</p>
+
+				<subsubsection><title> Why Exponentials?</title>
+
+					<p>
+						To explore the nature of solutions to LHCC equations, let's consider a simple first-order example:
+					</p>
+
+					<men xml:id="lhcc-first-order">
+						y' - 2y = 0.
+					</men>
+
+					<p>
+						We seek a function <m>y(x)</m> that satisfies this equation. A key observation is that <m>y'</m> must be proportional to <m>y</m>. A function that exhibits this property is an exponential function:
+					</p>
+
+					<me>
+						y = e^{rx}.
+					</me>
+
+					<p>
+						Substituting this guess into the differential equation gives:
+					</p>
+
+					<md>
+						<mrow> r e^{rx} - 2 e^{rx} = 0 </mrow>
+						<mrow> (r - 2) e^{rx} = 0. </mrow>
+					</md>
+
+					<p>
+						Since <m>e^{rx}</m> is never zero, the only way this equation holds is if <m>r - 2 = 0</m>, which implies <m>r = 2</m>. 
+						This confirms that <m>y = e^{2x}</m> is a solution. The reason exponentials work is that their derivatives 
+						are simply scaled versions of themselves, which aligns perfectly with the structure of LHCC equations.
+					</p>
+
+					<example><title> Testing Different Function Forms </title>
+
+						<p>
+							Let's test other function types to see if they satisfy the equation <xref ref="lhcc-first-order"/>.
+						</p>
+
+						<p>
+							Consider the following candidates:
+						</p>
+
+						<me>
+							1.\quad y = x^2
+						</me>
+						<me>
+							2.\quad y = \sin x
+						</me>
+						<me>
+							3.\quad y = e^{2x}
+						</me>
+
+						<solution>
+							<p>
+								Calculating the derivatives and substituting them into <xref ref="lhcc-first-order"/>:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^2, \quad y' = 2x. </mrow>
+										<mrow> y' - 2y = 2x - 2x^2 \neq 0 </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+										<mrow> y' - 2y = \cos x - 2\sin x \neq 0 </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{2x}, \quad y' = 2e^{2x}. </mrow>
+										<mrow> y' - 2y = 2e^{2x} - 2e^{2x} = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								Only <m>y = e^{2x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+							</p>
+						</solution>
+
+					</example>
+
+				</subsubsection>
+
+				<subsubsection><title> Why Exponentials? (ver 2) </title>
+
+					<p>
+						In this section, we explore what kinds of functions satisfy linear homogeneous constant coefficient (LHCC) differential equations.
+						While differential equations can have a wide range of solutions, LHCC equations exhibit a remarkable property: their solutions
+						are always exponential functions. We will see why this is true by examining concrete examples and using the concept of 
+						<q>like terms</q> to explain why only exponentials can satisfy these equations.
+					</p>
+
+					<subsection><title> A Simple Example </title>
+
+						<p>
+							Consider the first-order LHCC equation:
+						</p>
+
+						<men xml:id="lhcc-first-order">
+							y' - 3y = 0.
+						</men>
+
+						<p>
+							Our goal is to find a function <m>y(x)</m> that satisfies this equation. Notice that the equation requires <m>y'</m> 
+							to be proportional to <m>y</m>. A natural candidate for such a function is an exponential:
+						</p>
+
+						<me>
+							y = e^{rx}.
+						</me>
+
+						<p>
+							Substituting this into the differential equation, we compute:
+						</p>
+
+						<md>
+							<mrow> y' = r e^{rx}. </mrow>
+							<mrow> y' - 3y = r e^{rx} - 3 e^{rx} = (r - 3) e^{rx}. </mrow>
+						</md>
+
+						<p>
+							Since <m>e^{rx}</m> is never zero, the equation is satisfied only if <m>r - 3 = 0</m>, which implies <m>r = 3</m>. 
+							This means <m>y = e^{3x}</m> is a solution to the equation. This key observation generalizes to higher-order equations 
+							as well.
+						</p>
+
+					</subsection>
+
+					<subsection><title> Why Other Functions Do Not Work </title>
+
+						<p>
+							To see why exponentials are the only functions that work, let's try substituting other function types into 
+							<xref ref="lhcc-first-order"/>.
+						</p>
+
+						<example><title> Testing Polynomial and Trigonometric Functions </title>
+
+							<p>
+								Consider the differential equation:
+							</p>
+
+							<men>
+								y' - 3y = 0.
+							</men>
+
+							<p>
+								Suppose we try polynomial and trigonometric functions:
+							</p>
+
+							<me>
+								1.\quad y = x^2
+							</me>
+							<me>
+								2.\quad y = \sin x
+							</me>
+							<me>
+								3.\quad y = e^{3x}
+							</me>
+
+							<solution>
+								<p>
+									Computing the derivatives:
+								</p>
+
+								<sidebyside>
+									<p>
+										<md>
+											<mrow> y = x^2, \quad y' = 2x. </mrow>
+											<mrow> y' - 3y = 2x - 3x^2 \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+											<mrow> y' - 3y = \cos x - 3\sin x \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = e^{3x}, \quad y' = 3e^{3x}. </mrow>
+											<mrow> y' - 3y = 3e^{3x} - 3e^{3x} = 0. </mrow>
+										</md>
+									</p>
+								</sidebyside>
+
+								<p>
+									Only <m>y = e^{3x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+								</p>
+							</solution>
+
+						</example>
+
+					</subsection>
+
+					<subsection><title> The Role of Like Terms </title>
+
+						<p>
+							The reason exponentials work can be understood using the concept of <term>like terms</term>. In algebra, 
+							only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+							must have compatible forms to sum to zero.
+						</p>
+
+						<p>
+							Looking at the equation:
+						</p>
+
+						<men>
+							y' - 3y = 0,
+						</men>
+
+						<p>
+							we see that the two terms, <m>y'</m> and <m>y</m>, must cancel each other out. This means they must be <q>like terms</q>, 
+							meaning they must share the same functional form. Since the derivative of an exponential function remains an exponential, 
+							it is the only function type that meets this requirement.
+						</p>
+
+						<example><title> Another Example: A Second-Order Equation </title>
+
+							<p>
+								Consider the second-order equation:
+							</p>
+
+							<men>
+								y'' - 5y' + 6y = 0.
+							</men>
+
+							<p>
+								Suppose we try polynomial, trigonometric, and exponential functions:
+							</p>
+
+							<me>
+								1.\quad y = x^3
+							</me>
+							<me>
+								2.\quad y = \cos x
+							</me>
+							<me>
+								3.\quad y = e^{2x}
+							</me>
+
+							<solution>
+								<p>
+									Computing the derivatives:
+								</p>
+
+								<sidebyside>
+									<p>
+										<md>
+											<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+											<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+											<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+											<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+										</md>
+									</p>
+								</sidebyside>
+
+								<p>
+									The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+									This further illustrates that solutions to LHCC equations must be exponentials.
+								</p>
+							</solution>
+
+						</example>
+
+					</subsection>
+
+					<assemblage><title> Key Takeaways </title>
+						<ul>
+							<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+							<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+							<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+						</ul>
+					</assemblage>
+
+					<p>
+						Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+						the next step is to understand how multiple exponential solutions combine to form the general solution.
+					</p>
+
+				</subsubsection>
+
+
+				<subsubsection><title> Using "Like Terms" to Explain This Behavior </title>
+
+					<p>
+						A useful way to understand why exponential functions work is by considering the concept of <term>like terms</term>. 
+						In algebra, only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+						must have compatible forms in order to sum to zero.
+					</p>
+
+					<p>
+						Let's revisit our previous example, but now with this perspective. The equation:
+					</p>
+
+					<men>
+						y' - 2y = 0
+					</men>
+
+					<p>
+						requires that the two terms, <m>y'</m> and <m>y</m>, cancel each other out. This means they must be <q>like terms</q>—they must 
+						share the same functional form. Since the derivative of an exponential function remains an exponential, this explains 
+						why exponentials naturally satisfy LHCC equations.
+					</p>
+
+					<example><title> Exponential vs. Polynomial vs. Trigonometric Functions </title>
+
+						<p>
+							Consider the second-order equation:
+						</p>
+
+						<men>
+							y'' - 5y' + 6y = 0.
+						</men>
+
+						<p>
+							Suppose we try polynomial, trigonometric, and exponential functions:
+						</p>
+
+						<me>
+							1.\quad y = x^3
+						</me>
+						<me>
+							2.\quad y = \cos x
+						</me>
+						<me>
+							3.\quad y = e^{2x}
+						</me>
+
+						<solution>
+							<p>
+								Computing the derivatives:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+										<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+										<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+										<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+								This further illustrates that solutions to LHCC equations must be exponentials.
+							</p>
+						</solution>
+
+					</example>
+
+				</subsubsection>
+
+				<assemblage><title> Key Takeaways </title>
+					<ul>
+						<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+						<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+						<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+					</ul>
+				</assemblage>
+
+				<p>
+					Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+					the next step is to understand how multiple exponential solutions combine to form the general solution.
+				</p>
+
+			</subsubsection> -->
+
+			<!-- <subsubsection><title> Why Exponentials? </title>
+
+				<p>
+					In this section, we explore what kinds of functions satisfy linear homogeneous constant coefficient (LHCC) differential equations.
+					While differential equations can have a wide range of solutions, LHCC equations exhibit a remarkable property: their solutions
+					are always exponential functions. We will see why this is true by examining concrete examples and using the concept of 
+					<q>like terms</q> to explain why only exponentials can satisfy these equations.
+				</p>
+
+				<paragraphs><title> A Simple Example </title>
+
+					<p>
+						Consider the first-order LHCC equation:
+					</p>
+
+					<men xml:id="lhcc-first-order">
+						y' - 3y = 0.
+					</men>
+
+					<p>
+						Our goal is to find a function <m>y(x)</m> that satisfies this equation. Notice that the equation requires <m>y'</m> 
+						to be proportional to <m>y</m>. A natural candidate for such a function is an exponential:
+					</p>
+
+					<me>
+						y = e^{rx}.
+					</me>
+
+					<p>
+						Substituting this into the differential equation, we compute:
+					</p>
+
+					<md>
+						<mrow> y' = r e^{rx}. </mrow>
+						<mrow> y' - 3y = r e^{rx} - 3 e^{rx} = (r - 3) e^{rx}. </mrow>
+					</md>
+
+					<p>
+						Since <m>e^{rx}</m> is never zero, the equation is satisfied only if <m>r - 3 = 0</m>, which implies <m>r = 3</m>. 
+						This means <m>y = e^{3x}</m> is a solution to the equation. This key observation generalizes to higher-order equations 
+						as well.
+					</p>
+
+				</paragraphs>
+
+				<paragraphs><title> Why Other Functions Do Not Work </title>
+
+					<p>
+						To see why exponentials are the only functions that work, let's try substituting other function types into 
+						<xref ref="lhcc-first-order"/>.
+					</p>
+
+					<example><title> Testing Polynomial and Trigonometric Functions </title>
+
+						<p>
+							Consider the differential equation:
+						</p>
+
+						<men>
+							y' - 3y = 0.
+						</men>
+
+						<p>
+							Suppose we try polynomial and trigonometric functions:
+						</p>
+
+						<me>
+							1.\quad y = x^2
+						</me>
+						<me>
+							2.\quad y = \sin x
+						</me>
+						<me>
+							3.\quad y = e^{3x}
+						</me>
+
+						<solution>
+							<p>
+								Computing the derivatives:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^2, \quad y' = 2x. </mrow>
+										<mrow> y' - 3y = 2x - 3x^2 \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+										<mrow> y' - 3y = \cos x - 3\sin x \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{3x}, \quad y' = 3e^{3x}. </mrow>
+										<mrow> y' - 3y = 3e^{3x} - 3e^{3x} = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								Only <m>y = e^{3x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+							</p>
+						</solution>
+
+					</example>
+
+				</paragraphs>
+
+				<paragraphs><title> The Role of Like Terms </title>
+
+					<p>
+						The reason exponentials work can be understood using the concept of <term>like terms</term>. In algebra, 
+						only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+						must have compatible forms to sum to zero.
+					</p>
+
+					<p>
+						Looking at the equation:
+					</p>
+
+					<men>
+						y' - 3y = 0,
+					</men>
+
+					<p>
+						we see that the two terms, <m>y'</m> and <m>y</m>, must cancel each other out. This means they must be <q>like terms</q>, 
+						meaning they must share the same functional form. Since the derivative of an exponential function remains an exponential, 
+						it is the only function type that meets this requirement.
+					</p>
+
+					<example><title> Another Example: A Second-Order Equation </title>
+
+						<p>
+							Consider the second-order equation:
+						</p>
+
+						<men>
+							y'' - 5y' + 6y = 0.
+						</men>
+
+						<p>
+							Suppose we try polynomial, trigonometric, and exponential functions:
+						</p>
+
+						<me>
+							1.\quad y = x^3
+						</me>
+						<me>
+							2.\quad y = \cos x
+						</me>
+						<me>
+							3.\quad y = e^{2x}
+						</me>
+
+						<solution>
+							<p>
+								Computing the derivatives:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+										<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+										<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+										<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+								This further illustrates that solutions to LHCC equations must be exponentials.
+							</p>
+						</solution>
+
+					</example>
+
+				</paragraphs>
+
+				<outcomes><title> Key Takeaways </title>
+					<ul>
+						<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+						<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+						<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+					</ul>
+				</outcomes>
+
+				<p>
+					Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+					the next step is to understand how multiple exponential solutions combine to form the general solution.
+				</p>
+
+			</subsubsection>
+
+			<subsubsection><title> Why Exponentials?</title>
+
+				<p>
+					To explore the nature of solutions to LHCC equations, let's consider a simple first-order example:
+				</p>
+
+				<men xml:id="lhcc-first-order">
+					y' - 2y = 0.
+				</men>
+
+				<p>
+					We seek a function <m>y(x)</m> that satisfies this equation. A key observation is that <m>y'</m> must be 
+					proportional to <m>y</m>. A function that exhibits this property is an exponential function:
+				</p>
+
+				<me>
+					y = e^{rx}.
+				</me>
+
+				<p>
+					Substituting this guess into the differential equation gives:
+				</p>
+
+				<md>
+					<mrow> r e^{rx} - 2 e^{rx} = 0 </mrow>
+					<mrow> (r - 2) e^{rx} = 0. </mrow>
+				</md>
+
+				<p>
+					Since <m>e^{rx}</m> is never zero, the only way this equation holds is if <m>r - 2 = 0</m>, which implies <m>r = 2</m>. 
+					This confirms that <m>y = e^{2x}</m> is a solution. The reason exponentials work is that their derivatives 
+					are simply scaled versions of themselves, which aligns perfectly with the structure of LHCC equations.
+				</p>
+
+				<example><title> Testing Different Function Forms </title>
+
+					<p>
+						Let's test other function types to see if they satisfy the equation <xref ref="lhcc-first-order"/>.
+					</p>
+
+					<p>
+						Consider the following candidates:
+					</p>
+
+					<me>
+						1.\quad y = x^2
+					</me>
+					<me>
+						2.\quad y = \sin x
+					</me>
+					<me>
+						3.\quad y = e^{2x}
+					</me>
+
+					<solution>
+						<p>
+							Calculating the derivatives and substituting them into <xref ref="lhcc-first-order"/>:
+						</p>
+
+						<sidebyside>
+							<p>
+								<md>
+									<mrow> y = x^2, \quad y' = 2x. </mrow>
+									<mrow> y' - 2y = 2x - 2x^2 \neq 0 </mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+									<mrow> y' - 2y = \cos x - 2\sin x \neq 0 </mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> y = e^{2x}, \quad y' = 2e^{2x}. </mrow>
+									<mrow> y' - 2y = 2e^{2x} - 2e^{2x} = 0. </mrow>
+								</md>
+							</p>
+						</sidebyside>
+
+						<p>
+							Only <m>y = e^{2x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+						</p>
+					</solution>
+
+				</example>
+
+			</subsubsection>
+
+			<subsubsection><title> Why Exponentials? (ver 2) </title>
+
+				<p>
+					In this section, we explore what kinds of functions satisfy linear homogeneous constant coefficient (LHCC) differential equations.
+					While differential equations can have a wide range of solutions, LHCC equations exhibit a remarkable property: their solutions
+					are always exponential functions. We will see why this is true by examining concrete examples and using the concept of 
+					<q>like terms</q> to explain why only exponentials can satisfy these equations.
+				</p>
+
+				<subsection><title> A Simple Example </title>
+
+					<p>
+						Consider the first-order LHCC equation:
+					</p>
+
+					<men xml:id="lhcc-first-order">
+						y' - 3y = 0.
+					</men>
+
+					<p>
+						Our goal is to find a function <m>y(x)</m> that satisfies this equation. Notice that the equation requires <m>y'</m> 
+						to be proportional to <m>y</m>. A natural candidate for such a function is an exponential:
+					</p>
+
+					<me>
+						y = e^{rx}.
+					</me>
+
+					<p>
+						Substituting this into the differential equation, we compute:
+					</p>
+
+					<md>
+						<mrow> y' = r e^{rx}. </mrow>
+						<mrow> y' - 3y = r e^{rx} - 3 e^{rx} = (r - 3) e^{rx}. </mrow>
+					</md>
+
+					<p>
+						Since <m>e^{rx}</m> is never zero, the equation is satisfied only if <m>r - 3 = 0</m>, which implies <m>r = 3</m>. 
+						This means <m>y = e^{3x}</m> is a solution to the equation. This key observation generalizes to higher-order equations 
+						as well.
+					</p>
+
+				</subsection>
+
+				<subsection><title> Why Other Functions Do Not Work </title>
+
+					<p>
+						To see why exponentials are the only functions that work, let's try substituting other function types into 
+						<xref ref="lhcc-first-order"/>.
+					</p>
+
+					<example><title> Testing Polynomial and Trigonometric Functions </title>
+
+						<p>
+							Consider the differential equation:
+						</p>
+
+						<men>
+							y' - 3y = 0.
+						</men>
+
+						<p>
+							Suppose we try polynomial and trigonometric functions:
+						</p>
+
+						<me>
+							1.\quad y = x^2
+						</me>
+						<me>
+							2.\quad y = \sin x
+						</me>
+						<me>
+							3.\quad y = e^{3x}
+						</me>
+
+						<solution>
+							<p>
+								Computing the derivatives:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^2, \quad y' = 2x. </mrow>
+										<mrow> y' - 3y = 2x - 3x^2 \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \sin x, \quad y' = \cos x. </mrow>
+										<mrow> y' - 3y = \cos x - 3\sin x \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{3x}, \quad y' = 3e^{3x}. </mrow>
+										<mrow> y' - 3y = 3e^{3x} - 3e^{3x} = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								Only <m>y = e^{3x}</m> satisfies the equation, confirming that exponentials are the correct form of solutions.
+							</p>
+						</solution>
+
+					</example>
+
+				</subsection>
+
+				<subsection><title> The Role of Like Terms </title>
+
+					<p>
+						The reason exponentials work can be understood using the concept of <term>like terms</term>. In algebra, 
+						only like terms can combine or cancel out. Similarly, in differential equations, the terms in an equation 
+						must have compatible forms to sum to zero.
+					</p>
+
+					<p>
+						Looking at the equation:
+					</p>
+
+					<men>
+						y' - 3y = 0,
+					</men>
+
+					<p>
+						we see that the two terms, <m>y'</m> and <m>y</m>, must cancel each other out. This means they must be <q>like terms</q>, 
+						meaning they must share the same functional form. Since the derivative of an exponential function remains an exponential, 
+						it is the only function type that meets this requirement.
+					</p>
+
+					<example><title> Another Example: A Second-Order Equation </title>
+
+						<p>
+							Consider the second-order equation:
+						</p>
+
+						<men>
+							y'' - 5y' + 6y = 0.
+						</men>
+
+						<p>
+							Suppose we try polynomial, trigonometric, and exponential functions:
+						</p>
+
+						<me>
+							1.\quad y = x^3
+						</me>
+						<me>
+							2.\quad y = \cos x
+						</me>
+						<me>
+							3.\quad y = e^{2x}
+						</me>
+
+						<solution>
+							<p>
+								Computing the derivatives:
+							</p>
+
+							<sidebyside>
+								<p>
+									<md>
+										<mrow> y = x^3, \quad y' = 3x^2, \quad y'' = 6x. </mrow>
+										<mrow> y'' - 5y' + 6y = 6x - 5(3x^2) + 6(x^3) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = \cos x, \quad y' = -\sin x, \quad y'' = -\cos x. </mrow>
+										<mrow> y'' - 5y' + 6y = -\cos x - 5(-\sin x) + 6(\cos x) \neq 0. </mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow> y = e^{2x}, \quad y' = 2e^{2x}, \quad y'' = 4e^{2x}. </mrow>
+										<mrow> y'' - 5y' + 6y = 4e^{2x} - 5(2e^{2x}) + 6(e^{2x}) = 0. </mrow>
+									</md>
+								</p>
+							</sidebyside>
+
+							<p>
+								The polynomial and trigonometric functions do not satisfy the equation, while the exponential function does. 
+								This further illustrates that solutions to LHCC equations must be exponentials.
+							</p>
+						</solution>
+
+					</example>
+
+				</subsection>
+
+				<assemblage><title> Key Takeaways </title>
+					<ul>
+						<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+						<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+						<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+					</ul>
+				</assemblage>
+
+				<p>
+					Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+					the next step is to understand how multiple exponential solutions combine to form the general solution.
+				</p>
+
+			</subsubsection> -->
+
+			<conclusion>
+				<assemblage><title> Key Takeaways </title>
+					<p>
+						<ul>
+							<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
+							<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
+							<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
+						</ul>
+					</p>
+				</assemblage>
+				<assemblage><title> Key Takeaways </title>
+				<p>
+					<ul>
+						<li> Solutions to LHCC equations often take the form <m>e^{rx}</m>, where <m>r</m> is a constant. </li>
+						<li> Exponential functions are useful because their derivatives preserve the same structure. </li>
+						<li> By substituting <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, 
+							known as the <em>characteristic equation</em>, which determines the solution structure. </li>
+					</ul>
+				</p>
+			</assemblage>
+			</conclusion>
+
+		</subsubsection>
+		
+		<!-- <subsubsection><title>Combining Solutions</title>
+
+			<introduction>
+				<p>
+					Having established that exponentials are the fundamental building blocks of solutions to LHCC equations, 
+					the next step is to understand how multiple exponential solutions combine to form the general solution.
+				</p>
+
+				<p>
+					We have seen that solutions to <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations 
+					are often <em>exponential functions</em>. However, most LHCC equations do not have just a single solution. Instead, they 
+					have multiple independent solutions that must be combined to form the <em>general solution</em>.
+				</p>
+
+				<p>
+					In this subsection, we will explore why multiple solutions arise and how they can be combined. The key idea is the 
+					<term>principle of superposition</term>, which states that if two or more functions are solutions to a linear 
+					homogeneous differential equation, then any linear combination of those functions is also a solution. This principle 
+					leads to the general solution, which contains arbitrary constants that allow us to satisfy initial conditions or boundary conditions.
+				</p>
+
+				<p>
+					We will also introduce the <em>characteristic equation</em>, an algebraic equation whose solutions determine the independent 
+					exponential functions that form the general solution. By analyzing different types of characteristic roots—real, repeated, 
+					and complex—we will see how they affect the structure of the solution.
+				</p>
+
+				<p>
+					By the end of this subsection, you will understand how to construct the full set of solutions for any LHCC equation, 
+					providing a complete and systematic way to solve these equations.
+				</p>
+			</introduction>
+
+			<introduction>
+				<p>
+					We have seen that solutions to <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations 
+					are often <em>exponential functions</em>. However, most LHCC equations do not have just a single solution. Instead, they 
+					have multiple independent solutions that must be combined to form the <em>general solution</em>.
+				</p>
+
+				<p>
+					In this subsection, we will explore why multiple solutions arise and how they can be combined. The key idea is the 
+					<term>principle of superposition</term>, which states that if two or more functions are solutions to a linear 
+					homogeneous differential equation, then any linear combination of those functions is also a solution. This principle 
+					leads to the general solution, which contains arbitrary constants that allow us to satisfy initial conditions or boundary conditions.
+				</p>
+
+				<p>
+					We will also introduce the <em>characteristic equation</em>, an algebraic equation whose solutions determine the independent 
+					exponential functions that form the general solution. By analyzing different types of characteristic roots—real, repeated, 
+					and complex—we will see how they affect the structure of the solution.
+				</p>
+
+				<p>
+					By the end of this subsection, you will understand how to construct the full set of solutions for any LHCC equation, 
+					providing a complete and systematic way to solve these equations.
+				</p>
+
+			</introduction>
+
+			<subsubsection><title> Why Do We Combine Solutions? </title>
+
+				<p>
+					We have seen that exponential functions naturally satisfy linear homogeneous constant coefficient (LHCC) differential equations. 
+					However, most LHCC equations have more than one solution. In this section, we explore why multiple solutions arise and how they combine 
+					to form the general solution.
+				</p>
+
+				<paragraphs><title> More Than One Exponential Works </title>
+
+					<p>
+						Consider the second-order equation:
+					</p>
+
+					<men xml:id="second-order-example">
+						y'' - 5y' + 6y = 0.
+					</men>
+
+					<p>
+						Following our earlier method, we assume a solution of the form:
+					</p>
+
+					<me>
+						y = e^{rx}.
+					</me>
+
+					<p>
+						Substituting into the equation and simplifying, we obtain the characteristic equation:
+					</p>
+
+					<me>
+						r^2 - 5r + 6 = 0.
+					</me>
+
+					<p>
+						Factoring, we find:
+					</p>
+
+					<me>
+						(r - 2)(r - 3) = 0.
+					</me>
+
+					<p>
+						This gives two possible values for <m>r</m>: <m>r = 2</m> and <m>r = 3</m>. Thus, we have two independent solutions:
+					</p>
+
+					<me>
+						y_1 = e^{2x}, \quad y_2 = e^{3x}.
+					</me>
+
+					<p>
+						Since both functions satisfy the original differential equation, we must determine how they relate to the full set of solutions.
+					</p>
+
+				</paragraphs>
+
+				<paragraphs><title> The Principle of Superposition </title>
+
+					<p>
+						A key property of linear differential equations is the <term>principle of superposition</term>. This principle states that if 
+						<m>y_1</m> and <m>y_2</m> are solutions to a linear homogeneous equation, then any linear combination of these solutions is 
+						also a solution. That is, the function:
+					</p>
+
+					<me>
+						y = c_1 e^{2x} + c_2 e^{3x}
+					</me>
+
+					<p>
+						is also a valid solution for any constants <m>c_1</m> and <m>c_2</m>. We verify this by substituting <m>y</m> into the equation 
+						<xref ref="second-order-example"/>.
+					</p>
+
+					<example><title> Verifying the Superposition Principle </title>
+
+						<p>
+							Let's check that <m>y = c_1 e^{2x} + c_2 e^{3x}</m> satisfies the equation <xref ref="second-order-example"/>.
+						</p>
+
+						<solution>
+							<p>
+								First, we compute derivatives:
+							</p>
+
+							<md>
+								<mrow> y' = 2c_1 e^{2x} + 3c_2 e^{3x} </mrow>
+								<mrow> y'' = 4c_1 e^{2x} + 9c_2 e^{3x} </mrow>
+							</md>
+
+							<p>
+								Substituting into <xref ref="second-order-example"/>:
+							</p>
+
+							<md>
+								<mrow> (4c_1 e^{2x} + 9c_2 e^{3x}) - 5(2c_1 e^{2x} + 3c_2 e^{3x}) + 6(c_1 e^{2x} + c_2 e^{3x}) = 0 </mrow>
+							</md>
+
+							<p>
+								Expanding and simplifying:
+							</p>
+
+							<md>
+								<mrow> 4c_1 e^{2x} + 9c_2 e^{3x} - 10c_1 e^{2x} - 15c_2 e^{3x} + 6c_1 e^{2x} + 6c_2 e^{3x} = 0 </mrow>
+							</md>
+
+							<p>
+								Grouping like terms:
+							</p>
+
+							<md>
+								<mrow> (4c_1 - 10c_1 + 6c_1) e^{2x} + (9c_2 - 15c_2 + 6c_2) e^{3x} = 0 </mrow>
+								<mrow> 0 e^{2x} + 0 e^{3x} = 0. </mrow>
+							</md>
+
+							<p>
+								Since the equation holds for all values of <m>x</m>, we conclude that <m>y = c_1 e^{2x} + c_2 e^{3x}</m> is a solution. 
+								This confirms that combining solutions preserves validity.
+							</p>
+
+						</solution>
+
+					</example>
+
+				</paragraphs>
+
+				<paragraphs><title> The General Solution </title>
+
+					<p>
+						Since the two solutions <m>y_1 = e^{2x}</m> and <m>y_2 = e^{3x}</m> are independent, their linear combination 
+						represents the most general solution to the equation. We express this as:
+					</p>
+
+					<me>
+						y = c_1 e^{2x} + c_2 e^{3x},
+					</me>
+
+					<p>
+						where <m>c_1</m> and <m>c_2</m> are arbitrary constants. The number of independent solutions corresponds to the 
+						order of the differential equation. For a second-order equation, we expect two independent solutions, leading to 
+						a two-parameter general solution.
+					</p>
+
+				</paragraphs>
+
+				<outcomes><title> Key Takeaways </title>
+					<ul>
+						<li> An LHCC equation often has multiple exponential solutions, determined by solving the characteristic equation. </li>
+						<li> The principle of superposition states that any linear combination of these solutions is also a solution. </li>
+						<li> The general solution is formed by summing all independent exponential solutions with arbitrary coefficients. </li>
+					</ul>
+				</outcomes>
+
+				<p>
+					Now that we understand why solutions combine, the next step is to formalize the characteristic equation, which provides 
+					a systematic way to determine all possible solutions.
+				</p>
+
+			</subsubsection>
+
+			<subsubsection><title> How Do Solutions Combine? </title>
+
+				<introduction>
+					<p>
+						In the previous section, we discovered that exponential functions of the form <m>y = e^{rx}</m> 
+						often serve as solutions to LHCC equations. But what happens if we find multiple solutions? 
+						How do they interact to form the general solution?
+					</p>
+
+					<p>
+						Since LHCC equations are linear, they obey a fundamental principle: if <m>y_1</m> and <m>y_2</m> 
+						are solutions to the equation, then their linear combination is also a solution. This property is 
+						called the <term>principle of superposition</term>.
+					</p>
+				</introduction>
+
+				<theorem xml:id="superposition-theorem"><title> Principle of Superposition </title>
+					<statement>
+						<p>
+							If <m>y_1</m> and <m>y_2</m> are solutions to an LHCC equation, then any linear combination of 
+							these solutions, 
+						</p>
+						<me>
+							y = c_1 y_1 + c_2 y_2,
+						</me>
+						<p>
+							is also a solution for any constants <m>c_1</m> and <m>c_2</m>.
+						</p>
+					</statement>
+				</theorem>
+
+				<example><title> Verifying Superposition </title>
+					<p>
+						Consider the second-order LHCC equation:
+					</p>
+					<men xml:id="lhcc-second-order-example">
+						y'' - 3y' + 2y = 0.
+					</men>
+
+					<p>
+						Suppose we have already determined that <m>y_1 = e^x</m> and <m>y_2 = e^{2x}</m> are solutions. 
+						Show that their linear combination
+					</p>
+
+					<me>
+						y = c_1 e^x + c_2 e^{2x}
+					</me>
+
+					<p>
+						is also a solution for arbitrary constants <m>c_1</m> and <m>c_2</m>.
+					</p>
+
+					<solution>
+						<p>
+							Differentiating <m>y</m>:
+						</p>
+
+						<md>
+							<mrow> y' = c_1 e^x + 2c_2 e^{2x} </mrow>
+							<mrow> y'' = c_1 e^x + 4c_2 e^{2x} </mrow>
+						</md>
+
+						<p>
+							Substituting into <xref ref="lhcc-second-order-example" />:
+						</p>
+
+						<md>
+							<mrow> (c_1 e^x + 4c_2 e^{2x}) - 3(c_1 e^x + 2c_2 e^{2x}) + 2(c_1 e^x + c_2 e^{2x}) = 0 </mrow>
+							<mrow> c_1 e^x + 4c_2 e^{2x} - 3c_1 e^x - 6c_2 e^{2x} + 2c_1 e^x + 2c_2 e^{2x} = 0 </mrow>
+							<mrow> (c_1 e^x - 3c_1 e^x + 2c_1 e^x) + (4c_2 e^{2x} - 6c_2 e^{2x} + 2c_2 e^{2x}) = 0 </mrow>
+							<mrow> 0 = 0. </mrow>
+						</md>
+
+						<p>
+							Since the equation holds for all values of <m>c_1</m> and <m>c_2</m>, this confirms that 
+							their linear combination is also a solution.
+						</p>
+					</solution>
+				</example>
+
+				<p>
+					The superposition principle allows us to construct the general solution to an LHCC equation by 
+					summing solutions corresponding to each root of the characteristic equation. This means that for 
+					an <m>n</m>-th order equation, we expect to find <m>n</m> linearly independent solutions, each 
+					associated with a term in the general solution.
+				</p>
+
+				<assemblage><title> Key Takeaways </title>
+					<ul>
+						<li> If <m>y_1</m> and <m>y_2</m> are solutions to an LHCC equation, then <m>c_1 y_1 + c_2 y_2</m> 
+							is also a solution for any constants <m>c_1</m> and <m>c_2</m>. </li>
+						<li> The general solution to an LHCC equation consists of a linear combination of all its 
+							independent solutions. </li>
+						<li> The number of independent solutions corresponds to the order of the equation. </li>
+					</ul>
+				</assemblage>
+
+				<p>
+					Now that we understand how solutions combine, the next step is to derive the characteristic equation, 
+					which allows us to determine these solutions systematically.
+				</p>
+
+			</subsubsection>
+
+			<subsubsection><title> Why Do We Combine Solutions? </title>
+
+				<p>
+					We have seen that exponential functions naturally satisfy linear homogeneous constant coefficient (LHCC) differential equations. 
+					However, most LHCC equations have more than one solution. In this section, we explore why multiple solutions arise and how they combine 
+					to form the general solution.
+				</p>
+
+				<paragraphs><title> More Than One Exponential Works </title>
+
+					<p>
+						Consider the second-order equation:
+					</p>
+
+					<men xml:id="second-order-example">
+						y'' - 5y' + 6y = 0.
+					</men>
+
+					<p>
+						Following our earlier method, we assume a solution of the form:
+					</p>
+
+					<me>
+						y = e^{rx}.
+					</me>
+
+					<p>
+						Substituting into the equation and simplifying, we obtain the characteristic equation:
+					</p>
+
+					<me>
+						r^2 - 5r + 6 = 0.
+					</me>
+
+					<p>
+						Factoring, we find:
+					</p>
+
+					<me>
+						(r - 2)(r - 3) = 0.
+					</me>
+
+					<p>
+						This gives two possible values for <m>r</m>: <m>r = 2</m> and <m>r = 3</m>. Thus, we have two independent solutions:
+					</p>
+
+					<me>
+						y_1 = e^{2x}, \quad y_2 = e^{3x}.
+					</me>
+
+					<p>
+						Since both functions satisfy the original differential equation, we must determine how they relate to the full set of solutions.
+					</p>
+
+				</paragraphs>
+
+				<paragraphs><title> The Principle of Superposition </title>
+
+					<p>
+						A key property of linear differential equations is the <term>principle of superposition</term>. This principle states that if 
+						<m>y_1</m> and <m>y_2</m> are solutions to a linear homogeneous equation, then any linear combination of these solutions is 
+						also a solution. That is, the function:
+					</p>
+
+					<me>
+						y = c_1 e^{2x} + c_2 e^{3x}
+					</me>
+
+					<p>
+						is also a valid solution for any constants <m>c_1</m> and <m>c_2</m>. We verify this by substituting <m>y</m> into the equation 
+						<xref ref="second-order-example"/>.
+					</p>
+
+					<example><title> Verifying the Superposition Principle </title>
+
+						<p>
+							Let's check that <m>y = c_1 e^{2x} + c_2 e^{3x}</m> satisfies the equation <xref ref="second-order-example"/>.
+						</p>
+
+						<solution>
+							<p>
+								First, we compute derivatives:
+							</p>
+
+							<md>
+								<mrow> y' = 2c_1 e^{2x} + 3c_2 e^{3x} </mrow>
+								<mrow> y'' = 4c_1 e^{2x} + 9c_2 e^{3x} </mrow>
+							</md>
+
+							<p>
+								Substituting into <xref ref="second-order-example"/>:
+							</p>
+
+							<md>
+								<mrow> (4c_1 e^{2x} + 9c_2 e^{3x}) - 5(2c_1 e^{2x} + 3c_2 e^{3x}) + 6(c_1 e^{2x} + c_2 e^{3x}) = 0 </mrow>
+							</md>
+
+							<p>
+								Expanding and simplifying:
+							</p>
+
+							<md>
+								<mrow> 4c_1 e^{2x} + 9c_2 e^{3x} - 10c_1 e^{2x} - 15c_2 e^{3x} + 6c_1 e^{2x} + 6c_2 e^{3x} = 0 </mrow>
+							</md>
+
+							<p>
+								Grouping like terms:
+							</p>
+
+							<md>
+								<mrow> (4c_1 - 10c_1 + 6c_1) e^{2x} + (9c_2 - 15c_2 + 6c_2) e^{3x} = 0 </mrow>
+								<mrow> 0 e^{2x} + 0 e^{3x} = 0. </mrow>
+							</md>
+
+							<p>
+								Since the equation holds for all values of <m>x</m>, we conclude that <m>y = c_1 e^{2x} + c_2 e^{3x}</m> is a solution. 
+								This confirms that combining solutions preserves validity.
+							</p>
+
+						</solution>
+
+					</example>
+
+				</paragraphs>
+
+				<paragraphs><title> The General Solution </title>
+
+					<p>
+						Since the two solutions <m>y_1 = e^{2x}</m> and <m>y_2 = e^{3x}</m> are independent, their linear combination 
+						represents the most general solution to the equation. We express this as:
+					</p>
+
+					<me>
+						y = c_1 e^{2x} + c_2 e^{3x},
+					</me>
+
+					<p>
+						where <m>c_1</m> and <m>c_2</m> are arbitrary constants. The number of independent solutions corresponds to the 
+						order of the differential equation. For a second-order equation, we expect two independent solutions, leading to 
+						a two-parameter general solution.
+					</p>
+
+				</paragraphs>
+
+				<outcomes><title> Key Takeaways </title>
+					<ul>
+						<li> An LHCC equation often has multiple exponential solutions, determined by solving the characteristic equation. </li>
+						<li> The principle of superposition states that any linear combination of these solutions is also a solution. </li>
+						<li> The general solution is formed by summing all independent exponential solutions with arbitrary coefficients. </li>
+					</ul>
+				</outcomes>
+
+				<p>
+					Now that we understand why solutions combine, the next step is to formalize the characteristic equation, which provides 
+					a systematic way to determine all possible solutions.
+				</p>
+
+			</subsubsection>
+			
+		</subsubsection> -->
+	
+	</subsection>
+
+	<!-- <conclusion>
+		<p>
+			
+		</p>
+	</conclusion> -->
+
+</section>

@@ -1,0 +1,86 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Linear Homogeneous Constant Coefficients </title>
+
+	<paragraphs xml:id="nth-derivative-of-exp"><title> N-th Derivative of <m>e^{rx}</m> </title>
+
+		Each derivative of <m>e^{rx}</m> adds a multiple of <m>r</m>, so
+		<me>
+			\us{\ \text{ rule}}{\text{chain}} \rightarrow \ \ \left[e^{rx}\right]' = r e^{rx}, \quad \left[e^{rx}\right]'' = r^2 e^{rx}, \quad \ldots, \quad \left[e^{rx}\right]^{(n)} = r^n e^{rx}
+		</me>.
+	</paragraphs>
+
+
+	<paragraphs xml:id="second-order-lhcc-complex-case"><title> 2nd Order LHCC Complex Case 3 </title>
+
+		<p>
+			The following explains how <xref ref="lhcc-case-3" text="title"/> comes directly from <xref ref="lhcc-case-1" text="title"/>.
+		</p>
+
+		<p>
+			Since <m>r_1</m> and <m>r_2</m> are complex, they can be written as
+			<me>
+				r_1 = \alpha + \beta i \quad \text{and} \quad r_2 = \alpha - \beta i
+			</me>.
+			Substituting these into <xref ref="second-order-lhcc-solution-r1-notequalto-r2"/>, using <xref ref="eulers-formula" text="title"/>, the <xref ref="evenodd-cos" text="custom"> even property of cosine </xref> and <xref ref="evenodd-sin" text="custom"> odd property of sine </xref>, we can rewrite the general solution as
+			<md>
+				<mrow> y\  &amp;= C_1 e^{(\alpha + \beta i) x} + C_2 e^{(\alpha - \beta i) x} </mrow>
+				<mrow> &amp;= C_1 e^{\alpha x} e^{i \beta x} + C_2 e^{\alpha x} e^{-i \beta x} </mrow>
+				<mrow> &amp;= e^{\alpha x} \Big{[}C_1 e^{i \beta x} + C_2 e^{-i \beta x}\Big{]} </mrow>
+				<mrow> &amp;= e^{\alpha x} \Big{[}C_1 (\cos(\beta x) + i\sin(\beta x)) + C_2 (\cos(-\beta x) + i\sin(-\beta x))\Big{]} </mrow>
+				<mrow> &amp;= e^{\alpha x} \Big{[}C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(-\beta x) + i C_2 \sin(-\beta x)\Big{]} </mrow>
+				<mrow> &amp;= e^{\alpha x} \Big{[}C_1 \cos(\beta x) + i C_1 \sin(\beta x) + C_2 \cos(\beta x) - i C_2 \sin(\beta x)\Big{]} </mrow>
+				<mrow> &amp;= e^{\alpha x} \Big{[}(\us{C_1}{\ub{C_1 + C_2}}) \cos(\beta x) + \us{C_2}{\ub{i (C_1 - C_2)}} \sin(\beta x)\Big{]} </mrow>
+				<mrow> &amp;= e^{\alpha x} (C_1 \cos(\beta x) + C_2 \sin(\beta x)) </mrow>
+			</md>.
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="like-terms"><title>Like Terms</title>
+
+		<p>
+			Terms are called <term>like terms</term> if they have identical variable parts. That is, they differ only by a coefficient. Like terms can be combined via addition and subtraction. For example, the <m>x^2</m> and <m>e^{-3x}</m> terms below are pairs of like terms, which can be combined as follows:
+			<md>
+				<mrow> \underline{3x^2} + \underline{\underline{5e^{-3x}}} - 2 + \underline{7x^2} - \underline{\underline{4e^{-3x}}}</mrow>
+				<mrow> \underline{10x^2} + \underline{\underline{e^{-3x}}} - 2 </mrow>
+			</md>.
+		</p>
+
+	</paragraphs>
+
+	<paragraphs xml:id="poly-factor-p"><title>Polynomial Factoring Calculator</title>
+		<figure xml:id="figure-pp">
+			<caption>Type in any polynomial of <m>r</m>. Use <q><m>*</m></q> for multiplication. If the polynomial has rational roots, it will show the factors.</caption>
+			<interactive xml:id="poly-factor" platform="sage" width="86%" aspect="3.2:1">
+				<slate surface="sage">
+					r = var('r')
+					r = PolynomialRing(RationalField(), 'r').gen()
+					F = 'r^2 - 2*r - 8'
+					P = r^2 - 2*r - 8
+					@interact
+					def _(ce = input_box(P, label="	Polynomial:", type=str, width=30)):
+						ce_poly = sage_eval('lambda r: ' + ce)
+						pretty_print( html( r'Polynomial: $ %s $'%latex(ce_poly(r) ) ) )
+						pretty_print( html( r'Factored Polynomial: $ %s $'%latex(ce_poly(r).factor()) ) )
+				</slate>
+			</interactive>
+		</figure>
+	</paragraphs>
+
+	<paragraphs xml:id="characteristic-eqn-details"><title/>
+		<p>
+			To find the characteristic equation, we substitute <m>y = e^{rx}</m> into the <m>n</m>-th order <xref ref="lhcc-equation" text="custom">LHCC equation</xref> and solve for <m>r</m>. Doing this gives us
+			<md>
+				<mrow>	
+					a_n\ \left[e^{rx}\right]^{(n)} + \cdots + a_2\ \left[e^{rx}\right]'' + a_1\ \left[e^{rx}\right]' + a_0\ e^{rx} =\amp\ 0
+				</mrow>
+				<mrow>	a_n\ r^n e^{rx} + \cdots + a_2\ r^2 e^{rx} + a_1\ r e^{rx} + a_0\ e^{rx} =\amp\ 0 </mrow>
+				<mrow>	\left(a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0\right)e^{rx}  =\amp\ 0 </mrow>
+			</md>.
+			Since <m>e^{rx}</m> is never zero, we must have
+			<me>
+				a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
+			</me>
+			which is an <m>n</m>-th order polynomial in <m>r</m>.
+		</p>
+	</paragraphs>
+
+</subsection>

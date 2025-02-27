@@ -1,0 +1,719 @@
+<subsection><title> Orphaned Content </title>
+
+	<introduction>
+		<p>
+			This is just a place to put content that was written and may or not be used.
+		</p>
+	</introduction>
+
+	<subsubsection><title> IF Stuff </title>
+
+		<introduction>
+
+			<p>
+				The integrating factor method relies on rewriting a differential equation so that the left-hand side becomes the <q>derivative of a product</q>. To do this, we need to recognize when an expression <q>can be written as a product rule in reverse</q>.
+			</p>
+
+			<p>
+				In this subsection, we will:
+			</p>
+
+			<p>
+				<line>✅ Review the product rule from calculus.</line>
+				<line>✅ Practice reversing the product rule on different expressions.</line>
+				<line>✅ Apply this idea to transform differential equations into a solvable form.</line>
+			</p>
+
+		</introduction>
+
+		<conclusion>
+
+			<p>
+				Rewriting a differential equation so that one side is a <q>completed</q> derivative is a crucial step in the <em>integrating factor method</em>. The examples in this section show that when an equation already has the structure of a product rule, it can be solved easily. However, most first-order linear equations are <em>missing</em> a necessary function to complete the derivative.  
+			</p>
+
+		</conclusion>
+
+
+		<p>
+			<objectives>
+				<ul>
+					<li>
+						<p>
+							Completing the square introduces a missing term to rewrite a quadratic equation in a solvable form.
+						</p>
+					</li>
+					<li>
+						<p>
+							Completing the derivative introduces a missing factor (the <em>integrating factor</em>) to rewrite a differential equation in a solvable form.
+						</p>
+					</li>
+					<li>
+						<p>
+							The integrating factor method works by <em>modifying the equation to fit a product rule structure</em>, allowing direct integration.
+						</p>
+					</li>
+				</ul>
+			</objectives>
+		</p>
+
+
+		<p>
+			In the next section, we will introduce the concept of an <em>integrating factor</em>, which allows us to <em>modify</em> a first-order linear equation so that it always fits the product rule structure.
+		</p>
+
+		<p>
+			<objectives>
+				<ul>
+					<li>
+						<p>
+							The product rule is not only used to compute derivatives but also to combine multiple functions into a single derivative.
+						</p>
+					</li>
+					<li>
+						<p>
+							<q>Reversing</q> the product rule within a differential equation is a key step in the <em>integrating factor method</em>.
+						</p>
+					</li>
+					<li>
+						<p>
+							Once we rewrite one side of a differential equation as a single derivative, it can be solved by <em>direct integration</em>.
+						</p>
+					</li>
+				</ul>
+			</objectives>
+		</p>
+
+
+		<men xml:id="if-completed-derivative-eqn1">
+			\ub{\frac{dy}{dx} + P(x) y = Q(x)}_{\text{Given Equation}} \quad 
+			\os{\text{Integrating}}{\us{\text{Factor Method}}{\longrightarrow}} \quad 
+			\ub{\frac{d}{dx}[ \mu(x) y ] = \mu(x) Q(x)}_{\text{Completed Derivative Equation}}
+		</men>.
+		
+		<p>
+				While this integrating factor is specific to <xref ref="if-example-incomplete-eqn"/>, the general integrating factor is found in a similar manner, which we will now show.
+			</p>
+
+			<p>
+				Consider the first-order linear equation:
+			</p>
+
+			<me>
+				\frac{dy}{dx} + 2y = 5
+			</me>.
+
+			<p>
+				The left-hand side <em>almost</em> resembles the result of the product rule, but something is missing. If we attempt to rewrite it in the form <m>\frac{d}{dx} [f(x) y]</m>, we quickly run into a problem. Labeling <m>y</m> as <m>g</m> and <m>\frac{dy}{dx}</m> as <m>g'</m>, we see that no corresponding <m>f</m> satisfies:
+			</p>
+
+			<md>
+				<mrow>	
+					\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} ? \ }}}\
+					\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+					+
+					\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2 }}}\
+					\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+					=\amp\ 5
+				</mrow>.
+			</md>
+			
+			<p>
+				The left-hand side lacks the function <m>f</m> that satisfies both parts of the product rule. To resolve this, let's create our own <m>f</m> function by multiplying both sides by it, like so
+				<md>
+					<mrow>	
+						\underset{\color{BurntOrange}{\large f}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}}}}\
+						\underset{\color{BurntOrange}{\large g'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\frac{dy}{dx}}}}
+						+
+						\underset{\color{BurntOrange}{\large f^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} 2\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}} }}}\
+						\underset{\color{BurntOrange}{\large g}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+						=\amp\ 5\ \boxed{\phantom{\large|} \color{BurntOrange}{f} \phantom{\large|}}
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				For this to be a valid product rule, the derivative of <m>f</m> must be in the <m>f'</m> position. Can you think of a function has a derivative that is <m>2</m> times itself? There is only one, and that function is <m>e^{2x}</m>, since
+			</p>
+
+			<me>
+				\frac{d}{dx} \big[ {\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}} \big] = 2{\color{BurntOrange}\us{\text{itself}}{\us{\uparrow}{\ul{e^{2x}}}}}
+			</me>
+
+			<p>
+				Multiplying both sides of the equation by <m>e^{2x}</m> gives us
+			</p>
+
+			<me>
+				e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
+			</me>,
+
+			<p>
+				but this is the same equation as in <xref ref="reversing-the-product-rule-in-a-DE-example"/>, which can be written as
+			</p>
+
+			<me>
+				\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
+			</me>
+
+			<p>
+				and solved using direct integration.
+			</p>
+				
+			<p>
+				This example demonstrates that <em>multiplying by the right function can complete a missing derivative</em>, allowing us to solve the equation. This function is called the <em>integrating factor</em>, and in the next section, we will formally define it and derive a general formula.
+			</p>
+
+			<p>
+				<term>---------------------------------------------------------</term>
+			</p>
+
+			<p>
+				Now, recall that in order for this to be a valid product rule, we must have
+			</p>
+
+			<me>
+				\mu^{\prime}= 2\mu \quad \text{or} \quad \frac{d}{dx} [\mu] = 2\mu
+			</me>,
+			
+			<p>
+				where <m>\mu</m> is the unknown function we multiply the equation by. Notice that this is a differential equation! In particular, it is separable and we can find <m>\mu</m> with the separation of variables method, as follows
+			</p>
+
+			<me>
+				\frac{d}{dx} [\mu(x) y] = \mu(x) \frac{dy}{dx} + \mu'(x) y.
+			</me>
+
+			<p>
+				Comparing this with the left-hand side of our given equation,
+			</p>
+
+			<me>
+				\mu(x) \frac{dy}{dx} + \mu(x) \cdot 2y = \mu(x) \cdot 5,
+			</me>
+
+			<p>
+				we see that for these to match, <m>\mu(x)</m> must satisfy the equation:
+			</p>
+
+			<me>
+				\mu'(x) = 2\mu(x).
+			</me>
+
+			<p>
+				This is a <em>separable differential equation</em>, which we solve as follows:
+			</p>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Separate Variables:
+				</p>
+				<p>
+					<me> \frac{d\mu}{\mu} = 2 dx. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Integrate Both Sides:
+				</p>
+				<p>
+					<me> \int \frac{d\mu}{\mu} = \int 2dx. </me>  
+					<me> \ln|\mu| = 2x + C. </me>
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="30% 70%" valigns="top middle">
+				<p>
+					Solve for <m>\mu(x)</m>:
+				</p>
+				<p>
+					<me> \mu(x) = e^{2x + C} = e^C e^{2x}. </me>
+				</p>
+			</sidebyside>
+
+			<p>
+				Since <m>e^C</m> is an arbitrary constant, we can choose <m>C = 0</m> (since any constant multiple of an integrating factor still works), giving us:
+			</p>
+
+			<men xml:id="first-integrating-factor00">
+				\mu(x) = e^{2x}.
+			</men>
+
+			<p>
+				This function is called the <term>integrating factor</term>. It allows us to transform our equation into a perfect derivative, which can then be solved by direct integration.
+			</p>
+
+			<p>
+				Every first-order linear differential equation has the form
+				<me>
+					y' + P(x)y = Q(x)
+				</me>,
+				and the left side is always one piece away from a complete product rule. To find this piece, we multiply both sides by <m>\mu</m>, and label the pieces of the product rule, as before,
+				<md>
+					<mrow>	
+						\underset{\color{BurntOrange}{\large \mu}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} \mu }}}\
+						\underset{\color{BurntOrange}{\large y'}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y'}}}
+						+
+						\underset{\color{BurntOrange}{\large \mu^{'}}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\ \vphantom{\frac11} P(x)\ \mu }}}\
+						\underset{\color{BurntOrange}{\large y}}{ \underset{\color{BurntOrange}{\uparrow}}{\ul{\vphantom{\frac11} y\ }}}
+						=\amp\ Q(x)\ \mu
+					</mrow>.
+				</md>
+				We reason that in order for this to be a valid product rule, we must have
+				<men xml:id="if-sov-eqn0">
+					\mu^{\prime} = P(x)\ \mu
+				</men>.
+				which is a differential equation that can be solved by separation of variables to find the integrating factor, <m>\mu</m>, as
+				<men xml:id="def-integrating-factor">
+					\mu = e\vphantom{\large|}^{\textstyle\int P(x)\ dx}
+				</men>.
+			</p>
+		
+	</subsubsection>
+		
+
+	<subsubsection><title> Integrating Factor </title>
+
+		<p>
+			Suppose <m>f</m> and <m>g</m> are differentiable functions. The product rule states that
+			<men xml:id="if-product-rule-bidirectional">
+				\underset{\xrightarrow[\LARGE\text{forward}]{} }{\ds [f \cdot g ]'} =
+				\underset{\xleftarrow[\LARGE\text{backward}]{} }{\ds f \cdot g' + f' \cdot g}.
+			</men>
+			The <q>forward</q> version goes from left to right, while the <q>backward</q> version, which we'll focus on, goes from right to left. Let's practice applying both versions with a few examples.
+		</p>
+
+		<theorem><title>Solving <xref ref="if-sov-eqn0"/></title>
+			<statement>
+				<p>
+					The <term>integrating factor</term> for the first-order linear differential equation
+					<me xml:id="standard-first-order-linear-de">y' + P(x)y = Q(x)</me>
+					is <m>\mu = e^{\int P(x) dx}</m>. Multiplying both sides by <m>\mu</m> transforms the equation into:
+					<me>\frac{d}{dx}\left[\mu(x) \cdot y\right] = \mu(x)Q(x)</me>.
+				</p>
+			</statement>
+			
+			<proof><title>Derivation of the Integrating Factor</title>
+				<p>
+					Note, all first-order linear differential equations can be written in the form
+					<men xml:id="if-general-eqn">
+						\frac{dy}{dx} + P(x) y = Q(x)
+					</men>,
+					where <m>P(x)</m> and <m>Q(x)</m> are functions of <m>x</m>. The goal is to write the left-side as a single derivative. However, backward product rule is missing a piece, <m>\mu(x)</m>, that we still need to find. We find <m>\mu(x)</m> by multiplying it onto <xref ref="if-general-eqn"/>, like so
+					<sidebyside widths="50% 50%">
+						<p>
+							<md>
+								<mrow> \frac{dy}{dx} + P(x)\amp\ y = Q(x) </mrow>
+								<mrow> \mu \frac{dy}{dx} + {\color{blue} \mu P(} \amp\ {\color{blue}\! x)} y = \mu Q(x) </mrow>
+								<mrow> {\color{blue} \updownarrow}\ \ \amp \ {\color{blue} \text{match &amp; solve}}</mrow>
+								<mrow> \mu \frac{dy}{dx} + {\color{blue} \frac{d\mu}{dx}}\amp\ y = \mu Q(x) </mrow>
+								<mrow> \frac{d}{dx}\big[\mu \cdot \amp\ y\big] = \mu Q(x) </mrow>
+							</md>
+						</p>
+						
+						<p>
+							<md>
+								<mrow> {\color{blue} \frac{d\mu}{dx} =}\amp\ {\color{blue} \mu P(x)} </mrow>
+								<mrow> {\color{blue} \frac{1}{\mu}d\mu =}\amp\ {\color{blue} P(x) dx} </mrow>
+								<mrow> {\color{blue} \int \frac{1}{\mu}d\mu =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+								<mrow> {\color{blue} \ln|\mu| =}\amp\ {\color{blue} \int P(x) dx} </mrow>
+								<mrow> {\color{blue} \mu =}\amp\ {\color{blue} e^{\int P(x) dx}} </mrow>
+							</md>
+						</p>
+					</sidebyside>
+						
+				</p>
+			</proof>
+		</theorem>
+		
+		<paragraphs><title> Another Approach to the IF Method.. </title>
+
+			<p>
+				The integrating factor method uses a three-step strategy to solve first-order linear differential equations in the <em>standard form</em>:
+				<fn>
+					<p>
+						Every linear differential equation looks like
+						<me>
+							a_n(x)y^{(n)} + \cdots + a_2(x)y'' + a_1(x)y' + a_0(x)y = f(x)
+						</me>.
+						The first-order version of this is
+						<me>
+							a_1(x)y' + a_0(x)y = f(x)
+						</me>,
+						but we can divide both sides of this equation by <m>a_1(x)</m>:
+						<me>
+							y' + \us{P(x)}{\ub{\frac{a_0(x)}{a_1(x)}}}y = \us{Q(x)}{\ub{\frac{f(x)}{a_1(x)}}}
+						</me>.
+						Since every first-order linear differential equation can always be written as
+						<me>
+							y' + P(x)y = Q(x)
+						</me>,
+						we call this the first-order linear <em>standard form</em>.
+					</p>
+				</fn>
+				<me>
+					y' + P(x)y = Q(x)
+				</me>.
+				The heart of this method is the first step: finding the correct integrating factor. The second step uses this factor to write the left side as a single derivative. Finally, the last step finds the solution by <xref ref="direct-integration" text="custom">direct integration</xref>.
+			</p>
+		
+			<paragraphs><title> Step 1: Finding the Integrating Factor </title>
+			
+				<p>
+					Understanding how to find the integrating factor is crucial. Let's carefully walk through this important process.
+				</p>
+				<p>
+					Consider the differential equations (specific on the left, general on the right):
+					<sidebyside>
+						<p>
+							<me>
+								\us{\text{product rule?}}{\ub{y' + x^2 y}} = 5x^2
+							</me>,
+						</p>
+						<p>
+							<me>
+								\us{\text{product rule?}}{\ub{y' + P(x)y}} = Q(x)
+							</me>.
+						</p>
+					</sidebyside>
+					We would like to rewrite the left side as a single derivative using the <xref ref="review-product-rule" text="custom">backward product rule</xref>. However, the <m>y'</m> alone suggests there is a missing second function that the product rule needs. Maybe there is a function that we can multiply both sides of the equation by to get the desired product rule. Let's call it <m>\mu</m> for now and see if we can find it. We start by multiplying both sides by <m>\mu</m>:
+					<sidebyside>
+						<p>
+							<me>
+								\mu y' + 3x^2 \mu y = 5x^2\mu
+							</me>.
+						</p>
+						<p>
+							<me>
+								\mu y' + P(x)\mu y = Q(x)\mu
+							</me>.
+						</p>
+					</sidebyside>
+		
+					Notice that the left side almost looks like the product rule <m>\left[ \mu y \right]' = \mu y' + \mu' y</m>, except for the boxed value where <m>\mu'</m> should be (see below).
+		
+					<sidebyside>
+						<p>
+							<me>
+								\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot
+								\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+
+								\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{3x^2 \mu}}}}	\cdot
+								\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		=
+								5x^2\mu
+							</me>,
+						</p>
+						<p>
+							<me>
+								\overset{\ds \mu}	{\overset{\downarrow}{\vphantom{\Big[}\ds \mu}} 	\cdot
+								\overset{\ds y'}	{\overset{\downarrow}{\vphantom{\Big[}\ds y'}} 		+
+								\overset{\ds \color{blue}{\mu'}}	{\overset{\downarrow}{\vphantom{\Big[}\ds \color{blue}{\boxed{P(x) \mu}}}}	\cdot
+								\overset{\ds y}		{\overset{\downarrow}{\vphantom{\Big[}\ds y}} 		=
+								Q(x)\mu
+							</me>.
+						</p>
+					</sidebyside>
+		
+					This shows that the <m>\mu</m> that works is the one that satisfies
+					<sidebyside>
+						<p>
+							<me>
+								\mu' = 3x^2 \mu
+							</me>
+						</p>
+						<p>
+							<me>
+								\mu' = P(x) \mu
+							</me>.
+						</p>
+					</sidebyside>
+		
+					Careful inspection shows that these are separable differential equations where the unknown <m>\mu</m> can be found using separation of variables!
+		
+					<sidebyside>
+						<p>
+							<md>
+								<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int 3x^2\ dx										</mrow>
+								<mrow>				\ln|\mu|	\amp = x^3 + C												</mrow>
+								<mrow>						\mu	\amp = \pm e^{x^3 + C}										</mrow>
+								<mrow>						\mu	\amp = {\color{green} \us{C}{\boxed{\pm e^C}}} e^{x^3}	</mrow>
+								<mrow>						\mu	\amp = Ce^{x^3}												</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\int \frac{1}{\mu}d\mu	\amp = \int P(x)\ dx	</mrow>
+								<mrow>				\ln|\mu|	\amp = \int P(x)\ dx		</mrow>
+								<mrow>						\mu	\amp = e^{\int P(x)\ dx}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+		
+					Although the solution conatains a constant, we only need one function that works, so we set <m>C = 1</m>. The function <m>\mu</m> is called the <em>integrating factor</em> and finding it is the first step toward solving a first order differential equation.
+				</p>
+		
+			</paragraphs>
+		
+			<paragraphs><title> Step 2: Rewriting the Equation </title>
+			
+				With the integrating factor in hand, we are ready to write the left side as a derivative using the <xref ref="review-product-rule" text="custom">backward product rule</xref>.
+				<sidebyside>
+					<p>
+						Integrating Factor: <m>\mu = e^{x^3}</m>
+						<md>
+							<mrow>					y' + x^2 y	=\ \amp 5x^2		</mrow>
+							<mrow>	e^{x^3}y' + x^2 e^{x^3}y	=\ \amp 5x^2e^{x^3}	</mrow>
+							<mrow>	\left[ e^{x^3}y \right]'	=\ \amp 5x^2e^{x^3}	</mrow>
+						</md>
+					</p>
+					<p>
+						Integrating Factor: <m>\mu = e^{\int P(x)\ dx}</m>
+						<md>
+							<mrow>				y' + P(x)y	=\ \amp Q(x)		</mrow>
+							<mrow>		\mu y' + P(x) \mu y	=\ \amp Q(x) \mu	</mrow>
+							<mrow>	\left[ \mu y \right]'	=\ \amp Q(x) \mu	</mrow>
+						</md>.
+					</p>
+				</sidebyside>
+			</paragraphs>
+		
+			<paragraphs><title> Step 3: Solving the Equation </title>
+			
+				<p>
+					The final step is to apply <xref ref="direct-integration" text="custom">direct integration</xref>. This was covered in a previous section, so we will skip some of the details here.
+				</p>
+		
+				<sidebyside widths="50% 38%">
+					<p>
+						<md>
+							<mrow>	\int \left[ e^{x^3}y \right]' \ dx	=\ \amp \int 5x^2e^{x^3} \ dx	</mrow>
+							<mrow>							e^{x^3}y	=\ \amp \frac{5}{3} e^{x^3} + C	</mrow>
+							<mrow>									y	=\ \amp \frac{5}{3} + Ce^{-x^3}	</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>	\int \left[ \mu y \right]' \ dx	=\ \amp \int Q(x) \mu \ dx					</mrow>
+							<mrow>							\mu y	=\ \amp \int Q(x) \mu \ dx					</mrow>
+							<mrow>								y	=\ \amp \frac{1}{\mu} \int Q(x) \mu \ dx	</mrow>
+						</md>
+						where <m>\mu = e^{\int P(x)\ dx}</m>.
+					</p>
+				</sidebyside>
+		
+				<p>
+					<assemblage xml:id="integrating-factor-general-solution"><title> General Solution </title>
+						<p>
+							The general solution for the first-order linear differential equation
+						</p>
+						<p>
+							<me>
+								y' + P(x)y = Q(x)
+							</me>
+							is given by	
+							<me>
+								y = \frac{1}{\mu} \int Q(x) \mu \ dx
+							</me> where <m>\mu = e^{\int P(x)\ dx}</m> is the integrating factor.
+						</p>
+					</assemblage>
+				</p>
+			</paragraphs>
+		
+			<p>
+				In summary, the integrating factor method is a three-step process that utilizes the integrating factor to rewrite the left side of the equation, enabling direct integration and leading to the general solution.
+			</p>
+
+		</paragraphs>
+
+		<paragraphs><title> Another Approach to the IF Method.. </title>
+			
+			<p>
+				<md>
+					<mrow> \frac{d}{dx}\left[ y \cdot e^{-2x} \right] \amp = 5 e^{-2x} \quad \leftarrow \text{Easy to solve!} </mrow>
+				</md>
+				and then we integrate both sides with respect to <m>x</m> to free the unknown <m>y</m> from inside the <m>\ds\frac{d}{dx}</m>, so that we can solve for it. However, we have not talked about how the integrating factor gets the differential equation into this form. Luckily, the product rule for deriviatives holds the answer. Therefore, let's start this discussing by reminding ourselves that the product rule is given by
+				<me> \frac{d}{dx}[\ f \cdot g\ ] = \frac{d}{dx}[\ f\ ] \cdot g + f \cdot \frac{d}{dx}[\ g\ ]. </me>
+			</p>
+		
+			<p>
+				Ok, the claim is that after a some math the differential equation
+				<men xml:id="if_prod_rule_eq1"> \frac{dy}{dx} - 2y = 5 </men>
+				can be rewritten as
+				<men xml:id="if_prod_rule_eq2"> \frac{d}{dx}\left[ y \cdot e^{-2x} \right] = 5 e^{-2x}. </men>
+				To explain this, it may be easier to work backwards. That is, let's start with <xref ref="if_prod_rule_eq2" /> and see how it may connect back to <xref ref="if_prod_rule_eq1" />. We start by applying the product rule on the left side,
+				<mdn>
+					<mrow> \frac{d}{dx}[\ y \cdot e^{-2x}\ ] \amp = 5 e^{-2x} </mrow>
+					<mrow> \frac{d}{dx}[\ y\ ] \cdot e^{-2x} + y \cdot \frac{d}{dx}[\ e^{-2x}\ ] \amp = 5 e^{-2x} </mrow>
+					<mrow> \frac{dy}{dx} \cdot e^{-2x} + y \cdot \left(-2 e^{-2x}\right) \amp = 5 e^{-2x} </mrow>
+					<mrow xml:id="if_prod_rule_eq3"> \frac{dy}{dx} \cdot e^{-2x} - 2 y \cdot e^{-2x} \amp = 5 e^{-2x}. </mrow>
+				</mdn>
+				At this point stop and compare equation <xref ref="if_prod_rule_eq1" /> with the last equation <xref ref="if_prod_rule_eq3" />. Do you see how the two equations are connected?
+			</p>
+		
+			<p>
+				You should see that multiplying both sides of <xref ref="if_prod_rule_eq1" /> by <m>e^{-2x}</m> gives you <xref ref="if_prod_rule_eq3" />.
+		
+			</p>
+		
+			<p>
+				In a nutshell, the integrating factor technique attempts to solve
+				<me>y' + P(x)y = Q(x)</me>
+				by multiplying both sides by an unknown function, <m>\mu</m>
+				<me>\mu y' + \mu P(x)y = \mu Q(x)</me>
+				then find a <m>\mu</m> so that the left-hand side can be written as the product rule of <m>\mu</m> and <m>y</m>.
+				<me>\us{\large \text{product rule}}{\ub{\mu y' + \mu P(x)y}} = \mu Q(x)</me>
+			</p>
+		
+			<p>
+				To clarify, let's look at an example where we know <m>\mu</m>.
+			</p>
+			
+			<p>
+				The previous example shows how to solve the equation when you know what <m>\mu</m> is. However, in a real problem, you will have to find <m>\mu</m> first!
+			</p>
+			
+			<p>
+				Let's build on the previous example to try and understand why <m>\mu = e^{6x}</m> worked. It is important to try and think of <m>\mu(x)</m> as the missing part needed to to be consistent with the product rule. That is, the left-side of the equation
+			
+				<me>\us{\large \text{product rule}}{\us{\large \text{incomplete}}{\ub{y' + 6y}}} = 1</me>
+			
+				is missing a second function needed to be consistent with the product rule. So let's fill-in this missing function by multiplying both sides by <m>\mu</m>,
+			
+				<men xml:id="complete-product-rule-eqn">\mu y' + 6 \mu y = \mu.</men>
+			
+				Is the left-side, <m>\mu y' + 6 \mu y</m>, equal to <m>\left[\mu y\right]'</m>? Well, not exactly, since taking this derivative shows the difference between these two, namely
+			
+				<sidebyside>
+					<tabular halign="center">
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell bottom="minor"></cell>
+							<cell></cell>
+							<cell></cell>
+						</row>
+				
+						<row>
+							<cell halign="right"><m>\ds\left[\mu y\right]'</m></cell>
+							<cell><m>=</m></cell>
+							<cell><m>\mu y'</m></cell>
+							<cell right="minor"><m>+</m></cell>
+							<cell bottom="minor" right="minor"><m>\mu'</m></cell>
+							<cell><m>y</m></cell>
+							<cell></cell>
+						</row>
+				
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell><m>\uparrow</m></cell>
+							<cell></cell>
+							<cell></cell>
+						</row>
+				
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell colspan="4"><em>difference</em></cell>
+						</row>
+				
+						<row>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell></cell>
+							<cell bottom="minor"><m>\downarrow</m></cell>
+							<cell></cell>
+							<cell></cell>
+						</row>
+				
+						<row>
+							<cell>left-side</cell>
+							<cell><m>\rightarrow</m></cell>
+							<cell><m>\mu y'</m></cell>
+							<cell right="minor"><m>+</m></cell>
+							<cell bottom="minor" right="minor"><m>6\mu</m></cell>
+							<cell><m>y</m></cell>
+						</row>
+					</tabular>
+				</sidebyside>
+			</p>
+			
+			<p>
+				However, what if <m>\mu</m> was chosen so that <m>\mu' = 6\mu</m>? It turns out that this is exactly how we chose <m>\mu</m>. Finding <m>\mu</m> such that <m>\mu' = 6\mu</m> is itself a differential equation which can be solved using separation of variables. (You may try it yourself first for practice, then look below to see how to solve this DE.)
+			</p>
+			
+			<p>
+				Using separation of variables, solve
+				<md>
+				<mrow>\mu' =\amp\ 6\mu.</mrow>
+				</md>
+				to get the solution
+				<fn>
+					<md>
+					<mrow>\frac{d\mu}{dx} =\amp\ 6\mu</mrow>
+					<mrow>\frac{1}{\mu}d\mu =\amp\ 6\ dx</mrow>
+					<mrow>\int\frac{1}{\mu}d\mu =\amp\ \int 6\ dx</mrow>
+					<mrow>\ln|\mu| =\amp\ 6x + C</mrow>
+					<mrow>|\mu| =\amp\ e^{6x + C}</mrow>
+					<mrow>\mu =\amp\ \pm e^C e^{6x}</mrow>
+					<mrow>\mu =\amp\ A e^{6x}</mrow>
+					</md>
+				</fn>
+				<me>\mu = A e^{6x}.</me>
+			
+				Since, we only need one <m>\mu</m> to work, we choose <m>A=1</m> for convenience, hence
+			
+				<me>\mu = e^{6x}.</me>
+			
+				Now you see where the <m>\mu</m> came from in part 1 of ??.  In fact, this example outlines how <m>\mu</m> is found for any first order linear differential equation of the form
+				<men xml:id="EQ-1st-order-de-pre">y' + P(x)y = Q(x).</men>
+			</p>
+
+			<figure>
+				<caption>
+					Matching the terms of the top and middle expressions in order to reverse the product rule. Notice the <m>y</m> terms are already equal, so we only need to find <m>\mu</m>.
+				</caption>
+				<image width="40%">
+
+					<latex-image>
+						\begin{tikzpicture}[relative]
+							\node[anchor=south, inner sep=-1pt] (E1T1) 	at (-1.44,2.8)	{\underline{$\ds\frac{dy}{dx}$}};
+							\node[anchor=south, inner sep=-1pt] (E1D1) 	at (-1.1,3.1) 	{$\cdot$};
+							\node[anchor=south, inner sep=-1pt] (E1T2) 	at (-0.6,3) {\underline{$\ds e^{5x^2}$}};
+							\node[anchor=south, inner sep=-1pt] (E1C) 	at (0,3.1) 	{$+$};
+							\node[anchor=south, inner sep=-1pt] (E1T3) 	at (0.9,3) 	{\underline{$\ds10xe^{5x^2}$}};
+							\node[anchor=south, inner sep=-1pt] (E1D2) 	at (1.6,3.1) 	{$\cdot$};
+							\node[anchor=south, inner sep=-1pt] (E1T4) 	at (1.9,3) 	{\underline{$\ds y$}};
+							\node[anchor=center, inner sep=0pt] (E2T1) at (-1,2) 	{$\ds\frac{dy}{dx}$};
+							\node[anchor=center] (E2D1) at (-0.7,2) 	{$\cdot$};
+							\node[anchor=center] (E2T2) at (-0.4,2) 	{$\ds\mu$};
+							\node[anchor=center, inner sep=6pt] (E2C) 	at (0,2) 	{$+$};
+							\node[anchor=center] (E2T3) at (0.5,2) 	{$\ds\frac{d\mu}{dx}$};
+							\node[anchor=center] (E2D2) at (0.8,2) 	{$\cdot$};
+							\node[anchor=center] (E2T4) at (1,2) 	{$\ds y$};
+							\node[anchor=center] (E3C) 	at (0,0.8) 	{$\ds\frac{d}{dx}\left[y \cdot \mu\right]$};
+							
+							\path[&lt;->] (E1T1.south) edge [bend right=30] (E2T1.north west);
+							\path[&lt;->] (E1T2.south) edge (E2T2.north);
+							\path[&lt;->] (E1T3.south) edge (E2T3.north);
+							\path[&lt;->] (E1T4.south) edge [bend left=40] (E2T4.east);
+
+							\draw (-0.06,1.47) to (-0.06,1.23);
+							\draw (0.06,1.47) to (0.06,1.23);
+						\end{tikzpicture}
+					</latex-image>
+
+				</image>
+			</figure>
+			
+		</paragraphs>
+
+	</subsubsection>
+
+</subsection>

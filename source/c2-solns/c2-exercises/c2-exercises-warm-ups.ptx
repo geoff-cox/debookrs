@@ -1,0 +1,408 @@
+<exercises><title> Warm-ups &amp; Drills </title>
+
+	<exercise label="c2-warm-ups-ww-1"><title> Verify the Solution </title>
+
+		<introduction>
+			<p>
+				Verify that <m>y= 2e^{-3t}</m> is a solution to
+				<me>
+					y'' - y' - 12y = 0
+				</me>
+				by filling in the blanks below.
+			</p>
+		</introduction>
+
+		<webwork xml:id="c2-warm-ups-ww-1-id">
+		
+			<description>
+				Verify the solution.
+			</description>
+
+			<pg-code>
+				Context()->variables->add(y => 'Real');
+				Context()->variables->add(t => 'Real');
+				$y = Formula("2*e^(-3*t)");
+				$yp = $y->D('t');
+				$ypp = $yp->D('t');
+				$lhs = Formula("$ypp - $yp - 12*$y");
+				$rhs = Formula("0");
+				if ($lhs == $rhs) {
+					$ans = 'Yes';
+				} else {
+					$ans = 'No';
+				}
+				$is_soln = PopUp([ '?', 'Yes', 'No' ], $ans);
+			</pg-code>
+
+			<statement>
+
+				<p>
+					Plug in <m>2e^{-3t}</m> for <m>y</m>:
+				</p>
+				
+				<tabular>
+					<row>
+						<!-- <cell> Plug in <m>2e^{-3t}</m> for <m>y</m>: </cell> -->
+						<cell>
+							<m>\Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big)^{\prime\prime} - \Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big)^{\prime} - 12\Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big) = 0</m>
+						</cell>
+					</row>
+				</tabular>
+
+				<p>
+					Compute derivatives:
+				</p>
+				
+				<tabular>
+					<row>
+						<!-- <cell> Compute derivatives: </cell> -->
+						<cell>
+							<m>\Big(</m>
+								<var name="$ypp" width="10" />
+							<m>\Big)\phantom{^{\prime\prime}} - \Big(</m>
+								<var name="$yp" width="10" />
+							<m>\Big)\phantom{^{\prime}} - 12\Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big) = 0</m>
+						</cell>
+					</row>
+				</tabular>
+
+				<p>
+					Distribute coefficients and simplify the left-hand side:
+				</p>
+				
+				<tabular>
+					<row>
+						<!-- <cell> Simplify the LHS: </cell> -->
+						<cell> <var name="$lhs" width="10" /> <m> = 0</m> </cell>
+					</row>
+				</tabular>
+
+				<p>
+					Is <m>y= 2e^{-3t}</m> a solution? <var name="$is_soln" width="10" />
+				</p>
+				
+				
+			</statement>
+
+		</webwork>
+
+	</exercise>
+
+	<exercise label="c2-warm-ups-ww-2"><title> Verify the Solution </title>
+	
+		<introduction>
+			<p>
+				Verify that <m>y = 3\sin(x^2)</m> is a solution to
+				<me>
+					y' - xy'' = 12x^2\sin(x^2)
+				</me>
+				by filling in the blanks below.
+			</p>
+		</introduction>
+
+		<webwork xml:id="c2-warm-ups-ww-2-id">
+		
+			<description>
+				Verify the solution.
+			</description>
+
+			<pg-code>
+				Context()->variables->add(y => 'Real');
+				$y = Formula("3*sin(x^2)");
+				$yp = $y->D('x');
+				$ypp = $yp->D('x');
+				$lhs = Formula("$yp - x*$ypp")->reduce;
+				$lhs_simp = Formula("12*x^3*sin(x^2)");
+				$rhs = Formula("12*x^2*sin(x^2)");
+				if ($lhs == $rhs) {
+					$ans = 'Yes';
+				} else {
+					$ans = 'No';
+				}
+				$is_soln = PopUp([ '?', 'Yes', 'No' ], $ans);
+			</pg-code>
+
+			<statement>
+
+				<p>
+					Plug in <m>3\sin(x^2)</m> for <m>y</m>:
+				</p>
+				
+				<tabular>
+					<row>
+						<cell>
+							<m>\Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big)^{\prime} - x\Big(</m>
+								<var name="$y" width="10" />
+							<m>\Big)^{\prime\prime} = 12x^2\sin(x^2)</m>
+						</cell>
+					</row>
+				</tabular>
+
+				<p>
+					Compute derivatives:
+				</p>
+				
+				<tabular>
+					<row>
+						<cell>
+							<m>\Big(</m>
+								<var name="$yp" width="10" />
+							<m>\Big) - x\Big(</m>
+								<var name="$ypp" width="10" />
+							<m>\Big) = 12x^2\sin(x^2)</m>
+						</cell>
+					</row>
+				</tabular>
+
+				<p>
+					Simplify the left-hand side:
+				</p>
+
+				<tabular>
+					<row>
+						<cell> <var name="$lhs_simp" width="10" /> <m> = </m> <var name="$rhs" width="10" /> </cell>
+					</row>
+				</tabular>
+
+				<p>
+					Is <m>y = 3\sin(x^2)</m> a solution? <var name="$is_soln" width="10" />
+				</p>
+
+			</statement>
+
+		</webwork>
+
+		<solution>
+			<p>
+				Find <m>y'</m> and <m>y''</m> since they appear in the equation and move all terms to the left-side.
+				<md>
+					<mrow>	y	=\amp\  3\sin(x^2)									</mrow>
+					<mrow>	y' 	=\amp\  3\cos(x^2) \cdot 2x	=	6x\cos(x^2)	</mrow>
+					<mrow>	y'' =\amp\ 6\cos(x^2) - 6x\sin(x^2)(2x)	=	6\cos(x^2) - 12x^2\sin(x^2)	</mrow>
+				</md>
+			</p>
+
+			<p>
+				Plug in <m>y, y',</m> and <m>y''</m> and simplify.
+				<md>
+					<mrow> 												
+						y' - xy'' - 12x^2\sin(x^2) =\amp\ 0	
+					</mrow>
+					<mrow>
+						6x\cos(x^2) - x\left( 6\cos(x^2) - 12x^2\sin(x^2) \right) - 12x^2\sin(x^2) =\amp\ 0																
+					</mrow>
+					<mrow>
+						\cancel{6x\cos(x^2)} - \cancel{6x\cos(x^2)} + 12x^3\sin(x^2) - 12x^2\sin(x^2) =\amp\ 0
+						</mrow>
+					<mrow>
+						12x^3\sin(x^2) - 12x^2\sin(x^2) =\amp\ 0
+					</mrow>
+				</md>
+				Therefore, <m>y= 3\sin(x^2)</m> is NOT a solution to <m>y' - 12x^2\sin(x^2) = xy''.</m>
+			</p>
+		</solution>
+
+	</exercise>
+
+	<exercise label="c2-warm-ups-ww-3"><title> Solve the Equation </title>
+
+		<statement>
+			<p>
+				Solve the initial-value problem
+				<me>2y' - 4\sin x = 2, \quad y(0) = 5 </me>.
+			</p>
+		</statement>
+
+		<solution>
+
+			<p>
+				Start by isolating the derivative, <m>y'</m>, on one side of the equation
+				<md>
+					<mrow> y' \amp = 1 + 2 \sin x </mrow>.
+				</md>
+				Integrate both sides with respect to <m>x</m> to leave us with <m>y</m> on the left side
+				<md>
+					<mrow> \int y'\ dx 	\amp = \int \left(1 + 2 \sin x\right) \ dx 				</mrow>
+					<mrow> 	y + c_1 	\amp = x - 2 \cos x + c_2 								</mrow>
+					<mrow> 			y 	\amp = x - 2 \cos x + \boxed{c_2 - c_1}\leftarrow c		</mrow>
+					<mrow> 		y(x)	\amp  = x - 2 \cos x + c 								</mrow>.
+				</md>
+			</p>
+
+			<p>
+				Finally, apply the initial condition <m>y(0) = 5</m> to find <m>c</m>
+				<md>
+					<mrow> 				y(0)	\amp = 5 </mrow>
+					<mrow> (0) - 2 \cos(0) + c	\amp = 5 </mrow>
+					<mrow> 			0 - 2 + c	\amp = 5 </mrow>
+					<mrow> 					c	\amp = 7 </mrow>.
+				</md>
+				Thus, the solution to the differential equation is <m>\quad y = x - 2 \cos x + 7 </m>.
+			</p>
+
+		</solution>
+
+	</exercise>
+
+	<exercise label="c2-warm-ups-click-1"><title> Select all of the Solutions </title>
+
+		<statement>
+			<p>
+				Given the differential equation
+				<me> y''-9y = 0 </me>
+				select each function that is a solution to this differential equation.
+			</p>
+		</statement>
+
+		<areas>
+			<p>
+				<sidebyside width="30%">
+					<p>
+						<line><area correct="no">	a. <m>\ds \,\, y = 3</m>		</area></line>
+						<line><area correct="yes">	b. <m>\ds \,\, y = 0</m>		</area></line>
+						<line><area correct="yes">	c. <m>\ds \,\, y = e^{3x}</m>	</area></line>
+					</p>
+					<p>
+						<line><area correct="no">	d. <m>\ds \,\, y = 3x</m>	</area></line>
+						<line><area correct="no">	e. <m>\ds \,\, y = 9e^x</m>	</area></line>
+						<line><area correct="no">	f. <m>\ds \,\, y = x^9</m>	</area></line>
+					</p>
+					<p>
+						<line><area correct="yes">	g. <m>\ds \,\, y = 4e^{3x}</m>				</area></line>
+						<line><area correct="yes">	h. <m>\ds \,\, y = e^{-3x}</m>				</area></line>
+						<line><area correct="yes">	i. <m>\ds \,\, y = e^{3x} - 2e^{-3x}</m>	</area></line>
+					</p>
+				</sidebyside>
+			</p>
+		</areas>
+
+		<answer>
+			<p>
+				<sidebyside width="30%">
+				<p>
+					<line> a. No </line>
+					<line> b. Yes </line>
+					<line> c. Yes </line>
+				</p>
+				<p>
+					<line> d. No </line>
+					<line> e. No </line>
+					<line> f. No </line>
+				</p>
+				<p>
+					<line> g. Yes </line>
+					<line> h. Yes </line>
+					<line> i. Yes </line>
+				</p>
+			</sidebyside>
+			</p>
+		</answer>
+		
+	</exercise>
+	
+	<exercise label="c2-warm-ups-click-2"><title> Select all of the Solutions </title>
+
+		<statement>
+			<p>
+				Given the differential equation
+				<me>
+					y'' - 10y' + 25y = 0
+				</me>
+				select each function that is a solution to this differential equation.
+			</p>
+		</statement>
+
+		<areas>
+			<p>
+				<sidebyside width="30%">
+					<p>
+						<line><area correct="yes">	a. <m>\ds \,\, y = 0</m>			</area></line>
+						<line><area correct="no">	b. <m>\ds \,\, y = x^2e^{5x}</m>	</area></line>
+						<line><area correct="yes">	c. <m>\ds \,\, y = e^{5x}</m>		</area></line>
+					</p>
+					<p>
+						<line><area correct="no">	d. <m>\ds \,\, y = 5x</m>		</area></line>
+						<line><area correct="yes">	e. <m>\ds \,\, y = xe^{5x}</m>	</area></line>
+						<line><area correct="yes">	f. <m>\ds \,\, y = 5e^{5x}</m>	</area></line>
+					</p>
+					<p>
+						<line><area correct="no">	g. <m>\ds \,\, y = 1/25</m>			</area></line>
+						<line><area correct="no">	h. <m>\ds \,\, y = e^{-5x}</m>		</area></line>
+						<line><area correct="yes">	i. <m>\ds \,\, y = (1+x)e^{5x}</m>	</area></line>
+					</p>
+				</sidebyside>
+			</p>
+		</areas>
+	
+		<answer>
+			<p>
+				<p>
+				<sidebyside width="30%">
+					<p>
+						<line> a. Yes </line>
+						<line> b. No </line>
+						<line> c. Yes </line>
+					</p>
+					<p>
+						<line> d. No </line>
+						<line> e. Yes </line>
+						<line> f. Yes </line>
+					</p>
+					<p>
+						<line> g. No </line>
+						<line> h. No </line>
+						<line> i. Yes </line>
+					</p>
+				</sidebyside>
+			</p>
+			</p>
+		</answer>
+
+	</exercise>
+	
+	<exercise label="c2-warm-ups-matching-01"><title> Matching Each Solution to an Equation </title>
+
+		<statement>
+			<p>
+				Match each solution on the left with its corresponding differential equation on the right.
+			</p>
+		</statement>
+
+		<feedback>
+			<p>
+				Carefully take the derivative of each function separately, then see if the function satisfies one of the equations.
+			</p>
+		</feedback>
+
+		<matches>
+			<match>
+				<premise>	<m>y = 3x+x^2</m>						</premise>
+				<response>	<m>\ds 3y'' - 2y + \frac{4}{x}y = 12</m>	</response>
+			</match>
+			<match>
+				<premise>	<m>y = e^{-8x}</m>				</premise>
+				<response>	<m>y'' + 10 y' + 16 y = 0</m>	</response>
+			</match>
+			<match>
+				<premise>	<m>y = \sin x</m>	</premise>
+				<response>	<m>y'' + y = 0</m>	</response>
+			</match>
+			<match>
+				<premise>	<m>y = x^{1/2}</m>			</premise>
+				<response>	<m>2x^2y'' + 3xy' = y</m>	</response>
+			</match>
+		</matches>
+
+	</exercise>
+
+</exercises>
