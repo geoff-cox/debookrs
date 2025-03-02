@@ -3,12 +3,15 @@
 	<introduction>
 
 		<p>
-			In this subsection, we take our first steps into understanding <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations. 
-			Before we fully define and analyze these equations, it is important to explore their fundamental building blocks: <term>linear (L)</term>, <term>homogeneous (H)</term>, and <term>constant coefficients (CC)</term>. These three properties determine the structure of LHCC equations and the types of solutions you will get from these equations.
+			Before we explore methods for solving <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, it is essential to understand their fundamental structure. These equations play a significant role in mathematical modeling because their solutions exhibit predictable and well-behaved patterns, making them ideal for applications in physics, engineering, and other sciences.
 		</p>
 
 		<p>
-			By the end of this subsection, you will have a clear understanding of the fundamental concepts underlying LHCC equations, preparing you for finding their solutions in later sections.
+			To build intuition, we will carefully examine the three defining properties of LHCC equations: <term>linearity</term>, <term>homogeneity</term>, and <term>constant coefficients</term>. Each of these characteristics influences the types of solutions that emerge and dictates the methods we use to solve them. By clearly defining and identifying LHCC equations, we lay the groundwork for developing powerful solution techniques in the sections that follow.
+		</p>
+
+		<p>
+			By the end of this section, you will be able to recognize and classify LHCC equations, setting the stage for understanding why exponential functions serve as their fundamental solutions. This understanding will provide the necessary framework to systematically analyze and solve these equations in later chapters.
 		</p>
 
 	</introduction>
@@ -17,22 +20,22 @@
 
 		<introduction>
 			<p>
-				Before diving into the methods for solving linear homogeneous differential equations with constant coefficients (LHCC equations), we first need to understand what these equations look like and how to recognize them. The term "LHCC" captures three essential characteristics: <em>linearity</em>, <em>homogeneity</em>, and <em>constant coefficients</em>. Let's break these down one by one.
+				To solve a differential equation effectively, we must first determine its structural properties. The term "LHCC" highlights three key characteristics: <term>linearity</term>, <term>homogeneity</term>, and <term>constant coefficients</term>. Understanding these properties is crucial because they dictate both the nature of the solutions and the methods used to obtain them.
+			</p>
+
+			<p>
+				In this subsection, we break down each component of an LHCC equation, providing clear definitions and illustrative examples. By the end, you will be equipped with the ability to classify differential equations based on these properties, distinguishing LHCC equations from other types.
 			</p>
 		</introduction>
 
-		<subsubsection><title> The <q>L</q> in LHCC </title>
+		<subsubsection><title> The <q>L</q> in LHCC: Linearity </title>
 			
 			<p>
-				Recall, a differential equation is called <term>linear</term> if it can be written as 
-				<me>
-					\text{Sum of Linear Terms } = \text{ Constant Term}
-				</me>
-				where a term is linear if it contains, at most, a single dependent variable raised to power of one and not inside another function. The constant term is the collection of all terms that do not contain a dependent variable. 
+				Recall, a differential equation is considered <term>linear</term> if it only contains linear terms. In other words, the dependent variable and all its derivatives appear only to the first power and are not multiplied or composed with each other. In contrast, an equation is <term>nonlinear</term> if it contains terms such as <m>y^2</m>, <m>(y')^3</m>, <m>\sin(y)</m>, or <m>y \cdot y''</m>. 
 			</p>
 
 			<p>
-				So, every <m>n</m>-th order linear differential equation can be organized as follows:
+				The general form of an <m>n</m>-th order linear differential equation is:
 			</p>
 
 			<men xml:id="linear-equation-w-coefficents">
@@ -59,8 +62,14 @@
 			</men>
 
 			<p>
-				where the coefficients, <m>a_n(x), a_{n-1}(x), \dots, a_1(x), a_0(x)</m> and the constant term, <m>f(x)</m>, are functions that depend only on the independent variable <m>x</m>.
+				where the coefficients, <m>a_n(x), a_{n-1}(x), \dots, a_1(x), a_0(x)</m> and the constant term, <m>f(x)</m>, are functions of the independent variable <m>x</m>. <m>f(x)</m> is also commonly known as the <term>forcing function</term> or <term>nonhomogeneous term</term>.
 			</p>
+
+			<aside>
+				<p>
+					😕 = nonlinear term
+				</p>
+			</aside>
 
 			<p>
 				Examples of <m>\quad</m> 
@@ -68,56 +77,67 @@
 				<xref ref="nonlinear-equation-examples" text="custom">	👉 Nonlinear Equations	</xref>
 			</p>
 
-			
 		</subsubsection>
 
-		<subsubsection><title> The <q>CC</q> in LHCC </title>
+		<subsubsection><title> The <q>H</q> in LHCC: Homogeneous </title>
 
 			<p>
-				A linear differential equation is said to have <term>constant coefficients</term> if all of the coefficients in the equation are constant (i.e., numbers, not functions of <m>x</m>). 
-				<aside>
-					<p>
-						☝️ <term>Remember!</term> Constant terms are not coefficients.
-					</p>
-				</aside>
-				This condition results in dropping <q><m>(x)</m></q> on each coefficient in equation <xref ref="linear-equation-w-coefficents"/>.
+				A linear differential equation is classified as <term>homogeneous</term> if its right-hand side (the constant term <m>f(x)</m>) is zero. Otherwise, it is classified as <term>nonhomogeneous</term>.
 			</p>
 
 			<p>
-				So, every linear differential equation with constant coefficients has the form
+				For example, the following equations are homogeneous
 			</p>
 
-			<men xml:id="constant-coefficient-de">
-				a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = f(x),
-			</men>
+			<me>
+				x y'' - \cos x y' + 6y = 0, \qquad y''' + 2y'' = y'
+			</me>
 
 			<p>
-				where <m>a_n, a_{n-1}, \dots, a_0</m> are constants. Here are some examples of linear differential equations with constant coefficients:
+				since the constant terms are zero in each case. The equations
+			</p>
+
+			<me>
+				y'' + 4xy = \boxed{x}, \qquad y' + \boxed{e^x} = 0
+			</me>
+			
+			<p>
+				are nonhomogeneous because the (boxed) contant terms are not zero.
+			</p>
+
+		</subsubsection>
+
+		<subsubsection><title> The <q>CC</q> in LHCC: Constant Coefficients </title>
+			
+			<aside>
+				<p>
+					☝️ <term>Remember!</term> Constant terms are not coefficients.
+				</p>
+			</aside>
+
+			<p>
+				A linear differential equation has <term>constant coefficients</term> if all coefficient functions <m>a_n, a_{n-1}, \dots, a_0</m> are constants rather than functions of <m>x</m>.
+			</p>
+
+			<p>
+				Some linear differential equations with constant coefficients are
 			</p>
 
 			<me>
 				2y'' - 3y' + 5y = 0, \qquad y''' + 4y'' - 2y' + 7y = e^x
-			</me>
+			</me>,
+
+			<p>
+				and here are some equations with (boxed) non-constant coefficients:
+			</p>
+
+			<me>
+				\boxed{3^x}\ y'' + \boxed{2x}\ y' + y = 0, \qquad y'' + y' + \boxed{\ln x}\ y = \sin x
+			</me>.
 
 		</subsubsection>
 
-		<subsubsection><title> The <q>H</q> in LHCC </title>
-
-			<p>
-				To state that a linear differential equation is <term>homogeneous</term> is to say that the constant term, <m>f(x)</m>, is zero. When the constant is nonzero (i.e., <m>f(x) \neq 0</m>), we say the equation is <term>nonhomogeneous</term>. Therefore, setting <m>f(x) = 0</m> in <xref ref="linear-equation-w-coefficents"/> leads to the form for any linear homogeneous differential equation:
-			</p>
-
-			<men xml:id="homogeneous-de">
-				a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = 0.
-			</men>
-
-			<p>
-				This condition implies that every term in the equation must involve the dependent variable <m>y</m> or one of its derivatives. 
-			</p>
-
-		</subsubsection>
-
-		<subsubsection><title> LHCC Equations </title>
+		<subsubsection><title> Summary: Recognizing LHCC Equations </title>
 			
 			<p>
 				Combining these ideas, we arrive at the formal definition of an LHCC equation.
@@ -138,110 +158,14 @@
 			</definition>
 			
 			<p>
-				Since LHCC equations are the types of equations that our next method will solve, let's make sure we can identify these equations with an example.
+				The following equations are examples of LHCC equations:
 			</p>
+
+			<me>
+				2y'' - 3y' + 5y = 0, \qquad \frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = 0 \qquad u'' = u
+			</me>.
 			
 		</subsubsection>
-
-		<example>
-			<p>
-				<statement>
-					<p>
-						Identify which of the following are linear homogeneous differential equations.
-					</p>
-					<me>
-						3y'' - 2ty' + y = 0, \quad
-						\frac{dg}{dx} + 3x^2 = 0, \quad
-						\frac{d^2s}{dt^2} + \frac{ds}{dt} = 4s
-					</me>
-					<p>
-						Determine which of the following equations have constant coefficients.
-					</p>
-					<me>
-						3y'' - 2\tau y' + y = \tau, \quad
-						\sqrt{t} - \frac{dP}{dt} - \frac{P^2}{2} = 1, \quad
-						s''' = \frac{7s}{w}
-					</me>
-					<p>
-						For each of the following differential equations, identify the coefficients and state whether they are constants or functions of the independent variable:
-					</p>
-					<ol>
-						<li> <m>y'' + 4y' + 6y = 0</m>, </li>
-						<li> <m>x^2 y'' + xy' + y = \ln(x)</m>, </li>
-						<li> <m>u'' + 2xu' + u = 5x</m>. </li>
-					</ol>
-				</statement>
-			</p>
-			<p>
-				<solution>
-					<p>
-						The trick is to check if the constant term is zero and the equation has only <m>y</m> and its derivatives on the left-hand side. Let's rewrite each equation with the constant term isolated:
-					</p>
-					<p>
-						<me>
-						3y'' - 2ty' + y = {\color{BurntOrange} 0}, \quad
-						\frac{dg}{dx} = {\color{BurntOrange} -3x^2}, \quad
-						\frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = {\color{BurntOrange} 0}
-						</me>.
-					</p>
-					<p>
-						The first and last equations are homogeneous, but the second is not because the right-hand side is non-zero.
-					</p>
-				</solution>
-				<solution>
-					<p>
-						Check if each coefficient is constant:
-					</p>
-					<p>
-						<me>
-							\os{\text{yes}}{\os{\downarrow}{\ul{3}}} y'' -
-							\os{\text{no}}{\os{\downarrow}{\ul{2\tau}}}\ y' +
-							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} y = \tau, \quad
-							\sqrt{t} -
-							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} \frac{dP}{dt} -
-							\os{\text{yes}}{\os{\downarrow}{\ul{\frac{1}{2}}}} P^2 = 1, \quad
-							\os{\text{yes}}{\os{\downarrow}{\ul{1}}} s''' =
-							\os{\text{no}}{\os{\downarrow}{\ul{\frac{7}{w}}}} s
-						</me>.
-						The second equation has constant coefficients, while the others do not.
-					</p>
-				</solution>
-				<solution>
-					<dl>
-						<li>
-							<title>Equation 1:</title>
-							<p>
-								<dl>
-									<li>Coefficient of <m>y''</m>: <m>1</m> (constant).</li>
-									<li>Coefficient of <m>y'</m>: <m>4</m> (constant).</li>
-									<li>Coefficient of <m>y</m>: <m>6</m> (constant).</li>
-								</dl>
-							</p>
-						</li>
-						<li>
-							<title>Equation 2:</title>
-							<p>
-								<dl>
-									<li>Coefficient of <m>y''</m>: <m>x^2</m> (variable).</li>
-									<li>Coefficient of <m>y'</m>: <m>x</m> (variable).</li>
-									<li>Coefficient of <m>y</m>: <m>1</m> (constant).</li>
-								</dl>
-							</p>
-						</li>
-						<li>
-							<title>Equation 3:</title>
-							<p>
-								<dl>
-									<li>Coefficient of <m>u''</m>: <m>1</m> (constant).</li>
-									<li>Coefficient of <m>u'</m>: <m>2x</m> (variable).</li>
-									<li>Coefficient of <m>u</m>: <m>1</m> (constant).</li>
-								</dl>
-							</p>
-						</li>
-					</dl>
-				</solution>
-			</p>
-		</example>
 
 		<conclusion>
 			<p>
@@ -267,67 +191,11 @@
 		<introduction>
 
 			<p>
-				Now that we have established the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, the next step is to explore the kinds of functions that satisfy these equations. While differential equations can have a wide range of solutions, LHCC equations exhibit surprisingly limited set of possible solutions. The nature of these solutions are highlighted in the properties that follow.
+				Having established the structure of <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, we now turn our attention to their solutions. Unlike many other types of differential equations, the structure of these equations lead to a predictable set of solutions that take the form of exponential functions.
 			</p>
 
-			<assemblage><title> Properties of LHCC Solutions </title>
-				<p>
-					The solutions to any <m>n</m>-th order linear homogeneous differential equation,
-					<men xml:id="lhcc-solns-eqn">
-						a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
-					</men>
-					have the following properties:
-				</p>
-
-				<p>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-1">
-							<p>
-								A solution must consist of exactly <m>n</m> terms of the form:
-								<me>
-									ce^{rx} \quad \text{or} \quad cx^k e^{rx}
-								</me>,
-								where <m>c</m> is an integration constant and <m>r</m> and <m>k</m> are numbers that are determined by the specific equation.
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-2">
-							<p>
-								No two of these solutions can be like terms. That is, if they are added together, they cannot be simplified into a single term.<m>^⭐</m>
-								<aside>
-									<p>
-										<m>^⭐</m> In a more advanced context, you will refer to these functions as being <q>linearly independent</q>.
-									</p>
-								</aside>
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-3">
-							<p>
-								The general solution is the sum of all <m>n</m> of these solutions.
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-				</p>
-			</assemblage>
-
 			<p>
-				This section seeks to help you gain the intuition behind these concepts without the theoretical details found in a more advanced treatment of these concepts.
+				In this section, we will explore why exponentials naturally emerge as solutions and how this insight allows us to construct general solutions. By the end of this section, you will see that solving an LHCC equation ultimately reduces to finding the right exponential functions whose combinations satisfy the given equation.
 			</p>
 
 		</introduction>
@@ -335,22 +203,24 @@
 		<subsubsection><title> What Do Solutions Look Like? </title>
 
 			<introduction>
+
 				<p>
-					The next task is to take a closer look at the <xref ref="lhcc-soln-property-1" text="custom">LHCC Property 1</xref>. In this discussion, we will use our knowledge of calculus and algebra to logically justify why exponential functions naturally satisfy these types of equations. 
+					When encountering a new type of differential equation for the first time, a natural question to ask is: <em>What kind of functions make sense to plug in for <m>y</m>?</em> To answer this, you must look at the structure of the equation to get clues as to which functions are compatible with the equation. So our plan for this section is to examine how the structure of LHCC equations suggest that exponential solutions (<xref ref="lhcc-soln-property-1" text="custom">Property 1</xref>) are valid options, while other common function types are not.
 				</p>
+
 			</introduction>
 
 			<p>
-				A useful way to understand what types of solutions to expect is with the concept of <xref ref="like-terms" text="custom"><term>like terms</term></xref>. In algebra, when you add two like terms together they can be simplified by adding their coefficients. Like terms are also the only terms that can <q>cancel out</q> through addition or subtraction. <m>^📌</m>
+				One way to see which functions make good candidates for solutions to LHCC equation is through the lens of <xref ref="like-terms" text="custom"><term>like terms</term></xref>. In algebra, like terms share the same structure and when you add them together they can be combined into a single term. The same idea applies to differential equations: if a function <m>y(x)</m> is a solution, then after substituting <m>y(x)</m> and its derivatives into a homogeneous equation, all terms must combine in a way that results in zero (i.e., they all cancel out). <m>^📌</m>
 				<aside>
 					<p>
-						<term>📌 Note:</term> We are using <q>like terms</q> to represent the more advanced notion of linearly dependence of functions.
+						<term>📌 Note:</term> We are using <q>like terms</q> to represent the more advanced notion of linearly dependent functions.
 					</p>
 				</aside>
 			</p>
 
 			<p>
-				Using this perspective, let's consider the following simple LHCC equation,
+				To illustrate this idea, consider the simple first-order LHCC equation:
 			</p>
 
 			<me>
@@ -358,27 +228,37 @@
 			</me>.
 
 			<p>
-				To be a solution, we would expect any function that we plug in for <m>y</m> to result in <m>0 = 0</m>. That is, after plugging in a function of <m>x</m> for each <m>y</m> all the terms must cancel out, simplifying the left side to zero. The only types of terms that do this are <q>like terms</q>! So, looking back at our equation, we see that <m>y'</m> and <m>2y</m> must give us like terms after plugging in a function. But, what kind of function is a like term with its own derivative?
+				To be a solution, any function of <m>x</m> that we plug in for <m>y</m> and <m>y'</m> must result in <m>0 = 0</m>. This implies that, after plugging in <m>y</m>, all the terms on the left cancel out. However, the only functions that can simplify in this way are <q>like terms</q>!
 			</p>
 
 			<p>
-				You may recall from calculus that the derivative of an exponential function is always another exponential function, so perhaps we are on to something. To convince ourselves, let's plug in a few different functions for <m>y</m> and see if we get any like terms.
+				Looking back at our equation, we see that for <m>y(x)</m> to be a solution, the terms <m>y'</m> and <m>2y</m> must be like terms, meaning they must have the same functional form so that they can cancel out. This leads us to a fundamental question:
 			</p>
 
-			<sidebyside widths="28% 6% 30% 6% 30%">
+			<blockquote>
+				<p>
+					<q>Which types of functions retain their form when differentiated?</q>
+				</p>
+			</blockquote>
+
+			<p>
+				You may recall from calculus that the derivative of an exponential function is always another exponential function. This suggests that exponentials might be the right type of function to satisfy LHCC equations. Let's test this by substituting different function types into our example equation:
+			</p>
+
+			<sidebyside widths="28% 5% 32% 5% 30%">
 				<p>
 					<em>Case 1:</em> <m>\quad y = x^2</m>
 					<md>
 						<mrow> \left[x^2\right]' - 2 \left[x^2\right] = 0\amp </mrow>
-						<mrow> \us{\large\text{don't cancel}}{\ub{2x - 2x^2}_{\large\text{not like terms,}}} = 0\amp </mrow>
+						<mrow> \us{\large\text{don't cancel}}{\ub{2x - 2x^2}_{\large\text{not like terms}}} = 0\amp </mrow>
 					</md>
 				</p>
 				<p/>
 				<p>
 					<em>Case 2:</em> <m>\quad y = 2 \ln x</m>
 					<md>
-						<mrow> \left[2\ln x\right]' - 4\ln x = 0\amp </mrow>
-						<mrow> \us{\large\text{don't cancel}}{\ub{\frac{2}{x} - 4\ln x}_{\large\text{not like terms,}}} = 0\amp </mrow>
+						<mrow> \left[2\ln x\right]' - 2\left[2\ln x\right] = 0\amp </mrow>
+						<mrow> \us{\large\text{don't cancel}}{\ub{\frac{2}{x} - 4\ln x}_{\large\text{not like terms}}} = 0\amp </mrow>
 					</md>
 				</p>
 				<p/>
@@ -386,16 +266,16 @@
 					<em>Case 3:</em> <m>\quad y = e^{2x}</m>
 					<md>
 						<mrow> \left[e^{2x}\right]' - 2 \left[e^{2x}\right] = 0\amp </mrow>
-						<mrow> \us{\large\text{do cancel}}{\ub{2e^{2x} - 2e^{2x}}_{\large\text{like terms,}}} = 0\amp </mrow>
+						<mrow> \us{\large\text{do cancel}}{\ub{2e^{2x} - 2e^{2x}}_{\large\text{like terms}}} = 0\amp </mrow>
 					</md>
 				</p>
 			</sidebyside>
 
 			<p>
-				As you can see, only <m>y = e^{2x}</m> produces like terms that simplify to zero. This is why exponential functions often work well in LHCC equations. Let's now examine a more complex example to build upon this idea.
+				As we can see, only the exponential function <m>y = e^{2x}</m> produces like terms that fully cancel out. This provides evidence that exponentials are a natural choice for solutions to LHCC equations. Let's look at one more example to solidify this idea.
 			</p>
 
-			<example xml:id="lhcc-soln-example-1"><title> Give Us a Title Prick </title>
+			<example xml:id="lhcc-soln-example-1"><title> Multiple Exponential Solutions </title>
 			
 				<p>
 					<statement>
@@ -524,176 +404,204 @@
 					</p>
 				</solution>
 			</example>
+
+			<p>
+				But what about other functions, such as sine and cosine? Interestingly, trigonometric functions also satisfy certain LHCC equations, but they are actually a special case of exponentials when complex numbers are involved. This will become clearer when we explore the <em>characteristic equation</em> in a later section.
+			</p>
 			
 			<conclusion>
 
 				<p>
-					Our goal was to examine <xref ref="lhcc-soln-property-1" text="custom">LHCC Property 1</xref> and these examples are evidence that exponential functions have a perfect structure as solutions to these types of equations. 
+					In this subsection, we discovered that exponential functions are the natural solutions to LHCC equations because they retain their form when differentiated. We will build on this idea in the next section by constructing the <em>general solution</em> from all the known exponential solutions.
 				</p>
 
-				<theorem><title> What about <m>\sin x</m> and <m>\cos x</m> as solutions? </title>
-				<statement>
-					<p>
-						If you are wondering why we didn't include <m>\sin x</m> and <m>\cos x</m> in the list of possible <q>like term</q> solutions, then you have a good grasp of this material. Indeed, the fact that derivatives of <m>\sin x</m> and <m>\cos x</m> cycle back to themselves with every second derivative, indicates that they can also produce like terms, which combine when plugged into certain differential equations.
-					</p>
-
-					<p>
-						The reason we didn't include them is because exponentials actually encompass <m>\sin x</m> and <m>\cos x</m> as special cases when <m>r</m> in <m>e^{rx}</m> is a complex number. In particular, if <m>r</m> can be expressed as <m>r = ib</m>, then <xref ref="eulers-formula" text="custom">Euler's formula</xref> tells us that
-					</p> 
-
-					<me>
-						e^{rx} = e^{ibx} = \cos (bx) + i \sin (bx)
-					</me>.
-
-					<p>
-						Therefore, the <m>\sin x</m> and <m>\cos x</m> cases are also covered by the <m>e^{rx}</m> case.
-					</p>
-					
-				</statement>
-			</theorem>
-
-				<p>
-					The next question is, how do we construct the general solution when we have <m>n</m> different exponential solutions to the same equation. In the next section we will show how the <xref ref="superposition-theorem" text="custom">principle of superposition</xref> guides us on how to construct general solution from these specific ones.  
-				</p>
 			</conclusion>
 
 		</subsubsection>
-		
-		<subsubsection><title> Combining Solutions </title>
+
+		<subsubsection><title> The General Solution </title>
 
 			<introduction>
 
 				<p>
-					The previous section showed us that exponential functions naturally satisfy linear homogeneous constant coefficient (LHCC) differential equations. Moreover, we saw in example <xref ref="lhcc-soln-example-1"/> that one LHCC equation can have multiple exponential solutions (e.g. <m>e^{4x}</m> and <m>e^{-x}</m>).	The same example showed that not every exponential function is necesaarily a solution (e.g. <m>e^{3x}</m>). In this section, we discuss how many exponential solutions you can expect and how to combine them to form the general solution.
+					Now that we know that exponential functions naturally satisfy linear homogeneous constant coefficient (LHCC) differential equations, we will discuss how to combine these exponential solutions to form the general solution.
 				</p>
 
 			</introduction>
 
-			<paragraphs><title> The Principle of Superposition </title>
+			<p>
+				The general solution to an LHCC equation is established based on the <q><xref ref="lhcc-soln-properties" text="title"/></q> mentioned in the introduction along with a key property of linear differential equations known as the <term>principle of superposition</term>. This principle states that if <m>y_1</m> and <m>y_2</m> are solutions to a linear equation, then so is <m>c_1 y_1 + c_2 y_2</m>, for any constants <m>c_1</m> and <m>c_2</m>. To understand this, let's illustrate these properties on the equation from a previous example. 
+			</p>
 
+			<p>
+				In <xref ref="lhcc-soln-example-1"/>, we determined the LHCC equation,
+			</p>
+
+			<me>
+				y'' - 3y' - 4y = 0
+			</me>
+
+			<p>
+				has two solutions, <m>y_1 = e^{4x}</m> and <m>y_2 = e^{-x}</m>. Since this equation has 2nd order, we expect exactly two solutions. Therefore, our two exponential solutions from <xref ref="lhcc-soln-property-1" text="custom">property 1</xref> have been established.
+			</p>
+
+			<p>
+				<xref ref="lhcc-soln-property-2" text="custom">Property 2</xref> tells us that our exponential solutions, <m>y_1 = e^{4x}</m> and <m>y_2 = e^{-x}</m> cannot be like terms. This is true, since they have different exponents and cannot be combined into a single term with addition. 
+			</p>
+
+			<p>
+				Finally, <xref ref="lhcc-soln-property-3" text="custom">property 3</xref> (principle of superposition) leads to the general solution,
+			</p>
+
+			<me>
+				y = c_1 e^{4x} + c_2 e^{-x}
+			</me>.
+
+			<p>
+				In general, as long as we have the <m>n</m> independent exponential solutions, <m>y_1</m>, <m>y_2</m>, <m>\dots</m>, <m>y_n</m> of the form <xref ref="lhcc-soln-form"/>, then the general solution is,
+			</p>
+
+			<me>
+				y = c_1 y_1 + c_2 y_2 + \cdots + c_n y_n
+			</me>
+
+			<p>
+				for any constants <m>c_1, c_2, \dots, c_n</m>. 
+			</p>
+
+			<conclusion>
 				<p>
-					A key property of linear differential equations is the <term>principle of superposition</term>. This principle states that if <m>y_1</m> and <m>y_2</m> are solutions to a linear homogeneous equation, then so is <m>c_1 y_1 + c_2 y_2</m>, for any constants <m>c_1</m> and <m>c_2</m>. This property allows us to construct the general solution to an LHCC equation by combining
+					This shows how to construct the general solution to any LHCC equation given the exponential functions that satisfy the equation. In the next section, we will explore how to find these exponential solutions through finding the roots of a polynomial equation called the characteristic equation.
 				</p>
-
-				<me>
-					y = c_1 e^{2x} + c_2 e^{3x}
-				</me>
-
-				<p>
-					is also a valid solution for any constants <m>c_1</m> and <m>c_2</m>. We verify this by substituting <m>y</m> into the equation 
-					<xref ref="lhcc-second-order-example"/>.
-				</p>
-
-				<theorem xml:id="superposition-theorem"><title> Principle of Superposition </title>
-					<statement>
-						<p>
-							If <m>y_1</m> and <m>y_2</m> are solutions to an LHCC equation, then any linear combination of 
-							these solutions, 
-						</p>
-						<me>
-							y = c_1 y_1 + c_2 y_2,
-						</me>
-						<p>
-							is also a solution for any constants <m>c_1</m> and <m>c_2</m>.
-						</p>
-					</statement>
-				</theorem>
-
-				<example><title> Verifying Superposition </title>
-					<p>
-						Consider the second-order LHCC equation:
-					</p>
-					<men xml:id="lhcc-second-order-example">
-						y'' - 3y' + 2y = 0.
-					</men>
-
-					<p>
-						Suppose we have already determined that <m>y_1 = e^x</m> and <m>y_2 = e^{2x}</m> are solutions. 
-						Show that their linear combination
-					</p>
-
-					<me>
-						y = c_1 e^x + c_2 e^{2x}
-					</me>
-
-					<p>
-						is also a solution for arbitrary constants <m>c_1</m> and <m>c_2</m>.
-					</p>
-
-					<solution>
-						<p>
-							Differentiating <m>y</m>:
-						</p>
-
-						<md>
-							<mrow> y' = c_1 e^x + 2c_2 e^{2x} </mrow>
-							<mrow> y'' = c_1 e^x + 4c_2 e^{2x} </mrow>
-						</md>
-
-						<p>
-							Substituting into <xref ref="lhcc-second-order-example" />:
-						</p>
-
-						<md>
-							<mrow> (c_1 e^x + 4c_2 e^{2x}) - 3(c_1 e^x + 2c_2 e^{2x}) + 2(c_1 e^x + c_2 e^{2x}) = 0 </mrow>
-							<mrow> c_1 e^x + 4c_2 e^{2x} - 3c_1 e^x - 6c_2 e^{2x} + 2c_1 e^x + 2c_2 e^{2x} = 0 </mrow>
-							<mrow> (c_1 e^x - 3c_1 e^x + 2c_1 e^x) + (4c_2 e^{2x} - 6c_2 e^{2x} + 2c_2 e^{2x}) = 0 </mrow>
-							<mrow> 0 = 0. </mrow>
-						</md>
-
-						<p>
-							Since the equation holds for all values of <m>c_1</m> and <m>c_2</m>, this confirms that 
-							their linear combination is also a solution.
-						</p>
-					</solution>
-				</example>
-				
-				<p>
-					The superposition principle allows us to construct the general solution to an LHCC equation by 
-					summing solutions corresponding to each root of the characteristic equation. This means that for 
-					an <m>n</m>-th order equation, we expect to find <m>n</m> linearly independent solutions, each 
-					associated with a term in the general solution.
-				</p>
-
-			</paragraphs>
-
-			<paragraphs><title> The General Solution </title>
-
-				<p>
-					Since the two solutions <m>y_1 = e^{2x}</m> and <m>y_2 = e^{3x}</m> are independent, their linear combination 
-					represents the most general solution to the equation. We express this as:
-				</p>
-
-				<me>
-					y = c_1 e^{2x} + c_2 e^{3x},
-				</me>
-
-				<p>
-					where <m>c_1</m> and <m>c_2</m> are arbitrary constants. The number of independent solutions corresponds to the 
-					order of the differential equation. For a second-order equation, we expect two independent solutions, leading to 
-					a two-parameter general solution.
-				</p>
+			</conclusion>
 			
+		</subsubsection>
+
+		<subsubsection><title> General Solution </title>
+
+			<introduction>
 				<p>
-					Now that we understand why solutions combine, the next step is to formalize the characteristic equation, which provides 
-					a systematic way to determine all possible solutions.
+					Now that we understand why exponential functions naturally satisfy Linear Homogeneous Constant Coefficient (LHCC) differential equations, the next step is to construct the <em>general solution</em>. Since these equations are linear, their solutions exhibit a crucial property: any linear combination of solutions is also a solution.
 				</p>
 
 				<p>
-					Now that we understand how solutions combine, the next step is to derive the characteristic equation, 
-					which allows us to determine these solutions systematically.
+					This principle, known as the <em>superposition principle</em>, allows us to build a complete solution by combining multiple independent exponential solutions. In this subsection, we will apply this principle to construct the general form of the solution to an LHCC equation.
 				</p>
+			</introduction>
 
-				<p>
-					Now that we understand why solutions combine, the next step is to formalize the characteristic equation, which provides 
-					a systematic way to determine all possible solutions.
-				</p>
-			
-			</paragraphs>
+			<p>
+				The <em>superposition principle</em> states that if <m>y_1</m> and <m>y_2</m> are solutions to a linear differential equation, then their linear combination
+			</p>
+
+			<me>
+				y = c_1 y_1 + c_2 y_2
+			</me>
+
+			<p>
+				is also a solution for any constants <m>c_1</m> and <m>c_2</m>. This property extends to higher-order LHCC equations, where the general solution consists of a sum of all independent exponential solutions.
+			</p>
+
+			<p>
+				To illustrate this, let’s return to a second-order example:
+			</p>
+
+			<me>
+				y'' - 3y' - 4y = 0.
+			</me>
+
+			<p>
+				We previously determined that the functions <m>y_1 = e^{4x}</m> and <m>y_2 = e^{-x}</m> are solutions. Since they are independent, the general solution takes the form:
+			</p>
+
+			<me>
+				y = c_1 e^{4x} + c_2 e^{-x}.
+			</me>
+
+			<p>
+				For an <em>n</em>-th order LHCC equation, we follow the same reasoning. If we identify <em>n</em> independent exponential solutions <m>y_1, y_2, \dots, y_n</m>, the general solution is:
+			</p>
+
+			<me>
+				y = c_1 y_1 + c_2 y_2 + \cdots + c_n y_n,
+			</me>
+
+			<p>
+				where <m>c_1, c_2, \dots, c_n</m> are arbitrary constants. The number of independent solutions always matches the order of the equation.
+			</p>
+
+			<p>
+				To summarize:
+			</p>
+
+			<ul>
+				<li> Each LHCC equation has <em>n</em> independent solutions. </li>
+				<li> The general solution is a <em>linear combination</em> of these solutions. </li>
+				<li> The constants <m>c_1, c_2, \dots, c_n</m> account for different initial conditions. </li>
+			</ul>
+
+			<p>
+				In the next section, we will explore a systematic method for finding the exponential solutions, called the <em>characteristic equation</em>.
+			</p>
 
 		</subsubsection>
 
 		<conclusion>
+
+			<assemblage xml:id="lhcc-soln-properties"><title> Properties of LHCC Solutions </title>
+				<p>
+					The solutions to any <m>n</m>-th order linear homogeneous differential equation,
+					<men xml:id="lhcc-soln-eqn">
+						a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
+					</men>
+					have the following properties:
+				</p>
+
+				<p>
+
+					<sidebyside widths="6% 94%">
+						<p>
+							✏️
+						</p>
+						<paragraphs xml:id="lhcc-soln-property-1">
+							<p>
+								<term>Exponential Solutions</term>. The order of equation <xref ref="lhcc-soln-eqn"/> tells us that it has exactly <m>n</m> solutions, each assuming the form,
+								<men xml:id="lhcc-soln-form">
+									e^{rx} \quad \text{or} \quad x^k e^{rx}
+								</men>,
+								where <m>r</m> and <m>k</m> are numbers specific to this equation.
+							</p>
+						</paragraphs>
+					</sidebyside>
+
+					<sidebyside widths="6% 94%">
+						<p>
+							✏️
+						</p>
+						<paragraphs xml:id="lhcc-soln-property-2">
+							<p>
+								<term>Linearly Independent</term>. The <m>n</m> solutions to an <m>n</m>-th order LHCC equation are linearly independent, meaning no two solutions can be combined into a single term.
+							</p>
+						</paragraphs>
+					</sidebyside>
+
+					<sidebyside widths="6% 94%">
+						<p>
+							✏️
+						</p>
+						<paragraphs xml:id="lhcc-soln-property-3">
+							<p>
+								<term>General Solution</term>. Let <m>y_1, y_2, \dots, y_n</m> be the <m>n</m> linearly independent exponential solutions, then the general solution is formed by
+								<me>
+									y = c_1 y_1 + c_2 y_2 + \cdots + c_n y_n
+								</me>
+								for any constants <m>c_1, c_2, \dots, c_n</m>.
+							</p>
+						</paragraphs>
+					</sidebyside>
+
+				</p>
+			</assemblage>
+
 			<assemblage><title> Key Takeaways </title>
 				<p>
 					<ul>
@@ -711,16 +619,35 @@
 					</ul>
 				</p>
 			</assemblage>
+
+			<p>
+				In this section, we developed a framework for understanding the solutions of Linear Homogeneous Constant Coefficient (LHCC) differential equations. We saw that the key to solving these equations lies in identifying functions that retain their form when differentiated—leading us to <em>exponential solutions</em>.
+			</p>
+
+			<p>
+				Through the <em>superposition principle</em>, we established that the general solution consists of a <em>linear combination</em> of independent solutions. This means that solving an LHCC equation is ultimately about determining the correct set of exponentials that satisfy the equation.
+			</p>
+
+			<p>
+				With this foundation in place, we are now ready to introduce a powerful tool for systematically finding these solutions: the <em>characteristic equation</em>. This algebraic approach allows us to determine the exponential solutions efficiently and will serve as the backbone of our solution methods moving forward.
+			</p>
+
 		</conclusion>
 	
 	</subsection>
 
 	<conclusion>
-		
 		<p>
-			Section Conclusion
+			In this section, we have established the foundation for understanding <em>Linear Homogeneous Constant Coefficient (LHCC)</em> differential equations. We began by identifying their key structural components—<em>linearity</em>, <em>homogeneity</em>, and <em>constant coefficients</em>—which define their form and behavior.
 		</p>
 
+		<p>
+			From there, we explored how these properties influence the types of solutions LHCC equations can have. The most important insight is that exponential functions naturally emerge as solutions due to their unique differentiation properties. This allows us to reduce complex differential equations to algebraic ones, paving the way for systematic solution methods.
+		</p>
+
+		<p>
+			With this understanding in place, we are now ready to develop practical techniques for solving LHCC equations. In the next section, we will introduce the <em>characteristic equation</em>, a powerful tool that enables us to find solutions efficiently. By applying this method, we will unlock a general approach for solving LHCC equations of any order.
+		</p>
 	</conclusion>
 
 </section>
