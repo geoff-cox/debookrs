@@ -1,324 +1,496 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Solving LHCC Equations </title>
 
 	<introduction>
-
 		<p>
-			The key insight in solving LHCC equations is recognizing that their solutions are often <em>exponential functions</em>. By assuming solutions of the form <m>y = e^{rx}</m>, we can transform a differential equation into an algebraic equation known as the <term>characteristic equation</term>. Solving this equation gives us values for <m>r</m>, which in turn determine the form of the general solution.
+			Now that we understand the structure and solutions associated with <em>Linear Homogeneous Constant Coefficient (LHCC) equations</em>, our final goal is to develop systematic ways to obtain their general solutions. Fortunately, LHCC solutions consist exclusively of exponential function types. By understanding the role of <em>exponential functions</em> in these equations, we can construct the general solution by combining the fundamental solutions that satisfy the equation.
 		</p>
 
 		<p>
-			The key insight in solving LHCC equations is recognizing that their solutions are often <em>exponential functions</em>. By assuming solutions of the form <m>y = e^{rx}</m>, we can transform a differential equation into an algebraic equation known as the <term>characteristic equation</term>. Solving this equation gives us values for <m>r</m>, which in turn determine the form of the 
-			general solution.
+			In this section, we will show how <em>general solutions</em> to LHCC equaions are built by employing the <em>superposition principle</em>. Additionally, we will investigate how the nature of the solutions to the <em>characteristic equation</em> affects the final form of the general solution.
 		</p>
-
-		<p>
-			Unlike many other types of differential equations, LHCC equations have a highly structured solution method. Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. Through examples and analysis, we will discover that <em>exponential functions</em> play a central role in solving LHCC equations. By assuming solutions of the form <m>y = e^{rx}</m> and substituting into the equation, we obtain an algebraic equation for <m>r</m>—the <em>characteristic equation</em>. The solutions to this characteristic equation directly determine the general solution to the differential equation.
-		</p>
-
-		<p>
-			Unlike many other types of differential equations, LHCC equations have a highly structured solution method. 
-			Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. 
-			Through examples and analysis, we will discover that <em>exponential functions</em> play a central role in solving LHCC equations. 
-			By assuming solutions of the form <m>y = e^{rx}</m> and substituting into the equation, we obtain an algebraic equation for <m>r</m>—the <em>characteristic equation</em>. 
-			The solutions to this characteristic equation directly determine the general solution to the differential equation.
-		</p>
-
-		
-		<p>
-			In this section, we will explore why exponentials naturally arise as solutions, develop techniques for solving LHCC equations systematically, and examine how different types of characteristic roots—real, repeated, and complex—affect the nature of the solutions.
-		</p>
-
-		<p>
-			The reason exponentials work is because their derivatives maintain the same functional form. 
-			This means that if we assume a solution of the form <m>y = e^{rx}</m>, we can derive an algebraic 
-			equation for <m>r</m> that determines the general solution.
-		</p>
-		
 	</introduction>
 
-	<subsection><title> 1st-Order Equations </title>
-		
+	<subsection><title> The General Solution </title>
+
 		<introduction>
+
 			<p>
-				In the previous section, we learned that solutions to Linear Homogeneous Constant Coefficient (LHCC) equations often involve terms of the form <m>e^{rx}</m>. However, not every value of <m>r</m> will work. The correct values of <m>r</m> arise from solving an important algebraic equation, obtained by substituting <m>y = e^{rx}</m> into the differential equation. In this section, we will focus on this process for first-order equations before building up to higher-order cases.
+				We are now ready to discuss how to form the general solution to a Linear Homogeneous Constant Coefficient (LHCC) equation. Before we do, let's list out everything we know about LHCC equations so far.
 			</p>
+
+			<sidebyside widths="14% 86%">
+				<p>
+					✏️ <term>FACT 1</term>
+				</p>
+				<p>
+					An <m>n</m>-th order of LHCC equation has the form
+					<me>
+						a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
+					</me>,
+					where <m>a_n,\ a_{n-1},\ \ldots,\ a_2,\ a_1,\ a_0</m> are constants.
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="14% 86%">
+				<p>
+					✏️ <term>FACT 2</term>
+				</p>
+				<p>
+					The <em>characteristic equation</em> of the LHCC equation is given by
+					<me>
+						a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
+					</me>,
+					and has <m>n</m> solutions: <m>\ r_1,\ r_2,\ \dots,\ r_n</m> (real or complex).
+				</p>
+			</sidebyside>
+
+			<sidebyside widths="14% 86%">
+				<p>
+					✏️ <term>FACT 3</term>
+				</p>
+				<p>
+					The <em>fundamental solutions</em> to the LHCC equation are given by
+					<me>
+						y_1 = e^{r_1 x},\quad y_2 = e^{r_2 x},\quad \dots,\quad y_n = e^{r_n x},
+					</me>
+					where <m>r_1,\ r_2,\ \dots,\ r_n</m> are the solutions to the <em>characteristic equation</em>.
+				</p>
+			</sidebyside>
+
+			<p>
+				Now, we will explore how to combine these fundamental solutions to construct the <em>general solution</em> to any LHCC equation. This will allow us to capture all possible solutions to the differential equation, ensuring that we do not miss any.
+			</p>
+
 		</introduction>
-		
+
 		<p>
-			Let's start with a simple first-order equation:
-			<me> y' - 5y = 0 </me>
-			We want to find the value of <m>r</m> such that <m>y = e^{rx}</m> is a solution. Substituting <m>y = e^{rx}</m> into the differential equation gives:
-			<md>
-				<mrow> \left[e^{rx}\right]' - 5 \left[e^{rx}\right] =\amp 0 </mrow>
-				<mrow> r e^{rx} - 5 e^{rx} 							=\amp 0 </mrow>
-				<mrow> (r - 5) e^{rx} 								=\amp 0 </mrow>
-			</md>
-			Since <m>e^{rx}</m> is never zero, we must have:
-			<md>
-				<mrow> r - 5 = 0 \quad \Rightarrow \quad r = 5 </mrow>
-			</md>
-			This tells us that <m>y = e^{5x}</m> is a solution. Therefore, the general solution is:
-			<me> y = c e^{5x} </me>
+			In addition to these facts, the last thing that we need to start building the general solution is an important concept known as the <em>superposition principle</em>. 
 		</p>
-		
+
+		<definition xml:id="superposition-principle"><title> Superposition Principle </title>
+			<statement>
+				<p>
+					If <m>y_1, y_2, \dots, y_n</m> are solutions to a homogeneous linear differential equation, then any combination:
+				</p>
+
+				<me>
+					y = c_1\ y_1 + c_2\ y_2 + \dots + c_n\ y_n
+				</me>
+
+				<p>
+					is also a solution for any constants <m>c_1, c_2, \dots, c_n</m>.
+				</p>
+			</statement>
+		</definition>
+
 		<p>
-			The equation <m>r - 5 = 0</m>, which gave us the value of <m>r</m>, is called the <term>characteristic equation</term>. Every LHCC equation has one. The characteristic equation gives us the values of <m>r</m> that we need to construct the general solution.
+			With this result and the above facts in hand, we can now construct the general solution to any LHCC equation as the sum of all its fundamental solutions. This gives us our fourth and final fact:
 		</p>
-		
-		<p>
-			Applying the same approach to the general first-order LHCC equation gives us:
-			<md>
-				<mrow>
-					y=e^{rx} \quad\rightarrow\quad
-					ay' + by = 0 \quad\Rightarrow\quad a \left[e^{rx}\right]' + b \left[e^{rx}\right]
-												=\amp 0
-				</mrow>
-				<mrow> a r e^{rx} + b e^{rx}	=\amp 0 </mrow>
-				<mrow> (ar + b) e^{rx} 			=\amp 0 </mrow>
-			</md>
-			This results in the characteristic equation and general solution:
-			<me> ar + b = 0 \quad \Rightarrow \quad r = -\frac{b}{a} \quad \Rightarrow \quad y = c e^{-\frac{b}{a}x} </me>
-		</p>
-		
-		<p>
-			Now, let's apply this method to a couple of examples.
-		</p>
-		
-		<example>
+
+		<sidebyside widths="14% 86%">
 			<p>
-				Find the general solution for each LHCC equation.
-				<me> 3y' - 9y = 0 \hspace{5em} 5y' = \pi y </me>
+				✏️ <term>FACT 4</term>
 			</p>
-		
-			<solution>
-				<p>
-					First, rewrite the equations in standard form:
-					<me> y' - 3y = 0 \hspace{5em} 5y' - \pi y = 0 </me>
-				</p>
-				
-				<p>
-					Now solve the characteristic equations:
-					<me> 3r - 9 = 0 \quad \Rightarrow \quad r = 3 \hspace{5em} 5r - \pi = 0 \quad \Rightarrow \quad r = \frac{\pi}{5} </me>
-					Thus, the general solutions are:
-					<me> y = c e^{3x} \hspace{5em} y = c e^{\frac{\pi}{5}x} </me>
-				</p>
-			</solution>
+			<p>
+				For an <m>n</m>-th order LHCC equation, the general solution is
+				<me>
+					y = c_1\ y_1 + c_2\ y_2 + \cdots + c_n\ y_n,
+				</me>
+				where <m>c_1</m>, <m>c_2</m>, <m>\dots</m>, <m>c_n</m> are arbitrary constants and <m>y_1</m>, <m>y_2</m>, <m>\dots</m>, <m>y_n</m> are the fundamental solutions.
+			</p>
+		</sidebyside>
+
+		<p>
+			Now, let's put this into practice with some concrete examples.
+		</p>
+
+		<example><title> LHCC Equation General Solution </title>
+
+			<p>
+				<statement>
+					<p>
+						Find the general solution to each of the equation below.
+					</p>
+					<p>
+						<sidebyside widths="40% 60%">
+							<p>
+								<line>	1.	<m>\ds\ y'+\pi\ y = 0</m>	</line>
+								<line>		<m></m>						</line>
+							</p>
+							<p>
+								<solution>
+									<p>
+										The characteristic equation
+									</p>
+									<me>
+										r + \pi = 0
+									</me>,
+									<p>
+										has the solution <m>r = -\pi</m>. So, the equation has one fundamental solution of the form
+									</p>
+									<me>
+										y_1 = e^{-\pi x}
+									</me>.
+									<p>
+										By the superposition principle, the general solution is
+									</p>
+									<me>
+										y = c_1 e^{-\pi x}
+									</me>.
+								</solution>
+							</p>
+						</sidebyside>
+						<sidebyside widths="40% 60%">
+							<p>
+								<line>	2.	<m>\ds\ \omega'' - 7\omega' = 0</m>	</line>
+								<line>		<m></m>						</line>
+							</p>
+							<p>
+								<solution>
+									<p>
+										The characteristic equation
+									</p>
+									<me>
+										r^2 - 7r = 0
+									</me>,
+									<p>
+										has the solutions <m>r = 0,\ 7</m>. So, the fundamental solutions are
+									</p>
+									<me>
+										\omega_1 = e^{0x}, \quad \omega_2 = e^{7x}
+									</me>.
+									<p>
+										By the superposition principle, the general solution is
+									</p>
+									<me>
+										\omega = c_1\ e^{0x} + c_2\ e^{7x} = c_1 + c_2\ e^{7x}
+									</me>.
+								</solution>
+							</p>
+						</sidebyside>
+						<sidebyside widths="40% 60%">
+							<p>
+								<line>	3.	<m>\ds\ 2\frac{d^{3}M}{dt^{3}} - 6\frac{dM}{dt} = 0</m>	</line>
+								<line>		<m></m>									</line>
+							</p>
+							<p>
+								<solution>
+									<p>
+										The characteristic equation
+									</p>
+									<me>
+										2r^3 - 6r = 0
+									</me>,
+									<p>
+										can be factored as
+									</p>
+									<md>
+										<mrow>	2r(r^2 - 3) = 0	\amp </mrow>
+									</md>.
+									<p>
+										So, <m>r = 0,\ \sqrt{3},\ -\sqrt{3}\ </m> and the fundamental solutions are
+									</p>
+									<me>
+										e^{0t}, \qquad e^{\sqrt{3}t}, \qquad e^{-\sqrt{3}t}
+									</me>.
+									<p>
+										By the superposition principle, the general solution is
+									</p>
+									<me>
+										M(t) = c_1 + c_2 e^{\sqrt{3}t} + c_3 e^{-\sqrt{3}t}
+									</me>.
+								</solution>
+							</p>
+						</sidebyside>
+					</p>
+				</statement>
+			</p>
 		</example>
-		
+
 		<conclusion>
 			<p>
-				This straightforward method works for any first-order LHCC equation by using the characteristic equation. In the next sections, we'll extend this technique to higher-order equations.
+				These examples illustrate how the general solution of an LHCC equation is created given the exponential functions that satisfy the equation. While the method is fairly straight forward, there are still a few details that need to be addressed. In particular, we will investigate what to do if the characteristic equations has <em>repeated solutions</em> and how to handle high order LHCC equations.
 			</p>
 		</conclusion>
 
 	</subsection>
 
-	<subsection><title> 2nd-Order Equations </title>
-		
+	<subsection><title> Second-Order Equations </title>
+					
 		<introduction>
 			<p>
-				Now that we've mastered first-order LHCC equations, it's time to explore second-order LHCC equations. These are slightly more complex but follow a similar approach. We'll see how the characteristic equation helps us find solutions and look at the different cases that arise depending on the nature of the roots.
+				The most important class of linear homogeneous constant coefficient (LHCC) equations are the second-order equations. This is because nearly every idea you learn for this order, extends to any higher-order case. For this discussion, we will explore the general solution to second-order LHCC equations and the different cases that arise based on the nature of the characteristic solutions. 
 			</p>
 		</introduction>
 
-		<p>
-			Consider the following second-order equation:
-			<men xml:id="second-order-lhcc-intro-de"> y'' - 5y' + 6y = 0 </men>
-			Substituting <m>y = e^{rx}</m> into this equation, we get:
-			<md>
-				<mrow> \left[e^{rx}\right]'' - 5 \left[e^{rx}\right]' + 6 \left[e^{rx}\right] =	\amp\ 0							</mrow>
-				<mrow> r^2 e^{rx} - 5r e^{rx} + 6 e^{rx} =										\amp\ 0							</mrow>
-				<mrow> (r^2 - 5r + 6) e^{rx} =													\amp\ 0 \qquad (e^{rx} \ne 0)	</mrow>
-				<mrow> \text{characteristic equation} \rightarrow \qquad r^2 - 5r + 6 =			\amp\ 0							</mrow>
-				<mrow> r_1 = 2, \quad  r_2 =													\amp\ 3							</mrow>
-			</md>.
-			Therefore, <m>y = e^{2x}</m> and <m>y = e^{3x}</m> are solutions, and the general solution is the combination of these two:
-			<me> y = c_1 e^{2x} + c_2 e^{3x} </me>.
-		</p>
+		<subsubsection><title> Real, Repeated &amp; Complex Cases  </title>
+			
+			<p>
+				A <em>second-order LHCC equation</em> has the form:
+			</p>
 
-		<p>
-			In general, for any second-order LHCC equation of the form:
-			<men xml:id="second-order-lhcc-de"> a y'' + b y' + c y = 0 </men>
-			The characteristic equation is:
-			<men xml:id="second-order-lhcc-characteristic-equation"> a r^2 + b r + c = 0 </men>
-			This quadratic equation will have two solutions, which could be either real or complex. The general solution depends on the nature of these solutions, and we will now explore the different  cases. Before moving on, we highly recommend taking a minute to review some <xref ref="solving-the-quadratic-equation" text="custom">concepts related to solving quadratic equations</xref>.
-		</p>
+			<men xml:id="second-order-lhcc-de00">
+				a y'' + b y' + c y = 0
+			</men>
 
-		<p>
-			Let <m>r_1</m> and <m>r_2</m> be the solutions to the characteristic equation. When <m>r_1 \ne r_2</m>, the general solution is:
-			<men xml:id="second-order-lhcc-solution-r1-notequalto-r2"> y = c_1\, e^{r_1 x} + c_2\, e^{r_2 x} </men>
-			However, if <m>r_1 = r_2</m>, the terms combine into like terms,
+			<p>
+				where <m>a, b, c</m> are constants. To solve such equations, we assume solutions of the form, <m>y = e^{rx}</m>, and determine the values of <m>r</m> that satisfy the equation. This leads to the <em>characteristic equation</em>:
+			</p>
+
+			<men xml:id="second-order-lhcc-characteristic-equation00">
+				a r^2 + b r + c = 0
+			</men>
+
+			<p>
+				Since this is a quadratic equation, we can solve it using the quadratic formula:
+			</p>
+
 			<me>
-				y = c_1\, e^{r_1 x} + c_2\, e^{r_2 x} = \color{blue}\us{ \large \text{like terms}}{\us{\nwarrow}{\ul{c_1\, e^{r_1 x}}} + \us{\nearrow}{\ul{c_2\, e^{r_1 x}}}} = (\us{C}{\ub{c_1 + c_2}})\, e^{r_1 x}
-			</me>,
-			which is an incomplete solution. To fix this, we multiply the second term by <m>x</m>, resulting in the correct general solution:
-			<fn>
-				<p>
-					See <xref ref="tba"/> for an outline of why the extra <m>x</m> is required in the general solution of a second order LHCC equation when <m>r_1=r_2</m>.
-				</p>
-			</fn>
-			<me> y = c_1\, e^{r_1 x} + c_2\, x e^{r_1 x} </me>
-		</p>
-
-		<theorem xml:id="tba"><title> Why do add <m>x</m> to Some Solutions? </title>
-			<statement>
-				<p>
-					<exercise>
-						<statement>
-							<p> Show why <m>x</m> is needed in the general solution for repeated roots of the CE </p>
-						</statement>
-						<solution>
-							<p>
-								
-							</p>
-						</solution>
-						<answer>
-							<p>
-								
-							</p>
-						</answer>
-					</exercise>
-				</p>
-			</statement>
-		</theorem>
-
-		<p>
-			Although, the above explanation covers the situation when <m>r_1</m> and <m>r_2</m> are equal or not, we will split the <m>r_1 \ne r_2</m> case into <xref ref="second-order-lhcc-complex-case" text="custom">two cases that treat real or complex values separately</xref>. The three cases are summarized below.
-		</p>
-
-		<theorem xml:id="second-order-lhcc-complex-case"><title> 2nd Order LHCC Complex Case 3 </title>
+				r = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+			</me>
 
 			<p>
-				The following explains how <xref ref="lhcc-case-3" text="title"/> comes directly from <xref ref="lhcc-case-1" text="title"/>.
+				If you need a refresher on quadratic equations, take a minute to review it <xref ref="solving-the-quadratic-equation" text="custom">HERE</xref>.
 			</p>
 
 			<p>
-				Since <m>r_1</m> and <m>r_2</m> are complex, they can be written as
+				Depending on the value of the <em>discriminant</em>, <m>\Delta = b^2 - 4ac</m>, we classify solutions into three distinct cases:
+			</p>
+
+			<paragraphs xml:id="lhcc-case-100"><title> Case 1 </title>
+				<p>
+					If <m>\Delta &gt; 0</m> (positive), the characteristic equation has two distinct real solutions (i.e., <m>r_1 \ne r_2</m>):
+				</p>
+
 				<me>
-					r_1 = \alpha + \beta i \quad \text{and} \quad r_2 = \alpha - \beta i
-				</me>.
-				Substituting these into <xref ref="second-order-lhcc-solution-r1-notequalto-r2"/>, using <xref ref="eulers-formula" text="title"/>, the <xref ref="evenodd-cos" text="custom"> even property of cosine </xref> and <xref ref="evenodd-sin" text="custom"> odd property of sine </xref>, we can rewrite the general solution as
-				<md>
-					<mrow> y\  &amp;= c_1 e^{(\alpha + \beta i) x} + c_2 e^{(\alpha - \beta i) x} </mrow>
-					<mrow> &amp;= c_1 e^{\alpha x} e^{i \beta x} + c_2 e^{\alpha x} e^{-i \beta x} </mrow>
-					<mrow> &amp;= e^{\alpha x} \Big{[}c_1 e^{i \beta x} + c_2 e^{-i \beta x}\Big{]} </mrow>
-					<mrow> &amp;= e^{\alpha x} \Big{[}c_1 (\cos(\beta x) + i\sin(\beta x)) + c_2 (\cos(-\beta x) + i\sin(-\beta x))\Big{]} </mrow>
-					<mrow> &amp;= e^{\alpha x} \Big{[}c_1 \cos(\beta x) + i c_1 \sin(\beta x) + c_2 \cos(-\beta x) + i c_2 \sin(-\beta x)\Big{]} </mrow>
-					<mrow> &amp;= e^{\alpha x} \Big{[}c_1 \cos(\beta x) + i c_1 \sin(\beta x) + c_2 \cos(\beta x) - i c_2 \sin(\beta x)\Big{]} </mrow>
-					<mrow> &amp;= e^{\alpha x} \Big{[}(\us{c_1}{\ub{c_1 + c_2}}) \cos(\beta x) + \us{c_2}{\ub{i (c_1 - c_2)}} \sin(\beta x)\Big{]} </mrow>
-					<mrow> &amp;= e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x)) </mrow>
-				</md>.
-			</p>
-		</theorem>
+					r_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}, \quad
+					r_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+				</me>
 
-		<assemblage><title> Summary of Cases </title>
+				<p>
+					In this case, the general solution is a simple sum of exponentials:
+				</p>
+
+				<men xml:id="lhcc-order-2-case-1-general-solution">
+					y = c_1 e^{r_1 x} + c_2 e^{r_2 x}
+				</men>
+			</paragraphs>
+
+			<paragraphs xml:id="lhcc-case-200"><title> Case 2 </title>
+				<p>
+					If <m>\Delta = 0</m>, then the characteristic equation has a <em>single repeated solution</em>:
+				</p>
+
+				<me>
+					r_1 = r_2 = \frac{-b}{2a}
+				</me>
+
+				<p>
+					At first, it may seem that the general solution should simply be:
+				</p>
+
+				<me>
+					y = c_1 e^{r_1 x} + c_2 e^{r_1 x}
+				</me>
+
+				<p>
+					However, these two terms are <em>like terms</em> and collapse into a single exponential. This would leads to an incomplete general solution. To ensure two independent exponential solutions, we replace the second term with <m>x e^{r_1 x}</m>, giving us two non-like terms that are independent:
+				</p>
+
+				<men>
+					y = c_1 e^{r_1 x} + c_2 x e^{r_1 x}
+				</men>
+
+				<p>
+					This modification by <m>x</m> not only ensures that the two solutions cannot be combined as like-terms, but it also retains the properties that make it a valid solution in the first place. 
+				</p>
+
+			</paragraphs>
+
+			<paragraphs xml:id="lhcc-case-300"><title> Case 3 </title>
+				<p>
+					If <m>\Delta &lt; 0</m> (negative), the characteristic equation has <em>complex solutions</em>:
+				</p>
+
+				<me>
+					r_1 = \alpha + i \beta, \quad r_2 = \alpha - i \beta
+				</me>
+
+				<p>
+					and the fundamental solutions are:
+				</p>
+
+				<me>
+					y_1 = e^{(\alpha + i \beta)x}, \quad y_2 = e^{(\alpha - i \beta)x}
+				</me>
+
+				<p>
+					It is customary to express these in terms of <em>sine and cosine</em> (via <xref ref="eulers-formula" text="title"/>):
+				</p>
+
+				<men>
+					y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+				</men>
+
+			</paragraphs>
+
 			<p>
-				Let <m>r_1</m> and <m>r_2</m> be the solutions of the characteristic equation associated with the second-order LHCC equation. The general solution is:
-				<dl width="wide">
-					<li xml:id="lhcc-case-1"><title>Case 1 (real &amp; <m>\ne</m>)</title>
-						<m>
-							\ds y = c_1 e^{r_1 x} + c_2 e^{r_2 x} \quad (r_1 \ne r_2)
-						</m>
-					</li>
-					<li xml:id="lhcc-case-2"><title>Case 2 (real &amp; <m>=</m>)</title>
-						<m>
-							\ds y = (c_1 + c_2 x) e^{r_1 x} \quad (r_1 = r_2)
-						</m>
-					</li>
-					<li xml:id="lhcc-case-3"><title>Case 3 (complex)</title>
-						<line>
+				The three cases are summarized below.
+			</p>
+
+			<assemblage><title> Summary of Cases </title>
+				<p>
+					Let <m>r_1</m> and <m>r_2</m> be the solutions of the characteristic equation associated with the second-order LHCC equation. The general solution is:
+					<dl width="wide">
+						<li xml:id="lhcc-case-1"><title> Case 1 (real &amp; <m>\ne</m>) </title>
 							<m>
-								\ds y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+								\ds y = c_1 e^{r_1 x} + c_2 e^{r_2 x} \quad (r_1 \ne r_2)
 							</m>
-						</line>
-						<line>
+						</li>
+						<li xml:id="lhcc-case-2"><title> Case 2 (real &amp; <m>=</m>) </title>
 							<m>
-								\ds (r = \alpha \pm i\beta \implies r_1 = \alpha + i\beta, \ r_2 = \alpha - i\beta)
+								\ds y = (c_1 + c_2 x) e^{r_1 x} \quad (r_1 = r_2)
 							</m>
-						</line>
-					</li>
-				</dl>
-			</p>
-		</assemblage>
-
-		<p>
-			Let's now practice solving some second-order LHCC equations.
-		</p>
-
-		<example>
-
-			<p>
-				Find the general solutions for each LHCC equation.
-				<sidebyside widths="30% 70%">
-					<p>
-						<m> y'' - 5y' + 6y = 0 </m>
-					</p>
-					<p>
-						<solution>
-							<p>
-								First, write down and solve the characteristic equation:
-								<md>
-									<mrow> r^2 - 5r + 6 =\amp\ 0 </mrow>
-									<mrow> (r-2)(r-3) =\amp\ 0 </mrow>
-									<mrow> r_1 = 2 \quad \text{and} \quad r_2 =\amp\ 3 </mrow>
-								</md>.
-								Since <m>r_1</m> and <m>r_2</m> are real and <m>r_1 \ne r_2</m>, we are in <xref ref="lhcc-case-1" text="custom">Case 1</xref>. Therefore, the general solution is:
-								<me> y = c_1 e^{2x} + c_2 e^{3x} </me>.
-							</p>
-						</solution>
-					</p>
-				</sidebyside>
-			</p>
-			
-			<p>
-				<sidebyside widths="30% 70%">
-					<p>
-						<m> y'' + 4y' + 4y = 0 </m>
-					</p>
-
-					<p>
-						<solution>
-							<p>
-								The characteristic equation is:
-								<md>
-									<mrow> r^2 + 4r + 4 =\amp\ 0 </mrow>
-									<mrow> (r+2)(r+2) =\amp\ 0 </mrow>
-									<mrow> r_1 = -2 \quad \text{and} \quad r_2 =\amp\ -2 \quad \leftarrow <xref ref="lhcc-case-2" text="custom">Case 2</xref> </mrow>
-								</md>.
-								Therefore, the general solution is:
-								<me> y = (c_1 + c_2 x) e^{-2x} </me>.
-							</p>
-						</solution>
-					</p>
-				</sidebyside>
-			</p>
+						</li>
+						<li xml:id="lhcc-case-3"><title> Case 3 (complex) </title>
+							<line>
+								<m>
+									\ds y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+								</m>
+							</line>
+							<line>
+								<m>
+									\ds (r = \alpha \pm i\beta \implies r_1 = \alpha + i\beta, \ r_2 = \alpha - i\beta)
+								</m>
+							</line>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
 
 			<p>
-				<sidebyside widths="30% 70%">
-					<p>
-						<m> y'' + 2y' + 5y = 0 </m>
-					</p>
-			
-					<p>
-						<solution>
-							<p>
-								The characteristic equation in this problem is:
-								<md>
-									<mrow> r^2 + 2r + 5 = 0\amp </mrow>
-									<mrow> r = \us{\alpha}{\boxed{-1}} \pm \us{\beta}{\boxed{2}}i \amp\ \quad \leftarrow <xref ref="lhcc-case-3" text="custom">Case 3</xref> </mrow>
-								</md>.
-								Here, <m>\alpha = -1</m> and <m>\beta = 2</m>. So the general solution is:
-								<me> y = e^{-x} (c_1 \cos(2x) + c_2 \sin(2x)) </me>.
-							</p>
-						</solution>
-					</p>
-				</sidebyside>
+				Now that we have established these three cases, let's practice solving some second-order LHCC equations.
 			</p>
-		</example>
+
+			<example><title> Solving Second-Order LHCC Equations </title>
+
+				<p>
+					<statement>
+						<p>
+							Find the general solutions for each LHCC equation.
+						</p>
+
+						<p>
+							<sidebyside widths="30% 70%">
+								<p>
+									<m> y'' - 5y' + 6y = 0 </m>
+								</p>
+								<p>
+									<solution>
+										<p>
+											The characteristic equation is:
+										</p>
+										<me>
+											r^2 - 5r + 6 = 0
+										</me>
+										<p>
+											Factoring:
+										</p>
+										<me>
+											(r - 2)(r - 3) = 0
+										</me>
+										<p>
+											Thus, <m>r_1 = 2</m> and <m>r_2 = 3</m>, we are in <xref ref="lhcc-case-1" text="custom">Case 1</xref> and the general solution is:
+										</p>
+										<me>
+											y = c_1 e^{2x} + c_2 e^{3x}
+										</me>
+									</solution>
+								</p>
+							</sidebyside>
+						</p>
+						
+						<p>
+							<sidebyside widths="30% 70%">
+								<p>
+									<m> y'' + 4y' + 4y = 0 </m>
+								</p>
+
+								<p>
+									<solution>
+										<p>
+											The characteristic equation is:
+										</p>
+
+										<me>
+											r^2 + 4r + 4 = 0
+										</me>
+
+										<p>
+											Factoring:
+										</p>
+
+										<me>
+											(r + 2)(r + 2) = 0
+										</me>
+
+										<p>
+											Since <m>r_1 = r_2 = -2</m>, we are in <xref ref="lhcc-case-2" text="custom">Case 2</xref> and the general solution must include an <m>x</m> term:
+										</p>
+
+										<me>
+											y = c_1 e^{-2x} + c_2 x e^{-2x}
+										</me>
+									</solution>
+								</p>
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="30% 70%">
+								<p>
+									<m> y'' + 2y' + 5y = 0 </m>
+								</p>
+						
+								<p>
+									<solution>
+										<p>
+											The characteristic equation is:
+										</p>
+
+										<me>
+											r^2 + 2r + 5 = 0
+										</me>
+
+										<p>
+											Using the quadratic formula, we find:
+										</p>
+
+										<me>
+											r = -1 \pm 2i
+										</me>
+
+										<p>
+											This corresponds to <m>\alpha = -1</m> and <m>\beta = 2</m>. We are in <xref ref="lhcc-case-3" text="custom">Case 3</xref> and the general solution is:
+										</p>
+
+										<me>
+											y = e^{-x} (c_1 \cos(2x) + c_2 \sin(2x))
+										</me>
+									</solution>
+								</p>
+							</sidebyside>
+						</p>
+					</statement>
+				</p>
+				
+			</example>
+
+		</subsubsection>
 
 		<conclusion>
 			<p>
-				Need to Write
+				These examples illustrate how second-order LHCC equations are solved by determining the nature of the characteristic solutions and applying the appropriate general solution formula. In the next section, we will see that the same process can be applied to higher-order LHCC equations.
 			</p>
 		</conclusion>
 
@@ -328,107 +500,285 @@
 
 		<introduction>
 			<p>
-				Solving higher-order linear homogeneous constant coefficient (LHCC) equations is an extension of the methods used for second-order equations. The basic strategy remains the same: solve the characteristic equation, then construct the general solution. However, for higher-order equations, the characteristic equation is a higher-degree polynomial, which can make finding the solutions more challenging.
+				Solving <em>higher-order</em> Linear Homogeneous Constant Coefficient (LHCC) equations follows the same fundamental approach as second-order equations: we assume exponential solutions and solve the <em>characteristic equation</em> to determine the exponents. However, as the <em>order increases</em>, the characteristic equation becomes a <em>higher-degree polynomial</em>, which can introduce additional challenges.
 			</p>
 		</introduction>
 
-		<definition xml:id="def-characteristic-equation">
-			<title><em>LHCC Characteristic Equation</em></title>
-			<statement>
-				<p>
-					The <term>characteristic equation</term> of an <m>n</m>-th order LHCC equation
-					<me>a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = 0</me>
-					is the <m>n</m>-th degree polynomial
-					<fn>
-						<xref ref="characteristic-eqn-details" text="custom">Click here for an explanation.</xref>
-					</fn>
-					<me>a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1 r + a_0 = 0</me>.
-					The solutions to this polynomial, <m>r_1, r_2, \dots r_n</m>, correspond to the roots that determine the form of the general solution.
-				</p>
-			</statement>
-		</definition>
-
-		<theorem xml:id="characteristic-eqn-details"><title/>
+		<subsubsection><title> Real, Repeated, Complex &amp; Mixed Cases  </title>
+			
 			<p>
-				To find the characteristic equation, we substitute <m>y = e^{rx}</m> into the <m>n</m>-th order <xref ref="lhcc-equation" text="custom">LHCC equation</xref> and solve for <m>r</m>. Doing this gives us
-				<md>
-					<mrow>	
-						a_n\ \left[e^{rx}\right]^{(n)} + \cdots + a_2\ \left[e^{rx}\right]'' + a_1\ \left[e^{rx}\right]' + a_0\ e^{rx} =\amp\ 0
-					</mrow>
-					<mrow>	a_n\ r^n e^{rx} + \cdots + a_2\ r^2 e^{rx} + a_1\ r e^{rx} + a_0\ e^{rx} =\amp\ 0 </mrow>
-					<mrow>	\left(a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0\right)e^{rx}  =\amp\ 0 </mrow>
-				</md>.
-				Since <m>e^{rx}</m> is never zero, we must have
-				<me>
-					a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
-				</me>
-				which is an <m>n</m>-th order polynomial in <m>r</m>.
+				We know the <m>n</m><em>-th order LHCC equation</em>,
 			</p>
-		</theorem>
-		
-		<p>
-			In general, the characteristic equation will have <m>n</m> roots, which may be real or complex and may also include repeated roots. Each root of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of roots.
-		</p>
 
-		<table xml:id="higher-order-lhcc-general-solution-examples"><title>Examples of LHCC General Solutions</title>
-			<tabular left="minor" right="minor" top="minor" bottom="minor" halign="center">
-				<row>
-					<cell>
-						<line>Characteristic Equation</line>
-						<line>Solutions</line>
-					</cell>
-					<cell>General Solution</cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = 3, -3, 5.3</m></line>
-						<line><em>(3rd order)</em></line>
-					</cell>
-					<cell><me>c_1e^{3t} + c_2e^{-3t} + c_3e^{5.3t}</me></cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = 6 \pm i\sqrt{7.7}, 0</m></line>
-						<line><em>(3rd order)</em></line>
-					</cell>
-					<cell><me>e^{6t}\left(c_1\sin(\sqrt{7.7}t) + c_2\cos(\sqrt{7.7}t)\right) + c_3</me></cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = -4 \text{ (triple)}, 5.3</m></line>
-						<line><em>(4th order)</em></line>
-					</cell>
-					<cell><me>(c_1t^2 + c_2t + c_3)e^{-4t} + c_4e^{5.3t}</me></cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = \pm \frac{i}{2}, 2 \pm i</m></line>
-						<line><em>(4th order)</em></line>
-					</cell>
-					<cell><me>c_1\sin\left(\frac{t}{2}\right) + c_2\cos\left(\frac{t}{2}\right) + e^{2t}(c_3\sin t + c_4\cos t)</me></cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = 0 \text{ (double)}, 3 \text{ (5-repeats)}</m></line>
-						<line><em>(7th order)</em></line>
-					</cell>
-					<cell><me>c_1t + c_2 + (c_3t^4 + c_4t^3 + c_5t^2 + c_6t + c_7)e^{3t}</me></cell>
-				</row>
-				<row>
-					<cell>
-						<line><m>r = \pm i, \pi \text{ (double)}, 5</m></line>
-						<line><em>(5th order)</em></line>
-					</cell>
-					<cell><me>c_1\sin t + c_2\cos t + (c_3t + c_4)e^{\pi t} + c_5e^{5t}</me></cell>
-				</row>
-			</tabular>
-		</table>
+			<me>
+				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = 0
+			</me>,
 
-		<p>
-			As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the roots of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.
-		</p>
+			<p>
+				has the <em>characteristic equation</em>
+			</p>
 
-		<example>
+			<me>
+				a_n r^n + a_{n-1} r^{n-1} + \dots + a_1 r + a_0 = 0
+			</me>.
+
+			<p>
+				An <m>n</m>-th order polynomial equation has <m>n</m> <em>solutions</em>, and each solution, <m>r</m> determines a <em>fundamental solution</em> in one of the following forms:
+			</p>
+
+			<p>
+				<sidebyside widths="28% 24% 48%" valign="middle">
+					<p>
+						<me>c\, e^{r x}</me>
+					</p>
+					<p>
+						<me>c\, x^{k} e^{r x}</me>
+					</p>
+					<p>
+						<me>e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</me>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="28% 24% 48%" valign="middle">
+					<p>
+						<me>\overline{r \text{ real, no repeats}} </me>
+					</p>
+					<p>
+						<me>\overline{r \text{ real, repeats}} </me>
+					</p>
+					<p>
+						<me>\overline{\qquad r \text{ complex, } r=\alpha \pm i\beta \qquad} </me>
+					</p>
+				</sidebyside>
+			</p>
+
+			<p>
+				The form each term takes in the general solution uses the same strategy as in the second-order case, with one additional case to account for <em>mixed</em> solutions. A brief discussion of the four cases is broken down as follows.
+			</p>
+
+			<paragraphs><title> Case 1: Real &amp; Distinct </title>
+				<p>
+					For each <em>real</em>, <m>r</m>, that has no <em>repeats</em>, the term corresponding to this <m>r</m> would be represented in the general solution by
+				</p>
+
+				<me>
+					y = \textcolor{NavyBlue}{c_1 e^{\large r x}\!} + 
+					\left(
+					\begin{array}{c}
+						\text{other general}\\
+						\text{solution terms}
+					\end{array}
+					\right)
+				</me>.
+			</paragraphs>
+
+			<paragraphs><title> Case 2: Real &amp; Repeated </title>
+				<p>
+					For each <em>real</em>, <m>r</m>, that <em>repeats <m>k</m> times</em>, the <m>k</m> terms corresponding to this <m>r</m> would be represented in the general solution by
+				</p>
+
+				<me>
+					y = \textcolor{NavyBlue}{\ub{c_1 e^{\large r x} + c_2 x e^{\large r x} + \ldots + c_k x^{k-1} e^{\large r x}\!}_{\large k \text{ terms from } r}} + 
+					\left(
+					\begin{array}{c}
+						\text{other general}\\
+						\text{solution terms}
+					\end{array}
+					\right)
+				</me>,
+
+				<p>
+					where <m>k</m> is called the <em>multiplicity</em> of <m>r</m>.
+				</p>
+
+				<p>
+					It is possible to have multiple repeated solutions, leading to additional modified terms based on the number of repeats, like this one.
+				</p>
+			</paragraphs>
+
+			<paragraphs><title> Case 3: Complex </title>
+				<p>
+					For each <em>complex</em>, <m>r</m>, with the <em>conjugate pair</em>,
+				</p>
+
+				<me>
+					r = \alpha + i\beta, \quad r = \alpha - i\beta
+				</me>,
+
+				<p>
+					the terms corresponding to this <m>r</m> will appear in the general solution as:
+				</p>
+
+				<me>
+					y = \textcolor{NavyBlue}{\ub{e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))\!}_{\large 2 \text{ terms from } r}} + 
+					\left(
+					\begin{array}{c}
+						\text{other general}\\
+						\text{solution terms}
+					\end{array}
+					\right)
+				</me>.
+
+				<p>
+					It is possible to have multiple complex solutions, leading to additional sine and cosine terms, like this one.
+				</p>
+			</paragraphs>
+
+			<paragraphs><title> Case 4: Mixed Types </title>
+				<p>
+					Since high degree polynomials can have a mix of real, repeated, and complex solutions, the general solution may include a mixture of the terms above. For each solution of the characteristic equation, follow the guidelines above to determine what terms to include in the general solution.
+				</p>
+			</paragraphs>
+
+			<p>
+				Let's make sure this makes sense by working through a few examples.
+			</p>
+
+			<example><title></title>
+				<p>
+					<statement>
+						<p>
+							Suppose each set of <m>r</m>-values, below, are all the solutions to the characteristic equation of some LHCC equation.
+						</p>
+						<ol>
+							<li><m>	r_1 = 3,\quad				r_2 = -3,\quad				r_3 = 5.3													</m></li>
+							<li><m>	r_1 = 6 - i\sqrt{7.7},\quad	r_2 = 6 + i\sqrt{7.7},\quad	r_3 = 0														</m></li>
+							<li><m>	r_1 =						r_2 =						r_3 = -4,\quad		r_4 = 5.3								</m></li>
+							<li><m>	r_1 = -\frac{i}{2},\quad	r_2 = \frac{i}{2},\quad		r_3 = 2 + i,\quad	r_4 = 2 - i								</m></li>
+							<li><m>	r_1 =						r_2 = 0,\quad				r_3 =				r_4 =			r_5 =	r_6 =	r_7 = 3	</m></li>
+							<li><m>	r_1 = i,\quad				r_2 = -i,\quad				r_3 =				r_4 = \pi,\quad	r_5 = 5					</m></li>
+						</ol>
+						<p>
+							Find the general solution for each case.
+						</p>
+					</statement>
+
+					<solution>
+
+						<ol>
+							<li>
+								<p>
+									Three non-repeating reals (Case 1).
+								</p>
+								<me>
+									y = c_1 e^{3x} + c_2 e^{-3x} + c_3 e^{5.3x}
+								</me>
+							</li>
+							<li>
+								<p>
+									A complex conjugate pair and a non-repeating real (Mixed).
+								</p>
+								<me>
+									y = e^{6x} (c_1 \sin(\sqrt{7.7}x) + c_2 \cos(\sqrt{7.7}x)) + c_3
+								</me>
+							</li>
+							<li>
+								<p>
+									One real repeating 3 times and a non-repeating real (Mixed).
+								</p>
+								<me>
+									y = (c_1 x^2 + c_2 x + c_3) e^{-4x} + c_4 e^{5.3x}
+								</me>
+							</li>
+							<li>
+								<p>
+									Two different complex conjugate pairs (Case 3).
+								</p>
+								<me>
+									y = c_1 \sin\left(\frac{x}{2}\right) + c_2 \cos\left(\frac{x}{2}\right) + e^{2x} (c_3 \sin x + c_4 \cos x)
+								</me>
+							</li>
+							<li>
+								<p>
+									A real repeating 2 times and a real repeating 5 times (Case 2).
+								</p>
+								<me>
+									y = c_1 x + c_2 + (c_3 x^4 + c_4 x^3 + c_5 x^2 + c_6 x + c_7) e^{3x}
+								</me>
+							</li>
+							<li>
+								<p>
+									A complex conjugate pair, a real repeating 2 times, and a non-repeating real (Mixed).
+								</p>
+								<me>
+									y = c_1 \sin x + c_2 \cos x + (c_3 x + c_4) e^{\pi x} + c_5 e^{5x}
+								</me>
+							</li>
+						</ol>
+					</solution>
+
+				</p>
+				
+			</example>
+
+			<p>
+				As the table demonstrates, constructing the general solution of an LHCC equation is systematic once you have the solutions of the characteristic equation. However, solving higher-order polynomial equations by hand can be difficult. The next example shows a few algebra techniques you can use to handle higher degree equations.
+			</p>
+
+		</subsubsection>
+
+		<subsubsection><title> Special Case Factoring </title>
+			
+			<p>
+				While constructing the general solution is straightforward once the solutions are known, solving <em>higher-degree polynomial equations</em> can be a challenge. In practice, we use various techniques to find characteristic solutions efficiently.
+			</p>
+
+			<p>
+				In general, the characteristic equation will have <m>n</m> solutions, which may be real or complex and may also include repeated solutions. Each solution of the characteristic equation leads to a term in the general solution of the LHCC. Examples in the table below illustrate the process of constructing these general solutions based on the different types of solutions.
+			</p>
+
+			
+
+		</subsubsection>
+
+		<subsubsection><title> Using Technology </title>
+
+			<p>
+				For second-order equations, the characteristic equation is always quadratic and can be solved directly using the quadratic formula. However, <em>higher-order characteristic equations</em> are more complex, and we must rely on algebraic techniques or computational tools. Some common methods include:
+			</p>
+
+			<dl width="wide">
+				<li><title> Factoring </title>
+					<p>
+						If the characteristic polynomial has easily recognizable factors, we can factor it directly. For example:
+					</p>
+					<me>
+						r^3 - 6r^2 + 11r - 6 = 0
+					</me>
+					<p>
+						factors as:
+					</p>
+					<me>
+						(r - 1)(r - 2)(r - 3) = 0
+					</me>
+					<p>
+						providing the solutions <m>r = 1, 2, 3</m> immediately.
+					</p>
+				</li>
+
+				<li><title> Using the Rational Root Theorem </title>
+					<p>
+						The <em>Rational Root Theorem</em> helps identify possible rational solutions by considering factors of the constant and leading coefficients. If a rational solution is found, polynomial division can reduce the equation to a lower-degree polynomial.
+					</p>
+				</li>
+
+				<li><title> Numerical Methods </title>
+					<p>
+						For polynomials that cannot be factored easily, we use numerical solvers such as:
+					</p>
+					<ul>
+						<li>Newton's Method</li>
+						<li>Graphing techniques</li>
+						<li>Computer algebra systems (e.g., Wolfram Alpha, MATLAB, Python’s NumPy)</li>
+					</ul>
+				</li>
+			</dl>
+
+			<p>
+				Regardless of the method used, once the roots are found, we can construct the general solution using the principles outlined earlier.
+			</p>
+
+			<example>
 
 			<p>
 				Solve the following characteristic equations.
@@ -601,7 +951,7 @@
 				using the <xref ref="poly-factor-p" text="title"/>.
 			</p>
 
-			<theorem xml:id="poly-factor-p"><title>Polynomial Factoring Calculator</title>
+			<theorem xml:id="poly-factor-p"><title> Polynomial Factoring Calculator </title>
 				<figure xml:id="figure-pp">
 					<caption>Type in any polynomial of <m>r</m>. Use <q><m>*</m></q> for multiplication. If the polynomial has rational roots, it will show the factors.</caption>
 					<interactive xml:id="poly-factor" platform="sage" width="86%" aspect="3.2:1">
@@ -690,18 +1040,18 @@
 			</solution>
 		</example>
 
+		</subsubsection>
+
 		<conclusion>
 			<p>
-				By recognizing the nature of the roots and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.
+				Although solving <em>higher-order LHCC equations</em> can be computationally difficult, the method remains fundamentally the same: solve the characteristic equation and use its solutions to construct the general solution. By leveraging algebraic techniques and computational tools, we can efficiently tackle equations of any order.
+			</p>
+
+			<p>
+				By recognizing the nature of the solutions and utilizing appropriate technology for solving polynomial equations, we can tackle higher-order LHCC equations with confidence.
 			</p>
 		</conclusion>
 
 	</subsection>
-
-	<conclusion>
-		<p>
-			
-		</p>
-	</conclusion>
 
 </section>

@@ -1,19 +1,13 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Introduction to LHCC Equations </title>
 
 	<introduction>
-
 		<p>
-			Before we explore methods for solving <term>Linear Homogeneous Constant Coefficient (LHCC)</term> differential equations, it is essential to understand their fundamental structure. These equations play a significant role in mathematical modeling because their solutions exhibit predictable and well-behaved patterns, making them ideal for applications in physics, engineering, and other sciences.
+			Before learning the methods that solve Linear Homogeneous Constant Coefficient (LHCC) differential equations, it is important to be able to identify these equation and have some intuition about the type of solutions that satisfy them.
 		</p>
 
 		<p>
-			To build intuition, we will carefully examine the three defining properties of LHCC equations: <term>linearity</term>, <term>homogeneity</term>, and <term>constant coefficients</term>. Each of these characteristics influences the types of solutions that emerge and dictates the methods we use to solve them. By clearly defining and identifying LHCC equations, we lay the groundwork for developing powerful solution techniques in the sections that follow.
+			In this section, we will develop the fundamentals of LHCC equations, starting with a break down of their key structural components—<em>linear</em>, <em>homogeneous</em>, and <em>constant coefficients</em>. From there, we will examine why <em>exponential functions</em> naturally arise as solutions and why other function types do not. Finally, we will introduce the <em>characteristic equation</em>, a powerful algebraic tool that allows us to extract the specific exponential solutions that satisfy these equations.
 		</p>
-
-		<p>
-			By the end of this section, you will be able to recognize and classify LHCC equations, setting the stage for understanding why exponential functions serve as their fundamental solutions. This understanding will provide the necessary framework to systematically analyze and solve these equations in later chapters.
-		</p>
-
 	</introduction>
 
 	<subsection><title> Identifying LHCC Equations </title>
@@ -136,48 +130,34 @@
 			</me>.
 
 		</subsubsection>
+			
+		<p>
+			Combining these ideas, we arrive at the formal definition of an LHCC equation.
+		</p>
+		
+		<definition xml:id="def-lhcc"><title> LHCC Equation </title>
+			<statement>
+				<p>
+					A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:
+				</p>
+				<men xml:id="lhcc-equation">
+					a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
+				</men>
+				<p>
+					where <m>a_n,\ a_{n-1},\ \ldots,\ a_2,\ a_1,\ a_0</m> are constants.
+				</p>
+			</statement>
+		</definition>
+		
+		<p>
+			The following equations are examples of LHCC equations:
+		</p>
 
-		<subsubsection><title> Summary: Recognizing LHCC Equations </title>
-			
-			<p>
-				Combining these ideas, we arrive at the formal definition of an LHCC equation.
-			</p>
-			
-			<definition xml:id="def-lhcc"><title>LHCC Equation</title>
-				<statement>
-					<p>
-						A linear homogeneous differential equation with constant coefficients (LHCC) is of the form:
-					</p>
-					<men xml:id="lhcc-equation">
-						a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
-					</men>
-					<p>
-						where <m>a_n,\ a_{n-1},\ \ldots,\ a_2,\ a_1,\ a_0</m> are constants.
-					</p>
-				</statement>
-			</definition>
-			
-			<p>
-				The following equations are examples of LHCC equations:
-			</p>
-
-			<me>
-				2y'' - 3y' + 5y = 0, \qquad \frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = 0 \qquad u'' = u
-			</me>.
-			
-		</subsubsection>
+		<me>
+			2y'' - 3y' + 5y = 0, \qquad \frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = 0 \qquad u'' = u
+		</me>.
 
 		<conclusion>
-			<p>
-				In summary, a differential equation is classified as an <xref ref="lhcc-equation">LHCC equation</xref> if it satisfies three criteria:
-			</p>
-			
-			<ul>
-				<li>It is <em>linear</em>: each term involves <m>y</m> or its derivatives to the first power only.</li>
-				<li>It is <em>homogeneous</em>: the right-hand side is zero.</li>
-				<li>It has <em>constant coefficients</em>: the coefficients of <m>y</m> and its derivatives do not depend on <m>x</m>.</li>
-			</ul>
-
 			<p>
 				With this understanding, we are now ready to explore how to find solutions to LHCC equations. The next section introduces an 
 				intuitive approach to understanding what the solutions to these equations look like.
@@ -186,825 +166,474 @@
 
 	</subsection>
 
-	<subsection><title> Solutions to LHCC Equations </title>
+	<subsubsection><title> Fundamental Solutions </title>
 
 		<introduction>
 			<p>
-				Now that we understand the structure of <em>Linear Homogeneous Constant Coefficient (LHCC) equations</em>, our next goal is to determine their solutions. Unlike many other types of differential equations, LHCC equations have a predictable and systematic method for finding their solutions, making them particularly useful in applied mathematics, physics, and engineering.
-			</p>
-
-			<p>
-				In this subsection, we will develop a structured approach to solving LHCC equations. First, we will examine why <em>exponential functions</em> naturally arise as solutions and why other function types do not. Next, we will introduce the <em>characteristic equation</em>, a powerful algebraic tool that allows us to extract the fundamental exponential solutions. Finally, we will use these solutions to construct the <em>general solution</em>, ensuring that we capture all possible solutions to the given differential equation.
-			</p>
-
-			<p>
-				By the end of this subsection, you will have a <em>step-by-step framework</em> for solving LHCC equations of any order, laying the foundation for more advanced solution techniques in later sections.
+				When encountering a new type of differential equation, a natural question arises: <em>What kind of functions make sense to plug in for <m>y</m>?</em> The structure of the equation itself often provides clues as to which functions are likely to satisfy it. 
 			</p>
 		</introduction>
 
-		<subsubsection><title> Fundamental Solution Types </title>
+		<p>
+			One way to identify suitable solutions is with the idea of <xref ref="like-terms" text="custom"><term>like terms</term></xref>. In algebra, like terms share the same variable parts and can be simplified as a single term when added. For example,
+		</p>
 
-			<introduction>
-				<p>
-					When encountering a new type of differential equation, a natural question arises: <em>What kind of functions make sense to plug in for <m>y</m>?</em> The structure of the equation itself often provides clues as to which functions are likely to satisfy it. 
-				</p>
-			</introduction>
+		<men xml:id="like-terms-combining">
+			\ul{5\cos x} + \ul{\ul{2x^2}} - \ul{\cos x} + \ul{\ul{3x^2}} = 4 \cos x + 5x^2
+		</men>.
+		
+		<p>
+			To see how this helps us find valid solutions, consider the LHCC equation:
+		</p>
 
+		<me>
+			y' - 2y = 0
+		</me>.
+
+		<p>
+			A function of is a solution to this equation, if you plug it in for <m>y'</m> and <m>y</m> and everything simplifies to <m>0 = 0</m>. This only happens when all the terms on the left cancel out, meaning they simplify as <em>like terms</em> where the coefficients add up to zero.
+		</p>
+
+		<p>
+			This implies that any function we plug in for <m>y</m>, must result in both <m>y'</m> and <m>2y</m> being like terms. Otherwise, the left side could never simplify to zero. This leads to the next important question:
+		</p>
+
+		<blockquote>
 			<p>
-				One way to identify suitable solutions is with the idea of <xref ref="like-terms" text="custom"><term>like terms</term></xref>. In algebra, like terms share the same variable parts and can be simplified as a single term when added. For example,
+				<q>Which types of functions are like terms with their own differatives?</q>
 			</p>
+		</blockquote>
 
-			<men xml:id="like-terms-combining">
-				\ul{5\cos x} + \ul{\ul{2x^2}} - \ul{\cos x} + \ul{\ul{3x^2}} = 4 \cos x + 5x^2
-			</men>.
-			
+		<p>
+			You may recall from calculus that the derivative of an exponential function is <em>another exponential function</em>. For example, the derivative of <m>e^{7x}</m> is <m>7e^{7x}</m>, which are like terms. This property makes exponentials good candidates for solutions to LHCC equations. To see this more concretely, let's substitute different function types into our equation and see what kind of terms they produce.
+		</p>
+
+		<sidebyside widths="28% 5% 32% 5% 30%">
 			<p>
-				To see how this helps us find valid solutions, consider the LHCC equation:
+				<em>Case 1:</em> <m>\quad y = x^2</m>
+				<md>
+					<mrow> \left[x^2\right]' - 2 \left[x^2\right] = 0\amp </mrow>
+					<mrow> \us{\large\text{don't cancel}}{\ub{2x - 2x^2}_{\large\text{not like terms}}} = 0\amp </mrow>
+				</md>
 			</p>
-
-			<me>
-				y' - 2y = 0
-			</me>.
-
+			<p/>
 			<p>
-				A function of is a solution to this equation, if you plug it in for <m>y'</m> and <m>y</m> and everything simplifies to <m>0 = 0</m>. This only happens when all the terms on the left cancel out, meaning they simplify as <em>like terms</em> where the coefficients add up to zero.
+				<em>Case 2:</em> <m>\quad y = \ln x</m>
+				<md>
+					<mrow> \left[2\ln x\right]' - 2\left[\ln x\right] = 0\amp </mrow>
+					<mrow> \us{\large\text{don't cancel}}{\ub{\frac{2}{x} - 2\ln x}_{\large\text{not like terms}}} = 0\amp </mrow>
+				</md>
 			</p>
-
+			<p/>
 			<p>
-				This implies that any function we plug in for <m>y</m>, must result in both <m>y'</m> and <m>2y</m> being like terms. Otherwise, the left side could never simplify to zero. This leads to the next important question:
+				<em>Case 3:</em> <m>\quad y = e^{2x}</m>
+				<md>
+					<mrow> \left[e^{2x}\right]' - 2 \left[e^{2x}\right] = 0\amp </mrow>
+					<mrow> \us{\large\text{do cancel}}{\ub{2e^{2x} - 2e^{2x}}_{\large\text{like terms}}} = 0\amp </mrow>
+				</md>
 			</p>
+		</sidebyside>
 
-			<blockquote>
-				<p>
-					<q>Which types of functions are like terms with their own differatives?</q>
-				</p>
-			</blockquote>
+		<p>
+			This shows that <em>only</em> the exponential function <m>y = e^{2x}</m> produces like terms that fully cancel out when plugged in for <m>y</m>. The next example shows that a similar pattern holds for second-order equations as well.
+		</p>
 
+		<example xml:id="lhcc-soln-example-1"><title> Multiple Exponential Solutions </title>
+		
 			<p>
-				You may recall from calculus that the derivative of an exponential function is <em>another exponential function</em>. For example, the derivative of <m>e^{7x}</m> is <m>7e^{7x}</m>, which are like terms. This property makes exponentials good candidates for solutions to LHCC equations. To see this more concretely, let's substitute different function types into our equation and see what kind of terms they produce.
-			</p>
-
-			<sidebyside widths="28% 5% 32% 5% 30%">
-				<p>
-					<em>Case 1:</em> <m>\quad y = x^2</m>
-					<md>
-						<mrow> \left[x^2\right]' - 2 \left[x^2\right] = 0\amp </mrow>
-						<mrow> \us{\large\text{don't cancel}}{\ub{2x - 2x^2}_{\large\text{not like terms}}} = 0\amp </mrow>
-					</md>
-				</p>
-				<p/>
-				<p>
-					<em>Case 2:</em> <m>\quad y = \ln x</m>
-					<md>
-						<mrow> \left[2\ln x\right]' - 2\left[\ln x\right] = 0\amp </mrow>
-						<mrow> \us{\large\text{don't cancel}}{\ub{\frac{2}{x} - 2\ln x}_{\large\text{not like terms}}} = 0\amp </mrow>
-					</md>
-				</p>
-				<p/>
-				<p>
-					<em>Case 3:</em> <m>\quad y = e^{2x}</m>
-					<md>
-						<mrow> \left[e^{2x}\right]' - 2 \left[e^{2x}\right] = 0\amp </mrow>
-						<mrow> \us{\large\text{do cancel}}{\ub{2e^{2x} - 2e^{2x}}_{\large\text{like terms}}} = 0\amp </mrow>
-					</md>
-				</p>
-			</sidebyside>
-
-			<p>
-				As we can see, <em>only</em> the exponential function <m>y = e^{2x}</m> produces like terms that fully cancel out. This provides strong evidence that exponentials are a natural choice for solutions to LHCC equations.
-			</p>
-
-			<p>
-				To further solidify this idea, let's look at a second-order example:
-			</p>
-
-			<example xml:id="lhcc-soln-example-1"><title> Multiple Exponential Solutions </title>
-			
-				<p>
-					<statement>
-						<p>
-							Verify that <m>y = e^{4x}</m> and <m>y = e^{-x}</m> are solutions to the differential equation
-						</p>
-						<me>
-							y'' - 3y' - 4y = 0
-						</me>,
-						<p>
-							but <m>y = x^4</m>, <m>y=\ln x</m> and <m>y=e^{3x}</m> are not.
-						</p>
-					</statement>
-				</p>
-				<solution>
-					<p>
-						First, let's check the first two exponential functions:
-					</p>
-					<sidebyside widths="20% 80%">
-						<p>
-							<me>
-								y=e^{4x}:
-							</me>
-						</p>
-						<p>
-							<md>
-								<mrow> 	[e^{4x}]'' - 3\left[e^{4x}\right]' - 4\left[e^{4x}\right]	=\amp\ 0	</mrow>
-								<mrow> 	
-									\us{\large\text{like terms simplify to }0}{\ub{
-										16e^{4x} - 12e^{4x} - 4e^{4x}	
-									}}
-									=\amp\ 0	
-								</mrow>
-								<mrow> 	0	=\amp\ 0	\ \ ✅ </mrow>
-							</md>
-						</p>
-					</sidebyside>
-					<sidebyside widths="20% 80%">
-						<p>
-							<me>
-								y=e^{-x}:
-							</me>
-						</p>
-						<p>
-							<md>
-								<mrow> 	[e^{-x}]'' - 3\left[e^{-x}\right]' - 4\left[e^{-x}\right]	=\amp\ 0	</mrow>
-								<mrow> 	
-									\us{\large\text{like terms simplify to }0}{\ub{
-										e^{-x} + 3e^{-x} - 4e^{-x}	
-									}}
-									=\amp\ 0	
-								</mrow>
-								<mrow> 	0	=\amp\ 0	\ \ ✅ </mrow>
-							</md>
-						</p>
-					</sidebyside>
-					<p>
-						As you can see, plugging in exponential functions produces like terms that cancel out and simplify to zero.
-					</p>
-					<p>
-						Let's see what happens when we plug in non-exponential functions:
-					</p>
-					<sidebyside widths="20% 80%">
-						<p>
-							<me>
-								y=x^4:
-							</me>
-						</p>
-						<p>
-							<md>
-								<mrow> 	[x^4]'' - 3\left[x^4\right]' - 4\left[x^4\right]	=\amp\ 0	</mrow>
-								<mrow> 	
-									\us{\large\text{not like terms, do not combine}}{\ub{
-										12x^2 - 12x^3 - 4x^4	
-									}}
-									=\amp\ 0	\ \ ❌
-								</mrow>
-							</md>
-						</p>
-					</sidebyside>
-					<sidebyside widths="20% 80%">
-						<p>
-							<me>
-								y=\ln x:
-							</me>
-						</p>
-						<p>
-							<md>
-								<mrow> 	[\ln x]'' - 3\left[\ln x\right]' - 4\left[\ln x\right]	=\amp\ 0	</mrow>
-								<mrow> 	
-									\us{\large\text{not like terms, do not combine}}{\ub{
-										-x^{-2} - 3x^{-1} - 4\ln x	
-									}}
-									=\amp\ 0	\ \ ❌
-								</mrow>
-							</md>
-						</p>
-					</sidebyside>
-					<p>
-						In this case, the non-exponential functions produce non-like terms that do not simplify and are not solutions.
-					</p>
-					<p>
-						Finally, let's check the exponential function, <m>y = e^{3x}</m>:
-					</p>
-					<sidebyside widths="20% 80%">
-						<p>
-							<me>
-								y=e^{3x}:
-							</me>
-						</p>
-						<p>
-							<md>
-								<mrow> 	[e^{3x}]'' - 3\left[e^{3x}\right]' - 4\left[e^{3x}\right]	=\amp\ 0	</mrow>
-								<mrow> 	
-									\us{\large\text{like terms don't simplify to }0}{\ub{
-										9e^{3x} - 9e^{3x} - 4e^{3x}	
-									}}
-									=\amp\ 0	
-								</mrow>
-								<mrow> 	- 4e^{3x}	=\amp\ 0	\ \ ❌ </mrow>
-							</md>
-						</p>
-					</sidebyside>
-					<p>
-						In this last case, although we get like terms, they do not fully cancel and so <m>y=e^{3x}</m> is not a solution.
-					</p>
-				</solution>
-			</example>
-
-			<p>
-				But what about other functions, such as sine and cosine? Interestingly, trigonometric functions also satisfy certain LHCC equations, but they are actually a <em>special case</em> of exponentials when complex numbers are involved. This will become clearer when we explore the <em>characteristic equation</em> in a later section.
-			</p>
-
-			<conclusion>
-				<p>
-					In this subsection, we discovered that exponential functions are the <em>fundamental solution types</em> for LHCC equations because they like terms with there own derivatives. This property allows them to fully cancel out, as required by the zero on the right side of the equation.
-				</p>
-
-				<p>
-					Now that we know what type of functions solve these equations, the next step is to determine <em>how to find them</em>. In the next section, we will introduce the <em>characteristic equation</em>, a powerful tool that allows us to extract the correct exponential solutions for any LHCC equation.
-				</p>
-			</conclusion>
-
-		</subsubsection>
-
-		<subsubsection><title> The Characteristic Equation </title>
-
-			<introduction>
-				<p>
-					So far, we have established that the best candidates for the solutions of <em>Linear Homogeneous Constant Coefficient (LHCC) equations</em> are <em>exponential functions</em>, but we don't know which ones work and how many there are. To determine this, we need the <em>characteristic equation</em>, which we will cover in this subsection.
-				</p>
-			</introduction>
-
-			<p>
-				To motivate the characteristic equation, let's start with the simple first-order LHCC equation:
-			</p>
-
-			<me>
-				y' - 5y = 0.
-			</me>
-
-			<p>
-				We assume the solution is an exponential, of the form <m>y = e^{rx}</m>, where <m>r</m> is a constant to be determined. Substituting this into the equation, gives
-			</p>
-
-			<md>
-				<mrow>	\left[e^{rx}\right]' - 5 e^{rx}	\amp = 0	</mrow>
-				<mrow>	r e^{rx} - 5 e^{rx}				\amp = 0	</mrow>
-				<mrow>	(r - 5) e^{rx} 					\amp = 0	</mrow>
-			</md>.
-
-			<p>
-				Since <m>e^{rx}</m> is never zero, we must have: <m>\quad r - 5 = 0\ \Rightarrow\ r = 5</m>.
-			</p>
-
-			<p>
-				Thus, the fundamental solution is <m>y = e^{5x}</m> and the equation <m>r - 5 = 0</m>, which determines <m>r</m>, is the <em>characteristic equation</em> for this LHCC equation.
-			</p>
-
-			<p>
-				Now, let's extend this idea to a higher-order equation. Consider the second-order equation:
-			</p>
-
-			<me>
-				y'' - 3y' - 4y = 0.
-			</me>
-
-			<p>
-				Again, assuming, <m>y = e^{rx}</m>, we substitute in <m>y</m>, <m>y'</m>, and <m>y''</m> to obtain
-			</p>
-
-			<md>
-				<mrow>	(r^2 e^{rx}) - 3 (r e^{rx}) - 4 (e^{rx})	\amp = 0	</mrow>
-				<mrow>	(r^2 - 3r - 4) e^{rx}						\amp = 0	</mrow>
-			</md>
-
-			<p>
-				As before, this leads to the <em>characteristic equation</em>, given by
-			</p>
-
-			<me>
-				r^2 - 3r - 4 = 0.
-			</me>
-
-			<p>
-				Solving for <m>r</m>, we get
-			</p>
-
-			<md>
-				<mrow> (r - 4)(r + 1) = 0 \amp </mrow>
-				<mrow> r = 4, \quad r = -1. \amp </mrow>
-			</md>
-
-			<p>
-				and finally the fundamental solutions are
-			</p>
-
-			<me>
-				y_1 = e^{4x}, \quad y_2 = e^{-x}.
-			</me>
-
-			<p>
-				As you can see, the structure of exponential functions naturally lead to a characteristic equation that we can solve to determine each exponential solution. The formal definition of the characteristic equation is given next.
-			</p>
-
-			<definition xml:id="def-characteristic-equation"><title> The Characteristic Equation </title>
 				<statement>
 					<p>
-						The <term>characteristic equation</term> of an <m>n</m>-th order LHCC equation
+						Verify that <m>y = e^{4x}</m> and <m>y = e^{-x}</m> are solutions to the differential equation
 					</p>
-
 					<me>
-						a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = 0
-					</me>
-
+						y'' - 3y' - 4y = 0
+					</me>,
 					<p>
-						is the <m>n</m>-th degree polynomial
-					</p>
-
-					<me>
-						a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1 r + a_0 = 0
-					</me>.
-
-					<p>
-						The solutions <m>r_1, r_2, \dots, r_n</m> to this polynomial determine the fundamental exponential solutions
-						<fn>
-							<p>
-								Later, we will see that it is possible for a solutions to have the form
-								<me>
-									y_i = x^k e^{r_i\ x}
-								</me>,
-								where <m>k</m> depends on how many times <m>r_i</m> repeats as a solution to the characteristic equation.
-							</p>
-						</fn>
-						<me>
-							y_1=e^{r_1 x},\ y_2=e^{r_2 x},\ \dots,\ y_n=e^{r_n x}
-						</me>.
+						but <m>y = x^4</m>, <m>y=\ln x</m> and <m>y=e^{3x}</m> are not.
 					</p>
 				</statement>
-			</definition>
-
-			<theorem xml:id="characteristic-eqn-details"><title> Where does the Characteristic Equation come from? </title>
-				<p>
-					To find the characteristic equation, we substitute <m>y = e^{rx}</m> into the <m>n</m>-th order <xref ref="lhcc-equation" text="custom">LHCC equation</xref> and solve for <m>r</m>. Doing this gives us
-					<md>
-						<mrow>	
-							a_n\ \left[e^{rx}\right]^{(n)} + \cdots + a_2\ \left[e^{rx}\right]'' + a_1\ \left[e^{rx}\right]' + a_0\ e^{rx} =\amp\ 0
-						</mrow>
-						<mrow>	a_n\ r^n e^{rx} + \cdots + a_2\ r^2 e^{rx} + a_1\ r e^{rx} + a_0\ e^{rx} =\amp\ 0 </mrow>
-						<mrow>	\left(a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0\right)e^{rx}  =\amp\ 0 </mrow>
-					</md>.
-					Since <m>e^{rx}</m> is never zero, we must have
-					<me>
-						a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
-					</me>
-					which is an <m>n</m>-th order polynomial in <m>r</m>.
-				</p>
-			</theorem>
-
-			<example><title> Characteristic Equation &amp; Exponential Solutions </title>
-				<statement>
-					<p>
-						For each of the following equations, determine the characteristic equation and the fundamental exponential solutions.
-					</p>
-					<p>
-						<sidebyside widths="40% 60%">
-							<p>
-								<line>	1.	<m>\ds\ 5y' + 6y = 0</m>	</line>
-								<line>		<m></m>						</line>
-							</p>
-							<p>
-								<solution>
-									<p>
-										Assuming <m>y = e^{rx}</m>, we have
-									</p>
-									<md>
-										<mrow>	5\left[e^{rx}\right]' + 6\left[e^{rx}\right] = 0	\amp </mrow>
-										<mrow>	5r e^{rx} + 6 e^{rx} = 0							\amp </mrow>
-										<mrow>	(5r + 6) e^{rx} = 0									\amp </mrow>
-									</md>.
-									<p>
-										Thus, the characteristic equation is
-									</p>
-									<me>
-										5r + 6 = 0 \quad \Rightarrow \quad r = -\frac{6}{5}
-									</me>,
-									<p>
-										and the fundamental solution is
-									</p>
-									<me>
-										y = e^{-\frac{6}{5}x}.
-									</me>
-								</solution>
-							</p>
-						</sidebyside>
-						<sidebyside widths="40% 60%">
-							<p>
-								<line>	2.	<m>\ds\ y'' - 4y = 0</m>	</line>
-								<line>		<m></m>						</line>
-							</p>
-							<p>
-								<solution>
-									<p>
-										Assuming <m>y = e^{rx}</m>, we have
-									</p>
-									<md>
-										<mrow>	r^2 e^{rx} - 4 e^{rx} = 0	\amp </mrow>
-										<mrow>	(r^2 - 4) e^{rx} = 0		\amp </mrow>
-									</md>
-									<p>
-										Thus, the characteristic equation is
-									</p>
-									<md>
-										<mrow>	r^2 -	\amp 4 = 0								</mrow>
-										<mrow>			\amp \Rightarrow\ (r - 2)(r + 2) = 0	</mrow>
-									</md>
-									<p>
-										and the fundamental solutions are
-									</p>
-									<me>
-										y_1 = e^{2x}, \quad y_2 = e^{-2x}.
-									</me>
-								</solution>
-							</p>
-						</sidebyside>
-						<sidebyside widths="40% 60%">
-							<p>
-								<line>	3.	<m>\ds\ y''' - 6y'' + y' - 6y = 0</m>	</line>
-								<line>		<m></m>									</line>
-							</p>
-							<p>
-								<solution>
-									<p>
-										Assuming <m>y = e^{rx}</m>, we have
-									</p>
-									<md>
-										<mrow>	r^3 e^{rx} - 6r^2 e^{rx} + r e^{rx} - 6 e^{rx} = 0	\amp </mrow>
-										<mrow>	(r^3 - 6r^2 + r - 6) e^{rx} = 0						\amp </mrow>
-									</md>
-									<p>
-										Thus, the characteristic equation is
-									</p>
-									<me>
-										r^3 - 6r^2 + r - 6 = 0
-									</me>.
-									<p>
-										We can factor this as
-									</p>
-									<md>
-										<mrow>	r^2(r - 6) + (r - 6) = 0	\amp </mrow>
-										<mrow>	(r^2 + 1)(r - 6) = 0		\amp </mrow>
-										<mrow>	r = -i,\ r = i,\ r = 6		\amp </mrow>
-									</md>.
-									<p>
-										Therefore, the fundamental solutions are
-									</p>
-									<me>
-										y_1 = e^{-ix}, \quad y_2 = e^{ix}, \quad y_3 = e^{6x}.
-									</me>
-								</solution>
-							</p>
-						</sidebyside>
-					</p>
-				</statement>
-			</example>
-			
-			<p>
-
-				This last example demostrates that, in general, an <m>n</m>-th order LHCC equation has <m>n</m> exponential solutions of the form <m>e^{rx}</m>, where <m>r</m> is a solution (real or complex) to the <m>n</m>-th degree characteristic equation.
 			</p>
-
-			<p>
-				Now that we understand how to systematically find the fundamental exponential solutions, the last and easiest step is to construct the <em>general solution</em> by combining these solutions appropriately.
-			</p>
-
-		</subsubsection>
-
-		<subsubsection><title> The General Solution </title>
-
-			<introduction>
-
+			<solution>
 				<p>
-					We are now ready to discuss how to form the general solution to a Linear Homogeneous Constant Coefficient (LHCC) equation. Before we do, let's review everything we know about LHCC equations up to this point.
+					First, let's check the first two exponential functions:
 				</p>
-
-				<sidebyside widths="14% 86%">
+				<sidebyside widths="20% 80%">
 					<p>
-						✏️ <term>FACT 1</term>
-					</p>
-					<p>
-						An <m>n</m>-th order of LHCC equation has the form
 						<me>
-							a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
-						</me>,
-						where <m>a_n,\ a_{n-1},\ \ldots,\ a_2,\ a_1,\ a_0</m> are constants.
-					</p>
-				</sidebyside>
-
-				<sidebyside widths="14% 86%">
-					<p>
-						✏️ <term>FACT 2</term>
-					</p>
-					<p>
-						The <em>characteristic equation</em> of the LHCC equation is given by
-						<me>
-							a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
-						</me>,
-						and has <m>n</m> solutions: <m>\ r_1,\ r_2,\ \dots,\ r_n</m> (real or complex).
-					</p>
-				</sidebyside>
-
-				<sidebyside widths="14% 86%">
-					<p>
-						✏️ <term>FACT 3</term>
-					</p>
-					<p>
-						The <em>fundamental solutions</em> to the LHCC equation are given by
-						<me>
-							y_1 = e^{r_1 x},\quad y_2 = e^{r_2 x},\quad \dots,\quad y_n = e^{r_n x},
+							y=e^{4x}:
 						</me>
-						where <m>r_1,\ r_2,\ \dots,\ r_n</m> are the solutions to the <em>characteristic equation</em>.
+					</p>
+					<p>
+						<md>
+							<mrow> 	[e^{4x}]'' - 3\left[e^{4x}\right]' - 4\left[e^{4x}\right]	=\amp\ 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like terms simplify to }0}{\ub{
+									16e^{4x} - 12e^{4x} - 4e^{4x}	
+								}}
+								=\amp\ 0	
+							</mrow>
+							<mrow> 	0	=\amp\ 0	\ \ ✅ </mrow>
+						</md>
 					</p>
 				</sidebyside>
-
-				<p>
-					Now, we will explore how to combine these fundamental solutions to construct the <em>general solution</em> to any LHCC equation. This will allow us to capture all possible solutions to the differential equation, ensuring that we do not miss any.
-				</p>
-
-			</introduction>
-
-			<p>
-				In addition to these facts, the last thing that we need to start building the general solution is an important concept known as the <em>superposition principle</em>. 
-			</p>
-
-			<definition xml:id="superposition-principle"><title> Superposition Principle </title>
-				<statement>
+				<sidebyside widths="20% 80%">
 					<p>
-						If <m>y_1, y_2, \dots, y_n</m> are solutions to a homogeneous linear differential equation, then any combination:
+						<me>
+							y=e^{-x}:
+						</me>
 					</p>
-
-					<me>
-						y = c_1\ y_1 + c_2\ y_2 + \dots + c_n\ y_n
-					</me>
-
 					<p>
-						is also a solution for any constants <m>c_1, c_2, \dots, c_n</m>.
+						<md>
+							<mrow> 	[e^{-x}]'' - 3\left[e^{-x}\right]' - 4\left[e^{-x}\right]	=\amp\ 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like terms simplify to }0}{\ub{
+									e^{-x} + 3e^{-x} - 4e^{-x}	
+								}}
+								=\amp\ 0	
+							</mrow>
+							<mrow> 	0	=\amp\ 0	\ \ ✅ </mrow>
+						</md>
 					</p>
-				</statement>
-			</definition>
-
-			<p>
-				With this result and the above facts in hand, we can now construct the general solution to any LHCC equation as the sum of all its fundamental solutions. This gives us our fourth and final fact:
-			</p>
-
-			<sidebyside widths="14% 86%">
+				</sidebyside>
 				<p>
-					✏️ <term>FACT 4</term>
+					As you can see, plugging in exponential functions produces like terms that cancel out and simplify to zero.
 				</p>
 				<p>
-					For an <m>n</m>-th order LHCC equation, the general solution is
-					<me>
-						y = c_1\ y_1 + c_2\ y_2 + \cdots + c_n\ y_n,
-					</me>
-					where <m>c_1</m>, <m>c_2</m>, <m>\dots</m>, <m>c_n</m> are arbitrary constants and <m>y_1</m>, <m>y_2</m>, <m>\dots</m>, <m>y_n</m> are the fundamental solutions.
+					Let's see what happens when we plug in non-exponential functions:
 				</p>
-			</sidebyside>
-
-			<example><title> LHCC Equation General Solution </title>
-
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=x^4:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[x^4]'' - 3\left[x^4\right]' - 4\left[x^4\right]	=\amp\ 0	</mrow>
+							<mrow> 	
+								\us{\large\text{not like terms, do not combine}}{\ub{
+									12x^2 - 12x^3 - 4x^4	
+								}}
+								=\amp\ 0	\ \ ❌
+							</mrow>
+						</md>
+					</p>
+				</sidebyside>
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=\ln x:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[\ln x]'' - 3\left[\ln x\right]' - 4\left[\ln x\right]	=\amp\ 0	</mrow>
+							<mrow> 	
+								\us{\large\text{not like terms, do not combine}}{\ub{
+									-x^{-2} - 3x^{-1} - 4\ln x	
+								}}
+								=\amp\ 0	\ \ ❌
+							</mrow>
+						</md>
+					</p>
+				</sidebyside>
 				<p>
-					<statement>
-						<p>
-							Find the general solution to each of the equation below.
-						</p>
-						<p>
-							<sidebyside widths="40% 60%">
-								<p>
-									<line>	1.	<m>\ds\ y'+\pi\ y = 0</m>	</line>
-									<line>		<m></m>						</line>
-								</p>
-								<p>
-									<solution>
-										<p>
-											The characteristic equation
-										</p>
-										<me>
-											r + \pi = 0
-										</me>,
-										<p>
-											has the solution <m>r = -\pi</m>. So, the equation has one fundamental solution of the form
-										</p>
-										<me>
-											y_1 = e^{-\pi x}
-										</me>.
-										<p>
-											By the superposition principle, the general solution is
-										</p>
-										<me>
-											y = c_1 e^{-\pi x}
-										</me>.
-									</solution>
-								</p>
-							</sidebyside>
-							<sidebyside widths="40% 60%">
-								<p>
-									<line>	2.	<m>\ds\ \omega'' - 7\omega' = 0</m>	</line>
-									<line>		<m></m>						</line>
-								</p>
-								<p>
-									<solution>
-										<p>
-											The characteristic equation
-										</p>
-										<me>
-											r^2 - 7r = 0
-										</me>,
-										<p>
-											has the solutions <m>r = 0,\ 7</m>. So, the fundamental solutions are
-										</p>
-										<me>
-											\omega_1 = e^{0x}, \quad \omega_2 = e^{7x}
-										</me>.
-										<p>
-											By the superposition principle, the general solution is
-										</p>
-										<me>
-											\omega = c_1\ e^{0x} + c_2\ e^{7x} = c_1 + c_2\ e^{7x}
-										</me>.
-									</solution>
-								</p>
-							</sidebyside>
-							<sidebyside widths="40% 60%">
-								<p>
-									<line>	3.	<m>\ds\ 2\frac{d^{3}M}{dt^{3}} - 6\frac{dM}{dt} = 0</m>	</line>
-									<line>		<m></m>									</line>
-								</p>
-								<p>
-									<solution>
-										<p>
-											The characteristic equation
-										</p>
-										<me>
-											2r^3 - 6r = 0
-										</me>,
-										<p>
-											can be factored as
-										</p>
-										<md>
-											<mrow>	2r(r^2 - 3) = 0	\amp </mrow>
-										</md>.
-										<p>
-											So, <m>r = 0,\ \sqrt{3},\ -\sqrt{3}\ </m> and the fundamental solutions are
-										</p>
-										<me>
-											e^{0t}, \qquad e^{\sqrt{3}t}, \qquad e^{-\sqrt{3}t}
-										</me>.
-										<p>
-											By the superposition principle, the general solution is
-										</p>
-										<me>
-											M(t) = c_1 + c_2 e^{\sqrt{3}t} + c_3 e^{-\sqrt{3}t}
-										</me>.
-									</solution>
-								</p>
-							</sidebyside>
-						</p>
-					</statement>
+					In this case, the non-exponential functions produce non-like terms that do not simplify and are not solutions.
 				</p>
-			</example>
-
-			<conclusion>
 				<p>
-					These examples illustrate how the general solution of an LHCC equation is created given the exponential functions that satisfy the equation. While the method is fairly straight forward, there are still a few details that need to be addressed. In particular, we will investigate what to do if the characteristic equations has <em>repeated roots</em> and how to handle high order LHCC equations.
+					Finally, let's check the exponential function, <m>y = e^{3x}</m>:
 				</p>
-			</conclusion>
-
-		</subsubsection>
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=e^{3x}:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[e^{3x}]'' - 3\left[e^{3x}\right]' - 4\left[e^{3x}\right]	=\amp\ 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like terms don't simplify to }0}{\ub{
+									9e^{3x} - 9e^{3x} - 4e^{3x}	
+								}}
+								=\amp\ 0	
+							</mrow>
+							<mrow> 	- 4e^{3x}	=\amp\ 0	\ \ ❌ </mrow>
+						</md>
+					</p>
+				</sidebyside>
+				<p>
+					In this last case, although we get like terms, they do not fully cancel and so <m>y=e^{3x}</m> is not a solution.
+				</p>
+			</solution>
+		</example>
 
 		<conclusion>
 			<p>
-				In this subsection, we developed a complete framework for solving <em>Linear Homogeneous Constant Coefficient (LHCC) equations</em>. We began by exploring why <em>exponential functions</em> serve as the fundamental solutions to these equations, using the concept of <em>like terms</em> to justify their role. 
+				These examples provide strong evidence that exponentials are a natural choice for solutions to LHCC equations. It also shows that not all exponential functions work, only those that result in coefficients that sum to zero. In the next section, we will introduce you to the <em>characteristic equation</em>, a tool that tells us which of the exponential functions are the correct ones.
 			</p>
-
-			<p>
-				We then introduced the <em>characteristic equation</em>, which transforms the problem of solving a differential equation into solving a polynomial equation. This method allows us to systematically determine the correct set of fundamental solutions for any LHCC equation.
-			</p>
-
-			<p>
-				Finally, we constructed the <em>general solution</em>, showing that the number of fundamental solutions always matches the order of the equation. Using the <em>superposition principle</em>, we combined these solutions into a single expression that captures all possible solutions.
-			</p>
-
-			<p>
-				The key takeaways from this subsection are:
-			</p>
-
-			<ul>
-				<li> <em>Exponential functions</em> naturally emerge as solutions to LHCC equations due to their unique differentiation properties.</li>
-				<li> The <em>characteristic equation</em> provides a systematic way to determine the fundamental solutions.</li>
-				<li> The <em>general solution</em> consists of all independent exponential solutions, each multiplied by an arbitrary constant.</li>
-				<li> The number of solutions matches the <em>order</em> of the differential equation.</li>
-			</ul>
-
-			<p>
-				With this foundation, we are now prepared to explore more advanced solution methods, including cases where the characteristic equation has <em>repeated or complex roots</em>, which introduce new types of solutions.
-			</p>
-
-			<assemblage xml:id="lhcc-soln-properties"><title> Properties of LHCC Solutions </title>
-				<p>
-					The solutions to any <m>n</m>-th order linear homogeneous differential equation,
-					<men xml:id="lhcc-soln-eqn">
-						a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
-					</men>
-					have the following properties:
-				</p>
-
-				<p>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-1">
-							<p>
-								<term>Exponential Solutions</term>. The order of equation <xref ref="lhcc-soln-eqn"/> tells us that it has exactly <m>n</m> solutions, each assuming the form,
-								<men xml:id="lhcc-soln-form">
-									e^{rx} \quad \text{or} \quad x^k e^{rx}
-								</men>,
-								where <m>r</m> and <m>k</m> are numbers specific to this equation.
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-2">
-							<p>
-								<term>Linearly Independent</term>. The <m>n</m> solutions to an <m>n</m>-th order LHCC equation are linearly independent, meaning no two solutions can be combined into a single term.
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-					<sidebyside widths="6% 94%">
-						<p>
-							✏️
-						</p>
-						<paragraphs xml:id="lhcc-soln-property-3">
-							<p>
-								<term>General Solution</term>. Let <m>y_1, y_2, \dots, y_n</m> be the <m>n</m> linearly independent exponential solutions, then the general solution is formed by
-								<me>
-									y = c_1 y_1 + c_2 y_2 + \cdots + c_n y_n
-								</me>
-								for any constants <m>c_1, c_2, \dots, c_n</m>.
-							</p>
-						</paragraphs>
-					</sidebyside>
-
-				</p>
-			</assemblage>
-
-			<assemblage><title> Key Takeaways </title>
-				<p>
-					<ul>
-						<li> If <m>y_1</m> and <m>y_2</m> are solutions to an LHCC equation, then <m>c_1 y_1 + c_2 y_2</m> 
-							is also a solution for any constants <m>c_1</m> and <m>c_2</m>. </li>
-						<li> The general solution to an LHCC equation consists of a linear combination of all its 
-							independent solutions. </li>
-						<li> The number of independent solutions corresponds to the order of the equation. </li>
-						<li> An LHCC equation often has multiple exponential solutions, determined by solving the characteristic equation. </li>
-						<li> The principle of superposition states that any linear combination of these solutions is also a solution. </li>
-						<li> The general solution is formed by summing all independent exponential solutions with arbitrary coefficients. </li>
-						<li> The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form. </li>
-						<li> The concept of <q>like terms</q> helps explain why other function types (polynomials, trigonometric functions) do not work. </li>
-						<li> By substituting an exponential <m>y = e^{rx}</m> into the equation, we obtain a polynomial equation for <m>r</m>, which determines the general solution. </li>
-					</ul>
-				</p>
-			</assemblage>
-
-			<p>
-				In this section, we developed a framework for understanding the solutions of Linear Homogeneous Constant Coefficient (LHCC) differential equations. We saw that the key to solving these equations lies in identifying functions that retain their form when differentiated—leading us to <em>exponential solutions</em>.
-			</p>
-
-			<p>
-				Through the <em>superposition principle</em>, we established that the general solution consists of a <em>linear combination</em> of independent solutions. This means that solving an LHCC equation is ultimately about determining the correct set of exponentials that satisfy the equation.
-			</p>
-
-			<p>
-				With this foundation in place, we are now ready to introduce a powerful tool for systematically finding these solutions: the <em>characteristic equation</em>. This algebraic approach allows us to determine the exponential solutions efficiently and will serve as the backbone of our solution methods moving forward.
-			</p>
+			
+			<theorem><title> What about other functions, like sine and cosine? </title>
+				<statement>
+					<p>
+						Interestingly, trigonometric functions also satisfy certain LHCC equations, but they are actually a <em>special case</em> of exponentials when complex numbers are involved. This will become clearer when we explore the <em>characteristic equation</em> in a later section.
+					</p>
+				</statement>
+			</theorem>
 		</conclusion>
 
-	</subsection>
+	</subsubsection>
 
-	<conclusion>
+	<subsubsection><title> The Characteristic Equation </title>
+
+		<introduction>
+			<p>
+				So far, we have established that the best candidates for the solutions of <em>Linear Homogeneous Constant Coefficient (LHCC) equations</em> are <em>exponential functions</em>, but we don't know which ones work and how many there are. To determine this, we need the <em>characteristic equation</em>, which we will cover in this subsection.
+			</p>
+		</introduction>
+
 		<p>
-			In this section, we have established the foundation for understanding <em>Linear Homogeneous Constant Coefficient (LHCC)</em> differential equations. We began by identifying their key structural components—<em>linearity</em>, <em>homogeneity</em>, and <em>constant coefficients</em>—which define their form and behavior.
+			To motivate the characteristic equation, let's start with the simple first-order LHCC equation:
+		</p>
+
+		<me>
+			y' - 5y = 0.
+		</me>
+
+		<p>
+			We assume the solution is an exponential, of the form <m>y = e^{rx}</m>, where <m>r</m> is a constant to be determined. Substituting this into the equation, gives
+		</p>
+
+		<md>
+			<mrow>	\left[e^{rx}\right]' - 5 e^{rx}	\amp = 0	</mrow>
+			<mrow>	r e^{rx} - 5 e^{rx}				\amp = 0	</mrow>
+			<mrow>	(r - 5) e^{rx} 					\amp = 0	</mrow>
+		</md>.
+
+		<p>
+			Since <m>e^{rx}</m> is never zero, we must have: <m>\quad r - 5 = 0\ \Rightarrow\ r = 5</m>.
 		</p>
 
 		<p>
-			From there, we explored how these properties influence the types of solutions LHCC equations can have. The most important insight is that exponential functions naturally emerge as solutions due to their unique differentiation properties. This allows us to reduce complex differential equations to algebraic ones, paving the way for systematic solution methods.
+			Thus, the fundamental solution is <m>y = e^{5x}</m> and the equation <m>r - 5 = 0</m>, which determines <m>r</m>, is the <em>characteristic equation</em> for this LHCC equation.
 		</p>
 
 		<p>
-			With this understanding in place, we are now ready to develop practical techniques for solving LHCC equations. In the next section, we will introduce the <em>characteristic equation</em>, a powerful tool that enables us to find solutions efficiently. By applying this method, we will unlock a general approach for solving LHCC equations of any order.
+			Now, let's extend this idea to a higher-order equation. Consider the second-order equation:
 		</p>
-	</conclusion>
+
+		<me>
+			y'' - 3y' - 4y = 0.
+		</me>
+
+		<p>
+			Again, assuming, <m>y = e^{rx}</m>, we substitute in <m>y</m>, <m>y'</m>, and <m>y''</m> to obtain
+		</p>
+
+		<md>
+			<mrow>	(r^2 e^{rx}) - 3 (r e^{rx}) - 4 (e^{rx})	\amp = 0	</mrow>
+			<mrow>	(r^2 - 3r - 4) e^{rx}						\amp = 0	</mrow>
+		</md>
+
+		<p>
+			As before, this leads to the <em>characteristic equation</em>, given by
+		</p>
+
+		<me>
+			r^2 - 3r - 4 = 0.
+		</me>
+
+		<p>
+			Solving for <m>r</m>, we get
+		</p>
+
+		<md>
+			<mrow> (r - 4)(r + 1) = 0 \amp </mrow>
+			<mrow> r = 4, \quad r = -1. \amp </mrow>
+		</md>
+
+		<p>
+			and finally the fundamental solutions are
+		</p>
+
+		<me>
+			y_1 = e^{4x}, \quad y_2 = e^{-x}.
+		</me>
+
+		<p>
+			As you can see, the structure of exponential functions naturally lead to a characteristic equation that we can solve to determine each exponential solution. The formal definition of the characteristic equation is given next.
+		</p>
+
+		<definition xml:id="def-characteristic-equation"><title> The Characteristic Equation </title>
+			<statement>
+				<p>
+					The <term>characteristic equation</term> of an <m>n</m>-th order LHCC equation
+				</p>
+
+				<me>
+					a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_1\ y' + a_0\ y = 0
+				</me>
+
+				<p>
+					is the <m>n</m>-th degree polynomial
+				</p>
+
+				<me>
+					a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1 r + a_0 = 0
+				</me>.
+
+				<p>
+					The solutions <m>r_1, r_2, \dots, r_n</m> to this polynomial determine the fundamental exponential solutions
+					<fn>
+						<p>
+							Later, we will see that it is possible for a solutions to have the form
+							<me>
+								y_i = x^k e^{r_i\ x}
+							</me>,
+							where <m>k</m> depends on how many times <m>r_i</m> repeats as a solution to the characteristic equation.
+						</p>
+					</fn>
+					<me>
+						y_1=e^{r_1 x},\ y_2=e^{r_2 x},\ \dots,\ y_n=e^{r_n x}
+					</me>.
+				</p>
+			</statement>
+		</definition>
+
+		<theorem xml:id="characteristic-eqn-details"><title> Where does the Characteristic Equation come from? </title>
+			<p>
+				To find the characteristic equation, we substitute <m>y = e^{rx}</m> into the <m>n</m>-th order <xref ref="lhcc-equation" text="custom">LHCC equation</xref> and solve for <m>r</m>. Doing this gives us
+				<md>
+					<mrow>	
+						a_n\ \left[e^{rx}\right]^{(n)} + \cdots + a_2\ \left[e^{rx}\right]'' + a_1\ \left[e^{rx}\right]' + a_0\ e^{rx} =\amp\ 0
+					</mrow>
+					<mrow>	a_n\ r^n e^{rx} + \cdots + a_2\ r^2 e^{rx} + a_1\ r e^{rx} + a_0\ e^{rx} =\amp\ 0 </mrow>
+					<mrow>	\left(a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0\right)e^{rx}  =\amp\ 0 </mrow>
+				</md>.
+				Since <m>e^{rx}</m> is never zero, we must have
+				<me>
+					a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
+				</me>
+				which is an <m>n</m>-th order polynomial in <m>r</m>.
+			</p>
+		</theorem>
+
+		<example><title> Characteristic Equation &amp; Exponential Solutions </title>
+			<statement>
+				<p>
+					For each of the following equations, determine the characteristic equation and the fundamental exponential solutions.
+				</p>
+				<p>
+					<sidebyside widths="40% 60%">
+						<p>
+							<line>	1.	<m>\ds\ 5y' + 6y = 0</m>	</line>
+							<line>		<m></m>						</line>
+						</p>
+						<p>
+							<solution>
+								<p>
+									Assuming <m>y = e^{rx}</m>, we have
+								</p>
+								<md>
+									<mrow>	5\left[e^{rx}\right]' + 6\left[e^{rx}\right] = 0	\amp </mrow>
+									<mrow>	5r e^{rx} + 6 e^{rx} = 0							\amp </mrow>
+									<mrow>	(5r + 6) e^{rx} = 0									\amp </mrow>
+								</md>.
+								<p>
+									Thus, the characteristic equation is
+								</p>
+								<me>
+									5r + 6 = 0 \quad \Rightarrow \quad r = -\frac{6}{5}
+								</me>,
+								<p>
+									and the fundamental solution is
+								</p>
+								<me>
+									y = e^{-\frac{6}{5}x}.
+								</me>
+							</solution>
+						</p>
+					</sidebyside>
+					<sidebyside widths="40% 60%">
+						<p>
+							<line>	2.	<m>\ds\ y'' - 4y = 0</m>	</line>
+							<line>		<m></m>						</line>
+						</p>
+						<p>
+							<solution>
+								<p>
+									Assuming <m>y = e^{rx}</m>, we have
+								</p>
+								<md>
+									<mrow>	r^2 e^{rx} - 4 e^{rx} = 0	\amp </mrow>
+									<mrow>	(r^2 - 4) e^{rx} = 0		\amp </mrow>
+								</md>
+								<p>
+									Thus, the characteristic equation is
+								</p>
+								<md>
+									<mrow>	r^2 -	\amp 4 = 0								</mrow>
+									<mrow>			\amp \Rightarrow\ (r - 2)(r + 2) = 0	</mrow>
+								</md>
+								<p>
+									and the fundamental solutions are
+								</p>
+								<me>
+									y_1 = e^{2x}, \quad y_2 = e^{-2x}.
+								</me>
+							</solution>
+						</p>
+					</sidebyside>
+					<sidebyside widths="40% 60%">
+						<p>
+							<line>	3.	<m>\ds\ y''' - 6y'' + y' - 6y = 0</m>	</line>
+							<line>		<m></m>									</line>
+						</p>
+						<p>
+							<solution>
+								<p>
+									Assuming <m>y = e^{rx}</m>, we have
+								</p>
+								<md>
+									<mrow>	r^3 e^{rx} - 6r^2 e^{rx} + r e^{rx} - 6 e^{rx} = 0	\amp </mrow>
+									<mrow>	(r^3 - 6r^2 + r - 6) e^{rx} = 0						\amp </mrow>
+								</md>
+								<p>
+									Thus, the characteristic equation is
+								</p>
+								<me>
+									r^3 - 6r^2 + r - 6 = 0
+								</me>.
+								<p>
+									We can factor this as
+								</p>
+								<md>
+									<mrow>	r^2(r - 6) + (r - 6) = 0	\amp </mrow>
+									<mrow>	(r^2 + 1)(r - 6) = 0		\amp </mrow>
+									<mrow>	r = -i,\ r = i,\ r = 6		\amp </mrow>
+								</md>.
+								<p>
+									Therefore, the fundamental solutions are
+								</p>
+								<me>
+									y_1 = e^{-ix}, \quad y_2 = e^{ix}, \quad y_3 = e^{6x}.
+								</me>
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</statement>
+		</example>
+		
+		<p>
+
+			This last example demostrates that, in general, an <m>n</m>-th order LHCC equation has <m>n</m> exponential solutions of the form <m>e^{rx}</m>, where <m>r</m> is a solution (real or complex) to the <m>n</m>-th degree characteristic equation.
+		</p>
+
+		<p>
+			Now that we understand how to systematically find the fundamental exponential solutions, the last and easiest step is to construct the <em>general solution</em> by combining these solutions appropriately.
+		</p>
+
+	</subsubsection>
 
 </section>
