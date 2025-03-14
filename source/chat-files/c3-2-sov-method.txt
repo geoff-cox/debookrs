@@ -1,0 +1,882 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Separation of Variables (SOV) Method </title>
+
+	<introduction>
+
+		<p>
+			The <em>separation of variables</em> method is a cornerstone technique for solving first-order differential equations. This method works when the equation is <xref ref="separable" text="custom">separable</xref>, meaning it can be rearranged to isolate all terms involving the dependent variable (<m>y</m>) on one side and all terms involving the independent variable (<m>x</m>) on the other. While identifying a first-order equation is straightforward (it involves a first derivative and no higher derivatives), determining if it's separable may require some algebraic manipulation.
+		</p>
+
+	</introduction>
+
+	<subsubsection><title> Steps </title>
+
+		<exploration xml:id="sov-method"><title> Separation of Variables (SOV) </title>
+		
+			<p>
+				The separation of variables method determines the general solution to a <xref ref="separable" text="custom">separable</xref> differential equation as follows.
+			</p>
+
+			<dl>
+
+				<li xml:id="sov-step-1"><title> Step 1: Verify Separable </title>
+					<p>
+						If the equation is first-order and can be put into separable form, then it is separable and go to step 2.
+					</p>
+				</li>
+				
+				<li xml:id="sov-step-2"><title> Step 2: Divide &amp; Integrate </title>
+					<p>
+						From the <xref ref="separable-form" text="custom">separable form</xref>, divide both sides by <m>g(y)</m> &amp; integrate the new equation,
+					</p>
+					<p>
+						<me>
+							\int \frac{1}{g(y)}\ dy = \int f(x) \ dx
+						</me>.
+					</p>
+				</li>
+
+				<li xml:id="sov-step-3"><title> Step 3: Solve for <m>y</m> </title>
+					<p>
+						Solve for <m>y</m> and combine constants. If solving for <m>y</m> is not possible, leave the general solution in implicit form.
+					</p>
+				</li>
+
+			</dl>
+
+		</exploration>
+		
+		<theorem xml:id="treating-dydx-as-a-fraction"><title> Treating <m>dy/dx</m> as a Fraction </title>
+			<statement>
+				<p>
+					Since the derivative resembles a fraction, a common practice is to treat the derivative as <m>dy</m> divided by <m>dx</m>. This violation often works and can simplify the math as it does in <xref ref="sov-step-1" text="custom">step 1</xref> above.
+				</p>
+
+				<p>
+					Additionally, in <xref ref="sov-step-1" text="custom">step 2</xref> it looks like we integrate one side of an equation with respect to <m>x</m> and the other with respect to <m>y</m>. This also doesn't make sense since we were always taught to apply the same operation to both sides of an equation. Nevertheless, this works out as well. To see what is going on, let's rewind and show a bit more detail.
+				</p>
+
+				<p>
+					Starting with the separable form of the differential equation
+					<me>
+						\frac{dy}{dx} = f(x) \cdot g(y)
+					</me>,
+					we divide both sides by <m>g(y)</m> to get
+					<me>
+						\frac{1}{g(y)}\frac{dy}{dx} = f(x)
+					</me>.
+					At this point, we note that when <m>y</m> is a function of <m>x</m>, the differential of <m>y</m> is defined as <m>dy = \frac{dy}{dx}dx</m>. So, integrating both sides with respect to <m>x</m> gives
+					<md>
+						<mrow> \int \frac{1}{g(y(x))} \ob{\frac{dy}{dx}\ dx}^{dy} =\amp\ \int f(x)\ dx</mrow>
+						<mrow> \int \frac{1}{g(y)} \ dy =\amp\ \int f(x)\ dx</mrow>
+					</md>,
+					which is the same integral you see in <xref ref="sov-step-2" text="custom">step 2</xref>, above.
+				</p>
+			</statement>
+		</theorem>
+
+		<xi:include href="./c3-exercises/c3-chkpts-2-1-sov-method-steps.ptx" />
+
+		<p>
+			While the steps of this method are fairly straightforward, the real challenge for most students will come from the algebra and integration techniques required in each step. Use these examples not only to learn this method, but also as an opportunity to sharpen your algebra and calculus skills, as you will certainly need them to be successful in differential equations. With that said, let's dive into a series of examples to help you start tackling problems on your own.
+		</p>
+
+	</subsubsection>
+
+	<subsubsection><title> Examples </title>
+
+		<p>
+			These examples provide a step-by-step application of the separation of variables (SOV) method. They progress from basic to more advanced problems, helping you build a strong foundation while exploring more complex cases.
+		</p>
+
+		<p>
+			For now, focus on following the general steps of the SOV method and gaining familiarity with the process. Later examples will introduce more advanced algebraic and integration techniques.
+		</p>
+
+		<example xml:id="sov-method-basic-examples"><title> Warmup Exercises </title>
+		
+			<p>
+				<statement>
+
+					<p>
+						Find the general solution to the following differential equations using the separation of variables method.
+					</p>
+
+					<p>
+						<me>
+							1.\quad \frac{dy}{dx} = x^2, \qquad
+							2.\quad \frac{dy}{dx} = y^2, \qquad
+							3.\quad \frac{dy}{dx} + \frac{x}{y^2} = 0
+						</me>
+					</p>
+
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<solution>
+
+						<p>
+							Although <xref ref="direct-integration" text="custom">direct integration</xref> can be used, we will solve this equation using the separation of variables method.
+						</p>
+			
+						<p>
+							<xref ref="sov-step-1" text="title" />. The equation is first-order and separable since we can put it into the form
+							<me>
+								\frac{dy}{dx} =
+								\underset{f(x)}{\underset{\uparrow}{\textcolor{BurntOrange}{\big( x^2 \big)}}} \cdot
+								\underset{g(y)}{\underset{\uparrow}{\textcolor{green}{\big( 1 \big)}}}
+							</me>.
+						</p>
+
+						<p>
+							<xref ref="sov-step-2" text="title" />. Next, divide both sides by <m>g(y)</m>
+							<me>
+								\frac{1}{\textcolor{green}{( 1 )}} dy = \textcolor{BurntOrange}{( x^2 )} \ dx
+							</me>
+							and integrate to get
+							<md>
+								<mrow>	\int 1\ dy	\amp = \int x^2\ dx			</mrow>
+								<mrow>		y + c_1	\amp = \frac13 x^3 + c_2	</mrow>
+							</md>.
+						</p>
+			
+						<p>
+							<xref ref="sov-step-3" text="title" />. Isolate <m>y</m> and combine constants.
+						</p>
+
+						<p>
+							<md>
+								<mrow>	y =\amp\,	\frac13 x^3 + c_2 - c_1							</mrow>
+								<mrow>	y =\amp\,	\frac13 x^3 + c_3		\qquad (c_3 = c_2-c_1)	</mrow>
+							</md>
+						</p>
+
+					</solution>
+
+					<solution>
+
+						<p>
+							<xref ref="sov-step-1" text="title" />. The differential equation has order 1 and is separable since
+							<me>
+								\frac{dy}{dx} =
+								\underset{f(x)}{\underset{\uparrow}{\textcolor{BurntOrange}{\big( 1 \big)}}} \cdot
+								\underset{g(y)}{\underset{\uparrow}{\textcolor{green}{\big( y^2 \big)}}}
+							</me>
+						</p>
+				
+						<p>
+							<xref ref="sov-step-2" text="title" />. Dividing by <m>g(y)</m> and integrating gives
+						</p>
+
+						<p>
+							<md>
+								<mrow>
+									\frac{1}{\textcolor{green}{( y^2 )}} dy
+																\amp = \textcolor{BurntOrange}{( 1 )} \ dx
+								</mrow>
+								<mrow>			\int y^{-2}\ dy	\amp = \int 1\ dx	</mrow>
+								<mrow>	\frac{y^{-1}}{-1} + c_1	\amp = x + c_2		</mrow>
+							</md>.
+						</p>
+			
+						<p>
+							<xref ref="sov-step-3" text="title" />. Isolating <m>y</m> and combining constants, we get
+						</p>
+
+						<p>
+							<md>
+								<mrow>  -\frac{1}{y}	\amp = x + c_2 - c_1		</mrow>
+								<mrow>  \frac{1}{y}		\amp = -x + c_3				</mrow>
+								<mrow>  			y	\amp = \frac{1}{-x + c_3}	</mrow>
+							</md>
+						</p>
+					</solution>
+
+					<solution>
+
+						<p>
+							The equation is first-order and separable since
+							<me>
+								\frac{dy}{dx} = - \frac{x}{y} =
+								\textcolor{BurntOrange}{\left( -x \right)} \cdot
+								\textcolor{green}{\left( \frac{1}{y^2} \right)}
+							</me>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="top top">
+								
+								<p>
+									Divide <m>\rightarrow</m>
+								</p>
+
+								<p>
+									<me>
+										\textcolor{green}{y^2}\ dy = \textcolor{BurntOrange}{-x}\ dx
+									</me>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="top top">
+							
+								<p>
+									Integrate <m>\rightarrow</m>
+								</p>
+
+								<p>
+									<md>
+										<mrow>			\int y^2\ dy 	\amp = \int -x\ dx				</mrow>
+										<mrow>	\frac{y^{3}}{3} + c_1	\amp = -\frac{x^{2}}{2} + c_2.	</mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<aside><title> 📌 Note </title>
+							<p>
+								For convenience, we will only write one integration constant after the integration step since these constants combine in general.
+							</p>
+						</aside>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="top top">
+							
+								<p>
+									<line>	Isolate &amp;					</line>
+									<line>	Combine <m>\quad\rightarrow</m>	</line>
+									<line>	Constants						</line>
+								</p>
+
+								<p>
+									<md>
+										<mrow> 	\frac{y^{3}}{3}	\amp = -\frac{x^{2}}{2} + \os{\large c_3}{\boxed{c_2-c_1}}	</mrow>
+										<mrow>  		y^{3}	\amp = -3\frac{x^{2}}{2} + \os{\large c_4}{\boxed{3 c_3}}	</mrow>
+										<mrow>  		y^{3}	\amp = -\frac32 x^2 + c_4									</mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="middle middle">
+							
+								<p>
+									General Solution <m>\rightarrow</m>
+								</p>
+
+								<p>
+									<md>
+										<mrow> y \amp = \left(-\frac32 x^2 + c \right)^{1/3} </mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+					</solution>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			The next collection of problems go beyond the basics and require more advanced algebraic manipulations or integration techniques to solve. Each example will deepen your understanding of the separation of variables method (SOV) and its application to more complex differential equations.
+		</p>
+
+		<example><title> A Typical Problem </title>
+			<p>
+				<statement>
+					<p>
+						Find the general solution to the differential equation
+					</p>
+
+					<p>
+						<me>
+							y^2 y' - 1 = 6x^2
+						</me>.
+					</p>
+				</statement>
+			</p>
+
+			<p>
+				<solution>
+
+					<p>
+						This differential equation is separable as it can be written as:
+						<md>
+							<mrow> y^2 y' - 1 =\amp\ 6x^2														</mrow>
+							<mrow> y' =\amp\ \frac{6x^2 + 1}{y^2}												</mrow>
+							<mrow> \frac{dy}{dx} =\amp\ \big( 6x^2 + 1 \big)\cdot \left( \frac{1}{y^2} \right)	</mrow>
+						</md>
+						Therefore, we can apply the separation of variables method.
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="middle middle">
+							
+							<p>
+								Divide <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	y^2\ dy	=\amp\ (6x^2+1)\ dx	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="top middle">
+							
+							<p>
+								Integrate <m>\rightarrow</m> <m>\vphantom{\ds\int}</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\int y^2\ dy	=\amp\ \int (6x^2+1)\ dx	</mrow>
+									<mrow>	\frac{y^3}{3}	=\amp\ 2x^3 + x + c		</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="top top">
+							
+							<p>
+								<line>	Isolate &amp;					</line>
+								<line>	Combine <m>\quad\rightarrow</m>	</line>
+								<line>	Constants						</line>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\frac{y^3}{3}	=\amp\ 2x^3 + x + c								</mrow>
+									<mrow>				y^3	=\amp\ 6x^3 + 3x + \os{\large c}{\boxed{3c}}	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						
+						<sidebyside widths="36% 64%" valigns="middle middle">
+							<p>
+								General Solution <m>\rightarrow</m>
+							</p>
+							<p>
+								<md>
+									<mrow> y					=\amp\ \sqrt[3]{6x^3 + 3x + c}						</mrow>
+								</md>.
+							</p>
+						</sidebyside>
+
+					</p>
+
+				</solution>
+			</p>
+		</example>
+		
+		<p>
+			In this example, we combined the constant, <m>c</m>, and left it under the root symbol. A common error is to attempt to combine the constant further, like so
+			<md>
+				<mrow>	y(x)	=\amp\ \pm\sqrt{2\sin(x)} + \sqrt{c}	\quad \leftarrow \text{Common Error}		</mrow>
+				<mrow>	y(x)	=\amp\ \pm\sqrt{2\sin(x)} + c			\quad \leftarrow \text{Incorrect Solution}	</mrow>
+			</md>,
+			however this is incorrect and the constant cannot be combined in this way.
+		</p>
+
+		<example><title> A <m>\pm</m> Symbol in the Solution </title>
+			<p>
+				<statement>
+					<p>
+						Using separation of variables, solve the differential equation
+					</p>
+
+					<me>
+						\frac{dy}{dx} = \frac{\cos x}{y}
+					</me>.
+				</statement>
+			</p>
+
+			<p>
+				<solution>
+
+					<p>
+						The equation is separable since it can be written as:
+						<me>\ds  \frac{dy}{dx} = \big( \cos x \big) \cdot \left( \frac{1}{y} \right).</me>
+						Now we apply the separation of variables method.
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="middle middle">
+							
+							<p>
+								Divide <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow> y\ dy	=\amp\ \cos(x)\ dx	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="top middle">
+							
+							<p>
+								Integrate <m>\rightarrow</m> <m>\vphantom{\ds\int}</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>		\int y\ dy	=\amp\ \int \cos(x)\ dx	</mrow>
+									<mrow>	\frac{y^2}{2}	=\amp\ \sin(x) + c		</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+
+						<sidebyside widths="36% 64%" valigns="top top">
+							
+							<p>
+								<line>	Isolate &amp;					</line>
+								<line>	Combine <m>\quad\rightarrow</m>	</line>
+								<line>	Constants						</line>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\frac{y^2}{2}	=\amp\ \sin(x) + c							</mrow>
+									<mrow>				y^2	=\amp\ 2\sin(x) + \os{\large c}{\boxed{2c}}	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+
+					</p>
+
+					<p>
+						
+						<sidebyside widths="36% 64%" valigns="middle middle">
+
+							<p>
+								General Solution <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	y(x)	=\amp\ \pm\sqrt{2\sin(x) + c}	</mrow>
+								</md>.
+							</p>
+							
+						</sidebyside>
+
+					</p>
+
+				</solution>
+			</p>
+		</example>
+
+		<p>
+			Before moving on, let's address the <em><m>\pm</m> sign</em> left in the general solution. This symbol is required since both the positive and negative versions of this function are solutions. The sign becomes more important when we solve initial-valued problems where more information about solution is given, as shown in the next example.
+		</p>
+
+		<example><title> Some Initial-Valued Problems </title>
+			<p>
+				<statement>
+					<p>
+						Find the particular solution to each of the initial-value problems
+						<me>
+							\frac{dy}{dx} = \frac{\cos x}{y}, 	\quad y(0) = -5	\qquad \text{and} \qquad
+							z' - 1 = z^2, 						\quad z(4) = 9
+						</me>
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<solution>
+						<p>
+							From previous example, the general solution is
+							<me>
+								y(x) = \pm\sqrt{2\sin(x) + c}.
+							</me>
+							where the <m>\pm</m> sign means that the general solution includes both the positive and negative square roots. However, when finding a particular solution, only one applies. In this case, the initial condition <m>y(0) = -5</m> indicates that <m>y</m> is negative when <m>x = 0</m>. Therefore, the particular solution must come from the form containing the negative sign. Substituting the initial condition:
+							<md>
+								<mrow>	-5	=\amp\ -\sqrt{2\sin(0) + c} = -\sqrt{0 + c} = -\sqrt{c}	</mrow>
+								<mrow>	5	=\amp\ \sqrt{c} \quad \implies \quad c = 25				</mrow>
+							</md>
+							Therefore, the solution to the initial-value problem is:
+							<me>
+								y(x) = -\sqrt{2\sin(x) + 25}
+							</me>
+						</p>
+					</solution>
+
+					<solution>
+
+						<p>
+							This differential equation is first order and separable since
+							<md>
+								<mrow> z' - 1 =\amp\ z^2							</mrow>
+								<mrow> z' =\amp\ z^2 + 1							</mrow>
+								<mrow> z' =\amp\ \big( 1 \big) \big( z^2 + 1 \big)  </mrow>
+							</md>
+							Therefore, we can apply the separation of variables method.
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="middle middle">
+								
+								<p>
+									Divide <m>\rightarrow</m>
+								</p>
+
+								<p>
+									<md>
+										<mrow>	\frac{1}{z^2+1}dz	=\amp\ 1\ dt	</mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="top middle">
+								
+								<p>
+									Integrate <m>\rightarrow</m> <m>\vphantom{\ds\int}</m>
+								</p>
+
+								<p>
+									<md>
+										<mrow>	\int\frac{1}{z^2+1}\ dz	=\amp\ \int 1\ dt	</mrow>
+										<mrow>				\arctan z	=\amp\ t + c		</mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="middle middle">
+								
+								<p>
+									<line>	Isolate &amp;					</line>
+									<line>	Combine <m>\quad\rightarrow</m>	</line>
+									<line>	Constants						</line>
+								</p>
+
+								<p>
+									<md>
+										<mrow>	\arctan z	=\amp\ t + c	</mrow>
+									</md>
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							<sidebyside widths="36% 64%" valigns="middle middle">
+								
+								<p>
+									General Solution <m>\rightarrow</m>
+								</p>
+
+								<p>
+									<md>
+										<mrow>	z	=\amp\ \tan(t+c)	</mrow>	
+									</md>.
+								</p>
+
+							</sidebyside>
+						</p>
+
+						<p>
+							Substituting, <m>z(4) = 9</m>, into the general solution, we get
+							<md>
+								<mrow>	9 = \tan(4+c) \implies	\amp\ \tan^{-1}(9) = 4 + c	</mrow>
+								<mrow>							\amp\ \tan^{-1}(9) - 4 = c	</mrow>
+							</md>
+							Therefore, the solution to the intial-valued problem is
+							<aside><title> ⚠️ Warning </title>
+								<p>
+									If you approximate <m>c</m> (e.g. <m>-2.54</m>), the solution
+									<me>
+										z = \tan(t - 2.54)
+									</me>,
+									no longer satisfies the initial condition <m>z(4) = 9</m>.
+								</p>
+							</aside>
+							<me>
+								z = \tan(t + \tan^{-1}(9) - 4)
+							</me>
+							
+						</p>
+						
+					</solution>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			In the previous examples, we were able to explicitly solve for the dependent variable in terms of the independent variable. However, in some cases, we may only be able to provide an implicit solution, as shown in the next example.
+		</p>
+		
+		<example><title> An Implicit Solution </title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial-value problem
+						<me>
+							Q Q' + e^Q Q' = t, \quad Q(2) = 0
+						</me>
+					</p>
+				</statement>
+			</p>
+		
+			<p>
+				<solution>
+
+					<p>
+						Since all the <m>Q</m> terms are on the left and all the <m>t</m> terms are on the right, we can just factor out <m>Q'</m> on the left to separate the equation.
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="middle middle">
+							
+							<p>
+								Divide <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\left(Q + e^Q\right)dQ	=\amp\ tdt	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="top middle">
+							
+							<p>
+								Integrate <m>\rightarrow</m> <m>\vphantom{\ds\int}</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\int \left(Q + e^Q\right)dQ	=\amp\ \int t\ dt			</mrow>
+									<mrow>			\frac12 Q^2 + e^Q	=\amp\ \frac{1}{2}t^2 + c	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="top middle">
+							
+							<p>
+								<line>	Isolate &amp;					</line>
+								<line>	Combine <m>\quad\rightarrow</m>	</line>
+								<line>	Constants						</line>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	Q^2 + 2e^Q	=\amp\ t^2 + \us{c}{\boxed{2c}}	</mrow>.
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="36% 64%" valigns="middle middle">
+							
+							<p>
+								General Solution <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\left(Q(t)\right)^2 + 2e^{Q(t)} = t^2 + c	</mrow>.
+								</md>.
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						Note that although <m>Q</m> is a function of <m>t</m>, there is no nice way to isolate a single <m>Q</m> on one side and a function of purely <m>t</m> on the other. In these cases, we say <m>Q</m> depends implicity on <m>t</m> and we leave the general solution in this implicit form.
+					</p>
+
+					<p>
+						Despite being an implicit solution, we can still find <m>c</m> using <m>Q(2) = 0</m> by setting <m>t=2</m> in the general solution to get
+						<md>
+							<mrow>	\left(Q(2)\right)^2 + 2e^{Q(2)}	=\amp\ 2^2 + c								</mrow>
+							<mrow>		\left(0\right)^2 + 2e^{0}	=\amp\ 4 + c								</mrow>
+							<mrow>								2	=\amp\ 4 + c	\quad\implies\quad c = -2	</mrow>
+						</md>.
+						Therefore, the particular implicit solution to this problem is given by
+						<me>
+							\left(Q(t)\right)^2 + 2e^{Q(t)} = t^2 - 2
+						</me>.
+					</p>
+
+				</solution>
+			</p>		
+		</example>
+
+		<p>
+			This example illustrates strategies for combining constants and dealing with absolute values that often arise when solving differential equations.
+		</p>
+
+		<example><title> Dealing with Absolute Values </title>
+			<p>
+				<statement>
+					<p>
+						Find the general solution to the differential equation
+						<me>
+							x\frac{dy}{dx} + 10x^2y = 6x^2
+						</me>
+					</p>
+				</statement>
+			</p>
+
+			<p>
+				<solution>
+
+					<p>
+						This differential equation is first order and separable since
+						<md>
+							<mrow>	x\frac{dy}{dx} + 10x^2y	=\amp\ 6x^2										</mrow>
+							<mrow>			\frac{dy}{dx}	=\amp\ \frac{6x^2}{x}\left(6x^2 - 10x^2y\right)	</mrow>
+							<mrow>			\frac{dy}{dx}	=\amp\ 6x - 10xy = (2x)(3 - 5y)					</mrow>
+						</md>
+						Therefore, we can apply the separation of variables method.
+					</p>
+
+					<p>
+						<em>Note, the boxed expressions below are where we combined constants.</em>
+					</p>
+
+					<p>
+						<sidebyside widths="30% 70%" valigns="middle middle">
+							
+							<p>
+								Divide <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<m> \ds \qquad\frac{1}{3 - 5y}dy = 2x\ dx </m>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="30% 70%" valigns="top middle">
+							
+							<p>
+								Integrate <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>
+										\int \frac{1}{3 - 5y}dy	=\amp\ \int 2x\ dx \quad
+										\left(
+										\begin{array}{c}
+											u = 3-5y,\\
+											du = -5dx
+										\end{array}
+										\right)
+									</mrow>
+									<mrow>	-\frac{1}{5}\ln|3 - 5y|	=\amp\ x^2 + c	</mrow>			
+								</md>
+							</p>
+
+						</sidebyside>
+					</p>
+
+					<p>
+
+						<sidebyside widths="30% 70%" valigns="top top">
+							
+							<p>
+								<line>	Isolate &amp;	<m>\quad\rightarrow</m>	</line>
+								<line>	Combine									</line>
+								<line>	Constants								</line>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	\ln|3 - 5y|	=\amp\ -5x^2 - 5c								</mrow>
+									<mrow>	|3 - 5y|	=\amp\ e^{-5x^2 - 5c}							</mrow>
+									<mrow>		3 - 5y	=\amp\ \pm e^{-5x^2 - 5c}						</mrow>
+									<mrow>		3 - 5y	=\amp\ \boxed{\pm e^{-5c}}\ e^{-5x^2}			</mrow>
+									<mrow>			5y	=\amp\ c e^{-5x^2} + 3							</mrow>
+									<mrow>			y	=\amp\ \boxed{\frac{c}{5}}\ e^{-5x^2} + \frac35	</mrow>
+								</md>
+							</p>
+
+						</sidebyside>
+
+					</p>
+
+					<p>
+
+						<sidebyside widths="30% 70%" valigns="middle middle">
+							
+							<p>
+								General Solution <m>\rightarrow</m>
+							</p>
+
+							<p>
+								<md>
+									<mrow>	y = ce^{-5x^2} + \frac35	</mrow>.
+								</md>.
+							</p>
+
+						</sidebyside>
+
+					</p>
+
+					<p>
+						The absolute value in the solution came from the <m>y</m> integral, which was later replaced by <m>\pm</m>. The <m>\pm</m> was combined into <m>c</m> since changing the sign of a constant doesn't change the fact that it is a constant.
+					</p>
+
+				</solution>
+			</p>
+		</example>
+
+		<xi:include href="./c3-exercises/c3-chkpts-2-2-sov-method-examples.ptx" />
+	
+	</subsubsection>
+
+	<p>
+		The separation of variables method is a flexible and powerful tool for solving a wide range of differential equations, including nonlinear ones. As you've seen, the method is systematic: separate, integrate, and isolate. While the mechanics of the method are straightforward, the complexity often lies in the algebraic manipulation and integration.
+	</p>
+
+</subsection>

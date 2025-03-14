@@ -1,0 +1,315 @@
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Separable Form </title>
+
+	<introduction>
+
+		<p>
+			The method of separation of variables can only be applied to first-order differential equations that can be written in a specific form. Verification of this form guarantees that the equation can be rearranged in a way where the integration of both sides leads directly to the general solution. Therefore, to apply separation of variables, we must first be able to identify when form is possible. Here is the definition of this special form.
+		</p>
+
+		<definition xml:id="separable"><title> Separable Form </title>
+			<statement>
+				<p>
+					A first-order differential equation is <term>separable</term> if it can be written in following <term>separable form</term>
+					<men xml:id="separable-form">
+						\frac{dy}{dx} = f(x) \cdot g(y)
+					</men>.
+				</p>
+			</statement>
+		</definition>
+
+		<theorem xml:id="function-notation"><title> Understanding <m>f(x) \cdot g(y)</m> in the Definition </title>
+			<p>
+				This definition uses function notation, which is a difficult concept for many students because it packs a lot of information into a small space.
+			</p>
+
+			<p>
+				In this definition, <m>f(x)</m> represents any function of <m>x</m>. In other words, it is a generic placeholder for any expression containing only the variable <m>x</m> and possibly constants. For example, <m>f(x)</m> could represent all of the following:
+				<me>
+					13\sin(3x), \quad (x^2 + 1)^{\cos x}, \quad 3x - 2e^{4x}, \quad \frac{2^x}{1+x}, \quad 1, \quad \text{etc.}
+				</me>
+			</p>
+
+			<p>
+				Similarly, <m>g(y)</m> is a generic placeholder for any expression containing only <m>y</m> and constants. For example, <m>g(y)</m> could represent:
+				<me>
+					\sin(y+\cos y), \quad 3y^2 + 1, \quad \frac{1}{y}, \quad 1, \quad \text{etc.}
+				</me>
+			</p>
+
+			<p>
+				Therefore, when you see <m>f(x) \cdot g(y)</m> in the definition, you should think of this as a generic placeholder of the form
+				<me>
+					\ob{\left(
+						\begin{array}{c}
+							\text{containing only } x \text{ &amp;}\\
+							\text{possibly constants} \\
+						\end{array}
+					\right)}^{f(x)}
+					\cdot
+					\ob{\left(
+						\begin{array}{c}
+							\text{containing only } y \text{ &amp;}\\
+							\text{possibly constants} \\
+						\end{array}
+					\right)}^{g(y)}
+				</me>
+				For example, <m>f(x) \cdot g(y)</m> could represent:
+				<me>
+					\ob{3(3x - 2e^x)}^{f(x)} \cdot \ob{(y^2-1.7)}^{g(y)}, \quad
+					\os{f(x)}{\os{\downarrow}{\left(\frac{1}{x+1}\right)}} \os{g(y)}{\os{\downarrow}{\left(\frac{y}{3}+7\right)}}, \quad
+					\os{f(x)}{\os{\downarrow}{(-1)}} \cdot \os{g(y)}{\os{\downarrow}{(\pi)}}, \quad \text{etc.}
+				</me>
+			</p>
+		</theorem>
+
+	</introduction>
+	
+	<subsubsection><title> Recognizing the Separable Form </title>
+		
+		<p>
+			Since the separation of variables method can only be applied to differential equations in separable form, it is crucial to be able to recognize this structure. If you are not comfortable with the notation, <m>f(x) \cdot g(y)</m>, in the definition, please see <xref ref="function-notation" />. Otherwise, let's look at some examples.
+		</p>
+
+		<p>
+			Examples of separable differential equations include:
+			<me>
+				\frac{dy}{dx} = \ub{	(x^2 + 1)	}_{f(x)} \cdot \ub{	(y - 6)^3	}_{g(y)}\ , \qquad
+				\frac{dy}{dx} = \ub{	\sin(y)		}_{g(y)} \cdot \ub{	\cos(x)		}_{f(x)}.
+			</me>
+			Non-separable equations include:
+			<me>
+				\frac{dy}{dx} = \ub{	-6x + 2y				}_{\text{not } f(x)\ \cdot\ g(y)}, \quad
+				\frac{dy}{dx} = \ub{	(x + y)(y - 6)^3	}_{\text{not } f(x)\ \cdot\ g(y)}, \quad
+				\frac{dy}{dx} = \ub{	\cos(x - y)			}_{\text{not } f(x)\ \cdot\ g(y)}.
+			</me>
+		</p>
+
+		<p>
+			As a special case, a differential equation can still be separable even if one or both variables do not explicitly appear. For example, the equations
+			<me>
+				\frac{dy}{dx} = 6x + 5, \qquad
+				\frac{dy}{dx} = (y^2 + 7)^3, \qquad
+				\frac{dy}{dx} = 15
+			</me>,
+			are all separable since they can be written as
+			<me>
+				\frac{dy}{dx} = (\underset{f(x)}{\underset{\uparrow}{ \vphantom{|} 6x }}) \cdot
+				(\underset{g(y)}{\underset{\uparrow}{ \vphantom{|} 1 }})
+				\qquad
+				\frac{dy}{dx} = (\underset{f(x)}{\underset{\uparrow}{ \vphantom{|} 1 }}) \cdot
+				\underset{g(y)}{\underset{\uparrow}{ \vphantom{|} (y^2 + 7)^3 }}
+				\quad
+				\frac{dy}{dx} = (\underset{f(x)}{\underset{\uparrow}{ \vphantom{|} 3 }}) \cdot
+				(\underset{g(y)}{\underset{\uparrow}{ \vphantom{|} 5 }})
+			</me>.
+		</p>
+
+		<xi:include href="./c3-exercises/c3-chkpts-1-1-separable-form-identifying-forms.ptx" />
+		
+	</subsubsection>
+
+	<subsubsection><title> Showing Separability </title>
+
+		<p>
+			<xref ref="separable" text="custom">Separable equations</xref> are often not presented in a <xref ref="separable" text="custom">separable form</xref>, so you may need to manipulate the equation to identify this characteristic. Being familiar with a few algebra techniques can assist you in this process, which may involve: (1) isolating the derivative and (2) forming the product <m>f(x) \cdot g(y)</m>. The following examples will demonstrate some of the tools you can use to achieve this.
+		</p>
+		
+		<example xml:id="example-show-separable-1"><title> Using Algebra to Create a Product </title>
+			<p>
+				<statement>
+					<p>
+						Show that the differential equations are separable.
+						<me>
+							\frac{dy}{dx} = x + xy^2, \qquad
+							\frac{dP}{dt} = \frac{Pt}{P^2 + 1}, \qquad
+							\frac{dM}{d\omega} = 11e^{4\omega + 3M}
+						</me>.
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<solution><title> <term>Take out a Common Factor</term> </title>
+						<p>
+							Since <m>x</m> is common in both terms of the sum, we can factor it out as
+							<me>
+								\frac{dy}{dx}
+									= \ub{x + xy^2}_{\text{not separated}} \quad \longrightarrow \quad
+								\frac{dy}{dx}
+									= \ub{
+										{\color{blue}	\os{f(x)}{\os{\downarrow}{	x		}}	}
+										({\color{green}	\os{g(y)}{\os{\downarrow}{	1 + y^2	}}	})
+									}_{\text{separated}}
+							</me>
+							showing that the differential equation is <em>separable</em>.
+						</p>
+					</solution>
+
+					<solution><title> <term>Product of Fractions</term> </title>
+						<p>
+							Since the variables in this equation are <m>t</m> and <m>P</m>, the separable form will look like <m>f(P) \cdot g(t)</m>.
+						</p>
+
+						<p>
+							This example uses the following rule for multiplying fractions:
+							<me>
+								\frac{A\cdot B}{C\cdot D} = \frac{A}{C} \cdot \frac{B}{D}.
+							</me>
+							First, we split <m>P</m> and <m>t</m> in the numerator and denominator, then use the rule above to separate the fraction, like so
+							<me>
+								\frac{dP}{dt}
+									= \ub{\frac{Pt}{P^2 + 1}}_{\text{not separated}}
+									= \frac{P\cdot t}{(P^2 + 1) \cdot (1)}
+									= \ub{
+										{\color{blue}	\os{f(P)}{\os{\downarrow}{	\frac{P}{P^2 + 1}}}		} \cdot
+										{\color{green}	\os{g(t)}{\os{\downarrow}{	\frac{t}{1}}}			}
+									}_{\text{separated}}
+							</me>
+							and the equation is <em>separable</em>.
+						</p>
+					</solution>
+					
+					<solution><title> <term>Exponent Property</term> </title>
+						<p>
+							Applying the rule
+							<me>
+								e^{A + B} = e^{A} \cdot e^{B}
+							</me>
+							to this differential equation allows us to show it is separable as follows:
+							<me>
+								\frac{dM}{d\omega}
+									= \ub{11e^{4\omega + 3M}}_{\text{not separated}}
+									= 11(e^{4\omega} \cdot e^{3M})
+									= \ub{
+										{\color{blue}	\os{f(\omega)}{	\os{\downarrow}{	11e^{4\omega}	}}	} \cdot
+										{\color{green}	\os{g(M)}{		\os{\downarrow}{		e^{3M}		}}	}
+									}_{\text{separated}}
+							</me>.
+						</p>
+					</solution>
+				</p>
+			</solution>
+		
+		</example>
+
+		<example xml:id="example-show-separable-2"><title> Show Separable </title>
+		
+			<p>
+				<statement>
+					<p>
+						Show the differential equations are separable.
+						<me>
+							y^2\frac{d^2y}{dx^2} = x, \qquad
+							t - ss' = - s, \qquad
+							y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
+						</me>.
+					</p>
+				</statement>
+			</p>
+			
+			<solution>
+				<p>
+					<solution><title> <term>Attention to Detail</term> </title>
+						<p>
+							This is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, <em>separability does not apply</em>.
+						</p>
+					</solution>
+
+					<solution><title> <term>Isolate the Derivative First</term> </title>
+						<p>
+							To see that this equation is separable, we need to check that it can be rearranged in <xref ref="separable" text="custom">separable form</xref>. Isolating <m> s' </m> we get
+							<me> s' = \frac{s + t}{s} </me>
+							and it should be clear that there is no way to separate <m>t</m> and <m>s</m> by <em>multiplication</em> in the numerator, so this equation <em>is not separable</em>.
+						</p>
+					</solution>
+
+					<solution><title> <term>Everything but the Kitchen Sink</term> </title>
+
+						<p>
+							This example uses a little of everything we discussed, so strap in.
+						</p>
+
+						<p>
+							Noticing that the equation is first-order, we start by isolating <m>dy/dx</m>
+							<md>
+								<mrow>
+									y\frac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
+								</mrow>
+								<mrow>
+									\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x + \cos y}}{y}
+								</mrow>
+							</md>
+						</p>
+
+						<p>
+							Next, we can rewrite the exponent in the numerator as a product
+							<me>
+								\frac{dy}{dx} = \frac{6x^2e^x - 8x^2e^{x}e^{\cos y}}{y}
+							</me>
+							and recognize that there is a common factor in the numerator
+							<me>
+								\frac{dy}{dx} = \frac{2x^2e^x(3 - 4e^{\cos y})}{y}
+							</me>.
+						</p>
+
+						<p>
+							From here, we write the result as a product of fractions,
+							<me>
+								\frac{dy}{dx} = \frac{2x^2e^x}{1} \cdot \frac{3 - 4e^{\cos y}}{y}
+							</me>,
+							and see that the equation is now <em>separable</em>.
+						</p>
+
+					</solution>
+				</p>
+			</solution>
+		
+		</example>
+
+		<p>
+			The next example shows that sometimes you need to isolate the derivative first.
+		</p>
+
+		<example xml:id="example-show-separable-3"><title> Isolating the Derivative First </title>
+			<p>
+				<statement>
+					<p>
+						Show the differential equation is separable by isolating the derivative:
+						<me> x\frac{dy}{dx} + 10x^2y = 6x^2. </me>
+					</p>
+				</statement>
+			</p>
+			
+			<solution>
+
+				<p>
+					Let's isolate <m>dy/dx</m> on the left side of the equation, like so
+					<md>
+						<mrow>  x\frac{dy}{dx}	=\amp\ 6x^2 - 10x^2y							</mrow>
+						<mrow> \frac{dy}{dx}	=\amp\ \frac{1}{x}\left(6x^2 - 10x^2y\right)	</mrow>
+						<mrow> \frac{dy}{dx}	=\amp\ 6x - 10xy								</mrow>
+					</md>.
+					Now that the derivative is isolated on the left, we attempt to separate the variables on the right. Factoring <m>2x</m> out of both terms gives
+					<me> \frac{dy}{dx} = 2x \cdot \left( 3 - 5y \right) </me>
+					and we see that the differential equation <em>is separable</em>.
+				</p>
+				
+				<p>
+					In general, there is more than one way to separate a differential equation. This example could have been separated in either of the following ways:
+					<me>\frac{dy}{dx} = x \cdot ( 6 - 10y ), \qquad \frac{dy}{dx} = ( -2x )\cdot ( 5y - 3 ) </me>
+					The only thing that matters is that <m>x</m> and <m>y</m> are separated.
+				</p>
+
+			</solution>
+		</example>
+
+		<xi:include href="./c3-exercises/c3-chkpts-1-2-separable-form-showing-forms.ptx" />
+
+	</subsubsection>
+
+	<p>
+		Identifying that an equation is separable is key to effectively applying the method of separation of variables. As you will see in the next section, recognizing this structure unlocks a path to solving these equations.
+	</p>
+
+</subsection>
