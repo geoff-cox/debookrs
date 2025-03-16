@@ -1,214 +1,255 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Introduction to LNCC Equations </title>
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Introduction to Linear Nonhomogeneous Constant Coefficient Equations </title>
 
 	<introduction>
+
 		<p>
-			<!-- NEED AN INTRO -->
+			To understand why the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation has two parts, we will consider the following second-order differential equation:
 		</p>
+
+		<me>
+			y'' - 4y' + 3y = 9x
+		</me>.
+
+		<p>
+			Let's start with the particular solution, <m>y_p</m>, which accounts for the <m>9x</m> on the right-hand side of the equation. We will then introduce the homogeneous solution, <m>y_h</m>, which accounts for the terms that cancel out when the solution is plugged into the differential equation.
+		</p>
+		
 	</introduction>
 
-	<subsection><title> LNCC Equations </title>
-		
+	<subsection><title> The Particular Solution Resembles the Forcing Function </title>
+
 		<p>
-			In the previous chapter, we solved linear homogeneous constant coefficient equations of the form
-			<me>
-				a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
-			</me>.
-			Such equations are called <em>homogeneous</em> because of the zero on the right-hand side. In this chapter, we explore how to solve the more general case of <em>nonhomogeneous</em> equations, which include a non-zero function on the right-hand side, like so
-			<me>
-				a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = f(x)
-			</me>.
-			For ease of discussion, will use the shorthand LNCC equations to refer to Linear Nonhomogeneous Constant Coefficient equations.
+			Imagine you wanted to guess a solution to the second-order differential equation
+		</p>
+
+		<me>
+			y'' - 4y' + 3y = 9x
+		</me>.
+
+		<p>
+			Whatever you choose for <m>y</m>, you know that after it is plugged into the equation, the terms on the left should simplify to <m>9x</m>. Logically, this means that at least one of <m>y</m>, <m>y'</m>, and <m>y''</m> must result in like-terms with <m>9x</m>. Any other terms must cancel out.
 		</p>
 
 		<p>
-			Recall, the solution of a homogeneous equation is made up of <m>e^{r x}</m> terms which have the unique property of being like-terms with its derivatives. This is needed so the terms on the left-hand side can cancel out to zero.
+			This reasoning suggests that our guess for the solution, <m>y</m>, must resemble <m>9x</m> to some extent. To get a better sense of this, let's try a few guesses:
 		</p>
 
-		<figure xml:id="lhcc-vs-lcc-solution-type">
-			<caption>Comparison of a homogeneous equation (<em>left</em>) and a nonhomogeneous equation (<em>right</em>). In both, the solutions must simplify in a specific way when substituted into the equation.</caption>
-			<sidebyside widths="42% 45%">
-				<image width="100%">
-					<latex-image>
-					
-						\begin{tikzpicture}[join=round,rounded corners,&gt;=stealth,shorten &gt;=1pt,shorten &lt;=1pt,thick]
-		
-							\node (text) 	at (1.8,1.1) 	{\(e^{r x}-\)like};
-							
-							\node (blank1) at (0.3,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(0,0)--(0.6,0)--(0.6,0.5)--(0,0.5)--cycle;
-							
-							\node 			at (0.75,0.35)	{$^{\prime\prime}$};
-							\node 			at (1.0,0.25)	{$-$};
-							\node 			at (1.3,0.25)	{$4$};
-							
-							\node (blank2) at (1.8,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(1.5,0)--(2.1,0)--(2.1,0.5)--(1.5,0.5)--cycle;
-			
-							\node 			at (2.2,0.35)	{$^{\prime}$};
-							\node 			at (2.4,0.25)	{$+$};
-							\node 			at (2.7,0.25)	{$3$};
-			
-							\node (blank3) at (3.2,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(2.9,0)--(3.5,0)--(3.5,0.5)--(2.9,0.5)--cycle;
-							\node 			at (3.8,0.25)	{$=$};
-							\node 			at (4.2,0.25)	{$0$};
-							
-							\draw[-&gt;,thick] (text.west)		--	+(-0.2,0) -| (blank1);
-							\draw[-&gt;,thick] (text)		--	+(0,-0.4) -| (blank2);
-							\draw[-&gt;,thick] (text.east)		--	+(0.1,0) -| (blank3);
-							
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-				<image width="100%">
-					<latex-image>
-					
-						\begin{tikzpicture}[join=round,rounded corners,&gt;=stealth,shorten &gt;=1pt,shorten &lt;=1pt,thick]
-		
-							\node (text) 	at (1.8,1.1) 	{\(f(x)-\)like};
-							
-							\node (blank1) at (0.3,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(0,0)--(0.6,0)--(0.6,0.5)--(0,0.5)--cycle;
-							
-							\node 			at (0.75,0.35)	{$^{\prime\prime}$};
-							\node 			at (1.0,0.25)	{$-$};
-							\node 			at (1.3,0.25)	{$4$};
-							
-							\node (blank2) at (1.8,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(1.5,0)--(2.1,0)--(2.1,0.5)--(1.5,0.5)--cycle;
-			
-							\node 			at (2.2,0.35)	{$^{\prime}$};
-							\node 			at (2.4,0.25)	{$+$};
-							\node 			at (2.7,0.25)	{$3$};
-			
-							\node (blank3) at (3.2,0.4) {};
-							\filldraw[fill=blue!20,fill opacity=0.2]
-								(2.9,0)--(3.5,0)--(3.5,0.5)--(2.9,0.5)--cycle;
-							\node 			at (3.8,0.25)	{$=$};
-							\node 			at (4.4,0.25)	{$f(x)$};
-							
-							\draw[-&gt;,thick] (text.west)		--	+(-0.3,0) -| (blank1);
-							\draw[-&gt;,thick] (text)		--	+(0,-0.4) -| (blank2);
-							\draw[-&gt;,thick] (text.east)		--	+(0.3,0) -| (blank3);
-							
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-			</sidebyside>
-		</figure>
-
-		<paragraphs><title> What Makes an Equation Nonhomogeneous? </title>
-
+		<sidebyside>
 			<p>
-				A linear differential equation is <term>nonhomogeneous</term> if there is a nonzero function <m>f(x)</m> on the 
-				right-hand side. In other words, an <m>n</m>-th order linear equation is nonhomogeneous if it has the form:
+				<md>
+					<mrow> \text{Guess 1:} \quad y = 3 </mrow>
+					<mrow> (3)'' - 4(3)' + 3(3) \amp = 9x </mrow>
+					<mrow> 0 - 0 + 9 \amp = 9x </mrow>
+				</md>
 			</p>
-
-			<men xml:id="nonhomogeneous-de">
-				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = f(x),
-			</men>
-
 			<p>
-				where <m>f(x)</m> is a function of <m>x</m> that does not depend on <m>y</m>. This function <m>f(x)</m> is 
-				often called the <term>forcing function</term> because it represents an external influence on the system.
+				<md>
+					<mrow> \text{Guess 2:} \quad y = 3x </mrow>
+					<mrow>(3x)'' - 4(3x)' + 3(3x) \amp = 9x</mrow>
+					<mrow>0 - 12 + 9x \amp = 9x</mrow>
+				</md>
 			</p>
+		</sidebyside>
 
-		</paragraphs>
+		<sidebyside>
+			<p>
+				<md>
+					<mrow> \text{Guess 3:} \quad y = 3x^2 </mrow>
+					<mrow>\left(3x^2\right)'' - 4\left(3x^2\right)' + 3\left(3x^2\right) \amp = 9x</mrow>
+					<mrow>6 - 6x + 9x^2 \amp = 9x</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow> \text{Guess 4:} \quad y = e^{x} </mrow>
+					<mrow> (e^{x})'' - 4(e^{x})' + 3(e^{x}) \amp = 9x </mrow>
+					<mrow> e^{x} - 4e^{x} + 3e^{x} \amp = 9x </mrow>
+				</md>
+			</p>
+		</sidebyside>
 
 		<p>
-			In contrast, nonhomogeneous equations must have solutions that make the left-hand side simplify to <m>f(x)</m>, rather than zero. For this to happen, the solution should be <q><m>f(x)-</m>like</q> in the sense that it shares terms with <m>f(x)</m>. For example, consider the equation
-			<me>
-				y'' - 4y' + 3y = 9x
-			</me>.
-			When the solution, <m>y</m>, is plugged into the equation, the left-side terms must simplify to <m>9x</m>. So, <m>y</m> must be <q><m>9x</m> like</q>, but what is does <q><m>9x</m> like</q> mean? As you will see in the sections that follow, it means <m>y</m> has the form <m>y = Ax+B</m>. For now, let's just verify that <m>y = 3x + 4</m> is the <q><m>9x</m> like</q> solution that corresponds to this equation.
+			None of these guesses work, but the second guess gets closest since it produced the <m>9x</m>. Modifying this guess as <m>y = 3x+4</m> gives the correct solution since 
 		</p>
 
-		<example>
+		<md>
+			<mrow> y = 3x+4 </mrow>
+			<mrow> (3x+4)'' - 4(3x+4)' + 3(3x+4) \amp = 9x </mrow>
+			<mrow> 0 - 12 + 9x + 12 \amp = 9x </mrow>
+			<mrow> 9x \amp = 9x \ \ ✅ </mrow>
+		</md>.
+
+		<p>
+			The solution, <m>y = 3x+4</m>, is the called the <term>particular solution</term> and is the part of the general solution responsible for producing the <m>9x</m> on the right-hand side of the original equation.
+		</p>
+
+		<conclusion>
 			<p>
-				Verify that <m>y = 3x + 4</m> is a particular solution to the equation
-				<me>y'' - 4y' + 3y = 9x</me>.
+				The two most important takeways from this discussion should be
+				<ul>
+					<li>
+						<p>
+							The particular solution is the part of the general solution that accounts for the forcing function <m>f(x)</m>, and
+						</p>
+					</li>
+					<li>
+						<p>
+							The particular solution must be structured in a way that resembles <m>f(x)</m>.
+						</p>
+					</li>
+				</ul>
 			</p>
-			
-			<solution>
-				<p>
-					To verify, we substitute <m>y = 3x + 4</m> into the equation:
-					<md>
-						<mrow> y'' - 4y' + 3y =\amp\ 9x </mrow>
-						<mrow> 0 - 4(3) + 3(3x + 4) =\amp\ 9x </mrow>
-						<mrow> -12 + 9x + 12 =\amp\ 9x </mrow>
-						<mrow> 9x =\amp\ 9x \quad \checkmark </mrow>
-					</md>
-				</p>
-			</solution>
-		</example>
-		
-		<!-- <xi:include href="./p3-c2-s1-interactives.ptx" /> -->
+		</conclusion>
 
 	</subsection>
 
-	<subsection><title> The Particular Solution </title>
+	<subsection><title> General Solution to LNCC Equations </title>
 
+		<p>
+			Let's continue with the example from the previous section, 
+		</p>
+
+		<me>y'' - 4y' + 3y = 9x</me>. 
+			
+		<p>	
+			We found the particular solution to be, <m>y_p = 3x + 4</m>, which accounts for the <m>9x</m> on the right-hand side. However, there are additional terms in the general solution that simplify to zero, which we must also include. This part is called the <term>homogeneous solution</term>, denoted <m>y_h</m>.
+		</p>
+
+		<p>
+			In general, the terms of a general solution to an LNCC equation can be split into two parts:
+		</p>
+
+		<me>
+			y = 
+			{\color{BurntOrange}
+			\ub{\boxed{
+				\begin{array}{c}
+					\text{Terms that simplify}\\
+					\text{to} \ul{\text{ zero }} \text{when } y \text{ is}\\
+					\text{plugged into the DE}
+				\end{array}
+			}}_{\Large y_h}} + 
+			{\color{RoyalBlue}
+			\ub{\boxed{
+				\begin{array}{c}
+					\text{Terms that simplify}\\
+					\text{to } \ul{f(x)} \text{ when } y \text{ is}\\
+					\text{plugged into the DE}
+				\end{array}
+			}}_{\Large y_p}}
+		</me>
+		
+		<p>
+			has a of the form <m>y = y_h + y_p</m>, where <m>y_h</m> is the solution to the homogeneous version of the equation. For the given equation, the homogeneous version is
+		</p>
+
+		<p>
+			The other part of the general solution is denoted, <m>y_h</m>, and accounts for all the terms that would normally cancel out with each other and, therefore, will not effect the right-hand side. To get this part of the solution you simply solve the homogeneous version of given equation, which is
+		</p>
+
+		<me>
+			y'' - 4y' + 3y = 0
+		</me>.
+	
 		<p>
 			In any nonhomogeneous differential equation, the solution should, to some extent, resemble the right-hand side and we can logically guess what function the solution should look like. Yet, hidden within the overall solution could be terms that cancel out each other, affecting only the structure without contributing directly to the right-hand side.
 		</p>
 
+		<men xml:id="lncc-example-eqn">
+			y'' - 4y' + 3y = 9x
+		</men>
+
 		<p>
 			To explore this, consider the following linear nonhomogeneous constant coefficient (LNCC) equation alongside its homogeneous counterpart:
-			<mdn>
-				<mrow xml:id="lncc-eqn1"> y'' - 4y' + 3y =\amp\ 9x</mrow>
-				<mrow xml:id="lncc-eqn2"> y'' - 4y' + 3y =\amp\ 0</mrow>
-			</mdn>
-			Let <m>y_h</m> be the solution to the homogeneous equation <xref ref="lncc-eqn2" />, and <m>y_p</m> be the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, so we have
-			<md>
-				<mrow> y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
-				<mrow> y_h'' - 4y_h' + 3y_h =\amp\ 0 </mrow>
-			</md>
-			Now, adding these equations together and rearranging the terms gives us
-			<md>
-				<mrow> y_h'' - 4y_h' + 3y_h + y_p'' - 4y_p' + 3y_p =\amp\ 9x </mrow>
-				<mrow> y_h'' + y_p'' - 4y_h' + 4y_p' + 3y_h + 3y_p =\amp\ 9x </mrow>
-				<mrow> (y_h + y_p)'' - 4(y_h + y_p)' + 3(y_h + y_p) =\amp\ 9x </mrow>
-			</md>
-			This shows that not only is <m>y_p</m> the solution to the nonhomogeneous equation <xref ref="lncc-eqn1" />, but so is <m>y_h+y_p</m>. This happens because the terms in <m>y_h</m> simplify to zero and the terms in <m>y_p</m> simplify to <m>9x</m>.
 		</p>
 
-		<p>
-			From the previous section, we know <m>y_p = 3x + 4</m> is a solution to the LNCC equation <xref ref="lncc-eqn1" /> and <m>y_h = c_1e^{x} + c_2e^{3x}</m> is the solution to the LHCC equation <xref ref="lncc-eqn2" />. Therefore, the combined solution
-			<me>
-				y = y_h + y_p = \ub{c_1e^{x} + c_2e^{3x}}_{\text{simplify to } 0} + \ub{3x + 4}_{\text{simplify to }9x}
-			</me>
-			is a solution to the LNCC equation <xref ref="lncc-eqn1" /> where  <m>y_h</m> contains the terms that simplify to zero, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <m>y</m> is substituted into <xref ref="lncc-eqn1" />.
-		</p>
+		<sidebyside widths="6% 32% 20% 27% 15%" valign="bottom">
+			<p/>
+			<p>
+				<md>
+					<mrow>	\text{Homogeneous}			</mrow>
+					<mrow>	y'' - 4y' + 3y = 0			</mrow>
+					<mrow>	\downarrow					</mrow>
+					<mrow>	y_h = c_1e^{x} + c_2e^{3x}	</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow> \leftarrow\text{solutions}\rightarrow </mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow>	\text{Nonhomogeneous}	</mrow>
+					<mrow>	y'' - 4y' + 3y = 9x		</mrow>
+					<mrow>	\downarrow				</mrow>
+					<mrow>	y_p = 3x + 4			</mrow>
+				</md>
+			</p>
+			<p/>
+		</sidebyside>
 
 		<p>
-			This example leads us to the following concept for the general solution of a LNCC differential equation.
+			Plugging <m>y_h</m> into the homogeneous equation gives
+		</p>
+
+		<mdn>
+			<mrow xml:id="lncc-gen-soln-yh-eqn"> \ub{\left(c_1e^{x} + c_2e^{3x}\right)'' - 4\left(c_1e^{x} + c_2e^{3x}\right)' + 3\left(c_1e^{x} + c_2e^{3x}\right)}_{\large\text{all terms simplify to } 0} = 0</mrow>
+		</mdn>,
+
+		<p>
+			and <m>y_p</m> into the nonhomogeneous equation gives
+		</p>
+
+		<mdn>
+			<mrow xml:id="lncc-gen-soln-yp-eqn"> \ub{\left(3x + 4\right)'' - 4\left(3x + 4\right)' + 3\left(3x + 4\right)}_{\large\text{all terms simplify to } 9x} = 9x</mrow>
+		</mdn>
+
+		<p>
+			Now, plugging <m>y_h + y_p</m> into the nonhomogeneous equation gives
+		</p>
+
+		<md>
+			<mrow> \left(c_1e^{x} + c_2e^{3x} + 3x + 4\right)'' \amp - 4\left(c_1e^{x} + c_2e^{3x} + 3x + 4\right)' </mrow>
+			<mrow> \amp + 3\left(c_1e^{x} + c_2e^{3x} + 3x + 4\right) = 9x </mrow>
+		</md>.
+
+		<p>
+			Distributing the derivatives over <m>y_h</m> &amp; <m>y_p</m> and rearranging the terms shows
+		</p>
+
+		<md>
+			<mrow> \ob{\left(c_1e^{x} + c_2e^{3x}\right)'' - 4\left(c_1e^{x} + c_2e^{3x}\right)' + 3\left(c_1e^{x} + c_2e^{3x}\right)}^{\large\text{all terms simplify to } 0 \text{ from eqn } <xref ref="lncc-gen-soln-yh-eqn"/>} \amp </mrow> 
+			<mrow> + \ub{\left(3x + 4\right)'' - 4\left(3x + 4\right)' + 3\left(3x + 4\right)}_{\large\text{all terms simplify to } 9x \text{ from eqn } <xref ref="lncc-gen-soln-yp-eqn"/>} \amp = 9x </mrow> 
+			<mrow> 0 + 9x \amp = 9x \ \ ✅</mrow> 
+		</md>
+
+		<p>
+			This shows that both <m>y_p</m> and <m>y_p + y_h</m> are solutions to the nonhomogeneous equation <xref ref="lncc-example-eqn"/> and supports the following general fact.
 		</p>
 		
 		<p>
-			<assemblage xml:id="lncc-general-solution-parts"><title> ✳️ LNCC General Solution Parts </title>
+			<assemblage xml:id="lncc-general-solution"><title> ✳️ LNCC General Solutions </title>
 				<p>
 					The linear nonhomogeneous constant coefficient (LNCC) equation
 					<men xml:id="lncc-general-equation">
 						a_n y^{(n)} + \cdots + a_1 y' + a_0 y = f(x)
 					</men>
 					has a solution with a <term>homogeneous</term> and <term>particular</term> part given by
-					<men xml:id="lncc-general-solution">
+					<men xml:id="lncc-general-solution-form">
 						y = y_h + y_p
 					</men>.
 					where <m>y_h</m>, found by solving the LHCC equation
 					<me>
 						a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = 0
 					</me>.
-					Here, <m>y_h</m> contains the terms of the solution that cancel out, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <xref ref="lncc-general-solution"/> is substituted into <xref ref="lncc-general-equation"/>.
+				</p>
+				
+				<p>
+					Here, <m>y_h</m> contains the terms of the solution that cancel out, whereas, <m>y_p</m> contains the terms that simplify to <m>f(x)</m> when <xref ref="lncc-general-solution-form"/> is substituted into <xref ref="lncc-general-equation"/>.
 				</p>
 			</assemblage>
 		</p>
-
 
 		<example>
 			<p>
@@ -240,8 +281,6 @@
 		<p>
 			Before we can tackle solving these equations from scratch, we need a strategy for finding the particular solution <m>y_p</m>, which will be covered in the upcoming sections.
 		</p>
-
-		<!-- <xi:include href="./p3-c2-s2-interactives.ptx" /> -->
 
 	</subsection>
 

@@ -1,5 +1,11 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Method of Undetermined Coefficients </title>
 	
+	<introduction>
+		<p>
+			NEED TO WRITE THIS
+		</p>
+	</introduction>
+
 	<subsection><title> Selecting Particular Solutions </title>
 
 		<p>
@@ -11,16 +17,16 @@
 		</p>
 
 		<p>
-			The specific function that accounts for <m>f(x)</m> on the right side is known as the <term>particular solution</term>, denoted <m>y_p</m>. The form of this solution depends on the type of function <m>f(x)</m> represents. To help select the correct form of <m>y_p</m>, refer to <xref ref="yp-table"/>, which outlines the most common types of <m>f(x)</m> and their corresponding <m>y_p</m> forms.
+			The specific function that accounts for <m>f(x)</m> on the right side is known as the <term>particular solution</term>, denoted <m>y_p</m>. The form of this solution depends on the type of function <m>f(x)</m> represents. To help select the correct form of <m>y_p</m>, refer to <xref ref="yp-forms-table"/>, which outlines the most common types of <m>f(x)</m> and their corresponding <m>y_p</m> forms.
 		</p>
 
-		<table xml:id="yp-table">
-			<title> Selecting the form of <m>y_p</m> based on the form of <m>f(x)</m>. </title>
+		<table xml:id="yp-forms-table">
+			<title> Single Function Initial Forms of <m>y_p</m> </title>
 			<tabular top="medium" left="medium" right="medium" bottom="minor">
 				<col halign="center" right="medium"/>
 				<col halign="center"/>
 				<row bottom="medium">
-					<cell><m>f(x)</m></cell>
+					<cell><term>Constant Term Function, </term><m>f(x)</m></cell>
 					<cell><term>Particular Solution Form, </term><m>y_p</m></cell>
 				</row>
 				<row>
@@ -45,11 +51,15 @@
 				</row>
 				<row>
 					<cell><m>a \sin(\beta x)</m></cell>
-					<cell><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
+					<cell bottom="none"/>
+				</row>
+				<row>
+					<cell><m>a \cos(\beta x)</m></cell>
+					<cell bottom="none"><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
 				</row>
 				<row bottom="medium">
-					<cell><m>a \cos(\beta x)</m></cell>
-					<cell><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
+					<cell><m>a \sin(\beta x) + b \cos(\beta x)</m></cell>
+					<cell/>
 				</row>
 			</tabular>
 		</table>
@@ -58,39 +68,87 @@
 			In this table, the constants <m>a</m>, <m>b</m>, <m>c</m>, <m>d</m>, <m>\alpha</m>, and <m>\beta</m> are assumed to be known, while <m>A</m>, <m>B</m>, <m>C</m>, etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.
 		</p>
 
-		<example><title> <em>Determine the initial form of <m>y_p</m></em> </title>
+		<example><title> Initial form of <m>y_p</m> - Single Form </title>
 
-			<solution><title> <m>y'' + y' + 5y = 3e^{6x}</m> </title>
-				<p>
-					Since <m>f(x) = 3e^{6x}</m> has the form <m>a e^{\alpha x}</m>, we set <me>y_p = Ae^{6x}</me>.
-				</p>
-			</solution>
+			<p>
+				<statement>
+					<p>
+						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
+						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
+							<p/>
+							<p>A.</p>
+							<p><m>\ds y'' + y' + 5y = 3e^{6x}\vphantom{\frac{dy}{dx}}</m></p>
+							<p/>
+							<p>B.</p>
+							<p><m>\ds y'' + 3y' - y = 2\sin(2x)\vphantom{\frac{dy}{dx}}</m></p>
+							<p/>
+						</sidebyside>
+						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
+							<p/>
+							<p>C.</p>
+							<p><m>\ds \omega''' + \omega' = 5\theta^2 + \theta + 1\vphantom{\frac{dy}{dx}}</m></p>
+							<p/>
+							<p>D.</p>
+							<p><m>\ds 2\frac{dy}{dx} + 5y + 3 = 0</m></p>
+							<p/>
+						</sidebyside>
+						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
+							<p/>
+							<p>E.</p>
+							<p><m>\ds y'' -3y' + 0.5y = 14x^4\vphantom{\frac{dy}{dx}}</m></p>
+							<p/>
+							<p></p>
+							<p></p>
+							<p/>
+						</sidebyside>
+					</p>
 
-			<solution><title> <m>y'' + 3y' - y = 2\sin(2x)</m> </title>
-				<p>
-					<m>2\sin(2x)</m> has the form <m>a \sin(\beta x)</m>, so <me>y_p = A\sin(2x) + B\cos(2x)</me>.
-				</p>
-			</solution>
+				</statement>
+			</p>
 
-			<solution><title> <m>\omega''' + \omega' = 5\theta^2 + \theta + 1</m> </title>
-				<p>
-					<m>5\theta^2 + \theta + 1</m> has the form <m>a\theta^2+b\theta+c</m>, so <me>\omega_p = A\theta^2 + B\theta + C</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>\ds 2\frac{dy}{dx} + 5y = -3</m> </title>
-				<p>
-					Since <m>f(x) = -3</m> is of the form <m>a</m>, we set <me>y_p = A</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>y'' -3y' + 0.5y = 14x^4</m> </title>
-				<p>
-					Even though <m>f(x) = 14x^4</m> only has an <m>x^4</m> term, we consider it to be of the form
-					<me>ax^4+bx^3+cx^2+dx+e</me>,
-					where <m>b = c = d = e = 0</m>. Therefore,
-					<me>y_p = Ax^4+Bx^3+Cx^2+Dx+E</me>.
-				</p>
+			<solution>
+				<ol marker="A.">
+					<li>
+						<p>
+							Since the constant term, <m>f(x) = 3e^{6x}</m>, has the form <m>a e^{\alpha x}</m>, we set 
+							<me>
+								y_p = Ae^{6x}
+							</me>.
+						</p>
+					</li>
+					<li>
+						<p>
+							Since the constant term, <m>2\sin(2x)</m>, has the form <m>a \sin(\beta x)</m>, so 
+							<me>
+								y_p = A\sin(2x) + B\cos(2x)
+							</me>.
+						</p>
+					</li>
+					<li>
+						<p>
+							Since the constant term, <m>5\theta^2 + \theta + 1</m> has the form <m>a\theta^2+b\theta+c</m>, so
+							<me>
+								\omega_p = A\theta^2 + B\theta + C
+							</me>.
+						</p>
+					</li>
+					<li>
+						<p>
+							Here, the constant term, <m>3</m>, is not on the right. Nevertheless, it can be moved over and since it has the form <m>a</m>, we get
+							<me>
+								y_p = A
+							</me>.
+						</p>
+					</li>
+					<li>
+						<p>
+							Even though <m>f(x) = 14x^4</m> only has an <m>x^4</m> term, the solution can contain any terms of a 4th-degree polynomial, so
+							<me>
+								y_p = Ax^4+Bx^3+Cx^2+Dx+E
+							</me>.
+						</p>
+					</li>
+				</ol>
 			</solution>
 		</example>
 
@@ -98,39 +156,74 @@
 			When <m>f(x)</m> is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct <m>y_p</m> by simply adding together the particular solutions corresponding to each term in <m>f(x)</m>. Let's look at an example to clarify this approach.
 		</p>
 
-		<example><title> <em>Determine the initial form of <m>y_p</m></em> </title>
+		<example><title> Initial form of <m>y_p</m> - Sum of Forms </title>
 
 			<p>
-				For some LNCC equation of the form:
-				<me>ay''' + by'' + cy' + dy = f(w)</me>,
-				give the form of <m>y_p</m> for each <m>f(w)</m> below.
+				<statement>
+					<p>
+						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
+						<ol marker="A.">
+							<li>
+								<p>
+									<m>\ds y'' + 2y' + 3y = 2e^{w} - 1</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds u'' - u = 3\sin(2\theta) + 4\cos(2\theta)</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds \omega''' + \omega' = 5e^{3w} - 2\sin(4w)</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds P' + 5P = 2\cos(-3t) - 4\cos(5t)</m>
+								</p>
+							</li>
+						</ol>
+					</p>
+				</statement>
 			</p>
 
-			<solution><title> <m>f(w) = 2e^{w} - 1</m> </title>
+			<solution>
 				<p>
-			Since <m>f(w)</m> is the sum of an <m>e^{w}</m> term and a constant term, we set
-				<me>y_p = Ae^{w} + B</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>f(w) = 3\sin(2w) + 4\cos(2w)</m> </title>
-				<p>
-			Since <m>f(w)</m> is the sum of a <m>\sin(2w)</m> term and a <m>\cos(2w)</m> term, we set
-				<me>y_p = A\sin(2w) + B\cos(2w)</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>f(w) = 5e^{3w} - 2\sin(4w)</m> </title>
-				<p>
-			Since <m>f(w)</m> is the sum of an <m>e^{3w}</m> term and a <m>\sin(4w)</m> term, we set
-				<me>y_p = Ae^{3w} + B\sin(4w) + C\cos(4w)</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>f(w) = 2\sin(-3w) - 4\cos(5w)</m> </title>
-				<p>
-			Since <m>f(w)</m> is the sum of a <m>\sin(-3w)</m> term and a <m>\cos(5w)</m> term, we set
-				<me>y_p = A\sin(-3w) + B\cos(-3w) + C\sin(5w) + D\cos(5w)</me>.
+					<ol>
+						<li>
+							<p>
+								Since the constant term is the sum of <m>2e^{w}</m> and <m>-1</m>, we set
+								<me>
+									y_p = Ae^{w} + B
+								</me>.
+							</p>
+						</li>
+						<li>
+							<p>
+								In this case, we have the sum of <m>3\sin(2\theta)</m> and <m>4\cos(2\theta)</m>, but this is already in <xref ref="yp-forms-table"/>, so we set it as usual:
+								<me>
+									y_p = A\sin(2\theta) + B\cos(2\theta)
+								</me>.
+							</p>
+						</li>
+						<li>
+							<p>
+								Since the constant term is the sum of an <m>e^{3w}</m> and a <m>\sin(4w)</m>,
+								<me>
+									y_p = Ae^{3w} + B\sin(4w) + C\cos(4w)
+								</me>.
+							</p>
+						</li>
+						<li>
+							<p>
+								Since the constant term is the sum of non-like cosine terms, we must add both of their forms to the initial <m>y_p</m>, like so
+								<me>
+									y_p = A\sin(-3t) + B\cos(-3t) + C\sin(5t) + D\cos(5t)
+								</me>.
+							</p>
+						</li>
+					</ol>
 				</p>
 			</solution>
 
@@ -140,9 +233,20 @@
 			When <m>f(x)</m> involves products of functions, constructing <m>y_p</m> can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.
 		</p>
 
-		<example><title> <em>Find the initial form of <m>y_p</m> for the given equation</em> </title>
+		<example><title> Initial form of <m>y_p</m> - A Product of Forms </title>
 
-			<solution><title> <m>y'' + y' + 5y = 10x^2 e^{6x}</m> </title>
+			<p>
+				<statement>
+					<p>
+						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for the equation
+						<me>
+							y'' + y' + 5y = 10x^2 e^{6x}
+						</me>.
+					</p>
+				</statement>
+			</p>
+
+			<solution>
 				<p>
 					Since <m>f(x) = 10x^2 e^{6x}</m> is the product of a polynomial and an exponential, we initially set:
 					<me>y_p = (Ax^2 + Bx + C)(D e^{6x})</me>.
@@ -155,74 +259,137 @@
 
 		</example>
 
-		<p>
-			Here are a few tips to help you avoid redundant coefficients when constructing the form of <m>y_p</m>.
-		</p>
+		<example><title> Initial form of <m>y_p</m> - More Products of Forms </title>
 
-		<assemblage><title> ✳️ Tips to Avoid Redundant Coefficients </title>
 			<p>
+				<statement>
+					<p>
+						Use <xref ref="yp-forms-table"/> to set-up the initial form of <m>y_p</m> for each equation and combine any coefficients when possible.
+						<ol marker="A.">
+							<li>
+								<p>
+									<m>\ds y'' + y = e^{-x}\cos(x)</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds y'' - 4y = e^{6x}e^{-2x}</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds 9Q' - Q = t^{3}\cos t</m>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds 2y'' + 3y' - 15y = x^2\cos x + x \sin x</m>
+								</p>
+							</li>
+						</ol>
+					</p>
+				</statement>
+			</p>
+
+			<solution>
 				<ol>
 					<li>
-						When <m>f(x)</m> is the product of an exponential and another function, avoid writing a coefficient for the exponential term.
+						<p>
+							Since <m>e^{-x}\cos(x)</m> is the product of an exponential and a cosine function, we initially set
+							<me>
+								y_p = Ae^{-x}(B\sin x + C\cos x)
+							</me>.
+							However, multiplying this expression out shows <m>A</m> can be absorbed into <m>B</m> and <m>C</m>, so we simplify it as
+							<me>
+								y_p = e^{-x}(B\sin x + C\cos x)
+							</me>.
+						</p>
 					</li>
 					<li>
-						For products of polynomials and sine/cosine functions, use:
-						<me>(\text{polynomial form}) \sin(\beta x) + (\text{polynomial form}) \cos(\beta x)</me>
-						where the polynomial form on each term uses different coefficients.
+						<p>
+							Since <m>e^{6x}e^{-2x}</m> is the same as <m>e^{4x}</m>, we don't have to do anything special here. The initial form of <m>y_p</m> is just
+							<me>
+								y_p = Ae^{4x}
+							</me>.
+						</p>
 					</li>
 					<li>
-						When working with sums, look for redundant overlapping terms.
+						<p>
+							Since <m>t^{3}\cos(t)</m> is the product of a polynomial and a cosine function, we set the initial form of <m>y_p</m> as the product
+							<me>
+								Q_p = (At^3 + Bt^2 + Ct + D)(E\sin t + F\cos t). \qquad \text{1️⃣}
+							</me>
+							Multiplying the polynomial onto sine and cosine, gives us
+							<md>
+								<mrow>	Q_p = (At^3 + Bt^2 + Ct	\amp + D)E\sin t						</mrow>
+								<mrow>							\amp + (At^3 + Bt^2 + Ct + D)F\cos t	</mrow>
+								<mrow>	Q_p = (AEt^3 + BEt^2	\amp + CEt + DE)\sin t					</mrow>
+								<mrow>							\amp + (AFt^3 + BFt^2 + CFt + DF)\cos t	</mrow>
+							</md>,
+							which shows that <m>E</m> and <m>F</m> can be absorbed into <m>A, B, C</m>, and <m>D</m>. Relabeling all <m>8</m> of these coefficients, we get the alternative form
+							<md>
+								<mrow>	Q_p = (At^3 + Bt^2	\amp + Ct + D)\sin t						</mrow>
+								<mrow> 						\amp + (Et^3 + Ft^2 + Gt + H)\cos t.	\quad \text{2️⃣}</mrow>
+							</md>
+							Although forms 1️⃣ &amp; 2️⃣ are both correct, when we start solving equations, form 2️⃣ will usually be easier to work with. 
+						</p>
+					</li>
+					<li>
+						<p>
+							This one is tricky, but as long as the initial form of one term covers all the others, then you can ignore the other terms. For example, the general form for, <m>x^2\cos x</m>, is
+							<md>
+								<mrow>	y_p = (Ax^2 + Bx + C) (D\sin x + E\cos x)	</mrow>
+							</md>,
+							or alternatively,
+							<me>
+								y_p = (Ax^2 + {\color{RoyalBlue}Bx} + C){\color{RoyalBlue}\sin x} + (Dx^2 + Ex + F)\cos x
+							</me>,
+							showing <m>{\color{RoyalBlue}x\sin x}</m> is captured in this form as well, so we are done. 
+						</p>
 					</li>
 				</ol>
-			</p>
-		</assemblage>
-
-		<p>
-			Let's put these tips into practice with a couple of examples.
-		</p>
-
-		<example><title> <em>Find the initial form of <m>y_p</m> for each equation</em> </title>
-
-			<solution><title> <m>y'' + y = e^{-x}\cos(x)</m> </title>
-				<p>
-			Since <m>f(x) = e^{-x}\cos(x)</m> is the product of an exponential and a cosine function, we apply tip 1 and set:
-				<me>y_p = e^{-x}(A\sin x + B\cos x)</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>y'' - 4y = e^{6x}e^{-3x}</m> </title>
-				<p>
-			Since <m>f(x) = e^{6x}e^{-3x}</m> is the product of two exponential functions, we ignore one of the coefficients and set:
-				<me>y_p = Ae^{6x}e^{-3x}</me>.
-				Note, <m>e^{6x}e^{-3x}</m> is the same as <m>e^{3x}</m>, so we could also write <m>y_p = Ae^{3x}</m>.
-				</p>
-			</solution>
-
-			<solution><title> <m>9P' - P = t^{3}\cos(t)</m> </title>
-				<p>
-			Since <m>f(t) = t^{3}\cos(t)</m> is the product of a polynomial and a cosine function, we apply tip 2 and set:
-				<me>P_p = (At^3 + Bt^2 + Ct + D)\sin t + (Et^3 + Ft^2 + Gt + H)\cos t</me>.
-				</p>
-			</solution>
-
-			<solution><title> <m>2y'' + 3y' - 15y = x^2\cos x + x \sin x</m> </title>
-				<p>
-			When setting up the particular solution, it's easy to introduce redundant terms if we aren't careful. For example, if we initially set:
-				<md>
-					<mrow> y_p = (Ax^2 + \ul{Bx + C) \sin x} + (Dx^2 + \ul{Ex + F)\cos x} </mrow>
-				</md>
-				and
-				<md>
-					<mrow> (\ul{Gx + H)\sin x} + (\ul{Ix + J)\cos x}, </mrow>
-				</md>
-				you may notice that the underlined terms introduce unnecessary repetition. By grouping like-terms, we can simplify this to:
-				<me>y_p = (Ax^2 + Bx + C)\sin x + (Dx^2 + Ex + F)\cos x</me>.
-				</p>
 			</solution>
 
 		</example>
-		
-		<!-- <xi:include href="./p3-c2-s3-interactives.ptx" /> -->
+
+		<table xml:id="multiplying-yp-forms-table">
+			<title> Multiplying Forms of <m>y_p</m> </title>
+			<tabular top="medium" left="medium" right="medium" bottom="minor">
+				<col halign="center" right="medium"/>
+				<col halign="center"/>
+				<row bottom="medium">
+					<cell><term>Constant Term Function, </term><m>f(x)</m></cell>
+					<cell><term>Particular Solution Form, </term><m>y_p</m></cell>
+				</row>
+				<row>
+					<cell><m>(ax^2+bx+c)e^{\alpha x}</m></cell>
+					<cell><m>(Ax^2+Bx+C)e^{\alpha x}</m></cell>
+				</row>
+				<row bottom="none">
+					<cell><m>(ax^2+bx+c)\cos x</m></cell>
+					<cell><m>(Ax^2+Bx+C)\cos x \hspace{5.3em}</m></cell>
+				</row>
+				<row>
+					<cell><m>(ax^2+bx+c)\sin x</m></cell>
+					<cell><m> \hspace{5.3em} + (Ax^2+Bx+C)\sin x</m></cell>
+				</row>
+				<row>
+					<cell>
+						<line><m>e^{\alpha x}\cos x</m></line>
+						<line><m>e^{\alpha x}\sin x</m></line>
+					</cell>
+					<cell><m>e^{\alpha x}(A\cos x + B\sin x)</m></cell>
+				</row>
+				<row bottom="none">
+					<cell><m>(ax^2+bx+c)e^{\alpha x}\cos x</m></cell>
+					<cell><m>(Ax^2+Bx+C)e^{\alpha x}\cos x \hspace{5.3em}</m></cell>
+				</row>
+				<row bottom="medium">
+					<cell><m>(ax^2+bx+c)e^{\alpha x}\sin x</m></cell>
+					<cell><m> \hspace{5.3em} + (Ax^2+Bx+C)e^{\alpha x}\sin x</m></cell>
+				</row>
+			</tabular>
+		</table>
 
 	</subsection>
 
@@ -271,103 +438,197 @@
 			Let's explore this adjustment process through a few examples.
 		</p>
 
-		<example>
+		<example><title> Adjusting the Initial Form of <m>y_p</m> </title>
 			<p>
-				Find the adjusted form of the particular solution, <m>y_p</m>, for each of the following LNCC equations.
+				<statement>
+					<p>
+						For each LNCC equation listed below, complete the following tasks: 
+						<ol marker="(a)">
+							<li>
+								<p>
+									Find the homogeneous part, <m>y_h</m>, of the general solution.
+								</p>
+							</li>
+							<li>
+								<p>
+									Select the initial form of the particular solution, <m>y_p</m>.
+								</p>
+							</li>
+							<li>
+								<p>
+									Adjust the form of <m>y_p</m> to ensure it is independent of <m>y_h</m>.
+								</p>
+							</li>
+						</ol>
+						<ol>
+							<li>
+								<p>
+									<m>\ds y'' - 2y' + y = e^x </m>.
+									<solution>
+										<p>
+											<ol marker="(a)">
+												<li>
+													<p>
+														First, determine <m>y_h</m> by solving the characteristic equation:
+														<me>
+															r^2 - 2r + 1 = 0
+														</me>,
+														which has the repeated solution, <m>r_1 = 1</m>, so
+														<me>
+															y_h = c_1 e^x + c_2 x e^x
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														The constant term is <m>e^x</m>, so the initial <m>y_p</m> is
+														<me> 
+															y_p = A e^x
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														Since <m>y_h</m> and <m>y_p</m> have an <m>e^x</m> term, we multiply <m>y_p</m> by <m>x</m> to get
+														<me>
+															y_p = A x e^x
+														</me>.
+														But, <m>y_h</m> also has an <m>x e^x</m> term, so we multiply by another <m>x</m>:
+														<me>
+															y_p = A x^2 e^x
+														</me>.
+														Since this <m>y_p</m> has no terms in common with <m>y_h</m>, they are independent and this is the correct form of <m>y_p</m>.
+													</p>
+												</li>
+											</ol>
+										</p>
+									</solution>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds y''' + 4y' = \cos(2x) - \sin(x) </m>.
+									<solution>
+										<p>
+											<ol marker="a.">
+												<li>
+													<p>
+														Since the characteristic equation
+														<me>
+															r^3 + 4r = 0
+														</me>,
+														has solutions: <m>r_1 = 0</m>, <m>r_2 = 2i</m>, and <m>r_3 = -2i</m>, then
+														<me>
+															y_h = c_1 + c_2 \cos(2x) + c_3 \sin(2x)
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														The constant term, <m>\cos(2x) - \sin(x)</m>, gives
+														<me> 
+															y_p = \ub{A \cos(2x) + B \sin(2x)}_{\large\text{already in } y_h} + D \cos(x) + E \sin(x)
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														Since <m>y_h</m> and <m>y_p</m> share terms in common, we multiply only the overlapping terms in <m>y_p</m> by <m>x</m>, giving
+														<me> 
+															y_p = Ax \cos(2x) + B x \sin(2x) + D \cos(x) + E \sin(x)
+														</me>.
+														A quick look at <m>y_h</m> and <m>y_p</m> shows that they are independent, making this the correct form for <m>y_p</m>.
+													</p>
+												</li>
+											</ol>
+										</p>
+									</solution>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds y'' + y = x e^x </m>.
+									<solution>
+										<p>
+											<ol marker="a.">
+												<li>
+													<p>
+														The characteristic equation,
+														<me>
+															r^2 + 1 = 0
+														</me>,
+														yields the roots <m>r_1 = i</m> and <m>r_2 = -i</m>, leading to
+														<me>
+															y_h = c_1 \cos(x) + c_2 \sin(x)
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														The constant term, <m>x e^x</m>, gives the initial <m>y_p</m> as
+														<me>
+															y_p = (Ax + B)\ e^x
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														Since <m>y_h</m> and <m>y_p</m> have no overlapping terms, no adjustment is needed and this is the correct form of <m>y_p</m>.
+													</p>
+												</li>
+											</ol>
+										</p>
+									</solution>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds y'' - 6y' + 9y = x^2 e^{3x} </m>.
+									<solution>
+										<p>
+											<ol marker="a.">
+												<li>
+													<p>
+														The characteristic equation
+														<me>
+															r^2 - 6r + 9 = 0
+														</me>,
+														has the repeated solution <m>r = 3</m>, so
+														<me>
+															y_h = (c_1 + c_2 x) e^{3x}
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														The constant term, <m>x^2 e^{3x}</m>, tells us the initial guess for the particular solution is:
+														<me>
+															y_p = (Ax^2 + Bx + C) e^{3x}
+														</me>.
+													</p>
+												</li>
+												<li>
+													<p>
+														Multiplying out <m>y_h</m> and <m>y_p</m>, you can see that they both contain <m>e^{3x}</m> and <m>x e^{3x}</m> terms. To ensure the correct form of <m>y_p</m>, we must multiply all of its terms by <m>x^2</m>:
+														<me>
+															y_p = (Ax^4 + Bx^3 + Cx^2) e^{3x}
+														</me>.
+													</p>
+												</li>
+											</ol>
+										</p>
+									</solution>
+								</p>
+							</li>
+						</ol>
+					</p>
+				</statement>
 			</p>
-			<ol>
-				<li>
-					<p>
-						<m>\ds y'' - 2y' + y = e^x </m>.
-						<solution>
-							<p>
-								First, determine <m>y_h</m> by solving the characteristic equation:
-								<me>r^2 - 2r + 1 = 0</me>,
-								which yields a repeated root <m>r_1 = 1</m>, giving the homogeneous solution:
-								<me>y_h = c_1 e^x + c_2 x e^x</me>.
-							</p>
-							<p>
-								Since the nonhomogeneous term is <m>e^x</m>, the initial guess for the particular solution is:
-								<me> y_p = A e^x</me>.
-								However, this form overlaps with <m>c_1 e^x</m> in <m>y_h</m>. To resolve this, multiply <m>y_p</m> by <m>x</m>:
-								<me> y_p = A x e^x</me>,
-								which now overlaps with <m>c_2 x e^x</m>. Multiplying by <m>x</m> again gives:
-								<me> y_p = A x^2 e^x</me>,
-								which has no terms in common with <m>y_h</m>. This is the correct form to use for <m>y_p</m>.
-							</p>
-						</solution>
-					</p>
-				</li>
-				<li>
-					<p>
-						<m>\ds y''' + 4y' = \cos(2x) - \sin(x) </m>.
-						<solution>
-							<p>
-								First, solve the characteristic equation:
-								<me>r^3 + 4r = 0</me>,
-								which yields the roots <m>r_1 = 0</m>, <m>r_2 = 2i</m>, and <m>r_3 = -2i</m>. This results in the homogeneous solution:
-								<me>y_h = c_1 + c_2 \cos(2x) + c_3 \sin(2x)</me>.
-							</p>
-							<p>
-								For the nonhomogeneous term <m>\cos(2x) - \sin(x)</m>, the initial guess for <m>y_p</m> is:
-								<me> y_p = \ub{A \cos(2x) + B \sin(2x)}_{\text{common terms with } y_h} + \ub{D \cos(x) + E \sin(x)}_{\text{NO common terms with } y_h}</me>.
-								Since <m>A \cos(2x)</m> and <m>B \sin(2x)</m> overlap with terms in <m>y_h</m>, multiply these terms by <m>x</m>:
-								<me> y_p = \ub{Ax \cos(2x) + B x \sin(2x)}_{\text{now independent}} + \ub{D \cos(x) + E \sin(x)}_{\text{already independent}}</me>.
-								The terms in <m>y_h</m> and <m>y_p</m> are now independent, making this the correct form for <m>y_p</m>.
-							</p>
-						</solution>
-					</p>
-				</li>
-				<li>
-					<p>
-						<m>\ds y'' + y = x e^x </m>.
-						<solution>
-							<p>
-								Begin by solving the characteristic equation:
-								<me>r^2 + 1 = 0</me>,
-								which yields the roots <m>r_1 = i</m> and <m>r_2 = -i</m>, leading to the homogeneous solution:
-								<me>y_h = c_1 \cos(x) + c_2 \sin(x)</me>.
-							</p>
-							<p>
-								Since the nonhomogeneous term is <m>x e^x</m>, the initial guess for <m>y_p</m> is:
-								<me> y_p = (Ax + B) e^x </me>.
-								This form is not present in <m>y_h</m>, so no further adjustment is needed. To determine the coefficients <m>A</m> and <m>B</m>, substitute <m>y_p</m> back into the differential equation and solve for these values.
-							</p>
-						</solution>
-					</p>
-				</li>
-				<li>
-					<p>
-						<m>\ds y'' - 6y' + 9y = x^2 e^{3x} </m>.
-						<solution>
-							<p>
-								First, determine <m>y_h</m> by solving the characteristic equation:
-								<me>r^2 - 6r + 9 = 0</me>,
-								which yields a repeated root <m>r = 3</m>, giving the homogeneous solution:
-								<me>y_h = (c_1 + c_2 x) e^{3x}</me>.
-							</p>
-							<p>
-								Since the nonhomogeneous term is <m>x^2 e^{3x}</m>, the initial guess for the particular solution is:
-								<me>y_p = (Ax^2 + Bx + C) e^{3x}</me>.
-								However, notice that <m>e^{3x}</m> and <m>x e^{3x}</m> are already present in <m>y_h</m>.
-								To avoid overlap, multiply <m>y_p</m> by <m>x^2</m>, giving:
-								<me>y_p = (Ax^4 + Bx^3 + Cx^2) e^{3x}</me>.
-								This form is now independent of <m>y_h</m>, ensuring that there are no overlapping terms.
-							</p>
-							<p>
-								To determine the coefficients <m>A</m>, <m>B</m>, and <m>C</m>, substitute <m>y_p</m> back into the original differential equation and solve for these values.
-							</p>
-						</solution>
-					</p>
-				</li>
-			</ol>
 		</example>
 
 		<p>
 			This adjustment process ensures that <m>y_h</m> and <m>y_p</m> are independent, allowing the general solution <m>y = y_h + y_p</m> to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.
 		</p>
-
-		<!-- <xi:include href="./p3-c2-s4-interactives.ptx" /> -->
 
 	</subsection>
 
@@ -390,64 +651,67 @@
 
 		<p>
 			Our goal now is to determine the values of <m>A</m> and <m>B</m>. To do this, we substitute <m>y_p = Ax + B</m> into the original differential equation. Here's how it works:
-			<md>
-				<mrow> y_p = Ax + B \quad \implies \quad y_p' = A \quad \implies \quad y_p'' = 0 </mrow>
-			</md>
-			Substituting <m>y_p</m>, <m>y_p'</m>, and <m>y_p''</m> into <xref ref="finding-yps-coefficients-de"/> results in:
-			<md>
-				<mrow> 0 - 4A + 3(Ax + B) =\amp\ 9x </mrow>
-				<mrow> -4A + 3Ax + 3B =\amp\ 9x </mrow>
-			</md>
-			By matching the coefficients of like-terms on opposite sides of the equation,
-			<image width="50%">
-				<latex-image>
-				
-					\begin{tikzpicture}[join=round,rounded corners,&gt;=stealth,shorten &gt;=1pt,shorten &lt;=1pt,thick]
-						\node (text1) 	at (1.4,0.5) 	{\scriptsize equal};
-						\node (text2) 	at (3.4,0.7) 	{\scriptsize equal};
-						
-						\def\LA{0.1}
-						\def\WA{0.64}
-						\def\LB{1.27}
-						\def\WB{1.65}
-						\def\LC{3.33}
-						\def\WC{0.3}
-						\def\LD{4.2}
-						\def\WD{0.28}
-
-						\node[anchor=west] (eqn)	at (0,0)	{$\,3A\ x + \,- 4A + 3B\, = \ 9\ x + 0\ .$};
-						\node (xterm1) at (\LA+\WA/2,0.1) {};
-						\node (xterm2) at (\LC+\WC/2,0.1) {};
-						\node (cterm1) at (\LB+\WB/2,0.1) {};
-						\node (cterm2) at (\LD+\WD/2,0.1) {};
-						
-						\filldraw[fill=red!20,fill opacity=0.2,thin,draw=red]
-							(\LA,-0.2)--(\WA,-0.2)--(\WA,0.2)--(\LA,0.2)--cycle;
-						\filldraw[fill=blue!20,fill opacity=0.2,thin,draw=blue]
-							(\LB,-0.2)--(\LB+\WB,-0.2)--(\LB+\WB,0.2)--(\LB,0.2)--cycle;
-						\filldraw[fill=red!20,fill opacity=0.2,thin,draw=red]
-							(\LC,-0.2)--(\LC+\WC,-0.2)--(\LC+\WC,0.2)--(\LC,0.2)--cycle;
-						\filldraw[fill=blue!20,fill opacity=0.2,thin,draw=blue]
-							(\LD,-0.2)--(\LD+\WD,-0.2)--(\LD+\WD,0.2)--(\LD,0.2)--cycle;
-						
-						\draw[-&gt;,thin] (text1.west)		--	+(-0.06,0.0) -| (xterm1);
-						\draw[-&gt;,thin] (text1.east)		--	+(0.06,0.0) -| (xterm2);
-						\draw[-&gt;,thin] (text2.west)		--	+(-0.06,0.0) -| (cterm1);
-						\draw[-&gt;,thin] (text2.east)		--	+(0.06,0.0) -| (cterm2);
-						
-					\end{tikzpicture}
-				</latex-image>
-			</image>
-			we solve:
-			<md>
-				<mrow>	3A		=\amp\ 9 \quad \implies \quad A = 3</mrow>
-				<mrow> -4A + 3B	=\amp\ 0 \quad \implies \quad B = 4</mrow>
-			</md>
-			Thus, the particular solution is:
-			<me>
-				y_p = 3x + 4
-			</me>.
 		</p>
+
+		<md>
+			<mrow> y_p = Ax + B \quad \implies \quad y_p' = A \quad \implies \quad y_p'' = 0 </mrow>
+		</md>
+
+		<p>
+			Substituting <m>y_p</m>, <m>y_p'</m>, and <m>y_p''</m> into <xref ref="finding-yps-coefficients-de"/> results in:
+		</p>
+
+		<md>
+			<mrow> 0 - 4A + 3(Ax + B) =\amp\ 9x </mrow>
+			<mrow> -4A + 3Ax + 3B =\amp\ 9x </mrow>
+			<mrow> 3Ax -4A + 3B =\amp\ 9x </mrow>
+		</md>
+
+		<p>
+			Next, we match the <m>x</m> coefficients and the constants on opposite sides of the equation,
+		</p>
+
+		<md>
+			<mrow>
+				{\color{BurntOrange}	\os{\Large\text{🏵️}}{\boxed{ 3A	  }}}\ x + 
+				{\color{RoyalBlue}		\os{\Large\text{💎}}{\boxed{ -4A + 3B}}} =\amp\ 
+				{\color{BurntOrange}	\os{\Large\text{🏵️}}{\boxed{ 9		  }}}\ x + 
+				{\color{RoyalBlue}		\os{\Large\text{💎}}{\boxed{ 0		 }}}
+			</mrow>
+		</md>.	
+
+		<p>
+			This gives us two equations to solve for <m>A</m> and <m>B</m>,
+		</p>
+		
+		<sidebyside widths="20% 35% 10% 15% 20%" valigns="top top middle top top">
+			<p/>
+			<p>
+				<md>
+					<mrow>\text{🏵️}: \hspace{5.25em}	3A		\amp = 9</mrow>
+					<mrow>\text{💎}: \qquad -4A + 3B	\amp = 0</mrow>
+				</md>
+			</p>
+			<p>
+				<me>
+					\implies
+				</me>
+			</p>
+			<p>
+				<md>
+					<mrow>	A \amp = 3</mrow>
+					<mrow>	B \amp = 4</mrow>
+				</md>
+			</p>
+			<p/>
+		</sidebyside>
+		
+		<p>
+			Thus, the particular solution is:
+		</p>
+		<me>
+			y_p = 3x + 4
+		</me>.
 
 		<p>
 			Regardless of <m>y_p</m>'s form, the process of finding the coefficients remains consistent:
@@ -466,32 +730,39 @@
 			<p>
 				The linear nonhomogeneous equation with constant coefficients,
 				<men xml:id="uc-method-lncc-de">
-					a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = f(x),
+					a_n\ y^{(n)} + \cdots + a_1\ y' + a_0\ y = f(x),
 				</men>
-				has a general solution given by
-				<men xml:id="uc-method-gen-soln">
-					y = y_h + y_p,
-				</men>
-				where <m>y_h\ </m> is the solution to the homogeneous equation
+				has a general solution given by <m> y = y_h + y_p</m>, where <m>y_h</m> solves the homogeneous equation
 				<men xml:id="uc-method-lhcc-de">
-					a_n\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0,
+					a_n\ y^{(n)} + \cdots + a_1\ y' + a_0\ y = 0,
 				</men>
-				and <m>y_p</m> is the particular solution found through the following steps...
+				
+				 and <m>y_p</m> are the homogeneous and particular parts of the solution. The steps to find the general solution are as follows:
 			</p>
 			<dl width="narrow">
-				<li xml:id="uc-step-1"><title> Select Initial <m>y_p</m> </title>
+				<li xml:id="uc-step-1"><title> Find <m>y_h</m> </title>
 					<p>
-						Select the initial form of <m>y_p</m> that generalizes <m>f(x)</m>.
+						Find <m>y_h</m> as the solution to equation <xref ref="uc-method-lhcc-de"/>.
 					</p>
 				</li>
-				<li xml:id="uc-step-2"><title> Adjust <m>y_p</m> </title>
+				<li xml:id="uc-step-2"><title> Initial <m>y_p</m> </title>
 					<p>
-						If <m>y_p</m> shares terms with <m>y_h</m>, repeatedly multiply the terms by <m>x</m> until there are no terms in common.
+						Set the initial form of <m>y_p</m> as a generalizes version of <m>f(x)</m> based on <xref ref="yp-forms-table"/> and <xref ref="multiplying-yp-forms-table"/>.
 					</p>
 				</li>
-				<li xml:id="uc-step-3"><title> Find the Coefficients of <m>y_p</m> </title>
+				<li xml:id="uc-step-3"><title> Adjusted <m>y_p</m> </title>
 					<p>
-						Plug <m>y_p</m> into <xref ref="uc-method-lncc-de"/> and match terms on each side to solve for the unknown coefficients of <m>y_p</m>.
+						Multiply each term in <m>y_p</m> that is also in <m>y_h</m>. Repeat this until <m>y_p</m> and <m>y_h</m> have no terms in common.
+					</p>
+				</li>
+				<li xml:id="uc-step-4"><title> <m>y_p</m> Coefficients </title>
+					<p>
+						Plug <m>y_p</m> into <xref ref="uc-method-lncc-de"/>, taking all derivatives and simplifying like-terms. Match coefficients on opposite sides of the resulting equation to get a system of equations for the coefficients of <m>y_p</m>. Solve this system and plug the values into <m>y_p</m>.
+					</p>
+				</li>
+				<li xml:id="uc-step-5"><title> General Solution </title>
+					<p>
+						Give the general solution as <m>y = y_h + y_p</m>.
 					</p>
 				</li>
 			</dl>
@@ -501,146 +772,222 @@
 			Now for a few examples to illustrate the complete application of the nndetermined coefficients method.
 		</p>
 		
-		<example><title> <em>Find the general solution for each equation</em> </title>
+		<example><title> General Solution of an LNCC Equation </title>
 
-			<solution><title> <m>y'' - 3y' + y = 2x^2 + 3x</m> </title>
-				<p>
-					Following the method of <xref ref="uc-method" text="title"/>, we first find <m>y_h</m> as
-					<me> y_h = c_1 e^x + c_2 x e^x </me>.
-					Next, we <xref ref="uc-step-1" text="custom">select the initial form of <m>y_p</m></xref> as
-					<md>
-						<mrow> y_p = Ax^2 + Bx + C		</mrow>
-					</md>
-					and <xref ref="uc-step-2" text="custom">adjust <m>y_p</m></xref>, if necessary. A quick check shows that <m>y_p</m> has no terms in common with <m>y_h</m>.
-				</p>
+			<p>
+				<statement>
+					<p>
+						For each of the following linear nonhomogeneous differential equations, find the general solution using the <xref ref="uc-method" text="custom">method of undetermined coefficients</xref>.
+						<ol marker="A.">
+							<li>
+								<p>
+									<m>\ds y'' - 2y' + y = 2x^2 + 3x</m>
+									<solution>
 
-				<p>
-					Finally, we <xref ref="uc-step-3" text="custom">find the coefficients of <m>y_p</m></xref>. To do this, let's compute <m>y_p'</m>, <m>y_p''</m>, plug these into the equation, and collect the <m>x^2</m>, <m>x</m>, and constant terms as follows:
-					<me>y_p' = 2Ax + B \qquad y_p'' = 2A</me>
-					<md>
-						<mrow> 2A - 3(2Ax + B) + (Ax^2 + Bx + C) = 2x^2 + 3x </mrow>
-						<mrow> 2A - 6Ax - 3B + Ax^2 + Bx + C = 2x^2 + 3x </mrow>
-						<mrow> \us{1}{\ul{A}}x^2 + \us{2}{\ul{(- 6A + B)}}x + \us{3}{\ul{(2A - 3B + C)}} = \us{1}{\ul{2}}x^2 + \us{2}{\ul{3}}x + \us{3}{\ul{0}} </mrow>
-					</md>.
-					Matching the underlined coefficients leads to the following system of equations and solution for the coefficients <m>A</m>, <m>B</m>, and <m>C</m>:
-					<sidebyside widths="15% 10% 30% 10% 10% 25%">
-						<p/>
-						<p>
-							<md>
-								<mrow>	\amp\ 1.	</mrow>
-								<mrow>	\amp\ 2.	</mrow>
-								<mrow>	\amp\ 3.	</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow> A			=\amp\ 2	</mrow>
-								<mrow> -6A + B		=\amp\ 3	</mrow>
-								<mrow> 2A - 3B + C	=\amp\ 0	</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>				</mrow>
-								<mrow>	\rightarrow	</mrow>
-								<mrow>				</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>	\amp\ A = 2  </mrow>
-								<mrow>	\amp\ B = 9  </mrow>
-								<mrow>	\amp\ C = 13 </mrow>
-							</md>
-						</p>
-						<p/>
-					</sidebyside>
-					The general solution is then
-					<me> y = y_h + y_p = c_1 e^x + c_2 x e^x + 2x^2 + 9x + 13 </me>.
-				</p>
-			</solution>
+										<p>
+											<term> <xref ref="uc-step-1" text="title"/>. </term>
+											The characteristic equation is
+											<me>
+												r^2 - 2r + 1 = 0
+											</me>,
+											which has the roots <m>r_1 = 1</m> and <m>r_2 = 1</m>, so
+											<me>
+												y_h = c_1 e^x + c_2 x e^x
+											</me>.
+										</p>
 
-			<solution><title> <m>y'' + 3y' - 28y = 7t + e^{4t} - 1</m> </title>
-				<p>
-					Following the method of <xref ref="uc-method" text="title"/>, we find <m>y_h</m> as <m>\ds y_h = c_1 e^{4t} + c_2 e^{-7t} </m> and then find <m>y_p</m> through the steps that follow.
-				</p>
-				<p>
-					<xref ref="uc-step-1" text="title"/>. The initial form of <m>y_p</m> is
-					<me> y_p = At + B + Ce^{4t}</me>,
-				</p>
-				<p>
-					<xref ref="uc-step-2" text="title"/>. Notice that <m>y_p</m> has an <m>e^{4t}</m> term, which overlaps with <m>y_h</m>. Therefore, we need to adjust <m>y_p</m> by multiplying the <m>e^{4t}</m> term by <m>t</m>,
-					<me> y_p = At + B + Cte^{4t}</me>.
-					Now that <m>y_p</m> and <m>y_h</m> are independent, we can proceed to find the coefficients <m>A</m>, <m>B</m>, and <m>C</m>.
-				</p>
-				<p>
-					<xref ref="uc-step-3" text="title"/>. Before plugging in <m>y_p</m>, let's find <m>y_p'</m> and <m>y_p''</m>:
-					<md>
-						<mrow> y_p		=\amp\ At + B + Cte^{4t}		</mrow>
-						<mrow> y_p'		=\amp\ A + Ce^{4t} + 4Cte^{4t}	</mrow>
-						<mrow> y_p''	=\amp\ 8Ce^{4t} + 16Cte^{4t}	</mrow>
-					</md>.
-					Now, substituting these into the equation and collecting like-terms, to get
-					<md>
-						<mrow>
-							8Ce^{4t}
-								+ 16 Cte^{4t} \amp\ + 3(A + Ce^{4t} + 4Cte^{4t})
-						</mrow>
-						<mrow>
-							\amp\ - 28(At + B + Cte^{4t}) = 7t + e^{4t} - 1
-						</mrow>
-						<mrow>
-							\us{1}{\ul{(11C)}}e^t + \us{2}{\ul{(-28A)}}\amp t + \us{3}{\ul{(3A-28B)}} = \us{1}{\ul{(1)}}e^{4t} + \us{2}{\ul{(7)}}t + \us{3}{\ul{(-1)}}
-						</mrow>
-					</md>,
-					which leads to the following equations for <m>A</m>, <m>B</m>, and <m>C</m>:
-					<sidebyside widths="15% 10% 30% 10% 10% 25%">
-						<p/>
-						<p>
-							<md>
-								<mrow>	\amp\ 1.	</mrow>
-								<mrow>	\amp\ 2.	</mrow>
-								<mrow>	\amp\ 3.	</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow> 11C		=\amp\ 1	</mrow>
-								<mrow> -28A		=\amp\ 7	</mrow>
-								<mrow> 3A - 28B	=\amp\ -1	</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>				</mrow>
-								<mrow>	\rightarrow	</mrow>
-								<mrow>				</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow> \amp\ C = 1/11	</mrow>
-								<mrow> \amp\ A = -1/4	</mrow>
-								<mrow> \amp\ B = 1/112	</mrow>
-							</md>
-						</p>
-						<p/>
-					</sidebyside>
-					Finally, the general solution is
-					<me> y = y_h + y_p = c_1 e^{4t} + c_2 e^{-7t} - \frac{1}{4}t + \frac{1}{112} + \frac{1}{11}e^{4t} </me>.
+										<p>
+											<term> <xref ref="uc-step-2" text="title"/>. </term>
+											From <m>2x^2 + 3x</m>, we get the initial form of <m>y_p</m>,
+											<me>
+												y_p = Ax^2 + Bx + C
+											</me>.
+										</p>
 
-				</p>
-			</solution>
+										<p>
+											<term> <xref ref="uc-step-3" text="title"/>. </term>
+											Since <m>y_p</m> has no terms in common with <m>y_h</m>, no adjustment is needed.
+										</p>
+
+										<p>
+											<term> <xref ref="uc-step-4" text="title"/>. </term>
+											Substituting <m>y_p</m> and its derivatives,
+											<me>
+												y_p' = 2Ax + B,\quad y_p'' = 2A
+											</me>,
+											into the equation and collecting like-terms gives
+											<md>
+												<mrow> (2A) - 2(2Ax + B) + (Ax^2 + Bx + C) = 2x^2 + 3x </mrow>
+												<mrow> 2A - 4Ax - 2B + Ax^2 + Bx + C = 2x^2 + 3x </mrow>
+												<mrow> \us{\large\text{1️⃣}}{\ul{A}}x^2 + \us{\large\text{2️⃣}}{\ul{(-4A + B)}}x + \us{\large\text{3️⃣}}{\ul{(2A - 2B + C)}} = \us{\large\text{1️⃣}}{\ul{2}}x^2 + \us{\large\text{2️⃣}}{\ul{3}}x + \us{\large\text{3️⃣}}{\ul{0}} </mrow>
+											</md>.
+										</p>
+
+										<p>
+											Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
+										</p>
+
+										<sidebyside widths="10% 40% 10% 15% 10%">
+											<p>
+												<md>
+													<mrow>	\amp\ \text{1️⃣}	</mrow>
+													<mrow>	\amp\ \text{2️⃣}	</mrow>
+													<mrow>	\amp\ \text{3️⃣}	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow> A			=\amp\ 2	</mrow>
+													<mrow> -4A + B		=\amp\ 3	</mrow>
+													<mrow> 2A - 2B + C	=\amp\ 0	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>	\rightarrow	</mrow>
+													<mrow>	\rightarrow	</mrow>
+													<mrow>	\rightarrow	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>	\amp\ A = 2  </mrow>
+													<mrow>	\amp\ B = 11 </mrow>
+													<mrow>	\amp\ C = 18  </mrow>
+												</md>
+											</p>
+											<p/>
+										</sidebyside>
+
+										<p>
+											Therefore, <m>\quad\ds y_p = 2x^2 + 11x + 18</m>.
+										</p>
+
+										<p>
+											<term> <xref ref="uc-step-5" text="title"/>. </term>
+											Finally, the general solution is
+											<me> 
+												y = y_h + y_p = c_1 e^x + c_2 x e^x + 2x^2 + 11x + 18
+											</me>.
+										</p>
+									</solution>
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\ds y'' + 3y' - 28y = 14t - 1 + e^{4t}</m>
+									<solution>
+										<p>
+											<term> <xref ref="uc-step-1" text="title"/>. </term>
+											The characteristic equation is
+											<me>
+												r^2 + 3r - 28 = 0
+											</me>,
+											which has the roots <m>r_1 = 4</m> and <m>r_2 = -7</m>, so
+											<me>
+												y_h = c_1 e^{4t} + c_2 e^{-7t}
+											</me>.
+										</p>
+
+										<p>
+											<term> <xref ref="uc-step-2" text="title"/>. </term>
+											Since the constant term as a 1st degree polynomial plus an exponential, the initial <m>y_p</m> is
+											<me>
+												y_p = At + B + Ce^{4t}
+											</me>.
+										</p>
+
+										<p>
+											<term> <xref ref="uc-step-3" text="title"/>. </term>
+											Since <m>y_p</m> and <m>y_h</m> share an <m>e^{4t}</m> term, we multiply this term in <m>y_p</m> by <m>t</m> to get
+										</p>
+
+										<me>
+											y_p = At + B + C t e^{4t}
+										</me>.
+
+										<p>
+											<term> <xref ref="uc-step-4" text="title"/>. </term>
+											Substituting <m>y_p</m> and its derivatives,
+											<me>
+												y_p' = A + C e^{4t} + 4C t e^{4t},\quad y_p'' = 8C e^{4t} + 16C t e^{4t}
+											</me>,
+											into the equation and collecting like-terms gives
+											<md>
+												<mrow>
+													8C e^{4t} + 16C t e^{4t} \amp + 3(A + C e^{4t} + 4C t e^{4t})
+												</mrow>
+												<mrow>
+													\amp - 28(At + B + C t e^{4t})z = 14t - 1 + e^{4t}
+												</mrow>
+												<mrow>
+													8C e^{4t} + 16C t e^{4t} \amp + 3A + 3C e^{4t} + 12C t e^{4t}
+												</mrow>
+												<mrow>
+													\amp - 28At - 28B - 28C t e^{4t} = 14t - 1 + e^{4t}
+												</mrow>
+												<mrow>
+													\us{\large\text{1️⃣}}{\ul{11C}} e^{4t} - \us{\large\text{2️⃣}}{\ul{28A}} t \amp + \us{\large\text{3️⃣}}{\ul{3A - 28B}} = \us{\large\text{2️⃣}}{\ul{14}} t + \us{\large\text{3️⃣}}{\ul{-1}} + \us{\large\text{1️⃣}}{\ul{1}} e^{4t}
+												</mrow>
+											</md>.
+										</p>
+
+										<p>
+											Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
+										</p>
+
+										<sidebyside widths="10% 40% 10% 30% 10%">
+											<p>
+												<md>
+													<mrow>	\amp\ \text{1️⃣}	</mrow>
+													<mrow>	\amp\ \text{2️⃣}	</mrow>
+													<mrow>	\amp\ \text{3️⃣}	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow> 11C		=\amp\ 1	</mrow>
+													<mrow> -28A		=\amp\ 14	</mrow>
+													<mrow> 3A - 28B	=\amp\ -1	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>	\rightarrow	</mrow>
+													<mrow>	\rightarrow	</mrow>
+													<mrow>	\rightarrow	</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>	\amp\ C = 1/11  </mrow>
+													<mrow>	\amp\ A = -1/2  </mrow>
+													<mrow>	\amp\ B = -1/56  </mrow>
+												</md>
+											</p>
+											<p/>
+										</sidebyside>
+
+										<p>
+											Therefore, <m>\quad\ds y_p = -\frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}</m>.
+										</p>
+
+										<p>
+											<term> <xref ref="uc-step-5" text="title"/>. </term>
+											With <m>y_h</m> and <m>y_p</m> in hand, we have
+											<me> 
+												y = y_h + y_p = c_1 e^{4t} + c_2 e^{-7t} - \frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}
+											</me>.
+										</p>
+									</solution>
+								</p>
+							</li>
+						</ol>
+					</p>
+				</statement>
+			</p>
 
 		</example>
-
-		<!-- <assemblage><title> ✳️ Tip: Identifying when things are Amiss </title>
-			<p>
-				Each coefficient should have exactly one solution. If you end up with conflicting values or unsolvable equations, it's a good idea to double-check your choice of <m>y_p</m> and computations.
-			</p>
-		</assemblage> -->
-
-		<!-- <xi:include href="./p3-c2-s5-interactives.ptx" /> -->
 
 	</subsection>
 
