@@ -2,238 +2,276 @@
 	
 	<introduction>
 		<p>
-			NEED TO WRITE THIS
+			In the previous section, we established that the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation consists of two parts: the <em>homogeneous solution</em> <m>y_h</m> and the <em>particular solution</em> <m>y_p</m>. While <m>y_h</m> is found by solving the characteristic equation of the corresponding homogeneous equation, finding <m>y_p</m> requires a different approach.
+		</p>
+
+		<p>
+			The <em>Method of Undetermined Coefficients</em> is a systematic technique for determining <m>y_p</m> when the nonhomogeneous term, <m>f(x)</m>, has a specific form. Instead of solving for <m>y_p</m> directly, we first assume its general structure based on the form of <m>f(x)</m>, then determine the unknown coefficients by substituting <m>y_p</m> into the differential equation and solving for them.
+		</p>
+
+		<p>
+			One limitation of this method is that it only works when <m>f(x)</m> is:
+		</p>
+
+		<ul>
+			<li><p>A Polynomial, such as <m>f(x) = 2x^2 + x - 4</m></p></li>
+			<li><p>An Exponential function, such as <m>f(x) = 5 e^{2 x}</m></p></li>
+			<li><p>Sine or Cosine functions, such as <m>f(x) = \sin(\pi x) - 3\cos(\pi x)</m></p></li>
+			<li><p>Any sum or product of these function types</p></li>
+		</ul>
+
+		<p>
+			Nevertheless, when applicable, it provides a straightforward and efficient way to determine the general solution.
+		</p>
+
+		<p>
+			In this section, we will develop the <em>Method of Undetermined Coefficients</em> by first identifying how to select an appropriate form for <m>y_p</m>, then learning how to adjust <m>y_p</m> when it conflicts with <m>y_h</m>. Finally, we will apply the full method to solve LNCC equations step by step.
 		</p>
 	</introduction>
 
 	<subsection><title> Selecting Particular Solutions </title>
 
 		<p>
-			As discussed in the previous section, solving non-homogeneous linear differential equations involves finding a solution that satisfies the equation:
-			<me>
-				a_n y^{(n)} + \cdots + a_2 y'' + a_1 y' + a_0 y = f(x)
-			</me>.
-			The challenge is that the terms on the left side need to combine in just the right way to match <m>f(x)</m> on the right. This means the form of the particular solution must resemble <m>f(x)</m> closely. When <m>f(x)</m> contains polynomial, exponential, or trigonometric (sine or cosine) terms, the particular solution should involve similar components.
+			The first step in the <em>Method of Undetermined Coefficients</em> is selecting an appropriate form for the particular solution, <m>y_p</m>. Since <m>y_p</m> is responsible for generating the nonhomogeneous term <m>f(x)</m> when substituted into the differential equation, it must be structured in a way that allows differentiation to produce terms that match those in <m>f(x)</m>.
 		</p>
 
 		<p>
-			The specific function that accounts for <m>f(x)</m> on the right side is known as the <term>particular solution</term>, denoted <m>y_p</m>. The form of this solution depends on the type of function <m>f(x)</m> represents. To help select the correct form of <m>y_p</m>, refer to <xref ref="yp-forms-table"/>, which outlines the most common types of <m>f(x)</m> and their corresponding <m>y_p</m> forms.
+			Unlike the homogeneous solution <m>y_h</m>, which is determined by solving the characteristic equation, <m>y_p</m> is not obtained through direct computation. Instead, we assume a general form for <m>y_p</m> that mirrors the function type of <m>f(x)</m>, introducing unknown coefficients that will be determined later by substitution into the differential equation.
 		</p>
 
-		<table xml:id="yp-forms-table">
-			<title> Single Function Initial Forms of <m>y_p</m> </title>
+		<p>
+			The general principle for choosing <m>y_p</m> can be described as:
+		</p>
+
+		<blockquote>
+			<p>
+				<em>The particular solution <m>y_p</m> must have the same structure as <m>f(x)</m>, ensuring that differentiation produces terms capable of matching this function on the right-hand side.</em>
+			</p>
+		</blockquote>
+
+		<p>
+			This means that if <m>f(x)</m> is a polynomial or exponential, for example, then <m>y_p</m> should take a similar form. The table below provides a guide for selecting <m>y_p</m> (<em>right column</em>) based on the type of forcing function, <m>f(x)</m> (<em>left column</em>). 
+		</p>
+
+		<aside>
+			<p>
+				The coefficients (<m>A</m>, <m>B</m>, <m>C</m>, etc.) will be found later by plugging <m>y_p</m> into our DE. For now, we are focused on selecting the correct form of <m>y_p</m>.
+			</p>
+		</aside>
+
+		<table xml:id="yp-forms-table"><title> Suggested <m>y_p</m> selection based on <m>f(x)</m>. </title>
 			<tabular top="medium" left="medium" right="medium" bottom="minor">
-				<col halign="center" right="medium"/>
+				<col halign="center" top="none" right="minor"/>
+				<col halign="center" right="minor"/>
 				<col halign="center"/>
-				<row bottom="medium">
-					<cell><term>Constant Term Function, </term><m>f(x)</m></cell>
+				<row left="none" bottom="medium">
+					<cell right="medium"/>
+					<cell><term>Forcing Function Type, </term><m>f(x)</m></cell>
 					<cell><term>Particular Solution Form, </term><m>y_p</m></cell>
 				</row>
 				<row>
-					<cell><m>a</m></cell>
+					<cell>1</cell>
+					<cell><m>a</m> (constant)</cell>
 					<cell><m>A</m></cell>
 				</row>
 				<row>
-					<cell><m>ax+b</m></cell>
-					<cell><m>Ax+B</m></cell>
+					<cell>2</cell>
+					<cell><m>ax + b</m></cell>
+					<cell><m>Ax + B</m></cell>
 				</row>
 				<row>
-					<cell><m>ax^2+bx+c</m></cell>
-					<cell><m>Ax^2+Bx+C</m></cell>
+					<cell>3</cell>
+					<cell><m>ax^2 + bx + c</m></cell>
+					<cell><m>Ax^2 + Bx + C</m></cell>
 				</row>
 				<row>
-					<cell><m>ax^3+bx^2+cx+d</m></cell>
-					<cell><m>Ax^3+Bx^2+Cx+D</m></cell>
+					<cell>4</cell>
+					<cell><m>a_nx^n + \ldots + a_1x + a_0</m></cell>
+					<cell><m>A_nx^n + \ldots + A_1x + A_0</m></cell>
 				</row>
 				<row>
+					<cell>5</cell>
 					<cell><m>a e^{\alpha x}</m></cell>
 					<cell><m>A e^{\alpha x}</m></cell>
 				</row>
-				<row>
-					<cell><m>a \sin(\beta x)</m></cell>
-					<cell bottom="none"/>
-				</row>
-				<row>
-					<cell><m>a \cos(\beta x)</m></cell>
-					<cell bottom="none"><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
-				</row>
 				<row bottom="medium">
+					<cell>6</cell>
 					<cell><m>a \sin(\beta x) + b \cos(\beta x)</m></cell>
-					<cell/>
+					<cell><m>A \sin(\beta x) + B \cos(\beta x)</m></cell>
 				</row>
 			</tabular>
 		</table>
 
+		<note><title> Include all possible terms in the selected form </title>
+			<p>
+				When you select a function type in the left column, make sure to include all terms in the right column even if <m>f(x)</m> lacks that term. For example:
+			</p>
+			<ul>
+				<li>
+					<p>
+						If <m>f(x) = x^2 + 1</m>, it may be tempting to set <m>y_p = Ax^2 + B</m> since <m>f(x)</m> lacks an <m>x</m> term. However, <m>y_p</m> must account for all degree 2 polynomial terms, including <m>x</m>. So, <m>y_p=Ax^2 + Bx + C</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Similarly, if <m>f(x) = \cos(3x)</m>, then <m>y_p = A\cos(3x) + \ul{B\sin(3x)}</m>! This ensures that differentiation produces all terms needed to match <m>f(x)</m>.
+					</p>
+				</li>
+			</ul>
+		</note>
+
 		<p>
-			In this table, the constants <m>a</m>, <m>b</m>, <m>c</m>, <m>d</m>, <m>\alpha</m>, and <m>\beta</m> are assumed to be known, while <m>A</m>, <m>B</m>, <m>C</m>, etc., need to be determined. We will explore how to determine these coefficients in the next section. For now, we are concerned with picking the correct form. Let's work through a few examples to solidify this process.
+			If <m>f(x)</m> consists of a sum of different function types (e.g., a polynomial plus an exponential), the particular solution <m>y_p</m> must also be a sum of the corresponding forms. Each term in <m>y_p</m> should independently match its counterpart in <m>f(x)</m>.
 		</p>
 
-		<example><title> Initial form of <m>y_p</m> - Single Form </title>
+		<example><title> Initial form of <m>y_p</m> </title>
 
 			<p>
 				<statement>
 					<p>
 						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
-						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
-							<p/>
-							<p>A.</p>
+					</p>
+
+					<p>
+						<sidebyside widths="44% 56%" valign="middle">
 							<p><m>\ds y'' + y' + 5y = 3e^{6x}\vphantom{\frac{dy}{dx}}</m></p>
-							<p/>
-							<p>B.</p>
+							<p>
+								<solution>
+									<p>
+										<m>3e^{6x}</m> corresponds to row 5 of the table, so the initial <m>y_p</m> is
+										<me>
+											y_p = Ae^{6x}
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+
+						<sidebyside widths="44% 56%" valign="middle">
 							<p><m>\ds y'' + 3y' - y = 2\sin(2x)\vphantom{\frac{dy}{dx}}</m></p>
-							<p/>
+							<p>
+								<solution>
+									<p>
+										<m>2\sin(2x)</m> corresponds to row 6, so the initial <m>y_p</m> is 
+										<me>
+											y_p = A\sin(2x) + B\cos(2x)
+										</me>.
+										<em>Note, we include cosine in <m>y_p</m> even if it doesn't appear in <m>f(x)</m>.</em>
+									</p>
+								</solution>
+							</p>
 						</sidebyside>
-						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
-							<p/>
-							<p>C.</p>
+
+						<sidebyside widths="44% 56%" valign="middle">
 							<p><m>\ds \omega''' + \omega' = 5\theta^2 + \theta + 1\vphantom{\frac{dy}{dx}}</m></p>
-							<p/>
-							<p>D.</p>
+							<p>
+								<solution>
+									<p>
+										<m>5\theta^2 + \theta + 1</m> corresponds to row 3, so the initial <m>y_p</m> is 
+										<me>
+											\omega_p = A\theta^2 + B\theta + C
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+
+						<sidebyside widths="44% 56%" valign="middle">
 							<p><m>\ds 2\frac{dy}{dx} + 5y + 3 = 0</m></p>
-							<p/>
+							<p>
+								<solution>
+									<p>
+										Moving the constant term, <m>3</m>, to the right and using row 1 gives
+										<me>
+											y_p = A
+										</me>.
+									</p>
+								</solution>
+							</p>
 						</sidebyside>
-						<sidebyside widths="4% 6% 34% 8% 6% 34% 4%" valign="middle">
-							<p/>
-							<p>E.</p>
+
+						<sidebyside widths="44% 56%" valign="middle">
 							<p><m>\ds y'' -3y' + 0.5y = 14x^4\vphantom{\frac{dy}{dx}}</m></p>
-							<p/>
-							<p></p>
-							<p></p>
-							<p/>
+							<p>
+								<solution>
+									<p>
+										<m>x^4</m> matches row 4 (with <m>n=4</m>), so
+										<me>
+											y_p = Ax^4 + Bx^3 + Cx^2 + Dx + E
+										</me>.
+										<em>All powers of <m>x</m> up to <m>x^4</m> are included.</em>
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+
+						<sidebyside widths="44% 56%" valign="middle">
+							<p><m>\ds y'' + 2y' + 3y = 2e^{w} - 1\vphantom{\frac{dy}{dx}}</m></p>
+							<p>
+								<solution>
+									<p>
+										Since <m>2e^{w} - 1</m> is the sum of an exponential and a constant, the initial <m>y_p</m> is
+										<me>
+											y_p = Ae^{w} + B
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+
+						<sidebyside widths="44% 56%" valign="middle">
+							<p><m>\ds u'' - u = 3\sin(2\theta) + \cos(2\theta)\vphantom{\frac{dy}{dx}}</m></p>
+							<p>
+								<solution>
+									<p>
+										Since sine and cosine share the same input argument <m>2\theta</m>, we use row 6 to get the initial <m>y_p</m> as
+										<me>
+											y_p = A\sin(2\theta) + B\cos(2\theta)
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+						
+						<sidebyside widths="44% 56%" valign="middle">
+							<p><m>\ds \omega''' + \omega' = 5e^{3w} - 2\sin(4w)\vphantom{\frac{dy}{dx}}</m></p>
+							<p>
+								<solution>
+									<p>
+										Since <m>5e^{3w} - 2\sin(w)</m> is the sum of an exponential and sine, we get
+										<me>
+											y_p = Ae^{3w} + B\sin(w) + C\cos(w)
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+						
+						<sidebyside widths="44% 56%" valign="middle">
+							<p><m>\ds P' + P = \cos(-3t) - \cos(5t)\vphantom{\frac{dy}{dx}}</m></p>
+							<p>
+								<solution>
+									<p>
+										Since <m>\cos(-3t) - \cos(5t)</m> is the sum of cosines with different input arguments, the initial <m>y_p</m> must include two forms:
+										<md>
+											<mrow> y_p = A\amp \sin(-3t) + B\cos(-3t) </mrow>
+											<mrow> \amp + C\sin(5t) + D\cos(5t) </mrow>
+										</md>.
+									</p>
+								</solution>
+							</p>
 						</sidebyside>
 					</p>
-
 				</statement>
 			</p>
-
-			<solution>
-				<ol marker="A.">
-					<li>
-						<p>
-							Since the constant term, <m>f(x) = 3e^{6x}</m>, has the form <m>a e^{\alpha x}</m>, we set 
-							<me>
-								y_p = Ae^{6x}
-							</me>.
-						</p>
-					</li>
-					<li>
-						<p>
-							Since the constant term, <m>2\sin(2x)</m>, has the form <m>a \sin(\beta x)</m>, so 
-							<me>
-								y_p = A\sin(2x) + B\cos(2x)
-							</me>.
-						</p>
-					</li>
-					<li>
-						<p>
-							Since the constant term, <m>5\theta^2 + \theta + 1</m> has the form <m>a\theta^2+b\theta+c</m>, so
-							<me>
-								\omega_p = A\theta^2 + B\theta + C
-							</me>.
-						</p>
-					</li>
-					<li>
-						<p>
-							Here, the constant term, <m>3</m>, is not on the right. Nevertheless, it can be moved over and since it has the form <m>a</m>, we get
-							<me>
-								y_p = A
-							</me>.
-						</p>
-					</li>
-					<li>
-						<p>
-							Even though <m>f(x) = 14x^4</m> only has an <m>x^4</m> term, the solution can contain any terms of a 4th-degree polynomial, so
-							<me>
-								y_p = Ax^4+Bx^3+Cx^2+Dx+E
-							</me>.
-						</p>
-					</li>
-				</ol>
-			</solution>
-		</example>
-
-		<p>
-			When <m>f(x)</m> is a sum of multiple functions, each part of the sum contributes to the form of the particular solution. In these situations, we construct <m>y_p</m> by simply adding together the particular solutions corresponding to each term in <m>f(x)</m>. Let's look at an example to clarify this approach.
-		</p>
-
-		<example><title> Initial form of <m>y_p</m> - Sum of Forms </title>
-
-			<p>
-				<statement>
-					<p>
-						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
-						<ol marker="A.">
-							<li>
-								<p>
-									<m>\ds y'' + 2y' + 3y = 2e^{w} - 1</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds u'' - u = 3\sin(2\theta) + 4\cos(2\theta)</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds \omega''' + \omega' = 5e^{3w} - 2\sin(4w)</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds P' + 5P = 2\cos(-3t) - 4\cos(5t)</m>
-								</p>
-							</li>
-						</ol>
-					</p>
-				</statement>
-			</p>
-
-			<solution>
-				<p>
-					<ol>
-						<li>
-							<p>
-								Since the constant term is the sum of <m>2e^{w}</m> and <m>-1</m>, we set
-								<me>
-									y_p = Ae^{w} + B
-								</me>.
-							</p>
-						</li>
-						<li>
-							<p>
-								In this case, we have the sum of <m>3\sin(2\theta)</m> and <m>4\cos(2\theta)</m>, but this is already in <xref ref="yp-forms-table"/>, so we set it as usual:
-								<me>
-									y_p = A\sin(2\theta) + B\cos(2\theta)
-								</me>.
-							</p>
-						</li>
-						<li>
-							<p>
-								Since the constant term is the sum of an <m>e^{3w}</m> and a <m>\sin(4w)</m>,
-								<me>
-									y_p = Ae^{3w} + B\sin(4w) + C\cos(4w)
-								</me>.
-							</p>
-						</li>
-						<li>
-							<p>
-								Since the constant term is the sum of non-like cosine terms, we must add both of their forms to the initial <m>y_p</m>, like so
-								<me>
-									y_p = A\sin(-3t) + B\cos(-3t) + C\sin(5t) + D\cos(5t)
-								</me>.
-							</p>
-						</li>
-					</ol>
-				</p>
-			</solution>
 
 		</example>
 
 		<p>
-			When <m>f(x)</m> involves products of functions, constructing <m>y_p</m> can become more involved. This is because multiplying terms may introduce extra coefficients that turn out to be unnecessary or redundant. In these cases, simplifying the solution to avoid duplication is essential. The following example illustrates this process.
+			When <m>f(x)</m> is a product of function types (such as a polynomial times an exponential), <m>y_p</m> should be chosen as a product of their corresponding forms. The tricky part here is that multiplication often introduces unnecessary coefficients that can overly complicate your problem if not simplified. The next example illustrates this situation and addresses how to handle it.
 		</p>
 
-		<example><title> Initial form of <m>y_p</m> - A Product of Forms </title>
+		<example><title> Initial form of <m>y_p</m> - A Redundant Coefficient </title>
 
 			<p>
 				<statement>
@@ -248,23 +286,42 @@
 
 			<solution>
 				<p>
-					Since <m>f(x) = 10x^2 e^{6x}</m> is the product of a polynomial and an exponential, we initially set:
-					<me>y_p = (Ax^2 + Bx + C)(D e^{6x})</me>.
-					However, <m>D</m> is redundant because if we multiply it onto the polynomial, it can be absorbed into <m>A, B, </m> and <m>C</m>, as follows:
-					<me>y_p = (Ax^2 + Bx + C)(D e^{6x}) = \left(AD x^2 + BD x + CD\right) e^{6x}</me>.
-					So, the form of <m>y_p</m> simplifies to:
-					<me>y_p = \left(A x^2 + B x + C\right) e^{6x}</me>.
+					Since <m>f(x) = 10x^2 e^{6x}</m> is the product of a polynomial and an exponential, logically we would set <m>y_p</m> as
 				</p>
+
+				<me>
+					y_p = (Ax^2 + Bx + C)(D e^{6x})
+				</me>.
+
+				<p>
+					However, <m>D</m> is unnecessary because if we multiply this expression out, <m>D</m> can be absorbed into <m>A</m>, <m>B</m>, and <m>C</m>, as follows:
+				</p>
+
+				<me>
+					y_p = (Ax^2 + Bx + C)(D e^{6x}) = \left(AD x^2 + BD x + CD\right) e^{6x}
+				</me>.
+
+				<p>
+					So, relabeling <m>AD</m>, <m>BD</m>, and <m>CD</m> as <m>A</m>, <m>B</m>, and <m>C</m>, respectively, the form of <m>y_p</m> simplifies to:
+				</p>
+
+				<me>
+					y_p = \left(A x^2 + B x + C\right) e^{6x}
+				</me>.
 			</solution>
 
 		</example>
 
-		<example><title> Initial form of <m>y_p</m> - More Products of Forms </title>
+		<p>
+			As this example demonstrates, creating a product of forms directly from the table can lead to redundant coefficients. To build some confidence with this process, here are a few more examples to practice this skill.
+		</p>
+
+		<example><title> Initial form of <m>y_p</m> - Products of Forms </title>
 
 			<p>
 				<statement>
 					<p>
-						Use <xref ref="yp-forms-table"/> to set-up the initial form of <m>y_p</m> for each equation and combine any coefficients when possible.
+						Use <xref ref="yp-forms-table"/> to set-up the initial form of <m>y_p</m> for each equation and combine or eliminate any unnecessary coefficients when possible.
 						<ol marker="A.">
 							<li>
 								<p>
@@ -331,12 +388,12 @@
 								<mrow>	Q_p = (At^3 + Bt^2	\amp + Ct + D)\sin t						</mrow>
 								<mrow> 						\amp + (Et^3 + Ft^2 + Gt + H)\cos t.	\quad \text{2️⃣}</mrow>
 							</md>
-							Although forms 1️⃣ &amp; 2️⃣ are both correct, when we start solving equations, form 2️⃣ will usually be easier to work with. 
+							Although forms 1️⃣ &amp; 2️⃣ are both correct, when we start solving equations, form 2️⃣ will often be easier to work with. 
 						</p>
 					</li>
 					<li>
 						<p>
-							This one is tricky, but as long as the initial form of one term covers all the others, then you can ignore the other terms. For example, the general form for, <m>x^2\cos x</m>, is
+							This one is tricky, but as long as the form for one of the terms covers all the others, then you can ignore the other terms when selecting <m>y_p</m>. For example, the form for, <m>x^2\cos x</m>, is given as
 							<md>
 								<mrow>	y_p = (Ax^2 + Bx + C) (D\sin x + E\cos x)	</mrow>
 							</md>,
@@ -344,7 +401,7 @@
 							<me>
 								y_p = (Ax^2 + {\color{RoyalBlue}Bx} + C){\color{RoyalBlue}\sin x} + (Dx^2 + Ex + F)\cos x
 							</me>,
-							showing <m>{\color{RoyalBlue}x\sin x}</m> is captured in this form as well, so we are done. 
+							but covers <m>{\color{RoyalBlue}x\sin x}</m> as well. Thus, this form works for both terms.
 						</p>
 					</li>
 				</ol>
@@ -352,8 +409,7 @@
 
 		</example>
 
-		<table xml:id="multiplying-yp-forms-table">
-			<title> Multiplying Forms of <m>y_p</m> </title>
+		<table xml:id="multiplying-yp-forms-table"><title> General guidelines for selecting <m>y_p</m> when <m>f(x)</m> is a product. </title>
 			<tabular top="medium" left="medium" right="medium" bottom="minor">
 				<col halign="center" right="medium"/>
 				<col halign="center"/>
@@ -390,6 +446,12 @@
 				</row>
 			</tabular>
 		</table>
+
+		<conclusion>
+			<p>
+				Selecting the correct form of <m>y_p</m> is only the first step. Before solving for the unknown coefficients, we must ensure that <m>y_p</m> is independent of <m>y_h</m>. If any term in <m>y_p</m> also appears in <m>y_h</m>, we must adjust <m>y_p</m> by multiplying the overlapping terms by <m>x</m>. The next subsection will explore this adjustment process in detail.
+			</p>
+		</conclusion>
 		
 		<!-- <xi:include href="./p3-c2-s3-interactives.ptx" /> -->
 
@@ -404,6 +466,25 @@
 			</me>.
 			However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.
 		</p>
+
+	<p>
+        In the previous subsection, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, based on the structure of <m>f(x)</m>. However, before solving for the unknown coefficients in <m>y_p</m>, we must ensure that <m>y_p</m> is independent of the homogeneous solution <m>y_h</m>.
+    </p>
+
+    <p>
+        The issue arises when a term in <m>y_p</m> is identical to a term in <m>y_h</m>. If this happens, substituting <m>y_p</m> into the differential equation would cause that term to be absorbed into the homogeneous solution, leaving us unable to fully account for the nonhomogeneous term <m>f(x)</m>. To prevent this, we apply an adjustment procedure known as the <em>modification rule</em>.
+    </p>
+
+	<blockquote>
+        <p>
+            <em>Modification Rule:</em>  
+            If any term in <m>y_p</m> is also present in <m>y_h</m>, multiply that term in <m>y_p</m> by <m>x</m>. If a term still appears in <m>y_h</m> after this adjustment, multiply by <m>x</m> again until all overlapping terms are removed.
+        </p>
+    </blockquote>
+
+    <p>
+        This adjustment ensures that <m>y_p</m> introduces new, independent terms into the general solution, allowing it to account for <m>f(x)</m> without interference from the homogeneous solution.
+    </p>
 
 		<p>
 			To illustrate this, consider the LNCC equation:
@@ -631,6 +712,40 @@
 		<p>
 			This adjustment process ensures that <m>y_h</m> and <m>y_p</m> are independent, allowing the general solution <m>y = y_h + y_p</m> to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.
 		</p>
+
+	 <conclusion>
+
+		 <p>
+        To summarize, Let's go through a step-by-step breakdown of how to identify and adjust <m>y_p</m>:
+    </p>
+
+    <ol>
+        <li>
+            <p>Find the homogeneous solution <m>y_h</m> by solving the characteristic equation.</p>
+        </li>
+        <li>
+            <p>Choose the initial form of <m>y_p</m> based on the function type of <m>f(x)</m>.</p>
+        </li>
+        <li>
+            <p>Compare each term in <m>y_p</m> with those in <m>y_h</m>.</p>
+        </li>
+        <li>
+            <p>If a term in <m>y_p</m> appears in <m>y_h</m>, apply the <em>modification rule</em> by multiplying that term by <m>x</m> until it no longer overlaps.</p>
+        </li>
+        <li>
+            <p>Once adjustments are made, proceed to solving for the coefficients in <m>y_p</m>.</p>
+        </li>
+    </ol>
+
+    <p>
+        This process guarantees that <m>y_p</m> remains independent from <m>y_h</m>, allowing us to construct a valid general solution.
+    </p>
+
+
+        <p>
+            Ensuring that <m>y_p</m> is independent of <m>y_h</m> is a crucial step in the <em>Method of Undetermined Coefficients</em>. Now that we understand how to modify <m>y_p</m> when necessary, we can move on to determining the unknown coefficients by substituting <m>y_p</m> into the differential equation and solving for them.
+        </p>
+    </conclusion>
 
 		<!-- <xi:include href="./p3-c2-s4-interactives.ptx" /> -->
 
