@@ -82,7 +82,7 @@ Book: Step-By-Step Differential Equations, An Interactive Approach to Methods &a
 			Subsection: YP Forms Part 1
 			Subsection: YP Forms Part 2
 			Subsection: Finding YP Coefficients
-			Subsection: Adjusting YP Forms
+			Subsection: Modifying YP Forms
 			Subsection: UC Method
 			Summary & Exercises
 
@@ -243,7 +243,7 @@ Book: Step-By-Step Differential Equations, An Interactive Approach to Methods &a
 			Subsection: YP Forms Part 1
 			Subsection: YP Forms Part 2
 			Subsection: Finding YP Coefficients
-			Subsection: Adjusting YP Forms
+			Subsection: Modifying YP Forms
 			Subsection: UC Method
 			Summary & Exercises
 

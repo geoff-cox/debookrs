@@ -25,7 +25,7 @@
 		</p>
 
 		<p>
-			In this section, we will develop the <em>Method of Undetermined Coefficients</em> by first identifying how to select an appropriate form for <m>y_p</m>, then learning how to adjust <m>y_p</m> when it conflicts with <m>y_h</m>. Finally, we will apply the full method to solve LNCC equations step by step.
+			In this section, we will develop the <em>Method of Undetermined Coefficients</em> by first identifying how to select an appropriate form for <m>y_p</m>, then learning how to modify <m>y_p</m> when it conflicts with <m>y_h</m>. Finally, we will apply the full method to solve LNCC equations step by step.
 		</p>
 	</introduction>
 
@@ -36,7 +36,7 @@
 		</p>
 
 		<p>
-			Unlike the homogeneous solution <m>y_h</m>, which is determined by solving the characteristic equation, <m>y_p</m> is not obtained through direct computation. Instead, we assume a general form for <m>y_p</m> that mirrors the function type of <m>f(x)</m>, introducing unknown coefficients that will be determined later by substitution into the differential equation.
+			Unlike the homogeneous solution <m>y_h</m>, which is determined by solving the characteristic equation, <m>y_p</m> is not obtained through direct computation. To determine <m>y_p</m>, we first assume a general form based on <m>f(x)</m>, then solve for the unknown coefficients by substituting it into the equation.
 		</p>
 
 		<p>
@@ -422,106 +422,88 @@
 					<cell><m>(Ax^2+Bx+C)e^{\alpha x}</m></cell>
 				</row>
 				<row bottom="none">
-					<cell><m>(ax^2+bx+c)\cos x</m></cell>
-					<cell><m>(Ax^2+Bx+C)\cos x \hspace{5.3em}</m></cell>
+					<cell><m>(ax^2+bx+c)\cos(\beta x)</m></cell>
+					<cell><m>(Ax^2+Bx+C)\cos(\beta x) \hspace{5.3em}</m></cell>
 				</row>
 				<row>
-					<cell><m>(ax^2+bx+c)\sin x</m></cell>
-					<cell><m> \hspace{5.3em} + (Ax^2+Bx+C)\sin x</m></cell>
+					<cell><m>(ax^2+bx+c)\sin(\beta x)</m></cell>
+					<cell><m> \hspace{5.3em} + (Ex^2+Fx+G)\sin(\beta x)</m></cell>
 				</row>
 				<row>
 					<cell>
-						<line><m>e^{\alpha x}\cos x</m></line>
-						<line><m>e^{\alpha x}\sin x</m></line>
+						<line><m>e^{\alpha x}\cos(\beta x)</m></line>
+						<line><m>e^{\alpha x}\sin(\beta x)</m></line>
 					</cell>
-					<cell><m>e^{\alpha x}(A\cos x + B\sin x)</m></cell>
+					<cell><m>e^{\alpha x}(A\cos(\beta x) + B\sin(\beta x))</m></cell>
 				</row>
 				<row bottom="none">
-					<cell><m>(ax^2+bx+c)e^{\alpha x}\cos x</m></cell>
-					<cell><m>(Ax^2+Bx+C)e^{\alpha x}\cos x \hspace{5.3em}</m></cell>
+					<cell><m>(ax^2+bx+c)e^{\alpha x}\cos(\beta x)</m></cell>
+					<cell><m>(Ax^2+Bx+C)e^{\alpha x}\cos(\beta x) \hspace{5.3em}</m></cell>
 				</row>
 				<row bottom="medium">
-					<cell><m>(ax^2+bx+c)e^{\alpha x}\sin x</m></cell>
-					<cell><m> \hspace{5.3em} + (Ax^2+Bx+C)e^{\alpha x}\sin x</m></cell>
+					<cell><m>(ax^2+bx+c)e^{\alpha x}\sin(\beta x)</m></cell>
+					<cell><m> \hspace{5.3em} + (Ex^2+Fx+G)e^{\alpha x}\sin(\beta x)</m></cell>
 				</row>
 			</tabular>
 		</table>
-
-		<conclusion>
-			<p>
-				Selecting the correct form of <m>y_p</m> is only the first step. Before solving for the unknown coefficients, we must ensure that <m>y_p</m> is independent of <m>y_h</m>. If any term in <m>y_p</m> also appears in <m>y_h</m>, we must adjust <m>y_p</m> by multiplying the overlapping terms by <m>x</m>. The next subsection will explore this adjustment process in detail.
-			</p>
-		</conclusion>
 		
-		<!-- <xi:include href="./p3-c2-s3-interactives.ptx" /> -->
+		<p>
+			Choosing an initial <m>y_p</m> is only the first step. In some cases, our choice may unintentionally overlap with the homogeneous solution, making <m>y_p</m> ineffective. To address this, we must modify <m>y_p</m> to ensure it remains independent from <m>y_h</m>.
+		</p>
+		
+		<xi:include href="./c6-exercises/c6-chkpts-2-1-selecting-yp.ptx" />
 
 	</subsection>
 
-	<subsection><title> Adjusting Particular Solutions </title>
+	<subsection><title> Modifying Particular Solutions </title>
 
 		<p>
-			As discussed in the previous sections, the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation is the sum of the homogeneous solution, <m>y_h</m>, and the particular solution, <m>y_p</m>. This relationship is expressed as:
-			<me>
-				y = y_h + y_p
-			</me>.
-			However, it is possible for the particular solution to contain terms that overlap with those in the homogeneous solution. When this occurs, parts of the particular solution can be absorbed into the homogeneous solution, leading to a solution that does not accurately match the nonhomogeneous term on the right-hand side of the equation. This section highlights this issue and provides a strategy to resolve it.
-		</p>
-
-	<p>
-        In the previous subsection, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, based on the structure of <m>f(x)</m>. However, before solving for the unknown coefficients in <m>y_p</m>, we must ensure that <m>y_p</m> is independent of the homogeneous solution <m>y_h</m>.
-    </p>
-
-    <p>
-        The issue arises when a term in <m>y_p</m> is identical to a term in <m>y_h</m>. If this happens, substituting <m>y_p</m> into the differential equation would cause that term to be absorbed into the homogeneous solution, leaving us unable to fully account for the nonhomogeneous term <m>f(x)</m>. To prevent this, we apply an adjustment procedure known as the <em>modification rule</em>.
-    </p>
-
-	<blockquote>
-        <p>
-            <em>Modification Rule:</em>  
-            If any term in <m>y_p</m> is also present in <m>y_h</m>, multiply that term in <m>y_p</m> by <m>x</m>. If a term still appears in <m>y_h</m> after this adjustment, multiply by <m>x</m> again until all overlapping terms are removed.
-        </p>
-    </blockquote>
-
-    <p>
-        This adjustment ensures that <m>y_p</m> introduces new, independent terms into the general solution, allowing it to account for <m>f(x)</m> without interference from the homogeneous solution.
-    </p>
-
-		<p>
-			To illustrate this, consider the LNCC equation:
-			<me>
-				y'' - 4y' + 3y = e^{3x}
-			</me>.
-			Here, the homogeneous and particular solutions are:
-			<me>
-				y_h = c_1 e^{x} + c_2 e^{3x}, \qquad y_p = A e^{3x}
-			</me>.
-			The problem arises when you observe that <m>Ae^{3x}</m> in <m>y_p</m> is similar to <m>c_2 e^{3x}</m> in <m>y_h</m>, causing the general solution to become:
-			<me>
-				y = y_h + y_p = c_1 e^{x} + c_2 e^{3x} + A e^{3x} = c_1 e^{x} + (c_2 + A) e^{3x}.
-			</me>
-			As a result, the particular solution effectively vanishes into the homogeneous solution, leading to a solution that fails to reflect the nonhomogeneous term <m>e^{3x}</m>.
+			In the previous subsection, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, based on the structure of <m>f(x)</m>. However, a problem occurs when <m>y_p</m> contains a term that also appears in <m>y_h</m>. If this happens, substituting <m>y_p</m> into the differential equation will fail to produce the correct right-hand side <m>f(x)</m>, requiring an adjustment.
 		</p>
 
 		<p>
-			To address this, we adjust the form of <m>y_p</m> by multiplying it by <m>x</m> until there are no overlapping terms between <m>y_h</m> and <m>y_p</m>. In this example, multiplying <m>y_p</m> by <m>x</m> once is sufficient to make it independent of <m>y_h</m>. The adjusted form of <m>y_p</m> is:
-			<me>
-				y_p = A x e^{3x}.
-			</me>
+			To illustrate this, consider the nonhomogeneous equation:
 		</p>
 
-		<theorem><title> Adjusting Particular Solutions </title>
-			<statement>
-				<p>
-					When the particular solution, <m>y_p</m>, contains terms in common with the homogeneous solution, <m>y_h</m>, adjust the form of <m>y_p</m> by repeatedly multiplying the overlapping terms by <m>x</m> until <m>y_h</m> and <m>y_p</m> share no terms in common.
-				</p>
-			</statement>
-		</theorem>
+		<me>
+			y'' - 4y' + 3y = e^{3x}
+		</me>.
 
 		<p>
-			Let's explore this adjustment process through a few examples.
+			The homogeneous and initial particular solutions for this equation are given by:
 		</p>
 
-		<example><title> Adjusting the Initial Form of <m>y_p</m> </title>
+		<me>
+			y_h = c_1 e^{x} + c_2 e^{3x}, \qquad y_p = A e^{3x}
+		</me>.
+
+		<p>
+			The problem is that <m>A e^{3x}</m> is already included in <m>y_h</m> as <m>c_2 e^{3x}</m>. This means that when <m>A e^{3x}</m> is substituted into the left-hand side of the equation, it satisfies the homogeneous equation, resulting in zero rather than generating the necessary <m>e^{3x}</m> term to match <m>f(x)</m>.
+		</p>
+
+		<p>
+			To resolve this, we modify <m>y_p</m> to ensure it remains independent of <m>y_h</m>. The standard approach is to multiply the conflicting term in <m>y_p</m> by <m>x</m>. If the overlap persists, we continue multiplying by <m>x</m> until all duplicate terms are removed. In this case, <m>y_p</m> becomes
+		</p>
+
+		<me>
+			y_p = A x e^{3x}
+		</me>,
+
+		<p>
+			which has no terms in common with <m>y_h</m>. In general, we apply the following rule:
+		</p>
+
+		<assemblage xml:id="modifying-yp"><title> Modification Rule for the Particular Solution </title>
+			<p> 
+				If any term in <m>y_p</m> is also found in <m>y_h</m>, multiply that term in <m>y_p</m> by <m>x</m>. If the modified term still appears in <m>y_h</m>, multiply by <m>x</m> again. Repeat this process until all overlapping terms are eliminated.
+			</p>
+		</assemblage>
+
+		<p>
+			Now that we understand the need for modifying <m>y_p</m>, let's apply this adjustment rule to specific cases and observe how it ensures independence from <m>y_h</m>.
+		</p>
+
+		<example><title> Modifying the Initial Form of <m>y_p</m> </title>
 			<p>
 				<statement>
 					<p>
@@ -539,7 +521,7 @@
 							</li>
 							<li>
 								<p>
-									Adjust the form of <m>y_p</m> to ensure it is independent of <m>y_h</m>.
+									Modify the form of <m>y_p</m> to ensure it is independent of <m>y_h</m>.
 								</p>
 							</li>
 						</ol>
@@ -710,189 +692,73 @@
 		</example>
 
 		<p>
-			This adjustment process ensures that <m>y_h</m> and <m>y_p</m> are independent, allowing the general solution <m>y = y_h + y_p</m> to properly reflect the nonhomogeneous function on the right-hand side of the differential equation.
+			Now that we know how to construct an independent <m>y_p</m>, the next step is to determine the values of its coefficients. This final step in the Method of Undetermined Coefficients will allow us to solve LNCC equations completely.
 		</p>
 
-	 <conclusion>
-
-		 <p>
-        To summarize, Let's go through a step-by-step breakdown of how to identify and adjust <m>y_p</m>:
-    </p>
-
-    <ol>
-        <li>
-            <p>Find the homogeneous solution <m>y_h</m> by solving the characteristic equation.</p>
-        </li>
-        <li>
-            <p>Choose the initial form of <m>y_p</m> based on the function type of <m>f(x)</m>.</p>
-        </li>
-        <li>
-            <p>Compare each term in <m>y_p</m> with those in <m>y_h</m>.</p>
-        </li>
-        <li>
-            <p>If a term in <m>y_p</m> appears in <m>y_h</m>, apply the <em>modification rule</em> by multiplying that term by <m>x</m> until it no longer overlaps.</p>
-        </li>
-        <li>
-            <p>Once adjustments are made, proceed to solving for the coefficients in <m>y_p</m>.</p>
-        </li>
-    </ol>
-
-    <p>
-        This process guarantees that <m>y_p</m> remains independent from <m>y_h</m>, allowing us to construct a valid general solution.
-    </p>
-
-
-        <p>
-            Ensuring that <m>y_p</m> is independent of <m>y_h</m> is a crucial step in the <em>Method of Undetermined Coefficients</em>. Now that we understand how to modify <m>y_p</m> when necessary, we can move on to determining the unknown coefficients by substituting <m>y_p</m> into the differential equation and solving for them.
-        </p>
-    </conclusion>
-
-		<!-- <xi:include href="./p3-c2-s4-interactives.ptx" /> -->
+		<xi:include href="./c6-exercises/c6-chkpts-2-2-modifying-yp.ptx" />
 
 	</subsection>
 
-	<subsection><title> Method Steps </title>
+	<subsection><title> Undetermined Coefficient Method Steps </title>
 
 		<p>
-			When solving a non-homogeneous linear differential equation, selecting the correct form for the particular solution, <m>y_p</m>, is just the beginning. The next step is determining the values of its unknown coefficients, such as <m>A</m> and <m>B</m>. In this section, we'll explore how to compute these coefficients by substituting the guessed particular solution into the original equation.
+			In the previous subsections, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, and modify it when necessary to ensure independence from the homogeneous solution, <m>y_h</m>. Now, we complete the process by solving for the unknown coefficients in <m>y_p</m> to construct the full general solution.
 		</p>
 
 		<p>
-			Let's revisit the example we discussed earlier. Consider the differential equation:
-			<men xml:id="finding-yps-coefficients-de">
-				y'' - 4y' + 3y = 9x
-			</men>.
-			We guessed that the particular solution would be linear, so we set
-			<me>
-				y_p = Ax + B
-			</me>.
-		</p>
-
-		<p>
-			Our goal now is to determine the values of <m>A</m> and <m>B</m>. To do this, we substitute <m>y_p = Ax + B</m> into the original differential equation. Here's how it works:
-		</p>
-
-		<md>
-			<mrow> y_p = Ax + B \quad \implies \quad y_p' = A \quad \implies \quad y_p'' = 0 </mrow>
-		</md>
-
-		<p>
-			Substituting <m>y_p</m>, <m>y_p'</m>, and <m>y_p''</m> into <xref ref="finding-yps-coefficients-de"/> results in:
-		</p>
-
-		<md>
-			<mrow> 0 - 4A + 3(Ax + B) =\amp\ 9x </mrow>
-			<mrow> -4A + 3Ax + 3B =\amp\ 9x </mrow>
-			<mrow> 3Ax -4A + 3B =\amp\ 9x </mrow>
-		</md>
-
-		<p>
-			Next, we match the <m>x</m> coefficients and the constants on opposite sides of the equation,
-		</p>
-
-		<md>
-			<mrow>
-				{\color{BurntOrange}	\os{\Large\text{🏵️}}{\boxed{ 3A	  }}}\ x + 
-				{\color{RoyalBlue}		\os{\Large\text{💎}}{\boxed{ -4A + 3B}}} =\amp\ 
-				{\color{BurntOrange}	\os{\Large\text{🏵️}}{\boxed{ 9		  }}}\ x + 
-				{\color{RoyalBlue}		\os{\Large\text{💎}}{\boxed{ 0		 }}}
-			</mrow>
-		</md>.	
-
-		<p>
-			This gives us two equations to solve for <m>A</m> and <m>B</m>,
-		</p>
-		
-		<sidebyside widths="20% 35% 10% 15% 20%" valigns="top top middle top top">
-			<p/>
-			<p>
-				<md>
-					<mrow>\text{🏵️}: \hspace{5.25em}	3A		\amp = 9</mrow>
-					<mrow>\text{💎}: \qquad -4A + 3B	\amp = 0</mrow>
-				</md>
-			</p>
-			<p>
-				<me>
-					\implies
-				</me>
-			</p>
-			<p>
-				<md>
-					<mrow>	A \amp = 3</mrow>
-					<mrow>	B \amp = 4</mrow>
-				</md>
-			</p>
-			<p/>
-		</sidebyside>
-		
-		<p>
-			Thus, the particular solution is:
-		</p>
-		<me>
-			y_p = 3x + 4
-		</me>.
-
-		<p>
-			Regardless of <m>y_p</m>'s form, the process of finding the coefficients remains consistent:
-			<ul marker="square">
-				<li><p>Substitute the chosen <m>y_p</m> into the differential equation.</p></li>
-				<li><p>Collect and match coefficients of like-terms on both sides of the equation.</p></li>
-				<li><p>Solve the resulting system to find <m>A, B, C, \ldots</m>.</p></li>
-			</ul>
-		</p>
-		
-		<p>
-			This is why the method is called the "method of undetermined coefficients." and the complete process is summarized as follows.
+			This process, known as the <em>Method of Undetermined Coefficients</em>, consists of systematically substituting <m>y_p</m> into the differential equation, simplifying the terms, and solving for the unknown constants. The steps are outlined below.
 		</p>
 
 		<exploration xml:id="uc-method"><title> Undetermined Coefficients </title>
 			<p>
-				The linear nonhomogeneous equation with constant coefficients,
-				<men xml:id="uc-method-lncc-de">
-					a_n\ y^{(n)} + \cdots + a_1\ y' + a_0\ y = f(x),
-				</men>
-				has a general solution given by <m> y = y_h + y_p</m>, where <m>y_h</m> solves the homogeneous equation
-				<men xml:id="uc-method-lhcc-de">
-					a_n\ y^{(n)} + \cdots + a_1\ y' + a_0\ y = 0,
-				</men>
-				
-				 and <m>y_p</m> are the homogeneous and particular parts of the solution. The steps to find the general solution are as follows:
+				For the linear nonhomogeneous constant coefficient equation,
+			</p>
+			<men xml:id="uc-method-lncc-de">
+				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = f(x),
+			</men>
+			<p>
+				the general solution is given by <m>y = y_h + y_p</m>, where <m>y_h</m> is the homogeneous solution obtained from
+			</p>
+			<men xml:id="uc-method-lhcc-de">
+				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = 0,
+			</men>
+			<p>
+				and <m>y_p</m> is the particular solution that we now determine using the following steps:
 			</p>
 			<dl width="narrow">
-				<li xml:id="uc-step-1"><title> Find <m>y_h</m> </title>
+				<li xml:id="uc-step-1"><title> Solve for <m>y_h</m> </title>
 					<p>
-						Find <m>y_h</m> as the solution to equation <xref ref="uc-method-lhcc-de"/>.
+						Find the homogeneous solution <m>y_h</m> by solving the characteristic equation associated with <xref ref="uc-method-lhcc-de"/>.
 					</p>
 				</li>
-				<li xml:id="uc-step-2"><title> Initial <m>y_p</m> </title>
+				<li xml:id="uc-step-2"><title> Select <m>y_p</m> </title>
 					<p>
-						Set the initial form of <m>y_p</m> as a generalizes version of <m>f(x)</m> based on <xref ref="yp-forms-table"/> and <xref ref="multiplying-yp-forms-table"/>.
+						Use <xref ref="yp-forms-table"/> and <xref ref="multiplying-yp-forms-table"/> to determine an appropriate initial form for <m>y_p</m> based on the structure of <m>f(x)</m>.
 					</p>
 				</li>
-				<li xml:id="uc-step-3"><title> Adjusted <m>y_p</m> </title>
+				<li xml:id="uc-step-3"><title> Modify <m>y_p</m> if Necessary </title>
 					<p>
-						Multiply each term in <m>y_p</m> that is also in <m>y_h</m>. Repeat this until <m>y_p</m> and <m>y_h</m> have no terms in common.
+						Ensure <m>y_p</m> does not contain any terms already present in <m>y_h</m>. If such terms exist, multiply the affected terms in <m>y_p</m> by <m>x</m> repeatedly until all overlap is removed.
 					</p>
 				</li>
-				<li xml:id="uc-step-4"><title> <m>y_p</m> Coefficients </title>
+				<li xml:id="uc-step-4"><title> Determine the Coefficients </title>
 					<p>
-						Plug <m>y_p</m> into <xref ref="uc-method-lncc-de"/>, taking all derivatives and simplifying like-terms. Match coefficients on opposite sides of the resulting equation to get a system of equations for the coefficients of <m>y_p</m>. Solve this system and plug the values into <m>y_p</m>.
+						Substitute <m>y_p</m> into <xref ref="uc-method-lncc-de"/>, compute all derivatives, and simplify. Then, collect like terms and match coefficients on both sides to create a system of equations for the unknown coefficients.
 					</p>
 				</li>
-				<li xml:id="uc-step-5"><title> General Solution </title>
+				<li xml:id="uc-step-5"><title> Construct the General Solution </title>
 					<p>
-						Give the general solution as <m>y = y_h + y_p</m>.
+						Solve for the unknown coefficients, substitute them back into <m>y_p</m>, and express the final solution as <m>y = y_h + y_p</m>.
 					</p>
 				</li>
 			</dl>
 		</exploration>
-
-		<p>
-			Now for a few examples to illustrate the complete application of the nndetermined coefficients method.
-		</p>
 		
-		<example><title> General Solution of an LNCC Equation </title>
+		<p>
+			To illustrate the complete process, let's go through a full example step by step.
+		</p>
 
+		<example><title> General Solution of an LNCC Equation </title>
 			<p>
 				<statement>
 					<p>
@@ -1101,20 +967,78 @@
 									</solution>
 								</p>
 							</li>
+							<li>
+								<p>
+									<m>\ds y'' - 3y' + 2y = 5e^{2x}</m>
+									<solution>
+										<p>
+											<term> <xref ref="uc-step-1" text="title"/>. </term>
+											The characteristic equation is:
+										</p>
+										<me>
+											r^2 - 3r + 2 = 0.
+										</me>
+										<p>
+											Factoring gives <m>(r - 1)(r - 2) = 0</m>, so the homogeneous solution is:
+										</p>
+										<me>
+											y_h = c_1 e^x + c_2 e^{2x}.
+										</me>
+
+										<p>
+											<term> <xref ref="uc-step-2" text="title"/>. </term>
+											Since <m>f(x) = 5e^{2x}</m>, we initially choose:
+										</p>
+										<me>
+											y_p = A e^{2x}.
+										</me>
+
+										<p>
+											<term> <xref ref="uc-step-3" text="title"/>. </term>
+											However, <m>e^{2x}</m> appears in <m>y_h</m>, so we modify <m>y_p</m> by multiplying by <m>x</m>:
+										</p>
+										<me>
+											y_p = A x e^{2x}.
+										</me>
+
+										<p>
+											<term> <xref ref="uc-step-4" text="title"/>. </term>
+											Compute derivatives and substitute into the differential equation:
+										</p>
+										<me>
+											y_p' = A e^{2x} + 2Ax e^{2x},
+										</me>
+										<me>
+											y_p'' = 2A e^{2x} + 2A e^{2x} + 4Ax e^{2x}.
+										</me>
+										<p>
+											Substituting into the equation and simplifying, we solve for <m>A</m> and find <m>A = 5/2</m>. Thus, the particular solution is:
+										</p>
+										<me>
+											y_p = \frac{5}{2} x e^{2x}.
+										</me>
+
+										<p>
+											<term> <xref ref="uc-step-5" text="title"/>. </term>
+											The general solution is:
+										</p>
+										<me>
+											y = c_1 e^x + c_2 e^{2x} + \frac{5}{2} x e^{2x}.
+										</me>
+									</solution>
+								</p>
+							</li>
 						</ol>
 					</p>
 				</statement>
 			</p>
-
 		</example>
 
-		<!-- <assemblage><title> ✳️ Tip: Identifying when things are Amiss </title>
-			<p>
-				Each coefficient should have exactly one solution. If you end up with conflicting values or unsolvable equations, it's a good idea to double-check your choice of <m>y_p</m> and computations.
-			</p>
-		</assemblage> -->
+		<p>
+			These examples illustrate how each step in the method leads systematically to the final general solution. With practice, recognizing the necessary modifications and solving for coefficients will become second nature.
+		</p>
 
-		<!-- <xi:include href="./p3-c2-s5-interactives.ptx" /> -->
+		<xi:include href="./c6-exercises/c6-chkpts-2-3-uc-steps.ptx" />
 
 	</subsection>
 
