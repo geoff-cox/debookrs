@@ -1,0 +1,2888 @@
+
+<subsection xmlns:xi="http://www.w3.org/2001/XInclude"><title> Exercises </title>
+
+	<xi:include href="./c7-exercises-conceptual.ptx" />
+
+	<exercises><title> Forward Transforms </title>
+
+		<exercisegroup><title> Definition of the Laplace Transform </title>
+
+			<introduction>
+				<p>
+					Use the definition to compute each of the following Laplace Transforms.
+				</p>
+			</introduction>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{7t}</m>
+				</statement>
+
+				<solution>
+					<p>
+				In order to evaluate this integral, we will need to compute an integration by parts. When that time comes, we will choose <m> \ds u = t </m> an <m> \ds dv = e^{-st}. </m>  Then we take the derivative o <m> \ds u </m> to fin <m> \ds du </m> and the antiderivative o <m> \ds dv </m> to fin <m> \ds v </m> , as follows.
+					<md>
+						<mrow>  u	 \amp =  t 						\amp dv	\amp = e^{-st}dt </mrow>
+						<mrow>  \Rightarrow du	 \amp =  dt\hspace{1cm}\mbox{}	\amp \Rightarrow v	\amp = -\frac{1}{s}e^{-st}  </mrow>
+					</md>
+						Note also that we will use L'Hospital's Rule when we have a limit of for <m> \ds \frac{\infty}{\infty}. </m>
+					<md>
+						<mrow>  H(s)	 \amp =  \lap{ h(t) } </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}h(t) dt </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}\cdot 7t dt </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \int_0^b e^{-st}\cdot 7t dt </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \int_0^b te^{-st} dt </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[t\cdot\left(-\frac{1}{s}e^{-st}\right)\Bigg|_0^b - \int_0^b -\frac{1}{s}e^{-st} dt\right] </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[-\frac{t}{se^{st}}\Bigg|_0^b + \frac{1}{s}\int_0^b e^{-st} dt\right] </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[-\frac{t}{se^{st}} + \frac{1}{s} \cdot -\frac{1}{s}e^{-st} \right]_0^b </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[-\frac{t}{se^{st}} - \frac{1}{s^2 e^{st}} \right]_0^b </mrow>
+					</md>
+		
+					<md>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[\left( -\frac{b}{se^{sb}} - \frac{1}{s^2 e^{sb}} \right) - \left( -\frac{0}{se^{s\cdot 0}} - \frac{1}{s^2 e^{s\cdot 0}} \right) \right] </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[\left( -\frac{b}{se^{sb}} - \frac{1}{s^2 e^{sb}} \right) - \left( 0 - \frac{1}{s^2} \right) \right] </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[-\frac{b}{se^{sb}} - \frac{1}{s^2 e^{sb}}+ \frac{1}{s^2} \right] </mrow>
+						<mrow>   \amp =   7\cdot \lim_{b \to \infty} \left[-\frac{b}{se^{sb}} \right] - 7\cdot \lim_{b \to \infty} \left[\frac{1}{s^2 e^{sb}} \right] + 7\cdot \lim_{b \to \infty} \left[\frac{1}{s^2} \right] </mrow>
+						<mrow>   \amp =   -7\cdot \frac{1}{s} \cdot \lim_{b \to \infty} \left[\frac{b}{e^{sb}} \right] - 7\cdot \frac{1}{s^2}\cdot \lim_{b \to \infty} \left[\frac{1}{e^{sb}} \right] + 7\cdot \frac{1}{s^2} </mrow>
+						<mrow>   \amp =   -\frac{7}{s} \cdot  \lim_{b \to \infty} \left[\frac{1}{se^{sb}} \right] - \frac{7}{s^2}\cdot \lim_{b \to \infty} \left[\frac{1}{e^{sb}} \right] + \frac{7}{s^2} \mbox{ (using L'H Rule)} </mrow>
+						<mrow>   \amp =   -\frac{7}{s^2} \cdot  \lim_{b \to \infty} \left[\frac{1}{e^{sb}} \right] - \frac{7}{s^2}\cdot \lim_{b \to \infty} \left[\frac{1}{e^{sb}} \right] + \frac{7}{s^2} </mrow>
+						<mrow>   \amp =   -\frac{7}{s^2} \cdot  0 - \frac{7}{s^2}\cdot 0 + \frac{7}{s^2} </mrow>
+						<mrow>   \amp =   \frac{7}{s^2} </mrow>
+					</md>
+		
+					</p>
+				</solution>
+
+				<answer>
+					<p>
+						<m> \ds \frac{7}{s^2} </m>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{7t + e^{5t}}</m>
+				</statement>
+
+				<solution>
+					<p>
+				\\ We will use the results from the previous two questions.
+					<md>
+						<mrow>  Y(s)	 \amp =  \lap{ y(t) } </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}y(t) dt </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}\cdot (7t + e^{5t}) dt </mrow>
+						<mrow>   \amp =  \int_0^{\infty}(e^{-st}\cdot 7t + e^{-st}\cdot e^{5t}) dt </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}\cdot 7t dt + \int_0^{\infty}(e^{-st}\cdot e^{5t} dt </mrow>
+						<mrow>   \amp =  \lap{ 7t } + \lap{ e^{5t} } </mrow>
+						<mrow>   \amp = \frac{7}{s^2} + \frac{1}{s-5} </mrow>
+					</md>
+						Notice that what we showed in the middle of all this is that <m> \ds \lap{ 7t + e^{5t} } = \lap{ 7t } + \lap{ e^{5t} }. </m> This is an example of the linearity property of Laplace Transforms.
+					</p>
+				</solution>
+
+				<answer>
+					<p>
+						<m> \ds \frac{7}{s^2} + \frac{1}{s-5} </m>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+		
+				<statement>
+					<m>\ds \lap{e^{at}}</m>
+				</statement>
+		
+				<solution>
+					<p>
+				\\
+					<md>
+						<mrow>  W(s)	 \amp =  \lap{ w(t) } </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}w(t) dt </mrow>
+						<mrow>   \amp =  \int_0^{\infty}e^{-st}\cdot e^{at} dt </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \int_0^b e^{-st}\cdot e^{at} dt </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \int_0^b e^{-st + at}dt </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \int_0^b e^{(-s + a)t}dt </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \left[ \frac{1}{-s+a} \cdot e^{(-s + a)t} \right]_0^b </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \left[ \left(\frac{1}{-s+a} \cdot e^{(-s + a)\cdot b}\right) - \left(\frac{1}{-s+a} \cdot e^{(-s + a)\cdot 0}\right) \right] </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \left[ \left(\frac{1}{-s+a} \cdot e^{(-s + a)\cdot b}\right) - \left(\frac{1}{-s+a} \cdot 1\right) \right] </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \left[ \frac{1}{-s+a} \cdot e^{(-s + a)\cdot b} - \frac{1}{-s+a} \right] </mrow>
+						<mrow>   \amp =  \lim_{b \to \infty} \left[ \frac{1}{-s+a} \cdot e^{(-s + a)\cdot b} \right] - \lim_{b \to \infty} \left[ \frac{1}{-s+a} \right] </mrow>
+						<mrow>   \amp =  \frac{1}{-s+a} \cdot \lim_{b \to \infty} \left[ e^{(-s + a)\cdot b} \right] - \frac{1}{-s+a} </mrow>
+						<mrow>   \amp =  \frac{1}{-s+a} \cdot 0 - \frac{1}{-s+a} \mbox{ (assumin <m> \ds -s+a </m> is negative)} </mrow>
+						<mrow>   \amp =  - \frac{1}{-s+a} </mrow>
+						<mrow>   \amp =  \frac{1}{s-a}  </mrow>
+					</md>
+		
+					</p>
+				</solution>
+		
+				<answer>
+					<p>
+						<m> \ds W(s) = \frac{1}{s-a} </m>
+					</p>
+				</answer>
+		
+			</exercise>
+
+			<exercise>
+				<statement>
+					<m>\ds \lap{-40e^{3t}}</m>
+				</statement>
+				<solution>
+					<p>
+				To compute this, we use the definition of the Laplace transform.
+					<md>
+						<mrow> \lap{-40e^{3t}} \amp = \int_0^{\infty} e^{-st} \cdot (-40e^{3t}) \ dt </mrow>
+						<mrow> \amp = -40 \int_0^{\infty} e^{-st+3t} \ dt </mrow>
+						<mrow> \amp = -40 \int_0^{\infty} e^{-(s-3)t} \ dt </mrow>
+						<mrow> \amp = -40 \left[ \frac{1}{s-3} e^{-(s-3)t} \right]_0^{\infty} </mrow>
+						<mrow> \amp = -40 \left( \lim_{t \to \infty} \frac{1}{s-3} e^{-(s-3)t} - \frac{1}{s-3} \right) </mrow>
+						<mrow> \amp = -40 \left( 0 - \frac{1}{s-3} \right) </mrow>
+						<mrow> \amp = \frac{40}{s-3} </mrow>
+					</md>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{40}{s-3}</m>
+					</p>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<statement>
+					<m>\ds \lap{15}</m>
+				</statement>
+				<solution>
+					<p>
+						By the above definition, we have
+						<md>
+							<mrow>	\lap{ 15 }	\amp = \int_0^{\infty} \left(15\right)e^{-st}dt \qquad \text{(improper integral)}	</mrow>
+							<mrow>					\amp = \lim_{b \to \infty}\int_0^b 15 e^{-st}dt	</mrow>
+							<mrow>					\amp = 15 \lim_{b \to \infty}\int_0^b e^{-st}dt \qquad (s\text{ is constant here})	</mrow>
+						</md>
+						At this point, we need to assume that <m>s\ne0</m> in order to continue. If you are curious as to why, see this <xref text="custom" ref="LT-s-ne-0-15">note</xref> for an explanation. Next, we integrate using the substitution <m>u=-st</m>.
+					  </p>
+			
+					<p>
+						<md>
+							<mrow>	\amp = 15\lim_{b \to \infty} -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}	</mrow>
+							<mrow>	\amp = 15\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]	</mrow>
+							<mrow>	
+									\amp = 15 \cdot -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] \qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+							</mrow>
+							<mrow>	
+									\amp = -\frac{15}{s}	\Big[ \lim_{b \to \infty} e^{-sb} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big] \qquad(s &gt; 0)
+							</mrow>
+							<mrow>	
+								\amp = -\frac{15}{s} \left[0 - 1\right] = \frac{15}{s}
+							</mrow>
+						</md>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<p>
+						<m>\ds \frac{15}{s}</m>
+					</p>
+					</p>
+				</answer>
+			
+			</exercise>
+			
+			<exercise>
+				<statement>
+					<m>\ds \lap{e^{7t}}</m>
+				</statement>
+				<solution>
+					<p>
+						We use the definition of Laplace transform to get us started.
+						<md>
+							<mrow> 	\lap{ e^{7t} }	\amp = \int_0^{\infty} \left(e^{7t}\right)e^{-st}\ dt 				</mrow>
+							<mrow> 		\amp = \lim_{b \to \infty}\int_0^b e^{-st + 7t}\ dt	</mrow>
+							<mrow> 		\amp = \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt 		</mrow>
+						</md>
+						As before, we need restrict some values of <m>s</m> in order for this
+						improper integral to exist . In this case, we will need <m>7 - s</m>, in the exponent, to be non-zero and negative. That is, we need
+						<me> 7 - s \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm}7 \lt s. </me>
+						Hence, we move forward with the assumption that <m>s \gt 7</m>.
+						<md>
+							<mrow> 	\amp = \lim_{b \to \infty}\int_0^b e^{(7-s)t}dt </mrow>
+							<mrow>	\amp = \lim_{b \to \infty} \frac{1}{7-s}e^{(7-s)t}\Bigg|_0^b</mrow>
+							<mrow>	\amp = \frac{1}{7-s}\lim_{b \to \infty}
+													\left[ e^{(7-s)b} - e^{(7-s)\cdot 0}\right]</mrow>
+							<mrow>	\amp = \frac{1}{7-s}\lim_{b \to \infty}
+													\left[ e^{(7-s)b} - 1\right]</mrow>
+							<mrow>	\amp = \frac{1}{7-s}
+													\left[\lim_{b \to \infty}e^{(7-s)b}
+													- \lim_{b \to \infty}1\right]</mrow>
+							<mrow>	\amp = \frac{1}{7-s} \left[ 0 - 1\right] \quad
+													<xref text="custom" ref="reason-limit-to-zero-e7t">why is the limit 0?</xref></mrow>
+							<mrow>	\amp = \frac{-1}{7-s} \hspace{4.4cm}	</mrow>
+							<mrow>	\amp = \frac{1}{s - 7}, 					\quad s \gt 7 	</mrow>
+						</md>
+						Thus,
+						<me>\ds \lap{e^{7t}} = \frac{1}{s - 7}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<p>
+						<m>\ds \frac{1}{s - 7}</m>
+					</p>
+					</p>
+				</answer>
+			
+			</exercise>
+			
+			<exercise>
+				<statement>
+					<m>\ds \lap{11t}</m>
+				</statement>
+				<solution>
+					<p>
+						Let's use the definition of Laplace transform to get us going.
+						<md>
+							<mrow>
+								\lap{ 11t }
+									\amp = \int_0^{\infty} \left(11t\right) e^{-st}\ dt
+							</mrow>
+							<mrow> 				
+									\amp = 11\lim_{b \to \infty} \int_0^b te^{-st} dt \quad s \ne 0 \quad <xref text="custom" ref="LT-s-ne-0-t">why is <m>s \ne 0</m>?</xref>\hspace{4.8cm}
+							</mrow>
+						</md>
+						<md>
+							<mrow>
+								\phantom{\lap{11t}}
+									\amp = 11\lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}\right]\quad <xref text="custom" ref="laplace-transform-of-t-power-1-IBP">Integration by parts</xref>\hspace{2.5cm}
+							</mrow>
+						</md>
+						<md>
+							<mrow> \phantom{\lap{11t}}\amp = 11 \left[-\lim_{b \to \infty}\frac{b}{s}e^{-sb}
+												- \lim_{b \to \infty}\frac{1}{s^2}e^{-sb}
+												+ \lim_{b \to \infty}\frac{1}{s^2}\right]</mrow>
+							<mrow> \amp = 11 \left[-\frac{1}{s}\lim_{b \to \infty}be^{-sb}
+												- \frac{1}{s^2}\lim_{b \to \infty}e^{-sb}
+												+ \frac{1}{s^2}\right]\quad s > 0 \quad
+													<xref text="custom" ref="LT-s-gt-0-t">why is s > 0?</xref>\hspace{1.0cm}</mrow>
+						</md>
+						<md>
+							<mrow> \phantom{\lap{11t}}\amp = 11 \left[-\frac{1}{s}\cdot 0
+												- \frac{1}{s^2}\cdot 0 + \frac{1}{s^2}\right]\quad
+													<xref text="custom" ref="laplace-transform-of-t-power-1-IBP">why are the limits 0?</xref>
+													\hspace{3.6cm}</mrow>
+							<mrow> 		\amp = \frac{11}{s^2}, \quad s \gt 0 						</mrow>
+						</md>
+						Hence, we have <m>\ds \lap{ 11t } = \frac{11}{s^2}</m>, under the condition that <m>s>0</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<p>
+						<m>\ds \frac{11}{s^2}</m>
+					</p>
+					</p>
+				</answer>
+			</exercise>
+
+		</exercisegroup>
+
+		<exercisegroup cols="2"><title> Forward Transform </title>
+
+			<introduction>
+				<p>
+					Compute the forward Laplace Transforms using the <xref ref="lt-table-L1-L8" text="custom">common Laplace transform table</xref>.
+				</p>
+			</introduction>
+			
+			<exercise>
+				
+				<statement>
+					<m> \ds \lap{e^{2t}} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_2\ (a=2)</m>
+					<me>\lap{e^{2t}} = \frac{1}{s-2} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{e^{-9t}}</m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_2\ (a=-9)</m>
+					<me>\lap{e^{-9t}} = \frac{1}{s+9}</me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m> \ds \lap{t^2} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_3\ (n=2)</m>
+					<me>\lap{t^2} = \frac{2!}{s^{2+1}} = \frac{2}{s^3} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{t^9}</m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_3\ (n=9)</m>
+					<me>\lap{t^9} = \frac{9!}{s^{9+1}} = \frac{9!}{s^{10}} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{\sin (5t)} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_4\ (b=5)</m>
+					<md>
+						<mrow> \lap{\sin (5t)}	=\amp \frac{5}{s^2 + 5^2}	</mrow>
+						<mrow> 						=\amp \frac{5}{s^2 + 25}	</mrow>
+					</md>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{\cos (-\pi t)} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_4\ (b=-\pi)</m>
+					<md>
+						<mrow> \lap{\cos (-\pi t)}	=\amp \frac{-\pi}{s^2 + (-\pi)^2}	</mrow>
+						<mrow> 							=\amp \frac{-\pi}{s^2 + \pi^2}		</mrow>
+					</md>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				
+				<statement>
+					<m> \ds \lap{t^{599}} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_3\ (n=599)</m>
+					<me>\lap{t^{599}} = \frac{599!}{s^{599+1}} = \frac{599!}{s^{600}} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				
+				<statement>
+					<m> \ds \lap{e^{0.0001 t}} </m>
+				</statement>
+				<answer>
+					<p>
+						<m>\ds L_2\ (a=0.0001)</m>
+					<me>\lap{e^{0.0001 t}} = \frac{1}{s-0.0001} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				<p>
+					Find the Laplace transform of the function <m>y(t) = 15 - 4e^{9t} + 11t^3.</m>
+				</p>
+		
+				<solution>
+					<p>
+						We will use properties in the table as follows.
+						<md>
+							<mrow>Y(s)	\amp = \lap{ y(t) }</mrow>
+							<mrow>\amp = \lap{ 15 - 4e^{9t} + 11t^3 }</mrow>
+							<mrow>\amp = 15\lap{ 1 } - 4\lap{ e^{9t} } + 11\lap{ t^3 } \qquad (<xref ref="LT-Table-L9" text="custom"><m>L9</m></xref>)</mrow>
+							<mrow>\amp =
+								{\color{blue}\us{s \gt 0}{{\ub{{\color{black}15\cdot \frac{1}{s}}}}}\
+								{\color{black}-\ } \us{s \gt 9}{\ub{{\color{black}4\cdot \frac{1}{s - 9}}}}\
+								{\color{black}+\ } \us{s \gt 0}{\ub{{\color{black}11 \cdot \frac{3!}{s^{3 + 1}}}}}} \qquad
+								(	<xref ref="LT-Table-L1" text="custom"><m>L1</m></xref>,
+									<xref ref="LT-Table-L2" text="custom"><m>L2</m></xref>,
+									<xref ref="LT-Table-L3" text="custom"><m>L3</m></xref>)
+							</mrow>
+							<mrow>\amp = \frac{15}{s} - \frac{4}{s-9} + \frac{66}{s^4}, \hspace{0.5cm} s \gt 9 </mrow>
+						</md>
+					</p>
+				</solution>
+			</exercise>
+		
+			<exercise>
+				<p>
+					Find <m>\lap{ e^{3t}\sin(6t)  - t^3e^{-5t}}.</m>
+				</p>
+		
+				<solution>
+					<p>
+						We will use properties in the table as follows.
+						<md>
+							<mrow>\amp = \lap{ e^{3t}\sin(6t)  - t^3e^{-5t} }</mrow>
+							<mrow>\amp = \lap{ e^{3t}\sin(6t) } - \lap{ t^2e^{-5t} } \qquad (<xref ref="LT-Table-L9" text="custom"><m>L9</m></xref>) </mrow>
+							<mrow>\amp = \ub{\frac{6}{(s-3)^2 + 6^2}}_{s \gt 3} - \ub{\frac{2!}{\Big(s - (-5)\Big)^{2+1}}}_{s &gt;-5} \qquad (<xref ref="LT-Table-L7" text="custom"><m>L7</m></xref>, <xref ref="LT-Table-L6" text="custom"><m>L6</m></xref>) </mrow>
+							<mrow>\amp = \frac{6}{(s-3)^2 + 36} - \frac{2}{(s+5)^3}, \hspace{0.5cm} s \gt 3</mrow>
+						</md>
+					</p>
+				</solution>
+			</exercise>
+		
+			<exercise>
+				<p>
+					Find the Laplace transform of the function <m>g(t) = t^2 \cos(8t).</m>
+				</p>
+		
+				<solution>
+					<p>
+						Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both <m>t^2</m> and <m>\cos(8t),</m> we can simply multiply those together to get the desired Laplace transform. However,  this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property <xref ref="LT-Table-L13" text="custom"><m>L13</m></xref>, with <m>n = 2</m> and <m>f(t) = \cos(8t).</m>
+						<md>
+							<mrow>G(s)	\amp = \lap{ g(t) }</mrow>
+							<mrow>\amp = \lap{ t^2 \cos(8t) }</mrow>
+							<mrow>\amp = \lap{ t^2 f(t) }</mrow>
+							<mrow>\amp = (-1)^2\cdot \frac{d^2}{ds^2}\big( F(s) \big)</mrow>
+						</md>
+					</p>
+		
+					<p>
+						We need to know what <m>F(s)</m> is before we can proceed.  Let's go back to the naming system we have instituted.  If we have a capital <m>F(s),</m> that is the Laplace transform of a function lower case <m>f(t).</m>  We identified that function previously:  <m>f(t) = \cos(8t).</m> We use <xref ref="LT-Table-L5" text="custom"><m>L5</m></xref> to find its Laplace transform.
+						<me> F(s) = \frac{s}{s^2 + 64},  s &gt;0 </me>
+						Then we continue finding <m>G(s)</m> by taking two derivatives (using the quotient rule for derivatives; details are omitted here).
+						<md>
+							<mrow>G(s)	\amp = (-1)^2\cdot \frac{d^2}{ds^2}\big( F(s) \big)</mrow>
+							<mrow>\amp = 1 \cdot \frac{d^2}{ds^2}\left( \frac{s}{s^2 + 64} \right)</mrow>
+							<mrow>\amp = \frac{d}{ds}\left( \frac{-s^2 + 64}{(s^2 + 64)^2} \right)</mrow>
+							<mrow>\amp = \frac{2s^3 + 128s}{(s^2 + 64)^3}</mrow>
+						</md>
+					</p>
+				</solution>
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title> Exploring the Forward Laplace Transform </title>
+
+			<introduction>
+				<p>
+					Use the concepts discussed in the section to solve the following exercises.
+				</p>
+			</introduction>
+		
+			<exercise>
+				<statement>
+					Answer the following questions related to the Laplace transform of <m>y'</m>.
+					<ol>
+						<li>
+							<p>
+								Show that
+								<me>\lap{y'(t)} = \lim_{b\to \infty}\ub{\int_0^{b} y'(t) \cdot e^{-st} \ dt}_{I}</me>.
+							</p>
+							<solution>
+								<p>
+									This follows directly from the definition of the Laplace transform.
+									<me>\lap{y'(t)} = \int_0^{\infty} y'(t) \cdot e^{-st} \ dt = \lim_{b\to \infty}\ub{\int_0^{b} y'(t) \cdot e^{-st} \ dt}_{I}</me>.
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								Use integration by parts to show that
+								<me>I = e^{-sb} \cdot y(b) - y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt</me>.
+							</p>
+							<solution>
+								<p>
+									Select <m>u = e^{-st}</m> and <m>dv = y'(t) \ dt</m>. Then
+									<md>
+										<mrow> \int_0^{b} e^{-st} \cdot y' \ dt \amp = e^{-st} \cdot y(t)\bigg|_0^{b} - \int_0^{b} y(t) \cdot (-s e^{-st}) \ dt </mrow>
+										<mrow> \amp = e^{-sb} \cdot y(b) - e^{0} \cdot y(0) - (-s) \int_0^{b} y(t) \cdot e^{-st} \ dt </mrow>
+										<mrow> \amp = e^{-sb} \cdot y(b) - \cdot y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt </mrow>
+									</md>
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								Plug <m>I</m> from (b) into the limit from (a) to show that
+								<me>\lap{y'} = \ub{\lim_{b \to \infty} \left(\frac{y(b)}{e^{sb}}\right)}_L - y(0) + s \lap{y}</me>.
+							</p>
+							<solution>
+								<p>
+									Substitute <m>I</m> from (b) into the limit from (a).
+									<md>
+										<mrow>
+											\lap{	 \amp y'}
+										</mrow>
+										<mrow>
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) - y(0) + s \int_0^{b} y(t) \cdot e^{-st} \ dt \right)
+										</mrow>
+										<mrow>
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) \right)  - \lim_{b\to \infty} y(0) + \lim_{b\to \infty} \left(s \int_0^{b} y(t) \cdot e^{-st} \ dt \right)
+										</mrow>
+										<mrow>
+													=\amp \lim_{b\to \infty} \left( e^{-sb} \cdot y(b) \right)  - y(0) + s\lim_{b\to \infty} \left(\int_0^{b} y(t) \cdot e^{-st} \ dt \right)
+										</mrow>
+										<mrow>
+													=\amp \ub{\lim_{b \to \infty} \left(\frac{y(b)}{e^{sb}}\right)}_L - y(0) + s \lap{y}
+										</mrow>
+									</md>
+								</p>
+							</solution>
+						</li>
+						<li>
+							<p>
+								In order for <m>\lap{y'}</m> to exist, what must be true?
+							</p>
+							<answer>
+								<p>
+									<p>
+									The limit, <m>L</m>, must converge. That is, as <m>t</m> gets large, the ratio, <m>\ds\frac{y(t)}{e^{st}}</m>, flattens out to some number. In order to maintain this ratio, growth rate of <m>y(t)</m> must be less than or equal to <m>e^{st}</m>.
+								</p>
+								</p>
+							</answer>
+						</li>
+					</ol>
+					
+				</statement>
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup cols="1"><title> Forward Transform </title>
+
+			<introduction>
+				<p>
+					Compute the forward Laplace Transforms using the <xref ref="lt-table-L1-L8" text="custom">common transform table</xref> and <xref ref="lt-properties-P1-P6" text="custom">properties</xref>.
+				</p>
+			</introduction>
+			
+			<exercise>
+				
+				<statement>
+					<m> \ds \lap{t^3 e^{-9t}} </m>
+				</statement>
+
+				<answer>
+					<p>
+						<md>
+						<mrow>
+							\lap{ t^3 e^{-9t} }	
+								=\amp \frac{3!}{\big(s-(-9)\big)^{3+1}}	\quad <xref ref="L6" text="title"/>\ (a=2, n=4)
+						</mrow>
+						<mrow>	=\amp \frac{6}{(s+9)^4}		</mrow>
+					</md>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				<statement>
+					<m>\ds \lap{t^3 e^{-2t}}</m>
+				</statement>
+				<solution>
+					<p>
+				Use the first shifting theorem:
+					<me>\lap{t^3 e^{-2t}} = \frac{3!}{(s + 2)^{4}}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{6}{(s + 2)^4}</m>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<m>\ds \lap{t\sin(3t)}</m>
+				</statement>
+				<solution>
+					<p>
+				Use the integration by parts method:
+					<me>\lap{t\sin(3t)} = -\frac{2s}{(s^2 + 9)^2}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds -\frac{2s}{(s^2 + 9)^2}</m>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<m>\ds \lap{e^{5t}\cos(4t)}</m>
+				</statement>
+				<solution>
+					<p>
+				Apply the second shifting theorem:
+					<me>\lap{e^{5t}\cos(4t)} = \frac{s - 5}{(s - 5)^2 + 16}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds \frac{s - 5}{(s - 5)^2 + 16}</m>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{e^{2t} - t^3 - \sin (5t)}</m>
+				</statement>
+				<solution>
+					<p>
+				<md>
+						<mrow>
+							\lap{e^{2t} - t^3 - \sin (5t)}
+								\amp = \lap{ e^{2t} } - \lap{ t^3 } - \lap{ \sin(5t) } \quad <xref ref="P1" text="title"/>
+						</mrow>
+						<mrow>
+								\amp =  \frac{1}{s-2} - \frac{3!}{s^{3+1}} - \frac{5}{s^2 + 5^2} \quad
+									<xref ref="L2" text="title"/>, <xref ref="L3" text="title"/>, <xref ref="L4" text="title"/>
+						</mrow>
+						<mrow>
+								\amp =  \frac{1}{s-2} - \frac{6}{s^4} - \frac{5}{s^2 + 25}
+						</mrow>
+					</md>
+					
+					</p>
+				</solution>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m> \ds \lap{e^{-2t}\sin(2t) + t^2 e^{3t}} </m>
+				</statement>
+				<solution>
+					<p>
+				<md>
+						<mrow>  F(s)	 \amp =  \lap{ f(t) } </mrow>
+						<mrow>   \amp =  \lap{ e^{-2t}\sin(2t) + t^2 e^{3t} } </mrow>
+						<mrow>   \amp =  \lap{ e^{-2t}\sin(2t)} + \lap{t^2 e^{3t} } \mbox{ (by L9)} </mrow>
+						<mrow>   \amp =  \frac{2}{\big(s- (-2) \big)^2 + 2^2} + \frac{2!}{(s-3)^{2+1}} \mbox{ (by L7 and L6)} </mrow>
+						<mrow>   \amp =  \frac{2}{(s+2)^2 + 4} + \frac{2}{(s-3)^3} </mrow>
+		
+					</md>
+					
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds L_7\ (a=2), L_9\ (n=2, a=3)</m>
+					<md>
+						<mrow> \lap{e^{-2t}\sin(2t) + t^2 e^{3t}}	=\amp \frac{2}{(s+2)^2 + 4} + \frac{2}{(s-3)^3}	</mrow>
+						<mrow> 											=\amp \frac{2}{(s+2)^2 + 4} + \frac{2}{(s-3)^3}	</mrow>
+					</md>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+
+				<statement>
+					<m>\ds \lap{8t\cos(6t) + e^{3t}\sin(4t)}</m>
+				</statement>
+				<solution>
+					<p>
+				For this solution, we will need to use property L14 wit <m> \ds f(t) = \cos(6t). </m>  We will need to know the Laplace transform for this function, so let's do that now.
+					<md>
+						<mrow>  F(s)	 \amp =  \lap{ f(t) } </mrow>
+						<mrow>   \amp =  \lap{ \cos(6t) } </mrow>
+						<mrow>   \amp =  \frac{s}{s^2 + 6^2} \mbox{ (by L5)} </mrow>
+						<mrow>   \amp =  \frac{s}{s^2 + 36} </mrow>
+		
+					</md>
+					Then we have the following.  Note that when we use the quotient rule to take the derivative o <m> \ds F(s) </m> .
+					<md>
+						<mrow>  Q(s)	 \amp =  \lap{ q(t) } </mrow>
+						<mrow>   \amp =  \lap{ 8t\cos(6t) + e^{3t}\sin(4t) } </mrow>
+						<mrow>   \amp =  8\lap{ t\cos(6t) } + \lap{ e^{3t}\sin(4t) } \mbox{ (by L9)} </mrow>
+						<mrow>   \amp =  8\lap{ t\cos(6t) } + \frac{4}{(s-3)^2 + 4^2} \mbox{ (by L7)} </mrow>
+						<mrow>   \amp =  8\lap{ t\cos(6t) } + \frac{4}{(s-3)^2 + 16} </mrow>
+						<mrow>   \amp =  8\lap{ t\cdot f(t) } + \frac{4}{(s-3)^2 + 16} </mrow>
+						<mrow>   \amp =  8\cdot (-1)^1 \cdot \frac{d}{ds}F(s) + \frac{4}{(s-3)^2 + 16} \mbox{ (by L14)} </mrow>
+						<mrow>   \amp =  -8 \cdot \frac{d}{ds}\left( \frac{s}{s^2 + 36} \right) + \frac{4}{(s-3)^2 + 16} </mrow>
+						<mrow>   \amp =  -8 \cdot  \frac{(s^2 + 36)\cdot 1 - s\cdot (2s + 0)}{(s^2 + 36)^2} + \frac{4}{(s-3)^2 + 16} </mrow>
+						<mrow>   \amp =  -8 \cdot  \frac{s^2 + 36 - 2s^2}{(s^2 + 36)^2} + \frac{4}{(s-3)^2 + 16} </mrow>
+						<mrow>   \amp =  -\frac{8(36 - s^2)}{(s^2 + 36)^2} + \frac{4}{(s-3)^2 + 16} </mrow>
+		
+					</md>
+					
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds L_3\ (n=9)</m>
+					<me>\lap{t^9} = \frac{9!}{s^{9+1}} = \frac{9!}{s^{10}} </me>
+					</p>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				
+				<statement>
+					<m> \ds \lap{t^2 \sin(3t)} </m>
+				</statement>
+				<solution>
+					<p>
+				For this solution, we will need to use property L14 wit <m> \ds f(t) = \sin(3t). </m>  We will need to know the Laplace transform for this function, so let's do that now.
+					<md>
+						<mrow>  F(s)	 \amp =  \lap{ f(t) } </mrow>
+						<mrow>   \amp =  \lap{ \sin(3t) } </mrow>
+						<mrow>   \amp =  \frac{3}{s^2 + 3^2} \mbox{ (by L5)} </mrow>
+						<mrow>   \amp =  \frac{3}{s^2 + 9}  </mrow>
+					</md>
+					In using L14, we will also need the second derivative o <m> \ds F(s), </m> so we work to compute that now.  Note that we will use the chain rule when we take the derivative o <m> \ds (s^2 + 9)^2 </m> .
+					<md>
+						<mrow>  F'(s)	 \amp =  \frac{d}{ds}\left( \frac{3}{s^2 + 9} \right) </mrow>
+						<mrow>   \amp =  \frac{(s^2 + 9) \cdot 0 - 3 \cdot (2s+0)}{(s^2 + 9)^2} </mrow>
+						<mrow>   \amp =  \frac{-6s}{(s^2 + 9)^2} </mrow>
+						<mrow>  F''(s)	 \amp =  \frac{(s^2 + 9)^2 \cdot (-6) - (-6s) \cdot 2(s^2 + 9)(2s)}{(s^2 + 9)^4} </mrow>
+						<mrow>   \amp =  \frac{-6(s^2 + 9)^2 + 24s^2(s^2 +9)}{(s^2 + 9)^4} </mrow>
+						<mrow>   \amp =  \frac{6(s^2 + 9)\left[-(s^2 + 9) + 4s^2\right]}{(s^2 + 9)^4} </mrow>
+						<mrow>   \amp =  \frac{6\left[-s^2 - 9 + 4s^2\right]}{(s^2 + 9)^3} </mrow>
+						<mrow>   \amp =  \frac{6\left[3s^2 - 9\right]}{(s^2 + 9)^3} </mrow>
+						<mrow>   \amp =  \frac{18\left[s^2 - 3\right]}{(s^2 + 9)^3}  </mrow>
+					</md>
+					Then we have the following.
+					<md>
+						<mrow>  P(s)	 \amp =  \lap{ t^2 \sin(3t) } </mrow>
+						<mrow>   \amp =  \lap{ t^2 f(t) } </mrow>
+						<mrow>   \amp =  (-1)^2 \cdot F''(s) \mbox{ (by L14)} </mrow>
+						<mrow>   \amp =  1 \cdot \frac{18\left[s^2 - 3\right]}{(s^2 + 9)^3} </mrow>
+						<mrow>   \amp =  \frac{18\left[s^2 - 3\right]}{(s^2 + 9)^3} </mrow>
+		
+					</md>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m> \ds P(s) = \frac{18\left[s^2 - 3\right]}{(s^2 + 9)^3} </m>
+					</p>
+				</answer>
+
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title> Forward Transforming Equations </title>
+
+			<introduction>
+				<p>
+					Use the forward Laplace transform to solve the following differential equations.
+				</p>
+			</introduction>
+	
+			<exercise>
+				<statement>
+					Solve the differential equation <m>y'' + 3y' + 2y = 0</m> given the initial conditions <m>y(0) = 2</m> and <m>y'(0) = -1</m>.
+				</statement>
+				<solution>
+					<p>
+				Apply the Laplace transform to both sides of the equation:
+					<me>\lap{y'' + 3y' + 2y} = \lap{0}</me>.
+					Using the properties of the Laplace transform for derivatives, we have:
+					<me>s^2Y(s) - sy(0) - y'(0) + 3[sY(s) - y(0)] + 2Y(s) = 0</me>.
+					Substitute the initial conditions <m>y(0) = 2</m> and <m>y'(0) = -1</m>:
+					<me>s^2Y(s) - 2s + 1 + 3sY(s) - 6 + 2Y(s) = 0</me>.
+					Combine like-terms:
+					<me>(s^2 + 3s + 2)Y(s) - 2s - 5 = 0</me>.
+					Solve for <m>Y(s)</m>:
+					<me>Y(s) = \frac{2s + 5}{s^2 + 3s + 2}</me>.
+					Factor the denominator:
+					<me>Y(s) = \frac{2s + 5}{(s + 1)(s + 2)}</me>.
+					Use partial fraction decomposition to find the inverse Laplace transform:
+					<me>Y(s) = \frac{A}{s + 1} + \frac{B}{s + 2}</me>.
+					Solve for <m>A</m> and <m>B</m>:
+					<me>Y(s) = \frac{1}{s + 1} - \frac{3}{s + 2}</me>.
+					Finally, take the inverse Laplace transform to find <m>y(t)</m>:
+					<me>y(t) = e^{-t} - 3e^{-2t}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>y(t) = e^{-t} - 3e^{-2t}</m>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					Solve the differential equation <m>y' + 4y = 10e^{-2t}</m> with the initial condition <m>y(0) = 3</m>.
+				</statement>
+				<solution>
+					<p>
+				Apply the Laplace transform to both sides:
+					<me>\lap{y' + 4y} = \lap{10e^{-2t}}</me>.
+					Use the properties of the Laplace transform:
+					<me>sY(s) - y(0) + 4Y(s) = \frac{10}{s + 2}</me>.
+					Substitute the initial condition <m>y(0) = 3</m>:
+					<me>(s + 4)Y(s) - 3 = \frac{10}{s + 2}</me>.
+					Solve for <m>Y(s)</m>:
+					<me>Y(s) = \frac{10}{(s + 4)(s + 2)} + \frac{3}{s + 4}</me>.
+					Use partial fraction decomposition:
+					<me>Y(s) = \frac{A}{s + 4} + \frac{B}{s + 2}</me>.
+					Find <m>A</m> and <m>B</m>:
+					<me>A = \frac{7}{2}, B = -\frac{5}{2}</me>.
+					Inverse Laplace transform gives:
+					<me>y(t) = \frac{7}{2}e^{-4t} - \frac{5}{2}e^{-2t}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>y(t) = \frac{7}{2}e^{-4t} - \frac{5}{2}e^{-2t}</m>
+					</p>
+				</answer>
+			</exercise>
+	
+		</exercisegroup>
+		
+	</exercises>
+
+	<exercises><title> Backward Transforms </title>
+
+		<exercise><title> <em><m>\ds \ilap{\frac{1}{s - 1} - \frac{1}{s + 1} + \frac{4s + 3}{s^2 + 1}} = <fillin characters="10" /></m></em> </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\ds e^{t} - e^{-t} + 4\cos(t) + 3\sin(t)</m></statement>
+					<feedback>
+						<p>
+							Correct! The inverse Laplace transform matches the forms in the table.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds e^{t} + e^{t} + \cos(t) + \sin(t)</m></statement>
+					<feedback>
+						<p>
+							No, this does not match the correct inverse Laplace transform.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds e^{-t} - e^{t} + \cos(t)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This does not account for all terms in the inverse Laplace transform.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<exercise label="p4-c1-s1-1-rq11"><title> What is the Laplace transform of <m>e^{3t}</m>? </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\ds\frac{1}{s-3}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{1}{s+3}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{1}{s-2}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{1}{s}</m></statement>
+				</choice>
+			</choices>
+		</exercise>
+	
+		<exercise label="p4-c1-s1-1-rq12"><title> In the equation <m>y'' + 4y = \cos(2t)</m>, what is the Laplace transform of the right-hand side? </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\ds\frac{s}{s^2 + 4}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{4}{s^2 + 4}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{s}{s^2 + 1}</m></statement>
+				</choice>
+				<choice>
+					<statement><m>\ds\frac{1}{s^2 + 4}</m></statement>
+				</choice>
+			</choices>
+		</exercise>
+	
+		<exercise label="p4-c1-s1-1-rq13"><title> <em>The expression <m>\ds\frac{s-1}{(s-1)^2 + 4}</m> matches the form required to apply the inverse Laplace transform found in the common transform table</em> </title>
+			<statement correct="yes"/>
+			<feedback>
+				<p>
+					True. This expression matches the form in the table and can be directly transformed.
+				</p>
+			</feedback>
+		</exercise>
+
+		<exercisegroup cols="2"><title> Match the Sine Form </title>
+		
+			<introduction>
+				<p>
+					Rewrite each of the following into the form
+					<me>A \cdot \frac{b}{s^2 + b^2}</me>,
+					by filling in the appropriate values in the boxes.
+				</p>
+			</introduction>
+		
+			<exercise>
+				
+				<statement><m>\ds \frac{1}{s^2 + 49} = \boxed{\phantom{ \left|\frac{1}{7}\right|}} \cdot \frac{\boxed{\phantom{ |7| }}}{s^2 + \boxed{\phantom{ |7| }}^2}</m></statement>
+				<answer>		
+					<me>	
+						\frac{1}{s^2 + 49} = \frac{1}{s^2 + 7^2} = \boxed{\frac{1}{7}} \cdot \frac{\boxed{7}}{s^2 + \boxed{7}^2}
+					</me>
+				</answer>
+
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds \frac{12}{s^2 + 16} = \boxed{\phantom{ \left|\frac{1}{4}\right|}} \cdot \frac{\boxed{\phantom{ |4| }}}{s^2 + \boxed{\phantom{ |4| }}^2}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{12}{s^2 + 16} = 3 \cdot \frac{4}{s^2 + 4^2} = \boxed{3} \cdot \frac{\boxed{4}}{s^2 + \boxed{4}^2}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds \frac{3}{s^2 + 5} = \boxed{\phantom{ \frac{3}{\sqrt{5}}}} \cdot \frac{\boxed{\phantom{ \sqrt{5} }}}{s^2 + \boxed{\phantom{ \sqrt{5} }}^2}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{3}{s^2 + 5} = \frac{3}{\sqrt{5}} \cdot \frac{\sqrt{5}}{s^2 + (\sqrt{5})^2} = \boxed{\frac{3}{\sqrt{5}}} \cdot \frac{\boxed{\sqrt{5}}}{s^2 + \boxed{\sqrt{5}}^2}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+		</exercisegroup>
+
+		<exercisegroup cols="2"><title> Match the Cosine Form </title>
+		
+			<introduction>
+				<p>
+					Rewrite each of the following into the form
+					<me>A \cdot \frac{s}{s^2 + b^2}</me>,
+					by filling in the appropriate values in the boxes.
+				</p>
+			</introduction>
+
+			<exercise>
+				<statement><m>\ds \frac{4s}{s^2 + 9} = \boxed{\phantom{ \left|\frac{1}{3}\right|}} \cdot \frac{s}{s^2 + \boxed{\phantom{ |3| }}^2}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{4s}{s^2 + 9} = 4 \cdot \frac{s}{s^2 + 3^2} = \boxed{4} \cdot \frac{s}{s^2 + \boxed{3}^2}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds \frac{s}{2s^2 + 8} = \boxed{\phantom{ \left|\frac{1}{2}\right|}} \cdot \frac{s}{s^2 + \boxed{\phantom{ |2| }}^2}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{s}{2s^2 + 8} = \frac{1}{2} \cdot \frac{s}{s^2 + 2^2} = \boxed{\frac{1}{2}} \cdot \frac{s}{s^2 + \boxed{2}^2}
+					</me>
+					</p>
+				</answer>
+
+			</exercise>
+
+		</exercisegroup>
+
+		<exercisegroup cols="2"><title> Match the Power Form </title>
+		
+			<introduction>
+				<p>
+					Rewrite each of the following into the form
+					<me>A \cdot \frac{n!}{s^{n+1}}</me>,
+					by filling in the appropriate values in the boxes.
+				</p>
+			</introduction>
+
+			<exercise>
+				<statement><m>\ds \frac{1}{s^5} = \boxed{\phantom{ \frac{1}{24} }} \cdot \frac{\boxed{\phantom{ |4| }}\ {\large !}}{s\vphantom{S|}^{\boxed{\phantom{ 4\ }} + 1}}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{1}{s^5} = \frac{1}{24} \cdot \frac{4!}{s^{4+1}} = \boxed{\frac{1}{24}} \cdot \frac{\boxed{4}!}{s^{\boxed{4}+1}}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds \frac{7}{s^3} = \boxed{\phantom{ \left|\frac{7}{2}\right| }} \cdot \frac{\boxed{\phantom{ |2| }}\ {\large !}}{s\vphantom{S|}^{\boxed{\phantom{ 2\ }} + 1}}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{7}{s^3} = \frac{7}{2} \cdot \frac{2!}{s^{2+1}} = \boxed{\frac{7}{2}} \cdot \frac{\boxed{2}!}{s^{\boxed{2}+1}}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds \frac{2}{5s^4} = \boxed{\phantom{ \frac{1}{15} }} \cdot \frac{\boxed{\phantom{ |3| }}\ {\large !}}{s\vphantom{S|}^{\boxed{\phantom{ 3\ }} + 1}}</m></statement>
+				<answer>
+					<p>
+						<me>
+						\frac{2}{5s^4} = \frac{1}{15} \cdot \frac{3!}{s^{3+1}} = \boxed{\frac{1}{15}} \cdot \frac{\boxed{3}!}{s^{\boxed{3}+1}}
+					</me>
+					</p>
+				</answer>
+			</exercise>
+
+		</exercisegroup>
+
+		<exercisegroup><title> Backward Transforms- Level 1 </title>
+
+			<exercise> <!--== Problem 1 ==-->
+				<statement>
+					<m> \ds F(s) = \frac{6}{(s-1)^4} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds F(s) = \frac{6}{(s-1)^4} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 2 ==-->
+				<statement>
+					<m> \ds X(s) = \frac{1}{s^5} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds X(s) = \frac{1}{s^5} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 3 ==-->
+				<statement>
+					<m> \ds G(s) = \frac{4}{s^2 + 9} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds G(s) = \frac{4}{s^2 + 9} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 4 ==-->
+				<statement>
+					<m> \ds Y(s) = \frac{5s}{s^2 + 7} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds Y(s) = \frac{5s}{s^2 + 7} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 5 ==-->
+				<statement>
+					<m> \ds X(s) = \frac{21}{(s+2)^2 + 16} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds X(s) = \frac{21}{(s+2)^2 + 16} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 6 ==-->
+				<statement>
+					<m> \ds F(s) = \frac{10}{s-10} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds F(s) = \frac{10}{s-10} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 7 ==-->
+				<statement>
+					<m> \ds Q(s) = \frac{7s+7}{(s+1)^2 + 12} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds Q(s) = \frac{7s+7}{(s+1)^2 + 12} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+		
+		<exercisegroup><title> Backward Transforms- Level 2 </title>
+
+			<exercise> <!--== Problem 8 ==-->
+				<statement>
+					<m> \ds G(s) = \frac{1}{s^2 + 4s + 8} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds G(s) = \frac{1}{s^2 + 4s + 8} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 9 ==-->
+				<statement>
+					<m> \ds F(s) = \frac{2s+16}{s^2 + 4s + 13} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds F(s) = \frac{2s+16}{s^2 + 4s + 13} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 10 ==-->
+				<statement>
+					<m> \ds Y(s) = \frac{3s-15}{2s^2 - 4s + 8} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds Y(s) = \frac{3s-15}{2s^2 - 4s + 8} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 11 ==-->
+				<statement>
+					<m> \ds Q(s) = \frac{1}{s^2 + 6s + 9} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds Q(s) = \frac{1}{s^2 + 6s + 9} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 12 ==-->
+				<statement>
+					<m> \ds H(s) = \frac{5}{s-6} - \frac{6s}{s^2 + 9} + \frac{3}{2s^2 + 8s + 10} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds H(s) = \frac{5}{s-6} - \frac{6s}{s^2 + 9} + \frac{3}{2s^2 + 8s + 10} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 13 ==-->
+				<statement>
+					<m> \ds X(s) = \frac{7s-4}{s^2 + 36} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds X(s) = \frac{7s-4}{s^2 + 36} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 14 ==-->
+				<statement>
+					<m> \ds G(s) = \frac{2s-19}{s^2 - 4s+13} + \frac{5}{s-1} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds G(s) = \frac{2s-19}{s^2 - 4s+13} + \frac{5}{s-1} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 15 ==-->
+				<statement>
+					<m> \ds F(s) = \frac{s}{s^2 + 6s + 11} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds F(s) = \frac{s}{s^2 + 6s + 11} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+		
+		<exercisegroup><title> Backward Transforms- Level 3 </title>
+		
+			<exercise> <!--== Problem 16 ==-->
+				<statement>
+					<m> \ds X(s) = \frac{90s^2 - 195s + 30}{s^3 - 7s^2 + 6s} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds X(s) = \frac{90s^2 - 195s + 30}{s^3 - 7s^2 + 6s} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 17 ==-->
+				<statement>
+					<m> \ds I(s) = \frac{5s^2 + 34s + 53}{(s+3)^2(s+1)} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds I(s) = \frac{5s^2 + 34s + 53}{(s+3)^2(s+1)} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 18 ==-->
+				<statement>
+					<m> \ds F(s) = \frac{7s^3 - 2s^2 - 3s + 6}{s^3(s-2)} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds F(s) = \frac{7s^3 - 2s^2 - 3s + 6}{s^3(s-2)} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+		
+		<exercisegroup><title> Steps 3 &amp; 4 </title>
+
+			<exercise> <!--== Problem 19 ==-->
+				<statement>
+					<m> \ds s^2 F(s) - 4F(s) = \frac{60}{s+1} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds s^2 F(s) - 4F(s) = \frac{60}{s+1} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+			<exercise> <!--== Problem 20 ==-->
+				<statement>
+					<m> \ds \ds s^2 F(s) + sF(s) - 6F(s) = \frac{30s^2 + 120}{s^2 + s} </m>
+				</statement>
+				<solution>
+					<p>
+						<m> \ds \ds s^2 F(s) + sF(s) - 6F(s) = \frac{30s^2 + 120}{s^2 + s} </m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title> Inverse Laplace Transforms </title>
+	
+			<introduction>
+				<p>
+					Determine the original time-domain functions from the given Laplace-transformed functions.
+				</p>
+			</introduction>
+	
+			<exercise>
+				<statement>
+					<m>\ds Y(s) = \frac{2s + 7}{(s + 1)(s + 3)}</m>
+				</statement>
+				<solution>
+					<p>
+				Decompose into partial fractions:
+					<me>Y(s) = \frac{A}{s + 1} + \frac{B}{s + 3}</me>.
+					Find <m>A</m> and <m>B</m>:
+					<me>A = 1, B = \frac{1}{2}</me>.
+					Use the inverse Laplace transform:
+					<me>y(t) = e^{-t} + \frac{1}{2}e^{-3t}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds y(t) = e^{-t} + \frac{1}{2}e^{-3t}</m>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<m>\ds F(s) = \frac{5}{s(s + 4)}</m>
+				</statement>
+				<solution>
+					<p>
+				Decompose into partial fractions:
+					<me>F(s) = \frac{A}{s} + \frac{B}{s + 4}</me>.
+					Find <m>A</m> and <m>B</m>:
+					<me>A = \frac{5}{4}, B = -\frac{5}{4}</me>.
+					Use the inverse Laplace transform:
+					<me>f(t) = \frac{5}{4}(1 - e^{-4t})</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>\ds f(t) = \frac{5}{4}(1 - e^{-4t})</m>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<p>
+					<statement>
+						<p>
+							Find <m>\ds \ilap{ \frac{s+9}{s^2 - 2s - 3} }.</m>
+						</p>
+					</statement>
+				</p>
+
+				<solution>
+					<p>
+						As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.
+						<md>
+							<mrow>\frac{s+9}{s^2 - 2s - 3}	\amp = \frac{s+9}{(s^2 - 2s) - 3}</mrow>
+							<mrow>\amp = \frac{s+9}{(s^2 - 2s + 1) - 3 - 1}</mrow>
+							<mrow>\amp = \frac{s+9}{(s-1)^2 - 4}</mrow>
+							<mrow>\amp =  \frac{s+9}{(s-1)^2 - 2^2}.</mrow>
+						</md>
+					</p>
+		
+					<p>
+						Take a careful look at the denominator here. It's really close to matching <xref ref="LT-Table-L7" text="custom"><m>L7</m></xref> or <xref ref="LT-Table-L8" text="custom"><m>L8</m></xref>, but it is not a match because of the negative sign in front of the <m>2^2.</m>  We need to change course when this happens. Another algebraic manipulation that we might consider is a <em> partial fraction decomposition.</em>
+						<aside>
+							<p>
+								Margin note:  If you need to review partial fraction decomposition, go HERE.
+							</p>
+						</aside>
+					</p>
+		
+					<p>
+						We revert to the original expression, but this time, instead of completing the square, we factor the denominator.
+						<me> \frac{s+9}{s^2 - 2s - 3}	= \frac{s+9}{(s-3)(s+1)}.</me>
+					</p>
+		
+					<p>
+						Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is
+						<me> \frac{s+9}{(s-3)(s+1)} = \frac{A}{s-3} + \frac{B}{s+1}. </me>
+					</p>
+		
+					<p>
+						Our next goal is to determine the coefficients <m>A</m> and <m>B</m> in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, <m>(s-3)(s+1)</m>, and then expand and collect like-terms, as shown.
+						<md>
+							<mrow>(s-3)(s+1) \cdot \frac{s+9}{(s-3)(s+1)}	\amp = \frac{A}{s-3}\cdot (s-3)(s+1) + \frac{B}{s+1} \cdot (s-3)(s+1)</mrow>
+							<mrow>s+9	\amp = A(s+1) + B(s-3)</mrow>
+							<mrow>s+9	\amp = As + A + Bs - 3B</mrow>
+							<mrow>s+9	\amp = (As + Bs) + (A - 3B)</mrow>
+							<mrow>1s+9	\amp = (A+B)s + (A - 3B).</mrow>
+						</md>
+					</p>
+		
+					<p>
+						At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on <m>s</m> on the left hand side is 1, while the coefficient on <m>s</m> on the right hand side of the equation is <m>A+B</m>. Since the polynomials are equal, we know that these are equal. That is, <m>A + B = 1.</m> Similarly, if we equate the constants, we have <m>A - 3B = 9.</m>  Thus, we have the following system of two linear equations in terms of two unknown variables, <m>A</m> and <m>B</m>.
+						<md>
+							<mrow>A + B	\amp = 1</mrow>
+							<mrow>A - 3B	\amp = 9.</mrow>
+						</md>
+					</p>
+		
+					<p>
+						There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for <m>A</m>, and then substitute into the second equation,
+						<md>
+							<mrow>A + B	\amp = 1		\amp 	A - 3B	\amp = 9</mrow>
+							<mrow>A	\amp = 1 - B	\amp 			\amp</mrow>
+							<mrow>\amp		\amp (1 - B) - 3B	\amp = 9</mrow>
+							<mrow>\amp		\amp 	1 - 4B	\amp = 9</mrow>
+							<mrow>\amp		\amp		-4B	\amp = 8</mrow>
+							<mrow>\amp		\amp		B	\amp = -2</mrow>
+							<mrow>A	\amp = 1 - (-2)	\amp			\amp</mrow>
+							<mrow>\amp = 3		\amp			\amp</mrow>
+						</md>
+						hence we have
+						<me> \frac{s+9}{(s-3)(s+1)} = \frac{3}{s-3} + \frac{-2}{s+1}. </me>
+					</p>
+		
+					<p>
+						Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use <xref ref="LT-Table-L2" text="custom"><m>L2</m></xref> to find the inverse Laplace transform as follows.
+						<md>
+							<mrow>\ilap{ \frac{s+9}{s^2 - 2s - 3} } \amp = \ilap{ \frac{3}{s-3} + \frac{-2}{s+1} }</mrow>
+							<mrow>\amp = 3 \ilap{ \frac{1}{s-3} } - 2 \ilap{ \frac{1}{s+1} } <xref ref="LT-Table-L9" text="custom"><m>L9</m></xref> </mrow>
+							<mrow>\amp = 3e^{3t} - 2e^{-t} \quad \text{ by } <xref ref="LT-Table-L2" text="custom">L2</xref></mrow>
+						</md>
+					</p>
+				</solution>
+			</exercise>
+		
+			<exercise>
+				
+				<p>
+					<statement>
+						<p>
+							Write <m>\ds\frac{s-6}{s^2 - 4s + 29}</m> in the form <m>\ds\frac{s-a}{(s-a)^2 + b^2}</m>
+						</p>
+					</statement>
+				</p>
+				
+				<solution>
+					<p>
+						<aside>
+							<p>
+								Since <m>\ds\frac{s-6}{s^2 - 4s + 29}</m> has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.
+							</p>
+							
+						</aside>
+						
+						As we mentioned earlier, we'll try to make the denominator match first. Since both
+						of the forms we're trying to match are of the form <m>(s-a)^2 + b^2,</m> we will
+						complete the square first:
+						<me> s^2 - 4s + 29 = (s-2)^2 + 25. </me>
+						(If you still don't remember how to complete the square, look up that primer and
+						do the previous exercises in that section above.)
+					</p>
+					
+					<p>
+						Let's rewrite the given expression as follows.
+							
+						<md>
+							<mrow>\frac{s-6}{s^2 - 4s + 29}	\amp = \frac{s-6}{(s-2)^2 + 25}			</mrow>
+							<mrow>							\amp = \frac{s-6}{(s-2)^2 + 5^2}			</mrow>
+						</md>
+					</p>
+					
+					<p>
+						We've got the denominator in exactly the right form--it looks just like
+						<m>(s-a)^2 + b^2,</m> with <m>a = 2</m> and <m>b = 5</m>. As in the previous
+						section, once we've gotten the denominator in shape, we turn our attention to
+						the numerator. If we look back at the two forms we are trying to match, we see
+						that our expression has an <m>s</m> in the numerator, so it's more like
+						<m>\ds \frac{s-a}{(s-a)^2 + b^2}</m>. It would be exactly right if we had
+						<m>s-a</m> in the numerator, which in this case would be <m>s-2</m>.
+					</p>
+					
+					<p>
+						What we do have in the numerator is <m>s-6</m>; and we would like it to be
+						<m>s-2,</m> which means if we added 4, we'd have exactly the right thing. If we
+						want to add 4, we'll need to compensate by also subtracting 4, like this:
+							
+						<md>
+							<mrow> \frac{s-6}{(s-2)^2 + 5^2}\amp = \frac{s-6+4-4}{(s-2)^2 + 5^2},	</mrow>
+							<mrow>							\amp = \frac{(s-6+4)-4}{(s-2)^2 + 5^2},	</mrow>
+							<mrow>							\amp = \frac{(s-2) - 4}{(s-2)^2 + 5^2}.	</mrow>
+						</md>
+					</p>
+					
+					<p>
+						Great!  Now we can split this single fraction into two separate fractions:
+							
+						<me>
+							\frac{(s-2) - 4}{(s-2)^2 + 5^2}
+								= \underbrace{\frac{s-2}{(s-2)^2 + 5^2}}_{match!} - \frac{4}{(s-2)^2 + 5^2}
+						</me>
+						
+						We're almost there!  The first fraction is a perfect match for the form
+						<m>\ds\frac{s-a}{(s-a)^2 + b^2}</m> (with <m>a = 2</m> and <m>b = 5</m>); but we
+						still have another expression that is not yet a match. The remaining fraction
+						looks like it could eventually match the form <m>\ds\frac{b}{(s-a)^2 + b^2}</m>.
+						We would need to have a 5 in the numerator, and we currently have a 4. But we
+						can fix that as we did in the previous section:
+							
+						<md>
+							<mrow>\frac{4}{(s-2)^2 + 5^2}	\amp = 4\cdot\frac{1}{(s-2)^2 + 5^2}		</mrow>
+							<mrow>							\amp = 4\cdot\frac{5}{5}\cdot
+																			\frac{1}{(s-2)^2 + 5^2}	</mrow>
+							<mrow>							\amp = 4\cdot\frac{1}{5}\cdot
+																			\frac{5}{(s-2)^2 + 5^2}	</mrow>
+							<mrow>							\amp = \frac{4}{5}\cdot
+																			\frac{5}{(s-2)^2 + 5^2}	</mrow>
+						</md>
+							
+						Now let's put it all together. Here's everything we did:
+		
+						<md>	
+							<mrow>\frac{s-6}{s^2 - 4s + 9}	\amp = \frac{s-6}{(s-2)^2 + 25} \mbox{(we completed the square)}</mrow>
+							<mrow>\amp = \frac{s-6}{(s-2)^2 + 5^2} \mbox{(we rewrote the denominator)}</mrow>
+							<mrow>\amp =  \frac{s-6+4-4}{(s-2)^2 + 5^2} \mbox{(we added and subtracted 4 in the numerator...)}</mrow>
+							<mrow>\amp = \frac{(s-2) - 4}{(s-2)^2 + 5^2} \mbox{(...so that we could make the numerator match part of the denom)}</mrow>
+							<mrow>\amp = \frac{s-2}{(s-2)^2 + 5^2} - \frac{4}{(s-2)^2 + 5^2} \mbox{(split into fractions)}</mrow>
+							<mrow>\amp = \frac{s-2}{(s-2)^2 + 5^2} - 4\cdot\frac{5}{5}\cdot \frac{1}{(s-2)^2 + 5^2} \mbox{(work on the second fraction...)}</mrow>
+							<mrow>\amp = \frac{s-2}{(s-2)^2 + 5^2} - \frac{4}{5}\cdot \frac{5}{(s-2)^2 + 5^2}\mbox{(...so now it is also in form)}</mrow>
+						</md>
+					</p>
+					
+					<p>
+						As mentioned before, being able to use appropriate algebra to "match" forms is <em> really</em> important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill--so when we are in the middle of studying Laplace Transforms, you can just focus on the "new" stuff.
+					</p>
+				</solution>
+			</exercise>
+		
+			<p>
+				<ol>
+					<li>
+					<p>
+					Manipulate each of the following expressions to make it match
+					the form <m>\ds \frac{b}{(s-a)^2 + b^2}</m> and/or <m>\ds \frac{s-a}{(s-a)^2 + b^2}.</m>
+					<ol>	
+						<li> <m>\ds \frac{s+3}{s^2 - 6s + 10}</m>		
+						<solution>
+							<p>
+						<md>	
+							<mrow>\frac{s+3}{s^2 - 6s + 10}	\amp = \frac{s+3}{(s^2 - 6s) + 10}</mrow>
+							<mrow>\amp = \frac{s+3}{(s^2 - 6s + 9 - 9) + 10}</mrow>
+							<mrow>\amp = \frac{s+3}{(s^2 - 6s + 9) - 9 + 10}</mrow>
+							<mrow>\amp = \frac{s+3}{(s - 3)^2 - 9 + 10}</mrow>
+							<mrow>\amp = \frac{s+3}{(s - 3)^2 + 1}</mrow>
+							<mrow>\amp = \frac{s+3}{(s - 3)^2 + 1^2}</mrow>
+							<mrow>\amp = \frac{(s-3+3)+3}{(s - 3)^2 + 1^2}</mrow>
+							<mrow>\amp = \frac{(s-3)+3+3}{(s - 3)^2 + 1^2}</mrow>
+							<mrow>\amp = \frac{(s-3)+6}{(s - 3)^2 + 1^2}</mrow>
+							<mrow>\amp = \frac{s-3}{(s - 3)^2 + 1^2} +  \frac{6}{(s - 3)^2 + 1^2}</mrow>
+							<mrow>\amp = \frac{s-3}{(s - 3)^2 + 1^2} +  6\cdot \frac{1}{(s - 3)^2 + 1^2}						</mrow>
+							<mrow>\amp = \frac{s - a}{(s - a)^2 +b^2} + 6\cdot \frac{b}{(s - a)^2 +b^2},
+													\mbox{ where <m>a = 3</m> and <m>b = 1</m>}</mrow>
+						</md>
+							</p>
+						</solution>
+						<answer>
+							<p>
+								<me>  \frac{s-3}{(s - 3)^2 + 1^2} +  6\cdot \frac{1}{(s - 3)^2 + 1^2} </me>
+							</p>
+						</answer>
+						</li>
+					
+						<li> <m>\ds \frac{s}{s^2 - 8s + 25}</m> 		
+						<solution>
+							<p>
+						<md>	
+							<mrow>\frac{s}{s^2 - 8s + 25}	\amp = \frac{s}{(s^2 - 8s) + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s^2 - 8s + 16 - 16) + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s^2 - 8s + 16) - 16 + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s - 4)^2 - 16 + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s - 4)^2 +9}</mrow>
+							<mrow>\amp = \frac{s}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{(s - 4) + 4}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - 4}{(s - 4)^2 +3^2} + 4\cdot \frac{1}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - 4}{(s - 4)^2 +3^2} + \frac{3}{3}\cdot 4\cdot \frac{1}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - 4}{(s - 4)^2 +3^2} + \frac{1}{3}\cdot 4\cdot \frac{3}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{3}\cdot \frac{3}{(s - 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - a}{(s - a)^2 +b^2} + \frac{4}{3}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
+													\mbox{ where <m>a = 4</m> and <m>b = 3</m>}
+						</md>
+							</p>
+						</solution>
+						<answer>
+							<p>
+								<me> \frac{s - 4}{(s - 4)^2 +3^2} + \frac{4}{3}\cdot \frac{3}{(s - 4)^2 +3^2} </me>
+							
+							</p>
+						</answer>
+						</li>
+					
+						<li> <m>\ds \frac{s}{s^2 + 8s + 25}</m>		
+						<solution>
+							<p>
+						<md>	
+							<mrow>\frac{s}{s^2 + 8s + 25}	\amp = \frac{s}{(s^2 + 8s) + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s^2 + 8s + 16 - 16) + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s^2 + 8s + 16) - 16 + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s + 4)^2 - 16 + 25}</mrow>
+							<mrow>\amp = \frac{s}{(s + 4)^2 +9}</mrow>
+							<mrow>\amp = \frac{s}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{(s + 4) - 4}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s + 4}{(s + 4)^2 +3^2} - 4\cdot \frac{1}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s + 4}{(s + 4)^2 +3^2} - \frac{3}{3}\cdot 4\cdot \frac{1}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s + 4}{(s + 4)^2 +3^2} - \frac{1}{3}\cdot 4\cdot \frac{3}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{3}\cdot \frac{3}{(s + 4)^2 +3^2}</mrow>
+							<mrow>\amp = \frac{s - a}{(s - a)^2 +b^2} - \frac{4}{3}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
+													\mbox{ where <m>a = -4</m> and <m>b = 3</m>}
+						</md>
+							
+							
+							</p>
+						</solution>
+						<answer>
+							<p>
+								<me> \frac{s + 4}{(s + 4)^2 +3^2} - \frac{4}{3}\cdot \frac{3}{(s + 4)^2 +3^2} </me>
+							
+							</p>
+						</answer>
+						</li>
+					
+						<li> <m>\ds \frac{s-5}{s^2 +12s + 72}</m> 		
+						<solution>
+							<p>
+						<md>	
+							<mrow>\frac{s-5}{s^2 +12s + 72}	\amp = \frac{s-5}{(s^2 +12s) + 72}</mrow>
+							<mrow>\amp =  \frac{s-5}{(s^2 +12s + 36 - 36) + 72}</mrow>
+							<mrow>\amp =  \frac{s-5}{(s^2 +12s + 36) - 36 + 72}</mrow>
+							<mrow>\amp =  \frac{s-5}{(s + 6)^2 - 36 + 72}</mrow>
+							<mrow>\amp =  \frac{s-5}{(s + 6)^2 + 36}</mrow>
+							<mrow>\amp =  \frac{s-5}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{(s+6-6)-5}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{(s+6)-6-5}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{(s+6)-11}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{s+6}{(s + 6)^2 + 6^2} + \frac{-11}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{s+6}{(s + 6)^2 + 6^2} -11\cdot \frac{1}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{6}{6} \cdot 11\cdot \frac{1}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{1}{6} \cdot 11\cdot \frac{6}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp =  \frac{s+6}{(s + 6)^2 + 6^2} - \frac{11}{6}\cdot \frac{6}{(s + 6)^2 + 6^2}</mrow>
+							<mrow>\amp = \frac{s - a}{(s - a)^2 +b^2} - \frac{11}{6}\cdot \frac{b}{(s - a)^2 +b^2}, </mrow>
+													\mbox{ where <m>a = -6</m> and <m>b = 6</m>}
+						</md>
+							</p>
+						</solution>
+						<answer>
+							<p>
+								<me> \frac{s+6}{(s + 6)^2 + 6^2} - \frac{11}{6}\cdot \frac{6}{(s + 6)^2 + 6^2} </me>
+							</p>
+						</answer>
+						</li>
+					</ol>
+					</p>
+					</li>
+		
+					<li>
+					<p>
+					Now that's you've been practicing manipulating expressions to get them to match a particular,
+					specific form, it's time to practice picking out which form an expression is most like.
+					
+					Find the form(s) on the right that best match the expression on the left. It may not be a perfect
+					match, but could be manipulated (as we did above) to get into the correct form(s).
+					<ol>
+						<li> (EXAMPLE)  <m>\ds \frac{1}{(s-3)^5}</m>
+						<answer> This best matches form F. </answer>
+						</li>
+					
+						<li> <m>\ds \frac{12}{s^2 + 15}</m>%D
+						</li>
+					
+						<li> <m>\ds \frac{7}{1-s}</m> %B
+						</li>
+					
+						<li> <m>\ds \frac{-1}{s}</m> %A
+						</li>
+					
+						<li> <m>\ds \frac{s-1}{s^2  + 4s + 1}</m> %forms G and H
+						</li>
+					
+						<li> <m>\ds \frac{7}{2s^2}</m> %C
+						</li>
+					
+						<li> <m>\ds \frac{s+2}{s^2 + 9}</m> %forms D and E
+						</li>
+					</ol>
+					<ol>
+						<li> <m>\ds \frac{1}{s}</m>
+						</li>
+					
+						<li> <m>\ds \frac{1}{s-a}</m>
+						</li>
+					
+						<li> <m>\ds \frac{n!}{s^{n+1}}</m>
+						</li>
+					
+						<li> <m>\ds \frac{b}{s^2 + b^2}</m>
+						</li>
+					
+						<li> <m>\ds \frac{s}{s^2 + b^2}</m>
+						</li>
+					
+						<li> <m>\ds \frac{n!}{(s-a)^{n+1}}</m>
+						</li>
+					
+						<li> <m>\ds \frac{b}{(s-a)^2 + b^2}</m>
+						</li>
+					
+						<li> <m>\ds \frac{s-a}{(s-a)^2 + b^2}</m>
+						</li>
+					</ol>
+					<solution>
+						<p>
+					<ol>
+						<li> This best matches form F.
+						
+						</li>
+					
+						<li> This best matches form D.
+					
+						</li>
+					
+						<li> This best matches form B.
+					
+						</li>
+					
+						<li> This best matches form A.
+					
+						</li>
+					
+						<li> This best matches form forms G and H.
+					
+						</li>
+					
+						<li> This best matches form C.
+					
+						</li>
+					
+						<li> This best matches form forms D and E.
+						</li>
+					</ol>
+						</p>
+					</solution>
+					</p>
+					</li>
+				</ol>
+			</p>
+		
+			<exercise>
+				<p>
+					Find the inverse Laplace transform of
+					<me>
+						R(s) = \frac{4s^3 - 13s^2 + 74s + 27}{s^4 - 4s^3 + 14s^2 + 44s + 25}	= \frac{4s^3 - 13s^2 + 74s + 27}{(s^2 - 6s + 25)(s+1)^2}.
+					</me>
+				</p>
+				<solution>
+					<p>
+						Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form
+						<me> \frac{4s^3 - 13s^2 + 74s + 27}{(s^2 - 6s + 25)(s+1)^2}
+							= \frac{As + B}{s^2 - 6s + 25} + \frac{C}{s+1} + \frac{D}{(s+1)^2}. </me>
+					</p>
+		
+					<p>
+						You may also consider using technology to find a partial fraction decomposition. You should get
+						<me>
+							\frac{4s^3 - 13s^2 + 74s + 27}{(s^2 - 6s + 25)(s+1)^2} = \frac{s + 2}{s^2 - 6s + 25} + \frac{3}{s+1} + \frac{-2}{(s+1)^2}.
+						</me>	
+						<xref ref="LT-PDF-Details-01" text="custom">Click here for the  details.</xref>
+					</p>
+		
+					<p>
+						With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.
+						<md>
+							<mrow>r(t)	\amp = \ilap{ R(s) }</mrow>
+							<mrow>\amp =  \ilap{ \frac{s + 2}{s^2 - 6s + 25} + \frac{3}{s+1}
+									+ \frac{-2}{(s+1)^2} } </mrow>
+							<mrow>\amp = \ilap{ \frac{s + 2}{s^2 - 6s + 25} }
+								+ 3\cdot \ilap{ \frac{1}{s+1} }
+									- 2\cdot \ilap{\frac{1}{(s+1)^2} } </mrow>
+							<mrow>\amp = \ilap{ \frac{s + 2}{(s-3)^2 + 4^2} }
+								+ 3e^{-t} - 2te^{-t}</mrow>
+							<mrow>\amp = \ilap{ \frac{(s - 3) + 5}{(s-3)^2 + 4^2} }
+								+ 3e^{-t} - 2te^{-t}</mrow>
+							<mrow>\amp = \ilap{ \frac{s - 3}{(s-3)^2 + 4^2} }
+								+ 5 \ilap{ \frac{1}{(s-3)^2 + 4^2} }
+								+ 3e^{-t} - 2te^{-t}</mrow>
+							<mrow>\amp = e^{3t}\cos(4t)
+								+ \frac{5}{4}\cdot  \ilap{ \frac{4}{(s-3)^2 + 4^2} }
+								+ 3e^{-t} - 2te^{-t}</mrow>
+							<mrow>\amp = e^{3t}\cos(4t)
+								+ \frac{5}{4}e^{3t}\sin(4t)
+								+ 3e^{-t} - 2te^{-t}.</mrow>
+						</md>
+						
+					</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+
+		<exercisegroup>
+		
+			<introduction>
+				<p>
+					Find the inverse Laplace transforms of each function.
+				</p>
+			</introduction>
+		
+			<exercise>
+				<statement><m>\ds R(s) = \frac{3s + 2}{s^2 + 4s + 4} </m></statement>
+				<answer>
+					<p>
+						<p>
+						<m>\ds r(t) = 3e^{-2t} + 2te^{-2t} </m>
+					</p>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise>
+				<statement><m>\ds  S(s) = \frac{4s + 1}{s^2 + 6s + 9} </m></statement>
+				<answer>
+					<p>
+						<p>
+						<m>\ds  s(t) = 4e^{-3t} + (t + 1)e^{-3t} </m>
+					</p>
+					</p>
+				</answer>
+			</exercise>
+		
+		</exercisegroup>
+
+		<exercisegroup><title> Conceptual Questions </title>
+	
+			<exercise>
+				<statement>
+					<p>True or False: The inverse Laplace transform is always a unique function.</p>
+				</statement>
+				<answer>
+					<p>
+						<p>True</p>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Which of the following is true about the inverse Laplace transform?</p>
+					<choice>
+						<li>It converts a function from the frequency domain to the time domain.</li>
+						<li>It is a method to solve algebraic equations.</li>
+						<li>It is used to differentiate a function with respect to time.</li>
+						<li>It only works for polynomials.</li>
+					</choice>
+				</statement>
+				<answer>
+					<p>
+						<p>It converts a function from the frequency domain to the time domain.</p>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Explain the significance of completing the square in finding inverse Laplace transforms.</p>
+				</statement>
+				<answer>
+					<p>
+						<p>Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.</p>
+					</p>
+				</answer>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Why is partial fraction decomposition helpful in finding inverse Laplace transforms?</p>
+				</statement>
+				<answer>
+					<p>
+						<p>Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.</p>
+					</p>
+				</answer>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title> Computational Problems </title>
+	
+			<exercise>
+				<statement>
+					<p>Find the inverse Laplace transform of <m>\ds \frac{5}{s^2 + 16}</m>.</p>
+				</statement>
+				<solution>
+					<p>
+						This expression matches the form <m>\ds \frac{b}{s^2 + b^2} </m> with <m>\ds b = 4 </m>, so the inverse Laplace transform is <m>\ds 5 \cdot \sin(4t) </m>.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Compute the inverse Laplace transform of <m>\ds \frac{2s + 7}{(s + 3)^2 + 4} </m>.</p>
+				</statement>
+				<solution>
+					<p>
+						This expression can be split into two parts: <m>\ds \frac{2(s + 3)}{(s + 3)^2 + 4} </m> and <m>\ds \frac{7}{(s + 3)^2 + 4} </m>. The first part corresponds to <m>\ds e^{-3t} \cdot \cos(2t) </m> and the second part corresponds to <m>\ds e^{-3t} \cdot \sin(2t) </m>, so the inverse Laplace transform is <m>\ds 2e^{-3t} \cos(2t) + 7e^{-3t} \sin(2t) </m>.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Use partial fraction decomposition to find the inverse Laplace transform of <m>\ds \frac{3s + 4}{s^2 + 2s + 1} </m>.</p>
+				</statement>
+				<solution>
+					<p>
+						First, factor the denominator as <m>\ds (s + 1)^2 </m>. Then, decompose the expression into <m>\ds \frac{A}{s + 1} + \frac{B}{(s + 1)^2} </m>. Solving for <m>\ds A </m> and <m>\ds B </m>, you get the inverse Laplace transform as <m>\ds 3e^{-t} + 4te^{-t} </m>.
+					</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title> Application-Based Problems </title>
+	
+			<exercise>
+				<statement>
+					<p>Given the function <m>\ds Y(s) = \frac{7}{(s - 2)^2 + 9} </m>, describe the behavior of the corresponding time-domain function.</p>
+				</statement>
+				<solution>
+					<p>
+						The inverse Laplace transform is <m>\ds 7e^{2t} \sin(3t) </m>, which indicates a sinusoidal function modulated by an exponential growth factor.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					<p>Find the inverse Laplace transform of the function <m>\ds F(s) = \frac{6s + 10}{(s + 4)(s^2 + 9)} </m> using partial fraction decomposition.</p>
+				</statement>
+				<solution>
+					<p>
+						Decompose the function into <m>\ds \frac{A}{s + 4} + \frac{Bs + C}{s^2 + 9} </m>. Solving for the constants <m> A </m>, <m> B </m>, and <m> C </m>, the inverse Laplace transform will be a combination of exponential and sinusoidal functions.
+					</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+
+		<exercise><title> <em><m>\ds \ilap{\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)}} = <fillin characters="6" /></m></em> </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\ds e^{t} - e^{-t} + 4\cos(t) + 3\sin(t)</m></statement>
+					<feedback>
+						<p>
+							Correct! The inverse Laplace transform is <m>e^{t} - e^{-t} + 4\cos(t) + 3\sin(t)</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds 1 + e^{-t} + \cos(t)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This does not match the correct inverse Laplace transform.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds 2\cos(t) + 3\sin(t)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This does not include the full inverse Laplace transform.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<exercise><title> <em><m>\ds \ilap{\frac{s-1}{(s-1)^2 + 4}} = <fillin characters="6"/></m></em> </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\ds e^{t}\cos(2t)</m></statement>
+					<feedback>
+						<p>
+							Correct! The inverse Laplace transform of this expression is <m>e^{t}\cos(2t)</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds e^{-t}\sin(2t)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The correct inverse Laplace transform is <m>e^{t}\cos(2t)</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds \cos(2t)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The correct inverse Laplace transform is <m>e^{t}\cos(2t)</m>.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<exercise><title> <em><m>\ds \ilap{\frac{11}{(s - 3)^2 + 5}} = \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)</m>, which matches the form in the table when <m>b = <fillin characters="1"/></m></em> </title>
+			<statement/>
+			<choices>
+				<choice correct="yes">
+					<statement><m>\sqrt{5}</m></statement>
+					<feedback>
+						<p>
+							Correct! The correct value for <m>b</m> is <m>\sqrt{5}</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>5</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The correct value is <m>\sqrt{5}</m>, not 5.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>3</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The correct value is <m>\sqrt{5}</m>, not 3.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+	</exercises>
+
+	<exercises><title> Laplace Transform Method </title>
+
+		<exercise><title> <em>Why is the Laplace Transform Method considered a powerful tool for solving differential equations?</em> </title>
+			<statement/>
+			<response />
+		</exercise>
+	
+		<exercise><title> <em>What role does the table of common Laplace transforms play in the Laplace Transform Method?</em> </title>
+			<statement/>
+			<response />
+		</exercise>
+
+		<exercisegroup><title> Solve the IVP using Laplace Transforms </title>
+
+			<exercise>
+				<statement>
+					Use Laplace transforms to find the solutio <m> \ds y(t) </m> of the following initial value problem.<m> \ds x'' + 6x' + 9x = 64e^{5t}, \hspace{0.5cm}x(0) = 3, \hspace{0.5cm} x'(0) = 0 </m>
+				</statement>
+				<solution>
+					<p>
+				We begin by taking the Laplace transform and substituting in the initial conditions.
+					<md>
+						<mrow>  \Big[ s^2X(s) - sx(0) - x'(0) \Big] +6\Big[ sX(s) - x(0) \Big] + 9X(s)  \amp =  \frac{64}{s-5} \mbox{ (by L12, L11 and L2)} </mrow>
+						<mrow>  \Big[ s^2X(s) - s\cdot 3 - 0 \Big] +6\Big[ sX(s) - 3 \Big] + 9X(s)	 \amp =  \frac{64}{s-5} </mrow>
+						<mrow>  s^2X(s) - 3s + 6sX(s) - 18 + 9X(s)	 \amp =  \frac{64}{s-5} </mrow>
+						<mrow>  s^2X(s) + 6sX(s)+9X(s) -3s - 18	 \amp =  \frac{64}{s-5} </mrow>
+		
+					</md>
+					Now we aim to solve for<m> \ds X(s), </m> so we use algebra to rearrange as follows.
+					<md>
+						<mrow>  s^2X(s) + 6sX(s)+9X(s)	 \amp =  \frac{64}{s-5} + 3s + 18 </mrow>
+						<mrow>  X(s)	 \amp =  \frac{64}{s-5} + (3s + 18)\cdot \frac{s-5}{s-5} </mrow>
+						<mrow>   \amp =  \frac{64}{s-5} + \frac{(3s+18)(s-5)}{s-5} </mrow>
+						<mrow>   \amp =  \frac{64}{s-5} + \frac{3s^2 +3s- 90}{s-5} </mrow>
+						<mrow>   \amp =  \frac{64 + 3s^2 +3s- 90}{s-5} </mrow>
+						<mrow>   \amp =  \frac{3s^2 +3s- 26}{s-5} </mrow>
+						<mrow>  X(s)	 \amp =  \frac{3s^2 +3s- 26}{(s-5)(s^2 + 6s + 9)} </mrow>
+						<mrow>   \amp =  \frac{3s^2 +3s- 26}{(s-5)(s+3)^2} </mrow>
+		
+					</md>
+					We need to do a partial fraction decomposition before we can take the inverse LT.
+					<md>
+						<mrow>  \frac{3s^2 +3s- 26}{(s-5)(s+3)^2}	 \amp =  \frac{A}{s-5} + \frac{B}{s+3} + \frac{C}{(s+3)^2} </mrow>
+						<mrow>  3s^2 +3s - 26	 \amp =  A(s+3)^2 + B(s-5)(s+3) + C(s-5) </mrow>
+						<mrow> \  \amp =  A(s^2 + 6s + 9) + B(s^2 - 2s - 15) + Cs - 5C </mrow>
+						<mrow>   \amp =  As^2 + 6As + 9A + Bs^2 - 2Bs - 15B + Cs - 5C </mrow>
+						<mrow>   \amp =  (A + B)s^2 + (6A - 2B + C)s + (9A - 15B - 5C) </mrow>
+		
+					</md>
+					Equating the coefficients of like-terms yields, we can solve for<m> \ds A </m> <m> \ds B </m> , an <m> \ds C </m> .
+					<md>
+						<mrow>  A+B	 \amp =  3		\amp 6A - 2B + C	\amp = 3		\amp 			9A - 15B - 5C	\amp = -26 </mrow>
+						<mrow>  B	 \amp =  3-A	\amp			\amp		\amp						\amp </mrow>
+						<mrow>  \amp		\amp6A - 2(3-A)+C	 \amp =  3		\amp						\amp </mrow>
+						<mrow>  \amp		\amp 6A-6+2A+C	 \amp =  3		\amp						\amp </mrow>
+						<mrow>  \amp		\amp 	8A + C	 \amp =  9		\amp						\amp </mrow>
+						<mrow>  \amp		\amp		C	 \amp =  9 - 8A	\amp						\amp </mrow>
+						<mrow>  \amp		\amp			\amp		\amp 	9A - 15(3-A) - 5(9-8A)	 \amp =  -26 </mrow>
+						<mrow>  \amp		\amp			\amp		\amp 9A - 45 + 15A - 45 + 40A	 \amp =  -26 </mrow>
+						<mrow>  \amp		\amp			\amp		\amp 					64A	 \amp =  64 </mrow>
+						<mrow>  \amp		\amp			\amp		\amp					A	 \amp =  1 </mrow>
+						<mrow>  \amp		\amp		C	 \amp =  9-8(1)	\amp						\amp </mrow>
+						<mrow>  \amp		\amp			 \amp =  1		\amp						\amp </mrow>
+						<mrow>  B	 \amp =  3 - 1	\amp			\amp		\amp						\amp </mrow>
+						<mrow>   \amp =  2		\amp			\amp		\amp						\amp </mrow>
+		
+					</md>
+					Hence we have <m> \ds X(s) = \frac{1}{s-5} + \frac{2}{s+3} + \frac{1}{(s+3)^2}. </m> Now we need only take the inverse LT to find the solution.
+					<md>
+						<mrow>  x(t)	 \amp =  \lap^{-1}\left\{ \frac{1}{s-5} + \frac{2}{s+3} + \frac{1}{(s+3)^2} \right\} </mrow>
+						<mrow>   \amp =  \lap^{-1}\left\{ \frac{1}{s-5} \right\} + 2\cdot \lap^{-1}\left\{\frac{1}{s+3} \right\} + \lap^{-1}\left\{\frac{1}{(s+3)^2} \right\}  </mrow>
+						<mrow>   \amp =  e^{5t} + 2e^{-3t} + te^{-3t} </mrow>
+		
+					</md>
+					
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m> \ds x = e^{5t} + 2e^{-3t} + te^{-3t} </m>
+					</p>
+				</answer>
+			</exercise>
+			
+			<exercise>
+				<statement>
+						Use Laplace transforms to find the solutio <m> \ds y(t) </m> of the following initial value problem.<m> \ds y''-2y'+5y = -8e^{-t}, \hspace{0.5cm}y(0) = 2, \hspace{0.5cm} y'(0) = 12 </m>
+				</statement>
+				<solution>
+					<p>
+				We begin by taking the Laplace transform and substituting in the initial conditions.
+					<md>
+						<mrow>  \Big[ s^2Y(s) - sy(0) - y'(0) \Big] - 2\Big[ sY(s) - y(0) \Big] + 5Y(s)  \amp =  \frac{-8}{s+1} \mbox{ (by L12, L11 and L2)} </mrow>
+						<mrow>  \Big[ s^2Y(s) - s\cdot 2 - 12) \Big] - 2\Big[ sY(s) - 2 \Big] + 5Y(s)	 \amp =  \frac{-8}{s+1} </mrow>
+						<mrow>  s^2Y(s) - 2s - 12 - 2sY(s) +4 + 5Y(s)	 \amp =  \frac{-8}{s+1} </mrow>
+						<mrow>  s^2Y(s) - 2sY(s) + 5Y(s)- 2s - 8	 \amp =  \frac{-8}{s+1} </mrow>
+			
+					</md>
+						Now we aim to solve for<m> \ds Y(s), </m> so we use algebra to rearrange as follows.
+					<md>
+						<mrow>  s^2Y(s) - 2sY(s) + 5Y(s)	 \amp =  \frac{-8}{s+1} + 2s - 8 </mrow>
+						<mrow>  (s^2 - 2s + 5)Y(s)	 \amp =  \frac{-8}{s+1} + (2s - 8)\cdot \frac{s+1}{s+1} </mrow>
+						<mrow>  (s^2 - 2s + 5)Y(s)	 \amp =  \frac{-8}{s+1} + \frac{2s^2+10s+8}{s+1} </mrow>
+						<mrow>  (s^2 - 2s + 5)Y(s)	 \amp =  \frac{-8 + 2s^2+10s+8}{s+1} </mrow>
+						<mrow>  (s^2 - 2s + 5)Y(s)	 \amp =  \frac{2s^2+10s}{s+1} </mrow>
+						<mrow>  Y(s)	 \amp =  \frac{2s^2+10s}{(s+1)(s^2 - 2s + 5)} </mrow>
+			
+					</md>
+						We need to do a partial fraction decomposition before we can take the inverse LT.
+					<md>
+						<mrow>  \frac{2s^2+10s}{(s+1)(s^2 - 2s + 5)}	 \amp =  \frac{A}{s+1} + \frac{Bs+C}{s^2 - 2s + 5} </mrow>
+						<mrow>  2s^2 + 10s	 \amp =  A(s^2 - 2s + 5) + (Bs+ C)(s+1) </mrow>
+						<mrow>   \amp =  As^2 - 2As + 5A + Bs^2 + Bs + Cs + C </mrow>
+						<mrow>   \amp =  (A + B)s^2 + (-2A + B + C)s + (5A + C) </mrow>
+			
+					</md>
+						Equating the coefficients of like-terms yields, we can solve for<m> \ds A </m> <m> \ds B </m> , an <m> \ds C </m> .
+					<md>
+						<mrow>  A+B	 \amp =  2	\amp		-2A+B+C	\amp = 10	\amp 5A + C	\amp = 0 </mrow>
+						<mrow>  \amp	\amp				\amp		\amp	C	 \amp =  -5A </mrow>
+						<mrow>  \amp	\amp				\amp		\amp		\amp	\amp	-2A + B + (-5A)	 \amp =  10	\amp		\amp </mrow>
+						<mrow>  \amp	\amp		-7A + B	 \amp =  10	\amp		\amp </mrow>
+						<mrow>  \amp	\amp			B	 \amp =  10+7A	\amp		\amp </mrow>
+						<mrow>  \amp	\amp				\amp		\amp		A + (10+7A)	 \amp =  2	\amp				\amp		\amp		\amp </mrow>
+						<mrow>  8A+10	 \amp =  2	\amp				\amp		\amp		\amp </mrow>
+						<mrow>  8A	 \amp = -8	\amp				\amp		\amp		\amp </mrow>
+						<mrow>  A	 \amp = -1	\amp				\amp		\amp		\amp </mrow>
+						<mrow>  \amp	\amp			B	 \amp =  3		\amp		\amp </mrow>
+						<mrow>  \amp	\amp				\amp		\amp	C	 \amp =  5 </mrow>
+			
+					</md>
+						Hence, we have \begin{equation} Y(s) = \frac{-1}{s+1} + \frac{3s+5}{s^2 - 2s + 5}. \label{Y_of_s} \end{equation} We need to take the inverse Laplace Transform to fin <m> \ds y(t). </m>  We need to complete the square on the irreducible quadratic term as follows.
+					<md>
+						<mrow>  s^2 - 2s + 5	 \amp =  (s^2 - 2s) + 5 </mrow>
+						<mrow>   \amp =  (s^2 - 2s + 1) - 1 + 5 </mrow>
+						<mrow>   \amp =  (s - 1)^2 + 4 </mrow>
+			
+					</md>
+						We need to transform the second term, as follows, so we can use L8 and L7 on the Laplace transform table.
+					<md>
+						<mrow>  \frac{3s+5}{s^2 - 2s + 5}	 \amp =  \frac{3s+5}{(s - 1)^2 + 2^2} </mrow>
+						<mrow>   \amp =  \frac{3(s-1)+3+5}{(s - 1)^2 + 2^2} </mrow>
+						<mrow>   \amp =  \frac{3(s-1)+8}{(s - 1)^2 + 2^2} </mrow>
+						<mrow>   \amp =  \frac{3(s-1)}{(s - 1)^2 + 2^2} + \frac{8}{(s - 1)^2 + 2^2} </mrow>
+						<mrow>   \amp =  3\cdot\frac{s-1}{(s - 1)^2 + 2^2} + \frac{4\cdot 2}{(s - 1)^2 + 2^2} </mrow>
+						<mrow>   \amp =  3\cdot\frac{s-1}{(s - 1)^2 + 2^2} + 4\cdot\frac{2}{(s - 1)^2 + 2^2} </mrow>
+			
+					</md>
+						We are now prepared to take the inverse LT of equation \ref{Y_of_s} to get the solution to the IVP.
+					<md>
+						<mrow>  y(t)	 \amp =  \lap^{-1}\left\{ Y(s) \right\} </mrow>
+						<mrow>   \amp =  \lap^{-1}\left\{ \frac{-1}{s+1} + \frac{3s+5}{s^2 - 2s + 5} \right\} </mrow>
+						<mrow>   \amp =  \lap^{-1}\left\{ -1\cdot \frac{1}{s+1} + 3\cdot\frac{s-1}{(s - 1)^2 + 2^2} + 4\cdot\frac{2}{(s - 1)^2 + 2^2} \right\} </mrow>
+						<mrow>   \amp =  -1\cdot \lap^{-1}\left\{ \frac{1}{s+1}\right\} + 3\cdot\lap^{-1}\left\{\frac{s-1}{(s - 1)^2 + 2^2} \right\} + 4\cdot\lap^{-1}\left\{\frac{2}{(s - 1)^2 + 2^2} \right\} </mrow>
+						<mrow>   \amp =  -e^{-t} + 3e^t\cos(2t) + 4e^t\sin(2t) </mrow>
+			
+					</md>
+					
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m> \ds y(t) = -e^{-t} + 3e^t \cos(2t) + 4e^t \sin(2t) </m>
+					</p>
+				</answer>
+			</exercise>
+
+		</exercisegroup>
+
+		<exercisegroup><title> Applying Laplace Transforms </title>
+	
+			<exercise>
+				<statement>
+					Apply the Laplace Transform to the following differential equation and express the result as an algebraic equation in the <m>s</m>-domain:
+					<m>y'' - 4y' + 6y = e^{2t}</m>, with initial conditions <m>y(0) = 1</m> and <m>y'(0) = 0</m>.
+				</statement>
+				<solution>
+					<p>
+				Applying the Laplace Transform to both sides:
+					<me>\lap{y''} - 4\lap{y'} + 6\lap{y} = \lap{e^{2t}}</me>
+					<md>
+						<mrow>
+							s^2Y(s) - s\cdot y(0) - y'(0) - 4(sY(s) - y(0)) + 6Y(s)
+							= \frac{1}{s-2}
+						</mrow>
+						<mrow>
+							s^2Y(s) - s - 4(sY(s) - 1) + 6Y(s)
+							= \frac{1}{s-2}
+						</mrow>
+						<mrow>
+							(s^2 - 4s + 6)Y(s) = \frac{1}{s-2} + s + 4
+						</mrow>
+					</md>
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					True or False: When applying the Laplace transform to a function multiplied by <m>e^{at}</m>, the transform shifts by <m>a</m> in the <m>s</m>-domain.
+				</statement>
+				<solution>
+					<p>
+						True. According to the translation property, <m>\lap{e^{at}f(t)} = F(s-a)</m>.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					Given the differential equation <m>y'' + 3y' + 2y = 0</m> with initial conditions <m>y(0) = 2</m> and <m>y'(0) = -1</m>, find the Laplace transform of the solution <m>Y(s)</m>.
+				</statement>
+				<solution>
+					<p>
+				Applying the Laplace Transform:
+					<md>
+						<mrow>
+							s^2Y(s) - sy(0) - y'(0) + 3(sY(s) - y(0)) + 2Y(s) = 0
+						</mrow>
+						<mrow>
+							s^2Y(s) - 2s + 1 + 3sY(s) - 6 + 2Y(s) = 0
+						</mrow>
+						<mrow>
+							(s^2 + 3s + 2)Y(s) = 2s - 1 + 6
+						</mrow>
+						<mrow>
+							Y(s) = \frac{2s + 5}{s^2 + 3s + 2}
+						</mrow>
+					</md>
+					</p>
+				</solution>
+			</exercise>
+
+			<exercise>
+				<title> Example 1: Solving a First-Order Linear Differential Equation </title>
+				<p>
+					Consider the differential equation:
+				</p>
+				<me>
+					y' + 3y = 6e^{2t}, \quad y(0) = 1
+				</me>
+		
+				<p>
+					Applying the Laplace transform to both sides, we get:
+				</p>
+				<me>
+					sY(s) - y(0) + 3Y(s) = \frac{6}{s-2}
+				</me>
+				<p>
+					Substituting the initial condition <m>y(0) = 1</m>, the equation becomes:
+				</p>
+				<me>
+					sY(s) - 1 + 3Y(s) = \frac{6}{s-2}
+				</me>
+		
+				<p>
+					Rearranging and solving for <m>Y(s)</m>:
+				</p>
+				<me>
+					Y(s)(s + 3) = 1 + \frac{6}{s-2}
+				</me>
+				<me>
+					Y(s) = \frac{1}{s+3} + \frac{6}{(s-2)(s+3)}
+				</me>
+		
+				<p>
+					We can now decompose the second term using partial fractions:
+				</p>
+				<me>
+					\frac{6}{(s-2)(s+3)} = \frac{A}{s-2} + \frac{B}{s+3}
+				</me>
+		
+				<p>
+					Solving for <m>A</m> and <m>B</m>, we get <m>A = 2</m> and <m>B = 4</m>. Therefore:
+				</p>
+				<me>
+					Y(s) = \frac{1}{s+3} + \frac{2}{s-2} + \frac{4}{s+3}
+				</me>
+				<me>
+					Y(s) = \frac{5}{s+3} + \frac{2}{s-2}
+				</me>
+		
+				<p>
+					Taking the inverse Laplace transform, we obtain the solution:
+				</p>
+				<me>
+					y(t) = 5e^{-3t} + 2e^{2t}
+				</me>
+			</exercise>
+		
+			<exercise>
+				<title> Example 2: Second-Order Differential Equation </title>
+				<p>
+					Consider the second-order differential equation:
+				</p>
+				<me>
+					y'' + 4y = \cos(2t), \quad y(0) = 0, \quad y'(0) = 1
+				</me>
+		
+				<p>
+					Applying the Laplace transform:
+				</p>
+				<me>
+					s^2Y(s) - sy(0) - y'(0) + 4Y(s) = \frac{s}{s^2 + 4}
+				</me>
+				<p>
+					Substituting the initial conditions:
+				</p>
+				<me>
+					s^2Y(s) - 1 + 4Y(s) = \frac{s}{s^2 + 4}
+				</me>
+		
+				<p>
+					Solving for <m>Y(s)</m>:
+				</p>
+				<me>
+					Y(s)(s^2 + 4) = 1 + \frac{s}{s^2 + 4}
+				</me>
+		
+				<p>
+					After rearranging and solving, the inverse Laplace transform gives:
+				</p>
+				<me>
+					y(t) = \sin(2t) + t
+				</me>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title> Conceptual Understanding </title>
+	
+			<exercise>
+				<statement>
+					Explain how the Laplace transform simplifies solving linear differential equations. Include a discussion of how initial conditions are incorporated into the transformed equation.
+				</statement>
+				<solution>
+					<p>
+						The Laplace transform converts a linear differential equation into an algebraic equation in the <m>s</m>-domain. This simplification occurs because the transform converts derivatives into polynomials of <m>s</m>, reducing the differential equation to a solvable algebraic equation. Initial conditions are directly incorporated into the transformed equation, modifying the transformed terms to include constants that reflect the initial values of the function and its derivatives. This allows the solution of the equation to be found more easily in the <m>s</m>-domain, before applying the inverse Laplace transform to return to the time domain.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					Multiple Choice: Which of the following is NOT a property of the Laplace transform?
+					<ol>
+						<li>The Laplace transform is linear.</li>
+						<li>The Laplace transform converts a derivative into a polynomial in <m>s</m>.</li>
+						<li>The Laplace transform can only be applied to functions defined for all time.</li>
+						<li>The Laplace transform of <m>e^{at}f(t)</m> shifts by <m>a</m> in the <m>s</m>-domain.</li>
+					</ol>
+				</statement>
+				<solution>
+					<p>
+						The correct answer is: "The Laplace transform can only be applied to functions defined for all time." The Laplace transform can be applied to functions defined for <m>t \geq 0</m>.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					Fill in the blank: The Laplace transform of the second derivative <m>y''(t)</m> is given by <fillin characters="5" />.
+				</statement>
+				<solution>
+					<p>
+						The Laplace transform of the second derivative <m>y''(t)</m> is given by <m>s^2Y(s) - sy(0) - y'(0)</m>.
+					</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+	
+		<exercisegroup><title> Solving Differential Equations </title>
+	
+			<exercise>
+				<statement>
+					Solve the following initial-value problem using the Laplace transform:
+					<m>y' - 2y = 3e^{4t}</m>, with initial condition <m>y(0) = 1</m>.
+				</statement>
+				<solution>
+					<p>
+				Applying the Laplace transform:
+					<md>
+						\lap{y'} - 2\lap{y} = 3\lap{e^{4t}}
+					</md>
+					<md>
+						(sY(s) - 1) - 2Y(s) = \frac{3}{s - 4}
+					</md>
+					<md>
+						Y(s)(s - 2) = \frac{3}{s - 4} + 1
+					</md>
+					Solving for <m>Y(s)</m> and then applying the inverse Laplace transform gives the solution.
+					</p>
+				</solution>
+			</exercise>
+	
+			<exercise>
+				<statement>
+					Find the solution to the differential equation <m>y'' + 5y' + 6y = \sin(2t)</m> with initial conditions <m>y(0) = 0</m> and <m>y'(0) = 1</m> using the Laplace transform.
+				</statement>
+				<solution>
+					<p>
+						Applying the Laplace transform and solving the algebraic equation will yield the solution in the <m>s</m>-domain, which can then be inverted to find <m>y(t)</m>.
+					</p>
+				</solution>
+			</exercise>
+	
+		</exercisegroup>
+
+	</exercises>
+
+	<exercises><title> Piecewise Forcing Functions </title>
+
+		<exercisegroup>
+			<title> </title>
+				<exercise>
+					<statement>
+						<alert>Use the definition of Laplace Transform</alert> (above) to find the Laplace Transform of the function
+							<m>\ds
+								d(t) = \left\{
+								\begin{array}{ll}
+								0,	\amp t \lt 0\\
+								7,	\amp 0 \le t \lt 3\\
+								0,	\amp t \ge 3\\
+								\end{array} \right.
+							</m>
+					</statement>
+					<solution>
+						<p>
+					<md>
+							<mrow>  D(s)	 \amp =  \lap{ d(t) } </mrow>
+							<mrow>   \amp =  \int_0^{\infty}e^{-st}d(t) dt </mrow>
+							<mrow>   \amp =  \int_0^3 e^{-st}\cdot 7 dt + \int_3^{\infty} e^{-st}\cdot 0 dt </mrow>
+							<mrow>   \amp =  7\int_0^3 e^{-st}dt + 0 </mrow>
+							<mrow>   \amp =  7 \cdot \left[\frac{1}{-s}e^{-st}\right]_0^3 </mrow>
+							<mrow>   \amp =  7 \cdot \left[\left(\frac{1}{-s}e^{-s\cdot 3}\right) - \left(\frac{1}{-s}e^{-s\cdot 0}\right)\right] </mrow>
+							<mrow>   \amp =  7 \cdot \left[\left(\frac{1}{-s}e^{-s\cdot 3}\right) - \left(\frac{1}{-s}\cdot 1\right)\right] </mrow>
+							<mrow>   \amp =  7 \cdot \left[-\frac{1}{s}e^{-3s} +\frac{1}{s}\cdot 1\right] </mrow>
+							<mrow>   \amp =  7 \cdot \left[-\frac{1}{s}e^{-3s} +\frac{1}{s}\right] </mrow>
+							<mrow>   \amp =  \frac{7}{s} - \frac{7}{s}e^{-3s} </mrow>
+			
+						</md>
+			
+						</p>
+					</solution>
+					<answer>
+						<p>
+							<m> \ds D(s) = \frac{7}{s} - \frac{7}{s}e^{-3s} </m>
+						</p>
+					</answer>
+				</exercise>
+			
+		</exercisegroup>
+
+		
+		
+		<!--========== Exercise Group 1 ==========-->
+<exercisegroup>
+	<title>
+	<p>
+	 Express each function below in terms of unit step functions andthen compute its Laplace transform.
+	</p>
+	<p/> <!-- added for vertical space -->
+	</title>
+		<exercise> <!--== Problem 1 ==-->
+			<statement>
+				<m> \ds g(t) = \left\{ \begin{array}{ll} 0,	\amp t \le 1\\ 2,	\amp 1 \le t \le 2\\ 1,	\amp 2 \le t \le 3\\ 3,	\amp t \ge 3\\\end{array} \right. </m> 	\showto{student}{\vspace{1cm}}
+			</statement>
+			<solution>
+				<p>
+					
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 2 ==-->
+			<statement>
+				  \includegraphics[scale = 0.35,trim = 0 3in 0 0]{figs/12_LTs_unit_step/fig1.png}\\\vspace{0.8in}
+			</statement>
+			<solution>
+				<p>
+					
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+	</exercisegroup>
+	
+	<!--========== Exercise Group 2 ==========-->
+	<exercisegroup>
+	<title>
+	<p>
+	 Sketch the graph of the given function and determine its Laplacetransform.
+	</p>
+	<p/> <!-- added for vertical space -->
+	</title>
+		<exercise> <!--== Problem 3 ==-->
+			<statement>
+				<m> \ds w(t) = U(t-1) - U(t-4) </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds w(t) = U(t-1) - U(t-4) </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 4 ==-->
+			<statement>
+				<m> \ds y(t) = (t-1)^2U(t-3) </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds y(t) = (t-1)^2U(t-3) </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 5 ==-->
+			<statement>
+				<m> \ds x(t) = te^{3t}U(t+\pi/4) </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds x(t) = te^{3t}U(t+\pi/4) </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+	</exercisegroup>
+	
+	<!--========== Exercise Group 3 ==========-->
+	<exercisegroup>
+	<title>
+	<p>
+	Find the inverse Laplace transform of each function.
+	</p>
+	<p/> <!-- added for vertical space -->
+	</title>
+		<exercise> <!--== Problem 6 ==-->
+			<statement>
+				<m> \ds Y(s) = \frac{e^{-2s}}{s-1} </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds Y(s) = \frac{e^{-2s}}{s-1} </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 7 ==-->
+			<statement>
+				<m> \ds H(s) = \frac{e^{-2s} - 3e^{-4s}}{s+2} </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds H(s) = \frac{e^{-2s} - 3e^{-4s}}{s+2} </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 8 ==-->
+			<statement>
+				<m> \ds M(s) = \frac{e^{-3s}}{s^2+9} </m>
+			</statement>
+			<solution>
+				<p>
+					<m> \ds M(s) = \frac{e^{-3s}}{s^2+9} </m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 9 ==-->
+			<statement>
+				<m> \ds X(s) = \frac{e^{-s}(s-5)}{(s+1)(s+2)} </m> vspace{1cm}
+			</statement>
+			<solution>
+				<p>
+					<m> \ds X(s) = \frac{e^{-s}(s-5)}{(s+1)(s+2)} </m> vspace{1cm}
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+	</exercisegroup>
+	
+	<!--========== Exercise Group 4 ==========-->
+	<exercisegroup>
+	<title>
+	<p>
+	Solve each initial value problem.
+	</p>
+	<p/> <!-- added for vertical space -->
+	</title>
+		<exercise> <!--== Problem 10 ==-->
+			<statement>
+				<m> \ds z'' + 3z' + 2z = e^{-3t}U(t-2), \hspace{0.5cm}z(0) = 2,\hspace{0.5cm}z'(0) = -3 </m>
+			</statement>
+			<solution>
+				<p>
+					
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+		<exercise> <!--== Problem 11 ==-->
+			<statement>
+				<m> \ds w'' + w = U(t-2) - U(t-4), \hspace{0.5cm}w(0) = 1,\hspace{0.5cm}w'(0) = 0 </m>
+			</statement>
+			<solution>
+				<p>
+					
+				</p>
+			</solution>
+			<answer>
+				<p>
+					
+				</p>
+			</answer>
+		</exercise>
+	
+	</exercisegroup>
+
+	<exercisegroup><title> Special Cases and Applications </title>
+	
+		<introduction>
+			<p>
+				Explore the behavior of Laplace transforms in the following special cases.
+			</p>
+		</introduction>
+
+		<exercise>
+			<statement>
+				What is the Laplace transform of a unit step function <m>u(t - 3)</m>?
+			</statement>
+			<solution>
+				<p>
+			Use the shifting property of the unit step function:
+				<me>\lap{u(t - 3)} = \frac{e^{-3s}}{s}</me>.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>\ds \frac{e^{-3s}}{s}</m>
+				</p>
+			</answer>
+		</exercise>
+
+		<exercise>
+			<statement>
+				Find the Laplace transform of the impulse function <m>\delta(t - 2)</m>.
+			</statement>
+			<solution>
+				<p>
+			Apply the definition of the Laplace transform for the impulse function:
+				<me>\lap{\delta(t - 2)} = e^{-2s}</me>.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>\ds e^{-2s}</m>
+				</p>
+			</answer>
+		</exercise>
+
+	</exercisegroup>
+	
+	</exercises>
+
+</subsection>

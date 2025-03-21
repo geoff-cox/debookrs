@@ -1,0 +1,1149 @@
+<!-- 
+Foundations of the Laplace Transform
+
+	Introduction
+		* Introduce foundational ideas and the relevance of the Laplace transform.
+
+	Definition and Notation
+		* Introduce the Laplace transform as an integral transformation method clearly.
+		* Define the Laplace transform explicitly and establish consistent notation.
+		* Explain the importance and advantage of transforming differential equations.
+		* Provide initial examples of simple Laplace transforms to illustrate concepts.
+		* Preview the content and goals of the next subsection.
+	
+	Basic Properties and Rules
+		* Explain how integration by parts transfers derivatives between functions within integrals.
+		* Introduce the analogy of "wrapping" derivatives into exponential functions temporarily and "unwrapping" them later.
+		* Clearly illustrate this analogy with carefully chosen, intuitive examples.
+		* Discuss key Laplace transform properties and operational rules essential for solving differential equations.
+		* Preview the content and goals of the next subsection.
+	
+	Common Laplace Transforms
+		* Derive Laplace transforms of elementary and common functions clearly.
+		* Provide a well-organized reference table listing standard Laplace transforms.
+		* Preview the content and goals of the next subsection.
+	
+	Conclusion
+		* Clearly summarize essential concepts and key results from this foundational section.
+		* Preview how the concepts will be applied in the next section.
+-->
+
+<section><title> Foundations of the Laplace Transform </title>
+	
+	<introduction>
+
+		<p>
+			To begin our exploration of the Laplace Transform, we start with the first step in the <xref ref="lt-roadmap" text="custom">Laplace Transform Roadmap</xref>, known as the forward Laplace transform. This step is foundational, as it sets the stage for the subsequent transformations outlined in the roadmap.
+		</p>
+
+		<p>
+			<figure xml:id="lt-roadmap-step1">
+				<caption>The Forward Laplace Transform. Converting the <m>y(t)</m>-differential equation into the <m>Y(s)</m>-algebra equation.</caption>
+				<image source="figures/Laplace-Roadmap-Step-1.png" width="100%">
+					<shortdescription>The Forward Laplace Transform</shortdescription>
+				</image>
+			</figure>
+		</p>
+
+		<p>
+			Applying the forward Laplace transform to a differential equation involves converting both the left-hand side (LHS) and right-hand side (RHS) of the equation into their Laplace-transformed counterparts.
+		</p>
+
+		<p>
+			This section investigates how individual functions, like <m>-40e^{3t}</m> in step 1, are transformed into expressions such as <m>\ds -\frac{40}{s-3}</m>. In the next section, we will show where the <m>s^2Y + 3sY + 2Y - 1</m> comes from in the forward transform.
+		</p>
+		
+	</introduction>
+
+	<subsection><title> Introduction </title>
+
+		<introduction>
+
+			<p>
+				Differential equations are often difficult to solve because they involve unknown functions entangled with their derivatives. This complexity grows when the equation involves discontinuities or initial conditions. The Laplace Transform simplifies this process by converting the differential equation into an algebraic form, making it easier to solve. One of the key motivations for using the Laplace Transform is its ability to handle these discontinuities seamlessly, transforming functions piecewise into a single, continuous function in the complex plane. Through this, we can solve problems that would otherwise be very challenging with traditional methods.
+			</p>
+
+		</introduction>
+
+		<subsubsection><title> Motivation </title>
+
+			<p>
+				The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
+				<me>\int u\ dv = uv - \int v\ du</me>.
+			</p>
+
+			<p>
+				In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
+				<me>
+					\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
+				</me>.
+			</p>
+
+			<p>
+				Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
+			</p>
+
+			<p>
+				Let's see this concept in action. Consider an integral of the form:
+				<me>\int e^{-st} y' \, dt</me>,
+				where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
+				<me>
+					\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} =
+					\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} -
+					\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
+					e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
+				</me>.
+			</p>
+
+			<p>
+				What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>.
+			</p>
+
+			<p>
+				This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations.
+			</p>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-1-1-motivation.ptx" />
+
+		</subsubsection>
+
+		<subsubsection><title> Definition </title>
+
+			<p>
+				In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation
+				<me>
+					y'' + 3y' + 2y = -40e^{3t}
+				</me>
+				would look like this:
+				<md>
+					<mrow>
+						e^{-st} \left( y'' + 3y' + 2y \right)
+							\amp = e^{-st} \left( -40e^{3t} \right)
+					</mrow>
+					<mrow>
+						\int e^{-st} \left( y'' + 3y' + 2y \right) \, dt
+							\amp = \int e^{-st} \left( -40e^{3t} \right) \, dt
+					</mrow>
+					<mrow>
+						\ub{\int e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} +
+						3\ub{\int e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} +
+						2\ub{\int e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}}
+							\amp = \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
+					</mrow>
+				</md>.
+				As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
+			</p>
+
+			<definition><title> Laplace Transform </title>
+				<statement>
+					The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
+
+					<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
+
+					provided that the integral exists (i.e., the improper integral converges).
+				</statement>
+			</definition>
+
+			<p>
+				This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
+			</p>
+			
+			<me>
+				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
+			</me>
+			
+			<p>
+				Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
+			</p>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-1-2-definition.ptx" />
+
+		</subsubsection>
+
+	</subsection>
+
+	<subsection><title> Common Transforms </title>
+
+		<introduction>
+			<p>
+				In this section, we will explore some of the most commonly encountered Laplace transforms. These functions frequently appear in differential equations, making their transforms especially valuable tools for solving such equations. Let's start with the Laplace transform of the exponential function, <m>e^{at}</m>, and gradually build up to more complex functions like power functions, sine, and cosine.
+			</p>
+		</introduction>
+
+		<theorem xml:id="reason-factor-out-s">
+		<title/>
+			Since the limit only controls <m>b</m>, we treat <m>s</m> as a constant, hence <m>\ds-\frac{1}{s}</m> is also a constant that can be pulled out of the limit.
+		</theorem>
+
+		<subsubsection><title> Constant Function, <m>1</m> </title>
+
+			<theorem xml:id="compare-exp-graphs"><title> graph of <m>e^{-1.2b}</m> vs. <m>e^{+1.2b}</m> </title>
+				<image width="50%">
+					<latex-image>
+						\begin{tikzpicture}[relative]
+							\begin{axis}[
+								xlabel={$b$},
+								ylabel={$y$},
+								axis lines=middle,
+								domain=-4:4,
+								samples=100,
+								ymin=-0.1, ymax=3.1,
+								xmin=-4.1, xmax=4.1,
+								clip=true
+							]
+								\addplot[blue, very thick] {exp(-1.2*x)};
+								\addplot[red, very thick] {exp(1.2*x)};
+								\node at (axis cs:1.0,0.5) [anchor=west, scale=1.5] {$\ds e^{-1.2b} \to 0$};
+								\node at (axis cs:1.8,1.4) [anchor=west, scale=1.3] {as $b \to \infty$};
+								\node at (axis cs:0.9,2.7) [anchor=west, scale=1.5] {$\ds e^{1.2b} \to \infty$};
+								\draw[dashed] (axis cs:2,0) -- (axis cs:0,0);
+							\end{axis}
+							
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</theorem>
+			
+			<example>
+				<p>
+					Compute <m>\ds \lap{1}</m>.
+				</p>
+
+				<solution>
+					<p>
+						By the definition above, we have the improper integral
+						<men xml:id="lt-1-example-eqn-1">
+							\lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
+						</men>.
+						To evaluate this, we treat <m>s</m> as a constant and integrate with respect to <m>t</m>.
+						<md>
+							<mrow>				
+								I = \int_0^b e^{-st}dt
+								\amp = -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b}
+							</mrow>
+							<mrow>			
+								\amp = -\frac{1}{s}\left[ e^{-sb} - e^{-s\cdot 0} \right]
+							</mrow>
+							<mrow>			
+								\amp = -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+							</mrow>
+						</md>
+						Now that we have <m>I</m>, we can plug it into the limit above.
+						<md>
+							<mrow>
+								\lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+								\amp = -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+								\qquad \leftarrow <xref text="custom" ref="reason-factor-out-s">why?</xref>
+							</mrow>
+							<mrow>
+									\amp = -\frac{1}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - \us{=\ 1}{\ub{\lim_{b \to \infty} 1}} \Big]
+							</mrow>
+						</md>
+					</p>
+			
+					<p>
+						The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
+						<ul>
+							<li>
+								<p>
+									<line><m>s &lt; 0 \text{ (negative) and } b\to \infty \implies -sb \to \infty \implies e^{-sb} \to \infty</m></line>
+								</p>
+							</li>
+							<li>
+								<p>
+									<line><m>s &gt; 0 \text{ (positive) and } b\to \infty \implies -sb \to -\infty \implies e^{-sb} \to 0</m></line>
+								</p>
+							</li>
+						</ul>
+						To visualize this, here is a <xref ref="compare-exp-graphs" text="custom">graph</xref> comparing <m>s=-1.2\ </m> versus <m>\, +1.2</m>.
+					</p>
+			
+					<p>
+						Therefore, when <m>s &gt; 0</m> the Laplace transform exists and evaluates to
+						<me>\lap{1} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0.</me>
+					</p>
+				</solution>
+			
+			</example>
+
+			<p>
+				Now that we've worked through an example, here are a few key takeaways:
+				<ul marker="square">
+					<li>
+					<p>
+						The Laplace transform always results in a function of <m>s</m>. We typically denote the Laplace transform using the capitalized letter of the function we are transforming. For instance,
+						<me> \lap{f(t)} = F(s) \quad \text{or} \quad \lap{q(t)} = Q(s).</me>
+					</p>
+					</li>
+				
+					<li>
+					<p>
+						The values of <m>s</m> for which the integral converges are crucial. While these values usually don't affect the solution to the differential equation, we will make a habit of noting them as we build our Laplace transform toolbox.
+					</p>
+					</li>
+				
+					<li>
+					<p>
+						The notation <m>\lap{}</m> includes curly braces to indicate the function being transformed.
+					</p>
+					</li>
+				</ul>
+			</p>
+			
+			<p>
+				With this, we've introduced our first Laplace transform. In the next few sections, we will explore more of the common transforms that are used to solve differential equations.
+			</p>
+
+			<assemblage xml:id="lt-table-L1"><title> ✳️ Common Laplace Transform <m>L_1</m> </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="L1"><title> <m>{\LARGE \vphantom{\int}}L_1</m> </title>
+							<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt; 0 </m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-2-1-rule-L1.ptx" />
+
+		</subsubsection>
+
+		<subsubsection><title> Exponential Function, <m>e^{at}</m> </title>
+			
+			<p>
+				The exponential function <m>e^{at}</m> is one of the most important functions in mathematics, especially in the context of differential equations. Let's explore how this works with a specific example.
+			</p>
+
+			<example>
+				<p>
+					Compute <m> \lap{ e^{7t}} </m>.
+				</p>
+		
+				<solution>
+					<p>
+						We begin by applying the definition of the Laplace transform:
+						<md>
+							<mrow>
+								\lap{ e^{7t} }
+								\amp = \int_0^{\infty} e^{-st} \cdot e^{7t}\ dt
+							</mrow>
+							<mrow>
+								\amp = \lim_{b \to \infty}\int_0^b e^{(-s+7)t}\ dt
+							</mrow>
+						</md>
+						For this improper integral to converge, the exponent <m>-s+7</m> must be negative, meaning:
+						<me>
+							-s+7 \lt 0 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} -s \lt -7 \hspace{0.5cm}\Rightarrow \hspace{0.5cm} s \gt 7
+						</me>.
+						Thus, we proceed under the assumption that <m>s \gt 7</m>.
+						<md>
+							<mrow>
+								\lap{ e^{7t} }
+									\amp = \lim_{b \to \infty}\int_0^b e^{(-s+7)t}\, dt
+							</mrow>
+							<mrow>
+									\amp = \lim_{b \to \infty} \frac{1}{7-s} e^{(-s+7)t} \Bigg|_0^b
+							</mrow>
+							<mrow>
+									\amp = \frac{1}{-s+7} \left[ \lim_{b \to \infty} \left( e^{(-s+7)b} - e^{0} \right) \right]
+							</mrow>
+							<mrow>
+									\amp = \frac{1}{-s+7} \left[ \lim_{b \to \infty} e^{(-s+7)b} - 1 \right]
+							</mrow>
+							<mrow>
+									\amp = \frac{1}{-s+7} \left[ 0 - 1 \right] \qquad \Big(e^{(\text{negative})b} \to 0\Big)
+							</mrow>
+							<mrow>
+									\amp = -\frac{1}{-s+7} = \frac{1}{s-7}. \quad \text{for } s \gt 7
+							</mrow>
+						</md>
+						Thus, the Laplace transform of <m>e^{7t}</m> is:
+						<me>\ds \lap{e^{7t}} = \frac{1}{s - 7}, \quad s \gt 7.</me>
+					</p>
+				</solution>
+		
+			</example>
+
+			<theorem  xml:id="laplace-transform-of-exponential"><title> <m>\lap{e^{at}}</m> Details </title>
+				<p>
+					Using the definition of the Laplace transform:
+					<md>
+						<mrow>
+							\lap{ e^{at} }
+							\amp = \int_0^{\infty} e^{-st} \cdot e^{at}\ dt
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty}\int_0^b e^{(-s+a)t}\ dt
+						</mrow>
+					</md>
+					For the integral to converge, the exponent <m>-s+a</m> must be negative, leading to the condition <m>s \gt a</m>. Proceeding with the integration:
+					<md>
+						<mrow>
+							\lap{ e^{at} }
+							\amp = \lim_{b \to \infty}\int_0^b e^{(-s+a)t}\ dt
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty} \frac{1}{a-s} e^{(-s+a)t} \Bigg|_0^b
+						</mrow>
+						<mrow>
+							\amp = \frac{1}{a-s} \left[ \lim_{b \to \infty} \left( e^{(a-s)b} - 1 \right) \right]
+						</mrow>
+						<mrow>
+							\amp = \frac{1}{a-s} \left[ 0 - 1 \right]
+						</mrow>
+						<mrow>
+							\amp = -\frac{1}{a-s} = \frac{1}{s-a}. \quad \text{for } s \gt a
+						</mrow>
+					</md>
+					Thus, the Laplace transform of <m>e^{at}</m> is:
+					<me>\ds \lap{e^{at}} = \frac{1}{s - a}, \quad s \gt a.</me>
+				</p>
+			</theorem>
+
+			<p>
+				This result can be generalized for any constant <m>a</m>, giving us the Laplace transform of <m>e^{at}</m>. <xref ref="laplace-transform-of-exponential" text="custom">Here are the details.</xref>
+			</p>
+		
+			<assemblage xml:id="lt-table-L2"><title> ✳️ Common Laplace Transform (Exponential) </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="L2"><title> <m>L_2</m> </title>
+							<m>\ds \lap{ e^{at} } = \frac{1}{s - a}, \quad s \gt a, \quad <xref ref="laplace-transform-of-exponential" text="custom">\text{details}</xref></m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		
+			<xi:include href="./c7-exercises/c7-chkpts-1-2-2-rule-L2.ptx" />
+		</subsubsection>
+
+		<subsubsection><title> Power Function, <m>t^{n}</m> </title>
+			<p>
+				The power function <m>t^n</m> is another common function type found in differential equations. The Laplace transform of <m>t^n</m> follows a recursive pattern, which simplifies the computation for higher powers. We've already seen that <m>\ds\lap{1} = \sfrac{1}{s}</m>. Now, let's compute the transforms for <m>t</m> and <m>t^2</m>.
+			</p>
+
+			<theorem  xml:id="laplace-transform-of-t-power-1"><title> <m>\lap{t}</m> Details </title>
+				<p>
+					Using the definition of the Laplace transform:
+					<me>
+						\lap{ t }	= \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t\ dt}_{I}
+					</me>
+					<xref text="custom" ref="laplace-transform-of-t-power-1-IBP">Integration by parts on <m>I</m></xref>, gives us
+					<md>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = \lim_{b \to \infty} \left[-\frac{b}{s}e^{-sb} + \frac{1}{s}\int_0^b e^{-st} dt\right]
+						</mrow>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b}{e^{sb}}\right] + \frac{1}{s}\lim_{b \to \infty}\int_0^b e^{-st}\ dt
+						</mrow>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b}{e^{sb}}}_{L} + \frac{1}{s}\ub{\int_0^\infty e^{-st}\ dt}_{\lap{1}}
+						</mrow>
+					</md>
+					<xref text="custom" ref="laplace-transform-of-t-power-1-LH">L'Hopital's Rule shows <m>L=0</m></xref> and <xref ref="L1" text="custom"><m>\lap{1}</m></xref> is known. Therefore,
+					<me>\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0</me>.
+				</p>
+			</theorem>
+
+			<theorem  xml:id="laplace-transform-of-t-power-2"><title> <m>\lap{t^2}</m> Details </title>
+				<p>
+					Using the definition of the Laplace transform:
+					<me>
+						\lap{ t^2 } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t^2\ dt}_{I}
+					</me>
+					<xref text="custom" ref="laplace-transform-of-t-power-2-IBP">Integration by parts on <m>I</m></xref>, gives us
+					<md>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = \lim_{b \to \infty} \left[-\frac{b^2}{s}e^{-sb} + \frac{2}{s}\int_0^b e^{-st}\cdot t\ dt\right]
+						</mrow>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b^2}{e^{sb}}\right] + \frac{2}{s}\lim_{b \to \infty}\int_0^b e^{-st}\cdot t\ dt
+						</mrow>
+						<mrow>
+							\phantom{\lap{t}}
+								\amp = -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b^2}{e^{sb}}}_{L} + \frac{2}{s}\ub{\int_0^\infty e^{-st}\cdot t\ dt}_{\lap{t}}
+						</mrow>
+					</md>
+					<xref text="custom" ref="laplace-transform-of-t-power-2-LH">L'Hopital's Rule shows <m>L=0</m></xref> and <m>\lap{t}=1/s^2</m>. Therefore,
+					<me>\lap{ t^2 } = \frac{2}{s^3}, \quad s &gt; 0</me>.
+				</p>
+			</theorem>
+
+			<theorem xml:id="laplace-transform-of-t-power-1-IBP"><title/>
+		<md>
+			<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
+			<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+		</md>
+		<md>
+			<mrow>
+				\int_0^b e^{-st} \cdot t\ dt
+					\amp = t \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
+			</mrow>
+			<mrow> 	
+					\amp = -\frac{b}{s}e^{-sb} + \frac{1}{s}\int_0^b e^{-st} dt
+			</mrow>
+		</md>
+	</theorem>
+
+	<theorem xml:id="laplace-transform-of-t-power-1-LH"><title/>
+		Since <m>b</m> is the limit variable, we must take derivatives with respect to <m>b</m> (where <m>s</m> is constant). Assuming <m>s \gt 0</m>,
+		<me>
+			L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
+				= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				= 0
+		</me>
+	</theorem>
+
+	
+
+	<theorem xml:id="laplace-transform-of-t-power-2-IBP"><title/>
+		<md>
+			<mrow> u = t^2,		\quad\amp	dv = e^{-st}dt, 		</mrow>
+			<mrow> du = 2t\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+		</md>
+		<md>
+			<mrow>
+				\int_0^b e^{-st} \cdot t^2\ dt
+					\amp = t^2 \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) 2t\ dt
+			</mrow>
+			<mrow> 	
+					\amp = -\frac{b^2}{s}e^{-sb} + \frac{2}{s} \int_0^b e^{-st} \cdot t\ dt
+			</mrow>
+		</md>
+	</theorem>
+
+	<theorem xml:id="laplace-transform-of-t-power-2-LH"><title/>
+		This time we apply L'Hopital's rule twice. Assuming <m>s \gt 0</m>,
+		<md>
+			<mrow>
+				L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b^2}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}\
+				\amp\us{LH}{=}\ \lim_{b \to \infty}\frac{2b}{se^{sb}}\
+				= \frac{2}{s}\lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+			</mrow>
+			<mrow>
+				\amp\us{LH}{=}\ \frac{2}{s}\lim_{b \to \infty}\frac{1}{se^{sb}}
+				= \frac{2}{s^2}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				= 0
+			</mrow>
+		</md>
+	</theorem>
+
+			<example>
+
+				<p>
+					The Laplace transforms for <m>t</m> and <m>t^2</m> are as follows:
+					<ul marker="square">
+						<li>	
+							<m> \ds \lap{t} 	= \frac{1}{s^2}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-1" text="custom">Details</xref>
+						</li>
+						<li>	
+							<m> \ds \lap{t^2} = \frac{2}{s^3}, \quad s \gt 0 \quad </m> <xref ref="laplace-transform-of-t-power-2" text="custom">Details</xref>
+						</li>
+					</ul>
+				</p>
+			</example>
+
+			<theorem xml:id="factorial"><title> factorial </title>
+				The factorial of <m>n</m>, denoted <m>n!</m>, is the product of all positive integers less than or equal to <m>n</m>. For example, <m>5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120</m>.
+			</theorem>
+
+			<p>
+				If you look in each solution, before computing <m>L = 0</m>, you'll notice a relationship between the Laplace transforms of powers that differ by one. Namely,
+				<me>
+					\lap{t} = \frac{1}{s}\lap{1} \quad \text{and} \quad \lap{t^2} = \frac{2}{s}\lap{t}
+				</me>,
+				and if you compute the Laplace transform of <m>t^3</m>, you'll find that
+				<me>
+					\lap{t^3} = \frac{3}{s}\lap{t^2}
+				</me>.
+				In general, this recursive pattern continues for any power <m>n</m> as
+				<me>
+					\lap{t^n} = \frac{n}{s}\lap{t^{n-1}}
+				</me>.
+				So if we wanted the Laplace transform of <m>t^4</m>, we could find it like so
+				<md>
+					<mrow>
+						\lap{t^4}
+							\amp = \frac{4}{s}\lap{t^3}
+					</mrow>
+					<mrow> 				
+							\amp = \frac{4}{s}\left[\frac{3}{s}\lap{t^2}\right]
+							= \frac{4\cdot 3}{s^2}\left[\frac{2}{s}\lap{t}\right]
+							= \frac{4\cdot 3\cdot 2}{s^3}\cdot\frac{1}{s^2}
+							= \ob{\frac{4\cdot 3\cdot 2\cdot 1}{s^5}}^{\text{factorial}}
+					</mrow>
+				</md>.
+				This pattern is true for higher powers of <m>t</m>, leading to the next laplace transform rule which makes use of the <xref ref="factorial" text="title"/>.
+			</p>
+
+			<assemblage xml:id="lt-table-L3"><title> ✳️ Common Laplace Transform (Power) </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="L3"><title> <m>{\LARGE \vphantom{\int}}L_3</m> </title>
+							<m>\ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s >0, \quad n = 1, 2, 3, \ldots </m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		
+			<xi:include href="./c7-exercises/c7-chkpts-1-2-3-rule-L3.ptx" />
+		</subsubsection>
+
+		<subsubsection><title> Sine and Cosine, <m>\sin(bt),\ \cos(bt)</m> </title>
+			<p>
+				Now, let's turn to the Laplace transforms of trigonometric functions, which frequently arise in systems involving oscillations or wave equations.
+			</p>
+
+			<example>
+		
+				<m>\ \ </m>Compute <m>\lap{\cos(3t)}</m>.
+				
+				<solution>
+					<p>
+						We start by applying the definition of the Laplace transform:
+						<me>
+							\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt
+						</me>.
+						Rather than directly integrating, we will use a modified <xref ref="eulers-formula" text="title"></xref> to express cosine in terms of <m>e</m>
+						<me>
+							\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right).
+						</me>
+						Substituting this into the integral gives:
+						<md>
+							<mrow>
+								\lap{ \cos(3t)}
+								\amp = \frac12 \int_0^{\infty} e^{-st} \frac12\left(e^{3it} + e^{-3it}\right)\ dt
+							</mrow>
+							<mrow>
+								\amp = \frac12\left[\int_0^{\infty} e^{-st}\cdot e^{3it}\ dt + \int_0^{\infty} e^{-st}\cdot e^{-3it}\ dt\right]
+							</mrow>
+							<mrow>
+								\amp = \frac{1}{2} \left[\lap{e^{3it}} + \lap{e^{-3it}}\right]
+							</mrow>
+							<mrow>
+								\amp = \frac{1}{2} \left[\frac{1}{s - 3i} + \frac{1}{s + 3i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+							</mrow>
+							<mrow>
+								\amp = \frac{1}{2} \left[\frac{s + 3i + s - 3i}{(s - 3i)(s + 3i)}\right]
+							</mrow>
+							<mrow>
+								\amp = \frac{s}{s^2 + 9}.
+							</mrow>
+						</md>
+						Therefore, the Laplace transform of <m>\cos(3t)</m> is:
+						<me>
+							\lap{\cos(3t)} = \frac{s}{s^2 + 9}.
+						</me>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				The sine function is handled in a similar way, as the next example shows.
+			</p>
+
+			<example>
+				<p>
+					Compute <m>\lap{\sin(-4t)}</m>.
+				</p>
+			
+				<solution>
+					<p>
+						As with cosine, we begin with the definition of the Laplace transform,
+						<me>
+							\lap{ \sin(-4t)} = \int_0^{\infty} e^{-st} \cdot \sin(-4t)\ dt
+						</me>
+						and rewrite sine using Euler's formula,
+						<me>
+							\sin(-4t) = \frac{e^{-4it} - e^{4it}}{2i}.
+						</me>
+						Substituting this into the integral, we get:
+						<md>
+							<mrow>
+								\lap{ \sin(-4t)}
+								=\amp \frac{1}{2i} \int_0^{\infty} e^{-st} \left(e^{-4it} - e^{4it}\right)\, dt
+							</mrow>
+							<mrow>
+								=\amp \frac{1}{2i} \left[\int_0^{\infty} e^{-(s + 4i)t}\, dt - \int_0^{\infty} e^{-(s - 4i)t}\, dt\right]
+							</mrow>
+							<mrow>
+								=\amp \frac{1}{2i} \left[\lap{e^{-4it}} - \lap{e^{4it}}\right].
+							</mrow>
+							<mrow>
+								=\amp \frac{1}{2i} \left[\frac{1}{s + 4i} - \frac{1}{s - 4i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+							</mrow>
+							<mrow>
+								=\amp \frac{1}{2i} \left[\frac{s - 4i - (s + 4i)}{(s + 4i)(s - 4i)}\right]
+							</mrow>
+							<mrow>
+								=\amp \frac{4}{s^2 + 16}.
+							</mrow>
+						</md>
+						Thus, the Laplace transform of <m>\sin(-4t)</m> is:
+						<me>
+							\lap{\sin(-4t)} = \frac{4}{s^2 + 16}.
+						</me>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				Both of these approaches can be generalized to show that the formula for the Laplace transforms of sine and cosine are given as follows:
+			</p>
+
+			<assemblage xml:id="lt-table-L4-L5"><title> ✳️ Common Laplace Transform (Sine, Cosine) </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="L4"><title> <m>{\LARGE \vphantom{\int}}L_4</m> </title>
+							<m>\ds \lap{\sin(bt)} = \frac{b}{s^2+b^2}, \quad s \gt 0 </m>
+						</li>
+						<li xml:id="L5"><title> <m>{\LARGE \vphantom{\int}}L_5</m> </title>
+							<m>\ds \lap{\cos(bt)} = \frac{s}{s^2+b^2}, \quad s \gt 0 </m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		
+			<xi:include href="./c7-exercises/c7-chkpts-1-2-4-rule-L45.ptx" />
+		</subsubsection>
+
+	</subsection>
+
+	<subsection><title> Properties of Laplace Transforms </title>
+
+		<introduction>
+			<p>
+				Now that we've explored individual Laplace transforms, its time to delve into some of the key properties that make the Laplace transform such a powerful tool for solving differential equations. These properties allow us to manipulate and combine transforms in ways that simplify complex problems.
+			</p>
+		</introduction>
+		
+		<subsubsection><title> Linearity of the Laplace Transform </title>
+		
+			<p>
+				The first property we'll explore is linearity. This property is foundational because it allows us to break down and combine transforms easily. The linearity of the Laplace transform is similar to the linearity of integrals, where we can distribute the transform across addition and subtraction, and pull out constants.
+			</p>
+
+			<example>
+				<p>
+					Use the definition of the Laplace transform to compute:
+				</p>
+				
+				<me> \lap{15 + 6e^{7t} - 11t}. </me>
+				
+				<solution>
+					<p>
+						Let's start by applying the definition of the Laplace transform:
+						<md>
+							<mrow>
+								\lap{15\ +\amp\ 6e^{7t} - 11t}	
+							</mrow>
+							<mrow>		
+									\amp = \int_0^{\infty} e^{-st} \cdot \left(15 + 6e^{7t} - 11t\right)\ dt
+							</mrow>
+							<mrow>
+									\amp = \int_0^{\infty} \left( 15e^{-st} + 6e^{-st} \cdot e^{7t} - 11e^{-st} \cdot t \right)\ dt
+							</mrow>
+						</md>
+						Here, we've expanded the expression inside the integral. Notice that each term is something we've already encountered in previous sections. We can now use the linearity property to separate the integral:
+						<md>
+							<mrow>	
+								\amp = 15\int_0^{\infty} e^{-st}\cdot 1\ dt + 6\int_0^{\infty} e^{-st} \cdot e^{7t}\ dt - 11\int_0^{\infty} e^{-st} \cdot t\ dt
+							</mrow>
+							<mrow>
+								\amp = 15\lap{1} + 6\lap{ e^{7t} } - 11\lap{ t }.
+							</mrow>
+						</md>
+						We already know the Laplace transforms of these individual functions:
+						<md>
+							<mrow>
+								\amp = \ub{\frac{15}{s}}_{s \gt 0} + 6\ub{\frac{1}{s - 7}}_{s \gt 7} - 11\ub{\frac{1}{s^2}}_{s \gt 0}.
+							</mrow>
+						</md>
+						To satisfy all the conditions on <m>s</m>, we must have <m>s \gt 7</m> since that ensures all terms are defined. Therefore:
+						<me>
+							\lap{15 + 6e^{7t} - 11t} = \frac{15}{s} + 6\cdot \frac{1}{s-7} - \frac{11}{s^2}, \quad s \gt 7.
+						</me>
+					</p>
+				</solution>
+			</example>
+		
+			<p>
+				This example demonstrates the linearity property in action. The general statement of the linearity property is as follows: if <m>a</m> and <m>b</m> are constants, then:
+				<me> \lap{ a f(t) \pm b g(t) } = a \lap{ f(t) } \pm b \lap{ g(t) }, </me>
+				or, equivalently:
+				<me> \lap{ a f(t) \pm b g(t) } = a F(s) \pm b G(s). </me>
+			</p>
+			
+			<assemblage xml:id="lt-properties-P1"><title> ✳️ Laplace Transform Property <m>P_1</m> </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="P1"><title> <m>{\LARGE \vphantom{\int}}P_1</m> </title>
+							<m>\ds \lap{ a f(t) \pm b g(t) } = a \lap{f(t)} \pm b \lap{g(t)}</m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+			
+			<xi:include	href="./c7-exercises/c7-chkpts-1-3-1-property-P1.ptx" />
+
+		</subsubsection>
+
+		<subsubsection><title> Multiplication by <m>e^{at}</m> </title>
+		
+			<p>
+				The translation property, also known as the first shifting theorem, allows us to handle functions multiplied by an exponential term, <m>e^{at}</m>. This property is particularly useful for simplifying the Laplace transforms of products of exponential functions and other functions, such as sine, cosine, or polynomials.
+			</p>
+
+			<example>
+			
+				<m>\ \ </m> Compute <m> \lap{e^{7t}\cos(3t)} </m>.
+				
+				<solution>
+					<p>
+						By the definition of the Laplace transform, we have:
+						<md>
+							<mrow>
+								\lap{e^{7t}\cos(3t)}
+									=\amp \int_0^{\infty} e^{-st} e^{7t}\cos(3t)\ dt
+							</mrow>
+							<mrow>
+									=\amp \int_0^{\infty} e^{-st+7t} \cos(3t)\ dt
+							</mrow>
+							<mrow>
+									=\amp \int_0^{\infty} e^{-(s-7)t} \cos(3t)\ dt
+							</mrow>
+							<mrow>
+									=\amp \ub{\int_0^{\infty} e^{-(s_0)t} \cos(3t)\ dt}_{\lap{\cos(3t)}}, \quad \text{where } s_0 = s-7
+							</mrow>
+							<mrow>
+									\amp = \frac{s_0}{s_0^2 + 9}  \qquad (s_0 \gt 0)
+							</mrow>
+							<mrow>
+									\amp = \frac{s-7}{(s-7)^2 + 9} \qquad (s-7 \gt 0 \text{ or } s \gt 7)
+							</mrow>
+						</md>
+						Thus, the Laplace transform of <m>e^{7t}\cos(3t)</m> is:
+						<me>\ds \lap{e^{7t}\cos(3t)} = \frac{s-7}{(s-7)^2 + 9}, \quad s \gt 7.</me>
+					</p>
+				</solution>
+			</example>
+		
+			<p>
+				The translation property can be generalized for any function <m>f(t)</m> multiplied by <m>e^{at}</m>. The property is formally stated as:
+				<me> \lap{ e^{at} f(t) } = F(s-a), </me>
+				where <m>F(s)</m> is the Laplace transform of <m>f(t)</m>.
+			</p>
+		
+			<assemblage xml:id="lt-properties-P2"><title> ✳️ Laplace Transform Property <m>P_2</m> </title>
+				<p>
+					Let <m>F(s) = \lap{f(t)}</m>.
+				</p>
+		
+				<p>
+					<dl width="narrow">
+						<li xml:id="P2"><title> <m>P_2</m> </title>
+							<m>\ds \lap{ e^{at} f(t) } = F(s-a), \quad a </m> is a constant.
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+			
+			<p>
+				By applying this property to the functions <m>t^n</m>, <m>\cos(bt)</m>, and <m>\sin(bt)</m>, we can derive additional common Laplace transforms:
+			</p>
+			
+			<assemblage xml:id="lt-table-L6-L8"><title> ✳️ Common Laplace Transforms <m>L_6-L_8</m> </title>
+				<p>
+					<dl width="narrow">
+						<li xml:id="L6"><title> <m>{\LARGE \vphantom{\int}}L_6</m> </title>
+							<m>\lap{ t^n e^{at} } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s >a </m>
+						</li>
+						<li xml:id="L7"><title> <m>{\LARGE \vphantom{\int}}L_7</m> </title>
+							<m>\ds \lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s >a </m>
+						</li>
+						<li xml:id="L8"><title> <m>{\LARGE \vphantom{\int}}L_8</m> </title>
+							<m>\ds \lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s >a</m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		
+			<xi:include	href="./c7-exercises/c7-chkpts-1-3-2-property-P2.ptx" />
+
+		</subsubsection>
+		
+		<subsubsection><title> Derivative Transform </title>
+			<p>
+				The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.
+			</p>
+
+			<theorem xml:id="example-key-steps">
+				<statement>
+					<p>
+						Key Steps
+						<dl>
+							<li xml:id="lt-derivative-key-step-1"><title> <m>\os{[1]}{=}</m> </title>
+								Integration by parts with <m>u = f(t)</m> and <m>dv = e^{-st} dt</m>
+							</li>
+							<li xml:id="lt-derivative-key-step-2"><title> <m>\os{[2]}{=}</m> </title>
+								<m>s</m> is a constant in this integral, so we can bring it out.
+							</li>
+							<li xml:id="lt-derivative-key-step-3"><title> <m>\os{[3]}{=}</m> </title>
+								<m>\ds e^{-st} f(t) = \frac{f(t)}{e^{st}}</m> must go to zero.
+							</li>
+						</dl>
+					</p>
+				</statement>
+			</theorem>
+			
+			<example>
+				<p>
+					Show that <m>\ds \lap{f'(t)} = s\lap{f(t)} - f(0), \quad s \gt 0</m>.
+				</p>
+
+				<solution>
+					<p>
+						<tabular>
+							<col width="20%" halign="right" valign="top"/>
+							<col width="80%" halign="left" valign="top"/>
+							<row>
+								<cell valign="top"><p><m>\ds \lap{ f'(t) } =</m></p></cell>
+								<cell><m>\ds \int_0^{\infty} e^{-st} f'(t)\ dt </m></cell>
+							</row>
+							<row>
+								<cell><xref ref="lt-derivative-key-step-1" text="title"/></cell>
+								<cell><m>\ds \left[ e^{-st} f(t) \right]_0^{\infty} - \int_0^{\infty} (-s e^{-st}) f(t)\ dt </m></cell>
+							</row>
+							<row>
+								<cell><xref ref="lt-derivative-key-step-2" text="title"/></cell>
+								<cell><m>\ds \left[ e^{-st} f(t) \right]_0^{\infty} + s \ub{\int_0^{\infty} e^{-st} f(t)\ dt}{\large \lap{ f(t) }} </m></cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell><m>\ds \lim_{t \to \infty} \left( e^{-st} f(t) \right) - e^{-s \cdot 0} f(0) + s \lap{ f(t) } </m></cell>
+							</row>
+							<row>
+								<cell><xref ref="lt-derivative-key-step-3" text="title"/></cell>
+								<cell><m>\ds 0 - f(0) + s \lap{ f(t) } </m></cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell><m>\ds s \lap{ f(t) } - f(0) </m></cell>
+							</row>
+						</tabular>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more—this property also works recursively, allowing us to handle higher-order derivatives as well.
+			</p>
+
+			<p>
+				For example, let's see how this property extends to second and third derivatives:
+				<md>
+					<mrow>
+						\lap{ f'(t) }	
+						\amp = \us{\swarrow}{\ul{\color{green} s \lap{ f(t)	} - f(0)}}
+					</mrow>
+					<mrow>
+						\lap{ f''(t) }	
+						\amp = s {\color{green} \lap{ f'(t) }} - f'(0)
+					</mrow>
+					<mrow>
+						\amp = s \Big[{\color{green} \lap{f(t)} - f(0)} \Big] - f'(0)
+					</mrow>
+					<mrow>
+						\amp = \us{\swarrow \hspace{5em}}{\ul{\color{blue} s \lap{f(t)} - sf(0) - f'(0)}}
+					</mrow>
+					<mrow>
+						\lap{ f'''(t) }	
+						\amp = s {\color{blue} \lap{ f''(t) }} - f''(0)
+					</mrow>
+					<mrow>
+						\amp = s \Big[{\color{blue} s \lap{f(t)} - sf(0) - f'(0)}\Big] - f''(0)
+					</mrow>
+					<mrow>
+						\amp = s^3 \lap{f(t)} - s^2 f(0) - s f'(0) - f''(0)
+					</mrow>
+					<mrow> \vdots </mrow>
+				</md>
+				And the pattern continues for higher derivatives.
+			</p>
+
+			<assemblage xml:id="lt-properties-P3-P5"><title> ✳️ Laplace Transform Properties <m>P_3-P_5</m> </title>
+				<p>
+					Let <m>F(s) = \lap{f(t)}</m>.
+				</p>
+
+				<p>
+					<dl width="narrow">
+						<li xml:id="P3"><title> <m>P_3</m> </title>
+							<m>\ds \lap{ f'(t) } = sF(s) - f(0) </m>
+						</li>
+						<li xml:id="P4"><title> <m>P_4</m> </title>
+							<m>\ds \lap{ f''(t) } = s^2F(s) - sf(0) - f'(0) </m>
+						</li>
+						<li xml:id="P5"><title> <m>P_5</m> </title>
+							<m>\ds \lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0) </m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+
+			<xi:include	href="./c7-exercises/c7-chkpts-1-3-3-property-P3.ptx" />
+
+		</subsubsection>
+
+		<subsubsection><title> Multiplication by <m>t^n</m> </title>
+		
+			<p>
+				The final property we'll explore is how the Laplace transform handles functions multiplied by a power of <m>t</m>. This property is especially useful when dealing with polynomial terms in differential equations.
+			</p>
+
+			<example>
+				<p>
+					Show that <m>\ds \lap{tf(t)} = -\frac{d}{ds}\left[\lap{f(t)}\right]</m>.
+				</p>
+				
+				<solution>
+					<p>
+						For this problem, it's easier to start on the right side and show that it equals the left:
+						<tabular>
+							<col width="30%" halign="right" valign="top"/>
+							<col width="60%" halign="left" valign="top"/>
+							<row>
+								<cell valign="top"><p><m>\ds -\frac{d}{ds}\left[\lap{f(t)}\right] =</m></p></cell>
+								<cell>
+									<m>\ds -\frac{d}{ds}\left[\int_0^{\infty} e^{-st} f(t)\ dt\right] </m>
+								</cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell>
+									<m>\ds -\int_0^{\infty} \frac{\partial}{\partial s}\left[e^{-st} f(t)\right]\ dt </m>
+								</cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell>
+									<m>\ds -\int_0^{\infty} f(t)\frac{\partial}{\partial s}\left[e^{-st}\right]\ dt </m>
+								</cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell>
+									<m>\ds -\int_0^{\infty} f(t) \left(-te^{-st}\right)\ dt </m>
+								</cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell>
+									<m>\ds \int_0^{\infty} e^{-st} tf(t)\ dt </m>
+								</cell>
+							</row>
+							<row>
+								<cell><m>=</m></cell>
+								<cell>
+									<m>\ds \lap{tf(t)} </m>
+								</cell>
+							</row>
+						</tabular>
+					</p>
+				</solution>
+			</example>
+		
+			<p>
+				This shows that multiplying a function by <m>t</m> inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by <m>-1</m>. It turns out that each additional power of <m>t</m> adds another negative sign and derivative.
+			</p>
+		
+			<example>
+		
+				<m>\ \ </m> Show that <m>\ds \lap{t^2f(t)} = \frac{d^2}{ds^2}\left[\lap{f(t)}\right]</m>.
+				
+				<solution>
+					<p>
+						Again, it's easier to start on the right side and work our way to the left:
+					<tabular>
+						<col width="30%" halign="right" valign="top"/>
+						<col width="60%" halign="left" valign="top"/>
+						<row>
+							<cell valign="top"><p><m>\ds \frac{d^2}{ds^2}\left[\lap{f(t)}\right] =</m></p></cell>
+							<cell>
+								<m>\ds \frac{d^2}{ds^2}\left[\int_0^{\infty} e^{-st} f(t)\ dt\right] </m>
+							</cell>
+						</row>
+						<row>
+							<cell><m>=</m></cell>
+							<cell>
+								<m>\ds \int_0^{\infty} \frac{\partial^2}{\partial s^2}\left[e^{-st} f(t)\right]\ dt </m>
+							</cell>
+						</row>
+						<row>
+							<cell><m>=</m></cell>
+							<cell>
+								<m>\ds \int_0^{\infty} f(t)\frac{\partial^2}{\partial s^2}\left[e^{-st}\right]\ dt </m>
+							</cell>
+						</row>
+						<row>
+							<cell><m>=</m></cell>
+							<cell>
+								<m>\ds \int_0^{\infty} f(t) \left((-t)^2e^{-st}\right)\ dt </m>
+							</cell>
+						</row>
+						<row>
+							<cell><m>=</m></cell>
+							<cell>
+								<m>\ds \int_0^{\infty} e^{-st} t^2f(t)\ dt </m>
+							</cell>
+						</row>
+						<row>
+							<cell><m>=</m></cell>
+							<cell>
+								<m>\ds \lap{t^2f(t)} </m>
+							</cell>
+						</row>
+					</tabular>
+					</p>
+				</solution>
+			</example>
+		
+			<p>
+				A similar process shows that for any power of <m>t</m>, the Laplace transform is the <m>n</m>-th derivative of the Laplace transform of the function, with the sign alternating. The general property is given by:
+				<me> \lap{t^n f(t)} = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad n = 1, 2, 3, \ldots </me>.
+				The only difference is that you are taking the <m>n</m>-th derivative of <m>e^{-st}f(t)</m> inside the integral.
+			</p>
+			
+			<assemblage xml:id="lt-properties-P6"><title> ✳️ Laplace Transform Property <m>P_6</m> </title>
+				<p>
+					Let <m>F(s) = \lap{f(t)}</m>.
+				</p>
+		
+				<p>
+					<dl width="narrow">
+						<li xml:id="P6"><title> <m>P_6</m> </title>
+							<m>\ds \lap{ t^n f(t) } = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad n = 1, 2, 3, \ldots </m>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		
+			<xi:include	href="./c7-exercises/c7-chkpts-1-3-4-property-P4.ptx" />
+
+		</subsubsection>
+
+	</subsection>
+
+	<conclusion>
+		<p>
+			NEED TO WRITE THIS!
+		</p>
+	</conclusion>
+
+</section>
