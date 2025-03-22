@@ -55,6 +55,58 @@ Foundations of the Laplace Transform
 		
 	</introduction>
 
+<subsubsection><title> Transferring Derivatives Inside an Integral </title>
+
+	<p>
+		To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. Recall the standard integration by parts formula is given by
+		<me>
+			\int u\,dv = uv - \int v\,du,
+		</me>
+		where <m>u</m> and <m>v</m> are functions of some variable, say <m>t</m>. Then <m>du = u'(t)\ dt</m> and <m>dv = v'(t)\ dt</m> and the formula is equivalent to
+		<me>
+			\ub{\int u(t) v'(t)\ dt}_{\text{derivative on }v} = u(t) v(t) - \ub{\int v(t) u'(t)\ dt}_{\text{derivative on }u}
+		</me>.
+	</p>
+
+	<p>
+		Notice how integration by parts allows us to transfer derivatives from one function to another within an integral. This is crucial in the Laplace transform method, especially when one function involved is the exponential function <m>e^{-st}</m>, where <m>s</m> is a constant.
+	</p>
+
+	<p>
+		Now, suppose we want to apply integration by parts to the integral,
+		<me>
+			\int e^{-st} y'(t)\, dt
+		</me>.
+		Setting <m>u = e^{-st}</m>, <m>dv = y'\ dt</m> and then computing <m>du = -s e^{-st}\ dt</m>, <m>v = y(t)</m> allows us to apply the formula as follows:
+		<me>
+			\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'(t)}}}} \ \us{dv}{\us{\uparrow}{\ul{y'(t) dt}}} =
+			\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y(t)}}} -
+			\int \us{v}{\us{\uparrow}{\ul{y(t)}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}
+		</me>
+		and simplifying the right integral, we arrive at
+
+		<aside><title> Clarification </title>
+			<p>
+				Since the integral is in terms of <m>t</m>, <m>s</m> is constant and can be pulled out of the integral.
+			</p>
+		</aside>
+
+		<me>
+			\int e^{-st}\vphantom{y'} \ y'(t) dt = e^{-st} \, y(t) + s \int e^{-st} \, y(t) \, dt
+		</me>.
+	</p>
+
+	<p>
+		Notice what just happened: the derivative initially attached to <m>y'(t)</m> has moved onto the exponential function <m>e^{-st}</m>, leaving behind only an extra factor of <m>s</m>.
+		Although, it may not seem significant at first, this transfer of derivatives is at the heart of the Laplace transform method. In the next section, we'll apply this insight directly to a differential equation, leading us naturally to the formal definition of the Laplace transform.
+	</p>
+
+	<xi:include href="./c7-exercises/c7-chkpts-1-1-1-motivation.ptx" />
+
+</subsubsection>
+
+
+
 	<subsection><title>Definition and Notation</title>
 
 		<p>
