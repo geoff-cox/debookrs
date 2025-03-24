@@ -170,7 +170,7 @@ Foundations of the Laplace Transform
 		</definition>
 
 		<p>
-			You may recll that the <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically,
+			You may recall that the <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically,
 			<me>
 				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
 			</me>
@@ -180,7 +180,7 @@ Foundations of the Laplace Transform
 			Let's look at a basic example to illustrate this definition clearly:
 		</p>
 
-		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant </title>
+		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
 			<p>
 				<statement>
 					<p>
@@ -206,6 +206,50 @@ Foundations of the Laplace Transform
 					Thus, the Laplace transform of the constant function <m>5</m> is <m>\frac{5}{s}</m>.
 				</p>
 			</solution>
+			<solution>
+					<p>
+						By the definition above, we have the improper integral
+						<men xml:id="lt-def-example-eqn-1">
+							\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
+						</men>.
+						Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
+						<me>
+							I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
+						</me>.
+						Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (<m>s</m> remains constant):
+						<md>
+							<mrow>
+								\lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+									\amp <xref text="custom" ref="c7-1-example-explain-1"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+							</mrow>
+							<mrow>
+									\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+							</mrow>
+						</md>
+					</p>
+			
+					<p>
+						The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
+						<ul>
+							<li>
+								<p>
+									<line><m>s &lt; 0 \text{ (negative) and } b\to \infty \implies -sb \to \infty \implies e^{-sb} \to \infty</m></line>
+								</p>
+							</li>
+							<li>
+								<p>
+									<line><m>s &gt; 0 \text{ (positive) and } b\to \infty \implies -sb \to -\infty \implies e^{-sb} \to 0</m></line>
+								</p>
+							</li>
+						</ul>
+						To visualize this, here is a <xref ref="compare-exp-graphs" text="custom">graph</xref> comparing <m>s=-1.2\ </m> versus <m>\, +1.2</m>.
+					</p>
+			
+					<p>
+						Therefore, when <m>s &gt; 0</m> the Laplace transform exists and evaluates to
+						<me>\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0.</me>
+					</p>
+				</solution>
 		</example>
 
 		<p>
