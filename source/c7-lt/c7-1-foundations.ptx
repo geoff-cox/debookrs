@@ -55,105 +55,108 @@ Foundations of the Laplace Transform
 		
 	</introduction>
 
-<subsection><title> Transferring Derivatives Inside an Integral </title>
+	<subsection><title> Transferring Derivatives Inside an Integral </title>
 
-	<p>
-		To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of integration by parts formula is given by
-		<me>
-			\int u\,dv = uv - \int v\,du
-		</me>.
-	</p>
+		<p>
+			To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of integration by parts formula is given by
+			<me>
+				\int u\,dv = uv - \int v\,du
+			</me>.
+		</p>
 
-	<p>
-		Assuming <m>u</m> and <m>v</m> are functions of <m>t</m> on <m>[a,b]</m>, another version is given by
-		<me>
-			\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }v}}{
-				\us{u}{ \us{\uparrow}{\ul{ 
-					u(t)
-				}}} \ 
-				\us{dv}{\us{\uparrow}{\ul{
-					{\color{RoyalBlue}\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
-				}}}
-			}
-			= \us{u}{\us{\uparrow}{\ul{ u(t) }}}\ \us{v}{\us{\uparrow}{\ul{ v(t) }}} \Big|_{a}^{b}
-				- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }u}}{
-					\us{v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
-					\us{du}{\us{\uparrow}{\ul{ {\color{RoyalBlue}\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
+		<p>
+			Assuming <m>u</m> and <m>v</m> are functions of <m>t</m> on <m>[a,b]</m>, another version is given by
+			<me>
+				\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }v}}{
+					\us{u}{ \us{\uparrow}{\ul{ 
+						u(t)
+					}}} \ 
+					\us{dv}{\us{\uparrow}{\ul{
+						{\color{RoyalBlue}\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
+					}}}
 				}
-		</me>.
-	</p>
+				= \us{u}{\us{\uparrow}{\ul{ u(t) }}}\ \us{v}{\us{\uparrow}{\ul{ v(t) }}} \Big|_{a}^{b}
+					- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }u}}{
+						\us{v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
+						\us{du}{\us{\uparrow}{\ul{ {\color{RoyalBlue}\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
+					}
+			</me>.
+		</p>
 
-	<p>
-		This version of the formula clearly shows how the derviative on <m>v</m> (left integral) is transferred to <m>u</m> (right integral). This concept is a fundamental part of the Laplace transform method, especially when <m>u</m> is of the form <m>e^{-st}</m>, where <m>s</m> is a positive constant.
-	</p>
+		<p>
+			This version of the formula clearly shows how the derviative on <m>v</m> (left integral) is transferred to <m>u</m> (right integral). This concept is a fundamental part of the Laplace transform method, especially when <m>u</m> is of the form <m>e^{-st}</m>, where <m>s</m> is a positive constant.
+		</p>
 
-	<p>
-		To see why this may be useful, let <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then, <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m> and the formula becomes
-		<me>
-			\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
-				e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
-			} = e^{-st} \ y(t) \Big|_{a}^{b}
-			- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
-				y(t) \ {\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ dt
-			}
-		</me>.
-	</p>
+		<p>
+			To see why this may be useful, let <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then, <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m> and the formula becomes
+			<me>
+				\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
+					e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
+				} = e^{-st} \ y(t) \Big|_{a}^{b}
+				- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
+					y(t) \ {\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ dt
+				}
+			</me>.
+		</p>
 
-	<p>
-		Here, the derivative on <m>y'</m> moved onto the exponential function <m>e^{-st}</m>. Continuing to simplify the integral on the right, we arrive at the expression
-		<aside><title> Clarification </title>
-			<p>
-				Since the integral is in terms of <m>t</m>, <m>s</m> is constant and can be pulled out of the integral.
-			</p>
-		</aside>
-		<me>
-			\int_{a}^{b} e^{-st}\vphantom{y'} \ y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
-		</me>.
-	</p>
+		<p>
+			Here, the derivative on <m>y'</m> moved onto the exponential function <m>e^{-st}</m>. Continuing to simplify the integral on the right, we arrive at the expression
+			<aside><title> Clarification </title>
+				<p>
+					Since the integral is in terms of <m>t</m>, <m>s</m> is constant and can be pulled out of the integral.
+				</p>
+			</aside>
+			<me>
+				\int_{a}^{b} e^{-st}\vphantom{y'} \ y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
+			</me>.
+		</p>
 
-	<p>
-		At this point, two important observations are in order. First, the integral on the left, containing <m>y'</m>, can be rewritten in terms of an expression containing no <m>y</m> derivatives. Second, the only difference between the two integrals is an extra factor of <m>s</m>. Thus, one could view the derivative as being stored in <m>s</m>. This viewpoint is the essence behind the Laplace transform method and, in the next section, we will have a more clear view of differential equation's in this context.
-	</p>
+		<p>
+			At this point, two important observations are in order. First, the integral on the left, containing <m>y'</m>, can be rewritten in terms of an expression containing no <m>y</m> derivatives. Second, the only difference between the two integrals is an extra factor of <m>s</m>. Thus, one could view the derivative as being stored in <m>s</m>. This viewpoint is the essence behind the Laplace transform method and, in the next section, we will have a more clear view of differential equation's in this context.
+		</p>
 
-	<xi:include href="./c7-exercises/c7-chkpts-1-1-1-motivation.ptx" />
+		<xi:include href="./c7-exercises/c7-chkpts-1-1-1-motivation.ptx" />
 
-</subsection>
+	</subsection>
 
-<subsection><title> Laplace Transform Definition </title>
+	<subsection><title> Laplace Transform Definition </title>
 
-			<p>
-				In the previous section, we saw how derivatives of <m>y</m> can be transferred onto <m>e^{-st}</m> when they are both inside an integral. While differential equations have derivatives of <m>y</m> scattered throughout, there is no sign of <m>e^{-st}</m> or an integral. Therefore, we need to supply them ourselves.
-			</p>
+		<p>
+			In the previous section, we saw how derivatives of <m>y</m> can be transferred onto <m>e^{-st}</m> when they are both inside an integral. While differential equations have derivatives of <m>y</m> scattered throughout, there is no sign of <m>e^{-st}</m> or an integral. Therefore, we need to supply them ourselves.
+		</p>
 
-			<p>
-				For instance, suppose we are given the equation
-				<me>
-					y'' + 3y' + 2y = -40e^{3t}
-				</me>.
-			</p>
+		<p>
+			For instance, suppose we are given the equation
+			<men xml:id="lt-model-eqn">
+				y'' + 3y' + 2y = -40e^{3t}
+			</men>.
+		</p>
 
-			<p>
-				First, we multiplying both sides by <m>e^{-st}</m>, like so
-				<me>
-					\left(y'' + 3y' + 2y\right) e^{-st} = -40e^{3t} e^{-st}
-				</me>,
-				where <m>s</m> is a positive constant and integrating both sides with respect to <m>t</m> to get
-				<me>
-					\int_a^b \left(y'' + 3y' + 2y\right) e^{-st} \, dt = \int_a^b -40e^{3t} e^{-st} \, dt
-				</me>.
-				Applying the linearity properties of the integral gives us
-				<me>
-					\int_a^b e^{-st} y''\ dt + 3\int_a^b e^{-st} y'\ dt + 2\int_a^b e^{-st} y\ dt
-						= \int_a^b e^{-st} \left( -40e^{3t} \right)\ dt
-				</me>.
-			</p>
+		<p>
+			First, we multiplying both sides by <m>e^{-st}</m>, like so
+			<me>
+				\left(y'' + 3y' + 2y\right) e^{-st} = -40e^{3t} e^{-st}
+			</me>,
+			where <m>s</m> is a positive constant and integrating both sides with respect to <m>t</m> to get
+			<me>
+				\int \left(y'' + 3y' + 2y\right) e^{-st} \, dt = \int -40e^{3t} e^{-st} \, dt
+			</me>.
+			Applying the linearity properties of the integral gives us
+			<me>
+				\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
+				+ 3\ub{\int e^{-st} y'\ dt}_{\text{transfer 1 derivative}}
+				+ 2\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
+				= \ub{\int e^{-st} \left( -40e^{3t} \right)\ dt}_{\text{integrate}}
+			</me>.
+		</p>
 
-			<p>
-				By multiplying both sides of the equation by <m>e^{-st}</m> and integrating, we have <q>transformed</q> the equation into a form where integration by parts can be used to transfer the derivatives of <m>y</m> onto <m>e^{-st}</m>. Later, we will show how this complicated expression leads to an algebraic equation that will allow us to isolate and find the solution to the original differential equation. For now, we have our motivation for the definition of the Laplace transform.
-			</p>
+		<p>
+			This <q>transformation</q> of equation <xref ref="lt-model-eqn"/> puts each term into a form where: (1) the derivatives of <m>y</m> can be transferred onto <m>e^{-st}</m>, left as-is or integrated directly. Later, we will show the details of each of these transformations and how an algebraic equation emerges from this complex expression. For now, we have enough to motivate the following definition of the Laplace transform.
+		</p>
 
-			<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
-				<statement>
+		<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
+			<statement>
+				<p>
 					Given a function <m>f(t)</m> defined for <m>t \geq 0</m>, its Laplace transform, denoted <m>\lap{f(t)}</m>, is defined by the integral
 					<me>
 						\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt,
@@ -162,90 +165,62 @@ Foundations of the Laplace Transform
 					<me>
 						F(s) = \lap{f(t)}.
 					</me>
-				</statement>
-			</definition>
-
-			<p>
-				In this integral, the exponential factor <m>e^{-st}</m> acts like a container, temporarily "wrapping" derivatives and other complexities within a simpler algebraic form. Once in this transformed state, complicated differential equations become more manageable algebraic equations, simplifying the process of isolating and solving for the unknown function.
-			</p>
-
-			<p>
-				Let's look at a basic example to illustrate this definition clearly:
-			</p>
-
-			<example xml:id="laplace-example-constant">
-				<title>Laplace Transform of a Constant</title>
-				<p>
-					Find the Laplace transform of the constant function <m>f(t) = 5</m>.
 				</p>
+			</statement>
+		</definition>
 
-				<solution>
-					<p>
-						By definition,
-						<me>
-							\lap{5} = \int_0^{\infty} e^{-st}(5) \, dt.
-						</me>
-						Treating <m>s</m> as a constant and evaluating the integral gives
-						<md>
-							<mrow>
-								\lap{5} \amp = \lim_{b \to \infty} \int_0^b 5e^{-st} \, dt \\
-								\amp = \lim_{b \to \infty} \left[-\frac{5}{s} e^{-st}\right]_0^b \\
-								\amp = \frac{5}{s}, \quad s &gt; 0.
-							</mrow>
-						</md>
-						Thus, the Laplace transform of the constant function <m>5</m> is <m>\frac{5}{s}</m>.
-					</p>
-				</solution>
-			</example>
-
-			<p>
-				Through examples like this, the Laplace transform enables us to simplify and solve equations that would otherwise be cumbersome. In the following subsection, we will explore basic properties and rules that allow us to use the Laplace transform more efficiently.
-			</p>
-
-			<definition><title> Laplace Transform </title>
-				<statement>
-					The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
-
-					<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
-
-					provided that the integral exists (i.e., the improper integral converges).
-				</statement>
-			</definition>
-
-			<p>
-				This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
-			</p>
-			
+		<p>
+			You may recll that the <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically,
 			<me>
 				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
 			</me>
-			
-			<p>
-				Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
-			</p>
-
-			<me>
-					\ub{\int_a^b e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} +
-					3\ub{\int_a^b e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} +
-					2\ub{\int_a^b e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}}
-						= \ub{\int_a^b e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
-				</me>.
-
-			<xi:include href="./c7-exercises/c7-chkpts-1-1-2-definition.ptx" />
-
-		</subsection>
-
-	<subsection><title>Definition and Notation</title>
-
+		</p>
+		
 		<p>
-			Differential equations often present a unique challenge because the unknown function we seek is intertwined with its derivatives, making it difficult to isolate and solve explicitly. The Laplace transform addresses this challenge by providing an integral transformation that converts these derivatives into algebraic expressions.
+			Let's look at a basic example to illustrate this definition clearly:
 		</p>
 
+		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant </title>
+			<p>
+				<statement>
+					<p>
+						Find the Laplace transform of the constant function <m>f(t) = 5</m>.
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					By definition,
+					<me>
+						\lap{5} = \int_0^{\infty} e^{-st}(5) \, dt.
+					</me>
+					Treating <m>s</m> as a constant and evaluating the integral gives
+					<md>
+						<mrow>
+							\lap{5} \amp = \lim_{b \to \infty} \int_0^b 5e^{-st} \, dt \\
+							\amp = \lim_{b \to \infty} \left[-\frac{5}{s} e^{-st}\right]_0^b \\
+							\amp = \frac{5}{s}, \quad s &gt; 0.
+						</mrow>
+					</md>
+					Thus, the Laplace transform of the constant function <m>5</m> is <m>\frac{5}{s}</m>.
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			Through examples like this, the Laplace transform enables us to simplify and solve equations that would otherwise be cumbersome. In the following subsection, we will explore basic properties and rules that allow us to use the Laplace transform more efficiently.
+		</p>
 		
+		<p>
+			Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
+		</p>
+
+		<xi:include href="./c7-exercises/c7-chkpts-1-1-2-definition.ptx" />
 
 	</subsection>
 
-	<subsection><title>Basic Properties and Rules</title>
+	<subsection><title> Basic Properties and Rules </title>
 
 		<introduction>
 			<p>
@@ -414,7 +389,5 @@ Foundations of the Laplace Transform
 		</conclusion>
 
 	</subsection>
-
-
 
 </section>
