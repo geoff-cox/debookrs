@@ -177,7 +177,7 @@ Foundations of the Laplace Transform
 		</p>
 		
 		<p>
-			Let's look at a basic example to illustrate this definition clearly:
+			While the integral involves <m>b</m>, <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. During the integration step, treat both <m>b</m> and <m>s</m> as constant. Once done, you should be left with only <m>b</m> and <m>s</m>. Finally, move on to the limit step where you treat <m>s</m> as constant and take <m>b \to \infty</m>. Let's walk through this with an example.
 		</p>
 
 		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
@@ -191,74 +191,55 @@ Foundations of the Laplace Transform
 
 			<solution>
 				<p>
-					By definition,
+					By the definition above, we have the improper integral
+					<men xml:id="lt-def-example-eqn-1">
+						\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
+					</men>.
+					Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
 					<me>
-						\lap{5} = \int_0^{\infty} e^{-st}(5) \, dt.
-					</me>
-					Treating <m>s</m> as a constant and evaluating the integral gives
+						I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
+					</me>.
+					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
 					<md>
 						<mrow>
-							\lap{5} \amp = \lim_{b \to \infty} \int_0^b 5e^{-st} \, dt \\
-							\amp = \lim_{b \to \infty} \left[-\frac{5}{s} e^{-st}\right]_0^b \\
-							\amp = \frac{5}{s}, \quad s &gt; 0.
+							\lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+								\amp <xref text="custom" ref="c7-1-example-explain-1"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+						</mrow>
+						<mrow>
+								\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
 						</mrow>
 					</md>
-					Thus, the Laplace transform of the constant function <m>5</m> is <m>\frac{5}{s}</m>.
+				</p>
+		
+				<p>
+					The limit, <m>L</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, <m>e^{-sb}</m>, is going. Since <m>b \to \infty</m>, then there are two cases based on the sign of <m>s</m>:
+					<aside>
+						<p>
+							Note, <m>s = 0</m> is not possible since, from the beginning, you would have
+							<md>
+								<mrow>	\int_0^{\infty} 5e^{-0t}dt	\amp = 5t\Big|_{t=0}^{t=\infty}	</mrow>
+								<mrow>								\amp = \infty					</mrow>
+							</md>,
+							which does not converge.
+						</p>
+					</aside>
+					<ol>
+						<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
+						<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
+					</ol>
+					By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
+					<me>
+						\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
+					</me>.
 				</p>
 			</solution>
-			<solution>
-					<p>
-						By the definition above, we have the improper integral
-						<men xml:id="lt-def-example-eqn-1">
-							\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
-						</men>.
-						Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
-						<me>
-							I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
-						</me>.
-						Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (<m>s</m> remains constant):
-						<md>
-							<mrow>
-								\lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
-									\amp <xref text="custom" ref="c7-1-example-explain-1"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
-							</mrow>
-							<mrow>
-									\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
-							</mrow>
-						</md>
-					</p>
-			
-					<p>
-						The value of the remaining limit, <m>L</m>, depends on whether <m>s</m> is positive or negative. So we consider both cases:
-						<ul>
-							<li>
-								<p>
-									<line><m>s &lt; 0 \text{ (negative) and } b\to \infty \implies -sb \to \infty \implies e^{-sb} \to \infty</m></line>
-								</p>
-							</li>
-							<li>
-								<p>
-									<line><m>s &gt; 0 \text{ (positive) and } b\to \infty \implies -sb \to -\infty \implies e^{-sb} \to 0</m></line>
-								</p>
-							</li>
-						</ul>
-						To visualize this, here is a <xref ref="compare-exp-graphs" text="custom">graph</xref> comparing <m>s=-1.2\ </m> versus <m>\, +1.2</m>.
-					</p>
-			
-					<p>
-						Therefore, when <m>s &gt; 0</m> the Laplace transform exists and evaluates to
-						<me>\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0.</me>
-					</p>
-				</solution>
 		</example>
 
 		<p>
-			Through examples like this, the Laplace transform enables us to simplify and solve equations that would otherwise be cumbersome. In the following subsection, we will explore basic properties and rules that allow us to use the Laplace transform more efficiently.
+			Applying a similar process to other functions will enable us to begin constructing a library of common Laplace transforms that we can refer to when we start solving differential equations. In the next section, we will explore some of the most important properties of Laplace transforms and derive general formulas for finding them quickly.
 		</p>
 		
-		<p>
-			Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
-		</p>
+		
 
 		<xi:include href="./c7-exercises/c7-chkpts-1-1-2-definition.ptx" />
 
