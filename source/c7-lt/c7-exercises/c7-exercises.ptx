@@ -880,6 +880,111 @@
 		
 	</exercises>
 
+	<exercises><title> Properties of Laplace Transforms </title>
+	
+		<exercise>
+			<statement>
+				<p>
+					Use the properties of the Laplace transform the fact that <m>\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right)</m> to show that
+					<me>
+						\lap{\cos(3t)} = \frac{s}{s^2 + 9}
+					</me>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We start by applying the definition of the Laplace transform:
+					<me>
+						\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt
+					</me>.
+					Rather than directly integrating, we will use a modified <xref ref="eulers-formula" text="title"></xref> to express cosine in terms of <m>e</m>
+					<me>
+						\cos(3t) = \frac12\left(e^{3it} + e^{-3it}\right).
+					</me>
+					Substituting this into the integral gives:
+					<md>
+						<mrow>
+							\lap{ \cos(3t)}
+							\amp = \frac12 \int_0^{\infty} e^{-st} \frac12\left(e^{3it} + e^{-3it}\right)\ dt
+						</mrow>
+						<mrow>
+							\amp = \frac12\left[\int_0^{\infty} e^{-st}\cdot e^{3it}\ dt + \int_0^{\infty} e^{-st}\cdot e^{-3it}\ dt\right]
+						</mrow>
+						<mrow>
+							\amp = \frac{1}{2} \left[\lap{e^{3it}} + \lap{e^{-3it}}\right]
+						</mrow>
+						<mrow>
+							\amp = \frac{1}{2} \left[\frac{1}{s - 3i} + \frac{1}{s + 3i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+						</mrow>
+						<mrow>
+							\amp = \frac{1}{2} \left[\frac{s + 3i + s - 3i}{(s - 3i)(s + 3i)}\right]
+						</mrow>
+						<mrow>
+							\amp = \frac{s}{s^2 + 9}.
+						</mrow>
+					</md>
+					Therefore, the Laplace transform of <m>\cos(3t)</m> is:
+					<me>
+						\lap{\cos(3t)} = \frac{s}{s^2 + 9}.
+					</me>
+				</p>
+			</solution>
+		</exercise>
+
+		<exercise>
+			<p>
+				<statement>
+					<p>
+						Compute the Laplace transform of <m>\sin(-4t)</m> and use it as a guide for deriving the common Laplace transform formula
+						<me>
+							\lap{\sin(bt)} = \frac{b}{s^2 + b^2}, \quad s \gt 0
+						</me>.
+					</p>
+				</statement>
+			</p>
+		
+			<solution>
+				<p>
+					As with cosine, we begin with the definition of the Laplace transform,
+					<me>
+						\lap{ \sin(-4t)} = \int_0^{\infty} e^{-st} \cdot \sin(-4t)\ dt
+					</me>
+					and rewrite sine using Euler's formula,
+					<me>
+						\sin(-4t) = \frac{e^{-4it} - e^{4it}}{2i}.
+					</me>
+					Substituting this into the integral, we get:
+					<md>
+						<mrow>
+							\lap{ \sin(-4t)}
+							=\amp \frac{1}{2i} \int_0^{\infty} e^{-st} \left(e^{-4it} - e^{4it}\right)\, dt
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\int_0^{\infty} e^{-(s + 4i)t}\, dt - \int_0^{\infty} e^{-(s - 4i)t}\, dt\right]
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\lap{e^{-4it}} - \lap{e^{4it}}\right].
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\frac{1}{s + 4i} - \frac{1}{s - 4i}\right] \qquad (\text{by } <xref ref="L2" text="title"/>)
+						</mrow>
+						<mrow>
+							=\amp \frac{1}{2i} \left[\frac{s - 4i - (s + 4i)}{(s + 4i)(s - 4i)}\right]
+						</mrow>
+						<mrow>
+							=\amp \frac{4}{s^2 + 16}.
+						</mrow>
+					</md>
+					Thus, the Laplace transform of <m>\sin(-4t)</m> is:
+					<me>
+						\lap{\sin(-4t)} = \frac{4}{s^2 + 16}.
+					</me>
+				</p>
+			</solution>
+		</exercise>
+		
+	</exercises>
+
 	<exercises><title> Backward Transforms </title>
 
 		<exercise><title> <em><m>\ds \ilap{\frac{1}{s - 1} - \frac{1}{s + 1} + \frac{4s + 3}{s^2 + 1}} = <fillin characters="10" /></m></em> </title>

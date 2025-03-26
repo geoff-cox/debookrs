@@ -66,6 +66,177 @@ Transforming Equations Between Domains
 		
 	</introduction>
 
+	<introduction>
+
+		<p>
+			Applying the Laplace transform method to a differential equation starts by transforming this equation into a new equation where the derivatives are replaced by algebraic expressions. To recover to the solution to the original equation the transformation must also be reversed. This process, which we will refer to as a <q>backwards transform</q>, corresponds to step 3 on the <xref ref="lt-roadmap" text="custom">Laplace transform roadmap</xref>.
+		</p>
+
+		<p>
+			Just as the forward Laplace transform simplifies a differential equation by converting it into an algebraic one, the backward transform completes the cycle by converting the algebraic solution back into its original form. This chapter will focus on the techniques used to perform the inverse Laplace transform, guiding you through the steps needed to move from the transformed function, <m>F(s)</m>, back to the original function, <m>f(t)</m>.
+		</p>
+
+		<p>
+			We will explore key methods, such as partial fraction decomposition and the use of Laplace transform tables, to help simplify complex transformed functions. Additionally, we will highlight common challenges and how to overcome them, ensuring a smooth transition back to the original domain.
+		</p>
+
+		<assemblage xml:id="ilt-properties-P1"><title> ✳️ Inverse Laplace Transform Property </title>
+			<p>
+				For any constants <m>a</m> and <m>b</m> and functions of <m>s</m> <m>F(s)</m> and <m>G(s)</m>,
+				<dl width="narrow">
+					<li xml:id="iP1">
+						<m>\ds \ilap{ a f(t) \pm b g(t) } = a \ilap{f(t)} \pm b \ilap{g(t)}</m>
+					</li>
+				</dl>
+			</p>
+		</assemblage>
+		
+	</introduction>
+
+	<subsection><title> The "Wrapping and Unwrapping" Analogy </title>
+
+		<p>
+			The Laplace transform can be intuitively understood through the analogy of "wrapping" and "unwrapping." When applied, the Laplace transform temporarily "wraps" derivatives and complex functions inside the exponential function <m>e^{-st}</m>. This wrapping converts complicated derivatives into simpler algebraic forms that are easier to manipulate and solve.
+		</p>
+
+		<p>
+			By embedding derivatives within the exponential function, the Laplace transform effectively shifts differential equations into an algebraic domain. In this new domain, algebraic operations—such as factoring, addition, and multiplication—can be performed easily. This transformation significantly reduces complexity, turning the challenging task of solving differential equations into a simpler algebraic problem.
+		</p>
+
+		<p>
+			The inverse Laplace transform, which we will explore in detail later, performs the complementary task of "unwrapping." It recovers the original function by reversing this wrapping process, thus revealing the solution to the original differential equation from its algebraic representation.
+		</p>
+
+		<example xml:id="wrapping-analogy-example">
+			<title>Illustrating the "Wrapping" Analogy</title>
+			<p>
+				Consider the simple first-order differential equation:
+				<me>
+					y'(t) - 4y(t) = 0.
+				</me>
+				Applying the Laplace transform, we "wrap" the derivatives in an exponential function as follows:
+				<md>
+					<mrow>
+						\lap{y'(t)} - 4\lap{y(t)} = \lap{0}
+					</mrow>
+					<mrow>
+						\left[sY(s) - y(0)\right] - 4Y(s) = 0.
+					</mrow>
+				</md>
+				Notice the complexity of the derivative <m>y'(t)</m> is now simplified to an algebraic expression involving <m>Y(s)</m>, the Laplace transform of <m>y(t)</m>. The differential equation has thus been converted into a straightforward algebraic equation:
+				<me>
+					(s - 4)Y(s) = y(0).
+				</me>
+				This algebraic equation is easy to solve for <m>Y(s)</m>, clearly demonstrating how the "wrapping" step significantly simplifies the problem.
+			</p>
+		</example>
+
+	</subsection>
+
+	<subsection><title> Forward Transforming Equations </title>
+
+		<p>
+			In the previous sections, we've focused on applying Laplace transforms to individual functions. Now, we shift our focus to solving differential equations by transforming the entire equation, along with its initial conditions. This process brings us back to the first step of the Laplace Transform Method roadmap.
+		</p>
+
+		<p>
+			<image source="figures/Laplace-Roadmap-Step-1.png" width="100%">
+				<shortdescription>Step 1: The Forward Laplace Transform</shortdescription>
+			</image>
+		</p>
+
+		<p>
+			To solve a differential equation using Laplace transforms, we apply the Laplace transform to both sides of the equation, leveraging the common transforms and properties we've discussed so far. Applying the transform to a function can be thought of as multiplying the function by <m>e^{-st}</m> and integrating with respect to <m>t</m>. However, instead of rewriting this process for each term, we simply apply the Laplace operator, <m>\laplacesym</m>, to both sides of the equation. Let's illustrate this with an example.
+		</p>
+
+		<example>
+			<p>
+				Apply the Laplace Transform to the initial-value problem:
+			</p>
+			<me>
+				y'' + 3y' + 2y = -40e^{3t}, \quad y(0) = 0, \quad y'(0) = 1.
+			</me>
+
+			<solution>
+				<p>
+					First, we apply <m>\laplacesym</m> to both sides:
+					<me>
+						\lap{y'' + 3y' + 2y} = \lap{-40e^{3t}}.
+					</me>
+					Using the linearity property <xref ref="P1" text="custom">P<sub>1</sub></xref>, we break this into four separate transforms:
+					<me>
+						\ub{\lap{y''}}_{(1)} + 3\ub{\lap{y'}}_{(2)} + 2\ub{\lap{y}}_{(3)} = -40\ub{\lap{e^{3t}}}_{(4)}.
+					</me>
+				</p>
+
+				<p>
+					Now, let's compute each transform:
+					<md>
+						<mrow>
+							(1):\quad \amp\ \lap{y''} = s^2Y - s\os{\large 0}{\os{\Large \shortparallel}{y(0)}} - \os{\large 1}{\os{\Large \shortparallel}{y'(0)}} = s^2Y - 1 \quad <xref ref="P4" text="title"/>.
+						</mrow>
+						<mrow>
+							(2):\quad \amp\ \lap{y'} = sY - y(0) = sY \quad <xref ref="P3" text="title"/>.
+						</mrow>
+						<mrow>
+							(3):\quad \amp\ \lap{y} = Y.
+						</mrow>
+						<mrow>
+							(4):\quad \amp\ \lap{e^{3t}} = \frac{1}{s - 3} \quad <xref ref="L2" text="title"/>.
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Substituting these results back into the equation, we get:
+					<md>
+						<mrow>
+							s^2Y - 1 + 3sY + 2Y \amp = \frac{-40}{s - 3}, \quad \text{or}
+						</mrow>
+						<mrow>
+							s^2Y + 3sY + 2Y - 1 \amp = \frac{-40}{s - 3}.
+						</mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			Let's look at one more example for additional clarity.
+		</p>
+
+		<example>
+			<p>
+				Apply the Laplace Transform to the initial-value problem:
+			</p>
+			<me>
+				y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = 0.
+			</me>
+
+			<solution>
+				<p>
+					Applying the Laplace transform to both sides:
+					<md>
+						<mrow>
+							\lap{y'' - 4y' + 6y} \amp = \lap{t^2}, \\
+							\lap{y''} - 4\lap{y'} + 6\lap{y} \amp = \lap{t^2}, \\
+							s^2Y - s\os{\large 2}{\os{\Large \shortparallel}{y(0)}} - \os{\large 0}{\os{\Large \shortparallel}{y'(0)}} - 4(sY - \os{\large 2}{\os{\Large \shortparallel}{y(0)}}) + 6Y \amp = \frac{2}{s^3}, \\
+							s^2Y - 2s - 4sY + 8 + 6Y \amp = \frac{2}{s^3}, \\
+							s^2Y - 4sY + 6Y - 2s + 8 \amp = \frac{2}{s^3}.
+						</mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			In both examples, the differential equations have been transformed into algebraic equations. Solving for <m>Y(s)</m> is the next step in the Laplace Transform Roadmap.
+		</p>
+
+		<xi:include href="./c7-exercises/c7-chkpts-1-4-1-forward-transforming-eqns.ptx" />
+		
+	</subsection>
+
 	<subsection><title> Forward Transforming Equations </title>
 
 		<p>
