@@ -666,29 +666,35 @@
 		<subsection><title> Properties and Rules </title>
 
 			<introduction>
+
 				<p>
-					With a few common Laplace transforms established, it is time to explore the properties of the Laplace transform. These properties will help us compute the Laplace transform different combinations of functions, such as sums, products, and derivatives. We will also explore the properties of the Laplace transform that allow us to compute the Laplace transform of a function multiplied by an exponential function.
+					Now that we've built a foundation of basic Laplace transforms, it's time to expand our toolbox by exploring the key properties that make the Laplace transform such a powerful problem-solving technique. These properties allow us to transform combinations of functions—like sums, products, and derivatives—more easily and systematically.
 				</p>
+				
+				<p>
+					In this section, you'll learn how the Laplace transform behaves under linear operations, how exponential functions shift the resulting transform, and how to efficiently handle derivatives and polynomial factors. Each property is introduced with a formal statement, illustrated through worked examples, and connected to its role in solving differential equations. Mastery of these rules is essential for applying the Laplace method effectively.
+				</p>
+
 			</introduction>
+
 
 			<subsubsection><title> Sums and Constant Multiples (Linearity) </title>
 
 				<p>
-					The first property we'll explore is linearity. Laplace transform inherits this property from the linearity of integrals, where we can distribute the transform across addition and subtraction, and pull out constants. Explicitly, the linearity property states:
+					As with integrals, we can pull out constants from Laplace transforms and apply them, term-by-term, to sums and differences of functions. This linear property streamlines the computation of Laplace transforms when working with expressions that combine simpler functions.
 				</p>
 
-				<assemblage xml:id="lt-linearity-property"><title> ✳️ Laplace Transform Property: Linearity </title>
+				<assemblage xml:id="lt-linearity-property0"><title> ✳️ Laplace Transform Property: Linearity </title>
 					<p>
-						The Laplace transform satisfies the following linearity property
+						If <m>a</m> and <m>b</m> are constants, and <m>f(t)</m> and <m>g(t)</m> have Laplace transforms, then
 						<me>
-							\lap{ a f(t) \pm b g(t) } = a \lap{f(t)} \pm b \lap{g(t)}
+							\lap{ a f(t) \pm b g(t) } = a \lap{f(t)} \pm b \lap{g(t)}.
 						</me>
-						where <m>a</m> and <m>b</m> are constants, and <m>f(t)</m> and <m>g(t)</m> are functions whose Laplace transforms exist.
 					</p>
 				</assemblage>
-
+				
 				<p>
-					Let's illustrate this clearly with a straightforward example:
+					Let's look at an example to see this in action.
 				</p>
 
 				<example><title> Transforming a Sum of Functions </title>
@@ -705,7 +711,7 @@
 					
 					<solution>
 						<p>
-							To compute the Laplace transform of the sum of functions, we can apply the linearity property:
+							We apply the linearity property to break the transform down as follows:
 							<md>
 								<mrow>
 									\lap{15 + 6e^{7t} - 11t}
@@ -714,16 +720,24 @@
 								<mrow>
 									\amp = 15\lap{1} + 6\lap{e^{7t}} - 11\lap{t}
 								</mrow>
-								<mrow>
-									\amp = 15\cdot \frac{1}{s} + 6\cdot \frac{1}{s-7} - 11\cdot \frac{1}{s^2}
-								</mrow>
-								<mrow>
-									\amp = \frac{15}{s} + \frac{6}{s-7} - \frac{11}{s^2}, \quad s \gt 7
-								</mrow>.
 							</md>
 						</p>
+
 						<p>
-							We use the condition, <m>s \gt 7</m>, because <m>\lap{1}</m>, <m>\lap{e^{7t}}</m>, and <m>\lap{t}</m> require <m>s \gt 0</m>, <m>s \gt 7</m>, and <m>s \gt 0</m>, respectively. So, to cover all three, we use <m>s \gt 7</m> since any value greater than <m>7</m>, will also be greater than <m>0</m>.
+							Then, using the common transforms, <xref ref="L1-transform" text="title"/>, <xref ref="L2-transform" text="title"/> (<m>a=7</m>), and <xref ref="L3-transform" text="title"/> (<m>n=1</m>), we get 
+						</p>
+
+						<md>
+							<mrow>
+								\lap{15 + 6e^{7t} - 11t}
+								\amp = 15\cdot \os{\large s\gt0}{\vphantom{\int^{|}}\frac{1}{s}} + 6\cdot \os{\large s\gt7}{\vphantom{\int^{|}}\frac{1}{s-7}} - 11\cdot \os{\large s\gt0}{\vphantom{\int^{|}}\frac{1}{s^2}}
+							</mrow>
+							<mrow>
+								\amp = \frac{15}{s} + \frac{6}{s-7} - \frac{11}{s^2}, \quad s \gt 7
+							</mrow>.
+						</md>
+						<p>
+							We use <m>s \gt 7</m>, because it guarantees that <m>s \gt 0</m> is also true.
 						</p>
 					</solution>
 				</example>
@@ -1187,7 +1201,7 @@
 		<subsection><title> Table of Laplace Transforms </title>
 
 			<introduction>
-			
+
 				<p>
 					We have done a lot of work computing common transforms and deriving the properties of the Laplace transform. Now, we can summarize all of this information in a table for quick reference.
 				</p>
@@ -1195,6 +1209,7 @@
 			</introduction>
 
 			<assemblage xml:id="lt-table-L1-L12"><title> ✳️ Common Laplace Transform and Properties </title>
+
 				<p>
 					Assume <m>F(s) = \lap{f(t)}</m>, <m>a</m>, <m>b</m> are constant, and <m>n=0,1,2,3,\ldots</m>
 				</p>
@@ -1283,16 +1298,133 @@
 
 			</assemblage>
 
+			<tabular>
+				<row>
+					<cell><me>L_1</me></cell>
+					<cell><me>\ds\quad\lap{1} = \frac{1}{s},</me></cell>
+					<cell><me>s &gt;0 </me></cell>
+				</row>
+			</tabular>
+
+			<assemblage xml:id="L1-L12-transforms"><title> ✳️ Common Laplace Transform and Properties </title>
+				<p>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L1-transform"><title><m>L_1</m></title>
+						<p>
+							<m>\ds\quad\lap{1} = \frac{1}{s}, \quad s &gt;0 </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L2-transform"><title><m>L_2</m></title>
+						<p>
+							<m>\ds\quad\lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L3-transform"><title><m>L_3</m></title>
+						<p>
+							<m>\ds\quad\lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L4-transform"><title><m>L_4</m></title>
+						<p>
+							<m>\ds\quad\lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L5-transform"><title><m>L_5</m></title>
+						<p>
+							<m>\ds\quad\lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0 </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L6-transform"><title><m>L_6</m></title>
+						<p>
+							<m>\ds\quad\lap{ t^n e^{at} } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L7-transform"><title><m>L_7</m></title>
+						<p>
+							<m>\ds\quad\lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a </m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L8-transform"><title><m>L_8</m></title>
+						<p>
+							<m>\ds\quad\lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L9-transform"><title><m>L_9</m></title>
+						<p>
+							<m>\ds\quad\lap{ f'(t) } = sF(s) - f(0), \quad s &gt; 0</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L10-transform"><title><m>L_{10}</m></title>
+						<p>
+							<m>\ds\quad\lap{ f''(t) } = s^2F(s) - sf(0) - f'(0), \quad s &gt; 0</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L11-transform"><title><m>L_{11}</m></title>
+						<p>
+							<m>\ds\quad\lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0), \quad s &gt; 0</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+					<paragraphs xml:id="L12-transform"><title><m>L_{12}</m></title>
+						<p>
+							<m>\ds\quad\lap{ t^n f(t) } = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad s &gt; 0</m>
+						</p>
+					</paragraphs>
+					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+				</p>
+			</assemblage>
+			
+			<dl width="narrow">
+				<li><title> <m>L_1</m> </title>
+					<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt;0 </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_2</m> </title>
+					<m>\ds \lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_3</m> </title>
+					<m>\ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_4</m> </title>
+					<m>\ds \lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_5</m> </title>
+					<m>\ds \lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0 </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_6</m> </title>
+					<m>\lap{ t^n e^{at} } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_7.</m> </title>
+					<m>\ds \lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a </m>
+				</li>
+				<li><title> <m>{\LARGE \vphantom{\int}}L_8.</m> </title>
+					<m>\ds \lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m>
+				</li>
+			</dl>
+
 		</subsection>
 
 	</section>
 
 	<section><title> Transforming Equations Between Domains </title>
+
 		<!-- Still working on this -->
+
 	</section>
 
 	<section><title> Laplace Transform Method </title>
+
 		<!-- Still working on this -->
+
 	</section>
 
 </chapter>
