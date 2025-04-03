@@ -20,12 +20,12 @@
 				A roadmap for solving an initial-valued problem using the Laplace Transform method.
 				A visual guide outlining the steps of the Laplace Transform method used to solve an initial-value problem.
 			</caption>
-			<image source="figures/Laplace-Transform-Roadmap.png" width="85%"/>
+			<image source="figures/LT-Roadmap-steps-1-4.png" width="100%"/>
 		</figure>
 
 	</introduction>
 
-	<section><title> Foundations of the Laplace Transform </title>
+	<section><title> The Laplace Transform </title>
 		
 		<introduction>
 
@@ -123,21 +123,20 @@
 			<p>
 				Suppose we are given the equation
 				<men xml:id="lt-model-eqn">
-					y'' + 3y' + 2y = -40e^{3t}
+					y'' - 9y = 10e^{2t}
 				</men>.
 			</p>
 
 			<p>
 				Multiplying both sides by <m>e^{-st}</m> and integrating with respect to <m>t</m> gives
 				<me>
-					\int \left(y'' + 3y' + 2y\right) e^{-st} \, dt = \int -40e^{3t} e^{-st} \, dt.
+					\int \left(y'' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt.
 				</me>
 				Using the linearity of the integral, this expands to
 				<me>
 					\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
-					+ 3\ub{\int e^{-st} y'\ dt}_{\text{transfer 1 derivative}}
-					+ 2\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
-					= \ub{\int e^{-st} \left( -40e^{3t} \right)\ dt}_{\text{integrate directly}}.
+					- 9\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
+					= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\text{integrate directly}}.
 				</me>
 			</p>
 
@@ -677,14 +676,13 @@
 
 			</introduction>
 
-
 			<subsubsection><title> Sums and Constant Multiples (Linearity) </title>
 
 				<p>
 					As with integrals, we can pull out constants from Laplace transforms and apply them, term-by-term, to sums and differences of functions. This linear property streamlines the computation of Laplace transforms when working with expressions that combine simpler functions.
 				</p>
 
-				<assemblage xml:id="lt-linearity-property0"><title> ✳️ Laplace Transform Property: Linearity </title>
+				<assemblage xml:id="lt-linearity-property"><title> ✳️ Laplace Transform Property: Linearity </title>
 					<p>
 						If <m>a</m> and <m>b</m> are constants, and <m>f(t)</m> and <m>g(t)</m> have Laplace transforms, then
 						<me>
@@ -724,7 +722,7 @@
 						</p>
 
 						<p>
-							Then, using the common transforms, <xref ref="L1-transform" text="title"/>, <xref ref="L2-transform" text="title"/> (<m>a=7</m>), and <xref ref="L3-transform" text="title"/> (<m>n=1</m>), we get 
+							Then, using the common transforms, <xref ref="L1" text="title"/>, <xref ref="L2" text="title"/> (<m>a=7</m>), and <xref ref="L3" text="title"/> (<m>n=1</m>), we get 
 						</p>
 
 						<md>
@@ -1019,18 +1017,18 @@
 					<md>
 						<mrow>
 							\lap{ f'(t) }	
-							\amp = \us{\large\downarrow}{\ul{\color{green} s F(s) - f(0)}}
+							\amp = \us{\large\downarrow}{\ul{\color{green} sF(s) - f(0)}}
 						</mrow>
 						<mrow>
 							\lap{ f''(t) }
-							\amp = s {\color{green}\lap{f'(t)}} - f'(0) = s \Big({\color{green}F(s) - f(0)}\Big) - f'(0)
+							\amp = s {\color{green}\lap{f'(t)}} - f'(0) = s \Big({\color{green}sF(s) - f(0)}\Big) - f'(0)
 						</mrow>
 						<mrow>
-							\amp = \us{\large\downarrow \hspace{5em}}{\ul{\color{blue}sF(s) - sf(0) - f'(0)}}
+							\amp = \us{\large\downarrow \hspace{5em}}{\ul{\color{blue}s^2F(s) - sf(0) - f'(0)}}
 						</mrow>
 						<mrow>
 							\lap{ f'''(t) }	
-							\amp = s {\color{blue}\lap{f''(t)}} - f''(0) = s \Big({\color{blue}sF(s) - sf(0) - f'(0)}\Big) - f''(0)
+							\amp = s {\color{blue}\lap{f''(t)}} - f''(0) = s \Big({\color{blue}s^2F(s) - sf(0) - f'(0)}\Big) - f''(0)
 						</mrow>
 						<mrow>
 							\amp = s^3F(s) - s^2f(0) - sf'(0) - f''(0)
@@ -1298,84 +1296,76 @@
 
 			</assemblage>
 
-			<tabular>
-				<row>
-					<cell><me>L_1</me></cell>
-					<cell><me>\ds\quad\lap{1} = \frac{1}{s},</me></cell>
-					<cell><me>s &gt;0 </me></cell>
-				</row>
-			</tabular>
-
 			<assemblage xml:id="L1-L12-transforms"><title> ✳️ Common Laplace Transform and Properties </title>
 				<p>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L1-transform"><title><m>L_1</m></title>
+					<paragraphs xml:id="L1"><title><m>L_1</m></title>
 						<p>
 							<m>\ds\quad\lap{1} = \frac{1}{s}, \quad s &gt;0 </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L2-transform"><title><m>L_2</m></title>
+					<paragraphs xml:id="L2"><title><m>L_2</m></title>
 						<p>
 							<m>\ds\quad\lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L3-transform"><title><m>L_3</m></title>
+					<paragraphs xml:id="L3"><title><m>L_3</m></title>
 						<p>
 							<m>\ds\quad\lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L4-transform"><title><m>L_4</m></title>
+					<paragraphs xml:id="L4"><title><m>L_4</m></title>
 						<p>
 							<m>\ds\quad\lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L5-transform"><title><m>L_5</m></title>
+					<paragraphs xml:id="L5"><title><m>L_5</m></title>
 						<p>
 							<m>\ds\quad\lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0 </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L6-transform"><title><m>L_6</m></title>
+					<paragraphs xml:id="L6"><title><m>L_6</m></title>
 						<p>
-							<m>\ds\quad\lap{ t^n e^{at} } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
+							<m>\ds\quad\lap{ e^{at} t^n } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L7-transform"><title><m>L_7</m></title>
+					<paragraphs xml:id="L7"><title><m>L_7</m></title>
 						<p>
 							<m>\ds\quad\lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a </m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L8-transform"><title><m>L_8</m></title>
+					<paragraphs xml:id="L8"><title><m>L_8</m></title>
 						<p>
 							<m>\ds\quad\lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L9-transform"><title><m>L_9</m></title>
+					<paragraphs xml:id="L9"><title><m>L_9</m></title>
 						<p>
 							<m>\ds\quad\lap{ f'(t) } = sF(s) - f(0), \quad s &gt; 0</m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L10-transform"><title><m>L_{10}</m></title>
+					<paragraphs xml:id="L10"><title><m>L_{10}</m></title>
 						<p>
 							<m>\ds\quad\lap{ f''(t) } = s^2F(s) - sf(0) - f'(0), \quad s &gt; 0</m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L11-transform"><title><m>L_{11}</m></title>
+					<paragraphs xml:id="L11"><title><m>L_{11}</m></title>
 						<p>
 							<m>\ds\quad\lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0), \quad s &gt; 0</m>
 						</p>
 					</paragraphs>
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-					<paragraphs xml:id="L12-transform"><title><m>L_{12}</m></title>
+					<paragraphs xml:id="L12"><title><m>L_{12}</m></title>
 						<p>
 							<m>\ds\quad\lap{ t^n f(t) } = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad s &gt; 0</m>
 						</p>
@@ -1383,45 +1373,1032 @@
 					<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
 				</p>
 			</assemblage>
-			
-			<dl width="narrow">
-				<li><title> <m>L_1</m> </title>
-					<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt;0 </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_2</m> </title>
-					<m>\ds \lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_3</m> </title>
-					<m>\ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_4</m> </title>
-					<m>\ds \lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_5</m> </title>
-					<m>\ds \lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0 </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_6</m> </title>
-					<m>\lap{ t^n e^{at} } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_7.</m> </title>
-					<m>\ds \lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a </m>
-				</li>
-				<li><title> <m>{\LARGE \vphantom{\int}}L_8.</m> </title>
-					<m>\ds \lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m>
-				</li>
-			</dl>
 
 		</subsection>
 
 	</section>
 
-	<section><title> Transforming Equations Between Domains </title>
+	<section><title> The Laplace Domain </title>
 
-		<!-- Still working on this -->
+		<introduction>
+
+			<p>
+				When solving differential equations using the Laplace transform method, our goal is to transport our equation into the Laplace domain. Once there, the derivatives of <m>y</m> are moved onto an exponential function, leaving <m>y</m> (without its derivatives) temporarily "encased" inside a Laplace transform, <m>Y</m>. This creates an algebra equation where <m>Y</m> is our new unknown, which we isolate. Once isolated, we "revert" the equation back into our original domain, revealing the solution.
+			</p>
+
+			<p>
+				This section clearly outlines the four main steps involved in the transformation process, illustrated in the <xref ref="lt-roadmap" text="title"/>. We'll consistently use the model equation
+				<me>
+					y'' - 9y = 10e^{2t}
+				</me>
+				to demonstrate each step, reinforcing how the Laplace transform systematically incorporates initial conditions and simplifies complex differential equations into algebraic problems.
+			</p>
+
+			<p>
+				Applying the forward Laplace transform to a differential equation involves converting both the left-hand side (LHS) and right-hand side (RHS) of the equation into their Laplace-transformed counterparts.
+			</p>
+
+			<p>
+				Applying the Laplace transform method to a differential equation starts by transforming this equation into a new equation where the derivatives are replaced by algebraic expressions. To recover to the solution to the original equation the transformation must also be reversed. This process, which we will refer to as a <q>backwards transform</q>, corresponds to step 3 on the <xref ref="lt-roadmap" text="custom">Laplace transform roadmap</xref>.
+			</p>
+
+			<p>
+				Just as the forward Laplace transform simplifies a differential equation by converting it into an algebraic one, the backward transform completes the cycle by converting the algebraic solution back into its original form. This chapter will focus on the techniques used to perform the inverse Laplace transform, guiding you through the steps needed to move from the transformed function, <m>F(s)</m>, back to the original function, <m>f(t)</m>.
+			</p>
+
+			<p>
+				We will explore key methods, such as partial fraction decomposition and the use of Laplace transform tables, to help simplify complex transformed functions. Additionally, we will highlight common challenges and how to overcome them, ensuring a smooth transition back to the original domain.
+			</p>
+			
+		</introduction>
+
+		<subsection><title> Into the Laplace Domain (Forward Transform) </title>
+
+			<introduction>
+				<p>
+					Now that we've established the foundational concepts and compiled a table of common transforms, we are ready to explore how the Laplace Transform method helps us solve linear differential equations with constant coefficients.
+				</p>
+
+				<assemblage xml:id="lt-roadmap-step1"><title> Step 1 - Into the Laplace Domain (Forward Transform) </title>
+					<p>
+						<sidebyside widths="40% 10% 50%" valign="middle">
+							<p>
+								<md>
+									<mrow>	y'' - 9y = 10e^{2t}	</mrow>
+									<mrow>	y(0) = 1, \quad y(0) = -7	</mrow>
+								</md>
+							</p>
+							<p><me>\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}</me></p>
+							<p>
+								<me>
+									s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+								</me>
+							</p>
+						</sidebyside>
+					</p>
+				</assemblage>
+
+				<figure xml:id="lt-roadmap-step-1-fig">
+					<caption>
+						To enter the Laplace domain (step 1), we apply a forward transform (<m>\laplacesym</m>) to the original differential equation.
+					</caption>
+					<image source="figures/LT-Roadmap-step-1.png" width="100%"/>
+				</figure>
+			</introduction>
+
+			<p>
+				Notice that the <xref ref="lt-roadmap" text="title"/> shows the first step in the process is to convert a differential equation into an algebraic equation. That is,
+			</p>
+
+			<sidebyside widths="40% 10% 50%" valign="middle">
+				<p>
+					<md>
+						<mrow>	y'' - 9y = 3e^{2t}	</mrow>
+						<mrow>	y(0) = 1, \quad y'(0) = -7	</mrow>
+					</md>
+				</p>
+				<p><me>\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}</me></p>
+				<p>
+					<me>
+						s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+					</me>
+				</p>
+			</sidebyside>
+
+			<p>
+				Although using the table of Laplace transforms makes this step straightforward, understanding what's happening behind the scenes is crucial.
+			</p>
+
+			<p>
+				Recall that applying the Laplace transform to an equation is equivalent to multiplying the equation by <m>e^{-st}</m> and integrating with respect to <m>t</m>.
+				<me>
+					\ub{\int_0^{\infty} e^{-st} (y'') dt}_{\large\lap{y''}} 
+					- \ub{\int_0^{\infty} e^{-st} (9y) dt}_{\large\lap{9y}}
+					= \ub{\int_0^{\infty} e^{-st} \left( 10e^{2t} \right) dt}_{\large\lap{10e^{2t}}}
+				</me>
+			</p>
+
+			<p>
+				Applying integration by parts twice to the first integral, and evaluating the improper integral on the right-hand side, gives us
+			</p>
+
+			<me>
+				-sy(0) - y'(0) + s^2\ub{\int_0^{\infty} e^{-st} (y) dt}_{\large\lap{y} = Y} 
+				- 9\ub{\int_0^{\infty} e^{-st} (y) dt}_{\large\lap{y} = Y}
+				= \frac{10}{s - 2}
+			</me>
+
+			<p>
+				To simplify further, we set <m>\lap{y} = Y</m>. We can also plug in the initial conditions <m>y(0) = 1</m> and <m>y'(0) = -7</m>, giving us
+			</p>
+			
+			<me>
+				s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+			</me>.
+
+			<p>
+				Notice how we've turned the problem into an algebraic equation involving the variable <m>Y</m>. Solving for <m>Y</m> actually means solving for the original unknown <m>y</m>, which is neatly encapsulated inside <m>Y</m>!
+			</p>
+
+			<example><title> Forward Transforming Equations </title>
+			
+			
+				<p>
+					<statement>
+						<p>
+							Transform the initial-value problems into the Laplace domain:
+							<ol>
+								<li>
+									<p>
+										<m>\ds y'' - 9y = 10e^{2t}, \quad y(0) = 1, \quad y(0) = -7.</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = 0.</m>
+									</p>
+								</li>
+							</ol>
+						</p>
+					</statement>
+				</p>
+
+				<p>
+					<solution>
+						<p>
+							First, we apply <m>\laplacesym</m> to both sides:
+							<me>
+								\lap{y'' - 9y} = \lap{10e^{2t}}
+							</me>.
+						</p>
+
+						<p>
+							Using the <xref ref="lt-linearity-property" text="custom">linearity property</xref>, we break this into four transforms
+							<me>
+								\ub{\lap{y''}}_{\large L_{10}} 
+								+ 3\ub{\lap{y'}}_{\large L_9} 
+								+ 2\ub{\lap{y}}_{\large Y} = -40\ub{\lap{e^{3t}}}_{\large L_2}
+							</me>,
+							and using <xref ref="L10" text="title"/>, <xref ref="L9" text="title"/>, and <xref ref="L2" text="title"/> from the <xref ref="common-lt-table" text="custom">Laplace transform table</xref>, we transform the equation as follows:
+						</p>
+
+						<p>
+							<me>
+								s^2Y - s\os{\large 0}{\os{\Large \shortparallel}{y(0)}} - \os{\large 1}{\os{\Large \shortparallel}{y'(0)}} 
+								+ 3s\left(sY - y(0)\right) + 2Y = -40\frac{1}{s - 3}
+							</me>,
+							or
+							<me>
+								s^2Y - 9Y - s + 7 = \frac{10}{s - 2}.
+							</me>
+						</p>
+					</solution>
+
+					<solution>
+						<p>
+							Applying the Laplace transform to both sides and using the Laplace transform table, we have:
+							<md>
+								<mrow>
+									\lap{y'' - 4y' + 6y} 
+									\amp = \lap{t^2}
+								</mrow>
+								<mrow>
+									\lap{y''} - 4\lap{y'} + 6\lap{y} 
+									\amp = \lap{t^2}
+								</mrow>
+								<mrow>
+									s^2Y - s\os{\large 2}{\os{\Large \shortparallel}{y(0)}} 
+									- \os{\large 0}{\os{\Large \shortparallel}{y'(0)}} 
+									- 4(sY - \os{\large 2}{\os{\Large \shortparallel}{y(0)}}) + 6Y 
+									\amp = \frac{2}{s^3}
+								</mrow>
+								<mrow>
+									s^2Y - 2s - 4sY + 8 + 6Y 
+									\amp = \frac{2}{s^3}
+								</mrow>
+								<mrow>
+									s^2Y - 4sY + 6Y - 2s + 8 
+									\amp = \frac{2}{s^3}
+								</mrow>.
+							</md>
+						</p>
+					</solution>
+				</p>
+				
+			</example>
+
+			<p>
+				At this stage, we've successfully translated our differential equation into the Laplace domain, preparing us for step 2 on our <xref ref="lt-roadmap" text="custom">roadmap</xref>: solving for <m>Y</m> (containing our solution) in the Laplace domain.
+			</p>
+			
+		</subsection>
+
+		<subsection><title> Out of the Laplace Domain (Backward Transform) </title>
+
+			<introduction>
+
+				<p>
+					As we have discussed, the first step of the Laplace Transform Method involves a <xref ref="lt-roadmap-step-1" text="custom">forward transformation</xref>, which converts the <m>y(t)</m>-equation into an equation containing <m>Y(S)</m> and <m>s</m>. Now, we skip ahead to the final step of the method, where we reverse this process to return to the <m>y(t)</m>-equation, revealing the solution to the original differential equation (<xref ref="lt-roadmap-step-4-fig"/>).
+				</p>
+
+				<figure xml:id="lt-roadmap-step-4-fig">
+					<caption>
+						To leave the Laplace domain (step 4), we apply a backward transform (<m>\laplacesym^{-1}</m>) to the Laplace solution for <m>Y</m>.
+					</caption>
+					<image source="figures/LT-Roadmap-step-4.png" width="100%"/>
+				</figure>
+
+			</introduction>
+
+			<p>
+				Leaving the Laplace domain requires a reversal of the forward transformation performed in step 1. This is accomplished by applying the inverse Laplace transform, denoted <m>\laplacesym^{-1}</m>, to both sides of a Laplace equation. For example, if the Laplace equation is
+				<me>
+					Y(s) = \frac{1}{s + 3}
+				</me>
+				then applying the inverse Laplace transform to both sides gives
+				<men xml:id="backward-transform-simple-eqn">
+					\ilap{Y(s)} = \ilap{\frac{1}{s + 3}}
+				</men>.
+			</p>
+
+			<p>
+				Since <m>Y(s) = \lap{f(t)}</m> and by <xref ref="L2" text="custom"><m>L_2</m> (with <m>a=3</m>)</xref>, <xref ref="backward-transform-simple-eqn"/> becomes
+				<me>
+					\ilap{\lap{f(t)}} = \ilap{\lap{e^{3t}}}
+				</me>
+				and the inverses cancel, leaving us with
+				<me>
+					y(t) = e^{-3t}
+				</me>.
+			</p>
+
+			<p>
+				This example highlights that knowing the forward transform of a function actually gives you the inverse transform as well. This means that the <xref ref="common-lt-table" text="custom">table of Laplace transforms</xref> is used to find both the forward and backward tranforms. The main difference being that the backward transforms are found by first matching the functions on the right column of the table. 
+			</p>
+
+			<p>
+				Let's look at an example to get some practice with this. 
+			</p>
+
+			<example><title> Computing <m>\laplacesym^{-1}</m> using the Laplace Transform Table </title>
+				<p>
+					<statement>
+						<p>
+							Remove the following equations from the Laplace domain by applying the inverse Laplace transform to both sides.
+						</p>
+						<p>
+						<sidebyside widths="35% 65%">
+							<p>
+								<me>
+									Y(s) = \frac{3}{s^2 + 9}
+								</me>
+							</p>
+							<p>
+								<solution>
+									<p>
+										This matches <xref ref="lt-table-row-L4" text="title"/> with <m>b=3</m>. So,
+										<md>
+											<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{3}{s^2 + 9}}	</mrow>
+											<mrow>	y(t)		\amp = \sin(3t)					</mrow>
+										</md>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+						</p>
+						<p>
+						<sidebyside widths="35% 65%">
+							<p>
+								<me>
+									Q(s) = \frac{s - 2}{(s - 2)^2 + 16}
+								</me>
+							</p>
+							<p>
+								<solution>
+									<p>
+										This matches <xref ref="lt-table-row-L7" text="title"/> with <m>a=2</m> and <m>b=4</m>. So,
+										<md>
+											<mrow>	\ilap{Q(s)}	\amp = \ilap{\frac{s - 2}{(s - 2)^2 + 16}}	</mrow>
+											<mrow>	q(t)		\amp = e^{2t}\cos(4t)						</mrow>
+										</md>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+						</p>
+						<p>
+						<sidebyside widths="35% 65%">
+							<p>
+								<me>
+									D(s) = \frac{24}{s^5}
+								</me>
+							</p>
+							<p>
+								<solution>
+									<p>
+										Noting that <m>24=4!</m> and using <xref ref="lt-table-row-L3" text="title"/> with <m>n=4</m>, we get
+										<md>
+											<mrow>	\ilap{D(s)}	\amp = \ilap{\frac{4!}{s^5}}	</mrow>
+											<mrow>	d(t)		\amp = t^4						</mrow>.
+										</md>.
+									</p>
+								</solution>
+							</p>
+						</sidebyside>
+						</p>
+					</statement>
+				</p>
+			</example>
+
+			<p>
+				These examples demonstrate how to find the inverse Laplace Transform when the <m>s</m>-function matches a form on the right side of the common transforms table. However, not all functions will align perfectly with the table, and additional adjustments are needed to match the forms. In the next discussion, we will explore how to modify the <m>s</m>-function to match the common forms in the table.
+			</p>
+
+			<p>
+				As you can see in the table, the differences between the functions in the right column are more subtle than those on the left. The trick is to identify the structure of the denominators, as the next example demonstrates.
+			</p>
+
+
+			<p>
+				When working with Laplace transforms, it's common to encounter algebraic expressions that don't perfectly match the standard forms we use for the inverse Laplace transform. In these cases, we need to manipulate the expression to make it fit one of the known forms.
+			</p>
+
+			<p>
+				For example, consider the expression:
+				<me> \frac{1}{s^2 + 25} \qquad \leftarrow \ \text{looks like} \quad \frac{b}{s^2 + b^2}. </me>
+				While it's not an exact match, we can observe from the denominator that <m>b = 5.</m>
+			</p>
+
+			<p>
+				However, the numerator doesn't match yet. To correct this, we need a 5 in the numerator. We can't just multiply the numerator by 5 without changing the value, so instead, we multiply the entire expression by <m>\ds\frac{5}{5}</m>, which is equivalent to multiplying by 1:
+				<md>
+					<mrow>\frac{1}{s^2 + 25} 	\amp = \frac{1}{s^2 + 5^2} </mrow>
+					<mrow>						\amp = \frac{5}{5} \cdot \frac{1}{s^2 + 5^2} </mrow>
+					<mrow>						\amp = \frac{1}{5} \cdot \frac{5}{s^2 + 5^2} \quad \us{\text{match}}{\os{\text{perfect}}{\leftarrow}}\ \frac{b}{s^2 + b^2}</mrow>
+				</md>
+				Multiplying by <m>\ds\frac{5}{5}</m> doesn't change the value of the expression, but it allows us to match the standard form.
+			</p>
+
+			<p>
+				One of the most common adjustments is introducing a missing constant in the numerator, as we did earlier. By multiplying both the numerator and denominator by this constant, we maintain the expression's value while transforming it into a recognizable form. Let's look at some examples:
+			</p>
+
+			<example><title> Backward Transforms Missing a Constant </title>
+				<p>
+					<statement>
+						<p>
+							Compute the inverse Laplace transforms for each.
+						</p>
+						<tabular>
+					<col width="20%" halign="center"/>
+					<col width="75%"/>
+					<row>
+						<cell><m>\ds \frac{12}{s}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										The <m>s</m> in the denominator tells us that we need <m>L_1</m>. Before we do, let's factor out <m>12</m>:
+										<me>\ds \ilap{\frac{12}{s}} = 12 \cdot \ilap{\frac{1}{s}} = 12 \cdot 1 = 12</me>.
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+					<row>
+						<cell><m>\ds \frac{5}{s^2 + 4}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										Since the denominator has the form, <m>s^2 + \text{number}</m>, and there is no <m>s</m> in the numerator, we should apply <m>L_4</m>. As before, it is helpful to first factor out the constant <m>5</m>,
+										<me>\ds \ilap{\frac{5}{s^2 + 4}} = 5\ \ilap{\frac{1}{s^2 + 4}} \quad \leftarrow <xref ref="L4" text="custom">L_4</xref> (b=2)</me>.
+										According to <m>L_4</m>, we are missing <m>2</m> in the numerator. Let's put it there by multiplying by <m>2/2</m>, like so
+										<md>
+											<mrow> = 5\ \ilap{\frac{2}{2}\frac{1}{s^2 + 4}} \amp = 5\ \ilap{\frac{1}{2}\frac{2}{s^2 + 4}}</mrow>
+											<mrow>										  \amp = \frac{5}{2} \ilap{\frac{2}{s^2 + 4}}</mrow>
+											<mrow>										  \amp = \frac{5}{2} \sin(2t)</mrow>
+										</md>
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+					<row>
+						<cell><m>\ds \frac{17}{s^4}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										This denominator has the form <m>s^{\text{power}}</m>, which matches <m>L_3</m> with <m>n = 3</m>.
+										<me>\ds \ilap{\frac{17}{s^4}} = 17\ \ilap{\frac{1}{s^4}} \quad \leftarrow <xref ref="L3" text="custom">L_3</xref> (n=3)</me>.
+										In this case, the numerator is missing a <m>3!</m>. We can introduce it by multiplying by <m>3!/3!</m>, like so
+										<md>
+											<mrow> = 17\ \ilap{\frac{3!}{3!}\frac{1}{s^4}} = \frac{17}{3!} \ilap{\frac{3!}{s^4}} = \frac{17}{6} t^3</mrow>
+										</md>
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+					<row>
+						<cell><m>\ds \frac{7s}{s^2 + 25}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										<me><xref ref="L5" text="custom">L_5</xref>, b=5</me>
+										<me> \ilap{\frac{7s}{s^2 + 25}} = 7\ \ilap{\frac{s}{s^2 + 25}} = 7\ \cos(5t)</me>
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+					<row>
+						<cell><m>\ds \frac{10}{(s - 3)^2 + 11}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										The form of this denominator is <m>\ul{(s \pm \text{shift})^{2} + \text{number}}</m> and has no <m>s</m> in the numerator. Therefore,
+										<md>
+											<mrow> \ilap{\frac{10}{(s - 3)^2 + 11}} \amp\ \quad <xref ref="L7" text="custom"><m>L_7</m></xref> (a=3,\ b=\sqrt{11})</mrow>
+											<mrow>	\amp = 10\ \ilap{\frac{\sqrt{11}}{\sqrt{11}}\frac{1}{(s - 3)^2 + 11}}</mrow>
+											<mrow>	\amp = \frac{10}{\sqrt{11}} \ilap{\frac{\sqrt{11}}{(s - 3)^2 + 11}}</mrow>
+											<mrow>	\amp = \frac{10}{\sqrt{11}} e^{3t} \sin(\sqrt{11}t)</mrow>
+										</md>
+
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+					<row>
+						<cell><m>\ds \frac{2}{(s+7)^5}</m></cell>
+						<cell>
+							<p>
+								<m>\hspace{27em}</m>
+								<solution>
+									<p>
+										The denominator, <m>\ul{(s \pm \text{shift})^{\text{power}}}</m>, indicates an <m>e^{at}</m> and a <m>t^n</m> term. Therefore,
+										<md>
+											<mrow> \ilap{\frac{2}{(s+7)^5}} \amp\ \quad <xref ref="L6" text="custom"><m>L_6</m></xref> (a=-7, n=4)</mrow>
+											<mrow>
+													\amp = 2\ \ilap{\frac{4!}{4!}\frac{1}{(s+7)^5}}
+											</mrow>
+											<mrow>
+													\amp = \frac{2}{4!} \ilap{\frac{4!}{(s+7)^5}}
+											</mrow>
+											<mrow>
+												\amp = \frac{1}{12} t^4 e^{-7t}
+										</mrow>
+										</md>
+									</p>
+								</solution>
+							</p>
+						</cell>
+					</row>
+				</tabular>
+					</statement>
+				</p>
+			</example>
+
+		</subsection>
+
+		<subsection><title> Within the Laplace Domain </title>
+
+			<introduction>
+				<p>
+					Referring back to the <xref ref="lt-roadmap-full" text="title"/>, we have covered the forward and backward transformation of an equation into and out of the Laplace domain. However, the backward transforms we considered assumed that the terms of the Laplace domain equation were already in a form that could be easily transformed. In practice, we will need to prepare the equation so that we can easily match its terms with the right column of the Laplace transform table.
+				</p>
+
+				<p>
+					As you can see, below, this is the job of steps 2 and 3. In particular, once we forward transform our equation in the Laplace domain (step 1), we solve for <m>Y</m> (step 2), then prepare this <m>Y</m> (step 3) for a backward transform (step 4) to our solution. This section is dedicated to covering the common techniques used in step 3.
+				</p> 
+
+				<figure xml:id="lt-roadmap-steps-2-3">
+					<caption>
+						Once inside the Laplace domain, solve the Laplace equation for <m>Y</m> (step 2), then prepare the Laplace solution for a backward transform (step 3).
+					</caption>
+					<image source="figures/LT-Roadmap-steps-2-3.png" width="100%"/>
+				</figure>
+
+			</introduction>
+
+			<subsubsection><title> Splitting Fractions </title>
+
+				<p>
+					One useful algebraic manipulation in preparing for the inverse Laplace transform is splitting a rational function that has a sum or difference in the numerator. This technique simplifies the expression into recognizable forms, making it easier to apply known Laplace transform pairs. Let's explore two examples where splitting fractions proves useful.
+				</p>
+				
+				<example><title> Backward Transform - Splitting Fractions </title>
+					<p>
+						<statement>
+							<p>
+								Suppose you applied a forward transformation .
+							</p>
+							<ol>
+								<li>
+									<p>
+										<m>\ds\ilap{\frac{2s - 3}{s^2 + 16}}</m>
+										
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds\ilap{\frac{s^3 - 7}{s^7}}</m>
+									</p>
+								</li>
+							</ol>
+						</statement>
+					</p>
+
+					<p>
+						<solution>
+							<p>
+								This function has a sum in the numerator, so we can split it into two fractions:
+								<me>\ds \frac{2s - 3}{s^2 + 16} = \frac{2s}{s^2 + 16} - \frac{3}{s^2 + 16}</me>.
+							</p>
+							<p>
+								Now, we can apply the inverse Laplace transform to each term separately. The first term matches with <xref ref="L5" text="custom"><m>L_5</m></xref>, and the second term corresponds to <xref ref="L4" text="custom"><m>L_4</m></xref>:
+								<md>
+									<mrow>\amp\ \ilap{\frac{2s - 3}{s^2 + 16}} </mrow>
+									<mrow>\amp\ = 2\ \ilap{\frac{s}{s^2 + 16}} - 3\ \ilap{\frac{1}{s^2 + 16}} </mrow>
+									<mrow>\amp\ = 2 \cos(4t) - \frac{3}{4} \sin(4t). </mrow>
+								</md>
+							</p>
+									
+							<p>
+								Thus, the final result is:
+								<me>\ds \ilap{\frac{2s - 3}{s^2 + 16}} = 2 \cos(4t) - \frac{3}{4} \sin(4t).</me>
+							</p>
+						</solution>
+						<solution>
+							<p>
+								To do this, we split the fraction into two simpler terms:
+								<me>\ds \frac{2s - 3}{s^2 + 16} = \frac{2s}{s^2 + 16} - \frac{3}{s^2 + 16}.</me>
+								Now, we can apply the inverse Laplace transform to each term separately. The first term matches with <xref ref="L5" text="custom"><m>L_5</m></xref>, and the second term corresponds to <xref ref="L4" text="custom"><m>L_4</m></xref>:
+								<md>
+									<mrow>\amp\ \ilap{\frac{2s - 3}{s^2 + 16}} </mrow>
+									<mrow>\amp\ = 2\ \ilap{\frac{s}{s^2 + 16}} - 3\ \ilap{\frac{1}{s^2 + 16}} </mrow>
+									<mrow>\amp\ = 2 \cos(4t) - \frac{3}{4} \sin(4t). </mrow>
+								</md>
+							</p>
+						</solution>
+						<solution>
+							<p>
+								We can split the fraction into the terms,
+								<me>\ds \frac{s^3 - 7}{s^7} = \frac{s^3}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} - \frac{7}{s^7}.</me>
+								and apply the inverse Laplace transform, <xref ref="L3" text="custom"><m>L_3</m></xref>, to each
+								<md>
+									<mrow> \ilap{\frac{s^3 - 7}{s^7}}	\amp = \ilap{\frac{1}{s^4} - \frac{7}{s^7}}</mrow>
+									<mrow>									\amp = \ilap{\frac{1}{s^4}} - 7\ilap{\frac{1}{s^7}}</mrow>
+									<mrow>									\amp = \frac{1}{3!}\ilap{\frac{3!}{s^4}} - \frac{7}{6!}\ilap{\frac{6!}{s^7}}</mrow>
+									<mrow>									\amp = \frac{1}{6}t^3 - \frac{7}{720}t^6</mrow>
+								</md>
+							</p>
+						</solution>
+						<solution>
+							<p>
+								We can split the fraction into the terms,
+								<me>\ds \frac{s^3 - 7}{s^7} = \frac{s^3}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} - \frac{7}{s^7}.</me>
+								and apply the inverse Laplace transform, <xref ref="L3" text="custom"><m>L_3</m></xref>, to each
+								<md>
+									<mrow> \ilap{\frac{s^3 - 7}{s^7}}	\amp = \ilap{\frac{1}{s^4} - \frac{7}{s^7}}</mrow>
+									<mrow>									\amp = \ilap{\frac{1}{s^4}} - 7\ilap{\frac{1}{s^7}}</mrow>
+									<mrow>									\amp = \frac{1}{3!}\ilap{\frac{3!}{s^4}} - \frac{7}{6!}\ilap{\frac{6!}{s^7}}</mrow>
+									<mrow>									\amp = \frac{1}{6}t^3 - \frac{7}{720}t^6</mrow>
+								</md>
+							</p>
+						</solution>
+					</p>
+				</example>
+
+				<p>
+					This section demonstrates how relatively simple modifications, such as splitting fractions, can make it easier to find the inverse Laplace transform. However, some functions of <m>s</m> may require more advanced techniques. In the next section, we will explore how completing the square can help match the forms needed for a backward transform when the <m>s</m>-variable is shifted.
+				</p>
+			
+				<xi:include href="./c7-exercises/c7-chkpts-2-1-3-splitting-fractions.ptx" />
+			</subsubsection>
+
+			<subsubsection><title> Completing the Square </title>
+
+				<p>
+					Review <xref ref="review-completing-the-sqr" text="title"/>.
+				</p>
+
+				<p>
+					As you progress through the Laplace Transform Method, you will often encounter <xref ref="rational-function" text="custom">rational functions</xref> that do not immediately match any known form in the <xref ref="common-lt-table" text="custom">table of Laplace transforms</xref>. For example, the function
+					<me>\frac{s-1}{s^2 - 2s + 5}</me>
+					does not align with standard forms. A common approach is to rewrite the denominator in the form <m>(s - a)^2 + b^2</m>, allowing it to match known transforms like <m>L_7</m> or <m>L_8</m>. This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.
+				</p>
+
+				<p>
+					Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from <xref ref="solving-the-quadratic-equation" text="custom">solving quadratic equations</xref> that if the discriminant
+					<me>b^2 - 4ac</me>
+					is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.
+				</p>
+			
+				<example><title> Find the Inverse Laplce Transform </title>
+					<p>
+						<statement>
+							<p>
+								Find the inverse Laplace transforms of each function.
+							</p>
+							<ol>
+								<li>
+									<p>
+										<m>\ds\ilap{\frac{s-1}{s^2 - 2s + 5}}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds\ilap{\frac{11}{s^2 - 6s + 14}}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds\ilap{\frac{s+3}{s^2 + 2s + 10}}</m>
+									</p>
+								</li>
+							</ol>
+						</statement>
+					</p>
+
+					<p>
+						<solution>
+							<p>
+								The discriminant of the denominator <m>s^2 - 2s + 5</m> is
+								<me>b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16</me>,
+								which is negative. Therefore, completing the square is necessary:
+								<md>
+									<mrow> s^2 - 2s + 5 = (s^2 - 2s) + 5	\amp = (\ob{s^2 - 2s + 1}^{(s - 1)^2} - 1) + 5   </mrow>
+									<mrow>								  \amp = (s - 1)^2 + 4							 </mrow>
+								</md>.
+								Rewriting <m>H(s)</m> gives:
+								<me>\frac{s-1}{s^2 - 2s + 5} = \frac{s-1}{(s - 1)^2 + 4},</me>
+								which matches <xref ref="L8" text="title"/> (<m>a=1, b=2</m>). Therefore,
+								<me>h(t) = \ilap{H(s)} = e^{t}\cos(2t).</me>
+							</p>
+						</solution>
+				
+						<solution>
+							<p>
+								The discriminant of the denominator <m>s^2 - 6s + 14</m> is:
+								<me>b^2 - 4ac = (-6)^2 - 4(1)(14) = 36 - 56 = -20</me>,
+								indicating that completing the square is necessary:
+								<md>
+									<mrow> s^2 - 6s + 14 = (s^2 - 6s) + 14  =\amp (\ob{s^2 - 6s + 9}^{(s - 3)^2} - 9) + 14  </mrow>
+									<mrow>								  =\amp (s - 3)^2 + 5							 </mrow>
+								</md>.
+								Rewriting <m>K(s)</m> as:
+								<me>
+									\frac{11}{s^2 - 6s + 14}
+										= \ub{\frac{11}{(s - 3)^2 + 5}}_{\large \text{Match with } L_7}
+										= \frac{11}{\sqrt{5}}\ub{\frac{\sqrt{5}}{(s - 3)^2 + 5}}_{\large <xref ref="L7" text="custom"><m>L_7</m></xref> (a = 3, b = \sqrt{5})}
+								</me>.
+								Therefore,
+								<md>
+									<mrow>
+										k(t) = \ilap{K(s)} \amp = \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)
+									</mrow>
+								</md>.
+							</p>
+						</solution>
+				
+						<solution>
+							<p>
+								Completing the square for the denominator of <m>P(s)</m> gives:
+								<me>
+									\frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
+								</me>.
+								However, the numerator <m>s + 3</m> does not match <m>s + 1</m>. To resolve this, we rewrite <m>3</m> as <m>1 + 2</m> and group terms:
+								<md>
+									<mrow>
+										\frac{s+3}{s^2 + 2s + 10}
+											\amp = \frac{s + 1 + 2}{(s + 1)^2 + 9}
+									</mrow>
+									<mrow>
+											\amp = \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
+									</mrow>
+									<mrow>
+											\amp = \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref ref="L8" text="title"/>\ (a=-1, b=3)}
+												+ \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref ref="L7" text="title"/>\ (a=-1, b=3)}
+									</mrow>	
+								</md>,
+								Now, apply the inverse Laplace transform:
+								<md>
+									<mrow>
+										p(t) \amp = \ilap{P(s)}
+									</mrow>
+									<mrow>
+											\amp = \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
+									</mrow>
+									<mrow>
+											\amp = e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
+									</mrow>	
+								</md>
+							</p>
+						</solution>
+					</p>
+
+				</example>
+
+				<p>
+					Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the <m>s</m>-function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.
+				</p>
+
+				<xi:include href="./c7-exercises/c7-chkpts-2-1-4-completing-the-sqr.ptx" />
+			</subsubsection>
+			
+			<subsubsection><title> Partial Fraction Decomposition </title>
+				
+				<p>
+					Review <xref ref="review-rational-functions" text="title"/> and <xref ref="review-pfd" text="title"/>.
+				</p>
+
+				<p>
+					In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.
+				</p>
+
+				<p>
+					The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as <m>(s - a)(s - b)</m>, we can rewrite the function as:
+					<me>\frac{f(s)}{(s - a)(s - b)} = \frac{A}{s - a} + \frac{B}{s - b}.</me>
+					Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let's explore a series of examples to demonstrate this approach.
+				</p>
+
+				<p>
+					Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.
+				</p>
+
+				<example><title> Preparation via Partial Fraction Decomp </title>
+					<p>
+						<statement>
+							<p>
+								Suppose each of the following are <q> Laplace solutions </q> (post step 2) corresponding to some differential equation. Find the solution by completing steps 3 and 4.
+							</p>
+							<ol>
+								<li>
+									<p>
+										<m>\ds Y(s) = \frac{2s + 5}{(s + 1)(s + 4)}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds P(s) = \frac{s}{s^2 - s + 6}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds Q(s) = \frac{3s + 4}{s^2 - 2s + 1}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds R(s) = \frac{3s + 4}{(s^2 + 1)(s^2 + 4)}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds U(s) = \frac{2s^2 + 5s + 1}{s^3 - s}</m>
+									</p>
+								</li>
+								<li>
+									<p>
+										<m>\ds V(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}</m>
+									</p>
+								</li>
+							</ol>
+						</statement>
+					</p>
+					
+					<p>
+						<solution>
+							<p>
+								First, decompose <m>Y(s)</m> into partial fractions:
+								<me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{A}{s + 1} + \frac{B}{s + 4}.</me>
+								Multiply both sides by <m>(s + 1)(s + 4)</m>,
+								<me>2s + 5 = A(s + 4) + B(s + 1).</me>
+								and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+								<sidebyside widths="8% 80%">
+									<p>
+										<md>
+											<mrow>s = -1: \amp</mrow>
+											<mrow></mrow>
+											<mrow>s = -4: \amp</mrow>
+											<mrow></mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
+											<mrow>3 	\amp = A(3) + B(0) \quad\implies\quad A=1</mrow>
+											<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
+											<mrow>-3 	\amp = A(0) + B(-3) \quad\implies\quad B=1</mrow>
+										</md>
+									</p>>
+								</sidebyside>
+								Therefore, the partial fraction decomposition is:
+								<me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{1}{s + 1} + \frac{1}{s + 4}.</me>
+								Applying the inverse Laplace transform to each term:
+								<me>\ilap{Y(s)} = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}} = e^{-t} + e^{-4t}.</me>
+							</p>
+						</solution>
+				
+						<solution>
+							<p>
+								First, factor the quadratic denominator:
+								<me>s^2 - s - 6 = (s + 2)(s - 3).</me>
+								Now decompose <m>P(s)</m> into partial fractions:
+								<me>\frac{s}{(s + 2)(s - 3)} = \frac{A}{s + 2} + \frac{B}{s - 3}.</me>
+								Multiply both sides by <m>(s + 2)(s - 3)</m>,
+								<me>s = A(s - 3) + B(s + 2).</me>
+								and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+								<sidebyside widths="8% 80%">
+									<p>
+										<md>
+											<mrow>s = -2: \amp</mrow>
+											<mrow></mrow>
+											<mrow>s = 3: \amp</mrow>
+											<mrow></mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>-2 	\amp = A(-2 - 3) + B(-2 + 2)</mrow>
+											<mrow>-2 	\amp = A(-5) + B(0) \quad\implies\quad A=2/5</mrow>
+											<mrow>3 	\amp = A(3 - 3) + B(3 + 2)</mrow>
+											<mrow>3 	\amp = A(0) + B(5) \quad\implies\quad B=3/5</mrow>
+										</md>
+									</p>
+								</sidebyside>
+								The partial fraction decomposition is:
+								<me>\frac{s}{(s + 2)(s - 3)} = \frac{2/5}{s + 2} + \frac{3/5}{s - 3}.</me>
+								Therefore:
+								<me>\ilap{P(s)} = \frac25 e^{-2t} + \frac35 e^{3t}.</me>
+							</p>
+						</solution>
+				
+						<solution>
+							<p>
+								Factor the quadratic denominator:
+								<me>s^2 - 2s + 1 = (s - 1)^2.</me>
+								Decompose <m>Q(s)</m> into partial fractions:
+								<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
+								Multiply both sides by <m>(s - 1)^2</m>,
+								<me>3s + 4 = A(s - 1) + B.</me>
+								and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+								<sidebyside widths="8% 80%">
+									<p>
+										<md>
+											<mrow>s = 1: \amp</mrow>
+											<mrow></mrow>
+											<mrow>s = 0: \amp</mrow>
+											<mrow></mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>3(1) + 4 	\amp = A(1 - 1) + B</mrow>
+											<mrow>7 	\amp = A(0) + B \quad\implies\quad B=7</mrow>
+											<mrow>3(0) + 4 	\amp = A(0 - 1) + B</mrow>
+											<mrow>4 	\amp = -A + 7 \quad\implies\quad A=3</mrow>
+										</md>
+									</p>
+								</sidebyside>
+								The partial fraction decomposition is:
+								<me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
+								Therefore:
+								<me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
+							</p>
+						</solution>
+
+						<solution>
+							<p>
+								First, factor the cubic denominator:
+								<me>
+									s^3 - s = s(s - 1)(s + 1)
+								</me>.
+								Now decompose <m>R(s)</m> into partial fractions:
+								<me>
+									U(s) = \frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}
+								</me>
+								and multiply both sides by <m>s(s - 1)(s + 1)</m> to get
+								<me>
+									2s^2 + 5s + 1 = A(s - 1)(s + 1) + B(s)(s + 1) + C(s)(s - 1)
+								</me>.
+								Now, solve for <m>A, B,</m> and <m>C</m> by selecting convenient values for <m>s</m>:
+								<sidebyside widths="10% 70% 18%">
+									<p>
+										<md>
+											<mrow>	s = 0:	\amp	</mrow>
+											<mrow>					</mrow>
+											<mrow>	s = 1:	\amp	</mrow>
+											<mrow>					</mrow>
+											<mrow>	s = -1:	\amp	</mrow>
+											<mrow>					</mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>	1 	\amp = A(-1)(1) + B(0)(1) + C(0)(-1)	</mrow>
+											<mrow>	1 	\amp = -A								</mrow>
+											<mrow>	8 	\amp = A(0)(2) + B(1)(2) + C(1)(0)		</mrow>
+											<mrow>	 	\amp = 2B								</mrow>
+											<mrow>	-2 	\amp = A(1)(0) + B(-1)(0) + C(-1)(-2)	</mrow>
+											<mrow>	-2 	\amp = 2C								</mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>					</mrow>
+											<mrow>	A	\amp = -1	</mrow>
+											<mrow>					</mrow>
+											<mrow>	B	\amp = 4	</mrow>
+											<mrow>					</mrow>
+											<mrow>	C	\amp = -1	</mrow>
+										</md>
+									</p>
+								</sidebyside>
+								Therefore,
+								<md>
+									<mrow>	\ilap{U(s)}	\amp = \ilap{\frac{-1}{s} + \frac{4}{s - 1} + \frac{-1}{s + 1}}	</mrow>
+									<mrow>	u(t)		\amp = -1 + 4e^{t} - e^{-t}.									</mrow>
+								</md>
+							</p>
+						</solution>
+				
+						<solution>
+							<p>
+								Factor the quartic denominator:
+								<me>
+									s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1)
+								</me>.
+								Decompose <m>V(s)</m> into partial fractions:
+								<me>
+									\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}
+								</me>
+								and multiply both sides by <m>(s - 1)(s + 1)(s^2 + 1)</m> to get
+								<md>
+									<mrow>	4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2	\amp + 1)	+ B(s - 1)(s^2 + 1)	</mrow>
+									<mrow>										\amp + (Cs+D)(s - 1)(s + 1)		</mrow>.
+								</md>
+								Next, solve for <m>A, B, C,</m> and <m>D</m> by selecting convenient values for <m>s</m>:
+								<sidebyside widths="12% 80%">
+									<p>
+										<md>
+											<mrow>	s = 1:	\amp		</mrow>
+											<mrow>	\vphantom{\frac32}	</mrow>
+											<mrow>	s = -1:	\amp		</mrow>
+											<mrow>	\vphantom{\frac32}	</mrow>
+											<mrow>	s = 0:	\amp		</mrow>
+											<mrow>	\vphantom{\frac32}	</mrow>
+											<mrow>	s = -2:	\amp		</mrow>
+											<mrow>	\vphantom{\frac32}	</mrow>
+										</md>
+									</p>
+									<p>
+										<md>
+											<mrow>	6 	\amp = A(2)(2) + B(0)(2) + (C(1) + D)(0)(2)						</mrow>
+											<mrow>	6 	\amp = 4A \qquad\implies\qquad A = \frac32						</mrow>
+											<mrow>	2 	\amp = A(0)(2) + B(-2)(2) + (C(-1) + D)(-2)(0)					</mrow>
+											<mrow>	2 	\amp = -4B \qquad\implies\qquad B = -\frac12						</mrow>
+											<mrow>	1 	\amp = A(1)(1) + B(-1)(1) + (C(0) + D)(-1)(1)					</mrow>
+											<mrow>	1 	\amp = \frac32 + \frac12 - D \qquad\implies\qquad D = 1			</mrow>
+											<mrow>	-15 	\amp = A(-1)(3) + B(-3)(3) + (C(-2) + D)(-3)(-1)					</mrow>
+											<mrow>	-15 	\amp = -3A - 9B + -6C + 3D										</mrow>
+											<mrow>	-15 	\amp = -\frac92 + \frac92 + -6C + 3(1) \quad\implies\quad C = 3	</mrow>
+										</md>
+									</p>
+								</sidebyside>
+								Therefore,
+								<md>
+									<mrow>	\ilap{V(s)}	\amp = \ilap{\frac{\frac32}{s - 1} - \frac{\frac12}{s + 1} + \frac{3s + 1}{s^2 + 1}}	</mrow>
+									<mrow>	v(t)		\amp = \frac32 e^{t} - \frac12 e^{-t} + 3\cos(t) + \sin(t)								</mrow>.
+								</md>
+							</p>
+						</solution>
+					</p>
+				</example>
+
+				<p>
+					Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.
+				</p>
+			
+				<xi:include href="./c7-exercises/c7-chkpts-2-1-5-pfd.ptx" />
+
+			</subsubsection>
+
+		</subsection>
 
 	</section>
 
-	<section><title> Laplace Transform Method </title>
+	<section><title> Working Examples </title>
 
 		<!-- Still working on this -->
 

@@ -1,58 +1,39 @@
 <!--
-Transforming Equations Between Domains
+Section 2: The Laplace Domain
 
-	Introduction
-		* Clearly introduce the goal of transforming differential equations from the standard time domain into the Laplace domain and back again.
-		* Explicitly outline the four main steps of this transformation process.
-		* Refer to the 4 step <xref ref="lt-roadmap" text="custom">Laplace transform roadmap</xref> for a visual representation of these steps.
-		* Use the model equation <m>y'' - 9y = 10e^{2t}</m> consistently throughout the discussion to illustrate the transformation process clearly.
-		* Highlight the advantages of this method, including the systematic handling of initial conditions and simplification of differential equations into algebraic problems.
+	This section covers the Laplace domain, focusing on the transformation process of differential equations into the Laplace domain and back to the time domain.
 
-	Step 1: Forward Transform into the Laplace Domain
-		* Goal: Detail how to convert linear constant-coefficient differential equations into the Laplace domain and interpret terms conceptually.
-		* Clearly present this as Step 1 of the Laplace transform solution process, referencing the roadmap figure.
-		* Transform the model equation explicitly:
-			<m>y'' - 9y = 10e^{2t}</m> → <m>s^2lap{y} + 3slap{y} + 2lap{y} + 9 = -40\frac{1}{s - 3}</m>
-		* Emphasize the simplicity provided by the Laplace transform table and remind readers of the conceptual meaning of each transformed term:
-			- <m>-40\frac{1}{s - 3}</m> is the direct transformation of the function <m>10e^{2t}</m> into the Laplace domain.
-			- The variable <m>s</m> encodes derivative information by transferring derivatives onto exponential functions.
-			- <m>lap{y}</m> temporarily "encases" the original unknown function <m>y(t)</m>, preserving essential properties within the integral.
-			- Non-lap{y} terms encode initial condition information explicitly.
-		* Illustrate clearly with examples from the common Laplace transform table.
-		* Preview the next step briefly.
-	
-	Step 2: Solving for <m>lap{y}(s)</m>
-		* Goal: Detail the algebraic steps required to isolate <m>lap{y}(s)</m>.
-		* Clearly indicate this as Step 2, referring to the roadmap.
-		* Highlight this step as the simplest part, reassuring readers that complexity is now significantly reduced.
-		* Demonstrate isolation of <m>lap{y}(s)</m> clearly using the model equation.
-		* Provide brief guidance on common algebraic pitfalls.
-		* Preview the next step briefly.
+	Overall Story this Section wants to tell:
+		* This section is centered around a 4-step roadmap for the Laplace transform method, which includes:
+			1. Forward Transform into the Laplace Domain
+				- This step involves the transformation of a differential equation into the "Laplace Equation" within the Laplace domain.
+				- Our differential equation becomes the "Laplace Equation".
+				- Variable change: differential equation t → Laplace equation s.
+				- Unknown function change: y(t) → Y(s).
+			2. Solving the Laplace Equation for Y(s)
+				- This step solves the "Laplace Equation" for Y(s).
+				- We refer to Y(s) as the "Laplace Solution".
+			3. Preparing the Laplace Solution, Y(s), for the Backward Transform
+				- This step prepares the "Laplace Solution" for the inverse transform.
+				- This step is the most challenging part of the process, requiring algebraic techniques such as partial fraction decomposition and completing the square.
+				- The goal is to rewrite the terms of the Laplace Solution so that they match the right column of the Laplace transform table.
+			4. Backward Transform into the Standard Domain
+				- This step involves applying the inverse Laplace transform to the "Laplace Solution" to revert back to the original differential equation.
+				- The result is the solution to the original differential equation in the time domain.
+				- Variable change: Laplace equation s → differential equation t.
+				- Unknown function change: Y(s) → y(t).
 
-	Step 3: Preparing for the Backward Transform
-		* Goal: Detail how to prepare the transformed equation for the inverse transform.
-		* Clearly indicate this as Step 3, again referencing the roadmap.
-		* Set expectations by highlighting this step as the most challenging part, requiring algebraic techniques.
-		* Discuss explicitly why rewriting into an invertible form is necessary.
-		* Clearly demonstrate algebraic methods like partial fraction decomposition and completing the square, providing a heuristic for selecting the appropriate method:
-			- Factorable denominators → partial fractions.
-			- Non-factorable quadratic expressions → completing the square.
-		* Illustrate these techniques with clear, step-by-step examples.
-		* Preview the next step briefly.
-	
-	Step 4: Backward Transform into the Standard Domain
-		* Goal: Detail the process for converting the transformed equation back into the time domain.
-		* Clearly indicate this as Step 4, referencing the roadmap once again.
-		* Reinforce the analogy of "unwrapping" the integral to reveal the hidden original function, <m>y(t)</m>.
-		* Explicitly introduce and define the inverse Laplace transform.
-		* Explain the rationale and systematic approach required for the inverse transform.
-		* Demonstrate clearly with illustrative examples, referencing the standard Laplace transform table.
-		* Highlight common errors and provide brief guidance for avoiding them.
+	The section is divided into three subsections:
+		1.	Into the Laplace Domain (Forward Transform)
+			- This subsection covers step 1 of the Laplace Transform Method. That is, the transformation of a differential equation into the "Laplace Equation" (transformed equation in s) within the Laplace domain.
+		2.	Out of the Laplace Domain (Backward Transform)
+			- This subsection covers step 4 of the Laplace Transform Method. That is, the transformation of the "Laplace Equation" (in s) back into the original differential equation (in t).
+			- We skip from step 1 to step 4 because the backward transforms naturally follow from the table of forward transforms. Additionally, knowing the forms we are trying to match to get the inverse transforms motivates the preparation of the Laplace Solution in step 3.
+		3.	Within the Laplace Domain
+			- This subsection covers steps 2 and 3 of the Laplace Transform Method. That is, isolating Y(S) in the "Laplace Equation" to get the Laplace Solution (step 2) and preparing this solution for the backward transform (step 3).
+			- Since step 2 is straightforward, we integrate it into the discussion of step 3.
+			- The main focus of this subsection is to cover the standard techniques used to rewrite the terms of the Laplace Solution so that they match the right column of the Laplace transform table. This includes a review of partial fraction decomposition and completing the square.
 
-	Conclusion
-		* Clearly summarize the four-step process, emphasizing their logical connection and cumulative purpose.
-		* Reinforce key advantages of the Laplace transform method, such as systematic handling of initial conditions and algebraic simplification.
-		* Briefly preview how these steps will integrate into the holistic solution method discussed in the subsequent section.
 -->
 
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> The Laplace Domain </title>
@@ -420,6 +401,41 @@ Transforming Equations Between Domains
 			One of the most common adjustments is introducing a missing constant in the numerator, as we did earlier. By multiplying both the numerator and denominator by this constant, we maintain the expression's value while transforming it into a recognizable form. Let's look at some examples:
 		</p>
 
+		<p>
+			Once we've solved for <m>Y(s)</m> and shaped it into table-friendly pieces, we're ready for the final step of the Laplace Transform Method: returning to the time domain. This is where the inverse Laplace transform comes into play.
+		</p>
+
+		<p>
+			The inverse Laplace transform undoes the work of the forward transform. It takes each piece of <m>Y(s)</m> and maps it back to a function of <m>t</m>. This step completes the journey: we began with a differential equation in <m>t</m>, transformed it into a Laplace equation in <m>s</m>, and now return to the time-domain solution <m>y(t)</m>.
+		</p>
+
+		<p>
+			The key to making this possible is the Laplace transform table, which pairs common expressions in <m>s</m> with their time-domain counterparts. For example, the table tells us that:
+			<me>
+				\mathcal{L}^{-1}\left\{ \frac{1}{s - a} \right\} = e^{at}
+			</me>
+			and
+			<me>
+				\mathcal{L}^{-1}\left\{ \frac{s}{s^2 + b^2} \right\} = \cos(bt)
+			</me>
+		</p>
+
+		<p>
+			But what if <m>Y(s)</m> is made up of several terms? That's where one of the most useful properties of the Laplace transform comes in: <strong>linearity</strong>. The inverse transform is linear, which means we can apply it term by term:
+			<me>
+				\mathcal{L}^{-1}\left\{ A(s) + B(s) \right\} = \mathcal{L}^{-1}\left\{ A(s) \right\} + \mathcal{L}^{-1}\left\{ B(s) \right\}
+			</me>
+			This is why we spend so much time preparing <m>Y(s)</m>: once each piece matches something from the table, linearity lets us invert each one individually.
+		</p>
+
+		<p>
+			In this step, pattern recognition is everything. Once you've isolated and matched each part of <m>Y(s)</m>, the inverse transform becomes a simple lookup task. All the real work happened earlier—in solving and preparing the Laplace solution.
+		</p>
+
+		<p>
+			Let's walk through a [placeholder for example] to see how these patterns unfold and how linearity allows us to reassemble the final time-domain solution, piece by piece.
+		</p>
+
 		<example><title> Backward Transforms Missing a Constant </title>
 			<p>
 				<statement>
@@ -551,12 +567,8 @@ Transforming Equations Between Domains
 
 		<introduction>
 			<p>
-				Referring back to the <xref ref="lt-roadmap-full" text="title"/>, we have covered the forward and backward transformation of an equation into and out of the Laplace domain. However, the backward transforms we considered assumed that the terms of the Laplace domain equation were already in a form that could be easily transformed. In practice, we will need to prepare the equation so that we can easily match its terms with the right column of the Laplace transform table.
+				Once we've transformed our equation into the Laplace domain, we've effectively converted a differential equation problem into an algebra problem. Our original differential equation in <m>t</m> has become a "Laplace Equation" in <m>s</m>, and our unknown function <m>y(t)</m> has become <m>Y(s)</m>. Now comes the next challenge: solving this new equation and preparing it for the trip back out of the Laplace domain.
 			</p>
-
-			<p>
-				As you can see, below, this is the job of steps 2 and 3. In particular, once we forward transform our equation in the Laplace domain (step 1), we solve for <m>Y</m> (step 2), then prepare this <m>Y</m> (step 3) for a backward transform (step 4) to our solution. This section is dedicated to covering the common techniques used in step 3.
-			</p> 
 
 			<figure xml:id="lt-roadmap-steps-2-3">
 				<caption>
@@ -565,91 +577,210 @@ Transforming Equations Between Domains
 				<image source="figures/LT-Roadmap-steps-2-3.png" width="100%"/>
 			</figure>
 
+			<p>
+				This subsection focuses on two closely connected steps in the Laplace Transform Method:
+			</p>
+
+			<ol>
+				<li>
+					<term>Step 2: Solving the Laplace Equation.</term> Here, we isolate <m>Y</m> by treating the transformed equation like any other algebraic expression. Since derivatives have already been transformed, we're simply solving for the Laplace solution (a function of <m>s</m>).
+				</li>
+				<li>
+					<term>Step 3: Preparing the Laplace Solution.</term> This is where the heart of the Laplace method lies. Even after solving for <m>Y</m>, we're not done. To apply the backward Laplace transform (Step 4), we must rewrite <m>Y</m> into a form that matches entries in the Laplace table. This step is often the most challenging part of the entire process.
+				</li>
+			</ol>
+
+			<p>
+				You can think of Step 2 as getting an answer, and Step 3 as breaking the answer down into simpler pieces—ones that we can recognize in the table. That's where techniques like partial fraction decomposition, completing the square, and clever algebraic manipulation come into play.
+			</p>
+
 		</introduction>
+
+		<subsubsection><title> Laplace Domain Guiding Principle </title>
+
+			<p>
+				After step 2, the Laplace solution will be a rational function of the form:
+				<me>
+					Y(s) = \frac{P(s)}{Q(s)}
+				</me>
+				where <m>P(s)</m> and <m>Q(s)</m> are polynomials. The job of step 3 is to prepare <m>Y(s)</m> for a backward transform. This means rewriting <m>Y(s)</m> into a sum of simpler functions resembling the forms in the right column of the Laplace transform table. Fortunately, rational functions have a property that ensures they can be rewritten as the sum of the following types of terms 
+				<me>
+					\frac{k}{s-a},\quad\frac{k}{(s-a)^n},\quad\frac{k}{as^2 + bs + c},\quad\frac{ks}{as^2 + bs + c}
+				</me>
+				where <m>a, b, c,</m> &amp; <m>k</m> are constants and <m>as^2 + bs + c</m> is irreducible.
+				<fn>
+					<p>
+						A quadratic polynomial <m>as^2 + bs + c</m> is irreducible if it cannot be factored as the product of two linear factors with real coefficients.
+					</p>
+
+					<p>
+						For example, <m>s^2 + 1</m> is irreducible because it factors as <m>(s+i)(s-i)</m>, but <m>i</m> is not a real number.
+					</p>
+						
+					<p>
+						A quadratic is irreducible if its discriminant, <m>b^2 - 4ac</m>, is negative.
+					</p>
+				</fn>
+				The process by which this is done is called <term>partial fraction decomposition (PFD)</term>.
+			</p>
+
+			<p>
+				As we work through the rest of this section, we will assume the Laplace solution, <m>Y(s)</m>, has been found (step 2) and explore hypothetical situations for how to prepare <m>Y(s)</m> (step 3) for the final backward transformation (step 4) which leads to the solution. Each situation will introduce a new complication and a strategy for overcoming it.   
+			</p>
+
+		</subsubsection>
+
+		<subsubsection><title> Situation 1 - Straightforward PFD </title>
+
+			<p>
+				For the first situation, suppose we completed steps 1 and 2 to find the Laplace solution is given by the rational function
+				<me>
+					Y(s) = \frac{2s+5}{s^2+5s+4}
+				</me>.
+				Since the denominator can be factored as <m>(s+1)(s+4)</m>, partial fraction decomposition guarantees that this rational function can be written as
+				<me>
+					\frac{2s+5}{(s+1)(s+4)} = \frac{A}{s+1} + \frac{B}{s+4}
+				</me>
+			</p>
+
+			<p>
+				To find the constants <m>A</m> and <m>B</m>, we multiply both sides by the common denominator, <m>(s+1)(s+4)</m>, to eliminate all the fractions and leaving us with
+				<me>
+					2s + 5 = A(s + 4) + B(s + 1)
+				</me>.
+			</p>
+
+			<p>
+				Strategically selecting <m>s</m> as <m>-1</m> and <m>-4</m> leads directly to the values of <m>A</m> and <m>B</m>.
+			</p>
+
+			<sidebyside widths="20% 60% 20%">
+				<p>
+					<md>
+						<mrow>s = -1: \amp</mrow>
+						<mrow></mrow>
+						<mrow>s = -4: \amp</mrow>
+						<mrow></mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
+						<mrow>3 	\amp = A(3) + B(0)</mrow>
+						<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
+						<mrow>-3 	\amp = A(0) + B(-3)</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow></mrow>
+						<mrow>A=1</mrow>
+						<mrow></mrow>
+						<mrow>B=1</mrow>
+					</md>
+				</p>
+			</sidebyside>
+
+			<p>
+				This completes step 3 since the Laplace solution can be written as
+				<me>
+					Y(s) = \frac{1}{s + 1} + \frac{1}{s + 4}
+				</me>
+				and is now prepared for the direct backward transform
+				<md>
+					<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}}	</mrow>
+				</md>,
+				resulting in the solution <m>y(t) = e^{-t} + e^{-4t}</m>.
+			</p>
+
+		</subsubsection>
 
 		<subsubsection><title> Splitting Fractions </title>
 
 			<p>
-				One useful algebraic manipulation in preparing for the inverse Laplace transform is splitting a rational function that has a sum or difference in the numerator. This technique simplifies the expression into recognizable forms, making it easier to apply known Laplace transform pairs. Let's explore two examples where splitting fractions proves useful.
+				One of the simplest, yet most powerful, techniques for preparing a Laplace solution is <em>splitting fractions</em>. This comes into play when the denominator of a term in <m>Y(s)</m> already matches a standard form from the Laplace transform table, but the numerator is a sum or difference of terms.
+			</p>
+
+			<p>
+				For example, suppose we've solved for <m>Y(s)</m> and ended up with a term like:
+				<me>
+					\frac{s + 2}{s^2 + 4}
+				</me>
+				Looking at the Laplace table, you might recognize <m>\frac{s}{s^2 + 4}</m> as the transform of <m>\cos(2t)</m>, and <m>\frac{2}{s^2 + 4}</m> as the transform of <m>\sin(2t)</m>. But to take advantage of that observation, we need to separate this term as
+				<me>
+					\frac{s}{s^2 + 4} + \frac{2}{s^2 + 4}
+				</me>
+			</p>
+
+			<p>
+				This is what we mean by “splitting fractions”—we break up the numerator so that each term individually aligns with an entry in the Laplace transform table. The denominator stays the same, and the process is just reversing the addition of fractions with a common denominator.
+			</p>
+
+			<p>
+				Let's work through a [placeholder for example] where we encounter a Laplace Solution that looks too complex to invert at first glance, but becomes straightforward after splitting.
 			</p>
 			
 			<example><title> Backward Transform - Splitting Fractions </title>
 				<p>
 					<statement>
 						<p>
-							Suppose you applied a forward transformation .
+							Suppose <m>Y(s)</m> are the Laplace solutions found from step 2. Rewrite <m>Y(s)</m> so that its terms match the forms in the right column of the <xref ref="lt-table-L1-L12" text="custom">Laplace transform table</xref>. Then proceed to step 4 and give the solution. 
 						</p>
-						<ol>
-							<li>
-								<p>
-									<m>\ds\ilap{\frac{2s - 3}{s^2 + 16}}</m>
-									
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds\ilap{\frac{s^3 - 7}{s^7}}</m>
-								</p>
-							</li>
-						</ol>
+						<p>
+							<me>
+								Y(s) = \frac{2s - 3}{s^2 + 16} \quad\text{and}\quad Y(s) = \frac{s^3 - 7}{s^7}
+							</me>
+						</p>
 					</statement>
 				</p>
 
 				<p>
 					<solution>
 						<p>
-							This function has a sum in the numerator, so we can split it into two fractions:
-							<me>\ds \frac{2s - 3}{s^2 + 16} = \frac{2s}{s^2 + 16} - \frac{3}{s^2 + 16}</me>.
+							Noticing the form <m>s^2 + b^2</m> in the denominator, we split the fraction as follows:
+							<me>
+								Y(s) = \frac{2s - 3}{s^2 + 16} 
+								= \ub{\frac{2s}{s^2 + 16}}_{\large\text{1️⃣}}
+								- \ub{\frac{3}{s^2 + 16}}_{\large\text{2️⃣}}
+							</me>.
 						</p>
+
 						<p>
-							Now, we can apply the inverse Laplace transform to each term separately. The first term matches with <xref ref="L5" text="custom"><m>L_5</m></xref>, and the second term corresponds to <xref ref="L4" text="custom"><m>L_4</m></xref>:
-							<md>
-								<mrow>\amp\ \ilap{\frac{2s - 3}{s^2 + 16}} </mrow>
-								<mrow>\amp\ = 2\ \ilap{\frac{s}{s^2 + 16}} - 3\ \ilap{\frac{1}{s^2 + 16}} </mrow>
-								<mrow>\amp\ = 2 \cos(4t) - \frac{3}{4} \sin(4t). </mrow>
-							</md>
+							Since 1️⃣ and 2️⃣ resemble <xref ref="lt-table-row-L5" text="title"/> and <xref ref="lt-table-row-L4" text="title"/> (with <m>b=4</m>), respectively, we further update these terms as
 						</p>
-								
+					
+						<me>
+							Y(s) = 2\frac{s}{s^2 + 16} - \frac34\frac{4}{s^2 + 16}
+						</me>
+					
 						<p>
-							Thus, the final result is:
-							<me>\ds \ilap{\frac{2s - 3}{s^2 + 16}} = 2 \cos(4t) - \frac{3}{4} \sin(4t).</me>
+							and apply the inverse Laplace transform,
 						</p>
+						
+						<me>
+							\ilap{Y(s)} = 2\ilap{\frac{s}{s^2 + 16}} - \frac34\ilap{\frac{4}{s^2 + 16}}
+						</me>
+						
+						<p>
+							to get the solution
+						</p>
+						
+						<me>
+							y(t) = 2 \cos(4t) - \frac{3}{4} \sin(4t).
+						</me>
+
 					</solution>
 					<solution>
 						<p>
-							To do this, we split the fraction into two simpler terms:
-							<me>\ds \frac{2s - 3}{s^2 + 16} = \frac{2s}{s^2 + 16} - \frac{3}{s^2 + 16}.</me>
-							Now, we can apply the inverse Laplace transform to each term separately. The first term matches with <xref ref="L5" text="custom"><m>L_5</m></xref>, and the second term corresponds to <xref ref="L4" text="custom"><m>L_4</m></xref>:
+							Since the denominator of <m>Y</m> already matches the denominator in <xref ref="lt-table-row-L3" text="title"/>, we split the fraction as
+							<me>
+								Y(s) = \frac{s^3 - 7}{s^7} = \frac{s^3}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} - \frac{7}{s^7} = \frac{1}{3!}\frac{3!}{s^4} - \frac{7}{6!}\frac{6!}{s^7}
+							</me>
+							and apply the inverse Laplace transform, to get
 							<md>
-								<mrow>\amp\ \ilap{\frac{2s - 3}{s^2 + 16}} </mrow>
-								<mrow>\amp\ = 2\ \ilap{\frac{s}{s^2 + 16}} - 3\ \ilap{\frac{1}{s^2 + 16}} </mrow>
-								<mrow>\amp\ = 2 \cos(4t) - \frac{3}{4} \sin(4t). </mrow>
-							</md>
-						</p>
-					</solution>
-					<solution>
-						<p>
-							We can split the fraction into the terms,
-							<me>\ds \frac{s^3 - 7}{s^7} = \frac{s^3}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} - \frac{7}{s^7}.</me>
-							and apply the inverse Laplace transform, <xref ref="L3" text="custom"><m>L_3</m></xref>, to each
-							<md>
-								<mrow> \ilap{\frac{s^3 - 7}{s^7}}	\amp = \ilap{\frac{1}{s^4} - \frac{7}{s^7}}</mrow>
-								<mrow>									\amp = \ilap{\frac{1}{s^4}} - 7\ilap{\frac{1}{s^7}}</mrow>
-								<mrow>									\amp = \frac{1}{3!}\ilap{\frac{3!}{s^4}} - \frac{7}{6!}\ilap{\frac{6!}{s^7}}</mrow>
-								<mrow>									\amp = \frac{1}{6}t^3 - \frac{7}{720}t^6</mrow>
-							</md>
-						</p>
-					</solution>
-					<solution>
-						<p>
-							We can split the fraction into the terms,
-							<me>\ds \frac{s^3 - 7}{s^7} = \frac{s^3}{s^7} - \frac{7}{s^7} = \frac{1}{s^4} - \frac{7}{s^7}.</me>
-							and apply the inverse Laplace transform, <xref ref="L3" text="custom"><m>L_3</m></xref>, to each
-							<md>
-								<mrow> \ilap{\frac{s^3 - 7}{s^7}}	\amp = \ilap{\frac{1}{s^4} - \frac{7}{s^7}}</mrow>
-								<mrow>									\amp = \ilap{\frac{1}{s^4}} - 7\ilap{\frac{1}{s^7}}</mrow>
-								<mrow>									\amp = \frac{1}{3!}\ilap{\frac{3!}{s^4}} - \frac{7}{6!}\ilap{\frac{6!}{s^7}}</mrow>
-								<mrow>									\amp = \frac{1}{6}t^3 - \frac{7}{720}t^6</mrow>
+								<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{1}{3!}\frac{3!}{s^4} - \frac{7}{6!}\frac{6!}{s^7}}			</mrow>
+								<mrow>	y(t)		\amp = \frac{1}{3!}\ilap{\frac{3!}{s^4}} - \frac{7}{6!}\ilap{\frac{6!}{s^7}}	</mrow>
+								<mrow>	y(t)		\amp = \frac{1}{6}t^3 - \frac{7}{720}t^6										</mrow>
 							</md>
 						</p>
 					</solution>
@@ -657,10 +788,9 @@ Transforming Equations Between Domains
 			</example>
 
 			<p>
-				This section demonstrates how relatively simple modifications, such as splitting fractions, can make it easier to find the inverse Laplace transform. However, some functions of <m>s</m> may require more advanced techniques. In the next section, we will explore how completing the square can help match the forms needed for a backward transform when the <m>s</m>-variable is shifted.
+				Always check for opportunities to split before reaching for more advanced techniques. It's often the quickest way to unlock the inverse transform.
 			</p>
 		
-			<xi:include href="./c7-exercises/c7-chkpts-2-1-3-splitting-fractions.ptx" />
 		</subsubsection>
 
 		<subsubsection><title> Completing the Square </title>
@@ -679,6 +809,43 @@ Transforming Equations Between Domains
 				Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from <xref ref="solving-the-quadratic-equation" text="custom">solving quadratic equations</xref> that if the discriminant
 				<me>b^2 - 4ac</me>
 				is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.
+			</p>
+
+			<p>
+				Sometimes, the form of <m>Y(s)</m> looks close to something familiar, but not quite close enough. In particular, you might see a quadratic in the denominator—like <m>s^2 + 6s + 13</m>—and feel stuck because it doesn't match any entry in the Laplace transform table.
+			</p>
+
+			<p>
+				That's where <em>completing the square</em> comes in. The Laplace table is full of expressions like:
+				<me>
+					\frac{s}{(s - a)^2 + b^2} \quad \text{or} \quad \frac{b}{(s - a)^2 + b^2}
+				</me>
+				These are the transforms of cosine and sine functions involving exponential shifts. To match them, we need the denominator to look like a perfect square plus a constant.
+			</p>
+
+			<p>
+				Completing the square is a way to rewrite any quadratic into that recognizable form. For example:
+				<me>
+					s^2 + 6s + 13 = (s + 3)^2 + 4
+				</me>
+				Now that denominator is starting to look a lot like something from the Laplace table!
+			</p>
+
+			<p>
+				This technique is especially important when dealing with shifted sine and cosine transforms. The key is to rewrite the denominator into a form that highlights:
+			</p>
+
+			<ul>
+				<li>A shift in <m>s</m> — this becomes a time-domain exponential like <m>e^{-3t}</m></li>
+				<li>A sum of squares — this creates sine or cosine terms in the solution</li>
+			</ul>
+
+			<p>
+				After completing the square, you'll often need to split the fraction or rearrange the numerator to finish the job. But the square completion is the step that unlocks the structure behind the expression.
+			</p>
+
+			<p>
+				Let's look at a [placeholder for example] where completing the square reveals the form we need to apply the inverse Laplace transform.
 			</p>
 		
 			<example><title> Find the Inverse Laplce Transform </title>
@@ -790,9 +957,12 @@ Transforming Equations Between Domains
 				Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the <m>s</m>-function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.
 			</p>
 
-			<xi:include href="./c7-exercises/c7-chkpts-2-1-4-completing-the-sqr.ptx" />
+			<p>
+				Whenever you see a second-degree polynomial in the denominator that isn't factored or doesn't match a known entry, your first instinct should be: can I complete the square? If the answer is yes, you're probably on the right track.
+			</p>
+
 		</subsubsection>
-		
+
 		<subsubsection><title> Partial Fraction Decomposition </title>
 			
 			<p>
@@ -811,6 +981,34 @@ Transforming Equations Between Domains
 
 			<p>
 				Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.
+			</p>
+
+			<p>
+				Partial fraction decomposition (PFD) is the heavyweight tool of the Laplace transform method. While techniques like splitting fractions and completing the square are elegant and quick, PFD is the go-to strategy when your Laplace solution is a single complicated rational expression—and there's no clear path to invert it.
+			</p>
+
+			<p>
+				The goal of PFD is simple: to break a complicated rational expression into a sum of simpler terms that we can match directly with entries in the Laplace transform table. But the method itself can feel messy. There are case distinctions, algebraic manipulations, and systems of equations. Still, it's worth it—because once we decompose the expression, the backward transform becomes a breeze.
+			</p>
+
+			<p>
+				Here's the general setup: we encounter a Laplace solution like
+				<me>
+					Y(s) = \frac{P(s)}{Q(s)}
+				</me>
+				where <m>P(s)</m> and <m>Q(s)</m> are polynomials and <m>\deg P(s) \lt \deg Q(s)</m>. If that's the case, we can try to rewrite this as a sum of simpler fractions, each corresponding to a known Laplace transform.
+			</p>
+
+			<p>
+				Exactly how we do that depends on the structure of the denominator <m>Q(s)</m>—whether it factors into linear terms, irreducible quadratics, or a mix of both. We won't attempt to cover every rule and nuance here. Instead, we'll focus on why PFD shows up in the Laplace method and how to recognize when it's needed.
+			</p>
+
+			<p>
+				You can think of partial fractions as the translation step between algebra and table lookup. The algebra gives you the messy result, and the table wants simple, isolated terms. PFD bridges that gap.
+			</p>
+
+			<p>
+				In this subsection, we'll work through a [placeholder for example] that walks through the process of decomposing a rational function using partial fractions and shows how each resulting term corresponds to a familiar inverse Laplace transform.
 			</p>
 
 			<example><title> Preparation via Partial Fraction Decomp </title>
@@ -1066,10 +1264,22 @@ Transforming Equations Between Domains
 			<p>
 				Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.
 			</p>
+
+			<p>
+				Because PFD is such a central technique—not just in Laplace transforms, but in many areas of applied math—we've included a dedicated appendix that reviews the method in full detail. That review includes the general procedure, case breakdowns, and several worked examples to serve as a reference.
+			</p>
+
+			<p>
+				For now, focus on spotting when PFD is needed, understanding what it accomplishes, and getting comfortable with the logic behind breaking a rational expression into simpler pieces.
+			</p>
 		
-			<xi:include href="./c7-exercises/c7-chkpts-2-1-5-pfd.ptx" />
+			<p>
+				As you work through this process, pay attention not just to the mechanics but to the strategy behind each algebraic move. This is where the Laplace Transform Method feels the most like solving a puzzle. And once you've broken <m>Y(s)</m> down into table-friendly pieces, you're ready for the final step: bringing the solution back into the time domain.
+			</p>
 
 		</subsubsection>
+
+		
 
 	</subsection>
 
