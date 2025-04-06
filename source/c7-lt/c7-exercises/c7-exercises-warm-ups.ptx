@@ -125,4 +125,130 @@
 		</p>
 	</exercise>
 
+	<example><title> Step 3 Practice </title>
+
+		<p>
+			<statement>
+				<p>
+					Prepare each Laplace solution (step 3) for a backward transformation, then transform it back into a function of <m>t</m> (step 4).
+				</p>
+				<ol>
+					<li>
+						<p>
+							<m>\ds Y(s) = \frac{11}{s^2 - 6s + 14}</m>
+						</p>
+					</li>
+
+					<li>
+						<p>
+							<m>\ds Y(s) = \frac{s+3}{s^2 + 2s + 10}</m>
+						</p>
+					</li>
+
+					<li>
+						<p>
+							<m>\ds P(s) = \frac{s}{s^2 - s + 6}</m>
+						</p>
+					</li>
+				</ol>
+			</statement>
+		</p>
+
+		<p>
+			<solution>
+				<p>
+					The discriminant of the denominator <m>s^2 - 6s + 14</m> is:
+					<me>b^2 - 4ac = (-6)^2 - 4(1)(14) = 36 - 56 = -20</me>,
+					indicating that completing the square is necessary:
+					<md>
+						<mrow> s^2 - 6s + 14 = (s^2 - 6s) + 14  =\amp (\ob{s^2 - 6s + 9}^{(s - 3)^2} - 9) + 14  </mrow>
+						<mrow>								  =\amp (s - 3)^2 + 5							 </mrow>
+					</md>.
+					Rewriting <m>K(s)</m> as:
+					<me>
+						\frac{11}{s^2 - 6s + 14}
+							= \ub{\frac{11}{(s - 3)^2 + 5}}_{\large \text{Match with } L_7}
+							= \frac{11}{\sqrt{5}}\ub{\frac{\sqrt{5}}{(s - 3)^2 + 5}}_{\large <xref ref="L7" text="custom"><m>L_7</m></xref> (a = 3, b = \sqrt{5})}
+					</me>.
+					Therefore,
+					<md>
+						<mrow>
+							k(t) = \ilap{K(s)} \amp = \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)
+						</mrow>
+					</md>.
+				</p>
+			</solution>
+	
+			<solution>
+				<p>
+					Completing the square for the denominator of <m>P(s)</m> gives:
+					<me>
+						\frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
+					</me>.
+					However, the numerator <m>s + 3</m> does not match <m>s + 1</m>. To resolve this, we rewrite <m>3</m> as <m>1 + 2</m> and group terms:
+					<md>
+						<mrow>
+							\frac{s+3}{s^2 + 2s + 10}
+								\amp = \frac{s + 1 + 2}{(s + 1)^2 + 9}
+						</mrow>
+						<mrow>
+								\amp = \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
+						</mrow>
+						<mrow>
+								\amp = \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref ref="L8" text="title"/>\ (a=-1, b=3)}
+									+ \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref ref="L7" text="title"/>\ (a=-1, b=3)}
+						</mrow>	
+					</md>,
+					Now, apply the inverse Laplace transform:
+					<md>
+						<mrow>
+							p(t) \amp = \ilap{P(s)}
+						</mrow>
+						<mrow>
+								\amp = \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
+						</mrow>
+						<mrow>
+								\amp = e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
+						</mrow>	
+					</md>
+				</p>
+			</solution>
+	
+			<solution>
+				<p>
+					First, factor the quadratic denominator:
+					<me>s^2 - s - 6 = (s + 2)(s - 3).</me>
+					Now decompose <m>P(s)</m> into partial fractions:
+					<me>\frac{s}{(s + 2)(s - 3)} = \frac{A}{s + 2} + \frac{B}{s - 3}.</me>
+					Multiply both sides by <m>(s + 2)(s - 3)</m>,
+					<me>s = A(s - 3) + B(s + 2).</me>
+					and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+					<sidebyside widths="8% 80%">
+						<p>
+							<md>
+								<mrow>s = -2: \amp</mrow>
+								<mrow></mrow>
+								<mrow>s = 3: \amp</mrow>
+								<mrow></mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>-2 	\amp = A(-2 - 3) + B(-2 + 2)</mrow>
+								<mrow>-2 	\amp = A(-5) + B(0) \quad\implies\quad A=2/5</mrow>
+								<mrow>3 	\amp = A(3 - 3) + B(3 + 2)</mrow>
+								<mrow>3 	\amp = A(0) + B(5) \quad\implies\quad B=3/5</mrow>
+							</md>
+						</p>
+					</sidebyside>
+					The partial fraction decomposition is:
+					<me>\frac{s}{(s + 2)(s - 3)} = \frac{2/5}{s + 2} + \frac{3/5}{s - 3}.</me>
+					Therefore:
+					<me>\ilap{P(s)} = \frac25 e^{-2t} + \frac35 e^{3t}.</me>
+				</p>
+			</solution>
+		</p>
+
+	</example>
+
 </exercises>

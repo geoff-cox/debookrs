@@ -775,11 +775,7 @@ Section 2: The Laplace Domain
 				<me>
 					\frac{*}{as^2 + bs + c}
 				</me>
-				where <m>A, B, C</m> are constants and the numerator, <m>*</m>, is irrelevant. The way you prepare of this term for the backward transform depends only on the denominator.
-			</p>
-
-			<p>
-				First, we can assume that the denominator has a <m>bs</m> term. If it didn't, then we could proceed as we did in the previous section. Under this assumption, our approach, based on the discriminant of the denominator, is as follows:
+				where <m>a, b, c</m> are constants and the numerator, <m>*</m>, is irrelevant. We also assume that the denominator has a <m>bs</m> term. Since if it didn't, we could proceed as we did in the previous section. The way we prepare this term for the backward transform is based on the discriminant of the denominator, as follows:
 				<ol>
 					<li>
 						<p>
@@ -805,448 +801,438 @@ Section 2: The Laplace Domain
 				In either case, the term is in a form that can be inverted using the process discussed in the previous section and we now have all the tools we need to prepare the Laplace solution for a backward transform. Now we need to put our strategies into practice by considering a number of examples.
 			</p>
 
-			<example><title> Preparation via Completing the Square </title>
+			<example><title> Preparing the Laplace Solution </title>
 
 				<p>
 					<statement>
 						<p>
-							Prepare each Laplace solution (step 3) for a backward transformation, then transform it back into a function of <m>t</m> (step 4).
+							Prepare the Laplace solution for a backward transform (step 3), then apply the inverse transform to convert it back into a function of <m>t</m> (step 4).
 						</p>
 						<ol>
 							<li>
 								<p>
 									<m>\ds Y(s) = \frac{2s + 5}{s^2 + 5s + 4}</m>
 								</p>
+								<solution>
+									<p>
+										Since the denominator is quadratic and 
+										<me>
+											\Delta = b^2 - 4ac = 5^2-4(1)(4) = 9 \gt 0
+										</me>,
+										then we proceed with partial fraction decomposition. Since the denominator can be factored as <m>(s+1)(s+4)</m>,  we know this rational function can be written as
+										<me>
+											\frac{2s+5}{(s+1)(s+4)} = \frac{A}{s+1} + \frac{B}{s+4}
+										</me>
+									</p>
+
+									<p>
+										To find <m>A</m> and <m>B</m>, we multiply both sides by the common denominator, <m>(s+1)(s+4)</m>, eliminating all the fractions and leaving us with
+										<me>
+											2s + 5 = A(s + 4) + B(s + 1)
+										</me>.
+									</p>
+
+									<p>
+										Strategically selecting <m>s</m> as <m>-1</m> and <m>-4</m> leads directly to <m>A</m> and <m>B</m>:
+									</p>
+
+									<sidebyside widths="16% 70% 14%">
+										<p>
+											<md>
+												<mrow>s = -1: \amp</mrow>
+												<mrow></mrow>
+												<mrow>s = -4: \amp</mrow>
+												<mrow></mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
+												<mrow>3 	\amp = A(3) + B(0)</mrow>
+												<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
+												<mrow>-3 	\amp = A(0) + B(-3)</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow></mrow>
+												<mrow>A=1</mrow>
+												<mrow></mrow>
+												<mrow>B=1</mrow>
+											</md>
+										</p>
+									</sidebyside>
+
+									<p>
+										This completes step 3 since the Laplace solution can now be written as
+										<me>
+											Y(s) = \frac{1}{s + 1} + \frac{1}{s + 4}
+										</me>
+										and is prepared for the backward transform (step 4):
+										<md>
+											<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}}	</mrow>
+										</md>,
+										resulting in the solution <m>y(t) = e^{-t} + e^{-4t}</m>.
+									</p>
+								</solution>
 							</li>
+
 							<li>
 								<p>
-									<m>\ds Y(s) = \frac{s-1}{s^2 - 2s + 5}</m>
+									<m>\ds H(s) = \frac{s-1}{s^2 - 2s + 5}</m>
 								</p>
+								<solution>
+
+									<p>
+
+										Since the denominator is quadratic and 
+										<me>
+											\Delta = b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16 \lt 0
+										</me>,
+										we approach step 3 by completing the square of the denominator
+										<md>
+											<mrow>	s^2 - 2s + 5	\amp = \ob{s^2 - 2s + \boxed{1}}^{(s - 1)^2} - \boxed{1} + 5	</mrow>
+											<mrow>					\amp = (s - 1)^2 + 4											</mrow>
+										</md>.
+									</p>
+
+									<p>
+										Subsutiting this into <m>H(s)</m> shows
+										<me>
+											\frac{s - 1}{s^2 - 2s + 5} = \frac{s - 1}{(s - 1)^2 + 4}
+										</me>,
+										which is a perfect match with <xref ref="L8" text="title"/> and we can move on to step 4.
+									</p>
+
+									<p>
+										Applying the inverse Laplace transform to <m>H(s)</m> gives us the solution
+										<me>
+											h(t) = e^{t}\cos(2t)
+										</me>.
+									</p>
+								</solution>
 							</li>
-							<li>
-								<p>
-									<m>\ds Y(s) = \frac{11}{s^2 - 6s + 14}</m>
-								</p>
-							</li>
+
 							<li>
 								<p>
 									<m>\ds Y(s) = \frac{s+3}{s^2 + 2s + 10}</m>
 								</p>
+								<solution>
+									<p>
+										Completing the square for the denominator of <m>P(s)</m> gives:
+										<me>
+											\frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
+										</me>.
+										However, the numerator <m>s + 3</m> does not match <m>s + 1</m>. To resolve this, we rewrite <m>3</m> as <m>1 + 2</m> and group terms:
+										<md>
+											<mrow>
+												\frac{s+3}{s^2 + 2s + 10}
+													\amp = \frac{s + 1 + 2}{(s + 1)^2 + 9}
+											</mrow>
+											<mrow>
+													\amp = \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
+											</mrow>
+											<mrow>
+													\amp = \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref ref="L8" text="title"/>\ (a=-1, b=3)}
+														+ \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref ref="L7" text="title"/>\ (a=-1, b=3)}
+											</mrow>	
+										</md>,
+										Now, apply the inverse Laplace transform:
+										<md>
+											<mrow>
+												p(t) \amp = \ilap{P(s)}
+											</mrow>
+											<mrow>
+													\amp = \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
+											</mrow>
+											<mrow>
+													\amp = e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
+											</mrow>	
+										</md>
+									</p>
+								</solution>
 							</li>
-						</ol>
-					</statement>
-				</p>
 
-				<p>
-					<solution>
-						<p>
-							The denominator can be factored as <m>(s+1)(s+4)</m>, so we can use partial fraction decomposition to write the Laplace solution in the form
-							<me>
-								Y(s) = \frac{A}{s + 1} + \frac{B}{s + 4}
-							</me>.
-						</p>
-
-						<p>
-							To find the constants <m>A</m> and <m>B</m>, we multiply both sides by the common denominator, <m>(s+1)(s+4)</m>, to eliminate all the fractions and leaving us with
-							<me>
-								2s + 5 = A(s + 4) + B(s + 1)
-							</me>.
-						</p>
-
-						<p>
-							Solving for <m>A</m> and <m>B</m> gives us
-							<md>
-								<mrow>A = 1, B = 1</mrow>
-							</md>.
-						</p>
-
-						<p>
-							For the first situation, suppose we completed steps 1 and 2 to find the Laplace solution is given by the rational function
-							<me>
-								Y(s) = \frac{2s+5}{s^2+5s+4}
-							</me>.
-							Since the denominator can be factored as <m>(s+1)(s+4)</m>, partial fraction decomposition guarantees that this rational function can be written as
-							<me>
-								\frac{2s+5}{(s+1)(s+4)} = \frac{A}{s+1} + \frac{B}{s+4}
-							</me>
-						</p>
-
-						<p>
-							To find the constants <m>A</m> and <m>B</m>, we multiply both sides by the common denominator, <m>(s+1)(s+4)</m>, to eliminate all the fractions and leaving us with
-							<me>
-								2s + 5 = A(s + 4) + B(s + 1)
-							</me>.
-						</p>
-
-						<p>
-							Strategically selecting <m>s</m> as <m>-1</m> and <m>-4</m> leads directly to the values of <m>A</m> and <m>B</m>.
-						</p>
-
-						<sidebyside widths="20% 60% 20%">
-							<p>
-								<md>
-									<mrow>s = -1: \amp</mrow>
-									<mrow></mrow>
-									<mrow>s = -4: \amp</mrow>
-									<mrow></mrow>
-								</md>
-							</p>
-							<p>
-								<md>
-									<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
-									<mrow>3 	\amp = A(3) + B(0)</mrow>
-									<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
-									<mrow>-3 	\amp = A(0) + B(-3)</mrow>
-								</md>
-							</p>
-							<p>
-								<md>
-									<mrow></mrow>
-									<mrow>A=1</mrow>
-									<mrow></mrow>
-									<mrow>B=1</mrow>
-								</md>
-							</p>
-						</sidebyside>
-
-						<p>
-							This completes step 3 since the Laplace solution can be written as
-							<me>
-								Y(s) = \frac{1}{s + 1} + \frac{1}{s + 4}
-							</me>
-							and is now prepared for the direct backward transform
-							<md>
-								<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}}	</mrow>
-							</md>,
-							resulting in the solution <m>y(t) = e^{-t} + e^{-4t}</m>.
-						</p>
-					</solution>
-
-					<solution>
-						<p>
-							The discriminant of the denominator <m>s^2 - 2s + 5</m> is
-							<me>b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16</me>,
-							which is negative. Therefore, completing the square is necessary:
-							<md>
-								<mrow> s^2 - 2s + 5 = (s^2 - 2s) + 5	\amp = (\ob{s^2 - 2s + 1}^{(s - 1)^2} - 1) + 5   </mrow>
-								<mrow>								  \amp = (s - 1)^2 + 4							 </mrow>
-							</md>.
-							Rewriting <m>H(s)</m> gives:
-							<me>\frac{s-1}{s^2 - 2s + 5} = \frac{s-1}{(s - 1)^2 + 4},</me>
-							which matches <xref ref="L8" text="title"/> (<m>a=1, b=2</m>). Therefore,
-							<me>h(t) = \ilap{H(s)} = e^{t}\cos(2t).</me>
-						</p>
-					</solution>
-			
-					<solution>
-						<p>
-							The discriminant of the denominator <m>s^2 - 6s + 14</m> is:
-							<me>b^2 - 4ac = (-6)^2 - 4(1)(14) = 36 - 56 = -20</me>,
-							indicating that completing the square is necessary:
-							<md>
-								<mrow> s^2 - 6s + 14 = (s^2 - 6s) + 14  =\amp (\ob{s^2 - 6s + 9}^{(s - 3)^2} - 9) + 14  </mrow>
-								<mrow>								  =\amp (s - 3)^2 + 5							 </mrow>
-							</md>.
-							Rewriting <m>K(s)</m> as:
-							<me>
-								\frac{11}{s^2 - 6s + 14}
-									= \ub{\frac{11}{(s - 3)^2 + 5}}_{\large \text{Match with } L_7}
-									= \frac{11}{\sqrt{5}}\ub{\frac{\sqrt{5}}{(s - 3)^2 + 5}}_{\large <xref ref="L7" text="custom"><m>L_7</m></xref> (a = 3, b = \sqrt{5})}
-							</me>.
-							Therefore,
-							<md>
-								<mrow>
-									k(t) = \ilap{K(s)} \amp = \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)
-								</mrow>
-							</md>.
-						</p>
-					</solution>
-			
-					<solution>
-						<p>
-							Completing the square for the denominator of <m>P(s)</m> gives:
-							<me>
-								\frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
-							</me>.
-							However, the numerator <m>s + 3</m> does not match <m>s + 1</m>. To resolve this, we rewrite <m>3</m> as <m>1 + 2</m> and group terms:
-							<md>
-								<mrow>
-									\frac{s+3}{s^2 + 2s + 10}
-										\amp = \frac{s + 1 + 2}{(s + 1)^2 + 9}
-								</mrow>
-								<mrow>
-										\amp = \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
-								</mrow>
-								<mrow>
-										\amp = \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref ref="L8" text="title"/>\ (a=-1, b=3)}
-											+ \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref ref="L7" text="title"/>\ (a=-1, b=3)}
-								</mrow>	
-							</md>,
-							Now, apply the inverse Laplace transform:
-							<md>
-								<mrow>
-									p(t) \amp = \ilap{P(s)}
-								</mrow>
-								<mrow>
-										\amp = \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
-								</mrow>
-								<mrow>
-										\amp = e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
-								</mrow>	
-							</md>
-						</p>
-					</solution>
-				</p>
-			</example>
-
-			<example><title> Preparation via Partial Fraction Decomp </title>
-				<p>
-					<statement>
-						<p>
-							Prepare each Laplace solution (step 3) for a backward transformation, then transform it back into a function of <m>t</m> (step 4).
-						</p>
-						<ol>
-							<li>
-								<p>
-									<m>\ds Y(s) = \frac{2s + 5}{(s + 1)(s + 4)}</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds P(s) = \frac{s}{s^2 - s + 6}</m>
-								</p>
-							</li>
 							<li>
 								<p>
 									<m>\ds Q(s) = \frac{3s + 4}{s^2 - 2s + 1}</m>
 								</p>
+								<solution>
+									<p>
+										Factor the quadratic denominator:
+										<me>s^2 - 2s + 1 = (s - 1)^2.</me>
+										Decompose <m>Q(s)</m> into partial fractions:
+										<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
+										Multiply both sides by <m>(s - 1)^2</m>,
+										<me>3s + 4 = A(s - 1) + B.</me>
+										and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+										<sidebyside widths="8% 80%">
+											<p>
+												<md>
+													<mrow>s = 1: \amp</mrow>
+													<mrow></mrow>
+													<mrow>s = 0: \amp</mrow>
+													<mrow></mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>3(1) + 4 	\amp = A(1 - 1) + B</mrow>
+													<mrow>7 	\amp = A(0) + B \quad\implies\quad B=7</mrow>
+													<mrow>3(0) + 4 	\amp = A(0 - 1) + B</mrow>
+													<mrow>4 	\amp = -A + 7 \quad\implies\quad A=3</mrow>
+												</md>
+											</p>
+										</sidebyside>
+										The partial fraction decomposition is:
+										<me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
+										Therefore:
+										<me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
+									</p>
+								</solution>
 							</li>
-							<li>
-								<p>
-									<m>\ds R(s) = \frac{3s + 4}{(s^2 + 1)(s^2 + 4)}</m>
-								</p>
-							</li>
+
 							<li>
 								<p>
 									<m>\ds U(s) = \frac{2s^2 + 5s + 1}{s^3 - s}</m>
 								</p>
+								<solution>
+									<p>
+										Since the degree of the denominator is greater than <m>2</m>, we use PFD and we factor the denominator as
+										<me>
+											s^3 - s = s(s - 1)(s + 1)
+										</me>
+										so that <m>U(s)</m> has the form
+										<me>
+											U(s) = \frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}
+										</me>.
+									</p>
+
+									<p>
+										Multiply both sides by <m>s(s - 1)(s + 1)</m> to get
+										<me>
+											2s^2 + 5s + 1 = A(s - 1)(s + 1) + B(s)(s + 1) + C(s)(s - 1)
+										</me>
+										and choose convenient values for <m>s</m> so that
+									</p>
+
+									<sidebyside widths="15% 70% 15%">
+										<p>
+											<md>
+												<mrow>	s = 0:	\amp	</mrow>
+												<mrow>					</mrow>
+												<mrow>	s = 1:	\amp	</mrow>
+												<mrow>					</mrow>
+												<mrow>	s = -1:	\amp	</mrow>
+												<mrow>					</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow>	1 	\amp = A(-1)(1) + B(0)(1) + C(0)(-1)	</mrow>
+												<mrow>	1 	\amp = -A								</mrow>
+												<mrow>	8 	\amp = A(0)(2) + B(1)(2) + C(1)(0)		</mrow>
+												<mrow>	 	\amp = 2B								</mrow>
+												<mrow>	-2 	\amp = A(1)(0) + B(-1)(0) + C(-1)(-2)	</mrow>
+												<mrow>	-2 	\amp = 2C								</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow>					</mrow>
+												<mrow>	A	\amp = -1	</mrow>
+												<mrow>					</mrow>
+												<mrow>	B	\amp = 4	</mrow>
+												<mrow>					</mrow>
+												<mrow>	C	\amp = -1	</mrow>
+											</md>
+										</p>
+									</sidebyside>
+
+									<p>
+										Therefore,
+										<md>
+											<mrow>	\ilap{U(s)}	\amp = \ilap{\frac{-1}{s} + \frac{4}{s - 1} + \frac{-1}{s + 1}}	</mrow>
+											<mrow>	u(t)		\amp = -1 + 4e^{t} - e^{-t}.									</mrow>
+										</md>
+									</p>
+								</solution>
 							</li>
+
 							<li>
 								<p>
 									<m>\ds V(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}</m>
 								</p>
+								<solution>
+									<p>
+										Since the degree of the denominator is greater than <m>2</m>, we use PFD and factor the denominator:
+										<me>
+											s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1)
+										</me>.
+									</p>
+
+									<p>
+										Decompose <m>V(s)</m> into partial fractions:
+										<me>
+											\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}
+										</me>
+										and multiply both sides by <m>(s - 1)(s + 1)(s^2 + 1)</m> to get
+										<md>
+											<mrow>	4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2	\amp + 1)	+ B(s - 1)(s^2 + 1)	</mrow>
+											<mrow>										\amp + (Cs+D)(s - 1)(s + 1)		</mrow>.
+										</md>.
+									</p>
+
+									<p>
+										Strategically selecting values for <m>s</m>, we get
+										<tabular>
+											<row>
+												<cell>
+													<md>
+														<mrow>\hphantom{-}s = 1:</mrow>
+														<mrow>\vphantom{\boxed{\frac32}}</mrow>
+													</md>
+												</cell>
+												<cell>
+													<md>
+														<mrow>6	\amp = A(2)(2) + B(0)(2) + (C(1) + D)(0)(2)</mrow>
+														<mrow>6	\amp = 4A \quad\implies\quad \boxed{A = \frac32}</mrow>
+													</md>
+												</cell>
+											</row>
+
+											<row>
+												<cell>
+													<md>
+														<mrow>s = -1:</mrow>
+														<mrow>\vphantom{\boxed{\frac12}}</mrow>
+													</md>
+												</cell>
+												<cell>
+													<md>
+														<mrow>2	\amp = A(0)(2) + B(-2)(2) + (C(-1) + D)(-2)(0)</mrow>
+														<mrow>2	\amp = -4B \quad\implies\quad \boxed{B = -\frac12}</mrow>
+													</md>
+												</cell>
+											</row>
+
+											<row>
+												<cell>
+													<md>
+														<mrow>\hphantom{-}s = 0:</mrow>
+														<mrow>\vphantom{\frac32}</mrow>
+													</md>
+												</cell>
+												<cell>
+													<md>
+														<mrow>1	\amp = A(1)(1) + B(-1)(1) + (C(0) + D)(-1)(1)</mrow>
+														<mrow>1	\amp = \frac32 + \frac12 - D \quad\implies\quad \boxed{D = 1}</mrow>
+													</md>
+												</cell>
+											</row>
+
+											<row>
+												<cell>
+													<md>
+														<mrow>s = -2:</mrow>
+														<mrow>\vphantom{D}</mrow>
+														<mrow>\vphantom{\frac92}</mrow>
+													</md>
+												</cell>
+												<cell>
+													<md>
+														<mrow>-15	\amp = A(-1)(3) + B(-3)(3) + (C(-2) + D)(-3)(-1)</mrow>
+														<mrow>-15	\amp = -3A - 9B + -6C + 3D</mrow>
+														<mrow>-15	\amp = -\frac92 + \frac92 + -6C + 3(1) \quad\implies\quad \boxed{C = 3}</mrow>
+													</md>
+												</cell>
+											</row>
+										</tabular>
+									</p>
+
+									<p>
+										Therefore, the partial fraction decomposition is
+										<me>
+											V(s) = \frac{\frac32}{s - 1} - \frac{\frac12}{s + 1} + \frac{3s + 1}{s^2 + 1}
+										</me>.
+									</p>
+
+									<p>
+										Applying the inverse Laplace transform gives:
+										<md>
+											<mrow>	\ilap{V(s)}	\amp = \ilap{\frac{\frac32}{s - 1} - \frac{\frac12}{s + 1} + \frac{3s + 1}{s^2 + 1}}	</mrow>
+											<mrow>	v(t)		\amp = \frac32 e^{t} - \frac12 e^{-t} + 3\cos(t) + \sin(t)								</mrow>.
+										</md>
+									</p>
+								</solution>
+							</li>
+
+							<li>
+								<p>
+									<m>\ds R(s) = \frac{3s + 4}{(s^2 + 1)(s^2 + 4)}</m>
+								</p>
+								<solution>
+									<p>
+										Partial fraction decomposition gives:
+										<me>
+											R(s) = \frac{As + B}{s^2 + 1} + \frac{Cs + D}{s^2 + 4}
+										</me>.
+										Multiply both sides by <m>(s^2 + 1)(s^2 + 4)</m> to get
+										<me>
+											3s + 4 = (As + B)(s^2 + 4) + (Cs + D)(s^2 + 1)
+										</me>.
+										Solve for <m>A, B, C,</m> and <m>D</m> by selecting convenient values for <m>s</m>:
+										<sidebyside widths="10% 70%">
+											<p>
+												<md>
+													<mrow>	s = 0:	\amp	</mrow>
+													<mrow>					</mrow>
+													<mrow>	s = 1:	\amp	</mrow>
+													<mrow>					</mrow>
+													<mrow>	s = -1: \amp	</mrow>
+													<mrow>					</mrow>
+												</md>
+											</p>
+											<p>
+												<md>
+													<mrow>4  \amp = (A(0) + B)(0 + 4) + (C(0) + D)(0 + 1)			</mrow>
+													<mrow>4  \amp = 4B + D \quad\implies\quad D = 4 - 4B				</mrow>
+													<mrow>7  \amp = (A(1) + B)(1 + 4) + (C(1) + D)(1 + 1)			</mrow>
+													<mrow>7  \amp = (5A + B)5 + (C(1) + D)(2)						</mrow>
+													<mrow>7  \amp = (5A + B)5 + (C(1) + (4 - 4B))(2)</mrow>
+													<mrow>7  \amp = (5A - 3B + 2C + 8)(2) \quad\implies\quad 7 = 10A - 6B + 4C + 16</mrow>
+													<mrow>7  \amp = 10A - 6B + 4C + 16 \quad\implies\quad -9 = 10A - 6B + 4C</mrow>
+													<mrow>-1 \amp = (A(-1) + B)(-1 + 4) + (C(-1) + D)(-1 + 1)</mrow>
+													<mrow>-1 \amp = (A(-1) + B)(3) + (C(-1) + D)(0)</mrow>
+													<mrow>-1 \amp = (A(-1) + B)(3) \quad\implies\quad -\frac13 = A(-1) + B</mrow>
+												</md>
+											</p>
+										</sidebyside>
+										Therefore,
+										<md>
+											<mrow>	A = -\frac{2}{5}, \quad B = \frac{7}{5}, \quad C = -\frac{3}{5}, \quad D = \frac{8}{5}	</mrow>
+										</md>.
+									</p>
+
+									<p>
+										The partial fraction decomposition is:
+										<me>
+											R(s) = -\frac{2}{5}\frac{s}{s^2 + 1} + \frac{7}{5}\frac{1}{s^2 + 1} - \frac{3}{5}\frac{s}{s^2 + 4} + \frac{8}{5}\frac{1}{s^2 + 4}
+										</me>.
+									</p>
+
+									<p>
+										Applying the inverse Laplace transform gives:
+										<md>
+											<mrow>	r(t) = -\frac{2}{5}\sin(t) + \frac{7}{5}\cos(t) - \frac{3}{10}\sin(2t) + \frac{4}{5}\cos(2t)</mrow>
+										</md>.
+									</p>
+								</solution>
 							</li>
 						</ol>
 					</statement>
 				</p>
-				
-				<p>
-					<solution>
-						<p>
-							First, decompose <m>Y(s)</m> into partial fractions:
-							<me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{A}{s + 1} + \frac{B}{s + 4}.</me>
-							Multiply both sides by <m>(s + 1)(s + 4)</m>,
-							<me>2s + 5 = A(s + 4) + B(s + 1).</me>
-							and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
-							<sidebyside widths="8% 80%">
-								<p>
-									<md>
-										<mrow>s = -1: \amp</mrow>
-										<mrow></mrow>
-										<mrow>s = -4: \amp</mrow>
-										<mrow></mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
-										<mrow>3 	\amp = A(3) + B(0) \quad\implies\quad A=1</mrow>
-										<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
-										<mrow>-3 	\amp = A(0) + B(-3) \quad\implies\quad B=1</mrow>
-									</md>
-								</p>>
-							</sidebyside>
-							Therefore, the partial fraction decomposition is:
-							<me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{1}{s + 1} + \frac{1}{s + 4}.</me>
-							Applying the inverse Laplace transform to each term:
-							<me>\ilap{Y(s)} = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}} = e^{-t} + e^{-4t}.</me>
-						</p>
-					</solution>
-			
-					<solution>
-						<p>
-							First, factor the quadratic denominator:
-							<me>s^2 - s - 6 = (s + 2)(s - 3).</me>
-							Now decompose <m>P(s)</m> into partial fractions:
-							<me>\frac{s}{(s + 2)(s - 3)} = \frac{A}{s + 2} + \frac{B}{s - 3}.</me>
-							Multiply both sides by <m>(s + 2)(s - 3)</m>,
-							<me>s = A(s - 3) + B(s + 2).</me>
-							and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
-							<sidebyside widths="8% 80%">
-								<p>
-									<md>
-										<mrow>s = -2: \amp</mrow>
-										<mrow></mrow>
-										<mrow>s = 3: \amp</mrow>
-										<mrow></mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>-2 	\amp = A(-2 - 3) + B(-2 + 2)</mrow>
-										<mrow>-2 	\amp = A(-5) + B(0) \quad\implies\quad A=2/5</mrow>
-										<mrow>3 	\amp = A(3 - 3) + B(3 + 2)</mrow>
-										<mrow>3 	\amp = A(0) + B(5) \quad\implies\quad B=3/5</mrow>
-									</md>
-								</p>
-							</sidebyside>
-							The partial fraction decomposition is:
-							<me>\frac{s}{(s + 2)(s - 3)} = \frac{2/5}{s + 2} + \frac{3/5}{s - 3}.</me>
-							Therefore:
-							<me>\ilap{P(s)} = \frac25 e^{-2t} + \frac35 e^{3t}.</me>
-						</p>
-					</solution>
-			
-					<solution>
-						<p>
-							Factor the quadratic denominator:
-							<me>s^2 - 2s + 1 = (s - 1)^2.</me>
-							Decompose <m>Q(s)</m> into partial fractions:
-							<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
-							Multiply both sides by <m>(s - 1)^2</m>,
-							<me>3s + 4 = A(s - 1) + B.</me>
-							and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
-							<sidebyside widths="8% 80%">
-								<p>
-									<md>
-										<mrow>s = 1: \amp</mrow>
-										<mrow></mrow>
-										<mrow>s = 0: \amp</mrow>
-										<mrow></mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>3(1) + 4 	\amp = A(1 - 1) + B</mrow>
-										<mrow>7 	\amp = A(0) + B \quad\implies\quad B=7</mrow>
-										<mrow>3(0) + 4 	\amp = A(0 - 1) + B</mrow>
-										<mrow>4 	\amp = -A + 7 \quad\implies\quad A=3</mrow>
-									</md>
-								</p>
-							</sidebyside>
-							The partial fraction decomposition is:
-							<me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
-							Therefore:
-							<me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
-						</p>
-					</solution>
 
-					<solution>
-						<p>
-							First, factor the cubic denominator:
-							<me>
-								s^3 - s = s(s - 1)(s + 1)
-							</me>.
-							Now decompose <m>R(s)</m> into partial fractions:
-							<me>
-								U(s) = \frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}
-							</me>
-							and multiply both sides by <m>s(s - 1)(s + 1)</m> to get
-							<me>
-								2s^2 + 5s + 1 = A(s - 1)(s + 1) + B(s)(s + 1) + C(s)(s - 1)
-							</me>.
-							Now, solve for <m>A, B,</m> and <m>C</m> by selecting convenient values for <m>s</m>:
-							<sidebyside widths="10% 70% 18%">
-								<p>
-									<md>
-										<mrow>	s = 0:	\amp	</mrow>
-										<mrow>					</mrow>
-										<mrow>	s = 1:	\amp	</mrow>
-										<mrow>					</mrow>
-										<mrow>	s = -1:	\amp	</mrow>
-										<mrow>					</mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>	1 	\amp = A(-1)(1) + B(0)(1) + C(0)(-1)	</mrow>
-										<mrow>	1 	\amp = -A								</mrow>
-										<mrow>	8 	\amp = A(0)(2) + B(1)(2) + C(1)(0)		</mrow>
-										<mrow>	 	\amp = 2B								</mrow>
-										<mrow>	-2 	\amp = A(1)(0) + B(-1)(0) + C(-1)(-2)	</mrow>
-										<mrow>	-2 	\amp = 2C								</mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>					</mrow>
-										<mrow>	A	\amp = -1	</mrow>
-										<mrow>					</mrow>
-										<mrow>	B	\amp = 4	</mrow>
-										<mrow>					</mrow>
-										<mrow>	C	\amp = -1	</mrow>
-									</md>
-								</p>
-							</sidebyside>
-							Therefore,
-							<md>
-								<mrow>	\ilap{U(s)}	\amp = \ilap{\frac{-1}{s} + \frac{4}{s - 1} + \frac{-1}{s + 1}}	</mrow>
-								<mrow>	u(t)		\amp = -1 + 4e^{t} - e^{-t}.									</mrow>
-							</md>
-						</p>
-					</solution>
-			
-					<solution>
-						<p>
-							Factor the quartic denominator:
-							<me>
-								s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1)
-							</me>.
-							Decompose <m>V(s)</m> into partial fractions:
-							<me>
-								\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}
-							</me>
-							and multiply both sides by <m>(s - 1)(s + 1)(s^2 + 1)</m> to get
-							<md>
-								<mrow>	4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2	\amp + 1)	+ B(s - 1)(s^2 + 1)	</mrow>
-								<mrow>										\amp + (Cs+D)(s - 1)(s + 1)		</mrow>.
-							</md>
-							Next, solve for <m>A, B, C,</m> and <m>D</m> by selecting convenient values for <m>s</m>:
-							<sidebyside widths="12% 80%">
-								<p>
-									<md>
-										<mrow>	s = 1:	\amp		</mrow>
-										<mrow>	\vphantom{\frac32}	</mrow>
-										<mrow>	s = -1:	\amp		</mrow>
-										<mrow>	\vphantom{\frac32}	</mrow>
-										<mrow>	s = 0:	\amp		</mrow>
-										<mrow>	\vphantom{\frac32}	</mrow>
-										<mrow>	s = -2:	\amp		</mrow>
-										<mrow>	\vphantom{\frac32}	</mrow>
-									</md>
-								</p>
-								<p>
-									<md>
-										<mrow>	6 	\amp = A(2)(2) + B(0)(2) + (C(1) + D)(0)(2)						</mrow>
-										<mrow>	6 	\amp = 4A \qquad\implies\qquad A = \frac32						</mrow>
-										<mrow>	2 	\amp = A(0)(2) + B(-2)(2) + (C(-1) + D)(-2)(0)					</mrow>
-										<mrow>	2 	\amp = -4B \qquad\implies\qquad B = -\frac12						</mrow>
-										<mrow>	1 	\amp = A(1)(1) + B(-1)(1) + (C(0) + D)(-1)(1)					</mrow>
-										<mrow>	1 	\amp = \frac32 + \frac12 - D \qquad\implies\qquad D = 1			</mrow>
-										<mrow>	-15 	\amp = A(-1)(3) + B(-3)(3) + (C(-2) + D)(-3)(-1)					</mrow>
-										<mrow>	-15 	\amp = -3A - 9B + -6C + 3D										</mrow>
-										<mrow>	-15 	\amp = -\frac92 + \frac92 + -6C + 3(1) \quad\implies\quad C = 3	</mrow>
-									</md>
-								</p>
-							</sidebyside>
-							Therefore,
-							<md>
-								<mrow>	\ilap{V(s)}	\amp = \ilap{\frac{\frac32}{s - 1} - \frac{\frac12}{s + 1} + \frac{3s + 1}{s^2 + 1}}	</mrow>
-								<mrow>	v(t)		\amp = \frac32 e^{t} - \frac12 e^{-t} + 3\cos(t) + \sin(t)								</mrow>.
-							</md>
-						</p>
-					</solution>
-				</p>
 			</example>
 
 		</subsubsection>
