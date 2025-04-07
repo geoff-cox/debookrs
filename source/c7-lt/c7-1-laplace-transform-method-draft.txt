@@ -1382,91 +1382,89 @@
 		<introduction>
 
 			<p>
-				When solving differential equations using the Laplace transform method, our goal is to transport our equation into the Laplace domain. Once there, the derivatives of <m>y</m> are moved onto an exponential function, leaving <m>y</m> (without its derivatives) temporarily "encased" inside a Laplace transform, <m>Y</m>. This creates an algebra equation where <m>Y</m> is our new unknown, which we isolate. Once isolated, we "revert" the equation back into our original domain, revealing the solution.
+				The heart of the Laplace transform method lies in its ability to convert a differential equation into an algebraic equation. This transformation takes place in what we call the <em>Laplace domain</em>, a mathematical space where derivatives become algebraic expressions and initial conditions are naturally incorporated into the equation.
 			</p>
 
 			<p>
-				This section clearly outlines the four main steps involved in the transformation process, illustrated in the <xref ref="lt-roadmap" text="title"/>. We'll consistently use the model equation
-				<me>
-					y'' - 9y = 10e^{2t}
-				</me>
-				to demonstrate each step, reinforcing how the Laplace transform systematically incorporates initial conditions and simplifies complex differential equations into algebraic problems.
+				In this section, we will break down how to solve the model equation
+				<men xml:id="lt-model-eqn-w-ics"> 
+					y'' - 9y = 10e^{2t}, \quad y(0) = 1, \quad y'(0) = -7
+				</men>
+				using the steps outlined in the <xref ref="lt-roadmap" text="custom">Laplace Transform Roadmap</xref>:
 			</p>
-
-			<p>
-				Applying the forward Laplace transform to a differential equation involves converting both the left-hand side (LHS) and right-hand side (RHS) of the equation into their Laplace-transformed counterparts.
-			</p>
-
-			<p>
-				Applying the Laplace transform method to a differential equation starts by transforming this equation into a new equation where the derivatives are replaced by algebraic expressions. To recover to the solution to the original equation the transformation must also be reversed. This process, which we will refer to as a <q>backwards transform</q>, corresponds to step 3 on the <xref ref="lt-roadmap" text="custom">Laplace transform roadmap</xref>.
-			</p>
-
-			<p>
-				Just as the forward Laplace transform simplifies a differential equation by converting it into an algebraic one, the backward transform completes the cycle by converting the algebraic solution back into its original form. This chapter will focus on the techniques used to perform the inverse Laplace transform, guiding you through the steps needed to move from the transformed function, <m>F(s)</m>, back to the original function, <m>f(t)</m>.
-			</p>
-
-			<p>
-				We will explore key methods, such as partial fraction decomposition and the use of Laplace transform tables, to help simplify complex transformed functions. Additionally, we will highlight common challenges and how to overcome them, ensuring a smooth transition back to the original domain.
-			</p>
+				
+			<ol marker="(i)">
+				<li>
+					<p>
+						We begin with <xref ref="lt-roadmap-step-1" text="custom">step 1</xref>, where the forward transform moves the differential equation into the Laplace domain.
+					</p>
+				</li>
+				<li>
+					<p>
+						Then, we jump to <xref ref="lt-roadmap-step-4" text="custom">step 4</xref> to explore how the transformed equation is converted back into the original domain using a backward transform.
+					</p>
+				</li>
+				<li>
+					<p>
+						Finally, we examine <xref ref="lt-roadmap-step-2-3" text="custom">steps 2 and 3</xref>, which take place entirely within the Laplace domain and lead to the solution of the original equation.
+					</p>
+				</li>
+			</ol>
 			
 		</introduction>
 
-		<subsection><title> Into the Laplace Domain (Forward Transform, <m>\laplacesym</m> ) </title>
+		<subsection><title> Into the Laplace Domain (Forward Transform) </title>
 
 			<introduction>
 				<p>
-					Now that we've established the foundational concepts and compiled a table of common transforms, we are ready to explore how the Laplace Transform method helps us solve linear differential equations with constant coefficients.
+					According to <xref ref="lt-roadmap" text="custom">step 1 of the roadmap</xref>, moving into the Laplace domain means applying the Laplace transform to a differential equation to convert it into an algebraic equation we will refer to as the <q>Laplace equation</q>. This transformation is a key step in the Laplace transform method, as it allows us to work with algebraic equations instead of differential equations. In particular,
 				</p>
 
-				<assemblage xml:id="lt-roadmap-step1"><title> Step 1 - Into the Laplace Domain (Forward Transform) </title>
+				<assemblage xml:id="lt-roadmap-step-1"><title> Step 1 - Into the Laplace Domain (Forward Transform) </title>
 					<p>
-						<sidebyside widths="40% 10% 50%" valign="middle">
+						<sidebyside widths="39% 14% 47%" valign="top">
 							<p>
 								<md>
-									<mrow>	y'' - 9y = 10e^{2t}	</mrow>
-									<mrow>	y(0) = 1, \quad y(0) = -7	</mrow>
+									<mrow>	\vphantom{m}													</mrow>
+									<mrow>	y'' - 9y = 10e^{2t}				</mrow>
+									<mrow>	\ub{y(0) = 1, \quad y(0) = -7}	</mrow>
 								</md>
 							</p>
-							<p><me>\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}</me></p>
 							<p>
 								<me>
-									s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+									\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}
+								</me>
+							</p>
+							<p>
+								<md>
+									<mrow>	\vphantom{M}													</mrow>
+									<mrow>	\ub{s^2Y - 9Y - s + 7 = \frac{10}{s - 2}}	</mrow>
+								</md>
+								<me>
+									
+								</me>
+							</p>
+						</sidebyside>
+						<sidebyside widths="39% 14% 47%" valign="middle">
+							<p>
+								<me>
+									\text{Differential Equation}
+								</me>
+							</p>
+							<p/>
+							<p>
+								<me>
+									\text{Laplace Equation}
 								</me>
 							</p>
 						</sidebyside>
 					</p>
 				</assemblage>
 
-				<figure xml:id="lt-roadmap-step-1-fig">
-					<caption>
-						To enter the Laplace domain (step 1), we apply a forward transform (<m>\laplacesym</m>) to the original differential equation.
-					</caption>
-					<image source="figures/LT-Roadmap-step-1.png" width="100%"/>
-				</figure>
+				<p>
+					Although using the table of Laplace transforms makes this step straightforward, understanding what's happening behind the scenes is crucial.
+				</p>
 			</introduction>
-
-			<p>
-				Notice that the <xref ref="lt-roadmap" text="title"/> shows the first step in the process is to convert a differential equation into an algebraic equation. That is,
-			</p>
-
-			<sidebyside widths="40% 10% 50%" valign="middle">
-				<p>
-					<md>
-						<mrow>	y'' - 9y = 3e^{2t}	</mrow>
-						<mrow>	y(0) = 1, \quad y'(0) = -7	</mrow>
-					</md>
-				</p>
-				<p><me>\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}</me></p>
-				<p>
-					<me>
-						s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
-					</me>
-				</p>
-			</sidebyside>
-
-			<p>
-				Although using the table of Laplace transforms makes this step straightforward, understanding what's happening behind the scenes is crucial.
-			</p>
 
 			<p>
 				Recall that applying the Laplace transform to an equation is equivalent to multiplying the equation by <m>e^{-st}</m> and integrating with respect to <m>t</m>.
@@ -1538,7 +1536,7 @@
 								+ 3\ub{\lap{y'}}_{\large L_9} 
 								+ 2\ub{\lap{y}}_{\large Y} = -40\ub{\lap{e^{3t}}}_{\large L_2}
 							</me>,
-							and using <xref ref="L10" text="title"/>, <xref ref="L9" text="title"/>, and <xref ref="L2" text="title"/> from the <xref ref="common-lt-table" text="custom">Laplace transform table</xref>, we transform the equation as follows:
+							and using <xref ref="L10" text="title"/>, <xref ref="L9" text="title"/>, and <xref ref="L2" text="title"/> from the <xref ref="lt-table-L1-12" text="custom">Laplace transform table</xref>, we transform the equation as follows:
 						</p>
 
 						<p>
@@ -1585,38 +1583,23 @@
 				</p>
 				
 			</example>
-
-			<p>
-				At this stage, we've successfully translated our differential equation into the Laplace domain, preparing us for step 2 on our <xref ref="lt-roadmap" text="custom">roadmap</xref>: solving for <m>Y</m> (containing our solution) in the Laplace domain.
-			</p>
 			
 		</subsection>
 
-		<subsection><title> Out of the Laplace Domain (Backward Transform, <m>\laplacesym^{-1}</m> ) </title>
+		<subsection><title> Out of the Laplace Domain (Backward Transform) </title>
 
 			<introduction>
 
 				<p>
-					As you have seen, a <xref ref="lt-roadmap-step-1" text="custom">forward transform</xref> (step 1) moves your differential equation into the Laplace domain, converting it into a Laplace equation. To leave the Laplace domain (step 4), this process must be reversed with a backward transform as shown in <xref ref="lt-roadmap-step-4-fig"/>.
+					Just as the forward Laplace transform converts a differential equation into an algebraic one, the backward transform completes the cycle by converting the algebraic solution back into its original form. Its job is to recover the solution to our original differential equation from the solution we found in the Laplace domain. This is the <xref ref="lt-roadmap" text="custom">final step of the roadmap</xref> and it involves applying the <q>inverse Laplace transform</q>, <m>\laplacesym^{-1}</m>, to the Laplace solution.
 				</p>
-
-				<figure xml:id="lt-roadmap-step-4-fig">
-					<caption>
-						To leave the Laplace domain (step 4), we apply a backward transform (<m>\laplacesym^{-1}</m>) to the Laplace solution for <m>Y</m>.
-					</caption>
-					<image source="figures/LT-Roadmap-step-4.png" width="100%"/>
-				</figure>
 
 			</introduction>
 
 			<subsubsection><title> Using the Table Laplace Transforms for Inverses </title>
 
 				<p>
-					Just as a <q>forward transform</q> refers to applying the Laplace transform, <m>\laplacesym</m>, a <q>backward transform</q> refers to applying the inverse Laplace transform, <m>\laplacesym^{-1}</m>. Its job is to map all Laplace domain functions of <m>s</m> back into functions of the original variable, <m>t</m>.
-				</p>
-
-				<p>
-					Since the Laplace inverse <q>undoes</q> the Laplace transforms, then the inverses can also be found in the Laplace transform table. The difference is that you must match the <m>F(s)</m>-function, on the right, to get the inverse <m>f(t)</m>-function, on the left. For example, <xref ref="lt-table-row-L2" text="title"/> gives us
+					Not only does the table of transforms quickly find forward transformations, but it conveniently provides the corresponding backward transforms as well. The difference is that you must match the <m>F(s)</m>-function, on the right, to get the inverse <m>f(t)</m>-function, on the left. For example, <xref ref="lt-table-row-L2" text="title"/> gives us both the forward and backward transforms:
 				</p>
 
 				<p>
@@ -1634,14 +1617,14 @@
 						</p>
 						<p>
 							<me>
-								\lap{ \frac{1}{s - a} } = e^{at}
+								\ilap{ \frac{1}{s - a} } = e^{at}
 							</me>
 						</p>
 					</sidebyside>
 				</p>
 
 				<p>
-					In step 4, pattern recognition is everything. Once you've isolated and prepared <m>Y(s)</m> (steps 2 &amp; 3), the inverse transform becomes a simple lookup task. Let's look at an example to get some practice with this. 
+					Using the table in this way is precisely how you will leave the Laplace domain, completing step 4. Once you've prepared the Laplace solution, <m>Y(s)</m> (step 3), finding its inverse becomes a matter of just looking it up in the table. Let's see a few examples to get some practice with this. 
 				</p>
 
 				<example><title> Inverses using the Laplace Transform Table </title>
@@ -2619,7 +2602,7 @@
 				<dl>
 					<li xml:id="lt-step-1"><title> Step 1: Into the Laplace Domain (Forward) </title>
 						<p>
-							Apply the Forward Laplace transform, <m>\laplacesym</m>, to both sides of <xref ref="lt-method-de" />. Use the <xref ref="common-lt-table" text="custom">transform table</xref> to convert each term into a function of <m>s</m>.
+							Apply the Forward Laplace transform, <m>\laplacesym</m>, to both sides of <xref ref="lt-method-de" />. Use the <xref ref="lt-table-L1-12" text="custom">transform table</xref> to convert each term into a function of <m>s</m>.
 						</p>
 					</li>
 					<li xml:id="lt-step-2"><title> Step 2: Find the Laplace Solution </title>
@@ -2629,7 +2612,7 @@
 					</li>
 					<li xml:id="lt-step-3"><title> Step 3: Prepare the Laplace Solution for a Backward Transform </title>
 						<p>
-							Using PFD, rewrite the Laplace solution, <m>Y(s)</m>, as the sum of terms resembling the <m>s</m>-functions in the <xref ref="common-lt-table" text="custom">transforms table</xref>. Terms with irreducible denominators require completing the square.
+							Using PFD, rewrite the Laplace solution, <m>Y(s)</m>, as the sum of terms resembling the <m>s</m>-functions in the <xref ref="lt-table-L1-12" text="custom">transforms table</xref>. Terms with irreducible denominators require completing the square.
 							<fn><title>Irreducible</title>
 								<p>
 									The quadratic denominator of the term
