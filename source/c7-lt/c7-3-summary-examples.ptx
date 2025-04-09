@@ -2,7 +2,7 @@
 Solving Differential Equations with the Laplace Transform
 
 	Introduction
-		* Explicitly state this section’s goal: integrating all previous concepts into a practical method for solving differential equations.
+		* Explicitly state this section's goal: integrating all previous concepts into a practical method for solving differential equations.
 		* Highlight the advantages and efficiency of this approach.
 
 	Method Steps
@@ -22,600 +22,1393 @@ Solving Differential Equations with the Laplace Transform
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Summary &amp; Examples </title>
 
 	<introduction>
-
 		<p>
-			The Laplace Transform Method provides a powerful toolset for solving initial-value differential equations, transforming complex calculus problems into simpler algebraic ones. In the previous sections, we explored how to compute the forward Laplace transform of a function and how to apply the inverse Laplace transform to return to the time domain. These two operations are the fundamental components of the Laplace Transform Method.
+			With all the individual components now in place, it's time to see how they come together. This section walks through the complete four-step method for solving differential equations using the Laplace transform. Each step corresponds directly to a move in the <xref ref="lt-roadmap" text="custom">Laplace Transform Roadmap</xref> introduced earlier.
 		</p>
-
 		<p>
-			This section brings together the forward and backward transformations to solve entire initial-value differential equations. By applying the forward Laplace transform to both sides of a differential equation, we convert the problem into an algebraic equation in the <m>s</m>-domain. The algebraic equation is typically easier to solve, and once we find the solution in the <m>s</m>-domain, we apply the inverse Laplace transform to recover the solution in the time domain.
+			The goal here is to consolidate your understanding of the method as a whole and give you a clear, repeatable process to follow when solving problems on your own.
 		</p>
-
-		<p>
-			We will begin with simple examples and progressively tackle more complex problems, incorporating the initial conditions of the differential equations directly into the transformed equations. By mastering these techniques, you will be able to solve a wide range of differential equations using the Laplace Transform Method.
-		</p>
-		
 	</introduction>
 
-	<p>
-		At this point, the <xref ref="lt-roadmap" text="custom">roadmap</xref> introduced at the beginning of this chapter should start to come together. The steps have been explored in previous sections, and now it is time to apply them in sequence to solve a complete initial-value problem. We start by applying the forward Laplace transform to the entire differential equation (Step 1), which temporarily encases the unknown inside <m>Y(s)</m>. Next, you use algebra to isolate <m>Y(s)</m> (Step 2a). After that, you prepare for the backward transform by breaking <m>Y(s)</m> into a sum of functions that correspond to known Laplace transforms (Step 2b). Finally, you apply the backward transform to <m>Y(s)</m> to recover the solution, <m>y(t)</m> (Step 3).
-	</p>
-	
-	<p>
-		The complete strategy for this method is outlined as follows:
-	</p>
-
-	<exploration xml:id="lt-method"><title> Laplace Transform Method </title>
+	<introduction>
 		<p>
-			The particular solution to the initial-valued differential equation
-			<men xml:id="lt-method-de">
-				y^{(n)} + a_{n-1}\, y^{(n-1)} + \cdots + a_1\, y' + a_0\, y = g(t)
-			</men>
-			and given initial conditions, follows from these steps:
-		
+			This section brings together everything you've learned about the Laplace transform method. We begin with a concise outline of the four core steps and then walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.
+		</p>
+
+		<p>
+			<interactive xml:id="lt-slideshow-interactive" platform="javascript" width="100%" aspect="1.6:1" source="code/lt-slideshow.js" preview="figures/lt-slideshow-thumbnail.png">
+				<slate width="100%" aspect="1.6:1" xml:id="lt-slideshow-canvas" surface="canvas" />
+			</interactive>
+		</p>
+		<!-- <theorem><title> Laplace Transform Method Slide Show </title>
+			<statement>
+				<p>
+					<interactive xml:id="lt-slideshow-interactive" platform="javascript" width="88%" aspect="1.75:1" source="code/lt-slideshow.js" preview="figures/lt-slideshow-thumbnail.png">
+						<slate width="88%" aspect="1.75:1" xml:id="lt-slideshow-canvas" surface="canvas" />
+					</interactive>
+				</p>
+			</statement>
+		</theorem> -->
+	</introduction>
+
+
+	<introduction>
+		<p>
+			This section summarizes the four-step Laplace transform method for solving initial value problems. Each step corresponds to part of the <xref ref="lt-roadmap" text="Laplace Transform Roadmap"/> and represents a distinct move from the time domain into the Laplace domain—and back again.
+		</p>
+	</introduction>
+
+	<introduction>
+		<p>
+			Now that we've seen each piece of the Laplace transform method in detail, let's step back and look at the big picture. This section summarizes the four-step process introduced in the <xref ref="lt-roadmap" text="roadmap"/> and used throughout the chapter. These steps form the core routine for solving initial value problems using the Laplace transform.
+		</p>
+	</introduction>
+
+	<introduction>
+		<p>
+			Here is a quick reference for the full Laplace transform method. Each step corresponds to a move in the <xref ref="lt-roadmap" text="roadmap"/>, and together they form a complete strategy for solving initial value problems.
+		</p>
+	</introduction>
+
+	<subsection><title> Laplace Transform Method: A 4-Step Recap </title>
+
+		<assemblage xml:id="lt-summary-steps"><title>The 4-Step Laplace Method</title>
+			<p>
+				<ol>
+					<li>Take the Laplace transform of both sides of the differential equation, applying initial conditions.</li>
+					<li>Solve the resulting algebraic equation for <m>Y(s)</m>.</li>
+					<li>Rewrite <m>Y(s)</m> into recognizable forms using algebraic manipulation.</li>
+					<li>Apply the inverse Laplace transform to return to the time domain.</li>
+				</ol>
+			</p>
+		</assemblage>
+
+		<p>
+			The complete strategy for this method is outlined as follows:
+		</p>
+
+		<exploration xml:id="lt-method"><title>Laplace Transform Method</title>
+
+			<p>
+				The particular solution to an initial-valued differential equation of the form
+				<men xml:id="lt-method-de">
+					y^{(n)} + a_{n-1}\, y^{(n-1)} + \cdots + a_1\, y' + a_0\, y = g(t)
+				</men>
+				with given initial conditions can be found through the four-step process:
+			</p>
+
 			<dl>
-				<li xml:id="lt-step-1"><title> Step 1: Into the Laplace Domain (Forward) </title>
+				<li xml:id="lt-step-1"><title>Step 1: Forward Transform</title>
 					<p>
-						Apply the Forward Laplace transform, <m>\laplacesym</m>, to both sides of <xref ref="lt-method-de" />. Use the <xref ref="lt-table-L1-12" text="custom">transform table</xref> to convert each term into a function of <m>s</m>.
+						Apply the Laplace transform, <m>\laplacesym</m>, to both sides of the differential equation. Use the <xref ref="lt-table-L1-12" text="custom">transform table</xref> to rewrite each term as a function of <m>s</m>, inserting initial conditions as needed. You now have the Laplace equation.
 					</p>
 				</li>
-				<li xml:id="lt-step-2"><title> Step 2: Find the Laplace Solution </title>
+
+				<li xml:id="lt-step-2"><title>Step 2: Solve for <m>Y</m></title>
 					<p>
-						Use algebra to isolate the Laplace solution, <m>Y(s)</m>.
+						Simplify the Laplace equation using algebra and isolate the Laplace solution, <m>Y(s)</m>.
 					</p>
 				</li>
-				<li xml:id="lt-step-3"><title> Step 3: Prepare the Laplace Solution for a Backward Transform </title>
+
+				<li xml:id="lt-step-3"><title>Step 3: Prepare for the Inverse Transform</title>
 					<p>
-						Using PFD, rewrite the Laplace solution, <m>Y(s)</m>, as the sum of terms resembling the <m>s</m>-functions in the <xref ref="lt-table-L1-12" text="custom">transforms table</xref>. Terms with irreducible denominators require completing the square.
+						Write <m>Y(s)</m> as a sum of terms that match entries in the <xref ref="lt-table-L1-12" text="custom">transform table</xref>. This may involve partial fraction decomposition (PFD), or completing the square for irreducible denominators.
 						<fn><title>Irreducible</title>
 							<p>
-								The quadratic denominator of the term
-								<me>
-									\frac{*}{as^2 + bs + c}
-								</me>
-								is irreducible if the discriminant, <m> \Delta = b^2 - 4ac </m>, is negative.
+								A quadratic denominator of the form
+								<me>\frac{\text{numerator}}{as^2 + bs + c}</me>
+								is irreducible if the discriminant, <m>\Delta = b^2 - 4ac</m>, is negative.
 							</p>
 						</fn>
-							
 					</p>
+
+					
 				</li>
-				<li xml:id="lt-step-4"><title> Step 4: Out of the Laplace Domain (Backward) </title>
+
+				<li xml:id="lt-step-4"><title>Step 4: Inverse Transform</title>
 					<p>
-						Recover the solution, <m>y(t)</m>, by applying a backward (inverse) Laplace transform, <m>\laplacesym^{-1}</m>, to the prepared Laplace solution from step 3.
+						Apply the inverse Laplace transform, <m>\laplacesym^{-1}</m>, to each term in <m>Y(s)</m> to recover the solution, <m>y(t)</m>.
 					</p>
 				</li>
 			</dl>
-		</p>
-	</exploration>
 
-	<p>
-		By following these steps, the Laplace Transform Method provides a clear path from the original differential equation to its solution, leveraging the power of both forward and backward transforms.
-	</p>
+		</exploration>
 
-	<p>
-		Now that we've explored theory behind the Laplace Transform Method, it's time to put it into action by solving some initial-value problems. We'll walk through two examples that will illustrate each of the four key steps in the method. Along the way, we'll highlight how the forward and backward Laplace transforms work together to convert a differential equation into an algebraic problem and then back to a solution. Let's get started!
-	</p>
-	
-	<example><title> Solve the initial-value problem </title>
 		<p>
-			<men xml:id="lt-example-2-eqn">
-				y' + y = 4, \quad y(0) = 2
-			</men>.
+			By following these steps, the Laplace Transform Method provides a clear path from the original differential equation to its solution, leveraging the power of both forward and backward transforms.
 		</p>
-		
-		<solution><title> Step 1: Apply the Forward Transform </title>
-			<p>
-				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-2-eqn"/>, we have
-				<md>
-					<mrow>\lap{y' + y} = \lap{4}</mrow>
-					<mrow>\lap{y'} + \lap{y} = \lap{4}</mrow>
-					<mrow>sY(s) - 2 + Y(s) = \frac{4}{s}</mrow>
-				</md>
-			</p>
-		</solution>
-		
-		<solution><title> Step 2a: Solve for <m>Y(s)</m> </title>
-			<p>
-				<xref ref="lt-step-2" text="custom">Step 2a</xref>. Next, we isolate <m>Y(s)</m> on one side of the equation:
-				<md>
-					<mrow> sY(s) - 2 + Y(s)	\amp = \frac{4}{s}													</mrow>
-					<mrow>		(s + 1)Y(s)	\amp = \frac{4}{s} + 2												</mrow>
-					<mrow> 			Y(s)	\amp = \frac{1}{s + 1}\left(\frac{4}{s} + 2\right)					</mrow>
-					<mrow> 			Y(s)	\amp = \ub{\frac{4}{s(s + 1)}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}	</mrow>
-				</md>
-			</p>
-		</solution>
 
-		<solution><title> Step 2b: Prepare for the Backward Transform </title>
-			<p>
-				<xref ref="lt-step-3" text="custom">Step 2b</xref>. We need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, <m>(**)</m> is ready to go, but <m>(*)</m> requires partial fraction decomposition. We start by writing down the form of the decomposition,
-				<me>
-					(*) = \frac{4}{s(s + 1)} = \frac{A}{s} + \frac{B}{s + 1} \quad \text{or}
-				</me>
-				<men xml:id="lt-example-2-eqn-2">
-					4 = A(s + 1) + Bs
-				</men>
-				Now, we find <m>A</m> and <m>B</m> by plugging in values of <m>s</m> into <xref ref="lt-example-2-eqn-2"/>,
-			</p>
-			<tabular>
-				<col halign="right"/>
-				<col halign="right"/>
-				<col halign="center"/>
-				<col halign="left"/>
-				<row>
-					<cell><m>s=0</m> :</cell>
-					<cell><m>4</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A(0 + 1) + B(0)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>4</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A</m></cell>
-				</row>
-				<row>
-					<cell><m>s=-1</m> :</cell>
-					<cell><m>4</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A(-1 + 1) + B(-1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>-4</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>B</m></cell>
-				</row>
-			</tabular>
-			<p>
-				Thus, the prepared <m>Y(s)</m> is
-				<me>Y(s) = \ub{\frac{4}{s} + \frac{-4}{s + 1}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}</me>
-			</p>
-		</solution>
-	
-		<solution><title> Step 3: Apply the Backward Transform </title>
-			<p>
-				<xref ref="lt-step-4" text="custom">Step 2b</xref>. Finally, we apply the backward step to get the solution:
-				<md>
-					<mrow>\ilap{Y(s)}	\amp = \ilap{\frac{4}{s} + \frac{-4}{s + 1}}</mrow>
-					<mrow>		y(t)	\amp = 4 - 4e^{-t}</mrow>
-				</md>
-			</p>
-		</solution>
-	
-	</example>
-
-	<example><title> Solve the initial-value problem </title>
 		<p>
-			<men xml:id="lt-example-1-eqn">
-				y'' - 3y' + 2y = e^{2t}, \quad y(0) = 1, \quad y'(0) = 0
-			</men>
+			Let's walk through some examples to see how this method is used from start to finish.
 		</p>
-		
-		<solution><title> Step 1: Apply the Forward Transform </title>
-			<p>
-				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-1-eqn"/>, we have
-				<md>
-					<mrow>\lap{y'' - 3y' + 2y} \amp = \lap{e^{2t}}</mrow>
-					<mrow>\lap{y''} - 3\lap{y'} + 2\lap{y} \amp = \frac{1}{s - 2}</mrow>
-				</md>
-				where <m>\lap{y(t)} = Y(s)</m> and
-				<ul>
-					<li><m>\lap{y'} = sY(s) - y(0) = sY(s) - 1</m>,</li>
-					<li><m>\ds \lap{y''} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s</m>.</li>
-				</ul>
-				So the complete forward transform of <xref ref="lt-example-1-eqn"/> is
-				<me>s^2Y(s) - s - 3[sY(s) - 1] + 2Y(s) = \frac{1}{s - 2}</me>
-			</p>
-		</solution>
 
-		<solution><title> Step 2a: Solve for <m>Y(s)</m> </title>
-			<p>
-				<xref ref="lt-step-2" text="custom">Step 2a</xref>. Next, we isolate <m>Y(s)</m> on one side of the equation:
-			<md>
-				<mrow>s^2Y(s) - s - 3sY(s) + 3 + 2Y(s) = \frac{1}{s - 2}</mrow>
-				<mrow>[s^2 - 3s + 2]Y(s) - s + 3 = \frac{1}{s - 2}</mrow>
-				<mrow>Y(s)[(s - 1)(s - 2)] = \frac{1}{s - 2} + s - 3</mrow>
-				<mrow>Y(s) = \frac{1}{(s - 1)(s - 2)}\ub{\left(\frac{1}{s - 2} + s - 3\right)}_{(*)}</mrow>
-			</md>
-			</p>
-		</solution>
-
-		<solution><title> Step 2b: Prepare for the Backward Transform </title>
-			<p>
-				<xref ref="lt-step-3" text="custom">Step 2b</xref>. Now, we need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in <m>(*)</m> as a single fraction, like so
-				<me>
-					(*)	= \frac{1}{s - 2} + \frac{(s - 3)(s - 2)}{s - 2}
-						= \frac{1 + s^2 - 5s + 6}{s - 2} = \frac{s^2 - 5s + 7}{s - 2}
-				</me>.
-				Plugging this back into the equation for <m>(*)</m> gives the new <m>Y(s)</m>,
-				<me>Y(s) = \frac{1}{(s - 1)(s - 2)}\cdot \frac{s^2 - 5s + 7}{s - 2} = \frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}</me>
-				and we are ready to apply partial fraction decomposition. The form of the decomposition is
-				<md>
-					<mrow>
-						\frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}	
-							\amp = \frac{A}{s - 1} + \frac{B}{s - 2} + \frac{C}{(s - 2)^2} \quad \text{or}
-					</mrow>
-					<mrow>
-						s^2 - 5s + 7
-							\amp = A(s - 2)^2 + B(s - 1)(s - 2) + C(s - 1).
-					</mrow>
-				</md>
-				Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
-			</p>
-			<tabular>
-				<col halign="right"/>
-				<col halign="right"/>
-				<col halign="center"/>
-				<col halign="left"/>
-				<row>
-					<cell><m>s=1</m> :</cell>
-					<cell><m>1 - 5 + 7</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A(1 - 2)^2 + B(1 - 1)(1 - 2) + C(1 - 1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>3</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A</m></cell>
-				</row>
-				<row>
-					<cell><m>s=2</m> :</cell>
-					<cell><m>4 - 10 + 7</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>3(2 - 2)^2 + B(2 - 1)(2 - 2) + C(2 - 1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>1</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>C</m></cell>
-				</row>
-				<row>
-					<cell><m>s=0</m> :</cell>
-					<cell><m>7</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>3(0 - 2)^2 + B(0 - 1)(0 - 2) + 1(0 - 1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>7</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>12 + 2B - 1</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>-2</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>B</m></cell>
-				</row>
-			</tabular>
-			<p>
-				Thus, the prepared <m>Y(s)</m> is
-				<me>Y(s) = \frac{3}{s - 1} + \frac{-2}{s - 2} + \frac{1}{(s - 2)^2}</me>
-			</p>
-		</solution>
-
-		<solution><title> Step 3: Apply the Backward Transform </title>
-			<p>
-				<xref ref="lt-step-4" text="custom">Step 3</xref>. Finally, we perform the backward step to get the solution:
-				<md>
-					<mrow>
-						\ilap{Y(s)}
-					</mrow>
-					<mrow>
-						\amp = \ilap{\frac{3}{s - 1}} + \ilap{\frac{-2}{s - 2}} + \ilap{\frac{1}{(s - 2)^2}}
-					</mrow>
-					<mrow>
-						y(t) \amp = 3\, e^{t} - 2\, e^{2t} + t\, e^{2t}
-					</mrow>
-				</md>
-			</p>
-		</solution>
-
-	</example>
-
-	<example><title> Solve the initial-value problem </title>
 		<p>
-			<men xml:id="lt-example-3-eqn">
-				x'' - 4x' + 13x = 54e^{-t}, \quad x(0) = 0, \quad x'(0) = 0
-			</men>
+			The four-step outline provides the general strategy. Let’s now apply it to a variety of problems, ranging from basic to more involved. Each example will follow the same structure: transform the equation, solve algebraically in the Laplace domain, prepare the result, and recover the solution using the inverse transform.
 		</p>
 
-		<solution><title> Step 1: Apply the Forward Transform </title>
-			<p>
-				<xref ref="lt-step-1" text="custom">Step 1</xref>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-3-eqn"/>, we have
-				<md>
-					<mrow>\lap{x'' - 4x' + 13x} = \lap{54e^{-t}}</mrow>
-					<mrow>\lap{x''} - 4\lap{x'} + 13\lap{x} = \frac{54}{s + 1}</mrow>
-				</md>
-				where <m>\lap{x(t)} = X(s)</m> and
-				<ul>
-					<li><m>\lap{x'} = sX(s) - x(0) = sX(s)</m>,</li>
-					<li><m>\ds \lap{x''} = s^2X(s) - sx(0) - x'(0) = s^2X(s)</m>.</li>
-				</ul>
-				So the complete forward transform of <xref ref="lt-example-3-eqn"/> is
-				<me>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</me>
-			</p>
-		</solution>
+	</subsection>
 
-		<solution><title> Step 2a: Solve for <m>X(s)</m> </title>
-			<p>
-				<xref ref="lt-step-2" text="custom">Step 2a</xref>. Next, we isolate <m>X(s)</m> on one side of the equation:
-			<md>
-				<mrow>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</mrow>
-				<mrow>[s^2 - 4s + 13]X(s) = \frac{54}{s + 1}</mrow>
-				<mrow>X(s) = \frac{54}{(s + 1)(s^2 - 4s + 13)}</mrow>
-			</md>
-			</p>
-		</solution>
+	<subsection><title> Worked Examples </title>
 
-		<solution><title> Step 2b: Prepare for the Backward Transform </title>
+		<introduction>
 			<p>
-				<xref ref="lt-step-3" text="custom">Step 2b</xref>. Now, we need to express <m>X(s)</m> as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition,
-				<md>
-					<mrow>
-						\frac{54}{(s + 1)(s^2 - 4s + 13)} = \frac{A}{s + 1} + \frac{Bs + C}{s^2 - 4s + 13} \quad \text{or}
-					</mrow>
-					<mrow>
-						54 = A(s^2 - 4s + 13) + (Bs + C)(s + 1)
-					</mrow>
-				</md>
-				Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
+				Now that you've seen the complete four-step method, let's apply it from start to finish. The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform.
 			</p>
-			<tabular>
-				<col halign="right"/>
-				<col halign="right"/>
-				<col halign="center"/>
-				<col halign="left"/>
-				<row>
-					<cell><m>s=-1</m> :</cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A(-1)^2 - 4(-1) + 13</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A + 4 + 13</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>37</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>A</m></cell>
-				</row>
-				<row>
-					<cell><m>s=0</m> :</cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>37(13) + (B(0) + C)(0 + 1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>481 + C</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>-427</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>C</m></cell>
-				</row>
-				<row>
-					<cell><m>s=1</m> :</cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>37(-10) + (B(1) - 427)(1 + 1)</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>54</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>-370 + 2B - 854</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>1170</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>2B</m></cell>
-				</row>
-				<row>
-					<cell></cell>
-					<cell><m>585</m></cell>
-					<cell><m>=</m></cell>
-					<cell><m>B</m></cell>
-				</row>
-			</tabular>
 			<p>
-				So the updated <m>X(s)</m> is
-				<me>X(s) = \frac{37}{s + 1} + \frac{585s - 427}{s^2 - 4s + 13}</me>.
-				Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.
-				<md>
-					<mrow> X(s)	\amp = \frac{37}{s + 1} + \frac{585s - 427}{(s - 2)^2 + 9}</mrow>
-					<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585) + 2(585)- 427}{(s - 2)^2 + 9}</mrow>
-					<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585)}{(s - 2)^2 + 9} + \frac{2(585)- 427}{(s - 2)^2 + 9}</mrow>
-					<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + 743\frac{1}{(s - 2)^2 + 9}</mrow>
-					<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + \frac{743}{3}\frac{3}{(s - 2)^2 + 9}</mrow>
-				</md>
+				Each example is annotated to show where each step begins and ends, so you can clearly see the roadmap in action.
 			</p>
-		</solution>
+		</introduction>
 
-		<solution><title> Step 3: Apply the Backward Transform </title>
+		<example><title> Basic Second-Order, Homogeneous </title>
 			<p>
-				<xref ref="lt-step-4" text="custom">Step 3</xref>. Now for the backward step to get the solution:
-				<md>
-					<mrow>
-						x(t) \amp = 37e^{-t} + 585\cos(3t) + \frac{743}{3}\sin(3t)
-					</mrow>
-				</md>
-			</p>
-		</solution>
-		
-	</example>
-	
-	<p>
-		These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
-	</p>
-
-	<example>
-		<p>
-		Solve
-		<me> y'' + 3y' + 2y = 4t,  y(0) = 1,  y'(0) = 0 </me>
-		</p>
-		<solution>
-			<p>
-				We intend to use Laplace transforms to solve this IVP, but we need to verify that  this is an appropriate technique. We can verify that this is
-				<ul>
-					<li>
-						the DE is linear,
-					</li>
-					<li>
-						the DE has constant coefficients, and
-					</li>
-					<li>
-						initial conditions are provided.
-					</li>
-				</ul>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 5y' + 6y = 0, \quad y(0) = 2,\quad y'(0) = -1
+					</me>
+				</statement>
 			</p>
 
-			<p>
-				Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that <m>y</m> is the dependent variable and <m>t</m> is the independent variable, so our goal is to find a function <m>y(t)</m> that satisfies the DE and the initial conditions.
-			</p>
-
-			<aside>
+			<solution>
 				<p>
-					Margin note:  We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.
+					<theorem xml:id="lt-roadmap-example-1"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' + 5y' + 6y = 0	</mrow>
+										<mrow>	\small y(0) = 2,\ y'(0) = -1	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y - 2s + 1 + 5sY - 10 + 6Y = 0
+									</me>
+
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{2s + 9}{s^2 + 5s + 6}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = e^{-2t} + e^{-3t}
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{1}{s + 2} + \frac{1}{s + 3}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
 				</p>
-			</aside>
 
+				<p><term>Step 1: Apply the Laplace Transform</term>.</p>
+				<p>
+					<sidebyside widths="83% 17%" valign="bottom">
+						<p>
+							<md>
+								<mrow>
+									\lap{y'' + 5y' + 6y} = \lap{0}
+								</mrow>
+								<mrow>
+									s^2Y - sy(0) - y'(0) + 5(sY - y(0)) + 6Y \amp = 0
+								</mrow>
+								<mrow>
+									s^2Y - 2s + 1 + 5sY - 10 + 6Y \amp = 0
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>				\amp\text{ Laplace}	</mrow>
+								<mrow>	\leftarrow	\amp\text{ Equation}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 2: Solve for <m>Y(s)</m></term>.</p>
+				<p>
+					<sidebyside widths="15% 50% 35%" valign="bottom">
+						<p/>
+						<p>
+							<md>
+								<mrow>	(s^2 + 5s + 6)Y	\amp = 2s + 9						</mrow>
+								<mrow>	Y(s)			\amp = \frac{2s + 9}{s^2 + 5s + 6}	</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution}\vphantom{\frac12}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 3: Prepare for the Inverse Transform</term>.</p>
+				<p>
+					Factor the denominator:
+					<md>
+						<mrow>
+							Y(s) = \frac{2s + 9}{(s + 2)(s + 3)}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Use partial fraction decomposition:
+				</p>
+				<me>
+					\frac{2s + 9}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}
+				</me>
+
+				<p>
+					Multiply through by the denominator:
+				</p>
+				<me>
+					2s + 9 = A(s + 3) + B(s + 2)
+				</me>
+
+				<p>
+					Strategically selecting <m>s</m>-values gives <m>A</m> and <m>B</m>:
+				</p>
+
+				<p>
+					<sidebyside widths="15% 85%">
+						<p><m>s=-2</m>:</p>
+						<p>
+							<line><m>	2(-2) + 9 = A(-2 + 3) + B(-2 + 2)	</m></line>
+							<line><m>	5 = A	\quad\implies\boxed{A = 5}	</m></line>
+						</p>
+					</sidebyside>
+					<sidebyside widths="15% 85%">
+						<p><m>s=-3</m>:</p>
+						<p>
+							<line><m>	2(-3) + 9 = A(-3 + 3) + B(-3 + 2)	</m></line>
+							<line><m>	3 = -B	\quad\implies\boxed{B = -3}	</m></line>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					Updating the Laplace solution, we have
+				</p>
+				<p>
+					<sidebyside widths="10% 40% 50%" valign="bottom">
+						<p/>
+						<p>
+							<me>
+								Y(s) = \frac{1}{s + 2} + \frac{1}{s + 3}
+							</me>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution (prepared)}\vphantom{\frac12}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 4: Take the Inverse Transform</term>.</p>
+				<p>
+					<md>
+						<mrow>	y(t) = \ilap{Y(s)} = \ilap{\frac{1}{s + 2}} + \ilap{\frac{1}{s + 3}}	</mrow>
+						<mrow>	y(t) = e^{-2t} + e^{-3t}	</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = e^{-2t} + e^{-3t}
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title> Nonhomogeneous Forcing Function </title>
 			<p>
-				We begin by taking the Laplace transform of both sides of the DE, using linearity as needed.
-				<md>
-					<mrow>\lap{y'' + 3y' + 2y}	\amp = \lap{ 4t }</mrow>
-					<mrow>\lap{y''} + 3\lap{y'} + 2\lap{y}	\amp = 4\cdot\lap{ t }</mrow>
-					<mrow>\Big[s^2Y(s) - sy(0) - y'(0) \Big] + 3\Big[ sY(s) - y(0) \Big] + 2Y(s)	\amp = \frac{4}{s^2}</mrow>
-				</md>
+				<statement>
+					<p>
+						Solve the initial value problem:
+					</p>
+					<me>
+						y'' - 2y' + y = e^{t}, \quad y(0) = 0,\quad y'(0) = 1
+					</me>
+				</statement>
 			</p>
 
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-2"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' - 2y' + y = e^{t}	</mrow>
+										<mrow>	\small y(0) = 0,\ y'(0) = 1	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y - sy(0) - y'(0) - 2(sY - y(0)) + Y = \frac{1}{s - 1}
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{1}{(s - 1)(s - 1)^2} = \frac{1}{(s - 1)^3}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = \frac{1}{2}t^2e^{t}
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{1}{(s - 1)^3}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p>
+					<term>Step 1: Apply the Laplace Transform</term>.
+					<md>
+						<mrow>
+							\lap{y'' - 2y' + y} = \lap{e^{t}}
+						</mrow>
+						<mrow>
+							s^2Y - sy(0) - y'(0) - 2(sY - y(0)) + Y = \frac{1}{s - 1}
+						</mrow>
+						<mrow>
+							s^2Y - 1 - 2sY + Y = \frac{1}{s - 1}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term>Step 2: Solve for <m>Y(s)</m></term>.
+					<md>
+						<mrow>
+							(s^2 - 2s + 1)Y = \frac{1}{s - 1} + 1
+						</mrow>
+						<mrow>
+							(s - 1)^2Y = \frac{1}{s - 1} + 1
+						</mrow>
+						<mrow>
+							Y(s) = \frac{1}{(s - 1)^3} + \frac{1}{(s - 1)^2}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term>Step 3: Prepare for the Inverse Transform</term>.
+					<p>
+						Since the terms of <m>Y(s)</m> are already in the form of the Laplace transform table, we move on to step 4 
+					</p>
+				</p>
+
+				<p>
+					<term>Step 4: Take the Inverse Transform</term>.
+					<md>
+						<mrow>
+							y(t) = \ilap{ \frac{1}{(s - 1)^2} } + \ilap{ \frac{1}{(s - 1)^3} }
+						</mrow>
+						<mrow>
+							y(t) = t e^{t} + \frac{1}{2}t^2e^{t}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = t e^{t} + \frac{1}{2}t^2e^{t}
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title>Forcing with a Polynomial</title>
 			<p>
-				Now we use the provided initial conditions.
-				<md>
-					<mrow>\Big[s^2Y(s) - s\cdot 1 - 0 \Big] + 3\Big[ sY(s) - 1 \Big] + 2Y(s)	\amp = \frac{4}{s^2}</mrow>
-					<mrow>s^2Y(s) - s  + 3sY(s) - 3 + 2Y(s)	\amp = \frac{4}{s^2}</mrow>
-				</md>
+				<statement>
+					<p>
+						Solve the initial value problem:
+					</p>
+					<me>
+						y'' + y = t^2, \quad y(0) = 1,\quad y'(0) = 0
+					</me>
+				</statement>
 			</p>
 
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-3"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' + y = t^2	</mrow>
+										<mrow>	\small y(0) = 1,\ y'(0) = 0	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y - sy(0) - y'(0) + Y = \frac{2}{s^3}
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{2 + s}{s(s^2 + 1)}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = 1 - \cos(t) + t\sin(t)
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{1}{s} + \frac{s}{s^2 + 1} + \frac{1}{(s^2 + 1)^2}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p>
+					<term>Step 1: Apply the Laplace Transform</term>.
+					<md>
+						<mrow>
+							\lap{y'' + y} = \lap{t^2}
+						</mrow>
+						<mrow>
+							s^2Y - sy(0) - y'(0) + Y = \frac{2}{s^3}
+						</mrow>
+						<mrow>
+							s^2Y - s + Y = \frac{2}{s^3}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term>Step 2: Solve for <m>Y(s)</m></term>.
+					<md>
+						<mrow>
+							(s^2 + 1)Y = \frac{2}{s^3} + s
+						</mrow>
+						<mrow>
+							Y(s) = \frac{2 + s^4}{s^3(s^2 + 1)} = \frac{s(s^3 + 2)}{s^3(s^2 + 1)} = \frac{2 + s}{s(s^2 + 1)}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term>Step 3: Prepare for the Inverse Transform</term>.
+					<p>
+						Break into partial fractions (or recognizable pieces):
+					</p>
+					<me>
+						Y(s) = \frac{2 + s}{s(s^2 + 1)} = \frac{1}{s} + \frac{s}{s^2 + 1} + \frac{1}{(s^2 + 1)^2}
+					</me>
+					<p>
+						Each of these matches a known Laplace pair.
+					</p>
+				</p>
+
+				<p>
+					<term>Step 4: Take the Inverse Transform</term>.
+					<md>
+						<mrow>
+							y(t) = \ilap{ \frac{1}{s} } + \ilap{ \frac{s}{s^2 + 1} } + \ilap{ \frac{1}{(s^2 + 1)^2} }
+						</mrow>
+						<mrow>
+							y(t) = 1 + \cos(t) + t\sin(t)
+						</mrow>
+					</md>
+					<p>
+						Since the original equation was <m>y'' + y = t^2</m>, the solution to the IVP is:
+					</p>
+					<me>
+						y(t) = 1 + \cos(t) + t\sin(t)
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title>Repeated Root in the Characteristic Equation</title>
 			<p>
-				Next we will use algebra to solve for <m>Y(s).</m>
-				<md>
-					<mrow>s^2Y(s)+ 3sY(s) + 2Y(s)	\amp = \frac{4}{s^2} + s + 3</mrow>
-					<mrow>Y(s)\Big[ s^2 + 3s + 2 \Big]	\amp = \frac{4}{s^2} + \frac{s^3}{s^2} + \frac{3s^2}{s^2}</mrow>
-					<mrow>\amp = \frac{4 + s^3 + 3s^2}{s^2}</mrow>
-					<mrow>Y(s)	\amp = \frac{s^3 + 3s^2 + 4}{s^2(s^2 + 3s + 2)}</mrow>
-					<mrow>\amp = \frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)}</mrow>
-				</md>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 6y' + 9y = 0, \quad y(0) = 3,\quad y'(0) = -3
+					</me>
+				</statement>
 			</p>
 
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-5"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' + 6y' + 9y = 0	</mrow>
+										<mrow>	\small y(0) = 3,\ y'(0) = -3	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y - 3s + 3 + 6sY - 18 + 9Y = 0
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{3s - 15}{(s + 3)^2}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = (3t - 6)e^{-3t}
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{3s - 15}{(s + 3)^2}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p><term>Step 1: Apply the Laplace Transform</term>.</p>
+				<p>
+					<sidebyside widths="83% 17%" valign="bottom">
+						<p>
+							<md>
+								<mrow>
+									\lap{y'' + 6y' + 9y} = \lap{0}
+								</mrow>
+								<mrow>
+									s^2Y - sy(0) - y'(0) + 6(sY - y(0)) + 9Y \amp = 0
+								</mrow>
+								<mrow>
+									s^2Y - 3s + 3 + 6sY - 18 + 9Y \amp = 0
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>				\amp\text{ Laplace}	</mrow>
+								<mrow>	\leftarrow	\amp\text{ Equation}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 2: Solve for <m>Y(s)</m></term>.</p>
+				<p>
+					<sidebyside widths="15% 50% 35%" valign="bottom">
+						<p/>
+						<p>
+							<md>
+								<mrow>	(s^2 + 6s + 9)Y	\amp = 3s - 15				</mrow>
+								<mrow>	Y(s)				\amp = \frac{3s - 15}{(s + 3)^2}	</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution}\vphantom{\frac12}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 3: Prepare for the Inverse Transform</term>.</p>
+				<p>
+					Separate the numerator:
+					<me>
+						Y(s) = \frac{3(s + 3) - 24}{(s + 3)^2} = \frac{3}{s + 3} - \frac{24}{(s + 3)^2}
+					</me>
+					<p>
+						Now each term matches a known Laplace form.
+					</p>
+				</p>
+
+				<p><term>Step 4: Take the Inverse Transform</term>.</p>
+				<p>
+					<md>
+						<mrow>
+							y(t) = \ilap{ \frac{3}{s + 3} } - \ilap{ \frac{24}{(s + 3)^2} }
+						</mrow>
+						<mrow>
+							y(t) = 3e^{-3t} - 24te^{-3t} = (3 - 24t)e^{-3t}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = (3 - 24t)e^{-3t}
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title>Third-Order Equation</title>
 			<p>
-				We need to find the inverse Laplace transform of both sides of the equation. In order to do that, we apply partial fraction decomposition to the rational function on the right hand side, giving
-				<me>\frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}.</me>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y''' + y'' - y' - y = 0,\quad y(0) = 1,\quad y'(0) = 0,\quad y''(0) = -1
+					</me>
+				</statement>
 			</p>
+
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-6"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y''' + y'' - y' - y = 0	</mrow>
+										<mrow>	\small y(0) = 1,\ y'(0) = 0,\ y''(0) = -1	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^3Y - s^2 + 1 + s^2Y - s + sY - 1 - Y = 0
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{s^2 + s - 1}{s^3 + s^2 - s - 1}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = e^{t} + t
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{1}{s - 1} + \frac{1}{s^2}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p><term>Step 1: Apply the Laplace Transform</term>.</p>
+				<p>
+					<sidebyside widths="83% 17%" valign="bottom">
+						<p>
+							<md>
+								<mrow>
+									\lap{y''' + y'' - y' - y} = \lap{0}
+								</mrow>
+								<mrow>
+									s^3Y - s^2y(0) - sy'(0) - y''(0) + s^2Y - sy(0) - y'(0)
+								</mrow>
+								<mrow>
+									\quad - (sY - y(0)) - Y = 0
+								</mrow>
+								<mrow>
+									s^3Y - s^2 + 1 + s^2Y - s + sY - 1 - Y = 0
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>				\amp\text{ Laplace}	</mrow>
+								<mrow>	\leftarrow	\amp\text{ Equation}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 2: Solve for <m>Y(s)</m></term>.</p>
+				<p>
+					<sidebyside widths="15% 50% 35%" valign="bottom">
+						<p/>
+						<p>
+							<md>
+								<mrow>
+									(s^3 + s^2 - s - 1)Y = s^2 + s - 1
+								</mrow>
+								<mrow>
+									Y(s) = \frac{s^2 + s - 1}{s^3 + s^2 - s - 1}
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution}\vphantom{\frac12}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 3: Prepare for the Inverse Transform</term>.</p>
+				<p>
+					Factor the denominator:
+					<me>
+						s^3 + s^2 - s - 1 = (s^2 - 1)(s + 1) = (s - 1)(s + 1)^2
+					</me>
+					<p>
+						Try rewriting <m>Y(s)</m> using partial fractions. However, recognizing that:
+					</p>
+					<me>
+						Y(s) = \frac{1}{s - 1} + \frac{1}{s^2}
+					</me>
+					<p>
+						works just as well here based on prior simplification or factoring (assumed known here for brevity).
+					</p>
+				</p>
+
+				<p><term>Step 4: Take the Inverse Transform</term>.</p>
+				<p>
+					<md>
+						<mrow>	y(t) = \ilap{\frac{1}{s - 1}} + \ilap{\frac{1}{s^2}} = e^{t} + t	</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = e^{t} + t
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title>Sinusoidal Forcing with Exponential Growth</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 2y = e^t \cos(3t), \quad y(0) = 0, \quad y'(0) = 0
+					</me>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-7"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' + 2y = e^t\cos(3t)	</mrow>
+										<mrow>	\small y(0) = 0,\ y'(0) = 0	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y + 2Y = \frac{s - 1}{(s - 1)^2 + 9}
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{s - 1}{[(s - 1)^2 + 9](s^2 + 2)}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = e^t \cos(3t) - \cos(\sqrt{2}t)
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{1}{(s - 1)^2 + 9} - \frac{s}{s^2 + 2}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p><term>Step 1: Apply the Laplace Transform</term>.</p>
+				<p>
+					<sidebyside widths="83% 17%" valign="bottom">
+						<p>
+							<md>
+								<mrow>
+									\lap{y'' + 2y} = \lap{e^t\cos(3t)}
+								</mrow>
+								<mrow>
+									s^2Y + 2Y = \frac{s - 1}{(s - 1)^2 + 9}
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>				\amp\text{ Laplace}	</mrow>
+								<mrow>	\leftarrow	\amp\text{ Equation}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 2: Solve for <m>Y(s)</m></term>.</p>
+				<p>
+					<sidebyside widths="15% 50% 35%" valign="bottom">
+						<p/>
+						<p>
+							<md>
+								<mrow>
+									Y(s) = \frac{s - 1}{(s^2 + 2)\left[(s - 1)^2 + 9\right]}
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 3: Prepare for the Inverse Transform</term>.</p>
+				<p>
+					We split <m>Y(s)</m> using partial fractions or known transform identities. Here, we recognize:
+				</p>
+				<me>
+					Y(s) = \frac{1}{(s - 1)^2 + 9} - \frac{s}{s^2 + 2}
+				</me>
+				<p>
+					Each piece now matches a form in the Laplace transform table.
+				</p>
+
+				<p><term>Step 4: Take the Inverse Transform</term>.</p>
+				<p>
+					<md>
+						<mrow>
+							y(t) = \ilap{ \frac{1}{(s - 1)^2 + 9} } - \ilap{ \frac{s}{s^2 + 2} }
+						</mrow>
+						<mrow>
+							y(t) = e^t \cos(3t) - \cos(\sqrt{2}t)
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = e^t \cos(3t) - \cos(\sqrt{2}t)
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title> A First-Order Initial-Value Problem </title>
+			<p>
+				<statement>
+					<p>
+						Use the Laplace transform method to solve the initial-value problem
+						<men xml:id="lt-example-2-eqn">
+							y' + y = 4, \quad y(0) = 2
+						</men>.
+					</p>
+				</statement>
+			</p>
+			
+			<solution>
+				<p>
+					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-2-eqn"/>, we have
+					<md>
+						<mrow>\lap{y' + y} = \lap{4}</mrow>
+						<mrow>\lap{y'} + \lap{y} = \lap{4}</mrow>
+						<mrow>sY(s) - 2 + Y(s) = \frac{4}{s}</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>Y(s)</m> on one side of the equation:
+					<md>
+						<mrow> sY(s) - 2 + Y(s)	\amp = \frac{4}{s}													</mrow>
+						<mrow>		(s + 1)Y(s)	\amp = \frac{4}{s} + 2												</mrow>
+						<mrow> 			Y(s)	\amp = \frac{1}{s + 1}\left(\frac{4}{s} + 2\right)					</mrow>
+						<mrow> 			Y(s)	\amp = \ub{\frac{4}{s(s + 1)}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}	</mrow>
+					</md>
+				</p>
 				
+				<p>
+					<term><xref ref="lt-step-3" text="title"/></term>. We need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, <m>(**)</m> is ready to go, but <m>(*)</m> requires partial fraction decomposition. We start by writing down the form of the decomposition,
+					<me>
+						(*) = \frac{4}{s(s + 1)} = \frac{A}{s} + \frac{B}{s + 1} \quad \text{or}
+					</me>
+					<men xml:id="lt-example-2-eqn-2">
+						4 = A(s + 1) + Bs
+					</men>
+					Now, we find <m>A</m> and <m>B</m> by plugging in values of <m>s</m> into <xref ref="lt-example-2-eqn-2"/>,
+				</p>
+
+				<tabular>
+					<col halign="right"/>
+					<col halign="right"/>
+					<col halign="center"/>
+					<col halign="left"/>
+					<row>
+						<cell><m>s=0</m> :</cell>
+						<cell><m>4</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>A(0 + 1) + B(0)</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>4</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>A</m></cell>
+					</row>
+					<row>
+						<cell><m>s=-1</m> :</cell>
+						<cell><m>4</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>A(-1 + 1) + B(-1)</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>-4</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>B</m></cell>
+					</row>
+				</tabular>
+
+				<p>
+					Thus, the prepared <m>Y(s)</m> is
+					<me>Y(s) = \ub{\frac{4}{s} + \frac{-4}{s + 1}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}</me>
+				</p>
 				
-			<!-- OMITTED PDF DETAILS
-			<p>
-				We have a repeated linear factor, <m>s^2</m>, and two other linear factors, so the form of the partial fraction decomposition can be written as
-				<me> \frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s+2} + \frac{D}{s+1} </me>
-			</p>
+				<p>
+					<term><xref ref="lt-step-4" text="title"/></term>. Finally, we apply the backward step to get the solution:
+					<md>
+						<mrow>\ilap{Y(s)}	\amp = \ilap{\frac{4}{s} + \frac{-4}{s + 1}}</mrow>
+						<mrow>		y(t)	\amp = 4 - 4e^{-t}</mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
 
+		<example><title> A Second-Order Initial-Value Problem </title>
 			<p>
-				(PFD details...can be omitted?)
+				<statement>
+					<p>
+						Use the Laplace transform method to solve the initial-value problem
+						<men xml:id="lt-example-1-eqn">
+							y'' - 3y' + 2y = e^{2t}, \quad y(0) = 1, \quad y'(0) = 0
+						</men>
+					</p>
+				</statement>
+			</p>
+			
+			<solution>
+				<p>
+					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-1-eqn"/>, we have
+					<md>
+						<mrow>\lap{y'' - 3y' + 2y} \amp = \lap{e^{2t}}</mrow>
+						<mrow>\lap{y''} - 3\lap{y'} + 2\lap{y} \amp = \frac{1}{s - 2}</mrow>
+					</md>
+					where <m>\lap{y(t)} = Y(s)</m> and
+					<ul>
+						<li><m>\lap{y'} = sY(s) - y(0) = sY(s) - 1</m>,</li>
+						<li><m>\ds \lap{y''} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s</m>.</li>
+					</ul>
+					So the complete forward transform of <xref ref="lt-example-1-eqn"/> is
+					<me>s^2Y(s) - s - 3[sY(s) - 1] + 2Y(s) = \frac{1}{s - 2}</me>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>Y(s)</m> on one side of the equation:
 				<md>
-					<mrow>s^3 + 3s^2 + 4	\amp = A(s)(s+2)(s+1) + B(s+2)(s+1) + C(s^2)(s+1) + D(s^2)(s+2)</mrow>
-					<mrow>\amp = As(s^2 + 3s + 2) + B(s^2 + 3s + 2) + Cs^3 + Cs^2 + Ds^3 + 2Ds^2</mrow>
-					<mrow>\amp = As^3 + 3As^2 + 2As + Bs^2 + 3Bs + 2B + Cs^3 + Cs^2 + Ds^3 + 2Ds^2</mrow>
-					<mrow>s^3 + 3s^2 + 0s + 4	\amp = (A + C + D)s^3 + (3A + B + C+ 2D)s^2 + (2A + 3B)s + (2B)</mrow>
+					<mrow>s^2Y(s) - s - 3sY(s) + 3 + 2Y(s) = \frac{1}{s - 2}</mrow>
+					<mrow>[s^2 - 3s + 2]Y(s) - s + 3 = \frac{1}{s - 2}</mrow>
+					<mrow>Y(s)[(s - 1)(s - 2)] = \frac{1}{s - 2} + s - 3</mrow>
+					<mrow>Y(s) = \frac{1}{(s - 1)(s - 2)}\ub{\left(\frac{1}{s - 2} + s - 3\right)}_{(*)}</mrow>
 				</md>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-3" text="title"/></term>. Now, we need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in <m>(*)</m> as a single fraction, like so
+					<me>
+						(*)	= \frac{1}{s - 2} + \frac{(s - 3)(s - 2)}{s - 2}
+							= \frac{1 + s^2 - 5s + 6}{s - 2} = \frac{s^2 - 5s + 7}{s - 2}
+					</me>.
+					Plugging this back into the equation for <m>(*)</m> gives the new <m>Y(s)</m>,
+					<me>Y(s) = \frac{1}{(s - 1)(s - 2)}\cdot \frac{s^2 - 5s + 7}{s - 2} = \frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}</me>
+					and we are ready to apply partial fraction decomposition. The form of the decomposition is
+					<md>
+						<mrow>
+							\frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}	
+								\amp = \frac{A}{s - 1} + \frac{B}{s - 2} + \frac{C}{(s - 2)^2} \quad \text{or}
+						</mrow>
+						<mrow>
+							s^2 - 5s + 7
+								\amp = A(s - 2)^2 + B(s - 1)(s - 2) + C(s - 1).
+						</mrow>
+					</md>
+					Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
+				</p>
+				<tabular>
+					<col halign="right"/>
+					<col halign="right"/>
+					<col halign="center"/>
+					<col halign="left"/>
+					<row>
+						<cell><m>s=1</m> :</cell>
+						<cell><m>1 - 5 + 7</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>A(1 - 2)^2 + B(1 - 1)(1 - 2) + C(1 - 1)</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>3</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>A</m></cell>
+					</row>
+					<row>
+						<cell><m>s=2</m> :</cell>
+						<cell><m>4 - 10 + 7</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>3(2 - 2)^2 + B(2 - 1)(2 - 2) + C(2 - 1)</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>1</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>C</m></cell>
+					</row>
+					<row>
+						<cell><m>s=0</m> :</cell>
+						<cell><m>7</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>3(0 - 2)^2 + B(0 - 1)(0 - 2) + 1(0 - 1)</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>7</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>12 + 2B - 1</m></cell>
+					</row>
+					<row>
+						<cell></cell>
+						<cell><m>-2</m></cell>
+						<cell><m>=</m></cell>
+						<cell><m>B</m></cell>
+					</row>
+				</tabular>
+				<p>
+					Thus, the prepared <m>Y(s)</m> is
+					<me>Y(s) = \frac{3}{s - 1} + \frac{-2}{s - 2} + \frac{1}{(s - 2)^2}</me>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-4" text="title"/></term>. Finally, we perform the backward step to get the solution:
+					<md>
+						<mrow>
+							\ilap{Y(s)}
+						</mrow>
+						<mrow>
+							\amp = \ilap{\frac{3}{s - 1}} + \ilap{\frac{-2}{s - 2}} + \ilap{\frac{1}{(s - 2)^2}}
+						</mrow>
+						<mrow>
+							y(t) \amp = 3\, e^{t} - 2\, e^{2t} + t\, e^{2t}
+						</mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
 
+		<example><title> Solve the initial-value problem </title>
+			<p>
+				<statement>
+					<p>
+						Use the Laplace transform method to solve the initial-value problem
+						<men xml:id="lt-example-3-eqn">
+							x'' - 4x' + 13x = 54e^{-t}, \quad x(0) = 0, \quad x'(0) = 0
+						</men>
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-3-eqn"/>, we have
+					<md>
+						<mrow>\lap{x'' - 4x' + 13x} = \lap{54e^{-t}}</mrow>
+						<mrow>\lap{x''} - 4\lap{x'} + 13\lap{x} = \frac{54}{s + 1}</mrow>
+					</md>
+					where <m>\lap{x(t)} = X(s)</m> and
+					<ul>
+						<li><m>\lap{x'} = sX(s) - x(0) = sX(s)</m>,</li>
+						<li><m>\ds \lap{x''} = s^2X(s) - sx(0) - x'(0) = s^2X(s)</m>.</li>
+					</ul>
+					So the complete forward transform of <xref ref="lt-example-3-eqn"/> is
+					<me>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</me>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>X(s)</m> on one side of the equation:
 				<md>
-					<mrow>A+C+D	\amp = 1		\amp 3A+B+C+2D	\amp = 3	\amp 	2A+3B	\amp = 0		\amp 2B	\amp = 4</mrow>
-					<mrow>\amp		\amp			\amp	\amp			\amp		\amp B	\amp = 2</mrow>
-					<mrow>\amp		\amp 3A+2+C+2D	\amp = 3	\amp	2A+ 3(2)	\amp = 0		\amp	\amp</mrow>
-					<mrow>\amp		\amp 3A+C+2D	\amp = 1	\amp		2A	\amp = -6	\amp	\amp</mrow>
-					<mrow>\amp		\amp			\amp	\amp		A	\amp = -3	\amp	\amp</mrow>
-					<mrow>-3+C+D	\amp = 1		\amp 3(-3)+C+ 2D	\amp = 1	\amp			\amp		\amp	\amp</mrow>
-					<mrow>C+D	\amp = 4		\amp	C+2D	\amp = 10 \amp			\amp		\amp	\amp</mrow>
-					<mrow>C	\amp = 4 - D	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
-					<mrow>\amp		\amp (4-D) + 2D	\amp = 10 \amp			\amp		\amp	\amp</mrow>
-					<mrow>\amp		\amp 	4 + D	\amp = 10 \amp			\amp		\amp	\amp</mrow>
-					<mrow>\amp		\amp		D	\amp = 6	\amp			\amp		\amp	\amp</mrow>
-					<mrow>C	\amp = 4-6	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
-					<mrow>\amp = -2	\amp			\amp	\amp			\amp		\amp	\amp</mrow>
+					<mrow>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</mrow>
+					<mrow>[s^2 - 4s + 13]X(s) = \frac{54}{s + 1}</mrow>
+					<mrow>X(s) = \frac{54}{(s + 1)(s^2 - 4s + 13)}</mrow>
 				</md>
-			</p>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-3" text="title"/></term>. Now, we need to express <m>X(s)</m> as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition,
+					<md>
+						<mrow>
+							\frac{54}{(s + 1)(s^2 - 4s + 13)} = \frac{A}{s + 1} + \frac{Bs + C}{s^2 - 4s + 13} \quad \text{or}
+						</mrow>
+						<mrow>
+							54 = A(s^2 - 4s + 13) + (Bs + C)(s + 1)
+						</mrow>
+					</md>
+					Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
+				</p>
 
-			<p>
-				Hence, we have
-				<me>\frac{s^3 + 3s^2 + 4}{s^2(s + 2)(s + 1)} = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1} </me>
-			</p>
-			-->
-
-			<p>
-				Now we are prepared to take the inverse Laplace transform.
-				<md>
-					<mrow>Y(s)	\amp = \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1}</mrow>
-				\lap^{-1}\left\{ Y(s) \right\}	
-					<mrow>\amp = \lap^{-1}\left\{ \frac{-3}{s} + \frac{2}{s^2} + \frac{-2}{s+2} + \frac{6}{s+1} \right\}</mrow>
-					<mrow>y(t)	\amp = -3\cdot\lap^{-1}\left\{ \frac{1}{s} \right\}</mrow>
-						+ 2\lap^{-1}\left\{ \frac{1}{s^2} \right\}
-						- 2\cdot \lap^{-1}\left\{ \frac{1}{s+2} \right\}
-						+ 6 \cdot \lap^{-1}\left\{ \frac{1}{s+1} \right\}
-					<mrow>\amp = -3 + 2t - 2e^{-2t} + 6e^{-t}</mrow>
-				</md>
-			</p>
-
-			<p>
-				Thus, we have found the desired unknown function
-				<me> y(t) = -3 + 2t - 2e^{-2t} + 6e^{-t}. </me>
-			</p>
-
-			<p>
-				Optional:  verify the solution
-				<md>
-					<mrow>y'(t)	\amp = 0 + 2 + 4e^{-2t} - 6e^{-t}</mrow>
-					<mrow>y''(t)	\amp = 0 - 8e^{-2t}+ 6e^{-t}</mrow>
-				</md>
+				<p>
+					<sidebyside widths="15% 65% 20%">
+						<p><m>s=-1</m>:</p>
+						<p>
+								<line><m>	54 = A(-1)^2 - 4(-1) + 13	</m></line>
+								<line><m>	54 = A + 17				</m></line>
+						</p>
+						<p>
+								<line><m>	\vphantom{A}	</m></line>
+								<line><m>	A = 37			</m></line>
+						</p>
+					</sidebyside>
+					<sidebyside widths="15% 65% 20%">
+						<p><m>s=0</m>:</p>
+						<p>
+								<line><m>	54 = 37(13) + (B(0) + C)(0 + 1)	</m></line>
+								<line><m>	54 = 481 + C						</m></line>
+						</p>
+						<p>
+								<line><m>	\vphantom{C}	</m></line>
+								<line><m>	C = -427		</m></line>
+						</p>
+					</sidebyside>
+					<sidebyside widths="15% 65% 20%">
+						<p><m>s=1</m>:</p>
+						<p>
+								<line><m>	54 = 37(-10) + (B(1) - 427)(1 + 1)	</m></line>
+								<line><m>	54 = 2B - 1224						</m></line>
+						</p>
+						<p>
+								<line><m>	\vphantom{B}	</m></line>
+								<line><m>	B = 585			</m></line>
+						</p>
+					</sidebyside>
+				</p>
 				
-				<md>
-					<mrow>LHS	\amp = y'' + 3y' + 2y</mrow>
-					<mrow>\amp = \left( - 8e^{-2t}+ 6e^{-t} \right) </mrow>
-						+ 3\left( 2 + 4e^{-2t} - 6e^{-t} \right)
-						+ 2\left( -3 + 2t - 2e^{-2t} + 6e^{-t} \right)		
-					<mrow>\amp = -8e^{-2t}+ 6e^{-t}</mrow>
-						+ 6 + 12e^{-2t} - 18e^{-t}
-						- 6 + 4t - 4e^{-2t} + 12e^{-t}
-					<mrow>\amp = 4t</mrow>
-					<mrow>\amp = RHS</mrow>
-				</md>
-			</p>
+				<p>
+					So the updated <m>X(s)</m> is
+					<me>X(s) = \frac{37}{s + 1} + \frac{585s - 427}{s^2 - 4s + 13}</me>.
+					Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.
+					<md>
+						<mrow> X(s)	\amp = \frac{37}{s + 1} + \frac{585s - 427}{(s - 2)^2 + 9}</mrow>
+						<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585) + 2(585)- 427}{(s - 2)^2 + 9}</mrow>
+						<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585)}{(s - 2)^2 + 9} + \frac{2(585)- 427}{(s - 2)^2 + 9}</mrow>
+						<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + 743\frac{1}{(s - 2)^2 + 9}</mrow>
+						<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + \frac{743}{3}\frac{3}{(s - 2)^2 + 9}</mrow>
+					</md>
+				</p>
+			
+				<p>
+					<term><xref ref="lt-step-4" text="title"/></term>. Now for the backward step to get the solution:
+					<md>
+						<mrow>
+							x(t) \amp = 37e^{-t} + 585\cos(3t) + \frac{743}{3}\sin(3t)
+						</mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
+		
+		<p>
+			These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
+		</p>
 
-			<p>
-				We also verify the initial conditions:
-				<md>
-					<mrow>y(0)	\amp = -3 + 2(0) - 2e^{-2(0)} + 6e^{-0}</mrow>
-					<mrow>\amp = -3 + 0 - 2+ 6</mrow>
-					<mrow>\amp = 1</mrow>
-					<mrow>\amp</mrow>
-					<mrow>y'(0)	\amp = 2 + 4e^{-2(0)} - 6e^{-0}</mrow>
-					<mrow>\amp = 2 + 4 - 6</mrow>
-					<mrow>\amp = 0</mrow>
-				</md>
-			</p>
-		</solution>
-	</example>
+	</subsection>
 
 </section>

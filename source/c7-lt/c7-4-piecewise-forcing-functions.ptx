@@ -300,6 +300,155 @@
 			</solution>
 		</example>
 
+		<example><title>Forcing with a Step Function</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 4y = u_3(t), \quad y(0) = 0,\quad y'(0) = 0
+					</me>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					<theorem xml:id="lt-roadmap-example-4"><title> Roadmap-Summary </title>
+						<p>
+							<sidebyside widths="30% 12% 58%" valign="middle">
+								<p>
+									<md>
+										<mrow>	y'' + 4y = u_3(t)	</mrow>
+										<mrow>	\small y(0) = 0,\ y'(0) = 0	</mrow>
+									</md>
+								</p>
+								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+								<p>
+									<me>
+										s^2Y + 4Y = \frac{e^{-3s}}{s}
+									</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									2️⃣ Solve for <m>Y</m>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="40% 10% 50%" valign="middle">
+								<p/>
+								<p/>
+								<p>
+									<me>
+										Y(s) = \frac{e^{-3s}}{s(s^2 + 4)}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside widths="60% 10% 30%" valign="middle">
+								<p/>
+								<p><me>\downarrow</me></p>
+								<p>
+									3️⃣ Prepare for <m>\laplacesym^{-1}</m>
+								</p>
+							</sidebyside>
+							<sidebyside widths="38% 12% 50%" valign="middle">
+								<p>
+									<me>
+										y(t) = u_3(t)\left(1 - \cos(2(t - 3))\right)
+									</me>
+								</p>
+								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+								<p>
+									<me>
+										Y(s) = \frac{e^{-3s}}{s(s^2 + 4)}
+									</me>
+								</p>
+							</sidebyside>
+						</p>
+					</theorem>
+				</p>
+
+				<p><term>Step 1: Apply the Laplace Transform</term>.</p>
+				<p>
+					<sidebyside widths="83% 17%" valign="bottom">
+						<p>
+							<md>
+								<mrow>
+									\lap{y'' + 4y} = \lap{u_3(t)}
+								</mrow>
+								<mrow>
+									s^2Y + 4Y \amp = \frac{e^{-3s}}{s}
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>				\amp\text{ Laplace}	</mrow>
+								<mrow>	\leftarrow	\amp\text{ Equation}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 2: Solve for <m>Y(s)</m></term>.</p>
+				<p>
+					<sidebyside widths="15% 50% 35%" valign="bottom">
+						<p/>
+						<p>
+							<md>
+								<mrow>	(s^2 + 4)Y	\amp = \frac{e^{-3s}}{s}	</mrow>
+								<mrow>	Y(s)		\amp = \frac{e^{-3s}}{s(s^2 + 4)}	</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>	\leftarrow\text{ Laplace Solution}\vphantom{\frac12}	</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p><term>Step 3: Prepare for the Inverse Transform</term>.</p>
+				<p>
+					The exponential factor <m>e^{-3s}</m> indicates a delay. Focus on the base transform:
+					<me>
+						\frac{1}{s(s^2 + 4)}
+					</me>
+					<p>
+						From the table, this matches the transform of <m>1 - \cos(2t)</m>. Therefore:
+					</p>
+					<me>
+						\ilap{ \frac{1}{s(s^2 + 4)} } = 1 - \cos(2t)
+					</me>
+					<p>
+						The delay is applied using the shift theorem.
+					</p>
+				</p>
+
+				<p><term>Step 4: Take the Inverse Transform</term>.</p>
+				<p>
+					<md>
+						<mrow>
+							y(t) = \ilap{ \frac{e^{-3s}}{s(s^2 + 4)} } = u_3(t)\left[1 - \cos(2(t - 3))\right]
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Therefore, the solution is:
+					<me>
+						y(t) = u_3(t)\left(1 - \cos(2(t - 3))\right)
+					</me>
+				</p>
+			</solution>
+		</example>
+
 		<p>
 			This result is consistent with our understanding of shifting functions.  That is, if we want to sketch the graph of the function <m>U(t-3),</m> then we can shift the graph of <m>U(t)</m> three units to the right. Another way to think about this is that the function <m>U(t-3)</m> changes its behavior at <m>t = 3</m> (in that its output is 0 when the input variable <m>t</m> is less than 3 and its output is 1 when the input variable <m>t</m> is greater than 3).
 		</p>
