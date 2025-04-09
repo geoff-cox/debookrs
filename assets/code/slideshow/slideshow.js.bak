@@ -1,6 +1,34 @@
+window.addEventListener("DOMContentLoaded", () => {
+  const iframeId = window.frameElement?.id;
+  if (!iframeId) {
+    console.error("[Slideshow] Could not determine iframe ID.");
+    return;
+  }
+
+  const canvas = document.querySelector("canvas");
+  const canvasId = canvas?.id;
+  if (!canvasId) {
+    console.error("[Slideshow] Canvas not found or lacks ID.");
+    return;
+  }
+
+  const configPath = `external/code/slideshow/${iframeId}-config.json`;
+
+  fetch(configPath)
+    .then(res => res.json())
+    .then(config => runSlideshow(canvasId, config))
+    .catch(err => console.error("[Slideshow] Config load failed:", err));
+});
+
 function runSlideshow(canvasId, config) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
+
+  // Match canvas internal resolution to visible size
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
+
+  const isDark = document.documentElement.classList.contains("dark-mode");
 
   const slides = config.slides;
   const settings = config.settings || {};
@@ -11,20 +39,26 @@ function runSlideshow(canvasId, config) {
   const canvasPadding = 10;
 
   const controlPanelWidth = settings.controlPanelWidth || 200;
-  const buttonColor = settings.buttonColor || "#4CAF50";
-  const hoverColor = settings.hoverColor || "#388e3c";
-  const textColor = settings.textColor || "#0d0d0e";
+  const textColor = settings.textColor || (isDark ? "#f0f4f8" : "#0d0d0e");
+  const backgroundColor = settings.backgroundColor || (isDark ? "#2a2a2a" : "#f0f4f8");
+  const buttonColor = settings.buttonColor || (isDark ? "#66bb6a" : "#4CAF50");
+  const hoverColor = settings.hoverColor || (isDark ? "#81c784" : "#388e3c");
+  const borderColor = isDark ? "#444" : "#ccc";
+  const indicatorInactive = isDark ? "#777" : "#ddd";
   const fontSize = settings.fontSize || 16;
 
   const imageWidth = canvas.width - controlPanelWidth - canvasPadding * 2;
-  const imageHeight = canvas.height - canvasPadding * 2;
+  const imageHeight = canvas.height - 2 * canvasPadding;
+
+  const panelX = imageWidth + canvasPadding;
+  const panelY = canvasPadding;
+  const panelHeight = imageHeight;
 
   let currentSlide = 0;
   let hoverBack = false;
   let hoverNext = false;
 
   const imageCache = {};
-
   preloadImages(slides, () => drawSlide());
 
   function preloadImages(slides, callback) {
@@ -42,21 +76,33 @@ function runSlideshow(canvasId, config) {
 
   function drawSlide() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#f9f9fb";
-    ctx.fillRect(imageWidth + canvasPadding, 0, controlPanelWidth, canvas.height);
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(panelX, panelY, controlPanelWidth, panelHeight);
 
     const slide = slides[currentSlide];
     const img = imageCache[slide.image];
     if (img) {
-      ctx.drawImage(img, canvasPadding, canvasPadding, imageWidth, imageHeight);
+      const imgAspect = img.width / img.height;
+      const panelAspect = imageWidth / imageHeight;
+
+      let drawWidth = imageWidth;
+      let drawHeight = imageHeight;
+
+      if (imgAspect > panelAspect) {
+        drawHeight = imageWidth / imgAspect;
+      } else {
+        drawWidth = imageHeight * imgAspect;
+      }
+
+      ctx.drawImage(img, canvasPadding, canvasPadding, drawWidth, drawHeight);
     }
 
-    const separatorX = imageWidth + canvasPadding + canvasPadding / 2;
-    ctx.strokeStyle = "#ccc";
+    const separatorX = panelX - canvasPadding / 2;
+    ctx.strokeStyle = borderColor;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(separatorX, canvasPadding);
-    ctx.lineTo(separatorX, canvas.height - canvasPadding);
+    ctx.moveTo(separatorX, panelY);
+    ctx.lineTo(separatorX, panelY + panelHeight);
     ctx.stroke();
 
     drawTextBox(slide.title + '. ' + slide.text);
@@ -65,9 +111,8 @@ function runSlideshow(canvasId, config) {
   }
 
   function getButtonCoordinates() {
-    const y = canvas.height - canvasPadding - buttonHeight - 20;
-    const panelLeft = imageWidth + 2 * canvasPadding;
-    const panelCenter = panelLeft + (controlPanelWidth - canvasPadding * 2) / 2;
+    const y = panelY + panelHeight - buttonHeight - 30;
+    const panelCenter = panelX + (controlPanelWidth - canvasPadding * 2) / 2;
     return {
       back: { x: panelCenter - buttonWidth, y },
       next: { x: panelCenter + buttonPadding, y }
@@ -76,14 +121,14 @@ function runSlideshow(canvasId, config) {
 
   function drawTextBox(fullText) {
     const { back } = getButtonCoordinates();
-    const x = imageWidth + 2 * canvasPadding;
-    const y = canvasPadding;
-    const width = controlPanelWidth - canvasPadding;
-    const height = back.y - canvasPadding * 2;
+    const x = panelX + canvasPadding;
+    const y = panelY + canvasPadding;
+    const width = controlPanelWidth - canvasPadding * 2;
+    const height = back.y - panelY - 2 * canvasPadding;
 
-    ctx.fillStyle = "#f0f4f8";
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(x, y, width, height);
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = borderColor;
     ctx.strokeRect(x, y, width, height);
 
     ctx.fillStyle = textColor;
@@ -110,12 +155,12 @@ function runSlideshow(canvasId, config) {
     ctx.shadowOffsetX = 2;
     ctx.shadowOffsetY = 2;
 
-    ctx.fillStyle = currentSlide === 0 ? "#ccc" : (hoverBack ? hoverColor : buttonColor);
+    ctx.fillStyle = currentSlide === 0 ? "#888" : (hoverBack ? hoverColor : buttonColor);
     roundedRect(back.x, back.y, buttonWidth, buttonHeight, 8);
     ctx.fillStyle = "#fff";
     ctx.fillText("⬅ Back", back.x + buttonWidth / 2, back.y + buttonHeight / 2);
 
-    ctx.fillStyle = currentSlide === slides.length - 1 ? "#ccc" : (hoverNext ? hoverColor : buttonColor);
+    ctx.fillStyle = currentSlide === slides.length - 1 ? "#888" : (hoverNext ? hoverColor : buttonColor);
     roundedRect(next.x, next.y, buttonWidth, buttonHeight, 8);
     ctx.fillStyle = "#fff";
     ctx.fillText("Next ➡", next.x + buttonWidth / 2, next.y + buttonHeight / 2);
@@ -133,14 +178,13 @@ function runSlideshow(canvasId, config) {
     const totalWidth = (slides.length - 1) * spacing;
 
     const { back } = getButtonCoordinates();
-    const panelLeft = imageWidth + 2 * canvasPadding;
     const panelWidth = controlPanelWidth - canvasPadding * 2;
-    const centerX = panelLeft + panelWidth / 2;
+    const centerX = panelX + panelWidth / 2;
     const startX = centerX - totalWidth / 2;
-    const y = back.y + buttonHeight + 15;
+    const y = back.y + buttonHeight + 10;
 
     for (let i = 0; i < slides.length; i++) {
-      ctx.fillStyle = (i === currentSlide) ? buttonColor : "#ddd";
+      ctx.fillStyle = (i === currentSlide) ? buttonColor : indicatorInactive;
       ctx.beginPath();
       ctx.arc(startX + i * spacing, y, radius, 0, 2 * Math.PI);
       ctx.fill();

@@ -1,6 +1,6 @@
 # Define variables for commands
 PRETEXT = pretext build
-POSTPROCESS_SCRIPT = python3 assets/code/custom-parser/post-pretext-html-parser.py
+POSTPROCESS_SCRIPT = python3 postprocessing/post-pretext-html-parser.py
 
 .PHONY: focus web clean
 

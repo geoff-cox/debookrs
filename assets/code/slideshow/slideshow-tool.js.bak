@@ -1,49 +1,3 @@
-function waitForCanvas(callback) {
-  const maxWait = 2000;
-  const interval = 50;
-  let waited = 0;
-
-  const check = () => {
-    const canvases = document.querySelectorAll("canvas");
-
-    canvases.forEach(canvas => {
-      if (canvas.dataset.loaded) return;
-
-      const parts = canvas.id.split("__");
-      if (parts.length < 2) return;
-
-      const canvasId = parts[0];
-      const encoded = parts.slice(1).join("__");
-
-      // Decode filename
-      const configPath = encoded
-        .replace(/_dot_/g, ".")
-        //.replace(/_/g, "/"); // optional — only if needed
-
-      canvas.id = canvasId;
-      canvas.dataset.loaded = "true";
-      callback(canvasId, configPath);
-
-    });
-
-    if (waited < maxWait) {
-      waited += interval;
-      setTimeout(check, interval);
-    } else {
-      console.error("[Slideshow] Canvas not found after waiting.");
-    }
-  };
-
-  check();
-}
-
-waitForCanvas((canvasId, configPath) => {
-  fetch(configPath)
-    .then(res => res.json())
-    .then(config => runSlideshow(canvasId, config))
-    .catch(err => console.error(`[Slideshow] Failed to load ${configPath}:`, err));
-});
-
 function runSlideshow(canvasId, config) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
@@ -61,9 +15,14 @@ function runSlideshow(canvasId, config) {
   const hoverColor = settings.hoverColor || "#388e3c";
   const textColor = settings.textColor || "#0d0d0e";
   const fontSize = settings.fontSize || 16;
+  const backgroundColor = settings.backgroundColor || "#f9f9fb";
 
   const imageWidth = canvas.width - controlPanelWidth - canvasPadding * 2;
-  const imageHeight = canvas.height - canvasPadding * 2;
+  const imageHeight = canvas.height - 2 * canvasPadding;
+
+  const panelX = imageWidth + canvasPadding;
+  const panelY = canvasPadding;
+  const panelHeight = imageHeight;
 
   let currentSlide = 0;
   let hoverBack = false;
@@ -88,23 +47,21 @@ function runSlideshow(canvasId, config) {
 
   function drawSlide() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#f9f9fb";
-    ctx.fillRect(imageWidth + canvasPadding, 0, controlPanelWidth, canvas.height);
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(panelX, panelY, controlPanelWidth, panelHeight);
 
     const slide = slides[currentSlide];
     const img = imageCache[slide.image];
-
     if (img) {
       ctx.drawImage(img, canvasPadding, canvasPadding, imageWidth, imageHeight);
     }
 
-    const separatorX = imageWidth + canvasPadding + canvasPadding / 2;
+    const separatorX = panelX - canvasPadding / 2;
     ctx.strokeStyle = "#ccc";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(separatorX, canvasPadding);
-    ctx.lineTo(separatorX, canvas.height - canvasPadding);
+    ctx.moveTo(separatorX, panelY);
+    ctx.lineTo(separatorX, panelY + panelHeight);
     ctx.stroke();
 
     drawTextBox(slide.title + '. ' + slide.text);
@@ -113,9 +70,8 @@ function runSlideshow(canvasId, config) {
   }
 
   function getButtonCoordinates() {
-    const y = canvas.height - canvasPadding - buttonHeight - 20;
-    const panelLeft = imageWidth + 2 * canvasPadding;
-    const panelCenter = panelLeft + (controlPanelWidth - canvasPadding * 2) / 2;
+    const y = panelY + panelHeight - buttonHeight - 30;
+    const panelCenter = panelX + (controlPanelWidth - canvasPadding * 2) / 2;
     return {
       back: { x: panelCenter - buttonWidth, y },
       next: { x: panelCenter + buttonPadding, y }
@@ -124,10 +80,10 @@ function runSlideshow(canvasId, config) {
 
   function drawTextBox(fullText) {
     const { back } = getButtonCoordinates();
-    const x = imageWidth + 2 * canvasPadding;
-    const y = canvasPadding;
-    const width = controlPanelWidth - canvasPadding;
-    const height = back.y - canvasPadding * 2;
+    const x = panelX + canvasPadding;
+    const y = panelY + canvasPadding;
+    const width = controlPanelWidth - canvasPadding * 2;
+    const height = back.y - panelY - 2 * canvasPadding;
 
     ctx.fillStyle = "#f0f4f8";
     ctx.fillRect(x, y, width, height);
@@ -142,7 +98,6 @@ function runSlideshow(canvasId, config) {
     const lineHeight = 18;
     const maxLines = Math.floor((height - 10) / lineHeight);
     const wrappedLines = wrapText(ctx, fullText, width - 10);
-
     for (let i = 0; i < Math.min(wrappedLines.length, maxLines); i++) {
       ctx.fillText(wrappedLines[i], x + 5, y + 5 + i * lineHeight);
     }
@@ -176,21 +131,16 @@ function runSlideshow(canvasId, config) {
     const baseRadius = 6;
     const baseSpacing = 20;
     const maxSlideCountBeforeScaling = 8;
-
-    const scale = slides.length > maxSlideCountBeforeScaling
-      ? maxSlideCountBeforeScaling / slides.length
-      : 1;
-
+    const scale = slides.length > maxSlideCountBeforeScaling ? maxSlideCountBeforeScaling / slides.length : 1;
     const radius = baseRadius * scale;
     const spacing = baseSpacing * scale;
     const totalWidth = (slides.length - 1) * spacing;
 
     const { back } = getButtonCoordinates();
-    const panelLeft = imageWidth + 2 * canvasPadding;
     const panelWidth = controlPanelWidth - canvasPadding * 2;
-    const centerX = panelLeft + panelWidth / 2;
+    const centerX = panelX + panelWidth / 2;
     const startX = centerX - totalWidth / 2;
-    const y = back.y + buttonHeight + 15;
+    const y = back.y + buttonHeight + 10;
 
     for (let i = 0; i < slides.length; i++) {
       ctx.fillStyle = (i === currentSlide) ? buttonColor : "#ddd";
@@ -219,7 +169,6 @@ function runSlideshow(canvasId, config) {
     const words = text.split(' ');
     const lines = [];
     let line = '';
-
     for (let i = 0; i < words.length; i++) {
       const testLine = line + words[i] + ' ';
       const metrics = ctx.measureText(testLine);
@@ -230,7 +179,6 @@ function runSlideshow(canvasId, config) {
         line = testLine;
       }
     }
-
     lines.push(line.trim());
     return lines;
   }
@@ -241,13 +189,8 @@ function runSlideshow(canvasId, config) {
     const y = event.clientY - rect.top;
     const { back, next } = getButtonCoordinates();
 
-    hoverBack = x >= back.x && x <= back.x + buttonWidth &&
-                y >= back.y && y <= back.y + buttonHeight &&
-                currentSlide > 0;
-
-    hoverNext = x >= next.x && x <= next.x + buttonWidth &&
-                y >= next.y && y <= next.y + buttonHeight &&
-                currentSlide < slides.length - 1;
+    hoverBack = x >= back.x && x <= back.x + buttonWidth && y >= back.y && y <= back.y + buttonHeight && currentSlide > 0;
+    hoverNext = x >= next.x && x <= next.x + buttonWidth && y >= next.y && y <= next.y + buttonHeight && currentSlide < slides.length - 1;
 
     canvas.style.cursor = (hoverBack || hoverNext) ? "pointer" : "default";
     drawSlide();

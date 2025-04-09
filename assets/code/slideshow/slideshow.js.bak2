@@ -1,10 +1,3 @@
-// ---- Slideshow Loader ----
-// This script loads the slideshow-tool and initializes it with the configuration
-// from a JSON file. The JSON file is expected to be named after the iframe ID
-// and located in the same directory as this script. The canvas element is also
-// expected to be present in the DOM. The script will log errors if the iframe ID
-// or canvas element cannot be found, or if the JSON file cannot be loaded.
-//
 window.addEventListener("DOMContentLoaded", () => {
   const iframeId = window.frameElement?.id;
   if (!iframeId) {
@@ -27,23 +20,15 @@ window.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("[Slideshow] Config load failed:", err));
 });
 
-// ---- Slideshow Tool ----
-// This script creates a slideshow on a canvas element. It handles image
-// preloading, drawing slides, and managing user interactions like button clicks
-// and mouse movements. The slideshow consists of a series of slides, each with
-// an image, title, and text. The tool also includes a control panel with
-// navigation buttons and a text box for displaying slide information. The
-// slideshow is responsive to user interactions, allowing users to navigate
-// through the slides using "Back" and "Next" buttons.
 function runSlideshow(canvasId, config) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
 
-  // Fix: Match canvas internal resolution to CSS size
-  const displayWidth = canvas.clientWidth;
-  const displayHeight = canvas.clientHeight;
-  canvas.width = displayWidth;
-  canvas.height = displayHeight;
+  // Match canvas internal resolution to visible size
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
+
+  const isDark = document.documentElement.classList.contains("dark-mode");
 
   const slides = config.slides;
   const settings = config.settings || {};
@@ -54,13 +39,21 @@ function runSlideshow(canvasId, config) {
   const canvasPadding = 10;
 
   const controlPanelWidth = settings.controlPanelWidth || 200;
-  const buttonColor = settings.buttonColor || "#4CAF50";
-  const hoverColor = settings.hoverColor || "#388e3c";
-  const textColor = settings.textColor || "#0d0d0e";
+  // const textColor = settings.textColor || (isDark ? "#f0f4f8" : "#0d0d0e");
+  // const backgroundColor = settings.backgroundColor || (isDark ? "#2a2a2a" : "#f0f4f8");
+  // const buttonColor = settings.buttonColor || (isDark ? "#66bb6a" : "#4CAF50");
+  // const hoverColor = settings.hoverColor || (isDark ? "#81c784" : "#388e3c");
+  // const borderColor = isDark ? "#444" : "#ccc";
+  // const indicatorInactive = isDark ? "#777" : "#ddd";
+
+  const textColor = settings.textColor || (isDark ? "#0d0d0e" : "#f0f4f8");
+  const backgroundColor = settings.backgroundColor || (isDark ? "#f0f4f8" : "#2a2a2a");
+  const buttonColor = settings.buttonColor || (isDark ? "#4CAF50" : "#66bb6a");
+  const hoverColor = settings.hoverColor || (isDark ? "#388e3c" : "#81c784");
+  const borderColor = isDark ? "#ccc" : "#444";
+  const indicatorInactive = isDark ? "#ddd" : "#777";
+
   const fontSize = settings.fontSize || 16;
-  const backgroundColor = settings.backgroundColor || (
-    document.documentElement.classList.contains("dark-mode") ? "#222" : "#f9f9fb"
-  );
 
   const imageWidth = canvas.width - controlPanelWidth - canvasPadding * 2;
   const imageHeight = canvas.height - 2 * canvasPadding;
@@ -74,7 +67,6 @@ function runSlideshow(canvasId, config) {
   let hoverNext = false;
 
   const imageCache = {};
-
   preloadImages(slides, () => drawSlide());
 
   function preloadImages(slides, callback) {
@@ -114,7 +106,7 @@ function runSlideshow(canvasId, config) {
     }
 
     const separatorX = panelX - canvasPadding / 2;
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = borderColor;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(separatorX, panelY);
@@ -142,9 +134,9 @@ function runSlideshow(canvasId, config) {
     const width = controlPanelWidth - canvasPadding * 2;
     const height = back.y - panelY - 2 * canvasPadding;
 
-    ctx.fillStyle = "#f0f4f8";
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(x, y, width, height);
-    ctx.strokeStyle = "#ccc";
+    ctx.strokeStyle = borderColor;
     ctx.strokeRect(x, y, width, height);
 
     ctx.fillStyle = textColor;
@@ -171,12 +163,12 @@ function runSlideshow(canvasId, config) {
     ctx.shadowOffsetX = 2;
     ctx.shadowOffsetY = 2;
 
-    ctx.fillStyle = currentSlide === 0 ? "#ccc" : (hoverBack ? hoverColor : buttonColor);
+    ctx.fillStyle = currentSlide === 0 ? "#888" : (hoverBack ? hoverColor : buttonColor);
     roundedRect(back.x, back.y, buttonWidth, buttonHeight, 8);
     ctx.fillStyle = "#fff";
     ctx.fillText("⬅ Back", back.x + buttonWidth / 2, back.y + buttonHeight / 2);
 
-    ctx.fillStyle = currentSlide === slides.length - 1 ? "#ccc" : (hoverNext ? hoverColor : buttonColor);
+    ctx.fillStyle = currentSlide === slides.length - 1 ? "#888" : (hoverNext ? hoverColor : buttonColor);
     roundedRect(next.x, next.y, buttonWidth, buttonHeight, 8);
     ctx.fillStyle = "#fff";
     ctx.fillText("Next ➡", next.x + buttonWidth / 2, next.y + buttonHeight / 2);
@@ -200,7 +192,7 @@ function runSlideshow(canvasId, config) {
     const y = back.y + buttonHeight + 10;
 
     for (let i = 0; i < slides.length; i++) {
-      ctx.fillStyle = (i === currentSlide) ? buttonColor : "#ddd";
+      ctx.fillStyle = (i === currentSlide) ? buttonColor : indicatorInactive;
       ctx.beginPath();
       ctx.arc(startX + i * spacing, y, radius, 0, 2 * Math.PI);
       ctx.fill();
