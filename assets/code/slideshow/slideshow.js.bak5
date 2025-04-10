@@ -1,25 +1,26 @@
-// Slideshow loader with native iFrame-based dark mode support via CSS variables
+// Slideshow loader + tool with dark mode support via CSS variables
 
-// Maybe still needed:
-// (function syncDarkModeFromParent() {
-//   try {
-//     const iframeHtml = document.documentElement;
-//     const parentClass = window.parent.document.documentElement.className;
-//     iframeHtml.className = parentClass;
+// Synchronize dark mode from parent <html> to iframe <html>
+(function syncDarkModeFromParent() {
+  try {
+    const iframeHtml = document.documentElement;
+    const parentClass = window.parent.document.documentElement.className;
+    iframeHtml.className = parentClass;
 
-//     // Observe changes to the parent's <html class="...">
-//     const observer = new MutationObserver(() => {
-//       iframeHtml.className = window.parent.document.documentElement.className;
-//     });
+    // Observe changes to the parent's <html class="...">
+    const observer = new MutationObserver(() => {
+      iframeHtml.className = window.parent.document.documentElement.className;
+    });
 
-//     observer.observe(window.parent.document.documentElement, {
-//       attributes: true,
-//       attributeFilter: ['class']
-//     });
-//   } catch (err) {
-//     console.warn("[Slideshow] Could not sync dark mode:", err);
-//   }
-// })();
+    observer.observe(window.parent.document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  } catch (err) {
+    console.warn("[Slideshow] Could not sync dark mode:", err);
+  }
+})();
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const iframeId = window.frameElement?.id;
@@ -52,11 +53,10 @@ function runSlideshow(canvasId, config) {
   let currentSlide = 0;
   let hoverBack = false;
   let hoverNext = false;
-  const canvasPadding = 5;
   const buttonWidth = 70;
   const buttonHeight = 26;
   const panelPadding = 6;
-  const totalButtonWidth = 2 * buttonWidth + panelPadding;
+  const canvasPadding = 10;
   
   const fontSize = settings.fontSize || 16;
   const fontStyle = settings.fontStyle || "normal";
@@ -64,9 +64,6 @@ function runSlideshow(canvasId, config) {
   const backButton = { text: "◀ Back", x: 0, y: 0 };
   const nextButton = { text: "Next ▶", x: 0, y: 0 };
   const indicators = { baseRadius: 6, baseSpacing: 20 };
-
-  const minPanelWidth = totalButtonWidth + 3 * panelPadding;
-  const minPanelHeight = buttonHeight + 3 * panelPadding + 2 * indicators.baseRadius;
 
   let touchStartX = null;
 
@@ -114,6 +111,11 @@ function runSlideshow(canvasId, config) {
   }
 
   function drawSlide() {
+    const darkModeObserver = new MutationObserver(() => drawSlide());
+    darkModeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
 
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
@@ -140,97 +142,113 @@ function runSlideshow(canvasId, config) {
 
   function drawHorizontalLayout(ctx, img, textColor, backgroundColor, buttonColor, hoverColor, borderColor, indicatorInactive) {
 
-    // ---- Control panel ----
-    const panelWidth = Math.max(minPanelWidth, settings.textPanelWidth || 0);
-    const panelHeight = canvas.height - 2 * canvasPadding;
-    const panelX = canvas.width - panelWidth - canvasPadding;
-    const panelY = canvasPadding;
-    ctx.fillStyle = backgroundColor;
-    ctx.fillRect(panelX, panelY, panelWidth, panelHeight);
-    ctx.strokeStyle = borderColor;
-    ctx.strokeRect(panelX, panelY, panelWidth, panelHeight);
-
+    const controlPanelWidth = 200;
     // ---- Image ----
-    const drawWidth = canvas.width - panelWidth - 4 * canvasPadding;
-    const drawHeight = canvas.height - 2 * canvasPadding;
-    const imgAspect = img.height / img.width;
-    let imageWidth = drawWidth, imageHeight = imageWidth * imgAspect;
-    if (imageHeight > drawHeight) {
-      imageHeight = drawHeight, imageWidth = imageHeight / imgAspect;
-    }
-    const imgX = canvasPadding;
-    const imgY = (canvas.height - imageHeight) / 2;
-    ctx.drawImage(img, imgX, imgY, imageWidth, imageHeight);
+    // properties
+    const imageWidth = canvas.width - controlPanelWidth - canvasPadding * 2;
+    const imageHeight = canvas.height - 2 * canvasPadding;
+    // draw
+    const imgAspect = img.width / img.height;
+    const panelAspect = imageWidth / imageHeight;
+    let drawWidth = imageWidth, drawHeight = imageHeight;
+    if (imgAspect > panelAspect) drawHeight = imageWidth / imgAspect;
+    else drawWidth = imageHeight * imgAspect;
+    ctx.drawImage(img, canvasPadding, canvasPadding, drawWidth, drawHeight);
+
+    // ---- Control panel ----
+    // properties
+    const panelX = imageWidth + canvasPadding;
+    const panelY = canvasPadding;
+    const panelHeight = imageHeight;
+    const panelCenterX = panelX + controlPanelWidth / 2;
+    // draw
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(panelX, panelY, controlPanelWidth, panelHeight);
 
     // ---- Separator ----
     drawVerticalSeparator(panelX, panelY, panelHeight, borderColor);
 
     // ---- Text box ----
-    const textBoxX = panelX + panelPadding;
-    const textBoxY = panelY + panelPadding;
-    const textBoxWidth = panelWidth - 2 * canvasPadding;
-    const textBoxHeight = panelHeight - (buttonHeight + canvasPadding + 40);
-    drawTextBox(textBoxX, textBoxY, textBoxWidth, textBoxHeight, textColor, backgroundColor, borderColor);
+    // properties
+    const reservedHeight = buttonHeight + canvasPadding + 40;
+    // draw
+    drawTextBox(
+      panelX + canvasPadding,
+      panelY + canvasPadding,
+      controlPanelWidth - 2 * canvasPadding,
+      panelHeight - reservedHeight,
+      textColor, backgroundColor, borderColor
+    );
     
     // ---- Buttons ----
-    const buttonX = textBoxX;
-    const buttonTopY = textBoxY + textBoxHeight + panelPadding;
-    const buttonBottomY = buttonTopY + buttonHeight;
-    drawButtons(buttonX, buttonTopY, buttonColor, hoverColor);
+    // properties
+    const totalButtonWidth = 2 * buttonWidth + panelPadding;
+    const buttonStartx = panelCenterX - totalButtonWidth / 2;
+    const buttonStarty = panelY + panelHeight - buttonHeight - 30;
+    // draw
+    drawButtons(buttonStartx, buttonStarty, buttonColor, hoverColor);
     
     // ---- Slide indicators ----
-    const indicatorX = panelX + panelWidth / 2;
-    const indicatorCenterY = buttonBottomY + (panelHeight - buttonBottomY) / 2;
-    const indicatorMaxWidth = totalButtonWidth;
-    drawSlideIndicators(indicatorX, indicatorCenterY, indicatorMaxWidth, buttonColor, indicatorInactive, /* centered = */ true);
+    // properties
+    const indicatorX = panelX + controlPanelWidth / 2;
+    const indicatorTopY = buttonStarty + buttonHeight + canvasPadding;
+    const indicatorMaxWidth = controlPanelWidth - 2 * canvasPadding;
+    // draw
+    drawSlideIndicators(indicatorX, indicatorTopY, indicatorMaxWidth, buttonColor, indicatorInactive, /* centered = */ true);
 
   }
 
   function drawVerticalLayout(ctx, img, textColor, backgroundColor, buttonColor, hoverColor, borderColor, indicatorInactive) {
 
     // ---- Control panel ----
-    const panelHeight = Math.max(minPanelHeight, settings.textPanelHeight || 0);
+    // properties
     const panelWidth = canvas.width - 2 * canvasPadding;
+    const panelHeight = buttonHeight + 3 * panelPadding + 2 * indicators.baseRadius;
     const panelX = canvasPadding;
     const panelY = canvas.height - panelHeight - canvasPadding;
+    // draw
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(panelX, panelY, panelWidth, panelHeight);
     ctx.strokeStyle = borderColor;
     ctx.strokeRect(panelX, panelY, panelWidth, panelHeight);
 
     // ---- Image ----
-    const drawHeight = canvas.height - panelHeight - 4 * canvasPadding;
-    const drawWidth = canvas.width - 2 * canvasPadding;
+    // properties
     const imgAspect = img.width / img.height;
-    let imageHeight = drawHeight, imageWidth = imageHeight * imgAspect;
-    if (imageWidth > drawWidth) {
-      imageWidth = drawWidth, imageHeight = imageWidth / imgAspect;
-    }
+    const imageHeight = canvas.height - panelHeight - 3 * canvasPadding;
+    const imageWidth = imageHeight * imgAspect;
     const imgX = (canvas.width - imageWidth) / 2;
     const imgY = canvasPadding;
+    // draw
     ctx.drawImage(img, imgX, imgY, imageWidth, imageHeight);
 
     // ---- Separator ----
-    drawHorizontalSeparator(panelX, panelY, panelWidth, borderColor);
+    drawHorizontalSeparator(canvasPadding, imageHeight, canvas.width - 2 * canvasPadding, borderColor);
 
     // ---- Buttons ----
+    // properties
+    const totalButtonWidth = 2 * buttonWidth + panelPadding;
     const buttonX = canvas.width - totalButtonWidth - panelPadding - canvasPadding;
     const buttonTopY = panelY + panelPadding;
-    const buttonBottomY = buttonTopY + buttonHeight;
+    // draw
     drawButtons(buttonX, buttonTopY, buttonColor, hoverColor);
 
+    // ---- Slide indicators ----
+    // properties
+    const indicatorX = buttonX + buttonWidth;
+    const indicatorTopY = buttonTopY + buttonHeight + panelPadding;
+    const indicatorMaxWidth = totalButtonWidth;
+    // draw
+    drawSlideIndicators(indicatorX, indicatorTopY, indicatorMaxWidth, buttonColor, indicatorInactive, /* centered = */ true);
+
     // ---- Text box ----
+    // properties
     const textBoxX = panelX + panelPadding;
     const textBoxY = panelY + panelPadding;
     const textBoxHeight = panelHeight - 2 * panelPadding;
     const textBoxWidth = buttonX - panelPadding - textBoxX;
+    // draw
     drawTextBox(textBoxX, textBoxY, textBoxWidth, textBoxHeight, textColor, backgroundColor, borderColor);
-
-    // ---- Slide indicators ----
-    const indicatorX = buttonX + buttonWidth;
-    const indicatorCenterY = buttonBottomY + (textBoxHeight - buttonHeight) / 2;
-    const indicatorMaxWidth = totalButtonWidth;
-    drawSlideIndicators(indicatorX, indicatorCenterY, indicatorMaxWidth, buttonColor, indicatorInactive, /* centered = */ true);
 
   }
 
@@ -238,8 +256,8 @@ function runSlideshow(canvasId, config) {
     ctx.strokeStyle = color;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(x - canvasPadding, y);
-    ctx.lineTo(x - canvasPadding, y + height);
+    ctx.moveTo(x - canvasPadding / 2, y);
+    ctx.lineTo(x - canvasPadding / 2, y + height);
     ctx.stroke();
   }
 
@@ -247,8 +265,8 @@ function runSlideshow(canvasId, config) {
     ctx.strokeStyle = color;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(x, y - canvasPadding);
-    ctx.lineTo(x + width, y - canvasPadding);
+    ctx.moveTo(x, y + 1.5 * canvasPadding);
+    ctx.lineTo(x + width, y + 1.5 * canvasPadding);
     ctx.stroke();
   }
 
@@ -303,13 +321,14 @@ function runSlideshow(canvasId, config) {
     nextButton.y = y;
   }
 
-  function drawSlideIndicators(centerX, centerY, maxWidth, buttonColor, inactiveColor, centered = false) {
+  function drawSlideIndicators(centerX, topY, maxWidth, buttonColor, inactiveColor, centered = false) {
     const baseRadius = indicators.baseRadius, baseSpacing = indicators.baseSpacing;
     const indicatorWidth = (slides.length - 1) * baseSpacing + 2 * baseRadius + 2 * canvasPadding;
     const scale = indicatorWidth > maxWidth ? maxWidth / indicatorWidth : 1;
     const radius = baseRadius * scale, spacing = baseSpacing * scale;
     const totalWidth = (slides.length - 1) * spacing;
     const startX = centered ? centerX - totalWidth / 2 : centerX;
+    const centerY = topY + radius;
 
     for (let i = 0; i < slides.length; i++) {
       ctx.fillStyle = (i === currentSlide) ? buttonColor : inactiveColor;
@@ -358,6 +377,7 @@ function runSlideshow(canvasId, config) {
     const x = e.clientX - left, y = e.clientY - top;
     const back = backButton;
     const next = nextButton;
+    // const { back, next } = getButtonCoordinates();
 
     hoverBack = x >= back.x && x <= back.x + buttonWidth && y >= back.y && y <= back.y + buttonHeight && currentSlide > 0;
     hoverNext = x >= next.x && x <= next.x + buttonWidth && y >= next.y && y <= next.y + buttonHeight && currentSlide < slides.length - 1;
@@ -367,18 +387,37 @@ function runSlideshow(canvasId, config) {
   });
 
   canvas.addEventListener("click", e => {
+    const { left, top } = canvas.getBoundingClientRect();
+    // const x = e.clientX - left, y = e.clientY - top;
+    // const back = backButton;
+    // const next = nextButton;
+    // const { back, next } = getButtonCoordinates();
+
     if (hoverBack && currentSlide > 0) currentSlide--;
     else if (hoverNext && currentSlide < slides.length - 1) currentSlide++;
     drawSlide();
   });
 
-  // Register dark mode observer once
-  const darkModeObserver = new MutationObserver(() => {
-    drawSlide();
-  });
-  darkModeObserver.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"]
-  });
-
+  // function getButtonCoordinates() {
+  //   if (layout === "horizontal") {
+  //     const imageHeight = canvas.height - 2 * canvasPadding;
+  //     const y = canvasPadding + imageHeight - buttonHeight - 30;
+  //     const panelX = canvas.width - controlPanelWidth + canvasPadding;
+  //     const panelCenter = panelX + (controlPanelWidth - canvasPadding * 2) / 2;
+  //     const totalWidth = 2 * buttonWidth + panelPadding;
+  //     const xStart = panelCenter - totalWidth / 2;
+  //     return {
+  //       back: { x: xStart, y },
+  //       next: { x: xStart + buttonWidth + panelPadding, y }
+  //     };
+  //   } else {
+  //     const panelY = canvas.height * 0.65 + canvasPadding;
+  //     const y = panelY + canvas.height * 0.35 - buttonHeight - 30;
+  //     const panelCenter = canvas.width / 2;
+  //     return {
+  //       back: { x: panelCenter - buttonWidth - panelPadding, y },
+  //       next: { x: panelCenter + panelPadding, y }
+  //     };
+  //   }
+  // }
 }
