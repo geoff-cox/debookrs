@@ -44,250 +44,756 @@ Foundations of the Laplace Transform
 
 	<subsection><title> Transferring Derivatives Inside an Integral </title>
 
-		<introduction>
-
-			<p>
-				To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of integration by parts formula is given by
-				<me>
-					\int u\,dv = uv - \int v\,du
-				</me>.
-			</p>
-
-			<p>
-				Assuming <m>u</m> and <m>v</m> are functions of <m>t</m> on <m>[a,b]</m>, another version is given by
-				<me>
-					\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }v}}{
-						\us{u}{ \us{\uparrow}{\ul{ 
-							u(t)
-						}}} \ 
-						\us{dv}{\us{\uparrow}{\ul{
-							{\color{RoyalBlue}\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
-						}}}
-					}
-					= \us{u}{\us{\uparrow}{\ul{ u(t) }}}\ \us{v}{\us{\uparrow}{\ul{ v(t) }}} \Big|_{a}^{b}
-						- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }u}}{
-							\us{v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
-							\us{du}{\us{\uparrow}{\ul{ {\color{RoyalBlue}\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
-						}
-				</me>.
-			</p>
-
-			<p>
-				This version of the formula clearly shows how the derivative on <m>v</m> (left integral) is transferred to <m>u</m> (right integral). This concept is fundamental to the Laplace transform method, especially when <m>u = e^{-st}</m>, where <m>s</m> is a positive constant.
-			</p>
-
-		</introduction>
+		<xi:include href="./c7-exercises/c7-prep-1-1-1-derivative-transfer.ptx" />
 
 		<p>
-			To see why this may be useful, let <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then, <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m> and the formula becomes
+			To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of the formula is:
 			<me>
-				\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
-					e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
-				} = e^{-st} \ y(t) \Big|_{a}^{b}
-				- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
-					y(t) \ {\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ dt
+				\int u\,dv = uv - \int v\,du
+			</me>
+		</p>
+
+		<p>
+			If <m>u</m> and <m>v</m> are functions of <m>t</m> on <m>[a,b]</m>, then we can write a more detailed version that makes the transfer of derivatives clear:
+			<me>
+				\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }v}}{
+				\us{u}{ \us{\uparrow}{\ul{ 
+					u(t)
+				}}} \ 
+				\us{dv}{\us{\uparrow}{\ul{
+					{\color{RoyalBlue}\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
+				}}}
 				}
-			</me>.
+				= \us{u}{\us{\uparrow}{\ul{ u(t) }}}\ \us{v}{\us{\uparrow}{\ul{ v(t) }}} \Big|_{a}^{b}
+				- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }u}}{
+					\us{v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
+					\us{du}{\us{\uparrow}{\ul{ {\color{RoyalBlue}\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
+				}
+			</me>
+		</p>
+
+		<p>
+			This version shows how integration by parts lets you shift a derivative from one function to another inside an integral. That becomes especially useful when <m>u(t) = e^{-st}</m> for some constant <m>s</m>.
+		</p>
+
+		<exercise label="chkpt-derivative-transfer-1"><title> Derivative Transfer Technique </title>
+			<statement>
+				<p>
+					Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?
+				</p>
+			</statement>
+			<choices>
+				<choice>
+					<statement>Chain Rule</statement>
+					<feedback>
+						<p>
+							Incorrect. The chain rule is used for function compositions, not transferring derivatives within an integral.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>L'Hôpital's Rule</statement>
+					<feedback>
+						<p>
+							Incorrect. L'Hôpital's Rule helps evaluate indeterminate limits, not manipulate derivatives inside integrals.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>Integration by Parts</statement>
+					<feedback>
+						<p>
+							Correct! Integration by parts is the key tool that shifts derivatives between functions inside integrals.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>Implicit Differentiation</statement>
+					<feedback>
+						<p>
+							Incorrect. Implicit differentiation helps with equations where the dependent variable isn't isolated.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<p>
+			Let's try this with a specific example. Suppose <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m>, so the formula becomes:
+			<me>
+			\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
+				e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
+			} = e^{-st} \ y(t) \Big|_{a}^{b}
+			- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
+				{\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ y(t)\ dt
+			}
+			</me>
 		</p>
 
 		<aside><title> Clarification </title>
 			<p>
-				Since the integral is in terms of <m>t</m>, <m>s</m> is constant and can be pulled out of the integral.
+			Since the integral is in terms of <m>t</m>, <m>s</m> is a constant and can be pulled out of the integral.
 			</p>
 		</aside>
-		
-		<p>
-			Here, the derivative on <m>y'</m> moved onto the exponential function <m>e^{-st}</m>. Simplifying the integral on the right yields
-			<me>
-				\int_{a}^{b} e^{-st}\vphantom{y'} \ y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
-			</me>.
-		</p>
 
-		<p>
-			We can now make two important observations. First, the integral on the left, containing <m>y'</m>, can be rewritten in terms of an expression containing no <m>y</m> derivatives. Second, the only difference between the two integrals is an extra factor of <m>s</m>. Thus, we can think of the derivative as being encoded in <m>s</m>. This viewpoint is the essence behind the Laplace transform method and, in the next section, we will have a more clear view of differential equation's in this context.
-		</p>
-
-	</subsection>
-
-	<subsection><title> Laplace Transform Definition </title>
-
-		<introduction>
-
-			<p>
-				In the previous section, we saw that multiplying a differential equation by <m>e^{-st}</m> and integrating allows us to shift derivatives away from the unknown function and onto the exponential. But most differential equations don't come with an <m>e^{-st}</m> built in—so we must introduce it ourselves.
-			</p>
-
-		</introduction>
-
-		<p>
-			Let's try this with a specific example:
-		</p>
-
-		<p>
-			Suppose we are given the equation
-			<men xml:id="lt-model-eqn">
-				y'' - 9y = 10e^{2t}
-			</men>.
-		</p>
-
-		<p>
-			Multiplying both sides by <m>e^{-st}</m> and integrating with respect to <m>t</m> gives
-			<me>
-				\int \left(y'' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt.
-			</me>
-			Using the linearity of the integral, this expands to
-			<me>
-				\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
-				- 9\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
-				= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\text{integrate directly}}.
-			</me>
-		</p>
-
-		<p>
-			This transformation rewrites the differential equation in a form where each term is ready for conversion—either by transferring derivatives or by direct integration. This leads us to the key idea behind the Laplace transform.
-		</p>
-
-		<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
+		<exercise label="chkpt-derivative-transfer-2"><title> Key Concepts Behind Laplace Transforms </title>
 			<statement>
 				<p>
-					Given a function <m>f(t)</m> defined for <m>t \geq 0</m>, its Laplace transform, denoted <m>\lap{f(t)}</m>, is defined by
-					<me>
-						\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt,
-					</me>
-					provided the integral converges. The result is a new function, typically written as <m>F(s)</m>:
-					<me>
-						F(s) = \lap{f(t)}.
-					</me>
+					Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?
 				</p>
 			</statement>
-		</definition>
-
-		<p>
-			Since the upper limit is <m>\infty</m>, this is an improper integral. From calculus, you may remember that we evaluate such integrals by taking a limit:
-			<me>
-				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
-			</me>.
-		</p>
-
-		<p>
-			During the integration step, treat <m>s</m> and <m>b</m> as constants and compute the integral with respect to <m>t</m>. Then, in the limit step, let <m>b \to \infty</m> and check whether the result converges. If it does, the Laplace transform exists.
-		</p>
-
-		<p>
-			Let's walk through a simple example to see this in action.
-		</p>
-
-		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
-			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the constant function <m>f(t) = 5</m>.
-					</p>
-				</statement>
-			</p>
-
-			<solution>
-				<p>
-					By the definition above, we have the improper integral
-					<men xml:id="lt-def-example-eqn-1">
-						\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
-					</men>.
-				</p>
-
-				<p>
-					Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
-					<me>
-						I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
-					</me>.
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
-					<md>
-						<mrow>
-							\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
-								\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
-						</mrow>
-						<mrow>
-								\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
-						</mrow>
-					</md>
-				</p>
-		
-				<p>
-					Since the limit, <m>L</m> as <m>b \to \infty</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
-					<aside>
+			<choices>
+				<choice>
+					<statement>Chain Rule</statement>
+					<feedback>
 						<p>
-							Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
+							Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.
 						</p>
-					</aside>
-					<ol>
-						<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
-						<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
-					</ol>
-					By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
-					<me>
-						\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
-					</me>.
-				</p>
-			</solution>
-		</example>
-
-		<example><title> Laplace Transform of <m>t</m> </title>
-			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the function <m>f(t)=t</m>.
-					</p>
-				</statement>
-			</p>
-			<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
-
-				<p>
-					Applying the definition and writing the integral as a limit, we have
-					<me>
-						\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
-					</me>.
-				</p>
-
-				<p>
-					Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
-					<md>
-						<mrow>
-							{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
-						</mrow>
-					</md>
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
-					<md>
-						<mrow>
-							\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
-						</mrow>
-					</md> 
-				</p>
-
-				<p>
-					As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
-					<me>
-						\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
-					</me>.
-				</p>
-			</solution>
-		</example>
-
+					</feedback>
+				</choice>
+				<choice>
+					<statement>Product Rule</statement>
+					<feedback>
+						<p>
+							No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>Integration by Parts</statement>
+					<feedback>
+						<p>
+							Correct! Integration by parts allows derivatives to be transferred between functions inside an integral—a foundational technique in the Laplace method.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>Properties of Exponential Functions</statement>
+					<feedback>
+						<p>
+							Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+		
 		<p>
-			These examples demonstrate the typical process involved in applying the Laplace transform to a function. As we move forward, we'll use this definition to build a library of Laplace transforms, which we will frequently reference when we begin solving equations using this new method.
+			The derivative that was initially on <m>y'</m> is now on <m>e^{-st}</m>. Simplifying the integral on the right-hand side yields:
+			<me>
+			\int_{a}^{b} e^{-st} y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
+			</me>
 		</p>
 
+		<p>
+			We can now make two important observations. First, the left-hand side, which originally had a derivative on <m>y</m>, has been rewritten with no derivatives of <m>y</m> at all. Second, the only difference between the two integrals is a factor of <m>s</m>. In a way, the derivative has been encoded inside <m>s</m>.
+		</p>
+
+		<exercise label="chkpt-derivative-transfer-4"><title> Integration by Parts on <m>t^2 y'</m> </title>
+			<statement>
+				<p>
+					Select the result of applying integration by parts to 
+					<me>
+						\int t^2 \ y'\ dt
+					</me>.
+				</p>
+				<p>
+					<em>Don't think of this as a Calculus exercise. Instead, try to think about transferring derivatives.</em>
+				</p>
+			</statement>
+			<choices>
+				<choice>
+					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int y\ dt</m></statement>
+					<feedback>
+						<p>
+							Incorrect. A correct application of integration by parts must include the right choice of <m>u</m> and <m>dv</m>. Try again.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2 y\ dt</m></statement>
+					<feedback>
+						<p>
+							Incorrect. Be sure you're transferring the derivative and integrating the right part.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds \int t^2 \ y'\ dt = 2\int t y\ dt</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This result skips important parts of the integration by parts formula.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - 2\int t y\ dt</m></statement>
+					<feedback>
+						<p>
+							Correct! Integration by parts with <m>u = t^2</m> and <m>dv = y'\,dt</m> gives this result.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<p>
+			This idea—transferring derivatives onto <m>e^{-st}</m> and ending up with a multiple of the original function—is exactly what makes the Laplace transform method work. We'll explore that in the next section.
+		</p>
+
+		<exercise label="chkpt-derivative-transfer-summary"><title> Reflection </title>
+			<statement>
+				<p>
+					In your own words, explain how integration by parts allows the Laplace transform method to “remove” derivatives from a differential equation. What role does the exponential <m>e^{-st}</m> play?
+				</p>
+			</statement>
+			<response />
+		</exercise>
+	
 	</subsection>
+
+<!-- <subsection><title> Laplace Transform Definition </title>
+
+	<xi:include href="./c7-exercises/c7-prep-1-1-2-definition.ptx" />
+
+	<p>
+		In the previous section, we saw that multiplying a differential equation by <m>e^{-st}</m> and integrating allows us to shift derivatives away from the unknown function and onto the exponential. But most differential equations don't come with an <m>e^{-st}</m> built in—so we must introduce it ourselves.
+	</p>
+
+	<p>
+		Let's try this with a specific example:
+	</p>
+
+	<p>
+		Suppose we are given the equation
+		<men xml:id="lt-model-eqn">
+			y'' - 9y = 10e^{2t}
+		</men>.
+	</p>
+
+	<p>
+		Multiplying both sides by <m>e^{-st}</m> and integrating with respect to <m>t</m> gives
+		<me>
+			\int \left(y'' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt.
+		</me>
+		Using the linearity of the integral, this expands to
+		<me>
+			\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
+			- 9\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
+			= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\text{integrate directly}}.
+		</me>
+	</p>
+
+	<p>
+		This transformation rewrites the differential equation in a form where each term is ready for conversion—either by transferring derivatives or by direct integration. This leads us to the key idea behind the Laplace transform.
+	</p>
+
+	<exercise label="chkpt-lt-defn-1"><title> Key Steps in Finding a Laplace Transform </title>
+		<statement>
+			<p>
+				Fill-in-the-blank: The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m>.
+			</p>
+		</statement>
+		<choices>
+			<choice>
+				<statement><m>e^{-t},</m> integrating</statement>
+				<feedback>
+					<p>
+						No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
+					</p>
+				</feedback>
+			</choice>
+			<choice correct="yes">
+				<statement><m>e^{-st},</m> integrating</statement>
+				<feedback>
+					<p>
+						Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
+					</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>e^{st},</m> integrating</statement>
+				<feedback>
+					<p>
+						No, the exponent should have a negative sign: <m>e^{-st}</m>.
+					</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>e^{-st},</m> differentiating</statement>
+				<feedback>
+					<p>
+						No, the Laplace transform requires integration, not differentiation.
+					</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>s,</m> differentiating</statement>
+				<feedback>
+					<p>
+						No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
+					</p>
+				</feedback>
+			</choice>
+		</choices>
+	</exercise>
+
+	<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
+		<statement>
+			<p>
+				Given a function <m>f(t)</m> defined for <m>t \geq 0</m>, its Laplace transform, denoted <m>\lap{f(t)}</m>, is defined by
+				<me>
+					\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt,
+				</me>
+				provided the integral converges. The result is a new function, typically written as <m>F(s)</m>:
+				<me>
+					F(s) = \lap{f(t)}.
+				</me>
+			</p>
+		</statement>
+	</definition>
+
+	<exercise label="chkpt-lt-defn-2"><title> Identify the Error in the Laplace Transform Definition </title>
+		<statement>
+			<p>
+				Click on the incorrect part of the Laplace transform definition.
+			</p>
+		</statement>
+		<areas>
+			<p/>
+			<sidebyside widths="28% 44% 28%">
+				<p/>
+				<p>
+					<area correct="no">	<m>\ds \laplacesym 		</m></area>
+					<m>\big\{</m>
+					<area correct="no">	<m>f(t)</m></area>
+					<m>\big\}</m>
+					<m>=</m>
+					<area correct="no">	<m>\ds \int_{0}^{\infty}</m></area>
+					<area correct="yes"><m>\ds e^{st}			</m></area>
+					<area correct="no">	<m>\ds f(t)				</m></area>
+					<area correct="no">	<m>\ds dt				</m></area>
+				</p>
+				<p/>
+			</sidebyside>
+		</areas>
+	</exercise>
+
+	<p>
+		Since the upper limit is <m>\infty</m>, this is an improper integral. From calculus, you may remember that we evaluate such integrals by taking a limit:
+		<me>
+			\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
+		</me>.
+	</p>
+
+	<p>
+		During the integration step, treat <m>s</m> and <m>b</m> as constants and compute the integral with respect to <m>t</m>. Then, in the limit step, let <m>b \to \infty</m> and check whether the result converges. If it does, the Laplace transform exists.
+	</p>
+
+	<exercise label="chkpt-lt-defn-3"><title> Convergence Requirement for Laplace Transforms </title>
+		<statement correct="yes">
+			<p>
+				The Laplace transform only exists if the improper integral,
+				<me>
+					\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt
+				</me>
+				converges.
+			</p>
+		</statement>
+		<feedback>
+			<p>
+				This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform does not exist.
+			</p>
+		</feedback>
+	</exercise>
+
+	<p>
+		Let's walk through a simple example to see this in action.
+	</p>
+
+	<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
+		<p>
+			<statement>
+				<p>
+					Find the Laplace transform of the constant function <m>f(t) = 5</m>.
+				</p>
+			</statement>
+		</p>
+
+		<solution>
+			<p>
+				By the definition above, we have the improper integral
+				<men xml:id="lt-def-example-eqn-1">
+					\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
+				</men>.
+			</p>
+
+			<p>
+				Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
+				<me>
+					I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
+				</me>.
+			</p>
+
+			<p>
+				Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
+				<md>
+					<mrow>
+						\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+							\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+					</mrow>
+					<mrow>
+							\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+					</mrow>
+				</md>
+			</p>
+	
+			<p>
+				Since the limit, <m>L</m> as <m>b \to \infty</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
+				<aside>
+					<p>
+						Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
+					</p>
+				</aside>
+				<ol>
+					<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
+					<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
+				</ol>
+				By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
+				<me>
+					\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
+				</me>.
+			</p>
+		</solution>
+	</example>
+
+	<example><title> Laplace Transform of <m>t</m> </title>
+		<p>
+			<statement>
+				<p>
+					Find the Laplace transform of the function <m>f(t)=t</m>.
+				</p>
+			</statement>
+		</p>
+		<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
+
+			<p>
+				Applying the definition and writing the integral as a limit, we have
+				<me>
+					\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
+				</me>.
+			</p>
+
+			<p>
+				Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
+				<md>
+					<mrow>
+						{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
+				<md>
+					<mrow>
+						\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
+					</mrow>
+				</md> 
+			</p>
+
+			<p>
+				As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
+				<me>
+					\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
+				</me>.
+			</p>
+		</solution>
+	</example>
+
+	<p>
+		These examples demonstrate the typical process involved in applying the Laplace transform to a function. As we move forward, we'll use this definition to build a library of Laplace transforms, which we will frequently reference when we begin solving equations using this new method.
+	</p>
+
+</subsection> -->
+
+<subsection><title> Laplace Transform Definition </title>
+
+	<xi:include href="./c7-exercises/c7-prep-1-1-2-definition.ptx" />
+
+	<p>
+		In the previous section, we saw that multiplying a differential equation by <m>e^{-st}</m> and integrating allows us to shift derivatives away from the unknown function and onto the exponential. However, most differential equations don't come with an <m>e^{-st}</m> built in—we have to introduce it ourselves.
+	</p>
+
+	<p>
+		Let's explore this process using a concrete example.
+	</p>
+
+	<p>
+		Suppose we are given the equation:
+		<men xml:id="lt-model-eqn">
+		y'' - 9y = 10e^{2t}
+		</men>
+	</p>
+
+	<p>
+		We multiply both sides by <m>e^{-st}</m> and integrate with respect to <m>t</m>:
+		<me>
+		\int \left(y'' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt.
+		</me>
+		Using the linearity of the integral, we can rewrite this as:
+		<me>
+		\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
+		- 9\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
+		= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\text{integrate directly}}.
+		</me>
+	</p>
+
+	<p>
+		This transformation rewrites the differential equation into a form where each term is ready for conversion—either by transferring derivatives or by direct integration. This leads us to the central idea behind the Laplace transform.
+	</p>
+
+	<exercise label="chkpt-lt-defn-1"><title> Key Steps in Finding a Laplace Transform </title>
+		<statement>
+		<p>
+			Fill-in-the-blank: The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m>.
+		</p>
+		</statement>
+		<choices>
+		<choice>
+			<statement><m>e^{-t},</m> integrating</statement>
+			<feedback>
+			<p>
+				No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
+			</p>
+			</feedback>
+		</choice>
+		<choice correct="yes">
+			<statement><m>e^{-st},</m> integrating</statement>
+			<feedback>
+			<p>
+				Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
+			</p>
+			</feedback>
+		</choice>
+		<choice>
+			<statement><m>e^{st},</m> integrating</statement>
+			<feedback>
+			<p>
+				No, the exponent should have a negative sign: <m>e^{-st}</m>.
+			</p>
+			</feedback>
+		</choice>
+		<choice>
+			<statement><m>e^{-st},</m> differentiating</statement>
+			<feedback>
+			<p>
+				No, the Laplace transform requires integration, not differentiation.
+			</p>
+			</feedback>
+		</choice>
+		<choice>
+			<statement><m>s,</m> differentiating</statement>
+			<feedback>
+			<p>
+				No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
+			</p>
+			</feedback>
+		</choice>
+		</choices>
+	</exercise>
+
+	<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
+		<statement>
+		<p>
+			Given a function <m>f(t)</m> defined for <m>t \geq 0</m>, its Laplace transform, denoted <m>\lap{f(t)}</m>, is defined by
+			<me>
+			\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt,
+			</me>
+			provided the integral converges. The result is a new function, typically written as <m>F(s)</m>:
+			<me>
+			F(s) = \lap{f(t)}.
+			</me>
+		</p>
+		</statement>
+	</definition>
+
+	<exercise label="chkpt-lt-defn-2"><title> Identify the Error in the Laplace Transform Definition </title>
+		<statement>
+		<p>
+			Click on the incorrect part of the Laplace transform definition.
+		</p>
+		</statement>
+		<areas>
+		<p/>
+		<sidebyside widths="28% 44% 28%">
+			<p/>
+			<p>
+			<area correct="no"><m>\ds \laplacesym</m></area>
+			<m>\big\{</m>
+			<area correct="no"><m>f(t)</m></area>
+			<m>\big\}</m>
+			<m>=</m>
+			<area correct="no"><m>\ds \int_{0}^{\infty}</m></area>
+			<area correct="yes"><m>\ds e^{st}</m></area>
+			<area correct="no"><m>\ds f(t)</m></area>
+			<area correct="no"><m>\ds dt</m></area>
+			</p>
+			<p/>
+		</sidebyside>
+		</areas>
+	</exercise>
+
+	<p>
+		Since the upper limit of the integral is <m>\infty</m>, this is an improper integral. From calculus, you might recall that improper integrals are evaluated by taking a limit:
+		<me>
+		\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
+		</me>
+	</p>
+
+	<p>
+		During the first step, treat <m>s</m> and <m>b</m> as constants and compute the integral with respect to <m>t</m>. Then, in the second step, take the limit as <m>b \to \infty</m>. If the result converges to a finite value, the Laplace transform exists.
+	</p>
+
+	<exercise label="chkpt-lt-defn-3"><title> Convergence Requirement for Laplace Transforms </title>
+		<statement correct="yes">
+		<p>
+			The Laplace transform only exists if the improper integral,
+			<me>
+			\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt
+			</me>
+			converges.
+		</p>
+		</statement>
+		<feedback>
+		<p>
+			This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform does not exist.
+		</p>
+		</feedback>
+	</exercise>
+
+	<p>
+		Let's walk through two examples to see how this definition works in practice.
+	</p>
+
+	<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
+		<p>
+			<statement>
+				<p>
+					Find the Laplace transform of the constant function <m>f(t) = 5</m>.
+				</p>
+			</statement>
+		</p>
+
+		<solution><title> <m>\rightarrow \lap{5}</m> </title>
+			<p>
+				By the definition above, we have the improper integral
+				<men xml:id="lt-def-example-eqn-1">
+					\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
+				</men>.
+			</p>
+
+			<p>
+				Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
+				<me>
+					I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
+				</me>.
+			</p>
+
+			<p>
+				Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
+				<md>
+					<mrow>
+						\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+							\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+					</mrow>
+					<mrow>
+							\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+					</mrow>
+				</md>
+			</p>
+	
+			<p>
+				Since the limit, <m>L</m> as <m>b \to \infty</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
+				<aside>
+					<p>
+						Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
+					</p>
+				</aside>
+				<ol>
+					<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
+					<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
+				</ol>
+				By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
+				<me>
+					\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
+				</me>.
+			</p>
+		</solution>
+	</example>
+
+	<example><title> Laplace Transform of <m>t</m> </title>
+		<p>
+			<statement>
+				<p>
+					Find the Laplace transform of the function <m>f(t)=t</m>.
+				</p>
+			</statement>
+		</p>
+		<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
+
+			<p>
+				Applying the definition and writing the integral as a limit, we have
+				<me>
+					\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
+				</me>.
+			</p>
+
+			<p>
+				Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
+				<md>
+					<mrow>
+						{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
+				<md>
+					<mrow>
+						\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
+					</mrow>
+				</md> 
+			</p>
+
+			<p>
+				As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
+				<me>
+					\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
+				</me>.
+			</p>
+		</solution>
+	</example>
+
+	<p>
+		These examples illustrate the typical process of computing a Laplace transform. Moving forward, we'll use this definition to build a table of transforms, which will become a powerful tool for solving differential equations.
+	</p>
+
+</subsection>
+  
 
 	<subsection><title> Common Transforms </title>
 
@@ -663,6 +1169,11 @@ Foundations of the Laplace Transform
 			The transforms derived in this section will serve as the foundational building blocks in the Laplace method. In the next section, we'll expand this toolbox further by exploring the rules and properties of the Laplace transform that allow us to combine and manipulate transforms more flexibly.
 		</p>
 
+		<xi:include href="./c7-exercises/c7-chkpts-1-2-1-rule-L1.ptx" />
+		<xi:include href="./c7-exercises/c7-chkpts-1-2-2-rule-L2.ptx" />
+		<xi:include href="./c7-exercises/c7-chkpts-1-2-3-rule-L3.ptx" />
+		<xi:include href="./c7-exercises/c7-chkpts-1-2-4-rule-L45.ptx" />
+
 	</subsection>
 
 	<subsection><title> Properties and Rules </title>
@@ -742,6 +1253,8 @@ Foundations of the Laplace Transform
 					</p>
 				</solution>
 			</example>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-3-1-property-P1.ptx" />
 			
 		</subsubsection>
 
@@ -933,6 +1446,8 @@ Foundations of the Laplace Transform
 				</p>
 			</example>
 
+			<xi:include href="./c7-exercises/c7-chkpts-1-3-2-property-P2.ptx" />
+
 		</subsubsection>
 
 		<subsubsection><title> Transforms of Derivatives (Derivative Transfer) </title>
@@ -1043,6 +1558,8 @@ Foundations of the Laplace Transform
 					</mrow>
 				</md>
 			</p>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-3-3-property-P3.ptx" />
 
 		</subsubsection>
 
@@ -1194,6 +1711,8 @@ Foundations of the Laplace Transform
 			<p>
 				This shows that multiplying a function by <m>t</m> inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by <m>-1</m>. It turns out that each additional power of <m>t</m> adds another negative sign and derivative.
 			</p>
+
+			<xi:include href="./c7-exercises/c7-chkpts-1-3-4-property-P4.ptx" />
 
 		</subsubsection>
 
