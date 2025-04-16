@@ -1,6 +1,3 @@
-
-
-
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title>
 
 	<introduction>
@@ -10,6 +7,288 @@
 		</p>
 		
 	</introduction>
+
+	<subsection><title> Piecewise Functions </title>
+
+		<p>
+			We will encounter piecewise defined functions in differential equations when we think about some physical phenomenon. For example, we might consider the vibration of an airplane wing that is struck by some external object or a circuit that is initially open and then we close the circuit and the current immediately starts flowing. Both of these scenarios would require a piecewise defined function because there is a moment in time when something about the physical system changes.
+		</p>
+		
+		<p>
+		As such, we need to remember how piecewise defined functions work. Consider the function
+		
+		<me>
+			g(t) = \left\{
+			\begin{array}{ll}
+				0,		\amp t \lt 1 		\\
+				t^2,	\amp 1 \le t \lt 2 	\\
+				-t+1,	\amp 2 \le t \lt 6 	\\
+				0,		\amp t \ge 6.		\\
+			\end{array} \right.
+		</me>
+		
+		</p>
+		
+		<p>
+			If we want to evaluate the function at a particular <m>t</m>-value, we use the restrictions on the right to point us to which piece of the function definition we should use. For example, if we want to know <m>g(3)</m>, then we look over at that right side and see that 3 falls into the interval <m>2 \le t \lt 6,</m> so we use the corresponding function, <m>-t+1</m>. Thus, <m>g(3) = -3 + 1 = -2.</m>	
+		</p>
+		
+		<p>
+			If we want to graph, we also use those restrictions. When <m>t \lt 1</m>,  or equivalently when <m>t</m> is in the interval <m>(-\infty, 1),</m> we know that the graph of <m>g</m> will look like the horizontal line <m>y=0</m>; on the interval <m>[1, 2),</m> the graph will look like the graph of the parabola <m>y = t^2</m>; etc.
+		</p>
+
+		<p>
+			In the plots below you can see the entire graphs of the functions, dotted, with a solid segment that will be part of the piecewise function <m>g</m>.
+		
+			<sidebyside width="50%" margins="auto" valign="middle">
+				<image source="./figures/piecewise_1.png"/>
+				<image source="./figures/piecewise_2.png"/>
+			</sidebyside>
+			<sidebyside width="50%" margins="auto" valign="middle">
+				<image source="./figures/piecewise_3.png"/>
+				<image source="./figures/piecewise_4.png"/>
+			</sidebyside>
+		</p>
+		
+		<p>
+			Now we are prepared to assemble the pieces and generate the graph of the piecewise-defined function
+		
+			<me>
+				g(t) = \left\{
+				\begin{array}{ll}
+					0,		\amp t \lt 1		\\
+					t^2,	\amp 1 \le t \lt 2	\\
+					-t+1,	\amp 2 \le t \lt 6	\\
+					0,		\amp t \ge 6		\\
+				\end{array} \right.
+			</me>.
+		</p>
+		
+		<p>
+			<sidebyside width="90%" margins="auto" valign="middle">
+				<image source="./figures/piecewise_g.png"/>
+			</sidebyside>
+		</p>
+
+		<p>
+			<sidebyside width="90%" margins="auto" valign="middle">
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[domain=-3:3]
+							\def\a{-2.5}
+							\def\b{2.5}
+							\def\c{0}
+
+							% Draw the axes
+							\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right] {$t$};
+							\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+			
+							% Draw the grid
+							\draw[very thin,color=gray] (\a,-0.5) grid (\b,1.5);
+			
+							% Unit step function
+							\draw[very thick,blue] (\a,0) -- (\c,0);
+							\draw[dashed, blue] (\c,0) -- (\c,1);
+							\draw[very thick,blue] (\c,1) -- (\b,1) node[above] {$U(t)$};
+							
+							% Open circle at the step
+							\draw[fill=white] (\c,0) circle (0.08);
+							
+							% Solid dot at the point of the step
+							\filldraw[blue] (\c,1) circle (0.08) node[left] {$1$};
+			
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</sidebyside>
+		</p>
+
+		<p>
+			<sidebyside width="60%" margins="auto" valign="middle">
+				<image width="100%">
+					<latex-image>
+
+						\begin{tikzpicture}[domain=-1:6, samples=200, scale=0.8]
+
+						% === x y Bounds ===
+						\def\a{-1}
+						\def\b{6}
+						\def\ya{-1}
+						\def\yb{3}
+					
+						% === Transistions ===
+						\def\tA{1}	\def\tB{4}
+					
+						% === Function definitions and colors ===
+						\def\fA{(\x)^2}	\def\fAColor{blue}				\def\fAFill{blue!15}
+						\def\fB{-\x + 4}		\def\fBColor{green!60!black}	\def\fBFill{green!15}
+						\def\fC{-1}				\def\fCColor{red!70!black}		\def\fCFill{red!15}
+
+						% === Evaluate endpoint values ===
+						\pgfmathsetmacro{\fAright}{(\tA)^2}
+						\pgfmathsetmacro{\fBleft}{-\tA + 4}
+						\pgfmathsetmacro{\fBright}{-\tB + 4}
+						\pgfmathsetmacro{\fCleft}{-1}
+					
+						% === Background regions ===
+						\fill[\fAFill] (\a-0.5,\ya-1)	rectangle (\tA,\yb+1);
+						\fill[\fBFill] (\tA,\ya-1)	rectangle (\tB,\yb+1);
+						\fill[\fCFill] (\tB,\ya-1)	rectangle (\b+0.5,\yb+1);
+					
+						% === Axes ===
+						\draw[-&gt;] (\a-0.5,0)		-- (\b+0.3,0)	node[above] {$t$};
+						\draw[-&gt;] (0,\ya-0.4)	-- (0,\yb+0.5)	node[left] {$f(t)$};
+
+						% === Tick marks and labels ===
+						\foreach \x in {\a,...,\b} {
+							\draw[gray!70] (\x,0.1) -- (\x,-0.1);  % x ticks
+							\node[below] at (\x,-0.15) {\small \x}; 
+						}
+						\foreach \y in {\ya,...,\yb} {
+							\draw[gray!70] (0.1,\y) -- (-0.1,\y);  % y ticks
+							\node[left] at (-0.15,\y) {\small \y}; 
+						}
+					
+						% === Function plots ===
+						\draw[\fAColor, very thick] plot[domain=\a-0.5:\tA-0.02, variable=\x]	(\x, {\fA});
+						\draw[\fBColor, very thick] plot[domain=\tA:\tB-0.05, variable=\x]		(\x, {\fB});
+						\draw[\fCColor, very thick] plot[domain=\tB:\b+0.5, variable=\x]	(\x, {\fC});
+
+						% === Endpoint dots ===
+						% fA
+						\draw[\fAColor, thick] (\tA,\fAright) circle[radius=2pt];
+					
+						% fB
+						\fill[\fBColor] (\tA,\fBleft) circle[radius=2pt];          
+						\draw[\fBColor, thick] (\tB,\fBright) circle[radius=2pt];  
+					
+						% fC
+						\fill[\fCColor] (\tB,\fCleft) circle[radius=2pt];
+
+						% === Region Labels ===
+						\node[\fAColor, font=\small] at ({(\a-0.5 + \tA)/2}, {\ya - 0.8}) {$t &lt; t_1$};
+						\node[\fBColor, font=\small] at ({(\tA + \tB)/2}, {\ya - 0.8}) {$t_1 &lt; t &lt; t_2$};
+						\node[\fCColor, font=\small] at ({(\tB + \b+0.5)/2}, {\ya - 0.8}) {$t_2 &lt; t$};
+					
+					\end{tikzpicture}
+					</latex-image>
+				</image>
+			</sidebyside>
+		</p>
+
+		<!-- <p>
+			<sidebyside width="90%" margins="auto" valign="middle">
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[domain=-5:5, samples=200, scale=1.2]
+							% Define breakpoints
+							\def\tA{ -2 }
+							\def\tB{ 1 }
+							\def\tC{ 3 }
+
+							% Define styles
+							\tikzset{
+								region1/.style={fill=blue!5},
+								region2/.style={fill=green!5},
+								region3/.style={fill=orange!5},
+								region4/.style={fill=red!5},
+								
+								f1style/.style={blue, thick},
+								f2style/.style={green!60!black, thick, dashed},
+								f3style/.style={orange!80!black, thick},
+								f4style/.style={red!70!black, thick, dotted},
+							}
+
+							\begin{axis}[
+								axis lines=middle,
+								xmin=-5.5, xmax=5.5,
+								ymin=-4, ymax=4,
+								xlabel={$t$}, ylabel={$f(t)$},
+								xtick=\empty,
+								ytick=\empty,
+								enlargelimits,
+								clip=false,
+							]
+
+							% Background shading
+							\addplot [region1, draw=none, domain=-5:\tA] {0};
+							\addplot [region2, draw=none, domain=\tA:\tB] {0};
+							\addplot [region3, draw=none, domain=\tB:\tC] {0};
+							\addplot [region4, draw=none, domain=\tC:5] {0};
+
+							% Function plots
+							\addplot [f1style, domain=-5:\tA] {0};
+							\addplot [f2style, domain=\tA:\tB] {0.5*x^2};
+							\addplot [f3style, domain=\tB:\tC] {-x + 1};
+							\addplot [f4style, domain=\tC:5] {-2};
+
+							\end{axis}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</sidebyside>
+		</p> -->
+		
+		<p>
+			If you'd like more of a review feel free to look at VMI's precalculus text,
+			<url href="https://drive.google.com/file/d/12b2cwH7afXhsYSDb-QCWKmFK2QCq7UfY/view">
+				here
+			</url>
+		</p>
+		
+		<p> Now you try some. </p>
+		
+		<p>
+			<term> Sketch each of the following piecewise defined functions.</term>
+			<ol>
+				<li> <p><m>\ds f(t) = \left\{
+						\begin{array}{ll}
+							0,		\amp t \lt 0		\\
+							5-t,	\amp 0 \le t \lt 3	\\
+							2,		\amp t \ge 3		\\
+						\end{array} \right.
+						</m></p>
+				<answer>
+					<p>
+						<sidebyside widths="90%" margins="auto" valign="middle">
+						<image source="./figures/piecewise_Q1.png"/>
+					</sidebyside>
+					</p>
+				</answer>
+				</li>
+				<li> <p><m>\ds h(t) = \left\{
+						\begin{array}{ll}
+							\sin t,	\amp t \lt \pi	\\
+							0,		\amp t \ge \pi	\\
+						\end{array} \right.
+						</m></p>
+				<answer>
+					<p>
+						<sidebyside widths="90%" margins="auto" valign="middle">
+						<image source="./figures/piecewise_Q2.png"/>
+					</sidebyside>
+					</p>
+				</answer>
+				</li>
+				<li> <p><m>\ds w(t) = \left\{
+						\begin{array}{ll}
+							-t,		\amp t \lt 1		\\
+							t^2+1,	\amp 1 \le t \lt 2	\\
+							e^{-t},	\amp t \ge 2		\\
+						\end{array} \right.
+						</m></p>
+				<answer>
+					<p>
+						<sidebyside widths="90%" margins="auto" valign="middle">
+						<image source="./figures/piecewise_Q3.png"/>
+					</sidebyside>
+					</p>
+				</answer>
+				</li>
+			</ol>
+		</p>			
+		
+	</subsection>
 
 	<subsection><title> Unit-Step Functions </title>
 
@@ -40,7 +319,7 @@
 							U(t) = \left\{
 							\begin{array}{ll}
 								0,	&amp; t \lt 0\\
-								1,	&amp; t \ge 0
+								1,	&amp; t \ge 0.
 							\end{array} \right.
 						</me>
 					</p>
@@ -186,7 +465,9 @@
 			<solution><title> <m>U(2.7)</m> </title>
 				<p>
 					Since <m>t = 2.7 \ge 0</m> (positive),
-					<me>U(2.7) = 1.</me>
+					<me>
+						U(2.7) = 1
+					</me>.
 				</p>
 			</solution>
 
@@ -194,7 +475,9 @@
 
 				<p>
 					Since <m>-5.32 &lt; 0</m> (negative),
-					<me>U(-5.32) = 0.</me>
+					<me>
+						U(-5.32) = 0
+					</me>.
 				</p>
 			
 			</solution>
@@ -202,7 +485,9 @@
 			<solution><title> <m>U(2)\cdot f(2)</m> </title>
 
 				<p>
-					<me> U(2)\cdot f(2) = 1\cdot f(2) = (2)^2 - 2 = (4 - 2) = 2.</me>
+					<me>
+						U(2)\cdot f(2) = 1\cdot f(2) = (2)^2 - 2 = (4 - 2) = 2
+					</me>.
 				</p>
 
 			</solution>
@@ -210,7 +495,9 @@
 			<solution><title> <m>U(-3)\cdot f(-3)</m> </title>
 
 				<p>
-					<me> U(-3)\cdot f(-3) = 0\cdot ((-3)^2 - 2) = 0\cdot (9 - 2) = 0.</me>
+					<me>
+						U(-3)\cdot f(-3) = 0\cdot ((-3)^2 - 2) = 0\cdot (9 - 2) = 0
+					</me>.
 				</p>
 
 			</solution>
@@ -219,7 +506,9 @@
 
 				<p>
 					Since <m>k \ge 0,</m> we know that <m>U(k) = 1,</m> so
-					<me> U(k)\cdot f(k) = 1\cdot f(k) = k^2 - 2.</me>
+					<me>
+						U(k)\cdot f(k) = 1\cdot f(k) = k^2 - 2
+					</me>.
 				</p>
 
 			</solution>
@@ -228,7 +517,9 @@
 
 				<p>
 					Since <m>k \lt 0,</m> we know that <m>U(k) = 0,</m> so
-					<me> U(k)\cdot f(k) = 0\cdot f(k) = 0.</me>
+					<me>
+						U(k)\cdot f(k) = 0\cdot f(k) = 0
+					</me>.
 				</p>
 
 			</solution>
@@ -265,15 +556,21 @@
 						</li>
 						<li>
 							As in the previous two questions, we evaluate <m>f(-1)</m> as follows.
-							<me> f(-1) = U(-1 - 3) = U(-4) = 0 </me>
+							<me>
+								f(-1) = U(-1 - 3) = U(-4) = 0
+							</me>
 						</li>
 						<li>
 							Suppose <m>k \gt 3.</m> If we substitute <m>k</m> into the function <m>f</m>, we have <m>f(k) = U(k-3).</m>	In order to evaluate this, we need to know if the input to the unit step function, <m>k - 3</m>, is positive or negative.  Since <m>k \gt 3,</m> we know that <m>k - 3</m> is positive, and therefore
-							<me> f(k) = U(k-3) = 1. </me>
+							<me>
+								f(k) = U(k-3) = 1
+							</me>.
 						</li>
 						<li>
 							Suppose now that <m>k \lt 3.</m> If we substitute <m>k</m> into the function <m>f</m>, we have <m>f(k) = U(k-3).</m>	Since <m>k \lt 3,</m> we know that the input to the unit step function, <m>k - 3</m>, is negative, and therefore
-							<me> f(k) = U(k-3) = 0. </me>
+							<me>
+								f(k) = U(k-3) = 0
+							</me>.
 						</li>
 						<li>
 							<sidebyside widths="90%" margins="auto" valign="middle">
@@ -291,10 +588,11 @@
 							</image>
 						</li>
 						<li>
-							<me> f(t) =  \left\{
+							<me>
+								f(t) =  \left\{
 								\begin{array}{ll}
 									0,	\amp t \lt 3\\
-									1,	\amp t \ge 3
+									1,	\amp t \ge 3.
 								\end{array} \right.
 							</me>
 						</li>
@@ -520,7 +818,9 @@
 		<example><title> Complete the following for the function <m>w(t)</m> </title>
 
 			<p>
-				<me>w(t) = 6 + 5\ U(t-1) - 4\ U(t-3)</me>.
+				<me>
+					w(t) = 6 + 5\ U(t-1) - 4\ U(t-3)
+				</me>.
 			</p>
 
 			<solution><title> Sketch <m>w(t)</m> </title>
@@ -554,7 +854,9 @@
 									<p>How about this for formatting the analysis?</p>
 								</aside>
 								Therefore, when <m>t \lt 1</m> (red), we have
-								<me>w(t) = 6 + 5\ U(t-1) - 4\ U(t-3) = -3 + 5\cdot 0 - 4\cdot 0 = 6.</me>
+								<me>
+									w(t) = 6 + 5\ U(t-1) - 4\ U(t-3) = -3 + 5\cdot 0 - 4\cdot 0 = 6
+								</me>.
 							</p>
 						</li>
 					
@@ -590,13 +892,14 @@
 			<solution><title> Write <m>w(t)</m> as a piecewise function. </title>
 				<p>
 					The piecewise defined function representation of <m>w(t)</m> is
-					<me>w(t) = \left\{
+					<me>
+						w(t) = \left\{
 						\begin{array}{ll}
 							6,	&amp; t \lt 1,\\
 							11,	&amp; 1\le t \lt 2,\\
 							7,	&amp; t \ge 2.
 						\end{array} \right.
-					</me>
+					</me>.
 				</p>
 			</solution>
 		</example>
@@ -612,7 +915,9 @@
 		<example><title> Complete the following for the function <m>z(t)</m> </title>
 		
 			<p>
-				<me>z(t) = 7 - 7\ U(t-2) + t^2\ U(t-4)</me>.
+				<me>
+					z(t) = 7 - 7\ U(t-2) + t^2\ U(t-4)
+				</me>.
 			</p>
 
 			<solution><title> Evaluate <m>z(1)</m> </title>
@@ -644,11 +949,8 @@
 
 			<solution><title> Sketch <m>z(t)</m> </title>
 				<p>
-					We can begin by identifying <m>t</m>-values where the function changes behavior.  We
-					know that <m>U(t-2)</m> changes behavior at <m>t = 2</m> and <m>U(t-4)</m> changes behavior at <m>t = 4,</m>
-					so <m>z(t)</m> will change behavior at both <m>t = 2</m> and <m>t = 4.</m>  These <m>t</m>-values break the
-					<m>t</m>-number line into three regions:  (1)  <m>t \lt 2</m>, (2) <m>2 \lt t \lt 4,</m> and (3) <m>t \gt 4.</m> (INSERT A SMALL
-					PICTURE OF A NUMBER LINE IN THE MARGIN HERE?)
+					We can begin by identifying <m>t</m>-values where the function changes behavior.  We know that <m>U(t-2)</m> changes behavior at <m>t = 2</m> and <m>U(t-4)</m> changes behavior at <m>t = 4,</m>
+					so <m>z(t)</m> will change behavior at both <m>t = 2</m> and <m>t = 4.</m>  These <m>t</m>-values break the <m>t</m>-number line into three regions:  (1)  <m>t \lt 2</m>, (2) <m>2 \lt t \lt 4,</m> and (3) <m>t \gt 4.</m> (INSERT A SMALL PICTURE OF A NUMBER LINE IN THE MARGIN HERE?)
 				</p>
 
 				<ul>
@@ -697,7 +999,7 @@
 							0,	\amp 2\le t \lt 4,\\
 							t^2,\amp t \ge 4.
 						\end{array} \right.
-					</me>
+					</me>.
 				</p>
 			</solution>
 			
@@ -723,17 +1025,14 @@
 			<p/>
 			<solution>
 				<p>
-					We first identify where the function will change behavior.  In this case, it will change behavior
-					only at <m>t = \pi.</m>  We can then think about the functions behavior for <m>t \lt \pi</m> and for <m>t \ge \pi.</m>  Notice
-					that when <m>t \lt \pi,</m>  <m>U(t-\pi) = 0,</m> and therefore <m>s(t) = \sin t.</m>  When <m>t \ge \pi,</m> <m>U(t-\pi) = 1,</m> and then
-					we have <m>s(t)= \sin t + (-\sin t +4 - t) \cdot 1 = 4 - t.</m>  This means we could write <m>s(t)</m> as the following piecewise
-					defined function, and sketch it .
-					<md>s(t) = \left\{
+					We first identify where the function will change behavior.  In this case, it will change behavior only at <m>t = \pi.</m>  We can then think about the functions behavior for <m>t \lt \pi</m> and for <m>t \ge \pi.</m>  Notice that when <m>t \lt \pi,</m>  <m>U(t-\pi) = 0,</m> and therefore <m>s(t) = \sin t.</m>  When <m>t \ge \pi,</m> <m>U(t-\pi) = 1,</m> and then we have <m>s(t)= \sin t + (-\sin t +4 - t) \cdot 1 = 4 - t.</m>  This means we could write <m>s(t)</m> as the following piecewise defined function, and sketch it .
+					<me>
+						s(t) = \left\{
 						\begin{array}{ll}
 							\sin t,	\amp t \lt \pi,\\
 							4 - t,	\amp t \ge \pi.
 						\end{array} \right.
-					</md>
+					</me>
 				</p>
 
 				<p>
@@ -765,12 +1064,13 @@
 
 					</ul>
 
-					<md>s(t) = \left\{
+					<me>
+						s(t) = \left\{
 						\begin{array}{ll}
 							\sin t,	\amp t \lt \pi,\\
 							4 - t,	\amp t \ge \pi.
 						\end{array} \right.
-					</md>
+					</me>
 				</p>
 
 				<p>
@@ -792,7 +1092,7 @@
 						e^t,	\amp t \lt 1,\\
 						t^3	\amp t \ge 1,
 					\end{array} \right.
-				</me>
+				</me>.
 				and then write the function in terms of unit step functions.
 			</p>
 
@@ -804,12 +1104,16 @@
 			<solution>
 				<p>
 					The first thing we want to take note of is for what <m>t</m>-values the function changes behavior. This function changes behavior at <m>t = 1,</m> and we will use a unit step function to help us capture that change in behavior, so we need a unit step function that has a discontinuity at <m>t = 1.</m> That is, we know we need at <m>U(t-1).</m> Thus, the form of our function is
-					<me> f(t) = <fillin>{50}</fillin> + <fillin>{50}</fillin>\cdot U(t-1). </me>
+					<me>
+						f(t) = <fillin>{50}</fillin> + <fillin>{50}</fillin>\cdot U(t-1)
+					</me>.
 				</p>
 
 				<p>
 					Now we need only determine what goes in the blanks. When <m>t \lt 1,</m> the unit step function <m>U(t-1)</m> will have a value of zero. We also know that when <m>t \lt 1,</m> <m>f(t) = e^t.</m> Therefore the first blank must be <m>e^t.</m> That is,
-					<me> f(t) = e^t + <fillin>{50}</fillin>\cdot U(t-1). </me>
+					<me>
+						f(t) = e^t + <fillin>{50}</fillin>\cdot U(t-1)
+					</me>.
 				</p>
 
 				<p>
@@ -822,7 +1126,9 @@
 
 				<p>
 					In order to make the equation true, it must be that the function that goes in the line is <m>-e^t + t^3,</m> so that we have
-					<me> f(t) = e^t + (-e^t + t^3)\cdot U(t-1). </me>
+					<me>
+						f(t) = e^t + (-e^t + t^3)\cdot U(t-1)
+					</me>.
 				</p>
 
 				<p>
@@ -842,7 +1148,7 @@
 						t - 2,	\amp 3 \le t \lt 5,\\
 						7,	\amp t \ge 5
 					\end{array} \right.
-				</me>
+				</me>.
 				terms of unit step functions.
 			</p>
 
@@ -850,12 +1156,16 @@
 			<solution>
 				<p>
 					We notice that the function changes behavior at <m>t = 3</m> and <m>t = 5.</m> That means that the form of the function is
-					<me> h(t) = <fillin>{50}</fillin> + <fillin>{50}</fillin>\cdot U(t-3) + <fillin>{50}</fillin>\cdot U(t - 5). </me>
+					<me>
+						h(t) = <fillin>{50}</fillin> + <fillin>{50}</fillin>\cdot U(t-3) + <fillin>{50}</fillin>\cdot U(t - 5)
+					</me>.
 				</p>
 
 				<p>
 					Based on the previous example, we see that the left-most piece of the piecewise defined function fills in the first blank, as below.
-					<me> h(t) = 4 + <fillin>{50}</fillin>\cdot U(t-3) + <fillin>{50}</fillin>\cdot U(t - 5) </me>
+					<me>
+						h(t) = 4 + <fillin>{50}</fillin>\cdot U(t-3) + <fillin>{50}</fillin>\cdot U(t - 5)
+					</me>
 				</p>
 
 				<p>
@@ -886,8 +1196,7 @@
 		<aside><p>Swap sections 4.8 and 4.9</p></aside>
 
 		<p>
-			We are now able to rewrite piecewise defined functions in terms of unit step functions. We now need to take Laplace transforms of piecewise defined functions, and then we will be
-			ready to solve DEs involving piecewise defined functions.
+			We are now able to rewrite piecewise defined functions in terms of unit step functions. We now need to take Laplace transforms of piecewise defined functions, and then we will be ready to solve DEs involving piecewise defined functions.
 		</p>
 
 		<example xml:id="ex_g_as_u">
@@ -900,12 +1209,14 @@
 						6,	\amp 2 \le t \lt 5,\\
 						-4,	\amp t \ge 5
 					\end{array} \right.
-				</me>
+				</me>.
 
 				<ol>
 					<li>
 						Write <m>g(t)</m> in terms of unit step functions.
-						<me> g(t) = 6\ U(t-2) - 10\ U(t-5). </me>
+						<me>
+							g(t) = 6\ U(t-2) - 10\ U(t-5)
+						</me>.
 					</li>
 					<li>
 						Find the Laplace transform of <m>g(t)</m> using the definition of the Laplace transform.
@@ -962,9 +1273,13 @@
 						</li>
 						<li>
 							If we put together the results from the last two questions, we have
-							<me> \lap{ 6\ U(t-2) - 10\ U(t-5) } = \frac{6e^{-2s}}{s} - \frac{10e^{-5s}}{s}. </me>
+							<me>
+								\lap{ 6\ U(t-2) - 10\ U(t-5) } = \frac{6e^{-2s}}{s} - \frac{10e^{-5s}}{s}
+							</me>.
 							Based on this, we can surmise the following property for Laplace transforms:
-							<me> \lap{ U(t-a) } = \frac{e^{-as}}{s}. </me>
+							<me>
+								\lap{ U(t-a) } = \frac{e^{-as}}{s}
+							</me>.
 						</li>
 					</ol>
 				</p>
@@ -1027,7 +1342,9 @@
 		<example xml:id="ex_lt_of_pw_func">
 			<p>
 				Find the Laplace transform of the function
-				<me> q(t) = 3\ U(t-7) + t^2 U(t-4) </me>
+				<me>
+					q(t) = 3\ U(t-7) + t^2 U(t-4)
+				</me>
 			<p/>
 			
 			</p>
@@ -1104,7 +1421,9 @@
 		<example xml:id="ex_ilt_of_exp_over_s_power">
 			<p>
 				Find the inverse Laplace transform of
-				<me> X(s) = \frac{e^{-2s}}{s^3}. </me>
+				<me>
+					X(s) = \frac{e^{-2s}}{s^3}
+				</me>.
 			<p/>
 			
 			</p>
@@ -1150,7 +1469,9 @@
 		<example xml:id="ex_ilt_of_exp_over_sum_of_sqrs">
 			<p>
 				Find the inverse Laplace transform of
-				<me> A(s) = \frac{e^{-3s}}{s^2 + 16}. </me>
+				<me>
+					A(s) = \frac{e^{-3s}}{s^2 + 16}
+				</me>.
 			<p/>
 			
 			</p>
@@ -1197,7 +1518,9 @@
 		<example xml:id="ex_ilt_of_s_exp_over_quadratic">
 			<p>
 				Find the inverse LT of
-				<me> Y(s) = \frac{se^{-7s}}{s^2 + 4s + 5} </me>
+				<me>
+					Y(s) = \frac{se^{-7s}}{s^2 + 4s + 5}
+				</me>
 			<p/>
 			
 			</p>
@@ -1249,7 +1572,9 @@
 		<example xml:id="ex_solve_ivp_w_pw_func">
 			<p>
 				Solve the following initial value problem.
-				<me> i''(t) + 4i(t) = g(t),  i(0) = 0,  i'(0) = 0, </me>
+				<me>
+					i''(t) + 4i(t) = g(t),  i(0) = 0,  i'(0) = 0,
+				</me>
 				where
 				<me>
 					g(t) = \left\{
@@ -1258,7 +1583,7 @@
 						-1,	\amp 1 \le t \lt 2,\\
 						0,	\amp t \ge 2
 					\end{array} \right.
-				</me>
+				</me>.
 			</p>
 
 			<p/>
@@ -1270,13 +1595,17 @@
 
 				<p>
 					In order to take the Laplace transform of the DE, we first need to rewrite <m>g(t)</m> in terms of unit step functions. (If you need to review this process, refer back to section NAME/NUMBER.)
-					<me> g(t) = 1 - 2\ U(t-1) + U(t-2). </me>
+					<me>
+						g(t) = 1 - 2\ U(t-1) + U(t-2)
+					</me>.
 					
 				</p>
 
 				<p>
 					Thus, the DE can be written
-					<me> i''(t) + 4i(t) = 1 - 2\ U(t-1) + U(t-2). </me>
+					<me>
+						i''(t) + 4i(t) = 1 - 2\ U(t-1) + U(t-2)
+					</me>.
 				</p>
 
 				<p>
@@ -1326,7 +1655,9 @@
 
 				<p>
 					Therefore we have
-					<me> F(s) = \frac{\frac{1}{4}}{s} - \frac{\frac{1}{4}s}{s^2 + 4}. </me>
+					<me>
+						F(s) = \frac{\frac{1}{4}}{s} - \frac{\frac{1}{4}s}{s^2 + 4}
+					</me>.
 					
 				</p>
 
@@ -1344,7 +1675,9 @@
 
 				<p>
 					Now we are prepared to return to the actual question at hand.  We return to our equation for <m>I(s):</m>
-					<me>I(s)	= F(s) - 2e^{-s}F(s) + e^{-2s}F(s).</me>
+					<me>
+						I(s)	= F(s) - 2e^{-s}F(s) + e^{-2s}F(s)
+					</me>.
 				</p>
 
 				<p>
