@@ -1,12 +1,317 @@
+<!--
+Section: Piecewise Forcing Functions
+====================================
+
+Introduction
+============
+	* We have looked at solving linear differential equations with constant coefficients when the forcing function is some combination of polynomial, exponential, sine, or cosine functions.
+	* We assumed that the forcing function remained the same for any value of the independent variable.
+	* Now, we want to consider the case when the forcing function can switch from one function to another function at some point. For example, we might have a forcing function that is initially <m>t^2</m>, then at some time later it switches to <m>\sin(t)</m>.
+	* This behavior can be described using a piecewise defined function and in this section we will see how the Laplace transform can be used to solve linear differential equations with piecewise defined forcing functions.
+	* Before we can solve such equations, we first need to learn how to rewrite piecewise defined functions in terms of functions that the Laplace transform can easily handle.
+	* These functions are called <em>unit step functions</em>.
+
+Topics
+======
+	* Piecewise Functions
+	* Unit-Step Functions
+	* Writing Piecewise Functions in Terms of Unit-Step Functions
+	* Laplace Transforms of Unit-Step Functions
+	* Laplace Transforms of Piecewise Functions
+	* Solving Linear Differential Equations with Piecewise Forcing Functions
+  -->
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title>
 
 	<introduction>
 
 		<p>
-			Hello
+			Needs to be written.
 		</p>
 		
 	</introduction>
+
+<subsection><title>Piecewise Functions and Motivation</title>
+
+	<p>
+		Recall that a <em>forcing function</em> is the expression on the right-hand side of a differential equation—it's what drives or “forces” the system to behave in a certain way. So far, we've looked at smooth and continuous forcing functions like polynomials, exponentials, and trigonometric functions. These always start at <m>t = 0</m> and continue without interruption.
+	</p>
+
+	<me>
+		y'' + 2y' + 3y = t + \sin(t)
+	</me>
+
+	<p>
+		But what if the forcing function changes depending on the value of <m>t</m>? Suppose, for instance, that we want to solve the following differential equation:
+	</p>
+
+	<sidebyside widths="45% 5% 50%">
+		<p>
+			Use the <strong>top slider</strong> to adjust the value of <m>t</m>. The red point traces the value of the function at that moment in time.
+			Use the <strong>number box</strong> to control when the function switches from <m>f(t) = t</m> to <m>f(t) = \sin(t)</m>.
+			The active region is highlighted in bold.
+		</p>
+		<p/>
+		<figure xml:id="figure-piecewise-single-v2">
+			<caption>Visualizing a Piecewise Forcing Function</caption>
+		
+			<interactive xml:id="interactive-piecewise-single-v2"
+				platform="jsxgraph"
+				aspect="1:1"
+				source="code/piecewise-interactive/piecewise-jsxgraph-v2.js">
+				<sidebyside width="100%" margins="0%">
+					<slate xml:id="box" surface="jsxboard" aspect="1:1"/>
+				</sidebyside>
+				<instructions>
+					<p>
+						Use the <strong>top slider</strong> to adjust the value of <m>t</m>. The red point traces the value of the function at that moment in time.
+						Use the <strong>number box</strong> to control when the function switches from <m>f(t) = t</m> to <m>f(t) = \sin(t)</m>.
+						The active region is highlighted in bold.
+					</p>
+				</instructions>
+			</interactive>
+		</figure>
+	</sidebyside>
+
+	<me>
+		y'' + 2y' + 3y = 
+		\begin{cases}
+			t, 			\amp 0 \le t &lt; 2 \\
+			\sin(t), 	\amp t \ge 2
+		\end{cases}
+	</me>
+
+	<p>
+		<sidebyside widths="48% 4% 44% 4%" valign="top">
+			<p>
+				That is, for the first two seconds the forcing function is a linear ramp, <m>f(t) = t</m>, then it switches to <m>\sin(t)</m> for all time after that. We could write this as a piecewise function:
+				<me>
+					f(t) = 
+					\begin{cases}
+						t, \amp 0 \le t &lt; 2 \\
+						\sin(t), \amp t \ge 2
+					\end{cases}
+				</me>
+			</p>
+			<p/>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[domain=-2:5, samples=200, scale=0.8]
+
+							% === Piecewise Function with 2 Parts ===
+							
+							% === figure/domain/tick bounds ===
+							\def\tmin{-1.2}	\def\tmax{4.6}
+							\def\ymin{-1.3}	\def\ymax{3}
+							\def\tI{0}		\def\tF{4.6}
+							\def\ttickI{-1}	\def\ttickF{4}
+							\def\ytickI{-1}	\def\ytickF{2}
+						
+							% === Transistions ===
+							\def\c{2}
+						
+							% === Function definitions/colors ===
+							\newcommand{\f}[1]{#1}	\def\ftex{t}	\def\fColor{blue}			\def\fFill{blue!15}
+							\newcommand{\g}[1]{sin(#1 r)}	\def\gtex{\sin t}		\def\gColor{green!60!black}	\def\gFill{green!15}
+
+							% === Evaluate endpoint values ===
+							\def\fc{\f{\c}}		\def\gc{\g{\c}}
+						
+							% === Background regions ===
+							\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+							\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+						
+							% === Axes ===
+							\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[below]	{$t$};
+							\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[left]	{};
+
+							% === Tick marks and labels ===
+							\foreach \t in {\ttickI,...,\ttickF} {
+								\draw[gray!70]	(\t,0.1) -- (\t,-0.1);					% t ticks
+								\node[below, font=\scriptsize] at	(\t,-0.15) {\t};	% t labels	
+							}
+							\foreach \y in {\ytickI,...,\ytickF} {
+								\draw[gray!70]	(0.1,\y) -- (-0.1,\y);					% y ticks
+								\node[left, font=\scriptsize] at	(-0.15,\y) {\y};	% y labels
+							}
+						
+							% === Function plots ===
+							\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+							\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]	(\t, {\g{\t}});
+
+							% === Endpoint dots ===
+							\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
+							\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
+
+							% === Region Labels ===
+							\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$0 \le t \lt \c$};
+							\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
+
+							\node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$f(t)=\ftex$};
+							\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$f(t)=\gtex$};
+						
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
+	</p>
+
+	<p>
+		This means the system is first forced by a ramp, <m>f(t) = t</m>, then abruptly switches to a sine wave, <m>f(t) = \sin(t)</m>, starting at <m>t = 2</m>.
+	</p>
+
+	<p>
+		This function is perfectly well-defined—but it's not so easy to plug into a Laplace transform. Why? Because the definition changes halfway through. The standard Laplace table doesn't cover functions that "switch" like this.
+	</p>
+
+	<p>
+		<sidebyside widths="48% 4% 44% 4%" valign="top">
+			<p>
+				We can write the right-hand side as a piecewise-defined function:
+				<me>
+					f(t) = 
+					\begin{cases}
+						t, \amp 0 \le t &lt; 2 \\
+						\sin(t), \amp t \ge 2
+					\end{cases}
+				</me>
+				This type of function is perfectly valid, but it doesn't play nicely with the Laplace transform—at least, not in its current form. Our standard Laplace table can't handle a function that changes its definition halfway through.
+			</p>
+			<p/>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[domain=-2:5, samples=200, scale=0.8]
+
+							% === Piecewise Function with 2 Parts ===
+							
+							% === figure/domain/tick bounds ===
+							\def\tmin{-1.2}	\def\tmax{4.6}
+							\def\ymin{-1.3}	\def\ymax{3}
+							\def\tI{0}		\def\tF{4.6}
+							\def\ttickI{-1}	\def\ttickF{4}
+							\def\ytickI{-1}	\def\ytickF{2}
+						
+							% === Transistions ===
+							\def\c{2}
+						
+							% === Function definitions/colors ===
+							\newcommand{\f}[1]{#1}	\def\ftex{t}	\def\fColor{blue}			\def\fFill{blue!15}
+							\newcommand{\g}[1]{sin(#1 r)}	\def\gtex{\sin t}		\def\gColor{green!60!black}	\def\gFill{green!15}
+
+							% === Evaluate endpoint values ===
+							\def\fc{\f{\c}}		\def\gc{\g{\c}}
+						
+							% === Background regions ===
+							\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+							\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+						
+							% === Axes ===
+							\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[below]	{$t$};
+							\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[left]	{};
+
+							% === Tick marks and labels ===
+							\foreach \t in {\ttickI,...,\ttickF} {
+								\draw[gray!70]	(\t,0.1) -- (\t,-0.1);					% t ticks
+								\node[below, font=\scriptsize] at	(\t,-0.15) {\t};	% t labels	
+							}
+							\foreach \y in {\ytickI,...,\ytickF} {
+								\draw[gray!70]	(0.1,\y) -- (-0.1,\y);					% y ticks
+								\node[left, font=\scriptsize] at	(-0.15,\y) {\y};	% y labels
+							}
+						
+							% === Function plots ===
+							\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+							\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]	(\t, {\g{\t}});
+
+							% === Endpoint dots ===
+							\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
+							\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
+
+							% === Region Labels ===
+							\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$0 \le t \lt \c$};
+							\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
+
+							\node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$f(t)=\ftex$};
+							\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$f(t)=\gtex$};
+						
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
+	</p>
+
+	<p>
+		So how do we apply the Laplace transform to a piecewise-defined function? The answer is to rewrite it using building blocks that <m>\laplacesym</m> can understand. Specifically, we'll use a special function that acts like an on-off switch. It's called the <em>unit step function</em>, and it's the key to unlocking piecewise analysis.
+	</p>
+
+	<p>
+		So how do we handle functions like this in the Laplace world? The trick is to rewrite them using building blocks that the Laplace transform <m>\laplacesym</m> can understand. Specifically, we'll introduce a special kind of function that acts like a light switch—off until a certain time, and on forever after. It's called the <em>unit step function</em>, and it's the key to handling piecewise-defined forcing terms.
+	</p>
+
+	<exercise label="chkpt-piecewise-form-1"><title>Spot the Piecewise Function</title>
+		<statement>
+			<p>
+				Click on the expression that defines a piecewise function.
+			</p>
+		</statement>
+		<areas>
+			<p>
+				<sidebyside>
+					<p><area correct="no"><m>f(t) = t + \sin(t)</m></area></p>
+					<p><area correct="yes"><m>f(t) = \begin{cases} t, \amp 0 \le t &lt; 2 \\ \sin(t), \amp t \ge 2 \end{cases}</m></area></p>
+				</sidebyside>
+			</p>
+		</areas>
+	</exercise>
+
+	<exercise label="chkpt-piecewise-form-2"><title>Why Can't We Use the Table?</title>
+		<statement>
+			<p>
+				Why can't we apply the standard Laplace table directly to piecewise-defined forcing functions?
+			</p>
+		</statement>
+		<choices>
+			<choice>
+				<statement>The Laplace transform only works for polynomials.</statement>
+				<feedback><p>No, we can handle polynomials. That's not the issue.</p></feedback>
+			</choice>
+			<choice correct="yes">
+				<statement>The Laplace table doesn't cover functions that change definition at different times.</statement>
+				<feedback><p>Correct! A piecewise function needs to be rewritten into a form the table understands.</p></feedback>
+			</choice>
+			<choice>
+				<statement>Piecewise functions have no Laplace transform.</statement>
+				<feedback><p>Incorrect. They do! But we must express them differently first.</p></feedback>
+			</choice>
+		</choices>
+	</exercise>
+
+	<exercise label="chkpt-piecewise-form-3"><title>Match Function to Description</title>
+		<statement>
+			<p>
+				Match each function to the best description of its behavior.
+			</p>
+		</statement>
+		<matches>
+			<match>
+				<premise><m>f(t) = t + \sin(t)</m></premise>
+				<response>Continuous ramp plus oscillation</response>
+			</match>
+			<match>
+				<premise><m>f(t) = \begin{cases} t, \amp t &lt; 2 \\ \sin(t), \amp t \ge 2 \end{cases}</m></premise>
+				<response>Switches from ramp to sine at <m>t = 2</m></response>
+			</match>
+		</matches>
+	</exercise>
+
+</subsection>
+
 
 	<subsection><title> Piecewise Functions </title>
 
@@ -75,21 +380,21 @@
 				<image width="100%">
 					<latex-image>
 						\begin{tikzpicture}[domain=-3:3]
-							\def\a{-2.5}
-							\def\b{2.5}
+							\def\tmin{-2.5}
+							\def\tmax{2.5}
 							\def\c{0}
 
 							% Draw the axes
-							\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right] {$t$};
+							\draw[thick, -&gt;] (\tmin, 0) -- (\tmax, 0) node[right] {$t$};
 							\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
 			
 							% Draw the grid
-							\draw[very thin,color=gray] (\a,-0.5) grid (\b,1.5);
+							\draw[very thin,color=gray] (\tmin,-0.5) grid (\tmax,1.5);
 			
 							% Unit step function
-							\draw[very thick,blue] (\a,0) -- (\c,0);
+							\draw[very thick,blue] (\tmin,0) -- (\c,0);
 							\draw[dashed, blue] (\c,0) -- (\c,1);
-							\draw[very thick,blue] (\c,1) -- (\b,1) node[above] {$U(t)$};
+							\draw[very thick,blue] (\c,1) -- (\tmax,1) node[above] {$U(t)$};
 							
 							% Open circle at the step
 							\draw[fill=white] (\c,0) circle (0.08);
@@ -107,127 +412,73 @@
 			<sidebyside width="60%" margins="auto" valign="middle">
 				<image width="100%">
 					<latex-image>
-
 						\begin{tikzpicture}[domain=-1:6, samples=200, scale=0.8]
 
-						% === x y Bounds ===
-						\def\a{-1}
-						\def\b{6}
-						\def\ya{-1}
-						\def\yb{3}
-					
-						% === Transistions ===
-						\def\tA{1}	\def\tB{4}
-					
-						% === Function definitions and colors ===
-						\def\fA{(\x)^2}	\def\fAColor{blue}				\def\fAFill{blue!15}
-						\def\fB{-\x + 4}		\def\fBColor{green!60!black}	\def\fBFill{green!15}
-						\def\fC{-1}				\def\fCColor{red!70!black}		\def\fCFill{red!15}
+							% === x y Bounds ===
+							\def\tmin{-1}
+							\def\tmax{6}
+							\def\ymin{-1}
+							\def\ymax{3}
+						
+							% === Transistions ===
+							\def\t1{1}	\def\t2{4}
+						
+							% === Function definitions and colors ===
+							\def\fA{(\x)^2}	\def\fAColor{blue}				\def\fAFill{blue!15}
+							\def\fB{-\x + 4}		\def\fBColor{green!60!black}	\def\fBFill{green!15}
+							\def\fC{-1}				\def\fCColor{red!70!black}		\def\fCFill{red!15}
 
-						% === Evaluate endpoint values ===
-						\pgfmathsetmacro{\fAright}{(\tA)^2}
-						\pgfmathsetmacro{\fBleft}{-\tA + 4}
-						\pgfmathsetmacro{\fBright}{-\tB + 4}
-						\pgfmathsetmacro{\fCleft}{-1}
-					
-						% === Background regions ===
-						\fill[\fAFill] (\a-0.5,\ya-1)	rectangle (\tA,\yb+1);
-						\fill[\fBFill] (\tA,\ya-1)	rectangle (\tB,\yb+1);
-						\fill[\fCFill] (\tB,\ya-1)	rectangle (\b+0.5,\yb+1);
-					
-						% === Axes ===
-						\draw[-&gt;] (\a-0.5,0)		-- (\b+0.3,0)	node[above] {$t$};
-						\draw[-&gt;] (0,\ya-0.4)	-- (0,\yb+0.5)	node[left] {$f(t)$};
+							% === Evaluate endpoint values ===
+							<!-- \pgfmathsetmacro{\fAright}{(\t1)^2} -->
+							<!-- \pgfmathsetmacro{\fBleft}{-\t1 + 4} -->
+							<!-- \pgfmathsetmacro{\fBright}{-\t2 + 4} -->
+							<!-- \pgfmathsetmacro{\fCleft}{-1} -->
+						
+							% === Background regions ===
+							<!-- \fill[\fAFill] (\tmin-0.5,\ymin-1)	rectangle (\t1,\ymax+1); -->
+							<!-- \fill[\fBFill] (\t1,\ymin-1)	rectangle (\t2,\ymax+1); -->
+							<!-- \fill[\fCFill] (\t2,\ymin-1)	rectangle (\tmax+0.5,\ymax+1); -->
+						
+							% === Axes ===
+							\draw[-&gt;] (\tmin-0.5,0)		-- (\tmax+0.3,0)	node[above] {$t$};
+							\draw[-&gt;] (0,\ymin-0.4)	-- (0,\ymax+0.5)	node[left] {$f(t)$};
 
-						% === Tick marks and labels ===
-						\foreach \x in {\a,...,\b} {
-							\draw[gray!70] (\x,0.1) -- (\x,-0.1);  % x ticks
-							\node[below] at (\x,-0.15) {\small \x}; 
-						}
-						\foreach \y in {\ya,...,\yb} {
-							\draw[gray!70] (0.1,\y) -- (-0.1,\y);  % y ticks
-							\node[left] at (-0.15,\y) {\small \y}; 
-						}
-					
-						% === Function plots ===
-						\draw[\fAColor, very thick] plot[domain=\a-0.5:\tA-0.02, variable=\x]	(\x, {\fA});
-						\draw[\fBColor, very thick] plot[domain=\tA:\tB-0.05, variable=\x]		(\x, {\fB});
-						\draw[\fCColor, very thick] plot[domain=\tB:\b+0.5, variable=\x]	(\x, {\fC});
-
-						% === Endpoint dots ===
-						% fA
-						\draw[\fAColor, thick] (\tA,\fAright) circle[radius=2pt];
-					
-						% fB
-						\fill[\fBColor] (\tA,\fBleft) circle[radius=2pt];          
-						\draw[\fBColor, thick] (\tB,\fBright) circle[radius=2pt];  
-					
-						% fC
-						\fill[\fCColor] (\tB,\fCleft) circle[radius=2pt];
-
-						% === Region Labels ===
-						\node[\fAColor, font=\small] at ({(\a-0.5 + \tA)/2}, {\ya - 0.8}) {$t &lt; t_1$};
-						\node[\fBColor, font=\small] at ({(\tA + \tB)/2}, {\ya - 0.8}) {$t_1 &lt; t &lt; t_2$};
-						\node[\fCColor, font=\small] at ({(\tB + \b+0.5)/2}, {\ya - 0.8}) {$t_2 &lt; t$};
-					
-					\end{tikzpicture}
-					</latex-image>
-				</image>
-			</sidebyside>
-		</p>
-
-		<!-- <p>
-			<sidebyside width="90%" margins="auto" valign="middle">
-				<image width="100%">
-					<latex-image>
-						\begin{tikzpicture}[domain=-5:5, samples=200, scale=1.2]
-							% Define breakpoints
-							\def\tA{ -2 }
-							\def\tB{ 1 }
-							\def\tC{ 3 }
-
-							% Define styles
-							\tikzset{
-								region1/.style={fill=blue!5},
-								region2/.style={fill=green!5},
-								region3/.style={fill=orange!5},
-								region4/.style={fill=red!5},
-								
-								f1style/.style={blue, thick},
-								f2style/.style={green!60!black, thick, dashed},
-								f3style/.style={orange!80!black, thick},
-								f4style/.style={red!70!black, thick, dotted},
+							% === Tick marks and labels ===
+							\foreach \x in {\tmin,...,\tmax} {
+								\draw[gray!70] (\x,0.1) -- (\x,-0.1);  % t ticks
+								\node[below] at (\x,-0.15) {\small \x}; 
 							}
+							\foreach \y in {\ymin,...,\ymax} {
+								\draw[gray!70] (0.1,\y) -- (-0.1,\y);  % y ticks
+								\node[left] at (-0.15,\y) {\small \y}; 
+							}
+						
+							% === Function plots ===
+							<!-- \draw[\fAColor, very thick] plot[domain=\tmin-0.5:\t1-0.02, variable=\x]	(\x, {\fA}); -->
+							<!-- \draw[\fBColor, very thick] plot[domain=\t1:\t2-0.05, variable=\x]		(\x, {\fB}); -->
+							<!-- \draw[\fCColor, very thick] plot[domain=\t2:\tmax+0.5, variable=\x]	(\x, {\fC}); -->
 
-							\begin{axis}[
-								axis lines=middle,
-								xmin=-5.5, xmax=5.5,
-								ymin=-4, ymax=4,
-								xlabel={$t$}, ylabel={$f(t)$},
-								xtick=\empty,
-								ytick=\empty,
-								enlargelimits,
-								clip=false,
-							]
+							% === Endpoint dots ===
+							% fA
+							<!-- \draw[\fAColor, thick] (\t1,\fAright) circle[radius=2pt]; -->
+						
+							% fB
+							<!-- \fill[\fBColor] (\t1,\fBleft) circle[radius=2pt];           -->
+							<!-- \draw[\fBColor, thick] (\t2,\fBright) circle[radius=2pt];   -->
+						
+							% fC
+							<!-- \fill[\fCColor] (\t2,\fCleft) circle[radius=2pt]; -->
 
-							% Background shading
-							\addplot [region1, draw=none, domain=-5:\tA] {0};
-							\addplot [region2, draw=none, domain=\tA:\tB] {0};
-							\addplot [region3, draw=none, domain=\tB:\tC] {0};
-							\addplot [region4, draw=none, domain=\tC:5] {0};
-
-							% Function plots
-							\addplot [f1style, domain=-5:\tA] {0};
-							\addplot [f2style, domain=\tA:\tB] {0.5*x^2};
-							\addplot [f3style, domain=\tB:\tC] {-x + 1};
-							\addplot [f4style, domain=\tC:5] {-2};
-
-							\end{axis}
+							% === Region Labels ===
+							<!-- \node[\fAColor, font=\small] at ({(\tmin-0.5 + \t1)/2}, {\ymin - 0.8}) {$t &lt; \t1$}; -->
+							<!-- \node[\fBColor, font=\small] at ({(\t1 + \t2)/2}, {\ymin - 0.8}) {$\t1 &lt; t &lt; \t2$}; -->
+							<!-- \node[\fCColor, font=\small] at ({(\t2 + \tmax+0.5)/2}, {\ymin - 0.8}) {$t &gt; \t2$}; -->
+						
 						\end{tikzpicture}
 					</latex-image>
 				</image>
 			</sidebyside>
-		</p> -->
+		</p>
 		
 		<p>
 			If you'd like more of a review feel free to look at VMI's precalculus text,
@@ -327,21 +578,21 @@
 						<image width="100%">
 							<latex-image>
 								\begin{tikzpicture}[domain=-3:3]
-									\def\a{-2.5}
-									\def\b{2.5}
+									\def\tmin{-2.5}
+									\def\tmax{2.5}
 									\def\c{0}
 
 									% Draw the axes
-									\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right] {$t$};
+									\draw[thick, -&gt;] (\tmin, 0) -- (\tmax, 0) node[right] {$t$};
 									\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
 					
 									% Draw the grid
-									\draw[very thin,color=gray] (\a,-0.5) grid (\b,1.5);
+									\draw[very thin,color=gray] (\tmin,-0.5) grid (\tmax,1.5);
 					
 									% Unit step function
-									\draw[very thick,blue] (\a,0) -- (\c,0);
+									\draw[very thick,blue] (\tmin,0) -- (\c,0);
 									\draw[dashed, blue] (\c,0) -- (\c,1);
-									\draw[very thick,blue] (\c,1) -- (\b,1) node[above] {$U(t)$};
+									\draw[very thick,blue] (\c,1) -- (\tmax,1) node[above] {$U(t)$};
 									
 									% Open circle at the step
 									\draw[fill=white] (\c,0) circle (0.08);
@@ -363,29 +614,29 @@
 				<image width="100%">
 					<latex-image>
 						\begin{tikzpicture}[domain=-4:4]
-							\def\a{-3}
-							\def\b{-2}
+							\def\tmin{-3}
+							\def\tmax{-2}
 							\def\c{1}
 							\def\d{3}
 
 							% Draw the axes
-							\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+							\draw[thick, -&gt;] (\tmin, 0) -- (\d, 0) node[right] {$t$};
 							\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
 			
 							% Draw the grid
-							\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+							\draw[very thin,color=gray] (\tmin,-0.5) grid (\d,1.5);
 			
 							% Unit step function
-							\draw[very thick,blue] (\a,0) -- (\b,0);
-							\draw[dashed, blue] (\b,0) -- (\b,1);
-							\draw[very thick,blue] (\b,1) -- (\d,1);
+							\draw[very thick,blue] (\tmin,0) -- (\tmax,0);
+							\draw[dashed, blue] (\tmax,0) -- (\tmax,1);
+							\draw[very thick,blue] (\tmax,1) -- (\d,1);
 							\draw[blue] (2,1) node[above] {$U(t+2)$};
 							
 							% Open circle at the step
-							\draw[fill=white] (\b,0) circle (0.08) node[below] {$\b$};
+							\draw[fill=white] (\tmax,0) circle (0.08) node[below] {$\tmax$};
 							
 							% Solid dot at the point of the step
-							\filldraw[blue] (\b,1) circle (0.08) node[left] {$1$};
+							\filldraw[blue] (\tmax,1) circle (0.08) node[left] {$1$};
 			
 						\end{tikzpicture}
 					</latex-image>
@@ -394,20 +645,20 @@
 				<image width="100%">
 					<latex-image>
 						\begin{tikzpicture}[domain=-4:4]
-							\def\a{-3}
-							\def\b{-2}
+							\def\tmin{-3}
+							\def\tmax{-2}
 							\def\c{1}
 							\def\d{3}
 
 							% Draw the axes
-							\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+							\draw[thick, -&gt;] (\tmin, 0) -- (\d, 0) node[right] {$t$};
 							\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
 			
 							% Draw the grid
-							\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+							\draw[very thin,color=gray] (\tmin,-0.5) grid (\d,1.5);
 			
 							% Unit step function
-							\draw[very thick,blue] (\a,0) -- (\c,0);
+							\draw[very thick,blue] (\tmin,0) -- (\c,0);
 							\draw[dashed, blue] (\c,0) -- (\c,1);
 							\draw[very thick,blue] (\c,1) -- (\d,1);
 							\draw[blue] (2,1) node[above] {$U(t-1)$};
@@ -425,32 +676,32 @@
 				<image width="100%">
 					<latex-image>
 						\begin{tikzpicture}[domain=-4:4]
-							\def\a{-3}
-							\def\b{-2}
+							\def\tmin{-3}
+							\def\tmax{-2}
 							\def\c{1}
 							\def\d{3}
 
 							% Draw the axes
-							\draw[thick, -&gt;] (\a, 0) -- (\d, 0) node[right] {$t$};
+							\draw[thick, -&gt;] (\tmin, 0) -- (\d, 0) node[right] {$t$};
 							\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
 			
 							% Draw the grid
-							\draw[very thin,color=gray] (\a,-0.5) grid (\d,1.5);
+							\draw[very thin,color=gray] (\tmin,-0.5) grid (\d,1.5);
 			
 							% Unit step function
-							\draw[very thick,blue] (\a,0) -- (\b,0);
-							\draw[dashed, blue] (\b,0) -- (\b,1);
-							\draw[very thick,blue] (\b,1) -- (\c,1);
+							\draw[very thick,blue] (\tmin,0) -- (\tmax,0);
+							\draw[dashed, blue] (\tmax,0) -- (\tmax,1);
+							\draw[very thick,blue] (\tmax,1) -- (\c,1);
 							\draw[dashed, blue] (\c,1) -- (\c,0);
 							\draw[very thick,blue] (\c,0) -- (\d,0);
 							\draw[blue] (-0.5,1) node[above] {$U(t+2)-U(t-1)$};
 							
 							% Open circle at the step
-							\draw[fill=white] (\b,0) circle (0.08) node[below] {$\b$};
+							\draw[fill=white] (\tmax,0) circle (0.08) node[below] {$\tmax$};
 							\draw[fill=white] (\c,1) circle (0.08);
 							
 							% Solid dot at the point of the step
-							\filldraw[blue] (\b,1) circle (0.08) node[left] {$1$};
+							\filldraw[blue] (\tmax,1) circle (0.08) node[left] {$1$};
 							\filldraw[blue] (\c,0) circle (0.08) node[below] {$\c$};
 						\end{tikzpicture}
 					</latex-image>
@@ -769,12 +1020,12 @@
 							<latex-image>
 								\begin{tikzpicture}
 
-									\def\a{-1}
+									\def\tmin{-1}
 									\def\t1{2}
-									\def\b{5}
+									\def\tmax{5}
 
 									% Axis, Ticks and labels
-									\draw[-&gt;] (\a, 0) -- (\b, 0) node[anchor=north] {$t$};
+									\draw[-&gt;] (\tmin, 0) -- (\tmax, 0) node[anchor=north] {$t$};
 									\draw[-&gt;] (0, -2.6) -- (0, 1.6) node[anchor=east] {$g(t)$};
 									\node at (-0.2, 1) {$1$};
 									\draw[shift={(0,1)},color=black] (2pt,0pt) -- (-2pt,0pt);
@@ -784,9 +1035,9 @@
 									\draw[shift={(\t1,0)},color=black] (0pt,2pt) -- (0pt,-2pt);
 									
 									% Function plot
-									\draw[thick, blue] (\a, 0) -- (\t1, 0);
-									\draw[thick, blue] (\t1, -2) -- (\b, -2);
-									\draw[thick, black!60!green, opacity=0.3] (\t1, 1) -- (\b, 1);
+									\draw[thick, blue] (\tmin, 0) -- (\t1, 0);
+									\draw[thick, blue] (\t1, -2) -- (\tmax, -2);
+									\draw[thick, black!60!green, opacity=0.3] (\t1, 1) -- (\tmax, 1);
 
 									% Dots and labels
 									\filldraw[black!60!green, opacity=0.8] (\t1, 1) circle (2pt) node[anchor=south west] {$U(t-2)$};
@@ -1117,7 +1368,7 @@
 				</p>
 
 				<p>
-					When <m>t>1,</m> <m>U(t-1) = 1,</m> and <m>f(t) = t^3.</m> Thus we have
+					When <m>t&gt;1,</m> <m>U(t-1) = 1,</m> and <m>f(t) = t^3.</m> Thus we have
 					<md>
 						<mrow>t \gt 1:	f(t)	\amp = e^t + <fillin>{50}</fillin>\cdot 1</mrow>
 						<mrow>t^3	\amp = e^t + <fillin>{50}</fillin>\cdot 1</mrow>
