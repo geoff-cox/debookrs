@@ -19,7 +19,20 @@ Topics
 	* Laplace Transforms of Unit-Step Functions
 	* Laplace Transforms of Piecewise Functions
 	* Solving Linear Differential Equations with Piecewise Forcing Functions
-	-->
+
+Subsection: Unit Step Functions
+===============================
+	Subsubsection: Definition
+	Subsubsection: Shifting the Unit Step Function Left or Right
+		* Unit step function as the function switch:
+				off: (-infty, c)	on: (c, +infty)
+	Subsubsection: Reversing the Direction of the Unit Step Function
+		* Unit step function as the function switch:
+				on: (-infty, c)		off: (c, +infty)
+	Subsubsection: Unit Step Function on an Interval
+		* Unit step function as the function switch:
+				off: (-infty, c) 	on: (c, d)	off: (d, +infty)
+-->
 
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title>
 
@@ -55,30 +68,35 @@ Topics
 
 						<tabular>
 							<col/>
+							<col/>
 							<col halign = "right"/>
 							<col/>
 							<col/>
 							<row>
 								<cell>(a)</cell>
-								<cell><m>U(5)</m></cell>
+								<cell><m>t=3</m></cell>
+								<cell><m>u(3)</m></cell>
 								<cell><m>=</m></cell>
 								<cell><fillin mode="number" answer="1" /></cell>
 							</row>
 							<row>
 								<cell>(b)</cell>
-								<cell><m>U(-9.7)</m></cell>
+								<cell><m>t=-3</m></cell>
+								<cell><m>u(-3)</m></cell>
 								<cell><m>=</m></cell>
 								<cell><fillin mode="number" answer="0" /></cell>
 							</row>
 							<row>
 								<cell>(c)</cell>
-								<cell><m>U(-0.1)</m></cell>
+								<cell><m>t=4</m></cell>
+								<cell><m>u(4)</m></cell>
 								<cell><m>=</m></cell>
-								<cell><fillin mode="number" answer="0" /></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
 							</row>
 							<row>
 								<cell>(d)</cell>
-								<cell><m>U(0)</m></cell>
+								<cell><m>t=0</m></cell>
+								<cell><m>u(0)</m></cell>
 								<cell><m>=</m></cell>
 								<cell><fillin mode="number" answer="1" /></cell>
 							</row>
@@ -232,55 +250,91 @@ Topics
 			</p>
 
 			<p>
-				In this context, you can think of <m>u(t)</m> as a switch that turns off a function on <m>(-\infty, 0)</m> and turns on the function on <m>[0, \infty)</m>. The interactive figure below lets you explore this idea. In it, you'll find three function labels: one is a parabola, another is <m>u(t)</m>, and the third is their product.
+				In this context, you can think of <m>u(t)</m> as an <q>on/off</q>-switch for the function <m>\frac15 t^2 - 1</m>. You can see this in <xref ref="unit-step-on-off"/> where the function is <q>off</q> in the blue region since it is multiplied by <m>u(t) = 0</m>. In the green region, the function is <q>on</q> since it is multiplied by <m>u(t) = 1</m>. 
 			</p>
-			
-			<sidebyside width="70%" margins="15%">
-				<figure>
-					<caption> Exploring the product: <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
-					<interactive xml:id="unit-step-1" platform="jsxgraph" aspect="10:5" source="code/jsxgraph/unit-step-interactives/unit-step-1.js">
-						<sidebyside width="100%">
-							<stack>
-								<slate xml:id="unit-step-labels" surface="jsxboard" aspect="10:1" />
-								<slate xml:id="unit-step-curves" surface="jsxboard" aspect="5:2" />
-							</stack>
-						</sidebyside>
-						<instructions>
-							<p>
-								You can hover over a function to preview its graph or click on it to toggle its graph on and off. 
-							</p>
 
-							<p>
-								To interact, try the following:
-								<ol>
-									<li>
-										Hover over each function to preview its graph.
-									</li>
-									<li>
-										Select <m>\frac{1}{5}t^2 - 1</m> to see the full parabola, which exists for all values of <m>t</m>.
-									</li>
-									<li>
-										Now, select <m>u(t)</m>. This is our <q>switch</q> that turns on at <m>t = 0</m>.
-									</li>
-									<li>
-										Finally, select the product <m>\left(\frac{1}{5}t^2 - 1\right) \cdot u(t)</m>. This shows the parabola turning on at <m>t = 0</m>.
-									</li>
-								</ol>
-							</p>
-						</instructions>
-						<static>
-							<image source="code/jsxgraph/unit-step-interactives/kinematics.png" width="60%" />
-						</static>
-					</interactive>
-				</figure>
-			</sidebyside>
-			
 			<p>
-				Multiplying a function by <m>u(t)</m> has the effect of erasing everything that came before <m>t = 0</m>. It forces the function to be zero until the unit step turns on. This is a powerful trick: it lets us take any function and "delay" it until a specific moment in time.
+				<sidebyside width="60%" margins="15%">
+					<figure xml:id="unit-step-on-off">
+						<caption> Graph of <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
+			
+									% === Piecewise Function with 2 Parts ===
+
+									% === colors ===
+									\def\offColor{blue}				\def\offFill{\offColor!15}
+									\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+
+									% === figure/domain/tick bounds ===
+									\def\tmin{-3.5}	\def\tmax{3.5}
+									\def\ymin{-1.1}	\def\ymax{1.8}
+									\def\tI{-3.5}	\def\tF{3.5}
+									\def\ttickI{-3}	\def\ttickF{3}
+									\def\ytickI{1}	\def\ytickF{1}
+								
+									% === Transistions ===
+									\def\c{0}
+								
+									% === Function definitions ===
+									\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
+									\newcommand{\uL}[1]{0}				\def\uLtex{0}
+									\newcommand{\uR}[1]{1}				\def\uRtex{1}	
+			
+									% === Evaluate endpoint values ===
+									\def\fc{\f{\c}}		\def\uc{\uL{\c}}
+								
+									% === Background regions ===
+									\fill[\offFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+									\fill[\onFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
+									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+			
+									% === Tick marks and labels ===
+									\foreach \t in {\ttickI,...,\ttickF} {
+										\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
+										\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+									}
+									\foreach \y in {\ytickI,...,\ytickF} {
+										\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
+										\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+									}
+								
+									% === Function plots on [tmin, c] ===
+									\draw[\offColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\uL{\t}});
+									\draw[\offColor!50, thick, dashed] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+									
+									% === Function plots on [c, tmax] ===
+									%\draw[\offColor!50, thick, dashed] plot[domain=\c:\tF, variable=\t]	(\t, {\uR{\t}});
+									\draw[\onColor, very thick] plot[domain=\c:\tF, variable=\t]	(\t, {\f{\t}});
+									
+									% === Points at t=c ===
+									\fill[\onColor]	(\c,{\f{\c}})	circle[radius=2pt];
+									%\fill[\offColor!50]			(\c,{\uR{\c}})	circle[radius=2pt];
+									\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=2pt];
+			
+									% === Region Labels ===
+									%\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt \c$};
+									%\node[\uColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
+			
+									\node[\offColor, font=\scriptsize, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t) = 0$};
+									\node[\onColor, font=\scriptsize, below] at ({(\c + \tF)/2}, {\ymax}) {$u(t) = 1$};
+		
+									\node[\offColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
+									\node[\onColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
+								
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</figure>
+				</sidebyside>
 			</p>
 			
 			<p>
-				In the next section, you'll learn how this technique allows us to rewrite piecewise-defined functions in a form that the Laplace transform can handle.
+				Multiplying a function by <m>u(t)</m> has the effect of zeroing-out everything that came before <m>t = 0</m> and keeping everything after. This powerful trick allows us to <q>delay</q> any function until a specific moment in time.
 			</p>
 			
 			<xi:include href="./c7-exercises/c7-chkpts-4-1-1-unit-step-functions.ptx" />
@@ -290,39 +344,107 @@ Topics
 		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
 
 			<p>
-				<exercise label="prep-matching-shifts"><title>Matching Shifts of <m>\sin(t)</m></title>
+				<exercise label="prep-matching-shifts"><title>Matching Shifts of <m>y=x^2</m></title>
 					<statement>
 						<p>
-						Consider the function <m>\sin(t)</m>. Match each of the following expressions with its correct description of how the graph is shifted.
+							Consider the function <m>y=x^2</m>. Match each of the shifted versions of <m>y=x^2</m> with the correct description of how its graph is affected.
 						</p>
 					</statement>
 					<matches>
 						<match>
-							<premise><m>\sin(t - 1)</m></premise>
-							<response>Shifted to the right by 1</response>
+							<premise><m>y=(x - 1)^2</m></premise>
+							<response>Horizontal shift by 1 (→)</response>
 						</match>
 						<match>
-							<response>Shifted to the left and down by 1</response>
+							<response>Vertical shift by -1 (↓)</response>
 						</match>
 						<match>
-							<premise><m>\sin(t + 1)</m></premise>
-							<response>Shifted to the left by 1</response>
+							<premise><m>y=(x + 1)^2</m></premise>
+							<response>Horizontal shift by -1 (←)</response>
 						</match>
 						<match>
-							<premise><m>\sin(t) + 1</m></premise>
-							<response>Shifted up by 1</response>
+							<premise><m>y=x^2 + 1</m></premise>
+							<response>Vertical shift by 1 (↑)</response>
 						</match>
 						<match>
-							<premise><m>\sin(t - 1) - 1</m></premise>
-							<response>Shifted to the right and down by 1</response>
+							<premise><m>y=(x - 1)^2 + 1</m></premise>
+							<response>Horizontal &amp; vertical shift by 1 (↗)</response>
 						</match>
 					</matches>
+				</exercise>
+
+				<exercise label="prep-shifted-unit-step-outputs"><title> Shifted Unit-Step Function </title>
+					<statement>
+						<p>
+							The unit step function, defined by
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 0\\
+									1,	&amp; t \ge 0
+								\end{array} \right.
+							</me>
+							jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="0" />.
+						</p>
+
+						<p>
+							Now consider a shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
+						</p>
+
+						<tabular>
+							<col/>
+							<col/>
+							<col halign = "right"/>
+							<col/>
+							<col/>
+							<row>
+								<cell>(a)</cell>
+								<cell><m>t=3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(b)</cell>
+								<cell><m>t=-3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(c)</cell>
+								<cell><m>t=4:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(d)</cell>
+								<cell><m>t=0:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+						</tabular>
+
+						<p>
+							So <m>u(t-4)</m> jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="4" />.
+						</p>
+					</statement>
+					<evaluation>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+					</evaluation>
 				</exercise>
 			</p>
 		
 		</reading-questions>
 
-		<subsubsection><title> Shifting the Unit Step Function </title>
+		<subsubsection><title> Shifting the Unit Step Function Left or Right </title>
 			<p>
 				As we saw, the standard unit function <q>turns on</q> a function at <m>t=0</m>, but we would also like the ability to <q>turn on</q> a function at any time <m>t=c</m>. To do this, we can shift the unit step function to the right or left. The unit step function is defined as
 			</p>
@@ -420,104 +542,168 @@ Topics
 				</statement>
 			</definition>
 
-			<!-- <sidebyside width="70%" margins="15%">
+			<sidebyside width="70%" margins="15%">
 				<figure>
 					<caption> Exploring the product: <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
-					<interactive xml:id="unit-step-3" platform="jsxgraph" aspect="1:1" source="code/jsxgraph/unit-step-interactives/unit-step-3.js">
+					<interactive xml:id="unit-step-2"
+						platform="jsxgraph"
+						aspect="5:2"
+						dark-mode-enabled="yes"
+						source="
+							code/jsxgraph/jsx-core/board.js
+							code/jsxgraph/jsx-core/piecewise.js
+							code/jsxgraph/jsx-core/utils.js code/jsxgraph/unit-step-interactives/unit-step-2.js"
+					>
 						<sidebyside width="100%">
 							<stack>
-								<slate xml:id="unit-step-slider-board" surface="jsxboard" aspect="1:1" />
+								<slate xml:id="unit-step-2-plot1" surface="jsxboard" aspect="5:2" />
 							</stack>
 						</sidebyside>
 						<instructions>
-							<p>
-								You can hover over a function to preview its graph or click on it to toggle its graph on and off. 
-							</p>
-
-							<p>
-								To interact, try the following:
-								<ol>
-									<li>
-										Hover over each function to preview its graph.
-									</li>
-									<li>
-										Select <m>\frac{1}{5}t^2 - 1</m> to see the full parabola, which exists for all values of <m>t</m>.
-									</li>
-									<li>
-										Now, select <m>u(t)</m>. This is our <q>switch</q> that turns on at <m>t = 0</m>.
-									</li>
-									<li>
-										Finally, select the product <m>\left(\frac{1}{5}t^2 - 1\right) \cdot u(t)</m>. This shows the parabola turning on at <m>t = 0</m>.
-									</li>
-								</ol>
-							</p>
+							
 						</instructions>
 						<static>
-							<image source="code/jsxgraph/unit-step-interactives/kinematics.png" width="60%" />
-						</static>
-					</interactive>
-				</figure>
-			</sidebyside> -->
-
-			<sidebyside width="70%" margins="15%">
-				<figure>
-					<caption> Exploring the product: <m>\left(\frac15 t^2 - 1\right) u_c(t)</m> </caption>
-					<interactive xml:id="unit-step-2" platform="jsxgraph" aspect="5:2" source="code/jsxgraph/unit-step-interactives/unit-step-2.js">
-						<sidebyside width="100%">
-							<stack>
-								<slate xml:id="unit-step-2-plots" surface="jsxboard" aspect="5:2" />
-							</stack>
-						</sidebyside>
-						<instructions>
-							<p>
-								The point (on the origin) represents the current <m>c</m>-value. You can drag this point along the <m>t</m>-axis to change its value. 
-							</p>
-
-							<p>
-								To interact, try the following:
-								<ol>
-									<li>
-										Hover over each function to preview its graph.
-									</li>
-									<li>
-										Select <m>\frac{1}{5}t^2 - 1</m> to see the full parabola, which exists for all values of <m>t</m>.
-									</li>
-									<li>
-										Now, select <m>u(t)</m>. This is our <q>switch</q> that turns on at <m>t = 0</m>.
-									</li>
-									<li>
-										Finally, select the product <m>\left(\frac{1}{5}t^2 - 1\right) \cdot u(t)</m>. This shows the parabola turning on at <m>t = 0</m>.
-									</li>
-								</ol>
-							</p>
-						</instructions>
-						<static>
-							<image source="code/jsxgraph/unit-step-interactives/kinematics.png" width="60%" />
+							<image source="code/jsxgraph/img-labels/t.png" width="60%" />
 						</static>
 					</interactive>
 				</figure>
 			</sidebyside>
 
-			<sidebyside width="70%" margins="15%">
-			<figure>
-				<caption> Exploring the product: <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
-				<interactive xml:id="unit-step-4" platform="jsxgraph" aspect="5:4" source="code/jsxgraph/unit-step-interactives/board_obj.js code/jsxgraph/unit-step-interactives/piece.js code/jsxgraph/unit-step-interactives/main.js">
-					<sidebyside width="100%">
-						<stack>
-							<slate xml:id="unit-step-4-plot1" surface="jsxboard" aspect="5:2" />
-							<slate xml:id="unit-step-4-plot2" surface="jsxboard" aspect="5:2" />
-						</stack>
-					</sidebyside>
-					<instructions>
-						
-					</instructions>
-					<static>
-						<image source="code/jsxgraph/unit-step-interactives/kinematics.png" width="60%" />
-					</static>
-				</interactive>
-			</figure>
-			</sidebyside>
+		</subsubsection>
 
+		<subsubsection><title> Reversing the Direction of the Unit Step Function </title>
+
+			<p> 
+				In the previous sections, we saw how a shifted unit step function, <m>u_c(t) = u(t-c)</m>, turns a function <em>on</em> at a specific time <m>t=c</m>. However, sometimes we need the opposite behavior: we want a function to be <em>on</em> initially and then turn <em>off</em> at a certain point. This requires reversing the direction of the unit step function.
+			</p>
+
+			<p> 
+				One simple way to accomplish this is by subtracting the unit step function from 1. Define a new function:
+				<me> 1 - u_c(t). </me>
+			</p>
+			
+			<p> 
+				This function behaves exactly opposite to <m>u_c(t)</m>:
+				<ul>
+					<li>
+						<p>
+							When <m>t &lt; c</m>, <m>u_c(t) = 0</m>, so <m>1 - u_c(t) = 1</m>. The function is <em>on</em>.
+						</p>
+					</li>
+					<li>
+						<p>
+							When <m>t \ge c</m>, <m>u_c(t) = 1</m>, so <m>1 - u_c(t) = 0</m>. The function is <em>off</em>.
+						</p>
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				Thus, <m>1 - u_c(t)</m> acts like a **function switch** that is initially on and flips off at <m>t=c</m>. We can use it to control the activity of a function up until a certain cutoff point.
+			</p>
+			
+			<example><title> Turning a Function Off at <m>t = 3</m> </title>
+				<p>
+					<statement>
+						<p>
+							Construct a function that behaves like <m>f(t) = t^2</m> for <m>t \lt 3</m> but becomes zero for <m>t \ge 3</m>.
+						</p>
+					</statement>
+				</p>
+
+				<solution>
+					<p>
+						We multiply <m>f(t) = t^2</m> by <m>1 - u_3(t)</m>:
+						<me>
+							f_{\text{switched}}(t) = t^2 \left( 1 - u_3(t) \right).
+						</me>
+					</p>
+				
+					<p>
+						This product behaves as follows:
+						<ul>
+							<li><p>For <m>t &lt; 3</m>: <m>u_3(t) = 0</m>, so <m>f_{\text{switched}}(t) = t^2</m>.</p></li>
+							<li><p>For <m>t \ge 3</m>: <m>u_3(t) = 1</m>, so <m>f_{\text{switched}}(t) = 0</m>.</p></li>
+						</ul>
+					</p>
+				</solution>
+			</example> 
+			
+			<aside> <title>Summary</title> 
+				<p> 
+					Multiplying a function by <m>u_c(t)</m> turns it **on** at <m>t = c</m>. Multiplying by <m>1 - u_c(t)</m> turns it **off** at <m>t = c</m>.
+				</p>
+			</aside> 
+
+			<p> 
+				With this reversed unit step approach, we can model situations where a function is active initially but then deactivates at a specific time. This flexibility will be essential when building formulas for piecewise functions over different types of intervals.
+			</p>
+		</subsubsection>
+
+		<subsubsection><title>Unit Step Functions on an Interval</title>
+
+			<p>
+				So far, we've seen how a unit step function can turn a function <em>on</em> at a certain time or <em>off</em> at a certain time. But what if we want a function to be active <em>only between two times</em>, say between <m>t = c</m> and <m>t = d</m>?
+			</p>
+			
+			<p>
+				We can achieve this by combining two unit step functions:
+				<me>
+					u_c(t) - u_d(t).
+				</me>
+			</p>
+			
+			<p>
+				This difference acts like a gate that opens at <m>t = c</m> and closes at <m>t = d</m>:
+				<ul>
+				<li><p>For <m>t &lt; c</m>: both <m>u_c(t)</m> and <m>u_d(t)</m> are zero, so <m>u_c(t) - u_d(t) = 0</m>.</p></li>
+				<li><p>For <m>c \le t &lt; d</m>: <m>u_c(t) = 1</m> and <m>u_d(t) = 0</m>, so <m>u_c(t) - u_d(t) = 1</m>.</p></li>
+				<li><p>For <m>t \ge d</m>: both <m>u_c(t)</m> and <m>u_d(t)</m> are one, so <m>u_c(t) - u_d(t) = 0</m>.</p></li>
+				</ul>
+			</p>
+			
+			<p>
+				In other words, <m>u_c(t) - u_d(t)</m> is equal to one precisely on the interval <m>[c, d)</m> and zero everywhere else.
+			</p>
+			
+			<example><title>Activating a Function Only Between <m>t = 1</m> and <m>t = 4</m></title>
+				<p>
+					<statement>
+						<p>
+							Construct a function that behaves like <m>f(t) = t + 2</m> between <m>t = 1</m> and <m>t = 4</m> but is zero outside of this interval.
+						</p>
+					</statement>
+				</p>
+			
+				<solution>
+					<p>
+						We multiply <m>f(t)</m> by the switching function <m>u_1(t) - u_4(t)</m>:
+						<me>
+							f_{\text{interval}}(t) = (t + 2) \left( u_1(t) - u_4(t) \right).
+						</me>
+					</p>
+				
+					<p>
+						This product behaves as follows:
+						<ul>
+							<li><p>For <m>t &lt; 1</m> and <m>t \ge 4</m>, the function is zero.</p></li>
+							<li><p>For <m>1 \le t &lt; 4</m>, the function behaves like <m>t + 2</m>.</p></li>
+						</ul>
+					</p>
+				</solution>
+			</example>
+			
+			<aside>
+				<title>Summary</title>
+				<p>
+					Multiplying by <m>u_c(t) - u_d(t)</m> restricts a function to live <em>only</em> between <m>t = c</m> and <m>t = d</m>.
+				</p>
+			</aside>
+			
+			<p>
+				This gives us complete flexibility: we can now model any single piece of a piecewise function—whether it needs to start at a time, end at a time, or be limited to an interval.
+			</p>
+			
 		</subsubsection>
 
 	</subsection>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Unit Step Demo</title>
+	<!-- JSXGraph core -->
+	<script src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+	<link rel="stylesheet" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+	<style>
+		#unit-step-demo {
+			width: 700px;
+			height: 500px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<h2 style="text-align:center;">Interactive Unit Step Demo</h2>
+	<div id="unit-step-demo"></div>
+
+	<!-- Your JS modules (in correct order) -->
+	<script type="module">
+		import { BoardObj } from './jsx-core/board.js';
+		import { Piece, Piecewise } from './jsx-core/piecewise.js';
+		import { createPiecewise } from './jsx-core/utils.js';
+
+		// Your unit-step-demo.js logic
+		const imgPath = './img-labels/';
+		const boardId = 'unit-step-demo';
+		const xmin = -4, xmax = 4, ymin = -2, ymax = 3;
+
+		const boardObj = new BoardObj({
+			dataPath: imgPath,
+			boardId,
+			boardWindow: [xmin, xmax, ymin, ymax],
+			plotDomain: [xmin, xmax],
+			tAxis: true,
+			yAxis: true,
+			txtLabels: [],
+			imgLabels: [[0.35, xmax - 0.3, -0.7, 45 / 81, 't']],
+		});
+
+		const axisLine = boardObj.board.create('line', [[xmin, 0], [xmax, 0]], { visible: false });
+		const c = boardObj.board.create('glider', [0, 0, axisLine], {
+			size: 4,
+			color: 'black',
+			fillOpacity: 0.2,
+			highlight: false,
+			label: { visible: false },
+		});
+
+		const quad = x => 0.2 * x * x - 1;
+
+		createPiecewise({
+			boardObj,
+			isContinuous: true,
+			funcPieces: [
+				{ func: quad, endpoints: { xLeft: xmin, typeLeft: 'none', xRight: c, typeRight: 'none' }, options: { color: 'blue' }},
+				{ func: quad, endpoints: { xLeft: c, typeLeft: 'none', xRight: xmax, typeRight: 'none' }, options: { color: 'blue' }},
+			],
+			imgToggle: [1.1, -3, 1.5, 596 / 299, 'lp-15thtsqrd-1-rp', boardObj],
+		});
+
+		createPiecewise({
+			boardObj,
+			funcPieces: [
+				{ func: () => 0, endpoints: { xLeft: xmin, typeLeft: 'none', xRight: c, typeRight: 'open' }, options: { color: 'green' }},
+				{ func: () => 1, endpoints: { xLeft: c, typeLeft: 'closed', xRight: xmax, typeRight: 'none' }, options: { color: 'green' }},
+			],
+			imgToggle: [0.55, 2, 1.5, 248 / 125, 'uc', boardObj],
+		});
+	</script>
+</body>
+</html>

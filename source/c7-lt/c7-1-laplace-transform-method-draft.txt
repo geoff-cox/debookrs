@@ -3038,6 +3038,543 @@
 			
 		</introduction>
 
+		<subsection><title> Unit Step Functions </title>
+
+			<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+
+				<p>
+					<exercise label="prep-unit-step-outputs"><title> Unit-Step Output </title>
+						<statement>
+							<p>
+								Consider the function defined by
+								<me>
+									u(t) = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt 0\\
+										1,	&amp; t \ge 0.
+									\end{array} \right.
+								</me>
+							</p>
+
+							<p>
+								Give the output of <m>u(t)</m> for the following values of <m>t</m>.
+							</p>
+
+							<tabular>
+								<col/>
+								<col/>
+								<col halign = "right"/>
+								<col/>
+								<col/>
+								<row>
+									<cell>(a)</cell>
+									<cell><m>t=3</m></cell>
+									<cell><m>u(3)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="1" /></cell>
+								</row>
+								<row>
+									<cell>(b)</cell>
+									<cell><m>t=-3</m></cell>
+									<cell><m>u(-3)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="0" /></cell>
+								</row>
+								<row>
+									<cell>(c)</cell>
+									<cell><m>t=4</m></cell>
+									<cell><m>u(4)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="1" /></cell>
+								</row>
+								<row>
+									<cell>(d)</cell>
+									<cell><m>t=0</m></cell>
+									<cell><m>u(0)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="1" /></cell>
+								</row>
+							</tabular>
+						</statement>
+						<evaluation>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						</evaluation>
+					</exercise>
+				</p>
+			
+			</reading-questions>
+			
+			<subsubsection><title> Definition </title>
+				
+				<p>
+					In the last section, we mentioned that piecewise functions can't be directly handled by the Laplace transform. We also hinted that there was a function that could simulate this <q>on</q> or <q>off</q> behavior of a piecewise function based on the <m>t</m>-values.
+				</p>
+				
+				<p>
+					This is exactly what the <em>unit step function</em> does. Also called the <em>Heaviside function</em>, it acts like a mathematical switch that flips on at a specific value of <m>t</m>. We define it as follows:
+				</p>
+				
+				<definition xml:id="unit-step-function">
+					<statement>
+						<p>
+							The <em> unit step function</em>, <m>u(t)</m>, is defined as
+						</p>
+						<sidebyside widths="5% 25% 10% 45% 15%" valign="middle">
+							<p/>
+							<p>
+								<me>
+									u(t) = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt 0\\
+										1,	&amp; t \ge 0.
+									\end{array} \right.
+								</me>
+							</p>
+							<p/>
+							<p>
+								<image>
+									<latex-image>
+										\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
+					
+											% === Piecewise Function with 2 Parts ===
+											
+											% === figure/domain/tick bounds ===
+											\def\tmin{-3.5}	\def\tmax{3.5}
+											\def\ymin{-1.1}	\def\ymax{1.8}
+											\def\tI{-3.5}	\def\tF{3.5}
+											\def\ttickI{-3}	\def\ttickF{3}
+											\def\ytickI{1}	\def\ytickF{1}
+										
+											% === Transistions ===
+											\def\c{0}
+										
+											% === Function definitions/colors ===
+											\newcommand{\f}[1]{0}	\def\ftex{0}	\def\fColor{blue}			\def\fFill{blue!15}
+											\newcommand{\g}[1]{1}	\def\gtex{1}	\def\gColor{green!60!black}	\def\gFill{green!15}
+					
+											% === Evaluate endpoint values ===
+											\def\fc{\f{\c}}		\def\gc{\g{\c}}
+										
+											% === Background regions ===
+											\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+											\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+										
+											% === Axes ===
+											\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
+											\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+					
+											% === Tick marks and labels ===
+											\foreach \t in {\ttickI,...,\ttickF} {
+												\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
+												\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+											}
+											\foreach \y in {\ytickI,...,\ytickF} {
+												\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
+												\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+											}
+										
+											% === Function plots ===
+											\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+											\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]			(\t, {\g{\t}});
+					
+											% === Endpoint dots ===
+											\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
+											\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
+					
+											% === Region Labels ===
+											\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt \c$};
+											\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
+					
+											<!-- \node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t)=\ftex$}; -->
+											\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$u(t)$};
+
+											\node[\fColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
+											\node[\gColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
+										
+										\end{tikzpicture}
+									</latex-image>
+								</image>
+							</p>
+							<p/>
+						</sidebyside>
+					</statement>
+				</definition>
+
+				<exercise>
+					<statement>
+						<p>
+							What are the only values <m>u(t)</m> can take for any value of <m>t</m>?
+						</p>
+					</statement>
+					<choices>
+						<choice correct="no">
+							<statement>Only 0</statement>
+						</choice>
+						<choice correct="no">
+							<statement>Only 1</statement>
+						</choice>
+						<choice correct="yes">
+							<statement>Only 0 and 1</statement>
+						</choice>
+						<choice correct="no">
+							<statement>Only positive numbers</statement>
+						</choice>
+						<choice correct="no">
+							<statement>Any number</statement>
+						</choice>
+					</choices>
+				</exercise>
+
+				<p>
+					The fundamental property of a unit step function is that it only takes on two values: zero and one. Therefore, for any function <m>f(t)</m>, the product, <m>f(t) \cdot u(t)</m>, indicates that <m>f(t)</m> is multipied by either either zero or one.
+				</p>
+
+				<p>
+					For example, the following product has two possible cases:
+					<me>
+						\left(\frac15 t^2 - 1\right) u(t) = \left\{
+						\begin{array}{ll}
+							0,	&amp; t \lt 0 \quad (\text{since } u(t) = 0)\\
+							\frac15 t^2 - 1,	&amp; t \ge 0 \quad (\text{since } u(t) = 1).
+						\end{array} \right.
+					</me>
+				</p>
+
+				<p>
+					In this context, you can think of <m>u(t)</m> as an <q>on/off</q>-switch for the function <m>\frac15 t^2 - 1</m>. You can see this in <xref ref="unit-step-on-off"/> where the function is <q>off</q> in the blue region since it is multiplied by <m>u(t) = 0</m>. In the green region, the function is <q>on</q> since it is multiplied by <m>u(t) = 1</m>. 
+				</p>
+
+				<p>
+					<sidebyside width="60%" margins="15%">
+						<figure xml:id="unit-step-on-off">
+							<caption> Graph of <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
+							<image>
+								<latex-image>
+									\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
+				
+										% === Piecewise Function with 2 Parts ===
+
+										% === colors ===
+										\def\offColor{blue}				\def\offFill{\offColor!15}
+										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+
+										% === figure/domain/tick bounds ===
+										\def\tmin{-3.5}	\def\tmax{3.5}
+										\def\ymin{-1.1}	\def\ymax{1.8}
+										\def\tI{-3.5}	\def\tF{3.5}
+										\def\ttickI{-3}	\def\ttickF{3}
+										\def\ytickI{1}	\def\ytickF{1}
+									
+										% === Transistions ===
+										\def\c{0}
+									
+										% === Function definitions ===
+										\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
+										\newcommand{\uL}[1]{0}				\def\uLtex{0}
+										\newcommand{\uR}[1]{1}				\def\uRtex{1}	
+				
+										% === Evaluate endpoint values ===
+										\def\fc{\f{\c}}		\def\uc{\uL{\c}}
+									
+										% === Background regions ===
+										\fill[\offFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+										\fill[\onFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+									
+										% === Axes ===
+										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
+										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+				
+										% === Tick marks and labels ===
+										\foreach \t in {\ttickI,...,\ttickF} {
+											\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
+											\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+										}
+										\foreach \y in {\ytickI,...,\ytickF} {
+											\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
+											\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+										}
+									
+										% === Function plots on [tmin, c] ===
+										\draw[\offColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\uL{\t}});
+										\draw[\offColor!50, thick, dashed] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+										
+										% === Function plots on [c, tmax] ===
+										%\draw[\offColor!50, thick, dashed] plot[domain=\c:\tF, variable=\t]	(\t, {\uR{\t}});
+										\draw[\onColor, very thick] plot[domain=\c:\tF, variable=\t]	(\t, {\f{\t}});
+										
+										% === Points at t=c ===
+										\fill[\onColor]	(\c,{\f{\c}})	circle[radius=2pt];
+										%\fill[\offColor!50]			(\c,{\uR{\c}})	circle[radius=2pt];
+										\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=2pt];
+				
+										% === Region Labels ===
+										%\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt \c$};
+										%\node[\uColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
+				
+										\node[\offColor, font=\scriptsize, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t) = 0$};
+										\node[\onColor, font=\scriptsize, below] at ({(\c + \tF)/2}, {\ymax}) {$u(t) = 1$};
+			
+										\node[\offColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
+										\node[\onColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
+									
+									\end{tikzpicture}
+								</latex-image>
+							</image>
+						</figure>
+					</sidebyside>
+				</p>
+				
+				<p>
+					Multiplying a function by <m>u(t)</m> has the effect of zeroing-out everything that came before <m>t = 0</m> and keeping everything after. This powerful trick allows us to <q>delay</q> any function until a specific moment in time.
+				</p>
+				
+				<xi:include href="./c7-exercises/c7-chkpts-4-1-1-unit-step-functions.ptx" />
+
+			</subsubsection>
+
+			<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+
+				<p>
+					<exercise label="prep-matching-shifts"><title>Matching Shifts of <m>y=x^2</m></title>
+						<statement>
+							<p>
+								Consider the function <m>y=x^2</m>. Match each of the shifted versions of <m>y=x^2</m> with the correct description of how its graph is affected.
+							</p>
+						</statement>
+						<matches>
+							<match>
+								<premise><m>y=(x - 1)^2</m></premise>
+								<response>Horizontal shift by 1 (→)</response>
+							</match>
+							<match>
+								<response>Vertical shift by -1 (↓)</response>
+							</match>
+							<match>
+								<premise><m>y=(x + 1)^2</m></premise>
+								<response>Horizontal shift by -1 (←)</response>
+							</match>
+							<match>
+								<premise><m>y=x^2 + 1</m></premise>
+								<response>Vertical shift by 1 (↑)</response>
+							</match>
+							<match>
+								<premise><m>y=(x - 1)^2 + 1</m></premise>
+								<response>Horizontal &amp; vertical shift by 1 (↗)</response>
+							</match>
+						</matches>
+					</exercise>
+
+					<exercise label="prep-shifted-unit-step-outputs"><title> Shifted Unit-Step Function </title>
+						<statement>
+							<p>
+								The unit step function, defined by
+								<me>
+									u(t) = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt 0\\
+										1,	&amp; t \ge 0
+									\end{array} \right.
+								</me>
+								jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="0" />.
+							</p>
+
+							<p>
+								Now consider a shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
+							</p>
+
+							<tabular>
+								<col/>
+								<col/>
+								<col halign = "right"/>
+								<col/>
+								<col/>
+								<row>
+									<cell>(a)</cell>
+									<cell><m>t=3:</m></cell>
+									<cell><m>u(t-4)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="0" /></cell>
+								</row>
+								<row>
+									<cell>(b)</cell>
+									<cell><m>t=-3:</m></cell>
+									<cell><m>u(t-4)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="0" /></cell>
+								</row>
+								<row>
+									<cell>(c)</cell>
+									<cell><m>t=4:</m></cell>
+									<cell><m>u(t-4)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="1" /></cell>
+								</row>
+								<row>
+									<cell>(d)</cell>
+									<cell><m>t=0:</m></cell>
+									<cell><m>u(t-4)</m></cell>
+									<cell><m>=</m></cell>
+									<cell><fillin mode="number" answer="0" /></cell>
+								</row>
+							</tabular>
+
+							<p>
+								So <m>u(t-4)</m> jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="4" />.
+							</p>
+						</statement>
+						<evaluation>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+							<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						</evaluation>
+					</exercise>
+				</p>
+			
+			</reading-questions>
+
+			<subsubsection><title> Shifting the Unit Step Function Left or Right </title>
+				<p>
+					As we saw, the standard unit function <q>turns on</q> a function at <m>t=0</m>, but we would also like the ability to <q>turn on</q> a function at any time <m>t=c</m>. To do this, we can shift the unit step function to the right or left. The unit step function is defined as
+				</p>
+
+				<definition xml:id="shifted-unit-step-function">
+					<statement>
+						<p>
+							The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
+						</p>
+						<sidebyside widths="2% 46% 5% 45% 2%" valign="middle">
+							<p/>
+							<p>
+								<md>
+									<mrow>
+										u_c(t) 
+										\amp = u(t - c) = \left\{
+											\begin{array}{ll}
+												0,	&amp; t \lt c\\
+												1,	&amp; t \ge c.
+											\end{array} 
+											\right.
+									</mrow>
+								</md>
+							</p>
+							<p/>
+							<p>
+								<image>
+									<latex-image>
+										\begin{tikzpicture}[domain=-2:4, samples=200, scale=0.7]
+					
+											% === Piecewise Function with 2 Parts ===
+											
+											% === figure/domain/tick bounds ===
+											\def\tmin{-2.5}	\def\tmax{4.5}
+											\def\ymin{-1.1}	\def\ymax{1.8}
+											\def\tI{-2.5}	\def\tF{4.5}
+											\def\ttickI{-2}	\def\ttickF{4}
+											\def\ytickI{1}	\def\ytickF{1}
+										
+											% === Transistions ===
+											\def\c{1.5}
+										
+											% === Function definitions/colors ===
+											\newcommand{\f}[1]{0}	\def\ftex{0}	\def\fColor{blue}			\def\fFill{blue!15}
+											\newcommand{\g}[1]{1}	\def\gtex{1}	\def\gColor{green!60!black}	\def\gFill{green!15}
+					
+											% === Evaluate endpoint values ===
+											\def\fc{\f{\c}}		\def\gc{\g{\c}}
+										
+											% === Background regions ===
+											\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
+											\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+										
+											% === Axes ===
+											\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
+											\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+					
+											% === Tick marks and labels ===
+											\foreach \t in {\ttickI,...,\ttickF} {
+												\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
+												\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+											}
+											\foreach \y in {\ytickI,...,\ytickF} {
+												\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
+												\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+											}
+										
+											% === Function plots ===
+											\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+											\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]			(\t, {\g{\t}});
+					
+											% === Endpoint dots ===
+											\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
+											\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
+					
+											% === Region Labels ===
+											\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt c$};
+											\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge c$};
+											
+											% === Transition Labels ===
+											\node[font=\small, below] at ({\c}, 0) {$c$};
+					
+											<!-- \node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t)=\ftex$}; -->
+											\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$u_c(t)$};
+
+											\node[\fColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
+											\node[\gColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
+										
+										\end{tikzpicture}
+									</latex-image>
+								</image>
+							</p>
+							<p/>
+						</sidebyside>
+					</statement>
+				</definition>
+
+				<sidebyside width="70%" margins="15%">
+					<figure>
+						<caption> Exploring the product: <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
+						<interactive xml:id="unit-step-2"
+							platform="jsxgraph"
+							aspect="5:2"
+							dark-mode-enabled="yes"
+							source="
+								code/jsxgraph/jsx-core/board.js
+								code/jsxgraph/jsx-core/piecewise.js
+								code/jsxgraph/jsx-core/utils.js code/jsxgraph/unit-step-interactives/unit-step-2.js"
+						>
+							<sidebyside width="100%">
+								<stack>
+									<slate xml:id="unit-step-2-plot1" surface="jsxboard" aspect="5:2" />
+								</stack>
+							</sidebyside>
+							<instructions>
+								
+							</instructions>
+							<static>
+								<image source="code/jsxgraph/img-labels/t.png" width="60%" />
+							</static>
+						</interactive>
+					</figure>
+				</sidebyside>
+
+			</subsubsection>
+
+			<subsubsection><title> Reversing the Direction of the Unit Step Function </title>
+				
+			</subsubsection>
+
+			<subsubsection><title> Unit Step Function on an Interval </title>
+				
+			</subsubsection>
+
+		</subsection>
+
 	</section>
 
 </chapter>
