@@ -126,80 +126,79 @@ Subsection: Unit Step Functions
 			<definition xml:id="unit-step-function">
 				<statement>
 					<p>
-						The <em> unit step function</em>, <m>u(t)</m>, is defined as
+						The <em>unit-step</em> or <em>Heaviside function</em>, <m>u(t)</m>, is defined as
 					</p>
-					<sidebyside widths="5% 25% 10% 45% 15%" valign="middle">
+					<sidebyside widths="2% 54% 5% 37% 2%" valign="top">
 						<p/>
 						<p>
 							<me>
 								u(t) = \left\{
 								\begin{array}{ll}
 									0,	&amp; t \lt 0\\
-									1,	&amp; t \ge 0.
+									1,	&amp; t \ge 0
 								\end{array} \right.
 							</me>
+							and has the graph shown to the right.
 						</p>
 						<p/>
 						<p>
 							<image>
 								<latex-image>
-									\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
+									\begin{tikzpicture}[domain=-3.5:3.5, samples=100, scale=0.6]
 				
 										% === Piecewise Function with 2 Parts ===
-										
+	
+										% === colors ===
+										\def\offColor{blue}				\def\offFill{\offColor!15}
+										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+	
 										% === figure/domain/tick bounds ===
 										\def\tmin{-3.5}	\def\tmax{3.5}
-										\def\ymin{-1.1}	\def\ymax{1.8}
-										\def\tI{-3.5}	\def\tF{3.5}
-										\def\ttickI{-3}	\def\ttickF{3}
-										\def\ytickI{1}	\def\ytickF{1}
+										\def\ymin{-1.2}	\def\ymax{1.8}
+										\def\tticks{-3, -2, -1, 1, 2, 3}
+										\def\yticks{1}
 									
 										% === Transistions ===
 										\def\c{0}
 									
-										% === Function definitions/colors ===
-										\newcommand{\f}[1]{0}	\def\ftex{0}	\def\fColor{blue}			\def\fFill{blue!15}
-										\newcommand{\g}[1]{1}	\def\gtex{1}	\def\gColor{green!60!black}	\def\gFill{green!15}
+										% === Function definitions ===
+										\newcommand{\uL}[1]{0}	\def\uLtex{0}
+										\newcommand{\uR}[1]{1}	\def\uRtex{1}	
 				
-										% === Evaluate endpoint values ===
-										\def\fc{\f{\c}}		\def\gc{\g{\c}}
-									
 										% === Background regions ===
-										\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
-										\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+										\fill[\offFill] (\tmin,	\ymin)	rectangle (\c,	\ymax);
+										\fill[\onFill]	(\c,	\ymin)	rectangle (\tmax,	\ymax);
 									
 										% === Axes ===
-										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
-										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
 				
 										% === Tick marks and labels ===
-										\foreach \t in {\ttickI,...,\ttickF} {
-											\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
-											\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+										\foreach \t in \tticks {
+											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
 										}
-										\foreach \y in {\ytickI,...,\ytickF} {
-											\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
-											\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+										\foreach \y in \yticks {
+											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
 										}
 									
-										% === Function plots ===
-										\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
-										\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]			(\t, {\g{\t}});
-				
-										% === Endpoint dots ===
-										\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
-										\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
-				
-										% === Region Labels ===
-										\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt \c$};
-										\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
-				
-										<!-- \node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t)=\ftex$}; -->
-										\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$u(t)$};
-
-										\node[\fColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
-										\node[\gColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
-									
+										% === Function plots on [tmin, c] ===
+										\draw[\offColor, very thick]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\uL{\t}});
+										
+										% === Function plots on [c, tmax] ===
+										\draw[\onColor, very thick]		plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
+										
+										% === Points at t=c ===
+										\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+										\fill[\onColor]			(\c,{\uR{\c}})	circle[radius=3pt];
+										
+										% === Function Labels ===
+										\node[\offColor	, font=\scriptsize, below] at ({(\tmin + \c)/2},	{\ymax+0.15})	{$u(t) = 0$};
+										\node[\onColor	, font=\scriptsize, below] at ({(\c + \tmax)/2},	{\ymax+0.15})	{$u(t) = 1$};
+										\node[\offColor	, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{``off''}$};
+										\node[\onColor	, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{``on''}$};
 									\end{tikzpicture}
 								</latex-image>
 							</image>
@@ -250,13 +249,12 @@ Subsection: Unit Step Functions
 			</p>
 
 			<p>
-				In this context, you can think of <m>u(t)</m> as an <q>on/off</q>-switch for the function <m>\frac15 t^2 - 1</m>. You can see this in <xref ref="unit-step-on-off"/> where the function is <q>off</q> in the blue region since it is multiplied by <m>u(t) = 0</m>. In the green region, the function is <q>on</q> since it is multiplied by <m>u(t) = 1</m>. 
+				In this context, you can think of <m>u(t)</m> as an <q>on/off</q> switch for the function <m>\frac15 t^2 - 1</m>. You can see this in <xref ref="unit-step-on-off"/> where the function is <q>off</q> in the blue region since it is multiplied by <m>u(t) = 0</m>. In the green region, the function is <q>on</q> since it is multiplied by <m>u(t) = 1</m>. 
 			</p>
 
 			<p>
 				<sidebyside width="60%" margins="15%">
-					<figure xml:id="unit-step-on-off">
-						<caption> Graph of <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
+					<figure xml:id="unit-step-on-off"><caption> Graph of <m>\left(\frac15 t^2 - 1\right) u(t)</m> </caption>
 						<image>
 							<latex-image>
 								\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
@@ -269,10 +267,10 @@ Subsection: Unit Step Functions
 
 									% === figure/domain/tick bounds ===
 									\def\tmin{-3.5}	\def\tmax{3.5}
-									\def\ymin{-1.1}	\def\ymax{1.8}
-									\def\tI{-3.5}	\def\tF{3.5}
-									\def\ttickI{-3}	\def\ttickF{3}
-									\def\ytickI{1}	\def\ytickF{1}
+									\def\ymin{-1.5}	\def\ymax{1.8}
+									\def\tmin{-3.5}	\def\tmax{3.5}
+									\def\tticks{-3, -2, -1, 1, 2, 3}
+									\def\yticks{}
 								
 									% === Transistions ===
 									\def\c{0}
@@ -280,52 +278,51 @@ Subsection: Unit Step Functions
 									% === Function definitions ===
 									\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
 									\newcommand{\uL}[1]{0}				\def\uLtex{0}
-									\newcommand{\uR}[1]{1}				\def\uRtex{1}	
-			
-									% === Evaluate endpoint values ===
-									\def\fc{\f{\c}}		\def\uc{\uL{\c}}
+									\newcommand{\uR}[1]{1}				\def\uRtex{1}
 								
 									% === Background regions ===
-									\fill[\offFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
-									\fill[\onFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+									\fill[\offFill] (\tmin,	\ymin)	rectangle (\c,	\ymax);
+									\fill[\onFill]	(\c,	\ymin)	rectangle (\tmax,	\ymax);
 								
 									% === Axes ===
-									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
-									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+									\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
 			
 									% === Tick marks and labels ===
-									\foreach \t in {\ttickI,...,\ttickF} {
-										\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
-										\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+									\foreach \t in \tticks {
+										\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+										\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
 									}
-									\foreach \y in {\ytickI,...,\ytickF} {
-										\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
-										\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+									\foreach \y in \yticks {
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
 									}
 								
 									% === Function plots on [tmin, c] ===
-									\draw[\offColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\uL{\t}});
-									\draw[\offColor!50, thick, dashed] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
+									\draw[\offColor, very thick]		plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\uL{\t}});
+									\draw[\offColor!50, thick, dashed]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\f{\t}});
 									
 									% === Function plots on [c, tmax] ===
-									%\draw[\offColor!50, thick, dashed] plot[domain=\c:\tF, variable=\t]	(\t, {\uR{\t}});
-									\draw[\onColor, very thick] plot[domain=\c:\tF, variable=\t]	(\t, {\f{\t}});
+									%\draw[\offColor!50, thick, dashed]	plot[domain=\c:\tmax, variable=\t]	(\t, {\uR{\t}});
+									\draw[\onColor, very thick]			plot[domain=\c:\tmax, variable=\t]	(\t, {\f{\t}});
 									
 									% === Points at t=c ===
-									\fill[\onColor]	(\c,{\f{\c}})	circle[radius=2pt];
-									%\fill[\offColor!50]			(\c,{\uR{\c}})	circle[radius=2pt];
-									\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=2pt];
+									\fill[\onColor]			(\c,{\f{\c}})	circle[radius=3pt];
+									\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
 			
-									% === Region Labels ===
-									%\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt \c$};
-									%\node[\uColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge \c$};
-			
-									\node[\offColor, font=\scriptsize, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t) = 0$};
-									\node[\onColor, font=\scriptsize, below] at ({(\c + \tF)/2}, {\ymax}) {$u(t) = 1$};
-		
-									\node[\offColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
-									\node[\onColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
-								
+									% === Function Labels ===
+									\node[\offColor	, font=\scriptsize, below] at ({(\tmin + \c)/2},	{\ymax+0.15})	{$u(t) = 0$};
+									\node[\onColor	, font=\scriptsize, below] at ({(\c + \tmax)/2},	{\ymax+0.15})	{$u(t) = 1$};
+									\node[\offColor	, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{``off''}$};
+									\node[\onColor	, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{``on''}$};
+
+									\node[font=\scriptsize] at (-1.7, 0.8)	{$\left(\ftex\right)$};
+									\node[font=\scriptsize] at (1.3, 0.8)	{$\left(\ftex\right)$};
+									\node[\offColor	, font=\scriptsize] at (-0.7, 0.82)	{$\cdot 0$};
+									\node[\onColor	, font=\scriptsize] at (2.3, 0.82)	{$\cdot 1$};
+									\draw[-&gt;]	(-1.5 , 0.5)	-- (-1.5 , 0.05);
+									\draw[-&gt;]	(1.4 , 0.55)	-- (1.65 , -0.4);
 								\end{tikzpicture}
 							</latex-image>
 						</image>
@@ -449,12 +446,12 @@ Subsection: Unit Step Functions
 				As we saw, the standard unit function <q>turns on</q> a function at <m>t=0</m>, but we would also like the ability to <q>turn on</q> a function at any time <m>t=c</m>. To do this, we can shift the unit step function to the right or left. The unit step function is defined as
 			</p>
 
-			<definition xml:id="shifted-unit-step-function">
+			<definition xml:id="unit-step-off-then-on">
 				<statement>
 					<p>
 						The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
 					</p>
-					<sidebyside widths="2% 46% 5% 45% 2%" valign="middle">
+					<sidebyside widths="2% 52% 2% 42% 2%" valign="middle">
 						<p/>
 						<p>
 							<md>
@@ -463,76 +460,75 @@ Subsection: Unit Step Functions
 									\amp = u(t - c) = \left\{
 										\begin{array}{ll}
 											0,	&amp; t \lt c\\
-											1,	&amp; t \ge c.
+											1,	&amp; t \ge c
 										\end{array} 
 										\right.
 								</mrow>
 							</md>
+							and has the graph shown to the right.
 						</p>
 						<p/>
 						<p>
 							<image>
 								<latex-image>
-									\begin{tikzpicture}[domain=-2:4, samples=200, scale=0.7]
+									\begin{tikzpicture}[domain=-2.5:4.5, samples=100, scale=0.6]
 				
 										% === Piecewise Function with 2 Parts ===
-										
+	
+										% === colors ===
+										\def\offColor{blue}				\def\offFill{\offColor!15}
+										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+	
 										% === figure/domain/tick bounds ===
 										\def\tmin{-2.5}	\def\tmax{4.5}
-										\def\ymin{-1.1}	\def\ymax{1.8}
-										\def\tI{-2.5}	\def\tF{4.5}
-										\def\ttickI{-2}	\def\ttickF{4}
-										\def\ytickI{1}	\def\ytickF{1}
+										\def\ymin{-1.2}	\def\ymax{1.8}
+										\def\tticks{-2, -1, 1, 2, 3, 4}
+										\def\yticks{1}
 									
 										% === Transistions ===
 										\def\c{1.5}
 									
-										% === Function definitions/colors ===
-										\newcommand{\f}[1]{0}	\def\ftex{0}	\def\fColor{blue}			\def\fFill{blue!15}
-										\newcommand{\g}[1]{1}	\def\gtex{1}	\def\gColor{green!60!black}	\def\gFill{green!15}
+										% === Function definitions ===
+										\newcommand{\uL}[1]{0}	\def\uLtex{0}
+										\newcommand{\uR}[1]{1}	\def\uRtex{1}	
 				
-										% === Evaluate endpoint values ===
-										\def\fc{\f{\c}}		\def\gc{\g{\c}}
-									
 										% === Background regions ===
-										\fill[\fFill] (\tI,	\ymin)	rectangle (\c,	\ymax);
-										\fill[\gFill] (\c,	\ymin)	rectangle (\tF,	\ymax);
+										\fill[\offFill] (\tmin,	\ymin)	rectangle (\c,	\ymax);
+										\fill[\onFill]	(\c,	\ymin)	rectangle (\tmax,	\ymax);
 									
 										% === Axes ===
-										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		) node[font=\small, below]	{$t$};
-										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	) node[font=\small, left]	{};
+										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
 				
 										% === Tick marks and labels ===
-										\foreach \t in {\ttickI,...,\ttickF} {
-											\draw[gray!70]	(\t,0.1) -- (\t,-0.1);				% t ticks
-											\node[below, font=\small] at	(\t,-0.08) {\t};	% t labels	
+										\foreach \t in \tticks {
+											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
 										}
-										\foreach \y in {\ytickI,...,\ytickF} {
-											\draw[gray!70]	(0.1,\y) -- (-0.1,\y);			% y ticks
-											\node[left, font=\small] at	(-0.05,\y) {\y};	% y labels
+										\foreach \y in \yticks {
+											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
 										}
 									
-										% === Function plots ===
-										\draw[\fColor, very thick] plot[domain=\tI:\c-0.05, variable=\t]	(\t, {\f{\t}});
-										\draw[\gColor, very thick] plot[domain=\c:\tF, variable=\t]			(\t, {\g{\t}});
-				
-										% === Endpoint dots ===
-										\draw[\fColor, thick]	(\c,{\f{\c}})	circle[radius=2pt];
-										\fill[\gColor]			(\c,{\g{\c}})	circle[radius=2pt];
-				
-										% === Region Labels ===
-										\node[\fColor, font=\scriptsize, above] at ({(\tI + \c)/2}, {\ymin}) {$t \lt c$};
-										\node[\gColor, font=\scriptsize, above] at ({(\c + \tF)/2}, {\ymin}) {$t \ge c$};
+										% === Function plots on [tmin, c] ===
+										\draw[\offColor, very thick]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\uL{\t}});
 										
-										% === Transition Labels ===
-										\node[font=\small, below] at ({\c}, 0) {$c$};
-				
-										<!-- \node[\fColor, font=\small, below] at ({(\tI + \c)/2}, {\ymax}) {$u(t)=\ftex$}; -->
-										\node[\gColor, font=\small, below] at ({(\c + \tF)/2}, {\ymax}) {$u_c(t)$};
+										% === Function plots on [c, tmax] ===
+										\draw[\onColor, very thick]		plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
 
-										\node[\fColor, font=\scriptsize] at ({(\tI + \c)/2}, 0.5) {$\text{``off''}$};
-										\node[\gColor, font=\scriptsize] at ({(\c + \tF)/2}, 0.5) {$\text{``on''}$};
-									
+										% === Transition Labels ===
+										\node[font=\small, below] at ({\c}, -0.1) {$c$};
+										
+										% === Points at t=c ===
+										\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+										\fill[\onColor]			(\c,{\uR{\c}})	circle[radius=3pt];
+										
+										% === Function Labels ===
+										\node[\offColor	, font=\scriptsize, above] at (-1.4					, 0.1)			{$u_c(t) = 0$};
+										\node[\onColor	, font=\scriptsize, below] at ({(\c + \tmax)/2}		, {\ymax+0.15})	{$u_c(t) = 1$};
+										\node[\offColor	, font=\scriptsize, above] at ({(\tmin + \c - 1)/2}	, \ymin-0.1)		{$\text{``off''}$};
+										\node[\onColor	, font=\scriptsize, above] at ({(\c + \tmax)/2}		, \ymin-0.1)		{$\text{``on''}$};
 									\end{tikzpicture}
 								</latex-image>
 							</image>
@@ -569,6 +565,137 @@ Subsection: Unit Step Functions
 				</figure>
 			</sidebyside>
 
+			<example><title> Turning a Function on at <m>t = 3</m> </title>
+				<p>
+					<statement>
+						<p>
+							Rewrite the piecewise function
+							<me>
+								f(t) = \left\{
+								\begin{array}{ll}
+									0,		&amp; t \lt \sfrac{\pi}{2}\\
+									\sin t,	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} \right.
+							</me>
+							in terms of the shifted unit step function <m>u_c(t)</m>.
+						</p>
+					</statement>
+				</p>
+
+				<solution>
+					<p>
+						The function initially is <m>0</m> and then becomes <m>\sin t</m> at <m>t=\frac{\pi}{2}</m>. So the piecewise function, <m>f(t)</m>, is equivalent to
+						<md>
+							<mrow>
+								f(t) \amp = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt \sfrac{\pi}{2}\\
+										\sin t,	&amp; t \ge \sfrac{\pi}{2}
+									\end{array} 
+								\right.
+							</mrow>
+							<mrow>
+								\amp = \sin t \cdot {\color{BurntOrange}\ub{
+								\left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt \sfrac{\pi}{2}\\
+										1,	&amp; t \ge \sfrac{\pi}{2}
+									\end{array} 
+								\right.}_{\large u_{\sfrac{\pi}{2}}(t)}}
+							</mrow>
+						</md>
+						and therefore, the piecewise function, <m>f(t)</m>, can be written as
+						<me>
+							f(t) = \sin t \cdot u_{\sfrac{\pi}{2}}(t)
+						</me>,
+						which has the following graph
+					</p>
+					
+					<p>
+						<sidebyside width="100%" margins="0%">
+							<figure xml:id="tsqrd-off-then-on-at-pi-over-2">
+								<caption> Graph of <m>\sin t \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
+								<image>
+									<latex-image>
+										\begin{tikzpicture}[domain=-4:7, samples=200, scale=0.7]
+				
+											% === Piecewise Function with 2 Parts ===
+
+											% === colors ===
+											\def\offColor{blue}				\def\offFill{\offColor!15}
+											\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+
+											% === figure/domain/tick bounds ===
+											\def\tmin{-4}	\def\tmax{7}
+											\def\ymin{-1.6}	\def\ymax{1.6}
+											\def\tticks{
+												{-pi}		/ $-\pi$,
+												{-pi/2}		/ $-\frac{\pi}{2}$,
+												{pi/2}		/ $\frac{\pi}{2}$,
+												{pi}		/ $\pi$,
+												{3*pi/2}	/ $\frac{3\pi}{2}$,
+												{2*pi}		/ $2\pi$
+											}
+											\def\yticks{
+												-1 / $-1$,
+												1  / $1$,
+											}
+										
+											% === Transistions ===
+											\def\c{pi/2}
+										
+											% === Function definitions ===
+											\newcommand{\f}[1]{sin(#1 r)}		\def\ftex{\sin t}
+											\newcommand{\uL}[1]{0}				\def\uLtex{0}
+											\newcommand{\uR}[1]{1}				\def\uRtex{1}
+										
+											% === Background regions ===
+											\fill[\offFill] (\tmin, \ymin) rectangle (\c, \ymax);
+											\fill[\onFill] (\c, \ymin) rectangle (\tmax, \ymax);
+										
+											% === Axes ===
+											\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+											\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+											\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
+											
+											% === Tick marks and labels ===
+											\foreach \t /\n in \tticks {
+												\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
+											}
+        
+											\foreach \t /\n in \yticks {
+												\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
+											}
+
+											% === Function plots on [tmin, c] ===
+											\draw[\offColor, very thick]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\uL{\t}});
+											\draw[\offColor!50, thick, dashed]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {\f{\t}});
+
+											% === Function plots on [c, tmax] ===
+											\draw[\onColor, very thick]		plot[domain=\c:\tmax, variable=\t]	(\t, {\f{\t}});
+
+											\draw[\onColor!50, thick, dashed]	plot[domain=\c:\tmax, variable=\t]	(\t, {\uR{\t}});
+
+											% === Points at t=c ===
+											\draw[\offColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+											\fill[\onColor]			(\c,{\f{\c}})	circle[radius=3pt];
+
+											% === Function Labels ===
+											\node[\offColor	, font=\scriptsize, above] at ({(\tmin + \c)/2},	1)	{$u(t) = 0$};
+											\node[\onColor	, font=\scriptsize, above] at ({(\c + \tmax)/2},	1)	{$u(t) = 1$};
+											\node[\offColor	, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{``off''}$};
+											\node[\onColor	, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{``on''}$};
+											\node[font=\scriptsize, above] at (-1.2, 0)	{$\left(\ftex\right)\cdot\color{\offColor}{0}$};
+											\node[font=\scriptsize, above] at (4.3, 0)	{$\left(\ftex\right)\cdot\color{\onColor}{1}$};
+										\end{tikzpicture}
+									</latex-image>
+								</image>
+							</figure>
+						</sidebyside>
+					</p>
+				</solution>
+			</example> 
+
 		</subsubsection>
 
 		<subsubsection><title> Reversing the Direction of the Unit Step Function </title>
@@ -578,28 +705,107 @@ Subsection: Unit Step Functions
 			</p>
 
 			<p> 
-				One simple way to accomplish this is by subtracting the unit step function from 1. Define a new function:
-				<me> 1 - u_c(t). </me>
-			</p>
-			
-			<p> 
-				This function behaves exactly opposite to <m>u_c(t)</m>:
-				<ul>
-					<li>
-						<p>
-							When <m>t &lt; c</m>, <m>u_c(t) = 0</m>, so <m>1 - u_c(t) = 1</m>. The function is <em>on</em>.
-						</p>
-					</li>
-					<li>
-						<p>
-							When <m>t \ge c</m>, <m>u_c(t) = 1</m>, so <m>1 - u_c(t) = 0</m>. The function is <em>off</em>.
-						</p>
-					</li>
-				</ul>
+				One way to accomplish this is by subtracting the unit step function from 1. That is, we use the function
+				<sidebyside widths="50% 50%" valign="top">
+					<p>
+						In particular, we define the function
+						<md>
+							<mrow>
+								1 - {\color{BurntOrange}u_c(t)}
+								\amp = 1 - {\color{BurntOrange}
+								\left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt c\\
+										1,	&amp; t \ge c
+									\end{array} 
+								\right.}
+							</mrow>
+							<mrow/>
+							<mrow>
+								1 - u_c(t)
+								\amp =
+								\left\{
+									\begin{array}{ll}
+										1,	&amp; t \lt c\\
+										0,	&amp; t \ge c
+									\end{array} 
+								\right.
+							</mrow>
+						</md>
+					</p>
+					<p>
+						<figure xml:id="unit-step-on-then-off">
+							<caption> Graph of <m>1 - u_c(t)</m> </caption>
+							<image>
+								<latex-image>
+									\begin{tikzpicture}[domain=-3.5:4.8, samples=100, scale=0.7]
+				
+										% === Piecewise Function with 2 Parts ===
+
+										% === colors ===
+										\def\offColor{blue}				\def\offFill{\offColor!15}
+										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+
+										% === figure/domain/tick bounds ===
+										\def\tmin{-3.5}	\def\tmax{4.8}
+										\def\ymin{-1.1}	\def\ymax{1.9}
+										\def\tticks{-3, -2, -1, 1, 2, 3, 4}
+										\def\yticks{1}
+									
+										% === Transistions ===
+										\def\c{1.4}
+									
+										% === Function definitions ===
+										\newcommand{\uL}[1]{0}	\def\uLtex{0}
+										\newcommand{\uR}[1]{1}	\def\uRtex{1}	
+				
+										% === Background regions ===
+										\fill[\onFill]	(\tmin, \ymin)	rectangle (\c, \ymax);
+										\fill[\offFill]	(\c, \ymin)		rectangle (\tmax, \ymax);
+									
+										% === Axes ===
+										\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+										\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
+				
+										% === Tick marks and labels ===
+										\foreach \t in \tticks {
+											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
+										}
+										\foreach \y in \yticks {
+											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										}
+									
+										% === Function plots on [tmin, c] ===
+										\draw[\onColor, very thick]	plot[domain=\tmin:\c-0.05, variable=\t]	(\t, {1-\uL{\t}});
+										
+										% === Function plots on [c, tmax] ===
+										\draw[\offColor, very thick]		plot[domain=\c:\tmax, variable=\t]	(\t, {1-\uR{\t}});
+										
+										% === Transition Labels ===
+										\node[font=\small, below] at ({\c}, -0.1) {$c$};
+										
+										% === Points at t=c ===
+										\draw[\onColor, very thick]	(\c,{1-\uL{\c}})	circle[radius=3pt];
+										\fill[\offColor]			(\c,{1-\uR{\c}})	circle[radius=3pt];
+										
+										% === Function Labels ===
+										\node[\onColor, font=\small, above]			at ({(\tmin+\c)/2-1}, 1.0)		{$1 - u_c(t) = 1$};
+										\node[\offColor, font=\small, above]		at ({(\c+\tmax)/2}, 0.0)		{$1 - u_c(t) = 0$};
+										\node[\onColor, font=\scriptsize, above]	at ({(\tmin+\c)/2}, \ymin-0.1)	{$\text{``on''}$};
+										\node[\offColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, \ymin-0.1)	{$\text{``off''}$};
+									\end{tikzpicture}
+								</latex-image>
+							</image>
+						</figure>
+					</p>
+				</sidebyside>
 			</p>
 
-			<p>
-				Thus, <m>1 - u_c(t)</m> acts like a **function switch** that is initially on and flips off at <m>t=c</m>. We can use it to control the activity of a function up until a certain cutoff point.
+			<p> 
+				So, to activate a function on an interval, like <m>(c, \infty)</m>, we multiply the function by <m>u_c(t)</m>. In contrast, to activate a function on an interval, like <m>(-\infty, c)</m>, we multiply the function by <m>1 - u_c(t)</m>. Thus, you can think of <m>1 - u_c(t)</m> as a <em>switch</em> that is initially on and flips off at <m>t=c</m>.
 			</p>
 			
 			<example><title> Turning a Function Off at <m>t = 3</m> </title>
@@ -640,7 +846,7 @@ Subsection: Unit Step Functions
 			</p>
 		</subsubsection>
 
-		<subsubsection><title>Unit Step Functions on an Interval</title>
+		<subsubsection><title> Unit Step Functions on an Interval </title>
 
 			<p>
 				So far, we've seen how a unit step function can turn a function <em>on</em> at a certain time or <em>off</em> at a certain time. But what if we want a function to be active <em>only between two times</em>, say between <m>t = c</m> and <m>t = d</m>?
