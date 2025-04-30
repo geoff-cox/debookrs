@@ -1,0 +1,826 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title>
+
+	<introduction>
+
+		<p>
+			Needs to be written.
+		</p>
+		
+	</introduction>
+
+	<subsection><title> Unit Step Functions </title>
+
+		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+
+			<p>
+				<exercise label="prep-unit-step-outputs"><title> Unit-Step Output </title>
+					<statement>
+						<p>
+							Consider the function defined by
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 0\\
+									1,	&amp; t \ge 0.
+								\end{array} \right.
+							</me>
+						</p>
+
+						<p>
+							Give the output of <m>u(t)</m> for the following values of <m>t</m>.
+						</p>
+
+						<tabular>
+							<col/>
+							<col/>
+							<col halign = "right"/>
+							<col/>
+							<col/>
+							<row>
+								<cell>(a)</cell>
+								<cell><m>t=3</m></cell>
+								<cell><m>u(3)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(b)</cell>
+								<cell><m>t=-3</m></cell>
+								<cell><m>u(-3)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(c)</cell>
+								<cell><m>t=4</m></cell>
+								<cell><m>u(4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(d)</cell>
+								<cell><m>t=0</m></cell>
+								<cell><m>u(0)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+						</tabular>
+					</statement>
+					<evaluation>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+					</evaluation>
+				</exercise>
+			</p>
+		
+		</reading-questions>
+		
+		<subsubsection><title> The Standard Unit Step Function, <m>u(t)</m> </title>
+
+			<p>
+				In the last section, we hinted at a special function that could mimic the "on" and "off" behavior of piecewise functions. This function is called the <em>unit step function</em>, sometimes also known as the <em>Heaviside function</em>. It acts like a simple switch that flips from 0 to 1 at a specific time.
+			</p>
+
+			<p>
+				Let's define it:
+			</p>
+			
+			<definition xml:id="unit-step-function">
+				<statement>
+					<p>
+						The <em>unit-step</em>, <m>u(t)</m>, is defined as
+					</p>
+					<sidebyside widths="2% 54% 5% 37% 2%" valign="top">
+						<p/>
+						<p>
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 0\\
+									1,	&amp; t \ge 0
+								\end{array} \right.
+							</me>
+							It switches from 0 to 1 right at <m>t = 0</m>.
+						</p>
+						<p/>
+						<p>
+							<image>redacted for brevity</image>
+						</p>
+						<p/>
+					</sidebyside>
+				</statement>
+			</definition>
+
+			<exercise>
+				<statement>
+					<p>
+						What are the only values <m>u(t)</m> can take for any value of <m>t</m>?
+					</p>
+				</statement>
+				<choices>
+					<choice correct="no">
+						<statement>Only 0</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Only 1</statement>
+					</choice>
+					<choice correct="yes">
+						<statement>Only 0 and 1</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Only positive numbers</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Any number</statement>
+					</choice>
+				</choices>
+			</exercise>
+
+			<p>
+				The important thing to notice about <m>u(t)</m> is that it can only take two values, either 0 or 1.
+			</p>
+
+			<p>
+				Because of this simple behavior, when you multiply a function by <m>u(t)</m>, you either shut the function off (multiply by 0) or turn it fully on (multiply by 1). For instance:
+			</p>
+
+			<me>
+				\left(\frac{1}{5}t^2 - 1\right) u(t) =
+				\left\{
+				\begin{array}{ll}
+					0, &amp; t \lt 0\\
+					\frac{1}{5}t^2 - 1, &amp; t \ge 0
+				\end{array}
+				\right.
+			</me>
+			
+			<p>
+				In this example, for <m>t \lt 0</m> the entire function is flattened to zero. For <m>t \ge 0</m>, the function behaves just like <m>\frac{1}{5}t^2 - 1</m>. It's like flipping a switch at exactly <m>t = 0</m>.
+			</p>
+
+			<sidebyside widths="48% 4% 44%" valign="top">
+				<p>
+					We can think of it this way:
+					<ul>
+						<li>Before <m>t=0</m>: everything is OFF (multiplied by 0).</li>
+						<li>After <m>t=0</m>: everything is ON (multiplied by 1).</li>
+					</ul>
+				</p>
+				<p/>
+				<p>
+					<!-- <figure xml:id="unit-step-on-off-switch"><caption/> -->
+						<image>redacted for brevity</image>
+					<!-- </figure> -->
+				</p>
+			</sidebyside>
+
+			<p>
+				The unit step function gives us a smart way to model piecewise functions using a single formula instead of separate cases. In the next sections, we'll see how to shift this "switch" to turn functions on at times other than <m>t = 0</m>.
+			</p>
+			
+			<xi:include href="./c7-exercises/c7-chkpts-4-1-1-unit-step-functions.ptx" />
+
+		</subsubsection>
+
+		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+
+			<p>
+				<exercise label="prep-matching-shifts"><title>Matching Shifts of <m>y=x^2</m></title>
+					<statement>
+						<p>
+							Consider the function <m>y=x^2</m>. Match each of the shifted versions of <m>y=x^2</m> with the correct description of how its graph is affected.
+						</p>
+					</statement>
+					<matches>
+						<match>
+							<premise><m>y=(x - 1)^2</m></premise>
+							<response>Horizontal shift by 1 (→)</response>
+						</match>
+						<match>
+							<response>Vertical shift by -1 (↓)</response>
+						</match>
+						<match>
+							<premise><m>y=(x + 1)^2</m></premise>
+							<response>Horizontal shift by -1 (←)</response>
+						</match>
+						<match>
+							<premise><m>y=x^2 + 1</m></premise>
+							<response>Vertical shift by 1 (↑)</response>
+						</match>
+						<match>
+							<premise><m>y=(x - 1)^2 + 1</m></premise>
+							<response>Horizontal &amp; vertical shift by 1 (↗)</response>
+						</match>
+					</matches>
+				</exercise>
+
+				<exercise label="prep-shifted-unit-step-outputs"><title> Shifted Unit-Step Function </title>
+					<statement>
+						<p>
+							The unit step function, defined by
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 0\\
+									1,	&amp; t \ge 0
+								\end{array} \right.
+							</me>
+							jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="0" />.
+						</p>
+
+						<p>
+							Now consider a shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
+						</p>
+
+						<tabular>
+							<col/>
+							<col/>
+							<col halign = "right"/>
+							<col/>
+							<col/>
+							<row>
+								<cell>(a)</cell>
+								<cell><m>t=3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(b)</cell>
+								<cell><m>t=-3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(c)</cell>
+								<cell><m>t=4:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(d)</cell>
+								<cell><m>t=0:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+						</tabular>
+
+						<p>
+							So <m>u(t-4)</m> jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="4" />.
+						</p>
+					</statement>
+					<evaluation>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+					</evaluation>
+				</exercise>
+			</p>
+		
+		</reading-questions>
+
+		<subsubsection><title> The Shifted Unit Step Function, <m>u_{c}(t)</m> </title>
+
+			<p>
+				The standard unit step function <m>u(t)</m> flips a function on right at <m>t=0</m>. But what if we need to delay that switch—to turn a function on later, say at <m>t=2</m>, <m>t=5</m>, or even <m>t=-3</m>? We can make this happen by shifting the step function horizontally.
+			</p>
+			
+			<p>
+				We define a shifted unit step function by replacing <m>t</m> with <m>t-c</m>, where <m>c</m> is the shift:
+			</p>
+
+			<assemblage xml:id="shifted-unit-step-function"><title> Shifted Unit Step Function </title>
+				<p>
+					The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
+				</p>
+
+				<sidebyside widths="57% 1% 38%" margin="2%" valign="middle">
+					<p>
+						<md>
+							<mrow>
+								u_c(t) 
+								\amp = u(t - c) = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt c\\
+										1,	&amp; t \ge c
+									\end{array} 
+									\right.
+							</mrow>
+						</md>
+						This function switches from 0 to 1 at <m>t = c</m>.
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+				</sidebyside>
+			</assemblage>
+
+			<p>
+				Multiplying a function by <m>u_c(t)</m> delays when it turns on. Instead of flipping on at <m>t=0</m>, it stays off until <m>t=c</m>. After that, the function behaves as normal.
+			</p>
+			
+			<p>
+				For example, the product
+			</p>
+			
+			<me>
+				\left(\frac{1}{5}t^2 - 1\right) u(t-2)
+			</me>
+			
+			<p>
+				would flatten the function to 0 for <m>t &lt; 2</m>, and then "turn it on" for <m>t \ge 2</m>.  
+			</p>
+
+			<p>
+				To see this, try moving the shifting constant, <m>c</m>, in the following interactive tool.
+			</p>
+
+			<assemblage><title>🕹️ Interactive: Exploring the Effect of <m>c</m> </title>
+				<p>
+					<tabular top="minor" bottom="minor">
+						<col width="5%"/>
+						<col />
+						<col width="10%"/>
+						<row bottom="none">
+							<cell><p><m>\succ</m></p></cell>
+							<cell>
+								<p>
+									Hover over the labels <m>f(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to hightlight them.
+								</p>
+							</cell>
+							<cell><p><m>\phantom{=======}</m></p></cell>
+						</row>
+						<row>
+							<cell><p><m>\succ</m></p></cell>
+							<cell>
+								<p>
+									Drag the value of <m>c</m> along the <m>t</m> axis to see how the graph changes.
+								</p>
+							</cell>
+							<cell/>
+						</row>
+					</tabular>
+				</p>
+				<p>
+					<sidebyside width="60%">
+						<interactive xml:id="unit-step-2"
+							platform="jsxgraph"
+							aspect="5:2"
+							dark-mode-enabled="yes"
+							source="
+								code/jsxgraph/jsx-core/board.js
+								code/jsxgraph/jsx-core/piecewise.js
+								code/jsxgraph/jsx-core/utils.js code/jsxgraph/unit-step-interactives/unit-step-2.js"
+						>
+							<slate xml:id="unit-step-2-plot1" surface="jsxboard" aspect="5:2" />
+							<static>
+								<image source="code/jsxgraph/img-labels/t.png" width="70%" />
+							</static>
+						</interactive>
+					</sidebyside>
+				</p>
+			</assemblage>
+
+			<example><title> Turning a Function on at <m>t = \sfrac{\pi}{2}</m> </title>
+				<p>
+					<statement>
+						<p>
+							Rewrite the piecewise function
+							<me>
+								f(t) = \left\{
+								\begin{array}{ll}
+									0,			&amp; t \lt \sfrac{\pi}{2}\\
+									\sin(t),	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} \right.
+							</me>
+							in terms of the shifted unit step function <m>u_c(t)</m>.
+						</p>
+					</statement>
+				</p>
+
+				<solution>
+					<p>
+						The function initially is <m>0</m> and then becomes <m>\sin(t)</m> at <m>t=\frac{\pi}{2}</m>. So the piecewise function, <m>f(t)</m>, can be rewritten as follows
+						<me>
+							f(t) = \left\{
+								\begin{array}{ll}
+									0,			&amp; t \lt \sfrac{\pi}{2}\\
+									\sin(t),	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} 
+							\right.
+							\quad =\ \sin(t) \cdot {\color{BurntOrange}\ub{
+							\left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt \sfrac{\pi}{2}\\
+									1,	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} 
+							\right.}_{\large u_{\sfrac{\pi}{2}}(t)}}
+						</me>
+						and therefore, it can be written as the product 
+						<me>
+							f(t) = \sin(t) \cdot u_{\sfrac{\pi}{2}}(t)
+						</me>,
+						which has the following graph
+					</p>
+					
+					<p>
+						<sidebyside width="90%" margins="0%">
+							<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
+								<image>redacted for brevity</image>
+							</figure>
+						</sidebyside>
+					</p>
+				</solution>
+			</example>
+
+			<example>
+				<statement>
+					<p>
+						Write the piecewise definition for
+						<me>
+							h(t) = (t^2 - 4) u_3(t)
+						</me>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Substituting <m>u_3(t)</m> directly into <m>h(t)</m> gives us
+						<me>
+							h(t) = (t^2 - 4) \cdot {\color{BurntOrange}\ub{
+							\left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 3\\
+									1,	&amp; t \ge 3
+								\end{array} 
+							\right.}_{\large u_{3}(t)}} \quad =\
+							\left\{
+								\begin{array}{ll}
+									(t^2 - 4) \cdot 0,	&amp; t \lt 3\\
+									(t^2 - 4) \cdot 1,	&amp; t \ge 3
+								\end{array} 
+							\right.
+						</me>.
+					</p>
+
+					<p>
+						Hence, <m>h(t)</m> is equivalent to the piecewise function
+						<me>
+							h(t) = \left\{
+							\begin{array}{ll}
+								0,			&amp; t \lt 3\\
+								t^2 - 4,	&amp; t \ge 3.
+							\end{array} \right.
+						</me>
+					</p>
+				</solution>
+			</example>
+			
+			<p>
+				Shifting the unit step function gives us the flexibility to control exactly when a function begins to take effect, which will be essential when we model more complicated piecewise systems.
+			</p>
+
+		</subsubsection>	
+
+		<subsubsection><title> The Reversed Unit Step Function, <m>1-u_{c}(t)</m> </title>
+
+			<p>
+				Until now, we've used the unit step function <m>u_{c}(t)</m> to switch a function on at a certain time <m>t = c</m>. But what if we want the opposite—to switch a function off at <m>t = c</m> instead?
+			</p>
+
+			<p>
+				To do that, we reverse the role of the unit step function by subtracting it from 1 from each of its pieces. That is, the function
+			</p>
+
+			<me>
+				1 - {\color{BurntOrange}u_c(t)} = \us{\text{plug in } u_c}{\ul{1 - 
+				\left\{\small
+					\begin{array}{ll}
+						\color{BurntOrange} 0,	&amp; t \lt c\\
+						\color{BurntOrange} 1,	&amp; t \ge c
+					\end{array} 
+				\right.}}
+				\quad =\ \us{1 \text{ minus each piece}}{\ul{
+				\left\{\small
+					\begin{array}{ll}
+						1 - \color{BurntOrange} 0,	&amp; t \lt c\\
+						1 - \color{BurntOrange} 1,	&amp; t \ge c
+					\end{array} 
+				\right.}}
+				\quad =\ \us{\text{result}}{\ul{
+				\left\{\small
+					\begin{array}{ll}
+						1,	&amp; t \lt c\\
+						0,	&amp; t \ge c,
+					\end{array} 
+				\right.}}
+			</me>
+
+			<p>
+				gives us a unit step function that starts at 1 and drops to 0 at <m>t = c</m>.
+			</p>
+
+			<assemblage xml:id="reversed-unit-step"><title> Reversed Unit Step Function </title>
+				<p>
+					The reversed unit step function that starts at 1 and drops to 0 at <m>t = c</m> is 
+				</p>
+				<sidebyside widths="5% 45% 5% 40% 5%" valign="middle">
+					<p/>
+					<p>
+						<me>
+							1 - u_{c}(t) =
+							\left\{
+							\begin{array}{ll}
+								1, &amp; t \lt c\\
+								0, &amp; t \ge c
+							\end{array}
+							\right.
+						</me>
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+					<p/>
+				</sidebyside>
+			</assemblage>
+
+			<p>
+				When you multiply a function by <m>1 - u_{c}(t)</m>, you keep the function active until <m>t = c</m>, and then shut it off. 
+			</p>
+
+			<p>
+				<sidebyside widths="45% 2% 47%" margin="3%" >
+					<p>
+						For example, the expression
+
+						<me>
+							\left(2e^{-\sfrac{t^2}{2}}\right)\left(1 - u_{1}(t)\right)
+						</me>
+						
+						<p>
+							represents a function that behaves like <m>2e^{-\sfrac{t^2}{2}}</m> before <m>t = 1</m>, but becomes zero at and after <m>t = 1</m>.
+						</p>
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+				</sidebyside>
+			</p>
+
+			<example>
+				<statement>
+					<p>
+						Write the piecewise definition of
+						<me>
+							f(t) = (3 - t^2)\left(1 - u_{2}(t)\right).
+						</me>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Substituting <m>1 - u_{2}(t)</m> directly into <m>f(t)</m> gives us
+						<me>
+							f(t) = (3 - t^2) \cdot \ub{
+							\left\{
+								\begin{array}{ll}
+									1,	&amp; t \lt 2\\
+									0,	&amp; t \ge 2
+								\end{array} 
+							\right.}_{\large 1 - u_{2}(t)} \quad =\
+								\left\{
+									\begin{array}{ll}
+										(3 - t^2) \cdot 1,	&amp; t \lt 2\\
+										(3 - t^2) \cdot 0,	&amp; t \ge 2
+									\end{array} 
+								\right.
+						</me>
+					</p>
+
+					<p>
+						Hence, <m>f(t)</m> is equivalent to the piecewise function
+						<me>
+							f(t) = \left\{
+							\begin{array}{ll}
+								3 - t^2, &amp; t \lt 2\\
+								0, &amp; t \ge 2.
+							\end{array} \right.
+						</me>
+					</p>
+				</solution>
+			</example>
+
+			<p> 
+				While the unit step function, <m>u_{c}(t)</m>, activates functions to the right of <m>c</m>, this new reversed unit step function activates functions to the left of <m>c</m>. This come in handy when we start building formulas for piecewise functions over different types of intervals.
+			</p>
+
+		</subsubsection>
+
+		<subsubsection><title> The Interval Unit Step Function, <m>u_{c}(t) - u_{d}(t)</m> </title>
+
+			<p>
+				We have already seen how <m>u_c(t)</m> switches a function on at <m>t=c</m> and how <m>1 - u_c(t)</m> switches a function off at <m>t=c</m>. Now let's combine these ideas to create functions that are active only over specific intervals.
+			</p>
+			
+			<p>
+				This situation can be achieved by subtracting two shifted unit step functions:
+			</p>
+
+			<p>
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="bottom">
+					<p/>
+					<p>
+						<md>
+							<mrow>\small
+								u_{-1}(t) =
+								\left\{
+									\begin{array}{lr}
+										0,	&amp; t \lt -1\\
+										1,	&amp; t \ge -1
+									\end{array} 
+								\right.
+							</mrow>
+							<mrow>\small\phantom{-}</mrow>
+						</md>
+						<me>\small\text{Subtract}</me>
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+					<p/>
+				</sidebyside>
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="middle">
+					<p/>
+					<p>
+						<me>\downarrow</me>
+						<me>\phantom{-}</me>
+						<md>
+							<!-- <mrow>\small\phantom{-}</mrow> -->
+							<mrow>\small
+								u_{3}(t) =
+								\left\{
+									\begin{array}{lr}
+										0,	&amp; t \lt 3\\
+										1,	&amp; t \ge 3
+									\end{array} 
+								\right.
+							</mrow>
+							<!-- <mrow>\small\phantom{-}</mrow> -->
+						</md>
+						<me>\phantom{-}</me>
+						<me>\small\text{Equals}</me>
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+					<p/>
+				</sidebyside>
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="top">
+					<p/>
+					<p>
+						<me>\downarrow</me>
+						<md>
+							<mrow>\small\phantom{-}</mrow>
+							<mrow>\quad u_{-1}(t) - u_{3}(t) \rightarrow</mrow>
+						</md>
+					</p>
+					<p/>
+					<p>
+						<image>redacted for brevity</image>
+					</p>
+					<p/>
+				</sidebyside>
+			</p>
+			
+			<p>
+				In general, the difference of two unit step functions, <m>u_c(t) - u_d(t)</m>, is 1 on the interval <m>[c, d)</m> and 0 everywhere else. This can be expressed as the piecewise function:
+				<md>
+					<mrow>
+						u_{c}(t) - u_{d}(t)
+						= \left\{
+							\begin{array}{lr}
+								0,	&amp; 		t \lt c\\
+								1,	&amp; c\le	t \lt d\\
+								0,	&amp; d	\le t
+							\end{array} 
+						\right.
+					</mrow>
+				</md>
+			</p>
+
+			<assemblage xml:id="unit-step-interval"><title> Interval Unit Step Function </title>
+				<p>
+					The difference of shifted unit step functions given by
+				</p>
+
+				<p>
+					<sidebyside widths="2% 47% 2% 47% 2%" valign="middle">
+						<p/>
+						<p>
+							<me>
+								u_c(t) - u_d(t) = \left\{
+								\begin{array}{ll}
+									0, &amp; t \lt c\\
+									1, &amp; c \le t \lt d\\
+									0, &amp; t \ge d
+								\end{array}
+								\right.
+							</me>
+						</p>
+						<p/>
+						<p>
+							<image>redacted for brevity</image>
+						</p>
+						<p/>
+					</sidebyside>
+				</p>
+				
+				<p>
+					is 1 on the interval <m>[c,d)</m> and 0 everywhere else.
+				</p>
+			</assemblage>
+			
+			<p>
+				By multiplying a function <m>f(t)</m> by <m>u_c(t) - u_d(t)</m>, we can restrict <m>f(t)</m> so that it is active only on the interval <m>[c,d)</m> and zero everywhere else.
+			</p>
+
+			<example><title> Function Activation on <m>[1,4)</m> </title>
+				<statement>
+					<p>
+						Write a formula for the function
+					</p>
+					<me>
+						g(t) = \left\{
+						\begin{array}{ll}
+							t-2, &amp; 1 \le t \lt 4\\
+							0, &amp; \text{otherwise}
+						\end{array}
+						\right.
+					</me>
+					<p>
+						using unit step functions.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						The piecewise version of such a function is
+						<md>
+							<mrow>
+								f(t) \amp = 
+								\left\{
+								\begin{array}{ll}
+									0,		&amp; t \lt 1\\
+									t - 2,	&amp; 1 \le t \lt 4\\
+									0,		&amp; t \ge 4 
+								\end{array} 
+								\right. \quad  = (t - 2) \cdot 
+								\left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt 1\\
+										1,	&amp; 1 \le t \lt 4\\
+										0,	&amp; t \ge 4.
+									\end{array} 
+								\right.
+							</mrow>
+						</md>
+						The unit-step function that is <m>1</m> between <m>t = 1</m> and <m>t = 4</m> is given by
+						<me>
+							u_{1}(t) - u_{4}(t)
+						</me>.
+						Thus, the function, in terms of unit-step functions, is
+						<me>
+							f(t) = (t - 2) \cdot (u_{1}(t) - u_{4}(t))
+						</me>
+						and has the graph
+					</p>
+
+					<p>
+						<sidebyside width="80%" margins="10%">
+							<figure xml:id="unit-step-off-on-off"><caption> Graph of <m>\left(t-2\right) \cdot \left(u_{1}(t) - u_{4}(t)\right)</m> </caption>
+								<image>redacted for brevity</image>
+							</figure>
+						</sidebyside>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				This method of using a difference of unit step functions will be especially useful as we start to build full formulas for complicated piecewise functions in the next sections.
+			</p>
+			
+		</subsubsection>
+
+	</subsection>
+
+</section>

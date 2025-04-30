@@ -37,11 +37,17 @@ Subsection: Unit Step Functions
 <section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title>
 
 	<introduction>
-
 		<p>
-			Needs to be written.
+		  	Many physical systems experience sudden changes—like a heater turning on, a traffic light switching, or a force applied at a specific moment. In mathematics, these sudden changes are modeled using <em>piecewise functions</em>: functions that behave differently over different intervals of time.
 		</p>
-		
+	  
+		<p>
+		  	Instead of writing separate cases for each piece, we can use a clever tool called the <em>unit step function</em> to express everything in a single formula. This section introduces the unit step function and shows how it helps us construct, shift, and control piecewise behaviors in a clean, algebraic way.
+		</p>
+	  
+		<p>
+		  	By the end of this section, you'll be able to rewrite piecewise functions using step functions, model when things switch on or off, and even describe functions that turn on for only a limited time interval. These tools will be essential as we explore Laplace transforms of systems with piecewise or impulsive inputs.
+		</p>
 	</introduction>
 
 	<subsection><title> Unit Step Functions </title>
@@ -113,7 +119,7 @@ Subsection: Unit Step Functions
 		
 		</reading-questions>
 		
-		<subsubsection><title> Definition </title>
+		<subsubsection><title> The Standard Unit Step Function, <m>u(t)</m> </title>
 
 			<p>
 				In the last section, we hinted at a special function that could mimic the "on" and "off" behavior of piecewise functions. This function is called the <em>unit step function</em>, sometimes also known as the <em>Heaviside function</em>. It acts like a simple switch that flips from 0 to 1 at a specific time.
@@ -162,7 +168,6 @@ Subsection: Unit Step Functions
 										\def\c{0}
 										\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
 										\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-										\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
 										\node[font=\small, below] at ({\c}, -0.1) {$c$};
 
 										% === Function definitions ===
@@ -452,106 +457,136 @@ Subsection: Unit Step Functions
 		
 		</reading-questions>
 
-		<subsubsection><title> Shifting the Unit Step Function Left or Right </title>
+		<subsubsection><title> The Shifted Unit Step Function, <m>u_{c}(t)</m> </title>
 
 			<p>
-				As we saw, the standard unit function <q>turns on</q> a function at <m>t=0</m>, but we would also like the ability to <q>turn on</q> a function at any time <m>t=c</m>. To do this, we can shift the unit step function to the right or left. The unit step function is defined as
+				The standard unit step function <m>u(t)</m> flips a function on right at <m>t=0</m>. But what if we need to delay that switch—to turn a function on later, say at <m>t=2</m>, <m>t=5</m>, or even <m>t=-3</m>? We can make this happen by shifting the step function horizontally.
+			</p>
+			
+			<p>
+				We define a shifted unit step function by replacing <m>t</m> with <m>t-c</m>, where <m>c</m> is the shift:
 			</p>
 
-			<definition xml:id="unit-step-off-then-on">
-				<statement>
+			<aside><title> 🖋️ Notation: <m>u_c(t)</m> </title>
+				<tabular top="minor">
+					<col width="100%"/>
+					<row>
+						<cell>
+							<p>
+								Writing <m>u_c(t)</m> is just shorthand for <m>u(t - c)</m>. Both mean the same thing: a step function that switches from 0 to 1 at <m>t = c</m>.
+							</p>
+						</cell>
+					</row>
+				</tabular>
+			</aside>
+
+			<assemblage xml:id="shifted-unit-step-function"><title> Shifted Unit Step Function </title>
+				<p>
+					The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
+				</p>
+
+				<sidebyside widths="57% 1% 38%" margin="2%" valign="middle">
 					<p>
-						The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
+						<md>
+							<mrow>
+								u_c(t) 
+								\amp = u(t - c) = \left\{
+									\begin{array}{ll}
+										0,	&amp; t \lt c\\
+										1,	&amp; t \ge c
+									\end{array} 
+									\right.
+							</mrow>
+						</md>
+						This function switches from 0 to 1 at <m>t = c</m>.
 					</p>
-					<sidebyside widths="2% 52% 2% 42% 2%" valign="middle">
-						<p/>
-						<p>
-							<md>
-								<mrow>
-									u_c(t) 
-									\amp = u(t - c) = \left\{
-										\begin{array}{ll}
-											0,	&amp; t \lt c\\
-											1,	&amp; t \ge c
-										\end{array} 
-										\right.
-								</mrow>
-							</md>
-							and has the graph shown to the right.
-						</p>
-						<p/>
-						<p>
-							<image>
-								<latex-image>
-									\begin{tikzpicture}[domain=-2.5:4.5, samples=100, scale=0.6]
-				
-										% === Piecewise Function with 2 Parts ===
-	
-										% === colors ===
-										\def\ofColor{blue}				\def\ofFill{\ofColor!15}
-										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
-	
-										% === figure/domain/tick bounds ===
-										\def\tmin{-2.5}	\def\tmax{4.5}
-										\def\ymin{-1.2}	\def\ymax{1.8}
-										\def\tticks{-2, -1, 1, 2, 3, 4}
-										\def\yticks{1}
-									
-										% === Transistions ===
-										\def\c{1.5}
-										\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-										\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-										\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
-										\node[font=\small, below] at ({\c}, -0.1) {$c$};
+					<p/>
+					<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[domain=-2.5:4.5, samples=100, scale=0.55]
+			
+									% === Piecewise Function with 2 Parts ===
 
-										% === Function definitions ===
-										\newcommand{\uL}[1]{0}	\def\uLtex{0}
-										\newcommand{\uR}[1]{1}	\def\uRtex{1}
-									
-										% === Axes ===
-										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
-				
-										% === Tick marks and labels ===
-										\foreach \t in \tticks {
-											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
-											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
-										}
-										\foreach \y in \yticks {
-											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
-										}
-									
-										% === Function plots on [tmin, c] ===
-										\draw[\ofColor, very thick]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
-										
-										% === Function plots on [c, tmax] ===
-										\draw[\onColor, very thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
-										
-										% === Points at t=c ===
-										\draw[\ofColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
-										\fill[\onColor]			(\c,{\uR{\c}})	circle[radius=3pt];
-										
-										% === Function Labels ===
-										\node[\ofColor, font=\scriptsize, above] at (-1.4					, 0.1)			{$u_c(t) = 0$};
-										\node[\onColor, font=\scriptsize, below] at ({(\c + \tmax)/2}		, {\ymax+0.15})	{$u_c(t) = 1$};
-										\node[\ofColor, font=\scriptsize, above] at ({(\tmin + \c - 1)/2}	, \ymin-0.1)	{$\text{``off''}$};
-										\node[\onColor, font=\scriptsize, above] at ({(\c + \tmax)/2}		, \ymin-0.1)	{$\text{``on''}$};
-									\end{tikzpicture}
-								</latex-image>
-							</image>
-						</p>
-						<p/>
-					</sidebyside>
-				</statement>
-			</definition>
+									% === colors ===
+									\def\ofColor{blue}				\def\ofFill{\ofColor!15}
+									\def\onColor{green!60!black}	\def\onFill{\onColor!15}
 
+									% === figure/domain/tick bounds ===
+									\def\tmin{-2.5}	\def\tmax{4.5}
+									\def\ymin{-1.2}	\def\ymax{1.8}
+									\def\tticks{-2, -1, 1, 2, 3, 4}
+									\def\yticks{1}
+								
+									% === Transistions ===
+									\def\c{1.5}
+									\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+									\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+									%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+									\node[font=\small, below] at ({\c}, -0.1) {$c$};
+
+									% === Function definitions ===
+									\newcommand{\uL}[1]{0}	\def\uLtex{0}
+									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+									\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
+			
+									% === Tick marks and labels ===
+									\foreach \t in \tticks {
+										\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+										\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
+									}
+									\foreach \y in \yticks {
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+									}
+								
+									% === Function plots on [tmin, c] ===
+									\draw[\ofColor, very thick]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
+									
+									% === Function plots on [c, tmax] ===
+									\draw[\onColor, very thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
+									
+									% === Points at t=c ===
+									\draw[\ofColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+									\fill[\onColor]			(\c,{\uR{\c}})	circle[radius=3pt];
+									
+									% === Function Labels ===
+									\node[\ofColor, font=\scriptsize, above] at (-1.4					, 0.1)			{$u_c(t) = 0$};
+									\node[\onColor, font=\scriptsize, below] at ({(\c + \tmax)/2}		, {\ymax+0.15})	{$u_c(t) = 1$};
+									\node[\ofColor, font=\scriptsize, above] at ({(\tmin + \c - 1)/2}	, \ymin-0.1)	{$\text{``off''}$};
+									\node[\onColor, font=\scriptsize, above] at ({(\c + \tmax)/2}		, \ymin-0.1)	{$\text{``on''}$};
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+				</sidebyside>
+			</assemblage>
+			
 			<p>
-				Multiplying a function by this shifted unit step function, <m>u_c(t)</m>, allows us to switch it <em>on</em> any time <m>t=c</m>, not just <m>t=0</m>. To see how <m>c</m> affects the graph of <m>\left(\frac15 t^2 - 1\right)\cdot u_c(t)</m>, try moving it around in the following interactive tool.
+				Multiplying a function by <m>u_c(t)</m> delays when it turns on. Instead of flipping on at <m>t=0</m>, it stays off until <m>t=c</m>. After that, the function behaves as normal.
+			</p>
+			
+			<p>
+				For example, the product
+			</p>
+			
+			<me>
+				\left(\frac{1}{5}t^2 - 1\right) u(t-2)
+			</me>
+			
+			<p>
+				would flatten the function to 0 for <m>t &lt; 2</m>, and then "turn it on" for <m>t \ge 2</m>.  
 			</p>
 
-			<assemblage><title>🕹️ Interactive: Exploring the Effect of <m>c</m> </title>
+			<p>
+				To see this, try moving the shifting constant, <m>c</m>, in the following interactive tool.
+			</p>
+
+			<corollary><title> Exploring the Effect of <m>c</m> </title>
 				<p>
 					<tabular top="minor" bottom="minor">
 						<col width="5%"/>
@@ -561,7 +596,7 @@ Subsection: Unit Step Functions
 							<cell><p><m>\succ</m></p></cell>
 							<cell>
 								<p>
-									Hover over the labels <m>f(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to hightlight them.
+									Hover over the labels <m>f(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to highlight them.
 								</p>
 							</cell>
 							<cell><p><m>\phantom{=======}</m></p></cell>
@@ -577,7 +612,7 @@ Subsection: Unit Step Functions
 						</row>
 					</tabular>
 				</p>
-					<p>
+				<p>
 					<sidebyside width="60%">
 						<interactive xml:id="unit-step-2"
 							platform="jsxgraph"
@@ -595,7 +630,7 @@ Subsection: Unit Step Functions
 						</interactive>
 					</sidebyside>
 				</p>
-			</assemblage>
+			</corollary>
 
 			<example><title> Turning a Function on at <m>t = \sfrac{\pi}{2}</m> </title>
 				<p>
@@ -616,27 +651,23 @@ Subsection: Unit Step Functions
 
 				<solution>
 					<p>
-						The function initially is <m>0</m> and then becomes <m>\sin(t)</m> at <m>t=\frac{\pi}{2}</m>. So the piecewise function, <m>f(t)</m>, is equivalent to
-						<md>
-							<mrow>
-								f(t) \amp = \left\{
-									\begin{array}{ll}
-										0,			&amp; t \lt \sfrac{\pi}{2}\\
-										\sin(t),	&amp; t \ge \sfrac{\pi}{2}
-									\end{array} 
-								\right.
-							</mrow>
-							<mrow>
-								\amp = \sin(t) \cdot {\color{BurntOrange}\ub{
-								\left\{
-									\begin{array}{ll}
-										0,	&amp; t \lt \sfrac{\pi}{2}\\
-										1,	&amp; t \ge \sfrac{\pi}{2}
-									\end{array} 
-								\right.}_{\large u_{\sfrac{\pi}{2}}(t)}}
-							</mrow>
-						</md>
-						and therefore, the piecewise function, <m>f(t)</m>, can be written as
+						The function initially is <m>0</m> and then becomes <m>\sin(t)</m> at <m>t=\frac{\pi}{2}</m>. So the piecewise function, <m>f(t)</m>, can be rewritten as follows
+						<me>
+							f(t) = \left\{
+								\begin{array}{ll}
+									0,			&amp; t \lt \sfrac{\pi}{2}\\
+									\sin(t),	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} 
+							\right.
+							\quad =\ \sin(t) \cdot {\color{BurntOrange}\ub{
+							\left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt \sfrac{\pi}{2}\\
+									1,	&amp; t \ge \sfrac{\pi}{2}
+								\end{array} 
+							\right.}_{\large u_{\sfrac{\pi}{2}}(t)}}
+						</me>
+						and therefore, it can be written as the product 
 						<me>
 							f(t) = \sin(t) \cdot u_{\sfrac{\pi}{2}}(t)
 						</me>,
@@ -644,7 +675,7 @@ Subsection: Unit Step Functions
 					</p>
 					
 					<p>
-						<sidebyside width="100%" margins="0%">
+						<sidebyside width="90%" margins="0%">
 							<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
 								<image>
 									<latex-image>
@@ -676,8 +707,8 @@ Subsection: Unit Step Functions
 											\def\c{pi/2}
 											\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
 											\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-											\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
-											\node[font=\small, below] at ({\c}, -0.1) {$c$};
+											%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+											\node[font=\small, below] at ({\c}, -0.7) {$c$};
 
 											% === Function definitions ===
 											\newcommand{\f}[1]{sin(#1 r)}	\def\ftex{\sin(t)}
@@ -700,12 +731,11 @@ Subsection: Unit Step Functions
 
 											% === Function plots on [tmin, c] ===
 											\draw[\ofColor, very thick]			plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
-											\draw[\ofColor!50, thick, dashed]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\f{\t}});
+											\draw[\ofColor!50, thin, dashed]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\f{\t}});
 
 											% === Function plots on [c, tmax] ===
 											\draw[\onColor, very thick]			plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
-
-											\draw[\onColor!50, thick, dashed]	plot[domain=\c:\tmax, variable=\t] (\t, {\uR{\t}});
+											\draw[\onColor!50, thin, dashed]	plot[domain=\c:\tmax, variable=\t] (\t, {\uR{\t}});
 
 											% === Points at t=c ===
 											\draw[\ofColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
@@ -725,335 +755,336 @@ Subsection: Unit Step Functions
 						</sidebyside>
 					</p>
 				</solution>
-			</example> 
+			</example>
 
-		</subsubsection>
-
-		<subsubsection><title>Shifting the Unit Step Function Left or Right</title>
-
-			<p>
-				So far, the standard unit step function <m>u(t)</m> flips a function on at exactly <m>t=0</m>. But what if you want to turn a function on later—at <m>t=2</m>, or <m>t=5</m>, or even <m>t=-3</m>? We can make this happen by shifting the step function horizontally.
-			</p>
-			
-			<p>
-				We define a shifted unit step function by replacing <m>t</m> with <m>t-c</m>, where <m>c</m> is the shift:
-			</p>
-			
-			<definition xml:id="shifted-unit-step-function">
-				<statement>
-					<p>
-						The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
-					</p>
-					<sidebyside widths="5% 45% 5% 40% 5%" valign="top">
-						<p/>
-						<p>
-							<me>
-								u_c(t) = u(t-c) = \left\{
-								\begin{array}{ll}
-									0, &amp; t \lt c\\
-									1, &amp; t \ge c
-								\end{array}
-								\right.
-							</me>
-							<p>
-								This function switches from 0 to 1 at <m>t = c</m>.
-							</p>
-						</p>
-						<p/>
-						<p>
-							<image source="figures/shifted-unit-step.png" width="95%"/>
-						</p>
-						<p/>
-					</sidebyside>
-				</statement>
-			</definition>
-			
-			<p>
-				Multiplying a function by <m>u_c(t)</m> delays when it turns on. Instead of flipping on at <m>t=0</m>, it stays off until <m>t=c</m>. After that, the function behaves as normal.
-			</p>
-			
-			<p>
-				For example, the product
-			</p>
-			
-			<me>
-				\left(\frac{1}{5}t^2 - 1\right) u(t-2)
-			</me>
-			
-			<p>
-				would flatten the function to 0 for <m>t &lt; 2</m>, and then "turn it on" for <m>t \ge 2</m>.  
-			</p>
-			
 			<example>
 				<statement>
 					<p>
 						Write the piecewise definition for
 						<me>
-							h(t) = (t^2 - 4) u(t-3)
+							h(t) = (t^2 - 4) u_3(t)
 						</me>.
 					</p>
 				</statement>
-				<solution/>
+				<solution>
+					<p>
+						Substituting <m>u_3(t)</m> directly into <m>h(t)</m> gives us
+						<me>
+							h(t) = (t^2 - 4) \cdot {\color{BurntOrange}\ub{
+							\left\{
+								\begin{array}{ll}
+									0,	&amp; t \lt 3\\
+									1,	&amp; t \ge 3
+								\end{array} 
+							\right.}_{\large u_{3}(t)}} \quad =\
+							\left\{
+								\begin{array}{ll}
+									(t^2 - 4) \cdot 0,	&amp; t \lt 3\\
+									(t^2 - 4) \cdot 1,	&amp; t \ge 3
+								\end{array} 
+							\right.
+						</me>.
+					</p>
+
+					<p>
+						Hence, <m>h(t)</m> is equivalent to the piecewise function
+						<me>
+							h(t) = \left\{
+							\begin{array}{ll}
+								0,			&amp; t \lt 3\\
+								t^2 - 4,	&amp; t \ge 3.
+							\end{array} \right.
+						</me>
+					</p>
+				</solution>
 			</example>
 			
 			<p>
 				Shifting the unit step function gives us the flexibility to control exactly when a function begins to take effect, which will be essential when we model more complicated piecewise systems.
 			</p>
-			
-		</subsubsection>		
 
-		<subsubsection><title> Reversing the Direction of the Unit Step Function </title>
+		</subsubsection>	
 
-			<p> 
-				In the previous sections, we saw how a shifted unit step function, <m>u_c(t) = u(t-c)</m>, turns a function <em>on</em> at a specific time <m>t=c</m>. However, sometimes we need the opposite behavior: we want a function to be <em>on</em> initially and then turn <em>off</em> at a certain point. This requires reversing the direction of the unit step function.
+		<subsubsection><title> The Reversed Unit Step Function, <m>1-u_{c}(t)</m> </title>
+
+			<p>
+				Until now, we've used the unit step function <m>u_{c}(t)</m> to switch a function on at a certain time <m>t = c</m>. But what if we want the opposite—to switch a function off at <m>t = c</m> instead?
 			</p>
 
-			<p> 
-				One way to accomplish this is by subtracting the unit step function from 1.
-				<sidebyside widths="50% 50%" valign="top">
+			<p>
+				To do that, we reverse the role of the unit step function by subtracting it from 1. That is, the function
+			</p>
+
+			<me>
+				1 - {\color{BurntOrange}u_c(t)} = \us{\text{plug in } u_c}{\ul{1 - 
+				\left\{\small
+					\begin{array}{ll}
+						\color{BurntOrange} 0,	&amp; t \lt c\\
+						\color{BurntOrange} 1,	&amp; t \ge c
+					\end{array} 
+				\right.}}
+				\quad =\ \us{1 \text{ minus each piece}}{\ul{
+				\left\{\small
+					\begin{array}{ll}
+						1 - \color{BurntOrange} 0,	&amp; t \lt c\\
+						1 - \color{BurntOrange} 1,	&amp; t \ge c
+					\end{array} 
+				\right.}}
+				\quad =\ \us{\text{result}}{\ul{
+				\left\{\small
+					\begin{array}{ll}
+						1,	&amp; t \lt c\\
+						0,	&amp; t \ge c,
+					\end{array} 
+				\right.}}
+			</me>
+
+			<p>
+				gives us a unit step function that starts at 1 and drops to 0 at <m>t = c</m>.
+			</p>
+
+			<assemblage xml:id="reversed-unit-step"><title> Reversed Unit Step Function </title>
+				<p>
+					The reversed unit step function that starts at 1 and drops to 0 at <m>t = c</m> is 
+				</p>
+				<sidebyside widths="5% 45% 5% 40% 5%" valign="middle">
+					<p/>
 					<p>
-						In particular, we define the function
-						<md>
-							<mrow>
-								1 - {\color{BurntOrange}u_c(t)}
-								\amp = 1 - {\color{BurntOrange}
-								\left\{
-									\begin{array}{ll}
-										0,	&amp; t \lt c\\
-										1,	&amp; t \ge c
-									\end{array} 
-								\right.}
-							</mrow>
-							<mrow/>
-							<mrow>
-								1 - u_c(t)
-								\amp =
-								\left\{
-									\begin{array}{ll}
-										1,	&amp; t \lt c\\
-										0,	&amp; t \ge c
-									\end{array} 
-								\right.
-							</mrow>
-						</md>
+						<me>
+							1 - u_{c}(t) =
+							\left\{
+							\begin{array}{ll}
+								1, &amp; t \lt c\\
+								0, &amp; t \ge c
+							\end{array}
+							\right.
+						</me>
 					</p>
+					<p/>
 					<p>
-						<figure xml:id="unit-step-on-then-off">
-							<caption> Graph of <m>1 - u_c(t)</m> </caption>
-							<image>
-								<latex-image>
-									\begin{tikzpicture}[domain=-3.5:4.8, samples=100, scale=0.7]
-				
-										% === Piecewise Function with 2 Parts ===
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[domain=-3.5:4.8, samples=100, scale=0.55]
+			
+									% === Piecewise Function with 2 Parts ===
 
-										% === colors ===
-										\def\ofColor{blue}				\def\ofFill{\ofColor!15}
-										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+									% === colors ===
+									\def\ofColor{blue}				\def\ofFill{\ofColor!15}
+									\def\onColor{green!60!black}	\def\onFill{\onColor!15}
 
-										% === figure/domain/tick bounds ===
-										\def\tmin{-3.5}	\def\tmax{4.8}
-										\def\ymin{-1.1}	\def\ymax{1.9}
-										\def\tticks{-3, -2, -1, 1, 2, 3, 4}
-										\def\yticks{1}
-									
-										% === Transistions ===
-										\def\c{1.4}
-										\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-										\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-										\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
-										\node[font=\small, below] at ({\c}, -0.1) {$c$};
+									% === figure/domain/tick bounds ===
+									\def\tmin{-3.5}	\def\tmax{4.8}
+									\def\ymin{-1.2}	\def\ymax{1.9}
+									\def\tticks{-3, -2, -1, 1, 2, 3, 4}
+									\def\yticks{1}
+								
+									% === Transistions ===
+									\def\c{1.4}
+									\fill[\onFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+									\fill[\ofFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+									%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+									\node[font=\small, below] at ({\c}, -0.1) {$c$};
 
-										% === Function definitions ===
-										\newcommand{\uL}[1]{0}	\def\uLtex{0}
-										\newcommand{\uR}[1]{1}	\def\uRtex{1}
+									% === Function definitions ===
+									\newcommand{\uL}[1]{0}	\def\uLtex{0}
+									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+									\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
+			
+									% === Tick marks and labels ===
+									\foreach \t in \tticks {
+										\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+										\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
+									}
+									\foreach \y in \yticks {
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+									}
+								
+									% === Function plots on [tmin, c] ===
+									\draw[\onColor, very thick]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {1-\uL{\t}});
 									
-										% === Axes ===
-										\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
-										\draw[-&gt;] (0, \ymin) -- (0, \ymax);
-										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
-				
-										% === Tick marks and labels ===
-										\foreach \t in \tticks {
-											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
-											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
-										}
-										\foreach \y in \yticks {
-											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
-										}
+									% === Function plots on [c, tmax] ===
+									\draw[\ofColor, very thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {1-\uR{\t}});
 									
-										% === Function plots on [tmin, c] ===
-										\draw[\onColor, very thick]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {1-\uL{\t}});
-										
-										% === Function plots on [c, tmax] ===
-										\draw[\ofColor, very thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {1-\uR{\t}});
-										
-										% === Points at t=c ===
-										\draw[\onColor, very thick]	(\c,{1-\uL{\c}}) circle[radius=3pt];
-										\fill[\ofColor]				(\c,{1-\uR{\c}}) circle[radius=3pt];
-										
-										% === Function Labels ===
-										\node[\onColor, font=\small, above]			at ({(\tmin+\c)/2-1}, 1.0)		{$1 - u_c(t) = 1$};
-										\node[\ofColor, font=\small, above]			at ({(\c+\tmax)/2}, 0.0)		{$1 - u_c(t) = 0$};
-										\node[\onColor, font=\scriptsize, above]	at ({(\tmin+\c)/2}, \ymin-0.1)	{$\text{``on''}$};
-										\node[\ofColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, \ymin-0.1)	{$\text{``off''}$};
-									\end{tikzpicture}
-								</latex-image>
-							</image>
-						</figure>
+									% === Points at t=c ===
+									\draw[\onColor, very thick]	(\c,{1-\uL{\c}}) circle[radius=3pt];
+									\fill[\ofColor]				(\c,{1-\uR{\c}}) circle[radius=3pt];
+									
+									% === Function Labels ===
+									\node[\onColor, font=\scriptsize, above]	at ({(\tmin+\c)/2-1}, 1.0)		{$1 - u_c(t) = 1$};
+									\node[\ofColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, 0.0)		{$1 - u_c(t) = 0$};
+									\node[\onColor, font=\scriptsize, above]	at ({(\tmin+\c)/2}, \ymin-0.1)	{$\text{``on''}$};
+									\node[\ofColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, \ymin-0.1)	{$\text{``off''}$};
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+					<p/>
+				</sidebyside>
+			</assemblage>
+
+			<p>
+				When you multiply a function by <m>1 - u_{c}(t)</m>, you keep the function active until <m>t = c</m>, and then shut it off. 
+			</p>
+
+			<p>
+				<sidebyside widths="45% 2% 47%" margin="3%" >
+					<p>
+						For example, the expression
+
+						<me>
+							\left(2e^{-\sfrac{t^2}{2}}\right)\left(1 - u_{1}(t)\right)
+						</me>
+						
+						<p>
+							represents a function that behaves like <m>2e^{-\sfrac{t^2}{2}}</m> before <m>t = 1</m>, but becomes zero at and after <m>t = 1</m>.
+						</p>
+					</p>
+					<p/>
+					<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.6]
+
+									% === Piecewise Function with 2 Parts ===
+
+									% === colors ===
+									\def\ofColor{blue}				\def\ofFill{\ofColor!15}
+									\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+
+									% === figure/domain/tick bounds ===
+									\def\tmin{-3.8}	\def\tmax{3.8}
+									\def\ymin{-1.3}	\def\ymax{2.8}
+
+									\def\a{\tmin}	\def\b{\tmax}
+									
+									\def\tticks{
+										-2 / $-2$,
+										-1 / $-1$,
+										1  / $1$,
+										2  / $2$,
+									}
+									\def\yticks{
+										-1 / $-1$,
+										1  / $1$,
+									}
+								
+									% === Transistions ===
+									\def\c{1}
+									\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+									\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+									%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+									\node[font=\small, below] at ({\c}, -0.7) {$c$};
+								
+									% === Function definitions ===
+									\newcommand{\f}[1]{2*exp(-(0.5*#1*#1))}	\def\ftex{2e^{-\sfrac{t^2}{2}}}
+									\newcommand{\uL}[1]{0}	\def\uLtex{0}
+									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+									\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
+									
+									% === Tick marks and labels ===
+									\foreach \t /\n in \tticks {
+										\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
+									}
+
+									\foreach \t /\n in \yticks {
+										\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
+									}
+
+									% === Function plots on [a, c] ===
+									\draw[\onColor, thin, dashed]	plot[domain=\a:\c, variable=\t]	(\t, {1-\uL{\t}});
+									\draw[\onColor, very thick]		plot[domain=\a:\c, variable=\t]	(\t, {\f{\t}});
+									
+									% === Function plots on [c, b] ===
+									\draw[\ofColor!50, thin, dashed]	plot[domain=\c:\b, variable=\t]			(\t, {\f{\t}});
+									\draw[\ofColor, very thick]			plot[domain=\c+0.06:\b, variable=\t]	(\t, {1-\uR{\t}});
+
+									% === Points at t=c ===
+									\draw[\ofColor, very thick]	(\c,{1-\uR{\c}})	circle[radius=3pt];
+									\fill[\onColor]					(\c,{\f{\c}})	circle[radius=3pt];
+
+									% === Function Labels ===
+									\node[\onColor, font=\scriptsize, above] at ({(\tmin + \c)/2-1}, 1)	{$1-u(t) = 1$};
+									\node[\ofColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, 0)		{$1-u(t) = 0$};
+									\node[\onColor, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{``off''}$};
+									\node[\ofColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{``on''}$};
+									\node[font=\small, above] at ({(\c + \tmax)/2}, 1)		{$\ftex\cdot\color{\ofColor}{0}$};
+									\node[font=\small, below] at ({(\tmin + \c)/2}, \ymax)	{$\ftex\cdot\color{\onColor}{1}$};
+								\end{tikzpicture}
+							</latex-image>
+						</image>
 					</p>
 				</sidebyside>
 			</p>
 
-			<p>
-				Therefore, while multiplication by <m>u_c(t)</m> turns an initially <em>off</em> function <em>on</em> at <m>t=c</m>, multiplication by <m>1 - u_c(t)</m> does the exact opposite. It <em>turns</em> turns an initially <em>on</em> function <em>off</em> at <m>t=c</m>. Let's look at an example.
-			</p>
-			
-			<example><title> Turning a Function <em>off</em> at <m>t = 1</m> </title>
-				<p>
-					<statement>
-						<p>
-							Rewrite the piecewise function
-							<me>
-								f(t) = \left\{
-								\begin{array}{ll}
-									2e^{-\sfrac{t^2}{2}},	&amp; t \lt 1\\
-									0,			&amp; t \ge 1
-								\end{array} \right.
-							</me>
-							as the product of <m>2e^{-\sfrac{t^2}{2}}</m> and a unit step function.
-						</p>
-					</statement>
-				</p>
-
+			<example>
+				<statement>
+					<p>
+						Write the piecewise definition of
+						<me>
+							f(t) = (3 - t^2)\left(1 - u_{2}(t)\right).
+						</me>
+					</p>
+				</statement>
 				<solution>
 					<p>
-						The function is initially <m>2e^{-\sfrac{t^2}{2}}</m> and then becomes <m>0</m> at <m>t=1</m>. So the piecewise function, <m>f(t)</m>, is equivalent to
-						<md>
-							<mrow>
-								f(t) \amp = \left\{
-									\begin{array}{ll}
-										2e^{-\sfrac{t^2}{2}},	&amp; t \lt 1\\
-										0,						&amp; t \ge 1
-									\end{array} 
-								\right.
-							</mrow>
-							<mrow/>
-							<mrow>
-								\amp = 2e^{-\sfrac{t^2}{2}} \cdot {\color{BurntOrange}\ub{
+						Substituting <m>1 - u_{2}(t)</m> directly into <m>f(t)</m> gives us
+						<me>
+							f(t) = (3 - t^2) \cdot \ub{
+							\left\{
+								\begin{array}{ll}
+									1,	&amp; t \lt 2\\
+									0,	&amp; t \ge 2
+								\end{array} 
+							\right.}_{\large 1 - u_{2}(t)} \quad =\
 								\left\{
 									\begin{array}{ll}
-										1,	&amp; t \lt 1\\
-										0,	&amp; t \ge 1
+										(3 - t^2) \cdot 1,	&amp; t \lt 2\\
+										(3 - t^2) \cdot 0,	&amp; t \ge 2
 									\end{array} 
-								\right.}_{\large 1 - u_{1}(t)}}
-							</mrow>
-						</md>
-						and therefore, the piecewise function, <m>f(t)</m>, can be written as
-						<me>
-							f(t) = 2e^{-\sfrac{t^2}{2}} \cdot (1 - u_{1}(t))
-						</me>,
-						and has the following graph
+								\right.
+						</me>
 					</p>
 
 					<p>
-						<sidebyside width="80%" margins="10%">
-							<figure xml:id="tsqrd-on-then-off-at-neg1"><caption> Graph of <m>2e^{-\sfrac{t^2}{2}} \cdot u_{1}(t)</m> </caption>
-								<image>
-									<latex-image>
-										\begin{tikzpicture}[domain=-3:3, samples=200, scale=0.7]
-				
-											% === Piecewise Function with 2 Parts ===
-
-											% === colors ===
-											\def\ofColor{blue}				\def\ofFill{\ofColor!15}
-											\def\onColor{green!60!black}	\def\onFill{\onColor!15}
-
-											% === figure/domain/tick bounds ===
-											\def\tmin{-3.8}	\def\tmax{3.8}
-											\def\ymin{-1.3}	\def\ymax{2.8}
-
-											\def\a{\tmin}	\def\b{\tmax}
-											
-											\def\tticks{
-												-2 / $-2$,
-												-1 / $-1$,
-												1  / $1$,
-												2  / $2$,
-											}
-											\def\yticks{
-												-1 / $-1$,
-												1  / $1$,
-											}
-										
-											% === Transistions ===
-											\def\c{1}
-											\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-											\fill[\onFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-											\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
-											\node[font=\small, below] at ({\c}, -0.1) {$c$};
-										
-											% === Function definitions ===
-											\newcommand{\f}[1]{2*exp(-(0.5*#1*#1))}	\def\ftex{2e^{-\sfrac{t^2}{2}}}
-											\newcommand{\uL}[1]{0}	\def\uLtex{0}
-											\newcommand{\uR}[1]{1}	\def\uRtex{1}
-										
-											% === Axes ===
-											\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
-											\draw[-&gt;] (0, \ymin) -- (0, \ymax);
-											\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
-											
-											% === Tick marks and labels ===
-											\foreach \t /\n in \tticks {
-												\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
-											}
-        
-											\foreach \t /\n in \yticks {
-												\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
-											}
-
-											% === Function plots on [a, c] ===
-											\draw[\onColor, thin, dashed]	plot[domain=\a:\c, variable=\t]	(\t, {1-\uL{\t}});
-											\draw[\onColor, very thick]		plot[domain=\a:\c, variable=\t]	(\t, {\f{\t}});
-											
-											% === Function plots on [c, b] ===
-											\draw[\ofColor!50, thin, dashed]	plot[domain=\c:\b, variable=\t]			(\t, {\f{\t}});
-											\draw[\ofColor, very thick]			plot[domain=\c+0.06:\b, variable=\t]	(\t, {1-\uR{\t}});
-
-											% === Points at t=c ===
-											\draw[\ofColor, very thick]	(\c,{1-\uR{\c}})	circle[radius=3pt];
-											\fill[\onColor]					(\c,{\f{\c}})	circle[radius=3pt];
-
-											% === Function Labels ===
-											\node[\onColor, font=\scriptsize, above] at ({(\tmin + \c)/2-1}, 1)	{$1-u(t) = 1$};
-											\node[\ofColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, 0)		{$1-u(t) = 0$};
-											\node[\onColor, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{``off''}$};
-											\node[\ofColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{``on''}$};
-											\node[font=\small, above] at ({(\c + \tmax)/2}, 1)		{$\ftex\cdot\color{\ofColor}{0}$};
-											\node[font=\small, below] at ({(\tmin + \c)/2}, \ymax)	{$\ftex\cdot\color{\onColor}{1}$};
-										\end{tikzpicture}
-									</latex-image>
-								</image>
-							</figure>
-						</sidebyside>
+						Hence, <m>f(t)</m> is equivalent to the piecewise function
+						<me>
+							f(t) = \left\{
+							\begin{array}{ll}
+								3 - t^2, &amp; t \lt 2\\
+								0, &amp; t \ge 2.
+							\end{array} \right.
+						</me>
 					</p>
 				</solution>
 			</example>
 
 			<p> 
-				With this reversed unit step approach, we can model situations where a function is active initially but then deactivates at a specific time. This flexibility will be essential when building formulas for piecewise functions over different types of intervals.
+				While the unit step function, <m>u_{c}(t)</m>, activates functions to the right of <m>c</m>, this new reversed unit step function activates functions to the left of <m>c</m>. This comes in handy when we start building formulas for piecewise functions over different types of intervals.
 			</p>
+
 		</subsubsection>
 
-		<subsubsection><title> Unit Step Functions on an Interval </title>
+		<subsubsection><title> The Interval Unit Step Function, <m>u_{c}(t) - u_{d}(t)</m> </title>
 
 			<p>
-				The unit-step function we have considered so far is a simple switch that turns a function <em>on</em> or <em>off</em> at a specific time. However, there are situations where we want a function to be active only between two times, say between <m>t = c</m> and <m>t = d</m>.
+				We have already seen how <m>u_c(t)</m> switches a function on at <m>t=c</m> and how <m>1 - u_c(t)</m> switches a function off at <m>t=c</m>. Now let's combine these ideas to create functions that are active only over specific intervals.
 			</p>
 			
 			<p>
-				This situation can be achieved this by subtracting two shifted unit step functions:
-				<sidebyside widths="5% 30% 1% 48% 5%" valign="bottom">
+				This situation can be achieved by subtracting two shifted unit step functions:
+			</p>
+
+			<p>
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="bottom">
 					<p/>
 					<p>
 						<md>
@@ -1074,7 +1105,7 @@ Subsection: Unit Step Functions
 					<p>
 						<image>
 							<latex-image>
-								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.6]
+								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.5]
 			
 									% === Piecewise Function with 2 Parts ===
 
@@ -1137,7 +1168,7 @@ Subsection: Unit Step Functions
 					</p>
 					<p/>
 				</sidebyside>
-				<sidebyside widths="5% 30% 1% 48% 5%" valign="middle">
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="middle">
 					<p/>
 					<p>
 						<me>\downarrow</me>
@@ -1162,7 +1193,7 @@ Subsection: Unit Step Functions
 					<p>
 						<image>
 							<latex-image>
-								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.6]
+								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.5]
 			
 									% === Piecewise Function with 2 Parts ===
 
@@ -1225,7 +1256,7 @@ Subsection: Unit Step Functions
 					</p>
 					<p/>
 				</sidebyside>
-				<sidebyside widths="5% 30% 1% 48% 5%" valign="top">
+				<sidebyside widths="10% 30% 1% 40% 18%" valign="top">
 					<p/>
 					<p>
 						<me>\downarrow</me>
@@ -1238,7 +1269,7 @@ Subsection: Unit Step Functions
 					<p>
 						<image>
 							<latex-image>
-								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.6]
+								\begin{tikzpicture}[domain=-3.5:4.5, samples=100, scale=0.5]
 			
 									% === Piecewise Function with 2 Parts ===
 
@@ -1325,19 +1356,124 @@ Subsection: Unit Step Functions
 				</md>
 			</p>
 
-			<p>
-				Therefore, when you want a function to be <em>on</em> only between <m>t = c</m> and <m>t = d</m>, you would multiply it by <m>u_c(t) - u_d(t)</m>, as the next example illustrates.
-			</p>
-			
-			<example><title>Function Activation on <m>[1,4)</m></title>
+			<assemblage xml:id="unit-step-interval"><title> Interval Unit Step Function </title>
 				<p>
-					<statement>
-						<p>
-							Use unit-step functions to construct a function, <m>f(t)</m>, that behaves like <m>t - 2</m> between <m>t = 1</m> and <m>t = 4</m>, but is zero everywhere else.
-						</p>
-					</statement>
+					The difference of shifted unit step functions given by
 				</p>
+
+				<p>
+					<sidebyside widths="2% 47% 2% 47% 2%" valign="middle">
+						<p/>
+						<p>
+							<me>
+								u_c(t) - u_d(t) = \left\{
+								\begin{array}{ll}
+									0, &amp; t \lt c\\
+									1, &amp; c \le t \lt d\\
+									0, &amp; t \ge d
+								\end{array}
+								\right.
+							</me>
+						</p>
+						<p/>
+						<p>
+							<image>
+								<latex-image>
+									\begin{tikzpicture}[domain=-1.5:6.5, samples=100, scale=0.6]
+				
+										% === Piecewise Function with 2 Parts ===
+	
+										% === colors ===
+										\def\ofColor{blue}				\def\ofFill{\ofColor!15}
+										\def\onColor{green!60!black}	\def\onFill{\onColor!15}
+	
+										% === figure/domain/tick bounds ===
+										\def\tmin{-1.5}	\def\tmax{6.5}
+										\def\ymin{-1.4}	\def\ymax{1.8}
+										\def\tticks{-1, 1, 2, 3, 4, 5, 6}
+										\def\yticks{}
+									
+										% === Transistions ===
+										\def\c{0.5}	\def\d{3.6}
+										\fill[\ofFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+										\fill[\onFill]				(\c		, \ymin) rectangle (\d		, \ymax);
+										\fill[\ofFill]				(\d		, \ymin) rectangle (\tmax	, \ymax);
+										\node[font=\scriptsize, below] at ({\c}, -0.7) {$c$};
+										\node[font=\scriptsize, below] at ({\d}, -0.7) {$d$};
+
+										% === Function definitions ===
+										\newcommand{\uOf}[1]{0}	\def\uOftex{0}
+										\newcommand{\uOn}[1]{1}	\def\uOntex{1}
+	
+										% === Axes ===
+										\draw[-&gt;] (\tmin	, 0		) -- (\tmax	, 0		);
+										\draw[-&gt;] (0		, \ymin	) -- (0		, \ymax	);
+										\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
+				
+										% === Tick marks and labels ===
+										\foreach \t in \tticks {
+											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+											\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
+										}
+										\foreach \y in \yticks {
+											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+											\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										}
+									
+										% === Function plots on [tmin, c] ===
+										\draw[\ofColor, very thick]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uOf{\t}});
+										
+										% === Function plots on [c, d] ===
+										\draw[\onColor, very thick]	plot[domain=\c:\d-0.06, variable=\t]	(\t, {\uOn{\t}});
+										
+										% === Function plots on [d, tmax] ===
+										\draw[\ofColor, very thick]	plot[domain=\d:\tmax, variable=\t]		(\t, {\uOf{\t}});
+	
+										% === Points at t=c,d ===
+										\draw[\ofColor, thick]	(\c,{\uOf{\c}})	circle[radius=3pt];
+										\fill[\onColor]			(\c,{\uOn{\c}})	circle[radius=3pt];
+										\draw[\onColor, thick]	(\d,{\uOn{\d}})	circle[radius=3pt];
+										\fill[\ofColor]			(\d,{\uOf{\d}})	circle[radius=3pt];
+										
+										% === Function Labels ===
+										\node[black, font=\scriptsize, above] at ({(\d + \tmax)/2}	, 1.2)		{$u_{c}(t) - u_{d}(t)$};
+										\node[\ofColor, font=\scriptsize, above] at ({(\tmin + \c)/2}	, \ymin)	{off};
+										\node[\onColor, font=\scriptsize, above] at ({(\c + \d)/2}		, \ymin)	{on};
+										\node[\ofColor, font=\scriptsize, above] at ({(\d + \tmax)/2}	, \ymin)	{off};
+									\end{tikzpicture}
+								</latex-image>
+							</image>
+						</p>
+						<p/>
+					</sidebyside>
+				</p>
+				
+				<p>
+					is 1 on the interval <m>[c,d)</m> and 0 everywhere else.
+				</p>
+			</assemblage>
 			
+			<p>
+				By multiplying a function <m>f(t)</m> by <m>u_c(t) - u_d(t)</m>, we can restrict <m>f(t)</m> so that it is active only on the interval <m>[c,d)</m> and zero everywhere else.
+			</p>
+
+			<example><title> Function Activation on <m>[1,4)</m> </title>
+				<statement>
+					<p>
+						Write a formula for the function
+					</p>
+					<me>
+						g(t) = \left\{
+						\begin{array}{ll}
+							t-2, &amp; 1 \le t \lt 4\\
+							0, &amp; \text{otherwise}
+						\end{array}
+						\right.
+					</me>
+					<p>
+						using unit step functions.
+					</p>
+				</statement>
 				<solution>
 					<p>
 						The piecewise version of such a function is
@@ -1457,16 +1593,299 @@ Subsection: Unit Step Functions
 					</p>
 				</solution>
 			</example>
-			
+
 			<p>
-				At this point we have covered all the possible types of unit-step functions needed to represent a piecewise function. In the next section, we will look at how to write any piecewise function using the unit-step functions 
-				<me>
-					u_c(t), \quad 1 - u_c(t), \quad \text{or} \quad u_c(t) - u_d(t)
-				</me>.
+				This method of using a difference of unit step functions will be especially useful as we start to build full formulas for complicated piecewise functions in the next sections.
 			</p>
 			
 		</subsubsection>
 
 	</subsection>
+
+	<subsection><title> Laplace Transforms of Piecewise Functions </title>
+
+		<subsubsection><title> Laplace Transform of a Shifted Unit Step Function </title>
+
+			<p>
+				Now that we've learned how to use unit step functions to write piecewise-defined functions as single expressions, it's time to ask: how do these functions behave under the Laplace transform?
+			</p>
+		
+			<p>
+				Let's begin by looking at the Laplace transform of the simplest shifted step function, <m>u_c(t)</m>. 
+			</p>
+		
+			<assemblage xml:id="laplace-of-step"><title> Laplace Transform of a Shifted Step </title>
+				<p>
+					The Laplace transform of the shifted unit step function is
+					<me>
+						\lap{u_c(t)} = \frac{e^{-cs}}{s}.
+					</me>
+				</p>
+				<p>
+					<theorem><title> <m>\rightarrow \lap{u_c(t)}</m> </title>
+						<p>
+							To find the Laplace transform of the unit step function, we compute
+							<me>
+								\lap{u_c(t)} = \int_0^{\infty} u_c(t) \, e^{-st} \, dt.
+							</me>
+							But remember, 
+							<m>\ds\quad
+								u_c(t) = \left\{
+								\begin{array}{ll}
+									0, &amp; t \lt c\\
+									1, &amp; t \ge c
+								\end{array}
+								\right.\quad 
+							</m>
+							and we can splits integrals over the piecewise regions: <m>t \lt c</m> and <m>t \ge c</m>.
+							Thus, our integral simplifies to
+							<me>
+								\lap{u_c(t)} = 
+								\os{\large t\ \lt\ c}{\overline{\int_0^{c} \ub{u_c(t)}_{=\ 0} \, e^{-st} \, dt}} 
+								+ 
+								\os{\large t\ \ge\ c}{\overline{\int_c^{\infty} \ub{u_c(t)}_{=\ 1} \, e^{-st} \, dt}}
+								= \int_c^{\infty} e^{-st} \, dt
+							</me>
+						</p>
+						<p>
+							To compute the integral, we have to remember that this is an improper integral, so we rewrite it as the limit
+							<me>
+								\lap{u_c(t)} = \int_c^{\infty} e^{-st} \, dt
+								= \lim_{b \to \infty}\int_c^b e^{-st} \, dt
+							</me>
+							and first compute the integral
+							<me>
+								\int_c^b e^{-st} \, dt
+								= \left[ \frac{-1}{s} e^{-st} \right]_c^b
+								= \frac{-1}{s} \left( e^{-sb} - e^{-sc} \right)
+								= \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s}.
+							</me>
+						</p>
+						<p>
+							Now, we compute the limit of this expression as <m>b \to \infty</m>:
+							<me>
+								\lim_{b \to \infty} \left( \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s} \right)
+								= \frac{e^{-sc}}{s} - \lim_{b \to \infty} \frac{e^{-sb}}{s}
+							</me>.
+							As before, the <term>limit of the exponential function</term> converges if its power, <m>-sb</m>, goes to <m>-\infty</m>. This happens if <m>s \gt 0</m>.
+						</p>
+						<p>
+							So, as long as <m>s \gt 0</m>, then <m>\lim_{b \to \infty} e^{-sb} = 0</m> and the transform becomes 
+							<me>
+								\lap{u_c(t)} = \frac{e^{-cs}}{s}, \quad s \gt 0
+							</me>.
+						</p>
+					</theorem>
+				</p>
+			</assemblage>
+		
+			<p>
+				This result is surprisingly powerful. It shows that a simple step function, delayed by <m>c</m> units, transforms into an exponential shift in the Laplace domain. We'll see soon that this pattern holds for more general functions too—especially when we multiply a function by <m>u_c(t)</m> to turn it on at <m>t = c</m>.
+			</p>
+		
+			<example><title> Laplace of <m>u_2(t)</m> </title>
+				<p>
+					<statement>
+						<p>
+							Compute <m>\quad\ds\lap{u_2(t)}\vphantom{\int}</m>.
+						</p>
+					</statement>
+				</p>
+				<solution><title> <m>\rightarrow \lap{u_2(t)}</m> </title>
+					<p>
+						Using the formula above, with <m>c=2</m>, we get:
+					<me>
+						\lap{u_2(t)} = \frac{e^{-2s}}{s}.
+					</me>
+					</p>
+				</solution>
+			</example>
+		
+		</subsubsection>
+
+		<subsubsection><title> Laplace Transform of <m>f(t) \cdot u_c(t)</m> </title>
+
+			<p>
+			  	We now know how the Laplace transform behaves with a simple shifted step function. But what about a function that turns on at a delayed time? That is, what happens to
+				<me>
+					f(t) \, u_c(t)
+				</me>
+				under the Laplace transform?
+			</p>
+		  
+			<p>
+			  	It turns out that multiplying a function by a shifted step function creates a corresponding exponential shift in the Laplace domain. Let's see how.
+			</p>
+		  
+			<assemblage xml:id="laplace-of-f-times-step"><title> Laplace Transform of <m>f(t) \, u_c(t)</m> </title>
+				<p>
+					The Laplace transform of a function times a shifted unit step function is
+					<me>
+						\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t+c)}.
+					</me>
+				</p>
+				<p>
+					<theorem><title> <m>\rightarrow \lap{f(t) \, u_c(t)}</m> </title>
+						<p>
+							To find the Laplace transform, we start by computing
+							<me>
+								\lap{f(t) \, u_c(t)} = \int_0^\infty f(t) \, u_c(t) \, e^{-st} \, dt.
+							</me>
+							Remember, <m>u_c</m> is either 0 or 1, so the integrand is the piecewise function
+							<me> 
+								f(t) \, {\color{BurntOrange} u_c(t)} \, e^{-st} 
+								=
+								f(t) \, e^{-st} \cdot {\color{BurntOrange}
+								\left\{
+									\begin{array}{ll}
+										0\\
+										1
+									\end{array}
+								\right.}
+								\quad = \quad
+								\left\{
+									\begin{array}{ll}
+										0,				&amp; t \lt c\\
+										f(t)e^{-st},	&amp; t \ge c,
+									\end{array}
+								\right.
+							</me>
+						</p>
+
+						<p>
+							Separating the integral over these regions leads to
+							<me>
+								\lap{f(t) \, u_c(t)} = \int_c^\infty f(t) e^{-st} \, dt.
+							</me>
+						</p>
+
+						<p>
+							This new integral looks alot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can use a simple <m>u</m>-substitution to create a new variable that starts at <m>t = 0</m>. 
+						</p>
+
+						<aside><title> <m>\color{RoyalBlue} \text{A}, \text{B}, \text{C}, \text{D}</m> Details </title>
+							<tabular top="minor" bottom="minor">
+								<col width="100%"/>
+								<row>
+									<cell>
+										<p>
+											<m>\color{RoyalBlue}\text{A}\ </m>
+											<m>u</m>-substitution
+											<md>
+												<mrow>t = u + c</mrow>
+												<mrow>dt = du</mrow>
+											</md>
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\color{RoyalBlue}\text{B}\ </m>
+											Exponential Property
+											<md>
+												<mrow>e^{-s(u+c)} = e^{-su} e^{-sc}</mrow>
+											</md>
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\color{RoyalBlue}\text{C}\ </m>
+											Since the integration variable is <m>u</m>, we can factor out <m>e^{-sc}</m> as a constant.
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\color{RoyalBlue}\text{D}\ </m>
+											Except for <m>c</m> and <m>s</m>, you can rename the integration variable as anything.
+										</p>
+									</cell>
+								</row>
+							</tabular>
+						</aside>
+
+						<p>
+							Let <m>u = t - c</m>, so <m>du = dt</m>, and the <m>u</m>-integral is
+							<md>
+								<mrow>
+									\int_{t\ =\ c}^{t\ =\ \infty} f(t)\ e^{-st} \, dt 
+									\amp \os{\large\color{RoyalBlue} \text{A}}{=} 
+									\int_{u\ =\ 0}^{u\ =\ \infty} f(u+c)\ e^{-s(u+c)}\ du
+								</mrow>
+								<mrow>
+									\amp \os{\large\color{RoyalBlue} \text{B}}{=}
+									\int_0^\infty f(u+c) \left(e^{-su} \cdot e^{-sc}\right) \, du
+								</mrow>
+								<mrow>
+									\amp \os{\large\color{RoyalBlue} \text{C}}{=}
+									e^{-cs} \int_0^\infty f(u+c) e^{-su} \, du
+								</mrow>
+								<mrow>
+									\amp \os{\large\color{RoyalBlue} \text{D}}{=}
+									e^{-cs} \ub{\int_0^\infty f(t+c) e^{-st} \, dt}_{\large \lap{f(t+c)}}
+								</mrow>
+							</md>
+						</p>
+
+						<p>
+							Therefore,
+							<me>
+								\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t+c)}.
+							</me>
+						</p>
+					</theorem>
+				</p>
+			</assemblage>
+		  
+			<p>
+			  	This is an important result! When a function is multiplied by a shifted unit step function, its Laplace transform is simply the Laplace transform of the shifted function, multiplied by an exponential <m>e^{-cs}</m>. 
+			</p>
+		  
+			<p>
+			  	In the next sections, we will use this idea repeatedly to handle piecewise functions that "turn on" or "off" at different times.
+			</p>
+		  
+			<example><title> Laplace of <m>(t-2) u_2(t)</m> </title>
+			  <p>
+				<statement>
+				  <p>
+					Compute <m>\quad\ds\lap{(t-2) u_2(t)}\vphantom{\int}</m>.
+				  </p>
+				</statement>
+			  </p>
+			  <solution><title> <m>\rightarrow \lap{(t-2) u_2(t)}</m> </title>
+				<p>
+				  First, notice that
+				  <me>
+					(t-2) u_2(t)
+				  </me>
+				  looks like a shifted function: it’s <m>(t-2)</m> starting at <m>t=2</m>.
+				</p>
+				<p>
+				  Following the formula:
+				  <me>
+					\lap{(t-2) u_2(t)} = e^{-2s} \lap{(t-2+2)} 
+					= e^{-2s} \lap{t}.
+				  </me>
+				  Since
+				  <me>
+					\lap{t} = \frac{1}{s^2},
+				  </me>
+				  we get
+				  <me>
+					\lap{(t-2) u_2(t)} = \frac{e^{-2s}}{s^2}.
+				  </me>
+				</p>
+			  </solution>
+			</example>
+		  
+		  </subsubsection>		  
+
+	</subsection>
+	  
 
 </section>

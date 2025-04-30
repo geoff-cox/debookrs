@@ -41,16 +41,28 @@
 		label: { visible: false },
 	});
 
-	const cLine1 = plotboard1.board.create('line', [
-		[() => c.X(), -1.3],
-		[() => c.X(), 1.4]
+	const offRegion = plotboard1.board.create('polygon', [
+		[xmin, ymin], [() => c.X(), ymin], [() => c.X(), ymax], [xmin, ymax]
 	], {
-		straightFirst: false,
-		straightLast: false,
-		strokeColor: '#444',
-		strokeWidth: 1,
-		opacity: 0.5,
-		dash: 2
+		fillOpacity: 0.15,
+		fillColor: 'blue',
+		highlight: false,
+		borders: { strokeWidth: 0 },
+		vertices: { visible: false }
+	});
+
+	const onRegion = plotboard1.board.create('polygon', [
+		[() => c.X(), ymin], [xmax, ymin], [xmax, ymax], [() => c.X(), ymax]
+	], {
+		fillOpacity: 0.15,
+		fillColor: 'green',
+		highlight: false,
+		borders: { strokeWidth: 0 },
+		vertices: { visible: false },
+		highlight: false,
+		fixed: true,
+		withLabel: false,
+		layer: 0 // So that it doesn't prevent image interaction
 	});
 
 	const onLabel = plotboard1.board.create('text', [
@@ -73,7 +85,7 @@
 		fontSize: 20,
 		anchorX: 'right',
 		anchorY: 'bottom',
-		color: 'black',
+		color: 'blue',
 		highlight: false,
 	});
 
