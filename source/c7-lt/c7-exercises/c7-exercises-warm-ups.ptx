@@ -298,4 +298,88 @@
 		</solution>
 	</example>
 
+	<example><title> Laplace of a Delayed Polynomial Pulse </title>
+		<statement>
+		<p>
+			Compute the Laplace transform of the function
+			<me>
+			m(t) =
+			\left\{
+				\begin{array}{ll}
+				0,		\amp t \lt 1 \\
+				t^2,	\amp 1 \le t \lt 3 \\
+				0,		\amp t \ge 3
+				\end{array}
+			\right.
+			</me>
+		</p>
+		</statement>
+		<solution><title> <m>\rightarrow \lap{m(t)}</m> </title>
+			
+			<p>
+				We can rewrite this function as
+				<me>
+					m(t) = t^2 \cdot
+					\left\{
+						\begin{array}{ll}
+							0,	\amp t \lt 1\\
+							1,	\amp 1 \le t \lt 3\\
+							0,	\amp t \ge 3
+						\end{array}
+					\right.
+					\quad = t^2 \cdot [u_1(t) - u_3(t)]
+				</me>.
+			</p>
+
+			<p>
+				Now we compute
+			</p>
+
+			<sidebyside widths="68% 32%" valign="top">
+				<p>
+					<md>
+						<mrow>
+							\laplacesym\amp \big\{m(t)\big\}
+							= \laplacesym \big\{{\BO \us{f(t)}{\us{\uparrow}{\ul{t^2}}}}\, u_1(t)\big\} 
+							- \laplacesym \big\{{\BO \us{f(t)}{\us{\uparrow}{\ul{t^2}}}}\, u_3(t)\big\}
+						</mrow>
+						<mrow>
+							\amp
+							= e^{-s} \lap{{\BO f(t+1)}} - e^{-3s} \lap{{\BO f(t+3)}}
+						</mrow>
+						<mrow>
+							\amp
+							= e^{-s} \lap{{\BO t^2 + 2t + 1}} - e^{-3s} \lap{{\BO t^2 + 6t + 9}}
+						</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>
+							\BO f(t+1)\
+							\amp\BO = (t+1)^2
+						</mrow>
+						<mrow>
+							\amp\BO = t^2 + 2t + 1
+						</mrow>
+						<mrow>
+							\BO f(t+3)\
+							\amp\BO = (t+3)^2
+						</mrow>
+						<mrow>
+							\amp\BO = t^2 + 6t + 9
+						</mrow>
+					</md>
+				</p>
+			</sidebyside>
+			Computing each of the common Laplace transforms, we get
+			<me>
+				\lap{m(t)}
+				= e^{-s}\left(\frac{6}{s^4} + \frac{4}{s^3} + \frac{1}{s^2}\right) 
+				- e^{-3s}\left(\frac{6}{s^4} + \frac{12}{s^3} + \frac{9}{s^2}\right)
+			</me>
+			
+		</solution>
+	</example>
+
 </exercises>
