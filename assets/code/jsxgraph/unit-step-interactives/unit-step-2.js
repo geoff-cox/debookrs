@@ -48,7 +48,10 @@
 		fillColor: 'blue',
 		highlight: false,
 		borders: { strokeWidth: 0 },
-		vertices: { visible: false }
+		vertices: { visible: false },
+		fixed: true,
+		withLabel: false,
+		layer: 0 // So that it doesn't prevent image interaction
 	});
 
 	const onRegion = plotboard1.board.create('polygon', [
@@ -59,7 +62,6 @@
 		highlight: false,
 		borders: { strokeWidth: 0 },
 		vertices: { visible: false },
-		highlight: false,
 		fixed: true,
 		withLabel: false,
 		layer: 0 // So that it doesn't prevent image interaction
@@ -68,7 +70,7 @@
 	const onLabel = plotboard1.board.create('text', [
 		() => (c.X() + xmax)/2,
 		() => ymin + 0.2,
-		'"on"'
+		'ON'
 	], {
 		fontSize: 20,
 		anchorX: 'left',
@@ -80,7 +82,7 @@
 	const offLabel = plotboard1.board.create('text', [
 		() => (c.X() + xmin)/2,
 		() => ymin + 0.2,
-		'"off"'
+		'OFF'
 	], {
 		fontSize: 20,
 		anchorX: 'right',
