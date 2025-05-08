@@ -2260,6 +2260,277 @@
 				</sidebyside>
 			</solution>
 		</example>
+
+		<p>
+			<sidebyside widths="20% 60% 20%" valign="top">
+				<p/>
+				<p>
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[samples=100, scale=0.8]
+		
+								% === figure/domain/tick bounds ===
+								\def\tmin{-0.5}	\def\tmax{11.7}
+								\def\ymin{-1.3}	\def\ymax{2.5}
+								\def\tticks{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+								\def\yticks{1}
+							
+								% === Transitions ===
+								\def\c{4}	\def\d{8}
+
+								% === Midpoints ===
+								\def\LM{{\c*0.5}}
+								\def\LL{{\c*0.25}}
+								\def\LR{{\c*0.75}}
+								\def\MM{{(\c + \d)*0.5}}
+								\def\ML{{(\c + \d)*0.5-(\d - \c)*0.25}}
+								\def\MR{{(\c + \d)*0.5+(\d - \c)*0.25}}
+								\def\RM{{(\d + \tmax)*0.5}}
+								\def\RL{{(\d + \tmax)*0.5-(\tmax - \d)*0.25}}
+								\def\RR{{(\d + \tmax)*0.5+(\tmax - \d)*0.25}}
+								
+								% === Function Definitions ===
+								\newcommand{\uc}[1]{( ( #1 &lt; \c ) ? 0 : 1 )}
+								\newcommand{\ud}[1]{( ( #1 &lt; \d ) ? 0 : 1 )}
+								\newcommand{\ucd}[1]{ \uc{#1} - \ud{#1} }
+								
+								% === Function Properties ===
+								\def\uctex{u_\c(t)}			\def\ucColor{blue}				\def\ucFill{\ucColor!15}
+								\def\udtex{u_\d(t)}			\def\udColor{red!60!black}		\def\udFill{\ucdColor!15}
+								\def\ucdtex{u_\c(t)-u_\d(t)}	\def\ucdColor{green!60!black}	\def\ucdFill{\udColor!15}
+								
+								% === Region Fill and Borders ===
+								%\fill[\ucFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+								%\fill[\udFill]				(\c		, \ymin) rectangle (\d		, \ymax);
+								%\fill[\ucFill]				(\d		, \ymin) rectangle (\tmax	, \ymax);
+								\draw[very thin, dashed]	(\d 	, \ymin) 		-- (\d 		, \ymax);
+								\draw[very thin, dashed]	(\c 	, \ymin) 		-- (\c 		, \ymax);
+
+								% === Axes ===
+								\draw[-&gt;] (\tmin	, 0		) -- (\tmax	, 0		);
+								\draw[-&gt;] (0		, \ymin	) -- (0		, \ymax	);
+								\node[below] at (\tmax - 0.1	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray]	(\t,0.1) -- (\t,-0.1);	% t ticks
+									\node[below] at (\t,-0.08) {\t};	% t labels	
+								}
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);	% y ticks
+									\node[left] at (0,\y) {\y};			% y labels
+								}
+							
+								% === Function plots on [tmin, c] ===
+								\draw[\ucColor, thick, dashed		] plot[domain=\tmin:\c-0.08, variable=\t	] (\t, {\uc{\t}});
+								\draw[\udColor, thick, dashed		] plot[domain=\tmin:\c-0.08, variable=\t	] (\t, {\ud{\t}});
+								\draw[\ucdColor, very thick, &lt;-	] plot[domain=\tmin:\c-0.08, variable=\t	] (\t, {\ucd{\t}});
+
+								% === Function plots on [c, d] ===
+								\draw[\ucColor, dashed, thick	] plot[domain=\c+0.08:\d-0.08, variable=\t	] (\t, {\uc{\t}});
+								\draw[\udColor, dashed, thick	] plot[domain=\c+0.08:\d-0.08, variable=\t	] (\t, {\ud{\t}});
+								\draw[\ucdColor, very thick	] plot[domain=\c:\d-0.08, variable=\t	] (\t, {\ucd{\t}});
+
+								% === Function plots on [d, tmax] ===
+								\draw[\ucColor, dashed, thick		] plot[domain=\d+0.08:\tmax, variable=\t	] (\t, {\uc{\t}});
+								\draw[\udColor, dashed, thick		] plot[domain=\d+0.08:\tmax, variable=\t	] (\t, {\ud{\t}});
+								\draw[\ucdColor, very thick, -&gt;	] plot[domain=\d:\tmax, variable=\t	] (\t, {\ucd{\t}});
+								
+								% === Points at t=c ===
+								\draw[\ucdColor, thick	] (\c,{\ucd{\c-0.01}}	) circle[radius=3pt];
+								\fill[\ucdColor			] (\c,{\ucd{\c}}		) circle[radius=3pt];
+								
+								% === Points at t=d ===
+								\draw[\ucdColor, thick	] (\d,{\ucd{\d-0.01}}	) circle[radius=3pt];
+								\fill[\ucdColor			] (\d,{\ucd{\d}}		) circle[radius=3pt];
+								
+								% === Labels ===
+								\node[right] at (0.2, -0.9	) {$ \uctex\ \text{turns ON}$};
+								\node[above] at (\LL, 2	) {$ \uctex = 0 $};
+								\node[above] at (\LR, 2	) {$ \udtex = 0 $};
+								%\node[above] at (\LM, 1.7	) {$ 0 - 0 = 0 $};
+								\node[above] at (\LM, 0.1	) {$ 0 - 0 = 0\ \ \text{OFF} $};
+								\draw[thick, left, -&gt;] ({\c-0.6}, -0.9) -- ({\c-0.05}, -0.9);
+								
+								\node[right] at ({\c+0.3}	, -0.9	) {$ \udtex\ \text{turns ON} $};
+								\node[above] at (\ML		, 2	) {$ \uctex = 1 $};
+								\node[above] at (\MR		, 2	) {$ \udtex = 0 $};
+								%\node[above] at (\MM		, 1.7	) {$ 1 - 0 = 1 $};
+								\node[above] at (\MM		, 1.1	) {$ 1 - 0 = 1\ \ \text{ON} $};
+								\draw[thick, left, -&gt;] ({\d-0.5}, -0.9) -- ({\d-0.05}, -0.9);
+								
+								\node[above] at ( \RL , 2 ) {$ \uctex = 1 $};
+								\node[above] at ( \RR , 2 ) {$ \udtex = 0 $};
+								%\node[above] at ( \RM , 1.7 ) {$ 1 - 1 = 0 $};
+								\node[above] at ( \RM , 0.1 ) {$ 1 - 1 = 0\ \ \text{OFF} $};
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p/>
+			</sidebyside>
+		</p>
+
+		<p>
+			Visually, this would look like adding the following graphs together: 
+		</p>
+
+		<sidebyside widths="3% 3% 28% 3% 28% 3% 28% 3%" valign="middle">
+			<p/>
+			<p><m> = </m></p>
+			<p>
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[samples=100, scale=0.75]
+	
+							% === colors ===
+							\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
+							
+							% === figure/domain ===
+							\def\tmin{0}	\def\tmax{6}
+							\def\ymin{-0.8}	\def\ymax{1.4}
+						
+							% === Transitions ===
+							\def\c{1.9}	\def\d{3} 	\def\e{4.5}
+							\fill[\LFill] (\tmin	, \ymin) rectangle (\c		, \ymax);
+							
+							% === t tick values ===
+							\def\tticks{\c}
+
+							% === Midpoints ===
+							\def\Lmid{{(\tmin + \c)*0.5}}
+							\def\Imid{{(\c + \d)*0.5}}
+							\def\Rmid{{(\d + \tmax)*0.5}}
+							
+							% === Axes ===
+							\draw[-&gt;] (\tmin , 0) -- (\tmax , 0);
+							\node[font=\small, above] at (\tmax - 0.2 , 0) {$t$};
+
+							% === Tick marks/numeric labels ===
+							\foreach \t in \tticks {
+								\draw[black, very thin, dashed]	(\t,\ymin) -- (\t,\ymax);	% t ticks	
+							}
+							
+							% === Function plots on [c, tmax] ===
+							\draw[very thick, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, 0);
+
+							% === Labels ===
+							\node[font=\small,	\LColor] at (\Lmid, 1.0) {$g_{1}(t)\cdot 1$};
+							\node[font=\small,	\LColor] at (\Lmid, 0.6) {graph};
+							\node[				\LColor] at (\Lmid, -0.4) {$I_1$};
+		
+							\draw[-&gt;, thick] ({(\c+\tmax)/2} , 0.3) -- ({(\c+\tmax)/2} , 0);
+							\node[font=\small, above] at ({(\c+\tmax)/2}, 0.3) {$g_{1}(t)\cdot 0$};
+							
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p><me> + </me></p>
+			<p>
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[samples=100, scale=0.75]
+	
+							% === colors ===
+							\def\IColor{green!50!black}	\def\ICurve{\IColor!75}	\def\IFill{\IColor!25}
+							
+							% === figure/domain ===
+							\def\tmin{0}	\def\tmax{6}
+							\def\ymin{-0.8}	\def\ymax{1.4}
+						
+							% === Transitions ===
+							\def\c{1.5}	\def\d{3.4} 	\def\e{4.5}
+							\fill[\IFill] (\c	, \ymin) rectangle (\d		, \ymax);
+
+							% === t tick values ===
+							\def\tticks{\c, \d}
+
+							% === Midpoints ===
+							\def\Lmid{{(\tmin + \c)*0.5}}
+							\def\Imid{{(\c + \d)*0.5}}
+							\def\Rmid{{(\d + \tmax)*0.5}}
+							
+							% === Axes ===
+							\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+							\node[font=\small, above] at (\tmax - 0.2	, 0) {$t$};
+
+							% === Tick marks/numeric labels ===
+							\foreach \t in \tticks {
+								\draw[black, very thin, dashed]	(\t,\ymin) -- (\t,\ymax);	% t ticks	
+							}
+							
+							% === Function plots on [tmin, c] ===
+							\draw[very thick, &lt;-]	plot[domain=\tmin:\c, variable=\t] (\t, 0);
+							% === Function plots on [d, tmax] ===
+							\draw[very thick, -&gt;]	plot[domain=\d:\tmax, variable=\t] (\t, 0);
+							
+							% === Labels ===
+							\node[font=\small, above] at (\Lmid, 0.3) {$g_{2}(t) \cdot 0$};
+							\draw[-&gt;, thick] (\Lmid , 0.3) -- (\Lmid , 0);
+							
+							\node[font=\small,	\IColor ] at (\Imid, 1.0	) {$g_{2}(t) \cdot 1$};
+							\node[font=\small,	\IColor ] at (\Imid, 0.6	) {graph};
+							\node[				\IColor ] at (\Imid, -0.4	) {$I_2$};
+		
+							\node[font=\small, above] at (\Rmid, 0.3) {$g_{2}(t) \cdot 0$};
+							\draw[-&gt;, thick] (\Rmid , 0.3) -- (\Rmid , 0);
+							
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p><me> + </me></p>
+			<p>
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[samples=100, scale=0.75]
+							% === colors ===
+							\def\RColor{red!50!black}	\def\RCurve{\RColor!75}	\def\RFill{\RColor!25}
+							
+							% === figure/domain ===
+							\def\tmin{0}	\def\tmax{6}
+							\def\ymin{-0.8}	\def\ymax{1.4}
+						
+							% === Transitions ===
+							\def\c{1.5}	\def\d{3} 	\def\e{4.1}
+							\fill[\RFill] (\e	, \ymin) rectangle (\tmax	, \ymax);
+
+							% === t tick values ===
+							\def\tticks{\e}
+
+							% === Midpoints ===
+							\def\Lmid{{(\tmin+\e)*0.5}}
+							\def\Imid{{(\d+\e)*0.5}}
+							\def\Rmid{{(\e+\tmax)*0.5}}
+							
+							% === Axes ===
+							\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+							\node[font=\small, above] at (\tmax - 0.2	, 0) {$t$};
+
+							% === Tick marks/numeric labels ===
+							\foreach \t in \tticks {
+								\draw[black, very thin, dashed]	(\t,\ymin) -- (\t,\ymax);	% t ticks	
+							}
+
+							% === Function plots ===
+							\draw[very thick, &lt;-]	plot[domain=\tmin:\e, variable=\t] (\t, 0);
+							
+							% === Labels ===
+							\node[font=\small,	above	] at (\Lmid, 0.3) {$g_{2}(t) \cdot 0$};
+							\draw[-&gt;, thick] (\Lmid , 0.3) -- (\Lmid , 0);
+							\node[font=\small,	gray	] at (\Imid, 0.5) {$\dots$};
+							\node[font=\small,	\RColor	] at (\Rmid, 1.0) {$g_{n}(t) \cdot 1$};
+							\node[font=\small,	\RColor	] at (\Rmid, 0.6) {graph};
+							\node[				\RColor	] at (\Rmid, -0.4) {$I_n$};
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
 	</paragraphs>
 
 </subsubsection>
