@@ -141,7 +141,7 @@
 									\node[font=\scriptsize, \RegIColor] at (\Imid, 0.6) {graph};
 									\node[font=\scriptsize, \RegIColor] at (\Imid, -0.4) {interval\ 2};
 
-									\node[font=\small, gray] at ({(\d+\e)/2}, 0.5) {$\dots$};
+									\node[font=\small, gray] at ({(\d+\e)*0.5}, 0.5) {$\dots$};
 
 									\node[font=\scriptsize, \RegRColor] at (\Rmid, 1.0) {$g_{n}(t)$};
 									\node[font=\scriptsize, \RegRColor] at (\Rmid, 0.6) {graph};
@@ -417,7 +417,7 @@
 									\fill[thick]	(\d,0)	circle[radius=4pt];
 									
 									% === Labels ===
-									\node[\IColor	, font=\small] at ({(\c+\d)/2+0.1}, 2.3) {$\fItex$};
+									\node[\IColor	, font=\small] at ({(\c+\d)*0.5+0.1}, 2.3) {$\fItex$};
 
 								\end{tikzpicture}
 							</latex-image>
@@ -602,7 +602,7 @@
 		
 		</reading-questions>
 		
-		<subsubsection><title> Standard Unit Step Function </title>
+		<subsubsection><title> The Unit Step Function </title>
 
 			<p>
 				In the last section, we hinted at a special function that could mimic the "on" and "OFF" behavior of piecewise functions. This function is called the <em>unit step function</em>, also known as the <em>Heaviside function</em>. It acts like a simple switch that flips from 0 to 1 at a specific time.
@@ -679,10 +679,10 @@
 										\fill[\ONColor]			(\c,{\uR{\c}})	circle[radius=3pt];
 										
 										% === Labels ===
-										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)/2}, 0		) {$u(t) = 0$};
-										\node[\ONColor, font=\scriptsize, below] at ({(\c + \tmax)/2}, \ymax	) {$u(t) = 1$};
-										\node[\OFColor, font=\scriptsize, below] at ({(\tmin + \c)/2}, \ymax	) {$\text{OFF}$};
-										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, 0		) {$\text{ON}$};
+										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, 0		) {$u(t) = 0$};
+										\node[\ONColor, font=\scriptsize, below] at ({(\c + \tmax)*0.5}, \ymax	) {$u(t) = 1$};
+										\node[\OFColor, font=\scriptsize, below] at ({(\tmin + \c)*0.5}, \ymax	) {$\text{OFF}$};
+										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, 0		) {$\text{ON}$};
 									\end{tikzpicture}
 								</latex-image>
 							</image>
@@ -875,7 +875,7 @@
 						</p>
 
 						<p>
-							Now consider a shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
+							Now consider the shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
 						</p>
 
 						<tabular>
@@ -931,7 +931,7 @@
 		
 		</reading-questions>
 
-		<subsubsection><title> Shifted Unit Step Function (<em>off-on switch</em>) </title>
+		<subsubsection><title> Shifting the Unit Step Function (<em>off-on switch</em>) </title>
 
 			<p>
 				The standard unit step function <m>u(t)</m> flips a function ON right at <m>t=0</m>. But what if we need to delay that switch—to turn a function ON later, say at <m>t=2</m>, <m>t=5</m>, or even <m>t=-3</m>? We can make this happen by shifting the step function horizontally.
@@ -949,18 +949,22 @@
 					u(t-c) = \left\{
 					\begin{array}{ll}
 						0,	\amp t \lt c\\
-						1,	\amp t \ge c
+						1,	\amp t \ge c.
 					\end{array} \right.
-				</me>,
-				which we formally define as follows:
+				</me>
 			</p>
 
-			<definition xml:id="shifted-unit-step-function"><title> Shifted Unit Step Function </title>
-				<statement>
-					<p>
-						The <em>shifted unit step function</em>, <m>u_c(t)</m>, is defined as
-					</p>
-					<sidebyside widths="54% 7% 32% 7%" valign="bottom">
+			<p>
+				Since this will be used often in the next few sections, it worth formally introducting it.
+			</p>
+
+			<assemblage xml:id="shifted-unit-step-function"><title> Shifted Unit Step Function </title>
+				<p>
+					The shifted version of the unit step function, denote by <m>u_c(t)</m>, is given by
+				</p>
+
+				<p>
+					<sidebyside widths="54% 7% 32% 7%" valign="top">
 						<p>
 							<md>
 								<mrow>
@@ -973,7 +977,11 @@
 										\right.
 								</mrow>
 							</md>
-							At <m>t = c</m>, this function switches from 0 to 1.
+							<note>
+								<p>
+									It is important to remember that there is only one unit step function, <m>u(t)</m>, in the same way that there is only one sine function, <m>\sin(t)</m>. So, <m>u_c(t)</m> is no more different to <m>u(t)</m> as <m>\sin(t-c)</m> is to <m>\sin(t)</m>. 
+								</p>
+							</note>
 						</p>
 						<p/>
 						<p>
@@ -1043,12 +1051,9 @@
 						</p>
 						<p/>
 					</sidebyside>
-					<p>
-						Note: <m>u_c(t)</m> is a shorthand for <m>u(t - c)</m>. In this notation, <m>u_0(t) = u(t)</m>.
-					</p>
-				</statement>
-			</definition>
-			
+				</p>
+			</assemblage>
+
 			<p>
 				To aid in the discussion of unit step functions, we will use the following convention: 
 				<ul>
@@ -1135,7 +1140,7 @@
 									\sin t,	\amp t \ge \sfrac{\pi}{2},
 								\end{array} \right.
 							</me>
-							turns ON <m>\sin t</m> at <m>t = \sfrac{\pi}{2}</m>. Rewrite <m>g(t)</m> in terms of a shifted unit step function.
+							turns ON <m>\sin t</m> at <m>t = \sfrac{\pi}{2}</m>. Rewrite <m>g(t)</m> in terms of the shifted unit step function.
 						</p>
 					</statement>
 				</p>
@@ -1183,10 +1188,10 @@
 											\def\ymin{-1.6}	\def\ymax{1.6}
 											\def\tticks{
 												{-pi}		/ $-\pi$,
-												{-pi/2}		/ $-\frac{\pi}{2}$,
-												{pi/2}		/ $\frac{\pi}{2}$,
+												{-pi*0.5}		/ $-\frac{\pi}{2}$,
+												{pi*0.5}		/ $\frac{\pi}{2}$,
 												{pi}		/ $\pi$,
-												{3*pi/2}	/ $\frac{3\pi}{2}$,
+												{3*pi*0.5}	/ $\frac{3\pi}{2}$,
 												{2*pi}		/ $2\pi$
 											}
 											\def\yticks{
@@ -1195,7 +1200,7 @@
 											}
 										
 											% === Transitions ===
-											\def\c{pi/2}
+											\def\c{pi*0.5}
 											\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
 											\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
 											%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
@@ -1233,10 +1238,10 @@
 											\fill[\ONColor]			(\c,{\f{\c}})	circle[radius=3pt];
 
 											% === Labels ===
-											\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)/2},	1)	{$u(t) = 0$};
-											\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)/2},	1)	{$u(t) = 1$};
-											\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)/2}, \ymin)	{$\text{OFF}$};
-											\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, \ymin)	{$\text{ON}$};
+											\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5},	1)	{$u(t) = 0$};
+											\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5},	1)	{$u(t) = 1$};
+											\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, \ymin)	{$\text{OFF}$};
+											\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, \ymin)	{$\text{ON}$};
 											\node[font=\scriptsize, above] at (-1.2, 0)	{$\ftex\cdot\color{\OFColor}{0}$};
 											\node[font=\scriptsize, above] at (4.3, 0)	{$\ftex\cdot\color{\ONColor}{1}$};
 										\end{tikzpicture}
@@ -1296,7 +1301,7 @@
 
 		</subsubsection>
 
-		<subsubsection><title> Reversed Unit Step Function (<em>on-off switch</em>)  </title>
+		<subsubsection><title> Reversing the Unit Step Function (<em>on-off switch</em>)  </title>
 
 			<p>
 				As you know, the unit step function, <m>u_{c}(t)</m>, goes from OFF to ON at <m>t = c</m>. But what if we want a step function that does the opposite—goes from ON to OFF at <m>t = c</m> instead?
@@ -1414,10 +1419,10 @@
 									\fill[\OFColor]				(\c,{1-\uR{\c}}) circle[radius=3pt];
 									
 									% === Labels ===
-									\node[\ONColor, font=\scriptsize, above]	at ({(\tmin+\c)/2-1}, 1.0)		{$1 - u_c(t) = 1$};
-									\node[\OFColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, 0.0)		{$1 - u_c(t) = 0$};
-									\node[\ONColor, font=\scriptsize, above]	at ({(\tmin+\c)/2}, \ymin-0.1)	{$\text{ON}$};
-									\node[\OFColor, font=\scriptsize, above]	at ({(\c+\tmax)/2}, \ymin-0.1)	{$\text{OFF}$};
+									\node[\ONColor, font=\scriptsize, above]	at ({(\tmin+\c)*0.5-1}, 1.0)		{$1 - u_c(t) = 1$};
+									\node[\OFColor, font=\scriptsize, above]	at ({(\c+\tmax)*0.5}, 0.0)		{$1 - u_c(t) = 0$};
+									\node[\ONColor, font=\scriptsize, above]	at ({(\tmin+\c)*0.5}, \ymin-0.1)	{$\text{ON}$};
+									\node[\OFColor, font=\scriptsize, above]	at ({(\c+\tmax)*0.5}, \ymin-0.1)	{$\text{OFF}$};
 								\end{tikzpicture}
 							</latex-image>
 						</image>
@@ -1510,11 +1515,11 @@
 									\fill[\OFColor]					(\c,{\f{\c}})	circle[radius=3pt];
 
 									% === Labels ===
-									\node[\ONColor, font=\scriptsize, above] at ({(\tmin + \c)/2-1}, 1)	{$1-u(t) = 1$};
-									\node[\OFColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, 0)		{$1-u(t) = 0$};
-									\node[\ONColor, font=\scriptsize, above] at ({(\tmin + \c)/2-0.7}, {\ymin-0.2})	{$\text{ON}$};
-									\node[\OFColor, font=\scriptsize, above] at ({(\c + \tmax)/2}, {\ymin-0.2})	{$\text{OFF}$};
-									\node[font=\small, below] at ({(\tmin + \c)/2-0.6}, {\ymax+0.2})	{$\ftex$};
+									\node[\ONColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5-1}, 1)	{$1-u(t) = 1$};
+									\node[\OFColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, 0)		{$1-u(t) = 0$};
+									\node[\ONColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5-0.7}, {\ymin-0.2})	{$\text{ON}$};
+									\node[\OFColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, {\ymin-0.2})	{$\text{OFF}$};
+									\node[font=\small, below] at ({(\tmin + \c)*0.5-0.6}, {\ymax+0.2})	{$\ftex$};
 								\end{tikzpicture}
 							</latex-image>
 						</image>
@@ -1571,7 +1576,7 @@
 
 		</subsubsection>
 
-		<subsubsection><title> Finite Interval Unit Step Function (<em>off-on-off switch</em>) </title>
+		<subsubsection><title> Finite Interval Step Functions (<em>off-on-off switch</em>) </title>
 
 			<p>
 				Both the shifted and reversed unit step functions have ON-intervals that go to <m>\infty</m> and <m>-\infty</m>, respectively. However, piecewise functions often have pieces with finite intervals (e.g., <m>3 \le t \lt 7</m>).
@@ -1608,6 +1613,120 @@
 					<p/>
 				</sidebyside>
 			</p>
+
+			<sidebyside width="50%">
+				<stack>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[scale=0.65]
+								\def\a	{-0.5}	\def\b	{8}
+								\def\ya	{-0.9} 	\def\yb	{2}
+								\def\c	{2} 	\def\d	{5}
+								\def\acM	{{(\a+\c)*0.5}}
+								\def\acL	{{(\a+\c)*0.5 - 0.4}}
+								\def\acR	{{(\a+\c)*0.5 + 0.4}}
+								\def\adM	{{(\a+\d)*0.5}}
+								\def\abM	{{(\a+\b)*0.5}}
+								\def\cdM	{{(\c+\d)*0.5}}
+								\def\cdL	{{(\c+\d)*0.5 - 0.4}}
+								\def\cdR	{{(\c+\d)*0.5 + 0.4}}
+								\def\cbM	{{(\c+\b)*0.5}}
+								\def\dbM	{{(\d+\b)*0.5}}
+								\def\dbL	{{(\d+\b)*0.5 - 0.4}}
+								\def\dbR	{{(\d+\b)*0.5 + 0.4}}
+								
+								\def\ucColor{orange}	\def\ucFill{\ucColor!15}
+								\def\udColor{blue}		\def\udFill{udColor!15}
+								\def\smallwidth{0.7mm}	\def\largewidth{0.9mm}
+								\def\ptradius{0.14} \def\ptwidth{0.4mm}
+								\def\lineshift{0.08}
+								
+								% Draw the axes
+								\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right, below] {$t$};
+								\draw[thick, -&gt;] (0, \ya) -- (0, \yb);
+				
+								% u_c graph
+								\draw[line width=\smallwidth, \ucColor] (\a,0) -- (\c,0);
+								\draw[densely dotted, thick, \ucColor] (\c,0) -- (\c,1);
+								\draw[line width=\smallwidth, \ucColor] (\c,1) -- (\b,1);
+								\draw[\ucColor, font=\normalsize] (\cdM,1) node[above] {$u_{\c}(t)$};
+
+								% u_d graph
+								\draw[line width=\largewidth, loosely dotted, \udColor] (\a,0) -- (\d,0);
+								\draw[densely dotted, thick, \udColor] (\d,0) -- (\d,1);
+								\draw[line width=\largewidth, loosely dotted, \udColor] (\d,1) -- (\b,1);
+								\draw[\udColor, font=\normalsize] (\dbM,1) node[above] {$u_{\d}(t)$};
+								
+								% points at t=c
+								\draw[\ucColor, fill=white, line width=\ptwidth] (\c,0) circle (\ptradius) node[below, black] {$\c$};
+								\draw[\ucColor, fill=\ucColor, line width=\ptwidth] (\c,1) circle (\ptradius);
+								
+								% points at t=d
+								\draw[\udColor, fill=white, line width=\ptwidth] (\d,0) circle (\ptradius) node[below, black] {$\d$};
+								\draw[\udColor, fill=\udColor, line width=\ptwidth] (\d,1) circle (\ptradius);
+
+								\draw[\ucColor, font=\normalsize] (\acL,-0.7) node {$\textbf 0$};
+								\draw[black, font=\normalsize] (\acM,-0.8) node {$\textbf -$};
+								\draw[\udColor, font=\normalsize] (\acR,-0.7) node {$\textbf 0$};
+								
+								\draw[\ucColor, font=\normalsize] (\cdL,-0.7) node {$\textbf 1$};
+								\draw[black, font=\normalsize] (\cdM,-0.8) node {$\textbf -$};
+								\draw[\udColor, font=\normalsize] (\cdR,-0.7) node {$\textbf 0$};
+								
+								\draw[\ucColor, font=\normalsize] (\dbL,-0.7) node {$\textbf 1$};
+								\draw[black, font=\normalsize] (\dbM,-0.8) node {$\textbf -$};
+								\draw[\udColor, font=\normalsize] (\dbR,-0.7) node {$\textbf 1$};
+							
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[scale=0.65]
+								\def\a	{-0.45}	\def\b	{8}
+								\def\ya	{-1.5} 	\def\yb	{2}
+								\def\c	{2} 	\def\d	{5}
+								\def\acM	{{(\a+\c)*0.5}}
+								\def\adM	{{(\a+\d)*0.5}}
+								\def\abM	{{(\a+\b)*0.5}}
+								\def\cdM	{{(\c+\d)*0.5}}
+								\def\cbM	{{(\c+\b)*0.5}}
+								\def\dbM	{{(\d+\b)*0.5}}
+								
+								\def\ucdColor	{green!50!black}		\def\ucdFill	{ucdColor!15}
+								\def\smallwidth{0.7mm}	\def\largewidth{0.9mm}
+								\def\ptradius{0.14} \def\ptwidth{0.4mm}
+								\def\lineshift{0.08}
+								
+								% Draw the axes
+								\draw[thick, -&gt;] (\a, 0) -- (\b, 0) node[right, below] {$t$};
+								\draw[thick, -&gt;] (0, \ya) -- (0, \yb);
+				
+								% u_c - u_d graph
+								\draw[line width=\smallwidth, \ucdColor] (\a,0) -- (\c,0);
+								\draw[densely dotted, thick, \ucdColor] (\c,0) -- (\c,1);
+								\draw[line width=\smallwidth, \ucdColor] (\c,1) -- (\d,1);
+								\draw[densely dotted, thick, \ucdColor] (\d,0) -- (\d,1);
+								\draw[line width=\smallwidth, \ucdColor] (\d,0) -- (\b,0);
+								\draw[\ucdColor] (\cdM,\ya) node[above] {$u_{\c}(t) - u_{\d}(t)$};
+								
+								% points at t=c
+								\draw[\ucdColor, fill=white, line width=\ptwidth] (\c,0) circle (\ptradius) node[below, black] {$\c$};
+								\draw[\ucdColor, fill=\ucdColor, line width=\ptwidth] (\c,1) circle (\ptradius);
+								
+								% points at t=d
+								\draw[\ucdColor, fill=\ucdColor, line width=\ptwidth] (\d,0) circle (\ptradius) node[below, black] {$\d$};
+								\draw[\ucdColor, fill=white, line width=\ptwidth] (\d,1) circle (\ptradius);
+
+								\draw[thick, gray, -&gt;] (\acM, \yb) -- (\acM, 0.1);
+								\draw[thick, gray, -&gt;] (\cdM, \yb) -- (\cdM, 1.1);
+								\draw[thick, gray, -&gt;] (\dbM, \yb) -- (\dbM, 0.1);
+				
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</stack>
+			</sidebyside>
 
 			<p>
 				<sidebyside widths="4% 24% 19% 6% 19% 28%" valign="middle">
@@ -2125,10 +2244,10 @@
 										\fill[very thick]	(\d,{\uOf{\d}})	circle[radius=5pt];
 										
 										% === Labels ===
-										%\node[black, font=\small, above] at ({(\d + \tmax)/2}	, 1.2)		{$u_{c}(t) - u_{d}(t)$};
-										\node[\OFColor, font=\small, below] at ({(\tmin + \c)/2}	, 0)	{OFF};
-										\node[\ONColor, font=\small, below] at ({(\c + \d)/2}		, 0)	{ON};
-										\node[\OFColor, font=\small, below] at ({(\d + \tmax)/2}	, 0)	{OFF};
+										%\node[black, font=\small, above] at ({(\d + \tmax)*0.5}	, 1.2)		{$u_{c}(t) - u_{d}(t)$};
+										\node[\OFColor, font=\small, below] at ({(\tmin + \c)*0.5}	, 0)	{OFF};
+										\node[\ONColor, font=\small, below] at ({(\c + \d)*0.5}		, 0)	{ON};
+										\node[\OFColor, font=\small, below] at ({(\d + \tmax)*0.5}	, 0)	{OFF};
 									\end{tikzpicture}
 								</latex-image>
 							</image>
@@ -2138,6 +2257,59 @@
 				</p>
 			</assemblage>
 			
+			<corollary><title> Exploring the Effect of <m>c</m> </title>
+				<p>
+					<tabular top="minor" bottom="minor">
+						<col width="5%"/>
+						<col />
+						<col width="10%"/>
+						<row bottom="none">
+							<cell><p><m>\succ</m></p></cell>
+							<cell>
+								<p>
+									Hover over the labels <m>f(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to highlight its graph.
+								</p>
+							</cell>
+							<cell><p><m>\phantom{=======}</m></p></cell>
+						</row>
+						<row>
+							<cell><p><m>\succ</m></p></cell>
+							<cell>
+								<p>
+									Drag the value of <m>c</m> along the <m>t</m> axis to see how the graph changes.
+								</p>
+							</cell>
+							<cell/>
+						</row>
+					</tabular>
+				</p>
+				<p>
+					
+				</p>
+			</corollary>
+
+			<sidebyside width="60%">
+						<interactive xml:id="unit-step-uc-ud"
+							platform="jsxgraph"
+							aspect="5:4"
+							dark-mode-enabled="yes"
+							source="
+								code/jsxgraph/jsx-core/board.js
+								code/jsxgraph/jsx-core/piecewise.js
+								code/jsxgraph/jsx-core/utils.js code/jsxgraph/unit-step-interactives/unit-step-uc-ud.js"
+						>
+							<sidebyside width="100%" margins="0%">
+								<stack>
+									<slate xml:id="unit-step-uc-ud-plot1" surface="jsxboard" aspect="5:2" />
+									<slate xml:id="unit-step-uc-ud-plot2" surface="jsxboard" aspect="5:2" />
+								</stack>
+							</sidebyside>
+							<static>
+								<image source="code/jsxgraph/img-labels/t.png" width="70%" />
+							</static>
+						</interactive>
+					</sidebyside>
+
 			<p>
 				As with previous step functions, this step function switches ON any function over the interval <m>[c,d)</m> and OFF everywhere else.
 			</p>
@@ -2262,12 +2434,12 @@
 											\draw[\fColor, very thick]	(\d,{\f{\d}})	circle[radius=5pt];
 											
 											% === Labels ===
-											\node[\OFColor, font=\small, above] at ({(\tmin + \c)/2}	, 0)	{$g(t)=0$};
-											\node[\ONColor, font=\small, above] at ({(\c + \d)/2}		, 2)	{$g(t)=t-2$};
-											\node[\OFColor, font=\small, above] at ({(\d + \tmax)/2}	, 0)	{$g(t)=0$};
-											\node[\OFColor, font=\small, above] at ({(\tmin + \c)/2}	, \ymin)	{$t \lt \c$};
-											\node[\ONColor, font=\small, above] at ({(\c + \d)/2}		, \ymin)	{$\c \le t \lt \d$};
-											\node[\OFColor, font=\small, above] at ({(\d + \tmax)/2}	, \ymin)	{$t \ge \d$};
+											\node[\OFColor, font=\small, above] at ({(\tmin + \c)*0.5}	, 0)	{$g(t)=0$};
+											\node[\ONColor, font=\small, above] at ({(\c + \d)*0.5}		, 2)	{$g(t)=t-2$};
+											\node[\OFColor, font=\small, above] at ({(\d + \tmax)*0.5}	, 0)	{$g(t)=0$};
+											\node[\OFColor, font=\small, above] at ({(\tmin + \c)*0.5}	, \ymin)	{$t \lt \c$};
+											\node[\ONColor, font=\small, above] at ({(\c + \d)*0.5}		, \ymin)	{$\c \le t \lt \d$};
+											\node[\OFColor, font=\small, above] at ({(\d + \tmax)*0.5}	, \ymin)	{$t \ge \d$};
 	
 										\end{tikzpicture}
 									</latex-image>
@@ -2286,163 +2458,21 @@
 
 		<subsubsection><title> Piecewise Form to Unit Step Form </title>
 
-			<p>	
-				All piecewise functions come with functions (<q>pieces</q>) and conditions (<q>intervals</q>). The piecewise functions we will consider have intervals that are discrete intervals as shown below.
+			<p>
+				Everything we have done up to this point has been geared toward the goal of rewriting piecewise form of a function into a unit step function form. We are now ready to bring everything together in order to fulfill this goal.
 			</p>
 
 			<p>
-				<sidebyside widths="5% 15% 7% 1% 12% 5% 38% 17%" valign="middle">
-					<p/>
-					<p/>
-					<p><me>\small\ul{\text{Pieces}}</me></p>
-					<p/>
-					<p><me>\small\ul{\text{Intervals}}</me></p>
-					<p/>
-					<p/>
-					<p/>
-				</sidebyside>
-	
-				<sidebyside widths="5% 15% 7% 3% 12% 7% 38% 13%" valign="middle">
-					<p/>
-					<p>
-						<me>
-							\small
-							g(t) = 
-							\left\{\vphantom{
-								\begin{array}{c}
-									\text{p} 1 \\
-									\text{p} 2 \\
-									\vdots\\
-									\text{p} n
-								\end{array}}
-							\right.
-						</me>
-					</p>
-					<p>
-						<me>
-							\small
-							\begin{array}{c}
-								g_{1}(t) \\
-								g_{2}(t) \\
-								\vdots\\
-								g_{n}(t)
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<me>
-							\small
-							\begin{array}{c}
-								\text{interval}\ 1\\
-								\text{interval}\ 2\\
-								\vdots\\
-								\text{interval}\ n
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<image width="100%">
-							<latex-image>
-								\begin{tikzpicture}[domain=0:12, samples=100, scale=0.7]
-			
-									% === Piecewise Function with 2 Parts ===
-			
-									% === colors ===
-									\def\RegLColor{blue!50!black}	\def\RegLFill{\RegLColor!15}
-									\def\RegIColor{green!50!black}	\def\RegIFill{\RegIColor!15}
-									\def\RegRColor{red!50!black}	\def\RegRFill{\RegRColor!15}
-									
-									% === figure/domain ===
-									\def\tmin{0}	\def\tmax{7}
-									\def\ymin{-0.6}	\def\ymax{1.4}
-								
-									% === Transitions ===
-									\def\c{2}	\def\d{4} 	\def\e{5}
-									\fill[\RegLFill] (\tmin	, \ymin) rectangle (\c		, \ymax);
-									\fill[\RegIFill] (\c	, \ymin) rectangle (\d		, \ymax);
-									\fill[\RegRFill] (\e	, \ymin) rectangle (\tmax	, \ymax);
-			
-									% === tick values ===
-									\def\tticks{\c, \d, \e}
-			
-									% === Axes ===
-									\draw[-&gt;] (\tmin	, 0) -- (\tmax	,0);
-									\node[font=\small, above] at (\tmax - 0.1	, 0) {$t$};
-			
-									% === Tick marks/numeric labels ===
-									\foreach \t in \tticks {
-										\draw[black, very thin, dashed]	(\t,\ymin) -- (\t,\ymax);	% t ticks	
-									}
-									
-									% === Labels ===
-									\node[font=\scriptsize, \RegLColor] at ({(\tmin+\c)/2}, 1.0) {Graph};
-									\node[font=\scriptsize, \RegLColor] at ({(\tmin+\c)/2}, 0.6) {of\ $g_{1}(t)$};
-									\node[font=\scriptsize, \RegLColor] at ({(\tmin+\c)/2}, -0.4) {interval\ 1};
-									
-									\node[font=\scriptsize, \RegIColor] at ({(\c+\d)/2}, 1.0) {Graph};
-									\node[font=\scriptsize, \RegIColor] at ({(\c+\d)/2}, 0.6) {of\ $g_{2}(t)$};
-									\node[font=\scriptsize, \RegIColor] at ({(\c+\d)/2}, -0.4) {interval\ 2};
-
-									\node[font=\scriptsize, \RegIColor] at ({(\d+\e)/2}, 0.5) {$\dots$};
-			
-									\node[font=\scriptsize, \RegRColor] at ({(\e+\tmax)/2}, 1.0) {Graph};
-									\node[font=\scriptsize, \RegRColor] at ({(\e+\tmax)/2}, 0.6) {of\ $g_{n}(t)$};
-									\node[font=\scriptsize, \RegRColor] at ({(\e+\tmax)/2}, -0.4) {interval\ n};
-								\end{tikzpicture}
-							</latex-image>
-						</image>
-					</p>
-					<p/>
-				</sidebyside>
+				Before introducing the unit step function, we mentioned that you would have to rethink the way you view piecewise functions. To motivate this, we presented the following piecewise function:
 			</p>
 
 			<p>
-				The goal is to deconstruct the piecewise function into a sum of its pieces multiplied by a unit step function that is <m>1</m> on its interval. That is, we would like to write <m>g(t)</m> as
-			</p>
-
-			<me>
-				\small
-				g(t) = 
-				g_{1}(t) \left(
-				\left\{
-					\begin{array}{cl}
-						1	\amp \text{interval}\ 1\\
-						0	\amp \text{otherwise}\\
-					\end{array}
-				\right.
-				\right) +
-				g_{2}(t) \left(
-				\left\{
-					\begin{array}{cl}
-						1	\amp \text{interval}\ 2\\
-						0	\amp \text{otherwise}\\
-					\end{array}
-				\right.
-				\right) + \ldots +
-				g_{n}(t) \left(
-				\left\{
-					\begin{array}{cl}
-						1	\amp \text{interval}\ n\\
-						0	\amp \text{otherwise}\\
-					\end{array}
-				\right.
-				\right)
-			</me>
-			
-			<p>
-				The unit step function needed for each piece depends on what type of interval makes up its interval. To see this, consider the following example.
-			</p>
-
-			<p>
-				<sidebyside widths="6% 5% 3% 10% 15% 16% 25% 20%" valign="middle">
+				<sidebyside widths="6% 5% 3% 10% 15% 13% 28% 20%" valign="middle">
 					<p/>
-					<p><m>\small g(t)</m></p>
-					<p><m>\small  = </m></p>
+					<p><m>g(t)</m></p>
+					<p><m>=</m></p>
 					<p>
 						<me>
-							\small 
 							\left\{
 								\begin{array}{c}
 									\B \sin t\\
@@ -2454,7 +2484,6 @@
 					</p>
 					<p>
 						<me>
-							\small 
 							\begin{array}{r}
 								\B t \lt 0			\\
 								\G 0 \le t \lt 2	\\
@@ -2466,7 +2495,7 @@
 					<p>
 						<image width="100%">
 							<latex-image>
-								\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.45]
+								\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.3]
 			
 									% === Piecewise Function with 2 Parts ===
 			
@@ -2477,7 +2506,7 @@
 									
 									% === figure/domain ===
 									\def\tmin{-4.5}	\def\tmax{5.5}
-									\def\ymin{-1.5}	\def\ymax{2.7}
+									\def\ymin{-1.5}	\def\ymax{3}
 
 									\def\tticks{-4, -2, 2, 4}
 									\def\yticks{-1, 1, 2}
@@ -2496,16 +2525,16 @@
 									% === Axes ===
 									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
 									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+									\node[font=\scriptsize, below] at (\tmax - 0.2	, 0) {$t$};
 			
 									% === Tick marks/numeric labels ===
 									\foreach \t in \tticks {
 										\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
-										\node[below, font=\small] at (\t,0) {\t};	% t labels	
+										\node[below, font=\tiny] at (\t,0) {\t};	% t labels	
 									}
 									\foreach \y in \yticks {
 										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										\node[left, font=\tiny] at (0.1,\y) {\y};	% y labels
 									}
 								
 									% === Function plots on [tmin, c] ===
@@ -2524,9 +2553,9 @@
 									\fill[\RCurve, thick]	(\d,{\fR{\d}})	circle[radius=4pt];
 									
 									% === Labels ===
-									\node[\LColor	, font=\small] at ({(\tmin+\c)/2}, 1) {$\fLtex$};
-									\node[\IColor	, font=\small] at ({(\c+\d)/2+0.1}, 2.3) {$\fItex$};
-									\node[\RColor	, font=\small] at ({(\d+\tmax)/2}, 2) {$\fRtex$};
+									\node[\LColor	, font=\scriptsize] at ({(\tmin+\c)*0.5}, 1) {$\fLtex$};
+									\node[\IColor	, font=\scriptsize] at ({(\c+\d)*0.5+0.1}, 2.4) {$\fItex$};
+									\node[\RColor	, font=\scriptsize] at ({(\d+\tmax)*0.5}, 2) {$\fRtex$};
 
 								\end{tikzpicture}
 							</latex-image>
@@ -2535,21 +2564,21 @@
 					<p/>
 				</sidebyside>
 				<p/>
-				<sidebyside widths="6% 5% 3% 22% 5% 22% 4% 21% 12%" valign="middle">
+				<sidebyside widths="6% 5% 3% 24% 5% 24% 4% 23% 6%" valign="middle">
 					<p/>
 					<p/>
-					<p><m>\small = </m></p>
+					<p><m>=</m></p>
 					<p>
 						<image width="100%">
 							<latex-image>
-								\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
+								\begin{tikzpicture}[samples=100, scale=0.25]
 			
 									% === colors ===
 									\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
 									
 									% === figure/domain ===
 									\def\tmin{-4.5}	\def\tmax{5.5}
-									\def\ymin{-1.5}	\def\ymax{2.7}
+									\def\ymin{-1.5}	\def\ymax{3}
 									\def\tticks{-4, -2, 2, 4}
 									\def\yticks{-1, 1, 2}
 								
@@ -2563,49 +2592,48 @@
 									% === Axes ===
 									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
 									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+									\node[font=\scriptsize, below] at (\tmax - 0.2	, 0) {$t$};
 			
 									% === Tick marks/numeric labels ===
 									\foreach \t in \tticks {
 										\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
-										\node[below, font=\small] at (\t,0) {\t};	% t labels	
+										\node[below, font=\tiny] at (\t,0) {\t};	% t labels	
 									}
 									\foreach \y in \yticks {
 										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										\node[right, font=\tiny] at (0-0.3,\y) {\y};	% y labels
 									}
 								
 									% === Function plots on [tmin, c] ===
 									\draw[\LCurve, very thick]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, {\fL{\t}});
 									
 									% === Function plots on [c, tmax] ===
-									\draw[very thick, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, 0);
+									\draw[very thick]	plot[domain=\c:\tmax, variable=\t] (\t, 0);
 									
 									% === Points at t=c ===
 									\draw[\LCurve, thick]	(\c,{\fL{\c}})	circle[radius=4pt];
 									\fill[thick]	(\c,0)	circle[radius=5pt];
 									
 									% === Labels ===
-									\node[\LColor	, font=\small] at ({(\tmin+\c)/2}, 1) {$\fLtex$};
+									\node[\LColor	, font=\scriptsize] at ({(\tmin+\c)*0.5}, 1) {$\fLtex$};
+									\node[font=\tiny, above] at ({(\c+\tmax)*0.5}, 0) {OFF};
 
 								\end{tikzpicture}
 							</latex-image>
 						</image>
 					</p>
-					<p><me>\small + </me></p>
+					<p><me>+</me></p>
 					<p>
 						<image width="100%">
 							<latex-image>
-								\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
-			
-									% === Piecewise Function with 2 Parts ===
+								\begin{tikzpicture}[samples=100, scale=0.25]
 			
 									% === colors ===
 									\def\IColor{green!50!black}	\def\ICurve{\IColor!75}	\def\IFill{\IColor!25}
 									
 									% === figure/domain ===
 									\def\tmin{-4.5}	\def\tmax{5.5}
-									\def\ymin{-1.5}	\def\ymax{2.7}
+									\def\ymin{-1.5}	\def\ymax{3}
 
 									\def\tticks{-4, -2, 2, 4}
 									\def\yticks{-1, 1, 2}
@@ -2620,26 +2648,26 @@
 									% === Axes ===
 									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
 									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+									\node[font=\scriptsize, below] at (\tmax - 0.2	, 0) {$t$};
 			
 									% === Tick marks/numeric labels ===
 									\foreach \t in \tticks {
 										\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
-										\node[below, font=\small] at (\t,0) {\t};	% t labels	
+										\node[below, font=\tiny] at (\t,0) {\t};	% t labels	
 									}
 									\foreach \y in \yticks {
-										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+										\node[left, font=\tiny] at (0.1,\y) {\y};	% y labels
 									}
 								
 									% === Function plots on [tmin, c] ===
-									\draw[very thick, &lt;-]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, 0);
+									\draw[very thick]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, 0);
 									
 									% === Function plots on [c, d] ===
 									\draw[\ICurve, very thick]	plot[domain=\c:\d-0.08, variable=\t] (\t, {\fI{\t}});
 
 									% === Function plots on [d, tmax] ===
-									\draw[very thick, -&gt;]	plot[domain=\d:\tmax, variable=\t] (\t, 0);
+									\draw[very thick]	plot[domain=\d:\tmax, variable=\t] (\t, 0);
 									
 									% === Points at t=c,d ===
 									\fill[\ICurve, thick]	(\c,{\fI{\c}})	circle[radius=5pt];
@@ -2648,23 +2676,25 @@
 									\fill[thick]	(\d,0)	circle[radius=4pt];
 									
 									% === Labels ===
-									\node[\IColor	, font=\small] at ({(\c+\d)/2+0.1}, 2.3) {$\fItex$};
+									\node[\IColor, font=\scriptsize, right] at (-0.2, 2.4) {$\fItex$};
+									\node[font=\tiny, above] at ({(\tmin+\c)*0.5}, 0) {OFF};
+									\node[font=\tiny, above] at ({(\d+\tmax)*0.5}, 0) {OFF};
 
 								\end{tikzpicture}
 							</latex-image>
 						</image>
 					</p>
-					<p><me>\small + </me></p>
+					<p><me>+</me></p>
 					<p>
 						<image width="100%">
 							<latex-image>
-								\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
+								\begin{tikzpicture}[samples=100, scale=0.25]
 									% === colors ===
 									\def\RColor{red!50!black}	\def\RCurve{\RColor!75}	\def\RFill{\RColor!25}
 									
 									% === figure/domain ===
 									\def\tmin{-4.5}	\def\tmax{5.5}
-									\def\ymin{-1.5}	\def\ymax{2.7}
+									\def\ymin{-1.5}	\def\ymax{3}
 
 									\def\tticks{-4, -2, 2, 4}
 									\def\yticks{-1, 1, 2}
@@ -2679,16 +2709,16 @@
 									% === Axes ===
 									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
 									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+									\node[font=\scriptsize, below] at (\tmax - 0.2	, 0) {$t$};
 			
 									% === Tick marks/numeric labels ===
 									\foreach \t in \tticks {
 										\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
-										\node[below, font=\small] at (\t,0) {\t};	% t labels	
+										\node[below, font=\tiny] at (\t,0) {\t};	% t labels	
 									}
 									\foreach \y in \yticks {
 										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+										\node[left, font=\tiny] at (0.1,\y) {\y};	% y labels
 									}
 								
 									% === Function plots on [tmin, d] ===
@@ -2702,8 +2732,9 @@
 									\draw[thick]	(\d,0)	circle[radius=4pt];
 									
 									% === Labels ===
-									\node[\RColor	, font=\small] at ({(\d+\tmax)/2}, 2) {$\fRtex$};
-
+									\node[\RColor	, font=\scriptsize] at ({(\d+\tmax)*0.5}, 2) {$\fRtex$};
+									\node[font=\tiny, above] at ({(\tmin+\c)*0.5}, 0) {OFF};
+									
 								\end{tikzpicture}
 							</latex-image>
 						</image>
@@ -2711,13 +2742,12 @@
 					<p/>
 				</sidebyside>
 				<p/>
-				<sidebyside widths="6% 5% 3% 22% 5% 22% 4% 21% 12%" valign="middle">
+				<sidebyside widths="6% 5% 3% 24% 5% 24% 4% 23% 6%" valign="middle">
 					<p/>
 					<p/>
-					<p><m>\small = </m></p>
+					<p><m>=</m></p>
 					<p>
 						<me>
-							\small
 							\left\{
 								\begin{array}{cr}
 									\B \sin t	\amp \B t \lt 0\\
@@ -2726,10 +2756,9 @@
 							\right.
 						</me>
 					</p>
-					<p><me>\small + </me></p>
+					<p><me>+</me></p>
 					<p>
 						<me>
-							\small
 							\left\{
 								\begin{array}{cr}
 									\G 2e^{-t}	\amp \G 0 \le t \lt 2\\
@@ -2738,10 +2767,9 @@
 							\right.	
 						</me>
 					</p>
-					<p><me>\small + </me></p>
+					<p><me>+</me></p>
 					<p>
 						<me>
-							\small
 							\left\{
 								\begin{array}{cr}
 									{\R 1.5}	\amp \R t \ge 2\\
@@ -2752,97 +2780,25 @@
 					</p>
 					<p/>
 				</sidebyside>
-				<p/>
-				<sidebyside widths="6% 5% 3% 22% 5% 22% 4% 21% 12%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>\small = </m></p>
-					<p>
-						<me>
-							\small
-							{\B \sin t}\
-							\boxed{
-							\left\{
-								\begin{array}{cr}
-									1	\amp t \lt 0\\
-									0	\amp \text{otherwise}
-								\end{array}
-							\right.}
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\G 2e^{-t}}\
-							\boxed{
-								\left\{
-								\begin{array}{cr}
-									1	\amp 0 \le t \lt 2\\
-									0	\amp \text{otherwise}
-								\end{array}
-							\right.}
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\R 1.5}\
-							\boxed{
-								\left\{
-								\begin{array}{cr}
-									1	\amp t \ge 2\\
-									0	\amp \text{otherwise}
-								\end{array}
-							\right.}
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="25% 4% 23% 4% 21% 4% 19%" valign="middle">
-					<p/>
-					<p><me>\small\downarrow</me></p>
-					<p/>
-					<p><me>\small\downarrow</me></p>
-					<p/>
-					<p><me>\small\downarrow</me></p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="6% 5% 3% 22% 5% 22% 4% 21% 12%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>\small = </m></p>
-					<p>
-						<me>
-							\small
-							{\B \sin t}\
-							\left(1-u_{0}(t)\right)
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\G 2e^{-t}}\
-							\left(u_{0}(t)-u_{2}(t)\right)
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\R 1.5}\
-							\left(u_{2}(t)\right)
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
+			</p>
+
+			<p>
+				Since <m>\B \sin t</m> goes from ON to OFF at <m>t=0</m>, we multiply it by <m>1-u_0(t)</m>. Next, <m>\G 2e^{-t}</m> is only ON between <m>t=0</m> and <m>2</m>, so we multiply by <m>u_0(t) - u_2(t)</m>. Finally, the function <m>\R 1.5</m> turns ON at <m>t=2</m>, so we multiply it by <m>u_2(t)</m>. Summing up these products, we have
+				<me>
+					g(t) = 
+					{\B \sin t}\ \left(1-u_{0}(t)\right) + 
+					{\G 2e^{-t}}\ \left(u_{0}(t)-u_{2}(t)\right) + 
+					{\R 1.5}\ \left(u_{2}(t)\right)
+				</me>
+			</p>
+
+			<p>
+				This representation highlights the fact that the unit step functions you need depend on the intervals each piece is defined on. The general technique is summarized below.
 			</p>
 			
-			<assemblage xml:id="piecewise-to-unit-step"><title> To Write a Piecewise Function in Unit Step Form .. </title>
+			<assemblage xml:id="piecewise-to-unit-step"><title> Converting Piecewise Form to Unit Step Form </title>
 				<p>
-					First, identify the unit step function for each <q>piece</q> based on its interval.
+					Start by identifying the interval type associated to each piece. The three possible interval types along with the required unit step functions are as follows: 
 					<table xml:id="unit-step-selection"><title> Unit Step Function Selection based on Piece Interval </title>
 						<tabular halign="center">
 							<col width="25%"/>
@@ -2855,7 +2811,7 @@
 								<cell>Piece</cell>
 								<cell>Interval</cell>
 								<cell>Interval Type</cell>
-								<cell>Unit Step Function</cell>
+								<cell>Required Unit Step</cell>
 							</row>
 							<row>
 								<cell>
@@ -2903,25 +2859,25 @@
 				</p>
 
 				<p>
-					Then, the piecewise function is the sum
+					For each piece, multiply the function by the required unit step and sum them:
 				</p>
 
 				<p>
 					<me>
 						g(t) = 
-						{\B g_{1}(t)}\cdot\left(1 - u_c(t)\right) + 
-						{\G g_{2}(t)}\cdot\left(u_c(t) - u_d(t)\right) + 
-						{\R g_{3}(t)}\cdot u_d(t)
+						{\B g_{1}(t)}\big(1 - u_c(t)\big) + 
+						{\G g_{2}(t)}\big(u_c(t) - u_d(t)\big) + 
+						{\R g_{3}(t)}u_d(t)
 					</me>.
 				</p>
 
 				<p>
-					<em>Note, additional pieces with finite intervals, like <m>\G g_2(t)</m>, are treated similarly.</em>
+					<em>Note, additional finite interval pieces, like <m>\G g_2(t)</m>, are treated similarly.</em>
 				</p>
 			</assemblage>
 			
 			<p>
-				Let's practice this with a few examples.<xref ref="unit-step-selection"/>
+				Let's practice using the strategy in <xref ref="unit-step-selection"/> with a few examples.
 			</p>
 		
 			<example><title> Laplace Transform of 2 Piecewise Functions </title>
@@ -3040,6 +2996,631 @@
 				
 		</subsubsection>
 
+	</subsection>
+
+	<subsection><title> Laplace Transforms of Piecewise Functions </title>
+
+		<introduction>
+
+			<p>
+				It is important to remember that our goal is to be able to solve a differential equation with a piecewise forcing function, such as
+			</p>
+			
+			<me>
+				y'' + y = 
+				\left\{
+					\begin{array}{ll}
+						\B 3, 		\amp 0 \ge t \lt 2 \\
+						\G 1,		\amp 2 \ge t \lt 4 \\
+						\R t - 4,	\amp t \ge 4.
+					\end{array}
+				\right.
+			</me>
+
+			<p>
+				Applying the Laplace transform method requires us to take the Laplace transform of both sides of the equation. However, the right-hand is mixture of constants and functions and it is not clear how to take the Laplace transform of it. Fortunately, unit step functions can help us out.
+			</p>
+			
+			<p>
+				To see this, update the equation with the piecewise function in unit step form, like so
+				<me>
+					y'' + y 
+					= {\B 3}\big( u_0(t) - u_2(t) \big)
+					+ {\G 1}\big( u_2(t) - u_4(t) \big)
+					+ {\R (t - 4)}\ u_4(t)
+				</me>
+			</p>
+			
+			<p>
+				Regrouping the terms by their unit step functions gives the simplified equation
+				<me>
+					y'' + y = 3\ u_0(t) - 2\ u_2(t) + (t - 5)\ u_4(t)
+				</me>.
+			</p>
+
+			<p>
+				Now, we apply the Laplace transform to both sides, which leads to
+				<me>
+					\lap{y''} + \lap{y} = 3\ \lap{u_0(t)} - 2\ \lap{u_2(t)} + \lap{(t - 5)\ u_4(t)}
+				</me>.
+				On the left-hand side, the standard rules for <m>\lap{y''}</m> and <m>\lap{y}</m> apply. But, the terms on the right don't match anything in our Laplace tables yet. So before we can proceed solving these equations, we need to establish the following new transforms:
+				<ol>
+					<li><m>u_c(t)</m>, the shifted step function by itself,</li>
+					<li><m>f(t)\, u_c(t)</m>, a function that “starts late” at <m>t = c</m>.</li>
+				</ol> 
+			</p>
+			
+			<p>
+				In this subsection, we'll derive the formulas for both <m>\lap{u_c(t)}</m> and <m>\lap{f(t)\,u_c(t)}</m>, which give us the final tool needed to start solving differential equations with piecewise forcing functions. 
+			</p>
+			
+		</introduction>
+
+		<subsubsection><title> Laplace Transform of <m>u_c(t)</m> </title>
+
+			<p>
+				We will now jump right into the Laplace transform of a unit step function, <m>u_c(t)</m>. 
+			</p>
+		
+			<assemblage xml:id="laplace-of-step"><title> Laplace Transform of the shifted Step </title>
+				<p>
+					The Laplace transform of the shifted unit step function is
+					<me>
+						\lap{u_c(t)} = \frac{e^{-cs}}{s}.
+					</me>
+				</p>
+				<p>
+					<theorem><title> <m>\rightarrow \lap{u_c(t)}</m> </title>
+
+						<p>
+							To derive this, recall the definition of the Laplace transform:
+							<me>
+								\lap{u_c(t)} = \int_0^{\infty} u_c(t) \, e^{-st} \, dt.
+							</me>
+							But remember that
+							<me>
+								u_c(t) = \left\{
+								\begin{array}{ll}
+								0, \amp t \lt c\\
+								1, \amp t \ge c
+								\end{array}
+								\right.
+							</me>
+							So the integrand is zero for <m>t \lt c</m>, and equal to <m>e^{-st}</m> for <m>t \ge c</m>.
+						</p>
+
+						<p>
+							That simplifies our integral to just the portion from <m>t = c</m> to infinity:
+							<me>
+								\lap{u_c(t)} = 
+								\os{\large t\ \lt\ c}{\overline{\int_0^{c} \ub{u_c(t)}_{=\ 0} \, e^{-st} \, dt}} 
+								+ 
+								\os{\large t\ \ge\ c}{\overline{\int_c^{\infty} \ub{u_c(t)}_{=\ 1} \, e^{-st} \, dt}}
+								= \int_c^{\infty} e^{-st} \, dt
+							</me>
+						</p>
+						<p>
+							To compute the integral, we have to remember that this is an improper integral, so we re-express it as a limit
+							<me>
+								\lap{u_c(t)} = \int_c^{\infty} e^{-st} \, dt
+								= \lim_{b \to \infty}\int_c^b e^{-st} \, dt
+							</me>
+							and first compute the integral
+							<me>
+								\int_c^b e^{-st} \, dt
+								= \left[ \frac{-1}{s} e^{-st} \right]_c^b
+								= \frac{-1}{s} \left( e^{-sb} - e^{-sc} \right)
+								= \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s}.
+							</me>
+						</p>
+						<p>
+							Now, we compute the limit of this expression as <m>b \to \infty</m>:
+							<me>
+								\lim_{b \to \infty} \left( \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s} \right)
+								= \frac{e^{-sc}}{s} - \lim_{b \to \infty} \frac{e^{-sb}}{s}
+							</me>.
+							As before, the <term>limit of the exponential function</term> converges if its power, <m>-sb</m>, goes to <m>-\infty</m>. This happens if <m>s \gt 0</m>.
+						</p>
+						<p>
+							So, as long as <m>s \gt 0</m>, then <m>\lim_{b \to \infty} e^{-sb} = 0</m> and the transform becomes 
+							<me>
+								\lap{u_c(t)} = \frac{e^{-cs}}{s}, \quad s \gt 0
+							</me>.
+						</p>
+					</theorem>
+				</p>
+			</assemblage>
+
+			<p>
+				This is a remarkably clean result. A delayed step in time becomes multiplication by an exponential decay factor in the Laplace domain. Now that we've established this, we can build up to more general transforms like <m>\lap{f(t)\, u_c(t)}</m>, which is the key to transforming most piecewise-defined functions.
+			</p>
+			
+			<p>
+				Let's try it on a concrete example.
+			</p>
+		
+			<example><title> Laplace Transform of <m>u_2(t)</m> </title>
+				<p>
+					<statement>
+						<p>
+							Compute <m>\quad\ds\lap{u_2(t)}\vphantom{\int}</m>.
+						</p>
+					</statement>
+				</p>
+				<solution><title> <m>\rightarrow \lap{u_2(t)}</m> </title>
+					<p>
+						Using the formula above, with <m>c=2</m>, we get:
+					<me>
+						\lap{u_2(t)} = \frac{e^{-2s}}{s}.
+					</me>
+					</p>
+				</solution>
+			</example>
+		
+		</subsubsection>
+
+		<subsubsection><title> Laplace Transform of <m>f(t)\cdot u_c(t)</m> </title>
+
+			<p>
+				Now that we've seen how to compute <m>\lap{u_c(t)}</m>, let's tackle the next goal: finding the Laplace transform of a function that's “turned on” at time <m>t = c</m>. That is, how do we handle <m>\lap{f(t)\, u_c(t)}</m>?
+			</p>
+			
+			<p>
+				This expression appears all the time when we rewrite piecewise functions using unit step notation. For example, from earlier:
+				<me>
+					g(t) = (2 - t)\, u_2(t).
+				</me>
+			</p>
+		
+			<assemblage xml:id="laplace-f-uc"><title> Laplace Transform of <m>f(t) \, u_c(t)</m> </title>
+				<p>
+					If a function is multiplied by a shifted step function, its Laplace transform becomes:
+					<men xml:id="L14-eqn">
+						\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t+c)}.
+					</men>
+				</p>
+				<p>
+					<theorem><title> <m>\rightarrow \lap{f(t) \, u_c(t)}</m> </title>
+						<p>
+							To find the Laplace transform, we start by computing
+							<me>
+								\lap{f(t) \, u_c(t)} = \int_0^\infty f(t) \, u_c(t) \, e^{-st} \, dt.
+							</me>
+							Remember, <m>u_c</m> is either 0 or 1, so the integrand is the piecewise function
+							<me> 
+								f(t) \, {\BO u_c(t)} \, e^{-st} 
+								=
+								f(t) \, e^{-st} \cdot {\BO 
+								\left\{
+									\begin{array}{ll}
+										0\\
+										1
+									\end{array}
+								\right.}
+								\quad = \quad
+								\left\{
+									\begin{array}{ll}
+										0,				\amp t \lt c\\
+										f(t)e^{-st},	\amp t \ge c,
+									\end{array}
+								\right.
+							</me>
+						</p>
+
+						<p>
+							Separating the integral over these intervals leads to
+							<me>
+								\lap{f(t) \, u_c(t)} = \int_c^\infty f(t) e^{-st} \, dt.
+							</me>
+						</p>
+
+						<p>
+							This new integral looks a lot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can use a simple <m>u</m>-substitution to create a new variable that starts at <m>t = 0</m>. 
+						</p>
+
+						<aside><title> <m>\B \text{A}, \text{B}, \text{C}, \text{D}</m> Details </title>
+							<tabular top="minor" bottom="minor">
+								<col width="100%"/>
+								<row>
+									<cell>
+										<p>
+											<m>\B \text{A}\ </m>
+											<m>u</m>-substitution
+											<md>
+												<mrow>t = u + c</mrow>
+												<mrow>dt = du</mrow>
+											</md>
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\B \text{B}\ </m>
+											Exponential Property
+											<md>
+												<mrow>e^{-s(u+c)} = e^{-su} e^{-sc}</mrow>
+											</md>
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\B \text{C}\ </m>
+											Since the integration variable is <m>u</m>, we can factor out <m>e^{-sc}</m> as a constant.
+										</p>
+									</cell>
+								</row>
+								<row>
+									<cell>
+										<p>
+											<m>\B \text{D}\ </m>
+											Except for <m>c</m> and <m>s</m>, you can rename the integration variable as anything.
+										</p>
+									</cell>
+								</row>
+							</tabular>
+						</aside>
+
+						<p>
+							Let <m>u = t - c</m>, so <m>du = dt</m>, and the <m>u</m>-integral is
+							<md>
+								<mrow>
+									\int_{t\ =\ c}^{t\ =\ \infty} f(t)\ e^{-st} \, dt 
+									\amp \os{\large\B \text{A}}{=} 
+									\int_{u\ =\ 0}^{u\ =\ \infty} f(u+c)\ e^{-s(u+c)}\ du
+								</mrow>
+								<mrow>
+									\amp \os{\large\B \text{B}}{=}
+									\int_0^\infty f(u+c) \left(e^{-su} \cdot e^{-sc}\right) \, du
+								</mrow>
+								<mrow>
+									\amp \os{\large\B \text{C}}{=}
+									e^{-cs} \int_0^\infty f(u+c) e^{-su} \, du
+								</mrow>
+								<mrow>
+									\amp \os{\large\B \text{D}}{=}
+									e^{-cs} \ub{\int_0^\infty f(t+c) e^{-st} \, dt}_{\large \lap{f(t+c)}}
+								</mrow>
+							</md>
+						</p>
+
+						<p>
+							Therefore,
+							<me>
+								\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t+c)}.
+							</me>
+						</p>
+					</theorem>
+				</p>
+			</assemblage>
+		
+			<p>
+				This rule lets us instantly find Laplace transforms for many common piecewise functions. Let's see how it works in practice with a few examples.
+			</p>
+
+			<example><title> Laplace Transforms of <m>f(t)\, u_c(t)</m> </title>
+				<p>
+					<statement>
+						<p>
+							Compute the following Laplace transform:
+							<me>
+								1. \quad \lap{(2-t)\, u_3(t)}, \qquad\qquad 2. \quad \lap{e^{3t}\, \left(1 - u_1(t)\right)}
+							</me>
+						</p>
+					</statement>
+				</p>
+				<p>
+					<solution><title> <m>\rightarrow \lap{t\, u_2(t)}</m> </title>
+						<p>
+							To compute <m>\lap{(2-t)\, u_3(t)}</m> using <xref ref="L14-eqn"/> with <m>c=2</m>, it is helpful to first label <m>f(t)</m>: 
+						</p>
+						<me>
+							\laplacesym \big\{{\BO \us{f(t)}{\us{\uparrow}{(2-t)}}}\, u_2(t)\big\} 
+							= e^{-2s} \lap{{\BO f(t+3)}}
+						</me>
+						<p>
+							Since <m>f(t) = 2-t</m>, then <m>\BO f(t + 3) = 2 - (t+3) = -t-1</m> and we have
+							<md>
+								<mrow> e^{-2s} \lap{{\BO -t-1}}	\amp = e^{-2s} \left(-\lap{t}-\lap{1}\right) </mrow>
+								<mrow>						\amp = e^{-2s} \left(-\frac{1}{s^2}-\frac{1}{s}\right) </mrow>
+								<mrow>						\amp = -e^{-2s} \left(\frac{1+s}{s^2}\right) </mrow>
+							</md>.
+						</p>
+						<p>
+							Therefore, the Laplace transform is
+							<me>
+								\lap{(2-t)\, u_3(t)} = -\frac{e^{-2s}(1+s)}{s^2}.
+							</me>
+						</p>
+					</solution>
+					<solution><title> <m>\rightarrow \lap{e^{3t}\, \left(1 - u_1(t)\right)}</m> </title>
+
+						<p>
+							In this case, we distribute <m>e^{3t}</m>, then identifying <m>f(t)</m> on the second term:
+						</p>
+
+						<sidebyside widths="64% 23%">
+							<p>
+								<md>
+									<mrow>
+										\lap{e^{3t}\, \left(1 - u_1(t)\right)}
+										\amp = \lap{e^{3t}} - \laplacesym \big\{{\BO e^{3t}}\, u_1(t)\big\}
+									</mrow>
+									<mrow>
+										\amp = \frac{1}{s - 3} - e^{-s} \lap{{\BO f(t+1)}}
+									</mrow>
+									<mrow>
+										\amp = \frac{1}{s - 3} - e^{-s} \lap{{\BO e^{3t} \cdot e^{3}}}
+									</mrow>
+									<mrow>
+										\amp = \frac{1}{s - 3} - e^{-s} \cdot e^{3} \lap{e^{3t}}
+									</mrow>
+									<mrow>
+										\amp = \frac{1}{s - 3} - e^{-s+3} \cdot \frac{1}{s - 3}
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\BO f(t)\ 	\amp\BO = e^{3t}</mrow>
+									<mrow>\BO f(t+1)\ 	\amp\BO = e^{3(t+1)}</mrow>
+									<mrow>				\amp\BO = e^{3t + 3}</mrow>
+									<mrow>				\amp\BO = e^{3t} \cdot e^{3}</mrow>
+									<mrow/>
+									<mrow>(e^3\ \text{is a} \amp\ \text{constant})</mrow>
+								</md>
+							</p>
+						</sidebyside>
+							
+						<p>
+							Adding this last two fractions together, we arrive at the Laplace transform
+							<me>
+								\lap{g(t)} = \frac{1 - e^{-s+3}}{s - 3}.
+							</me>
+						</p>
+					</solution>
+				</p>
+			</example>	
+		
+			<p>
+				These examples show how the Laplace transform can handle piecewise forcing functions like the one encountered in the introduction. Now we're ready to apply this to more general piecewise functions.
+			</p>
+			
+			<xi:include href="./c7-exercises/c7-chkpts-4-2-2-laplace-transforms-of-f-uc.ptx" />
+
+		</subsubsection>
+
+		<subsubsection><title> Solving Equations with Piecewise Forcing Functions </title>	
+			<p>
+				Let's walk through an example to see how this process works from start to finish.
+			</p>
+
+			<example><title> Transforming a 2-Part Piecewise Function </title>
+				<statement>
+				<p>
+					Find the Laplace transform of
+					<me>
+					g(t) = \left\{
+					\begin{array}{ll}
+						e^{-t},	\amp t \lt 1 \\
+						3,		\amp t \ge 1
+					\end{array}
+					\right.
+					</me>
+				</p>
+				</statement>
+				<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
+					<p>
+						We begin by identifying the needed unit step functions.
+						<me>
+							g(t) =  \cdot
+							\left\{
+								\begin{array}{lll}
+									e^{-t}, \amp t \lt 1 \quad \leftarrow (-\infty, 1): \amp 1-u_{1}(t)\\
+									3,		\amp t \ge 1 \quad \leftarrow (1, \infty):	\amp u_{1}(t).
+								\end{array}
+							\right.
+						</me>
+					</p>
+
+					<p>
+						Then we can write <m>g(t)</m> as
+						<me>
+							g(t) = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t).
+						</me>
+					</p>
+
+					<p>
+						Combining like unit step function terms, we get
+						<md>
+							<mrow> 
+								g(t) \amp 
+								= e^{-t} - e^{-t} \cdot u_{1}(t) + 3 \cdot u_{1}(t)
+							</mrow>
+							<mrow>
+								\amp 
+								= e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)
+							</mrow>,
+						</md>
+						and taking the Laplace transform of the last two terms separately.
+						<me>
+							\lap{g(t)} 
+							= \us{\large\text{1️⃣}}{\ul{\lap{e^{-t}}}} 
+							+ \us{\large\text{2️⃣}}{\ul{\lap{\left(3 - e^{-t}\right) \cdot u_{1}(t)}}}
+						</me>
+					</p>
+
+					<sidebyside widths="5% 30% 65%" valign="middle">
+						<p>1️⃣</p>
+						<p><me>\lap{e^{-t}} = \frac{1}{s + 1}</me></p>
+						<p/>
+					</sidebyside>
+
+					<p>
+						<sidebyside widths="5% 60% 35%" valign="top">
+							<p>2️⃣</p>
+							<p>
+								<md>
+									<mrow> 
+										\laplacesym \big\{\big({\BO 3 }\ \amp {\BO - e^{-t}}\big) \cdot u_{1}(t)\big\} 
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \lap{{\BO f(t+1)}}
+									</mrow>
+									<mrow>				
+										\amp = e^{-s} \lap{3 - e^{-t} \cdot e^{-1}}
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(3\lap{1} - e^{-1}\lap{{e^{-t}}} \right)
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(\frac{3}{s} - e^{-1} \cdot \frac{1}{s + 1}\right)
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> \small\BO f(t)\ 		\amp \small\BO = 3 - e^{-t} </mrow>
+									<mrow> \small\BO f(t+1)\ 	\amp \small\BO = 3 - e^{-(t+1)} </mrow>
+									<mrow>						\amp \small\BO = 3 - e^{-t} \cdot e^{-1} </mrow>
+								</md>
+							</p>
+						</sidebyside>
+					</p>
+
+					<p>
+						Combining 1️⃣ &amp; 2️⃣, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} 
+							= \frac{1}{s + 1} + e^{-s} \left(\frac{3}{s} - \frac{e^{-1}}{s + 1}\right)
+						</me>.
+					</p>
+				</solution>
+			</example>
+		
+			<p>
+				From here, we'll begin applying these techniques to solve differential equations with piecewise forcing functions, using these Laplace tools as our foundation.
+			</p>
+			
+			<p>
+				Let's try another example with a function that has multiple active intervals.
+			</p>
+			
+			<example><title> Transforming a 3-Part Piecewise Function </title>
+				<statement>
+					<p>
+						Find the Laplace transform of
+						<me>
+							g(t) = \left\{
+							\begin{array}{ll}
+								2t,	\amp 0 \le t \lt 1 \\
+								3,	\amp 1 \le t \lt 4 \\
+								0,	\amp t \ge 4
+							\end{array}
+							\right.
+						</me>
+					</p>
+				</statement>
+				<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
+					<p>
+						First we identify the needed unit step functions.
+						<me>
+							g(t) = \left\{
+							\begin{array}{lll}
+								\B 2t,	\amp 0 \le t \lt 1	\amp \leftarrow [0,1):		\amp u_{0}(t)-u_{1}(t)\\
+								\G 3,	\amp 1 \le t \lt 4	\amp \leftarrow [1,4):		\amp u_{1}(t)-u_{4}(t)\\
+								\R 0,	\amp t \ge 4 		\amp \leftarrow [4,\infty):	\amp u_{4}(t)\\
+							\end{array}
+							\right.
+						</me>.
+					</p>
+
+					<p>
+						Next we write <m>g(t)</m> as
+						<me>
+							g(t) = {\B 2t}\, (u_0(t) - u_1(t)) + {\G 3}\, (u_1(t) - u_4(t)) + {\R 0}\, u_4(t).
+						</me>
+						and combine like unit step function terms:
+					</p>
+
+					<md>
+						<mrow> g(t)	\amp = 2t\, u_0(t) - 2t\, u_1(t) + 3\, u_1(t) - 3\, u_4(t) </mrow>
+						<mrow>		\amp = 2t\, u_0(t) + (3 - 2t)\, u_1(t) - 3\, u_4(t) </mrow>
+					</md>
+
+					<p>
+						Now, we can compute the Laplace transform of each term separately:
+						<me>
+							\lap{g(t)} 
+							= \ub{\lap{2t\, u_0(t)}}_{\large\text{1️⃣}} 
+							+ \ub{\lap{(3 - 2t)\, u_1(t)}}_{\large\text{2️⃣}} 
+							- \ub{\lap{3\, u_4(t)}}_{\large\text{3️⃣}}
+						</me>.
+						Computing each of these terms separately, we have
+					</p>
+
+					<sidebyside widths="5% 60% 35%">
+						<p>	1️⃣</p>
+						<p>
+							<md>
+								<mrow> \lap{{\BO 2t}\, u_0(t)} \amp = \lap{}e^{-0s} \cdot \lap{f(t)} </mrow>
+								<mrow>  \amp = e^{-0s} \cdot \lap{2t} </mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow> \BO f(t) \amp = 2t </mrow>
+								<mrow> \BO f(t+0) \amp = 2t </mrow>
+							</md>
+						</p>
+					</sidebyside>
+
+
+					
+
+					<p>
+						Adding this last two fractions together, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} - \frac{2e^{-s}}{s}.
+						</me>
+					</p>
+
+					<p>
+						Factoring out the common term, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} \cdot \left(1 - \frac{e^{-s}}{1 - e^{-s}}\right).
+						</me>
+					</p>
+				</solution>
+			</example>
+			
+			<p>
+				Notice how the function is rewritten as a sum of two “windowed” terms:
+				<me>
+				g(t) = 2t\, (u_0(t) - u_1(t)) + 3\, (u_1(t) - u_4(t)).
+				</me>
+				Then we apply the Laplace shift rule to each term individually.
+			</p>
+
+			<assemblage xml:id="piecewise-laplace-summary"><title> Summary: Laplace Transforms of Piecewise Functions </title>
+				<p>
+				To compute <m>\lap{g(t)}</m> for a piecewise function:
+				<ol>
+					<li>Rewrite <m>g(t)</m> as a sum of terms using <m>u_c(t)</m> and <m>u_c(t) - u_d(t)</m>.</li>
+					<li>Distribute and combine all <m>f(t)\, u_c(t)</m> terms with the same unit step function.</li>
+					<li>Use the shift rule: <m>\lap{f(t)\, u_c(t)} = e^{-cs} \lap{f(t + c)}</m>.</li>
+				</ol>
+				</p>
+			</assemblage>
+			
+			<p>
+				With this toolkit, we can now transform any piecewise forcing function into the Laplace domain—no matter how many intervals it has or when they turn on.
+			</p>
+		
+		</subsubsection>
+		
 	</subsection>
 	
 </section>

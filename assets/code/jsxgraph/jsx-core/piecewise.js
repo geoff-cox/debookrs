@@ -5,8 +5,19 @@
 			this.board = board;
 			this.f = func;
 
-			this.xLeft = typeof endPoints.xLeft === "object" ? () => endPoints.xLeft.X() : () => endPoints.xLeft;
-			this.xRight = typeof endPoints.xRight === "object" ? () => endPoints.xRight.X() : () => endPoints.xRight;
+			// this.xLeft = typeof endPoints.xLeft === "object" ? () => endPoints.xLeft.X() : () => endPoints.xLeft;
+			// this.xRight = typeof endPoints.xRight === "object" ? () => endPoints.xRight.X() : () => endPoints.xRight;
+			this.xLeft = typeof endPoints.xLeft === "function"
+				? endPoints.xLeft
+				: typeof endPoints.xLeft === "object"
+					? () => endPoints.xLeft.X()
+					: () => endPoints.xLeft;
+
+			this.xRight = typeof endPoints.xRight === "function"
+				? endPoints.xRight
+				: typeof endPoints.xRight === "object"
+					? () => endPoints.xRight.X()
+					: () => endPoints.xRight;
 
 			this.typeLeft = endPoints.typeLeft;
 			this.typeRight = endPoints.typeRight;
