@@ -25,7 +25,6 @@
 	window.createPiecewise = function ({
 		boardObj,
 		funcPieces,
-		isContinuous = false,
 		imgToggle = null,
 		toggleOn = false
 	}) {
@@ -37,6 +36,6 @@
 				...spec
 			})
 		);
-		return new Piecewise(boardObj, pieces, isContinuous, imgToggle, toggleOn);
+		return new Piecewise(boardObj, pieces, imgToggle, toggleOn);
 	};
 })();

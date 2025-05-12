@@ -2,7 +2,7 @@
 	// === General Settings ===
 	const boardId = 'unit-step-uc-ud';
 	const imgPath = 'external/code/jsxgraph/img-labels/';
-	const xmin = -4, xmax = 4, ymin = -2, ymax = 3;
+	const xmin = -1, xmax = 7, ymin = -1.3, ymax = 2;
 	
 	// === Plot Board 1 ===
 	const plotboard1 = new BoardObj({
@@ -10,10 +10,24 @@
 		boardId: boardId + '-plot1',
 		boardWindow: [xmin, xmax, ymin, ymax],
 		plotDomain: [xmin, xmax],
-		tAxis: true,
+		tAxis: false,
 		yAxis: true,
+		grid: false,
+		highlight: false,
 		txtLabels: [],
 		imgLabels: [[0.35, xmax - 0.3, -0.7, 45 / 81, 't']],
+	});
+
+	const tAxis1 = plotboard1.board.create('axis', [[xmin, 0], [xmax, 0]], {
+		ticks: {
+			drawLabels: false,        // hides the numbers
+			drawTicks: false,         // hides the tick marks
+			majorHeight: 0,           // avoids leftover tick line segments
+			minorTicks: 0
+		},
+		withLabel: true,             // disables axis name like "t"
+		highlight: false,
+		strokeColor: 'black'
 	});
 
 	// === Plot Board 2 ===
@@ -22,15 +36,27 @@
 		boardId: boardId + '-plot2',
 		boardWindow: [xmin, xmax, ymin, ymax],
 		plotDomain: [xmin, xmax],
-		tAxis: true,
+		tAxis: false,
 		yAxis: true,
 		txtLabels: [],
 		imgLabels: [[0.35, xmax - 0.3, -0.7, 45 / 81, 't']],
 	});
 
+	const tAxis2 = plotboard2.board.create('axis', [[xmin, 0], [xmax, 0]], {
+		ticks: {
+			drawLabels: false,        // hides the numbers
+			drawTicks: false,         // hides the tick marks
+			majorHeight: 0,           // avoids leftover tick line segments
+			minorTicks: 0
+		},
+		withLabel: true,             // disables axis name like "t"
+		highlight: false,
+		strokeColor: 'black'
+	});
+
 	const cAxis = plotboard1.board.create('line', [[xmin, 0], [xmax, 0]], { visible: false });
 
-	const c = plotboard1.board.create('glider', [-2, 0, cAxis], {
+	const c = plotboard1.board.create('glider', [1.2, 0, cAxis], {
 		name: 'c',
 		size: 4,
 		color: 'black',
@@ -41,10 +67,15 @@
 		label: { visible: false },
 	});
 	c.on('drag', () => {
-		plotboard2.board.update(); // manually trigger re-render
+		if (c.X() < d.X()) {
+			plotboard2.board.update(); // manually trigger re-render
+		} else {
+			c.setPosition(JXG.COORDS_BY_USER, [d.X() - 0.1, 0]);
+			c.update();
+		}
 	});
 
-	const d = plotboard1.board.create('glider', [2, 0, cAxis], {
+	const d = plotboard1.board.create('glider', [4, 0, cAxis], {
 		name: 'd',
 		size: 4,
 		color: 'black',
@@ -55,12 +86,17 @@
 		label: { visible: false },
 	});
 	d.on('drag', () => {
-		plotboard2.board.update(); // manually trigger re-render
+		if (c.X() < d.X()) {
+			plotboard2.board.update(); // manually trigger re-render
+		} else {
+			d.setPosition(JXG.COORDS_BY_USER, [c.X() + 0.1, 0]);
+			d.update();
+		}
 	});
 
-	const cLabel = plotboard1.board.create('image', [
+	const cLabel1 = plotboard1.board.create('image', [
 		imgPath + "c.png",
-		[() => c.X() - 0.08, ymin + 0.3],
+		[() => c.X() - 0.15, -0.6],
 		[0.25 * plotboard1.boardAspect * (59 / 57), 0.25]
 	], {
 		fixed: true,
@@ -70,10 +106,22 @@
 		label: { visible: false },
 	});
 
-	const dLabel = plotboard1.board.create('image', [
+	const cLabel2 = plotboard2.board.create('image', [
+		imgPath + "c.png",
+		[() => c.X() - 0.15, -0.6],
+		[0.25 * plotboard2.boardAspect * (59 / 57), 0.25]
+	], {
+		fixed: true,
+		xAnchor: 'center',
+		yAnchor: 'bottom',
+		highlight: false,
+		label: { visible: false },
+	});
+
+	const dLabel1 = plotboard1.board.create('image', [
 		imgPath + "d.png",
-		[() => d.X() - 0.08, ymin + 0.3],
-		[0.25 * plotboard1.boardAspect * (59 / 57), 0.25]
+		[() => d.X() - 0.15, -0.7],
+		[0.4 * plotboard1.boardAspect * (63 / 78), 0.4]
 	], {
 		fixed: true,
 		xAnchor: 'center',
@@ -82,7 +130,19 @@
 		label: { visible: false },
 	});
 
-	const offRegion = plotboard1.board.create('polygon', [
+	const dLabel2 = plotboard2.board.create('image', [
+		imgPath + "d.png",
+		[() => d.X() - 0.15, -0.7],
+		[0.4 * plotboard2.boardAspect * (63 / 78), 0.4]
+	], {
+		fixed: true,
+		xAnchor: 'center',
+		yAnchor: 'bottom',
+		highlight: false,
+		label: { visible: false },
+	});
+
+	const offRegion1 = plotboard2.board.create('polygon', [
 		[xmin, ymin], [() => c.X(), ymin], [() => c.X(), ymax], [xmin, ymax]
 	], {
 		fillOpacity: 0.15,
@@ -95,7 +155,7 @@
 		layer: 0 // So that it doesn't prevent image interaction
 	});
 
-	const onRegion = plotboard1.board.create('polygon', [
+	const onRegion = plotboard2.board.create('polygon', [
 		[() => c.X(), ymin], [xmax, ymin], [xmax, ymax], [() => c.X(), ymax]
 	], {
 		fillOpacity: 0.15,
@@ -108,84 +168,126 @@
 		layer: 0 // So that it doesn't prevent image interaction
 	});
 
-	const onLabel = plotboard1.board.create('text', [
-		() => (c.X() + xmax)/2,
-		() => ymin + 0.2,
+	const offRegion2 = plotboard2.board.create('polygon', [
+		[() => d.X(), ymin], [xmax, ymin], [xmax, ymax], [() => d.X(), ymax]
+	], {
+		fillOpacity: 0.15,
+		fillColor: 'blue',
+		highlight: false,
+		borders: { strokeWidth: 0 },
+		vertices: { visible: false },
+		fixed: true,
+		withLabel: false,
+		layer: 0 // So that it doesn't prevent image interaction
+	});
+
+	const onLabel = plotboard2.board.create('text', [
+		() => (c.X() + d.X())/2,
+		() => ymin,
 		'ON'
 	], {
-		fontSize: 20,
-		anchorX: 'left',
+		fontSize: 16,
+		anchorX: 'middle',
 		anchorY: 'bottom',
 		color: 'green',
 		highlight: false,
 	});
 
-	const offLabel = plotboard1.board.create('text', [
+	const offLabel1 = plotboard2.board.create('text', [
 		() => (c.X() + xmin)/2,
-		() => ymin + 0.2,
+		() => ymin,
 		'OFF'
 	], {
-		fontSize: 20,
-		anchorX: 'right',
+		fontSize: 16,
+		anchorX: 'middle',
 		anchorY: 'bottom',
 		color: 'blue',
 		highlight: false,
 	});
 
-	const f = createPiecewise({
+	const offLabel2 = plotboard2.board.create('text', [
+		() => (d.X() + xmax)/2,
+		() => ymin,
+		'OFF'
+	], {
+		fontSize: 16,
+		anchorX: 'middle',
+		anchorY: 'bottom',
+		color: 'blue',
+		highlight: false,
+	});
+
+	const ctransitionLine = plotboard1.board.create('line', [[() => c.X(), ymin], [() => c.X(), 1]], {
+		strokeColor: 'black',
+		strokeWidth: 1,
+		opacity: 0.3,
+		dash: 1,
+		highlight: false,
+	});
+	const dtransitionLine = plotboard1.board.create('line', [[() => d.X(), ymin], [() => d.X(), 1]], {
+		strokeColor: 'black',
+		strokeWidth: 1,
+		opacity: 0.3,
+		dash: 1,
+		highlight: false,
+	});
+
+	const uc = createPiecewise({
 		boardObj: plotboard1,
 		isContinuous: true,
 		funcPieces: [
 			{
-				func: x => 0.2 * x * x - 1,
-				endpoints: { xLeft: xmin, typeLeft: 'none', xRight: c, typeRight: 'none' },
-				options: { color: 'blue', strokeWidth: 2, opacity: 0.3, dash: 3 }
+				func: x => 0,
+				endpoints: { xLeft: xmin, typeLeft: 'none', xRight: c, typeRight: 'open' },
+				options: { color: 'blue', strokeWidth: 3, opacity: 0.8, dash: 0 }
 			},
 			{
-				func: x => 0.2 * x * x - 1,
-				endpoints: { xLeft: c, typeLeft: 'none', xRight: xmax, typeRight: 'none' },
-				options: { color: 'blue', strokeWidth: 3, opacity: 0.3, dash: 3 }
+				func: x => 1,
+				endpoints: { xLeft: c, typeLeft: 'closed', xRight: xmax, typeRight: 'none' },
+				options: { color: 'blue', strokeWidth: 3, opacity: 0.8, dash: 0 }
 			},
 		],
-		imgToggle: [1.1, 1.5, 1.7, 596 / 299, 'lp-15thtsqrd-1-rp', plotboard1]
+		imgToggle: [0.5, () => (c.X() + d.X() - 1)*0.5, 1.3, 248 / 125, 'uc', plotboard1]
 	});
 
-	const u = createPiecewise({
+	const ud = createPiecewise({
+		boardObj: plotboard1,
+		funcPieces: [
+			{
+				func: () => 0,
+				endpoints: { xLeft: xmin, typeLeft: 'none', xRight: d, typeRight: 'open' },
+				options: { color: 'red', strokeWidth: 3 }
+			},
+			{
+				func: x => 1,
+				endpoints: { xLeft: d, typeLeft: 'closed', xRight: xmax, typeRight: 'none' },
+				options: { color: 'red', strokeWidth: 3 }
+			},
+		],
+		imgToggle: [0.5, () => (d.X() + xmax - 1)*0.5, 1.3, 265 / 111, 'ud', plotboard1]
+	});
+
+	const ucudDiff = createPiecewise({
 		boardObj: plotboard2,
 		funcPieces: [
 			{
 				func: () => 0,
 				endpoints: { xLeft: xmin, typeLeft: 'none', xRight: () => c.X(), typeRight: 'open' },
-				options: { color: 'green', strokeWidth: 3, opacity: 0.3, dash: 3 }
+				options: { color: 'green', strokeWidth: 4, opacity: 0.8, dash: 0 }
 			},
 			{
 				func: () => 1,
-				endpoints: { xLeft: () => c.X(), typeLeft: 'closed', xRight: () => d.X(), typeRight: 'none' },
-				options: { color: 'green', strokeWidth: 2, opacity: 0.3, dash: 3 }
+				endpoints: { xLeft: () => c.X(), typeLeft: 'closed', xRight: () => d.X(), typeRight: 'open' },
+				options: { color: 'green', strokeWidth: 4, opacity: 0.8, dash: 0 }
 			},
 			{
 				func: () => 0,
 				endpoints: { xLeft: () => d.X(), typeLeft: 'closed', xRight: xmax, typeRight: 'none' },
-				options: { color: 'green', strokeWidth: 2, opacity: 0.3, dash: 3 }
+				options: { color: 'green', strokeWidth: 4, opacity: 0.8, dash: 0 }
 			},
 		],
-		imgToggle: [0.5, 3, 2, 248 / 125, 'uc', plotboard2]
+		imgToggle: [0.5, () => (c.X() + d.X())*0.5 - (0.5 * plotboard2.boardAspect * 692 / 111)*0.5, 1.3, 692 / 111, 'ucud', plotboard2]
 	});
 
-	const fu = createPiecewise({
-		boardObj: plotboard1,
-		funcPieces: [
-			{
-				func: () => 0,
-				endpoints: { xLeft: xmin, typeLeft: 'none', xRight: c, typeRight: 'open' },
-				options: { color: 'red', strokeWidth: 3 }
-			},
-			{
-				func: x => 0.2 * x * x - 1,
-				endpoints: { xLeft: c, typeLeft: 'closed', xRight: xmax, typeRight: 'none' },
-				options: { color: 'red', strokeWidth: 3 }
-			},
-		],
-		imgToggle: [0.5, 0.35, 2, 937 / 299, 'ft-equals', plotboard1]
-	});
+	
 })();

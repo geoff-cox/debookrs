@@ -5,8 +5,6 @@
 			this.board = board;
 			this.f = func;
 
-			// this.xLeft = typeof endPoints.xLeft === "object" ? () => endPoints.xLeft.X() : () => endPoints.xLeft;
-			// this.xRight = typeof endPoints.xRight === "object" ? () => endPoints.xRight.X() : () => endPoints.xRight;
 			this.xLeft = typeof endPoints.xLeft === "function"
 				? endPoints.xLeft
 				: typeof endPoints.xLeft === "object"
@@ -30,6 +28,7 @@
 			this.hovered = false;
 
 			// Save user style
+			this.baseVisibility = ops.visible!== undefined ? ops.visible : true;
 			this.baseStrokeWidth = ops.strokeWidth || 2;
 			this.baseColor = ops.color || 'blue';
 			this.baseDash = ops.dash || 0;
@@ -50,7 +49,7 @@
 				strokeWidth: this.baseStrokeWidth,
 				dash: this.baseDash,
 				opacity: this.baseOpacity,
-				visible: false,
+				visible: this.baseVisibility,
 				highlight: false
 			});
 
@@ -59,7 +58,7 @@
 				size: this.basePointSize,
 				color: this.baseColor,
 				fillOpacity: this.typeLeft === 'open' ? 0 : 1,
-				visible: false,
+				visible: this.plotLEndPt ? this.baseVisibility : false,
 				highlight: false,
 				showInfobox: false,
 				label: { visible: false }
@@ -70,7 +69,7 @@
 				size: this.basePointSize,
 				color: this.baseColor,
 				fillOpacity: this.typeRight === 'open' ? 0 : 1,
-				visible: false,
+				visible: this.plotREndPt ? this.baseVisibility : false,
 				highlight: false,
 				showInfobox: false,
 				label: { visible: false }
@@ -86,45 +85,41 @@
 			switch (type) {
 				case 'hoverOn':
 					this.hovered = true;
-					this._setCurveStyle(this.baseStrokeWidth + 3, this.selected ? 1 : this.baseOpacity);
-					this._setPointStyle(this.basePointSize + 3, this.selected ? 1 : this.baseOpacity);
+					this._setCurveStyle(this.baseStrokeWidth + 3, this.selected ? 1 : this.baseOpacity, true);
+					this._setPointStyle(this.basePointSize + 3, this.selected ? 1 : this.baseOpacity, true);
 					break;
 				case 'hoverOff':
 					this.hovered = false;
-					this._setCurveStyle(this.baseStrokeWidth, this.selected ? 1 : this.baseOpacity);
-					this._setPointStyle(this.basePointSize, this.selected ? 1 : this.baseOpacity);
+					this._setCurveStyle(this.baseStrokeWidth, this.selected ? 1 : this.baseOpacity, this.baseVisibility);
+					this._setPointStyle(this.basePointSize, this.selected ? 1 : this.baseOpacity, this.baseVisibility);
 					break;
 				case 'selected':
 					this.selected = true;
 					this.visibleOverride = null;
-					this._setCurveStyle(this.baseStrokeWidth, 1);
-					this._setPointStyle(this.basePointSize, 1);
+					this._setCurveStyle(this.baseStrokeWidth, 1, true);
+					this._setPointStyle(this.basePointSize, 1, true);
 					break;
 				case 'reset':
 					this.selected = false;
 					this.visibleOverride = null;
-					this._setCurveStyle(this.baseStrokeWidth, this.baseOpacity);
-					this._setPointStyle(this.basePointSize, this.baseOpacity);
-					break;
-				case 'continuous':
-					this.plotLEndPt = false;
-					this.plotREndPt = false;
+					this._setCurveStyle(this.baseStrokeWidth, this.baseOpacity, this.baseVisibility);
+					this._setPointStyle(this.basePointSize, this.baseOpacity, this.baseVisibility);
 					break;
 				case 'hidden':
 					this.hovered = false;
 					this.visibleOverride = false;
-					this._setCurveStyle(this.baseStrokeWidth, 0);
-					this._setPointStyle(this.basePointSize, 0);
+					this._setCurveStyle(this.baseStrokeWidth, 0, false);
+					this._setPointStyle(this.basePointSize, 0, false);
 					break;
 				default:
 					console.warn(`Unknown piece style: ${type}`);
 			}
 		}
 		
-		_setCurveStyle(strokeWidth, opacity) {
-			const visible = this.visibleOverride !== null
-				? this.visibleOverride
-				: (this.selected || this.hovered || this.alwaysVisible);
+		_setCurveStyle(strokeWidth, opacity, visible) {
+			// const visible = this.visibleOverride !== null
+			// 	? this.visibleOverride
+			// 	: (this.selected || this.hovered || this.alwaysVisible);
 		
 			this.curve.setAttribute({
 				strokeWidth,
@@ -133,10 +128,10 @@
 			});
 		}
 
-		_setPointStyle(size, opacity) {
-			const visible = this.visibleOverride !== null
-				? this.visibleOverride
-				: (this.selected || this.hovered || this.alwaysVisible);
+		_setPointStyle(size, opacity, visible) {
+			// const visible = this.visibleOverride !== null
+			// 	? this.visibleOverride
+			// 	: (this.selected || this.hovered || this.alwaysVisible);
 		
 			if (this.plotLEndPt) {
 				this.leftPoint.setAttribute({
@@ -158,7 +153,7 @@
 	}
 
 	class Piecewise {
-		constructor(boardObjOrBoard, pieces, isContinuous = false, imgToggle = null, toggleOn = false, options = {}) {
+		constructor(boardObjOrBoard, pieces, imgToggle = null, toggleOn = false, options = {}) {
 			this.board = boardObjOrBoard.board || boardObjOrBoard;
 			this.boardObj = boardObjOrBoard.board ? boardObjOrBoard : null;
 		
@@ -173,10 +168,6 @@
 		
 			if (this.boardObj) {
 				this.boardObj.addGraphObject(this);
-			}
-		
-			if (isContinuous) {
-				this.pieces.forEach(piece => piece.setPieceStyle('continuous'));
 			}
 		
 			if (imgToggle) {
