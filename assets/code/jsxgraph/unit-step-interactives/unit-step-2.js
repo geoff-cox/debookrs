@@ -120,7 +120,7 @@
 			{
 				func: () => 1,
 				endpoints: { xLeft: c, typeLeft: 'closed', xRight: xmax, typeRight: 'none' },
-				options: { color: 'green', strokeWidth: 2, opacity: 0.3, dash: 3 }
+				options: { color: 'green', strokeWidth: 3, opacity: 0.3, dash: 3 }
 			},
 		],
 		imgToggle: [0.5, 3, 2, 248 / 125, 'uc', plotboard1]
@@ -140,6 +140,6 @@
 				options: { color: 'red', strokeWidth: 3 }
 			},
 		],
-		imgToggle: [0.5, 0.35, 2, 937 / 299, 'ft-equals', plotboard1]
+		imgToggle: [0.5, 0.35, 2, 337 / 111, 'gt-equals', plotboard1]
 	});
 })();

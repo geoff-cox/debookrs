@@ -85,8 +85,8 @@
 			switch (type) {
 				case 'hoverOn':
 					this.hovered = true;
-					this._setCurveStyle(this.baseStrokeWidth + 3, this.selected ? 1 : this.baseOpacity, true);
-					this._setPointStyle(this.basePointSize + 3, this.selected ? 1 : this.baseOpacity, true);
+					this._setCurveStyle(this.baseStrokeWidth + 4, this.selected ? 1 : this.baseOpacity, true);
+					this._setPointStyle(this.basePointSize + 4, this.selected ? 1 : this.baseOpacity, true);
 					break;
 				case 'hoverOff':
 					this.hovered = false;

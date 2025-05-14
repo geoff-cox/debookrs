@@ -13,16 +13,16 @@
 		tAxis: false,
 		yAxis: true,
 		txtLabels: [],
-		imgLabels: [[0.35, xmax - 0.3, -0.7, 45 / 81, 't']],
+		imgLabels: [[0.35, xmax - 0.3, 0.3, 45 / 81, 't']],
 	});
 
-const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
-  strokeColor: 'black',
-  straightFirst: true,
-  straightLast: true,
-  fixed: true,
-  highlight: false
-});
+	const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
+	strokeColor: 'black',
+	straightFirst: true,
+	straightLast: true,
+	fixed: true,
+	highlight: false
+	});
 
 	const tTicks = plotboard1.board.create('ticks', [tAxis], {
 		ticksDistance: Math.PI / 2,
@@ -93,7 +93,7 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 
 	const cLabel = plotboard1.board.create('image', [
 		imgPath + "c.png",
-		[() => c.X() - 0.15, -0.9],
+		[() => c.X() - 0.15, -1],
 		[0.25 * plotboard1.boardAspect * (59 / 57), 0.25]
 	], {
 		fixed: true,
@@ -105,7 +105,7 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 
 	const dLabel = plotboard1.board.create('image', [
 		imgPath + "d.png",
-		[() => d.X() - 0.15, -1],
+		[() => d.X() - 0.15, -1.1],
 		[0.4 * plotboard1.boardAspect * (63 / 78), 0.4]
 	], {
 		fixed: true,
@@ -205,7 +205,7 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 		highlight: false,
 	});
 
-	const ucudDiffAspRatio = 692 / 111;
+	const ucudDiffAspRatio = 775 / 133;
 	const ucudDiff = createPiecewise({
 		boardObj: plotboard1,
 		funcPieces: [
@@ -225,10 +225,10 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 				options: { color: 'green', strokeWidth: 4, opacity: 0.8, dash: 0 }
 			},
 		],
-		imgToggle: [0.5, 7, 0.3, ucudDiffAspRatio, 'ucud-w-par', plotboard1]
+		imgToggle: [0.5, 6.9, ymax-0.7, ucudDiffAspRatio, 'ucud-w-par', plotboard1]
 	});
 
-	const sineucudDiffAspRatio = 1322 / 133;
+	const sineucudDiffAspRatio = 337 / 111;
 	const sineucudDiff = createPiecewise({
 		boardObj: plotboard1,
 		funcPieces: [
@@ -248,12 +248,12 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 				options: { color: 'red', strokeWidth: 4, opacity: 0.8, dash: 0 }
 			},
 		],
-		imgToggle: [0.6, 5.8, ymax-0.7, sineucudDiffAspRatio, 'gt-equals', plotboard1]
+		imgToggle: [0.4, 3.4, ymax-0.65, sineucudDiffAspRatio, 'gt-equals', plotboard1]
 	});
 
-	const sineAspRatio = 433 / 92;
-	const xMidpt = () => (c.X() + d.X())*0.5 - (0.5 * plotboard1.boardAspect * sineAspRatio)*0.5;
-	const yMidpt = () => Math.sin((c.X() + d.X())*0.5 - (0.5 * plotboard1.boardAspect * sineAspRatio)*0.5) + 2.4;
+	const sineAspRatio = 533 / 133;
+	// const xMidpt = () => (c.X() + d.X())*0.5 - (0.5 * plotboard1.boardAspect * sineAspRatio)*0.5;
+	// const yMidpt = () => Math.sin((c.X() + d.X())*0.5 - (0.5 * plotboard1.boardAspect * sineAspRatio)*0.5) + 2.4;
 	const sine = createPiecewise({
 		boardObj: plotboard1,
 		funcPieces: [
@@ -263,7 +263,7 @@ const tAxis = plotboard1.board.create('line', [[0, 0], [1, 0]], {
 				options: { color: 'red', strokeWidth: 1, opacity: 0.8, dash: 3, visible: false }
 			},
 		],
-		imgToggle: [0.43, xMidpt, yMidpt, sineAspRatio, 'sint-plus-2-w-par', plotboard1]
+		imgToggle: [0.5, 4.8, ymax-0.7, sineAspRatio, 'sint-plus-2-w-par', plotboard1]
 	});
 	
 })();
