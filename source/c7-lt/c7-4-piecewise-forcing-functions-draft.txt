@@ -1,12 +1,13 @@
-<section><title> Piecewise Forcing Functions </title> 
+<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Piecewise Forcing Functions </title> 
 
 	<introduction>
+
 		<p>
-		  	Many physical systems experience sudden changes—like a heater turning on, a traffic light switching, or a force applied at a specific moment. In mathematics, these sudden changes are modeled using <em>piecewise functions</em>: functions that behave differently over different intervals of time.
+			Many physical systems don't behave smoothly—they often experience sudden changes. Think of a heater clicking on, traffic lights shifting from red to green, or the jolt you feel when force is suddenly applied to an object. In mathematics, these abrupt transitions are elegantly captured by <em>piecewise functions</em>, functions that follow different rules over different intervals of time.
 		</p>
 
 		<p>
-			Many physical systems experience sudden changes over time. In differential equations, this often appears as a piecewise function on the right-hand side of the equation. For example, the following equation describes the current, <m>i(t)</m>, through a circuit at time <m>t</m>:
+			When modeling such situations with differential equations, piecewise functions typically appear on the right-hand side, acting as inputs or forcing functions that switch behavior at specific moments. Consider, for instance, an electrical circuit whose current <m>i(t)</m> changes its driving voltage at predetermined intervals. This scenario might be described by an equation like:
 			<me>
 				\frac{di(t)}{dt} + 2i(t)
 				= \left\{
@@ -19,508 +20,632 @@
 		</p>
 
 		<p>
-			To solve this using Laplace transforms, we would need to be able to compute the Laplace transform of this piecewise function. The transform could be found using the integral definition of the Laplace transform, but it would be better to derive a systematic way to compute the Laplace transform of piecewise functions. 
+			While one could directly apply the integral definition of the Laplace transform to such piecewise functions, it's much more practical and insightful to have a structured method to handle these functions systematically. The key to this is introducing the <em>unit step function</em>, a simple yet powerful mathematical tool that allows us to rewrite complex piecewise behavior in a single, concise formula.
 		</p>
 
 		<p>
-			To do this, we will introduce a special function called the <em>unit step function</em>. This function can be used to rewrite piecewise functions in a single formula.
+			The unit step function acts as a convenient ON-OFF switch, making it straightforward to represent functions that suddenly start, stop, or shift behavior at specific points in time. By mastering this technique, you'll easily manage functions that activate only for limited intervals, switch directions, or model impulses precisely.
 		</p>
-	  
-		<p>
-		  	Instead of writing separate cases for each piece, we can use a clever tool called the <em>unit step function</em> to express everything in a single formula. This section introduces the unit step function and shows how it helps us construct, shift, and control piecewise behaviors in a clean, algebraic way.
-		</p>
-	  
-		<p>
-		  	By the end of this section, you'll be able to rewrite piecewise functions using step functions, model when things switch ON or OFF, and even describe functions that turn ON for only a limited time interval. These tools will be essential as we explore Laplace transforms of systems with piecewise or impulsive inputs.
+
+		 <p>
+			Throughout this section, you'll learn how to rewrite piecewise functions clearly using step functions, how to express functions that switch on and off, and how to capture intricate behaviors within a single, unified mathematical expression. These skills will set the foundation for solving equations with piecewise-defined forcing functions using Laplace transforms.
 		</p>
 	</introduction>
 
 	<subsection><title> Piecewise Functions </title>
 
-		<subsubsection><title> Deconstructing Piecewise Functions </title>
+		<introduction>
 
-			<p>	
-				Every piecewise function comes with a set of functions (the <q>pieces</q>) and the intervals where they exist. For our purposes, the intervals will be arranged as shown below.
+			<p>
+				At first glance, piecewise functions might seem complicated due to their segmented nature—each "piece" is defined differently on distinct intervals.
 			</p>
 
 			<p>
-				<sidebyside widths="5% 15% 7% 2% 10% 4% 45% 10%" valign="middle">
-					<p/>
-					<p/>
-					<p><me>\small\ul{\text{Pieces}}</me></p>
-					<p/>
-					<p><me>\small\ul{\text{Intervals}}</me></p>
-					<p/>
-					<p/>
-					<p/>
-				</sidebyside>
-	
-				<sidebyside widths="5% 15% 7% 2% 10% 4% 40% 15%" valign="middle">
-					<p/>
+				<sidebyside widths="65% 30%" margins="0% 5%" valign="top">
 					<p>
+						For example, consider the piecewise function:
 						<me>
-							\small
-							g(t) = 
-							\left\{\vphantom{
-								\begin{array}{c}
-									\text{p} 1 \\
-									\text{p} 2 \\
-									\vdots\\
-									\text{p} n
-								\end{array}}
+							g(t)\ 
+							= \left\{
+							\begin{array}{cc}
+								\B \sin t,	\amp \B t \lt 0		\\
+								\G 2e^{-t},	\amp \G 0 \ge t \lt 2	\\
+								\OR 1.5,	\amp \OR t \ge 2
+							\end{array}
 							\right.
 						</me>
 					</p>
-					<p>
-						<me>
-							\small
-							\begin{array}{c}
-								\B g_{1}(t) \\
-								\G g_{2}(t) \\
-								\vdots\\
-								\R g_{n}(t)
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<me>
-							\small
-							\begin{array}{c}
-								\B \text{interval}\ 1\\
-								\G \text{interval}\ 2\\
-								\vdots\\
-								\R \text{interval}\ n
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
+					<figure xml:id="intro-piecewise-function"><caption>Graph of <m>g(t)</m></caption>
+						<image> removed for editing </image>
+					</figure>
 				</sidebyside>
+				Before the Laplace transform can be applied to such a function, it first needs to be deconstructed it as the sum of terms where only one of the pieces is active over its corresponding time interval. Visually, this sum would be broken up as in <xref ref="intro-piecewise-function-pieces"/>.
 			</p>
 
-			<p>
-				To understand how we will eventually take the Laplace transform of a function like <m>g(t)</m>, we need to think about it as the sum of its pieces multiplied by <m>1</m> or <m>0</m> depending on the interval it lives on.
-			</p>
+			<figure xml:id="intro-piecewise-function-pieces"><caption> Three pieces of <m>g(t)</m> </caption>
+				<sidebyside widths="28% 28% 28%" margin="8%" valign="bottom">
+					<figure xml:id="intro-piecewise-function-piece1"><caption>Piece 1: <m>\ \sin t</m></caption>
+						<image> removed for editing </image>
+					</figure>
+					<figure xml:id="intro-piecewise-function-piece2"><caption>Piece 2: <m>\ 2e^{-t}</m></caption>
+						<image> removed for editing </image>
+					</figure>
+					<figure xml:id="intro-piecewise-function-piece3"><caption>Piece 3: <m>\ 1.5</m></caption>
+						<image> removed for editing </image>
+					</figure>
+				</sidebyside>
+			</figure>
 
 			<p>
-				For short, let <m>I_k</m> be the interval for piece <m>k</m>. Then we can write
+				In practice, this is equivalent to taking the sum each piece of <m>g(t)</m> multiplied by <m>1</m> or <m>0</m> depending on <m>t</m>, like so
 			</p>
 
 			<me>
-				\small
-				g(t) = 
-				{\B g_{1}(t)} \cdot \left(
+				g(t) =
+				{\B \sin t} \cdot
+				\us{\large\text{on-off switch}}{
+				\boxed{
+				\left\{
 				\begin{array}{l}
-					1	\ \ \text{if}\ t\ \text{is in}\ {\B I_1}\\
-					0	\ \ \text{otherwise}
+					1,\ \ \B t \lt 0\\
+					0,\ \ \small\text{otherwise}
 				\end{array}
-				\right) +
-				{\G g_{2}(t)} \cdot \left(
-					\begin{array}{l}
-					1	\ \ \text{for}\ t\ \text{in}\ {\G I_2}\\
-					0	\ \ \text{otherwise}
-					\end{array}
-				\right) + \ldots +
-				{\R g_{n}(t)} \cdot \left(
-					\begin{array}{l}
-					1	\ \ \text{for}\ t\ \text{in}\ {\R I_n}\\
-					0	\ \ \text{otherwise}
-					\end{array}
-				\right)
+				\right.}}\ \
+				+\ \
+				{\G 2e^{-t}} \cdot
+				\us{\large\text{off-on-off switch}}{
+				\boxed{
+				\left\{
+				\begin{array}{l}
+					1,\ \ \G 0 \ge t \lt 2\\
+					0,\ \ \small\text{otherwise}
+				\end{array}
+				\right.}}\ \
+				+\ \
+				{\OR 1.5} \cdot
+				\us{\large\text{off-on switch}}{
+				\boxed{
+				\left\{
+				\begin{array}{l}
+					1,\ \ \OR t \ge 2\\
+					0,\ \ \small\text{otherwise}
+				\end{array}
+				\right.}}
 			</me>
-			
+
 			<p>
-				Here is a more concrete and visual example.
+				where the piecewise functions next to <m>\B \sin t</m>, <m>\G 2e^{-t}</m>, and <m>\OR 1.5</m> are called <em>unit step functions</em>. Since these functions take the value of either <m>1</m> or <m>0</m>, they act as a switch that turn functions ON (multiplied by <m>1</m>) or OFF (multiplied by <m>0</m>) at specified times.
 			</p>
 
 			<p>
-				<sidebyside widths="6% 5% 3% 10% 30% 10% 28% 8%" valign="middle">
-					<p/>
-					<p><m>\small g(t)</m></p>
-					<p><m>\small  = </m></p>
-					<p>
-						<me>
-							\small 
-							\left\{
-								\begin{array}{c}
-									\B \sin t\\
-									\G 2e^{-t}\\
-									\R 1.5
-								\end{array}
-							\right.
-						</me>
-					</p>
-					<p>
-						<me>
-							\small 
-							\begin{array}{rl}
-								\B t \lt 0			\amp \B \leftarrow I_1: (-\infty, 0)\\
-								\G 0 \le t \lt 2	\amp \G \leftarrow I_2: [0, 2)\\
-								\R t \ge 2			\amp \R \leftarrow I_3: [2, \infty)
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-				<p/>
-				<sidebyside widths="5% 3% 3% 25% 3% 25% 3% 25% 8%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>\small = </m></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-				<p/>
-				<sidebyside widths="5% 3% 3% 28% 3% 25% 3% 25% 5%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>\small = </m></p>
-					<p>
-						<me>
-							\small
-							{\B \sin t}\ \cdot
-							\left(
-								\begin{array}{l}
-									1\ \ \text{if}\ t\ \text{is in}\ {\B I_1}\\
-									0\ \ \text{otherwise}
-								\end{array}
-							\right)
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\G 2e^{-t}}\ \cdot
-							\left(
-								\begin{array}{l}
-									1\ \ \text{if}\ t\ \text{is in}\ {\G I_2}\\
-									0\ \ \text{otherwise}
-								\end{array}
-							\right)
-						</me>
-					</p>
-					<p><me>\small + </me></p>
-					<p>
-						<me>
-							\small
-							{\R 1.5}\ \cdot
-							\left(
-								\begin{array}{l}
-									1\ \ \text{if}\ t\ \text{is in}\ {\R I_3}\\
-									0\ \ \text{otherwise}
-								\end{array}
-							\right)
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
+				The next few sections will take a deeper look into the different versions of these simple, but powerful unit step functions.
 			</p>
 
-			<p><xref provisional="Need to write a transition here"/></p>
+		</introduction>
 
-		</subsubsection>
+		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
 
-		<reading-questions> removed to reduce gpt data load </reading-questions>
+			<p>
+				<exercise label="prep-unit-step-outputs"><title> Unit-Step Output </title>
+					<statement>
+						<p>
+							Consider the function defined by
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									1,	\amp t \ge 0\\
+									0,	\amp \small\text{otherwise}.
+								\end{array} \right.
+							</me>
+						</p>
+
+						<p>
+							Give the output of <m>u(t)</m> for the following values of <m>t</m>.
+						</p>
+
+						<tabular>
+							<col/>
+							<col/>
+							<col halign = "right"/>
+							<col/>
+							<col/>
+							<row>
+								<cell>(a)</cell>
+								<cell><m>t=3</m></cell>
+								<cell><m>u(3)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(b)</cell>
+								<cell><m>t=-3</m></cell>
+								<cell><m>u(-3)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(c)</cell>
+								<cell><m>t=4</m></cell>
+								<cell><m>u(4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(d)</cell>
+								<cell><m>t=0</m></cell>
+								<cell><m>u(0)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+						</tabular>
+					</statement>
+					<evaluation>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+					</evaluation>
+				</exercise>
+			</p>
+		
+		</reading-questions>
 		
 		<subsubsection><title> The Unit Step Function </title>
 
 			<p>
-				In the last section, we hinted at a special function that could mimic the "on" and "OFF" behavior of piecewise functions. This function is called the <em>unit step function</em>, also known as the <em>Heaviside function</em>. It acts like a simple switch that flips from 0 to 1 at a specific time.
+				Previously, we saw that we can control when a function turns ON or OFF by multiplying it by a simple piecewise switch. These switches are actually a special type of function known as the <em>unit step function</em>
+				<fn>Also called the <em>Heaviside function</em>.</fn>. Think of it as a mathematical ON-switch that flips from <m>0</m> to <m>1</m> at a specific point in time.
 			</p>
 
+			<note><title> Saying that a Function is ON or OFF </title>
+				<p>
+					Throughout this section, we will often use the analogy of a function being ON or OFF. To clarify, when we say 
+					<ul>
+						<li>
+							<p>
+								A unit step function is ON or OFF, we mean it is equal to <m>1</m> or <m>0</m>, respectively.
+							</p>
+						</li>
+						<li>
+							<p>
+								A function is ON or OFF, we mean that it is multiplied by <m>1</m> or <m>0</m>, respectively. 
+							</p>
+						</li>
+					</ul>
+				</p>
+			</note>
+
 			<p>
-				Let's define it:
+				The standard unit step function is denoted <m>u(t)</m>, and is defined as:
 			</p>
 			
 			<definition xml:id="unit-step-function"><title> Unit Step Function </title>
 				<statement>
 					<sidebyside widths="50% 7% 36% 7%" valign="middle">
 						<p>
-							The <em>unit-step</em>, <m>u(t)</m>, is defined as
+							The <em>unit step function</em> <m>u(t)</m> is defined as:
 							<me>
 								u(t) = \left\{
 								\begin{array}{ll}
-									0,	\amp t \lt 0\\
-									1,	\amp t \ge 0
-								\end{array} \right.
+									1, \amp t \ge 0 \\
+									0, \amp \text{otherwise}
+								\end{array}
+								\right.
 							</me>
-							At <m>t=0</m>, the function changes from <m>0</m> to <m>1</m>.
+							It flips from <m>0</m> to <m>1</m> at <m>t = 0</m>.
 						</p>
 						<p/>
 						<p>
-							<image> removed to reduce gpt data load </image>
+							<image> removed for editing </image>
 						</p>
 						<p/>
 					</sidebyside>
 				</statement>
 			</definition>
 
-			<exercise> removed to reduce gpt data load </exercise>
-
 			<p>
-				Notice that <m>u(t)</m> only takes two values, either 0 or 1. So, when you multiply by a function by <m>u_0</m>, it acts as an ON-OFF switch for this function at <m>t=0</m>.
+				Since <m>u(t)</m> only takes values of <m>0</m> or <m>1</m>, multiplying a function by <m>u(t)</m> acts as a simple ON-OFF switch. Before <m>t = 0</m>, it kills the function by multiplying it by <m>0</m>. After <m>t = 0</m>, it lets the function pass through.
 			</p>
 
-			<sidebyside widths="56% 4% 36% 4%" valign="top">
-				<p>
-					For instance, consider the following product:
+			<example><title> Switching ON a Parabola at <m>t = 0</m> </title>
+				<statement>
+					<p>
+						Consider the functions defined by
+						<me>
+							g(t) = \frac{1}{5}t^2 - 1 
+							\qquad\text{and}\qquad
+							h(t) = \left(\frac{1}{5}t^2 - 1\right) \cdot u(t)
+						</me>.
+						Describe the difference between <m>g(t)</m> and <m>h(t)</m> and write <m>h(t)</m> as a piecewise function.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						The function, <m>g(t)</m>, is a parabola defined for all <m>t</m>. 
+					</p>
+
+					<p>
+						Since <m>u(t) = 1</m> when <m>t \ge 0</m> and <m>0</m> otherwise, <m>h(t)</m> is the same parabola for <m>t \ge 0</m>, but  is zeroed out for <m>t \lt 0</m>. This is equivalent to the piecewise function:
+					</p>
+
 					<me>
-						\left(\frac{1}{5}t^2 - 1\right) u(t) =
+						h(t) =
 						\left\{
 						\begin{array}{ll}
-							\left(\frac{1}{5}t^2 - 1\right) \cdot 0, \amp t \lt 0\\
-							\left(\frac{1}{5}t^2 - 1\right) \cdot 1, \amp t \ge 0
+							0, \amp t \lt 0 \\
+							\ds\frac{1}{5}t^2 - 1, \amp t \ge 0
 						\end{array}
 						\right.
 					</me>
-				</p>
-				<p/>
-				<p>
-					<image> removed to reduce gpt data load </image>
-				</p>
-				<p/>
-			</sidebyside>
+
+					<figure xml:id="unit-step-parabola"><caption>Graph of <m>g(t)</m> (<em>left</em>) and <m>h(t)</m> (<em>right</em>).</caption>
+						<sidebyside width="40%" margin="5%">
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+						</sidebyside>
+					</figure>
+
+					<p>
+						The graph of <m>h(t)</m> higlights how multiplying by <m>u(t)</m> acts a switch that forces the parabola OFF until <m>t = 0</m>, where it turns ON.
+					</p>
+						
+				</solution>
+			</example>
+
+			<exercise>
+				<statement>
+					<p>
+						What are the only values <m>u(t)</m> can take for any value of <m>t</m>?
+					</p>
+				</statement>
+				<choices>
+					<choice correct="no">
+						<statement>Only 0</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Only 1</statement>
+					</choice>
+					<choice correct="yes">
+						<statement>Only 0 and 1</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Only positive numbers</statement>
+					</choice>
+					<choice correct="no">
+						<statement>Any number</statement>
+					</choice>
+				</choices>
+			</exercise>
 
 			<p>
-				Before <m>t=0</m>, <m>u(t) = 0</m> and so <m>\left(\frac{1}{5}t^2 - 1\right) u(t) = 0</m>. On the other hand, after <m>t=0</m>, <m>u(t) = 1</m> and so <m>\left(\frac{1}{5}t^2 - 1\right) u(t) = \frac{1}{5}t^2 - 1</m>.
-			</p>
-
-			<p>
-				The unit step function gives us a smart way to mimic the natural behavior of piecewise functions. In the next sections, we'll see how to adjust this unit step function so that it can "switch ON" functions at times other than <m>t = 0</m>.
+				The unit step function is the first of several switching tools we'll use to manage functions that activate or deactivate at different times. In the next section, we'll build on this idea to shift the switch to times other than <m>t = 0</m>.
 			</p>
 			
+			<xi:include href="./c7-exercises/c7-chkpts-4-1-1-unit-step-functions.ptx" />
+
 		</subsubsection>
 
-		<reading-questions> removed to reduce gpt data load </reading-questions>
-
-		<subsubsection><title> Shifting the Unit Step Function (<em>off-on switch</em>) </title>
+		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
 
 			<p>
-				The standard unit step function <m>u(t)</m> flips a function ON right at <m>t=0</m>. But what if we need to delay that switch—to turn a function ON later, say at <m>t=2</m>, <m>t=5</m>, or even <m>t=-3</m>? We can make this happen by shifting the step function horizontally.
+				<exercise label="prep-matching-shifts"><title>Matching Shifts of <m>y=x^2</m></title>
+					<statement>
+						<p>
+							Consider the function <m>y=x^2</m>. Match each of the shifted versions of <m>y=x^2</m> with the correct description of how its graph is affected.
+						</p>
+					</statement>
+					<cardsort>
+						<match>
+							<premise><m>y=(x - 1)^2</m></premise>
+							<response>Horizontal shift by 1 (→)</response>
+						</match>
+						<match>
+							<response>Vertical shift by -1 (↓)</response>
+						</match>
+						<match>
+							<premise><m>y=(x + 1)^2</m></premise>
+							<response>Horizontal shift by -1 (←)</response>
+						</match>
+						<match>
+							<premise><m>y=x^2 + 1</m></premise>
+							<response>Vertical shift by 1 (↑)</response>
+						</match>
+						<match>
+							<premise><m>y=(x - 1)^2 + 1</m></premise>
+							<response>Horizontal &amp; vertical shift by 1 (↗)</response>
+						</match>
+					</cardsort>
+				</exercise>
+
+				<exercise label="prep-shifted-unit-step-outputs"><title> Shifted Unit-Step Function </title>
+					<statement>
+						<p>
+							The unit step function, defined by
+							<me>
+								u(t) = \left\{
+								\begin{array}{ll}
+									1,	\amp t \ge 0\\
+									0,	\amp \small\text{otherwise}
+								\end{array} \right.
+							</me>
+							jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="0" />.
+						</p>
+
+						<p>
+							Now consider the shifted version of the unit step function <m>u(t-4)</m> and give the output of this function for the following values of <m>t</m>.
+						</p>
+
+						<tabular>
+							<col/>
+							<col/>
+							<col halign = "right"/>
+							<col/>
+							<col/>
+							<row>
+								<cell>(a)</cell>
+								<cell><m>t=3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(b)</cell>
+								<cell><m>t=-3:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+							<row>
+								<cell>(c)</cell>
+								<cell><m>t=4:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="1" /></cell>
+							</row>
+							<row>
+								<cell>(d)</cell>
+								<cell><m>t=0:</m></cell>
+								<cell><m>u(t-4)</m></cell>
+								<cell><m>=</m></cell>
+								<cell><fillin mode="number" answer="0" /></cell>
+							</row>
+						</tabular>
+
+						<p>
+							So <m>u(t-4)</m> jumps from <m>0</m> to <m>1</m> at <m>t=</m> <fillin mode="number" answer="4" />.
+						</p>
+					</statement>
+					<evaluation>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+						<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+					</evaluation>
+				</exercise>
 			</p>
-			
+		
+		</reading-questions>
+
+		<subsubsection><title> Shifted Unit Step Function (<em>off-on switch</em>) </title>
+
 			<p>
-				The unit step function can be shifted left or right <m>c</m> units by replacing <m>t</m> with <m>t-c</m>, like so
-				<me>
-					u(t-c) = \left\{
-					\begin{array}{ll}
-						0,	\amp t-c \lt 0\\
-						1,	\amp t-c \ge 0
-					\end{array} \right.
-					\quad\text{or}\quad
-					u(t-c) = \left\{
-					\begin{array}{ll}
-						0,	\amp t \lt c\\
-						1,	\amp t \ge c.
-					\end{array} \right.
-				</me>
+				In the last section, we introduced the unit step function <m>u(t)</m>, which flips from OFF <m>(0)</m> to ON <m>(1)</m> at <m>t = 0</m>. But what if we want the function to turn ON later—say at <m>t = 2</m>, or <m>t = 5</m>, or even <m>t = -3</m>? That's where the <em>shifted</em> unit step function comes in.
 			</p>
 
 			<p>
-				Since this will be used often in the next few sections, it worth formally introducting it.
+				The shifted unit step function <m>u_c(t)</m> is simply the unit step that switches ON at <m>t = c</m> instead of <m>t = 0</m>. It is defined as:
 			</p>
 
 			<assemblage xml:id="shifted-unit-step-function"><title> Shifted Unit Step Function </title>
-				<p>
-					The shifted version of the unit step function, denote by <m>u_c(t)</m>, is given by
-				</p>
-
-				<p>
-					<sidebyside widths="54% 7% 32% 7%" valign="top">
+					<sidebyside widths="62% 4% 30% 4%" valign="top">
 						<p>
+							The shifted unit step function <m>u_c(t)</m> is given by:
 							<md>
 								<mrow>
 									u_c(t) 
 									\amp = u(t - c) = \left\{
-										\begin{array}{ll}
-											0,	\amp t \lt c\\
-											1,	\amp t \ge c
-										\end{array} 
-										\right.
+									\begin{array}{ll}
+										1, \amp t \ge c \\
+										0, \amp \text{otherwise}
+									\end{array}
+									\right.
 								</mrow>
 							</md>
-							<note>
-								<p>
-									It is important to remember that there is only one unit step function, <m>u(t)</m>, in the same way that there is only one sine function, <m>\sin(t)</m>. So, <m>u_c(t)</m> is no more different to <m>u(t)</m> as <m>\sin(t-c)</m> is to <m>\sin(t)</m>. 
-								</p>
-							</note>
 						</p>
 						<p/>
 						<p>
-							<image> removed to reduce gpt data load </image>
+							<image> removed for editing </image>
 						</p>
 						<p/>
 					</sidebyside>
+				<p>
+					<note>
+						<p>
+							This is just like <m>u(t)</m>, but delayed by <m>c</m> units. Think of <m>u_c(t)</m> as <m>u(t)</m> shifted to the right if <m>c</m> is positive, or to the left if <m>c</m> is negative.
+						</p>
+					</note>
 				</p>
 			</assemblage>
 
 			<p>
-				To aid in the discussion of unit step functions, we will use the following convention: 
-				<ul>
-					<li>
-						<p>
-							<m>u_c(t)</m> goes from OFF <m>\big(0\big)</m> to ON <m>\big(1\big)</m> at <m>t=c</m>.
-						</p>
-					</li>
-					<li>
-						<p>
-							Saying a function is ON means it is multiplied by <m>1</m>, while OFF implies it is being multiplied by <m>0</m>.
-						</p>
-					</li>
-				</ul>
+				Just like before, multiplying a function by <m>u_c(t)</m> turns it ON at <m>t = c</m>. Before <m>t = c</m>, the function is OFF (multiplied by <m>0</m>). After <m>t = c</m>, the function behaves normally.
 			</p>
 
-			<p>
-				Since <m>u_c(t)</m> goes from OFF <m>\big(0\big)</m> to ON <m>\big(1\big)</m> at <m>t=c</m>, multiplying it by a function, <m>f(t)</m>, forces the function to go from OFF <m>\big(f(t)\cdot 0\big)</m> to ON <m>\big(f(t)\cdot 1\big)</m> at <m>t=c</m>. For example, the product
-			</p>
-			
-			<me>
-				\left(\frac{1}{5}t^2 - 1\right) u_2(t)
-			</me>
-			
-			<p>
-				is <m>0</m> until it reaches <m>t = 2</m>, where it becomes <m>\frac{1}{5}t^2 - 1</m>. Try changing the shifting value <m>c</m> in the interactive below to see how it affects the graph of this product.
-			</p>
+			<example><title> Multiplying a Function by <m>u_c(t)</m> </title>
+				<statement>
+					<p>
+						Consider multiplying the parabola <m>\frac{1}{5}t^2 - 1</m> by two different shifted unit step functions:
+						<me>
+							\left(\frac{1}{5}t^2 - 1\right) u_2(t), \qquad \left(\frac{1}{5}t^2 - 1\right) u_{-1}(t)
+						</me>.
+						Describe the ON/OFF behavior of the parabola in each case. Then explore how changing the shifting constant <m>c</m> affects the graph in the interactive tool that follows.
+					</p>
 
-			<corollary><title> Exploring the Effect of <m>c</m> </title>
-				<p>
-					<tabular top="minor" bottom="minor">
-						<col width="5%"/>
-						<col />
-						<col width="10%"/>
-						<row bottom="none">
-							<cell><p><m>\succ</m></p></cell>
-							<cell>
-								<p>
-									Hover over the labels <m>f(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to highlight its graph.
-								</p>
-							</cell>
-							<cell><p><m>\phantom{=======}</m></p></cell>
-						</row>
-						<row>
-							<cell><p><m>\succ</m></p></cell> 
-							<cell>
-								<p>
-									Drag the value of <m>c</m> along the <m>t</m> axis to see how the graph changes.
-								</p>
-							</cell>
-							<cell/>
-						</row>
-					</tabular>
-				</p>
-				<p>
-					<sidebyside width="80%" margins="15% 5%">
-						<interactive> removed to reduce gpt data load </interactive>
-					</sidebyside>
-				</p>
-			</corollary>
+					<p>
+						<solution>
+							<p>
+								Multiplying the parabola by <m>u_2(t)</m> forces it OFF before <m>t = 2</m>, and ON after <m>t = 2</m>. Whereas, multiplying by <m>u_{-1}(t)</m> forces it OFF before <m>t = -1</m>, and ON after <m>t = -1</m>.
+							</p>
+							<p>
+								To see this, drag the value of <m>c</m> to both <m>2</m> and <m>-1</m> in the interactive tool below.
+							</p>
+						</solution>
+
+						<corollary><title> Exploring the Effect of <m>c</m> </title>
+							<p>
+								<em>Instructions:</em>
+								<ul>
+									<li>
+										<p>
+											Hover over the labels <m>g(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to highlight its graph.
+										</p>
+									</li>
+									<li>
+										<p>
+											Drag the value of <m>c</m>, initially at <m>(0,0)</m>, along the <m>t</m> axis.
+										</p>
+									</li>
+								</ul>
+							</p>
+							<p>
+								<sidebyside width="80%" margins="15% 5%">
+									<interactive> removed for editing </interactive>
+										</static>
+									</interactive>
+								</sidebyside>
+							</p>
+						</corollary>
+					</p>
+				</statement>
+				
+			</example>
+
+			<p>
+				The pattern is now clear: if you want a function to activate at <m>t = c</m>, just multiply it by <m>u_c(t)</m>. This switch-like behavior will be extremely useful when rewriting piecewise functions in a single formula.
+			</p>
 
 			<example><title> Switching ON Sine at <m>t = \sfrac{\pi}{2}</m> </title>
 				<p>
 					<statement>
 						<p>
-							The piecewise function,
+							Express the function
 							<me>
 								g(t) = \left\{
 								\begin{array}{ll}
-									0,		\amp t \lt \sfrac{\pi}{2}\\
-									\sin t,	\amp t \ge \sfrac{\pi}{2},
-								\end{array} \right.
+									\sin t, \amp t \ge \sfrac{\pi}{2} \\
+									0, \amp \text{otherwise}
+								\end{array}
+								\right.
 							</me>
-							turns ON <m>\sin t</m> at <m>t = \sfrac{\pi}{2}</m>. Rewrite <m>g(t)</m> in terms of the shifted unit step function.
+							using a unit step function.
 						</p>
 					</statement>
 				</p>
 
-				<solution> removed to reduce gpt data load </solution>
+				<solution>
+					<p>
+						Since <m>\sin t</m> turns ON at <m>t = \sfrac{\pi}{2}</m>, we multiply it by <m>u_{\sfrac{\pi}{2}}(t)</m>:
+						<me>
+							g(t) = \sin t \cdot u_{\sfrac{\pi}{2}}(t)
+						</me>
+					</p>
+					<p>
+						Plugging in <m>u_{\sfrac{\pi}{2}}(t)</m>, confirms we arrived at the correct piecewise function: 
+						<md>
+							<mrow>
+								g(t) =
+								\sin t \cdot \ub{
+								\left\{
+									\begin{array}{ll}
+										1,	\amp t \ge \sfrac{\pi}{2}\\
+										0,	\amp \text{otherwise}
+									\end{array} 
+								\right.
+								}_{\large u_{\sfrac{\pi}{2}}(t)}
+								\quad \amp =
+								\left\{
+									\begin{array}{ll}
+										\sin(t) \cdot 1,	\amp t \ge \sfrac{\pi}{2}\\
+										\sin(t) \cdot 0,	\amp \text{otherwise}
+									\end{array} 
+								\right.
+							</mrow>
+							<mrow>
+								\amp =
+								\left\{
+									\begin{array}{ll}
+										\sin(t),	\amp t \ge \sfrac{\pi}{2}\\
+										0,			\amp \text{otherwise}
+									\end{array} 
+								\right.
+							</mrow>
+						</md>
+						and has the following graph
+					</p>
+					
+					<p>
+						<sidebyside width="90%" margins="0%">
+							<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
+								<image> removed for editing </image>
+							</figure>
+						</sidebyside>
+					</p>
+				</solution>
 			</example>
 
 			<example><title> Shifted Unit Step Form to Piecewise Form </title>
 				<statement>
 					<p>
-						Write the piecewise definition for
+						Rewrite the function
 						<me>
-							h(t) = (t^2 - 4) u_3(t)
-						</me>.
+							h(t) = (t^2 - 4)\ u_3(t)
+						</me>
+						in piecewise form.
 					</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+				<solution>
+					<p>
+						Since <m>u_3(t)</m> turns ON at <m>t = 3</m>, this function is OFF before <m>t = 3</m> and equals <m>t^2 - 4</m> afterwards. So:
+						<me>
+							h(t) = \left\{
+							\begin{array}{ll}
+								0, \amp t \lt 3 \\
+								t^2 - 4, \amp t \ge 3
+							\end{array}
+							\right.
+						</me>
+					</p>
+				</solution>
 			</example>
 			
 			<p>
 				Shifting the unit step function gives us the flexibility to control exactly when a function begins to take effect, which will be essential when we model more complicated piecewise systems.
 			</p>
-
 		</subsubsection>
 
-		<subsubsection><title> Reversing the Unit Step Function (<em>on-off switch</em>)  </title>
+		<subsubsection><title> Reversed Unit Step Function (<em>on-off switch</em>)  </title>
 
 			<p>
-				As you know, the unit step function, <m>u_{c}(t)</m>, goes from OFF to ON at <m>t = c</m>. But what if we want a step function that does the opposite—goes from ON to OFF at <m>t = c</m> instead?
+				So far, we've used <m>u_c(t)</m> to switch functions ON at <m>t = c</m>. But what if we want the opposite—a switch that turns a function OFF at <m>t = c</m>? For example, a machine that is running initially and shuts off at a certain moment.
 			</p>
 
 			<p>
-				In the case of <m>u_{c}(t)</m>, OFF <m>\big(0\big)</m> was the default state that switched ON <m>\big(1\big)</m> at <m>t = c</m>. In this new scenario, we want the default to be ON <m>\big(1\big)</m>, then switch to OFF <m>\big(0\big)</m> at <m>t = c</m>.
-			</p>
-
-			<p>
-				To go from <m>1</m> to <m>0</m> at <m>t=c</m>, we need to subtract <m>1</m> from the default ON state at <m>t=c</m>. Fortunately, <m>u_c(t)</m> becomes <m>1</m> at exactly <m>t=c</m>. So, to obtain this reversed behavior, we just need to subtract <m>u_c(t)</m> from the default ON value of <m>1</m>. 
-			</p>
-
-			<p>
-				<sidebyside widths="33% 40% 27%" valign="middle">
-					<p/>
-					<p><me>\OR\text{goes from}\ 0\ \text{to}\ 1\ \text{at}\ t=c</me></p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="44% 2% 4% 6% 44%" valign="middle">
-					<p/>
-					<p/>
-					<p/>
-					<p><me>\OR ⬇</me></p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="44% 2% 4% 6% 44%" valign="middle">
-					<p/>
-					<p><me>1</me></p>
-					<p><me>-</me></p>
-					<p><me>\OR u_{c}(t)</me></p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="44% 12% 44%" valign="middle">
-					<p/>
-					<p><me>\ub{\hphantom{----}}</me></p>
-					<p/>
-				</sidebyside>
-				<sidebyside widths="30% 40% 30%" valign="middle">
-					<p/>
-					<p><me>\text{goes from}\ 1\ \text{to}\ 0\ \text{at}\ t=c</me></p>
-					<p/>
-				</sidebyside>
+				This reverse behavior can be built using the unit step function itself. Since <m>u_c(t)</m> jumps from 0 to 1 at <m>t = c</m>, we can reverse the switch by subtracting <m>u_c(t)</m> from <m>1</m>. That is:
+				<me>
+					1 - u_c(t)
+				</me>
+				turns from ON (<m>1</m>) to OFF (<m>0</m>) at <m>t = c</m>.
 			</p>
 
 			<assemblage xml:id="reversed-unit-step"><title> Reversed Unit Step Function </title>
 				<p>
-					The reversed unit step function that goes from ON <m>\big(1\big)</m> to OFF <m>\big(0\big)</m> at <m>t = c</m> is 
+					The function <m>1 - u_c(t)</m> is the reversed unit step—it switches from ON to OFF at <m>t = c</m>. 
 				</p>
 				<sidebyside widths="5% 45% 5% 40% 5%" valign="middle">
 					<p/>
@@ -530,201 +655,116 @@
 							\left\{
 							\begin{array}{ll}
 								1, \amp t \lt c\\
-								0, \amp t \ge c
+								0, \amp \text{otherwise}
 							\end{array}
 							\right.
 						</me>
 					</p>
 					<p/>
 					<p>
-						<image> removed to reduce gpt data load </image>
+						<image> removed for editing </image>
 					</p>
 					<p/>
 				</sidebyside>
 			</assemblage>
 
 			<p>
-				When you multiply a function by <m>1 - u_{c}(t)</m>, the function is initially ON until <m>t = c</m>, where <m>1-u_c(t)</m> drops to <m>0</m>, shutting the function OFF. 
+				This makes <m>1 - u_c(t)</m> a great tool for switching functions OFF. You can think of it as the complement of <m>u_c(t)</m>—instead of turning ON at <m>t = c</m>, it turns OFF.
 			</p>
 
-			<p>
-				<sidebyside widths="58% 4% 34% 4%" valign="bottom">
-					<p>
-						For example, the expression
-
-						<me>
-							\left(2e^{-0.5t^2}\right)\left(1 - u_{1}(t)\right)
-						</me>
-						
-						<p>
-							represents a function that behaves like <m>2e^{-0.5t^2}</m> before <m>t = 1</m>, but becomes zero at and after <m>t = 1</m>.
-						</p>
-					</p>
-					<p/>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
-
-			<example><title> Reversed Unit Step Form to Piecewise Form </title>
+			<example><title> Switching OFF a Function at <m>t = 1</m> </title>
 				<statement>
 					<p>
-						Write the piecewise definition of
+						Describe the product, below, and express it in piecewise form.
 						<me>
-							g(t) = (3 - t^2)\left(1 - u_{2}(t)\right).
-						</me>
+							h(t) = 2e^{-0.5t^2}\left(1 - u_1(t)\right)
+						</me>		
 					</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+
+				<solution>
+					<sidebyside widths="56% 4% 40%" valign="top">
+						<p>
+							Here, the exponential function <m>2e^{-0.5t^2}</m> is ON before <m>t = 1</m> and switches OFF afterward. In piecewise form, this looks like:
+							<me>
+								h(t) = 
+								\left\{
+								\begin{array}{ll}
+									2e^{-0.5t^2}, \amp t \lt 1 \\
+									0, \amp t \ge 1
+								\end{array}
+								\right.
+							</me>
+						</p>
+						<p/>
+						<p>
+							<image> removed for editing </image>
+						</p>
+					</sidebyside>
+				</solution>
 			</example>
 
-			<p> 
-				While the unit step function, <m>u_{c}(t)</m>, activates functions to the right of <m>c</m>, this new reversed unit step function activates functions to the left of <m>c</m>. This is especially useful when we start building formulas for piecewise functions over different types of intervals.
-			</p>
+			<example><title> From Step Form to Piecewise Form </title>
+				<statement>
+					<p>
+						Rewrite the function
+						<me>
+							g(t) = (3 - t^2)\left(1 - u_2(t)\right)
+						</me>
+						in standard piecewise form.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Since <m>1 - u_2(t)</m> switches OFF at <m>t = 2</m>, this function is ON before <m>2</m> and OFF afterward:
+						<me>
+							g(t) = \left\{
+							\begin{array}{ll}
+								3 - t^2, \amp t \lt 2 \\
+								0, \amp t \ge 2
+							\end{array}
+							\right.
+						</me>
+					</p>
+				</solution>
+			</example>
 
+			<p>
+				With both <m>u_c(t)</m> and <m>1 - u_c(t)</m> in hand, you can now switch functions ON or OFF exactly when you need. Next, we will cover the last switch that turns ON functions for a limited window of time—over a finite interval.
+			</p>
 		</subsubsection>
 
-		<subsubsection><title> Finite Interval Step Functions (<em>off-on-off switch</em>) </title>
+		<subsubsection><title> Finite Unit Step Function (<em>off-on-off switch</em>) </title>
 
 			<p>
-				Both the shifted and reversed unit step functions have ON-intervals that go to <m>\infty</m> and <m>-\infty</m>, respectively. However, piecewise functions often have pieces with finite intervals (e.g., <m>3 \le t \lt 7</m>).
-			</p>
-			
-			<p>
-				For example, suppose we want the step function that is <m>1</m> from <m>t = 4</m> to <m>t = 8</m> and <m>0</m> otherwise. Since this step function turns ON at <m>t = 4</m>, we need <m>u_4(t)</m>. To shut it back OFF at <m>t = 8</m>, we need to subtract by the step function that turns ON at <m>t = 8</m>, which is <m>u_8(t)</m>. So, the finite interval step function is
+				We've seen how to turn a function ON at a certain time using <m>u_c(t)</m>, and how to turn it OFF using <m>1 - u_c(t)</m>. Now let's combine those ideas to create a switch that turns a function ON for a limited interval of time—say, from <m>t = c</m> to <m>t = d</m>.
 			</p>
 
 			<p>
-				<sidebyside widths="6% 16% 4% 22% 4% 20% 28%" valign="middle">
-					<p/>
-					<p><me>u_4(t) - u_8(t)</me></p>
-					<p><me>=</me></p>
-					<p>
-						<me>
-							\left\{
-							\begin{array}{ll}
-								0, \amp t \lt 4\\
-								1, \amp t \ge 4
-							\end{array} 
-							\right.
-						</me>
-					</p>
-					<p><me>-</me></p>
-					<p><me>
-						\left\{
-							\begin{array}{ll}
-								0, \amp t \lt 8\\
-								1, \amp t \ge 8
-							\end{array} 
-							\right.
-					</me></p>
-					<p/>
-				</sidebyside>
+				For example, you might want a force to activate briefly, or a signal to pulse on for a few seconds. This calls for a function that is:
+				<me>
+					\left\{
+					\begin{array}{ll}
+						1, \amp c \le t \lt d \\
+						0, \amp \text{otherwise}
+					\end{array}
+					\right.
+				</me>
+				This type of function acts like a window—it's OFF before <m>t = c</m>, ON during the interval <m>[c, d)</m>, and OFF again at <m>t = d</m>.
 			</p>
 
 			<p>
-				<sidebyside widths="4% 24% 19% 6% 19% 28%" valign="middle">
-					<p/>
-					<p></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>-</me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
+				We can build this behavior by subtracting two step functions:
+				<ul>
+					<li><m>u_c(t)</m> turns ON at <m>t = c</m>.</li>
+					<li><m>u_d(t)</m> turns ON at <m>t = d</m>, flipping us back to OFF since we are subtracting.</li>
+				</ul>
+				So the difference <m>u_c(t) - u_d(t)</m> is the ON-window we need.
 			</p>
 
-			<p>
-				Incorporating the interval <m>4 \le t \lt 8</m> into both functions allows us to subtracted the piecewise functions over common regions.
-			</p>
-
-			<p>
-				<sidebyside widths="6% 16% 4% 22% 4% 20% 28%" valign="middle">
-					<p/>
-					<p><me>u_4(t) - u_8(t)</me></p>
-					<p><me>=</me></p>
-					<p>
-						<me>
-							\left\{
-							\begin{array}{ll}
-								0, \amp t \lt 4\\
-								1, \amp 4 \le t \lt 8\\
-								1, \amp t \ge 8
-							\end{array} 
-							\right.
-						</me>
-					</p>
-					<p><me>-</me></p>
-					<p><me>
-						\left\{
-						\begin{array}{ll}
-							0, \amp t \lt 4\\
-							0, \amp 4 \le t \lt 8\\
-							1, \amp t \ge 8
-						\end{array} 
-						\right.
-					</me></p>
-					<p/>
-				</sidebyside>
-			</p>
-
-			<p>
-				<sidebyside widths="4% 24% 19% 6% 19% 28%" valign="middle">
-					<p/>
-					<p></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>-</me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
-
-			<p>
-				<sidebyside widths="6% 16% 4% 24% 6% 4% 20% 20%" valign="middle">
-					<p/>
-					<p/>
-					<p><me>=</me></p>
-					<p>
-						<me>
-							\left\{
-							\begin{array}{ll}
-								0, \amp t \lt 4\\
-								1, \amp 4 \le t \lt 8\\
-								0, \amp t \ge 8
-							\end{array} 
-							\right.
-						</me>
-					</p>
-					<p><me>\longrightarrow</me></p>
-					<p/>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
-
-			<example><title> Plotting the Difference of Unit Step Functions </title>
+			<assemblage xml:id="unit-step-interval0"><title> Finite Interval Unit Step Function </title>
 				<p>
-					<statement>
-						First, plot the functions <m>u_2(t)</m> and <m>u_5(t)</m> on the same axes, then plot their difference, <m>u_2(t) - u_5(t)</m> on a new set of axes.
-					</statement>
-				</p>
-				<solution> removed to reduce gpt data load </solution>
-			</example>
-
-			<assemblage xml:id="unit-step-interval"><title> Finite Interval Unit Step Function </title>
-				<p>
-					The unit step function that is <m>1</m> on the interval <m>[c,d)</m> and 0 otherwise is given by
+					The step function that is ON from <m>t = c</m> to <m>t = d</m> and OFF otherwise is:
 				</p>
 
 				<p>
@@ -742,7 +782,7 @@
 						</p>
 						<p/>
 						<p>
-							<image> removed to reduce gpt data load </image>
+							<image> removed for editing </image>
 						</p>
 						<p/>
 					</sidebyside>
@@ -765,7 +805,9 @@
 										Hover over the labels <m>u_c(t)</m>, <m>u_d(t)</m> and <m>u_c(t) - u_d(t)</m> to highlight its graph.
 									</p>
 								</stack>
-								<interactive> removed to reduce gpt data load </interactive>
+								<interactive> removed for editing </interactive>
+									</static>
+								</interactive>
 							</sidebyside>
 						</p>
 					</corollary>
@@ -776,28 +818,191 @@
 				As with previous step functions, this step function switches ON any function over the interval <m>[c,d)</m> and OFF everywhere else.
 			</p>
 
-			<example><title> Function Activation on a Finite Interval </title>
+			<example><title> Turning ON for a Window of Time </title>
 				<statement>
 					<p>
-						Rewrite the piecewise function
-					</p>
-					<me>
-						g(t) = \left\{
-						\begin{array}{ll}
-							\sin t + 2, \amp \frac{\pi}{2} \le t \lt 2\pi\\
-							0, \amp \text{otherwise}
-						\end{array}
-						\right.
-					</me>
-					<p>
-						in terms unit step functions.
+						Show that <m>u_4(t) - u_8(t)</m> gives us a function that is ON from <m>t = 4</m> to <m>t = 8</m>.
 					</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+				
+				<solution>
+					<p>
+						<em> Note: For clarity, instead of using <q>otherwise</q>, we will explicitly write the interval.</em> 
+					</p>
+
+					<p>
+						Substituting <m>u_{4}(t)</m> and <m>u_{8}(t)</m> directly into the difference gives us
+					</p>
+
+					<p>
+						<sidebyside widths="6% 20% 4% 24% 4% 22% 12%" valign="middle">
+							<p/>
+							<p><me>u_4(t) - u_8(t)</me></p>
+							<p><me>=</me></p>
+							<p>
+								<me>
+									\left\{
+									\begin{array}{ll}
+										0, \amp t \lt 4\\
+										1, \amp t \ge 4
+									\end{array} 
+									\right.
+								</me>
+							</p>
+							<p><me>-</me></p>
+							<p>
+								<me>
+									\left\{
+									\begin{array}{ll}
+										0, \amp t \lt 8\\
+										1, \amp t \ge 8
+									\end{array} 
+									\right.
+								</me>
+							</p>
+							<p/>
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="6% 18% 8% 20% 8% 20% 12%" valign="middle">
+							<p/>
+							<p/>
+							<p><me>=</me></p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p><me>-</me></p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p/>
+						</sidebyside>
+					</p>
+
+					<p>
+						To substract the pieces in these functions, the intervals must align. Into each step function, we can artifically insert a piece for the interval <m>4 \le t \lt 8</m> to get
+					</p>
+
+					<p>
+						<m>\ds u_4(t) - u_8(t)</m>
+						<sidebyside widths="6% 6% 22% 6% 22% 6% 26% 6%" valign="middle">
+							<p/>
+							<p><me>=</me></p>
+							<p>
+								<me>
+									\left\{
+									\begin{array}{ll}
+										0, \amp t \lt 4\\
+										1, \amp 4 \le t \lt 8\\
+										1, \amp t \ge 8
+									\end{array} 
+									\right.
+								</me>
+							</p>
+							<p><me>-</me></p>
+							<p>
+								<me>
+									\left\{
+									\begin{array}{ll}
+										0, \amp t \lt 4\\
+										0, \amp 4 \le t \lt 8\\
+										1, \amp t \ge 8
+									\end{array} 
+									\right.
+								</me>
+							</p>
+							<p><me>=</me></p>
+							<p>
+								<me>
+									\left\{
+									\begin{array}{ll}
+										0-0, \amp t \lt 4\\
+										1-0, \amp 4 \le t \lt 8\\
+										1-1, \amp t \ge 8
+									\end{array} 
+									\right.
+								</me>
+							</p>
+							<p/>
+						</sidebyside>
+					</p>
+
+					<p>
+						<sidebyside widths="6% 6% 22% 6% 22% 6% 22% 10%" valign="middle">
+							<p/>
+							<p><me>=</me></p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p><me>-</me></p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p><me>=</me></p>
+							<p>
+								<image> removed for editing </image>
+							</p>
+							<p/>
+						</sidebyside>
+					</p>
+
+					<p>
+						Hence, the difference is equivalent to the piecewise function
+						<me>
+							u_{4}(t) - u_{8}(t) =
+							\left\{
+								\begin{array}{ll}
+									1, \amp 4 \le t \lt 8\\
+									0, \amp \small\text{otherwise}
+								\end{array} 
+							\right.
+						</me>
+						which is the desired result.
+					</p>
+				</solution>
 			</example>
 
-			<corollary><title> Exploring the Product <m>(\sin t + 2)(u_c(t) - u_d(t))</m> </title>
+			<example><title> Switching ON a Function for a Limited Interval </title>
+				<statement>
+					<p>
+						In terms of unit step functions, give the function that is <m>\sin t + 2</m> only from <m>t = \sfrac{\pi}{2}</m> to <m>t = 2\pi</m> and <m>0</m> otherwise.
+					</p>
+				</statement>
 
+				<solution>
+					<p>
+						Since this function is <m>\sin t + 2</m> only on a finite window, we multiply it by the following difference of shifted unit step functions:
+						<me>
+							g(t) = \left(\sin t + 2\right) \cdot \left(u_{\sfrac{\pi}{2}}(t) - u_{2\pi}(t)\right)
+						</me>.
+					</p>
+
+					<p>
+						In piecewise form, this function is
+						<me>
+						g(t) = \left\{
+						\begin{array}{ll}
+						\sin t + 2, \amp \sfrac{\pi}{2} \le t \lt 2\pi \\
+						0, \amp \text{otherwise}
+						\end{array}
+						\right.
+						</me>
+					</p>
+
+					<p>
+						and its graph is given by 
+					</p>
+
+					<p>
+						<sidebyside width="60%" margin="20%">
+							<image> removed for editing </image>
+						</sidebyside>
+					</p>
+				</solution>
+			</example>
+
+			<corollary><title> Exploring the ON-Window <m>[c, d)</m> </title>
 				<p>
 					<line><em>Instructions:</em></line>
 					<ul>
@@ -814,147 +1019,90 @@
 				</p>
 
 				<sidebyside width="88%" margins="12% 0%">
-					<interactive> removed to reduce gpt data load </interactive>
+					<interactive> removed for editing </interactive>
+						</static>
+					</interactive>
 				</sidebyside>
-
 			</corollary>
 
 			<p>
-				This method of using a difference of unit step functions will be especially useful as we start to build full formulas for complicated piecewise functions in the next sections.
+				The finite unit step function is the final piece of the puzzle. It lets us precisely control when a function is active—and for how long. In the next section, we'll combine all these ideas to rewrite entire piecewise functions using unit step notation.
 			</p>
-			
 		</subsubsection>
 
-		<subsubsection><title> Piecewise Form to Unit Step Form </title>
-
+		<subsubsection><title> Unit Step Form of a Piecewise Function </title>
 			<p>
-				Everything we have done up to this point has been geared toward the goal of rewriting piecewise form of a function into a unit step function form. We are now ready to bring everything together in order to fulfill this goal.
+				Everything we've done so far has built up to this moment. We now have the tools to rewrite <em>any</em> piecewise-defined function as a single formula using unit step functions. This form is not only compact—it also makes Laplace transforms much easier.
 			</p>
 
 			<p>
-				Before introducing the unit step function, we mentioned that you would have to rethink the way you view piecewise functions. To motivate this, we presented the following piecewise function:
-			</p>
-
-			<p>
-				<sidebyside widths="6% 5% 3% 10% 15% 13% 28% 20%" valign="middle">
-					<p/>
-					<p><m>g(t)</m></p>
-					<p><m>=</m></p>
-					<p>
-						<me>
-							\left\{
-								\begin{array}{c}
-									\B \sin t\\
-									\G 2e^{-t}\\
-									\R 1.5
-								\end{array}
-							\right.
-						</me>
-					</p>
-					<p>
-						<me>
-							\begin{array}{r}
-								\B t \lt 0			\\
-								\G 0 \le t \lt 2	\\
-								\R t \ge 2			
-							\end{array}
-						</me>
-					</p>
-					<p/>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-				<p/>
-				<sidebyside widths="6% 5% 3% 24% 5% 24% 4% 23% 6%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>=</m></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>+</me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p><me>+</me></p>
-					<p>
-						<image> removed to reduce gpt data load </image>
-					</p>
-					<p/>
-				</sidebyside>
-				<p/>
-				<sidebyside widths="6% 5% 3% 24% 5% 24% 4% 23% 6%" valign="middle">
-					<p/>
-					<p/>
-					<p><m>=</m></p>
-					<p>
-						<me>
-							\left\{
-								\begin{array}{cr}
-									\B \sin t	\amp \B t \lt 0\\
-									0			\amp \text{otherwise}
-								\end{array}
-							\right.
-						</me>
-					</p>
-					<p><me>+</me></p>
-					<p>
-						<me>
-							\left\{
-								\begin{array}{cr}
-									\G 2e^{-t}	\amp \G 0 \le t \lt 2\\
-									0			\amp \text{otherwise}
-								\end{array}
-							\right.	
-						</me>
-					</p>
-					<p><me>+</me></p>
-					<p>
-						<me>
-							\left\{
-								\begin{array}{cr}
-									{\R 1.5}	\amp \R t \ge 2\\
-									0			\amp \text{otherwise}
-								\end{array}
-							\right.
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
-
-			<p>
-				Since <m>\B \sin t</m> goes from ON to OFF at <m>t=0</m>, we multiply it by <m>1-u_0(t)</m>. Next, <m>\G 2e^{-t}</m> is only ON between <m>t=0</m> and <m>2</m>, so we multiply by <m>u_0(t) - u_2(t)</m>. Finally, the function <m>\R 1.5</m> turns ON at <m>t=2</m>, so we multiply it by <m>u_2(t)</m>. Summing up these products, we have
+				To remind you where we started, here's a function (with its <xref ref="intro-piecewise-function" text="custom">graph</xref>) we looked at earlier:
 				<me>
-					g(t) = 
-					{\B \sin t}\ \left(1-u_{0}(t)\right) + 
-					{\G 2e^{-t}}\ \left(u_{0}(t)-u_{2}(t)\right) + 
-					{\R 1.5}\ \left(u_{2}(t)\right)
+					g(t) = \left\{
+					\begin{array}{ll}
+						\B \sin t,    \amp t \lt 0 \\
+						\G 2e^{-t},   \amp 0 \le t \lt 2 \\
+						\OR 1.5,       \amp t \ge 2.
+					\end{array}
+					\right.
 				</me>
 			</p>
 
 			<p>
-				This representation highlights the fact that the unit step functions you need depend on the intervals each piece is defined on. The general technique is summarized below.
+				Now, let's walk through each piece:
+				<ul>
+				<li>
+					<xref ref="intro-piecewise-function-piece1" text="custom">Piece 1</xref>:
+					<m>\B\ \sin t</m> is active before <m>t = 0</m>, so we multiply it by <m>1 - u_0(t)</m>.
+				</li>
+				<li>
+					<xref ref="intro-piecewise-function-piece2" text="custom">Piece 2</xref>:
+					<m>\G\ 2e^{-t}</m> is active between <m>t = 0</m> and <m>t = 2</m>, so we multiply it by <m>u_0(t) - u_2(t)</m>.
+				</li>
+				<li>
+					<xref ref="intro-piecewise-function-piece3" text="custom">Piece 3</xref>:
+					<m>\OR\ 1.5</m> turns ON at <m>t = 2</m> and stays on, so we multiply it by <m>u_2(t)</m>.
+				</li>
+				</ul>
 			</p>
-			
+
+			<p>
+				Our goal is to represent <m>g(t)</m> as a sum of terms like <m>f(t)\, u_c(t)</m>, each “activating” its piece over the correct interval.
+			</p>
+
+			<p>
+				Putting these all together:
+				<me>
+					g(t) = 
+					{\B \sin t}\, \left(1 - u_0(t)\right) +
+					{\G 2e^{-t}}\, \left(u_0(t) - u_2(t)\right) +
+					{\OR 1.5}\, u_2(t)
+				</me>
+			</p>
+
 			<assemblage xml:id="piecewise-to-unit-step"><title> Converting Piecewise Form to Unit Step Form </title>
 				<p>
-					Start by identifying the interval type associated to each piece. The three possible interval types along with the required unit step functions are as follows: 
+					Here's a general guide for converting any piecewise function into unit step form. First, match each piece's interval with the correct type of unit step expression:
 					<table xml:id="unit-step-selection"><title> Unit Step Function Selection based on Piece Interval </title>
 						<tabular halign="center">
 							<col width="25%"/>
 							<col/>
-							<col right="minor"/>
-							<col right="minor"/>
 							<col/>
+							<col/>
+							<col/>
+							<row>
+								<cell bottom="none"/>
+								<cell>Function</cell>
+								<cell>Piece</cell>
+								<cell>Interval</cell>
+								<cell>Required</cell>
+							</row>
 							<row bottom="minor">
 								<cell bottom="none"/>
 								<cell>Piece</cell>
 								<cell>Interval</cell>
-								<cell>Interval Type</cell>
-								<cell>Required Unit Step</cell>
+								<cell>Type</cell>
+								<cell>Unit Step</cell>
 							</row>
 							<row>
 								<cell>
@@ -965,13 +1113,13 @@
 										\begin{array}{c}
 											\B g_{1}(t)	\\
 											\G g_{2}(t)	\\
-											\R g_{3}(t)
+											\OR g_{3}(t)
 										\end{array}
 									</me>
 								</cell>
 								<cell>
 									<me>
-										\begin{array}{r}
+										\begin{array}{c}
 											t \lt c			\\
 											c \le t \lt d	\\
 											t \ge d
@@ -1002,72 +1150,119 @@
 				</p>
 
 				<p>
-					For each piece, multiply the function by the required unit step and sum them:
-				</p>
-
-				<p>
+					Then write the function as:
 					<me>
 						g(t) = 
-						{\B g_{1}(t)}\big(1 - u_c(t)\big) + 
-						{\G g_{2}(t)}\big(u_c(t) - u_d(t)\big) + 
-						{\R g_{3}(t)}u_d(t)
-					</me>.
+						{\B g_1(t)}\,\left(1 - u_c(t)\right) +
+						{\G g_2(t)}\,\left(u_c(t) - u_d(t)\right) +
+						{\OR g_3(t)}\, u_d(t)
+					</me>
 				</p>
 
 				<p>
-					<em>Note, additional finite interval pieces, like <m>\G g_2(t)</m>, are treated similarly.</em>
+					This method works for any number of pieces. Just identify when each one is active, write the matching step function, and multiply.
 				</p>
 			</assemblage>
-			
+
 			<p>
 				Let's practice using the strategy in <xref ref="unit-step-selection"/> with a few examples.
 			</p>
-		
-			<example><title> Laplace Transform of 2 Piecewise Functions </title>
+
+			<example><title> Converting to Unit Step Form </title>
 				<statement>
 					<p>
-						Rewrite each of the piecewise functions in terms of unit step functions.
+						Rewrite the following piecewise functions using unit step notation:
+					</p>
+
+					<sidebyside widths="50% 50%">
+						<p>
+							<me>
+								P(t) = \left\{
+								\begin{array}{ll}
+									e^{-t}, \amp t \lt 2.8 \\
+									6 - t,  \amp t \ge 2.8
+								\end{array}
+								\right.
+							</me>
+						</p>
+						<p>
+							<me>
+								Q(t) = \left\{
+								\begin{array}{ll}
+									2t, \amp 0 \le t \lt 1 \\
+									3,  \amp 1 \le t \lt 4 \\
+									0,  \amp t \ge 4
+								\end{array}
+								\right.
+							</me>
+						</p>
+					</sidebyside>
+				</statement>
+
+				<solution><title> <m>\rightarrow P(t)</m> </title>
+					<p>
+						The first piece is active before <m>t = 2.8</m>, so we use <m>1 - u_{2.8}(t)</m>. The second piece starts at <m>t = 2.8</m>, so we use <m>u_{2.8}(t)</m>. So:
+						<me>
+							P(t) = e^{-t} \cdot \left(1 - u_{2.8}(t)\right) + (6 - t) \cdot u_{2.8}(t)
+						</me>
 					</p>
 
 					<p>
-						<sidebyside widths="40% 60%" valign="middle">
-							<p>
-								<me>
-									g(t) = \left\{
-									\begin{array}{ll}
-										e^{-t},	\amp t \lt 2.8 \\
-										6-t,	\amp t \ge 2.8 \\
-									\end{array}
-									\right.
-								</me>
-							</p>
-							<p>
-								<me>
-									g(t) = \left\{
-									\begin{array}{ll}
-										2t, \amp 0 \le t &lt; 1 \\
-										3,	\amp 1 \le t &lt; 4 \\
-										0,	\amp t \ge 4
-									\end{array}
-									\right.
-								</me>
-							</p>
-						</sidebyside>	
+						We can also combine terms with the same step:
+						<md>
+							<mrow> P(t)	\amp = e^{-t} - e^{-t} \cdot u_{2.8}(t) + (6-t) \cdot u_{2.8}(t) </mrow>
+							<mrow>		\amp = e^{-t} + \left(-e^{-t} + (6-t) \right) \cdot u_{2.8}(t) </mrow>
+						</md>.
 					</p>
-				</statement>
+				</solution>
 
-				<solution> removed to reduce gpt data load </solution>
+				<solution><title> <m>\rightarrow Q(t)</m> </title>
+					<p>
+						There are three pieces:
+						<ul>
+							<li><m>2t</m> is ON from <m>0 \le t \lt 1</m> → use <m>u_0(t) - u_1(t)</m></li>
+							<li><m>3</m> is ON from <m>1 \le t \lt 4</m> → use <m>u_1(t) - u_4(t)</m></li>
+							<li><m>0</m> is ON for <m>t \ge 4</m> → use <m>u_4(t)</m>, though it contributes nothing</li>
+						</ul>
+					</p>
 
-				<solution> removed to reduce gpt data load </solution>
+					<p>
+						Putting it together:
+						<me>
+							Q(t) = 2t \cdot \left(u_0(t) - u_1(t)\right) + 3 \cdot \left(u_1(t) - u_4(t)\right)
+						</me>
+					</p>
+
+					<p>
+						Distribute and combine like unit step terms:
+						<md>
+							<mrow>
+								Q(t) 
+								\amp = 2t \cdot u_{0}(t) - 2t \cdot u_{1}(t) + 3 \cdot u_{1}(t) - 3 \cdot u_{4}(t)
+							</mrow>
+							<mrow>
+								\amp = 2t\, u_0(t) + (3 - 2t)\, u_1(t) - 3\, u_4(t)
+							</mrow>
+						</md>
+					</p>
+				</solution>
 
 			</example>
-		
+
 			<p>
-				From here, we'll begin applying these techniques to solve differential equations with piecewise forcing inputs, using these Laplace tools as our foundation.
+				From here on out, you'll write piecewise forcing functions in this compact unit step form. This sets you up perfectly to apply Laplace transforms—since we now have rules for how to transform each of these terms.
 			</p>
-				
 		</subsubsection>
 
+		<conclusion>
+			<p>
+				Now that you've learned how to rewrite any piecewise-defined function using unit step functions, you're ready for the next step: solving differential equations with these kinds of inputs. This is where the power of the Laplace transform really shines.
+			</p>
+
+			<p>
+				In the next section, we'll show how unit step notation makes it possible to take the Laplace transform of piecewise forcing functions, unlock simple algebraic expressions in the <m>s</m>-domain, and then solve for the unknown function using inverse transforms.
+			</p>
+		</conclusion>
 	</subsection>
 
 	<subsection><title> The Laplace Transform Method Involving Piecewise Forcing Functions </title>
@@ -1129,9 +1324,8 @@
 		</introduction>
 
 		<subsubsection><title> Laplace Transform of <m>u_c(t)</m> </title>
-
 			<p>
-				We will now jump right into the Laplace transform of a unit step function, <m>u_c(t)</m>. 
+				With our new ability to express piecewise functions using unit step notation, we now need to figure out how to take their Laplace transforms. Let's start with the most basic case: what is the Laplace transform of a single shifted step function, <m>u_c(t)</m>?
 			</p>
 		
 			<assemblage xml:id="laplace-of-step"><title> Laplace Transform of the shifted Step </title>
@@ -1143,7 +1337,6 @@
 				</p>
 				<p>
 					<theorem><title> <m>\rightarrow \lap{u_c(t)}</m> </title>
-
 						<p>
 							To derive this, recall the definition of the Laplace transform:
 							<me>
@@ -1171,6 +1364,7 @@
 								= \int_c^{\infty} e^{-st} \, dt
 							</me>
 						</p>
+
 						<p>
 							To compute the integral, we have to remember that this is an improper integral, so we re-express it as a limit
 							<me>
@@ -1185,6 +1379,7 @@
 								= \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s}.
 							</me>
 						</p>
+						
 						<p>
 							Now, we compute the limit of this expression as <m>b \to \infty</m>:
 							<me>
@@ -1193,6 +1388,7 @@
 							</me>.
 							As before, the <term>limit of the exponential function</term> converges if its power, <m>-sb</m>, goes to <m>-\infty</m>. This happens if <m>s \gt 0</m>.
 						</p>
+
 						<p>
 							So, as long as <m>s \gt 0</m>, then <m>\lim_{b \to \infty} e^{-sb} = 0</m> and the transform becomes 
 							<me>
@@ -1204,83 +1400,66 @@
 			</assemblage>
 
 			<p>
-				This is a remarkably clean result. A delayed step in time becomes multiplication by an exponential decay factor in the Laplace domain. Now that we've established this, we can build up to more general transforms like <m>\lap{f(t)\, u_c(t)}</m>, which is the key to transforming most piecewise-defined functions.
-			</p>
-			
-			<p>
-				Let's try it on a concrete example.
+				This is a powerful insight: in the Laplace domain, a delayed switch becomes a simple exponential function. You'll see this pattern appear again and again as we take transforms of more complex step-based expressions.
 			</p>
 		
 			<example><title> Laplace Transform of <m>u_2(t)</m> </title>
-				<p>
-					<statement>
-						<p>
-							Compute <m>\quad\ds\lap{u_2(t)}\vphantom{\int}</m>.
-						</p>
-					</statement>
-				</p>
-				<solution> removed to reduce gpt data load </solution>
+				<statement>
+					<p>
+						Use the formula to compute: <m>\quad\ds\lap{u_2(t)}\vphantom{\int}</m>.
+					</p>
+				</statement>
+				<solution><title> <m>\rightarrow \lap{u_2(t)}</m> </title>
+					<p>
+						Using the result <m>\lap{u_c(t)} = \frac{e^{-cs}}{s}</m> with <m>c = 2</m>, we get:
+						<me>
+						\lap{u_2(t)} = \frac{e^{-2s}}{s}
+						</me>.
+					</p>
+				</solution>
 			</example>
-		
+
+			<p>
+				Next, we'll take this one step further and look at how to compute the Laplace transform of a function that's turned ON at <m>t = c</m>—that is, expressions like <m>f(t)\cdot u_c(t)</m>.
+			</p>
 		</subsubsection>
 
 		<subsubsection><title> Laplace Transform of <m>f(t)\cdot u_c(t)</m> </title>
-
 			<p>
-				Now that we've seen how to compute <m>\lap{u_c(t)}</m>, let's tackle the next goal: finding the Laplace transform of a function that's “turned on” at time <m>t = c</m>. That is, how do we handle <m>\lap{f(t)\, u_c(t)}</m>?
-			</p>
-			
-			<p>
-				This expression appears all the time when we rewrite piecewise functions using unit step notation. For example, from earlier:
+				Now that we know how to transform <m>u_c(t)</m>, let's level up and ask: what's the Laplace transform of a function that turns ON at <m>t = c</m>? In other words, how do we handle:
 				<me>
-					g(t) = (2 - t)\, u_2(t).
+					\lap{f(t)\cdot u_c(t)}?
 				</me>
+				This is the most common form you'll encounter when working with piecewise forcing functions.
 			</p>
 		
-			<assemblage xml:id="laplace-f-uc"><title> Laplace Transform of <m>f(t) \, u_c(t)</m> </title>
+			<assemblage xml:id="laplace-f-uc0"><title> Laplace Transform of <m>f(t)\cdot u_c(t)</m> </title>
 				<p>
-					If a function is multiplied by a shifted step function, its Laplace transform becomes:
+					If a function <m>f(t)</m> is multiplied by a step function that turns it ON at <m>t = c</m>, its Laplace transform becomes:
 					<men xml:id="L14-eqn">
 						\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t+c)}.
 					</men>
 				</p>
+
 				<p>
 					<theorem><title> <m>\rightarrow \lap{f(t) \, u_c(t)}</m> </title>
 						<p>
-							To find the Laplace transform, we start by computing
+							Let's break this down. By definition:
 							<me>
-								\lap{f(t) \, u_c(t)} = \int_0^\infty f(t) \, u_c(t) \, e^{-st} \, dt.
+								\lap{f(t)\cdot u_c(t)} = \int_0^\infty f(t)\, u_c(t)\, e^{-st}\, dt.
 							</me>
-							Remember, <m>u_c</m> is either 0 or 1, so the integrand is the piecewise function
-							<me> 
-								f(t) \, {\OR u_c(t)} \, e^{-st} 
-								=
-								f(t) \, e^{-st} \cdot {\OR 
-								\left\{
-									\begin{array}{ll}
-										0\\
-										1
-									\end{array}
-								\right.}
-								\quad = \quad
-								\left\{
-									\begin{array}{ll}
-										0,				\amp t \lt c\\
-										f(t)e^{-st},	\amp t \ge c,
-									\end{array}
-								\right.
+							But since <m>u_c(t) = 0</m> for <m>t \lt c</m>, the integral simplifies to:
+							<me>
+								\lap{f(t)\cdot u_c(t)} = \int_c^\infty f(t)\, e^{-st}\, dt.
 							</me>
 						</p>
 
 						<p>
-							Separating the integral over these intervals leads to
-							<me>
-								\lap{f(t) \, u_c(t)} = \int_c^\infty f(t) e^{-st} \, dt.
-							</me>
-						</p>
-
-						<p>
-							This new integral looks a lot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can use a simple <m>u</m>-substitution to create a new variable that starts at <m>t = 0</m>. 
+							This new integral looks a lot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can use a simple <m>u</m>-substitution to create a new variable that starts at <m>t = 0</m>.
+							<ul>
+								<li>Let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>.</li>
+								<li>When <m>t = c</m>, then <m>u = 0</m>. When <m>t \to \infty</m>, then <m>u \to \infty</m>.</li>
+							</ul>
 						</p>
 
 						<aside><title> <m>\B \text{A}, \text{B}, \text{C}, \text{D}</m> Details </title>
@@ -1328,28 +1507,25 @@
 							</tabular>
 						</aside>
 
-						<p>
-							Let <m>u = t - c</m>, so <m>du = dt</m>, and the <m>u</m>-integral is
-							<md>
-								<mrow>
-									\int_{t\ =\ c}^{t\ =\ \infty} f(t)\ e^{-st} \, dt 
-									\amp \os{\large\B \text{A}}{=} 
-									\int_{u\ =\ 0}^{u\ =\ \infty} f(u+c)\ e^{-s(u+c)}\ du
-								</mrow>
-								<mrow>
-									\amp \os{\large\B \text{B}}{=}
-									\int_0^\infty f(u+c) \left(e^{-su} \cdot e^{-sc}\right) \, du
-								</mrow>
-								<mrow>
-									\amp \os{\large\B \text{C}}{=}
-									e^{-cs} \int_0^\infty f(u+c) e^{-su} \, du
-								</mrow>
-								<mrow>
-									\amp \os{\large\B \text{D}}{=}
-									e^{-cs} \ub{\int_0^\infty f(t+c) e^{-st} \, dt}_{\large \lap{f(t+c)}}
-								</mrow>
-							</md>
-						</p>
+						<md>
+							<mrow>
+								\int_{t\ =\ c}^{t\ =\ \infty} f(t)\ e^{-st} \, dt 
+								\amp \os{\large\B \text{A}}{=} 
+								\int_{u\ =\ 0}^{u\ =\ \infty} f(u+c)\ e^{-s(u+c)}\ du
+							</mrow>
+							<mrow>
+								\amp \os{\large\B \text{B}}{=}
+								\int_0^\infty f(u+c) \left(e^{-su} \cdot e^{-sc}\right) \, du
+							</mrow>
+							<mrow>
+								\amp \os{\large\B \text{C}}{=}
+								e^{-cs} \int_0^\infty f(u+c) e^{-su} \, du
+							</mrow>
+							<mrow>
+								\amp \os{\large\B \text{D}}{=}
+								e^{-cs} \ub{\int_0^\infty f(t+c) e^{-st} \, dt}_{\large \lap{f(t+c)}}
+							</mrow>
+						</md>
 
 						<p>
 							Therefore,
@@ -1360,37 +1536,140 @@
 					</theorem>
 				</p>
 			</assemblage>
-		
+
 			<p>
-				This rule lets us instantly find Laplace transforms for many common piecewise functions. Let's see how it works in practice with a few examples.
+				This result is incredibly useful—it allows you to transform any piecewise-defined function into the Laplace domain by applying a shift to <m>f(t)</m> and multiplying by <m>e^{-cs}</m>.
 			</p>
 
-			<example><title> Laplace Transforms of <m>f(t)\, u_c(t)</m> </title>
-				<p>
-					<statement>
-						<p>
-							Compute the following Laplace transform:
-							<me>
-								1. \quad \lap{(2-t)\, u_3(t)}, \qquad\qquad 2. \quad \lap{e^{3t}\, \left(1 - u_1(t)\right)}
-							</me>
-						</p>
-					</statement>
-				</p>
-				<p>
-					<solution> removed to reduce gpt data load </solution>
-					<solution> removed to reduce gpt data load </solution>
-				</p>
-			</example>	
-		
-			<p>
-				These examples show how the Laplace transform can handle piecewise forcing functions like the one encountered in the introduction. Now we're ready to apply this to more general piecewise functions.
-			</p>
+			<example><title> Transform of <m>(2 - t)\cdot u_3(t)</m> </title>
+				<statement>
+					<p>
+						Compute the Laplace transform: <m>\quad\ds\lap{(2-t)\cdot u_3(t)}</m>
+					</p>
+				</statement>
 
+				<solution><title> <m>\rightarrow \lap{(2-t)\cdot u_3(t)}</m> </title>
+					<p>
+						To use the formula:
+						<me>
+							\lap{f(t)\cdot u_c(t)} = e^{-cs} \lap{f(t + c)}
+						</me>
+						we need to identify <m>f(t)</m> and <m>c</m>. Clearly, <m>c = 3</m>, so this formula becomes:
+						<me>
+							\lap{{\OR f(t)}\, u_3(t)} = e^{-2s} \lap{{\OR f(t+3)}}
+						</me>.
+					</p>
+
+					<p>
+						Since the function of <m>t</m> next to <m>u_3(t)</m> is <m>{\OR f(t) = 2 - t}</m>, we compute
+						<me>
+							\OR f(t + 3) = 2 - (t + 3) = -t - 1
+						</me>,
+						which updates the formula as
+						<me>
+							\lap{({\OR 2 - t})\cdot u_3(t)} = e^{-3s} \lap{{\OR -t - 1}}
+						</me>
+					</p>
+
+					<p>
+						Since <m>\lap{{\OR -t - 1}}</m> completes the transform, we compute it, giving us
+						<md>
+							<mrow>
+								\lap{-t - 1} = -\lap{t} - \lap{1} = -\frac{1}{s^2} - \frac{1}{s} = -\left(\frac{1+s}{s^2}\right).
+							</mrow>
+						</md>
+						Finally, plugging this into our updated formula, the Laplace transform is
+						<me>
+							\lap{(2-t)\, u_3(t)} = -e^{-2s}\left(\frac{1+s}{s^2}\right).
+						</me>
+					</p>
+				</solution>
+			</example>
+
+  			<example><title> Transform of <m>e^{3t}(1 - u_1(t))</m> </title>
+				<statement>
+					<p>
+						Compute the Laplace transform: <m>\quad\lap{e^{3t}\left(1 - u_1(t)\right)}</m>
+					</p>
+				</statement>
+
+				<solution><title> <m>\rightarrow \lap{e^{3t}(1 - u_1(t))}</m> </title>
+
+					<p>
+						We start by distributing:
+						<me>
+							e^{3t}(1 - u_1(t)) = e^{3t} - e^{3t} \cdot u_1(t)
+						</me>.
+					</p>
+
+					<p>
+						Applying the Laplace transform to this gives us
+						<me>
+							\lap{e^{3t}(1 - u_1(t))} = \lap{e^{3t}} - \lap{e^{3t} \cdot u_1(t)}
+						</me>.
+					</p>
+
+					<p>
+						The first term uses a standard Laplace transform:
+						<me>
+							\lap{e^{3t}} = \frac{1}{s - 3}
+						</me>.
+					</p>
+
+					<p>
+						The second term requires the new rule with <m>c=1</m>, which gives us
+					</p>
+
+					<p>
+						<sidebyside widths="58% 42%">
+							<p>
+								<md>
+									<mrow>
+										\lap{{\OR e^{3t}} \cdot u_1(t)}
+										\amp = e^{-s} \lap{{\OR f(t+1)}}
+									</mrow>
+									<mrow>
+										\amp = e^{-s} \lap{{\OR e^{3t} \cdot e^{3}}}
+									</mrow>
+									<mrow>
+										\amp = e^{-s} \cdot e^{3} \lap{e^{3t}}
+									</mrow>
+									<mrow>
+										\amp = e^{-s+3} \left(\frac{1}{s - 3}\right)
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\OR f(t)\ 	\amp\OR = e^{3t}</mrow>
+									<mrow>\OR f(t+1)\ 	\amp\OR = e^{3(t+1)} </mrow>
+									<mrow>				\amp\OR = e^{3t + 3} = e^{3t} \cdot e^{3}</mrow>
+									<mrow>\text{Note:}\ e^3\ \amp \text{is constant}</mrow>
+								</md>
+							</p>
+						</sidebyside>
+					</p>
+
+					<p>
+						Putting it all together, we arrive at the desired transformation:
+						<me>
+							\lap{e^{3t}(1 - u_1(t))} 
+							= \frac{1}{s - 3} - \frac{e^{3 - s}}{s - 3}
+						</me>
+					</p>
+				</solution>
+			</example>
+
+			<p>
+				This technique will be the foundation for transforming most piecewise-defined inputs. In the next section, we'll combine this with what we know about unit step functions to find the Laplace transform of an entire piecewise function.
+			</p>
+			
+			<xi:include href="./c7-exercises/c7-chkpts-4-2-2-laplace-transforms-of-f-uc.ptx" />
 		</subsubsection>
 
 		<subsubsection><title> Laplace Transform of a Piecewise Function </title>	
 			<p>
-				Let's walk through an example to see how this process works from start to finish.
+				Let's put everything together and walk through the process of finding the Laplace transform of a full piecewise function—step-by-step.
 			</p>
 
 			<example><title> Transforming a 2-Part Piecewise Function </title>
@@ -1407,12 +1686,94 @@
 					</me>
 				</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+				<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
+					<p>
+						We begin by identifying the needed unit step functions.
+						<me>
+							g(t) =  \cdot
+							\left\{
+								\begin{array}{lll}
+									e^{-t}, \amp t \lt 1 \quad \leftarrow (-\infty, 1): \amp 1-u_{1}(t)\\
+									3,		\amp t \ge 1 \quad \leftarrow (1, \infty):	\amp u_{1}(t).
+								\end{array}
+							\right.
+						</me>
+					</p>
+
+					<p>
+						Then we can write <m>g(t)</m> as
+						<me>
+							g(t) = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t).
+						</me>
+					</p>
+
+					<p>
+						Combining like unit step function terms, we get
+						<md>
+							<mrow> 
+								g(t) \amp 
+								= e^{-t} - e^{-t} \cdot u_{1}(t) + 3 \cdot u_{1}(t)
+							</mrow>
+							<mrow>
+								\amp 
+								= e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)
+							</mrow>,
+						</md>
+						and taking the Laplace transform of the last two terms separately.
+						<me>
+							\lap{g(t)} 
+							= \us{\large\text{1️⃣}}{\ul{\lap{e^{-t}}}} 
+							+ \us{\large\text{2️⃣}}{\ul{\lap{\left(3 - e^{-t}\right) \cdot u_{1}(t)}}}
+						</me>
+					</p>
+
+					<sidebyside widths="5% 30% 65%" valign="middle">
+						<p>1️⃣</p>
+						<p><me>\lap{e^{-t}} = \frac{1}{s + 1}</me></p>
+						<p/>
+					</sidebyside>
+
+					<p>
+						<sidebyside widths="5% 60% 35%" valign="top">
+							<p>2️⃣</p>
+							<p>
+								<md>
+									<mrow> 
+										\laplacesym \big\{\big({\OR 3 }\ \amp {\OR - e^{-t}}\big) \cdot u_{1}(t)\big\} 
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \lap{{\OR f(t+1)}}
+									</mrow>
+									<mrow>				
+										\amp = e^{-s} \lap{3 - e^{-t} \cdot e^{-1}}
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(3\lap{1} - e^{-1}\lap{{e^{-t}}} \right)
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(\frac{3}{s} - e^{-1} \cdot \frac{1}{s + 1}\right)
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> \small\OR f(t)\ 		\amp \small\OR = 3 - e^{-t} </mrow>
+									<mrow> \small\OR f(t+1)\ 	\amp \small\OR = 3 - e^{-(t+1)} </mrow>
+									<mrow>						\amp \small\OR = 3 - e^{-t} \cdot e^{-1} </mrow>
+								</md>
+							</p>
+						</sidebyside>
+					</p>
+
+					<p>
+						Combining 1️⃣ &amp; 2️⃣, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} 
+							= \frac{1}{s + 1} + e^{-s} \left(\frac{3}{s} - \frac{e^{-1}}{s + 1}\right)
+						</me>.
+					</p>
+				</solution>
 			</example>
-		
-			<p>
-				From here, we'll begin applying these techniques to solve differential equations with piecewise forcing functions, using these Laplace tools as our foundation.
-			</p>
 			
 			<p>
 				Let's try another example with a function that has multiple active intervals.
@@ -1433,48 +1794,194 @@
 						</me>
 					</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+				<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
+					<p>
+						First we identify the needed unit step functions.
+						<me>
+							g(t) = \left\{
+							\begin{array}{lll}
+								\B 2t,	\amp 0 \le t \lt 1	\amp \leftarrow [0,1):		\amp u_{0}(t)-u_{1}(t)\\
+								\G 3,	\amp 1 \le t \lt 4	\amp \leftarrow [1,4):		\amp u_{1}(t)-u_{4}(t)\\
+								\R 0,	\amp t \ge 4 		\amp \leftarrow [4,\infty):	\amp u_{4}(t)\\
+							\end{array}
+							\right.
+						</me>.
+					</p>
+
+					<p>
+						Next we write <m>g(t)</m> as
+						<me>
+							g(t) = {\B 2t}\, (u_0(t) - u_1(t)) + {\G 3}\, (u_1(t) - u_4(t)) + {\R 0}\, u_4(t).
+						</me>
+						and combine like unit step function terms:
+					</p>
+
+					<md>
+						<mrow> g(t)	\amp = 2t\, u_0(t) - 2t\, u_1(t) + 3\, u_1(t) - 3\, u_4(t) </mrow>
+						<mrow>		\amp = 2t\, u_0(t) + (3 - 2t)\, u_1(t) - 3\, u_4(t) </mrow>
+					</md>
+
+					<p>
+						Now, we can compute the Laplace transform of each term separately:
+						<me>
+							\lap{g(t)} 
+							= \ub{\lap{2t\, u_0(t)}}_{\large\text{1️⃣}} 
+							+ \ub{\lap{(3 - 2t)\, u_1(t)}}_{\large\text{2️⃣}} 
+							- \ub{\lap{3\, u_4(t)}}_{\large\text{3️⃣}}
+						</me>.
+						Computing each of these terms separately, we have
+					</p>
+
+					<sidebyside widths="5% 60% 35%">
+						<p>	1️⃣</p>
+						<p>
+							<md>
+								<mrow> \lap{{\OR 2t}\, u_0(t)} \amp = \lap{}e^{-0s} \cdot \lap{f(t)} </mrow>
+								<mrow>  \amp = e^{-0s} \cdot \lap{2t} </mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow> \OR f(t) \amp = 2t </mrow>
+								<mrow> \OR f(t+0) \amp = 2t </mrow>
+							</md>
+						</p>
+					</sidebyside>
+
+
+					
+
+					<p>
+						Adding this last two fractions together, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} - \frac{2e^{-s}}{s}.
+						</me>
+					</p>
+
+					<p>
+						Factoring out the common term, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} \cdot \left(1 - \frac{e^{-s}}{1 - e^{-s}}\right).
+						</me>
+					</p>
+				</solution>
 			</example>
-			
+
 			<p>
-				Notice how the function is rewritten as a sum of two “windowed” terms:
-				<me>
-					g(t) = 2t\, (u_0(t) - u_1(t)) + 3\, (u_1(t) - u_4(t)).
-				</me>
-				Then we apply the Laplace shift rule to each term individually.
+				Regardless of how many pieces a piecewise function has, the process is always the same and can be summarized as follows:
 			</p>
 
 			<assemblage xml:id="piecewise-laplace-summary"><title> Summary: Laplace Transforms of Piecewise Functions </title>
 				<p>
 				To compute <m>\lap{g(t)}</m> for a piecewise function:
 				<ol>
-					<li>Rewrite <m>g(t)</m> as a sum of terms using <m>u_c(t)</m> and <m>u_c(t) - u_d(t)</m>.</li>
-					<li>Distribute and combine all <m>f(t)\, u_c(t)</m> terms with the same unit step function.</li>
-					<li>Use the shift rule: <m>\lap{f(t)\, u_c(t)} = e^{-cs} \lap{f(t + c)}</m>.</li>
+					<li>Rewrite the function using step functions for each interval.</li>
+					<li>Group and simplify terms with matching <m>u_c(t)</m> factors.</li>
+					<li>Apply the shift rule: <m>\lap{f(t)\cdot u_c(t)} = e^{-cs} \lap{f(t + c)}</m>.</li>
 				</ol>
 				</p>
 			</assemblage>
-			
+
 			<p>
-				With this toolkit, we can now transform any piecewise forcing function into the Laplace domain—no matter how many intervals it has or when they turn on.
+				This method works for any piecewise forcing function and now you're ready to use it to solve full differential equations using Laplace transforms.
 			</p>
 		
 		</subsubsection>
 
 		<subsubsection><title> Solving Equations with Piecewise Forcing Functions </title>	
 			<p>
-				Let's return to the introductory differential equation
+				We've reached our goal: solving differential equations with piecewise forcing functions using the Laplace transform. Let's now walk through how everything fits together in practice.
+			</p>
+
+			<p>
+				Suppose we are given the equation:
 				<me>
-					y'' + y = 
-					\left\{
-						\begin{array}{ll}
-							\B 3, 		\amp 0 \ge t \lt 2 \\
-							\G 1,		\amp 2 \ge t \lt 4 \\
-							\R t - 4,	\amp t \ge 4.
-						\end{array}
+					y'' + y = \left\{
+					\begin{array}{ll}
+						3,       \amp 0 \le t \lt 2 \\
+						1,       \amp 2 \le t \lt 4 \\
+						t - 4,   \amp t \ge 4
+					\end{array}
 					\right.
 				</me>
-				and see how this equation can be solved using the Laplace transform method.
+				with initial conditions, <m>y(0) = 0</m> and <m>y'(0) = 0</m>.
+			</p>
+
+			<p>
+				The first step is to rewrite the right-hand side in terms of unit step functions. This function has three active intervals, so we break it up accordingly:
+				<ul>
+					<li><m>3</m> is ON from <m>t = 0</m> to <m>t = 2</m>: <m>u_0(t) - u_2(t)</m></li>
+					<li><m>1</m> is ON from <m>t = 2</m> to <m>t = 4</m>: <m>u_2(t) - u_4(t)</m></li>
+					<li><m>t - 4</m> is ON starting at <m>t = 4</m>: <m>u_4(t)</m></li>
+				</ul>
+
+				So the forcing function becomes:
+				<me>
+					g(t) = 3\cdot\left(u_0(t) - u_2(t)\right) + 1\cdot\left(u_2(t) - u_4(t)\right) + (t - 4)\cdot u_4(t)
+				</me>
+			</p>
+
+			<p>
+				We now take the Laplace transform of both sides. Using the fact that <m>y'' + y</m> transforms to <m>s^2 Y(s) + Y(s)</m> (because <m>y(0) = y'(0) = 0</m>), we get:
+				<me>
+					s^2 Y(s) + Y(s) = \lap{g(t)}
+				</me>
+			</p>
+
+			<p>
+				Now apply the shift rule to each piece of <m>g(t)</m>:
+				<ul>
+					<li><m>\lap{3(u_0 - u_2)} = 3\left( \frac{1}{s} - \frac{e^{-2s}}{s} \right)</m></li>
+					<li><m>\lap{(u_2 - u_4)} = \frac{e^{-2s}}{s} - \frac{e^{-4s}}{s}</m></li>
+					<li><m>\lap{(t - 4) \cdot u_4(t)} = e^{-4s} \cdot \lap{t} = e^{-4s} \cdot \frac{1}{s^2}</m></li>
+				</ul>
+
+				Combine all terms:
+				<md>
+					<mrow>
+						s^2 Y(s) + Y(s) \amp = \frac{3}{s} - \frac{3e^{-2s}}{s} + \frac{e^{-2s}}{s} - \frac{e^{-4s}}{s} + \frac{e^{-4s}}{s^2}
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				Group and simplify:
+				<me>
+					s^2 Y(s) + Y(s) 
+					= \frac{3}{s} - \frac{2e^{-2s}}{s} - \frac{e^{-4s}}{s} + \frac{e^{-4s}}{s^2}
+				</me>
+			</p>
+
+			<p>
+				Factor <m>Y(s)</m> on the left:
+				<me>
+					Y(s)(s^2 + 1) 
+					= \frac{3}{s} - \frac{2e^{-2s}}{s} - \frac{e^{-4s}}{s} + \frac{e^{-4s}}{s^2}
+				</me>
+
+				So:
+				<me>
+					Y(s) 
+					= \frac{1}{s^2 + 1} \left( \frac{3}{s} - \frac{2e^{-2s}}{s} - \frac{e^{-4s}}{s} + \frac{e^{-4s}}{s^2} \right)
+				</me>
+			</p>
+
+			<p>
+				To find <m>y(t)</m>, take the inverse Laplace transform of each term. This may involve partial fractions, but the key idea is that:
+				<ul>
+					<li>You now have a complete expression for <m>Y(s)</m></li>
+					<li>All the Laplace rules apply—even with exponentials!</li>
+				</ul>
+			</p>
+
+			<p>
+				This approach works for any piecewise-defined forcing function—no matter how many intervals or expressions. The process is systematic:
+				<ol>
+					<li>Rewrite the forcing function using unit step functions.</li>
+					<li>Apply the Laplace transform to both sides.</li>
+					<li>Solve algebraically for <m>Y(s)</m>.</li>
+					<li>Invert to find <m>y(t)</m>.</li>
+				</ol>
 			</p>
 
 			<example><title> A 4-Part Piecewise Forcing Function </title>
@@ -1494,11 +2001,107 @@
 						</me>
 					</p>
 				</statement>
-				<solution> removed to reduce gpt data load </solution>
+				<solution><title> <m>\rightarrow</m> Find <m>y(t)</m> </title>
+					<p>
+						We begin by identifying the needed unit step functions.
+						<me>
+							g(t) =  \cdot
+							\left\{
+								\begin{array}{lll}
+									e^{-t}, \amp t \lt 1 \quad \leftarrow (-\infty, 1): \amp 1-u_{1}(t)\\
+									3,		\amp t \ge 1 \quad \leftarrow (1, \infty):	\amp u_{1}(t).
+								\end{array}
+							\right.
+						</me>
+					</p>
+
+					<p>
+						Then we can write <m>g(t)</m> as
+						<me>
+							g(t) = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t).
+						</me>
+					</p>
+
+					<p>
+						Combining like unit step function terms, we get
+						<md>
+							<mrow> 
+								g(t) \amp 
+								= e^{-t} - e^{-t} \cdot u_{1}(t) + 3 \cdot u_{1}(t)
+							</mrow>
+							<mrow>
+								\amp 
+								= e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)
+							</mrow>,
+						</md>
+						and taking the Laplace transform of the last two terms separately.
+						<me>
+							\lap{g(t)} 
+							= \us{\large\text{1️⃣}}{\ul{\lap{e^{-t}}}} 
+							+ \us{\large\text{2️⃣}}{\ul{\lap{\left(3 - e^{-t}\right) \cdot u_{1}(t)}}}
+						</me>
+					</p>
+
+					<sidebyside widths="5% 30% 65%" valign="middle">
+						<p>1️⃣</p>
+						<p><me>\lap{e^{-t}} = \frac{1}{s + 1}</me></p>
+						<p/>
+					</sidebyside>
+
+					<p>
+						<sidebyside widths="5% 60% 35%" valign="top">
+							<p>2️⃣</p>
+							<p>
+								<md>
+									<mrow> 
+										\laplacesym \big\{\big({\OR 3 }\ \amp {\OR - e^{-t}}\big) \cdot u_{1}(t)\big\} 
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \lap{{\OR f(t+1)}}
+									</mrow>
+									<mrow>				
+										\amp = e^{-s} \lap{3 - e^{-t} \cdot e^{-1}}
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(3\lap{1} - e^{-1}\lap{{e^{-t}}} \right)
+									</mrow>
+									<mrow> 
+										\amp = e^{-s} \left(\frac{3}{s} - e^{-1} \cdot \frac{1}{s + 1}\right)
+									</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow> \small\OR f(t)\ 		\amp \small\OR = 3 - e^{-t} </mrow>
+									<mrow> \small\OR f(t+1)\ 	\amp \small\OR = 3 - e^{-(t+1)} </mrow>
+									<mrow>						\amp \small\OR = 3 - e^{-t} \cdot e^{-1} </mrow>
+								</md>
+							</p>
+						</sidebyside>
+					</p>
+
+					<p>
+						Combining 1️⃣ &amp; 2️⃣, we arrive at the Laplace transform
+						<me>
+							\lap{g(t)} 
+							= \frac{1}{s + 1} + e^{-s} \left(\frac{3}{s} - \frac{e^{-1}}{s + 1}\right)
+						</me>.
+					</p>
+				</solution>
 			</example>
 		
 		</subsubsection>
 		
 	</subsection>
+
+	<conclusion>
+		<p>
+			In this section, you've built a complete toolkit for handling piecewise forcing functions with the Laplace transform. You learned how to rewrite piecewise functions using unit step notation, apply transformation rules to handle delays and windows, and ultimately solve differential equations with these inputs. This framework opens the door to modeling real-world systems with abrupt changes—switches, shocks, pulses, and more.
+		</p>
+
+		<p>
+			In the next section, we'll take these ideas even further, applying them to systems that include impulses, discontinuities, and other non-smooth behaviors. The Laplace method is just getting started.
+		</p>
+	</conclusion>
 	
 </section>
