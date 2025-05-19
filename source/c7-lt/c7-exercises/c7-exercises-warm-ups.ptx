@@ -841,4 +841,217 @@
 			</sidebyside>
 		</solution>
 	</exercise>
+
+	<exercise>
+		<identity><title>Roadmap-Summary</title>
+			<p>
+				<sidebyside widths="30% 12% 58%" valign="middle">
+					<p>
+						<md>
+							<mrow>	y'' + 9y = h(t)	</mrow>
+							<mrow>	\small y(0) = 0,\ y'(0) = 0	</mrow>
+						</md>
+					</p>
+					<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
+					<p>
+						<me>
+							s^2Y + 9Y = \frac{e^{-2s}}{s} - \frac{e^{-3s}}{s}
+						</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="60% 10% 30%" valign="middle">
+					<p/>
+					<p><me>\downarrow</me></p>
+					<p>2️⃣ Solve for <m>Y</m></p>
+				</sidebyside>
+			</p>
+			<p>
+				<sidebyside widths="40% 10% 50%" valign="middle">
+					<p/>
+					<p/>
+					<p>
+						<me>
+							Y(s) = \frac{1}{s(s^2 + 9)}(e^{-2s} - e^{-3s})
+						</me>
+					</p>
+				</sidebyside>
+			</p>
+			<p>
+				<sidebyside widths="60% 10% 30%" valign="middle">
+					<p/>
+					<p><me>\downarrow</me></p>
+					<p>3️⃣ Prepare for <m>\laplacesym^{-1}</m></p>
+				</sidebyside>
+				<sidebyside widths="38% 12% 50%" valign="middle">
+					<p>
+						<me>
+							y(t) = \left(\frac{1}{3} - \frac{1}{6}\cos(3(t-2))\right)u_2(t) - \left(\frac{1}{3} - \frac{1}{6}\cos(3(t-3))\right)u_3(t)
+						</me>
+					</p>
+					<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
+					<p>
+						<me>
+							Y(s) = \frac{1}{s(s^2 + 9)}(e^{-2s} - e^{-3s})
+						</me>
+					</p>
+				</sidebyside>
+			</p>
+		</identity>
+
+		<p>
+			Solve the initial value problem
+			<me>
+				y'' + 9y = h(t), \qquad y(0) = 0,\quad y'(0) = 0
+			</me>
+			where
+			<me>
+				h(t) = \left\{
+					\begin{array}{ll}
+						1, \amp 2 \le t \lt 3 \\
+						0, \amp \text{otherwise}.
+					\end{array}
+				\right.
+			</me>
+		</p>
+
+		<paragraphs><title>Prepare the Forcing Function for Step 1</title>
+			<p>
+				We begin by rewriting <m>h(t)</m> using unit step functions. Since <m>h(t)</m> equals 1 on <m>[2, 3)</m> and 0 elsewhere, we express it as:
+				<me>
+					h(t) = u_2(t) - u_3(t)
+				</me>
+				This transforms the differential equation into:
+				<me>
+					y'' + 9y = u_2(t) - u_3(t), \qquad y(0) = 0,\quad y'(0) = 0
+				</me>
+			</p>
+		</paragraphs>
+
+		<paragraphs><title>Step 1: Apply the Laplace Transform to Both Sides</title>
+			<p>
+				Apply the Laplace transform to both sides:
+				<me>
+					\lap{y''} + 9\lap{y} = \lap{u_2(t)} - \lap{u_3(t)}
+				</me>
+				Using standard rules:
+				<me>
+					s^2Y(s) + 9Y(s) = \frac{e^{-2s}}{s} - \frac{e^{-3s}}{s}
+				</me>
+			</p>
+		</paragraphs>
+
+		<paragraphs><title>Step 2: Solve for <m>Y(s)</m></title>
+			<p>
+				Factor out <m>Y(s)</m>:
+				<md>
+					<mrow>(s^2 + 9)Y(s) = \frac{e^{-2s}}{s} - \frac{e^{-3s}}{s}</mrow>
+				</md>
+				Then divide:
+				<me>
+					Y(s) = \frac{1}{s^2 + 9} \left( \frac{e^{-2s}}{s} - \frac{e^{-3s}}{s} \right)
+				</me>
+			</p>
+		</paragraphs>
+
+		<paragraphs><title>Step 3: Prepare <m>Y(s)</m> for an Inverse Transform</title>
+			<p>
+				Step 3 focuses on rewriting <m>Y(s)</m> to match inverse Laplace rules. We separate the exponentials:
+				<me>
+					Y(s) = \frac{1}{s(s^2 + 9)}\left(e^{-2s} - e^{-3s}\right)
+				</me>
+			</p>
+			<p>
+				Let the rational part be:
+				<me>
+					F(s) = \frac{1}{s(s^2 + 9)}
+				</me>
+				Then:
+				<me>
+					Y(s) = F(s)\left(e^{-2s} - e^{-3s}\right)
+				</me>
+			</p>
+			<p>
+				This means the inverse will take the form:
+				<me>
+					y(t) = \ilap{F(s)e^{-2s}} - \ilap{F(s)e^{-3s}}
+				</me>
+				but we must first identify <m>f(t) = \ilap{F(s)}</m> using partial fractions. The details are shown below:
+			</p>
+
+			<solution><title>Partial Fraction Decomposition of <m>F(s)</m></title>
+				<p>
+					Write:
+					<me>
+						F(s) = \frac{1}{s(s^2 + 9)} = \frac{A}{s} + \frac{Bs + C}{s^2 + 9}
+					</me>
+					Multiply by <m>s(s^2 + 9)</m> and group:
+					<md>
+						<mrow>1 \amp = A(s^2 + 9) + (Bs + C)s</mrow>
+						<mrow>\amp = (A + B)s^2 + Cs + 9A</mrow>
+					</md>
+					Match coefficients:
+					<sidebyside widths="20% 6% 20%" margins="20% 20%" valign="middle">
+						<p>
+							<md>
+								<mrow>A + B \amp = 0</mrow>
+								<mrow>C \amp = 0</mrow>
+								<mrow>9A \amp = 1</mrow>
+							</md>
+						</p>
+						<p><me>\Rightarrow</me></p>
+						<p>
+							<md>
+								<mrow>A \amp = \frac{1}{9}</mrow>
+								<mrow>B \amp = -\frac{1}{9}</mrow>
+								<mrow>C \amp = 0</mrow>
+							</md>
+						</p>
+					</sidebyside>
+					<p>
+						So:
+						<me>
+							F(s) = \frac{1}{9}\left(\frac{1}{s} - \frac{s}{s^2 + 9}\right)
+						</me>
+					</p>
+				</p>
+			</solution>
+
+			<p>
+				This completes Step 3. We'll now apply the inverse transform.
+			</p>
+		</paragraphs>
+
+		<paragraphs><title>Step 4: Invert <m>Y(s)</m> to Recover <m>y(t)</m></title>
+			<p>
+				We now compute:
+				<me>
+					y(t) = \ilap{F(s)e^{-2s}} - \ilap{F(s)e^{-3s}}
+				</me>
+				By rule <xref ref="L15-eqn" text="custom"><m>L15</m></xref>, this gives:
+				<me>
+					y(t) = f(t - 2)\cdot u_2(t) - f(t - 3)\cdot u_3(t)
+				</me>
+				where:
+				<md>
+					<mrow>
+						f(t) = \ilap{F(s)} = \frac{1}{9}\ilap{\frac{1}{s}} - \frac{1}{9}\ilap{\frac{s}{s^2 + 9}}
+					</mrow>
+					<mrow>
+						= \frac{1}{9} - \frac{1}{27}\cos(3t)
+					</mrow>
+				</md>
+			</p>
+			<p>
+				Substitute:
+				<me>
+					y(t) = \left(\frac{1}{9} - \frac{1}{27}\cos(3(t-2))\right)u_2(t)
+						- \left(\frac{1}{9} - \frac{1}{27}\cos(3(t-3))\right)u_3(t)
+				</me>
+			</p>
+			<p>
+				This is the complete solution for all <m>t \ge 0</m>.
+			</p>
+		</paragraphs>
+	</exercise>
+
 </exercises>
