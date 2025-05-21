@@ -1,0 +1,399 @@
+<section><title> Euler's Method </title>
+
+	<subsection><title> Step 1: Set-up &amp; Verify </title>
+
+		<introduction>
+		
+			<outcomes>
+				<ul>
+					<li>
+						
+					</li>
+					<li>
+						
+					</li>
+					<li>
+						Master <xref text="custom" ref="euler-step1"> Step 1 </xref> of <xref ref="euler-method" text="title"/>
+					</li>
+				</ul>
+			</outcomes>
+
+			<p>
+				Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
+			</p>
+
+		</introduction>
+
+	</subsection>
+
+	<subsection><title> Step 2: Find <m>y_{n+1}</m> </title>
+		
+		<introduction>
+
+			<outcomes>
+				<ul>
+					<li>
+						.
+					</li>
+					<li>
+						Master <xref text="custom" ref="euler-step2"> Step 2 </xref> of <xref ref="euler-method" text="title"/>
+					</li>
+				</ul>
+			</outcomes>
+
+			<p>
+				Suppose we want to find an approximate solution to the differential equation
+				<me>
+					y' = x + y, \quad y(0) = -\frac{7}{8}.
+				</me>
+				
+			</p>
+			
+			<image xml:id="sageplot-polynomial-approximation">
+
+				<sageplot variant="2d">
+					y = lambda x : (1/8)*exp(x)-x-1
+					euler = lambda x, y, dx : y + dx*(x + y)
+					y0 = -7/8
+					x0, h, xF = 0, 0.5, 1.5
+					ymin, ymax = -3, 1
+
+					y_data = [(x0, y0)]
+					yp = y0
+
+					for xp in xsrange(x0, xF, h):
+						yp = euler(xp, yp, h)
+						y_data.append((xp + h, yp))
+
+					xticks = [0, 0.5, 1, 1.5, 2]
+					yticks = [i for i in range(ymin, ymax)]
+
+					grid_rgbcolor = (0.9, 0.9, 0.9)
+					grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
+					
+
+					for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
+						grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
+					for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
+						grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
+
+					y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
+					yn_plot = list_plot(y_data,  markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
+					y_plot + yn_plot + grid
+
+				</sageplot>
+			</image>
+
+			<image xml:id="euler-idea-plot" width="60%">
+				<sageplot>
+					U = plot(0, (x, -2, -0.1), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
+					U += plot(1, (x, 0, 5), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
+					U += point([0,0], color = "blue", faceted=True, size = 80)
+					U += point([0,0], color = "white", faceted=True, size = 15)
+					U += point([0,1], color = "blue", faceted=True, size = 80)
+					U
+				</sageplot>
+
+			</image>
+
+
+			<example xml:id="euler-example-01">
+
+				<statement>
+					<p>
+						Approximate the solution to the differential equation
+						<me> y' = y^2 - x, \quad y(0) = -1 </me>
+						over the interval <m>[0, 1]</m> with a step size of <m>h = 0.5</m>.
+					</p>
+				</statement>
+
+				<solution>
+					<p>
+						fd
+					</p>
+				</solution>
+
+			</example>
+
+			<image width="100%">
+				<latex-image>
+					% User Defined Parameters
+					\def\a{0} 		% interval start
+					\def\b{1} 		% interval end
+					\def\h{0.2} 	% stepsize
+					\def\round{2}	% decimal rounding
+					\def\s{5}  		% scaling factor
+
+					\begin{tikzpicture}[scale=\s]
+
+						\pgfkeys{/pgf/number format/.cd,fixed,precision=\round}
+					
+						% Calculate number of partitions
+						\pgfmathsetmacro{\N}{(\b-\a)/\h}
+						
+						% Draw the x-axis
+						\draw[-&gt;,thick] (\a - 2*\h/\s,0) -- (\b + 2*\h/\s,0) node[right] {$x$};
+
+						% Draw the partition points and labels
+						\foreach \i in {0,...,\N}
+						{
+							\pgfmathsetmacro{\currentPoint}{\a + \i*\h}
+							\draw (\currentPoint,0.1/\s) -- (\currentPoint,-0.1/\s) node[below] {$\pgfmathprintnumber{\currentPoint}$};
+							\draw 							(\currentPoint,-0.5/\s) node[below] {$x_{\i}$};
+
+						}
+						
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+			<p>
+				<md>
+					<mrow> y'(x_i) 										\amp = (y(x_i))^2 - x_i </mrow>
+					<mrow> \frac{y(x_{i+1}) - y(x_i)}{h}	\amp = (y(x_i))^2 - x_i </mrow>
+					<mrow> \frac{y_{i+1} - y_i}{h}	\amp = (y_i)^2 - x_i </mrow>
+					<mrow> y(x_{i+1}) - y(x_i) 							\amp = h\left((y(x_i))^2 - x_i\right) </mrow>
+					<mrow> y(x_{i+1}) 									\amp = y(x_i) + h\left((y(x_i))^2 - x_i\right) </mrow>
+				</md>
+			</p>
+
+
+		</introduction>
+
+	</subsection>
+
+	<subsection><title> Step 3: Get Approximation </title>
+		
+		<introduction>
+		
+			<outcomes>
+				<ul>
+					<li>
+						
+					</li>
+					<li>
+						Master <xref text="custom" ref="euler-step3"> Step 3 </xref> of <xref ref="euler-method" text="title"/>
+					</li>
+				</ul>
+			</outcomes>
+
+			<p>
+				Write this section.
+			</p>
+
+		</introduction>
+
+	</subsection>
+
+	<subsection><title> Euler's Method </title>
+
+		<objectives>
+			<introduction>
+				<p>
+					After this chapter, you will be able to ...
+				</p>
+			</introduction>
+			<ol>
+				<li>  </li>
+				<li>  </li>
+				<li>  </li>
+			</ol>
+		</objectives>
+
+		<introduction>
+			<p>
+				Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
+			</p>
+		
+			<exploration xml:id="euler-method"><title> Euler's Method </title>
+				<p>
+					An approximate solution to the first order differential equation
+					<men xml:id="euler-method-de">
+						y' = f(x, y), \quad y(a) = y_0
+					</men>
+					can be found on the interval <m>[a, b]</m> through the following steps...
+				</p>
+				<dl width="narrow">
+					<li xml:id="euler-step1"><title> Step 1: Set-up </title>
+						<p>
+							<line>Choose <m>h</m>.</line>
+							<line>Break <m>[a, b]</m> into
+							<m>
+								x_0,\ x_1,\ x_2,\ ...,\ x_{N-1},\ x_{N},
+							</m>
+							separated by <m>h</m>.
+							</line>
+						</p>
+					</li>
+					<li xml:id="euler-step2"><title> Step 2: Find Approximation Formula <m>y_{i+1}</m> </title>
+						<p>
+							<line>Substitute <m>x_i</m> into <xref ref="euler-method-de"/> &amp; rewrite <m>y(x_i)</m> as <m>y_i</m> and <m>y^\prime(x_i)</m> as <m>y^\prime_i</m>.</line>
+							<line>Replace <m>y^\prime_i</m> with <m>\ds\frac{1}{h}(y_{i+1} - y_{i})</m>.</line>
+							<line>Isolate <m>y_{i+1}</m>.</line>
+						</p>
+					</li>
+					<li xml:id="euler-step3"><title> Step 3: Compute Approximation Values </title>
+						<p>
+							<line>Find <m>y_1, y_2, ... , y_N</m> using the approximation formula.</line>
+						</p>
+					</li>
+				</dl>
+			</exploration>
+			
+			<p>
+				Use Euler's Method to approximate the solution to the initial-value problem,
+
+				<mdn>
+					<mrow xml:id="euler-ex-01-de">	y'(x) - 2xy(x) = 0	\amp </mrow>
+					<mrow xml:id="euler-ex-01-ic">	y(0) = 2, \amp </mrow>
+				</mdn>
+				at the <m>x</m>-values <m>0,\ 0.5,\ 1,\ 1.5,\ 2 \ </m>(spaced 0.5 apart).
+			</p>
+
+			<p>
+				Euler's method works by replacing <m>y'(x)</m> in <xref ref="euler-ex-01-de"/> with it's forward-difference approximation, giving us
+				<me>
+					\frac{1}{h}\Big(y(x+h) - y(x)\Big) - 2 xy(x) = 0
+				</me>
+				and if we let <m>h</m> be the space between the <m>x</m>-values (0.5), then we have
+				<me>
+					\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) - 2 xy(x) = 0.
+				</me>
+			</p>
+
+			<p>
+				To see how this is helpful, we isolate <m>y'(x+h)</m> as follows
+				<md>
+					<mrow>	\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) 	=\ \amp 2 xy(x)	</mrow>
+					<mrow>							y(x+0.5) - y(x)	=\ \amp xy(x)	</mrow>
+				</md>
+				and the final step gives the approximation formula
+				<men xml:id="euler-ex-01-approx">
+					y(x+0.5) = y(x) + xy(x).
+				</men>
+			</p>
+
+			<p>
+				Note that we already know <m>y(0) = 2</m> from <xref ref="euler-ex-01-ic"/>, so to find the rest of the approximation points, we plug <m>x = 0, 0.5, 1, 1.5</m> into <xref ref="euler-ex-01-approx"/>, as shown below.
+			</p>
+
+			<p>
+				<tabular top="major" valign="top">
+					<col width="0%" />
+					<col width="45%" />
+					<col width="20%" />
+					<row bottom="minor">
+						<cell> <m>x</m> </cell>
+						<cell halign="center"> Approximation Formula <xref ref="euler-ex-01-approx"/> </cell>
+						<cell> Approximation </cell>
+					</row>
+					<row bottom="minor">
+						<cell> <m>0</m> </cell>
+						<cell halign="left">
+							<line><m>y(0+0.5) = y(0) + (0)y(0)</m></line>
+							<line><m>\phantom{y(0+0.5)} = 2 + (0)(2) </m></line>
+							<line><m>\phantom{y(0+0.5)} = 2 </m></line>
+						</cell>
+						<cell> <m>y(0.5) = 2</m> </cell>
+					</row>
+
+					<row bottom="minor">
+						<cell> <m>0.5</m> </cell>
+						<cell halign="left">
+							<line><m>y(0.5+0.5) = y(0.5) + (0.5)y(0.5)</m></line>
+							<line><m>\phantom{y(0.5+0.5)} = 2 + (0.5)(2) </m></line>
+							<line><m>\phantom{y(0.5+0.5)} = 3 </m></line>
+						</cell>
+						<cell> <m>y(1) = 3</m> </cell>
+					</row>
+
+					<row bottom="minor">
+						<cell> <m>1</m> </cell>
+						<cell halign="left">
+							<line><m>y(1+0.5) = y(1) + (1)y(1)</m></line>
+							<line><m>\phantom{y(1+0.5)} = 3 + (1)(3) </m></line>
+							<line><m>\phantom{y(1+0.5)} = 6 </m></line>
+						</cell>
+						<cell> <m>y(1.5) = 6</m> </cell>
+					</row>
+
+					<row bottom="major">
+						<cell> <m>1.5</m> </cell>
+						<cell halign="left">
+							<line><m>y(1.5+0.5) = y(1.5) + (1.5)y(1.5)</m></line>
+							<line><m>\phantom{y(1.5+0.5)} = 6 + (1.5)(6) </m></line>
+							<line><m>\phantom{y(1.5+0.5)} = 15 </m></line>
+						</cell>
+						<cell> <m>y(2) = 15</m> </cell>
+					</row>
+				</tabular>
+
+			</p>
+
+		</introduction>
+
+	</subsection>
+
+	<subsection><title> Improved Euler's Method </title>
+
+		<objectives>
+			<introduction>
+				<p>
+					Brainstorm ...
+				</p>
+			</introduction>
+			<ol>
+				<li> Average of two slopes improves the predictor </li>
+				<li> <image source="figures/reminder.jpg"></image> </li>
+				<li>  </li>
+			</ol>
+			
+		</objectives>
+
+		<introduction><title> Euler's Method </title>
+			<p>
+			</p>
+		
+			<exploration xml:id="method-imp-euler"><title> Improved Euler's Method </title>
+				<p>
+					A numerical solution to the first order differential equation
+					<men xml:id="method-imp-euler-de">
+						y' = f(x, y), \quad y(a) = y_0
+					</men>
+					can be found on the interval <m>[a, b]</m> through the following steps...
+				</p>
+				<dl width="narrow">
+					<li xml:id="imp-euler-step1"><title> Step 1: Set-up </title>
+						<p>
+							<line>Choose <m>h</m>.</line>
+							<line>Break <m>[a, b]</m> into
+							<m>
+								x_0,\ x_1,\ x_2,\ ...,\ x_{N-1},\ x_{N},
+							</m>
+							separated by <m>h</m>.
+							</line>
+						</p>
+					</li>
+					<li xml:id="imp-euler-step2"><title> Step 2: Find Approximation Formula <m>y_{i+1}</m> </title>
+						<p>
+							<line>Substitute <m>x_i</m> into <xref ref="method-imp-euler-de"/> &amp; rewrite <m>y(x_i)</m> as <m>y_i</m> and <m>y^\prime(x_i)</m> as <m>y^\prime_i</m>.</line>
+							<line>Replace <m>y^\prime_i</m> with <m>\ds\frac{1}{h}(y_{i+1} - y_{i})</m>.</line>
+							<line>Isolate <m>y_{i+1}</m>.</line>
+						</p>
+					</li>
+					<li xml:id="imp-euler-step3"><title> Step 3: Compute Approximation Values </title>
+						<p>
+							<line>Find <m>y_1, y_2, ... , y_N</m> using the approximation formula.</line>
+						</p>
+					</li>
+				</dl>
+			</exploration>	
+		</introduction>
+
+	</subsection>
+
+	<p>
+		In summary, Euler's method is a powerful tool for approximating the solutions of differential equations that are challenging or impossible to solve analytically. By understanding and applying this method, students and professionals can gain insights into the behavior of complex systems described by such equations, even in the absence of exact solutions.
+	</p>
+
+</section>
