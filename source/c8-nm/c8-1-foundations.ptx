@@ -15,7 +15,15 @@
 		</p>
 
 		<p>
-			However, many differential equations do not have a nice closed-form solution. In those cases, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, given a list of <m>t</m>-values, you get a corresponding list of approximate <m>y</m>-values. We call this a <term>numerical solution</term>.
+			However, many differential equations, such as
+		</p>
+
+		<me>
+			y' = e^{-y^2}, \quad y(0) = 0.
+		</me>
+
+		<p>
+			do not have a nice closed-form solution. In cases like these, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, given a list of <m>t</m>-values, you get a corresponding list of approximate <m>y</m>-values. We call this a <term>numerical solution</term>.
 		</p>
 
 		<paragraphs><title> Analytic vs. Numerical Solutions </title>
@@ -44,7 +52,7 @@
 				</p>
 				<p/>
 				<p>
-					<image>
+					<!-- <image>
 						<latex-image>
 							\begin{tikzpicture}[samples=50]
 		
@@ -84,8 +92,8 @@
 									% Read and plot data from file
 									\addplot [domain=\a:\b, \fColor, thick] {e^x};
 
-									\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
-									\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
+									\draw[dashed]	(\c , {\f{\c}})-(\c , 0);
+									\draw[dashed]	(\c , {\f{\c}})-(0 , {\f{\c}});
 									\node[below, font=\normalsize] at (\c,0) {\c};
 									\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
 
@@ -95,7 +103,7 @@
 
 							\end{tikzpicture}
 						</latex-image>
-					</image>
+					</image> -->
 				</p>
 				<p/>
 			</sidebyside>
@@ -117,7 +125,7 @@
 				</p>
 				<p/>
 				<p>
-					<image>
+					<!-- <image>
 						<latex-image>
 							\begin{tikzpicture}[samples=50]
 		
@@ -160,27 +168,27 @@
 								\end{axis}
 							
 								% === Axes ===
-								%\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-								%\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								%\draw[-&gt;] (\tmin	,0		)-(\tmax	,0		);
+								%\draw[-&gt;] (0		,\ymin	)-(0		,\ymax	);
 								%\node[font=\large, below] at (\tmax - 0.1	, 0) {$t$};
 		
 								% === Tick marks/numeric labels ===
 								%\foreach \t in \tticks {
-								%	\draw[gray, thick]	(\t,0.15) -- (\t,-0.15);			% t ticks	
+								%	\draw[gray, thick]	(\t,0.15)-(\t,-0.15);			% t ticks	
 								%}
 								%\node[below, font=\normalsize] at (-2,0) {-2};	% t labels
 								%\node[below, font=\normalsize] at (2,0) {2};	%
 								
 								%\foreach \y in \yticks {
-								%	\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+								%	\draw[gray]	(0.1,\y)-(-0.1,\y);			% y ticks
 								%	\node[left, font=\normalsize] at (0,\y) {\y};	% y labels
 								%}
 								
 								% === Function plots on [tmin, c] ===
 								%\draw[\fColor, ultra thick, &lt;-&gt;]	plot[domain=\a:\b, variable=\t]	(\t, {\f{\t}});
 								
-								%\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
-								%\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
+								%\draw[dashed]	(\c , {\f{\c}})-(\c , 0);
+								%\draw[dashed]	(\c , {\f{\c}})-(0 , {\f{\c}});
 								%\node[below, font=\normalsize] at (\c,0) {\c};
 								%\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
 
@@ -188,63 +196,54 @@
 								%\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
 							\end{tikzpicture}
 						</latex-image>
-					</image>
+					</image> -->
 				</p>
 				<p/>
 			</sidebyside>
 
-		<definition><title>Analytic vs. Numerical Solution</title>
-			<statement>
-				<p>
-					<dl>
-						<li><title> Analytic Solution </title>
-							An exact formula for <m>y(t)</m>, expressed using standard mathematical functions like exponentials, trigonometric functions, or polynomials. These are also called <term>closed-form</term> solutions and are typically found using symbolic techniques like integration or Laplace transforms.
-						</li>
-						<li><title> Numerical Solution </title>
-							An approximation of <m>y(t)</m> at discrete points <m>t_0, t_1, t_2, \ldots</m>. These are computed step-by-step using arithmetic and are typically produced by a computer or calculator.
-						</li>
-					</dl>
-				</p>
-			</statement>
-		</definition>
-
-		<p>
-			When we say we’ve found a <em>numerical solution</em>, we don’t mean a formula. We mean something like this:
-		</p>
-
-		<sidebyside widths="42% 58%" valign="top">
 			<p>
-				<tabular>
-					<row><cell><m>t</m></cell><cell><m>y(t)</m> (approx)</cell></row>
-					<row><cell>0.0</cell><cell>1.0000</cell></row>
-					<row><cell>0.1</cell><cell>1.1052</cell></row>
-					<row><cell>0.2</cell><cell>1.2214</cell></row>
-					<row><cell>0.3</cell><cell>1.3499</cell></row>
-					<row><cell>…</cell><cell>…</cell></row>
-				</tabular>
+				So instead of one continuous curve, you have a collection of points — an approximation of the solution over time. And unlike analytic methods, numerical methods work even when no formula exists.
 			</p>
-			<p>
-				This table approximates the solution to the equation <m>y' = y</m>, <m>y(0) = 1</m>, which we know analytically is <m>y(t) = e^t</m>. A numerical method produces these values one step at a time, using arithmetic rules.
-			</p>
-		</sidebyside>
+
+			<assemblage><title> Analytic vs. Numerical Solution Summary </title>
+				<tabular halign="center">
+					<col width="30%" right="minor" />
+					<col width="30%" right="minor" />
+					<col width="30%" right="minor" />
+					<row bottom="minor">
+						<cell/>
+						<cell><p> <m>\textbf{Analytical Solutions}</m> </p></cell>
+						<cell><p> <m>\textbf{Numerical Solutions}</m> </p></cell>
+					</row>
+					<row>
+						<cell><p> <m>\textbf{Also Known As}</m> </p></cell>
+						<cell><p> Closed Form Solutions </p></cell>
+						<cell><p> Approximate Solutions </p></cell>
+					</row>
+					<row>
+						<cell><p> <m>\textbf{Looks Like}</m> </p></cell>
+						<cell><p> <m>y = </m> formula in <m>t</m> </p></cell>
+						<cell><p> Table of <m>t</m> &amp; <m>y</m> values </p></cell>
+					</row>
+					<row>
+						<cell><p> <m>\textbf{Solution Values}</m> </p></cell>
+						<cell><p> Exact </p></cell>
+						<cell><p> Approximate </p></cell>
+					</row>
+					<row>
+						<cell><p> <m>\textbf{Typically Found}</m> </p></cell>
+						<cell><p> By-Hand </p></cell>
+						<cell><p> Computer </p></cell>
+					</row>
+					<row>
+						<cell><p> <m>\textbf{Solution Graph}</m> </p></cell>
+						<cell><p> Curves or Lines </p></cell>
+						<cell><p> Points </p></cell>
+					</row>
+				</tabular>>
+			</assemblage>
 
 		</paragraphs>
-
-		<p>
-		So instead of one continuous curve, you have a collection of points — an approximation of the solution over time. And unlike analytic methods, numerical methods work even when no formula exists.
-		</p>
-
-		<example><title>When an Analytic Solution Doesn't Exist</title>
-		<statement>
-		Consider the initial value problem:
-		<me>
-		y' = e^{-y^2}, \quad y(0) = 0.
-		</me>
-		</statement>
-		<solution>
-		There is no known symbolic solution to this equation — that is, no formula involving standard functions like <m>\sin</m>, <m>e^t</m>, or <m>t^n</m> that solves it. However, we can still approximate the values of <m>y(t)</m> using a numerical method.
-		</solution>
-		</example>
 
 		<note><title>What does “symbolic” mean?</title>
 		<p>
@@ -368,7 +367,7 @@
 				<p>
 					Could you approximate <m>y(1)</m> without knowing anything about <m>y(x)</m>?
 				</p>
-				<image>
+				<!-- <image>
 
 					<latex-image>
 
@@ -405,7 +404,7 @@
 
 					</latex-image>
 
-				</image>
+				</image> -->
 			</statement>
 
 			<solution>
@@ -770,9 +769,9 @@
 			<sidebyside widths="75%" margins="auto" valign="middle">
 				<figure xml:id="analytical-vs-numerical-soln">
 				<title> Comparative Visualization of Analytical and Numerical Solutions </title>
-					<image source="figures/approx-fig-02_black_x.png">
+					<!-- <image source="figures/approx-fig-02_black_x.png">
 						<shortdescription>(True Solution vs. Numerical Approximation)</shortdescription>
-					</image>
+					</image> -->
 				</figure>
 			</sidebyside>
 		</p>
@@ -781,7 +780,7 @@
 			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
 		</p>
 
-		<image width="70%">
+		<!-- <image width="70%">
 			<latex-image>
 				\begin{tikzpicture}
 
@@ -791,18 +790,18 @@
 					\def\N{5} % Number of partitions
 
 					% Draw the x-axis
-					\draw[-&gt;,thick] (\a-0.5,0) -- (\b+1,0) node[right] {$x$};
+					\draw[-&gt;,thick] (\a-0.5,0)-(\b+1,0) node[right] {$x$};
 
 					% Calculate step size
 					\pgfmathsetmacro{\h}{(\b-\a)/\N}
 
 					% Draw the partition points and labels
-					\draw (\a + 0*\h,0.1) -- (\a + 0*\h,-0.1) node[below] {$x_{0}$};
-					\draw (\a + 1*\h,0.1) -- (\a + 1*\h,-0.1) node[below] {$x_{1}$};
-					\draw (\a + 2*\h,0.1) -- (\a + 2*\h,-0.1) node[below] {$x_{2}$};
+					\draw (\a + 0*\h,0.1)-(\a + 0*\h,-0.1) node[below] {$x_{0}$};
+					\draw (\a + 1*\h,0.1)-(\a + 1*\h,-0.1) node[below] {$x_{1}$};
+					\draw (\a + 2*\h,0.1)-(\a + 2*\h,-0.1) node[below] {$x_{2}$};
 					\draw 							(\a + 3*\h,-0.1) node[below] {$\ldots$};
-					\draw (\a + 4*\h,0.1) -- (\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
-					\draw (\a + 5*\h,0.1) -- (\a + 5*\h,-0.1) node[below] {$x_{N}$};
+					\draw (\a + 4*\h,0.1)-(\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
+					\draw (\a + 5*\h,0.1)-(\a + 5*\h,-0.1) node[below] {$x_{N}$};
 					
 					% Optionally, add labels for a and b
 					\node[below] at (\a,-0.35) {$\uparrow$};
@@ -811,30 +810,30 @@
 					\node[below] at (\b,-0.7) {$b$};
 
 					% Add the label for each h
-					\draw 			(\a + 0*\h,0.3) -- (\a + 0*\h,0.5);
-					\draw[&lt;-]	(\a + 0*\h,0.4) -- (\a + 0.38*\h,0.4);
+					\draw 			(\a + 0*\h,0.3)-(\a + 0*\h,0.5);
+					\draw[&lt;-]	(\a + 0*\h,0.4)-(\a + 0.38*\h,0.4);
 					c
-					\draw[-&gt;] 	(\a + 0.62*\h,0.4) -- (\a + 1*\h,0.4);
-					\draw 			(\a + 1*\h,0.3) -- (\a + 1*\h,0.5);
+					\draw[-&gt;] 	(\a + 0.62*\h,0.4)-(\a + 1*\h,0.4);
+					\draw 			(\a + 1*\h,0.3)-(\a + 1*\h,0.5);
 
-					\draw[&lt;-] 	(\a + 1*\h,0.4) -- (\a + 1.38*\h,0.4);
+					\draw[&lt;-] 	(\a + 1*\h,0.4)-(\a + 1.38*\h,0.4);
 					\draw 			(\a + 1.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 1.62*\h,0.4) -- (\a + 2*\h,0.4);
-					\draw 			(\a + 2*\h,0.3) -- (\a + 2*\h,0.5);
+					\draw[-&gt;] 	(\a + 1.62*\h,0.4)-(\a + 2*\h,0.4);
+					\draw 			(\a + 2*\h,0.3)-(\a + 2*\h,0.5);
 
-					\draw 			(\a + 4*\h,0.3) -- (\a + 4*\h,0.5);
-					\draw[&lt;-] 	(\a + 4*\h,0.4) -- (\a + 4.38*\h,0.4);
+					\draw 			(\a + 4*\h,0.3)-(\a + 4*\h,0.5);
+					\draw[&lt;-] 	(\a + 4*\h,0.4)-(\a + 4.38*\h,0.4);
 					\draw 			(\a + 4.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 4.62*\h,0.4) -- (\a + 5*\h,0.4);
-					\draw 			(\a + 5*\h,0.3) -- (\a + 5*\h,0.5);
+					\draw[-&gt;] 	(\a + 4.62*\h,0.4)-(\a + 5*\h,0.4);
+					\draw 			(\a + 5*\h,0.3)-(\a + 5*\h,0.5);
 					
 				\end{tikzpicture}
 			</latex-image>
-		</image>
+		</image> -->
 
 		<p>
 			
-			<image xml:id="fuckit">
+			<!-- <image xml:id="fuckit">
 
 				<latex-image>
 					\begin{tikzpicture}
@@ -856,13 +855,13 @@
 					\end{tikzpicture}
 				</latex-image>
 
-			</image>
+			</image> -->
 
 		</p>
 
 		<p>
 
-			<image>
+			<!-- <image>
 				<latex-image>
 				
 					\begin{tikzpicture}
@@ -874,8 +873,8 @@
 						
 						\begin{axis}[]
 							% Draw the x-axis
-							\draw[-&gt;,thick] (-1.5,0) -- (8,0) node[right] {$x$};
-							\draw[-&gt;,thick] (0,-1.5) -- (0,1) node[right] {$y$};
+							\draw[-&gt;,thick] (-1.5,0)-(8,0) node[right] {$x$};
+							\draw[-&gt;,thick] (0,-1.5)-(0,1) node[right] {$y$};
 
 							\addplot[
 								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
@@ -929,9 +928,9 @@
 						\end{axis}
 					\end{tikzpicture}
 				</latex-image>
-			</image>
+			</image> -->
 
-			<image xml:id="pgfplots-shit1">
+			<!-- <image xml:id="pgfplots-shit1">
 				<latex-image>
 
 					\pgfplotstablenew[
@@ -960,7 +959,7 @@
 
 					\end{tikzpicture}
 				</latex-image>
-			</image>
+			</image> -->
 
 		</p>
 
