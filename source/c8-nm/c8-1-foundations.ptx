@@ -11,11 +11,11 @@
 	<subsection><title> What is a Numerical Solution? </title>
 
 		<p>
-			Up to this point, we've focused on finding exact solutions to differential equations. By <q>exact</q>, we mean solutions that are expressed in terms of standard mathematical functions, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term> and it is said to be in <term>closed-form</term>. Such solutions are valuable because it acts as a formula that can give you the <m>y</m>-value for <em>any</em> <m>t</m>-value you desire.
+			Up to this point, we've focused on finding exact solutions to differential equations. By <q>exact</q>, we mean solutions that are expressed in terms of standard mathematical functions, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term> and it is said to be in <term>closed-form</term>. These formula-like solutions are valuable because you can plug-in <em>any</em> <m>t</m>-value to get the <em>exact</em> <m>y</m>-value.
 		</p>
 
 		<p>
-			Some differential equations, however, do not have a nice closed-form solution. In those cases, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, it gives you a list of <m>y</m>-values (for some <m>t</m>-values) that are <q>close</q> to what you'd get if you had a formula. We call this a <term>numerical solution</term>.
+			However, many differential equations do not have a nice closed-form solution. In those cases, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, given a list of <m>t</m>-values, you get a corresponding list of approximate <m>y</m>-values. We call this a <term>numerical solution</term>.
 		</p>
 
 		<paragraphs><title> Analytic vs. Numerical Solutions </title>
@@ -24,34 +24,166 @@
 				To grasp the difference between analytic and numerical solutions, suppose you wanted to solve the equation
 			</p>
 
-			<me>
+			<men xml:id="num-vs-anal-soln-eqn">
 				y' = y, \quad y(0) = 1.
-			</me>
+			</men>
 
 			<p>
-				This equation has the analytic solution
+				This equation has the formula-like analytic solution
 			</p>
-			
-			<me>
-				y(t) = e^t
-			</me>.
+
+			<sidebyside widths="50% 8% 36% 6%" valign="middle">
+				<p>
+					<me>
+						y(t) = e^t
+					</me>,
+					where any value of <m>t</m> gives the exact <m>y</m> value. For example, <m>t = 1.13</m> gives
+					<me>
+						y(1.13) = e^{1.13} = 3.0956565...
+					</me>.
+				</p>
+				<p/>
+				<p>
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[samples=100, xscale=1.2, yscale=0.45]
+		
+								% === colors ===
+								\def\fColor{blue}			\def\fFill{\fColor!15}
+								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+								% === figure/domain/tick bounds ===
+								\def\tmin{-2.5}	\def\tmax{2.5}
+								\def\ymin{-1.2}	\def\ymax{4.8}
+								\def\tticks{-2, -1, 1, 2}
+								\def\yticks{2, 4}
+
+								% === Function definitions ===
+								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+								\def\a{\tmin}	\def\b{1.6}
+								\def\c{1.13}
+							
+								% === Axes ===
+								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								\node[font=\large, below] at (\tmax - 0.1	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray, thick]	(\t,0.15) -- (\t,-0.15);			% t ticks	
+								}
+								\node[below, font=\normalsize] at (-2,0) {-2};	% t labels
+								\node[below, font=\normalsize] at (2,0) {2};	%
+								
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+									\node[left, font=\normalsize] at (0,\y) {\y};	% y labels
+								}
+								
+								% === Function plots on [tmin, c] ===
+								\draw[\fColor, ultra thick, &lt;-&gt;]	plot[domain=\a:\b, variable=\t]	(\t, {\f{\t}});
+								
+								\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
+								\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
+								\node[below, font=\normalsize] at (\c,0) {\c};
+								\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
+
+								% === Labels ===
+								\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p/>
+			</sidebyside>
 
 			<p>
-				This means that for any value of <m>t</m>, you can plug it into the formula and get the corresponding <m>y(t)</m>. For example, for <m>t = 0.5</m>, then <m>y(0.5) = e^{0.5} \approx 1.6487</m>. This is a precise value, and you can find it for any <m>t</m> you choose.
+				Equation <xref ref="num-vs-anal-soln-eqn"/> also has the nonformula-like numerical solution:
 			</p>
 
-			<p>
-				In contrast, this equation also has the following numerical solution:
-			</p>
+			<sidebyside widths="50% 8% 36% 6%" valign="middle">
+				<p>
+					<tabular>
+						<row><cell><m>t</m></cell><cell><m>y(t)</m> (approx)</cell></row>
+						<row><cell>0.0</cell><cell>1.0000</cell></row>
+						<row><cell>0.1</cell><cell>1.1052</cell></row>
+						<row><cell>0.2</cell><cell>1.2214</cell></row>
+						<row><cell>0.3</cell><cell>1.3499</cell></row>
+						<row><cell>…</cell><cell>…</cell></row>
+					</tabular>
+				</p>
+				<p/>
+				<p>
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[samples=50, xscale=1, yscale=1]
+		
+								% === colors ===
+								\def\fColor{blue}			\def\fFill{\fColor!15}
+								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
-			<tabular>
-				<row><cell><m>t</m></cell><cell><m>y(t)</m> (approx)</cell></row>
-				<row><cell>0.0</cell><cell>1.0000</cell></row>
-				<row><cell>0.1</cell><cell>1.1052</cell></row>
-				<row><cell>0.2</cell><cell>1.2214</cell></row>
-				<row><cell>0.3</cell><cell>1.3499</cell></row>
-				<row><cell>…</cell><cell>…</cell></row>
-			</tabular>
+								% === figure/domain/tick bounds ===
+								\def\tmin{-2.5}	\def\tmax{2.5}
+								\def\ymin{-1.2}	\def\ymax{4.8}
+								\def\tticks{-2, -1, 1, 2}
+								\def\yticks{2, 4}
+
+								% === Function definitions ===
+								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+								\def\a{0}	\def\b{1.6}
+								\def\c{1.13}
+
+								\begin{axis}[
+									xlabel={$t$},
+									ylabel={$y$},
+									%title={Solution of $y' + 4xy = 0$ using Euler's Method},
+									grid=none,
+									minor tick num=1,
+									axis lines=middle,
+									xmin=\tmin, xmax=\tmax,
+									ymin=\ymin, ymax=\ymax,
+									xscale=1.2, yscale=0.45,
+									font=\LARGE,
+								]
+								
+									% Read and plot data from file
+									\addplot [only marks, mark=o] table[x=t, y=yA, col sep=comma] {external/code/data-generator/outputs/example-2/euler_example-2.csv};
+									\addplot [domain=\a:\b, \fColor, ultra thick, &lt;-&gt;] {e^(x)};
+								\end{axis}
+							
+								% === Axes ===
+								%\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								%\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								%\node[font=\large, below] at (\tmax - 0.1	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								%\foreach \t in \tticks {
+								%	\draw[gray, thick]	(\t,0.15) -- (\t,-0.15);			% t ticks	
+								%}
+								%\node[below, font=\normalsize] at (-2,0) {-2};	% t labels
+								%\node[below, font=\normalsize] at (2,0) {2};	%
+								
+								%\foreach \y in \yticks {
+								%	\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+								%	\node[left, font=\normalsize] at (0,\y) {\y};	% y labels
+								%}
+								
+								% === Function plots on [tmin, c] ===
+								%\draw[\fColor, ultra thick, &lt;-&gt;]	plot[domain=\a:\b, variable=\t]	(\t, {\f{\t}});
+								
+								%\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
+								%\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
+								%\node[below, font=\normalsize] at (\c,0) {\c};
+								%\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
+
+								% === Labels ===
+								%\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p/>
+			</sidebyside>
 
 		<definition><title>Analytic vs. Numerical Solution</title>
 			<statement>
@@ -692,7 +824,6 @@
 			</latex-image>
 		</image>
 
-
 		<p>
 			
 			<image xml:id="fuckit">
@@ -701,7 +832,7 @@
 					\begin{tikzpicture}
 						
 						\begin{axis}[
-							xlabel={$x$},
+							xlabel={$t$},
 							ylabel={$y$},
 							title={Solution of $y' + 4xy = 0$ using Euler's Method},
 							grid=both,
@@ -709,11 +840,9 @@
 							axis lines=middle,
 						]
 						
-						% Read and plot data from file
-						\addplot [only marks, mark=o] table[x=x, y=y, col sep=comma] {external/data/euler-data-02.csv};
-
-						\addplot [domain=0:2, samples=50, black] {2*e^(-x^2)};
-
+							% Read and plot data from file
+							\addplot [only marks, mark=o] table[x=x, y=y, col sep=comma] {external/data/euler-data-02.csv};
+							\addplot [domain=0:2, samples=50, black] {2*e^(-x^2)};
 						\end{axis}
 						
 					\end{tikzpicture}
