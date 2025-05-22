@@ -46,50 +46,53 @@
 				<p>
 					<image>
 						<latex-image>
-							\begin{tikzpicture}[samples=100, xscale=1.2, yscale=0.45]
+							\begin{tikzpicture}[samples=50]
 		
 								% === colors ===
 								\def\fColor{blue}			\def\fFill{\fColor!15}
 								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
 								% === figure/domain/tick bounds ===
-								\def\tmin{-2.5}	\def\tmax{2.5}
-								\def\ymin{-1.2}	\def\ymax{4.8}
-								\def\tticks{-2, -1, 1, 2}
+								\def\tmin{-0.45}	\def\tmax{2.45}
+								\def\ymin{-1.2}	\def\ymax{7.5}
+								\def\tticks{1, 2}
 								\def\yticks{2, 4}
 
 								% === Function definitions ===
 								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
-								\def\a{\tmin}	\def\b{1.6}
+								\def\a{0}	\def\b{2}
 								\def\c{1.13}
-							
-								% === Axes ===
-								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-								\node[font=\large, below] at (\tmax - 0.1	, 0) {$t$};
-		
-								% === Tick marks/numeric labels ===
-								\foreach \t in \tticks {
-									\draw[gray, thick]	(\t,0.15) -- (\t,-0.15);			% t ticks	
-								}
-								\node[below, font=\normalsize] at (-2,0) {-2};	% t labels
-								\node[below, font=\normalsize] at (2,0) {2};	%
-								
-								\foreach \y in \yticks {
-									\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
-									\node[left, font=\normalsize] at (0,\y) {\y};	% y labels
-								}
-								
-								% === Function plots on [tmin, c] ===
-								\draw[\fColor, ultra thick, &lt;-&gt;]	plot[domain=\a:\b, variable=\t]	(\t, {\f{\t}});
-								
-								\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
-								\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
-								\node[below, font=\normalsize] at (\c,0) {\c};
-								\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
 
-								% === Labels ===
-								\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
+								\begin{axis}[
+									width=15cm, height=7cm,
+									scale=0.3,
+									xlabel={$t$},
+									ylabel={$y$},
+									%title={},
+									grid=none,
+									tick style={thick},
+									line width=1pt,
+									axis lines=middle,
+									xtick distance=1,
+									ytick distance=4,
+									minor x tick num=1,
+									minor y tick num=1,
+									xmin=\tmin, xmax=\tmax,
+									ymin=\ymin, ymax=\ymax,
+								]
+								
+									% Read and plot data from file
+									\addplot [domain=\a:\b, \fColor, thick] {e^x};
+
+									\draw[dashed]	(\c , {\f{\c}}) -- (\c , 0);
+									\draw[dashed]	(\c , {\f{\c}}) -- (0 , {\f{\c}});
+									\node[below, font=\normalsize] at (\c,0) {\c};
+									\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
+
+									% === Labels ===
+									\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
+								\end{axis}
+
 							\end{tikzpicture}
 						</latex-image>
 					</image>
@@ -116,39 +119,44 @@
 				<p>
 					<image>
 						<latex-image>
-							\begin{tikzpicture}[samples=50, xscale=1, yscale=1]
+							\begin{tikzpicture}[samples=50]
 		
 								% === colors ===
 								\def\fColor{blue}			\def\fFill{\fColor!15}
 								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
 								% === figure/domain/tick bounds ===
-								\def\tmin{-2.5}	\def\tmax{2.5}
-								\def\ymin{-1.2}	\def\ymax{4.8}
-								\def\tticks{-2, -1, 1, 2}
+								\def\tmin{-0.45}	\def\tmax{2.45}
+								\def\ymin{-1.2}	\def\ymax{7.5}
+								\def\tticks{1, 2}
 								\def\yticks{2, 4}
 
 								% === Function definitions ===
 								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
-								\def\a{0}	\def\b{1.6}
+								\def\a{0}	\def\b{2}
 								\def\c{1.13}
 
 								\begin{axis}[
+									width=15cm, height=7cm,
+									scale=0.3,
 									xlabel={$t$},
 									ylabel={$y$},
-									%title={Solution of $y' + 4xy = 0$ using Euler's Method},
+									%title={},
 									grid=none,
-									minor tick num=1,
+									tick style={thick},
+									line width=1pt,
 									axis lines=middle,
+									xtick distance=1,
+									ytick distance=4,
+									minor x tick num=1,
+									minor y tick num=1,
 									xmin=\tmin, xmax=\tmax,
 									ymin=\ymin, ymax=\ymax,
-									xscale=1.2, yscale=0.45,
-									font=\LARGE,
 								]
 								
 									% Read and plot data from file
 									\addplot [only marks, mark=o] table[x=t, y=yA, col sep=comma] {external/code/data-generator/outputs/example-2/euler_example-2.csv};
-									\addplot [domain=\a:\b, \fColor, ultra thick, &lt;-&gt;] {e^(x)};
+									\addplot [domain=\a:\b, \fColor, thick, dashed] {e^x};
 								\end{axis}
 							
 								% === Axes ===
