@@ -1,28 +1,37 @@
 Common Reg Ex Replacements
-
-Statements that need <p> tags
-(\t+)<solution>((.|\w)+?)</solution>
-$1<statement>\n$1\t<p>\n$1\t\t$2\n$1\t</p>\n$1</statement>
-
-Feedback needing <p> tags
-(\t+)<feedback>((.|\w)+?)<\/feedback>
-$1<feedback>\n$1\t<p>\n$1\t\t$2\n$1\t</p>\n$1</feedback>
-
+----------------------------------------------------------------------------
+<tag> that needs an inline <subtag> tags
+$1: space before tag
+$2: tag name
+$3: a space or end delimiter (>)
+$4: tag attributes
+$5: tag content
+^([ \s]*)<(tag)(?=[\s>])([\s\S]*?)>([\s\S]*?)</tag>\n
+$1<$2$3><subtag>$4</subtag></$2>\n
+----------------------------------------------------------------------------
+Tags that need multiline <p> tags
+$1: space before tag
+$2: tag name
+$3: tag attributes
+$4: tag content
+^([ \s]*)<(tag)([\s\S]*?)>([\s\S]*?)</tag>\n
+$1<$2$3>\n$1\t<p>\n$1\t\t$4\n$1\t</p>\n$1</$2>\n
+----------------------------------------------------------------------------
 Single Line Paragraphs
 (\t+)<p>(.*)</p>?
 $1<p>\n$1\t$2\n$1</p>
-
+----------------------------------------------------------------------------
 Single Line Statements not beginning with <statement>
 (\t*)(.*)<statement>(.*)</statement>?
 $1$2\n$1\t<statement>\n$1\t\t<p>\n$1\t\t\t$3\n$1\t\t</p>\n$1\t</statement>
-
-Redunant Nested <p> tags
+----------------------------------------------------------------------------
+Removing Redunant Nested <p> tags
 (\t+)<p>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</p>
 $1<p>\n$1\t$3\n$1</p>
-
+----------------------------------------------------------------------------
 Removing the content from multiple tags
 ^([ \t]*)<(solution|image|exercise|interactive)([\s\S]*?)>([\s\S]*?)</(solution|image|exercise|interactive)>\n
 $1<$2> removed to reduce data size </$2>\n
-
+----------------------------------------------------------------------------
 Remove comments <!-- * -->
 <!--([\s\S]*?)-->\n

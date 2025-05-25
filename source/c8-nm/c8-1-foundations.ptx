@@ -1,17 +1,43 @@
 <section><title> Foundations </title>
 
 	<introduction>
-
 		<p>
-			TO BE COMPLETED
+			Several techniques have been discussed for resolving differential equations, although they are not always simple to solve. For instance, consider the equation
+			<men xml:id="riccati-eqn">
+				y' = y^2 - x.
+			</men>
+			Though this equation may seem straightforward, the nonlinear term, <m>y^2</m>, makes solving it substantially more challenging. In fact, the solution <xref ref="riccati-eqn"/> is so complex, special functions were introduced to make it easier to represent.
+			<fn>
+				The solution to <xref ref="riccati-eqn"/> is described by
+				<me>
+					y = \frac{ 3 x \left(c_1 J_{-\frac{4}{3}} \left( x \right) - c_1 J_{\frac{2}{3}}\left( x \right) + 2 J_{-\frac{2}{3}}\left( x \right) \right) + 2 c_1 J_{-\frac{1}{3}}\left( x \right) }{ (12 x)^{2/3} \left(c_1 J_{-\frac{1}{3}} \left( x \right) + J_{\frac{1}{3}} \left(x \right) \right)}
+				</me>
+				where <m>J_n(x)</m> denotes a Bessel function defined as
+				<me>
+					J_n( x ) = \sum_{m=0}^{\infty} \frac{(-1)^m}{m! \ \Gamma(m + n + 1)}\left( \frac{i}{3} x^{\frac{3}{2}} \right)^{2m + n}.
+				</me>
+			</fn>
 		</p>
 
+		<p>
+			The reality is that the exact solutions to many differential equations simply cannot be written in the form of a standard function. As an alternative, we can calculate a <q>substitute</q> for the actual solution. This replacement is called a numerical solution and is assumed to <q>closely resemble</q> the true solution.
+		</p>
+
+		<note><title> What do you mean by <q>closely resemble</q>? </title>
+			<p>
+				The statement, <q>closely resembles the true solution</q>, refers to the idea that if you were to plot both functions, their graphs would nearly coincide.
+			</p>
+		</note>
+
+		<p>
+			This section aims to explore the general concepts and terms used to describe the numerical methods covered in this chapter. By the end, you will have a solid grasp on many of the tools needed to implement the various algorithms that numerically solve differential equations.
+		</p>
 	</introduction>
 
 	<subsection><title> What is a Numerical Solution? </title>
 
 		<p>
-			Up to this point, we've focused on finding exact solutions to differential equations. By <q>exact</q>, we mean solutions that are expressed in terms of standard mathematical functions, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term> and it is said to be in <term>closed-form</term>. These formula-like solutions are valuable because you can plug-in <em>any</em> <m>t</m>-value to get the <em>exact</em> <m>y</m>-value.
+			Up to this point, we've focused on finding exact solutions to differential equations. By <q>exact</q>, we mean solutions that are expressed in terms of standard mathematical functions, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term> and is sometimes referred to as a <term>closed-form solution</term> — meaning it is expressed using standard mathematical symbols and functions. These formula-like solutions are valuable because you can plug in <em>any</em> <m>t</m>-value to get the <em>exact</em> <m>y</m>-value.
 		</p>
 
 		<p>
@@ -23,7 +49,7 @@
 		</me>
 
 		<p>
-			do not have a nice closed-form solution. In cases like these, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, given a list of <m>t</m>-values, you get a corresponding list of approximate <m>y</m>-values. We call this a <term>numerical solution</term>.
+			do not have a nice closed-form solution. In cases like these, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> — instead, for each specially choosen <m>t</m>-values, a numerical method computes a corresponding list of approximate <m>y</m>-values — one step at a time. We call this a <term>numerical solution</term>.
 		</p>
 
 		<paragraphs><title> Analytic vs. Numerical Solutions </title>
@@ -33,7 +59,7 @@
 			</p>
 
 			<men xml:id="num-vs-anal-soln-eqn">
-				y' = y, \quad y(0) = 1.
+				y' = y, \quad y(0) = 1, \quad 0 \le t \le 2
 			</men>
 
 			<p>
@@ -45,14 +71,14 @@
 					<me>
 						y(t) = e^t
 					</me>,
-					where any value of <m>t</m> gives the exact <m>y</m> value. For example, <m>t = 1.13</m> gives
+					where any value of <m>t</m> gives the exact <m>y</m> value. For example, <m>t = 0.65</m> gives
 					<me>
-						y(1.13) = e^{1.13} = 3.0956565...
+						y(0.65) = e^{0.65} \approx 1.915540829...
 					</me>.
 				</p>
 				<p/>
 				<p>
-					<!-- <image>
+					<image>
 						<latex-image>
 							\begin{tikzpicture}[samples=50]
 		
@@ -61,71 +87,74 @@
 								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
 								% === figure/domain/tick bounds ===
-								\def\tmin{-0.45}	\def\tmax{2.45}
-								\def\ymin{-1.2}	\def\ymax{7.5}
+								\def\tmin{-0.6}	\def\tmax{2.45}
+								\def\ymin{-1.8}		\def\ymax{7.5}
 								\def\tticks{1, 2}
 								\def\yticks{2, 4}
 
 								% === Function definitions ===
 								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
 								\def\a{0}	\def\b{2}
-								\def\c{1.13}
+								\def\c{0.65}
 
 								\begin{axis}[
-									width=15cm, height=7cm,
-									scale=0.3,
-									xlabel={$t$},
-									ylabel={$y$},
-									%title={},
+									width=15cm, height=7cm, scale=0.35,
+									xlabel={$t$}, ylabel={$y$},
+									title={Analytic Solution},
+									title style={font=\small},
 									grid=none,
 									tick style={thick},
 									line width=1pt,
 									axis lines=middle,
-									xtick distance=1,
-									ytick distance=4,
-									minor x tick num=1,
-									minor y tick num=1,
-									xmin=\tmin, xmax=\tmax,
-									ymin=\ymin, ymax=\ymax,
+									xtick distance=1, ytick distance=4,
+									minor x tick num=1, minor y tick num=1,
+									xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
 								]
 								
 									% Read and plot data from file
-									\addplot [domain=\a:\b, \fColor, thick] {e^x};
+									\addplot [domain=\a:\b, \fColor] {e^x};
+									\draw[gray, thin]	(\b, 0) -- (\b, {\f{\b}});
+									
 
-									\draw[dashed]	(\c , {\f{\c}})-(\c , 0);
-									\draw[dashed]	(\c , {\f{\c}})-(0 , {\f{\c}});
-									\node[below, font=\normalsize] at (\c,0) {\c};
-									\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
+									\draw[dashed, thick]	(\c, {\f{\c}}) -- (\c, 0);
+									\draw[dashed, thick]	(\c, {\f{\c}}) -- (0, {\f{\c}});
+									\node[below, font=\small] at (\c, 0) {\c};
+									\node[left, font=\small] at (0,{\f{\c}}) {$1.916$};
 
 									% === Labels ===
-									\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
+									\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
+
 								\end{axis}
 
 							\end{tikzpicture}
 						</latex-image>
-					</image> -->
+					</image>
 				</p>
 				<p/>
 			</sidebyside>
 
 			<p>
-				Equation <xref ref="num-vs-anal-soln-eqn"/> also has the nonformula-like numerical solution:
+				Equation <xref ref="num-vs-anal-soln-eqn"/> also has a table-like numerical solution:
 			</p>
 
-			<sidebyside widths="50% 8% 36% 6%" valign="middle">
+			<sidebyside widths="40% 18% 36% 6%" valign="middle">
 				<p>
-					<tabular>
-						<row><cell><m>t</m></cell><cell><m>y(t)</m> (approx)</cell></row>
-						<row><cell>0.0</cell><cell>1.0000</cell></row>
-						<row><cell>0.1</cell><cell>1.1052</cell></row>
-						<row><cell>0.2</cell><cell>1.2214</cell></row>
-						<row><cell>0.3</cell><cell>1.3499</cell></row>
+					<tabular halign="center">
+						<col right="minor" />
+						<row bottom="minor"><cell><m>t</m></cell><cell><m>y(t)</m> (approx)</cell></row>
+						<row><cell>0.00</cell><cell>1.0000</cell></row>
+						<row><cell>0.25</cell><cell>1.2500</cell></row>
+						<row><cell>0.50</cell><cell>1.5625</cell></row>
+						<row><cell>0.75</cell><cell>1.9531</cell></row>
 						<row><cell>…</cell><cell>…</cell></row>
 					</tabular>
 				</p>
-				<p/>
 				<p>
-					<!-- <image>
+					<line>Plot the</line>
+					<line>points <m>\rightarrow</m></line>
+				</p>
+				<p>
+					<image>
 						<latex-image>
 							\begin{tikzpicture}[samples=50]
 		
@@ -134,8 +163,8 @@
 								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
 								% === figure/domain/tick bounds ===
-								\def\tmin{-0.45}	\def\tmax{2.45}
-								\def\ymin{-1.2}	\def\ymax{7.5}
+								\def\tmin{-0.6}	\def\tmax{2.45}
+								\def\ymin{-1.8}		\def\ymax{7.5}
 								\def\tticks{1, 2}
 								\def\yticks{2, 4}
 
@@ -145,80 +174,88 @@
 								\def\c{1.13}
 
 								\begin{axis}[
-									width=15cm, height=7cm,
-									scale=0.3,
-									xlabel={$t$},
-									ylabel={$y$},
-									%title={},
+									width=15cm, height=7cm, scale=0.35,
+									xlabel={$t$}, ylabel={$y$},
+									title={Numerical Solution},
+									title style={font=\small},
 									grid=none,
 									tick style={thick},
 									line width=1pt,
 									axis lines=middle,
-									xtick distance=1,
-									ytick distance=4,
-									minor x tick num=1,
-									minor y tick num=1,
-									xmin=\tmin, xmax=\tmax,
-									ymin=\ymin, ymax=\ymax,
+									xtick distance=1, ytick distance=4,
+									minor x tick num=3, minor y tick num=1,
+									xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
 								]
 								
 									% Read and plot data from file
 									\addplot [only marks, mark=o] table[x=t, y=yA, col sep=comma] {external/code/data-generator/outputs/example-2/euler_example-2.csv};
-									\addplot [domain=\a:\b, \fColor, thick, dashed] {e^x};
+									\draw[gray, thin]	(\b, 0) -- (\b, 5.7);
 								\end{axis}
-							
-								% === Axes ===
-								%\draw[-&gt;] (\tmin	,0		)-(\tmax	,0		);
-								%\draw[-&gt;] (0		,\ymin	)-(0		,\ymax	);
-								%\node[font=\large, below] at (\tmax - 0.1	, 0) {$t$};
-		
-								% === Tick marks/numeric labels ===
-								%\foreach \t in \tticks {
-								%	\draw[gray, thick]	(\t,0.15)-(\t,-0.15);			% t ticks	
-								%}
-								%\node[below, font=\normalsize] at (-2,0) {-2};	% t labels
-								%\node[below, font=\normalsize] at (2,0) {2};	%
-								
-								%\foreach \y in \yticks {
-								%	\draw[gray]	(0.1,\y)-(-0.1,\y);			% y ticks
-								%	\node[left, font=\normalsize] at (0,\y) {\y};	% y labels
-								%}
-								
-								% === Function plots on [tmin, c] ===
-								%\draw[\fColor, ultra thick, &lt;-&gt;]	plot[domain=\a:\b, variable=\t]	(\t, {\f{\t}});
-								
-								%\draw[dashed]	(\c , {\f{\c}})-(\c , 0);
-								%\draw[dashed]	(\c , {\f{\c}})-(0 , {\f{\c}});
-								%\node[below, font=\normalsize] at (\c,0) {\c};
-								%\node[left, font=\large] at (0,{\f{\c}}) {$3.09 \approx e^{\c}$};
-
-								% === Labels ===
-								%\node[\fColor, font=\large, above] at (1.9, {\ymax-1}) {$\ftex$};
 							\end{tikzpicture}
 						</latex-image>
-					</image> -->
+					</image>
 				</p>
 				<p/>
 			</sidebyside>
 
+			<exercise><title>Recognizing a Numerical Solution</title>
+				<statement>
+					When you say you have found a <q>numerical solution</q> to an initial value problem, what did you find?
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							A list of values approximating <m>y(t)</m> at specific times
+						</statement>
+						<feedback>
+							Correct — a numerical solution gives you approximate values of <m>y(t)</m> at specific <m>t</m>-values. You don't get a formula, you get a table.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							A formula expressing <m>y(t)</m> using functions like <m>\sin t</m> or <m>e^t</m>
+						</statement>
+						<feedback>
+							No, this describes an analytic solution.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							An exact solution valid for all <m>t</m>
+						</statement>
+						<feedback>
+							No, this describes an analytic solution.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							A graph showing all possible solutions
+						</statement>
+						<feedback>
+							No, this describes a graph of a family of analytic solutions.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
 			<p>
-				So instead of one continuous curve, you have a collection of points — an approximation of the solution over time. And unlike analytic methods, numerical methods work even when no formula exists.
+				Graphically, the analytic solution <m>y(t)=e^t</m> is represented by a continuous curve, while the numerical solution is a collection of points. And unlike analytic methods, numerical methods work even when no formula exists.
 			</p>
 
-			<assemblage><title> Analytic vs. Numerical Solution Summary </title>
+			<table><title> Analytic vs. Numerical Solution Summary </title>
 				<tabular halign="center">
 					<col width="30%" right="minor" />
 					<col width="30%" right="minor" />
 					<col width="30%" right="minor" />
 					<row bottom="minor">
 						<cell/>
-						<cell><p> <m>\textbf{Analytical Solutions}</m> </p></cell>
+						<cell><p> <m>\textbf{Analytic Solutions}</m> </p></cell>
 						<cell><p> <m>\textbf{Numerical Solutions}</m> </p></cell>
 					</row>
 					<row>
 						<cell><p> <m>\textbf{Also Known As}</m> </p></cell>
-						<cell><p> Closed Form Solutions </p></cell>
-						<cell><p> Approximate Solutions </p></cell>
+						<cell><p> Closed-form solutions </p></cell>
+						<cell><p> Approximate solutions </p></cell>
 					</row>
 					<row>
 						<cell><p> <m>\textbf{Looks Like}</m> </p></cell>
@@ -230,101 +267,548 @@
 						<cell><p> Exact </p></cell>
 						<cell><p> Approximate </p></cell>
 					</row>
-					<row>
-						<cell><p> <m>\textbf{Typically Found}</m> </p></cell>
-						<cell><p> By-Hand </p></cell>
-						<cell><p> Computer </p></cell>
-					</row>
-					<row>
+					<row bottom="minor">
 						<cell><p> <m>\textbf{Solution Graph}</m> </p></cell>
-						<cell><p> Curves or Lines </p></cell>
+						<cell><p> Curve </p></cell>
 						<cell><p> Points </p></cell>
 					</row>
-				</tabular>>
-			</assemblage>
+				</tabular>
+			</table>
 
 		</paragraphs>
 
-		<note><title>What does “symbolic” mean?</title>
-		<p>
-		A <term>symbolic solution</term> (also called “closed-form”) means you solve the equation using algebra, calculus, and known function symbols. A numerical solution, on the other hand, involves only numbers — no variables, no formulas.
-		</p>
-		</note>
+		<exercise><title>Analytic Solution, AKA …</title>
+			<statement>
+				What is another name for an analytic solution?
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						Closed-form solution
+					</statement>
+					<feedback>
+						Yes — a closed-form solution is another name for an analytic solution.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						Approximate solution
+					</statement>
+					<feedback>
+						No — an approximate solution refers to a numerical solution.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						Continuous solution
+					</statement>
+					<feedback>
+						Not all analytic solutions are continuous — and not all continuous solutions are analytic.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						Systematic solution
+					</statement>
+					<feedback>
+						While you may solve analytically using a systematic process, this is not a name for an analytic solution.
+					</feedback>
+				</choice>
+			</choices>
+			<feedback>
+				Analytic means a symbolic expression using functions, not a numerical approximation or a rule.
+			</feedback>
+		</exercise>
 
-		<assemblage><title>Analytic vs. Numerical: A Comparison</title>
-			<tabular>
+		<paragraphs><title> Why Do We Need Numerical Methods? </title>
+			<p>
+				After comparing the two types of solutions, it might seem like analytic solutions are always better than numerical ones. However, even when a closed-form solution exists, there are many reasons why numerical methods are useful — and often preferred. Here are just a few:
+			</p>
+
+			<ol>
+				<li>A closed-form solution may be very difficult or even impossible to find.</li>
+				<li>Outside of an academic setting, it is rare to solve a differential equation by hand.</li>
+				<li>In real-world applications, solving an equation is typically just one step in a larger computational pipeline.</li>
+				<li>Numerical methods are easier to adjust when your equation or parameters change.</li>
+			</ol>
+
+			<exercise><title>Why use numerical methods?</title>
+				<statement>
+					Which of the following are good reasons to use a numerical method?
+				</statement>
+				<choices randomize="yes" select="multiple">
+					<choice correct="yes">
+						<statement>
+							They can approximate a solution when no closed-form solution exists.
+						</statement>
+						<feedback>
+							This is True — numerical methods are often the only way to find a solution when no closed-form solution exists.
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							They can be automated on a computer.
+						</statement>
+						<feedback>
+							This is True — numerical methods are ideal for computer-based simulation and analysis.
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							They are easier to adjust when the form of the equation changes.
+						</statement>
+						<feedback>
+							This is True — they are often more flexible and adaptable than symbolic techniques.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							They take less time to compute.
+						</statement>
+						<feedback>
+							This is not necessarily true — Closed-form solutions may be easy to find depending on the equation. Unless you have already setup a computer to solve an equation numerically, a numerical method has a significant initial investment.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							They produce more accurate solutions than analytic methods.
+						</statement>
+						<feedback>
+							This is not true — In fact, it is likely the biggest drawback of numerical methods. Since numerical solutions are approximations, they always introduce some amount of error (albeit, usually very small). Analytic solutions, on the other hand, are exact when they exist.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+
+	</subsection>
+
+	<subsection><title> Approximating Solutions Step by Step </title>
+
+		<p>
+			In this section, we'll build intuition for the most common kind of numerical method — one that approximates the solution to an initial value problem by computing values of <m>y(t)</m> one step at a time. It might feel a little strange at first, but you're not solving the entire equation at once. Instead, you're just walking forward from one point to the next, building a trail of approximate values as you go.
+		</p>
+
+		<p>
+			To give you an idea of how some of these methods work, imagine you are hiking through the woods in the fog from point <m>A</m> to <m>B</m>. Assuming there exists a best possible path, can you approximate if you only knew the information below?
+			<ul>
+				<li>
+					<p>
+						Your current position.
+					</p>
+				</li>
+				<li>
+					<p>
+						The direction you should go from your current position.
+					</p>
+				</li>
+			</ul>
+		</p>
+
+		<p>
+			To make progress from point <m>A</m>, you walk in a direction for some time, then stop, note your current position and recalculate the new direction to walk. You repeat this process until, ideally, you are somewhere near point <m>B</m>.
+		</p>
+
+		<p>
+			In this analogy, the solution you are trying to approximate is the best possible path from point <m>A</m> to <m>B</m>. The approximation is the collection of current positions (starting with <m>A</m>) you noted when you stopped to update your direction. This systematic process is precisely how some numerical methods work.
+		</p>
+
+		<exercise><title> What's the Tradeoff </title>
+			<statement>
+				<p>
+					In the previous analogy, what trade-off do you think exists when approximating the best possible path?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						The more often you stop to recalculate your position, the more accurate your approximation, but the longer it takes.
+					</statement>
+					<feedback>
+						Correct — stopping more often gives you a better approximation, but it also takes more time.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The less often you stop, the more accurate your approximation.
+					</statement>
+					<feedback>
+						This is not true — stopping less often leads to a less accurate approximation.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The more often you stop, the less accurate your approximation.
+					</statement>
+					<feedback>
+						This is not true — stopping more often leads to a more accurate approximation.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The direction you choose does not affect the accuracy of your approximation.
+					</statement>
+					<feedback>
+						This is not true — the direction you choose is crucial for making progress toward the best path.
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<paragraphs><title> Selecting the Approximation Locations </title>
+			
+			<p>
+				Numerical methods often start the same way—select the <m>t</m>-values where you want the approximate solution. The <m>t</m>-values that you can choose from are determined by an interval of time specified in the problem. For example, in the equation 
+			</p>
+
+			<me>
+				y' = y, \quad y(0) = 1, \quad 0 \le t \le 2
+			</me>,
+			
+			<p>
+				the interval, <m>0 \le t \le 2</m>, indicates that we should only choose <m>t</m>-values between <m>0</m> and <m>2</m>. Typically, we divide the time interval into evenly spaced points, such as For example,
+			</p>
+
+			<mdn>
+				<mrow xml:id="t-values-N-eq-2"> \amp t = 0,\ 1,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-4"> \amp t = 0,\ 0.5,\ 1,\ 1.5,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-8"> \amp t = 0,\ 0.25,\ 0.5,\ 0.75,\ 1,\ 1.25,\ 1.5,\ 1.75,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-k"> \amp t = 0,\ 0.01,\ 0.02,\ 0.03,\ \ldots\ ,\ 1.98,\ 1.99,\ 2 </mrow>
+			</mdn>
+
+			<!-- <p>
+				Each of these selections is called a <term>partition</term> of the interval <m>[0, 2]</m>. The partition divides the time interval into smaller segments where each approximation will occur. 
+			</p> -->
+				
+			<p>
+				The common distance between the <m>t</m>-values in each selection is known as the <term>step size</term>, denoted by <m>h</m>. For example, <m>h = 0.5</m> for selection <xref ref="t-values-N-eq-4"/> and <m>h = 0.01</m> for selection <xref ref="t-values-N-eq-k"/>. 
+			</p>
+
+			<exercise><title> What is the Step Size? </title>
+				<statement>
+					<p>
+						What is the step size <m>h</m> for the selection of <m>t</m>-values in <xref ref="t-values-N-eq-8"/>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							0.25
+						</statement>
+						<feedback>
+							Correct — the step size is the distance between each <m>t</m>-value, which is <m>0.25</m> in this case.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							0.5
+						</statement>
+						<feedback>
+							This is not correct — the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							0.1
+						</statement>
+						<feedback>
+							This is not correct — the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It depends on the problem.
+						</statement>
+						<feedback>
+							This is not correct — the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<p>
+				Since each approximation happens in a specific order, it is helpful to assign each <m>t</m>-value a number corresponding to this order (i.e., an index) starting from <m>0</m>. For example, selection <xref ref="t-values-N-eq-4"/> can be indexed as follows: 
+			</p>
+
+			<tabular halign="center">
 				<row>
-					<cell></cell>
-					<cell>Analytic</cell>
-					<cell>Numerical</cell>
+					<cell colspan = "10"> Index Labeling for selection <xref ref="t-values-N-eq-8"/> (<m>h=0.25</m>) </cell>
 				</row>
 				<row>
-					<cell>Form of the solution</cell>
-					<cell>Formula: <m>y(t) = e^{-3t} \sin(2t)</m></cell>
-					<cell>Table of values: <m>y(0) = 1</m>, <m>y(0.1) \approx 1.05</m>, …</cell>
+					<cell>0</cell>
+					<cell>0.25</cell>
+					<cell>0.5</cell>
+					<cell>0.75</cell>
+					<cell>1</cell>
+					<cell>1.25</cell>
+					<cell>1.5</cell>
+					<cell>1.75</cell>
+					<cell>2</cell>
 				</row>
 				<row>
-					<cell>Found using</cell>
-					<cell>Algebra, calculus, transforms</cell>
-					<cell>Arithmetic algorithms (step-by-step)</cell>
-				</row>
-				<row>
-					<cell>Accuracy</cell>
-					<cell>Exact (within domain)</cell>
-					<cell>Approximate (depends on step size)</cell>
-				</row>
-				<row>
-					<cell>When used</cell>
-					<cell>When closed-form exists</cell>
-					<cell>When exact solution is too hard or impossible</cell>
+					<cell><m>t_0</m></cell>
+					<cell><m>t_1</m></cell>
+					<cell><m>t_2</m></cell>
+					<cell><m>t_3</m></cell>
+					<cell><m>t_4</m></cell>
+					<cell><m>t_5</m></cell>
+					<cell><m>t_6</m></cell>
+					<cell><m>t_7</m></cell>
+					<cell><m>t_8</m></cell>
 				</row>
 			</tabular>
-		</assemblage>
 
-		<p>
-		In this chapter, we’ll develop several numerical methods — starting from the simplest — and explore how they work, how accurate they are, and when to trust them.
-		</p>
+			<exercise label="chkpt-3-t-list"><title> List the <m>t</m>-Values </title>
+				<statement>
+					<p>
+						Suppose you want to approximate a solution on the interval <m>[0, 2]</m> using a step size of <m>h = 0.4</m>. List the <m>t</m>-values you would use.
+					</p>
 
-		<reading-questions>
-		<question><title>Recognizing a Numerical Solution</title>
-		<statement>
-		What do you typically have in hand when you say you have a “numerical solution” to an initial value problem?
-		</statement>
-		<choice correct="true">A table of values approximating <m>y(t)</m> at certain time steps</choice>
-		<choice>A formula expressing <m>y(t)</m> using functions like <m>\sin t</m> or <m>e^t</m></choice>
-		<choice>An exact solution valid for all <m>t</m></choice>
-		<choice>A graph showing all possible solutions</choice>
-		<feedback>
-		A numerical solution is not a formula — it's a list of approximate values at specific times.
-		</feedback>
-		</question>
+					<tabular halign="center">
+						<row>
+							<cell><m>0</m></cell>
+							<cell><fillin width="3" mode="string" answer="0.4" /></cell>
+							<cell><fillin width="3" mode="string" answer="0.8" /></cell>
+							<cell><fillin width="3" mode="string" answer="1.2" /></cell>
+							<cell><fillin width="3" mode="string" answer="1.6" /></cell>
+							<cell><m>2</m></cell>
+						</row>
+						<row>
+							<cell><m>t_0</m></cell>
+							<cell><m>t_1</m></cell>
+							<cell><m>t_2</m></cell>
+							<cell><m>t_3</m></cell>
+							<cell><m>t_4</m></cell>
+							<cell><m>t_5</m></cell>
+						</row>
+					</tabular>
+				</statement>
+				<evaluation>
+					<evaluate><test correct="yes"><jscmp>ans == 0.4</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 0.8</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 1.2</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 1.6</jscmp></test></evaluate>
+				</evaluation>
+			</exercise>
 
-		<question><title>Which is analytic?</title>
-		<statement>
-		Which of the following is an example of an analytic solution?
-		</statement>
-		<choice correct="true"><m>y(t) = 3e^{-t^2}</m></choice>
-		<choice><m>y(0) = 1, y(0.2) \approx 1.19, y(0.4) \approx 1.45, \ldots</m></choice>
-		<choice><m>y_n = y_{n-1} + h f(t_{n-1}, y_{n-1})</m></choice>
-		<choice>A computer simulation of a bouncing ball</choice>
-		<feedback>
-		Analytic means a symbolic expression using functions, not a numerical approximation or a rule.
-		</feedback>
-		</question>
+			<p>
+				Since each <m>t</m>-value is separated by the step size, we can express each <m>t</m>-value in terms of the previous one:
+			</p>
 
-		<question><title>Why use numerical methods?</title>
-		<statement>
-		Which is a good reason to use a numerical method?
-		</statement>
-		<choice correct="true">The equation cannot be solved exactly using algebra or calculus</choice>
-		<choice>You prefer working with decimals</choice>
-		<choice>The function <m>y(t)</m> is already known</choice>
-		<choice>Symbolic solutions are always less accurate</choice>
-		<feedback>
-		Numerical methods are essential when no symbolic solution exists or when the analytic solution is impractical.
-		</feedback>
-		</question>
-		</reading-questions>
+			<me>
+				t_1 = t_0 + h, \quad t_2 = t_1 + h, \quad t_3 = t_2 + h, \quad \ldots\ , \quad t_N = t_{N-1} + h.
+			</me>
+
+			<sidebyside width="80%">	
+				<figure xml:id="t-values-separated-by-h"><caption> Each <m>t</m>-value is separated by the step size, <m>h</m> </caption>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[samples=50, scale=3.5]
+								% === figure/domain/tick bounds ===
+								\def\tmin{-0.2}		\def\tmax{2.9}
+								\def\ymin{-0.9}		\def\ymax{0.9}
+								\def\tks{0.25, 0.5, 1.75, 2}
+								\def\h{0.4}		\def\hy{-0.18}	\def\hpad{0.05}
+								
+								\def\bpad{0.008}
+								\def\ticklength{0.02}
+								\def\barlength{0.05}
+								
+								% === Axes ===
+								\draw[thick, -&gt;] (\tmin, 0) -- (\tmax, 0);
+								\node[below] at (\tmax - 0.1, 0) {$t$};
+
+								% === Tick marks/numeric labels ===
+								\def\tks{0.4, 0.8, 1.2, 1.6}
+
+								\def\k{0}	\def\tk{0}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+
+								\foreach \tk [count=\k from 1] in \tks {
+									\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+									\node[below] at (\tk, 0) {$t_{\k}$};
+									\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+									% === h arrows ===
+									\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+									\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+									\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+								}
+
+								\def\k{}	\def\tk{1.9}
+								\node[below] at (\tk, -0.08) {$\ldots$};
+								
+								\def\k{N-1}	\def\tk{2.2}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+
+								\def\k{N}	\def\tk{2.6}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+								% === h arrows ===
+								\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+								\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+								\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+			</sidebyside>
+
+			<p>
+				Additionally, <xref ref="t-values-separated-by-h"/> clearly shows how each <m>t</m>-value is some number of steps, <m>h</m>, to the right of <m>t_0</m>. In particular, we can :
+			</p>
+
+			<ul>
+				<li>
+					<p>
+						<m>t_1</m> is <m>1\ h</m> step to the right of <m>t_0</m>, so <m>t_1 = t_0 + h</m>,
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>t_2</m> is <m>2\ h</m> steps to the right of <m>t_0</m>, so <m>t_2 = t_0 + 2h</m>,
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>t_3</m> is <m>3\ h</m> steps to the right of <m>t_0</m>, so <m>t_3 = t_0 + 3h</m>,
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>t_4</m> is <m>4\ h</m> steps to the right of <m>t_0</m>, so <m>t_4 = t_0 + 4h</m>, and so on.
+					</p>
+				</li>
+			</ul>
+
+			<p>
+				In general, we can express the <m>k</m>-th <m>t</m>-value as:
+			</p>
+
+			<me>
+				t_k = t_0 + k \cdot h
+			</me>
+
+
+			<exercise label="chkpt-3-t-pattern"><title> How many <m>h</m>'s Away? </title>
+				<statement>
+					<p>
+						The distance between each <m>t</m>-value is the <term>step size</term>, <m>h</m>. Fill in the blanks with the number of <m>h</m>'s you need to add to <m>t_0</m> to get to each <m>t</m>-value. 
+					</p>
+
+					<p>
+						<sidebyside widths="30% 30%" margin="20%">
+							<p>
+								A. <m>\quad t_1 = t_0\ + </m> <fillin width="1" mode="string" answer="1" /> <m>h</m>
+							</p>
+							<p>
+								B. <m>\quad t_{16} = t_0\ + </m> <fillin width="1" mode="string" answer="16" /> <m>h</m>
+							</p>
+						</sidebyside>
+					</p>
+					<p>
+						<sidebyside widths="30% 30%" margin="20%">
+							<p>
+								C. <m>\quad t_5 = t_3\ + </m> <fillin width="1" mode="string" answer="2" /> <m>h</m>
+							</p>
+							<p>
+								D. <m>\quad t_k = t_0\ + </m> <fillin width="1" mode="string" answer="k" /> <m>h</m>
+							</p>
+						</sidebyside>
+					</p>
+					
+				</statement>
+				<evaluation>
+					<evaluate><test correct="yes"><jscmp>ans == 1</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 16</jscmp></test></evaluate>
+					<evaluate>
+						<test correct="yes">
+							<jscmp>ans == 2</jscmp>
+						</test>
+						<test correct="no">
+							<jscmp>ans != 2</jscmp>
+							<feedback>Look carefully at the index of both <m>t</m>-values.</feedback>
+						</test>
+					</evaluate>
+					<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+				</evaluation>
+			</exercise>
+
+		</paragraphs>
+
+		<paragraphs><title> Finding Each Approximation, One-By-One </title>
+			<p>
+				Once you have selected the <m>t</m>-values, the next step is to find the corresponding <m>y(t)</m>-values. This is done by using the differential equation to compute each value one at a time, starting from the initial condition.
+			</p>
+		</paragraphs>
+
+		<paragraphs><title> Improving Approximations </title>
+			<p>
+				The choice of step size <m>h</m> is important. A smaller <m>h</m> generally leads to better accuracy because each step tracks the curve more closely — but it also means you need more steps to reach your destination. Larger values of <m>h</m> are faster, but less accurate and may introduce noticeable errors.
+			</p>
+
+			<example><title>Different Step Sizes</title>
+				<statement>
+					Suppose you're solving <m>y' = y</m>, <m>y(0) = 1</m> over the interval <m>[0, 1]</m> using a step-based method. If <m>h = 0.25</m>, you’ll get just 4 steps: at <m>t = 0, 0.25, 0.5, 0.75, 1.0</m>. If <m>h = 0.05</m>, you’ll get 20 steps — and likely a more accurate approximation.
+				</statement>
+				<solution>
+					<p>
+						With fewer steps, your estimate might drift away from the true curve more quickly. Smaller steps track the curve better, but they also require more computation. This tradeoff between accuracy and effort is central to numerical methods.
+					</p>
+				</solution>
+			</example>
+
+			<exercise><title>Step Size Intuition</title>
+				<statement>
+					What is the effect of decreasing the step size <m>h</m> in a step-based numerical method?
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							It generally improves accuracy but increases computational cost.
+						</statement>
+						<feedback>
+							Correct — smaller steps follow the solution more closely, but take more steps to cover the interval.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It always gives the exact solution.
+						</statement>
+						<feedback>
+							No — smaller steps improve accuracy, but the solution is still approximate.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It makes the method faster but less accurate.
+						</statement>
+						<feedback>
+							No — smaller steps actually slow the computation down.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It has no effect on the outcome.
+						</statement>
+						<feedback>
+							No — step size is a key parameter in numerical methods.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+
+		<note><title>Not all numerical methods work step by step</title>
+			<p>
+				Some numerical methods — especially for boundary value problems — construct an entire system of equations and solve them all at once, rather than marching forward step by step. But in this chapter, we’ll focus on <q>initial value problems</q> where step-based methods are common, intuitive, and highly effective.
+			</p>
+		</note>
 
 	</subsection>
 
@@ -479,263 +963,6 @@
 			</interactive>
 		</figure>
 
-		<figure>
-			<caption>Infinity, from the JSXGraph Showcase</caption>
-			<interactive xml:id="interactive-bspline" platform="jsxgraph" source="code/jsxgraph/click-point.js">
-				<slate xml:id="jsxgraph-clicky" surface="jsxboard" />
-				<instructions>
-				<p>
-					Any of the 8 red control points may be moved anywhere.
-				</p>
-				</instructions>
-			</interactive>
-		</figure>
-
-		<exercise label="practice1"><title> Row operations </title>
-			<introduction>
-				<p>
-					In the following tasks, perform the row operations described on the given matrix.
-				</p>
-			</introduction>
-			<task label="practice1a">
-				<statement>
-					<p>
-						Ask a Question
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="no">
-						<statement>
-							<p>
-								pick me
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								WRONG
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>
-							<p>
-								No, pick me
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								OK
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-			<task label="practice1b">
-				<statement>
-					<p>
-						SUCK IT
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>
-							<p>
-								OK
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Correct!
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="no">
-						<statement>
-							<p>
-								NO
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Incorrect
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-			<task label="practice1c">
-				<statement>
-					<p>
-						Put it in
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>
-							<p>
-								OK
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Correct!
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-		</exercise>
-
-		<reading-questions><title> Check-Point Questions </title>
-			<exercise label="practice2"><title> Row operations </title>
-				<introduction>
-					<p>
-						In the following tasks, perform the row operations described on the given matrix.
-					</p>
-				</introduction>
-				<task label="practice2a">
-					<statement>
-						<p>
-							Ask a Question
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="no">
-							<statement>
-								<p>
-									pick me
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									WRONG
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement>
-								<p>
-									No, pick me
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									OK
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-				<task label="practice2b">
-					<statement>
-						<p>
-							SUCK IT
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes">
-							<statement>
-								<p>
-									OK
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Correct!
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="no">
-							<statement>
-								<p>
-									NO
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-				<task label="practice2c">
-					<statement>
-						<p>
-							Put it in
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes">
-							<statement>
-								<p>
-									OK
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Correct!
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-			</exercise>
-		
-		</reading-questions>
-
-	</subsection>
-
-	<subsection><title> Fundamentals </title>
-
-		<objectives>
-			<introduction>
-				<p>
-					Brainstorm ...
-				</p>
-			</introduction>
-			<ol>
-				<li> How is an approximate solution different from what we have been doing? </li>
-				<li> Set up the grid on <m>[a, b]</m>. Choose <m>h</m> </li>
-				<li> Find values of the solution function </li>
-			</ol>
-		</objectives>
-
-		<introduction>
-
-			<p>
-				Several techniques have been discussed for resolving differential equations, although they are not always simple to solve. For instance, consider the equation
-				<men xml:id="riccati-eqn">
-					y' = y^2 - x.
-				</men>
-				Though this equation may seem straightforward, the nonlinear term, <m>y^2</m>, makes solving it substantially more challenging. In fact, the solution <xref ref="riccati-eqn"/> is so complex, special functions were introduced to make it easier to represent.
-				<fn>
-					The solution to <xref ref="riccati-eqn"/> is described by
-					<me>
-						y = \frac{ 3 x \left(c_1 J_{-\frac{4}{3}} \left( x \right) - c_1 J_{\frac{2}{3}}\left( x \right) + 2 J_{-\frac{2}{3}}\left( x \right) \right) + 2 c_1 J_{-\frac{1}{3}}\left( x \right) }{ (12 x)^{2/3} \left(c_1 J_{-\frac{1}{3}} \left( x \right) + J_{\frac{1}{3}} \left(x \right) \right)}
-					</me>
-					where <m>J_n(x)</m> denotes a Bessel function defined as
-					<me>
-						J_n( x ) = \sum_{m=0}^{\infty} \frac{(-1)^m}{m! \ \Gamma(m + n + 1)}\left( \frac{i}{3} x^{\frac{3}{2}} \right)^{2m + n}.
-					</me>
-				</fn>
-			</p>
-
-			<p>
-				The reality is that the exact solutions to many differential equations simply cannot be written in the form of a standard function. As an alternative, we can calculate a "substitute" for the actual solution. This replacement is called a numerical solution and is assumed to closely resemble the true solution.
-				<aside>
-					<p>
-						The statement, ''closely resembles the true solution'', refers to the idea that if you were to plot both functions, their graphs would nearly coincide.
-					</p>
-				</aside>
-			</p>
-
-			<p>
-				This chapter delves into the concepts of approximation and explores some of the basic algorithms used to generate the numerical solutions to various differential equations.
-			</p>
-
-		</introduction>
-
 	</subsection>
 
 	<subsection><title> Solution Approximation </title>
@@ -780,7 +1007,7 @@
 			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
 		</p>
 
-		<!-- <image width="70%">
+		<image width="70%">
 			<latex-image>
 				\begin{tikzpicture}
 
@@ -790,18 +1017,18 @@
 					\def\N{5} % Number of partitions
 
 					% Draw the x-axis
-					\draw[-&gt;,thick] (\a-0.5,0)-(\b+1,0) node[right] {$x$};
+					\draw[-&gt;,thick] (\a-0.5,0) -- (\b+1,0) node[right] {$x$};
 
 					% Calculate step size
 					\pgfmathsetmacro{\h}{(\b-\a)/\N}
 
 					% Draw the partition points and labels
-					\draw (\a + 0*\h,0.1)-(\a + 0*\h,-0.1) node[below] {$x_{0}$};
-					\draw (\a + 1*\h,0.1)-(\a + 1*\h,-0.1) node[below] {$x_{1}$};
-					\draw (\a + 2*\h,0.1)-(\a + 2*\h,-0.1) node[below] {$x_{2}$};
+					\draw (\a + 0*\h,0.1) -- (\a + 0*\h,-0.1) node[below] {$x_{0}$};
+					\draw (\a + 1*\h,0.1) -- (\a + 1*\h,-0.1) node[below] {$x_{1}$};
+					\draw (\a + 2*\h,0.1) -- (\a + 2*\h,-0.1) node[below] {$x_{2}$};
 					\draw 							(\a + 3*\h,-0.1) node[below] {$\ldots$};
-					\draw (\a + 4*\h,0.1)-(\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
-					\draw (\a + 5*\h,0.1)-(\a + 5*\h,-0.1) node[below] {$x_{N}$};
+					\draw (\a + 4*\h,0.1) -- (\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
+					\draw (\a + 5*\h,0.1) -- (\a + 5*\h,-0.1) node[below] {$x_{N}$};
 					
 					% Optionally, add labels for a and b
 					\node[below] at (\a,-0.35) {$\uparrow$};
@@ -810,26 +1037,26 @@
 					\node[below] at (\b,-0.7) {$b$};
 
 					% Add the label for each h
-					\draw 			(\a + 0*\h,0.3)-(\a + 0*\h,0.5);
-					\draw[&lt;-]	(\a + 0*\h,0.4)-(\a + 0.38*\h,0.4);
+					\draw 			(\a + 0*\h,0.3) -- (\a + 0*\h,0.5);
+					\draw[&lt;-]	(\a + 0*\h,0.4) -- (\a + 0.38*\h,0.4);
 					c
-					\draw[-&gt;] 	(\a + 0.62*\h,0.4)-(\a + 1*\h,0.4);
-					\draw 			(\a + 1*\h,0.3)-(\a + 1*\h,0.5);
+					\draw[-&gt;] 	(\a + 0.62*\h,0.4) -- (\a + 1*\h,0.4);
+					\draw 			(\a + 1*\h,0.3) -- (\a + 1*\h,0.5);
 
-					\draw[&lt;-] 	(\a + 1*\h,0.4)-(\a + 1.38*\h,0.4);
+					\draw[&lt;-] 	(\a + 1*\h,0.4) -- (\a + 1.38*\h,0.4);
 					\draw 			(\a + 1.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 1.62*\h,0.4)-(\a + 2*\h,0.4);
-					\draw 			(\a + 2*\h,0.3)-(\a + 2*\h,0.5);
+					\draw[-&gt;] 	(\a + 1.62*\h,0.4) -- (\a + 2*\h,0.4);
+					\draw 			(\a + 2*\h,0.3) -- (\a + 2*\h,0.5);
 
-					\draw 			(\a + 4*\h,0.3)-(\a + 4*\h,0.5);
-					\draw[&lt;-] 	(\a + 4*\h,0.4)-(\a + 4.38*\h,0.4);
+					\draw 			(\a + 4*\h,0.3) -- (\a + 4*\h,0.5);
+					\draw[&lt;-] 	(\a + 4*\h,0.4) -- (\a + 4.38*\h,0.4);
 					\draw 			(\a + 4.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 4.62*\h,0.4)-(\a + 5*\h,0.4);
-					\draw 			(\a + 5*\h,0.3)-(\a + 5*\h,0.5);
+					\draw[-&gt;] 	(\a + 4.62*\h,0.4) -- (\a + 5*\h,0.4);
+					\draw 			(\a + 5*\h,0.3) -- (\a + 5*\h,0.5);
 					
 				\end{tikzpicture}
 			</latex-image>
-		</image> -->
+		</image>
 
 		<p>
 			
@@ -861,7 +1088,7 @@
 
 		<p>
 
-			<!-- <image>
+			<image>
 				<latex-image>
 				
 					\begin{tikzpicture}
@@ -873,8 +1100,8 @@
 						
 						\begin{axis}[]
 							% Draw the x-axis
-							\draw[-&gt;,thick] (-1.5,0)-(8,0) node[right] {$x$};
-							\draw[-&gt;,thick] (0,-1.5)-(0,1) node[right] {$y$};
+							\draw[-&gt;,thick] (-1.5,0) -- (8,0) node[right] {$x$};
+							\draw[-&gt;,thick] (0,-1.5) -- (0,1) node[right] {$y$};
 
 							\addplot[
 								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
@@ -928,9 +1155,9 @@
 						\end{axis}
 					\end{tikzpicture}
 				</latex-image>
-			</image> -->
+			</image>
 
-			<!-- <image xml:id="pgfplots-shit1">
+			<image xml:id="pgfplots-shit1">
 				<latex-image>
 
 					\pgfplotstablenew[
@@ -959,7 +1186,7 @@
 
 					\end{tikzpicture}
 				</latex-image>
-			</image> -->
+			</image>
 
 		</p>
 

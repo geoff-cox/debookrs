@@ -8,48 +8,85 @@
 		</ul>
 	</introduction>
 
-	<paragraphs><title> Computing the Forward Laplace Transform </title>
-		<ul>
-			<li>Definition &amp; Numerical Approximation</li>
-			<li><p>Integral Approximation Methods
-				<ul>
-					<li>Trapezoidal Rule &amp; Simpson's Rule</li>
-					<li>Adaptive Quadrature for handling singularities</li>
-				</ul>
-				</p>
-			</li>
-			<li>Applications in Signal Processing &amp; Engineering</li>
-		</ul>
-	</paragraphs>
+	<sidebyside width="80%">	
+		<figure><caption> Each <m>t</m>-value is separated by the step size, <m>h = 0.5</m> </caption>
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[samples=50, scale=4]
+						% === figure/domain/tick bounds ===
+						\def\tmin{-0.2}		\def\tmax{2.3}
+						\def\ymin{-0.9}		\def\ymax{0.9}
+						\def\tks{0.25, 0.5, 1.75, 2}
+						\def\h{0.25}		\def\hy{-0.17}	\def\hpad{0.05}
+						
+						\def\bpad{0.008}
+						\def\ticklength{0.02}
+						\def\barlength{0.05}
+						
+						% === Axes ===
+						\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+						\node[below] at (\tmax - 0.1, 0) {$t$};
 
-	<paragraphs><title> Numerical Inversion of the Laplace Transform </title>
-		<ul>
-			<li>Challenges of Inversion</li>
-			<li><p>Key Numerical Methods
-				<ul>
-					<li>Talbot's Method</li>
-					<li>Durbin's Method</li>
-					<li>Post's Formula</li>
-				</ul>
-			</p>
-			</li>
-		</ul>
-	</paragraphs>
+						% === Tick marks/numeric labels ===
+						\def\k{0}	\def\tk{0}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
 
-	<paragraphs><title> Implementing Numerical Laplace Transforms in Code </title>
-		<ul>
-			<li>Using Python (SymPy, SciPy, mpmath)</li>
-			<li>MATLAB’s Numerical Inversion Methods</li>
-			<li>Examples: Transforming and inverting functions numerically</li>
-		</ul>
-	</paragraphs>
+						\def\k{1}	\def\tk{0.25}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+						% === h arrows ===
+						\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+						\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+						\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
 
-	<paragraphs><title> Applications of Numerical Laplace Transforms </title>
-		<ul>
-			<li>Solving differential equations when the inverse is not elementary</li>
-			<li>Real-time signal analysis</li>
-			<li>Control systems and digital filtering</li>
-		</ul>
-	</paragraphs>
+						\def\k{2}	\def\tk{0.5}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+						% === h arrows ===
+						\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+						\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+						\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+						\def\k{}	\def\tk{0.75}
+						\node[] at (\tk, -0.08) {$\ldots$};
+						
+						\def\k{k}	\def\tk{1}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						
+						\def\k{}	\def\tk{1.25}
+						\node[] at (\tk, -0.08) {$\ldots$};
+						
+						\def\k{N-2}	\def\tk{1.5}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+						
+						\def\k{N-1}	\def\tk{1.75}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+						% === h arrows ===
+						\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+						\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+						\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+						\def\k{N}	\def\tk{2}
+						\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+						\node[below] at (\tk, 0) {$t_{\k}$};
+						\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+						% === h arrows ===
+						\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+						\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+						\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
+	</sidebyside>
 	
 </section>
