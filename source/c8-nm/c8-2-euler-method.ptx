@@ -1,5 +1,361 @@
 <section><title> Euler's Method </title>
 
+	<introduction>
+		<p>
+			In this section, we'll build intuition for the most common kind of numerical method — one that approximates the solution to an initial value problem by computing values of <m>y(t)</m> one step at a time. It might feel a little strange at first, but you're not solving the entire equation at once. Instead, you're just walking forward from one point to the next, building a trail of approximate values as you go.
+		</p>
+
+		<p>
+			To give you an idea of how some of these methods work, imagine you are hiking through the woods in the fog from point <m>A</m> to <m>B</m>. Assuming there exists a best possible path, can you approximate if you only knew the information below?
+			<ul>
+				<li>
+					<p>
+						Your current position.
+					</p>
+				</li>
+				<li>
+					<p>
+						The direction you should go from your current position.
+					</p>
+				</li>
+			</ul>
+		</p>
+
+		<p>
+			To make progress from point <m>A</m>, you walk in a direction for some time, then stop, note your current position and recalculate the new direction to walk. You repeat this process until, ideally, you are somewhere near point <m>B</m>.
+		</p>
+
+		<p>
+			In this analogy, the solution you are trying to approximate is the best possible path from point <m>A</m> to <m>B</m>. The approximation is the collection of current positions (starting with <m>A</m>) you noted when you stopped to update your direction. This systematic process is precisely how some numerical methods work.
+		</p>
+
+		<exercise><title> What's the Tradeoff </title>
+			<statement>
+				<p>
+					In the previous analogy, what trade-off do you think exists when approximating the best possible path?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						The more often you stop to recalculate your position, the more accurate your approximation, but the longer it takes.
+					</statement>
+					<feedback>
+						Correct — stopping more often gives you a better approximation, but it also takes more time.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The less often you stop, the more accurate your approximation.
+					</statement>
+					<feedback>
+						This is not true — stopping less often leads to a less accurate approximation.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The more often you stop, the less accurate your approximation.
+					</statement>
+					<feedback>
+						This is not true — stopping more often leads to a more accurate approximation.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The direction you choose does not affect the accuracy of your approximation.
+					</statement>
+					<feedback>
+						This is not true — the direction you choose is crucial for making progress toward the best path.
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<paragraphs><title> Selecting a Step Size </title>
+			<p>
+				The choice of step size <m>h</m> is important. A smaller <m>h</m> generally leads to better accuracy because each step tracks the curve more closely — but it also means you need more steps to reach your destination. Larger values of <m>h</m> are faster, but less accurate and may introduce noticeable errors.
+			</p>
+
+			<example><title>Different Step Sizes</title>
+				<statement>
+					Suppose you're solving <m>y' = y</m>, <m>y(0) = 1</m> over the interval <m>[0, 1]</m> using a step-based method. If <m>h = 0.25</m>, you’ll get just 4 steps: at <m>t = 0, 0.25, 0.5, 0.75, 1.0</m>. If <m>h = 0.05</m>, you’ll get 20 steps — and likely a more accurate approximation.
+				</statement>
+				<solution>
+					<p>
+						With fewer steps, your estimate might drift away from the true curve more quickly. Smaller steps track the curve better, but they also require more computation. This tradeoff between accuracy and effort is central to numerical methods.
+					</p>
+				</solution>
+			</example>
+
+			<exercise><title>Step Size Intuition</title>
+				<statement>
+					What is the effect of decreasing the step size <m>h</m> in a step-based numerical method?
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							It generally improves accuracy but increases computational cost.
+						</statement>
+						<feedback>
+							Correct — smaller steps follow the solution more closely, but take more steps to cover the interval.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It always gives the exact solution.
+						</statement>
+						<feedback>
+							No — smaller steps improve accuracy, but the solution is still approximate.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It makes the method faster but less accurate.
+						</statement>
+						<feedback>
+							No — smaller steps actually slow the computation down.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It has no effect on the outcome.
+						</statement>
+						<feedback>
+							No — step size is a key parameter in numerical methods.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+	</introduction>
+
+	<subsection><title> Solution Approximation </title>
+
+		<objectives>
+			<introduction>
+				<p>
+					This section covers ...
+				</p>
+			</introduction>
+			<ol>
+				<li> Analytical vs Numerical Solutions </li>
+				<li> What are you finding when you compute a numerical solution </li>
+			</ol>
+		</objectives>
+
+		<p>
+			Up to this point, we have explored various strategies for solving differential equations. For instance, applying the separation of variables or integrating factor methods to the equation
+			<me>
+				y' - 4xy = 0, \, y(0) = 2
+			</me>
+			yields the solution <m>y(x) = 2e^{x^2}</m>. This type of solution, expressible as an explicit function, is known as an analytical solution<fn>Also referred to as a closed-form solution.</fn>. Analytical solutions provide exact expressions of the system's behavior and are ideal when they can be found. However, many real-world problems yield differential equations too complex for analytical solutions, paving the way for numerical approximations.
+		</p>
+
+		<p>
+			To introduce the concept of a numerical solution, let's plot the analytical solution <m>y = 2e^{-x^2}</m>.
+		</p>
+
+		<p>
+			Numerical methods for differential equations involve computing a discrete set of points approximating theoretical, often unknowable, analytical solution. This process enables us to sketch a piecewise linear or nonlinear path mimicking the exact solution's curve.
+			<sidebyside widths="75%" margins="auto" valign="middle">
+				<figure xml:id="analytical-vs-numerical-soln">
+				<title> Comparative Visualization of Analytical and Numerical Solutions </title>
+					<!-- <image source="figures/approx-fig-02_black_x.png">
+						<shortdescription>(True Solution vs. Numerical Approximation)</shortdescription>
+					</image> -->
+				</figure>
+			</sidebyside>
+		</p>
+
+		<p>
+			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
+		</p>
+
+		<image width="70%">
+			<latex-image>
+				\begin{tikzpicture}
+
+					% Define the start and end of the interval
+					\def\a{0} % Start of the interval
+					\def\b{5} % End of the interval
+					\def\N{5} % Number of partitions
+
+					% Draw the x-axis
+					\draw[-&gt;,thick] (\a-0.5,0) -- (\b+1,0) node[right] {$x$};
+
+					% Calculate step size
+					\pgfmathsetmacro{\h}{(\b-\a)/\N}
+
+					% Draw the partition points and labels
+					\draw (\a + 0*\h,0.1) -- (\a + 0*\h,-0.1) node[below] {$x_{0}$};
+					\draw (\a + 1*\h,0.1) -- (\a + 1*\h,-0.1) node[below] {$x_{1}$};
+					\draw (\a + 2*\h,0.1) -- (\a + 2*\h,-0.1) node[below] {$x_{2}$};
+					\draw 							(\a + 3*\h,-0.1) node[below] {$\ldots$};
+					\draw (\a + 4*\h,0.1) -- (\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
+					\draw (\a + 5*\h,0.1) -- (\a + 5*\h,-0.1) node[below] {$x_{N}$};
+					
+					% Optionally, add labels for a and b
+					\node[below] at (\a,-0.35) {$\uparrow$};
+					\node[below] at (\a,-0.7) {$a$};
+					\node[below] at (\b,-0.35) {$\uparrow$};
+					\node[below] at (\b,-0.7) {$b$};
+
+					% Add the label for each h
+					\draw 			(\a + 0*\h,0.3) -- (\a + 0*\h,0.5);
+					\draw[&lt;-]	(\a + 0*\h,0.4) -- (\a + 0.38*\h,0.4);
+					c
+					\draw[-&gt;] 	(\a + 0.62*\h,0.4) -- (\a + 1*\h,0.4);
+					\draw 			(\a + 1*\h,0.3) -- (\a + 1*\h,0.5);
+
+					\draw[&lt;-] 	(\a + 1*\h,0.4) -- (\a + 1.38*\h,0.4);
+					\draw 			(\a + 1.5*\h,0.2) node[above] {$h$};
+					\draw[-&gt;] 	(\a + 1.62*\h,0.4) -- (\a + 2*\h,0.4);
+					\draw 			(\a + 2*\h,0.3) -- (\a + 2*\h,0.5);
+
+					\draw 			(\a + 4*\h,0.3) -- (\a + 4*\h,0.5);
+					\draw[&lt;-] 	(\a + 4*\h,0.4) -- (\a + 4.38*\h,0.4);
+					\draw 			(\a + 4.5*\h,0.2) node[above] {$h$};
+					\draw[-&gt;] 	(\a + 4.62*\h,0.4) -- (\a + 5*\h,0.4);
+					\draw 			(\a + 5*\h,0.3) -- (\a + 5*\h,0.5);
+					
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+
+		<p>
+			
+			<!-- <image xml:id="fuckit">
+
+				<latex-image>
+					\begin{tikzpicture}
+						
+						\begin{axis}[
+							xlabel={$t$},
+							ylabel={$y$},
+							title={Solution of $y' + 4xy = 0$ using Euler's Method},
+							grid=both,
+							minor tick num=1,
+							axis lines=middle,
+						]
+						
+							% Read and plot data from file
+							\addplot [only marks, mark=o] table[x=x, y=y, col sep=comma] {external/data/euler-data-02.csv};
+							\addplot [domain=0:2, samples=50, black] {2*e^(-x^2)};
+						\end{axis}
+						
+					\end{tikzpicture}
+				</latex-image>
+
+			</image> -->
+
+		</p>
+
+		<p>
+
+			<image>
+				<latex-image>
+				
+					\begin{tikzpicture}
+					
+						set table  "../plots/pgfmanual-sine.table"
+						set format "%.5f"
+						set samples 20
+						plot [x=0:10] sin(x)
+						
+						\begin{axis}[]
+							% Draw the x-axis
+							\draw[-&gt;,thick] (-1.5,0) -- (8,0) node[right] {$x$};
+							\draw[-&gt;,thick] (0,-1.5) -- (0,1) node[right] {$y$};
+
+							\addplot[
+								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
+								&lt;-&gt;,
+								smooth,
+								thick,
+								color = blue,
+								mark = ball,
+							]{x*e^(-0.5*x^2)};
+
+							
+							\addplot[
+								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
+								&lt;-&gt;,
+								smooth,
+								thick,
+								color = orange,
+								mark = +,
+							]{x*e^(-0.5*x^2) - 0.05*x};
+
+							
+							\addplot[
+								only marks, mark size=1.5pt
+							]coordinates{
+								(0.0, 0.0000)
+								(0.5, 0.2438)
+								(1.0, 0.4524)
+								(1.5, 0.5989)
+								(2.0, 0.6703)
+								(2.5, 0.6691)
+								(3.0, 0.6099)
+								(3.5, 0.5141)
+								(4.0, 0.4038)
+								(4.5, 0.2970)
+							};
+							\addplot[
+								only marks, mark size=2.0pt, mark = +, color = orange,
+							]coordinates{
+								(0.0, 0.0000)
+								(0.5, 0.24)
+								(1.0, 0.44)
+								(1.5, 0.54)
+								(2.0, 0.62)
+								(2.5, 0.60)
+								(3.0, 0.55)
+								(3.5, 0.51)
+								(4.0, 0.46)
+								(4.5, 0.34)
+							};
+							\draw (4.5, 0.34) node[above] {$\hat{y}_7$};
+						\end{axis}
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+			<image xml:id="pgfplots-shit1">
+				<latex-image>
+
+					\pgfplotstablenew[
+						create on use/plot1/.style={
+							create col/expr={sin (2*pi*\pgfplotstablerow)}
+						},
+						columns={plot1}
+					]
+					{500}
+					\loadedtable
+					\pgfplotstablesave{\loadedtable}{myplot.dat}
+
+
+					\begin{tikzpicture}
+					\begin{axis}[
+							line join=bevel,
+							mark = +,
+							table/x expr={\coordindex},
+							xmin=0,
+							enlarge x limits=false,
+							ymin=-1.5,
+							ymax=1.5,
+						]
+					\addplot[red] table [y expr={\thisrow{plot1}}] {myplot.dat};
+					\end{axis}
+
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+		</p>
+
+	</subsection>
+
 	<subsection><title> Step 1: Set-up &amp; Verify </title>
 
 		<introduction>
@@ -330,64 +686,6 @@
 
 			</p>
 
-		</introduction>
-
-	</subsection>
-
-	<subsection><title> Improved Euler's Method </title>
-
-		<objectives>
-			<introduction>
-				<p>
-					Brainstorm ...
-				</p>
-			</introduction>
-			<ol>
-				<li> Average of two slopes improves the predictor </li>
-				<li> <image source="figures/reminder.jpg"></image> </li>
-				<li>  </li>
-			</ol>
-			
-		</objectives>
-
-		<introduction><title> Euler's Method </title>
-			<p>
-			</p>
-		
-			<exploration xml:id="method-imp-euler"><title> Improved Euler's Method </title>
-				<p>
-					A numerical solution to the first order differential equation
-					<men xml:id="method-imp-euler-de">
-						y' = f(x, y), \quad y(a) = y_0
-					</men>
-					can be found on the interval <m>[a, b]</m> through the following steps...
-				</p>
-				<dl width="narrow">
-					<li xml:id="imp-euler-step1"><title> Step 1: Set-up </title>
-						<p>
-							<line>Choose <m>h</m>.</line>
-							<line>Break <m>[a, b]</m> into
-							<m>
-								x_0,\ x_1,\ x_2,\ ...,\ x_{N-1},\ x_{N},
-							</m>
-							separated by <m>h</m>.
-							</line>
-						</p>
-					</li>
-					<li xml:id="imp-euler-step2"><title> Step 2: Find Approximation Formula <m>y_{i+1}</m> </title>
-						<p>
-							<line>Substitute <m>x_i</m> into <xref ref="method-imp-euler-de"/> &amp; rewrite <m>y(x_i)</m> as <m>y_i</m> and <m>y^\prime(x_i)</m> as <m>y^\prime_i</m>.</line>
-							<line>Replace <m>y^\prime_i</m> with <m>\ds\frac{1}{h}(y_{i+1} - y_{i})</m>.</line>
-							<line>Isolate <m>y_{i+1}</m>.</line>
-						</p>
-					</li>
-					<li xml:id="imp-euler-step3"><title> Step 3: Compute Approximation Values </title>
-						<p>
-							<line>Find <m>y_1, y_2, ... , y_N</m> using the approximation formula.</line>
-						</p>
-					</li>
-				</dl>
-			</exploration>	
 		</introduction>
 
 	</subsection>
