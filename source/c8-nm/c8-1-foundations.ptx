@@ -662,6 +662,52 @@
 			</exercise>
 		</paragraphs>
 
+		<paragraphs><title> Selecting a Step Size </title>
+			<p>
+				The choice of step size <m>h</m> is important. A smaller <m>h</m> generally leads to better accuracy because each step tracks the curve more closely — but it also means you need more steps to reach your destination. Larger values of <m>h</m> are faster, but less accurate and may introduce noticeable errors.
+			</p>
+
+			<exercise><title>Step Size Intuition</title>
+				<statement>
+					What is the effect of decreasing the step size <m>h</m> in a step-based numerical method?
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							It generally improves accuracy but increases computational cost.
+						</statement>
+						<feedback>
+							Correct — smaller steps follow the solution more closely, but take more steps to cover the interval.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It always gives the exact solution.
+						</statement>
+						<feedback>
+							No — smaller steps improve accuracy, but the solution is still approximate.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It makes the method faster but less accurate.
+						</statement>
+						<feedback>
+							No — smaller steps actually slow the computation down.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It has no effect on the outcome.
+						</statement>
+						<feedback>
+							No — step size is a key parameter in numerical methods.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+
 		<paragraphs><title> We Have the Approximation Locations. What Now? </title>
 			<p>
 				Establishing a set of <m>t</m>-values to estimate the solution immediately puts our goal into focus. In other words, if we apply a numerical method using the five <m>t</m>-values,
@@ -690,159 +736,35 @@
 
 	</subsection>
 
-<subsection><title> Using the Derivative to Estimate the Solution </title>
+	<subsection><title> Numerical Solutions via Derivative Estimation </title>
 
-	<paragraphs><title> From Differential Equation to Approximation </title>
-		<p>
-			Selecting the approximation locations immediately establishes the <m>y</m>-values of the solution you want to approximate. For example, suppose you choose the five <m>t</m>-values:
-		</p>
-
-		<me>
-			t = 0,\ 0.5,\ 1,\ 1.5,\ 2
-		</me>.
-
-		<p>
-			Then, regardless of the differential equation, you are explicitly stating that your goal is to approximate the following five <m>y</m>-values:
-		</p>
-
-		<me>
-			y(0),\ y(0.5),\ y(1),\ y(1.5),\ y(2)
-		</me>.
-
-		<p>
-			Now, let's see what happens when we get a differential equation involved. Consider the equation:
-		</p>
-
-		<me>
-			y'(t) = y(t) + t^2, \quad y(0) = 1, \quad 0 \le t \le 2
-		</me>.
-
-		<p>
-			Since this differential equation is supposed to be true at every point in the interval, we can plug in our selected <m>t</m>-values to get:
-		</p>
-
-		<tabular>
-			<col halign="right" />
-			<col halign="center" />
-			<col halign="left" />
-			<col halign="center" />
-			<col halign="center" />
-			<row>
-				<cell colspan="2"><m>t_k</m> - value</cell>
-				<cell>Differential Equation at <m>t_k</m></cell>
-				<cell>Want</cell>
-				<cell>Don't Know</cell>
-			</row>
-			<row>
-				<cell><m>t_0:</m></cell>
-				<cell><m>0</m></cell>
-				<cell><m>{\DLGb y'(0)} = {\DLBa y(0)} + 0^2</m></cell>
-				<cell><m>\DLBa y(0)</m></cell>
-				<cell><m>\DLGb y'(0)</m></cell>
-			</row>
-			<row>
-				<cell><m>t_1:</m></cell>
-				<cell><m>0.5</m></cell>
-				<cell><m>{\DLGb y'(0.5)} = {\DLBa y(0.5)} + (0.5)^2</m></cell>
-				<cell><m>\DLBa y(0.5)</m></cell>
-				<cell><m>\DLGb y'(0.5)</m></cell>
-			</row>
-			<row>
-				<cell><m>t_2:</m></cell>
-				<cell><m>1</m></cell>
-				<cell><m>{\DLGb y'(1)} = {\DLBa y(1)} + 1^2</m></cell>
-				<cell><m>\DLBa y(1)</m></cell>
-				<cell><m>\DLGb y'(1)</m></cell>
-			</row>
-			<row>
-				<cell><m>t_3:</m></cell>
-				<cell><m>1.5</m></cell>
-				<cell><m>{\DLGb y'(1.5)} = {\DLBa y(1.5)} + (1.5)^2</m></cell>
-				<cell><m>\DLBa y(1.5)</m></cell>
-				<cell><m>\DLGb y'(1.5)</m></cell>
-			</row>
-			<row>
-				<cell><m>t_4:</m></cell>
-				<cell><m>2</m></cell>
-				<cell><m>{\DLGb y'(2)} = {\DLBa y(2)} + 2^2</m></cell>
-				<cell><m>\DLBa y(2)</m></cell>
-				<cell><m>\DLGb y'(2)</m></cell>
-			</row>
-		</tabular>
-
-		<p>
-			As you can see, plugging in <m>t_k</m> reveals the exact <m>{\DLBa y(t_k)}</m> we want to know — but it also introduces <m>{\DLGb y'(t_k)}</m>, which we don't know either. So we seem to be stuck.
-		</p>
-
-		<p>
-			But there's a clever way out. Since the equation tells us what the derivative is supposed to equal, we can try working backward — and use the derivative to estimate the <em>next</em> value of <m>y</m>.
-		</p>
-	</paragraphs>
-
-	<paragraphs><title> Approximating The Derivative </title>
-		<p>
-			Recall the definition of the derivative:
-		</p>
-
-		<me>
-			y'(t) = \lim_{h \to 0} \frac{y(t + h) - y(t)}{h}.
-		</me>
-
-		<p>
-			If seeing the derivative as a limit makes you uneasy, don't worry, we actually want think about it in a more practical context, as follows:
-		</p>
-
-		<sidebyside width="72%" margin="14%">
+		<paragraphs><title> From Differential Equation to Approximation </title>
 			<p>
-				<q>The closer <m>h</m> is to zero, the closer <m>\ds\frac{y(t + h) - y(t)}{h}</m> is to <m>y'(t)</m>.</q>
-			</p>
-		</sidebyside>
-
-		<p>
-			This statement suggests one of the most important ideas in numerical methods: 
-		</p>
-
-		<assemblage xml:id="forward-difference-formula"><title> Forward Difference Derivative Approximation </title>
-			<p>
-				Assuming <m>h</m> is small, then <m>y'(t)</m> can be approximated by the difference quotient:
-				<me>
-					y'(t) \approx \frac{1}{h}\Big(y(t + h) - y(t)\Big)
-				</me>.
-			</p>
-		</assemblage>
-
-		<p>
-			In the context of numerical methods, this formula provides a simple way to rewrite <m>y'(t)</m> in terms of <m>y(t)</m>. Moreover, since you pick the step size, <m>h</m>, you also control the accuracy of your approximations—the smaller the step size, the better the approximation.
-		</p>
-	</paragraphs>
-
-		<paragraphs><title> Applying the Idea </title>
-			<p>
-				Using this idea to approximate the derivative, let's go back to our example:
+				Selecting the approximation locations immediately establishes the <m>y</m>-values of the solution you want to approximate. For example, suppose you choose the five <m>t</m>-values:
 			</p>
 
 			<me>
-				y'(t) = y(t) + t^2, \quad y(0) = 1, \quad 0 \le t \le 2.
-			</me>
-
-			<p>
-				Where we were stuck because we didn't know the derivative at the <m>t</m>-values. But now, assuming that <m>h=0.5</m> is small enough, we can use the <xref ref="forward-difference-formula" text="custom">forward difference formula</xref> to rewrite our equation as
-			</p>
-
-			<me>
-				\frac{1}{h}\Big(y(t + h) - y(t)\Big) \approx y(t) + t^2
-			</me>,
-
-			<p>
-				which can be rearranged as
-			</p>
-
-			<me>
-				y(t + h) \approx y(t) + h(y(t) + t^2)
+				t = 0,\ 0.5,\ 1,\ 1.5,\ 2
 			</me>.
 
 			<p>
-				Plugging the <m>t</m>-values into the approximate form of differential equation we get
+				Then, regardless of the differential equation, you are explicitly stating that your goal is to approximate the following five <m>y</m>-values:
+			</p>
+
+			<me>
+				y(0),\ y(0.5),\ y(1),\ y(1.5),\ y(2)
+			</me>.
+
+			<p>
+				Now, let's see what happens when we get a differential equation involved. Consider the equation:
+			</p>
+
+			<me>
+				y'(t) = y(t) + t^2, \quad y(0) = 1, \quad 0 \le t \le 2
+			</me>.
+
+			<p>
+				Since this differential equation is supposed to be true at every point in the interval, we can plug in our selected <m>t</m>-values to get:
 			</p>
 
 			<tabular>
@@ -854,186 +776,291 @@
 				<row>
 					<cell colspan="2"><m>t_k</m> - value</cell>
 					<cell>Differential Equation at <m>t_k</m></cell>
+					<cell>Want</cell>
+					<cell>Don't Know</cell>
 				</row>
 				<row>
 					<cell><m>t_0:</m></cell>
 					<cell><m>0</m></cell>
-					<cell><m>{\DLGb y(0.5)} \approx {\DLBa y(0)} + 0.5 ({\DLBa y(0)} + (0))</m></cell>
-					<cell><m>{\DLGb y(0.5)} \approx 1.5 </m></cell>	
+					<cell><m>{\DLGb y'(0)} = {\DLBa y(0)} + 0^2</m></cell>
+					<cell><m>\DLBa y(0)</m></cell>
+					<cell><m>\DLGb y'(0)</m></cell>
 				</row>
 				<row>
 					<cell><m>t_1:</m></cell>
 					<cell><m>0.5</m></cell>
-					<cell><m>{\DLO y(1)} \approx {\DLGb y(0.5)} + 0.5 ({\DLGb y(0.5)} + (0.5))</m></cell>
-					<cell><m>{\DLO y(1)} \approx {\DLGb 1.5} + 0.5 ({\DLGb 1.5} + (0.5)) = 2.5</m></cell>
+					<cell><m>{\DLGb y'(0.5)} = {\DLBa y(0.5)} + (0.5)^2</m></cell>
+					<cell><m>\DLBa y(0.5)</m></cell>
+					<cell><m>\DLGb y'(0.5)</m></cell>
 				</row>
 				<row>
 					<cell><m>t_2:</m></cell>
 					<cell><m>1</m></cell>
-					<cell><m>{\DLRa y(1.5)} \approx {\DLO y(1)} + 0.5 ({\DLO y(1)} + (1))</m></cell>
-					<cell><m>{\DLRa y(1.5)} \approx {\DLO 2.5} + 0.5 ({\DLO 2.5} + (1)) = 3.25</m></cell>
+					<cell><m>{\DLGb y'(1)} = {\DLBa y(1)} + 1^2</m></cell>
+					<cell><m>\DLBa y(1)</m></cell>
+					<cell><m>\DLGb y'(1)</m></cell>
 				</row>
 				<row>
 					<cell><m>t_3:</m></cell>
 					<cell><m>1.5</m></cell>
-					<cell><m>y(2) \approx {\DLRa y(1.5)} + 0.5 ({\DLRa y(1.5)} + (1.5))</m></cell>
-					<cell><m>y(2) \approx {\DLRa 3.25} + 0.5 ({\DLRa 3.25} + (1.5)) = 5.625</m></cell>
+					<cell><m>{\DLGb y'(1.5)} = {\DLBa y(1.5)} + (1.5)^2</m></cell>
+					<cell><m>\DLBa y(1.5)</m></cell>
+					<cell><m>\DLGb y'(1.5)</m></cell>
+				</row>
+				<row>
+					<cell><m>t_4:</m></cell>
+					<cell><m>2</m></cell>
+					<cell><m>{\DLGb y'(2)} = {\DLBa y(2)} + 2^2</m></cell>
+					<cell><m>\DLBa y(2)</m></cell>
+					<cell><m>\DLGb y'(2)</m></cell>
 				</row>
 			</tabular>
-		</paragraphs>
 
-	<paragraphs><title> Applying the Idea </title>
-		<p>
-			In our example, we know that <m>y(0) = 1</m> from the initial condition. Using the differential equation:
-		</p>
-
-		<me>
-			y'(0) = y(0) + 0^2 = 1.
-		</me>
-
-		<p>
-			If we choose a step size of <m>h = 0.5</m>, then the approximation formula becomes:
-		</p>
-
-		<me>
-			y(0.5) \approx y(0) + h \cdot y'(0) = 1 + 0.5 \cdot 1 = 1.5.
-		</me>
-
-		<p>
-			We've just estimated <m>y(0.5)</m> using the information at <m>t = 0</m>. Now repeat the process.
-		</p>
-
-		<p>
-			Use the estimated <m>y(0.5) \approx 1.5</m> to calculate the next derivative:
-		</p>
-
-		<me>
-			y'(0.5) = y(0.5) + (0.5)^2 \approx 1.5 + 0.25 = 1.75.
-		</me>
-
-		<p>
-			Then estimate:
-		</p>
-
-		<me>
-			y(1) \approx y(0.5) + h \cdot y'(0.5) = 1.5 + 0.5 \cdot 1.75 = 2.375.
-		</me>
-
-		<p>
-			And so on — each new value is estimated from the previous one using the differential equation.
-		</p>
-	</paragraphs>
-
-			<paragraphs><title> Estimating the First Value </title>
 			<p>
-				In our example, we know from the initial condition that <m>y(0) = 1</m>. The differential equation tells us that <m>y'(t) = y(t)</m>, so at <m>t = 0</m>:
+				As you can see, plugging in <m>t_k</m> reveals the exact <m>{\DLBa y(t_k)}</m> we want to know — but it also introduces <m>{\DLGb y'(t_k)}</m>, which we don't know either. So we seem to be stuck.
 			</p>
 
-			<me>
-				y'(0) = y(0) = 1.
-			</me>
-
 			<p>
-				Using this value and a step size of <m>h = 0.5</m>, the approximation formula becomes:
-			</p>
-
-			<me>
-				\frac{y(0.5) - y(0)}{0.5} \approx y'(0) = 1.
-			</me>
-
-			<p>
-				Multiplying both sides by <m>0.5</m> gives:
-			</p>
-
-			<me>
-				y(0.5) - y(0) \approx 0.5.
-			</me>
-
-			<p>
-				So our estimate for <m>y(0.5)</m> is:
-			</p>
-
-			<me>
-				y(0.5) \approx y(0) + 0.5 = 1 + 0.5 = 1.5.
-			</me>
-
-			<p>
-				Even though this value is not exact, it's a good start. We've used the value of <m>y</m> at one point and the equation's derivative to estimate the value at the next.
+				But there's a clever way out. Since the equation tells us what the derivative is supposed to equal, we can try working backward — and use the derivative to estimate the <em>next</em> value of <m>y</m>.
 			</p>
 		</paragraphs>
 
-	<paragraphs><title> Summary and Next Steps </title>
-		<p>
-			What started as a list of unknown values —
-		</p>
-
-		<me>
-			y(0),\ y(0.5),\ y(1),\ y(1.5),\ y(2)
-		</me>
-
-		<p>
-			— has now become a list of estimates, each built from the one before it using the derivative. This process forms the foundation of Euler's Method, which we'll define next.
-		</p>
-
-		<note><title> Coming Up: Euler's Method </title>
+		<paragraphs><title> Approximating The Derivative </title>
 			<p>
-				We now have all the pieces — <m>t</m>-values, a step size <m>h</m>, and a way to use <m>y'(t) = f(t, y)</m> to predict the next <m>y</m>-value. In the next subsection, we'll write all of this as a general formula.
+				Recall the definition of the derivative:
 			</p>
+
+			<me>
+				y'(t) = \lim_{h \to 0} \frac{y(t + h) - y(t)}{h}.
+			</me>
+
+			<p>
+				If seeing the derivative as a limit makes you uneasy, don't worry, we actually want think about it in a more practical context, as follows:
+			</p>
+
+			<sidebyside width="72%" margin="14%">
+				<p>
+					<q>The closer <m>h</m> is to zero, the closer <m>\ds\frac{y(t + h) - y(t)}{h}</m> is to <m>y'(t)</m>.</q>
+				</p>
+			</sidebyside>
+
+			<p>
+				This statement suggests one of the most important ideas in numerical methods: 
+			</p>
+
+			<assemblage xml:id="forward-difference-formula"><title> Forward Difference Derivative Approximation </title>
+				<p>
+					Assuming <m>h</m> is small, then <m>y'(t)</m> can be approximated by the difference quotient:
+					<me>
+						y'(t) \approx \frac{1}{h}\Big(y(t + h) - y(t)\Big)
+					</me>.
+				</p>
+			</assemblage>
+
+			<p>
+				In the context of numerical methods, this formula provides a simple way to rewrite the derivative, <m>y'(t)</m> in terms of the original function, <m>y(t)</m> and can be interpreted as
+			</p>
+
+			<sidebyside width="60%" margin="20%">
+				<p>
+					<q>
+						current <m>y</m> derivative 
+						<m>
+							\ds\approx 
+							\ub{\frac{\text{next}\ y -\ \text{current}\ y}{\text{next}\ t - \text{current}\ t}}_{\large\text{step size}}
+						</m>
+					</q>
+				</p>
+			</sidebyside>
+
+			<p>
+				where <q>current</q> refers to a value at <m>t</m> and <q>next</q>, a value at <m>t+h</m> (current + step).
+			</p>
+
+		</paragraphs>
+
+		<paragraphs><title> Applying the Idea </title>
+			<p>
+				Using this idea to approximate the derivative, let's go back to our example:
+			</p>
+
+			<me>
+				y'(t) = y(t) + t, \quad y(0) = 1, \quad 0 \le t \le 2.
+			</me>
+
+			<p>
+				Recall, we were stuck because we didn't know the derivative at the <m>t</m>-values. But now, assuming that <m>h=0.5</m> is small enough, we can use the <xref ref="forward-difference-formula" text="custom">forward difference formula</xref> to rewrite our equation as
+			</p>
+
+			<me>
+				\frac{1}{h}\Big(y(t + h) - y(t)\Big) \approx y(t) + t^2
+			</me>,
+
+			<p>
+				which can be rearranged as
+			</p>
+
+			<men xml:id="approx-differential-equation">
+				y(t + h) \approx y(t) + h(y(t) + t)
+			</men>.
+
+			<p>
+				Remember, this can also be interpreted as follows:
+			</p>
+
+			<me>
+				\text{next}\ y \approx \text{current}\ y + \text{step} \cdot \left(\text{current}\ y +\ \text{current}\ t\right)
+			</me>
+			
+
+			<p>
+				One-by-one, let's plug in each of the <m>t</m>-values into the approximate differential equation <xref ref="approx-differential-equation"/> and keep track of each <m>y</m>-value we discover. Note, that the first value, <m>y(0)</m>, we get for free since, <m>y(0)=1</m> is the initial condition.
+			</p>
+			
+			<p>
+				Now, the first <m>t</m>-value we plug in is <m>t = {\DLO 0}</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 0}) = 1</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 0}+0.5)	\amp \approx y({\DLO 0}) + 0.5 (y({\DLO 0}) + {\DLO 0})</mrow>
+						<mrow>y(0.5)				\amp \approx 1.5</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<p>
+
+				Next, we plug in <m>t = {\DLO 0.5}</m>, using the value we just found for <m>y({\DLO 0.5})</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 0.5}) = 1.5</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 0.5}+0.5)	\amp \approx y({\DLO 0.5}) + 0.5 (y({\DLO 0.5}) + {\DLO 0.5})</mrow>
+						<mrow>y(1)				\amp \approx 2.5</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<p>
+				We continue this for <m>t = {\DLO 1}</m> and <m>t = {\DLO 1.5}</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 1}) = 2.5</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 1}+0.5)	\amp \approx y({\DLO 1}) + 0.5 (y({\DLO 1}) + {\DLO 1})</mrow>
+						<mrow>y(1)				\amp \approx 3.25</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 1.5}) = 3.25</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 1.5}+0.5)	\amp \approx y({\DLO 1.5}) + 0.5 (y({\DLO 1.5}) + {\DLO 1.5})</mrow>
+						<mrow>y(2)				\amp \approx 5.625</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+		</paragraphs>
+
+		<note><title> Interactive? </title>
+			<figure xml:id="figure-quadratic-slope">
+				<caption>Finding the Tangent Line of a Quadratic Function</caption>
+
+				<interactive xml:id="interactive-quadratic-tangent" platform="jsxgraph" width="80%">
+					<slate xml:id="quadratic-tangent-plot" surface="jessiecode" axis="true" grid="false">
+						
+						a = 0.25;
+						b = 0;
+						c = -1;
+
+						fGraph = functiongraph(function(x) {
+							return a*x^2 + b*x + c;
+						});
+
+						P = glider(1,0, fGraph);
+						Q = point(2,2)
+						&lt;&lt;
+							name: "Q",
+							snapSizeX: 0.5,
+							snapSizeY: 0.5,
+							snapToGrid: true	
+						&gt;&gt;;
+
+						secant = line(P,Q)
+
+						&lt;&lt;
+							color: (
+								function() {
+									m = (Q.Y() - P.Y())/(Q.X() - P.X());
+									dydx = 2*a*P.X() + b;
+									cVal = "red";
+									if (abs(m-dydx) &lt; 0.01) { cVal = "blue"; }
+
+									return cVal;
+								})
+						&gt;&gt;;
+
+						dydxValue = text(-4, 1.5,
+							function() {
+								m = 2*a*P.X() + b;
+								return ("dy/dx = " + trunc(m,3));
+							})
+
+						&lt;&lt; frozen: true &gt;&gt;;
+
+						mValue = text(-4, 1,
+							function() {
+								m = (Q.Y() - P.Y())/(Q.X() - P.X());
+								return ("m = " + trunc(m,3));
+							})
+
+						&lt;&lt; frozen: true &gt;&gt;;
+					</slate>
+
+					<instructions>
+						<p>
+							Use the sliders to set the parameters of the quadratic <m>f(x)=ax^2+bx+c</m>.
+							Drag the point <m>A</m> on the graph and the point <m>P</m> to define a line.
+							Try to make the line tangent at the point at <m>A</m> and observe the resulting slope of the tangent line.
+						</p>
+					</instructions>
+				</interactive>
+			</figure>
 		</note>
-	</paragraphs>
-
-			<paragraphs><title> Repeat the Process </title>
-			<p>
-				Now that we have an estimate for <m>y(0.5)</m>, we can repeat the process to approximate <m>y(1)</m>. First, we evaluate the right-hand side of the equation at <m>t = 0.5</m>, using our new estimate:
-			</p>
-
-			<me>
-				y'(0.5) = y(0.5) \approx 1.5.
-			</me>
-
-			<p>
-				Then we apply the same formula:
-			</p>
-
-			<me>
-				y(1) \approx y(0.5) + h \cdot y'(0.5) = 1.5 + 0.5 \cdot 1.5 = 2.25.
-			</me>
-
-			<p>
-				Each new estimate builds on the one before. By repeating this process — substitute <m>t = t_k</m> into the equation, approximate <m>y(t_{i+1})</m> — we can march forward, one step at a time.
-			</p>
-		</paragraphs>
 
 		<paragraphs><title> Looking Ahead </title>
 			<p>
 				To keep things tidy, we'll soon introduce a shorthand notation where <m>y_i</m> represents the approximate value of <m>y(t_k)</m>. For now, just notice how each estimate is based on the equation's derivative — which acts like a prediction of what happens next.
 			</p>
 
-			<note><title> What's next? </title>
-				<p>
-					In the next subsection, we'll turn this process into a precise, reusable formula — and formally introduce Euler's Method.
-				</p>
-			</note>
-		</paragraphs>
-
-
-				<paragraphs><title> Applying Approximation Locations to a Differential Equation </title>
 			<p>
-				Once you have selected the locations where you want to approximate the solution, you can apply these <m>t</m>-values to the differential equation. 
+				In the next subsection, we'll turn this process into a precise, reusable formula — and formally introduce Euler's Method.
 			</p>
-		</paragraphs>
-
-		<paragraphs><title> Definition of Derivative </title>
-
-			<p>
-				<me>
-					y'(x) = \lim_{h \to 0} \frac{y(x+h) - y(x)}{h} \approx \frac{y(x + 0.1) - y(x)}{0.1}
-				</me>
-				<me>
-					y'(0) \approx \frac{y(0 + 0.1) - y(0)}{0.1} = \frac{y(0.1) - y(0)}{0.1}
-				</me>
-			</p>
-
 		</paragraphs>
 
 		<example xml:id="euler-example-00">
@@ -1043,10 +1070,15 @@
 					Suppose you knew <m>y(0) = 1</m> and <m>y'(0) = 2</m>.
 				</p>
 				<p>
-					Could you approximate <m>y(1)</m> without knowing anything about <m>y(x)</m>?
+					Use the forward difference formula with a step size of <m>h = 0.5</m> to predict the value of <m>y(0.5)</m>.
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					Fuck off!
 				</p>
 				<image>
-
 					<latex-image>
 
 						\begin{tikzpicture}
@@ -1075,89 +1107,15 @@
 
 							\end{axis}
 
-
-						
-
 						\end{tikzpicture}
 
 					</latex-image>
 
 				</image>
-			</statement>
-
-			<solution>
-				<p>
-					Fuck off!
-				</p>
 			</solution>
 
 		</example>
-
-		<figure xml:id="figure-quadratic-slope">
-			<caption>Finding the Tangent Line of a Quadratic Function</caption>
-
-			<interactive xml:id="interactive-quadratic-tangent" platform="jsxgraph" width="80%">
-				<slate xml:id="quadratic-tangent-plot" surface="jessiecode" axis="true" grid="false">
-					
-					a = 0.25;
-					b = 0;
-					c = -1;
-
-					fGraph = functiongraph(function(x) {
-						return a*x^2 + b*x + c;
-					});
-
-					P = glider(1,0, fGraph);
-					Q = point(2,2)
-					&lt;&lt;
-						name: "Q",
-						snapSizeX: 0.5,
-						snapSizeY: 0.5,
-						snapToGrid: true	
-					&gt;&gt;;
-
-					secant = line(P,Q)
-
-					&lt;&lt;
-						color: (
-							function() {
-								m = (Q.Y() - P.Y())/(Q.X() - P.X());
-								dydx = 2*a*P.X() + b;
-								cVal = "red";
-								if (abs(m-dydx) &lt; 0.01) { cVal = "blue"; }
-
-								return cVal;
-							})
-					&gt;&gt;;
-
-					dydxValue = text(-4, 1.5,
-						function() {
-							m = 2*a*P.X() + b;
-							return ("dy/dx = " + trunc(m,3));
-						})
-
-					&lt;&lt; frozen: true &gt;&gt;;
-
-					mValue = text(-4, 1,
-						function() {
-							m = (Q.Y() - P.Y())/(Q.X() - P.X());
-							return ("m = " + trunc(m,3));
-						})
-
-					&lt;&lt; frozen: true &gt;&gt;;
-				</slate>
-
-				<instructions>
-					<p>
-						Use the sliders to set the parameters of the quadratic <m>f(x)=ax^2+bx+c</m>.
-						Drag the point <m>A</m> on the graph and the point <m>P</m> to define a line.
-						Try to make the line tangent at the point at <m>A</m> and observe the resulting slope of the tangent line.
-					</p>
-				</instructions>
-			</interactive>
-		</figure>
-
-</subsection>
+	</subsection>
 
 	<conclusion>
 		<objectives>

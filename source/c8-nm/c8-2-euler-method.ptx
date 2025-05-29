@@ -1,547 +1,455 @@
 <section><title> Euler's Method </title>
 
-	<introduction>
+	<p>
+		In this section, we'll build intuition for the most common kind of numerical method — one that approximates the solution to an initial value problem by computing values of <m>y(t)</m> one step at a time. It might feel a little strange at first, but you're not solving the entire equation at once. Instead, you're just walking forward from one point to the next, building a trail of approximate values as you go.
+	</p>
+
+	<p>
+		To give you an idea of how some of these methods work, imagine you are hiking through the woods in the fog from point <m>A</m> to <m>B</m>. Assuming there exists a best possible path, can you approximate if you only knew the information below?
+		<ul>
+			<li>
+				<p>
+					Your current position.
+				</p>
+			</li>
+			<li>
+				<p>
+					The direction you should go from your current position.
+				</p>
+			</li>
+		</ul>
+	</p>
+
+	<p>
+		To make progress from point <m>A</m>, you walk in a direction for some time, then stop, note your current position and recalculate the new direction to walk. You repeat this process until, ideally, you are somewhere near point <m>B</m>.
+	</p>
+
+	<p>
+		In this analogy, the solution you are trying to approximate is the best possible path from point <m>A</m> to <m>B</m>. The approximation is the collection of current positions (starting with <m>A</m>) you noted when you stopped to update your direction. This systematic process is precisely how some numerical methods work.
+	</p>
+
+	<exercise><title> What's the Tradeoff </title>
+		<statement>
+			<p>
+				In the previous analogy, what trade-off do you think exists when approximating the best possible path?
+			</p>
+		</statement>
+		<choices randomize="yes">
+			<choice correct="yes">
+				<statement>
+					The more often you stop to recalculate your position, the more accurate your approximation, but the longer it takes.
+				</statement>
+				<feedback>
+					Correct — stopping more often gives you a better approximation, but it also takes more time.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					The less often you stop, the more accurate your approximation.
+				</statement>
+				<feedback>
+					This is not true — stopping less often leads to a less accurate approximation.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					The more often you stop, the less accurate your approximation.
+				</statement>
+				<feedback>
+					This is not true — stopping more often leads to a more accurate approximation.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					The direction you choose does not affect the accuracy of your approximation.
+				</statement>
+				<feedback>
+					This is not true — the direction you choose is crucial for making progress toward the best path.
+				</feedback>
+			</choice>
+		</choices>
+	</exercise>
+
+	<paragraphs><title> An Analogy </title>
 		<p>
-			In this section, we'll build intuition for the most common kind of numerical method — one that approximates the solution to an initial value problem by computing values of <m>y(t)</m> one step at a time. It might feel a little strange at first, but you're not solving the entire equation at once. Instead, you're just walking forward from one point to the next, building a trail of approximate values as you go.
+			Imagine you're a tiger hunting prey in a dense forest. You can't see the prey, but you can smell which direction it's in. So you head in that direction for 5 seconds, then stop to sniff the air again and readjust your course. You repeat this process — move a bit, check the scent, adjust — until you either find your prey or lose the trail.
 		</p>
 
 		<p>
-			To give you an idea of how some of these methods work, imagine you are hiking through the woods in the fog from point <m>A</m> to <m>B</m>. Assuming there exists a best possible path, can you approximate if you only knew the information below?
+			This is the essence of Euler’s Method. The tiger’s position every 5 seconds is like the numerical solution: a series of approximated locations. The prey’s true path is the exact, analytic solution to the differential equation. And the scent? That’s the derivative — the information that tells you which direction to go next.
+		</p>
+
+		<p>
+			Just like the tiger, Euler’s Method doesn't know the full path in advance. It only knows where it is and which way to head — based on the differential equation — and it follows that direction one small step at a time.
+		</p>
+	</paragraphs>
+
+	<paragraphs><title> A Concrete Introduction to Euler's Method  </title>
+		<p>
+			Before deriving the general formula for Euler's Method, let's walk through the process on a specific example. For clarity, we will use a large step size to illustrate the method, but in practice, you would typically use a smaller step size to get a more accurate approximation.
+		</p>
+
+		<p>
+			Consider the initial value problem
+			<me>
+				y'(t) = 6t + y(t), \quad y(0) = -2, \quad t \text{ in } [0, 1.5].
+			</me>
+			Let's approximate the solution at the equally-spaced <m>t</m>-values: <m>0, 0.5, 1, 1.5</m>. A complete approximation will consist of the <m>y</m>-values from the following four points:   
+		</p>
+
+		<me>
+			(0,\ y(0)),\quad (0.5,\ y(0.5)),\quad (1,\ y(1)),\quad (1.5,\ y(1.5)).
+		</me>
+
+		<p>
+			The initial condition, <m>y(0) = -2</m>, gives us the first point and this is where Euler's Method officially begins.
+		</p>
+
+		<p>
+			From our current position, <m>(0, -2)</m>, we need the direction (i.e., slope, <m>y'(0)</m>) that our solution, <m>y</m>, moves along at <m>t=0</m>. Notice that the differential equation is basically machine that outputs <m>y'(t)</m> values for any <m>t</m>. In particular, for <m>t = 0</m> we get
+		</p>
+
+		<me>
+			y'(t) = 6t + y(t) 
+			\os{\large t=0}{\quad\longrightarrow\quad} 
+			y'(0) = 6(0) + y(0) 
+			\quad\longrightarrow\quad
+			y'(0) = -2.
+		</me>
+
+		<p>
+			This slope says that when <m>t</m> increases by <m>1</m>, <m>y</m> changes by <m>-2</m>. But, you can also say that when <m>t</m> increases by <m>h</m>, <m>y</m> changes by <m>-2\cdot h</m> since both lead to the same slope:
+		</p>
+
+		<me>
+			\text{slope}\ = -2:\quad
+			-\frac{2}{1}\
+			\left(\frac{\text{down}\ 2}{\text{over}\ 1}\right)
+			\ \ \text{and}\ \
+			-\frac{2\cdot h}{1\cdot h}\
+			\left(\frac{\text{down}\ 2h}{\text{over}\ h}\right)
+		</me>
+
+		<p>
+			Thus, from <m>(0, -2)</m>, <m>t</m> moves right by <m>0.5</m> and <m>y</m> moves down by <m>-2\cdot 0.5 = -1</m>, giving the next approximation as <m>y(0.5) \approx -3</m> and the new position <m>(0.5, -3)</m>.
+		</p>
+
+		<p>
+			Now, we repeat the process. From our new position, <m>(0.5, -3)</m>, we need the slope at <m>t = 0.5</m>, which comes directly from the differential equation:
+		</p>
+
+		<me>
+			y'(t) = 6t + y(t) 
+			\os{\large t=0.5}{\quad\longrightarrow\quad} 
+			y'(0.5) = 6(0.5) + y(0.5) 
+			\quad\longrightarrow\quad
+			y'(0.5) = 0.
+		</me>
+
+		<p>
+			A zero slope says that <m>y</m> does not change at all. So, <m>y(1) \approx -3</m> and the new position is <m>(1, -3)</m>.
+		</p>
+
+		<p>
+			Finally, <m>(1, -3)</m>, we compute the slope at <m>t = 1</m>:
+		</p>
+		<me>
+			y'(t) = 6t + y(t) 
+			\os{\large t=1}{\quad\longrightarrow\quad} 
+			y'(1) = 6(1) + y(1) 
+			\quad\longrightarrow\quad
+			y'(1) = 3.
+		</me>
+
+		<p>
+			Here, when <m>t</m> increases by <m>0.5</m>, <m>y</m> moves up by <m>3\cdot 0.5 = 1.5</m>. So the last value is <m>y(1.5) \approx -1.5</m> and the complete approximation is given by the values:
+		</p>
+
+		<sidebyside widths="6% 38% 50% 6%" valign="middle">
+			<p/>
+			<p>
+				<md>
+					<mrow> y(0)		\amp \approx -2.0,</mrow>
+					<mrow> y(0.5)	\amp \approx -3.0,</mrow>
+					<mrow> y(1)		\amp \approx -3.0,</mrow>
+					<mrow> y(1.5)	\amp \approx -1.5.</mrow>
+				</md>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+							\begin{tikzpicture}[samples=50]
+		
+								% === colors ===
+								\def\fColor{blue}			\def\fFill{\fColor!15}
+								\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+								% === figure/domain/tick bounds ===
+								\def\tmin{-0.2}	\def\tmax{1.8}
+								\def\ymin{-4.9}	\def\ymax{1.8}
+								\def\tticks{1, 2}
+								\def\yticks{2, 4}
+								\def\dyA{-2} \def\dyB{0} \def\dyC{3}
+								\def\h{0.5} \def\s{0.5}
+
+
+								% === Function definitions ===
+								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+								\def\a{0}	\def\b{2}
+								\def\c{1.13}
+
+								\begin{axis}[
+									width=24cm, height=8cm, scale=0.25,
+									xlabel={$t$}, ylabel={$y$},
+									%title={Euler's Method Step 1},
+									title style={font=\small},
+									grid=both,
+									%tick style={thick},
+									line width=1pt,
+									axis lines=middle,
+									xtick distance=0.5, ytick distance=2,
+									minor x tick num=0, minor y tick num=1,
+									xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+									xticklabel style={yshift=1.5em, font=\scriptsize},
+									yticklabel style={font=\scriptsize},
+								]
+								
+									% Read and plot data from file
+									\addplot+ [only marks] coordinates {
+										(0.0,-2.0)
+										(0.5,-3.0)
+										(1.0,-3.0)
+										(1.5,-1.5)
+									};
+									\addplot+ [black, no marks, -&gt;] (0.0, -2.0) -- ({0.0+\h*\s}, {-2.0+\dyA*\h*\s});
+									\addplot+ [black, no marks, -&gt;] (0.5, -3.0) -- ({0.5+\h*\s}, {-3.0+\dyB*\h*\s});
+									\addplot+ [black, no marks, -&gt;] (1.0, -3.0) -- ({1.0+\h*\s}, {-3.0+\dyC*\h*\s});
+
+									\node[font=\scriptsize] at (0.22,	-4.3)	{slope: $-2$};
+									\node[font=\scriptsize] at (0.68,	-4.3)	{slope: $0$};
+									\node[font=\scriptsize] at (1.18,	-4.3)	{slope: $3$};
+								\end{axis}
+							\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
+	</paragraphs>
+
+	<paragraphs><title> How Euler's Method Works </title>
+
+		<p>
+			Euler’s Method is a step-by-step process for approximating the solution to a differential equation of the form
+		</p>
+
+		<me>
+			y'(t) = f(t, y), \quad y(t_0) = y_0, \quad \text{for } t \text{ in } [t_0, t_N].
+		</me>
+
+		<p>
+			The goal is to estimate the values of the solution <m>y(t)</m> at a sequence of evenly spaced time points:
+		</p>
+
+		<me>
+			t_0,\ t_1,\ t_2,\ \ldots,\ t_N,
+		</me>
+
+		<p>
+			where each is separated by the step size, <m>h</m> (i.e., <m>t_{k+1} = t_k + h</m>). For convenience, we'll use the shorthand <m>y_k = y(t_k)</m>, so the solution points we want to approximate are:
+		</p>
+
+		<me>
+			(t_0, y_0),\ (t_1, y_1),\ (t_2, y_2),\ \ldots,\ (t_N, y_N).
+		</me>
+
+		<p>
+			Since the initial condition <m>y(t_0) = y_0</m> is given, we know the first point, <m>(t_0, y_0)</m>. So it makes sense to always start here.
+			
+			
+			The remaining points are approximated using the differential equation itself, which provides the slope of the solution at each point.
+			At each step, you know your current position <m>(t_k, y_k)</m>, and the differential equation tells you the direction to move to get the next position. But, how do you use this information to get to the next position <m>(t_{k+1}, y_{k+1})</m>?
+		</p>
+
+	</paragraphs>
+
+	<paragraphs><title> Euler's Method Process </title>
+
+	</paragraphs>
+
+	<paragraphs><title> Step 1: Set-up &amp; Verify </title>
+
+		<outcomes>
 			<ul>
 				<li>
-					<p>
-						Your current position.
-					</p>
+					
 				</li>
 				<li>
-					<p>
-						The direction you should go from your current position.
-					</p>
+					
+				</li>
+				<li>
+					Master <xref text="custom" ref="euler-step1"> Step 1 </xref> of <xref ref="euler-method" text="title"/>
 				</li>
 			</ul>
-		</p>
+		</outcomes>
 
 		<p>
-			To make progress from point <m>A</m>, you walk in a direction for some time, then stop, note your current position and recalculate the new direction to walk. You repeat this process until, ideally, you are somewhere near point <m>B</m>.
+			Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
 		</p>
+
+	</paragraphs>
+
+	<paragraphs><title> Step 2: Find <m>y_{n+1}</m> </title>
+
+		<outcomes>
+			<ul>
+				<li>
+					.
+				</li>
+				<li>
+					Master <xref text="custom" ref="euler-step2"> Step 2 </xref> of <xref ref="euler-method" text="title"/>
+				</li>
+			</ul>
+		</outcomes>
 
 		<p>
-			In this analogy, the solution you are trying to approximate is the best possible path from point <m>A</m> to <m>B</m>. The approximation is the collection of current positions (starting with <m>A</m>) you noted when you stopped to update your direction. This systematic process is precisely how some numerical methods work.
+			Suppose we want to find an approximate solution to the differential equation
+			<me>
+				y' = x + y, \quad y(0) = -\frac{7}{8}.
+			</me>
+			
 		</p>
+		
+		<image xml:id="sageplot-polynomial-approximation">
 
-		<exercise><title> What's the Tradeoff </title>
+			<sageplot variant="2d">
+				y = lambda x : (1/8)*exp(x)-x-1
+				euler = lambda x, y, dx : y + dx*(x + y)
+				y0 = -7/8
+				x0, h, xF = 0, 0.5, 1.5
+				ymin, ymax = -3, 1
+
+				y_data = [(x0, y0)]
+				yp = y0
+
+				for xp in xsrange(x0, xF, h):
+					yp = euler(xp, yp, h)
+					y_data.append((xp + h, yp))
+
+				xticks = [0, 0.5, 1, 1.5, 2]
+				yticks = [i for i in range(ymin, ymax)]
+
+				grid_rgbcolor = (0.9, 0.9, 0.9)
+				grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
+				
+
+				for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
+					grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
+				for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
+					grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
+
+				y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
+				yn_plot = list_plot(y_data,  markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
+				y_plot + yn_plot + grid
+
+			</sageplot>
+		</image>
+
+		<image xml:id="euler-idea-plot" width="60%">
+			<sageplot>
+				U = plot(0, (x, -2, -0.1), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
+				U += plot(1, (x, 0, 5), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
+				U += point([0,0], color = "blue", faceted=True, size = 80)
+				U += point([0,0], color = "white", faceted=True, size = 15)
+				U += point([0,1], color = "blue", faceted=True, size = 80)
+				U
+			</sageplot>
+
+		</image>
+
+
+		<example xml:id="euler-example-01">
+
 			<statement>
 				<p>
-					In the previous analogy, what trade-off do you think exists when approximating the best possible path?
+					Approximate the solution to the differential equation
+					<me> y' = y^2 - x, \quad y(0) = -1 </me>
+					over the interval <m>[0, 1]</m> with a step size of <m>h = 0.5</m>.
 				</p>
 			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						The more often you stop to recalculate your position, the more accurate your approximation, but the longer it takes.
-					</statement>
-					<feedback>
-						Correct — stopping more often gives you a better approximation, but it also takes more time.
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						The less often you stop, the more accurate your approximation.
-					</statement>
-					<feedback>
-						This is not true — stopping less often leads to a less accurate approximation.
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						The more often you stop, the less accurate your approximation.
-					</statement>
-					<feedback>
-						This is not true — stopping more often leads to a more accurate approximation.
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						The direction you choose does not affect the accuracy of your approximation.
-					</statement>
-					<feedback>
-						This is not true — the direction you choose is crucial for making progress toward the best path.
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
 
-		<paragraphs><title> Selecting a Step Size </title>
-			<p>
-				The choice of step size <m>h</m> is important. A smaller <m>h</m> generally leads to better accuracy because each step tracks the curve more closely — but it also means you need more steps to reach your destination. Larger values of <m>h</m> are faster, but less accurate and may introduce noticeable errors.
-			</p>
-
-			<example><title>Different Step Sizes</title>
-				<statement>
-					Suppose you're solving <m>y' = y</m>, <m>y(0) = 1</m> over the interval <m>[0, 1]</m> using a step-based method. If <m>h = 0.25</m>, you’ll get just 4 steps: at <m>t = 0, 0.25, 0.5, 0.75, 1.0</m>. If <m>h = 0.05</m>, you’ll get 20 steps — and likely a more accurate approximation.
-				</statement>
-				<solution>
-					<p>
-						With fewer steps, your estimate might drift away from the true curve more quickly. Smaller steps track the curve better, but they also require more computation. This tradeoff between accuracy and effort is central to numerical methods.
-					</p>
-				</solution>
-			</example>
-
-			<exercise><title>Step Size Intuition</title>
-				<statement>
-					What is the effect of decreasing the step size <m>h</m> in a step-based numerical method?
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>
-							It generally improves accuracy but increases computational cost.
-						</statement>
-						<feedback>
-							Correct — smaller steps follow the solution more closely, but take more steps to cover the interval.
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							It always gives the exact solution.
-						</statement>
-						<feedback>
-							No — smaller steps improve accuracy, but the solution is still approximate.
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							It makes the method faster but less accurate.
-						</statement>
-						<feedback>
-							No — smaller steps actually slow the computation down.
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							It has no effect on the outcome.
-						</statement>
-						<feedback>
-							No — step size is a key parameter in numerical methods.
-						</feedback>
-					</choice>
-				</choices>
-			</exercise>
-		</paragraphs>
-	</introduction>
-
-	<subsection><title> Solution Approximation </title>
-
-		<objectives>
-			<introduction>
+			<solution>
 				<p>
-					This section covers ...
+					fd
 				</p>
-			</introduction>
-			<ol>
-				<li> Analytical vs Numerical Solutions </li>
-				<li> What are you finding when you compute a numerical solution </li>
-			</ol>
-		</objectives>
+			</solution>
 
-		<p>
-			Up to this point, we have explored various strategies for solving differential equations. For instance, applying the separation of variables or integrating factor methods to the equation
-			<me>
-				y' - 4xy = 0, \, y(0) = 2
-			</me>
-			yields the solution <m>y(x) = 2e^{x^2}</m>. This type of solution, expressible as an explicit function, is known as an analytical solution<fn>Also referred to as a closed-form solution.</fn>. Analytical solutions provide exact expressions of the system's behavior and are ideal when they can be found. However, many real-world problems yield differential equations too complex for analytical solutions, paving the way for numerical approximations.
-		</p>
+		</example>
 
-		<p>
-			To introduce the concept of a numerical solution, let's plot the analytical solution <m>y = 2e^{-x^2}</m>.
-		</p>
-
-		<p>
-			Numerical methods for differential equations involve computing a discrete set of points approximating theoretical, often unknowable, analytical solution. This process enables us to sketch a piecewise linear or nonlinear path mimicking the exact solution's curve.
-			<sidebyside widths="75%" margins="auto" valign="middle">
-				<figure xml:id="analytical-vs-numerical-soln">
-				<title> Comparative Visualization of Analytical and Numerical Solutions </title>
-					<!-- <image source="figures/approx-fig-02_black_x.png">
-						<shortdescription>(True Solution vs. Numerical Approximation)</shortdescription>
-					</image> -->
-				</figure>
-			</sidebyside>
-		</p>
-
-		<p>
-			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
-		</p>
-
-		<image width="70%">
+		<image width="100%">
 			<latex-image>
-				\begin{tikzpicture}
+				% User Defined Parameters
+				\def\a{0} 		% interval start
+				\def\b{1} 		% interval end
+				\def\h{0.2} 	% stepsize
+				\def\round{2}	% decimal rounding
+				\def\s{5}  		% scaling factor
 
-					% Define the start and end of the interval
-					\def\a{0} % Start of the interval
-					\def\b{5} % End of the interval
-					\def\N{5} % Number of partitions
+				\begin{tikzpicture}[scale=\s]
 
+					\pgfkeys{/pgf/number format/.cd,fixed,precision=\round}
+				
+					% Calculate number of partitions
+					\pgfmathsetmacro{\N}{(\b-\a)/\h}
+					
 					% Draw the x-axis
-					\draw[-&gt;,thick] (\a-0.5,0) -- (\b+1,0) node[right] {$x$};
-
-					% Calculate step size
-					\pgfmathsetmacro{\h}{(\b-\a)/\N}
+					\draw[-&gt;,thick] (\a - 2*\h/\s,0) -- (\b + 2*\h/\s,0) node[right] {$x$};
 
 					% Draw the partition points and labels
-					\draw (\a + 0*\h,0.1) -- (\a + 0*\h,-0.1) node[below] {$x_{0}$};
-					\draw (\a + 1*\h,0.1) -- (\a + 1*\h,-0.1) node[below] {$x_{1}$};
-					\draw (\a + 2*\h,0.1) -- (\a + 2*\h,-0.1) node[below] {$x_{2}$};
-					\draw 							(\a + 3*\h,-0.1) node[below] {$\ldots$};
-					\draw (\a + 4*\h,0.1) -- (\a + 4*\h,-0.1) node[below] {$x_{N-1}$};
-					\draw (\a + 5*\h,0.1) -- (\a + 5*\h,-0.1) node[below] {$x_{N}$};
-					
-					% Optionally, add labels for a and b
-					\node[below] at (\a,-0.35) {$\uparrow$};
-					\node[below] at (\a,-0.7) {$a$};
-					\node[below] at (\b,-0.35) {$\uparrow$};
-					\node[below] at (\b,-0.7) {$b$};
+					\foreach \i in {0,...,\N}
+					{
+						\pgfmathsetmacro{\currentPoint}{\a + \i*\h}
+						\draw (\currentPoint,0.1/\s) -- (\currentPoint,-0.1/\s) node[below] {$\pgfmathprintnumber{\currentPoint}$};
+						\draw 							(\currentPoint,-0.5/\s) node[below] {$x_{\i}$};
 
-					% Add the label for each h
-					\draw 			(\a + 0*\h,0.3) -- (\a + 0*\h,0.5);
-					\draw[&lt;-]	(\a + 0*\h,0.4) -- (\a + 0.38*\h,0.4);
-					c
-					\draw[-&gt;] 	(\a + 0.62*\h,0.4) -- (\a + 1*\h,0.4);
-					\draw 			(\a + 1*\h,0.3) -- (\a + 1*\h,0.5);
-
-					\draw[&lt;-] 	(\a + 1*\h,0.4) -- (\a + 1.38*\h,0.4);
-					\draw 			(\a + 1.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 1.62*\h,0.4) -- (\a + 2*\h,0.4);
-					\draw 			(\a + 2*\h,0.3) -- (\a + 2*\h,0.5);
-
-					\draw 			(\a + 4*\h,0.3) -- (\a + 4*\h,0.5);
-					\draw[&lt;-] 	(\a + 4*\h,0.4) -- (\a + 4.38*\h,0.4);
-					\draw 			(\a + 4.5*\h,0.2) node[above] {$h$};
-					\draw[-&gt;] 	(\a + 4.62*\h,0.4) -- (\a + 5*\h,0.4);
-					\draw 			(\a + 5*\h,0.3) -- (\a + 5*\h,0.5);
+					}
 					
 				\end{tikzpicture}
 			</latex-image>
 		</image>
 
 		<p>
-			
-			<!-- <image xml:id="fuckit">
-
-				<latex-image>
-					\begin{tikzpicture}
-						
-						\begin{axis}[
-							xlabel={$t$},
-							ylabel={$y$},
-							title={Solution of $y' + 4xy = 0$ using Euler's Method},
-							grid=both,
-							minor tick num=1,
-							axis lines=middle,
-						]
-						
-							% Read and plot data from file
-							\addplot [only marks, mark=o] table[x=x, y=y, col sep=comma] {external/data/euler-data-02.csv};
-							\addplot [domain=0:2, samples=50, black] {2*e^(-x^2)};
-						\end{axis}
-						
-					\end{tikzpicture}
-				</latex-image>
-
-			</image> -->
-
+			<md>
+				<mrow> y'(x_i) 										\amp = (y(x_i))^2 - x_i </mrow>
+				<mrow> \frac{y(x_{i+1}) - y(x_i)}{h}	\amp = (y(x_i))^2 - x_i </mrow>
+				<mrow> \frac{y_{i+1} - y_i}{h}	\amp = (y_i)^2 - x_i </mrow>
+				<mrow> y(x_{i+1}) - y(x_i) 							\amp = h\left((y(x_i))^2 - x_i\right) </mrow>
+				<mrow> y(x_{i+1}) 									\amp = y(x_i) + h\left((y(x_i))^2 - x_i\right) </mrow>
+			</md>
 		</p>
+
+	</paragraphs>
+
+	<paragraphs><title> Step 3: Get Approximation </title>
+		
+		<outcomes>
+			<ul>
+				<li>
+					
+				</li>
+				<li>
+					Master <xref text="custom" ref="euler-step3"> Step 3 </xref> of <xref ref="euler-method" text="title"/>
+				</li>
+			</ul>
+		</outcomes>
 
 		<p>
-
-			<image>
-				<latex-image>
-				
-					\begin{tikzpicture}
-					
-						set table  "../plots/pgfmanual-sine.table"
-						set format "%.5f"
-						set samples 20
-						plot [x=0:10] sin(x)
-						
-						\begin{axis}[]
-							% Draw the x-axis
-							\draw[-&gt;,thick] (-1.5,0) -- (8,0) node[right] {$x$};
-							\draw[-&gt;,thick] (0,-1.5) -- (0,1) node[right] {$y$};
-
-							\addplot[
-								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
-								&lt;-&gt;,
-								smooth,
-								thick,
-								color = blue,
-								mark = ball,
-							]{x*e^(-0.5*x^2)};
-
-							
-							\addplot[
-								samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
-								&lt;-&gt;,
-								smooth,
-								thick,
-								color = orange,
-								mark = +,
-							]{x*e^(-0.5*x^2) - 0.05*x};
-
-							
-							\addplot[
-								only marks, mark size=1.5pt
-							]coordinates{
-								(0.0, 0.0000)
-								(0.5, 0.2438)
-								(1.0, 0.4524)
-								(1.5, 0.5989)
-								(2.0, 0.6703)
-								(2.5, 0.6691)
-								(3.0, 0.6099)
-								(3.5, 0.5141)
-								(4.0, 0.4038)
-								(4.5, 0.2970)
-							};
-							\addplot[
-								only marks, mark size=2.0pt, mark = +, color = orange,
-							]coordinates{
-								(0.0, 0.0000)
-								(0.5, 0.24)
-								(1.0, 0.44)
-								(1.5, 0.54)
-								(2.0, 0.62)
-								(2.5, 0.60)
-								(3.0, 0.55)
-								(3.5, 0.51)
-								(4.0, 0.46)
-								(4.5, 0.34)
-							};
-							\draw (4.5, 0.34) node[above] {$\hat{y}_7$};
-						\end{axis}
-					\end{tikzpicture}
-				</latex-image>
-			</image>
-
-			<image xml:id="pgfplots-shit1">
-				<latex-image>
-
-					\pgfplotstablenew[
-						create on use/plot1/.style={
-							create col/expr={sin (2*pi*\pgfplotstablerow)}
-						},
-						columns={plot1}
-					]
-					{500}
-					\loadedtable
-					\pgfplotstablesave{\loadedtable}{myplot.dat}
-
-
-					\begin{tikzpicture}
-					\begin{axis}[
-							line join=bevel,
-							mark = +,
-							table/x expr={\coordindex},
-							xmin=0,
-							enlarge x limits=false,
-							ymin=-1.5,
-							ymax=1.5,
-						]
-					\addplot[red] table [y expr={\thisrow{plot1}}] {myplot.dat};
-					\end{axis}
-
-					\end{tikzpicture}
-				</latex-image>
-			</image>
-
+			Write this section.
 		</p>
 
-	</subsection>
+	</paragraphs>
 
-	<subsection><title> Step 1: Set-up &amp; Verify </title>
-
-		<introduction>
-		
-			<outcomes>
-				<ul>
-					<li>
-						
-					</li>
-					<li>
-						
-					</li>
-					<li>
-						Master <xref text="custom" ref="euler-step1"> Step 1 </xref> of <xref ref="euler-method" text="title"/>
-					</li>
-				</ul>
-			</outcomes>
-
-			<p>
-				Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
-			</p>
-
-		</introduction>
-
-	</subsection>
-
-	<subsection><title> Step 2: Find <m>y_{n+1}</m> </title>
-		
-		<introduction>
-
-			<outcomes>
-				<ul>
-					<li>
-						.
-					</li>
-					<li>
-						Master <xref text="custom" ref="euler-step2"> Step 2 </xref> of <xref ref="euler-method" text="title"/>
-					</li>
-				</ul>
-			</outcomes>
-
-			<p>
-				Suppose we want to find an approximate solution to the differential equation
-				<me>
-					y' = x + y, \quad y(0) = -\frac{7}{8}.
-				</me>
-				
-			</p>
-			
-			<image xml:id="sageplot-polynomial-approximation">
-
-				<sageplot variant="2d">
-					y = lambda x : (1/8)*exp(x)-x-1
-					euler = lambda x, y, dx : y + dx*(x + y)
-					y0 = -7/8
-					x0, h, xF = 0, 0.5, 1.5
-					ymin, ymax = -3, 1
-
-					y_data = [(x0, y0)]
-					yp = y0
-
-					for xp in xsrange(x0, xF, h):
-						yp = euler(xp, yp, h)
-						y_data.append((xp + h, yp))
-
-					xticks = [0, 0.5, 1, 1.5, 2]
-					yticks = [i for i in range(ymin, ymax)]
-
-					grid_rgbcolor = (0.9, 0.9, 0.9)
-					grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
-					
-
-					for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
-						grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
-					for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
-						grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
-
-					y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
-					yn_plot = list_plot(y_data,  markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
-					y_plot + yn_plot + grid
-
-				</sageplot>
-			</image>
-
-			<image xml:id="euler-idea-plot" width="60%">
-				<sageplot>
-					U = plot(0, (x, -2, -0.1), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
-					U += plot(1, (x, 0, 5), color='blue', thickness=4, ymin=-1, ymax=1.5, fontsize=20, ticks=[1,1])
-					U += point([0,0], color = "blue", faceted=True, size = 80)
-					U += point([0,0], color = "white", faceted=True, size = 15)
-					U += point([0,1], color = "blue", faceted=True, size = 80)
-					U
-				</sageplot>
-
-			</image>
-
-
-			<example xml:id="euler-example-01">
-
-				<statement>
-					<p>
-						Approximate the solution to the differential equation
-						<me> y' = y^2 - x, \quad y(0) = -1 </me>
-						over the interval <m>[0, 1]</m> with a step size of <m>h = 0.5</m>.
-					</p>
-				</statement>
-
-				<solution>
-					<p>
-						fd
-					</p>
-				</solution>
-
-			</example>
-
-			<image width="100%">
-				<latex-image>
-					% User Defined Parameters
-					\def\a{0} 		% interval start
-					\def\b{1} 		% interval end
-					\def\h{0.2} 	% stepsize
-					\def\round{2}	% decimal rounding
-					\def\s{5}  		% scaling factor
-
-					\begin{tikzpicture}[scale=\s]
-
-						\pgfkeys{/pgf/number format/.cd,fixed,precision=\round}
-					
-						% Calculate number of partitions
-						\pgfmathsetmacro{\N}{(\b-\a)/\h}
-						
-						% Draw the x-axis
-						\draw[-&gt;,thick] (\a - 2*\h/\s,0) -- (\b + 2*\h/\s,0) node[right] {$x$};
-
-						% Draw the partition points and labels
-						\foreach \i in {0,...,\N}
-						{
-							\pgfmathsetmacro{\currentPoint}{\a + \i*\h}
-							\draw (\currentPoint,0.1/\s) -- (\currentPoint,-0.1/\s) node[below] {$\pgfmathprintnumber{\currentPoint}$};
-							\draw 							(\currentPoint,-0.5/\s) node[below] {$x_{\i}$};
-
-						}
-						
-					\end{tikzpicture}
-				</latex-image>
-			</image>
-
-			<p>
-				<md>
-					<mrow> y'(x_i) 										\amp = (y(x_i))^2 - x_i </mrow>
-					<mrow> \frac{y(x_{i+1}) - y(x_i)}{h}	\amp = (y(x_i))^2 - x_i </mrow>
-					<mrow> \frac{y_{i+1} - y_i}{h}	\amp = (y_i)^2 - x_i </mrow>
-					<mrow> y(x_{i+1}) - y(x_i) 							\amp = h\left((y(x_i))^2 - x_i\right) </mrow>
-					<mrow> y(x_{i+1}) 									\amp = y(x_i) + h\left((y(x_i))^2 - x_i\right) </mrow>
-				</md>
-			</p>
-
-
-		</introduction>
-
-	</subsection>
-
-	<subsection><title> Step 3: Get Approximation </title>
-		
-		<introduction>
-		
-			<outcomes>
-				<ul>
-					<li>
-						
-					</li>
-					<li>
-						Master <xref text="custom" ref="euler-step3"> Step 3 </xref> of <xref ref="euler-method" text="title"/>
-					</li>
-				</ul>
-			</outcomes>
-
-			<p>
-				Write this section.
-			</p>
-
-		</introduction>
-
-	</subsection>
-
-	<subsection><title> Euler's Method </title>
+	<paragraphs><title> Euler's Method </title>
 
 		<objectives>
 			<introduction>
@@ -556,139 +464,154 @@
 			</ol>
 		</objectives>
 
-		<introduction>
+		<p>
+			Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
+		</p>
+	
+		<exploration xml:id="euler-method"><title> Euler's Method </title>
 			<p>
-				Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
-			</p>
-		
-			<exploration xml:id="euler-method"><title> Euler's Method </title>
-				<p>
-					An approximate solution to the first order differential equation
-					<men xml:id="euler-method-de">
-						y' = f(x, y), \quad y(a) = y_0
-					</men>
-					can be found on the interval <m>[a, b]</m> through the following steps...
-				</p>
-				<dl width="narrow">
-					<li xml:id="euler-step1"><title> Step 1: Set-up </title>
-						<p>
-							<line>Choose <m>h</m>.</line>
-							<line>Break <m>[a, b]</m> into
-							<m>
-								x_0,\ x_1,\ x_2,\ ...,\ x_{N-1},\ x_{N},
-							</m>
-							separated by <m>h</m>.
-							</line>
-						</p>
-					</li>
-					<li xml:id="euler-step2"><title> Step 2: Find Approximation Formula <m>y_{i+1}</m> </title>
-						<p>
-							<line>Substitute <m>x_i</m> into <xref ref="euler-method-de"/> &amp; rewrite <m>y(x_i)</m> as <m>y_i</m> and <m>y^\prime(x_i)</m> as <m>y^\prime_i</m>.</line>
-							<line>Replace <m>y^\prime_i</m> with <m>\ds\frac{1}{h}(y_{i+1} - y_{i})</m>.</line>
-							<line>Isolate <m>y_{i+1}</m>.</line>
-						</p>
-					</li>
-					<li xml:id="euler-step3"><title> Step 3: Compute Approximation Values </title>
-						<p>
-							<line>Find <m>y_1, y_2, ... , y_N</m> using the approximation formula.</line>
-						</p>
-					</li>
-				</dl>
-			</exploration>
-			
-			<p>
-				Use Euler's Method to approximate the solution to the initial-value problem,
-
-				<mdn>
-					<mrow xml:id="euler-ex-01-de">	y'(x) - 2xy(x) = 0	\amp </mrow>
-					<mrow xml:id="euler-ex-01-ic">	y(0) = 2, \amp </mrow>
-				</mdn>
-				at the <m>x</m>-values <m>0,\ 0.5,\ 1,\ 1.5,\ 2 \ </m>(spaced 0.5 apart).
-			</p>
-
-			<p>
-				Euler's method works by replacing <m>y'(x)</m> in <xref ref="euler-ex-01-de"/> with it's forward-difference approximation, giving us
-				<me>
-					\frac{1}{h}\Big(y(x+h) - y(x)\Big) - 2 xy(x) = 0
-				</me>
-				and if we let <m>h</m> be the space between the <m>x</m>-values (0.5), then we have
-				<me>
-					\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) - 2 xy(x) = 0.
-				</me>
-			</p>
-
-			<p>
-				To see how this is helpful, we isolate <m>y'(x+h)</m> as follows
-				<md>
-					<mrow>	\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) 	=\ \amp 2 xy(x)	</mrow>
-					<mrow>							y(x+0.5) - y(x)	=\ \amp xy(x)	</mrow>
-				</md>
-				and the final step gives the approximation formula
-				<men xml:id="euler-ex-01-approx">
-					y(x+0.5) = y(x) + xy(x).
+				An approximate solution to the first order differential equation
+				<men xml:id="euler-method-de">
+					y' = f(x, y), \quad y(a) = y_0
 				</men>
+				can be found on the interval <m>[a, b]</m> through the following steps...
 			</p>
+			<dl width="narrow">
+				<li xml:id="euler-step1"><title> Step 1: Set-up </title>
+					<p>
+						<line>Choose <m>h</m>.</line>
+						<line>Break <m>[a, b]</m> into
+						<m>
+							x_0,\ x_1,\ x_2,\ ...,\ x_{N-1},\ x_{N},
+						</m>
+						separated by <m>h</m>.
+						</line>
+					</p>
+				</li>
+				<li xml:id="euler-step2"><title> Step 2: Find Approximation Formula <m>y_{i+1}</m> </title>
+					<p>
+						<line>Substitute <m>x_i</m> into <xref ref="euler-method-de"/> &amp; rewrite <m>y(x_i)</m> as <m>y_i</m> and <m>y^\prime(x_i)</m> as <m>y^\prime_i</m>.</line>
+						<line>Replace <m>y^\prime_i</m> with <m>\ds\frac{1}{h}(y_{i+1} - y_{i})</m>.</line>
+						<line>Isolate <m>y_{i+1}</m>.</line>
+					</p>
+				</li>
+				<li xml:id="euler-step3"><title> Step 3: Compute Approximation Values </title>
+					<p>
+						<line>Find <m>y_1, y_2, ... , y_N</m> using the approximation formula.</line>
+					</p>
+				</li>
+			</dl>
+		</exploration>
+		
+		<p>
+			Use Euler's Method to approximate the solution to the initial-value problem,
 
-			<p>
-				Note that we already know <m>y(0) = 2</m> from <xref ref="euler-ex-01-ic"/>, so to find the rest of the approximation points, we plug <m>x = 0, 0.5, 1, 1.5</m> into <xref ref="euler-ex-01-approx"/>, as shown below.
-			</p>
+			<mdn>
+				<mrow xml:id="euler-ex-01-de">	y'(x) - 2xy(x) = 0	\amp </mrow>
+				<mrow xml:id="euler-ex-01-ic">	y(0) = 2, \amp </mrow>
+			</mdn>
+			at the <m>x</m>-values <m>0,\ 0.5,\ 1,\ 1.5,\ 2 \ </m>(spaced 0.5 apart).
+		</p>
 
-			<p>
-				<tabular top="major" valign="top">
-					<col width="0%" />
-					<col width="45%" />
-					<col width="20%" />
-					<row bottom="minor">
-						<cell> <m>x</m> </cell>
-						<cell halign="center"> Approximation Formula <xref ref="euler-ex-01-approx"/> </cell>
-						<cell> Approximation </cell>
-					</row>
-					<row bottom="minor">
-						<cell> <m>0</m> </cell>
-						<cell halign="left">
-							<line><m>y(0+0.5) = y(0) + (0)y(0)</m></line>
-							<line><m>\phantom{y(0+0.5)} = 2 + (0)(2) </m></line>
-							<line><m>\phantom{y(0+0.5)} = 2 </m></line>
-						</cell>
-						<cell> <m>y(0.5) = 2</m> </cell>
-					</row>
+		<p>
+			Euler's method works by replacing <m>y'(x)</m> in <xref ref="euler-ex-01-de"/> with it's forward-difference approximation, giving us
+			<me>
+				\frac{1}{h}\Big(y(x+h) - y(x)\Big) - 2 xy(x) = 0
+			</me>
+			and if we let <m>h</m> be the space between the <m>x</m>-values (0.5), then we have
+			<me>
+				\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) - 2 xy(x) = 0.
+			</me>
+		</p>
 
-					<row bottom="minor">
-						<cell> <m>0.5</m> </cell>
-						<cell halign="left">
-							<line><m>y(0.5+0.5) = y(0.5) + (0.5)y(0.5)</m></line>
-							<line><m>\phantom{y(0.5+0.5)} = 2 + (0.5)(2) </m></line>
-							<line><m>\phantom{y(0.5+0.5)} = 3 </m></line>
-						</cell>
-						<cell> <m>y(1) = 3</m> </cell>
-					</row>
+		<p>
+			To see how this is helpful, we isolate <m>y'(x+h)</m> as follows
+			<md>
+				<mrow>	\frac{1}{0.5}\Big(y(x+0.5) - y(x)\Big) 	=\ \amp 2 xy(x)	</mrow>
+				<mrow>							y(x+0.5) - y(x)	=\ \amp xy(x)	</mrow>
+			</md>
+			and the final step gives the approximation formula
+			<men xml:id="euler-ex-01-approx">
+				y(x+0.5) = y(x) + xy(x).
+			</men>
+		</p>
 
-					<row bottom="minor">
-						<cell> <m>1</m> </cell>
-						<cell halign="left">
-							<line><m>y(1+0.5) = y(1) + (1)y(1)</m></line>
-							<line><m>\phantom{y(1+0.5)} = 3 + (1)(3) </m></line>
-							<line><m>\phantom{y(1+0.5)} = 6 </m></line>
-						</cell>
-						<cell> <m>y(1.5) = 6</m> </cell>
-					</row>
+		<p>
+			Note that we already know <m>y(0) = 2</m> from <xref ref="euler-ex-01-ic"/>, so to find the rest of the approximation points, we plug <m>x = 0, 0.5, 1, 1.5</m> into <xref ref="euler-ex-01-approx"/>, as shown below.
+		</p>
 
-					<row bottom="major">
-						<cell> <m>1.5</m> </cell>
-						<cell halign="left">
-							<line><m>y(1.5+0.5) = y(1.5) + (1.5)y(1.5)</m></line>
-							<line><m>\phantom{y(1.5+0.5)} = 6 + (1.5)(6) </m></line>
-							<line><m>\phantom{y(1.5+0.5)} = 15 </m></line>
-						</cell>
-						<cell> <m>y(2) = 15</m> </cell>
-					</row>
-				</tabular>
+		<p>
+			<tabular top="major" valign="top">
+				<col width="0%" />
+				<col width="45%" />
+				<col width="20%" />
+				<row bottom="minor">
+					<cell> <m>x</m> </cell>
+					<cell halign="center"> Approximation Formula <xref ref="euler-ex-01-approx"/> </cell>
+					<cell> Approximation </cell>
+				</row>
+				<row bottom="minor">
+					<cell> <m>0</m> </cell>
+					<cell halign="left">
+						<line><m>y(0+0.5) = y(0) + (0)y(0)</m></line>
+						<line><m>\phantom{y(0+0.5)} = 2 + (0)(2) </m></line>
+						<line><m>\phantom{y(0+0.5)} = 2 </m></line>
+					</cell>
+					<cell> <m>y(0.5) = 2</m> </cell>
+				</row>
 
-			</p>
+				<row bottom="minor">
+					<cell> <m>0.5</m> </cell>
+					<cell halign="left">
+						<line><m>y(0.5+0.5) = y(0.5) + (0.5)y(0.5)</m></line>
+						<line><m>\phantom{y(0.5+0.5)} = 2 + (0.5)(2) </m></line>
+						<line><m>\phantom{y(0.5+0.5)} = 3 </m></line>
+					</cell>
+					<cell> <m>y(1) = 3</m> </cell>
+				</row>
 
-		</introduction>
+				<row bottom="minor">
+					<cell> <m>1</m> </cell>
+					<cell halign="left">
+						<line><m>y(1+0.5) = y(1) + (1)y(1)</m></line>
+						<line><m>\phantom{y(1+0.5)} = 3 + (1)(3) </m></line>
+						<line><m>\phantom{y(1+0.5)} = 6 </m></line>
+					</cell>
+					<cell> <m>y(1.5) = 6</m> </cell>
+				</row>
 
-	</subsection>
+				<row bottom="major">
+					<cell> <m>1.5</m> </cell>
+					<cell halign="left">
+						<line><m>y(1.5+0.5) = y(1.5) + (1.5)y(1.5)</m></line>
+						<line><m>\phantom{y(1.5+0.5)} = 6 + (1.5)(6) </m></line>
+						<line><m>\phantom{y(1.5+0.5)} = 15 </m></line>
+					</cell>
+					<cell> <m>y(2) = 15</m> </cell>
+				</row>
+			</tabular>
+
+		</p>
+
+		<corollary>
+			<sidebyside width="100%" margins="0%">
+				<interactive xml:id="euler-ivp-tool"
+					platform="jsxgraph"
+					aspect="1:1"
+					dark-mode-enabled="yes"
+					source="code/jsxgraph/eulers-method/euler-ivp-tool.js"
+				>
+					<sidebyside width="100%">
+						<slate xml:id="euler-ivp-tool-plot1" surface="jsxboard" aspect="1:1" />
+					</sidebyside>
+					<static>
+						<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
+					</static>
+				</interactive>
+			</sidebyside>
+		</corollary>
+
+	</paragraphs>
 
 	<p>
 		In summary, Euler's method is a powerful tool for approximating the solutions of differential equations that are challenging or impossible to solve analytically. By understanding and applying this method, students and professionals can gain insights into the behavior of complex systems described by such equations, even in the absence of exact solutions.
