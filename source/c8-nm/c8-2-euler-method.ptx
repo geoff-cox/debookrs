@@ -72,7 +72,7 @@
 
 	<paragraphs><title> An Analogy </title>
 		<p>
-			Imagine you're a tiger hunting prey in a dense forest. You can't see the prey, but you can smell which direction it's in. So you head in that direction for 5 seconds, then stop to sniff the air again and readjust your course. You repeat this process — move a bit, check the scent, adjust — until you either find your prey or lose the trail.
+			Imagine you're a tiger hunting prey in a dense forest. You can't see the prey, but you can smell which direction it's in. So you head in that direction for 5 seconds, then stop to sniff the air again and adjust your course. You repeat this process — move a bit, check the scent, adjust — until you either find your prey or lose the trail.
 		</p>
 
 		<p>
@@ -82,6 +82,87 @@
 		<p>
 			Just like the tiger, Euler’s Method doesn't know the full path in advance. It only knows where it is and which way to head — based on the differential equation — and it follows that direction one small step at a time.
 		</p>
+	</paragraphs>
+
+	<paragraphs><title> Stepping Between Two Points </title>
+		<p>
+			Euler's method works by attempting to follow the graph of the solution, one point at a time. It can't see the solution, but it always knows what direction it would move at any given point. 
+		</p>
+
+		<p>	
+			As an analogy, imagine you are playing a game where you must walk along a random path blindfolded. You are nudged in the direction of the path and must walk a distance of your choice where you can get another nudge. If the path is straight, you could follow it easily. But if the path curves, you might veer off course between nudges. A similar idea holds for Euler's method, except that it uses the slope of the solution's tangent line to determine the direction to move at each point.
+		</p>
+	</paragraphs>
+
+	<paragraphs><title> Rule for Moving From One Point to the Next </title>
+		<p>
+			Starting with the initial condition, Euler's method produces a sequence of points, one-by-one, over some given interval. Therefore, it needs a rule for moving between points. The rule is simple: at each point, (1) get a direction, and (2) move a small distance in that direction. Repeat this until the end of the interval. In this context, the direction is a slope of the tangent line and the distance is the step size between the <m>t</m>-values.
+		</p>
+
+		<p>	
+			For example, suppose we wanted to find the position of an object at <m>(0,4)</m> that moved in a straight line with slope <m>-2</m>. Where the next point is positioned depends on the step size we are using. Here are two examples:
+		</p>
+
+		<sidebyside widths="6% 38% 50% 6%" valign="middle">
+			<p/>
+			<p>
+				<md>
+					<mrow> (0,4) \amp \longrightarrow (1,7) \amp \text{(step size = 1)} </mrow>
+					<mrow> (0,4) \amp \longrightarrow (0.5,5.5) \amp \text{(step size = 0.5)} </mrow>
+				</md>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[samples=50]
+	
+							% === colors ===
+							\def\fColor{blue}			\def\fFill{\fColor!15}
+							\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+							% === figure/domain/tick bounds ===
+							\def\tmin{0.6}	\def\tmax{2.2}
+							\def\ymin{-0.9}	\def\ymax{4.8}
+							\def\ta{1}
+							\def\yta{2}
+							\def\dya{1.5}
+							\def\ha{0.25} \def\hb{1} 
+							\def\s{0.8}
+
+							\begin{axis}[
+								width=12cm, height=8cm, scale=0.5,
+								xlabel={$t$}, ylabel={$y$},
+								%title={Euler's Method Step 1},
+								title style={font=\small},
+								grid=both,
+								%tick style={thick},
+								line width=1pt,
+								axis lines=middle,
+								xtick distance=1, ytick distance=2,
+								minor x tick num=1, minor y tick num=1,
+								xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+								xticklabel style={yshift=0.0em, font=\scriptsize},
+								yticklabel style={font=\scriptsize},
+							]
+							
+								% Read and plot data from file
+								\addplot+ [only marks] coordinates {
+									(\ta, \yta)
+									(\ta+\ha, \yta+\dya*\ha)
+									(\ta+\hb, \yta+\dya*\hb)
+								};
+								\addplot+ [black, no marks, dashed] (\ta, \yta) -- ({\ta+\hb}, {\yta+\dya*\hb});
+
+								\node[font=\scriptsize] at (1,	0.3)	{slope: $-2$};
+								\node[font=\scriptsize] at (3,	0.3)	{slope: $0$};
+								\node[font=\scriptsize] at (5,	0.3)	{slope: $3$};
+							\end{axis}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
 	</paragraphs>
 
 	<paragraphs><title> A Concrete Introduction to Euler's Method  </title>
@@ -124,10 +205,10 @@
 		<me>
 			\text{slope}\ = -2:\quad
 			-\frac{2}{1}\
-			\left(\frac{\text{down}\ 2}{\text{over}\ 1}\right)
+			\left(\frac{\text{down}\ 2}{\text{right}\ 1}\right)
 			\ \ \text{and}\ \
 			-\frac{2\cdot h}{1\cdot h}\
-			\left(\frac{\text{down}\ 2h}{\text{over}\ h}\right)
+			\left(\frac{\text{down}\ 2h}{\text{right}\ h}\right)
 		</me>
 
 		<p>
@@ -463,6 +544,79 @@
 				<li>  </li>
 			</ol>
 		</objectives>
+
+		<me>
+			y_{i+1} = y_i + hy_i'
+		</me>
+
+		<sidebyside widths="6% 38% 50% 6%" valign="middle">
+			<p/>
+			<p>
+				<md>
+					<mrow> (0,4) \amp \longrightarrow (1,7) \amp \text{(step size = 1)} </mrow>
+					<mrow> (0,4) \amp \longrightarrow (0.5,5.5) \amp \text{(step size = 0.5)} </mrow>
+				</md>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[samples=50]
+	
+							% === colors ===
+							\def\fColor{blue}			\def\fFill{\fColor!15}
+							\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+							% === figure/domain/tick bounds ===
+							\def\tmin{-0.3}	\def\tmax{4.5}
+							\def\ymin{-0.3}	\def\ymax{3.5}
+							\def\tA{1.5}	\def\ytA{1}	
+							\def\tB{3.5}	\def\ytB{2}
+							\def\h{2}
+
+							\begin{axis}[
+								width=10cm, height=6cm, scale=1,
+								xlabel={$t$}, ylabel={$y$},
+								%title={Euler's Method Step 1},
+								title style={font=\small},
+								grid=both,
+								%tick style={thick},
+								line width=1pt,
+								axis lines=middle,
+								xtick distance=1, ytick distance=2,
+								minor x tick num=1, minor y tick num=1,
+								xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+								xticklabel style={yshift=0.0em, font=\scriptsize},
+								yticklabel style={font=\scriptsize},
+							]
+							
+								% Read and plot data from file
+								\addplot+ [only marks] coordinates {
+									(\tA, \ytA)
+									(\tB, \ytB)
+								};
+								\addplot+ [black, no marks, dashed] (\tA, \ytA) -- (\tB, \ytB);
+								\addplot+ [black, no marks, dashed] (\tA, 0) -- (\tA, \ytA);
+								\addplot+ [black, no marks, dashed] (\tA, 0) -- (\tA, \ytB);
+								\addplot+ [black, no marks, dashed] (\tB, 0) -- (\tB, \ytB);
+								%\addplot+ [black, no marks, dashed] (\tA, \ytA) -- (\tB, \ytA);
+								\addplot+ [black, no marks, dashed] (\tA, \ytB) -- (\tB, \ytB);
+								\node[font=\small, above] at ({\tA + 0.5*(\tB-\tA)}, 0)	{$h$};
+								\node[font=\small, above] at ({\tA + 0.5*(\tB-\tA)}, \ytB)	{$h$};
+								\node[font=\small, left] at (\tA, {0.5*\ytA})	{$y_k$};
+								%\node[font=\small, right] at (\tB, 0.5*\ytA)	{$y_k$};
+								\node[font=\small, left] at (\tA, {\ytA + 0.5*(\ytB - \ytA)}){$h\cdot y_k'$};
+								%\node[font=\small, right] at (\tB, {\ytA + 0.5*(\ytB - \ytA)}){$h\cdot y_k'$};
+								\node[font=\small, right] at (\tB, {0.5*\ytB}){$h\cdot y_k'$};
+								\node[font=\small, right] at (0.5, 3.05)	{slope: $\displaystyle y_k' = \frac{y_k'}{1} = \frac{y_k'\cdot h}{1\cdot h}$};
+								\node[font=\small, right] at (2.4, 3.25)	{$\leftarrow$ rise};
+								\node[font=\small, right] at (2.4, 2.75)	{$\leftarrow$ run};
+							\end{axis}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
 
 		<p>
 			Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
