@@ -530,6 +530,46 @@
 
 	</paragraphs>
 
+	<paragraphs><title> Plotting a Line with a Point and the Slope </title>
+		<p>
+			One of the ways to plot straight line when you have a point and a slope (<q>rise</q> over <q>run</q>) is to plot the point first and then move up by the <q>rise</q> (if the slope is positive) and then left by the <q>run</q>. Repeat this for as many points as you want to plot. For example, suppose you have the point <m>(0, -2)</m> and a slope of <m>\frac12</m>, then
+		</p>
+
+		<sidebyside>
+			<p>
+				<md>
+					<mrow> \text{point:} \amp (0, -2) </mrow>
+				</md>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+						% User Defined Parameters
+						\def\a{0}	\def\ya{-2}		% point coordinates
+						\def\run{2}	\def\rise{1}	% slope rise/run
+						\def\tmin{-0.8}	\def\tmax{6}
+						\def\ymin{-0.6}	\def\ymax{3.5}
+						\begin{tikzpicture}[scale=0.8]
+							\draw[gray!50!white, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+							\draw[gray!50!white, -&gt;] (0, \ymin) -- (0, \ymax) node[left] {$y$};
+							%
+							\foreach \k in {0,...,3}
+							{
+								\pgfmathsetmacro{\t}{\a + \k*\run}
+								\pgfmathsetmacro{\yt}{\ya + \k*\rise}
+								\draw[-&gt;] (\t, \yt) -- (\t, \yt + \rise) node[left] {rise};
+								\draw[-&gt;] (\t, \yt + \rise) -- (\t + \run, \yt + \rise) node[above] {rise};
+								\draw[fill=blue!20!white] (\t, \yt) circle (2pt);
+								\draw[] (\t, 0) node[below] {$\k$};
+								\draw[] (0, \yt) node[left] {$\yt$};
+							}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+		</sidebyside>
+	</paragraphs>
+
 	<paragraphs><title> Euler's Method </title>
 
 		<objectives>
@@ -553,8 +593,7 @@
 			<p/>
 			<p>
 				<md>
-					<mrow> (0,4) \amp \longrightarrow (1,7) \amp \text{(step size = 1)} </mrow>
-					<mrow> (0,4) \amp \longrightarrow (0.5,5.5) \amp \text{(step size = 0.5)} </mrow>
+					<mrow> \text{slope:} \amp y_k' = \frac{y_k'}{1} = \frac{y_k'\cdot h}{1\cdot h} </mrow>
 				</md>
 			</p>
 			<p>
@@ -567,26 +606,30 @@
 							\def\gColor{green!60!black}	\def\gFill{\gColor!15}
 
 							% === figure/domain/tick bounds ===
-							\def\tmin{-0.3}	\def\tmax{4.5}
-							\def\ymin{-0.3}	\def\ymax{3.5}
-							\def\tA{1.5}	\def\ytA{1}	
-							\def\tB{3.5}	\def\ytB{2}
+							\def\tmin{-0.8}	\def\tmax{6}
+							\def\ymin{-0.6}	\def\ymax{3.5}
+							\def\tA{2.0}	\def\ytA{1}	
+							\def\tB{4.0}	\def\ytB{2.5}
 							\def\h{2}
 
 							\begin{axis}[
-								width=10cm, height=6cm, scale=1,
+								width=10cm, height=6cm, scale=0.7,
 								xlabel={$t$}, ylabel={$y$},
 								%title={Euler's Method Step 1},
 								title style={font=\small},
 								grid=both,
-								%tick style={thick},
 								line width=1pt,
 								axis lines=middle,
-								xtick distance=1, ytick distance=2,
-								minor x tick num=1, minor y tick num=1,
-								xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
-								xticklabel style={yshift=0.0em, font=\scriptsize},
-								yticklabel style={font=\scriptsize},
+								%xtick distance=2, 
+								%ytick distance=1,
+								%minor x tick num=0,
+								%minor y tick num=0,
+								xmin=\tmin, xmax=\tmax, 
+								ymin=\ymin, ymax=\ymax,
+								xticklabel style={yshift=0.0em, font=\normalsize, fill=white},
+								yticklabel style={xshift=0.1em, font=\normalsize, fill=white},
+								xtick={\tA, \tB},	xticklabels={$t_{k}$, $t_{k+1}$},
+								ytick={\ytA, \ytB},	yticklabels={$y_{k}$, $y_{k+1}$},
 							]
 							
 								% Read and plot data from file
@@ -594,22 +637,15 @@
 									(\tA, \ytA)
 									(\tB, \ytB)
 								};
-								\addplot+ [black, no marks, dashed] (\tA, \ytA) -- (\tB, \ytB);
-								\addplot+ [black, no marks, dashed] (\tA, 0) -- (\tA, \ytA);
-								\addplot+ [black, no marks, dashed] (\tA, 0) -- (\tA, \ytB);
-								\addplot+ [black, no marks, dashed] (\tB, 0) -- (\tB, \ytB);
-								%\addplot+ [black, no marks, dashed] (\tA, \ytA) -- (\tB, \ytA);
-								\addplot+ [black, no marks, dashed] (\tA, \ytB) -- (\tB, \ytB);
-								\node[font=\small, above] at ({\tA + 0.5*(\tB-\tA)}, 0)	{$h$};
-								\node[font=\small, above] at ({\tA + 0.5*(\tB-\tA)}, \ytB)	{$h$};
-								\node[font=\small, left] at (\tA, {0.5*\ytA})	{$y_k$};
-								%\node[font=\small, right] at (\tB, 0.5*\ytA)	{$y_k$};
-								\node[font=\small, left] at (\tA, {\ytA + 0.5*(\ytB - \ytA)}){$h\cdot y_k'$};
-								%\node[font=\small, right] at (\tB, {\ytA + 0.5*(\ytB - \ytA)}){$h\cdot y_k'$};
-								\node[font=\small, right] at (\tB, {0.5*\ytB}){$h\cdot y_k'$};
-								\node[font=\small, right] at (0.5, 3.05)	{slope: $\displaystyle y_k' = \frac{y_k'}{1} = \frac{y_k'\cdot h}{1\cdot h}$};
-								\node[font=\small, right] at (2.4, 3.25)	{$\leftarrow$ rise};
-								\node[font=\small, right] at (2.4, 2.75)	{$\leftarrow$ run};
+								\addplot+ [gray, no marks, -&gt;] (\tA, \ytA) -- (\tA, \ytB) node[fill=white, left, midway] {$h\cdot y_k'$};
+								\addplot+ [gray, fill=white, no marks, -&gt;] (\tA, \ytB) -- ({\tB - 0.1}, \ytB) node[fill=white, midway] {$h$};
+								
+								\draw [&lt;-&gt;] (axis cs: \tB, 0) -- (axis cs: \tB, \ytA) node[midway, right, fill=white] {$y_k$};
+								\draw [&lt;-&gt;] (axis cs: \tB, \ytA) -- (axis cs: \tB, {\ytB - 0.1}) node[midway, right, fill=white] {$h\cdot y_k'$};
+								\node[font=\small, gray, rotate=90] at (axis cs: {\tA - 1.5}, {0.5*(\ytA + \ytB)}){rise};
+								\node[font=\small, gray] at (axis cs: {0.5*(\tA + \tB)}, {\ytB + 0.5}){run};
+								\node[font=\small, below] at (axis cs: {\tA + 0.55}, \ytA){$(t_k,y_k)$};
+								\node[font=\small, above] at (axis cs: {\tB + 0.85}, \ytB){$(t_{k+1},y_{k+1})$};
 							\end{axis}
 						\end{tikzpicture}
 					</latex-image>
