@@ -276,7 +276,7 @@
 
 								% === Function definitions ===
 								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
-								\def\a{0}	\def\b{2}
+								\def\ta{0}	\def\b{2}
 								\def\c{1.13}
 
 								\begin{axis}[
@@ -532,42 +532,250 @@
 
 	<paragraphs><title> Plotting a Line with a Point and the Slope </title>
 		<p>
-			One of the ways to plot straight line when you have a point and a slope (<q>rise</q> over <q>run</q>) is to plot the point first and then move up by the <q>rise</q> (if the slope is positive) and then left by the <q>run</q>. Repeat this for as many points as you want to plot. For example, suppose you have the point <m>(0, -2)</m> and a slope of <m>\frac12</m>, then
+			Suppose you have a line in slope-intercrpt form, <m>y = mx+b</m>. Recall that the fractional form of the slope, <m>m</m>, was often interpreted as the <q>rise</q> over the <q>run</q>, meaning you can get from one point to another by moving up (if the slope is positive) by the <q>rise</q> and left by the <q>run</q>.
 		</p>
 
-		<sidebyside>
-			<p>
-				<md>
-					<mrow> \text{point:} \amp (0, -2) </mrow>
-				</md>
-			</p>
-			<p>
-				<image>
-					<latex-image>
-						% User Defined Parameters
-						\def\a{0}	\def\ya{-2}		% point coordinates
-						\def\run{2}	\def\rise{1}	% slope rise/run
-						\def\tmin{-0.8}	\def\tmax{6}
-						\def\ymin{-0.6}	\def\ymax{3.5}
-						\begin{tikzpicture}[scale=0.8]
-							\draw[gray!50!white, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
-							\draw[gray!50!white, -&gt;] (0, \ymin) -- (0, \ymax) node[left] {$y$};
-							%
-							\foreach \k in {0,...,3}
-							{
-								\pgfmathsetmacro{\t}{\a + \k*\run}
-								\pgfmathsetmacro{\yt}{\ya + \k*\rise}
-								\draw[-&gt;] (\t, \yt) -- (\t, \yt + \rise) node[left] {rise};
-								\draw[-&gt;] (\t, \yt + \rise) -- (\t + \run, \yt + \rise) node[above] {rise};
-								\draw[fill=blue!20!white] (\t, \yt) circle (2pt);
-								\draw[] (\t, 0) node[below] {$\k$};
-								\draw[] (0, \yt) node[left] {$\yt$};
-							}
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-			</p>
-		</sidebyside>
+		<p>
+			For example, a line in the form
+		</p>
+
+		<me>
+			y = \frac32 x - 1
+		</me>
+		
+		<p>
+			has a <m>y</m>-intercept of <m>-1</m>, which means it passes through <m>(0,-1)</m>. The slope, <m>\frac32</m>, indicates a rise of <m>3</m> and a run of <m>2</m>, so we get to the point <m>(2,2)</m> from the point <m>(0,-1)</m> by moving up <m>3</m> and right <m>2</m> as shown in <xref ref="rise-3-run-2"/>.
+		</p>
+
+		<p>
+			In this example, the rise and run were simply the numerator and denominator. However, a different rise and run value could come from multiplying the numerator and denominator by any non-zero number. For example, all of the following are the same slope with a different rise and run:  
+		</p>
+
+		<me>
+			\frac{\text{rise}}{\text{run}}\quad\rightarrow\quad \frac32 = \frac{6}{4} = \frac{3\pi}{2\pi} = \frac{\frac32}{1} = \frac{\frac32h}{h} =\ \ldots.
+		</me>
+
+		<p>
+			as illustrated in <xref ref="one-slope-multiple-rise-run"/>.
+		</p>
+
+		<figure xml:id="one-slope-multiple-rise-run"><caption>Same Slope, Different Rise and Runs</caption>
+			<sidebyside widths="7.6% 23.4% 6% 25% 6% 24.6% 7.4%" valign="top">
+				<p/>
+				<figure xml:id="rise-3-run-2"><caption>Rise <m>3</m>, run <m>2</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}						% point coordinates
+							\def\tmin{-0.8} \def\tmax{3.9}
+							\def\ymin{-0.8} \def\ymax{4.8}
+							\def\tticks{1,3} \def\yticks{1,4}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.6]
+								
+								% === t-axis and grid ===
+								\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+								\foreach \tk in \tticks{
+									\draw (\tk,-0.1) -- (\tk,0.1)
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+								\foreach \yk in \yticks{
+									\draw (-0.1,\yk) -- (0.1,\yk)
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.2, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\rise$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.3cm, yshift=-0.15cm, font=\small] {$(3,4)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<p/>
+				<figure xml:id="rise-1pt5-run-1"><caption>Rise <m>\frac32</m>, run <m>1</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{1} \def\rise{1.5} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}					% point coordinates
+							\def\tmin{-0.8} \def\tmax{3.4}
+							\def\ymin{-0.8} \def\ymax{3.9}
+							\def\tticks{1,2,3} \def\yticks{1,2,3}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,3}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.7]
+								
+								% === t-axis and grid ===
+								\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+								\foreach \tk in \tticks{
+									\draw (\tk,-0.1) -- (\tk,0.1)
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+								\foreach \yk in \yticks{
+									\draw (-0.1,\yk) -- (0.1,\yk)
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.4, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=-0.1cm, inner sep = 1pt, midway, font=\small] {$\sfrac32$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.1cm, font=\small] {$(2,\frac52)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>	
+				<p/>
+				<figure xml:id="rise-mh-run-h"><caption>Rise <m>mh</m>, run <m>h</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}						% point coordinates
+							\def\tmin{-0.8} \def\tmax{4.3}
+							\def\ymin{-0.8} \def\ymax{4.8}
+							\def\tticks{1,3} \def\yticks{1,4}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.6]
+								
+								% === t-axis and grid ===
+								\foreach \k in {0,1}{
+									\draw[thin, gray!50!white] ({\ta + \k*\run},\ymin) -- ({\ta + \k*\run},\ymax);
+									\draw[black] ({\ta + \k*\run},-0.1) -- ({\ta + \k*\run},0.1) 
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway] {$t_{\k}$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \k in {0,1}{
+									\draw[thin, gray!50!white] (\tmin, {\ya + \k*\rise}) -- (\tmax, {\ya + \k*\rise});
+									\draw (-0.1, {\ya + \k*\rise}) -- (0.1, {\ya + \k*\rise})
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway] {$y_{\k}$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.5, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\frac32h$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$h$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.55cm, yshift=-0.1cm, font=\small] {$(t_0,y_0)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.2cm, font=\small] {$(t_1,y_1)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<p/>
+			</sidebyside>
+		</figure>
+
+		<p>
+			In general, if <m>m</m> is the slope, then we also have
+		</p>
+
+		<me>
+			\frac{\text{rise}}{\text{run}}\quad\rightarrow\quad m = \frac{m}{1} = \frac{m\cdot h}{1\cdot h} = \frac{mh}{h},
+		</me>
+
+		<p>
+			where the last expression has a rise of <m>mh</m> and a run of <m>h</m>. This shows that a run of <m>h</m> to the next point must be paired with a rise of <m>mh</m>. In particular, 
+		</p>
+
+		<me>
+			\text{A run of}\ h\ \text{from}\ (t_0, y_0)\ \text{leads to}\ (t_1, y_1) = (t_0 + h, y_0 + mh),
+		</me>
+
 	</paragraphs>
 
 	<paragraphs><title> Euler's Method </title>
@@ -584,6 +792,18 @@
 				<li>  </li>
 			</ol>
 		</objectives>
+
+		<p>
+			In the context of Euler's method, the slope at <m>t=0</m> is
+		</p>
+
+		<me>
+			\text{slope:}\ y'(0) = \frac{y'(0)}{1} = \frac{y'(0)\cdot h}{1\cdot h}.
+		</me>
+
+		<p>
+			This implies that for a run of <m>h</m>, the rise is <m>y'(0)\cdot h</m>. This is exactly how Euler's method goes from the initial condition <m>(0, y(0))</m> to the next point in the approximation.
+		</p>
 
 		<me>
 			y_{i+1} = y_i + hy_i'
