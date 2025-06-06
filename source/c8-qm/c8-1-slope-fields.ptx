@@ -1,0 +1,451 @@
+<section><title> Slope Fields </title>
+
+    <introduction>
+        <p>
+        Many differential equations have no explicit formula for their solutions. Even when they do, those formulas can be messy or hard to interpret. Fortunately, there's another way to understand what solutions look like — without ever solving the equation. This method is called a <term>slope field</term>.
+        </p>
+        <p>
+        A slope field is a visual representation of the slopes that a solution curve must follow at each point in the plane. It's like a map of tiny arrows (or line segments) that show the direction a solution would travel through each point. The pattern formed by these segments gives us a picture of the <em>family of solutions</em> to the differential equation.
+        </p>
+    </introduction>
+
+	<subsection><title> The Slope Generator </title>
+
+		<p>
+			By definition, first order differential equations contain a derivative, which can be isolated on one side of the equation. As a result, many first order differential equations can be written in the form:
+		</p>
+
+		<men xml:id="slope-machine-eqn1">
+			y'(t) = f(t, y)
+		</men>
+
+		<p>
+			where <m>f(t, y)</m> is some expression containing only <m>t</m> and <m>y</m> variables. So, if we plug, say <m>t=3</m> and <m>y=-5</m> into the equation we get
+		</p>
+
+		<me>
+			y'(3) = f(3, -5) = \text{some number}.
+		</me>
+
+		<p>
+			From calculus, you know that <m>y'(3)</m> gives the slope of the tangent line of <m>y</m> at <m>t=3</m>. Therefore, any equation of the form <xref ref="slope-machine-eqn1"/> can be thought of as a <em>slope generator</em> that computes the slope of the solution at any point <m>(t, y)</m>.
+		</p>
+
+		<example><title> Using the Slope Generator </title>
+			<statement>
+				<p>
+					Given the first-order differential equation
+					<me>
+						y'(t) - ty(t) = 2 - t^2,
+					</me>
+					compute the slope of the tangent line of the solution, <m>y(t)</m>, at the point <m>(-1, 6)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To find the slope of the solution at the point <m>(-1, 6)</m>, we first isolate <m>y'(t)</m>:
+				</p>
+
+				<me>
+					y'(t) = ty(t) + 2 - t^2.
+				</me>
+
+				<p>
+					This shows that the slope generator function is:
+					<me>f(t, y) = ty + 2 - t^2</me>.
+				</p>
+
+				<p>
+					Now we can plug in the values <m>t = -1</m> and <m>y(-1) = 6</m> into the slope generator:
+				</p>
+				<me>
+					y'(-1) = f(-1, 6) = (-1)(6) + 2 - (-1)^2
+					= -6 + 2 - 1 = -5.
+				</me>
+				<p>
+					So the slope of the solution curve at the point <m>(-1, 6)</m> is <m>-5</m>.
+				</p>
+			</solution>
+		</example>
+	</subsection>
+
+	<subsection><title> Visualizing the Slope Generator </title>
+
+	<p>
+		Thinking of a first-order differential equation as a slope generator gives us a powerful way to visualize its solutions. Consider the general form:
+	</p>
+
+	<me>
+		\frac{dy}{dt} = f(t, y).
+	</me>
+
+	<p>
+		Using the function <m>f(t, y)</m>, we can construct a slope field. This involves selecting various points in the <m>(t, y)</m>-plane and computing the value of <m>f(t, y)</m> at each one. At each point, we draw a short line segment (a "tangent segment") with that slope. These tangential segment collectively form a picture that reveals the behavior of the solution curves (see Figure ?).
+	</p>
+
+	<p>
+		For example, consider the differential equation
+	</p>
+
+	<me>
+		\frac{dy}{dt} = y - t.
+	</me>
+
+	<p>
+		Here, the slope generator is the function:
+	</p>
+
+	<me>
+		f(t, y) = y - t.
+	</me>
+
+	<p>
+		To practice constructing a slope field, we begin by computing <m>f(t, y)</m> at nine selected points in the <m>(t, y)</m>-plane. For instance, at the point <m>(1, -1)</m>, we find:
+	</p>
+
+	<me>
+		f(1, -1) = -1 - 1 = -2.
+	</me>
+
+	<p>
+		So we draw a short segment with slope <m>-2</m> centered at <m>(1, -1)</m>. The table below shows the slope values at the selected points:
+	</p>
+
+	<table>
+		<tabular>
+		<row><cell>Point (t, y)</cell> <cell>Slope f(t, y)</cell></row>
+		<row><cell>(−1, −1)</cell> <cell>0</cell></row>
+		<row><cell>(−1, 0)</cell>  <cell>1</cell></row>
+		<row><cell>(−1, 1)</cell>  <cell>2</cell></row>
+		<row><cell>(0, −1)</cell>  <cell>1</cell></row>
+		<row><cell>(0, 0)</cell>   <cell>0</cell></row>
+		<row><cell>(0, 1)</cell>   <cell>−1</cell></row>
+		<row><cell>(1, −1)</cell>  <cell>−2</cell></row>
+		<row><cell>(1, 0)</cell>   <cell>−1</cell></row>
+		<row><cell>(1, 1)</cell>   <cell>0</cell></row>
+		</tabular>
+	</table>
+
+	<p>
+		Once we've calculated these slopes, we sketch short line segments with those slopes at each point. These segments should be short enough not to overlap but long enough to be clearly visible.
+	</p>
+
+	<p>
+		While hand-sketching slope fields helps build intuition, it becomes tedious with more points. A computer-generated slope field provides a more complete picture. For instance, a computer can generate the slope field for <m>f(t, y) = y - t</m> by calculating slopes on a grid and drawing corresponding tangent segments.
+	</p>
+	</subsection>
+
+	<subsection><title> Slope Generators that Only Depend on <m>t</m> </title>
+		<p>
+			If the right-hand side of the differential equation in question is solely a function of t, or in other words, if dy/dt = f (t), the slope only affected by the value of <m>t</m> (see Figure ?). In other words, if we change the value of <m>t</m>, the slope will change, but if we change the value of <m>y</m>, the slope will not change.
+		</p>
+
+		<p>
+			Geometrically, this means the slope segment will not change as you move up and down in the <m>y</m> direction. Thus, the slope segment at, say <m>(3, 2)</m>, will be parallel to the slope segment at <m>(3,*)</m> (<m>* = </m> anything). 
+		</p>
+
+		<p>
+			A nice feature of an equation of the form
+			<me>
+				\frac{dy}{dt} = f(t)
+			</me>
+			is that it easily solved by direct integration. The solution is simply the integral of the slope generator function:
+			<me>
+				y(t) = \int f(t) \, dt + C,
+			</me>
+			where <m>C</m> is a constant of integration.
+		</p>
+
+		<p>
+			For example, consider the differential equation
+			<me>
+				\frac{dy}{dt} = 2t.
+			</me>
+			The slope generator function is <m>f(t) = 2t</m>, which only depends on <m>t</m>. The slope field for this equation consists of horizontal line segments with slopes determined by the value of <m>2t</m> at each point. This means that the solution curves are horizontal lines at each t-value.
+		</p>
+	
+	</subsection>
+
+	<subsection><title>Slope Fields for Autonomous Equations</title>
+		<p>
+			Let's take a closer look at a special type of differential equation called an <em>autonomous equation</em>. These are equations where the rate of change of <m>y</m> depends only on <m>y</m> itself—not on time <m>t</m>. In symbols, they look like this:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = f(y).
+		</me>
+
+		<p>
+			This might seem like a small difference, but it has a big effect on the slope field. Since <m>f(y)</m> doesn't depend on <m>t</m>, the slope at any point in the plane depends only on the height (the <m>y</m>-value), not the horizontal position. That means every point on a horizontal line shares the same slope.
+		</p>
+
+		<p>
+			In other words, the slope field has a special structure: all the little line segments (slopes) are parallel along each horizontal line. This gives the slope field a kind of “striped” pattern, where the direction of the solution only changes as you move up or down, not side to side (see Figure).
+		</p>
+
+		<p>
+			For example, consider this autonomous equation:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = 4y(1 - y).
+		</me>
+
+		<p>
+			The slope field for this equation has two important horizontal lines: <m>y = 0</m> and <m>y = 1</m>. Along both lines, the slope is zero, because <m>f(y)</m> equals zero there. That means the solution isn't changing—these are equilibrium solutions. They show up in the slope field as rows of horizontal line segments.
+		</p>
+
+		<p>
+			What about other values of <m>y</m>? If <m>0 &lt; y &lt; 1</m>, then <m>f(y) = 4y(1 - y)</m> is positive, so the slope is pointing upward, and solutions are increasing. If <m>y &lt; 0</m> or <m>y &gt; 1</m>, then <m>f(y)</m> is negative, and the solutions are decreasing. The slope field shows this clearly: above <m>y = 1</m> and below <m>y = 0</m>, the tiny segments tilt downward.
+		</p>
+
+		<p>
+			One of the coolest things about autonomous equations is that once you know one solution curve, you can get many more by simply sliding it left or right. That's because the slope field looks the same on every vertical slice—it never changes with <m>t</m>! This symmetry means solutions are horizontally shiftable, and we'll use this idea often in future sections (see Figure).
+		</p>
+	</subsection>
+
+
+	<subsection><title> ? </title>
+		<paragraphs><title> A Slope Field Example </title>
+			<p>
+				Now let's look at a more complex example. Consider the differential equation
+				<me>
+					\frac{dy}{dt} = \frac{y^2}{2} - t.
+				</me>
+				This equation is autonomous, meaning it only depends on \( y \) and not explicitly on \( t \). We can visualize its slope field by calculating the slopes at various points in the \( (t, y) \)-plane.
+			</p>
+
+			<p>
+				To generate a slope field for this equation, we can use a computer program to calculate the slopes at a grid of points in the \( (t, y) \)-plane. For example, we might calculate the slopes at points like \( (−3, −3), (−3, −2), ..., (3, 3) \). Each point will have a corresponding slope value given by the function \( f(t, y) = \frac{y^2}{2} - t \).
+			</p>
+
+			<p>
+				Figure ? shows an example of such a slope field. The arrows indicate the direction of the solution curves at each point in the plane. The length of each arrow corresponds to the magnitude of the slope.
+			</p>
+
+			<p>
+				In this case, we generated
+				<me>
+					f(t, y) = \frac{y^2}{2} - t
+				</me>
+			</p>
+			<p>
+				and plotted the slope field for this equation over the region \( −3 ≤ t ≤ 3 \) and \( −3 ≤ y ≤ 3 \) in the \( (t, y) \)-plane. We calculated values of the function \( f(t, y) \) over 25 × 25 points (625 points) in that region.
+				We generated the slope field by calculating the slopes at each of these points and drawing small line segments with those slopes centered at each point.
+			</p>
+			<p>
+				A glance at this slope field suggests that the graph of one solution is a line passing through the points \( (−1, 0) \) and \( (0, 1) \). Solutions corresponding to initial conditions that are below this line seem to increase until they reach an absolute maximum. Solutions corresponding to initial conditions that are above the line seem to increase more and more rapidly.
+			</p>
+			<p>
+				In fact, in Section ? we will learn an analytic technique for finding solutions of this equation. We will see that the general solution consists of the family of functions
+				<me>
+					y(t) = t + 1 + c e^t,
+				</me>
+				where \( c \) is an arbitrary constant. (At this point it is important to emphasize that, even though we have not studied the technique that gives us these solutions, we can still interpret the slope field and understand the behavior of solutions.)
+			</p>
+			<p>
+				The slope field for this equation over the region <m>−3 ≤ t ≤ 3</m> and <m>−3 ≤ y ≤ 3</m> in the <m>(t, y)</m>-plane is shown in Figure ?. The arrows indicate the direction of the solution curves at each point in the plane, and the length of each arrow corresponds to the magnitude of the slope.
+			</p>
+			<p>
+				We calculated values of the function f (t, y) over 25 × 25 points (625 points) in that region. A glance at this slope field suggests that the graph of one solution is a line passing − through the points (−1, 0) and (0, 1). Solutions corresponding to initial conditions that 1 1 are below this line seem to increase until they reach an absolute maximum. Solutions corresponding to initial conditions that are above the line seem to increase more and more rapidly.
+			</p>
+			<p>
+				In fact, in Section ? we will learn an analytic technique for finding solutions of
+				this equation. We will see that the general solution consists of the family of functions
+				<me>
+					\amp y(t) = t + 1 + c e^t,
+				</me>
+				where \( c \) is an arbitrary constant. (At this point it is important to emphasize that, even though we have not studied the technique that gives us these solutions, we can still interpret the slope field and understand the behavior of solutions.)
+			</p>
+		</paragraphs>
+
+		<exploration><title>Comparing Slope Fields</title>
+			<p>
+			To get the idea, we'll compare the slope fields for three differential equations:
+			</p>
+
+			<md>
+			<mrow xml:id="slope-de-a"> \amp \text{(A)} \quad \frac{dy}{dx} = \frac{y}{x} </mrow>
+			<mrow xml:id="slope-de-b"> \amp \text{(B)} \quad \frac{dy}{dx} = \frac{x}{y} </mrow>
+			<mrow xml:id="slope-de-c"> \amp \text{(C)} \quad \frac{dy}{dx} = y^2 </mrow>
+			</md>
+
+			<p>
+			Each equation involves two variables, <m>x</m> and <m>y</m>. The independent variable is the one you control (typically on the horizontal axis), and the dependent variable is the one that changes in response.
+			</p>
+
+			<exercise><title>Identifying Variables</title>
+			<statement>
+				For these three differential equations, identify the independent and dependent variables.
+			</statement>
+			<free-response>
+				<p>
+				Independent variable: <fillin width="20"/> 
+				Dependent variable: <fillin width="20"/>
+				</p>
+			</free-response>
+			</exercise>
+
+			<exercise><title>What Does <m>\frac{dy}{dx}</m> Mean?</title>
+			<statement>
+				In terms of the graph of a solution <m>y = y(x)</m>, what does the symbol <m>\frac{dy}{dx}</m> represent?
+			</statement>
+			<free-response>
+				<p><fillin width="60"/></p>
+			</free-response>
+			</exercise>
+
+			<p>
+			Now let's practice computing slope values for these equations at specific points. If you plug the <m>x</m> and <m>y</m> values into the right-hand side of the equation, you'll get the slope at that point.
+			</p>
+
+			<table>
+			<tabular>
+				<row>
+				<cell>Assigned Point</cell>
+				<cell>Slope for DE (A)</cell>
+				<cell>Slope for DE (B)</cell>
+				<cell>Slope for DE (C)</cell>
+				</row>
+				<row>
+				<cell><m>(1, -2)</m></cell>
+				<cell><m>-2</m></cell>
+				<cell><m>-\frac{1}{2}</m></cell>
+				<cell><m>4</m></cell>
+				</row>
+				<!-- Add rows for students to fill in -->
+				<row><cell><fillin width="20"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell></row>
+				<row><cell><fillin width="20"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell></row>
+				<row><cell><fillin width="20"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell><cell><fillin width="10"/></cell></row>
+			</tabular>
+			</table>
+
+			<exercise><title>Understanding Slopes Visually</title>
+			<statement>
+				Match each kind of slope with the way it should look in your drawing:
+			</statement>
+			<ul>
+				<li>Positive slope: Points up and to the right</li>
+				<li>Negative slope: Points down and to the left</li>
+				<li>Slope of 1 or -1: 45-degree angle</li>
+				<li>Slope near zero: nearly horizontal</li>
+				<li>Large slope: steep tilt</li>
+			</ul>
+			<p>Use these clues when sketching each slope segment in your slope field.</p>
+			</exercise>
+
+			<p>
+			After calculating your slopes, use colored strips of paper to build a class-wide slope field. Each strip should be centered at the assigned point and tilted to match the slope.
+			</p>
+		</exploration>
+
+		<exercise><title>General Solution to <m>\frac{dy}{dx} = y^2</m></title>
+			<statement>
+			Solve the differential equation <m>\frac{dy}{dx} = y^2</m> and find the general solution.
+			</statement>
+			<free-response>
+			<fillin width="60"/>
+			</free-response>
+		</exercise>
+
+		<exercise><title>Initial Value Problem</title>
+			<statement>
+			Solve the initial value problem <m>\frac{dy}{dx} = y^2</m> with <m>y(0) =</m> <fillin width="10"/>.
+			</statement>
+			<free-response>
+			<fillin width="60"/>
+			</free-response>
+		</exercise>
+
+		<exercise><title>Behavior of Solutions</title>
+			<statement>
+			Based on the slope field for <m>\frac{dy}{dx} = y^2</m>, what happens to the solution as <m>x</m> increases? Does it grow? Flatten out? Blow up?
+			</statement>
+			<free-response>
+			<fillin width="60"/>
+			</free-response>
+		</exercise>
+
+		<figure>
+
+			<image width="60%">
+				<description>a direction field of slope arrows and three curves following the arrows</description>
+				<sageplot>
+					from sage.calculus.desolvers import desolve_rk4
+					t, y = var('t, y')
+					f(t, y) = y^2/2 - t
+					p = plot_slope_field(f, (t,-1,5), (y,-5,10), headaxislength=3, headlength=3, axes_labels=['$t$','$y(t)$'])
+					p += desolve_rk4(f,y,ics=[-1,0],ivar=t,output='plot',end_points=[-1,5],thickness=3)
+					p += desolve_rk4(f,y,ics=[-1,-1],ivar=t,output='plot',end_points=[-1,5],thickness=3, color = "red")
+					p += desolve_rk4(f,y,ics=[-1,0.3292],ivar=t,output='plot',end_points=[-1,5],thickness=3, color = "green")
+					p
+				</sageplot>
+			</image>
+
+			<caption>The direction field for <m>y' = y^2/2 - t</m></caption>
+
+		</figure>
+
+		<figure>
+
+			<image width="40%">
+				<latex-image>
+					\begin{tikzpicture}[declare function={f(\x,\y)=\x+\y;}, scale=0.8]
+						\def\xmax{3} \def\xmin{-3}
+						\def\ymax{3} \def\ymin{-3}
+						\def\nx{10}  \def\ny{10}
+						\def\arrowscale{0.4} % length of slope arrows
+
+						% stepsize along x-axis and y-axis
+						\pgfmathsetmacro{\hx}{(\xmax-\xmin)/\nx}
+						\pgfmathsetmacro{\hy}{(\ymax-\ymin)/\ny}
+
+						% Draw grid lines
+						\foreach \i in {0,...,\nx} {
+							\pgfmathsetmacro{\xgrid}{\xmin + \i * \hx}
+							\draw[thin, gray!50] (\xgrid, \ymin) -- (\xgrid, \ymax);
+						}
+						\foreach \j in {0,...,\ny} {
+							\pgfmathsetmacro{\ygrid}{\ymin + \j * \hy}
+							\draw[thin, gray!50] (\xmin, \ygrid) -- (\xmax, \ygrid);
+						}
+
+						% slope field: just draw a vector at each point
+						\foreach \i in {0,...,\nx}
+						\foreach \j in {0,...,\ny}{
+
+							\pgfmathsetmacro{\xpt}{\xmin + \i*\hx}
+							\pgfmathsetmacro{\ypt}{\ymin + \j*\hy}
+							\pgfmathsetmacro{\slope}{f(\xpt,\ypt)}
+
+							% Normalize direction vector (1, slope) to fixed length
+							\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+							\pgfmathsetmacro{\dx}{\arrowscale / \len}
+							\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+							\draw[teal!90, -stealth, line width=1.1pt, shift={(\xpt,\ypt)}] (0,0) -- (\dx,\dy);
+						}
+
+						% Optional solution curve
+						\def\yo{1}
+						\draw[magenta, thick, samples=100] 
+							plot[domain=\xmin:1] (\x, {(\yo + 1)*exp(\x) - \x - 1});
+
+						% Axes
+						\draw[->, thick] (\xmin - 0.5, 0) -- (\xmax + 0.5, 0) node[right] {$t$};
+						\draw[->, thick] (0, \ymin - 0.5) -- (0, \ymax + 0.5) node[above] {$y$};
+
+						% Title
+						%\node[above, font=\small\bfseries] at (current bounding box.north) 
+						%	{Slope field for \quad $y' = x + y$};
+
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+
+			<caption>The direction field for <m>y' = y^2/2 - t</m></caption>
+
+		</figure>
+	</subsection>
+
+</section>
