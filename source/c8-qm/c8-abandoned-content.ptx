@@ -161,5 +161,71 @@
 			</free-response>
 		</exercise>
 	</subsection>
+
+		<figure>
+
+		<image width="60%">
+			<description>a direction field of slope arrows and three curves following the arrows</description>
+			<sageplot>
+				from sage.calculus.desolvers import desolve_rk4
+				t, y = var('t, y')
+				f(t, y) = y^2/2 - t
+				p = plot_slope_field(f, (t,-1,5), (y,-5,10), headaxislength=3, headlength=3, axes_labels=['$t$','$y(t)$'])
+				p += desolve_rk4(f,y,ics=[-1,0],ivar=t,output='plot',end_points=[-1,5],thickness=3)
+				p += desolve_rk4(f,y,ics=[-1,-1],ivar=t,output='plot',end_points=[-1,5],thickness=3, color = "red")
+				p += desolve_rk4(f,y,ics=[-1,0.3292],ivar=t,output='plot',end_points=[-1,5],thickness=3, color = "green")
+				p
+			</sageplot>
+		</image>
+
+		<caption>The direction field for <m>y' = y^2/2 - t</m></caption>
+
+	</figure>
+
+		<paragraphs><title> A Special Case: <m>t</m>-only Dependence </title>
+		<p>
+			When the first-order differential equation <xref ref="yp-equals-fty"/> lacks <m>y</m> terms, then its form becomes:
+			<me>
+				\frac{dy}{dt}=f(t),
+			</me>
+			where the slopes are determined by just <m>t</m>. We still calculate the slope at <m>(t,y)</m>, but the value of <m>y</m> has no impact on the slope.
+		</p>
+
+		<p>
+			In this case, the slope generator function <m>f(t)</m> depends only on <m>t</m>, not on <m>y</m>. This means that the slope at any point <m>(t,y)</m> is determined solely by the value of <m>t</m>, and not by the value of <m>y</m>.
+		</p>
+
+		<p>
+			Geometrically, this means the slope segment will not change as you move up and down in the <m>y</m> direction. Thus, the slope segment at, say <m>(3, 2)</m>, will be parallel to the slope segment at <m>(3,*)</m> (<m>* = </m> anything). 
+		</p>
+
+		<p>
+			A nice feature of an equation of the form
+			<me>
+				\frac{dy}{dt} = f(t)
+			</me>
+			is that it easily solved by direct integration. The solution is simply the integral of the slope generator function:
+			<me>
+				y(t) = \int f(t) \, dt + C,
+			</me>
+			where <m>C</m> is a constant of integration.
+		</p>
+
+				<me>
+			y(t)=\int f(t)\,dt + C.
+		</me>
+
+		<p>
+			For example, consider the differential equation
+			<me>
+				\frac{dy}{dt} = 2t.
+			</me>
+			The slope generator function is <m>f(t) = 2t</m>, which only depends on <m>t</m>. The slope field for this equation consists of horizontal line segments with slopes determined by the value of <m>2t</m> at each point. This means that the solution curves are horizontal lines at each t-value.
+		</p>
+
+				<p>
+			For instance, when <m>dy/dt = 2t</m> the slopes increase linearly with time, and the slope field consists of equal-length, equally-spaced line segments slanting more steeply as you move right.  The analytic solution <m>y=t^2+C</m> is merely the antiderivative of the slope pattern.
+		</p>
+	</paragraphs>
 	
 </section>

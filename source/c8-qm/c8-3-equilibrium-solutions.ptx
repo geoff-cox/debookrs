@@ -1,0 +1,681 @@
+<section><title> Equilibrium Solutions </title>
+
+	<introduction>
+		<p>
+			As you saw in the previous discussion, slope fields of autonomous differential equations have a special property where the slope is the same as independent variable, <m>t</m>, changes. This is like saying, no matter what time of day it is if you get hungry, you walk toward the kitchen. 
+		</p>
+	</introduction>
+
+	<paragraphs><title> Patterns in the Slope Field </title>
+		<p>
+			In addition to horizontal symmetry, the slope field of an autonomous differential equation also exhibits unique pattern along certain <m>y</m> values. For example,<xref ref="slope-field-y-ysqrd"/> shows the slope field for the autonomous equation
+		</p>
+
+		<me>
+			\frac{dy}{dt} = y(1 - y).
+		</me>
+
+		<p>
+			In this figure you can see an interesting horizontal behavior along two values of <m>y</m>.   
+		</p>
+
+		<sidebyside widths="50%" margin="10%" valign="middle">
+			<figure xml:id="slope-field-y-ysqrd">
+				<image width="50%">
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = (1-\y) * (1+\y);}, scale=0.8]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-2.2} \def\tmax{2.2}
+							\def\ymin{-2.2} \def\ymax{2.2}
+							\def\tstep{0.2}  \def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							% Draw grid lines
+							\foreach \i in {0,...,\nt} {
+								\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+								\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+							}
+							\foreach \j in {0,...,\ny} {
+								\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+								\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+							}
+
+							% Axes
+							\draw[->] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+							\draw[->] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\pgfmathparse{\t &lt; 0}
+								\ifnum\pgfmathresult=1	 % shift negative ticks
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below, xshift=-0.01cm] {\t};
+								\else
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below] {\t};
+								\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = y - t</m></caption>
+			</figure>
+		</sidebyside>
+
+		<me>
+			\frac{dy}{dt} = 4y(1 - y).
+		</me>
+
+		<p>
+			The slope field for this equation has two important horizontal lines: <m>y = 0</m> and <m>y = 1</m>. Along both lines, the slope is zero, because <m>f(y)</m> equals zero there. That means the solution isn't changing—these are equilibrium solutions. They show up in the slope field as rows of horizontal line segments.
+		</p>
+
+		<p>
+			What about other values of <m>y</m>? If <m>0 &lt; y &lt; 1</m>, then <m>f(y) = 4y(1 - y)</m> is positive, so the slope is pointing upward, and solutions are increasing. If <m>y &lt; 0</m> or <m>y &gt; 1</m>, then <m>f(y)</m> is negative, and the solutions are decreasing. The slope field shows this clearly: above <m>y = 1</m> and below <m>y = 0</m>, the tiny segments tilt downward.
+		</p>
+
+		<p>
+			One of the coolest things about autonomous equations is that once you know one solution curve, you can get many more by simply sliding it left or right. That's because the slope field looks the same on every vertical slice—it never changes with <m>t</m>! This symmetry means solutions are horizontally shiftable, and we'll use this idea often in future sections (see Figure).
+		</p>
+
+		<p>
+			When the first-order differential equation <xref ref="yp-equals-fty"/> lacks <m>t</m> terms, then its form becomes:
+			<me>
+				\frac{dy}{dt}=f(y),
+			</me>
+			where the slopes from <m>f(y)</m> are determined by just <m>y</m>. We still calculate the slope at <m>(t,y)</m>, but the value of <m>t</m> has no impact on the slope.
+		</p>
+	</paragraphs>
+
+	<paragraphs><title> Definition </title>
+		<p>
+			Autonomous equations of the form
+			<me>
+				\frac{dy}{dt} = f(y)
+			</me>
+			have a special kind of slope field. Because <m>f(y)</m> doesn't depend on <m>t</m>, the slope is the same along any horizontal line. That means the tiny direction segments in the slope field are identical at all points with the same <m>y</m>-value, even if their <m>t</m>-values are different.
+		</p>
+
+		<p>
+			Like all differential equations, <xref ref="def-autonomous-eqn" text="custom">autonomous differential equations</xref> have a family of solutions. However, these equations have a special set of constant solutions in the family that are both easy to find and tell us important information about the long-term behavior of all the other solutions in the family. Such solutions are called <term>equilibrium solutions</term> and have the form <m>y(t) = c</m>, where <m>c</m> is a constant.
+		</p>
+
+		<p>
+			A single equation can have multiple equilibrium solutions and we find them by plugging <m>y(t) = c</m> into the <xref ref="def-autonomous-eqn" text="custom">autonomous equation</xref>, giving us
+		</p>
+
+		<me>
+			y'(t) = f(y(t)) \quad\implies\quad [c]' = f(c) \quad\implies\quad f(c) = 0,
+		</me>
+
+		<p>
+			where the resulting equation, <m>f(c) = 0</m>, is an algebra equation that is solved for <m>c</m>.
+		</p>
+
+		<p>
+			For example, plugging <m>y(t) = c</m> into the autonomous equation
+			<me>
+				y' = 1-y^2
+			</me>,
+			gives us
+			<me>
+				0 = 1 - c^2 \quad\implies\quad c^2 = 1 \quad\implies\quad c = \pm 1.
+			</me>
+		</p>
+
+		<p>
+			So, the equilibrium solutions for this equation are <m>y(t) = 1</m> and <m>y(t) = -1</m>.
+		</p>
+
+		<p>
+			It is important to emphasize that although we found <m>y</m> as if it were a number, the equilibrium solutions are actually constant functions, defined for all <m>t</m>. Graphing these solutions, would display two horizontal lines crossing at <m>y = 1</m> and <m>y = -1</m>.
+		</p>
+
+		<p>
+			For an autonomous equation like <m>\frac{dy}{dx} = f(y)</m>, we find these constant solutions by solving <m>f(y) = 0</m>. That gives us the values of <m>y</m> where the slope is zero—where the solution graph is perfectly flat.
+		</p>
+
+		<p>
+			Now let's try a slightly more interesting differential equation:
+		</p>
+
+		<me>
+			\frac{dy}{dx} = y^2 - y^4.
+		</me>
+
+		<p>
+			This equation has multiple equilibrium points and reveals a rich variety of behavior depending on the starting value of <m>y(0)</m>. We'll use slope fields and phase lines to explore how solutions evolve over time.
+		</p>
+
+		<example>
+			<statement>
+				<p>
+					Consider the autonomous differential equation:
+					<me>
+						\frac{dy}{dt} = y^2 - 4y.
+					</me>
+					1. Identify the equilibrium solutions.
+					2. Determine the stability of each equilibrium solution.
+					3. Sketch the phase line for this equation.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The equilibrium solutions occur when <m>f(y) = 0</m>, which gives us:
+					<me>
+						y^2 - 4y = 0 \implies y(y - 4) = 0 \implies y = 0 \text{ or } y = 4.
+					</me>
+					The stability can be determined by analyzing the sign of <m>f(y)</m> around these points:
+					- For <m>y &lt; 0</m>, <m>f(y) &gt; 0</m> (solutions increase).
+					- For <m>0 &lt; y &lt; 4</m>, <m>f(y) &lt; 0</m> (solutions decrease).
+					- For <m>y &gt; 4</m>, <m>f(y) &gt; 0</m> (solutions increase).
+					
+					This means:
+					- <m>y = 0</m> is an unstable equilibrium (solutions move away).
+					- <m>y = 4</m> is a stable equilibrium (solutions move towards it).
+				</p>
+			</solution>
+		</example>
+		
+		<exercise label="prep-1-equilibrium-solutions"><title> What do you Observe </title>
+			<statement>
+				<p>
+					Determine the equilibrium solutions from the following slope field.
+					<sidebyside widths="60%" margin="20%" valign="middle">
+						<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[declare function={f(\x,\y) = (2-\y) * (1.5+\y);}, scale=0.6]
+
+									\pgfkeys{/pgf/number format/.cd,
+										fixed,
+										precision=1
+									}
+									\def\tmin{-3.25} \def\tmax{3.25}
+									\def\ymin{-3.25} \def\ymax{3.25}
+									\def\tstep{0.25}  \def\ystep{0.25}
+									\def\arrowscale{0.2} % length of slope arrows
+									\def\segmentwt{0.6pt} % thickness of slope segments
+
+									% stepsize along t-axis and y-axis
+									\pgfmathsetmacro{\tL}{\tmin + \tstep}
+									\pgfmathsetmacro{\tR}{\tmax - \tstep}
+									\pgfmathsetmacro{\yL}{\ymin + \ystep}
+									\pgfmathsetmacro{\yR}{\ymax - \ystep}
+									\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+									\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+									% Draw grid lines
+									\foreach \i in {0,...,\nt} {
+										\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+										\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+									}
+									\foreach \j in {0,...,\ny} {
+										\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+										\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+									}
+
+									% Axes
+									\draw[->] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+									\draw[->] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+									% Bounding box
+									\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+									% Tick marks and labels on t-axis
+									\pgfmathtruncatemacro{\tLint}{\tL}
+									\pgfmathtruncatemacro{\tRint}{\tR}
+									\foreach \t in {\tLint,...,\tRint} {
+										\pgfmathparse{\t &lt; 0}
+										\ifnum\pgfmathresult=1	 % shift negative ticks
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below, xshift=-0.01cm] {\t};
+										\else
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below] {\t};
+										\fi
+									}
+
+									% Tick marks and labels on y-axis
+									\pgfmathtruncatemacro{\yLint}{\yL}
+									\pgfmathtruncatemacro{\yRint}{\yR}
+									\foreach \y in {\yLint,...,\yRint}
+										\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+										node[font=\tiny, left] {\y};
+
+									% slope field: just draw a vector at each point
+									\foreach \i in {0,...,\nt}
+									\foreach \j in {0,...,\ny}{
+
+										\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+										\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+										\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+										% Normalize direction vector (1, slope) to fixed length
+										\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+										\pgfmathsetmacro{\dt}{\arrowscale / \len}
+										\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+										\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									}
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+					</sidebyside>
+				</p>
+			</statement>
+			<choices>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>y(t) = -2</m>
+						</p>
+					</statement>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>y(t) = -1.5</m>
+						</p>
+					</statement>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>y(t) = 0</m>
+						</p>
+					</statement>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>y(t) = 1.5</m>
+						</p>
+					</statement>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>y(t) = 2</m>
+						</p>
+					</statement>
+				</choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs><title> Long-Term Behavior </title>
+		<p>
+			Equilibrium points are key to understanding the behavior of autonomous differential equations. These are the values of <m>y</m> where <m>dy/dt = 0</m>—in other words, where the solution stays constant over time. But not all equilibrium points behave the same way. To better understand their role, we classify them based on how nearby solutions behave.
+		</p>
+
+		<p>
+			Imagine an equilibrium point at <m>y = y_0</m>. What happens to a solution that starts just a little below or above <m>y_0</m>? If the arrows on the phase line point <em>toward</em> <m>y_0</m> from both sides, then nearby solutions approach <m>y_0</m> as <m>t</m> increases. We call this kind of equilibrium point a <em>sink</em>.
+		</p>
+
+		<p>
+			The term "sink" is meant to help you visualize solutions being drawn inward—like water draining toward a sink. If you start close enough to the equilibrium, you'll end up being pulled into it over time.
+		</p>
+
+		<p>
+			Now consider a different situation. Suppose the arrows point <em>away</em> from <m>y_0</m> on both sides. Then any solution that starts near <m>y_0</m> moves away from it as time increases. In this case, <m>y_0</m> is called a <em>source</em>, because nearby solutions are pushed outward—like water being sprayed away from a fountain.
+		</p>
+
+		<p>
+			Sinks and sources are the two most important types of equilibrium points. But not every equilibrium behaves like these. If solutions approach from one side and move away on the other, then <m>y_0</m> is neither a sink nor a source. We call such points <em>nodes</em>. Nodes are still equilibrium points, but they have a more complicated influence on nearby solutions (see Figure).
+		</p>
+
+		<p>
+			Let's look at an example. Consider the differential equation:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = y^2 + y - 6 = (y + 3)(y - 2).
+		</me>
+
+		<p>
+			The equilibrium points are <m>y = -3</m> and <m>y = 2</m>. To classify them, we analyze the sign of <m>dy/dt</m>:
+		</p>
+
+		<ul>
+			<li>When <m>-3 &lt; y &lt; 2</m>, <m>dy/dt &lt; 0</m>, so solutions decrease.</li>
+			<li>When <m>y &lt; -3</m> or <m>y &gt; 2</m>, <m>dy/dt &gt; 0</m>, so solutions increase.</li>
+		</ul>
+
+		<p>
+			This tells us that solutions move toward <m>y = -3</m> and away from <m>y = 2</m>. Therefore, <m>y = -3</m> is a sink, and <m>y = 2</m> is a source.
+		</p>
+
+		<p>
+			What if we don't have a formula for <m>f(y)</m>, but just a graph? We can still sketch the phase line by looking at where <m>f(y)</m> crosses the axis (equilibrium points) and checking where it's positive or negative.
+		</p>
+
+		<p>
+			For example, suppose we're given a graph of <m>g(w)</m> and see that it has equilibrium points at <m>w = -0.5</m>, <m>w = 1</m>, and <m>w = 2.5</m>. From the graph we estimate:
+		</p>
+
+		<ul>
+			<li><m>g(w) &gt; 0</m> when <m>w &lt; -0.5</m>, <m>1 &lt; w &lt; 2.5</m>, and <m>w &gt; 2.5</m></li>
+			<li><m>g(w) &lt; 0</m> when <m>-0.5 &lt; w &lt; 1</m></li>
+		</ul>
+
+		<example><title>Long-Term Behavior</title>
+			<statement>
+				<p>
+					Based on the slope field for
+					<me>
+						\frac{dy}{dx} = y^2 - y^4
+					</me>,
+					describe what happens to solutions over time when the initial condition is <m>y(0) = 0.5</m>, <m>y(0) = 1</m>, and <m>y(0) = 2</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To analyze the long-term behavior, we first find the equilibrium points by solving <m>y^2 - y^4 = 0</m>. Factoring gives us:
+				</p>
+				<me>
+					y^2(1 - y^2) = 0,
+				</me>
+				<p>
+					which has solutions <m>y = 0</m>, <m>y = 1</m>, and <m>y = -1</m>.
+				</p>
+
+				<p>
+					Now we can sketch the phase line. The sign of <m>f(y)</m> tells us whether solutions increase or decrease:
+				</p>
+
+				<ul>
+					<li><m>y &lt; -1:</m> <m>f(y) &gt; 0</m> → solutions increase.</li>
+					<li><m>-1 &lt; y &lt; 0:</m> <m>f(y) &lt; 0</m> → solutions decrease.</li>
+					<li><m>0 &lt; y &lt; 1:</m> <m>f(y) &gt; 0</m> → solutions increase.</li>
+					<li><m>y = 1:</m> <m>f(y) = 0</m> → equilibrium point.</li>
+					<li><m>y &gt; 1:</m> <m>f(y) &lt; 0</m> → solutions decrease.</li>
+				</ul>
+
+				<p>
+					This means:
+				</p>
+
+				<ul>
+					<li>If <m>y(0) = 0.5</m>, the solution increases toward <m>y = 1</m>.</li>
+					<li>If <m>y(0) = 1</m>, it stays at <m>y = 1</m>.</li>
+					<li>If <m>y(0) = 2</m>, it decreases toward <m>y = 1</m>.</li>
+				</ul>
+
+				<p>
+					In summary, all solutions approach the equilibrium point at <em><strong><span style="color:blue">y = 1</span></strong></em> over time, regardless of their starting value. The equilibrium at <m>y = 1</m> is stable, while the others are unstable.
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			Using this sign chart, we draw the phase line and determine:
+		</p>
+
+		<ul>
+			<li><m>w = -0.5</m> is a sink (arrows point inward)</li>
+			<li><m>w = 1</m> is a source (arrows point outward)</li>
+			<li><m>w = 2.5</m> is a node (mixed behavior)</li>
+		</ul>
+
+		<p>
+			We've seen that we can classify equilibrium points just by looking at the graph of <m>f(y)</m>. In fact, the behavior of solutions near an equilibrium point depends on whether <m>f(y)</m> is increasing or decreasing there.
+		</p>
+
+		<p>
+			For example, suppose <m>f(y)</m> is decreasing near <m>y_0</m>. That means <m>f(y)</m> is positive just to the left of <m>y_0</m> and negative just to the right—so the arrows point inward, and <m>y_0</m> is a sink. Similarly, if <m>f(y)</m> is increasing near <m>y_0</m>, then <m>y_0</m> is a source.
+		</p>
+
+		<p>
+			This idea leads us to a useful result from calculus. If we take the derivative of <m>f(y)</m> at an equilibrium point, it tells us whether the function is increasing or decreasing there. This gives us a fast way to classify the equilibrium point.
+		</p>
+
+		<p>
+			<em>Linearization Theorem.</em> Suppose <m>y_0</m> is an equilibrium point of <m>dy/dt = f(y)</m>, and suppose <m>f(y)</m> is continuously differentiable. Then:
+		</p>
+
+		<ul>
+			<li>If <m>f'(y_0) &lt; 0</m>, then <m>y_0</m> is a sink.</li>
+			<li>If <m>f'(y_0) &gt; 0</m>, then <m>y_0</m> is a source.</li>
+			<li>If <m>f'(y_0) = 0</m>, then the test is inconclusive—we need more information.</li>
+		</ul>
+
+		<p>
+			This result is part of a broader strategy called <em>linearization</em>. The idea is to approximate a nonlinear equation by a linear one near an equilibrium point. The linear equation is easier to analyze and gives good information about nearby behavior.
+		</p>
+
+		<p>
+			Let's try it on a messy example. Suppose:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = h(y) = y(\cos(y^5 + 2y) - 27\pi y^4).
+		</me>
+
+		<p>
+			Clearly, <m>y = 0</m> is an equilibrium point because <m>h(0) = 0</m>. But the equation is too complicated to analyze directly. So we linearize by computing the derivative:
+		</p>
+
+		<me>
+			h'(y) = (\cos(y^5 + 2y) - 27\pi y^4) + y \cdot \frac{d}{dy}(\cos(y^5 + 2y) - 27\pi y^4).
+		</me>
+
+		<p>
+			Plugging in <m>y = 0</m>, we find <m>h'(0) = \cos(0) = 1</m>. Since <m>h'(0) &gt; 0</m>, the Linearization Theorem tells us that <m>y = 0</m> is a source.
+		</p>
+
+		<p>
+			But be careful! The result only applies <em>near</em> the equilibrium point. If you start too far away, the linear approximation might not match the behavior of the full nonlinear equation. Still, it's a powerful method: a little bit of calculus gives us a lot of insight.
+		</p>
+	</paragraphs>
+
+	<paragraphs><title> Phase Lines </title>
+		<p>
+			This creates a lot of repetition in the slope field. If we know the slope at every height <m>y</m> along a single vertical line (say, <m>t = t_0</m>), then we know the slope everywhere in the <m>t</m><m>y</m>-plane! That's why we introduce a simplified tool: the <em>phase line</em>.
+		</p>
+
+		<p>
+			The phase line shows all the important information from the slope field, but compressed into a single vertical diagram. It helps us quickly understand where solutions rise or fall and where they stay constant. You'll see it's a powerful tool for analyzing autonomous equations without doing much calculation.
+		</p>
+
+		<p>
+			Once we've identified the equilibrium points of an autonomous differential equation, we want to understand how nearby solutions behave. One of the most powerful tools for this is a <term>phase line</term>.
+		</p>
+
+		<p>
+			A phase line is a one-dimensional diagram that summarizes how solutions change over time—without needing to draw the full slope field. It consists of a vertical line labeled with equilibrium values of <m>y</m>, along with arrows that show whether the solution increases or decreases at each point.
+		</p>
+
+		<p>
+			Here's the idea: if <m>f(y) &gt; 0</m> at a particular <m>y</m>-value, then the solution is increasing there, so we draw an upward arrow. If <m>f(y) &lt; 0</m>, the solution is decreasing, so we draw a downward arrow. At equilibrium points where <m>f(y) = 0</m>, we leave a gap or mark the point with a dot—this is where the solution flattens out.
+		</p>
+
+		<p>
+			The beauty of a phase line is that it lets you see, at a glance, whether equilibrium points are <em>stable</em> (solutions move toward them), <em>unstable</em> (solutions move away), or something more subtle. You can understand the long-term behavior of all solutions just by following the arrows!
+		</p>
+
+		<example>
+			<title>Drawing a Phase Line</title>
+			<statement>
+				Sketch the phase line for the autonomous equation <m>\frac{dy}{dx} = y^2 - y^4</m>. Identify all equilibrium points and show where solutions increase or decrease.
+			</statement>
+			<solution>
+				<p>
+				First, solve <m>y^2 - y^4 = 0</m>. Factoring gives:
+				</p>
+
+				<me>
+				y^2(1 - y^2) = 0,
+				</me>
+
+				<p>
+				which has solutions <m>y = -1</m>, <m>y = 0</m>, and <m>y = 1</m>.
+				</p>
+
+				<p>
+				Now divide the number line into intervals and test the sign of <m>f(y)</m> in each:
+				</p>
+
+				<ul>
+				<li><m>y &lt; -1:</m> <m>f(y) &lt; 0</m> → arrow down</li>
+				<li><m>-1 &lt; y &lt; 0:</m> <m>f(y) &gt; 0</m> → arrow up</li>
+				<li><m>0 &lt; y &lt; 1:</m> <m>f(y) &gt; 0</m> → arrow up</li>
+				<li><m>y &gt; 1:</m> <m>f(y) &lt; 0</m> → arrow down</li>
+				</ul>
+
+				<p>Phase line sketch:</p>
+				<draw width="300" height="200">
+				<line x1="150" y1="0" x2="150" y2="200" stroke="black"/>
+				<text x="160" y="30">y</text>
+				<!-- Mark equilibrium points -->
+				<circle cx="150" cy="50" r="3" fill="black"/>
+				<circle cx="150" cy="100" r="3" fill="black"/>
+				<circle cx="150" cy="150" r="3" fill="black"/>
+				<text x="130" y="55">1</text>
+				<text x="130" y="105">0</text>
+				<text x="130" y="155">−1</text>
+				<!-- Add directional arrows -->
+				<!-- y > 1 -->
+				<line x1="150" y1="0" x2="150" y2="45" stroke="black" marker-end="url(#arrow-down)"/>
+				<!-- 0 < y < 1 -->
+				<line x1="150" y1="55" x2="150" y2="95" stroke="black" marker-end="url(#arrow-up)"/>
+				<!-- -1 < y < 0 -->
+				<line x1="150" y1="105" x2="150" y2="145" stroke="black" marker-end="url(#arrow-up)"/>
+				<!-- y < -1 -->
+				<line x1="150" y1="155" x2="150" y2="195" stroke="black" marker-end="url(#arrow-down)"/>
+				</draw>
+
+				<p>
+				From this diagram, we see:
+				</p>
+
+				<ul>
+				<li><m>y = -1</m> is stable (sink)</li>
+				<li><m>y = 0</m> is unstable (source)</li>
+				<li><m>y = 1</m> is stable (sink)</li>
+				</ul>
+
+				<p>
+				So, solutions starting near <m>y = 0</m> move away from it. Solutions starting between <m>0</m> and <m>1</m> move toward <m>y = 1</m>, and so on. The phase line gives a complete picture of how the system behaves in the long run—without drawing any solution curves!
+				</p>
+			</solution>
+		</example>
+
+	</paragraphs>
+	
+	<conclusion><title> 📤 Wrap-Up </title>	
+		<paragraphs><title> Summary </title>
+			<p>
+				WRITE SOMETHING
+			</p>
+		</paragraphs>
+
+		<paragraphs><title> Reading Questions </title>
+			<exercise><title> Select the Equilibrium Solutions </title>
+				<statement>
+					<p>
+						Determine the equilibrium solutions for the autonomous differential equation:
+						<me>
+							\frac{dy}{dt} = y^2 - 4y.
+						</me>
+						Select all that apply.
+					</p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement><m>y = 0</m></statement>
+						<feedback>
+							<p>
+								Yes, <m>y = 0</m> is an equilibrium solution. If we set <m>f(y)=0</m>, we have:
+								<me>
+									y^2 - 4y = 0 \implies y(y - 4) = 0.
+								</me>
+								This gives us <m>y = 0</m> and <m>y = 4</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><m>y = 4</m></statement>
+						<feedback>
+							<p>
+								Yes, <m>y = 4</m> is also an equilibrium solution. It is found from the same equation:
+								<me>
+									y^2 - 4y = 0 \implies y(y - 4) = 0.
+								</me>
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="no">
+						<statement><m>y = 2</m></statement>
+						<feedback>
+							<p>
+								No, <m>y = 2</m> is not an equilibrium solution. The equilibrium solutions are found by setting <m>f(y) = 0</m>, which gives us only <m>y = 0</m> and <m>y = 4</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="no">
+						<statement><m>y = -2</m></statement>
+						<feedback>
+							<p>
+								No, <m>y = -2</m> is not an equilibrium solution. The equilibrium solutions are determined by the roots of the equation <m>y^2 - 4y = 0</m>, which does not include negative values.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="no">
+						<statement><m>y = 1</m></statement>
+						<feedback>
+							<p>
+								No, <m>y = 1</m> is not an equilibrium solution. The equilibrium solutions are found by solving <m>f(y) = 0</m>, which gives us only <m>y = 0</m> and <m>y = 4</m>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+	</conclusion>
+</section>

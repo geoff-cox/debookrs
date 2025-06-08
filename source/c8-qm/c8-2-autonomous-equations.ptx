@@ -1,19 +1,16 @@
 <section><title> Automonomous Equations </title>
 	<introduction>
-		<p>
-			Suppose you're working with a differential equation like
-		</p>
-
-		<me>
-			\frac{dy}{dt} = f(t, y).
-		</me>
 
 		<p>
-			To understand how the solution behaves, you have a few options: you might sketch a slope field, run Euler's method to estimate values, or—if you're lucky—find an exact formula by solving the equation. But each of these methods takes work. You're either crunching numbers or solving integrals.
+			When the first-order differential equation <xref ref="yp-equals-fty"/> lacks <m>t</m> terms, then its form becomes:
+			<me>
+				\frac{dy}{dt}=f(y).
+			</me>
+			Such equations are called <em>autonomous differential equations</em>.
 		</p>
 
 		<p>
-			In this section, we focus on a special type of differential equation—one that's simpler to analyze in a different way. These are equations where the right-hand side doesn't depend on <m>t</m> at all. Such equations are called <em>autonomous differential equations</em> and are defined as follows:
+			The word "autonomous" means "self-governing." That fits, because the behavior of these equations is governed entirely by the current value of <m>y</m>, the current value of <m>t</m> doesn't matter. For example, a compressed spring gives the same force whether it's morning or afternoon.
 		</p>
 
 		<definition xml:id="def-autonomous-eqn"><title> Automonous Differential Equation </title>
@@ -27,239 +24,238 @@
 				</p>
 			</statement>
 		</definition>
-
-		<p>
-			 The word "autonomous" means "self-governing." That fits, because the behavior of these equations is governed entirely by the current value of <m>y</m>. No external timeline is needed. Because of this structure, we can use powerful visual tools to understand their solutions—tools that don't require much calculation at all.
-		</p>
-
-		<p>
-			An <em>autonomous equation</em> is a differential equation where the rate of change depends only on the dependent variable:
-		</p>
-
-		<me>
-			\frac{dy}{dt} = f(y).
-		</me>
-
-		<p>
-			That is, <m>dy/dt</m> is determined entirely by the value of <m>y</m>—it doesn't matter what time <m>t</m> it is. This form shows up often in real-world models. Why?
-		</p>
-
-		<p>
-			First, many physical systems behave the same way no matter when you observe them. A compressed spring gives the same force whether it's morning or afternoon. Second, some time-dependent behavior smooths out over long periods. For example, wolves might eat more field mice during the day than at night, but if we're studying population changes over years, we can average out those daily cycles.
-		</p>
 	</introduction>
 
-	<subsection><title> <m>y</m>-only Dependence </title>
+	<paragraphs><title> Slope Fields of Automonomous Equations </title>
 		<p>
-			Let's take a closer look at a special type of differential equation called an <em>autonomous equation</em>. These are equations where the rate of change of <m>y</m> depends only on <m>y</m> itself—not on time <m>t</m>. In symbols, they look like this:
+			To visualize this, we can draw a slope field for an autonomous equation. For example, consider the equation:
 		</p>
 
 		<me>
-			\frac{dy}{dt} = f(y).
+			\frac{dy}{dt} = y^2 - \frac94.
 		</me>
 
 		<p>
-			This might seem like a small difference, but it has a big effect on the slope field. Since <m>f(y)</m> doesn't depend on <m>t</m>, the slope at any point in the plane depends only on the height (the <m>y</m>-value), not the horizontal position. That means every point on a horizontal line shares the same slope.
+			The slope at any point <m>(t, y)</m> depends only on <m>y</m>. So, the slope should change when <m>y</m> changes, but not when <m>t</m> changes. Since <m>y</m> changes in the vertical (up/down) direction, we should observe the slope change as we move up and down in the slope field. In constrast, we should not see the slope change in the horizontal where <m>t</m> changes.
 		</p>
 
 		<p>
-			In other words, the slope field has a special structure: all the little line segments (slopes) are parallel along each horizontal line. This gives the slope field a kind of “striped” pattern, where the direction of the solution only changes as you move up or down, not side to side (see Figure).
+			The slope field for this equation is given in <xref ref="ysqrd-4y-slope-field"/>. Starting at the bottom of the vertical rectangle and moving up, we see that the slope segment rotates counterclockwise, indicating an increasing slope. On the other hand, moving from left to right through the horizontal rectangle, we see that the slope segments remain parallel, indicating that the slope does not change as <m>t</m> changes.
 		</p>
 
-		<p>
-			For example, consider this autonomous equation:
-		</p>
+		<sidebyside widths="46%" margin="27%" valign="middle">
+			<figure xml:id="ysqrd-4y-slope-field">
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y)=(\y)^2-2.25;}, scale=0.8]
 
-		<me>
-			\frac{dy}{dt} = 4y(1 - y).
-		</me>
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-0.5} \def\tmax{3}
+							\def\ymin{-0.5} \def\ymax{3}
+							\def\tstep{0.25}  \def\ystep{0.25}
+							\def\arrowscale{0.2} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
 
-		<p>
-			The slope field for this equation has two important horizontal lines: <m>y = 0</m> and <m>y = 1</m>. Along both lines, the slope is zero, because <m>f(y)</m> equals zero there. That means the solution isn't changing—these are equilibrium solutions. They show up in the slope field as rows of horizontal line segments.
-		</p>
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
 
-		<p>
-			What about other values of <m>y</m>? If <m>0 &lt; y &lt; 1</m>, then <m>f(y) = 4y(1 - y)</m> is positive, so the slope is pointing upward, and solutions are increasing. If <m>y &lt; 0</m> or <m>y &gt; 1</m>, then <m>f(y)</m> is negative, and the solutions are decreasing. The slope field shows this clearly: above <m>y = 1</m> and below <m>y = 0</m>, the tiny segments tilt downward.
-		</p>
+							% Draw grid lines
+							\foreach \i in {0,...,\nt} {
+								\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+								\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+							}
+							\foreach \j in {0,...,\ny} {
+								\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+								\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+							}
 
-		<p>
-			One of the coolest things about autonomous equations is that once you know one solution curve, you can get many more by simply sliding it left or right. That's because the slope field looks the same on every vertical slice—it never changes with <m>t</m>! This symmetry means solutions are horizontally shiftable, and we'll use this idea often in future sections (see Figure).
-		</p>
-	</subsection>
+							% Axes
+							\draw[->] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+							\draw[->] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
 
-	<subsection><title> Visualization </title>
-		<p>
-			Autonomous equations of the form
-			<me>
-				\frac{dy}{dt} = f(y)
-			</me>
-			have a special kind of slope field. Because <m>f(y)</m> doesn't depend on <m>t</m>, the slope is the same along any horizontal line. That means the tiny direction segments in the slope field are identical at all points with the same <m>y</m>-value, even if their <m>t</m>-values are different.
-		</p>
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
 
-		<paragraphs><title> Slope Fields </title>
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\pgfmathparse{\t &lt; 0}
+								\ifnum\pgfmathresult=1	 % shift negative ticks
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below, xshift=-0.01cm] {\t};
+								\else
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below] {\t};
+								\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% Title
+							%\node[above, font=\small\bfseries] at (current bounding box.north) 
+							%	{Slope field for \quad $y' = x + y$};
+
+							\draw[fill=blue!40!black] (\tmin,0.375) rectangle (\tmax,0.625);
+							\draw (\tmax,0.8) node[font=\tiny, right, xshift=-0.1cm] {Constant};
+							\draw[&lt;-] (\tmax,0.5) -- (\tmax+0.25,0.5) node[font=\tiny, right] {Slope};
+							\draw[fill=green!40!black] (1.375,\ymin) rectangle (1.625,\ymax);
+							\draw[&lt;-] (1.5, \ymax) -- (1.5, \ymax+0.25) node[font=\tiny, above, yshift=-0.1cm] {Changing Slope};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = y - t</m></caption>
+			</figure>
+		</sidebyside>
+
+	</paragraphs>
+
+	<conclusion><title> 📤 Wrap-Up </title>	
+		<paragraphs><title> Summary </title>
 			<p>
-				To visualize this, we can draw a slope field for an autonomous equation. For example, consider the equation:
+				<ul>
+					<li>
+						<p>
+							First Order autonomous differential equations have the special form:
+							<me>
+								\frac{dy}{dt} = f(y).
+							</me>
+						</p>
+					</li>
+					<li>
+						<p>
+							The slope field for these equations has a unique structure where the slope segments are parallel along horizontal lines, creating a "striped" pattern.
+						</p>
+					</li>
+				</ul>
 			</p>
-
-			<me>
-				\frac{dy}{dt} = y^2 - 4y.
-			</me>
-
-			<p>
-				The slope at any point <m>(t, y)</m> depends only on <m>y</m>. So we can draw the slope field by calculating slopes at various <m>y</m>-values and then repeating those slopes across all <m>t</m>-values.
-			</p>
-
-			<p>
-				This gives us a slope field that looks like this:
-			</p>
-
-			<draw width="300" height="200">
-				<!-- Draw axes -->
-				<line x1="0" y1="100" x2="300" y2="100" stroke="black"/>
-				<line x1="150" y1="0" x2="150" y2="200" stroke="black"/>
-				<!-- Add labels -->
-				<text x="160" y="30">t</text>
-				<text x="130" y="190">y</text>
-				<!-- Draw slope segments -->
-				<!-- Example slopes at y = 0, 1, 2, 3, 4 -->
-				<line x1="50" y1="100" x2="70" y2="80" stroke="blue"/> <!-- t=0, y=0 -->
-				<line x1="50" y1="80" x2="70" y2="60" stroke="blue"/> <!-- t=0, y=1 -->
-				<line x1="50" y1="60" x2="70" y2="40" stroke="blue"/> <!-- t=0, y=2 -->
-				<line x1="50" y1="40" x2="70" y2="20" stroke="blue"/> <!-- t=0, y=3 -->
-				<line x1="50" y1="20" x2="70" y2="-10" stroke="blue"/> <!-- t=0, y=4 -->
-			</draw>
-
-			<p>
-				This shows how the slope changes with <m>y </m>. For example, at <m>y = 0</m>, the slope is <m>-4</m>, so we draw a downward segment. At <m>y = 2</m>, the slope is <m>0</m>, so we draw a flat segment. At <m>y = 4</m>, the slope is <m>4</m>, so we draw an upward segment. 
-				We repeat these slopes across all <m>t</m>-values, creating a pattern that shows how solutions behave over time.
-			</p>
-			
 		</paragraphs>
-	</subsection>
 
-	<subsection><title> Equilibrium Solutions </title>
-		<p>
-			Like all differential equations, <xref ref="def-autonomous-eqn" text="custom">autonomous differential equations</xref> have a family of solutions. However, these equations have a special set of constant solutions in the family that are both easy to find and tell us important information about the long-term behavior of all the other solutions in the family. Such solutions are called <term>equilibrium solutions</term> and have the form <m>y(t) = c</m>, where <m>c</m> is a constant.
-		</p>
-
-		<p>
-			A single equation can have multiple equilibrium solutions and we find them by plugging <m>y(t) = c</m> into the <xref ref="def-autonomous-eqn" text="custom">autonomous equation</xref>, giving us
-		</p>
-
-		<me>
-			y'(t) = f(y(t)) \quad\implies\quad [c]' = f(c) \quad\implies\quad f(c) = 0,
-		</me>
-
-		<p>
-			where the resulting equation, <m>f(c) = 0</m>, is an algebra equation that is solved for <m>c</m>.
-		</p>
-
-		<p>
-			For example, plugging <m>y(t) = c</m> into the autonomous equation
-			<me>
-				y' = 1-y^2
-			</me>,
-			gives us
-			<me>
-				0 = 1 - c^2 \quad\implies\quad c^2 = 1 \quad\implies\quad c = \pm 1.
-			</me>
-		</p>
-
-		<p>
-			So, the equilibrium solutions for this equation are <m>y(t) = 1</m> and <m>y(t) = -1</m>.
-		</p>
-
-		<p>
-			It is important to emphasize that although we found <m>y</m> as if it were a number, the equilibrium solutions are actually constant functions, defined for all <m>t</m>. Graphing these solutions, would display two horizontal lines crossing at <m>y = 1</m> and <m>y = -1</m>.
-		</p>
-
-		<p>
-			For an autonomous equation like <m>\frac{dy}{dx} = f(y)</m>, we find these constant solutions by solving <m>f(y) = 0</m>. That gives us the values of <m>y</m> where the slope is zero—where the solution graph is perfectly flat.
-		</p>
-
-		<p>
-			Now let's try a slightly more interesting differential equation:
-		</p>
-
-		<me>
-			\frac{dy}{dx} = y^2 - y^4.
-		</me>
-
-		<p>
-			This equation has multiple equilibrium points and reveals a rich variety of behavior depending on the starting value of <m>y(0)</m>. We'll use slope fields and phase lines to explore how solutions evolve over time.
-		</p>
-
-		<figure>
-			<image width="50%">
-				<latex-image>
-					\begin{tikzpicture}[declare function={f(\x,\y)=(\y)-(\y)^2;}, scale=1]
-						\def\xmin{-0.2} \def\xmax{4.5}
-						\def\ymin{-2} \def\ymax{2}
-						\def\nx{12}  \def\ny{20}
-						\def\arrowscale{0.2} % length of slope arrows
-
-						% stepsize along x-axis and y-axis
-						\pgfmathsetmacro{\hx}{(\xmax-\xmin)/\nx}
-						\pgfmathsetmacro{\hy}{(\ymax-\ymin)/\ny}
-
-						% Draw grid lines
-						\foreach \i in {0,...,\nx} {
-							\pgfmathsetmacro{\xgrid}{\xmin + \i * \hx}
-							\draw[very thin, gray!50] (\xgrid, \ymin) -- (\xgrid, \ymax);
-						}
-						\foreach \j in {0,...,\ny} {
-							\pgfmathsetmacro{\ygrid}{\ymin + \j * \hy}
-							\draw[very thin, gray!50] (\xmin, \ygrid) -- (\xmax, \ygrid);
-						}
-
-						% Axes
-						\draw[->] (\xmin - 0.1, 0) -- (\xmax + 0.5, 0) node[below, xshift=-0.2em] {$t$};
-						\draw[->] (0, \ymin - 0.1) -- (0, \ymax + 0.3) node[left, yshift=-0.2em] {$y$};
-
-						% slope field: just draw a vector at each point
-						\foreach \i in {0,...,\nx}
-						\foreach \j in {0,...,\ny}{
-
-							\pgfmathsetmacro{\xpt}{\xmin + \i*\hx}
-							\pgfmathsetmacro{\ypt}{\ymin + \j*\hy}
-							\pgfmathsetmacro{\slope}{f(\xpt,\ypt)}
-
-							% Normalize direction vector (1, slope) to fixed length
-							\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
-							\pgfmathsetmacro{\dx}{\arrowscale / \len}
-							\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
-
-							\draw[blue!40, line width=0.8pt, shift={(\xpt,\ypt)}] (0,0) -- (\dx,\dy);
-							%\draw[blue!40, arrows = {-Stealth[width=4pt, length=4pt, inset=3pt]}, line width=0.7pt, shift={(\xpt,\ypt)}] (0,0) -- (\dx,\dy);
-						}
-
-						% Optional solution curve
-						%\def\yo{1}
-						%\draw[magenta, thick, samples=100] 
-						%	plot[domain=\xmin:1] (\x, {(\yo + 1)*exp(\x) - \x - 1});
-
-						% Title
-						%\node[above, font=\small\bfseries] at (current bounding box.north) 
-						%	{Slope field for \quad $y' = x + y$};
-
-					\end{tikzpicture}
-				</latex-image>
-			</image>
-			<caption>The direction field for <m>y' = y^2/2 - t</m></caption>
-		</figure>
-	</subsection>
-
-	<conclusion><title> Summary </title>
-		<p>
-			In this section, we learned about autonomous differential equations, which are equations where the rate of change depends only on the dependent variable <m>y</m>. We explored how to analyze these equations using slope fields and phase lines, focusing on equilibrium solutions and their stability.
-		</p>
-
-		<p>
-			The phase line provides a powerful tool for visualizing the long-term behavior of solutions without needing to plot every point in the slope field. By understanding equilibrium points and their stability, we can predict how solutions will behave over time.
-		</p>
-		
-		<p>
-			Next, we'll apply these concepts to real-world problems, using phase lines to analyze population dynamics and other systems governed by autonomous equations.
-		</p>
+		<paragraphs><title> Reading Questions </title>
+			<exercise><title> Answer the Following </title>
+				<task><title> Give the Slope </title>
+					<statement>
+						<p>
+							Suppose you are looking at the slope field for the autonomous equation
+							<me>
+								\frac{dy}{dt} = f(y),
+							</me>
+							and notice that the slope is <m>3</m> at the point <m>(2, 1)</m>, then what do you see when you look at the slope at the point <m>(-3, 1)</m>?
+						</p>
+					</statement>
+					<choices>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>0</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									This is incorrect. Carefully review the summary above.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>-3</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									This is incorrect. Carefully review the summary above.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>1</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									This is incorrect. Carefully review the summary above.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>3</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Yes, the slope at <m>(-3, 1)</m> is the same as at <m>(2, 1)</m> because the slope does not change when <m>t</m> changes.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									Impossible to answer.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									This is incorrect. It is possible to answer this question based on the information given in the summary. Carefully review the summary above.
+								</p>
+							</feedback>
+						</choice>
+					
+					</choices>
+					
+				</task>
+				<task><title> Understanding Dependancy </title>
+					<statement correct="no">
+						<p>
+							In the autonomous differential equation, 
+							<me>
+								\frac{dy}{dt} = f(y),
+							</me>
+							the derivative, <m>\frac{dy}{dt}</m> does not depend on the independent variable, <m>t</m>.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							This statement is false. This is a subtle but important detail. The slope that you get from <m>f(y)</m> at a point <m>(t,y)</m> does not change as <m>t</m> changes, but both <m>y</m> and its derivative, <m>\frac{dy}{dt}</m>, are still functions of <m>t</m>.
+						</p>
+					</feedback>
+				</task>
+			</exercise>
+		</paragraphs>
 	</conclusion>
 </section>
