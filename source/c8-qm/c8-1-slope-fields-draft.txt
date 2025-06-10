@@ -1,0 +1,134 @@
+<section><title> Slope Fields </title>
+	<introduction>
+		<p>
+			Very few differential equations come with neat, closed-form solutions. Fortunately, we can still understand what those solutions look like by focusing on <em>how</em> they change instead of <em>what</em> they equal. A <term>slope field</term> turns the right-hand side of a first-order equation into a picture that every solution curve must follow.
+		</p>
+
+		<p>
+			A slope field is a visual representation of the slopes that a solution curve must follow at each point in the plane. It's like a map of tiny arrows (or line segments) that show the direction a solution would travel through each point. The pattern formed by these segments gives us a picture of the <em>family of solutions</em> to the differential equation.
+		</p>
+	</introduction>
+
+	<paragraphs><title> From Equation to Slope </title>
+		<p>
+			Since every first order differential equation consists of some arrangement of <m>t</m>, <m>y</m>, or <m>y'</m>, we can move everything to one side of the equation and represent the equation as:
+			<me>
+				f(t, y, y') = 0,
+			</me>
+			where <m>f</m> is a single function containing everything we moved over. Here is an example of such a rearrangement:
+			<me>
+				y' - ty = 2 - t^2 \quad \Rightarrow \quad
+				\ub{y' - ty - 2 + t^2}_{\large f(t, y, y')} = 0.
+			</me>
+		</p>
+
+		<p>
+			When it is possible to put just <m>y'</m> on one side and everything else on the other, we write:
+			<men xml:id="yp-equals-fty">
+				y' = f(t, y).
+			</men>
+		</p>
+
+		<p>
+			Equations of this form have a very special property since we can think of the function <m>f(t,y)</m> as a function that takes two variables, <m>t</m> and <m>y</m>, and returns a single number. For example, when <m> t = 3 </m> and <m> y = 5 </m>,
+			<me>
+				y'(3) = f(3, 5) = \text{some number}.
+			</me>
+		</p>
+
+		<p>
+			Calculus teaches you that <m>y'(3)</m> is the slope of the tangent line of <m>y</m> at <m>t=3</m>. So this number gives the exact direction the graph of <m>y</m> is moving when it passes through <m>(3,5)</m>.
+		</p>
+
+		<example><title> Quick Slope Check </title>
+			<statement>
+				<p>
+					For
+					<me>
+						y' - ty = 2 - t^2,
+					</me>
+					find the slope at <m>(t,y)=(-1,6)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Rearranging gives <me>y' = ty + 2 - t^2</me>, so <m>f(t,y)=ty+2-t^2</m>.  Substitute:
+				</p>
+				<me>
+					f(-1,6) = (-1)(6)+2-(-1)^2 = -5.
+				</me>
+				<p>
+					Any solution that passes through <m>(-1,6)</m> leaves that point with slope <m>-5</m>.
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			Here, <m>f(t,y)</m> acts as a <em>slope generator</em> that takes in a <m>(t, y)</m> point in the <m>ty</m>-plane and outputs the slope of the solution, <m>y(t)</m>, as it passes through this point.
+		</p>
+	</paragraphs>
+
+	<paragraphs><title> Sketching a Slope Field  </title>
+		
+		<p>
+			To draw a slope field by hand:
+		</p>
+
+		<ol>
+			<li>Choose a small grid of points in the <m>(t,y)</m>-plane.</li>
+			<li>Compute <m>f(t,y)</m> at each point.</li>
+			<li>Draw a short line segment centered at the point with that slope.</li>
+		</ol>
+
+		<p>
+			Take the equation
+		</p>
+
+		<me>
+			\frac{dy}{dt} = y - t.
+		</me>
+
+		<p>
+			Computing nine slopes on a <m>3\times3</m> grid yields:
+		</p>
+
+		<sidebyside widths="44% 28%" margins="5% 5%" valign="middle">
+			<tabular halign="center">
+				<col right="minor"/>
+				<col halign="right"/>
+				<row bottom="minor"><cell><m> (t , y) </m></cell><cell><m> f(t,y) = y - t </m></cell></row>
+				<row><cell><m> (-1 , -1 ) </m></cell><cell><m> -1-(-1)= 0 </m></cell></row>
+				<row><cell><m> (-1 ,  0 ) </m></cell><cell><m> -1-(-0)= 1 </m></cell></row>
+				<row><cell><m> (-1 ,  1 ) </m></cell><cell><m> -1-( 1)= 2 </m></cell></row>
+				<row><cell><m> ( 0 , -1 ) </m></cell><cell><m>  0-(-1)= 1 </m></cell></row>
+				<row><cell><m> ( 0 ,  0 ) </m></cell><cell><m>  0-( 0)= 0 </m></cell></row>
+				<row><cell><m> ( 0 ,  1 ) </m></cell><cell><m>  0-( 1)=-1 </m></cell></row>
+				<row><cell><m> ( 1 , -1 ) </m></cell><cell><m>  1-(-1)=-2 </m></cell></row>
+				<row><cell><m> ( 1 ,  0 ) </m></cell><cell><m>  1-( 0)=-1 </m></cell></row>
+				<row><cell><m> ( 1 ,  1 ) </m></cell><cell><m>  1-( 1)= 0 </m></cell></row>
+			</tabular>
+			<image>
+					Suppressed for brevity
+			</image>
+		</sidebyside>
+
+		<p>
+			While hand-sketching slope fields helps build intuition, it becomes tedious with more points. A computer-generated slope field provides a more complete picture. For instance, <xref ref="y-t-slope-field-16x16"/> shows a <m>16\times16</m> slope field for the same equation. It also includes the solution curve that passess through the point <m>(0, \frac12)</m>. Notice how the curve follows the general tend of the slopes, as if it was the path of an object driven by a current.
+		</p>
+
+		<sidebyside widths="44%" margins="28% 28%" valign="middle">
+			<figure xml:id="y-t-slope-field-16x16">
+				<image>
+					Suppressed for brevity
+				</image>
+				<caption>Slope field for <m>y' = y - t</m></caption>
+			</figure>
+		</sidebyside>
+	</paragraphs>
+
+	<conclusion><title> Wrap-Up </title>
+		<p>
+			A slope field turns a differential equation into a navigational chart: the arrows are the instructions every solution must obey.  By reading that chart you can predict qualitative behavior—growth, decay, equilibria, long-term trends—without ever writing down an explicit formula.  In the next section we focus on autonomous equations, whose slope fields have an extra layer of symmetry.
+		</p>
+	</conclusion>
+</section>

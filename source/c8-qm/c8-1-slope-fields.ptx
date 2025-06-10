@@ -5,7 +5,11 @@
 		</p>
 
 		<p>
-			A slope field is a visual representation of the slopes that a solution curve must follow at each point in the plane. It's like a map of tiny arrows (or line segments) that show the direction a solution would travel through each point. The pattern formed by these segments gives us a picture of the <em>family of solutions</em> to the differential equation.
+			A slope field is a visual representation of the slopes that a solution curve must follow at each point in the plane. It's like a map of tiny arrows (or line segments) that show the direction a solution would travel through each point. The pattern formed by these segments gives us a picture of the <em>family of solutions</em> to the differential equation: one possible solution passes through each point in the plane, and the slope field shows how all of these solutions must behave.
+		</p>
+
+		<p>
+			In this way, a slope field doesn't just represent a single solution—it represents <em>all possible solutions</em> to the differential equation. If you pick any point <m>(t_0, y_0)</m>, a unique solution curve from the family passes through it, and the slope field shows how that curve continues on, always following the local directions. It's like dropping a leaf into a flowing stream—the arrows show you where it will go.
 		</p>
 	</introduction>
 
@@ -192,7 +196,7 @@
 		</sidebyside>
 
 		<p>
-			While hand-sketching slope fields helps build intuition, it becomes tedious with more points. A computer-generated slope field provides a more complete picture. For instance, <xref ref="y-t-slope-field-16x16"/> shows a <m>16\times16</m> slope field for the same equation. It also includes the solution curve that passess through the point <m>(0, \frac12)</m>. Notice how the curve follows the general tend of the slopes, as if it was the path of an object driven by a current.
+			While hand-sketching slope fields helps build intuition, it becomes tedious with more points. A computer-generated slope field provides a more complete picture. For instance, <xref ref="y-t-slope-field-16x16"/> shows a <m>16\times16</m> slope field for the same equation. It also includes the solution curve that passes through the point <m>(0, \frac12)</m>. Notice how the curve follows the general trend of the slopes, as if it were the path of an object driven by a current.
 		</p>
 
 		<sidebyside widths="44%" margins="28% 28%" valign="middle">
@@ -293,80 +297,26 @@
 
 	</paragraphs>
 
-	<!-- <figure>
-		<image>
-			<latex-image>
-				\begin{tikzpicture}[declare function={f(\x,\y)=\x+\y;}, scale=0.8]
-					\def\tmax{3} \def\tmin{-3}
-					\def\ymax{3} \def\ymin{-3}
-					\def\nt{10}  \def\ny{10}
-					\def\arrowscale{0.4} % length of slope arrows
+	<conclusion><title> 📤 Wrap-Up </title>	
+		<paragraphs><title> Summary </title>
+			<p>
+				A slope field turns a differential equation into a navigational chart: the arrows are the instructions every solution must obey. The field captures all possible solutions at once—each point in the plane is an entry point to a unique curve in the family. By reading that chart, you can predict qualitative behavior—growth, decay, equilibria, long-term trends—without ever writing down an explicit formula. In the next section we focus on autonomous equations, whose slope fields have an extra layer of symmetry.
+			</p>
+		</paragraphs>
 
-					% stepsize along t-axis and y-axis
-					\pgfmathsetmacro{\tstep}{(\tmax-\tmin-2)/\nt}
-					\pgfmathsetmacro{\ystep}{(\ymax-\ymin-2)/\ny}
-
-					% Draw grid lines
-					\foreach \i in {0,...,\nt} {
-						\pgfmathsetmacro{\tk}{\tmin + (\i+1) * \tstep}
-						\draw[thin, gray!50] (\tk, \ymin) - (\tk, \ymax);
-					}
-					\foreach \j in {0,...,\ny} {
-						\pgfmathsetmacro{\yk}{\ymin + (\j+1) * \ystep}
-						\draw[thin, gray!50] (\tmin, \yk) - (\tmax, \yk);
-					}
-
-					% slope field: just draw a vector at each point
-					\foreach \i in {0,...,\nt}
-					\foreach \j in {0,...,\ny}{
-
-						\pgfmathsetmacro{\tpt}{\tmin + (\i+1) * \tstep}
-						\pgfmathsetmacro{\ypt}{\ymin + (\j+1) * \ystep}
-						\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
-
-						% Normalize direction vector (1, slope) to fixed length
-						\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
-						\pgfmathsetmacro{\dt}{\arrowscale / \len}
-						\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
-
-						%\draw[teal!90, -stealth, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) - (0.5*\dt, 0.5*\dy);
-						\draw[teal!90, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) - (0.5*\dt, 0.5*\dy);
-						\draw[fill=white, thick] (\tpt,\ypt) circle (2pt);
-					}
-
-					% Axes
-					\draw[->] (\tmin, 0) - (\tmax, 0) node[anchor=west] {$t$};
-					\draw[->] (0, \ymin) - (0, \ymax) node[anchor=south] {$y$};
-
-					% Bounding box
-					\draw[thick] (\tmin,\ymin) rectangle (\tmax,\ymax);
-
-					% Tick marks and labels on t-axis
-					\foreach \x in {\tmin-1,...,\tmax-1}
-						\draw (\x,\ymin-0.1) - (\x,\ymin+0.1) node[below] {\x};
-
-					% Tick marks and labels on y-axis
-					\foreach \y in {\ymin,...,\ymax}
-						\draw (\tmin-0.1,\y) - (\tmin+0.1,\y) node[left] {\y};
-
-					% Title
-					%\node[above, font=\small\bfseries] at (current bounding box.north) 
-					%	{Slope field for \quad $y' = x + y$};
-
-					% Optional solution curve
-					\def\yo{1}
-					\draw[magenta, thick, samples=100] 
-						plot[domain=\tmin:1] (\x, {(\yo + 1)*exp(\x) - \x - 1});
-
-				\end{tikzpicture}
-			</latex-image>
-		</image>
-		<caption>The direction field for <m>y' = y^2/2 - t</m></caption>
-	</figure> -->
-
-	<conclusion><title> Wrap-Up </title>
-		<p>
-			A slope field turns a differential equation into a navigational chart: the arrows are the instructions every solution must obey.  By reading that chart you can predict qualitative behavior—growth, decay, equilibria, long-term trends—without ever writing down an explicit formula.  In the next section we focus on autonomous equations, whose slope fields have an extra layer of symmetry.
-		</p>
+		<paragraphs><title> Reading Questions </title>
+			<exercise><title> Answer the Following </title>
+				<task label="wrap-up-slope-fields-1"><title>  </title>
+					<statement>
+						<p>
+							
+						</p>
+					</statement>
+					<choices>
+						
+					</choices>
+				</task>
+			</exercise>
+		</paragraphs>
 	</conclusion>
 </section>
