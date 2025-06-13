@@ -1,4 +1,94 @@
 <section><title> Abandoned Content</title>
+	<figure xml:id="fig-uncoupled-phase-plane">
+		<caption>Solution trajectories in the phase plane for the uncoupled system <m>x' = -x</m>, <m>y' = -2y</m>. Arrows indicate the direction of motion as time increases.</caption>
+		<image>
+			<latex-image>
+				\begin{tikzpicture}[domain=0:1, scale=1]
 
-	
+					\def\tmin{-0.2}	\def\tmax{2.2}	\def\tstep{0.2}	
+					\def\bot{-0.2}	\def\top{2.5}	\def\vstep{0.2}
+					
+					\def\xo{0.6}	\def\yo{1.3}		% Initial conditions
+
+					% Axes
+					\draw[->] (\tmin,0) -- (\tmax,0) node[right] {$t$};
+					\draw[->] (0,\bot) -- (0,\top) node[above] {$x(t), y(t)$};
+
+					\draw[blue, thick, variable=\t, domain=\tmin:\tmax] plot (\t, {\xo * e^(-\t)}) 
+						node[right, font=\scriptsize] {$x(t) = x_0 e^{-t}$};
+					\draw[red, thick, variable=\t, domain=\tmin:\tmax] plot (\t, {\yo * e^(-2*\t)})
+						node[above, font=\scriptsize] {$y(t) = y_0 e^{-2t}$};
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+	</figure>
+
+	<exercise label="chkpt-matching"><title>Classify the System</title>
+  <statement>
+    <p>
+      Match each system to the correct classification.
+    </p>
+  </statement>
+  <feedback>
+    <p>
+      Systems are classified by whether variables influence each other and how. Look for dependencies in the right-hand sides.
+    </p>
+  </feedback>
+  <cardsort>
+    <match>
+      <premise><m>dx/dt = x,\quad dy/dt = y</m></premise>
+      <response>Uncoupled</response>
+    </match>
+    <match>
+      <premise><m>dx/dt = x,\quad dy/dt = x + y</m></premise>
+      <response>Partially Coupled</response>
+    </match>
+    <match>
+      <premise><m>dx/dt = x + y,\quad dy/dt = x - y</m></premise>
+      <response>Fully Coupled</response>
+    </match>
+    <match>
+      <premise><m>dx/dt = \cos(t),\quad dy/dt = y</m></premise>
+      <response>Uncoupled</response>
+    </match>
+    <match>
+      <premise><m>dx/dt = x,\quad dy/dt = t + x</m></premise>
+      <response>Partially Coupled</response>
+    </match>
+  </cardsort>
+</exercise>
+
+					<task label="rqs-building-up-to-systems-3"><title> Identifying Features </title>
+						<statement>
+							<p>
+								Select all statements that are true about partially coupled systems.
+							</p>
+						</statement>
+						<choices>
+							<choice correct="yes">
+								<statement><p>One equation is independent and can be solved first.</p></statement>
+								<feedback><p>Yes—this is a defining feature of partial coupling.</p></feedback>
+							</choice>
+							<choice>
+								<statement><p>Both equations must be solved simultaneously.</p></statement>
+								<feedback><p>No—only fully coupled systems require that.</p></feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p>The dependent equation uses the solution of the independent one.</p></statement>
+								<feedback><p>Exactly. You substitute <m>x(t)</m> into the second equation to solve for <m>y(t)</m>.</p></feedback>
+							</choice>
+							<choice>
+								<statement><p>Partial coupling means both variables evolve independently.</p></statement>
+								<feedback><p>That describes an uncoupled system, not a partially coupled one.</p></feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><p>Only one of the equations involves both variables.</p></statement>
+								<feedback><p>Correct. The coupling only appears in one direction.</p></feedback>
+							</choice>
+							<choice>
+								<statement><p>The second variable can be solved without knowing the first.</p></statement>
+								<feedback><p>Nope—you need <m>x(t)</m> to solve for <m>y(t)</m>.</p></feedback>
+							</choice>
+						</choices>
+					</task>
 </section>
