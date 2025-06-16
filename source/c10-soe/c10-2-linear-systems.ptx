@@ -1,4 +1,4 @@
-<section><title> Linear Systems </title>
+<section><title> Solving Linear Systems </title>
 
 	<introduction>
 		<p>
@@ -50,8 +50,7 @@
 		</reading-questions>
 	</subsection>
 
-	<subsection label="fully-coupled-systems_v0">
-	<title>When Variables Depend on Each Other</title>
+	<subsection label="fully-coupled-systems"><title>When Variables Depend on Each Other</title>
 
 	<p>
 		We've now seen two types of systems: uncoupled systems, where each variable evolves independently, and partially coupled systems, where one variable depends on the other. Now let's look at the final case: when <em>both</em> variables affect each other.
@@ -130,351 +129,346 @@
 	</conclusion>
 	</subsection>
 
-	<subsection label="what-is-a-linear-system">
-<title>What Counts as a Linear System?</title>
-
-<p>
-	In this chapter, we'll learn how to understand and solve systems of differential equations that are <em>linear</em>. But what exactly does that mean?
-</p>
-
-<p>
-	A system of differential equations is called <em>linear</em> if all of the dependent variables and their derivatives appear in a linear way: no powers, no products of variables, and no nonlinear functions like <m>\sin(x)</m> or <m>e^y</m>.
-</p>
-
-<p>
-	For example, this is a linear system:
-</p>
-
-<md>
-	<mrow> \frac{dx}{dt} \amp = 2x + 3y </mrow>
-	<mrow> \frac{dy}{dt} \amp = -x + y </mrow>
-</md>
-
-<p>
-	Each equation is a linear combination of <m>x</m> and <m>y</m>. The coefficients (2, 3, -1, 1) are just numbers. This system is both linear and has <em>constant coefficients</em>, which is the case we'll focus on.
-</p>
-
-<p>
-	In contrast, the following system is <em>not</em> linear:
-</p>
-
-<md>
-	<mrow> \frac{dx}{dt} \amp = xy </mrow>
-	<mrow> \frac{dy}{dt} \amp = y^2 - x </mrow>
-</md>
-
-<p>
-	The first equation contains a product <m>xy</m>, and the second equation contains a square <m>y^2</m>. That makes this a <em>nonlinear</em> system, which we'll learn to analyze later using different techniques.
-</p>
-
-<p>
-	Linear systems are a powerful class of systems to study because they're flexible enough to model real-world interactions—like population dynamics, circuits, or mechanical motion—and simple enough that we can often solve or analyze them exactly.
-</p>
-
-<p>
-	In this section, we'll focus entirely on linear systems with constant coefficients. These take the form:
-</p>
-
-<md>
-	<mrow> \frac{dx}{dt} \amp = a_{11}x + a_{12}y </mrow>
-	<mrow> \frac{dy}{dt} \amp = a_{21}x + a_{22}y </mrow>
-</md>
-
-<p>
-	where the numbers <m>a_{ij}</m> are constants. Even though we're not yet using matrix notation, this structure sets the stage for powerful techniques that make systems easier to understand and solve.
-</p>
-
-<conclusion>
-	<title>📤 Wrap-Up</title>
-
-	<paragraphs><title>Summary</title>
-	<p>
-		<ul>
-		<li>A system is <em>linear</em> if the dependent variables appear without powers, products, or nonlinear functions.</li>
-		<li>We'll focus on 2×2 systems of the form <m>x' = ax + by</m>, <m>y' = cx + dy</m>, where all coefficients are constants.</li>
-		<li>Linear systems are easier to analyze and solve than nonlinear ones—and they still capture many interesting behaviors.</li>
-		</ul>
-	</p>
-	</paragraphs>
-
-</conclusion>
-</subsection>
-
-<subsection label="solving-by-exponentials">
-<title>Solving a Linear System Using Exponentials</title>
-
-<p>
-	When we first learned to solve constant-coefficient equations like <m>y' = ky</m>, we guessed that the solution would be an exponential function: <m>y(t) = Ce^{kt}</m>. That same idea works for linear systems.
-</p>
-
-<p>
-	Suppose we're given the system:
-</p>
-
-<md>
-	<mrow> \frac{dx}{dt} \amp = 3x + 4y </mrow>
-	<mrow> \frac{dy}{dt} \amp = -4x + 3y </mrow>
-</md>
-
-<p>
-	Since the equations are linear with constant coefficients, we'll try guessing:
-</p>
-
-<me>
-	x(t) = Ae^{rt}, \quad y(t) = Be^{rt}
-</me>
-
-<p>
-	This guess assumes that both <m>x</m> and <m>y</m> grow (or decay, or oscillate) at the same exponential rate <m>r</m>, but with possibly different coefficients <m>A</m> and <m>B</m>.
-</p>
-
-<p>
-	Let's plug the guess into the system. First, compute:
-</p>
-
-<me>
-	x' = Ar e^{rt}, \quad y' = Br e^{rt}
-</me>
-
-<p>
-	Substituting into the system:
-</p>
-
-<md>
-	<mrow> Ar e^{rt} \amp = 3Ae^{rt} + 4Be^{rt} </mrow>
-	<mrow> Br e^{rt} \amp = -4Ae^{rt} + 3Be^{rt} </mrow>
-</md>
-
-<p>
-	Now divide both equations by <m>e^{rt}</m> (which is never zero) to get:
-</p>
-
-<md>
-	<mrow> Ar \amp = 3A + 4B </mrow>
-	<mrow> Br \amp = -4A + 3B </mrow>
-</md>
-
-<p>
-	This is a system of algebraic equations in <m>A</m> and <m>B</m>, with <m>r</m> as a parameter. We can solve this by elimination or substitution, but really we're trying to find values of <m>r</m> that allow nontrivial solutions <m>(A, B) \ne (0, 0)</m>.
-</p>
-
-<p>
-	That turns out to be an eigenvalue problem—which we'll fully explore soon—but for now, we'll give you the answer: the values of <m>r</m> that work here are <m>r = 3 \pm 4i</m>.
-</p>
-
-<p>
-	So the general solution to this system is a combination of complex exponentials:
-</p>
-
-<me>
-	x(t), y(t) = \text{linear combinations of } e^{(3 + 4i)t},\ e^{(3 - 4i)t}
-</me>
-
-<p>
-	These are spirals! The <m>3</m> in the exponent causes the solution to grow, and the <m>4i</m> causes it to rotate. If we plotted the solution curves in the <m>(x, y)</m> plane, we would see spirals moving outward from the origin.
-</p>
-
-<p>
-	We'll return to the full method (and remove the mystery) when we introduce eigenvalues and eigenvectors. For now, it's enough to understand that we can solve linear systems by guessing exponentials—and that the result may involve both growth and oscillation.
-</p>
-
-<example xml:id="ex-spiral-system">
-	<title>Behavior of a Spiral System</title>
-	<statement>
-	<p>
-		Consider the system:
-	</p>
-	<md>
-		<mrow> \frac{dx}{dt} \amp = 2x + y </mrow>
-		<mrow> \frac{dy}{dt} \amp = -x + 2y </mrow>
-	</md>
-	<p>
-		Without solving, describe what you expect the phase portrait to look like.
-	</p>
-	</statement>
-	<solution>
-	<p>
-		The system has constant coefficients and is linear, so we expect exponential solutions. Based on the symmetry and signs in the equations, we can guess that the eigenvalues will be complex with a positive real part.
-	</p>
-
-	<p>
-		That suggests spiral behavior moving outward from the origin. The system has a spiral source at the origin.
-	</p>
-	</solution>
-</example>
-
-<conclusion>
-	<title>📤 Wrap-Up</title>
-	<paragraphs>
-	<title>Summary</title>
-	<p>
-		<ul>
-		<li>For constant-coefficient linear systems, we can guess solutions of the form <m>x(t) = Ae^{rt}</m>, <m>y(t) = Be^{rt}</m>.</li>
-		<li>This leads to an algebraic system for <m>A</m>, <m>B</m>, and <m>r</m>.</li>
-		<li>In most cases, we'll need tools from linear algebra to finish the solution—but even now, we can recognize the behavior of exponential solutions: decay, growth, spirals, and oscillation.</li>
-		</ul>
-	</p>
-	</paragraphs>
-</conclusion>
-</subsection>
-
-<subsection label="numerical-solutions-linear-systems">
-<title>Numerical Solutions and the Flow of Information</title>
-
-<p>
-	What if you can't solve a system exactly, or you just want to understand what the solution looks like? One powerful option is to approximate the solution step by step. Let's see how that works for a linear system.
-</p>
-
-<p>
-	Suppose we have the system:
-</p>
-
-<md>
-	<mrow> \frac{dx}{dt} \amp = x + y </mrow>
-	<mrow> \frac{dy}{dt} \amp = -x + y </mrow>
-</md>
-
-<p>
-	With initial conditions: <m>x(0) = 1</m>, <m>y(0) = 0</m>. We'll use Euler's Method to approximate <m>x(t)</m> and <m>y(t)</m> for small steps of time.
-</p>
-
-<p>
-	At each step, we estimate the new values of <m>x</m> and <m>y</m> using their current values and their derivatives:
-</p>
-
-<me>
-	x_{\text{new}} = x + h \cdot (x + y), \quad y_{\text{new}} = y + h \cdot (-x + y)
-</me>
-
-<p>
-	Try it with <m>h = 0.1</m>. At <m>t = 0</m>, we have:
-</p>
-
-<me>
-	x_0 = 1, \quad y_0 = 0
-</me>
-
-<p>
-	Then:
-</p>
-
-<me>
-	x_1 = 1 + 0.1(1 + 0) = 1.1, \quad y_1 = 0 + 0.1(-1 + 0) = -0.1
-</me>
-
-<p>
-	You can already see the feedback: <m>x</m> increases, <m>y</m> decreases in response to <m>x</m>, which then affects <m>x</m> again at the next step.
-</p>
-
-<p>
-	Let's do one more step:
-</p>
-
-<me>
-	x_2 = 1.1 + 0.1(1.1 - 0.1) = 1.1 + 0.1(1.0) = 1.2, \quad y_2 = -0.1 + 0.1(-1.1 - 0.1) = -0.1 + 0.1(-1.2) = -0.22
-</me>
-
-<p>
-	We can continue this process to build a full table or plot of <m>(x(t), y(t))</m>. Each step shows how the system evolves, one moment at a time.
-</p>
-
-<p>
-	This method doesn't require solving equations—it only requires evaluating derivatives. And it works for any system, linear or nonlinear.
-</p>
-
-<example xml:id="ex-euler-steps-system">
-	<title>Euler's Method Applied to a System</title>
-	<statement>
-	<p>
-		Use Euler's method with step size <m>h = 0.2</m> to estimate the values of <m>x</m> and <m>y</m> at <m>t = 0.2</m> and <m>t = 0.4</m> for the system:
-	</p>
-
-	<md>
-		<mrow> \frac{dx}{dt} \amp = y </mrow>
-		<mrow> \frac{dy}{dt} \amp = -x </mrow>
-	</md>
-
-	<p>With initial conditions <m>x(0) = 1</m>, <m>y(0) = 0</m>.</p>
-	</statement>
-
-	<solution>
-	<p>
-		Step 1: At <m>t = 0</m>, we have <m>x = 1</m>, <m>y = 0</m>.
-	</p>
-
-	<p>
-		<m>x_1 = 1 + 0.2(0) = 1</m>, <m>y_1 = 0 + 0.2(-1) = -0.2</m>
-	</p>
-
-	<p>
-		Step 2: At <m>t = 0.2</m>, <m>x = 1</m>, <m>y = -0.2</m>:
-	</p>
-
-	<p>
-		<m>x_2 = 1 + 0.2(-0.2) = 0.96</m>, <m>y_2 = -0.2 + 0.2(-1) = -0.4</m>
-	</p>
-
-	<p>
-		So we estimate:
-		<m>(x(0.2), y(0.2)) \approx (1, -0.2)</m>, <m>(x(0.4), y(0.4)) \approx (0.96, -0.4)</m>
-	</p>
-	</solution>
-</example>
-
-<!-- <corollary><title> Euler's Method Visualized </title>
-	<statement>
+	<subsection label="what-is-a-linear-system"><title>What Counts as a Linear System?</title>
 		<p>
-			<sidebyside width="80%" margins="15% 5%">
-				<interactive xml:id="initial-condition"
-					platform="jsxgraph"
-					aspect="5:2"
-					dark-mode-enabled="yes"
-					source="code/jsxgraph/eulers-method-systems/initial-condition.js"
-				>
-					<slate xml:id="euler-spiral-system-plot1" surface="jsxboard" aspect="5:2" />
-					<static>
-						<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
-					</static>
-				</interactive>
-			</sidebyside>
+			In this chapter, we'll learn how to understand and solve systems of differential equations that are <em>linear</em>. But what exactly does that mean?
 		</p>
-	</statement>
-</corollary> -->
 
-<corollary><title> Euler's Method Visualized </title>
-	<statement>
 		<p>
-			<sidebyside width="80%" margins="15% 5%">
-				<interactive xml:id="euler-spiral-system"
-					platform="jsxgraph"
-					aspect="5:2"
-					dark-mode-enabled="yes"
-					source="code/jsxgraph/eulers-method-systems/euler-spiral-system.js"
-				>
-					<slate xml:id="euler-spiral-system-plot1" surface="jsxboard" aspect="5:2" />
-					<static>
-						<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
-					</static>
-				</interactive>
-			</sidebyside>
+			A system of differential equations is called <em>linear</em> if all of the dependent variables and their derivatives appear in a linear way: no powers, no products of variables, and no nonlinear functions like <m>\sin(x)</m> or <m>e^y</m>.
 		</p>
-	</statement>
-</corollary>
 
-<conclusion>
-	<title>📤 Wrap-Up</title>
-	<paragraphs>
-	<title>Summary</title>
-	<p>
-		<ul>
-		<li>We can approximate solutions to systems by updating each variable using its derivative.</li>
-		<li>Euler's Method makes the interaction between variables explicit: at each step, the value of one variable influences how the other changes.</li>
-		<li>This helps build intuition about the flow of information in dynamical systems—even when exact solutions are out of reach.</li>
-		</ul>
-	</p>
-	</paragraphs>
-</conclusion>
-</subsection>
+		<p>
+			For example, this is a linear system:
+		</p>
+
+		<md>
+			<mrow> \frac{dx}{dt} \amp = 2x + 3y </mrow>
+			<mrow> \frac{dy}{dt} \amp = -x + y </mrow>
+		</md>
+
+		<p>
+			Each equation is a linear combination of <m>x</m> and <m>y</m>. The coefficients (2, 3, -1, 1) are just numbers. This system is both linear and has <em>constant coefficients</em>, which is the case we'll focus on.
+		</p>
+
+		<p>
+			In contrast, the following system is <em>not</em> linear:
+		</p>
+
+		<md>
+			<mrow> \frac{dx}{dt} \amp = xy </mrow>
+			<mrow> \frac{dy}{dt} \amp = y^2 - x </mrow>
+		</md>
+
+		<p>
+			The first equation contains a product <m>xy</m>, and the second equation contains a square <m>y^2</m>. That makes this a <em>nonlinear</em> system, which we'll learn to analyze later using different techniques.
+		</p>
+
+		<p>
+			Linear systems are a powerful class of systems to study because they're flexible enough to model real-world interactions—like population dynamics, circuits, or mechanical motion—and simple enough that we can often solve or analyze them exactly.
+		</p>
+
+		<p>
+			In this section, we'll focus entirely on linear systems with constant coefficients. These take the form:
+		</p>
+
+		<md>
+			<mrow> \frac{dx}{dt} \amp = a_{11}x + a_{12}y </mrow>
+			<mrow> \frac{dy}{dt} \amp = a_{21}x + a_{22}y </mrow>
+		</md>
+
+		<p>
+			where the numbers <m>a_{ij}</m> are constants. Even though we're not yet using matrix notation, this structure sets the stage for powerful techniques that make systems easier to understand and solve.
+		</p>
+
+		<conclusion>
+			<title>📤 Wrap-Up</title>
+
+			<paragraphs><title>Summary</title>
+			<p>
+				<ul>
+				<li>A system is <em>linear</em> if the dependent variables appear without powers, products, or nonlinear functions.</li>
+				<li>We'll focus on 2×2 systems of the form <m>x' = ax + by</m>, <m>y' = cx + dy</m>, where all coefficients are constants.</li>
+				<li>Linear systems are easier to analyze and solve than nonlinear ones—and they still capture many interesting behaviors.</li>
+				</ul>
+			</p>
+			</paragraphs>
+
+		</conclusion>
+	</subsection>
+
+	<subsection label="solving-by-exponentials"><title>Solving a Linear System Using Exponentials</title>
+
+		<p>
+			When we first learned to solve constant-coefficient equations like <m>y' = ky</m>, we guessed that the solution would be an exponential function: <m>y(t) = Ce^{kt}</m>. That same idea works for linear systems.
+		</p>
+
+		<p>
+			Suppose we're given the system:
+		</p>
+
+		<md>
+			<mrow> \frac{dx}{dt} \amp = 3x + 4y </mrow>
+			<mrow> \frac{dy}{dt} \amp = -4x + 3y </mrow>
+		</md>
+
+		<p>
+			Since the equations are linear with constant coefficients, we'll try guessing:
+		</p>
+
+		<me>
+			x(t) = Ae^{rt}, \quad y(t) = Be^{rt}
+		</me>
+
+		<p>
+			This guess assumes that both <m>x</m> and <m>y</m> grow (or decay, or oscillate) at the same exponential rate <m>r</m>, but with possibly different coefficients <m>A</m> and <m>B</m>.
+		</p>
+
+		<p>
+			Let's plug the guess into the system. First, compute:
+		</p>
+
+		<me>
+			x' = Ar e^{rt}, \quad y' = Br e^{rt}
+		</me>
+
+		<p>
+			Substituting into the system:
+		</p>
+
+		<md>
+			<mrow> Ar e^{rt} \amp = 3Ae^{rt} + 4Be^{rt} </mrow>
+			<mrow> Br e^{rt} \amp = -4Ae^{rt} + 3Be^{rt} </mrow>
+		</md>
+
+		<p>
+			Now divide both equations by <m>e^{rt}</m> (which is never zero) to get:
+		</p>
+
+		<md>
+			<mrow> Ar \amp = 3A + 4B </mrow>
+			<mrow> Br \amp = -4A + 3B </mrow>
+		</md>
+
+		<p>
+			This is a system of algebraic equations in <m>A</m> and <m>B</m>, with <m>r</m> as a parameter. We can solve this by elimination or substitution, but really we're trying to find values of <m>r</m> that allow nontrivial solutions <m>(A, B) \ne (0, 0)</m>.
+		</p>
+
+		<p>
+			That turns out to be an eigenvalue problem—which we'll fully explore soon—but for now, we'll give you the answer: the values of <m>r</m> that work here are <m>r = 3 \pm 4i</m>.
+		</p>
+
+		<p>
+			So the general solution to this system is a combination of complex exponentials:
+		</p>
+
+		<me>
+			x(t), y(t) = \text{linear combinations of } e^{(3 + 4i)t},\ e^{(3 - 4i)t}
+		</me>
+
+		<p>
+			These are spirals! The <m>3</m> in the exponent causes the solution to grow, and the <m>4i</m> causes it to rotate. If we plotted the solution curves in the <m>(x, y)</m> plane, we would see spirals moving outward from the origin.
+		</p>
+
+		<p>
+			We'll return to the full method (and remove the mystery) when we introduce eigenvalues and eigenvectors. For now, it's enough to understand that we can solve linear systems by guessing exponentials—and that the result may involve both growth and oscillation.
+		</p>
+
+		<example xml:id="ex-spiral-system">
+			<title>Behavior of a Spiral System</title>
+			<statement>
+			<p>
+				Consider the system:
+			</p>
+			<md>
+				<mrow> \frac{dx}{dt} \amp = 2x + y </mrow>
+				<mrow> \frac{dy}{dt} \amp = -x + 2y </mrow>
+			</md>
+			<p>
+				Without solving, describe what you expect the phase portrait to look like.
+			</p>
+			</statement>
+			<solution>
+			<p>
+				The system has constant coefficients and is linear, so we expect exponential solutions. Based on the symmetry and signs in the equations, we can guess that the eigenvalues will be complex with a positive real part.
+			</p>
+
+			<p>
+				That suggests spiral behavior moving outward from the origin. The system has a spiral source at the origin.
+			</p>
+			</solution>
+		</example>
+
+		<conclusion>
+			<title>📤 Wrap-Up</title>
+			<paragraphs>
+			<title>Summary</title>
+			<p>
+				<ul>
+				<li>For constant-coefficient linear systems, we can guess solutions of the form <m>x(t) = Ae^{rt}</m>, <m>y(t) = Be^{rt}</m>.</li>
+				<li>This leads to an algebraic system for <m>A</m>, <m>B</m>, and <m>r</m>.</li>
+				<li>In most cases, we'll need tools from linear algebra to finish the solution—but even now, we can recognize the behavior of exponential solutions: decay, growth, spirals, and oscillation.</li>
+				</ul>
+			</p>
+			</paragraphs>
+		</conclusion>
+	</subsection>
+
+	<subsection label="numerical-solutions-linear-systems"><title>Numerical Solutions and the Flow of Information</title>
+		<p>
+			What if you can't solve a system exactly, or you just want to understand what the solution looks like? One powerful option is to approximate the solution step by step. Let's see how that works for a linear system.
+		</p>
+
+		<p>
+			Suppose we have the system:
+		</p>
+
+		<md>
+			<mrow> \frac{dx}{dt} \amp = x + y </mrow>
+			<mrow> \frac{dy}{dt} \amp = -x + y </mrow>
+		</md>
+
+		<p>
+			With initial conditions: <m>x(0) = 1</m>, <m>y(0) = 0</m>. We'll use Euler's Method to approximate <m>x(t)</m> and <m>y(t)</m> for small steps of time.
+		</p>
+
+		<p>
+			At each step, we estimate the new values of <m>x</m> and <m>y</m> using their current values and their derivatives:
+		</p>
+
+		<me>
+			x_{\text{new}} = x + h \cdot (x + y), \quad y_{\text{new}} = y + h \cdot (-x + y)
+		</me>
+
+		<p>
+			Try it with <m>h = 0.1</m>. At <m>t = 0</m>, we have:
+		</p>
+
+		<me>
+			x_0 = 1, \quad y_0 = 0
+		</me>
+
+		<p>
+			Then:
+		</p>
+
+		<me>
+			x_1 = 1 + 0.1(1 + 0) = 1.1, \quad y_1 = 0 + 0.1(-1 + 0) = -0.1
+		</me>
+
+		<p>
+			You can already see the feedback: <m>x</m> increases, <m>y</m> decreases in response to <m>x</m>, which then affects <m>x</m> again at the next step.
+		</p>
+
+		<p>
+			Let's do one more step:
+		</p>
+
+		<me>
+			x_2 = 1.1 + 0.1(1.1 - 0.1) = 1.1 + 0.1(1.0) = 1.2, \quad y_2 = -0.1 + 0.1(-1.1 - 0.1) = -0.1 + 0.1(-1.2) = -0.22
+		</me>
+
+		<p>
+			We can continue this process to build a full table or plot of <m>(x(t), y(t))</m>. Each step shows how the system evolves, one moment at a time.
+		</p>
+
+		<p>
+			This method doesn't require solving equations—it only requires evaluating derivatives. And it works for any system, linear or nonlinear.
+		</p>
+
+		<example xml:id="ex-euler-steps-system">
+			<title>Euler's Method Applied to a System</title>
+			<statement>
+			<p>
+				Use Euler's method with step size <m>h = 0.2</m> to estimate the values of <m>x</m> and <m>y</m> at <m>t = 0.2</m> and <m>t = 0.4</m> for the system:
+			</p>
+
+			<md>
+				<mrow> \frac{dx}{dt} \amp = y </mrow>
+				<mrow> \frac{dy}{dt} \amp = -x </mrow>
+			</md>
+
+			<p>With initial conditions <m>x(0) = 1</m>, <m>y(0) = 0</m>.</p>
+			</statement>
+
+			<solution>
+			<p>
+				Step 1: At <m>t = 0</m>, we have <m>x = 1</m>, <m>y = 0</m>.
+			</p>
+
+			<p>
+				<m>x_1 = 1 + 0.2(0) = 1</m>, <m>y_1 = 0 + 0.2(-1) = -0.2</m>
+			</p>
+
+			<p>
+				Step 2: At <m>t = 0.2</m>, <m>x = 1</m>, <m>y = -0.2</m>:
+			</p>
+
+			<p>
+				<m>x_2 = 1 + 0.2(-0.2) = 0.96</m>, <m>y_2 = -0.2 + 0.2(-1) = -0.4</m>
+			</p>
+
+			<p>
+				So we estimate:
+				<m>(x(0.2), y(0.2)) \approx (1, -0.2)</m>, <m>(x(0.4), y(0.4)) \approx (0.96, -0.4)</m>
+			</p>
+			</solution>
+		</example>
+
+		<!-- <corollary><title> Euler's Method Visualized </title>
+			<statement>
+				<p>
+					<sidebyside width="80%" margins="15% 5%">
+						<interactive xml:id="initial-condition"
+							platform="jsxgraph"
+							aspect="5:2"
+							dark-mode-enabled="yes"
+							source="code/jsxgraph/eulers-method-systems/initial-condition.js"
+						>
+							<slate xml:id="euler-spiral-system-plot1" surface="jsxboard" aspect="5:2" />
+							<static>
+								<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
+							</static>
+						</interactive>
+					</sidebyside>
+				</p>
+			</statement>
+		</corollary> -->
+
+		<corollary><title> Euler's Method Visualized </title>
+			<statement>
+				<p>
+					<sidebyside width="80%" margins="15% 5%">
+						<interactive xml:id="euler-spiral-system"
+							platform="jsxgraph"
+							aspect="5:2"
+							dark-mode-enabled="yes"
+							source="code/jsxgraph/eulers-method-systems/euler-spiral-system.js"
+						>
+							<slate xml:id="euler-spiral-system-plot1" surface="jsxboard" aspect="5:2" />
+							<static>
+								<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
+							</static>
+						</interactive>
+					</sidebyside>
+				</p>
+			</statement>
+		</corollary>
+
+		<conclusion>
+			<title>📤 Wrap-Up</title>
+			<paragraphs>
+			<title>Summary</title>
+			<p>
+				<ul>
+				<li>We can approximate solutions to systems by updating each variable using its derivative.</li>
+				<li>Euler's Method makes the interaction between variables explicit: at each step, the value of one variable influences how the other changes.</li>
+				<li>This helps build intuition about the flow of information in dynamical systems—even when exact solutions are out of reach.</li>
+				</ul>
+			</p>
+			</paragraphs>
+		</conclusion>
+	</subsection>
 
 </section>
 
