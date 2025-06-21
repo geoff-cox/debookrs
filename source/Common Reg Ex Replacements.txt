@@ -25,9 +25,17 @@ Single Line Statements not beginning with <statement>
 (\t*)(.*)<statement>(.*)</statement>?
 $1$2\n$1\t<statement>\n$1\t\t<p>\n$1\t\t\t$3\n$1\t\t</p>\n$1\t</statement>
 ----------------------------------------------------------------------------
-Removing Redunant Nested <p> tags
-(\t+)<p>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</p>
-$1<p>\n$1\t$3\n$1</p>
+Removing Nested <p> tags (with newline and indention)
+(\t+)<parentTag>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</parentTag>
+$1<parentTag>\n$1\t$3\n$1</parentTag>
+----------------------------------------------------------------------------
+Removing Nested <p> tags (single line)
+(\t+)<parentTag>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</parentTag>
+$1<parentTag>$3</parentTag>
+----------------------------------------------------------------------------
+Converting tags to single line
+^(\s+)<parentTag>\n\s+(.*)\n.*</parentTag>
+$1<parentTag>$2</parentTag>
 ----------------------------------------------------------------------------
 Removing the content from multiple tags
 ^([ \t]*)<(solution|image|exercise|interactive)([\s\S]*?)>([\s\S]*?)</(solution|image|exercise|interactive)>\n
@@ -35,3 +43,8 @@ $1<$2> removed to reduce data size </$2>\n
 ----------------------------------------------------------------------------
 Remove comments <!-- * -->
 <!--([\s\S]*?)-->\n
+----------------------------------------------------------------------------
+Titles to next line
+^(\s*)<(parentTag.*)><title>
+$1<$2>\n$1\t<title>
+----------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude" label="order-linearity">
 	<title> Order &amp; Linearity </title>
 
-	<introduction>
+	<introduction label="order-linearity-intro">
 		<p>
 			So far, we’ve learned how to identify the core parts of a differential equation—its variables, terms, and coefficients. Now we’ll turn to how differential equations are classified based on how these components appear. In this section, we’ll focus on two of the most important classifications: the equation’s <term>order</term>, which tells us the highest derivative involved, and its <term>linearity</term>, which depends on how the dependent variable and its derivatives appear in each term. Both properties play a central role in determining what kinds of solution methods apply.
 		</p>
@@ -18,7 +18,8 @@
 			To capture this idea, we define the <term>order</term> of a differential equation as the highest derivative of the dependent variable that appears in the equation.
 		</p>
 
-		<exercise label="chkpt-order-1"><title> What is the Order </title>
+		<task label="chkpt-order-1">
+			<title> 🎯 What is the Order </title>
 			<statement>
 				<p>
 					The order of a differential equation is determined by the number of terms it contains
@@ -50,7 +51,7 @@
 					</feedback>
 				</choice>
 			</choices>
-		</exercise>
+		</task>
 
 		<p>
 			For example, the equation
@@ -62,7 +63,8 @@
 			is <em>third-order</em> because it contains up to three derivatives in the <m>y'''</m> term.
 		</p>
 
-		<exercise label="chkpt-order-2"><title> Select the Third-Order Equation </title>
+		<task label="chkpt-order-2">
+			<title> 🎯 Select the Third-Order Equation </title>
 			<statement>
 				<p>
 					Which of the following equations is a third-order differential equation?
@@ -118,7 +120,7 @@
 					</feedback>
 				</choice>
 			</choices>
-		</exercise>
+		</task>
 
 		<example>
 			<title> Identify the Order </title>
@@ -143,7 +145,8 @@
 			</solution>
 		</example>
 
-		<exercise label="chkpt-order-3"><title> Give the Order of Each Differential Equation </title>
+		<task label="chkpt-order-3">
+			<title> 🎯 Give the Order of Each Differential Equation </title>
 			<statement>
 				<p>
 					Give the order of each differential equation:
@@ -210,63 +213,8 @@
 						<feedback>Carefully review the definition of order.</feedback>
 					</test>
 				</evaluate>
-
-				<!-- <evaluate>
-					<test>
-						<strcmp>\s*m\s*</strcmp>
-						<feedback>Yes, the solution to the differential equation is the dependent variable <m>m</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*M\s*</strcmp>
-						<feedback>No, <m>M</m> is not the same as <m>m</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*t\s*</strcmp>
-						<feedback>No, <m>t</m> is what the solution depends on, but it is not the solution itself.</feedback>
-					</test>
-					<test>
-						<strcmp>.*</strcmp>
-						<feedback>Incorrect. Carefully review the reading and try again.</feedback>
-					</test>
-				</evaluate>
-				<evaluate>
-					<test>
-						<strcmp>\s*P\s*</strcmp>
-						<feedback>Yes, the solution to the differential equation is the dependent variable <m>P</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*p\s*</strcmp>
-						<feedback>No, <m>p</m> is not the same as <m>P</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*Q\s*</strcmp>
-						<feedback>No. Carefully look at which variable has the derivative applied to it.</feedback>
-					</test>
-					<test>
-						<strcmp>.*</strcmp>
-						<feedback>Incorrect. That's not a variable in the equation.</feedback>
-					</test>
-				</evaluate>
-				<evaluate>
-					<test>
-						<strcmp>\s*x\s*</strcmp>
-						<feedback>Yes, the solution to the differential equation is the dependent variable <m>x</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*X\s*</strcmp>
-						<feedback>No, <m>X</m> is not the same as <m>x</m>.</feedback>
-					</test>
-					<test>
-						<strcmp>\s*y\s*</strcmp>
-						<feedback>No. Carefully look at which variable has the derivative applied to it.</feedback>
-					</test>
-					<test>
-						<strcmp>.*</strcmp>
-						<feedback>Incorrect. That's not a variable in the equation.</feedback>
-					</test>
-				</evaluate> -->
 			</evaluation>
-		</exercise>
+		</task>
 
 	</paragraphs>
 
@@ -278,21 +226,139 @@
 		</p>
 
 		<p>
-			A term is considered <term>linear</term> if:
-			<ul>
-				<li>It includes only one instance of the dependent variable or one of its derivatives,</li>
-				<li>That variable or derivative appears to the power of one,</li>
-				<li>It is not inside another function (like <m>\ln(y)</m> or <m>\sin(y)</m>).</li>
-			</ul>
+			Let <m>y</m> be the dependent variable. A term is <term>linear</term> if it appears as either:
+			<men xml:id="linear-term-forms">
+				a(t), \quad a(t)y, \quad \text{or} \quad a(t)y^{(n)},
+			</men>
+			where the coefficient, <m>a(t)</m>, can be a constant or a function of the independent variable <m>t</m> only, and <m>y^{(n)}</m> is the <m>n</m>-th derivative of <m>y</m>.
 		</p>
 
 		<p>
-			The <xref ref="summary-coefficients" text="custom">coefficient</xref> of the term doesn’t affect whether it’s linear—even if the coefficient is a complicated function of the independent variable.
+			For example, the following terms are linear:
+			<me>
+				\us{a(t)}{\us{\uparrow}{\ul{23}}}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{2t^3}}}y'', \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{\frac{1}{t}}}}y^{(5)}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{e^{2t}}}}y, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{7\sin(t)}}}y'.
+			</me>
 		</p>
 
+		<p>
+			The <xref ref="summary-coefficients" text="custom">coefficient</xref> of the term actually has no affect on whether it’s linear, regardless of how complicated <m>a(t)</m> appears.
+		</p>
+
+		<task label="chkpt-linear-terms-1">
+			<title> 🎯 Identify the Coefficient </title>
+			<statement>
+				<p>
+					Each of the following terms is linear. Identify the coefficient <m>a(t)</m> in each term:
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>1.</m></p>
+						<p><me>2ty''</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="2t" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>2.</m></p>
+						<p><me>y^{(3)}\sin(t)</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="sin(t)" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>3.</m></p>
+						<p><me>y</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="1" /></p>
+					</sidebyside>
+				</p>
+			</statement>
+			
+			<evaluation>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(2t|2\s*t|2\s*\*\s*t|2\(t\))\s*</strcmp>
+						<feedback>Correct! <m>a(t) = 2t</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(2|two)\s*</strcmp>
+						<feedback>Incorrect. The coefficient is more than just <m>2</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(sin\(\s*t\s*\)|sin\s*t|sine\s*t)\s*</strcmp>
+						<feedback>Correct! <m>a(t) = \sin(t)</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(1|one)\s*</strcmp>
+						<feedback>Correct! <m>a(t) = 1</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+			</evaluation>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="nonlinear-terms" xml:id="identifying-nonlinear-terms">
+		<title> Nonlinear Terms </title>
 
 		<p>
-			Let’s analyze the linearity of each term in this differential equation:
+			A term is <term>nonlinear</term> if it not in one of the forms in <xref ref="linear-term-forms"/>. Assuming <m>y</m> is the dependent variable, some telltale signs that a term is nonlinear include:
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> are raised to a power other than 1</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ y^2,\ (y')^{-4}</m></p>
+			</sidebyside>
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> appear inside a nonlinear function</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ \ln(y),\ \sin(y),\ e^{y'}</m>
+				</p>
+			</sidebyside>
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> are multiplied or divided by each other</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ y y''',\ \sfrac{y'}{y}</m></p>
+			</sidebyside>
+		</p>
+
+		<p>
+			Let’s apply these strategies by breaking down the linearity of each term in the following differential equation:
 			<me>
 			y\frac{d^5y}{dt^5} + 2t^3\ \frac{d^2y}{dt^2} + \ln\left(\frac{dy}{dt}\right) + y^2 = t^3
 			</me>
@@ -335,8 +401,43 @@
 			</li>
 		</dl>
 
+		<task label="chkpt-nonlinear-terms-1">
+			<title> 🎯 Match Each Terms with its Linearity </title>
+			<statement>
+				<tabular>
+					<col width="3%"/>
+					<row>
+						<cell colspan="2">Directions:</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Match (by dragging) each term (on the left) to either Linear or Nonlinear.</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Assume the dependent variable is <m>y</m> and the independent variable is <m>t</m>.</cell>
+					</row>
+				</tabular>	
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m>3y''</m></premise>
+					<premise><m>t^2y</m></premise>
+					<premise><m>y' \cos t</m></premise>
+					<premise><m>3/t</m></premise>
+					<response>Linear</response>
+				</match>
+				<match>
+					<premise><m>y^2</m></premise>
+					<premise><m>\sin(y')</m></premise>
+					<response>Non-Linear Term</response>
+				</match>
+			</cardsort>
+			<feedback/>
+		</task>
+
 		<p>
-			Let's practice identifying linear and nonlinear terms in other equations.
+			See if you can identify the linearity of the terms in the following examples, before looking at the solutions.
 		</p>
 
 		<example>
@@ -383,346 +484,35 @@
 			</statement>
 		</example>
 
-		<assemblage xml:id="identifying-nonlinear-terms">
-			<title> ✳️ Identifying Nonlinear Terms </title>
-			<p>
-			A term is <term>nonlinear</term> if the dependent variable or its derivatives:
-			</p>
-			<p>
-			<ul marker="square">
-			<li><p>Are raised to a power other than 1, like <m>y^2</m> or <m>(y')^{-4}</m></p></li>
-			<li><p>Appear inside a nonlinear function, like <m>\ln(y)</m> or <m>\sin(y)</m></p></li>
-			<li><p>Multiply or divide each other, like <m>y y'''</m> or <m>\frac{y'}{y}</m></p></li>
-			</ul>
-			</p>
-		</assemblage>
-
-<exercise label="chkpts-linear-terms"><title> <em>Check your Understanding</em> </title>
-	
-	<introduction>
-		<p>
-			Complete the questions on each tab to check your understanding.
-		</p>
-	</introduction>
-
-	<introduction>
-		<p>
-			Check your understanding by completing the following tasks.
-		</p>
-	</introduction>
-	
-	<task label="chkpt-linear-terms-1"><title> <em>Drag-and-Drop</em> </title>
-		<statement>
-			<p>
-				Consider the differential equation
-				<me>y'' + y' \cos t = 7e^y.</me>
-				Drag each expression (left), to the appropriate label (right).
-			</p>
-		</statement>
-		<cardsort>
-			<match>
-				<premise>y</premise>
-				<response>Dependent Variable</response>
-			</match>
-			<match>
-				<premise>t</premise>
-				<response>Independent Variable</response>
-			</match>
-			<match>
-				<premise><m>y' \cos t</m></premise>
-				<response>Linear Term</response>
-			</match>
-			<match>
-				<premise><m>7e^y</m></premise>
-				<response>Non-Linear Term</response>
-			</match>
-			<match>
-				<premise><m>2</m></premise>
-				<response>Order of the DE</response>
-			</match>
-			<match>
-				<premise><m>1</m></premise>
-				<response>Coefficient of <m>y''</m></response>
-			</match>
-			<match>
-				<premise><m>\cos t</m></premise>
-				<response>Coefficient of <m>y'</m></response>
-			</match>
-		</cardsort>
-		<feedback/>
-	</task>
-
-	<task label="chkpt-linear-terms-2"><title> <em>Select-all-that-Apply</em> </title>	
-		<statement>	
-			<p>
-				Assuming <m>y</m> is the dependent variable and <m>t</m> is the independent variable of a differential equation, select all of the linear terms.
-			</p>	
-		</statement>
-		<choices>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\quad 3t^2</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Hint: Neither the dependent variable nor its derivatives are present in this term.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\quad y \sin(t)</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Hint: The single dependent variable, <m>y</m>, has a power of <m>1</m>.
-					</p>
-				</feedback>
-			</choice>
-
-			<choice correct="no">
-				<statement>
-					<p>
-						<m>\quad t\sin(y')</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Hint: <m>y'</m> is inside the sine function.
-					</p>
-				</feedback>
-			</choice>
-
-			<choice correct="no">
-				<statement>
-					<p>
-						<m>\quad e^{ty}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Hint: <m>y</m> is inside the exponential function.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-
-	<task label="chkpt-linear-terms-3"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				Identify the linear term in the differential equation:
-				<me>yy'' + y^2 + \ln(y') = e^t</me>
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds yy''</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This term is nonlinear because it involves the dependent variable multiplied by its second derivative.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds y^2</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This term is nonlinear because it involves the dependent variable squared.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds \ln(y')</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This term is nonlinear because it involves the dependent variable inside a logarithmic function.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\quad\ds e^t</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! This term is linear because it involves the independent variable only.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-
-	<task label="chkpt-linear-terms-4"><title> <em>True-or-False</em> </title>
-		<statement>
-			<p>
-				A linear term can contain the dependent variable multiplied by the independent variable.
-			</p>
-		</statement>
-		
-		<choices>
-			<choice correct="yes">
-				<statement>
-					<p>
-						True
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! For example, <m>t y</m> is a linear term.
-					</p>
-				</feedback>
-			</choice>
-		
-			<choice>
-				<statement>
-					<p>
-						False
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. Carefully review the examples above.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-	
-	<task label="chkpt-linear-terms-5"><title> <em>Select-the-Best-Answer</em> </title>	
-		<statement>	
-			<p>
-				Which of the following describes an example of a nonlinear term?
-			</p>	
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						It involves the dependent variable raised to the first power.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This is a characteristic of a linear term.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						It involves the dependent variable only as a constant.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This is a characteristic of a linear term.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						It includes the dependent variable inside another function.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! A nonlinear term includes the dependent variable inside another function.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						It involves the independent variable only.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. This is a characteristic of a linear term.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-	
-	<task label="chkpt-linear-terms-6"><title> <em>Click-on-the-Answer</em> </title>
-		<statement>
-			<p>
-				Click on all of the linear terms in the differential equation.
-			</p>
-		</statement>
-		<areas>
-			<p>
-				<m>\phantom{vertical space hack - Is there a better way?}</m>
+		<task label="chkpts-linear-terms">
+			<title> 🎯 Identify the Nonlinear Terms </title>
+			<statement/>
+			<areas>
+				<p>
+					For each differential equation, click on all of the <em>nonlinear terms</em>.
+				</p>
 				<sidebyside width="75%">
 					<p>
-						<area correct="yes">	<m>\ds \frac{d^2y}{dt^2}	</m></area> <m>\ +\ </m>
-						<area correct="yes">	<m>\ds t^2 y				</m></area> <m>\ +\ </m>
-						<area correct="no">		<m>\ds y^2				</m></area> <m>\ -\ </m>
-						<area correct="yes">	<m>\ds \sin(t) y'			</m></area> <m>\ =\ </m>
-						<area correct="yes">	<m>\ds 3t					</m></area>
+						<area correct="no"> <m>\ds \frac{d^2y}{dt^2} </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds t^2 y </m></area> <m>\ +\ </m>
+						<area correct="yes"><m>\ds y^2 </m></area> <m>\ -\ </m>
+						<area correct="no"> <m>\ds \sin(t) y' </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 3t </m></area>
 					</p>
 				</sidebyside>
-				<m>\phantom{vertical space hack - Is there a better way?}</m>
-			</p>
-		</areas>
-	</task>
-	
-	<task label="chkpt-linear-terms-7"><title> <em>Click-on-the-Answer</em> </title>
-		<statement>
-			<p>
-				Click on all of the nonlinear terms in the differential equation.
-			</p>
-		</statement>
-		<areas>
-			<p>
-				<m>\phantom{vertical space hack - Is there a better way?}</m>
 				<sidebyside width="80%">
 					<p>
-						<area correct="yes">	<m>\ds y^3						</m></area> <m>\ +\ </m>
-						<area correct="no">		<m>\ds e^t \frac{d^3y}{dt^3}	</m></area> <m>\ -\ </m>
-						<area correct="yes">	<m>\ds \ln(y)					</m></area> <m>\ +\ </m>
-						<area correct="no">		<m>\ds t \frac{dy}{dt}			</m></area> <m>\ +\ </m>
-						<area correct="no">		<m>\ds \frac{d^2y}{dt^2}		</m></area> <m>\ =\ </m>
-						<area correct="no">		<m>\ds 0						</m></area>
+						<area correct="yes"><m>\ds tyy' </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds e^t \frac{d^3y}{dt^3} </m></area> <m>\ -\ </m>
+						<area correct="yes"><m>\ds \ln(y) </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds \frac{y}{t} </m></area> <m>\ +\ </m>
+						<area correct="yes"> <m>\ds \frac{t}{y}\frac{d^2y}{dt^2} </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 0 </m></area>
 					</p>
 				</sidebyside>
-				<m>\phantom{vertical space hack - Is there a better way?}</m>
-			</p>
-		</areas>
-		<hint>
-			<p>
-				Review <xref ref="identifying-nonlinear-terms" text="title"/>
-			</p>
-		</hint>
-		<feedback>
-			<p>
-				In this equation, <m>y^3</m> and <m>\ln(y)</m> are nonlinear terms.
-			</p>
-		</feedback>
-	</task>
-
-</exercise>
+				<p/>
+			</areas>
+		</task>
 
 	</paragraphs>
 
@@ -734,8 +524,31 @@
 		</p>
 
 		<p>
-			A differential equation is called <term>linear</term> if <em>every term involving the dependent variable or its derivatives is linear</em>. If even one of those terms is nonlinear, the entire equation is considered <term>nonlinear</term>.
+			Essentially, a differential equation is <term>linear</term> if <em>every term in the equation is linear</em>. If just one term is nonlinear, the entire equation is <term>nonlinear</term>. We formally define linear differential equations as follows:
 		</p>
+
+		<task label="chkpt-linearity-1">
+			<title> 🎯 What Makes an Equation Linear of Nonlinear </title>
+			<statement>
+				<p>
+					Select the true statement.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>An equation is nonlinear if at least one of its terms are nonlinear.</statement>
+					<feedback>Correct! A differential equation is nonlinear if <em>any</em> of its terms are nonlinear.</feedback>
+				</choice>
+				<choice>
+					<statement>An equation is linear if at least one of its terms are linear.</statement>
+					<feedback>Incorrect. A differential equation needs <em>all</em> of its terms to be linear.</feedback>
+				</choice>
+				<choice>
+					<statement>As long as there are more linear terms than nonlinear terms, the equation is linear.</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+			</choices>
+		</task>
 
 		<definition xml:id="def-linear">
 			<title> Linear Differential Equations </title>
@@ -771,21 +584,21 @@
 		</p>
 
 		<p>
-			In contrast, the following equations are nonlinear because they include at least one nonlinear term (⚠️):
+			In contrast, the following equations are nonlinear because they include at least one nonlinear term (✷):
 		</p>
 
 		<men xml:id="nonlinear-equation-examples">
-			y' + \us{\large\text{⚠️}}{\ul{ t y^2 }} = t, \qquad 
-			t \frac{dP}{dx} + \us{\large\text{⚠️}}{\ul{ \sin(P) }} = t^2, \qquad 
-			\us{\large\text{⚠️}}{\ul{\omega\omega^{(5)}}} + s = \us{\large\text{⚠️}}{\ul{ e^\omega }}
+			y' + \us{\large ✷}{\ul{ t y^2 }} = t, \qquad 
+			t \frac{dP}{dx} + \us{\large ✷}{\ul{ \sin(P) }} = t^2, \qquad 
+			\us{\large ✷}{\ul{\omega\omega^{(5)}}} + s = \us{\large ✷}{\ul{ e^\omega }}
 		</men>
 
 		<p>
-			In each case, at least one term involving the dependent variable breaks the rules of linearity—by being raised to a power, wrapped in a nonlinear function, or multiplied with another derivative.
+			In each case, it only took one term to violate the definition of a linear differential equation.
 		</p>
 
 		<p>
-			Let’s now practice determining whether entire equations are linear or nonlinear by checking the linearity of each term.
+			Let’s practice identifying the linearty of entire equations with a few examples.
 		</p>
 
 		<example>
@@ -825,321 +638,89 @@
 				</p>
 			</solution>
 		</example>
-		
-<exercise label="chkpts-linearity"><title> <em>Check your Understanding</em> </title>
 
-	<introduction>
+
+
+	</paragraphs>
+
+	<paragraphs label="order-linearity-cyu">
+		<title>✍ Check Your Understanding </title>
 		<p>
-			Complete the questions on each tab to check your understanding.
+			<task label="chkpt-linearity-2"><title> Identify the Linear Equations </title>
+				<statement>
+					<p>
+						Click-on all the <term>linear</term> differential equations.
+					</p>
+				</statement>
+				
+				<areas>
+					<tabular>
+						<row>
+							<cell><area correct="no"><m>\ds y'' + \sin(y) = 17t				</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t^2} + y = 17t	</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + 3y' + 2y = 0				</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\ds y'' + y^2 = 17t					</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t} + y = 17t	</m></area></cell>
+							<cell><area correct="yes"><m>\ds y = y'							</m></area></cell>
+						</row>
+					</tabular>
+				</areas>
+
+				<hint>
+					<p>
+						Remember that a linear differential equation contains only linear terms. Four of these equations are linear.
+					</p>
+				</hint>
+
+				<feedback>
+					<p>
+						Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.
+					</p>
+				</feedback>
+			</task>
+
+			<task label="chkpt-linearity-3"><title> Identify the Nonlinear Equations </title>
+				<statement>
+					<p>
+						Click-on all the <term>nonlinear</term> differential equations
+					</p>
+				</statement>
+				<areas>
+					<tabular>
+						<row>
+							<cell><area correct="yes">	<m>\ds \frac{dx}{ds} = x^2 - 4						</m></area></cell>
+							<cell><area correct="no">	<m>\ds \frac{d^2u}{dz^2} - 5 \frac{du}{dz} + 6u = 0	</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dp}{d\tau} + \sin(p) = \tau^2			</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no">	<m>\ds \frac{dw}{dv} + 2vw = \cos(v)				</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dr}{d\theta} + r^3 = \theta			</m></area></cell>
+							<cell><area correct="no">	<m>\ds \frac{dN}{dt} = -N							</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes">	<m>\ds \frac{dm}{dq} = m^3 - q^2					</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dz}{dt} + z\frac{dz}{dt} = t^3			</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dy}{dx} = y \ln(y)						</m></area></cell>
+						</row>
+					</tabular>
+				</areas>
+				<hint>
+					<p>
+						First identify the dependent variable, then carefully look at each term to determine if it is nonlinear. There are six nonlinear equations here.
+					</p>
+				</hint>
+				<feedback>
+					<p>
+						Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.
+					</p>
+				</feedback>
+			</task>
 		</p>
-	</introduction>
-
-	<task label="chkpt-linearity-1"><title> <em>Select-the-Best-Answer</em> </title>
-
-		<statement>
-			<p>
-				Identify the linearity of the differential equation
-				<me>\frac{dy}{dt} + t^2 y = e^t.</me>
-			</p>
-		</statement>
-
-		<choices>
-			<choice correct="yes">
-				<statement>
-					<p>
-						Linear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! Since each term is linear, the differential equation is linear.
-					</p>
-				</feedback>
-			</choice>
-		
-			<choice>
-				<statement>
-					<p>
-						Nonlinear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. Each term is linear since a single dependent variable or its derivative appears to the first power and is not inside a function.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-
-	</task>
-	
-	<task label="chkpt-linearity-2"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				Identify the linearity of the differential equation
-				<me>y'' + \sin(y) = 17t </me>.
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						Linear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						No, this is nonlinear. Looking carefully at each term, we see:
-					</p>
-					<md>
-						<mrow> y'' + \sin(y) = 17t </mrow>
-						<mrow>
-							\underset{\text{linear}}{\underline{(1){\color{BurntOrange} y'' }}} +
-							\underset{\text{nonlinear}}{\underline{\sin({\color{BurntOrange} y})}} =
-							\underset{\text{linear}}{\underline{17{\color{BurntOrange} t}}}
-						</mrow>.
-					</md>
-					<p>
-						Since one term is not linear, the entire differential equation is nonlinear.
-					</p>
-				</feedback>
-			</choice>
-		
-			<choice correct="yes">
-				<statement>
-					<p>
-						Nonlinear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! This DE is nonlinear since <m>\sin(y)</m> is a nonlinear term.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-
-	<task label="chkpt-linearity-3"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				Identify the linearity of the differential equation
-				<me>\frac{d^2x}{dt^2} + e^x = 0 </me>.
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						Linear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The term <m>e^x</m> makes this equation nonlinear, as it involves the exponential function of the dependent variable.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						Nonlinear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! The term <m>e^x</m> introduces nonlinearity into the equation, as it involves the dependent variable <m>x</m> inside an exponential function.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-
-	<task label="chkpt-linearity-4"><title> <em>Select-the-Best-Answer</em> </title>
-
-		<statement>
-			<p>
-				Identify the linearity of the differential equation
-				<me>y'' + y' \cos t = 7y </me>.
-			</p>
-		</statement>
-
-		<choices>
-			<choice correct="yes">
-				<statement>
-					<p>
-						Linear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! This equation is linear because each term is linear.
-					</p>
-				</feedback>
-			</choice>
-		
-			<choice>
-				<statement>
-					<p>
-						Nonlinear
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						No, this is linear. Looking carefully at each term, we see:
-					</p>
-					<md>
-						<mrow> y'' + y' \cos t = 7y </mrow>
-						<mrow>
-							\underset{\text{linear}}{\underline{(1){\color{blue} y'' }}} +
-							\underset{\text{linear}}{\underline{(\cos t){\color{blue} y' }}} =
-							\underset{\text{linear}}{\underline{7{\color{blue} y}}}
-						</mrow>.
-					</md>
-					<p>
-						Since every term is linear, this differential equation is linear.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-
-	</task>
-
-	<task label="chkpt-linearity-5"><title> <em>Select-the-Best-Answer</em> </title>
-		<statement>
-			<p>
-				Select the linear differential equation.
-			</p>
-		</statement>
-		<choices>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds y'' + y^3 = \sin(t)</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The <m>y^3</m> term is nonlinear, making the equation nonlinear.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds y'' + \cos(y) = 0</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The <m>\cos(y)</m> term is nonlinear, making the equation nonlinear.
-					</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement>
-					<p>
-						<m>\quad\ds y'' + y' + y = 0</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Correct! All terms are linear in this equation, making it a linear differential equation.
-					</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					<p>
-						<m>\quad\ds y' + y^2 = t</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						Incorrect. The <m>y^2</m> term is nonlinear, making the equation nonlinear.
-					</p>
-				</feedback>
-			</choice>
-		</choices>
-	</task>
-
-	<task label="chkpt-linearity-6"><title> <em>Click-on-the-Answer</em> </title>
-		<statement>
-			<p>
-				Click-on all the linear differential equations.
-			</p>
-		</statement>
-		
-		<areas>
-			<tabular>
-				<row>
-					<cell><area correct="no"><m>\ds y'' + \sin(y) = 17t				</m></area></cell>
-					<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t^2} + y = 17t	</m></area></cell>
-					<cell><area correct="yes"><m>\ds y'' + 3y' + 2y = 0				</m></area></cell>
-				</row>
-				<row><cell><m/></cell></row>
-				<row>
-					<cell><area correct="no"><m>\ds y'' + y^2 = 17t					</m></area></cell>
-					<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t} + y = 17t	</m></area></cell>
-					<cell><area correct="yes"><m>\ds y = y'							</m></area></cell>
-				</row>
-			</tabular>
-		</areas>
-
-		<hint>
-			<p>
-				Remember that a linear differential equation contains only linear terms. Four of these equations are linear.
-			</p>
-		</hint>
-
-		<feedback>
-			<p>
-				Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.
-			</p>
-		</feedback>
-	</task>
-
-	<task label="chkpt-linearity-7"><title> <em>Click-on-the-Answer</em> </title>
-		<statement>
-			<p>
-				Click-on all the nonlinear differential equations
-			</p>
-		</statement>
-		<areas>
-			<tabular>
-				<row>
-					<cell><area correct="yes">	<m>\ds \frac{dx}{ds} = x^2 - 4						</m></area></cell>
-					<cell><area correct="no">	<m>\ds \frac{d^2u}{dz^2} - 5 \frac{du}{dz} + 6u = 0	</m></area></cell>
-					<cell><area correct="yes">	<m>\ds \frac{dp}{d\tau} + \sin(p) = \tau^2			</m></area></cell>
-				</row>
-				<row><cell><m/></cell></row>
-				<row>
-					<cell><area correct="no">	<m>\ds \frac{dw}{dv} + 2vw = \cos(v)				</m></area></cell>
-					<cell><area correct="yes">	<m>\ds \frac{dr}{d\theta} + r^3 = \theta			</m></area></cell>
-					<cell><area correct="no">	<m>\ds \frac{dN}{dt} = -N							</m></area></cell>
-				</row>
-				<row><cell><m/></cell></row>
-				<row>
-					<cell><area correct="yes">	<m>\ds \frac{dm}{dq} = m^3 - q^2					</m></area></cell>
-					<cell><area correct="yes">	<m>\ds \frac{dz}{dt} + z\frac{dz}{dt} = t^3			</m></area></cell>
-					<cell><area correct="yes">	<m>\ds \frac{dy}{dx} = y \ln(y)						</m></area></cell>
-				</row>
-			</tabular>
-		</areas>
-		<hint>
-			<p>
-				First identify the dependent variable, then carefully look at each term to determine if it is nonlinear.
-			</p>
-		</hint>
-		<feedback>
-			<p>
-				Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.
-			</p>
-		</feedback>
-	</task>
-
-</exercise>
-
 	</paragraphs>
 
 	<paragraphs label="order-linearity-wrap-up">
