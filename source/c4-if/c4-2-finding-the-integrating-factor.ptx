@@ -1,638 +1,319 @@
-<section>
-	<title> Finding the Integrating Factor </title>	
+<section label="if-integrating-factor">
+	<title> The Integrating Factor </title>	
 
 	<introduction>
-
 		<p>
-			In the previous section, we saw that rewriting a first-order linear differential equation so that one side is a <q>completed</q> derivative allows us to solve it using direct integration. However, many equations do not initially have this form.
+			In the previous section, we saw how rewriting a first-order linear differential equation so that one side is a <q>completed</q> derivative helps us solve it. However, most equations do not initially have this structure. Instead, they are missing a crucial function that allows us to apply the <em>product rule in reverse</em>.
 		</p>
 
 		<p>
-			The key to overcoming this issue is finding a function—called the <term>integrating factor</term>—that, when multiplied onto the equation, transforms it into a single derivative. That is, given the standard form:
-		</p>
-
-		<men xml:id="if-standard-form00">
-			\frac{dy}{dx} + P(x) y = Q(x),
-		</men>
-
-		<p>
-			we seek a function <m>\mu(x)</m> such that:
-		</p>
-
-		<men xml:id="if-completed-derivative">
-			\frac{d}{dx} [\mu(x) y] = \mu(x) Q(x).
-		</men>
-
-		<p>
-			This section focuses on systematically determining <m>\mu(x)</m> for any first-order linear differential equation. We begin with an example that illustrates the core idea, then generalize the approach to derive a general formula.
+			The goal now is to illustrate how to determine this missing function, known as the <term>integrating factor</term>, so that we can rewrite one of the sides as a single derivative.
 		</p>
 
 		<p>
-			By the end of this section, you will be able to:
+			Before moving on, let's recap these key points:
 		</p>
 
-		<p>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p> 1️⃣</p>
-				<p>Recognize when a first-order linear equation requires an integrating factor.</p>
-			</sidebyside>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p> 2️⃣</p>
-				<p>Use a step-by-step approach to determine <m>\mu(x)</m>.</p>
-			</sidebyside>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p> 3️⃣</p>
-				<p>Understand why the integrating factor method always works.</p>
-			</sidebyside>
-		</p>
-
-		<p>
-			Before moving on, remember these key points:
-		</p>
-
-		<p>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p>✅</p>
-				<p>A derivative can be <q>completed</q> in <em>any</em> first-order linear equation.</p>
-			</sidebyside>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p>✅</p>
-				<p>The equation must be multiplied by a function to complete the derivative.</p>
-			</sidebyside>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p>✅</p>
-				<p>The completed derivative is formed by reversing the product rule.</p>
-			</sidebyside>
-		</p>
-
-		<p>
-			Now, let's explore how to find the integrating factor step by step.
-		</p>
-
+		<tabular>
+			<row>
+				<cell>✅</cell>
+				<cell>A derivative can be <q>completed</q> in <em>any</em> first-order linear equation.</cell>
+			</row>
+			<row>
+				<cell>✅</cell>
+				<cell>The equation must be multiplied by a function to complete the derivative.</cell>
+			</row>
+			<row>
+				<cell>✅</cell>
+				<cell>The completed derivative is formed by reversing the product rule.</cell>
+			</row>
+		</tabular>
 	</introduction>
 
-	<paragraphs xml:id="if-motivating-example"><title> A Motivating Example </title>
-		
-		<introduction>
-			<p>
-				In the previous section, we saw that certain first-order linear differential equations can be rewritten so that the left-hand side is a single derivative. However, most equations do not initially have this structure. Instead, they are missing a crucial function that allows us to apply the <em>product rule in reverse</em>.
-			</p>
+	<paragraphs label="if-intro-idea">
+		<title> Quick Recap: Why We Need Integrating Factors </title>
 
-			<p>
-				The goal now is to illustrate how to determine this missing function—known as the <term>integrating factor</term>—so that we can rewrite one of the sides as a single derivative.
-			</p>
+		<p>
+			In the last section, we explored how rewriting the left-hand side of a differential equation as a single derivative, what we called <q>completing the derivative</q>, made it easier to solve. But here's the catch: most equations aren't conveniently structured that way from the start.
+		</p>
 
-			<p>
-				Consider the equation:
-			</p>
+		<p>
+			For example, take the equation
+		</p>
 
-			<men xml:id="if-example-incomplete-eqn">
-				\frac{dy}{dx} + 2y = 5.
-			</men>
+		<me>
+			\frac{dy}{dx} + 2y = 5.
+		</me>
 
-			<p>
-				The claim is that the left side of this equation is currently an incomplete product rule that can be completed and reversed by multiplying a function <m>\mu</m> onto both sides of the equation. In short, this allows us to rewrite <xref ref="if-example-incomplete-eqn"/> as
-			</p>
+		<p>
+			It's not immediately a single derivative, but it feels close. It turns out that if we multiply both sides by the right function, specifically, <m>e^{2x}</m>, we can transform the left side into:
+		</p>
 
-			<me>
-				\frac{d}{dx} \left[\mu y \right] = 5\mu.
-			</me>
+		<me>
+			\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}.
+		</me>
 
-			<p>
-				However, the question still remains: <em>Which function, <m>\mu</m>, does this?</em> Let's find out.
-			</p>
+		<p>
+			Once in this form, the solution is just one integration away. The function we multiplied by, <m>e^{2x}</m>, is what we call an <term>integrating factor</term>. And the natural question is:
+		</p>
 
-		</introduction>
+		<p>
+			<em>Where did <m>e^{2x}</m> come from?</em> Can we always find such a function? How?
+		</p>
 
-		<subsubsection><title> Finding <m>\mu(x)</m>: A Step-by-Step Breakdown </title>
+		<p>
+			Just as completing the square in algebra involves adding a missing piece, completing the derivative involves multiplying a missing piece. The rest of this section is about finding that piece, systematically.
+		</p>
+	</paragraphs>
 
-			<p>
-				The strategy for determining <m>\mu(x)</m> can be seen in the slide show
-			</p>
+	<paragraphs label="if-motivation-derivation">
+		<title> Finding the Right Function to Multiply </title>
 
-			<p>
-				<interactive xml:id="if-slideshow" platform="javascript"
-					source="code/slideshow/slideshow.js"
-					width="100%" aspect="1.75:1">
-					<slate xml:id="if-slideshow-canvas" surface="canvas" 
-					width="100%" aspect="1.75:1" />
-				</interactive>
-			</p>
+		<p>
+			Let's go back to our earlier example:
+		</p>
 
-			<p>
-				Alternatively, a shorter version is displayed here. 
-			</p>
+		<me>
+			\frac{dy}{dx} + 2y = 5.
+		</me>
 
-			<p>
-				<sidebyside valign="middle" halign="right left" widths="10% 26% 45% 19%">
-					<p/>
-					<p>
-						1️⃣  Multiply by <m>\ds\mu\ \left\lbrace\begin{array}{c}\\\\\\\end{array}\right.</m>
-					</p>
-					<p>
-						<mdn>
-							<mrow xml:id="starting-equation">
-								\frac{dy}{dx} + 2 y \amp = 5
-							</mrow>
-							<mrow xml:id="middle-equation-1">
-								\mu\frac{dy}{dx} + {\color{blue} \us{\downarrow}{\boxed{ 2\mu }}} y\amp = 5\mu
-							</mrow>
-						</mdn>
-					</p>
-					<p/>
-				</sidebyside>
+		<p>
+			In order to <q>complete the derivative</q>, we know we must multiply both sides by a function, but we don't know which one. Let's call this function <m>\mu(x)</m> and multiply it onto the entire equation:
+		</p>
 
-				<sidebyside valign="middle" halign="right left" widths="10% 26% 45% 19%">
-					<p/>
-					<p>
-						3️⃣ Condition on <m>\mu</m>
-					</p>
-					<p>
-						<me>
-							{\color{blue} \boxed{\frac{d\mu}{dx} = 2\mu}}
-						</me>
-					</p>
-					<p/>
-				</sidebyside>
+		<me>
+			\mu(x)\,\frac{dy}{dx} + 2\mu(x)\,y = 5\mu(x).
+		</me>
 
-				<sidebyside valign="bottom" halign="right left" widths="10% 26% 45% 19%">
-					<p/>
-					<p>
-						2️⃣ Product Rule <m>\ds\ \left\lbrace\vphantom{\begin{array}{c}\\\\\\\end{array}}\right.</m>
-					</p>
-					<p>
-						<mdn>
-							<mrow xml:id="middle-equation-2">	\mu\frac{dy}{dx} + {\color{blue} \os{\uparrow}{\boxed{\frac{d\mu}{dx}}}} y	\amp = 5 \mu </mrow>
-							<mrow xml:id="goal-equation">	\frac{d}{dx} \left[\mu y \right]	\amp = 5\mu </mrow>
-						</mdn>
-					</p>
-					<p/>
-				</sidebyside>
-			</p>
+		<p>
+			Now try labeling the left-hand side like we did when reversing the product rule. Let's set <m>g = y</m>, so <m>g' = dy/dx</m>, and try matching the rest:
+		</p>
 
-			<p>
-				Each step should be followed in the labeled order, detailed as follows:
-			</p>
+		<me>
+			\underset{\Large f}{ \underset{\uparrow}{\ul{\mu(x)}}}\
+			\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}} +
+			\underset{\Large f^\prime}{ \underset{\uparrow}{\ul{2\mu(x)}}}\
+			\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
+		</me>
 
-			<p>
-				<sidebyside widths="2% 6% 92%">
-					<p/>
-					<p>
-						1️⃣
-					</p>
-					<p>
-						Multiply <xref ref="starting-equation"/> by <m>\mu</m> to get <xref ref="middle-equation-1"/>.
-					</p>
-				</sidebyside>
+		<p>
+			The interesting part comes from the <m>f</m> and <m>f</m> labels:
+		</p>
 
-				<sidebyside widths="2% 6% 92%">
-					<p/>
-					<p>
-						2️⃣
-					</p>
-					<p>
-						Use the product rule on the left side of <xref ref="goal-equation"/> to get <xref ref="middle-equation-2"/>.
-					</p>
-				</sidebyside>
+		<me>
+			f = \mu(x) \quad\text{and}\quad f' = 2\mu(x)
+		</me>
 
-				<sidebyside widths="2% 6% 92%">
-					<p/>
-					<p>
-						3️⃣
-					</p>
-					<p>
-						In order for <xref ref="starting-equation"/> and <xref ref="goal-equation"/> to be equal, <xref ref="middle-equation-1"/> and <xref ref="middle-equation-2"/> must also be equal. Therefore, we arrive at the following condition on <m>\mu</m>:
-						<men xml:id="if-condition-equation">
-							\frac{d\mu}{dx} = 2\mu
-						</men>.
-						<theorem><title> Clarifying <q>3️⃣ Condition on <m>\mu</m></q> </title>
-							<statement>
-								<p>
-									At the end of the day, all we are saying here is that in order for
-								</p>
+		<p>
+			Taking the derivative of the first of these means we also have <m>f' = \mu'(x)</m>.
+		</p>
 
-								<me>
-									\mu\frac{dy}{dx} + {\color{blue} \boxed{ A }}\ y = 5\mu
-								</me>
+		<p>
+			Setting these equal, an interesting equation emerges:
+		</p>
 
-								<p>
-									to be equivalent to
-								</p>
+		<men xml:id="if-condition-equation">
+			\mu'(x) = 2\mu(x)
+		</men>.
 
-								<me>
-									\mu\frac{dy}{dx} + {\color{blue} \boxed{ B }}\ y = 5 \mu
-								</me>
+		<p>
+			That's a differential equation! And it's separable, so we know how to solve it:
+		</p>
 
-								<p>
-									then <m>{\color{blue} A = B}</m>.
-								</p>
+		<md>
+			<mrow> \frac{1}{\mu} \frac{d\mu}{dx} = 2 \quad \Rightarrow \quad \int \frac{1}{\mu}\,d\mu \amp = \int 2\,dx </mrow>
+			<mrow> \ln|\mu| \amp = 2x + c_1 </mrow>
+			<mrow> \mu(x) \amp = ce^{2x} </mrow>
+		</md>.
 
-								<p>
-									This is how we get the equation for <m>\mu</m>. In particular, in order for equation <xref ref="middle-equation-1"/> to be equivalent to <xref ref="middle-equation-2"/>, then
-								</p>
+		<p>
+			Any nonzero constant <m>c</m> will work, but we usually choose <m>c = 1</m> to keep things simple. So, our integrating factor is:
+		</p>
 
-								<me>
-									{\color{blue} \frac{d\mu}{dx} = 2\mu}
-								</me>.
+		<me>
+			\mu(x) = e^{2x}.
+		</me>
 
-							</statement>
-						</theorem>
-					</p>
-				</sidebyside>
-			</p>
-
-			<p>
-				This is a <term>separable differential equation</term>, which has the general solution
-				<me>
-					\mu(x) = ce^{2x}
-				</me>.
-			</p>
-
-			<theorem><title> Solving Equation <xref ref="if-condition-equation"/> with separation of variables </title>
-				<statement>
-					<p>
-						<md>
-							<mrow>	\frac{d\mu}{dx} = 2\mu \quad \implies \quad
-									\frac{1}{\mu}\ d\mu			\amp = 2 dx			</mrow>
-							<mrow>	\int \frac{1}{\mu}\ d\mu	\amp = \int 2 dx	</mrow>
-							<mrow>	\ln|\mu|					\amp = 2x + c		</mrow>
-							<mrow>	\mu(x)						\amp = ce^{2x}		</mrow>
-						</md>
-					</p>
-				</statement>
-			</theorem>
-
-			<p>
-				Although, any non-zero choice for <m>c</m> will yield a function that converts <xref ref="starting-equation"/> into <xref ref="goal-equation"/>, the convention is to chose <m>c=1</m>. Therefore, the integrating factor for equation <xref ref="if-example-incomplete-eqn"/> is <m>\mu(x) = e^{2x}</m>.
-			</p>
-
-		</subsubsection>
-
-		<conclusion>
-			<p>
-				By multiplying <xref ref="if-example-incomplete-eqn"/> by <m>e^{2x}</m>, we are able to transform it into:
-			</p>
-
-			<me>
-				\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}.
-			</me>
-
-			<p>
-				Once in this form, we can solve for <m>y</m> using direct integration. This example demonstrates how to find the integrating factor for a specific equation. Next, we will generalize this idea by finding a formula that gives <m>\mu</m> for any first-order linear differential equation.
-			</p>
-		</conclusion>
-
-<exercises><title> <em>Check your Understanding</em> </title>
-
-	<exercise label="chkpts-motivating-example"><title> <em>Answer-the-Following</em> </title>
-		<introduction>
-			<p>
-				Complete the questions on each tab to check your understanding.
-			</p>
-		</introduction>
-
-		<task label="incomplete-product-rule-in-a-de-1"><title> <em>Select-all-that-Apply</em> </title>
-			<statement>
-				<p>
-					In our example, we found <m>\mu=e^{2x}</m> as the integrating factor for 
-				</p>
-				<me>
-					\frac{dy}{dx} + 2y = 5
-				</me>.
-				<p>
-					Which part of this equation did the integrating factor depend on?
-				</p>
-			</statement>
-			<choices>
-
-				<choice correct="no">
-					<statement>
-						<p>
-							The constant term on the right side of the equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The integrating factor depends on the coefficient of <m>y</m> in the original equation.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							The coefficient of <m>y</m>.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							That's correct! The integrating factor depends on the coefficient of <m>y</m> in the original equation.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="no">
-					<statement>
-						<p>
-							Both the constant term and the coefficient of <m>y</m>.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The integrating factor does not depend on both of these, only one.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="no">
-					<statement>
-						<p>
-							The dependent variable, <m>y</m>.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The variable <m>y</m>, itself, is not involved in determining the integrating factor.
-						</p>
-					</feedback>
-				</choice>
-				
-				
-			</choices>
-		</task>
-
-		<task label="incomplete-product-rule-in-a-de-2-1"><title> <em>Select-the-Best-Answer</em> </title>
-			<statement>
-				<p>
-					When deriving the condition equation <xref ref="if-condition-equation"/> (to find <m>\mu</m>), we multiplied the differential equation
-					<me>
-						\frac{dy}{dx} + 2 y = 5
-					</me>
-					by <m>\mu</m> to get
-					<me>
-						\mu\frac{dy}{dx} + 2\mu y = 5\mu
-					</me>
-					What was the purpose of multiplying by <m>\mu</m>?
-				</p>
-			</statement>
-			<choices>
-				<choice>
-					<statement>
-						<p>
-							To balance the equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Remember that the goal is to solve the equation, not to balance it.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							To make the equation separable.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Multiplying an non-separable equation by a function will never make it separable.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							To verify if the integrating factor method can be used.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Multiplying a differential equation by a function will never help determine which method can be used.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							To act as the missing function needed for a product rule.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							That's correct! Multiplying by <m>e^{2x}</m> on both sides of the equation allows us to complete the product rule on the left side.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-		
-		<task label="incomplete-product-rule-in-a-de-2-2"><title> <em>Select-the-Best-Answer</em> </title>
-			<statement>
-				<p>
-					After multiplying the original differential equation by <m>\mu</m> to get
-				</p>
-				<men xml:id="chkpt-motivating-example-eqn-1">
-					\mu\frac{dy}{dx} + 2\mu y = 5\mu
-				</men>,
-				<p>
-					we jumped down to the last equation (our goal), given by
-				</p>
-				<me>
-					\frac{d}{dx} \left[\mu y \right] = 5\mu
-				</me>
-				<p>
-					where we applied the product rule to expand the left side as
-				</p>
-				<me>
-					\mu \frac{dy}{dx} + y \frac{d\mu}{dx} = 5\mu
-				</me>.
-				<p>
-					What was the purpose of working backwards from the last equation like this?
-				</p>
-			</statement>
-			<choices>
-				<choice>
-					<statement>
-						<p>
-							To verify that the product rule was applied correctly.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Remember that the goal is to solve the equation, not to verify the product rule.
-						</p>
-					</feedback>
-							
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							To simplify the equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Working backwards does not simplify the equation, but helps us see how the product rule can be applied.
-						</p>
-					</feedback>
-							
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							This was the next logical step in the process.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Working backwards was a deliberate choice to show how the product rule could be applied.
-						</p>
-					</feedback>
-							
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							To get an equation that more closely resembles <xref ref="chkpt-motivating-example-eqn-1"/>.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							That's correct! We wanted a form that we could directly compare to equation <xref ref="chkpt-motivating-example-eqn-1"/>.
-						</p>
-					</feedback>
-							
-				</choice>
-			</choices>
-		</task>
-
-		<task label="chkpt-integrating-factor-2"><title> <em>Select-the-Best-Answer</em> </title>
-			<statement>
-				<p>
-					Suppose our motivating example was the differential equation
-				</p>
-				<me>
-					y' + \frac{1}{x}y = x
-				</me>.
-				<p>
-					Assuming we multiply both sides of this equation by <m>\mu</m>, what condition equation would we solve to find the integrating factor, <m>\mu</m>, in this case?
-				</p>
-			</statement>
-			<choices>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu' = x\mu </m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							<m>\quad\ds\mu' = \frac{1}{x}\mu </m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Correct!
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu' + \frac{\mu}{x} = x </m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu' = \frac{1}{x}y\mu </m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-	
-		<task label="chkpt-motivating-example-2"><title> <em>Understanding the Role of <m>\mu(x)</m></em> </title>
-			<statement>
-				<p>
-					In this motivating example, what role does <m>\mu(x) = e^{2x}</m> play?
-				</p>
-			</statement>
-			<choices>
-				<choice correct="yes">
-					<statement>
-						<p>
-							It is a function that transforms the left side of our equation into a single derivative.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Correct! The function <m>e^{2x}</m> is chosen so that the left-hand side of the equation becomes a derivative.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							It is a solution to the differential equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. <m>\mu(x)</m> is used to manipulate the equation, not to solve it directly.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							It eliminates the need for integration.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. While it simplifies the equation, integration is still required to solve for <m>y</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							It makes our differential equation second-order.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The equation remains first-order throughout the process.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-
-	</exercise>
-
-</exercises>
+		<p>
+			That's the function we needed all along. When we multiply it onto the original equation, it completes the derivative on the left-hand side for a reversed product rule.
+		</p>
 
 	</paragraphs>
 
-	<paragraphs><title> The General Integrating Factor Formula </title>
+	<paragraphs label="if-general-formula0">
+	<title> A Formula for Any Equation </title>
+
+	<p>
+		NOTE: The label matching approach works in the general case, except instead of <m>2</m>, we have <m>P(x)</m>. The separable equation that comes from setting the two versions of <m>f'</m> we get from the labels is:
+		<me>
+			\mu'(x) = P(x)\,\mu(x).
+		</me>
+		
+	</p>
+	<p>
+		In the last example, we found the integrating factor <m>\mu(x)</m> by figuring out what function makes the left-hand side match a product rule. Let's now generalize that process to work for <em>any</em> first-order linear differential equation.
+	</p>
+
+	<p>
+		We'll start with the standard form:
+	</p>
+
+	<me>
+		\frac{dy}{dx} + P(x)\,y = Q(x).
+	</me>
+
+	<p>
+		The goal is to multiply both sides by a function <m>\mu(x)</m> so that the left side becomes the derivative of <m>\mu(x)\,y</m>. Applying the product rule to <m>\frac{d}{dx}[\mu(x)\,y]</m> gives:
+	</p>
+
+	<me>
+		\mu(x)\,\frac{dy}{dx} + \mu'(x)\,y.
+	</me>
+
+	<p>
+		But multiplying the original equation by <m>\mu(x)</m> gives:
+	</p>
+
+	<me>
+		\mu(x)\,\frac{dy}{dx} + \mu(x)\,P(x)\,y = \mu(x)\,Q(x).
+	</me>
+
+	<p>
+		To make these match, we need:
+	</p>
+
+	<me>
+		\mu'(x)\,y = \mu(x)\,P(x)\,y.
+	</me>
+
+	<p>
+		Again, assuming <m>y \ne 0</m>, we can cancel it out and get the condition:
+	</p>
+
+	<men xml:id="if-sov-eqn0">
+		\mu'(x) = P(x)\,\mu(x).
+	</men>
+
+	<p>
+		This is another separable equation. Solving it gives:
+	</p>
+
+	<md>
+		<mrow> \frac{1}{\mu} \frac{d\mu}{dx} \amp = P(x) </mrow>
+		<mrow> \int \frac{1}{\mu} \, d\mu \amp = \int P(x) \, dx </mrow>
+		<mrow> \ln|\mu| \amp = \int P(x)\, dx + C </mrow>
+		<mrow> \mu(x) \amp = ce^{\int P(x)\, dx} </mrow>
+	</md>
+
+	<p>
+		As before, any nonzero constant works, so we choose <m>c = 1</m> by convention. This gives us the formula:
+	</p>
+
+	<assemblage xml:id="integrating-factor-general-formula0">
+		<title> ✳️ Integrating Factor: General Formula </title>
+		<p>
+		For a first-order linear equation written in the form
+		<me>
+			\frac{dy}{dx} + P(x)\,y = Q(x),
+		</me>
+		the integrating factor is
+		<me>
+			\mu(x) = e^{\int P(x)\, dx}.
+		</me>
+		</p>
+	</assemblage>
+
+	<p>
+		Once we have <m>\mu(x)</m>, we multiply it onto the entire equation. The left-hand side becomes <m>\frac{d}{dx}[\mu(x)\,y]</m>, which we can then integrate. Let's try this out with a few examples.
+	</p>
+
+	</paragraphs>
+
+	<paragraphs label="if-formula-examples0">
+	<title> Try Out the Formula </title>
+
+	<p>
+		Now that we've got the general formula
+		<me>
+		\mu(x) = e^{\int P(x)\, dx},
+		</me>
+		let's try using it on a few different equations to see how it works in practice. The key is to identify <m>P(x)</m>, the function in front of <m>y</m>, and plug it into the formula. The right-hand side, <m>Q(x)</m>, doesn't affect <m>\mu(x)</m> at all.
+	</p>
+
+	<example>
+		<title> Constant Coefficient </title>
+		<p>
+		<statement>
+			<p>
+			Find the integrating factor for
+			</p>
+			<me>
+			\frac{dy}{dx} + 4y = x.
+			</me>
+		</statement>
+		</p>
+		<solution>
+		<p>
+			Here, <m>P(x) = 4</m>, so the integrating factor is:
+		</p>
+		<me>
+			\mu(x) = e^{\int 4\,dx} = e^{4x}.
+		</me>
+		</solution>
+	</example>
+
+	<example>
+		<title> Logarithmic Result </title>
+		<p>
+		<statement>
+			<p>
+			Find the integrating factor for
+			</p>
+			<me>
+			\frac{dy}{dx} + \frac{2}{x}\,y = x^3.
+			</me>
+			<p>
+			(Assume <m>x > 0</m>.)
+			</p>
+		</statement>
+		</p>
+		<solution>
+		<p>
+			The function multiplying <m>y</m> is <m>P(x) = \frac{2}{x}</m>. Plugging into the formula:
+		</p>
+		<me>
+			\mu(x) = e^{\int \frac{2}{x}\,dx} = e^{2\ln x} = x^2.
+		</me>
+		</solution>
+	</example>
+
+	<example>
+		<title> Trigonometric Coefficient </title>
+		<p>
+		<statement>
+			<p>
+			Find the integrating factor for
+			</p>
+			<me>
+			\frac{dy}{dx} + \tan x \cdot y = \cos x.
+			</me>
+		</statement>
+		</p>
+		<solution>
+		<p>
+			The function multiplying <m>y</m> is <m>P(x) = \tan x</m>. Then:
+		</p>
+		<me>
+			\mu(x) = e^{\int \tan x\,dx} = e^{\ln |\sec x|} = \sec x.
+		</me>
+		</solution>
+	</example>
+
+	<p>
+		In each case, we followed the same process: identify <m>P(x)</m>, integrate it, and raise <m>e</m> to that power. No matter what <m>P(x)</m> is, constant, rational, trig, the same strategy works.
+	</p>
+
+	</paragraphs>
 
 		<introduction>
 
@@ -673,7 +354,7 @@
 
 		</introduction>
 
-		<subsubsection><title> Deriving the Formula </title>
+		<paragraphs><title> Deriving the Formula </title>
 
 			<p>
 				As with the motivating example, we start by multiplying both sides of the differential equation by an unknown function <m>\mu</m>:
@@ -699,12 +380,6 @@
 			<p>
 				As you can see, the two sides are identical, except for the flagged 🚩 expressions. This means, <xref ref="if-mu-standard-form"/> can only be written as <xref ref="if-combined-form"/> if <m>\mu</m> also satisfies 
 			</p>
-
-			<aside>
-				<p>
-					<term>📌 Note.</term> If you are not sure where equation <xref ref="if-sov-eqn"/> comes from, we encourage you to have another look at <xref ref="if-motivating-example" text="title"/> and how we get equation <xref ref="if-condition-equation"/>.
-				</p>
-			</aside>
 
 			<men xml:id="if-sov-eqn">
 				\frac{d\mu}{dx} = \mu P(x).
@@ -777,9 +452,9 @@
 				Now that we have derived the general formula, let's apply it to a few examples.
 			</p>
 
-		</subsubsection>
+		</paragraphs>
 
-		<subsubsection><title> Examples of Integrating Factors </title>
+		<paragraphs><title> Examples of Integrating Factors </title>
 			
 			<example xml:id="integrating-factor-basic-example"><title> Basic Integrating Factor </title>
 
@@ -884,7 +559,7 @@
 				</solution>
 			</example>
 
-		</subsubsection>
+		</paragraphs>
 
 		<conclusion>
 		
@@ -902,467 +577,813 @@
 
 		</conclusion>
 
-<exercises><title> <em>Check your Understanding</em> </title>
 
-	<exercise label="chkpts-general-integrating-factor"><title> <em>Answer-the-Following</em> </title>
-		<introduction>
-			<p>
-				Complete the questions on each tab to check your understanding.
-			</p>
-		</introduction>
+		<exercises><title> <em>Check your Understanding</em> </title>
 
-		<task label="chkpt-general-integrating-factor-1"><title> <em>Effect of Multiplying by the Integrating Factor</em> </title>
-			<statement>
-				<p>
-					What happens when we multiply a first-order linear equation by its integrating factor?
-				</p>
-			</statement>
-			<choices>
-				<choice correct="yes">
+			<exercise label="chkpts-motivating-example"><title> <em>Answer-the-Following</em> </title>
+				<introduction>
+					<p>
+						Complete the questions on each tab to check your understanding.
+					</p>
+				</introduction>
+
+				<task label="incomplete-product-rule-in-a-de-1"><title> <em>Select-all-that-Apply</em> </title>
 					<statement>
 						<p>
-							The left-hand side becomes a single derivative of a product.
+							In our example, we found <m>\mu=e^{2x}</m> as the integrating factor for 
+						</p>
+						<me>
+							\frac{dy}{dx} + 2y = 5
+						</me>.
+						<p>
+							Which part of this equation did the integrating factor depend on?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Correct! Multiplication by <m>\mu(x)</m> allows us to rewrite the left-hand side as <m>\frac{d}{dx}[\mu(x)y]</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+
+						<choice correct="no">
+							<statement>
+								<p>
+									The constant term on the right side of the equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The integrating factor depends on the coefficient of <m>y</m> in the original equation.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									The coefficient of <m>y</m>.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									That's correct! The integrating factor depends on the coefficient of <m>y</m> in the original equation.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									Both the constant term and the coefficient of <m>y</m>.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The integrating factor does not depend on both of these, only one.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									The dependent variable, <m>y</m>.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The variable <m>y</m>, itself, is not involved in determining the integrating factor.
+								</p>
+							</feedback>
+						</choice>
+						
+						
+					</choices>
+				</task>
+
+				<task label="incomplete-product-rule-in-a-de-2-1"><title> <em>Select-the-Best-Answer</em> </title>
 					<statement>
 						<p>
-							The equation transforms into a homogeneous equation.
+							When deriving the condition equation <xref ref="if-condition-equation"/> (to find <m>\mu</m>), we multiplied the differential equation
+							<me>
+								\frac{dy}{dx} + 2 y = 5
+							</me>
+							by <m>\mu</m> to get
+							<me>
+								\mu\frac{dy}{dx} + 2\mu y = 5\mu
+							</me>
+							What was the purpose of multiplying by <m>\mu</m>?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. The equation remains nonhomogeneous unless <m>Q(x) = 0</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									To balance the equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Remember that the goal is to solve the equation, not to balance it.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									To make the equation separable.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Multiplying an non-separable equation by a function will never make it separable.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									To verify if the integrating factor method can be used.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Multiplying a differential equation by a function will never help determine which method can be used.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									To act as the missing function needed for a product rule.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									That's correct! Multiplying by <m>e^{2x}</m> on both sides of the equation allows us to complete the product rule on the left side.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				
+				<task label="incomplete-product-rule-in-a-de-2-2"><title> <em>Select-the-Best-Answer</em> </title>
 					<statement>
 						<p>
-							The integrating factor cancels out completely.
+							After multiplying the original differential equation by <m>\mu</m> to get
+						</p>
+						<men xml:id="chkpt-motivating-example-eqn-1">
+							\mu\frac{dy}{dx} + 2\mu y = 5\mu
+						</men>,
+						<p>
+							we jumped down to the last equation (our goal), given by
+						</p>
+						<me>
+							\frac{d}{dx} \left[\mu y \right] = 5\mu
+						</me>
+						<p>
+							where we applied the product rule to expand the left side as
+						</p>
+						<me>
+							\mu \frac{dy}{dx} + y \frac{d\mu}{dx} = 5\mu
+						</me>.
+						<p>
+							What was the purpose of working backwards from the last equation like this?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. The integrating factor is essential to rewriting the equation.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									To verify that the product rule was applied correctly.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Remember that the goal is to solve the equation, not to verify the product rule.
+								</p>
+							</feedback>
+									
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									To simplify the equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Working backwards does not simplify the equation, but helps us see how the product rule can be applied.
+								</p>
+							</feedback>
+									
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									This was the next logical step in the process.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Working backwards was a deliberate choice to show how the product rule could be applied.
+								</p>
+							</feedback>
+									
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									To get an equation that more closely resembles <xref ref="chkpt-motivating-example-eqn-1"/>.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									That's correct! We wanted a form that we could directly compare to equation <xref ref="chkpt-motivating-example-eqn-1"/>.
+								</p>
+							</feedback>
+									
+						</choice>
+					</choices>
+				</task>
+
+				<task label="chkpt-integrating-factor-2"><title> <em>Select-the-Best-Answer</em> </title>
 					<statement>
 						<p>
-							The equation always becomes separable.
+							Suppose our motivating example was the differential equation
+						</p>
+						<me>
+							y' + \frac{1}{x}y = x
+						</me>.
+						<p>
+							Assuming we multiply both sides of this equation by <m>\mu</m>, what condition equation would we solve to find the integrating factor, <m>\mu</m>, in this case?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. The equation is rewritten into an integrable form, but it is not necessarily separable.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-
-		<task label="chkpt-general-integrating-factor-2"><title> <em>Standard Form Requirement</em> </title>
-			<statement>
-				<p>
-					Why must a first-order linear differential equation be written in the form <m>y' + P(x)y = Q(x)</m> before using the integrating factor formula?
-				</p>
-			</statement>
-			<choices>
-				<choice correct="yes">
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu' = x\mu </m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>\quad\ds\mu' = \frac{1}{x}\mu </m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct!
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu' + \frac{\mu}{x} = x </m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu' = \frac{1}{x}y\mu </m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. Look carefully at <xref ref="if-sov-eqn"/> to see which equation you would get.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+			
+				<task label="chkpt-motivating-example-2"><title> <em>Understanding the Role of <m>\mu(x)</m></em> </title>
 					<statement>
 						<p>
-							Because the formula was derived assuming this form.
+							In this motivating example, what role does <m>\mu(x) = e^{2x}</m> play?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Correct! The integrating factor formula is based on the standard form of a first-order linear equation and to compute it, <m>P(x)</m> is needed.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+						<choice correct="yes">
+							<statement>
+								<p>
+									It is a function that transforms the left side of our equation into a single derivative.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The function <m>e^{2x}</m> is chosen so that the left-hand side of the equation becomes a derivative.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									It is a solution to the differential equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. <m>\mu(x)</m> is used to manipulate the equation, not to solve it directly.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									It eliminates the need for integration.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. While it simplifies the equation, integration is still required to solve for <m>y</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									It makes our differential equation second-order.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The equation remains first-order throughout the process.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+			</exercise>
+
+		</exercises>
+
+		<exercises><title> <em>Check your Understanding</em> </title>
+
+			<exercise label="chkpts-general-integrating-factor"><title> <em>Answer-the-Following</em> </title>
+				<introduction>
+					<p>
+						Complete the questions on each tab to check your understanding.
+					</p>
+				</introduction>
+
+				<task label="chkpt-general-integrating-factor-1"><title> <em>Effect of Multiplying by the Integrating Factor</em> </title>
 					<statement>
 						<p>
-							Because it ensures that the equation is linear.
+							What happens when we multiply a first-order linear equation by its integrating factor?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							No. You can ensure linearity without writing the equation in this form.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+						<choice correct="yes">
+							<statement>
+								<p>
+									The left-hand side becomes a single derivative of a product.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! Multiplication by <m>\mu(x)</m> allows us to rewrite the left-hand side as <m>\frac{d}{dx}[\mu(x)y]</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									The equation transforms into a homogeneous equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The equation remains nonhomogeneous unless <m>Q(x) = 0</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									The integrating factor cancels out completely.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The integrating factor is essential to rewriting the equation.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									The equation always becomes separable.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The equation is rewritten into an integrable form, but it is not necessarily separable.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="chkpt-general-integrating-factor-2"><title> <em>Standard Form Requirement</em> </title>
 					<statement>
 						<p>
-							Because it guarantees the equation has a unique solution.
+							Why must a first-order linear differential equation be written in the form <m>y' + P(x)y = Q(x)</m> before using the integrating factor formula?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. Writing the equation in this form does not determine uniqueness.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+					<choices>
+						<choice correct="yes">
+							<statement>
+								<p>
+									Because the formula was derived assuming this form.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The integrating factor formula is based on the standard form of a first-order linear equation and to compute it, <m>P(x)</m> is needed.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									Because it ensures that the equation is linear.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									No. You can ensure linearity without writing the equation in this form.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									Because it guarantees the equation has a unique solution.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. Writing the equation in this form does not determine uniqueness.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									Because this is the standard form.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. It is true that this is the standard form, but there is a better answer choice for this question.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="chkpt-general-integrating-factor-3"><title> <em>Describing the Integrating Factor</em> </title>
 					<statement>
 						<p>
-							Because this is the standard form.
+							Which of the following is the closest description of an integrating factor?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. It is true that this is the standard form, but there is a better answer choice for this question.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									A particular solution to the differential equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The integrating factor is not a solution to the differential equation, but a function that helps solve it.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									A function that is multiplied onto both sides of an equation.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The integrating factor is a function that you multiply both sides of a differential equation by.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									A number that converts the equation into a different form.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. In general, the integrating factor is a function, not a number.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									The anti-derivative of <m>P(x)</m> (from the standard form).
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The integrating factor is <m>e</m> raised to the power of an anti-derivative of <m>P(x)</m>, but it is not the anti-derivative of <m>P(x)</m>, itself.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
 
-		<task label="chkpt-general-integrating-factor-3"><title> <em>Describing the Integrating Factor</em> </title>
-			<statement>
-				<p>
-					Which of the following is the closest description of an integrating factor?
-				</p>
-			</statement>
-			<choices>
-				<choice>
+				<task label="chkpt-general-integrating-factor-4"><title> <em>Selecting the Integrating Factor</em> </title>
 					<statement>
 						<p>
-							A particular solution to the differential equation.
+							What is the integrating factor for the equation
+							<me>
+								y' + 3y = e^x
+							</me>?
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. The integrating factor is not a solution to the differential equation, but a function that helps solve it.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu = e^{e^{3x}}</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This is not the correct expression for the integrating factor.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>\quad\mu = e^{3x}</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The integrating factor is <m>e^{3x}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu = e^{x^2/2}</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. The correct integrating factor should involve the integral of the coefficient of <m>y</m>, which is <m>3</m>, not <m>x</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									<m>\quad\ds\mu = e^{x}</m>
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This is not the correct form for the integrating factor.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="chkpt-general-integrating-factor-5"><title> <em>Finding the Integrating Factor</em> </title>
 					<statement>
 						<p>
-							A function that is multiplied onto both sides of an equation.
+							The integrating factor for the equation
+						</p>
+
+						<p>
+							<me>
+								\frac{dy}{dx} + 3x^2y = \cos x
+							</me>
+						</p>
+
+						<p>
+							is given by the function <m>\quad\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
 						</p>
 					</statement>
-					<feedback>
-						<p>
-							Correct! The integrating factor is a function that you multiply both sides of a differential equation by.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
+
+					<setup>
+						<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^3)	</de-expression></de-object>
+					</setup>
+					<evaluation>
+						<evaluate name="mu_field">
+							<test correct="yes">
+								<mathcmp obj="mu" />
+								<feedback>
+									<p>
+										Correct! For this equation, <m>P(x) = 3x^2</m>, therefore the integrating factor is
+										<me>
+											\mu(x) = e^{\large\int 3x^2 dx} = e^{x^3}
+										</me>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+					</evaluation>
+
+				</task>
+
+				<task label="chkpt-general-integrating-factor-6"><title> <em>Standard Form and the Integrating Factor 1</em> </title>
 					<statement>
 						<p>
-							A number that converts the equation into a different form.
+							Rewrite the differential equation
 						</p>
-					</statement>
-					<feedback>
+
 						<p>
-							Incorrect. In general, the integrating factor is a function, not a number.
+							<me>
+								-x y' = y + 2x + 1
+							</me>
 						</p>
-					</feedback>
-				</choice>
-				<choice>
+
+						<p>
+							in the standard first-order linear form
+							<me>
+								y' + P(x)y = Q(x)
+							</me>
+							and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
+						</p>
+
+						<ul>
+							<li>
+								<p>
+									<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
+								</p>
+							</li>
+						</ul>
+
+					</statement>
+
+					<setup>
+						<de-object name="P" context="formula"><de-expression reduce="yes">	1/x	</de-expression></de-object>
+						<de-object name="Q" context="formula"><de-expression reduce="yes">	2+1/x	</de-expression></de-object>
+						<de-object name="mu" context="formula"><de-expression reduce="yes">	x	</de-expression></de-object>
+					</setup>
+					<evaluation>
+						<evaluate name="P_field">
+							<test correct="yes">
+								<mathcmp obj="P" />
+								<feedback>
+									<p>
+										Correct! The equation is rearranged as
+										<me>
+											y' + \frac{1}{x}y = 2 + \frac{1}{x}
+										</me>
+										showing that <m>P(x) = \frac{1}{x}</m>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+						<evaluate name="Q_field">
+							<test correct="yes">
+								<mathcmp obj="Q" />
+								<feedback>
+									<p>
+										Correct! <m>Q(x) = 2 + \frac{1}{x}</m>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+						<evaluate name="mu_field">
+							<test correct="yes">
+								<mathcmp obj="mu" />
+								<feedback>
+									<p>
+										Correct! The integrating factor is
+										<me>
+											\mu(x) = e^{\large\int \frac{1}{x} dx} = e^{\ln x} = x
+										</me>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+					</evaluation>
+
+				</task>
+
+				<task label="chkpt-general-integrating-factor-7"><title> <em>Standard Form and the Integrating Factor 1</em> </title>
 					<statement>
 						<p>
-							The anti-derivative of <m>P(x)</m> (from the standard form).
+							Rewrite the differential equation
 						</p>
+
+						<p>
+							<me>
+								2y' = 4 - 4xy
+							</me>
+						</p>
+
+						<p>
+							in the standard first-order linear form
+							<me>
+								y' + P(x)y = Q(x)
+							</me>
+							and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
+						</p>
+
+						<ul>
+							<li>
+								<p>
+									<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
+								</p>
+							</li>
+							<li>
+								<p>
+									<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
+								</p>
+							</li>
+						</ul>
+
 					</statement>
-					<feedback>
-						<p>
-							Incorrect. The integrating factor is <m>e</m> raised to the power of an anti-derivative of <m>P(x)</m>, but it is not the anti-derivative of <m>P(x)</m>, itself.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
 
-		<task label="chkpt-general-integrating-factor-4"><title> <em>Selecting the Integrating Factor</em> </title>
-			<statement>
-				<p>
-					What is the integrating factor for the equation
-					<me>
-						y' + 3y = e^x
-					</me>?
-				</p>
-			</statement>
-			<choices>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu = e^{e^{3x}}</m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. This is not the correct expression for the integrating factor.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							<m>\quad\mu = e^{3x}</m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Correct! The integrating factor is <m>e^{3x}</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu = e^{x^2/2}</m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The correct integrating factor should involve the integral of the coefficient of <m>y</m>, which is <m>3</m>, not <m>x</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							<m>\quad\ds\mu = e^{x}</m>
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. This is not the correct form for the integrating factor.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
+					<setup>
+						<de-object name="P" context="formula"><de-expression reduce="yes">	2*x	</de-expression></de-object>
+						<de-object name="Q" context="formula"><de-expression reduce="yes">	2	</de-expression></de-object>
+						<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^2)	</de-expression></de-object>
+					</setup>
+					<evaluation>
+						<evaluate name="P_field">
+							<test correct="yes">
+								<mathcmp obj="P" />
+								<feedback>
+									<p>
+										Correct! The equation is rearranged as
+										<me>
+											y' + xy = 2
+										</me>
+										showing that <m>P(x) = x</m>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+						<evaluate name="Q_field">
+							<test correct="yes">
+								<mathcmp obj="Q" />
+								<feedback>
+									<p>
+										Incorrect. Double-check your algebra when rearranging the equation.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+						<evaluate name="mu_field">
+							<test correct="yes">
+								<mathcmp obj="mu" />
+								<feedback>
+									<p>
+										Correct! The integrating factor is
+										<me>
+											\mu(x) = e^{\large\int 2x dx} = e^{x^2}
+										</me>.
+									</p>
+								</feedback>
+							</test>
+						</evaluate>
+					</evaluation>
 
-		<task label="chkpt-general-integrating-factor-5"><title> <em>Finding the Integrating Factor</em> </title>
-			<statement>
-				<p>
-					The integrating factor for the equation
-				</p>
+				</task>
 
-				<p>
-					<me>
-						\frac{dy}{dx} + 3x^2y = \cos x
-					</me>
-				</p>
+			</exercise>
 
-				<p>
-					is given by the function <m>\quad\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-				</p>
-			</statement>
+		</exercises>
 
-			<setup>
-				<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^3)	</de-expression></de-object>
-			</setup>
-			<evaluation>
-				<evaluate name="mu_field">
-					<test correct="yes">
-						<mathcmp obj="mu" />
-						<feedback>
-							<p>
-								Correct! For this equation, <m>P(x) = 3x^2</m>, therefore the integrating factor is
-								<me>
-									\mu(x) = e^{\large\int 3x^2 dx} = e^{x^3}
-								</me>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-			</evaluation>
-
-		</task>
-
-		<task label="chkpt-general-integrating-factor-6"><title> <em>Standard Form and the Integrating Factor 1</em> </title>
-			<statement>
-				<p>
-					Rewrite the differential equation
-				</p>
-
-				<p>
-					<me>
-						-x y' = y + 2x + 1
-					</me>
-				</p>
-
-				<p>
-					in the standard first-order linear form
-					<me>
-						y' + P(x)y = Q(x)
-					</me>
-					and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
-				</p>
-
-				<ul>
-					<li>
-						<p>
-							<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-						</p>
-					</li>
-				</ul>
-
-			</statement>
-
-			<setup>
-				<de-object name="P" context="formula"><de-expression reduce="yes">	1/x	</de-expression></de-object>
-				<de-object name="Q" context="formula"><de-expression reduce="yes">	2+1/x	</de-expression></de-object>
-				<de-object name="mu" context="formula"><de-expression reduce="yes">	x	</de-expression></de-object>
-			</setup>
-			<evaluation>
-				<evaluate name="P_field">
-					<test correct="yes">
-						<mathcmp obj="P" />
-						<feedback>
-							<p>
-								Correct! The equation is rearranged as
-								<me>
-									y' + \frac{1}{x}y = 2 + \frac{1}{x}
-								</me>
-								showing that <m>P(x) = \frac{1}{x}</m>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-				<evaluate name="Q_field">
-					<test correct="yes">
-						<mathcmp obj="Q" />
-						<feedback>
-							<p>
-								Correct! <m>Q(x) = 2 + \frac{1}{x}</m>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-				<evaluate name="mu_field">
-					<test correct="yes">
-						<mathcmp obj="mu" />
-						<feedback>
-							<p>
-								Correct! The integrating factor is
-								<me>
-									\mu(x) = e^{\large\int \frac{1}{x} dx} = e^{\ln x} = x
-								</me>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-			</evaluation>
-
-		</task>
-
-		<task label="chkpt-general-integrating-factor-7"><title> <em>Standard Form and the Integrating Factor 1</em> </title>
-			<statement>
-				<p>
-					Rewrite the differential equation
-				</p>
-
-				<p>
-					<me>
-						2y' = 4 - 4xy
-					</me>
-				</p>
-
-				<p>
-					in the standard first-order linear form
-					<me>
-						y' + P(x)y = Q(x)
-					</me>
-					and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
-				</p>
-
-				<ul>
-					<li>
-						<p>
-							<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
-						</p>
-					</li>
-					<li>
-						<p>
-							<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-						</p>
-					</li>
-				</ul>
-
-			</statement>
-
-			<setup>
-				<de-object name="P" context="formula"><de-expression reduce="yes">	2*x	</de-expression></de-object>
-				<de-object name="Q" context="formula"><de-expression reduce="yes">	2	</de-expression></de-object>
-				<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^2)	</de-expression></de-object>
-			</setup>
-			<evaluation>
-				<evaluate name="P_field">
-					<test correct="yes">
-						<mathcmp obj="P" />
-						<feedback>
-							<p>
-								Correct! The equation is rearranged as
-								<me>
-									y' + xy = 2
-								</me>
-								showing that <m>P(x) = x</m>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-				<evaluate name="Q_field">
-					<test correct="yes">
-						<mathcmp obj="Q" />
-						<feedback>
-							<p>
-								Incorrect. Double-check your algebra when rearranging the equation.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-				<evaluate name="mu_field">
-					<test correct="yes">
-						<mathcmp obj="mu" />
-						<feedback>
-							<p>
-								Correct! The integrating factor is
-								<me>
-									\mu(x) = e^{\large\int 2x dx} = e^{x^2}
-								</me>.
-							</p>
-						</feedback>
-					</test>
-				</evaluate>
-			</evaluation>
-
-		</task>
-
-	</exercise>
-
-</exercises>
-
-
-	</paragraphs>
-	
 </section>
