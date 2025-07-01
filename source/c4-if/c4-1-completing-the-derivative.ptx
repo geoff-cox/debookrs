@@ -1,4 +1,5 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Completing the Derivative </title>	
+<section label="if-intro-completing-derivative">
+	<title> Completing the Derivative </title>	
 
 	<introduction>
 
@@ -14,12 +15,12 @@
 			One way to solve this equation is by factoring the left-hand side:
 		</p>
 
-		<me>
+		<men xml:id="if-grouped-squared-eqn">
 			(x + 5)^2 = 0.
-		</me>
+		</men>
 
 		<p>
-			This way of grouping is useful because it allows us to solve for <m>x</m> directly by taking a square root.
+			This grouping is helpful because taking the square root leads directly to the solution.
 		</p> 
 
 		<p>
@@ -43,111 +44,121 @@
 		</men>
 
 		<p>
-			This transformation is powerful because it allows us to solve for <m>y</m> using <em>direct integration</em>, just as factoring allowed us to solve for <m>x</m> in the quadratic example.
+			This grouping provides a similar benefit as in <xref ref="if-grouped-squared-eqn"/>, except here integrating both sides leads directly to the solution.
 		</p>
 
 		<p>
-			For this discussion, we will refer to the process of converting <xref ref="if-intro-incomplete-eqn"/> into <xref ref="if-intro-complete-eqn"/> as <term>completing the derivative</term>. It consists of two key steps:
-		</p>
-
-		<p>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p> 1️⃣</p>
-				<p><term>Multiplying a missing function</term> onto <xref ref="if-intro-incomplete-eqn"/> needed to form a product rule.</p>
-			</sidebyside>
-			<sidebyside widths="2% 5% 93%" valign="top">
-				<p/><p> 2️⃣</p>
-				<p><term>Reversing this product rule</term> to construct the combined derivative in <xref ref="if-intro-complete-eqn"/>.</p>
-			</sidebyside>
-		</p>
-
-		<p>
-			In this section, we will unravel both of these steps starting with a review of the product rule and how it can be reversed within a differential equation. Then, we explore a situation where, initially, the product rule cannot be reversed until an additional function is introduced to the equation we are solving.
+			For now, we will refer to the process of converting <xref ref="if-intro-incomplete-eqn"/> into <xref ref="if-intro-complete-eqn"/> as <q>completing the derivative</q>. As you will soon see, this conversion is just a reversal of the product rule from calculus and is the core idea behind the <term>integrating factor method</term>.
 		</p>
 
 	</introduction>
 
-	<subsection><title> The Product Rule: A Quick Review </title>
+	<paragraphs><title> The Product Rule—A Quick Review </title>
+
+		<p>
+			Before we attempt to reverse the product rule, let's first review the product rule as you remember it from calculus.
+		</p>
 
 		<p>
 			Recall that the <term>product rule</term> describes how to differentiate a product of two functions. In particular, if <m>f(x)</m> and <m>g(x)</m> are differentiable, then
 		</p>
 
 		<me>
-			\frac{d}{dx} \left[ f(x) g(x) \right] = f(x) g'(x) + f'(x) g(x).
+			\frac{d}{dx} \left[ f(x) \cdot g(x) \right] = f(x) \cdot g'(x) + f'(x) \cdot g(x).
 		</me>
 
 		<p>
-			To refresh our memory of how it works, let's warm up with a few examples.
+			To refresh your memory of how it works, try these practice problems.
 		</p>
 
-		<example><title> Forward Product Rule </title>
+		<task label="chkpt-product-rule-review-1">
+			<title> Remembering the Product Rule </title>
 
-			<p>
+			<introduction>
+				<p>
+					Compute each of the derivatives below. Assume <m>y</m> is a function of <m>x</m>.
+				</p>
+				<me>
+					1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y\right]
+				</me>
+			</introduction>
+				
+			<webwork xml:id="chkpt-product-rule-review-1-ww">
+				<pg-code>
+					Context()->variables->add(y => 'Real');
+					Context()->variables->{namePattern} = qr/[a-z][a-z0-9_]*'*/i;
+    				Context()->variables->add("y'"=>"Real");
+					$f1 = Formula("x^6");	$g1 = Formula("e^{3x}");
+					$df1 = $f1->D('x');		$dg1 = $g1->D('x');
+					$f2 = Formula("e^{x^3}");	$g2 = Formula("y");
+					$df2 = $f2->D('x');			$dg2 = Formula("y'");
+
+					$ans1 = $f1 * $dg1 + $df1 * $g1;
+					$ans2 = $f2 * $dg2 + $df2 * $g2;
+				</pg-code>
+
 				<statement>
 					<p>
-						Compute each of the derivatives below.
+						<ol marker="1.">
+							<li><m>\displaystyle\frac{d}{dx}\left[x^6 e^{3x}\right] = </m> <var name="$ans1" width="25" /></li>
+							<li><m>\displaystyle\left[e^{x^3} y\right]' = </m> <var name="$ans2" width="25" /></li>
+						</ol>
+						Use <c>y'</c> for the derivative of <m>y</m> in question 2.
 					</p>
-					<me>
-						1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y(x)\right]
-					</me>
 				</statement>
-			</p>
+			</webwork>
 
 			<solution>
 				<p>
 					Using the product rule:
 					<ol>
 						<li>
-							<p>
-								<m>\ds
-									\left( x^6 e^{3x} \right)' =
-									x^6 \cdot 3e^{3x} + 6x^5 e^{3x}
-								</m>
-							</p>
+							<me>
+								\left[ x^6 e^{3x} \right]'
+									= x^6 \cdot 3e^{3x} + 6x^5 \cdot e^{3x}
+							</me>
 						</li>
 						<li>
-							<p>
-								<m>\ds\frac{d}{dx}
-									\left( e^{x^3} y(x) \right) =
-									e^{x^3} y'(x) + 3x^2 e^{x^3} y(x)
-								</m>
-							</p>
+							<me>
+								\frac{d}{dx}\left[ e^{x^3} y(x) \right]
+									= e^{x^3} \cdot y'(x) + 3x^2 e^{x^3} \cdot y(x)
+							</me>
 						</li>
 					</ol>
 				</p>
 			</solution>
 
-		</example>
+		</task>
 
-		<xi:include href="./c4-exercises/c4-chkpts-1-1-product-rule-review.ptx" />
+	</paragraphs>
 
-	</subsection>
-
-	<subsection><title> Recognizing and Reversing the Product Rule </title>
+	<paragraphs label="product-rule-in-reverse">
+		<title> The Product Rule in Reverse </title>
 
 		<p>
-			Normally, we apply the product rule <em>in the forward direction</em>, starting with a product and differentiating it into separate terms. However, when solving differential equations, we often need to work <em>in reverse</em>—that is, given a sum of terms, we determine whether they originate from a product rule derivative. This process is crucial in the integrating factor method, where we aim to rewrite an equation so that one side is a derivative of a product.
+			Now that you are familiar with the forward direction of the product rule, let's start thinking about it in reverse. To start, think about which product rule would produce the following expression?
+			<men xml:id="product-rule-in-reverse-eqn-1">
+				\frac{1}{x} \sin x + \cos x \ln x \quad <answer><m>\left[ \sin x \cdot \ln x \right]'</m></answer>
+			</men>
 		</p>
 
 		<p>
-			For example, the expression:
+			That is, what <m>f(x)</m> and <m>g(x)</m> would you choose so that 
+			<me>
+				\frac{d}{dx} \left[ f(x) g(x) \right] = \frac{1}{x} \sin x + \cos x \ln x
+			</me>.
+		</p>
+
+		<p>
+			A nice feature of the product rule is that <m>f</m> and <m>g</m> must be two of the four terms on the right. The remaining two are <m>f'</m> and <m>g'</m>. A bit logic and trial and error should lead you to <m>f(x)=\sin x</m> and <m>g(x)=\ln x</m>. Therefore, expression <xref ref="product-rule-in-reverse-eqn-1"/> can be rewritten as
 		</p>
 
 		<me>
-			\frac{1}{x} \sin x + \cos x \ln x
-		</me>
+			\frac{d}{dx} \left[ \sin x \cdot \ln x \right]
+		</me>.
 
 		<p>
-			can be rewritten as:
-		</p>
-
-		<me>
-			\left[ \sin x \cdot \ln x \right]'.
-		</me>
-
-		<p>
-			The process for recognizing when two terms can be bundled into a single derivative via the product rule is outlined in the following examples.
+			Let's get comfortable with this reverse thinking with a few more examples.
 		</p>
 
 		<example><title> Basic Reverse Product Rule </title>
@@ -256,10 +267,11 @@
 		</example>
 
 		<p>
-			The next example involves an expression that contains a variable, making it more relevant to differential equations.
+			The next example involves an expression that contains a variable, making it more relevant to our ultimate goal of solving differential equations.
 		</p>
 
-		<example xml:id="reversed-product-rule-example"><title> Reversed Product Rule with a Variable </title>
+		<example xml:id="reversed-product-rule-example">
+			<title> Reversed Product Rule with a Variable </title>
 
 			<p>
 				<statement>
@@ -335,16 +347,171 @@
 			</solution>
 			
 		</example>
-		
+
+		<exercise label="chkpt-reversed-product-rule-2">
+			<title> What's Missing in the Product Rule </title>
+
+				<statement>
+					<p>
+						Fill in the missing parts of each product rule below.
+					</p>
+					<p>
+						<m>\ds\frac{d}{dx}\left[x^2 \cos x\right] = </m>
+						<m>x^2 \cdot</m> <var width="3px"/> <m>+</m> <var  width="3px"/> <m>\cdot \cos x</m>
+					</p>
+					<p>
+						<m>\ds\frac{d}{dx}\big[e^{3x} </m> <var width="3px"/> <m>\big] = </m>
+						<m>\ds\frac{1}{x} \cdot e^{3x} + </m> <var  width="3px"/> <m> e^{3x} \cdot \ln x </m>
+					</p>
+					<p>
+						<m>\ds\frac{d}{dx}\big[ </m> <var width="3px"/> <m> \cdot </m> <var width="3px"/> <m>\big] = </m>
+						<m>\ds\frac{dP}{dt} \cdot t + P </m>
+					</p>
+				</statement>
+				<setup>
+					<var>
+						<condition string="\s*-\s*sin\s*\(?x\)?\s*">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, try again.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+					<var>
+						<condition string="\s*2\s*\*\s*x\s*">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, try again.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+					<var>
+						<condition string="\s*ln\s*\(?x\)?\s*">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string="\s*ln\s*">
+							<feedback>
+								<p>
+									<line>Incorrect, expecting to see the independent variable <m>x</m>.</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*log.*">
+							<feedback>
+								<p>
+									<line>Incorrect, use the natural log instead.</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, try again.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+					<var>
+						<condition number="3">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, don't forget the chain rule.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+					<var>
+						<condition string="P">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string="t">
+							<feedback>
+								<p>
+									<line>Put <m>t</m> in the other blank!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string="p">
+							<feedback>
+								<p>
+									<line>The variable should be a capitol <m>P</m>.</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, try again.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+					<var>
+						<condition string="t">
+							<feedback>
+								<p>
+									<line>Correct!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string="P">
+							<feedback>
+								<p>
+									<line>Put <m>P</m> in the other blank!</line>
+								</p>
+							</feedback>
+						</condition>
+						<condition string=".*">
+							<feedback>
+								<p>
+									<line>Incorrect, try again.</line>
+								</p>
+							</feedback>
+						</condition>
+					</var>
+				</setup>
+
+		</exercise>
+
 		<p>
-			While reversing the product rule is not standard exercise, they are important for developing the intuition needed to understand the integrating factor method, as we will soon see.
+			In general, reversing the product rule like this is not a standard technique, however working through a few of these can be beneficial for understanding how the integrating factor method works.
 		</p>
 
-		<xi:include href="./c4-exercises/c4-chkpts-1-2-reversed-product-rule.ptx" />
+	</paragraphs>
 
-	</subsection>
-
-	<subsection><title> A Perfect Derivative </title>
+	<paragraphs label="perfect-derivative">
+		<title> A Perfect Derivative </title>
 
 		<p>
 			Now that you have seen how to combine two terms into a single derivative by reversing the product rule, you are ready to see how this could help you solve a differential equation. Suppose you are given the following equation
@@ -355,7 +522,7 @@
 		</men>
 
 		<p>
-			Seeing the two terms with a derivative suggests that it may be possible to reverse a product rule. In fact, the left side of <xref ref="reverse-product-rule-DE"/> is a <q>perfect derivative</q> since it already has all the pieces needed to reverse a product rule, as shown below:
+			Seeing the two terms with a derivative suggests that it may be possible to reverse a product rule. In fact, the left side of <xref ref="reverse-product-rule-DE"/> is a <q>perfect derivative</q> since it can be reversed without modification (see <xref ref="reversed-product-rule-example"/>) as:
 		</p>
 
 		<men xml:id="reverse-product-rule-DE-solution">
@@ -363,16 +530,46 @@
 		</men>
 
 		<p>
-			This transformation is powerful because it allows us to solve the equation through direct integration, as illustrated in the next example.
+			Now direct integration easily solves this problem, as the next example illustrates.
 		</p>
 
-		<example xml:id="reversing-the-product-rule-in-a-DE-example"><title> Reversed Product Rule in a Differential Equation </title>
+		<task label="chkpt-perfect-derivative-1">
+			<title> Recognizing a Perfect Derivative </title>
+			<statement>
+				<p>
+					What do we mean by <q>the below equation contains a perfect derivative</q>?
+					<me>
+						e^{2x} \frac{dy}{dx} + 2e^{2x} y = 3e^{2x}
+					</me>.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>The equation is perfectly setup for one of its sides to be written as a single derivative.</statement>
+					<feedback>Correct! The left hand side is exactly equal to <m>\left[e^{2x} y\right]'</m>.</feedback>
+				</choice>
+				<choice>
+					<statement>It involves exponential functions, which have perfect derivatives.</statement>
+					<feedback>Incorrect. While exponential function have unique derivatives, that is not what is meant here.</feedback>
+				</choice>
+				<choice>
+					<statement>The equation has a perfect balance of exponential terms.</statement>
+					<feedback>Incorrect. The statement <q>The equation has a perfect balance of exponential terms</q> not something you would say in differential equations.</feedback> 
+				</choice>
+				<choice>
+					<statement>The derivative can be perfectly isolated on one side of the equation.</statement>
+					<feedback>Incorrect. While the derivative can be isolated, that is not what is meant by a perfect derivative.</feedback>
+				</choice>
+			</choices>
+		</task>
 
+		<example xml:id="reversing-the-product-rule-example">
+			<title> Reverse the Product Rule and Integrate </title>
 			<p>
 				<statement>
 					<p>
 						Rewrite the left-side of the equation
-						<men xml:id="reversing-the-product-rule-in-a-DE-example-eqn">
+						<men xml:id="reversing-the-product-rule-example-eqn">
 							e^{x^4} \frac{dy}{dx} + 4x^3e^{x^4} y = 5x
 						</men>
 						as a single derivative, then find the general solution by direct integration.
@@ -404,7 +601,7 @@
 					</me>.
 
 					<p>
-						Rewriting the left side of equation <xref ref="reversing-the-product-rule-in-a-DE-example-eqn"/> as this combined derivative allows us to find the general solution using direct integration as follows:
+						Rewriting the left side of equation <xref ref="reversing-the-product-rule-example-eqn"/> as this combined derivative allows us to find the general solution using direct integration as follows:
 					</p>
 
 					<md>
@@ -416,64 +613,284 @@
 
 				</solution>
 			</p>
-
 		</example>
 
 		<p>
-			This example shows a differential equation that conveniently had all the pieces it needed to reverse the product rule. Unfortunately, equations are rarely presented in such a complete form and an additional component must be provided before an appoach like this will work. 
+			This example highlights the power of writing one side of the equation as a derivative. Unfortunately, equations are rarely presented in a form where the derivative can be formed without some modification first. To motivate this, we will revisit <q>completing the square</q> from algebra that approaches solving equations in a similar manner.
+		</p>
+
+		<p label="rq-perfect-derivative-bundle">
+			<task label="chkpt-perfect-derivative-3"><title> Equivalent Equations </title>
+				<statement>
+					<p>
+						The differential equation,
+					</p>
+
+					<me>
+						\frac{dQ}{dz}\ln z + \frac{Q}{z} = \tan\left(z^2\right)
+					</me>
+
+					<p>
+						is equivalent to which of the following equations?
+					</p>
+				</statement>
+				<choices>
+					<choice>
+						<statement>
+							<m>\quad\ds\frac{d}{dz} \left[ Q z \right] = \tan\left(z^2\right)</m>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<m>\quad\ds\frac{dQ}{dz} = \tan\left(z^2\right)</m>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							<m>\quad\ds\frac{d}{dz} \left[ Q \ln z \right] = \tan\left(z^2\right)</m>
+						</statement>
+						<feedback>
+							<p>
+								Correct! Applying the product rule to the left side of the equation yields the original differential equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<m>\quad\ds\frac{d}{dz} \left[ \frac{Q}{z} \right] = \tan\left(z^2\right)</m>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="chkpt-reversed-product-rule-1"><title> Goal of Completing the Derivative </title>
+				<statement>
+					<p>
+						How does reversing the product rule in the below equation help solve it?
+						<me>
+							\frac{dy}{dx} \cdot e^{5x^2} + 10x e^{5x^2} \cdot y = 3x
+						</me>.
+					</p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement>It groups terms on one side of the equation into a single derivative.</statement>
+						<feedback>Correct! The product rule combines terms on the left side of the equation into a single derivative.</feedback>
+					</choice>
+					<choice>
+						<statement>It computes the derivative of a product of two functions.</statement>
+						<feedback>Incorrect. In this situation, the product rule is not used to take a derivative of a product of two functions.</feedback>
+					</choice>
+					<choice>
+						<statement>It solves the differential equation directly.</statement>
+						<feedback>Incorrect. The product rule can help solve some differential equations, but it does not solve them alone.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>It allows it to be easily solved by direct integration.</statement>
+						<feedback>Correct! Recognizing a perfect derivative lets us solve the equation by integration.</feedback>
+					</choice>
+					<choice>
+						<statement>It converts a nonlinear equation into a linear one.</statement>
+						<feedback>Incorrect. The equation is already linear; reversing the product rule does not change its nature.</feedback>
+					</choice>
+				</choices>
+			</task>
+		</p>
+	</paragraphs>
+
+	<paragraphs label="completing-square-analogy">
+		<title> Completing the (Incomplete) Square—An Analogy </title>
+
+		<p>
+			<em>Note: Check the footnotes<fn>Yes, this is a footnote</fn>for a corresponding differential equation analogy mapping.</em>
 		</p>
 
 		<p>
-			To help us see how adding something to an equation can help us alter its form and solve it, we will first look at an analogy from algebra in the next section.
+			Suppose you wanted to solve the following quadratic equation<fn>→ differential equation</fn>
 		</p>
 
-		<xi:include href="./c4-exercises/c4-chkpts-1-3-perfect-derivative.ptx" />
-
-	</subsection>
-
-	<subsection><title> Completing the Square: An Analogy </title>
+		<sidebyside margins="32% 5%">
+			<p>
+				<m>\os{\large\text{incomplete square}}{\qquad \ob{\ x^2 + 6x\ } = -1}\ ^{→}</m>
+				<fn><m>\os{\large\text{incomplete derivative}}{→ \ob{\ \frac{dy}{dx} + 2 y\ } = 5}</m></fn>
+			</p>
+		</sidebyside>
 
 		<p>
-			Suppose you wanted to solve the following quadratic equation
+			You could solve it using the quadratic formula. However, another approach is to <q>complete the square</q><fn>→ complete the derivative (i.e., integrating factor method)</fn>by strategically adding<fn>→ multiplying</fn>a number<fn>→ a function</fn>to both sides so that the left side becomes a <q>perfect square</q>.<fn>→ perfect derivative (i.e., ready for a reversed product rule)</fn>The strategy from <q>completing the square</q><fn>→ integrating factor method</fn>tells us that <m>\left(\frac{6}{2}\right)^2 = 9</m><fn>→ <m>e^{2x}</m></fn>does the trick, so we add<fn>→ multiply</fn> it to both sides to get
 		</p>
 
-		<men xml:id="quadratic-example">
-			x^2 + 6x = -1.
-		</men>
+		<sidebyside margins="35% 5%">
+			<p>
+				<m>\ub{x^2 + 6x + 9}_{\large\text{complete square}} = -1 + 9\ ^{→}</m><fn>→ <m>\ub{e^{2x} \frac{dy}{dx} + 2e^{2x} y}_{\text{complete derivative}} = 5e^{2x}.</m></fn>
+			</p>
+		</sidebyside>
 
 		<p>
-			You could solve it using the quadratic formula. However, another approach is to <q>complete the square</q> by strategically placing a number on the left side which turns it into a perfect square. Following the rule from <q>completing the square</q>, we know <m>\left(\frac{6}{2}\right)^2 = 9</m> does the trick, so we add it to both sides to get
+			Completing the square<fn>→ integrating factor method</fn>gets it name because it tells you the missing piece<fn>→ integrating factor</fn>needed to factor<fn>→ reverse the product rule on</fn>the left side so that we have: 
 		</p>
 
-		<me>
-			\ub{\os{{\large\text{incomplete}}}{\ob{x^2 + 6x}^{\large\text{square}}} + 9}_{\large\text{complete square}} = -1 + 9.
-		</me>
+		<sidebyside margins="35% 5%">
+			<p>
+				<m>(x + 3)^2 = 8\ ^{→}</m><fn>→ <m>\frac{d}{dx}\left[e^{2x}y\right] = 5e^{2x}</m></fn>
+			</p>
+		</sidebyside>
 
 		<p>
-			Completing the square gets it name because it tells you the missing piece needed to factor our equation into the form  
+			Now, taking a square root<fn>integral</fn> frees <m>x</m><fn><m>y</m></fn> from the square<fn>derivative</fn>, leading to the solution
 		</p>
 
-		<men xml:id="perfect-square">
-			(x + 3)^2 = 8.
-		</men>
+		<sidebyside widths="34% 8% 34%" margins="12% 12%" valign="middle">
+			<p>
+				<m>x + 3 = \pm\sqrt{8}\ ^{→}</m><fn>→ <m>e^{2x}y = \frac52e^{2x} + c</m></fn>
+			</p>
+			<p>
+				<m>\Rightarrow</m>
+			</p>
+			<p>
+				<m>x = -3 \pm 2\sqrt{2}\ ^{→}</m><fn>→ <m>y = \frac52 + ce^{-2x}</m></fn>
+			</p>
+		</sidebyside>
 
-		<p>
-			Now, taking a square root releases <m>x</m>, leading directly to the solutions
-		</p>
+	<exercise label="chkpts-completing-square"><title> <em>Answer-the-Following</em> </title>
+	
+		<task label="chkpt-completing-square-1"><title> <em>Purpose of Completing the Square</em> </title>
+			<statement>
+				<p>
+					What is the primary purpose of completing the square in the given quadratic equation example?
+				</p>
+			</statement>
+			<choices>
+				<choice>
+					<statement>
+						<p>
+							To factor the quadratic equation directly.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Factoring may not always be straightforward, whereas completing the square always works.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To eliminate the quadratic term entirely.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Completing the square does not eliminate the quadratic term; it reorganizes the equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							To rewrite the quadratic expression as a perfect square, making it easier to solve for x.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! Completing the square allows us to express the quadratic as a perfect square trinomial.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To convert the equation into its derivative form.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Completing the square does not involve differentiation.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
 
-		<me>
-			x + 3 = \pm\sqrt{8} \quad \implies \quad x = -3 \pm 2\sqrt{2}.
-		</me>
+		<task label="chkpt-completing-square-2"><title> <em>Understanding the Number 9</em> </title>
+			<statement>
+				<p>
+					In the analogy presented, what does the number 9 represent in the quadratic equation example?
+				</p>
+			</statement>
+			<choices>
+				<choice correct="yes">
+					<statement>
+						<p>
+							The missing piece that allows the quadratic expression to be rewritten as a perfect square.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The number 9 completes the square, making it factorable.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							The solution to the quadratic equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The number 9 is introduced to complete the square, not as a solution.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							The coefficient of the linear term.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The coefficient of the linear term in the quadratic equation is 6, not 9.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							A randomly chosen constant added to balance the equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The number 9 is carefully selected to form a perfect square trinomial.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
 
-		<p>
-			Just as completing the square tells you that <m>9</m> is the missing piece that makes a <q>perfect</q> square in a quadratic equation, the integrating factor method tells you the missing piece you need to construct a <q>perfect</q> derivative in a differential equation.
-		</p>
+	</exercise>
 
-		<xi:include href="./c4-exercises/c4-chkpts-1-4-completing-the-square.ptx" />
+	</paragraphs>
 
-	</subsection>
-
-	<subsection><title> Completing An Incomplete Product Rule </title>
+	<paragraphs label="completing-incomplete-product-rule">
+		<title> Completing the (Incomplete) Derivative </title>
 
 		<p>
 			As mention to in the previous sections, most first-order linear differential equations must be modified before its terms can be combined into a single derivative. To make sense of this, we will look at a concrete example using the differential equation
@@ -608,10 +1025,284 @@
 				</p>
 			</statement>
 		</theorem>
+	
+	<exercise label="chkpts-completing-the-product-rule"><title> <em>Answer-the-Following</em> </title>
+		
+		<introduction>
+			<p>
+				Complete the questions on each tab to check your understanding.
+			</p>
+		</introduction>
 
-		<xi:include href="./c4-exercises/c4-chkpts-1-5-completing-the-derivative.ptx" />
+		<task label="chkpt-completing-the-product-rule-1"><title> <em>Recognizing an Incomplete Product Rule</em> </title>
+			<statement>
+				<p>
+					Why do we say the differential equation
+					<me>
+						\frac{dy}{dx} + 6y = -1
+					</me>
+					contains an incomplete product rule?
+				</p>
+			</statement>
+			<choices>
+				<choice correct="yes">
+					<statement>
+						<p>
+							It lacks a function needed to reverse a product rule.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The equation is missing an essential function that would allow it to be rewritten using the product rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							Because we haven't used the product rule yet.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The issue is not that the product rule hasn't been applied, but that the equation is not structured as a product rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It has a constant term of <m>-1</m>.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. While the constant term is <m>-1</m>, the issue is related to the structure of the left-hand side.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It is not in standard form.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The equation actually is in standard form.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
 
-	</subsection>
+		<task label="chkpt-completing-the-product-rule-3"><title> <em>Purpose of Multiplying by <m>e^{6x}</m></em> </title>
+			<statement>
+				<p>
+					Why do we multiply both sides of
+					<me>
+						\frac{dy}{dx} + 6y = -1
+					</me>
+					by <m>e^{6x}</m>?
+				</p>
+			</statement>
+			<choices>
+				<choice correct="yes">
+					<statement>
+						<p>
+							To complete a product rule within this equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! Multiplying by <m>e^{6x}</m> allows us to rewrite the left-hand side as a perfect derivative.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To eliminate the derivative term entirely.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The goal is not to eliminate the derivative, but to structure the equation so it can be integrated directly.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To make the right-hand side equal to zero.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The right-hand side is transformed, but it does not become zero.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It makes the equation linear.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The equation already linear. Moreover, multiplying by any function of <m>x</m> will not change the equation's linearity.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="chkpt-completing-the-product-rule-5"><title> <em>Final Form of the Equation</em> </title>
+			<statement>
+				<p>
+					After rewriting the left-hand side as a derivative, what is the next step in solving the equation?
+				</p>
+			</statement>
+			<choices>
+				<choice>
+					<statement>
+						<p>
+							Rearrange the terms to isolate <m>y</m> before integrating.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. We first integrate both sides before solving for <m>y</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							Differentiate both sides again to simplify the expression.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Differentiation is not needed; we proceed with integration.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							Integrate both sides to find <m>y</m>.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! Once the left-hand side is a single derivative, we integrate to solve for <m>y</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							Multiply by another integrating factor to further simplify.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. A second integrating factor is unnecessary.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="incomplete-product-rule-in-a-de-3"><title> <em>Select-the-Best-Answer</em> </title>
+			<statement>
+			
+				<p>
+					Given that you can multiply the equation 
+				</p>
+				
+				<me>
+					\frac{dy}{dx} + 6y = -1
+				</me>
+
+				<p>
+					by the function <m>e^{6x}</m> to transform it into
+				</p>
+
+				<me>
+					\frac{d}{dx}\left[e^{6x}y\right] = -e^{6x}
+				</me>
+
+				<p>
+					What function would you think to multiply onto the equation
+				</p>
+
+				<me>
+					\frac{dy}{dx} - 8y = 3x
+				</me>
+
+				<p>
+					to accomplish the same goal?
+				</p>
+				
+			</statement>
+			<choices>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds e^{3x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds e^{8x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+					<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad\ds e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							That's correct! Multiplying by <m>e^{8x}</m> will allow you to complete the product rule on the left side of the equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds \frac38 x</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+	</exercise>
+
+	</paragraphs>
 
 	<conclusion>
 
