@@ -1,0 +1,644 @@
+<section label="higher-order-lhcc">
+	<title> Higher-Order LHCC Equations </title>
+	
+	<introduction>
+		<p> 
+			We’ve seen how to solve second-order LHCC equations by finding the roots of the characteristic equation. The same idea extends to <term>higher-order</term> LHCC equations—those involving third derivatives, fourth derivatives, or beyond. While the general structure stays the same, higher-order equations require us to handle more roots and build longer general solutions.
+		</p>
+	</introduction>
+
+	<paragraphs>
+		<title> The Characteristic Equation </title>
+
+		<p>
+		The standard <m>n</m>th-order LHCC equation has the form:
+		</p>
+
+		<me>
+		a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = 0
+		</me>
+
+		<p>
+		To find solutions, we assume <m>y = e^{rx}</m>. Substituting this into the equation yields:
+		</p>
+
+		<md>
+		<mrow> a_n r^n e^{rx} + a_{n-1} r^{n-1} e^{rx} + \cdots + a_1 r e^{rx} + a_0 e^{rx} \amp = 0 </mrow>
+		<mrow> (a_n r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0) e^{rx} \amp = 0 </mrow>
+		</md>
+
+		<p>
+		Since <m>e^{rx} \ne 0</m>, we obtain the <term>characteristic equation</term>:
+		</p>
+
+		<me>
+		a_n r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0 = 0
+		</me>
+
+		<p>
+		This is a polynomial of degree <m>n</m>, and solving it gives us the roots that define the structure of the general solution.
+		</p>
+
+	</paragraphs> 
+
+	<paragraphs>
+		<title> Building the General Solution </title>
+
+		<p>
+  The form of the general solution depends entirely on the roots of the characteristic equation. Each root contributes one or more terms to the solution, depending on whether it is:
+</p>
+
+<ul>
+  <li> Real and distinct </li>
+  <li> Repeated (with multiplicity greater than one) </li>
+  <li> Complex (appears in a conjugate pair) </li>
+</ul>
+
+<p>
+  We’ll review each case and how it contributes to the general solution.
+</p>
+
+	</paragraphs> <paragraphs> <title> Real and Distinct Roots </title>
+
+		<p>
+  If all <m>n</m> roots <m>r_1, r_2, \dots, r_n</m> are real and distinct, then the general solution is:
+</p>
+
+<me>
+  y = c_1 e^{r_1 x} + c_2 e^{r_2 x} + \cdots + c_n e^{r_n x}
+</me>
+
+<p>
+  Each term corresponds to one root, and the constants <m>c_1, \dots, c_n</m> account for initial conditions.
+</p>
+
+</paragraphs> <paragraphs> <title> Repeated Roots </title>
+
+	<p>
+  If a root <m>r</m> appears with multiplicity <m>k</m>, it contributes <m>k</m> terms to the solution. These terms are:
+</p>
+
+<me>
+  e^{r x}, \quad x e^{r x}, \quad x^2 e^{r x}, \quad \dots, \quad x^{k-1} e^{r x}
+</me>
+
+<p>
+  So, for example, if <m>r = 3</m> is a triple root, the corresponding part of the solution is:
+</p>
+
+<me>
+  y = c_1 e^{3x} + c_2 x e^{3x} + c_3 x^2 e^{3x}
+</me>
+
+</paragraphs> <paragraphs> <title> Complex Roots </title>
+
+	<p>
+  If the characteristic equation has complex roots, they must occur in conjugate pairs. For instance, if <m>r = \alpha + i\beta</m> and <m>\alpha - i\beta</m> are roots, then they contribute the following two terms:
+</p>
+
+<me>
+  y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+</me>
+
+<p>
+  This form ensures the general solution remains real-valued, even though the roots are complex.
+</p>
+
+</paragraphs> <paragraphs> <title> Putting It All Together </title>
+
+	<p>
+  For a general <m>n</m>th-order LHCC equation, the full general solution includes one term for each root of the characteristic polynomial, following the guidelines above:
+</p>
+
+<ul>
+  <li> One exponential for each real, distinct root. </li>
+  <li> <m>k</m> terms of the form <m>x^m e^{rx}</m> if <m>r</m> has multiplicity <m>k</m>. </li>
+  <li> Two terms of the form <m>e^{\alpha x} \cos(\beta x)</m> and <m>e^{\alpha x} \sin(\beta x)</m> for each complex conjugate pair. </li>
+</ul>
+
+<p>
+  Let’s practice by constructing general solutions given the roots of the characteristic equation.
+</p>
+
+</paragraphs>
+
+<example xml:id="roots-to-general-solution">
+	<title> Constructing the General Solution from Roots </title>
+	<statement> <p> For each set of characteristic roots, write the general solution of the LHCC equation.
+
+	</p> 
+	
+	<ol>
+		<li><m>r = 2,\quad -3,\quad 0</m></li>
+		<li><m>r = 4 + i,\quad 4 - i,\quad -1</m></li>
+		<li><m>r = -2\ (\text{triple root}),\quad 5</m></li>
+		<li><m>r = i,\quad -i,\quad 3,\quad 3\ (\text{double root})</m></li>
+	</ol>
+</statement>
+	<solution>
+		<ol>
+			<li><me>y = c_1 e^{2x} + c_2 e^{-3x} + c_3</me></li>
+		<li><me>y = e^{4x} (c_1 \cos x + c_2 \sin x) + c_3 e^{-x}</me></li>
+		<li><me>y = c_1 e^{-2x} + c_2 x e^{-2x} + c_3 x^2 e^{-2x} + c_4 e^{5x}</me></li>
+		<li><me>y = c_1 \cos x + c_2 \sin x + c_3 e^{3x} + c_4 x e^{3x} + c_5 x^2 e^{3x}</me></li>
+	</ol>
+</solution>
+</example>
+<objectives>
+			<ul>
+			<li>
+				Higher-order LHCC equations are solved by finding the roots of the characteristic polynomial.
+			</li>
+			<li>
+				Each root contributes one or more terms to the general solution, depending on whether it is real, repeated, or complex.
+			</li>
+			<li>
+				The full general solution contains <m>n</m> linearly independent terms, one for each order of the differential equation.
+			</li>
+		</ul>
+	</objectives>
+
+	<!-- <paragraphs>
+		<title> The Characteristic Equation &amp; Fundamental Solutions </title>
+
+		<p>
+			We know the <m>n</m><em>-th order LHCC equation</em> is given by:
+		</p>
+
+		<me>
+			a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = 0
+		</me>,
+
+		<p>
+			has the corresponding <m>n</m>-th degree <term>characteristic equation</term>
+		</p>
+
+		<me>
+			a_n\ r^n + a_{n-1}\ r^{n-1} + \cdots + a_1 r + a_0 = 0
+		</me>.
+
+		<p>
+			If <m>r_1, r_2, \dots, r_n</m> are the roots of this polynomial, then the <term>fundamental solutions</term> are given by
+		</p>
+
+		<me>
+			e^{r_1 x},\quad e^{r_2 x},\quad \dots,\quad e^{r_n x}
+		</me>
+
+		<theorem xml:id="characteristic-eqn-details"><title> Derivation of the General Characteristic Equation </title>
+			<p>
+				To find the characteristic equation for an <xref ref="lhcc-equation" text="custom"><m>n</m>-th order LHCC equation</xref>, we substitute <m>y = e^{rx}</m> into the equation and solve for <m>r</m>. Doing this gives us
+				<md>
+					<mrow>	
+						a_n\ \left[e^{rx}\right]^{(n)} + \cdots + a_2\ \left[e^{rx}\right]'' + a_1\ \left[e^{rx}\right]' + a_0\ e^{rx} \amp = 0
+					</mrow>
+					<mrow>	a_n\ r^n e^{rx} + \cdots + a_2\ r^2 e^{rx} + a_1\ r e^{rx} + a_0\ e^{rx} \amp = 0 </mrow>
+					<mrow>	\left(a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0\right)e^{rx}  \amp = 0 </mrow>
+				</md>.
+				Since <m>e^{rx}</m> is never zero, we must have
+				<me>
+					a_n\ r^n + \cdots + a_2\ r^2 + a_1\ r + a_0 = 0
+				</me>
+				which is an <m>n</m>-th order polynomial in <m>r</m>.
+			</p>
+		</theorem>
+
+		<p>
+			Similar to the second-order case, each solution corresponds to a different term in the general solution. The nature of these terms depends on whether the solutions are real, repeated, or complex, as outlined below.
+		</p>
+
+	</paragraphs>
+
+	<paragraphs>
+		<title> The General Solution </title>
+
+		<p>
+			Assuming that all of the roots of the characteristic equation are real and distinct, the general solution of an <m>n</m>-th order LHCC equation can be written as sum (linear combination) of the fundamental solutions: 
+		</p>
+
+		<me>
+			y = c_1 e^{r_1 x} + c_2 e^{r_2 x} + \dots + c_n e^{r_n x}
+		</me>.
+
+		<p>
+			As with the second-order case, we need to handle the complex and repeated roots cases carefully. The general solution is constructed based on the nature of the roots of the characteristic equation, as follows:
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="nth-order-lhcc-case-2">
+		<title> Multiple Repeated Roots </title>
+		<p>
+			Suppose <m>r</m> is a root that repeats <m>k</m> times.<fn><m>k</m> is also called the <em>multiplicity</em> of <m>r</m>.</fn>Your general solution needs one exponential term for all of these, but as in the second-order case, they must be modified as follows: 
+			<me>
+				y = \textcolor{NavyBlue}{\ub{c_1 e^{\large r x} + c_2 x e^{\large r x} + \ldots + c_k x^{k-1} e^{\large r x}\!\!}_{\large k \text{ new terms from this } r}} + 
+				\left(\small
+				\begin{array}{c}
+					\text{terms from}\\
+					\text{other } r\text{-values}
+				\end{array}
+				\right)
+			</me>.
+		</p>
+
+		<theorem><title> Repeated <m>r</m>-values modify the Fundamental Solution </title>
+			<statement>
+				<p>
+					Later, we will see that if <m>r</m>-values repeat in the characteristic equation, the fundamental solutions corresponding to these <m>r</m>-values must be modified by a factor of <m>x</m> for each repeat. For example, if <m>r = 5</m> appears three times as a characteristic equation solution, the fundamental solutions corresponding to these three <m>r</m>-values,
+					<me>
+						y_1 = e^{5x}, \quad y_2 = e^{5x}, \quad y_3 = e^{5x}
+					</me>,
+					are replaced with
+					<me>
+						y_1 = e^{5x}, \quad y_2 = x^1 e^{5x}, \quad y_3 = x^2 e^{5x}.
+					</me>
+				</p>
+			</statement>
+		</theorem>
+	</paragraphs>
+
+	<paragraphs xml:id="nth-order-lhcc-case-3">
+		<title> Complex Case </title>
+		<p>
+			If <m>r</m> is <em>complex</em>, then it can be written as <m>r = \alpha + i\beta</m> and must be joined with its <em>conjugate pair</em>, <m>r = \alpha - i\beta</m>, resulting in two new terms in the general solution:
+
+			<me>
+				y = \textcolor{NavyBlue}{\ub{e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))\!}_{\large 2 \text{ new terms from this } r}} + 
+				\left(\small
+				\begin{array}{c}
+					\text{terms from}\\
+					\text{other } r\text{-values}
+				\end{array}
+				\right)
+			</me>.
+		</p>
+	</paragraphs>
+
+	<p>
+		Since high degree polynomials can have a mixture of real, repeated, and complex solutions, the general solution may include a mixture of the terms above. Neverthless, for each characteristic solution, follow the guidelines above to determine the terms of the general solution.
+	</p>
+
+	<p>
+		Now, let's practice contructing the general solutions of higher-order LHCC equations assuming we know the solutions to the characteristic equation.
+	</p>
+
+	<example xml:id="lhcc-roots-to-general-solution">
+		<title> From Charateristic Roots to General Solution </title>
+		<p>
+			<statement>
+				<p>
+					Suppose the solutions to a characteristic equation for an LHCC equation are given below. In each case, find the corresponding general solution.
+					<ol>
+						<li><m>	r_1 = 3,\quad				r_2 = -3,\quad				r_3 = 5.3													</m></li>
+						<li><m>	r_1 = 6 - i\sqrt{7.7},\quad	r_2 = 6 + i\sqrt{7.7},\quad	r_3 = 0														</m></li>
+						<li><m>	r_1 =						r_2 =						r_3 = -4,\quad		r_4 = 5.3								</m></li>
+						<li><m>	r_1 = -\frac{i}{2},\quad	r_2 = \frac{i}{2},\quad		r_3 = 2 + i,\quad	r_4 = 2 - i								</m></li>
+						<li><m>	r_1 =						r_2 = 0,\quad				r_3 =				r_4 =			r_5 =	r_6 =	r_7 = 3	</m></li>
+						<li><m>	r_1 = i,\quad				r_2 = -i,\quad				r_3 =				r_4 = \pi,\quad	r_5 = 5					</m></li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+				<ol>
+					<li>
+						<p>
+							Since we have three different real numbers, we use the <em>standard case</em> to get the general solution as
+						</p>
+						<me>
+							y = c_1 e^{3x} + c_2 e^{-3x} + c_3 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							A complex conjugate pair and a single <m>0</m> solutions, means we use a combination of the <em>complex</em> and <em>standard cases</em>.
+						</p>
+						<me>
+							y = e^{6x} (c_1 \sin(\sqrt{7.7}x) + c_2 \cos(\sqrt{7.7}x)) + c_3
+						</me>
+					</li>
+					<li>
+						<p>
+							The solution <m>-4</m> repeats three times and the single <m>5.3</m> gives the general solution
+						</p>
+						<me>
+							y = c_1 e^{-4x} + c_2 x e^{-4x} + c_3 x^2 e^{-4x} + c_4 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							The two separate complex conjugate pairs implies we use the <em>complex case</em> for both to get
+						</p>
+						<me>
+							y = c_1 \sin\left(\frac{x}{2}\right) + c_2 \cos\left(\frac{x}{2}\right) + e^{2x} (c_3 \sin x + c_4 \cos x)
+						</me>
+					</li>
+					<li>
+						<p>
+							Two <m>0</m>'s and five <m>3</m>'s means the general solution is
+						</p>
+						<me>
+							y = c_1 x + c_2 + c_3 e^{3x} + c_4 x e^{3x} + c_5 x^2 e^{3x} + c_6 x^3 e^{3x} + c_7 x^4 e^{3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							One complex pair, two <m>\pi</m>'s, and a single <m>5</m>, gives us
+						</p>
+						<me>
+							y = c_1 \sin x + c_2 \cos x + (c_3 x + c_4) e^{\pi x} + c_5 e^{5x}
+						</me>
+					</li>
+				</ol>
+			</solution>
+		</p>
+	</example> -->
+
+	<example><title> LHCC Equation General Solution </title>
+		<statement>
+			<p>Find the general solution to each of the equations below.</p>
+			<sidebyside widths="30% 30% 40%">
+				<p>
+				<m>\ds y' + \pi y = 0</m>
+				<solution>
+					<p>The characteristic equation is:</p>
+					<me>r + \pi = 0</me>
+					<p>Solving gives <m>r = -\pi</m>. Since this is a first-order equation, the general solution is:</p>
+					<me>y = c_1 e^{-\pi x}</me>
+				</solution>
+				</p>
+				<p>
+				<m>\ds \omega'' - 7\omega' = 0</m>
+				<solution>
+					<p>The characteristic equation is:</p>
+					<me>r^2 - 7r = 0</me>
+					<p>Factoring gives:</p>
+					<me>r(r - 7) = 0</me>
+					<p>So the roots are <m>r = 0</m> and <m>r = 7</m>. Thus:</p>
+					<me>\omega = c_1 + c_2 e^{7x}</me>
+				</solution>
+				</p>
+				<p>
+				<m>\ds 2\frac{d^3 M}{dt^3} - 6\frac{dM}{dt} = 0</m>
+				<solution>
+					<p>The characteristic equation is:</p>
+					<me>2r^3 - 6r = 0</me>
+					<p>Factoring gives:</p>
+					<me>2r(r^2 - 3) = 0</me>
+					<p>So the roots are <m>r = 0</m>, <m>\sqrt{3}</m>, and <m>-\sqrt{3}</m>. Therefore:</p>
+					<me>M(t) = c_1 + c_2 e^{\sqrt{3}t} + c_3 e^{-\sqrt{3}t}</me>
+				</solution>
+				</p>
+			</sidebyside>
+		</statement>
+	</example>
+		
+	<p>
+		<task label="chkpt-general-solution-5"><title> Select the general solution </title>
+			<statement>
+				<p>
+					What is the general solution for the first-order LHCC equation
+					<me>y' - 2y = 0</me>?
+				</p>
+			</statement>
+			<choices>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\ds\quad y = ce^{2x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Check the sign of the exponent.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\ds\quad y = ce^{-2x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The solution has the form <m>y = ce^{rx}</m>, where <m>r</m> is found from the characteristic equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\ds\quad y = ce^{\frac12 x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Make sure to solve the characteristic equation correctly.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\ds\quad y = ce^{-\frac12 x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Check the coefficient of <m>y</m> in the original equation.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="chkpt-why-exponentials-solve-lhcc-4"><title> Degree of the Characteristic Equation </title>
+			<statement correct="yes">
+				<p>
+					The order of an LHCC differential equation is equal to the degree of its characteristic equation
+				</p>
+			</statement>
+			<feedback>
+				<p>
+					This is true, since the order of each derivative in the differential equation translates directly to a corresponding power of <m>r</m> in the characteristic equation.
+				</p>
+			</feedback>
+		</task>
+
+		<task label="chkpt-higher-order-lhcc-1"><title> Differential &amp; Characteristic Equation Mathching </title>
+			<statement>
+				<p>
+					Match characteristic solution to the term it would correspond to in the general solution of an LHCC equation.
+				</p>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m> r = 2 </m> (<em>repeats 2 times</em>)</premise>
+					<response><m> c_1 e^{2x} + c_2 x e^{2x} </m></response>
+				</match>
+				<match>
+					<response><m> c_1 e^{-\pi x} </m></response>
+				</match>
+				<match>
+					<premise><m> r = -4 \pm i </m></premise>
+					<response><m> e^{-4x} (c_1 \cos(x) + c_2 \sin(x))</m></response>
+				</match>
+				<match>
+					<premise><m> r = 0 </m> (<em>repeats 4 times</em>)</premise>
+					<response><m> c_1 + c_2 x + c_3 x^2 + c_4 x^3 </m></response>
+				</match>
+				<match>
+					<premise><m> r=\pi </m></premise>
+					<response><m> c_1 e^{\pi x} </m></response>
+				</match>
+				<match>
+					<response><m> c_1 e^{-4x} (\cos(x) + \sin(x)) </m></response>
+				</match>	
+				<match>
+					<response><m> c_1 e^{2x} + c_2 x e^{2x} + c_3 x^2 e^{2x} </m></response>
+				</match>
+				<match>
+					<response><m> c_1 x^2 e^{2x} </m></response>
+				</match>		
+			</cardsort>
+		</task>
+
+		<task label="chkpt-higher-order-lhcc-2"><title> 3rd-Order General Solution </title>
+			<statement>
+				<p>
+					Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solutions:
+					<me>
+						r = 0, 1, -8
+					</me>.
+				</p>
+			</statement>
+			<choices>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad y = c_1 + c_2 e^{x} + c_3 e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>Correct! This is the form when there are three distinct real roots.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{x} + c_2 x e^{x} + c_3 e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 x e^{x} + c_2 e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{x} + c_2 e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+			</choices>
+		</task>
+		
+		<task label="chkpt-higher-order-lhcc-3"><title> 4th-Order General Solution </title>
+			<statement>
+				<p>
+					Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions:
+					<me>
+						r = 1 \pm 2i, -3 \pm 4i
+					</me>.
+				</p>
+			</statement>
+			<choices>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2i x} + c_4 e^{-2i x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{x} \left(\cos(2x) + \sin(2x)\right) + c_2 e^{-3x} \left(\cos(4x) + \sin(4x)\right)</m>
+						</p>
+					</statement>
+					<feedback>Incorrect. Not enough constants.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<line><m>\quad y = e^{2x} \left(c_1 \cos(x) + c_2 \sin(x)\right) </m></line>
+							<line><m>\quad \phantom{y = e^{2x} c_1 \cos(x) +++} + e^{4x} \left(c_3 \cos(3x) + c_4 \sin(3x)\right)</m></line>
+						</p>
+					</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<line><m>\quad y = e^{x} \left(c_1 \cos(2x) + c_2 \sin(2x)\right)  </m></line>
+							<line><m>\quad \phantom{y = e^{2x} c_1 \cos(x) +++} + e^{-3x} \left(c_3 \cos(4x) + c_4 \sin(4x)\right)</m></line>
+						</p>
+					</statement>
+					<feedback>Correct! This is the form when the characteristic equation has complex roots.</feedback>
+				</choice>
+			</choices>
+		</task>
+		
+		<task label="chkpt-higher-order-lhcc-4"><title> 5th-Order General Solution </title>
+			<statement>
+				<p>
+					Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: 
+					<me>
+						r = 2, 2, 2, -1, -1
+					</me>.
+				</p>
+			</statement>
+			<choices>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{2x} + c_2 e^{-x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect. This form does not account for the multiplicity of the roots.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{2x} + c_2 x e^{2x} + c_3 e^{-x} + c_4 x e^{-x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect. The multiplicity should be reflected for each root.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad y = c_1 e^{2x} + c_2 x e^{2x} + c_3 x^2 e^{2x} + c_4 e^{-x} + c_5 x e^{-x}</m>
+						</p>
+					</statement>
+					<feedback>Correct! This is the form when there are repeated real roots with appropriate multiplicity.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement>
+						<p>
+							<m>\quad y = c_1 x^2 e^{2x} + c_2 x e^{-x}</m>
+						</p>
+					</statement>
+					<feedback>Incorrect. Make sure to account for the cubic multiplicity for <m>r = 2</m>.</feedback>
+				</choice>
+			</choices>
+		</task>
+	</p>
+
+</section>
