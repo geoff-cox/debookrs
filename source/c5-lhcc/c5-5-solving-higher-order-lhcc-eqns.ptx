@@ -1,0 +1,808 @@
+<section><title> Solving High-Order LHCC Equations </title>
+	
+	<introduction>
+		<p>
+			As the previous section demonstrated, constructing the general solution of a LHCC equation is fairly straightforward given the roots of the characteristic equation. However, solving <em>high-degree polynomial equations</em> can be quite challenging. While there are strategies to tackle this by hand, sometimes computational tools are necessary to obtain the solutions. Below, we will outline some common approaches
+		</p>
+
+
+	</introduction>
+
+	<!-- <example xml:id="lhcc-roots-to-general-solution">
+		<title> From Charateristic Roots to General Solution </title>
+		<p>
+			<statement>
+				<p>
+					Suppose the solutions to a characteristic equation for an LHCC equation are given below. In each case, find the corresponding general solution.
+					<ol>
+						<li><m>	r_1 = 3,\quad				r_2 = -3,\quad				r_3 = 5.3													</m></li>
+						<li><m>	r_1 = 6 - i\sqrt{7.7},\quad	r_2 = 6 + i\sqrt{7.7},\quad	r_3 = 0														</m></li>
+						<li><m>	r_1 =						r_2 =						r_3 = -4,\quad		r_4 = 5.3								</m></li>
+						<li><m>	r_1 = -\frac{i}{2},\quad	r_2 = \frac{i}{2},\quad		r_3 = 2 + i,\quad	r_4 = 2 - i								</m></li>
+						<li><m>	r_1 =						r_2 = 0,\quad				r_3 =				r_4 =			r_5 =	r_6 =	r_7 = 3	</m></li>
+						<li><m>	r_1 = i,\quad				r_2 = -i,\quad				r_3 =				r_4 = \pi,\quad	r_5 = 5					</m></li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+				<ol>
+					<li>
+						<p>
+							Since we have three different real numbers, we use the <em>standard case</em> to get the general solution as
+						</p>
+						<me>
+							y = c_1 e^{3x} + c_2 e^{-3x} + c_3 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							A complex conjugate pair and a single <m>0</m> solutions, means we use a combination of the <em>complex</em> and <em>standard cases</em>.
+						</p>
+						<me>
+							y = e^{6x} (c_1 \sin(\sqrt{7.7}x) + c_2 \cos(\sqrt{7.7}x)) + c_3
+						</me>
+					</li>
+					<li>
+						<p>
+							The solution <m>-4</m> repeats three times and the single <m>5.3</m> gives the general solution
+						</p>
+						<me>
+							y = c_1 e^{-4x} + c_2 x e^{-4x} + c_3 x^2 e^{-4x} + c_4 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							The two separate complex conjugate pairs implies we use the <em>complex case</em> for both to get
+						</p>
+						<me>
+							y = c_1 \sin\left(\frac{x}{2}\right) + c_2 \cos\left(\frac{x}{2}\right) + e^{2x} (c_3 \sin x + c_4 \cos x)
+						</me>
+					</li>
+					<li>
+						<p>
+							Two <m>0</m>'s and five <m>3</m>'s means the general solution is
+						</p>
+						<me>
+							y = c_1 x + c_2 + c_3 e^{3x} + c_4 x e^{3x} + c_5 x^2 e^{3x} + c_6 x^3 e^{3x} + c_7 x^4 e^{3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							One complex pair, two <m>\pi</m>'s, and a single <m>5</m>, gives us
+						</p>
+						<me>
+							y = c_1 \sin x + c_2 \cos x + (c_3 x + c_4) e^{\pi x} + c_5 e^{5x}
+						</me>
+					</li>
+				</ol>
+			</solution>
+		</p>
+	</example> -->
+
+	<paragraphs label="factoring">
+		<title> Factoring </title>
+
+		<p>
+			Some high-degree characteristic polynomials can be factored by hand using classic algebraic techniques. Factoring is the fastest way to solve these problems when it works. We'll start by reviewing common methods of factoring and apply them to characteristic equations that appear in LHCC differential equations.
+		</p>
+
+		<p>
+			Here are a few algebraic strategies you may find helpful:
+		</p>
+
+		<assemblage xml:id="factoring-technique0"><title> 🧮 Factoring Techniques </title>
+			<p>
+				<dl>
+					<li><title> <m>\textbf{Common Factor}</m> </title>
+						<p>
+							<md>
+								<mrow> ab + ac + ad = a(b+c+d)	</mrow>
+							</md>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Grouping}</m> </title>
+						<p>
+							<md>
+								<mrow> ab + ac + bd + cd	\amp = a(b+c) + d(b+c)	</mrow>
+								<mrow>						\amp = (a+d)(b+c)		</mrow>
+							</md>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Difference of Squares}</m> </title>
+						<p>
+							<me> a^2 - b^2 = (a+b)(a-b) </me>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Difference of Cubes}</m> </title>
+						<p>
+							<me> a^3 - b^3 = (a-b)(a^2+ab+b^2)</me>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Sum of Cubes}</m> </title>
+						<p>
+							<me> a^3 + b^3 = (a+b)(a^2-ab+b^2)</me>
+						</p>
+					</li>
+				</dl>
+			</p>
+		</assemblage>
+
+		<p>
+			Let's now apply these tools to solve higher-order LHCC equations by factoring their characteristic equations.
+		</p>
+
+		<example>
+			<title> Solving LHCC Equations by Factoring the Characteristic Equation </title>
+
+			<statement>
+				<p>
+					These examples show how to find the general solution to higher-order LHCC equations using a variety of factoring techniques to find the roots of the characteristic equation.
+				</p>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>1. <m>\ 4 y'' - 9 = 0</m> </p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>4 r^2 - 9 = 0</me>
+							<p>
+								Applying the difference of squares:
+							</p>
+							<md>
+								<mrow> \amp (2 r + 3)(2 r - 3) = 0  </mrow>
+								<mrow> \amp r = -\sfrac{3}{2},\ \sfrac{3}{2}  </mrow>
+								<mrow> \amp \Rightarrow\quad y = c_1 e^{-\frac{3}{2}x} + c_2 e^{\frac{3}{2}x}  </mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>2. <m>\ y^{(5)} - 4 y''' = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>r^5 - 4 r^3 = 0</me>
+							<p>Factoring out the common term <m>r^3</m>, followed by a differences of squares gives:</p>
+							<md>
+								<mrow> r^3(r^2 - 4)			\amp = 0</mrow>
+								<mrow> r^3(r + 2)(r - 2)	\amp = 0</mrow>
+							</md>
+							<me>r = 0\ (\text{triple}),\ -2,\ 2</me>
+							<me>
+								\Rightarrow\quad y = c_1 + c_2 x + c_3 x^2 + c_4 e^{-2x} + c_5 e^{2x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>3. <m>\ y^{(4)} - 25 = 0</m></p>
+					<p>
+						<solution>
+							<p><me>r^4 - 25 = 0</me></p>
+							<p>This factors as a difference of squares twice:</p>
+							<md>
+								<mrow> (r^2 + 5)(r^2 - 5) \amp = 0</mrow>
+								<mrow> (r^2 + 5)(r + \sqrt{5})(r - \sqrt{5}) \amp = 0</mrow>
+							</md>
+							<me>r = \pm i\sqrt{5},\ -\sqrt{5},\ \sqrt{5}</me>
+							<md>
+								<mrow>\Rightarrow\quad y = c_1 \cos(\sqrt{5}x) \amp + c_2 \sin(\sqrt{5}x) </mrow>
+								<mrow> \amp + c_3 e^{\sqrt{5}x} + c_4 e^{-\sqrt{5}x}</mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>4. <m>\ y^{(4)} - 5y'' + 4 = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^4 - 5r^2 + 4 = 0</me></p>
+							<p>Use the substitution, <m>u = r^2</m>, to reveal a quadratic in disguise:</p>
+							<md>
+								<mrow> u^2 - 5u + 4		\amp = 0</mrow>
+								<mrow> (u - 4)(u - 1)	\amp = 0</mrow>
+							</md>
+							<p>Reverse the substitution, <m>u = r^2</m>, back into <m>r</m>:</p>
+							<md>
+								<mrow> (r^2 - 4)(r^2 - 1)			\amp = 0</mrow>
+								<mrow> (r - 2)(r + 2)(r - 1)(r + 1)	\amp = 0</mrow>
+							</md>
+							<me>r = -2,\ 2,\ -1,\ 1</me>
+							<me>
+								\Rightarrow\quad y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2x} + c_4 e^{-2x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>5. <m>\ y^{(4)} - 6y''' + 9y'' = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^4 - 6r^3 + 9r^2 = 0</me></p>
+							<p>Take out <m>r^2</m> and use standard factoring:</p>
+							<md>
+								<mrow> r^4 - 6r^3 + 9r^2	\amp = 0</mrow>
+								<mrow> r^2(r^2 - 6r + 9)	\amp = 0</mrow>
+								<mrow> r^2(r - 3)^2			\amp = 0</mrow>
+							</md>
+							<me> r = 0\ (\text{double}),\ 3\ (\text{double})</me>
+							<me>
+								\Rightarrow\quad y = c_1 + c_2 x + c_3 e^{3x} + c_4 x e^{3x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>6. <m>\ y^{(5)} - 4 y''' + 8 y'' + 48 = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^5 - 4 r^3 + 8 r^2 + 48 = 0</me></p>
+							<p>We can factor this by grouping and recognizing a sum of cubes:</p>
+							<md>
+								<mrow> r^5 - 4 r^3 + 8 r^2 + 48 \amp = 0</mrow>
+								<mrow> r^3(r^2 - 4) + 8(r^2 - 4) \amp = 0</mrow>
+								<mrow> (r^3 + 8)(r^2 - 4) \amp = 0</mrow>
+								<mrow> (r + 2)(r^2 - 2r + 4)(r + 2)(r - 2) \amp = 0</mrow>
+							</md>
+							<me>r = -2\ (\text{double}),\ 2,\ 1 \pm i\sqrt{3}</me>
+							<md>
+								<mrow>\Rightarrow\quad y = c_1 e^{-2x} 	\amp + c_2 x e^{-2x} + c_3 e^{2x} </mrow>
+								<mrow>								+	\amp\ e^{x}(c_4 \cos(\sqrt{3}x) + c_5 \sin(\sqrt{3}x))</mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+			</statement>
+		</example>
+
+	</paragraphs>
+
+	<paragraphs label="rational-root-theorem">
+		<title> Rational Root Theorem </title>
+		<p>
+			When the characteristic polynomial is hard to factor by inspection, the <em>Rational Root Theorem</em> provides a systematic way to search for rational (fractional) solutions. Once you find a root, you can use polynomial division to reduce the polynomial to a lower degree. From there, you can repeat the process or apply other factoring techniques.
+		</p>
+
+		<p>
+			While this method is reliable, it can be tedious by hand and prone to errors. That's why technology often comes in handy.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="technology-factoring">
+		<title> Using Technology: Factoring High-Degree Polynomials </title>
+		<p>
+			Not all characteristic polynomials can be factored easily — and some can’t be factored at all using simple algebra. In these cases, it’s perfectly reasonable to turn to technology.
+		</p>
+
+		<p>
+			Computer algebra systems (CAS), online factoring tools, and symbolic solvers can quickly find the roots of even complicated polynomials. Once you have the roots, you can build the general solution using the framework you learned earlier.
+		</p>
+
+		<p>
+			For example, suppose you want to solve the following LHCC equation:
+		</p>
+
+		<me>
+			2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y = 0
+		</me>.
+
+		<p>
+			The first step is to write down the characteristic equation:
+			<me>
+				2r^4 + 9r^3 + r^2 - 21r + 9 = 0
+			</me>
+		</p>
+
+		<p>
+			This is challenging to solve by hand, but we can use the tool below to factor it. 
+		</p>
+
+		<p>
+			Type <c>2*r^4 + 9*r^3 + r^2 - 21*r + 9</c> into the text box and press enter.
+		</p>
+
+		<corollary xml:id="factoring-tool">
+			<title> Polynomial Factoring Calculator Directions </title>
+			<introduction>
+				<p>
+					Directions:
+					<ul>
+						<li>Enter a polynomial in the box below.</li>
+						<li>Use <c>r</c> for the variable, <c>*</c> for multiplication, and <c>^</c> for exponents.</li>
+						<li>Press enter to see the factored form and approximate values.</li>
+						<li>Note: It only factors polynomials with fractional (rational) roots.</li>
+					</ul>
+				</p>
+			</introduction>
+		</corollary>
+
+		<interactive xml:id="poly-factor" platform="sage" width="100%" aspect="3:1">
+			<slate surface="sage">
+			R = PolynomialRing(QQ, 'r')
+			r = R.gen()
+
+			@interact
+			def factor_polynomial(ce = input_box(r^2 - 2*r - 8, label="Polynomial (in r):", type=str, width=40)):
+
+				try:
+					# Parse the polynomial
+					parsed = sage_eval(f"lambda r: {ce}", locals={'r': r})
+					poly = parsed(r)
+
+					# Display original polynomial
+					pretty_print(html(f"""
+					<div style='background-color:#eef; padding:0.5em; margin-top:1em;'>
+					<b>Polynomial:</b><br/> $ {latex(poly)} $
+					</div>
+					"""))
+
+					# Display factored form
+					pretty_print(html(f"""
+					<div style='background-color:#efe; padding:0.5em; margin-top:1em;'>
+					<b>Factored:</b><br/> $ {latex(poly.factor())} $
+					</div>
+					"""))
+
+					# Display approximate roots
+					approx_roots = poly.roots(ring=CC, multiplicities=False)
+					formatted_roots = ', '.join([str(root.n(digits=5)) for root in approx_roots])
+					pretty_print(html(f"""
+					<div style='background-color:#fee; padding:0.5em; margin-top:1em;'>
+					<b>Approximate Roots:</b><br/> {formatted_roots}
+					</div>
+					"""))
+
+				except Exception as e:
+					pretty_print(html(f"""
+					<div style='color:red; background-color:#fdd; padding:0.5em;'>
+					Error: {str(e)}
+					</div>
+					"""))
+			</slate>
+		</interactive>
+
+		<p>
+			After entering the polynomial, you should see the factored form:
+			<me>
+				2\left(r - 1\right)\left(r - \frac12\right)\left(r + 3\right)^2
+			</me>
+		</p>
+
+		<p>
+			From here the roots are easily identified as:
+			<me>
+			r = 1,\quad r = -3\ (\text{double root}),\quad r = \frac{1}{2}
+			</me>
+		</p>
+
+		<p>
+			Therefore, the general solution is:
+		</p>
+
+		<me>
+			y = c_1 e^{x} + c_2 e^{-3x} + c_3 x e^{-3x} + c_4 e^{\frac{1}{2}x}
+		</me>
+
+		<task>
+			<statement>
+				<p>
+					Use the factoring tool above to find the general solution to the following LHCC equation:
+					<me> y''' - 6y'' + 11y' - 6y = 0 </me>
+				</p>
+			</statement>
+			<solution>
+        <p>
+          Consider the third-order LHCC equation:
+          <me>
+            y''' - 6y'' + 11y' - 6y = 0
+          </me>
+        </p>
+        <p>
+          Its characteristic equation is:
+          <me>
+            r^3 - 6r^2 + 11r - 6 = 0
+          </me>
+        </p>
+        <p>
+          Plugging this into the factoring tool yields:
+          <me>
+            (r - 1)(r - 2)(r - 3)
+          </me>
+        </p>
+        <p>
+          So the roots are <m>r = 1, 2, 3</m>, and the general solution is:
+        </p>
+        <me>
+          y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x}
+        </me>
+
+							<p>
+								First, write down the characteristic equation:
+								<md>
+									<mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
+								</md>.
+								Plugging this into to the factoring tool shows that it factors as <m> (r-3)(r-2)(r-1) </m>.	Solving for <m>r</m>, we get
+								<md>
+									<mrow> r = 1, \quad r = 2, \quad r = 3 </mrow>
+								</md>.
+								Therefore, the general solution is:
+								<me> y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} </me>.
+							</p>
+			</solution>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="technology-approximating">
+		<title> Using Technology: Approximating Roots </title>
+		<p>
+			If you want the solutions to a characteristic equation without factoring it, you can also approximate the solutions directly using a numerical solver, as shown in the next example.
+		</p>
+		
+		<example><title> Approximating the Characteristic Solutions </title>
+				<statement>
+					<p>
+						Consider the fifth-order LHCC equation:
+						<me> y^{(5)} - 4y''' + 3y'' - y = 0 </me>.
+					</p>
+				</statement>
+			
+			<solution>
+				<p>
+					The characteristic equation is: <c>r^5 - 4*r^3 + 3*r^2 - 1</c>
+				</p>
+
+				<me>
+					r^5 - 4r^3 + 3r^2 - 1 = 0
+				</me>.
+
+				<p>
+					Solving this polynomial equation analytically is challenging, so we use a numerical solver (<url href="https://www.wolframalpha.com/input?i=r%5E5-4*r%5E3%2B3*r%5E2-1">Wolfram Alpha</url>). This equation has five roots. Three are real:
+				</p>
+
+				<me> r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52, </me>
+
+				<p>
+					and two are complex:
+				</p>
+
+				<me> r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i </me>.
+
+				<p>
+					The general solution, incorporating these roots, is:
+				</p>
+
+				<md>
+					<mrow>	y = c_1 e^{-2.29x}	+\amp\ c_2 e^{-0.46x} + c_3 e^{1.52x}				</mrow>
+					<mrow>						+\amp\ e^{0.61x} (c_4 \cos(0.5x) + c_5 \sin(0.5x))	</mrow>
+				</md>.
+			</solution>
+		</example>
+
+<example>
+  <title> Approximating the Characteristic Solutions Numerically </title>
+
+  <p>
+    Some characteristic equations are too messy to factor, even with software. When this happens, a numerical root finder—such as Wolfram Alpha or a computer algebra system—can provide decimal approximations of the roots. These still allow us to write down the structure of the general solution.
+  </p>
+
+  <p>
+    Consider the fifth-order LHCC equation:
+    <me>
+      y^{(5)} - 4y''' + 3y'' - y = 0
+    </me>
+  </p>
+
+  <p>
+    The characteristic equation is:
+    <me>
+      r^5 - 4r^3 + 3r^2 - 1 = 0
+    </me>
+    This polynomial has no obvious factoring pattern, and it resists standard techniques.
+  </p>
+
+  <p>
+    Using a numerical solver such as 
+    <url href="https://www.wolframalpha.com/input?i=r%5E5-4*r%5E3%2B3*r%5E2-1">Wolfram Alpha</url>,
+    we find approximate roots:
+  </p>
+
+  <me>
+    r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52
+  </me>
+  <p>
+    and a pair of complex conjugates:
+  </p>
+  <me>
+    r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i
+  </me>
+
+  <p>
+    With these values, we can build the general solution using the standard root-to-solution rules:
+  </p>
+
+  <md>
+    <mrow>
+      y = c_1 e^{-2.29x} + c_2 e^{-0.46x} + c_3 e^{1.52x} 
+    </mrow>
+    <mrow>
+      +\ e^{0.61x} \left(c_4 \cos(0.5x) + c_5 \sin(0.5x)\right)
+    </mrow>
+  </md>
+
+  <p>
+    While we can't write exact exponential solutions here, the structure of the solution still depends only on the nature of the roots—real or complex, distinct or repeated.
+  </p>
+</example>
+
+	</paragraphs>
+
+	<p>
+		Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.
+	</p>
+		
+<objectives>
+  <ul marker="square">
+    <li>
+      Solving a higher-order LHCC equation begins by finding the roots of its characteristic equation.
+    </li>
+    <li>
+      If the characteristic polynomial factors easily, use algebraic techniques like grouping, factoring by common terms, or recognizing patterns such as difference of squares or cubes.
+    </li>
+    <li>
+      When factoring is hard or impossible by hand, use a factoring tool or numerical solver to find the roots.
+    </li>
+    <li>
+      The general solution always includes one term per root, following these rules:
+      <ul>
+        <li>Distinct real root <m>r</m>: <m>e^{rx}</m></li>
+        <li>Repeated root of multiplicity <m>k</m>: <m>x^n e^{rx}</m> for <m>n = 0, 1, \dots, k-1</m></li>
+        <li>Complex conjugate pair <m>\alpha \pm i\beta</m>: <m>e^{\alpha x}(c_1 \cos(\beta x) + c_2 \sin(\beta x))</m></li>
+      </ul>
+    </li>
+    <li>
+      When using decimal approximations, retain enough digits to preserve the distinctiveness of each exponential term.
+    </li>
+    <li>
+      Once the roots are known, constructing the full general solution is mechanical and follows a predictable structure.
+    </li>
+  </ul>
+</objectives>
+
+	<p><title>Answer the Following</title>
+<task label="chkpt-higher-order-solving-1">
+  <title>❓👉 When is factoring by hand a good strategy?</title>
+  <statement>
+    <p>
+      In which of the following situations is factoring by hand likely to be the best approach for solving an LHCC equation?
+    </p>
+  </statement>
+  <choices randomize="true">
+    <choice correct="yes">
+      <statement>
+        The characteristic equation is a quartic with recognizable patterns like <m>r^4 - 25 = 0</m>.
+      </statement>
+      <feedback>
+        Correct! This is a classic difference of squares and can be factored easily by hand.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        The characteristic polynomial is degree 5 with irregular coefficients and no common factor.
+      </statement>
+      <feedback>
+        Not ideal—this is a good candidate for using technology or a numerical solver.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        The roots are known to be irrational or complex.
+      </statement>
+      <feedback>
+        This doesn't help much with factoring—you'd still need to solve the equation first.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        You are given the solution and need to verify it.
+      </statement>
+      <feedback>
+        Verifying a solution doesn't require factoring at all.
+      </feedback>
+    </choice>
+  </choices>
+</task>
+<task label="chkpt-higher-order-solving-2">
+  <title>❓👉 General Solution from Repeated Roots</title>
+  <statement>
+    <p>
+      Suppose the characteristic equation has a triple root at <m>r = -1</m>. What is the corresponding part of the general solution?
+    </p>
+  </statement>
+  <choices randomize="true">
+    <choice correct="yes">
+      <statement>
+        <me>c_1 e^{-x} + c_2 x e^{-x} + c_3 x^2 e^{-x}</me>
+      </statement>
+      <feedback>
+        Correct! Each repeated root contributes an extra power of <m>x</m>.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>c_1 e^{-x} + c_2 e^{-2x} + c_3 e^{-3x}</me>
+      </statement>
+      <feedback>
+        Incorrect. These are distinct roots, not repeated instances of <m>r = -1</m>.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>c_1 e^{-x} + c_2 x^2 e^{-x} + c_3 x^3 e^{-x}</me>
+      </statement>
+      <feedback>
+        Incorrect. The powers should stop at <m>x^2</m> for a triple root.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>c_1 + c_2 x + c_3 x^2</me>
+      </statement>
+      <feedback>
+        This form is correct for a root at <m>r = 0</m>, not <m>r = -1</m>.
+      </feedback>
+    </choice>
+  </choices>
+</task>
+<task label="chkpt-higher-order-solving-3">
+  <title>❓👉 When to Use a Factoring Tool</title>
+  <statement>
+    <p>
+      Which of the following is the best reason to use a factoring tool or computer algebra system when solving an LHCC equation?
+    </p>
+  </statement>
+  <choices randomize="true">
+    <choice correct="yes">
+      <statement>
+        The characteristic equation is high degree and does not factor easily by hand.
+      </statement>
+      <feedback>
+        Correct! Technology saves time and avoids algebraic errors.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        You already know all the roots from memory.
+      </statement>
+      <feedback>
+        Then you wouldn’t need to factor at all.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        You want to verify that exponentials are like-terms.
+      </statement>
+      <feedback>
+        That's a useful idea, but not the purpose of a factoring tool.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        The roots are all real and distinct.
+      </statement>
+      <feedback>
+        That makes constructing the solution easier—but you still need the roots first.
+      </feedback>
+    </choice>
+  </choices>
+</task>
+<task label="chkpt-higher-order-solving-4">
+  <title>❓👉 Interpreting Mixed Roots</title>
+  <statement>
+    <p>
+      A characteristic equation has the following roots:
+      <me>r = 0 \ (\text{double}),\quad r = 2 \pm i</me>.
+      What is the correct form of the general solution?
+    </p>
+  </statement>
+  <choices>
+    <choice correct="yes">
+      <statement>
+        <me>y = c_1 + c_2 x + e^{2x}(c_3 \cos x + c_4 \sin x)</me>
+      </statement>
+      <feedback>
+        Correct! The double root at 0 gives <m>1</m> and <m>x</m>, and the complex pair gives the oscillatory exponential term.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>y = c_1 + c_2 x + c_3 \cos(2x) + c_4 \sin(2x)</me>
+      </statement>
+      <feedback>
+        Incorrect. The sine and cosine terms must be multiplied by <m>e^{2x}</m>.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>y = c_1 e^{0x} + c_2 x e^{0x} + c_3 e^{ix} + c_4 e^{-ix}</me>
+      </statement>
+      <feedback>
+        While technically valid, this form is not simplified. Use real-valued functions.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2x}</me>
+      </statement>
+      <feedback>
+        These roots do not match the ones given.
+      </feedback>
+    </choice>
+  </choices>
+</task>
+<task label="chkpt-higher-order-solving-5">
+  <title>❓👉 Decimal Roots in the General Solution</title>
+  <statement>
+    <p>
+      After using a numerical solver, you find the characteristic roots are approximately
+      <me>r \approx -2.7,\quad 0.8,\quad 0.8 + 2i,\quad 0.8 - 2i</me>.
+    </p>
+    <p>
+      Which of the following best describes the general solution?
+    </p>
+  </statement>
+  <choices>
+    <choice correct="yes">
+      <statement>
+        <me>
+          y = c_1 e^{-2.7x} + c_2 e^{0.8x} + e^{0.8x}(c_3 \cos(2x) + c_4 \sin(2x))
+        </me>
+      </statement>
+      <feedback>
+        Correct! The real root gives a standalone exponential, and the complex pair contributes an oscillatory term with the same <m>\alpha</m>.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>
+          y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 \cos(2x) + c_4 \sin(2x)
+        </me>
+      </statement>
+      <feedback>
+        Incorrect. The sine and cosine must be multiplied by <m>e^{0.8x}</m>.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>
+          y = c_1 e^{-2.7x} + c_2 x e^{0.8x} + c_3 x^2 e^{0.8x}
+        </me>
+      </statement>
+      <feedback>
+        Incorrect. This would be appropriate if <m>r = 0.8</m> were a triple root.
+      </feedback>
+    </choice>
+    <choice>
+      <statement>
+        <me>
+          y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 e^{-0.8x} + c_4 e^{2ix}
+        </me>
+      </statement>
+      <feedback>
+        This mixes formats and includes a non-real exponential.
+      </feedback>
+    </choice>
+  </choices>
+</task>
+
+	</p>
+
+</section>

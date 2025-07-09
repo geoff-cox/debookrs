@@ -1,0 +1,459 @@
+<section><title> Solving High-Order LHCC Equations </title>
+  
+  <introduction>
+    <p>
+      As the previous section demonstrated, constructing the general solution of a LHCC equation is fairly straightforward given the roots of the characteristic equation. However, solving <em>high-degree polynomial equations</em> can be quite challenging. While there are strategies to tackle this by hand, sometimes computational tools are necessary to obtain the solutions. Below, we will outline some common approaches
+    </p>
+  </introduction>
+
+  <!-- <example xml:id="lhcc-roots-to-general-solution">
+    <title> From Charateristic Roots to General Solution </title>
+    <p>
+      <statement>
+        <p>
+          Suppose the solutions to a characteristic equation for an LHCC equation are given below. In each case, find the corresponding general solution.
+          <ol>
+            <li><m>  r_1 = 3,\quad        r_2 = -3,\quad        r_3 = 5.3                          </m></li>
+            <li><m>  r_1 = 6 - i\sqrt{7.7},\quad  r_2 = 6 + i\sqrt{7.7},\quad  r_3 = 0                            </m></li>
+            <li><m>  r_1 =            r_2 =            r_3 = -4,\quad    r_4 = 5.3                </m></li>
+            <li><m>  r_1 = -\frac{i}{2},\quad  r_2 = \frac{i}{2},\quad    r_3 = 2 + i,\quad  r_4 = 2 - i                </m></li>
+            <li><m>  r_1 =            r_2 = 0,\quad        r_3 =        r_4 =      r_5 =  r_6 =  r_7 = 3  </m></li>
+            <li><m>  r_1 = i,\quad        r_2 = -i,\quad        r_3 =        r_4 = \pi,\quad  r_5 = 5          </m></li>
+          </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <ol>
+          <li>
+            <p>
+              Since we have three different real numbers, we use the <em>standard case</em> to get the general solution as
+            </p>
+            <me>
+              y = c_1 e^{3x} + c_2 e^{-3x} + c_3 e^{5.3x}
+            </me>
+          </li>
+          <li>
+            <p>
+              A complex conjugate pair and a single <m>0</m> solutions, means we use a combination of the <em>complex</em> and <em>standard cases</em>.
+            </p>
+            <me>
+              y = e^{6x} (c_1 \sin(\sqrt{7.7}x) + c_2 \cos(\sqrt{7.7}x)) + c_3
+            </me>
+          </li>
+          <li>
+            <p>
+              The solution <m>-4</m> repeats three times and the single <m>5.3</m> gives the general solution
+            </p>
+            <me>
+              y = c_1 e^{-4x} + c_2 x e^{-4x} + c_3 x^2 e^{-4x} + c_4 e^{5.3x}
+            </me>
+          </li>
+          <li>
+            <p>
+              The two separate complex conjugate pairs implies we use the <em>complex case</em> for both to get
+            </p>
+            <me>
+              y = c_1 \sin\left(\frac{x}{2}\right) + c_2 \cos\left(\frac{x}{2}\right) + e^{2x} (c_3 \sin x + c_4 \cos x)
+            </me>
+          </li>
+          <li>
+            <p>
+              Two <m>0</m>'s and five <m>3</m>'s means the general solution is
+            </p>
+            <me>
+              y = c_1 x + c_2 + c_3 e^{3x} + c_4 x e^{3x} + c_5 x^2 e^{3x} + c_6 x^3 e^{3x} + c_7 x^4 e^{3x}
+            </me>
+          </li>
+          <li>
+            <p>
+              One complex pair, two <m>\pi</m>'s, and a single <m>5</m>, gives us
+            </p>
+            <me>
+              y = c_1 \sin x + c_2 \cos x + (c_3 x + c_4) e^{\pi x} + c_5 e^{5x}
+            </me>
+          </li>
+        </ol>
+      </solution>
+    </p>
+  </example> -->
+
+  <paragraphs label="factoring">
+    <title> Factoring </title>
+    <p>
+      Certain types of high-degree polynomials can be factored relatively easily using factoring methods from algebra. Some of the standard techniques that we will use are outlined below.
+    </p>
+
+    <assemblage xml:id="factoring-techniques"><title> 🧮 Factoring Techniques </title>
+      <p>
+        <dl>
+          <li><title> <m>\textbf{Common Factor}</m> </title>
+            <p>
+              <md>
+                <mrow> ab + ac + ad = a(b+c+d)  </mrow>
+              </md>
+            </p>
+          </li>
+          <li><title> <m>\textbf{Grouping}</m> </title>
+            <p>
+              <md>
+                <mrow> ab + ac + bd + cd  \amp = a(b+c) + d(b+c)  </mrow>
+                <mrow>            \amp = (a+d)(b+c)    </mrow>
+              </md>
+            </p>
+          </li>
+          <li><title> <m>\textbf{Difference of Squares}</m> </title>
+            <p>
+              <me> a^2 - b^2 = (a+b)(a-b) </me>
+            </p>
+          </li>
+          <li><title> <m>\textbf{Difference of Cubes}</m> </title>
+            <p>
+              <me> a^3 - b^3 = (a-b)(a^2+ab+b^2)</me>
+            </p>
+          </li>
+          <li><title> <m>\textbf{Sum of Cubes}</m> </title>
+            <p>
+              <me> a^3 + b^3 = (a+b)(a^2-ab+b^2)</me>
+            </p>
+          </li>
+        </dl>
+      </p>
+    </assemblage>
+    
+    <p>
+      The next example demonstrate how these factoring techniques can be used to solve high-degree characteristic equations.
+    </p>
+
+    <example><title> Finding Characteristic Solutions with Factoring </title>
+      <p>
+        Find the general solution for each of the higher-order LHCC equations by factoring their characteristic equations.
+        <ol>
+          <li> <m> 4 y'' - 9 = 0 </m> </li>
+          <li> <m> y^{(5)} - 4 y''' = 0 </m> </li>
+          <li> <m> y^{(4)} - 25 = 0 </m> </li>
+          <li> <m> y^{(4)} - 5y'' + 4 = 0 </m> </li>
+          <li> <m> y^{(4)} - 6y''' + 9y'' = 0 </m> </li>
+          <li> <m> y^{(5)} - 4 y''' + 8 y'' + 48 = 0 </m> </li>
+        </ol>
+      </p>
+
+      <solution>
+        <p>
+          For each equation, we list the characteristic equation, the factoring steps, the solutions, and the general solution.
+        </p>
+
+        <ol>
+          <li>
+            <p>
+              <m>4 y'' - 9 = 0</m>
+              <sidebyside widths="65% 35%" valign="bottom">
+                <p>
+                  <md>
+                    <mrow>  4 r^2 - 9      \amp = 0  </mrow>
+                    <mrow>  (2 r + 3)(2 r - 3)  \amp = 0  </mrow>
+                  </md>
+                </p>
+                <p>
+                  difference of squares
+                </p>
+              </sidebyside>
+              <md>
+                <mrow> r = -\frac{3}{2},\ \frac{3}{2} \quad \implies \quad 
+                  \boxed{\ y = c_1 e^{\large -\frac{3}{2}x} + c_2 e^{\large \frac{3}{2}x}\vphantom{\int}\ }
+                </mrow>
+              </md>
+            </p>
+            <p/>
+          </li>
+
+          <li>
+            <hrule/>
+            <p>
+              <m>y^{(5)} - 4 y''' = 0</m>
+              <sidebyside widths="65% 35%" valign="bottom">
+                <p>
+                  <md>
+                    <mrow> r^5 - 4 r^3 \amp = 0</mrow>
+                    <mrow> r^3(r^2 - 4) \amp = 0</mrow>
+                    <mrow> r^3(r + 2)(r - 2) \amp = 0</mrow>
+                  </md>
+                </p>
+                <p>
+                  common factor &amp;  difference of squares
+                </p>
+              </sidebyside>
+              <md>
+                <mrow> r = \ub{\ 0\ ,\ 0\ ,\ 0\ }_{\text{repeated}}, -2,\ 2 </mrow>
+                <mrow> \boxed{\ y = c_1 + c_2 x + c_3 x^2 + c_4 e^{-2x} + c_5 e^{2x}\vphantom{\int}\ } </mrow>
+              </md>
+            </p>
+            <p/>
+          </li>
+
+          <li>
+            <p>
+              <m>y^{(4)} - 25 = 0</m>
+              <sidebyside widths="65% 35%" valign="bottom">
+                <p>
+                  <md>
+                    <mrow> r^4 - 25 \amp = 0</mrow>
+                    <mrow> (r^2 + 5)(r^2 - 5) \amp = 0</mrow>
+                    <mrow> (r^2 + 5)(r - \sqrt{5})(r + \sqrt{5}) \amp = 0</mrow>
+                  </md>
+                </p>
+                <p>
+                  difference of squares
+                </p>
+              </sidebyside>
+              <md>
+                <mrow> r = \pm i\sqrt{5},\ -\sqrt{5},\ \sqrt{5} </mrow>
+                <mrow> 
+                  \boxed{\ y = c_1\cos\left(\sqrt{5}x\right) + c_2\sin\left(\sqrt{5}x\right) 
+                  + c_3 e^{\sqrt{5}x} + c_4 e^{-\sqrt{5}x}\vphantom{\int}\ }
+                </mrow>
+              </md>
+            </p>
+            <p/>
+          </li>
+
+          <li>
+            <p>
+              <m>y^{(4)} - 5y'' + 4 = 0</m>
+              <sidebyside widths="65% 35%" valign="middle">
+                <p>
+                  <md>
+                    <mrow> r^4 - 5r^2 + 4 \amp = 0</mrow>
+                    <mrow> u^2 - 5u + 4 \amp = 0</mrow>
+                    <mrow> (u - 4)(u + 1) \amp = 0</mrow>
+                    <mrow> (r^2 - 4)(r^2 + 1) \amp = 0</mrow>
+                    <mrow> (r - 2)(r + 2)(r^2 + 1) \amp = 0</mrow>
+                  </md>
+                </p>
+                <p>
+                  <line>  Let <m>u = r^2</m>      </line>
+                  <line>  Factor in terms of <m>u</m>      </line>
+                  <line>  Replace <m>u</m> with <m>r^2</m>  </line>
+                  <line>  difference of squares      </line>
+                </p>
+              </sidebyside>
+              <md>
+                <mrow> r = -2,\ 2,\ \pm i </mrow>
+                <mrow> \boxed{\ y = c_1 e^{-2x} + c_2 e^{2x} + c_3 \cos x + c_4 \sin x\vphantom{\int}\ } </mrow>
+              </md>
+            </p>
+            <p/>
+          </li>
+
+          <li>
+            <p>
+              <m>y^{(4)} - 6y''' + 9y'' = 0</m>
+              <sidebyside widths="70% 5% 25%" valign="middle">
+                <p>
+                  <md>
+                    <mrow> r^4 - 6r^3 + 9r^2 \amp = 0</mrow>
+                    <mrow> r^2(r^2 - 6r + 9) \amp = 0</mrow>
+                    <mrow> r^2(r - 3)^2 \amp = 0</mrow>
+                  </md>
+                </p>
+                <p/>
+                <p>
+                  grouping
+                </p>
+              </sidebyside>
+              <md>
+                <mrow> r = \ub{\ 0\ ,\ 0\ }_{\text{repeated}},\ \ub{\ 3\ ,\ 3\ }_{\text{repeated}}</mrow>
+                <mrow> \boxed{\ y = c_1 + c_2 x + c_3 e^{3x} + c_4 x e^{3x}\vphantom{\int}\ } </mrow>
+              </md>
+            </p>
+            <p/>
+          </li>
+
+          <li>
+            <p>
+              <m>y^{(5)} - 4 y''' + 8 y'' + 48 = 0</m>
+              <sidebyside widths="70% 5% 25%" valign="middle">
+                <p>
+                  <md>
+                    <mrow> r^5 - 4 r^3 + 8 r^2 + 48 \amp = 0</mrow>
+                    <mrow> r^3(r^2 - 4) + 8(r^2 - 4) \amp = 0</mrow>
+                    <mrow> (r^3 + 8)(r^2 - 4) \amp = 0</mrow>
+                    <mrow> (r + 2)(r^2 - 2r + 4)(r + 2)(r - 2) \amp = 0</mrow>
+                  </md>
+                </p>
+                <p/>
+                <p>
+                  grouping &amp; sum of cubes
+                </p>
+              </sidebyside>
+              <me>
+                r = \ub{-2\ ,\ -2\ }_{\text{repeated}},\ 2,\ 1 \pm i \sqrt{3}
+              </me>
+              <p>
+                <md>
+                  <mrow>
+                    \small\boxed{y = c_1 e^{\large -2x} + c_2 x e^{\large -2x} + c_3 e^{\large 2x} 
+                    + e^{\large x}\left(c_4\cos(\sqrt{3}x) + c_5\sin(\sqrt{3}x)\right)\vphantom{\int}} 
+                  </mrow>
+                </md>
+              </p>
+            </p>
+          </li>
+        </ol>
+      </solution>
+    </example>
+
+  </paragraphs>
+
+  <paragraphs label="rational-root-theorem">
+    <title> Rational Root Theorem </title>
+    <p>
+      The <em>Rational Root Theorem</em> helps identify possible rational solutions by considering factors of the constant and leading coefficients. If a rational solution is found, polynomial division can reduce the equation to a lower-degree polynomial. While this method is powerful and can handle many problems, it is often quite tedius and its multi-step process makes it prone to human error. 
+    </p>
+  </paragraphs>
+
+  <paragraphs label="technology">
+    <title> Technology </title>
+    <p>
+      When facing a high-order charateristic equation that cannot be factored, a good strategy is to utilize technology to solve these tyes of problems. Many software tools are available and you are encouraged to use any that you are familiar with.
+    </p>
+
+    <p>
+      The next example demonstrates how to use computational tools to factor a high-degree polynomial.
+    </p>
+
+    <example><title> Using a Factoring Tool </title>
+      <p>
+        <statement>
+          <p>
+            Find the general solution to the LHCC equations
+            <ol>
+              <li> <m> y''' - 6y'' + 11y' - 6y = 0 </m> </li>
+              <li> <m> 2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y  = 0 </m> </li>
+            </ol>
+            using the factoring tool below.
+          </p>
+        </statement>
+      </p>
+      
+      <corollary xml:id="factoring-tool">
+        <title> Polynomial Factoring Calculator </title>
+        <figure xml:id="figure-pp">
+          <caption>
+            Type in a polynomial as a function of <m>r</m>. Use <q><m>*</m></q> for multiplication and <q>^</q> for exponents. Note: The tool only displays factors for integer or fractional (rational) roots.
+          </caption>
+          <interactive xml:id="poly-factor" platform="sage" width="100%" aspect="7:2">
+            <slate surface="sage">
+              r = var('r')
+              r = PolynomialRing(RationalField(), 'r').gen()
+              F = 'r^2 - 2*r - 8'
+              P = r^2 - 2*r - 8
+              @interact
+              def _(ce = input_box(P, label="  Polynomial:", type=str, width=30)):
+                ce_poly = sage_eval('lambda r: ' + ce)
+                pretty_print( html( r'Polynomial: $ %s $'%latex(ce_poly(r) ) ) )
+                pretty_print( html( r'Factored Polynomial: $ %s $'%latex(ce_poly(r).factor()) ) )
+            </slate>
+          </interactive>
+        </figure>
+      </corollary>
+
+      <solution>
+        <p>
+          <ol>
+            <li>
+              <p>
+                First, write down the characteristic equation:
+                <md>
+                  <mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
+                </md>.
+                Plugging this into to the factoring tool shows that it factors as <m> (r-3)(r-2)(r-1) </m>.  Solving for <m>r</m>, we get
+                <md>
+                  <mrow> r = 1, \quad r = 2, \quad r = 3 </mrow>
+                </md>.
+                Therefore, the general solution is:
+                <me> y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The characteristic equation is:
+                <me>
+                  9 r^5 - 4 r^4 + r + 10 = 0
+                </me>
+                which is challenging to solve by hand. However, typing it into factoring tool above shows that it can be factored as
+                <me>
+                  2\left(r+3\right)^2 \left(r-1\right) \left(r-\frac12\right) = 0
+                </me>,
+                which gives the solutions
+                <me>
+                  r = -3, \quad r = -3, \quad r = 1, \quad r = \frac12
+                </me>.
+                Therefore, the general solution is:
+                <me>
+                  y = c_1 e^{-3x} + c_2x e^{-3x} + c_3 e^{x} + c_4 e^{\frac12 x}
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </solution>
+    </example>
+    
+    <p>
+      If you want the solutions to a characteristic equation without factoring it, you can also approximate the solutions directly using a numerical solver, as shown in the next example.
+    </p>
+    
+    <example><title> Approximating the Characteristic Solutions </title>
+      <p>
+        <statement>
+          <p>
+            Consider the fifth-order LHCC equation:
+            <me> y^{(5)} - 4y''' + 3y'' - y = 0 </me>.
+          </p>
+        </statement>
+      </p>
+      
+      <solution>
+        <p>
+          The characteristic equation is:
+        </p>
+
+        <me>
+          r^5 - 4r^3 + 3r^2 - 1 = 0
+        </me>.
+
+        <p>
+          Solving this polynomial equation analytically is challenging, so we use a numerical solver (<url href="https://www.wolframalpha.com/input?i=r%5E5-4*r%5E3%2B3*r%5E2-1">Wolfram Alpha</url>). This equation has five roots. Three are real:
+        </p>
+
+        <me> r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52, </me>
+
+        <p>
+          and two are complex:
+        </p>
+
+        <me> r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i </me>.
+
+        <p>
+          The general solution, incorporating these roots, is:
+        </p>
+
+        <md>
+          <mrow>  y = c_1 e^{-2.29x}  +\amp\ c_2 e^{-0.46x} + c_3 e^{1.52x}        </mrow>
+          <mrow>            +\amp\ e^{0.61x} (c_4 \cos(0.5x) + c_5 \sin(0.5x))  </mrow>
+        </md>.
+      </solution>
+    </example>
+  </paragraphs>
+
+  <p>
+    Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.
+  </p>
+    
+  <exercise><title>Answer the Following</title>
+
+
+  </exercise>
+
+</section>
