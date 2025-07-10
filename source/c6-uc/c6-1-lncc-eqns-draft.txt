@@ -1,317 +1,111 @@
-<section label="lncc-equation">
-  <title> The LNCC Equation </title>
+<section label="lncc-forcing-functions">
+	<title> How Forcing Functions Alter Solutions </title>
 
 	<introduction>
+
 		<p>
-			You already know that a linear homogeneous constant coefficient (LHCC) equation has the form:
+			To understand why the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation has two parts, we will consider the following second-order differential equation:
 		</p>
 
 		<me>
-			a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = 0
-		</me>
+			y'' - 4y' + 3y = 9x
+		</me>.
 
 		<p>
-			All the terms are on the left, and the right-hand side is zero. This equation is called <em>homogeneous</em> because the solution only includes terms that cancel each other out.
+			Let's start with the particular solution, <m>y_p</m>, which accounts for the <m>9x</m> on the right-hand side of the equation. We will then introduce the homogeneous solution, <m>y_h</m>, which accounts for the terms that cancel out when the solution is plugged into the differential equation.
 		</p>
-
-		<p>
-			A linear nonhomogeneous constant coefficient (LNCC) equation looks almost the same, except the right-hand side is now a function:
-		</p>
-
-		<me>
-			a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = f(x)
-		</me>
-
-		<p>
-			The function <m>f(x)</m> is called the <term>forcing function</term> because it introduces an external input that <q>forces</q> the system to respond in a particular way.
-		</p>
+		
 	</introduction>
 
-  	<paragraphs>
-		<title> Guessing a Solution that Makes Sense </title>
+	<paragraphs>
+		<title> Homogeneous Solutions </title>
+
+	</paragraphs>
+
+	<paragraphs>
+		<title> Particular Solutions </title>
+
 		<p>
-			Imagine you had to make your best guess as to which function, <m>y</m>, satisfies the equation
+			When solving nonhomogeneous differential equations, a key observation is that the particular solution, <m>y_p</m>, often resembles the forcing function, <m>f(x)</m>, on the right-hand side of the equation. Understanding why this is the case helps us develop an effective strategy for guessing <m>y_p</m>.
+		</p>
+
+		<p>
+			Imagine you had to guess a function of <m>x</m> that satisfies the equation,
 		</p>
 
 		<me>
-			y'' - 4y' + 3y = 9x + 6
+			y'' - 4y' + 3y = 9x
 		</me>.
 
 		<p>
-			Remember, after taking two derivatives of your guess and plugging them in, all terms on the left-hand side must simplify to <m>9x + 6</m>. That is, 
+			For a guess to satisfy the equation, it must have the property that
 		</p>
 
 		<me>
-			(\text{guess})'' - 4(\text{guess})' + 3(\text{guess})\quad \leftarrow\ \text{must simplify to}\ 9x + 6
-		</me>.
+			\ub{(\text{guess})'' - 4(\text{guess})' + 3(\text{guess})}_{\Large💎}\ \text{ simplifies to }\ 9x
+		</me>,
 
 		<p>
-			For these three terms to simplify to <m>9x + 6</m>, logically your <q>guess</q> must share a similar structure to <m>9x + 6</m>. 
+			so that you end up with <m>9x=9x</m> when you verify the solution. Therefore, the <q>guess</q> itself must have a similar structure to <m>9x</m>. 
 		</p>
 
 		<p>
-			By <q>similar structure</q>, we mean that since <m>9x + 6</m> is a degree <m>1</m> polynomial, the guess should also be a degree <m>1</m> polynomial. We don't know exactly which degree <m>1</m> polynomial will work, but we can guess it should look like:
-			<me> y = Ax + B </me>
+			Note that guesses of the form <m>e^{rx}</m>, <m>\cos(rx)</m>, or <m>\ln(rx)</m> could never work since 💎 would never lead to <m>9x</m>. However, <m>x^r</m> might work. 
 		</p>
 
 		<p>
-			Plugging this into the left-hand side of the equation we see that it simplifies to 
+			Since differentiation reduces the degree of <m>x^r</m> terms by one, <m>3(\text{guess})</m> will always have the largest power. Because we want 💎 to produce <m>9x</m>, then <m>3(\text{guess})</m> can have no term with a power greater than <m>1</m>. This reasoning leaves us with a guess that must be of the form <m>Ax + B</m>.
+		</p>
+
+		<p>
+			Let's try plugging our guess in to see if we can figure out <m>A</m> and <m>B</m>.
 		</p>
 
 		<md>
-			<mrow> y'' - 4y' + 3y \amp = (Ax + B)'' - 4(Ax + B)' + 3(Ax + B) </mrow>
-			<mrow> \amp = 0 - 4A + 3Ax + 3B </mrow>
-			<mrow> \amp = 3Ax - 4A + 3B </mrow>
+			<mrow>	(Ax + B)'' - 4(Ax + B)' + 3(Ax + B)	\amp = 9x	</mrow>
+			<mrow>	0 - 4(A) + 3(Ax + B)				\amp = 9x	</mrow>
+			<mrow>	\ub{3Ax - 4A + 3B}_{\Large ⭐}	   \amp = 9x  </mrow>
 		</md>
 
 		<p>
-			This is not <m>9x + 6</m>, but perhaps we can make it <m>9x + 6</m> by choosing the right values for <m>A</m> and <m>B</m>. Setting the expression equal to <m>9x + 6</m> shows us 
+			To ensure that ⭐ becomes <m>9x</m>, we set <m>A=3</m>, leading to:
 		</p>
 
 		<me>
-			3Ax - 4A + 3B = 9x + 6
+			3(3)x - 4(3) + 3B = 9x \quad \implies \quad \ub{9x - 12 + 3B}_{\Large 🌸} = 9x
 		</me>
 
 		<p>
-			Matching <m>3A</m> to <m>9</m> and <m>-4A + 3B</m> to <m>6</m>, we get the system:
+			Now, for 🌸 to be <m>9x</m>, we need <m>-12 + 3B = 0</m>, which gives <m>B = 4</m>. Thus, with the values of <m>A</m> and <m>B</m> in hand, our guess becomes 
+		</p>
+
+		<me>
+			3x + 4
+		</me>.
+
+		<p>
+			This function is called the <term>particular solution</term>, denoted <m>y_p</m>, and it <em>represents the precise function needed for the left side of the equation to match the forcing function on the right</em>. At the risk of beating a dead horse, let's comfirm this important statement by plugging <m>y_p = 3x+4</m> into the differential equation. 
 		</p>
 
 		<md>
-			<mrow> 3A \amp = 9 \quad \Rightarrow \quad A = 3 </mrow>
-			<mrow> -4A + 3B \amp = 6 \quad \Rightarrow \quad -12 + 3B = 6 \Rightarrow B = 6 </mrow>
+			<mrow>
+				(3x+4)'' - 4(3x+4)' + 3(3x+4)
+					\amp = 9x
+			</mrow>
+			<mrow>
+				0 - 12 + 9x + 12
+					\amp = 9x
+			</mrow>
+			<mrow>
+				{\color{RoyalBlue}\text{all terms simplify to }\ \rightarrow}\quad 9x
+					\amp = 9x\quad {\color{RoyalBlue}\leftarrow\ \text{forcing function}}
+			</mrow>
 		</md>
 
 		<p>
-			So we’ve found a solution! One function that satisfies the equation is:
-			<me> y = 3x + 6 </me>
-		</p>
-
-		<p>
-			This is called a <term>particular solution</term> . Let’s call it <m>y_p</m>.
-		</p>
-		<p>
-			This is called a <term>particular solution</term>. It’s not the only solution—but it’s one that works. Let’s call it <m>y_p</m>.
+			Now that we have identified the particular solution, <m>y_p</m> as the part of the general solution responsible for producing the forcing function, it is time to discuss the more <q>hidden</q> part of the general solution, whose terms just cancel out on the left side of the equation. 
 		</p>
 	</paragraphs>
-
-  <paragraphs xml:id="particular-check">
-    <title> Confirming the Particular Solution </title>
-
-    <p>
-      Let’s double-check that this function really satisfies the equation.
-    </p>
-
-	<md>
-		<mrow>
-			y = 3x + 4 \quad \Rightarrow\quad (3x+4)'' - 4(3x+4)' + 3(3x+4)
-				\amp = 9x
-		</mrow>
-		<mrow>
-			0 - 12 + 9x + 12
-				\amp = 9x
-		</mrow>
-		<mrow>
-			{\color{RoyalBlue}\text{all terms simplify to }\ \rightarrow}\quad 9x
-				\amp = 9x\quad {\color{RoyalBlue}\leftarrow\ \text{forcing function}}
-		</mrow>
-	</md>
-
-    <p>
-    	So not only is <m>y_p = 3x + 4</m> a solution, but it is the specific solution that produces the forcing function <m>9x + 6</m>.
-    </p>
-  </paragraphs>
-
-  <paragraphs xml:id="hidden-solns">
-    <title> What About the Terms that Cancel Out? </title>
-
-    <p>
-      Here's a weird thought: what if we took our solution <m>y_p = 3x + 4</m> and added a function that makes the left-hand side simplify to zero? Would the equation still work?
-    </p>
-
-    <p>
-      Yes! In fact, that’s how you build the <em>general</em> solution to a nonhomogeneous equation.
-    </p>
-
-    <p>
-      Let’s look at the <em>homogeneous</em> version of the equation:
-    </p>
-
-    <me>
-      y'' - 4y' + 3y = 0
-    </me>
-
-    <p>
-      You already know how to solve this using a characteristic equation:
-    </p>
-
-    <md>
-      <mrow> r^2 - 4r + 3 = 0 \quad \Rightarrow \quad (r - 1)(r - 3) = 0 </mrow>
-      <mrow> \Rightarrow\quad r = 1,\ 3 </mrow>
-    </md>
-
-    <p>
-      So the solution to the homogeneous equation is:
-    </p>
-
-    <me>
-      y_h = c_1 e^{x} + c_2 e^{3x}
-    </me>
-
-    <p>
-      These functions cancel themselves out when plugged into the left-hand side. They don’t “respond” to the <m>9x</m> forcing function at all.
-    </p>
-  </paragraphs>
-
-  <paragraphs xml:id="building-general-soln">
-    <title> The General Solution </title>
-
-    <p>
-      Here comes the punchline: if <m>y_h</m> causes the left side to become <m>0</m>, and <m>y_p</m> causes the left side to become <m>9x</m>, then:
-    </p>
-
-    <me>
-      y = y_h + y_p = c_1 e^{x} + c_2 e^{3x} + 3x + 4
-    </me>
-
-    <p>
-      must also be a solution—because the two effects just add together.
-    </p>
-
-    <p>
-      This is the general solution to the original equation:
-    </p>
-
-    <me>
-      y'' - 4y' + 3y = 9x
-    </me>
-
-    <p>
-      The exponential terms <m>c_1 e^{x}</m> and <m>c_2 e^{3x}</m> cancel themselves out. The <m>3x + 4</m> part generates the <m>9x</m> that we need. Together, they form the complete picture.
-    </p>
-  </paragraphs>
-
-  <paragraphs xml:id="lncc-equation-wrapup">
-    <title> What You Should Take Away </title>
-
-    <ul marker="square">
-      <li>
-        When the right-hand side of a differential equation is a function like <m>9x</m>, we call it a <term>forcing function</term>.
-      </li>
-      <li>
-        You can often guess a solution <m>y_p</m> that resembles the forcing function.
-      </li>
-      <li>
-        The full solution adds in extra terms, <m>y_h</m>, that solve the corresponding homogeneous equation (where the right-hand side is zero).
-      </li>
-      <li>
-        The final answer is always:
-        <me> y = y_h + y_p </me>
-        where <m>y_h</m> cancels to zero and <m>y_p</m> simplifies to <m>f(x)</m>.
-      </li>
-    </ul>
-
-    <p>
-      In the next section, we’ll take a closer look at how to guess <m>y_p</m> based on different kinds of forcing functions—and what to do when your guess overlaps with <m>y_h</m>.
-    </p>
-  </paragraphs>
-
-  
-  <paragraphs xml:id="structure-of-solution">
-    <title> What Kind of Solution Do We Expect? </title>
-
-    <p>
-      With homogeneous equations, we could guess a solution and check whether it made the left-hand side zero. Now, we need to ask a slightly different question: 
-    </p>
-
-    <sidebyside margins="20% 20%">
-      <p><q>What kind of function will make the left-hand side equal <m>f(x)</m> instead of 0?</q></p>
-    </sidebyside>
-
-    <p>
-      To answer this, we’ll separate the solution into two parts. Suppose we have a function <m>y_h</m> that satisfies the <em>homogeneous</em> version of the equation:
-    </p>
-
-    <me>
-      a_n y_h^{(n)} + \cdots + a_0 y_h = 0
-    </me>
-
-    <p>
-      This means plugging <m>y_h</m> into the left-hand side causes everything to cancel out. Next, suppose we have another function <m>y_p</m> that satisfies the full nonhomogeneous equation:
-    </p>
-
-    <me>
-      a_n y_p^{(n)} + \cdots + a_0 y_p = f(x)
-    </me>
-
-    <p>
-      This function <m>y_p</m> is special—it produces <m>f(x)</m> exactly when plugged in. It’s called the <term>particular solution</term>.
-    </p>
-
-    <p>
-      Now here’s the cool part: if <m>y_h</m> causes the left side to become 0, and <m>y_p</m> causes it to become <m>f(x)</m>, then their sum must cause it to become <m>f(x)</m> too:
-    </p>
-
-    <md>
-      <mrow> y = y_h + y_p </mrow>
-      <mrow> \Rightarrow\quad a_n (y_h + y_p)^{(n)} + \cdots + a_0 (y_h + y_p) \amp = f(x) </mrow>
-      <mrow> \amp = \ub{\text{cancellation from } y_h}_{=0} + \ub{\text{forcing from } y_p}_{=f(x)} </mrow>
-    </md>
-
-    <p>
-      This leads to the general structure of the solution to an LNCC equation:
-    </p>
-
-    <me>
-      y = y_h + y_p
-    </me>
-
-    <p>
-      In other words, every solution is built from two ingredients: one that cancels out (like in homogeneous equations) and one that actively matches the forcing function.
-    </p>
-  </paragraphs>
-
-
-  <paragraphs xml:id="lncc-summary">
-    <title> Summary: LNCC Structure </title>
-
-    <p>
-      Let's summarize what we’ve learned so far:
-    </p>
-
-    <assemblage xml:id="lncc-equation-summary">
-      <title> ✳️ LNCC General Solution Structure </title>
-
-      <p>
-        A linear nonhomogeneous constant coefficient (LNCC) differential equation has the form:
-      </p>
-
-      <men>
-        a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_0 y = f(x)
-      </men>
-
-      <p>
-        Its general solution is built from two parts:
-      </p>
-
-      <men>
-        y = y_h + y_p
-      </men>
-
-      <ul marker="square">
-        <li><m>y_h</m> is the solution to the corresponding homogeneous equation:</li>
-        <me> a_n y^{(n)} + \cdots + a_0 y = 0 </me>
-
-        <li><m>y_p</m> is any function that makes the left-hand side equal to <m>f(x)</m> when substituted in.</li>
-      </ul>
-    </assemblage>
-
-    <p>
-      In the next section, we’ll focus entirely on <m>y_p</m>—how to guess its form, what to do when there’s overlap with <m>y_h</m>, and how to solve for its unknown constants.
-    </p>
-  </paragraphs>
-
-
-
 
 	<paragraphs>
 		<title> General Solution to LNCC Equations </title>
@@ -516,33 +310,13 @@
 
 	</paragraphs>
 
-  <objectives>
-    <ul>
-      <li>
-        A linear differential equation is <em>nonhomogeneous</em> if the right-hand side is not zero—it includes a <term>forcing function</term>, <m>f(x)</m>.
-      </li>
-      <li>
-        The solution to a nonhomogeneous equation is a combination of the homogeneous solution <m>y_h</m> and a particular solution <m>y_p</m>.
-      </li>
-      <li>
-        The homogeneous part satisfies the equation with zero forcing; the particular part accounts for the external input.
-      </li>
-    </ul>
-  </objectives>
-
-    <objectives>
-    <ul>
-      <li>
-        A nonhomogeneous equation includes a forcing function on the right-hand side.
-      </li>
-      <li>
-        You can often guess a particular solution that resembles the forcing function.
-      </li>
-      <li>
-        The general solution is <m>y = y_h + y_p</m>.
-      </li>
-    </ul>
-  </objectives>
+	<objectives label="lncc-forcing-functions-wrapup">
+		<ul>
+			<li> 
+				
+			</li>
+		</ul>
+	</objectives>
 
 	<fact label="lncc-forcing-functions-cyu">
 		<statement>
