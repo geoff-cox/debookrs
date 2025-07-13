@@ -1,67 +1,31 @@
-<section label="uc-method">
-	<title> Undetermined Coefficients </title>
+<section label="selecting-the-particular-soln.ptx">
+	<title> Selecting the Particular Solution Form </title>
 	
 	<introduction>
 		<p>
-			In the previous section, we established that the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation consists of two parts: the <em>homogeneous solution</em> <m>y_h</m> and the <em>particular solution</em> <m>y_p</m>. While <m>y_h</m> is found by solving the characteristic equation of the corresponding homogeneous equation, finding <m>y_p</m> requires a different approach.
+			In the previous section, we established that the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation consists of two parts: the <em>homogeneous solution</em> <m>y_h</m> and the <em>particular solution</em> <m>y_p</m>. While <m>y_h</m> is found by solving the characteristic equation of the corresponding homogeneous equation, The <em>Method of Undetermined Coefficients</em> finds <m>y_p</m> by (1) selecting an appropriate form based on the forcing function, <m>f(x)</m>, and then (2) determining the coefficients of that form.
 		</p>
 
 		<p>
-			The <em>Method of Undetermined Coefficients</em> is a systematic technique for determining <m>y_p</m> when the nonhomogeneous term, <m>f(x)</m>, has a specific form. Instead of solving for <m>y_p</m> directly, we first assume its general structure based on the form of <m>f(x)</m>, then determine the unknown coefficients by substituting <m>y_p</m> into the differential equation and solving for them.
-		</p>
-
-		<p>
-			One limitation of this method is that it only works when <m>f(x)</m> is:
-		</p>
-
-		<ul marker="square">
-			<li><p>A Polynomial, such as <m>f(x) = 2x^2 + x - 4</m></p></li>
-			<li><p>An Exponential function, such as <m>f(x) = 5 e^{2 x}</m></p></li>
-			<li><p>Sine or Cosine functions, such as <m>f(x) = \sin(\pi x) - 3\cos(\pi x)</m></p></li>
-			<li><p>Any sum or product of these function types</p></li>
-		</ul>
-
-		<p>
-			Nevertheless, when applicable, it provides a straightforward and efficient way to determine the general solution.
-		</p>
-
-		<p>
-			In this section, we will develop the <em>Method of Undetermined Coefficients</em> by first identifying how to select an appropriate form for <m>y_p</m>, then learning how to modify <m>y_p</m> when it conflicts with <m>y_h</m>. Finally, we will apply the full method to solve LNCC equations step by step.
+			This section focuses on the first step: selecting the form of <m>y_p</m>. The key idea is to choose a form that matches the structure of <m>f(x)</m>, ensuring that differentiation will produce terms capable of generating <m>f(x)</m> when substituted into the differential equation.
 		</p>
 	</introduction>
 
-	<paragraphs>
-		<title> Selecting Particular Solutions </title>
+	<paragraphs label="selecting-basic-forms-for-yp">
+		<title> Selecting Basic Forms </title>
 
 		<p>
-			The first step in the <em>Method of Undetermined Coefficients</em> is selecting an appropriate form for the particular solution, <m>y_p</m>. Since <m>y_p</m> is responsible for generating the nonhomogeneous term <m>f(x)</m> when substituted into the differential equation, it must be structured in a way that allows differentiation to produce terms that match those in <m>f(x)</m>.
+			The first step in the <em>Method of Undetermined Coefficients</em> is selecting an appropriate form for the particular solution, <m>y_p</m>. Since <m>y_p</m> is intended to account for the forcing function, <m>f(x)</m>, then it must be structured so that <m>y_p</m> and its derivatives can simplify to <m>f(x)</m>.
 		</p>
 
 		<p>
-			Unlike the homogeneous solution <m>y_h</m>, which is determined by solving the characteristic equation, <m>y_p</m> is not obtained through direct computation. To determine <m>y_p</m>, we first assume a general form based on <m>f(x)</m>, then solve for the unknown coefficients by substituting it into the equation.
+			For example, if <m>f(x)</m> is a polynomial or exponential, then <m>y_p</m> should take a similar form. The table below provides a guide for selecting <m>y_p</m> (<em>right column</em>) based on the type of forcing function, <m>f(x)</m> (<em>left column</em>). 
 		</p>
 
-		<p>
-			The general principle for choosing <m>y_p</m> can be described as:
-		</p>
-
-		<blockquote>
-			<p>
-				<em>The particular solution <m>y_p</m> must have the same structure as <m>f(x)</m>, ensuring that differentiation produces terms capable of matching this function on the right-hand side.</em>
-			</p>
-		</blockquote>
-
-		<p>
-			This means that if <m>f(x)</m> is a polynomial or exponential, for example, then <m>y_p</m> should take a similar form. The table below provides a guide for selecting <m>y_p</m> (<em>right column</em>) based on the type of forcing function, <m>f(x)</m> (<em>left column</em>). 
-		</p>
-
-		<aside>
-			<p>
-				The coefficients (<m>A</m>, <m>B</m>, <m>C</m>, etc.) will be found later by plugging <m>y_p</m> into our DE. For now, we are focused on selecting the correct form of <m>y_p</m>.
-			</p>
-		</aside>
-
-		<table xml:id="yp-forms-table"><title> Suggested <m>y_p</m> selection based on <m>f(x)</m>. </title>
+		<table xml:id="yp-forms-table">
+			<title> 
+				The form of <m>y_p</m> based on <m>f(x)</m>, where <m>a</m>, <m>b</m>, <m>c</m>, <m>d</m>, and <m>\alpha, \beta</m> are known constants and <m>A, B, C, D</m> are the undetermined coefficients.
+			</title>
 			<tabular top="medium" left="medium" right="medium" bottom="minor">
 				<col halign="center" top="none" right="minor"/>
 				<col halign="center" right="minor"/>
@@ -88,8 +52,8 @@
 				</row>
 				<row>
 					<cell>4</cell>
-					<cell><m>a_nx^n + \ldots + a_1x + a_0</m></cell>
-					<cell><m>A_nx^n + \ldots + A_1x + A_0</m></cell>
+					<cell><m>ax^3 + bx^2 + cx + d</m></cell>
+					<cell><m>Ax^3 + Bx^2 + Cx + D</m></cell>
 				</row>
 				<row>
 					<cell>5</cell>
@@ -104,170 +68,202 @@
 			</tabular>
 		</table>
 
-		<note><title> Include all possible terms in the selected form </title>
-			<p>
-				When you select a function type in the left column, make sure to include all terms in the right column even if <m>f(x)</m> lacks that term. For example:
-			</p>
-			<ul marker="square">
-				<li>
-					<p>
-						If <m>f(x) = x^2 + 1</m>, it may be tempting to set <m>y_p = Ax^2 + B</m> since <m>f(x)</m> lacks an <m>x</m> term. However, <m>y_p</m> must account for all degree 2 polynomial terms, including <m>x</m>. So, <m>y_p=Ax^2 + Bx + C</m>.
-					</p>
-				</li>
-				<li>
-					<p>
-						Similarly, if <m>f(x) = \cos(3x)</m>, then <m>y_p = A\cos(3x) + \ul{B\sin(3x)}</m>! This ensures that differentiation produces all terms needed to match <m>f(x)</m>.
-					</p>
-				</li>
-			</ul>
-		</note>
+		<p>
+			Note, when you select a function type in the left column, ensure to include all terms in the right column even if <m>f(x)</m> lacks that term. For example:
+		</p>
+
+		<ul marker="square">
+			<li>
+				<p>
+					If <m>f(x) = x^2 + 1</m>, it may be tempting to set <m>y_p = Ax^2 + B</m> since <m>f(x)</m> lacks an <m>x</m> term. However, <m>y_p</m> must account for all degree 2 polynomial terms, including <m>x</m>. So, <m>y_p=Ax^2 + Bx + C</m>.
+				</p>
+			</li>
+			<li>
+				<p>
+					Similarly, if <m>f(x) = \cos(3x)</m>, then <m>y_p = A\cos(3x) + \ul{B\sin(3x)}</m>. This makes sense because the derivative of <m>\sin(3x)</m> can also produce a <m>\cos(3x)</m> term.
+				</p>
+			</li>
+		</ul>
+
+		<example>
+			<title> Selecting Basic Forms of <m>y_p</m> </title>
+			<statement>
+				<p>
+					Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
+				</p>
+
+				<p>
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds y'' + y' + 5y = 3e^{6x}\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									<m>3e^{6x}</m> corresponds to row 5 of the table, so the initial <m>y_p</m> is
+									<me>
+										y_p = Ae^{6x}
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds y'' + 3y' - y = 2\sin(2x)\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									<m>2\sin(2x)</m> corresponds to row 6, so the initial <m>y_p</m> is 
+									<me>
+										y_p = A\sin(2x) + B\cos(2x)
+									</me>.
+									<em>Note, we include cosine in <m>y_p</m> even if it doesn't appear in <m>f(x)</m>.</em>
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds \omega''' + \omega' = 5\theta^2 + \theta + 1\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									<m>5\theta^2 + \theta + 1</m> corresponds to row 3, so the initial <m>y_p</m> is 
+									<me>
+										\omega_p = A\theta^2 + B\theta + C
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds 2\frac{dy}{dx} + 5y + 3 = 0</m></p>
+						<p>
+							<solution>
+								<p>
+									Moving the constant term, <m>3</m>, to the right and using row 1 gives
+									<me>
+										y_p = A
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds y'' -3y' + 0.5y = 14x^4\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									<m>x^4</m> matches row 4 (with <m>n=4</m>), so
+									<me>
+										y_p = Ax^4 + Bx^3 + Cx^2 + Dx + E
+									</me>.
+									<em>All powers of <m>x</m> up to <m>x^4</m> are included.</em>
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</statement>
+		</example>
+	</paragraphs>
+
+	<paragraphs>
+		<title> Limits To This Approach </title>
+		<p>
+			You may notice that not all the functions you are familiar with (e.g., <m>\ln</m>, <m>\tan</m>, etc.) are represented in <xref ref="yp-forms-table"/>. It turns out that this approach only works for forcing functions that can be expressed as a sum or product of the following types:
+		</p>
+
+		<ul marker="square">
+			<li><p>A Polynomial, such as <m>f(x) = 2x^2 + x - 4</m></p></li>
+			<li><p>An Exponential function, such as <m>f(x) = 5 e^{2 x}</m></p></li>
+			<li><p>Sine or Cosine functions, such as <m>f(x) = \sin(\pi x) - 3\cos(\pi x)</m></p></li>
+			<li><p>Any sum or product of these function types</p></li>
+		</ul>
+
+		<p>
+			Nevertheless, when it does apply, it still provides a straightforward way to determine <m>y_p</m>.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="adding-yp-forms">
+		<title> Combining Basic Forms via Addition </title>
 
 		<p>
 			If <m>f(x)</m> consists of a sum of different function types (e.g., a polynomial plus an exponential), the particular solution <m>y_p</m> must also be a sum of the corresponding forms. Each term in <m>y_p</m> should independently match its counterpart in <m>f(x)</m>.
 		</p>
 
 		<example><title> Initial form of <m>y_p</m> </title>
+			<statement>
+				<p>
+					Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
+				</p>
 
-			<p>
-				<statement>
-					<p>
-						Use <xref ref="yp-forms-table"/> to determine the initial form of <m>y_p</m> for each equation below.
-					</p>
+				<p>
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds y'' + 2y' + 3y = 2e^{w} - 1\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									Since <m>2e^{w} - 1</m> is the sum of an exponential and a constant, the initial <m>y_p</m> is
+									<me>
+										y_p = Ae^{w} + B
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
 
-					<p>
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds y'' + y' + 5y = 3e^{6x}\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										<m>3e^{6x}</m> corresponds to row 5 of the table, so the initial <m>y_p</m> is
-										<me>
-											y_p = Ae^{6x}
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds y'' + 3y' - y = 2\sin(2x)\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										<m>2\sin(2x)</m> corresponds to row 6, so the initial <m>y_p</m> is 
-										<me>
-											y_p = A\sin(2x) + B\cos(2x)
-										</me>.
-										<em>Note, we include cosine in <m>y_p</m> even if it doesn't appear in <m>f(x)</m>.</em>
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds \omega''' + \omega' = 5\theta^2 + \theta + 1\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										<m>5\theta^2 + \theta + 1</m> corresponds to row 3, so the initial <m>y_p</m> is 
-										<me>
-											\omega_p = A\theta^2 + B\theta + C
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds 2\frac{dy}{dx} + 5y + 3 = 0</m></p>
-							<p>
-								<solution>
-									<p>
-										Moving the constant term, <m>3</m>, to the right and using row 1 gives
-										<me>
-											y_p = A
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds y'' -3y' + 0.5y = 14x^4\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										<m>x^4</m> matches row 4 (with <m>n=4</m>), so
-										<me>
-											y_p = Ax^4 + Bx^3 + Cx^2 + Dx + E
-										</me>.
-										<em>All powers of <m>x</m> up to <m>x^4</m> are included.</em>
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds y'' + 2y' + 3y = 2e^{w} - 1\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										Since <m>2e^{w} - 1</m> is the sum of an exponential and a constant, the initial <m>y_p</m> is
-										<me>
-											y_p = Ae^{w} + B
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds u'' - u = 3\sin(2\theta) + \cos(2\theta)\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										Since sine and cosine share the same input argument <m>2\theta</m>, we use row 6 to get the initial <m>y_p</m> as
-										<me>
-											y_p = A\sin(2\theta) + B\cos(2\theta)
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-						
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds \omega''' + \omega' = 5e^{3w} - 2\sin(4w)\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										Since <m>5e^{3w} - 2\sin(w)</m> is the sum of an exponential and sine, we get
-										<me>
-											y_p = Ae^{3w} + B\sin(w) + C\cos(w)
-										</me>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-						
-						<sidebyside widths="44% 56%" valign="middle">
-							<p><m>\ds P' + P = \cos(-3t) - \cos(5t)\vphantom{\frac{dy}{dx}}</m></p>
-							<p>
-								<solution>
-									<p>
-										Since <m>\cos(-3t) - \cos(5t)</m> is the sum of cosines with different input arguments, the initial <m>y_p</m> must include two forms:
-										<md>
-											<mrow> y_p = A\amp \sin(-3t) + B\cos(-3t) </mrow>
-											<mrow> \amp + C\sin(5t) + D\cos(5t) </mrow>
-										</md>.
-									</p>
-								</solution>
-							</p>
-						</sidebyside>
-					</p>
-				</statement>
-			</p>
-
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds u'' - u = 3\sin(2\theta) + \cos(2\theta)\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									Since sine and cosine share the same input argument <m>2\theta</m>, we use row 6 to get the initial <m>y_p</m> as
+									<me>
+										y_p = A\sin(2\theta) + B\cos(2\theta)
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+					
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds \omega''' + \omega' = 5e^{3w} - 2\sin(4w)\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									Since <m>5e^{3w} - 2\sin(w)</m> is the sum of an exponential and sine, we get
+									<me>
+										y_p = Ae^{3w} + B\sin(w) + C\cos(w)
+									</me>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+					
+					<sidebyside widths="44% 56%" valign="middle">
+						<p><m>\ds P' + P = \cos(-3t) - \cos(5t)\vphantom{\frac{dy}{dx}}</m></p>
+						<p>
+							<solution>
+								<p>
+									Since <m>\cos(-3t) - \cos(5t)</m> is the sum of cosines with different input arguments, the initial <m>y_p</m> must include two forms:
+									<md>
+										<mrow> y_p = A\amp \sin(-3t) + B\cos(-3t) </mrow>
+										<mrow> \amp + C\sin(5t) + D\cos(5t) </mrow>
+									</md>.
+								</p>
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</statement>
 		</example>
+	</paragraphs>
+
+	<paragraphs label="multiplying-yp-forms">
+		<title> Combining Basic Forms via Multiplication </title>
 
 		<p>
 			When <m>f(x)</m> is a product of function types (such as a polynomial times an exponential), <m>y_p</m> should be chosen as a product of their corresponding forms. The tricky part here is that multiplication often introduces unnecessary coefficients that can overly complicate your problem if not simplified. The next example illustrates this situation and addresses how to handle it.
@@ -454,7 +450,7 @@
 		</p>
 	</paragraphs>
 
-	<paragraphs>
+	<paragraphs label="modifying-yp">
 		<title> Modifying Particular Solutions </title>
 
 		<p>
@@ -696,348 +692,7 @@
 		</p>
 	</paragraphs>
 
-	<paragraphs>
-		<title> Undetermined Coefficient Method Steps </title>
-
-		<p>
-			In the previous subsections, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, and modify it when necessary to ensure independence from the homogeneous solution, <m>y_h</m>. Now, we complete the process by solving for the unknown coefficients in <m>y_p</m> to construct the full general solution.
-		</p>
-
-		<p>
-			This process, known as the <em>Method of Undetermined Coefficients</em>, consists of systematically substituting <m>y_p</m> into the differential equation, simplifying the terms, and solving for the unknown constants. The steps are outlined below.
-		</p>
-
-		<exploration xml:id="uc-method"><title> Undetermined Coefficients </title>
-			<p>
-				For the linear nonhomogeneous constant coefficient equation,
-			</p>
-			<men xml:id="uc-method-lncc-de">
-				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = f(x),
-			</men>
-			<p>
-				the general solution is given by <m>y = y_h + y_p</m>, where <m>y_h</m> is the homogeneous solution obtained from
-			</p>
-			<men xml:id="uc-method-lhcc-de">
-				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = 0,
-			</men>
-			<p>
-				and <m>y_p</m> is the particular solution that we now determine using the following steps:
-			</p>
-			<dl width="narrow">
-				<li xml:id="uc-step-1"><title> Solve for <m>y_h</m> </title>
-					<p>
-						Find the homogeneous solution <m>y_h</m> by solving the characteristic equation associated with <xref ref="uc-method-lhcc-de"/>.
-					</p>
-				</li>
-				<li xml:id="uc-step-2"><title> Select <m>y_p</m> </title>
-					<p>
-						Use <xref ref="yp-forms-table"/> and <xref ref="multiplying-yp-forms-table"/> to determine an appropriate initial form for <m>y_p</m> based on the structure of <m>f(x)</m>.
-					</p>
-				</li>
-				<li xml:id="uc-step-3"><title> Modify <m>y_p</m> if Necessary </title>
-					<p>
-						Ensure <m>y_p</m> does not contain any terms already present in <m>y_h</m>. If such terms exist, multiply the affected terms in <m>y_p</m> by <m>x</m> repeatedly until all overlap is removed.
-					</p>
-				</li>
-				<li xml:id="uc-step-4"><title> Determine the Coefficients </title>
-					<p>
-						Substitute <m>y_p</m> into <xref ref="uc-method-lncc-de"/>, compute all derivatives, and simplify. Then, collect like terms and match coefficients on both sides to create a system of equations for the unknown coefficients.
-					</p>
-				</li>
-				<li xml:id="uc-step-5"><title> Construct the General Solution </title>
-					<p>
-						Solve for the unknown coefficients, substitute them back into <m>y_p</m>, and express the final solution as <m>y = y_h + y_p</m>.
-					</p>
-				</li>
-			</dl>
-		</exploration>
-		
-		<p>
-			To illustrate the complete process, let's go through a full example step by step.
-		</p>
-
-		<example><title> General Solution of an LNCC Equation </title>
-			<p>
-				<statement>
-					<p>
-						For each of the following linear nonhomogeneous differential equations, find the general solution using the <xref ref="uc-method" text="custom">method of undetermined coefficients</xref>.
-						<ol marker="A.">
-							<li>
-								<p>
-									<m>\ds y'' - 2y' + y = 2x^2 + 3x</m>
-									<solution>
-
-										<p>
-											<term> <xref ref="uc-step-1" text="title"/>. </term>
-											The characteristic equation is
-											<me>
-												r^2 - 2r + 1 = 0
-											</me>,
-											which has the roots <m>r_1 = 1</m> and <m>r_2 = 1</m>, so
-											<me>
-												y_h = c_1 e^x + c_2 x e^x
-											</me>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-2" text="title"/>. </term>
-											From <m>2x^2 + 3x</m>, we get the initial form of <m>y_p</m>,
-											<me>
-												y_p = Ax^2 + Bx + C
-											</me>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-3" text="title"/>. </term>
-											Since <m>y_p</m> has no terms in common with <m>y_h</m>, no adjustment is needed.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-4" text="title"/>. </term>
-											Substituting <m>y_p</m> and its derivatives,
-											<me>
-												y_p' = 2Ax + B,\quad y_p'' = 2A
-											</me>,
-											into the equation and collecting like-terms gives
-											<md>
-												<mrow> (2A) - 2(2Ax + B) + (Ax^2 + Bx + C) = 2x^2 + 3x </mrow>
-												<mrow> 2A - 4Ax - 2B + Ax^2 + Bx + C = 2x^2 + 3x </mrow>
-												<mrow> \us{\large\text{1️⃣}}{\ul{A}}x^2 + \us{\large\text{2️⃣}}{\ul{(-4A + B)}}x + \us{\large\text{3️⃣}}{\ul{(2A - 2B + C)}} = \us{\large\text{1️⃣}}{\ul{2}}x^2 + \us{\large\text{2️⃣}}{\ul{3}}x + \us{\large\text{3️⃣}}{\ul{0}} </mrow>
-											</md>.
-										</p>
-
-										<p>
-											Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
-										</p>
-
-										<sidebyside widths="10% 40% 10% 15% 10%">
-											<p>
-												<md>
-													<mrow>	\amp\ \text{1️⃣}	</mrow>
-													<mrow>	\amp\ \text{2️⃣}	</mrow>
-													<mrow>	\amp\ \text{3️⃣}	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow> A			\amp = 2	</mrow>
-													<mrow> -4A + B		\amp = 3	</mrow>
-													<mrow> 2A - 2B + C	\amp = 0	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow>	\rightarrow	</mrow>
-													<mrow>	\rightarrow	</mrow>
-													<mrow>	\rightarrow	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow>	\amp\ A = 2  </mrow>
-													<mrow>	\amp\ B = 11 </mrow>
-													<mrow>	\amp\ C = 18  </mrow>
-												</md>
-											</p>
-											<p/>
-										</sidebyside>
-
-										<p>
-											Therefore, <m>\quad\ds y_p = 2x^2 + 11x + 18</m>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-5" text="title"/>. </term>
-											Finally, the general solution is
-											<me> 
-												y = y_h + y_p = c_1 e^x + c_2 x e^x + 2x^2 + 11x + 18
-											</me>.
-										</p>
-									</solution>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds y'' + 3y' - 28y = 14t - 1 + e^{4t}</m>
-									<solution>
-										<p>
-											<term> <xref ref="uc-step-1" text="title"/>. </term>
-											The characteristic equation is
-											<me>
-												r^2 + 3r - 28 = 0
-											</me>,
-											which has the roots <m>r_1 = 4</m> and <m>r_2 = -7</m>, so
-											<me>
-												y_h = c_1 e^{4t} + c_2 e^{-7t}
-											</me>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-2" text="title"/>. </term>
-											Since the constant term as a 1st degree polynomial plus an exponential, the initial <m>y_p</m> is
-											<me>
-												y_p = At + B + Ce^{4t}
-											</me>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-3" text="title"/>. </term>
-											Since <m>y_p</m> and <m>y_h</m> share an <m>e^{4t}</m> term, we multiply this term in <m>y_p</m> by <m>t</m> to get
-										</p>
-
-										<me>
-											y_p = At + B + C t e^{4t}
-										</me>.
-
-										<p>
-											<term> <xref ref="uc-step-4" text="title"/>. </term>
-											Substituting <m>y_p</m> and its derivatives,
-											<me>
-												y_p' = A + C e^{4t} + 4C t e^{4t},\quad y_p'' = 8C e^{4t} + 16C t e^{4t}
-											</me>,
-											into the equation and collecting like-terms gives
-											<md>
-												<mrow>
-													8C e^{4t} + 16C t e^{4t} \amp + 3(A + C e^{4t} + 4C t e^{4t})
-												</mrow>
-												<mrow>
-													\amp - 28(At + B + C t e^{4t})z = 14t - 1 + e^{4t}
-												</mrow>
-												<mrow>
-													8C e^{4t} + 16C t e^{4t} \amp + 3A + 3C e^{4t} + 12C t e^{4t}
-												</mrow>
-												<mrow>
-													\amp - 28At - 28B - 28C t e^{4t} = 14t - 1 + e^{4t}
-												</mrow>
-												<mrow>
-													\us{\large\text{1️⃣}}{\ul{11C}} e^{4t} - \us{\large\text{2️⃣}}{\ul{28A}} t \amp + \us{\large\text{3️⃣}}{\ul{3A - 28B}} = \us{\large\text{2️⃣}}{\ul{14}} t + \us{\large\text{3️⃣}}{\ul{-1}} + \us{\large\text{1️⃣}}{\ul{1}} e^{4t}
-												</mrow>
-											</md>.
-										</p>
-
-										<p>
-											Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
-										</p>
-
-										<sidebyside widths="10% 40% 10% 30% 10%">
-											<p>
-												<md>
-													<mrow>	\amp\ \text{1️⃣}	</mrow>
-													<mrow>	\amp\ \text{2️⃣}	</mrow>
-													<mrow>	\amp\ \text{3️⃣}	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow> 11C		\amp = 1	</mrow>
-													<mrow> -28A		\amp = 14	</mrow>
-													<mrow> 3A - 28B	\amp = -1	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow>	\rightarrow	</mrow>
-													<mrow>	\rightarrow	</mrow>
-													<mrow>	\rightarrow	</mrow>
-												</md>
-											</p>
-											<p>
-												<md>
-													<mrow>	\amp\ C = 1/11  </mrow>
-													<mrow>	\amp\ A = -1/2  </mrow>
-													<mrow>	\amp\ B = -1/56  </mrow>
-												</md>
-											</p>
-											<p/>
-										</sidebyside>
-
-										<p>
-											Therefore, <m>\quad\ds y_p = -\frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}</m>.
-										</p>
-
-										<p>
-											<term> <xref ref="uc-step-5" text="title"/>. </term>
-											With <m>y_h</m> and <m>y_p</m> in hand, we have
-											<me> 
-												y = y_h + y_p = c_1 e^{4t} + c_2 e^{-7t} - \frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}
-											</me>.
-										</p>
-									</solution>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds y'' - 3y' + 2y = 5e^{2x}</m>
-									<solution>
-										<p>
-											<term> <xref ref="uc-step-1" text="title"/>. </term>
-											The characteristic equation is:
-										</p>
-										<me>
-											r^2 - 3r + 2 = 0.
-										</me>
-										<p>
-											Factoring gives <m>(r - 1)(r - 2) = 0</m>, so the homogeneous solution is:
-										</p>
-										<me>
-											y_h = c_1 e^x + c_2 e^{2x}.
-										</me>
-
-										<p>
-											<term> <xref ref="uc-step-2" text="title"/>. </term>
-											Since <m>f(x) = 5e^{2x}</m>, we initially choose:
-										</p>
-										<me>
-											y_p = A e^{2x}.
-										</me>
-
-										<p>
-											<term> <xref ref="uc-step-3" text="title"/>. </term>
-											However, <m>e^{2x}</m> appears in <m>y_h</m>, so we modify <m>y_p</m> by multiplying by <m>x</m>:
-										</p>
-										<me>
-											y_p = A x e^{2x}.
-										</me>
-
-										<p>
-											<term> <xref ref="uc-step-4" text="title"/>. </term>
-											Compute derivatives and substitute into the differential equation:
-										</p>
-										<me>
-											y_p' = A e^{2x} + 2Ax e^{2x},
-										</me>
-										<me>
-											y_p'' = 2A e^{2x} + 2A e^{2x} + 4Ax e^{2x}.
-										</me>
-										<p>
-											Substituting into the equation and simplifying, we solve for <m>A</m> and find <m>A = 5/2</m>. Thus, the particular solution is:
-										</p>
-										<me>
-											y_p = \frac{5}{2} x e^{2x}.
-										</me>
-
-										<p>
-											<term> <xref ref="uc-step-5" text="title"/>. </term>
-											The general solution is:
-										</p>
-										<me>
-											y = c_1 e^x + c_2 e^{2x} + \frac{5}{2} x e^{2x}.
-										</me>
-									</solution>
-								</p>
-							</li>
-						</ol>
-					</p>
-				</statement>
-			</p>
-		</example>
-
-		<p>
-			These examples illustrate how each step in the method leads systematically to the final general solution. With practice, recognizing the necessary modifications and solving for coefficients will become second nature.
-		</p>
-	</paragraphs>
-
-	<objectives label="uc-method-wrapup">
+	<objectives label="selecting-the-particular-soln-wrapup">
 		<ul>
 			<li> 
 				
@@ -1045,7 +700,7 @@
 		</ul>
 	</objectives>
 
-	<fact label="uc-method-cyu">
+	<fact label="selecting-the-particular-soln-cyu">
 		<statement>
 			<p>
 				Answer the following questions related to the topic above and, unless stated otherwise, assume
@@ -1067,7 +722,7 @@
 					</li>
 				</ul>
 
-				<task label="chkpt-selecting-yp-1"><title> Selecting the particular form </title>
+				<task label="chkpt-selecting-the-particular-soln-1"><title> Selecting the particular form </title>
 					<statement>
 						<p>
 							Select the initial form of the particular solution for an LNCC equation with forcing function:
@@ -1128,7 +783,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-selecting-yp-2"><title> Sum of particular solution forms </title>
+				<task label="chkpt-selecting-the-particular-soln-2"><title> Sum of particular solution forms </title>
 					<statement>
 						<p>
 							Select the initial form of the particular solution for an LNCC equation with forcing function:
@@ -1189,7 +844,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-selecting-yp-3"><title> Product of particular solution forms </title>
+				<task label="chkpt-selecting-the-particular-soln-3"><title> Product of particular solution forms </title>
 					<statement>
 						<p>
 							Select the initial form of the particular solution for an LNCC equation with forcing function:
@@ -1250,7 +905,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-selecting-yp-4"><title> Matching single term forcing functions to the particular form </title>
+				<task label="chkpt-selecting-the-particular-soln-4"><title> Matching single term forcing functions to the particular form </title>
 					<statement>
 						<p>
 							By dragging from left to right, match the forcing functions, on the left, to an appropriate initial form of <m>y_p</m>, on the right.
@@ -1280,7 +935,7 @@
 					</cardsort>
 				</task>
 
-				<task label="chkpt-selecting-yp-5"><title> Matching multiple term forcing functions to the particular form </title>
+				<task label="chkpt-selecting-the-particular-soln-5"><title> Matching multiple term forcing functions to the particular form </title>
 					<statement>
 						<p>
 							By dragging from left to right, match the forcing functions, on the left, to an appropriate initial form of <m>y_p</m>, on the right.
@@ -1342,7 +997,7 @@
 					</cardsort>
 				</task>
 
-				<task label="chkpt-selecting-yp-6"><title> TITLE </title>
+				<task label="chkpt-selecting-the-particular-soln-6"><title> TITLE </title>
 					<statement>
 						<p>
 							Suppose <me>y'' - 4y' + 3y = 6e^x</me>. Which of the following is the correct selection for <m>y_p</m>?
@@ -1392,7 +1047,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-modifying-yp-1"><title> TITLE </title>
+				<task label="chkpt-selecting-the-particular-soln-7"><title> TITLE </title>
 					<statement>
 						<p>
 							Consider the linear non-homogeneous constant coefficient equation
@@ -1458,7 +1113,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-modifying-yp-2"><title> TITLE </title>
+				<task label="chkpt-selecting-the-particular-soln-8"><title> TITLE </title>
 					<statement>
 						<p>
 							Which statement best describes the next action you should take when the particular solution, <m>y_p</m>, has a like-term with the homogeneous solution, <m>y_h</m>?
@@ -1516,7 +1171,7 @@
 					</choices>
 				</task>
 
-				<task label="chkpt-modifying-yp-3"><title> TITLE </title>
+				<task label="chkpt-selecting-the-particular-soln-9"><title> TITLE </title>
 					<statement>
 						<p>
 							If an equation has the forcing function and homogeneous solution,
@@ -1577,116 +1232,7 @@
 						</choice>
 					</choices>
 				</task>
-
-				<task label="chkpt-uc-steps-1"><title> TITLE </title>
-					<statement>
-						<p>
-							Which of the following is NOT a step in finding the coefficients of the particular solution?
-						</p>
-					</statement>
-					<choices>
-						<choice>
-							<statement>
-								<p>
-									Plugging <m> y_p </m> into the differential equation. 
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This is the first step in determining the coefficients.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement>
-								<p>
-									Applying the initial conditions.
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Correct! The initial conditions are used to solve for the unknown constants in the general solution, not the particular solution.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<p>
-									Collecting and matching like-terms.
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This is a crucial step for finding the values of <m> A </m> and <m> B </m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<p>
-									Solving the resulting system of equations.
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This is the final step in finding the coefficients.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-
-				<task label="chkpt-uc-steps-2"><title> TITLE </title>
-					<statement>
-						<p>
-							What are the main steps for finding <m>y_p</m> using the method of undetermined coefficients?
-							</p>
-					</statement>
-					<choices>
-						<choice correct="no">
-							<statement>
-								<p>
-									Select the particular solution, integrate it, and solve for coefficients.
-								</p>
-							</statement>
-							<feedback>
-								<p>Incorrect. Integration is not a part of the method of undetermined coefficients.</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement>
-								<p>
-									Select the particular solution, modify it if necessary, and find its coefficients.
-								</p>
-							</statement>
-							<feedback>
-								<p>Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.</p>
-							</feedback>
-						</choice>
-						<choice correct="no">
-							<statement>
-								<p>
-									Select the homogeneous solution, modify for <m>y_p</m>, and differentiate.
-								</p>
-							</statement>
-							<feedback>
-								<p>Incorrect. The focus is on selecting and solving for <m>y_p</m>, not guessing the homogeneous solution.</p>
-							</feedback>
-						</choice>
-						<choice correct="no">
-							<statement>
-								<p>
-									Choose <m>y_p</m>, integrate the result, and verify the solution.
-								</p>
-							</statement>
-							<feedback>
-								<p>Incorrect. Integration is not a step in this method; it's about solving for coefficients of <m>y_p</m>.</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
 			</p>
 		</statement>
 	</fact>
-
 </section>

@@ -1,0 +1,516 @@
+<section label="uc-method">
+	<title> Undetermined Coefficients Method </title>
+	
+	<introduction>
+		<p>
+			In the previous section, we established that the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation consists of two parts: the <em>homogeneous solution</em> <m>y_h</m> and the <em>particular solution</em> <m>y_p</m>. While <m>y_h</m> is found by solving the characteristic equation of the corresponding homogeneous equation, finding <m>y_p</m> requires a different approach.
+		</p>
+
+		<p>
+			The <em>Method of Undetermined Coefficients</em> is a systematic technique for determining <m>y_p</m> when the nonhomogeneous term, <m>f(x)</m>, has a specific form. Instead of solving for <m>y_p</m> directly, we first assume its general structure based on the form of <m>f(x)</m>, then determine the unknown coefficients by substituting <m>y_p</m> into the differential equation and solving for them.
+		</p>
+
+		<p>
+			One limitation of this method is that it only works when <m>f(x)</m> is:
+		</p>
+
+		<ul marker="square">
+			<li><p>A Polynomial, such as <m>f(x) = 2x^2 + x - 4</m></p></li>
+			<li><p>An Exponential function, such as <m>f(x) = 5 e^{2 x}</m></p></li>
+			<li><p>Sine or Cosine functions, such as <m>f(x) = \sin(\pi x) - 3\cos(\pi x)</m></p></li>
+			<li><p>Any sum or product of these function types</p></li>
+		</ul>
+
+		<p>
+			Nevertheless, when applicable, it provides a straightforward and efficient way to determine the general solution.
+		</p>
+
+		<p>
+			In this section, we will develop the <em>Method of Undetermined Coefficients</em> by first identifying how to select an appropriate form for <m>y_p</m>, then learning how to modify <m>y_p</m> when it conflicts with <m>y_h</m>. Finally, we will apply the full method to solve LNCC equations step by step.
+		</p>
+	</introduction>
+
+	<paragraphs label="determining-coefficients">
+		<title> Determining the Coefficients </title>
+
+		<p>
+			Now that we can select an appropriate form for the particular solution <m>y_p</m> and modify it when necessary, we can proceed to determine the coefficients of <m>y_p</m>. This process involves substituting <m>y_p</m> into the LNCC equation, simplifying the resulting expression, and matching coefficients to solve for the unknown constants.
+		</p>
+
+		<p>
+			To illustrate this process, consider the following differential equation:
+
+			<me>y'' - 2y' + y = 2x^2 + 3x</me>
+		</p>
+
+		<p>
+			The characteristic equation is
+			<me>
+				r^2 - 2r + 1 = 0
+			</me>,
+			which has the roots <m>r_1 = 1</m> and <m>r_2 = 1</m>, so
+			<me>
+				y_h = c_1 e^x + c_2 x e^x
+			</me>.
+		</p>
+
+		<p>
+			Based on <m>2x^2 + 3x</m>, we guess the initial form of <m>y_p</m> as
+			<me>
+				y_p = Ax^2 + Bx + C
+			</me>.
+			Since <m>y_p</m> has no terms in common with <m>y_h</m>, no adjustment is needed.
+		</p>
+
+		<p>
+			Substituting <m>y_p</m> and its derivatives,
+			<me>
+				y_p' = 2Ax + B,\quad y_p'' = 2A
+			</me>,
+			into the equation and collecting like-terms gives
+			<md>
+				<mrow> (2A) - 2(2Ax + B) + (Ax^2 + Bx + C) = 2x^2 + 3x </mrow>
+				<mrow> 2A - 4Ax - 2B + Ax^2 + Bx + C = 2x^2 + 3x </mrow>
+				<mrow> \us{\ds\text{1️⃣}}{\ul{A}}x^2 + \us{\ds\text{2️⃣}}{\ul{(-4A + B)}}x + \us{\ds\text{3️⃣}}{\ul{(2A - 2B + C)}} = \us{\ds\text{1️⃣}}{\ul{2}}x^2 + \us{\ds\text{2️⃣}}{\ul{3}}x + \us{\ds\text{3️⃣}}{\ul{0}} </mrow>
+			</md>.
+		</p>
+		
+		<p>
+			Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
+		</p>
+
+		<sidebyside widths="10% 40% 10% 15% 10%">
+			<p>
+				<md>
+					<mrow>	\amp\ \text{1️⃣}	</mrow>
+					<mrow>	\amp\ \text{2️⃣}	</mrow>
+					<mrow>	\amp\ \text{3️⃣}	</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow> A			\amp = 2	</mrow>
+					<mrow> -4A + B		\amp = 3	</mrow>
+					<mrow> 2A - 2B + C	\amp = 0	</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow>	\rightarrow	</mrow>
+					<mrow>	\rightarrow	</mrow>
+					<mrow>	\rightarrow	</mrow>
+				</md>
+			</p>
+			<p>
+				<md>
+					<mrow>	\amp\ A = 2  </mrow>
+					<mrow>	\amp\ B = 11 </mrow>
+					<mrow>	\amp\ C = 18  </mrow>
+				</md>
+			</p>
+			<p/>
+		</sidebyside>
+
+		<p>
+			Therefore, <m>\quad\ds y_p = 2x^2 + 11x + 18</m>.
+		</p>
+
+		<p>
+			This gives us the particular solution <m>y_p</m>. The general solution is now just one step away:
+			<me> 
+				y = y_h + y_p = c_1 e^x + c_2 x e^x + 2x^2 + 11x + 18
+			</me>.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="uc-method-steps">
+		<title> Undetermined Coefficient Method Steps </title>
+
+		<p>
+			In the previous subsections, we determined how to select an appropriate form for the particular solution, <m>y_p</m>, and modify it when necessary to ensure independence from the homogeneous solution, <m>y_h</m>. Now, we complete the process by solving for the unknown coefficients in <m>y_p</m> to construct the full general solution.
+		</p>
+
+		<p>
+			This process, known as the <em>Method of Undetermined Coefficients</em>, consists of systematically substituting <m>y_p</m> into the differential equation, simplifying the terms, and solving for the unknown constants. The steps are outlined below.
+		</p>
+
+		<exploration xml:id="uc-method"><title> Undetermined Coefficients </title>
+			<p>
+				For the linear nonhomogeneous constant coefficient equation,
+			</p>
+			<men xml:id="uc-method-lncc-de">
+				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = f(x),
+			</men>
+			<p>
+				the general solution is given by <m>y = y_h + y_p</m>, where <m>y_h</m> is the homogeneous solution obtained from
+			</p>
+			<men xml:id="uc-method-lhcc-de">
+				a_n y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y' + a_0 y = 0,
+			</men>
+			<p>
+				and <m>y_p</m> is the particular solution that we now determine using the following steps:
+			</p>
+			<dl width="narrow">
+				<li xml:id="uc-step-1"><title> Solve for <m>y_h</m> </title>
+					<p>
+						Find the homogeneous solution <m>y_h</m> by solving the characteristic equation associated with <xref ref="uc-method-lhcc-de"/>.
+					</p>
+				</li>
+				<li xml:id="uc-step-2"><title> Select <m>y_p</m> </title>
+					<p>
+						Use <xref ref="yp-forms-table"/> and <xref ref="multiplying-yp-forms-table"/> to determine an appropriate initial form for <m>y_p</m> based on the structure of <m>f(x)</m>.
+					</p>
+				</li>
+				<li xml:id="uc-step-3"><title> Modify <m>y_p</m> if Necessary </title>
+					<p>
+						Ensure <m>y_p</m> does not contain any terms already present in <m>y_h</m>. If such terms exist, multiply the affected terms in <m>y_p</m> by <m>x</m> repeatedly until all overlap is removed.
+					</p>
+				</li>
+				<li xml:id="uc-step-4"><title> Determine the Coefficients </title>
+					<p>
+						Substitute <m>y_p</m> into <xref ref="uc-method-lncc-de"/>, compute all derivatives, and simplify. Then, collect like terms and match coefficients on both sides to create a system of equations for the unknown coefficients.
+					</p>
+				</li>
+				<li xml:id="uc-step-5"><title> Construct the General Solution </title>
+					<p>
+						Solve for the unknown coefficients, substitute them back into <m>y_p</m>, and express the final solution as <m>y = y_h + y_p</m>.
+					</p>
+				</li>
+			</dl>
+		</exploration>
+	</paragraphs>
+
+	<paragraphs label="uc-method-examples">
+		<title> Worked Examples </title>
+		
+		<p>
+			To illustrate the complete process, let's go through a full example step by step.
+		</p>
+
+		<example><title> General Solution of an LNCC Equation </title>
+			<statement>
+				<p>
+					For each of the following linear nonhomogeneous differential equations, find the general solution using the <xref ref="uc-method" text="custom">method of undetermined coefficients</xref>.
+					<ol marker="A.">
+						<li>
+							<p>
+								<m>\ds y'' + 3y' - 28y = 14t - 1 + e^{4t}</m>
+								<solution>
+									<p>
+										<term> <xref ref="uc-step-1" text="title"/>. </term>
+										The characteristic equation is
+										<me>
+											r^2 + 3r - 28 = 0
+										</me>,
+										which has the roots <m>r_1 = 4</m> and <m>r_2 = -7</m>, so
+										<me>
+											y_h = c_1 e^{4t} + c_2 e^{-7t}
+										</me>.
+									</p>
+
+									<p>
+										<term> <xref ref="uc-step-2" text="title"/>. </term>
+										Since the constant term as a 1st degree polynomial plus an exponential, the initial <m>y_p</m> is
+										<me>
+											y_p = At + B + Ce^{4t}
+										</me>.
+									</p>
+
+									<p>
+										<term> <xref ref="uc-step-3" text="title"/>. </term>
+										Since <m>y_p</m> and <m>y_h</m> share an <m>e^{4t}</m> term, we multiply this term in <m>y_p</m> by <m>t</m> to get
+									</p>
+
+									<me>
+										y_p = At + B + C t e^{4t}
+									</me>.
+
+									<p>
+										<term> <xref ref="uc-step-4" text="title"/>. </term>
+										Substituting <m>y_p</m> and its derivatives,
+										<me>
+											y_p' = A + C e^{4t} + 4C t e^{4t},\quad y_p'' = 8C e^{4t} + 16C t e^{4t}
+										</me>,
+										into the equation and collecting like-terms gives
+										<md>
+											<mrow>
+												8C e^{4t} + 16C t e^{4t} \amp + 3(A + C e^{4t} + 4C t e^{4t})
+											</mrow>
+											<mrow>
+												\amp - 28(At + B + C t e^{4t})z = 14t - 1 + e^{4t}
+											</mrow>
+											<mrow>
+												8C e^{4t} + 16C t e^{4t} \amp + 3A + 3C e^{4t} + 12C t e^{4t}
+											</mrow>
+											<mrow>
+												\amp - 28At - 28B - 28C t e^{4t} = 14t - 1 + e^{4t}
+											</mrow>
+											<mrow>
+												\us{\ds\text{1️⃣}}{\ul{11C}} e^{4t} - \us{\ds\text{2️⃣}}{\ul{28A}} t \amp + \us{\ds\text{3️⃣}}{\ul{3A - 28B}} = \us{\ds\text{2️⃣}}{\ul{14}} t + \us{\ds\text{3️⃣}}{\ul{-1}} + \us{\ds\text{1️⃣}}{\ul{1}} e^{4t}
+											</mrow>
+										</md>.
+									</p>
+
+									<p>
+										Matching the underlined coefficients leads to the following system of equations and solution for <m>A</m>, <m>B</m>, and <m>C</m>:
+									</p>
+
+									<sidebyside widths="10% 40% 10% 30% 10%">
+										<p>
+											<md>
+												<mrow>	\amp\ \text{1️⃣}	</mrow>
+												<mrow>	\amp\ \text{2️⃣}	</mrow>
+												<mrow>	\amp\ \text{3️⃣}	</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow> 11C		\amp = 1	</mrow>
+												<mrow> -28A		\amp = 14	</mrow>
+												<mrow> 3A - 28B	\amp = -1	</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow>	\rightarrow	</mrow>
+												<mrow>	\rightarrow	</mrow>
+												<mrow>	\rightarrow	</mrow>
+											</md>
+										</p>
+										<p>
+											<md>
+												<mrow>	\amp\ C = 1/11  </mrow>
+												<mrow>	\amp\ A = -1/2  </mrow>
+												<mrow>	\amp\ B = -1/56  </mrow>
+											</md>
+										</p>
+										<p/>
+									</sidebyside>
+
+									<p>
+										Therefore, <m>\quad\ds y_p = -\frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}</m>.
+									</p>
+
+									<p>
+										<term> <xref ref="uc-step-5" text="title"/>. </term>
+										With <m>y_h</m> and <m>y_p</m> in hand, we have
+										<me> 
+											y = y_h + y_p = c_1 e^{4t} + c_2 e^{-7t} - \frac{1}{2} t - \frac{1}{56} + \frac{1}{11} t e^{4t}
+										</me>.
+									</p>
+								</solution>
+							</p>
+						</li>
+						<li>
+							<p>
+								<m>\ds y'' - 3y' + 2y = 5e^{2x}</m>
+								<solution>
+									<p>
+										<term> <xref ref="uc-step-1" text="title"/>. </term>
+										The characteristic equation is:
+									</p>
+									<me>
+										r^2 - 3r + 2 = 0.
+									</me>
+									<p>
+										Factoring gives <m>(r - 1)(r - 2) = 0</m>, so the homogeneous solution is:
+									</p>
+									<me>
+										y_h = c_1 e^x + c_2 e^{2x}.
+									</me>
+
+									<p>
+										<term> <xref ref="uc-step-2" text="title"/>. </term>
+										Since <m>f(x) = 5e^{2x}</m>, we initially choose:
+									</p>
+									<me>
+										y_p = A e^{2x}.
+									</me>
+
+									<p>
+										<term> <xref ref="uc-step-3" text="title"/>. </term>
+										However, <m>e^{2x}</m> appears in <m>y_h</m>, so we modify <m>y_p</m> by multiplying by <m>x</m>:
+									</p>
+									<me>
+										y_p = A x e^{2x}.
+									</me>
+
+									<p>
+										<term> <xref ref="uc-step-4" text="title"/>. </term>
+										Compute derivatives and substitute into the differential equation:
+									</p>
+									<me>
+										y_p' = A e^{2x} + 2Ax e^{2x},
+									</me>
+									<me>
+										y_p'' = 2A e^{2x} + 2A e^{2x} + 4Ax e^{2x}.
+									</me>
+									<p>
+										Substituting into the equation and simplifying, we solve for <m>A</m> and find <m>A = 5/2</m>. Thus, the particular solution is:
+									</p>
+									<me>
+										y_p = \frac{5}{2} x e^{2x}.
+									</me>
+
+									<p>
+										<term> <xref ref="uc-step-5" text="title"/>. </term>
+										The general solution is:
+									</p>
+									<me>
+										y = c_1 e^x + c_2 e^{2x} + \frac{5}{2} x e^{2x}.
+									</me>
+								</solution>
+							</p>
+						</li>
+					</ol>
+				</p>
+			</statement>
+		</example>
+
+		<p>
+			These examples illustrate how each step in the method leads systematically to the final general solution. With practice, recognizing the necessary modifications and solving for coefficients will become second nature.
+		</p>
+	</paragraphs>
+
+	<objectives label="uc-method-wrapup">
+		<ul>
+			<li> 
+				
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="uc-method-cyu">
+		<statement>
+			<p>
+				Answer the following questions related to the topic above and, unless stated otherwise, assume
+				<ul marker="square">
+					<li>
+						<p>
+							The dependent variable is <m>y</m> and the independent variable is <m>x</m>.
+						</p>
+					</li>
+					<li>
+						<p>
+							All equations are linear, nonhomogeneous, and have constant coefficients (LNCC).
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>f(x)</m> refers to the forcing function of some LNCC equation.
+						</p>
+					</li>
+				</ul>
+
+				<task label="chkpt-uc-method-1"><title> TITLE </title>
+					<statement>
+						<p>
+							Which of the following is NOT a step in finding the coefficients of the particular solution?
+						</p>
+					</statement>
+					<choices>
+						<choice>
+							<statement>
+								<p>
+									Plugging <m> y_p </m> into the differential equation. 
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This is the first step in determining the coefficients.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									Applying the initial conditions.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Correct! The initial conditions are used to solve for the unknown constants in the general solution, not the particular solution.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									Collecting and matching like-terms.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This is a crucial step for finding the values of <m> A </m> and <m> B </m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<p>
+									Solving the resulting system of equations.
+								</p>
+							</statement>
+							<feedback>
+								<p>
+									Incorrect. This is the final step in finding the coefficients.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="chkpt-uc-method-2"><title> TITLE </title>
+					<statement>
+						<p>
+							What are the main steps for finding <m>y_p</m> using the method of undetermined coefficients?
+							</p>
+					</statement>
+					<choices>
+						<choice correct="no">
+							<statement>
+								<p>
+									Select the particular solution, integrate it, and solve for coefficients.
+								</p>
+							</statement>
+							<feedback>
+								<p>Incorrect. Integration is not a part of the method of undetermined coefficients.</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									Select the particular solution, modify it if necessary, and find its coefficients.
+								</p>
+							</statement>
+							<feedback>
+								<p>Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									Select the homogeneous solution, modify for <m>y_p</m>, and differentiate.
+								</p>
+							</statement>
+							<feedback>
+								<p>Incorrect. The focus is on selecting and solving for <m>y_p</m>, not guessing the homogeneous solution.</p>
+							</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									Choose <m>y_p</m>, integrate the result, and verify the solution.
+								</p>
+							</statement>
+							<feedback>
+								<p>Incorrect. Integration is not a step in this method; it's about solving for coefficients of <m>y_p</m>.</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+			</p>
+		</statement>
+	</fact>
+
+</section>
