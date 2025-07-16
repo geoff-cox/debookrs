@@ -1,7 +1,7 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> The Laplace Transform </title>
+<section label="laplace-transform">
+	<title> Common Transforms </title>
 	
 	<introduction>
-
 		<p>
 			Before we can apply the Laplace transform to solve differential equations, we need to understand the fundamental concept that makes the method work: transferring derivatives inside an integral. This section begins with a review of integration by parts, illustrating how derivatives applied to one function can be shifted onto another. 
 		</p>
@@ -9,588 +9,14 @@
 		<p>
 			Building on this idea, we define the Laplace transform as an integral that takes a function of <m>t</m> and produces a new function of <m>s</m>. Through detailed examples, we compute transforms of simple functions and highlight when these transforms exist. By the end of this section, you'll see how Laplace transforms simplify calculus problems into algebraic ones, and how this shift makes solving differential equations far more manageable.
 		</p>
-
 	</introduction>
-
-	<subsection><title> Transferring Derivatives Inside an Integral </title>
-
-		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
-
-			<p>
-				<exercise label="prep-derivative-transfer-1"><title> Exponential Derivatives </title>
-		
-					<statement>
-						<p>
-							Match each exponential function with its derivative. Assume that <m>s</m> is a constant.
-						</p>
-					</statement>
-			
-					<cardsort>
-						<match>
-							<premise><m>  e^{2t} </m></premise>
-							<response><m> 2e^{2t} </m></response>
-						</match>
-						<match>
-							<premise><m>  e^{-4t} </m></premise>
-							<response><m> -4e^{-4t} </m></response>
-						</match>
-						<match>
-							<premise><m>  e^{\pi t} </m></premise>
-							<response><m> \pi e^{\pi t} </m></response>
-						</match>
-						<match>
-							<premise><m>  e^{st} </m></premise>
-							<response><m> se^{st} </m></response>
-						</match>
-						<match>
-							<premise><m>  e^{-st} </m></premise>
-							<response><m> -se^{-st} </m></response>
-						</match>
-					</cardsort>
-			
-				</exercise>
-		
-				<exercise label="prep-derivative-transfer-2"><title> Integration by Parts </title>
-					<statement>
-						<p>
-							Click on the correct integration by parts formula.
-						</p>
-					</statement>
-					<areas>
-						<p/>
-						<p>
-							<sidebyside margins="10% 5%">
-								<p><area correct="no"> <m>\ds \int u dv = \int v du</m></area></p>
-								<p><area correct="no"> <m>\ds \int u dv = uv + \int v du</m></area></p>
-							</sidebyside>
-						</p>
-						<p>
-							<sidebyside margins="10% 5%">
-								<p><area correct="yes"><m>\ds \int u dv = uv - \int v du</m></area></p>
-								<p><area correct="no"> <m>\ds \int u dv = udv - \int u dv</m></area></p>
-							</sidebyside>
-						</p>
-					</areas>
-				</exercise>
-			</p>
-		
-		</reading-questions>
-
-		<p>
-			To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of the formula is:
-			<me>
-				\int u\,dv = uv - \int v\,du
-			</me>
-		</p>
-
-		<p>
-			If <m>u</m> and <m>v</m> are functions of <m>t</m> on <m>[a,b]</m>, then we can write a more detailed version that makes the transfer of derivatives clear:
-			<me>
-				\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }v}}{
-				\us{u}{ \us{\uparrow}{\ul{ 
-					u(t)
-				}}} \ 
-				\us{dv}{\us{\uparrow}{\ul{
-					{\color{RoyalBlue}\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
-				}}}
-				}
-				= \us{u}{\us{\uparrow}{\ul{ u(t) }}}\ \us{v}{\us{\uparrow}{\ul{ v(t) }}} \Big|_{a}^{b}
-				- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }u}}{
-					\us{v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
-					\us{du}{\us{\uparrow}{\ul{ {\color{RoyalBlue}\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
-				}
-			</me>
-		</p>
-
-		<p>
-			This version shows how integration by parts lets you shift a derivative from one function to another inside an integral. That becomes especially useful when <m>u(t) = e^{-st}</m> for some constant <m>s</m>.
-		</p>
-
-		<exercise label="chkpt-derivative-transfer-1"><title> Derivative Transfer Technique </title>
-			<statement>
-				<p>
-					Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement>Chain Rule</statement>
-					<feedback>
-						<p>
-							Incorrect. The chain rule is used for function compositions, not transferring derivatives within an integral.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>L'Hôpital's Rule</statement>
-					<feedback>
-						<p>
-							Incorrect. L'Hôpital's Rule helps evaluate indeterminate limits, not manipulate derivatives inside integrals.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>Integration by Parts</statement>
-					<feedback>
-						<p>
-							Correct! Integration by parts is the key tool that shifts derivatives between functions inside integrals.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>Implicit Differentiation</statement>
-					<feedback>
-						<p>
-							Incorrect. Implicit differentiation helps with equations where the dependent variable isn't isolated.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
-
-		<p>
-			Let's try this with a specific example. Suppose <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m>, so the formula becomes:
-			<me>
-			\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
-				e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
-			} = e^{-st} \ y(t) \Big|_{a}^{b}
-			- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
-				{\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ y(t)\ dt
-			}
-			</me>
-		</p>
-
-		<aside><title> Clarification </title>
-			<p>
-			Since the integral is in terms of <m>t</m>, <m>s</m> is a constant and can be pulled out of the integral.
-			</p>
-		</aside>
-
-		<exercise label="chkpt-derivative-transfer-2"><title> Key Concepts Behind Laplace Transforms </title>
-			<statement>
-				<p>
-					Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement>Chain Rule</statement>
-					<feedback>
-						<p>
-							Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>Product Rule</statement>
-					<feedback>
-						<p>
-							No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>Integration by Parts</statement>
-					<feedback>
-						<p>
-							Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>Properties of Exponential Functions</statement>
-					<feedback>
-						<p>
-							Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
-		
-		<p>
-			The derivative that was initially on <m>y'</m> is now on <m>e^{-st}</m>. Simplifying the integral on the right-hand side yields:
-			<me>
-			\int_{a}^{b} e^{-st} y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
-			</me>
-		</p>
-
-		<p>
-			We can now make two important observations. First, the left-hand side, which originally had a derivative on <m>y</m>, has been rewritten with no derivatives of <m>y</m> at all. Second, the only difference between the two integrals is a factor of <m>s</m>. In a way, the derivative has been encoded inside <m>s</m>.
-		</p>
-
-		<exercise label="chkpt-derivative-transfer-4"><title> Integration by Parts on <m>t^2 y'</m> </title>
-			<statement>
-				<p>
-					Select the result of applying integration by parts to 
-					<me>
-						\int t^2 \ y'\ dt
-					</me>.
-				</p>
-				<p>
-					<em>Don't think of this as a Calculus exercise. Instead, try to think about transferring derivatives.</em>
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int y\ dt</m></statement>
-					<feedback>
-						<p>
-							Incorrect. A correct application of integration by parts must include the right choice of <m>u</m> and <m>dv</m>. Try again.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2 y\ dt</m></statement>
-					<feedback>
-						<p>
-							Incorrect. Be sure you're transferring the derivative and integrating the right part.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds \int t^2 \ y'\ dt = 2\int t y\ dt</m></statement>
-					<feedback>
-						<p>
-							Incorrect. This result skips important parts of the integration by parts formula.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - 2\int t y\ dt</m></statement>
-					<feedback>
-						<p>
-							Correct! Integration by parts with <m>u = t^2</m> and <m>dv = y'\,dt</m> gives this result.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
-
-		<p>
-			This idea, transferring derivatives onto <m>e^{-st}</m> and ending up with a multiple of the original function, is exactly what makes the Laplace transform method work. We'll explore that in the next section.
-		</p>
-
-		<exercise label="chkpt-derivative-transfer-summary"><title> Reflection </title>
-			<statement>
-				<p>
-					In your own words, explain how integration by parts allows the Laplace transform method to “remove” derivatives from a differential equation. What role does the exponential <m>e^{-st}</m> play?
-				</p>
-			</statement>
-			<response />
-		</exercise>
-	
-	</subsection>
-
-	<subsection><title> Laplace Transform Definition </title>
-
-		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
-
-			<p>
-				<exercise label="prep-lt-def-1"><title> Exponential Integration Warm-Up </title>
-					<statement>
-						<p>
-							Evaluate: <m>\ds\int_0^b e^{-3t}\ dt</m>
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes"><statement><m>\quad\ds \frac{1 - e^{-3b}}{3}</m></statement></choice>
-						<choice><statement><m>\quad\ds \frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{3b}</m></statement></choice>
-					</choices>
-				</exercise>
-		
-				<exercise label="prep-lt-def-2"><title> Exponential Behavior </title>
-					<statement>
-						<p>
-							What happens to <m>e^{-st}</m> as <m>t \to \infty</m> when <m>s > 0</m>?
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes"><statement>It decays to 0.</statement></choice>
-						<choice><statement>It grows to infinity.</statement></choice>
-						<choice><statement>It stays constant.</statement></choice>
-						<choice><statement>It oscillates.</statement></choice>
-					</choices>
-				</exercise>
-			</p>
-			  
-		</reading-questions>
-
-		<p>
-			In the previous section, we saw that multiplying a differential equation by <m>e^{-st}</m> and integrating allows us to shift derivatives away from the unknown function and onto the exponential. However, most differential equations don't come with an <m>e^{-st}</m> built in, we have to introduce it ourselves.
-		</p>
-
-		<p>
-			Let's explore this process using a concrete example.
-		</p>
-
-		<p>
-			Suppose we are given the equation:
-			<men xml:id="lt-model-eqn">
-			y'' - 9y = 10e^{2t}
-			</men>
-		</p>
-
-		<p>
-			We multiply both sides by <m>e^{-st}</m> and integrate with respect to <m>t</m>:
-			<me>
-			\int \left(y'' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt.
-			</me>
-			Using the linearity of the integral, we can rewrite this as:
-			<me>
-			\ub{\int e^{-st} y''\ dt}_{\text{transfer 2 derivatives}}
-			- 9\ub{\int e^{-st} y\ dt}_{\text{leave as-is}}
-			= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\text{integrate directly}}.
-			</me>
-		</p>
-
-		<p>
-			This transformation rewrites the differential equation into a form where each term is ready for conversion, either by transferring derivatives or by direct integration. This leads us to the central idea behind the Laplace transform.
-		</p>
-
-		<exercise label="chkpt-lt-defn-1"><title> Key Steps in Finding a Laplace Transform </title>
-			<statement>
-			<p>
-				Fill-in-the-blank: The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m>.
-			</p>
-			</statement>
-			<choices randomize="yes">
-			<choice>
-				<statement><m>e^{-t},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement><m>e^{-st},</m> integrating</statement>
-				<feedback>
-				<p>
-					Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{st},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, the exponent should have a negative sign: <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{-st},</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the Laplace transform requires integration, not differentiation.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>s,</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
-				</p>
-				</feedback>
-			</choice>
-			</choices>
-		</exercise>
-
-		<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
-			<statement>
-				<p>
-					Given a function <m>f(t)</m> defined for <m>t \geq 0</m>, its Laplace transform, denoted <m>\lap{f(t)}</m>, is defined by
-					<me>
-						\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt,
-					</me>
-					provided the integral converges. The result is a new function, typically written as <m>F(s)</m>:
-					<me>
-						F(s) = \lap{f(t)}.
-					</me>
-				</p>
-			</statement>
-		</definition>
-
-		<exercise label="chkpt-lt-defn-2"><title> Identify the Error in the Laplace Transform Definition </title>
-			<statement>
-			<p>
-				Click on the incorrect part of the Laplace transform definition.
-			</p>
-			</statement>
-			<areas>
-			<p/>
-			<sidebyside widths="28% 44% 28%">
-				<p/>
-				<p>
-				<area correct="no"><m>\ds \laplacesym</m></area>
-				<m>\big\{</m>
-				<area correct="no"><m>f(t)</m></area>
-				<m>\big\}</m>
-				<m>=</m>
-				<area correct="no"><m>\ds \int_{0}^{\infty}</m></area>
-				<area correct="yes"><m>\ds e^{st}</m></area>
-				<area correct="no"><m>\ds f(t)</m></area>
-				<area correct="no"><m>\ds dt</m></area>
-				</p>
-				<p/>
-			</sidebyside>
-			</areas>
-		</exercise>
-
-		<p>
-			Since the upper limit of the integral is <m>\infty</m>, this is an improper integral. From calculus, you might recall that improper integrals are evaluated by taking a limit:
-			<me>
-				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
-			</me>
-		</p>
-
-		<p>
-			During the first step, treat <m>s</m> and <m>b</m> as constants and compute the integral with respect to <m>t</m>. Then, in the second step, take the limit as <m>b \to \infty</m>. If the result converges to a finite value, the Laplace transform exists.
-		</p>
-
-		<exercise label="chkpt-lt-defn-3"><title> Convergence Requirement for Laplace Transforms </title>
-			<statement correct="yes">
-				<p>
-					The Laplace transform only exists if the improper integral,
-					<me>
-						\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt
-					</me>
-					converges.
-				</p>
-			</statement>
-			<feedback>
-				<p>
-					This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform does not exist.
-				</p>
-			</feedback>
-		</exercise>
-
-		<p>
-			Let's walk through two examples to see how this definition works in practice.
-		</p>
-
-		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
-			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the constant function <m>f(t) = 5</m>.
-					</p>
-				</statement>
-			</p>
-
-			<solution><title> <m>\rightarrow \lap{5}</m> </title>
-				<p>
-					By the definition above, we have the improper integral
-					<men xml:id="lt-def-example-eqn-1">
-						\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
-					</men>.
-				</p>
-
-				<p>
-					Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
-					<me>
-						I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
-					</me>.
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
-					<md>
-						<mrow>
-							\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
-								\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
-						</mrow>
-						<mrow>
-								\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
-						</mrow>
-					</md>
-				</p>
-		
-				<p>
-					Since the limit, <m>L</m> as <m>b \to \infty</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
-					<aside>
-						<p>
-							Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
-						</p>
-					</aside>
-					<ol>
-						<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
-						<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
-					</ol>
-					By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
-					<me>
-						\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
-					</me>.
-				</p>
-			</solution>
-		</example>
-
-		<example><title> Laplace Transform of <m>t</m> </title>
-			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the function <m>f(t)=t</m>.
-					</p>
-				</statement>
-			</p>
-			<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
-
-				<p>
-					Applying the definition and writing the integral as a limit, we have
-					<me>
-						\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
-					</me>.
-				</p>
-
-				<p>
-					Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
-					<md>
-						<mrow>
-							{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
-						</mrow>
-					</md>
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
-					<md>
-						<mrow>
-							\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
-						</mrow>
-					</md> 
-				</p>
-
-				<p>
-					As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
-					<me>
-						\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
-					</me>.
-				</p>
-			</solution>
-		</example>
-
-		<p>
-			These examples illustrate the typical process of computing a Laplace transform. Moving forward, we'll use this definition to build a table of transforms, which will become a powerful tool for solving differential equations.
-		</p>
-
-	</subsection>
   
-	<subsection><title> Common Transforms </title>
+	<paragraphs><title> Common Transforms </title>
 
-		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+		<lemma><title> 👀 <em>Reading Preparation</em> </title>
 
 			<p>
-				<exercise label="prep-common-transforms-1"><title> Exponential Integration Rules </title>
+				<task label="prep-common-transforms-1"><title> Exponential Integration Rules </title>
 					<statement>
 						<p>
 							Match each exponential integrand with its antiderivative. Assume <m>K</m> is a constant.
@@ -614,9 +40,9 @@
 							<response><m>\ds \frac{1}{7 - s} e^{(7-s)t} + C</m></response>
 						</match>
 					</cardsort>
-				</exercise>
+				</task>
 		
-				<exercise label="prep-common-transforms-2"><title> How is <m>s</m> Treated During Integration? </title>
+				<task label="prep-common-transforms-2"><title> How is <m>s</m> Treated During Integration? </title>
 					<statement>
 						<p>
 							In the Laplace transform integral, the variable <m>s</m> is treated as a <fillin characters="10" /> during the integration process.
@@ -656,9 +82,9 @@
 							</feedback>
 						</choice>
 					</choices>
-				</exercise>
+				</task>
 		
-				<exercise label="prep-common-transforms-3"><title> Choosing <m>u</m> and <m>dv</m> in <m>\int t^2 e^{-st} dt</m> </title>
+				<task label="prep-common-transforms-3"><title> Choosing <m>u</m> and <m>dv</m> in <m>\int t^2 e^{-st} dt</m> </title>
 					<statement>
 						<p>
 							Which functions should you choose as <m>u</m> and <m>dv</m> when applying integration by parts to <m>\int t^2 e^{-st} dt</m>?
@@ -684,11 +110,11 @@
 							</feedback>
 						</choice>
 					</choices>
-				</exercise>
+				</task>
 		
 			</p>
 		
-		</reading-questions>
+		</lemma>
 
 		<p>
 			Now that we've defined the Laplace transform, it's time to build our toolbox. In this section, we'll compute the Laplace transforms of several commonly used functions:
@@ -791,7 +217,7 @@
 			</p>
 		</example>
 
-		<exercise label="chkpt-common-exp-1"><title> Convergence in <m>\lap{e^{7t}}</m> </title>
+		<task label="chkpt-common-exp-1"><title> Convergence in <m>\lap{e^{7t}}</m> </title>
 			<statement>
 				<p>
 					Why does the integral for <m>\lap{e^{7t}}</m> converge only if <m>s \gt 7</m>?
@@ -823,7 +249,7 @@
 					</feedback>
 				</choice>
 			</choices>
-		</exercise>		
+		</task>		
 
 		<p>
 			Next, we compute the transforms of the polynomial terms, <m>t</m> and <m>t^2</m>, and use the result to uncover a recursive structure that helps generalize to <m>t^n</m>.
@@ -964,7 +390,7 @@
 			</p>
 		</example>
 
-		<exercise label="chkpt-common-poly-2"><title> Limit of <m>b^3/e^{6b}</m> </title>
+		<task label="chkpt-common-poly-2"><title> Limit of <m>b^3/e^{6b}</m> </title>
 			<statement>
 				<p>
 					What is the value of <m>\ds \lim_{b \to \infty} \frac{b^3}{e^{6b}}</m>?
@@ -996,7 +422,7 @@
 					</feedback>
 				</choice>
 			</choices>
-		</exercise>
+		</task>
 		
 		<p>
 			Finally, we move on to trigonometric functions, which show up in systems with oscillatory behavior. The transform of <m>\cos(bt)</m> is shown here, which provides a model for deriving the corresponding sine transform.
@@ -1126,15 +552,15 @@
 			The transforms derived in this section will serve as the foundational building blocks in the Laplace method. In the next section, we'll expand this toolbox further by exploring the rules and properties of the Laplace transform that allow us to combine and manipulate transforms more flexibly.
 		</p>
 
-	</subsection>
+	</paragraphs>
 
-	<subsection><title> Properties and Rules </title>
+	<paragraphs><title> Properties and Rules </title>
 
-		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+		<lemma><title> 👀 <em>Reading Preparation</em> </title>
 
 			<p>
 		
-				<exercise label="prep-lt-properties-1"><title> Match the Term Type </title>
+				<task label="prep-lt-properties-1"><title> Match the Term Type </title>
 					<statement>
 						<p>
 							Match each expression with its most appropriate mathematical type.
@@ -1158,9 +584,9 @@
 							<response>polynomial scaling</response>
 						</match>
 					</cardsort>
-				</exercise>
+				</task>
 		
-				<exercise label="prep-lt-properties-2"><title> Integration Recall </title>
+				<task label="prep-lt-properties-2"><title> Integration Recall </title>
 					<statement>
 						<p>
 							Click on all statements that correctly describe properties of definite integrals.
@@ -1174,9 +600,9 @@
 							<area correct="no">You cannot take the derivative of an integral</area>
 						</p>
 					</areas>
-				</exercise>
+				</task>
 		
-				<exercise label="prep-lt-properties-3"><title> Spot the Shift </title>
+				<task label="prep-lt-properties-3"><title> Spot the Shift </title>
 					<statement>
 						<p>
 							Which of the following expressions represent a shift or modification of a known function? Select all that apply.
@@ -1189,9 +615,9 @@
 						<choice correct="yes"><statement><m>t^2 \cdot f(t)</m></statement></choice>
 						<choice correct="no"><statement><m>f(t)^2</m></statement></choice>
 					</choices>
-				</exercise>
+				</task>
 		
-				<exercise label="prep-lt-properties-4"><title> Derivative Practice </title>
+				<task label="prep-lt-properties-4"><title> Derivative Practice </title>
 					<statement>
 						<p>
 							Which of the following are correct derivatives?
@@ -1204,11 +630,11 @@
 						<area correct="no"><m>\frac{d}{dt}[5] = 5</m></area>
 						<area correct="yes"><m>\frac{d}{dt}[\sin(3t)] = 3\cos(3t)</m></area>
 					</areas>
-				</exercise>
+				</task>
 				
 			</p>
 		
-		</reading-questions>
+		</lemma>
 
 		<p>
 			Now that we've built a foundation of basic Laplace transforms, it's time to expand our toolbox by exploring the key properties that make the Laplace transform such a powerful problem-solving technique. These properties allow us to transform combinations of functions, like sums, products, and derivatives, more easily and systematically.
@@ -1218,7 +644,7 @@
 			In this section, you'll learn how the Laplace transform behaves under linear operations, how exponential functions shift the resulting transform, and how to efficiently handle derivatives and polynomial factors. Each property is introduced with a formal statement, illustrated through worked examples, and connected to its role in solving differential equations. Mastery of these rules is essential for applying the Laplace method effectively.
 		</p>
 
-		<subsubsection><title> Sums and Constant Multiples (Linearity) </title>
+		<paragraphs><title> Sums and Constant Multiples (Linearity) </title>
 
 			<p>
 				As with integrals, we can pull out constants from Laplace transforms and apply them, term-by-term, to sums and differences of functions. This linear property streamlines the computation of Laplace transforms when working with expressions that combine simpler functions.
@@ -1282,7 +708,7 @@
 				</solution>
 			</example>
 
-			<exercise label="chkpt-21"><title> Invalid Uses of Linearity </title>
+			<task label="chkpt-21"><title> Invalid Uses of Linearity </title>
 				<statement>
 					<p>
 						Which of the following are NOT correct applications of the linearity property?
@@ -1322,9 +748,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-22"><title> Transform of <m>7\cos t + 2</m> </title>
+			<task label="chkpt-22"><title> Transform of <m>7\cos t + 2</m> </title>
 				<statement>
 					<p>
 						<m>\ds\lap{7\cos t + 2} = </m> <fillin characters="10" />
@@ -1364,11 +790,11 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-		</subsubsection>
+		</paragraphs>
 
-		<subsubsection><title> Multiplication by <m>e^{at}</m> (Exponential Shifting) </title>
+		<paragraphs><title> Multiplication by <m>e^{at}</m> (Exponential Shifting) </title>
 
 			<p>
 				The translation property, also known as the first shifting theorem, allows us to handle functions multiplied by an exponential term, <m>e^{at}</m>. This property is particularly useful for simplifying the Laplace transforms of products of exponential functions and other functions, such as sine, cosine, or polynomials.
@@ -1480,7 +906,7 @@
 				</p>
 			</example>
 
-			<exercise label="chkpt-23"><title> Transform of <m>e^{5t} \sin(2t)</m> </title>
+			<task label="chkpt-23"><title> Transform of <m>e^{5t} \sin(2t)</m> </title>
 				<statement>
 					<p>
 						<m>\quad \lap{e^{5t} \sin(2t)} = </m> <fillin characters="15" />
@@ -1520,9 +946,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-24"><title> Transform of <m>e^{2t} t^3</m> </title>
+			<task label="chkpt-24"><title> Transform of <m>e^{2t} t^3</m> </title>
 				<statement>
 					<p>
 						<m>\quad \lap{e^{2t} t^3} = </m> <fillin characters="15" />
@@ -1562,9 +988,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-25"><title> Transform of <m>e^{4t} \cos(5t)</m> </title>
+			<task label="chkpt-25"><title> Transform of <m>e^{4t} \cos(5t)</m> </title>
 				<statement>
 					<p>
 						<m>\quad \lap{e^{4t} \cos(5t)} = </m> <fillin characters="15" />
@@ -1604,7 +1030,7 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 
 			<p>
 				By applying this property to the functions <m>t^n</m>, <m>\cos(bt)</m>, and <m>\sin(bt)</m>, we can derive additional common Laplace transforms:
@@ -1682,7 +1108,7 @@
 				</p>
 			</example>
 
-			<exercise label="chkpt-27"><title> Shifted Transform of <m>e^{2t}f(t)</m> </title>
+			<task label="chkpt-27"><title> Shifted Transform of <m>e^{2t}f(t)</m> </title>
 				<statement>
 					<p>
 						If <m>\ds\lap{f(t)} = \frac{1}{s(s+1)}</m>, what is the Laplace transform of <m>e^{2t}f(t)</m>?
@@ -1722,11 +1148,11 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 
-		</subsubsection>
+		</paragraphs>
 
-		<subsubsection><title> Transforms of Derivatives (Derivative Transfer) </title>
+		<paragraphs><title> Transforms of Derivatives (Derivative Transfer) </title>
 
 			<p>
 				The derivative property of the Laplace transform is one of its most powerful aspects, especially when solving differential equations. This property allows us to transform differential equations into algebraic equations, making them easier to solve.
@@ -1802,7 +1228,7 @@
 				</statement>
 			</theorem>
 
-			<exercise label="chkpt-28"><title> Transform of <m>f'(t)</m> with Incorrect Sign </title>
+			<task label="chkpt-28"><title> Transform of <m>f'(t)</m> with Incorrect Sign </title>
 				<statement correct="no">
 					<p>
 						The Laplace transform of the derivative <m>f'(t)</m> is given by <m>s\lap{f(t)} + f(0)</m>.
@@ -1813,9 +1239,9 @@
 						False. The correct formula is <m>s\lap{f(t)} - f(0)</m>.
 					</p>
 				</feedback>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-29"><title> Derivative Property Converts to Algebra </title>
+			<task label="chkpt-29"><title> Derivative Property Converts to Algebra </title>
 				<statement correct="yes">
 					<p>
 						The derivative property of the Laplace transform allows us to convert differential equations into algebraic equations.
@@ -1826,7 +1252,7 @@
 						True. The derivative property simplifies differential equations into algebraic equations by transforming derivatives into powers of <m>s</m>.
 					</p>
 				</feedback>
-			</exercise>
+			</task>
 
 			<p>
 				This result is crucial for solving differential equations. Essentially, it allows us to eliminate derivatives from an equation, transforming the problem into an algebraic form that's easier to solve. But there's more, this property also works recursively, allowing us to handle higher-order derivatives as well.
@@ -1861,7 +1287,7 @@
 				</md>
 			</p>
 
-			<exercise label="chkpt-30"><title> Transform of the Derivative of <m>e^t\cos(t)</m> </title>
+			<task label="chkpt-30"><title> Transform of the Derivative of <m>e^t\cos(t)</m> </title>
 				<statement>
 					<p>
 						What value goes in the blank?
@@ -1902,9 +1328,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-31"><title> Transform of <m>y''</m> with Given Initial Conditions </title>
+			<task label="chkpt-31"><title> Transform of <m>y''</m> with Given Initial Conditions </title>
 				<statement>
 					<p>
 						If <m>y(0) = 0</m> and <m>y'(0) = 1</m>, then <m>\ds\lap{y''} = s^2Y - <fillin characters="1"/></m>.
@@ -1936,9 +1362,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-32"><title> Transform of <m>y'(t)</m> When <m>y(0) = 0</m> </title>
+			<task label="chkpt-32"><title> Transform of <m>y'(t)</m> When <m>y(0) = 0</m> </title>
 				<statement>
 					<p>
 						What is the correct Laplace transform of <m>y'(t)</m> given that <m>y(0) = 0</m>?
@@ -1970,9 +1396,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-33"><title> Transform of <m>y''</m> Using General Formula </title>
+			<task label="chkpt-33"><title> Transform of <m>y''</m> Using General Formula </title>
 				<statement>
 					<p>
 						The Laplace transform of the second derivative <m>y''</m> is given by <m>s^2Y - <fillin characters="3"/></m>.
@@ -2004,11 +1430,11 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 
-		</subsubsection>
+		</paragraphs>
 
-		<subsubsection><title> Multiplication by <m>t^n</m> (Laplace Derivatives) </title>
+		<paragraphs><title> Multiplication by <m>t^n</m> (Laplace Derivatives) </title>
 			
 			<p>
 				The final property we'll explore is how the Laplace transform handles functions multiplied by a power of <m>t</m>. This property is especially useful when dealing with polynomial terms in differential equations.
@@ -2072,7 +1498,7 @@
 				</statement>
 			</theorem>
 
-			<exercise label="chkpt-34"><title> Derivative Order for <m>\lap{t^2 f(t)}</m> </title>
+			<task label="chkpt-34"><title> Derivative Order for <m>\lap{t^2 f(t)}</m> </title>
 				<statement>
 					<p>
 						The Laplace transform of <m>\ds t^2 f(t) </m> is equal to <fillin characters="10" /> derivative of the Laplace transform of <m>\ds f(t) </m> with respect to <m>s</m>.
@@ -2112,9 +1538,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 				
-			<exercise label="chkpt-35"><title> Transform of <m>t^3 f(t)</m> via Derivatives </title>
+			<task label="chkpt-35"><title> Transform of <m>t^3 f(t)</m> via Derivatives </title>
 				<statement>
 					<p>
 						What is the Laplace transform of <m>t^3 f(t)</m> in terms of <m>\lap{f(t)}</m>?
@@ -2154,9 +1580,9 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 			
-			<exercise label="chkpt-36"><title> Apply Derivative Rule to <m>\lap{tf(t)}</m> </title>
+			<task label="chkpt-36"><title> Apply Derivative Rule to <m>\lap{tf(t)}</m> </title>
 				<statement>
 					<p>
 						Hypothetically, if <m>\lap{f(t)} = \cos(2s)</m>, then <m>\lap{tf(t)} = </m> <fillin characters="10" />
@@ -2202,7 +1628,7 @@
 						</feedback>
 					</choice>
 				</choices>
-			</exercise>
+			</task>
 
 			<example>
 				<p>
@@ -2289,13 +1715,101 @@
 				This shows that multiplying a function by <m>t</m> inside a Laplace transform is equivalent to taking the derivative of the Laplace transform of the same function, multiplied by <m>-1</m>. It turns out that each additional power of <m>t</m> adds another negative sign and derivative.
 			</p>
 
-		</subsubsection>
+		</paragraphs>
 
-	</subsection>
+	</paragraphs>
 
-	<subsection><title> Table of Laplace Transforms </title>
+	<table xml:id="lt-table-L1-L12">
+		<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center" width="100%">
+			<row bottom="none">
+				<cell/>
+				<cell>Forcing Function</cell>
+				<cell>Laplace Transform</cell>
+				<cell>Existence</cell>
+			</row>
+			<row>
+				<cell/>
+				<cell><me>f(t)</me></cell>
+				<cell><me>\lap{f(t)} = F(s)</me></cell>
+				<cell>Condition</cell>
+			</row>
+			<row>
+				<cell>L<m>_1</m></cell>
+				<cell><me>1</me></cell>
+				<cell><me>\frac{1}{s}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_2</m></cell>
+				<cell><me>e^{at}</me></cell>
+				<cell><me>\frac{1}{s - a}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_3</m></cell>
+				<cell><me>t^n</me></cell>
+				<cell><me>\frac{n!}{s^{n+1}}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_4</m></cell>
+				<cell><me>\sin(bt)</me></cell>
+				<cell><me>\frac{b}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_5</m></cell>
+				<cell><me>\cos(bt)</me></cell>
+				<cell><me>\frac{s}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_6</m></cell>
+				<cell><me>e^{at}\ t^n</me></cell>
+				<cell><me>\frac{n!}{(s-a)^{n+1}}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_7</m></cell>
+				<cell><me>e^{at}\sin(bt)</me></cell>
+				<cell><me>\frac{b}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_8</m></cell>
+				<cell><me>e^{at}\cos(bt)</me></cell>
+				<cell><me>\frac{s-a}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_9</m></cell>
+				<cell><me>y'(t)</me></cell>
+				<cell><me>sY(s) - y(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_{10}</m></cell>
+				<cell><me>y''(t)</me></cell>
+				<cell><me>s^2Y(s) - sy(0) - y'(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_{11}</m></cell>
+				<cell><me>y'''(t)</me></cell>
+				<cell><me>s^3Y(s) - s^2y(0) - sy'(0) - y''(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_{12}</m></cell>
+				<cell><me>t^n f(t)</me></cell>
+				<cell><me>(-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
 
-		<reading-questions><title> 👀 <em>Reading Preparation</em> </title>
+	<paragraphs><title> Table of Laplace Transforms </title>
+		<lemma><title> 👀 <em>Reading Preparation</em> </title>
 
 			<p>
 		
@@ -2303,180 +1817,260 @@
 				
 			</p>
 		
-		</reading-questions>
+		</lemma>
 
 		<p>
 			We have done a lot of work computing common transforms and deriving the properties of the Laplace transform. Now, we can summarize all of this information in a table for quick reference.
 		</p>
 
-		<assemblage xml:id="lt-table-L1-L12"><title> ✳️ Common Laplace Transform and Properties </title>
-
+		<assemblage xml:id="lt-table-L1-L12-shit"><title> ✳️ Common Laplace Transforms and Properties </title>
 			<p>
 				Assume <m>F(s) = \lap{f(t)}</m>, <m>a</m>, <m>b</m> are constant, and <m>n=0,1,2,3,\ldots</m>
 			</p>
 
 			<p>
-				<sidebyside widths="5% 25% 50% 20%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p/>
 					<p> <me> f(t) </me> </p>
 					<p> <me> \lap{f(t)} = F(s) </me> </p>
 					<p/>
 				</sidebyside>
-				<tabular top="minor"><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{1}</me> </p>
 					<p> <me> 1 </me> </p>
-					<p> <men xml:id="L1-eqn">\lap{1} = \frac{1}{s}</men> </p>
+					<p> <me>\frac{1}{s}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{2}</me> </p>
 					<p> <me> e^{at} </me> </p>
-					<p> <men xml:id="L2-eqn">\lap{e^{at}} = \frac{1}{s - a}</men> </p>
+					<p> <me>\frac{1}{s - a}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{3}</me> </p>
 					<p> <me> t^n </me> </p>
-					<p> <men xml:id="L3-eqn">\lap{t^n} = \frac{n!}{s^{n+1}}</men> </p>
+					<p> <me>\frac{n!}{s^{n+1}}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{4}</me> </p>
 					<p> <me>\sin(bt)</me> </p>
-					<p> <men xml:id="L4-eqn">\lap{\sin(bt)} = \frac{b}{s^2+b^2}</men> </p>
+					<p> <me>\frac{b}{s^2+b^2}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{5}</me> </p>
 					<p> <me>\cos(bt)</me> </p>
-					<p> <men xml:id="L5-eqn">\lap{\cos(bt)} = \frac{s}{s^2+b^2}</men> </p>
+					<p> <me>\frac{s}{s^2+b^2}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{6}</me> </p>
 					<p> <me> e^{at}\ t^n </me> </p>
-					<p> <men xml:id="L6-eqn">\lap{e^{at}\ t^n} = \frac{n!}{(s-a)^{n+1}}</men> </p>
+					<p> <me>\frac{n!}{(s-a)^{n+1}}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; a</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{7}</me> </p>
 					<p> <me> e^{at}\sin(bt) </me> </p>
-					<p> <men xml:id="L7-eqn">\lap{e^{at}\sin(bt)} = \frac{b}{(s-a)^2+b^2}</men> </p>
+					<p> <me>\frac{b}{(s-a)^2+b^2}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; a</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{8}</me> </p>
 					<p> <me> e^{at}\cos(bt) </me> </p>
-					<p> <men xml:id="L8-eqn">\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2+b^2}</men> </p>
+					<p> <me>\frac{s-a}{(s-a)^2+b^2}</me> </p>
 					<p> <me>\vphantom{\int}s &gt; a</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{9}</me> </p>
 					<p> <me> y'(t) </me> </p>
-					<p> <men xml:id="L9-eqn">\lap{y'(t)} = sY(s) - y(0) </men> </p>
+					<p> <me>sY(s) - y(0) </me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{10}</me> </p>
 					<p> <me> y''(t) </me> </p>
-					<p> <men xml:id="L10-eqn">\lap{y''(t)} = s^2Y(s) - sy(0) - y'(0) </men> </p>
+					<p> <me>s^2Y(s) - sy(0) - y'(0) </me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{11}</me> </p>
 					<p> <me> y'''(t) </me> </p>
 					<p> <me>s^3Y(s) - s^2y(0) - sy'(0) - y''(0) </me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
-				<sidebyside widths="5% 30% 50% 15%" valign="middle">
+				<sidebyside widths="5% 17% 50% 8%" margins="10% 10%" valign="middle">
 					<p> <me>L_{12}</me> </p>
 					<p> <me> t^n f(t) </me> </p>
 					<p> <me>(-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s)</me> </p>
 					<p> <me>\vphantom{\int}s &gt; 0</me> </p>
 				</sidebyside>
 			</p>
-
 		</assemblage>
 
-		<assemblage xml:id="L1-L12-transforms"><title> ✳️ Common Laplace Transform and Properties </title>
+		<mdn>
+			<mrow xml:id="LL1"> \begin{array}{p{5cm}p{5cm}p{5cm}} \text{L}_1 \amp 1 \amp \dfrac{1}{s} \end{array} </mrow>
+			<mrow xml:id="LL2"> \begin{array}{ccc} \text{L}_2 \amp e^{at} \amp \dfrac{1}{s - a} \end{array} </mrow>
+			<mrow xml:id="LL3"> \begin{array}{ccc} \text{L}_3 \amp t^n \amp \dfrac{n!}{s^{n+1}} \end{array} </mrow>
+			<mrow xml:id="LL4"> \begin{array}{ccc} \text{L}_4 \amp \sin(bt) \amp \dfrac{b}{s^2+b^2} \end{array} </mrow>
+			<mrow xml:id="LL5"> \begin{array}{ccc} \text{L}_5 \amp \cos(bt) \amp \dfrac{s}{s^2+b^2} \end{array} </mrow>
+			<mrow xml:id="LL6"> \begin{array}{ccc} \text{L}_6 \amp e^{at} t^n \amp \dfrac{n!}{(s-a)^{n+1}} \end{array} </mrow>
+			<mrow xml:id="LL7"> \begin{array}{ccc} \text{L}_7 \amp e^{at}\sin(bt) \amp \dfrac{b}{(s-a)^2+b^2} \end{array} </mrow>
+			<mrow xml:id="LL8"> \begin{array}{ccc} \text{L}_8 \amp e^{at}\cos(bt) \amp \dfrac{s-a}{(s-a)^2+b^2} \end{array} </mrow>
+			<mrow xml:id="LL9"> \begin{array}{ccc} \text{L}_9 \amp y'(t) \amp sY(s) - y(0) \end{array} </mrow>
+			<mrow xml:id="LL10"> \begin{array}{ccc} \text{L}_{10} \amp y''(t) \amp s^2Y(s) - sy(0) - y'(0) \end{array} </mrow>
+			<!-- <mrow xml:id="LL2"> \lap{e^{at}} \amp = \frac{1}{s - a} </mrow>
+			<mrow xml:id="LL3"> \lap{t^n} \amp = \frac{n!}{s^{n+1}} </mrow>
+			<mrow xml:id="LL4"> \lap{\sin(bt)} \amp = \frac{b}{s^2+b^2} </mrow>
+			<mrow xml:id="LL5"> \lap{\cos(bt)} \amp = \frac{s}{s^2+b^2} </mrow>
+			<mrow xml:id="LL6"> \lap{e^{at} t^n} \amp = \frac{n!}{(s-a)^{n+1}} </mrow>
+			<mrow xml:id="LL7"> \lap{e^{at}\sin(bt)} \amp = \frac{b}{(s-a)^2+b^2} </mrow>
+			<mrow xml:id="LL8"> \lap{e^{at}\cos(bt)} \amp = \frac{s-a}{(s-a)^2+b^2} </mrow>
+			<mrow xml:id="LL9"> \lap{f'(t)} \amp = sF(s) - f(0) </mrow>
+			<mrow xml:id="LL10"> \lap{f''(t)} \amp = s^2F(s) - sf(0) - f'(0) </mrow>
+			<mrow xml:id="LL11"> \lap{f'''(t)} \amp = s^3F(s) - s^2f(0) - sf'(0) - f''(0) </mrow>
+			<mrow xml:id="LL12"> \lap{t^n f(t)} \amp = (-1)^n \frac{d^n}{ds^n}F(s) </mrow> -->
+		</mdn>
+
+		<assemblage xml:id="L1-L12-transforms"><title> ✳️ Laplace Transform Table </title>
 			<p>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L1"><title><m>L_1</m></title>
-					<p>
-						<m>\ds\quad\lap{1} = \frac{1}{s}, \quad s &gt;0 </m>
-					</p>
+				Assume <m>F(s) = \lap{f(t)}</m>, <m>a</m>, <m>b</m> are constant, and <m>n=0,1,2,3,\ldots</m>
+				<paragraphs xml:id="L1-L12">
+					<title> Common Laplace Transforms </title>
+						<dl>
+							<li>
+								<title>L<m>_1</m></title>
+								<p>
+									<me>\lap{1} = \frac{1}{s}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_2</m></title>
+								<p>
+									<me>\lap{e^{at}} = \frac{1}{s - a}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_3</m></title>
+								<p>
+									<me>\lap{t^n} = \frac{n!}{s^{n+1}}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_4</m></title>
+								<p>
+									<me>\lap{\sin(bt)} = \frac{b}{s^2+b^2}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_5</m></title>
+								<p>
+									<me>\lap{\cos(bt)} = \frac{s}{s^2+b^2}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_6</m></title>
+								<p>
+									<me>\lap{e^{at} t^n} = \frac{n!}{(s-a)^{n+1}}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_7</m></title>
+								<p>
+									<me>\lap{e^{at}\sin(bt)} = \frac{b}{(s-a)^2+b^2}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_8</m></title>
+								<p>
+									<me>\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2+b^2}</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_9</m></title>
+								<p>
+									<me>\lap{f'(t)} = sF(s) - f(0)</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_{10}</m></title>
+								<p>
+									<me>\lap{f''(t)} = s^2F(s) - sf(0) - f'(0)</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_{11}</m></title>
+								<p>
+									<me>\lap{f'''(t)} = s^3F(s) - s^2f(0) - sf'(0) - f''(0)</me>
+								</p>
+							</li>
+							<li>
+								<title>L<m>_{12}</m></title>
+								<p>
+									<me>\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}F(s)</me>
+								</p>
+							</li>
+						</dl>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L2"><title><m>L_2</m></title>
-					<p>
-						<m>\ds\quad\lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m>
-					</p>
+				<paragraphs xml:id="L1">
+					<title>L<m>_1</m><m>\ds\quad\lap{ 1 } = \frac{1}{s}, \quad s &gt; 0</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L3"><title><m>L_3</m></title>
-					<p>
-						<m>\ds\quad\lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m>
-					</p>
+				<paragraphs xml:id="L2">
+					<title>L<m>_2</m><m>\ds\quad\lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L4"><title><m>L_4</m></title>
-					<p>
-						<m>\ds\quad\lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m>
-					</p>
+				<paragraphs xml:id="L3">
+					<title>L<m>_3</m><m>\ds\quad\lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L5"><title><m>L_5</m></title>
-					<p>
-						<m>\ds\quad\lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0 </m>
-					</p>
+				<paragraphs xml:id="L4">
+					<title>L<m>_4</m><m>\ds\quad\lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L6"><title><m>L_6</m></title>
-					<p>
-						<m>\ds\quad\lap{ e^{at} t^n } = \ds\frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
-					</p>
+				<paragraphs xml:id="L5">
+					<title>L<m>_5</m><m>\ds\quad\lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L7"><title><m>L_7</m></title>
-					<p>
-						<m>\ds\quad\lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a </m>
-					</p>
+				<paragraphs xml:id="L6">
+					<title>L<m>_6</m><m>\ds\quad\lap{ e^{at}\ t^n } = \frac{n!}{(s-a)^{n+1}}, \quad s &gt;a, \quad n = 0, 1, 2, 3, \ldots </m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L8"><title><m>L_8</m></title>
-					<p>
-						<m>\ds\quad\lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m>
-					</p>
+				<paragraphs xml:id="L7">
+					<title>L<m>_7</m><m>\ds\quad\lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L9"><title><m>L_9</m></title>
-					<p>
-						<m>\ds\quad\lap{ f'(t) } = sF(s) - f(0), \quad s &gt; 0</m>
-					</p>
+				<paragraphs xml:id="L8">
+					<title>L<m>_8</m><m>\ds\quad\lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L10"><title><m>L_{10}</m></title>
-					<p>
-						<m>\ds\quad\lap{ f''(t) } = s^2F(s) - sf(0) - f'(0), \quad s &gt; 0</m>
-					</p>
+				<paragraphs>
+					<title> Laplace Transform of Derivatives </title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L11"><title><m>L_{11}</m></title>
-					<p>
-						<m>\ds\quad\lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0), \quad s &gt; 0</m>
-					</p>
+				<paragraphs xml:id="L9">
+					<title>L<m>_9</m><m>\ds\quad\lap{ f'(t) } = sF(s) - f(0), \quad s &gt; 0</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
-				<paragraphs xml:id="L12"><title><m>L_{12}</m></title>
-					<p>
-						<m>\ds\quad\lap{ t^n f(t) } = (-1)^n \frac{d^{(n)}}{ds^{(n)}}F(s), \quad s &gt; 0</m>
-					</p>
+				<paragraphs xml:id="L10">
+					<title>L<m>_{10}</m><m>\ds\quad\lap{ f''(t) } = s^2F(s) - sf(0) - f'(0), \quad s &gt; 0</m></title>
 				</paragraphs>
-				<tabular><row bottom="minor"><cell top="minor"/></row><row><cell><me>\hphantom{------------HLINE HACK------------}</me></cell></row></tabular>
+				<paragraphs xml:id="L11">
+					<title>L<m>_{11}</m><m>\ds\quad\lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0), \quad s &gt; 0</m></title>
+				</paragraphs>
+				<paragraphs xml:id="L12">
+					<title>L<m>_{12}</m><m>\ds\quad\lap{ t^n f(t) } = (-1)^n \frac{d^n}{ds^n}F(s), \quad s &gt; 0, \quad n = 0, 1, 2, 3, \ldots </m></title>
+				</paragraphs>
 			</p>
 		</assemblage>
+	</paragraphs>
 
-	</subsection>
+	<objectives label="laplace-transform-wrapup">
+		<ul>
+			<li> 
+			
+			</li>
+		</ul>
+	</objectives>
 
+	<fact label="laplace-transform-cyu">
+		<statement>
+			<p>
+				Answer the following questions related to LNCC equations. Assume
+
+			</p>
+		</statement>
+	</fact>
 </section>
