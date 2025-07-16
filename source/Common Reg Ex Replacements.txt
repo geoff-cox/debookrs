@@ -17,7 +17,7 @@ $4: tag content
 ^([ \s]*)<(tag)([\s\S]*?)>([\s\S]*?)</tag>\n
 $1<$2$3>\n$1\t<p>\n$1\t\t$4\n$1\t</p>\n$1</$2>\n
 ----------------------------------------------------------------------------
-Single Line Paragraphs
+Single to Multiline Paragraphs
 (\t+)<p>(.*)</p>?
 $1<p>\n$1\t$2\n$1</p>
 ----------------------------------------------------------------------------
@@ -41,6 +41,14 @@ Removing the content from multiple tags
 ^([ \t]*)<(solution|image|exercise|interactive)([\s\S]*?)>([\s\S]*?)</(solution|image|exercise|interactive)>\n
 $1<$2> removed to reduce data size </$2>\n
 ----------------------------------------------------------------------------
+Removing paragraphs from <statement> tags
+^([ \t]*)<statement>\n\s*<p>\n*\s*([\s\S]*?)\n*\s*</p>\n\s*</statement>\n
+$1<statement>$2</statement>\n
+----------------------------------------------------------------------------
+Removing paragraphs from <feedback> tags
+^([ \t]*)<feedback>\n\s*<p>\n*\s*([\s\S]*?)\n*\s*</p>\n\s*</feedback>\n
+$1<feedback>$2</feedback>\n
+----------------------------------------------------------------------------
 Remove comments <!-- * -->
 <!--([\s\S]*?)-->\n
 ----------------------------------------------------------------------------
@@ -48,3 +56,6 @@ Titles to next line
 ^(\s*)<(parentTag.*)><title>
 $1<$2>\n$1\t<title>
 ----------------------------------------------------------------------------
+Swap premises and responses
+^([ \t]*)<premise>([\s\S]*?)</premise>\n\s*<response>([\s\S]*?)</response>
+$1<premise>$3</premise>\n$1<response>$2</response>
