@@ -5,41 +5,9 @@
 		<p>
 			Building on the idea of transferring derivatives, we now define the Laplace transform as a tool for converting functions of <m>t</m> into functions of <m>s</m>. Through worked examples, you’ll see how this conversion simplifies calculus problems into algebraic ones and makes solving differential equations more systematic.
 		</p>
-		<lemma>
-			<title> </title>
-			<p>
-				<task label="lt-def-prep-1"><title> Exponential Integration Warm-Up </title>
-					<statement>
-						<p>
-							Evaluate: <m>\ds\int_0^b e^{-3t}\ dt</m>
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes"><statement><m>\quad\ds \frac{1 - e^{-3b}}{3}</m></statement></choice>
-						<choice><statement><m>\quad\ds \frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{3b}</m></statement></choice>
-					</choices>
-				</task>
-		
-				<task label="lt-def-prep-2"><title> Exponential Behavior </title>
-					<statement>
-						<p>
-							What happens to <m>e^{-st}</m> as <m>t \to \infty</m> when <m>s > 0</m>?
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes"><statement>It decays to 0.</statement></choice>
-						<choice><statement>It grows to infinity.</statement></choice>
-						<choice><statement>It stays constant.</statement></choice>
-						<choice><statement>It oscillates.</statement></choice>
-					</choices>
-				</task>
-			</p>
-		</lemma>
 	</introduction>
 
-	<paragraphs xml:id="lt-motivation">
+	<subsection xml:id="lt-motivation">
 		<title> Motivating the Laplace Transform </title>
 		<p>
 			In the previous section, we saw how a derivative on <m>y</m> could be shifted to <m>e^{-st}</m> if they are both inside the same integral. But how does this relate to differential equations?
@@ -59,69 +27,16 @@
 			</me>.
 			Distributing <m>e^{-st}</m> and separating the integrals, we can rewrite this as:
 			<me>
-			\ub{\int e^{-st} y'\ dt}_{\large\text{transfer derivative}}
-			- 9\ub{\int e^{-st} y\ dt}_{\large\text{leave as-is}}
-			= \ub{\int e^{-st} \left( 10e^{2t} \right)\ dt}_{\large\text{integrate directly}}.
+				\us{\large\text{derivative}}{\ub{\int e^{-st} y'\ dt}_{\large\text{transfer this}}} - 9\int e^{-st} y\ dt = \int e^{-st} \left( 10e^{2t} \right)\ dt.
 			</me>
 		</p>
 
 		<p>
-			From here, you should be able to see how transferring the derivatives from <m>y</m> to the exponential term can be applied. This is exactly how the Laplace transform works, but there is still more to uncover. We start with the definition of the Laplace transform.
+			From this last expression, you may begin seeing how transferring the derivatives from <m>y</m> to the exponential term could be useful. However, there is still more to uncover before we can start applying it. First, we need to define the Laplace transform.
 		</p>
+	</subsection>
 
-		<task label="lt-definition-chkpt-1">
-			<title>❓👉 Key Steps in Finding a Laplace Transform </title>
-			<statement>
-			<p>
-				Fill-in-the-blank: The process of finding a Laplace transform involves multiplying the original function by <m>\ul{\hspace{5em}}</m> and <m>\ul{\hspace{5em}}</m> with respect to <m>t</m>.
-			</p>
-			</statement>
-			<choices randomize="yes">
-			<choice>
-				<statement><m>e^{-t},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement><m>e^{-st},</m> integrating</statement>
-				<feedback>
-				<p>
-					Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{st},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, the exponent should have a negative sign: <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{-st},</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the Laplace transform requires integration, not differentiation.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>s,</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
-				</p>
-				</feedback>
-			</choice>
-			</choices>
-		</task>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-def-basic-definition">
+	<subsection xml:id="lt-def-basic-definition">
 		<title> Definition of the Laplace Transform </title>
 
 		<definition xml:id="laplace-transform-definition"><title>Laplace Transform</title>
@@ -140,7 +55,7 @@
 		</definition>
 
 		<task label="lt-definition-chkpt-2">
-			<title>❓👉 Identify the Error in the Laplace Transform Definition </title>
+			<title>❓👉 Spot the Error in the Definition </title>
 			<statement>
 			<p>
 				Click on the incorrect part of the Laplace transform definition.
@@ -165,9 +80,12 @@
 			</sidebyside>
 			</areas>
 		</task>
+	</subsection>
 
+	<subsection xml:id="lt-improper-integrals">
+		<title> Evaluating Improper Integrals </title>
 		<p>
-			Since the upper limit of the integral is <m>\infty</m>, this is an improper integral. From calculus, you might recall that improper integrals are evaluated by taking a limit:
+			Since the upper limit of the integral is <m>\infty</m>, this is an improper integral. From calculus, you might recall that improper integrals are found by taking a limit:
 			<me>
 				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
 			</me>
@@ -194,130 +112,328 @@
 				</p>
 			</feedback>
 		</task>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs xml:id="lt-def-first-examples">
+	<subsection xml:id="lt-def-first-examples">
 		<title> First Examples: Constant and Linear Functions </title>
 		<p>
 			Let's walk through two examples to see how this definition works in practice.
 		</p>
 
+		<lemma>
+			<title> Exponential Properties </title>
+			<p>
+				<task label="lt-def-prep-1">
+					<title> Exponential Antiderivative </title>
+					<statement>
+						<p>
+							Evaluate: <m>\ds\int_0^b e^{-3t}\ dt</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes"><statement><m>\quad\ds \frac{1 - e^{-3b}}{3}</m></statement></choice>
+						<choice><statement><m>\quad\ds \frac{1}{3}e^{-3b}</m></statement></choice>
+						<choice><statement><m>\quad\ds -\frac{1}{3}e^{-3b}</m></statement></choice>
+						<choice><statement><m>\quad\ds -\frac{1}{3}e^{3b}</m></statement></choice>
+					</choices>
+				</task>
+		
+				<task label="lt-def-prep-200">
+					<title> Exponential End Behavior </title>
+					<statement>
+						<p>
+							<sidebyside widths="40% 50%" margins="0% 0%">
+								<p>
+									<p>
+										Use the graph of <m>e^t</m> to determine if each limit is -ထ, <m>0</m>, or ထ.
+									</p>
+									<p>
+										Click on the correct value to select your answer.
+									</p>
+								</p>
+								<p>
+									<image width="100%">
+										<latex-image>
+											\begin{tikzpicture}[samples=50]
+												% === colors ===
+												\def\fColor{blue}
+
+												% === figure/domain/tick bounds ===
+												\def\tmin{-2.2}	\def\tmax{2.45}
+												\def\ymin{-1.8}		\def\ymax{7.5}
+												\def\tticks{1, 2}
+												\def\yticks{2, 4}
+
+												% === Function definitions ===
+												\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+
+												\begin{axis}[
+													width=15cm, height=7cm, scale=0.35,
+													xlabel={$t$}, ylabel={$y$},
+													grid=none,
+													tick style={thick},
+													line width=1pt,
+													axis lines=middle,
+													xtick distance=1, ytick distance=4,
+													minor x tick num=1, minor y tick num=1,
+													xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+												]
+												
+													% Read and plot data from file
+													\addplot [domain=\tmin:\tmax, \fColor] {e^x};
+
+													% === Labels ===
+													\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
+												\end{axis}
+											\end{tikzpicture}
+										</latex-image>
+									</image>
+								</p>
+							</sidebyside>
+						</p>
+					</statement>
+
+					<areas>
+						<p/>
+						<sidebyside>
+							<p>
+								<tabular>
+									<col halign="right"/>
+									<col halign="center" />
+									<col halign="center" />
+									<row>
+										<cell><m>\ds \lim_{b \to \infty} e^{b}</m></cell>
+										<cell><m>=</m></cell>
+										<cell><area correct="no"><m>-\infty</m></area></cell>
+										<cell><area correct="no"><m>0</m></area></cell>
+										<cell><area correct="yes"><m>\infty</m></area></cell>
+									</row>
+									<row>
+										<cell><m>\ds \lim_{b \to \infty} e^{-b}</m></cell>
+										<cell><m>=</m></cell>
+										<cell><area correct="no"><m>-\infty</m></area></cell>
+										<cell><area correct="yes"><m>0</m></area></cell>
+										<cell><area correct="no"><m>\infty</m></area></cell>
+									</row>
+									<row>
+										<cell><m>\ds \lim_{b \to \infty} e^{8b}</m></cell>
+										<cell><m>=</m></cell>
+										<cell><area correct="no"><m>-\infty</m></area></cell>
+										<cell><area correct="no"><m>0</m></area></cell>
+										<cell><area correct="yes"><m>\infty</m></area></cell>
+									</row>
+									<row>
+										<cell><m>\ds \lim_{b \to \infty} e^{-3b}</m></cell>
+										<cell><m>=</m></cell>
+										<cell><area correct="no"><m>-\infty</m></area></cell>
+										<cell><area correct="yes"><m>0</m></area></cell>
+										<cell><area correct="no"><m>\infty</m></area></cell>
+									</row>
+								</tabular>
+							</p>
+						</sidebyside>
+					</areas>
+				</task>
+
+				<task label="lt-definition-chkpt-3-0">
+					<title> Figure out the Limits </title>
+					<statement>
+						<p>
+							Give each limit by filling in one of the following: <c>0</c>, 
+							<c>inf</c> (<m>\infty</m>), 
+							<c>-inf</c> (<m>-\infty</m>).
+						</p>
+						<p>
+							<ul marker="square">
+								<li>
+									If <m>b \to \infty</m> then 
+									<m>-4b\to</m> <fillin width="2" mode="string" answer="-inf" />
+									and
+									<m>\ds\lim_{b \to \infty} e^{-4b} = </m> <fillin width="2" mode="string" answer="0" />
+								</li>
+							</ul>
+							Assume that <m>s</m> is a <em>positive</em> constant.
+							<ul marker="square">
+								<li>
+									If <m>b \to \infty</m> then
+									<m>-sb\to</m> <fillin width="2" mode="string" answer="-inf" /> and
+									<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="0" />
+								</li>
+							</ul>
+							Assume that <m>s</m> is a <em>negative</em> constant.
+							<ul marker="square">
+								<li>
+									If <m>b \to \infty</m> then
+									<m>-sb\to</m> <fillin width="2" mode="string" answer="inf" />
+									and
+									<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="inf" />
+								</li>
+							</ul>
+						</p>
+					</statement>
+					
+					<evaluation>
+						<evaluate>
+							<test correct="yes"><strcmp use-answer="no">-\s*inf</strcmp></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. Where would <m>-4</m> times something that goes to <m>\infty</m> must go?</feedback>
+							</test>
+						</evaluate>
+						<evaluate>
+							<test><strcmp use-answer="yes" /></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. Think about where <m>-4b</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-4b}</m> should go.</feedback>
+							</test>
+						</evaluate>
+						<evaluate>
+							<test correct="yes"><strcmp use-answer="no" >-\s*inf</strcmp></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. If <m>s</m> is positive, then <m>-sb</m> is a negative number times something that goes to <m>\infty</m>.</feedback>
+							</test>
+						</evaluate>
+						<evaluate>
+							<test><strcmp use-answer="yes" /></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
+							</test>
+						</evaluate>
+						<evaluate>
+							<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. If <m>s</m> is negative, then <m>-sb</m> is a positive number times something that goes to <m>\infty</m>.</feedback>
+							</test>
+						</evaluate>
+						<evaluate>
+							<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
+							<test><strcmp>.*</strcmp>
+								<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
+							</test>
+						</evaluate>
+					</evaluation>
+				</task>
+			</p>
+		</lemma>
+
 		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
 			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the constant function <m>f(t) = 5</m>.
-					</p>
-				</statement>
+				Find the Laplace transform of 
+				<ol marker="(a)">
+					<li>
+						<statement>
+							<p><m>f(t) = 5</m> (constant function)</p>
+						</statement>
+						<solution><title> <m>\rightarrow \lap{5}</m> </title>
+							<p>
+								By the definition above, we have the improper integral
+								<men xml:id="lt-def-example-eqn-1">
+									\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
+								</men>.
+							</p>
+
+							<p>
+								Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
+								<me>
+									I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
+								</me>.
+							</p>
+
+							<p>
+								Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
+								<md>
+									<mrow>
+										\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+											\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+									</mrow>
+									<mrow>
+											\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+									</mrow>
+								</md>
+							</p>
+					
+							<p>
+								Since the limit, <m>L</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
+								<aside>
+									<p>
+										Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
+									</p>
+								</aside>
+								<ol>
+									<li> When <m>s</m> is positive, <m>-sb</m> goes to: <m>\ds L = \lim_{b \to \infty}\ e^{-sb} =0\ </m> (converges) </li>
+									<li> <m>s</m> negative: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
+								</ol>
+								By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
+								<me>
+									\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
+								</me>.
+							</p>
+						</solution>
+					</li>
+					<li>
+						<statement>
+							<p><m>f(t)=t</m></p>
+						</statement>
+						<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
+
+							<p>
+								Applying the definition and writing the integral as a limit, we have
+								<me>
+									\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
+								</me>.
+							</p>
+
+							<p>
+								Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
+								<md>
+									<mrow>
+										{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
+									</mrow>
+								</md>
+							</p>
+
+							<p>
+								Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
+								<md>
+									<mrow>
+										\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
+									</mrow>
+									<mrow>
+										\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
+									</mrow>
+									<mrow>
+										\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
+									</mrow>
+								</md> 
+							</p>
+
+							<p>
+								As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
+								<me>
+									\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
+								</me>.
+							</p>
+						</solution>
+					</li>
+				</ol>
 			</p>
-
-			<solution><title> <m>\rightarrow \lap{5}</m> </title>
-				<p>
-					By the definition above, we have the improper integral
-					<men xml:id="lt-def-example-eqn-1">
-						\lap{5} = \int_0^{\infty} e^{-st} \cdot 5\ dt = \lim_{b \to \infty} \ub{\int_0^b 5e^{-st}dt}_{I}
-					</men>.
-				</p>
-
-				<p>
-					Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
-					<me>
-						I = \int_0^b 5e^{-st}dt = -\frac{5}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{5}{s}\left[ e^{-sb} - 1 \right]
-					</me>.
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
-					<md>
-						<mrow>
-							\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
-								\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
-						</mrow>
-						<mrow>
-								\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
-						</mrow>
-					</md>
-				</p>
-		
-				<p>
-					Since the limit, <m>L</m> as <m>b \to \infty</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, there are two cases based on the sign of <m>s</m>:
-					<aside>
-						<p>
-							Note, <m>s = 0</m> is not possible since <m>I</m> contains <m>\sfrac{5}{s}</m> and would be undefined.
-						</p>
-					</aside>
-					<ol>
-						<li> <m>s &gt; 0</m>: <m>\ -sb \to -\infty\ </m>, so <m>\ e^{-sb} \to 0\ </m> &amp; <m>L=0\ </m> (converges) </li>
-						<li> <m>s &lt; 0</m>: <m>\ -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
-					</ol>
-					By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
-					<me>
-						\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
-					</me>.
-				</p>
-			</solution>
-		</example>
-
-		<example><title> Laplace Transform of <m>t</m> </title>
-			<p>
-				<statement>
-					<p>
-						Find the Laplace transform of the function <m>f(t)=t</m>.
-					</p>
-				</statement>
-			</p>
-			<solution xml:id="laplace-transform-of-t-power-1"><title> <m>\rightarrow \lap{t}</m> </title>
-
-				<p>
-					Applying the definition and writing the integral as a limit, we have
-					<me>
-						\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
-					</me>.
-				</p>
-
-				<p>
-					Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
-					<md>
-						<mrow>
-							{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
-						</mrow>
-					</md>
-				</p>
-
-				<p>
-					Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
-					<md>
-						<mrow>
-							\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
-						</mrow>
-						<mrow>
-							\amp = -\frac{1}{s}\ub{\lim_{b \to \infty} \frac{b}{e^{sb}}}_{L_1} - \frac{1}{s^2}\ub{\lim_{b \to \infty} e^{-sb}}_{L_2} + \frac{1}{s^2}
-						</mrow>
-					</md> 
-				</p>
-
-				<p>
-					As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
-					<me>
-						\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
-					</me>.
-				</p>
-			</solution>
 		</example>
 
 		<p>
 			These examples illustrate the typical process of computing a Laplace transform. Moving forward, we'll use this definition to build a table of transforms, which will become a powerful tool for solving differential equations.
 		</p>
-	</paragraphs>
+	</subsection>
 
 	<objectives label="lt-definition-wrapup">
-		<ul>
-			<li>Define the Laplace transform and recognize its integral form.</li>
-			<li>Determine when a Laplace transform exists using convergence criteria.</li>
-			<li>Compute basic Laplace transforms from first principles.</li>
+		<ul marker="square">
+			<li>
+				The Laplace transform is denoted as <m>\lap{f(t)}</m> or <m>F(s)</m> and is defined as an improper integral computed by rewriting it as the limit:
+				<me>
+					\lap{f(t)} = \int_0^{\infty} e^{-st} f(t) \, dt = \lim_{b \to \infty} \int_0^b e^{-st} f(t)\ dt
+				</me>.
+			</li>
+			<li><m>\int_0^b e^{-st} f(t)\ dt</m> is computed first, where <m>s</m> is treated as a constant.</li>
+			<li>When done, a function of <m>s</m> and <m>b</m> remains. Hold <m>s</m> constant and take <m>b \to \infty</m>.</li>
+			<li>Note the condition on <m>s</m> that leads to a finite limit.</li>
+			<li>After the limit is computed, the result is a function of <m>s</m>.</li>
 		</ul>
 	</objectives>
 
