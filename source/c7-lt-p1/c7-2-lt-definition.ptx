@@ -3,7 +3,7 @@
 
 	<introduction>
 		<p>
-			Building on the idea of transferring derivatives, we now define the Laplace transform as a tool for converting functions of <m>t</m> into functions of <m>s</m>. Through worked examples, you’ll see how this conversion simplifies calculus problems into algebraic ones and makes solving differential equations more systematic.
+			Building on the idea of transferring derivatives, we now define the Laplace transform as a tool for converting functions of <m>t</m> into functions of <m>s</m>. Through worked examples, you'll see how this conversion simplifies calculus problems into algebraic ones and makes solving differential equations more systematic.
 		</p>
 	</introduction>
 
@@ -14,8 +14,8 @@
 		</p>
 
 		<p>
-			To glimpse why this may be useful, imagine you are solving the differential equation
-			<men xml:id="lt-model-eqn">
+			To get an idea of the direction we are heading, imagine you are solving the differential equation
+			<men xml:id="lt-motivation-eqn-1">
 				y' - 9y = 10e^{2t}
 			</men>.
 		</p>
@@ -26,13 +26,13 @@
 				\int \left(y' - 9y\right) e^{-st} \, dt = \int 10e^{2t} e^{-st} \, dt
 			</me>.
 			Distributing <m>e^{-st}</m> and separating the integrals, we can rewrite this as:
-			<me>
+			<men xml:id="lt-motivation-eqn-2">
 				\us{\large\text{derivative}}{\ub{\int e^{-st} y'\ dt}_{\large\text{transfer this}}} - 9\int e^{-st} y\ dt = \int e^{-st} \left( 10e^{2t} \right)\ dt.
-			</me>
+			</men>
 		</p>
 
 		<p>
-			From this last expression, you may begin seeing how transferring the derivatives from <m>y</m> to the exponential term could be useful. However, there is still more to uncover before we can start applying it. First, we need to define the Laplace transform.
+			This shows how the differential equation <xref ref="lt-motivation-eqn-1"/> becomes equation <xref ref="lt-motivation-eqn-2"/>. It also shows how the derivative transfer comes into play and motivates the following definition of the Laplace transform.
 		</p>
 	</subsection>
 
@@ -54,7 +54,7 @@
 			</statement>
 		</definition>
 
-		<task label="lt-definition-chkpt-2">
+		<task label="lt-definition-chkpt-1">
 			<title>❓👉 Spot the Error in the Definition </title>
 			<statement>
 			<p>
@@ -85,39 +85,55 @@
 	<subsection xml:id="lt-improper-integrals">
 		<title> Evaluating Improper Integrals </title>
 		<p>
-			Since the upper limit of the integral is <m>\infty</m>, this is an improper integral. From calculus, you might recall that improper integrals are found by taking a limit:
+			A Laplace transform is an improper integral since the upper limit of integration is <m>\infty</m>. Recall that calculus tells us that an improper integral is a limit of an integral:
 			<me>
 				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\large\text{(step 1)}}}_{\large\text{(step 2)}}
 			</me>
 		</p>
 
 		<p>
-			During the first step, treat <m>s</m> and <m>b</m> as constants and compute the integral with respect to <m>t</m>. Then, in the second step, take the limit as <m>b \to \infty</m>. If the result converges to a finite value, the Laplace transform exists.
+			The first step is to compute the definite integral with respect to <m>t</m>, treating <m>s</m> and <m>b</m> as constants. Then <m>b</m> is taken to <m>\infty</m> in the second step. If the limit converges, then we say that the Laplace transform exists.
 		</p>
 
-		<task label="lt-definition-chkpt-3">
+		<task label="lt-definition-chkpt-2">
 			<title>❓👉 Convergence Requirement for Laplace Transforms </title>
-			<statement correct="yes">
+			<statement>
 				<p>
-					The Laplace transform only exists if the improper integral,
+					To compute an improper integral, you write it as a limit of a definite integral. For example,
 					<me>
-						\lap{ f(t) } = \int_0^{\infty} e^{-st} f(t)\, dt
-					</me>
-					converges.
+						\int_0^{\infty} e^{-st} t^3 \, dt = \lim_{b \to \infty} \ub{\int_0^{b} e^{-st} t^3 \, dt}_{\ds I}
+					</me>.
 				</p>
-			</statement>
-			<feedback>
 				<p>
-					This statement is true. The Laplace transform is defined by an improper integral, and it only exists when this integral converges. If the integral diverges, the Laplace transform does not exist.
+					Select variables/constants would you expect to see after computing the integral, <m>I</m>, but before taking the limit.
 				</p>
-			</feedback>
+				<p/>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ s</m></statement>
+					<feedback>The variable <m>s</m> is a constant in <m>e^{-st} t^3</m> so it will also appear in the antiderivative.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\ b</m></statement>
+					<feedback>The variable <m>b</m> gets plugged into <m>t</m> after you find the antiderivative.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement><m>\ t</m></statement>
+					<feedback>Since the variable of integration is <m>t</m>, you plug the limits of integration, <m>0</m> and <m>b</m>, into <m>t</m> once you have the antiderivative.</feedback>	
+				</choice>
+				<choice correct="no">
+					<statement><m>\ c</m> (integration constant)</statement>
+					<feedback>We are computing a definite integral, not an indefinite one.</feedback>
+				</choice>
+			</choices>
 		</task>
 	</subsection>
 
 	<subsection xml:id="lt-def-first-examples">
-		<title> First Examples: Constant and Linear Functions </title>
+		<title> First Examples: A Constant and Linear Function </title>
 		<p>
-			Let's walk through two examples to see how this definition works in practice.
+			Let's walk through two examples to see how a Laplace transform is computed from the definition.<xref ref="graph-of-exp-t"/>
 		</p>
 
 		<lemma>
@@ -138,56 +154,59 @@
 					</choices>
 				</task>
 		
-				<task label="lt-def-prep-200">
+				<task label="lt-def-prep-2">
 					<title> Exponential End Behavior </title>
 					<statement>
 						<p>
 							<sidebyside widths="40% 50%" margins="0% 0%">
 								<p>
 									<p>
-										Use the graph of <m>e^t</m> to determine if each limit is -ထ, <m>0</m>, or ထ.
+										Use the graph to determine if each limit is -ထ, <m>0</m>, or ထ.
 									</p>
 									<p>
-										Click on the correct value to select your answer.
+										Click on one of the three options next to each limit to select your answer.
 									</p>
 								</p>
 								<p>
-									<image width="100%">
-										<latex-image>
-											\begin{tikzpicture}[samples=50]
-												% === colors ===
-												\def\fColor{blue}
+									<figure xml:id="graph-of-exp-t">
+										<caption>Graph of <m>e^t</m></caption>
+										<image width="50%">
+											<latex-image>
+												\begin{tikzpicture}[samples=50]
+													% === colors ===
+													\def\fColor{blue}
 
-												% === figure/domain/tick bounds ===
-												\def\tmin{-2.2}	\def\tmax{2.45}
-												\def\ymin{-1.8}		\def\ymax{7.5}
-												\def\tticks{1, 2}
-												\def\yticks{2, 4}
+													% === figure/domain/tick bounds ===
+													\def\tmin{-2.2}	\def\tmax{2.45}
+													\def\ymin{-1.8}		\def\ymax{7.5}
+													\def\tticks{1, 2}
+													\def\yticks{2, 4}
 
-												% === Function definitions ===
-												\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+													% === Function definitions ===
+													\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
 
-												\begin{axis}[
-													width=15cm, height=7cm, scale=0.35,
-													xlabel={$t$}, ylabel={$y$},
-													grid=none,
-													tick style={thick},
-													line width=1pt,
-													axis lines=middle,
-													xtick distance=1, ytick distance=4,
-													minor x tick num=1, minor y tick num=1,
-													xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
-												]
-												
-													% Read and plot data from file
-													\addplot [domain=\tmin:\tmax, \fColor] {e^x};
+													\begin{axis}[
+														width=15cm, height=7cm, scale=0.4,
+														xlabel={$t$}, ylabel={$y$},
+														grid=none,
+														tick style={thick},
+														line width=1pt,
+														axis lines=middle,
+														xtick distance=1, ytick distance=4,
+														minor x tick num=1, minor y tick num=1,
+														xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+													]
+													
+														% Read and plot data from file
+														\addplot [domain=\tmin:\tmax, \fColor] {e^x};
 
-													% === Labels ===
-													\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
-												\end{axis}
-											\end{tikzpicture}
-										</latex-image>
-									</image>
+														% === Labels ===
+														\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
+													\end{axis}
+												\end{tikzpicture}
+											</latex-image>
+										</image>
+									</figure>
 								</p>
 							</sidebyside>
 						</p>
@@ -314,7 +333,8 @@
 			</p>
 		</lemma>
 
-		<example xml:id="laplace-example-constant"><title> Laplace Transform of a Constant Function </title>
+		<example xml:id="laplace-example-constant">
+			<title> First Look at Laplace Transforms </title>
 			<p>
 				Find the Laplace transform of 
 				<ol marker="(a)">
@@ -418,7 +438,7 @@
 		</example>
 
 		<p>
-			These examples illustrate the typical process of computing a Laplace transform. Moving forward, we'll use this definition to build a table of transforms, which will become a powerful tool for solving differential equations.
+			These examples illustrate the typical process of computing a Laplace transform. Moving forward, we'll use this definition to build a table of transforms, which will save us time by providing formulas for the most common transforms.
 		</p>
 	</subsection>
 
@@ -436,12 +456,4 @@
 			<li>After the limit is computed, the result is a function of <m>s</m>.</li>
 		</ul>
 	</objectives>
-
-	<fact label="lt-definition-cyu">
-		<statement>
-    <p>
-      Check your understanding of the Laplace transform definition, convergence conditions, and basic computations.
-    </p>
-		</statement>
-	</fact>
 </section>

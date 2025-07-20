@@ -1,0 +1,1262 @@
+<section label="common-transforms">
+	<title> Common Transforms (optional) </title>
+	
+	<introduction>
+		<p>
+			Now that we've defined the Laplace transform, it's time to start building a library of Laplace transforms for common functions we will encounter in the differential equations we will solve. In particular, we'll derive the formulas of the Laplace transforms of the following functions:
+			<me>
+				1, \quad e^{at}, \quad t^n, \quad \sin(bt), \quad \text{and} \quad \cos(bt)
+			</me>.
+		</p>
+
+		<p>
+			If you just want to use these transforms and are not interested in where they come from, feel free to skip to the <q><xref ref="using-the-lt-table" text="title"/></q> section. 
+		</p>
+
+		<p>
+			To make the math a little more approachable, we will derive each formula by extending a specific example to the general case. For example, we will show that the formula for <m>\lap{e^{at}}</m> can be easily deduced from <m>\lap{e^{7t}}</m> by replacing every instance of <m>7</m> with <m>a</m>.
+		</p>
+
+		<lemma><title> NEEDS A TITLE </title>
+
+			<p>
+				<task label="prep-common-transforms-1"><title> Exponential Integration Rules </title>
+					<statement>
+						<p>
+							Match each exponential integrand with its antiderivative. Assume <m>K</m> is a constant.
+						</p>
+					</statement>
+					<cardsort>
+						<match>
+							<premise><m>\ds \int e^{5t} dt</m></premise>
+							<response><m>\ds \frac{1}{5} e^{5t} + C</m></response>
+						</match>
+						<match>
+							<premise><m>\ds \int e^{-3t} dt</m></premise>
+							<response><m>\ds \frac{-1}{3} e^{-3t} + C</m></response>
+						</match>
+						<match>
+							<premise><m>\ds \int e^{Kt} dt</m></premise>
+							<response><m>\ds \frac{1}{K} e^{Kt} + C</m></response>
+						</match>
+						<match>
+							<premise><m>\ds \int e^{(7-s)t} dt</m></premise>
+							<response><m>\ds \frac{1}{7 - s} e^{(7-s)t} + C</m></response>
+						</match>
+					</cardsort>
+				</task>
+		
+				<task label="prep-common-transforms-2"><title> How is <m>s</m> Treated During Integration? </title>
+					<statement>
+						<p>
+							In the Laplace transform integral, the variable <m>s</m> is treated as a <fillin characters="10" /> during the integration process.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>constant</statement>
+							<feedback>
+								<p>
+									Correct! When evaluating the integral, <m>s</m> is treated as a constant, since the integration is with respect to <m>t</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>variable</statement>
+							<feedback>
+								<p>
+									No, even though <m>s</m> is a variable overall, it is treated as a constant during the integration.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>coefficient</statement>
+							<feedback>
+								<p>
+									No, while <m>s</m> acts like a coefficient in <m>e^{-st}</m>, it's conceptually treated as a constant in the integration.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>limit</statement>
+							<feedback>
+								<p>
+									No, <m>s</m> is not a limit of integration, it appears inside the integrand.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+		
+				<task label="prep-common-transforms-3"><title> Choosing <m>u</m> and <m>dv</m> in <m>\int t^2 e^{-st} dt</m> </title>
+					<statement>
+						<p>
+							Which functions should you choose as <m>u</m> and <m>dv</m> when applying integration by parts to <m>\int t^2 e^{-st} dt</m>?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>u = t^2,\quad dv = e^{-st} dt</m></statement>
+							<feedback>
+								<p>Correct! This choice simplifies with each integration by parts.</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>u = e^{-st},\quad dv = t^2 dt</m></statement>
+							<feedback>
+								<p>No, this makes integration more difficult. We want to differentiate <m>t^2</m> and integrate the exponential.</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>u = st,\quad dv = t dt</m></statement>
+							<feedback>
+								<p>These choices are not aligned with the integrand <m>t^2 e^{-st}</m>.</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+		
+			</p>
+		
+		</lemma>
+	</introduction>
+
+	<paragraphs label="constant-function-transform">
+		<title> Constant Function Transform </title>
+
+		<p>
+			We start with the Laplace transform of the constant function <m>f(t) = 1</m>. However, the process mirrors what we did for <m>f(t) = 5</m> in the previous section. You can simply trace through the solution, replacing each <m>5</m> with <m>1</m>. Doing this, we get our first common Laplace transform that we will use often:
+			<men xml:id="lt-L1">
+				\text{L}_1:\quad\lap{1} = \frac{1}{s}, \quad s \gt 0
+			</men>.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="exponential-function-transform">
+		<title> Exponential Function Transform </title>
+
+		<p>
+			We will now derive the formula for <m>\lap{e^{at}}</m> by first computing <m>\lap{e^{7t}}</m> and then generalizing it to any constant <m>a</m>.
+		</p>
+
+		<proof label="common-exp-7t-details">
+			<title> <me>\lap{e^{7t}} = \frac{1}{s - 7}, \quad s \gt 7</me>Click here for details </title>
+			<p>
+				Using the definition of the Laplace transform we get
+				<me>
+					\lap{ e^{7t} }
+					= \int_0^{\infty} e^{-st} \cdot e^{7t}\ dt
+					= \lim_{b \to \infty}\int_0^b e^{(7-s)t}\ dt
+				</me>.
+			</p>
+
+			<p>
+				Focusing just on the integral and treating <m>7-s</m> as constant, we let <m>u=7-s</m> and apply <m>u</m>-substitution:
+				<md>
+					<mrow>
+						\int_0^b e^{(7-s)t}\, dt
+						<xref text="custom" ref="lt-example-2-details"><m>\os{\large ❔}{=}</m></xref> 
+						\frac{1}{7-s} e^{(7-s)t} \Bigg|_0^b
+						\amp = \frac{1}{7-s} \left( e^{(7-s)b} - e^{0} \right)
+					</mrow>
+					<mrow>
+						\amp = \frac{1}{7-s} \left( e^{(7-s)b} - 1 \right)
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				Now, we compute the limit of this expression as <m>b \to \infty</m>:
+				<md>
+					<mrow>
+						\lim_{b \to \infty} \frac{1}{7-s} \left( e^{(7-s)b} - 1 \right)
+						\amp = \frac{1}{7-s} \Bigg[ \ub{\lim_{b \to \infty} e^{(7-s)b}}_{L} - \lim_{b \to \infty} 1 \Bigg]
+					</mrow>
+				</md>.
+			</p>
+
+			<p>
+				As before, <m>L</m> goes to <m>0</m> if the <term><xref ref="graph-of-exp-t" text="custom">power of the exponential function</xref></term> goes to <m>-\infty</m>. This only happens if <m>7-s</m> is negative. That is, <m>\ 7-s \lt 0\ </m> or <m>\ 7 \lt s</m>. 
+			</p>
+
+			<p>
+				So, as long as <m>s \gt 7</m>, then <m>L \to 0</m> and the transform becomes 
+				<me>
+					\lap{e^{7t}} = \frac{1}{s - 7}, \quad s \gt 7
+				</me>.
+			</p>
+		</proof>
+
+		<p>
+			By swapping every <m>7</m> with an <m>a</m> in the previous solution, you will arrive at the formula for the general exponential Laplace transform:
+			<men xml:id="lt-L2">
+				\text{L}_2:\quad\lap{e^{at}} = \frac{1}{s - a}, \quad s \gt a
+			</men>,
+			where <m>a</m> is a constant.
+		</p>
+
+		<task label="chkpt-common-exp-1">
+			<title>❓👉 Convergence in <m>\lap{e^{7t}}</m> </title>
+			<statement>
+				<p>
+					Why does the integral for <m>\lap{e^{7t}}</m> converge only if <m>s \gt 7</m>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>The integral becomes zero when <m>s = 7</m></statement>
+					<feedback>
+						<p>No, <m>s = 7</m> makes the exponent zero, which leads to divergence.</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>The exponential term goes to zero only if <m>7 - s \lt 0</m></statement>
+					<feedback>
+						<p>Correct! This guarantees the exponent goes to <m>-\infty</m> as <m>t \to \infty</m>.</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>Laplace transforms require <m>s</m> to be greater than any exponent</statement>
+					<feedback>
+						<p>That's a decent rule of thumb, but we need to explain it in terms of convergence of the integral.</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>The integral does not depend on <m>s</m></statement>
+					<feedback>
+						<p>No, the convergence completely depends on the sign of <m>7 - s</m>.</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="power-function-transform">
+		<title> Power Function Transform </title>
+
+		<p>
+			The next formula we want is for the Laplace transform of the power function, <m>t^n</m>, where <m>n = 0, 1, 2, ...</m>. 
+		</p>
+
+		<p>
+			Note that we already have the transforms for <m>n = 0</m> and <m>n = 1</m> since
+			<ul>
+				<li><m>n=0:\qquad\lap{t^0} = \lap{1} = \dfrac{1}{s}</m></li>
+				<li><m>n=1:\qquad\lap{t^1} = \lap{t} = \dfrac{1}{s^2}</m></li>
+			</ul>
+			We could find <m>\lap{t^2}</m> next, but it is more instructive to show its connection to <m>\lap{t}</m> by the following relationship:
+		</p>
+		
+		<proof label="common-t-sqrd-details">
+			<title> <me>\lap{t^2} = \frac{2}{s}\cdot \lap{t}, \quad s \gt 0</me>Click here for details </title>
+			<p>
+				Applying the definition and writing the integral as a limit, we have
+				<me>
+					\lap{ t^2 } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t^2\ dt}_{I}
+				</me>.
+			</p>
+
+			<p>
+				Applying integration by parts to <m>I</m> once in <m>\lap{ t^2 }</m> shows
+				<md>
+					<mrow>
+						\lap{ t^2 }
+						\amp = \lim_{b \to \infty} \left[-\frac{b^2}{s}e^{-sb} + \frac{2}{s}\int_0^b e^{-st}\cdot t\ dt\right]
+						<xref ref="lt-example-tsqrd-IVP-details" text="custom">🔍How?</xref>
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b^2}{e^{sb}}\right] + \frac{2}{s}\lim_{b \to \infty}\int_0^b e^{-st}\cdot t\ dt
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b^2}{e^{sb}}}_{L} + \frac{2}{s}\ub{\int_0^\infty e^{-st}\cdot t\ dt}_{\large\lap{t}}
+					</mrow>.
+				</md>
+			</p>
+
+			<p>
+				Noticing that the improper integral is just <m>\lap{t}</m>, we have
+				<me>
+					\lap{ t^2 } = -\frac{1}{s}\cdot L + \frac{2}{s}\cdot \lap{t}
+				</me>,
+				but <m>L=0</m> if <m>s \gt 0</m> <xref ref="lt-example-tsqrd-LH-details" text="custom">(🔍How?)</xref>, so we have the relationship
+			</p>
+
+			<me>
+				\lap{t^2} = \frac{2}{s}\cdot \lap{t}, \quad s \gt 0
+			</me>.
+		</proof>
+		
+		<p>
+			You can use this work as a template for the general recursive relationship:
+		</p>
+
+		<proof label="common-recursive-power-function-details">
+			<title> <me>\lap{t^n} = \frac{n}{s}\cdot \lap{t^{n-1}}, \quad s \gt 0</me>Click here for details </title>
+
+			<p>
+				Replacing <m>2</m> with <m>n</m> in the previous solution, we have
+				<me>
+					\lap{ t^n } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot t^n\ dt}_{I}
+				</me>.
+			</p>
+
+			<p>
+				Applying integration by parts to <m>I</m> once in <m>\lap{ t^{n} }</m> shows
+				<md>
+					<mrow>
+						\lap{ t^{n} }
+						\amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+						<xref ref="lt-example-tnth-IVP-details" text="custom">🔍How?</xref>
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}}\right] + \frac{n}{s}\lim_{b \to \infty}\int_0^b e^{-st}\cdot t^{n-1}\ dt
+					</mrow>
+					<mrow>
+						\amp = -\frac{1}{s}\ub{\lim_{b \to \infty}\frac{b^n}{e^{sb}}}_{L} + \frac{n}{s}\ub{\int_0^\infty e^{-st}\cdot t^{n-1}\ dt}_{\large\lap{t^{n-1}}}
+					</mrow>.
+				</md>
+			</p>
+
+			<p>
+				Noticing that the improper integral is just <m>\lap{t^{n-1}}</m>, we have
+				<me>
+					\lap{ t^{n} } = -\frac{1}{s}\cdot L + \frac{n}{s}\cdot \lap{t^{n-1}}
+				</me>,
+				but <m>L=0</m> if <m>s \gt 0</m> <xref ref="lt-example-tnth-LH-details" text="custom">(🔍How?)</xref>, so we have the relationship
+			</p>
+
+			<me>
+				\lap{t^{n}} = \frac{n}{s}\cdot \lap{t^{n-1}}, \quad s \gt 0
+			</me>.
+		</proof>
+
+		<p>
+			To get the general formula we apply this relationship repeatedly for increasing <m>n</m>, as follows
+			<sbsgroup widths="16% 10% 4% 14% 4% 38%" margins="7% 7%" valign="middle">
+				<sidebyside>
+					<p><me>n=1:</me></p>
+					<p><me>\lap{t}</me></p>
+					<p><me>=</me></p>
+					<p><me>\frac{1}{s}\cdot\lap{1}</me></p>
+					<p><me>=</me></p>
+					<p><m>\ds\frac{1}{s}\cdot\frac{1}{s} = \frac{1}{s^2}</m></p>
+				</sidebyside>
+				<sidebyside>
+					<p><me>n=2:</me></p>
+					<p><me>\lap{t^2}</me></p>
+					<p><me>=</me></p>
+					<p><me>\frac{2}{s}\cdot\lap{t}</me></p>
+					<p><me>=</me></p>
+					<p><m>\ds\frac{2}{s}\cdot\frac{1}{s^2} = \frac{2\cdot 1}{s^3}</m></p>
+				</sidebyside>
+				<sidebyside>
+					<p><me>n=3:</me></p>
+					<p><me>\lap{t^3}</me></p>
+					<p><me>=</me></p>
+					<p><me>\frac{3}{s}\cdot\lap{t^2}</me></p>
+					<p><me>=</me></p>
+					<p><m>\ds\frac{3}{s}\cdot\frac{2\cdot 1}{s^3} = \frac{3\cdot 2\cdot 1}{s^4}</m></p>
+				</sidebyside>
+				<sidebyside>
+					<p><me>n=4:</me></p>
+					<p><me>\lap{t^4}</me></p>
+					<p><me>=</me></p>
+					<p><me>\frac{4}{s}\cdot\lap{t^3}</me></p>
+					<p><me>=</me></p>
+					<p><m>\ds\frac{4}{s}\cdot\frac{3\cdot 2\cdot 1}{s^4} = \frac{4\cdot 3\cdot 2\cdot 1}{s^5}</m></p>
+				</sidebyside>
+				<sidebyside>
+					<p><me>\vdots</me></p>
+					<p><me>\vdots</me></p>
+					<p/>
+					<p><me>\vdots</me></p>
+					<p/>
+					<p><me>\vdots</me></p>
+				</sidebyside>
+				<sidebyside widths="16% 10% 4% 17% 4% 38%" margins="7% 4%">
+					<p><me>n=n:</me></p>
+					<p><me>\lap{t^n}</me></p>
+					<p><me>=</me></p>
+					<p><me>\frac{n}{s}\cdot\lap{t^{n-1}}</me></p>
+					<p><me>=</me></p>
+					<p><m>\ds\frac{n}{s}\cdot\frac{(n-1)\dotsm 4\cdot 3\cdot 2\cdot 1}{s^{n}}</m></p>
+				</sidebyside>
+			</sbsgroup>
+		</p>
+
+		<p>
+			The pattern indicates that the Laplace transform of <m>t^n</m> is given by
+		</p>
+
+		<men xml:id="lt-L3">
+			\text{L}_3:\quad\lap{t^n} = \frac{n!}{s^{n+1}}, \quad s \gt 0, \quad n = 0, 1, 2, \ldots
+		</men>
+
+		<task label="chkpt-common-poly-2">
+			<title>❓👉 Limit of <m>b^3/e^{6b}</m> </title>
+			<statement>
+				<p>
+					What is the value of <m>\ds \lim_{b \to \infty} \frac{b^3}{e^{6b}}</m>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement><m>\infty</m></statement>
+					<feedback>
+						<p>No, exponential growth (<m>e^{6b}</m>) grows faster than polynomial growth (<m>b^3</m>) as <m>b \to \infty</m>. This pulls the ratio, <m>\frac{b^3}{e^{6b}}</m>, to zero.</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>0</m></statement>
+					<feedback>
+						<p>Correct, exponential growth (<m>e^{6b}</m>) grows faster than polynomial growth (<m>b^3</m>) as <m>b \to \infty</m>. This pulls the ratio, <m>\frac{b^3}{e^{6b}}</m>, to zero. This can also be verified with L'Hôpital's rule.</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>b^3</m></statement>
+					<feedback>
+						<p>No, <m>b</m> goes to <m>\infty</m>. So the limit cannot have <m>b</m> in its value.</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>6</m></statement>
+					<feedback>
+						<p>No, exponential growth (<m>e^{6b}</m>) grows faster than polynomial growth (<m>b^3</m>) as <m>b \to \infty</m>. This pulls the ratio, <m>\frac{b^3}{e^{6b}}</m>, to zero.</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</paragraphs>
+	
+	<paragraphs label="sine-cosine-function-transform">
+		<title> Sine and Cosine Transform </title>
+
+		<p>
+			The last two transforms we need are <m>\lap{\cos(bt)}</m> and <m>\lap{\sin(bt)}</m>. As with the previous transforms, we will find <m>\lap{\cos(3t)}</m> first, then use it easily deduce the general formula for <m>\lap{\cos(bt)}</m>.
+		</p>
+
+		<proof><title> <me>\lap{\cos(3t)} = \frac{s}{s^2 + 3^2}, \quad s \gt 0</me>Click here for details </title>
+			<p>
+				Applying the definition and writing the integral as a limit, we have
+				<me>
+					\lap{ \cos(3t)} = \int_0^{\infty} e^{-st} \cdot \cos(3t)\ dt = \lim_{b \to \infty} \ub{\int_0^{b} e^{-st} \cos(3t)\ dt}_{I}
+				</me>.
+			</p>
+
+			<p>
+				Treating <m>s</m> constant, we apply integration by parts to <m>I</m> as follows:
+			</p>
+
+			<me>
+				I = -\frac{e^{-st}}{s} \cos(3t) \Bigg|_0^b - \frac{3}{s}\int_0^{b} e^{-st} \sin(3t)\ dt
+			</me>,
+
+			<aside><title> Integration by Parts </title>
+				<p>
+					1st Integration by Parts
+					<md>
+						<mrow>	u	\amp = \cos(3t)				</mrow>
+						<mrow>	du	\amp = -3\sin(3t)\ dt		</mrow>
+						<mrow>	v	\amp = -\sfrac{e^{-st}}{s}	</mrow>
+						<mrow>	dv	\amp = e^{-st}\ dt			</mrow>
+					</md>
+					2nd Integration by Parts
+					<md>
+						<mrow>	u	\amp = \sin(3t)				</mrow>
+						<mrow>	du	\amp = 3\cos(3t)\ dt		</mrow>
+						<mrow>	v	\amp = -\sfrac{e^{-st}}{s}	</mrow>
+						<mrow>	dv	\amp = e^{-st}\ dt			</mrow>
+					</md>
+				</p>
+			</aside>
+
+			<p>
+				but this requires a second integration by parts:
+				<md>
+					<mrow>
+						I
+						\amp = -\frac{e^{-st}}{s} \cos(3t) \Bigg|_0^b - \frac{3}{s} \left[ -\frac{e^{-st}}{s} \sin(3t)\Bigg|_0^b + \frac{3}{s} \int_0^{b} e^{-st} \cos(3t)\ dt \right]
+					</mrow>
+					<mrow>
+						\amp = \left(-\frac{e^{-st}}{s} \cos(3t) + \frac{3e^{-st}}{s^2} \sin(3t)\right)\Bigg|_0^b - \frac{9}{s^2} \ub{\int_0^{b} e^{-st} \cos(3t)\ dt}_{I}
+					</mrow>
+				</md>.
+			</p>
+
+			<p>
+				Since the integral <m>I</m> reappeared, we actually have
+				<me>
+					I = \left(-\frac{e^{-st}}{s} \cos(3t) + \frac{3e^{-st}}{s^2} \sin(3t)\right)\Bigg|_0^b - \frac{9}{s^2} I
+				</me>.
+				Evaluating the limits of integration and solving for <m>I</m>, we find
+				<md>
+					<mrow>
+						I + \frac{9}{s^2} I  \amp = \left(-\frac{e^{-st}}{s} \cos(3t) + \frac{3e^{-st}}{s^2} \sin(3t)\right)\Bigg|_0^b
+					</mrow>
+					<mrow>
+						I\left(\frac{s^2+9}{s^2}\right) \amp = \left(-\frac{e^{-sb}}{s} \cos(3b) + \frac{3e^{-sb}}{s^2} \sin(3b) + \frac{1}{s} \right)
+					</mrow>
+					<mrow> 
+						I	\amp = \frac{s^2}{s^2+9}\left(-\frac{e^{-sb}}{s} \cos(3b) + \frac{3e^{-sb}}{s^2} \sin(3b) + \frac{1}{s} \right)
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				Finally, the limit of <m>I</m> as <m>b \to \infty</m> is the sum of the limits
+				<md>
+					<mrow>
+						\lim_{b \to \infty} I = \amp
+					</mrow>
+					<mrow>
+						\frac{s^2}{s^2+9} \amp \Bigg(
+							- \frac{1}{s}\ub{\lim_{b \to \infty} e^{-sb} \cos(3b)}_{L_1}
+							+ \frac{3}{s^2}\ub{\lim_{b \to \infty} e^{-sb} \sin(3b)}_{L_2} 
+							+ \frac{1}{s}
+						\Bigg)
+					</mrow>
+				</md>
+				Since <xref ref="lt-example-4-details" text="custom"><m>L_1\to0</m> &amp; <m>L_2\to0</m> if <m>s \gt 0</m></xref>, we can conclude that
+				<me>
+					\lap{\cos(3t)} = \frac{s}{s^2 + 9}, \quad s \gt 0
+				</me>.
+			</p>
+		</proof>
+
+		<p>
+			Replacing the constants <m>3</m> and <m>9</m> with <m>b</m> and <m>b^2</m>, respectively, shows that
+			<men xml:id="lt-L4">
+				\text{L}_4:\quad\lap{\cos(bt)} = \frac{s}{s^2 + b^2}, \quad s \gt 0
+			</men>.
+		</p>
+
+		<p>
+			The derivation of the formula for the Laplace transform of sine, given by
+			<men xml:id="lt-L5">
+				\text{L}_5:\quad\lap{\sin(bt)} = \frac{b}{s^2 + b^2}, \quad s \gt 0
+			</men>,
+			follows a similar approach and is left as exercise for you to try on your own.
+		</p>
+
+		<p>
+			The transforms derived in this section will be heavily used when solving a differential equation with the Laplace transform method. In the next section, we'll explore their properties, which will expand the set of functions we can transform.
+		</p>
+	</paragraphs>
+
+	<objectives label="common-transforms-wrapup">
+		<ul>
+			<li> 
+			
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="common-transforms-cyu">
+		<statement>
+			<p>
+				Answer the following questions related to LNCC equations. Assume
+				<task label="chkpt-1"><title>❓👉 Transform of a Constant Function </title>
+					<statement>
+						<p>
+							What is the result of the Laplace transform of the constant function 1?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>\ds \frac{1}{t}</m></statement>
+							<feedback>
+								<p>
+									No, <m>\ds \frac{1}{t}</m> is not the result of the Laplace transform of 1. It doesn't depend on <m>s</m>, which is the correct variable.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>\ds \frac{1}{s}</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of 1 is <m>\ds \frac{1}{s}</m> for <m>s > 0</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds \frac{1}{t+s}</m></statement>
+							<feedback>
+								<p>
+									No, the result should not contain <m>t</m>. The Laplace transform yields a function of <m>s</m> alone.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds \frac{1}{t-s}</m></statement>
+							<feedback>
+								<p>
+									No, the result should be independent of <m>t</m> and contain a positive <m>s</m> in the denominator.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-2"><title>❓👉 How is <m>s</m> Treated During Integration? </title>
+					<statement>
+						<p>
+							In the Laplace transform integral, the variable <m>s</m> is treated as a <fillin characters="10" /> during the integration process.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>constant</statement>
+							<feedback>
+								<p>
+									Correct! When evaluating the integral, <m>s</m> is treated as a constant, since the integration is with respect to <m>t</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>variable</statement>
+							<feedback>
+								<p>
+									No, even though <m>s</m> is a variable overall, it is treated as a constant during the integration.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>coefficient</statement>
+							<feedback>
+								<p>
+									No, while <m>s</m> acts like a coefficient in <m>e^{-st}</m>, it's conceptually treated as a constant in the integration.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>limit</statement>
+							<feedback>
+								<p>
+									No, <m>s</m> is not a limit of integration, it appears inside the integrand.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-3"><title>❓👉 Nature of the Laplace Transform Output </title>
+					<statement>
+						<p>
+							Based on this discussion, <m>\ds\lap{f(t)}</m> is a <fillin characters="15" />.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement>function of <m>t</m></statement>
+							<feedback>
+								<p>
+									No, the Laplace transform removes <m>t</m> and yields a function of <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>function of <m>s</m> and <m>t</m></statement>
+							<feedback>
+								<p>
+									No, <m>\lap{f(t)}</m> depends only on <m>s</m>, not on <m>t</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>function of <m>s</m></statement>
+							<feedback>
+								<p>
+									Correct! After the transform is applied, <m>t</m> disappears and the result is a function of <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>constant</statement>
+							<feedback>
+								<p>
+									No, the Laplace transform is typically not a constant, it's a function that depends on <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-4"><title>❓👉 Origin of the Variable <m>s</m> </title>
+					<statement>
+						<p>
+							In a Laplace transform, where does the variable <m>s</m> come from?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement>It is an integration constant</statement>
+							<feedback>
+								<p>
+									No, <m>s</m> is not a constant of integration. It appears in the integrand.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>It is a placeholder for the function <m>f(t)</m></statement>
+							<feedback>
+								<p>
+									No, <m>s</m> is a separate variable introduced by the exponential kernel in the definition.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>It comes from <m>e^{-st}</m> in the definition</statement>
+							<feedback>
+								<p>
+									Correct! The variable <m>s</m> is introduced via the exponential term in the Laplace transform definition.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s</m> replaces <m>\infty</m> in an improper integral</statement>
+							<feedback>
+								<p>
+									No, <m>s</m> doesn't replace <m>\infty</m>, it's a parameter that appears in the integrand.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-5"><title>❓👉 Common Mistake with Exponential Laplace Formula </title>
+					<statement correct="no">
+						<p>
+							True/False. <m>\ds\quad \lap{e^{at}} = \frac{1}{s + a}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							False. The correct formula is <m>\ds\frac{1}{s - a}</m>, not <m>\ds\frac{1}{s + a}</m>.
+						</p>
+					</feedback>
+				</task>
+				<task label="chkpt-6"><title>❓👉 Condition for Convergence of <m>\lap{e^{137t}}</m> </title>
+					<statement>
+						<p>
+							What must be true about <m>s</m> for <m>\lap{e^{137t}}</m> to exist?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>s \lt 137</m></statement>
+							<feedback>
+								<p>
+									No, the integral diverges if <m>s \lt 137</m>. Try a larger value.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s = 137</m></statement>
+							<feedback>
+								<p>
+									No, the integral does not converge at <m>s = 137</m> either. You need <m>s \gt 137</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>s \gt 137</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>e^{137t}</m> exists only for <m>s \gt 137</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s \lt 0</m></statement>
+							<feedback>
+								<p>
+									No, <m>s</m> must be greater than <m>137</m>, not less than <m>0</m>, for the integral to converge.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-7"><title>❓👉 Transform of <m>e^{-3t}</m> </title>
+					<statement>
+						<p>
+							<m>\lap{e^{-3t}} = </m> ?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>\ds\frac{1}{s+3}</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>e^{-3t}</m> is <m>\ds\frac{1}{s+3}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{1}{s-3}</m></statement>
+							<feedback>
+								<p>
+									No, this would be the transform of <m>e^{3t}</m>. Double-check the sign of the exponent.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{1}{s-3t}</m></statement>
+							<feedback>
+								<p>
+									No, <m>t</m> should not appear in the final expression, only <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{3}{s+3}</m></statement>
+							<feedback>
+								<p>
+									No, the numerator should be 1, not 3. This is not a scaled exponential.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-8"><title>❓👉 Fill in the Missing Value in <m>\lap{e^{3t}}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\quad \lap{e^{3t}} = \frac{1}{s - <fillin characters="1"/>}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>3</statement>
+							<feedback>
+								<p>Correct! The Laplace transform of <m>e^{3t}</m> is <m>\ds\frac{1}{s - 3}</m>.</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>1</statement>
+							<feedback>
+								<p>No, the exponent of <m>e^{3t}</m> is 3, not 1.</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>0</statement>
+							<feedback>
+								<p>No, <m>s - 0</m> would imply a transform of 1, not <m>e^{3t}</m>.</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>-3</statement>
+							<feedback>
+								<p>No, that would correspond to <m>e^{-3t}</m>. Watch the sign.</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-9"><title>❓👉 Fill in the Factorial for <m>\lap{t^4}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{t^4} = \frac{<fillin characters="1" />!}{s^5}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>4</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>t^4</m> is <m>\ds\frac{4!}{s^5}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>5</m></statement>
+							<feedback>
+								<p>
+									No, the exponent in the denominator is <m>5</m>, which comes from <m>t^4</m>. So the numerator must be <m>4!</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>24</m></statement>
+							<feedback>
+								<p>
+									No, <m>24</m> is <m>4!</m> itself, but the blank asks for the number before the factorial.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>120</m></statement>
+							<feedback>
+								<p>
+									No, <m>120</m> is <m>5!</m>, not the factorial we need here.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-10"><title>❓👉 Denominator in <m>\lap{t^3}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{t^3} = \frac{6}{<fillin characters="1" />}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>s^4</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>t^3</m> is <m>\ds\frac{3!}{s^{3+1}} = \frac{6}{s^4}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>s^4</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>t^3</m> is <m>\ds\frac{6}{s^4}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s^3</m></statement>
+							<feedback>
+								<p>
+									No, you need <m>s^{3+1}</m> in the denominator.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s^5</m></statement>
+							<feedback>
+								<p>
+									No, the power of <m>s</m> should be <m>4</m> based on <m>t^3</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-11"><title>❓👉 Identify the Function from a Large Factorial </title>
+					<statement>
+						<p>
+							<m>\ds\lap{<fillin characters="1" />} = \frac{479001600}{s^{13}}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>t^9</m></statement>
+							<feedback>
+								<p>
+									No, <m>9!</m> is much smaller than <m>479001600</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>t^{10}</m></statement>
+							<feedback>
+								<p>
+									No, <m>10!</m> is only <m>3628800</m>. Try a larger exponent.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>t^{11}</m></statement>
+							<feedback>
+								<p>
+									No, <m>11!</m> is <m>39916800</m>. You're close!
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>t^{12}</m></statement>
+							<feedback>
+								<p>
+									Correct! <m>12!</m> is <m>479001600</m>, and the denominator's exponent is <m>12 + 1 = 13</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-12"><title>❓👉 Laplace Transform of <m>t</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{t} = </m> ?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>\ds\frac{1}{s^2}</m></statement>
+							<feedback>
+								<p>
+									Correct! This matches the rule: <m>\lap{t^n} = \frac{n!}{s^{n+1}}</m> with <m>n = 1</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{1}{s}</m></statement>
+							<feedback>
+								<p>
+									No, that's the transform of <m>1</m>, not <m>t</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>1</m></statement>
+							<feedback>
+								<p>
+									No, the transform of <m>t</m> is not a constant.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{2}{s^2}</m></statement>
+							<feedback>
+								<p>
+									No, the numerator should be <m>1</m>, not <m>2</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-13"><title>❓👉 Laplace Transform of <m>t^2</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{t^2} = </m> ?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>\ds\frac{2}{s^3}</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>t^2</m> is <m>\ds\frac{2!}{s^{2+1}} = \frac{2}{s^3}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{1}{s^2}</m></statement>
+							<feedback>
+								<p>
+									No, that's the transform of <m>t</m>, not <m>t^2</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>1</m></statement>
+							<feedback>
+								<p>
+									No, <m>\lap{t^2}</m> is not a constant.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{2}{s^2}</m></statement>
+							<feedback>
+								<p>
+									No, double-check the exponent in the denominator, it should be <m>3</m>, not <m>2</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-14"><title>❓👉 Numerator in <m>\lap{\sin(t)}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{\sin(t)} = \frac{<fillin characters="1" />}{s^2 + 1}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>1</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>\sin(t)</m> is <m>\ds\frac{1}{s^2 + 1}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s</m></statement>
+							<feedback>
+								<p>
+									No, <m>s</m> appears in the transform of cosine, not sine.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>b</m></statement>
+							<feedback>
+								<p>
+									No, <m>b</m> is not relevant here. The correct constant is <m>1</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>s^2</m></statement>
+							<feedback>
+								<p>
+									No, <m>s^2</m> is part of the denominator, not the numerator.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-15"><title>❓👉 Numerator in <m>\lap{\cos(-2t)}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{\cos(-2t)} = \frac{<fillin characters="1" />}{s^2 + 4}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>2</m></statement>
+							<feedback>
+								<p>
+									No, the correct numerator is <m>s</m>, not the frequency.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>4</m></statement>
+							<feedback>
+								<p>
+									No, <m>4</m> is part of the denominator <m>s^2 + 4</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>s</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>\cos(-2t)</m> is <m>\ds\frac{s}{s^2 + 4}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>2s</m></statement>
+							<feedback>
+								<p>
+									No, this would be the result if the cosine was scaled. Here, it is not.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-16"><title>❓👉 Function Matching <m>\ds\frac{s}{s^2 + \frac{1}{4}}</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{<fillin characters="1" />} = \frac{s}{s^2 + \frac{1}{4}}</m>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>\sin\left(\frac12t\right)</m></statement>
+							<feedback>
+								<p>
+									No, the transform of sine would have <m>\frac{1}{2}</m> in the numerator, not <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>\cos\left(\frac12t\right)</m></statement>
+							<feedback>
+								<p>
+									Correct! The Laplace transform of <m>\cos\left(\frac{1}{2}t\right)</m> is <m>\ds\frac{s}{s^2 + \frac{1}{4}}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\cos\left(2t\right)</m></statement>
+							<feedback>
+								<p>
+									No, the denominator for <m>\cos(2t)</m> would be <m>s^2 + 4</m>, not <m>\frac{1}{4}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\sin\left(2t\right)</m></statement>
+							<feedback>
+								<p>
+									No, sine transforms place the frequency in the numerator, not <m>s</m>.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-17"><title>❓👉 Transform of <m>\sin(5t)</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{\sin(5t)} = </m> ?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>\ds\frac{5}{s^2 + 25}</m></statement>
+							<feedback>
+								<p>
+									Correct! This follows the formula <m>\lap{\sin(bt)} = \frac{b}{s^2 + b^2}</m> with <m>b = 5</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{s}{s^2 + 25}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. That's the transform of <m>\cos(5t)</m>, not <m>\sin(5t)</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{1}{s^2 + 25}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. The frequency coefficient <m>5</m> must appear in the numerator.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{5}{s^2 + 5^2}</m></statement>
+							<feedback>
+								<p>
+									This is mathematically correct but not simplified. Choose the version with <m>25</m> in the denominator.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="chkpt-18"><title>❓👉 Transform of <m>\cos(-3t)</m> </title>
+					<statement>
+						<p>
+							<m>\ds\lap{\cos(-3t)} = </m> ?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>\ds\frac{3}{s^2 + 9}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. The numerator for cosine should be <m>s</m>, not the frequency.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{s}{s^2 - 9}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. The denominator should be <m>s^2 + 9</m>, not <m>s^2 - 9</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>\ds\frac{s}{s^2 + 9}</m></statement>
+							<feedback>
+								<p>
+									Correct! Cosine is even, so <m>\cos(-3t)</m> = <m>\cos(3t)</m>, and its transform is <m>\ds\frac{s}{s^2 + 9}</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds\frac{3}{s^2 - 9}</m></statement>
+							<feedback>
+								<p>
+									Incorrect. Both the numerator and denominator are wrong for cosine transforms.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+			</p>
+		</statement>
+	</fact>
+</section>

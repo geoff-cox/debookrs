@@ -3,13 +3,13 @@
 
 	<introduction>
 		<p>
-			Before we apply the Laplace transform to solve differential equations, we need to understand the foundational concept that makes the method work: transferring derivatives inside an integral. This section begins with a review of integration by parts, focusing on how derivatives applied to one function can be shifted onto another. You'll see how this principle leads directly to the structure of the Laplace transform.
+			Before we apply the Laplace transform to solve differential equations, we need to understand the foundational concept that makes the method work: transferring derivatives inside an integral. This section begins with a review of integration by parts (IBP), focusing on how derivatives applied to one function can be shifted onto another. You'll see how this principle leads directly to the structure of the Laplace transform.
 		</p>
 
 		<lemma>
 			<title> Differentiation and Integration Essentials </title>
 			<p>
-				These short tasks refresh two essential tools: how exponentials behave under differentiation, and the integration by parts formula we’ll use throughout this chapter.
+				These short tasks refresh two essential tools: how exponentials behave under differentiation, and the integration by parts (IBP) formula we'll use throughout this chapter.
 			</p>
 			<p>
 				<task xml:id="derivative-transfer-prep-1">
@@ -66,8 +66,8 @@
 		</lemma>
 	</introduction>
 
-	<paragraphs xml:id="lt-review-integration-by-parts">
-		<title> Review of Integration by Parts </title>
+	<subsection xml:id="lt-review-integration-by-parts">
+		<title> Review of Integration by Parts (IBP) </title>
 
 		<p>
 			To understand how the Laplace transform method simplifies differential equations into algebraic equations, we must revisit integration by parts from calculus. The minimalistic version of the formula is:
@@ -96,7 +96,7 @@
 		</p>
 
 		<p>
-			This version shows how integration by parts lets you shift a derivative from one function to another inside an integral. That becomes especially useful when <m>u(t) = e^{-st}</m> for some constant <m>s</m>.
+			This version illustrates how a derivative can shift from one function to another inside an integral. This becomes especially useful when <m>u(t) = e^{-st}</m> for some constant <m>s</m>.
 		</p>
 
 		<task label="derivative-transfer-chkpt-1">
@@ -141,17 +141,62 @@
 				</choice>
 			</choices>
 		</task>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs xml:id="lt-using-exponentials-for-derivative-transfer">
+	<subsection xml:id="lt-using-exponentials-for-derivative-transfer">
 		<title> Using Exponentials to Transfer Derivatives </title>
+
+		<task xml:id="p4-c1-s1-1-rq3"  label="p4-c1-s1-1-rq3">
+			<title>👀 Review: Derivative of <m>e^{-st}</m> </title>
+			<statement>
+				<p>
+					Let <m>s</m> be a constant. Which function is equal to the derivative
+					<me>\frac{d}{dt}\left[e^{-st}\right] =</me>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds\quad -se^{-st}</m></statement>
+					<feedback>
+						<p>
+							Correct! The derivative of <m>e^{-st}</m> with respect to <m>t</m> is <m>-se^{-st}</m> by the chain rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad e^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. You're missing the <m>-s</m> from the chain rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad se^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The sign should be negative because the exponent is <m>-st</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad -\frac{1}{s}e^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This form appears when integrating, not differentiating. Try applying the chain rule.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
 		<p>
 			Let's try this with a specific example. Suppose <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Then <m>u'(t) = -se^{-st}</m> and <m>v'(t) = y'(t)</m>, so the formula becomes:
 			<me>
-			\int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
+			\int_{0}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }y}}{ 
 				e^{-st} \ {\color{RoyalBlue}\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
-			} = e^{-st} \ y(t) \Big|_{a}^{b}
-			- \int_{a}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
+			} = e^{-st} \ y(t) \Big|_{0}^{b}
+			- \int_{0}^{b} \os{{\color{RoyalBlue}\large\text{derivative on }e^{-st}}}{ 
 				{\color{RoyalBlue}\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ y(t)\ dt
 			}
 			</me>
@@ -201,24 +246,16 @@
 		</task>
 
 		<p>
-			The derivative that was initially applied to <m>y'</m> is now on <m>e^{-st}</m>. Simplifying the integral on the right-hand side yields:
-			<aside><title> 👈❓ </title>
-				<p>Since <m>s</m> is constant with respect to <m>t</m>, it can be factored out of the integral</p>
-			</aside>
+			The derivative that was initially applied to <m>y'</m> is now on <m>e^{-st}</m>. Since <m>s</m> is constant with respect to <m>t</m>, it can be taken out of the integral:
 			<me>
-			\int_{a}^{b} e^{-st} y'(t) dt = \ub{e^{-st} \ y(t) \Big|_{a}^{b}  + s \int_{a}^{b} e^{-st} \, y(t) \, dt}_{\large\text{no derivatives of }y}
-			</me>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-derivative-key-observations">
-		<title> Where did the Derivative on <m>y</m> End Up </title>
-		<p>
-			We can now make two important observations. First, the left-hand side, which originally had a derivative on <m>y</m>, has been rewritten with no derivatives of <m>y</m> at all. Second, the only other difference between the two integrals is a factor of <m>s</m>. In a sense, <m>s</m> represents the derivative that once was on <m>y</m>.
+				\int_{0}^{b} e^{-st} y'(t)\ dt 
+				= {\DLO\ob{\vphantom{\int_{0}^{b}} e^{-sb} y(b) - y(0) + s}^{\large\text{IBP byproduct}}}\ \ \ob{\int_{0}^{b} e^{-st} y(t)\, dt}^{\large y' \to\ y}
+			</me>.
+			As you can see, the derivative on <m>y</m> is completely removed. While some byproduct results, you will seee later that it is not much of a problem since <m>e^{-sb} y(b)</m> vanishes and <m>y(0)</m> is an initial condition. In the end, the cost of this process is just a new variable, <m>s</m>.
 		</p>
 
 		<task label="derivative-transfer-chkpt-3">
-			<title>❓👉 Integration by Parts on <m>t^2 y'</m> </title>
+			<title>❓👉 IBP on <m>t^2 y'</m> </title>
 			<statement>
 				<p>
 					Select the result of applying integration by parts to 
@@ -267,21 +304,14 @@
 		</task>
 
 		<p>
-			This idea, transferring derivatives onto <m>e^{-st}</m> and ending up with a multiple of the original function, is exactly what makes the Laplace transform method work and is the motivation behind how it is defined.
+			Since differential equations seek to find <m>y</m> (<q>trapped within derivatives</q>), having a process to remove derivatives from <m>y</m> would be very useful. In fact, this is the idea behind the  Laplace transform method and unpacking how it works is the goal of the next few sections.
 		</p>
-	</paragraphs>
+	</subsection>
 
 	<objectives label="lt-derivative-transfer-wrapup">
 		<ul>
 			<li>Integration by parts transfers derivatives between functions inside an integral.</li>
-			<li>Exponential functions are ideal functions for shifting derivatives.</li>
-    		<li>The constant <m>s</m> encodes the effect of derivative transfer in this context.</li>
+			<li>When one of the functions is in the form <m>e^{-st}</m>, shifting derivatives results in a factor of <m>s</m>.</li>
   		</ul>
 	</objectives>
-
-	<fact label="lt-derivative-transfer-cyu">
-		<statement>
-		<p>Answer these questions to check your understanding of derivative transfer and the key role of <m>e^{-st}</m> in the Laplace transform process.</p>
-		</statement>
-	</fact>
 </section>
