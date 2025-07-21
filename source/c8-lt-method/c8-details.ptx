@@ -1,224 +1,4 @@
-<section xmlns:xi="http://www.w3.org/2001/XInclude"><title> Laplace Transform - Extra Details &amp; Resources </title>
-
-	<paragraphs xml:id="lt-example-1-details"><title> Explain why <m>\ds\lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] = -\frac{5}{s} \lim_{b \to \infty} \left[ e^{-sb} - 1 \right]</m> </title>
-		<p>
-			👉 Since the limit only controls <m>b</m>, we can think of <m>s</m> as a number (like <m>2</m>). This means that <m>\ds-\frac{5}{s}</m> is also a number that can be pulled out of the limit using the limit property from calculus:
-			<me>\ds\lim_{x \to \infty} c \cdot f(x) = c \cdot \lim_{x \to \infty} f(x), \quad c\ \text{is constant}</me>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="graph-of-e-to-x"><title> Exponential Behavior as its Power go to <m>\pm\infty</m></title>
-		<!-- <sidebyside widths="55%"> -->
-			<figure xml:id="figure-e-to-x">
-				<caption>
-					The general limiting behavior of an exponential function as it's power goes to <m>+\infty</m> or <m>-\infty</m>.
-				</caption>
-				<image width="100%">
-					<latex-image>
-						\begin{tikzpicture}
-							\begin{axis}[
-								axis lines=middle,
-								domain=-4.5:4.5,
-								samples=100,
-								ymin=-5,	ymax=16,
-								xmin=-4.5,	xmax=4.5,
-								ticklabel style = {font=\large}
-							]
-								\addplot[red, very thick] {exp(x)};
-								\node at (-1.3,1.5)	[anchor=east, scale=1.2] {$0 \leftarrow e^{\text{ power}}$};
-								\node at (2.4,10.5)	[anchor=west, scale=1.2] {$e^\text{ power}$};
-								\node at (2.9,13)	[anchor=west, scale=1.2, rotate=-20] {$\uparrow$};
-								\node at (3,14.5)	[anchor=west, scale=1.2] {$\infty$};
-								\node at (1.3,-4)	[anchor=west, scale=1.1] {$\text{power } \rightarrow \infty$};
-								\node at (-1,-4)	[anchor=east, scale=1.1] {$-\infty \leftarrow \text{ power}$};
-							\end{axis}
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-			</figure>
-		<!-- </sidebyside> -->
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-t-IVP-details"><title> How? </title>
-		<p>
-			👉 Choosing
-			<md>
-				<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
-				<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
-			</md>
-			integration by parts gives
-			<md>
-				<mrow>
-					\int_0^b e^{-st} \cdot t\ dt
-						\amp = -\frac{t}{s}e^{-st} - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
-				</mrow>
-				<mrow> 	
-						\amp = -\frac{t}{s}e^{-st}+ \frac{1}{s}\int_0^b e^{-st} dt
-				</mrow>
-				<mrow> 	
-						\amp = \left(-\frac{t}{s}e^{-st}- \frac{1}{s^2}e^{-st}\right) \Bigg|_0^b
-				</mrow>
-				<mrow> 	
-						\amp = \left(-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb}\right) - \left(0 - \frac{1}{s^2}\right)
-				</mrow>
-				<mrow> 	
-						\amp = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}
-				</mrow>
-			</md>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-t-LH-details"><title> How? </title>
-		<p>
-			👉 If <m>s \lt 0</m> then the power of <m>e^{-sb}</m> goes to <m>+\infty</m> as <m>b\to\infty</m>, so <m>L_1=be^{-sb} \to \infty</m> and <m>L_2=e^{-sb} \to \infty</m>. Therefore, we assume <m>s \gt 0</m> and compute the limits as
-			<ul marker="square">
-				<li>
-					<p>
-						<m>
-							\ds\DL_A 
-							= \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-							\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
-							= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
-						</m>
-					</p>
-				</li>
-				<li>
-					<p>
-						<m>
-							\ds L_2
-							= \lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
-						</m>
-					</p>
-				</li>
-			</ul>
-			where <m>LH</m> denotes L'Hôpital's Rule was applied to the limit.
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-2-details"><title> How? </title>
-		<p>
-			👉 Using <m>u</m>-substitution with
-			<md>
-				<mrow>
-					u	\amp = \ob{(7-s)}^{\text{constant}}t
-				</mrow>
-				<mrow>
-					du	\amp = (7-s)dt \quad \Rightarrow \quad dt = \frac{du}{7-s}
-				</mrow>
-			</md>
-			the integral is compute as
-			<md>
-				<mrow>
-					\int_0^b e^{(7-s)t}\ dt	= \int_{t=0}^{t=b} e^{u}\frac{du}{7-s}
-					\amp = \frac{1}{7-s}\int_{t=0}^{t=b} e^{u}\ du
-				</mrow>
-				<mrow>
-					\amp = \frac{1}{7-s} \left[ e^{u} - 1 \right]\Bigg|_{t=0}^{t=b}
-				</mrow>
-				<mrow>
-					\amp = \frac{1}{7-s} \left[ e^{7-s} - 1 \right]\Bigg|_{0}^{b}
-				</mrow>
-			</md>.
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-tsqrd-IVP-details"><title> How? </title>
-		<p>
-			👉 Choosing
-			<md>
-				<mrow> u = t^2,		\quad\amp	dv = e^{-st}dt, 		</mrow>
-				<mrow> du = 2t\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
-			</md>
-			integration by parts gives
-			<md>
-				<mrow>
-					\int_0^b e^{-st} \cdot t^2\ dt
-						\amp = t^2 \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) 2t\ dt
-				</mrow>
-				<mrow> 	
-						\amp = -\frac{b^2}{s}e^{-sb} + \frac{2}{s} \int_0^b e^{-st} \cdot t\ dt
-				</mrow>
-			</md>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-tsqrd-LH-details"><title> How? </title>
-		<p>
-			Again, if <m>s \lt 0</m>, the limit goes to <m>+\infty</m>. So we must have <m>s \gt 0</m>. Applying L'Hôpital's rule twice, we get
-			<md>
-				<mrow>
-					L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b^2}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}\
-					\amp\us{LH}{=}\ \lim_{b \to \infty}\frac{2b}{se^{sb}}\
-					= \frac{2}{s}\lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-				</mrow>
-				<mrow>
-					\amp\us{LH}{=}\ \frac{2}{s}\lim_{b \to \infty}\frac{1}{se^{sb}}
-					= \frac{2}{s^2}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-					= 0
-				</mrow>
-			</md>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-tnth-IVP-details"><title> How? </title>
-		<p>
-			👉 Choosing
-			<md>
-				<mrow> u = t^n,				\quad\amp	dv = e^{-st}dt, 		</mrow>
-				<mrow> du = nt^{n-1}\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
-			</md>
-			integration by parts gives
-			<md>
-				<mrow>
-					\lap{ t^{n} }
-					\amp = \lim_{b \to \infty} \left[-\frac{t^{n}}{s}e^{-sb}\Bigg|_0^b - \int_0^b \left(-\frac{1}{s}e^{-st}\right)\cdot nt^{n-1}\ dt\right]
-				</mrow>
-				<mrow>
-					\amp = \lim_{b \to \infty} \left[\left(-\frac{b^n}{s}e^{-sb} - 0\right) + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
-				</mrow>
-				<mrow>
-					\amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
-				</mrow>
-			</md>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-tnth-LH-details"><title> How? </title>
-		<p>
-			The reasoning is the same as in <xref provisional="lt-example-tnth-IVP-details" text="custom">previous solution</xref> except we apply L'Hôpital's rule <em>n</em> times. So we have
-			<md>
-				<mrow>
-					\lim_{b \to \infty}\frac{b^n}{e^{sb}}\
-					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
-					\lim_{b \to \infty}\frac{nb^{n-1}}{se^{sb}}
-					= \frac{n}{s}\lim_{b \to \infty}\frac{b^{n-1}}{e^{sb}}
-				</mrow>
-				<mrow>
-					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
-					\frac{n}{s}\lim_{b \to \infty}\frac{(n-1)b^{n-2}}{se^{sb}}
-					= \frac{n(n-1)}{s^2}\lim_{b \to \infty}\frac{b^{n-2}}{e^{sb}}
-				</mrow>
-				<mrow>
-					\amp \qquad\qquad \vdots \quad LH\ \ n-2 \text{ more times}
-				</mrow>
-				<mrow>
-					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
-					\frac{n!}{s^n}\lim_{b \to \infty}\frac{1}{se^{sb}}
-					= \frac{n!}{s^{n+1}}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
-					= 0
-				</mrow>
-			</md>
-		</p>
-	</paragraphs>
-
-	<paragraphs xml:id="lt-example-4-details"><title> How? </title>
-		<p>
-			👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, Thus, their product must approach zero. That is,
-			<me>
-				\lim_{b \to \infty} e^{-sb} \cos(3b) = 0 \quad \text{and} \quad \lim_{b \to \infty} e^{-sb} \sin(3b) = 0
-			</me>
-		</p>
-	</paragraphs>
+<section><title> Laplace Transform - Extra Details &amp; Resources </title>
 
 	<!-- <paragraphs xml:id="example-key-steps"><title> Key Steps </title>
 		<p>
@@ -738,7 +518,7 @@
 	</subsection> -->
 
     <!-- <dl>
-		<li xml:id="lt-table-row-L1"><title><m>L_1</m></title>
+		<li xml:id="lt-L1"><title><m>L_1</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -759,7 +539,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L2"><title><m>L_2</m></title>
+		<li xml:id="lt-L2"><title><m>L_2</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -780,7 +560,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L3"><title><m>L_3</m></title>
+		<li xml:id="lt-L3"><title><m>L_3</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -801,7 +581,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L4"><title><m>L_4</m></title>
+		<li xml:id="lt-L4"><title><m>L_4</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -822,7 +602,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L5"><title><m>L_5</m></title>
+		<li xml:id="lt-L5"><title><m>L_5</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -843,7 +623,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L6"><title><m>L_6</m></title>
+		<li xml:id="lt-L6"><title><m>L_6</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -864,7 +644,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L7"><title><m>L_7</m></title>
+		<li xml:id="lt-L7"><title><m>L_7</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
@@ -885,7 +665,7 @@
 				</tabular>
 			</p>
 		</li>
-		<li xml:id="lt-table-row-L8"><title><m>L_8</m></title>
+		<li xml:id="lt-L8"><title><m>L_8</m></title>
 			<p>
 				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
 					<col top="none"/>
