@@ -2,9 +2,13 @@
 	<title> Forward Into the Laplace Domain </title>
 
 	<introduction>
-		<p>
-			In <xref ref="lt-roadmap-full" text="custom">step 1 of the roadmap</xref>, we cross from the familiar realm of differential equations into a new landscape called the Laplace domain. This transition, known as the <q>forward Laplace transform</q>, converts differential equations into algebraic equations where it is much easier to isolate the unknown. It just so happens that when you isolate the unknown in the Laplace domain you are indirectly isolating the unknown in the original differential equation!
-		</p>
+        <p>
+            The first step of the Laplace transform method is to convert a differential equation—where unknowns involve derivatives—into an algebraic equation in the Laplace domain. This transformation simplifies the process of isolating our unknown and eventually leading to the solution.
+        </p>
+
+        <p>
+            In terms of the roadmap, we can visualize this first step as follows:
+        </p>
 
 		<assemblage xml:id="lt-roadmap-step-1"><title> Step 1️⃣: Into the Laplace Domain (Forward Transform) </title>
 			<p>
@@ -45,9 +49,118 @@
 				</sidebyside>
 			</p>
 		</assemblage>
+
+        <p>
+            By the end of this section, you will know how to apply the forward Laplace transform to rewrite a differential equation into a Laplace equation ready for algebraic solution.
+        </p>
 	</introduction>
 
-	<subsection><title> From a Differential Equation to a Laplace Equation </title>
+	<subsection xml:id="lt-forward-mechanics">
+		<title> Basic Mechanics of the Forward Transform </title>
+		<p>
+			We will now discuss what it means to apply a Laplace transform to the differential equation
+		</p>
+
+		<me>
+			y'' - 9y = 10e^{2t}
+		</me>.
+
+        <p>
+            Symbolically, applying the forward Laplace transform amounts to applying it to both sides of the equation, like so
+        </p>
+
+		<me>
+			\lap{y'' - 9y} = \lap{10e^{2t}}
+		</me>
+
+		<p>
+			Using the <xref ref="lt-P1" text="custom">linearity property</xref> we can see that the transform applies to each term:
+		</p>
+
+		<me>
+			\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}
+		</me>
+
+		<p>
+			Letting <m>Y(s) = \lap{y}</m> and applying rule <xref ref="lt-R2" text="custom">R<m>_2</m></xref> and common transform <xref ref="lt-L2" text="custom">L<m>_2</m></xref> we get:
+		</p>
+
+		<me>
+			s^2 Y(s) - s y(0) - y'(0) - 9 Y(s) = 10 \left(\frac{1}{s-2}\right)
+		</me>
+		
+		<p>
+			This is where the initial conditions come into play. Plugging them in and cleaning things up we get the desired Laplace domain equation:
+		</p>
+
+		<me>
+			s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+		</me>
+
+		<p>
+			Our new unknown is <m>Y</m> and since there are no derivatives in the way, we can use algebra to solve for it. In fact, the solution to our differential equation, <m>y(t)</m>, is quietly hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y</m> at the same time!
+		</p>
+
+		<p>
+			Let's practice this with a one more example.
+		</p>
+		
+		<example xml:id="lt-forward-lt-example">
+			<title> Forward Transforming Equations </title>
+			<statement>
+				<p>
+					Forward transform the following equations into the Laplace domain:
+				</p>
+				<me>
+					\begin{array}{l}
+						y'' - 4y' + 6y = t^2,\\
+						y(0) = 2, \quad y'(0) = 0
+					\end{array}
+				</me>
+			</statement>
+
+			<solution>
+				<p>
+					First applying the Laplace transform to both sides:
+				</p>
+
+				<me>
+					\lap{y'' - 4y' + 6y} = \lap{t^2}
+				</me>
+
+				<p>
+					Now, use the <xref ref="lt-P1" text="custom">linearity property</xref>:
+				</p>
+
+				<me>
+					\lap{y''} - 4\lap{y'} + 6\lap{y} = \lap{t^2}
+				</me>
+
+				<p>
+					Let <m>Y = \lap{y}</m>, and apply rule <xref ref="lt-R2" text="custom">R<m>_2</m> &amp; R<m>_1</m></xref> and common transform <xref ref="lt-L3" text="custom">L<m>_3</m></xref>
+				</p>
+
+				<me>
+					\left[s^2 Y(s) - s y(0) - y'(0)\right] -4\left[sY(s) - y(0)\right] + 6 Y(s) = \frac{1}{s^3}
+				</me>
+
+				<p>
+					Finally, plug in the initial conditions, <m>y(0) = 2,\ y'(0) = 0</m> and clean up:
+				</p>
+
+				<me>
+					s^2 Y(s) - 4sY(s) + 6Y(s) - 2s + 8 = \frac{2}{s^3}
+				</me>
+			</solution>
+		</example>
+
+		<p> 
+			These examples illustrate how we can transform differential equations into the Laplace domain with relative ease.
+		</p>
+	</subsection>
+
+	<subsection label="lt-forward-intro">
+		<title> What is Going on Behind the Scenes? </title>
 
 		<task label="laplace-domain-chkpt-1">
 			<title> 📖❓ Applying the Laplace Transform to an Equation </title>
@@ -104,18 +217,32 @@
 			</choices>
 		</task>
 
-		<p>
-			While applying the Laplace transform directly from a table makes this step appear simple, it is important to understand the underlying mechanics of this process.
-		</p>
+        <p>
+            Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
+        </p>
 
-		<p>
-			Recall from earlier discussions that the essence of the Laplace transform involves multiplying the entire differential equation by the exponential function <m>e^{-st}</m> and then integrating from <m>0</m> to <m>\infty</m> with respect to <m>t</m>. Symbolically, we represent this operation as:
-			<me>
-				\ub{\int_0^{\infty} e^{-st} y''\, dt}_{\large\lap{y''}}
-				- \ub{\int_0^{\infty} e^{-st} (9y)\, dt}_{\large\lap{9y}}
-				= \ub{\int_0^{\infty} e^{-st}(10e^{2t})\, dt}_{\large\lap{10e^{2t}}}
-			</me>
+        <p>
+            Since the Laplace transform only applies to functions, when we <q>forward transform to a differential equation</q>, we mean we are taking the Laplace transform to both sides of that equation.
 		</p>
+		
+		<p>
+           Mathematically, we multiply both sides of the equation by <m>e^{-st}</m> and integrate from <m>0</m> to <m>\infty</m>. Symbolically, this looks like:
+			<me>y'' - 9 y= 10 e^{2t}</me>
+        </p>
+		<sbsgroup widths="35% 65%" valign="middle">
+			<sidebyside>
+				<p><me>\ul{\qquad\text{Symbolically}\qquad}</me></p>
+				<p><me>\ul{\text{What's Happening Behind the Scenes}}</me></p>
+			</sidebyside>
+			<sidebyside>
+				<p><me>\small\lap{y'' - 9y} = \lap{10 e^{2t}}</me></p>
+				<p><me>\small\int_0^{\infty} \left(y'' - 9y\right) e^{-st} dt = \int_0^{\infty} (10 e^{2t}) e^{-st} dt</me></p>
+			</sidebyside>
+			<sidebyside>
+				<p><me>\small\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}</me></p>
+				<p><me>\small\int_0^{\infty} (y'') e^{-st} dt - 9 \int_0^{\infty} (y) e^{-st} dt = 10 \int_0^{\infty} (e^{2t}) e^{-st} dt</me></p>
+			</sidebyside>
+		</sbsgroup>
 
 		<p>
 			Applying integration by parts to the integrals involving derivatives of the unknown function <m>y(t)</m> enables us to transfer these derivatives onto the <m>e^{-st}</m> terms, resulting in a power of <m>s</m> for each. After performing integration by parts twice on the first integral and computing the integral on the right-hand side, we arrive at:
@@ -125,111 +252,41 @@
 				= \frac{10}{s-2}
 			</me>
 		</p>
-
+        <p>
+            For the terms involving <m>y''(t)</m>, integration by parts shifts the derivatives from <m>y(t)</m> onto the exponential. Each derivative introduces an extra power of <m>s</m> and incorporates initial conditions.
+        </p>
 		<p>
 			Notice that the two integrals are <m>\lap{y}</m>, which can bundle up as just <m>Y</m>. Incorporating the provided initial conditions, <m>y(0) = 1</m> and <m>y'(0) = -7</m>, the equation simplifies neatly to the algebraic form:
 			<me>
 				s^2Y - 9Y - s + 7 = \frac{10}{s-2}
 			</me>.
 		</p>
-
+        <p>
+            After applying integration by parts, the transformed equation becomes:
+        </p>
+        <me>
+            -s y(0) - y'(0) + s^2 \lap{y} - 9 \lap{y} = \frac{10}{s - 2}
+        </me>
 		<p>
 			By transforming our equation into this new form, we have temporarily hidden <m>y(t)</m> elegantly inside <m>Y</m>. Therefore, by solving for <m>Y</m>, we are effectively also solving for <m>y(t)</m> at the same time! While we will not be showing this every time we solve a different equation, it is nice to be able to appreciate the magic behind the curtain.
 		</p>
-
+        <p>
+            Grouping terms gives us an algebraic equation in <m>Y(s) = \lap{y(t)}</m>:
+        </p>
+        <me>
+            s^2 Y - 9 Y - s + 7 = \frac{10}{s - 2}
+        </me>
 		<p>
-			In practice, we get the forward transforms from the <xref ref="lt-table-L1-12" text="custom">table of transforms</xref>, which is a much faster process. Let's demostrate this procedure with some examples.
+			In practice, we get the forward transforms from the <xref ref="lt-table-common-rules-merged" text="custom">table of transforms</xref>, which is a much faster process. Let's demostrate this procedure with some examples.
 		</p>
+        <p>
+            The function <m>y(t)</m> is now encoded inside <m>Y(s)</m>. Solving for <m>Y</m> will later allow us to recover <m>y(t)</m> using the inverse transform. While we won't re-derive this transfer every time, it’s helpful to see how the Laplace transform turns derivatives into powers of <m>s</m> and initial conditions into constant terms.
+        </p>
+        <p>
+            In practice, we use a <xref ref="lt-table-common-rules-merged" text="custom">table of Laplace transforms</xref> to skip the integral steps and work directly with known formulas. Let's see this process in action.
+        </p>
 
-		<example><title> Forward Transforming Equations </title>
-			<p>
-				<statement>
-					<p>
-						Transform the initial-value problems into a Laplace equation within the Laplace domain:
-						<ol>
-							<li>
-								<p>
-									<m>\ds y'' - 9y = 10e^{2t}, \quad y(0) = 1, \quad y(0) = -7.</m>
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\ds y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = 0.</m>
-								</p>
-							</li>
-						</ol>
-					</p>
-				</statement>
-			</p>
-
-			<p>
-				<solution>
-					<p>
-						First, we apply <m>\laplacesym</m> to both sides:
-						<me>
-							\lap{y'' - 9y} = \lap{10e^{2t}}
-						</me>.
-					</p>
-
-					<p>
-						Using the <xref ref="lt-linearity-property" text="custom">linearity property</xref>, we break this into four transforms
-						<me>
-							\ub{\lap{y''}}_{\large L_{10}} 
-							+ 3\ub{\lap{y'}}_{\large L_9} 
-							+ 2\ub{\lap{y}}_{\large Y} = -40\ub{\lap{e^{3t}}}_{\large L_2}
-						</me>,
-						and using <xref ref="lt-L10" text="custom">L<m>_10</m></xref>, <xref ref="lt-L9" text="custom">L<m>_9</m></xref>, and <xref ref="lt-L2" text="custom">L<m>_2</m></xref> from the <xref ref="lt-table-L1-12" text="custom">Laplace transform table</xref>, we transform the equation as follows:
-					</p>
-
-					<p>
-						<me>
-							s^2Y - s\os{\large 0}{\os{\Large \shortparallel}{y(0)}} - \os{\large 1}{\os{\Large \shortparallel}{y'(0)}} 
-							+ 3s\left(sY - y(0)\right) + 2Y = -40\frac{1}{s - 3}
-						</me>,
-						or
-						<me>
-							s^2Y - 9Y - s + 7 = \frac{10}{s - 2}.
-						</me>
-					</p>
-				</solution>
-
-				<solution>
-					<p>
-						Applying the Laplace transform to both sides and using the Laplace transform table, we have:
-						<md>
-							<mrow>
-								\lap{y'' - 4y' + 6y} 
-								\amp = \lap{t^2}
-							</mrow>
-							<mrow>
-								\lap{y''} - 4\lap{y'} + 6\lap{y} 
-								\amp = \lap{t^2}
-							</mrow>
-							<mrow>
-								s^2Y - s\os{\large 2}{\os{\Large \shortparallel}{y(0)}} 
-								- \os{\large 0}{\os{\Large \shortparallel}{y'(0)}} 
-								- 4(sY - \os{\large 2}{\os{\Large \shortparallel}{y(0)}}) + 6Y 
-								\amp = \frac{2}{s^3}
-							</mrow>
-							<mrow>
-								s^2Y - 2s - 4sY + 8 + 6Y 
-								\amp = \frac{2}{s^3}
-							</mrow>
-							<mrow>
-								s^2Y - 4sY + 6Y - 2s + 8 
-								\amp = \frac{2}{s^3}
-							</mrow>.
-						</md>
-					</p>
-				</solution>
-			</p>
-		</example>
-
-		<p> 
-			These examples illustrate how we can transform differential equations into Laplace equations. Next, we'll explore how to reverse this process and uncover the original solution <m>y(t)</m> hidden within our transformed equations.
-		</p>
-
-	<exercise label="chkpts-forward-transforming-eqns"><title> <em>Answer-the-Following</em> </title>
+	<p label="chkpts-forward-transforming-eqns">
 
 		<introduction>
 			<p>
@@ -346,23 +403,28 @@
 			</choices>
 		</task>
 
-	</exercise>
+	</p>
 		
 	</subsection>
 
 	<objectives label="into-laplace-domain-wrapup">
 		<ul>
-			<li> 
-
-			</li>
-		</ul>
+            <li>Understand the motivation for transforming differential equations into the Laplace domain.</li>
+            <li>Apply the Laplace transform to convert derivatives into algebraic terms.</li>
+            <li>Use a table of Laplace transforms to efficiently compute forward transforms.</li>
+            <li>Recognize how initial conditions are naturally included in the Laplace equation.</li>
+		     <li>Understand why we transform differential equations into the Laplace domain.</li>
+            <li>Know how the Laplace transform converts derivatives into algebraic terms.</li>
+            <li>Apply standard tables to simplify the forward transform process.</li>
+            <li>Recognize how initial conditions appear naturally in the transformed equation.</li>
+        </ul>
 	</objectives>
 
 	<fact label="into-laplace-domain-cyu">
 		<statement>
 			<p>
 				Answer the following questions related to 
-
+				<task>Need to Write</task>
 			</p>
 		</statement>
 	</fact>
