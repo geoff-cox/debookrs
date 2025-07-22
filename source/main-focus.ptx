@@ -343,12 +343,12 @@
 					<paragraphs xml:id="lt-intro-preview-method0">
 						<title> Preview of the Laplace Method Steps </title>
 						<p>
-						The overall strategy is summarized in the <xref ref="lt-roadmap" text="Laplace transform roadmap"/>. This four-step process begins by transforming the differential equation into the Laplace domain (step 1). In this new setting, we solve the algebraic Laplace equation (step 2), manipulate the solution into a simpler form if needed (step 3), and finally apply the inverse Laplace transform to return to the time domain (step 4).
+						The overall strategy is summarized in the <xref ref="lt-roadmap-full" text="custom">Laplace transform roadmap</xref>. This three-step process begins by transforming the differential equation into the Laplace domain (step 1). In this new setting, we solve the algebraic Laplace equation (step 2), manipulate the solution into a simpler form if needed (step 3), and finally apply the inverse Laplace transform to return to the time domain (step 4).
 						</p>
 
 						<figure xml:id="lt-roadmap0"><title> ✳️ Laplace Transform Roadmap </title>
 						<caption>
-							A visual guide outlining the four-step process of using Laplace transforms to solve initial value problems.
+							A visual guide outlining the three-step process of using Laplace transforms to solve initial value problems.
 						</caption>
 						<image source="figures/lt-roadmap-step-1-4.png" width="100%"/>
 						</figure>
@@ -370,25 +370,105 @@
 				<xi:include href="c7-lt-basics/c7-details.ptx" />
 			</chapter>
 
-			<chapter label="into-the-laplace-domain">
+			<chapter label="applying-the-laplace-transform-method">
 				<title> Applying the Laplace Method </title>
 
 				<introduction>
-
 					<p>
-						NEED AN INTRO
+						The heart of the Laplace transform method lies in its ability to convert a differential equation into an algebraic equation. This transformation takes place in what we call the <em>Laplace domain</em> where derivatives are encoded in a variable \( s \) and initial conditions naturally appear as constants in the new equation.
 					</p>
 
+					<p>
+						In this chapter, we will walk through the steps of solving a differential equation using the Laplace transform method. Each step will be explained in detail using the following example:
+						<men xml:id="lt-model-eqn-w-ics"> 
+							y'' - 9y = 10e^{2t}, \quad y(0) = 1, \quad y'(0) = -7
+						</men>.
+						The previous chapter equipped you with the necessary tools to understand each step, but putting the pieces together can still be challenging. Let's begin with the following roadmap, which outlines big picture of the Laplace method.
+					</p>
+
+					<assemblage xml:id="lt-roadmap-full">
+						<title> Laplace Method Roadmap </title>
+						<p>
+							<sidebyside widths="32% 18% 42%" valign="middle">
+								<p>
+									<me>\ul{\qquad\textbf{Original Domain}\qquad}</me>
+								</p>
+								<p/>
+								<p>
+									<me>\DLBa\textbf{2️⃣  Laplace Domain}</me>
+								</p>
+							</sidebyside>
+							<sidebyside widths="32% 18% 42%" valign="top">
+								<p>
+									<md>
+										<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+										<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+										<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+										<mrow/>
+										<mrow/>
+										<mrow>\us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+										<mrow> y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+									</md>
+								</p>
+								<p>
+									<md>
+										<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+										<mrow>\text{Apply}\ \laplacesym</mrow>
+										<mrow/>
+										<mrow/>
+										<mrow/>
+										<mrow/>
+										<mrow>\text{Apply}\ \laplacesym^{-1}</mrow>
+										<mrow>\overleftarrow{\text{3️⃣ Backward}}</mrow>
+									</md>
+								</p>
+								<p>
+									<assemblage>
+										<p>
+											<md>
+												<mrow>\amp\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+												<mrow>\amp\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+												<mrow>\amp\DLBa Y = \frac{1}{s^2 - 9}\left( \frac{10}{s - 2} + s - 7 \right)</mrow>
+												<mrow>\amp\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+												<mrow>\amp\DLBa Y = \frac{1}{s - 3} + \frac{2}{s + 3} - \frac{2}{s - 2}</mrow>
+											</md>
+										</p>
+									</assemblage>
+								</p>
+							</sidebyside>
+						</p>
+					</assemblage>
+
+					<p>
+						This chapter will guide you through this map step by step using the following approach:
+					</p>
+
+					<ol marker="(i)">
+						<li>
+							<p>
+								We begin with step 1, where the forward transform moves the differential equation into the Laplace domain.
+							</p>
+						</li>
+						<li>
+							<p>
+								From forward transforms it is jump to step 3 where we will practice finding the inverse transforms using the same table that gives us the forward transforms.
+							</p>
+						</li>
+						<li>
+							<p>
+								Finally, we examine step 2, which takes place entirely within the Laplace domain where we will use algebra to solve the <q>Laplace equation</q> and prepare this solution for the inverse transform.
+							</p>
+						</li>
+					</ol>
 				</introduction>
 
-				<xi:include href="c8-lt-method/c8-1-laplace-method-roadmap.ptx" />
-				<xi:include href="c8-lt-method/c8-2-into-the-laplace-domain.ptx" />
-				<xi:include href="c8-lt-method/c8-3-out-of-the-laplace-domain.ptx" />
-				<xi:include href="c8-lt-method/c8-4-within-the-laplace-domain.ptx" />
-				<xi:include href="c8-lt-method/c8-5-laplace-transform-method.ptx" />
+				<!-- <xi:include href="c8-lt-method/c8-1-into-the-laplace-domain.ptx" /> -->
+				<!-- <xi:include href="c8-lt-method/c8-2-out-of-the-laplace-domain.ptx" /> -->
+				<!-- <xi:include href="c8-lt-method/c8-3-within-the-laplace-domain.ptx" /> -->
+				<!-- <xi:include href="c8-lt-method/c8-4-laplace-transform-method.ptx" /> -->
 				<!-- <xi:include href="c8-lt-method/c8-abandoned-content.ptx" /> -->
 				<!-- <xi:include href="c8-lt-method/c8-exercises.ptx" /> -->
-				<xi:include href="c8-lt-method/c8-details.ptx" />
+				<!-- <xi:include href="c8-lt-method/c8-details.ptx" /> -->
 			</chapter>
 
 			<chapter label="laplace-transform-method-piecewise">

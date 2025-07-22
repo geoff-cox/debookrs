@@ -11,11 +11,11 @@
 		<image source="figures/lt-roadmap-step-1.png" width="100%"/>
 	</figure>
 
-	<figure xml:id="lt-roadmap-step-4-fig">
+	<figure xml:id="lt-roadmap-step-3-fig">
 		<caption>
 			To leave the Laplace domain (step 4), we apply a backward transform (<m>\laplacesym^{-1}</m>) to the Laplace solution for <m>Y</m>.
 		</caption>
-		<image source="figures/lt-roadmap-step-4.png" width="100%"/>
+		<image source="figures/lt-roadmap-step-3.png" width="100%"/>
 	</figure>
 
 	<assemblage xml:id="lt-roadmap-full"><title> Laplace Method Roadmap </title>
@@ -158,7 +158,7 @@
 		</p>
 	</assemblage>
 
-	<assemblage xml:id="llt-roadmap-step-3"><title> Step 3 - Prepare for <m>\laplacesym^{-1}</m> </title>
+	<assemblage xml:id="llt-roadmap-step-2"><title> Step 3 - Prepare for <m>\laplacesym^{-1}</m> </title>
 		<p>
 			<sidebyside widths="46% 6% 48%" valign="middle">
 				<p>
@@ -178,7 +178,7 @@
 		</p>
 	</assemblage>
 
-	<assemblage xml:id="llt-roadmap-step-2-3"><title> Steps 2 &amp; 3 - Solve for <m>Y</m> &amp; Prepare for <m>\laplacesym^{-1}</m> </title>
+	<assemblage xml:id="llt-roadmap-step-2"><title> Steps 2 &amp; 3 - Solve for <m>Y</m> &amp; Prepare for <m>\laplacesym^{-1}</m> </title>
 		<p>
 			<sidebyside widths="4% 28% 12% 56%" valign="middle">
 				<p/>
@@ -253,7 +253,7 @@
 		</p>
 	</assemblage>
 
-	<assemblage xml:id="llt-roadmap-step-4"><title> Step 4 - Out of the Laplace Domain (Backward Transform) </title>
+	<assemblage xml:id="llt-roadmap-step-3"><title> Step 4 - Out of the Laplace Domain (Backward Transform) </title>
 		<p>
 			<sidebyside widths="39% 15% 46%" valign="top">
 				<p>
@@ -292,4 +292,48 @@
 			</sidebyside>
 		</p>
 	</assemblage>
+
+	<subsection xml:id="lt-motivation">
+		<title> Why Use the Laplace Transform? </title>
+		<p>
+			<em>Note: The following discussion attempts to motivate the Laplace transform. For clarity, we have omitted some details that we will address later.</em>
+		</p>
+
+		<p>
+			To see where we're headed, imagine you need to solve the differential equation
+			<me>
+				y'(t) - 9y(t) = 10 e^{2t}.
+			</me>
+		</p>
+
+		<p>
+			Suppose you multiply both sides by <m>e^{-st}</m> and integrate with respect to <m>t</m>:
+			<me>
+				\int \left[y'(t) - 9y(t)\right] e^{-st} \, dt = \int 10 e^{2t} e^{-st} \, dt.
+			</me>
+		</p>
+
+		<p>
+			Distributing <m>e^{-st}</m> and separating the integrals, we can rewrite this as:
+			<me>
+				\int e^{-st} y'(t)\ dt - 9\int e^{-st} y(t)\ dt = \int e^{-st} \left( 10e^{2t} \right)\ dt.
+			</me>
+		</p>
+
+		<p>
+			From the previous section, you know we can transfer the derivative from <m>y'</m> to <m>e^{-st}</m>. Doing so gives something like:
+			<me>
+				\text{constant} + s\us{\large\text{set as}\ Y}{\ul{\int e^{-st} y(t)\ dt}} - 9\us{\large\text{set as}\ Y}{\ul{\int e^{-st} y(t)\ dt}} = \us{\large\text{function of}\ s}{\ul{\int e^{-st} \left( 10e^{2t} \right)\ dt}}
+			</me>
+			where the constant comes from the limits of integration. Letting <m>Y</m> be the common integral on the left and integrating with respect to <m>t</m> (treating <m>s</m> constant) on the right:
+		</p>
+
+		<me>
+			\text{constant} + Y - 9Y = \text{function of } s
+		</me>.
+
+		<p>
+			From here you can isolate <m>Y</m> on one side of the equation using algebra, but <m>y(t)</m> (i.e., the solution) is hiding inside <m>Y</m>. Luckily, applying an inverse will <q>release</q> <m>y(t)</m> from <m>Y</m> and giving us our solution at the same time.
+		</p>	
+	</subsection>
 </section>
