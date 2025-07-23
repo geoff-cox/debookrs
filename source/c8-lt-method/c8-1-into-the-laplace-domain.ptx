@@ -62,7 +62,7 @@
 		</p>
 
 		<me>
-			y'' - 9y = 10e^{2t}
+			y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
 		</me>.
 
         <p>
@@ -154,9 +154,9 @@
 			</solution>
 		</example>
 
-		<p> 
-			These examples illustrate how we can transform differential equations into the Laplace domain with relative ease.
-		</p>
+        <p>
+            Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
+        </p>
 	</subsection>
 
 	<subsection label="lt-forward-intro">
@@ -217,18 +217,16 @@
 			</choices>
 		</task>
 
-        <p>
-            Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
-        </p>
-
-        <p>
-            Since the Laplace transform only applies to functions, when we <q>forward transform to a differential equation</q>, we mean we are taking the Laplace transform to both sides of that equation.
-		</p>
-		
 		<p>
-           Mathematically, we multiply both sides of the equation by <m>e^{-st}</m> and integrate from <m>0</m> to <m>\infty</m>. Symbolically, this looks like:
-			<me>y'' - 9 y= 10 e^{2t}</me>
-        </p>
+			In this discussion, we apply the forward transform to the same differential equation. However, this time we will show a side-by-side comparison of the math that is taking place as you work through the process. 
+		</p>
+
+		<p>
+            Since the Laplace transform only applies to functions, applying a <q>forward transform to a differential equation</q>, really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation of the initial-value problem
+			<me>y'' - 9 y= 10 e^{2t}, \quad y(0) = 1,\quad y'(0) = -7</me>
+			implies that we multiply both sides of the equation by <m>e^{-st}</m> and integrate from <m>0</m> to <m>\infty</m>:
+		</p>
+
 		<sbsgroup widths="35% 65%" valign="middle">
 			<sidebyside>
 				<p><me>\ul{\qquad\text{Symbolically}\qquad}</me></p>
@@ -236,8 +234,20 @@
 			</sidebyside>
 			<sidebyside>
 				<p><me>\small\lap{y'' - 9y} = \lap{10 e^{2t}}</me></p>
-				<p><me>\small\int_0^{\infty} \left(y'' - 9y\right) e^{-st} dt = \int_0^{\infty} (10 e^{2t}) e^{-st} dt</me></p>
+				<p>
+					<md>
+						<mrow>\small\left(y'' - 9y\right) e^{-st} \amp = (10 e^{2t}) e^{-st}</mrow>
+						<mrow>\small\int_0^{\infty} \left(y'' - 9y\right) e^{-st} dt \amp = \int_0^{\infty} (10 e^{2t}) e^{-st} dt</mrow>
+					</md>
+				</p>
 			</sidebyside>
+		</sbsgroup>
+
+		<p>
+			Next, we use the linearity of the transform/integral:
+		</p>
+
+		<sbsgroup widths="35% 65%" valign="middle">
 			<sidebyside>
 				<p><me>\small\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}</me></p>
 				<p><me>\small\int_0^{\infty} (y'') e^{-st} dt - 9 \int_0^{\infty} (y) e^{-st} dt = 10 \int_0^{\infty} (e^{2t}) e^{-st} dt</me></p>
@@ -245,7 +255,7 @@
 		</sbsgroup>
 
 		<p>
-			Applying integration by parts to the integrals involving derivatives of the unknown function <m>y(t)</m> enables us to transfer these derivatives onto the <m>e^{-st}</m> terms, resulting in a power of <m>s</m> for each. After performing integration by parts twice on the first integral and computing the integral on the right-hand side, we arrive at:
+			After performing integration by parts twice, two drivatives on <m>y''</m> are tranferred to <m>e^{-st}</m>, resulting in a factor of <m>s^2</m>:
 			<me>
 				-sy(0) - y'(0) + s^2\ub{\int_0^{\infty} e^{-st}y\, dt}_{\large\lap{y}=Y}
 				- 9\ub{\int_0^{\infty} e^{-st}y\, dt}_{\large\lap{y}=Y}
