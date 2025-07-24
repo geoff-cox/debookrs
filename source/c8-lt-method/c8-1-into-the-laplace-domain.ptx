@@ -2,9 +2,13 @@
 	<title> Forward Into the Laplace Domain </title>
 
 	<introduction>
-        <p>
-            The first step of the Laplace transform method is to convert a differential equation—where unknowns involve derivatives—into an algebraic equation in the Laplace domain. This transformation simplifies the process of isolating our unknown and eventually leading to the solution.
-        </p>
+		<p>
+			The first step of the Laplace transform method is to convert a differential equation—where the unknown appears through derivatives—into an algebraic equation in the Laplace domain. This transformation makes it easier to isolate the unknown and move toward a solution.
+		</p>
+	</introduction>
+
+    <subsection label="into-laplace-domain-overview">
+        <title> Crossing Into the Laplace Domain </title>
 
         <p>
             In terms of the roadmap, we can visualize this first step as follows:
@@ -50,10 +54,10 @@
 			</p>
 		</assemblage>
 
-        <p>
-            By the end of this section, you will know how to apply the forward Laplace transform to rewrite a differential equation into a Laplace equation ready for algebraic solution.
-        </p>
-	</introduction>
+		<p>
+			Simply put, forward transforming a differential equation into the Laplace domain means applying the Laplace transform to both sides of the equation. The result is an algebraic equation where the derivatives have been converted into powers of <m>s</m> and the new unknown is <m>Y</m>.
+		</p>
+    </subsection>
 
 	<subsection xml:id="lt-forward-mechanics">
 		<title> Basic Mechanics of the Forward Transform </title>
@@ -71,7 +75,7 @@
 
 		<me>
 			\lap{y'' - 9y} = \lap{10e^{2t}}
-		</me>
+		</me>.
 
 		<p>
 			Using the <xref ref="lt-P1" text="custom">linearity property</xref> we can see that the transform applies to each term:
@@ -79,26 +83,26 @@
 
 		<me>
 			\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}
-		</me>
+		</me>.
 
 		<p>
-			Letting <m>Y(s) = \lap{y}</m> and applying rule <xref ref="lt-R2" text="custom">R<m>_2</m></xref> and common transform <xref ref="lt-L2" text="custom">L<m>_2</m></xref> we get:
+			Letting <m>Y(s) = \lap{y(t)}</m> and applying rule <xref ref="lt-R2" text="custom">R<m>_2</m></xref> for <m>\lap{y''}</m> and common transform <xref ref="lt-L2" text="custom">L<m>_2</m></xref>, we get:
 		</p>
 
 		<me>
 			s^2 Y(s) - s y(0) - y'(0) - 9 Y(s) = 10 \left(\frac{1}{s-2}\right)
-		</me>
+		</me>.
 		
 		<p>
-			This is where the initial conditions come into play. Plugging them in and cleaning things up we get the desired Laplace domain equation:
+			This is where the initial conditions come into play. Substituting the initial conditions and simplifying gives the desired Laplace domain equation:
 		</p>
 
 		<me>
 			s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
-		</me>
+		</me>.
 
 		<p>
-			Our new unknown is <m>Y</m> and since there are no derivatives in the way, we can use algebra to solve for it. In fact, the solution to our differential equation, <m>y(t)</m>, is quietly hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y</m> at the same time!
+			Our new unknown is <m>Y</m> and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation, <m>y(t)</m>, is quietly hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y(t)</m> at the same time!
 		</p>
 
 		<p>
@@ -126,7 +130,7 @@
 
 				<me>
 					\lap{y'' - 4y' + 6y} = \lap{t^2}
-				</me>
+				</me>.
 
 				<p>
 					Now, use the <xref ref="lt-P1" text="custom">linearity property</xref>:
@@ -134,15 +138,15 @@
 
 				<me>
 					\lap{y''} - 4\lap{y'} + 6\lap{y} = \lap{t^2}
-				</me>
-
+				</me>.
+				
 				<p>
 					Let <m>Y = \lap{y}</m>, and apply rule <xref ref="lt-R2" text="custom">R<m>_2</m> &amp; R<m>_1</m></xref> and common transform <xref ref="lt-L3" text="custom">L<m>_3</m></xref>
 				</p>
 
 				<me>
 					\left[s^2 Y(s) - s y(0) - y'(0)\right] -4\left[sY(s) - y(0)\right] + 6 Y(s) = \frac{1}{s^3}
-				</me>
+				</me>.
 
 				<p>
 					Finally, plug in the initial conditions, <m>y(0) = 2,\ y'(0) = 0</m> and clean up:
@@ -150,9 +154,36 @@
 
 				<me>
 					s^2 Y(s) - 4sY(s) + 6Y(s) - 2s + 8 = \frac{2}{s^3}
-				</me>
+				</me>.
 			</solution>
 		</example>
+
+		<task label="p4-c1-s4-1-rq3">
+			<title>📖❓Select the Forward Transform </title>
+			<statement>
+				<p>
+					Which of the following represents the correct Laplace transform of the equation <me>y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = -1</me>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds s^2Y - 4sY + 6Y - 2s + 1 = \frac{2}{s^3}</m></statement>
+					<feedback>This is the correct transformation using the Laplace transform and applying initial conditions.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y - 2s = \frac{1}{s^3}</m></statement>
+					<feedback>This answer is missing a term.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y + 2s - 1 = \frac{2}{s^3}</m></statement>
+					<feedback>Double check the signs of the initial conditions.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y + 1 = \frac{1}{s^3}</m></statement>
+					<feedback>This answer is missing a term.</feedback>
+				</choice>
+			</choices>
+		</task>
 
         <p>
             Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
@@ -163,7 +194,7 @@
 		<title> What is Going on Behind the Scenes? </title>
 
 		<task label="laplace-domain-chkpt-1">
-			<title> 📖❓ Applying the Laplace Transform to an Equation </title>
+			<title> 📖❓Applying the Laplace Transform to an Equation </title>
 			<statement>
 				<p>
 					<em> Fill-in-the-blanks: </em>
@@ -218,224 +249,85 @@
 		</task>
 
 		<p>
-			In this discussion, we apply the forward transform to the same differential equation. However, this time we will show a side-by-side comparison of the math that is taking place as you work through the process. 
-		</p>
-
-		<p>
-            Since the Laplace transform only applies to functions, applying a <q>forward transform to a differential equation</q>, really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation of the initial-value problem
-			<me>y'' - 9 y= 10 e^{2t}, \quad y(0) = 1,\quad y'(0) = -7</me>
+            Since the Laplace transform only applies to functions, applying a <q>forward transform to a differential equation</q>, really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation to the initial-value problem
+			<me>y' - 9 y= 10 e^{7t}, \quad y(0) = 1</me>
 			implies that we multiply both sides of the equation by <m>e^{-st}</m> and integrate from <m>0</m> to <m>\infty</m>:
 		</p>
 
 		<sbsgroup widths="35% 65%" valign="middle">
 			<sidebyside>
 				<p><me>\ul{\qquad\text{Symbolically}\qquad}</me></p>
-				<p><me>\ul{\text{What's Happening Behind the Scenes}}</me></p>
+				<p><me>\ul{\qquad\text{Behind the Scenes Math}\qquad}</me></p>
 			</sidebyside>
 			<sidebyside>
-				<p><me>\small\lap{y'' - 9y} = \lap{10 e^{2t}}</me></p>
+				<p><me>\small\lap{y' - 9y} = \lap{10 e^{7t}}</me></p>
 				<p>
 					<md>
-						<mrow>\small\left(y'' - 9y\right) e^{-st} \amp = (10 e^{2t}) e^{-st}</mrow>
-						<mrow>\small\int_0^{\infty} \left(y'' - 9y\right) e^{-st} dt \amp = \int_0^{\infty} (10 e^{2t}) e^{-st} dt</mrow>
+						<mrow>\small\left(y' - 9y\right) e^{-st} \amp = (10 e^{7t}) e^{-st}</mrow>
+						<mrow>\small\int_0^{\infty} \left(y' - 9y\right) e^{-st} dt \amp = \int_0^{\infty} (10 e^{7t}) e^{-st} dt</mrow>
 					</md>
 				</p>
 			</sidebyside>
 		</sbsgroup>
 
 		<p>
-			Next, we use the linearity of the transform/integral:
+			Next, we use the linearity of the integral:
 		</p>
 
-		<sbsgroup widths="35% 65%" valign="middle">
-			<sidebyside>
-				<p><me>\small\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}</me></p>
-				<p><me>\small\int_0^{\infty} (y'') e^{-st} dt - 9 \int_0^{\infty} (y) e^{-st} dt = 10 \int_0^{\infty} (e^{2t}) e^{-st} dt</me></p>
-			</sidebyside>
-		</sbsgroup>
+		<sidebyside widths="35% 65%" valign="middle">
+			<p><me>\small\lap{y'} - 9\lap{y} = 10\lap{e^{7t}}</me></p>
+			<p><me>\small\us{\large I_1}{\ul{\int_0^{\infty} (y') e^{-st} dt}} - 9 \int_0^{\infty} (y) e^{-st} dt = 10 \us{\large I_2}{\ul{\int_0^{\infty} (e^{7t}) e^{-st} dt}}</me></p>
+		</sidebyside>
 
 		<p>
-			After performing integration by parts twice, two drivatives on <m>y''</m> are tranferred to <m>e^{-st}</m>, resulting in a factor of <m>s^2</m>:
-			<me>
-				-sy(0) - y'(0) + s^2\ub{\int_0^{\infty} e^{-st}y\, dt}_{\large\lap{y}=Y}
-				- 9\ub{\int_0^{\infty} e^{-st}y\, dt}_{\large\lap{y}=Y}
-				= \frac{10}{s-2}
-			</me>
+			After applying integration by parts to <m>I_1</m>, the derivative is transferred from <m>y(t)</m> to <m>e^{-st}</m>, resulting in a factor of <m>s</m> and an evaluation of <m>y(t)</m> at <m>t=0</m> and <m>t=b</m>:
 		</p>
+
+		<sidebyside widths="42% 58%" valign="middle">
+			<p>
+				<me>\small
+					-y(0) + sY(s) - 9 Y(s) = 10 \left(\frac{1}{s-7}\right)
+				</me>
+			</p>
+			<p><me>\leftarrow\ \text{Symbolically}</me></p>
+		</sidebyside>
+
+		<sidebyside widths="36% 64%" valign="middle">
+			<p><me>\text{Mathematically}\ \rightarrow </me></p>
+			<p>
+				<md>
+					<mrow>\small
+						\us{\large\text{as}\ b\ \to\ \infty}{\ul{\cancelto{\large 0}{e^{-sb}y(b)}}}<fn>assuming <m>y(t)</m> grows no faster than the exponential decays.</fn> - y(0) 
+						+ s\int_0^{\infty} e^{-st}y\, dt - 9\int_0^{\infty} e^{-st}y\, dt = \frac{10}{s-7}
+					</mrow>
+				</md>
+				
+			</p>
+		</sidebyside>
+		
         <p>
-            For the terms involving <m>y''(t)</m>, integration by parts shifts the derivatives from <m>y(t)</m> onto the exponential. Each derivative introduces an extra power of <m>s</m> and incorporates initial conditions.
+            The details for computing <m>I_2 = \lap{e^{7t}}</m> are given <xref ref="common-exp-7t-details" text="custom">here</xref>.
         </p>
+
 		<p>
-			Notice that the two integrals are <m>\lap{y}</m>, which can bundle up as just <m>Y</m>. Incorporating the provided initial conditions, <m>y(0) = 1</m> and <m>y'(0) = -7</m>, the equation simplifies neatly to the algebraic form:
+			Since the two integrals are <m>\lap{y} = Y(s)</m>, the symbolic and mathematical paths come back together as  
 			<me>
-				s^2Y - 9Y - s + 7 = \frac{10}{s-2}
+				sY(s) - 9 Y(s) - y(0) = \frac{10}{s-7}
 			</me>.
 		</p>
-        <p>
-            After applying integration by parts, the transformed equation becomes:
-        </p>
-        <me>
-            -s y(0) - y'(0) + s^2 \lap{y} - 9 \lap{y} = \frac{10}{s - 2}
-        </me>
+
 		<p>
-			By transforming our equation into this new form, we have temporarily hidden <m>y(t)</m> elegantly inside <m>Y</m>. Therefore, by solving for <m>Y</m>, we are effectively also solving for <m>y(t)</m> at the same time! While we will not be showing this every time we solve a different equation, it is nice to be able to appreciate the magic behind the curtain.
+			By transforming our equation into this new form, we have momentarily stored <m>y(t)</m> inside the function <m>Y</m>. Therefore, solving for <m>Y</m> indirectly also solves for <m>y(t)</m>.
 		</p>
-        <p>
-            Grouping terms gives us an algebraic equation in <m>Y(s) = \lap{y(t)}</m>:
-        </p>
-        <me>
-            s^2 Y - 9 Y - s + 7 = \frac{10}{s - 2}
-        </me>
-		<p>
-			In practice, we get the forward transforms from the <xref ref="lt-table-common-rules-merged" text="custom">table of transforms</xref>, which is a much faster process. Let's demostrate this procedure with some examples.
-		</p>
-        <p>
-            The function <m>y(t)</m> is now encoded inside <m>Y(s)</m>. Solving for <m>Y</m> will later allow us to recover <m>y(t)</m> using the inverse transform. While we won't re-derive this transfer every time, it’s helpful to see how the Laplace transform turns derivatives into powers of <m>s</m> and initial conditions into constant terms.
-        </p>
-        <p>
-            In practice, we use a <xref ref="lt-table-common-rules-merged" text="custom">table of Laplace transforms</xref> to skip the integral steps and work directly with known formulas. Let's see this process in action.
-        </p>
-
-	<p label="chkpts-forward-transforming-eqns">
-
-		<introduction>
-			<p>
-				Complete the questions on each tab to check your understanding.
-			</p>
-		</introduction>
-		
-		<task label="p4-c1-s4-1-rq1"><title> <em>Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of <m>s</m></em> </title>
-			<statement correct="yes">
-				<p>
-					Applying the Laplace transform to a differential equation transforms the equation into an algebraic equation involving functions of <m>s</m>
-				</p>
-			</statement>
-			<feedback>
-				<p>True. The Laplace transform converts a differential equation into an algebraic equation in <m>s</m>.</p>
-			</feedback>
-		</task>
-		
-		<task label="p4-c1-s4-1-rq2"><title> <em>Which of the following represents the correct Laplace transform of the equation <me>y'' + 3y' + 2y = -40e^{3t}, \quad y(0) = 1, \quad y'(0) = 0</me>?</em> </title>
-			<statement/>
-			<choices randomize="yes">
-				<choice>
-					<statement><m>\ds s^2Y + 3sY + 2Y = \frac{-40}{s-3}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. Where are the initial conditions?</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><m>\ds s^2Y + 3sY + 2Y - s = \frac{-40}{s-3}</m></statement>
-					<feedback>
-						<p>Correct! This is the correct transformation of the given differential equation.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y + 3sY + 2Y + s = \frac{-40}{s - 3}</m></statement>
-					<feedback>
-						<p>No, this is close to the answer, but it is off by a sign.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y + 3sY + 2Y - 1 = \frac{-40}{s - 3}</m></statement>
-					<feedback>
-						<p>Incorrect, look closely at the initial conditions.</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-		
-		<task label="p4-c1-s4-1-rq3"><title> <em>Which of the following represents the correct Laplace transform of the equation <me>y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = -1</me>?</em> </title>
-			<statement>
-				<p>
-					<em>Which of the following represents the correct Laplace transform of the equation <me>y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = -1</me>?</em>
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y - 2s = \frac{1}{s^3}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. You are missing a term.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y + 2s - 1 = \frac{2}{s^3}</m></statement>
-					<feedback>
-						<p>No, this is close to the answer. Double check the signs of the initial conditions.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y + 1 = \frac{1}{s^3}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. You are missing a term.</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><m>\ds s^2Y - 4sY + 6Y - 2s + 1 = \frac{2}{s^3}</m></statement>
-					<feedback>
-						<p>Correct! This is the correct transformation using the Laplace transform and applying initial conditions.</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-		
-		<task label="p4-c1-s4-1-rq4"><title> <em>What is the Laplace transform of the initial-value problem <me>y'' - 4y' + 6y = \sin t, \quad y(0) = 2, \quad y'(0) = 0</me>?</em> </title>
-			<statement>
-				<p>
-					<em>What is the Laplace transform of the initial-value problem <me>y'' - 4y' + 6y = \sin t, \quad y(0) = 2, \quad y'(0) = 0</me>?</em>
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement><m>s^2Y + 4sY + 6Y = \frac{1}{s^2 + 1}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. Double-check the signs and the initial condition terms.</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><m>s^2Y - 4sY + 6Y - 2s + 8 = \frac{1}{s^2 + 1}</m></statement>
-					<feedback>
-						<p>Correct! This is the correct transformation of the initial-value problem.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>s^2Y - 4sY + 6Y = \frac{1}{s^2 + 1}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. You are missing the initial condition terms on the left-hand side.</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>Y = \frac{1}{s^2 + 1}</m></statement>
-					<feedback>
-						<p>No, this is incorrect. This only represents the transform of <m>t^2</m> and does not account for the left-hand side of the equation.</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-
-	</p>
-		
 	</subsection>
 
 	<objectives label="into-laplace-domain-wrapup">
 		<ul>
-            <li>Understand the motivation for transforming differential equations into the Laplace domain.</li>
-            <li>Apply the Laplace transform to convert derivatives into algebraic terms.</li>
-            <li>Use a table of Laplace transforms to efficiently compute forward transforms.</li>
-            <li>Recognize how initial conditions are naturally included in the Laplace equation.</li>
-		     <li>Understand why we transform differential equations into the Laplace domain.</li>
-            <li>Know how the Laplace transform converts derivatives into algebraic terms.</li>
-            <li>Apply standard tables to simplify the forward transform process.</li>
-            <li>Recognize how initial conditions appear naturally in the transformed equation.</li>
+			<li>The Laplace transform method begins by converting a differential equation into an algebraic equation in the Laplace domain.</li>
+			<li>Applying a Laplace transform to a differential equation means applying it to both sides, then term by term, using linearity.</li>
+			<li>Derivatives of <m>y(t)</m> become powers of <m>s</m> multiplied by <m>Y(s)</m>, along with terms involving initial conditions.</li>
+			<li>The right-hand side of the equation is transformed using the known transforms from the <xref ref="lt-table-common" text="custom">table of common Laplace transforms</xref>.</li>
+			<li>Once in the Laplace domain, the function <m>y(t)</m> is stored inside <m>Y(s)</m>, setting the stage for solving algebraically.</li>
         </ul>
 	</objectives>
-
-	<fact label="into-laplace-domain-cyu">
-		<statement>
-			<p>
-				Answer the following questions related to 
-				<task>Need to Write</task>
-			</p>
-		</statement>
-	</fact>
 </section>
