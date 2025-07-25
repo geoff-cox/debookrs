@@ -1,5 +1,45 @@
-<section label="into-laplace-domain">
-	<title> Forward Into the Laplace Domain </title>
+<introduction>
+	<p>
+		Imagine turning a complex differential equation into an algebra problem instead. That is the magic of the <em>Laplace transform method</em>. It works by transforming a differential equation into one where derivatives become powers of <m>s</m> and the initial conditions drop in automatically as constants.
+	</p>
+
+	<p>
+		The method unfolds in three main moves:
+	</p>
+
+	<ol marker="(i)">
+		<li><term>Forward transform.</term> Apply the Laplace transform (term-by-term) to a differential equation and get an algebraic equation in <m>Y(s)</m>.</li>
+		<li><term>Algebra in the Laplace domain.</term> Isolate <m>Y(s)</m> and prepare it for next step.</li>
+		<li><term>Backward transform.</term> Apply the inverse Laplace transform to the prepared <m>Y(s)</m> to turn it back into <m>y(t)</m> as the solution to the origianl differential equation.</li>
+	</ol>
+
+	<p>
+		Throughout the chapter, we will zoom in on each step with the same guiding equation,
+		<men xml:id="lt-model-eqn-w-ics">
+			y'' - 9y = 10e^{2t}, \quad y(0)=1, \quad y'(0)=-7
+		</men>,
+		and the roadmap, below. The details of each step will be revealed as we go. For now, take a moment to preview what's to come.
+	</p>
+
+	<figure xml:id="lt-slideshow-fig">
+		<caption> Laplace Transform Method Slideshow. Press <c>Next</c> to take a step! </caption>
+		<tabular>
+			<row>
+				<cell>
+					<interactive xml:id="lt-slideshow" platform="javascript"
+						dark-mode-enabled="yes"
+						source="code/slideshow/slideshow.js"
+						width="100%" aspect="1.52:1">
+						<slate xml:id="lt-slideshow-canvas" surface="canvas" width="100%" aspect="1.52:1" />
+					</interactive>
+				</cell>
+			</row>
+		</tabular>
+	</figure>
+</introduction>
+
+<section label="lt-method-step1">
+	<title> Step 1 — Into the Laplace Domain </title>
 
 	<introduction>
 		<p>
@@ -7,7 +47,7 @@
 		</p>
 	</introduction>
 
-    <subsection label="into-laplace-domain-overview">
+    <subsection label="lt-method-step1-overview">
         <title> Crossing Into the Laplace Domain </title>
 
         <p>
@@ -61,21 +101,16 @@
 
 	<subsection xml:id="lt-forward-mechanics">
 		<title> Basic Mechanics of the Forward Transform </title>
-		<p>
-			We will now discuss what it means to apply a Laplace transform to the differential equation
-		</p>
-
-		<me>
-			y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
-		</me>.
-
         <p>
-            Symbolically, applying the forward Laplace transform amounts to applying it to both sides of the equation, like so
+            Symbolically, applying the forward Laplace transform to the differential equation
+			<me>
+				y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
+			</me>
+			amounts to applying it to both sides of the equation as follows:
+			<me>
+				\lap{y'' - 9y} = \lap{10e^{2t}}
+			</me>.
         </p>
-
-		<me>
-			\lap{y'' - 9y} = \lap{10e^{2t}}
-		</me>.
 
 		<p>
 			Using the <xref ref="lt-P1" text="custom">linearity property</xref> we can see that the transform applies to each term:
@@ -102,7 +137,7 @@
 		</me>.
 
 		<p>
-			Our new unknown is <m>Y</m> and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation, <m>y(t)</m>, is quietly hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y(t)</m> at the same time!
+			Our new unknown is <m>Y</m> and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation is actually hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y(t)</m> at the same time!
 		</p>
 
 		<p>
@@ -123,67 +158,10 @@
 				</me>
 			</statement>
 
-			<solution>
-				<p>
-					First applying the Laplace transform to both sides:
-				</p>
-
-				<me>
-					\lap{y'' - 4y' + 6y} = \lap{t^2}
-				</me>.
-
-				<p>
-					Now, use the <xref ref="lt-P1" text="custom">linearity property</xref>:
-				</p>
-
-				<me>
-					\lap{y''} - 4\lap{y'} + 6\lap{y} = \lap{t^2}
-				</me>.
-				
-				<p>
-					Let <m>Y = \lap{y}</m>, and apply rule <xref ref="lt-R2" text="custom">R<m>_2</m> &amp; R<m>_1</m></xref> and common transform <xref ref="lt-L3" text="custom">L<m>_3</m></xref>
-				</p>
-
-				<me>
-					\left[s^2 Y(s) - s y(0) - y'(0)\right] -4\left[sY(s) - y(0)\right] + 6 Y(s) = \frac{1}{s^3}
-				</me>.
-
-				<p>
-					Finally, plug in the initial conditions, <m>y(0) = 2,\ y'(0) = 0</m> and clean up:
-				</p>
-
-				<me>
-					s^2 Y(s) - 4sY(s) + 6Y(s) - 2s + 8 = \frac{2}{s^3}
-				</me>.
-			</solution>
+			<solution> temporarily omitted </solution>
 		</example>
 
-		<task label="p4-c1-s4-1-rq3">
-			<title>📖❓Select the Forward Transform </title>
-			<statement>
-				<p>
-					Which of the following represents the correct Laplace transform of the equation <me>y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = -1</me>?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><m>\ds s^2Y - 4sY + 6Y - 2s + 1 = \frac{2}{s^3}</m></statement>
-					<feedback>This is the correct transformation using the Laplace transform and applying initial conditions.</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y - 2s = \frac{1}{s^3}</m></statement>
-					<feedback>This answer is missing a term.</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y + 2s - 1 = \frac{2}{s^3}</m></statement>
-					<feedback>Double check the signs of the initial conditions.</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ds s^2Y - 4sY + 6Y + 1 = \frac{1}{s^3}</m></statement>
-					<feedback>This answer is missing a term.</feedback>
-				</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 
         <p>
             Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
@@ -193,60 +171,7 @@
 	<subsection label="lt-forward-intro">
 		<title> What is Going on Behind the Scenes? </title>
 
-		<task label="laplace-domain-chkpt-1">
-			<title> 📖❓Applying the Laplace Transform to an Equation </title>
-			<statement>
-				<p>
-					<em> Fill-in-the-blanks: </em>
-				</p>
-				<p>
-					The process of applying a Laplace transform to a differential equation involves multiplying the equation by <fillin characters="13" /> and <fillin characters="13" /> with respect to <m>t</m>.
-				</p>
-				<p/>
-			</statement>
-			<choices randomize="yes">
-			<choice>
-				<statement><m>e^{-t},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement><m>e^{-st},</m> integrating</statement>
-				<feedback>
-				<p>
-					Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{st},</m> integrating</statement>
-				<feedback>
-				<p>
-					No, the exponent should have a negative sign: <m>e^{-st}</m>.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>e^{-st},</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the Laplace transform requires integration, not differentiation.
-				</p>
-				</feedback>
-			</choice>
-			<choice>
-				<statement><m>s,</m> differentiating</statement>
-				<feedback>
-				<p>
-					No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
-				</p>
-				</feedback>
-			</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 
 		<p>
             Since the Laplace transform only applies to functions, applying a <q>forward transform to a differential equation</q>, really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation to the initial-value problem
@@ -320,8 +245,15 @@
 			By transforming our equation into this new form, we have momentarily stored <m>y(t)</m> inside the function <m>Y</m>. Therefore, solving for <m>Y</m> indirectly also solves for <m>y(t)</m>.
 		</p>
 	</subsection>
+	
+	<assemblage>
+		<title>Step 1 — Into the Laplace Domain Summary</title>
+		<p>
+			Apply <m>\laplacesym</m> to each term of the differential equation; derivatives become powers of <m>s</m> and initial conditions drop in as constants, leaving an algebraic equation in <m>Y(s)</m>.
+		</p>
+	</assemblage>
 
-	<objectives label="into-laplace-domain-wrapup">
+	<objectives label="lt-method-step1-wrapup">
 		<ul>
 			<li>The Laplace transform method begins by converting a differential equation into an algebraic equation in the Laplace domain.</li>
 			<li>Applying a Laplace transform to a differential equation means applying it to both sides, then term by term, using linearity.</li>
@@ -333,7 +265,7 @@
 </section>
 
 <section label="lt-method-step2">
-	<title> Solving in the Laplace Domain </title>
+	<title> Step 2 — Solving in the Laplace Domain </title>
 
 	<introduction>
 		<p>
@@ -380,32 +312,7 @@
 			</p>
 		</assemblage>
 
-		<task label="lt-laplace-step-2-chkpt-1">
-			<title>📖❓What are we solving for? </title>
-			<statement>
-				<p>
-					What variable do you solve for in the Laplace-domain equation?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement> <m>\ Y</m>, the Laplace transform of <m>y</m> </statement>
-					<feedback> Exactly! You're solving for <m>Y(s)</m>, which represents the Laplace transform of <m>y(t)</m>. </feedback>
-				</choice>
-				<choice>
-					<statement> <m>\ y</m>, the dependent variable of the differential equation </statement>
-					<feedback> Not yet. You'll get <m>y(t)</m> by inverting <m>Y(s)</m> later. </feedback>
-				</choice>
-				<choice>
-					<statement> <m>\ s</m>, the Laplace-domain variable </statement>
-					<feedback>Nope. <m>s</m> is a variable, not the unknown you're solving for.</feedback>
-				</choice>
-				<choice>
-					<statement> <m>\ t</m>, the independent variable of the differential equation </statement>
-					<feedback> 🥺 </feedback>
-				</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 	</subsection>
 
 	<subsection label="lt-laplace-solve-basic">
@@ -425,28 +332,7 @@
 					</me>
 				</p>
 			</statement>
-			<solution>
-				<p>
-					Start by moving all non-<m>Y</m> terms to the right-hand side:
-					<me>
-						s^2Y - 4sY + 6Y = \frac{2}{s^3} + 2s - 5.
-					</me>
-				</p>
-
-				<p>
-					Now, factor <m>Y</m> from the remaining terms on the left-hand side:
-					<me>
-						Y(s^2 - 4s + 6) = \frac{2}{s^3} + 2s - 5.
-					</me>
-				</p>
-
-				<p>
-					Finally, divide both sides by the quadratic expression to isolate <m>Y(s)</m>:
-					<me>
-						Y(s) = \frac{1}{s^2 - 4s + 6} \left( \frac{2}{s^3} + 2s - 5 \right).
-					</me>
-				</p>
-			</solution>
+			<solution> temporarily omitted </solution>
 		</example>
 	</subsection>
 
@@ -534,33 +420,7 @@
 				\frac{*}{As^2 + Bs + C}\quad\rightarrow\quad\frac{*}{(s - a)^2 + b^2},
 			</me>
 
-			<task label="p4-c2-s2-2-rq5">
-				<title>📖❓Complete the Square </title>
-				<statement>
-					<p>
-						Give the correct form after completing the square of the denominator:
-						<me>Y(s) = \frac{11}{s^2 - 6s + 14} = <fillin characters="5" /></me>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement><m>\ds\frac{11}{(s - 3)^2 + 5}</m></statement>
-						<feedback>Correct</feedback>
-					</choice>
-					<choice>
-						<statement><m>\ds\frac{11}{(s + 3)^2 + 9}</m></statement>
-						<feedback>Incorrect</feedback>
-					</choice>
-					<choice>
-						<statement><m>\ds\frac{11}{(s - 1)^2 + 14}</m></statement>
-						<feedback>Incorrect</feedback>
-					</choice>
-					<choice>
-						<statement><m>\ds\frac{11}{(s - 2)^2 + 10}</m></statement>
-						<feedback>Incorrect</feedback>
-					</choice>
-				</choices>
-			</task>
+			<task> temporarily omitted </task>
 		</paragraphs>
 	</subsection>
 
@@ -580,204 +440,23 @@
 			<example label="lt-example-pfd-1">
 				<title> Distinct Linear Factors </title>
 				<statement><me>Y(s) = \frac{2s + 5}{s^2 + 5s + 4}</me></statement>
-				<solution>
-					<p>
-						Since the denominator can be factored as <m>(s+1)(s+4)</m>,  we apply partial fraction decomposition:
-						<me>
-							\frac{2s+5}{(s+1)(s+4)} = \frac{A}{s+1} + \frac{B}{s+4}
-						</me>
-					</p>
-
-					<p>
-						To find <m>A</m> and <m>B</m>, we multiply both sides by the common denominator, <m>(s+1)(s+4)</m>, eliminating all the fractions and leaving us with
-						<me>
-							2s + 5 = A(s + 4) + B(s + 1)
-						</me>.
-					</p>
-
-					<p>
-						Strategically selecting <m>s</m> as <m>-1</m> and <m>-4</m> leads directly to <m>A</m> and <m>B</m>:
-					</p>
-
-					<sidebyside widths="16% 70% 14%">
-						<p>
-							<md>
-								<mrow>s = -1: \amp</mrow>
-								<mrow></mrow>
-								<mrow>s = -4: \amp</mrow>
-								<mrow></mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
-								<mrow>3 	\amp = A(3) + B(0)</mrow>
-								<mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
-								<mrow>-3 	\amp = A(0) + B(-3)</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow></mrow>
-								<mrow>A=1</mrow>
-								<mrow></mrow>
-								<mrow>B=1</mrow>
-							</md>
-						</p>
-					</sidebyside>
-
-					<p>
-						This completes the preparation of <m>Y</m> for an inverse transform.
-						<me>
-							Y(s) = \frac{1}{s + 1} + \frac{1}{s + 4}
-						</me>.
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 
 			<example label="lt-example-pfd-2">
 				<title> Repeated Linear Factor </title>
 				<statement><me>Y(s) = \frac{3s + 4}{s^2 - 2s + 1}</me></statement>
-				<solution>
-					<p>
-						Factor the quadratic denominator:
-					</p>
-
-					<me>s^2 - 2s + 1 = (s - 1)^2</me>.
-
-					<p>
-						Decompose <m>Y(s)</m> into partial fractions:
-					</p>
-					
-					<me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
-					
-					<p>
-						Multiply both sides by <m>(s - 1)^2</m>,
-						
-						<me>3s + 4 = A(s - 1) + B.</me>
-					
-						and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
-					</p>
-
-					<sidebyside widths="12% 88%">
-						<p>
-							<md>
-								<mrow>s = 1: \amp</mrow>
-								<mrow></mrow>
-								<mrow>s = 0: \amp</mrow>
-								<mrow></mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>3(1) + 4 	\amp = A(1 - 1) + B</mrow>
-								<mrow>7 	\amp = A(0) + B \quad\implies\quad B=7</mrow>
-								<mrow>3(0) + 4 	\amp = A(0 - 1) + B</mrow>
-								<mrow>4 	\amp = -A + 7 \quad\implies\quad A=3</mrow>
-							</md>
-						</p>
-					</sidebyside>
-
-					<p>
-						The prepared form of <m>Y(s)</m> is
-						<me>Y(s) = \frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 
 			<example label="lt-example-pfd-3">
 				<title> Three Linear Factors </title>
 				<statement><me>Y(s) = \frac{2s^2 + 5s + 1}{s^3 - s}</me></statement>
-				<solution>
-					<p>
-						Since the degree of the denominator is greater than <m>2</m>, we use PFD and we factor the denominator as
-						<me>
-							s^3 - s = s(s - 1)(s + 1)
-						</me>
-						so that <m>Y(s)</m> has the form
-						<me>
-							Y(s) = \frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}
-						</me>.
-					</p>
-
-					<p>
-						Multiply both sides by <m>s(s - 1)(s + 1)</m> to get
-						<me>
-							2s^2 + 5s + 1 = A(s - 1)(s + 1) + B(s)(s + 1) + C(s)(s - 1)
-						</me>
-						and choose convenient values for <m>s</m> so that
-					</p>
-
-					<sidebyside widths="15% 70% 15%">
-						<p>
-							<md>
-								<mrow>	s = 0:	\amp	</mrow>
-								<mrow>					</mrow>
-								<mrow>	s = 1:	\amp	</mrow>
-								<mrow>					</mrow>
-								<mrow>	s = -1:	\amp	</mrow>
-								<mrow>					</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>	1 	\amp = A(-1)(1) + B(0)(1) + C(0)(-1)	</mrow>
-								<mrow>	1 	\amp = -A								</mrow>
-								<mrow>	8 	\amp = A(0)(2) + B(1)(2) + C(1)(0)		</mrow>
-								<mrow>	 	\amp = 2B								</mrow>
-								<mrow>	-2 	\amp = A(1)(0) + B(-1)(0) + C(-1)(-2)	</mrow>
-								<mrow>	-2 	\amp = 2C								</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>					</mrow>
-								<mrow>	A	\amp = -1	</mrow>
-								<mrow>					</mrow>
-								<mrow>	B	\amp = 4	</mrow>
-								<mrow>					</mrow>
-								<mrow>	C	\amp = -1	</mrow>
-							</md>
-						</p>
-					</sidebyside>
-
-					<p>
-						Therefore, the prepared form of <m>Y(s)</m> is
-						<me>Y(s) = \frac{-1}{s} + \frac{4}{s - 1} + \frac{-1}{s + 1}</me>
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 		</paragraphs>
 
-		<task label="p4-c2-s2-3-rq4">
-			<title>📖❓Partial Fraction Decomposition </title>
-			<statement>
-				<p>
-					Complete the partial fraction decomposition:
-					<me>
-						Y(s) = \frac{2s + 3}{(s + 2)(s + 3)} = 
-					</me>
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><m>\ \dfrac{-1}{s+2} + \dfrac{3}{s+3}</m></statement>
-					<feedback>Correct!</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ \dfrac{1}{s+2} + \dfrac{-3}{s+3}</m></statement>
-					<feedback>Incorrect</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ \dfrac{-1}{s+2} + \dfrac{1}{s+3}</m></statement>
-					<feedback>Incorrect</feedback>
-				</choice>
-				<choice>
-					<statement><m>\ \dfrac{2}{s+2} + \dfrac{3}{s+3}</m></statement>
-					<feedback>Incorrect</feedback>
-				</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 
 		<paragraphs label="lt-completing-square-examples">
 			<title> Completing the Square Examples </title>
@@ -785,30 +464,7 @@
 			<example label="lt-completing-square-example-1">
 				<title> Completing the Square Example </title>
 				<statement><me>Y(s) = \frac{s-1}{s^2 - 2s + 5}</me></statement>
-				<solution>
-					<p>
-						A quick calculation of the discriminate shows the denominator is not factorable: 
-						<me>
-							\Delta = b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16 \lt 0
-						</me>.
-					</p>
-
-					<p>
-						So we complete the square of the denominator:
-						<md>
-							<mrow>	s^2 - 2s + 5	\amp = \ob{s^2 - 2s + \boxed{1}}^{(s - 1)^2} - \boxed{1} + 5	</mrow>
-							<mrow>					\amp = (s - 1)^2 + 4											</mrow>
-						</md>.
-					</p>
-
-					<p>
-						Substituting this into <m>Y(s)</m> gives the prepared form
-						<me>
-							Y(s) = \frac{s - 1}{s^2 - 2s + 5} = \frac{s - 1}{(s - 1)^2 + 4}
-						</me>,
-						which is a perfect match with <xref ref="lt-L6" text="custom">L<m>_6</m></xref> with <m>a=1</m>.
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 		</paragraphs>
 
@@ -818,148 +474,25 @@
 			<example label="lt-mixed-examples-1">
 				<title>Completing the Square Example</title>
 				<statement><me>Y(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}</me></statement>
-				<solution>
-					<p>
-						Since the degree of the denominator is greater than <m>2</m>, we use PFD and factor the denominator:
-						<me>
-							s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1)
-						</me>.
-					</p>
-
-					<p>
-						Decompose <m>Y(s)</m> into partial fractions:
-						<me>
-							\frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}
-						</me>
-						and multiply both sides by <m>(s - 1)(s + 1)(s^2 + 1)</m> to get
-						<md>
-							<mrow>	4s^3 + 3s^2 \amp - 2s + 1 </mrow>
-							<mrow>			\amp = A(s + 1)(s^2 + 1)	+ B(s - 1)(s^2 + 1) + (Cs+D)(s - 1)(s + 1)		</mrow>.
-						</md>.
-					</p>
-
-					<p>
-						Strategically selecting values for <m>s</m>, we get
-					</p>
-
-					<p>
-						<sidebyside widths="16% 84%">
-							<p><m>s=1:</m></p>
-							<p><m>6 = A(2)(2) + B(0)(2) + (C(1) + D)(0)(2)</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p/>
-							<p><m>\vphantom{\dfrac11}\quad\Rightarrow\quad\boxed{A = \sfrac32}</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p><m>s=-1:</m></p>
-							<p><m>2 = A(0)(2) + B(-2)(2) + (C(-1) + D)(-2)(0)</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p/>
-							<p><m>\vphantom{\dfrac11}\quad\Rightarrow\quad\boxed{B = -\sfrac12}</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p><m>s=0:</m></p>
-							<p><m>1 = A(1)(1) + B(-1)(1) + (C(0) + D)(-1)(1)</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p/>
-							<p><m>\vphantom{\dfrac11}\quad\Rightarrow\quad\boxed{D = 1}</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p><m>s=3:</m></p>
-							<p><m>-15 = A(-1)(3) + B(-3)(3) + (C(-2) + D)(-3)(-1)</m></p>
-						</sidebyside>
-						<sidebyside widths="16% 84%">
-							<p/>
-							<p><m>\vphantom{\dfrac11}\quad\Rightarrow\quad\boxed{C = 3}</m></p>
-						</sidebyside>
-					</p>
-
-					<p>
-						Therefore, the prepared Laplace domain solution is
-						<me>
-							Y(s) = \frac{\sfrac32}{s - 1} - \frac{\sfrac12}{s + 1} + \frac{3s + 1}{s^2 + 1}
-						</me>.
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 
 			<example label="lt-mixed-examples-2">
 				<title>Completing the Square Example</title>
 				<statement><me>Y(s) = \frac{3s + 4}{(s^2 + 1)(s^2 + 4)}</me></statement>
-				<solution>
-					<p>
-						Partial fraction decomposition gives:
-						<me>
-							Y(s) = \frac{As + B}{s^2 + 1} + \frac{Cs + D}{s^2 + 4}
-						</me>.
-					</p>
-
-					<p>
-						Multiply both sides by <m>(s^2 + 1)(s^2 + 4)</m> to get
-						<me>
-							3s + 4 = (As + B)(s^2 + 4) + (Cs + D)(s^2 + 1)
-						</me>.
-					</p>
-
-					<p>
-						When you have multiple quadratic terms involved, it is usually easier to match coefficients rather than choosing values of <m>s</m>. So let's multiply out the right and match the corresponding terms to find <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m>:
-					</p>
-
-					<md>
-						<mrow> 3s + 4 \amp = (As + B)(s^2 + 4) + (Cs + D)(s^2 + 1) </mrow>
-						<mrow> \amp = As^3 + Bs^2 + 4As + 4B + Cs^3 + Ds^2 + Cs + D </mrow>
-						<mrow> \amp = (A + C)s^3 + (B + D)s^2 + (4A + C)s + (4B + D) </mrow>
-					</md>
-
-					<p>
-						Matching the coefficients leads to the following system:
-						<me> A + C = 0,\qquad B + D = 0,\qquad 4A + C = 3,\qquad 4B + D = 4 </me>
-						which has the solution: <m>A = 1</m>, <m>B = \sfrac43</m>, <m>C = -1</m> and <m>D = -\sfrac43</m>.
-					</p>
-
-					<p>
-						Therefore, the prepared Laplace domain solution is given by:
-						<me>
-							Y(s) = \frac{s + \sfrac43}{s^2 + 1} - \frac{s - \sfrac43}{s^2 + 4}
-						</me>.
-					</p>
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 		</paragraphs>
 
-		<task label="p4-c2-s2-3-rq3">
-			<title>📖❓Preparing <m>Y(s)</m> </title>
-			<statement>
-				<p>
-					What should be done to prepare <m>Y(s)</m> for an inverse?
-					<me>
-						Y(s) = \frac{s + 6}{s^2 + 7s + 6}
-					</me>?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement> Complete the square of the denominator </statement>
-					<feedback>Correct!</feedback>
-				</choice>
-				<choice>
-					<statement> Partial fraction decomposition </statement>
-					<feedback>Is the denominator factorable?</feedback>
-				</choice>
-				<choice>
-					<statement>Cancel out the <m>6</m> in the numerator and denominator.</statement>
-					<feedback>Canceling out the <m>6</m> in the function is not a valid operation.</feedback>
-				</choice>
-				<choice>
-					<statement>Cancel out the <m>s</m> in the numerator and denominator.</statement>
-					<feedback>Canceling out the <m>s</m> in the function is not a valid operation.</feedback>
-				</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 	</subsection>
+
+	<assemblage>
+		<title> Step 2 — Solving in the Laplace Domain Summary </title>
+		<p>
+			Treat the transformed equation as pure algebra: isolate <m>Y(s)</m>, then reshape it so every term matches an entry in the inverse-transform table.
+		</p>
+	</assemblage>
 
 	<objectives label="lt-method-step2-wrapup">
 		<ul>
@@ -972,7 +505,7 @@
 </section>
 
 <section label="lt-method-step3">
-	<title> Leaving the Laplace Domain </title>
+	<title> Step 3 — Leaving the Laplace Domain </title>
 
 	<introduction>
 		<p>
@@ -1046,32 +579,7 @@
 			</p>
 		</assemblage>
 
-		<task label="lt-method-step3-chkpt-1">
-			<title>📖❓ What does the inverse transform do?</title>
-			<statement>
-			<p>
-				What is the purpose of the inverse Laplace transform <m>\laplacesym^{-1}</m> in solving a differential equation?
-			</p>
-			</statement>
-			<choices randomize="true">
-			<choice correct="true">
-				<statement>It recovers the original function <m>y(t)</m> from its Laplace-transformed version <m>Y(s)</m>.</statement>
-				<feedback>Correct! The inverse transform brings us back to the time domain.</feedback>
-			</choice>
-			<choice>
-				<statement>It rewrites a differential equation using algebra.</statement>
-				<feedback>That's what the forward transform does.</feedback>
-			</choice>
-			<choice>
-				<statement>It simplifies partial fractions.</statement>
-				<feedback>Partial fraction decomposition helps prepare <m>Y(s)</m> for the inverse, but isn't the transform itself.</feedback>
-			</choice>
-			<choice>
-				<statement>It evaluates the Laplace transform of <m>y(t)</m>.</statement>
-				<feedback>This describes the forward transform, not the inverse.</feedback>
-			</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 	</subsection>
 
 	<subsection label="lt-inverse-table-usage">
@@ -1100,7 +608,7 @@
 		</p>
 		
 		<p>
-			We see the the best match is <xref ref="lt-L2-table" text="custom">L<m>_2</m></xref> with <m>a = 5</m>, so we get:
+			We see the best match is <xref ref="lt-L2-table" text="custom">L<m>_2</m></xref> with <m>a = 5</m>, so we get:
 		</p>
 
 		<me>y(t) = e^{5t}</me>
@@ -1119,15 +627,7 @@
 							</me>
 						</p>
 						<p>
-							<solution>
-								<p>
-									This matches <xref ref="lt-L4-table" text="custom">L<m>_4</m></xref> with <m>b=3</m>. So,
-									<md>
-										<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{3}{s^2 + 9}}	</mrow>
-										<mrow>	y(t)		\amp = \sin(3t)					</mrow>
-									</md>.
-								</p>
-							</solution>
+							<solution> temporarily omitted </solution>
 						</p>
 					</sidebyside>
 					<sidebyside>
@@ -1137,15 +637,7 @@
 							</me>
 						</p>
 						<p>
-							<solution>
-								<p>
-									This matches <xref ref="lt-L7-table" text="custom">L<m>_7</m></xref> with <m>a=2</m> and <m>b=4</m>. So,
-									<md>
-										<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{s - 2}{(s - 2)^2 + 16}}	</mrow>
-										<mrow>	y(t)		\amp = e^{2t}\cos(4t)						</mrow>
-									</md>.
-								</p>
-							</solution>
+							<solution> temporarily omitted </solution>
 						</p>
 					</sidebyside>
 					<sidebyside>
@@ -1155,15 +647,7 @@
 							</me>
 						</p>
 						<p>
-							<solution>
-								<p>
-									Noting that <m>24=4!</m> and using <xref ref="lt-L3-table" text="custom">L<m>_3</m></xref> with <m>n=4</m>, we get
-									<md>
-										<mrow>	\ilap{Y(s)}	\amp = \ilap{\frac{4!}{s^5}}	</mrow>
-										<mrow>	y(t)		\amp = t^4						</mrow>.
-									</md>.
-								</p>
-							</solution>
+							<solution> temporarily omitted </solution>
 						</p>
 					</sidebyside>
 				</sbsgroup>
@@ -1171,77 +655,8 @@
 		</example>
 
 		<p>
-			<task label="lt-method-step3-chkpt-2">
-				<title> 📖❓ Use the Transform Table </title>
-				<statement>
-					<p>
-						For each <m>Y(s)</m>, use the <xref ref="lt-table-common" text="custom">table of transforms</xref> to determine <m>y(t)</m>.
-					</p>
-				</statement>
-				<areas>
-					<p/>
-					<sbsgroup widths="36% 15% 15% 15% 15%" valign="middle" margins="2% 2%">
-						<sidebyside widths="34% 62%">
-							<p><me>\ul{\hspace{50px} Y(S) \hspace{50px}}</me></p>
-							<p><me>\ul{\hspace{170px} y(t) \hspace{170px}}</me></p>
-						</sidebyside>
-						<sidebyside>
-							<p><me>\frac{1}{s+3}</me></p>
-							<p><area correct="no" ><m>e^{-t}</m></area></p>
-							<p><area correct="no" ><m>e^{3t}</m></area></p>
-							<p><area correct="yes"><m>e^{-3t}</m></area></p>
-							<p><area correct="no" ><m>3t</m></area></p>
-						</sidebyside>
-						<sidebyside>
-							<p><me>\frac{3}{s^2 + 9}</me></p>
-							<p><area correct="no" ><m>3\sin t</m></area></p>
-							<p><area correct="no" ><m>e^{3t}</m></area></p>
-							<p><area correct="no" ><m>\cos(3t)</m></area></p>
-							<p><area correct="yes"><m>\sin(3t)</m></area></p>
-						</sidebyside>
-						<sidebyside>
-							<p><me>\frac{24}{s^5}</me></p>
-							<p><area correct="no" ><m>t^2</m></area></p>
-							<p><area correct="yes"><m>t^4</m></area></p>
-							<p><area correct="no" ><m>4!\ t^4</m></area></p>
-							<p><area correct="no" ><m>t^3</m></area></p>
-						</sidebyside>
-						<sidebyside>
-							<p><me>\frac{1}{(s+4)^2}</me></p>
-							<p><area correct="yes"><m>e^{4t}</m></area></p>
-							<p><area correct="no" ><m>t^2e^{-4t}</m></area></p>
-							<p><area correct="no" ><m>e^{-4t}</m></area></p>
-							<p><area correct="no" ><m>te^{-4t}</m></area></p>
-						</sidebyside>
-					</sbsgroup>
-					<p/>
-				</areas>
-			</task>
-			<task label="lt-method-step3-chkpt-3">
-				<title>📖❓Table Matching Checkpoint</title>
-				<statement>
-					Which of the following is the correct inverse Laplace transform of
-					<me>Y(s) = \frac{6}{(s - 2)^2 + 36}</me>?
-				</statement>
-				<choices randomize="true">
-				<choice correct="true">
-					<statement><m>y(t) = e^{2t} \sin(6t)</m></statement>
-					<feedback>Correct! This matches <xref ref="lt-L6" text="custom">L<sub>6</sub></xref> with <m>a = 2</m>, <m>b = 6</m>.</feedback>
-				</choice>
-				<choice>
-					<statement><m>y(t) = \sin(6t)</m></statement>
-					<feedback>This is missing the exponential factor <m>e^{2t}</m>.</feedback>
-				</choice>
-				<choice>
-					<statement><m>y(t) = e^{6t} \sin(2t)</m></statement>
-					<feedback>This flips <m>a</m> and <m>b</m>. Be careful when matching the form.</feedback>
-				</choice>
-				<choice>
-					<statement><m>y(t) = e^{-2t} \cos(6t)</m></statement>
-					<feedback>This would require <m>s + 2</m> in the numerator and <m>\cos</m> instead of <m>\sin</m>.</feedback>
-				</choice>
-				</choices>
-			</task>
+			<task> temporarily omitted </task>
+			<task> temporarily omitted </task>
 		</p>
 
 		<p>
@@ -1277,48 +692,10 @@
 				Find <m>y(t)</m> if <m>Y(s) = \dfrac{3}{s} + \dfrac{5}{s^2 + 16}</m>.
 			</p>
 			</statement>
-			<solution>
-			<p>
-				We break this into two parts and use the transform table to invert each one.
-			</p>
-			<me>
-				\ilap{Y(s)} = \ilap{\frac{3}{s}} + \ilap{\frac{5}{s^2 + 16}}
-			</me>
-			<p>
-				The first term matches <xref ref="lt-L1" text="custom">L<m>_1</m></xref> and gives <m>3</m>. The second term matches <xref ref="lt-L4" text="custom">L<m>_4</m></xref> with <m>b = 4</m>, giving <m>5\sin(4t)</m>. So the solution is:
-			</p>
-			<me>
-				y(t) = 3 + 5\sin(4t).
-			</me>
-			</solution>
+			<solution> temporarily omitted </solution>
 		</example>
 
-		<task label="lt-method-step3-chkpt-4">
-			<title>📖❓ Apply Linearity</title>
-			<statement>
-				Suppose
-				<me>Y(s) = \frac{6}{s - 2} + \frac{4}{s^2 + 9}</me>.
-				What is <m>y(t)</m>?
-			</statement>
-			<choices randomize="yes">
-			<choice correct="yes">
-				<statement><m>6e^{2t} + 4\sin(3t)</m></statement>
-				<feedback>Perfect! The first term matches <m>\frac{1}{s - a}</m> and the second is a sine with <m>b = 3</m>.</feedback>
-			</choice>
-			<choice>
-				<statement><m>6e^{-2t} + 4\sin(3t)</m></statement>
-				<feedback>Double check the sign in <m>\frac{1}{s - 2}</m>. It corresponds to <m>e^{2t}</m>, not <m>e^{-2t}</m>.</feedback>
-			</choice>
-			<choice>
-				<statement><m>6e^{2t} + 4\cos(3t)</m></statement>
-				<feedback>The second term matches a sine form, not cosine.</feedback>
-			</choice>
-			<choice>
-				<statement><m>6e^{2t} + 4t^3</m></statement>
-				<feedback><m>\frac{4}{s^2 + 9}</m> corresponds to <m>\sin(3t)</m>, not a polynomial term.</feedback>
-			</choice>
-			</choices>
-		</task>
+		<task> temporarily omitted </task>
 
 		<p>
 			Linearity makes inverting multi-term expressions much more manageable. Sometimes you'll run into expressions that don't quite match anything in the table. They're close—but not perfect. In the next section, we'll look at how to make small algebraic adjustments that bring those expressions into a form we can invert.
@@ -1380,40 +757,7 @@
 				</me>.
 			</p>
 
-			<task label="lt-method-step3-chkpt-5">
-				<title>📖❓Splitting to Match Table Forms</title>
-				<statement>
-					<p>
-						Which of the following functions can be split into separate terms that match known inverse Laplace transforms?
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-					<statement><m>\ds\frac{3}{s^2 + 4}</m></statement>
-					<feedback>
-						<p>
-						Incorrect. This function already matches a known sine form and doesn't require splitting.
-						</p>
-					</feedback>
-					</choice>
-					<choice correct="yes">
-					<statement><m>\ds\frac{s + 2}{s^2 + 9}</m></statement>
-					<feedback>
-						<p>
-						Correct! This function can be split as <m>\ds\frac{s}{s^2 + 9} + \frac{2}{s^2 + 9}</m>, matching cosine and sine forms.
-						</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement><m>\ds\frac{5}{(s - 3)^4}</m></statement>
-					<feedback>
-						<p>
-						Incorrect. This function already matches <m>L_6</m> and does not require splitting.
-						</p>
-					</feedback>
-					</choice>
-				</choices>
-			</task>
+			<task> temporarily omitted </task>
 
 		</paragraphs>
 
@@ -1423,7 +767,7 @@
 			<p>
 				Some forms contain a shift, like <m>(s - a)</m>. For example, the form
 				<me>Y(s) = \frac{s + 1}{(s - 2)^2 + 9}</me>
-				looks similar to <xref ref="lt-L8-table" text="custom">L<m>_8</m></xref>, but the numerator should be <m>s-2</m>. This can be fixed by substracting <m>2</m> and adding <m>2</m>, like so:
+				looks similar to <xref ref="lt-L8-table" text="custom">L<m>_8</m></xref>, but the numerator should be <m>s-2</m>. This can be fixed by subtracting <m>2</m> and adding <m>2</m>, like so:
 			</p>
 
 			<aside><title> 🚩 Adding <m>0</m> </title>
@@ -1457,91 +801,10 @@
 					</p>
 				</statement>
 
-				<solution>
-					<p>
-						The first term needs <m>s-2</m> in the numerator, but before adding and subtracting <m>2</m>, let's get <m>3</m> out of the way by factoring it out: 
-					</p>
-
-					<md>
-						<mrow>	Y(s) = 3\frac{s + 3}{(s-2)^2 + 16}	\amp = 3\left(\frac{s - 2 + 2 + 3}{(s-2)^2 + 16}\right)	</mrow>
-					</md>.
-
-					<p>
-						Now, splitting the fraction inside the parentheses and distributing the <m>3</m> gives us
-					</p>
-
-					<md>
-						<mrow>	
-							Y(s)
-							\amp = 3\left(\frac{s - 2}{(s-2)^2 + 16} + \frac{5}{(s-2)^2 + 16}\right)
-						</mrow>
-						<mrow>
-							\amp = 3\frac{s - 2}{(s-2)^2 + 16} + 15\frac{1}{(s-2)^2 + 16}
-						</mrow>
-						<mrow>
-							\amp = 3\ub{\frac{s - 2}{(s-2)^2 + 16}}_{\large\text{matches } <xref ref="lt-L8" text="custom">L<m>_8</m></xref>}
-							+ \frac{15}{4}\ub{\frac{4}{(s-2)^2 + 16}}_{\large\text{matches } <xref ref="lt-L7" text="custom">L<m>_7</m></xref>}
-						</mrow>
-					</md>.
-
-					<p>
-						Finally, the backward transform is given by
-					</p>
-
-					<md>
-						<mrow>	y(t)	\amp = 3e^{2t}\cos(4t) + \frac{15}{4}e^{2t}\sin(4t)	</mrow>
-					</md>.
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 
-			<task label="lt-method-step3-chkpt-6">
-				<title>📖❓Give the Numerator of the Split Fractions </title>
-				<statement>
-					<p>
-						After adjusting the numerator to match <xref ref="lt-L8-table" text="custom">L<m>_8</m></xref> and separating the fractions, type-in the numerators of the separated fractions?
-					</p>
-					<sidebyside widths="10% 18% 5% 18% 5% 18%" valign="middle" margins="10% 10%">
-						<p><me>Y(s)=</me></p>
-						<p>
-							<tabular halign="center">
-								<row><cell bottom="minor"><m>s+3</m></cell></row>
-								<row><cell><m>(s - 1)^2 + 9</m></cell></row>
-							</tabular>
-						</p>
-						<p><me>=</me></p>
-						<p>
-							<tabular halign="center">
-								<row><cell bottom="minor"><fillin width="2" mode="string" answer="0" /></cell></row>
-								<row><cell><m>(s - 1)^2 + 9</m></cell></row>
-							</tabular>							
-						</p>
-						<p><me>+</me></p>
-						<p>
-							<tabular halign="center">
-								<row><cell bottom="minor"><fillin width="2" mode="string" answer="0" /></cell></row>
-								<row><cell><m>(s - 1)^2 + 9</m></cell></row>
-							</tabular>							
-						</p>
-					</sidebyside>
-					<p>
-						<em>The answers you enter should be fully simplified.</em>
-					</p>
-				</statement>
-					<evaluation>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no">s\s*-\s*1|-1\s*\+\s*s</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no" >2|-\s*1\s*\+\s*3</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect</feedback>
-							</test>
-						</evaluate>
-					</evaluation>
-			</task>
+			<task> temporarily omitted </task>
 
 			<example><title> Complete the Square First </title>
 				<statement>
@@ -1549,89 +812,10 @@
 						Find <m>y(t)</m> if <m>\ds\quad Y(s) = \frac{s+3}{s^2 + 8s + 19}</m>
 					</p>
 				</statement>
-				<solution>
-					<p>
-						Completing the square for the denominator of <m>Y(s)</m> gives:
-						<me>
-							Y(s) = \frac{s+3}{s^2 + 8s + 19} = \frac{s+3}{(s + 4)^2 + 3}
-						</me>.
-					</p>
-
-					<p>
-						The form of the denominator and the <m>s</m> in the numerator indicates that we are trying to match <xref ref="lt-L8-table" text="custom">L<m>_8</m></xref> (<m>a=-4</m>, <m>b=\sqrt{3}</m>), but we need <m>s+4</m> in the numerator. So we add and subtract <m>4</m>, then split the fraction:
-					</p>
-
-					<me>
-						Y(s) 
-						= \frac{s + 4 - 4 + 2}{(s + 4)^2 + 3}
-						= \us{\ds<xref ref="lt-L8-table" text="custom">\text{L}_8</xref>\text{✔️}}{\ul{\frac{s+4}{(s + 4)^2 + 3}}}
-						+ \us{\ds\text{almost}\ <xref ref="lt-L7-table" text="custom">\text{L}_7</xref>}{\ul{\frac{-2}{(s + 4)^2 + 3}}}
-					</me>.
-
-					<p>
-						Since the second term needs a <m>\sqrt{3}</m> in the numerator, we multiply it by <m>\sfrac{\sqrt{3}}{\sqrt{3}}</m>:
-					</p>
-
-					<me>
-						Y(s) 
-						= \frac{s + 4 - 4 + 2}{(s + 4)^2 + 3}
-						= \us{\ds<xref ref="lt-L8-table" text="custom">\text{L}_8</xref>\text{✔️}}{\ul{\frac{s+4}{(s + 4)^2 + 3}}}
-						+ \frac{-2}{\sqrt{3}}\us{\ds<xref ref="lt-L7-table" text="custom">\text{L}_7</xref>\text{✔️}}{\ul{\frac{\sqrt{3}}{(s + 4)^2 + 3}}}
-					</me>.
-
-					<p>
-						From here, the inverse transform comes from the table:
-					</p>
-
-					<me>
-						y(t) = e^{-4t}\cos(\sqrt{3}t) - \frac{2}{\sqrt{3}}e^{-4t}\sin(\sqrt{3}t)
-					</me>.
-				</solution>
+				<solution> temporarily omitted </solution>
 			</example>
 
-			<task label="lt-method-step3-chkpt-7">
-				<title>📖❓Give the Next Step </title>
-				<statement>
-					<p>
-						What is the next step toward finding the inverse of <m>Y(s)</m>?
-						<me>Y(s) = \frac{s-1}{s^2 - 2s + 5}</me>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-					<statement>Factor the denominator</statement>
-					<feedback>
-						<p>
-						Incorrect. The quadratic cannot be factored; try something else.
-						</p>
-					</feedback>
-					</choice>
-					<choice correct="yes">
-					<statement>Complete the square in the denominator</statement>
-					<feedback>
-						<p>
-						Correct! Completing the square helps you match the form needed to invert with <xref ref="lt-L8" text="custom">L<m>_8</m></xref>.
-						</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>Cancel out the <m>s</m> in the numerator and denominator.</statement>
-					<feedback>
-						<p>
-						Canceling parts of rational expressions like this isn't valid.
-						</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>Differentiate the entire function</statement>
-					<feedback>
-						<p>
-						Nope—this isn't a derivative problem.
-						</p>
-					</feedback>
-					</choice>
-				</choices>
-			</task>
+			<task> temporarily omitted </task>
 
 		</paragraphs>
 
@@ -1639,6 +823,13 @@
 			With practice, these adjustments become intuitive, greatly simplifying the process of leaving the Laplace domain to recover the solution to the original differential equation.
 		</p>
 	</subsection>
+	
+	<assemblage>
+		<title> Step 3 — Leaving the Laplace Domain Summary </title>
+		<p>
+			Apply the inverse transform <m>\laplacesym^{-1}</m> term-by-term to <m>Y(s)</m>, converting the algebraic answer back into the original-domain solution <m>y(t)</m>.
+		</p>
+	</assemblage>
 
 	<objectives label="lt-method-step3-wrapup">
 		<ul>
@@ -1653,74 +844,270 @@
 	<fact label="lt-method-step3-cyu">
 		<statement>
 			<p>
-				<task label="lt-method-step3-cyu-1">
-					<title> 📖❓Adjusting the Numerator </title>
-					<statement>
-						<p>
-							Select the number that belongs in both blanks to directly apply the inverse. 
-							<me>\ilap{\frac{5}{s^4}} = \frac{5}{<fillin characters="1"/>}\ilap{\frac{<fillin characters="1"/>}{s^4}} </me>
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes">
-							<statement><m>6</m></statement>
-							<feedback>Correct!</feedback>
-						</choice>
-						<choice>
-							<statement><m>9</m></statement>
-							<feedback>Incorrect.</feedback>
-						</choice>
-						<choice>
-							<statement><m>3</m></statement>
-							<feedback>Incorrect.</feedback>
-						</choice>
-						<choice>
-							<statement><m>24</m></statement>
-							<feedback>Incorrect.</feedback>
-						</choice>
-					</choices>
-				</task>
+				<task> temporarily omitted </task>
 
-				<task label="lt-method-step3-cyu-2">
-					<title> 📖❓Find the Inverse Transform </title>
-					<statement>
-						<me>Y(s) = \frac{s + 2}{s^2 + 1} \quad\Rightarrow\quad y(t) = <fillin characters="15"/></me>
-					</statement>
-					<choices randomize="yes">
-						<choice>
-							<statement><m>\cos(t) + 2\sin(t)</m></statement>
-							<feedback>
-								<p>
-									Correct! The function can be split as <m>\ds\frac{s}{s^2 + 1} + 2\frac{1}{s^2 + 1}</m>, which corresponds to <m>\cos(t)</m> and <m>\sin(t)</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>\cos(2t) + \sin(2t)</m></statement>
-							<feedback>
-								<p>
-									Incorrect.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>\cos(t) + 2\sin(2t)</m></statement>
-							<feedback>
-								<p>
-									Incorrect.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>\cos(t) + \sin(2t)</m></statement>
-							<feedback>
-								<p>
-									Incorrect.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
+				<task> temporarily omitted </task>
+			</p>
+		</statement>
+	</fact>
+</section>
+
+<section label="lt-method-steps-examples">
+	<title> Summary &amp; Worked Examples </title>
+
+	<introduction>
+		<p>
+			This closing section is where the entire Laplace transform method comes together. You have already practiced each of the three steps in isolation. Now we will zoom out, remind ourselves of the big picture, and then run walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title> Laplace Transform Method— Quick Recap </title>
+		<p>
+			Here is a visual of the full Laplace transform method. Each step corresponds to a move in the <xref ref="lt-roadmap-full" text="custom">roadmap</xref>, and together they form a complete strategy for solving initial value problems. Notice that every arrow answers one of three guiding questions:
+		</p>
+
+		<ol>
+			<li>How do we translate the differential equation into the Laplace domain?</li>
+			<li>How do we isolate and tidy up <m>Y(s)</m> so it matches the inverse table?</li>
+			<li>How do we return to the original time domain to reveal <m>y(t)</m>?</li>
+		</ol>
+
+		<assemblage xml:id="lt-roadmap-full">
+			<title> Laplace Method Roadmap </title>
+			<p>
+				<sidebyside widths="32% 18% 42%" valign="middle">
+					<p>
+						<me>\ul{\quad\ \textbf{Original Domain}\ \quad}</me>
+					</p>
+					<p/>
+					<p>
+						<me>\DLBa\textbf{2️⃣  Laplace Domain}</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="31% 18% 43%" valign="top">
+					<p>
+						<md>
+							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow>\us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+							<mrow> y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow>\text{Apply}\ \laplacesym^{-1}</mrow>
+							<mrow>\overleftarrow{\text{3️⃣ Backward}}</mrow>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\amp\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s^2 - 9}\left( \frac{10}{s - 2} + s - 7 \right)</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s - 3} + \frac{2}{s + 3} - \frac{2}{s - 2}</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
+			</p>
+		</assemblage>
+
+		<exploration xml:id="lt-method">
+			<title>Laplace Transform Method (Three-Step Roadmap)</title>
+
+			<p>
+				Given an <m>n</m>-th-order IVP
+				<me>
+					y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = g(t),
+				</me>
+				the particular solution is obtained through the following workflow:
+			</p>
+
+			<dl>
+				<li xml:id="lt-step-1">
+					<title>Step 1— Forward Transform</title>
+					<p>
+						Apply <m>\laplacesym</m> term-by-term.  
+						Powers of <m>s</m> replace derivatives, and the initial conditions drop in automatically.  
+						The result is a single algebraic (Laplace-domain) equation.
+					</p>
+				</li>
+
+				<li xml:id="lt-step-2">
+					<title>Step 2— Solve &amp; Prepare <m>Y(s)</m></title>
+					<p>
+						Isolate <m>Y(s)</m>, then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.
+					</p>
+				</li>
+
+				<li xml:id="lt-step-3">
+					<title>Step 3— Inverse Transform</title>
+					<p>
+						Apply <m>\laplacesym^{-1}</m> term-by-term.	The hidden original-domain solution <m>y(t)</m> is released, and the IVP is solved.
+					</p>
+				</li>
+			</dl>
+		</exploration>
+
+		<fact>
+			<p>
+				Answer the following questions referring to the steps above.
+			</p>
+
+			<p>
+				<task> temporarily omitted </task>
+
+				<task> temporarily omitted </task>
+
+				<task> temporarily omitted </task>
+			</p>
+		</fact>
+
+		<p>
+			The three-step outline provides the general strategy. If you ever feel lost, come back to this outline and roadmap. Regardless of the equation, the steps you take to navigate them will always follow one of these three lines.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title> Worked Examples </title>
+
+		<p>
+			The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action. Here is a break down of what to expect:
+		</p>
+
+		<ul>
+			<li>Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.</li>
+			<li>Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines/cosines.</li>
+			<li>Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.</li>
+		</ul>
+
+		<example><title> Basic Second-Order, Homogeneous </title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 5y' + 6y = 0, \quad y(0) = 2,\quad y'(0) = -1
+					</me>
+				</statement>
+			</p>
+
+			<solution> temporarily omitted </solution>
+		</example>
+
+		<example><title> Nonhomogeneous Forcing Function </title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem:
+					</p>
+					<me>
+						y'' - 2y' + y = e^{t}, \quad y(0) = 0,\quad y'(0) = 1
+					</me>
+				</statement>
+			</p>
+
+			<solution> temporarily omitted </solution>
+		</example>
+
+		<task> temporarily omitted </task>
+
+		<example><title>Forcing with a Polynomial</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem:
+					</p>
+					<me>
+						y'' + y = t^2, \quad y(0) = 1,\quad y'(0) = 0
+					</me>
+				</statement>
+			</p>
+
+			<solution> temporarily omitted </solution>
+		</example>
+
+		<example><title>Repeated Root in the Characteristic Equation</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 6y' + 9y = 0, \quad y(0) = 3,\quad y'(0) = -3
+					</me>
+				</statement>
+			</p>
+
+			<solution> temporarily omitted </solution>
+		</example>
+
+		<example><title>Third-Order Equation</title>
+			<statement>
+				<p>
+					Solve the initial value problem using the Laplace transform:
+				</p>
+				<me>
+					y''' + y'' - y' - y = 0,\quad y(0) = -1,\quad y'(0) = 0,\quad y''(0) = -1
+				</me>
+			</statement>
+
+			<solution> temporarily omitted </solution>
+		</example>
+
+		<example><title>Sinusoidal Forcing with Exponential Growth</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem using the Laplace transform:
+					</p>
+					<me>
+						y'' + 2y = e^t \cos(3t), \quad y(0) = 0, \quad y'(0) = 0
+					</me>
+				</statement>
+			</p>
+
+			<solution> temporarily omitted </solution>
+		</example>
+		
+		<p>
+			These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
+		</p>
+	</subsection>
+
+	<objectives label="lt-method-steps-examples-wrapup">
+		<ul>
+			<li>
+				The three-step Laplace roadmap never changes; the variety comes from the algebra you need in Step 2.
+			</li>
+			<li>
+				Forward transform ⟶ algebra-only world ⟶ isolate <m>Y(s)</m> ⟶ prepare ⟶ inverse transform.
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="lt-method-steps-examples-cyu">
+		<statement>
+			<p>
+				Check Your Understanding:  
+				<task> temporarily omitted </task>
+
+				<task> temporarily omitted </task>
 			</p>
 		</statement>
 	</fact>

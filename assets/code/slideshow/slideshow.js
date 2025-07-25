@@ -254,7 +254,7 @@ function runSlideshow(canvasId, config) {
 
   function drawTextBox(x, y, width, height, textColor, backgroundColor, borderColor) {
     const slide = slides[currentSlide];
-    const fullText = slide.title + '. ' + slide.text;
+    const fullText = slide.title + slide.text;
 
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(x, y, width, height);

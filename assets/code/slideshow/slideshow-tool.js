@@ -121,7 +121,7 @@ function runSlideshow(canvasId, config) {
     ctx.lineTo(separatorX, panelY + panelHeight);
     ctx.stroke();
 
-    drawTextBox(slide.title + '. ' + slide.text);
+    drawTextBox(slide.title + slide.text);
     drawButtons();
     drawSlideIndicators();
   }
