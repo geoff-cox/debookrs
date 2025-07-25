@@ -1,388 +1,215 @@
-<section label="lt-method-examples">
+<section label="lt-summary-examples">
 	<title> Summary &amp; Worked Examples </title>
 
 	<introduction>
 		<p>
-			This section brings together everything you've learned about the Laplace transform method. We begin with a concise outline of the three core steps and then walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.
+			This closing section is where the entire Laplace transform method comes together. You have already practiced each of the three steps in isolation. Now we will zoom out, remind ourselves of the big picture, and then run walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.
 		</p>
 	</introduction>
 
-	<subsection><title> Laplace Transform Method: A 3-Step Recap </title>
-		<p><title> 👀 <em>Reading Preparation</em> </title>
+	<subsection>
+		<title> Laplace Transform Method— Quick Recap </title>
+		<p>
+			Here is a visual of the full Laplace transform method. Each step corresponds to a move in the <xref ref="lt-roadmap-full" text="custom">roadmap</xref>, and together they form a complete strategy for solving initial value problems. Notice that every arrow answers one of three guiding questions:
+		</p>
+
+		<ol>
+			<li>How do we translate the differential equation into the Laplace domain?</li>
+			<li>How do we isolate and tidy up <m>Y(s)</m> so it matches the inverse table?</li>
+			<li>How do we return to the original time domain to reveal <m>y(t)</m>?</li>
+		</ol>
+
+		<assemblage xml:id="lt-roadmap-full">
+			<title> Laplace Method Roadmap </title>
 			<p>
-				Needs to be completed.
+				<sidebyside widths="32% 18% 42%" valign="middle">
+					<p>
+						<me>\ul{\quad\ \textbf{Original Domain}\ \quad}</me>
+					</p>
+					<p/>
+					<p>
+						<me>\DLBa\textbf{2️⃣  Laplace Domain}</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="31% 18% 43%" valign="top">
+					<p>
+						<md>
+							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow>\us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+							<mrow> y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow>\text{Apply}\ \laplacesym^{-1}</mrow>
+							<mrow>\overleftarrow{\text{3️⃣ Backward}}</mrow>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\amp\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s^2 - 9}\left( \frac{10}{s - 2} + s - 7 \right)</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s - 3} + \frac{2}{s + 3} - \frac{2}{s - 2}</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
 			</p>
-		</p>
+		</assemblage>
 
-		<p>
-			Here is a quick slideshow of the full Laplace transform method. Each step corresponds to a move in the roadmap, and together they form a complete strategy for solving initial value problems.
-		</p>
-
-		<interactive xml:id="lt-slideshow" platform="javascript"
-			dark-mode-enabled="yes"
-			source="code/slideshow/slideshow.js"
-			width="100%" aspect="1.52:1">
-			<slate xml:id="lt-slideshow-canvas" surface="canvas" 
-			width="100%" aspect="1.52:1" />
-		</interactive>
-
-		<p>
-			In addition to the visual review, the complete strategy for this method is outlined as follows:
-		</p>
-
-		<exploration xml:id="lt-method"><title>Laplace Transform Method</title>
+		<exploration xml:id="lt-method">
+			<title>Laplace Transform Method (Three-Step Roadmap)</title>
 
 			<p>
-				The particular solution to an initial-valued differential equation of the form
-				<men xml:id="lt-method-de">
-					y^{(n)} + a_{n-1}\, y^{(n-1)} + \cdots + a_1\, y' + a_0\, y = g(t)
-				</men>
-				with given initial conditions can be found through the three-step process:
+				Given an <m>n</m>-th-order IVP
+				<me>
+					y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = g(t),
+				</me>
+				the particular solution is obtained through the following workflow:
 			</p>
 
 			<dl>
-				<li xml:id="lt-step-1"><title>Step 1: Forward Transform</title>
+				<li xml:id="lt-step-1">
+					<title>Step 1— Forward Transform</title>
 					<p>
-						Apply the Laplace transform, <m>\laplacesym</m>, to both sides of the differential equation. Use the <xref ref="lt-table-common-rules-merged" text="custom">transform table</xref> to rewrite each term as a function of <m>s</m>, inserting initial conditions as needed. You now have the Laplace equation.
+						Apply <m>\laplacesym</m> term-by-term.  
+						Powers of <m>s</m> replace derivatives, and the initial conditions drop in automatically.  
+						The result is a single algebraic (Laplace-domain) equation.
 					</p>
 				</li>
 
-				<li xml:id="lt-step-2"><title>Step 2: Solve for <m>Y</m></title>
+				<li xml:id="lt-step-2">
+					<title>Step 2— Solve &amp; Prepare <m>Y(s)</m></title>
 					<p>
-						Simplify the Laplace equation using algebra and isolate the Laplace solution, <m>Y(s)</m>.
+						Isolate <m>Y(s)</m>, then reshape it so that every term is a recognisable entry in the Laplace domain column of the transform table. This means partial-fraction decomposition and/or completing the square of quadratic denominators.
 					</p>
 				</li>
 
-				<li xml:id="lt-step-3"><title>Step 3: Prepare for the Inverse Transform</title>
+				<li xml:id="lt-step-3">
+					<title>Step 3— Inverse Transform</title>
 					<p>
-						Write <m>Y(s)</m> as a sum of terms that match entries in the <xref ref="lt-table-common-rules-merged" text="custom">transform table</xref>. This may involve partial fraction decomposition (PFD), or completing the square for irreducible denominators.
-						<fn><title>Irreducible</title>
-							<p>
-								A quadratic denominator of the form
-								<me>\frac{\text{numerator}}{as^2 + bs + c}</me>
-								is irreducible if the discriminant, <m>\Delta = b^2 - 4ac</m>, is negative.
-							</p>
-						</fn>
-					</p>
-
-					
-				</li>
-
-				<li xml:id="lt-step-4"><title>Step 4: Inverse Transform</title>
-					<p>
-						Apply the inverse Laplace transform, <m>\laplacesym^{-1}</m>, to each term in <m>Y(s)</m> to recover the solution, <m>y(t)</m>.
+						Apply <m>\laplacesym^{-1}</m> term-by-term.	The hidden original-domain solution <m>y(t)</m> is released, and the IVP is solved.
 					</p>
 				</li>
 			</dl>
-
 		</exploration>
 
-		<p>
-			The three-step outline provides the general strategy. Let's now apply it to a variety of problems, ranging from basic to more involved. Each example will follow the same structure: transform the equation, solve algebraically in the Laplace domain, prepare the result, and recover the solution using the inverse transform.
-		</p>
-
-		<p>
-
+		<fact>
 			<p>
-				The following questions refer to the steps of the Laplace Transform Method discussed above. Assume the dependent variable is <m>y(t)</m>.
+				Answer the following questions referring to the steps above.
 			</p>
 
-			<task label="p4-c3-s1-1-rq1"><title> <em>Which of the following best summarizes the Laplace Transform Method?</em> </title>
-				<statement>
-					<p>
-						<em>Which of the following best summarizes the Laplace Transform Method?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>Apply the forward transform, solve for <m> Y(s) </m>, prepare for the backward transform, and apply the inverse transform to find <m> y(t) </m>.</statement>
-						<feedback>
-							<p>
-								Correct! The Laplace Transform Method involves applying the forward transform, solving for <m> Y(s) </m>, preparing for the backward transform, and applying the inverse transform to find <m> y(t) </m>.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Differentiate the equation, apply the forward transform, solve for <m> Y(s) </m>, and find the inverse.</statement>
-						<feedback>
-							<p>
-								Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Solve the differential equation directly, then use the Laplace transform to verify the solution.</statement>
-						<feedback>
-							<p>
-								Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Use algebra to find the solution, then apply the Laplace transform to check the solution.</statement>
-						<feedback>
-							<p>
-								Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
+			<p>
+				<task label="lt-summary-examples-chkpt-1">
+					<title> 📖❓Laplace Method Snapshot </title>
+					<statement>
+						<p>
+							Which option best represents the Laplace transform process?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement> Forward Transform  →  Find <m>Y(s)</m>  →  Prepare  →  Apply Inverse </statement>
+							<feedback>
+								<p>
+									Correct! The Laplace Transform Method involves applying the forward transform, solving for <m> Y(s) </m>, preparing for the backward transform, and applying the inverse transform to find <m> y(t) </m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Differentiate  →  Forward Transform  →  Find <m>Y(s)</m>  →  Verify Solution </statement>
+							<feedback>
+								<p>
+									Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Forward Transform  →  Integrate  →  Verify Solution </statement>
+							<feedback>
+								<p>
+									Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Forward Transform   →  Apply Inverse  →  Apply Initial Conditions </statement>
+							<feedback>
+								<p>
+									Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
 
-			<task label="p4-c3-s1-1-rq2" randomize="true" adaptive="yes"><title> <em>Match the steps of Laplace Transform Method</em> </title>
-					
-				<statement>
-					<p>
-						List the steps of the Laplace transform method by dragging each task on the left to the corresponding step on the right.
-					</p>
-				</statement>
+				<task label="lt-summary-examples-chkpt-2" adaptive="yes">
+					<title> 📖❓Match Each Move </title>
+					<statement><p>Drag each task to the step it belongs to.</p></statement>
+					<cardsort>
+						<match>
+							<premise>Apply initial conditions</premise>
+							<premise>Match terms of <m>y(t)</m> the table</premise>
+							<response>Step 1 — Forward Transform</response>
+						</match>
+						<match>
+							<premise>Isolate <m>Y(s)</m></premise>
+							<premise>Partial-fraction decomposition</premise>
+							<response>Step 2 — Solve &amp; Prepare <m>Y(s)</m></response>
+						</match>
+						<match>
+							<premise>Match terms of <m>Y(s)</m> the table</premise>
+							<response>Step 3 — Inverse Transform</response>
+						</match>
+					</cardsort>
+				</task>
 
-				<feedback>
-					<p>
-						Review the <xref ref="lt-method" text="title"/> Steps.
-					</p>
-				</feedback>
+				<task label="lt-summary-examples-chkpt-3">
+					<title> 📖❓Algebra Tools Checklist </title>
+					<statement><p>Select every technique that may appear in <em>Step 2</em>.</p></statement>
+					<choices multiple="yes" randomize="yes">
+						<choice correct="yes"><statement>Completing the square</statement></choice>
+						<choice correct="yes"><statement>Partial-fraction decomposition</statement></choice>
+						<choice><statement>Integration by parts</statement></choice>
+						<choice><statement>Chain Rule</statement></choice>
+					</choices>
+					<feedback><p>Step 2 is 100 % algebra; no calculus needed.</p></feedback>
+				</task>
+			</p>
+		</fact>
 
-				<cardsort>
-					<match>
-						<premise>
-							Forward Transform
-						</premise>
-						<response>Step 1</response>
-					</match>
-					<match>
-						<premise>
-							Solve for <m>Y(s)</m>
-						</premise>
-						<response>Step 2a</response>
-					</match>
-					<match>
-						<premise>
-							Prep for Backward Transform
-						</premise>
-						<response>Step 2b</response>
-					</match>
-					<match>
-						<premise>
-							Apply Backward Transform
-						</premise>
-						<response>Step 3</response>
-					</match>
-				</cardsort>
-			</task>
-
-			<task label="p4-c3-s1-1-rq3"><title> <em>After isolating <m> Y(s) </m>, which step follows in the Laplace Transform Method?</em> </title>
-				<statement>
-					<p>
-						<em>After isolating <m> Y(s) </m>, which step follows in the Laplace Transform Method?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-						<statement>Apply the backward transform directly.</statement>
-						<feedback>
-							<p>
-								Not quite. After isolating <m> Y(s) </m>, you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Use integration to find the solution.</statement>
-						<feedback>
-							<p>
-								Incorrect. After isolating <m> Y(s) </m>, you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>Prepare for the backward transform by rewriting <m> Y(s) </m>.</statement>
-						<feedback>
-							<p>
-								Correct! After isolating <m> Y(s) </m>, you prepare it for the backward transform by rewriting it as a sum of known Laplace transforms.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Check the initial conditions.</statement>
-						<feedback>
-							<p>
-								Not quite. Checking the initial conditions is done in Step 1.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="p4-c3-s1-1-rq4"><title> <em>Which of the following best describes the purpose of Step 3 in the Laplace Transform Method?</em> </title>
-				<statement>
-					<p>
-						<em>What is the purpose of Step 3 in the Laplace Transform Method?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-						<statement>To solve for <m>Y(s)</m> using algebra.</statement>
-						<feedback>
-							<p>
-								Incorrect. Step 2a involves solving for <m>Y(s)</m> using algebra.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>To rewrite the equation as a sum of <m>s</m>-functions.</statement>
-						<feedback>
-							<p>
-								Incorrect. Step 2b involves rewriting <m>Y(s)</m> as a sum of known Laplace transforms.
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>To recover the solution, <m>y(t)</m>, inside <m>Y(s)</m>.</statement>
-						<feedback>
-							<p>
-								Correct! Step 3 involves applying the inverse Laplace transform to recover the solution <m>y(t)</m>.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>To apply the forward Laplace transform to <m>y(t)</m>.</statement>
-						<feedback>
-							<p>
-								Incorrect. The forward Laplace transform is applied in Step 1.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="p4-c3-s1-1-rq5"><title> <em>What is the primary goal of applying the forward Laplace transform to a differential equation?</em> </title>
-				<statement>
-					<p>
-						<em>What is the primary goal of applying the forward Laplace transform to a differential equation?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-						<statement>To find the solution <m> y(t) </m> directly.</statement>
-						<feedback>
-							<p>
-								Not quite. The forward Laplace transform is used to convert the differential equation into an algebraic equation, not to find the solution directly.
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>To convert the differential equation into an algebraic equation involving <m> Y(s) </m>.</statement>
-						<feedback>
-							<p>
-								Correct! The forward Laplace transform simplifies the differential equation by converting it into an algebraic form in terms of <m> Y(s) </m>.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>To rewrite the differential equation as a sum of functions.</statement>
-						<feedback>
-							<p>
-								Close, but the main purpose of the forward transform is to convert the differential equation into an algebraic equation involving <m> s </m>, not just to rewrite it as a sum of functions.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>To simplify the coefficients of the differential equation.</statement>
-						<feedback>
-							<p>
-								Incorrect. The Laplace transform does not directly simplify the coefficients but rather transforms the entire differential equation into an algebraic equation in terms of <m> s </m>.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="p4-c3-s1-1-rq6"><title> <em>What is the primary goal of Step 2a in the Laplace Transform Method?</em> </title>
-				<statement>
-					<p>
-						<em>What is the primary goal of Step 2a in the Laplace Transform Method?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-					<statement>To isolate <m> Y(s) </m> as a function of <m> s </m></statement>
-					<feedback>
-						<p>Correct! Step 2a involves isolating <m> Y(s) </m> on one side of the equation.</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>To apply the inverse Laplace transform</statement>
-					<feedback>
-						<p>Incorrect. Applying the inverse Laplace transform is done in Step 3.</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>To account for the initial conditions</statement>
-					<feedback>
-						<p>Incorrect. The initial conditions are accounted for in Step 1.</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>To rewrite <m> Y(s) </m> as a sum of known transforms</statement>
-					<feedback>
-						<p>Incorrect. Rewriting <m> Y(s) </m> is done in Step 2b.</p>
-					</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="p4-c3-s1-1-rq7"><title> <em>Match the Next Step in the Method</em> </title>
-					
-				<statement>Drag the task, on the left, that directly follows the task on the right.</statement>
-
-				<feedback>
-					<p>
-						Review the <xref ref="lt-method" text="title"/> Steps.
-					</p>
-				</feedback>
-
-				<cardsort>
-					<match>
-						<premise>
-							<em>... The result is your solution.</em>
-						</premise>
-						<response> After applying the inverse laplace transform to <m>Y(s)</m> ... </response>
-					</match>
-					<match>
-						<premise>
-							<em>... Use algebra to isolate it.</em>
-						</premise>
-						<response> After transforming the differential equation to introduce <m>Y(s)</m> ... </response>
-					</match>
-					<match>
-						<premise>
-							<em>... Rewrite it as a sum of expressions resembling common Laplace transforms. </em>
-						</premise>
-						<response> Once you have isolated <m>Y(s)</m>... </response>
-					</match>
-					<match>
-						<premise>
-							<em>... Apply the Laplace Transform to it </em>
-						</premise>
-						<response>Given an initial-valued problem ...</response>
-					</match>
-				</cardsort>
-			</task>
-
+		<p>
+			The three-step outline provides the general strategy. If you ever feel lost, come back to this outline and roadmap. Regardless of the equation, the steps you take to navigate them will always follow one of these three lines.
 		</p>
 	</subsection>
 
-	<subsection><title> Worked Examples </title>
-
-		<p><title> 👀 <em>Reading Preparation</em> </title>
-			<p>
-				Needs to be completed.
-			</p>
-		</p>
+	<subsection>
+		<title> Worked Examples </title>
 
 		<p>
-			The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action.
+			The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action. Here is a break down of what to expect:
 		</p>
+
+		<ul>
+			<li>Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.</li>
+			<li>Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines/cosines.</li>
+			<li>Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.</li>
+		</ul>
 
 		<example><title> Basic Second-Order, Homogeneous </title>
 			<p>
@@ -714,6 +541,17 @@
 				</p>
 			</solution>
 		</example>
+
+		<task label="lt-checkpoint-timeline">
+			<title> 📖❓Order the Steps </title>
+			<statement><p>Put these phrases in the order they occur when you solved Example 2.</p></statement>
+			<cardsort>
+				<match><premise>Rewrite <m>Y(s)</m> as table terms</premise><response>3</response></match>
+				<match><premise>Isolate <m>Y(s)</m></premise><response>2</response></match>
+				<match><premise>Transform the differential equation</premise><response>1</response></match>
+				<match><premise>Apply <m>\laplacesym^{-1}</m></premise><response>4</response></match>
+			</cardsort>
+		</task>
 
 		<example><title>Forcing with a Polynomial</title>
 			<p>
@@ -1301,477 +1139,45 @@
 				</p>
 			</solution>
 		</example>
-
-		<example><title> A First-Order Initial-Value Problem </title>
-			<p>
-				<statement>
-					<p>
-						Use the Laplace transform method to solve the initial-value problem
-						<men xml:id="lt-example-2-eqn">
-							y' + y = 4, \quad y(0) = 2
-						</men>.
-					</p>
-				</statement>
-			</p>
-			
-			<solution>
-				<p>
-					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-2-eqn"/>, we have
-					<md>
-						<mrow>\lap{y' + y} = \lap{4}</mrow>
-						<mrow>\lap{y'} + \lap{y} = \lap{4}</mrow>
-						<mrow>sY(s) - 2 + Y(s) = \frac{4}{s}</mrow>
-					</md>
-				</p>
-
-				<p>
-					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>Y(s)</m> on one side of the equation:
-					<md>
-						<mrow> sY(s) - 2 + Y(s)	\amp = \frac{4}{s}													</mrow>
-						<mrow>		(s + 1)Y(s)	\amp = \frac{4}{s} + 2												</mrow>
-						<mrow> 			Y(s)	\amp = \frac{1}{s + 1}\left(\frac{4}{s} + 2\right)					</mrow>
-						<mrow> 			Y(s)	\amp = \ub{\frac{4}{s(s + 1)}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}	</mrow>
-					</md>
-				</p>
-				
-				<p>
-					<term><xref ref="lt-step-3" text="title"/></term>. We need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, <m>(**)</m> is ready to go, but <m>(*)</m> requires partial fraction decomposition. We start by writing down the form of the decomposition,
-					<me>
-						(*) = \frac{4}{s(s + 1)} = \frac{A}{s} + \frac{B}{s + 1} \quad \text{or}
-					</me>
-					<men xml:id="lt-example-2-eqn-2">
-						4 = A(s + 1) + Bs
-					</men>
-					Now, we find <m>A</m> and <m>B</m> by plugging in values of <m>s</m> into <xref ref="lt-example-2-eqn-2"/>,
-				</p>
-
-				<tabular>
-					<col halign="right"/>
-					<col halign="right"/>
-					<col halign="center"/>
-					<col halign="left"/>
-					<row>
-						<cell><m>s=0</m> :</cell>
-						<cell><m>4</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>A(0 + 1) + B(0)</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>4</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>A</m></cell>
-					</row>
-					<row>
-						<cell><m>s=-1</m> :</cell>
-						<cell><m>4</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>A(-1 + 1) + B(-1)</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>-4</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>B</m></cell>
-					</row>
-				</tabular>
-
-				<p>
-					Thus, the prepared <m>Y(s)</m> is
-					<me>Y(s) = \ub{\frac{4}{s} + \frac{-4}{s + 1}}_{(*)} + \ub{\frac{2}{s + 1}}_{(**)}</me>
-				</p>
-				
-				<p>
-					<term><xref ref="lt-step-4" text="title"/></term>. Finally, we apply the backward step to get the solution:
-					<md>
-						<mrow>\ilap{Y(s)}	\amp = \ilap{\frac{4}{s} + \frac{-4}{s + 1}}</mrow>
-						<mrow>		y(t)	\amp = 4 - 4e^{-t}</mrow>
-					</md>
-				</p>
-			</solution>
-		</example>
-
-		<example><title> A Second-Order Initial-Value Problem </title>
-			<p>
-				<statement>
-					<p>
-						Use the Laplace transform method to solve the initial-value problem
-						<men xml:id="lt-example-1-eqn">
-							y'' - 3y' + 2y = e^{2t}, \quad y(0) = 1, \quad y'(0) = 0
-						</men>
-					</p>
-				</statement>
-			</p>
-			
-			<solution>
-				<p>
-					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-1-eqn"/>, we have
-					<md>
-						<mrow>\lap{y'' - 3y' + 2y} \amp = \lap{e^{2t}}</mrow>
-						<mrow>\lap{y''} - 3\lap{y'} + 2\lap{y} \amp = \frac{1}{s - 2}</mrow>
-					</md>
-					where <m>\lap{y(t)} = Y(s)</m> and
-					<ul marker="square">
-						<li><m>\lap{y'} = sY(s) - y(0) = sY(s) - 1</m>,</li>
-						<li><m>\ds \lap{y''} = s^2Y(s) - sy(0) - y'(0) = s^2Y(s) - s</m>.</li>
-					</ul>
-					So the complete forward transform of <xref ref="lt-example-1-eqn"/> is
-					<me>s^2Y(s) - s - 3[sY(s) - 1] + 2Y(s) = \frac{1}{s - 2}</me>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>Y(s)</m> on one side of the equation:
-				<md>
-					<mrow>s^2Y(s) - s - 3sY(s) + 3 + 2Y(s) = \frac{1}{s - 2}</mrow>
-					<mrow>[s^2 - 3s + 2]Y(s) - s + 3 = \frac{1}{s - 2}</mrow>
-					<mrow>Y(s)[(s - 1)(s - 2)] = \frac{1}{s - 2} + s - 3</mrow>
-					<mrow>Y(s) = \frac{1}{(s - 1)(s - 2)}\ub{\left(\frac{1}{s - 2} + s - 3\right)}_{(*)}</mrow>
-				</md>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-3" text="title"/></term>. Now, we need to express <m>Y(s)</m> as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in <m>(*)</m> as a single fraction, like so
-					<me>
-						(*)	= \frac{1}{s - 2} + \frac{(s - 3)(s - 2)}{s - 2}
-							= \frac{1 + s^2 - 5s + 6}{s - 2} = \frac{s^2 - 5s + 7}{s - 2}
-					</me>.
-					Plugging this back into the equation for <m>(*)</m> gives the new <m>Y(s)</m>,
-					<me>Y(s) = \frac{1}{(s - 1)(s - 2)}\cdot \frac{s^2 - 5s + 7}{s - 2} = \frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}</me>
-					and we are ready to apply partial fraction decomposition. The form of the decomposition is
-					<md>
-						<mrow>
-							\frac{s^2 - 5s + 7}{(s - 1)(s - 2)^2}	
-								\amp = \frac{A}{s - 1} + \frac{B}{s - 2} + \frac{C}{(s - 2)^2} \quad \text{or}
-						</mrow>
-						<mrow>
-							s^2 - 5s + 7
-								\amp = A(s - 2)^2 + B(s - 1)(s - 2) + C(s - 1).
-						</mrow>
-					</md>
-					Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
-				</p>
-				<tabular>
-					<col halign="right"/>
-					<col halign="right"/>
-					<col halign="center"/>
-					<col halign="left"/>
-					<row>
-						<cell><m>s=1</m> :</cell>
-						<cell><m>1 - 5 + 7</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>A(1 - 2)^2 + B(1 - 1)(1 - 2) + C(1 - 1)</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>3</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>A</m></cell>
-					</row>
-					<row>
-						<cell><m>s=2</m> :</cell>
-						<cell><m>4 - 10 + 7</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>3(2 - 2)^2 + B(2 - 1)(2 - 2) + C(2 - 1)</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>1</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>C</m></cell>
-					</row>
-					<row>
-						<cell><m>s=0</m> :</cell>
-						<cell><m>7</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>3(0 - 2)^2 + B(0 - 1)(0 - 2) + 1(0 - 1)</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>7</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>12 + 2B - 1</m></cell>
-					</row>
-					<row>
-						<cell></cell>
-						<cell><m>-2</m></cell>
-						<cell><m>=</m></cell>
-						<cell><m>B</m></cell>
-					</row>
-				</tabular>
-				<p>
-					Thus, the prepared <m>Y(s)</m> is
-					<me>Y(s) = \frac{3}{s - 1} + \frac{-2}{s - 2} + \frac{1}{(s - 2)^2}</me>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-4" text="title"/></term>. Finally, we perform the backward step to get the solution:
-					<md>
-						<mrow>
-							\ilap{Y(s)}
-						</mrow>
-						<mrow>
-							\amp = \ilap{\frac{3}{s - 1}} + \ilap{\frac{-2}{s - 2}} + \ilap{\frac{1}{(s - 2)^2}}
-						</mrow>
-						<mrow>
-							y(t) \amp = 3\, e^{t} - 2\, e^{2t} + t\, e^{2t}
-						</mrow>
-					</md>
-				</p>
-			</solution>
-		</example>
-
-		<example><title> Solve the initial-value problem </title>
-			<p>
-				<statement>
-					<p>
-						Use the Laplace transform method to solve the initial-value problem
-						<men xml:id="lt-example-3-eqn">
-							x'' - 4x' + 13x = 54e^{-t}, \quad x(0) = 0, \quad x'(0) = 0
-						</men>
-					</p>
-				</statement>
-			</p>
-
-			<solution>
-				<p>
-					<term><xref ref="lt-step-1" text="title"/></term>. Applying <m>\laplacesym</m> to both sides of <xref ref="lt-example-3-eqn"/>, we have
-					<md>
-						<mrow>\lap{x'' - 4x' + 13x} = \lap{54e^{-t}}</mrow>
-						<mrow>\lap{x''} - 4\lap{x'} + 13\lap{x} = \frac{54}{s + 1}</mrow>
-					</md>
-					where <m>\lap{x(t)} = X(s)</m> and
-					<ul marker="square">
-						<li><m>\lap{x'} = sX(s) - x(0) = sX(s)</m>,</li>
-						<li><m>\ds \lap{x''} = s^2X(s) - sx(0) - x'(0) = s^2X(s)</m>.</li>
-					</ul>
-					So the complete forward transform of <xref ref="lt-example-3-eqn"/> is
-					<me>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</me>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-2" text="title"/></term>. Next, we isolate <m>X(s)</m> on one side of the equation:
-				<md>
-					<mrow>s^2X(s) - 4sX(s) + 13X(s) = \frac{54}{s + 1}</mrow>
-					<mrow>[s^2 - 4s + 13]X(s) = \frac{54}{s + 1}</mrow>
-					<mrow>X(s) = \frac{54}{(s + 1)(s^2 - 4s + 13)}</mrow>
-				</md>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-3" text="title"/></term>. Now, we need to express <m>X(s)</m> as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition,
-					<md>
-						<mrow>
-							\frac{54}{(s + 1)(s^2 - 4s + 13)} = \frac{A}{s + 1} + \frac{Bs + C}{s^2 - 4s + 13} \quad \text{or}
-						</mrow>
-						<mrow>
-							54 = A(s^2 - 4s + 13) + (Bs + C)(s + 1)
-						</mrow>
-					</md>
-					Now, we find <m>A, B, </m> and <m>C</m> by plugging in values of <m>s</m>,
-				</p>
-
-				<p>
-					<sidebyside widths="15% 65% 20%">
-						<p><m>s=-1</m>:</p>
-						<p>
-								<line><m>	54 = A(-1)^2 - 4(-1) + 13	</m></line>
-								<line><m>	54 = A + 17				</m></line>
-						</p>
-						<p>
-								<line><m>	\vphantom{A}	</m></line>
-								<line><m>	A = 37			</m></line>
-						</p>
-					</sidebyside>
-					<sidebyside widths="15% 65% 20%">
-						<p><m>s=0</m>:</p>
-						<p>
-								<line><m>	54 = 37(13) + (B(0) + C)(0 + 1)	</m></line>
-								<line><m>	54 = 481 + C						</m></line>
-						</p>
-						<p>
-								<line><m>	\vphantom{C}	</m></line>
-								<line><m>	C = -427		</m></line>
-						</p>
-					</sidebyside>
-					<sidebyside widths="15% 65% 20%">
-						<p><m>s=1</m>:</p>
-						<p>
-								<line><m>	54 = 37(-10) + (B(1) - 427)(1 + 1)	</m></line>
-								<line><m>	54 = 2B - 1224						</m></line>
-						</p>
-						<p>
-								<line><m>	\vphantom{B}	</m></line>
-								<line><m>	B = 585			</m></line>
-						</p>
-					</sidebyside>
-				</p>
-				
-				<p>
-					So the updated <m>X(s)</m> is
-					<me>X(s) = \frac{37}{s + 1} + \frac{585s - 427}{s^2 - 4s + 13}</me>.
-					Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.
-					<md>
-						<mrow> X(s)	\amp = \frac{37}{s + 1} + \frac{585s - 427}{(s - 2)^2 + 9}</mrow>
-						<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585) + 2(585)- 427}{(s - 2)^2 + 9}</mrow>
-						<mrow> 		\amp = \frac{37}{s + 1} + \frac{585s - 2(585)}{(s - 2)^2 + 9} + \frac{2(585)- 427}{(s - 2)^2 + 9}</mrow>
-						<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + 743\frac{1}{(s - 2)^2 + 9}</mrow>
-						<mrow> 		\amp = \frac{37}{s + 1} + 585\frac{s - 2}{(s - 2)^2 + 9} + \frac{743}{3}\frac{3}{(s - 2)^2 + 9}</mrow>
-					</md>
-				</p>
-			
-				<p>
-					<term><xref ref="lt-step-4" text="title"/></term>. Now for the backward step to get the solution:
-					<md>
-						<mrow>
-							x(t) \amp = 37e^{-t} + 585\cos(3t) + \frac{743}{3}\sin(3t)
-						</mrow>
-					</md>
-				</p>
-			</solution>
-		</example>
 		
 		<p>
 			These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
 		</p>
-
-		<p>
-			<task label="p4-c3-s2-1-rq1"><title> <em>Which step in this method accounts for the initial conditions?</em> </title>
-				<statement>
-					<p>
-						<em>Which step in this method accounts for the initial conditions?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>Applying the Forward Transform</statement>
-						<feedback>
-							<p>
-								That's correct! The initial conditions are accounted for when you apply the forward transform of the derivatives.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Solving for <m>Y(s)</m></statement>
-						<feedback>
-							<p>
-								Incorrect. Please carefully review the Method.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Preparing for the Backward Transform</statement>
-						<feedback>
-							<p>
-								Incorrect. Please carefully review the Method.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Applying the Backward Transform</statement>
-						<feedback>
-							<p>
-								Incorrect. Please carefully review the Method.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="p4-c3-s2-1-rq2"><title> <em>It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?</em> </title>
-				<statement correct="yes">
-					<p>
-						<em>It is possible to use both partial fraction decomposition and completing the square in the same problem using this method?</em>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						This is true! Both techniques are commonly used in the Laplace Transform Method to simplify the algebraic equation.
-					</p>
-				</feedback>
-
-			</task>
-
-			<task label="p4-c3-s2-1-rq3"><title> <em>Which mathematical technique would you not expect to see in Step 2b?</em> </title>
-				<statement>
-					<p>
-						<em>Which mathematical technique would you not expect to see in Step 2b?</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-						<statement>Partial fraction decomposition</statement>
-						<feedback>
-							<p>Incorrect. Partial fraction decomposition is commonly used in Step 2b.</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Completing the square</statement>
-						<feedback>
-							<p>Incorrect. Completing the square is often used in Step 2b.</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>Finding a common denominator.</statement>
-						<feedback>
-							<p>Incorrect. This technique is also used in Step 2b.</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>Integration by Parts</statement>
-						<feedback>
-							<p>Correct! Only algebra techniques are used in Step 2b.</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-			
-			<task label="p4-c3-s2-1-rq4"><title> <em>The Laplace Transform Method can be used to solve nonhomogeneous differential equations</em> </title>
-				<statement>
-					<p>
-						<em>The Laplace Transform Method can be used to solve nonhomogeneous differential equations</em>
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-					<statement>True</statement>
-					<feedback>
-						<p>Correct! The Laplace Transform Method is especially useful for solving nonhomogeneous differential equations.</p>
-					</feedback>
-					</choice>
-					<choice>
-					<statement>False</statement>
-					<feedback>
-						<p>Incorrect. The method can indeed be used to solve nonhomogeneous differential equations.</p>
-					</feedback>
-					</choice>
-				</choices>
-			</task>
-		</p>
-
-		<p>
-			<example>
-				<statement>What is the first step in the Laplace transform solution technique?</statement>
-				<solution>
-					<p>
-						The first step in the Laplace transform solution technique is to take the Laplace transform of the differential equation.
-					</p>
-				</solution>
-			</example>
-		</p>
 	</subsection>
 
-	<objectives label="lt-method-examples-wrapup">
+	<objectives label="lt-summary-examples-wrapup">
 		<ul>
-			<li> 
-
+			<li>
+				The three-step Laplace roadmap never changes; the variety comes from the algebra you need in Step 2.
+			</li>
+			<li>
+				Forward transform ⟶ algebra-only world ⟶ isolate <m>Y(s)</m> ⟶ prepare ⟶ inverse transform.
 			</li>
 		</ul>
 	</objectives>
 
-	<fact label="lt-method-examples-cyu">
+	<fact label="lt-summary-examples-cyu">
 		<statement>
 			<p>
-				Answer the following questions related to the Laplace Transform Method.
+				Check Your Understanding:  
+				<task label="lt-summary-examples-cyu-1">
+					<title> 📖❓Who Does What? </title>
+					<statement><p>Match each step with its primary role.</p></statement>
+					<cardsort>
+						<match><premise>Turns the DE into an algebra problem</premise><response>Step 1 — Forward Transform</response></match>
+						<match><premise>Makes every term inverse-friendly</premise><response>Step 2 — Solve &amp; Prepare <m>Y(s)</m></response></match>
+						<match><premise>Reveals <m>y(t)</m></premise><response>Step 3 — Inverse Transform</response></match>
+					</cardsort>
+				</task>
+
+				<task label="lt-summary-examples-cyu-2">
+					<title> 📖❓Where Do ICs Appear? </title>
+					<statement><p>Initial conditions influence only Step 1.</p></statement>
+					<choices>
+						<choice correct="yes"><statement>True</statement><feedback><p>Right — after Step 1 they are baked into <m>Y(s)</m>.</p></feedback></choice>
+						<choice><statement>False</statement></choice>
+					</choices>
+				</task>
 			</p>
 		</statement>
 	</fact>
