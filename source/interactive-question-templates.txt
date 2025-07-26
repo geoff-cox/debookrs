@@ -229,25 +229,125 @@
   </feedback>
 </exercise>
 
-<!-- Fill-In Question Template -->
-<exercise label="prereading-fill-in"><title> QUESTION TITLE </title>
-  <statement>
-    <p>
-      PROBLEM STATEMENT
-    </p>
+<!-- STATIC Fill-In Question Template -->
+<exercise label="fillin-template">
+	<title>Fill-In, String and Number Answers</title>
+	<statement>
+		<p>
+			Complete the following line of a Python program so that it will declare an integer variable <c>age</c> with an initial value of <c>5</c>.
+		</p>
+		<p>
+			<fillin mode="string" answer="int"/> <c>age = </c> <fillin mode="number" answer="5"/><c>;</c>
+		</p>
+	</statement>
+	<evaluation>
+		<evaluate>
+			<test>
+				<strcmp use-answer="yes"/>
+				<feedback>A variable of type <c>int</c> is appropriate for whole number ages.</feedback>
+			</test>
+			<test>
+				<strcmp>.*</strcmp>
+				<feedback>
+					<p>
+						Remember that Java uses just the first three letters of the word <q>integer</q>	to define an integral type.
+					</p>
+				</feedback>
+			</test>
+		</evaluate>
+		<evaluate>
+			<test>
+				<numcmp use-answer="yes"/>
+				<feedback>An integer variable may be initialized to a value.</feedback>
+			</test>
+			<test>
+				<strcmp>.*</strcmp>
+				<feedback>Use <c>5</c> as the initial value of the variable.</feedback>
+			</test>
+		</evaluate>
+	</evaluation>
+</exercise>
 
-    <p>
-      FILL-IN A NUMBER: <fillin mode="number" answer="NUMERIC ANSWER" />
-    </p>
-
-    <p>
-      FILL-IN A STRING: <fillin mode="string" answer="STRING ANSWER" />
-    </p>
-  </statement>
-
-  <evaluation>
-    <!-- One <evaluate> is needed for each <fillin> -->
-    <evaluate><test><strcmp use-answer="yes" /></test></evaluate>
-    <evaluate><test><strcmp use-answer="yes" /></test></evaluate>
-  </evaluation>
+<!-- DYNAMIC Fill-In Question Template -->
+<exercise label="dynamic-simple-formula">
+	<title>Fill-In Formula (Dynamic)</title>
+	<statement>
+		<p>
+			Find a formula for a cubic function <m>f(x)</m> that has roots at <m>x=<eval obj="x1"/></m>,
+			<m>x=<eval obj="x2"/></m>,
+			and <m>x=<eval obj="x3"/></m> and so that <m>f(0)=<eval obj="y0"/></m>.
+		</p>
+		<p>
+			<m>f(x)=</m> <fillin name="st_cubic" mode="math" ansobj="cubic"/>
+		</p>
+	</statement>
+	<solution>
+		<p>
+			Knowing the roots of a polynomial allows us to write down the formula of <m>f(x)</m> in factored form,
+			<me>
+				f(x) = A <eval obj="base_cubic"/>
+			</me>
+			with an unknown scaling multiple <m>A</m>.
+		</p>
+		<p>
+			When we evaluate <m>f(x)</m> at <m>x=0</m> using this formula, we find
+			<me>
+				f(0) = <eval obj="base_yint"/>A
+			</me>.
+			Since we also know <m>f(0)=<eval obj="y0"/></m>,
+			we can write down the equation
+			<me>
+				A <eval obj="base_cubic"/> = <eval obj="y0"/>
+			</me>
+			and find that <m>A=<eval obj="A"/></m>.
+		</p>
+		<p>
+			Consequently, we can write our function in the form
+			<me>
+				f(x)=<eval obj="cubic"/>
+			</me>.
+		</p>
+	</solution>
+	<setup seed="314159">
+		<de-object name="y0" context="number">
+			<de-random distribution="discrete" min="-8" max="8" by="1" nonzero="yes"/>
+		</de-object>
+		<de-object name="x1" context="number">
+			<de-random distribution="discrete" min="-8" max="-4" by="1"/>
+		</de-object>
+		<de-object name="d1" context="number">
+			<de-random distribution="discrete" min="1" max="4" by="1"/>
+		</de-object>
+		<de-object name="d2" context="number">
+			<de-random distribution="discrete" min="1" max="4" by="1"/>
+		</de-object>
+		<de-object name="x2" context="number">
+			<de-number>x1+d1</de-number>
+		</de-object>
+		<de-object name="x3" context="number">
+			<de-number>x2+d2</de-number>
+		</de-object>
+		<de-object name="base_cubic" context="formula">
+			<de-expression reduce="yes">(x-x1)*(x-x2)*(x-x3)</de-expression>
+		</de-object>
+		<de-object name="base_yint" context="number">
+			<de-evaluate>
+				<formula><eval obj="base_cubic"/></formula>
+				<variable name="x">0</variable>
+			</de-evaluate>
+		</de-object>
+		<de-object name="A" context="number">
+			<de-number reduce="yes">y0/base_yint</de-number>
+		</de-object>
+		<de-object name="cubic" context="formula">
+			<de-expression reduce="yes">A*(x-x1)*(x-x2)*(x-x3)</de-expression>
+		</de-object>
+	</setup>
+	<evaluation>
+		<evaluate name="st_cubic">
+			<test correct="yes">
+				<mathcmp obj="cubic"/>
+			</test>
+		</evaluate>
+	</evaluation>
 </exercise>
