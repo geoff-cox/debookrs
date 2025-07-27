@@ -528,127 +528,107 @@
 		<title> Transform of <m>f(t-c) u_c(t)</m> </title>
 
 		<p>
-			The next rule is related to the previous one, but it is makes inverting unit step transforms easier.  
+			Next, we cover the final rule that will be added to the transform table. This rule will be particularly useful during <xref ref="lt-step-3" text="custom">step 3 of the Laplace method</xref>. 
 		</p>
-    <p>
-        The final rule in our toolkit covers the most common case you’ll see when working backwards — during the <em>inverse Laplace transform</em>. Here, the function is already shifted: <m>f(t-c) u_c(t)</m>. This form appears naturally when you’ve solved an equation in the Laplace domain and need to bring it back to the time domain.
-    </p>
-    <p>
-        The key result is simple: when you shift the function <em>inside</em> as <m>f(t-c)</m>, the Laplace transform “forgets” about the shift in the function itself. Instead, the exponential <m>e^{-cs}</m> handles the timing, and you just take the Laplace transform of the original <m>f(t)</m>.
-    </p>
-		<assemblage xml:id="laplace-ftc-uc0"><title> Laplace Transform of <m>f(t - c)\cdot u_c(t)</m> </title>
+
+		<assemblage xml:id="laplace-ftc-uc">
+			<title> Laplace Transform of <m>f(t-c) u_c(t)</m> </title>
 			<p>
-				When the function, <m>f(t)</m>, is also shifted by <m>c</m>, we get the Laplace transform
-				<men xml:id="L15-eqn">
-					\lap{f(t - c) \, u_c(t)} = e^{-cs} F(s), \quad\text{where}\quad F(s) = \lap{f(t)}
-				</men>.
+				The Laplace transform rule is:
+				<men xml:id="lap-ftc-uc-eqn">
+					\lap{f(t-c) u_c(t)} = e^{-cs} F(s),
+				</men>
+				where <m>F(s) = \lap{f(t)}</m>.
 			</p>
 
 			<p>
-				<theorem><title> <m>\rightarrow \lap{f(t - c) \, u_c(t)}</m> </title>
+				<theorem>
+					<title> Derivation of <m>\lap{f(t-c) u_c(t)}</m> </title>
+
 					<p>
-						To prove this, we start with the definition of the Laplace transform:
+						Start with the Laplace transform definition:
 						<me>
-							\lap{f(t - c) \cdot u_c(t)} = \int_0^\infty f(t - c) \cdot u_c(t) \cdot e^{-st} \, dt.
+							\lap{f(t-c) u_c(t)} = \int_{0}^{\infty} f(t-c) u_c(t) e^{-st} \, dt.
 						</me>
 					</p>
 
 					<p>
-						Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, we can change the limits of integration to <m>c\le t\le\infty</m>.
+						Because <m>u_c(t) = 0</m> for <m>t \lt c</m>, the lower limit becomes <m>c</m>:
+						<me>
+							\lap{f(t-c) u_c(t)} = \int_{c}^{\infty} f(t-c) e^{-st} \, dt.
+						</me>
 					</p>
 
 					<p>
-						Using a <m>u</m>-substitution, we let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>. The limits change to <m>u = 0</m> and <m>u \to \infty</m>.
+						Make the substitution <m>u = t - c</m> so that the function “starts” at <m>u=0</m>:
+						<ul marker="disc">
+							<li><m>t = u + c</m></li>
+							<li><m>dt = du</m></li>
+							<li>When <m>t = c</m>, <m>u = 0</m>; when <m>t \to \infty</m>, <m>u \to \infty</m>.</li>
+						</ul>
 					</p>
 
 					<md>
 						<mrow>
-							\int_{t=c}^{t=\infty} f(t - c) e^{-st} \, dt 
-							\amp = \int_{u=0}^{u=\infty} f(u) e^{-s(u + c)} \, du
+							\int_{c}^{\infty} f(t-c) e^{-st} dt
+							\amp = \int_{0}^{\infty} f(u) e^{-s(u + c)} du
 						</mrow>
 						<mrow>
-							\amp = e^{-cs} \int_0^\infty f(u) e^{-su} \, du
+							\amp = e^{-cs} \int_{0}^{\infty} f(u) e^{-su} du
 						</mrow>
 						<mrow>
-							\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s)
+							\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s).
 						</mrow>
 					</md>
 
 					<p>
-						This proves that the rule holds.
+						This shows that the Laplace transform of <m>f(t-c) u_c(t)</m> is just the Laplace transform of <m>f(t)</m>, multiplied by <m>e^{-cs}</m>.
 					</p>
 				</theorem>
+
+					<theorem><title> <m>\rightarrow \lap{f(t - c) \, u_c(t)}</m> </title>
+						<p>
+							To prove this, we start with the definition of the Laplace transform:
+							<me>
+								\lap{f(t - c) \cdot u_c(t)} = \int_0^\infty f(t - c) \cdot u_c(t) \cdot e^{-st} \, dt.
+							</me>
+						</p>
+
+						<p>
+							Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, we can change the limits of integration to <m>c\le t\le\infty</m>.
+						</p>
+
+						<p>
+							Using a <m>u</m>-substitution, we let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>. The limits change to <m>u = 0</m> and <m>u \to \infty</m>.
+						</p>
+
+						<md>
+							<mrow>
+								\int_{t=c}^{t=\infty} f(t - c) e^{-st} \, dt 
+								\amp = \int_{u=0}^{u=\infty} f(u) e^{-s(u + c)} \, du
+							</mrow>
+							<mrow>
+								\amp = e^{-cs} \int_0^\infty f(u) e^{-su} \, du
+							</mrow>
+							<mrow>
+								\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s)
+							</mrow>
+						</md>
+
+						<p>
+							This proves that the rule holds.
+						</p>
+					</theorem>
 			</p>
 		</assemblage>
-<assemblage xml:id="laplace-ftc-uc">
-        <title> Laplace Transform of <m>f(t-c) u_c(t)</m> </title>
 
-        <p>
-            The Laplace transform rule is:
-            <men xml:id="lap-ftc-uc-eqn">
-                \lap{f(t-c) u_c(t)} = e^{-cs} F(s),
-            </men>
-            where <m>F(s) = \lap{f(t)}</m>.
-        </p>
-
-        <p>
-            <theorem>
-                <title> Derivation of <m>\lap{f(t-c) u_c(t)}</m> </title>
-
-                <p>
-                    Start with the Laplace transform definition:
-                    <me>
-                        \lap{f(t-c) u_c(t)} = \int_{0}^{\infty} f(t-c) u_c(t) e^{-st} \, dt.
-                    </me>
-                </p>
-
-                <p>
-                    Because <m>u_c(t) = 0</m> for <m>t \lt c</m>, the lower limit becomes <m>c</m>:
-                    <me>
-                        \lap{f(t-c) u_c(t)} = \int_{c}^{\infty} f(t-c) e^{-st} \, dt.
-                    </me>
-                </p>
-
-                <p>
-                    Make the substitution <m>u = t - c</m> so that the function “starts” at <m>u=0</m>:
-                    <ul marker="disc">
-                        <li><m>t = u + c</m></li>
-                        <li><m>dt = du</m></li>
-                        <li>When <m>t = c</m>, <m>u = 0</m>; when <m>t \to \infty</m>, <m>u \to \infty</m>.</li>
-                    </ul>
-                </p>
-
-                <md>
-                    <mrow>
-                        \int_{c}^{\infty} f(t-c) e^{-st} dt
-                        \amp = \int_{0}^{\infty} f(u) e^{-s(u + c)} du
-                    </mrow>
-                    <mrow>
-                        \amp = e^{-cs} \int_{0}^{\infty} f(u) e^{-su} du
-                    </mrow>
-                    <mrow>
-                        \amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s).
-                    </mrow>
-                </md>
-
-                <p>
-                    This shows that the Laplace transform of <m>f(t-c) u_c(t)</m> is just the Laplace transform of <m>f(t)</m>, multiplied by <m>e^{-cs}</m>.
-                </p>
-            </theorem>
-        </p>
-    </assemblage>
 		<p>
-			Comparing the two rules,
-			<me>
-				\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t + a)} \quad\text{and}\quad \lap{f(t - c) \, u_c(t)} = e^{-cs} \ub{\lap{f(t)}}_{F(s)}
-			</me>
-			you can see that second rule contains the Laplace transform of the function <m>f(t)</m> itself, while the first rule contains the Laplace transform of the shifted function <m>f(t + c)</m>. For this reason, the second rule is used when inverting the transform because inside the Laplace domain, we always solve for <m>F(s)</m>, making it a direct match with the transform table.
-		</p>
-    <p>
-        This rule is often called the **second shifting theorem** for the Laplace transform. It’s the key that makes inverting Laplace transforms of piecewise functions almost effortless: when you see <m>e^{-cs} F(s)</m> in the Laplace domain, you immediately know it corresponds to <m>f(t-c) u_c(t)</m> in the time domain.
-    </p>
+			The reason why this rule is useful inverse transforms is because the prepared <m>Y(s)</m> (at the end of <xref ref="lt-step-2" text="custom">step 2</xref>) will not usually contain a shift in <m>s</m> as needed by <xref ref="lt-L10" text="custom">L<m>_{10}</m></xref> for an inverse. By contrast, this rule lets you match to terms that look like
+			<me>e^{-cs}F(s)</me>
+			where <m>F(s)</m> is one of the common Laplace transforms from the same table. So, when you see this form in the Laplace domain, you immediately know it corresponds to <m>f(t-c) u_c(t)</m> in the original domain.
+    	</p>
 
-<example>
+	<example>
         <title> Transform of <m>(t^2) u_4(t)</m> (written as <m>f(t-4) u_4(t)</m>) </title>
         <statement>
             <p>
@@ -676,7 +656,7 @@
     </example>
 
     <p>
-        This completes our set of rules. Together, the three formulas — <m>\lap{u_c(t)}</m>, <m>\lap{f(t) u_c(t)}</m>, and <m>\lap{f(t-c) u_c(t)}</m> — are enough to transform (and later invert) any piecewise function you’ll encounter in Laplace problems.
+        This completes our set of rules. Together, these three formulas are enough to transform (and invert) any piecewise function you'll encounter in Laplace method problems.
     </p>
 
 <exercise label="chkpt-uc-concept">
@@ -698,11 +678,11 @@
         </choice>
         <choice>
             <statement><p>It reverses the direction of <m>f(t)</m> at <m>t=c</m>.</p></statement>
-            <feedback><p>No — there’s no “reverse” here, just ON/OFF switching.</p></feedback>
+            <feedback><p>No — there's no “reverse” here, just ON/OFF switching.</p></feedback>
         </choice>
         <choice>
             <statement><p>It multiplies <m>f(t)</m> by <m>t</m> after <m>t=c</m>.</p></statement>
-            <feedback><p>No — <m>u_c(t)</m> is either 0 or 1; it doesn’t add factors of <m>t</m>.</p></feedback>
+            <feedback><p>No — <m>u_c(t)</m> is either 0 or 1; it doesn't add factors of <m>t</m>.</p></feedback>
         </choice>
     </choices>
 </exercise>
@@ -806,7 +786,7 @@
         </choice>
         <choice>
             <statement><p><m>(t+1) u_3(t)</m></p></statement>
-            <feedback><p>No — the function isn’t shifted as <m>t-c</m>; use the first rule here.</p></feedback>
+            <feedback><p>No — the function isn't shifted as <m>t-c</m>; use the first rule here.</p></feedback>
         </choice>
         <choice>
             <statement><p><m>5 u_1(t)</m></p></statement>
@@ -1178,7 +1158,7 @@
 			This method works for any piecewise forcing function and now you're ready to use it to solve full differential equations using Laplace transforms.
 		</p>
     <p>
-        Let’s see this method in action with an example.
+        Let's see this method in action with an example.
     </p>
 		<example><title> Transform of <m>e^{3t}(1 - u_1(t))</m> </title>
 			<statement>
