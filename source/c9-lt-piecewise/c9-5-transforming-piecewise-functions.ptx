@@ -1,9 +1,13 @@
-<section label="laplace-piecewise-method">
+<section label="transforming-piecewise-functions">
 	<title> Transforming Piecewise Functions </title>
 	<introduction>
-		<p>
-			NEED AN INTRO
-		</p>
+        <p>
+            Up to now, you’ve built a toolkit for writing messy, multi-interval functions in a single, switch-based formula using unit step functions—and you’ve learned the Laplace rules that make those switches play nicely in the transform world. This is the turning point: we’re ready to transform <em>entire piecewise functions</em> into the Laplace domain, step by step, just like any other forcing term.
+        </p>
+
+        <p>
+            This section is the last piece before we tackle full differential equations with piecewise forcing functions. Here, you’ll see how to take a function defined in pieces, express it compactly with step functions, and then apply the Laplace transform rules you’ve already learned. Once you can do that, solving an initial value problem with a “choppy” right-hand side becomes no more intimidating than solving one with a simple exponential.
+        </p>
 	</introduction>
 
 	<paragraphs>
@@ -26,7 +30,7 @@
 		</assemblage>
 
 		<p>
-			<task label="prep-1-lap-piecewise"><title> Strategy Check: Laplace for Piecewise Functions </title>
+			<task label="transforming-piecewise-functions-prep-1"><title> Strategy Check: Laplace for Piecewise Functions </title>
 				<statement correct="yes">
 					<p>
 						To take the Laplace transform of a piecewise function, you should first rewrite it in terms of unit step functions.
@@ -39,7 +43,7 @@
 				</feedback>
 			</task>
 
-			<task label="prep-2-lap-piecewise"><title> Matching Each Interval to the Right Form </title>
+			<task label="transforming-piecewise-functions-prep-2"><title> Matching Each Interval to the Right Form </title>
 			<statement>
 				<p>
 					Match each type of piecewise interval to the unit step expression that activates it.
@@ -145,295 +149,12 @@
 		<md>
 			<mrow>\lap{g(t)} \amp =  \frac2{s^2} + \left(\frac1{s} - \frac{2}{s^2}\right)e^{-s} - \frac{3}{s}e^{-4s} </mrow>
 		</md>
-
-		<task label="chkpt-1-lap-piecewise"><title> Piecewise to Laplace </title>
-			<statement>
-				<p>
-					A function is defined as:
-					<me>
-						f(t) = \left\{
-						\begin{array}{ll}
-							0, 		\amp t \lt 2 \\
-							4, 		\amp 2 \le t \lt 5 \\
-							t - 5,	\amp t \ge 5
-						\end{array}
-						\right.
-					</me>
-					What is <m>\lap{f(t)}</m> in terms of step functions and transforms?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot (1 - u_2(t)) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					<m>1 - u_2(t)</m> is active before <m>t = 2</m>, but <m>f(t)</m> is zero there. That term doesn't match the interval.
-					</p>
-				</feedback>
-				</choice>
-				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot u_2(t) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					This expression turns <m>4</m> ON at <m>t = 2</m>, but never turns it OFF. We need an ON-window, not just a switch-on.
-					</p>
-				</feedback>
-				</choice>
-				<choice correct="yes">
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot(u_2(t) - u_5(t)) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					Perfect. This captures <m>4</m> ON from <m>t = 2</m> to <m>t = 5</m> and <m>t - 5</m> turning ON at <m>t = 5</m>.
-					</p>
-				</feedback>
-				</choice>
-				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot(u_0(t) - u_2(t)) + (t - 5)\cdot u_2(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					The function is 0 before <m>t = 2</m>, so the <m>u_0 - u_2</m> window doesn't apply here. Also, <m>t - 5</m> shouldn't turn ON at <m>t = 2</m>.
-					</p>
-				</feedback>
-				</choice>
-			</choices>
-		</task>
 	</paragraphs>
 
 	<paragraphs>
 		<title> Examples </title>
-		<example><title> Transforming a 2-Part Piecewise Function </title>
-			<statement>
-				<p>
-					Find the Laplace transform of the piecewise function:
-					<me>
-						g(t) = \left\{
-						\begin{array}{ll}
-							e^{-t},	\amp t \lt 1 \\
-							3,		\amp t \ge 1
-						\end{array}
-						\right.
-					</me>
-				</p>
-			</statement>
-			<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
-				<p>
-					We begin by identifying the needed unit step functions.
-					<me>
-						g(t) =  \cdot
-						\left\{
-							\begin{array}{lll}
-								e^{-t}, \amp t \lt 1 \quad \leftarrow (-\infty, 1): \amp 1-u_{1}(t)\\
-								3,		\amp t \ge 1 \quad \leftarrow (1, \infty):	\amp u_{1}(t).
-							\end{array}
-						\right.
-					</me>
-				</p>
-
-				<p>
-					Then we can write <m>g(t)</m> as
-					<me>
-						g(t) = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t).
-					</me>
-				</p>
-
-				<p>
-					Combining like unit step function terms, we get
-					<md>
-						<mrow> 
-							g(t) \amp 
-							= e^{-t} - e^{-t} \cdot u_{1}(t) + 3 \cdot u_{1}(t)
-						</mrow>
-						<mrow>
-							\amp 
-							= e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)
-						</mrow>,
-					</md>
-					and taking the Laplace transform of the last two terms separately.
-					<me>
-						\lap{g(t)} 
-						= \us{\large\text{1️⃣}}{\ul{\lap{e^{-t}}}} 
-						+ \us{\large\text{2️⃣}}{\ul{\lap{\left(3 - e^{-t}\right) \cdot u_{1}(t)}}}
-					</me>
-				</p>
-
-				<sidebyside widths="5% 30% 65%" valign="middle">
-					<p>1️⃣</p>
-					<p><me>\lap{e^{-t}} = \frac{1}{s + 1}</me></p>
-					<p/>
-				</sidebyside>
-
-				<p>
-					<sidebyside widths="5% 60% 35%" valign="top">
-						<p>2️⃣</p>
-						<p>
-							<md>
-								<mrow> 
-									\laplacesym \big\{\big({\DLO 3 }\ \amp {\DLO - e^{-t}}\big) \cdot u_{1}(t)\big\} 
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \lap{{\DLO f(t + 1)}}
-								</mrow>
-								<mrow>				
-									\amp = e^{-s} \lap{3 - e^{-t} \cdot e^{-1}}
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \left(3\lap{1} - e^{-1}\lap{{e^{-t}}} \right)
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \left(\frac{3}{s} - e^{-1} \cdot \frac{1}{s + 1}\right)
-								</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow> \small\DLO f(t)\ 		\amp \small\DLO = 3 - e^{-t} </mrow>
-								<mrow> \small\DLO f(t + 1)\ 	\amp \small\DLO = 3 - e^{-(t + 1)} </mrow>
-								<mrow>						\amp \small\DLO = 3 - e^{-t} \cdot e^{-1} </mrow>
-							</md>
-						</p>
-					</sidebyside>
-				</p>
-
-				<p>
-					Combining 1️⃣ &amp; 2️⃣, we arrive at the Laplace transform
-					<me>
-						\lap{g(t)} 
-						= \frac{1}{s + 1} + e^{-s} \left(\frac{3}{s} - \frac{e^{-1}}{s + 1}\right)
-					</me>.
-				</p>
-			</solution>
-			<solution>
-				<title> Solution </title>
-				<p>
-					<term>Step 1:</term> Write <m>g(t)</m> using step functions.
-					<me>
-						g(t) = e^{-t}(1-u_1(t)) + 3u_1(t).
-					</me>
-				</p>
-				<p>
-					<term>Step 2:</term> Combine like terms where possible.
-					<md>
-						<mrow>
-							g(t) \amp = e^{-t} - e^{-t}u_1(t) + 3u_1(t)
-						</mrow>
-						<mrow>
-							\amp = e^{-t} + \big(3 - e^{-t}\big) u_1(t)
-						</mrow>
-					</md>
-				</p>
-				<p>
-					<term>Step 3:</term> Take the Laplace transform term by term.
-				</p>
-				<ul marker="disc">
-					<li><m>\lap{e^{-t}} = \frac{1}{s+1}</m></li>
-					<li><m>\lap{(3 - e^{-t}) u_1(t)} = e^{-s} \lap{3 - e^{-(t+1)}} </m></li>
-				</ul>
-				<p>
-					The second Laplace transform uses the rule <m>\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t+c)}</m>.
-				</p>
-				<p>
-					<term>Step 4:</term> Put it all together:
-					<me>
-						\lap{g(t)} = \frac{1}{s+1} + e^{-s}\left( \frac{3}{s} - \frac{e^{-1}}{s+1} \right).
-					</me>
-				</p>
-			</solution>
-		</example>
-
-		<example><title> Forward Transform with Step Functions </title>
-			<statement>
-				<p>
-					Apply the Laplace transform to both sides of the differential equation:
-					<me>
-						y'' + y = \left\{
-						\begin{array}{ll}
-							0,       \amp t \lt 1 \\
-							3t,      \amp 1 \le t \lt 2 \\
-							0,       \amp t \ge 2
-						\end{array}
-						\right., 
-						\qquad
-						y(0) = 0,\quad y'(0) = 0
-					</me>
-				</p>
-			</statement>
-
-			<solution><title> <m>\rightarrow</m> Laplace equation (Step 1) </title>
-				<p>
-					The forcing function is active only from <m>t = 1</m> to <m>t = 2</m>, so we rewrite it using a unit step window:
-					<me>
-						g(t) = 3t \cdot \left(u_1(t) - u_2(t)\right).
-					</me>
-				</p>
-
-				<p>
-					Apply the Laplace transform to both sides of the DE:
-					<me>
-						\lap{y'' + y} = \lap{3t \cdot (u_1(t) - u_2(t))}.
-					</me>
-					On the left-hand side, using <m>y(0) = y'(0) = 0</m>, we have:
-					<me>
-						s^2 Y(s) + Y(s).
-					</me>
-				</p>
-
-				<p>
-					On the right-hand side, distribute the Laplace transform:
-					<me>
-						\lap{3t \cdot (u_1(t) - u_2(t))} = 3\lap{t \cdot u_1(t)} - 3\lap{t \cdot u_2(t)}.
-					</me>
-
-					Use the shift rule for each term:
-					<md>
-						<mrow> \lap{t \cdot u_1(t)} = e^{-s} \lap{t + 1} = e^{-s} \cdot \lap{t + 1} </mrow>
-						<mrow> \lap{t \cdot u_2(t)} = e^{-2s} \lap{t + 2} = e^{-2s} \cdot \lap{t + 2} </mrow>
-					</md>
-
-					Now apply linearity and known transforms:
-					<md>
-						<mrow> \lap{t + c} = \lap{t} + c\lap{1} = \frac{1}{s^2} + \frac{c}{s} </mrow>
-					</md>
-
-					So:
-					<md>
-						<mrow>
-							\lap{3t \cdot (u_1 - u_2)} 
-							\amp = 3e^{-s}\left(\frac{1}{s^2} + \frac{1}{s}\right) 
-							- 3e^{-2s}\left(\frac{1}{s^2} + \frac{2}{s}\right)
-						</mrow>
-					</md>
-				</p>
-
-				<p>
-					Combining both sides, we arrive at the Laplace equation:
-					<me>
-						(s^2 + 1)Y(s) = 3e^{-s}\left(\frac{1}{s^2} + \frac{1}{s}\right) 
-						- 3e^{-2s}\left(\frac{1}{s^2} + \frac{2}{s}\right).
-					</me>
-					This completes Step 1.
-				</p>
-			</solution>
-		</example>
-
 		<p>
 			These worked examples illustrate how the three step-function Laplace rules combine into one powerful method for handling any piecewise function you might encounter.
 		</p>
 	</paragraphs>
-
 </section>
