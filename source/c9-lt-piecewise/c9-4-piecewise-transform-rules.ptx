@@ -2,11 +2,11 @@
 	<title> Laplace Transform Rules for Step Functions </title>
 	<introduction>
 		<p>
-			Up to this point, you've seen how unit step functions can “switch” pieces of a function ON and OFF at the right times. But to actually use these functions in solving differential equations, we need to understand how they behave under the Laplace transform. 
+			Up to this point, you've seen how unit step functions can <q>switch</q> pieces of a function ON and OFF at the right times. But to actually use these functions in solving differential equations, we need to understand how they behave when we take their Laplace transform. 
 		</p>
 
 		<p>
-			This section develops the three cornerstone Laplace transform rules for step functions:
+			This section develops the Laplace transform rules for unit step functions:
 		</p>
 
 		<ul marker="square">
@@ -16,44 +16,44 @@
 		</ul>
 
 		<p>
-			These rules are the backbone for handling piecewise functions with Laplace methods. Once you have them, you can handle any forcing function that turns ON, turns OFF, or changes shape over time.
+			These rules are the backbone for handling piecewise functions with Laplace methods.
 		</p>
 
-		<task label="prep-3-lap-uc-ftuc"><title> How Do Inputs Shift? </title>
-		<statement correct="yes">
-			<p>
-			The function <m>f(t + 2)</m> is the same as <m>f(t)</m> shifted left by 2 units.
-			</p>
-		</statement>
-		<feedback>
-			<p>
-			Replacing <m>t</m> with <m>t + c</m> shifts the graph to the left by <m>c</m> units. This is the opposite direction compared to <m>f(t - c)</m>.
-			</p>
-		</feedback>
+		<task label="prep-3-lap-uc-ftuc">
+			<title>📖❓ How Do Inputs Shift? </title>
+			<statement correct="yes">
+				<p>
+				The function <m>f(t + 2)</m> is the same as <m>f(t)</m> shifted left by 2 units.
+				</p>
+			</statement>
+			<feedback>
+				<p>
+				Replacing <m>t</m> with <m>t + c</m> shifts the graph to the left by <m>c</m> units. This is the opposite direction compared to <m>f(t - c)</m>.
+				</p>
+			</feedback>
 		</task>
 	</introduction>
 
 	<subsection label="laplace-uc">
 		<title> Transform of <m>u_c(t)</m> </title>
+		<p>
+			We begin with the Laplace transform of a single shifted unit step switch, <m>u_c(t)</m>. Finding its transform lays the groundwork for the more general rules that follow.
+		</p>	
 
 		<p>
-			We begin with the simplest building block: the Laplace transform of a single step switch, <m>u_c(t)</m>. This function is OFF before <m>t=c</m> and ON afterward. Finding its transform lays the groundwork for the more general rules that follow.
-		</p>	
+			The Laplace transform of a shifted unit step function is as follows:
+		</p>
 
 		<assemblage xml:id="lap-uc">
 			<title>📜 Laplace Transform of <m>u_c(t)</m> </title>
 			<p>
-				The Laplace transform of a shifted unit step function is:
 				<md>
 					<mrow xml:id="lt-L9">
 						\text{L}_9:\quad\lap{u_c(t)} = \frac{e^{-cs}}{s}, \qquad s \gt 0.
 					</mrow>
 				</md>
-			</p>
-
-			<p>
 				<proof>
-					<title> Derivation of <m>\lap{u_c(t)}</m> </title>
+					<title>💡 Derivation of <m>\lap{u_c(t)}</m> </title>
 					<p>
 						Start with the definition of the Laplace transform:
 						<me>
@@ -74,9 +74,11 @@
 					</p>
 
 					<p>
-						That trims our integral down to:
+						That trims our integral down since:
 						<me>
-							\lap{u_c(t)} = \int_{c}^{\infty} e^{-st} \, dt.
+							\lap{u_c(t)}
+							= \os{\large t\ \lt\ c}{\overline{\int_0^{c} (0)\ e^{-st}\ dt}} + \os{\large t\ \ge\ c}{\overline{\int_c^{\infty} (1)\ e^{-st}\ dt}}
+							= \int_c^{\infty} e^{-st}\ dt
 						</me>
 					</p>
 
@@ -84,93 +86,33 @@
 						Evaluate the improper integral as a limit:
 						<md>
 							<mrow>
-								\lap{u_c(t)} \amp = \lim_{b \to \infty} \int_{c}^{b} e^{-st} \, dt
+								\lap{u_c(t)} \amp = \lim_{b \to \infty} \int_{c}^{b} e^{-st}\ dt
 							</mrow>
 							<mrow>
-								\amp = \lim_{b \to \infty} \left[ \frac{-1}{s} e^{-st} \right]_{c}^{b}
-							</mrow>
-							<mrow>
-								\amp = \lim_{b \to \infty} \left( \frac{-1}{s}\big(e^{-sb} - e^{-sc}\big) \right)
+								\amp = \lim_{b \to \infty} \left[ \frac{-1}{s} e^{-st} \right]_{c}^{b} = \lim_{b \to \infty} \left( \frac{-1}{s}\big(e^{-sb} - e^{-sc}\big) \right)
 							</mrow>
 						</md>
 					</p>
 
 					<p>
-						As long as <m>s > 0</m>, the term <m>e^{-sb}</m> vanishes as <m>b \to \infty</m>, leaving:
+						As long as <m>s \gt 0</m>, the term <m>e^{-sb}</m> goes to zero as <m>b \to \infty</m>, leaving:
 						<me>
 							\lap{u_c(t)} = \frac{e^{-cs}}{s}.
 						</me>
 					</p>
 				</proof>
-				
-					<proof><title>💡 Derivation of <m>\lap{u_c(t)}</m> </title>
-						<p>
-							To derive this, recall the definition of the Laplace transform:
-							<me>
-								\lap{u_c(t)} = \int_0^{\infty} u_c(t) \, e^{-st} \, dt.
-							</me>
-							But remember that
-							<me>
-								u_c(t) = \left\{
-								\begin{array}{ll}
-								0, \amp t \lt c\\
-								1, \amp t \ge c
-								\end{array}
-								\right.
-							</me>
-							So the integrand is zero for <m>t \lt c</m>, and equal to <m>e^{-st}</m> for <m>t \ge c</m>.
-						</p>
-
-						<p>
-							That simplifies our integral to just the portion from <m>t = c</m> to infinity:
-							<me>
-								\lap{u_c(t)} = 
-								\os{\large t\ \lt\ c}{\overline{\int_0^{c} \ub{u_c(t)}_{=\ 0} \, e^{-st} \, dt}} 
-								+ 
-								\os{\large t\ \ge\ c}{\overline{\int_c^{\infty} \ub{u_c(t)}_{=\ 1} \, e^{-st} \, dt}}
-								= \int_c^{\infty} e^{-st} \, dt
-							</me>
-						</p>
-
-						<p>
-							To compute the integral, we have to remember that this is an improper integral, so we re-express it as a limit
-							<me>
-								\lap{u_c(t)} = \int_c^{\infty} e^{-st} \, dt
-								= \lim_{b \to \infty}\int_c^b e^{-st} \, dt
-							</me>
-							and first compute the integral
-							<me>
-								\int_c^b e^{-st} \, dt
-								= \left[ \frac{-1}{s} e^{-st} \right]_c^b
-								= \frac{-1}{s} \left( e^{-sb} - e^{-sc} \right)
-								= \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s}.
-							</me>
-						</p>
-						
-						<p>
-							Now, we compute the limit of this expression as <m>b \to \infty</m>:
-							<me>
-								\lim_{b \to \infty} \left( \frac{e^{-sc}}{s} - \frac{e^{-sb}}{s} \right)
-								= \frac{e^{-sc}}{s} - \lim_{b \to \infty} \frac{e^{-sb}}{s}
-							</me>.
-							As before, the <term>limit of the exponential function</term> converges if its power, <m>-sb</m>, goes to <m>-\infty</m>. This happens if <m>s \gt 0</m>.
-						</p>
-
-						<p>
-							So, as long as <m>s \gt 0</m>, then <m>\lim_{b \to \infty} e^{-sb} = 0</m> and the transform becomes 
-							<me>
-								\lap{u_c(t)} = \frac{e^{-cs}}{s}, \quad s \gt 0
-							</me>.
-						</p>
-					</proof>
 			</p>
 		</assemblage>
 
 		<p>
-			This result says that a simple time shift in the step function introduces an exponential factor <m>e^{-cs}</m> in the Laplace domain. The step's <q>turn-on</q> time <m>c</m> becomes a negative exponential shift.
+			This result shows that the shifted unit step function introduces an exponential factor <m>e^{-cs}</m> in the Laplace domain. You will use it to transform terms of the form <m>k u_{c}(t)</m>, where <m>k</m> is a constant. For example,
+			<me>
+				\lap{6 u_3(t)} = 6\lap{u_3(t)} = \frac{6e^{-3s}}{s}
+			</me>
 		</p>
-
-		<task label="chkpt-1-lap-uc"><title> Laplace of <m>u_c(t)</m> </title>
+		
+		<task label="chkpt-1-lap-uc">
+			<title>📖❓Finding the Laplace Transform of <m>u_c(t)</m> </title>
 			<statement>
 				<p>
 					What is the Laplace transform of <m>u_5(t)</m>?
@@ -211,57 +153,23 @@
 				</choice>
 			</choices>
 		</task>
-
-		<p>
-			Before moving on, let's see this formula in action with a quick example.
-		</p>
-
-		<example>
-			<title> Laplace Transform of <m>u_2(t)</m> </title>
-			<statement>
-				<p>
-					Compute <m>\lap{u_2(t)}</m> using <xref ref="lt-L9" text="custom">L<m>_9</m></xref>.
-				</p>
-			</statement>
-			<solution>
-				<title> <m>\rightarrow \lap{u_2(t)}</m> </title>
-				<p>
-					Plugging in <m>c = 2</m> into <m>\lap{u_c(t)} = \dfrac{e^{-cs}}{s}</m>, we get:
-					<me>
-						\lap{u_2(t)} = \frac{e^{-2s}}{s}.
-					</me>
-				</p>
-			</solution>
-		</example>
 	</subsection>
 
 	<subsection label="laplace-ft-uc">
 		<title> Transform of <m>f(t) u_c(t)</m> </title>
 		<p>
-			Once we know how to transform <m>u_c(t)</m>, the next step is even more useful: finding the Laplace transform of <m>f(t) u_c(t)</m>. 
-		</p>
-
-		<p>
-			This situation appears all the time when rewriting piecewise functions. The step function <m>u_c(t)</m> switches <m>f(t)</m> ON at <m>t=c</m>. 
-			We want a formula that transforms the whole expression directly.
+			The next rule provides a formula for the product of a step function and a function of <m>t</m> and will be the primary tool used when forward transforming a piecewise function. 
 		</p>
 
 		<assemblage xml:id="laplace-ft-uc">
-			<title> Laplace Transform of <m>f(t) u_c(t)</m> </title>
-
+			<title>📜 Laplace Transform of <m>f(t) u_c(t)</m> </title>
 			<p>
-				The Laplace transform of a function multiplied by a shifted unit step is:
 				<md>
 					<mrow xml:id="lt-L10">
 						\text{L}_{10}:\quad\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t + c)}
 					</mrow>.
 				</md>
-			</p>
-
-			<p>
-				<proof>
-					<title>💡 Derivation of <m>\lap{f(t) u_c(t)}</m> </title>
-
+				<proof><title>💡 Derivation of <m>\lap{f(t)\ u_c(t)}</m> </title>
 					<p>
 						Start with the Laplace transform definition:
 						<me>
@@ -270,122 +178,58 @@
 					</p>
 
 					<p>
-						Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, the lower limit of integration changes from <m>0</m> to <m>c</m>:
+						Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, the integral simplifies to:
 						<me>
-							\lap{f(t) u_c(t)} = \int_{c}^{\infty} f(t) e^{-st}\ dt.
+							\lap{f(t)\cdot u_c(t)} = \int_c^\infty f(t)\ e^{-st}\ dt.
 						</me>
 					</p>
 
 					<p>
-						Now make the substitution <m>u = t - c</m> so the integral starts at <m>u=0</m>:
-						<ul marker="disc">
-							<li><m>t = u + c</m></li>
-							<li><m>dt = du</m></li>
-							<li>When <m>t=c</m>, <m>u=0</m>. When <m>t \to \infty</m>, <m>u \to \infty</m>.</li>
-						</ul>
+						This new integral looks a lot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can shift the graph of <m>f(t)\ e^{-st}</m> to the left <m>c</m> units to force the integral start back at <m>t = 0</m>.
 					</p>
+
+					<p>
+						Note: Shifting a function <m>c</m> units to the left means adding <m>c</m> to all of the <m>t</m> inputs:
+						<me>
+							\text{before shift:}\quad f(t)\ e^{-st}\qquad\text{after shift:}\quad f(t + c)\ e^{-s(t + c)}
+						</me>
+					</p>
+
+					<p>
+						Using this idea, leads to the desired transform:
+					</p>
+
+
 
 					<md>
 						<mrow>
-							\int_{c}^{\infty} f(t) e^{-st} dt
-							\amp = \int_{0}^{\infty} f(u + c) e^{-s(u + c)} du
+							\int_{c}^{\infty} f(t)\ e^{-st}\ dt 
+							\amp \os{\large\DLBb \text{A}}{=} \int_{0}^{\infty} f(t + c)\ e^{-s(t + c)}\ dt
 						</mrow>
 						<mrow>
-							\amp = e^{-cs} \int_{0}^{\infty} f(u + c) e^{-su} du
+							\amp \os{\large\DLBb \text{B}}{=} \int_0^\infty f(t + c) \left(e^{-st} \cdot e^{-sc}\right)\ dt
+						</mrow>
+						<mrow>
+							\amp \os{\large\DLBb \text{C}}{=} e^{-cs} \int_0^\infty f(t + c) e^{-st}\ dt
+						</mrow>
+						<mrow>
+							\amp = e^{-cs} \lap{f(t + c)}
 						</mrow>
 					</md>
 
-					<p>
-						Notice that <m>e^{-cs}</m> is constant with respect to <m>u</m>, so we factor it out. The remaining integral is simply the Laplace transform of <m>f(t+c)</m>:
-						<me>
-							\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t + c)}.
-						</me>
-					</p>
-				</proof>
-				<proof><title>💡 Derivation of <m>\lap{f(t)\ u_c(t)}</m> </title>
-					<p>
-						Let's break this down. By definition:
-						<me>
-							\lap{f(t)\cdot u_c(t)} = \int_0^\infty f(t)\, u_c(t)\, e^{-st}\, dt.
-						</me>
-						But since <m>u_c(t) = 0</m> for <m>t \lt c</m>, the integral simplifies to:
-						<me>
-							\lap{f(t)\cdot u_c(t)} = \int_c^\infty f(t)\, e^{-st}\, dt.
-						</me>
-					</p>
+					<proof><title> <m>\DLBb \text{A}, \text{B}, \text{C}</m> Details </title>
+						<p>
+							<term><m>\DLBb \text{A}\ </m></term>: Shifting <m>f(t)e^{-st}</m> to the left <m>c</m> units makes it <me>f(t + c)\ e^{-s(t + c)}</me> and starts the integral at <m>t=0</m>.
+						</p>
 
-					<p>
-						This new integral looks a lot like the Laplace transform of <m>f(t)</m>, but it starts at <m>t = c</m> instead of <m>t = 0</m>. Luckily, we can use a simple <m>u</m>-substitution to create a new variable that starts at <m>t = 0</m>.
-						<ul marker="square">
-							<li>Let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>.</li>
-							<li>When <m>t = c</m>, then <m>u = 0</m>. When <m>t \to \infty</m>, then <m>u \to \infty</m>.</li>
-						</ul>
-					</p>
-
-					<aside><title> <m>\DLBb \text{A}, \text{B}, \text{C}, \text{D}</m> Details </title>
-						<tabular top="minor" bottom="minor">
-							<col width="100%"/>
-							<row>
-								<cell>
-									<p>
-										<m>\DLBb \text{A}\ </m>
-										<m>u</m>-substitution
-										<md>
-											<mrow>t = u + c</mrow>
-											<mrow>dt = du</mrow>
-										</md>
-									</p>
-								</cell>
-							</row>
-							<row>
-								<cell>
-									<p>
-										<m>\DLBb \text{B}\ </m>
-										Exponential Property
-										<md>
-											<mrow>e^{-s(u + c)} = e^{-su} e^{-sc}</mrow>
-										</md>
-									</p>
-								</cell>
-							</row>
-							<row>
-								<cell>
-									<p>
-										<m>\DLBb \text{C}\ </m>
-										Since the integration variable is <m>u</m>, we can factor out <m>e^{-sc}</m> as a constant.
-									</p>
-								</cell>
-							</row>
-							<row>
-								<cell>
-									<p>
-										<m>\DLBb \text{D}\ </m>
-										Except for <m>c</m> and <m>s</m>, you can rename the integration variable as anything.
-									</p>
-								</cell>
-							</row>
-						</tabular>
-					</aside>
-
-					<md>
-						<mrow>
-							\int_{t\ =\ c}^{t\ =\ \infty} f(t)\ e^{-st} \, dt 
-							\amp \os{\large\DLBb \text{A}}{=} 
-							\int_{u\ =\ 0}^{u\ =\ \infty} f(u + c)\ e^{-s(u + c)}\ du
-						</mrow>
-						<mrow>
-							\amp \os{\large\DLBb \text{B}}{=}
-							\int_0^\infty f(u + c) \left(e^{-su} \cdot e^{-sc}\right) \, du
-						</mrow>
-						<mrow>
-							\amp \os{\large\DLBb \text{C}}{=}
-							e^{-cs} \int_0^\infty f(u + c) e^{-su} \, du
-						</mrow>
-						<mrow>
-							\amp \os{\large\DLBb \text{D}}{=}
-							e^{-cs} \ub{\int_0^\infty f(t + c) e^{-st} \, dt}_{\large \lap{f(t + c)}}
-						</mrow>
-					</md>
+						<p>
+							<term><m>\DLBb \text{B}\ </m></term>: Exponential Property <m>e^{-s(t + c)} = e^{-st} e^{-sc}</m>
+						</p>
+					
+						<p>
+							<term><m>\DLBb \text{C}\ </m></term>: Factor out the constant, <m>e^{-sc}</m>, as we are integrating in <m>t</m>.
+						</p>
+					</proof>
 
 					<p>
 						Therefore,
@@ -398,1257 +242,261 @@
 		</assemblage>
 
 		<p>
-			This formula is the key for handling piecewise-defined functions: once you write each piece as <m>f(t) u_c(t)</m>, you can take its Laplace transform by just:
-		</p>
-
-		<ul marker="disc">
-			<li>shifting <m>f(t)</m> by <m>c</m> → <m>f(t+c)</m>,</li>
-			<li>taking its Laplace transform, and</li>
-			<li>multiplying by <m>e^{-cs}</m>.</li>
-		</ul>
-
-		<task label="chkpt-1-lap-ft-uc"><title> Transforming a Function Turned ON Late </title>
-			<statement>
-				<p>
-					What is the Laplace transform of <m>(t^2 - 1)\cdot u_2(t)</m>?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement><p><m>e^{-2s} \lap{t^2 - 1}</m></p></statement>
-					<feedback>
-						<p>
-							Close, but we must shift the <em>input</em> inside the function, not leave it as <m>t</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><p><m>e^{-2s} \lap{(t + 2)^2 - 1}</m></p></statement>
-					<feedback>
-						<p>
-							Correct. The shift rule says to replace <m>t</m> with <m>t + c</m> inside the function and multiply by <m>e^{-cs}</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><p><m>e^{-2s} \lap{(t - 2)^2 - 1}</m></p></statement>
-					<feedback>
-						<p>
-							Be careful, <m>t - 2</m> shifts the function right, but the rule calls for <m>t + 2</m> when we delay the function using <m>u_2(t)</m>.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><p><m>\lap{(t^2 - 1)\cdot u(t - 2)}</m></p></statement>
-					<feedback>
-						<p>
-							This uses the right format, but doesn't evaluate the Laplace transform. We're looking for a formula that includes the exponential shift.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-
-		<p>
-			Let's try this on an example to see how the rule works in practice.
+			Let's try this on a few examples to see how the rule works in practice.
 		</p>
 
 		<example>
-			<title> Transform of <m>(2 - t) u_3(t)</m> </title>
+			<title> Transform of <m>(2 - t)\cdot u_3(t)</m> </title>
 			<statement>
 				<p>
 					Compute the Laplace transform of <m>(2 - t) u_3(t)</m>.
 				</p>
 			</statement>
-			<solution>
-				<title> Solution </title>
+			<solution><title> <m>\rightarrow \lap{(2-t)\cdot u_3(t)}</m> </title>
 				<p>
-					Use the rule <m>\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t + c)}</m> with <m>f(t) = 2 - t</m> and <m>c = 3</m>.
-				</p>
-				<p>
-					First, shift the input of <m>f</m>:
+					For this problem, we have <m>c=3</m>. So the rule becomes:
 					<me>
-						f(t + 3) = 2 - (t + 3) = -t - 1.
+						\lap{f(t)\cdot u_3(t)} = e^{-3s} \lap{f(t + 3)}
+					</me>,
+					where, in our case, <m>f(t) = 2-t</m>, so
+					<me>
+						f(t+3) = 2-(t+3) = -t-1
+					</me>.
+				</p>
+
+				<p>
+					Plugging <m>f(t)</m> and <m>f(t+3)</m> into the rule shows us that
+					<me>
+						\lap{(2-t)\cdot u_3(t)} = e^{-3s} \lap{-t-1}. \qquad \text{(⭐)}
 					</me>
 				</p>
+
 				<p>
-					Then compute the Laplace transform:
+					So all we have left to do is compute <m>\lap{-t-1}</m>:
 					<me>
-						\lap{f(t + 3)} = \lap{-t - 1} = -\frac{1}{s^2} - \frac{1}{s}.
+						\lap{-t-1} = -\lap{t}-\lap{1} = -\frac1{s^2}-\frac1{s}
 					</me>
-				</p>
-				<p>
-					Multiply by <m>e^{-3s}</m> to finish:
+					and plug it into (⭐), to complete the transform:
 					<me>
-						\lap{(2 - t) u_3(t)} = e^{-3s} \left( -\frac{1}{s^2} - \frac{1}{s} \right).
+						\lap{(2-t)\, u_3(t)} = -e^{-2s}\left(\frac{1 + s}{s^2}\right).
 					</me>
 				</p>
 			</solution>
-
-				<solution><title> <m>\rightarrow \lap{(2-t)\cdot u_3(t)}</m> </title>
-					<p>
-						To use the formula:
-						<me>
-							\lap{f(t)\cdot u_c(t)} = e^{-cs} \lap{f(t + c)}
-						</me>
-						we need to identify <m>f(t)</m> and <m>c</m>. Clearly, <m>c = 3</m>, so this formula becomes:
-						<me>
-							\lap{{\DLO f(t)}\, u_3(t)} = e^{-2s} \lap{{\DLO f(t + 3)}}
-						</me>.
-					</p>
-
-					<p>
-						Since the function of <m>t</m> next to <m>u_3(t)</m> is <m>{\DLO f(t) = 2 - t}</m>, we compute
-						<me>
-							\DLO f(t + 3) = 2 - (t + 3) = -t - 1
-						</me>,
-						which updates the formula as
-						<me>
-							\lap{({\DLO 2 - t})\cdot u_3(t)} = e^{-3s} \lap{{\DLO -t - 1}}
-						</me>
-					</p>
-
-					<p>
-						Since <m>\lap{{\DLO -t - 1}}</m> completes the transform, we compute it, giving us
-						<md>
-							<mrow>
-								\lap{-t - 1} = -\lap{t} - \lap{1} = -\frac{1}{s^2} - \frac{1}{s} = -\left(\frac{1 + s}{s^2}\right).
-							</mrow>
-						</md>
-						Finally, plugging this into our updated formula, the Laplace transform is
-						<me>
-							\lap{(2-t)\, u_3(t)} = -e^{-2s}\left(\frac{1 + s}{s^2}\right).
-						</me>
-					</p>
-				</solution>
 		</example>
+
+		<p>
+			<task label="chkpt-1-lap-ft-uc">
+				<title>📖❓Apply the Rule for <m>f(t) u_c(t)</m> </title>
+				<statement>
+					<p>
+						What is the Laplace transform of <m>(t^2 - 1)\cdot u_2(t)</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice>
+						<statement><p><m>e^{-2s} \lap{t^2 - 1}</m></p></statement>
+						<feedback>
+							<p>
+								Close, but we must shift the <em>input</em> inside the function, not leave it as <m>t</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>e^{-2s} \lap{(t + 2)^2 - 1}</m></p></statement>
+						<feedback>
+							<p>
+								Correct. The shift rule says to replace <m>t</m> with <m>t + c</m> inside the function and multiply by <m>e^{-cs}</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>e^{-2s} \lap{(t - 2)^2 - 1}</m></p></statement>
+						<feedback>
+							<p>
+								Be careful, <m>t - 2</m> shifts the function right, but the rule calls for <m>t + 2</m> when we delay the function using <m>u_2(t)</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\lap{(t^2 - 1)\cdot u(t - 2)}</m></p></statement>
+						<feedback>
+							<p>
+								This uses the right format, but doesn't evaluate the Laplace transform. We're looking for a formula that includes the exponential shift.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+			<task label="chkpt-ft-uc">
+				<title>📖❓Next Step for the <m>f(t) u_c(t)</m> Rule</title>
+				<statement>
+					<p>
+						Suppose you want use <xref ref="lt-L10" text="custom">L<m>_{10}</m></xref> to find
+						<me>\lap{15t^2 u_2(t)}</me>.  
+						You note that <m>c=2</m> and update the rule as follows:
+						<me>\lap{f(t)u_2(t)} = e^{-2s}\lap{f(t+2)}</me>.
+						What's the best next step from here?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Identify <m>f(t)</m>, find <m>f(t+2)</m>.</statement>
+						<feedback>Correct — you need <m>f(t+2)</m> to compute <m>\lap{f(t+2)}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Find <m>\lap{f(t)}</m>.</statement>
+						<feedback>Finding <m>\lap{f(t)}</m> isn't needed for this rule.</feedback>
+					</choice>
+					<choice>
+						<statement>Find <m>\ilap{e^{-2s}}</m>.</statement>
+						<feedback>This does not help you compute <me>\lap{15t^2 u_2(t)}</me>.</feedback>
+					</choice>
+					<choice>
+						<statement>Rewrite the rule by moving <m>e^{-2s}</m> to the denominator as <m>e^{2s}</m>.</statement>
+						<feedback>You could do this, but there is a better answer.</feedback>
+					</choice>
+				</choices>
+			</task>
+		</p>
 	</subsection>
 
 	<subsection label="laplace-ftc-uc">
 		<title> Transform of <m>f(t-c) u_c(t)</m> </title>
 
 		<p>
-			Next, we cover the final rule that will be added to the transform table. This rule will be particularly useful during <xref ref="lt-step-3" text="custom">step 3 of the Laplace method</xref>. 
+			Finally, we cover the last rule that will be particularly useful for inverting expressions in the Laplace domain (i.e., <xref ref="lt-step-3" text="custom">step 3</xref>) that are associated with step functions.
 		</p>
 
 		<assemblage xml:id="laplace-ftc-uc">
-			<title> Laplace Transform of <m>f(t-c) u_c(t)</m> </title>
+			<title>📜 Laplace Transform of <m>f(t-c) u_c(t)</m> </title>
 			<p>
-				The Laplace transform rule is:
-				<men xml:id="lap-ftc-uc-eqn">
-					\lap{f(t-c) u_c(t)} = e^{-cs} F(s),
-				</men>
-				where <m>F(s) = \lap{f(t)}</m>.
-			</p>
-
-			<p>
-				<theorem>
+				<me xml:id="lt-L11">
+					\text{L}_{11}:\quad\lap{f(t-c) u_c(t)} = e^{-cs} F(s), \quad\text{where}\quad F(s) = \lap{f(t)}
+				</me>.
+				<proof>
 					<title> Derivation of <m>\lap{f(t-c) u_c(t)}</m> </title>
 
 					<p>
-						Start with the Laplace transform definition:
-						<me>
-							\lap{f(t-c) u_c(t)} = \int_{0}^{\infty} f(t-c) u_c(t) e^{-st} \, dt.
-						</me>
+						In terms of the definition of the Laplace transform, we want to show:
+						<md>
+							<mrow>
+								\os{\ds\lap{f(t-c) u_c(t)}}{\os{\ds\downarrow}{\overline{\int_{0}^{\infty} f(t-c) u_c(t) e^{-st}\ dt}}}
+								\amp = e^{-cs} \os{\ds \lap{f(t)}}{\os{\ds\downarrow}{\overline{\int_{0}^{\infty} f(t) e^{-st}\ dt}}}
+							</mrow>
+						</md>
 					</p>
 
 					<p>
-						Because <m>u_c(t) = 0</m> for <m>t \lt c</m>, the lower limit becomes <m>c</m>:
-						<me>
-							\lap{f(t-c) u_c(t)} = \int_{c}^{\infty} f(t-c) e^{-st} \, dt.
-						</me>
-					</p>
-
-					<p>
-						Make the substitution <m>u = t - c</m> so that the function “starts” at <m>u=0</m>:
-						<ul marker="disc">
-							<li><m>t = u + c</m></li>
-							<li><m>dt = du</m></li>
-							<li>When <m>t = c</m>, <m>u = 0</m>; when <m>t \to \infty</m>, <m>u \to \infty</m>.</li>
-						</ul>
+						To show this, we will start with the integral on the left and show it leads to the integral on the right.
 					</p>
 
 					<md>
 						<mrow>
-							\int_{c}^{\infty} f(t-c) e^{-st} dt
-							\amp = \int_{0}^{\infty} f(u) e^{-s(u + c)} du
+							\int_{0}^{\infty} f(t-c) u_c(t) e^{-st}\ dt 
+							\amp \os{\large\DLBb \text{A}}{=} \int_{c}^{\infty} f(t-c) e^{-st}\ dt
 						</mrow>
 						<mrow>
-							\amp = e^{-cs} \int_{0}^{\infty} f(u) e^{-su} du
+							\amp \os{\large\DLBb \text{B}}{=} \int_{0}^{\infty} f(t)\ e^{-s(t+c)}\ dt 
 						</mrow>
 						<mrow>
-							\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s).
+							\amp \os{\large\DLBb \text{C}}{=} e^{-cs} \int_0^\infty f(t) e^{-st} \, du
 						</mrow>
 					</md>
 
+					<proof><title> <m>\DLBb \text{A}, \text{B}, \text{C}</m> Details </title>
+						<p>
+							<term><m>\DLBb\text{A}\ </m></term>: <m>u_c(t)=0</m> on <m>[0,c)</m> makes the lower limit of the integral <m>c</m>.
+						</p>
+
+						<p>
+							<term><m>\DLBb\text{B}\ </m></term>: Shifting <m>f(t-c)e^{-st}</m> to the left <m>c</m> units makes it <m>f(t)\ e^{-s(t + c)}</m> and starts the integral at <m>t=0</m>.
+						</p>
+
+						<p>
+							<term><m>\DLBb\text{C}\ </m></term>: Use the exponential property <m>e^{-s(t + c)} = e^{-st} e^{-sc}</m> and factor out the constant, <m>e^{-sc}</m>, as we are integrating in <m>t</m>.
+						</p>
+					</proof>
+
 					<p>
-						This shows that the Laplace transform of <m>f(t-c) u_c(t)</m> is just the Laplace transform of <m>f(t)</m>, multiplied by <m>e^{-cs}</m>.
+						Thus, we have shown
+						<me>
+							\lap{f(t-c) u_c(t)} = e^{-cs} F(s)
+						</me>
+						where <m>F(s) = \lap{f(t)}</m>.
 					</p>
-				</theorem>
-
-					<theorem><title> <m>\rightarrow \lap{f(t - c) \, u_c(t)}</m> </title>
-						<p>
-							To prove this, we start with the definition of the Laplace transform:
-							<me>
-								\lap{f(t - c) \cdot u_c(t)} = \int_0^\infty f(t - c) \cdot u_c(t) \cdot e^{-st} \, dt.
-							</me>
-						</p>
-
-						<p>
-							Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, we can change the limits of integration to <m>c\le t\le\infty</m>.
-						</p>
-
-						<p>
-							Using a <m>u</m>-substitution, we let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>. The limits change to <m>u = 0</m> and <m>u \to \infty</m>.
-						</p>
-
-						<md>
-							<mrow>
-								\int_{t=c}^{t=\infty} f(t - c) e^{-st} \, dt 
-								\amp = \int_{u=0}^{u=\infty} f(u) e^{-s(u + c)} \, du
-							</mrow>
-							<mrow>
-								\amp = e^{-cs} \int_0^\infty f(u) e^{-su} \, du
-							</mrow>
-							<mrow>
-								\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s)
-							</mrow>
-						</md>
-
-						<p>
-							This proves that the rule holds.
-						</p>
-					</theorem>
+				</proof>
 			</p>
 		</assemblage>
 
 		<p>
-			The reason why this rule is useful inverse transforms is because the prepared <m>Y(s)</m> (at the end of <xref ref="lt-step-2" text="custom">step 2</xref>) will not usually contain a shift in <m>s</m> as needed by <xref ref="lt-L10" text="custom">L<m>_{10}</m></xref> for an inverse. By contrast, this rule lets you match to terms that look like
+			Although you can use this for forward transforms, its main utility is for backward transforms since it only requires you to match terms that look like
 			<me>e^{-cs}F(s)</me>
-			where <m>F(s)</m> is one of the common Laplace transforms from the same table. So, when you see this form in the Laplace domain, you immediately know it corresponds to <m>f(t-c) u_c(t)</m> in the original domain.
-    	</p>
+			where <m>F(s)</m> is one of the common Laplace transforms from the same table. We will explore later when we invert terms in the Laplace domain containing <m>e^{-cs}</m>.
+		</p>
 
-	<example>
-        <title> Transform of <m>(t^2) u_4(t)</m> (written as <m>f(t-4) u_4(t)</m>) </title>
-        <statement>
-            <p>
-                Compute the Laplace transform of <m>f(t-4) u_4(t)</m> if <m>f(t) = t^2</m>.
-            </p>
-        </statement>
-        <solution>
-            <title> Solution </title>
-            <p>
-                Use the rule <m>\lap{f(t-c) u_c(t)} = e^{-cs} F(s)</m>.
-            </p>
-            <p>
-                First find <m>F(s) = \lap{f(t)} = \lap{t^2}</m>:
-                <me>
-                    F(s) = \frac{2}{s^3}.
-                </me>
-            </p>
-            <p>
-                Multiply by <m>e^{-4s}</m>:
-                <me>
-                    \lap{(t-4)^2 u_4(t)} = e^{-4s} \frac{2}{s^3}.
-                </me>
-            </p>
-        </solution>
-    </example>
-
-    <p>
-        This completes our set of rules. Together, these three formulas are enough to transform (and invert) any piecewise function you'll encounter in Laplace method problems.
-    </p>
-
-<exercise label="chkpt-uc-concept">
-    <title>What Does <m>u_c(t)</m> Do?</title>
-    <statement>
-        <p>
-            The unit step function <m>u_c(t)</m> is multiplied by another function <m>f(t)</m>.  
-            What does <m>u_c(t)</m> do in this context?
-        </p>
-    </statement>
-    <choices randomize="yes">
-        <choice correct="yes">
-            <statement><p>It switches <m>f(t)</m> ON at <m>t=c</m> and keeps it ON forever.</p></statement>
-            <feedback><p>Correct — <m>u_c(t)</m> equals 0 before <m>t=c</m> and 1 afterward.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>It switches <m>f(t)</m> OFF at <m>t=c</m>.</p></statement>
-            <feedback><p>Not quite — that would be <m>1-u_c(t)</m>.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>It reverses the direction of <m>f(t)</m> at <m>t=c</m>.</p></statement>
-            <feedback><p>No — there's no “reverse” here, just ON/OFF switching.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>It multiplies <m>f(t)</m> by <m>t</m> after <m>t=c</m>.</p></statement>
-            <feedback><p>No — <m>u_c(t)</m> is either 0 or 1; it doesn't add factors of <m>t</m>.</p></feedback>
-        </choice>
-    </choices>
-</exercise>
-
-<exercise label="fillin-laplace-uc">
-    <title>Laplace of <m>u_c(t)</m></title>
-    <statement>
-        <p>
-            Fill in the blanks for the Laplace transform of <m>u_c(t)</m>.
-        </p>
-        <p>
-            <m>\mathcal{L}\{u_c(t)\} =</m> <fillin mode="string" answer="e^{-cs}"/> <m>/</m> <fillin mode="string" answer="s"/>
-        </p>
-    </statement>
-    <evaluation>
-        <evaluate>
-            <test>
-                <strcmp use-answer="yes"/>
-                <feedback><p>The exponential term <m>e^{-cs}</m> captures the delay caused by the step at <m>t=c</m>.</p></feedback>
-            </test>
-        </evaluate>
-        <evaluate>
-            <test>
-                <strcmp use-answer="yes"/>
-                <feedback><p>The denominator <m>s</m> comes from integrating <m>e^{-st}</m>.</p></feedback>
-            </test>
-        </evaluate>
-    </evaluation>
-</exercise>
-
-<exercise label="chkpt-ft-uc">
-    <title>Apply the Transform Rule for <m>f(t)u_c(t)</m></title>
-    <statement>
-        <p>
-            You are finding <m>\mathcal{L}\{(t+1)u_2(t)\}</m>.  
-            Which is the correct next step using the rule <m>\mathcal{L}\{f(t)u_c(t)\} = e^{-cs}\mathcal{L}\{f(t+c)\}</m>?
-        </p>
-    </statement>
-    <choices randomize="yes">
-        <choice correct="yes">
-            <statement><p>Replace <m>f(t)</m> with <m>f(t+2) = t + 3</m> and compute <m>\mathcal{L}\{t + 3\}</m>.</p></statement>
-            <feedback><p>Correct — you shift <m>t</m> by <m>c=2</m> and then take the Laplace transform.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>Replace <m>t</m> with <m>t-2</m> inside <m>f(t)</m>.</p></statement>
-            <feedback><p>Not for this rule — shifting <m>t-c</m> applies to the other rule.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>Multiply <m>(t+1)</m> by <m>u(t)</m> instead of <m>u_2(t)</m>.</p></statement>
-            <feedback><p>No — you keep the step at <m>t=2</m>.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p>Skip the shift and compute <m>\mathcal{L}\{t+1\}</m> directly.</p></statement>
-            <feedback><p>That would ignore the effect of the step at <m>t=2</m>.</p></feedback>
-        </choice>
-    </choices>
-</exercise>
-
-<exercise label="fillin-second-shifting">
-    <title>Laplace of <m>f(t-c)u_c(t)</m></title>
-    <statement>
-        <p>
-            Complete the Laplace transform rule for <m>f(t-c)u_c(t)</m>.
-        </p>
-        <p>
-            <m>\mathcal{L}\{f(t-c)u_c(t)\} =</m> <fillin mode="string" answer="e^{-cs}"/> <m>\times</m> <fillin mode="string" answer="F(s)"/>
-        </p>
-    </statement>
-    <evaluation>
-        <evaluate>
-            <test>
-                <strcmp use-answer="yes"/>
-                <feedback><p>The exponential term <m>e^{-cs}</m> reflects the delay in time.</p></feedback>
-            </test>
-        </evaluate>
-        <evaluate>
-            <test>
-                <strcmp use-answer="yes"/>
-                <feedback><p>Here, <m>F(s)</m> is the Laplace transform of <m>f(t)</m>.</p></feedback>
-            </test>
-        </evaluate>
-    </evaluation>
-</exercise>
-
-<exercise label="multi-select-step-rules">
-    <title>Choose All That Apply: Which Rule?</title>
-    <statement>
-        <p>
-            Which of these expressions should use the **second shifting theorem**  
-            <m>\mathcal{L}\{f(t-c)u_c(t)\} = e^{-cs}F(s)</m> (instead of the first)?
-        </p>
-    </statement>
-    <choices multiple="yes">
-        <choice correct="yes">
-            <statement><p><m>(t-4)^3 u_4(t)</m></p></statement>
-            <feedback><p>Yes — the function is already shifted as <m>t-4</m>.</p></feedback>
-        </choice>
-        <choice correct="yes">
-            <statement><p><m>e^{-(t-2)} u_2(t)</m></p></statement>
-            <feedback><p>Yes — the argument is <m>t-2</m>, which calls for the second rule.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p><m>(t+1) u_3(t)</m></p></statement>
-            <feedback><p>No — the function isn't shifted as <m>t-c</m>; use the first rule here.</p></feedback>
-        </choice>
-        <choice>
-            <statement><p><m>5 u_1(t)</m></p></statement>
-            <feedback><p>No — this is just <m>u_c(t)</m> times a constant; neither shift rule is needed.</p></feedback>
-        </choice>
-    </choices>
-</exercise>
-
-	</subsection>
-
-	<subsection label="laplace-piecewise">
-		<title> Laplace Transforms of Full Piecewise Functions </title>
-		<p>
-			<task label="prep-1-lap-piecewise"><title> Strategy Check: Laplace for Piecewise Functions </title>
-				<statement correct="yes">
-					<p>
-						To take the Laplace transform of a piecewise function, you should first rewrite it in terms of unit step functions.
-					</p>
-				</statement>
-				<feedback>
-					<p>
-						That's the foundation of this method! Once a piecewise function is rewritten using step functions, you can apply the shift rule to each piece.
-					</p>
-				</feedback>
-			</task>
-
-			<task label="prep-2-lap-piecewise"><title> Matching Each Interval to the Right Form </title>
+		<task>
+			<title>📖❓Identify the Shifted Input </title>
 			<statement>
 				<p>
-					Match each type of piecewise interval to the unit step expression that activates it.
-				</p>
-			</statement>
-			<feedback>
-				<p>
-				These patterns should be second nature now, this matching is what allows us to build the step-based expression for the Laplace transform.
-				</p>
-			</feedback>
-			<cardsort>
-				<match>
-				<premise><m>t \lt 3</m></premise>
-				<response><m>1 - u_3(t)</m></response>
-				</match>
-				<match>
-				<premise><m>3 \le t \lt 5</m></premise>
-				<response><m>u_3(t) - u_5(t)</m></response>
-				</match>
-				<match>
-				<premise><m>t \ge 5</m></premise>
-				<response><m>u_5(t)</m></response>
-				</match>
-				<match>
-				<premise><m>0 \le t \lt 2</m></premise>
-				<response><m>u_0(t) - u_2(t)</m></response>
-				</match>
-			</cardsort>
-			</task>
-		</p>
-    <p>
-        With all three step-function transform rules in place, we can now tackle full piecewise-defined functions.  
-        The strategy is always the same:
-    </p>
-    <ul marker="disc">
-        <li><term>Rewrite</term> the piecewise function using step functions (so each piece is multiplied by the right ON/OFF switch).</li>
-        <li><term>Simplify</term> by grouping terms with the same step functions, if possible.</li>
-        <li>
-			<p>
-			<term>Apply</term> the appropriate Laplace rules:
-            <ul marker="circle">
-                <li><m>\lap{u_c(t)} = \frac{e^{-cs}}{s}</m> for pure steps.</li>
-                <li><m>\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t+c)}</m> when the function is not shifted inside.</li>
-                <li><m>\lap{f(t-c) u_c(t)} = e^{-cs} F(s)</m> when the function already has a <m>(t-c)</m> shift.</li>
-            </ul>
-		</p>
-        </li>
-    </ul>
-		<p>
-			Let's put everything together and walk through the process of finding the Laplace transform of a full piecewise function, step-by-step.
-		</p>
-    <p>
-        This approach works for <em>any</em> piecewise function, no matter how many intervals it has.
-    </p>
-		<example><title> Transforming a 2-Part Piecewise Function </title>
-			<statement>
-			<p>
-				Find the Laplace transform of
-				<me>
-					g(t) = \left\{
-					\begin{array}{ll}
-						e^{-t},	\amp t \lt 1 \\
-						3,		\amp t \ge 1
-					\end{array}
-					\right.
-				</me>
-			</p>
-			</statement>
-			<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
-				<p>
-					We begin by identifying the needed unit step functions.
+					Select the expression that goes in the blank.
 					<me>
-						g(t) =  \cdot
-						\left\{
-							\begin{array}{lll}
-								e^{-t}, \amp t \lt 1 \quad \leftarrow (-\infty, 1): \amp 1-u_{1}(t)\\
-								3,		\amp t \ge 1 \quad \leftarrow (1, \infty):	\amp u_{1}(t).
-							\end{array}
-						\right.
+						\lap{t^2 \cdot u_3(t)} = e^{-3s}\lap{<fillin characters="2" />}
 					</me>
-				</p>
-
-				<p>
-					Then we can write <m>g(t)</m> as
-					<me>
-						g(t) = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t).
-					</me>
-				</p>
-
-				<p>
-					Combining like unit step function terms, we get
-					<md>
-						<mrow> 
-							g(t) \amp 
-							= e^{-t} - e^{-t} \cdot u_{1}(t) + 3 \cdot u_{1}(t)
-						</mrow>
-						<mrow>
-							\amp 
-							= e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)
-						</mrow>,
-					</md>
-					and taking the Laplace transform of the last two terms separately.
-					<me>
-						\lap{g(t)} 
-						= \us{\large\text{1️⃣}}{\ul{\lap{e^{-t}}}} 
-						+ \us{\large\text{2️⃣}}{\ul{\lap{\left(3 - e^{-t}\right) \cdot u_{1}(t)}}}
-					</me>
-				</p>
-
-				<sidebyside widths="5% 30% 65%" valign="middle">
-					<p>1️⃣</p>
-					<p><me>\lap{e^{-t}} = \frac{1}{s + 1}</me></p>
-					<p/>
-				</sidebyside>
-
-				<p>
-					<sidebyside widths="5% 60% 35%" valign="top">
-						<p>2️⃣</p>
-						<p>
-							<md>
-								<mrow> 
-									\laplacesym \big\{\big({\DLO 3 }\ \amp {\DLO - e^{-t}}\big) \cdot u_{1}(t)\big\} 
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \lap{{\DLO f(t + 1)}}
-								</mrow>
-								<mrow>				
-									\amp = e^{-s} \lap{3 - e^{-t} \cdot e^{-1}}
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \left(3\lap{1} - e^{-1}\lap{{e^{-t}}} \right)
-								</mrow>
-								<mrow> 
-									\amp = e^{-s} \left(\frac{3}{s} - e^{-1} \cdot \frac{1}{s + 1}\right)
-								</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow> \small\DLO f(t)\ 		\amp \small\DLO = 3 - e^{-t} </mrow>
-								<mrow> \small\DLO f(t + 1)\ 	\amp \small\DLO = 3 - e^{-(t + 1)} </mrow>
-								<mrow>						\amp \small\DLO = 3 - e^{-t} \cdot e^{-1} </mrow>
-							</md>
-						</p>
-					</sidebyside>
-				</p>
-
-				<p>
-					Combining 1️⃣ &amp; 2️⃣, we arrive at the Laplace transform
-					<me>
-						\lap{g(t)} 
-						= \frac{1}{s + 1} + e^{-s} \left(\frac{3}{s} - \frac{e^{-1}}{s + 1}\right)
-					</me>.
-				</p>
-			</solution>
-		</example>
-
-		<task label="chkpt-1-lap-piecewise"><title> Piecewise to Laplace </title>
-			<statement>
-				<p>
-					A function is defined as:
-					<me>
-						f(t) = \left\{
-						\begin{array}{ll}
-							0, 		\amp t \lt 2 \\
-							4, 		\amp 2 \le t \lt 5 \\
-							t - 5,	\amp t \ge 5
-						\end{array}
-						\right.
-					</me>
-					What is <m>\lap{f(t)}</m> in terms of step functions and transforms?
 				</p>
 			</statement>
 			<choices randomize="yes">
-				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot (1 - u_2(t)) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					<m>1 - u_2(t)</m> is active before <m>t = 2</m>, but <m>f(t)</m> is zero there. That term doesn't match the interval.
-					</p>
-				</feedback>
+			    <choice correct="yes">
+					<statement><m>\ (t + 3)^2</m></statement>
+					<feedback>Good! The rule requires replacing <m>t</m> with <m>t + c</m> when multiplying by <m>u_c(t)</m>.</feedback>
 				</choice>
 				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot u_2(t) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					This expression turns <m>4</m> ON at <m>t = 2</m>, but never turns it OFF. We need an ON-window, not just a switch-on.
-					</p>
-				</feedback>
-				</choice>
-				<choice correct="yes">
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot(u_2(t) - u_5(t)) + (t - 5)\cdot u_5(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					Perfect. This captures <m>4</m> ON from <m>t = 2</m> to <m>t = 5</m> and <m>t - 5</m> turning ON at <m>t = 5</m>.
-					</p>
-				</feedback>
+					<statement><m>\ t^2</m></statement>
+					<feedback>Not quite — you need to shift the input to <m>t + 3</m> because the step turns ON at <m>t=3</m>.</feedback>
 				</choice>
 				<choice>
-				<statement>
-					<p>
-					<m>\ds \lap{4\cdot(u_0(t) - u_2(t)) + (t - 5)\cdot u_2(t)}</m>
-					</p>
-				</statement>
-				<feedback>
-					<p>
-					The function is 0 before <m>t = 2</m>, so the <m>u_0 - u_2</m> window doesn't apply here. Also, <m>t - 5</m> shouldn't turn ON at <m>t = 2</m>.
-					</p>
-				</feedback>
+					<statement><m>\ t^2 \cdot u_3(t)</m></statement>
+					<feedback>Incorrect, try again.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ t^2 \cdot (1 - u_3(t))</m></statement>
+					<feedback>Incorrect, try again.</feedback>
 				</choice>
 			</choices>
 		</task>
-		
-		<p>
-			Let's try another example with a function that has multiple active intervals.
-		</p>
-		
-		<example><title> Transforming a 3-Part Piecewise Function </title>
-			<statement>
-				<p>
-					Find the Laplace transform of
-					<me>
-						g(t) = \left\{
-						\begin{array}{ll}
-							2t,	\amp 0 \le t \lt 1 \\
-							3,	\amp 1 \le t \lt 4 \\
-							0,	\amp t \ge 4
-						\end{array}
-						\right.
-					</me>
-				</p>
-			</statement>
-			<solution><title> <m>\rightarrow \lap{g(t)}</m> </title>
-				<p>
-					First we identify the needed unit step functions.
-					<me>
-						g(t) = \left\{
-						\begin{array}{lll}
-							\DLBb 2t,	\amp 0 \le t \lt 1	\amp \leftarrow [0,1):		\amp u_{0}(t)-u_{1}(t)\\
-							\DLGa 3,	\amp 1 \le t \lt 4	\amp \leftarrow [1,4):		\amp u_{1}(t)-u_{4}(t)\\
-							\DLR10,	\amp t \ge 4 		\amp \leftarrow [4,\infty):	\amp u_{4}(t)\\
-						\end{array}
-						\right.
-					</me>.
-				</p>
-
-				<p>
-					Next we write <m>g(t)</m> as
-					<me>
-						g(t) = {\DLBb 2t}\, (u_0(t) - u_1(t)) + {\DLGa 3}\, (u_1(t) - u_4(t)) + {\DLR10}\, u_4(t).
-					</me>
-					and combine like unit step function terms:
-				</p>
-
-				<md>
-					<mrow> g(t)	\amp = 2t\, u_0(t) - 2t\, u_1(t) + 3\, u_1(t) - 3\, u_4(t) </mrow>
-					<mrow>		\amp = 2t\, u_0(t) + (3 - 2t)\, u_1(t) - 3\, u_4(t) </mrow>
-				</md>
-
-				<p>
-					Now, we can compute the Laplace transform of each term separately:
-					<me>
-						\lap{g(t)} 
-						= \ub{\lap{2t\, u_0(t)}}_{\large\text{1️⃣}} 
-						+ \ub{\lap{(3 - 2t)\, u_1(t)}}_{\large\text{2️⃣}} 
-						- \ub{\lap{3\, u_4(t)}}_{\large\text{3️⃣}}
-					</me>.
-					Computing each of these terms separately, we have
-				</p>
-
-				<sidebyside widths="5% 60% 35%">
-					<p>	1️⃣</p>
-					<p>
-						<md>
-							<mrow> \lap{{\DLO 2t}\, u_0(t)} \amp = \lap{}e^{-0s} \cdot \lap{f(t)} </mrow>
-							<mrow>  \amp = e^{-0s} \cdot \lap{2t} </mrow>
-						</md>
-					</p>
-					<p>
-						<md>
-							<mrow> \DLO f(t) \amp = 2t </mrow>
-							<mrow> \DLO f(t + 0) \amp = 2t </mrow>
-						</md>
-					</p>
-				</sidebyside>
-
-				<p>
-					Adding this last two fractions together, we arrive at the Laplace transform
-					<me>
-						\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} - \frac{2e^{-s}}{s}.
-					</me>
-				</p>
-
-				<p>
-					Factoring out the common term, we arrive at the Laplace transform
-					<me>
-						\lap{g(t)} = \frac{2(1 - e^{-s})}{s^2} \cdot \left(1 - \frac{e^{-s}}{1 - e^{-s}}\right).
-					</me>
-				</p>
-			</solution>
-		</example>
-
-		<p>
-			Regardless of how many pieces a piecewise function has, the process is always the same and can be summarized as follows:
-		</p>
-
-		<assemblage xml:id="piecewise-laplace-summary"><title> Summary: Laplace Transforms of Piecewise Functions </title>
-			<p>
-			To compute <m>\lap{g(t)}</m> for a piecewise function:
-			<ol>
-				<li>Rewrite the function using step functions for each interval.</li>
-				<li>Group and simplify terms with matching <m>u_c(t)</m> factors.</li>
-				<li>Apply the shift rule: <m>\lap{f(t)\cdot u_c(t)} = e^{-cs} \lap{f(t + c)}</m>.</li>
-			</ol>
-			</p>
-		</assemblage>
-    <assemblage xml:id="piecewise-laplace-strategy">
-        <title> Strategy: Laplace Transform of a Piecewise Function </title>
-        <p>
-            To find <m>\lap{g(t)}</m> for a piecewise function:
-        </p>
-        <ol>
-            <li>Write <m>g(t)</m> using step functions (each piece gets its own switch).</li>
-            <li>Combine terms with the same step where possible for simpler algebra.</li>
-            <li>Apply the Laplace transform to each term using the appropriate rule.</li>
-            <li>Add the transformed pieces together for the final result.</li>
-        </ol>
-    </assemblage>
-		<p>
-			This method works for any piecewise forcing function and now you're ready to use it to solve full differential equations using Laplace transforms.
-		</p>
-    <p>
-        Let's see this method in action with an example.
-    </p>
-		<example><title> Transform of <m>e^{3t}(1 - u_1(t))</m> </title>
-			<statement>
-				<p>
-					Compute the Laplace transform: <m>\quad\lap{e^{3t}\left(1 - u_1(t)\right)}</m>
-				</p>
-			</statement>
-
-			<solution><title> <m>\rightarrow \lap{e^{3t}(1 - u_1(t))}</m> </title>
-
-				<p>
-					We start by distributing:
-					<me>
-						e^{3t}(1 - u_1(t)) = e^{3t} - e^{3t} \cdot u_1(t)
-					</me>.
-				</p>
-
-				<p>
-					Applying the Laplace transform to this gives us
-					<me>
-						\lap{e^{3t}(1 - u_1(t))} = \lap{e^{3t}} - \lap{e^{3t} \cdot u_1(t)}
-					</me>.
-				</p>
-
-				<p>
-					The first term uses a standard Laplace transform:
-					<me>
-						\lap{e^{3t}} = \frac{1}{s - 3}
-					</me>.
-				</p>
-
-				<p>
-					The second term requires the new rule with <m>c=1</m>, which gives us
-				</p>
-
-				<p>
-					<sidebyside widths="58% 42%">
-						<p>
-							<md>
-								<mrow>
-									\lap{{\DLO e^{3t}} \cdot u_1(t)}
-									\amp = e^{-s} \lap{{\DLO f(t + 1)}}
-								</mrow>
-								<mrow>
-									\amp = e^{-s} \lap{{\DLO e^{3t} \cdot e^{3}}}
-								</mrow>
-								<mrow>
-									\amp = e^{-s} \cdot e^{3} \lap{e^{3t}}
-								</mrow>
-								<mrow>
-									\amp = e^{-s + 3} \left(\frac{1}{s - 3}\right)
-								</mrow>
-							</md>
-						</p>
-						<p>
-							<md>
-								<mrow>\DLO f(t)\ 	\amp\DLO = e^{3t}</mrow>
-								<mrow>\DLO f(t + 1)\ 	\amp\DLO = e^{3(t + 1)} </mrow>
-								<mrow>				\amp\DLO = e^{3t + 3} = e^{3t} \cdot e^{3}</mrow>
-								<mrow>\text{Note:}\ e^3\ \amp \text{is constant}</mrow>
-							</md>
-						</p>
-					</sidebyside>
-				</p>
-
-				<p>
-					Putting it all together, we arrive at the desired transformation:
-					<me>
-						\lap{e^{3t}(1 - u_1(t))} 
-						= \frac{1}{s - 3} - \frac{e^{3 - s}}{s - 3}
-					</me>
-				</p>
-			</solution>
-		</example>
-<example>
-        <title> Laplace Transform of a Two-Piece Function </title>
-        <statement>
-            <p>
-                Find the Laplace transform of the function:
-                <me>
-                    g(t) = \begin{cases}
-                    e^{-t}, \amp t \lt 1 \\
-                    3, \amp t \ge 1
-                    \end{cases}
-                </me>
-            </p>
-        </statement>
-        <solution>
-            <title> Solution </title>
-            <p>
-                <term>Step 1:</term> Write <m>g(t)</m> using step functions.
-                <me>
-                    g(t) = e^{-t}(1-u_1(t)) + 3u_1(t).
-                </me>
-            </p>
-            <p>
-                <term>Step 2:</term> Combine like terms where possible.
-                <md>
-                    <mrow>
-                        g(t) \amp = e^{-t} - e^{-t}u_1(t) + 3u_1(t)
-                    </mrow>
-                    <mrow>
-                        \amp = e^{-t} + \big(3 - e^{-t}\big) u_1(t)
-                    </mrow>
-                </md>
-            </p>
-            <p>
-                <term>Step 3:</term> Take the Laplace transform term by term.
-            </p>
-            <ul marker="disc">
-                <li><m>\lap{e^{-t}} = \frac{1}{s+1}</m></li>
-                <li><m>\lap{(3 - e^{-t}) u_1(t)} = e^{-s} \lap{3 - e^{-(t+1)}} </m></li>
-            </ul>
-            <p>
-                The second Laplace transform uses the rule <m>\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t+c)}</m>.
-            </p>
-            <p>
-                <term>Step 4:</term> Put it all together:
-                <me>
-                    \lap{g(t)} = \frac{1}{s+1} + e^{-s}\left( \frac{3}{s} - \frac{e^{-1}}{s+1} \right).
-                </me>
-            </p>
-        </solution>
-    </example>
-
-    <p>
-        This same strategy scales to any number of pieces — you just keep adding step-function terms, combine them, and apply the rules carefully.
-    </p>
-
-    <example>
-        <title> Laplace Transform of a Three-Piece Function </title>
-        <statement>
-            <p>
-                Find the Laplace transform of the function:
-                <me>
-                    g(t) = \begin{cases}
-                    2t, \amp 0 \le t \lt 1 \\
-                    3, \amp 1 \le t \lt 4 \\
-                    0, \amp t \ge 4
-                    \end{cases}
-                </me>
-            </p>
-        </statement>
-        <solution>
-            <title> Solution </title>
-            <p>
-                The process is the same, just with more pieces:
-            </p>
-            <ol>
-                <li>Write <m>g(t) = 2t(u_0(t)-u_1(t)) + 3(u_1(t)-u_4(t)) + 0\cdot u_4(t)</m>.</li>
-                <li>Combine like terms: <m>g(t) = 2t u_0(t) + (3 - 2t) u_1(t) - 3u_4(t)</m>.</li>
-                <li>Apply the Laplace transform to each term individually.</li>
-            </ol>
-            <p>
-                Working through these steps gives a final Laplace transform you can use in solving DEs.
-            </p>
-        </solution>
-    </example>
-
-    <p>
-        These worked examples illustrate how the three step-function Laplace rules combine into one powerful method for handling any piecewise function you might encounter.
-    </p>
 	</subsection>
 
 	<p>
 		With these three rules, we can now transform any piecewise function both into and out of the Laplace domain. In the next section, we'll begin applying these rules to solve differential equations with piecewise forcing functions.
 	</p>
 
-	<reading-questions xml:id="laplace-piecewise-check"><title>Checkpoint: Laplace Transforms of Piecewise Functions</title>
+	<reading-questions xml:id="laplace-piecewise-check"><title> Check Your Understanding </title>
 		<p>
-			<task><title>Basic shifting calculation</title>
+			<task>
+				<title>📖❓Match the <m>t</m>-Domain Function </title>
 				<statement>
-					What is <m>\lap{t^2 \cdot u_3(t)}</m>?
+					Which function goes into the blank?
+					<me>
+						\lap{<fillin characters="4" />} = e^{-2s} \left( \dfrac{1}{s^2} + \dfrac{2}{s} \right)
+					</me>
 				</statement>
 				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>e^{-3s} \cdot \lap{(t + 3)^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
+				    <choice correct="yes">
+						<statement><m>\ (t + 2) \cdot u_2(t)</m></statement>
+						<feedback>Yes!</feedback>
 					</choice>
 					<choice>
-					<statement>
-						<p>          
-				<m>e^{-3s} \cdot \lap{t^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
+						<statement><m>(t - 2) \cdot u_2(t)</m></statement>
+						<feedback>No — try again.</feedback>
 					</choice>
 					<choice>
-					<statement>
-						<p>          
-				<m>\lap{t^2} - \lap{t^2 \cdot u_3(t)}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
+						<statement><m>t^2 \cdot u_2(t)</m></statement>
+						<feedback>No — try again.</feedback>
 					</choice>
 					<choice>
-					<statement>
-						<p>          
-				<m>\lap{t^2 \cdot (1 - u_3(t))}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
+						<statement><m>(t + 2)^2 \cdot u_2(t)</m></statement>
+						<feedback>No — try again.</feedback>
 					</choice>
 				</choices>
-			</task>
-
-			<task><title>Transform of a function that turns off</title>
-				<statement>
-					Which of the following expressions is equivalent to the Laplace transform of <m>t(1 - u_4(t))</m>?
-				</statement>
-				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>\lap{t} - \lap{t \cdot u_4(t)}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\lap{t \cdot u_4(t)}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>e^{-4s} \lap{t}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\lap{0}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task><title>Compute: step function activation</title>
-				<statement>
-					Compute <m>\lap{(t - 1) u_1(t)}</m>.
-				</statement>
-				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>\dfrac{e^{-s}}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{1}{s^2} - \dfrac{e^{-s}}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{1}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{e^{-s}}{s}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task><title>Compute: step-off function</title>
-				<statement>
-					Compute <m>\lap{(1 - t)(1 - u_1(t))}</m>.
-				</statement>
-				<choices randomize="yes">
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{1}{s} - \dfrac{1}{s^2} - \dfrac{e^{-s}}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>\dfrac{1}{s} - \dfrac{1}{s^2} + \dfrac{e^{-s}}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{e^{-s}}{s^2} - \dfrac{1}{s}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\dfrac{e^{-s}}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task><title>Time-domain matching</title>
-				<statement>
-					Which of the following time-domain functions has Laplace transform <m>e^{-2s} \left( \dfrac{1}{s^2} + \dfrac{2}{s} \right)</m>?
-				</statement>
-				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>(t + 2) \cdot u_2(t)</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>(t - 2) \cdot u_2(t)</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>t^2 \cdot u_2(t)</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>(t + 2)^2 \cdot u_2(t)</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task><title>Compute: windowed linear function</title>
-				<statement>
-					What is <m>\lap{t\, [u_1(t) - u_3(t)]}</m>?
-				</statement>
-				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-				<m>e^{-s} \left( \frac{1}{s^2} + \frac{1}{s} \right) - e^{-3s} \left( \frac{1}{s^2} + \frac{3}{s} \right)</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>\frac{1}{s^2} \cdot (e^{-s} - e^{-3s})</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>e^{-s} \cdot \frac{1}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-				<m>e^{-3s} \cdot \frac{1}{s^2}</m>
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task><title>Conceptual: reason for exponential factor</title>
-				<statement>
-					Why does the Laplace transform of <m>f(t) \cdot u_c(t)</m> include the factor <m>e^{-cs}</m>?
-				</statement>
-				<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>          
-							Because shifting a function forward in time multiplies its transform by an exponential decay.
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-							Because <m>u_c(t)</m> always multiplies the transform by <m>s</m>.
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-							Because the function is being differentiated.
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-					<choice>
-					<statement>
-						<p>          
-							Because <m>e^{-cs}</m> is the transform of <m>u_c(t)</m>, which always appears.
-						</p>
-					</statement>
-					<feedback>	</feedback>
-					</choice>
-				</choices>
-			</task>
-
-			<task label="prep-4-lap-uc-ftuc"><title> Laplace of Shifted Inputs </title>
-			<statement>
-				<p>
-					If <m>\lap{f(t)} = F(s)</m>, then what does <m>\lap{f(t + 3)}</m> represent?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-				<statement><p>The Laplace transform of <m>f(t)</m> shifted right by 3 units.</p></statement>
-				<feedback>
-					<p>
-					Not quite, <m>f(t + 3)</m> shifts the function left, not right.
-					</p>
-				</feedback>
-				</choice>
-				<choice>
-				<statement><p>The Laplace transform of <m>f(t)</m> delayed by 3 seconds.</p></statement>
-				<feedback>
-					<p>
-					That's what <m>f(t - 3)</m> does. <m>f(t + 3)</m> actually starts earlier.
-					</p>
-				</feedback>
-				</choice>
-				<choice correct="yes">
-				<statement><p>A shifted version of <m>f(t)</m> that starts earlier than <m>t = 0</m>.</p></statement>
-				<feedback>
-					<p>
-					Correct, <m>f(t + 3)</m> pulls the graph to the left. In Laplace, we use this kind of shift when working with step functions.
-					</p>
-				</feedback>
-				</choice>
-				<choice>
-				<statement><p>The Laplace transform of <m>f(t)\cdot u_3(t)</m></p></statement>
-				<feedback>
-					<p>
-					That's close to what we'll do next, but we still need to shift <m>f</m> properly and include <m>e^{-3s}</m> in the result.
-					</p>
-				</feedback>
-				</choice>
-			</choices>
 			</task>
 		</p>
 	</reading-questions>

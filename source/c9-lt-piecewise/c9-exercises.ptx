@@ -421,7 +421,125 @@
 			</exercise>
 		
 		</exercisegroup>
+			<task><title> Transform of a function that turns off </title>
+				<statement>
+					Which of the following expressions is equivalent to the Laplace transform of <m>t(1 - u_4(t))</m>?
+				</statement>
+				<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>          
+				<m>\lap{t} - \lap{t \cdot u_4(t)}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\lap{t \cdot u_4(t)}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>e^{-4s} \lap{t}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\lap{0}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+				</choices>
+			</task>
 
+			<task><title> Compute: step function activation </title>
+				<statement>
+					Compute <m>\lap{(t - 1) u_1(t)}</m>.
+				</statement>
+				<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>          
+				<m>\dfrac{e^{-s}}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{1}{s^2} - \dfrac{e^{-s}}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{1}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{e^{-s}}{s}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task><title> Compute: step-off function </title>
+				<statement>
+					Compute <m>\lap{(1 - t)(1 - u_1(t))}</m>.
+				</statement>
+				<choices randomize="yes">
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{1}{s} - \dfrac{1}{s^2} - \dfrac{e^{-s}}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+				<choice correct="yes">
+					<statement>
+						<p>          
+				<m>\dfrac{1}{s} - \dfrac{1}{s^2} + \dfrac{e^{-s}}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{e^{-s}}{s^2} - \dfrac{1}{s}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+				<m>\dfrac{e^{-s}}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+				</choices>
+			</task>
 	</exercises>
 
 	<exercises><title> Warm-ups &amp; Drills </title>
@@ -1295,6 +1413,121 @@
                 </p>
             </solution>
         </example>
+
+		<example>
+			<title> Transform of <m>e^{3t}(1 - u_1(t))</m> </title>
+			<statement>
+				<p>
+					Compute the Laplace transform: <m>\quad\lap{e^{3t}\left(1 - u_1(t)\right)}</m>
+				</p>
+			</statement>
+
+			<solution><title> <m>\rightarrow \lap{e^{3t}(1 - u_1(t))}</m> </title>
+
+				<p>
+					We start by distributing:
+					<me>
+						e^{3t}(1 - u_1(t)) = e^{3t} - e^{3t} \cdot u_1(t)
+					</me>.
+				</p>
+
+				<p>
+					Applying the Laplace transform to this gives us
+					<me>
+						\lap{e^{3t}(1 - u_1(t))} = \lap{e^{3t}} - \lap{e^{3t} \cdot u_1(t)}
+					</me>.
+				</p>
+
+				<p>
+					The first term uses a standard Laplace transform:
+					<me>
+						\lap{e^{3t}} = \frac{1}{s - 3}
+					</me>.
+				</p>
+
+				<p>
+					The second term requires the new rule with <m>c=1</m>, which gives us
+				</p>
+
+				<p>
+					<sidebyside widths="58% 42%">
+						<p>
+							<md>
+								<mrow>
+									\lap{{\DLO e^{3t}} \cdot u_1(t)}
+									\amp = e^{-s} \lap{{\DLO f(t + 1)}}
+								</mrow>
+								<mrow>
+									\amp = e^{-s} \lap{{\DLO e^{3t} \cdot e^{3}}}
+								</mrow>
+								<mrow>
+									\amp = e^{-s} \cdot e^{3} \lap{e^{3t}}
+								</mrow>
+								<mrow>
+									\amp = e^{-s + 3} \left(\frac{1}{s - 3}\right)
+								</mrow>
+							</md>
+						</p>
+						<p>
+							<md>
+								<mrow>\DLO f(t)\ 	\amp\DLO = e^{3t}</mrow>
+								<mrow>\DLO f(t + 1)\ 	\amp\DLO = e^{3(t + 1)} </mrow>
+								<mrow>				\amp\DLO = e^{3t + 3} = e^{3t} \cdot e^{3}</mrow>
+								<mrow>\text{Note:}\ e^3\ \amp \text{is constant}</mrow>
+							</md>
+						</p>
+					</sidebyside>
+				</p>
+
+				<p>
+					Putting it all together, we arrive at the desired transformation:
+					<me>
+						\lap{e^{3t}(1 - u_1(t))} 
+						= \frac{1}{s - 3} - \frac{e^{3 - s}}{s - 3}
+					</me>
+				</p>
+			</solution>
+		</example>
+
+			<task><title> Compute: windowed linear function </title>
+				<statement>
+					What is <m>\lap{t\, [u_1(t) - u_3(t)]}</m>?
+				</statement>
+				<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>          
+							<m>e^{-s} \left( \frac{1}{s^2} + \frac{1}{s} \right) - e^{-3s} \left( \frac{1}{s^2} + \frac{3}{s} \right)</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+							<m>\frac{1}{s^2} \cdot (e^{-s} - e^{-3s})</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+							<m>e^{-s} \cdot \frac{1}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<p>          
+							<m>e^{-3s} \cdot \frac{1}{s^2}</m>
+						</p>
+					</statement>
+					<feedback>	</feedback>
+					</choice>
+				</choices>
+			</task>
 	</exercises>
 
 	<exercises><title> Piecewise Forcing Functions </title>
