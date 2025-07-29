@@ -53,8 +53,8 @@
 			</statement>
 		</definition>
 		
-		<task label="lt-definition-chkpt-1">
-			<title> 📖❓ Spot the Error in the Definition </title>
+		<exercise label="lt-definition-chkpt-1">
+			<title>📖❓ Spot the Error in the Definition </title>
 			<statement>
 				<p>
 					Click on the incorrect part of the Laplace transform definition.
@@ -78,7 +78,7 @@
 					<p/>
 				</sidebyside>
 			</areas>
-		</task>
+		</exercise>
 
 		<paragraphs xml:id="lt-improper-integrals">
 			<title> Working with Improper Integrals </title>
@@ -97,7 +97,7 @@
 				The Laplace transform exists if this limit produces a finite value. Often, exponential decay from <m>e^{-st}</m> guarantees convergence when <m>s</m> is large enough.
 			</p>
 
-			<task label="lt-definition-chkpt-2">
+			<exercise label="lt-definition-chkpt-2">
 				<title> 📖❓ Convergence Requirement for Laplace Transforms </title>
 				<statement>
 					<p>
@@ -129,212 +129,279 @@
 						<feedback>We are computing a definite integral, not an indefinite one.</feedback>
 					</choice>
 				</choices>
-			</task>
+			</exercise>
 		</paragraphs>
 	</subsection>
-
-	<subsection xml:id="lt-def-first-examples">
-		<title> First Examples of Laplace Transforms </title>
+						
+	<reading-questions>
+		<title>👀 Quick Review: Exponential Properties</title>
 		<p>
-			Let's see how the definition works by computing Laplace transforms for simple functions. We'll start with a constant function and a linear function.
+			To get through the transform rule derivations, you'll need to be familiar with some key exponential properties that will appear throughtout this chapter.
 		</p>
 
-		<lemma>
-			<title> Exponential Properties </title>
+		<paragraphs xml:id="exponential-antiderivative">
+			<title> Exponential Antiderivative </title>
 			<p>
-				<task label="lt-def-prep-1">
-					<title> Exponential Antiderivative </title>
-					<statement>
-						<p>
-							Evaluate: <m>\ds\int_0^b e^{-3t}\ dt</m>
-						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice correct="yes"><statement><m>\quad\ds \frac{1 - e^{-3b}}{3}</m></statement></choice>
-						<choice><statement><m>\quad\ds \frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{-3b}</m></statement></choice>
-						<choice><statement><m>\quad\ds -\frac{1}{3}e^{3b}</m></statement></choice>
-					</choices>
-				</task>
-		
-				<task label="lt-def-prep-2">
-					<title> Exponential End Behavior </title>
-					<statement>
-						<p>
-							<sidebyside widths="40% 50%" margins="0% 0%">
-								<p>
-									<p>
-										Use the graph to determine if each limit is -ထ, <m>0</m>, or ထ.
-									</p>
-									<p>
-										Click on one of the three options next to each limit to select your answer.
-									</p>
-								</p>
-								<p>
-									<figure xml:id="graph-of-exp-t">
-										<caption>Graph of <m>e^t</m></caption>
-										<image width="50%">
-											<latex-image>
-												\begin{tikzpicture}[samples=50]
-													% === colors ===
-													\def\fColor{blue}
+				For any constant <m>K</m>, we have:
+				<me>
+					\int e^{Kt}\ dt = \frac1{K} e^{Kt} + C
+				</me>.
+				While this can be found by substituting <m>u=Kt</m>, it is such a common antiderivative that you should just know it without this extra step. 
+			</p>	
+		</paragraphs>
+						
+		<paragraphs xml:id="exponential-end-behavior">
+			<title> Exponential End Behavior </title>
+			<p>
+				The end behavior can be seen from the most basic exponential function:
+			</p>
 
-													% === figure/domain/tick bounds ===
-													\def\tmin{-2.2}	\def\tmax{2.45}
-													\def\ymin{-1.8}		\def\ymax{7.5}
-													\def\tticks{1, 2}
-													\def\yticks{2, 4}
+			<sidebyside widths="35% 5% 30%" margins="15% 15%" valign="middle">
+				<p>
+					<image width="50%">
+						<latex-image>
+							\begin{tikzpicture}[samples=50]
+								% === colors ===
+								\def\fColor{blue}
 
-													% === Function definitions ===
-													\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+								% === figure/domain/tick bounds ===
+								\def\tmin{-2.2}	\def\tmax{2.45}
+								\def\ymin{-1.8}		\def\ymax{7.5}
+								\def\tticks{1, 2}
+								\def\yticks{2, 4}
 
-													\begin{axis}[
-														width=15cm, height=7cm, scale=0.4,
-														xlabel={$t$}, ylabel={$y$},
-														grid=none,
-														tick style={thick},
-														line width=1pt,
-														axis lines=middle,
-														xtick distance=1, ytick distance=4,
-														minor x tick num=1, minor y tick num=1,
-														xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
-													]
-													
-														% Read and plot data from file
-														\addplot [domain=\tmin:\tmax, \fColor] {e^x};
+								% === Function definitions ===
+								\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
 
-														% === Labels ===
-														\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
-													\end{axis}
-												\end{tikzpicture}
-											</latex-image>
-										</image>
-									</figure>
-								</p>
-							</sidebyside>
-						</p>
-					</statement>
+								\begin{axis}[
+									width=15cm, height=7cm, scale=0.4,
+									xlabel={$t$}, ylabel={$y$},
+									grid=none,
+									tick style={thick},
+									line width=1pt,
+									axis lines=middle,
+									xtick distance=1, ytick distance=4,
+									minor x tick num=1, minor y tick num=1,
+									xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+								]
+								
+									% Read and plot data from file
+									\addplot [domain=\tmin:\tmax, \fColor] {e^x};
 
-					<areas>
-						<p/>
+									% === Labels ===
+									\node[\fColor, font=\large, above] at (1.5, 5) {$\ftex$};
+								\end{axis}
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p/>
+				<p>
+					<md alignment="alignat">
+						<mrow> t \to -\infty	\amp\ \ \Rightarrow\ \ \amp e^{t} \to 0</mrow>
+						<mrow> t \to \infty		\amp\ \ \Rightarrow\ \ \amp e^{t} \to \infty</mrow>
+					</md>
+				</p>
+			</sidebyside>
+
+			<p>
+				In general, the end behavior depends on whether the power goes to <m>+\infty</m> or <m>-\infty</m>:
+				<ul>
+					<li><m>\quad \text{power} \to +\infty\quad\Rightarrow\quad e^{\text{power}} \to +\infty</m></li>
+					<li><m>\quad \text{power} \to -\infty\quad\Rightarrow\quad e^{\text{power}} \to 0</m></li>
+				</ul>
+			</p>
+
+			<p>
+				In this section, we will take limits as <m>b \to \infty</m>. Your goal will be to figure out if <m>b \to \infty</m> causes the power to go to <m>+\infty</m> or <m>-\infty</m>. Only then will you know where <m>\ds e^{\text{power}}</m> goes.
+			</p>
+		</paragraphs>
+
+		<exercise><title>📖❓ Checkpoint: Exponential Properties </title>
+			<task label="lt-def-prep-1">
+				<title> Exponential Antiderivative </title>
+				<statement>
+					<p>
+						Evaluate: <m>\ds\int_0^b e^{-3t}\ dt</m>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes"><statement><m>\quad\ds \frac{1 - e^{-3b}}{3}</m></statement></choice>
+					<choice><statement><m>\quad\ds \frac{1}{3}e^{-3b}</m></statement></choice>
+					<choice><statement><m>\quad\ds -\frac{1}{3}e^{-3b}</m></statement></choice>
+					<choice><statement><m>\quad\ds -\frac{1}{3}e^{3b}</m></statement></choice>
+				</choices>
+			</task>
+	
+			<task label="lt-def-prep-2">
+				<title> Exponential End Behavior </title>
+				<statement>
+					<p>
+						Determine if each limit is -ထ, <m>0</m>, or ထ.
+					</p>
+					<p>
+						Click on one of the three options next to each limit to select your answer.
+					</p>
+					<p>
+						Assume <m>s</m> is a positive constant.
+					</p>
+				</statement>
+
+				<areas>
+					<p/>
+					<sbsgroup widths="15% 13% 50%" margins="11% 11%" valign="middle">
 						<sidebyside>
+							<p><me>\lim_{b \to \infty} e^{\ds b}</me></p>
+							<p><me> = <fillin characters="2" /></me></p>
 							<p>
 								<tabular>
 									<col halign="right"/>
 									<col halign="center" />
 									<col halign="center" />
 									<row>
-										<cell><m>\ds \lim_{b \to \infty} e^{b}</m></cell>
-										<cell><m>=</m></cell>
-										<cell><area correct="no"><m>-\infty</m></area></cell>
-										<cell><area correct="no"><m>0</m></area></cell>
-										<cell><area correct="yes"><m>\infty</m></area></cell>
-									</row>
-									<row>
-										<cell><m>\ds \lim_{b \to \infty} e^{-b}</m></cell>
-										<cell><m>=</m></cell>
-										<cell><area correct="no"><m>-\infty</m></area></cell>
-										<cell><area correct="yes"><m>0</m></area></cell>
-										<cell><area correct="no"><m>\infty</m></area></cell>
-									</row>
-									<row>
-										<cell><m>\ds \lim_{b \to \infty} e^{8b}</m></cell>
-										<cell><m>=</m></cell>
-										<cell><area correct="no"><m>-\infty</m></area></cell>
-										<cell><area correct="no"><m>0</m></area></cell>
-										<cell><area correct="yes"><m>\infty</m></area></cell>
-									</row>
-									<row>
-										<cell><m>\ds \lim_{b \to \infty} e^{-3b}</m></cell>
-										<cell><m>=</m></cell>
-										<cell><area correct="no"><m>-\infty</m></area></cell>
-										<cell><area correct="yes"><m>0</m></area></cell>
-										<cell><area correct="no"><m>\infty</m></area></cell>
+										<cell><area correct="no"><m>\large\ -\infty\ </m></area></cell>
+										<cell><area correct="no"><m>\large\ 0\ </m></area></cell>
+										<cell><area correct="yes"><m>\large\ +\infty\ </m></area></cell>
 									</row>
 								</tabular>
 							</p>
 						</sidebyside>
-					</areas>
-				</task>
+						<sidebyside>
+							<p><me>\lim_{b \to \infty} e^{\ds -3b}</me></p>
+							<p><me> = <fillin characters="2" /></me></p>
+							<p>
+								<tabular>
+									<col halign="right"/>
+									<col halign="center" />
+									<col halign="center" />
+									<row>
+										<cell><area correct="no"><m>\large\ -\infty\ </m></area></cell>
+										<cell><area correct="yes"><m>\large\ 0\ </m></area></cell>
+										<cell><area correct="no"><m>\large\ +\infty\ </m></area></cell>
+									</row>
+								</tabular>
+							</p>
+						</sidebyside>
+						<sidebyside>
+							<p><me>\lim_{b \to \infty} e^{\ds sb}</me></p>
+							<p><me> = <fillin characters="2" /></me></p>
+							<p>
+								<tabular>
+									<col halign="right"/>
+									<col halign="center" />
+									<col halign="center" />
+									<row>
+										<cell><area correct="no"><m>\large\ -\infty\ </m></area></cell>
+										<cell><area correct="no"><m>\large\ 0\ </m></area></cell>
+										<cell><area correct="yes"><m>\large\ +\infty\ </m></area></cell>
+									</row>
+								</tabular>
+							</p>
+						</sidebyside>
+						<sidebyside>
+							<p><me>\lim_{b \to \infty}e^{\ds -sb}</me></p>
+							<p><me> = <fillin characters="2" /></me></p>
+							<p>
+								<tabular>
+									<col halign="right"/>
+									<col halign="center" />
+									<col halign="center" />
+									<row>
+										<cell><area correct="no"><m>\large\ -\infty\ </m></area></cell>
+										<cell><area correct="yes"><m>\large\ 0\ </m></area></cell>
+										<cell><area correct="no"><m>\large\ +\infty\ </m></area></cell>
+									</row>
+								</tabular>
+							</p>
+						</sidebyside>
+					</sbsgroup>
+				</areas>
+			</task>
 
-				<task label="lt-definition-chkpt-3-0">
-					<title> Figure out the Limits </title>
-					<statement>
-						<p>
-							Give each limit by filling in one of the following: <c>0</c>, 
-							<c>inf</c> (<m>\infty</m>), 
-							<c>-inf</c> (<m>-\infty</m>).
-						</p>
-						<p>
-							<ul marker="square">
-								<li>
-									If <m>b \to \infty</m> then 
-									<m>-4b\to</m> <fillin width="2" mode="string" answer="-inf" />
-									and
-									<m>\ds\lim_{b \to \infty} e^{-4b} = </m> <fillin width="2" mode="string" answer="0" />
-								</li>
-							</ul>
-							Assume that <m>s</m> is a <em>positive</em> constant.
-							<ul marker="square">
-								<li>
-									If <m>b \to \infty</m> then
-									<m>-sb\to</m> <fillin width="2" mode="string" answer="-inf" /> and
-									<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="0" />
-								</li>
-							</ul>
-							Assume that <m>s</m> is a <em>negative</em> constant.
-							<ul marker="square">
-								<li>
-									If <m>b \to \infty</m> then
-									<m>-sb\to</m> <fillin width="2" mode="string" answer="inf" />
-									and
-									<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="inf" />
-								</li>
-							</ul>
-						</p>
-					</statement>
-					
-					<evaluation>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no">-\s*inf</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. Where would <m>-4</m> times something that goes to <m>\infty</m> must go?</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test><strcmp use-answer="yes" /></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. Think about where <m>-4b</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-4b}</m> should go.</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no" >-\s*inf</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. If <m>s</m> is positive, then <m>-sb</m> is a negative number times something that goes to <m>\infty</m>.</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test><strcmp use-answer="yes" /></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. If <m>s</m> is negative, then <m>-sb</m> is a positive number times something that goes to <m>\infty</m>.</feedback>
-							</test>
-						</evaluate>
-						<evaluate>
-							<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
-							<test><strcmp>.*</strcmp>
-								<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
-							</test>
-						</evaluate>
-					</evaluation>
-				</task>
-			</p>
-		</lemma>
+			<task label="lt-definition-chkpt-3-0">
+				<title> Figure out the Limits </title>
+				<statement>
+					<p>
+						Give each limit by filling in one of the following: <c>0</c>, 
+						<c>inf</c> (<m>\infty</m>), 
+						<c>-inf</c> (<m>-\infty</m>).
+					</p>
+					<p>
+						<ul marker="square">
+							<li>
+								If <m>b \to \infty</m> then 
+								<m>-4b\to</m> <fillin width="2" mode="string" answer="-inf" />
+								and
+								<m>\ds\lim_{b \to \infty} e^{-4b} = </m> <fillin width="2" mode="string" answer="0" />
+							</li>
+						</ul>
+						Assume that <m>s</m> is a <em>positive</em> constant.
+						<ul marker="square">
+							<li>
+								If <m>b \to \infty</m> then
+								<m>-sb\to</m> <fillin width="2" mode="string" answer="-inf" /> and
+								<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="0" />
+							</li>
+						</ul>
+						Assume that <m>s</m> is a <em>negative</em> constant.
+						<ul marker="square">
+							<li>
+								If <m>b \to \infty</m> then
+								<m>-sb\to</m> <fillin width="2" mode="string" answer="inf" />
+								and
+								<m>\ds\lim_{b \to \infty} e^{-sb} = </m> <fillin width="2" mode="string" answer="inf" />
+							</li>
+						</ul>
+					</p>
+				</statement>
+				
+				<evaluation>
+					<evaluate>
+						<test correct="yes"><strcmp use-answer="no">-\s*inf</strcmp></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. Where would <m>-4</m> times something that goes to <m>\infty</m> must go?</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. Think about where <m>-4b</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-4b}</m> should go.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test correct="yes"><strcmp use-answer="no" >-\s*inf</strcmp></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. If <m>s</m> is positive, then <m>-sb</m> is a negative number times something that goes to <m>\infty</m>.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. If <m>s</m> is negative, then <m>-sb</m> is a positive number times something that goes to <m>\infty</m>.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test correct="yes"><strcmp use-answer="no">inf</strcmp></test>
+						<test><strcmp>.*</strcmp>
+							<feedback>Incorrect. Think about where <m>-sb</m> goes as <m>b</m> goes to <m>\infty</m>, then decide where <m>e^{-sb}</m> should go.</feedback>
+						</test>
+					</evaluate>
+				</evaluation>
+			</task>
+		</exercise>
+	</reading-questions>
+
+	<subsection xml:id="lt-def-first-examples">
+		<title> First Examples of Laplace Transforms </title>
+		<p>
+			Let's see how the definition works by computing Laplace transforms for simple functions. We'll start with a constant function and a linear function.
+		</p>
 
 		<example xml:id="laplace-first-examples">
 			<title> First Look at Laplace Transforms </title>
@@ -361,27 +428,33 @@
 								</me>.
 							</p>
 
-							<p>
-								Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
-								<md>
-									<mrow>
-										\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
-											\amp <xref text="custom" ref="lt-example-1-details"><m>\os{\large ❔}{=}</m></xref> -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
-									</mrow>
-									<mrow>
-											\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
-									</mrow>
-								</md>
-							</p>
-					
-							<p>
-								Since the limit, <m>L</m>, depends on the <term><xref ref="graph-of-e-to-x" text="custom">power of the exponential function</xref></term>, we analyze it based on the value of <m>s</m>:
-								<ol>
-									<li> <m>s \gt 0</m> (positive): <m>\quad-sb</m> goes to: <m>\ds L = \lim_{b \to \infty}\ e^{-sb} =0\ </m> (converges) </li>
-									<li> <m>s \lt 0</m> (negative): <m>\quad -sb \to +\infty\ </m>, so <m>\ e^{-sb} \to \infty\ </m> &amp; <m>L=\infty\ </m> (diverges) </li>
-									<li> <m>s = 0</m>: <m>\quad\ds\lap{5} = \int_0^{\infty}5e^{-0t}\ dt = \int_0^{\infty}5\ dt = \infty</m> (diverges) </li>
+							<proof xml:id="lt-example-1-details"><title>🔍 Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant): </title>
+								<p>
+									🔍 Since the limit only controls <m>b</m>, we can think of <m>s</m> as a number (like <m>2</m>). This means that <m>\ds-\frac{5}{s}</m> is also a number that can be pulled out of the limit using the limit property from calculus:
+									<me>\ds\lim_{x \to \infty} c \cdot f(x) = c \cdot \lim_{x \to \infty} f(x), \quad c\ \text{is constant}</me>
+								</p>
+							</proof>
+
+							<md>
+								<mrow>
+									\lim_{b \to \infty} I = \lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] 
+										\amp = -\frac{5}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big]
+								</mrow>
+								<mrow>
+										\amp = -\frac{5}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+								</mrow>
+							</md>
+
+							<p> 
+								We find the limit using the <xref ref="exponential-end-behavior" text="custom">end behavior of the exponential</xref>. There are two possiblities:<fn> <m>s = 0</m> is excluded since it would lead to <me>\int_0^{\infty}5e^{-0t}\ dt = \int_0^{\infty}5\ dt = \infty</me></fn>
+								<ol marker="(1)">
+									<li> <m>s</m> is positive: <m>\ds\quad-sb \to -\infty \ \ \Rightarrow\ \ \lim_{b \to \infty}\ e^{-sb} = 0</m> </li>
+									<li> <m>s</m> is negative: <m>\ds\quad-sb \to +\infty \ \ \Rightarrow\ \ \lim_{b \to \infty}\ e^{-sb} = \infty</m> </li>
 								</ol>
-								By definition, the integral in a Laplace transform must converge, meaning <m>L</m> must converge. So, <m>L=0</m> and the Laplace transform is
+							</p>
+
+							<p>
+								Since we only get convergence when <m>s</m> is positive, we must require <m>s \gt 0</m> in the Laplace transform of <m>5</m>:
 								<me>
 									\lap{5} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
 								</me>.
@@ -397,15 +470,42 @@
 							<p>
 								Applying the definition and writing the integral as a limit, we have
 								<me>
-									\lap{ t }	= \lim_{b \to \infty} {\color{BurntOrange}\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
+									\lap{ t }	= \lim_{b \to \infty} {\ub{\int_0^b e^{-st} \cdot t\ dt}_{I}}
 								</me>.
 							</p>
 
 							<p>
-								Computing <xref text="custom" ref="lt-example-t-IVP-details"><m>I</m> with integration by parts</xref>, gives us
+								<proof xml:id="lt-example-t-IVP-details"><title>🔍 Computing <m>I</m> with integration by parts, gives us </title>
+									<p>
+										🔍 Choosing
+										<md>
+											<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
+											<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+										</md>
+										integration by parts gives
+										<md>
+											<mrow>
+												\int_0^b e^{-st} \cdot t\ dt
+													\amp = -\frac{t}{s}e^{-st} - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
+											</mrow>
+											<mrow> 	
+													\amp = -\frac{t}{s}e^{-st}+ \frac{1}{s}\int_0^b e^{-st} dt
+											</mrow>
+											<mrow> 	
+													\amp = \left(-\frac{t}{s}e^{-st}- \frac{1}{s^2}e^{-st}\right) \Bigg|_0^b
+											</mrow>
+											<mrow> 	
+													\amp = \left(-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb}\right) - \left(0 - \frac{1}{s^2}\right)
+											</mrow>
+											<mrow> 	
+													\amp = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}
+											</mrow>
+										</md>
+									</p>
+								</proof>
 								<md>
 									<mrow>
-										{\color{BurntOrange}I}	\amp\ {\color{BurntOrange} = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
+										{I}	\amp\ { = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}
 									</mrow>
 								</md>
 							</p>
@@ -414,7 +514,7 @@
 								Next, we compute the limit of <m>I</m> as <m>b \to \infty</m>:
 								<md>
 									<mrow>
-										\lim_{b \to \infty} {\color{BurntOrange}I} \amp = \lim_{b \to \infty} \left({\color{BurntOrange} -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
+										\lim_{b \to \infty} {I} \amp = \lim_{b \to \infty} \left({ -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}}\right)
 									</mrow>
 									<mrow>
 										\amp = -\frac{1}{s}\lim_{b \to \infty} be^{-sb} - \frac{1}{s^2}\lim_{b \to \infty} e^{-sb} + \lim_{b \to \infty} \frac{1}{s^2}
@@ -425,8 +525,35 @@
 								</md> 
 							</p>
 
+							<proof xml:id="lt-example-t-LH-details"><title>🔍 As long as <m>s \gt 0</m>, both <m>L_1</m> and <m>L_2</m> go to zero </title>
+								<p>
+									🔍 Assuming <m>s \gt 0</m>, the limits are computed by:
+									<ul marker="square">
+										<li>
+											<p>
+												<m>
+													\ds L_1 
+													= \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+													\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
+													= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+												</m>
+											</p>
+										</li>
+										<li>
+											<p>
+												<m>
+													\ds L_2
+													= \lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+												</m>
+											</p>
+										</li>
+									</ul>
+									where <m>LH</m> denotes L'Hôpital's Rule was applied to the limit.
+								</p>
+							</proof>
+
 							<p>
-								As long as <m>s \gt 0</m>, both <term><xref ref="lt-example-t-LH-details" text="custom"><m>L_1\to 0</m> &amp; <m>L_2\to 0</m></xref></term>. Therefore, the Laplace transform of <m>t</m> is
+								Therefore, the Laplace transform of <m>t</m> is
 								<me>
 									\lap{ t } = \frac{1}{s^2}, \quad s &gt; 0
 								</me>.

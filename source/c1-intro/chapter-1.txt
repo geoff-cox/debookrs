@@ -1,0 +1,1525 @@
+<section label="whats-a-de">
+	<title> What is a Differential Equation? </title>
+
+	<introduction>
+		<sidebyside width="90%" margins="0% 10%">
+			<p>
+				<aside><title> 🎧 Listen </title><p><audio source="audio/readings/c1/whats-a-de-intro-and-connection-to-algebra.mp3" width="100%" /></p></aside>
+				In this section, we'll explore what a differential equation is, starting with an analogy, and then moving to a formal definition.
+			</p>
+		</sidebyside>
+	</introduction>
+
+	<paragraphs label="connection-to-algebra">
+		<title> Connection to Algebra and Calculus </title>
+
+		<p>
+			To learn something new, it helps to connect it to something you already know. So let's begin by linking differential equations to algebra.
+		</p>
+
+		<p>
+			Suppose you're asked to solve each of the following equations for <m>y</m>:
+		</p>
+
+		<me>
+		y + 2 = 11, \qquad y + 2t = 11, \qquad y^3 + 2t = 11
+		</me>
+
+		<p>
+			The goal of algebra is to figure out what number or function goes in place of <m>y</m> to make both sides equal. Instead of guessing, you learned rules for isolating <m>y</m>. If we apply those rules, we get:
+		</p>
+
+		<md>
+			<mrow> y = 9, \qquad y = 11 - 2t, \qquad y^3 \amp = 11 - 2t </mrow>
+			<mrow> y \amp = \left(11 - 2t\right)^{1/3} </mrow>
+		</md>
+
+		<p>
+			Now suppose you're asked to solve a new equation:
+		</p>
+
+		<me>
+			y' + 2t = 11
+		</me>
+
+		<p>
+			As before, we isolate <m>y'</m>, giving:
+		</p>
+
+		<me>
+			y' = 11 - 2t
+		</me>
+
+		<p>
+			So what function has a derivative of <m>11 - 2t</m>? In other words, what goes in place of <m>y</m> to make this equation true?
+		</p>
+
+		<p>
+			From calculus, you might recognize this as an anti-derivative problem. So the solution is:
+		</p>
+
+		<me>
+		y = \int (11 - 2t)\, dt = 11t - t^2 + C.
+		</me>
+
+		<p>
+			Believe it or not, you just solved a differential equation using algebra and calculus! Most problems won't be quite that straightforward, but the goal is the same: find a function that fits in place of <m>y</m> and makes the equation true.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="definition">
+		<title> Definition </title>
+
+		<sidebyside width="90%" margins="0% 10%">
+			<p>
+				<aside><title> 🎧 Listen </title><p><audio source="audio/readings/c1/definition.mp3" width="100%" /></p></aside>
+				Essentially, a differential equation is any equation where the unknown has a derivative applied to it. The formal definition is as follows:
+			</p>
+		</sidebyside>
+
+		<definition xml:id="def-diff-eq">
+			<title> Differential Equation </title>
+			<statement>
+				<sidebyside margins="0% 12%">
+					<p>
+						<aside>
+							<title> 📝 Note: DE <m>\Rightarrow</m> ODE </title>
+							<p>
+								📌 Since this text only covers ODEs, any use of <em>DE</em> will mean <em>ODE</em>.
+							</p>
+						</aside>
+						A <term>differential equation (DE)</term> is an equation that involves one or more derivatives of an unknown function. If the function depends on a single variable, the equation is an <term>ordinary differential equation (ODE)</term>. Otherwise, it is called a <term>partial differential equation (PDE)</term>.
+					</p>
+				</sidebyside>
+			</statement>
+		</definition>
+
+		<p>
+			For an equation to qualify as a differential equation, it must include both a derivative (like <m>f^\prime</m> or <m>dy/dx</m>) and an equals sign. This helps us identify the following as differential equations:
+		</p>
+
+		<me>
+		\frac{dy}{dx} + 1 = y, \qquad f^{\prime\prime} + x^2 + 3x = 19, \qquad e^t = \tan(y^\prime)
+		</me>
+
+		<task label="chkpt-whats-a-de-1">
+			<title> 🎯 Not Required for a DE </title>
+			<statement>Which of the following is NOT required for an equation to be classified as a differential equation?</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>A <m>y</m>-variable</statement>
+					<feedback>Correct! A <m>y</m>-variable is not a requirement for a differential equation.</feedback>
+				</choice>
+				<choice>
+					<statement>An unknown function</statement>
+					<feedback>Incorrect. A differential equation does include an unknown function, which we are solving for.</feedback>
+				</choice>
+				<choice>
+					<statement>One or more derivatives of an unknown function</statement>
+					<feedback>Incorrect. The presence of at least one derivative is essential to define a differential equation.</feedback>
+				</choice>
+				<choice>
+					<statement>An equal sign, "="</statement>
+					<feedback>Incorrect. An equality sign is required for an equation to be classified as a differential equation.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			In contrast, these are not differential equations, they either lack a derivative or an equals sign:
+		</p>
+
+		<me>
+		\frac{d^2 y}{dx^2} + 2\frac{dy}{dx}, \qquad x^2 + 3x = 19, \qquad \sin y + e^x = 0
+		</me>
+
+		<task label="chkpt-whats-a-de-2">
+			<title> 🎯 Identifying the Differential Equation </title>
+			<statement>Which of the following equations is a differential equation.</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\quad y'' + 1 = y</m></statement>
+					<feedback>Correct! This equation involves a derivative, making it a differential equation.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\quad x^2 + 3x = 19</m></statement>
+					<feedback>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\quad \sin y + e^x = 0</m></statement>
+					<feedback>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\quad y^2 + 5 = 0</m></statement>
+					<feedback>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+	</paragraphs>
+
+	<paragraphs label="derivative-notation">
+		<title> Common Derivative Notations </title>
+
+		<p>
+			In this text, we will use the following notations for derivatives:
+		</p>
+
+		<p>
+			<aside><title> 📝 Note: Notation </title>
+				<p>
+					📌 Be careful not to mistake <m>y^{(4)}</m> as <m>y</m> raised to the power of 4.
+				</p>
+				<p> 
+					📌 Dot Notation is normally reserved for derivatives with respect to time.
+				</p>
+			</aside>
+			<sidebyside widths="12% 62%" margins="10% 16%" valign="middle">
+				<p><me>\text{Notation}</me></p>
+				<p><me>\text{Derivative Order}</me></p>
+			</sidebyside>
+			<sidebyside widths="12% 10% 10% 10% 10% 4% 10%" margins="10% 16%" valign="middle">
+				<p/>
+				<p><me>1\text{st}</me></p>
+				<p><me>2\text{nd}</me></p>
+				<p><me>3\text{rd}</me></p>
+				<p><me>4\text{th}</me></p>
+				<p><me>...</me></p>
+				<p><me>n\text{th}</me></p>
+			</sidebyside>
+			<sidebyside widths="12% 10% 10% 10% 10% 4% 10%" margins="10% 16%" valign="middle">
+				<p><me>\text{Prime}\vphantom{\frac11}</me></p>
+				<p><me>y'</me></p>
+				<p><me>y''</me></p>
+				<p><me>y'''</me></p>
+				<p><me>y^{(4)}</me></p>
+				<p><me>...</me></p>
+				<p><me>y^{(n)}</me></p>
+			</sidebyside>
+			<sidebyside widths="12% 10% 10% 10% 10% 4% 10%" margins="10% 16%" valign="middle">
+				<p><me>\text{Leibniz}</me></p>
+				<p><me>\ds\frac{dy}{dx}</me></p>
+				<p><me>\ds\frac{d^2y}{dx^2}</me></p>
+				<p><me>\ds\frac{d^3y}{dx^3}</me></p>
+				<p><me>\ds\frac{d^4y}{dx^4}</me></p>
+				<p><me>...</me></p>
+				<p><me>\ds\frac{d^ny}{dx^n}</me></p>
+			</sidebyside>
+			<sidebyside widths="12% 10% 10% 10% 10% 4% 10%" margins="10% 16%" valign="middle">
+				<p><me>\text{Dot}\vphantom{\frac11}</me></p>
+				<p><me>\dot{y}</me></p>
+				<p><me>\ddot{y}</me></p>
+				<p><me>\dddot{y}</me></p>
+				<p><me>\ddddot{y}</me></p>
+				<p><me>...</me></p>
+				<p><me>\text{---}</me></p>
+			</sidebyside>
+		</p>
+
+		<task label="rq-whats-a-de-2">
+			<title> 🎯 Understanding Derivative Notation </title>
+			<statement>The expression <m>z^{(18)}</m> is the same as <m>z</m> to the power of 18.</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement> True </statement>
+					<feedback>Incorrect. Please read the note on derivative notation.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>False</statement>
+					<feedback>Correct!</feedback>
+				</choice>
+			</choices>
+			<feedback>
+				
+			</feedback>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="whats-a-de-wrapup">
+		<title> 🗝️ Key Takeaways </title>
+		<p>
+			<aside><title>🎧 Listen</title><p><audio source="audio/readings/c1/template.mp3" width="100%" /></p></aside>
+			<ul marker="square">
+				<li>A differential equation involves an unknown function and at least one of its derivatives.</li>
+				<li>It must contain an equals sign to be considered an equation.</li>
+				<li>Differential equations are a natural extension of algebra and calculus.</li>
+				<li>Notation varies by context but generally falls into prime, Leibniz, or dot notation.</li>
+			</ul>
+		</p>
+	</paragraphs>
+</section>
+
+<section label="de-components">
+	<title> Differential Equation Components </title>
+
+	<introduction label="de-components-intro">
+		<p>
+			Now that you can recognize a differential equation, it's time to look more closely at what it's made of. In this section, we'll break down the core components of a differential equation and explain the role each one plays in shaping it.
+		</p>
+	</introduction> 
+
+	<paragraphs xml:id="variables">
+		<title> Dependent and Independent Variables </title>
+		<p>
+			Every differential equation involves dependent and independent variables. The <term>dependent variable</term> is a function that depends on the <term>independent variable</term> and is the unknown function we're solving for. Because of this, the dependent variable always has derivatives applied to it, with respect to the independent variable.
+		</p>
+
+		<task label="chkpt-variables-1"><title> 🎯 Which Variable has the Derivative </title>
+			<statement>
+				<p>
+					In a differential equation, you would expect to see a derivative applied to the dependent variable.
+				</p>
+			</statement>
+
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							True
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The dependent variable in a differential equation always has a derivative applied to it.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							False
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. By definition, a differential equation involves derivatives of the dependent variable.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			For example, the differential equation:
+			<men xml:id="variables-de-1">
+				\frac{dy}{dx} + 2y = 4x^2.
+			</men>
+			has <m>y</m> as the dependent variable, it's the unknown function. Since the equation includes <m>dy/dx</m>, that tells us <m>y</m> is changing with respect to <m>x</m>, making <m>x</m> the independent variable.
+		</p>
+
+		<task label="chkpt-variables-2"><title> 🎯 Dependent vs. Independent </title>
+			<statement>
+				<p>
+					Which variable in the differential equation,
+					<me>
+						\frac{dP}{ds} + \frac{P}{s^2} = 17s
+					</me>,
+					represents the unknown function we would like to find?
+				</p>
+			</statement>
+			
+			<choices randomize="yes">
+
+				<choice>
+					<statement>
+						dependent variable, <m>s</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. <m>s</m> is neither the dependent variable, nor what we are solving for.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						independent variable, <m>s</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect! <m>s</m> is the independent variable, but it is not what we are solving for.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						dependent variable, <m>P</m>
+					</statement>
+					<feedback>
+						<p>
+							Yes! We are solving for the unknown, <m>P</m> which is the dependent variable in this equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						independent variable, <m>P</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. We are solving for <m>P</m>, but it is not the independent variable.
+						</p>
+					</feedback>
+				</choice>
+
+			</choices>
+
+		</task>
+
+		<p>
+			Identifying the dependent variable not only tells us what we're solving for, but it will also be an important part of determining which methods can be used to solve a differential equation.
+		</p>
+
+		<example>
+			<title> Identify the Variables </title>
+			<statement>
+				<p>
+					Identify the dependent and independent variable in each equation:
+					<me>
+						\frac{dP}{ds} + \frac{P}{s^2} = 17s,\qquad
+						u'' + t^2 u = 0,\qquad
+						Q'' = 11Q
+					</me>
+					
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The first equation contains <m>P</m> and <m>s</m>, but the presence of <m>dP/ds</m> implies <m>P</m> changes as <m>s</m> changes. So,
+					<ul marker="square">
+						<li><m>P</m> is the <em>unknown</em> function we solve for that depends on <m>s</m>.</li>
+						<li><em>dependent variable</em> <m>\rightarrow P</m> , <em>independent variable</em> <m>\rightarrow s</m> .</li>
+					</ul>
+				</p>
+
+				<p>
+					The middle equation contains <m>u</m> and <m>t</m>, but <m>u''</m> is the second derivative of <m>u</m>. So, <m>u</m> must change as <m>t</m> changes and
+					<ul marker="square">
+						<li><m>u</m> is the <em>unknown</em> function we solve for that depends on <m>t</m>.</li>
+						<li><em>dependent variable</em> <m>\rightarrow u</m> , <em>independent variable</em> <m>\rightarrow t</m> .</li>
+					</ul>
+				</p>
+			
+				<p>
+					Only <m>Q</m> appears in the last equation, but <m>Q''</m> indicates that <m>Q</m> is changing and so it must be the <em>dependent variable</em>. Typically, the independent variable will be clear from context of the problem, but in this case just assume whatever variable you like.
+				</p>
+			</solution>
+		</example>
+
+		<task label="chkpt-variables-3">
+			<title> 🎯 Identify the Unknown </title>
+				<statement>
+					<p>
+						For each differential equation, identify the variable that represents the solution
+					</p>
+					<p>
+						<sidebyside widths="5% 30% 20%" margins="20% 20%" valign="middle">
+							<p><m>1.</m></p>
+							<p><me>tm' + t^2 = 0</me></p>
+							<p>Answer: <fillin width="2" mode="string" answer="m" /></p>
+						</sidebyside>
+					</p>
+					<p>
+						<sidebyside widths="5% 30% 20%" margins="20% 20%" valign="middle">
+							<p><m>2.</m></p>
+							<p><me>Q^2 - 11Q = P''</me></p>
+							<p>Answer: <fillin width="2" mode="string" answer="P" /></p>
+						</sidebyside>
+					</p>
+					<p>
+						<sidebyside widths="5% 30% 20%" margins="20% 20%" valign="middle">
+							<p><m>3.</m></p>
+							<p><me>\frac{dx}{dy} = 2xy + 1</me></p>
+							<p>Answer: <fillin width="2" mode="string" answer="x" /></p>
+						</sidebyside>
+					</p>
+				</statement>
+				
+				<evaluation>
+					<evaluate>
+						<test>
+							<strcmp>\s*m\s*</strcmp>
+							<feedback>Yes, the solution to the differential equation is the dependent variable <m>m</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*M\s*</strcmp>
+							<feedback>No, <m>M</m> is not the same as <m>m</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*t\s*</strcmp>
+							<feedback>No, <m>t</m> is what the solution depends on, but it is not the solution itself.</feedback>
+						</test>
+						<test>
+							<strcmp>.*</strcmp>
+							<feedback>Incorrect. Carefully review the reading and try again.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test>
+							<strcmp>\s*P\s*</strcmp>
+							<feedback>Yes, the solution to the differential equation is the dependent variable <m>P</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*p\s*</strcmp>
+							<feedback>No, <m>p</m> is not the same as <m>P</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*Q\s*</strcmp>
+							<feedback>No. Carefully look at which variable has the derivative applied to it.</feedback>
+						</test>
+						<test>
+							<strcmp>.*</strcmp>
+							<feedback>Incorrect. That's not a variable in the equation.</feedback>
+						</test>
+					</evaluate>
+					<evaluate>
+						<test>
+							<strcmp>\s*x\s*</strcmp>
+							<feedback>Yes, the solution to the differential equation is the dependent variable <m>x</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*X\s*</strcmp>
+							<feedback>No, <m>X</m> is not the same as <m>x</m>.</feedback>
+						</test>
+						<test>
+							<strcmp>\s*y\s*</strcmp>
+							<feedback>No. Carefully look at which variable has the derivative applied to it.</feedback>
+						</test>
+						<test>
+							<strcmp>.*</strcmp>
+							<feedback>Incorrect. That's not a variable in the equation.</feedback>
+						</test>
+					</evaluate>
+				</evaluation>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="terms-of-a-de" xml:id="terms">
+		<title> Terms of a Differential Equation </title>
+
+		<p>
+			The word <q>term</q> is commonly used to describe a part of a mathematical expression. In a differential equation, a <term>term</term> refers to any part of the expression separated by plus (<m>+</m>) or minus (<m>-</m>) signs. For example, an equation might be structured like this:
+			<me>
+				\text{term}\ 1 + \text{term}\ 2 - \text{term}\ 3 = \text{term}\ 4 - \text{term}\ 5.
+			</me>
+			This equation has three terms on the left-hand side and two on the right.
+
+		</p>
+
+		<p>
+			Terms may include the dependent variable, its derivatives, constants, or other functions of the independent variable. If a term does <em>not</em> include the dependent variable or its derivatives, it is called a <term>constant term</term>. For instance, in the differential equation:
+		</p>
+
+		<me>
+			\frac{3}{x} y^{(6)} + 5.3 y'' + x^2 (y'-4)^3 - y = \frac12\ln(x)
+		</me>
+
+		<p>
+			the terms break down as follows:
+		</p>
+		
+		<p>
+			<tabular halign="center">
+				<row>
+					<cell bottom="minor"><m>y^{(6)}</m> term</cell>
+					<cell/>
+					<cell bottom="minor"><m>y''</m> term</cell>
+					<cell/>
+					<cell bottom="minor"><m>(y'-4)^3</m> term</cell>
+					<cell/>
+					<cell bottom="minor"><m>y</m> term</cell>
+					<cell/>
+					<cell bottom="minor">constant term</cell>
+				</row>
+				<row><cell/></row>
+				<row>
+					<cell><m>\ds \frac{3}{x} y^{(6)}</m></cell>
+					<cell/>
+					<cell><m>\ds 5.3 y''</m></cell>
+					<cell/>
+					<cell><m>\ds x^2 (y'-4)^3</m></cell>
+					<cell/>
+					<cell><m>\ds -y</m></cell>
+					<cell/>
+					<cell><m>\ds \frac12\ln(x)</m></cell>
+				</row>
+			</tabular>
+		</p>
+
+		<task label="chkpt-terms-1">
+			<title> 🎯 What is the Constant Term? </title>
+			<statement>
+				<p>
+					Identify the constant term in the differential equation
+					<me>3t^2 y' - 4t^2 = \frac{1}{t} y.</me>
+				</p>
+			</statement>
+
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<m>\quad 3t^2 y'</m>
+					</statement>
+					<feedback>
+						Incorrect. This term contains a derivative of the dependent variable <m>y</m>, so it is not a constant term.
+					</feedback>
+				</choice>
+
+				<choice>
+					<statement>
+						<m>\quad \ds\frac{1}{t} y</m>
+					</statement>
+					<feedback>
+						Incorrect. This term involves the dependent variable <m>y</m>, so it is not a constant term.
+					</feedback>
+				</choice>
+
+				<choice correct="yes">
+					<statement>
+						<m>\quad 4t^2</m>
+					</statement>
+					<feedback>
+						Correct! <m>4t^2</m> is the constant term because it does not contain the dependent variable <m>y</m>.
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			Every differential equation has a constant term, even if it's not written explicitly. For example, <m>y' = -3y</m> can be rewritten as <m>y' + 3y = 0</m>, where the constant term is <m>0</m>. In general, any missing term can always be interpreted as a zero term.
+		</p>
+
+		<task label="chkpt-terms-2">
+			<title> 🎯 Hidden Constant Term </title>
+			<statement>
+				<p>
+					Identify the constant term of the differential equation
+					<me>w''=3tw.</me>
+				</p>
+			</statement>
+
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<m>\quad 3tw</m>
+					</statement>
+					<feedback>
+						Incorrect. This term involves the dependent variable <m>w</m>, so it is not a constant term.
+					</feedback>
+				</choice>
+
+				<choice>
+					<statement>
+						<m>\quad 3t</m>
+					</statement>
+					<feedback>
+						Incorrect. This term involves the dependent variable <m>w</m>, so it is not a constant term.
+					</feedback>
+				</choice>
+
+				<choice correct="yes">
+					<statement>
+						<m>\quad 0</m>
+					</statement>
+					<feedback>
+						Correct! The constant term is <m>0</m> because we can rewrite the equation as <m>w'' - 3tw = 0</m>.
+					</feedback>
+				</choice>
+
+				<choice>
+					<statement>
+						This equation does not have a constant term.
+					</statement>
+					<feedback>
+						Incorrect. Every DE has a least one constant term.
+					</feedback>
+				</choice>
+
+			</choices>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="coefficients-of-a-de" xml:id="coefficients">
+		<title> Coefficients of a Differential Equation </title>
+
+		<p>
+			A <term>coefficient</term> in a differential equation is a constant or function (depending only on the independent variable) that multiplies the dependent variable or one of its derivatives. Coefficients help determine the structure of the equation and what solution methods are possible.
+		</p>
+
+		<p>
+			For example, in the equation:
+			<men xml:id="example-coefficients-of-a-de-1">
+				y'' - 3y' + 2y = 0,
+			</men>
+			the coefficients of <m>y''</m>, <m>y'</m>, and <m>y</m> are the constants <m>1</m>, <m>-3</m>, and <m>2</m>, respectively.
+		</p>
+
+		<p>
+			Coefficients can also be functions of the independent variable. In the equation:
+			<me>
+			t^2 y'' + 5t y' + 6y = \sin(t),
+			</me>
+			the coefficients are the functions of the independent variable <m>t</m>:
+		</p>
+
+		<p>
+			<tabular halign="center">
+			<row>
+				<cell><m>\ul{y''\text{ coefficient}}</m></cell>
+				<cell><m>\ul{y'\text{ coefficient}}</m></cell>
+				<cell><m>\ul{y\text{ coefficient}}</m></cell>
+			</row>
+			<row>
+				<cell><m>t^2</m></cell>
+				<cell><m>5t</m></cell>
+				<cell><m>6</m></cell>
+			</row>
+			</tabular>
+		</p>
+
+		<task label="chkpt-terms-coeffs-1a"><title> 🎯 Coefficient of <m>y'</m> </title>
+			<statement>	
+				<p>
+					Identify the coefficient of <m>y'</m> in the differential equation
+					<me>5y'' + 2\cos(t)y' - y = 7</me>
+				</p>	
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<m>\quad \cos(t)</m>
+					</statement>
+					<feedback>
+						Incorrect, <m>\cos(t)</m> is only part of the coefficient of <m>y'</m>.
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<m>\quad 2\cos(t)</m>
+					</statement>
+					<feedback>
+						Correct! <m>2\cos(t)</m> is the coefficient of the term involving <m>y'</m>.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<m>\quad 2</m>
+					</statement>
+					<feedback>
+						Incorrect, <m>2</m> is only part of the coefficient of <m>y'</m>.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<m>\quad 7</m>
+					</statement>
+					<feedback>
+						Incorrect. <m>7</m> is the constant on the right-hand side of the equation.
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			In general, for something to be considered a coefficient, it must not involve the dependent variable. If it does, the equation is nonlinear, and the notion of a "coefficient" becomes less useful. We'll explore this idea further when we study linear and nonlinear equations.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="de-components-cyu">
+		<title>✍ Check Your Understanding </title>
+		<p>
+			<task label="chkpt-terms-coeffs-1b"><title> 🎯 Identify the Coefficients </title>
+				<statement>
+					<p>
+						Click on each of the coefficients in the differential equation below.
+					</p>
+				</statement>
+				<areas>
+					<p>
+						<m>\phantom{vertical space hack - Is there a better way?}</m>
+						<sidebyside width="75%">
+							<p>
+								<area correct="yes"><m>	t						</m></area>
+								<area correct="no">	<m>\ds \frac{d^2y}{dt^2}	</m></area> <m>\ +\ </m>
+								<area correct="yes"><m>\ds t^2					</m></area>
+								<area correct="no">	<m>\ds y^2					</m></area> <m>\ -\ </m>
+								<area correct="yes"><m>\ds 4				 	</m></area>
+								<area correct="no">	<m>\ds y'					</m></area> <m>\ =\ </m>
+								<area correct="no">	<m>\ds y^{-1}				</m></area>
+								<area correct="yes"><m>\ds t				 	</m></area> <m>\ +\ </m>
+								<area correct="no">	<m>\ds \sin(t)				</m></area>
+							</p>
+						</sidebyside>
+						<m>\phantom{vertical space hack - Is there a better way?}</m>
+					</p>
+				</areas>
+				<hint>
+					<p>
+						Look for the dependent variable in each term. The coefficient is the constant or function that multiplies the dependent variable.
+					</p>
+				</hint>
+			</task>
+		</p>
+	</paragraphs>
+
+	<paragraphs label="de-components-wrapup">
+		<title> 🗝️ Key Takeaways </title>
+		<p>
+			<aside><title>🎧 Listen</title><p><audio source="audio/readings/c1/initial-conditions-wrapup.mp3" width="100%" /></p></aside>
+			<ul marker="square">
+				<li>Every differential equation involves two variables: a <term>dependent variable</term> (the unknown function we're solving for) and an <term>independent variable</term> (the variable it depends on).</li>
+				<li>A <term>term</term> is any part of a differential equation separated by plus or minus signs. Terms can include derivatives, the dependent variable, constants, or other functions of the independent variable.</li>
+				<li>A <term>constant term</term> is any term that doesn't involve the dependent variable or its derivatives, even a hidden <m>0</m> on one side of the equation counts.</li>
+				<li>A <term>coefficient</term> is a constant or function of the independent variable that multiplies the dependent variable or its derivatives. In nonlinear equations, this idea may not apply in a meaningful way.</li>
+			</ul>
+		</p>
+	</paragraphs>
+
+</section>
+
+<section label="order-linearity">
+	<title> Order &amp; Linearity </title>
+
+	<introduction label="order-linearity-intro">
+		<p>
+			So far, we've learned how to identify the core parts of a differential equation, its variables, terms, and coefficients. Now we'll turn to how differential equations are classified based on how these components appear. In this section, we'll focus on two of the most important classifications: the equation's <term>order</term>, which tells us the highest derivative involved, and its <term>linearity</term>, which depends on how the dependent variable and its derivatives appear in each term. Both properties play a central role in determining what kinds of solution methods apply.
+		</p>
+	</introduction>
+	
+	<paragraphs label="order">
+		<title> Order </title>
+
+		<p>
+			A differential equation must contain at least one derivative, but there's no limit on how many derivatives can appear. Some equations involve just a first derivative, while others include higher-order derivatives like <m>y''</m>, <m>y^{(3)}</m>, or beyond.
+		</p>
+
+		<p>
+			To capture this idea, we define the <term>order</term> of a differential equation as the highest derivative of the dependent variable that appears in the equation.
+		</p>
+
+		<task label="chkpt-order-1">
+			<title> 🎯 What is the Order </title>
+			<statement>
+				<p>
+					The order of a differential equation is determined by the number of terms it contains
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<p>
+							True
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The order is based on the highest derivative, regardless of the number of terms.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							False
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The order is determined by the highest derivative, not the number of terms.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			For example, the equation
+			<me>\frac{dy}{dx} + y = x</me>
+			is a <em>first-order</em> differential equation because the highest derivative is <m>\frac{dy}{dx}</m>. On the other hand, the differential equation
+			<me>
+				x^2y'' + y''' = \sin(x) + y^8
+			</me>
+			is <em>third-order</em> because it contains up to three derivatives in the <m>y'''</m> term.
+		</p>
+
+		<task label="chkpt-order-2">
+			<title> 🎯 Select the Third-Order Equation </title>
+			<statement>
+				<p>
+					Which of the following equations is a third-order differential equation?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad \ds\frac{d^3y}{dx^3} + x^2y = 0</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The highest derivative here is the third derivative, making it a third-order differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad \ds\frac{d^2y}{dx^2} + y' = \sin x</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This is a second-order differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad y'' + y' + y = 0</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This is a second-order differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad y' + y = x</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This is a first-order differential equation.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<example>
+			<title> Identify the Order </title>
+			<statement>
+				<p>
+					For each of the following differential equations, identify the order:
+					<me>
+					\frac{d^2 A}{dt^2} + \frac{dA}{dt} + A = 17, \qquad w^6 + \sin\big(w^{(5)}\big) = 0
+					</me>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The first equation is <em>second-order</em> because the highest derivative of <m>A</m> is <m>\frac{d^2 A}{dt^2}</m>.
+				</p>
+				<p>
+					A common pitfall for beginners is to confuse exponents with derivatives. In the second equation, the exponent in the term <m>w^6</m> refers to <m>w</m> raised to the sixth power, not a sixth derivative. Only derivatives affect the order.
+				</p>
+				<p>
+					So, the second equation is <em>fifth-order</em>. The fact that it appears inside a sine function makes no difference to the order.
+				</p>
+			</solution>
+		</example>
+
+		<task label="chkpt-order-3">
+			<title> 🎯 Give the Order of Each Differential Equation </title>
+			<statement>
+				<p>
+					Give the order of each differential equation:
+				</p>
+				<p>
+					<sidebyside widths="5% 50% 25%" margins="10% 10%" valign="middle">
+						<p><m>1.</m></p>
+						<p><me>(1 - x)y'' - x^4y' + y^5 = \cos x</me></p>
+						<p>Order: <fillin width="4" mode="string" answer="2" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 50% 25%" margins="10% 10%" valign="middle">
+						<p><m>2.</m></p>
+						<p><me>y''' + 3y' - 4y = 0</me></p>
+						<p>Order: <fillin width="4" mode="string" answer="3" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 50% 25%" margins="10% 10%" valign="middle">
+						<p><m>3.</m></p>
+						<p><me>t^3 \frac{d^2y}{dt^2} + \frac{d^5y}{dt^5} = \sin(t)</me></p>
+						<p>Order: <fillin width="4" mode="string" answer="5" /></p>
+					</sidebyside>
+				</p>
+			</statement>
+			
+			<evaluation>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(2|two|second|second order|second\-order)\s*</strcmp>
+						<feedback>Correct! The highest derivative is <m>y^{\prime\prime}</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(5|five|fifth)\s*</strcmp>
+						<feedback>Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.</feedback>
+					</test>
+					<test>
+						<strcmp>.*</strcmp>
+						<feedback>Carefully review the definition of order.</feedback>
+					</test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(3|three|third|third order|third-order)\s*</strcmp>
+						<feedback>Correct! The highest derivative is <m>y^{\prime\prime\prime}</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>.*</strcmp>
+						<feedback>Carefully review the definition of order.</feedback>
+					</test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(5|five|fifth|fifth order|fifth\-order)\s*</strcmp>
+						<feedback>Correct! The highest derivative is <m>\ds\frac{d^5y}{dt^5}</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(2|two|second)\s*</strcmp>
+						<feedback>Incorrect. Carefully review the definition of order and do not confuse the power of a variable with the order.</feedback>
+					</test>
+					<test>
+						<strcmp>.*</strcmp>
+						<feedback>Carefully review the definition of order.</feedback>
+					</test>
+				</evaluate>
+			</evaluation>
+		</task>
+
+	</paragraphs>
+
+	<paragraphs label="linear-terms">
+		<title> Linear Terms </title>
+
+		<p>
+			To decide whether a differential equation is linear, we first need to understand what it means for a <xref ref="summary-terms" text="custom">term</xref> to be linear. In this context, linearity refers to how the dependent variable and its derivatives appear in each term.
+		</p>
+
+		<p>
+			Let <m>y</m> be the dependent variable. A term is <term>linear</term> if it appears as either:
+			<men xml:id="linear-term-forms">
+				a(t), \quad a(t)y, \quad \text{or} \quad a(t)y^{(n)},
+			</men>
+			where the coefficient, <m>a(t)</m>, can be a constant or a function of the independent variable <m>t</m> only, and <m>y^{(n)}</m> is the <m>n</m>-th derivative of <m>y</m>.
+		</p>
+
+		<p>
+			For example, the following terms are linear:
+			<me>
+				\us{a(t)}{\us{\uparrow}{\ul{23}}}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{2t^3}}}y'', \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{\frac{1}{t}}}}y^{(5)}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{e^{2t}}}}y, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{7\sin(t)}}}y'.
+			</me>
+		</p>
+
+		<p>
+			The <xref ref="summary-coefficients" text="custom">coefficient</xref> of the term actually has no affect on whether it's linear, regardless of how complicated <m>a(t)</m> appears.
+		</p>
+
+		<task label="chkpt-linear-terms-1">
+			<title> 🎯 Identify the Coefficient </title>
+			<statement>
+				<p>
+					Each of the following terms is linear. Identify the coefficient <m>a(t)</m> in each term:
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>1.</m></p>
+						<p><me>2ty''</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="2t" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>2.</m></p>
+						<p><me>y^{(3)}\sin(t)</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="sin(t)" /></p>
+					</sidebyside>
+				</p>
+				<p>
+					<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+						<p><m>3.</m></p>
+						<p><me>y</me></p>
+						<p><m>a(t) = </m> <fillin width="4" mode="string" answer="1" /></p>
+					</sidebyside>
+				</p>
+			</statement>
+			
+			<evaluation>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(2t|2\s*t|2\s*\*\s*t|2\(t\))\s*</strcmp>
+						<feedback>Correct! <m>a(t) = 2t</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(2|two)\s*</strcmp>
+						<feedback>Incorrect. The coefficient is more than just <m>2</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(sin\(\s*t\s*\)|sin\s*t|sine\s*t)\s*</strcmp>
+						<feedback>Correct! <m>a(t) = \sin(t)</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(1|one)\s*</strcmp>
+						<feedback>Correct! <m>a(t) = 1</m>.</feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback>Type in something ...</feedback></test>
+					<test><strcmp>.*</strcmp><feedback>Incorrect</feedback></test>
+				</evaluate>
+			</evaluation>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="nonlinear-terms" xml:id="identifying-nonlinear-terms">
+		<title> Nonlinear Terms </title>
+
+		<p>
+			A term is <term>nonlinear</term> if it not in one of the forms in <xref ref="linear-term-forms"/>. Assuming <m>y</m> is the dependent variable, some telltale signs that a term is nonlinear include:
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> are raised to a power other than 1</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ y^2,\ (y')^{-4}</m></p>
+			</sidebyside>
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> appear inside a nonlinear function</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ \ln(y),\ \sin(y),\ e^{y'}</m>
+				</p>
+			</sidebyside>
+			<sidebyside widths="60% 5% 35%" valign="bottom">
+				<p>
+					<ul marker="square">
+						<li><p><m>y</m> or <m>y^{(n)}</m> are multiplied or divided by each other</p></li>
+					</ul>
+				</p>
+				<p/>
+				<p>e.g., <m>\ y y''',\ \sfrac{y'}{y}</m></p>
+			</sidebyside>
+		</p>
+
+		<p>
+			Let's apply these strategies by breaking down the linearity of each term in the following differential equation:
+			<me>
+			y\frac{d^5y}{dt^5} + 2t^3\ \frac{d^2y}{dt^2} + \ln\left(\frac{dy}{dt}\right) + y^2 = t^3
+			</me>
+		</p>
+
+		<p>
+			The terms are:
+		</p>
+
+		<dl>
+			<li>
+			<title> <m>\ds y\frac{d^5y}{dt^5}</m> </title>
+			<p>
+				Nonlinear. This term involves a product of the dependent variable and its derivative, violating the rule that only one can appear in a term.
+			</p>
+			</li>
+			<li>
+			<title> <m>\ds 2t^3\frac{d^2y}{dt^2}</m> </title>
+			<p>
+				Linear. The derivative <m>y''</m> appears by itself and to the first power. The coefficient <m>2t^3</m> does not affect linearity.
+			</p>
+			</li>
+			<li>
+			<title> <m>\ds \ln\left(\frac{dy}{dt}\right)</m> </title>
+			<p>
+				Nonlinear. The derivative <m>y'</m> appears inside a nonlinear function, the natural logarithm.
+			</p>
+			</li>
+			<li>
+			<title> <m>\ds y^2</m> </title>
+			<p>
+				Nonlinear. The dependent variable appears raised to a power other than one.
+			</p>
+			</li>
+			<li>
+			<title> <m>\ds t^3</m> </title>
+			<p>
+				Linear. This term doesn't involve the dependent variable or any of its derivatives.
+			</p>
+			</li>
+		</dl>
+
+		<task label="chkpt-nonlinear-terms-1">
+			<title> 🎯 Match Each Terms with its Linearity </title>
+			<statement>
+				<tabular>
+					<col width="3%"/>
+					<row>
+						<cell colspan="2">Directions:</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Match (by dragging) each term (on the left) to either Linear or Nonlinear.</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Assume the dependent variable is <m>y</m> and the independent variable is <m>t</m>.</cell>
+					</row>
+				</tabular>	
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m>3y''</m></premise>
+					<premise><m>t^2y</m></premise>
+					<premise><m>y' \cos t</m></premise>
+					<premise><m>3/t</m></premise>
+					<response>Linear</response>
+				</match>
+				<match>
+					<premise><m>y^2</m></premise>
+					<premise><m>\sin(y')</m></premise>
+					<response>Non-Linear Term</response>
+				</match>
+			</cardsort>
+			<feedback/>
+		</task>
+
+		<p>
+			See if you can identify the linearity of the terms in the following examples, before looking at the solutions.
+		</p>
+
+		<example>
+			<title> Identify the Linearity of the Terms </title>
+			<statement>
+			<p>Determine whether each term in the equation is linear or nonlinear:</p>
+			<sidebyside>
+				<p>
+				<m>
+					\ds\frac{1}{t}y'' + y^2 + \ln(y') = e^t
+				</m>
+				<solution>
+					<p>
+					Focus on the dependent variable, <m>{\color{BurntOrange} y}</m>, and its derivatives.
+					<md>
+						<mrow>
+						\underset{\overline{\text{linear}}}{\frac{1}{t}{\color{BurntOrange} y''}} +
+						\underset{\overline{\text{nonlinear}}}{{\color{BurntOrange} y}^2} +
+						\underset{\overline{\text{nonlinear}}}{\ln({\color{BurntOrange} y'})} =\ 
+						\underset{\overline{\text{linear}}}{e^t}
+						</mrow>
+					</md>
+					</p>
+				</solution>
+				</p>
+				<p>
+				<m>
+					\ds P^{(6)} + \frac{m P'}{P} = (m - 1)^2
+				</m>
+				<solution>
+					<p>
+					Focus on the dependent variable, <m>{\color{BurntOrange} P}</m>, and its derivatives.
+					<md>
+						<mrow>
+						\underset{\text{linear}}{\underline{\color{BurntOrange} P^{(6)}}} +
+						\underset{\overline{\text{nonlinear}}}{\frac{m {\color{BurntOrange} P'}}{{\color{BurntOrange} P}}} =\ 
+						\underset{\text{linear}}{\underline{(m - 1)^2}}
+						</mrow>
+					</md>
+					</p>
+				</solution>
+				</p>
+			</sidebyside>
+			</statement>
+		</example>
+
+		<task label="chkpts-linear-terms">
+			<title> 🎯 Identify the Nonlinear Terms </title>
+			<statement/>
+			<areas>
+				<p>
+					For each differential equation, click on all of the <em>nonlinear terms</em>.
+				</p>
+				<sidebyside width="75%">
+					<p>
+						<area correct="no"> <m>\ds \frac{d^2y}{dt^2} </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds t^2 y </m></area> <m>\ +\ </m>
+						<area correct="yes"><m>\ds y^2 </m></area> <m>\ -\ </m>
+						<area correct="no"> <m>\ds \sin(t) y' </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 3t </m></area>
+					</p>
+				</sidebyside>
+				<sidebyside width="80%">
+					<p>
+						<area correct="yes"><m>\ds tyy' </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds e^t \frac{d^3y}{dt^3} </m></area> <m>\ -\ </m>
+						<area correct="yes"><m>\ds \ln(y) </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds \frac{y}{t} </m></area> <m>\ +\ </m>
+						<area correct="yes"> <m>\ds \frac{t}{y}\frac{d^2y}{dt^2} </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 0 </m></area>
+					</p>
+				</sidebyside>
+				<p/>
+			</areas>
+		</task>
+
+	</paragraphs>
+
+	<paragraphs label="linearity">
+		<title> Linearity </title>
+
+		<p>
+			Now that we've defined what it means for a <xref ref="summary-terms" text="custom">term</xref> to be linear, we can describe what it means for an entire differential equation to be linear.
+		</p>
+
+		<p>
+			Essentially, a differential equation is <term>linear</term> if <em>every term in the equation is linear</em>. If just one term is nonlinear, the entire equation is <term>nonlinear</term>. We formally define linear differential equations as follows:
+		</p>
+
+		<task label="chkpt-linearity-1">
+			<title> 🎯 What Makes an Equation Linear of Nonlinear </title>
+			<statement>
+				<p>
+					Select the true statement.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>An equation is nonlinear if at least one of its terms are nonlinear.</statement>
+					<feedback>Correct! A differential equation is nonlinear if <em>any</em> of its terms are nonlinear.</feedback>
+				</choice>
+				<choice>
+					<statement>An equation is linear if at least one of its terms are linear.</statement>
+					<feedback>Incorrect. A differential equation needs <em>all</em> of its terms to be linear.</feedback>
+				</choice>
+				<choice>
+					<statement>As long as there are more linear terms than nonlinear terms, the equation is linear.</statement>
+					<feedback>Incorrect.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<definition xml:id="def-linear">
+			<title> Linear Differential Equations </title>
+			<statement>
+				<p>
+					A differential equation is <term>linear</term> if it can be written as a sum of linear terms involving the dependent variable and its derivatives:
+					<fn>
+					<p>
+						This structure is known as a <term>linear combination</term> of the dependent variable and its derivatives.
+					</p>
+					</fn>
+					<men xml:id="linear-equation">
+					\underset{\text{linear term}}{\underbrace{a_n(t)\ y^{(n)}}} + \cdots +
+					\underset{\text{linear term}}{\underbrace{a_2(t)\ y''}} +
+					\underset{\text{linear term}}{\underbrace{a_1(t)\ y'}} +
+					\underset{\text{linear term}}{\underbrace{a_0(t)\ y}} = f(t)
+					</men>
+					where each <m>a_k(t)</m> is a function of the independent variable only, and <m>f(t)</m> is the input or forcing term.
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			For example, the following differential equations are linear:
+		</p>
+
+		<men xml:id="linear-equation-examples">
+			3\frac{dy}{dx} + 2y = 0, \qquad y''' - 2y' - \frac{7}{x}y = e^x, \qquad w'' - \tan(t) = 3t.
+		</men>
+
+		<p>
+			Each term involving the dependent variable or its derivatives is linear, none appear raised to a power, inside a function, or multiplied together.
+		</p>
+
+		<p>
+			In contrast, the following equations are nonlinear because they include at least one nonlinear term (✷):
+		</p>
+
+		<men xml:id="nonlinear-equation-examples">
+			y' + \us{\large ✷}{\ul{ t y^2 }} = t, \qquad 
+			t \frac{dP}{dx} + \us{\large ✷}{\ul{ \sin(P) }} = t^2, \qquad 
+			\us{\large ✷}{\ul{\omega\omega^{(5)}}} + s = \us{\large ✷}{\ul{ e^\omega }}
+		</men>
+
+		<p>
+			In each case, it only took one term to violate the definition of a linear differential equation.
+		</p>
+
+		<p>
+			Let's practice identifying the linearty of entire equations with a few examples.
+		</p>
+
+		<example>
+			<title> Identify the Linearity of the Equation </title>
+			<statement>
+				<p>
+					Determine whether each of the following differential equations is linear:
+					<me>
+					y^{(5)} + \frac{y'}{x^2} + 5y = \ln x, \qquad P^{(6)} + \frac{m P'}{P} = (m - 1)^2
+					</me>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					In the first equation, all terms involving <m>y</m> or its derivatives appear linearly:
+					<md>
+					<mrow>
+						\underset{\overline{\text{linear}}}{\vphantom{\frac11}\color{BurntOrange} y^{(5)}} +
+						\underset{\overline{\text{linear}}}{\frac{1}{x^2} \color{BurntOrange} y'} +
+						\underset{\overline{\text{linear}}}{5 \color{BurntOrange} y} =\ 
+						\underset{\overline{\text{linear}}}{\ln x}
+					</mrow>
+					</md>
+					So the equation is linear.
+				</p>
+
+				<p>
+					In the second equation, the term <m>\frac{m P'}{P}</m> is nonlinear, since <m>P</m> appears in both the numerator and denominator:
+					<md>
+					<mrow>
+						\underset{\text{linear}}{\underline{\color{BurntOrange} P^{(6)}}} +
+						\underset{\overline{\text{nonlinear}}}{\frac{m \color{BurntOrange} P'}{\color{BurntOrange} P}} =\ 
+						\underset{\text{linear}}{(m - 1)^2}
+					</mrow>
+					</md>
+					This makes the entire equation nonlinear.
+				</p>
+			</solution>
+		</example>
+
+
+
+	</paragraphs>
+
+	<paragraphs label="order-linearity-cyu">
+		<title>✍ Check Your Understanding </title>
+		<p>
+			<task label="chkpt-linearity-2"><title> Identify the Linear Equations </title>
+				<statement>
+					<p>
+						Click-on all the <term>linear</term> differential equations.
+					</p>
+				</statement>
+				
+				<areas>
+					<tabular>
+						<row>
+							<cell><area correct="no"><m>\ds y'' + \sin(y) = 17t				</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t^2} + y = 17t	</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + 3y' + 2y = 0				</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no"><m>\ds y'' + y^2 = 17t					</m></area></cell>
+							<cell><area correct="yes"><m>\ds y'' + \frac{y'}{t} + y = 17t	</m></area></cell>
+							<cell><area correct="yes"><m>\ds y = y'							</m></area></cell>
+						</row>
+					</tabular>
+				</areas>
+
+				<hint>
+					<p>
+						Remember that a linear differential equation contains only linear terms. Four of these equations are linear.
+					</p>
+				</hint>
+
+				<feedback>
+					<p>
+						Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.
+					</p>
+				</feedback>
+			</task>
+
+			<task label="chkpt-linearity-3"><title> Identify the Nonlinear Equations </title>
+				<statement>
+					<p>
+						Click-on all the <term>nonlinear</term> differential equations
+					</p>
+				</statement>
+				<areas>
+					<tabular>
+						<row>
+							<cell><area correct="yes">	<m>\ds \frac{dx}{ds} = x^2 - 4						</m></area></cell>
+							<cell><area correct="no">	<m>\ds \frac{d^2u}{dz^2} - 5 \frac{du}{dz} + 6u = 0	</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dp}{d\tau} + \sin(p) = \tau^2			</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="no">	<m>\ds \frac{dw}{dv} + 2vw = \cos(v)				</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dr}{d\theta} + r^3 = \theta			</m></area></cell>
+							<cell><area correct="no">	<m>\ds \frac{dN}{dt} = -N							</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes">	<m>\ds \frac{dm}{dq} = m^3 - q^2					</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dz}{dt} + z\frac{dz}{dt} = t^3			</m></area></cell>
+							<cell><area correct="yes">	<m>\ds \frac{dy}{dx} = y \ln(y)						</m></area></cell>
+						</row>
+					</tabular>
+				</areas>
+				<hint>
+					<p>
+						First identify the dependent variable, then carefully look at each term to determine if it is nonlinear. There are six nonlinear equations here.
+					</p>
+				</hint>
+				<feedback>
+					<p>
+						Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.
+					</p>
+				</feedback>
+			</task>
+		</p>
+	</paragraphs>
+
+	<paragraphs label="order-linearity-wrapup">
+		<title> 🗝️ Key Takeaways </title>
+		<p>
+			<aside><title>🎧 Listen</title><p><audio source="audio/readings/c1/initial-conditions-wrapup.mp3" width="100%" /></p></aside>
+			<ul marker="square">
+				<li>
+					The <term>order</term> of a differential equation is the highest derivative of the dependent variable that appears. Only derivatives, not exponents, affect the order.
+				</li>
+				<li>
+					A <term>linear term</term> includes exactly one occurrence of the dependent variable or one of its derivatives, raised to the first power and not inside another function. Coefficients do not affect linearity.
+				</li>
+				<li>
+					A <term>nonlinear term</term> involves a product, quotient, exponent, or function of the dependent variable or its derivatives.
+				</li>
+				<li>
+					A differential equation is <term>linear</term> if all terms involving the dependent variable are linear. If even one is nonlinear, the entire equation is classified as <term>nonlinear</term>.
+				</li>
+			</ul>
+		</p>
+	</paragraphs>
+
+</section>

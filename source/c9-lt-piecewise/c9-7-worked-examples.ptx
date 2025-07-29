@@ -12,463 +12,140 @@
 
 	<subsection><title> Worked Example 1 </title>
 
-		<identity><title> Solution Roadmap </title>
-			<p>
-				<sidebyside widths="48% 10% 42%" valign="middle">
-					<p>
-						<md>
-							<mrow> y'' + 4y = g(t)	</mrow>
-							<mrow> y(0) = 0,\ y'(0) = 0	</mrow>
-						</md>
-					</p>
-					<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
-					<p>
-						<me>
-							\small s^2Y + 4Y = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-						</me>
-					</p>
-				</sidebyside>
-				<sidebyside widths="65% 10% 25%" valign="middle">
-					<p/>
-					<p><me>\downarrow</me></p>
-					<p>2️⃣ Solve for <m>Y(s)</m></p>
-				</sidebyside>
-			</p>
-			<p>
-				<sidebyside widths="48% 10% 42%" valign="middle">
-					<p/>
-					<p/>
-					<p>
-						<me>
-							\small Y(s) = \frac{1}{s^2 + 4} \left( \frac{e^{-s}}{s} - \frac{e^{-2s}}{s} \right)
-						</me>
-					</p>
-				</sidebyside>
-			</p>
-			<p>
-				<sidebyside widths="65% 10% 25%" valign="middle">
-					<p/>
-					<p><me>\downarrow</me></p>
-					<p>3️⃣ Prep for inverse</p>
-				</sidebyside>
-			</p>
-			<p>
-				<sidebyside widths="48% 10% 42%" valign="middle">
-					<p>
-						<md>
-							<mrow>
-								\small y(t) 
-								= \left(\frac14 - \frac18\cos(2(t - 1))\right)u_1(t)\amp
-							</mrow>
-							<mrow>
-								\small
-								- \left(\frac14 - \frac18\cos(2(t - 2))\right)\amp\small u_2(t)
-							</mrow>
-						</md>
-					</p>
-					<p>
-						<me>
-							\os{\Large\text{4️⃣}}{\us{\large\text{inverse}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}
-						</me>
-					</p>
-					<p>
-						<md>
-							<mrow>\small Y(s)	\amp\small = F(s)e^{-s} - F(s)e^{-2s}</mrow>
-							<mrow>\small 		\amp\small F(s) = \frac14\left(\frac{1}{s} - \frac{s}{s^2 + 4}\right)</mrow> 
-						</md>
-					</p>
-				</sidebyside>
-			</p>
-		</identity>
+		<paragraphs>
+			<title> The Model Equation </title>
 
-		<p>
-			Solve the initial value problem
-			<men xml:id="ex-7-3-worked-example-1">
-				y'' + 4y = g(t), \qquad y(0) = 0,\quad y'(0) = 0
-			</men>
-			where
-			<me>
-				g(t) = \left\{
-					\begin{array}{ll}
-						1, \amp 1 \le t \lt 2 \\
-						0, \amp \text{otherwise}.
+			<p>
+				We will walk through the Laplace Method by solving the following initial value problem with a piecewise forcing term:
+			</p>
+
+			<mdn>
+				<mrow xml:id="lt-method-piecewise-model-eqn"> 
+					\amp 
+					\begin{array}{l}
+						y'' + y = g(t) \\
+						y(0) = 0,\ y'(0) = 0
 					\end{array}
-				\right.
-			</me>
-		</p>
-
-		<paragraphs><title> Step 1: Apply the Laplace Transform to Both Sides </title>
-			<p>
-				Apply <m>\laplacesym</m> to both sides:
-				<me>
-					\lap{y''} + 4\lap{y} = \lap{g(t)}
-				</me>
-			</p>
-			<p>
-				Using rules <xref ref="L9-eqn" text="custom"><m>L_{9}</m></xref> and <xref ref="L10-eqn" text="custom"><m>L_{10}</m></xref>, the left side becomes:
-				<me>
-					s^2Y(s) + 4Y(s) = \lap{g(t)}
-				</me>
-			</p>
+					\quad\text{where}\quad g(t) =
+					\left\{
+					\begin{array}{ll}
+						2t, \amp 0 \le t \lt 1 \\
+						3,  \amp 1 \le t \lt 4 \\
+						0,  \amp t \ge 4
+					\end{array}
+					\right.
+				</mrow>
+			</mdn>
 
 			<p>
-				The piecewise function, <m>g(t)</m>, must be rewritten using unit step functions before we can take its transform. Since it has one piece active on <m>1 \le t \lt 2</m>, we can rewrite it as:
-				<me>
-					g(t) = 1 \cdot (u_1(t) - u_2(t)) \quad \os{\Large<xref ref="L13-eqn" text="custom">L13</xref>}{\implies} \quad \lap{g(t)} = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-				</me>
+				Summarize the differences...
 			</p>
-
-			<p>
-				So the Laplace domain equation is:
-				<me>
-					s^2Y(s) + 4Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-				</me>.
-			</p>
-
 		</paragraphs>
 
-		<paragraphs><title> Step 2: Solve for the Laplace Solution, <m>Y(s)</m> </title>
+		<paragraphs label="piecewise-forward">
+			<title> Step 1 — Into the Laplace Domain </title>
 			<p>
-				Factor out <m>Y(s)</m> from the left side and divide to isolate it:
+				Recall that our first step is to apply the Laplace transform of both sides of <xref provisional="lt-method-piecewise-model-eqn"/>:
+				<me>
+					\lap{y'' + y} = \lap{g(t)}
+				</me>
+			</p>
+
+			<p>
+				It's clear how to handle the left-side, but the right-side requires the transform of a piecewise function. Before we can use the rules we derived in this chapter, we first need to write <m>g(t)</m> in unit step form.
+			</p>
+
+			<p>
+				Apply the Laplace transform to both sides of the differential equation:
+				<me>
+					y'' + y = \left\{
+					\begin{array}{ll}
+						0,       \amp t \lt 1 \\
+						3t,      \amp 1 \le t \lt 2 \\
+						0,       \amp t \ge 2
+					\end{array}
+					\right., 
+					\qquad
+					y(0) = 0,\quad y'(0) = 0
+				</me>
+			</p>
+
+			<p>
+				The forcing function is active only from <m>t = 1</m> to <m>t = 2</m>, so we rewrite it using a unit step window:
+				<me>
+					g(t) = 3t \cdot \left(u_1(t) - u_2(t)\right).
+				</me>
+			</p>
+
+			<p>
+				Apply the Laplace transform to both sides of the DE:
+				<me>
+					\lap{y'' + y} = \lap{3t \cdot (u_1(t) - u_2(t))}.
+				</me>
+				On the left-hand side, using <m>y(0) = y'(0) = 0</m>, we have:
+				<me>
+					s^2 Y(s) + Y(s).
+				</me>
+			</p>
+
+			<p>
+				On the right-hand side, distribute the Laplace transform:
+				<me>
+					\lap{3t \cdot (u_1(t) - u_2(t))} = 3\lap{t \cdot u_1(t)} - 3\lap{t \cdot u_2(t)}.
+				</me>
+
+				Use the shift rule for each term:
+				<md>
+					<mrow> \lap{t \cdot u_1(t)} = e^{-s} \lap{t + 1} = e^{-s} \cdot \lap{t + 1} </mrow>
+					<mrow> \lap{t \cdot u_2(t)} = e^{-2s} \lap{t + 2} = e^{-2s} \cdot \lap{t + 2} </mrow>
+				</md>
+
+				Now apply linearity and known transforms:
+				<md>
+					<mrow> \lap{t + c} = \lap{t} + c\lap{1} = \frac{1}{s^2} + \frac{c}{s} </mrow>
+				</md>
+
+				So:
 				<md>
 					<mrow>
-						(s^2 + 4)Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-						\quad\implies\quad
-						Y(s) = \frac{1}{s^2 + 4} \left( \frac{e^{-s}}{s} - \frac{e^{-2s}}{s} \right)
+						\lap{3t \cdot (u_1 - u_2)} 
+						\amp = 3e^{-s}\left(\frac{1}{s^2} + \frac{1}{s}\right) 
+						- 3e^{-2s}\left(\frac{1}{s^2} + \frac{2}{s}\right)
 					</mrow>
 				</md>
 			</p>
-		</paragraphs>
-
-		<paragraphs><title> Step 3: Prepare <m>Y(s)</m> for an Inverse Transform </title>
-			<p>
-				Our goal here is to express <m>Y(s)</m> in a form that matches rules from the Laplace transform table. Since <m>Y(s)</m> contains exponentials, we want to write its terms in the form <m>e^{-cs}F(s)</m>, which matches the left side of rule <xref ref="L15-eqn" text="custom"><m>L_{15}</m></xref>.
-			</p>
 
 			<p>
-				Rearranging <m>Y(s)</m> in this way, we have:
+				Combining both sides, we arrive at the Laplace equation:
 				<me>
-					Y(s) = \frac{1}{s(s^2 + 4)}e^{-s} - \frac{1}{s(s^2 + 4)}e^{-2s}
+					(s^2 + 1)Y(s) = 3e^{-s}\left(\frac{1}{s^2} + \frac{1}{s}\right) 
+					- 3e^{-2s}\left(\frac{1}{s^2} + \frac{2}{s}\right).
 				</me>
-			</p>
-			<p>
-				It is helpful to define a shorthand for the rational functions next to <m>e^{-s}</m> and <m>e^{-2s}</m>:
-				<me>
-					F(s) = \frac{1}{s(s^2 + 4)}
-				</me>
-				so that
-				<me>
-					Y(s) = F(s)e^{-s} - F(s)e^{-2s}
-				</me>
-			</p>
-			<p>
-				This form sets us up perfectly for Step 4. Since that step requires the inverse transform of <m>F(s)</m>, we also need its partial fraction decomposition:
+				This completes Step 1.
 			</p>
 
-			<me>
-				F(s) = \frac{1}{s(s^2 + 4)} = \frac14\left(\frac{1}{s} - \frac{s}{s^2 + 4}\right)
-			</me>
-
-			<solution><title> Full Partial Fraction Decomposition Details of <m>F(s)</m> </title>
-				<p>
-					We start with:
-					<me>
-						F(s) = \frac{1}{s(s^2 + 4)}
-					</me>
-					Using the standard form for decomposition:
-					<me>
-						\frac{1}{s(s^2 + 4)} = \frac{A}{s} + \frac{Bs + C}{s^2 + 4}
-					</me>
-					Multiply both sides by the common denominator <m>s(s^2 + 4)</m>:
-					<md>
-						<mrow>1 \amp = A(s^2 + 4) + (Bs + C)s</mrow>
-						<mrow>\amp = (A + B)s^2 + Cs + 4A</mrow>
-					</md>
-				</p>
-
-				<p>
-					Matching coefficients gives:
-				</p>
-
-				<sidebyside widths="20% 6% 20%" margins="20% 20%" valign="middle">
-					<p>
-						<md>
-							<mrow>A + B \amp = 0</mrow>
-							<mrow>C \amp = 0</mrow>
-							<mrow>4A \amp = 1</mrow>
-						</md>
-					</p>
-					<p><me>\Rightarrow</me></p>
-					<p>
-						<md>
-							<mrow>A \amp = \sfrac14</mrow>
-							<mrow>B \amp = -\sfrac14</mrow>
-							<mrow>C \amp = 0</mrow>
-						</md>
-					</p>
-				</sidebyside>
-
-				<p>
-					So we can now write:
-					<me>
-						F(s) = \frac14 \left( \frac{1}{s} - \frac{s}{s^2 + 4} \right)
-					</me>
-				</p>
-			</solution>
-
 			<p>
-				This completes our preparation of <m>Y(s)</m> for the inverse transform in Step 4.
+				Now that we've built the Laplace equation, the remaining steps are familiar. We'll solve for <m>Y(s)</m>, simplify, and invert. But there's one twist: the presence of <m>e^{-cs}</m> terms means we'll need special care when taking the inverse Laplace transform. Let's explore that next.
 			</p>
 		</paragraphs>
 
-		<paragraphs><title> Step 4: Invert <m>Y(s)</m> to Recover <m>y(t)</m> </title>
-			<p>
-				We now compute:
-				<aside>
-					<p>
-						<em>Remember:</em>
-						<me>F(s) = \lap{f(t)}</me>,
-						which means:
-						<me>f(t) = \ilap{F(s)}</me>
-					</p>
-				</aside>
-				<me>
-					y(t) = \ilap{F(s)e^{-s}} - \ilap{F(s)e^{-2s}}
-				</me>
-				Applying <xref ref="L15-eqn" text="custom"><m>L_{15}</m></xref>, our solution becomes:
-				<me>
-					y(t) = f(t - 1)\cdot u_1(t) - f(t - 2)\cdot u_2(t)
-				</me>.
-				We still need <m>f(t - 1)</m> and <m>f(t - 2)</m>, but since <m>f(t) = \ilap{F(s)}</m> we compute:
-				<md>
-					<mrow>
-						f(t) \amp
-						= \ilap{\frac14\left(\frac{1}{s} - \frac{s}{s^2 + 4}\right)}
-					</mrow>
-					<mrow>
-						\amp
-						= \frac14\ilap{\frac{1}{s}} - \frac14\ilap{\frac{s}{s^2 + 4}} = \frac14 - \frac18\cos(2t)
-					</mrow>
-				</md>
-			</p>
-			<p>
-				Using <m>f(t)</m> to find <m>f(t - 1)</m> and <m>f(t - 2)</m> gives us our solution:
-				<me>
-					y(t) = \left(\frac14 - \frac18\cos\big(2(t - 1)\big)\right)u_1(t)
-						- \left(\frac14 - \frac18\cos\big(2(t - 2)\big)\right)u_2(t)
-				</me>
-			</p>
-			<p>
-				This is the complete solution for all <m>t \ge 0</m>.
-			</p>
+		<paragraphs label="piecewise-laplace-domain">
+			<title> Step 2 — Solving in the Laplace Domain </title>
+			
 		</paragraphs>
 
-		<example><title> Similar Problem </title>
-			<statement>
-				<p>
-					Solve the initial value problem
-					<me>
-						y'' + 2y' = g(t), \qquad y(0) = 0,\quad y'(0) = 0
-					</me>
-					where
-					<me>
-						g(t) = \left\{
-							\begin{array}{ll}
-								3, \amp 0 \le t \lt 1 \\
-								0, \amp 1 \le t \lt 4 \\
-								1, \amp t \ge 4 \\
-							\end{array}
-						\right.
-					</me>
-				</p>
-			</statement>
-			<solution>
-				<p>
-					<identity><title>Roadmap-Summary</title>
-						<p>
-							<sidebyside widths="30% 12% 58%" valign="middle">
-								<p>
-									<md>
-										<mrow>	y'' + 2y' = g(t)	</mrow>
-										<mrow>	\small y(0) = 0,\ y'(0) = 0	</mrow>
-									</md>
-								</p>
-								<p><me>\os{\Large\text{1️⃣}}{\us{\large\text{forward}}{\os{\large\laplacesym}{\longrightarrow}}}</me></p>
-								<p>
-									<me>
-										s^2Y + 2sY = \frac{e^{-1s}}{s} - \frac{e^{-2s}}{s}
-									</me>
-								</p>
-							</sidebyside>
-							<sidebyside widths="60% 10% 30%" valign="middle">
-								<p/>
-								<p><me>\downarrow</me></p>
-								<p>2️⃣ Solve for <m>Y</m></p>
-							</sidebyside>
-						</p>
-						<p>
-							<sidebyside widths="40% 10% 50%" valign="middle">
-								<p/>
-								<p/>
-								<p>
-									<me>
-										Y(s) = \frac{1}{s(s + 2)}(e^{-s} - e^{-2s})
-									</me>
-								</p>
-							</sidebyside>
-						</p>
-						<p>
-							<sidebyside widths="60% 10% 30%" valign="middle">
-								<p/>
-								<p><me>\downarrow</me></p>
-								<p>3️⃣ Prepare for <m>\laplacesym^{-1}</m></p>
-							</sidebyside>
-							<sidebyside widths="38% 12% 50%" valign="middle">
-								<p>
-									<me>
-										y(t) = \left(1 - e^{-2(t - 1)}\right)u_1(t)
-										- \left(1 - e^{-2(t - 2)}\right)u_2(t)
-									</me>
-								</p>
-								<p><me>\os{\Large\text{4️⃣}}{\us{\large\text{backward}}{\os{\large\laplacesym^{-1}}{\longleftarrow}}}</me></p>
-								<p>
-									<me>
-										Y(s) = \frac{1}{s(s + 2)}(e^{-s} - e^{-2s})
-									</me>
-								</p>
-							</sidebyside>
-						</p>
-					</identity>
+		<paragraphs label="piecewise-inverse">
+			<title> Step 3 — Leaving the Laplace Domain </title>
 
-					<paragraphs><title>Prepare the Forcing Function for Step 1</title>
-						<p>
-							We begin by writing <m>g(t)</m> in terms of unit step functions. Since it equals 1 on <m>[1, 2)</m> and 0 elsewhere:
-							<me>
-								g(t) = u_1(t) - u_2(t)
-							</me>
-							The differential equation becomes:
-							<me>
-								y'' + 2y' = u_1(t) - u_2(t), \qquad y(0) = 0,\quad y'(0) = 0
-							</me>
-						</p>
-					</paragraphs>
+			<p>
+				Once we've solved for <m>Y(s)</m> in the Laplace domain, the final challenge is to take the inverse Laplace transform. When the forcing function was continuous, this step relied on partial fractions and matching terms from the Laplace table. That still works here, but now we'll also see terms involving exponentials like <m>e^{-cs}F(s)</m>.
+			</p>
 
-					<paragraphs><title>Step 1: Apply the Laplace Transform to Both Sides</title>
-						<p>
-							Apply the Laplace transform to both sides:
-							<me>
-								\lap{y''} + 2\lap{y'} = \lap{u_1(t)} - \lap{u_2(t)}
-							</me>
-							Using <xref ref="L9-eqn" text="custom"><m>L_{9}</m></xref> and <xref ref="L8-eqn" text="custom"><m>L_{8}</m></xref> for the left-hand side, and <xref ref="L13-eqn" text="custom"><m>L_{13}</m></xref> for the right, we get:
-							<me>
-								s^2Y(s) + 2sY(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-							</me>
-						</p>
-					</paragraphs>
+			<p>
+				These exponentials come directly from transforming unit step expressions. To move back to the <m>t</m>-domain, we need a new tool: a rule that undoes the exponential shift.
+			</p>
 
-					<paragraphs><title>Step 2: Solve for <m>Y(s)</m></title>
-						<p>
-							Factor out <m>Y(s)</m>:
-							<md>
-								<mrow>
-									(s^2 + 2s)Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
-								</mrow>
-								<mrow>
-									= s(s + 2)Y(s)
-								</mrow>
-							</md>
-							Then divide:
-							<me>
-								Y(s) = \frac{1}{s(s + 2)}(e^{-s} - e^{-2s})
-							</me>
-						</p>
-					</paragraphs>
-
-					<paragraphs><title>Step 3: Prepare <m>Y(s)</m> for an Inverse Transform</title>
-						<p>
-							We now rewrite <m>Y(s)</m> as:
-							<me>
-								Y(s) = F(s)(e^{-s} - e^{-2s})
-							</me>
-							where
-							<me>
-								F(s) = \frac{1}{s(s + 2)}
-							</me>
-						</p>
-						<p>
-							This tells us the inverse will be of the form:
-							<me>
-								y(t) = f(t - 1)\cdot u_1(t) - f(t - 2)\cdot u_2(t)
-							</me>
-							but we first need to identify <m>f(t)</m> by computing <m>\ilap{F(s)}</m>.
-						</p>
-
-						<solution><title>Partial Fraction Decomposition of <m>F(s)</m></title>
-							<p>
-								Write:
-								<me>
-									F(s) = \frac{1}{s(s + 2)} = \frac{A}{s} + \frac{B}{s + 2}
-								</me>
-								Multiply both sides by <m>s(s + 2)</m>:
-								<me>
-									1 = A(s + 2) + B(s)
-								</me>
-								Substitute values:
-								<ul marker="square">
-									<li>Let <m>s = 0</m>: <m>1 = A(2)</m> → <m>A = \frac{1}{2}</m></li>
-									<li>Let <m>s = -2</m>: <m>1 = B(-2)</m> → <m>B = -\frac{1}{2}</m></li>
-								</ul>
-								Thus:
-								<me>
-									F(s) = \frac{1}{2} \cdot \frac{1}{s} - \frac{1}{2} \cdot \frac{1}{s + 2}
-								</me>
-							</p>
-						</solution>
-
-						<p>
-							This completes our preparation for the inverse transform.
-						</p>
-					</paragraphs>
-
-					<paragraphs><title>Step 4: Invert <m>Y(s)</m> to Recover <m>y(t)</m></title>
-						<p>
-							We now compute:
-							<me>
-								y(t) = \ilap{F(s)e^{-s}} - \ilap{F(s)e^{-2s}}
-							</me>
-							Using <xref ref="L15-eqn" text="custom"><m>L_{15}</m></xref>, this becomes:
-							<me>
-								y(t) = f(t - 1)\cdot u_1(t) - f(t - 2)\cdot u_2(t)
-							</me>
-							where
-							<md>
-								<mrow>
-									f(t) = \ilap{F(s)} = \frac{1}{2}\ilap{\frac{1}{s}} - \frac{1}{2}\ilap{\frac{1}{s + 2}}
-								</mrow>
-								<mrow>
-									= \frac{1}{2} - \frac{1}{2}e^{-2t}
-								</mrow>
-							</md>
-						</p>
-						<p>
-							Substituting:
-							<me>
-								y(t) = \left(1 - e^{-2(t - 1)}\right)\cdot \frac{1}{2}u_1(t)
-									- \left(1 - e^{-2(t - 2)}\right)\cdot \frac{1}{2}u_2(t)
-							</me>
-							Or simplified:
-							<me>
-								y(t) = \left(1 - e^{-2(t - 1)}\right)u_1(t)
-									- \left(1 - e^{-2(t - 2)}\right)u_2(t)
-							</me>
-						</p>
-						<p>
-							This is the complete solution for all <m>t \ge 0</m>.
-						</p>
-					</paragraphs>
-				</p>
-			</solution>
-		</example>
+		</paragraphs>
 
 	</subsection>
 

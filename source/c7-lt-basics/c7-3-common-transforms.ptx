@@ -144,9 +144,9 @@
 					<title>💡 Derivation of L<m>_1</m> </title>
 					<p>
 						By definition, we have
-						<men xml:id="lt-def-example-eqn-1">
+						<me>
 							\lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
-						</men>.
+						</me>.
 					</p>
 
 					<p>
@@ -205,12 +205,35 @@
 				</p>
 
 				<p>
-					Focusing just on the integral and treating <m>7-s</m> as constant, we let <m>u=7-s</m> and apply <m>u</m>-substitution:
+					<proof xml:id="lt-example-2-details"><title>🔍 Focusing just on the integral, we let <m>u=7-s</m> and apply <m>u</m>-substitution: </title>
+						<p>
+							👉 Using <m>u</m>-substitution with
+							<md>
+								<mrow>
+									u	\amp = \ob{(7-s)}^{\text{constant}}t
+								</mrow>
+								<mrow>
+									du	\amp = (7-s)dt \quad \Rightarrow \quad dt = \frac{du}{7-s}
+								</mrow>
+							</md>
+							the integral is compute as
+							<md>
+								<mrow>
+									\int_0^b e^{(7-s)t}\ dt	= \int_{t=0}^{t=b} e^{u}\frac{du}{7-s}
+									\amp = \frac{1}{7-s}\int_{t=0}^{t=b} e^{u}\ du
+								</mrow>
+								<mrow>
+									\amp = \frac{1}{7-s} \left[ e^{u} - 1 \right]\Bigg|_{t=0}^{t=b}
+								</mrow>
+								<mrow>
+									\amp = \frac{1}{7-s} \left[ e^{7-s} - 1 \right]\Bigg|_{0}^{b}
+								</mrow>
+							</md>.
+						</p>
+					</proof>
 					<md>
 						<mrow>
-							\int_0^b e^{(7-s)t}\, dt
-							<xref text="custom" ref="lt-example-2-details"><m>\os{\large ❔}{=}</m></xref> 
-							\frac{1}{7-s} e^{(7-s)t} \Bigg|_0^b
+							\int_0^b e^{(7-s)t}\, dt = \frac{1}{7-s} e^{(7-s)t} \Bigg|_0^b
 							\amp = \frac{1}{7-s} \left( e^{(7-s)b} - e^{0} \right)
 						</mrow>
 						<mrow>
@@ -230,7 +253,7 @@
 				</p>
 
 				<p>
-					As before, <m>L</m> goes to <m>0</m> if the <term><xref ref="graph-of-exp-t" text="custom">power of the exponential function</xref></term> goes to <m>-\infty</m>. This only happens if <m>7-s</m> is negative. That is, <m>\ 7-s \lt 0\ </m> or <m>\ 7 \lt s</m>. 
+					As before, <m>L</m> goes to <m>0</m> if the <term><xref ref="exponential-end-behavior" text="custom">power of the exponential function</xref></term> goes to <m>-\infty</m>. This only happens if <m>7-s</m> is negative. That is, <m>\ 7-s \lt 0\ </m> or <m>\ 7 \lt s</m>. 
 				</p>
 
 				<p>
@@ -425,12 +448,31 @@
 				</p>
 
 				<p>
-					Applying integration by parts to <m>I</m> once in <m>\lap{ t^{n} }</m> shows
+					<proof xml:id="lt-example-tnth-IVP-details"><title>🔍 Apply integration by parts to <m>I</m> </title>
+						<p>
+							<md>
+								<mrow> u = t^n,				\quad\amp	dv = e^{-st}dt, 		</mrow>
+								<mrow> du = nt^{n-1}\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+							</md>
+							integration by parts gives
+							<md>
+								<mrow>
+									\lap{ t^{n} }
+									\amp = \lim_{b \to \infty} \left[-\frac{t^{n}}{s}e^{-sb}\Bigg|_0^b - \int_0^b \left(-\frac{1}{s}e^{-st}\right)\cdot nt^{n-1}\ dt\right]
+								</mrow>
+								<mrow>
+									\amp = \lim_{b \to \infty} \left[\left(-\frac{b^n}{s}e^{-sb} - 0\right) + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+								</mrow>
+								<mrow>
+									\amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+								</mrow>
+							</md>
+						</p>
+					</proof>
 					<md>
 						<mrow>
 							\lap{ t^{n} }
 							\amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
-							<xref ref="lt-example-tnth-IVP-details" text="custom">🔍How?</xref>
 						</mrow>
 						<mrow>
 							\amp = -\frac{1}{s} \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}}\right] + \frac{n}{s}\lim_{b \to \infty}\int_0^b e^{-st}\cdot t^{n-1}\ dt
@@ -445,8 +487,37 @@
 					Noticing that the improper integral is just <m>\lap{t^{n-1}}</m>, we have
 					<me>
 						\lap{ t^{n} } = -\frac{1}{s}\cdot L + \frac{n}{s}\cdot \lap{t^{n-1}}
-					</me>,
-					but <m>L=0</m> if <m>s \gt 0</m> <xref ref="lt-example-tnth-LH-details" text="custom">(🔍How?)</xref>, so we have the relationship
+					</me>.
+				</p>
+
+				<p>
+					<proof xml:id="lt-example-tnth-LH-details"><title>🔍 Since <m>L=0</m> if <m>s \gt 0</m>, we have </title>
+						<p>
+							The reasoning is the same as in <xref ref="lt-example-tnth-IVP-details" text="custom">previous solution</xref> except we apply L'Hôpital's rule <em>n</em> times. So we have
+							<md>
+								<mrow>
+									\lim_{b \to \infty}\frac{b^n}{e^{sb}}\
+									\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+									\lim_{b \to \infty}\frac{nb^{n-1}}{se^{sb}}
+									= \frac{n}{s}\lim_{b \to \infty}\frac{b^{n-1}}{e^{sb}}
+								</mrow>
+								<mrow>
+									\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+									\frac{n}{s}\lim_{b \to \infty}\frac{(n-1)b^{n-2}}{se^{sb}}
+									= \frac{n(n-1)}{s^2}\lim_{b \to \infty}\frac{b^{n-2}}{e^{sb}}
+								</mrow>
+								<mrow>
+									\amp \qquad\qquad \vdots \quad LH\ \ n-2 \text{ more times}
+								</mrow>
+								<mrow>
+									\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+									\frac{n!}{s^n}\lim_{b \to \infty}\frac{1}{se^{sb}}
+									= \frac{n!}{s^{n+1}}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+									= 0
+								</mrow>
+							</md>
+						</p>
+					</proof>
 				</p>
 
 				<me>
@@ -598,7 +669,18 @@
 							\Bigg)
 						</mrow>
 					</md>
-					Since <xref ref="lt-example-4-details" text="custom"><m>L_1\to0</m> &amp; <m>L_2\to0</m> if <m>s \gt 0</m></xref>, we can conclude that
+				</p>
+
+				<p>
+					<proof xml:id="lt-example-4-details"><title>🔍 Since <m>L_1 \to 0</m> &amp; <m>L_2 \to 0</m> if <m>s \gt 0</m>, we can conclude that </title>
+						<p>
+							👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, Thus, their product must approach zero. That is,
+							<me>
+								\lim_{b \to \infty} e^{-sb} \cos(3b) = 0 \quad \text{and} \quad \lim_{b \to \infty} e^{-sb} \sin(3b) = 0
+							</me>
+						</p>
+					</proof>
+					
 					<me>
 						\lap{\cos(3t)} = \frac{s}{s^2 + 9}, \quad s \gt 0
 					</me>.

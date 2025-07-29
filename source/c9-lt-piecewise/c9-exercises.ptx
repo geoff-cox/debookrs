@@ -1606,6 +1606,81 @@
 		</task>
 	</exercises>
 
+	<exercises><title> Piecewise Inverse Transform </title>
+		<example><title> Inverse Transform of an Exponential Shift </title>
+			<statement>
+				<p>
+					Find <m>y(t)</m> if:
+					<me>
+						Y(s) = e^{-3s} \cdot \frac{2}{s^2 + 9}
+					</me>
+				</p>
+			</statement>
+
+			<solution><title> <m>\rightarrow</m> Inverse Laplace Transform </title>
+				<p>
+					This is already in the form <m>e^{-cs}F(s)</m> with <m>c = 3</m> and <m>F(s) = \frac{2}{s^2 + 9}</m>.
+				</p>
+
+				<p>
+					The inverse transform of <m>\frac{2}{s^2 + 9}</m> is <m>\sin(3t)</m>, since this matches the standard form:
+					<me>\ilap{ \frac{b}{s^2 + b^2} } = \sin(bt)</me>.
+				</p>
+
+				<p>
+					Applying the shift rule:
+					<me>
+						y(t) = u_3(t) \cdot \sin(3(t - 3)) = u_3(t)\cdot \sin(3t - 9)
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			This simple rule allows us to invert even complicated-looking expressions like <m>e^{-2s}(s + 1)/(s^2 + 4)</m>. First invert the expression without the exponential, then shift and multiply by <m>u_2(t)</m>.
+		</p>
+
+		<example><title> Inverse Transform with Shifting and Sinusoids </title>
+			<statement>
+				<p>
+					Find <m>f(t)</m> if:
+					<me>
+						F(s) = e^{-2s} \cdot \frac{s}{s^2 + 4}
+					</me>
+				</p>
+			</statement>
+
+			<solution><title> <m>\rightarrow</m> Inverse Laplace Transform </title>
+				<p>
+					We identify this as <m>e^{-2s} \cdot F(s)</m>, where
+					<me>
+						F(s) = \frac{s}{s^2 + 4}.
+					</me>
+
+					This matches the form for <m>\cos(2t)</m>:
+					<me>\ilap{ \frac{s}{s^2 + b^2} } = \cos(bt).</me>
+				</p>
+
+				<p>
+					So the inverse is:
+					<me>
+						f(t) = u_2(t) \cdot \cos(2(t - 2)) = u_2(t)\cdot \cos(2t - 4)
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			As these examples show, returning to the time domain with step functions is just a matter of shifting. In each case:
+			<ol>
+				<li>Ignore the exponential and find the inverse as usual.</li>
+				<li>Replace <m>t</m> with <m>t - c</m>.</li>
+				<li>Multiply by <m>u_c(t)</m>.</li>
+			</ol>
+			This rule works for every exponential shift that came from a <m>u_c(t)</m> factor in the original problem.
+		</p>
+	</exercises>
+
 	<exercises><title> Piecewise Forcing Functions </title>
 
 		<exercisegroup>
