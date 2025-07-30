@@ -1,0 +1,321 @@
+<section label="autonomous-eqns">
+	<title> Autonomous Equations </title>
+	<introduction>
+		<p>
+			When the first-order differential equation <xref ref="yp-equals-fty"/> contains no explicit <m>t</m> terms, it reduces to:
+			<men xml:id="autonomous-eqn">
+				\frac{dy}{dt} = f(y).
+			</men>
+			This is called an <term>autonomous differential equation</term>.
+		</p>
+
+		<p>
+			<q>Autonomous</q> means <q>self-governing.</q> In these equations, the rate of change of <m>y</m> depends only on <m>y</m> itself, not on time <m>t</m>. The system's behavior is determined entirely by its current state. Think of a compressed spring: it pushes back the same way whether it's morning or midnight. Time doesn't matter, only how far it's compressed.
+		</p>
+	</introduction>
+
+	<paragraphs label="slope-fields-of-autonomous-eqns">
+		<title> Slope Fields of Autonomous Equations </title>
+
+		<p>
+			Autonomous equations have a distinctive look in their slope fields. Consider:
+		</p>
+
+		<me>y' = y^2 - 1</me>.
+
+		<p>
+			Here, the slope at any point <m>(t,y)</m> depends only on <m>y</m>. Moving up or down (changing <m>y</m>) changes the slope, but sliding left or right (changing <m>t</m>) does not. The result is a <q>striped</q> slope field—each horizontal line has the same slope pattern all the way across.
+		</p>
+
+		<p>
+			<xref ref="changing-constant-slopes"/> illustrates this. As you go up the plane, the slope segments gradually rotate, reflecting how <m>f(y)</m> changes with <m>y</m>. But moving sideways leaves the segments fixed—the slopes don't shift with <m>t</m>.
+		</p>
+
+		<figure xml:id="autonomous-slope-symmetry">
+			<caption> Symmetry in the slope field for <m>y' = y^2 - 1</m> </caption>
+			<sidebyside widths="38.5% 3.5% 36%" margins="11% 11%" valign="top">
+				<figure xml:id="changing-constant-slopes">
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[declare function={f(\x,\y)=(\y)^2-1;}, scale=0.8]
+
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{-0.5} \def\tmax{3}
+								\def\ymin{-1.5} \def\ymax{2.5}
+								\def\tstep{0.25}  \def\ystep{0.25}
+								\def\arrowscale{0.2} % length of slope arrows
+								\def\segmentwt{0.8pt} % thickness of slope segments
+
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+								% Draw grid lines
+								\foreach \i in {0,...,\nt} {
+									\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+									\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+								}
+								\foreach \j in {0,...,\ny} {
+									\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+									\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+								}
+
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.5, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.5) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\pgfmathparse{\t &lt; 0}
+									\ifnum\pgfmathresult=1	 % shift negative ticks
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below, xshift=-0.01cm] {\t};
+									\else
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below] {\t};
+									\fi
+								}
+
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {\yLint,...,\yRint}
+									\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+									node[font=\tiny, left] {\y};
+
+								% Title
+								%\node[above, font=\small\bfseries] at (current bounding box.north) 
+								%	{Slope field for \quad $y' = x + y$};
+
+								\draw[fill=green!40!black] (1.375,\ymin) rectangle (1.625,\ymax);
+								\draw[&lt;-] (1.5, \ymax) -- (1.5, \ymax+0.25) node[font=\tiny, above, yshift=-0.15cm] {Rotating};
+								\draw[fill=blue!40!black] (\tmin,1.875) rectangle (\tmax,2.125);
+								\draw[-&gt;] (\tmax+0.3,1.4) -- (\tmax+0.3,2) -- (\tmax,2);
+								\draw (\tmax,1.25) node[font=\tiny, right, xshift=-0.1cm] {Fixed};
+								\draw[fill=blue!40!black] (\tmin,0.375) rectangle (\tmax,0.625);
+								\draw[-&gt;] (\tmax+0.3,1.1) -- (\tmax+0.3,0.5) -- (\tmax,0.5);
+								
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
+
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+								}
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+					<caption> Rotating slope segments for changing <m>y</m> and fixed slope segments for changing <m>t</m> </caption>
+				</figure>
+				<p/>
+				<figure xml:id="horizontal-solution-symmetry">
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[declare function={f(\x,\y)=(\y)^2-1;}, scale=0.8]
+
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{-0.5} \def\tmax{3}
+								\def\ymin{-1.5} \def\ymax{2.5}
+								\def\tstep{0.25}  \def\ystep{0.25}
+								\def\arrowscale{0.2} % length of slope arrows
+								\def\segmentwt{0.8pt} % thickness of slope segments
+
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+								% Draw grid lines
+								\foreach \i in {0,...,\nt} {
+									\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+									\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+								}
+								\foreach \j in {0,...,\ny} {
+									\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+									\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+								}
+
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.5, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.5) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\pgfmathparse{\t &lt; 0}
+									\ifnum\pgfmathresult=1	 % shift negative ticks
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below, xshift=-0.01cm] {\t};
+									\else
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below] {\t};
+									\fi
+								}
+
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {\yLint,...,\yRint}
+									\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+									node[font=\tiny, left] {\y};
+
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
+
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+								}
+								
+								% Solution curves
+								\def\yo{0}
+								\foreach \to in {0, 1, 2, 3} {
+									\draw[fill=white!50] (\to,\yo) circle (2.0pt);
+									\pgfmathsetmacro{\Co}{(\yo+1)/(\yo-1) * exp(2*\to)}
+									\draw[magenta, thick, samples=100]
+										plot[domain=\tmin:\tmax] (\x, {(\Co + exp(2*\x))/(\Co - exp(2*\x))});
+								}
+
+								\def\yo{1.5}
+								\foreach \to in {0, 1, 2} {
+									\draw[fill=white!50] (\to,\yo) circle (2.0pt);
+									\pgfmathsetmacro{\Co}{(\yo+1)/(\yo-1) * exp(2*\to)}
+									\draw[magenta, thick, samples=100]
+										plot[domain=\tmin:0.384+\to] (\x, {(\Co + exp(2*\x))/(\Co - exp(2*\x))});
+								}
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+					<caption> Horizontal shift symmetry of solutions to autonomous differential equations </caption>
+				</figure>
+			</sidebyside>
+		</figure>
+
+		<p>
+			This symmetry isn't just in the slope field, it shows up in the <em>solutions</em> themselves. As seen in <xref ref="horizontal-solution-symmetry"/>, if you know one solution curve for an autonomous equation, you can create others simply by shifting that solution horizontally. That's because the equation doesn't <q>know</q> what time it is; it only cares about <m>y</m>.
+		</p>
+	</paragraphs>
+
+	<assemblage label="autonomous-eqns-wrap-up">
+		<title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="autonomous-eqns-takeaways">
+				<title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>A first-order autonomous equation has the form <me>\frac{dy}{dt} = f(y).</me></li>
+					<li>Its slope field forms horizontal <q>stripes</q>: the slope is constant along each horizontal line because it depends only on <m>y</m>.</li>
+					<li>Solutions show horizontal shift symmetry: if <m>y(t)</m> is a solution, so is <m>y(t+c)</m> for any constant <m>c</m>.</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="autonomous-eqns-cyu">
+				<title> Check Your Understanding </title>
+
+				<exercise label="autonomous-eqns-cyu-bundle">
+					<title>📖❓Autonomous Equations </title>
+					<task label="autonomous-eqns-cyu-1">
+						<title>📖❓ What does a slope field represent? </title>
+						<statement>
+							<p>
+								Suppose you compute the slope of an autonomous differential equation be <m>3</m> at the point <m>(2, 1)</m>. What is the slope at <m>(-3, 1)</m>?
+							</p>
+						</statement>
+
+						<choices>
+							<choice correct="no">
+								<statement><m>0</m></statement>
+								<feedback>This is incorrect. The slope depends only on <m>y</m>, not on <m>t</m>.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement><m>-3</m></statement>
+								<feedback>This is incorrect. The slope function is <m>f(y)</m>, so <m>t</m> doesn't affect the result.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement><m>1</m></statement>
+								<feedback>No, remember that the slope at a point <m>(t, y)</m> depends solely on <m>y</m>.</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>3</m></statement>
+								<feedback>Correct. Since <m>y = 1</m> at both points, the slope is the same: <m>f(1) = 3</m>, regardless of <m>t</m>.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement>Impossible to answer.</statement>
+								<feedback>This is incorrect. The value of <m>f(y)</m> is determined entirely by <m>y</m>, so this is answerable.</feedback>
+							</choice>
+						</choices>
+					</task>
+
+					<task label="autonomous-eqns-cyu-3">
+						<title>📖❓ Shifting Solutions</title>
+						<statement>
+							<p>
+							Suppose <m>y(t)</m> is a solution to the autonomous equation <m>y' = f(y)</m>.  
+							Which of the following must also be a solution?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><m>\ y(t + 3)</m></statement>
+								<feedback>Exactly—autonomous equations ignore the clock. Shifting in time just slides the solution along the <m>t</m>-axis.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ y(t) + 3</m></statement>
+								<feedback>Adding to <m>y</m> changes the function itself—this doesn't preserve the solution.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ 3\ y(t)</m></statement>
+								<feedback>Scaling <m>y</m> is not guaranteed to produce another solution unless the DE is linear, which this one may not be.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ y(-t)</m></statement>
+								<feedback>Flipping time is not generally a symmetry—it changes how <m>y</m> evolves.</feedback>
+							</choice>
+						</choices>
+					</task>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

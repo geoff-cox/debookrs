@@ -1,0 +1,362 @@
+<section label="slope-fields">
+	<title> Slope Fields </title>
+	<introduction>
+
+		<p>
+			When working with first-order differential equations, you can obtain valuable insights about their solutions without actually solving them. By focusing on how these solutions change rather than what they are, you can utilize a <term>slope field</term> to visualize the path of any potential solution.
+		</p>
+
+		<p>
+			A slope field visually represents the slopes that a solution curve must follow at each point in the plane, depicted by small arrows indicating the direction a solution would take—similar to how a leaf moves with the water flow in a stream.
+		</p>
+
+		<p>
+			The pattern created by a slope field provides a visual representation of the <em>family of solutions</em> to the differential equation. In this way, a slope field represents not just a single solution, but all possible solutions. If you pick any point, there is a unique curve that passes through it, guided by the nearby arrows.
+		</p>
+	</introduction>
+
+	<paragraphs label="slope-fields-eqn-to-slope"><title> From Equation to Slope </title>
+		<p>
+			Every first-order differential equation combines <m>t</m>, <m>y</m>, and <m>y'</m>. By rearranging terms, we can always write it as:
+			<me>
+				f(t, y, y') = 0,
+			</me>
+			where <m>f</m> collects all terms. For example:
+			<me>
+				y' - ty = 2 - t^2 \quad \Rightarrow \quad
+				\ub{y' - ty - 2 + t^2}_{\large f(t, y, y')} = 0.
+			</me>
+		</p>
+
+		<p>
+			When it is possible to isolate <m>y'</m>, we write:
+			<men xml:id="yp-equals-fty">
+				y' = f(t, y).
+			</men>
+		</p>
+
+		<p>
+			Here <m>f(t,y)</m> acts like a <q>slope generator</q>: give it any point <m>(t,y)</m> and it outputs the slope the solution must have there. For instance, if <m>t=3</m> and <m>y=5</m>,
+			<me>
+				y'(3) = f(3, 5) = \text{some number}.
+			</me>
+		</p>
+
+		<p>
+			Since <m>y'(3)</m> is the tangent slope of <m>y</m> at <m>t=3</m>, this number tells you the direction the graph is heading at <m>(3,5)</m>.
+		</p>
+
+		<example>
+			<title>Quick Slope Check</title>
+			<statement>
+				<p>
+					For
+					<me>y' - ty = 2 - t^2</me>,
+					find the slope at <m>(t,y)=(-1,6)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>Rearranging gives <me>y' = ty + 2 - t^2</me>, so <m>f(t,y)=ty+2-t^2</m>. Substitute:</p>
+				<me>f(-1,6) = (-1)(6)+2-(-1)^2 = -5.</me>
+				<p>Any solution through <m>(-1,6)</m> leaves that point with slope <m>-5</m>.</p>
+			</solution>
+		</example>
+		
+		<exercise label="slope-fields-cyu-2">
+			<title>📖❓ Using the slope generator</title>
+			<statement>
+			<p>
+				Suppose we have the differential equation <m>y' = t + 2y</m>. What is the slope of any solution curve passing through <m>(t,y) = (1,-2)</m>?
+			</p>
+			</statement>
+			<choices randomize="yes">
+			<choice correct="yes">
+				<statement><m>-3</m></statement>
+				<feedback>Substitute into <m>f(t,y) = t + 2y</m>: <m>1 + 2(-2) = -3</m>. That's the tangent slope there.</feedback>
+			</choice>
+			<choice>
+				<statement><m>3</m></statement>
+				<feedback>This would be the slope if y were positive, but here y = -2 changes the result.</feedback>
+			</choice>
+			<choice>
+				<statement><m>-1</m></statement>
+				<feedback>Check your math—substitute carefully into <m>t + 2y</m>.</feedback>
+			</choice>
+			<choice>
+				<statement><m>1</m></statement>
+				<feedback>This would only account for the <m>t</m> term—don't forget the <m>2y</m> part.</feedback>
+			</choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="slope-fields-sketching"><title> Sketching a Slope Field  </title>
+		
+		<p>To sketch a slope field by hand:</p>
+		<ol>
+			<li>Select a small grid of points in the <m>(t,y)</m>-plane.</li>
+			<li>Compute <m>f(t,y)</m> at each point.</li>
+			<li>Draw a short line segment at the point with that slope.</li>
+		</ol>
+
+		<p>
+			For example, take
+			<me>\frac{dy}{dt} = y - t.</me>
+			Computing nine slopes on a <m>3\times3</m> grid yields:
+		</p>
+
+
+		<sidebyside widths="44% 28%" margins="5% 5%" valign="middle">
+			<tabular halign="center">
+				<col right="minor"/>
+				<col halign="right"/>
+				<row bottom="minor"><cell><m> (t , y) </m></cell><cell><m> f(t,y) = y - t </m></cell></row>
+				<row><cell><m> (-1 , -1 ) </m></cell><cell><m> -1-(-1)= 0 </m></cell></row>
+				<row><cell><m> (-1 ,  0 ) </m></cell><cell><m> -1-(-0)= 1 </m></cell></row>
+				<row><cell><m> (-1 ,  1 ) </m></cell><cell><m> -1-( 1)= 2 </m></cell></row>
+				<row><cell><m> ( 0 , -1 ) </m></cell><cell><m>  0-(-1)= 1 </m></cell></row>
+				<row><cell><m> ( 0 ,  0 ) </m></cell><cell><m>  0-( 0)= 0 </m></cell></row>
+				<row><cell><m> ( 0 ,  1 ) </m></cell><cell><m>  0-( 1)=-1 </m></cell></row>
+				<row><cell><m> ( 1 , -1 ) </m></cell><cell><m>  1-(-1)=-2 </m></cell></row>
+				<row><cell><m> ( 1 ,  0 ) </m></cell><cell><m>  1-( 0)=-1 </m></cell></row>
+				<row><cell><m> ( 1 ,  1 ) </m></cell><cell><m>  1-( 1)= 0 </m></cell></row>
+			</tabular>
+			<image>
+				<latex-image>
+					\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
+
+						\pgfkeys{/pgf/number format/.cd,
+							fixed,
+							precision=0
+						}
+						\def\tmin{-2} \def\tmax{2}
+						\def\ymin{-2} \def\ymax{2}
+						\def\tmargin{1} % extra space around the grid
+						\def\ymargin{1} % extra space around the grid
+						\def\nt{2}  \def\ny{2}
+						\def\arrowscale{0.7} % length of slope arrows
+
+						% stepsize along t-axis and y-axis
+						\pgfmathsetmacro{\tL}{\tmin + \tmargin}
+						\pgfmathsetmacro{\tR}{\tmax - \tmargin}
+						\pgfmathsetmacro{\yL}{\ymin + \ymargin}
+						\pgfmathsetmacro{\yR}{\ymax - \ymargin}
+						\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
+						\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
+
+						% Draw grid lines
+						\foreach \i in {0,...,\nt} {
+							\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+							\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+						}
+						\foreach \j in {0,...,\ny} {
+							\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+							\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+						}
+
+						% Axes
+						\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
+						\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
+
+						% Bounding box
+						\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+						% Tick marks and labels on t-axis
+						\foreach \t in {\tL,...,\tR} {
+						\pgfmathparse{\t &lt; 0}
+						\ifnum\pgfmathresult=1	 % shift negative ticks
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below, xshift=-0.1cm] {\pgfmathprintnumber{\t}};
+						\else
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below] {\pgfmathprintnumber{\t}};
+						\fi
+						}
+
+						% Tick marks and labels on y-axis
+						\foreach \y in {\yL,...,\yR}
+							\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
+							node[font=\tiny, left] {\pgfmathprintnumber{\y}};
+
+						% Title
+						%\node[above, font=\small\bfseries] at (current bounding box.north) 
+						%	{Slope field for \quad $y' = x + y$};
+
+						% slope field: just draw a vector at each point
+						\foreach \i in {0,...,\nt}
+						\foreach \j in {0,...,\ny}{
+
+							\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+							\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+							\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+							% Normalize direction vector (1, slope) to fixed length
+							\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+							\pgfmathsetmacro{\dt}{\arrowscale / \len}
+							\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+							%\draw[teal!90, -stealth, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							\draw[teal!75, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+						}
+
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</sidebyside>
+
+		<p>
+			Sketching by hand builds intuition but becomes tedious with more points. Computer-generated slope fields fill in the gaps, showing a dense web of arrows. In <xref ref="y-t-slope-field-16x16"/>, the solution curve through <m>(0,\frac12)</m> flows smoothly along the arrows, like an object carried by a current.
+		</p>
+
+		<sidebyside widths="44%" margins="28% 28%" valign="middle">
+			<figure xml:id="y-t-slope-field-16x16">
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-4} \def\tmax{4}
+							\def\ymin{-4} \def\ymax{4}
+							\def\tmargin{0.5} \def\ymargin{0.5} % extra space around the grid
+							\def\nt{14}  \def\ny{14}
+							\def\arrowscale{0.4} % length of slope arrows
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tmargin}
+							\pgfmathsetmacro{\tR}{\tmax - \tmargin}
+							\pgfmathsetmacro{\yL}{\ymin + \ymargin}
+							\pgfmathsetmacro{\yR}{\ymax - \ymargin}
+							\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
+							\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
+
+							% Draw grid lines
+							\foreach \i in {0,...,\nt} {
+								\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+								\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+							}
+							\foreach \j in {0,...,\ny} {
+								\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+								\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+							}
+
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+							\pgfmathparse{\t &lt; 0}
+							\ifnum\pgfmathresult=1	 % shift negative ticks
+								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+								node[font=\tiny, below, xshift=-0.1cm] {\t};
+							\else
+								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+								node[font=\tiny, below] {\t};
+							\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% Title
+							%\node[above, font=\small\bfseries] at (current bounding box.north) 
+							%	{Slope field for \quad $y' = x + y$};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								%\draw[teal!60, arrows = {-Stealth[width=4pt, length=4pt, inset=3pt]}, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								\draw[teal!75, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+							% Optional solution curve
+							\def\yo{0.5}
+							\draw[magenta, thick, samples=100] 
+								plot[domain=\tmin:2.74] (\x, {\x - \yo*exp(\x) + 1});
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = y - t</m></caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			A slope field turns an equation into a navigational chart. Each arrow is an instruction every solution must obey. The entire field represents the whole family of solutions, making it possible to see patterns in the solution, all without solving for <m>y</m> explicitly. Next, we'll look at <em>autonomous equations</em>, whose slope fields reveal even more structure.
+		</p>
+	</paragraphs>
+
+	<assemblage label="slope-fields-wrap-up"><title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="slope-fields-takeaways"><title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>
+						A slope field shows the flow that any solution curve must follow.
+					</li>
+					<li>
+						The function <m>f(t,y)</m> acts as a slope generator for <m>y(t)</m> at any point <m>(t,y)</m>.
+					</li>
+					<li>
+						To sketch a slope field: pick points, compute slopes, and draw short segments.
+					</li>
+					<li>
+						Computer-generated slope fields provide a fuller, denser map and make solution behavior clear even without a formula.
+					</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="slope-fields-cyu"><title> Check Your Understanding </title>
+				<exercise label="slope-fields-cyu-1">
+					<title>📖❓ What does a slope field represent? </title>
+					<statement>
+						<p>
+							Which statement best describes what a slope field shows for a first-order differential equation?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>It shows the general flow pattern of any solution.</statement>
+							<feedback>A slope field visualizes the slope each solution must take through every point—like a map of directional instructions for all solutions.</feedback>
+						</choice>
+						<choice>
+							<statement>It shows the general flow pattern of a specific solution.</statement>
+							<feedback>A slope field doesn't display one solution—it encodes the entire family of solutions.</feedback>
+						</choice>
+						<choice>
+							<statement>It gives the formulas for all solutions to the equation.</statement>
+							<feedback>No formulas appear in a slope field; it's a picture of slopes, not algebraic expressions.</feedback>
+						</choice>
+						<choice>
+							<statement>It plots the solution curve for any solution.</statement>
+							<feedback>A slope field shows the direction a solution must go, not the actual solution curve.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

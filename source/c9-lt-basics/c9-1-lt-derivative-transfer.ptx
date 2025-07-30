@@ -1,0 +1,323 @@
+<section label="lt-derivative-transfer">
+	<title> Derivative Transfer via Integration by Parts </title>
+
+	<introduction>
+		<p>
+			Before we apply the Laplace transform to solve differential equations, we need to understand its foundational mechanism: transferring derivatives within an integral. This section begins with a quick refresher on integration by parts (IBP), emphasizing how derivatives applied to one function can be shifted to another. This transfer process is the key that unlocks the Laplace transform method.
+		</p>
+
+		<lemma>
+			<title> Differentiation and Integration Essentials </title>
+			<p>
+				Let's quickly review two essential tools: how exponentials behave under differentiation, and the integration by parts formula we will use throughout this chapter.
+			</p>
+			<p>
+				<task xml:id="derivative-transfer-prep-1">
+					<title> 📖❓ Exponential Derivatives </title>
+					<statement>
+						<p>Match each exponential function with its derivative with respect to <m>t</m>. Assume <m>s</m> is constant.</p>
+					</statement>
+					<cardsort>
+						<match>
+							<premise><m>  e^{2t} </m></premise>
+							<response><m> 2e^{2t} </m></response>
+						</match>
+						<match>
+							<premise><m>  e^{-4t} </m></premise>
+							<response><m> -4e^{-4t} </m></response>
+						</match>
+						<match>
+							<premise><m>  e^{\pi t} </m></premise>
+							<response><m> \pi e^{\pi t} </m></response>
+						</match>
+						<match>
+							<premise><m>  e^{st} </m></premise>
+							<response><m> se^{st} </m></response>
+						</match>
+						<match>
+							<premise><m>  e^{-st} </m></premise>
+							<response><m> -se^{-st} </m></response>
+						</match>
+					</cardsort>
+				</task>
+
+				<task xml:id="derivative-transfer-prep-2">
+					<title> 📖❓ Integration by Parts </title>
+					<statement>
+						<p>Click on the correct integration by parts formula.</p>
+					</statement>
+					<areas>
+						<p/>
+						<p>
+							<sidebyside margins="10% 5%">
+								<p><area correct="no"> <m>\ds \int u dv = \int v du</m></area></p>
+								<p><area correct="no"> <m>\ds \int u dv = uv + \int v du</m></area></p>
+							</sidebyside>
+						</p>
+						<p>
+							<sidebyside margins="10% 5%">
+								<p><area correct="yes"><m>\ds \int u dv = uv - \int v du</m></area></p>
+								<p><area correct="no"> <m>\ds \int u dv = udv - \int u dv</m></area></p>
+							</sidebyside>
+						</p>
+					</areas>
+				</task>
+			</p>
+		</lemma>
+	</introduction>
+
+	<subsection xml:id="lt-review-integration-by-parts">
+		<title> Review of Integration by Parts (IBP) </title>
+
+		<p>
+			Integration by parts is a core calculus technique that allows us to transfer derivatives from one function to another inside an integral. Its most common form is:
+			<me>
+				\int_{a}^{b} u\ dv = uv\big|_{a}^{b} - \int_{a}^{b} v\ du
+			</me>.
+		</p>
+
+		<p>
+			When <m>u</m> and <m>v</m> are functions of <m>t</m>, we get a version of IBP which makes the transfer of derivatives more clear:
+			<me>
+				\int_{a}^{b} \os{{\DLBa\large\text{derivative on }v}}{
+				\us{\large u}{ \us{\uparrow}{\ul{ 
+					u(t)
+				}}} \ 
+				\us{\large dv}{\us{\uparrow}{\ul{
+					{\DLBa\os{\downarrow}{v'\vphantom{\Large\Gamma}}(t)} dt
+				}}}
+				}
+				= \ub{u(b)v(b) - u(a)v(a)}_{\large\text{evaluates to a number}}
+				- \int_{a}^{b} \os{{\DLBa\large\text{derivative on }u}}{
+					\us{\large v}{ \us{\uparrow}{\ul{ v(t) }}} \ 
+					\us{\large du}{\us{\uparrow}{\ul{ {\DLBa\os{\downarrow}{u'\vphantom{\Large\Gamma}}(t)} dt }}}
+				}
+			</me>
+		</p>
+
+		<p>
+			This simple idea of shifting derivatives is the basis for the Laplace transform method. We'll see it in action when one of the functions is <m>e^{-st}</m>.
+		</p>
+		
+		<task label="derivative-transfer-chkpt-1">
+			<title> 📖❓ Derivative Transfer Technique </title>
+			<statement>
+				<p>
+					Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>Chain Rule</statement>
+					<feedback>
+						<p>
+							Incorrect. The chain rule is used for function compositions, not transferring derivatives within an integral.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>L'Hôpital's Rule</statement>
+					<feedback>
+						<p>
+							Incorrect. L'Hôpital's Rule helps evaluate indeterminate limits, not manipulate derivatives inside integrals.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>Integration by Parts</statement>
+					<feedback>
+						<p>
+							Correct! Integration by parts is the key tool that shifts derivatives between functions inside integrals.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>Implicit Differentiation</statement>
+					<feedback>
+						<p>
+							Incorrect. Implicit differentiation helps with equations where the dependent variable isn't isolated.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</subsection>
+
+	<subsection xml:id="lt-using-exponentials-for-derivative-transfer">
+		<title> Using Exponentials to Transfer Derivatives </title>
+
+		<task xml:id="p4-c1-s1-1-rq3"  label="p4-c1-s1-1-rq3">
+			<title> 👀 Review: Derivative of <m>e^{-st}</m> </title>
+			<statement>
+				<p>
+					Let <m>s</m> be a constant. Which function is equal to the derivative
+					<me>\frac{d}{dt}\left[e^{-st}\right] =</me>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds\quad -se^{-st}</m></statement>
+					<feedback>
+						<p>
+							Correct! The derivative of <m>e^{-st}</m> with respect to <m>t</m> is <m>-se^{-st}</m> by the chain rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad e^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. You're missing the <m>-s</m> from the chain rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad se^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The sign should be negative because the exponent is <m>-st</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds\quad -\frac{1}{s}e^{-st}</m></statement>
+					<feedback>
+						<p>
+							Incorrect. This form appears when integrating, not differentiating. Try applying the chain rule.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<p>
+			Let's now see why exponentials make this derivative transfer especially useful. Suppose we choose <m>u(t) = e^{-st}</m> and <m>v(t) = y(t)</m>. Differentiating gives <m>u'(t) = -s e^{-st}</m> and <m>v'(t) = y'(t)</m>. Applying integration by parts yields:
+			<md>
+				<mrow>
+					\int_{0}^{b} \os{{\DLBa\large\text{derivative on }y}}{ 
+						e^{-st} \ {\DLBa\os{\downarrow}{y'\vphantom{\Large\Gamma}}(t)}\ dt
+					} 
+					\amp = e^{-st} \ y(t) \Big|_{0}^{b} - \int_{0}^{b} \os{{\DLBa\large\text{derivative on }e^{-st}}}{ 
+						{\DLBa\os{\downarrow}{\left(-s e^{-st}\right)\vphantom{\Large\Gamma}}}\ y(t)\ dt
+					}
+				</mrow>
+				<mrow>
+					\amp = e^{-sb} y(b) - y(0) + {\DLBa s} \int_{0}^{b} {\DLBa e^{-st}} y(t)\, dt
+				</mrow>.
+			</md>
+		</p>
+
+		<p>
+			Notice the key point: the derivative on <m>y</m> has been completely removed. Instead, we get two terms: a boundary term <m>e^{-st} y(t)\Big|_0^b</m> and a new integral without <m>y'(t)</m>.
+		</p>
+
+		<p>
+			This trade is usually worth it since in the context of Laplace transforms, the term <m>e^{-sb} y(b)</m> will often vanish and <m>y(0)</m> is the given initial condition.
+		</p>
+	</subsection>
+
+	<objectives label="lt-derivative-transfer-wrapup">
+		<ul>
+			<li>Integration by parts lets you shift derivatives from one function to another within an integral.</li>
+			<li>Choosing <m>u(t) = e^{-st}</m> causes derivatives on <m>y(t)</m> to transfer onto the exponential, producing a simple factor of <m>s</m>.</li>
+			<li>Understanding this transfer mechanism explains where the variable <m>s</m> comes from and why it appears in Laplace transform formulas.</li>
+  		</ul>
+	</objectives>
+
+	<fact label="lt-derivative-transfer-cyu">
+		<statement>
+			<p>
+				<task label="derivative-transfer-chkpt-2">
+					<title> 📖❓ Key Concepts Behind Laplace Transforms </title>
+					<statement>
+						<p>
+							Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement>Chain Rule</statement>
+							<feedback>
+								<p>
+									Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement>Product Rule</statement>
+							<feedback>
+								<p>
+									No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>Integration by Parts</statement>
+							<feedback>
+								<p>
+									Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>Properties of Exponential Functions</statement>
+							<feedback>
+								<p>
+									Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="derivative-transfer-chkpt-3">
+					<title> 📖❓ IBP on <m>t^2 y'</m> </title>
+					<statement>
+						<p>
+							Select the result of applying integration by parts to 
+							<me>
+								\int t^2 \ y'\ dt
+							</me>.
+						</p>
+						<p>
+							<em>Don't think of this as a Calculus exercise. Instead, try to think about transferring derivatives.</em>
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int y\ dt</m></statement>
+							<feedback>
+								<p>
+									Incorrect. A correct application of integration by parts must include the right choice of <m>u</m> and <m>dv</m>. Try again.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - \int t^2 y\ dt</m></statement>
+							<feedback>
+								<p>
+									Incorrect. Be sure you're transferring the derivative and integrating the right part.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\ds \int t^2 \ y'\ dt = 2\int t y\ dt</m></statement>
+							<feedback>
+								<p>
+									Incorrect. This result skips important parts of the integration by parts formula.
+								</p>
+							</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement><m>\ds \int t^2 \ y'\ dt = t^2 y - 2\int t y\ dt</m></statement>
+							<feedback>
+								<p>
+									Correct! Integration by parts with <m>u = t^2</m> and <m>dv = y'\,dt</m> gives this result.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+			</p>
+		</statement>
+	</fact>
+</section>

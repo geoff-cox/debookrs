@@ -1,0 +1,163 @@
+<section><title> TEMPORARY REFERENCES </title>				
+                
+ 		<p>               
+                <md>
+					<mrow xml:id="lt-L2">
+						\text{L}_2:\quad\lap{e^{at}} = \frac{1}{s - a}, \quad s \gt a
+					</mrow>.
+		       	<mrow xml:id="lt-L10">
+						\text{L}_{10}:\quad\lap{f(t) u_c(t)} = e^{-cs} \lap{f(t + c)}
+					</mrow>.
+                    					<mrow xml:id="lt-L11">
+						\text{L}_{11}:\quad\lap{f(t-c) u_c(t)} = e^{-cs} F(s), \quad\text{where}\quad F(s) = \lap{f(t)}
+					</mrow>.
+
+                    					<mrow xml:id="lt-L9">
+						\text{L}_9:\quad\lap{u_c(t)} = \frac{e^{-cs}}{s}, \qquad s \gt 0.
+					</mrow>
+				</md>
+         </p>
+		<p>
+<assemblage xml:id="lt-roadmap-full">
+			<title> Laplace Method Roadmap </title>
+			<p>
+				<sidebyside widths="32% 18% 42%" valign="middle">
+					<p>
+						<me>\ul{\quad\ \textbf{Original Domain}\ \quad}</me>
+					</p>
+					<p/>
+					<p>
+						<me>\DLBa\textbf{2️⃣  Laplace Domain}</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="31% 18% 43%" valign="top">
+					<p>
+						<md>
+							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow>\us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+							<mrow> y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow>\text{Apply}\ \laplacesym^{-1}</mrow>
+							<mrow>\overleftarrow{\text{3️⃣ Backward}}</mrow>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\amp\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s^2 - 9}\left( \frac{10}{s - 2} + s - 7 \right)</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s - 3} + \frac{2}{s + 3} - \frac{2}{s - 2}</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
+			</p>
+		</assemblage>
+		</p>
+		<p>
+<assemblage xml:id="piecewise-to-unit-step">
+			<title> 📜 Converting Piecewise Form to Unit Step Form </title>
+			<p>
+				Here's a strategy for converting any piecewise function into step form:
+				<ul marker="disc">
+					<li>Find the intervals where each piece is active.</li>
+					<li>
+						Match the active interval for each piece to its step function switch:
+						<tabular halign="center">
+							<col right="minor"/>
+							<col right="minor"/>
+							<row bottom="minor"> <cell>Piece</cell> <cell>Active Interval</cell> <cell>Step Function Switch</cell> </row>
+							<row> <cell><me>P(t)</me></cell> <cell><me>t \lt c		 </me></cell> <cell><me>1 - u_c(t)		</me></cell> </row>
+							<row> <cell><me>Q(t)</me></cell> <cell><me>c \le t \lt d </me></cell> <cell><me>u_c(t) - u_d(t)	</me></cell> </row>
+							<row> <cell><me>R(t)</me></cell> <cell><me>t \ge d		 </me></cell> <cell><me>u_d(t)			</me></cell> </row>
+						</tabular>
+					</li>
+					<li>Multiply the piece by its switch, then add them all together.</li>
+				</ul>
+			</p>
+		</assemblage>
+		</p>
+		<p>
+
+<assemblage xml:id="laplace-ftc-uc"><title> Laplace Transform of <m>f(t - c)\cdot u_c(t)</m> </title>
+					<p>
+						When the function, <m>f(t)</m>, is also shifted by <m>c</m>, we get the Laplace transform
+						<men xml:id="L15-eqn">
+							\lap{f(t - c) \, u_c(t)} = e^{-cs} F(s), \quad\text{where}\quad F(s) = \lap{f(t)}
+						</men>.
+					</p>
+
+					<p>
+						<theorem><title> <m>\rightarrow \lap{f(t - c) \, u_c(t)}</m> </title>
+							<p>
+								To prove this, we start with the definition of the Laplace transform:
+								<me>
+									\lap{f(t - c) \cdot u_c(t)} = \int_0^\infty f(t - c) \cdot u_c(t) \cdot e^{-st} \, dt.
+								</me>
+							</p>
+
+							<p>
+								Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, we can change the limits of integration to <m>c\le t\le\infty</m>.
+							</p>
+
+							<p>
+								Using a <m>u</m>-substitution, we let <m>u = t - c</m>, so <m>t = u + c</m> and <m>dt = du</m>. The limits change to <m>u = 0</m> and <m>u \to \infty</m>.
+							</p>
+
+							<md>
+								<mrow>
+									\int_{t=c}^{t=\infty} f(t - c) e^{-st} \, dt 
+									\amp = \int_{u=0}^{u=\infty} f(u) e^{-s(u + c)} \, du
+								</mrow>
+								<mrow>
+									\amp = e^{-cs} \int_0^\infty f(u) e^{-su} \, du
+								</mrow>
+								<mrow>
+									\amp = e^{-cs} \lap{f(t)} = e^{-cs} F(s)
+								</mrow>
+							</md>
+
+							<p>
+								This proves that the rule holds.
+							</p>
+						</theorem>
+					</p>
+				</assemblage>
+		</p>
+		<p>
+			<md>
+				<mrow xml:id="lt-R1">
+					\text{R}_{1}:\quad
+					\amp \lap{f'(t)} = sF(s) - f(0),
+					\amp\amp s \gt 0
+				</mrow>
+				<mrow xml:id="lt-R2">
+					\text{R}_{2}:\quad
+					\amp \lap{f''(t)} = s^2F(s) - sf(0) - f'(0),
+					\amp\amp s \gt 0
+				</mrow>
+				<mrow xml:id="lt-R3">
+					\text{R}_{3}:\quad
+					\amp \lap{f'''(t)} = s^3F(s) - s^2f(0) - sf'(0) - f''(0),
+					\amp\amp s \gt 0
+				</mrow>
+			</md>
+		</p>
+</section>

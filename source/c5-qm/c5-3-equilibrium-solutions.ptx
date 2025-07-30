@@ -1,0 +1,293 @@
+<section label="equilibrium-solns">
+	<title> Equilibrium Solutions </title>
+	<introduction>
+		<p>
+			Autonomous equations tell us that the direction of change depends only on the current state, not the current time. That pattern shows up in their slope fields as horizontal <q>stripes</q> of identical slope behavior. Now we'll focus on one especially important feature of those fields: the horizontal lines where the slope is zero. Along those lines, the system stops changing entirely. These constant solutions are called <term>equilibrium solutions</term>.
+		</p>
+	</introduction>
+
+	<paragraphs label="equilibrium-solns-behavior">
+		<title> Flat Lines and Fixed Behavior </title>
+
+		<p>
+			Consider the slope field for the autonomous equation:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = 1 - y^2
+		</me>.
+
+		<p>
+			Since this is autonomous, the slope depends only on <m>y</m>. At certain <m>y</m>-values, something special happens: the slope becomes exactly zero.
+		</p>
+
+		<sidebyside widths="50%" margin="10%" valign="middle">
+			<figure xml:id="slope-field-1-ysqrd">
+				<image width="50%">
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = 1 - \y*\y;}, scale=0.8]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-2.2} \def\tmax{2.2}
+							\def\ymin{-2.2} \def\ymax{2.2}
+							\def\tstep{0.2}  \def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\pgfmathparse{\t &lt; 0}
+								\ifnum\pgfmathresult=1	 % shift negative ticks
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below, xshift=-0.01cm] {\t};
+								\else
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below] {\t};
+								\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = 1 - y^2</m></caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			In the slope field, those points appear as <em>rows of perfectly horizontal segments</em>. That's no accident—where <m>dy/dt = 0</m>, the solution curve doesn't move. If a solution starts there, it stays there forever. These flat lines are the <term>equilibrium solutions</term>.
+		</p>
+
+		<p>
+			To find them, we set <m>\frac{dy}{dx}</m> (the slope) to zero and solve for <m>y</m>. In this example:
+			<me>
+				\us{\large =\ 0}{\boxed{\frac{dy}{dt}}} = 1 - y^2 \quad\rightarrow\quad 0 = 1 - y^2 \quad\Rightarrow\quad y = -1 \text{ or } y = 1.
+			</me>
+			So the equilibrium solutions are the constant functions <m>y(t) = -1</m> and <m>y(t) = 1</m>.
+		</p>
+
+		<p>
+			These special solutions act like <em>anchors</em> in the system: other solutions either drift toward them or get pushed away. We'll explore that stability behavior in the next section.
+		</p>
+
+		<exercise label="equilibrium-solutions-chkpt-1">
+			<title>📖❓ Observing the Slope Field </title>
+			<statement>
+				<p>
+					Look at the slope field below. Which constant solutions do you see? In other words, what <m>y</m>-values have perfectly horizontal segments?
+				</p>
+				<sidebyside widths="50%" margin="25%" valign="middle">
+					<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[declare function={f(\x,\y) = (2-\y) * (1.5+\y);}, scale=0.6]
+
+									\pgfkeys{/pgf/number format/.cd,
+										fixed,
+										precision=1
+									}
+									\def\tmin{-3.25} \def\tmax{3.25}
+									\def\ymin{-3.25} \def\ymax{3.25}
+									\def\tstep{0.25}  \def\ystep{0.25}
+									\def\arrowscale{0.2} % length of slope arrows
+									\def\segmentwt{0.6pt} % thickness of slope segments
+
+									% stepsize along t-axis and y-axis
+									\pgfmathsetmacro{\tL}{\tmin + \tstep}
+									\pgfmathsetmacro{\tR}{\tmax - \tstep}
+									\pgfmathsetmacro{\yL}{\ymin + \ystep}
+									\pgfmathsetmacro{\yR}{\ymax - \ystep}
+									\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+									\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+									% Axes
+									\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+									% Bounding box
+									\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+									% Tick marks and labels on t-axis
+									\pgfmathtruncatemacro{\tLint}{\tL}
+									\pgfmathtruncatemacro{\tRint}{\tR}
+									\foreach \t in {\tLint,...,\tRint} {
+										\pgfmathparse{\t &lt; 0}
+										\ifnum\pgfmathresult=1	 % shift negative ticks
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below, xshift=-0.01cm] {\t};
+										\else
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below] {\t};
+										\fi
+									}
+
+									% Tick marks and labels on y-axis
+									\pgfmathtruncatemacro{\yLint}{\yL}
+									\pgfmathtruncatemacro{\yRint}{\yR}
+									\foreach \y in {\yLint,...,\yRint}
+										\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+										node[font=\tiny, left] {\y};
+
+									% slope field: just draw a vector at each point
+									\foreach \i in {0,...,\nt}
+									\foreach \j in {0,...,\ny}{
+
+										\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+										\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+										\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+										% Normalize direction vector (1, slope) to fixed length
+										\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+										\pgfmathsetmacro{\dt}{\arrowscale / \len}
+										\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+										\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									}
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+				</sidebyside>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="no"><statement><m>y(t) = -2</m></statement></choice>
+				<choice correct="yes"><statement><m>y(t) = -1.5</m></statement></choice>
+				<choice correct="no"><statement><m>y(t) = 0</m></statement></choice>
+				<choice correct="no"><statement><m>y(t) = 1.5</m></statement></choice>
+				<choice correct="yes"><statement><m>y(t) = 2</m></statement></choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="equilibrium-solns-slope-field">
+		<title> What the Slope Field Tells You </title>
+
+		<p>
+			What about the <em>other</em> values of <m>y</m>? Between the equilibria at <m>y = -1</m> and <m>y = 1</m>, the slopes are positive. For example:
+			<me>
+				f(-0.5) = 1 - (-0.5)^2 = 0.75,
+			</me>
+			so the slope is positive and solutions rise. The slope field shows this: between <m>y=-1</m> and <m>y=1</m>, the little segments tilt upward.
+		</p>
+
+		<p>
+			Above <m>y = 1</m>, things flip. Try <m>y = 1.5</m>:
+			<me>
+				f(1.5) = 1 - (1.5)^2 = -1.25,
+			</me>
+			which is negative, so solutions decrease. The slope field confirms it—segments tilt downward. The same downward pull appears below <m>y = -1</m>.
+		</p>
+
+		<p>
+			The slope field acts like a <em>behavior map</em>: equilibrium solutions mark where the system is still, while the tilts around them reveal which way nearby solutions move.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="equilibrium-solns-calculation">
+		<title> How to Find Equilibrium Solutions </title>
+		<p>
+			Finding equilibrium solutions is always the same quick process:
+		</p>
+
+		<ol>
+			<li>Assuming <m>c</m> is constant and <m>y=c</m>, then <m>\frac{dy}{dt} = 0</m> and so: <me>\frac{dy}{dt} = f(y) \quad\rightarrow\quad 0 = f(c)</me>.</li>
+			<li>The equation <m>f(c) = 0</m> is algebraic. Solve it for <m>c</m>. </li>
+			<li>For each <m>c</m> you found, <m>y(t) = c</m> is an equilibrium solution.</li>
+		</ol>
+
+		<p>
+			Let's do a quick example. Consider:
+			<me>
+				\frac{dy}{dt} = y^2 - 4y.
+			</me>
+			Assuming <m>y=c</m>, thenthis equation becaomes:
+			<me>
+				0 = c^2 - 4c \quad\Rightarrow\quad c(c - 4) = 0.
+			</me>
+			So, <m>c=0, 4</m> and the equilibrium solutions are:
+			<me>
+				y(t) = 0 \quad \text{and} \quad y(t) = 4.
+			</me>
+		</p>
+
+		<p>
+			Mark these on the slope field with horizontal lines. Then examine how the slope segments behave above and below each line, that will help you understand how the other solutions evolve, and whether they're drawn toward or repelled from the equilibrium. We will build more on this in the next section.
+		</p>
+
+		<exercise label="equilibrium-solns-chkpt-2">
+			<title>📖❓ Select the Equilibrium Solutions </title>
+			<statement>
+				<p>
+					Determine the equilibrium solutions for the equation:
+					<me>
+						\frac{dy}{dt} = y + \frac12y^2
+					</me>.
+					Select all that apply.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes"><statement><m>\ y(t) = 0</m></statement><feedback>Yes! ✅</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = 2</m></statement><feedback>❌</feedback></choice>
+				<choice correct="yes"><statement><m>\ y(t) = -2</m></statement><feedback>Yes! ✅</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = -\sqrt{2}</m></statement><feedback>❌</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = -\sfrac12</m></statement><feedback>❌</feedback></choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<assemblage label="equilibrium-solns-wrap-up"><title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="equilibrium-solns-takeaways"><title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>Equilibrium solutions are constant solutions <m>y(t) = c</m> where <m>f(c) = 0</m>.</li>
+					<li>In the slope field, they appear as rows of horizontal segments.</li>
+					<li>To find them, just solve <m>f(y) = 0</m>.</li>
+				</ul>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

@@ -1,0 +1,1484 @@
+<section>
+	<title> Laplace Transform - Extra Details &amp; Resources </title>
+
+	<!-- <paragraphs xml:id="lt-example-1-details000"><title> Explain why <m>\ds\lim_{b \to \infty} -\frac{5}{s}\left[ e^{-sb} - 1 \right] = -\frac{5}{s} \lim_{b \to \infty} \left[ e^{-sb} - 1 \right]</m> </title>
+		<p>
+			👉 Since the limit only controls <m>b</m>, we can think of <m>s</m> as a number (like <m>2</m>). This means that <m>\ds-\frac{5}{s}</m> is also a number that can be pulled out of the limit using the limit property from calculus:
+			<me>\ds\lim_{x \to \infty} c \cdot f(x) = c \cdot \lim_{x \to \infty} f(x), \quad c\ \text{is constant}</me>
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="graph-of-e-to-x000"><title> Exponential Behavior as its Power go to <m>\pm\infty</m> </title>
+		<figure xml:id="figure-e-to-x">
+			<caption>
+				The general limiting behavior of an exponential function as it's power goes to <m>+\infty</m> or <m>-\infty</m>.
+			</caption>
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}
+						\begin{axis}[
+							axis lines=middle,
+							domain=-4.5:4.5,
+							samples=100,
+							ymin=-5,	ymax=16,
+							xmin=-4.5,	xmax=4.5,
+							ticklabel style = {font=\large}
+						]
+							\addplot[red, very thick] {exp(x)};
+							\node at (-1.3,1.5)	[anchor=east, scale=1.2] {$0 \leftarrow e^{\text{ power}}$};
+							\node at (2.4,10.5)	[anchor=west, scale=1.2] {$e^\text{ power}$};
+							\node at (2.9,13)	[anchor=west, scale=1.2, rotate=-20] {$\uparrow$};
+							\node at (3,14.5)	[anchor=west, scale=1.2] {$\infty$};
+							\node at (1.3,-4)	[anchor=west, scale=1.1] {$\text{power } \rightarrow \infty$};
+							\node at (-1,-4)	[anchor=east, scale=1.1] {$-\infty \leftarrow \text{ power}$};
+						\end{axis}
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="lt-example-t-IVP-details000"><title> How? </title>
+		<p>
+			👉 Choosing
+			<md>
+				<mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
+				<mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+			</md>
+			integration by parts gives
+			<md>
+				<mrow>
+					\int_0^b e^{-st} \cdot t\ dt
+						\amp = -\frac{t}{s}e^{-st} - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
+				</mrow>
+				<mrow> 	
+						\amp = -\frac{t}{s}e^{-st}+ \frac{1}{s}\int_0^b e^{-st} dt
+				</mrow>
+				<mrow> 	
+						\amp = \left(-\frac{t}{s}e^{-st}- \frac{1}{s^2}e^{-st}\right) \Bigg|_0^b
+				</mrow>
+				<mrow> 	
+						\amp = \left(-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb}\right) - \left(0 - \frac{1}{s^2}\right)
+				</mrow>
+				<mrow> 	
+						\amp = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}
+				</mrow>
+			</md>
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="lt-example-t-LH-details000"><title> How? </title>
+		<p>
+			👉 If <m>s \lt 0</m> then the power of <m>e^{-sb}</m> goes to <m>+\infty</m> as <m>b\to\infty</m>, so <m>L_1=be^{-sb} \to \infty</m> and <m>L_2=e^{-sb} \to \infty</m>. Therefore, we assume <m>s \gt 0</m> and compute the limits as
+			<ul marker="square">
+				<li>
+					<p>
+						<m>
+							\ds L_1 
+							= \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+							\,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
+							= \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+						</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>
+							\ds L_2
+							= \lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+						</m>
+					</p>
+				</li>
+			</ul>
+			where <m>LH</m> denotes L'Hôpital's Rule was applied to the limit.
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="lt-example-2-details000"><title> How? </title>
+		<p>
+			👉 Using <m>u</m>-substitution with
+			<md>
+				<mrow>
+					u	\amp = \ob{(7-s)}^{\text{constant}}t
+				</mrow>
+				<mrow>
+					du	\amp = (7-s)dt \quad \Rightarrow \quad dt = \frac{du}{7-s}
+				</mrow>
+			</md>
+			the integral is compute as
+			<md>
+				<mrow>
+					\int_0^b e^{(7-s)t}\ dt	= \int_{t=0}^{t=b} e^{u}\frac{du}{7-s}
+					\amp = \frac{1}{7-s}\int_{t=0}^{t=b} e^{u}\ du
+				</mrow>
+				<mrow>
+					\amp = \frac{1}{7-s} \left[ e^{u} - 1 \right]\Bigg|_{t=0}^{t=b}
+				</mrow>
+				<mrow>
+					\amp = \frac{1}{7-s} \left[ e^{7-s} - 1 \right]\Bigg|_{0}^{b}
+				</mrow>
+			</md>.
+		</p>
+	</paragraphs> -->
+
+	<paragraphs xml:id="lt-example-tsqrd-IVP-details"><title> How? </title>
+		<p>
+			👉 Choosing
+			<md>
+				<mrow> u = t^2,		\quad\amp	dv = e^{-st}dt, 		</mrow>
+				<mrow> du = 2t\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+			</md>
+			integration by parts gives
+			<md>
+				<mrow>
+					\int_0^b e^{-st} \cdot t^2\ dt
+						\amp = t^2 \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) 2t\ dt
+				</mrow>
+				<mrow> 	
+						\amp = -\frac{b^2}{s}e^{-sb} + \frac{2}{s} \int_0^b e^{-st} \cdot t\ dt
+				</mrow>
+			</md>
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="lt-example-tsqrd-LH-details"><title> How? </title>
+		<p>
+			Again, if <m>s \lt 0</m>, the limit goes to <m>+\infty</m>. So we must have <m>s \gt 0</m>. Applying L'Hôpital's rule twice, we get
+			<md>
+				<mrow>
+					L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b^2}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}\
+					\amp\us{LH}{=}\ \lim_{b \to \infty}\frac{2b}{se^{sb}}\
+					= \frac{2}{s}\lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+				</mrow>
+				<mrow>
+					\amp\us{LH}{=}\ \frac{2}{s}\lim_{b \to \infty}\frac{1}{se^{sb}}
+					= \frac{2}{s^2}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+					= 0
+				</mrow>
+			</md>
+		</p>
+	</paragraphs>
+
+	<!-- <paragraphs xml:id="lt-example-tnth-IVP-details000"><title> How? </title>
+		<p>
+			<md>
+				<mrow> u = t^n,				\quad\amp	dv = e^{-st}dt, 		</mrow>
+				<mrow> du = nt^{n-1}\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+			</md>
+			integration by parts gives
+			<md>
+				<mrow>
+					\lap{ t^{n} }
+					\amp = \lim_{b \to \infty} \left[-\frac{t^{n}}{s}e^{-sb}\Bigg|_0^b - \int_0^b \left(-\frac{1}{s}e^{-st}\right)\cdot nt^{n-1}\ dt\right]
+				</mrow>
+				<mrow>
+					\amp = \lim_{b \to \infty} \left[\left(-\frac{b^n}{s}e^{-sb} - 0\right) + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+				</mrow>
+				<mrow>
+					\amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+				</mrow>
+			</md>
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="lt-example-tnth-LH-details000"><title> How? </title>
+		<p>
+			The reasoning is the same as in <xref ref="lt-example-tnth-IVP-details" text="custom">previous solution</xref> except we apply L'Hôpital's rule <em>n</em> times. So we have
+			<md>
+				<mrow>
+					\lim_{b \to \infty}\frac{b^n}{e^{sb}}\
+					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+					\lim_{b \to \infty}\frac{nb^{n-1}}{se^{sb}}
+					= \frac{n}{s}\lim_{b \to \infty}\frac{b^{n-1}}{e^{sb}}
+				</mrow>
+				<mrow>
+					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+					\frac{n}{s}\lim_{b \to \infty}\frac{(n-1)b^{n-2}}{se^{sb}}
+					= \frac{n(n-1)}{s^2}\lim_{b \to \infty}\frac{b^{n-2}}{e^{sb}}
+				</mrow>
+				<mrow>
+					\amp \qquad\qquad \vdots \quad LH\ \ n-2 \text{ more times}
+				</mrow>
+				<mrow>
+					\amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+					\frac{n!}{s^n}\lim_{b \to \infty}\frac{1}{se^{sb}}
+					= \frac{n!}{s^{n+1}}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+					= 0
+				</mrow>
+			</md>
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="lt-example-4-details000"><title> How? </title>
+		<p>
+			👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, Thus, their product must approach zero. That is,
+			<me>
+				\lim_{b \to \infty} e^{-sb} \cos(3b) = 0 \quad \text{and} \quad \lim_{b \to \infty} e^{-sb} \sin(3b) = 0
+			</me>
+		</p>
+	</paragraphs> -->
+
+	<!-- <paragraphs xml:id="example-key-steps"><title> Key Steps </title>
+		<p>
+			Key Steps
+			<dl>
+				<li xml:id="lt-derivative-key-step-1"><title> <m>\os{[1]}{=}</m> </title>
+					Integration by parts with <m>u = f(t)</m> and <m>dv = e^{-st} dt</m>
+				</li>
+				<li xml:id="lt-derivative-key-step-2"><title> <m>\os{[2]}{=}</m> </title>
+					<m>s</m> is a constant in this integral, so we can bring it out.
+				</li>
+				<li xml:id="lt-derivative-key-step-3"><title> <m>\os{[3]}{=}</m> </title>
+					<m>\ds e^{-st} f(t) = \frac{f(t)}{e^{st}}</m> must go to zero.
+				</li>
+			</dl>
+		</p>
+	</paragraphs> -->
+
+
+
+	<!-- <theorem xml:id="LT-s-ne-0-15"><title> </title>
+		<p>
+			Notice that when <m>s=0</m>, the term in the integral becomes <m>\ds e^{0t} = 1</m> and we, instead, would get
+			<md>
+			<mrow>		\amp = 15 \lim_{b \to \infty}\int_0^b 1\ dt
+						= 15 \lim_{b \to \infty} t\Big|_0^b
+						= 15 \lim_{b \to \infty} b = \infty. 	</mrow>
+			</md>
+			This shows that when <m>s=0</m>, the integral does not converge (<em>does not exist</em>) as required by the definition of the Laplace Transform. Therefore, when working with Laplace transforms, it is common restrict some values of <m>s</m>.
+		</p>
+	</theorem> -->
+	
+	<!-- <theorem xml:id="LT-s-ne-0-t"><title> </title>
+		<p>
+			When <m>s=0</m>, the integral becomes
+			<md>
+			<mrow>		\amp = \lim_{b \to \infty} \int_0^b t\ dt
+							= \lim_{b \to \infty} \frac{t^2}{2}\Big|_0^b
+							= \frac{1}{2} \lim_{b \to \infty} b^2 = \infty. 	</mrow>
+			</md>
+			Therefore, we must have <m>s\ne 0</m> for this integral to be finite.
+		</p>
+	</theorem> -->
+	
+	<!-- <theorem xml:id="LT-s-gt-0-t"><title> </title>
+		<p>
+			If <m>s \lt 0</m>, then as <m>b \to \infty</m>, we would have <m>\ds e^{-sb} \to \infty</m> and so
+			<me>\lim_{b \to \infty} \os{\infty}{\os{\uparrow}{\boxed{b}}}\ \us{\infty}{\us{\downarrow}{\boxed{e^{-sb}}}} = \infty.</me>
+			This shows the Laplace transform would not exist if <m>s \lt 0</m>. Therefore, we must require <m>s \gt 0</m>.
+		</p>
+	</theorem> -->
+	
+	<!-- <theorem xml:id="reason-limit-to-zero-e7t"><title> </title>
+		<p>
+			Since <m>b \to \infty</m>, then <m>\os{negative}{\ob{(7-s)}}b \to -\infty</m> and therefore,
+			<m>\ds e^{\!\!\os{\Large negative}{\ob{(7-s)}}\!\!b} \to 0</m>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="std_LT_01"><title> </title>
+		<p>
+				<aside>
+					<p>
+						Key Steps
+						<me>
+							\begin{array}{ll}
+								(1) \amp \text{IBP with }\\
+									\amp u = t^2, dv = e^{-st} dt\\
+								(2) \amp \text{factor out } -\frac{1}{s}\\
+								(3) \amp \text{definition of the}\\
+									\amp \text{Laplace transform of } t\\
+								(4) \amp \text{convert evaluation at } \infty\\
+									\amp \text{to the limit at } \infty \\
+								(5) \amp \text{L'Hôpital's Rule }\\
+							\end{array}
+						</me>
+					</p>
+				</aside>
+				<md>
+					<mrow> \lap{ t^2 }	
+							\amp = \int_0^{\infty} e^{-st}\cdot t^2 dt 				</mrow>
+					<mrow>  \amp\os{(1)}{=} t^2 \cdot -\frac{1}{s}e^{-st}\Bigg|_0^{\infty}
+								- \int_0^{\infty} -\frac{1}{s}e^{-st}\cdot 2tdt </mrow>
+					<mrow>  \amp\os{(2)}{=} -\frac{1}{s}\left[ t^2e^{-st}\Bigg|_0^{\infty}
+								- 2\int_0^{\infty}e^{-st}\cdot tdt \right]		</mrow>
+					<mrow>  \amp\os{(3)}{=} -\frac{1}{s}\left[t^2e^{-st}\Bigg|_0^{\infty}
+								- 2\lap{ t } \right]							</mrow>
+					<mrow>  \amp\os{(4)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}
+								t^2e^{-st}\Bigg|_0^{b} - 2\lap{ t } \right]		</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \lim_{b \to \infty}
+								\left( b^2e^{-sb} - 0^2\cdot e^{-s\cdot 0} \right)
+								- 2\cdot \frac{1}{s^2} \right]					</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \lim_{b \to \infty}
+								b^2e^{-sb} - 0 - \frac{2}{s^2} \right]			</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \lim_{b \to \infty}
+								\frac{b^2}{e^{sb}} - \frac{2}{s^2} \right]		</mrow>
+					<mrow>  \amp\os{(5)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}
+								\frac{2b}{se^{sb}} - \frac{2}{s^2} \right]		</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \frac{2}{s}\lim_{b \to \infty}
+								\frac{b}{e^{sb}} - \frac{2}{s^2} \right]		</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \frac{2}{s}\lim_{b \to \infty}
+								\frac{1}{se^{sb}} - \frac{2}{s^2} \right]		</mrow>
+					<mrow>  \amp = -\frac{1}{s}\left[ \frac{2}{s}\cdot 0
+								- \frac{2}{s^2} \right]							</mrow>
+					<mrow>  \amp = \frac{2}{s^3} 									</mrow>
+				</md>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="std_LT_02"><title> </title>
+		<p>
+			<aside>
+				<p>
+					Key Steps
+					<me>
+						\begin{array}{ll}
+							(1) \amp \text{IBP with }\\
+								\amp u = t^3, dv = e^{-st} dt\\
+							(2) \amp \text{factor out } -\frac{1}{s}\\
+							(3) \amp \text{definition of the}\\
+								\amp \text{Laplace transform of } t\\
+							(4) \amp \text{convert evaluation at } \infty\\
+								\amp \text{to the limit at } \infty \\
+							(5) \amp \text{L'Hôpital's Rule }\\
+						\end{array}
+					</me>
+				</p>
+			</aside>
+			<md>
+				<mrow> \lap{ t^3 }	
+						\amp = \int_0^{\infty} e^{-st}\cdot t^3 dt </mrow>
+				<mrow>  \amp\os{(1)}{=} t^3 \cdot -\frac{1}{s}e^{-st}\Bigg|_0^{\infty} - \int_0^{\infty} -\frac{1}{s}e^{-st}\cdot 3t^2dt </mrow>
+				<mrow>  \amp\os{(2)}{=} -\frac{1}{s}\left[ t^3e^{-st}\Bigg|_0^{\infty} - 3\int_0^{\infty}e^{-st}\cdot t^2 dt \right]</mrow>
+				<mrow>  \amp\os{(3)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}t^3 e^{-st}\Bigg|_0^{b} - 3\lap{ t^2 } \right]</mrow>
+				<mrow>  \amp\os{(4)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}\left( b^3 e^{-sb} - 0^3\cdot e^{-s\cdot 0} \right) - 3\cdot \frac{2}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \lim_{b \to \infty}b^3 e^{-sb} - 0 - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \lim_{b \to \infty}\frac{b^3}{e^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp\os{(5)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}\frac{3b^2}{se^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \frac{3}{s}\lim_{b \to \infty}\frac{b^2}{e^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \frac{3}{s}\lim_{b \to \infty}\frac{2b}{se^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \frac{6}{s^2}\lim_{b \to \infty}\frac{b}{e^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \frac{6}{s^2}\lim_{b \to \infty}\frac{1}{se^{sb}} - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = -\frac{1}{s}\left[ \frac{6}{s^2}\cdot 0 - \frac{6}{s^3} \right]</mrow>
+				<mrow>  \amp = \frac{6}{s^4} </mrow>
+			</md>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="std_LT_03"><title> </title>
+		<p>
+			<aside>
+				<p>
+					Key Steps
+					<me>
+						\begin{array}{ll}
+							(1) \amp \text{IBP with }\\
+								\amp u = t^4, dv = e^{-st} dt\\
+							(2) \amp \text{factor out } -\frac{1}{s}\\
+							(3) \amp \text{definition of the}\\
+								\amp \text{Laplace transform of } t\\
+							(4) \amp \text{convert evaluation at } \infty\\
+								\amp \text{to the limit at } \infty \\
+							(5) \amp \text{L'Hôpital's Rule }\\
+						\end{array}
+					</me>
+				</p>
+			</aside>
+			<md>
+				<mrow> \lap{ t^4 }	
+					\amp = \int_0^{\infty} e^{-st}\cdot t^4 dt
+				</mrow>
+				<mrow>
+					\amp\os{(1)}{=} t^4 \cdot -\frac{1}{s}e^{-st}\Bigg|_0^{\infty} - \int_0^{\infty} -\frac{1}{s}e^{-st}\cdot 4t^3dt
+				</mrow>
+				<mrow>
+					\amp\os{(2)}{=} -\frac{1}{s}\left[ t^4e^{-st}\Bigg|_0^{\infty} - 4\int_0^{\infty}e^{-st}\cdot t^3 dt \right]
+				</mrow>
+				<mrow>
+					\amp\os{(3)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}t^4 e^{-st}\Bigg|_0^{b} - 4\lap{ t^3 } \right]
+				</mrow>
+				<mrow>
+					\amp\os{(4)}{=} -\frac{1}{s}\left[ \lim_{b \to \infty}\left( b^4 e^{-sb} - 0^4\cdot e^{-s\cdot 0} \right) - 4\cdot \frac{6}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \lim_{b \to \infty}b^4 e^{-sb} - 0 - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \lim_{b \to \infty}\frac{4b^3}{se^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{4}{s}\lim_{b \to \infty}\frac{b^3}{e^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp\os{(5)}{=} -\frac{1}{s}\left[ \frac{4}{s}\lim_{b \to \infty}\frac{3b^2}{se^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{12}{s^2}\lim_{b \to \infty}\frac{b^2}{e^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{12}{s^2}\lim_{b \to \infty}\frac{2b}{se^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{24}{s^3}\lim_{b \to \infty}\frac{b}{e^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{24}{s^3}\lim_{b \to \infty}\frac{1}{se^{sb}} - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = -\frac{1}{s}\left[ \frac{24}{s^3}\cdot 0 - \frac{24}{s^4} \right]
+				</mrow>
+				<mrow>
+					\amp = \frac{24}{s^5}
+				</mrow>
+			</md>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="tyu_intro_01_C"> <title/><title> </title>
+		<p>
+			Yes, good job!
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="tyu_intro_01_I"> <title> </title>
+		<p>
+			No, that's incorrect. The dependent variable is always the variable with the derivative.
+		</p>
+	</theorem> -->
+
+	<!-- <assemblage><title> </title>
+		<p>
+			<dl width="narrow">
+				<li xml:id="LT-Table-L1"><title> <m>\LARGE \vphantom{\int}</m>L1. </title>
+					<m>\ds \lap{ 1 } = \frac{1}{s}, \quad s &gt;0 </m>
+				</li>
+				<li xml:id="LT-Table-L2"><title> <m>\LARGE \vphantom{\int}</m>L2. </title>
+					<m>\ds \lap{ e^{at} } = \frac{1}{s-a}, \quad s &gt;a</m>
+				</li>
+				<li xml:id="LT-Table-L3"><title> <m>\LARGE \vphantom{\int}</m>L3. </title>
+					<m>\ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0 </m>
+				</li>
+				<li xml:id="LT-Table-L4"><title> <m>\LARGE \vphantom{\int}</m>L4. </title>
+					<m>\ds \lap{ \sin (bt) } = \frac{b}{s^2 + b^2}, \quad s &gt;0</m>
+				</li>
+				<li xml:id="LT-Table-L5"><title> <m>\LARGE \vphantom{\int}</m>L5. </title>
+					<m>\ds \lap{ \cos(bt) } = \frac{s}{s^2 + b^2}, \quad s &gt;0</m>
+				</li>
+				<li xml:id="LT-Table-L6"><title> <m>\LARGE \vphantom{\int}</m>L6. </title>
+					<m>\ds \lap{ t^n e^{at} } = \frac{n!}{(s-a)^{n+1}}, \quad s &gt;a </m>
+				</li>
+				<li xml:id="LT-Table-L7"><title> <m>\LARGE \vphantom{\int}</m>L7. </title>
+					<m>\ds \lap{ e^{at} \sin(bt) } = \frac{b}{(s-a)^2 + b^2}, \quad s &gt;a</m>
+				</li>
+				<li xml:id="LT-Table-L8"><title> <m>\LARGE \vphantom{\int}</m>L8. </title>
+					<m>\ds \lap{ e^{at} \cos(bt) } = \frac{s-a}{(s-a)^2 + b^2}, \quad s &gt;a</m>
+				</li>
+				<li xml:id="LT-Table-L9"><title> <m>\LARGE \vphantom{\int}</m>L9. </title>
+					<m>\ds \lap{ a f(t) + b g(t) } = a \lap{ f(t) } + b \lap{ g(t) }, \quad a, b \text{ constant}</m>
+				</li>
+				<li xml:id="LT-Table-L10"><title> <m>\LARGE \vphantom{\int}</m>L10. </title>
+					<m>\ds \lap{ f'(t) } = sF(s) - f(0)</m>
+				</li>
+				<li xml:id="LT-Table-L11"><title> <m>\LARGE \vphantom{\int}</m>L11. </title>
+					<m>\ds \lap{ f''(t) } = s^2 F(s) - sf(0) - f'(0)</m>
+				</li>
+				<li xml:id="LT-Table-L12"><title> <m>\LARGE \vphantom{\int}</m>L12. </title>
+					<m>\ds \lap{ f^{(n)}(t) } = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - f^{(n-1)}(0)</m>
+				</li>
+				<li xml:id="LT-Table-L13"><title> <m>\LARGE \vphantom{\int}</m>L13. </title>
+					<m>\ds \lap{ t^n f(t) } = (-1)^n\frac{d^n}{ds^n}\big( \lap{ t^n f(t) } \big)</m>
+				</li>
+				<li xml:id="LT-Table-L14"><title> <m>\LARGE \vphantom{\int}</m>L14. </title>
+					<m>\ds \lap{ U(t-a) } = \frac{e^{-as}}{s}</m>
+				</li>
+				<li xml:id="LT-Table-L15"><title> <m>\LARGE \vphantom{\int}</m>L15. </title>
+					<m>\ds \lap{ f(t) U(t-a) } = e^{-as} \lap{ f(t+a) }</m>
+				</li>
+				<li xml:id="LT-Table-L16"><title> <m>\LARGE \vphantom{\int}</m>L16. </title>
+					<m>\ds \lap{ f(t-a)U(t-a) } = e^{-as}F(s)</m>
+				</li>
+			</dl>
+		</p>
+	</assemblage> -->
+
+	<!-- <theorem xml:id="LT-PDF-Details-01"><title> </title>
+		<p>
+			<md>
+				<mrow>4s^3 \amp - 13s^2 + 74s + 27</mrow>
+				<mrow>\amp = (As + B)(s+1)^2 + C(s+1)(s^2 - 6s + 25) + D(s^2 - 6s + 25)</mrow>
+				<mrow>
+					\amp = (As + B)(s^2 + 2s + 1) + (Cs+C)(s^2 - 6s + 25) + Ds^2 - 6Ds + 25D
+				</mrow>
+				<mrow>
+					\amp = As^3 + 2As^2 + As  + Bs^2 + 2Bs + B + Cs^3 - 6Cs^2 + 25Cs + Cs^2 - 6Cs + 25C + Ds^2 - 6Ds + 25D
+				</mrow>
+				<mrow>
+					\amp = (A + C)s^3 + (2A+ B - 6C + C + D)s^2 + (A+ 2B + 25C- 6C- 6D)s + (B + 25C + 25D)
+				</mrow>
+				<mrow>
+					\amp = (A + C)s^3 + (2A+ B - 5C + D)s^2 + (A+ 2B + 19C- 6D)s + (B + 25C + 25D)
+				</mrow>
+			</md>
+		</p>
+
+		<p>
+			Equating coefficients gives us four equations in four unknowns.
+			<md>
+				<mrow>
+				A+C	\amp = 4	\amp	2A+B-5C+D	\amp = -13	\amp A + 2B + 19C - 6D	\amp = 74 \amp B+ 25C + 25D \amp = 27
+				</mrow>
+				<mrow>	A	\amp = 4-C\amp				\amp		\amp				\amp		\amp\amp</mrow>
+				<mrow>		 \amp	\amp 2(4 - C)+B-5C+D	\amp = -13	\amp (4-C)+2B+19C-6D	\amp = 74	\amp\amp</mrow>
+				<mrow>		 \amp	\amp 	B - 7C + D	\amp = -21	\amp 	2B+18C-6D	\amp = 70	\amp\amp</mrow>
+				<mrow>		 \amp	\amp	B	\amp = 7C - D - 21		\amp				\amp		\amp\amp</mrow>
+				<mrow>		 \amp	\amp				\amp	\amp 2(7C - D - 21)+18C-6D	\amp = 70	\amp</mrow>
+				<mrow>		 (7C - D - 21) + 25C + 25D	\amp = 27</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp		32C-8D	\amp = 112	\amp</mrow>
+				<mrow>		 32C + 24D	\amp = 48</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp 			32C	\amp = 8D + 112 \amp\amp</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp				\amp		\amp</mrow>
+				<mrow>		 (8D + 112) + 24D	\amp = 48</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp				\amp		\amp</mrow>
+				<mrow>		 32D	\amp = -64</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp				\amp		\amp</mrow>
+				<mrow>		 D	\amp = -2</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp 			32C	\amp = 8(-2) + 112 \amp\amp</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp				\amp = 96	\amp\amp</mrow>
+				<mrow>		 \amp	\amp				\amp		\amp			C	\amp = 3		\amp\amp</mrow>
+				<mrow>		 \amp	\amp	B	\amp = 7(3) - (-2) - 21\amp	\amp				\amp		\amp\amp</mrow>
+				<mrow>		 \amp	\amp		\amp = 2		\amp		\amp				\amp		\amp\amp</mrow>
+				<mrow>	A	\amp = 4 - (3)\amp	\amp		\amp		\amp				\amp		\amp\amp</mrow>
+				<mrow>		\amp = 1	\amp		\amp		\amp		\amp				\amp		\amp\amp</mrow>
+			</md>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="LT-PDF-Details-02"><title> </title>
+		<p>
+			Partial fraction decomposition has the form,
+			<me> \frac{54}{(s+1)(s^2  - 4s + 13)} = \frac{A}{s+1} + \frac{Bs + C}{s^2 - 4s + 13}, </me>
+			and we find <m>A</m>, <m>B</m>, and <m>C</m> by
+			<md>
+				<mrow>54	\amp = A(s^2 - 4s + 13) + (Bs+C)(s+1)</mrow>
+				<mrow>54	\amp = As^2 - 4As + 13A + Bs^2 + Bs + Cs + C</mrow>
+				<mrow>0s^2 + 0s + 54	\amp = (A + B)s^2 + (-4A + B + C)s + (13A + C)</mrow>
+			</md>
+
+			<md>
+				<mrow>A+B	\amp = 0		\amp -4A +B+C	\amp = 0	\amp 	13A + C	\amp = 54</mrow>
+				<mrow>A	\amp = -B	\amp			\amp	\amp			\amp</mrow>
+				<mrow>\amp		\amp -4(-B)+B+C	\amp = 0	\amp 13(-B)+C	\amp = 54</mrow>
+				<mrow>\amp		\amp 	5B + C	\amp = 0	\amp -13B + C	\amp = 54</mrow>
+				<mrow>\amp		\amp		C	\amp = -5B	\amp		\amp</mrow>
+				<mrow>\amp		\amp			\amp	\amp -13B + (-5B)	\amp = 54</mrow>
+				<mrow>\amp		\amp			\amp	\amp 		-18B	\amp = 54</mrow>
+				<mrow>\amp		\amp			\amp	\amp		B	\amp = -3</mrow>
+				<mrow>A	\amp = -(-3)	\amp		C	\amp = -5(-3)\amp			\amp</mrow>
+				<mrow>\amp = 3		\amp			\amp = 15\amp			\amp</mrow>
+			</md>
+		</p>
+	</theorem> -->
+
+	<!-- <theorem xml:id="LT-Solving_w_LTs_verify_soln"><title> </title>
+		<p>
+			<md>
+				<mrow>x(t)	\amp = 3e^{-t} - 3e^{2t}\cos(3t) + 3e^{2t}\sin(3t)</mrow>
+				<mrow>\amp = 3e^{-t} + e^{2t} \Big[ 3\sin(3t) - 3\cos(3t) \Big]</mrow>
+				<mrow>\amp</mrow>
+				<mrow>x'(t)	\amp = -3e^{-t} + e^{2t}\Big[ 9\cos(3t) + 9\sin(3t) \Big]</mrow>
+							+ 2e{2t}\Big[ 3\sin(3t) - 3\cos(3t) \Big]
+				<mrow>\amp = -3e^{-t} + e^{2t}\Big[ 9\cos(3t) + 9\sin(3t) + 6\sin(3t) - 6\cos(3t) \Big]</mrow>
+				<mrow>\amp = -3e^{-t} + e^{2t}\Big[ 3\cos(3t) + 15\sin(3t) \Big]</mrow>
+				<mrow>\amp</mrow>
+				<mrow>x''(t)	\amp = 3e^{-t} + e^{2t}\Big[ -9\sin(3t) + 45\cos(3t) \Big]</mrow>
+							+ 2e^{2t}\Big[ 3\cos(3t) + 15\sin(3t) \Big]
+				<mrow>\amp = 3e^{-t} + e^{2t}\Big[ -9\sin(3t) + 45\cos(3t) + 6\cos(3t) + 30\sin(3t)  \Big]</mrow>
+				<mrow>\amp = 3e^{-t} + e^{2t}\Big[ 21\sin(3t) + 51\cos(3t) \Big]</mrow>
+			</md>
+			
+			<md>
+				<mrow>LHS	\amp = x'' - 4x' + 13x</mrow>
+				<mrow>\amp = \left( 3e^{-t} + e^{2t}\Big[ 21\sin(3t) + 51\cos(3t) \Big] \right) </mrow>
+					- 4\left( -3e^{-t} + e^{2t}\Big[ 3\cos(3t) + 15\sin(3t) \Big] \right)
+					+ 13\left( 3e^{-t} + e^{2t} \Big[ 3\sin(3t) - 3\cos(3t) \Big] \right)
+				<mrow>\amp = 3e^{-t} + e^{2t}\Big[ 21\sin(3t) + 51\cos(3t) \Big] </mrow>
+					+ 12e^{-t} + e^{2t}\Big[ -12\cos(3t) - 60\sin(3t) \Big]
+					+ 39e^{-t} + e^{2t} \Big[ 39\sin(3t) - 39\cos(3t) \Big]
+				<mrow>\amp = 3e^{-t} + e^{2t}\Big[ 21\sin(3t) + 51\cos(3t) \Big] </mrow>
+					+ 12e^{-t} + e^{2t}\Big[ -12\cos(3t) - 60\sin(3t) \Big]
+					+ 39e^{-t} + e^{2t} \Big[ 39\sin(3t) - 39\cos(3t) \Big]
+				<mrow>\amp = 54e^{-t}</mrow>
+				<mrow>\amp = RHS</mrow>
+			</md>
+		</p>
+
+		<p>
+			We also verify the initial conditions:
+			<md>
+				<mrow>x(0)	\amp = 3e^{-0} + e^{2\cdot 0} \Big[ 3\sin(3\cdot 0) - 3\cos(3\cdot 0) \Big]</mrow>
+				<mrow>\amp = 3 + \Big[ 3\cdot 0 - 3\cdot 1 \Big]</mrow>
+				<mrow>\amp = 3 - 3</mrow>
+				<mrow>\amp = 0</mrow>
+				<mrow>\amp</mrow>
+				<mrow>x'(0)	\amp = -3e^{-0} + e^{2\cdot 0}\Big[ 3\cos(3\cdot 0) + 15\sin(3\cdot 0) \Big]</mrow>
+				<mrow>\amp = -3 + \Big[ 3\cdot 1 + 15\cdot 0 \Big]</mrow>
+				<mrow>\amp = - 3 + 3</mrow>
+				<mrow>\amp = 0</mrow>
+			</md>
+		</p>
+	</theorem> -->
+
+	<!-- <subsection><title> Introduction </title>
+
+		<introduction>
+
+			<p>
+				Differential equations are often difficult to solve because they involve unknown functions entangled with their derivatives. This complexity grows when the equation involves discontinuities or initial conditions. The Laplace Transform simplifies this process by converting the differential equation into an algebraic form, making it easier to solve. One of the key motivations for using the Laplace Transform is its ability to handle these discontinuities seamlessly, transforming functions piecewise into a single, continuous function in the complex plane. Through this, we can solve problems that would otherwise be very challenging with traditional methods.
+			</p>
+
+		</introduction>
+
+		<subsubsection><title> Motivation </title>
+
+			<p>
+				The Laplace transform is a powerful tool for solving differential equations by exploiting integration by parts and the properties of exponential functions. Before we dive into the details, let's recall the basic formula for integration by parts:
+				<me>\int u\ dv = uv - \int v\ du</me>.
+			</p>
+
+			<p>
+				In this equation, <m>u</m> and <m>v</m> are functions of <m>t</m>. So <m>dv = v' \, dt</m>, and <m>du = u' \, dt</m>. Now, we can rewrite this formula as:
+				<me>
+					\ub{\int u v'\, dt}_{\text{derivative on }v} = u v - \ub{\int v u'\, dt}_{\text{derivative on }u}
+				</me>.
+			</p>
+
+			<p>
+				Notice how the derivative initially applied to <m>v</m> on the left-hand side shifts over to <m>u</m> on the right-hand side. This ability to transfer derivatives between functions within an integral forms the core idea behind the Laplace transform.
+			</p>
+
+			<p>
+				Let's see this concept in action. Consider an integral of the form:
+				<me>\int e^{-st} y' \, dt</me>,
+				where <m>s</m> is a constant. By setting <m>u = e^{-st}</m> and <m>dv = y' \, dt</m> in our integration by parts formula, we get:
+				<me>
+					\os{\quad (1)}{\int \us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y'}}}} \ \us{dv}{\us{\uparrow}{\ul{y' dt}}}} =
+					\us{u}{\us{\uparrow}{\ul{e^{-st}\vphantom{y}}}} \ \us{v}{\us{\uparrow}{\ul{y}}} -
+					\os{(2)}{\int \us{v}{\us{\uparrow}{\ul{y}}} \ \us{du}{\us{\uparrow}{\ul{(-s e^{-st} \ dt \vphantom{y})}}}} =
+					e^{-st} \, y + s \os{\quad (3)}{\int e^{-st} \, y \, dt}
+				</me>.
+			</p>
+
+			<p>
+				What's happening here? The derivative on <m>y'</m> in integral <m>(1)</m> is effectively transferred to the exponential function <m>e^{-st}</m> in integral <m>(2)</m>, leaving an extra factor of <m>s</m> next to integral <m>(3)</m>.
+			</p>
+
+			<p>
+				This process of transferring derivatives between functions is a reoccuring theme in the Laplace transform method and in the coming sections, we will uncover how it uses this idea to solve a wide range of differential equations.
+			</p>
+
+
+
+		</subsubsection>
+
+		<subsubsection><title> Definition </title>
+
+			<p>
+				In the previous section, we mentioned the importance of integration by parts and <m>e^{-st}</m> to the Laplace transform process. To perform a Laplace transform is to multiply both sides of an equation by <m>e^{-st}</m> and integrate with respect to <m>t</m>. For instance, applying this process to the equation
+				<me>
+					y'' + 3y' + 2y = -40e^{3t}
+				</me>
+				would look like this:
+				<md>
+					<mrow>
+						e^{-st} \left( y'' + 3y' + 2y \right)
+							\amp = e^{-st} \left( -40e^{3t} \right)
+					</mrow>
+					<mrow>
+						\int e^{-st} \left( y'' + 3y' + 2y \right) \, dt
+							\amp = \int e^{-st} \left( -40e^{3t} \right) \, dt
+					</mrow>
+					<mrow>
+						\ub{\int e^{-st} {\color{blue} y''} \, dt}_{\text{transform of } {\color{blue} y''}} +
+						3\ub{\int e^{-st} {\color{blue} y'} \, dt}_{\text{transform of } {\color{blue} y'}} +
+						2\ub{\int e^{-st} {\color{blue} y} \, dt}_{\text{transform of } {\color{blue} y}}
+							\amp = \ub{\int e^{-st} \left( {\color{blue} -40e^{3t}} \right) \, dt}_{\text{transform of } {\color{blue} -40e^{3t}}}
+					</mrow>
+				</md>.
+				As this shows, applying the transform to the equation amounts to applying it to each term of our original equation (in blue). The following definition of the Laplace transform makes this more precise.
+			</p>
+
+			<definition><title> Laplace Transform </title>
+				<statement>
+					The <term>Laplace Transform</term> of a given function <m>f(t)</m> is defined as
+
+					<me> \lap{ {\color{blue} f(t)} } = \int_0^{\infty} e^{-st} {\color{blue} f(t)}\ dt,</me>
+
+					provided that the integral exists (i.e., the improper integral converges).
+				</statement>
+			</definition>
+
+			<p>
+				This definition may appear daunting at first glance, but let's break it down. The <m>\infty</m> in the upper limit signals that we are dealing with an improper integral. In calculus, we learned that improper integrals can be understood as limits. Specifically:
+			</p>
+			
+			<me>
+				\int_0^{\infty} e^{-st} f(t)\, dt = \ub{\lim_{b \to \infty} \ob{\int_0^b e^{-st} f(t)\, dt}^{\text{step 1: compute the integral}}}_{\text{step 2: compute the limit}}
+			</me>
+			
+			<p>
+				Notice that while the integral involves both <m>s</m> and <m>t</m>, the integration is performed with respect to <m>t</m>. If you're unfamiliar with handling multiple variables like this, simply treat <m>s</m> as a constant during the integration process. Now, let's walk through an example to see this concept in action.
+			</p>
+
+
+
+		</subsubsection>
+
+	</subsection> -->
+
+    <!-- <dl>
+		<li xml:id="lt-L1"><title> <m>L_1</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_1</me></cell>
+						<cell><me>1</me></cell>
+						<cell><me>\frac{1}{s}</me>,</cell>
+						<cell><me>s \gt 0</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L2"><title> <m>L_2</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_2</me></cell>
+						<cell><me>e^{a}</me></cell>
+						<cell><me>\frac{1}{s-a}</me></cell>
+						<cell><me>s \gt a</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L3"><title> <m>L_3</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_3</me></cell>
+						<cell><me>t^n</me></cell>
+						<cell><me>\frac{n!}{s^{n+1}}</me></cell>
+						<cell><me>s \gt 0</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L4"><title> <m>L_4</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_4</me></cell>
+						<cell><me>\sin(bt)</me></cell>
+						<cell><me>\frac{b}{s^2 + b^2}</me></cell>
+						<cell><me>s \gt 0</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L5"><title> <m>L_5</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_5</me></cell>
+						<cell><me>\cos(bt)</me></cell>
+						<cell><me>\frac{s}{s^2 + b^2}</me></cell>
+						<cell><me>s \gt 0</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L6"><title> <m>L_6</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_6</me></cell>
+						<cell><me>e^{at}t^n</me></cell>
+						<cell><me>\frac{n!}{(s-a)^{n+1}}</me></cell>
+						<cell><me>s \gt a</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L7"><title> <m>L_7</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_7</me></cell>
+						<cell><me>e^{at}\sin(bt)</me></cell>
+						<cell><me>\frac{b}{(s-a)^2+b^2}</me></cell>
+						<cell><me>s \gt a</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+		<li xml:id="lt-L8"><title> <m>L_8</m> </title>
+			<p>
+				<tabular top="minor" bottom="minor" left="minor" right="minor" halign="center">
+					<col top="none"/>
+					<col/>
+					<col right="none"/>
+					<col/>
+					<row left="none" top="none">
+						<cell/>
+						<cell><me>f(t)</me></cell>
+						<cell colspan="2"><me>\lap{ f(t) }</me></cell>
+					</row>
+					<row>
+						<cell><me>L_8</me></cell>
+						<cell><me>e^{at}\cos(bt)</me></cell>
+						<cell><me>\frac{s-a}{(s-a)^2+b^2}</me></cell>
+						<cell><me>s \gt a</me></cell>
+					</row>
+				</tabular>
+			</p>
+		</li>
+	</dl> -->
+<!-- 
+    <subsubsection><title> Completing the Square </title>
+
+        <p>
+            Review <xref provisional="review-completing-the-sqr"/>.
+        </p>
+
+        <p>
+            As you progress through the Laplace Transform Method, you will often encounter <xref provisional="rational-function" text="custom">rational functions</xref> that do not immediately match any known form in the <xref provisional="lt-table-common-rules-merged" text="custom">table of Laplace transforms</xref>. For example, the function
+            <me>\frac{s-1}{s^2 - 2s + 5}</me>
+            does not align with standard forms. A common approach is to rewrite the denominator in the form <m>(s - a)^2 + b^2</m>, allowing it to match known transforms like <m>L_7</m> or <m>L_8</m>. This technique, called completing the square, is essential for converting quadratic expressions into forms that are easier to work with in inverse Laplace computations.
+        </p>
+
+        <p>
+            Completing the square is particularly useful when the quadratic expression in the denominator has complex roots. As a quick check, recall from <xref provisional="solving-the-quadratic-equation" text="custom">solving quadratic equations</xref> that if the discriminant
+            <me>b^2 - 4ac</me>
+            is negative, the quadratic function has complex roots. This indicates that completing the square is the correct approach, as the following examples will demonstrate.
+        </p>
+
+        <p>
+            Sometimes, the form of <m>Y(s)</m> looks close to something familiar, but not quite close enough. In particular, you might see a quadratic in the denominator, like <m>s^2 + 6s + 13</m>, and feel stuck because it doesn't match any entry in the Laplace transform table.
+        </p>
+
+        <p>
+            That's where <em>completing the square</em> comes in. The Laplace table is full of expressions like:
+            <me>
+                \frac{s}{(s - a)^2 + b^2} \quad \text{or} \quad \frac{b}{(s - a)^2 + b^2}
+            </me>
+            These are the transforms of cosine and sine functions involving exponential shifts. To match them, we need the denominator to look like a perfect square plus a constant.
+        </p>
+
+        <p>
+            Completing the square is a way to rewrite any quadratic into that recognizable form. For example:
+            <me>
+                s^2 + 6s + 13 = (s + 3)^2 + 4
+            </me>
+            Now that denominator is starting to look a lot like something from the Laplace table!
+        </p>
+
+        <p>
+            This technique is especially important when dealing with shifted sine and cosine transforms. The key is to rewrite the denominator into a form that highlights:
+        </p>
+
+        <ul marker="square">
+            <li>A shift in <m>s</m> ,  this becomes a time-domain exponential like <m>e^{-3t}</m></li>
+            <li>A sum of squares ,  this creates sine or cosine terms in the solution</li>
+        </ul>
+
+        <p>
+            After completing the square, you'll often need to split the fraction or rearrange the numerator to finish the job. But the square completion is the step that unlocks the structure behind the expression.
+        </p>
+
+        <p>
+            Let's look at a [placeholder for example] where completing the square reveals the form we need to apply the inverse Laplace transform.
+        </p>
+    
+        <example><title> Find the Inverse Laplce Transform </title>
+            <p>
+                <statement>
+                    <p>
+                        Find the inverse Laplace transforms of each function.
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <m>\ds\ilap{\frac{s-1}{s^2 - 2s + 5}}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds\ilap{\frac{11}{s^2 - 6s + 14}}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds\ilap{\frac{s+3}{s^2 + 2s + 10}}</m>
+                            </p>
+                        </li>
+                    </ol>
+                </statement>
+            </p>
+
+            <p>
+                <solution>
+                    <p>
+                        The discriminant of the denominator <m>s^2 - 2s + 5</m> is
+                        <me>b^2 - 4ac = (-2)^2 - 4(1)(5) = 4 - 20 = -16</me>,
+                        which is negative. Therefore, completing the square is necessary:
+                        <md>
+                            <mrow> s^2 - 2s + 5 = (s^2 - 2s) + 5	\amp = (\ob{s^2 - 2s + 1}^{(s - 1)^2} - 1) + 5   </mrow>
+                            <mrow>								  \amp = (s - 1)^2 + 4							 </mrow>
+                        </md>.
+                        Rewriting <m>H(s)</m> gives:
+                        <me>\frac{s-1}{s^2 - 2s + 5} = \frac{s-1}{(s - 1)^2 + 4},</me>
+                        which matches <xref provisional="L8"/> (<m>a=1, b=2</m>). Therefore,
+                        <me>h(t) = \ilap{H(s)} = e^{t}\cos(2t).</me>
+                    </p>
+                </solution>
+        
+                <solution>
+                    <p>
+                        The discriminant of the denominator <m>s^2 - 6s + 14</m> is:
+                        <me>b^2 - 4ac = (-6)^2 - 4(1)(14) = 36 - 56 = -20</me>,
+                        indicating that completing the square is necessary:
+                        <md>
+                            <mrow> s^2 - 6s + 14 = (s^2 - 6s) + 14  =\amp (\ob{s^2 - 6s + 9}^{(s - 3)^2} - 9) + 14  </mrow>
+                            <mrow>								  =\amp (s - 3)^2 + 5							 </mrow>
+                        </md>.
+                        Rewriting <m>K(s)</m> as:
+                        <me>
+                            \frac{11}{s^2 - 6s + 14}
+                                = \ub{\frac{11}{(s - 3)^2 + 5}}_{\large \text{Match with } L_7}
+                                = \frac{11}{\sqrt{5}}\ub{\frac{\sqrt{5}}{(s - 3)^2 + 5}}_{\large <xref provisional="L7" text="custom"><m>L_7</m></xref> (a = 3, b = \sqrt{5})}
+                        </me>.
+                        Therefore,
+                        <md>
+                            <mrow>
+                                k(t) = \ilap{K(s)} \amp = \frac{11}{\sqrt{5}}e^{3t}\sin(\sqrt{5}t)
+                            </mrow>
+                        </md>.
+                    </p>
+                </solution>
+        
+                <solution>
+                    <p>
+                        Completing the square for the denominator of <m>P(s)</m> gives:
+                        <me>
+                            \frac{s+3}{s^2 + 2s + 10} = \frac{s+3}{(s + 1)^2 + 9}
+                        </me>.
+                        However, the numerator <m>s + 3</m> does not match <m>s + 1</m>. To resolve this, we rewrite <m>3</m> as <m>1 + 2</m> and group terms:
+                        <md>
+                            <mrow>
+                                \frac{s+3}{s^2 + 2s + 10}
+                                    \amp = \frac{s + 1 + 2}{(s + 1)^2 + 9}
+                            </mrow>
+                            <mrow>
+                                    \amp = \frac{s+1}{(s + 1)^2 + 9} + \frac{2}{(s + 1)^2 + 9}
+                            </mrow>
+                            <mrow>
+                                    \amp = \ub{\frac{s+1}{(s + 1)^2 + 9}}_{\large <xref provisional="L8"/>\ (a=-1, b=3)}
+                                        + \frac{2}{3}\ub{\frac{3}{(s + 1)^2 + 9}}_{\large <xref provisional="L7"/>\ (a=-1, b=3)}
+                            </mrow>	
+                        </md>,
+                        Now, apply the inverse Laplace transform:
+                        <md>
+                            <mrow>
+                                p(t) \amp = \ilap{P(s)}
+                            </mrow>
+                            <mrow>
+                                    \amp = \ilap{ \frac{s+1}{(s + 1)^2 + 9} } + \frac{2}{3}\ilap{ \frac{3}{(s + 1)^2 + 9} }
+                            </mrow>
+                            <mrow>
+                                    \amp = e^{-t}\cos(3t) + \frac{2}{3}e^{-t}\sin(3t)
+                            </mrow>	
+                        </md>
+                    </p>
+                </solution>
+            </p>
+
+        </example>
+
+        <p>
+            Completing the square is a crucial technique when working with quadratic expressions in the denominator of Laplace transforms. It allows for the backward transformations by rewriting the <m>s</m>-function in a form that aligns with known inverse Laplace transforms. In the next subsection, we will explore another technique: partial fraction decomposition, which helps break down more complex rational functions into simpler parts that can be easily matched to common inverse transforms.
+        </p>
+
+        <p>
+            Whenever you see a second-degree polynomial in the denominator that isn't factored or doesn't match a known entry, your first instinct should be: can I complete the square? If the answer is yes, you're probably on the right track.
+        </p>
+
+    </subsubsection>
+
+    <subsubsection><title> Partial Fraction Decomposition </title>
+        
+        <p>
+            Review <xref provisional="review-rational-functions"/> and <xref provisional="review-pfd"/>.
+        </p>
+
+        <p>
+            In the Laplace Transform Method, we often encounter rational functions with polynomial denominators that can be factored into simpler linear or quadratic terms. In such cases, partial fraction decomposition becomes a powerful technique. By breaking the original rational function into simpler fractions, each corresponding to a known form in the Laplace Transform Table, we can efficiently compute the inverse Laplace transform.
+        </p>
+
+        <p>
+            The key idea is to express a complex rational function as a sum of simpler fractions, each with a simpler denominator. For example, if the denominator can be factored as <m>(s - a)(s - b)</m>, we can rewrite the function as:
+            <me>\frac{f(s)}{(s - a)(s - b)} = \frac{A}{s - a} + \frac{B}{s - b}.</me>
+            Once expressed in this way, we can directly apply the inverse Laplace transform to each term. Let's explore a series of examples to demonstrate this approach.
+        </p>
+
+        <p>
+            Partial fraction decomposition also works for more complex rational functions with higher-degree polynomials in the denominator. The key is to factor the denominator as much as possible, then apply the decomposition to each term. Let's examine a more complex case involving cubic and quartic denominators.
+        </p>
+
+        <p>
+            Partial fraction decomposition (PFD) is the heavyweight tool of the Laplace transform method. While techniques like splitting fractions and completing the square are elegant and quick, PFD is the go-to strategy when your Laplace solution is a single complicated rational expression, and there's no clear path to invert it.
+        </p>
+
+        <p>
+            The goal of PFD is simple: to break a complicated rational expression into a sum of simpler terms that we can match directly with entries in the Laplace transform table. But the method itself can feel messy. There are case distinctions, algebraic manipulations, and systems of equations. Still, it's worth it, because once we decompose the expression, the backward transform becomes a breeze.
+        </p>
+
+        <p>
+            Here's the general setup: we encounter a Laplace solution like
+            <me>
+                Y(s) = \frac{P(s)}{Q(s)}
+            </me>
+            where <m>P(s)</m> and <m>Q(s)</m> are polynomials and <m>\deg P(s) \lt \deg Q(s)</m>. If that's the case, we can try to rewrite this as a sum of simpler fractions, each corresponding to a known Laplace transform.
+        </p>
+
+        <p>
+            Exactly how we do that depends on the structure of the denominator <m>Q(s)</m>, whether it factors into linear terms, irreducible quadratics, or a mix of both. We won't attempt to cover every rule and nuance here. Instead, we'll focus on why PFD shows up in the Laplace method and how to recognize when it's needed.
+        </p>
+
+        <p>
+            You can think of partial fractions as the translation step between algebra and table lookup. The algebra gives you the messy result, and the table wants simple, isolated terms. PFD bridges that gap.
+        </p>
+
+        <p>
+            In this subsection, we'll work through a [placeholder for example] that walks through the process of decomposing a rational function using partial fractions and shows how each resulting term corresponds to a familiar inverse Laplace transform.
+        </p>
+
+        <example><title> Preparation via Partial Fraction Decomp </title>
+            <p>
+                <statement>
+                    <p>
+                        Suppose each of the following are <q> Laplace solutions </q> (post step 2) corresponding to some differential equation. Find the solution by completing steps 3 and 4.
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <m>\ds Y(s) = \frac{2s + 5}{(s + 1)(s + 4)}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds P(s) = \frac{s}{s^2 - s + 6}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds Q(s) = \frac{3s + 4}{s^2 - 2s + 1}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds R(s) = \frac{3s + 4}{(s^2 + 1)(s^2 + 4)}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds U(s) = \frac{2s^2 + 5s + 1}{s^3 - s}</m>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <m>\ds V(s) = \frac{4s^3 + 3s^2 - 2s + 1}{s^4 - 1}</m>
+                            </p>
+                        </li>
+                    </ol>
+                </statement>
+            </p>
+            
+            <p>
+                <solution>
+                    <p>
+                        First, decompose <m>Y(s)</m> into partial fractions:
+                        <me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{A}{s + 1} + \frac{B}{s + 4}.</me>
+                        Multiply both sides by <m>(s + 1)(s + 4)</m>,
+                        <me>2s + 5 = A(s + 4) + B(s + 1).</me>
+                        and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+                        <sidebyside widths="8% 80%">
+                            <p>
+                                <md>
+                                    <mrow>s = -1: \amp</mrow>
+                                    <mrow></mrow>
+                                    <mrow>s = -4: \amp</mrow>
+                                    <mrow></mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>2(-1) + 5 	\amp = A(-1 + 4) + B(-1 + 1)</mrow>
+                                    <mrow>3 	\amp = A(3) + B(0) \quad\implies\quad A=1</mrow>
+                                    <mrow>2(-4) + 5 	\amp = A(-4 + 4) + B(-4 + 1)</mrow>
+                                    <mrow>-3 	\amp = A(0) + B(-3) \quad\implies\quad B=1</mrow>
+                                </md>
+                            </p>>
+                        </sidebyside>
+                        Therefore, the partial fraction decomposition is:
+                        <me>\frac{2s + 5}{(s + 1)(s + 4)} = \frac{1}{s + 1} + \frac{1}{s + 4}.</me>
+                        Applying the inverse Laplace transform to each term:
+                        <me>\ilap{Y(s)} = \ilap{\frac{1}{s + 1}} + \ilap{\frac{1}{s + 4}} = e^{-t} + e^{-4t}.</me>
+                    </p>
+                </solution>
+        
+                <solution>
+                    <p>
+                        First, factor the quadratic denominator:
+                        <me>s^2 - s - 6 = (s + 2)(s - 3).</me>
+                        Now decompose <m>P(s)</m> into partial fractions:
+                        <me>\frac{s}{(s + 2)(s - 3)} = \frac{A}{s + 2} + \frac{B}{s - 3}.</me>
+                        Multiply both sides by <m>(s + 2)(s - 3)</m>,
+                        <me>s = A(s - 3) + B(s + 2).</me>
+                        and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+                        <sidebyside widths="8% 80%">
+                            <p>
+                                <md>
+                                    <mrow>s = -2: \amp</mrow>
+                                    <mrow></mrow>
+                                    <mrow>s = 3: \amp</mrow>
+                                    <mrow></mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>-2 	\amp = A(-2 - 3) + B(-2 + 2)</mrow>
+                                    <mrow>-2 	\amp = A(-5) + B(0) \quad\implies\quad A=2/5</mrow>
+                                    <mrow>3 	\amp = A(3 - 3) + B(3 + 2)</mrow>
+                                    <mrow>3 	\amp = A(0) + B(5) \quad\implies\quad B=3/5</mrow>
+                                </md>
+                            </p>
+                        </sidebyside>
+                        The partial fraction decomposition is:
+                        <me>\frac{s}{(s + 2)(s - 3)} = \frac{2/5}{s + 2} + \frac{3/5}{s - 3}.</me>
+                        Therefore:
+                        <me>\ilap{P(s)} = \frac25 e^{-2t} + \frac35 e^{3t}.</me>
+                    </p>
+                </solution>
+        
+                <solution>
+                    <p>
+                        Factor the quadratic denominator:
+                        <me>s^2 - 2s + 1 = (s - 1)^2.</me>
+                        Decompose <m>Q(s)</m> into partial fractions:
+                        <me>\frac{3s + 4}{(s - 1)^2} = \frac{A}{s - 1} + \frac{B}{(s - 1)^2}.</me>
+                        Multiply both sides by <m>(s - 1)^2</m>,
+                        <me>3s + 4 = A(s - 1) + B.</me>
+                        and solve for <m>A</m> and <m>B</m> by selecting convenient values for <m>s</m>:
+                        <sidebyside widths="8% 80%">
+                            <p>
+                                <md>
+                                    <mrow>s = 1: \amp</mrow>
+                                    <mrow></mrow>
+                                    <mrow>s = 0: \amp</mrow>
+                                    <mrow></mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>3(1) + 4 	\amp = A(1 - 1) + B</mrow>
+                                    <mrow>7 	\amp = A(0) + B \quad\implies\quad B=7</mrow>
+                                    <mrow>3(0) + 4 	\amp = A(0 - 1) + B</mrow>
+                                    <mrow>4 	\amp = -A + 7 \quad\implies\quad A=3</mrow>
+                                </md>
+                            </p>
+                        </sidebyside>
+                        The partial fraction decomposition is:
+                        <me>\frac{3}{s - 1} + \frac{7}{(s - 1)^2}.</me>
+                        Therefore:
+                        <me>\ilap{Q(s)} = 3e^{t} + 7te^{t}.</me>
+                    </p>
+                </solution>
+
+                <solution>
+                    <p>
+                        First, factor the cubic denominator:
+                        <me>
+                            s^3 - s = s(s - 1)(s + 1)
+                        </me>.
+                        Now decompose <m>R(s)</m> into partial fractions:
+                        <me>
+                            U(s) = \frac{2s^2 + 5s + 1}{s(s - 1)(s + 1)} = \frac{A}{s} + \frac{B}{s - 1} + \frac{C}{s + 1}
+                        </me>
+                        and multiply both sides by <m>s(s - 1)(s + 1)</m> to get
+                        <me>
+                            2s^2 + 5s + 1 = A(s - 1)(s + 1) + B(s)(s + 1) + C(s)(s - 1)
+                        </me>.
+                        Now, solve for <m>A, B,</m> and <m>C</m> by selecting convenient values for <m>s</m>:
+                        <sidebyside widths="10% 70% 18%">
+                            <p>
+                                <md>
+                                    <mrow>	s = 0:	\amp	</mrow>
+                                    <mrow>					</mrow>
+                                    <mrow>	s = 1:	\amp	</mrow>
+                                    <mrow>					</mrow>
+                                    <mrow>	s = -1:	\amp	</mrow>
+                                    <mrow>					</mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>	1 	\amp = A(-1)(1) + B(0)(1) + C(0)(-1)	</mrow>
+                                    <mrow>	1 	\amp = -A								</mrow>
+                                    <mrow>	8 	\amp = A(0)(2) + B(1)(2) + C(1)(0)		</mrow>
+                                    <mrow>	 	\amp = 2B								</mrow>
+                                    <mrow>	-2 	\amp = A(1)(0) + B(-1)(0) + C(-1)(-2)	</mrow>
+                                    <mrow>	-2 	\amp = 2C								</mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>					</mrow>
+                                    <mrow>	A	\amp = -1	</mrow>
+                                    <mrow>					</mrow>
+                                    <mrow>	B	\amp = 4	</mrow>
+                                    <mrow>					</mrow>
+                                    <mrow>	C	\amp = -1	</mrow>
+                                </md>
+                            </p>
+                        </sidebyside>
+                        Therefore,
+                        <md>
+                            <mrow>	\ilap{U(s)}	\amp = \ilap{\frac{-1}{s} + \frac{4}{s - 1} + \frac{-1}{s + 1}}	</mrow>
+                            <mrow>	u(t)		\amp = -1 + 4e^{t} - e^{-t}.									</mrow>
+                        </md>
+                    </p>
+                </solution>
+        
+                <solution>
+                    <p>
+                        Factor the quartic denominator:
+                        <me>
+                            s^4 - 1 = (s^2 - 1)(s^2 + 1) = (s - 1)(s + 1)(s^2 + 1)
+                        </me>.
+                        Decompose <m>V(s)</m> into partial fractions:
+                        <me>
+                            \frac{4s^3 + 3s^2 - 2s + 1}{(s - 1)(s + 1)(s^2 + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1} + \frac{Cs + D}{s^2 + 1}
+                        </me>
+                        and multiply both sides by <m>(s - 1)(s + 1)(s^2 + 1)</m> to get
+                        <md>
+                            <mrow>	4s^3 + 3s^2 - 2s + 1 = A(s + 1)(s^2	\amp + 1)	+ B(s - 1)(s^2 + 1)	</mrow>
+                            <mrow>										\amp + (Cs+D)(s - 1)(s + 1)		</mrow>.
+                        </md>
+                        Next, solve for <m>A, B, C,</m> and <m>D</m> by selecting convenient values for <m>s</m>:
+                        <sidebyside widths="12% 80%">
+                            <p>
+                                <md>
+                                    <mrow>	s = 1:	\amp		</mrow>
+                                    <mrow>	\vphantom{\frac32}	</mrow>
+                                    <mrow>	s = -1:	\amp		</mrow>
+                                    <mrow>	\vphantom{\frac32}	</mrow>
+                                    <mrow>	s = 0:	\amp		</mrow>
+                                    <mrow>	\vphantom{\frac32}	</mrow>
+                                    <mrow>	s = -2:	\amp		</mrow>
+                                    <mrow>	\vphantom{\frac32}	</mrow>
+                                </md>
+                            </p>
+                            <p>
+                                <md>
+                                    <mrow>	6 	\amp = A(2)(2) + B(0)(2) + (C(1) + D)(0)(2)						</mrow>
+                                    <mrow>	6 	\amp = 4A \qquad\implies\qquad A = \frac32						</mrow>
+                                    <mrow>	2 	\amp = A(0)(2) + B(-2)(2) + (C(-1) + D)(-2)(0)					</mrow>
+                                    <mrow>	2 	\amp = -4B \qquad\implies\qquad B = -\frac12						</mrow>
+                                    <mrow>	1 	\amp = A(1)(1) + B(-1)(1) + (C(0) + D)(-1)(1)					</mrow>
+                                    <mrow>	1 	\amp = \frac32 + \frac12 - D \qquad\implies\qquad D = 1			</mrow>
+                                    <mrow>	-15 	\amp = A(-1)(3) + B(-3)(3) + (C(-2) + D)(-3)(-1)					</mrow>
+                                    <mrow>	-15 	\amp = -3A - 9B + -6C + 3D										</mrow>
+                                    <mrow>	-15 	\amp = -\frac92 + \frac92 + -6C + 3(1) \quad\implies\quad C = 3	</mrow>
+                                </md>
+                            </p>
+                        </sidebyside>
+                        Therefore,
+                        <md>
+                            <mrow>	\ilap{V(s)}	\amp = \ilap{\frac{\frac32}{s - 1} - \frac{\frac12}{s + 1} + \frac{3s + 1}{s^2 + 1}}	</mrow>
+                            <mrow>	v(t)		\amp = \frac32 e^{t} - \frac12 e^{-t} + 3\cos(t) + \sin(t)								</mrow>.
+                        </md>
+                    </p>
+                </solution>
+            </p>
+        </example>
+
+        <p>
+            Partial fraction decomposition simplifies complex rational functions, breaking them into manageable terms that correspond to known inverse Laplace transforms. In the next section, we will explore advanced techniques, including handling repeated roots and higher-order polynomials.
+        </p>
+
+        <p>
+            Because PFD is such a central technique, not just in Laplace transforms, but in many areas of applied math, we've included a dedicated appendix that reviews the method in full detail. That review includes the general procedure, case breakdowns, and several worked examples to serve as a reference.
+        </p>
+
+        <p>
+            For now, focus on spotting when PFD is needed, understanding what it accomplishes, and getting comfortable with the logic behind breaking a rational expression into simpler pieces.
+        </p>
+    
+        <p>
+            As you work through this process, pay attention not just to the mechanics but to the strategy behind each algebraic move. This is where the Laplace Transform Method feels the most like solving a puzzle. And once you've broken <m>Y(s)</m> down into table-friendly pieces, you're ready for the final step: bringing the solution back into the time domain.
+        </p>
+
+    </subsubsection>
+
+    <md>
+		<mrow xml:id="LLT-Table-L1">
+			\amp L1: \quad \ds \lap{ 1 } = \frac{1}{s}, \quad s>0
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L2">
+			\amp L2: \quad \ds \lap{ e^{at} } = \frac{1}{s-a}, \quad s>a
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L3">
+			\amp L3: \quad \ds \lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s>0
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L4">
+			\amp L4: \quad \ds \lap{ \sin (bt) } = \frac{b}{s^2 + b^2}, \quad s>0
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L5">
+			\amp L5: \quad \ds \lap{ \cos(bt) } = \frac{s}{s^2 + b^2}, \quad s>0
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L6">
+			\amp L6: \quad \ds \lap{ t^n e^{at} } = \frac{n!}{(s-a)^{n+1}}, \quad s>a
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L7">
+			\amp L7: \quad \ds \lap{ e^{at} \sin(bt) } = \frac{b}{(s-a)^2 + b^2}, \quad s>a
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L8">
+			\amp L8: \quad \ds \lap{ e^{at} \cos(bt) } = \frac{s-a}{(s-a)^2 + b^2}, \quad s>a
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L9">
+			\amp L9: \quad \ds \lap{ a f(t) + b g(t) } = a \lap{ f(t) } + b \lap{ g(t) }, \quad a, b \text{ constant}
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L10">
+			\amp L10: \quad \ds \lap{ f'(t) } = sF(s) - f(0)
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L11">
+			\amp L11: \quad \ds \lap{ f''(t) } = s^2 F(s) - sf(0) - f'(0)			
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L12">
+			\amp L12: \quad \ds \lap{ f^{(n)}(t) } = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \cdots - f^{(n-1)}(0)
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L13">
+			\amp L13: \quad \ds \lap{ t^n f(t) } = (-1)^n\frac{d^n}{ds^n}\big( \lap{ t^n f(t) } \big)
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L14">
+			\amp L14: \quad \ds \lap{ U(t-a) } = \frac{e^{-as}}{s}
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L15">
+			\amp L15: \quad \ds \lap{ f(t) U(t-a) } = e^{-as} \lap{ f(t+a) }
+		</mrow>
+	</md>
+	<md>
+		<mrow xml:id="LLT-Table-L16">
+			\amp L16: \quad \ds \lap{ f(t-a)U(t-a) } = e^{-as}F(s)
+		</mrow>
+	</md>
+
+	<theorem xml:id="LT-Table-L14-L16"><title> </title>
+		<md>
+			<mrow>\amp L14: \quad \ds \lap{ U(t-a) } = \frac{e^{-as}}{s}</mrow>
+			<mrow>\amp L15: \quad \ds \lap{ f(t) U(t-a) } = e^{-as} \lap{ f(t+a) }</mrow>
+			<mrow>\amp L16: \quad \ds \lap{ f(t-a)U(t-a) } = e^{-as}F(s)</mrow>
+		</md>
+	</theorem> -->
+	
+</section>

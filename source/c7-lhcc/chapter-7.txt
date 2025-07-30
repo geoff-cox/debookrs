@@ -1,0 +1,2320 @@
+<section label="linear-constant-coeffs">
+	<title> The LHCC Equation </title>
+
+	<introduction>
+		<p>
+			Before learning how to solve Linear Homogeneous Constant Coefficient (LHCC) differential equations, it's important to identify these equations and understand the nature of their structure. In this section, we'll define what it means for a differential equation to be homogeneous, review how constant coefficients affect the form of the equation, and formally define what qualifies as an LHCC equation.
+		</p>
+	</introduction>
+
+	<paragraphs xml:id="forcing-functions-on-linear-eqns">
+		<title> Linear Differential Equations &amp; Forcing Functions </title>
+
+		<p>
+			Recall that a differential equation is called <term>linear</term> if it only contains linear terms, meaning the dependent variable and its derivatives appear to the first power without multiplication or composed with one another.
+		</p>
+
+		<p>
+			An equation is nonlinear <term>nonlinear</term> if it includes terms like <m>y^2</m>, <m>(y')^3</m>, <m>\sin(y)</m>, or <m>y \cdot y''</m>, where the dependent variable is raised to a power or multiplied by one of its derivatives.
+		</p>
+
+	    <p>
+			A general <m>n</m>-th order linear differential equation looks like this:
+		</p>
+
+		<men xml:id="linear-equation-w-forcing-function">
+			\us{ \large\text{of}\ y^{(n)} }{ \us{ \large\text{coefficient} }{ 
+				\us{\uparrow}{ {\color{BurntOrange} \ul{a_n(x)} }}\ y^{(n)}
+			}}	+ \cdots +
+			\us{ \large\text{of}\ y'' }{ \us{ \large\text{coefficient} }{
+				\us{\uparrow}{ {\color{BurntOrange} \ul{a_2(x)} }}\ y''
+			}}	+
+			\us{ \large\text{of}\ y' }{ \us{ \large\text{coefficient} }{
+				\us{\uparrow}{ {\color{BurntOrange} \ul{a_1(x)} }}\ y'
+			}}	+
+			\us{ \large\text{of}\ y }{ \us{ \large\text{coefficient} }{
+				\us{\uparrow}{ {\color{BurntOrange} \ul{a_0(x)} }}\ y
+			}}	=
+			\us{ \large\text{function} }{  \us{ \large\text{forcing} }{
+				\us{\uparrow}{ {\color{BurntOrange} \ul{f(x)} }}
+			}}
+		</men>
+
+		<p>
+			The coefficients <m>a_n(x), \dots, a_0(x)</m> and the right-hand side <m>f(x)</m> depend only on the independent variable, which we're calling <m>x</m>. While we previously referred to <m>f(x)</m> as a constant term, in this context, it is known as the <term>forcing function</term>.
+		</p>
+
+		<p>
+			Forcing functions are not always easily identifiable on the right-hand side of a differential equation. Sometimes, <m>y</m> terms and their derivatives may be mixed in, or parts of the forcing function may appear on the left.
+		</p>
+
+		<p>
+			For example, the equation
+			<me>
+				y'' + 2y + 5x = -5 + 3y'
+			</me>
+			the forcing function is not immediately clear. Rearranging it into standard form:
+			<me>
+				y'' - 3y' + 2y = 5x - 5
+			</me>
+			reveals that the forcing function is <m>5x - 5</m>.
+		</p>
+
+		<task label="chkpt-identifying-forcing-function-1">
+			<title> 📖❓ Identifying the Forcing Function </title>
+			<statement>
+				<p>
+					What is the forcing function in the differential equation?
+					<me>
+						x^2y'' - 5x - 4xy' = 10
+					</me>
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>5x + 10</m></statement>
+					<feedback>Correct! The forcing function is the entire right-hand side of the equation.</feedback>
+				</choice>`
+				<choice>
+					<statement><p><m>x^2</m></p></statement>
+					<feedback><p>This is the coefficient of the <m>y''</m> term, not the forcing function.</p></feedback>
+				</choice>
+				<choice>
+					<statement><m>10</m></statement>
+					<feedback>This is only part of the forcing function.</feedback>
+				</choice>
+				<choice>
+					<statement><m>5x</m></statement>
+					<feedback>This is only part of the forcing function.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+	</paragraphs>
+
+	<paragraphs xml:id="constant-coefficients">
+		<title> Constant Coefficients </title>
+
+		<p>
+			A linear differential equation has <term>constant coefficients</term> if all the coefficients <m>a_n, a_{n-1}, \dots, a_0</m> are constants rather than functions of the independent variable <m>x</m>.
+		</p>
+
+		<p>
+			So, a linear differential equation with constant coefficients looks like:
+		</p>
+
+		<men xml:id="lcc-eqn">
+			a_{n}\ y^{(n)} + a_{n-1}\ y^{(n-1)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = f(x)
+		</men>.
+
+		<p>
+			Here are a few examples of linear equations with constant coefficients:
+		</p>
+
+		<me>
+			2y'' - 3y' + 5y = 0, \qquad y''' + 4y'' - 2y' + 7y = e^x
+		</me>,
+
+		<p>
+			And here are some that do not have constant coefficients:
+		</p>
+
+		<me>
+			\boxed{3^x}\ y'' + \boxed{2x}\ y' + y = 0, \qquad y'' + y' + \boxed{\ln x}\ y = \sin x
+		</me>.
+
+		<task label="chkpt-linear-constant-coeffs-2">
+			<title> 📖❓ Identifying Constant Coefficient Equations </title>
+			<statement>
+				<p>
+					Select all the linear differential equations that have constant coefficients.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad y'' - 4y' + 7y = 0 </m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! All coefficients are constant.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad x^2 y'' + x y' - y = 0 </m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The coefficient of <m> y'' </m> is <m> x^2 </m>, which is not constant.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad y''' - 2y' + 3y = 0 </m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! All coefficients are constant.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad e^x y'' + y' + y = 0 </m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The coefficient <m> e^x </m> is not a constant.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+  	</paragraphs>
+
+	<paragraphs xml:id="homogeneous">
+		<title> Homogeneous </title>
+
+		<p>
+			A linear differential equation is <term>homogeneous</term> if the right-hand side is zero—that is, there is no forcing term. Otherwise, it is <term>nonhomogeneous</term>.
+		</p>
+
+		<p>
+			For example, the following equations are homogeneous:
+		</p>
+
+		<me>
+			x y'' - \cos x y' + 6y = 0, \qquad y''' + 2y'' = y'
+		</me>
+
+		<p>
+			These are nonhomogeneous because of the (boxed) right-hand side:
+		</p>
+
+		<me>
+			y'' + 4xy = \boxed{x}, \qquad y' + \boxed{e^x} = 0
+		</me>
+
+		<task label="chkpt-identifying-lhcc-1">
+			<title>  📖❓ Identifying Homogeneous Equations </title>
+			<statement>
+				<p>
+					Which of the following equations is homogeneous?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement> <m>\ds\quad y'' + 4y' + 3y = 0 </m> </statement>
+					<feedback>
+						<p>
+							Correct! The right-hand side is zero, so the equation is homogeneous.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement> <m>\ds\quad y'' + 4y^2 = 0 </m> </statement>
+					<feedback>
+						<p>
+							Incorrect. This equation looks homogeneous, but homogeneity only applies to linear equations.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement> <m>\ds\quad y'' + 4y' + 3y = 7 </m> </statement>
+					<feedback>
+						<p>
+							Incorrect. The equation has a non-zero constant term, making it non-homogeneous.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement> <m>\ds\quad y' + 2y = x^2 </m> </statement>
+					<feedback>
+						<p>
+							Incorrect. The right-hand side has a non-zero function of <m>x</m>, so this is non-homogeneous.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</paragraphs>
+
+	<paragraphs xml:id="definition-of-lhcc">
+		<title> The LHCC Equation </title>
+
+		<p>
+		Putting it all together, we arrive at the definition of an LHCC equation.
+		</p>
+
+		<definition xml:id="def-lhcc-eqn">
+			<statement>
+				<p>
+					A linear homogeneous differential equation with constant coefficients (LHCC) has the form:
+				</p>
+				<men xml:id="lhcc-equation">
+					a_n\ y^{(n)} + \cdots + a_2\ y'' + a_1\ y' + a_0\ y = 0
+				</men>
+				<p>
+					where all coefficients <m>a_n, \dots, a_0</m> are constants.
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			The following equations are examples of LHCC equations:
+		</p>
+
+		<me>
+			2y'' - 3y' + 5y = 0, \qquad \frac{d^2s}{dt^2} + \frac{ds}{dt} - 4s = 0 \qquad u'' = u
+		</me>.
+	</paragraphs>
+
+	<objectives label="linear-constant-coeffs-wrapup">
+		<ul marker="square">
+			<li>The forcing function is the collection of all terms that are not multiplied by the dependent variable, typically written on the right-side.</li>
+			<li>An equation has constant coefficients when all the coefficients multiplying <m>y</m> and its derivatives are fixed constants (not functions of <m>x</m>).</li>
+			<li>A differential equation is homogeneous if the forcing function is zero.</li>
+			<li>An <m>\DLO \text{LHCC}</m> equation is a <m>\DLO \text{L}</m>inear <m>\DLO \text{H}</m>omogeneous <m>\DLO \text{C}</m>onstant <m>\DLO \text{C}</m>oefficient equation.</li>
+		</ul>
+	</objectives>
+
+	<task label="chkpt-identifying-lhcc-2">
+		<title>  📖❓ Matching Equations with Properties </title>
+		<statement>
+			<p>
+				Match each differential equation to its correct classification.
+			</p>
+		</statement>
+		<feedback>
+			<p>
+				Good work! Recognizing equation types helps determine the best solution method.
+			</p>
+		</feedback>
+		<cardsort>
+			<match>
+				<premise><m> y'' + 2y' + 3y = 0 </m></premise>
+				<response>Linear, Homogeneous, Constant Coefficients</response>
+			</match>
+			<match>
+				<premise><m> y'' = xy </m></premise>
+				<response>Linear, Homogeneous, Nonconstant Coefficient</response>
+			</match>
+			<match>
+				<premise><m> 3y'' + 2 = 0 </m></premise>
+				<premise><m> y'' + 4y' + 3y = 7 </m></premise>
+				<response>Linear, Nonhomogeneous, Constant Coefficient</response>
+			</match>
+			<match>
+				<premise><m> 3y'' + y^2 = e^x </m></premise>
+				<premise><m> yy' + y'' = 0 </m></premise>
+				<response>Nonlinear</response>
+			</match>
+		</cardsort>
+	</task>
+
+</section>
+
+<section label="exponential-solns">
+	<title> Exponential Solutions </title>
+
+	<introduction>
+		<p>
+			Now that we can identify LHCC equations, it's time to ask a deeper question: what kinds of functions satisfy these equations? As it turns out, exponential functions are not just one possible answer, they are the natural solution.
+		</p>
+		
+		<p>
+			In this section, we'll explore what makes exponentials so special. You'll see why other functions fail to work, why exponentials succeed, and how this leads us to a powerful tool called the <em>characteristic equation</em>.
+		</p>
+
+		<lemma>
+			<title> <em>Derivatives &amp; Like-Terms</em> </title>
+			<task>
+				<title> ↩️☝ Recall: Functions that are their own derivatives </title>
+				<statement>
+					<p>
+						What is the only function that is equal to its own derivative?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\quad y = e^{x} </m></statement>
+						<feedback>Correct!<m>\frac{d}{dx}[e^{x}] = e^{x}</m></feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad y = \tan x </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[\tan x] = \sec^2 x</m>, not <m>\tan x</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad y = x^2 </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[x^2] = 2x</m>, not <m>x^2</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad y = \ln x </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[\ln x] = \frac{1}{x}</m>, not <m>\ln x</m>.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task>
+				<title> ↩️☝ Recall: Like Terms </title>
+				<statement>
+					<p>
+						Terms are <term>like-terms</term> if they differ only by a coefficient and can be combined via addition and subtraction. 
+					</p>
+					<p>
+						For example, the pairs <m>\{5e^{-3x}, 4e^{-3x}\}</m> and <m>\{3x^2, 7x^2\}</m> are like-terms and can be combined/simplifed as shown here:
+						<me>
+							\underline{3x^2} + 2e^{7x} + \underline{\underline{5e^{-3x}}} - 2 + \underline{7x^2} - \underline{\underline{4e^{-3x}}} 
+							= \underline{10x^2} + 2e^{7x} + \underline{\underline{e^{-3x}}} - 2 
+						</me>.
+					</p>
+					<p>
+						Which of the following are like-terms with <m>\cos(3x)</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\quad 2\cos(3x) </m></statement>
+						<feedback>Correct! <m>2\cos(3x)</m> is a like-term with <m>\cos(3x)</m> and <m>2\cos(3x) + \cos(3x) = 3\cos(3x)</m>.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><m>\quad -7\cos(3x) </m></statement>
+						<feedback>Correct! <m>-7\cos(3x)</m> is a like-term with <m>\cos(3x)</m> and <m>-7\cos(3x) + \cos(3x) = -6\cos(3x)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad 3\sin(3x) </m></statement>
+						<feedback>Incorrect. <m>3\sin(3x)</m> is not a like-term with <m>\cos(3x)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad 4\cos(2x) </m></statement>
+						<feedback>Incorrect. <m>4\cos(2x)</m> is not a like-term with <m>\cos(3x)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad 3x </m></statement>
+						<feedback>Incorrect. <m>3x</m> is not a like-term with <m>\cos(3x)</m>.</feedback>
+					</choice>
+				
+				</choices>
+			</task>
+
+			<task>
+				<title> ↩️☝ Recall: Functions that are like terms with their own derivatives </title>
+				<statement>
+					<p>
+						Which of the functions is a like-term with its own derivative?
+					</p>
+				</statement>
+				<choices randomize="yes" multiple-correct="yes">
+					<choice correct="yes">
+						<statement><m>\quad y = e^{10x} </m></statement>
+						<feedback>Correct!<m>\frac{d}{dx}[e^{10x}] = 10e^{x}\ \Rightarrow\ e^{10x}</m> &amp; <m>10e^{10x}</m> ARE like terms and can be combined by addition.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad y = \sin (4x) </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[\sin (4x)] = 4\cos (4x)\ \Rightarrow\ \sin(4x)</m> &amp; <m>4\cos (4x)</m> ARE NOT like terms and cannot be combined by addition.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad y = x^4 </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[x^4] = 4x^3\ \Rightarrow\ x^4</m> &amp; <m>4x^3</m> ARE NOT like terms and cannot be combined by addition.</feedback> 
+					</choice>
+					<choice>
+						<statement><m>\quad y = x^{-1} </m></statement>
+						<feedback>Incorrect. <m>\frac{d}{dx}[x^{-1}] = -x^{-2}\ \Rightarrow\ x^{-1}</m> &amp; <m>-x^{-2}</m> ARE NOT like terms and cannot be combined by addition.</feedback>
+					</choice>
+				</choices>
+			</task>
+		</lemma>
+	</introduction>
+
+	<paragraphs xml:id="motivating-exponentials">
+		<title> Motivating the Exponential Solution </title>
+
+		<p>
+			Consider the simple linear homogeneous constant coefficient differential equation:
+			<me>y' - 2y = 0</me>.
+		</p>
+
+		<p>
+			For the moment, forget that it is a differential equation and imagine that it is just two functions that simplify to zero after subtraction. That is, they cancelled out with each other. Algebra tells you that only <term>like-terms</term> simplify via subtraction.<fn>For example, <m>5x - 3x - 2x = 0</m> since all three are like-terms. However, <m>5x - 3x^2 - 2y</m> does not simplify at all since none are like-terms.</fn>
+		</p>
+
+		<p>
+			Logically, if <m>y</m> is the solution, then this equation says <m>y</m> and <m>y'</m> must be like-terms since they subtract to zero. This leads to the next big question:  
+		</p>
+
+		<sidebyside margins="20% 20%">
+			<p><q>What function is a like-term with its derivative?</q></p>
+		</sidebyside>
+
+		<p>
+			You may recall from calculus that the derivative of an exponential function is another exponential function. For example, if <m>y=e^{3x}</m>, then <m>y'=3e^{3x}</m>, which are like-terms. This unique property makes exponentials ideal candidates for solutions.
+		</p>
+
+		<p>
+			To illustrate this, let's substitute different functions into a first-order LHCC equation and see which ones cancel.
+		</p>
+
+		<sidebyside widths="28% 5% 32% 5% 30%">
+			<p>
+				<em>Case 1:</em> <m>\quad y = x^2</m>
+				<md>
+					<mrow> \left[x^2\right]' - 2 \left[x^2\right] \amp = 0 </mrow>
+					<mrow> \ub{2x - 2x^2}_{\text{non like-terms}} \amp \ne 0 </mrow>
+				</md>
+			</p>
+			<p/>
+			<p>
+				<em>Case 2:</em> <m>\quad y = \ln x</m>
+				<md>
+					<mrow> \left[\ln x\right]' - 2\left[\ln x\right] \amp = 0 </mrow>
+					<mrow> \ub{\frac{1}{x} - 2\ln x}_{\text{non like-terms}} \amp \ne 0 </mrow>
+				</md>
+			</p>
+			<p/>
+			<p>
+				<em>Case 3:</em> <m>\quad y = e^{2x}</m>
+				<md>
+					<mrow> \left[e^{2x}\right]' - 2 \left[e^{2x}\right] \amp = 0 </mrow>
+					<mrow> \ub{2e^{2x} - 2e^{2x}}_{\text{like-terms}} \amp = 0 </mrow>
+				</md>
+			</p>
+		</sidebyside>
+
+		<p>
+			Only the exponential function produces like-terms that cancel perfectly. Again, suggesting that exponential functions are ideal solutions to LHCC equations.
+		</p>
+
+		<task label="chkpt-exponential-solns-1">
+			<title> 📖❓ Valid Function Choices </title>
+			<statement>
+				<p>
+					Consider the differential equation,
+					<me>
+						y' + by = 0
+					</me>
+					where <m>b</m> is a constant.
+				</p>
+				<p>
+					Logically explain why it is impossible for <m>x^3</m> to be a solution to this equation no matter what value <m>b</m> takes.
+				</p>
+			</statement>
+			<response/>
+		</task>
+
+		<example xml:id="lhcc-soln-example-1">
+			<title> Multiple Exponential Solutions </title>
+			<statement>
+				<p>
+				Verify that <m>y = e^{4x}</m> and <m>y = e^{-x}</m> are solutions to the differential equation
+				</p>
+				<me>
+				y'' - 3y' - 4y = 0
+				</me>
+				<p>
+				but that <m>y = x^4</m>, <m>y = \ln x</m>, and <m>y = e^{3x}</m> are not.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					First, let's check the first two exponential functions:
+				</p>
+
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=e^{4x}:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[e^{4x}]'' - 3\left[e^{4x}\right]' - 4\left[e^{4x}\right]	\amp = 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like-terms simplify to }0}{\ub{
+									16e^{4x} - 12e^{4x} - 4e^{4x}	
+								}}
+								\amp = 0	
+							</mrow>
+							<mrow> 	0	\amp = 0	\ \ ✅ </mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=e^{-x}:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[e^{-x}]'' - 3\left[e^{-x}\right]' - 4\left[e^{-x}\right]	\amp = 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like-terms simplify to }0}{\ub{
+									e^{-x} + 3e^{-x} - 4e^{-x}	
+								}}
+								\amp = 0	
+							</mrow>
+							<mrow> 	0	\amp = 0	\ \ ✅ </mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<p>
+					As you can see, the exponential functions produce like-terms that cancel out and simplify to zero.
+				</p>
+
+				<p>
+					Let's see what happens when we plug in non-exponential functions:
+				</p>
+
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=x^4:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[x^4]'' - 3\left[x^4\right]' - 4\left[x^4\right]	\amp = 0	</mrow>
+							<mrow> 	
+								\us{\large\text{not like-terms, do not combine}}{\ub{
+									12x^2 - 12x^3 - 4x^4	
+								}}
+								\amp = 0	\ \ ❌
+							</mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=\ln x:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[\ln x]'' - 3\left[\ln x\right]' - 4\left[\ln x\right]	\amp = 0	</mrow>
+							<mrow> 	
+								\us{\large\text{not like-terms, do not combine}}{\ub{
+									-x^{-2} - 3x^{-1} - 4\ln x	
+								}}
+								\amp = 0	\ \ ❌
+							</mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<p>
+					In this case, the non-exponential functions produce non-like-terms that cannot be simplified and are not solutions.
+				</p>
+
+				<p>
+					Finally, let's check the exponential function, <m>y = e^{3x}</m>:
+				</p>
+
+				<sidebyside widths="20% 80%">
+					<p>
+						<me>
+							y=e^{3x}:
+						</me>
+					</p>
+					<p>
+						<md>
+							<mrow> 	[e^{3x}]'' - 3\left[e^{3x}\right]' - 4\left[e^{3x}\right]	\amp = 0	</mrow>
+							<mrow> 	
+								\us{\large\text{like-terms don't simplify to }0}{\ub{
+									9e^{3x} - 9e^{3x} - 4e^{3x}	
+								}}
+								\amp = 0	
+							</mrow>
+							<mrow> 	- 4e^{3x}	\amp = 0	\ \ ❌ </mrow>
+						</md>
+					</p>
+				</sidebyside>
+
+				<p>
+					In this case, we get like-terms, but the coefficients do not sum to zero and the terms do not cancel. Therefore, <m>y=e^{3x}</m> is not a solution.
+				</p>
+			</solution>
+		</example>
+
+		<p>
+			These examples show that exponentials are the only functions that reliably cancel out to yield zero when substituted into an LHCC equation. Even among exponentials, only those with specific exponents will satisfy a given equation. Next, we'll introduce the characteristic equation, an algebraic tool that helps us identify exactly which exponential functions will work.
+		</p>
+	</paragraphs>
+
+	<paragraphs xml:id="characteristic-equation">
+		<title> The Characteristic Equation </title>
+
+		<introduction>
+			<p>
+				We now know that exponential functions <m>y = e^{rx}</m> are strong candidates for solutions to LHCC equations. But how do we find the values of <m>r</m> that work? The answer lies in forming a polynomial equation called the <em>characteristic equation</em>.
+			</p>
+		</introduction>
+
+		<p>
+			Let's try this with a few concrete examples. First, suppose
+		</p>
+
+		<me>y' - 5y = 0</me>.
+
+		<p>
+			Substituting <m>y = e^{rx}</m> gives
+		</p>
+
+		<md>
+			<mrow> \left[e^{rx}\right]' - 5 e^{rx} \amp = 0 </mrow>
+			<mrow> r e^{rx} - 5 e^{rx} \amp = 0 </mrow>
+			<mrow> (r - 5)e^{rx} \amp = 0 </mrow>
+		</md>
+
+		<p>
+			Since <m>e^{rx} \ne 0</m>, the equation reduces to
+		</p>
+
+		<me> r - 5 = 0 \quad \Rightarrow \quad r = 5 </me>
+
+		<p>
+			This algebraic equation, <m>r - 5 = 0</m>, is the <term>characteristic equation</term>. It tells us that <m>y = e^{5x}</m> is a solution.
+		</p>
+
+		<p>
+			For second-order equations, we follow the same substitution process. For example, for
+		</p>
+
+		<me>
+			y'' - 3y' - 4y = 0.
+		</me>
+
+		<p>
+			we substitute <m>y = e^{rx}</m> into <m>y</m>, <m>y'</m>, and <m>y''</m>, resulting in
+		</p>
+
+		<md>
+			<mrow>	(r^2 e^{rx}) - 3 (r e^{rx}) - 4 (e^{rx})	\amp = 0	</mrow>
+			<mrow>	(r^2 - 3r - 4) e^{rx}						\amp = 0	</mrow>
+		</md>
+
+		<p>
+			Setting the polynomial equal to zero gives the characteristic equation:
+		</p>
+
+		<me>
+			r^2 - 3r - 4 = 0.
+		</me>
+
+		<p>
+			Solving this gives
+		</p>
+
+		<me>
+			(r - 4)(r + 1) = 0 \quad \Rightarrow \quad r = 4, \quad r = -1
+		</me>
+
+		<p>
+			so the general solution is
+		</p>
+
+		<me>
+			y_1 = e^{4x}, \quad y_2 = e^{-x}.
+		</me>
+
+		<task label="chkpt-exponential-solns-11">
+			<title> 📖❓ Match the Characteristic Equation </title>
+			<statement>
+				<p>
+					Match each characteristic equation to its differential equation.
+				</p>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m> 2r^2 + 5r - 1 = 0 </m></premise>
+					<response><m> 2y'' + 5y' - y = 0 </m></response>
+				</match>
+				<match>
+					<premise><m> 4r + 3 = 0 </m></premise>
+					<response><m> 4y' + 3y = 0 </m></response>
+				</match>
+				<match>
+					<premise><m> r^2 + 1 = 0 </m></premise>
+					<response><m> y'' + y = 0 </m></response>
+				</match>	
+				<match>
+					<premise><m>r^2 - r - 3 = 0</m></premise>
+					<response><m>y'' - 3y = y'</m></response>
+				</match>
+				<match>
+					<premise><m>r^2 - r = 0</m></premise>
+					<response><m>y'' - y' = 0</m></response>
+				</match>
+				<match>
+					<response><m>y'' + y' - 3y = 0</m></response>
+				</match>
+			</cardsort>
+		</task>
+
+		<example><title> Characteristic Equation &amp; Exponential Solutions </title>
+			<statement>
+				<p>
+					For each of the following equations, determine the characteristic equation and the exponential solutions that satisfy it.
+				</p>
+				<p>
+					<sidebyside widths="40% 60%">
+						<p>
+							<line>	1.	<m>\ds\ 5y' + 6y = 0</m>	</line>
+							<line>		<m></m>						</line>
+						</p>
+						<p>
+							<solution>
+								<p>
+									Assuming <m>y = e^{rx}</m>, we have
+								</p>
+								<md>
+									<mrow>	5\left[e^{rx}\right]' + 6\left[e^{rx}\right] = 0	\amp </mrow>
+									<mrow>	5r e^{rx} + 6 e^{rx} = 0							\amp </mrow>
+									<mrow>	(5r + 6) e^{rx} = 0									\amp </mrow>
+								</md>.
+								<p>
+									Thus, the characteristic equation is
+								</p>
+								<me>
+									5r + 6 = 0 \quad \Rightarrow \quad r = -\frac{6}{5}
+								</me>,
+								<p>
+									and the only exponential solution is
+								</p>
+								<me>
+									y = e^{-\frac{6}{5}x}.
+								</me>
+							</solution>
+						</p>
+					</sidebyside>
+					<sidebyside widths="40% 60%">
+						<p>
+							<line>	2.	<m>\ds\ y'' - 4y = 0</m>	</line>
+							<line>		<m></m>						</line>
+						</p>
+						<p>
+							<solution>
+								<p>
+									Assuming <m>y = e^{rx}</m>, we have
+								</p>
+								<md>
+									<mrow>	r^2 e^{rx} - 4 e^{rx} = 0	\amp </mrow>
+									<mrow>	(r^2 - 4) e^{rx} = 0		\amp </mrow>
+								</md>
+								<p>
+									Thus, the characteristic equation is
+								</p>
+								<md>
+									<mrow>	r^2 -	\amp 4 = 0								</mrow>
+									<mrow>			\amp \Rightarrow\ (r - 2)(r + 2) = 0	</mrow>
+								</md>
+								<p>
+									and the exponential solutions are
+								</p>
+								<me>
+									y_1 = e^{2x}, \quad y_2 = e^{-2x}.
+								</me>
+							</solution>
+						</p>
+					</sidebyside>
+				</p>
+			</statement>
+		</example>
+	</paragraphs>
+
+	<objectives label="exponential-solns-wrapup">
+		<ul>
+			<li> 
+				The derivative properties of exponential functions make them natural solutions for LHCC equations.
+			</li>
+			<li> 
+				Substituting <m>y = e^{rx}</m> into an LHCC equation leads to a polynomial equation in <m>r</m> called the <term>characteristic equation</term>.
+			</li>
+			<li> 
+				For each solution, <m>r</m>, that comes from the characteristic equation, you get a fundamental solution, <m>e^{rx}</m>, that satisfies the LHCC equation.
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="exponential-solns-cyu">
+		<statement>
+			<p>
+				Answer the following questions:
+				<task label="exponential-solns-cyu-1"><title> Exponential Like Terms </title>
+					<statement>
+						<p>
+							The functions 
+							<me>e^{8x},\quad (e^{8x})',\quad (e^{8x})'',\quad (e^{8x})'''</me>
+							are all like-terms, which if added together, would simplify to one term.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>True</statement>
+							<feedback>Correct! Computing the derivatives, you get <me>e^{8x},\quad 8e^{8x},\quad 64e^{8x},\quad 512e^{8x}</me>, which are all like-terms.</feedback>
+						</choice>
+						<choice correct="no"><statement>False</statement><feedback>Incorrect.</feedback></choice>
+					</choices>
+				</task>
+
+				<task label="exponential-solns-cyu-2"><title> Select the Exponential Solutions </title>
+					<statement>
+						<p>
+							The differential equation
+							<me>
+								y'' - 4y = 0
+							</me>,
+							has which of the following exponential solutions? <em>(Select all that Apply)</em>
+						</p>
+						<p/>
+					</statement>
+					<areas>
+						<sidebyside>
+							<p/>
+							<p><area><m>e^{-2x}</m></area></p>
+							<p><area><m>e^{2x}</m></area></p>
+							<p><area correct="no"><m>xe^{2x}</m></area></p>
+							<p><area correct="no"><m>e^{4x}</m></area></p>
+							<p><area correct="no"><m>e^{x}</m></area></p>
+							<p><area correct="no"><m>e^{-4x}</m></area></p>
+						</sidebyside>
+						<p/>
+					</areas>
+					<feedback>
+						<p>Hint: The characteristic equation is <m>r^2 - 4 = 0</m>.</p>
+					</feedback>
+				</task>
+			</p>
+		</statement>
+	</fact>
+</section>
+
+<section label="second-order-lhcc-eqns">
+	<title> Second-Order Equations </title>
+
+	<introduction>
+		<p>
+			Second-order linear homogeneous constant coefficient (LHCC) equations appear in many applications across physics, engineering, and applied mathematics. These equations have the general form:
+		</p>
+
+		<men xml:id="second-order-lhcc-de">
+			a y'' + b y' + c y = 0
+		</men>
+
+		<p>
+			where <m>a</m>, <m>b</m>, and <m>c</m> are constants. In this section, we'll explore how the solutions depend on the roots of the associated characteristic equation, and how different types of roots give rise to different forms of the general solution.
+		</p>
+
+		<task label="chkpt-second-order-lhcc-eqns-1">
+			<title>  📖❓ Classifying Characteristic Equations </title>
+			<statement>
+				<p>
+					Review <xref ref="solving-the-quadratic-equation" text="custom">quadratic equations</xref> and answer the following question.
+				</p>
+				<p>
+					Match the type of roots with the corresponding quadratic equation.
+				</p>
+			</statement>
+			<feedback>
+				<p>
+					Good work! The discriminant helps classify root types.
+				</p>
+			</feedback>
+			<cardsort>
+				<match>
+					<premise>Real unequal roots</premise>
+					<response><m>r^2 - 4r + 3 = 0</m></response>
+				</match>
+				<match>
+					<premise>Real repeated roots</premise>
+					<response><m>r^2 - 6r + 9 = 0</m></response>
+				</match>
+				<match>
+					<premise>Complex roots</premise>
+					<response><m>r^2 + 4 = 0</m></response>
+				</match>
+			</cardsort>
+		</task>
+	</introduction>
+
+	<paragraphs label="second-order-lhcc-fundamental-solns">
+		<title> Fundamental Solutions </title>
+
+		<p>
+			To solve <xref ref="second-order-lhcc-de"/>, we begin by forming the characteristic equation as we did in the previous section. For this case, the characteristic equation is the <xref ref="solving-the-quadratic-equation" text="custom">quadratic</xref>
+		</p>
+
+		<men xml:id="second-order-lhcc-characteristic-equation">
+			a r^2 + b r + c = 0
+		</men>
+
+		<p>
+			Solving this equation using the <xref ref="quadratic-formula" text="custom">quadratic formula</xref> yields:
+		</p>
+
+		<men xml:id="second-order-lhcc-char-eqn-solns">
+			r_1 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}, \quad r_2 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}
+		</men>
+
+		<p>
+			Each root corresponds to an exponential solution—either <m>e^{r_1 x}</m> or <m>e^{r_2 x}</m>. These are called the <term>fundamental solutions</term> of the differential equation.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="second-order-lhcc-general-soln">
+		<title> The General Solution </title>
+
+		<p>
+			Once we have the fundamental solutions, the <term>superposition principle</term> tells us that
+		</p>
+
+		<me>
+			y = c_1 e^{r_1 x} + c_2 e^{r_2 x}
+		</me>
+
+		<p>
+			is a solution to <xref ref="second-order-lhcc-de"/> for any constants <m>c_1</m> and <m>c_2</m>.
+		</p>
+
+		<p>
+			However, if the roots <m>r_1</m> and <m>r_2</m> are equal, then <m>e^{r_1 x}</m> and <m>e^{r_2 x}</m> are like-terms. In that case, the expression above collapses into a single term, and the solution is incomplete.<fn>This issue relates to <term>linear dependence</term>, which also depends on the interval where the solutions are defined.</fn>
+		</p>
+
+		<p>
+			To create a second, independent solution, we multiply the second term by <m>x</m>, giving:
+		</p>
+
+		<me>
+			y = c_1 e^{r x} + c_2 x e^{r x}.
+		</me>
+
+		<p>
+			This guarantees complete general solution with independent terms. There are three distinct scenarios to consider, based on the discriminant of the characteristic equation:
+		</p>
+
+		<me>
+			\Delta = b^2 - 4ac
+		</me>
+
+		<p>
+			Each case leads to a different form of the solution, broken down as follows.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="second-order-lhcc-case-1">
+		<title> Case 1 <m>(\Delta &gt; 0)</m>: Real, Non-Repeating Solutions </title>
+
+		<p>
+			If <m>\Delta</m> is positive, then characteristic equation has the two unequal real solutions:
+		</p>
+
+		<me>
+			r_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a} \quad \text{and} \quad
+			r_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+		</me>,
+
+		<p>
+			so the general solution is
+		</p>
+
+		<me>
+			y = c_1 e^{r_1 x} + c_2 e^{r_2 x}
+		</me>.
+	</paragraphs>
+
+	<paragraphs label="second-order-lhcc-case-2">
+		<title> Case 2 <m>(\Delta &lt; 0)</m>: Two Complex Solutions </title>
+		<p>
+			If <m>\Delta</m> is negative, the characteristic equation has two complex conjugate solutions:
+		</p>
+
+		<me>
+			r_1 = \alpha + i \beta, \qquad r_2 = \alpha - i \beta
+		</me>
+
+		<p>
+			The corresponding general solution is:
+		</p>
+
+		<me>
+			y = c_1 e^{(\alpha + i \beta)x} + c_2 e^{(\alpha - i \beta)x}
+		</me>
+
+		<p>
+			However, it is common to express this using sine and cosine (via <xref ref="eulers-formula" text="title"/>):
+		</p>
+
+		<me>
+			y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+		</me>
+	</paragraphs>
+
+	<paragraphs label="second-order-lhcc-case-3">
+		<title> Case 3 <m>(\Delta = 0)</m>: Real, Repeating Solutions </title>
+		<p>
+			If <m>\Delta</m> is zero, then the characteristic equation has a repeated root:
+		</p>
+
+		<me>
+			r_1 = r_2 = \frac{-b}{2a}
+		</me>
+
+		<p>
+			In this case, the general solution is:
+		</p>
+
+		<me>
+			y = c_1 e^{r x} + c_2 x e^{r x}
+		</me>
+	</paragraphs>
+
+	<paragraphs label="second-order-lhcc-examples">
+		<title> Summary &amp; Examples </title>
+
+		<p>
+			The form of the general solution to a second-order LHCC equation depends entirely on the roots of its characteristic equation. Here's a summary of the three cases.
+		</p>
+
+		<assemblage xml:id="second-order-lhcc-general-solution-cases">
+			<title> ✳️ 2nd-Order LHCC General Solution Cases </title>
+			<p>
+				Let <m>r_1</m>, <m>r_2</m> be the roots of the <xref ref="second-order-lhcc-characteristic-equation" text="custom">characteristic equation</xref> for a <xref ref="second-order-lhcc-de"  text="custom"><m>2</m>nd-order LHCC equation</xref>.
+				<dl width="narrow">
+					<li xml:id="lhcc-case-1">
+						<title> Case 1 <m>(\Delta &gt; 0)</m> <m>\small \text{unequal real roots}</m> </title>
+						<sidebyside widths="30% 70%">
+							<p><m>r_1 \ne r_2</m></p>
+							<p><m>\ds y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</m></p>
+						</sidebyside>
+					</li>
+					<li xml:id="lhcc-case-2">
+						<title> Case 2 <m>(\Delta &lt; 0)</m> <m>\small \text{complex roots}</m> </title>
+						<sidebyside widths="30% 70%">
+							<p><m>r = \alpha \pm i\beta</m></p>
+							<p><m>\ds y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</m></p>
+						</sidebyside>
+					</li>
+					<li xml:id="lhcc-case-3">
+						<title> Case 3 <m>(\Delta = 0)</m> <m>\small \text{repeated real root}</m> </title>
+						<sidebyside widths="30% 70%">
+							<p><m>r_1 = r_2</m></p>
+							<p><m>\ds y = c_1 e^{r x} + c_2 x e^{r x}</m></p>
+						</sidebyside>
+					</li>
+				</dl>
+			</p>
+		</assemblage>
+
+		<task label="chkpt-second-order-lhcc-eqns-2">
+			<title>  📖❓ Match the Characteristic &amp; General Solutions </title>
+			<statement>
+				<p>
+					Match the characteristic solutions to the corresponding general solution.
+				</p>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m>\small r = 5 </m></premise>
+					<response><m>\small C e^{5x} </m></response>
+				</match>
+				<match>
+					<premise><m>\small r_1 = 2, \ r_2 = 3 </m></premise>
+					<response><m>\small C_1 e^{2x} + C_2 e^{3x} </m></response>
+				</match>
+				<match>
+					<premise><m>\small r_1 = -1, \ r_2 = -4 </m></premise>
+					<response><m>\small C_1 e^{-x} + C_2 e^{-4x} </m></response>
+				</match>
+				<match>
+					<premise><m>\small r_1 = 3 + 2i, \ r_2 = 3 - 2i </m></premise>
+					<response><m>\small e^{3x} (C_1 \cos(2x) + C_2 \sin(2x)) </m></response>
+				</match>
+				<match>
+					<premise><m>\small r_1 = -2, \ r_2 = -2 </m></premise>
+					<response><m>\small (C_1 + C_2 x) e^{-2x} </m></response>
+				</match>
+				<match>
+					<premise><m>\small r_1 = -1 + i, \ r_2 = -1 - i </m></premise>
+					<response><m>\small e^{-x} (C_1 \cos(x) + C_2 \sin(x)) </m></response>
+				</match>
+			</cardsort>
+		</task>
+
+		<example><title> Case 1 Examples </title>
+			<statement>
+			<p>Find the general solution to each second-order LHCC equation.</p>
+
+			<sidebyside widths="45% 55%">
+				<p>
+					<m>\ds y'' - 5y' + 6y = 0</m>
+					<solution>
+						<p>The characteristic equation is:</p>
+						<me>r^2 - 5r + 6 = 0</me>
+						<p>Factoring gives:</p>
+						<me>(r - 2)(r - 3) = 0</me>
+						<p>So the roots are <m>r_1 = 2</m> and <m>r_2 = 3</m>, giving the general solution:</p>
+						<me>y = c_1 e^{2x} + c_2 e^{3x}</me>
+					</solution>
+				</p>
+				<p>
+					<m>\ds 5y'' + 13y' - 2y = 0</m>
+					<solution>
+						<p>The characteristic equation is:</p>
+						<me>5r^2 + 13r - 2 = 0</me>
+						<p>Using the quadratic formula:</p>
+						<md>
+							<mrow>r \amp = \frac{-13 \pm \sqrt{13^2 - 4(5)(-2)}}{2 \cdot 5}</mrow>
+							<mrow>\amp = \frac{-13 \pm \sqrt{201}}{10}</mrow>
+						</md>
+						<p>Since the roots are unequal and real, the general solution is:</p>
+						<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</me>
+						<p>where <m>r_1 = \frac{-13 - \sqrt{201}}{10}</m> and <m>r_2 = \frac{-13 + \sqrt{201}}{10}</m>.</p>
+					</solution>
+				</p>
+			</sidebyside>
+			</statement>
+		</example>
+
+		<example><title> Case 2 Examples </title>
+			<statement>
+				<p>Find the general solution to each second-order LHCC equation.</p>
+				<sidebyside widths="50% 50%">
+					<p>
+						<m>\ds \omega'' + 4\omega' + 5\omega = 0</m>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>r^2 + 4r + 5 = 0</me>
+							<p>Applying the quadratic formula:</p>
+							<md>
+								<mrow>r \amp = \frac{-4 \pm \sqrt{16 - 20}}{2} = \frac{-4 \pm \sqrt{-4}}{2}</mrow>
+								<mrow>\amp = -2 \pm i</mrow>
+							</md>
+							<p>So <m>\alpha = -2</m>, <m>\beta = 1</m>, and the general solution is:</p>
+							<me>\omega(t) = e^{-2t}(c_1 \cos t + c_2 \sin t)</me>
+						</solution>
+					</p>
+					<p>
+						<m>\ds y'' + 25y = 0</m>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>r^2 + 25 = 0</me>
+							<p>This gives <m>r = \pm 5i</m>, so <m>\alpha = 0</m> and <m>\beta = 5</m>. The general solution is:</p>
+							<me>y = e^{0x}\left(c_1\cos(5x) + c_2\sin(5x)\right)</me>
+							<p>or simply:</p>
+							<me>y = c_1 \cos(5x) + c_2 \sin(5x)</me>
+						</solution>
+					</p>
+				</sidebyside>
+			</statement>
+		</example>
+
+		<example><title> Case 3 Examples </title>
+			<statement>
+				<p>Find the general solution to each second-order LHCC equation.</p>
+				<sidebyside widths="45% 55%">
+					<p>
+						<m>\ds y'' + 4y' + 4y = 0</m>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>r^2 + 4r + 4 = 0</me>
+							<p>Factoring gives:</p>
+							<me>(r + 2)^2 = 0</me>
+							<p>So <m>r = -2</m> is a repeated root, and the general solution is:</p>
+							<me>y = c_1 e^{-2x} + c_2 x e^{-2x}</me>
+						</solution>
+					</p>
+					<p>
+						<m>\ds 16\frac{d^2q}{dt^2} - 8\frac{dq}{dt} + q = 0</m>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>16r^2 - 8r + 1 = 0</me>
+							<p>Using the quadratic formula:</p>
+							<me>r \amp = \frac{8 \pm \sqrt{64 - 64}}{32} = \frac{8}{32} = \frac{1}{4}</me>
+							<p>This is a repeated root, so the general solution is:</p>
+							<me>q(t) = c_1 e^{\frac{1}{4}t} + c_2 t e^{\frac{1}{4}t}</me>
+						</solution>
+					</p>
+				</sidebyside>
+			</statement>
+		</example>
+
+		<p>
+			These examples illustrate how second-order LHCC equations are solved using the <em>standard</em>, <em>repeating</em>, and <em>complex</em> cases discussed above. In the next section, we will see that a similar process can be generalized to higher-order LHCC equations.
+		</p>
+	</paragraphs>
+
+	<objectives label="second-order-lhcc-eqns-wrapup">
+		<ul>
+			<li>
+				Second-order LHCC equations have the form <m>a y'' + b y' + c y = 0</m>, where <m>a</m>, <m>b</m>, and <m>c</m> are constants.
+			</li>
+			<li>
+				The solution process begins by forming the characteristic equation <m>a r^2 + b r + c = 0</m>.
+			</li>
+			<li>
+				The roots of the characteristic equation determines the form of the general solution as outlined in <xref ref="second-order-lhcc-general-solution-cases" text="title"/>.
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="second-order-lhcc-eqns-cyu">
+		<statement>
+			<p>
+				Answer the following questions:
+				<task label="second-order-lhcc-eqns-cyu-1">
+					<title> Solving the characteristic equation </title>
+					<statement>
+						<p>
+							If the characteristic equation for an LHCC equation is <m>r^2 - 4r + 4 = 0</m>, what is the general solution?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 x e^{2x}</m>
+								</p>
+							</statement>
+							<feedback>Correct! The solution <m>r = 2</m> has a multiplicity of 2.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 e^{2x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. The solution <m>r = 2</m> has a multiplicity of 2.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 e^{-2x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. Ensure you solve the charactistic equation correctly.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = e^{2x}(c_1 \cos(2x) + c_2 \sin(2x))</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. The characteristic equation does not have complex solutions.</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="second-order-lhcc-eqns-cyu-2">
+					<title> Purely Imaginary Characteristic Solutions </title>
+					<statement correct="yes">
+						<p>
+							If a characteristic equation has roots <m>\pm i</m>, the general solution is
+							<me>
+								y = c_1 \cos x + c_2 \sin x
+							</me>.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The complex exponentials transform into sine and cosine terms.
+						</p>
+					</feedback>
+				</task>
+
+				<task label="second-order-lhcc-eqns-cyu-3">
+					<title> Matching Equations to Solutions </title>
+					<statement>
+						<p>
+							Match each characteristic equation to its corresponding general solution.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Great work! The general solution is based on the characteristic solutions.
+						</p>
+					</feedback>
+					<cardsort>
+						<match>
+							<premise><m>r^2 - 4 = 0</m></premise>
+							<response><m>y = c_1 e^{2x} + c_2 e^{-2x}</m></response>
+						</match>
+						<match>
+							<response><m>y = c_1 e^{4x} + c_2 e^{-4x}</m></response>
+						</match>
+						<match>
+							<premise><m>r^2 - 3r - 4 = 0</m></premise>
+							<response><m>y = c_1 e^{-x} + c_2 e^{4x}</m></response>
+						</match>
+						<match>
+							<premise><m>r^2 - 2 = 0</m></premise>
+							<response><m>y = c_1 e^{\sqrt{2}x} + c_2 e^{-\sqrt{2}x}</m></response>
+						</match>
+					</cardsort>
+				</task>
+			</p>
+		</statement>
+	</fact>
+</section>
+
+<section label="higher-order-lhcc">
+	<title> Higher-Order Equations </title>
+	
+	<introduction>
+		<p> 
+			Like second-order linear homogeneous constant coefficient (LHCC) equations, we solve higher-order equations by finding the roots of a characteristic equation. However, with higher-order comes higher-degree characteristic polynomials and an increased number of roots. While this results in additional terms, determining which ones go into in the general solution is similar to the second-order case.
+		</p>
+
+		<task label="chkpt-higher-order-lhcc-1">
+			<title> 📖❓ Just One Root </title>
+			<statement>
+				<p>
+					Suppose the characteristic equation of an LHCC equation has a single root, <m>r = -2</m>. Select the correct statement.
+				</p>
+				<p/>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						The equation is <m>1</m>st order with general solution <m>\ ce^{-2x}</m>.
+					</statement>
+					<feedback>
+						Correct! The order of the equation is <m>1</m> because there is only one root, and the general solution is given by the exponential function with that root.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The equation is <m>1</m>st order with general solution <m>\ ce^{2x}</m>.
+					</statement>
+					<feedback>
+						Incorrect. The root is negative, so the general solution should involve <m>e^{-2x}</m>, not <m>e^{2x}</m>.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The equation is <m>2</m>nd order with general solution <m>\ c_1 e^{-2x} + c_2 x e^{-2x}</m>.
+					</statement>
+					<feedback>
+						Incorrect. The order of the equation is determined by the number of roots, which is <m>1</m> in this case, not <m>2</m>.
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						The equation can have any order with general solution <m>\ ce^{-2x}</m>.
+					</statement>
+					<feedback>
+						Incorrect. The order of the equation is determined by the number of roots, which is <m>1</m> in this case, not <m>2</m>.
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</introduction>
+
+	<paragraphs label="characteristic-equation">
+		<title> The Characteristic Equation </title>
+
+		<p>
+		The standard <m>n</m>th-order LHCC equation has the form:
+		</p>
+
+		<me>
+		a_n y^{(n)} + a_{n-1} y^{(n-1)} + \cdots + a_1 y' + a_0 y = 0
+		</me>
+
+		<p>
+		To find solutions, we assume <m>y = e^{rx}</m>. Substituting this into the equation yields:
+		</p>
+
+		<md>
+		<mrow> a_n r^n e^{rx} + a_{n-1} r^{n-1} e^{rx} + \cdots + a_1 r e^{rx} + a_0 e^{rx} \amp = 0 </mrow>
+		<mrow> (a_n r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0) e^{rx} \amp = 0 </mrow>
+		</md>
+
+		<p>
+		Since <m>e^{rx} \ne 0</m>, we obtain the <term>characteristic equation</term>:
+		</p>
+
+		<me>
+		a_n r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0 = 0
+		</me>
+
+		<p>
+			This is a polynomial of degree <m>n</m>, and solving it gives us the roots that define the structure of the general solution. Similar to second-order equations, each root contributes a different term in the general solution, as detailed next.
+		</p>
+
+		<task label="higher-order-lhcc-2">
+			<title>  📖❓ Degree of the Characteristic Equation </title>
+			<statement correct="yes">
+				<p>
+					The order of an LHCC differential equation is equal to the degree of its characteristic equation
+				</p>
+			</statement>
+			<feedback>
+				<p>
+					This is true, since the order of each derivative in the differential equation translates directly to a corresponding power of <m>r</m> in the characteristic equation.
+				</p>
+			</feedback>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="real-and-distinct-roots">
+		<title> Real and Distinct Roots </title>
+
+		<p>
+			Every real root <m>r</m> that is distinct from others contributes a single term of the form
+			<me>
+				c e^{r x}
+			</me>
+			to the general solution, where <m>c</m> is a constant.
+		</p>
+
+		<p>
+			For example, if the characteristic equation has roots <m>r = 2, -1</m>, &amp; <m>4.5</m> that only appear once, then part of the general solution is:
+			<me>
+				c_1 e^{2x} + c_2 e^{-x} + c_3 e^{4.5x}
+			</me>.
+		</p>
+
+
+	</paragraphs>
+
+	<paragraphs label="repeated-roots">
+		<title> Repeated Roots </title>
+
+		<p>
+			Every root <m>r</m> that repeats <m>k</m> times (multiplicity <m>k</m>) contributes
+			<men xml:id="higher-order-lhcc-repeated-root-contribution-to-general-solution">
+				c_1 e^{r x} + c_2 x e^{r x} + c_3 x^2 e^{r x} + \dots + c_k x^{k-1} e^{r x}
+			</men>
+			to the general solution.
+		</p>
+
+		<p>
+			For example, if <m>r = 4</m> is a triple root, then part of the general solution will be:
+		</p>
+
+		<me>
+			c_1 e^{4x} + c_2 x e^{4x} + c_3 x^2 e^{4x}
+		</me>
+
+		<p>
+			Note: If the repeated root is <m>r = 0</m>, then <m>e^{0x} = 1</m>, and <xref ref="higher-order-lhcc-repeated-root-contribution-to-general-solution"/> reduces to: 
+			<me>
+				c_1 + c_2 x + \dots + c_k x^{k-1}
+			</me>.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="complex-roots">
+		<title> Complex Roots </title>
+
+		<p>
+			Every complex root, <m>\alpha \pm i\beta</m> (conjugate pair), contributes
+			<me>
+				e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))
+			</me>
+			to the general solution. There may be multiple pairs, each contributing their own term.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="building-general-solution">
+		<title> From Characteristic Roots to General Solution </title>
+
+		<p>
+			For a general <m>n</m>th-order LHCC equation, the full general solution includes exactly <m>n</m> terms—one for each root of the characteristic polynomial. The form of each term depends on the type of root (real or complex) and whether it repeats. These rules are summarized in <xref ref="lhcc-contribution-to-general-solution"/>.
+		</p>
+
+		<table xml:id="lhcc-contribution-to-general-solution">
+			<title> Characteristic Root Contribution to the General Solution </title>
+			<tabular top="minor" bottom="minor" left="minor" right="minor">
+				<col halign="center"/>
+				<col halign="center"/>
+				<row>
+					<cell>root type</cell>
+					<cell>contribution to general solution</cell>
+				</row>
+				<row bottom="none">
+					<cell>real (multiplicity <m>1</m>)</cell>
+					<cell><m>c e^{rx}</m></cell>
+				</row>
+				<row bottom="none">
+					<cell>real (multiplicity <m>k</m>)</cell>
+					<cell><m>c_1 e^{rx} + c_2 x e^{rx} + \cdots + c_k x^{k-1} e^{rx}</m></cell>
+				</row>
+				<row>
+					<cell>complex (<m>\alpha \pm i\beta</m>)</cell>
+					<cell><m>e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</m></cell>
+				</row>
+			</tabular>
+		</table>
+
+		<p>
+			Let's practice building general solutions from the roots of the characteristic equation.
+		</p>
+
+		<example xml:id="lhcc-roots-to-general-solution">
+			<title> From Charateristic Roots to General Solution </title>
+
+			<statement>
+				<p>
+					For each set of characteristic roots, write the general solution of the LHCC equation.
+					<ol>
+						<li><m>	r = 3,\quad -3,\quad 5.3 </m></li>
+						<li><m>	r = 6 \pm i\sqrt{7.7},\quad 0\ (\text{double root}) </m></li>
+						<li><m>	r = -4\ (\text{triple root}),\quad 5.3 </m></li>
+						<li><m>	r = \pm \frac{i}{2},\quad 2 \pm i </m></li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+				<ol>
+					<li>
+						<p>
+							Three different real roots:
+						</p>
+						<me>
+							y = c_1 e^{3x} + c_2 e^{-3x} + c_3 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							A complex conjugate pair and a double real root at <m>r = 0</m>:
+						</p>
+						<me>
+							y = \ub{e^{6x} (c_1 \sin(\sqrt{7.7}x) + c_2 \cos(\sqrt{7.7}x))}_{\ds\text{from}\ 6 \pm i\sqrt{7.7}} + \ub{c_3\ +\ c_4 x}_{\ds\text{from}\ 0\ \text{(double)}}
+						</me>
+					</li>
+					<li>
+						<p>
+							A triple <m>-4</m> root and single <m>5.3</m> root:
+						</p>
+						<me>
+							y = \ub{c_1 e^{-4x} + c_2 x e^{-4x} + c_3 x^2 e^{-4x}\!}_{\ds\text{from}\ -4\ \text{(triple)}} + c_4 e^{5.3x}
+						</me>
+					</li>
+					<li>
+						<p>
+							Two complex conjugate pairs:
+						</p>
+						<me>
+							y = \ub{c_1 \sin\left(\frac{x}{2}\right) + c_2 \cos\left(\frac{x}{2}\right)}_{\ds\text{from}\ \pm \sfrac{i}{2}} + \ub{e^{2x} (c_3 \sin x + c_4 \cos x)}_{\ds\text{from}\ 2 \pm i}
+						</me>
+					</li>
+				</ol>
+			</solution>
+		</example>
+	</paragraphs>
+
+	<fact label="higher-order-lhcc-cyu">
+		<statement>
+			<p>
+				Answer the following questions:
+				<task label="higher-order-lhcc-cyu-1">
+					<title> 3rd-Order General Solution </title>
+					<statement>
+						<p>
+							Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solutions:
+							<me>
+								r = 0, 1, -8
+							</me>.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>\quad y = c_1 + c_2 e^{x} + c_3 e^{-8x}</m>
+								</p>
+							</statement>
+							<feedback>Correct! This is the form when there are three distinct real roots.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{x} + c_2 x e^{x} + c_3 e^{-8x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 x e^{x} + c_2 e^{-8x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{x} + c_2 e^{-8x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+					</choices>
+				</task>
+				
+				<task label="higher-order-lhcc-cyu-2">
+					<title> Two Complex Pair Roots </title>
+					<statement>
+						<p>
+							Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions:
+							<me>
+								r = \pm 2i, -3 \pm 4i
+							</me>.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>
+								<m>\quad y = c_1 \cos(2x) + c_2 \sin(2x) + e^{-3x} \left(c_3 \cos(4x) + c_4 \sin(4x)\right)</m>
+							</statement>
+							<feedback>Correct! This is the form when the characteristic equation has complex roots.</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<m>\quad y = c_1 e^{2x} + c_2 e^{-2x} + e^{-3x} \left(c_3 \cos(4x) + c_4 \sin(4x)\right)</m>
+							</statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<m>\quad y = c_1 \left(\cos(2x) + \sin(2x)\right) + c_2 e^{-3x} \left(\cos(4x) + \sin(4x)\right)</m>
+							</statement>
+							<feedback>Incorrect. Not enough constants.</feedback>
+						</choice>
+						<choice>
+							<statement>
+								<m>\quad y = e^{2x} \left(c_1 \cos(x) + c_2 \sin(x)\right) + e^{4x} \left(c_3 \cos(3x) + c_4 \sin(3x)\right)</m>
+							</statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+					</choices>
+				</task>
+				
+				<task label="higher-order-lhcc-cyu-3">
+				<title> All Three Root Types </title>
+				<statement>
+					<p>
+						Suppose the characteristic equation of a fifth-order LHCC equation has the following roots:
+					</p>
+					<me>
+						r = 1 \ (\text{triple}),\quad -2 \ (\text{single}),\quad 2 \pm i
+					</me>
+					<p>
+					Which of the following correctly represents the structure of the general solution?
+					</p>
+				</statement>
+				<choices randomize="true">
+					<choice correct="yes">
+					<statement>
+						<m>\quad y = c_1 e^{x} + c_2 x e^{x} + c_3 x^2 e^{x} + c_4 e^{-2x} + e^{2x}(c_5 \cos x + c_6 \sin x)</m>
+					</statement>
+					<feedback>
+						<p>
+						Correct! The triple root at <m>r = 1</m> contributes three terms, <m>e^{x},\ x e^{x},\ x^2 e^{x}</m>; the single real root <m>-2</m> contributes <m>e^{-2x}</m>; and the complex conjugate pair <m>2 \pm i</m> gives rise to the sinusoidal term multiplied by <m>e^{2x}</m>.
+						</p>
+					</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<m>\quad y = c_1 e^{x} + c_2 e^{-2x} + e^{2x}(c_3 \cos x + c_4 \sin x)</m>
+					</statement>
+					<feedback>
+						<p>
+						Incorrect. The triple root at <m>r = 1</m> should contribute three terms, not just one.
+						</p>
+					</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<m>\quad y = c_1 e^{x} + c_2 x e^{x} + c_3 e^{-2x} + e^{2x}(c_4 \cos x + c_5 \sin x)</m>
+					</statement>
+					<feedback>
+						<p>
+						Incorrect. This only includes two of the three terms needed for the triple root at <m>r = 1</m>.
+						</p>
+					</feedback>
+					</choice>
+					<choice>
+					<statement>
+						<m>\quad y = c_1 e^{x} + c_2 x e^{x} + c_3 x^2 e^{x} + c_4 e^{-2x} + c_5 \cos(2x) + c_6 \sin(2x)</m>
+					</statement>
+					<feedback>
+						<p>
+						Incorrect. The complex roots <m>2 \pm i</m> must be expressed as <m>e^{2x}(c_5 \cos x + c_6 \sin x)</m>, not as standalone sine and cosine terms.
+						</p>
+					</feedback>
+					</choice>
+				</choices>
+				</task>
+
+				<task label="higher-order-lhcc-cyu-4">
+					<title> Multiple Repeating Roots </title>
+					<statement>
+						<p>
+							Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: 
+							<me>
+								r = 2, 2, 2, -1, -1
+							</me>.
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 e^{-x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. This form does not account for the multiplicity of the roots.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 x e^{2x} + c_3 e^{-x} + c_4 x e^{-x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. The multiplicity should be reflected for each root.</feedback>
+						</choice>
+						<choice correct="yes">
+							<statement>
+								<p>
+									<m>\quad y = c_1 e^{2x} + c_2 x e^{2x} + c_3 x^2 e^{2x} + c_4 e^{-x} + c_5 x e^{-x}</m>
+								</p>
+							</statement>
+							<feedback>Correct! This is the form when there are repeated real roots with appropriate multiplicity.</feedback>
+						</choice>
+						<choice correct="no">
+							<statement>
+								<p>
+									<m>\quad y = c_1 x^2 e^{2x} + c_2 x e^{-x}</m>
+								</p>
+							</statement>
+							<feedback>Incorrect. Make sure to account for the cubic multiplicity for <m>r = 2</m>.</feedback>
+						</choice>
+					</choices>
+				</task>
+			</p>
+		</statement>
+	</fact>
+
+	<objectives>
+		<ul marker="square">
+			<li>
+				<p>
+					Knowing that an LHCC equation has order <m>n</m> tells you that:
+					<ul>
+						<li> The characteristic polynomial will have degree <m>n</m>. </li>
+						<li> There will be <m>n</m> characteristic roots. </li>
+						<li> There will be <m>n</m> terms to in general solution. </li>
+					</ul>
+				</p>
+			</li>
+			<li>
+				The terms that are included in the general solution depend on the characteristic root type, as summarized in <xref ref="lhcc-contribution-to-general-solution"/>.
+			</li>
+		</ul>
+	</objectives>
+</section>
+
+<section label="solving-high-order-lhccs"><title> Solving High-Order LHCC Equations </title>
+
+	<introduction>
+		<p>
+			As the previous section demonstrated, constructing the general solution of a LHCC equation is fairly straightforward given the roots of the characteristic equation. However, solving <em>high-degree polynomial equations</em> can be quite challenging. While there are strategies to tackle this by hand, sometimes computational tools are necessary to obtain the solutions. Below, we will outline some common approaches
+		</p>
+
+
+	</introduction>
+
+	<paragraphs label="factoring">
+		<title> Factoring </title>
+
+		<p>
+			Some high-degree characteristic polynomials can be factored by hand using classic algebraic techniques. Factoring is the fastest way to solve these problems when it works. We'll start by reviewing common methods of factoring and apply them to characteristic equations that appear in LHCC differential equations.
+		</p>
+
+		<p>
+			Here are a few algebraic strategies you may find helpful:
+		</p>
+
+		<assemblage xml:id="factoring-technique0"><title> 🧮 Factoring Techniques </title>
+			<p>
+				<dl>
+					<li><title> <m>\textbf{Common Factor}</m> </title>
+						<p>
+							<md>
+								<mrow> ab + ac + ad = a(b+c+d)	</mrow>
+							</md>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Grouping}</m> </title>
+						<p>
+							<md>
+								<mrow> ab + ac + bd + cd	\amp = a(b+c) + d(b+c)	</mrow>
+								<mrow>						\amp = (a+d)(b+c)		</mrow>
+							</md>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Difference of Squares}</m> </title>
+						<p>
+							<me> a^2 - b^2 = (a+b)(a-b) </me>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Difference of Cubes}</m> </title>
+						<p>
+							<me> a^3 - b^3 = (a-b)(a^2+ab+b^2)</me>
+						</p>
+					</li>
+					<li><title> <m>\textbf{Sum of Cubes}</m> </title>
+						<p>
+							<me> a^3 + b^3 = (a+b)(a^2-ab+b^2)</me>
+						</p>
+					</li>
+				</dl>
+			</p>
+		</assemblage>
+
+		<p>
+			Let's now apply these tools to solve higher-order LHCC equations by factoring their characteristic equations.
+		</p>
+
+		<example>
+			<title> Solving LHCC Equations by Factoring the Characteristic Equation </title>
+
+			<statement>
+				<p>
+					These examples show how to find the general solution to higher-order LHCC equations using a variety of factoring techniques to find the roots of the characteristic equation.
+				</p>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>1. <m>\ 4 y'' - 9 = 0</m> </p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>4 r^2 - 9 = 0</me>
+							<p>
+								Applying the difference of squares:
+							</p>
+							<md>
+								<mrow> \amp (2 r + 3)(2 r - 3) = 0  </mrow>
+								<mrow> \amp r = -\sfrac{3}{2},\ \sfrac{3}{2}  </mrow>
+								<mrow> \amp \Rightarrow\quad y = c_1 e^{-\frac{3}{2}x} + c_2 e^{\frac{3}{2}x}  </mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>2. <m>\ y^{(5)} - 4 y''' = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<me>r^5 - 4 r^3 = 0</me>
+							<p>Factoring out the common term <m>r^3</m>, followed by a differences of squares gives:</p>
+							<md>
+								<mrow> r^3(r^2 - 4)			\amp = 0</mrow>
+								<mrow> r^3(r + 2)(r - 2)	\amp = 0</mrow>
+							</md>
+							<me>r = 0\ (\text{triple}),\ -2,\ 2</me>
+							<me>
+								\Rightarrow\quad y = c_1 + c_2 x + c_3 x^2 + c_4 e^{-2x} + c_5 e^{2x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>3. <m>\ y^{(4)} - 25 = 0</m></p>
+					<p>
+						<solution>
+							<p><me>r^4 - 25 = 0</me></p>
+							<p>This factors as a difference of squares twice:</p>
+							<md>
+								<mrow> (r^2 + 5)(r^2 - 5) \amp = 0</mrow>
+								<mrow> (r^2 + 5)(r + \sqrt{5})(r - \sqrt{5}) \amp = 0</mrow>
+							</md>
+							<me>r = \pm i\sqrt{5},\ -\sqrt{5},\ \sqrt{5}</me>
+							<md>
+								<mrow>\Rightarrow\quad y = c_1 \cos(\sqrt{5}x) \amp + c_2 \sin(\sqrt{5}x) </mrow>
+								<mrow> \amp + c_3 e^{\sqrt{5}x} + c_4 e^{-\sqrt{5}x}</mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>4. <m>\ y^{(4)} - 5y'' + 4 = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^4 - 5r^2 + 4 = 0</me></p>
+							<p>Use the substitution, <m>u = r^2</m>, to reveal a quadratic in disguise:</p>
+							<md>
+								<mrow> u^2 - 5u + 4		\amp = 0</mrow>
+								<mrow> (u - 4)(u - 1)	\amp = 0</mrow>
+							</md>
+							<p>Reverse the substitution, <m>u = r^2</m>, back into <m>r</m>:</p>
+							<md>
+								<mrow> (r^2 - 4)(r^2 - 1)			\amp = 0</mrow>
+								<mrow> (r - 2)(r + 2)(r - 1)(r + 1)	\amp = 0</mrow>
+							</md>
+							<me>r = -2,\ 2,\ -1,\ 1</me>
+							<me>
+								\Rightarrow\quad y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2x} + c_4 e^{-2x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>5. <m>\ y^{(4)} - 6y''' + 9y'' = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^4 - 6r^3 + 9r^2 = 0</me></p>
+							<p>Take out <m>r^2</m> and use standard factoring:</p>
+							<md>
+								<mrow> r^4 - 6r^3 + 9r^2	\amp = 0</mrow>
+								<mrow> r^2(r^2 - 6r + 9)	\amp = 0</mrow>
+								<mrow> r^2(r - 3)^2			\amp = 0</mrow>
+							</md>
+							<me> r = 0\ (\text{double}),\ 3\ (\text{double})</me>
+							<me>
+								\Rightarrow\quad y = c_1 + c_2 x + c_3 e^{3x} + c_4 x e^{3x}
+							</me>
+						</solution>
+					</p>
+				</sidebyside>
+
+				<sidebyside widths="37% 63%" valign="top">
+					<p>6. <m>\ y^{(5)} - 4 y''' + 8 y'' + 48 = 0</m></p>
+					<p>
+						<solution>
+							<p>The characteristic equation is:</p>
+							<p><me>r^5 - 4 r^3 + 8 r^2 + 48 = 0</me></p>
+							<p>We can factor this by grouping and recognizing a sum of cubes:</p>
+							<md>
+								<mrow> r^5 - 4 r^3 + 8 r^2 + 48 \amp = 0</mrow>
+								<mrow> r^3(r^2 - 4) + 8(r^2 - 4) \amp = 0</mrow>
+								<mrow> (r^3 + 8)(r^2 - 4) \amp = 0</mrow>
+								<mrow> (r + 2)(r^2 - 2r + 4)(r + 2)(r - 2) \amp = 0</mrow>
+							</md>
+							<me>r = -2\ (\text{double}),\ 2,\ 1 \pm i\sqrt{3}</me>
+							<md>
+								<mrow>\Rightarrow\quad y = c_1 e^{-2x} 	\amp + c_2 x e^{-2x} + c_3 e^{2x} </mrow>
+								<mrow>								+	\amp\ e^{x}(c_4 \cos(\sqrt{3}x) + c_5 \sin(\sqrt{3}x))</mrow>
+							</md>
+						</solution>
+					</p>
+				</sidebyside>
+			</statement>
+		</example>
+
+	</paragraphs>
+
+	<paragraphs label="rational-root-theorem">
+		<title> Rational Root Theorem </title>
+		<p>
+			When the characteristic polynomial is hard to factor by inspection, the <em>Rational Root Theorem</em> provides a systematic way to search for rational (fractional) solutions. Once you find a root, you can use polynomial division to reduce the polynomial to a lower degree. From there, you can repeat the process or apply other factoring techniques.
+		</p>
+
+		<p>
+			While this method is reliable, it can be tedious by hand and prone to errors. That's why technology often comes in handy.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="technology-factoring">
+		<title> Using Technology: Factoring High-Degree Polynomials </title>
+		<p>
+			Not all characteristic polynomials can be factored easily — and some can't be factored at all using simple algebra. In these cases, it's perfectly reasonable to turn to technology.
+		</p>
+
+		<p>
+			Computer algebra systems (CAS), online factoring tools, and symbolic solvers can quickly find the roots of even complicated polynomials. Once you have the roots, you can build the general solution using the framework you learned earlier.
+		</p>
+
+		<p>
+			For example, suppose you want to solve the following LHCC equation:
+		</p>
+
+		<me>
+			2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y = 0
+		</me>.
+
+		<p>
+			The first step is to write down the characteristic equation:
+			<me>
+				2r^4 + 9r^3 + r^2 - 21r + 9 = 0
+			</me>
+		</p>
+
+		<p>
+			This is challenging to solve by hand, but we can use the tool below to factor it. 
+		</p>
+
+		<p>
+			Type <c>2*r^4 + 9*r^3 + r^2 - 21*r + 9</c> into the text box and press enter.
+		</p>
+
+		<corollary xml:id="factoring-tool">
+			<title> Polynomial Factoring Calculator Directions </title>
+			<introduction>
+				<p>
+					Directions:
+					<ul>
+						<li>Enter a polynomial in the box below.</li>
+						<li>Use <c>r</c> for the variable, <c>*</c> for multiplication, and <c>^</c> for exponents.</li>
+						<li>Press enter to see the factored form and approximate values.</li>
+						<li>Note: It only factors polynomials with fractional (rational) roots.</li>
+					</ul>
+				</p>
+			</introduction>
+		</corollary>
+
+		<interactive xml:id="poly-factor" platform="sage" width="100%" aspect="3:1">
+			<slate surface="sage">
+			R = PolynomialRing(QQ, 'r')
+			r = R.gen()
+
+			@interact
+			def factor_polynomial(ce = input_box(r^2 - 2*r - 8, label="Polynomial (in r):", type=str, width=40)):
+
+				try:
+					# Parse the polynomial
+					parsed = sage_eval(f"lambda r: {ce}", locals={'r': r})
+					poly = parsed(r)
+
+					# Display original polynomial
+					pretty_print(html(f"""
+					<div style='background-color:#eef; padding:0.5em; margin-top:1em;'>
+					<b>Polynomial:</b><br/> $ {latex(poly)} $
+					</div>
+					"""))
+
+					# Display factored form
+					pretty_print(html(f"""
+					<div style='background-color:#efe; padding:0.5em; margin-top:1em;'>
+					<b>Factored:</b><br/> $ {latex(poly.factor())} $
+					</div>
+					"""))
+
+					# Display approximate roots
+					approx_roots = poly.roots(ring=CC, multiplicities=False)
+					formatted_roots = ', '.join([str(root.n(digits=5)) for root in approx_roots])
+					pretty_print(html(f"""
+					<div style='background-color:#fee; padding:0.5em; margin-top:1em;'>
+					<b>Approximate Roots:</b><br/> {formatted_roots}
+					</div>
+					"""))
+
+				except Exception as e:
+					pretty_print(html(f"""
+					<div style='color:red; background-color:#fdd; padding:0.5em;'>
+					Error: {str(e)}
+					</div>
+					"""))
+			</slate>
+		</interactive>
+
+		<p>
+			After entering the polynomial, you should see the factored form:
+			<me>
+				2\left(r - 1\right)\left(r - \frac12\right)\left(r + 3\right)^2
+			</me>
+		</p>
+
+		<p>
+			From here the roots are easily identified as:
+			<me>
+			r = 1,\quad r = -3\ (\text{double root}),\quad r = \frac{1}{2}
+			</me>
+		</p>
+
+		<p>
+			Therefore, the general solution is:
+		</p>
+
+		<me>
+			y = c_1 e^{x} + c_2 e^{-3x} + c_3 x e^{-3x} + c_4 e^{\frac{1}{2}x}
+		</me>
+
+		<task label="chkpt-solving-high-order-lhccs-1">
+			<title> 📖❓ Solving a High-Order LHCC Equation With a Factoring Tool </title>
+
+			<introduction>
+				<p>
+					Find the general solution to the LHCC equation
+					<me> y''' - 6y'' + 11y' - 6y = 0 </me>
+					by using the factoring tool to find the characteristic roots.
+				</p>
+			</introduction>
+			
+			<p>
+				<webwork xml:id="hgh">
+					<pg-code>
+						Context("ImplicitEquation");
+						Context()->variables->{namePattern} = qr/[a-z][a-z0-9_]*'*/i;
+						Context()->variables->add( t=>'Real', c1=>'Real', c2=>'Real', c3=>'Real');
+
+						$roots = List("1, 2, 3");
+						$genSoln = Formula("c1*e^(t) + c2*e^(2*t) + c3*e^(3*t)")->reduce();
+					</pg-code>
+
+					<statement>
+						<p>
+							Characteristic Roots: <m>r = </m> <var name="$roots" width="25" />
+						</p>
+						<p>
+							General Solution: <m>y(t) = </m> <var name="$genSoln" width="25" />
+						</p>
+						<p>
+							<em>Use <c>c1</c>, <c>c2</c>, <c>c3</c> as the arbitrary constants of integration.</em>
+						</p>
+					</statement>
+				</webwork>
+
+				<solution>
+					<p>
+						First, write down the characteristic equation:
+						<md>
+							<mrow> r^3 - 6r^2 + 11r - 6 = 0 </mrow>
+						</md>.
+						Plugging this into to the factoring tool shows that it factors as <m> (r-3)(r-2)(r-1) </m>.	Solving for <m>r</m>, we get
+						<md>
+							<mrow> r = 1, \quad r = 2, \quad r = 3 </mrow>
+						</md>.
+						Therefore, the general solution is:
+						<me> y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} </me>.
+					</p>
+				</solution>
+			</p>
+		</task>
+	</paragraphs>
+
+	<paragraphs label="technology-approximating">
+		<title> Using Technology: Approximating Roots </title>
+		<p>
+			Some characteristic equations are too messy to factor, even with software. When this happens, a numerical root finder can provide decimal approximations of the roots, allowing us to write down the structure of the general solution.
+		</p>
+
+		<p>
+			Consider the fifth-order LHCC equation:
+			<me>
+				y^{(5)} - 4y''' + 3y'' - y = 0
+			</me>
+		</p>
+
+		<p>
+			The characteristic equation is:
+			<me>
+				r^5 - 4r^3 + 3r^2 - 1 = 0
+			</me>
+			This polynomial has no obvious factoring pattern, and standard techniques fail. Fortunately, numerical approximation tools can help.
+		</p>
+
+		<p>
+			Try entering <c>r^5 - 4*r^3 + 3*r^2 - 1</c> into the same factoring tool above. You should get the following approximations for three real roots:
+		</p>
+
+		<me>
+			r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52
+		</me>
+
+		<p>
+			and the complex pair:
+		</p>
+
+		<me>
+			r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i
+		</me>
+
+		<p>
+			using the standard root-to-solution rules, the general solution is: 
+		</p>
+
+		<me>
+			y = c_1 e^{-2.29x} + c_2 e^{-0.46x} + c_3 e^{1.52x} + e^{0.61x} \left(c_4 \cos(0.5x) + c_5 \sin(0.5x)\right)
+		</me>
+
+		<task label="rq-solving-high-order-lhccs-5">
+			<title> 📖❓ Decimal Roots in the General Solution </title>
+			<statement>
+				<p>
+				Suppose you find the characteristic roots are approximately
+				<me>r \approx -2.7,\quad 0.8,\quad 0.8 + 2i,\quad 0.8 - 2i</me>.
+				</p>
+				<p>
+				Which of the following best describes the general solution?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+				<statement>
+					<m>\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + e^{0.8x}(c_3 \cos(2x) + c_4 \sin(2x))</m>
+				</statement>
+				<feedback>
+					Correct! The real root gives a standalone exponential, and the complex pair contributes an oscillatory term with the same <m>\alpha</m>.
+				</feedback>
+				</choice>
+				<choice>
+				<statement>
+					<m>\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 \cos(2x) + c_4 \sin(2x)</m>
+				</statement>
+				<feedback>
+					Incorrect. The sine and cosine must be multiplied by <m>e^{0.8x}</m>.
+				</feedback>
+				</choice>
+				<choice>
+				<statement>
+					<m>\quad y = c_1 e^{-2.7x} + c_2 x e^{0.8x} + c_3 x^2 e^{0.8x}</m>
+				</statement>
+				<feedback>
+					Incorrect. This would be appropriate if <m>r = 0.8</m> were a triple root.
+				</feedback>
+				</choice>
+				<choice>
+				<statement>
+					<m>\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 e^{-0.8x} + c_4 e^{2ix}</m>
+				</statement>
+				<feedback>
+					This mixes formats and includes a non-real exponential.
+				</feedback>
+				</choice>
+			</choices>
+		</task>
+	</paragraphs>
+
+	<p>
+		Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.
+	</p>
+
+	<objectives>
+		<ul marker="square">
+			<li>
+				If the characteristic polynomial factors easily, use algebraic techniques like grouping, factoring by common terms, or recognizing patterns such as difference of squares or cubes.
+			</li>
+			<li>
+				When factoring is hard or impossible by hand, use a factoring tool or numerical solver to find the roots.
+			</li>
+			<li>
+				Once the roots are known, constructing the full general solution is mechanical and follows a predictable structure.
+			</li>
+		</ul>
+	</objectives>
+</section>

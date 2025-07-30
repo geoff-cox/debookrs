@@ -1,0 +1,1074 @@
+<section><title> Euler's Method </title>
+
+	<introduction>
+		<p>
+			Euler's Method is a straightforward numerical technique for approximating solutions to initial value problems. Instead of solving the differential equation exactly, it generates a sequence of points that trace the solution curve.
+		</p>
+
+		<p>
+			The idea is simple: start at an initial point, use the slope from the differential equation to take a small step forward, then repeat. Each new point is found by moving in the direction of the slope at the current point.
+		</p>
+
+		<p>
+			This step-by-step approach lets us approximate <m>y(t)</m> even when finding an exact solution is difficult or impossible. Rather than solving the entire problem at once, Euler's Method walks forward one point at a time, building a path that follows the solution curve.
+		</p>
+
+		<paragraphs><title> An Analogy </title>
+
+			<p>
+				Image using a GPS in <q>off‑road</q> mode where the map is blank. All you see on the screen is your current position and a tiny arrow showing the direction you should drive. You move forward for a while, stop to record your location and refresh the arrow, then repeat. Each dot the GPS drops is Euler's Method in action.
+			</p>
+
+			<p>
+				The shorter each burst of driving, the closer your recorded trail hugs the true but invisible road. By stringing these dots together, you build a practical approximation of the path even though it is not visible on the GPS.
+			</p>
+
+			<exercise><title> What's the Tradeoff? </title>
+				<statement>
+					In this analogy, what tradeoff exists that affects the accuracy of how well your recorded positions match the invisible true path?
+				</statement>
+				<choices randomize="yes">
+				<choice correct="yes">
+					<statement>The more often you stop, the more accurate your positions will be.</statement>
+					<feedback>Correct ,  stopping more often helps prevent large deviations from the true path.</feedback>
+				</choice>
+				<choice>
+					<statement>The less often you stop, the more accurate your positions will be.</statement>
+					<feedback>No ,  stopping less often could lead to large deviations from the true path.</feedback>
+				</choice>
+				<choice>
+					<statement>The more often you stop, the less accurate your positions will be.</statement>
+					<feedback>No ,  stopping more often generally reduces the potential for large deviations from the true path.</feedback>
+				</choice>
+				<choice>
+					<statement>The slower you drive, the more accurate your positions will be.</statement>
+					<feedback>No ,  the speed of driving does not affect the accuracy, only how quickly you get to your next position.</feedback>
+				</choice>
+				</choices>
+			</exercise>
+
+			<p>
+				Euler's method works in a similar way by attempting to follow the graph of the solution, one point at a time. It can't see the true solution, but it always knows what direction it would move at any given point.
+			</p>
+
+		</paragraphs>
+	</introduction>
+
+	<subsection><title> Step-by-Step Thinking </title>
+		<introduction>
+			<p>
+				Euler's method is an <em>iterative process</em>, meaning it repeats the same task until its goal is reached. Thus, if you understand the task, then you understand the entire process since it amounts to repeating the task over and over.
+			</p>
+			
+			<p>
+				The task involved in Euler's method involves creating one point from another point. In particular, assuming a current point, <m>(t_{\text{cur}}, y_{\text{cur}})</m> moves along a line with a known slope, Euler's method predicts where the new point <m>(t_{\text{new}}, y_{\text{new}})</m> will be located.
+			</p>
+
+			<p>
+				In this section, we will break down this task by answering the following questions:
+				<ol>
+					<li>
+						<p>
+							What does it mean to move in the direction of a slope?
+						</p>
+					</li>
+					<li>
+						<p>
+							Given a point <m>(t_{\text{cur}}, y_{\text{cur}})</m>, slope, and size size, what is the formula for <m>(t_{\text{new}}, y_{\text{new}})</m>?
+						</p>
+					</li>
+					<li>
+						<p>
+							How and why do we know the slope of the solution, but not the solution itself?
+						</p>
+					</li>
+				</ol>
+			</p>
+		</introduction>
+
+		<paragraphs><title> Moving in the Direction of a Slope </title>
+			<p>
+				The first question we will address is <q>What does it mean to move in the direction of a slope?</q> To answer this, suppose our starting point is <m>(1,1)</m> and our movement direction has the slope <m>\frac32</m>.
+			</p>
+
+			<p>
+				Recall that slope is often referred to as <q>rise over run</q>, which is just a way to describe how to get from one point to another. In this case, the rise is 3 and the run is 2, and, from <m>(1,1)</m>, another point, illustrated in <xref ref="multiple-rise-run-a"/>, is
+			</p>
+
+			<me>
+				(1 + \text{run}, 1 + \text{rise}) = (1 + 2, 1 + 3) = (3,4).
+			</me>
+
+			<note><title> <q>Rise</q> Clarification </title>
+				<p>
+					Keep in mind that <q>rise</q> is a bit of a misnomer here, since it can also be negative. In such cases, <q>rise</q> technically is <q>fall</q>, but we will continue to use <q>rise</q> for simplicity.
+				</p>
+			</note>
+
+			<p>
+				The rise and run we used were simply chosen as the numerator and denominator of the slope, however, there are many different options. For example, the fractions
+			</p>
+
+			<me>
+				\left(\frac{\text{rise}}{\text{run}}\right)\quad\quad \frac32,\ \frac{6}{4},\ \frac{3\pi}{2\pi},\ \frac{\frac32}{1},\ \ldots,
+			</me>
+
+			<p>
+				all represent the same slope, but have different rise and run values. See <xref ref="multiple-rise-run-b"/>.
+			</p>
+
+			<p>
+				Euler's method seeks a way to specify the <q>run</q>, and find the corresponding <q>rise</q> that keeps the slope the same. The last fraction, above, conveniently shows a denominator of <m>1</m>, so we start there since it leads to the following rise and run:
+			</p>
+
+			<me>
+				\frac{3}{2} = \frac{\frac32}{1} = \frac{\frac32 \cdot \text{run of our choice}}{1 \cdot \text{run of our choice}} = \frac{\frac32 \cdot h}{h},
+			</me>
+
+			<p>
+				where the rise is <m>\frac32 \cdot h</m> and the run is the step size <m>h</m>. In fact, for any slope the rise can be expressed as 
+			</p>
+
+			<me>
+				\text{rise} = \text{slope} \cdot h.
+			</me>
+
+			<figure xml:id="multiple-rise-run"><caption>Same Slope, Different Rise and Runs</caption>
+				<sidebyside widths="7.6% 23.4% 6% 25% 6% 24.6% 7.4%" valign="top">
+					<p/>
+					<figure xml:id="multiple-rise-run-a"><caption>Rise <m>3</m>, run <m>2</m></caption>
+						<image>
+							<latex-image>
+								% === User Defined Parameters ===
+								\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+								\def\ta{1} \def\ya{1}						% point coordinates
+								\def\tmin{-0.8} \def\tmax{3.9}
+								\def\ymin{-0.8} \def\ymax{4.8}
+								\def\tticks{1,3} \def\yticks{1,4}
+								\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+								\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+								
+								\begin{tikzpicture}[scale=0.6]
+									
+									% === t-axis and grid ===
+									\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+									\foreach \tk in \tticks{
+										\draw (\tk,-0.1) -- (\tk,0.1)
+										node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+									}
+									\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+									
+									% === y-axis and grid ===
+									\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+									\foreach \yk in \yticks{
+										\draw (-0.1,\yk) -- (0.1,\yk)
+										node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+									}
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+									
+									% === line plot ===
+									\draw[ultra thick, domain=\tmin+0.5:\tmax-0.2, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+									% === rise/run display ===
+									\foreach \k in {0,...,\N}
+									{
+										\pgfmathsetmacro{\tk}{\ta + \k*\run}
+										\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+										\draw[blue!80!green, very thick, -&gt;]
+											(\tk, \yk) -- (\tk, \yk + \rise)
+											node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\rise$};
+										\draw[blue!40!green, very thick, -&gt;]
+											(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+											node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+										\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+									}
+
+									% === first point label ===
+									\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+									% === second point label ===
+									\pgfmathsetmacro{\tk}{\ta + \run}
+									\pgfmathsetmacro{\yk}{\ya + \rise}
+									\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.3cm, yshift=-0.15cm, font=\small] {$(3,4)$};
+
+									% === last point ===
+									\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+									\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</figure>
+					<p/>
+					<figure xml:id="multiple-rise-run-b"><caption>Rise <m>\frac32</m>, run <m>1</m></caption>
+						<image>
+							<latex-image>
+								% === User Defined Parameters ===
+								\def\run{1} \def\rise{1.5} \def\yint{-0.5}	% slope rise/run, yintercept
+								\def\ta{1} \def\ya{1}					% point coordinates
+								\def\tmin{-0.8} \def\tmax{3.4}
+								\def\ymin{-0.8} \def\ymax{3.9}
+								\def\tticks{1,2,3} \def\yticks{1,2,3}
+								\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,3}
+								\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+								
+								\begin{tikzpicture}[scale=0.7]
+									
+									% === t-axis and grid ===
+									\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+									\foreach \tk in \tticks{
+										\draw (\tk,-0.1) -- (\tk,0.1)
+										node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+									}
+									\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+									
+									% === y-axis and grid ===
+									\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+									\foreach \yk in \yticks{
+										\draw (-0.1,\yk) -- (0.1,\yk)
+										node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+									}
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+									
+									% === line plot ===
+									\draw[ultra thick, domain=\tmin+0.5:\tmax-0.4, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+									% === rise/run display ===
+									\foreach \k in {0,...,\N}
+									{
+										\pgfmathsetmacro{\tk}{\ta + \k*\run}
+										\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+										\draw[blue!80!green, very thick, -&gt;]
+											(\tk, \yk) -- (\tk, \yk + \rise)
+											node[fill=white, xshift=-0.1cm, inner sep = 1pt, midway, font=\small] {$\sfrac32$};
+										\draw[blue!40!green, very thick, -&gt;]
+											(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+											node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+										\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+									}
+
+									% === first point label ===
+									\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+									% === second point label ===
+									\pgfmathsetmacro{\tk}{\ta + \run}
+									\pgfmathsetmacro{\yk}{\ya + \rise}
+									\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.1cm, font=\small] {$(2,\frac52)$};
+
+									% === last point ===
+									\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+									\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</figure>	
+					<p/>
+					<figure xml:id="multiple-rise-run-c"><caption>Rise <m>mh</m>, run <m>h</m></caption>
+						<image>
+							<latex-image>
+								% === User Defined Parameters ===
+								\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+								\def\ta{1} \def\ya{1}						% point coordinates
+								\def\tmin{-0.8} \def\tmax{4.3}
+								\def\ymin{-0.8} \def\ymax{4.8}
+								\def\tticks{1,3} \def\yticks{1,4}
+								\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+								\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+								
+								\begin{tikzpicture}[scale=0.6]
+									
+									% === t-axis and grid ===
+									\foreach \k in {0,1}{
+										\draw[thin, gray!50!white] ({\ta + \k*\run},\ymin) -- ({\ta + \k*\run},\ymax);
+										\draw[black] ({\ta + \k*\run},-0.1) -- ({\ta + \k*\run},0.1) 
+										node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway] {$t_{\k}$};
+									}
+									\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+									
+									% === y-axis and grid ===
+									\foreach \k in {0,1}{
+										\draw[thin, gray!50!white] (\tmin, {\ya + \k*\rise}) -- (\tmax, {\ya + \k*\rise});
+										\draw (-0.1, {\ya + \k*\rise}) -- (0.1, {\ya + \k*\rise})
+										node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway] {$y_{\k}$};
+									}
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+									
+									% === line plot ===
+									\draw[ultra thick, domain=\tmin+0.5:\tmax-0.5, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+									% === rise/run display ===
+									\foreach \k in {0,...,\N}
+									{
+										\pgfmathsetmacro{\tk}{\ta + \k*\run}
+										\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+										\draw[blue!80!green, very thick, -&gt;]
+											(\tk, \yk) -- (\tk, \yk + \rise)
+											node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\frac32h$};
+										\draw[blue!40!green, very thick, -&gt;]
+											(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+											node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$h$};
+										\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+									}
+
+									% === first point label ===
+									\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.55cm, yshift=-0.1cm, font=\small] {$(t_0,y_0)$};
+
+									% === second point label ===
+									\pgfmathsetmacro{\tk}{\ta + \run}
+									\pgfmathsetmacro{\yk}{\ya + \rise}
+									\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.2cm, font=\small] {$(t_1,y_1)$};
+
+									% === last point ===
+									\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+									\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+									% === extra h (run) label ===
+									\draw[blue!40!green, thick, -&gt;]
+											(\ta + 0.3, -0.45) -- (\ta + \run - 0.25, -0.45)
+											node[fill=white, inner sep = 1pt, xshift=0cm, midway, font=\small] {$h$};
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</figure>
+					<p/>
+				</sidebyside>
+			</figure>
+		</paragraphs>
+
+		<paragraphs><title> The Slope Direction Movement Formula </title>
+			<p>
+				The last result leads us to the answer of the next question:
+			</p>
+
+			<sidebyside widths="3% 94% 3%">
+				<p/>
+				<p>
+					<q>Given a point <m>(t_{\text{cur}}, y_{\text{cur}})</m>, slope, and step size, what is the formula for <m>(t_{\text{new}}, y_{\text{new}})</m>?</q>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<p>
+				First of all, since we are moving in the direction of the slope, we know that
+			</p>
+
+			<me>
+				(t_{\text{new}},\ y_{\text{new}}) = (t_{\text{cur}} + \text{run},\ y_{\text{cur}} + \text{rise}),
+			</me>
+
+			<p>
+				but in Euler's method the <m>t</m>-values are separated by a step size <m>h</m>, so we can write this as
+			</p>
+
+			<men xml:id="point-slope-movement-formula">
+				(t_{\text{new}},\ y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h\cdot\text{slope}),
+			</men>
+
+			<p>
+				which is the desired formula that gives the new point assuming we know current point, the direction slope, and the step size <m>h</m>.
+			</p>
+		</paragraphs>
+
+
+	</subsection>
+
+	<subsection><title> Euler's Method </title>
+
+		<p>
+			Euler's Method is a step-by-step process for approximating the solution to a differential equation of the form
+		</p>
+
+		<me>
+			y'(t) = f(t, y), \quad y(t_0) = y_0, \quad \text{for } t \text{ in } [t_0, t_N].
+		</me>
+
+		<p>
+			The goal is to estimate the values of the solution <m>y(t)</m> at a sequence of evenly spaced time points:
+		</p>
+
+		<me>
+			t_0,\ t_1,\ t_2,\ \ldots,\ t_N,
+		</me>
+
+		<p>
+			where each is separated by the step size, <m>h</m> (i.e., <m>t_{k+1} = t_k + h</m>). For convenience, we'll use the shorthand <m>y_k = y(t_k)</m>, so the solution points we want to approximate are:
+		</p>
+
+		<me>
+			(t_0, y_0),\ (t_1, y_1),\ (t_2, y_2),\ \ldots,\ (t_N, y_N).
+		</me>
+
+		<p>
+			Since the initial condition <m>y(t_0) = y_0</m> is given, we know the first point, <m>(t_0, y_0)</m>. So it makes sense to always start here. The remaining points are approximated using the <xref ref="point-slope-movement-formula" text="custom">movement rule of the previous section</xref>:
+		</p>
+
+		<me>
+			(t_{\text{new}},\ y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h\cdot\text{slope}).
+		</me>
+
+		<p>
+			In terms of Euler's method, the current point is <m>(t_k, y_k)</m>, the new point is <m>(t_{k+1}, y_{k+1})</m>, and the slope is found from <m>f(t_k, y_k)</m>. Thus, in this context we can write the movement rule as
+		</p>
+
+		<me>
+			(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
+		</me>
+
+		<p>
+			Extracting just the <m>y</m>-coordinate, gives the update rule for Euler's method:
+			<me>
+				y_{k+1} = y_k + h\cdot f(t_k, y_k).
+			</me>
+		</p>
+
+		<exercise label="chkpt-1-euler"><title> Match Euler's Method Parts to their Meaning </title>
+			<statement>
+				<p>
+					Assume the current approximation using Euler's Method is denoted by <m>y_k</m>. In this context, match the mathematical expression with its meaning.
+				</p>
+			</statement>
+			<feedback>
+				<p>
+				These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.
+				</p>
+			</feedback>
+			<cardsort>
+				<match>
+					<premise><m>y_{k+1}</m></premise>
+					<response>The <m>y</m> value of the next approximation.</response>
+				</match>
+				<match>
+					<premise><m>y_{k-1}</m></premise>
+					<response>The <m>y</m> value of the previous approximation.</response>
+				</match>
+				<match>
+					<premise><m>h</m></premise>
+					<response>The distance between <m>t_k</m> and <m>t_{k+1}</m>.</response>
+				</match>
+				<match>
+					<premise><m>f(t_k, y_k)</m></premise>
+					<response>The slope of the solution at the current approximation.</response>
+				</match>
+				<match>
+					<premise><m>t_k</m></premise>
+					<response>The <m>t</m> value of the current approximation.</response>
+				</match>
+				<match>
+					<premise><m>h \cdot f(t_k, y_k)</m></premise>
+					<response>The rise (or fall) in the <m>y</m> value from the current approximation to the next approximation.</response>
+				</match>
+			</cardsort>
+		</exercise>
+
+		<corollary>
+			<sidebyside width="100%" margins="0%">
+				<interactive xml:id="euler-ivp-tool"
+					platform="jsxgraph"
+					aspect="1:1"
+					dark-mode-enabled="yes"
+					source="code/jsxgraph/eulers-method/euler-ivp-tool.js"
+				>
+					<sidebyside width="100%">
+						<slate xml:id="euler-ivp-tool-plot1" surface="jsxboard" aspect="1:1" />
+					</sidebyside>
+					<static>
+						<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
+					</static>
+				</interactive>
+			</sidebyside>
+		</corollary>
+
+		<exploration xml:id="euler-method"><title> Euler's Method </title>
+			<p>
+				Given an initial value problem
+			</p>
+			<me>
+				y' = f(t, y), \quad y(t_0) = y_0, \quad t_0 \le t \le t_N
+			</me>
+			<p>
+				approximate the solution with the following steps:
+			</p>
+			<dl width="narrow">
+				<li xml:id="eulers-method-step-1"><title> Select step size </title>
+					<p>Choosing a step size <m>h</m> determines <m>t_0,\ t_1,\ t_2,\ ...,\ t_{N}</m> where <m>t_k = t_0 + kh</m> for <m>k = 0, 1, 2, ..., N</m>.</p>
+				</li>
+				<li xml:id="eulers-method-step-2"><title> Apply Euler's update rule </title>
+					<p>
+						For <m>k = 0</m> to <m>N - 1</m>, compute
+						<me>
+						y_{k+1} = y_k + h \cdot f(t_k, y_k).
+						</me>
+					</p>
+				</li>
+			</dl>
+		</exploration>
+		
+		<p>
+			Euler's method operates on a very intuitive principle: starting from an initial point, the method uses the differential equation itself to take small steps along the direction of the slope given by the equation. At each step, the method calculates the slope of the unknown function at the current point, then moves a small distance in the direction of this slope to find the next point. By repeating this process, Euler's method generates a sequence of points that approximates the true solution curve of the differential equation.
+		</p>
+
+	</subsection>
+
+	<subsection><title> Examples </title>
+
+		<paragraphs><title> A Concrete Introduction to Euler's Method  </title>
+			<p>
+				Before deriving the general formula for Euler's Method, let's walk through the process on a specific example. For clarity, we will use a large step size to illustrate the method, but in practice, you would typically use a smaller step size to get a more accurate approximation.
+			</p>
+
+			<p>
+				Consider the initial value problem
+				<me>
+					y'(t) = 6t + y(t), \quad y(0) = -2, \quad t \text{ in } [0, 1.5].
+				</me>
+				Let's approximate the solution at the equally-spaced <m>t</m>-values: <m>0, 0.5, 1, 1.5</m>. A complete approximation will consist of the <m>y</m>-values from the following four points:   
+			</p>
+
+			<me>
+				(0,\ y(0)),\quad (0.5,\ y(0.5)),\quad (1,\ y(1)),\quad (1.5,\ y(1.5)).
+			</me>
+
+			<p>
+				The initial condition, <m>y(0) = -2</m>, gives us the first point and this is where Euler's Method officially begins.
+			</p>
+
+			<p>
+				From our current position, <m>(0, -2)</m>, we need the direction (i.e., slope, <m>y'(0)</m>) that our solution, <m>y</m>, moves along at <m>t=0</m>. Notice that the differential equation is basically machine that outputs <m>y'(t)</m> values for any <m>t</m>. In particular, for <m>t = 0</m> we get
+			</p>
+
+			<me>
+				y'(t) = 6t + y(t) 
+				\os{\large t=0}{\quad\longrightarrow\quad} 
+				y'(0) = 6(0) + y(0) 
+				\quad\longrightarrow\quad
+				y'(0) = -2.
+			</me>
+
+			<p>
+				This slope says that when <m>t</m> increases by <m>1</m>, <m>y</m> changes by <m>-2</m>. But, you can also say that when <m>t</m> increases by <m>h</m>, <m>y</m> changes by <m>-2\cdot h</m> since both lead to the same slope:
+			</p>
+
+			<me>
+				\text{slope}\ = -2:\quad
+				-\frac{2}{1}\
+				\left(\frac{\text{down}\ 2}{\text{right}\ 1}\right)
+				\ \ \text{and}\ \
+				-\frac{2\cdot h}{1\cdot h}\
+				\left(\frac{\text{down}\ 2h}{\text{right}\ h}\right)
+			</me>
+
+			<p>
+				Thus, from <m>(0, -2)</m>, <m>t</m> moves right by <m>0.5</m> and <m>y</m> moves down by <m>-2\cdot 0.5 = -1</m>, giving the next approximation as <m>y(0.5) \approx -3</m> and the new position <m>(0.5, -3)</m>.
+			</p>
+
+			<p>
+				Now, we repeat the process. From our new position, <m>(0.5, -3)</m>, we need the slope at <m>t = 0.5</m>, which comes directly from the differential equation:
+			</p>
+
+			<me>
+				y'(t) = 6t + y(t) 
+				\os{\large t=0.5}{\quad\longrightarrow\quad} 
+				y'(0.5) = 6(0.5) + y(0.5) 
+				\quad\longrightarrow\quad
+				y'(0.5) = 0.
+			</me>
+
+			<p>
+				A zero slope says that <m>y</m> does not change at all. So, <m>y(1) \approx -3</m> and the new position is <m>(1, -3)</m>.
+			</p>
+
+			<p>
+				Finally, <m>(1, -3)</m>, we compute the slope at <m>t = 1</m>:
+			</p>
+			<me>
+				y'(t) = 6t + y(t) 
+				\os{\large t=1}{\quad\longrightarrow\quad} 
+				y'(1) = 6(1) + y(1) 
+				\quad\longrightarrow\quad
+				y'(1) = 3.
+			</me>
+
+			<p>
+				Here, when <m>t</m> increases by <m>0.5</m>, <m>y</m> moves up by <m>3\cdot 0.5 = 1.5</m>. So the last value is <m>y(1.5) \approx -1.5</m> and the complete approximation is given by the values:
+			</p>
+
+			<sidebyside widths="6% 38% 50% 6%" valign="middle">
+				<p/>
+				<p>
+					<md>
+						<mrow> y(0)		\amp \approx -2.0,</mrow>
+						<mrow> y(0.5)	\amp \approx -3.0,</mrow>
+						<mrow> y(1)		\amp \approx -3.0,</mrow>
+						<mrow> y(1.5)	\amp \approx -1.5.</mrow>
+					</md>
+				</p>
+				<p>
+					<image>
+						<latex-image>
+								\begin{tikzpicture}[samples=50]
+			
+									% === colors ===
+									\def\fColor{blue}			\def\fFill{\fColor!15}
+									\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+									% === figure/domain/tick bounds ===
+									\def\tmin{-0.2}	\def\tmax{1.8}
+									\def\ymin{-4.9}	\def\ymax{1.8}
+									\def\tticks{1, 2}
+									\def\yticks{2, 4}
+									\def\dyA{-2} \def\dyB{0} \def\dyC{3}
+									\def\h{0.5} \def\s{0.5}
+
+
+									% === Function definitions ===
+									\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+									\def\ta{0}	\def\b{2}
+									\def\c{1.13}
+
+									\begin{axis}[
+										width=24cm, height=8cm, scale=0.25,
+										xlabel={$t$}, ylabel={$y$},
+										%title={Euler's Method Step 1},
+										title style={font=\small},
+										grid=both,
+										%tick style={thick},
+										line width=1pt,
+										axis lines=middle,
+										xtick distance=0.5, ytick distance=2,
+										minor x tick num=0, minor y tick num=1,
+										xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+										xticklabel style={yshift=1.5em, font=\scriptsize},
+										yticklabel style={font=\scriptsize},
+									]
+									
+										% Read and plot data from file
+										\addplot+ [only marks] coordinates {
+											(0.0,-2.0)
+											(0.5,-3.0)
+											(1.0,-3.0)
+											(1.5,-1.5)
+										};
+										\addplot+ [black, no marks, -&gt;] (0.0, -2.0) -- ({0.0+\h*\s}, {-2.0+\dyA*\h*\s});
+										\addplot+ [black, no marks, -&gt;] (0.5, -3.0) -- ({0.5+\h*\s}, {-3.0+\dyB*\h*\s});
+										\addplot+ [black, no marks, -&gt;] (1.0, -3.0) -- ({1.0+\h*\s}, {-3.0+\dyC*\h*\s});
+
+										\node[font=\scriptsize] at (0.22,	-4.3)	{slope: $-2$};
+										\node[font=\scriptsize] at (0.68,	-4.3)	{slope: $0$};
+										\node[font=\scriptsize] at (1.18,	-4.3)	{slope: $3$};
+									\end{axis}
+								\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p/>
+			</sidebyside>
+		</paragraphs>
+
+		<example><title> Euler's Method Example </title>
+			<statement>
+				<p>
+					Use Euler's method to approximate the solution to the differential equation
+					<me>
+						y' = t + y, \quad y(0) = -\frac{7}{8}
+					</me>
+					over the interval <m>[0, 1.5]</m> with a step size of <m>h = 0.5</m>.
+				</p>
+			</statement>
+
+			<solution>
+
+				<p>
+					<xref ref="eulers-method-step-1" text="title"/>. The step size is <m>h = 0.5</m>, so the approximation locations are
+					<m>t_0 = 0, t_1 = 0.5, t_2 = 1.0, t_3 = 1.5</m>.
+				</p>
+
+				<p>
+					<xref ref="eulers-method-step-2" text="title"/>. The initial condition gives the first value in our approximation, <m>y_0 = -\frac{7}{8} = -0.875</m>.
+				</p>
+
+				<p>
+					Now, we can use the formula
+					<me>
+						y_{k+1} = y_k + h\left(t_k + y_k\right)
+					</me>
+					to find <m>y_1</m>, <m>y_2</m> and <m>y_3</m> as follows:
+				</p>
+
+				<sidebyside widths="5% 8% 82% 5%" valign="middle">
+					<p/>
+					<p>
+						<md>
+							<mrow> \text{G}	\amp\text{iven} </mrow>
+							<mrow> k		\amp = 0 </mrow>
+							<mrow> k		\amp = 1 </mrow>
+							<mrow> k		\amp = 2 </mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow> y_0	\amp = -0.875 </mrow>
+							<mrow> y_1	\amp = y_0 + h\left(t_0 + y_0\right) = -0.875 + 0.5\left(0 - 0.875\right) </mrow>
+							<mrow> y_2	\amp = y_1 + h\left(t_1 + y_1\right) = -1.3125 + 0.5\left(0.5 - 1.3125\right) </mrow>
+							<mrow> y_3	\amp = y_2 + h\left(t_2 + y_2\right) = -1.5625 + 0.5\left(1.0 - 1.5625\right) </mrow>
+						</md>
+					</p>
+					<p/>
+				</sidebyside>
+
+				<p>
+					The simplified calculations are summarized in the following table:
+				</p>
+
+				<tabular>
+					<col right="minor" halign="center"/>
+					<col right="minor" halign="left"/>
+					<col halign="center"/>
+					<row halign="center" bottom="minor">
+						<cell><m>k</m></cell>
+						<cell><m>t_k</m></cell>
+						<cell><m>y_k</m></cell>
+					</row>
+					<row>
+						<cell><m>0</m></cell>
+						<cell><m>0.0</m></cell>
+						<cell><m>-0.875</m></cell>
+					</row>
+					<row>
+						<cell><m>1</m></cell>
+						<cell><m>0.5</m></cell>
+						<cell><m>-0.75</m></cell>
+					</row>
+					<row>
+						<cell><m>2</m></cell>
+						<cell><m>1.0</m></cell>
+						<cell><m>-0.5</m></cell>
+					</row>
+					<row halign="center">
+						<cell><m>3</m></cell>
+						<cell><m>1.5</m></cell>
+						<cell><m>-0.125</m></cell>
+					</row>
+				</tabular>
+
+				<p>
+					Thus, the approximate solution to the initial-value problem is
+					<me>
+						y(0) \approx -\frac{7}{8}, \quad y(0.5) \approx -\frac{3}{4}, \quad y(1.0) \approx -\frac{1}{2}, \quad y(1.5) \approx -\frac{1}{8}.
+					</me>
+				</p>
+
+				<p>
+					We can visualize the approximation by plotting the points <m>(t_k, y_k)</m> and connecting them with line segments. The exact solution to the initial-value problem is given by
+					<me>
+						y(t) = \frac{1}{8}e^t - t - 1.
+					</me>
+				</p>
+
+				<p>
+					The following plot shows the approximation and the exact solution.
+				</p>
+
+				<image xml:id="sageplot-euler-approximation">
+
+					<sageplot variant="2d">
+						y = lambda x : (1/8)*exp(x)-x-1
+						euler = lambda x, y, dx : y + dx*(x + y)
+						y0 = -7/8
+						x0, h, xF = 0, 0.5, 1.5
+						ymin, ymax = -3, 1
+
+						y_data = [(x0, y0)]
+						yp = y0
+
+						for xp in xsrange(x0, xF, h):
+							yp = euler(xp, yp, h)
+							y_data.append((xp + h, yp))
+
+						xticks = [0, 0.5, 1, 1.5, 2]
+						yticks = [i for i in range(ymin, ymax)]
+
+						grid_rgbcolor = (0.9, 0.9, 0.9)
+						grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
+
+						for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
+							grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
+						for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
+							grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
+
+						y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
+						yn_plot = list_plot(y_data, markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
+						y_plot + yn_plot + grid
+
+					</sageplot>
+				</image>
+
+				<p>
+					The red curve is the exact solution, while the green points are the approximated values at <m>t = 0, 0.5, 1.0, 1.5</m>.
+					The blue line segments connect the points in the approximation, showing how Euler's method steps through the solution.
+				</p>
+
+				<p>
+					The following plot shows the approximation and the exact solution, with a grid for better visualization.
+				</p>
+
+				<p>
+					<image xml:id="sageplot-polynomial-approximation">
+
+						<sageplot variant="2d">
+							y = lambda x : (1/8)*exp(x)-x-1
+							euler = lambda x, y, dx : y + dx*(x + y)
+							y0 = -7/8
+							x0, h, xF = 0, 0.5, 1.5
+							ymin, ymax = -3, 1
+
+							y_data = [(x0, y0)]
+							yp = y0
+
+							for xp in xsrange(x0, xF, h):
+								yp = euler(xp, yp, h)
+								y_data.append((xp + h, yp))
+
+							xticks = [0, 0.5, 1, 1.5, 2]
+							yticks = [i for i in range(ymin, ymax)]
+
+							grid_rgbcolor = (0.9, 0.9, 0.9)
+							grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
+							
+
+							for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
+								grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
+							for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
+								grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
+
+							y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
+							yn_plot = list_plot(y_data,  markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
+							y_plot + yn_plot + grid
+
+						</sageplot>
+					</image>
+				</p>
+
+				<image width="100%">
+					<latex-image>
+						% User Defined Parameters
+						\def\a{0} 		% interval start
+						\def\b{1} 		% interval end
+						\def\h{0.2} 	% stepsize
+						\def\round{2}	% decimal rounding
+						\def\s{5}  		% scaling factor
+
+						\begin{tikzpicture}[scale=\s]
+
+							\pgfkeys{/pgf/number format/.cd,fixed,precision=\round}
+						
+							% Calculate number of partitions
+							\pgfmathsetmacro{\N}{(\b-\a)/\h}
+							
+							% Draw the x-axis
+							\draw[-&gt;,thick] (\a - 2*\h/\s,0) -- (\b + 2*\h/\s,0) node[right] {$x$};
+
+							% Draw the partition points and labels
+							\foreach \i in {0,...,\N}
+							{
+								\pgfmathsetmacro{\currentPoint}{\a + \i*\h}
+								\draw (\currentPoint,0.1/\s) -- (\currentPoint,-0.1/\s) node[below] {$\pgfmathprintnumber{\currentPoint}$};
+								\draw 							(\currentPoint,-0.5/\s) node[below] {$t_{\i}$};
+
+							}
+							
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+
+				<p>
+					<md>
+						<mrow> y'(t_k) 										\amp = (y(t_k))^2 - t_k </mrow>
+						<mrow> \frac{y(t_{k+1}) - y(t_k)}{h}	\amp = (y(t_k))^2 - t_k </mrow>
+						<mrow> \frac{y_{k+1} - y_k}{h}	\amp = (y_k)^2 - t_k </mrow>
+						<mrow> y(t_{k+1}) - y(t_k) 							\amp = h\left((y(t_k))^2 - t_k\right) </mrow>
+						<mrow> y(t_{k+1}) 									\amp = y(t_k) + h\left((y(t_k))^2 - t_k\right) </mrow>
+					</md>
+				</p>
+			</solution>
+		</example>
+
+		<example><title> Analytical and Numerical Solutions </title>
+			<statement>
+				<p>
+					Consider the differential equation
+					<me>
+						y' + 4ty = 0, \, y(0) = 1
+					</me>.
+					<ol>
+						<li>
+							<p>
+								Find the analytical solution to this equation using the method of separation of variables.
+							</p>
+						</li>
+						<li>
+							<p>
+								Use Euler's method with a step size of <m>h = 0.1</m> to approximate the solution at <m>t = 0.5</m>. 
+							</p>
+						</li>
+						<li>
+							<p>
+								Compare the analytical solution with the numerical approximation obtained from Euler's method.
+							</p>
+						</li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					To solve the differential equation <me>y' + 4ty = 0</me> using the method of separation of variables, we separate the variables as follows:
+					<me>
+						\frac{dy}{y} = -4t \, dt
+					</me>
+					Integrating both sides gives:
+					<me>
+						\ln |y| = -2t^2 + C
+					</me>
+					Exponentiating both sides results in:
+					<me>
+						y = Ce^{-2t^2}
+					</me>
+					Since the initial condition, <m>y(0) = 1</m>, gives <m>C = 1</m>, the analytical solution is:
+					<me>
+						y(t) = e^{-2t^2}
+					</me>
+				</p>
+
+				<p>
+					Next, we apply Euler's method to approximate the solution at <m>t = 0.5</m>. The general formula for Euler's method is:
+					<me>
+						y_{k+1} = y_k + h f(t_k, y_k)
+					</me>
+					where <m>f(t, y) = -4ty</m> and <m>h=0.1</m>. So, we can update the formula as:
+				</p>
+
+				<me>
+					y_{k+1} = y_k - 0.4 t_k y_k \quad \text{where}\ y_0 = 1.
+				</me>
+
+				<p>
+					For <m>k = 0, 1, \ldots, 4</m>, we contruct the following table:
+				</p>
+
+				<tabular>
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="left" right="minor" />
+					<col halign="left" />
+					<row halign="center" bottom="minor">
+						<cell><m>k</m></cell>
+						<cell><m>t_k</m></cell>
+						<cell><m>y_k</m></cell>
+						<cell><m>y_{k+1}</m></cell>
+					</row>
+					<row>
+						<cell><m>0</m></cell>
+						<cell><m>0.0</m></cell>
+						<cell><m>y_0 = {\DLBa 1}</m></cell>
+						<cell><m>y_1 = {\DLBa 1} + 0.1(-4 \cdot 0.0 \cdot {\DLBa 1}) = {\DLGa 1}</m></cell>
+					</row>
+					<row>
+						<cell><m>1</m></cell>
+						<cell><m>0.1</m></cell>
+						<cell><m>y_1 = {\DLBa 1}</m></cell>
+						<cell><m>y_2 = {\DLBa 1} + 0.1(-4 \cdot 0.1 \cdot {\DLBa 1}) = {\DLGa 0.96}</m></cell>
+					</row>
+					<row>
+						<cell><m>2</m></cell>
+						<cell><m>0.2</m></cell>
+						<cell><m>y_2 = {\DLBa 0.96}</m></cell>
+						<cell><m>y_3 = {\DLBa 0.96} + 0.1(-4 \cdot 0.2 \cdot {\DLBa 0.96}) = {\DLGa 0.8832}</m></cell>
+					</row>
+					<row halign="center">
+						<cell><m>3</m></cell>
+						<cell><m>0.3</m></cell>
+						<cell><m>y_3 = {\DLBa 0.8832}</m></cell>
+						<cell><m>y_4 = {\DLBa 0.8832} + 0.1(-4 \cdot 0.3 \cdot {\DLBa 0.8832}) \approx {\DLGa 0.7772}</m></cell>
+					</row>
+					<row halign="center">
+						<cell><m>4</m></cell>
+						<cell><m>0.4</m></cell>
+						<cell><m>y_4 = {\DLBa 0.7772}</m></cell>
+						<cell><m>y_5 = {\DLBa 0.7772} + 0.1(-4 \cdot 0.4 \cdot {\DLBa 0.7772}) \approx {\DLGa 0.6529}</m></cell>
+					</row>
+				</tabular>
+
+				<p>
+					Since <m>t_5=0.5</m>, the approximation we are looking for is <m>y_5 \approx 0.6529</m>.
+				</p>
+
+				<p>
+					Comparing this with the analytical solution at <m>t = 0.5</m>, we see the true value is:
+					<me>
+						y(0.5) = e^{-2(0.5)^2} = e^{-0.5} \approx 0.6065.
+					</me>
+					Although there is some error between the two values, it is more due to the step size we chose, rather than the method itself. A smaller step size would yield a more accurate approximation. For example, using <m>h = 0.001</m> gives the approximation: <m>y(0.5) \approx 0.6069</m>. 
+				</p>
+			</solution>
+		</example>
+
+<example><title> Example: Euler's Method with <m>h = 0.5</m> </title>
+  <statement>
+    Use Euler's method to approximate the solution to
+    <me>
+      y'(t) = 6t + y(t), \quad y(0) = -2
+    </me>
+    over <m>t = 0</m> to <m>1.5</m> using step size <m>h = 0.5</m>.
+  </statement>
+  <solution>
+    <p>The formula is:</p>
+    <me>
+      y_{k+1} = y_k + 0.5 \cdot (6t_k + y_k)
+    </me>
+    <tabular>
+      <col right="minor" /><col /><col /><col />
+      <row bottom="minor">
+        <cell><m>k</m></cell>
+        <cell><m>t_k</m></cell>
+        <cell><m>y_k</m></cell>
+        <cell><m>y_{k+1} = y_k + 0.5(6t_k + y_k)</m></cell>
+      </row>
+      <row>
+        <cell>0</cell><cell>0.0</cell><cell>-2.0</cell><cell>-3.0</cell>
+      </row>
+      <row>
+        <cell>1</cell><cell>0.5</cell><cell>-3.0</cell><cell>-3.0</cell>
+      </row>
+      <row>
+        <cell>2</cell><cell>1.0</cell><cell>-3.0</cell><cell>-1.5</cell>
+      </row>
+    </tabular>
+    <p>Thus, the approximate values are:</p>
+    <me>
+      y(0) \approx -2,\quad y(0.5) \approx -3,\quad y(1.0) \approx -3,\quad y(1.5) \approx -1.5
+    </me>
+  </solution>
+</example>
+	</subsection>
+
+	<conclusion>
+	<p>
+		In summary, Euler's method is a powerful tool for approximating the solutions of differential equations that are challenging or impossible to solve analytically. By understanding and applying this method, students and professionals can gain insights into the behavior of complex systems described by such equations, even in the absence of exact solutions.
+	</p>
+
+	<p>
+		This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
+	</p>
+
+	<p>
+  Euler's method marks the starting point for numerical approaches to differential equations. Even though it is one of the simplest methods, it lays the groundwork for more accurate and sophisticated techniques that build on its core idea: using slopes to take small steps forward.
+</p>
+	</conclusion>
+
+
+</section>
