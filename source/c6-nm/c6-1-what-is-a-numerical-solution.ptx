@@ -1,8 +1,9 @@
 
-<section><title> What is a Numerical Solution? </title>
+<section label="whats-a-numerical-soln">
+	<title> What is a Numerical Solution? </title>
 
 	<p>
-		Up to this point, we've focused on finding exact solutions to differential equations. By <q>exact</q>, we mean solutions that are expressed in terms of standard mathematical functions, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term> and is sometimes referred to as a <term>closed-form solution</term> ,  meaning it is expressed using standard mathematical symbols and functions. These formula-like solutions are valuable because you can plug in <em>any</em> <m>t</m>-value to get the <em>exact</em> <m>y</m>-value.
+		Most of what we've done, so far, has been focused on finding <em>exact</em> solutions to differential equations, like <m>y(t) = e^{-3t} \sin(2t)</m>. This kind of solution is called an <term>analytic solution</term>, or sometimes a <term>closed-form solution</term>. It is valuable because it expresses <m>y(t)</m> as a formula-like structure that you can plug in any value of <m>t</m> and instantly get the exact <m>y</m>-value.
 	</p>
 
 	<p>
@@ -14,18 +15,58 @@
 	</me>
 
 	<p>
-		do not have a nice closed-form solution. In cases like these, we turn to a different kind of tool: a <term>numerical method</term>. This approach doesn't give you a formula for <m>y(t)</m> ,  instead, it starts with a known value and repeatedly uses the differential equation to estimate the next one ,  one step at a time. We call this a <term>numerical solution</term>.
+		simply don't have a tidy closed-form solution. In those cases, we switch tools. Instead of searching for an exact formula, we use a <term>numerical method</term>. A numerical method doesn't hand you <m>y(t)</m> as a formula—it builds an <term>approximation</term>, one step at a time, starting from what you know and using the differential equation to predict what happens next. The result is a <term>numerical solution</term>.
 	</p>
 
-	<note><title> How does this process work? </title>
-		<p> 
-			To compute a numerical solution, we typically follow a simple idea: we start with an initial value, then use the differential equation to estimate what happens shortly afterward, then repeat the process. The next few subsections will show how this is done ,  step-by-step.
-		</p>
-	</note>
+	<exercise label="whats-a-numerical-soln-chkpt-1">
+		<title>📖❓Analytic Solution, AKA … </title>
+		<statement>
+			What is another name for an analytic solution?
+		</statement>
+		<choices randomize="yes">
+			<choice correct="yes">
+				<statement>
+					Closed-form solution
+				</statement>
+				<feedback>
+					Yes ,  a closed-form solution is another name for an analytic solution.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					Approximate solution
+				</statement>
+				<feedback>
+					No ,  an approximate solution refers to a numerical solution.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					Continuous solution
+				</statement>
+				<feedback>
+					Not all analytic solutions are continuous ,  and not all continuous solutions are analytic.
+				</feedback>
+			</choice>
+			<choice>
+				<statement>
+					Systematic solution
+				</statement>
+				<feedback>
+					While you may solve analytically using a systematic process, this is not a name for an analytic solution.
+				</feedback>
+			</choice>
+		</choices>
+		<feedback>
+			Analytic means a symbolic expression using functions, not a numerical approximation or a rule.
+		</feedback>
+	</exercise>
 
-	<paragraphs><title> Analytic vs. Numerical Solutions </title>
+	<paragraphs label="whats-a-numerical-soln-analytic-vs-numerical">
+		<title> Analytic vs. Numerical Solutions </title>
+
 		<p>
-			To grasp the difference between analytic and numerical solutions, suppose you wanted to solve the equation
+			To see the difference between analytic and numerical solutions, consider the initial value problem:
 		</p>
 
 		<men xml:id="num-vs-anal-soln-eqn">
@@ -33,25 +74,21 @@
 		</men>
 
 		<p>
-			This equation has the formula-like analytic solution
+			Analytically, this equation has the elegant solution:
 		</p>
 
 		<sidebyside widths="50% 8% 36% 6%" valign="middle">
 			<p>
-				<me>
-					y(t) = e^t
-				</me>,
-				where any value of <m>t</m> gives the exact <m>y</m> value. For example, <m>t = 0.65</m> gives
-				<me>
-					y(0.65) = e^{0.65} \approx 1.915540829...
-				</me>.
+				<me>y(t) = e^t</me>.
+				With this formula, you can calculate the exact value at <em>any</em> time. For example, <m>t = 0.65</m> gives
+				<me>y(0.65) = e^{0.65} \approx 1.915540829...</me>.
 			</p>
 			<p/>
 			<p>
 				<image>
 					<latex-image>
 						\begin{tikzpicture}[samples=50]
-	
+
 							% === colors ===
 							\def\fColor{blue}			\def\fFill{\fColor!15}
 							\def\gColor{green!60!black}	\def\gFill{\gColor!15}
@@ -104,7 +141,7 @@
 		</sidebyside>
 
 		<p>
-			Equation <xref ref="num-vs-anal-soln-eqn"/> also has a table-like numerical solution:
+			The same equation can also be solved numerically. Instead of a formula, we produce a table of <m>t</m>-values and approximate <m>y</m>-values:
 		</p>
 
 		<sidebyside widths="40% 18% 36% 6%" valign="middle">
@@ -168,57 +205,44 @@
 			<p/>
 		</sidebyside>
 
-		<exercise><title> Recognizing a Numerical Solution </title>
+		<exercise label="whats-a-numerical-soln-chkpt-2">
+			<title>📖❓Recognizing a Numerical Solution</title>
 			<statement>
-				When you say you have found a <q>numerical solution</q> to an initial value problem, what did you find?
+				When you say you've found a <q>numerical solution</q> to an initial value problem, what do you actually have?
 			</statement>
 			<choices randomize="yes">
 				<choice correct="yes">
-					<statement>
-						A list of values approximating <m>y(t)</m> at specific times
-					</statement>
-					<feedback>
-						Correct ,  a numerical solution gives you approximate values of <m>y(t)</m> at specific <m>t</m>-values. You don't get a formula, you get a table.
-					</feedback>
+					<statement>A list of values approximating <m>y(t)</m> at specific times</statement>
+					<feedback>Correct—numerical solutions are tables of approximate values, not formulas.</feedback>
 				</choice>
 				<choice>
-					<statement>
-						A formula expressing <m>y(t)</m> using functions like <m>\sin t</m> or <m>e^t</m>
-					</statement>
-					<feedback>
-						No, this describes an analytic solution.
-					</feedback>
+					<statement>A formula expressing <m>y(t)</m> using functions like <m>\sin t</m> or <m>e^t</m></statement>
+					<feedback>No, that describes an analytic solution.</feedback>
 				</choice>
 				<choice>
-					<statement>
-						An exact solution valid for all <m>t</m>
-					</statement>
-					<feedback>
-						No, this describes an analytic solution.
-					</feedback>
+					<statement>An exact solution valid for all <m>t</m></statement>
+					<feedback>No, numerical solutions are approximations.</feedback>
 				</choice>
 				<choice>
-					<statement>
-						A graph showing all possible solutions
-					</statement>
-					<feedback>
-						No, this describes a graph of a family of analytic solutions.
-					</feedback>
+					<statement>A graph showing all possible solutions</statement>
+					<feedback>No, that describes a slope field, not a numerical solution.</feedback>
 				</choice>
 			</choices>
 		</exercise>
 
 		<p>
-			Graphically, the analytic solution <m>y(t)=e^t</m> is represented by a continuous curve, while the numerical solution is a collection of points. And unlike analytic methods, numerical methods work even when no formula exists.
+			The analytic solution gives a smooth curve for every <m>t</m>. The numerical solution gives <em>dots</em>—a sequence of approximations. Connect those dots and you get a picture of the solution's shape, even though no formula was found.
 		</p>
 
-		<note><title> Precision vs Practicality </title>
+		<note label="whats-a-numerical-soln-process-precision-v-practical">
+			<title> Precision vs Practicality </title>
 			<p>
-				Remember: a numerical solution is just an estimate. It won't be perfect, but it's often good enough ,  and it's sometimes the only option we have. This tradeoff between exactness and usability is a recurring theme in numerical methods.
+				Numerical solutions are <em>approximations</em>. They carry small errors, but in exchange, they let us handle equations that analytic methods can't touch. This trade-off between perfect precision and practical usefulness is at the heart of numerical methods.
 			</p>
 		</note>
 
-		<table><title> Analytic vs. Numerical Solution Summary </title>
+		<table label="whats-a-numerical-soln-analytic-v-numerical-note">
+			<title> Analytic vs. Numerical Solution Summary </title>
 			<tabular halign="center">
 				<col width="30%" right="minor" />
 				<col width="30%" right="minor" />
@@ -250,111 +274,55 @@
 				</row>
 			</tabular>
 		</table>
-
 	</paragraphs>
 
-	<exercise><title> Analytic Solution, AKA … </title>
-		<statement>
-			What is another name for an analytic solution?
-		</statement>
-		<choices randomize="yes">
-			<choice correct="yes">
-				<statement>
-					Closed-form solution
-				</statement>
-				<feedback>
-					Yes ,  a closed-form solution is another name for an analytic solution.
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					Approximate solution
-				</statement>
-				<feedback>
-					No ,  an approximate solution refers to a numerical solution.
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					Continuous solution
-				</statement>
-				<feedback>
-					Not all analytic solutions are continuous ,  and not all continuous solutions are analytic.
-				</feedback>
-			</choice>
-			<choice>
-				<statement>
-					Systematic solution
-				</statement>
-				<feedback>
-					While you may solve analytically using a systematic process, this is not a name for an analytic solution.
-				</feedback>
-			</choice>
-		</choices>
-		<feedback>
-			Analytic means a symbolic expression using functions, not a numerical approximation or a rule.
-		</feedback>
-	</exercise>
-
-	<paragraphs><title> Why Do We Need Numerical Methods? </title>
+	<paragraphs label="whats-a-numerical-soln-why-approximate">
+		<title> Why Do We Need Numerical Methods? </title>
 		<p>
-			After comparing the two types of solutions, it might seem like analytic solutions are always better than numerical ones. However, even when a closed-form solution exists, there are many reasons why numerical methods are useful ,  and often preferred. Here are just a few:
+			At first glance, analytic solutions might seem <q>better</q> than numerical ones. But there are important reasons why numerical methods aren't just useful—they're essential:
 		</p>
 
 		<ol>
-			<li>A closed-form solution may be very difficult or even impossible to find.</li>
-			<li>Outside of an academic setting, it is rare to solve a differential equation by hand.</li>
-			<li>In real-world applications, solving an equation is typically just one step in a larger computational pipeline.</li>
-			<li>Numerical methods are easier to adjust when your equation changes.</li>
+			<li>Many equations simply don't have a closed-form solution.</li>
+			<li>Even when they do, the formula might be so complicated it's impractical.</li>
+			<li>Numerical methods are easier to tweak if the model or data changes.</li>
 		</ol>
 
-		<exercise><title> Why use numerical methods? </title>
-			<statement>
-				Which of the following are good reasons to use a numerical method?
-			</statement>
+		<exercise label="whats-a-numerical-soln-chkpt-3">
+			<title>📖❓Why use numerical methods?</title>
+			<statement>Which of the following are good reasons to use a numerical method?</statement>
 			<choices randomize="yes" select="multiple">
 				<choice correct="yes">
-					<statement>
-						They can approximate a solution when no closed-form solution exists.
-					</statement>
-					<feedback>
-						This is True ,  numerical methods are often the only way to find a solution when no closed-form solution exists.
-					</feedback>
+					<statement>They can approximate a solution when no closed-form solution exists.</statement>
+					<feedback>True—sometimes they're the only option.</feedback>
 				</choice>
 				<choice correct="yes">
-					<statement>
-						They can be automated on a computer.
-					</statement>
-					<feedback>
-						This is True ,  numerical methods are ideal for computer-based simulation and analysis.
-					</feedback>
+					<statement>They can be automated on a computer.</statement>
+					<feedback>True—they're ideal for computer simulations.</feedback>
 				</choice>
 				<choice correct="yes">
-					<statement>
-						They are easier to adjust when the form of the equation changes.
-					</statement>
-					<feedback>
-						This is True ,  they are often more flexible and adaptable than symbolic techniques.
-					</feedback>
+					<statement>They are easier to adjust when the equation changes.</statement>
+					<feedback>True—numerical methods adapt easily to model tweaks.</feedback>
 				</choice>
 				<choice>
-					<statement>
-						They take less time to compute.
-					</statement>
-					<feedback>
-						This is not necessarily true ,  Closed-form solutions may be easy to find depending on the equation. Unless you have already setup a computer to solve an equation numerically, a numerical method has a significant initial investment.
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						They produce more accurate solutions than analytic methods.
-					</statement>
-					<feedback>
-						This is not true ,  In fact, it is likely the biggest drawback of numerical methods. Since numerical solutions are approximations, they always introduce some amount of error (albeit, usually very small). Analytic solutions, on the other hand, are exact when they exist.
-					</feedback>
+					<statement>They produce more accurate solutions than analytic methods.</statement>
+					<feedback>No—analytic solutions are exact when they exist.</feedback>
 				</choice>
 			</choices>
 		</exercise>
 	</paragraphs>
 
+	<assemblage label="whats-a-numerical-soln-wrap-up">
+		<title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="whats-a-numerical-soln-takeaways">
+				<title> 🗝️ Key Takeaways.. </title>
+				<ul marker="square">
+				   	<li>Analytic solutions give formulas; numerical solutions give a list of values.</li>
+					<li>Analytic solutions are exact; numerical solutions are approximate.</li>
+					<li>Numerical solutions are essential when analytic solutions are too complicated or don't exist.</li>
+				</ul>
+			</paragraphs>
+		</p>
+	</assemblage>
 </section>

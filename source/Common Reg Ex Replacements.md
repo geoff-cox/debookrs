@@ -37,8 +37,8 @@ Converting tags to single line
 ^(\s+)<parentTag>\n\s+(.*)\n.*</parentTag>
 $1<parentTag>$2</parentTag>
 ----------------------------------------------------------------------------
-Removing the content from multiple tags
-^([ \t]*)<(solution|image|exercise|task|interactive)([\s\S]*?)>([\s\S]*?)</(solution|image|exercise|task|interactive)>\n
+Removing the content from foo and bar tags
+^([ \t]*)<(foo|bar)([\s\S]*?)>([\s\S]*?)</(foo|bar)>\n
 $1<$2> temporarily omitted </$2>\n
 ----------------------------------------------------------------------------
 Removing paragraphs from <statement> tags
@@ -55,6 +55,13 @@ Remove comments <!-- * -->
 Convert **stuff** to <foo>stuff</foo>
 \*\*(.*?)\*\*
 <foo>$1</foo>
+----------------------------------------------------------------------------
+Replace **stuff**
+
+**stuff** ➜ <foo>stuff</foo>
+\*\*(.*?)\*\*
+<foo>$1</foo>
+
 ----------------------------------------------------------------------------
 Titles to next line
 ^(\s*)<(parentTag.*)><title> 

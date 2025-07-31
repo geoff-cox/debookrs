@@ -1,0 +1,1856 @@
+<section label="slope-fields">
+	<title> Slope Fields </title>
+	<introduction>
+
+		<p>
+			When working with first-order differential equations, you can gain insight into solutions without fully solving them. By focusing on how the solutions change, you can use a <term>slope field</term> to visualize the path of any potential solution.
+		</p>
+
+		<p>
+			A slope field visually represents the slopes that a solution curve must follow at each point in the plane, shown as short arrows pointing the way a solution would travel—like a leaf carried by a stream.
+		</p>
+
+		<p>
+			The pattern created by a slope field provides a visual representation of the <em>family of solutions</em> to the differential equation. A slope field doesn't show just one solution—it shows them all. From any starting point, a unique curve threads through, always guided by the tiny arrows.
+		</p>
+	</introduction>
+
+	<paragraphs label="slope-fields-eqn-to-slope"><title> From Equation to Slope </title>
+		<p>
+			Every first-order differential equation combines <m>t</m>, <m>y</m>, and <m>y'</m>. By rearranging terms, we can always write it as:
+			<me>
+				f(t, y, y') = 0,
+			</me>
+			where <m>f</m> collects all terms. For example:
+			<me>
+				y' - ty = 2 - t^2 \quad \Rightarrow \quad
+				\ub{y' - ty - 2 + t^2}_{\large f(t, y, y')} = 0.
+			</me>
+		</p>
+
+		<p>
+			When it is possible to isolate <m>y'</m>, we write:
+			<men xml:id="yp-equals-fty">
+				y' = f(t, y).
+			</men>
+		</p>
+
+		<p>
+			Here <m>f(t,y)</m> is the <q>slope generator</q>: give it any point <m>(t,y)</m> and it outputs the slope the solution must have there. For instance, if <m>t=3</m> and <m>y=5</m>,
+			<me>
+				y'(3) = f(3, 5) = \text{some number}.
+			</me>
+		</p>
+
+		<p>
+			Since <m>y'(3)</m> is the tangent slope of <m>y</m> at <m>t=3</m>, this number tells you the direction the graph is heading at <m>(3,5)</m>.
+		</p>
+
+		<example>
+			<title>Quick Slope Check</title>
+			<statement>
+				<p>
+					For
+					<me>y' - ty = 2 - t^2</me>,
+					find the slope at <m>(t,y)=(-1,6)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>Rearranging gives <me>y' = ty + 2 - t^2</me>, so <m>f(t,y)=ty+2-t^2</m>. Substitute:</p>
+				<me>f(-1,6) = (-1)(6)+2-(-1)^2 = -5.</me>
+				<p>Any solution through <m>(-1,6)</m> leaves that point with slope <m>-5</m>.</p>
+			</solution>
+		</example>
+		
+		<exercise label="slope-fields-cyu-2">
+			<title>📖❓ Using the slope generator</title>
+			<statement>
+			<p>
+				Suppose we have the differential equation <m>y' = t + 2y</m>. What is the slope of any solution curve passing through <m>(t,y) = (1,-2)</m>?
+			</p>
+			</statement>
+			<choices randomize="yes">
+			<choice correct="yes">
+				<statement><m>-3</m></statement>
+				<feedback>Substitute into <m>f(t,y) = t + 2y</m>: <m>1 + 2(-2) = -3</m>. That's the tangent slope there.</feedback>
+			</choice>
+			<choice>
+				<statement><m>3</m></statement>
+				<feedback>This would be the slope if y were positive, but here y = -2 changes the result.</feedback>
+			</choice>
+			<choice>
+				<statement><m>-1</m></statement>
+				<feedback>Check your math—substitute carefully into <m>t + 2y</m>.</feedback>
+			</choice>
+			<choice>
+				<statement><m>1</m></statement>
+				<feedback>This would only account for the <m>t</m> term—don't forget the <m>2y</m> part.</feedback>
+			</choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="slope-fields-sketching"><title> Sketching a Slope Field  </title>
+		
+		<p>To sketch a slope field by hand:</p>
+		<ol>
+			<li>Select a small grid of points in the <m>(t,y)</m>-plane.</li>
+			<li>Compute <m>f(t,y)</m> at each point.</li>
+			<li>Draw a short line segment at the point with that slope.</li>
+		</ol>
+
+		<p>
+			For example, take
+			<me>\frac{dy}{dt} = y - t.</me>
+			Computing nine slopes on a <m>3\times3</m> grid yields:
+		</p>
+
+		<sidebyside widths="44% 28%" margins="5% 5%" valign="middle">
+			<tabular halign="center">
+				<col right="minor"/>
+				<col halign="right"/>
+				<row bottom="minor"><cell><m> (t , y) </m></cell><cell><m> f(t,y) = y - t </m></cell></row>
+				<row><cell><m> (-1 , -1 ) </m></cell><cell><m> -1-(-1)= 0 </m></cell></row>
+				<row><cell><m> (-1 ,  0 ) </m></cell><cell><m> -1-(-0)= 1 </m></cell></row>
+				<row><cell><m> (-1 ,  1 ) </m></cell><cell><m> -1-( 1)= 2 </m></cell></row>
+				<row><cell><m> ( 0 , -1 ) </m></cell><cell><m>  0-(-1)= 1 </m></cell></row>
+				<row><cell><m> ( 0 ,  0 ) </m></cell><cell><m>  0-( 0)= 0 </m></cell></row>
+				<row><cell><m> ( 0 ,  1 ) </m></cell><cell><m>  0-( 1)=-1 </m></cell></row>
+				<row><cell><m> ( 1 , -1 ) </m></cell><cell><m>  1-(-1)=-2 </m></cell></row>
+				<row><cell><m> ( 1 ,  0 ) </m></cell><cell><m>  1-( 0)=-1 </m></cell></row>
+				<row><cell><m> ( 1 ,  1 ) </m></cell><cell><m>  1-( 1)= 0 </m></cell></row>
+			</tabular>
+			<image>
+				<latex-image>
+					\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
+
+						\pgfkeys{/pgf/number format/.cd,
+							fixed,
+							precision=0
+						}
+						\def\tmin{-2} \def\tmax{2}
+						\def\ymin{-2} \def\ymax{2}
+						\def\tmargin{1} % extra space around the grid
+						\def\ymargin{1} % extra space around the grid
+						\def\nt{2}  \def\ny{2}
+						\def\arrowscale{0.7} % length of slope arrows
+
+						% stepsize along t-axis and y-axis
+						\pgfmathsetmacro{\tL}{\tmin + \tmargin}
+						\pgfmathsetmacro{\tR}{\tmax - \tmargin}
+						\pgfmathsetmacro{\yL}{\ymin + \ymargin}
+						\pgfmathsetmacro{\yR}{\ymax - \ymargin}
+						\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
+						\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
+
+						% Draw grid lines
+						\foreach \i in {0,...,\nt} {
+							\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+							\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+						}
+						\foreach \j in {0,...,\ny} {
+							\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+							\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+						}
+
+						% Axes
+						\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
+						\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
+
+						% Bounding box
+						\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+						% Tick marks and labels on t-axis
+						\foreach \t in {\tL,...,\tR} {
+						\pgfmathparse{\t &lt; 0}
+						\ifnum\pgfmathresult=1	 % shift negative ticks
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below, xshift=-0.1cm] {\pgfmathprintnumber{\t}};
+						\else
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below] {\pgfmathprintnumber{\t}};
+						\fi
+						}
+
+						% Tick marks and labels on y-axis
+						\foreach \y in {\yL,...,\yR}
+							\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
+							node[font=\tiny, left] {\pgfmathprintnumber{\y}};
+
+						% Title
+						%\node[above, font=\small\bfseries] at (current bounding box.north) 
+						%	{Slope field for \quad $y' = x + y$};
+
+						% slope field: just draw a vector at each point
+						\foreach \i in {0,...,\nt}
+						\foreach \j in {0,...,\ny}{
+
+							\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+							\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+							\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+							% Normalize direction vector (1, slope) to fixed length
+							\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+							\pgfmathsetmacro{\dt}{\arrowscale / \len}
+							\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+							%\draw[teal!90, -stealth, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							\draw[teal!75, line width=1.1pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+						}
+
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</sidebyside>
+
+		<p>
+			Sketching by hand is great for intuition but tedious when you need more points. Computer-generated slope fields fill in the gaps, revealing a dense web of arrows that paints the full picture. In <xref ref="y-t-slope-field-16x16"/>, the solution curve through <m>(0,\frac12)</m> flows smoothly along the arrows, like an object carried by a current.
+		</p>
+
+		<sidebyside widths="44%" margins="28% 28%" valign="middle">
+			<figure xml:id="y-t-slope-field-16x16">
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-4} \def\tmax{4}
+							\def\ymin{-4} \def\ymax{4}
+							\def\tmargin{0.5} \def\ymargin{0.5} % extra space around the grid
+							\def\nt{14}  \def\ny{14}
+							\def\arrowscale{0.4} % length of slope arrows
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tmargin}
+							\pgfmathsetmacro{\tR}{\tmax - \tmargin}
+							\pgfmathsetmacro{\yL}{\ymin + \ymargin}
+							\pgfmathsetmacro{\yR}{\ymax - \ymargin}
+							\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
+							\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
+
+							% Draw grid lines
+							\foreach \i in {0,...,\nt} {
+								\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+								\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+							}
+							\foreach \j in {0,...,\ny} {
+								\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+								\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+							}
+
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+							\pgfmathparse{\t &lt; 0}
+							\ifnum\pgfmathresult=1	 % shift negative ticks
+								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+								node[font=\tiny, below, xshift=-0.1cm] {\t};
+							\else
+								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+								node[font=\tiny, below] {\t};
+							\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% Title
+							%\node[above, font=\small\bfseries] at (current bounding box.north) 
+							%	{Slope field for \quad $y' = x + y$};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								%\draw[teal!60, arrows = {-Stealth[width=4pt, length=4pt, inset=3pt]}, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								\draw[teal!75, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+							% Optional solution curve
+							\def\yo{0.5}
+							\draw[magenta, thick, samples=100] 
+								plot[domain=\tmin:2.74] (\x, {\x - \yo*exp(\x) + 1});
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = y - t</m></caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			A slope field turns an equation into a navigational chart. Each arrow is an instruction every solution must obey. The entire field represents the whole family of solutions, letting you spot patterns in how solutions behave, without ever solving for <m>y</m> explicitly. Next, we'll look at <em>autonomous equations</em>, whose slope fields reveal even more structure.
+		</p>
+	</paragraphs>
+
+	<assemblage label="slope-fields-wrap-up"><title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="slope-fields-takeaways"><title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>
+						A slope field shows the flow that any solution curve must follow.
+					</li>
+					<li>
+						The function <m>f(t,y)</m> acts as a slope generator for <m>y(t)</m> at any point <m>(t,y)</m>.
+					</li>
+					<li>
+						To sketch a slope field: pick points, compute slopes, and draw short segments.
+					</li>
+					<li>
+						Computer-generated slope fields provide a fuller, denser map and make solution behavior clear even without a formula.
+					</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="slope-fields-cyu"><title> Check Your Understanding </title>
+				<exercise label="slope-fields-cyu-1">
+					<title>📖❓ What does a slope field represent? </title>
+					<statement>
+						<p>
+							Which statement best describes what a slope field shows for a first-order differential equation?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>It shows the general flow pattern of any solution.</statement>
+							<feedback>A slope field visualizes the slope each solution must take through every point—like a map of directional instructions for all solutions.</feedback>
+						</choice>
+						<choice>
+							<statement>It shows the general flow pattern of a specific solution.</statement>
+							<feedback>A slope field doesn't display one solution—it encodes the entire family of solutions.</feedback>
+						</choice>
+						<choice>
+							<statement>It gives the formulas for all solutions to the equation.</statement>
+							<feedback>No formulas appear in a slope field; it's a picture of slopes, not algebraic expressions.</feedback>
+						</choice>
+						<choice>
+							<statement>It plots the solution curve for any solution.</statement>
+							<feedback>A slope field shows the direction a solution must go, not the actual solution curve.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>
+
+<section label="autonomous-eqns">
+	<title> Autonomous Equations </title>
+	<introduction>
+		<p>
+			When the first-order differential equation <xref ref="yp-equals-fty"/> contains no explicit <m>t</m> terms, it reduces to:
+			<men xml:id="autonomous-eqn">
+				\frac{dy}{dt} = f(y).
+			</men>
+			This is called an <term>autonomous differential equation</term>.
+		</p>
+
+		<p>
+			<q>Autonomous</q> means <q>self-governing.</q> In these equations, the rate of change of <m>y</m> depends only on <m>y</m> itself, not on time <m>t</m>. The system's behavior is determined entirely by its current state. Think of a spring: it pushes back the same way no matter the time of day. Only how far it's compressed matters, not what time it is.
+		</p>
+	</introduction>
+
+	<paragraphs label="slope-fields-of-autonomous-eqns">
+		<title> Slope Fields of Autonomous Equations </title>
+
+		<p>
+			Autonomous equations have a distinctive look in their slope fields. Consider:
+		</p>
+
+		<me>y' = y^2 - 1</me>.
+
+		<p>
+			Here, the slope at any point <m>(t,y)</m> depends only on <m>y</m>. Moving up or down (changing <m>y</m>) changes the slope, but sliding left or right (changing <m>t</m>) does not. The result is a <q>striped</q> slope field—each horizontal line has the same slope pattern all the way across.
+		</p>
+
+		<p>
+			<xref ref="changing-constant-slopes"/> illustrates this. As you go up the plane, the slope segments gradually rotate, reflecting how <m>f(y)</m> changes with <m>y</m>. But moving sideways leaves the segments fixed—the slopes don't shift with <m>t</m>.
+		</p>
+
+		<figure xml:id="autonomous-slope-symmetry">
+			<caption> Symmetry in the slope field for <m>y' = y^2 - 1</m> </caption>
+			<sidebyside widths="38.5% 3.5% 36%" margins="11% 11%" valign="top">
+				<figure xml:id="changing-constant-slopes">
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[declare function={f(\x,\y)=(\y)^2-1;}, scale=0.8]
+
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{-0.5} \def\tmax{3}
+								\def\ymin{-1.5} \def\ymax{2.5}
+								\def\tstep{0.25}  \def\ystep{0.25}
+								\def\arrowscale{0.2} % length of slope arrows
+								\def\segmentwt{0.8pt} % thickness of slope segments
+
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+								% Draw grid lines
+								\foreach \i in {0,...,\nt} {
+									\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+									\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+								}
+								\foreach \j in {0,...,\ny} {
+									\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+									\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+								}
+
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.5, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.5) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\pgfmathparse{\t &lt; 0}
+									\ifnum\pgfmathresult=1	 % shift negative ticks
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below, xshift=-0.01cm] {\t};
+									\else
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below] {\t};
+									\fi
+								}
+
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {\yLint,...,\yRint}
+									\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+									node[font=\tiny, left] {\y};
+
+								% Title
+								%\node[above, font=\small\bfseries] at (current bounding box.north) 
+								%	{Slope field for \quad $y' = x + y$};
+
+								\draw[fill=green!40!black] (1.375,\ymin) rectangle (1.625,\ymax);
+								\draw[&lt;-] (1.5, \ymax) -- (1.5, \ymax+0.25) node[font=\tiny, above, yshift=-0.15cm] {Rotating};
+								\draw[fill=blue!40!black] (\tmin,1.875) rectangle (\tmax,2.125);
+								\draw[-&gt;] (\tmax+0.3,1.4) -- (\tmax+0.3,2) -- (\tmax,2);
+								\draw (\tmax,1.25) node[font=\tiny, right, xshift=-0.1cm] {Fixed};
+								\draw[fill=blue!40!black] (\tmin,0.375) rectangle (\tmax,0.625);
+								\draw[-&gt;] (\tmax+0.3,1.1) -- (\tmax+0.3,0.5) -- (\tmax,0.5);
+								
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
+
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+								}
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+					<caption> Rotating slope segments for changing <m>y</m> and fixed slope segments for changing <m>t</m> </caption>
+				</figure>
+				<p/>
+				<figure xml:id="horizontal-solution-symmetry">
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[declare function={f(\x,\y)=(\y)^2-1;}, scale=0.8]
+
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{-0.5} \def\tmax{3}
+								\def\ymin{-1.5} \def\ymax{2.5}
+								\def\tstep{0.25}  \def\ystep{0.25}
+								\def\arrowscale{0.2} % length of slope arrows
+								\def\segmentwt{0.8pt} % thickness of slope segments
+
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+								% Draw grid lines
+								\foreach \i in {0,...,\nt} {
+									\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+									\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+								}
+								\foreach \j in {0,...,\ny} {
+									\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+									\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+								}
+
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.5, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.5) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\pgfmathparse{\t &lt; 0}
+									\ifnum\pgfmathresult=1	 % shift negative ticks
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below, xshift=-0.01cm] {\t};
+									\else
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below] {\t};
+									\fi
+								}
+
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {\yLint,...,\yRint}
+									\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+									node[font=\tiny, left] {\y};
+
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
+
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+								}
+								
+								% Solution curves
+								\def\yo{0}
+								\foreach \to in {0, 1, 2, 3} {
+									\draw[fill=white!50] (\to,\yo) circle (2.0pt);
+									\pgfmathsetmacro{\Co}{(\yo+1)/(\yo-1) * exp(2*\to)}
+									\draw[magenta, thick, samples=100]
+										plot[domain=\tmin:\tmax] (\x, {(\Co + exp(2*\x))/(\Co - exp(2*\x))});
+								}
+
+								\def\yo{1.5}
+								\foreach \to in {0, 1, 2} {
+									\draw[fill=white!50] (\to,\yo) circle (2.0pt);
+									\pgfmathsetmacro{\Co}{(\yo+1)/(\yo-1) * exp(2*\to)}
+									\draw[magenta, thick, samples=100]
+										plot[domain=\tmin:0.384+\to] (\x, {(\Co + exp(2*\x))/(\Co - exp(2*\x))});
+								}
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+					<caption> Horizontal shift symmetry of solutions to autonomous differential equations </caption>
+				</figure>
+			</sidebyside>
+		</figure>
+
+		<p>
+			This symmetry isn't just in the slope field, it shows up in the <em>solutions</em> themselves. As seen in <xref ref="horizontal-solution-symmetry"/>, if you know one solution curve for an autonomous equation, you can create others simply by shifting that solution horizontally. That's because the equation doesn't <q>know</q> what time it is; it only cares about <m>y</m>.
+		</p>
+	</paragraphs>
+
+	<assemblage label="autonomous-eqns-wrap-up">
+		<title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="autonomous-eqns-takeaways">
+				<title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>A first-order autonomous equation has the form <me>\frac{dy}{dt} = f(y).</me></li>
+					<li>Its slope field forms horizontal <q>stripes</q>: the slope is constant along each horizontal line because it depends only on <m>y</m>.</li>
+					<li>Solutions show horizontal shift symmetry: if <m>y(t)</m> is a solution, so is <m>y(t+c)</m> for any constant <m>c</m>.</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="autonomous-eqns-cyu">
+				<title> Check Your Understanding </title>
+
+				<exercise label="autonomous-eqns-cyu-bundle">
+					<title>📖❓Autonomous Equations </title>
+					<task label="autonomous-eqns-cyu-1">
+						<title>📖❓ What does a slope field represent? </title>
+						<statement>
+							<p>
+								Suppose you compute the slope of an autonomous differential equation be <m>3</m> at the point <m>(2, 1)</m>. What is the slope at <m>(-3, 1)</m>?
+							</p>
+						</statement>
+
+						<choices>
+							<choice correct="no">
+								<statement><m>0</m></statement>
+								<feedback>This is incorrect. The slope depends only on <m>y</m>, not on <m>t</m>.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement><m>-3</m></statement>
+								<feedback>This is incorrect. The slope function is <m>f(y)</m>, so <m>t</m> doesn't affect the result.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement><m>1</m></statement>
+								<feedback>No, remember that the slope at a point <m>(t, y)</m> depends solely on <m>y</m>.</feedback>
+							</choice>
+							<choice correct="yes">
+								<statement><m>3</m></statement>
+								<feedback>Correct. Since <m>y = 1</m> at both points, the slope is the same: <m>f(1) = 3</m>, regardless of <m>t</m>.</feedback>
+							</choice>
+							<choice correct="no">
+								<statement>Impossible to answer.</statement>
+								<feedback>This is incorrect. The value of <m>f(y)</m> is determined entirely by <m>y</m>, so this is answerable.</feedback>
+							</choice>
+						</choices>
+					</task>
+
+					<task label="autonomous-eqns-cyu-3">
+						<title>📖❓ Shifting Solutions</title>
+						<statement>
+							<p>
+							Suppose <m>y(t)</m> is a solution to the autonomous equation <m>y' = f(y)</m>.  
+							Which of the following must also be a solution?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><m>\ y(t + 3)</m></statement>
+								<feedback>Exactly—autonomous equations ignore the clock. Shifting in time just slides the solution along the <m>t</m>-axis.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ y(t) + 3</m></statement>
+								<feedback>Adding to <m>y</m> changes the function itself—this doesn't preserve the solution.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ 3\ y(t)</m></statement>
+								<feedback>Scaling <m>y</m> is not guaranteed to produce another solution unless the DE is linear, which this one may not be.</feedback>
+							</choice>
+							<choice>
+								<statement><m>\ y(-t)</m></statement>
+								<feedback>Flipping time is not generally a symmetry—it changes how <m>y</m> evolves.</feedback>
+							</choice>
+						</choices>
+					</task>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>
+
+<section label="equilibrium-solns">
+	<title> Equilibrium Solutions </title>
+	<introduction>
+		<p>
+			Autonomous equations tell us that the direction of change depends only on the current state, not the current time. That pattern shows up in their slope fields as horizontal <q>stripes</q> of identical slope behavior. Now we'll focus on one especially important feature of those fields: the horizontal lines where the slope is zero. Along those lines, the system simply stops changing. These constant solutions are called <term>equilibrium solutions</term>.
+		</p>
+	</introduction>
+
+	<paragraphs label="equilibrium-solns-behavior">
+		<title> Flat Lines and Fixed Behavior </title>
+
+		<p>
+			Consider the slope field for the autonomous equation:
+		</p>
+
+		<me>
+			\frac{dy}{dt} = 1 - y^2
+		</me>.
+
+		<p>
+			Since this is autonomous, the slope depends only on <m>y</m>. At certain <m>y</m>-values, something special happens: the slope becomes exactly zero.
+		</p>
+
+		<sidebyside widths="50%" margin="10%" valign="middle">
+			<figure xml:id="slope-field-1-ysqrd">
+				<image width="50%">
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = 1 - \y*\y;}, scale=0.8]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-2.2} \def\tmax{2.2}
+							\def\ymin{-2.2} \def\ymax{2.2}
+							\def\tstep{0.2}  \def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\pgfmathparse{\t &lt; 0}
+								\ifnum\pgfmathresult=1	 % shift negative ticks
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below, xshift=-0.01cm] {\t};
+								\else
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below] {\t};
+								\fi
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {\yLint,...,\yRint}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+								node[font=\tiny, left] {\y};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption>Slope field for <m>y' = 1 - y^2</m></caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			In the slope field, those points appear as <em>rows of perfectly horizontal segments</em>. That's no accident—where <m>dy/dt = 0</m>, the solution curve doesn't move. If a solution starts there, it stays there forever. These flat lines are the <term>equilibrium solutions</term>.
+		</p>
+
+		<p>
+			To find them, we set <m>\frac{dy}{dx}</m> (the slope) to zero and solve for <m>y</m>. In this example:
+			<me>
+				\us{\large =\ 0}{\boxed{\frac{dy}{dt}}} = 1 - y^2 \quad\rightarrow\quad 0 = 1 - y^2 \quad\Rightarrow\quad y = -1 \text{ or } y = 1.
+			</me>
+			So the equilibrium solutions are the constant functions <m>y(t) = -1</m> and <m>y(t) = 1</m>.
+		</p>
+
+		<p>
+			These constant solutions act like <em>anchors</em> in the system: other solutions either drift toward them or get pushed away. We'll explore that stability behavior in the next section.
+		</p>
+
+		<exercise label="equilibrium-solutions-chkpt-1">
+			<title>📖❓ Observing the Slope Field </title>
+			<statement>
+				<p>
+					Look at the slope field below. Which constant solutions do you see? In other words, what <m>y</m>-values have perfectly horizontal segments?
+				</p>
+				<sidebyside widths="50%" margin="25%" valign="middle">
+					<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[declare function={f(\x,\y) = (2-\y) * (1.5+\y);}, scale=0.6]
+
+									\pgfkeys{/pgf/number format/.cd,
+										fixed,
+										precision=1
+									}
+									\def\tmin{-3.25} \def\tmax{3.25}
+									\def\ymin{-3.25} \def\ymax{3.25}
+									\def\tstep{0.25}  \def\ystep{0.25}
+									\def\arrowscale{0.2} % length of slope arrows
+									\def\segmentwt{0.6pt} % thickness of slope segments
+
+									% stepsize along t-axis and y-axis
+									\pgfmathsetmacro{\tL}{\tmin + \tstep}
+									\pgfmathsetmacro{\tR}{\tmax - \tstep}
+									\pgfmathsetmacro{\yL}{\ymin + \ystep}
+									\pgfmathsetmacro{\yR}{\ymax - \ystep}
+									\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+									\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+									% Axes
+									\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+
+									% Bounding box
+									\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+									% Tick marks and labels on t-axis
+									\pgfmathtruncatemacro{\tLint}{\tL}
+									\pgfmathtruncatemacro{\tRint}{\tR}
+									\foreach \t in {\tLint,...,\tRint} {
+										\pgfmathparse{\t &lt; 0}
+										\ifnum\pgfmathresult=1	 % shift negative ticks
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below, xshift=-0.01cm] {\t};
+										\else
+											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+											node[font=\tiny, below] {\t};
+										\fi
+									}
+
+									% Tick marks and labels on y-axis
+									\pgfmathtruncatemacro{\yLint}{\yL}
+									\pgfmathtruncatemacro{\yRint}{\yR}
+									\foreach \y in {\yLint,...,\yRint}
+										\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+										node[font=\tiny, left] {\y};
+
+									% slope field: just draw a vector at each point
+									\foreach \i in {0,...,\nt}
+									\foreach \j in {0,...,\ny}{
+
+										\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+										\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+										\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+										% Normalize direction vector (1, slope) to fixed length
+										\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+										\pgfmathsetmacro{\dt}{\arrowscale / \len}
+										\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+										\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									}
+
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+				</sidebyside>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="no"><statement><m>y(t) = -2</m></statement></choice>
+				<choice correct="yes"><statement><m>y(t) = -1.5</m></statement></choice>
+				<choice correct="no"><statement><m>y(t) = 0</m></statement></choice>
+				<choice correct="no"><statement><m>y(t) = 1.5</m></statement></choice>
+				<choice correct="yes"><statement><m>y(t) = 2</m></statement></choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="equilibrium-solns-slope-field">
+		<title> What the Slope Field Tells You </title>
+
+		<p>
+			What about the <em>other</em> values of <m>y</m>? Between the equilibria at <m>y = -1</m> and <m>y = 1</m>, the slopes are positive. For example:
+			<me>
+				f(-0.5) = 1 - (-0.5)^2 = 0.75,
+			</me>
+			so the slope is positive and solutions rise. The slope field shows this: between <m>y=-1</m> and <m>y=1</m>, the little segments tilt upward.
+		</p>
+
+		<p>
+			Above <m>y = 1</m>, things flip. Try <m>y = 1.5</m>:
+			<me>
+				f(1.5) = 1 - (1.5)^2 = -1.25,
+			</me>
+			which is negative, so solutions decrease. The slope field confirms it—segments tilt downward. The same downward pull appears below <m>y = -1</m>.
+		</p>
+
+		<p>
+			The slope field acts like a <em>behavior map</em>: equilibrium solutions mark where the system is still, while the tilts around them reveal which way nearby solutions move.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="equilibrium-solns-calculation">
+		<title> How to Find Equilibrium Solutions </title>
+		<p>
+			Finding equilibrium solutions is always the same quick process:
+		</p>
+
+		<ol>
+			<li>Assuming <m>c</m> is constant and <m>y=c</m>, then <m>\frac{dy}{dt} = 0</m> and so: <me>\frac{dy}{dt} = f(y) \quad\rightarrow\quad 0 = f(c)</me>.</li>
+			<li>The equation <m>f(c) = 0</m> is algebraic. Solve it for <m>c</m>. </li>
+			<li>For each <m>c</m> you found, <m>y(t) = c</m> is an equilibrium solution.</li>
+		</ol>
+
+		<p>
+			Let's do a quick example. Consider:
+			<me>
+				\frac{dy}{dt} = y^2 - 4y.
+			</me>
+			Assuming <m>y=c</m>, thenthis equation becaomes:
+			<me>
+				0 = c^2 - 4c \quad\Rightarrow\quad c(c - 4) = 0.
+			</me>
+			So, <m>c=0, 4</m> and the equilibrium solutions are:
+			<me>
+				y(t) = 0 \quad \text{and} \quad y(t) = 4.
+			</me>
+		</p>
+
+		<p>
+			Mark these on the slope field with horizontal lines. Then check the arrows just above and below each line to see how other solutions evolve—whether they're pulled in or pushed away. We will build more on this in the next section.
+		</p>
+
+		<exercise label="equilibrium-solns-chkpt-2">
+			<title>📖❓ Select the Equilibrium Solutions </title>
+			<statement>
+				<p>
+					Determine the equilibrium solutions for the equation:
+					<me>
+						\frac{dy}{dt} = y + \frac12y^2
+					</me>.
+					Select all that apply.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes"><statement><m>\ y(t) = 0</m></statement><feedback>Yes! ✅</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = 2</m></statement><feedback>❌</feedback></choice>
+				<choice correct="yes"><statement><m>\ y(t) = -2</m></statement><feedback>Yes! ✅</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = -\sqrt{2}</m></statement><feedback>❌</feedback></choice>
+				<choice correct="no"><statement><m>\ y(t) = -\sfrac12</m></statement><feedback>❌</feedback></choice>
+			</choices>
+		</exercise>
+	</paragraphs>
+
+	<assemblage label="equilibrium-solns-wrap-up"><title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="equilibrium-solns-takeaways"><title> 🗝️ Key Takeaways... </title>
+				<ul marker="square">
+					<li>Equilibrium solutions are constant solutions <m>y(t) = c</m> where <m>f(c) = 0</m>.</li>
+					<li>In the slope field, they appear as rows of horizontal segments.</li>
+					<li>To find them, just solve <m>f(y) = 0</m>.</li>
+				</ul>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>
+
+<section label="classifying-equilibria">
+	<title> Classifying Equilibrium Solutions </title>
+
+	<introduction>
+		<p>
+			Equilibrium solutions mark the places where a system comes to rest. But not all equilibrium solutions are alike, some attract nearby solutions, others repel them, and some do a bit of both. In this section, we'll learn how to classify these points by examining the slope field, the sign of <m>f(y)</m>, and a tool called a <term>phase line</term>.
+		</p>
+	</introduction>
+
+	<paragraphs label="classifying-equilibria-types">
+		<title> Types of Equilibria </title>
+		<p>
+			Suppose <m>y = c</m> is an equilibrium solution of an autonomous equation <m>y' = f(y)</m>. If you nudge a solution slightly above or below <m>c</m>, it might drift back, move away, or react differently on each side. What it does determines the type of equilibrium it is.
+		</p>
+
+    	<p>There are three common types:</p>
+
+		<ul marker="square">
+			<li><term>Stable (sink):</term> Solutions move <em>toward</em> the equilibrium from both sides.</li>
+			<li><term>Unstable (source):</term> Solutions move <em>away</em> from the equilibrium on both sides.</li>
+			<li><term>Semi-stable (node):</term> Solutions move toward the equilibrium on one side and away from it on the other.</li>
+		</ul>
+
+		<p>
+			In a slope field, a sink looks like arrows converging toward a horizontal line, a source shows arrows diverging away, and a node is a mix: converging on one side, diverging on the other. Next, we'll look at different ways to determine these behaviors.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="classifying-equilibria-phase-line">
+		<title> Classification via the Phase Line </title>
+
+		<p>
+			Slope fields show a lot of information at once, but for autonomous equations we can simplify. Since the slope depends only on <m>y</m>, we can <q>compress</q> the slope field into a simple vertical diagram of just <m>y</m>-values. This is called a <term>phase line</term>.
+		</p>
+
+    	<p>On a phase line:</p>
+
+		<ul marker="square">
+			<li>Equilibria are marked with solid dots.</li>
+			<li>Regions where <m>f(y) &gt; 0</m> get upward arrows.</li>
+			<li>Regions where <m>f(y) &lt; 0</m> get downward arrows.</li>
+		</ul>
+
+		<p>
+			The arrows summarize how <m>y(t)</m> changes: whether solutions are rising or falling. Follow the arrows up or down and you'll see where solutions eventually settle—or whether they're pushed away.
+		</p>
+		
+		<figure xml:id="phase-line-plot">
+			<caption>Slope Field (left) and Phase Line (right) for <m>y'= 1 - y^2</m></caption>
+			<sidebyside widths="50% 1.05% 8.95%" valign="top" margins="20% 20%">
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = (1-\y) * (1+\y);}, scale=0.95]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-2.2}	\def\tmax{2.2}
+							\def\ymin{-2.2} \def\ymax{2.2}
+							\def\tstep{0.2}	\def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							\draw[white, fill=red!10] (\tmin,\ymin) rectangle (\tmax,-1);
+							\draw[white, fill=green!80!black!10] (\tmin,-1) rectangle (\tmax,1);
+							\draw[white, fill=red!10] (\tmin,1) rectangle (\tmax,\ymax);
+
+							\draw[white, fill=red!10] (\tmax + 0.05,1) rectangle (\tmax + 1.3,\ymax);
+							\draw (\tmax+0.025,1.6) node[font=\tiny, right] {$f(y) \lt 0$};
+							\draw[white, fill=green!80!black!10] (\tmax + 0.05,-1) rectangle (\tmax + 1.3,1);
+							\draw (\tmax+0.025,0.0) node[font=\tiny, right] {$f(y) \gt 0$};
+							\draw[white, fill=red!10] (\tmax + 0.05,\ymin) rectangle (\tmax + 1.3,-1);
+							\draw (\tmax+0.025,-1.6) node[font=\tiny, right] {$f(y) \lt 0$};
+							
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax, 0) 
+								node[xshift=-0.05cm, yshift=-0.05cm, font=\tiny, below] {};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3)
+								node[xshift= 0.05cm, yshift=-0.1cm, font=\tiny, right] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+								node[font=\scriptsize, below] {\t};
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {-2, -1, 1, 2}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+								node[font=\scriptsize, left] {\y};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<p/>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = (1-\y) * (1+\y);}, scale=0.7]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{0}	\def\tmax{0}
+							\def\ymin{-2.5} \def\ymax{2.2}
+							\def\tstep{0.2}	\def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+							\def\eqpts{-1, 1} % equilibrium points
+							\def\testpts{-1.8, 0.2, 1.6} % test points for classification
+
+							\draw[white, fill=red!10] (\tmin-0.42,1) rectangle (\tmax+0.42,\ymax);
+							\draw[white, fill=green!80!black!10] (\tmin-0.42,-1) rectangle (\tmax+0.42,1);
+							\draw[white, fill=red!10] (\tmin-0.42,-2.2) rectangle (\tmax+0.42,-1);
+							
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							% Axes
+							\draw[->, thick] (0, \ymin) -- (0, \ymax+0.3)
+								node[xshift= 0.05cm, yshift=-0.1cm, font=\scriptsize, right] {$y$};
+
+							% Draw equilibrium points
+							\foreach \eqpt in \eqpts {
+								\draw[fill=black] (\tmin,\eqpt) circle (2pt);
+								\draw (\tmin,\eqpt) node[font=\tiny, left] {\eqpt};
+							}
+
+							% Draw phase arrows
+							\foreach \testpt in \testpts {
+								\pgfmathsetmacro{\slope}{f(\tmin,\testpt)}
+								\draw[teal!75, fill=white, line width=\segmentwt, arrows = {-Stealth[length=7pt, inset=2pt]}] (0,\testpt) -- (0,\testpt+0.01*\slope);
+							}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</sidebyside>
+		</figure>
+		
+		<example label="classifying-equilibria-phase-line-ex-1">
+			<title> Growth and Decay </title>
+			<statement>
+				<p>
+					Find and classify the equilibrium solutions of the autonomous equation:
+					<me> \frac{dy}{dt} = y^2 - 4y </me>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					First, set <m>f(y)=0</m>:
+					<me>
+						y^2 - 4y = y(y - 4) = 0,
+					</me>
+					giving equilibrium solutions at <m>y = 0</m> and <m>y = 4</m>.
+				</p>
+
+				<p>
+					These values split the <m>y</m>-axis into three regions. We test the sign of <m>f(y)</m> in each:
+				</p>
+
+				<sidebyside widths="60% 10% 7%" valign="middle" margins="5% 13%">
+					<p>
+						<tabular halign="center">
+							<col right="minor"/>
+							<col right="minor"/>
+							<col right="minor"/>
+							<col/>
+							<row bottom="minor">
+								<cell>Region</cell>
+								<cell>Test Point</cell>
+								<cell><m>f(y) = y(y - 4)</m></cell>
+								<cell>Sign of <m>f(y)</m></cell>
+							</row>
+							<row>
+								<cell><m>(-\infty, 0)</m></cell>
+								<cell><m>y = -1</m></cell>
+								<cell><m>(-1)(-5) = 5</m></cell>
+								<cell>Positive</cell>
+							</row>
+							<row>
+								<cell><m>(0,4)</m></cell>
+								<cell><m>y = 1</m></cell>
+								<cell><m>(1)(-3) = -3</m></cell>
+								<cell>Negative</cell>
+							</row>
+							<row>
+								<cell><m>(4,\infty)</m></cell>
+								<cell><m>y = 5</m></cell>
+								<cell><m>(5)(1) = 5</m></cell>
+								<cell>Positive</cell>
+							</row>
+						</tabular>
+					</p>
+					<p>
+						<me>
+							\rightarrow
+						</me>
+					</p>
+					<p>
+						<image>
+							<latex-image>
+								\begin{tikzpicture}[declare function={f(\x,\y) = \y * (\y-4);}, scale=0.2]
+
+									\pgfkeys{/pgf/number format/.cd,
+										fixed,
+										precision=1
+									}
+									\def\tmin{0}	\def\tmax{0}
+									\def\ymin{-2.5} \def\ymax{7}
+									\def\tstep{0.2}	\def\ystep{0.5}
+									\def\arrowscale{0.17} % length of slope arrows
+									\def\segmentwt{1pt} % thickness of slope segments
+									\def\eqpts{0, 4} % equilibrium points
+									\def\testpts{-1, 1, 5} % test points for classification
+									\def\arrowpts{-1, 1.5, 6} % test points for classification
+									
+									% stepsize along t-axis and y-axis
+									\pgfmathsetmacro{\yL}{\ymin + \ystep}
+									\pgfmathsetmacro{\yR}{\ymax - \ystep}
+									\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+									% Axes
+									\draw[->, thick] (0, \ymin) -- (0, \ymax+0.3)
+										node[xshift= 0.05cm, yshift=-0.1cm, right, font=\scriptsize] {$y$};
+
+									% Draw equilibrium points
+									\foreach \eqpt in \eqpts {
+										\draw[fill=white, thick] (0,\eqpt) circle (8pt);
+										\draw[] (0,\eqpt) node[left, font=\scriptsize] {\eqpt};
+									}
+
+									% Draw phase arrows
+									\foreach \arrowpt in \arrowpts {
+										\pgfmathsetmacro{\slope}{f(0,\arrowpt)}
+										\draw[teal!75, fill=white, line width=\segmentwt, arrows = {-Stealth[length=5pt, inset=0pt]}] (0,\arrowpt) -- (0,\arrowpt+0.01*\slope);
+									}
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+				</sidebyside>
+
+				<p>
+					Now we can classify the equilibria based on the phase line:
+					<ul marker="square">
+						<li>Solutions move away from <m>y(t) = 0</m>, so it is a <term>source</term>.</li>
+						<li>Solutions move toward <m>y(t) = 4</m>, so it is a <term>sink</term>.</li>
+					</ul>
+				</p>
+			</solution>
+		</example>
+		
+		<exercise label="classifying-equilibria-chkpt-1">
+			<title>📖❓ Match the Equilibria </title>
+			<statement>
+				<sidebyside widths="60% 5% 12% 5% 4% 9%" margins="1% 1%" valign="middle">
+					<stack>
+						<p>
+							Suppose an autonomous equation has three equilibrium solutions at <me>y=A,\ y=B,\ \text{and}\ \ y=C</me>.
+						</p>
+						
+						<p>
+							Based on the provided phase line, drag each equilibrium solution to its corresponding classification type.
+						</p>
+					</stack>
+					<p/>
+					<p>Phase Line</p>
+					<p><me>\rightarrow</me></p>
+					<p>
+						<image width="100%">
+							<latex-image>
+								\begin{tikzpicture}[scale=0.5]
+									\draw[very thick] (0,-2) -- (0,2);
+									\draw[-stealth, teal, very thick] (0,1.5) -- (0,1.4);
+									\filldraw[black] (0,1) circle (3pt);
+									%\draw (0,1) node[font=\small, right] {$A$};
+									%\draw (0,1) node[font=\small, left] {$\vphantom{A}$};
+									\draw[-stealth, teal, very thick] (0,0.6) -- (0,0.7);
+									\filldraw[black] (0,0) circle (3pt);
+									%\draw (0,0) node[font=\small, right] {$B$};
+									%\draw (0,0) node[font=\small, left] {$\vphantom{B}$};
+									\draw[-stealth, teal, very thick] (0,-0.6) -- (0,-0.7);
+									\filldraw[black] (0,-1) circle (3pt);
+									%\draw (0,-1) node[font=\small, right] {$C$};
+									%\draw (0,-1) node[font=\small, left] {$\vphantom{C}$};
+									\draw[-stealth, teal, very thick] (0,-1.6) -- (0,-1.7);
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</p>
+					<p><me>\begin{array}{c} A\\ \ds\vphantom{\int} B\\ C \end{array}</me></p>
+				</sidebyside>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><me>A</me></premise>
+					<response>Sink</response>
+				</match>
+				<match>
+					<premise><me>B</me></premise>
+					<response>Source</response>
+				</match>
+				<match>
+					<premise><me>C</me></premise>
+					<response>Node</response>
+				</match>
+				<match>
+					<response>None of these</response>
+				</match>
+				
+			</cardsort>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="classifying-equilibria-linearization">
+		<title> Classification via the Linearization Method </title>
+
+		<p>
+			There's another way to classify equilibria: use a quick calculus check on <m>f(y)</m>.
+		</p>
+
+		<p>
+			Notice in <xref ref="linearization-figure"/> that the <em>sign</em> of <m>f(y)</m> flips as you pass through an equilibrium. The pattern of that flip tells you what kind of point it is:
+		</p>
+
+		<ul marker="square">
+			<li>At the <term>source</term>, <m>y=-1</m>, <m>f(y)</m> goes from negative → positive (increases).</li>
+			<li>At the <term>sink</term>, <m>y=1</m>, <m>f(y)</m> goes from positive → negative (decreases).</li>
+		</ul>
+
+		<p>
+			The important observation is that <m>f(y)</m> increases through sources and decreases through sinks. This is true in general, so we can classify equilibrium solutions by looking at the sign of <m>f'(y)</m> at the equilibrium points. 
+		</p>
+
+		<sidebyside widths="40% 2% 58%">
+			<figure xml:id="linearization-figure">
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = (1-\y) * (1+\y);}, scale=0.7]
+
+							\pgfkeys{/pgf/number format/.cd,
+								fixed,
+								precision=1
+							}
+							\def\tmin{-2.2}	\def\tmax{2.2}
+							\def\ymin{-2.2} \def\ymax{2.2}
+							\def\tstep{0.2}	\def\ystep{0.2}
+							\def\arrowscale{0.17} % length of slope arrows
+							\def\segmentwt{0.8pt} % thickness of slope segments
+
+							% stepsize along t-axis and y-axis
+							\pgfmathsetmacro{\tL}{\tmin + \tstep}
+							\pgfmathsetmacro{\tR}{\tmax - \tstep}
+							\pgfmathsetmacro{\yL}{\ymin + \ystep}
+							\pgfmathsetmacro{\yR}{\ymax - \ystep}
+							\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+							\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+							\draw[white, fill=red!10] (\tmin,\ymin) rectangle (\tmax,-1);
+							\draw[white, fill=green!80!black!10] (\tmin,-1) rectangle (\tmax,1);
+							\draw[white, fill=red!10] (\tmin,1) rectangle (\tmax,\ymax);
+
+							% Draw grid lines
+							%\foreach \i in {0,...,\nt} {
+							%	\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+							%	\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+							%}
+							%\foreach \j in {0,...,\ny} {
+							%	\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+							%	\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+							%}
+							
+							% Axes
+							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) 
+								node[xshift=-0.05cm, yshift=-0.05cm, font=\tiny, below] {$t$};
+							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3)
+								node[xshift= 0.05cm, yshift=-0.1cm, font=\tiny, right] {$y$};
+
+							% Bounding box
+							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+							% Tick marks and labels on t-axis
+							\pgfmathtruncatemacro{\tLint}{\tL}
+							\pgfmathtruncatemacro{\tRint}{\tR}
+							\foreach \t in {\tLint,...,\tRint} {
+								\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+								node[font=\tiny, below] {\t};
+							}
+
+							% Tick marks and labels on y-axis
+							\pgfmathtruncatemacro{\yLint}{\yL}
+							\pgfmathtruncatemacro{\yRint}{\yR}
+							\foreach \y in {-2, -1, 1, 2}
+								\draw (\tmin-0.06,\y) -- (\tmin+0.06,\y)
+								node[font=\tiny, left] {\y};
+
+							% slope field: just draw a vector at each point
+							\foreach \i in {0,...,\nt}
+							\foreach \j in {0,...,\ny}{
+
+								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+								% Normalize direction vector (1, slope) to fixed length
+								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+								\pgfmathsetmacro{\dt}{\arrowscale / \len}
+								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+								\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+							}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption></caption>
+			</figure>
+			<p/>
+			<figure>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[declare function={f(\x,\y) = (1-\y) * (1+\y);}, scale=0.8] 
+
+							\def\xslantB{1.0} % slant in x-direction
+							\def\yslantB{-0.5} % slant in y-direction
+							
+							% Isometric transformation with a stronger slant in x
+							\begin{scope}[canvas is xy plane at z=0, yslant=\yslantB, xslant=\xslantB]
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{0}	\def\tmax{2.2}
+								\def\ymin{-2.2} \def\ymax{2.2}
+								\def\tstep{0.2}	\def\ystep{0.2}
+								\def\arrowscale{0.17} % length of slope arrows
+								\def\segmentwt{0.8pt} % thickness of slope segments
+
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+
+								\draw[white, fill=red!10] (\tmin,\ymin) rectangle (\tmax,-1);
+								\draw[white, fill=green!80!black!10] (\tmin,-1) rectangle (\tmax,1);
+								\draw[white, fill=red!10] (\tmin,1) rectangle (\tmax,\ymax);
+								
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) 
+									node[xshift= 0.00cm, yshift= 0.00cm, font=\tiny, right] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3)
+									node[xshift= 0.15cm, yshift=-0.15cm, font=\tiny, above] {$y$};
+
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+									node[font=\tiny, below, xshift=-0.2cm, yshift=0.1cm] {\t};
+								}
+
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {-2, -1, 1, 2}
+									\draw (\tmax-0.06,\y) -- (\tmax+0.06,\y)
+									node[font=\tiny, right, xshift=-0.1cm, yshift=-0.1cm] {\y};
+
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
+
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+									%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+								}
+								\draw[&lt;-] (\tmax + 0.35, -1.3+0.35) -- (\tmax + 0.5, -1.3+0.5) node[font=\tiny, xshift=-0.1cm, right] {source};
+								\draw[&lt;-] (2.6, 0.75) -- (2.6 + 0.5, 0.75-0.5) node[font=\tiny, below, yshift=0.1cm] {sink};
+								
+							\end{scope}
+
+							\def\xslantA{0.0} % slant in x-direction
+							\def\yslantA{0.5} % slant in y-direction
+
+							% Isometric transformation with a stronger slant in x
+							\begin{scope}[canvas is xy plane at z=0, xslant=\xslantA, yslant=\yslantA]
+
+								\def\ymin{-2.2} \def\ymax{2.2}
+								\def\fmin{-1}	\def\fmax{1.6}
+								\def\tstep{0.2}	\def\ystep{0.2}
+								
+								\draw[white, fill=red!10] (\ymin,0) rectangle (-1,1);
+								\draw[white, fill=green!80!black!10] (-1,0) rectangle (1,1);
+								\draw[white, fill=red!10] (1,0) rectangle (\ymax,1);
+
+								% f(y) axis
+								\draw[-&gt;] (\ymin, 0) -- (\ymax+0.3, 0);
+								\draw[-&gt;] (0, \fmin) -- (0, \fmax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$f(y)$};
+								
+								\draw[white] (-1, 1.0) node[black, xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {increasing $f$} -- (-1, 0);
+								\draw[] (-1.6, 0.35) node[xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {negative};
+								\draw[] (-1.6, 0.1) node[xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {slopes};
+
+								\draw[] (0, 0.35) node[fill=green!80!black!10, inner sep = 1pt, xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {positive};
+								\draw[] (0, 0.1) node[fill=green!80!black!10, inner sep = 1pt, xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {slopes};
+
+								\draw[white] (1, 1.0) node[black, xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {decreasing $f$} -- (1, 0);
+								\draw[] (1.6, 0.35) node[xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {negative};
+								\draw[] (1.6, 0.1) node[xslant=\xslantA, yslant=\yslantA, font=\tiny, above] {slopes};
+
+								
+								% Draw f(y) graph where f(y) positive
+								\draw[black, thick, samples=100] 
+									plot[domain=-1:1] (\x, {(1-\x) * (1+\x)});
+								% Draw f(y) graph where f(y) nagative
+								\draw[black, dashed, thick, samples=100] 
+									plot[domain=-1.35:-1] (\x, {(1-\x) * (1+\x)});
+								\draw[black, dashed, thick, samples=100] 
+									plot[domain=1:1.5] (\x, {(1-\x) * (1+\x)});
+								
+							\end{scope}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<caption></caption>
+			</figure>
+		</sidebyside>
+
+		<p>
+			If <m>f(y_0) = 0</m>, then <m>y_0</m> is an equilibrium. To classify it:
+		</p>
+
+		<ul marker="square">
+			<li>If <m>f'(y_0) &lt; 0</m>, it's a sink (stable).</li>
+			<li>If <m>f'(y_0) &gt; 0</m>, it's a source (unstable).</li>
+			<li>If <m>f'(y_0) = 0</m>, the test is inconclusive—you'll need more investigation.</li>
+		</ul>
+
+		<p>
+			This is called the <term>linearization method</term>, because it looks at the linear (slope) behavior of <m>f(y)</m> near the equilibrium.
+		</p>
+
+		<example label="classifying-equilibria-linearization-ex-1">
+			<statement>
+				<p>
+					Consider the autonomous equation:
+					<me> \frac{dy}{dt} = y^2 - 4y + 3. </me>
+					Find and classify the equilibrium solutions using linearization.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					First, solve <m>f(y)=0</m>:
+					<me>
+						y^2 - 4y + 3 = (y - 1)(y - 3) = 0,
+					</me>
+					so <m>y=1</m> and <m>y=3</m> are equilibria.
+				</p>
+				<p>
+					Then compute the derivative:
+					<me> f'(y) = 2y - 4. </me>
+					At each equilibrium:
+					<ul marker="square">
+						<li><m>f'(1) = -2</m> → sink (stable).</li>
+						<li><m>f'(3) = 2</m> → source (unstable).</li>
+					</ul>
+				</p>
+			</solution>
+		</example>
+	</paragraphs>
+
+	<assemblage label="classifying-equilibria-wrap-up">
+		<title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="classifying-equilibria-takeaways">
+				<title> 🗝️ Key Takeaways.. </title>
+				<ul marker="square">
+					<li>Equilibrium solutions occur where <m>y' = f(y) = 0</m>.</li>
+					<li>Sinks pull solutions in, sources push them out, and nodes do one of each.</li>
+					<li>Phase lines show this behavior simply and clearly.</li>
+					<li>The derivative <m>f'(y)</m> can classify stability quickly via the linearization method.</li>
+ 				</ul>
+			</paragraphs>
+
+			<paragraphs label="classifying-equilibria-cyu">
+				<title> Check Your Understanding </title>
+				<exercise label="classifying-equilibria-cyu-bundle">
+					<title>📖❓Classifying Equilibrium Solutions </title>
+
+					<task label="classifying-equilibria-cyu-1">
+						<title>📖❓Stability Check </title>
+						<statement>
+							<p>
+								The autonomous equation
+								<me>
+									\frac{dy}{dt} = (y - 3)(y + 1).
+								</me>
+								has equilibrium solutions at <m>y = -1</m> and <m>y = 3</m>. Create a simple phase line to classify these equilibria.
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes"><statement><m>y = -1</m> is a sink, <m>y = 2</m> source</statement></choice>
+							<choice correct="no"><statement><m>y = -1</m> is a source, <m>y = 2</m> sink</statement></choice>
+							<choice correct="no"><statement>Both are sinks</statement></choice>
+							<choice correct="no"><statement>Both are sources</statement></choice>
+							<choice correct="no"><statement><m>y = -1</m> is a node, <m>y = 2</m> sink</statement></choice>
+							<choice correct="no"><statement><m>y = -1</m> is a source, <m>y = 2</m> node</statement></choice>
+						</choices>
+					</task>
+					
+					<task label="classifying-equilibria-cyu-2">
+						<title>📖❓ Comparing Equilibria</title>
+						<statement>
+							<p>
+								The equation  
+								<me> \frac{dy}{dt} = y^2-3y </me>  
+								has equilibrium solutions at <m>y=0</m> and <m>y=3</m>.
+							</p>
+							<p>
+								Compute <m>f'(y)</m> and use the linearization method to determine which of these equilibria <term>pulls nearby solutions toward it</term>.
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><m>y=0</m></statement>
+								<feedback>Correct. Since <m>f'(y) = 2y-3</m> and <m>f'(0) = -3 \lt 0</m>, then <m>y=0</m> is a sink and pulls solutions toward it.</feedback>
+							</choice>
+							<choice>
+								<statement><m>y=3</m></statement>
+								<feedback>Incorrect. Since <m>f'(y) = 2y-3</m> and <m>f'(3) = +3 \gt 0</m>, then <m>y=3</m> is a source and repels solutions.</feedback>
+							</choice>
+						</choices>
+					</task>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>
+
+<section label="parameter-analysis">
+	<title> Parameter Analysis </title>
+	<introduction>
+
+		<p>
+			<xref provisional="IN PROGRESS"/>
+		</p>
+
+		<p>
+			Many mathematical models include one or more <term>parameters</term>—constants that represent things like birth rates, drug dosage, resource limits, or physical constants. These parameters aren't just placeholders—they often control the <em>qualitative behavior</em> of the system. Small changes in a parameter's value can cause major shifts in the solution's behavior. Understanding those changes is the goal of <term>parameter analysis</term>.
+		</p>
+
+		<p>
+			In this section, we focus on the most important modeling insight: <em>how equilibria and their stability depend on parameters</em>. When a parameter crosses a critical threshold, the model's behavior can shift dramatically—this is called a <term>bifurcation</term>.
+		</p>
+	</introduction>
+
+	<paragraphs label="parameter-analysis-bifurcation">
+		<title> Bifurcation Analysis </title>
+
+		<p>
+			A <term>bifurcation</term> is a qualitative change in the system's dynamics caused by varying a parameter. In the context of differential equations, it usually means that the <em>number or stability</em> of equilibrium solutions changes at certain critical values.
+		</p>
+
+		<p>
+			Consider the one-parameter system:
+			<me>
+				\frac{dx}{dt} = f(x, \mu),
+			</me>
+			where <m>\mu</m> is a parameter. As <m>\mu</m> changes:
+		</p>
+
+		<ul marker="square">
+			<li><em>Existing equilibria</em> may change from stable to unstable (or vice versa).</li>
+			<li><em>New equilibria</em> may appear or disappear altogether.</li>
+			<li>In some cases, the <em>long-term behavior</em> of the entire system changes.</li>
+		</ul>
+
+		<p>
+			The basic workflow for bifurcation analysis is:
+		</p>
+
+		<ol>
+			<li><term>Find equilibria:</term> Solve <m>f(x, \mu) = 0</m> for <m>x</m> in terms of the parameter <m>\mu</m>.</li>
+			<li><term>Classify stability:</term> Compute <m>\frac{\partial f}{\partial x}</m> at each equilibrium. The sign determines whether the equilibrium is a <em>sink</em> (stable) or a <em>source</em> (unstable).</li>
+			<li><term>Track changes:</term> See how the equilibria and their stability change as <m>\mu</m> varies. Identify critical values where the behavior <q>flips.</q></li>
+		</ol>
+		<p>
+			Consider the parameterized system:
+			<me>
+				\frac{dx}{dt} = \mu - x^2
+			</me>.
+		</p>
+
+		<p>
+			First, we find the equilibria:
+			<me>
+				\mu - x^2 = 0 \quad \Rightarrow \quad x = \pm \sqrt{\mu}
+			</me>.
+		</p>
+
+		<p>
+			To see how the equilibria depend on <m>\mu</m>, solve for equilibrium:
+			<ul>
+				<li>For <m>\mu > 0</m>: two equilibria exist (<m>x = \pm \sqrt{\mu}</m>). </li>
+				<li>For <m>\mu = 0</m>: a single equilibrium (<m>x = 0</m>). </li>
+				<li>For <m>\mu &lt; 0</m>: no real equilibria. </li>
+			</ul>
+		</p>
+
+		<p>
+			Stability analysis shows that one branch is stable and the other is unstable when <m>\mu &gt; 0</m>. The bifurcation diagram reveals a <q>collision</q> of equilibria at <m>\mu=0</m>, called a <term>saddle-node bifurcation</term>.
+		</p>
+
+		<p>
+			The results are often summarized in a <term>bifurcation diagram</term>—a picture showing:
+			<ul marker="square">
+				<li>The equilibria plotted against <m>\mu</m>.</li>
+				<li>Solid lines for stable equilibria, dashed lines for unstable ones.</li>
+				<li>Critical parameter values where the diagram changes shape.</li>
+			</ul>
+		</p>
+
+		<p>
+			<xref ref="saddle-node-bifurcation-diagram"/> shows the bifurcation diagram for the previous example.
+		</p>
+
+		<figure xml:id="saddle-node-bifurcation-diagram">
+			<caption>Bifurcation diagram for <m>\frac{dx}{dt} = \mu - x^2</m></caption>
+			<image width="40%">
+				<latex-image>
+					\begin{tikzpicture}[scale=1]
+						% Axes
+						\draw[->] (-0.5,0) -- (2.8,0) node[below] {$\mu$};
+						\draw[->] (0,-1.4) -- (0,1.4) node[left] {$x$};
+
+						% Labels
+						\node[below left] at (0,0) {\scriptsize $0$};
+
+						% Stable branch: x = +sqrt(mu)
+						\draw[thick] plot[domain=0:2,samples=100] ({\x},{sqrt(\x)});
+
+						% Unstable branch: x = -sqrt(mu)
+						\draw[dashed, thick] plot[domain=0:2,samples=100] ({\x},{-sqrt(\x)});
+
+						% Vertical dotted line to show bifurcation point
+						\draw[dotted] (0,-1.2) -- (0,1.2);
+
+						% Legend markers
+						\draw[thick] (1.3,0.9) -- (1.6,0.9) node[right, black, font=\tiny] {Stable};
+						\draw[dashed, thick] (1.3,0.6) -- (1.6,0.6) node[right, black, font=\tiny] {Unstable};
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
+
+		<p>
+			Bifurcation diagrams are a cornerstone of modeling—they show, at a glance, how a system's behavior shifts as conditions change.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="parameter-analysis-why-it-matters">
+		<title>Why Parameter Analysis Matters in Modeling</title>
+
+		<p>
+			Why should we care about bifurcations? Because in applied problems, <em>parameters represent real things</em>: a harvest rate in an ecology model, a dosage in a drug model, or an investment threshold in an economics model. Changing those parameters changes the system.
+		</p>
+
+		<p>
+			The most important modeling insight:
+		</p>
+
+		<ul marker="square">
+			<li><term>Stable equilibria</term> correspond to long-term states the system will settle into.</li>
+			<li><term>Bifurcation points</term> are thresholds where those long-term states shift—suddenly and sometimes irreversibly.</li>
+		</ul>
+
+		<p>
+			For example:
+		</p>
+
+		<ul marker="square">
+			<li>In epidemiology, there's often a threshold vaccination rate: below it, disease spreads (unstable equilibrium); above it, the disease dies out (stable equilibrium).</li>
+			<li>In ecology, a critical harvest rate might push a fish population from stable sustainability to collapse.</li>
+		</ul>
+	</paragraphs>
+
+	<assemblage label="parameter-analysis-wrap-up">
+		<title>📤 Wrap-Up</title>
+
+		<p>
+			<paragraphs label="parameter-analysis-takeaways">
+				<title>🗝️ Key Takeaways.. </title>
+				<ul marker="square">
+					<li><term>Parameters control behavior:</term> Changing them can add, remove, or flip the stability of equilibria.</li>
+					<li><term>Bifurcation diagrams</term> show where those changes occur and summarize the system's response to parameter variation.</li>
+					<li>Critical parameter values in a model often correspond to real-world thresholds—places where <q>just a little more</q> or <q>just a little less</q> has huge consequences.</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="parameter-analysis-cyu">
+				<title> Check Your Understanding </title>
+				<exercise label="parameter-analysis-cyu-bundle">
+					<title>📖❓ Parameter Analysis</title>
+					<task label="parameter-analysis-cyu-1">
+						<title>Spot the Bifurcation</title>
+						<statement>
+							<p>
+							The model <m>\frac{dx}{dt} = \mu - x^2</m> changes behavior as <m>\mu</m> varies. What happens when <m>\mu</m> crosses zero?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+							<statement>Two equilibria collide and disappear.</statement>
+							<feedback>Correct—this is the hallmark of a saddle-node bifurcation.</feedback>
+							</choice>
+							<choice>
+							<statement>The system gains an oscillation.</statement>
+							<feedback>This model is one-dimensional; it cannot generate oscillations.</feedback>
+							</choice>
+							<choice>
+							<statement>The system's slope changes sign but equilibria stay the same.</statement>
+							<feedback>No—the set of equilibria itself changes.</feedback>
+							</choice>
+						</choices>
+					</task>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

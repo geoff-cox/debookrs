@@ -1,0 +1,469 @@
+<section label="eulers-method-one-step">
+    <title> Thinking in Steps: How Euler's Method Works One Step at a Time </title>
+
+    <introduction>
+		<p>
+			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
+		</p>
+    </introduction>
+
+    <paragraphs label="eulers-method-one-step-thinking">
+        <title>Iterative Methods—Thinking in Steps</title>
+		<p>
+            Most numerical methods are <em>iterative</em>, which means they don't try to solve the whole problem at once. Instead, they repeat the same small task again and again. 
+        </p>
+
+        <p>
+            That task is simple: use the information you already have to generate new information. Do it once, you get the next step. Do it a hundred times, you build a whole solution. 
+        </p>
+
+        <p>
+            So, the key to understanding an iterative method is by learning its task.  
+        </p>
+
+		<exercise label="eulers-method-one-step-cyu-iterative">
+			<title>📖❓ What does <q>iterative</q> mean?</title>
+			<statement>
+				<p>
+					Euler's method (and most numerical methods) are described as <em>iterative</em>. What does that mean in practice?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>It repeats a single simple step many times to build up a solution.</statement>
+					<feedback>Correct — iterative methods loop the same calculation to generate new information.</feedback>
+				</choice>
+				<choice>
+					<statement>It always produces the exact solution in one step.</statement>
+					<feedback>No — that's the opposite of iterative thinking. Iteration builds up an approximate solution step by step.</feedback>
+				</choice>
+				<choice>
+					<statement>It skips steps and jumps straight to the final answer.</statement>
+					<feedback>No — iterative methods never <q>skip.</q> They accumulate results step by step.</feedback>
+				</choice>
+				<choice>
+					<statement>It uses only algebra, not calculus, to solve equations.</statement>
+					<feedback>Not quite — Euler's method uses the slope from calculus, but applies it in a repetitive way.</feedback>
+				</choice>
+			</choices>
+		</exercise>
+    </paragraphs>
+
+    <paragraphs label="eulers-method-one-step-task">
+        <title>Euler's Method Task</title>
+        <p>
+            For Euler's method, the repeated task can be summed up like this:
+        </p>
+
+		<sidebyside margins="6% 6%">
+			<p><q>from a known point, move to a nearby point along the direction of the slope.</q></p>
+		</sidebyside>
+
+        <p>
+            Think of following a hiking trail using only a compass—you don't know exactly where the trail ends, but if you keep stepping in the right direction, you'll trace the path. In Euler's method, that <q>direction</q> is the slope from the differential equation.  
+        </p>
+
+        <p>
+            More precisely, if <m>(t_{\text{cur}}, y_{\text{cur}})</m> is a point on the solution and you know the slope there, you can predict where the next point <m>(t_{\text{new}}, y_{\text{new}})</m> will be. 
+        </p>
+
+        <p>
+            To understand this <q>one step,</q> we'll answer two guiding questions:
+        </p>
+
+        <ol>
+            <li>What does it mean to move in the direction of a slope?</li>
+            <li>Given a point, slope, and step size, what is the formula for the next point?</li>
+        </ol>
+	</paragraphs>
+
+    <subsection label="eulers-method-one-step-direction">
+        <title>Moving in the Direction of a Slope</title>
+		<p>
+			First question: <q>What does it mean to move in the direction of a slope?</q>  
+			Suppose you're at the point <m>(1,1)</m> and the slope there is <m>\frac{3}{2}</m>.
+		</p>
+
+		<p>
+			Slope is <q>rise over run</q>: for every unit you move horizontally (<q>run</q>), you move a certain amount vertically (<q>rise</q>). From <m>(1,1)</m>, a slope of <m>\frac{3}{2}</m> means that for every 2 units of <q>run,</q> you rise 3 units, like so:
+			<me>
+				(1 + \text{run}, 1 + \text{rise}) = (1 + 2, 1 + 3) = (3,4)
+			</me>.
+		</p>
+
+		<p>
+			So moving from <m>(1,1)</m> in a direction with slope <m>\frac{3}{2}</m>, lands you at <m>(3,4)</m>. See <xref ref="multiple-rise-run-a"/>.
+		</p>
+
+		<note>
+			<title><q>Rise</q> Clarification</title>
+			<p>
+				<q>Rise</q> doesn't always mean <q>up</q>—if the slope is negative, <q>rise</q> is actually a fall. We'll keep calling it <q>rise</q> for simplicity, but remember it might point downward.
+			</p>
+		</note>
+
+		<p>
+			Of course, there's nothing special about using a <q>run</q> of 2. We could have used <m>4</m> (rise would then be 6) or even <m>\pi</m> (rise would be <m>\frac{3}{2}\pi</m>). All of the following fractions
+		</p>
+
+		<me>
+			\left(\frac{\text{rise}}{\text{run}}\right)\quad\quad \frac32,\ \frac{6}{4},\ \frac{3\pi}{2\pi},\ \frac{\frac32}{1},\ \ldots,
+		</me>
+
+		<p>
+			describe the same slope, which can be visualized in <xref ref="multiple-rise-run"/>.
+		</p>
+
+		<p>
+			In Euler's method, we intentionally choose a <em>small run</em> called the step size, <m>h</m>. Therefore, for a small run, <m>h</m>, you get the corresponding rise by:  
+		</p>
+
+		<me>
+			\text{slope} = \frac{\text{rise}}{h}  \quad\Rightarrow\quad \text{rise} = \text{slope} \times h 
+		</me>
+
+		<p>
+			So given a direction (slope) to move and the step size (<m>h</m>) to take, this formula gives you the rise. Next, we'll see how this simple relationship is the core of Euler's one-step move.
+		</p>
+
+		<me>
+			\text{rise} = \text{slope} \cdot h.
+		</me>
+
+		<figure xml:id="multiple-rise-run">
+			<caption>Same Slope, Different Rise and Runs</caption>
+			<sidebyside widths="7.6% 23.4% 6% 25% 6% 24.6% 7.4%" valign="top">
+				<p/>
+				<figure xml:id="multiple-rise-run-a"><caption>Rise <m>3</m>, run <m>2</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}						% point coordinates
+							\def\tmin{-0.8} \def\tmax{3.9}
+							\def\ymin{-0.8} \def\ymax{4.8}
+							\def\tticks{1,3} \def\yticks{1,4}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.6]
+								
+								% === t-axis and grid ===
+								\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+								\foreach \tk in \tticks{
+									\draw (\tk,-0.1) -- (\tk,0.1)
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+								\foreach \yk in \yticks{
+									\draw (-0.1,\yk) -- (0.1,\yk)
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.2, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\rise$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.3cm, yshift=-0.15cm, font=\small] {$(3,4)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<p/>
+				<figure xml:id="multiple-rise-run-b"><caption>Rise <m>\frac32</m>, run <m>1</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{1} \def\rise{1.5} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}					% point coordinates
+							\def\tmin{-0.8} \def\tmax{3.4}
+							\def\ymin{-0.8} \def\ymax{3.9}
+							\def\tticks{1,2,3} \def\yticks{1,2,3}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,3}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.7]
+								
+								% === t-axis and grid ===
+								\foreach \tk in \tgrid{\draw[thin, gray!50!white] (\tk,\ymin) -- (\tk,\ymax);}
+								\foreach \tk in \tticks{
+									\draw (\tk,-0.1) -- (\tk,0.1)
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway, font=\small] {$\tk$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \yk in \ygrid{\draw[thin, gray!50!white] (\tmin,\yk) -- (\tmax,\yk);}
+								\foreach \yk in \yticks{
+									\draw (-0.1,\yk) -- (0.1,\yk)
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway, font=\small] {$\yk$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.4, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=-0.1cm, inner sep = 1pt, midway, font=\small] {$\sfrac32$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$\run$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.06cm, font=\small] {$(\ta,\ya)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.1cm, font=\small] {$(2,\frac52)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>	
+				<p/>
+				<figure xml:id="multiple-rise-run-c"><caption>Rise <m>mh</m>, run <m>h</m></caption>
+					<image>
+						<latex-image>
+							% === User Defined Parameters ===
+							\def\run{2} \def\rise{3} \def\yint{-0.5}	% slope rise/run, yintercept
+							\def\ta{1} \def\ya{1}						% point coordinates
+							\def\tmin{-0.8} \def\tmax{4.3}
+							\def\ymin{-0.8} \def\ymax{4.8}
+							\def\tticks{1,3} \def\yticks{1,4}
+							\def\tgrid{1,2,...,3} \def\ygrid{1,2,...,4}
+							\def\steps{1} \pgfmathsetmacro\N{\steps - 1}
+							
+							\begin{tikzpicture}[scale=0.6]
+								
+								% === t-axis and grid ===
+								\foreach \k in {0,1}{
+									\draw[thin, gray!50!white] ({\ta + \k*\run},\ymin) -- ({\ta + \k*\run},\ymax);
+									\draw[black] ({\ta + \k*\run},-0.1) -- ({\ta + \k*\run},0.1) 
+									node[fill=white, inner sep = 1pt, yshift=-0.1cm, below, midway] {$t_{\k}$};
+								}
+								\draw[black, -&gt;] (\tmin, 0) -- (\tmax, 0) node[below] {$t$};
+								
+								% === y-axis and grid ===
+								\foreach \k in {0,1}{
+									\draw[thin, gray!50!white] (\tmin, {\ya + \k*\rise}) -- (\tmax, {\ya + \k*\rise});
+									\draw (-0.1, {\ya + \k*\rise}) -- (0.1, {\ya + \k*\rise})
+									node[fill=white, inner sep = 1pt, xshift=-0.1cm, left, midway] {$y_{\k}$};
+								}
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax) node[right] {$y$};
+								
+								% === line plot ===
+								\draw[ultra thick, domain=\tmin+0.5:\tmax-0.5, &lt;-&gt;] plot[] (\x, \rise/\run*\x + \yint);
+
+								% === rise/run display ===
+								\foreach \k in {0,...,\N}
+								{
+									\pgfmathsetmacro{\tk}{\ta + \k*\run}
+									\pgfmathsetmacro{\yk}{\ya + \k*\rise}
+									\draw[blue!80!green, very thick, -&gt;]
+										(\tk, \yk) -- (\tk, \yk + \rise)
+										node[fill=white, xshift=0cm, inner sep = 1pt, midway, font=\small] {$\frac32h$};
+									\draw[blue!40!green, very thick, -&gt;]
+										(\tk, \yk + \rise) -- (\tk + \run - 0.1, \yk + \rise)
+										node[fill=white, inner sep = 0pt, xshift=0cm, midway, font=\small] {$h$};
+									\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+								}
+
+								% === first point label ===
+								\draw (\ta, \ya) node[below, fill=white, inner sep = 1pt, xshift=0.55cm, yshift=-0.1cm, font=\small] {$(t_0,y_0)$};
+
+								% === second point label ===
+								\pgfmathsetmacro{\tk}{\ta + \run}
+								\pgfmathsetmacro{\yk}{\ya + \rise}
+								\draw (\tk, \yk) node[below, fill=white, inner sep = 1pt, xshift=0.4cm, yshift=-0.2cm, font=\small] {$(t_1,y_1)$};
+
+								% === last point ===
+								\pgfmathsetmacro{\tk}{\ta + \steps*\run}
+								\pgfmathsetmacro{\yk}{\ya + \steps*\rise}
+								\draw[fill=white, very thick] (\tk, \yk) circle (3pt);
+
+								% === extra h (run) label ===
+								\draw[blue!40!green, thick, -&gt;]
+										(\ta + 0.3, -0.45) -- (\ta + \run - 0.25, -0.45)
+										node[fill=white, inner sep = 1pt, xshift=0cm, midway, font=\small] {$h$};
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<p/>
+			</sidebyside>
+		</figure>
+
+		<exercise label="eulers-method-one-step-cyu-rise-calc">
+			<title>📖❓ Calculating the Rise</title>
+			<statement>
+				<p>
+					Suppose the slope at a point is <m>m = \frac{3}{2}</m> and you take a step size of <m>h = 0.2</m>. What is the <q>rise</q> over that step?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>0.3</m></statement>
+					<feedback>Yes — rise = slope × step size = <m>\frac{3}{2} \times 0.2 = 0.3</m>.</feedback>
+				</choice>
+				<choice>
+					<statement><m>1.5</m></statement>
+					<feedback>That's the slope itself, not the rise for the small step.</feedback>
+				</choice>
+				<choice>
+					<statement><m>0.2</m></statement>
+					<feedback>That's the step size (run), not the rise.</feedback>
+				</choice>
+				<choice>
+					<statement><m>3.2</m></statement>
+					<feedback>Double-check the multiplication — slope × step size is much smaller.</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+	</subsection>
+
+    <subsection label="eulers-method-one-step-rule">
+        <title>The Movement Rule</title>
+
+        <p>
+            Now that we've decided how to take a step, we can write it as a formula. 
+        </p>
+
+        <p>
+            From basic geometry, a new point is just the old point plus the changes:
+        </p>
+
+        <me>
+            (t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + \text{run}, \ y_{\text{cur}} + \text{rise})
+        </me>.
+
+        <p>
+            Euler's method sets the <q>run</q> to the step size <m>h</m> and the <q>rise</q> to <m>h \times \text{slope}</m>. Substituting those gives the update rule:
+        </p>
+
+        <men xml:id="point-slope-movement-rule">
+            (t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})
+        </men>.
+
+     	<p>
+            This single equation captures the whole one-step task: start at the current point, find the slope, take a step of size <m>h</m> in that direction, and you land at the next point. Euler's method is simply this step repeated many times.
+        </p>
+
+		<exercise label="eulers-method-one-step-cyu-rule-concept">
+			<title>📖❓ Understanding the Movement Formula</title>
+			<statement>
+				<p>
+					What does the term <q><m>h \times \text{slope}</m></q> represent in Euler's movement rule?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>The change in <m>y</m> over the chosen step.</statement>
+					<feedback>Correct — the slope tells the direction, and <m>h</m> scales it into a small <q>rise.</q></feedback>
+				</choice>
+				<choice>
+					<statement>The next <m>t</m> value.</statement>
+					<feedback>No — the <m>t</m> update is handled separately as <m>t_{\text{cur}} + h</m>.</feedback>
+				</choice>
+				<choice>
+					<statement>The slope of the entire solution curve.</statement>
+					<feedback>Careful — this is the slope at a single point, not the whole curve.</feedback>
+				</choice>
+				<choice>
+					<statement>The error made by Euler's method in each step.</statement>
+					<feedback>Not true — <m>h \times \text{slope}</m> is the predicted rise, not the error.</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+	</subsection>
+
+	<assemblage label="eulers-method-one-step-wrap-up">
+		<title> 📤 Wrap-Up </title>
+		<p>
+			<paragraphs label="eulers-method-one-step-takeaways">
+				<title> 🗝️ Key Takeaways.. </title>
+				<ul marker="square">
+				    <li>Numerical methods like Euler's are iterative: they repeat one simple step to build a full solution.</li>
+                    <li>Euler's one-step task is <q>move from where you are in the direction of the slope.</q></li>
+                    <li>Choosing a step size <m>h</m> sets the <q>run,</q> and the <q>rise</q> is just <m>\ul{\text{slope} \times h}</m>.</li>
+                    <li>Euler's method is based on the movement rule <me>(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})</me>.</li>
+                </ul>
+			</paragraphs>
+
+			<paragraphs label="eulers-method-one-step-cyu">
+				<title> Check Your Understanding </title>
+				<exercise label="eulers-method-one-step-cyu-summary">
+					<title>📖❓ Big Picture of Euler's Step</title>
+					<statement>
+						<p>
+							Which statement best describes what Euler's method does <em>one step at a time</em>?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement>From a current point, it uses the slope to predict the next point.</statement>
+							<feedback>Correct — Euler's method is nothing more than this step, done over and over.</feedback>
+						</choice>
+						<choice>
+							<statement>It finds one term of the exact general solution.</statement>
+							<feedback>No — finding terms of the solution would be an analytic method.</feedback>
+						</choice>
+						<choice>
+							<statement>It moves to a nearby point on the solution curve.</statement>
+							<feedback>No — if you knew where the solution curve was, you would already have the solution to the equation.</feedback>
+						</choice>
+						<choice>
+							<statement>It approximates the roots of the characteristic equation.</statement>
+							<feedback>No — Euler's approximates points of the solution, not the roots of the characteristic equation.</feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

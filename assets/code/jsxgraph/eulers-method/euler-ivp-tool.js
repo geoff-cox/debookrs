@@ -2,12 +2,12 @@
 (function () {
 	const boardId = 'euler-ivp-tool';
 	const imgPath = 'external/code/jsxgraph/img-labels/';
-	const xmin = -0.1, xmax = 2, ymin = -1, ymax = 10;
+	const xmin = -0.5, xmax = 3, ymin = -5.5, ymax = 5.5;
 
 	// === SETTINGS ===
-  const t0 = 0, y0 = 1;
+  const t0 = 0, y0 = -2;
   const h = 0.5;
-  const f = (t, y) => t + y;
+  const f = (t, y) => 6*t + y;
   const showInitialPoint = false;
   const snapToVertical = true;
   const showConnectingLine = true;
@@ -32,14 +32,14 @@
       locked: false
     };
 
-    board.create('image', [
-      imgPath + 'euler-ivp-label.png',
-      [1, 4], [3, 1.2],
-	  [1 * board.boardAspect * (1133 / 131), 1]
-    ], {
-      fixed: true,
-      layer: 1
-    });
+    // board.create('image', [
+    //   imgPath + 'euler-ivp-label.png',
+    //   [1, 4], [3, 1.2],
+	  // [0.6 * board.boardAspect * (1133 / 131), 0.6]
+    // ], {
+    //   fixed: true,
+    //   layer: 1
+    // });
 
     const ghostPoint = board.create('point', [t0, y0], {
       name: '', size: 6, color: 'blue', fillColor: 'lightblue',
@@ -65,7 +65,7 @@
       const slope = f(t, y);
       const dx = 0.4;
       const dy = slope * dx;
-      const line = board.create('line', [[t - dx, y - dy], [t + dx, y + dy]], {
+      const line = board.create('arrow', [[t - dx, y - dy], [t + dx, y + dy]], {
         straightFirst: false,
         straightLast: false,
         strokeColor: 'purple', dash: 2, strokeWidth: 2, fixed: true

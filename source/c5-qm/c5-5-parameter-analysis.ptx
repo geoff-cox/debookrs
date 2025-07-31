@@ -1,54 +1,191 @@
 <section label="parameter-analysis">
 	<title> Parameter Analysis </title>
 	<introduction>
+
 		<p>
 			<xref provisional="IN PROGRESS"/>
+		</p>
+
+		<p>
+			Many mathematical models include one or more <term>parameters</term>—constants that represent things like birth rates, drug dosage, resource limits, or physical constants. These parameters aren't just placeholders—they often control the <em>qualitative behavior</em> of the system. Small changes in a parameter's value can cause major shifts in the solution's behavior. Understanding those changes is the goal of <term>parameter analysis</term>.
+		</p>
+
+		<p>
+			In this section, we focus on the most important modeling insight: <em>how equilibria and their stability depend on parameters</em>. When a parameter crosses a critical threshold, the model's behavior can shift dramatically—this is called a <term>bifurcation</term>.
 		</p>
 	</introduction>
 
 	<paragraphs label="parameter-analysis-bifurcation">
 		<title> Bifurcation Analysis </title>
+
 		<p>
-			Bifurcation analysis studies how the qualitative behavior of a system changes as parameters vary. In the context of differential equations, this often involves identifying critical values where the stability of equilibria changes.
+			A <term>bifurcation</term> is a qualitative change in the system's dynamics caused by varying a parameter. In the context of differential equations, it usually means that the <em>number or stability</em> of equilibrium solutions changes at certain critical values.
 		</p>
+
 		<p>
-			For example, consider a system described by the equation:
+			Consider the one-parameter system:
 			<me>
 				\frac{dx}{dt} = f(x, \mu),
 			</me>
-			where <m>\mu</m> is a parameter. As <m>\mu</m> varies, the stability of equilibria can change, leading to bifurcations where new equilibria appear or existing ones disappear.
-		</p>
-		<p>
-			To analyze bifurcations, we typically:
-			<ol>
-				<li>Identify the equilibria by solving <m>f(x, \mu) = 0</m>.</li>
-				<li>Determine the stability of each equilibrium by analyzing the derivative <m>\frac{\partial f}{\partial x}</m>.</li>
-				<li>Track how the stability changes as <m>\mu</m> varies.</li>
-			</ol>
-		</p>
-		<p>
-			Bifurcation diagrams can be used to visualize these changes, showing how the number and stability of equilibria depend on the parameter <m>\mu</m>.
+			where <m>\mu</m> is a parameter. As <m>\mu</m> changes:
 		</p>
 
+		<ul marker="square">
+			<li><em>Existing equilibria</em> may change from stable to unstable (or vice versa).</li>
+			<li><em>New equilibria</em> may appear or disappear altogether.</li>
+			<li>In some cases, the <em>long-term behavior</em> of the entire system changes.</li>
+		</ul>
+
+		<p>
+			The basic workflow for bifurcation analysis is:
+		</p>
+
+		<ol>
+			<li><term>Find equilibria:</term> Solve <m>f(x, \mu) = 0</m> for <m>x</m> in terms of the parameter <m>\mu</m>.</li>
+			<li><term>Classify stability:</term> Compute <m>\frac{\partial f}{\partial x}</m> at each equilibrium. The sign determines whether the equilibrium is a <em>sink</em> (stable) or a <em>source</em> (unstable).</li>
+			<li><term>Track changes:</term> See how the equilibria and their stability change as <m>\mu</m> varies. Identify critical values where the behavior <q>flips.</q></li>
+		</ol>
+		<p>
+			Consider the parameterized system:
+			<me>
+				\frac{dx}{dt} = \mu - x^2
+			</me>.
+		</p>
+
+		<p>
+			First, we find the equilibria:
+			<me>
+				\mu - x^2 = 0 \quad \Rightarrow \quad x = \pm \sqrt{\mu}
+			</me>.
+		</p>
+
+		<p>
+			To see how the equilibria depend on <m>\mu</m>, solve for equilibrium:
+			<ul>
+				<li>For <m>\mu > 0</m>: two equilibria exist (<m>x = \pm \sqrt{\mu}</m>). </li>
+				<li>For <m>\mu = 0</m>: a single equilibrium (<m>x = 0</m>). </li>
+				<li>For <m>\mu &lt; 0</m>: no real equilibria. </li>
+			</ul>
+		</p>
+
+		<p>
+			Stability analysis shows that one branch is stable and the other is unstable when <m>\mu &gt; 0</m>. The bifurcation diagram reveals a <q>collision</q> of equilibria at <m>\mu=0</m>, called a <term>saddle-node bifurcation</term>.
+		</p>
+
+		<p>
+			The results are often summarized in a <term>bifurcation diagram</term>—a picture showing:
+			<ul marker="square">
+				<li>The equilibria plotted against <m>\mu</m>.</li>
+				<li>Solid lines for stable equilibria, dashed lines for unstable ones.</li>
+				<li>Critical parameter values where the diagram changes shape.</li>
+			</ul>
+		</p>
+
+		<p>
+			<xref ref="saddle-node-bifurcation-diagram"/> shows the bifurcation diagram for the previous example.
+		</p>
+
+		<figure xml:id="saddle-node-bifurcation-diagram">
+			<caption>Bifurcation diagram for <m>\frac{dx}{dt} = \mu - x^2</m></caption>
+			<image width="40%">
+				<latex-image>
+					\begin{tikzpicture}[scale=1]
+						% Axes
+						\draw[->] (-0.5,0) -- (2.8,0) node[below] {$\mu$};
+						\draw[->] (0,-1.4) -- (0,1.4) node[left] {$x$};
+
+						% Labels
+						\node[below left] at (0,0) {\scriptsize $0$};
+
+						% Stable branch: x = +sqrt(mu)
+						\draw[thick] plot[domain=0:2,samples=100] ({\x},{sqrt(\x)});
+
+						% Unstable branch: x = -sqrt(mu)
+						\draw[dashed, thick] plot[domain=0:2,samples=100] ({\x},{-sqrt(\x)});
+
+						% Vertical dotted line to show bifurcation point
+						\draw[dotted] (0,-1.2) -- (0,1.2);
+
+						% Legend markers
+						\draw[thick] (1.3,0.9) -- (1.6,0.9) node[right, black, font=\tiny] {Stable};
+						\draw[dashed, thick] (1.3,0.6) -- (1.6,0.6) node[right, black, font=\tiny] {Unstable};
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
+
+		<p>
+			Bifurcation diagrams are a cornerstone of modeling—they show, at a glance, how a system's behavior shifts as conditions change.
+		</p>
+	</paragraphs>
+
+	<paragraphs label="parameter-analysis-why-it-matters">
+		<title>Why Parameter Analysis Matters in Modeling</title>
+
+		<p>
+			Why should we care about bifurcations? Because in applied problems, <em>parameters represent real things</em>: a harvest rate in an ecology model, a dosage in a drug model, or an investment threshold in an economics model. Changing those parameters changes the system.
+		</p>
+
+		<p>
+			The most important modeling insight:
+		</p>
+
+		<ul marker="square">
+			<li><term>Stable equilibria</term> correspond to long-term states the system will settle into.</li>
+			<li><term>Bifurcation points</term> are thresholds where those long-term states shift—suddenly and sometimes irreversibly.</li>
+		</ul>
+
+		<p>
+			For example:
+		</p>
+
+		<ul marker="square">
+			<li>In epidemiology, there's often a threshold vaccination rate: below it, disease spreads (unstable equilibrium); above it, the disease dies out (stable equilibrium).</li>
+			<li>In ecology, a critical harvest rate might push a fish population from stable sustainability to collapse.</li>
+		</ul>
 	</paragraphs>
 
 	<assemblage label="parameter-analysis-wrap-up">
-		<title> 📤 Wrap-Up </title>
+		<title>📤 Wrap-Up</title>
+
 		<p>
 			<paragraphs label="parameter-analysis-takeaways">
-				<title> 🗝️ Key Takeaways.. </title>
+				<title>🗝️ Key Takeaways.. </title>
 				<ul marker="square">
-					<li></li>
- 				</ul>
+					<li><term>Parameters control behavior:</term> Changing them can add, remove, or flip the stability of equilibria.</li>
+					<li><term>Bifurcation diagrams</term> show where those changes occur and summarize the system's response to parameter variation.</li>
+					<li>Critical parameter values in a model often correspond to real-world thresholds—places where <q>just a little more</q> or <q>just a little less</q> has huge consequences.</li>
+				</ul>
 			</paragraphs>
 
 			<paragraphs label="parameter-analysis-cyu">
 				<title> Check Your Understanding </title>
 				<exercise label="parameter-analysis-cyu-bundle">
-					<title>📖❓Parameter Analysis </title>
-
+					<title>📖❓ Parameter Analysis</title>
+					<task label="parameter-analysis-cyu-1">
+						<title>Spot the Bifurcation</title>
+						<statement>
+							<p>
+							The model <m>\frac{dx}{dt} = \mu - x^2</m> changes behavior as <m>\mu</m> varies. What happens when <m>\mu</m> crosses zero?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+							<statement>Two equilibria collide and disappear.</statement>
+							<feedback>Correct—this is the hallmark of a saddle-node bifurcation.</feedback>
+							</choice>
+							<choice>
+							<statement>The system gains an oscillation.</statement>
+							<feedback>This model is one-dimensional; it cannot generate oscillations.</feedback>
+							</choice>
+							<choice>
+							<statement>The system's slope changes sign but equilibria stay the same.</statement>
+							<feedback>No—the set of equilibria itself changes.</feedback>
+							</choice>
+						</choices>
+					</task>
 				</exercise>
 			</paragraphs>
 		</p>
-	</assemblage>	
+	</assemblage>
 </section>
