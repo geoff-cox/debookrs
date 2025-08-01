@@ -1,0 +1,334 @@
+<section xml:id="variable-interactions">
+	<title>Interactions Between Variables</title>
+
+	<introduction>
+		<p>
+			In the last section, we saw <em>uncoupled systems</em>, where each equation evolved completely on its own. 
+			But many real-world systems aren't so tidy. Often one quantity affects another — or they push on each other in both directions. 
+		</p>
+		<p>
+			In this section, we'll step up the complexity: first looking at systems where one variable drives another, and then meeting the case where both variables interact fully.
+		</p>
+	</introduction>
+
+	<!-- ======================================== -->
+	<!-- SUBSECTION: Partially Coupled Systems    -->
+	<!-- ======================================== -->
+	<subsection xml:id="partially-coupled-systems">
+		<title>Partially Coupled Systems</title>
+
+		<p>
+			Suppose we have two variables, <m>x(t)</m> and <m>y(t)</m>, but this time <m>y</m> depends on <m>x</m>. 
+			In other words, <m>x</m> evolves independently, while <m>y</m> <q>listens</q> to <m>x</m>.
+		</p>
+
+		<p>
+			Here's an example:
+		</p>
+
+		<md>
+			<mrow>\frac{dx}{dt} \amp = -x \qquad x(0) = 1</mrow>
+			<mrow>\frac{dy}{dt} \amp = -2y + x \qquad y(0) = 0</mrow>
+		</md>
+
+		<p>
+			Notice what's happening: <m>x</m> follows a simple exponential decay. 
+			Meanwhile, <m>y</m> is influenced by two things — its own decay and whatever value <m>x</m> has at the time. 
+			This is called a <em>partially coupled</em> system: one-way interaction.
+		</p>
+
+		<example xml:id="ex-partially-coupled">
+			<title>Solving a Partially Coupled System</title>
+			<statement>
+				<p>
+					Solve the system:
+				</p>
+				<md>
+					<mrow>\frac{dx}{dt} \amp = -x \qquad x(0) = 1</mrow>
+					<mrow>\frac{dy}{dt} \amp = -2y + x \qquad y(0) = 0</mrow>
+				</md>
+			</statement>
+
+			<solution>
+				<p>
+					<term>Step 1:</term> Solve the independent equation for <m>x</m>.  
+					This is a familiar exponential decay:
+				</p>
+
+				<me>
+					\frac{dx}{dt} = -x \quad \Rightarrow \quad x(t) = e^{-t}.
+				</me>
+
+				<p>
+					<term>Step 2:</term> Substitute <m>x(t) = e^{-t}</m> into the <m>y</m>-equation:
+				</p>
+
+				<me>
+					\frac{dy}{dt} = -2y + e^{-t}.
+				</me>
+
+				<p>
+					This is a linear first-order equation. Use an integrating factor to solve:
+				</p>
+
+				<me>
+					y' + 2y = e^{-t}, \qquad \mu(t) = e^{2t}.
+				</me>
+
+				<p>
+					Multiply by <m>e^{2t}</m> and rewrite the left side as a derivative:
+				</p>
+
+				<me>
+					\frac{d}{dt}\left(e^{2t} y \right) = e^{t}.
+				</me>
+
+				<p>
+					Integrate:
+				</p>
+
+				<me>
+					e^{2t} y = \int e^{t} dt = e^{t} + C.
+				</me>
+
+				<p>
+					Solve for <m>y(t)</m>:
+				</p>
+
+				<me>
+					y(t) = e^{-t} + C e^{-2t}.
+				</me>
+
+				<p>
+					Use the initial condition <m>y(0) = 0</m>:
+				</p>
+
+				<me>
+					0 = 1 + C \quad \Rightarrow \quad C = -1.
+				</me>
+
+				<p>
+					So the solution is:
+				</p>
+
+				<me>
+					x(t) = e^{-t}, \qquad y(t) = e^{-t} - e^{-2t}.
+				</me>
+
+				<p>
+					<m>x(t)</m> decays smoothly, while <m>y(t)</m> rises briefly (pulled by <m>x</m>) before eventually decaying as well.  
+					This <q>one-way influence</q> is the hallmark of a partially coupled system.
+				</p>
+			</solution>
+		</example>
+
+		<exercise label="variable-interactions-partially-coupled-chkpt-bundle">
+			<title>📖❓ Partially Coupled Equations</title>
+			<task label="variable-interactions-chkpt-1">
+				<title>📖❓ Partial Coupling is One-Way</title>
+				<statement correct="yes">
+					<p>
+						In a partially coupled system, one variable affects the other, but not vice versa.
+					</p>
+				</statement>
+				<feedback>
+					<p>
+						Exactly. In these systems, one equation is independent and can be solved first. The second equation depends on the first.
+					</p>
+				</feedback>
+			</task>
+
+			<task label="variable-interactions-chkpt-2">
+				<title>📖❓ Which Should You Solve First?</title>
+				<statement>
+					<p>
+						You are given the system:
+						<md>
+							<mrow> \frac{dx}{dt} \amp = -x </mrow>
+							<mrow> \frac{dy}{dt} \amp = -2y + x </mrow>
+						</md>
+						Which equation should you solve first?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice>
+						<statement><p><m>dy/dt</m>, because it depends on both variables.</p></statement>
+						<feedback><p>Not quite. You need to know <m>x(t)</m> before you can solve for <m>y(t)</m>.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>It doesn't matter, either can be solved independently.</p></statement>
+						<feedback><p>Actually, only <m>x</m> evolves independently. <m>y</m> depends on it.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>dx/dt</m>, because it is independent of <m>y</m>.</p></statement>
+						<feedback><p>Correct. Solve the independent equation for <m>x</m> first, then use that in the equation for <m>y</m>.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>Neither equation can be solved until both are known.</p></statement>
+						<feedback><p>Actually, this is a one-way system, <m>x</m> drives <m>y</m>, not the other way around.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
+	<!-- ======================================== -->
+	<!-- SUBSECTION: Fully Coupled Systems        -->
+	<!-- ======================================== -->
+	<subsection xml:id="fully-coupled-conceptual">
+		<title>Fully Coupled Systems (Conceptual)</title>
+
+		<p>
+			We've seen systems where nothing interacts (uncoupled) and where one quantity drives another (partially coupled). 
+			Now we reach the most intricate case: <em>fully coupled systems</em>.
+		</p>
+
+		<p>
+			In a fully coupled system, <term>both</term> variables affect each other. 
+			Neither equation stands alone — any change in <m>x</m> alters <m>y</m>'s future, and <m>y</m> feeds back into <m>x</m>.
+		</p>
+
+		<p>
+			Consider:
+		</p>
+
+		<md>
+			<mrow>\frac{dx}{dt} \amp = x + y \qquad x(0) = 2</mrow>
+			<mrow>\frac{dy}{dt} \amp = x - y \qquad y(0) = 0</mrow>
+		</md>
+
+		<p>
+			Here, <m>x</m> and <m>y</m> are fully entangled — you can't solve one without the other. 
+			Instead of peeling off one equation at a time, we'll eventually treat the system as a single object.
+		</p>
+
+		<exercise label="variable-interactions-chkpt-3">
+			<title>📖❓ What Makes It <q>Fully Coupled</q>?</title>
+			<statement>
+				<p>
+					What must be true for a system to be fully coupled?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><p>Both equations involve both variables.</p></statement>
+				</choice>
+				<choice correct="no">
+					<statement><p>Each equation has only one variable.</p></statement>
+					<feedback><p>That would actually make the system uncoupled.</p></feedback>
+				</choice>
+				<choice correct="no">
+					<statement><p>One equation is independent, and the other depends on it.</p></statement>
+					<feedback><p>That's partially coupled, not fully coupled.</p></feedback>
+				</choice>
+			</choices>
+		</exercise>
+	</subsection>
+
+	<assemblage label="variable-interactions-wrap-up">
+		<title>📤 Wrap-Up</title>
+		<p>
+			<paragraphs label="variable-interactions-takeaways">
+				<title>🗝️ Key Takeaways..</title>
+				<ul marker="square">
+					<li>In a partially coupled system, one equation is independent and the other depends on it.</li>
+					<li>You can solve these without any new ideas by solving independent equation first, then substitute its solution into the dependent equation.</li>
+					<li>These systems model one-way influences, like a light level driving plant growth.</li>
+					<li>In fully coupled systems, both variables influence each other. Neither equation can be solved in isolation. That is, the system must be treated as a whole.</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="variable-interactions-cyu">
+				<title>Check Your Understanding</title>
+				<exercise xml:id="variable-interactions-cyu-bundle">
+					<title>📖❓ Understanding Partially Coupled Systems</title>
+
+					<task label="variable-interactions-cyu-1">
+						<title>📖❓ Identify the Coupling</title>
+						<statement>
+							<p>
+								Consider the system:
+								<md>
+									<mrow> \frac{dx}{dt} \amp = -x </mrow>
+									<mrow> \frac{dy}{dt} \amp = -3y + x </mrow>
+								</md>
+								Which of the following statements are true?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><m>x</m> evolves independently of <m>y</m>.</statement>
+							</choice>
+							<choice correct="yes">
+								<statement><m>y</m> is influenced by <m>x</m>.</statement>
+							</choice>
+							<choice correct="no">
+								<statement>Both variables depend on each other equally.</statement>
+							</choice>
+							<choice correct="yes">
+								<statement>This is a partially coupled system.</statement>
+							</choice>
+							<choice correct="no">
+								<statement>You must solve the <m>dy/dt</m> equation first.</statement>
+							</choice>
+						</choices>
+					</task>
+
+					<task label="variable-interactions-cyu-2">
+						<title>📖❓ Solving Strategy</title>
+						<statement>
+							<p>
+								What is the best way to solve a partially coupled system?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><p>Solve the independent equation first, then substitute into the other equation.</p></statement>
+							</choice>
+							<choice correct="no">
+								<statement><p>Solve both equations at the same time using elimination.</p></statement>
+								<feedback><p>You <em>could</em> do that, but it's much simpler to solve the independent one first.</p></feedback>
+							</choice>
+							<choice correct="no">
+								<statement><p>Write the system as one second-order DE before solving.</p></statement>
+								<feedback><p>That's unnecessary for partially coupled systems — keep it simple.</p></feedback>
+							</choice>
+						</choices>
+					</task>
+
+					<task label="variable-interactions-cyu-3">
+						<title>📖❓ Spot the Coupling</title>
+						<statement>
+							<p>
+								Consider the system:
+							</p>
+							<md>
+								<mrow>\frac{dx}{dt} \amp = 3x + y</mrow>
+								<mrow>\frac{dy}{dt} \amp = 4x - 2y</mrow>
+							</md>
+							<p>
+								Which of these statements are true?
+							</p>
+						</statement>
+						<choices randomize="yes">
+							<choice correct="yes">
+								<statement><p><m>x</m> depends on <m>y</m>.</p></statement>
+							</choice>
+							<choice correct="yes">
+								<statement><p><m>y</m> depends on <m>x</m>.</p></statement>
+							</choice>
+							<choice correct="no">
+								<statement><p>This is a partially coupled system.</p></statement>
+								<feedback><p>Not quite — both equations are entangled, which makes it fully coupled.</p></feedback>
+							</choice>
+							<choice correct="no">
+								<statement><p>You can solve for <m>x</m> first, then plug into <m>y</m>.</p></statement>
+								<feedback><p>Because <m>x</m> depends on <m>y</m> as well, you can't isolate them that easily.</p></feedback>
+							</choice>
+						</choices>
+					</task>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

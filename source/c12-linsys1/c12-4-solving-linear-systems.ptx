@@ -1,0 +1,334 @@
+<section xml:id="solving-linear-systems">
+	<title>Solving Linear Systems</title>
+
+	<xref provisional="WORK-IN-PROGRESS"/>
+
+	<introduction>
+		<p>
+			We've explored what linear systems are, how to visualize their behavior, and how to write them in compact matrix form. 
+			Now it's time to actually <em>solve</em> them.
+		</p>
+		<p>
+			We'll start with a method that mirrors how we solved single constant-coefficient equations: 
+			we guess exponential solutions. This guess transforms the differential system into an algebra problem — 
+			one that will lead naturally to eigenvalues and eigenvectors.
+		</p>
+	</introduction>
+
+	<!-- ================================= -->
+	<!-- SUBSECTION: Guessing Exponentials -->
+	<!-- ================================= -->
+
+	<subsection xml:id="guessing-exponentials">
+		<title>Guessing Exponential Solutions</title>
+
+		<p>
+			Recall how we solved single first-order linear equations like <m>y' = ky</m> by 
+			guessing solutions of the form <m>y(t) = Ce^{kt}</m>.  
+			We’ll try the same idea for systems.
+		</p>
+
+		<p>
+			Consider the system:
+		</p>
+
+		<men xml:id="guess-exponential-system">
+			\begin{array}{l}
+			\dfrac{dx}{dt} = 3x + 4y\\
+			\dfrac{dy}{dt} = -4x + 3y
+			\end{array}
+		</men>
+
+		<p>
+			Let's guess that <m>x(t)</m> and <m>y(t)</m> share the same exponential rate <m>r</m>:
+		</p>
+
+		<me>
+			x(t) = Ce^{rt}, \qquad y(t) = De^{rt}.
+		</me>
+
+		<aside>
+			<p>
+				Clearly, if <m>C = D = 0</m>, then we would have the trivial solution, so let's assume <m>C</m> and <m>D</m> are not both zero.
+			</p>
+		</aside>
+
+		<p>
+			Differentiating gives:
+		</p>
+
+		<me>
+			x' = Cr e^{rt}, \qquad y' = Dr e^{rt}.
+		</me>
+
+		<p>
+			Substituting into the system:
+		</p>
+
+		<md alignment="alignat">
+			<mrow>Cr e^{rt} \amp {}={} \amp 3Ce^{rt} \amp {}+{} \amp 4De^{rt}</mrow>
+			<mrow>Dr e^{rt} \amp {}={} \amp -4Ce^{rt} \amp {}+{} \amp 3De^{rt}</mrow>
+		</md>
+
+		<p>
+			Divide through by <m>e^{rt}</m> (which is never zero):
+		</p>
+
+		<md alignment="alignat">
+			<mrow>Cr \amp {}={} \amp 3C \amp {}+{} \amp 4D</mrow>
+			<mrow>Dr \amp {}={} \amp -4C \amp {}+{} \amp 3D</mrow>
+		</md>
+
+		<p>
+			This leaves an algebraic system involving the unknowns: <m>C</m>, <m>D</m>, and <m>r</m>. It turns out that these unknowns have a very special relationship. To see this, flip the system around:
+		</p>
+
+		<md alignment="alignat">
+			<mrow>3{\DLBb C} \amp {}+{} \amp 4{\DLGb D} \amp {}={} \amp r{\DLBb C}   </mrow>
+			<mrow>-4{\DLBb C} \amp {}+{} \amp 3{\DLGb D} \amp {}={} \amp r{\DLGb D} </mrow>.
+		</md>
+
+		<p>
+			Now, convert this into a <m>2 \times 2</m> matrix system:
+		</p>
+
+		<me>
+			\begin{bmatrix}
+				3 \amp 4\\
+				-4 \amp 3
+			\end{bmatrix}
+			\begin{bmatrix}
+				{\DLBb C}\\
+				{\DLGb D}
+			\end{bmatrix}
+			= r
+			\begin{bmatrix}
+				{\DLBb C}\\
+				{\DLGb D}
+			\end{bmatrix}
+		</me>
+
+		<p>
+			This is the <em>eigenvalue equation</em> <m>A \vec{v} = r \vec{v}</m> for the coefficient matrix
+		</p>
+
+		<me>
+			A = \begin{bmatrix} 3 \amp 4 \\ -4 \amp 3 \end{bmatrix}.
+		</me>
+
+		
+		<p>
+			This tells us something powerful:  
+			<ul marker="disc">
+				<li>Linear systems often have solutions made of exponentials.</li>
+				<li>The allowed exponential rates <m>r</m> are the <em>eigenvalues</em> of <m>A</m>.</li>
+				<li>The corresponding coefficients <m>C</m> and <m>D</m> form the <em>eigenvectors</em>.</li>
+			</ul>
+		</p>
+
+		<example xml:id="ex-worked-linear-system">
+			<title>Solving a Simple Linear System</title>
+			<statement>
+				<p>
+					Solve the system:
+				</p>
+				<md>
+					<mrow>\frac{dx}{dt} \amp = x + y</mrow>
+					<mrow>\frac{dy}{dt} \amp = 4x + y</mrow>
+				</md>
+			</statement>
+			<solution>
+				<p>
+					Write in matrix form <m>\frac{dY}{dt} = AY</m> with 
+					<m>A = \begin{bmatrix}1 \amp 1 \\ 4 \amp 1\end{bmatrix}</m>.
+				</p>
+
+				<p>
+					Guess <m>Y(t) = \vec{v}e^{rt}</m>.  
+					Substituting gives <m>A\vec{v} = r\vec{v}</m>.
+				</p>
+
+				<p>
+					Find eigenvalues of <m>A</m> by solving <m>\det(A - rI) = 0</m>.
+				</p>
+
+				<me>
+					\det \begin{bmatrix} 1-r \amp 1 \\ 4 \amp 1-r \end{bmatrix} = (1-r)^2 - 4 = r^2 - 2r - 3.
+				</me>
+
+				<p>
+					Set equal to zero: <m>r^2 - 2r - 3 = 0</m>. Factor:
+				</p>
+
+				<me>
+					(r - 3)(r + 1) = 0 \quad \Rightarrow \quad r_1 = 3, \ r_2 = -1.
+				</me>
+
+				<p>
+					Find eigenvectors for each eigenvalue.
+				</p>
+
+				<ul>
+					<li><term>For r = 3:</term> Solve <m>(A - 3I)\vec{v} = 0</m>.
+						<me>
+							\begin{bmatrix} -2 \amp 1 \\ 4 \amp -2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}.
+						</me>
+						From the first row: <m>-2v_1 + v_2 = 0 \Rightarrow v_2 = 2v_1</m>.  
+						Choose <m>v_1 = 1</m>, giving eigenvector <m>\vec{v}_1 = \begin{bmatrix}1 \\ 2\end{bmatrix}</m>.
+					</li>
+
+					<li><term>For r = -1:</term> Solve <m>(A + I)\vec{v} = 0</m>.
+						<me>
+							\begin{bmatrix} 2 \amp 1 \\ 4 \amp 2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}.
+						</me>
+						From the first row: <m>2v_1 + v_2 = 0 \Rightarrow v_2 = -2v_1</m>.  
+						Choose <m>v_1 = 1</m>, giving eigenvector <m>\vec{v}_2 = \begin{bmatrix}1 \\ -2\end{bmatrix}</m>.
+					</li>
+				</ul>
+
+				<p>
+					Write the general solution.
+				</p>
+
+				<me>
+					Y(t) = C_1 \vec{v}_1 e^{3t} + C_2 \vec{v}_2 e^{-t}.
+				</me>
+
+				<p>
+					Substitute the eigenvectors:
+				</p>
+
+				<me>
+					\begin{bmatrix} x(t) \\ y(t) \end{bmatrix} =
+					C_1 \begin{bmatrix} 1 \\ 2 \end{bmatrix} e^{3t} +
+					C_2 \begin{bmatrix} 1 \\ -2 \end{bmatrix} e^{-t}.
+				</me>
+
+				<p>
+					Or written componentwise:
+				</p>
+
+				<me>
+					x(t) = C_1 e^{3t} + C_2 e^{-t}, \qquad
+					y(t) = 2C_1 e^{3t} - 2C_2 e^{-t}.
+				</me>
+
+				<p>
+					The constants <m>C_1</m> and <m>C_2</m> will be found from initial conditions.
+				</p>
+			</solution>
+		</example>
+
+		<example xml:id="ex-complex-eigenvalues">
+			<title>Complex Eigenvalues and Spirals</title>
+			<statement>
+				<p>
+					Consider the system:
+				</p>
+				<md>
+					<mrow>\frac{dx}{dt} \amp = 2x - 5y</mrow>
+					<mrow>\frac{dy}{dt} \amp = 5x + 2y</mrow>
+				</md>
+				<p>
+					Solve the system and describe the behavior of solutions.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Write <m>A = \begin{bmatrix}2 \amp -5 \\ 5 \amp 2\end{bmatrix}</m>.
+				</p>
+
+				<p>
+					Find eigenvalues by solving <m>\det(A - rI) = 0</m>.
+				</p>
+
+				<me>
+					\det \begin{bmatrix} 2-r \amp -5 \\ 5 \amp 2-r \end{bmatrix} = (2-r)^2 + 25 = r^2 - 4r + 29.
+				</me>
+
+				<p>
+					Set equal to zero: <m>r^2 - 4r + 29 = 0</m>.  
+					Using the quadratic formula:
+				</p>
+
+				<me>
+					r = \frac{4 \pm \sqrt{(-4)^2 - 4(29)}}{2} = \frac{4 \pm \sqrt{-100}}{2} = 2 \pm 5i.
+				</me>
+
+				<p>
+					The eigenvalues are <m>2 \pm 5i</m> — complex conjugates.  
+					The real part (<m>2</m>) means solutions grow exponentially;  
+					the imaginary part (<m>5i</m>) means they also rotate: the system’s trajectories spiral outward.
+				</p>
+
+				<p>
+					Find an eigenvector for <m>r = 2 + 5i</m> (the other is its conjugate).  
+					Solving <m>(A - rI)\vec{v} = 0</m> gives an eigenvector <m>\vec{v} = \begin{bmatrix} 1 \\ -i \end{bmatrix}</m>.
+				</p>
+
+				<p>
+					Write the solution.
+				</p>
+
+				<p>
+					We form the real solution by taking the real and imaginary parts:
+				</p>
+
+				<me>
+					\begin{aligned}
+					x(t) \amp = e^{2t}\left( C_1 \cos(5t) + C_2 \sin(5t) \right) \\
+					y(t) \amp = e^{2t}\left( -C_1 \sin(5t) + C_2 \cos(5t) \right)
+					\end{aligned}
+				</me>
+
+				<p>
+					The exponential factor <m>e^{2t}</m> causes growth; the sine and cosine produce rotation.
+					The system’s phase portrait shows spirals moving outward from the origin.
+				</p>
+			</solution>
+		</example>
+	</subsection>
+
+	<!-- ================================================================ -->
+	<!-- WRAP-UP + CHECKPOINT QUESTIONS                                   -->
+	<!-- ================================================================ -->
+	<assemblage label="solving-linear-systems-wrap-up">
+		<title>📤 Wrap-Up</title>
+		<p>
+			<paragraphs label="solving-linear-systems-takeaways00">
+				<title>🗝️ Key Takeaways..</title>
+				<ul marker="square">
+					<li>For constant-coefficient linear systems, guessing exponential solutions reduces the DE to an eigenvalue problem</li>
+					<li>Eigenvalues, <m>r</m>, tell us whether solutions decay, grow, or spiral.</li>
+				</ul>
+			</paragraphs>
+
+			<paragraphs label="solving-linear-systems-cyu">
+				<title>Check Your Understanding</title>
+
+				<exercise xml:id="solving-linear-systems-cyu-1">
+					<title>📖❓Eigenvalues and Behavior</title>
+					<statement>
+						<p>
+							Suppose the eigenvalues of a system are <m>r = -2 \pm 3i</m>. What does this tell you about the solutions?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><p>They spiral inward toward the origin.</p></statement>
+						</choice>
+						<choice correct="no">
+							<statement><p>They spiral outward away from the origin.</p></statement>
+							<feedback><p>The negative real part means decay, not growth.</p></feedback>
+						</choice>
+						<choice correct="no">
+							<statement><p>They move straight toward the origin with no oscillation.</p></statement>
+							<feedback><p>The imaginary part implies rotation (spiraling).</p></feedback>
+						</choice>
+					</choices>
+				</exercise>
+			</paragraphs>
+		</p>
+	</assemblage>
+
+</section>

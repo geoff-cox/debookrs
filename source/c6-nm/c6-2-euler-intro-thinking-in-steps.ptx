@@ -1,25 +1,25 @@
 <section label="eulers-method-one-step">
-    <title> Thinking in Steps: How Euler's Method Works One Step at a Time </title>
+	<title>Thinking in Steps: How Euler's Method Works One Step at a Time</title>
 
-    <introduction>
+	<introduction>
 		<p>
 			This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.
 		</p>
-    </introduction>
+	</introduction>
 
-    <paragraphs label="eulers-method-one-step-thinking">
-        <title>Iterative Methods—Thinking in Steps</title>
+	<paragraphs label="eulers-method-one-step-thinking">
+		<title>Iterative Methods—Thinking in Steps</title>
 		<p>
-            Most numerical methods are <em>iterative</em>, which means they don't try to solve the whole problem at once. Instead, they repeat the same small task again and again. 
-        </p>
+			Most numerical methods are <em>iterative</em>, which means they don't try to solve the whole problem at once. Instead, they repeat the same small task again and again. 
+		</p>
 
-        <p>
-            That task is simple: use the information you already have to generate new information. Do it once, you get the next step. Do it a hundred times, you build a whole solution. 
-        </p>
+		<p>
+			That task is simple: use the information you already have to generate new information. Do it once, you get the next step. Do it a hundred times, you build a whole solution. 
+		</p>
 
-        <p>
-            So, the key to understanding an iterative method is by learning its task.  
-        </p>
+		<p>
+			So, the key to understanding an iterative method is by learning its task.  
+		</p>
 
 		<exercise label="eulers-method-one-step-cyu-iterative">
 			<title>📖❓ What does <q>iterative</q> mean?</title>
@@ -47,38 +47,38 @@
 				</choice>
 			</choices>
 		</exercise>
-    </paragraphs>
+	</paragraphs>
 
-    <paragraphs label="eulers-method-one-step-task">
-        <title>Euler's Method Task</title>
-        <p>
-            For Euler's method, the repeated task can be summed up like this:
-        </p>
+	<paragraphs label="eulers-method-one-step-task">
+		<title>Euler's Method Task</title>
+		<p>
+			For Euler's method, the repeated task can be summed up like this:
+		</p>
 
 		<sidebyside margins="6% 6%">
 			<p><q>from a known point, move to a nearby point along the direction of the slope.</q></p>
 		</sidebyside>
 
-        <p>
-            Think of following a hiking trail using only a compass—you don't know exactly where the trail ends, but if you keep stepping in the right direction, you'll trace the path. In Euler's method, that <q>direction</q> is the slope from the differential equation.  
-        </p>
+		<p>
+			Think of following a hiking trail using only a compass—you don't know exactly where the trail ends, but if you keep stepping in the right direction, you'll trace the path. In Euler's method, that <q>direction</q> is the slope from the differential equation.  
+		</p>
 
-        <p>
-            More precisely, if <m>(t_{\text{cur}}, y_{\text{cur}})</m> is a point on the solution and you know the slope there, you can predict where the next point <m>(t_{\text{new}}, y_{\text{new}})</m> will be. 
-        </p>
+		<p>
+			More precisely, if <m>(t_{\text{cur}}, y_{\text{cur}})</m> is a point on the solution and you know the slope there, you can predict where the next point <m>(t_{\text{new}}, y_{\text{new}})</m> will be. 
+		</p>
 
-        <p>
-            To understand this <q>one step,</q> we'll answer two guiding questions:
-        </p>
+		<p>
+			To understand this <q>one step,</q> we'll answer two guiding questions:
+		</p>
 
-        <ol>
-            <li>What does it mean to move in the direction of a slope?</li>
-            <li>Given a point, slope, and step size, what is the formula for the next point?</li>
-        </ol>
+		<ol>
+			<li>What does it mean to move in the direction of a slope?</li>
+			<li>Given a point, slope, and step size, what is the formula for the next point?</li>
+		</ol>
 	</paragraphs>
 
-    <subsection label="eulers-method-one-step-direction">
-        <title>Moving in the Direction of a Slope</title>
+	<subsection label="eulers-method-one-step-direction">
+		<title>Moving in the Direction of a Slope</title>
 		<p>
 			First question: <q>What does it mean to move in the direction of a slope?</q>  
 			Suppose you're at the point <m>(1,1)</m> and the slope there is <m>\frac{3}{2}</m>.
@@ -366,32 +366,32 @@
 
 	</subsection>
 
-    <subsection label="eulers-method-one-step-rule">
-        <title>The Movement Rule</title>
+	<subsection label="eulers-method-one-step-rule">
+		<title>The Movement Rule</title>
 
-        <p>
-            Now that we've decided how to take a step, we can write it as a formula. 
-        </p>
+		<p>
+			Now that we've decided how to take a step, we can write it as a formula. 
+		</p>
 
-        <p>
-            From basic geometry, a new point is just the old point plus the changes:
-        </p>
+		<p>
+			From basic geometry, a new point is just the old point plus the changes:
+		</p>
 
-        <me>
-            (t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + \text{run}, \ y_{\text{cur}} + \text{rise})
-        </me>.
+		<me>
+			(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + \text{run}, \ y_{\text{cur}} + \text{rise})
+		</me>.
 
-        <p>
-            Euler's method sets the <q>run</q> to the step size <m>h</m> and the <q>rise</q> to <m>h \times \text{slope}</m>. Substituting those gives the update rule:
-        </p>
+		<p>
+			Euler's method sets the <q>run</q> to the step size <m>h</m> and the <q>rise</q> to <m>h \times \text{slope}</m>. Substituting those gives the update rule:
+		</p>
 
-        <men xml:id="point-slope-movement-rule">
-            (t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})
-        </men>.
+		<men xml:id="point-slope-movement-rule">
+			(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})
+		</men>.
 
-     	<p>
-            This single equation captures the whole one-step task: start at the current point, find the slope, take a step of size <m>h</m> in that direction, and you land at the next point. Euler's method is simply this step repeated many times.
-        </p>
+		<p>
+			This single equation captures the whole one-step task: start at the current point, find the slope, take a step of size <m>h</m> in that direction, and you land at the next point. Euler's method is simply this step repeated many times.
+		</p>
 
 		<exercise label="eulers-method-one-step-cyu-rule-concept">
 			<title>📖❓ Understanding the Movement Formula</title>
@@ -423,20 +423,20 @@
 	</subsection>
 
 	<assemblage label="eulers-method-one-step-wrap-up">
-		<title> 📤 Wrap-Up </title>
+		<title>📤 Wrap-Up</title>
 		<p>
 			<paragraphs label="eulers-method-one-step-takeaways">
-				<title> 🗝️ Key Takeaways.. </title>
+				<title>🗝️ Key Takeaways..</title>
 				<ul marker="square">
-				    <li>Numerical methods like Euler's are iterative: they repeat one simple step to build a full solution.</li>
-                    <li>Euler's one-step task is <q>move from where you are in the direction of the slope.</q></li>
-                    <li>Choosing a step size <m>h</m> sets the <q>run,</q> and the <q>rise</q> is just <m>\ul{\text{slope} \times h}</m>.</li>
-                    <li>Euler's method is based on the movement rule <me>(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})</me>.</li>
-                </ul>
+					<li>Numerical methods like Euler's are iterative: they repeat one simple step to build a full solution.</li>
+					<li>Euler's one-step task is <q>move from where you are in the direction of the slope.</q></li>
+					<li>Choosing a step size <m>h</m> sets the <q>run,</q> and the <q>rise</q> is just <m>\ul{\text{slope} \times h}</m>.</li>
+					<li>Euler's method is based on the movement rule <me>(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})</me>.</li>
+				</ul>
 			</paragraphs>
 
 			<paragraphs label="eulers-method-one-step-cyu">
-				<title> Check Your Understanding </title>
+				<title>Check Your Understanding</title>
 				<exercise label="eulers-method-one-step-cyu-summary">
 					<title>📖❓ Big Picture of Euler's Step</title>
 					<statement>

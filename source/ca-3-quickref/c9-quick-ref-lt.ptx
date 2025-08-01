@@ -1,0 +1,679 @@
+<subsubsection xml:id="quick-ref-lt"><title>Laplace Transforms</title>
+
+	<worksheet><title>Key Terms &amp; Concepts</title>
+
+		<p>
+			In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:
+		</p>
+
+		<p>
+			<assemblage><title>✳️ Summary of the Key Ideas</title>
+				<p>
+					<ul marker="square">
+						<li>
+							<term>Differential <m>\to</m> Algebraic Equations</term>. The Laplace transform converts a differential equation into an algebraic equation, simplifying the solution process by eliminating derivatives.
+						</li>
+						<li>
+							<term>Laplace Transform Concept</term>. Applying the Laplace transform to a differential equation involves transforming each term by multiplying by <m>e^{-st}</m> and integrating with respect to <m>t</m> from <m>0</m> to <m>\infty</m>, but is often simplified by directly applying the Laplace operator, <m>\laplacesym</m>.
+						</li>
+						<li>
+							<term>Linearity Property</term>. The Laplace transform is linear, meaning it distributes across addition and subtraction, and allows for constants to be factored out. This property is essential for transforming complex equations.
+						</li>
+						<li>
+							<term>Transforming Initial Conditions</term>. Initial conditions are incorporated directly into the Laplace-transformed equation, modifying the transformed terms to include initial values, making it easier to solve the resulting algebraic equation.
+						</li>
+						<li>
+							<term>Common Function Transforms</term>. The Laplace transforms of common functions, such as exponentials, sines, cosines, and polynomials, are essential tools in transforming differential equations and are summarized in the provided table.
+						</li>
+						<li>
+							<term>Transforming Derivatives</term>. The Laplace transform of a derivative, <m>y'(t)</m> or higher, transfers the derivative onto the Laplace variable <m>s</m>, reducing the order of the equation while introducing initial condition terms.
+						</li>
+						<li>
+							<term>Multiplication by <m>e^{at}</m> and <m>t^n</m></term>. When multiplying a function by an exponential <m>e^{at}</m>, the Laplace transform shifts by <m>a</m> in the <m>s</m>-domain, and multiplying by <m>t^n</m> corresponds to differentiating the transform <m>n</m> times with respect to <m>s</m>, introducing a sign change.
+						</li>
+						<li>
+							<term>Transforming the Entire Equation</term>. The process of applying the Laplace transform to an entire differential equation with initial conditions involves systematically transforming each term and leads to a simplified algebraic equation in the <m>s</m>-domain, ready for solving.
+						</li>
+					</ul>
+				</p>
+			</assemblage>
+		</p>
+
+		<p>
+			Assume <m>F(s) = \lap{f(t)}</m>, <m>a</m>, <m>b</m> are constant, and <m>n=0,1,2,3,\ldots</m>
+			<paragraphs><title>Common Laplace Transforms</title></paragraphs>
+			<paragraphs xml:id="L1"><title>L<m>_1</m><m>\ds\quad\lap{ 1 } = \frac{1}{s}, \quad s &gt; 0</m></title></paragraphs>
+			<paragraphs xml:id="L2"><title>L<m>_2</m><m>\ds\quad\lap{ e^{at} } = \frac{1}{s - a}, \quad s &gt;a </m></title></paragraphs>
+			<paragraphs xml:id="L3"><title>L<m>_3</m><m>\ds\quad\lap{ t^n } = \frac{n!}{s^{n+1}}, \quad s &gt;0, \quad n = 1, 2, 3, \ldots </m></title></paragraphs>
+			<paragraphs xml:id="L4"><title>L<m>_4</m><m>\ds\quad\lap{ \sin(bt) } = \frac{b}{s^2+b^2}, \quad s &gt;0</m></title></paragraphs>
+			<paragraphs xml:id="L5"><title>L<m>_5</m><m>\ds\quad\lap{ \cos(bt) } = \frac{s}{s^2+b^2}, \quad s &gt;0</m></title></paragraphs>
+			<paragraphs xml:id="L6"><title>L<m>_6</m><m>\ds\quad\lap{ e^{at}\ t^n } = \frac{n!}{(s-a)^{n+1}}, \quad s &gt;a, \quad n = 0, 1, 2, 3, \ldots </m></title></paragraphs>
+			<paragraphs xml:id="L7"><title>L<m>_7</m><m>\ds\quad\lap{ e^{at}\sin(bt) } = \frac{b}{(s-a)^2+b^2}, \quad s &gt;a</m></title></paragraphs>
+			<paragraphs xml:id="L8"><title>L<m>_8</m><m>\ds\quad\lap{ e^{at}\cos(bt) } = \frac{s-a}{(s-a)^2+b^2}, \quad s &gt;a</m></title></paragraphs>
+			<paragraphs><title> Laplace Transform of Derivatives </title></paragraphs>
+			<paragraphs xml:id="L9"><title>L<m>_9</m><m>\ds\quad\lap{ f'(t) } = sF(s) - f(0), \quad s &gt; 0</m></title></paragraphs>
+			<paragraphs xml:id="L10"><title>L<m>_{10}</m><m>\ds\quad\lap{ f''(t) } = s^2F(s) - sf(0) - f'(0), \quad s &gt; 0</m></title></paragraphs>
+			<paragraphs xml:id="L11"><title>L<m>_{11}</m><m>\ds\quad\lap{ f'''(t) } = s^3F(s) - s^2f(0) - sf'(0) - f''(0), \quad s &gt; 0</m></title></paragraphs>
+			<paragraphs xml:id="L12"><title>L<m>_{12}</m><m>\ds\quad\lap{ t^n f(t) } = (-1)^n \frac{d^n}{ds^n}F(s), \quad s &gt; 0, \quad n = 0, 1, 2, 3, \ldots </m></title></paragraphs>
+		</p>
+
+		<table halign="center" xml:id="lt-table-common-rules-merged0"><title><em>Common Laplace Transforms. <m>a, b</m> are constant, <m>n = 1, 2, \ldots</m></em></title>
+			<tabular halign="center">
+				<row>
+					<cell/>
+					<cell><m>t</m>-functions</cell>
+					<cell colspan="2"><m>s</m>-functions</cell>
+				</row>
+				<row>
+					<cell/>
+					<cell><m>\downarrow</m></cell>
+					<cell colspan="2"><m>\downarrow</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"/>
+					<cell right="minor"><m>f(t)</m></cell>
+					<cell colspan="2"><m>\lap{ f(t) }</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_1</m></cell>
+					<cell right="minor"><m>1</m></cell>
+					<cell><m>\ds \frac{1}{s}</m></cell>
+					<cell><m>s \gt 0</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_2</m></cell>
+					<cell right="minor"><m>e^{at}</m></cell>
+					<cell><m>\ds \frac{1}{s-a}</m></cell>
+					<cell><m>s \gt a</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_3</m></cell>
+					<cell right="minor"><m>t^n</m></cell>
+					<cell><m>\ds \frac{n!}{s^{n+1}}</m></cell>
+					<cell><m>s \gt 0</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_4</m></cell>
+					<cell right="minor"><m>\sin (bt)</m></cell>
+					<cell><m>\ds \frac{b}{s^2 + b^2}</m></cell>
+					<cell><m>s \gt 0</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_5</m></cell>
+					<cell right="minor"><m>\cos(bt)</m></cell>
+					<cell><m>\ds \frac{s}{s^2 + b^2}</m></cell>
+					<cell><m>s \gt 0</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_6</m></cell>
+					<cell right="minor"><m>t^n e^{at}</m></cell>
+					<cell><m>\ds \frac{n!}{(s-a)^{n+1}}</m></cell>
+					<cell><m>s \gt a</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>L_7</m></cell>
+					<cell right="minor"><m>e^{at} \sin(bt)</m></cell>
+					<cell><m>\ds \frac{b}{(s-a)^2 + b^2}</m></cell>
+					<cell><m>s \gt a</m></cell>
+				</row>
+				<row>
+					<cell right="minor"><m>L_8</m></cell>
+					<cell right="minor"><m>e^{at} \cos(bt)</m></cell>
+					<cell><m>\ds \frac{s-a}{(s-a)^2 + b^2}</m></cell>
+					<cell><m>s \gt a</m></cell>
+				</row>
+				<!-- <row>
+					<cell/>
+					<cell><m>\uparrow</m></cell>
+					<cell><m>\uparrow</m></cell>
+					<cell></cell>
+				</row>
+				<row>
+					<cell/>
+					<cell><m>t</m>-function</cell>
+					<cell><m>s</m>-function</cell>
+					<cell></cell>
+				</row> -->
+			</tabular>
+		</table>
+
+		<table halign="center" xml:id="lt-properties-table"><title><em>Laplace Transforms Properties, <m>{\small \lap{ y(t) } = Y(t), \ \lap{ z(t) } = Z(t)}</m></em></title>
+			<tabular halign="center">
+				<row bottom="minor">
+					<cell right="minor"/>
+					<cell><term>Properties</term></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>P_1</m></cell>
+					<cell><m>\ds \lap{ a y(t) \pm b z(t) } = a Y(s) \pm b Z(s) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>P_2</m></cell>
+					<cell><m>\ds \lap{ e^{at} y(t) } = Y(s-a) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>P_3</m></cell>
+					<cell><m>\ds \lap{ y'(t) } = s\,Y(s) - y(0) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>P_4</m></cell>
+					<cell><m>\ds \lap{ y''(t) } = s^2\,Y(s) - s\,y(0) - y'(0) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell right="minor"><m>P_5</m></cell>
+					<cell><m>\ds \lap{ y'''(t) } = s^3\,Y(s) - s^2\,y(0) - s\,y'(0) - y''(0) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+				<row>
+					<cell right="minor"><m>P_6</m></cell>
+					<cell><m>\ds \lap{ t^n y(t) } = (-1)^n \frac{d^{(n)}}{ds^{(n)}}Y(s) \vphantom{\frac{d}{d}}</m></cell>
+				</row>
+			</tabular>
+		</table>
+	</worksheet>
+
+	<table xml:id="lt-table-common-rules-merged">
+		<title>Table of Common Laplace Transforms</title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row>
+				<cell>L<m>_1</m></cell>
+				<cell><me>1</me></cell>
+				<cell><me>\frac{1}{s}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_2</m></cell>
+				<cell><me>e^{at}</me></cell>
+				<cell><me>\frac{1}{s - a}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_3</m></cell>
+				<cell><me>t^n</me></cell>
+				<cell><me>\frac{n!}{s^{n+1}}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_4</m></cell>
+				<cell><me>\sin(bt)</me></cell>
+				<cell><me>\frac{b}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_5</m></cell>
+				<cell><me>\cos(bt)</me></cell>
+				<cell><me>\frac{s}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_6</m></cell>
+				<cell><me>e^{at}\ t^n</me></cell>
+				<cell><me>\frac{n!}{(s-a)^{n+1}}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_7</m></cell>
+				<cell><me>e^{at}\sin(bt)</me></cell>
+				<cell><me>\frac{b}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>L<m>_8</m></cell>
+				<cell><me>e^{at}\cos(bt)</me></cell>
+				<cell><me>\frac{s-a}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+			<row>
+				<cell>R<m>_{1}</m></cell>
+				<cell><me>f'(t)</me></cell>
+				<cell><me>sF(s) - f(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>R<m>_{2}</m></cell>
+				<cell><me>f''(t)</me></cell>
+				<cell><me>s^2F(s) - sf(0) - f'(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>R<m>_{3}</m></cell>
+				<cell><me>f'''(t)</me></cell>
+				<cell><me>s^3F(s) - s^2f(0) - sf'(0) - f''(0)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row>
+				<cell>R<m>_{4}</m></cell>
+				<cell><me>e^{at} f(t)</me></cell>
+				<cell><me>F(s-a)</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+			<row bottom="major">
+				<cell>R<m>_{5}</m></cell>
+				<cell><me>t^n f(t)</me></cell>
+				<cell><me>(-1)^n \frac{d^n}{ds^n}\Big[F(s)\Big]</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L1-table">
+		<title>L<m>_1</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_1</m></cell>
+				<cell><me>1</me></cell>
+				<cell><me>\frac{1}{s}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L2-table">
+		<title>L<m>_2</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_2</m></cell>
+				<cell><me>e^{at}</me></cell>
+				<cell><me>\frac{1}{s - a}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L3-table">
+		<title>L<m>_3</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_3</m></cell>
+				<cell><me>t^n</me></cell>
+				<cell><me>\frac{n!}{s^{n+1}}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L4-table">
+		<title>L<m>_4</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_4</m></cell>
+				<cell><me>\sin(bt)</me></cell>
+				<cell><me>\frac{b}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L5-table">
+		<title>L<m>_5</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_5</m></cell>
+				<cell><me>\cos(bt)</me></cell>
+				<cell><me>\frac{s}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L6-table">
+		<title>L<m>_6</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_6</m></cell>
+				<cell><me>e^{at}\ t^n</me></cell>
+				<cell><me>\frac{n!}{(s-a)^{n+1}}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L7-table">
+		<title>L<m>_7</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_7</m></cell>
+				<cell><me>e^{at}\sin(bt)</me></cell>
+				<cell><me>\frac{b}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L8-table">
+		<title>L<m>_8</m></title>
+		<tabular top="major" bottom="major" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row>
+				<cell>L<m>_8</m></cell>
+				<cell><me>e^{at}\cos(bt)</me></cell>
+				<cell><me>\frac{s-a}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L1-header-table">
+		<title>L<m>_1</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_1</m></cell>
+				<cell><me>1</me></cell>
+				<cell><me>\frac{1}{s}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L2-header-table">
+		<title>L<m>_2</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_2</m></cell>
+				<cell><me>e^{at}</me></cell>
+				<cell><me>\frac{1}{s - a}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L3-header-table">
+		<title>L<m>_3</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_3</m></cell>
+				<cell><me>t^n</me></cell>
+				<cell><me>\frac{n!}{s^{n+1}}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L4-header-table">
+		<title>L<m>_4</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_4</m></cell>
+				<cell><me>\sin(bt)</me></cell>
+				<cell><me>\frac{b}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L5-header-table">
+		<title>L<m>_5</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_5</m></cell>
+				<cell><me>\cos(bt)</me></cell>
+				<cell><me>\frac{s}{s^2+b^2}</me></cell>
+				<cell><me>s &gt; 0</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L6-header-table">
+		<title>L<m>_6</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_6</m></cell>
+				<cell><me>e^{at}\ t^n</me></cell>
+				<cell><me>\frac{n!}{(s-a)^{n+1}}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L7-header-table">
+		<title>L<m>_7</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_7</m></cell>
+				<cell><me>e^{at}\sin(bt)</me></cell>
+				<cell><me>\frac{b}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+
+	<table xml:id="lt-L8-header-table">
+		<title>L<m>_8</m></title>
+		<tabular top="major" bottom="minor" left="major" right="minor" halign="center" width="100%">
+			<col/>
+			<col/>
+			<col/>
+			<col right="major"/>
+			<row bottom="major">
+				<cell/>
+				<cell>
+					<line>Function</line>
+					<line>(<m>t</m>-Domain)</line>
+					<line><me>f(t)</me></line>
+				</cell>
+				<cell>
+					<line>Laplace Transform</line>
+					<line>(<m>s</m>-Domain)</line>
+					<line><me>\lap{f(t)} = F(s)</me></line>
+				</cell>
+				<cell>
+					<line/>
+					<line>Existence</line>
+					<line>Condition</line>
+				</cell>
+			</row>
+			<row bottom="major">
+				<cell>L<m>_8</m></cell>
+				<cell><me>e^{at}\cos(bt)</me></cell>
+				<cell><me>\frac{s-a}{(s-a)^2+b^2}</me></cell>
+				<cell><me>s &gt; a</me></cell>
+			</row>
+		</tabular>
+	</table>
+</subsubsection>

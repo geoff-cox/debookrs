@@ -1,0 +1,335 @@
+<section label="lt-method-step1">
+	<title>Step 1 — Into the Laplace Domain</title>
+
+	<introduction>
+		<p>
+			The first step of the Laplace transform method is to convert a differential equation—where the unknown appears through derivatives—into an algebraic equation in the Laplace domain. This transformation makes it easier to isolate the unknown and move toward a solution.
+		</p>
+	</introduction>
+
+    <subsection label="lt-method-step1-overview">
+        <title>Crossing Into the Laplace Domain</title>
+
+        <p>
+            In terms of the roadmap, we can visualize this first step as follows:
+        </p>
+
+		<assemblage xml:id="lt-roadmap-step-1"><title>Step 1️⃣: Into the Laplace Domain (Forward Transform)</title>
+			<p>
+				<sidebyside widths="32% 18% 42%" valign="middle">
+					<p>
+						<me>\ul{\qquad\textbf{Original Domain}\qquad}</me>
+					</p>
+					<p/>
+					<p>
+						<me>\DLBa\textbf{Laplace Domain}</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="32% 18% 42%" valign="top">
+					<p>
+						<md>
+							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+									<mrow>\DLBa\dotsm</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
+			</p>
+		</assemblage>
+
+		<p>
+			Simply put, forward transforming a differential equation into the Laplace domain means applying the Laplace transform to both sides of the equation. The result is an algebraic equation where the derivatives have been converted into powers of <m>s</m> and the new unknown is <m>Y</m>.
+		</p>
+    </subsection>
+
+	<subsection xml:id="lt-forward-mechanics">
+		<title>Basic Mechanics of the Forward Transform</title>
+        <p>
+            Symbolically, applying the forward Laplace transform to the differential equation
+			<me>
+				y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
+			</me>
+			amounts to applying it to both sides of the equation as follows:
+			<me>
+				\lap{y'' - 9y} = \lap{10e^{2t}}
+			</me>.
+        </p>
+
+		<p>
+			Using the <xref ref="lt-P1" text="custom">linearity property</xref> we can see that the transform applies to each term:
+		</p>
+
+		<me>
+			\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}
+		</me>.
+
+		<p>
+			Letting <m>Y(s) = \lap{y(t)}</m> and applying rule <xref ref="lt-R2" text="custom">R<m>_2</m></xref> for <m>\lap{y''}</m> and common transform <xref ref="lt-L2" text="custom">L<m>_2</m></xref>, we get:
+		</p>
+
+		<me>
+			s^2 Y(s) - s y(0) - y'(0) - 9 Y(s) = 10 \left(\frac{1}{s-2}\right)
+		</me>.
+		
+		<p>
+			This is where the initial conditions come into play. Substituting the initial conditions and simplifying gives the desired Laplace domain equation:
+		</p>
+
+		<me>
+			s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
+		</me>.
+
+		<p>
+			Our new unknown is <m>Y</m> and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation is actually hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y(t)</m> at the same time!
+		</p>
+
+		<p>
+			Let's practice this with a one more example.
+		</p>
+		
+		<example xml:id="lt-forward-lt-example">
+			<title>Forward Transforming Equations</title>
+			<statement>
+				<p>
+					Forward transform the following equations into the Laplace domain:
+				</p>
+				<me>
+					\begin{array}{l}
+						y'' - 4y' + 6y = t^2,\\
+						y(0) = 2, \quad y'(0) = 0
+					\end{array}
+				</me>
+			</statement>
+
+			<solution>
+				<p>
+					First applying the Laplace transform to both sides:
+				</p>
+
+				<me>
+					\lap{y'' - 4y' + 6y} = \lap{t^2}
+				</me>.
+
+				<p>
+					Now, use the <xref ref="lt-P1" text="custom">linearity property</xref>:
+				</p>
+
+				<me>
+					\lap{y''} - 4\lap{y'} + 6\lap{y} = \lap{t^2}
+				</me>.
+				
+				<p>
+					Let <m>Y = \lap{y}</m>, and apply rule <xref ref="lt-R2" text="custom">R<m>_2</m> &amp; R<m>_1</m></xref> and common transform <xref ref="lt-L3" text="custom">L<m>_3</m></xref>
+				</p>
+
+				<me>
+					\left[s^2 Y(s) - s y(0) - y'(0)\right] -4\left[sY(s) - y(0)\right] + 6 Y(s) = \frac{1}{s^3}
+				</me>.
+
+				<p>
+					Finally, plug in the initial conditions, <m>y(0) = 2,\ y'(0) = 0</m> and clean up:
+				</p>
+
+				<me>
+					s^2 Y(s) - 4sY(s) + 6Y(s) - 2s + 8 = \frac{2}{s^3}
+				</me>.
+			</solution>
+		</example>
+
+		<task label="lt-method-step1-chkpt-1">
+			<title>📖❓Select the Forward Transform</title>
+			<statement>
+				<p>
+					Which of the following represents the correct Laplace transform of the equation <me>y'' - 4y' + 6y = t^2, \quad y(0) = 2, \quad y'(0) = -1</me>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds s^2Y - 4sY + 6Y - 2s + 1 = \frac{2}{s^3}</m></statement>
+					<feedback>This is the correct transformation using the Laplace transform and applying initial conditions.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y - 2s = \frac{1}{s^3}</m></statement>
+					<feedback>This answer is missing a term.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y + 2s - 1 = \frac{2}{s^3}</m></statement>
+					<feedback>Double check the signs of the initial conditions.</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds s^2Y - 4sY + 6Y + 1 = \frac{1}{s^3}</m></statement>
+					<feedback>This answer is missing a term.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+        <p>
+            Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
+        </p>
+	</subsection>
+
+	<subsection label="lt-forward-intro">
+		<title>What is Going on Behind the Scenes?</title>
+
+		<task label="lt-method-step1-chkpt-2">
+			<title>📖❓Applying the Laplace Transform to an Equation</title>
+			<statement>
+				<p>
+					<em> Fill-in-the-blanks: </em>
+				</p>
+				<p>
+					The process of applying a Laplace transform to a differential equation involves multiplying the equation by <fillin characters="13" /> and <fillin characters="13" /> with respect to <m>t</m>.
+				</p>
+				<p/>
+			</statement>
+			<choices randomize="yes">
+			<choice>
+				<statement><m>e^{-t},</m> integrating</statement>
+				<feedback>
+				<p>
+					No, this misses the <m>s</m> parameter in the exponential. It should be <m>e^{-st}</m>.
+				</p>
+				</feedback>
+			</choice>
+			<choice correct="yes">
+				<statement><m>e^{-st},</m> integrating</statement>
+				<feedback>
+				<p>
+					Correct! The Laplace transform involves multiplying the original function by <m>e^{-st}</m> and then integrating with respect to <m>t</m>.
+				</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>e^{st},</m> integrating</statement>
+				<feedback>
+				<p>
+					No, the exponent should have a negative sign: <m>e^{-st}</m>.
+				</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>e^{-st},</m> differentiating</statement>
+				<feedback>
+				<p>
+					No, the Laplace transform requires integration, not differentiation.
+				</p>
+				</feedback>
+			</choice>
+			<choice>
+				<statement><m>s,</m> differentiating</statement>
+				<feedback>
+				<p>
+					No, the transform uses <m>e^{-st}</m> and integration, not the variable <m>s</m> directly or differentiation.
+				</p>
+				</feedback>
+			</choice>
+			</choices>
+		</task>
+
+		<p>
+            Since the Laplace transform only applies to functions, applying a <q>forward transform to a differential equation</q>, really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation to the initial-value problem
+			<me>y' - 9 y= 10 e^{7t}, \quad y(0) = 1</me>
+			implies that we multiply both sides of the equation by <m>e^{-st}</m> and integrate from <m>0</m> to <m>\infty</m>:
+		</p>
+
+		<sbsgroup widths="35% 65%" valign="middle">
+			<sidebyside>
+				<p><me>\ul{\qquad\text{Symbolically}\qquad}</me></p>
+				<p><me>\ul{\qquad\text{Behind the Scenes Math}\qquad}</me></p>
+			</sidebyside>
+			<sidebyside>
+				<p><me>\small\lap{y' - 9y} = \lap{10 e^{7t}}</me></p>
+				<p>
+					<md>
+						<mrow>\small\left(y' - 9y\right) e^{-st} \amp = (10 e^{7t}) e^{-st}</mrow>
+						<mrow>\small\int_0^{\infty} \left(y' - 9y\right) e^{-st} dt \amp = \int_0^{\infty} (10 e^{7t}) e^{-st} dt</mrow>
+					</md>
+				</p>
+			</sidebyside>
+		</sbsgroup>
+
+		<p>
+			Next, we use the linearity of the integral:
+		</p>
+
+		<sidebyside widths="35% 65%" valign="middle">
+			<p><me>\small\lap{y'} - 9\lap{y} = 10\lap{e^{7t}}</me></p>
+			<p><me>\small\us{\large I_1}{\ul{\int_0^{\infty} (y') e^{-st} dt}} - 9 \int_0^{\infty} (y) e^{-st} dt = 10 \us{\large I_2}{\ul{\int_0^{\infty} (e^{7t}) e^{-st} dt}}</me></p>
+		</sidebyside>
+
+		<p>
+			After applying integration by parts to <m>I_1</m>, the derivative is transferred from <m>y(t)</m> to <m>e^{-st}</m>, resulting in a factor of <m>s</m> and an evaluation of <m>y(t)</m> at <m>t=0</m> and <m>t=b</m>:
+		</p>
+
+		<sidebyside widths="42% 58%" valign="middle">
+			<p>
+				<me>\small
+					-y(0) + sY(s) - 9 Y(s) = 10 \left(\frac{1}{s-7}\right)
+				</me>
+			</p>
+			<p><me>\leftarrow\ \text{Symbolically}</me></p>
+		</sidebyside>
+
+		<sidebyside widths="36% 64%" valign="middle">
+			<p><me>\text{Mathematically}\ \rightarrow </me></p>
+			<p>
+				<md>
+					<mrow>\small
+						\us{\large\text{as}\ b\ \to\ \infty}{\ul{\cancelto{\large 0}{e^{-sb}y(b)}}}<fn>assuming <m>y(t)</m> grows no faster than the exponential decays.</fn> - y(0) 
+						+ s\int_0^{\infty} e^{-st}y\, dt - 9\int_0^{\infty} e^{-st}y\, dt = \frac{10}{s-7}
+					</mrow>
+				</md>
+				
+			</p>
+		</sidebyside>
+		
+        <p>
+            The details for computing <m>I_2 = \lap{e^{7t}}</m> are given <xref ref="common-exp-7t-details" text="custom">here</xref>.
+        </p>
+
+		<p>
+			Since the two integrals are <m>\lap{y} = Y(s)</m>, the symbolic and mathematical paths come back together as  
+			<me>
+				sY(s) - 9 Y(s) - y(0) = \frac{10}{s-7}
+			</me>.
+		</p>
+
+		<p>
+			By transforming our equation into this new form, we have momentarily stored <m>y(t)</m> inside the function <m>Y</m>. Therefore, solving for <m>Y</m> indirectly also solves for <m>y(t)</m>.
+		</p>
+	</subsection>
+	
+	<assemblage>
+		<title>Step 1 — Into the Laplace Domain Summary</title>
+		<p>
+			Apply <m>\laplacesym</m> to each term of the differential equation; derivatives become powers of <m>s</m> and initial conditions drop in as constants, leaving an algebraic equation in <m>Y(s)</m>.
+		</p>
+	</assemblage>
+
+	<objectives label="lt-method-step1-wrapup">
+		<ul>
+			<li>The Laplace transform method begins by converting a differential equation into an algebraic equation in the Laplace domain.</li>
+			<li>Applying a Laplace transform to a differential equation means applying it to both sides, then term by term, using linearity.</li>
+			<li>Derivatives of <m>y(t)</m> become powers of <m>s</m> multiplied by <m>Y(s)</m>, along with terms involving initial conditions.</li>
+			<li>The right-hand side of the equation is transformed using the known transforms from the <xref ref="lt-table-common" text="custom">table of common Laplace transforms</xref>.</li>
+			<li>Once in the Laplace domain, the function <m>y(t)</m> is stored inside <m>Y(s)</m>, setting the stage for solving algebraically.</li>
+        </ul>
+	</objectives>
+</section>

@@ -1,0 +1,837 @@
+<section label="piecewise-functions">
+	<title>Piecewise Functions</title>
+	<introduction>
+		<p>
+			Piecewise functions can feel disorganized at first since they are defined in separate <q>chunks</q> across different intervals. But there's a powerful way to express them as a clean formula: by using step functions to switch each piece ON or OFF at the right time.
+		</p>
+	</introduction>
+
+	<subsection label="piecewise-definition">
+		<title>What Makes a Function Piecewise?</title>
+		<p>
+			A <em>piecewise function</em> is any function built from different parts over specific regions of its domain. For example:
+		</p>
+
+		<sidebyside widths="50% 35%" valign="middle" margins="5% 5%">
+			<p>
+				<me xml:id="intro-piecewise-function">
+					g(t)\ 
+					= \left\{
+					\begin{array}{ccccc}
+						\DLBb \sin t,	\amp \DLBb t \lt 0			\amp \\
+						\DLGa 2e^{-t},	\amp \DLGa 0 \ge t \lt 2	\amp \longrightarrow\\
+						\DLO 1.5,		\amp \DLO t \ge 2			\amp
+					\end{array}
+					\right.
+				</me>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.45]
+							% === colors ===
+							\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
+							\def\IColor{green!50!black}	\def\ICurve{\IColor!80}	\def\IFill{\IColor!20}
+							\def\RColor{orange}\def\RCurve{\RColor!100}	\def\RFill{\RColor!30}
+
+							% === figure/domain ===
+							\def\tmin{-4.5}	\def\tmax{5.5}
+							\def\ymin{-1.5}	\def\ymax{2.7}
+
+							\def\tticks{-4, -2, 2, 4}
+							\def\yticks{-1, 1, 2}
+						
+							% === Transitions ===
+							\def\c{0}	\def\d{2}
+							\fill[\LFill] (\tmin, \ymin) rectangle (\c		, \ymax);
+							\fill[\IFill] (\c	, \ymin) rectangle (\d		, \ymax);
+							\fill[\RFill] (\d	, \ymin) rectangle (\tmax	, \ymax);
+
+							% === Midpoints ===
+							\def\Lmid{{ ( \tmin + \c	)*0.5 }}
+							\def\Imid{{ ( \c + \d		)*0.5 }}
+							\def\Rmid{{ ( \d + \tmax	)*0.5 }}
+							
+							% === Function definitions ===
+							\newcommand{\fL}[1]{sin(#1 r)}	\def\fLtex{\sin t}
+							\newcommand{\fI}[1]{2*e^(-#1)}	\def\fItex{2e^{-t}}
+							\newcommand{\fR}[1]{1.5}		\def\fRtex{1.5}
+							
+							% === Axes ===
+							\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+							\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+							\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+
+							% === Tick marks/numeric labels ===
+							\foreach \t in \tticks {
+								\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
+								\node[below, font=\small] at (\t,0) {\t};	% t labels	
+							}
+							\foreach \y in \yticks {
+								\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+								\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+							}
+
+							\draw[black, very thin, dashed]	(\c,\ymin) -- (\c,\ymax);
+							\draw[black, very thin, dashed]	(\d,\ymin) -- (\d,\ymax);
+						
+							% === Function plots on [tmin, c] ===
+							\draw[\LCurve, very thick, &lt;-]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, {\fL{\t}});
+							
+							% === Function plots on [c, d] ===
+							\draw[\ICurve, very thick]	plot[domain=\c:\d-0.1, variable=\t] (\t, {\fI{\t}});
+
+							% === Function plots on [d, tmax] ===
+							\draw[\RCurve, very thick, -&gt;]	plot[domain=\d:\tmax, variable=\t] (\t, {\fR{\t}});
+							
+							% === Points at t=c ===
+							\draw[\LCurve, thick]	(\c,{\fL{\c}})	circle[radius=3pt];
+							\fill[\ICurve, thick]	(\c,{\fI{\c}})	circle[radius=4pt];
+							\draw[\ICurve, thick]	(\d,{\fI{\d}})	circle[radius=3pt];
+							\fill[\RCurve, thick]	(\d,{\fR{\d}})	circle[radius=4pt];
+							
+							% === Labels ===
+							\node[\LColor, font=\small] at (\Lmid, 1)	{$\fLtex$};
+							\node[\IColor, font=\small] at (\Imid, 2.3)	{$\fItex$};
+							\node[\RColor, font=\small] at (\Rmid, 2)	{$\fRtex$};
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+		</sidebyside>
+
+		<p>
+			Each piece has its own behavior, but together they create the entire function. The question is: can we rewrite these separate pieces so that the whole function is described with <em>one</em> equation, instead of a case-by-case breakdown?
+		</p>
+	</subsection>
+
+	<subsection label="unit-step-switch-mindset">
+		<title>Thinking in Terms of Switches</title>
+
+		<exercise>
+			<title>📖❓ Match Step Functions to Their Piecewise Definitions</title>
+			<statement>
+				<p>
+					By dragging from left to right, match the function on the left to the equivalent piecewise function on the right. <em>Note that, <m>u_0(t) = u(t)</m>.</em>
+				</p>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><me> \big( 1 - u_0(t) \big) \sin t </me></premise>
+					<response><m>\left\{\begin{array}{ll} \sin t \amp t \lt 0\\ 0 \amp \text{otherwise}\end{array}\right.</m></response>
+				</match>
+				<match>
+					<premise><me> \big( u_0(t) - u_6(t) \big) \sin t </me></premise>
+					<response><m>\left\{\begin{array}{ll} \sin t \amp 0 \le t \lt 6\\ 0 \amp \text{otherwise}\end{array}\right.</m></response>
+				</match>
+				<match>
+					<premise><me> u_0(t) \sin t </me></premise>
+					<response><m>\left\{\begin{array}{ll} \sin t \amp t \ge 0\\ 0 \amp \text{otherwise}\end{array}\right.</m></response>
+				</match>
+				<match>
+					<premise><me> \big( u_0(t) - 1 \big) \sin t </me></premise>
+					<premise><m> \big( u_6(t) - u_0(t) \big) \sin t </m></premise>
+				</match>
+			</cardsort>
+		</exercise>
+
+		<p>
+			Every step function you've seen can be thought of as a simple ON–OFF switch:
+		</p>
+
+		<me>
+			\begin{array}{clllll}
+				u_c(t)			\amp\rightarrow\amp\text{ON:}\amp [c,\infty)	\amp\text{OFF:}\amp\text{elsewhere}\\
+				u_c(t)-u_d(t)	\amp\rightarrow\amp\text{ON:}\amp [c,d)			\amp\text{OFF:}\amp\text{elsewhere}\\
+				1 - u_c(t)		\amp\rightarrow\amp\text{ON:}\amp (-\infty,c)	\amp\text{OFF:}\amp\text{elsewhere}
+			\end{array}
+		</me>
+
+		<p>
+			With these step functions, you can literally <q>program</q> when each part of a function is ON and when it is OFF.
+		</p>
+
+		<p>
+			For example, the three pieces of <m>g(t)</m> above can be controlled like this:
+		</p>
+
+		<me>
+			\begin{array}{clllll}
+				{\DLBb \sin t\ \big(1 - u_0(t)\big)}		\amp\rightarrow\amp \sin t	\amp\text{is ON:}\amp {\DLBb (-\infty,0)}	\amp\text{OFF:}\amp\text{elsewhere}\\
+				{\DLGa 2e^{-t}\ \big(u_0(t) - u_2(t)\big)}	\amp\rightarrow\amp 2e^{-t}	\amp\text{is ON:}\amp {\DLGa [0,2)}		\amp\text{OFF:}\amp\text{elsewhere}\\
+				{\DLO 1.5\ u_2(t)}							\amp\rightarrow\amp 1.5		\amp\text{is ON:}\amp {\DLO [2,\infty)}	\amp\text{OFF:}\amp\text{elsewhere}
+			\end{array}
+		</me>
+
+		<figure xml:id="intro-piecewise-function-pieces">
+			<caption> Three pieces of <m>g(t)</m> </caption>
+			<sidebyside widths="29% 29% 29%" margins="1% 1%" valign="bottom">
+				<figure xml:id="intro-piecewise-function-piece1"><caption><m>{\DLBb \sin t\ \big(1 - u_0(t)\big)}</m></caption>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
+		
+								% === colors ===
+								\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
+								\def\IColor{green!50!black}	\def\ICurve{\IColor!80}	\def\IFill{\IColor!20}
+								\def\RColor{orange}\def\RCurve{\RColor!100}	\def\RFill{\RColor!30}
+								
+								% === figure/domain ===
+								\def\tmin{-4.5}	\def\tmax{5.5}
+								\def\ymin{-1.5}	\def\ymax{2.7}
+								\def\tticks{-4, -2, 2, 4}
+								\def\yticks{-1, 1, 2}
+							
+								% === Transitions ===
+								\def\c{0}	\def\d{2}
+								\fill[\LFill] (\tmin, \ymin) rectangle (\c		, \ymax);
+								\fill[\IFill] (\c	, \ymin) rectangle (\d		, \ymax);
+								\fill[\RFill] (\d	, \ymin) rectangle (\tmax	, \ymax);
+
+								% === Midpoints ===
+								\def\Lmid{{ ( \tmin + \c	)*0.5 }}
+								\def\Imid{{ ( \c + \d		)*0.5 }}
+								\def\Rmid{{ ( \d + \tmax	)*0.5 }}
+								
+								% === Function definitions ===
+								\newcommand{\fL}[1]{sin(#1 r)}	\def\fLtex{\sin t}
+								
+								% === Axes ===
+								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
+									\node[below, font=\small] at (\t,0) {\t};	% t labels	
+								}
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+									\node[left, font=\small] at (0.1,\y) {\y};	% y labels
+								}
+
+								\draw[black, very thin, dashed]	(\c,\ymin) -- (\c,\ymax);
+								\draw[black, very thin, dashed]	(\d,\ymin) -- (\d,\ymax);
+							
+								% === Function plots on [tmin, c] ===
+								\draw[\LCurve, very thick, &lt;-]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, {\fL{\t}});
+								
+								% === Function plots on [c, tmax] ===
+								\draw[very thick, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, 0);
+								
+								% === Points at t=c ===
+								\draw[\LCurve, thick]	(\c,{\fL{\c}})	circle[radius=4pt];
+								\fill[thick]	(\c,0)	circle[radius=5pt];
+								
+								% === Labels ===
+								\node[\LColor	, font=\small] at (\Lmid, 1) {$\fLtex$};
+								\node[black		, font=\small] at (\Imid, 0.7) {$0$};
+								\node[black		, font=\small] at (\Rmid, 0.7) {$0$};
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<figure xml:id="intro-piecewise-function-piece2"><caption><m>{\DLGa 2e^{-t}\ \big(u_0(t) - u_2(t)\big)}</m></caption>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
+		
+								% === colors ===
+								\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
+								\def\IColor{green!50!black}	\def\ICurve{\IColor!80}	\def\IFill{\IColor!20}
+								\def\RColor{orange}\def\RCurve{\RColor!100}	\def\RFill{\RColor!30}
+
+								% === figure/domain ===
+								\def\tmin{-4.5}	\def\tmax{5.5}
+								\def\ymin{-1.5}	\def\ymax{2.7}
+
+								\def\tticks{-4, -2, 2, 4}
+								\def\yticks{-1, 1, 2}
+							
+								% === Transitions ===
+								\def\c{0}	\def\d{2}
+								\fill[\LFill] (\tmin, \ymin) rectangle (\c		, \ymax);
+								\fill[\IFill] (\c	, \ymin) rectangle (\d		, \ymax);
+								\fill[\RFill] (\d	, \ymin) rectangle (\tmax	, \ymax);
+
+								% === Midpoints ===
+								\def\Lmid{{ ( \tmin + \c	)*0.5 }}
+								\def\Imid{{ ( \c + \d		)*0.5 }}
+								\def\Rmid{{ ( \d + \tmax	)*0.5 }}
+								
+								% === Function definitions ===
+								\newcommand{\fI}[1]{2*e^(-#1)}	\def\fItex{2e^{-t}}
+								
+								% === Axes ===
+								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
+									\node[below, font=\small] at (\t,0) {\t};	% t labels	
+								}
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+									\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+								}
+
+								\draw[black, very thin, dashed]	(\c,\ymin) -- (\c,\ymax);
+								\draw[black, very thin, dashed]	(\d,\ymin) -- (\d,\ymax);
+							
+								% === Function plots on [tmin, c] ===
+								\draw[very thick, &lt;-]	plot[domain=\tmin:\c-0.08, variable=\t] (\t, 0);
+								
+								% === Function plots on [c, d] ===
+								\draw[\ICurve, very thick]	plot[domain=\c:\d-0.1, variable=\t] (\t, {\fI{\t}});
+
+								% === Function plots on [d, tmax] ===
+								\draw[very thick, -&gt;]	plot[domain=\d:\tmax, variable=\t] (\t, 0);
+								
+								% === Points at t=c,d ===
+								\fill[\ICurve, thick]	(\c,{\fI{\c}})	circle[radius=5pt];
+								\draw[thick]	(\c,0)	circle[radius=4pt];
+								\draw[\ICurve, thick]	(\d,{\fI{\d}})	circle[radius=4pt];
+								\fill[thick]	(\d,0)	circle[radius=4pt];
+								
+								% === Labels ===
+								\node[\IColor	, font=\small] at ({(\c+\d)*0.5+0.1}, 2.3) {$\fItex$};
+								\node[black		, font=\small] at (\Lmid, 0.7) {$0$};
+								\node[black		, font=\small] at (\Rmid, 0.7) {$0$};
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+				<figure xml:id="intro-piecewise-function-piece3"><caption><m>{\DLO 1.5\ u_2(t)}</m></caption>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[domain=-5:6, samples=100, scale=0.4]
+								% === colors ===
+								\def\LColor{blue!50!black}	\def\LCurve{\LColor!50}	\def\LFill{\LColor!15}
+								\def\IColor{green!50!black}	\def\ICurve{\IColor!80}	\def\IFill{\IColor!20}
+								\def\RColor{orange}\def\RCurve{\RColor!100}	\def\RFill{\RColor!30}
+
+								% === figure/domain ===
+								\def\tmin{-4.5}	\def\tmax{5.5}
+								\def\ymin{-1.5}	\def\ymax{2.7}
+
+								\def\tticks{-4, -2, 2, 4}
+								\def\yticks{-1, 1, 2}
+							
+								% === Transitions ===
+								\def\c{0}	\def\d{2}
+								\fill[\LFill] (\tmin, \ymin) rectangle (\c		, \ymax);
+								\fill[\IFill] (\c	, \ymin) rectangle (\d		, \ymax);
+								\fill[\RFill] (\d	, \ymin) rectangle (\tmax	, \ymax);
+
+								% === Midpoints ===
+								\def\Lmid{{ ( \tmin + \c	)*0.5 }}
+								\def\Imid{{ ( \c + \d		)*0.5 }}
+								\def\Rmid{{ ( \d + \tmax	)*0.5 }}
+								
+								% === Function definitions ===
+								\newcommand{\fR}[1]{1.5}		\def\fRtex{1.5}
+								
+								% === Axes ===
+								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								\node[font=\small, below] at (\tmax - 0.2	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray, thick]	(\t,0.2) -- (\t,-0.2);	% t ticks
+									\node[below, font=\small] at (\t,0) {\t};	% t labels	
+								}
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+									\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+								}
+
+								\draw[black, very thin, dashed]	(\c,\ymin) -- (\c,\ymax);
+								\draw[black, very thin, dashed]	(\d,\ymin) -- (\d,\ymax);
+							
+								% === Function plots on [tmin, d] ===
+								\draw[very thick, &lt;-] plot[domain=\tmin:\d-0.1, variable=\t] (\t, 0);
+
+								% === Function plots on [d, tmax] ===
+								\draw[\RCurve, very thick, -&gt;] plot[domain=\d:\tmax, variable=\t		] (\t, {\fR{\t}});
+								
+								% === Points at t=d ===
+								\fill[\RCurve, thick]	(\d,{\fR{\d}}	) circle[radius=5pt];
+								\draw[thick			]	(\d,0			) circle[radius=4pt];
+								
+								% === Labels ===
+								\node[\RColor	, font=\small] at (\Rmid, 2) {$\fRtex$};
+								\node[black		, font=\small] at (\Lmid, 0.7) {$0$};
+								\node[black		, font=\small] at (\Imid, 0.7) {$0$};
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+			</sidebyside>
+		</figure>
+	</subsection>
+
+	<subsection label="piecewise-rewriting">
+		<title>Rewriting a Piecewise Function in Step Form</title>
+
+		<exercise label="prep-1-piecewise-to-step">
+			<title>📖❓ Matching Step Types to Intervals</title>
+			<statement>
+				<p>
+					Match each time interval to the type of unit step expression that would activate a function over that range.
+				</p>
+			</statement>
+			<feedback>
+				<p>
+				These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.
+				</p>
+			</feedback>
+			<cardsort>
+				<match>
+				<premise><m>t \lt 4</m></premise>
+				<response><m>1 - u_4(t)</m></response>
+				</match>
+				<match>
+				<premise><m>t \ge 4</m></premise>
+				<response><m>u_4(t)</m></response>
+				</match>
+				<match>
+				<premise><m>2 \le t \lt 5</m></premise>
+				<response><m>u_2(t) - u_5(t)</m></response>
+				</match>
+				<match>
+				<premise><m>t \lt 0</m></premise>
+				<response><m>1 - u_0(t)</m></response>
+				</match>
+			</cardsort>
+		</exercise>
+
+		<p>
+			<xref ref="intro-piecewise-function-pieces"/> shows three non-overlapping regions. That means for any value of <m>t</m>, only one piece of the function is active. Because of this, we can write <m>g(t)</m> as a single sum:
+		</p>
+
+		<me>
+			g(t) = \sin t\ \big( 1 - u_0(t) \big) + 2e^{-t}\ \big( u_0(t) - u_2(t) \big) +  1.5\ u_2(t)
+		</me>.
+
+		<p>
+			Let's test this step-function version by plugging in a few <m>t</m> values and seeing which terms turn ON and which turn OFF.
+		</p>
+
+		<md alignment="alignat">
+			<mrow> t=-2:\quad\amp
+				g(-2) 
+				{}={} \amp\us{\large\text{ON}}{\ul{\sin(-2)\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{2}\cdot\big(0\big)}}\amp
+				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(0\big)}}
+				{}={} \amp \sin(-2)
+			</mrow>
+			<mrow> t=0: \quad\amp
+				\hphantom{-}g(1)
+				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(0)\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{ON}}{\ul{2e^{0}\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
+				{}={} \amp 2e^{0}
+			</mrow>
+			<mrow> t=1: \quad\amp
+				\hphantom{-}g(2)
+				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(1)\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{ON}}{\ul{2e^{-1}\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
+				{}={} \amp 2e^{-1}
+			</mrow>
+			<mrow> t=4: \quad\amp
+				\hphantom{-}g(4)
+				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(4)\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{-4}\cdot\big(1\big)}}\amp
+				{}+{} \amp\us{\large\text{ON}}{\ul{1.5\cdot\big(1\big)}}
+				{}={} \amp 1.5
+			</mrow>
+		</md>
+
+		<p>
+			Like the piecewise form, plugging a specific <m>t</m> value into <m>g(t)</m> was the same as plugging it into just one of its three pieces. This observation highlights why the unit step form is equivalent to the piecewise form.
+		</p>
+
+		<assemblage xml:id="piecewise-to-unit-step">
+			<title>📜 Converting Piecewise Form to Unit Step Form</title>
+			<p>
+				Here's a strategy for converting any piecewise function into step form:
+				<ul marker="disc">
+					<li>Find the intervals where each piece is active.</li>
+					<li>
+						Match the active interval for each piece to its step function switch:
+						<tabular halign="center">
+							<col right="minor"/>
+							<col right="minor"/>
+							<row bottom="minor"> <cell>Piece</cell> <cell>Active Interval</cell> <cell>Step Function Switch</cell> </row>
+							<row> <cell><me>P(t)</me></cell> <cell><me>t \lt c		 </me></cell> <cell><me>1 - u_c(t)		</me></cell> </row>
+							<row> <cell><me>Q(t)</me></cell> <cell><me>c \le t \lt d </me></cell> <cell><me>u_c(t) - u_d(t)	</me></cell> </row>
+							<row> <cell><me>R(t)</me></cell> <cell><me>t \ge d		 </me></cell> <cell><me>u_d(t)			</me></cell> </row>
+						</tabular>
+					</li>
+					<li>Multiply the piece by its switch, then add them all together.</li>
+				</ul>
+			</p>
+		</assemblage>
+
+		<exercise label="chkpt-1-piecewise-to-step">
+			<title>📖❓ Which Term Matches the Interval?</title>
+			<statement>
+				<p>
+				You're converting a piecewise function into step form. Which term below correctly captures a piece of the function that is active only for <m>3 \le t \lt 6</m>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+				<statement><p><m>1 - u_3(t)</m></p></statement>
+				<feedback>
+					<p>
+						This turns ON before <m>t = 3</m> and OFF after. We want something that activates at <m>t = 3</m> and deactivates at <m>t = 6</m>.
+					</p>
+				</feedback>
+				</choice>
+				<choice>
+				<statement><p><m>1 - u_6(t)</m></p></statement>
+				<feedback>
+					<p>
+						This starts at <m>t = 6</m> and keeps going. It doesn't define an interval, it defines a forever switch.
+					</p>
+				</feedback>
+				</choice>
+				<choice correct="yes">
+				<statement><p><m>u_3(t) - u_6(t)</m></p></statement>
+				<feedback>
+					<p>
+						Exactly. This is the window function that's ON from <m>t = 3</m> to <m>t = 6</m> and OFF otherwise.
+					</p>
+				</feedback>
+				</choice>
+				<choice>
+				<statement><p><m>u_6(t) - u_3(t)</m></p></statement>
+				<feedback>
+					<p>
+						Close, but this would result in <m>-1</m> on <m>3 \le t \lt 6</m>, not <m>1</m>. Try reversing the order of the terms.
+					</p>
+				</feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+		<p>
+			Now you're ready to try a few full conversions yourself.
+		</p>
+
+		<example>
+			<title>Using <m>u_c(t)</m> to Turn ON Sine</title>
+			<p>
+				<statement>
+					<p>
+						Rewrite the function
+						<me>
+							g(t) = \left\{
+							\begin{array}{ll}
+								\sin t, \amp t \ge \sfrac{\pi}{2} \\
+								0, \amp \text{otherwise}
+							\end{array}
+							\right.
+						</me>
+						using a unit step function.
+					</p>
+				</statement>
+			</p>
+
+			<solution>
+				<p>
+					Since <m>\sin t</m> turns ON at <m>t = \sfrac{\pi}{2}</m>, we multiply it by <m>u_{\sfrac{\pi}{2}}(t)</m>:
+					<me>
+						g(t) = \sin t \cdot u_{\sfrac{\pi}{2}}(t)
+					</me>
+				</p>
+				<p>
+					Plugging in <m>u_{\sfrac{\pi}{2}}(t)</m>, confirms we arrived at the correct piecewise function: 
+					<md>
+						<mrow>
+							g(t) =
+							\sin t \cdot \ub{
+							\left\{
+								\begin{array}{ll}
+									1,	\amp t \ge \sfrac{\pi}{2}\\
+									0,	\amp \text{otherwise}
+								\end{array} 
+							\right.
+							}_{\large u_{\sfrac{\pi}{2}}(t)}
+							\quad \amp =
+							\left\{
+								\begin{array}{ll}
+									\sin(t) \cdot 1,	\amp t \ge \sfrac{\pi}{2}\\
+									\sin(t) \cdot 0,	\amp \text{otherwise}
+								\end{array} 
+							\right.
+						</mrow>
+						<mrow>
+							\amp =
+							\left\{
+								\begin{array}{ll}
+									\sin(t),	\amp t \ge \sfrac{\pi}{2}\\
+									0,			\amp \text{otherwise}
+								\end{array} 
+							\right.
+						</mrow>
+					</md>
+					and has the following graph
+				</p>
+				
+				<p>
+					<sidebyside width="90%" margins="0%">
+						<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
+							<image>
+								<latex-image>
+									\begin{tikzpicture}[samples=200, scale=0.7]
+										% === colors ===
+										\def\OFColor{blue}				\def\OFFill{\OFColor!15}
+										\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
+
+										% === figure/domain/tick bounds ===
+										\def\tmin{-4}	\def\tmax{7}
+										\def\ymin{-1.6}	\def\ymax{1.6}
+										\def\tticks{
+											{-pi}		/ $-\pi$,
+											{-pi*0.5}	/ $-\frac{\pi}{2}$,
+											{pi*0.5}	/ $\frac{\pi}{2}$,
+											{pi}		/ $\pi$,
+											{3*pi*0.5}	/ $\frac{3\pi}{2}$,
+											{2*pi}		/ $2\pi$
+										}
+										\def\yticks{
+											-1 / $-1$,
+											1  / $1$,
+										}
+									
+										% === Transitions ===
+										\def\c{pi*0.5}
+										\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+										\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+										%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+										\node[font=\small, below] at ({\c}, -0.7) {$c$};
+
+										% === Function definitions ===
+										\newcommand{\f}[1]{sin(#1 r)}	\def\ftex{\sin(t)}
+										\newcommand{\uL}[1]{0}	\def\uLtex{0}
+										\newcommand{\uR}[1]{1}	\def\uRtex{1}
+									
+										% === Axes ===
+										\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+										\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+										\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
+										
+										% === Tick marks/numeric labels ===
+										\foreach \t /\n in \tticks {
+											\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
+										}
+	
+										\foreach \t /\n in \yticks {
+											\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
+										}
+
+										% === Function plots on [tmin, c] ===
+										\draw[\OFColor, very thick, &lt;-]		plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
+										\draw[\OFColor!50, thin, dashed, &lt;-]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\f{\t}});
+
+										% === Function plots on [c, tmax] ===
+										\draw[\OFColor, very thick, -&gt;]		plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
+										\draw[\ONColor!50, thin, dashed, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, {\uR{\t}});
+
+										% === Points at t=c ===
+										\draw[\OFColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+										\fill[\OFColor]			(\c,{\f{\c}})	circle[radius=3pt];
+
+										% === Labels ===
+										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5},	1)	{$u(t) = 0$};
+										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5},	1)	{$u(t) = 1$};
+										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, \ymin)	{$\text{OFF}$};
+										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, \ymin)	{$\text{ON}$};
+										\node[font=\scriptsize, above] at (-1.2, 0)	{$\ftex\cdot\color{\OFColor}{0}$};
+										\node[font=\scriptsize, above] at (4.3, 0)	{$\ftex\cdot\color{\ONColor}{1}$};
+									\end{tikzpicture}
+								</latex-image>
+							</image>
+						</figure>
+					</sidebyside>
+				</p>
+			</solution>
+		</example>
+
+		<example xml:id="piecewise-to-step-ex-1">
+			<title>Converting to Unit Step Form</title>
+			<statement>
+				<p>
+					Rewrite the following piecewise functions using unit step notation:
+				</p>
+
+				<sidebyside widths="50% 50%">
+					<p>
+						<me>
+							P(t) = \left\{
+							\begin{array}{ll}
+								e^{-t}, \amp t \lt 2.8 \\
+								6 - t,  \amp t \ge 2.8
+							\end{array}
+							\right.
+						</me>
+					</p>
+					<p>
+						<me>
+							Q(t) = \left\{
+							\begin{array}{ll}
+								2t, \amp 0 \le t \lt 1 \\
+								3,  \amp 1 \le t \lt 4 \\
+								0,  \amp t \ge 4
+							\end{array}
+							\right.
+						</me>
+					</p>
+				</sidebyside>
+			</statement>
+
+			<solution><title><m>\rightarrow P(t)</m></title>
+				<p>
+					The first piece is active before <m>t = 2.8</m>, so we use <m>1 - u_{2.8}(t)</m>. The second piece starts at <m>t = 2.8</m>, so we use <m>u_{2.8}(t)</m>. So:
+					<me>
+						P(t) = e^{-t} \cdot \left(1 - u_{2.8}(t)\right) + (6 - t) \cdot u_{2.8}(t)
+					</me>
+				</p>
+
+				<p>
+					We can also combine terms with the same step:
+					<md>
+						<mrow> P(t)	\amp = e^{-t} - e^{-t} \cdot u_{2.8}(t) + (6-t) \cdot u_{2.8}(t) </mrow>
+						<mrow>		\amp = e^{-t} + \left(-e^{-t} + (6-t) \right) \cdot u_{2.8}(t) </mrow>
+					</md>.
+				</p>
+			</solution>
+
+			<solution><title><m>\rightarrow Q(t)</m></title>
+				<p>
+					There are three pieces:
+					<ul marker="square">
+						<li><m>2t</m> is ON from <m>0 \le t \lt 1</m> → use <m>u_0(t) - u_1(t)</m></li>
+						<li><m>3</m> is ON from <m>1 \le t \lt 4</m> → use <m>u_1(t) - u_4(t)</m></li>
+						<li><m>0</m> is ON for <m>t \ge 4</m> → use <m>u_4(t)</m>, though it contributes nothing</li>
+					</ul>
+				</p>
+
+				<p>
+					Putting it together:
+					<me>
+						Q(t) = 2t \cdot \left(u_0(t) - u_1(t)\right) + 3 \cdot \left(u_1(t) - u_4(t)\right)
+					</me>
+				</p>
+
+				<p>
+					Distribute and combine like unit step terms:
+					<md>
+						<mrow>
+							Q(t) 
+							\amp = 2t \cdot u_{0}(t) - 2t \cdot u_{1}(t) + 3 \cdot u_{1}(t) - 3 \cdot u_{4}(t)
+						</mrow>
+						<mrow>
+							\amp = 2t\, u_0(t) + (3 - 2t)\, u_1(t) - 3\, u_4(t)
+						</mrow>
+					</md>
+				</p>
+			</solution>
+
+		</example>
+
+		<p>
+			From here on out, we'll use this compact step-function form whenever we need to handle piecewise forcing functions. This also unlocks the Laplace transform method for problems that contain piecewise forcing functions.
+		</p>
+	</subsection>
+
+	<objectives label="piecewise-functions-wrapup">
+		<ul>
+			<li>Step functions are mathematical ON/OFF switches that let you control which piece is active.</li>
+			<li>By multiplying each piece by the right step expression, you can combine them into one neat formula.</li>
+		</ul>
+	</objectives>
+
+	<reading-questions label="piecewise-functions-cyu">
+		<title>Check Your Understanding</title>
+		<p>
+			<exercise label="piecewise-functions-cyu-1">
+				<title>Piecewise to Laplace</title>
+				<statement>
+					<p>
+						Match each unit-step form to its corresponding piecewise form.
+					</p>
+				</statement>
+				<cardsort>
+					<match>
+						<premise><m>4(u_2(t) - u_5(t)) + (t - 5)u_5(t)</m></premise>
+						<response>
+						<me>\small
+							\left\{
+							\begin{array}{ll}
+								0, 		\amp t \lt 2 \\
+								4, 		\amp 2 \le t \lt 5 \\
+								t - 5,	\amp t \ge 5
+							\end{array}
+							\right.
+						</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4(1 - u_2(t)) + (t - 5)u_5(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										4, 		\amp t \lt 2 \\
+										0, 		\amp 2 \le t \lt 5 \\
+										t - 5,	\amp t \ge 5
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4 u_2(t) + (t - 5) u_5(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										0, 			\amp t \lt 2 \\
+										4, 			\amp 2 \le t \lt 5 \\
+										4 + t - 5,	\amp t \ge 5
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4(u_0(t) - u_2(t)) + (t - 5) u_2(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										0, 		\amp t \lt 0 \\
+										4, 		\amp 0 \le t \lt 2 \\
+										t - 5,	\amp t \ge 2
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+				</cardsort>
+			</exercise>
+		</p>
+	</reading-questions>
+</section>

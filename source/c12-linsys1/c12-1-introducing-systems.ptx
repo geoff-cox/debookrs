@@ -1,0 +1,213 @@
+<section xml:id="intro-systems">
+	<title>Introducing Systems of Differential Equations</title>
+
+	<introduction>
+        <p>
+            When we first started studying differential equations, we focused on <em>one equation and one dependent variable</em>. 
+            But the real world is rarely that simple. Populations of predators and prey change together, chemical reactions involve several substances interacting, and mechanical systems often involve multiple moving parts. 
+        </p>
+        <p>
+            In this chapter, we'll explore what happens when more than one quantity is changing at once — 
+            and how we can describe that with <em>systems of differential equations</em>.
+        </p>
+	</introduction>
+
+    <subsection xml:id="what-are-systems">
+        <title>What Are Systems?</title>
+
+        <p>
+            A <em>system of differential equations</em> is exactly what it sounds like: 
+            a collection of differential equations that must be solved <em>together</em>. 
+            Instead of tracking a single unknown function, we track several unknowns — 
+            and they may influence each other.
+        </p>
+
+        <p>
+            For example, consider two unknown functions, <m>x(t)</m> and <m>y(t)</m>, governed by:
+        </p>
+
+        <md>
+            <mrow>\frac{dx}{dt} \amp = f(x, y)</mrow>
+            <mrow>\frac{dy}{dt} \amp = g(x, y)</mrow>
+        </md>
+
+        <p>
+            Here <m>f</m> and <m>g</m> describe how each quantity changes over time — possibly depending on the other quantity. 
+            This setup is common in science and engineering because many real-world situations involve several connected variables evolving at the same time.
+        </p>
+
+        <paragraphs>
+            <title>How Are They Different?</title>
+            <p>
+                Unlike single equations, systems can include <em>interaction</em>. One variable might depend on another — or they might depend on each other. This can produce richer behaviors like oscillations, balance points, or feedback loops. Solving systems sometimes calls for new tools, like matrix methods, but the ideas will still build on what you already know.
+            </p>
+
+			<p>
+				For example, here are some linear systems that have varying levels of dependency between the equations.
+			</p>
+
+			<sbsgroup widths="33.3% 33.3% 33.3%">
+				<sidebyside>
+					<p><me>\ul{\quad\text{Uncoupled}\quad}</me></p>
+					<p><me>\ul{\quad\text{Partially-Coupled}\quad}</me></p>
+					<p><me>\ul{\quad\text{Fully-Coupled}\quad}</me></p>
+				</sidebyside>
+				<sidebyside>
+					<p>
+						<md>
+							<mrow>\frac{dx}{dt} \amp = 6x</mrow>
+							<mrow>\frac{dy}{dt} \amp = 3y</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\frac{dx}{dt} \amp = 6x</mrow>
+							<mrow>\frac{dy}{dt} \amp = 3y - x</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\frac{dx}{dt} \amp = 6x + 2y</mrow>
+							<mrow>\frac{dy}{dt} \amp = 3y - x</mrow>
+						</md>
+					</p>
+				</sidebyside>
+				<sidebyside>
+					<p><me>\text{No variable cross-over}</me></p>
+					<p><me>\text{Some variable cross-over}</me></p>
+					<p><md><mrow>\text{All variables appear in}</mrow><mrow>\text{all equations}</mrow></md></p>
+				</sidebyside>
+			</sbsgroup>
+
+			<p>
+				The uncoupled system is no more than two independent differential equations that you have solved before. Far more interesting are the coupled systems, where changes in one variable directly influence changes in the other. 
+			</p>
+        </paragraphs>
+	</subsection>
+
+    <subsection xml:id="uncoupled-systems">
+        <title>Uncoupled Systems</title>
+
+        <p>
+            Let's start simple. Suppose we have two unknowns, <m>x(t)</m> and <m>y(t)</m>, but they don't influence each other:
+        </p>
+
+        <md>
+            <mrow>\frac{dx}{dt} \amp = -x \quad \text{with} \ x(0) = 0.6</mrow>
+            <mrow>\frac{dy}{dt} \amp = -2y \quad \text{with} \ y(0) = 1.2</mrow>
+        </md>
+
+        <p>
+            These are called <em>uncoupled</em> because the <m>x</m>-equation has no <m>y</m> and the <m>y</m>-equation has no <m>x</m>. 
+            There's no interaction — they're basically two separate problems packaged together.
+        </p>
+
+        <example xml:id="ex-uncoupled">
+            <title>📖❓ Example of an Uncoupled System</title>
+            <statement>
+                <p>
+                    Solve the uncoupled system:
+                </p>
+                <md>
+                    <mrow>\frac{dx}{dt} \amp = -x \quad \text{with} \ x(0) = 0.6</mrow>
+                    <mrow>\frac{dy}{dt} \amp = -2y \quad \text{with} \ y(0) = 1.2</mrow>
+                </md>
+            </statement>
+            <solution>
+                <p>
+                    Each equation can be solved on its own:
+                </p>
+
+                <me>
+                    x(t) = 0.6 e^{-t}, \qquad y(t) = 1.2 e^{-2t}
+                </me>
+
+                <p>
+                    Even though they evolve separately, we think of the combined solution as a <em>pair</em>:
+                </p>
+
+                <me>
+                    (x(t), y(t)) = \left(0.6 e^{-t}, 1.2 e^{-2t}\right).
+                </me>
+
+                <p>
+                    You might imagine <m>x(t)</m> describing a cup of coffee cooling while <m>y(t)</m> describes a soda warming up — two unrelated processes happening side by side.
+                </p>
+
+				<figure xml:id="fig-uncoupled-phase-plane">
+					<caption>Solution trajectories in the phase plane for the uncoupled system <m>x' = -x</m>, <m>y' = -2y</m>. Arrows indicate the direction of motion as time increases.</caption>
+					<image width="50%">
+						<latex-image>
+							\begin{tikzpicture}
+
+								\def\tmin{-0.2}		\def\tmax{2.4}		\def\tstep{0.2}	
+								\def\xymin{-0.2}	\def\xymax{2.5}		\def\xystep{0.2}
+								
+								\def\xo{0.6}	\def\yo{1.3}		% Initial conditions
+
+								\begin{axis}[
+									scale=0.6,
+									height=6cm, width=12cm,
+									xlabel={$t$}, ylabel={$y$},
+									grid=none,
+									tick style={thick},
+									line width=1pt,
+									axis lines=middle,
+									xtick distance=1, ytick distance=4,
+									minor x tick num=1, minor y tick num=1,
+									xmin=\tmin, xmax=\tmax, ymin=\xymin, ymax=\xymax,
+									legend style={at={(0.4,1)}, anchor=north west, line width=1pt},
+									%legend pos=outer north east, % Places the legend outside the axis, top-right,
+								]
+									\addplot [
+										domain=\tmin:\tmax, 
+										samples=100, 
+										color=red,
+										variable=t,
+									]{\xo*e^(-t)};
+									\addlegendentry{$x(t) = \xo e^{-t}$}
+
+									\addplot [
+										domain=\tmin:\tmax, 
+										samples=100, 
+										color=blue,
+										variable=t,
+									]{\yo*e^(-2*t)};
+									\addlegendentry{$y(t) = \yo e^{-2t}$}
+
+								\end{axis}
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+            </solution>
+        </example>
+
+		<exercise xml:id="intro-systems-chkpt-1">
+			<title>📖❓ Uncoupled or Not?</title>
+			<statement correct="no">
+				<p>
+					The following system is uncoupled:
+				</p>
+				<md>
+					<mrow>\frac{dx}{dt} \amp = 2x</mrow>
+					<mrow>\frac{dy}{dt} \amp = -3y + x</mrow>
+				</md>
+			</statement>
+		</exercise>
+	</subsection>
+
+	<assemblage label="intro-systems-wrap-up">
+		<title>📤 Wrap-Up</title>
+		<p>
+			<paragraphs label="intro-systems-takeaways">
+				<title>🗝️ Key Takeaways..</title>
+				<ul marker="square">
+					<li><em>Uncoupled systems</em> have no interaction between equations: each variable evolves independently.</li>
+					<li>You solve each equation on its own, then pair the solutions as <m>(x(t), y(t))</m>.</li>
+					<li>These are the simplest systems — but they're still systems!</li>
+				</ul>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

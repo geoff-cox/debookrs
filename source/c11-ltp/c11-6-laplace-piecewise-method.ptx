@@ -1,0 +1,851 @@
+<section label="piecewise-laplace-method">
+	<title>Laplace Method with Piecewise Forcing Terms</title>
+	<introduction>
+		<p>
+			This is the moment where everything you've learned about Laplace transforms, step functions, and piecewise rewriting comes together. We'll now use the Laplace method to solve differential equations whose forcing terms switch ON and OFF across time. 
+		</p>
+		<p>
+			The big picture is the same familiar three-step Laplace method you already know:
+			<ul marker="square">
+				<li><term>Step 1:</term> Forward transform the differential equation into the Laplace domain.</li>
+				<li><term>Step 2:</term> Solve for <m>Y(s)</m> algebraically and prepare it for inversion.</li>
+				<li><term>Step 3:</term> Apply the inverse Laplace transform to recover <m>y(t)</m>.</li>
+			</ul>
+			The only twist is that our forcing term is now piecewise, so the process begins with a setup step of rewriting the forcing term using step functions.
+		</p>
+	</introduction>
+
+	<subsection label="piecewise-laplace-method-model">
+		<title>A Model Problem</title>
+		<p>
+			Let's solve this initial value problem to see the full method in action:
+			<me>
+				y'' + 4y = g(t), \qquad y(0) = 0,\ y'(0) = 0
+			</me>
+			where the forcing term switches ON for just one second:
+			<me>
+				g(t) = \begin{cases}
+				1, \amp 1 \le t \lt 2 \\
+				0, \amp \text{otherwise}.
+				\end{cases}
+			</me>
+		</p>
+
+		<p>
+			You'll recognize the roadmap: forward transform → solve in the Laplace domain → inverse transform. But watch how the step function representation drives every stage of the solution.
+		</p>
+
+		<proof label="piecewise-laplace-method-model-roadmap"><title>🗺️ A Roadmap Overview</title>
+			<p>
+				<sidebyside widths="40% 14% 38%" valign="middle">
+					<p><me>\small\ul{\qquad\ \textbf{Original Domain}\ \qquad}</me></p>
+					<p/>
+					<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+				</sidebyside>
+				<sidebyside widths="40% 14% 38%" valign="top">
+					<p>
+						<md>
+							<mrow>\small \os{\vphantom{m}}{ y'' + 4y = g(t) }</mrow>
+							<mrow>\small y(0) = 0,\ y'(0) = 0 </mrow>
+							<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+							<mrow/>
+							<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+							<mrow>\small y(t) = \left(\frac14 - \frac18\cos\big(2(t - 1)\big)\right)u_1(t)</mrow>
+							<mrow>\small \qquad - \left(\frac14 - \frac18\cos\big(2(t - 2)\big)\right)u_2(t)</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\small \text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+							<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\amp\small\DLBa s^2Y(s) + 4Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}</mrow>
+									<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+									<mrow>\amp\small\DLBa Y(s) = \frac{1}{s^2 + 4} \left( \frac{e^{-s}}{s} - \frac{e^{-2s}}{s} \right)</mrow>
+									<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+									<mrow>\amp\small\DLBa Y(s) = F(s)e^{-s} - F(s)e^{-2s}</mrow>
+									<mrow>\amp\small\text{where}\ \DLBa F(s) = \frac14 \left( \frac{1}{s} - \frac{s}{s^2 + 4} \right)</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
+			</p>
+		</proof>
+
+		<paragraphs label="piecewise-laplace-method-model-setup">
+			<title>Setup: Piecewise Form to Step Form</title>
+
+			<p>
+				The piecewise function, <m>g(t)</m>, must be expressed in step function form before we can take its transform. Since <m>g(t)</m> has only one non-zero piece on the activation interval, <m>1 \le t \lt 2</m>, the only switch we need is <m>u_1(t) - u_2(t)</m>:
+				<me>
+					g(t) = 1 \cdot (u_1(t) - u_2(t)) = u_1(t) - u_2(t)
+				</me>
+			</p>
+		</paragraphs>
+		
+		<paragraphs label="piecewise-laplace-method-model-step-1">
+			<title>Step 1 — Into the Laplace Domain</title>
+			<p>
+				We are now ready to apply <m>\laplacesym</m> to both sides, term-by-term, using linearity:
+				<md>
+					<mrow>\us{\ds\text{R}\vphantom{R}_2}{\ul{\lap{y''}}} + 4\us{\ds Y(s)}{\ul{\lap{y}}} = \us{\ds\text{L}\vphantom{L}_9}{\ul{\lap{u_1(t)}}} - \us{\ds\text{L}\vphantom{L}_9}{\ul{\lap{u_2(t)}}}</mrow>
+				</md>
+			</p>
+
+			<p>
+				Using rules <xref ref="lt-R2" text="custom">R<m>_{2}</m></xref> with <m>y(0) = 0,\ y'(0) = 0</m> and <xref ref="lt-L9" text="custom">L<m>_{9}</m></xref>, gives the Laplace-domain equation:
+			</p>
+
+			<me>
+				s^2Y(s) + 4Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
+			</me>.
+		</paragraphs>
+
+		<paragraphs label="piecewise-laplace-method-model-step-2">
+			<title>Step 2 — Solving in the Laplace Domain</title>
+			<p>
+				Factor out <m>Y(s)</m> from the left side and divide to isolate it:
+				<md>
+					<mrow>
+						(s^2 + 4)Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}
+						\quad\implies\quad
+						Y(s) = \frac{1}{s^2 + 4} \left( \frac{e^{-s}}{s} - \frac{e^{-2s}}{s} \right)
+					</mrow>
+				</md>
+			</p>
+
+			<p>
+				This is the Laplace-domain solution. Next, we rewrite <m>Y(s)</m> into a form that matches the inverse Laplace table.
+			</p>
+
+			<p>
+				In general, any exponential terms in <m>Y(s)</m> (i.e., <m>e^{-s}</m> and <m>e^{-2s}</m>) will return to the original domain as unit step functions using <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref>. Therefore, you should prioritize collecting exponentials whenever you see them. For our equation, this looks like:
+			</p>
+
+			<exercise label="chkpt-piecewise-laplace-2">
+				<title>📖❓ Matching Exponential Factors</title>
+				<statement>
+					<p>
+						What do exponential terms in the Laplace domain, like <m>e^{-4s}</m>, correspond to in the original-domain solution, <m>y(t)</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>A term with the step function switch, <m>u_4(t)</m>.</statement>
+						<feedback>Correct — <m>e^{-cs}</m> always brings in <m>u_c(t)</m> and a shift by <m>c</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>A term with a coefficient of <m>4</m>.</statement>
+						<feedback>No — the exponential doesn't change coefficients like that.</feedback>
+					</choice>
+					<choice>
+						<statement>An exponential term <m>e^{4t}</m>.</statement>
+						<feedback>No — <m>e^{-4s}</m> doesn't translate to <m>e^{4t}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>A term containing <m>\dfrac{1}{t+4}</m>.</statement>
+						<feedback>No — perhaps you thought this looked like the forward transform <me>\lap{e^{-4t}} = \frac{1}{s+4}</me>?</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<me>
+				Y(s) = \frac{1}{s(s^2 + 4)}e^{-s} - \frac{1}{s(s^2 + 4)}e^{-2s}
+			</me>
+
+			<p>
+				To match the form in <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref>, its a good habit to define the shorthand:
+				<me>
+					F(s) = \frac{1}{s(s^2 + 4)}
+				</me>
+				so that our prepared <m>Y(s)</m> becomes:
+				<me>
+					\text{(prepared)}\qquad Y(s) = F(s)e^{-s} - F(s)e^{-2s}
+				</me>.
+			</p>
+
+			<p>
+				Since we'll also need <m>f(t) = \ilap{F(s)}</m> in step 3, let's compute it now:
+			</p>
+
+			<me>
+				f(t) = \ilap{F(s)} = \frac14\left(1 - \cos(2t)\right)
+			</me>
+
+			<proof><title>🔎 Here are the Details</title>
+				<p>
+					Decompose:
+					<me>
+						F(s) = \frac{3}{s^2(s + 2)} = \frac{A}{s} + \frac{Bs + C}{s^2 + 4}
+					</me>.
+				</p>
+				<p>
+					Multiply by <m>s(s^2 + 4)</m> and collect the <m>s^2</m>, <m>s</m>, and constant terms:
+					<me>
+						1 = A(s^2 + 4) + (Bs + C)s = (A + B)s^2 + Cs + 4A
+					</me>.
+				</p>
+				<p>
+					Matching coefficients gives the system:
+					<me>
+						A+B=0,\quad C=0,\quad 4A=1
+					</me>
+					which has solution <m>A=\sfrac14, B=-\sfrac14, C=0</m>. Thus:
+					<me>
+						F(s) = \frac14\cdot\frac{1}{s} - \frac14\cdot\frac{s}{s^2 + 4}
+					</me>
+					and so the inverse is:
+					<me>
+						f(t) = \ilap{F(s)} = \frac14 - \frac14\cos(2t) = \frac14\left(1 - \cos(2t)\right)
+					</me>.
+				</p>
+			</proof>
+		</paragraphs>
+
+		<paragraphs label="piecewise-laplace-method-model-step-3">
+			<title>Step 3 — Leaving the Laplace Domain</title>
+			<p>
+				We now apply <m>\laplacesym^{-1}</m> to both sides of the <q>prepared</q> <m>Y(s)</m>:
+				<me>
+					\ilap{Y(s)} = \ilap{F(s)e^{-s}} - \ilap{F(s)e^{-2s}}
+				</me>
+			</p>
+
+			<p>
+				Applying <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref>, our solution becomes:
+				<me>
+					y(t) = f(t - 1)\cdot u_1(t) - f(t - 2)\cdot u_2(t)
+				</me>.
+			</p>
+
+			<p>
+				We use <m>f(t)</m> (from step 2) to plug in <m>f(t - 1)</m> and <m>f(t - 2)</m>, leading to the solution:
+				<me>
+					y(t) = \frac14\Big(1 - \cos\big(2(t - 1)\big)\Big)u_1(t)
+						- \frac14\Big(1 - \cos\big(2(t - 2)\big)\Big)u_2(t)
+				</me>
+			</p>
+		</paragraphs>
+
+		<p>
+			This problem demonstrates how the same Laplace method process can be applied to equations with piecewise forcing terms. With practice, you'll see that problems with piecewise forcing terms are no different from any other Laplace method problem.
+		</p>
+	</subsection>
+
+	<subsection label="piecewise-laplace-method-additional-examples">
+		<title>Additional Examples</title>
+		<p>
+			To cement the idea, here are a few more examples. Notice in each, that the three-step strategy stays exactly the same.
+		</p>
+
+		<example label="piecewise-laplace-method-example-1">
+			<statement>
+				<p>
+					Solve the initial value problem
+					<me>
+						y'' + 2y' = g(t), \qquad y(0) = 0,\quad y'(0) = 1
+					</me>
+					where the forcing term is given by:
+					<me>
+						g(t) = 
+						\begin{cases}
+							3, \amp t \ge 5\\
+							0, \amp \text{otherwise}.
+						\end{cases}
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<paragraphs label="piecewise-laplace-method-example-1-setup">
+					<title>Setup: Piecewise Form to Step Form</title>
+					<p>
+						Since the only nonzero piece of <m>g</m> is <m>3</m> on <m>t \ge 5</m>, the equation becomes:
+						<me>y'' + 2y' = 3u_5(t)</me>.
+					</p>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-1-step-1">
+					<title>Step 1 — Into the Laplace Domain</title>
+					<p>
+						Take the Laplace transform of both sides:
+						<me>
+							\lap{y''} + 2\lap{y'} = 3\lap{u_5(t)}
+						</me>.
+					</p>
+
+					<p>
+						Using the initial conditions with <xref ref="lt-R1" text="custom">R<m>_1</m></xref> and <xref ref="lt-L9" text="custom">L<m>_9</m></xref> we get:
+						<me>s^2 Y(s) - s + 2s Y(s) = \frac{3e^{-5s}}{s}</me>.
+					</p>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-1-step-2">
+					<title>Step 2 — Solve for <m>Y(s)</m></title>
+					<p>
+						Next, we isolate <m>Y(s)</m>:
+						<me>Y(s) = \frac{1}{s(s + 2)}\left(\frac{3e^{-5s}}{s} + s\right)</me>.
+					</p>
+
+					<p>
+						and prepare for inversion by collecting the exponential terms:
+						<me>
+							\text{(prepared)}\quad Y(s) = F(s)e^{-5s} + \frac{1}{s + 2}, \quad\text{where}\quad F(s) = \frac{3}{s^2(s + 2)}
+						</me>.
+					</p>
+
+					<p>
+						Lastly, we compute <m>f(t) = \ilap{F(s)}</m> so it will be ready for step 3:
+						<me>f(t) = -\frac34 + \frac32t + \frac34e^{-2t}</me>,	
+					</p>
+
+					<proof><title>🔎 Here are the details</title>
+						<p>
+							Decompose:
+							<me>
+								F(s) = \frac{3}{s^2(s + 2)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s + 2}
+							</me>.
+						</p>
+						<p>
+							Multiply through and collect the <m>s^2</m>, <m>s</m>, and constant terms:
+							<me>
+								3 = As(s + 2) + B(s + 2) + Cs^2 = (A+C)s^2 + (2A+B)s + 2B
+							</me>.
+						</p>
+						<p>
+							Matching coefficients gives the system:
+							<me>
+								A+C=0,\quad 2A+B=0,\quad 2B=3
+							</me>
+							which has solution <m>A=-\sfrac34, B=\sfrac32, C=\sfrac34</m>. Thus:
+							<me>
+								F(s) = \frac{-\sfrac34}{s} + \frac{\sfrac32}{s^2} + \frac{\sfrac34}{s + 2}
+							</me>
+							and
+							<me>
+								f(t) = \ilap{F(s)} = -\frac34 + \frac32t + \frac34e^{-2t}
+							</me>.
+						</p>
+					</proof>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-1-step-3">
+					<title>Step 3 — Leave the Laplace Domain</title>
+					<p>
+						Apply <m>\laplacesym^{-1}</m> to each term of the prepared <m>Y(s)</m>:
+					</p>
+
+					<md>
+						<mrow>\ilap{Y(s)} = \ilap{F(s)e^{-5s}} + \ilap{\frac{1}{s + 2}}</mrow>
+						<mrow>y(t) = f(t-5)u_5(t) + e^{-2t}</mrow>
+					</md>
+
+					<p>
+						Substituting in <m>f(t-5)</m>, gives the final solution:
+					</p>
+
+					<me>
+						y(t) = \left(-\frac34 + \frac32(t-5) + \frac34e^{-2(t-5)}\right)u_5(t) + e^{-2t}
+					</me>
+				</paragraphs>
+			</solution>
+		</example>
+
+		<example label="piecewise-laplace-method-example-2">
+			<statement>
+				<p>
+					Let's solve this initial value problem:
+					<me>
+						2y' + y = g(t), \qquad y(0) = 0
+					</me>
+					with a piecewise forcing term:
+					<me>
+						g(t) =
+						\begin{cases}
+							3, \amp 0 \le t \lt 2 \\
+							1, \amp 2 \le t \lt 4 \\
+							t - 4, \amp t \ge 4
+						\end{cases}
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					We'll follow the Laplace roadmap: <em>forward transform → solve in the Laplace domain → inverse transform</em>. The step function form of <m>g(t)</m> will guide us.
+				</p>
+
+				<paragraphs label="piecewise-laplace-method-example-2-setup">
+					<title>Setup — Write g(t) Using Step Functions</title>
+					<p>
+						First, express the piecewise forcing term in step function form:
+						<md>
+							<mrow>
+								g(t) = 3(u_0(t) - u_2(t)) + 1(u_2(t) - u_4(t)) + (t-4)u_4(t)
+							</mrow>
+							<mrow>
+								= 3u_0(t) - 2u_2(t) + (t-4)u_4(t).
+							</mrow>
+						</md>
+					</p>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-2-step-1">
+					<title>Step 1 — Into the Laplace Domain</title>
+					<p>
+						Apply <m>\laplacesym</m> to both sides:
+						<me>
+							2\lap{y'} + \lap{y} = \lap{g(t)}.
+						</me>
+					</p>
+
+					<p>
+						With <m>y(0)=0</m> and the derivative rule:
+						<me>
+							2(sY(s)) + Y(s) = \lap{g(t)}.
+						</me>
+					</p>
+
+					<p>
+						Transforming each piece of <m>g(t)</m>:
+						<md>
+							<mrow>
+								\lap{3u_0(t)} = \frac{3}{s}, \quad
+								\lap{-2u_2(t)} = -\frac{2e^{-2s}}{s}, \quad
+								\lap{(t-4)u_4(t)} = e^{-4s}\frac{1}{s^2}.
+							</mrow>
+						</md>
+					</p>
+
+					<p>
+						The Laplace-domain equation becomes:
+						<me>
+							2sY(s) + Y(s) = \frac{3}{s} - \frac{2e^{-2s}}{s} + \frac{e^{-4s}}{s^2}.
+						</me>
+					</p>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-2-step-2">
+					<title>Step 2 — Solve in the Laplace Domain</title>
+					<p>
+						Isolate <m>Y(s)</m>:
+						<md>
+							<mrow>
+								Y(s) = \frac{1}{2s + 1}\left(2 + \frac{3}{s} - \frac{2e^{-2s}}{s} + \frac{e^{-4s}}{s^2}\right).
+							</mrow>
+						</md>
+					</p>
+
+					<p>
+						Distribute and write <m>Y(s)</m> as pieces of the form <m>F(s)e^{-cs}</m>:
+						<me>
+							Y(s) = \frac{2}{2s + 1} + \frac{3}{s(2s + 1)} - \frac{2}{s(2s + 1)}e^{-2s} + \frac{1}{s^2(2s + 1)}e^{-4s}
+						</me>.
+					</p>
+
+					<p>
+						Identify the rational parts:
+						<me>
+							F_1(s) = \frac{2}{2s+1}, \quad
+							F_2(s) = \frac{1}{s(2s+1)}, \quad
+							F_3(s) = \frac{1}{s^2(2s+1)}
+						</me>,
+						which completes the prepared <m>Y(s)</m>:
+						<me>
+							\text{(prepared)}\quad Y(s) = F_1(s) + 3F_2(s) - 2F_2(s)e^{-2s} + F_3(s)e^{-4s}
+						</me>.
+					</p>
+
+					<p>
+						The partial fractions decomposition of <m>F_2(s)</m> and <m>F_3(s)</m> needed for step 3 are:
+						<me>
+							F_2(s) = \frac{1}{s} - \frac{2}{2s+1}, \qquad
+							F_3(s) = \frac{-2}{s} + \frac{1}{s^2} + \frac{4}{2s+1}.
+						</me>
+					</p>
+
+					<proof><title> 🔎 Partial Fraction Details</title>
+						<me>
+							F_2(s):\qquad\frac{1}{s(2s + 1)} = \frac{A}{s} + \frac{B}{2s + 1}
+						</me>
+
+						<p>
+							Multiplying through and grouping <m>s</m> terms:
+							<md>
+								<mrow> 1 \amp = A(2s + 1) + Bs = 2As + A + Bs = (2A + B)s + A</mrow> 
+							</md>
+						</p>
+
+						<p>
+							Leads to:
+							<me>2A + B = 0,\quad A = 1 \quad\Rightarrow\quad A = 1,\quad B = -2</me>
+						</p>
+
+						<p>
+							and so
+							<me>
+								F_2 = \frac{1}{s} - \frac{2}{2s + 1}
+							</me>
+						</p>
+
+						<me>
+							F_3(s):\qquad F_3(s) = \frac{1}{s^2(2s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{2s + 1}
+						</me>
+
+						<p>
+							Multiplying through and grouping <m>s</m> terms:
+							<md>
+								<mrow>
+									1 = As(2s + 1) + B(2s + 1) + Cs^2 
+									\amp = 2As^2 + As + 2Bs + B + Cs^2
+								</mrow>
+								<mrow>
+									\amp = (2A + C)s^2 + (A + 2B)s + B
+								</mrow>
+							</md>
+						</p>
+
+						<p>
+							Leads to:
+							<me>
+								2A + C = 0,\quad A + 2B = 0,\quad B = 1 \quad\Rightarrow\quad A = -2,\ B = 1,\ C = 4
+							</me>
+						</p>
+
+						<p>
+							Thus,
+							<me>
+								F_3(s) = \frac{-2}{s} + \frac{1}{s^2} + \frac{4}{2s + 1}
+							</me>
+						</p>
+					</proof>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-2-step-3">
+					<title>Step 3 — Leave the Laplace Domain</title>
+					<p>
+						Apply <m>\laplacesym^{-1}</m> to both sides of the <q>prepared</q> <m>Y(s)</m>:
+						<md>
+							<mrow>
+								\ilap{Y(s)} = \ilap{F_1(s)} \amp + 3\ilap{F_2(s)}
+							</mrow>
+							<mrow>
+								\amp - 2\ilap{F_2(s)e^{-2s}} + \ilap{F_3(s)e^{-4s}}
+							</mrow>
+						</md>
+					</p>
+
+					<p>
+						Using <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref> updates our solution to:
+						<me>
+							y(t) = f_1(t) + 3f_2(t) - 2\frac{e^{-2s}}{s}f_2(t-2) + \frac{e^{-4s}}{s}f_3(t-4)
+						</me>
+					</p>
+
+					<p>
+						Inverting each <m>F_i(s)</m> gives <m>f_i(t)</m>:
+						<md>
+							<mrow>f_1(t) = \ilap{F_1(s)} \amp = 2e^{-t/2}</mrow>
+							<mrow>f_2(t) = \ilap{F_2(s)} \amp = 1 - 2e^{-t/2}</mrow>
+							<mrow>f_3(t) = \ilap{F_3(s)} \amp = -2 + t + 2e^{-t/2}</mrow>
+						</md>
+					</p>
+
+					<p>
+						Plugging in the <m>f_i(t)</m>'s, we get the final solution:
+						<md>
+							<mrow>
+								y(t) = 2e^{-\frac12 t} 
+								\amp + 3 - 6e^{-\frac12 t} 
+							</mrow>
+							<mrow>
+								\amp - 2\left(1 - 2e^{-\frac12(t-2)}\right)u_2(t) + \left((t-4) - 2 + 2e^{-\frac12(t-4)}\right)u_4(t).
+							</mrow>
+						</md>
+					</p>
+				</paragraphs>
+			</solution>
+		</example>
+
+		<example label="piecewise-laplace-method-example-3">
+			<statement>
+				<p>
+					Consider the initial value problem:
+					<me>
+						\frac{d^2y}{dt^2} - 4\frac{dy}{dt} - 5y =
+						\begin{cases}
+							e^{-t}, \amp 0 \le t \lt 1 \\
+							1, \amp t \ge 1
+						\end{cases},
+						\qquad y(0) = 0,\ \frac{dy}{dt}(0) = 0.
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					The forcing function starts as <m>e^{-t}</m> and then abruptly switches to a constant at <m>t=1</m>. We'll lean on the Laplace roadmap: forward transform → solve for <m>Y(s)</m> → return to <m>y(t)</m>. 
+				</p>
+
+				<paragraphs label="piecewise-laplace-method-example-3-setup">
+					<title>Setup — Step Function Form</title>
+					<p>
+						First, we rewrite the forcing term with step functions so we can apply Laplace rules directly:
+						<me>
+							g(t) = e^{-t}(u_0(t) - u_1(t)) + 1 \cdot u_1(t).
+						</me>
+					</p>
+
+					<p>
+						Combine the terms grouped by their switches:
+						<me>
+							g(t) = e^{-t}u_0(t) + \big(1 - e^{-t}\big)u_1(t).
+						</me>
+					</p>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-3-step-1">
+					<title>Step 1 — Into the Laplace Domain</title>
+					<p>
+						Apply <m>\laplacesym</m> to both sides:
+						<me>
+							\lap{\frac{d^2y}{dt^2}} - 4\lap{\frac{dy}{dt}} - 5\lap{y} = \lap{e^{-t}u_0(t)} + \lap{(1 - e^{-t})u_1(t)}.
+						</me>
+					</p>
+
+					<p>
+						Use the derivative rules with <m>y(0)=0, \sfrac{dy}{dt}(0)=0</m> on the left, and the step/exponential rules on the right:
+					</p>
+
+					<md>
+						<mrow>
+							(s^2 - 4s - 5)Y(s) = \frac{1}{s + 1} + \left(\frac{1}{s} - \frac{1}{s + 1}\right)e^{-s}.
+						</mrow>
+					</md>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-3-step-2">
+					<title>Step 2 — Solve in the Laplace Domain</title>
+					<p>
+						Factor and isolate <m>Y(s)</m>:
+						<me>
+							Y(s) = \frac{1}{s^2 - 4s - 5} \left[\frac{1}{s + 1} + \left(\frac{1}{s} - \frac{1}{s + 1}\right)e^{-s}\right].
+						</me>
+					</p>
+
+					<p>
+						Since <m>s^2 - 4s - 5 = (s + 1)(s - 5)</m>, distribute and reorganize:
+						<me>
+							Y(s) = \frac{1}{(s + 1)(s - 5)} \left[\frac{1}{s + 1} + \frac{1}{s(s + 1)}e^{-s}\right].
+						</me>
+					</p>
+
+					<p>
+						Separate the terms into rational pieces to prepare for the inverse transform:
+						<md>
+							<mrow>
+								Y(s) = \ub{\frac{1}{(s + 1)^2(s - 5)}}_{\large F_1(s)}
+								+ \ub{\frac{1}{s(s + 1)^2(s - 5)}}_{\large F_2(s)} e^{-s}.
+							</mrow>
+						</md>
+					</p>
+
+					<p>
+						Now
+						<me>
+							\text{(prepared)}\qquad Y(s) = F_1(s) + F_2(s)e^{-s}
+						</me>.
+					</p>
+
+					<p>
+						Both <m>F_1(s)</m> and <m>F_2(s)</m> need partial fraction decomposition.
+					</p>
+
+					<proof><title>🔎 Partial Fraction Details</title>
+						<p>
+								For <m>F_1(s)</m>, the general form is:
+								<me>
+									\frac{1}{(s + 1)^2(s - 5)} = \frac{A}{s + 1} + \frac{B}{(s + 1)^2} + \frac{C}{s - 5}
+								</me>
+						</p>
+
+						<p>
+							Multiplying through:
+							<md>
+								<mrow> 1 \amp = A(s + 1)(s - 5) + B(s - 5) + C(s + 1)^2</mrow> 
+							</md>
+						</p>
+
+						<p>
+							Selecting values of <m>s</m> finds <m>A</m>, <m>B</m>, and <m>C</m>:
+							<tabular>
+								<col width="15%" halign="right"/>
+								<col width="40%" halign="left"/>
+								<col width="15%" halign="center"/>
+								<col width="30%" halign="center"/>
+								<row>
+									<cell><p><m>s = -1:</m></p></cell>
+									<cell><p><m>1 = A(0) + B(-6) + C(0)</m></p></cell>
+									<cell><p><m>\implies</m></p></cell>
+									<cell><p><m>B = -\frac16</m></p></cell>
+								</row>
+								<row>
+									<cell><p><m>s = 5:</m></p></cell>
+									<cell><p><m>1 = A(0) + B(0) + C(36)</m></p></cell>
+									<cell><p><m>\implies</m></p></cell>
+									<cell><p><m>C = \frac{1}{36}</m></p></cell>
+								</row>
+								<row>
+									<cell><p><m>s = 0:</m></p></cell>
+									<cell><p><m>1 = A(-5) + B(-5) + C(1)</m></p></cell>
+									<cell><p><m>\implies</m></p></cell>
+									<cell><p><m>1 = -5A + \frac56 + \frac{1}{36}</m></p></cell>
+								</row>
+								<row>
+									<cell/>
+									<cell/>
+									<cell/>
+									<cell><p><m> A = -\frac{1}{36}</m></p></cell>
+								</row>
+							</tabular>
+						</p>
+
+						<p>
+							With these constants, we can write <m>F_1</m> as:
+						</p>
+
+						<me>
+							F_1(s) = \frac{-\frac{1}{36}}{s + 1} - \frac{\frac{1}{6}}{(s + 1)^2} + \frac{\frac{1}{36}}{s - 5}
+						</me>
+
+						<p>
+							Now, for <m>F_2(s)</m>, we have:
+							<me>
+								F_2(s) = \frac{1}{s(s + 1)^2(s - 5)} = \frac{A}{s} + \frac{B}{s + 1} + \frac{C}{(s + 1)^2} + \frac{D}{s - 5}
+							</me>
+						</p>
+
+						<p>
+							Multiplying through:
+							<md>
+								<mrow> 1 \amp = A(s + 1)^2(s - 5) + Bs(s + 1)(s - 5) + Cs(s - 5) + Ds(s + 1)^2</mrow> 
+							</md>
+						</p>
+
+						<p>
+							Selecting values of <m>s</m> finds <m>A</m>, <m>B</m>, <m>C</m>, and <m>D</m>:
+							<tabular>
+								<col width="10%" halign="right"/>
+								<col width="44%" halign="left"/>
+								<col width="10%" halign="center"/>
+								<col width="36%" halign="center"/>
+								<row>
+									<cell><m>s = 0:</m></cell>
+									<cell><m>1 = A(-5) + B(0) + C(0) + D(0)</m></cell>
+									<cell><m>\implies</m></cell>
+									<cell><m>A = -\frac{1}{5}</m></cell>
+								</row>
+								<row>
+									<cell><m>s = -1:</m></cell>
+									<cell><m>1 = A(0) + B(6) + C(0) + D(0)</m></cell>
+									<cell><m>\implies</m></cell>
+									<cell><m>B = \frac{1}{6}</m></cell>
+								</row>
+								<row>
+									<cell><m>s = 5:</m></cell>
+									<cell><m>1 = A(0) + B(0) + C(0) + D(180)</m></cell>
+									<cell><m>\implies</m></cell>
+									<cell><m>D = \frac{1}{180}</m></cell>
+								</row>
+								<row>
+									<cell><m>s = 1:</m></cell>
+									<cell><m>1 = A(-16) + B(-8) + C(-4) + D(4)</m></cell>
+									<cell/>
+									<cell/>
+								</row>
+							</tabular>
+						</p>
+
+						<p>
+							To find <m>C</m>, we plug in the values of <m>A</m>, <m>B</m>, and <m>D</m>:
+							<me>
+								1 = \frac{16}{5} - \frac{4}{3} + C(-4) + \frac{1}{45} \implies
+								C = \frac{2}{9}
+							</me>
+						</p>
+
+						<p>
+							With these constants, we can write <m>F_2</m> as:
+						</p>
+
+						<me>
+							F_2(s) = \frac{-\frac{1}{5}}{s} + \frac{\frac{1}{6}}{s + 1} + \frac{\frac{2}{9}}{(s + 1)^2} + \frac{\frac{1}{180}}{s - 5}
+						</me>
+					</proof>
+				</paragraphs>
+
+				<paragraphs label="piecewise-laplace-method-example-3-step-3">
+					<title>Step 3 — Leave the Laplace Domain</title>
+					<p>
+						Apply <m>\laplacesym^{-1}</m> to both sides of the <q>prepared</q> <m>Y(s)</m>:
+						<me>
+							\ilap{Y(s)} = \ilap{F_1(s)} + \ilap{F_2(s)e^{-s}}
+						</me>
+					</p>
+
+					<p>
+						Using <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref> updates our solution to:
+						<me>
+							y(t) = f_1(t) + \frac{e^{-2s}}{s}f_2(t-2)
+						</me>
+					</p>
+
+					<p>
+						Inverting <m>F_1(s)</m> and <m>F_2(s)</m> gives:
+						<md>
+							<mrow>f_1(t) \amp = \ilap{F_1(s)} = -\frac{1}{36}e^{-t} - \frac{1}{6}te^{-t} + \frac{1}{36}e^{5t}</mrow>
+							<mrow>f_2(t) \amp = \ilap{F_2(s)} = -\frac{1}{5} + \frac{1}{6}e^{-t} + \frac{2}{9}te^{-t} + \frac{1}{180}e^{5t}</mrow>
+						</md>
+					</p>
+
+					<p>
+						Finally, substitute <m>f_1(t)</m> and <m>f_2(t-2)</m> to get the final solution:
+					</p>
+
+					<md>
+						<mrow>
+							y(t) =  - \amp\frac{1}{36}e^{-t} - \frac{1}{6}te^{-t} + \frac{1}{36}e^{5t} 
+						</mrow>
+						<mrow>
+							\amp + \left[-\frac{1}{5} + \frac{1}{6}e^{-(t - 1)} + \frac{2}{9}(t - 1)e^{-(t - 1)} + \frac{1}{180}e^{5(t - 1)}\right] u_1(t).
+						</mrow>
+					</md>
+				</paragraphs>
+			</solution>
+		</example>
+	</subsection>
+
+	<assemblage label="piecewise-laplace-method-wrap-up"><title>📤 Wrap-Up</title>
+		<p>
+			<paragraphs label="piecewise-laplace-method-takeaways"><title>🗝️ Key Takeaways..</title>
+				<ul marker="square">
+					<li>When there is a piecewise forcing term, always start the Laplace method process by rewriting it using step functions.</li>
+					<li>Use the same three Laplace steps you already know: forward transform, solve for <m>Y(s)</m>, and invert.</li>
+					<li>Look for and combine exponential factors like <m>e^{-cs}</m> in <m>Y(s)</m>; they signal pieces that will map back to <m>u_c(t)</m> terms in <m>y(t)</m>.</li>
+				</ul>
+			</paragraphs>
+		</p>
+	</assemblage>
+</section>

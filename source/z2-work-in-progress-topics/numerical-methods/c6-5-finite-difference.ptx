@@ -1,0 +1,1032 @@
+<section><title>Fundamentals of Numerical Methods</title>
+
+	<introduction>
+		<p>
+
+		</p>
+	</introduction>
+
+	<subsection><title>Selecting the Approximation Locations</title>
+
+		<introduction>
+			<p>
+				Numerical methods often begin with the same step ,  choose the <m>t</m>-values where you want to approximate the solution. These values are chosen from a time interval specified in the problem. For example, in the differential equation 
+			</p>
+
+			<me>
+				y' = y + t^2, \quad y(0) = 1, \quad 0 \le t \le 2
+			</me>,
+
+			<p>
+				the interval <m>0 \le t \le 2</m> tells us that we'll focus our attention on time-values between <m>0</m> and <m>2</m>. Typically, we divide this interval into evenly spaced points. For example:
+			</p>
+
+			<mdn>
+				<mrow xml:id="t-values-N-eq-2"> \amp t = 0,\ 1,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-4"> \amp t = 0,\ 0.5,\ 1,\ 1.5,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-8"> \amp t = 0,\ 0.25,\ 0.5,\ 0.75,\ 1,\ 1.25,\ 1.5,\ 1.75,\ 2 </mrow>
+				<mrow xml:id="t-values-N-eq-k"> \amp t = 0,\ 0.01,\ 0.02,\ 0.03,\ \ldots\ ,\ 1.98,\ 1.99,\ 2 </mrow>
+			</mdn>
+
+			<p>
+				Once these <m>t</m>-values are chosen, the next step will be to estimate the corresponding <m>y</m>-values ,  one at each time ,  using the differential equation to guide how the solution changes. We'll soon see how to do that.
+			</p>
+		</introduction>
+
+		<paragraphs><title>The Step Size</title>
+			<p>
+				Each of the time selections above has one thing in common: the <m>t</m>-values are evenly spaced. The common spacing between points is called the <term>step size</term> and is usually denoted by <m>h</m>. For example, in selection <xref ref="t-values-N-eq-4"/>, the step size is <m>h = 0.5</m>, while in selection <xref ref="t-values-N-eq-k"/>, the step size is <m>h = 0.01</m>.
+			</p>
+
+			<exercise><title>What is the Step Size?</title>
+				<statement>
+					<p>
+						What is the step size <m>h</m> for the selection of <m>t</m>-values in <xref ref="t-values-N-eq-8"/>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							0.25
+						</statement>
+						<feedback>
+							Correct ,  the step size is the distance between each <m>t</m>-value, which is <m>0.25</m> in this case.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							0.5
+						</statement>
+						<feedback>
+							This is not correct ,  the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							0.1
+						</statement>
+						<feedback>
+							This is not correct ,  the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It depends on the problem.
+						</statement>
+						<feedback>
+							This is not correct ,  the step size is the distance between each <m>t</m>-value.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+
+			<p>
+				Numerical methods usually begin at the initial time and move forward step by step. To keep track of each point along the way, it helps to assign a number ,  or <term>index</term> ,  to every <m>t</m>-value based on its position. For example, the selection <xref ref="t-values-N-eq-8"/> can be indexed as follows:
+			</p>
+
+			<tabular halign="center">
+				<row>
+					<cell colspan = "10"> Index Labeling for selection <xref ref="t-values-N-eq-8"/> (<m>h=0.25</m>) </cell>
+				</row>
+				<row>
+					<cell>0</cell>
+					<cell>0.25</cell>
+					<cell>0.5</cell>
+					<cell>0.75</cell>
+					<cell>1</cell>
+					<cell>1.25</cell>
+					<cell>1.5</cell>
+					<cell>1.75</cell>
+					<cell>2</cell>
+				</row>
+				<row>
+					<cell><m>t_0</m></cell>
+					<cell><m>t_1</m></cell>
+					<cell><m>t_2</m></cell>
+					<cell><m>t_3</m></cell>
+					<cell><m>t_4</m></cell>
+					<cell><m>t_5</m></cell>
+					<cell><m>t_6</m></cell>
+					<cell><m>t_7</m></cell>
+					<cell><m>t_8</m></cell>
+				</row>
+			</tabular>
+
+			<exercise label="chkpt-3-t-list"><title>List the <m>t</m>-Values</title>
+				<statement>
+					<p>
+						Suppose you want to approximate a solution on the interval <m>[0, 2]</m> using a step size of <m>h = 0.4</m>. List the <m>t</m>-values you would use.
+					</p>
+
+					<tabular halign="center">
+						<row>
+							<cell><m>0</m></cell>
+							<cell><fillin width="3" mode="string" answer="0.4" /></cell>
+							<cell><fillin width="3" mode="string" answer="0.8" /></cell>
+							<cell><fillin width="3" mode="string" answer="1.2" /></cell>
+							<cell><fillin width="3" mode="string" answer="1.6" /></cell>
+							<cell><m>2</m></cell>
+						</row>
+						<row>
+							<cell><m>t_0</m></cell>
+							<cell><m>t_1</m></cell>
+							<cell><m>t_2</m></cell>
+							<cell><m>t_3</m></cell>
+							<cell><m>t_4</m></cell>
+							<cell><m>t_5</m></cell>
+						</row>
+					</tabular>
+				</statement>
+				<evaluation>
+					<evaluate><test correct="yes"><jscmp>ans == 0.4</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 0.8</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 1.2</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 1.6</jscmp></test></evaluate>
+				</evaluation>
+			</exercise>
+
+			<p>
+				Once the index numbers are in place, we can describe each <m>t</m>-value using a formula. Because the step size is constant, each value is simply one step <m>h</m> further than the last:
+			</p>
+
+			<me>
+				t_1 = t_0 + h, \quad t_2 = t_1 + h, \quad t_3 = t_2 + h, \quad \ldots\ , \quad t_N = t_{N-1} + h.
+			</me>
+
+			<sidebyside width="80%">	
+				<figure xml:id="t-values-separated-by-h"><caption> Each <m>t</m>-value is separated by the step size, <m>h</m> </caption>
+					<image width="100%">
+						<latex-image>
+							\begin{tikzpicture}[samples=50, scale=3.5]
+								% === figure/domain/tick bounds ===
+								\def\tmin{-0.2}		\def\tmax{2.9}
+								\def\ymin{-0.9}		\def\ymax{0.9}
+								\def\tks{0.25, 0.5, 1.75, 2}
+								\def\h{0.4}		\def\hy{-0.18}	\def\hpad{0.05}
+								
+								\def\bpad{0.008}
+								\def\ticklength{0.02}
+								\def\barlength{0.05}
+								
+								% === Axes ===
+								\draw[thick, -&gt;] (\tmin, 0) -- (\tmax, 0);
+								\node[below] at (\tmax - 0.1, 0) {$t$};
+
+								% === Tick marks/numeric labels ===
+								\def\tks{0.4, 0.8, 1.2, 1.6}
+
+								\def\k{0}	\def\tk{0}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+
+								\foreach \tk [count=\k from 1] in \tks {
+									\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+									\node[below] at (\tk, 0) {$t_{\k}$};
+									\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+									% === h arrows ===
+									\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+									\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+									\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+								}
+
+								\def\k{}	\def\tk{1.9}
+								\node[below] at (\tk, -0.08) {$\ldots$};
+								
+								\def\k{N-1}	\def\tk{2.2}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+
+								\def\k{N}	\def\tk{2.6}
+								\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+								\node[below] at (\tk, 0) {$t_{\k}$};
+								\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+								% === h arrows ===
+								\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+								\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+								\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</figure>
+			</sidebyside>
+
+			<p>
+				<xref ref="t-values-separated-by-h"/> shows how each point is <em>some number</em> of steps <m>h</m> away from the start. So we can also express them in terms of <m>t_0</m>:
+			</p>
+
+			<me>
+				t_1 = t_0 + 1h, \qquad t_2 = t_0 + 2h, \qquad t_3 = t_0 + 3h, \qquad t_4 = t_0 + 4h, \qquad \ldots\ 
+			</me>
+
+			<p>
+				In general, the <m>k</m>-th <m>t</m>-value can be written as:
+			</p>
+
+			<me>
+				t_k = t_0 + k \cdot h
+			</me>
+
+			<exercise label="chkpt-3-t-pattern"><title>How many <m>h</m>'s Away?</title>
+				<statement>
+					<p>
+						The distance between each <m>t</m>-value is the <term>step size</term>, <m>h</m>. Fill in the blanks with the number of <m>h</m>'s you need to add to <m>t_0</m> to get to each <m>t</m>-value. 
+					</p>
+
+					<p>
+						<sidebyside widths="30% 30%" margin="20%">
+							<p>
+								A. <m>\quad t_1 = t_0\ + </m> <fillin width="1" mode="string" answer="1" /> <m>h</m>
+							</p>
+							<p>
+								B. <m>\quad t_{16} = t_0\ + </m> <fillin width="1" mode="string" answer="16" /> <m>h</m>
+							</p>
+						</sidebyside>
+					</p>
+					<p>
+						<sidebyside widths="30% 30%" margin="20%">
+							<p>
+								C. <m>\quad t_5 = t_3\ + </m> <fillin width="1" mode="string" answer="2" /> <m>h</m>
+							</p>
+							<p>
+								D. <m>\quad t_k = t_0\ + </m> <fillin width="1" mode="string" answer="k" /> <m>h</m>
+							</p>
+						</sidebyside>
+					</p>
+					
+				</statement>
+				<evaluation>
+					<evaluate><test correct="yes"><jscmp>ans == 1</jscmp></test></evaluate>
+					<evaluate><test correct="yes"><jscmp>ans == 16</jscmp></test></evaluate>
+					<evaluate>
+						<test correct="yes">
+							<jscmp>ans == 2</jscmp>
+						</test>
+						<test correct="no">
+							<jscmp>ans != 2</jscmp>
+							<feedback>Look carefully at the index of both <m>t</m>-values.</feedback>
+						</test>
+					</evaluate>
+					<evaluate><test><strcmp use-answer="yes" /></test></evaluate>
+				</evaluation>
+			</exercise>
+		</paragraphs>
+
+		<paragraphs><title>Selecting a Step Size</title>
+			<p>
+				The choice of step size <m>h</m> is important. A smaller <m>h</m> generally leads to better accuracy because each step tracks the curve more closely ,  but it also means you need more steps to reach your destination. Larger values of <m>h</m> are faster, but less accurate and may introduce noticeable errors.
+			</p>
+
+			<exercise><title>Step Size Intuition</title>
+				<statement>
+					What is the effect of decreasing the step size <m>h</m> in a step-based numerical method?
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							It generally improves accuracy but increases computational cost.
+						</statement>
+						<feedback>
+							Correct ,  smaller steps follow the solution more closely, but take more steps to cover the interval.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It always gives the exact solution.
+						</statement>
+						<feedback>
+							No ,  smaller steps improve accuracy, but the solution is still approximate.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It makes the method faster but less accurate.
+						</statement>
+						<feedback>
+							No ,  smaller steps actually slow the computation down.
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							It has no effect on the outcome.
+						</statement>
+						<feedback>
+							No ,  step size is a key parameter in numerical methods.
+						</feedback>
+					</choice>
+				</choices>
+			</exercise>
+		</paragraphs>
+
+		<paragraphs><title>We Have the Approximation Locations. What Now?</title>
+			<p>
+				Establishing a set of <m>t</m>-values to estimate the solution immediately puts our goal into focus. In other words, if we apply a numerical method using the five <m>t</m>-values,
+			</p>
+
+			<me>
+				t = 0,\ 0.5,\ 1,\ 1.5,\ 2
+			</me>,
+
+			<p>
+				then we are explicitly stating that we want to approximate the following five <m>y</m>-values:
+			</p>
+
+			<me>
+				y(0),\ y(0.5),\ y(1),\ y(1.5),\ y(2)
+			</me>.
+
+			<p>
+				This is true no matter what differential equation we are working with.
+			</p>
+		</paragraphs>
+
+		<p>
+			Next, we'll see how estimating the derivative in a differential equation helps us determine these approximate <m>y</m>-values.
+		</p>
+
+	</subsection>
+
+	<subsection><title>Numerical Solutions via Derivative Estimation</title>
+
+		<paragraphs><title>From Differential Equation to Approximation</title>
+			<p>
+				Selecting the approximation locations immediately establishes the <m>y</m>-values of the solution you want to approximate. For example, suppose you choose the five <m>t</m>-values:
+			</p>
+
+			<me>
+				t = 0,\ 0.5,\ 1,\ 1.5,\ 2
+			</me>.
+
+			<p>
+				Then, regardless of the differential equation, you are explicitly stating that your goal is to approximate the following five <m>y</m>-values:
+			</p>
+
+			<me>
+				y(0),\ y(0.5),\ y(1),\ y(1.5),\ y(2)
+			</me>.
+
+			<p>
+				Now, let's see what happens when we get a differential equation involved. Consider the equation:
+			</p>
+
+			<me>
+				y'(t) = y(t) + t^2, \quad y(0) = 1, \quad 0 \le t \le 2
+			</me>.
+
+			<p>
+				Since this differential equation is supposed to be true at every point in the interval, we can plug in our selected <m>t</m>-values to get:
+			</p>
+
+			<tabular>
+				<col halign="right" />
+				<col halign="center" />
+				<col halign="left" />
+				<col halign="center" />
+				<col halign="center" />
+				<row>
+					<cell colspan="2"><m>t_k</m> - value</cell>
+					<cell>Differential Equation at <m>t_k</m></cell>
+					<cell>Want</cell>
+					<cell>Don't Know</cell>
+				</row>
+				<row>
+					<cell><m>t_0:</m></cell>
+					<cell><m>0</m></cell>
+					<cell><m>{\DLGb y'(0)} = {\DLBa y(0)} + 0^2</m></cell>
+					<cell><m>\DLBa y(0)</m></cell>
+					<cell><m>\DLGb y'(0)</m></cell>
+				</row>
+				<row>
+					<cell><m>t_1:</m></cell>
+					<cell><m>0.5</m></cell>
+					<cell><m>{\DLGb y'(0.5)} = {\DLBa y(0.5)} + (0.5)^2</m></cell>
+					<cell><m>\DLBa y(0.5)</m></cell>
+					<cell><m>\DLGb y'(0.5)</m></cell>
+				</row>
+				<row>
+					<cell><m>t_2:</m></cell>
+					<cell><m>1</m></cell>
+					<cell><m>{\DLGb y'(1)} = {\DLBa y(1)} + 1^2</m></cell>
+					<cell><m>\DLBa y(1)</m></cell>
+					<cell><m>\DLGb y'(1)</m></cell>
+				</row>
+				<row>
+					<cell><m>t_3:</m></cell>
+					<cell><m>1.5</m></cell>
+					<cell><m>{\DLGb y'(1.5)} = {\DLBa y(1.5)} + (1.5)^2</m></cell>
+					<cell><m>\DLBa y(1.5)</m></cell>
+					<cell><m>\DLGb y'(1.5)</m></cell>
+				</row>
+				<row>
+					<cell><m>t_4:</m></cell>
+					<cell><m>2</m></cell>
+					<cell><m>{\DLGb y'(2)} = {\DLBa y(2)} + 2^2</m></cell>
+					<cell><m>\DLBa y(2)</m></cell>
+					<cell><m>\DLGb y'(2)</m></cell>
+				</row>
+			</tabular>
+
+			<p>
+				As you can see, plugging in <m>t_k</m> reveals the exact <m>{\DLBa y(t_k)}</m> we want to know ,  but it also introduces <m>{\DLGb y'(t_k)}</m>, which we don't know either. So we seem to be stuck.
+			</p>
+
+			<p>
+				But there's a clever way out. Since the equation tells us what the derivative is supposed to equal, we can try working backward ,  and use the derivative to estimate the <em>next</em> value of <m>y</m>.
+			</p>
+		</paragraphs>
+
+		<paragraphs><title>Approximating The Derivative</title>
+			<p>
+				Recall the definition of the derivative:
+			</p>
+
+			<me>
+				y'(t) = \lim_{h \to 0} \frac{y(t + h) - y(t)}{h}.
+			</me>
+
+			<p>
+				If seeing the derivative as a limit makes you uneasy, don't worry, we actually want think about it in a more practical context, as follows:
+			</p>
+
+			<sidebyside width="72%" margin="14%">
+				<p>
+					<q>The closer <m>h</m> is to zero, the closer <m>\ds\frac{y(t + h) - y(t)}{h}</m> is to <m>y'(t)</m>.</q>
+				</p>
+			</sidebyside>
+
+			<p>
+				This statement suggests one of the most important ideas in numerical methods: 
+			</p>
+
+			<assemblage xml:id="forward-difference-formula"><title>Forward Difference Derivative Approximation</title>
+				<p>
+					Assuming <m>h</m> is small, then <m>y'(t)</m> can be approximated by the difference quotient:
+					<me>
+						y'(t) \approx \frac{1}{h}\Big(y(t + h) - y(t)\Big)
+					</me>.
+				</p>
+			</assemblage>
+
+			<p>
+				In the context of numerical methods, this formula provides a simple way to rewrite the derivative, <m>y'(t)</m> in terms of the original function, <m>y(t)</m> and can be interpreted as
+			</p>
+
+			<sidebyside width="60%" margin="20%">
+				<p>
+					<q>
+						current <m>y</m> derivative 
+						<m>
+							\ds\approx 
+							\ub{\frac{\text{next}\ y -\ \text{current}\ y}{\text{next}\ t - \text{current}\ t}}_{\large\text{step size}}
+						</m>
+					</q>
+				</p>
+			</sidebyside>
+
+			<p>
+				where <q>current</q> refers to a value at <m>t</m> and <q>next</q>, a value at <m>t+h</m> (current + step).
+			</p>
+
+		</paragraphs>
+
+		<paragraphs><title>Applying the Idea</title>
+			<p>
+				Using this idea to approximate the derivative, let's go back to our example:
+			</p>
+
+			<me>
+				y'(t) = y(t) + t, \quad y(0) = 1, \quad 0 \le t \le 2.
+			</me>
+
+			<p>
+				Recall, we were stuck because we didn't know the derivative at the <m>t</m>-values. But now, assuming that <m>h=0.5</m> is small enough, we can use the <xref ref="forward-difference-formula" text="custom">forward difference formula</xref> to rewrite our equation as
+			</p>
+
+			<me>
+				\frac{1}{h}\Big(y(t + h) - y(t)\Big) \approx y(t) + t^2
+			</me>,
+
+			<p>
+				which can be rearranged as
+			</p>
+
+			<men xml:id="approx-differential-equation">
+				y(t + h) \approx y(t) + h(y(t) + t)
+			</men>.
+
+			<p>
+				Remember, this can also be interpreted as follows:
+			</p>
+
+			<me>
+				\text{next}\ y \approx \text{current}\ y + \text{step} \cdot \left(\text{current}\ y +\ \text{current}\ t\right)
+			</me>
+			
+
+			<p>
+				One-by-one, let's plug in each of the <m>t</m>-values into the approximate differential equation <xref ref="approx-differential-equation"/> and keep track of each <m>y</m>-value we discover. Note, that the first value, <m>y(0)</m>, we get for free since, <m>y(0)=1</m> is the initial condition.
+			</p>
+			
+			<p>
+				Now, the first <m>t</m>-value we plug in is <m>t = {\DLO 0}</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 0}) = 1</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 0}+0.5)	\amp \approx y({\DLO 0}) + 0.5 (y({\DLO 0}) + {\DLO 0})</mrow>
+						<mrow>y(0.5)				\amp \approx 1.5</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<p>
+
+				Next, we plug in <m>t = {\DLO 0.5}</m>, using the value we just found for <m>y({\DLO 0.5})</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 0.5}) = 1.5</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 0.5}+0.5)	\amp \approx y({\DLO 0.5}) + 0.5 (y({\DLO 0.5}) + {\DLO 0.5})</mrow>
+						<mrow>y(1)				\amp \approx 2.5</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<p>
+				We continue this for <m>t = {\DLO 1}</m> and <m>t = {\DLO 1.5}</m>:
+			</p>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 1}) = 2.5</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 1}+0.5)	\amp \approx y({\DLO 1}) + 0.5 (y({\DLO 1}) + {\DLO 1})</mrow>
+						<mrow>y(1)				\amp \approx 3.25</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+
+			<sidebyside widths="5% 12% 20% 5% 53% 5%" valign="top">
+				<p/>
+				<p>current <m>y</m>:</p>
+				<p><me>y({\DLO 1.5}) = 3.25</me></p>
+				<p><md><mrow>\rightarrow</mrow></md></p>
+				<p>
+					<md>
+						<mrow>y({\DLO 1.5}+0.5)	\amp \approx y({\DLO 1.5}) + 0.5 (y({\DLO 1.5}) + {\DLO 1.5})</mrow>
+						<mrow>y(2)				\amp \approx 5.625</mrow>
+					</md>
+				</p>
+				<p/>
+			</sidebyside>
+		</paragraphs>
+
+		<note><title>Interactive?</title>
+			<figure xml:id="figure-quadratic-slope">
+				<caption>Finding the Tangent Line of a Quadratic Function</caption>
+
+				<interactive xml:id="interactive-quadratic-tangent" platform="jsxgraph" width="80%">
+					<slate xml:id="quadratic-tangent-plot" surface="jessiecode" axis="true" grid="false">
+						
+						a = 0.25;
+						b = 0;
+						c = -1;
+
+						fGraph = functiongraph(function(x) {
+							return a*x^2 + b*x + c;
+						});
+
+						P = glider(1,0, fGraph);
+						Q = point(2,2)
+						&lt;&lt;
+							name: "Q",
+							snapSizeX: 0.5,
+							snapSizeY: 0.5,
+							snapToGrid: true	
+						&gt;&gt;;
+
+						secant = line(P,Q)
+
+						&lt;&lt;
+							color: (
+								function() {
+									m = (Q.Y() - P.Y())/(Q.X() - P.X());
+									dydx = 2*a*P.X() + b;
+									cVal = "red";
+									if (abs(m-dydx) &lt; 0.01) { cVal = "blue"; }
+
+									return cVal;
+								})
+						&gt;&gt;;
+
+						dydxValue = text(-4, 1.5,
+							function() {
+								m = 2*a*P.X() + b;
+								return ("dy/dx = " + trunc(m,3));
+							})
+
+						&lt;&lt; frozen: true &gt;&gt;;
+
+						mValue = text(-4, 1,
+							function() {
+								m = (Q.Y() - P.Y())/(Q.X() - P.X());
+								return ("m = " + trunc(m,3));
+							})
+
+						&lt;&lt; frozen: true &gt;&gt;;
+					</slate>
+
+					<instructions>
+						<p>
+							Use the sliders to set the parameters of the quadratic <m>f(x)=ax^2+bx+c</m>.
+							Drag the point <m>A</m> on the graph and the point <m>P</m> to define a line.
+							Try to make the line tangent at the point at <m>A</m> and observe the resulting slope of the tangent line.
+						</p>
+					</instructions>
+				</interactive>
+			</figure>
+		</note>
+
+		<paragraphs><title>Looking Ahead</title>
+			<p>
+				To keep things tidy, we'll soon introduce a shorthand notation where <m>y_i</m> represents the approximate value of <m>y(t_k)</m>. For now, just notice how each estimate is based on the equation's derivative ,  which acts like a prediction of what happens next.
+			</p>
+
+			<p>
+				In the next subsection, we'll turn this process into a precise, reusable formula ,  and formally introduce Euler's Method.
+			</p>
+		</paragraphs>
+
+		<example xml:id="euler-example-00">
+		
+			<statement>
+				<p>
+					Suppose you knew <m>y(0) = 1</m> and <m>y'(0) = 2</m>.
+				</p>
+				<p>
+					Use the forward difference formula with a step size of <m>h = 0.5</m> to predict the value of <m>y(0.5)</m>.
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					Fuck off!
+				</p>
+				<image>
+					<latex-image>
+
+						\begin{tikzpicture}
+							\begin{axis}[
+								axis x line=center,
+								axis y line=center,
+								xtick={-3,-2,...,2},
+								ytick={-4,-3,...,5},
+								xlabel={$x$},
+								ylabel={$y$},
+								xlabel style={below right},
+								ylabel style={above left},
+								xmin = -2.5,
+								xmax = 2.5,
+								ymin = -1.5,
+								ymax = 3.5]
+								
+								\addplot[only marks]coordinates{
+									(0,1)
+									(1,1.8750)
+									(1,2)
+								};
+
+								\addplot[domain=-5:5, orange, thick, smooth, dashed] {x + 1};
+								\addplot[domain=-5:5, blue, thick, smooth] {-1/8*x^3 + x + 1};
+
+							\end{axis}
+
+						\end{tikzpicture}
+
+					</latex-image>
+
+				</image>
+			</solution>
+
+		</example>
+	</subsection>
+
+	<subsection><title>Visualizations</title>
+		<sidebyside width="80%">	
+			<figure><caption> Each <m>t</m>-value is separated by the step size, <m>h = 0.5</m> </caption>
+				<image width="100%">
+					<latex-image>
+						\begin{tikzpicture}[samples=50, scale=4]
+							% === figure/domain/tick bounds ===
+							\def\tmin{-0.2}		\def\tmax{2.3}
+							\def\ymin{-0.9}		\def\ymax{0.9}
+							\def\tks{0.25, 0.5, 1.75, 2}
+							\def\h{0.25}		\def\hy{-0.17}	\def\hpad{0.05}
+							
+							\def\bpad{0.008}
+							\def\ticklength{0.02}
+							\def\barlength{0.05}
+							
+							% === Axes ===
+							\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+							\node[below] at (\tmax - 0.1, 0) {$t$};
+
+							% === Tick marks/numeric labels ===
+							\def\k{0}	\def\tk{0}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+
+							\def\k{1}	\def\tk{0.25}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+							% === h arrows ===
+							\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+							\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+							\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+							\def\k{2}	\def\tk{0.5}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+							% === h arrows ===
+							\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+							\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+							\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+							\def\k{}	\def\tk{0.75}
+							\node[] at (\tk, -0.08) {$\ldots$};
+							
+							\def\k{k}	\def\tk{1}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							
+							\def\k{}	\def\tk{1.25}
+							\node[] at (\tk, -0.08) {$\ldots$};
+							
+							\def\k{N-2}	\def\tk{1.5}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+							
+							\def\k{N-1}	\def\tk{1.75}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+							% === h arrows ===
+							\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+							\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+							\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+
+							\def\k{N}	\def\tk{2}
+							\draw[gray, thick]	(\tk , \ticklength) -- (\tk , -\ticklength);
+							\node[below] at (\tk, 0) {$t_{\k}$};
+							\draw[black]	(\tk , {\hy - \barlength}) -- (\tk , {\hy + \barlength});
+							% === h arrows ===
+							\draw[black, thick, &lt;-]	({\tk - \h + \bpad}, \hy) -- ({\tk - 0.5*\h - \hpad} , \hy);
+							\node[font=\small] at ({\tk - 0.5*\h}, \hy) {$h$};	
+							\draw[black, thick, -&gt;]	({\tk - 0.5*\h + \hpad}, \hy) -- ({\tk - \bpad} , \hy);
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</figure>
+		</sidebyside>
+
+		<image width="70%">
+			<latex-image>
+				\begin{tikzpicture}
+
+					% Define the start and end of the interval
+					\def\a{0} % Start of the interval
+					\def\b{5} % End of the interval
+					\def\N{5} % Number of partitions
+
+					% Draw the t-axis
+					\draw[-&gt;,thick] (\a-0.5,0) -- (\b+1,0) node[right] {$t$};
+
+					% Calculate step size
+					\pgfmathsetmacro{\h}{(\b-\a)/\N}
+
+					% Draw the partition points and labels
+					\draw (\a + 0*\h,0.1) -- (\a + 0*\h,-0.1) node[below] {$t_{0}$};
+					\draw (\a + 1*\h,0.1) -- (\a + 1*\h,-0.1) node[below] {$t_{1}$};
+					\draw (\a + 2*\h,0.1) -- (\a + 2*\h,-0.1) node[below] {$t_{2}$};
+					\draw 							(\a + 3*\h,-0.1) node[below] {$\ldots$};
+					\draw (\a + 4*\h,0.1) -- (\a + 4*\h,-0.1) node[below] {$t_{N-1}$};
+					\draw (\a + 5*\h,0.1) -- (\a + 5*\h,-0.1) node[below] {$t_{N}$};
+					
+					% Optionally, add labels for a and b
+					\node[below] at (\a,-0.35) {$\uparrow$};
+					\node[below] at (\a,-0.7) {$a$};
+					\node[below] at (\b,-0.35) {$\uparrow$};
+					\node[below] at (\b,-0.7) {$b$};
+
+					% Add the label for each h
+					\draw 			(\a + 0*\h,0.3) -- (\a + 0*\h,0.5);
+					\draw[&lt;-]	(\a + 0*\h,0.4) -- (\a + 0.38*\h,0.4);
+					c
+					\draw[-&gt;] 	(\a + 0.62*\h,0.4) -- (\a + 1*\h,0.4);
+					\draw 			(\a + 1*\h,0.3) -- (\a + 1*\h,0.5);
+
+					\draw[&lt;-] 	(\a + 1*\h,0.4) -- (\a + 1.38*\h,0.4);
+					\draw 			(\a + 1.5*\h,0.2) node[above] {$h$};
+					\draw[-&gt;] 	(\a + 1.62*\h,0.4) -- (\a + 2*\h,0.4);
+					\draw 			(\a + 2*\h,0.3) -- (\a + 2*\h,0.5);
+
+					\draw 			(\a + 4*\h,0.3) -- (\a + 4*\h,0.5);
+					\draw[&lt;-] 	(\a + 4*\h,0.4) -- (\a + 4.38*\h,0.4);
+					\draw 			(\a + 4.5*\h,0.2) node[above] {$h$};
+					\draw[-&gt;] 	(\a + 4.62*\h,0.4) -- (\a + 5*\h,0.4);
+					\draw 			(\a + 5*\h,0.3) -- (\a + 5*\h,0.5);
+					
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+			
+		<image xml:id="fuckit">
+
+			<latex-image>
+				\begin{tikzpicture}
+					
+					\begin{axis}[
+						xlabel={$t$},
+						ylabel={$y$},
+						title={Solution of $y' + 4ty = 0$ using Euler's Method},
+						grid=both,
+						minor tick num=1,
+						axis lines=middle,
+					]
+					
+						% Read and plot data from file
+						\addplot [only marks, mark=o] table[x=x, y=y, col sep=comma] {external/data/euler-data-02.csv};
+						\addplot [domain=0:2, samples=50, black] {2*e^(-x^2)};
+					\end{axis}
+					
+				\end{tikzpicture}
+			</latex-image>
+
+		</image>
+
+		<image>
+			<latex-image>
+			
+				\begin{tikzpicture}
+				
+					set table  "../plots/pgfmanual-sine.table"
+					set format "%.5f"
+					set samples 20
+					plot [x=0:10] sin(x)
+					
+					\begin{axis}[]
+						% Draw the x-axis
+						\draw[-&gt;,thick] (-1.5,0) -- (8,0) node[right] {$t$};
+						\draw[-&gt;,thick] (0,-1.5) -- (0,1) node[right] {$y$};
+
+						\addplot[
+							samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
+							&lt;-&gt;,
+							smooth,
+							thick,
+							color = blue,
+							mark = ball,
+						]{x*e^(-0.5*x^2)};
+
+						
+						\addplot[
+							samples at={0,0.5,1,1.5,2,2.5,3,3.5,4,4.5},
+							&lt;-&gt;,
+							smooth,
+							thick,
+							color = orange,
+							mark = +,
+						]{x*e^(-0.5*x^2) - 0.05*x};
+
+						
+						\addplot[
+							only marks, mark size=1.5pt
+						]coordinates{
+							(0.0, 0.0000)
+							(0.5, 0.2438)
+							(1.0, 0.4524)
+							(1.5, 0.5989)
+							(2.0, 0.6703)
+							(2.5, 0.6691)
+							(3.0, 0.6099)
+							(3.5, 0.5141)
+							(4.0, 0.4038)
+							(4.5, 0.2970)
+						};
+						\addplot[
+							only marks, mark size=2.0pt, mark = +, color = orange,
+						]coordinates{
+							(0.0, 0.0000)
+							(0.5, 0.24)
+							(1.0, 0.44)
+							(1.5, 0.54)
+							(2.0, 0.62)
+							(2.5, 0.60)
+							(3.0, 0.55)
+							(3.5, 0.51)
+							(4.0, 0.46)
+							(4.5, 0.34)
+						};
+						\draw (4.5, 0.34) node[above] {$\hat{y}_7$};
+					\end{axis}
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+
+		<sidebyside widths="75%" margins="auto" valign="middle">
+			<figure xml:id="analytical-vs-numerical-soln">
+			<title>Comparative Visualization of Analytical and Numerical Solutions</title>
+				<image source="figures/approx-fig-02_black_x.png">
+					<shortdescription>(True Solution vs. Numerical Approximation)</shortdescription>
+				</image>
+			</figure>
+		</sidebyside>
+
+		<sidebyside widths="6% 38% 50% 6%" valign="middle">
+			<p/>
+			<p>
+				<md>
+					<mrow> \text{slope:} \amp y_k' = \frac{y_k'}{1} = \frac{y_k'\cdot h}{1\cdot h} </mrow>
+				</md>
+			</p>
+			<p>
+				<image>
+					<latex-image>
+						\begin{tikzpicture}[samples=50]
+	
+							% === colors ===
+							\def\fColor{blue}			\def\fFill{\fColor!15}
+							\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+							% === figure/domain/tick bounds ===
+							\def\tmin{-0.8}	\def\tmax{6}
+							\def\ymin{-0.6}	\def\ymax{3.5}
+							\def\tA{2.0}	\def\ytA{1}	
+							\def\tB{4.0}	\def\ytB{2.5}
+							\def\h{2}
+
+							\begin{axis}[
+								width=10cm, height=6cm, scale=0.7,
+								xlabel={$t$}, ylabel={$y$},
+								%title={Euler's Method Step 1},
+								title style={font=\small},
+								grid=both,
+								line width=1pt,
+								axis lines=middle,
+								%xtick distance=2, 
+								%ytick distance=1,
+								%minor x tick num=0,
+								%minor y tick num=0,
+								xmin=\tmin, xmax=\tmax, 
+								ymin=\ymin, ymax=\ymax,
+								xticklabel style={yshift=0.0em, font=\normalsize, fill=white},
+								yticklabel style={xshift=0.1em, font=\normalsize, fill=white},
+								xtick={\tA, \tB},	xticklabels={$t_{k}$, $t_{k+1}$},
+								ytick={\ytA, \ytB},	yticklabels={$y_{k}$, $y_{k+1}$},
+							]
+							
+								% Read and plot data from file
+								\addplot+ [only marks] coordinates {
+									(\tA, \ytA)
+									(\tB, \ytB)
+								};
+								\addplot+ [gray, no marks, -&gt;] (\tA, \ytA) -- (\tA, \ytB) node[fill=white, left, midway] {$h\cdot y_k'$};
+								\addplot+ [gray, fill=white, no marks, -&gt;] (\tA, \ytB) -- ({\tB - 0.1}, \ytB) node[fill=white, midway] {$h$};
+								
+								\draw [&lt;-&gt;] (axis cs: \tB, 0) -- (axis cs: \tB, \ytA) node[midway, right, fill=white] {$y_k$};
+								\draw [&lt;-&gt;] (axis cs: \tB, \ytA) -- (axis cs: \tB, {\ytB - 0.1}) node[midway, right, fill=white] {$h\cdot y_k'$};
+								\node[font=\small, gray, rotate=90] at (axis cs: {\tA - 1.5}, {0.5*(\ytA + \ytB)}){rise};
+								\node[font=\small, gray] at (axis cs: {0.5*(\tA + \tB)}, {\ytB + 0.5}){run};
+								\node[font=\small, below] at (axis cs: {\tA + 0.55}, \ytA){$(t_k,y_k)$};
+								\node[font=\small, above] at (axis cs: {\tB + 0.85}, \ytB){$(t_{k+1},y_{k+1})$};
+							\end{axis}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p/>
+		</sidebyside>
+	</subsection>
+</section>

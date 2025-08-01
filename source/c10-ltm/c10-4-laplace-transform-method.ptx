@@ -1,0 +1,957 @@
+<section label="lt-method-steps-examples">
+	<title>Summary &amp; Worked Examples</title>
+
+	<introduction>
+		<p>
+			This closing section is where the entire Laplace transform method comes together. You have already practiced each of the three steps in isolation. Now we will zoom out, remind ourselves of the big picture, and then run walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>Laplace Transform Method— Quick Recap</title>
+		<p>
+			Here is a visual of the full Laplace transform method. Each step corresponds to a move in the <xref ref="lt-roadmap-full" text="custom">roadmap</xref>, and together they form a complete strategy for solving initial value problems. Notice that every arrow answers one of three guiding questions:
+		</p>
+
+		<ol>
+			<li>How do we translate the differential equation into the Laplace domain?</li>
+			<li>How do we isolate and tidy up <m>Y(s)</m> so it matches the inverse table?</li>
+			<li>How do we return to the original time domain to reveal <m>y(t)</m>?</li>
+		</ol>
+
+		<assemblage xml:id="lt-roadmap-full">
+			<title>Laplace Method Roadmap</title>
+			<p>
+				<sidebyside widths="32% 18% 42%" valign="middle">
+					<p>
+						<me>\ul{\quad\ \textbf{Original Domain}\ \quad}</me>
+					</p>
+					<p/>
+					<p>
+						<me>\DLBa\textbf{2️⃣  Laplace Domain}</me>
+					</p>
+				</sidebyside>
+				<sidebyside widths="31% 18% 43%" valign="top">
+					<p>
+						<md>
+							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow>\us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+							<mrow> y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+						</md>
+					</p>
+					<p>
+						<md>
+							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+							<mrow>\text{Apply}\ \laplacesym</mrow>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow/>
+							<mrow>\text{Apply}\ \laplacesym^{-1}</mrow>
+							<mrow>\overleftarrow{\text{3️⃣ Backward}}</mrow>
+						</md>
+					</p>
+					<p>
+						<assemblage>
+							<p>
+								<md>
+									<mrow>\amp\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s^2 - 9}\left( \frac{10}{s - 2} + s - 7 \right)</mrow>
+									<mrow>\amp\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+									<mrow>\amp\DLBa Y = \frac{1}{s - 3} + \frac{2}{s + 3} - \frac{2}{s - 2}</mrow>
+								</md>
+							</p>
+						</assemblage>
+					</p>
+				</sidebyside>
+			</p>
+		</assemblage>
+
+		<exploration xml:id="lt-method">
+			<title>Laplace Transform Method (Three-Step Roadmap)</title>
+
+			<p>
+				Given an <m>n</m>-th-order IVP
+				<me>
+					y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = g(t),
+				</me>
+				the particular solution is obtained through the following workflow:
+			</p>
+
+			<dl>
+				<li xml:id="lt-step-1">
+					<title>Step 1— Forward Transform</title>
+					<p>
+						Apply <m>\laplacesym</m> term-by-term.  
+						Powers of <m>s</m> replace derivatives, and the initial conditions drop in automatically.  
+						The result is a single algebraic (Laplace-domain) equation.
+					</p>
+				</li>
+
+				<li xml:id="lt-step-2">
+					<title>Step 2— Solve &amp; Prepare <m>Y(s)</m></title>
+					<p>
+						Isolate <m>Y(s)</m>, then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.
+					</p>
+				</li>
+
+				<li xml:id="lt-step-3">
+					<title>Step 3— Inverse Transform</title>
+					<p>
+						Apply <m>\laplacesym^{-1}</m> term-by-term.	The hidden original-domain solution <m>y(t)</m> is released, and the IVP is solved.
+					</p>
+				</li>
+			</dl>
+		</exploration>
+
+		<fact>
+			<p>
+				Answer the following questions referring to the steps above.
+			</p>
+
+			<p>
+				<task label="lt-method-steps-examples-chkpt-1">
+					<title>📖❓Laplace Method Snapshot</title>
+					<statement>
+						<p>
+							Which option best represents the Laplace transform process?
+						</p>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement> Forward Transform  →  Find <m>Y(s)</m>  →  Prepare  →  Apply Inverse </statement>
+							<feedback>
+								<p>
+									Correct! The Laplace Transform Method involves applying the forward transform, solving for <m> Y(s) </m>, preparing for the backward transform, and applying the inverse transform to find <m> y(t) </m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Differentiate  →  Forward Transform  →  Find <m>Y(s)</m>  →  Verify Solution </statement>
+							<feedback>
+								<p>
+									Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Forward Transform  →  Integrate  →  Verify Solution </statement>
+							<feedback>
+								<p>
+									Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement> Forward Transform   →  Apply Inverse  →  Apply Initial Conditions </statement>
+							<feedback>
+								<p>
+									Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+
+				<task label="lt-method-steps-examples-chkpt-2" adaptive="yes">
+					<title>📖❓Match Each Move</title>
+					<statement><p>Drag each task to the step it belongs to.</p></statement>
+					<cardsort>
+						<match>
+							<premise>Apply initial conditions</premise>
+							<premise>Match terms of <m>y(t)</m> the table</premise>
+							<response>Step 1 — Forward Transform</response>
+						</match>
+						<match>
+							<premise>Isolate <m>Y(s)</m></premise>
+							<premise>Partial-fraction decomposition</premise>
+							<response>Step 2 — Solve &amp; Prepare <m>Y(s)</m></response>
+						</match>
+						<match>
+							<premise>Match terms of <m>Y(s)</m> the table</premise>
+							<response>Step 3 — Inverse Transform</response>
+						</match>
+					</cardsort>
+				</task>
+
+				<task label="lt-method-steps-examples-chkpt-3">
+					<title>📖❓Algebra Tools Checklist</title>
+					<statement><p>Select every technique that may appear in <em>Step 2</em>.</p></statement>
+					<choices multiple="yes" randomize="yes">
+						<choice correct="yes"><statement>Completing the square</statement></choice>
+						<choice correct="yes"><statement>Partial-fraction decomposition</statement></choice>
+						<choice><statement>Integration by parts</statement></choice>
+						<choice><statement>Chain Rule</statement></choice>
+					</choices>
+					<feedback><p>Step 2 is 100 % algebra; no calculus needed.</p></feedback>
+				</task>
+			</p>
+		</fact>
+
+		<p>
+			The three-step outline provides the general strategy. If you ever feel lost, come back to this outline and roadmap. Regardless of the equation, the steps you take to navigate them will always follow one of these three lines.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Worked Examples</title>
+
+		<p>
+			The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action. Here is a break down of what to expect:
+		</p>
+
+		<ul>
+			<li>Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.</li>
+			<li>Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines/cosines.</li>
+			<li>Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.</li>
+		</ul>
+
+		<example><title>Basic Second-Order, Homogeneous</title>
+			<statement>
+				<p>
+					Solve the initial value problem using the Laplace transform:
+				</p>
+				<me>
+					y'' + 5y' + 6y = 0, \quad y(0) = 2,\quad y'(0) = -1
+				</me>
+			</statement>
+
+			<solution>
+				<proof xml:id="lt-roadmap-example-1"><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="30% 15% 47%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣  Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="29% 15% 48%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y'' + 5y' + 6y = 0}</mrow>
+									<mrow>\small y(0) = 2,\ y'(0) = -1</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y = e^{3t} + 2e^{-3t} - 2e^{2t}</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^2Y - 2s + 1 + 5sY - 10 + 6Y = 0</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{2s + 9}{s^2 + 5s + 6}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{1}{s + 2} + \frac{1}{s + 3}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>
+								\lap{y'' + 5y' + 6y} = \lap{0}
+							</mrow>
+							<mrow>
+								s^2Y - sy(0) - y'(0) + 5(sY - y(0)) + 6Y \amp = 0
+							</mrow>
+							<mrow>
+								s^2Y - 2s + 1 + 5sY - 10 + 6Y \amp = 0
+							</mrow>
+						</md>
+					</p>
+					<p>Laplace Domain Equation</p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>
+					First, isolate <m>Y</m> using algebra:
+				</p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>	(s^2 + 5s + 6)Y	\amp = 2s + 9						</mrow>
+							<mrow>	Y(s)			\amp = \frac{2s + 9}{s^2 + 5s + 6}	</mrow>
+						</md>
+					</p>
+					<p>Isolated <m>Y</m></p>
+				</sidebyside>
+
+				<p>
+					Factor the denominator:
+					<md>
+						<mrow>
+							Y(s) = \frac{2s + 9}{(s + 2)(s + 3)}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Use partial fraction decomposition:
+				</p>
+				<me>
+					\frac{2s + 9}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}
+				</me>
+
+				<p>
+					Multiply through by the denominator:
+				</p>
+
+				<me>
+					2s + 9 = A(s + 3) + B(s + 2)
+				</me>
+
+				<p>
+					Strategically selecting <m>s</m>-values gives <m>A</m> and <m>B</m>:
+				</p>
+
+				<sbsgroup widths="15% 50% 15%" margins="10% 10%">
+					<sidebyside>
+						<p><m>s=-2</m>:</p>
+						<p><m>2(-2) + 9 = A(-2 + 3) + B(-2 + 2)</m></p>
+						<p><m>\implies\boxed{A = 5}</m></p>
+					</sidebyside>
+
+					<sidebyside>
+						<p><m>s=-3</m>:</p>
+						<p><m>2(-3) + 9 = A(-3 + 3) + B(-3 + 2)</m></p>
+						<p><m>\implies\boxed{B = -3}</m></p>
+					</sidebyside>
+				</sbsgroup>
+
+				<p>
+					Updating the Laplace solution, we have
+				</p>
+
+				<sidebyside widths="83% 17%" valign="middle">
+					<p>
+						<me>
+							Y(s) = \frac{1}{s + 2} + \frac{1}{s + 3}
+						</me>
+					</p>
+					<p>Prepared <m>Y</m></p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<md>
+					<mrow>y(t) = \ilap{Y(s)} = \ilap{\frac{1}{s + 2}} + \ilap{\frac{1}{s + 3}}</mrow>
+				</md>
+
+				<p>
+					Using the table, the solution is:
+					<me>
+						y(t) = e^{-2t} + e^{-3t}
+					</me>
+				</p>
+			</solution>
+		</example>
+
+		<example><title>Nonhomogeneous Forcing Function</title>
+			<p>
+				<statement>
+					<p>
+						Solve the initial value problem:
+					</p>
+					<me>
+						y'' - 2y' + y = e^{t}, \quad y(0) = 0,\quad y'(0) = 1
+					</me>
+				</statement>
+			</p>
+
+			<solution>
+				<proof><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="25% 14% 52%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="25% 14% 52%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y'' - 2y' + y = e^{t}}</mrow>
+									<mrow>\small y(0) = 0,\ y'(0) = 1</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y(t) = t e^{t} + \frac12 t^2 e^{t}</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^2Y - sy(0) - y'(0)</mrow>
+											<mrow>\amp\small\DLBa \qquad\qquad - 2(sY - y(0)) + Y = \frac{1}{s-1}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{1}{(s-1)^3} + \frac{1}{(s-1)^2}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s)\ \text{already matches}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>\lap{y'' - 2y' + y} = \lap{e^{t}}</mrow>
+							<mrow>s^2Y - sy(0) - y'(0) - 2(sY - y(0)) + Y \amp = \frac{1}{s-1}</mrow>
+							<mrow>s^2Y - 1 - 2sY + Y \amp = \frac{1}{s-1}</mrow>
+						</md>
+					</p>
+					<p>Laplace Domain Equation</p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Isolate <m>Y</m>:</p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>(s^2 - 2s + 1)Y \amp = \frac{1}{s-1} + 1</mrow>
+							<mrow>(s-1)^2 Y \amp = \frac{1}{s-1} + 1</mrow>
+							<mrow>Y(s) \amp = \frac{1}{(s-1)^3} + \frac{1}{(s-1)^2}</mrow>
+						</md>
+					</p>
+					<p>Isolated <m>Y(s)</m></p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<p>
+					Notice each term of <m>Y(s)</m> is already in the transform table form:  
+					<me>
+						\frac{1}{(s-1)^2} \quad\text{and}\quad \frac{1}{(s-1)^3}.
+					</me>
+				</p>
+
+				<p>Take the inverse Laplace transform:</p>
+				<md>
+					<mrow>y(t) = \ilap{\frac{1}{(s-1)^2}} + \ilap{\frac{1}{(s-1)^3}}</mrow>
+				</md>
+
+				<p>Therefore, the solution is:</p>
+				<me>y(t) = t e^{t} + \frac12 t^2 e^{t}</me>
+			</solution>
+		</example>
+
+		<task label="lt-checkpoint-timeline">
+			<title>📖❓Order the Steps</title>
+			<statement><p>Put these phrases in the order they occur when you solved Example 2.</p></statement>
+			<cardsort>
+				<match><premise>Rewrite <m>Y(s)</m> as table terms</premise><response>3</response></match>
+				<match><premise>Isolate <m>Y(s)</m></premise><response>2</response></match>
+				<match><premise>Transform the differential equation</premise><response>1</response></match>
+				<match><premise>Apply <m>\laplacesym^{-1}</m></premise><response>4</response></match>
+			</cardsort>
+		</task>
+
+		<example><title>Forcing with a Polynomial</title>
+			<statement>
+				<p>
+					Solve the initial value problem:
+				</p>
+				<me>
+					y'' + y = t^2, \quad y(0) = 1,\quad y'(0) = 0
+				</me>
+			</statement>
+
+			<solution>
+				<proof><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="32% 14% 46%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="32% 14% 46%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y'' + y = t^2 }</mrow>
+									<mrow>\small y(0) = 1,\ y'(0) = 0</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y(t) = 1 + \cos(t) + t\sin(t)</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^2Y - sy(0) - y'(0) + Y = \frac{2}{s^3}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{2 + s}{s(s^2 + 1)}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{1}{s} + \frac{s}{s^2 + 1} + \frac{1}{(s^2 + 1)^2}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>\lap{y'' + y} = \lap{t^2}</mrow>
+							<mrow>s^2Y - sy(0) - y'(0) + Y = \frac{2}{s^3}</mrow>
+							<mrow>s^2Y - s + Y = \frac{2}{s^3}</mrow>
+						</md>
+					</p>
+					<p>Laplace Domain Equation</p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Isolate <m>Y(s)</m>:</p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>(s^2 + 1) Y \amp = \frac{2}{s^3} + s</mrow>
+							<mrow>Y(s) \amp = \frac{2 + s^4}{s^3 (s^2 + 1)} = \frac{s(s^3 + 2)}{s^3 (s^2 + 1)} = \frac{2 + s}{s(s^2 + 1)}</mrow>
+						</md>
+					</p>
+					<p>Isolated <m>Y(s)</m></p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>
+					Break <m>Y(s)</m> into recognizable pieces:
+				</p>
+
+				<me>
+					Y(s) = \frac{2 + s}{s(s^2 + 1)} = \frac{1}{s} + \frac{s}{s^2 + 1} + \frac{1}{(s^2 + 1)^2}.
+				</me>
+
+				<p>Each term now matches an entry in the Laplace transform table.</p>
+
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<p>Take the inverse Laplace transform term by term:</p>
+				<md>
+					<mrow>y(t) = \ilap{\frac{1}{s}} + \ilap{\frac{s}{s^2 + 1}} + \ilap{\frac{1}{(s^2 + 1)^2}}</mrow>
+				</md>
+
+				<p>Therefore, the solution is:</p>
+				<me>y(t) = 1 + \cos(t) + t\sin(t)</me>
+			</solution>
+		</example>
+
+		<example><title>Repeated Root in the Characteristic Equation</title>
+			<statement>
+				<p>
+					Solve the initial value problem using the Laplace transform:
+				</p>
+				<me>
+					y'' + 6y' + 9y = 0, \quad y(0) = 3,\quad y'(0) = -3
+				</me>
+			</statement>
+
+			<solution>
+				<proof><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="30% 15% 47%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="29% 15% 48%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y'' + 6y' + 9y = 0 }</mrow>
+									<mrow>\small y(0) = 3,\ y'(0) = -3</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y(t) = (3 - 24t)e^{-3t}</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^2Y - 3s + 3 + 6sY - 18 + 9Y = 0</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{3s - 15}{(s + 3)^2}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{3}{s + 3} - \frac{24}{(s + 3)^2}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>\lap{y'' + 6y' + 9y} = \lap{0}</mrow>
+							<mrow>s^2Y - sy(0) - y'(0) + 6(sY - y(0)) + 9Y \amp = 0</mrow>
+							<mrow>s^2Y - 3s + 3 + 6sY - 18 + 9Y \amp = 0</mrow>
+						</md>
+					</p>
+					<p>Laplace Domain Equation</p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Isolate <m>Y(s)</m>:</p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>(s^2 + 6s + 9)Y \amp = 3s - 15</mrow>
+							<mrow>Y(s) \amp = \frac{3s - 15}{(s + 3)^2}</mrow>
+						</md>
+					</p>
+					<p>Isolated <m>Y(s)</m></p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Separate the numerator:</p>
+
+				<me>
+					Y(s) = \frac{3(s + 3) - 24}{(s + 3)^2} = \frac{3}{s + 3} - \frac{24}{(s + 3)^2}.
+				</me>
+
+				<p>Now each term matches an entry in the Laplace table.</p>
+
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<p>Take the inverse Laplace transform term by term:</p>
+				<md>
+					<mrow>y(t) = \ilap{\frac{3}{s + 3}} - \ilap{\frac{24}{(s + 3)^2}}</mrow>
+				</md>
+
+				<p>So</p>
+				<me>y(t) = (3 - 24t)e^{-3t}</me>
+			</solution>
+		</example>
+
+		<example><title>Third-Order Equation</title>
+			<statement>
+				<p>
+					Solve the initial value problem using the Laplace transform:
+				</p>
+				<me>
+					y''' + y'' - y' - y = 0,\quad y(0) = -1,\quad y'(0) = 0,\quad y''(0) = -1
+				</me>
+			</statement>
+
+			<solution>
+				<proof><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="35% 15% 40%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="37% 15% 38%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y''' + y'' - y' - y = 0 }</mrow>
+									<mrow>\small y(0) = 1,\ y'(0) = 0,\ y''(0) = -1</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y(t) = -\frac12e^{t} - \frac12e^{-t}</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^3Y + s^2 + 1 + s^2Y + s</mrow>
+											<mrow>\amp\small\DLBa \qquad\qquad - sY - 1 - Y = 0</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{-s^2 - s}{s^3 + s^2 - s - 1}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s) = -\frac12\frac{1}{s - 1} - \frac12\frac{1}{s + 1}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<p>
+					<md>
+						<mrow>\lap{y''' + y'' - y' - y} = \lap{0}</mrow>
+						<mrow>
+							s^3Y - s^2y(0) - sy'(0) - y''(0) + s^2Y - sy(0) - y'(0) - (sY - y(0)) - Y = 0
+						</mrow>
+						<mrow>
+							s^3Y - s^2(-1) - (-1) + s^2Y - s(-1) - (sY - (-1)) - Y = 0
+						</mrow>
+						<mrow>
+							s^3Y + s^2 + 1 + s^2Y + s - sY - 1 - Y = 0
+						</mrow>
+					</md>
+				</p>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Isolate <m>Y(s)</m>:</p>
+				<p>
+					<md>
+						<mrow>(s^3 + s^2 - s - 1)Y \amp = -s^2 - s</mrow>
+						<mrow>Y(s) \amp = \frac{-s^2 - s}{s^3 + s^2 - s - 1}</mrow>
+					</md>
+				</p>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>This denominator factors by grouping:</p>
+				<md>
+					<mrow> s^3 + s^2 - s - 1	\amp = s^2(s + 1) - (s + 1)</mrow>
+					<mrow>						\amp = (s^2 - 1)(s + 1) = (s - 1)(s + 1)^2</mrow>.
+				</md>
+
+				<p>Before jumping to PFD, simplify <m>Y</m> as much as possible first:</p>
+				<me>
+					Y(s) = \frac{-s^2 - s}{(s - 1)(s + 1)^2} = \frac{-s(s + 1)}{(s - 1)(s + 1)^2} = \frac{-s}{(s - 1)(s + 1)}
+				</me>
+
+				<p>
+					Now PFD is a little easier. Here is the general form:
+				</p>
+
+				<me>
+					Y(s) = \frac{-s}{(s - 1)(s + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1}
+				</me>
+
+				<p>
+					Applying the standard process gives: <m>A = -\sfrac12</m>, <m>B = -\sfrac12</m>
+				</p>
+				<p>
+					So the prepared <m>Y</m> is:
+				</p>
+
+				<me>
+					Y(s) = \frac{-\sfrac12}{s - 1} + \frac{-\sfrac12}{s + 1}
+				</me>
+				
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<p>Take the inverse Laplace transform term by term:</p>
+				<md>
+					<mrow>y(t) = -\frac12\ilap{\frac{1}{s - 1}} - \frac12\ilap{\frac{1}{s + 1}}</mrow>
+				</md>
+
+				<p>giving us the solution:</p>
+				<me>y(t) = -\frac12e^{t} - \frac12e^{-t}</me>
+			</solution>
+		</example>
+
+		<example><title>Sinusoidal Forcing with Exponential Growth</title>
+			<statement>
+				<p>
+					Solve the initial value problem using the Laplace transform:
+				</p>
+				<me>
+					y'' + 2y = e^t \cos(3t), \quad y(0) = 0, \quad y'(0) = 0
+				</me>
+			</statement>
+
+			<solution>
+				<proof><title>Specific-Roadmap</title>
+					<p>
+						<sidebyside widths="34% 14% 44%" valign="middle">
+							<p><me>\small\ul{\quad\ \textbf{Original Domain}\ \quad}</me></p>
+							<p/>
+							<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+						</sidebyside>
+						<sidebyside widths="34% 14% 44%" valign="top">
+							<p>
+								<md>
+									<mrow>\small \os{\vphantom{m}}{ y'' + 2y = e^{t} \cos(3t) }</mrow>
+									<mrow>\small y(0) = 0,\ y'(0) = 0</mrow>
+									<mrow>\small \os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+									<mrow/>
+									<mrow>\small \us{\large 🔻 🔻 🔻 🔻 🔻}{\text{Solution}}</mrow>
+									<mrow>\small y(t) = e^{t}\cos(3t) - \cos(\sqrt{2}t)</mrow>
+								</md>
+							</p>
+							<p>
+								<md>
+									<mrow>\small \underrightarrow{\text{1️⃣ Forward}}</mrow>
+									<mrow>\small \text{Apply}\ \laplacesym</mrow>
+									<mrow/>
+									<mrow/>
+									<mrow/>
+									<mrow>\small \text{Apply}\ \laplacesym^{-1}</mrow>
+									<mrow>\small \overleftarrow{\text{3️⃣ Backward}}</mrow>
+								</md>
+							</p>
+							<p>
+								<assemblage>
+									<p>
+										<md>
+											<mrow>\amp\small\DLBa s^2 Y + 2Y = \frac{s - 1}{(s - 1)^2 + 9}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\quad\text{Solve for}\ Y</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{s - 1}{(s^2 + 2)[(s - 1)^2 + 9]}</mrow>
+											<mrow>\amp\small\qquad\qquad {\Big\downarrow}\ \ \text{Prepare for Inverse}</mrow>
+											<mrow>\amp\small\DLBa Y(s) = \frac{1}{(s - 1)^2 + 9} - \frac{s}{s^2 + 2}</mrow>
+										</md>
+									</p>
+								</assemblage>
+							</p>
+						</sidebyside>
+					</p>
+				</proof>
+
+				<p><em><xref ref="lt-step-1" text="title"/></em></p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>\lap{y'' + 2y} = \lap{e^{t} \cos(3t)}</mrow>
+							<mrow>s^2 Y + 2Y = \frac{s - 1}{(s - 1)^2 + 9}</mrow>
+						</md>
+					</p>
+					<p>Laplace Domain Equation</p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Isolate <m>Y(s)</m>:</p>
+				<sidebyside widths="83% 17%" valign="bottom">
+					<p>
+						<md>
+							<mrow>Y(s) \amp = \frac{s - 1}{(s^2 + 2)[(s - 1)^2 + 9]}</mrow>
+						</md>
+					</p>
+					<p>Isolated <m>Y(s)</m></p>
+				</sidebyside>
+
+				<p><em><xref ref="lt-step-2" text="title"/></em></p>
+				<p>Rewrite <m>Y(s)</m> into pieces that match table entries:</p>
+
+				<me>
+					Y(s) = \frac{1}{(s - 1)^2 + 9} - \frac{s}{s^2 + 2}.
+				</me>
+
+				<p>Each piece is now recognizable for inverse transforming.</p>
+
+				<p><em><xref ref="lt-step-3" text="title"/></em></p>
+				<p>Take the inverse Laplace transform of each term:</p>
+				<md>
+					<mrow>y(t) = \ilap{\frac{1}{(s - 1)^2 + 9}} - \ilap{\frac{s}{s^2 + 2}}</mrow>
+				</md>
+
+				<p>Therefore, the solution is:</p>
+				<me>y(t) = e^{t}\cos(3t) - \cos(\sqrt{2}t)</me>
+			</solution>
+		</example>
+		
+		<p>
+			These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.
+		</p>
+	</subsection>
+
+	<objectives label="lt-method-steps-examples-wrapup">
+		<ul>
+			<li>
+				The three-step Laplace roadmap never changes; the variety comes from the algebra you need in Step 2.
+			</li>
+			<li>
+				Forward transform ⟶ algebra-only world ⟶ isolate <m>Y(s)</m> ⟶ prepare ⟶ inverse transform.
+			</li>
+		</ul>
+	</objectives>
+
+	<fact label="lt-method-steps-examples-cyu">
+		<statement>
+			<p>
+				Check Your Understanding:  
+				<task label="lt-method-steps-examples-cyu-1">
+					<title>📖❓Who Does What?</title>
+					<statement><p>Match each step with its primary role.</p></statement>
+					<cardsort>
+						<match><premise>Turns the DE into an algebra problem</premise><response>Step 1 — Forward Transform</response></match>
+						<match><premise>Makes every term inverse-friendly</premise><response>Step 2 — Solve &amp; Prepare <m>Y(s)</m></response></match>
+						<match><premise>Reveals <m>y(t)</m></premise><response>Step 3 — Inverse Transform</response></match>
+					</cardsort>
+				</task>
+
+				<task label="lt-method-steps-examples-cyu-2">
+					<title>📖❓Where Do ICs Appear?</title>
+					<statement><p>Initial conditions influence only Step 1.</p></statement>
+					<choices>
+						<choice correct="yes"><statement>True</statement><feedback><p>Right — after Step 1 they are baked into <m>Y(s)</m>.</p></feedback></choice>
+						<choice><statement>False</statement></choice>
+					</choices>
+				</task>
+			</p>
+		</statement>
+	</fact>
+</section>

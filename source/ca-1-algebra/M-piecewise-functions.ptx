@@ -1,0 +1,227 @@
+<subsection xml:id="review-piecewise-functions"><title>Piecewise Defined Functions</title>
+
+	<p>
+		We will encounter piecewise defined functions in differential equations when we think about some physical phenomenon. For example, we might consider the vibration of an airplane wing that is struck by some external object or a circuit that is initially open and then we close the circuit and the current immediately starts flowing. Both of these scenarios would require a piecewise defined function because there is a moment in time when something about the physical system changes.
+	</p>
+	
+	<p>
+	As such, we need to remember how piecewise defined functions work. Consider the function
+	
+	<me>
+		g(t) = \left\{
+		\begin{array}{ll}
+			0,		\amp t \lt 1 		\\
+			t^2,	\amp 1 \le t \lt 2 	\\
+			-t+1,	\amp 2 \le t \lt 6 	\\
+			0,		\amp t \ge 6.		\\
+		\end{array} \right.
+	</me>
+	
+	</p>
+	
+	<p>
+		If we want to evaluate the function at a particular <m>t</m>-value, we use the restrictions on the right to point us to which piece of the function definition we should use. For example, if we want to know <m>g(3)</m>, then we look over at that right side and see that 3 falls into the interval <m>2 \le t \lt 6,</m> so we use the corresponding function, <m>-t+1</m>. Thus, <m>g(3) = -3 + 1 = -2.</m>	
+	</p>
+	
+	<p>
+		If we want to graph, we also use those restrictions. When <m>t \lt 1</m>,	or equivalently when <m>t</m> is in the interval <m>(-\infty, 1),</m> we know that the graph of <m>g</m> will look like the horizontal line <m>y=0</m>; on the interval <m>[1, 2),</m> the graph will look like the graph of the parabola <m>y = t^2</m>; etc.
+	</p>
+
+	<p>
+		In the plots below you can see the entire graphs of the functions, dotted, with a solid segment that will be part of the piecewise function <m>g</m>.
+	
+		<sidebyside width="50%" margins="auto" valign="middle">
+			<image source="./figures/piecewise_1.png"/>
+			<image source="./figures/piecewise_2.png"/>
+		</sidebyside>
+		<sidebyside width="50%" margins="auto" valign="middle">
+			<image source="./figures/piecewise_3.png"/>
+			<image source="./figures/piecewise_4.png"/>
+		</sidebyside>
+	</p>
+	
+	<p>
+		Now we are prepared to assemble the pieces and generate the graph of the piecewise-defined function
+	
+		<me>
+			g(t) = \left\{
+			\begin{array}{ll}
+				0,		\amp t \lt 1		\\
+				t^2,	\amp 1 \le t \lt 2	\\
+				-t+1,	\amp 2 \le t \lt 6	\\
+				0,		\amp t \ge 6		\\
+			\end{array} \right.
+		</me>.
+	</p>
+	
+	<p>
+		<sidebyside width="90%" margins="auto" valign="middle">
+			<image source="./figures/piecewise_g.png"/>
+		</sidebyside>
+	</p>
+
+	<p>
+		<sidebyside width="90%" margins="auto" valign="middle">
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[domain=-3:3]
+						\def\tmin{-2.5}
+						\def\tmax{2.5}
+						\def\c{0}
+
+						% Draw the axes
+						\draw[thick, -&gt;] (\tmin, 0) -- (\tmax, 0) node[right] {$t$};
+						\draw[thick, -&gt;] (0, -0.5) -- (0, 1.8);
+		
+						% Draw the grid
+						\draw[very thin,color=gray] (\tmin,-0.5) grid (\tmax,1.5);
+		
+						% Unit step function
+						\draw[very thick,blue] (\tmin,0) -- (\c,0);
+						\draw[dashed, blue] (\c,0) -- (\c,1);
+						\draw[very thick,blue] (\c,1) -- (\tmax,1) node[above] {$U(t)$};
+						
+						% Open circle at the step
+						\draw[fill=white] (\c,0) circle (0.08);
+						
+						% Solid dot at the point of the step
+						\filldraw[blue] (\c,1) circle (0.08) node[left] {$1$};
+		
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</sidebyside>
+	</p>
+
+	<p>
+		<sidebyside width="60%" margins="auto" valign="middle">
+			<image width="100%">
+				<latex-image>
+					\begin{tikzpicture}[domain=-1:6, samples=200, scale=0.8]
+
+						% === x y Bounds ===
+						\def\tmin{-1}
+						\def\tmax{6}
+						\def\ymin{-1}
+						\def\ymax{3}
+					
+						% === Transistions ===
+						\def\t1{1}	\def\t2{4}
+					
+						% === Function definitions and colors ===
+						\def\fA{(\x)^2}	\def\fAColor{blue}				\def\fAFill{blue!15}
+						\def\fB{-\x + 4}		\def\fBColor{green!60!black}	\def\fBFill{green!15}
+						\def\fC{-1}				\def\fCColor{red!70!black}		\def\fCFill{red!15}
+
+						% === Evaluate endpoint values ===
+						<!-- \pgfmathsetmacro{\fAright}{(\t1)^2} -->
+						<!-- \pgfmathsetmacro{\fBleft}{-\t1 + 4} -->
+						<!-- \pgfmathsetmacro{\fBright}{-\t2 + 4} -->
+						<!-- \pgfmathsetmacro{\fCleft}{-1} -->
+					
+						% === Background regions ===
+						<!-- \fill[\fAFill] (\tmin-0.5,\ymin-1)	rectangle (\t1,\ymax+1); -->
+						<!-- \fill[\fBFill] (\t1,\ymin-1)	rectangle (\t2,\ymax+1); -->
+						<!-- \fill[\fCFill] (\t2,\ymin-1)	rectangle (\tmax+0.5,\ymax+1); -->
+					
+						% === Axes ===
+						\draw[-&gt;] (\tmin-0.5,0)		-- (\tmax+0.3,0)	node[above] {$t$};
+						\draw[-&gt;] (0,\ymin-0.4)	-- (0,\ymax+0.5)	node[left] {$f(t)$};
+
+						% === Tick marks and labels ===
+						\foreach \x in {\tmin,...,\tmax} {
+							\draw[gray!70] (\x,0.1) -- (\x,-0.1);	% t ticks
+							\node[below] at (\x,-0.15) {\small \x}; 
+						}
+						\foreach \y in {\ymin,...,\ymax} {
+							\draw[gray!70] (0.1,\y) -- (-0.1,\y);	% y ticks
+							\node[left] at (-0.15,\y) {\small \y}; 
+						}
+					
+						% === Function plots ===
+						<!-- \draw[\fAColor, very thick] plot[domain=\tmin-0.5:\t1-0.02, variable=\x]	(\x, {\fA}); -->
+						<!-- \draw[\fBColor, very thick] plot[domain=\t1:\t2-0.05, variable=\x]		(\x, {\fB}); -->
+						<!-- \draw[\fCColor, very thick] plot[domain=\t2:\tmax+0.5, variable=\x]	(\x, {\fC}); -->
+
+						% === Endpoint dots ===
+						% fA
+						<!-- \draw[\fAColor, thick] (\t1,\fAright) circle[radius=2pt]; -->
+					
+						% fB
+						<!-- \fill[\fBColor] (\t1,\fBleft) circle[radius=2pt];					 -->
+						<!-- \draw[\fBColor, thick] (\t2,\fBright) circle[radius=2pt];	 -->
+					
+						% fC
+						<!-- \fill[\fCColor] (\t2,\fCleft) circle[radius=2pt]; -->
+
+						% === Region Labels ===
+						<!-- \node[\fAColor, font=\small] at ({(\tmin-0.5 + \t1)/2}, {\ymin - 0.8}) {$t &lt; \t1$}; -->
+						<!-- \node[\fBColor, font=\small] at ({(\t1 + \t2)/2}, {\ymin - 0.8}) {$\t1 &lt; t &lt; \t2$}; -->
+						<!-- \node[\fCColor, font=\small] at ({(\t2 + \tmax+0.5)/2}, {\ymin - 0.8}) {$t &gt; \t2$}; -->
+					
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</sidebyside>
+	</p>
+	
+	<p>
+		If you'd like more of a review feel free to look at VMI's precalculus text,
+		<url href="https://drive.google.com/file/d/12b2cwH7afXhsYSDb-QCWKmFK2QCq7UfY/view">
+			here
+		</url>
+	</p>
+	
+	<p> Now you try some. </p>
+	
+	<p>
+		<term> Sketch each of the following piecewise defined functions.</term>
+		<ol>
+			<li> <p><m>\ds f(t) = \left\{
+					\begin{array}{ll}
+						0,		\amp t \lt 0		\\
+						5-t,	\amp 0 \le t \lt 3	\\
+						2,		\amp t \ge 3		\\
+					\end{array} \right.
+					</m></p>
+			<answer>
+				<p>
+					<sidebyside widths="90%" margins="auto" valign="middle">
+					<image source="./figures/piecewise_Q1.png"/>
+				</sidebyside>
+				</p>
+			</answer>
+			</li>
+			<li> <p><m>\ds h(t) = \left\{
+					\begin{array}{ll}
+						\sin t,	\amp t \lt \pi	\\
+						0,		\amp t \ge \pi	\\
+					\end{array} \right.
+					</m></p>
+			<answer>
+				<p>
+					<sidebyside widths="90%" margins="auto" valign="middle">
+					<image source="./figures/piecewise_Q2.png"/>
+				</sidebyside>
+				</p>
+			</answer>
+			</li>
+			<li> <p><m>\ds w(t) = \left\{
+					\begin{array}{ll}
+						-t,		\amp t \lt 1		\\
+						t^2+1,	\amp 1 \le t \lt 2	\\
+						e^{-t},	\amp t \ge 2		\\
+					\end{array} \right.
+					</m></p>
+			<answer>
+				<p>
+					<sidebyside widths="90%" margins="auto" valign="middle">
+					<image source="./figures/piecewise_Q3.png"/>
+				</sidebyside>
+				</p>
+			</answer>
+			</li>
+		</ol>
+	</p>			
+	
+</subsection>

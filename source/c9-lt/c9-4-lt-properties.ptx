@@ -1,0 +1,931 @@
+<section label="lt-properties">
+	<title>Transform Properties and Rules</title>
+
+	<introduction>
+		<p>
+			So far, we've built a small library of Laplace transforms for basic functions. But how do we handle functions that are combinations of these basic functions? This is where the properties of Laplace transform comes in.
+		</p>
+
+		<p>
+			In this section, we'll learn how the Laplace transform interacts with sums, products, exponentials, derivatives, and powers of <m>t</m>. Each property gives us a shortcut: a way to break down complex functions into simpler parts using the transforms we already know.
+		</p>
+
+		<p>
+			These properties will be your main tools for solving differential equations quickly and efficiently.
+		</p>
+
+		<task label="lt-properties-prep-1">
+			<title>👀❓ Integral Properties</title>
+			<statement>
+				<p>
+					Select all the true statements related to properties of indefinite integrals.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds \int 5e^t + \cos t\ dt = 5\int e^t\ dt + \int \cos t\,dt</m></statement>
+					<feedback>This is the linearity property of integrals.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\ds \int 5e^s\cos t\ dt = 5e^s\cdot\int \cos t\ dt</m></statement>
+					<feedback>Since we are integrating with respect to <m>t</m>, we can treat <m>5e^s</m> as a constant.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement><m>\ds \int 5e^t\cos t\ dt = 5\int e^t\ dt\cdot\int \cos t\ dt</m></statement>
+					<feedback>In calculus, you had to integrate this using integration by parts.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement><m>\ds \int \frac{d}{dt}\left[\cos t\right]\ dt = \sin t + C</m></statement>
+					<feedback>
+						Be careful, <m>\int \frac{d}{dt}\left[\cos t\right]\ dt = \cos t + C</m>.
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</introduction>
+
+	<subsection label="linearity-of-lts">
+		<title>Linearity: Sums and Constant Multiples</title>
+
+		<p>
+			Like integrals, the Laplace transform is linear. This means we can take apart sums and pull out constant multiples. In particular, if the Laplace transforms of <m>f(t)</m> and <m>g(t)</m> exist, then we have the following linearity property:
+		</p>
+
+		<md>
+			<mrow xml:id="lt-P1">
+				\text{P}_{1}:\quad\lap{af(t) \pm bg(t)} = a \lap{f(t)} \pm b \lap{g(t)}\quad (a, b\ \text{constants})
+			</mrow>.
+		</md>
+
+		<p>
+			This property allows us to break complex expressions into smaller pieces, each of which can be transformed using our basic table.
+		</p>
+
+		<example label="lt-linearity-property-example">
+			<title>Transforming a Sum of Functions</title>
+			<statement>
+				<p>
+					Compute the Laplace transform
+					<me> 
+						\lap{15 + 6e^{7t} - 11t}
+					</me>.
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					We apply the linearity property to break the transform down as follows:
+					<md>
+						<mrow>
+							\lap{15 + 6e^{7t} - 11t}
+							\amp = \lap{15} + \lap{6e^{7t}} - \lap{11t}
+						</mrow>
+						<mrow>
+							\amp = 15\lap{1} + 6\lap{e^{7t}} - 11\lap{t}
+						</mrow>
+					</md>
+				</p>
+
+				<p>
+					Then, using the common transforms, <xref ref="lt-L1" text="custom">L<m>_1</m></xref>, <xref ref="lt-L2" text="custom">L<m>_2</m> (<m>a=7</m>)</xref>, and <xref ref="lt-L3" text="custom">L<m>_3</m> (<m>n=1</m>)</xref>, we get 
+				</p>
+
+				<md>
+					<mrow>
+						\lap{15 + 6e^{7t} - 11t}
+						\amp = 15\cdot \os{\large s\gt0}{\vphantom{\int^{|}}\frac{1}{s}} + 6\cdot \os{\large s\gt7}{\vphantom{\int^{|}}\frac{1}{s-7}} - 11\cdot \os{\large s\gt0}{\vphantom{\int^{|}}\frac{1}{s^2}}
+					</mrow>
+					<mrow>
+						\amp = \frac{15}{s} + \frac{6}{s-7} - \frac{11}{s^2}, \quad s \gt 7
+					</mrow>.
+				</md>
+				<p>
+					We use <m>s \gt 7</m>, because it guarantees that <m>s \gt 0</m> is also true.
+				</p>
+			</solution>
+		</example>
+
+		<p label="lt-linearity-property-rq-bundle">
+			<task label="lt-properties-chkpt-1">
+				<title>📖❓ Invalid Uses of Linearity</title>
+				<statement>
+					<p>
+						Which of the following are NOT correct applications of the linearity property?
+					</p>
+					<p/>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\ds\quad\lap{4f(t) \cdot g(t)} = 4\lap{f(t)} \cdot \lap{g(t)}</m></statement>
+						<feedback>Linearity does not apply to a product of functions.</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><m>\ds\quad\lap{4 f(t)^2} = 4 \lap{f(t)}^2</m></statement>
+						<feedback>The linearity property does not extend to powers of functions.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\quad\lap{4f(t) + 3g(t)} = 4\lap{f(t)} + 3\lap{g(t)}</m></statement>
+						<feedback>This is a correct use of the linearity property.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\quad\lap{-2} = -2\lap{1}</m></statement>
+						<feedback>This is correct since <m>\ds\lap{-2} = \lap{-2\cdot 1} = -2\lap{1}</m>.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="lt-properties-chkpt-2">
+				<title>📖❓ Transform of <m>7\cos t + 2</m></title>
+				<statement>
+					<p>
+						<m>\ds\lap{7\cos t + 2} = </m> <fillin characters="10" />
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\ds\frac{7s}{s^2+1} + \frac{2}{s}</m></statement>
+						<feedback>
+							<p>
+								Correct! Use linearity: transform each term individually and add them together.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{7}{s^2+1} - \frac{2}{s}</m></statement>
+						<feedback>
+							<p>
+								No, the transform of <m>\cos t</m> includes <m>s</m> in the numerator, and the constant should be added.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{7}{s^2+49} + \frac{2}{s^2}</m></statement>
+						<feedback>
+							<p>
+								No, the frequency of <m>\cos t</m> is 1, not 7, and the constant term transforms to <m>\frac{2}{s}</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{7s}{s^2+1} - \frac{2}{s^2}</m></statement>
+						<feedback>
+							<p>
+								No, the constant term should yield <m>\frac{2}{s}</m>, and it should be added.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+		</p>
+	</subsection>
+
+	<subsection label="lt-derivative-transfer-property">
+		<title>Derivatives of Functions (Derivative Transfer)</title>
+
+		<p>
+			One of the most powerful features of the Laplace transform is its ability to transform differential equations into algebraic equations. This means we need a way to <q>remove</q> the derivatives from the unknown in our differential equation. The following property perfectly encapsulates this idea:
+		</p>
+
+		<me>
+			\lap{f'(t)} = s \lap{f(t)} - f(0), \qquad s \gt 0
+		</me>
+
+		<p>
+			In short, this property uses integration by parts to transfer the derivative from <m>f'(t)</m> to <m>e^{-st}</m>. This results in a factor of <m>-s</m> (chain rule on <m>e^{-st}</m>) and <m>f(0)</m> as follows:
+		</p>
+
+		<me>
+			\lap{f'(t)} = \int_0^\infty e^{-st} f'(t)\ dt \quad \os{\Large\text{IBP}}{\longrightarrow} \quad -(-s)\ub{\int_0^\infty e^{-st} f(t)\ dt}_{\large\lap{f(t)}} - f(0)
+		</me>.
+	
+		<proof xml:id="lt-derivative-transfer-details">
+			<title>Click here for more details</title>
+			<statement>
+				<p>
+					To show that
+					<me>
+						\lap{f'(t)} = s\lap{f(t)} - f(0), \quad s \gt 0
+					</me>,
+					we start with the definition of the Laplace transform:
+				</p>
+
+				<p>
+					<me>
+						\lap{ f'(t) } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot f'(t)\ dt}_{I}
+					</me>.
+				</p>
+
+				<p>
+					Applying integration by parts to <m>I</m> once in <m>\lap{ f'(t) }</m> with
+					<md>
+						<mrow> u = e^{-st},			\quad\amp	dv = f'(t)\ dt,	</mrow>
+						<mrow> du = -se^{-st}\ dt,	\quad\amp	v = f(t)		</mrow>
+					</md>
+					integration by parts gives
+					<md>
+						<mrow>
+							\lap{ t^{n} }
+							\amp = \lim_{b \to \infty} \left[f(t)e^{-sb}\Bigg|_0^b - \int_0^b f(t)\cdot\left(-se^{-st}\right)\ dt\right]
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty} \left[\left(f(b)e^{-sb} - f(0)e^{0}\right) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb} - f(0) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\lim_{b \to \infty} \left[\int_0^b e^{-st}\cdot f(t)\ dt\right]
+						</mrow>
+						<mrow>
+							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\ub{\int_\infty^b e^{-st}\cdot f(t)\ dt}_{\large\lap{f(t)}}
+						</mrow>.
+					</md>
+				</p>
+
+				<p>
+					Recall that a requirement for the Laplace transform of <m>f(t)</m> to exist is that
+					<me>
+						\lim_{b \to \infty} \left[f(b)e^{-sb}\right] = 0, \quad s \gt 0
+					</me>.
+				</p>
+
+				<p>
+					Thus, setting the limit to zero gives us the desired result
+					<me>
+						\lap{ f'(t) } = s\lap{f(t)} - f(0)
+					</me>.
+				</p>
+			</statement>
+		</proof>
+
+		<task label="lt-properties-chkpt-3">
+			<title>📖❓ Fill-In the Missing Number</title>
+			<statement>
+				<p>
+					Give the number that goes into the blank.
+				</p>
+				<p>
+					<m>\ds\lap{\ [e^t\cos (t)]^{\prime}\ } = s \lap{e^t\cos (t)} - </m> <fillin mode="number" answer="1"/>
+				</p>
+			</statement>
+			<evaluation>
+				<evaluate>
+					<test>
+						<numcmp use-answer="yes"/>
+						<feedback>
+							<p>
+								An integer variable may be initialized to a value.
+							</p>
+						</feedback>
+					</test>
+					<test>
+						<strcmp>.*</strcmp>
+						<feedback>Try to figure out the function <m>f</m> in this case.</feedback>
+					</test>
+				</evaluate>
+			</evaluation>
+		</task>
+
+		<p>
+			Notice that this property is also recursive, meaning it shows us how to handle higher-order derivatives as well. For example, 
+			<md>
+				<mrow>
+					\lap{f'(t)}
+					\amp = \DLGb \ul{s\lap{f(t)} - f(0)}
+				</mrow>
+				<mrow>
+					\lap{ f''(t) }
+					\amp = s \lap{f'(t)} - f'(0) = s \Big({\DLGb \ul{s\lap{f(t)} - f(0)}}\Big) - f'(0)
+				</mrow>
+				<mrow>
+					\amp = \DLBb \ul{s^2\lap{f(t)} - sf(0) - f'(0)}
+				</mrow>
+				<mrow>
+					\lap{ f'''(t) }
+					\amp = s \lap{f''(t)} - f''(0) = s \Big({\DLBb \ul{s^2\lap{f(t)} - sf(0) - f'(0)}}\Big) - f''(0)
+				</mrow>
+				<mrow>
+					\amp = s^3\lap{f(t)} - s^2f(0) - sf'(0) - f''(0), \text{ and so on}
+				</mrow>
+			</md>
+		</p>
+
+		<p>
+			To summarize, we now have the following new properties:
+			<md>
+				<mrow xml:id="lt-R1">
+					\text{R}_{1}:\quad
+					\amp \lap{f'(t)} = sF(s) - f(0),
+					\amp\amp s \gt 0
+				</mrow>
+				<mrow xml:id="lt-R2">
+					\text{R}_{2}:\quad
+					\amp \lap{f''(t)} = s^2F(s) - sf(0) - f'(0),
+					\amp\amp s \gt 0
+				</mrow>
+				<mrow xml:id="lt-R3">
+					\text{R}_{3}:\quad
+					\amp \lap{f'''(t)} = s^3F(s) - s^2f(0) - sf'(0) - f''(0),
+					\amp\amp s \gt 0
+				</mrow>
+			</md>
+		</p>
+
+		<p>
+			where <m>F(s) = \lap{f(t)}</m>.
+		</p>
+
+		<p label="lt-derivative-transfer-property-rq-bundle">
+			<task label="lt-properties-chkpt-4">
+				<title>📖❓ Transform of <m>y'</m> with an Initial Condition</title>
+				<statement>
+					<p>
+						What is the Laplace transform of <m>y'(t)</m> given that <m>y(0) = -9\ </m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\quad sY(s) + 9</m></statement>
+						<feedback>The Laplace transform of <m>y'(t)</m> with <m>y(0) = -9</m> is <m>sY(s) -(-9) = sY(s) + 9\ </m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad sY</m></statement>
+						<feedback>This is missing the initial condition <m>y(0) = -9</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad Y(s)+9</m></statement>
+						<feedback>This answer is missing a factor of <m>s</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad sY(s) - 9</m></statement>
+						<feedback>This answer appears to have a sign error.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="lt-properties-chkpt-5">
+				<title>📖❓ Transform of <m>y''</m> with Initial Conditions</title>
+				<statement>
+					<p>
+						What is the Laplace transform of <m>y'</m> given that <m>y(0) = 0</m> and <m>y'(0) = 1\ </m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\quad s^2Y - 1</m></statement>
+						<feedback>
+							<p>
+								The Laplace transform of <m>y''</m> is
+								<me>
+									\lap{y''} = s^2Y - sy(0) - y'(0) = s^2Y - s\cdot 0 - 1 = s^2Y - 1
+								</me>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad s^2Y</m></statement>
+						<feedback>Careful, use <m>\lap{y''} = s^2Y - sy(0) - y'(0)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad s^2Y - s</m></statement>
+						<feedback>
+							<p>No, the subtraction term is <m>1</m>, not <m>s</m>.</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\quad s^2Y + 1</m></statement>
+						<feedback>
+							<p>No, the sign should be negative already in the formula; the constant subtracted is <m>+1</m>.</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+		</p>
+	</subsection>
+
+	<subsection label="lt-exp-shifting-property">
+		<title>Multiplication by <m>e^{at}</m> (Exponential Shifting)</title>
+
+		<p>
+			It turns out that as long as we know the Laplace transform of <m>f(t)</m>,
+			<me>F(s) = \lap{f(t)}</me>,
+			then we also know the Laplace transform of <m>e^{at}f(t)</m> since
+		</p>
+
+		<me xml:id="lt-R4">
+			\text{R}_{4}:\quad\lap{e^{at} f(t)} = F(s-a), \quad a \text{ is a constant}
+		</me>.
+
+		<p>
+			So multiplying a function by <m>e^{at}</m> shifts its Laplace transform horizontally by <m>a</m>. 
+		</p>
+
+		<example label="lt-exp-shifting-property-example">
+			<title>Laplace Transform of an Exponential Function</title>
+
+			<p>
+				Use the exponential shifting property to compute the following
+			</p>
+
+			<p>
+				<sidebyside widths="25% 73%" margins="2% 0%" valign="top">
+					<p>
+						<statement>
+							<p><m>\ds\lap{e^{7t}\cos(3t)}</m></p>
+						</statement>
+					</p>
+					<p>
+						<solution>
+							<p>
+								To apply the <xref ref="lt-R4" text="custom">shifting property</xref>, we identify <m>a=7</m> and <m>f(t)</m> as follows:
+								<me>
+									\laplacesym \Big\{ \us{\large e^{at}}{\ul{e^{7t}\vphantom{()}}}\ \us{\large f(t)}{\ul{\cos(3t)}} \Big\} = F(s-7), \quad s \gt 7
+								</me>
+							</p>
+
+							<p>
+								By definition, <m>F(s) = \lap{ f(t) }</m>, so 
+								<me>
+									F(s) = \lap{ \cos(3t) } = \frac{s}{s^2 + 9}
+								</me>.
+							</p>
+							<p>
+								Finally, substituting <m>s-7</m> for <m>s</m> in the formula for <m>F(s)</m>, we have
+								<me>
+									\lap{ e^{7t} \cos(3t) } = F(s-7) = \frac{s-7}{(s-7)^2 + 9}, \quad s \gt 7
+								</me>.
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+			</p>
+
+			<p>
+				<sidebyside widths="25% 73%" margins="2% 0%" valign="top">
+					<p>
+						<statement>
+							<m>\ds\lap{e^{-1.3t}\sin(\pi t)}</m>
+						</statement>
+					</p>
+					<p>
+						<solution>
+							<p>
+								In this case, <m>a=-1.3</m> and <m>f(t)=\sin(\pi t)</m>. For <m>s \gt -1.3</m>, we have
+								<me>
+									\laplacesym \Big\{ \us{\large e^{at}}{\ul{e^{-1.3t}\vphantom{()}}}\ \us{\large f(t)}{\ul{\sin(\pi t)}} \Big\} = F(s-(-1.3)) = F(s+1.3) 
+								</me>.
+							</p>
+
+							<p>
+								By definition, <m>F(s) = \lap{ f(t) }</m>, so 
+								<me>
+									F(s) = \lap{ \sin(\pi t) } = \frac{\pi}{s^2 + \pi^2}
+								</me>.
+							</p>
+
+							<p>
+								Substituting <m>s+1.3</m> for <m>s</m> in <m>F(s)</m>, we have
+								<me>
+									\lap{ e^{-1.3t} \sin(\pi t) } = F(s+1.3) = \frac{\pi}{(s+1.3)^2 + \pi^2}
+								</me>,
+								where <m>s \gt -1.3</m>.
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+			</p>
+
+			<p>
+				<sidebyside widths="25% 73%" margins="2% 0%" valign="top">
+					<p>
+						<statement>
+							<m>\ds\lap{e^{2t}t^3}</m>
+						</statement>
+					</p>
+					<p>
+						<solution>
+							<p>
+								In this case, <m>a=2</m> and <m>f(t)=t^3</m>. So
+								<me>
+									\laplacesym \Big\{ \us{\large e^{at}}{\ul{e^{2t}\vphantom{()}}}\ \us{\large f(t)}{\ul{t^3\vphantom{()}}} \Big\} = F(s-2), \quad s \gt 2
+								</me>.
+							</p>
+
+							<p>
+								By definition, <m>F(s) = \lap{ f(t) }</m>, so 
+								<me>
+									F(s) = \lap{ t^3 } = \frac{3!}{s^4} = \frac{6}{s^4}
+								</me>.
+							</p>
+
+							<p>
+								Substituting <m>s-2</m> for <m>s</m> in <m>F(s)</m> gives
+								<me>
+									\lap{ e^{2t} \sin(\pi t) } = F(s-2) = \frac{6}{(s-2)^4}, \quad s \gt 2
+								</me>.
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+			</p>
+		</example>
+
+		<p>
+			By applying a similar strategy to the functions <m>t^n</m>, <m>\cos(bt)</m>, and <m>\sin(bt)</m>, we can add the following three Laplace transforms to our list of common transforms:
+		</p>
+
+		<md label="lt-exp-shifting-property-P6-P8">
+			<mrow xml:id="lt-L6">
+				\text{L}_{6}:\quad\amp\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2 + b^2}, \quad s \gt a
+			</mrow>
+
+			<mrow xml:id="lt-L7">
+				\text{L}_{7}:\quad\amp\lap{e^{at}\sin(bt)} = \frac{b}{(s-a)^2 + b^2}, \quad s \gt a
+			</mrow>
+
+			<mrow xml:id="lt-L8">
+				\text{L}_{8}:\quad\amp\lap{e^{at}t^n} = \frac{n!}{(s-a)^{n+1}}, \quad s \gt a
+			</mrow>
+		</md>
+
+		<p label="lt-exp-shifting-property-rq-bundle"> 
+			<task label="lt-properties-chkpt-6">
+				<title>📖❓ Shifting a Transform of Sine</title>
+				<statement>
+					<p>
+						<m>\quad \lap{e^{5t} \sin(2t)} = </m> <fillin characters="15" />
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\ds\frac{2}{(s-5)^2+4}</m></statement>
+						<feedback>
+							<p>
+								Correct! The translation property shifts the transform of <m>\sin(2t)</m> by 5, giving <m>\ds\frac{2}{(s - 5)^2 + 4}</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{5}{(s-2)^2+4}</m></statement>
+						<feedback>
+							<p>
+								No, the frequency is 2, not 5, and the shift should be by 5, not 2.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{2}{(s+5)^2+4}</m></statement>
+						<feedback>
+							<p>
+								No, the shift should be <m>s - 5</m>, not <m>s + 5</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{5}{(s-2)^2+2}</m></statement>
+						<feedback>
+							<p>
+								No, this has both the wrong frequency and an incorrect value in the denominator.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="lt-properties-chkpt-7">
+				<title>📖❓ Shifting a Transform of a Power Function</title>
+				<statement>
+					<p>
+						<m>\quad \lap{e^{2t} t^3} = </m> <fillin characters="15" />
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m>\dfrac{6}{(s-2)^4}</m></statement>
+						<feedback>
+							<p>
+								Correct! First use the rule <m>\lap{t^3} = 6/s^4</m>, then apply the translation property to shift <m>s</m> to <m>s - 2</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{6}{(s+2)^4}</m></statement>
+						<feedback>
+							<p>
+								No, the correct shift is <m>s - 2</m>, not <m>s + 2</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{3}{(s-2)^3}</m></statement>
+						<feedback>
+							<p>
+								No, check both the coefficient and exponent, <m>t^3</m> leads to <m>6</m> in the numerator and <m>s^4</m> in the denominator.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{3}{(s+2)^3}</m></statement>
+						<feedback>
+							<p>
+								No, this expression is incorrect both in sign and power.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="lt-properties-chkpt-8">
+				<title>📖❓ Shifting a Transform of Cosine</title>
+				<statement>
+					<p>
+						<m>\quad \lap{e^{4t} \cos(5t)} = </m> <fillin characters="15" />
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><m> \ds\frac{s - 4}{(s - 4)^2 + 25} </m></statement>
+						<feedback>
+							<p>
+								Correct! The Laplace transform of <m>\cos(5t)</m> is <m>\ds\frac{s}{s^2 + 25}</m>, and the translation property shifts <m>s</m> to <m>s - 4</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{4}{(s+4)^2+25}</m></statement>
+						<feedback>
+							<p>
+								No, the shift should be <m>s - 4</m>. This answer incorrectly uses <m>s + 4</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{5}{(s-5)^2+16}</m></statement>
+						<feedback>
+							<p>
+								No, the cosine frequency is 5, but the exponential shift is <m>e^{4t}</m>, not <m>e^{5t}</m>. Also, <m>16</m> is <m>4^2</m>, not <m>5^2</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\dfrac{4}{(s-4)^2+16}</m></statement>
+						<feedback>
+							<p>
+								No, the correct frequency is 5, so the denominator should be <m>(s - 4)^2 + 25</m>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="lt-properties-chkpt-9">
+				<title>📖❓ Shifted Transform of Some Function</title>
+				<statement>
+					<p>
+						Hypothetically, if <m>\ds\lap{f(t)} = \frac{1}{s(s+1)}</m>, then <m>\lap{e^{2t}f(t)} = <fillin characters="2" />\ </m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice>
+						<statement><m>\ds\frac{1}{(s+2)(s+1)}</m></statement>
+						<feedback>
+							<p>
+								No, the translation property requires replacing <m>s</m> with <m>s - 2</m>, not <m>s + 2</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{1}{s(s+2)}</m></statement>
+						<feedback>
+							<p>
+								No, the shift must be applied to every instance of <m>s</m> in the original transform.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement><m>\ds\frac{1}{(s-2)(s+2)}</m></statement>
+						<feedback>
+							<p>
+								No, the original expression has <m>s</m> and <m>s+1</m>. Shift both to <m>s - 2</m> and <m>s - 1</m> respectively.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><m>\ds\frac{1}{(s-2)(s-1)}</m></statement>
+						<feedback>
+							<p>
+								Correct! Apply the translation property by shifting each <m>s</m> in the original transform to <m>s - 2</m>.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+		</p>
+	</subsection>
+
+	<subsection label="lt-laplace-derivatives">
+		<title>Multiplication by <m>t^n</m> (Derivatives in <m>s</m>)</title>
+
+		<p>
+			When a function is multiplied by <m>t^n</m>, its Laplace transform becomes the <m>n</m>-th derivative of the original transform (up to a sign):
+			<me>
+				\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}\Big[\lap{f(t)}\Big]
+			</me>.
+			<proof xml:id="lt-laplace-derivatives-details">
+				<title>Click here for a derivation</title>
+				<statement>
+					<p>
+						To show that
+						<me>
+							\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}\left[\lap{f(t)}\right]
+						</me>,
+						we start on the right side and show that it leads to the left side.
+					</p>
+
+					<p>
+						<md>
+							<mrow>
+								(-1)^n \frac{d^n}{ds^n}\left[\lap{f(t)}\right]
+								\amp = (-1)^n \frac{d^n}{ds^n}\left[\int_0^{\infty} e^{-st} f(t)\ dt\right]
+							</mrow>
+							<mrow>
+								\amp = (-1)^n \int_0^{\infty} \frac{\partial^n}{\partial s^n}\left[e^{-st} f(t)\right]\ dt
+							</mrow>
+							<mrow>
+								\amp = (-1)^n \int_0^{\infty} f(t)\frac{\partial^n}{\partial s^n}\left[e^{-st}\right]\ dt
+							</mrow>
+							<mrow>
+								\amp = (-1)^n \int_0^{\infty} f(t) \left((-t)^n e^{-st}\right)\ dt
+							</mrow>
+							<mrow>
+								\amp = (-1)^n \int_0^{\infty} e^{-st} t^n f(t)\ dt
+							</mrow>
+							<mrow>
+								\amp = \int_0^{\infty} e^{-st} t^n f(t)\ dt
+							</mrow>
+							<mrow>
+								\amp = \lap{t^n f(t)}
+							</mrow>
+						</md>
+					</p>
+				</statement>
+			</proof>
+		</p>
+
+		<p>
+			If <m>F(s) = \lap{ f(t) }</m>, then this property becomes
+		</p>
+
+		<me xml:id="lt-R5">
+			\text{R}_{5}:\quad\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}\Big[F(s)\Big],\quad s &gt; 0,\quad n = 1, 2, 3, \ldots
+		</me>
+
+		<task label="lt-properties-chkpt-10">
+			<title>📖❓ Apply the Laplace Derivative Rule</title>
+			<statement>
+				<p>
+					Hypothetically, if <m>\lap{f(t)} = \cos(2s)</m>, then <m>\lap{tf(t)} = </m> <fillin characters="10" />
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement><m>\ds -2\sin(2s)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. You forgot to apply the negative from the derivative rule properly.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\ds 2\sin(2s)</m></statement>
+					<feedback>
+						<p>
+							Correct!
+							<md>
+								<mrow>	\lap{tf(t)} \amp = -\frac{d}{ds}[\lap{f(t)}] </mrow>
+								<mrow>				\amp = -\frac{d}{ds}[\cos(2s)] </mrow>
+								<mrow>				\amp = -(-2\sin(2s)) </mrow>
+								<mrow>				\amp = 2\sin(2s) </mrow>
+							</md>
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds -\sin(2s) + 2\cos(2s)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The Laplace transform of <m>tf(t)</m> should be the negative derivative of <m>\cos(2s)</m>, not this combination.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\ds 2\sin(2s) + \cos(2s)</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The rule gives only a sine term, no cosine remains after differentiation.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<example label="lt-laplace-derivatives-examples">
+			<title>Examples of the Laplace Derivative Property</title>
+			<p>
+				Use the <xref ref="lt-R5" text="custom">Laplace derivative property</xref> to compute
+			</p>
+
+			<p>
+				<sidebyside widths="25% 73%" margins="2% 0%" valign="top">
+					<p>
+						<statement>
+							<m>\ds\lap{t \cos(t)}</m>
+						</statement>
+					</p>
+					<p>
+						<solution>
+							<p>
+								To apply the <xref ref="lt-R5" text="custom">Laplace derivative property</xref>, we identify <m>n=1</m> and <m>f(t)</m>:
+								<me>
+									\laplacesym \Big\{ t^1 \ \us{\large f(t)}{\ul{\cos(t)}} \Big\} = (-1)^1 F'(s) = -F'(s), \quad s \gt 0
+								</me>
+							</p>
+
+							<p>
+								By definition, <m>F(s) = \lap{ f(t) }</m>, so 
+								<me>
+									F(s) = \lap{ \cos(t) } = \frac{s}{s^2 + 1}
+								</me>
+								and the quotient rule gives us
+								<me>
+									F'(s) = \frac{(s^2 + 1)(1) - s(2s)}{(s^2 + 1)^2} = \frac{1 - s^2}{(s^2 + 1)^2}
+								</me>
+							</p>
+							<p>
+								Therefore,
+								<me>
+									\lap{t \cos(t)} = -\frac{1 - s^2}{(s^2 + 1)^2} = \frac{s^2 - 1}{(s^2 + 1)^2}, \quad s \gt 0
+								</me>.
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+			</p>
+
+			<p>
+				<sidebyside widths="25% 73%" margins="2% 0%" valign="top">
+					<p>
+						<statement>
+							<m>\ds\lap{t^2 \sin(-5t)}</m>
+						</statement>
+					</p>
+					<p>
+						<solution>
+							<p>
+								In this case, <m>n=2</m> and <m>f(t) = \sin(-5t)</m>, so 
+								<me>
+									\laplacesym \Big\{ t^2 \ \us{\large f(t)}{\ul{\sin(-5t)}} \Big\} = (-1)^2 F''(s) = F''(s), \quad s \gt 0
+								</me>
+							</p>
+
+							<p>
+								By definition, <m>F(s) = \lap{ f(t) }</m>, so 
+								<me>
+									F(s) = \lap{ \sin(-5t) } = \frac{-5}{s^2 + 25} = -5(s^2 + 25)^{-1}
+								</me>
+								and two derivatives of this function gives us
+								<md>
+									<mrow>	F'(s)	\amp = \frac{d}{ds}\left[-5(s^2 + 25)^{-1}\right]				</mrow>
+									<mrow>			\amp = -5\left(-1\right)(s^2 + 25)^{-2}(2s)						</mrow>
+									<mrow>			\amp = 10s(s^2 + 25)^{-2}										</mrow>
+									<mrow>	F''(s)	\amp = \frac{d}{ds}\left[10s(s^2 + 25)^{-2}\right]				</mrow>
+									<mrow>			\amp = 10(s^2 + 25)^{-2} + 10s(-2)(s^2 + 25)^{-3}(2s)			</mrow>
+									<mrow>			\amp = \frac{10}{(s^2 + 25)^{2}} - \frac{40s^2}{(s^2 + 25)^{3}}	</mrow>
+								</md>
+							</p>
+							<p>
+								Therefore,
+								<me>
+									\lap{t^2 \sin(-5t)} = \frac{10}{(s^2 + 25)^{2}} - \frac{40s^2}{(s^2 + 25)^{3}}, \quad s \gt 0
+								</me>.
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+			</p>
+		</example>
+
+		<p>
+			This property lets us handle polynomial factors in <m>t</m> without integrating directly. Instead, we differentiate the Laplace transform with respect to <m>s</m>.
+		</p>
+	</subsection>
+
+	<objectives label="lt-properties-wrapup">
+		<ul>
+			<li>Linearity allows us to separate sums and pull out constants.</li>
+			<li>Multiplying by <m>e^{at}</m> shifts the <m>s</m> variable in a Laplace transform by <m>a</m>.</li>
+			<li>A derivative in <m>t</m> becomes multiplication by <m>s</m> in the transform (minus an initial condition).</li>
+			<li>Multiplying by <m>t^n</m> corresponds to differentiating the transform <m>n</m> times with respect to <m>s</m>.</li>
+		</ul>
+	</objectives>
+</section>
