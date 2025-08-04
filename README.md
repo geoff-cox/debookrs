@@ -1,3 +1,3 @@
-# My Great Book
+# My Book
 
-Visit <https://pretextbook.org/documentation.html> to learn more.
+I need to update this.
