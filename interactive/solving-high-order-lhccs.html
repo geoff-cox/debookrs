@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: salem                          *-->
+<!--*  Palette: earth-sea                    *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DE-BOOK Solving High-Order LHCC Equations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="vmi.instructure.com/external/figures/de-book-icon.png">
+<meta property="book:title" content="Exploring Differential Equations">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.9.4';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.879b99e54406967d.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.28cc3c4821792be5.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.8141ae22fd347e48.css">
+<script src="_static/pretext/js/pretext-webwork/2.17/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="debookrs" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://www.vmi.edu/"><img src="external/figures/de-book-icon.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="main.html"><span class="title">Exploring Differential Equations</span> <span class="subtitle">An Interactive, Student-Centered Approach</span></a></h1>
+<p class="byline"></p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-9.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="higher-order-lhcc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="homogeneous-eqns.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="homogeneous-eqns-8.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand\DLGray{\color{Gray}}
+\newcommand\DLO{\color{BurntOrange}}
+\newcommand\DLRa{\color{WildStrawberry}}
+\newcommand\DLGa{\color{Green}}
+\newcommand\DLGb{\color{PineGreen}}
+\newcommand\DLBa{\color{RoyalBlue}}
+\newcommand\DLBb{\color{Cerulean}}
+\newcommand\ds{\displaystyle}
+\newcommand\ddx{\frac{d}{dx}}
+\newcommand\os{\overset}
+\newcommand\us{\underset}
+\newcommand\ob{\overbrace}
+\newcommand\obt{\overbracket}
+\newcommand\ub{\underbrace}
+\newcommand\ubt{\underbracket}
+\newcommand\ul{\underline}
+\newcommand\laplacesym{\mathscr{L}}
+\newcommand\lap[1]{\laplacesym\left\{#1\right\}}
+\newcommand\ilap[1]{\laplacesym^{-1}\left\{#1\right\}}
+\newcommand\tikznode[3][]
+	{\tikz[remember picture,baseline=(#2.base)]
+		\node[minimum size=0pt,inner sep=0pt,#1](#2){#3};
+	}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\newcommand{\sfrac}[2]{{#1}/{#2}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts focused" data-preexpanded-levels="0" data-max-levels="3"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="getting-started.html" class="internal"><span class="codenumber">I</span> <span class="title">Getting Started</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="de-basics.html" class="internal"><span class="codenumber">1</span> <span class="title">Differential Equation Basics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="whats-a-de.html" class="internal"><span class="title">What is a Differential Equation?</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="de-components.html" class="internal"><span class="title">Differential Equation Components</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="order-linearity.html" class="internal"><span class="title">Order &amp; Linearity</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="de-basics-6.html" class="internal"><span class="title">Chapter 1 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="de-basics-6.html#c1-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="de-basics-6.html#c1-exercises" class="internal"><span class="title">✍🏻 Basic Classification</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="solns-to-des.html" class="internal"><span class="codenumber">2</span> <span class="title">Solutions to Differential Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="whats-a-soln.html" class="internal"><span class="title">What is a Solution?</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="solution-types-initial-conditions.html" class="internal"><span class="title">Solution Types &amp; Initial Conditions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="visualizing-solutions.html" class="internal"><span class="title">Visualizing Solutions</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="visualizing-solutions.html#visualizing-solutions-interactive" class="internal"><span class="title">📈 Interactive: Visualizing Solutions</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="direct-integration.html" class="internal"><span class="title">Direct Integration</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="solns-to-des-7.html" class="internal"><span class="title">Chapter 2 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="solns-to-des-7.html#c2-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-to-des-7.html#c2-drills" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-to-des-7.html#c2-exercises-solutions-to-DEs" class="internal"><span class="title">🕹️ Solutions to Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-to-des-7.html#c2-exercises" class="internal"><span class="title">✍🏻 Solving Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-to-des-7.html#solns-to-des-7-6" class="internal"><span class="title">Preview of a Future Method</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="first-order-des.html" class="internal"><span class="codenumber">II</span> <span class="title">First-Order Differential Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="separable-variables-method.html" class="internal"><span class="codenumber">3</span> <span class="title">Separation of Variables</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="separable-des.html" class="internal"><span class="title">Separable Differential Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-sov-method.html" class="internal"><span class="title">Separation of Variables (SOV) Method</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="separable-variables-method-5.html" class="internal"><span class="title">Chapter 3 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="separable-variables-method-5.html#c3-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="separable-variables-method-5.html#separable-variables-method-5-3" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="separable-variables-method-5.html#separable-variables-method-5-4" class="internal"><span class="title">Solve the Differential Equations (Step-By-Step)</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="separable-variables-method-5.html#separable-variables-method-5-5" class="internal"><span class="title">✍🏻 Solve the Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="integrating-factor-method.html" class="internal"><span class="codenumber">4</span> <span class="title">Integrating Factor</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="if-completing-derivative.html" class="internal"><span class="title">Completing the Product Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="if-integrating-factor.html" class="internal"><span class="title">The Integrating Factor</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="if-method.html" class="internal"><span class="title">Integrating Factor Method</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="integrating-factor-method-6.html" class="internal"><span class="title">Chapter 4 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="integrating-factor-method-6.html#c4-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="integrating-factor-method-6.html#integrating-factor-method-6-3" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="integrating-factor-method-6.html#integrating-factor-method-6-4" class="internal"><span class="title">✍🏻 Solve the Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="qualitative-methods.html" class="internal"><span class="codenumber">5</span> <span class="title">Qualitative Methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="slope-fields.html" class="internal"><span class="title">Slope Fields</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="autonomous-eqns.html" class="internal"><span class="title">Autonomous Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="equilibrium-solns.html" class="internal"><span class="title">Equilibrium Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="classifying-equilibria.html" class="internal"><span class="title">Classifying Equilibrium Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="parameter-analysis.html" class="internal"><span class="title">Parameter Analysis</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="logistical-models.html" class="internal"><span class="title">Logistical Models</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="logistical-models.html#the-logistical-model" class="internal"><span class="title">The Logistic Model</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="logistical-models.html#modified-logistical-model" class="internal"><span class="title">A Modified Logistic Model</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="qualitative-methods-9.html" class="internal"><span class="title">Chapter 5 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="qualitative-methods-9.html#c5-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="qualitative-methods-9.html#qualitative-methods-9-3" class="internal"><span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="numerical-methods.html" class="internal"><span class="codenumber">6</span> <span class="title">Numerical Methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="whats-a-numerical-soln.html" class="internal"><span class="title">What is a Numerical Solution?</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="eulers-method-one-step.html" class="internal"><span class="title">Thinking in Steps: How Euler’s Method Works One Step at a Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="eulers-method-one-step.html#eulers-method-one-step-direction" class="internal"><span class="title">Moving in the Direction of a Slope</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="eulers-method-one-step.html#eulers-method-one-step-rule" class="internal"><span class="title">The Movement Rule</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="eulers-method-full.html" class="internal"><span class="title">Euler’s Method: The Full Process</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="eulers-method-full.html#eulers-method-concrete" class="internal"><span class="title">A Concrete Step Through Euler’s Method</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="eulers-method-full.html#eulers-method-definition" class="internal"><span class="title">Euler’s Method</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="eulers-method-full.html#eulers-method-examples" class="internal"><span class="title">Examples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="numerical-methods-6.html" class="internal"><span class="title">Chapter 6 Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="numerical-methods-6.html#numerical-methods-6-2" class="internal"><span class="title">Euler’s Method</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="linear-des-with-constant-coefficients.html" class="internal"><span class="codenumber">III</span> <span class="title">Linear Equations With Constant Coefficients</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="homogeneous-eqns.html" class="internal"><span class="codenumber">7</span> <span class="title">Homogeneous Equations</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="linear-constant-coeffs.html" class="internal"><span class="title">The LHCC Equation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="exponential-solns.html" class="internal"><span class="title">Exponential Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="second-order-lhcc-eqns.html" class="internal"><span class="title">Second-Order Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="higher-order-lhcc.html" class="internal"><span class="title">Higher-Order Equations</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="solving-high-order-lhccs.html" class="internal"><span class="title">Solving High-Order LHCC Equations</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="homogeneous-eqns-8.html" class="internal"><span class="title">Chapter 7 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="homogeneous-eqns-8.html#c7-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="homogeneous-eqns-8.html#homogeneous-eqns-8-3" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="homogeneous-eqns-8.html#homogeneous-eqns-8-4" class="internal"><span class="title">Charateristic Polynomials</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="homogeneous-eqns-8.html#homogeneous-eqns-8-5" class="internal"><span class="title">✍🏻 Solve the Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="homogeneous-eqns-8.html#exercises-" class="internal"><span class="title">Beyond the Basics</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="undetermined-coefficients.html" class="internal"><span class="codenumber">8</span> <span class="title">Nonhomogeneous Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lncc-equation.html" class="internal"><span class="title">The LNCC Equation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="selecting-the-particular-soln.html" class="internal"><span class="title">Selecting the Particular Solution Form</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="uc-method.html" class="internal"><span class="title">Undetermined Coefficients Method</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="undetermined-coefficients-6.html" class="internal"><span class="title">Chapter 8 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="undetermined-coefficients-6.html#c8-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="undetermined-coefficients-6.html#undetermined-coefficients-6-3" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="undetermined-coefficients-6.html#undetermined-coefficients-6-4" class="internal"><span class="title">✍🏻 Solve the Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="laplace-transform-method.html" class="internal"><span class="codenumber">IV</span> <span class="title">The Laplace Transform Method</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="laplace-transforms.html" class="internal"><span class="codenumber">9</span> <span class="title">The Laplace Transform</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-derivative-transfer.html" class="internal"><span class="title">Derivative Transfer via Integration by Parts</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-derivative-transfer.html#lt-review-integration-by-parts" class="internal"><span class="title">Review of Integration by Parts (IBP)</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-derivative-transfer.html#lt-using-exponentials-for-derivative-transfer" class="internal"><span class="title">Using Exponentials to Transfer Derivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-definition.html" class="internal"><span class="title">Defining the Laplace Transform</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-definition.html#lt-motivation" class="internal"><span class="title">Why Use the Laplace Transform?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-definition.html#lt-def-basic-definition" class="internal"><span class="title">Definition of the Laplace Transform</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="lt-definition.html#lt-definition-5" class="internal"><span class="title">👀 Quick Review: Exponential Properties</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-definition.html#lt-def-first-examples" class="internal"><span class="title">First Examples of Laplace Transforms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="common-transforms.html" class="internal"><span class="title">Common Transforms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="common-transforms.html#constant-function-transform" class="internal"><span class="title">Laplace Transform of a Constant</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="common-transforms.html#exponential-function-transform" class="internal"><span class="title">Laplace Transform of Exponentials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="common-transforms.html#power-function-transform" class="internal"><span class="title">Laplace Transform of Powers of <span class="process-math">\(t\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="common-transforms.html#sine-cosine-function-transform" class="internal"><span class="title">Laplace Transforms of Sine and Cosine</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-properties.html" class="internal"><span class="title">Transform Properties and Rules</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-properties.html#linearity-of-lts" class="internal"><span class="title">Linearity: Sums and Constant Multiples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-properties.html#lt-derivative-transfer-property" class="internal"><span class="title">Derivatives of Functions (Derivative Transfer)</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-properties.html#lt-exp-shifting-property" class="internal"><span class="title">Multiplication by <span class="process-math">\(e^{at}\)</span> (Exponential Shifting)</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-properties.html#lt-laplace-derivatives" class="internal"><span class="title">Multiplication by <span class="process-math">\(t^n\)</span> (Derivatives in <span class="process-math">\(s\)</span>)</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-reference-guide.html" class="internal"><span class="title">The Laplace Transform Reference Guide</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-reference-guide.html#lt-reference-tables" class="internal"><span class="title">Laplace Transform Tables</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-reference-guide.html#lt-next-steps" class="internal"><span class="title">Next Step: Solving Differential Equations</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="laplace-transforms-8.html" class="internal"><span class="title">Chapter 9 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="laplace-transforms-8.html#c9-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-transforms-8.html#laplace-transforms-8-3" class="internal"><span class="title">🏗️ Drill: Forward Transforms</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-transforms-8.html#laplace-transforms-8-4" class="internal"><span class="title">Definition of the Laplace Transform</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="applying-the-laplace-transform-method.html" class="internal"><span class="codenumber">10</span> <span class="title">Applying the Laplace Method</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-method-step1.html" class="internal"><span class="title">Step 1 — Into the Laplace Domain</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step1.html#lt-method-step1-overview" class="internal"><span class="title">Crossing Into the Laplace Domain</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step1.html#lt-forward-mechanics" class="internal"><span class="title">Basic Mechanics of the Forward Transform</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step1.html#lt-forward-intro" class="internal"><span class="title">What is Going on Behind the Scenes?</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-method-step2.html" class="internal"><span class="title">Step 2 — Solving in the Laplace Domain</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step2.html#lt-laplace-solving-overview" class="internal"><span class="title">What It Means to Solve in the Laplace Domain</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step2.html#lt-laplace-solve-basic" class="internal"><span class="title">Solving for <span class="process-math">\(Y(s)\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step2.html#lt-laplace-preparing-for-inverse" class="internal"><span class="title">Preparing for the Inverse Transform</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step2.html#lt-inverse-prep-examples" class="internal"><span class="title">Preparation Examples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-method-step3.html" class="internal"><span class="title">Step 3 — Leaving the Laplace Domain</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step3.html#lt-inverse-concept" class="internal"><span class="title">What Is the Inverse Laplace Transform?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step3.html#lt-inverse-table-usage" class="internal"><span class="title">Using the Table to Invert <span class="process-math">\(Y(s)\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step3.html#lt-inverse-linearity" class="internal"><span class="title">Linearity of the Inverse Laplace Transform</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-step3.html#lt-inverse-minor-adjustments" class="internal"><span class="title">Minor Adjustments for a Perfect Match</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-method-steps-examples.html" class="internal"><span class="title">Summary &amp; Worked Examples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-steps-examples.html#lt-method-steps-examples-3" class="internal"><span class="title">Laplace Transform Method— Quick Recap</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="lt-method-steps-examples.html#lt-method-steps-examples-4" class="internal"><span class="title">Worked Examples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="applying-the-laplace-transform-method-7.html" class="internal"><span class="title">Chapter 10 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="applying-the-laplace-transform-method-7.html#c10-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="applying-the-laplace-transform-method-7.html#applying-the-laplace-transform-method-7-3" class="internal"><span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="applying-the-laplace-transform-method-7.html#applying-the-laplace-transform-method-7-4" class="internal"><span class="title">🏗️ Drill: Preparing &amp; Invert</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="applying-the-laplace-transform-method-7.html#applying-the-laplace-transform-method-7-5" class="internal"><span class="title">Solving Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="laplace-method-piecewise-forcing.html" class="internal"><span class="codenumber">11</span> <span class="title">Laplace Method for Piecewise Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="basic-unit-step-function.html" class="internal"><span class="title">The Basic Unit Step Function</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="unit-step-functions.html" class="internal"><span class="title">Unit Step Function Variants</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="unit-step-functions.html#shifted-step" class="internal"><span class="title">Shifted Unit Step Function</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="unit-step-functions.html#reversed-step" class="internal"><span class="title">Reversed Unit Step Function</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="unit-step-functions.html#windowed-step" class="internal"><span class="title">Windowed Unit Step Function</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="unit-step-functions.html#unit-step-functions-7" class="internal"><span class="title">Reading Questions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="piecewise-functions.html" class="internal"><span class="title">Piecewise Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="piecewise-functions.html#piecewise-definition" class="internal"><span class="title">What Makes a Function Piecewise?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="piecewise-functions.html#unit-step-switch-mindset" class="internal"><span class="title">Thinking in Terms of Switches</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="piecewise-functions.html#piecewise-rewriting" class="internal"><span class="title">Rewriting a Piecewise Function in Step Form</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="piecewise-functions.html#piecewise-functions-cyu" class="internal"><span class="title">Check Your Understanding</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="laplace-step-rules.html" class="internal"><span class="title">Laplace Transform Rules for Step Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="laplace-step-rules.html#laplace-uc" class="internal"><span class="title">Transform of <span class="process-math">\(u_c(t)\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="laplace-step-rules.html#laplace-ft-uc" class="internal"><span class="title">Transform of <span class="process-math">\(f(t) u_c(t)\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="laplace-step-rules.html#laplace-ftc-uc" class="internal"><span class="title">Transform of <span class="process-math">\(f(t-c) u_c(t)\)</span></span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="laplace-step-rules.html#laplace-piecewise-check" class="internal"><span class="title">Check Your Understanding</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="transforming-piecewise-functions.html" class="internal"><span class="title">Transforming Piecewise Functions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="piecewise-laplace-method.html" class="internal"><span class="title">Laplace Method with Piecewise Forcing Terms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="piecewise-laplace-method.html#piecewise-laplace-method-model" class="internal"><span class="title">A Model Problem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="piecewise-laplace-method.html#piecewise-laplace-method-additional-examples" class="internal"><span class="title">Additional Examples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html" class="internal"><span class="title">Chapter 11 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#c11-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#laplace-method-piecewise-forcing-9-3" class="internal"><span class="title">🏗️ Unit Step Functions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#laplace-method-piecewise-forcing-9-4" class="internal"><span class="title">🏗️ Piecewise Functions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#laplace-method-piecewise-forcing-9-5" class="internal"><span class="title">Piecewise Inverse Transforms</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#laplace-method-piecewise-forcing-9-6" class="internal"><span class="title">Solving Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="laplace-method-piecewise-forcing-9.html#laplace-method-piecewise-forcing-9-7" class="internal"><span class="title">Using the Definition of the Laplace Transform</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="systems-of-des.html" class="internal"><span class="codenumber">V</span> <span class="title">Systems of Differential Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="systems-of-des-3.html" class="internal"><span class="codenumber">12</span> <span class="title">First-Order Linear Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="intro-systems.html" class="internal"><span class="title">Introducing Systems of Differential Equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="intro-systems.html#what-are-systems" class="internal"><span class="title">What Are Systems?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="intro-systems.html#uncoupled-systems" class="internal"><span class="title">Uncoupled Systems</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="variable-interactions.html" class="internal"><span class="title">Interactions Between Variables</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="variable-interactions.html#partially-coupled-systems" class="internal"><span class="title">Partially Coupled Systems</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="variable-interactions.html#fully-coupled-conceptual" class="internal"><span class="title">Fully Coupled Systems (Conceptual)</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="linear-systems-basics.html" class="internal"><span class="title">Linear System Basics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="linear-systems-basics.html#linear-definition" class="internal"><span class="title">What Makes a System Linear?</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="linear-systems-basics.html#matrix-form" class="internal"><span class="title">The Matrix Formulation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="linear-systems-basics.html#n-dim-linear" class="internal"><span class="title">From Two to <span class="process-math">\(n\)</span> Dimensions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="solving-linear-systems.html" class="internal"><span class="title">Solving Linear Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="solving-linear-systems.html#guessing-exponentials" class="internal"><span class="title">Guessing Exponential Solutions</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="second-order-to-system.html" class="internal"><span class="title">Second-Order Equations to First-Order Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="second-order-to-system.html#second-order-to-system-1" class="internal"><span class="title">Turning a Second-Order Equation into a System</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="systems-of-des-3-8.html" class="internal"><span class="title">Chapter 12 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="systems-of-des-3-8.html#c12-quick-answer" class="internal"><span class="title">ᯓ★❓Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="systems-of-des-3-8.html#systems-of-des-3-8-3" class="internal"><span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="systems-of-des-4.html" class="internal"><span class="codenumber">13</span> <span class="title">Nonlinear Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="systems-of-des-4-3.html" class="internal"><span class="title">Nonlinear Systems</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="backmatter-2.html" class="internal"><span class="codenumber">A</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="codenumber">B</span> <span class="title">Hints and Solutions to Selected Exercises</span></a></div></li>
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="review-topics.html" class="internal"><span class="codenumber">C</span> <span class="title">Review Topics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="algebra-review.html" class="internal"><span class="title">Algebra</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-like-terms" class="internal"><span class="title">Like-Terms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-quadratic-eqns" class="internal"><span class="title">Quadratic equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-completing-the-sqr" class="internal"><span class="title">Completing the Square</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-point-slope" class="internal"><span class="title">Writing the Equation of a Line in Point-Slope Form</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-point-on-a-line" class="internal"><span class="title">Finding a point on a line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-trig-functions" class="internal"><span class="title">Trigonometric Identities</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-exponents-logarithms" class="internal"><span class="title">Exponential and Logarithmic Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-script-notation" class="internal"><span class="title">Subscript Notation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-function-notation" class="internal"><span class="title">Function Notation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-polynomial-eqns" class="internal"><span class="title">Solving Polynomial Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-rational-functions" class="internal"><span class="title">Rational Functions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebra-review.html#review-pfd" class="internal"><span class="title">Partial Fraction Decomposition</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="algebra-review.html#review-pfd-7" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-piecewise-functions" class="internal"><span class="title">Piecewise Defined Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-recursive-functions" class="internal"><span class="title">Recursive functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-interrelated-functions" class="internal"><span class="title">Interrelated functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebra-review.html#review-units" class="internal"><span class="title">Units, Mass, Volume, Concentration</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="calculus-review.html" class="internal"><span class="title">Calculus</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#r-01-11" class="internal"><span class="title">Limits at infinity</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#r-01-12" class="internal"><span class="title">L’Hospital’s Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#r-01-01" class="internal"><span class="title">Differentiation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#calculus-review-product-rule" class="internal"><span class="title">Product Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#r-01-02" class="internal"><span class="title"><span class="process-math">\(u\)</span>-substitution</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="calculus-review.html#r-01-03" class="internal"><span class="title">Integration by parts</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="calculus-review.html#breakdown-of-formula" class="internal"><span class="title">Breaking Down the Integration by Parts Formula</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="calculus-review.html#integration-by-parts-example" class="internal"><span class="title">Example: Applying Integration by Parts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="calculus-review.html#analogy-for-laplace" class="internal"><span class="title">Laplace Transform and Integration by Parts: An Analogy</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review.html#r-01-13" class="internal"><span class="title">Improper Integrals</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="resources.html" class="internal"><span class="codenumber">D</span> <span class="title">Resources</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="quick-references.html" class="internal"><span class="title">Quick References</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-basics" class="internal"><span class="title">Basics</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-basics-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-solns" class="internal"><span class="title">Solutions to Differential Equations</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-solns-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-sov" class="internal"><span class="title">Separation of Variables</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-sov-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-if" class="internal"><span class="title">Integrating Factor</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-if-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-qm" class="internal"><span class="title">Qualitative Methods</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-qm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-nm" class="internal"><span class="title">Numerical Methods</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-nm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-lhcc" class="internal"><span class="title">Linear Homogeneous Differential Equations with Constant Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-lhcc-3" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-uc" class="internal"><span class="title">Undermined Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-uc-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="quick-references.html#quick-ref-uc-2-7" class="internal"><span class="title">LNCC Equations</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-lt" class="internal"><span class="title">Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-lt-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-ltm" class="internal"><span class="title">Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-ltm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="quick-references.html#quick-ref-ltp" class="internal"><span class="title">Laplace Transforms</span></a></div></li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-references.html#quick-ref-linsys1" class="internal"><span class="title">First-Order Linear Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-references.html#quick-ref-linsys1-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="formula-sheets.html" class="internal"><span class="title">Formula Sheets</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-6.html" class="internal"><span class="codenumber">E</span> <span class="title">Selected Hints</span></a></div></li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-7.html" class="internal"><span class="codenumber">F</span> <span class="title">Selected Solutions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="backmatter-8.html" class="internal"><span class="codenumber">G</span> <span class="title">List of Symbols</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-9.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-10.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="solving-high-order-lhccs"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber"></span><span class="space"> </span><span class="title">Solving High-Order LHCC Equations</span>
+</h2>
+<section class="introduction" id="solving-high-order-lhccs-2"><div class="para" id="solving-high-order-lhccs-2-1">As the previous section demonstrated, constructing the general solution of a LHCC equation is fairly straightforward given the roots of the characteristic equation. However, solving <em class="emphasis">high-degree polynomial equations</em> can be quite challenging. While there are strategies to tackle this by hand, sometimes computational tools are necessary to obtain the solutions. Below, we will outline some common approaches<div class="autopermalink" data-description="Paragraph"><a href="#solving-high-order-lhccs-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="paragraphs" id="factoring"><h3 class="heading"><span class="title">Factoring.</span></h3>
+<div class="para" id="factoring-2">Some high-degree characteristic polynomials can be factored by hand using classic algebraic techniques. Factoring is the fastest way to solve these problems when it works. We’ll start by reviewing common methods of factoring and apply them to characteristic equations that appear in LHCC differential equations.<div class="autopermalink" data-description="Paragraph"><a href="#factoring-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="factoring-3">Here are a few algebraic strategies you may find helpful:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="assemblage assemblage-like" id="factoring-technique0"><h4 class="heading"><span class="title">🧮 Factoring Techniques.</span></h4>
+<div class="para logical" id="factoring-technique0-2">
+<dl class="description-list">
+<dt id="factoring-technique0-2-1-1">
+<span class="process-math">\(\textbf{Common Factor}\)</span><div class="autopermalink" data-description="Item: \textbf{Common Factor}"><a href="#factoring-technique0-2-1-1" title="Copy heading and permalink for Item: \textbf{Common Factor}" aria-label="Copy heading and permalink for Item: \textbf{Common Factor}">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="factoring-technique0-2-1-1-2">
+<div class="displaymath process-math" id="factoring-technique0-2-1-1-2-1">
+\begin{gather*}
+ab + ac + ad = a(b+c+d)	
+\end{gather*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="factoring-technique0-2-1-2">
+<span class="process-math">\(\textbf{Grouping}\)</span><div class="autopermalink" data-description="Item: \textbf{Grouping}"><a href="#factoring-technique0-2-1-2" title="Copy heading and permalink for Item: \textbf{Grouping}" aria-label="Copy heading and permalink for Item: \textbf{Grouping}">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="factoring-technique0-2-1-2-2">
+<div class="displaymath process-math" id="factoring-technique0-2-1-2-2-1">
+\begin{align*}
+ab + ac + bd + cd	\amp = a(b+c) + d(b+c)	\\
+\amp = (a+d)(b+c)		
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="factoring-technique0-2-1-3">
+<span class="process-math">\(\textbf{Difference of Squares}\)</span><div class="autopermalink" data-description="Item: \textbf{Difference of Squares}"><a href="#factoring-technique0-2-1-3" title="Copy heading and permalink for Item: \textbf{Difference of Squares}" aria-label="Copy heading and permalink for Item: \textbf{Difference of Squares}">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="factoring-technique0-2-1-3-2">
+<div class="displaymath process-math">
+\begin{equation*}
+a^2 - b^2 = (a+b)(a-b) 
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="factoring-technique0-2-1-4">
+<span class="process-math">\(\textbf{Difference of Cubes}\)</span><div class="autopermalink" data-description="Item: \textbf{Difference of Cubes}"><a href="#factoring-technique0-2-1-4" title="Copy heading and permalink for Item: \textbf{Difference of Cubes}" aria-label="Copy heading and permalink for Item: \textbf{Difference of Cubes}">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="factoring-technique0-2-1-4-2">
+<div class="displaymath process-math">
+\begin{equation*}
+a^3 - b^3 = (a-b)(a^2+ab+b^2)
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2-1-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="factoring-technique0-2-1-5">
+<span class="process-math">\(\textbf{Sum of Cubes}\)</span><div class="autopermalink" data-description="Item: \textbf{Sum of Cubes}"><a href="#factoring-technique0-2-1-5" title="Copy heading and permalink for Item: \textbf{Sum of Cubes}" aria-label="Copy heading and permalink for Item: \textbf{Sum of Cubes}">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="factoring-technique0-2-1-5-2">
+<div class="displaymath process-math">
+\begin{equation*}
+a^3 + b^3 = (a+b)(a^2-ab+b^2)
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2-1-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+</dl>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-technique0-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Assemblage: 🧮 Factoring Techniques"><a href="#factoring-technique0" title="Copy heading and permalink for Assemblage: 🧮 Factoring Techniques" aria-label="Copy heading and permalink for Assemblage: 🧮 Factoring Techniques">🔗</a></div></article><div class="para" id="factoring-5">Let’s now apply these tools to solve higher-order LHCC equations by factoring their characteristic equations.<div class="autopermalink" data-description="Paragraph"><a href="#factoring-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="factoring-6"><h4 class="heading">
+<span class="type">🌌 Example</span><span class="space"> </span><span class="codenumber">128</span><span class="period">.</span><span class="space"> </span><span class="title">Solving LHCC Equations by Factoring the Characteristic Equation.</span>
+</h4>
+<div class="para" id="factoring-6-2-1">These examples show how to find the general solution to higher-order LHCC equations using a variety of factoring techniques to find the roots of the characteristic equation.<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-2-1">1. <span class="process-math">\(\ 4 y'' - 9 = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-2-2">
+<details id="factoring-6-2-2-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="factoring-6-2-2-2-1-1">The characteristic equation is:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+4 r^2 - 9 = 0
+\end{equation*}
+</div>
+<div class="para" id="factoring-6-2-2-2-1-3">Applying the difference of squares:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-2-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-2-2-1-4">
+\begin{align*}
+\amp (2 r + 3)(2 r - 3) = 0  \\
+\amp r = -\sfrac{3}{2},\ \sfrac{3}{2}  \\
+\amp \Rightarrow\quad y = c_1 e^{-\frac{3}{2}x} + c_2 e^{\frac{3}{2}x}  
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-2-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-3-1">2. <span class="process-math">\(\ y^{(5)} - 4 y''' = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-3-2">
+<details id="factoring-6-2-3-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="factoring-6-2-3-2-1-1">The characteristic equation is:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-3-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r^5 - 4 r^3 = 0
+\end{equation*}
+</div>
+<div class="para" id="factoring-6-2-3-2-1-3">Factoring out the common term <span class="process-math">\(r^3\text{,}\)</span> followed by a differences of squares gives:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-3-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-3-2-1-4">
+\begin{align*}
+r^3(r^2 - 4)			\amp = 0\\
+r^3(r + 2)(r - 2)	\amp = 0
+\end{align*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = 0\ (\text{triple}),\ -2,\ 2
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Rightarrow\quad y = c_1 + c_2 x + c_3 x^2 + c_4 e^{-2x} + c_5 e^{2x}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-3-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-4-1">3. <span class="process-math">\(\ y^{(4)} - 25 = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-4-2">
+<details id="factoring-6-2-4-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="factoring-6-2-4-2-1-1">
+<div class="displaymath process-math">
+\begin{equation*}
+r^4 - 25 = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-4-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="factoring-6-2-4-2-1-2">This factors as a difference of squares twice:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-4-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-4-2-1-3">
+\begin{align*}
+(r^2 + 5)(r^2 - 5) \amp = 0\\
+(r^2 + 5)(r + \sqrt{5})(r - \sqrt{5}) \amp = 0
+\end{align*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = \pm i\sqrt{5},\ -\sqrt{5},\ \sqrt{5}
+\end{equation*}
+</div>
+<div class="displaymath process-math" id="factoring-6-2-4-2-1-5">
+\begin{align*}
+\Rightarrow\quad y = c_1 \cos(\sqrt{5}x) \amp + c_2 \sin(\sqrt{5}x) \\
+\amp + c_3 e^{\sqrt{5}x} + c_4 e^{-\sqrt{5}x}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-4-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-5-1">4. <span class="process-math">\(\ y^{(4)} - 5y'' + 4 = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-5-2">
+<details id="factoring-6-2-5-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="factoring-6-2-5-2-1-1">The characteristic equation is:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="factoring-6-2-5-2-1-2">
+<div class="displaymath process-math">
+\begin{equation*}
+r^4 - 5r^2 + 4 = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="factoring-6-2-5-2-1-3">Use the substitution, <span class="process-math">\(u = r^2\text{,}\)</span> to reveal a quadratic in disguise:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-5-2-1-4">
+\begin{align*}
+u^2 - 5u + 4		\amp = 0\\
+(u - 4)(u - 1)	\amp = 0
+\end{align*}
+</div>
+<div class="para" id="factoring-6-2-5-2-1-5">Reverse the substitution, <span class="process-math">\(u = r^2\text{,}\)</span> back into <span class="process-math">\(r\text{:}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-2-1-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-5-2-1-6">
+\begin{align*}
+(r^2 - 4)(r^2 - 1)			\amp = 0\\
+(r - 2)(r + 2)(r - 1)(r + 1)	\amp = 0
+\end{align*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = -2,\ 2,\ -1,\ 1
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Rightarrow\quad y = c_1 e^{x} + c_2 e^{-x} + c_3 e^{2x} + c_4 e^{-2x}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-5-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-6-1">5. <span class="process-math">\(\ y^{(4)} - 6y''' + 9y'' = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-6-2">
+<details id="factoring-6-2-6-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="factoring-6-2-6-2-1-1">The characteristic equation is:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-6-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="factoring-6-2-6-2-1-2">
+<div class="displaymath process-math">
+\begin{equation*}
+r^4 - 6r^3 + 9r^2 = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-6-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="factoring-6-2-6-2-1-3">Take out <span class="process-math">\(r^2\)</span> and use standard factoring:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-6-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-6-2-1-4">
+\begin{align*}
+r^4 - 6r^3 + 9r^2	\amp = 0\\
+r^2(r^2 - 6r + 9)	\amp = 0\\
+r^2(r - 3)^2			\amp = 0
+\end{align*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = 0\ (\text{double}),\ 3\ (\text{double})
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Rightarrow\quad y = c_1 + c_2 x + c_3 e^{3x} + c_4 x e^{3x}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-6-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div> <div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:37%;"><div class="para" id="factoring-6-2-7-1">6. <span class="process-math">\(\ y^{(5)} - 4 y''' + 8 y'' + 48 = 0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel top" style="width:63%;"><div class="para" id="factoring-6-2-7-2">
+<details id="factoring-6-2-7-2-1" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="factoring-6-2-7-2-1-1">The characteristic equation is:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-7-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="factoring-6-2-7-2-1-2">
+<div class="displaymath process-math">
+\begin{equation*}
+r^5 - 4 r^3 + 8 r^2 + 48 = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-7-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="factoring-6-2-7-2-1-3">We can factor this by grouping and recognizing a sum of cubes:<div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-7-2-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="factoring-6-2-7-2-1-4">
+\begin{align*}
+r^5 - 4 r^3 + 8 r^2 + 48 \amp = 0\\
+r^3(r^2 - 4) + 8(r^2 - 4) \amp = 0\\
+(r^3 + 8)(r^2 - 4) \amp = 0\\
+(r + 2)(r^2 - 2r + 4)(r + 2)(r - 2) \amp = 0
+\end{align*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = -2\ (\text{double}),\ 2,\ 1 \pm i\sqrt{3}
+\end{equation*}
+</div>
+<div class="displaymath process-math" id="factoring-6-2-7-2-1-6">
+\begin{align*}
+\Rightarrow\quad y = c_1 e^{-2x} 	\amp + c_2 x e^{-2x} + c_3 e^{2x} \\
++	\amp\ e^{x}(c_4 \cos(\sqrt{3}x) + c_5 \sin(\sqrt{3}x))
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#factoring-6-2-7-2-1" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#factoring-6-2-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div>
+<div class="autopermalink" data-description="🌌 Example 128: Solving LHCC Equations by Factoring the Characteristic Equation"><a href="#factoring-6" title="Copy heading and permalink for 🌌 Example 128: Solving LHCC Equations by Factoring the Characteristic Equation" aria-label="Copy heading and permalink for 🌌 Example 128: Solving LHCC Equations by Factoring the Characteristic Equation">🔗</a></div></article><div class="autopermalink" data-description="Paragraphs: Factoring"><a href="#factoring" title="Copy heading and permalink for Paragraphs: Factoring" aria-label="Copy heading and permalink for Paragraphs: Factoring">🔗</a></div></section><section class="paragraphs" id="rational-root-theorem"><h3 class="heading"><span class="title">Rational Root Theorem.</span></h3>
+<div class="para" id="rational-root-theorem-2">When the characteristic polynomial is hard to factor by inspection, the <em class="emphasis">Rational Root Theorem</em> provides a systematic way to search for rational (fractional) solutions. Once you find a root, you can use polynomial division to reduce the polynomial to a lower degree. From there, you can repeat the process or apply other factoring techniques.<div class="autopermalink" data-description="Paragraph"><a href="#rational-root-theorem-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="rational-root-theorem-3">While this method is reliable, it can be tedious by hand and prone to errors. That’s why technology often comes in handy.<div class="autopermalink" data-description="Paragraph"><a href="#rational-root-theorem-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Rational Root Theorem"><a href="#rational-root-theorem" title="Copy heading and permalink for Paragraphs: Rational Root Theorem" aria-label="Copy heading and permalink for Paragraphs: Rational Root Theorem">🔗</a></div></section><section class="paragraphs" id="technology-factoring"><h3 class="heading"><span class="title">Using Technology: Factoring High-Degree Polynomials.</span></h3>
+<div class="para" id="technology-factoring-2">Not all characteristic polynomials can be factored easily — and some can’t be factored at all using simple algebra. In these cases, it’s perfectly reasonable to turn to technology.<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-factoring-3">Computer algebra systems (CAS), online factoring tools, and symbolic solvers can quickly find the roots of even complicated polynomials. Once you have the roots, you can build the general solution using the framework you learned earlier.<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-factoring-4">For example, suppose you want to solve the following LHCC equation:<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+2 y^{(4)} + 9 y''' + y'' - 21 y' + 9 y = 0\text{.}
+\end{equation*}
+</div>
+<div class="para logical" id="technology-factoring-6">
+<div class="para">The first step is to write down the characteristic equation:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+2r^4 + 9r^3 + r^2 - 21r + 9 = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-factoring-7">This is challenging to solve by hand, but we can use the tool below to factor it.<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-factoring-8">Type <code class="code-inline tex2jax_ignore">2*r^4 + 9*r^3 + r^2 - 21*r + 9</code> into the text box and press enter.<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="factoring-tool" class="corollary theorem-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">🎮 Interactive</span><span class="space"> </span><span class="codenumber">129</span><span class="period">.</span><span class="space"> </span><span class="title">Polynomial Factoring Calculator Directions.</span>
+</h4></summary><article class="corollary theorem-like knowl__content"><div class="introduction" id="factoring-tool-2"><div class="para logical" id="factoring-tool-2-1">
+<div class="para">Directions:</div>
+<ul class="disc" id="factoring-tool-2-1-1">
+<li id="factoring-tool-2-1-1-1">
+<div class="para" id="p-derived-factoring-tool-2-1-1-1">Enter a polynomial in the box below.</div>
+<div class="autopermalink" data-description="Item"><a href="#factoring-tool-2-1-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="factoring-tool-2-1-1-2">
+<div class="para" id="p-derived-factoring-tool-2-1-1-2">Use <code class="code-inline tex2jax_ignore">r</code> for the variable, <code class="code-inline tex2jax_ignore">*</code> for multiplication, and <code class="code-inline tex2jax_ignore">^</code> for exponents.</div>
+<div class="autopermalink" data-description="Item"><a href="#factoring-tool-2-1-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="factoring-tool-2-1-1-3">
+<div class="para" id="p-derived-factoring-tool-2-1-1-3">Press enter to see the factored form and approximate values.</div>
+<div class="autopermalink" data-description="Item"><a href="#factoring-tool-2-1-1-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="factoring-tool-2-1-1-4">
+<div class="para" id="p-derived-factoring-tool-2-1-1-4">Note: It only factors polynomials with fractional (rational) roots.</div>
+<div class="autopermalink" data-description="Item"><a href="#factoring-tool-2-1-1-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#factoring-tool-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="autopermalink" data-description="🎮 Interactive 129: Polynomial Factoring Calculator Directions"><a href="#factoring-tool" title="Copy heading and permalink for 🎮 Interactive 129: Polynomial Factoring Calculator Directions" aria-label="Copy heading and permalink for 🎮 Interactive 129: Polynomial Factoring Calculator Directions">🔗</a></div></article></details><iframe id="poly-factor" width="600" height="200" src="poly-factor-if.html"></iframe><div class="para logical" id="technology-factoring-11">
+<div class="para">After entering the polynomial, you should see the factored form:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+2\left(r - 1\right)\left(r - \frac12\right)\left(r + 3\right)^2
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="technology-factoring-12">
+<div class="para">From here the roots are easily identified as:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r = 1,\quad r = -3\ (\text{double root}),\quad r = \frac{1}{2}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-factoring-13">Therefore, the general solution is:<div class="autopermalink" data-description="Paragraph"><a href="#technology-factoring-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = c_1 e^{x} + c_2 e^{-3x} + c_3 x e^{-3x} + c_4 e^{\frac{1}{2}x}
+\end{equation*}
+</div>
+<article class="task exercise-like" id="chkpt-solving-high-order-lhccs-1"><h4 class="heading">
+<span class="codenumber">(a)</span><span class="space"> </span><span class="title">📖❓ Solving a High-Order LHCC Equation With a Factoring Tool.</span>
+</h4>
+<div class="introduction" id="chkpt-solving-high-order-lhccs-1-2"><div class="para logical" id="chkpt-solving-high-order-lhccs-1-2-1">
+<div class="para">Find the general solution to the LHCC equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y''' - 6y'' + 11y' - 6y = 0 
+\end{equation*}
+</div>
+<div class="para">by using the factoring tool to find the characteristic roots.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#chkpt-solving-high-order-lhccs-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="para" id="chkpt-solving-high-order-lhccs-1-3">
+<div id="hgh" class="exercise-wrapper" data-domain="https://webwork-ptx.aimath.org" data-seed="9" data-localize-correct="Correct" data-localize-incorrect="Incorrect" data-localize-blank="Blank" data-localize-submit="Submit" data-localize-check-responses="Check Responses" data-localize-reveal="Reveal" data-localize-randomize="Randomize" data-localize-reset="Reset" data-localize-hint="Hint" data-localize-solution="Solution" data-origin="generated" data-problemSource="RE9DVU1FTlQoKTsKbG9hZE1hY3JvcygiUEdzdGFuZGFyZC5wbCIsIlBHTUwucGwiLCJBbnN3ZXJGb3JtYXRIZWxwLnBsIiwicGFyc2VySW1wbGljaXRFcXVhdGlvbi5wbCIsImNvbnRleHRGb3JtLnBsIiwiUEdjb3Vyc2UucGwiLCk7VEVYVChiZWdpbnByb2JsZW0oKSk7CkNvbnRleHQoIkltcGxpY2l0RXF1YXRpb24iKTsKQ29udGV4dCgpLT52YXJpYWJsZXMtPntuYW1lUGF0dGVybn0gPSBxci9bYS16XVthLXowLTlfXSonKi9pOwpDb250ZXh0KCktPnZhcmlhYmxlcy0+YWRkKCB0PT4nUmVhbCcsIGMxPT4nUmVhbCcsIGMyPT4nUmVhbCcsIGMzPT4nUmVhbCcpOwoKJHJvb3RzID0gTGlzdCgiMSwgMiwgMyIpOwokZ2VuU29sbiA9IEZvcm11bGEoImMxKmVeKHQpICsgYzIqZV4oMip0KSArIGMzKmVeKDMqdCkiKS0+cmVkdWNlKCk7CgpCRUdJTl9QR01MCkNoYXJhY3RlcmlzdGljIFJvb3RzOiBbYHIgPSBgXSBbX117JHJvb3RzfXsyNX0KCkdlbmVyYWwgU29sdXRpb246IFtgeSh0KSA9IGBdIFtfXXskZ2VuU29sbn17MjV9CgpfVXNlIFt8YzF8XSosIFt8YzJ8XSosIFt8YzN8XSogYXMgdGhlIGFyYml0cmFyeSBjb25zdGFudHMgb2YgaW50ZWdyYXRpb24uXwoKCkVORF9QR01MCgpFTkRET0NVTUVOVCgpOw==" data-courseID="anonymous" data-userID="anonymous" data-coursePassword="anonymous" aria-live="polite">
+<div class="problem-buttons"><button class="webwork-button" onclick="handleWW('hgh')">Activate</button></div>
+<div class="problem-contents">
+<div class="para" id="extracted-hgh-1-1-1">Characteristic Roots: <span class="process-math">\(r =\)</span> <span class="fillin underline" role="img" aria-label="25-character blank" style="width: 11.3636363636364em;"></span><div class="autopermalink" data-description="Paragraph"><a href="#extracted-hgh-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="extracted-hgh-1-1-2">General Solution: <span class="process-math">\(y(t) =\)</span> <span class="fillin underline" role="img" aria-label="25-character blank" style="width: 11.3636363636364em;"></span><div class="autopermalink" data-description="Paragraph"><a href="#extracted-hgh-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="extracted-hgh-1-1-3">
+<em class="emphasis">Use <code class="code-inline tex2jax_ignore">c1</code>, <code class="code-inline tex2jax_ignore">c2</code>, <code class="code-inline tex2jax_ignore">c3</code> as the arbitrary constants of integration.</em><div class="autopermalink" data-description="Paragraph"><a href="#extracted-hgh-1-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+</div> <details id="chkpt-solving-high-order-lhccs-1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="chkpt-solving-high-order-lhccs-1-3-2-1">
+<div class="para">First, write down the characteristic equation:</div>
+<div class="displaymath process-math" id="chkpt-solving-high-order-lhccs-1-3-2-1-1">
+\begin{gather*}
+r^3 - 6r^2 + 11r - 6 = 0 \text{.}
+\end{gather*}
+</div>
+<div class="para">Plugging this into to the factoring tool shows that it factors as <span class="process-math">\((r-3)(r-2)(r-1) \text{.}\)</span>	Solving for <span class="process-math">\(r\text{,}\)</span> we get</div>
+<div class="displaymath process-math" id="chkpt-solving-high-order-lhccs-1-3-2-1-4">
+\begin{gather*}
+r = 1, \quad r = 2, \quad r = 3 \text{.}
+\end{gather*}
+</div>
+<div class="para">Therefore, the general solution is:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} \text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#chkpt-solving-high-order-lhccs-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1"><a href="#chkpt-solving-high-order-lhccs-1-3-2" title="Copy heading and permalink for Solution 1" aria-label="Copy heading and permalink for Solution 1">🔗</a></div>
+</div></details><div class="autopermalink" data-description="Paragraph"><a href="#chkpt-solving-high-order-lhccs-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Task a: 📖❓ Solving a High-Order LHCC Equation With a Factoring Tool"><a href="#chkpt-solving-high-order-lhccs-1" title="Copy heading and permalink for Task a: 📖❓ Solving a High-Order LHCC Equation With a Factoring Tool" aria-label="Copy heading and permalink for Task a: 📖❓ Solving a High-Order LHCC Equation With a Factoring Tool">🔗</a></div></article><div class="autopermalink" data-description="Paragraphs: Using Technology: Factoring High-Degree Polynomials"><a href="#technology-factoring" title="Copy heading and permalink for Paragraphs: Using Technology: Factoring High-Degree Polynomials" aria-label="Copy heading and permalink for Paragraphs: Using Technology: Factoring High-Degree Polynomials">🔗</a></div></section><section class="paragraphs" id="technology-approximating"><h3 class="heading"><span class="title">Using Technology: Approximating Roots.</span></h3>
+<div class="para" id="technology-approximating-2">Some characteristic equations are too messy to factor, even with software. When this happens, a numerical root finder can provide decimal approximations of the roots, allowing us to write down the structure of the general solution.<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="technology-approximating-3">
+<div class="para">Consider the fifth-order LHCC equation:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y^{(5)} - 4y''' + 3y'' - y = 0
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="technology-approximating-4">
+<div class="para">The characteristic equation is:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r^5 - 4r^3 + 3r^2 - 1 = 0
+\end{equation*}
+</div>
+<div class="para">This polynomial has no obvious factoring pattern, and standard techniques fail. Fortunately, numerical approximation tools can help.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="technology-approximating-5">Try entering <code class="code-inline tex2jax_ignore">r^5 - 4*r^3 + 3*r^2 - 1</code> into the same factoring tool above. You should get the following approximations for three real roots:<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r_1 \approx -2.29, \quad r_2 \approx -0.46, \quad r_3 \approx 1.52
+\end{equation*}
+</div>
+<div class="para" id="technology-approximating-7">and the complex pair:<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r_4 \approx 0.61 + 0.5i, \quad r_5 \approx 0.61 - 0.5i
+\end{equation*}
+</div>
+<div class="para" id="technology-approximating-9">using the standard root-to-solution rules, the general solution is:<div class="autopermalink" data-description="Paragraph"><a href="#technology-approximating-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = c_1 e^{-2.29x} + c_2 e^{-0.46x} + c_3 e^{1.52x} + e^{0.61x} \left(c_4 \cos(0.5x) + c_5 \sin(0.5x)\right)
+\end{equation*}
+</div>
+<article class="task exercise-like" id="rq-solving-high-order-lhccs-5"><h4 class="heading">
+<span class="codenumber">(a)</span><span class="space"> </span><span class="title">📖❓ Decimal Roots in the General Solution.</span>
+</h4>
+<div class="ptx-runestone-container"><div class="runestone multiplechoice_section">
+<div class="exercise-statement">
+<div class="para logical" id="rq-solving-high-order-lhccs-5-2-1">
+<div class="para">Suppose you find the characteristic roots are approximately</div>
+<div class="displaymath process-math">
+\begin{equation*}
+r \approx -2.7,\quad 0.8,\quad 0.8 + 2i,\quad 0.8 - 2i\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rq-solving-high-order-lhccs-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="rq-solving-high-order-lhccs-5-2-2">Which of the following best describes the general solution?<div class="autopermalink" data-description="Paragraph"><a href="#rq-solving-high-order-lhccs-5-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</div>
+<ul data-component="multiplechoice" class="exercise-interactives" id="rs-rq-solving-high-order-lhccs-5" data-multipleanswers="false" data-random="">
+<li data-component="answer" id="rs-rq-solving-high-order-lhccs-5_opt_a" data-correct=""><span class="process-math">\(\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + e^{0.8x}(c_3 \cos(2x) + c_4 \sin(2x))\)</span></li>
+<li data-component="feedback" id="rs-rq-solving-high-order-lhccs-5_opt_a">Correct! The real root gives a standalone exponential, and the complex pair contributes an oscillatory term with the same <span class="process-math">\(\alpha\text{.}\)</span>
+</li>
+<li data-component="answer" id="rs-rq-solving-high-order-lhccs-5_opt_b"><span class="process-math">\(\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 \cos(2x) + c_4 \sin(2x)\)</span></li>
+<li data-component="feedback" id="rs-rq-solving-high-order-lhccs-5_opt_b">Incorrect. The sine and cosine must be multiplied by <span class="process-math">\(e^{0.8x}\text{.}\)</span>
+</li>
+<li data-component="answer" id="rs-rq-solving-high-order-lhccs-5_opt_c"><span class="process-math">\(\quad y = c_1 e^{-2.7x} + c_2 x e^{0.8x} + c_3 x^2 e^{0.8x}\)</span></li>
+<li data-component="feedback" id="rs-rq-solving-high-order-lhccs-5_opt_c">Incorrect. This would be appropriate if <span class="process-math">\(r = 0.8\)</span> were a triple root.</li>
+<li data-component="answer" id="rs-rq-solving-high-order-lhccs-5_opt_d"><span class="process-math">\(\quad y = c_1 e^{-2.7x} + c_2 e^{0.8x} + c_3 e^{-0.8x} + c_4 e^{2ix}\)</span></li>
+<li data-component="feedback" id="rs-rq-solving-high-order-lhccs-5_opt_d">This mixes formats and includes a non-real exponential.</li>
+</ul>
+</div></div>
+<div class="autopermalink" data-description="Task a: 📖❓ Decimal Roots in the General Solution"><a href="#rq-solving-high-order-lhccs-5" title="Copy heading and permalink for Task a: 📖❓ Decimal Roots in the General Solution" aria-label="Copy heading and permalink for Task a: 📖❓ Decimal Roots in the General Solution">🔗</a></div></article><div class="autopermalink" data-description="Paragraphs: Using Technology: Approximating Roots"><a href="#technology-approximating" title="Copy heading and permalink for Paragraphs: Using Technology: Approximating Roots" aria-label="Copy heading and permalink for Paragraphs: Using Technology: Approximating Roots">🔗</a></div></section><div class="para" id="solving-high-order-lhccs-7">Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.<div class="autopermalink" data-description="Paragraph"><a href="#solving-high-order-lhccs-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="objectives goal-like" id="solving-high-order-lhccs-8"><h3 class="heading"><span class="type">🗝️ Key Takeaways...</span></h3>
+<ul class="square" id="solving-high-order-lhccs-8-1">
+<li id="solving-high-order-lhccs-8-1-1">
+<div class="para" id="p-derived-solving-high-order-lhccs-8-1-1">If the characteristic polynomial factors easily, use algebraic techniques like grouping, factoring by common terms, or recognizing patterns such as difference of squares or cubes.</div>
+<div class="autopermalink" data-description="Objective"><a href="#solving-high-order-lhccs-8-1-1" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="solving-high-order-lhccs-8-1-2">
+<div class="para" id="p-derived-solving-high-order-lhccs-8-1-2">When factoring is hard or impossible by hand, use a factoring tool or numerical solver to find the roots.</div>
+<div class="autopermalink" data-description="Objective"><a href="#solving-high-order-lhccs-8-1-2" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+<li id="solving-high-order-lhccs-8-1-3">
+<div class="para" id="p-derived-solving-high-order-lhccs-8-1-3">Once the roots are known, constructing the full general solution is mechanical and follows a predictable structure.</div>
+<div class="autopermalink" data-description="Objective"><a href="#solving-high-order-lhccs-8-1-3" title="Copy heading and permalink for Objective" aria-label="Copy heading and permalink for Objective">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="🗝️ Key Takeaways..."><a href="#solving-high-order-lhccs-8" title="Copy heading and permalink for 🗝️ Key Takeaways..." aria-label="Copy heading and permalink for 🗝️ Key Takeaways...">🔗</a></div></article><div class="autopermalink" data-description="Section: Solving High-Order LHCC Equations"><a href="#solving-high-order-lhccs" title="Copy heading and permalink for Section: Solving High-Order LHCC Equations" aria-label="Copy heading and permalink for Section: Solving High-Order LHCC Equations">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="higher-order-lhcc.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="homogeneous-eqns-8.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:coxgeoff@vmi.edu" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
