@@ -1,6 +1,6 @@
 # Define variables for commands
 PRETEXT = pretext build
-POSTPROCESS_SCRIPT = python3 postprocessing/post-pretext-html-parser.py
+POSTPROCESS_SCRIPT = python3 postprocessing/postprocess_html.py postprocessing/replacements.json /output
 
 .PHONY: focus web clean
 
@@ -15,9 +15,9 @@ clean:
 # Focus build + post-processing
 focus:
 	$(PRETEXT) focus
-	$(POSTPROCESS_SCRIPT)
+	$(POSTPROCESS_SCRIPT)/focus/
 
 # Web build + post-processing
 web:
 	$(PRETEXT) web
-	$(POSTPROCESS_SCRIPT)
+	$(POSTPROCESS_SCRIPT)/web/
