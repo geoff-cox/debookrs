@@ -1,4 +1,4 @@
-// This file was automatically generated with PreTeXt 2.25.1.
+// This file was automatically generated with PreTeXt 2.17.1.
 // If you modify this file, PreTeXt will no longer automatically update it.
 //
 //////////////////////////////////////////////////////////////
@@ -13,14 +13,15 @@
 //
 ///////////////////////////////////////////////////////////////
 {
-  "image": "pretextbook/pretext-full:1.3", // uses latest image from https://hub.docker.com/r/PreTeXtBook/pretext-full/tags
-  // If you don't need sagemath, you can use a smaller base image.  Comment out the line above and uncomment the line below to use a smaller image.
-  // "image": "pretextbook/pretext:1.3",
-  "features": {"ghcr.io/devcontainers/features/github-cli": {}},
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {},
 
-  // The pretext-full image above includes pretext, prefigure, and enough parts of latex and sagemath for most cases.  Here we install additional dependencies.
+  // Comment or uncomment lines below if you don't or do need that feature.
   "postCreateCommand": {
+    // "install sagemath": "bash ./.devcontainer/installSage.sh",
     "install pandoc": "bash ./.devcontainer/installPandoc.sh",
+    "install latex": "bash ./.devcontainer/installLatex.sh",
+    "install pretext": "bash ./.devcontainer/installPretext.sh",
     "mark repo as safe": "git config --global --add safe.directory $(pwd)"
     },
 
@@ -56,29 +57,24 @@
     }
   },
 
-
+  
   // Configure tool-specific properties.
   "customizations": {
     "codespaces": {
-      "openFiles": ["README.md"]
+      "openFiles": ["source/main.ptx"]
     },
     "vscode": {
       "settings": {
         "editor.quickSuggestions": {
           "other": "off"
         },
-        "files.autoSave": "afterDelay",
-        "editor.snippetSuggestions": "bottom",
-        "xml.validation.enabled": true,
-        "redhat.telemetry.enabled": false,
+        "editor.snippetSuggestions": "top",
+        "xml.validation.enabled": false,
         "CodeChat.CodeChatServer.Command": "CodeChat_Server"
       },
       "extensions": [
         "oscarlevin.pretext-tools",
-        "CodeChat.codechat",
-        "streetsidesoftware.code-spell-checker",
-        "alpinebuster.vscode-latex-table-editor",
-        "mathematic.vscode-pdf"
+        "CodeChat.codechat"
       ]
     }
   }
