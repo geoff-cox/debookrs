@@ -1,0 +1,40 @@
+R = PolynomialRing(QQ, 'r')
+r = R.gen()
+
+@interact
+def factor_polynomial(ce = input_box(r^2 - 2*r - 8, label="Polynomial (in r):", type=str, width=40)):
+
+    try:
+        # Parse the polynomial
+        parsed = sage_eval(f"lambda r: {ce}", locals={'r': r})
+        poly = parsed(r)
+
+        # Display original polynomial
+        pretty_print(html(f"""
+        <div style='background-color:#eef; padding:0.5em; margin-top:1em;'>
+        <b>Polynomial:</b><br/> $ {latex(poly)} $
+        </div>
+        """))
+
+        # Display factored form
+        pretty_print(html(f"""
+        <div style='background-color:#efe; padding:0.5em; margin-top:1em;'>
+        <b>Factored:</b><br/> $ {latex(poly.factor())} $
+        </div>
+        """))
+
+        # Display approximate roots
+        approx_roots = poly.roots(ring=CC, multiplicities=False)
+        formatted_roots = ', '.join([str(root.n(digits=5)) for root in approx_roots])
+        pretty_print(html(f"""
+        <div style='background-color:#fee; padding:0.5em; margin-top:1em;'>
+        <b>Approximate Roots:</b><br/> {formatted_roots}
+        </div>
+        """))
+
+    except Exception as e:
+        pretty_print(html(f"""
+        <div style='color:red; background-color:#fdd; padding:0.5em;'>
+        Error: {str(e)}
+        </div>
+        """))

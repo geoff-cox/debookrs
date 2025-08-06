@@ -10,7 +10,7 @@
   Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
 -->
-<section label="solving-high-order-lhccs"><title>Solving High-Order LHCC Equations</title>
+<section label="solving-high-order-lhccs" xmlns:xi="http://www.w3.org/2001/XInclude" ><title>Solving High-Order LHCC Equations</title>
 
 	<introduction>
 		<p>
@@ -20,7 +20,7 @@
 
 	</introduction>
 
-	<paragraphs label="factoring">
+	<subsection label="factoring">
 		<title>Factoring</title>
 
 		<p>
@@ -204,9 +204,9 @@
 			</statement>
 		</example>
 
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="rational-root-theorem">
+	<subsection label="rational-root-theorem">
 		<title>Rational Root Theorem</title>
 		<p>
 			When the characteristic polynomial is hard to factor by inspection, the <em>Rational Root Theorem</em> provides a systematic way to search for rational (fractional) solutions. Once you find a root, you can use polynomial division to reduce the polynomial to a lower degree. From there, you can repeat the process or apply other factoring techniques.
@@ -215,9 +215,9 @@
 		<p>
 			While this method is reliable, it can be tedious by hand and prone to errors. That's why technology often comes in handy.
 		</p>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="technology-factoring">
+	<subsection label="technology-factoring">
 		<title>Using Technology: Factoring High-Degree Polynomials</title>
 		<p>
 			Not all characteristic polynomials can be factored easily — and some can't be factored at all using simple algebra. In these cases, it's perfectly reasonable to turn to technology.
@@ -267,46 +267,7 @@
 
 		<interactive xml:id="poly-factor" platform="sage" width="100%" aspect="3:1">
 			<slate surface="sage">
-			R = PolynomialRing(QQ, 'r')
-			r = R.gen()
-
-			@interact
-			def factor_polynomial(ce = input_box(r^2 - 2*r - 8, label="Polynomial (in r):", type=str, width=40)):
-
-				try:
-					# Parse the polynomial
-					parsed = sage_eval(f"lambda r: {ce}", locals={'r': r})
-					poly = parsed(r)
-
-					# Display original polynomial
-					pretty_print(html(f"""
-					<div style='background-color:#eef; padding:0.5em; margin-top:1em;'>
-					<b>Polynomial:</b><br/> $ {latex(poly)} $
-					</div>
-					"""))
-
-					# Display factored form
-					pretty_print(html(f"""
-					<div style='background-color:#efe; padding:0.5em; margin-top:1em;'>
-					<b>Factored:</b><br/> $ {latex(poly.factor())} $
-					</div>
-					"""))
-
-					# Display approximate roots
-					approx_roots = poly.roots(ring=CC, multiplicities=False)
-					formatted_roots = ', '.join([str(root.n(digits=5)) for root in approx_roots])
-					pretty_print(html(f"""
-					<div style='background-color:#fee; padding:0.5em; margin-top:1em;'>
-					<b>Approximate Roots:</b><br/> {formatted_roots}
-					</div>
-					"""))
-
-				except Exception as e:
-					pretty_print(html(f"""
-					<div style='color:red; background-color:#fdd; padding:0.5em;'>
-					Error: {str(e)}
-					</div>
-					"""))
+				<xi:include href="sage-factoring-tool.txt" parse="text" />
 			</slate>
 		</interactive>
 
@@ -332,7 +293,7 @@
 			y = c_1 e^{x} + c_2 e^{-3x} + c_3 x e^{-3x} + c_4 e^{\frac{1}{2}x}
 		</me>
 
-		<task label="chkpt-solving-high-order-lhccs-1">
+		<exercise label="chkpt-solving-high-order-lhccs-1">
 			<title><e component="emoji">📖❓</e>  Solving a High-Order LHCC Equation With a Factoring Tool</title>
 
 			<introduction>
@@ -382,10 +343,10 @@
 					</p>
 				</solution>
 			</p>
-		</task>
-	</paragraphs>
+		</exercise>
+	</subsection>
 
-	<paragraphs label="technology-approximating">
+	<subsection label="technology-approximating">
 		<title>Using Technology: Approximating Roots</title>
 		<p>
 			Some characteristic equations are too messy to factor, even with software. When this happens, a numerical root finder can provide decimal approximations of the roots, allowing us to write down the structure of the general solution.
@@ -430,7 +391,7 @@
 			y = c_1 e^{-2.29x} + c_2 e^{-0.46x} + c_3 e^{1.52x} + e^{0.61x} \left(c_4 \cos(0.5x) + c_5 \sin(0.5x)\right)
 		</me>
 
-		<task label="rq-solving-high-order-lhccs-5">
+		<exercise label="rq-solving-high-order-lhccs-5">
 			<title><e component="emoji">📖❓</e>  Decimal Roots in the General Solution</title>
 			<statement>
 				<p>
@@ -475,24 +436,28 @@
 				</feedback>
 				</choice>
 			</choices>
-		</task>
-	</paragraphs>
+		</exercise>
+	</subsection>
 
 	<p>
 		Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.
 	</p>
 
-	<objectives>
-		<ul marker="square">
-			<li>
-				If the characteristic polynomial factors easily, use algebraic techniques like grouping, factoring by common terms, or recognizing patterns such as difference of squares or cubes.
-			</li>
-			<li>
-				When factoring is hard or impossible by hand, use a factoring tool or numerical solver to find the roots.
-			</li>
-			<li>
-				Once the roots are known, constructing the full general solution is mechanical and follows a predictable structure.
-			</li>
-		</ul>
-	</objectives>
+	<!-- ================================================================ -->
+	<!-- WRAP-UP + READING QUESTIONS                                      -->
+	<!-- ================================================================ -->
+	<subsection label="solving-high-order-lhccs-wrap-up">
+		<title>📤 Wrap-Up</title>
+
+		<assemblage label="solving-high-order-lhccs-wrap-up-takeaways">
+			<p>
+				🗝️ <m>\textbf{Key Takeaways...}</m>
+				<ul marker="square">
+					<li>If the characteristic polynomial factors easily, use algebraic techniques like grouping, factoring by common terms, or recognizing patterns such as difference of squares or cubes.</li>
+					<li>When factoring is hard or impossible by hand, use a factoring tool or numerical solver to find the roots.</li>
+					<li>Once the roots are known, constructing the full general solution is mechanical and follows a predictable structure.</li>
+				</ul>
+			</p>
+		</assemblage>
+	</subsection>
 </section>
