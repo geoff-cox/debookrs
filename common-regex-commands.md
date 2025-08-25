@@ -36,71 +36,51 @@ Tags that need multiline `<p>` tags
  - $3: tag attributes
  - $4: tag content
 
-`^([ \s]*)<(tag)([\s\S]*?)>([\s\S]*?)</tag>\n`
-`$1<$2$3>\n$1\t<p>\n$1\t\t$4\n$1\t</p>\n$1</$2>\n`
+| RegEx Find                                     | RegEx Replace                                      |
+| ----------                                     | -------------                                      |
+| `^([ \s]*)<(tag)([\s\S]*?)>([\s\S]*?)</tag>\n` | `$1<$2$3>\n$1\t<p>\n$1\t\t$4\n$1\t</p>\n$1</$2>\n` |
+
 ----------------------------------------------------------------------------
 Single to Multiline Paragraphs
 
-`(\t+)<p>(.*)</p>?`
-`$1<p>\n$1\t$2\n$1</p>`
+| RegEx Find          | RegEx Replace           |
+| ----------          | -------------           |
+| `(\t+)<p>(.*)</p>?` | `$1<p>\n$1\t$2\n$1</p>` |
 ----------------------------------------------------------------------------
-Single Line Statements not beginning with `<statement>`
+Converting <foo> tags to single line
 
-`(\t*)(.*)<statement>(.*)</statement>?`
-`$1$2\n$1\t<statement>\n$1\t\t<p>\n$1\t\t\t$3\n$1\t\t</p>\n$1\t</statement>`
+| RegEx Find                       | RegEx Replace     |
+| ----------                       | -------------     |
+| `^(\s+)<foo>\n\s+(.*)\n.*</foo>` | `$1<foo>$2</foo>` |
 ----------------------------------------------------------------------------
-Removing Nested `<p>` tags (with newline and indention)
+Removing the content from foo tags
+Add additional tags with `(foo|bar)`
 
-(\t+)<parentTag>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</parentTag>
-$1<parentTag>\n$1\t$3\n$1</parentTag>
+| RegEx Find                                       | RegEx Replace            |
+| ----------                                       | -------------            |
+| `^([ \t]*)<(foo)([\s\S]*?)>([\s\S]*?)</(foo)>\n` | `$1<$2> omitted </$2>\n` |
 ----------------------------------------------------------------------------
-Removing Nested <p> tags (single line)
+Removing paragraphs from <foo> tags
 
-(\t+)<parentTag>\n(.*)<p>\n\t+(.*)\n(.*)</p>\n(.*)</parentTag>
-$1<parentTag>$3</parentTag>
-----------------------------------------------------------------------------
-Converting tags to single line
-
-^(\s+)<parentTag>\n\s+(.*)\n.*</parentTag>
-$1<parentTag>$2</parentTag>
-----------------------------------------------------------------------------
-Removing the content from foo and bar tags
-
-^([ \t]*)<(foo|bar)([\s\S]*?)>([\s\S]*?)</(foo|bar)>\n
-$1<$2> temporarily omitted </$2>\n
-----------------------------------------------------------------------------
-Removing paragraphs from <statement> tags
-
-^([ \t]*)<statement>\n\s*<p>\n*\s*([\s\S]*?)\n*\s*</p>\n\s*</statement>\n
-$1<statement>$2</statement>\n
-----------------------------------------------------------------------------
-Removing paragraphs from <feedback> tags
-
-^([ \t]*)<feedback>\n\s*<p>\n*\s*([\s\S]*?)\n*\s*</p>\n\s*</feedback>\n
-$1<feedback>$2</feedback>\n
+| RegEx Find                                                      | RegEx Replace       |
+| ----------                                                      | -------------       |
+| `^([ \t]*)<foo>\n\s*<p>\n*\s*([\s\S]*?)\n*\s*</p>\n\s*</foo>\n` | `$1<foo>$2</foo>\n` |
 ----------------------------------------------------------------------------
 Remove comments <!-- * -->
-
-<!--([\s\S]*?)-->\n
-----------------------------------------------------------------------------
-Convert **stuff** to <foo>stuff</foo>
-
-\*\*(.*?)\*\*
-<foo>$1</foo>
-----------------------------------------------------------------------------
-Replace **stuff**
-
-**stuff** ➜ <foo>stuff</foo>
-\*\*(.*?)\*\*
-<foo>$1</foo>
-
-----------------------------------------------------------------------------
-Titles to next line
-
-^(\s*)<(parentTag.*)><title> 
-$1<$2>\n$1\t<title> 
+Task                          | RegEx Find            | RegEx Replace   |
+----                          | ----------            | -------------   |
+Remove comments               | `<!--([\s\S]*?)-->\n` | `$1`            |
+`**foo**` ➜ `<bar>foo</bar>` | `\*\*(.*?)\*\*`       | `<bar>$1</bar>` |
 ----------------------------------------------------------------------------
 Swap premises and responses
 
-^([ \t]*)<premise>([\s\S]*?)</premise>\n\s*<response>([\s\S]*?)</response>
-$1<premise>$3</premise>\n$1<response>$2</response>
+| RegEx Find                                                                   | RegEx Replace                                        |
+| ----------                                                                   | -------------                                        |
+| `^([ \t]*)<premise>([\s\S]*?)</premise>\n\s*<response>([\s\S]*?)</response>` | `$1<premise>$3</premise>\n$1<response>$2</response>` |
+
+----------------------------------------------------------------------------
+Comment all imported files
+
+| RegEx Find                                                                   | RegEx Replace                                        |
+| ----------                                                                   | -------------                                        |
+| `^([ \t]*)<premise>([\s\S]*?)</premise>\n\s*<response>([\s\S]*?)</response>` | `$1<premise>$3</premise>\n$1<response>$2</response>` |
