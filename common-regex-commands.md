@@ -84,3 +84,9 @@ Comment all imported files
 | RegEx Find                                                                   | RegEx Replace                                        |
 | ----------                                                                   | -------------                                        |
 | `^([ \t]*)<premise>([\s\S]*?)</premise>\n\s*<response>([\s\S]*?)</response>` | `$1<premise>$3</premise>\n$1<response>$2</response>` |
+
+Adding Comments
+
+| RegEx Find                    | RegEx Replace                       |
+| ----------                    | -------------                       |
+| `<xi:include href="(.*?)" />` | `<!-- <xi:include href="$1" /> -->` |
