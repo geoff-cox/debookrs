@@ -55,7 +55,7 @@ class BoardObj {
 		const hPx = this.board.containerObj.clientHeight;
 		const pxPerUnitX = wPx / (this.xmax - this.xmin);
 		const pxPerUnitY = hPx / (this.ymax - this.ymin);
-		return pxPerUnitY / pxPerUnitX;
+		return pxPerUnitX === 0 ? 1 : pxPerUnitY / pxPerUnitX;
 	}
 
 	placeAxes() {
