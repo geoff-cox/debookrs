@@ -1,0 +1,341 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section xmlns:xi="http://www.w3.org/2001/XInclude" label="whats-a-de">
+	<title>What is a Differential Equation?</title>
+
+	<introduction>
+		<aside component="web"><title>🎧 Listen</title>
+			<video component="readings" source="audio/readings/c1/c1-1-connection-to-algebra.mp3" width="100%" />
+		</aside>
+		<p>
+			In this section, we'll explore what a differential equation is, starting with an analogy, and then moving to a formal definition.
+		</p>
+	</introduction>
+
+	<subsection label="connection-to-algebra">
+		<title>Connection to Algebra &amp; Calculus</title>
+
+		<p>
+			To learn something new, it helps to connect it to something you already know. So let's begin by linking differential equations to algebra.
+		</p>
+
+		<p>
+			Suppose you're asked to solve each of the following equations for <m>y</m>:
+			<me>
+				y + 2 = 11, \qquad y + 2t = 11, \qquad y^3 + 2t = 11.
+			</me>
+			The goal of algebra is to figure out what number or function goes in place of <m>y</m> to make both sides equal. Instead of guessing, you learned rules for isolating <m>y</m>. If we apply those rules, we get:
+			<md>
+				<mrow> y = 9, \qquad y = 11 - 2t, \qquad y^3 \amp = 11 - 2t </mrow>
+				<mrow> y \amp = \left(11 - 2t\right)^{1/3} </mrow>
+			</md>
+		</p>
+
+		<p>
+			Now suppose you're asked to solve a new equation:
+			<me>
+				y' + 2t = 11.
+			</me>
+			As before, we isolate <m>y'</m>, giving:
+			<me>
+				y' = 11 - 2t.
+			</me>
+			So what function has a derivative of <m>11 - 2t</m>? In other words, what goes in place of <m>y</m> to make this equation true?
+		</p>
+
+		<p>
+			From calculus, you might recognize this as an anti-derivative problem. So the solution is:
+			<me>
+			y = \int (11 - 2t)\, dt = 11t - t^2 + C.
+			</me>
+			Believe it or not, you just solved a differential equation using algebra and calculus! Most problems won't be quite that straightforward, but the goal is the same: find a function that fits in place of <m>y</m> and makes the equation true.
+		</p>
+
+		<exercise label="c1-1-cyu-1">
+			<title><e component="emoji">📖❓</e> Linking Differential Equations to Algebra &amp; Calculus</title>
+
+			<task label="c1-1-cyu-1-chkpt-1">
+				<title><e component="emoji">📖❓</e> Solving for an Unknown</title>
+				<statement>
+					<p>How are differential equations related to equations from algebra?</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							<p>You are solving an equation for an unknown.</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct! When you solve a differential equation, the unknown is a function rather than a number.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>You are only evaluating derivatives at a single point.</p>
+						</statement>
+						<feedback>
+							<p>
+								A differential equation is not about evaluating a derivative at a point, but about finding a function that satisfies an equation.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>You are checking whether a given function is differentiable.</p>
+						</statement>
+						<feedback>
+							<p>
+								Differentiability may matter, but the main goal is to determine the unknown function.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>You are simplifying an expression without solving for a variable.</p>
+						</statement>
+						<feedback>
+							<p>
+								Simplification alone is not enough; solving a differential equation means finding what function belongs in place of the unknown.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c1-1-cyu-1-chkpt-2">
+				<title><e component="emoji">📖❓</e> Role of Derivatives</title>
+				<statement>
+					<p>How are differential equations related to calculus?</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							<p>Differential equations are equations containing derivatives of the unknown function.</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct! Differential equations rely on derivatives, which are a central topic in calculus.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>Differential equations contain integrals.</p>
+						</statement>
+						<feedback>
+							<p>
+								While integrals may appear when solving them, differential equations are defined by the presence of derivatives, not integrals.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>Differential equations find derivates of a function.</p>
+						</statement>
+						<feedback>
+							<p>
+								Actually, differential equations involve finding the function itself, not just its derivatives.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>The limit of a differential equation is an algebraic equation.</p>
+						</statement>
+						<feedback>
+							<p>
+								Please reread this section.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+
+	</subsection>
+
+	<subsection label="definition">
+		<title>Definition of a Differential Equation</title>
+		<aside component="web"><title>🎧 Listen</title>
+			<video component="readings" source="audio/readings/c1/c1-1-definition.mp3" width="100%" />
+		</aside>
+
+		<p>
+			Essentially, a differential equation is any equation where the unknown has a derivative applied to it. Here's the formal definition.
+		</p>
+
+		<definition xml:id="def-diff-eq">
+			<title>Differential Equation</title>
+			<statement>
+				<p>
+					A <term>differential equation (DE)</term> is an equation that involves one or more derivatives of an unknown function.
+					If the function depends on a single variable, it's called an <term>ordinary differential equation (ODE)</term>.
+					If the function depends on more than one variable, it's called a <term>partial differential equation (PDE)</term>.
+				</p>
+			</statement>
+		</definition>
+
+		<aside component="web"><title>DE <m>\Rightarrow</m> ODE</title>
+			<p>
+				📌 Since this course only covers <em>ordinary differential equations</em>,	any time we say <em>differential equation</em> or <em>DE</em>, we mean <em>ODE</em>.
+			</p>
+		</aside>
+	
+		<p>
+			So, for an equation to qualify as a differential equation, it must include two things:
+			First, it needs a derivative—something like <m>f'</m> or <m>\frac{dy}{dx}</m>.
+			Second, it must have an equals sign.
+		</p>
+
+		<p>
+			That means all of the following are differential equations:
+			<me>
+				\frac{dy}{dx} + 1 = y, \qquad f^{\prime\prime} + x^2 + 3x = 19, \qquad e^t = \tan(y^\prime).
+			</me>
+			On the other hand, these are not differential equations—either because they don't contain a derivative, or because they don't include an equals sign:
+
+			<me>
+				\frac{d^2 y}{dx^2} + 2\frac{dy}{dx}, \qquad \sin y + e^x = 0
+			</me>
+		</p>
+
+		<exercise label="c1-1-cyu-2">
+			<title> 📖❓Differential Equation Definition</title>
+			<task label="c1-1-cyu-2-chkpt-1">
+				<title> 📖❓Not Required for a DE</title>
+				<statement>
+					<p>Which of the following is NOT required for an equation to be classified as a differential equation?</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>A <m>y</m>-variable</p></statement>
+						<feedback><p>Correct! A <m>y</m>-variable is not a requirement for a differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>An unknown function</p></statement>
+						<feedback><p>Incorrect. A differential equation does include an unknown function, which we are solving for.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>One or more derivatives of an unknown function</p></statement>
+						<feedback><p>Incorrect. The presence of at least one derivative is essential to define a differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>An equal sign, "="</p></statement>
+						<feedback><p>Incorrect. An equality sign is required for an equation to be classified as a differential equation.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+			<task label="c1-1-cyu-2-chkpt-2">
+				<title><e component="emoji">📖❓</e> Identifying the Differential Equation</title>
+				<statement><p>Which of the following equations is a differential equation.</p></statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p><m>\quad y'' + 1 = y</m></p></statement>
+						<feedback><p>Correct! This equation involves a derivative, making it a differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\quad x^2 + 3x = 19</m></p></statement>
+						<feedback><p>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\quad \sin y + e^x = 0</m></p></statement>
+						<feedback><p>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\quad y^2 + 5 = 0</m></p></statement>
+						<feedback><p>Incorrect. This equation does not contain any derivatives, so it is not a differential equation.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+
+	</subsection>
+
+	<subsection label="derivative-notation">
+		<title>Common Derivative Notations</title>
+
+		<p>
+			In this text, we'll use several common notations for derivatives. These include prime notation, like <m>y'</m> or <m>y''</m>; Leibniz notation, using <m>\frac{dy}{dx}</m>; and dot notation, which is typically reserved for derivatives with respect to time.
+		</p>
+
+		<aside>
+			<title>Notation</title>
+			<p>
+				<e component="emoji">📌</e> Be careful not to mistake <m>y^{(4)}</m> as <m>y</m> raised to the power of 4.
+			</p>
+			<p>
+				<e component="emoji">📌</e> Dot notation is normally reserved for derivatives with respect to time.
+			</p>
+		</aside>
+
+		<table>
+			<title>Common Derivative Notations</title>
+			<tabular halign="center">
+				<col right="minor"/>
+				<row>
+					<cell right="none"/><cell colspan="6"><m>\textbf{Derivative Order}</m></cell>
+				</row>
+				<row bottom="minor">
+					<cell><m>\textbf{Notation}</m></cell><cell><m>1</m>st</cell><cell><m>2</m>nd</cell><cell><m>3</m>rd</cell><cell><m>4</m>th</cell><cell/><cell><m>n</m>th</cell>
+				</row>
+				<row>
+					<cell>Prime</cell>
+					<cell><m>y'</m></cell>
+					<cell><m>y''</m></cell>
+					<cell><m>y'''</m></cell>
+					<cell><m>y^{(4)}</m></cell>
+					<cell><m>...</m></cell>
+					<cell><m>y^{(n)}</m></cell>
+				</row>
+				<row>
+					<cell>Leibniz</cell><cell><m>\dfrac{dy}{dx}</m></cell><cell><m>\dfrac{d^2y}{dx^2}</m></cell><cell><m>\dfrac{d^3y}{dx^3}</m></cell><cell><m>\dfrac{d^4y}{dx^4}</m></cell><cell><m>...</m></cell><cell><m>\dfrac{d^ny}{dx^n}</m></cell>
+				</row>
+				<row>
+					<cell>Dot</cell><cell><m>\dot{y}</m></cell><cell><m>\ddot{y}</m></cell><cell><m>\dddot{y}</m></cell><cell><m>\ddddot{y}</m></cell><cell><m>...</m></cell><cell><m>\text{---}</m></cell>
+				</row>
+			</tabular>
+		</table>
+
+		<exercise label="c1-1-cyu-3">
+			<title><e component="emoji">📖❓</e> Understanding Derivative Notation</title>
+			<statement><p>The expression <m>z^{(18)}</m> is the same as <m>z</m> to the power of 18.</p></statement>
+			<choices randomize="no">
+				<choice>
+					<statement><p> True </p></statement>
+					<feedback><p>Incorrect. Please read the note on derivative notation.</p></feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><p>False</p></statement>
+					<feedback><p>Correct!</p></feedback>
+				</choice>
+			</choices>
+		</exercise>
+
+	</subsection>
+
+	<outcomes label="whats-a-de-takeaways">
+			<ul marker="square">
+				<li>
+					<p>
+						A differential equation involves
+						<ul>
+							<li>an unknown function and at least one of its derivatives, and</li>
+							<li>an equal sign (to be considered an equation).</li>
+						</ul>
+					</p>
+				</li>
+				<li>Derivative notation varies by context, but generally falls into prime, Leibniz, or dot notation.</li>
+			</ul>
+	</outcomes>
+</section>
