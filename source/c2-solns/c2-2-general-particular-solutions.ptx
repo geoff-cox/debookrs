@@ -11,7 +11,7 @@
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
 -->
 <section label="general-particular-solutions">
-	<title>General &amp; Particular Solutions</title>
+	<title>General, Particular &amp; Family of Solutions</title>
 
 	<introduction>
 		<p>
@@ -20,49 +20,96 @@
 	</introduction>
 
 	<subsection label="solution-type-analogy">
-		<title>General Solutions</title>
+		<title>Solution Types</title>
 
 		<p>
-				You know that a solution to a differential equation is a function that satisfies the equation. But <xref ref="example-whats-a-soln-1"/> shows that a single differential equation can actually have many solutions. That example shows there can be infinitely many solutions, one for each value of the constant <m>c</m> in <m>y = c e^{2x}</m>. This leads us to the idea of a general solution, which we define as follows.
+				You know that a solution to a differential equation is a function that satisfies the equation. But <xref ref="example-whats-a-soln-1"/> shows that the differential equation
+				<me>
+					y' - 2y = 0
+				</me>
+				has multiple solutions, all which differ by a constant factor:
+				<me>
+					y = e^{2x},\quad y = 3e^{2x},\quad y = -5e^{2x},\quad y = \pi e^{2x}, \quad\text{ etc. } 
+				</me>
+				Rather than listing all possible solutions, we can express them all at once using a formula that includes an arbitrary constant:
+				<me>
+					y = ce^{2x},
+				</me>
+				where <m>c</m> can be any real number. This formula is called the <em>general solution</em> of the differential equation, and each choice of <m>c</m> gives a different <em>particular solution</em>.
 		</p>
 
 		<definition xml:id="def-">
 			<statement>
 				<p>
-					A <term>general solution</term> in differential equations is a general form representing all possible functions that satisfy the equation.
+					A <term>particular solution</term> is a specific function that satisfies a differential equation. A <term>general solution</term> is the most general form (i.e., a formula) that represents all possible particular solutions. A <term>family of solutions</term> is the complete set of all particular solutions.
 				</p>
 			</statement>
 		</definition>
 
 		<p>
-			In <xref ref="example-whats-a-soln-2"/>, we found that the function <m>\ y = c_1\ x^2 + c_2 + \ln x\ </m> was a solution to
-			<me>x^2y'' - xy' = 2</me>.
-			What we didn't mention was that this was actually the general solution which tells us all possible solutions must look like. We get each solution by choosing values for <m>c_1</m> and <m>c_2</m>. For example, all of the following are solutions for different <m>c_1</m> and <m>c_2</m> values:
+			In <xref ref="example-whats-a-soln-2"/>, we also verified that the function,
+			<me>
+				y = c_1\ x^2 + c_2 + \ln x,
+			</me>
+			was a solution to the differential equation
+			<me>
+				x^2y'' - xy' = 2
+			</me>.
+			In this case, the general solution contains two arbtrary constants. To get a particular solution, we need to assign specific values to both <m>c_1</m> and <m>c_2</m>. Here are some examples of particular solutions obtained by choosing different values for the constants:
 		</p>
 
 		<tabular halign="center">
 			<col/>
 			<col/>
 			<col/>
+			<col/>
+			<col halign="left"/>
 			<row bottom="minor">
-				<cell>Solution</cell><cell><m>c_1</m></cell><cell><m>c_2</m></cell>
+				<cell>General Solution</cell><cell bottom="none"/>
+				<cell><m>c_1</m></cell><cell><m>c_2</m></cell>
+				<cell>Particular Solutions</cell>
 			</row>
 			<row>
-				<cell><m>y = x^2 + 1 + \ln x</m></cell><cell><m>1</m></cell><cell><m>1</m></cell>
+				<cell><m>y = c_1\ x^2 + c_2 + \ln x</m></cell><cell/>
+				<cell><m>1</m></cell><cell><m>1</m></cell>
+				<cell><m>y = x^2 + 1 + \ln x</m></cell>
 			</row>
 			<row>
-				<cell><m>y = 3x^2 - 9 + \ln x</m></cell><cell><m>3</m></cell><cell><m>-9</m></cell>
+				<cell/><cell/>
+				<cell><m>3</m></cell><cell><m>-9</m></cell>
+				<cell><m>y = 3x^2 - 9 + \ln x</m></cell>
 			</row>
 			<row>
-				<cell><m>y = -2x^2 + \ln x</m></cell><cell><m>-2</m></cell><cell><m>0</m></cell>
+				<cell/><cell/>
+				<cell><m>-2</m></cell><cell><m>0</m></cell>
+				<cell><m>y = -2x^2 + \ln x</m></cell>
 			</row>
 			<row>
-				<cell><m>y = \ln x</m></cell><cell><m>0</m></cell><cell><m>0</m></cell>
+				<cell/><cell/>
+				<cell><m>0</m></cell><cell><m>0</m></cell>
+				<cell><m>y = \ln x</m></cell>
 			</row>
 			<row>
-				<cell><m>y = \pi x^2 + 3.008 + \ln x</m></cell><cell><m>\pi</m></cell><cell><m>3.008</m></cell>
+				<cell/><cell/>
+				<cell><m>\pi</m></cell><cell><m>3.008</m></cell>
+				<cell><m>y = \pi x^2 + 3.008 + \ln x</m></cell>
 			</row>
 		</tabular>
+
+		<p>
+			If we could somehow list every possible combination of <m>c_1</m> and <m>c_2</m>, we'd have the full <em>family of solutions</em> to the differential equation.
+		</p>
+
+		<warning xml:id="general-solution-warning">
+			<title>Not All Solutions with Constants Are General Solutions</title>
+			<p>
+				Keep in mind, solutions with arbitrary constants are not general solutions by default. For example, both of the functions
+				<me>
+					y = \frac{1}{2}x^2 + c_1 x \quad \text{and} \quad y = \frac{1}{2}x^2 + c_1 x + c_2
+				</me>
+				are solutions to the equation <m>y'' = 1</m>, but only the second is general solution. The first is a special case of the second, obtained when <m>c_2 = 0</m>.
+			</p>
+		</warning>
 
 		<!-- <paragraphs>
 			<title>An Analogy</title>
@@ -80,332 +127,186 @@
 		</paragraphs> -->
 
 		<exercise label="c2-2-cyu-1">
-			<title><e component="emoji">📖❓</e> Find the Solutions from the General Solution</title>
-			<statement>
-				<p>
-					Given that the differential equation 
-					<me>
-						2t\ y' + 4y = 3
-					</me>
-					has the general solution
-					<me>
-						y = \frac{3}{4} + \frac{c}{t^2}
-					</me>
-					select all the solutions to this equation.
-				</p>
-			</statement>
-			<areas>
-				<tabular>
-					<row><cell></cell></row>
-					<row>
-						<cell><area correct="yes"><m>y = \dfrac{3}{4} - \dfrac{1}{t^2}</m></area></cell><cell/>
-						<cell><area correct="no">	<m>y = \dfrac{2}{t^2}</m></area> </cell><cell/>
-						<cell><area correct="yes"><m>y = \dfrac{3}{4} + \dfrac{\pi}{t^2}</m></area></cell>
-					</row>
-					<row><cell><m/></cell></row>
-					<row>
-						<cell><area correct="yes"><m>y = \dfrac{3}{4} + \dfrac{1.6}{t^2}</m></area></cell><cell/>
-						<cell><area correct="yes"><m>y = \dfrac{3}{4}</m></area></cell><cell/>
-						<cell><area correct="no"> <m>y = \dfrac{1}{4} + \dfrac{3}{t^2}</m></area></cell>
-					</row>
-					<row><cell><m/></cell></row>
-				</tabular>
-			</areas>
-		</exercise>
+			<title>Check your Understanding</title>
 
+			<task label="c2-2-cyu-1-chkpt-1">
+				<title><e component="emoji">📖❓</e> Find the Solutions from the General Solution</title>
+				<statement>
+					<p>
+						Given that the differential equation 
+						<me>
+							2t\ y' + 4y = 3
+						</me>
+						has the general solution
+						<me>
+							y = \frac{3}{4} + \frac{c}{t^2}
+						</me>
+						select all the solutions to this equation.
+					</p>
+				</statement>
+				<areas>
+					<tabular>
+						<row><cell></cell></row>
+						<row>
+							<cell><area correct="yes"><m>y = \dfrac{3}{4} - \dfrac{1}{t^2}</m></area></cell><cell/>
+							<cell><area correct="no">	<m>y = \dfrac{2}{t^2}</m></area> </cell><cell/>
+							<cell><area correct="yes"><m>y = \dfrac{3}{4} + \dfrac{\pi}{t^2}</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+						<row>
+							<cell><area correct="yes"><m>y = \dfrac{3}{4} + \dfrac{1.6}{t^2}</m></area></cell><cell/>
+							<cell><area correct="yes"><m>y = \dfrac{3}{4}</m></area></cell><cell/>
+							<cell><area correct="no"> <m>y = \dfrac{1}{4} + \dfrac{3}{t^2}</m></area></cell>
+						</row>
+						<row><cell><m/></cell></row>
+					</tabular>
+				</areas>
+			</task>
+
+			<task label="c2-2-cyu-1-chkpt-2">
+				<title><e component="emoji">📖❓</e>  General or Particular</title>
+				<statement>
+					<p>
+						Fill in the following blanks, below, with one of the following terms:
+						<ul marker="square">
+							<li><c>general</c></li>
+							<li><c>particular</c></li>
+						</ul>
+					</p>
+
+					<p>
+						<em>Tip: Double-click a term above to quickly highlight it for copying.</em>
+					</p>
+
+					<p>
+						<ul marker="square">
+							<li>
+								<p>
+									A family of solutions is the collection of all <fillin width="7" mode="string" answer="particular" /> solutions.
+								</p>
+							</li>
+							<li>
+								<p>
+									A <fillin width="7" mode="string" answer="general" /> solution is a template for each <fillin width="7" mode="string" answer="particular" /> solution.
+								</p>
+							</li>
+							<li>
+								<p>
+									A <fillin width="7" mode="string" answer="general" /> solution can generate a family of solutions.
+								</p>
+							</li>
+							<li>
+								<p>
+									A <fillin width="7" mode="string" answer="general" /> solution contains one or more arbitrary constants.
+								</p>
+							</li>
+							<li>
+								<p>
+									A <fillin width="7" mode="string" answer="particular" /> solution is a function that results from assigning specific values to the constants in the <fillin width="7" mode="string" answer="general" /> solution.
+								</p>
+							</li>
+						</ul>
+					</p>
+				</statement>
+				
+				<evaluation>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>general</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>particular</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>general</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>particular</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>particular</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>general</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+					<evaluate>
+						<test><strcmp use-answer="yes" /></test>
+						<test><strcmp>particular</strcmp></test>
+						<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
+					</evaluate>
+				</evaluation>
+			</task>
+
+			<task label="c2-2-cyu-1-chkpt-3">
+				<title><e component="emoji">📖❓</e>  Describe a Family of Solutions</title>
+				<statement>
+					<p>
+						If a solution to a differential equation contains an arbitrary constant, it is a general solution. 
+					</p>
+				</statement>
+				<choices>
+					<choice><statement><p>True</p></statement>
+						<feedback>
+							<p>
+								Keep in mind, solutions with arbitrary constants are not general solutions by default. For example, both of the functions
+								<me>
+									y = \frac{1}{2}x^2 + c_1 x \quad \text{and} \quad y = \frac{1}{2}x^2 + c_1 x + c_2
+								</me>
+								are solutions to the equation <m>y'' = 1</m>, but only the second is general solution. The first is a special case of the second, obtained when <m>c_2 = 0</m>.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes"><statement><p>False</p></statement>
+						<feedback>
+							<p>
+								Correct! 
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c2-2-cyu-1-chkpt-4">
+				<title><e component="emoji">📖❓</e> Find the Solutions</title>
+				<statement>
+					<p>
+						Match the word that best describes each type of solution.
+					</p>
+				</statement>
+				<cardsort>
+					<match>
+						<premise>Formula</premise>
+						<response>General Solution</response>
+					</match>
+					<match>
+						<premise>Specific</premise>
+						<response>Particular Solution</response>
+					</match>
+					<match>
+						<premise>Collection</premise>
+						<response>Family of Solutions</response>
+					</match>
+				</cardsort>
+			</task>
+		</exercise>
 	</subsection>
 
-	<subsection label="solution-types">
-		<title>Particular Solutions</title>
-		<p>
-			To make sense of all the possible solutions, we classify solutions into three key categories:
-		</p>
-
-		<dl>
-			<li><title>General solution:</title>
-				<p>
-					This includes one or more arbitrary constants, like <m>c</m> in <m>y = c e^{2x}</m>. You can think of it as a template from which specific solutions can be generated.
-				</p>
-			</li>
-			<li><title>Particular solution:</title>
-				<p>
-					A particular solution results from assigning a specific value to each arbitrary constant in the general solution. For example, if <m>c = 5</m>, then <m>y = 5 e^{2x}</m>.
-				</p>
-			</li>
-			<li><title>Family of solutions:</title>
-				<p>
-					A family of solutions is the complete collection of particular solutions generated by varying the constants in the general solution.
-				</p>
-			</li>
-		</dl>
-
-		<exercise label="chkpt-solution-types-1">
-			<title><e component="emoji">📖❓</e>  Describe a Family of Solutions</title>
-			<statement>
-				<p>
-					What is a family of solutions?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement>
-						<p>
-							A collection of all possible solutions to a differential equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Correct! The family of solutions includes every possible particular solution.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							The general solution to a differential equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The general solution represents a form of the family of solutions, not the entire set.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							A single specific solution to a differential equation.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. This describes a particular solution, not the family of solutions.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							A solution without any constants.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. A solution without constants is typically a particular solution, not the entire family.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
-
-		<p>
-			Consider the equation <m>y' - 2y = 0</m>. The general solution is <m>y = c e^{2x}</m>, and some particular solutions are
-			<me>
-			y = 5e^{2x}, \quad y = 3.1e^{2x}, \quad y = -2e^{2x},
-			</me>
-			corresponding to <m>c = 5</m>, <m>3.1</m>, and <m>-2</m>. If we could list every possible value of <m>c</m>, we'd have the full family of solutions.
-		</p>
-
-		<exercise label="chkpt-solution-types-2">
-			<title><e component="emoji">📖❓</e>  General or Particular</title>
-			<statement>
-				<p>
-					Fill in the following blanks, below, with one of the following terms:
-					<ul marker="square">
-						<li><c>general</c></li>
-						<li><c>particular</c></li>
-					</ul>
-				</p>
-
-				<p>
-					<em>Tip: Double-click a term above to quickly highlight it for copying.</em>
-				</p>
-
-				<p>
-					<ul marker="square">
-						<li>
-							<p>
-								A family of solutions is the collection of all <fillin width="7" mode="string" answer="particular" /> solutions.
-							</p>
-						</li>
-						<li>
-							<p>
-								A <fillin width="7" mode="string" answer="general" /> solution is a template for each <fillin width="7" mode="string" answer="particular" /> solution.
-							</p>
-						</li>
-						<li>
-							<p>
-								A <fillin width="7" mode="string" answer="general" /> solution can generate a family of solutions.
-							</p>
-						</li>
-						<li>
-							<p>
-								A <fillin width="7" mode="string" answer="general" /> solution contains one or more arbitrary constants.
-							</p>
-						</li>
-						<li>
-							<p>
-								A <fillin width="7" mode="string" answer="particular" /> solution is a function that results from assigning specific values to the constants in the <fillin width="7" mode="string" answer="general" /> solution.
-							</p>
-						</li>
-					</ul>
-				</p>
-			</statement>
-			
-			<evaluation>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>general</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>particular</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>general</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>particular</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>particular</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>general</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-				<evaluate>
-					<test><strcmp use-answer="yes" /></test>
-					<test><strcmp>particular</strcmp></test>
-					<test><strcmp>.*</strcmp><feedback>There are only two possible answers, did you spell it incorrectly?</feedback></test>
-				</evaluate>
-			</evaluation>
-		</exercise>
-
-		<p>
-			Solving a differential equation usually starts with the <em>general solution</em>, which includes one or more arbitrary constants. Remember, each constant can take on any value, which leads to infinitely many possible <em>particular solutions</em>.
-		</p>
-
-		<warning label="not-all-solutions-with-constants-are-general-solutions">
-			<title>Not All Solutions with Constants Are General Solutions ⚠️</title>
-			<p>
-				Keep in mind, solutions with arbitrary constants are not general solutions by default. For example, both of the functions
-				<me>
-					y = \frac{1}{2}x^2 + c_1 x \quad \text{and} \quad y = \frac{1}{2}x^2 + c_1 x + c_2
-				</me>
-				are solutions to the equation <m>y'' = 1</m>, but only the second is general solution. The first is a special case of the second, obtained when <m>c_2 = 0</m>, so it can be the general solution.
-			</p>
-		</warning>
-	</subsection>
-
-	<subsection label="initial-conditions-ivps">
-		<title>Initial Conditions</title>
+	<subsection label="ivps">
+		<title>Initial-Value Problems (IVPs)</title>
 		<p>
 			In real-world problems, we often narrow down the set of possible solutions by specifying <term>initial conditions</term>, known values of the solution or its derivatives at a specific point. A differential equation paired with initial conditions is called an <term>initial-value problem</term> (IVP). If enough information is provided, the IVP gives a unique particular solution that satisfies both the equation and the conditions.
 		</p>
-
-		<exercise label="initial-conditions-ivps-chkpt-bundle">
-			<task label="chkpt-initial-conditions-ivps-1">
-				<title><e component="emoji">📖❓</e>  Initial Condition Meaning</title>
-				<statement>
-					<p>
-						Assume we have a differential equation with dependent variable <m>y</m> and independent variable <m>x</m>.
-					</p>
-					<p>
-						What is an initial condition?
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice correct="yes">
-						<statement>
-							<p>
-								A known value of <m>y</m> or a known value of <m>y</m>'s derivatives.
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Correct! An initial condition specifies the value of the solution or its derivative at a particular point.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							<p>
-								The starting value of <m>x</m>.
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Incorrect. The initial condition is related to the solution or its derivatives at a specific point.
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							<p>
-								Any point in the <m>xy</m>-plane.
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Incorrect. An initial condition is not just any point; it's a specific point referring to a known value of <m>y</m> or one of it's derivatives
-							</p>
-						</feedback>
-					</choice>
-					<choice>
-						<statement>
-							<p>
-								The first step in solving a differential equation.
-							</p>
-						</statement>
-						<feedback>
-							<p>
-								Incorrect. The initial condition is not the initial step for solving a differential equation.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-			<task label="chkpt-initial-conditions-ivps-2">
-				<title><e component="emoji">📖❓</e>  Is it an IVP</title>
-				<statement>
-					<p>
-						The differential equation
-						<me>
-							\frac{dy}{dx} = 2xy - 6x
-						</me>
-						is an example of an initial-value problem.
-					</p>
-				</statement>
-				<choices randomize="yes">
-					<choice>
-						<statement>True</statement>
-						<feedback>
-							<p>
-								Incorrect. An initial-value problem must include initial conditions, which are missing here.
-							</p>
-						</feedback>
-					</choice>
-					<choice correct="yes">
-						<statement>False</statement>
-						<feedback>
-							<p>
-								Correct! This is just a differential equation, without initial conditions, it is not an initial-value problem.
-							</p>
-						</feedback>
-					</choice>
-				</choices>
-			</task>
-		</exercise>
 
 		<p>
 			For example, suppose an object is in free fall under constant acceleration <m>32\ \mathrm{ft/s^2}</m>. If <m>h(t)</m> is its height above the ground, then:
@@ -457,17 +358,13 @@
 			</me>
 			which models an object dropped specifically from <m>100\ \mathrm{ft}</m> with no initial velocity.
 		</p>
-	</subsection>
-
-	<subsection label="from-general-to-particular">
-		<title>Initial-Value Problems (IVPs)</title>
 
 		<p>
 			To find a particular solution, we start with a general solution and apply given initial conditions to determine the values of any constants. The following examples illustrate this process.
 		</p>
 
 		<example xml:id="example-initial-conditions-1" label="solving-for-a-constant">
-			<title>Solving for a Constant</title>
+
 			<statement>
 				<p>
 					Find the particular solution to the initial value problem:
@@ -499,71 +396,12 @@
 			</solution>
 		</example>
 
-		<exercise label="chkpt-from-general-to-particular-1">
-			<title><e component="emoji">📖❓</e>  When is your Answer a Particular Solution</title>
-			<statement>
-				<p>
-					In which case would you need to find a particular solution rather than just a general solution?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement>
-						<p>
-							When the differential equation is linear.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. Linearity doesn't determine whether you need a particular solution.
-						</p>
-					</feedback>
-				</choice>
-				<choice correct="yes">
-					<statement>
-						<p>
-							When initial conditions are provided.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Correct! A particular solution is found when you need to satisfy initial conditions.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							When the differential equation is has a general solution.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. The existence of a general solution doesn't determine whether you need a particular solution.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement>
-						<p>
-							When the function depends on more than one variable.
-						</p>
-					</statement>
-					<feedback>
-						<p>
-							Incorrect. Multivariable functions are not the reason for finding a particular solution.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</exercise>
-
 		<p>
 			When a general solution contains more than one constant, we need multiple initial conditions to determine them, as the next example shows.
 		</p>
 
 		<example label="Two-Initial-Conditions">
-			<title>Two Initial Conditions</title>
+
 			<statement>
 				<p>
 					Verify that the function
@@ -647,27 +485,160 @@
 			</solution>
 		</example>
 
-		<exercise label="chkpt-solution-type-analogy-1">
-			<title><e component="emoji">📖❓</e> Find the Solutions</title>
-			<statement>
-				<p>
-					Match the word that best describes each type of solution.
-				</p>
-			</statement>
-			<cardsort>
-				<match>
-					<premise>Template</premise>
-					<response>General Solution</response>
-				</match>
-				<match>
-					<premise>Specific</premise>
-					<response>Particular Solution</response>
-				</match>
-				<match>
-					<premise>Collection</premise>
-					<response>Family of Solutions</response>
-				</match>
-			</cardsort>
+		<exercise label="c2-3-cyu-1">
+			<title>Check your Understanding</title>
+
+			<task label="c2-3-cyu-1-chkpt-1">
+				<title><e component="emoji">📖❓</e>  Initial Condition Meaning</title>
+				<statement>
+					<p>
+						Assume we have a differential equation with dependent variable <m>y</m> and independent variable <m>x</m>.
+					</p>
+					<p>
+						What is an initial condition?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>
+							<p>
+								A known value of <m>y</m> or a known value of <m>y</m>'s derivatives.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct! An initial condition specifies the value of the solution or its derivative at a particular point.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								The starting value of <m>x</m>.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. The initial condition is related to the solution or its derivatives at a specific point.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								Any point in the <m>xy</m>-plane.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. An initial condition is not just any point; it's a specific point referring to a known value of <m>y</m> or one of it's derivatives
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								The first step in solving a differential equation.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. The initial condition is not the initial step for solving a differential equation.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+			
+			<task label="c2-3-cyu-1-chkpt-2">
+				<title><e component="emoji">📖❓</e>  Is it an IVP</title>
+				<statement>
+					<p>
+						The differential equation
+						<me>
+							\frac{dy}{dx} = 2xy - 6x
+						</me>
+						is an example of an initial-value problem.
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice>
+						<statement>True</statement>
+						<feedback>
+							<p>
+								Incorrect. An initial-value problem must include initial conditions, which are missing here.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>False</statement>
+						<feedback>
+							<p>
+								Correct! This is just a differential equation, without initial conditions, it is not an initial-value problem.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c2-3-cyu-1-chkpt-3">
+				<title><e component="emoji">📖❓</e>  When is your Answer a Particular Solution</title>
+				<statement>
+					<p>
+						In which case would you need to find a particular solution rather than just a general solution?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice>
+						<statement>
+							<p>
+								When the differential equation is linear.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. Linearity doesn't determine whether you need a particular solution.
+							</p>
+						</feedback>
+					</choice>
+					<choice correct="yes">
+						<statement>
+							<p>
+								When initial conditions are provided.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Correct! A particular solution is found when you need to satisfy initial conditions.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								When the differential equation is has a general solution.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. The existence of a general solution doesn't determine whether you need a particular solution.
+							</p>
+						</feedback>
+					</choice>
+					<choice>
+						<statement>
+							<p>
+								When the function depends on more than one variable.
+							</p>
+						</statement>
+						<feedback>
+							<p>
+								Incorrect. Multivariable functions are not the reason for finding a particular solution.
+							</p>
+						</feedback>
+					</choice>
+				</choices>
+			</task>
 		</exercise>
 
 	</subsection>
