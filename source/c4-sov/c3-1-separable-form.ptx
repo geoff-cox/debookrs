@@ -26,7 +26,8 @@
 		Some differential equations can be rewritten so that all the <m>x</m> terms are on one side and all the <m>y</m> terms are on the other. These equations are called <em>separable</em>. Let's make that idea precise.
 		</p>
 
-		<definition xml:id="separable"><title>Separable Form</title>
+		<definition xml:id="separable">
+			<title>Separable Form</title>
 			<statement>
 				<p>
 					A first-order differential equation is <term>separable</term> if it can be written in following <term>separable form</term>
@@ -276,8 +277,8 @@
 
 	</subsection>
 
-	<subsection label="showing-separability">
-		<title>Showing Separability</title>
+	<subsection label="separability-of-a-DE">
+		<title>Separable Differential Equations</title>
 	
 		<p>
 			Separable equations are often not presented in a <xref ref="separable" text="custom">separable form</xref>. In such cases, you'll need to rewrite the equation to verify it's separable. This process typically involves two main steps:
@@ -289,147 +290,204 @@
 				</li>
 				<li>
 					<p>
-						Then form the product on the other side of the equation <m>\left(\dfrac{dy}{dx} = f(x) \cdot g(y)\right)</m>. Common algebra techniques to achieve this product include:
-						<ul marker="square">
-							<li>Factor out common terms: <m>\quad ab + ac = a \cdot (b + c)</m></li>
-							<li>Exponential Properties : <m>\quad e^{m + n} = e^m \cdot e^{n}\quad</m> and <m>\quad e^{m - n} = \dfrac{e^m}{e^n}</m></li>
-							<li>
-								Separate fractions: 
-								<m>\quad \dfrac{a}{b} = \dfrac{a}{1} \cdot \dfrac{1}{b} \quad</m> and 
-								<m>\quad \dfrac{a\ \cdot\ b}{c\ \cdot\ d} = \dfrac{a}{c} \cdot \dfrac{b}{d}</m>
-							</li>
-						</ul>
+						Then form the product on the other side <m>\left(\dfrac{dy}{dx} = f(x) \cdot g(y)\right)</m>.
 					</p>
 				</li>
 			</ol>
 		</p>
-		
+
 		<p>
-			To illustrate this, consider the equation
-			<me>
-				\dfrac{dy}{dx} + 18xy = 6x.
-			</me>
+			Common algebra techniques to achieve this product include:
+			<dl width="wide">
+				<li xml:id="sums-to-products">
+					<title>Sums ➜ Products</title>
+					<m>\quad ab + ac = a \cdot (b + c)</m>
+				</li>
+				<li xml:id="exponents-to-products">
+					<title>Exponents ➜ Products</title>
+					<m>\quad a^{m + n} = a^m \cdot a^{n}</m>, <m>\quad a^{m - n} = \sfrac{a^m}{a^n}</m>
+				</li>
+				<li xml:id="fractions-to-products">
+					<title>Fractions ➜ Products</title> 
+					<m>\quad \dfrac{a}{b} = \dfrac{a}{1} \cdot \dfrac{1}{b}</m>,
+					<m>\quad \dfrac{ab}{cd} = \dfrac{a}{c} \cdot \dfrac{b}{d}</m>
+				</li>
+			</dl>
 		</p>
 
 		<p>
-			Here, we isolate <m>dy/dx</m> and factor out <m>x</m>:
-			<me> \dfrac{dy}{dx} = 6x - 18xy = 6x \cdot \left(1 - 3y\right),</me>
-			which shows the differential equation <em>is separable</em>.
+			To illustrate this, consider the following warm-up examples.
 		</p>
 
-		<example xml:id="example-show-separable-1">
-			<statement>
-				<p>
-					Show that the differential equation is separable.
-					<me>
-						P^2\dfrac{dP}{dt} + \dfrac{dP}{dt} = Pt.
-					</me>
-				</p>
-			</statement>
+		<paragraphs>
+			<title>Warm-Up Examples</title>
+			<p>
+				Show that the differential equations are separable.
+			</p>
 
-			<solution>
-				<p>
-					Since the variables in this equation are <m>t</m> and <m>P</m>, the separable form will look like
-					<me>\dfrac{dP}{dt} = f(P) \cdot g(t)</me>.
-				</p>
+			<example xml:id="example-show-separable-warmup-1">
+				<statement><p><m>y' = yt^2 - y</m></p></statement>
 
-				<p>
-					To get there, we isolate <m>dP/dt</m> first:
-					<md>
-						<mrow> P^2\dfrac{dP}{dt} + \dfrac{dP}{dt} \amp = Pt </mrow>
-						<mrow> (1+P^2)\dfrac{dP}{dt} \amp = Pt </mrow>
-						<mrow> \dfrac{dP}{dt} \amp = \dfrac{Pt}{1+P^2}. </mrow>
-					</md>
-				</p>
+				<solution>
+					<p>
+						To show this equation is seperable, we convert <xref ref="sums-to-products" text="title"/> by factoring out the common <m>y</m>:
+						<me>
+							y' = \ub{y \cdot (t^2 - 1)}_{f(t)\ \cdot\ g(y)} \quad\leftarrow\text{separable}.
+						</me>
+					</p>
+				</solution>
+			</example>
 
-				<p>
-					Now, we split the fraction so that <m>P</m> and <m>t</m> can be separated:
-					<me>
-						\dfrac{dP}{dt}
-							= \dfrac{P\cdot t}{(P^2 + 1) \cdot (1)}
-							= \ub{
-								{\color{blue}	\os{f(P)}{\os{\downarrow}{	\dfrac{P}{P^2 + 1}}}		} \cdot
-								{\color{green}	\os{g(t)}{\os{\downarrow}{	\dfrac{t}{1}}}			}
-							}_{\text{separable form}}.
-					</me>
-					So, the equation is <em>separable</em>.
-				</p>
-			</solution>
-		</example>
+			<example xml:id="example-show-separable-warmup-2">
+				<statement><p><m>y' + 18xy = 6x</m></p></statement>
 
-		<example xml:id="example-show-separable-2">
-			<statement>
-				<p>
-					Show that the differential equation is separable.
-					<me>
-						\dfrac{dM}{d\omega} - 11e^{\omega + 3M} = 0
-					</me>.
-				</p>
-			</statement>
+				<solution>
+					<p>
+						This time we isolate <m>y'</m> first, then factor out <m>x</m>:
+						<me>
+							y' = 6x - 18xy = 6x \cdot \left(1 - 3y\right) \quad\leftarrow\textit{separable}.
+						</me>
+					</p>
+				</solution>
+			</example>
 
-			<solution>
-				<p>
-					Isolating the derivative and applying <m>e^{A + B} = e^{A} \cdot e^{B}</m> leads to the separable form:
-					<me>
-						\dfrac{dM}{d\omega}
-							= 11e^{\omega + 3M}
-							= 11(e^{\omega} \cdot e^{3M})
-							= \ub{
-								{\color{RoyalBlue} \os{f(\omega)}{ \os{\downarrow}{ 11e^{\omega} }}	} \cdot
-								{\color{green}\os{g(M)}{ \os{\downarrow}{ e^{3M} }}	}
-							}_{\text{separable form}}.
-					</me>
-				</p>
-			</solution>
-		</example>
+			<example xml:id="example-show-separable-warmup-3">
+				<statement><p><m>yy' - 1 = x</m></p></statement>
 
-		<example xml:id="example-show-separable-3">
-			<statement>
-				<p>
-					Show the differential equation is separable.
-					<me>
-						y\dfrac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x.
-					</me>
-				</p>
-			</statement>
+				<solution>
+					<p>
+						First, isolate <m>y'</m>:
+						<me>
+							yy' = x + 1 \quad \Rightarrow \quad y' = \frac{x + 1}{y},
+						</me>
+						then split the single fraction as a product of fractions:
+						<me>
+							y' 
+								= \frac{x + 1}{1} \cdot \frac{1}{y} 
+								= \ub{(x+1) \cdot \frac{1}{y}}_{f(x)\ \cdot\ g(y)} \quad \leftarrow \text{separable}.
+						</me>
+					</p>
+				</solution>
+			</example>
 
-			<solution>
-				<p>
-					This example uses a little of everything we discussed, so strap in.
-				</p>
+			<example xml:id="example-show-separable-warmup-4">
+				<statement><p><m>y' = e^{x+y}</m></p></statement>
 
-				<p>
-					Noticing that the equation is first-order, we start by isolating <m>dy/dx</m>
-					<md>
-						<mrow>
-							y\dfrac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
-						</mrow>
-						<mrow>
-							\dfrac{dy}{dx} = \dfrac{6x^2e^x - 8x^2e^{x + \cos y}}{y}
-						</mrow>
-					</md>
-				</p>
+				<solution>
+					<p>
+						At first glance, this doesn't look separable because of the <m>x+y</m>, but applying <xref ref="exponents-to-products" text="title"/> we get: 
+						<me>
+							y' = e^{x+y} = \ub{e^x \cdot e^{y}}_{f(x)\ \cdot\ g(y)} \quad\leftarrow\text{separable}.
+						</me>
+					</p>
+				</solution>
+			</example>
+		</paragraphs>
 
-				<p>
-					Next, we can rewrite the exponent in the numerator as a product
-					<me>
-						\dfrac{dy}{dx} = \dfrac{6x^2e^x - 8x^2e^{x}e^{\cos y}}{y}
-					</me>
-					and recognize that there is a common factor in the numerator
-					<me>
-						\dfrac{dy}{dx} = \dfrac{2x^2e^x(3 - 4e^{\cos y})}{y}
-					</me>.
-				</p>
+		<p>
+			The next set of examples require a bit more work to show that they are separable.
+		</p>
 
-				<p>
-					From here, we write the result as a product of fractions,
-					<me>
-						\dfrac{dy}{dx} = \dfrac{2x^2e^x}{1} \cdot \dfrac{3 - 4e^{\cos y}}{y}
-					</me>,
-					and the equation is now clearly <em>separable</em>.
-				</p>
-			</solution>
-		</example>
+		<paragraphs>
+			<title>Challenging Examples</title>
+
+			<p>
+				Show that the differential equations are separable.
+			</p>
+
+			<example xml:id="example-show-separable-1">
+				<statement><p><m>P^2\dfrac{dP}{dt} + \dfrac{dP}{dt} = Pt</m></p></statement>
+
+				<solution>
+					<p>
+						Since the variables in this equation are <m>t</m> and <m>P</m>, the separable form will look like
+						<me>\dfrac{dP}{dt} = f(P) \cdot g(t)</me>.
+					</p>
+
+					<p>
+						To get there, we isolate <m>dP/dt</m> first:
+						<md>
+							<mrow> P^2\dfrac{dP}{dt} + \dfrac{dP}{dt} \amp = Pt </mrow>
+							<mrow> (1+P^2)\dfrac{dP}{dt} \amp = Pt </mrow>
+							<mrow> \dfrac{dP}{dt} \amp = \dfrac{Pt}{1+P^2}. </mrow>
+						</md>
+					</p>
+
+					<p>
+						Now, we split the fraction so that <m>P</m> and <m>t</m> can be separated:
+						<me>
+							\dfrac{dP}{dt}
+								= \dfrac{P\cdot t}{(P^2 + 1) \cdot (1)}
+								= \ub{
+									{\color{RoyalBlue}	\os{f(P)}{\os{\downarrow}{	\dfrac{P}{P^2 + 1}}}		} \cdot
+									{\color{green}	\os{g(t)}{\os{\downarrow}{	\dfrac{t}{1}}}			}
+								}_{\text{separable form}}.
+						</me>
+						So, the equation is <em>separable</em>.
+					</p>
+				</solution>
+			</example>
+
+			<!-- <example xml:id="example-show-separable-2">
+				<statement><p><m>\dfrac{dM}{d\omega} - 11e^{\omega + 3M} = 0</m></p></statement>
+
+				<solution>
+					<p>
+						Isolating the derivative and applying <m>e^{A + B} = e^{A} \cdot e^{B}</m> leads to the separable form:
+						<me>
+							\dfrac{dM}{d\omega}
+								= 11e^{\omega + 3M}
+								= 11(e^{\omega} \cdot e^{3M})
+								= \ub{
+									{\color{RoyalBlue} \os{f(\omega)}{ \os{\downarrow}{ 11e^{\omega} }}	} \cdot
+									{\color{green}\os{g(M)}{ \os{\downarrow}{ e^{3M} }}	}
+								}_{\text{separable form}}.
+						</me>
+					</p>
+				</solution>
+			</example> -->
+
+			<example xml:id="example-show-separable-3">
+				<statement><p><m>y\dfrac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x</m></p></statement>
+
+				<solution>
+					<p>
+						This example uses a little of everything we discussed, so strap in.
+					</p>
+
+					<p>
+						Noticing that the equation is first-order, we start by isolating <m>dy/dx</m>
+						<md>
+							<mrow>
+								y\dfrac{dy}{dx} + 8x^2e^{x + \cos y} = 6x^2e^x
+							</mrow>
+							<mrow>
+								\dfrac{dy}{dx} = \dfrac{6x^2e^x - 8x^2e^{x + \cos y}}{y}
+							</mrow>
+						</md>
+					</p>
+
+					<p>
+						Next, we can rewrite the exponent in the numerator as a product
+						<me>
+							\dfrac{dy}{dx} = \dfrac{6x^2e^x - 8x^2e^{x}e^{\cos y}}{y}
+						</me>
+						and recognize that there is a common factor in the numerator
+						<me>
+							\dfrac{dy}{dx} = \dfrac{2x^2e^x(3 - 4e^{\cos y})}{y}
+						</me>.
+					</p>
+
+					<p>
+						From here, we write the result as a product of fractions,
+						<me>
+							\dfrac{dy}{dx} = \dfrac{2x^2e^x}{1} \cdot \dfrac{3 - 4e^{\cos y}}{y}
+						</me>,
+						and the equation is now clearly <em>separable</em>.
+					</p>
+				</solution>
+			</example>
+		</paragraphs>
 
 		<p>
 			As important as it is to show an equation is separable, it is equally important to identify when it is not.
@@ -709,13 +767,13 @@
 		<ul marker="square">
 			<li>
 				<p>
-					<m>\textit{Separable}</m> means the right-hand side factors as a product of an <m>x</m>-only part and a <m>y</m>-only part:
+					<m>\textit{Separable}</m> means the differential equation is first-order and right-hand side factors as a product of an <m>x</m>-only part and a <m>y</m>-only part:
 					<me>\dfrac{dy}{dx}=f(x)\cdot g(y)</me>.
 				</p>
 			</li>
 			<li>
 				<p>
-					Division counts: forms like <m>\dfrac{dy}{dx}=\dfrac{A(x)}{B(y)}</m> are separable because <me>\dfrac{A(x)}{B(y)}=A(x)\cdot\dfrac{1}{B(y)}</me>.
+					We care about a differential equation being separable because it is a requirement for the seperation of variables method (next section).  
 				</p>
 			</li>
 			<li>
