@@ -1,0 +1,218 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="linearity">
+	<title>Linearity</title>
+
+	<p>
+		Now that we've defined what it means for a <xref ref="summary-terms" text="custom">term</xref> to be linear, we can describe what it means for an entire differential equation to be linear.
+	</p>
+
+	<p>
+		Essentially, a differential equation is <term>linear</term> if <em>every term in the equation is linear</em>. If just one term is nonlinear, the entire equation is <term>nonlinear</term>. We formally define linear differential equations as follows:
+	</p>
+
+	<exercise label="order-linearity-cyu-7">
+
+		<statement>
+			<p>
+				Select the true statement.
+			</p>
+		</statement>
+
+		<choices randomize="yes">
+			<choice correct="yes">
+				<statement><p>An equation is nonlinear if at least one of its terms are nonlinear.</p></statement>
+				<feedback><p>Correct! A differential equation is nonlinear if <em>any</em> of its terms are nonlinear.</p></feedback>
+			</choice>
+			<choice>
+				<statement><p>An equation is linear if at least one of its terms are linear.</p></statement>
+				<feedback><p>Incorrect. A differential equation needs <em>all</em> of its terms to be linear.</p></feedback>
+			</choice>
+			<choice>
+				<statement><p>As long as there are more linear terms than nonlinear terms, the equation is linear.</p></statement>
+				<feedback><p>Incorrect.</p></feedback>
+			</choice>
+		</choices>
+
+	</exercise>
+
+	<definition xml:id="def-linear">
+		<title>Linear Differential Equations</title>
+		<statement>
+			<p>
+				A differential equation is <term>linear</term> if it can be written as a sum of linear terms involving the dependent variable and its derivatives:
+				<fn>
+					This structure is known as a <term>linear combination</term> of the dependent variable and its derivatives.
+				</fn>
+				<men xml:id="linear-equation">
+				\underset{\text{linear term}}{\underbrace{a_n(t)\ y^{(n)}}} + \cdots +
+				\underset{\text{linear term}}{\underbrace{a_2(t)\ y''}} +
+				\underset{\text{linear term}}{\underbrace{a_1(t)\ y'}} +
+				\underset{\text{linear term}}{\underbrace{a_0(t)\ y}} = f(t)
+				</men>
+				where each <m>a_k(t)</m> is a function of the independent variable only, and <m>f(t)</m> is the input or forcing term.
+			</p>
+		</statement>
+	</definition>
+
+	<p>
+		For example, the following differential equations are linear:
+		<men xml:id="linear-equation-examples">
+			3\frac{dy}{dx} + 2y = 0, \qquad y''' - 2y' - \frac{7}{x}y = e^x, \qquad w'' - \tan(t) = 3t.
+		</men>
+	</p>
+
+	<p>
+		Each term involving the dependent variable or its derivatives is linear, none appear raised to a power, inside a function, or multiplied together.
+	</p>
+
+	<p>
+		In contrast, the following equations are nonlinear because they include at least one nonlinear term (✷):
+		<men xml:id="nonlinear-equation-examples">
+			y' + \us{\large ✷}{\ul{ t y^2 }} = t, \qquad 
+			t \frac{dP}{dx} + \us{\large ✷}{\ul{ \sin(P) }} = t^2, \qquad 
+			\us{\large ✷}{\ul{\omega\omega^{(5)}}} + s = \us{\large ✷}{\ul{ e^\omega }}
+		</men>
+	</p>
+
+	<p>
+		In each case, it only took one term to violate the definition of a linear differential equation.
+	</p>
+
+	<p>
+		Let's practice identifying the linearty of entire equations with a few examples.
+	</p>
+
+	<example>
+		<title>Identify the Linearity of the Equation</title>
+		<statement>
+			<p>
+				Determine whether each of the following differential equations is linear:
+				<me>
+				y^{(5)} + \frac{y'}{x^2} + 5y = \ln x, \qquad P^{(6)} + \frac{m P'}{P} = (m - 1)^2
+				</me>
+			</p>
+		</statement>
+		<solution>
+			<p>
+				In the first equation, all terms involving <m>y</m> or its derivatives appear linearly:
+				<md>
+				<mrow>
+					\underset{\overline{\text{linear}}}{\vphantom{\frac11}\color{BurntOrange} y^{(5)}} +
+					\underset{\overline{\text{linear}}}{\frac{1}{x^2} \color{BurntOrange} y'} +
+					\underset{\overline{\text{linear}}}{5 \color{BurntOrange} y} =\ 
+					\underset{\overline{\text{linear}}}{\ln x}
+				</mrow>
+				</md>
+				So the equation is linear.
+			</p>
+
+			<p>
+				In the second equation, the term <m>\frac{m P'}{P}</m> is nonlinear, since <m>P</m> appears in both the numerator and denominator:
+				<md>
+				<mrow>
+					\underset{\text{linear}}{\underline{\color{BurntOrange} P^{(6)}}} +
+					\underset{\overline{\text{nonlinear}}}{\frac{m \color{BurntOrange} P'}{\color{BurntOrange} P}} =\ 
+					\underset{\text{linear}}{(m - 1)^2}
+				</mrow>
+				</md>
+				This makes the entire equation nonlinear.
+			</p>
+		</solution>
+	</example>
+
+	<exercise label="order-linearity-cyu-8">
+
+		<task label="order-linearity-cyu-8-task-1">
+			<title>Identify the Linear Equations</title>
+
+			<statement>
+				<p>
+					Click-on all the <term>linear</term> differential equations.
+				</p>
+			</statement>
+			
+			<areas>
+				<tabular>
+					<row>
+						<cell><area correct="no"><m>y'' + \sin(y) = 17t </m>							</area></cell>
+						<cell><area correct="yes"><m>y'' + \dfrac{y'}{t^2} + y = 17t </m>	</area></cell>
+						<cell><area correct="yes"><m>y'' + 3y' + 2y = 0 </m>							</area></cell>
+					</row>
+					<row><cell><me/></cell></row>
+					<row>
+						<cell><area correct="no"><m>y'' + y^2 = 17t </m>	</area></cell>
+						<cell><area correct="no"><m>yy'' + y' = 0	</m>		</area></cell>
+						<cell><area correct="yes"><m>y = y' </m>					</area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+				</tabular>
+			</areas>
+
+			<hint>
+				<p>
+					Remember that a linear differential equation contains only linear terms. Four of these equations are linear.
+				</p>
+			</hint>
+
+			<feedback>
+				<p>
+					Linear equations only involve the dependent variable and its derivatives to the first power, and they won't be inside nonlinear functions like sine or multiplied by each other.
+				</p>
+			</feedback>
+		</task>
+
+		<task label="order-linearity-cyu-8-task-2">
+			<title>Identify the Nonlinear Equations</title>
+			<statement>
+				<p>
+					Click-on all the <term>nonlinear</term> differential equations
+				</p>
+			</statement>
+			<areas>
+				<tabular>
+					<row>
+						<cell><area correct="yes"><m>\dfrac{dx}{ds} = x^2 - 4</m></area></cell>
+						<cell><area correct="no"><m>\dfrac{d^2u}{dz^2} - 5 \dfrac{du}{dz} + 6u = 0</m></area></cell>
+						<cell><area correct="yes"><m>\dfrac{dp}{d\tau} + \sin(p) = \tau^2</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="no"><m>\dfrac{dw}{dv} + 2vw = \cos(v)</m></area></cell>
+						<cell><area correct="yes"><m>\dfrac{dr}{d\theta} + r^3 = \theta</m></area></cell>
+						<cell><area correct="no"><m>\dfrac{dN}{dt} = -N</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="yes"><m>\dfrac{dm}{dq} = m^3 - q^2</m></area></cell>
+						<cell><area correct="yes"><m>\dfrac{dz}{dt} + z\dfrac{dz}{dt} = t^3</m></area></cell>
+						<cell><area correct="yes"><m>\dfrac{dy}{dx} = y \ln(y)</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+				</tabular>
+			</areas>
+			<hint>
+				<p>
+					First identify the dependent variable, then carefully look at each term to determine if it is nonlinear. There are six nonlinear equations here.
+				</p>
+			</hint>
+			<feedback>
+				<p>
+					Nonlinear equations often have terms where the dependent variable or its derivatives are raised to powers other than one, or are inside functions like sine, logarithms, or are multiplied by each other.
+				</p>
+			</feedback>
+		</task>
+
+	</exercise>
+
+</section>

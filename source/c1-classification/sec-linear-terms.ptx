@@ -1,0 +1,295 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="linear-terms">
+	<title>Linear &amp; Nonlinear Terms</title>
+
+	<paragraphs label="de-linear-terms">
+		<title>Linear Terms</title>
+
+		<p>
+			To decide whether a differential equation is linear, we first need to understand what it means for a <xref ref="summary-terms" text="custom">term</xref> to be linear. In this context, linearity refers to how the dependent variable and its derivatives appear in each term.
+		</p>
+
+		<p>
+			Let <m>y</m> be the dependent variable. A term is <term>linear</term> if it appears as either:
+			<men xml:id="linear-term-forms">
+				a(t), \quad a(t)y, \quad \text{or} \quad a(t)y^{(n)},
+			</men>
+			where the coefficient, <m>a(t)</m>, can be a constant or a function of the independent variable <m>t</m> only, and <m>y^{(n)}</m> is the <m>n</m>-th derivative of <m>y</m>.
+		</p>
+
+		<p>
+			For example, the following terms are linear:
+			<me>
+				\us{a(t)}{\us{\uparrow}{\ul{23}}}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{2t^3}}}y'', \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{\frac{1}{t}}}}y^{(5)}, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{e^{2t}}}}y, \quad 
+				\us{a(t)}{\us{\uparrow}{\ul{7\sin(t)}}}y'.
+			</me>
+		</p>
+
+		<p>
+			The <xref ref="summary-coefficients" text="custom">coefficient</xref> of the term actually has no affect on whether it's linear, regardless of how complicated <m>a(t)</m> appears.
+		</p>
+
+		<exercise label="order-linearity-cyu-4">
+
+			<statement>
+				<p>
+					Each of the following terms is linear. Identify the coefficient <m>a(t)</m> in each term:
+				</p>
+
+				<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+					<p><m>1.</m></p>
+					<p><me>2ty''</me></p>
+					<p><m>a(t) = </m> <fillin width="4" mode="string" answer="2t" /></p>
+				</sidebyside>
+
+				<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+					<p><m>2.</m></p>
+					<p><me>y^{(3)}\sin(t)</me></p>
+					<p><m>a(t) = </m> <fillin width="4" mode="string" answer="sin(t)" /></p>
+				</sidebyside>
+
+				<sidebyside widths="5% 30% 25%" margins="20% 20%" valign="middle">
+					<p><m>3.</m></p>
+					<p><me>y</me></p>
+					<p><m>a(t) = </m> <fillin width="4" mode="string" answer="1" /></p>
+				</sidebyside>
+			</statement>
+			
+			<evaluation>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(2t|2\s*t|2\s*\*\s*t|2\(t\))\s*</strcmp>
+						<feedback><p>Correct! <m>a(t) = 2t</m>.</p></feedback>
+					</test>
+					<test>
+						<strcmp>\s*(2|two)\s*</strcmp>
+						<feedback><p>Incorrect. The coefficient is more than just <m>2</m>.</p></feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback><p>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</p></feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback><p>Type in something ...</p></feedback></test>
+					<test><strcmp>.*</strcmp><feedback><p>Incorrect</p></feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(sin\(\s*t\s*\)|sin\s*t|sine\s*t)\s*</strcmp>
+						<feedback><p>Correct! <m>a(t) = \sin(t)</m>.</p></feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback><p>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</p></feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback><p>Type in something ...</p></feedback></test>
+					<test><strcmp>.*</strcmp><feedback><p>Incorrect</p></feedback></test>
+				</evaluate>
+				<evaluate>
+					<test correct="yes">
+						<strcmp>\s*(1|one)\s*</strcmp>
+						<feedback><p>Correct! <m>a(t) = 1</m>.</p></feedback>
+					</test>
+					<test>
+						<strcmp>\s*(y|Y)\s*</strcmp>
+						<feedback><p>Incorrect. <m>a(t)</m> should not contain <m>y</m>.</p></feedback>
+					</test>
+					<test><strcmp>\s*</strcmp><feedback><p>Type in something ...</p></feedback></test>
+					<test><strcmp>.*</strcmp><feedback><p>Incorrect</p></feedback></test>
+				</evaluate>
+			</evaluation>
+
+		</exercise>
+
+	</paragraphs>
+
+	<paragraphs label="nonlinear-terms" xml:id="identifying-nonlinear-terms">
+		<title>Nonlinear Terms</title>
+
+		<p>
+			A term is <term>nonlinear</term> if it not in one of the forms in <xref ref="linear-term-forms"/>. Assuming <m>y</m> is the dependent variable, some telltale signs that a term is nonlinear include:
+			<ul marker="square">
+				<li><p><m>y</m> or <m>y^{(n)}</m> are raised to a power other than 1 <m>\left(\text{e.g.,}\ y^2,\ (y')^{-4}\right)</m>.</p></li>
+				<li><p><m>y</m> or <m>y^{(n)}</m> appear inside a nonlinear function <m>\left(\text{e.g.,}\ \ln(y),\ \sin(y),\ e^{y'}\ \right)</m>.</p></li>
+				<li><p><m>y</m> or <m>y^{(n)}</m> are multiplied or divided by each other <m>\left(\text{e.g.,}\ y y''',\ \sfrac{y'}{y}\right)</m>.</p></li>
+			</ul>
+		</p>
+
+		<p>
+			Let's apply these strategies by breaking down the linearity of each term in the following differential equation:
+			<me>
+			y\frac{d^5y}{dt^5} + 2t^3\ \frac{d^2y}{dt^2} + \ln\left(\frac{dy}{dt}\right) + y^2 = t^3
+			</me>
+		</p>
+
+		<p>
+			The terms are:
+			<dl>
+				<li>
+				<title><m>\ds y\frac{d^5y}{dt^5}</m></title>
+				<p>
+					Nonlinear. This term involves a product of the dependent variable and its derivative, violating the rule that only one can appear in a term.
+				</p>
+				</li>
+				<li>
+				<title><m>\ds 2t^3\frac{d^2y}{dt^2}</m></title>
+				<p>
+					Linear. The derivative <m>y''</m> appears by itself and to the first power. The coefficient <m>2t^3</m> does not affect linearity.
+				</p>
+				</li>
+				<li>
+				<title><m>\ds \ln\left(\frac{dy}{dt}\right)</m></title>
+				<p>
+					Nonlinear. The derivative <m>y'</m> appears inside a nonlinear function, the natural logarithm.
+				</p>
+				</li>
+				<li>
+				<title><m>\ds y^2</m></title>
+				<p>
+					Nonlinear. The dependent variable appears raised to a power other than one.
+				</p>
+				</li>
+				<li>
+				<title><m>\ds t^3</m></title>
+				<p>
+					Linear. This term doesn't involve the dependent variable or any of its derivatives.
+				</p>
+				</li>
+			</dl>
+		</p>
+
+		<exercise label="order-linearity-cyu-5">
+
+			<statement>
+				<tabular>
+					<col width="3%"/>
+					<row>
+						<cell colspan="2">Directions:</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Match (by dragging) each term (on the left) to either Linear or Nonlinear.</cell>
+					</row>
+					<row>
+						<cell><p>🔹</p></cell>
+						<cell>Assume the dependent variable is <m>y</m> and the independent variable is <m>t</m>.</cell>
+					</row>
+				</tabular>	
+			</statement>
+
+			<cardsort>
+				<match>
+					<premise><m>3y''</m></premise>
+					<premise><m>t^2y</m></premise>
+					<premise><m>y' \cos t</m></premise>
+					<premise><m>3/t</m></premise>
+					<response>Linear</response>
+				</match>
+				<match>
+					<premise><m>y^2</m></premise>
+					<premise><m>\sin(y')</m></premise>
+					<response>Non-Linear Term</response>
+				</match>
+			</cardsort>
+
+		</exercise>
+
+		<p>
+			See if you can identify the linearity of the terms in the following examples, before looking at the solutions.
+		</p>
+
+		<example>
+			<title>Identify the Linearity of the Terms</title>
+			<statement>
+				<p>Determine whether each term in the equation is linear or nonlinear:</p>
+			
+				<sidebyside>
+					<p>
+						<m>
+							\dfrac{1}{t}y'' + y^2 + \ln(y') = e^t
+						</m>
+						<solution>
+							<p>
+								Focus on the dependent variable, <m>{\color{BurntOrange} y}</m>, and its derivatives.
+								<md>
+									<mrow>
+									\underset{\overline{\text{linear}}}{\frac{1}{t}{\color{BurntOrange} y''}} +
+									\underset{\overline{\text{nonlinear}}}{{\color{BurntOrange} y}^2} +
+									\underset{\overline{\text{nonlinear}}}{\ln({\color{BurntOrange} y'})} =\ 
+									\underset{\overline{\text{linear}}}{e^t}
+									</mrow>
+								</md>
+							</p>
+						</solution>
+					</p>
+					<p>
+						<m>
+							P^{(6)} + \dfrac{m P'}{P} = (m - 1)^2
+						</m>
+						<solution>
+							<p>
+								Focus on the dependent variable, <m>{\color{BurntOrange} P}</m>, and its derivatives.
+								<md>
+									<mrow>
+									\underset{\text{linear}}{\underline{\color{BurntOrange} P^{(6)}}} +
+									\underset{\overline{\text{nonlinear}}}{\frac{m {\color{BurntOrange} P'}}{{\color{BurntOrange} P}}} =\ 
+									\underset{\text{linear}}{\underline{(m - 1)^2}}
+									</mrow>
+								</md>
+							</p>
+						</solution>
+					</p>
+				</sidebyside>
+
+			</statement>
+
+		</example>
+
+		<exercise label="order-linearity-cyu-6">
+
+			<statement>
+				<p>
+					For each differential equation, click on all of the <em>nonlinear terms</em>.
+				</p>
+			</statement>
+
+			<areas>
+				<sidebyside width="75%">
+					<p>
+						<area correct="no"> <m>\ds \frac{d^2y}{dt^2} </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds t^2 y </m></area> <m>\ +\ </m>
+						<area correct="yes"><m>\ds y^2 </m></area> <m>\ -\ </m>
+						<area correct="no"> <m>\ds \sin(t) y' </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 3t </m></area>
+					</p>
+				</sidebyside>
+				<sidebyside width="80%">
+					<p>
+						<area correct="yes"><m>\ds tyy' </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds e^t \frac{d^3y}{dt^3} </m></area> <m>\ -\ </m>
+						<area correct="yes"><m>\ds \ln(y) </m></area> <m>\ +\ </m>
+						<area correct="no"> <m>\ds \frac{y}{t} </m></area> <m>\ +\ </m>
+						<area correct="yes"> <m>\ds \frac{t}{y}\frac{d^2y}{dt^2} </m></area> <m>\ =\ </m>
+						<area correct="no"> <m>\ds 0 </m></area>
+					</p>
+				</sidebyside>
+			</areas>
+			
+		</exercise>
+
+	</paragraphs>
+
+</section>
