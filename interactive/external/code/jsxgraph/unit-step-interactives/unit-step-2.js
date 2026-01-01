@@ -13,7 +13,7 @@
 		tAxis: true,
 		yAxis: true,
 		txtLabels: [],
-		imgLabels: [[0.35, xmax - 0.3, -0.7, 45 / 81, 't']],
+		imgLabels: [[0.35, xmax - 0.3, -0.7, 1 / 2, 't']],
 	});
 
 	const cAxis = plotboard1.board.create('line', [[xmin, 0], [xmax, 0]], { visible: false });
@@ -32,7 +32,7 @@
 	const cLabel1 = plotboard1.board.create('image', [
 		imgPath + "c.png",
 		[() => c.X() - 0.08, ymin + 0.3],
-		[0.25 * plotboard1.boardAspect * (59 / 57), 0.25]
+		[0.25 * plotboard1.boardAspect * (60 / 80), 0.25]
 	], {
 		fixed: true,
 		xAnchor: 'center',
@@ -106,7 +106,7 @@
 				options: { color: 'blue', strokeWidth: 3, opacity: 0.3, dash: 3 }
 			},
 		],
-		imgToggle: [1.1, 1.5, 1.7, 596 / 299, 'lp-15thtsqrd-1-rp', plotboard1]
+		imgToggle: [1, 1.5, 1.8, 400 / 300, 'lp-15thtsqrd-1-rp', plotboard1]
 	});
 
 	const u = createPiecewise({
@@ -123,7 +123,7 @@
 				options: { color: 'green', strokeWidth: 3, opacity: 0.3, dash: 3 }
 			},
 		],
-		imgToggle: [0.5, 3, 2, 248 / 125, 'uc', plotboard1]
+		imgToggle: [0.5, 2.9, 2, 200 / 150, 'uc', plotboard1]
 	});
 
 	const fu = createPiecewise({
@@ -140,6 +140,6 @@
 				options: { color: 'red', strokeWidth: 3 }
 			},
 		],
-		imgToggle: [0.5, 0.35, 2, 337 / 111, 'gt-equals', plotboard1]
+		imgToggle: [0.5, 0.3, 2, 300 / 150, 'gt-equals', plotboard1]
 	});
 })();
