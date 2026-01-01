@@ -1,0 +1,338 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="separable-form">
+	<title>Separable Form</title>
+
+	<p>
+		Some differential equations can be rewritten so that all the <m>x</m> terms are on one side and all the <m>y</m> terms are on the other. Such equations are called <em>separable</em>, which is defined more precisely as follows.
+	</p>
+
+	<paragraphs>
+		<title>Definition of Separable &amp; Separable Form</title>
+
+		<definition xml:id="separable">
+			<title>Separable Form</title>
+
+			<statement>
+				<p>
+					A first-order differential equation is <term>separable</term> if it can be written in following <term>separable form</term>
+					<men xml:id="separable-form">
+						\dfrac{dy}{dx} = f(x) \cdot g(y)
+					</men>.
+				</p>
+			</statement>
+
+		</definition>
+
+		<p>
+			The notation, <m>f(x) \cdot g(y)</m>, can seem strange at first glance, so let's break it down.
+		</p>
+
+		<p>
+			Here, <m>f(x)</m> is just a stand-in for any expression that only involves the variable <m>x</m> and possibly a constant. For example, it might be:
+			<me>
+				13\sin(3x), \quad 3x - 2e^{4x}, \quad \dfrac{2^x}{1+x}, \quad 1, \quad \text{etc.}
+			</me>
+		</p>
+
+		<p>
+			Likewise, <m>g(y)</m> stands for any expression involving only <m>y</m> and constants:
+			<me>
+				\sin(y+\cos y), \quad 3y^2 + 1, \quad \dfrac{1}{y}, \quad 1, \quad \text{etc.}
+			</me>
+		</p>
+
+		<p>
+			So when we say <m>f(x) \cdot g(y)</m>, we just mean any product where one factor depends only on <m>x</m> and the other only on <m>y</m>.
+		</p>
+
+		<exercise label="sov-form-cyu-1">
+
+			<statement>
+				<p>
+					Match each expression to function notation that best describes it.
+					<me/><!-- Vertical space hack. Is there a better way? -->
+				</p>
+				
+				<sidebyside widths="36% 64%">
+					<p><m>\color{RoyalBlue}\small\text{Expression}\ ⤵︎ </m></p>
+					<p><m>\color{BurntOrange}\small\text{Function Notation}\ ⤵︎</m></p>
+				</sidebyside>
+			</statement>
+
+			<cardsort>
+
+				<match>
+					<premise> <m>\sqrt{x} + 1	</m></premise>
+					<response><m>f(x)					</m></response>
+				</match>
+
+				<match>
+					<premise> <m>\ln(y)		</m></premise>
+					<premise> <m>y^2 + y	</m></premise>
+					<response><m>g(y)			</m></response>
+				</match>
+
+				<match>
+					<premise> <m>3y + x\cos(x)	</m></premise>
+					<response><m>f(x) + g(y)		</m> </response>
+				</match>
+
+				<match>
+					<premise> <m>ye^x							</m></premise>
+					<premise> <m>(x^2+3)(y-1)			</m></premise>
+					<response><m>f(x) \cdot g(y)	</m> </response>
+				</match>
+
+				<match>
+					<premise> <m>\sqrt{x+y}			</m></premise>
+					<response> None of the Above </response>
+				</match>
+			</cardsort>
+
+		</exercise>
+
+	</paragraphs>
+
+	<paragraphs>
+		<title>Separable Differential Equations</title>
+
+		<p>
+			Now that the notation makes sense, here are some examples of differential equations in separable form:
+			<me>
+				\dfrac{dy}{dx} = {\ub{(x^2 + 1) \cdot (y - 6)}_{\large f(x)\ \cdot\ g(y)}}^3 , \qquad
+				\dfrac{dy}{dx} = \ub{\sin(y) \cdot \cos(x)}_{\large g(y)\ \cdot\ f(x)}.
+			</me>
+		</p>
+
+		<p>
+			Differential equations can still be separable even if one of the variables does not explicitly appear. For example, all of the equations are separable:
+			<ul marker="square">
+				<li><m>\dfrac{dy}{dx} = 6x + 5 = (6x + 5) \cdot (1)\qquad \leftarrow\ f(x) \cdot g(y)</m></li>
+				<li><m>\dfrac{dP}{dt} = P\ (P-1) = (1) \cdot (\ P\ (P-1)\ )\qquad \leftarrow\ f(t) \cdot g(P)</m></li>
+				<li><m>\dfrac{dy}{dx} = 15 = (3) \cdot (5)\qquad \leftarrow\ f(x) \cdot g(y)</m></li>
+			</ul>
+		</p>
+
+	</paragraphs>
+
+	<paragraphs>
+		<title>Non-Separable Differential Equations</title>
+
+		<p>
+			As important as it is to show an equation is separable, it is equally important to identify when it is not. The next example demonstrates some non-separable equations.
+		</p>
+
+		<example xml:id="example-non-separable">
+
+			<statement>
+				<p>
+					Explain why the differential equations are NOT separable.
+					<ol marker="A." cols="3">
+						<li><m>\dfrac{d^2y}{dx^2} = xy^2</m></li>
+						<li><m>\dfrac{dy}{dx} = -6x + 2y</m></li>
+						<li><m>\dfrac{dy}{dx} = \cos(xy)</m></li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+
+				<p>
+					<ol marker="A.">
+						<li>
+							<p>
+								The first equation is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, <em>separability does not apply</em>.
+							</p>
+						</li>
+						<li>
+							<p>
+								The second equation is first-order, but it is not separable since <m>-6x + 2y</m> cannot be expressed in function notation form <m>f(x) \cdot g(y)</m>.
+							</p>
+						</li>
+						<li>
+							<p>
+								The last equation is first-order, but there are no trigonometric identities that you could apply to <m>\cos(xy)</m> to separate the <m>x</m> and <m>y</m> parts by multiplication.
+							</p>
+						</li>
+					</ol>
+				</p>
+
+
+			</solution>
+
+		</example>
+
+	</paragraphs>
+
+	<exercise label="sov-form-cyu-3">
+
+		<task label="sov-form-cyu-3-task-1">
+			<statement>
+				<p>
+					Which of the following differential equations is not separable?
+				</p>
+			</statement>
+
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\dfrac{dy}{dx} = \sin(x)\cos(y)</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation is separable because it can be expressed as a product of functions involving only <m>x</m> and <m>y</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\dfrac{dy}{dx} = e^x \cdot y^2</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation is separable as the variables are already separated by multiplication.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad\ds\dfrac{dy}{dx} = x + y</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! This equation is not separable because the terms involving <m>x</m> and <m>y</m> are added together, not multiplied.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\dfrac{dy}{dx} = \dfrac{x}{y}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation is separable because the variables are divided, which can still be separated into a product of functions.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="sov-form-cyu-3-task-2">
+
+			<statement>
+				<p>
+					Select each of the separable differential equations below.
+				</p>
+			</statement>
+
+			<areas>
+				<tabular>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = xy^2						</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dz}{dt} = \cos^2 z				</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = \ln(x)\tan(y)	</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="no"><m>\normalsize\dfrac{dy}{dx} = y - x^2	</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = \pi		</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = 1 - y	</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = y^2		</m></area></cell><cell/>
+						<cell><area correct="no"><m>\normalsize\dfrac{dy}{dx} = x - 3y	</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\normalsize\dfrac{dy}{dx} = -44		</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+				</tabular>
+			</areas>
+
+			<feedback>
+				<p>
+					Remember, a differential equation is separable if you can express it as a product of functions of <m>x</m> and <m>y</m> separately. Look for equations where the variables are separated by multiplication, not addition or other operations.
+				</p>
+			</feedback>
+		</task>
+
+		<task label="sov-form-cyu-3-task-3">
+			<statement>
+				<p>
+					The term separable refers to the idea that the dependent and independent variables can be separated by <fillin characters="15" />.
+				</p>
+			</statement>
+
+			<choices>
+				<choice correct="yes">
+					<statement>
+						<p>
+							multiplication
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct!
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							addition
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Read the first sentence of this page.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							integration
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Read the first sentence of this page.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>gender</p>
+					</statement>
+					<feedback>
+						<p>
+							<image width="50%" source="figures/dumb.gif">
+								<shortdescription>(What?)</shortdescription>
+							</image>
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	</exercise>
+
+</section>
