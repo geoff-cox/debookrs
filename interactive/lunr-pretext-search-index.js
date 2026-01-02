@@ -178,7 +178,7 @@ var ptx_lunr_docs = [
   "type": "Subsection",
   "number": "",
   "title": "💡 Conceptual Quiz",
-  "body": " 💡 Conceptual Quiz    True or False   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation.    True  Incorrect, derivative equation is not a standard term in mathematics.    False  Correct!      The expression is the same as to the power of 18.    True  Incorrect. Please read the note on derivative notation.    False  Correct!      In a differential equation, the dependent variable always has at least one derivative applied to it.    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.      Select All the TRUE statements    For an equation to be a differential equation, it must contain a first-order derivative.  A differential equation must contain a derivative of any order.    The dependent variable is a function of the independent varaible.  Incorrect. Please review the definition of ODEs and PDEs.    The independent variable is a function of the dependent varaible.  The dependent variable is the function, which depends on the independent variable.    An ordinary differential equation (ODE) contains exactly one independent variable.  An ordinary differential equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a partial differential equation (PDE).       Multiple Choice   Differential equations differ from algebraic equations in that they contain .    solutions  Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     variables  Incorrect. Any equation could contain a variable.    unknowns  Incorrect. Most equations contain an unknown.    derivatives  Correct! If an equation contains a derivative, it is a differential equation.      What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.  Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.    The number of derivatives in the equation.  Incorrect. Please review the definition of ODEs and PDEs.    The number of solutions the equation has.  Incorrect. Please review the definition of ODEs and PDEs.    The number of hours it takes to solve the equation.  Incorrect. Please review the definition of ODEs and PDEs.      What makes differential equations different from other equations?    They involve derivatives of an unknown function.  Correct! Differential equations are defined by their inclusion of derivatives.    They have many solutions.  Incorrect. While many differential equations can have multiple solutions, this is not what makes them unique.    They involve variables.  Incorrect. Any equation could contain as a variable.    There solutions are always functions.  Incorrect. While the solutions to differential equations are often functions, this is not what makes them unique.      Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.  Incorrect. A differential equation does include an unknown function, which we are solving for.    An -variable.  Correct! An -variable is not a requirement for a differential equation.    A derivative.  Incorrect. The presence of at least one derivative is essential to define a differential equation.    An \"=\" sign.  Incorrect. An equality sign is required for an equation to be classified as a differential equation.       Which variable in the differential equation, , represents the unknown function we would like to find?     dependent variable,   Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,   Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,   Yes! We are solving for the unknown, which is the dependent variable in this equation.    independent variable,   Incorrect. We are solving for , but it is not the independent variable.       Which variable, in the differential equation below, does the solution of this equation depend on?      The solution, , depends on the dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    The solution, , depends on the independent variable,  Yes! the solution, , depends on the independent variable .    The solution, , depends on the dependent variable,  Incorrect. is the solution, so it does not depend on .    The solution, , depends on the independent variable,  Incorrect. The variable is not the independent variable.       Identify the free term of the differential equation         Incorrect. This term involves the dependent variable , so it is not a free term.       Incorrect. This term involves the dependent variable , so it is not a free term.       Correct! The free term is because we can rewrite the equation as .    This equation does not have a free term.  Incorrect. Every DE has a least one free term.       "
+  "body": " 💡 Conceptual Quiz    True or False   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation.    True  Incorrect, derivative equation is not a standard term in mathematics.    False  Correct!      The expression is the same as to the power of 18.    True  Incorrect. Please read the note on derivative notation.    False  Correct!      In a differential equation, the dependent variable always has at least one derivative applied to it.    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.      Select All the TRUE statements    For an equation to be a differential equation, it must contain a first-order derivative.  A differential equation must contain a derivative of any order.    The dependent variable is a function of the independent variable.  Incorrect. Please review the definition of ODEs and PDEs.    The independent variable is a function of the dependent variable.  The dependent variable is the function, which depends on the independent variable.    An ordinary differential equation (ODE) contains exactly one independent variable.  An ordinary differential equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a partial differential equation (PDE).       Multiple Choice   Differential equations differ from algebraic equations in that they contain .    solutions  Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     variables  Incorrect. Any equation could contain a variable.    unknowns  Incorrect. Most equations contain an unknown.    derivatives  Correct! If an equation contains a derivative, it is a differential equation.      What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.  Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.    The number of derivatives in the equation.  Incorrect. Please review the definition of ODEs and PDEs.    The number of solutions the equation has.  Incorrect. Please review the definition of ODEs and PDEs.    The number of hours it takes to solve the equation.  Incorrect. Please review the definition of ODEs and PDEs.      What makes differential equations different from other equations?    They involve derivatives of an unknown function.  Correct! Differential equations are defined by their inclusion of derivatives.    They have many solutions.  Incorrect. While many differential equations can have multiple solutions, this is not what makes them unique.    They involve variables.  Incorrect. Any equation could contain as a variable.    Their solutions are always functions.  Incorrect. While the solutions to differential equations are often functions, this is not what makes them unique.      Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.  Incorrect. A differential equation does include an unknown function, which we are solving for.    An -variable.  Correct! An -variable is not a requirement for a differential equation.    A derivative.  Incorrect. The presence of at least one derivative is essential to define a differential equation.    An \"=\" sign.  Incorrect. An equality sign is required for an equation to be classified as a differential equation.       Which variable in the differential equation, , represents the unknown function we would like to find?     dependent variable,   Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,   Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,   Yes! We are solving for the unknown, which is the dependent variable in this equation.    independent variable,   Incorrect. We are solving for , but it is not the independent variable.       Which variable, in the differential equation below, does the solution of this equation depend on?      The solution, , depends on the dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    The solution, , depends on the independent variable,  Yes! The solution, , depends on the independent variable .    The solution, , depends on the dependent variable,  Incorrect. is the solution, so it does not depend on .    The solution, , depends on the independent variable,  Incorrect. The variable is not the independent variable.       Identify the free term of the differential equation         Incorrect. This term involves the dependent variable , so it is not a free term.       Incorrect. This term involves the dependent variable , so it is not a free term.       Correct! The free term is because we can rewrite the equation as .    This equation does not have a free term.  Incorrect. Every DE has at least one free term.       "
 },
 {
   "id": "wad-cq-tf",
@@ -187,7 +187,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "1",
   "title": "True or False.",
-  "body": " True or False   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation.    True  Incorrect, derivative equation is not a standard term in mathematics.    False  Correct!      The expression is the same as to the power of 18.    True  Incorrect. Please read the note on derivative notation.    False  Correct!      In a differential equation, the dependent variable always has at least one derivative applied to it.    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.      Select All the TRUE statements    For an equation to be a differential equation, it must contain a first-order derivative.  A differential equation must contain a derivative of any order.    The dependent variable is a function of the independent varaible.  Incorrect. Please review the definition of ODEs and PDEs.    The independent variable is a function of the dependent varaible.  The dependent variable is the function, which depends on the independent variable.    An ordinary differential equation (ODE) contains exactly one independent variable.  An ordinary differential equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a partial differential equation (PDE).     "
+  "body": " True or False   An equation that contains an \"=\" sign and at least one derivative is called a derivative equation.    True  Incorrect, derivative equation is not a standard term in mathematics.    False  Correct!      The expression is the same as to the power of 18.    True  Incorrect. Please read the note on derivative notation.    False  Correct!      In a differential equation, the dependent variable always has at least one derivative applied to it.    True  Correct! The dependent variable in a differential equation always has a derivative applied to it.    False  Incorrect. By definition, a differential equation involves derivatives of the dependent variable.      Select All the TRUE statements    For an equation to be a differential equation, it must contain a first-order derivative.  A differential equation must contain a derivative of any order.    The dependent variable is a function of the independent variable.  Incorrect. Please review the definition of ODEs and PDEs.    The independent variable is a function of the dependent variable.  The dependent variable is the function, which depends on the independent variable.    An ordinary differential equation (ODE) contains exactly one independent variable.  An ordinary differential equation (ODE) contains exactly one independent variable. If it contained more than one, it would be a partial differential equation (PDE).     "
 },
 {
   "id": "wad-cq-mc",
@@ -196,7 +196,7 @@ var ptx_lunr_docs = [
   "type": "Exercise",
   "number": "2",
   "title": "Multiple Choice.",
-  "body": " Multiple Choice   Differential equations differ from algebraic equations in that they contain .    solutions  Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     variables  Incorrect. Any equation could contain a variable.    unknowns  Incorrect. Most equations contain an unknown.    derivatives  Correct! If an equation contains a derivative, it is a differential equation.      What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.  Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.    The number of derivatives in the equation.  Incorrect. Please review the definition of ODEs and PDEs.    The number of solutions the equation has.  Incorrect. Please review the definition of ODEs and PDEs.    The number of hours it takes to solve the equation.  Incorrect. Please review the definition of ODEs and PDEs.      What makes differential equations different from other equations?    They involve derivatives of an unknown function.  Correct! Differential equations are defined by their inclusion of derivatives.    They have many solutions.  Incorrect. While many differential equations can have multiple solutions, this is not what makes them unique.    They involve variables.  Incorrect. Any equation could contain as a variable.    There solutions are always functions.  Incorrect. While the solutions to differential equations are often functions, this is not what makes them unique.      Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.  Incorrect. A differential equation does include an unknown function, which we are solving for.    An -variable.  Correct! An -variable is not a requirement for a differential equation.    A derivative.  Incorrect. The presence of at least one derivative is essential to define a differential equation.    An \"=\" sign.  Incorrect. An equality sign is required for an equation to be classified as a differential equation.       Which variable in the differential equation, , represents the unknown function we would like to find?     dependent variable,   Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,   Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,   Yes! We are solving for the unknown, which is the dependent variable in this equation.    independent variable,   Incorrect. We are solving for , but it is not the independent variable.       Which variable, in the differential equation below, does the solution of this equation depend on?      The solution, , depends on the dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    The solution, , depends on the independent variable,  Yes! the solution, , depends on the independent variable .    The solution, , depends on the dependent variable,  Incorrect. is the solution, so it does not depend on .    The solution, , depends on the independent variable,  Incorrect. The variable is not the independent variable.       Identify the free term of the differential equation         Incorrect. This term involves the dependent variable , so it is not a free term.       Incorrect. This term involves the dependent variable , so it is not a free term.       Correct! The free term is because we can rewrite the equation as .    This equation does not have a free term.  Incorrect. Every DE has a least one free term.     "
+  "body": " Multiple Choice   Differential equations differ from algebraic equations in that they contain .    solutions  Incorrect. While this statement is generally true, it is not what makes it different from any other equation.     variables  Incorrect. Any equation could contain a variable.    unknowns  Incorrect. Most equations contain an unknown.    derivatives  Correct! If an equation contains a derivative, it is a differential equation.      What distinguishes an ordinary differential equation (ODE) from a partial differential equation (PDE)?    The number of variables the unknown function depends on.  Correct! An ODE has derivatives with respect to a single variable, while a PDE involves multiple variables.    The number of derivatives in the equation.  Incorrect. Please review the definition of ODEs and PDEs.    The number of solutions the equation has.  Incorrect. Please review the definition of ODEs and PDEs.    The number of hours it takes to solve the equation.  Incorrect. Please review the definition of ODEs and PDEs.      What makes differential equations different from other equations?    They involve derivatives of an unknown function.  Correct! Differential equations are defined by their inclusion of derivatives.    They have many solutions.  Incorrect. While many differential equations can have multiple solutions, this is not what makes them unique.    They involve variables.  Incorrect. Any equation could contain as a variable.    Their solutions are always functions.  Incorrect. While the solutions to differential equations are often functions, this is not what makes them unique.      Which of the following is NOT required for an equation to be classified as a differential equation?    An unknown function.  Incorrect. A differential equation does include an unknown function, which we are solving for.    An -variable.  Correct! An -variable is not a requirement for a differential equation.    A derivative.  Incorrect. The presence of at least one derivative is essential to define a differential equation.    An \"=\" sign.  Incorrect. An equality sign is required for an equation to be classified as a differential equation.       Which variable in the differential equation, , represents the unknown function we would like to find?     dependent variable,   Incorrect. is neither the dependent variable, nor what we are solving for.    independent variable,   Incorrect! is the independent variable, but it is not what we are solving for.    dependent variable,   Yes! We are solving for the unknown, which is the dependent variable in this equation.    independent variable,   Incorrect. We are solving for , but it is not the independent variable.       Which variable, in the differential equation below, does the solution of this equation depend on?      The solution, , depends on the dependent variable,  Incorrect. The solution depends on , but is not a dependent variable.    The solution, , depends on the independent variable,  Yes! The solution, , depends on the independent variable .    The solution, , depends on the dependent variable,  Incorrect. is the solution, so it does not depend on .    The solution, , depends on the independent variable,  Incorrect. The variable is not the independent variable.       Identify the free term of the differential equation         Incorrect. This term involves the dependent variable , so it is not a free term.       Incorrect. This term involves the dependent variable , so it is not a free term.       Correct! The free term is because we can rewrite the equation as .    This equation does not have a free term.  Incorrect. Every DE has at least one free term.     "
 },
 {
   "id": "wad-practice-drills",
@@ -694,270 +694,270 @@ var ptx_lunr_docs = [
   "body": " Interactive Follow-up Questions   Adjust the initial condition in the interactive to help you answer the following:    Find the particular solution   Find the particular solution that satisfies .      Incorrect. The value of must make the solution pass through . Hover over the curve in the figure that passes through .     Incorrect. Remember that at , the exponential term equals 1, so . What value of gives ? Hover over the curve in the figure that passes through .     Correct! The value ensures that , so this solution passes through .     Incorrect. The general solution would pass through if . Hover over the curve in the figure that passes through .      Find the initial condition   What is the initial condition for the particular solution ?      Correct! Moving to this point gives the particular solution above.     Incorrect. Hint: move around until you see the particular solution above. .     Incorrect. Hint: move around until you see the particular solution above. .     Incorrect. Hint: move around until you see the particular solution above. .      Find the constant .   Find the -value for the particular solution that approximately satisfies .      Correct! Moving to gives a blue curve that nearly passes through the point .     Incorrect. Hint: identify the point and move until the blue curve intersect with this point.     Incorrect. Hint: identify the point and move until the blue curve intersect with this point.     Incorrect. Hint: identify the point and move until the blue curve intersect with this point.      Role of Initial Conditions  What role do initial conditions play in solving differential equations?    They determine the general form of the solution.  Incorrect. Initial conditions are not used to find the general solution.    They used to determine the constants in the general solution.  Correct! Initial conditions are used to find specific values for constants in the general solution.    They are used to find the particular solution.  Correct! Initial conditions are used to find the specific solution that applies to a particular scenario.    They are not needed if the general solution is already known.  Incorrect. If provided, initial conditions are always needed to get the particular solution from the general solution.    C   "
 },
 {
-  "id": "c2-concept-quiz",
+  "id": "solns-concept-quiz",
   "level": "1",
-  "url": "c2-concept-quiz.html",
+  "url": "solns-concept-quiz.html",
   "type": "Subsection",
   "number": "",
   "title": "💡 Conceptual Quiz",
   "body": " 💡 Conceptual Quiz    Abbreviations      DE  Differential Equation    IVP  Initial Value Problem      True or False    In general, differential equations have more than one solution.    True. In general, differential equations have infinitely-many solutions.      The function, , satisfies the differential equation .    False. is not a solution since       A single initial condition always gives you a particular solution?    False. This would only be true when there is one constant in the general solution. When there is more than one constant, then you need multiple initial conditions.  It does, however, limit the possible values of the constants.         is a solution to the differential equation .      True    Incorrect. is not a solution since       False    Correct! is not a solution since         The differential equation, , is an example of an initial-value problem.      True    Incorrect. An initial value problem includes specific initial conditions, which are not provided in this equation.      False    Correct! The equation is a differential equation without initial conditions, so it is not an initial value problem.        Suppose that for some differential equation,  is the family of solutions.  is the general solution.  and are two different particular solutions.    Select all the true statements.       is the collection of all particular solutions.    Correct! A family of solutions includes all possible particular solutions.      Applying one or more initial conditions to gives .    Correct! A particular solution is found by applying initial conditions to the general solution.       is a member of .    Incorrect. The general solution is a form that represents the family of solutions, but it is not itself a member of the family.       & are particular solutions to the same IVP.    Incorrect. Different particular solutions correspond to different initial conditions, so they cannot both be solutions to the same IVP.        Multiple Choice   Select-the-Best-Answer   Which statement best describes a solution to a differential equation?      A function of the dependent variable.    While the solution is a function, it is not a function of the dependent variable.      A function of the independent variable.    Yes, when you solve a differential equation, you are finding a function of the independent variable.      A numerical value.    It is possible for a solution to be a number, but not in general.      A derivative of the dependent variable.    While derivatives of the dependent variable are involved, they do not describe solutions in general.       Select-the-Best-Answer   Consider the differential equation with missing right side: . If is a solution to this equation, what must the right side be?       Incorrect. Try plugging into the visible parts and simplify.       Incorrect. Try plugging into the visible parts and simplify.       Correct! Plugging and into the left-side gives Therefore, the only way satisfies the equation is if the missing right side is .       Select-the-Best-Answer   What is a family of solutions?      A collection of all possible solutions to a differential equation.    Correct! The family of solutions includes every possible particular solution.      The general solution to a differential equation.    Incorrect. The general solution represents a form of the family of solutions, not the entire set.      A single specific solution to a differential equation.    Incorrect. This describes a particular solution, not the family of solutions.      A solution without any constants.    Incorrect. A solution without constants is typically a particular solution, not the entire family.       Select-the-Best-Answer   What does it mean to solve a differential equation?      To find an unknown function that satisfies the equation.    Correct! The goal of solving a differential equation is to find the function that meets the equation's conditions.      To find the derivative of a function.    Incorrect. While derivatives are involved, the goal is to find the function, not just its derivative.      To identify the constants in an equation.    Incorrect. Identifying constants might be part of the process, but it is not the primary goal.      To determine the independent variable.    Incorrect. The independent variable is usually known; we solve for the dependent variable.       Select-the-Best-Answer   Which task is fundamentally different from the others?      Solving a differential equation.    Incorrect. Solving a differential equation is very similar to two other tasks in this list.      Finding the general solution to a differential equation.    Incorrect. Finding the general solution is very similar to two other tasks in this list.      Finding a family of solutions to a differential equation.    Incorrect. Finding a family of solutions is very similar to two other tasks in this list.      Verifying a solution to a differential equation.    Correct! Verifying a solution is much different than the other tasks that seek to find a solution.        Matching   Fill in the Blanks   The words, on the left, have been removed from the statements, on the right.  Drag each word to the panel that contains the statement it was removed from.     dependent   The solution is represented by the  variable.     general  particular   The solution represents all  possible solutions.     independent   The solution depends on the  variable.     satisfies  function   For a to be a solution to a  differential equation, it must  the equation.        Short-Answer Questions   Algebraic vs. Differential Equation Solutions   Consider the algebraic equation .     State what it means for to be a solution to this equation.    Show how you would verify that is a solution. Do not solve for .     Show how you would verify that is a solution.    Are there any differences in how you verify solutions to differentials equations compared to algebraic equations? Explain.         Explain the Difference   In few sentences, explain the difference between a general solution, family of solutions, and a particualr solution.       Explain the Significance   Explain the significance of initial condition(s) as they relate to the particular and general solution of a differential equation.        (a)    To be a solution to the equation, must satisfy the equation. That is, when we substitute into the equation, the result simplifies to a true statement.    Substituting into the equation, we get Since is an undeniably true statement, we have confirmed that is a solution to the equation.    Substituting into the equation, we get Since is not true, so is not a solution to the equation.    The process of verifying solutions to differential equations is exactly the same. However, with differential equations, we have to be more careful about confirming a true statement . With numbers, it is easy to see if is true, but with functions, its a bit more tricky. We have to be sure that the functions are equal for all values of (or the independent variable). For example, the statement is true since . In contrast, the statement is not true since for all values of . It only takes one value of to make the statement false. Let's try a few values of to see this.                                The fact that the statement is not true for is enough to show that this is not a true statement and would not correspond to a solution to a differential equation.     (b)  A general solution represents the form of all possible solutions to a differential equation, typically with one or more arbitrary constants. A family of solutions is an infinite set of solutions, one for each possible combination of constant values in the general solution. A particular solution is a single solution that satisfies the differential equation with specific values for the constants.   (c)  The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution. Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.   (d)  Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine these variables into a single on the left side.       "
 },
 {
-  "id": "c2-cq-tf",
+  "id": "solns-cq-tf",
   "level": "2",
-  "url": "c2-concept-quiz.html#c2-cq-tf",
+  "url": "solns-concept-quiz.html#solns-cq-tf",
   "type": "Exercise",
   "number": "1",
   "title": "True or False.",
   "body": " True or False    In general, differential equations have more than one solution.    True. In general, differential equations have infinitely-many solutions.      The function, , satisfies the differential equation .    False. is not a solution since       A single initial condition always gives you a particular solution?    False. This would only be true when there is one constant in the general solution. When there is more than one constant, then you need multiple initial conditions.  It does, however, limit the possible values of the constants.         is a solution to the differential equation .      True    Incorrect. is not a solution since       False    Correct! is not a solution since         The differential equation, , is an example of an initial-value problem.      True    Incorrect. An initial value problem includes specific initial conditions, which are not provided in this equation.      False    Correct! The equation is a differential equation without initial conditions, so it is not an initial value problem.        Suppose that for some differential equation,  is the family of solutions.  is the general solution.  and are two different particular solutions.    Select all the true statements.       is the collection of all particular solutions.    Correct! A family of solutions includes all possible particular solutions.      Applying one or more initial conditions to gives .    Correct! A particular solution is found by applying initial conditions to the general solution.       is a member of .    Incorrect. The general solution is a form that represents the family of solutions, but it is not itself a member of the family.       & are particular solutions to the same IVP.    Incorrect. Different particular solutions correspond to different initial conditions, so they cannot both be solutions to the same IVP.      "
 },
 {
-  "id": "c2-cq-mc",
+  "id": "solns-cq-mc",
   "level": "2",
-  "url": "c2-concept-quiz.html#c2-cq-mc",
+  "url": "solns-concept-quiz.html#solns-cq-mc",
   "type": "Exercise",
   "number": "2",
   "title": "Multiple Choice.",
   "body": " Multiple Choice   Select-the-Best-Answer   Which statement best describes a solution to a differential equation?      A function of the dependent variable.    While the solution is a function, it is not a function of the dependent variable.      A function of the independent variable.    Yes, when you solve a differential equation, you are finding a function of the independent variable.      A numerical value.    It is possible for a solution to be a number, but not in general.      A derivative of the dependent variable.    While derivatives of the dependent variable are involved, they do not describe solutions in general.       Select-the-Best-Answer   Consider the differential equation with missing right side: . If is a solution to this equation, what must the right side be?       Incorrect. Try plugging into the visible parts and simplify.       Incorrect. Try plugging into the visible parts and simplify.       Correct! Plugging and into the left-side gives Therefore, the only way satisfies the equation is if the missing right side is .       Select-the-Best-Answer   What is a family of solutions?      A collection of all possible solutions to a differential equation.    Correct! The family of solutions includes every possible particular solution.      The general solution to a differential equation.    Incorrect. The general solution represents a form of the family of solutions, not the entire set.      A single specific solution to a differential equation.    Incorrect. This describes a particular solution, not the family of solutions.      A solution without any constants.    Incorrect. A solution without constants is typically a particular solution, not the entire family.       Select-the-Best-Answer   What does it mean to solve a differential equation?      To find an unknown function that satisfies the equation.    Correct! The goal of solving a differential equation is to find the function that meets the equation's conditions.      To find the derivative of a function.    Incorrect. While derivatives are involved, the goal is to find the function, not just its derivative.      To identify the constants in an equation.    Incorrect. Identifying constants might be part of the process, but it is not the primary goal.      To determine the independent variable.    Incorrect. The independent variable is usually known; we solve for the dependent variable.       Select-the-Best-Answer   Which task is fundamentally different from the others?      Solving a differential equation.    Incorrect. Solving a differential equation is very similar to two other tasks in this list.      Finding the general solution to a differential equation.    Incorrect. Finding the general solution is very similar to two other tasks in this list.      Finding a family of solutions to a differential equation.    Incorrect. Finding a family of solutions is very similar to two other tasks in this list.      Verifying a solution to a differential equation.    Correct! Verifying a solution is much different than the other tasks that seek to find a solution.      "
 },
 {
-  "id": "c2-cq-match",
+  "id": "solns-cq-match",
   "level": "2",
-  "url": "c2-concept-quiz.html#c2-cq-match",
+  "url": "solns-concept-quiz.html#solns-cq-match",
   "type": "Exercise",
   "number": "3",
   "title": "Matching.",
   "body": " Matching   Fill in the Blanks   The words, on the left, have been removed from the statements, on the right.  Drag each word to the panel that contains the statement it was removed from.     dependent   The solution is represented by the  variable.     general  particular   The solution represents all  possible solutions.     independent   The solution depends on the  variable.     satisfies  function   For a to be a solution to a  differential equation, it must  the equation.      "
 },
 {
-  "id": "c2-cq-sa",
+  "id": "solns-cq-sa",
   "level": "2",
-  "url": "c2-concept-quiz.html#c2-cq-sa",
+  "url": "solns-concept-quiz.html#solns-cq-sa",
   "type": "Exercise",
   "number": "4",
   "title": "Short-Answer Questions.",
   "body": " Short-Answer Questions   Algebraic vs. Differential Equation Solutions   Consider the algebraic equation .     State what it means for to be a solution to this equation.    Show how you would verify that is a solution. Do not solve for .     Show how you would verify that is a solution.    Are there any differences in how you verify solutions to differentials equations compared to algebraic equations? Explain.         Explain the Difference   In few sentences, explain the difference between a general solution, family of solutions, and a particualr solution.       Explain the Significance   Explain the significance of initial condition(s) as they relate to the particular and general solution of a differential equation.        (a)    To be a solution to the equation, must satisfy the equation. That is, when we substitute into the equation, the result simplifies to a true statement.    Substituting into the equation, we get Since is an undeniably true statement, we have confirmed that is a solution to the equation.    Substituting into the equation, we get Since is not true, so is not a solution to the equation.    The process of verifying solutions to differential equations is exactly the same. However, with differential equations, we have to be more careful about confirming a true statement . With numbers, it is easy to see if is true, but with functions, its a bit more tricky. We have to be sure that the functions are equal for all values of (or the independent variable). For example, the statement is true since . In contrast, the statement is not true since for all values of . It only takes one value of to make the statement false. Let's try a few values of to see this.                                The fact that the statement is not true for is enough to show that this is not a true statement and would not correspond to a solution to a differential equation.     (b)  A general solution represents the form of all possible solutions to a differential equation, typically with one or more arbitrary constants. A family of solutions is an infinite set of solutions, one for each possible combination of constant values in the general solution. A particular solution is a single solution that satisfies the differential equation with specific values for the constants.   (c)  The initial condition(s) specify one or more points that the graph of the solution must pass through. This often allows one to solve for the constants in the general solution. Therefore, the initial condition(s) act to reduce the family of solutions down to a smaller set of solutions or, ideally, a single particular solution.   (d)  Integrating both sides gives Without knowing , we cannot simplify . So the obstacle is that we are unable to combine these variables into a single on the left side.     "
 },
 {
-  "id": "c2-practice-drills",
+  "id": "solns-practice-drills",
   "level": "1",
-  "url": "c2-practice-drills.html",
+  "url": "solns-practice-drills.html",
   "type": "Subsection",
   "number": "",
   "title": "🏋️‍♂️ Practice Drills",
   "body": " 🏋️‍♂️ Practice Drills    Matching Each Function to the Equation it Satisfies   Drag each particular solution, on the left, to the differential equation it satisfies.    Carefully take the derivative of each function separately, then see if the function satisfies one of the equations.                                       Select the Solutions   For each differential equation, select the functions that are solution to that equation.          a.   b.   c.     d.   e.   f.     g.   h.   i.           a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes              a.   b.   c.     d.   e.   f.     g.   h.   i.            a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes          Find the Hidden Right-Hand Side   For each given , assume it is a solution to the differential equation with hidden right side. Give the function that must be on the right for to be a solution to the equation.                                     Find and : and plug them in: Therefore, the differential equation must be .      "
 },
 {
-  "id": "c2-drills-01",
+  "id": "solns-drills-01",
   "level": "2",
-  "url": "c2-practice-drills.html#c2-drills-01",
+  "url": "solns-practice-drills.html#solns-drills-01",
   "type": "Exercise",
   "number": "1",
   "title": "Matching Each Function to the Equation it Satisfies.",
   "body": " Matching Each Function to the Equation it Satisfies   Drag each particular solution, on the left, to the differential equation it satisfies.    Carefully take the derivative of each function separately, then see if the function satisfies one of the equations.                                     "
 },
 {
-  "id": "c2-drills-02",
+  "id": "solns-drills-02",
   "level": "2",
-  "url": "c2-practice-drills.html#c2-drills-02",
+  "url": "solns-practice-drills.html#solns-drills-02",
   "type": "Exercise",
   "number": "2",
   "title": "<span class=\"process-math\">\\(y''-9y = 0\\)<\/span>.",
   "body": "       a.   b.   c.     d.   e.   f.     g.   h.   i.           a. No  b. Yes  c. Yes    d. No  e. No  f. No    g. Yes  h. Yes  i. Yes      "
 },
 {
-  "id": "c2-drills-03",
+  "id": "solns-drills-03",
   "level": "2",
-  "url": "c2-practice-drills.html#c2-drills-03",
+  "url": "solns-practice-drills.html#solns-drills-03",
   "type": "Exercise",
   "number": "3",
   "title": "<span class=\"process-math\">\\(y'' - 10y' + 25y = 0\\)<\/span>.",
   "body": "       a.   b.   c.     d.   e.   f.     g.   h.   i.            a. Yes  b. No  c. Yes    d. No  e. Yes  f. Yes    g. No  h. No  i. Yes       "
 },
 {
-  "id": "c2-drills-04",
+  "id": "solns-drills-04",
   "level": "2",
-  "url": "c2-practice-drills.html#c2-drills-04",
+  "url": "solns-practice-drills.html#solns-drills-04",
   "type": "Exercise",
   "number": "4",
   "title": "<span class=\"process-math\">\\(\\ y(t) = 2e^{-3t}\\)<\/span>.",
   "body": "                "
 },
 {
-  "id": "c2-drills-05",
+  "id": "solns-drills-05",
   "level": "2",
-  "url": "c2-practice-drills.html#c2-drills-05",
+  "url": "solns-practice-drills.html#solns-drills-05",
   "type": "Exercise",
   "number": "5",
   "title": "<span class=\"process-math\">\\(\\ y(t) = 3\\sin(t^2)\\)<\/span>.",
   "body": "                 Find and : and plug them in: Therefore, the differential equation must be .   "
 },
 {
-  "id": "c2-problems-main",
+  "id": "solns-problems-main",
   "level": "1",
-  "url": "c2-problems-main.html",
+  "url": "solns-problems-main.html",
   "type": "Subsection",
   "number": "",
   "title": "✍🏻 Problems",
   "body": " ✍🏻 Problems    Verifying Solutions   For each, verify if the given function, , is a solution to the differential equation.    ,     is a solution to the differential equation .    We need to substitute into the differential equation. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the differential equation: Since when we substitute in to the differential equation, we find that the LHS is equal to the RHS, we have verified that is a solution to the differential equation       ,    It is a solution.    The function is a solution to the differential equation since plugging it in gives        ,    ?    Find and since they appear in the equation and move all terms to the left-side.   Plug in and and simplify. Therefore, is a solution to       ,    ?    Working out the left and right hand sides of this DE, we have:          Since , we have verified that is a solution to        Find the value of   Each of the following differential equations has one or more solutions of the form , for different values of constant, . Find all the values of so that is a solution to the equation.            First we take derivatives so that we can substitute into the differential equation. Now we can substitute into the equation and solve for : Recall that no matter the value of or Thus we have: So the two solutions are                                Find the value of   Each of the following differential equations has one or more solutions of the form , for different values of constant, . Find all the values of so that is a solution to the equation.      We proceed as in the previous question. First we take derivatives so that we can substitute into the differential equation. Now we can substitute into the differential equation: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are               Find the value of   Find the all the values of that makes a solution to the given equation.                             Solutions to Initial-Valued Problems   Answer the following      Show that is a solution to the differential equation .    Find corresponding to the initial condition.         Yes   , so is the particular solution         To show this, let's first move all terms to one side of the equation, so     Now, we will compute and plug it and into the left hand side (LHS) of the equation to see if it simplifies to zero.     Applying gives and so the particular solution is         Verifying Particular Solutions of Initial-Valued Problems Takes 2-Steps   To verifying that a function (e.g., ) is a particular solution to an initial-value problem, there is an extra step beyond showing that it satisfies the differential equation. What else must this function satisfy?    To verify that the function is a particular solution to the initial-value problem , we must show the following two things:     satisfies the differential equation.     satisfies the initial condition.    Let's start by showing that the function satisfies the differential equation.     Now, let's show that the function satisfies the initial condition .          Show is a particular solution to .    Yes    We must show that satisfies both the differential equation and the initial condition.  First, we check if satisfies the differential equation.     Now, we check if satisfies the initial condition .     Since satisfies both the differential equation and the initial condition, it is a particular solution to the initial-valued problem.      Show is a particular solution to .    ?    To verify that the function is a particular solution to the initial-value problem , we must show the following two things:     satisfies the differential equation.     satisfies the initial condition.    Let's start by showing that the function satisfies the differential equation.     Now, let's show that the function satisfies the initial condition .        Find the Correct Solution  Consider the differential equation and the following three functions .   Determine which, if any, of or are solutions to this equation.    For any of the solutions found in (a), find the particular solution that corresponds to the initial condition.        b.   , so is the particular solution       To show this, let's first move all terms to one side of the equation, so     For each of the functions above, we will compute and plug it and into the left hand side (LHS) of the equation to see if it simplifies to zero.        It can be difficult to see why this doesn't simplify to zero. However, if we assume it does, then plugging any into this expression must also give you zero. So, if you can find one value where this doesn't happen, then this function cannot be a solution.  Letting gives , but can be any constant, so is not a solution.          Letting gives , but since can be any constant, is not a solution.          So is a solution.      Setting we get     So the particular solution for this initial condition is          "
 },
 {
-  "id": "c2-problems-verification-01",
+  "id": "solns-problems-verification-01",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-verification-01",
+  "url": "solns-problems-main.html#solns-problems-verification-01",
   "type": "Exercise",
   "number": "1",
   "title": "",
   "body": " ,     is a solution to the differential equation .    We need to substitute into the differential equation. In order to substitute into the left hand side, we need to know the second derivative. So we begin by finding that. Now we can substitute into the differential equation: Since when we substitute in to the differential equation, we find that the LHS is equal to the RHS, we have verified that is a solution to the differential equation     "
 },
 {
-  "id": "c2-problems-verification-02",
+  "id": "solns-problems-verification-02",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-verification-02",
+  "url": "solns-problems-main.html#solns-problems-verification-02",
   "type": "Exercise",
   "number": "2",
   "title": "",
   "body": " ,    It is a solution.    The function is a solution to the differential equation since plugging it in gives      "
 },
 {
-  "id": "c2-problems-verification-03",
+  "id": "solns-problems-verification-03",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-verification-03",
+  "url": "solns-problems-main.html#solns-problems-verification-03",
   "type": "Exercise",
   "number": "3",
   "title": "",
   "body": " ,    ?    Find and since they appear in the equation and move all terms to the left-side.   Plug in and and simplify. Therefore, is a solution to     "
 },
 {
-  "id": "c2-problems-verification-04",
+  "id": "solns-problems-verification-04",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-verification-04",
+  "url": "solns-problems-main.html#solns-problems-verification-04",
   "type": "Exercise",
   "number": "4",
   "title": "",
   "body": " ,    ?    Working out the left and right hand sides of this DE, we have:          Since , we have verified that is a solution to     "
 },
 {
-  "id": "c2-problems-find-r-01",
+  "id": "solns-problems-find-r-01",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-r-01",
+  "url": "solns-problems-main.html#solns-problems-find-r-01",
   "type": "Exercise",
   "number": "5",
   "title": "",
   "body": "         First we take derivatives so that we can substitute into the differential equation. Now we can substitute into the equation and solve for : Recall that no matter the value of or Thus we have: So the two solutions are     "
 },
 {
-  "id": "c2-problems-find-r-02",
+  "id": "solns-problems-find-r-02",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-r-02",
+  "url": "solns-problems-main.html#solns-problems-find-r-02",
   "type": "Exercise",
   "number": "6",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-r-03",
+  "id": "solns-problems-find-r-03",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-r-03",
+  "url": "solns-problems-main.html#solns-problems-find-r-03",
   "type": "Exercise",
   "number": "7",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-r-04",
+  "id": "solns-problems-find-r-04",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-r-04",
+  "url": "solns-problems-main.html#solns-problems-find-r-04",
   "type": "Exercise",
   "number": "8",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-k-01",
+  "id": "solns-problems-find-k-01",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-k-01",
+  "url": "solns-problems-main.html#solns-problems-find-k-01",
   "type": "Exercise",
   "number": "9",
   "title": "",
   "body": "   We proceed as in the previous question. First we take derivatives so that we can substitute into the differential equation. Now we can substitute into the differential equation: Note that there is no value of that can guarantee that is 0. Hence we have So the two solutions are    "
 },
 {
-  "id": "c2-problems-find-k-02",
+  "id": "solns-problems-find-k-02",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-k-02",
+  "url": "solns-problems-main.html#solns-problems-find-k-02",
   "type": "Exercise",
   "number": "10",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-m-01",
+  "id": "solns-problems-find-m-01",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-m-01",
+  "url": "solns-problems-main.html#solns-problems-find-m-01",
   "type": "Exercise",
   "number": "11",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-m-02",
+  "id": "solns-problems-find-m-02",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-m-02",
+  "url": "solns-problems-main.html#solns-problems-find-m-02",
   "type": "Exercise",
   "number": "12",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-problems-find-m-03",
+  "id": "solns-problems-find-m-03",
   "level": "2",
-  "url": "c2-problems-main.html#c2-problems-find-m-03",
+  "url": "solns-problems-main.html#solns-problems-find-m-03",
   "type": "Exercise",
   "number": "13",
   "title": "",
   "body": "       "
 },
 {
-  "id": "c2-ex-ivp-01",
+  "id": "solns-ex-ivp-01",
   "level": "2",
-  "url": "c2-problems-main.html#c2-ex-ivp-01",
+  "url": "solns-problems-main.html#solns-ex-ivp-01",
   "type": "Exercise",
   "number": "14",
   "title": "Answer the following.",
   "body": " Answer the following      Show that is a solution to the differential equation .    Find corresponding to the initial condition.         Yes   , so is the particular solution         To show this, let's first move all terms to one side of the equation, so     Now, we will compute and plug it and into the left hand side (LHS) of the equation to see if it simplifies to zero.     Applying gives and so the particular solution is       "
 },
 {
-  "id": "c2-ex-ivp-02",
+  "id": "solns-ex-ivp-02",
   "level": "2",
-  "url": "c2-problems-main.html#c2-ex-ivp-02",
+  "url": "solns-problems-main.html#solns-ex-ivp-02",
   "type": "Exercise",
   "number": "15",
   "title": "Verifying Particular Solutions of Initial-Valued Problems Takes 2-Steps.",
   "body": " Verifying Particular Solutions of Initial-Valued Problems Takes 2-Steps   To verifying that a function (e.g., ) is a particular solution to an initial-value problem, there is an extra step beyond showing that it satisfies the differential equation. What else must this function satisfy?    To verify that the function is a particular solution to the initial-value problem , we must show the following two things:     satisfies the differential equation.     satisfies the initial condition.    Let's start by showing that the function satisfies the differential equation.     Now, let's show that the function satisfies the initial condition .       "
 },
 {
-  "id": "c2-ex-ivp-03",
+  "id": "solns-ex-ivp-03",
   "level": "2",
-  "url": "c2-problems-main.html#c2-ex-ivp-03",
+  "url": "solns-problems-main.html#solns-ex-ivp-03",
   "type": "Exercise",
   "number": "16",
   "title": "",
   "body": "  Show is a particular solution to .    Yes    We must show that satisfies both the differential equation and the initial condition.  First, we check if satisfies the differential equation.     Now, we check if satisfies the initial condition .     Since satisfies both the differential equation and the initial condition, it is a particular solution to the initial-valued problem.   "
 },
 {
-  "id": "c2-ex-ivp-04",
+  "id": "solns-ex-ivp-04",
   "level": "2",
-  "url": "c2-problems-main.html#c2-ex-ivp-04",
+  "url": "solns-problems-main.html#solns-ex-ivp-04",
   "type": "Exercise",
   "number": "17",
   "title": "",
   "body": "  Show is a particular solution to .    ?    To verify that the function is a particular solution to the initial-value problem , we must show the following two things:     satisfies the differential equation.     satisfies the initial condition.    Let's start by showing that the function satisfies the differential equation.     Now, let's show that the function satisfies the initial condition .      "
 },
 {
-  "id": "c2-ex-ivp-05",
+  "id": "solns-ex-ivp-05",
   "level": "2",
-  "url": "c2-problems-main.html#c2-ex-ivp-05",
+  "url": "solns-problems-main.html#solns-ex-ivp-05",
   "type": "Exercise",
   "number": "18",
   "title": "Find the Correct Solution.",
@@ -1315,139 +1315,6340 @@ var ptx_lunr_docs = [
   "body": "  "
 },
 {
-  "id": "chpt-separable-variables",
+  "id": "separable-form",
   "level": "1",
-  "url": "chpt-separable-variables.html",
-  "type": "Chapter",
-  "number": "5",
-  "title": "Separation of Variables",
-  "body": " Separation of Variables   When a differential equation is both first-order and separable , we can reliably find its general solution using the separation of variables method. At its core, this technique involves rewriting the equation so that all terms are grouped on one side and all terms on the other. Once separated, integrating both sides reveals the general solution that needs a bit of clean-up.  The separation of variables strategy can be summarized by a 3-step workflow:   Verify Separable & Separate Variables ➜ Integrate ➜ Isolate .   This chapter guides you through this process, starting with what it means for an equation to be separable and finishing with how to find the general solution.          A first-order differential equation is Separable when the right-hand side is a product of an -only part and a -only part: .  The separation of variables (SOV) method applies only to differential equations.   Method Workflow:  verify separability and separate variables,  integrate,  solve for (if possible) and combine constants.      It can be helpful to apply initial conditions to find the constant before any step that introduces .    Absolute values often arise from logarithms; resolve by introducing and then absorbing the sign into the constant when appropriate.     "
+  "url": "separable-form.html",
+  "type": "Section",
+  "number": "5.1",
+  "title": "Separable Form",
+  "body": " Separable Form  Some differential equations can be rewritten so that all the terms are on one side and all the terms are on the other. Such equations are called separable , which is defined more precisely as follows.   Definition of Separable & Separable Form   Separable Form   A first-order differential equation is separable if it can be written in following separable form  .    The notation, , can seem strange at first glance, so let's break it down.  Here, is just a stand-in for any expression that only involves the variable and possibly a constant. For example, it might be:   Likewise, stands for any expression involving only and constants:   So when we say , we just mean any product where one factor depends only on and the other only on .    Match each expression to function notation that best describes it.                                      None of the Above       Separable Differential Equations  Now that the notation makes sense, here are some examples of differential equations in separable form:   Differential equations can still be separable even if one of the variables does not explicitly appear. For example, all of the equations are separable:         Non-Separable Differential Equations  As important as it is to show an equation is separable, it is equally important to identify when it is not. The next example demonstrates some non-separable equations.    Explain why the differential equations are NOT separable.            The first equation is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, separability does not apply .    The second equation is first-order, but it is not separable since cannot be expressed in function notation form .    The last equation is first-order, but there are no trigonometric identities that you could apply to to separate the and parts by multiplication.           Which of the following differential equations is not separable?           Incorrect. This equation is separable because it can be expressed as a product of functions involving only and .           Incorrect. This equation is separable as the variables are already separated by multiplication.           Correct! This equation is not separable because the terms involving and are added together, not multiplied.           Incorrect. This equation is separable because the variables are divided, which can still be separated into a product of functions.        Select each of the separable differential equations below.                           Remember, a differential equation is separable if you can express it as a product of functions of and separately. Look for equations where the variables are separated by multiplication, not addition or other operations.      The term separable refers to the idea that the dependent and independent variables can be separated by .      multiplication    Correct!      addition    Read the first sentence of this page.      integration    Read the first sentence of this page.      gender      (What?)         "
 },
 {
-  "id": "separable-variables-takeaways",
+  "id": "separable",
   "level": "2",
-  "url": "chpt-separable-variables.html#separable-variables-takeaways",
-  "type": "🗝️ Key Takeaways ...",
-  "number": "5",
+  "url": "separable-form.html#separable",
+  "type": "📙 Definition",
+  "number": "40",
+  "title": "Separable Form.",
+  "body": " Separable Form   A first-order differential equation is separable if it can be written in following separable form  .   "
+},
+{
+  "id": "sov-form-cyu-1",
+  "level": "2",
+  "url": "separable-form.html#sov-form-cyu-1",
+  "type": "Checkpoint",
+  "number": "41",
   "title": "",
-  "body": "  A first-order differential equation is Separable when the right-hand side is a product of an -only part and a -only part: .  The separation of variables (SOV) method applies only to differential equations.   Method Workflow:  verify separability and separate variables,  integrate,  solve for (if possible) and combine constants.      It can be helpful to apply initial conditions to find the constant before any step that introduces .    Absolute values often arise from logarithms; resolve by introducing and then absorbing the sign into the constant when appropriate.    "
+  "body": "  Match each expression to function notation that best describes it.                                      None of the Above    "
 },
 {
-  "id": "chpt-integrating-factor",
-  "level": "1",
-  "url": "chpt-integrating-factor.html",
-  "type": "Chapter",
-  "number": "6",
-  "title": "Integrating Factor",
-  "body": " Integrating Factor   Not every differential equation will politely separate its variables for us. For first-order linear equations, there's another powerful tool: the integrating factor method . This method works by multiplying the entire equation by a carefully chosen function—an “integrating factor”—that transforms the left side into something much easier to handle: the derivative of a single product.  Here's the intuition: if you start with an equation like there's a function you can multiply through by to make the left-hand side “collapse” into That small algebraic trick opens the door to solving the equation directly by integration.  In this chapter, we'll learn where this mysterious integrating factor comes from, how to find it every time, and how to use it to solve any first-order linear differential equation. By the end, you'll have a systematic three-step process for tackling a huge class of problems.     "
-},
-{
-  "id": "chpt-qualitative",
-  "level": "1",
-  "url": "chpt-qualitative.html",
-  "type": "Chapter",
-  "number": "7",
-  "title": "Qualitative Methods",
-  "body": " Qualitative Methods   Finding a neat formula-like solution to a differential equation feels like the ultimate goal. But in reality, many important equations simply can't be solved that way. The solutions may be too complicated, or they don't exist at all. That doesn't mean we're stuck. Instead, we turn to qualitative methods , a collection of tools for understanding how solutions behave without solving for them explicitly.  Qualitative methods change the question. Instead of asking, What's the exact formula? we ask, What does the solution actually do ? These methods help us see whether solutions rise or fall, where they level off, and how they respond to different initial conditions—just by examining the equation's structure.  An analytic solution gives a precise expression, like . A qualitative approach, by contrast, describes the shape, tendencies, and long-term trends of the solution without pinning it down to an exact formula. Both perspectives are valuable, but qualitative tools become essential when analytic methods hit their limits.  In this chapter, you'll learn to read the behavior of solutions from the equation itself using slope fields, phase lines, and bifurcation diagrams. By the end, you'll be able to look at a differential equation like and describe what's happening—even if you never write down a single solution formula.     "
-},
-{
-  "id": "chpt-qualitative-2-1",
+  "id": "example-non-separable",
   "level": "2",
-  "url": "chpt-qualitative.html#chpt-qualitative-2-1",
+  "url": "separable-form.html#example-non-separable",
+  "type": "🌌 Example",
+  "number": "42",
+  "title": "",
+  "body": "  Explain why the differential equations are NOT separable.            The first equation is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, separability does not apply .    The second equation is first-order, but it is not separable since cannot be expressed in function notation form .    The last equation is first-order, but there are no trigonometric identities that you could apply to to separate the and parts by multiplication.      "
+},
+{
+  "id": "sov-form-cyu-2",
+  "level": "2",
+  "url": "separable-form.html#sov-form-cyu-2",
+  "type": "Checkpoint",
+  "number": "43",
+  "title": "",
+  "body": "   Which of the following differential equations is not separable?           Incorrect. This equation is separable because it can be expressed as a product of functions involving only and .           Incorrect. This equation is separable as the variables are already separated by multiplication.           Correct! This equation is not separable because the terms involving and are added together, not multiplied.           Incorrect. This equation is separable because the variables are divided, which can still be separated into a product of functions.        Select each of the separable differential equations below.                           Remember, a differential equation is separable if you can express it as a product of functions of and separately. Look for equations where the variables are separated by multiplication, not addition or other operations.      The term separable refers to the idea that the dependent and independent variables can be separated by .      multiplication    Correct!      addition    Read the first sentence of this page.      integration    Read the first sentence of this page.      gender      (What?)        "
+},
+{
+  "id": "showing-separability",
+  "level": "1",
+  "url": "showing-separability.html",
+  "type": "Section",
+  "number": "5.2",
+  "title": "Showing Separability",
+  "body": " Showing Separability  Separable equations are often not presented in a separable form . In such cases, you'll need to rewrite the equation to verify it's separable. This process typically involves two main steps:    Isolate the derivative on one side of the equation ,    Then form the product on the other side .     Common algebra techniques to achieve this product include:   Sums ➜ Products     Exponents ➜ Products  ,    Fractions ➜ Products  ,     To illustrate this, consider the following warm-up examples.   Warm-Up Examples  Show that the differential equations are separable.     To show this equation is seperable, we convert by factoring out the common :        This time we isolate first, then factor out :        First, isolate : then convert :        At first glance, this doesn't look separable because of the , but applying we get:      The next set of examples require a bit more work to show separability.   Challenging Examples  Show that the differential equations are separable.     Since the variables in this equation are and , the separable form will look like .  To get there, we isolate first:   Now, we split the fraction so that and can be separated: So, the equation is separable .        This example uses a little of everything we discussed, so strap in.  Noticing that the equation is first-order, we start by isolating    Next, we can rewrite the exponent in the numerator as a product and recognize that there is a common factor in the numerator .  From here, we write the result as a product of fractions, , and the equation is now clearly separable .     Learning to recognize when an equation is separable is the first step in applying the method of separation of variables, which we will discuss in the next section.    Steps to Show Separable   Suppose you want to show that the differential equation is separable.  Match the scrambled tasks (on the left) to the order that it should be performed to show it is separable.     check the equation is 1st-order  The first task is to ...    move to the left side via subtraction  Then, the second task is to ...    factor out a common factor of on the left side  The final step is to ...    check the equation is linear  integrate both sides  divide both sides by      📖❓ Match the Needed Technique   Match the technique needed to show each equation is separable.  Drag the technique, on the left, to the equation, on the right.    Review it                                                                    How can the equation, below, be rewritten in separable form?            Incorrect. This rewriting does not separate the variables effectively.           Incorrect. This form still combines and terms in a way that is not separable.           Correct! This form separates the variables, making it possible to identify whether the equation is separable.      This equation is not separable.    Correct! This equation is not separable, so it is impossible to write it in separable form.       🤔💭 Find the Separable Equations   Click on each of the separable differential equations below.                                            A differential equation is separable if you can rearrange it to express it as a product of functions involving only and separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.       Explain why the differential equations are NOT separable.           The first equation is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, separability does not apply .  This equation is first-order, but it is not separable. To see this, we can rearrange the equation to isolate the derivative: . Since there is no common factor of or in the numerator, the variables cannot be separated and the equation is not separable.    "
+},
+{
+  "id": "showing-separability-2",
+  "level": "2",
+  "url": "showing-separability.html#showing-separability-2",
   "type": "Paragraph (with a defined term)",
   "number": "",
   "title": "",
-  "body": "qualitative methods "
+  "body": "Isolate the derivative "
 },
 {
-  "id": "chpt-eulers-method",
-  "level": "1",
-  "url": "chpt-eulers-method.html",
-  "type": "Chapter",
-  "number": "8",
-  "title": "Numerical Methods",
-  "body": " Numerical Methods   Not every differential equation gives up its secrets to pencil-and-paper methods. Some are too complicated to solve exactly; others have solutions so messy they're practically useless. That's where numerical methods come in—techniques for building approximate solutions when analytic ones aren't possible.  To give you an idea of how easily solutions get out of hand, meet the riccati equation: . It seems relatively tame, but the nonlinear term, , makes solving it substantially more challenging. An exact solution to exists, but it ain't pretty as you can see below.  🫣 Solution to the Riccati Equation  The solution to is described by where denotes a Bessel function defined as    In this chapter, we'll explore what it means to approximate a solution and why doing so is often the only practical choice. We'll start with Euler's method, a simple but powerful idea that moves step by step along the solution curve. From there, we'll peek ahead to more advanced algorithms, like the Runge–Kutta methods, which computers use to tackle even tougher problems.  Along the way, we'll confront an important truth: many differential equations simply cannot be expressed in neat “closed form.” But we're not helpless—we can trade the exact solution for an approximate one that's good enough for analysis, prediction, and real-world applications. By the end of this chapter, you'll understand the thinking behind numerical methods and be ready to start building these approximations yourself.     "
-},
-{
-  "id": "chpt-eulers-method-2-3",
+  "id": "example-show-separable-warmup-1",
   "level": "2",
-  "url": "chpt-eulers-method.html#chpt-eulers-method-2-3",
+  "url": "showing-separability.html#example-show-separable-warmup-1",
+  "type": "🌌 Example",
+  "number": "44",
+  "title": "",
+  "body": "   To show this equation is seperable, we convert by factoring out the common :    "
+},
+{
+  "id": "example-show-separable-warmup-2",
+  "level": "2",
+  "url": "showing-separability.html#example-show-separable-warmup-2",
+  "type": "🌌 Example",
+  "number": "45",
+  "title": "",
+  "body": "   This time we isolate first, then factor out :    "
+},
+{
+  "id": "example-show-separable-warmup-3",
+  "level": "2",
+  "url": "showing-separability.html#example-show-separable-warmup-3",
+  "type": "🌌 Example",
+  "number": "46",
+  "title": "",
+  "body": "   First, isolate : then convert :    "
+},
+{
+  "id": "example-show-separable-warmup-4",
+  "level": "2",
+  "url": "showing-separability.html#example-show-separable-warmup-4",
+  "type": "🌌 Example",
+  "number": "47",
+  "title": "",
+  "body": "   At first glance, this doesn't look separable because of the , but applying we get:    "
+},
+{
+  "id": "example-show-separable-1",
+  "level": "2",
+  "url": "showing-separability.html#example-show-separable-1",
+  "type": "🌌 Example",
+  "number": "48",
+  "title": "",
+  "body": "   Since the variables in this equation are and , the separable form will look like .  To get there, we isolate first:   Now, we split the fraction so that and can be separated: So, the equation is separable .   "
+},
+{
+  "id": "example-show-separable-3",
+  "level": "2",
+  "url": "showing-separability.html#example-show-separable-3",
+  "type": "🌌 Example",
+  "number": "49",
+  "title": "",
+  "body": "   This example uses a little of everything we discussed, so strap in.  Noticing that the equation is first-order, we start by isolating    Next, we can rewrite the exponent in the numerator as a product and recognize that there is a common factor in the numerator .  From here, we write the result as a product of fractions, , and the equation is now clearly separable .   "
+},
+{
+  "id": "showing-separability-cyu-1",
+  "level": "2",
+  "url": "showing-separability.html#showing-separability-cyu-1",
+  "type": "Checkpoint",
+  "number": "50",
+  "title": "",
+  "body": "  Steps to Show Separable   Suppose you want to show that the differential equation is separable.  Match the scrambled tasks (on the left) to the order that it should be performed to show it is separable.     check the equation is 1st-order  The first task is to ...    move to the left side via subtraction  Then, the second task is to ...    factor out a common factor of on the left side  The final step is to ...    check the equation is linear  integrate both sides  divide both sides by      📖❓ Match the Needed Technique   Match the technique needed to show each equation is separable.  Drag the technique, on the left, to the equation, on the right.    Review it                                                                    How can the equation, below, be rewritten in separable form?            Incorrect. This rewriting does not separate the variables effectively.           Incorrect. This form still combines and terms in a way that is not separable.           Correct! This form separates the variables, making it possible to identify whether the equation is separable.      This equation is not separable.    Correct! This equation is not separable, so it is impossible to write it in separable form.       🤔💭 Find the Separable Equations   Click on each of the separable differential equations below.                                            A differential equation is separable if you can rearrange it to express it as a product of functions involving only and separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.    "
+},
+{
+  "id": "example-non-separable-2",
+  "level": "2",
+  "url": "showing-separability.html#example-non-separable-2",
+  "type": "🌌 Example",
+  "number": "51",
+  "title": "",
+  "body": "  Explain why the differential equations are NOT separable.           The first equation is a bit of a trick question to remind you of the first-order requirement of a separable equation. Since this equation is second-order, separability does not apply .  This equation is first-order, but it is not separable. To see this, we can rearrange the equation to isolate the derivative: . Since there is no common factor of or in the numerator, the variables cannot be separated and the equation is not separable.   "
+},
+{
+  "id": "sec-sov-method",
+  "level": "1",
+  "url": "sec-sov-method.html",
+  "type": "Section",
+  "number": "5.3",
+  "title": "Separation of Variables (SOV) Method",
+  "body": " Separation of Variables (SOV) Method  Once you've verified that an equation is separable, solving it becomes a systematic process. Here's the step-by-step guide:   Separation of Variables    1. Verify Separable, Separate Variables  Check that the equation is first-order  If possible, put into separable form:  Separate and on opposite sides:   2. Integrate    3. Solve for  If possible, explicitly solve for . If not, leave the solution in implicit form. Combine constants.       (Optional) Justification of separating & in  Although separating & in is mathematically invalid, it is a widely accepted shortcut in the SOV method.  To see why, start with the separable form, , and divide both sides by , leaving the derivative intact: .  From here, integrate both sides with respect to : .  Since the product, , is defined as the differential, , we can substitute it in to get the form of the integral you see in Step 2 : which justifies the informal splitting of and in the derivative, .    📖❓ Reorder the Strategy   Reorder the scrambled tasks used in the method.    Review the SOV Method .    Verify first-order   Verify separable form:     Separate variables:       Apply integration techniques  Solve for (if possible) & combine constants    Let's begin with a few warm-up problems to build confidence in using separation of variables. The examples that follow are intentionally straightforward, each equation is either already separable or requires minimal algebraic manipulation. As you work through them, focus on the 3-step strategy described in the method.   📖❓ Review Separability   Which of the following differential equations are separable?       Is this the product of a function of and ?       Note: .       Moving over you get . Can a sum like this be converted into the form ?       Note, this is a second-order differential equation...       Warm-Up Examples  Find the general solution for each equation.         We'll solve these equations, side-by-side, clearly demonstrating each step of the method.  Step 1 - Verify separability & separate variables:           Step 2 - Integrate:           Step 3 - Solve for and combine constants:           where in both general solutions.          Step 1 - Verify separability & separate variables:    Step 2 - Integrate:    Step 3 - Combine constants and solve explicitly for :     Solve the initial-value problem.       This differential equation is first order and separable since      Separable   Next, we separate and integrate:    Separate     Integrate       So, the general solution is .  Applying to the general solution, we get an equation for :   Therefore, is the particular solution to the intial-valued problem.  Be cautious about rewriting constants in decimal form. For instance, if you approximate , the solution becomes: which may not exactly satisfy the original initial condition due to rounding errors. It's usually better to leave constants in exact form.       "
+},
+{
+  "id": "justification-split-dydx",
+  "level": "2",
+  "url": "sec-sov-method.html#justification-split-dydx",
+  "type": "Proof",
+  "number": "5.3.1",
+  "title": "(Optional) Justification of separating <span class=\"process-math\">\\(dy\\)<\/span> &amp; <span class=\"process-math\">\\(dx\\)<\/span> in <span class=\"process-math\">\\(\\dfrac{dy}{dx}\\)<\/span>.",
+  "body": " (Optional) Justification of separating & in  Although separating & in is mathematically invalid, it is a widely accepted shortcut in the SOV method.  To see why, start with the separable form, , and divide both sides by , leaving the derivative intact: .  From here, integrate both sides with respect to : .  Since the product, , is defined as the differential, , we can substitute it in to get the form of the integral you see in Step 2 : which justifies the informal splitting of and in the derivative, .  "
+},
+{
+  "id": "sov-method-cyu-1",
+  "level": "2",
+  "url": "sec-sov-method.html#sov-method-cyu-1",
+  "type": "Checkpoint",
+  "number": "52",
+  "title": "📖❓ Reorder the Strategy.",
+  "body": " 📖❓ Reorder the Strategy   Reorder the scrambled tasks used in the method.    Review the SOV Method .    Verify first-order   Verify separable form:     Separate variables:       Apply integration techniques  Solve for (if possible) & combine constants   "
+},
+{
+  "id": "sov-method-cyu-2",
+  "level": "2",
+  "url": "sec-sov-method.html#sov-method-cyu-2",
+  "type": "Checkpoint",
+  "number": "53",
+  "title": "📖❓ Review Separability.",
+  "body": " 📖❓ Review Separability   Which of the following differential equations are separable?       Is this the product of a function of and ?       Note: .       Moving over you get . Can a sum like this be converted into the form ?       Note, this is a second-order differential equation...     "
+},
+{
+  "id": "sov-method-example-1",
+  "level": "2",
+  "url": "sec-sov-method.html#sov-method-example-1",
+  "type": "🌌 Example",
+  "number": "54",
+  "title": "",
+  "body": "       We'll solve these equations, side-by-side, clearly demonstrating each step of the method.  Step 1 - Verify separability & separate variables:           Step 2 - Integrate:           Step 3 - Solve for and combine constants:           where in both general solutions.   "
+},
+{
+  "id": "sov-method-example-2",
+  "level": "2",
+  "url": "sec-sov-method.html#sov-method-example-2",
+  "type": "🌌 Example",
+  "number": "55",
+  "title": "",
+  "body": "      Step 1 - Verify separability & separate variables:    Step 2 - Integrate:    Step 3 - Combine constants and solve explicitly for :    "
+},
+{
+  "id": "sov-method-initial-value-problem",
+  "level": "2",
+  "url": "sec-sov-method.html#sov-method-initial-value-problem",
+  "type": "🌌 Example",
+  "number": "56",
+  "title": "",
+  "body": "     This differential equation is first order and separable since      Separable   Next, we separate and integrate:    Separate     Integrate       So, the general solution is .  Applying to the general solution, we get an equation for :   Therefore, is the particular solution to the intial-valued problem.  Be cautious about rewriting constants in decimal form. For instance, if you approximate , the solution becomes: which may not exactly satisfy the original initial condition due to rounding errors. It's usually better to leave constants in exact form.     "
+},
+{
+  "id": "sov-implicit-solns",
+  "level": "1",
+  "url": "sov-implicit-solns.html",
+  "type": "Section",
+  "number": "5.4",
+  "title": "Implicit General Solutions",
+  "body": " Implicit General Solutions   Implicit Solutions  Notice that Step 3 of the SOV method states: If possible, explicitly solve for . If not, leave the solution in implicit form. In the examples we've seen, it was always possible to explicitly isolate after integrating. However, in some cases, this is not possible (or practical) and we call such solutions implicit solutions . The next example illustrates this situation.    Solve the initial-value problem for      Notice the variables separate naturally once we factor out : .  Now the SOV method proceeds as usual:   The general implicit solution is:   Although we can't isolate neatly, we can still find using :   Thus, the particular implicit solution is:      📖❓ Select the Implicit Solutions   Let be a function of the independent variable, , and is an integration constant. If each expression below is a general solution to some DE, Click on the implicit solutions .                    Handling Absolute Values in General Solutions   📖❓ Review the Absolute Value   Select the solutions to the equation .                     When solving differential equations, it's common to encounter absolute values in the general solution. For instance, suppose you want to solve for , but arrive at:   To fully isolate , you need to replace the absolute value with , like so: To understand why, consider a simplified problem with the same goal: Clearly, both and satisfy this equation, so .    Find the general solution to the differential equation     Start by verifying the equation is separable:   Now, we apply the separation of variables method.    Separate variables     u-sub      Isolate up to       At this point, we replace the absolute value with :   With free, we can fully isolate it and combine constants:   Setting the combined constant, , we get the general solution: .      IVPs with in the General Solution  For some initial-value problems, the particular solution can be expressed explicitly even when there is an implicit general solution. To see this, consider the following example:    Solve the initial-value problem .    Applying the SOV method we arrive at the implicit general solution: where .  Explicitly solving for , shows our general solution has two branches:   Since our solution must satisfy , which has a negative -value, our particular solution must come from the negative branch:   Finally, we find with the initial condition :   Thus, the explicit particular solution is:     The separation of variables method is a flexible and powerful tool for solving a wide range of differential equations, including nonlinear ones. As you've seen, the method is systematic: separate, integrate, and isolate. While the mechanics of the method are straightforward, the complexity often lies in the algebraic manipulation and integration.   📖❓ Reorder the Solution   Reorder the scrambled steps used to solve using the method.     Equation is 1st-order ✅                                         "
+},
+{
+  "id": "sov-implicit-solns-implicit-solution",
+  "level": "2",
+  "url": "sov-implicit-solns.html#sov-implicit-solns-implicit-solution",
+  "type": "🌌 Example",
+  "number": "57",
+  "title": "",
+  "body": "  Solve the initial-value problem for      Notice the variables separate naturally once we factor out : .  Now the SOV method proceeds as usual:   The general implicit solution is:   Although we can't isolate neatly, we can still find using :   Thus, the particular implicit solution is:    "
+},
+{
+  "id": "sov-implicit-solns-cyu-1",
+  "level": "2",
+  "url": "sov-implicit-solns.html#sov-implicit-solns-cyu-1",
+  "type": "Checkpoint",
+  "number": "58",
+  "title": "📖❓ Select the Implicit Solutions.",
+  "body": " 📖❓ Select the Implicit Solutions   Let be a function of the independent variable, , and is an integration constant. If each expression below is a general solution to some DE, Click on the implicit solutions .                 "
+},
+{
+  "id": "sov-implicit-solns-cyu-2",
+  "level": "2",
+  "url": "sov-implicit-solns.html#sov-implicit-solns-cyu-2",
+  "type": "Checkpoint",
+  "number": "59",
+  "title": "📖❓ Review the Absolute Value.",
+  "body": " 📖❓ Review the Absolute Value   Select the solutions to the equation .                    "
+},
+{
+  "id": "sov-method-examples-absolute-values-5",
+  "level": "2",
+  "url": "sov-implicit-solns.html#sov-method-examples-absolute-values-5",
+  "type": "🌌 Example",
+  "number": "60",
+  "title": "",
+  "body": "  Find the general solution to the differential equation     Start by verifying the equation is separable:   Now, we apply the separation of variables method.    Separate variables     u-sub      Isolate up to       At this point, we replace the absolute value with :   With free, we can fully isolate it and combine constants:   Setting the combined constant, , we get the general solution: .   "
+},
+{
+  "id": "implicit-solution-with-initial-condition",
+  "level": "2",
+  "url": "sov-implicit-solns.html#implicit-solution-with-initial-condition",
+  "type": "🌌 Example",
+  "number": "61",
+  "title": "",
+  "body": "  Solve the initial-value problem .    Applying the SOV method we arrive at the implicit general solution: where .  Explicitly solving for , shows our general solution has two branches:   Since our solution must satisfy , which has a negative -value, our particular solution must come from the negative branch:   Finally, we find with the initial condition :   Thus, the explicit particular solution is:    "
+},
+{
+  "id": "sov-implicit-solns-cyu-3",
+  "level": "2",
+  "url": "sov-implicit-solns.html#sov-implicit-solns-cyu-3",
+  "type": "Checkpoint",
+  "number": "62",
+  "title": "📖❓ Reorder the Solution.",
+  "body": " 📖❓ Reorder the Solution   Reorder the scrambled steps used to solve using the method.     Equation is 1st-order ✅                                       "
+},
+{
+  "id": "sov-concept-quiz",
+  "level": "1",
+  "url": "sov-concept-quiz.html",
+  "type": "Subsection",
+  "number": "",
+  "title": "💡 Conceptual Quiz",
+  "body": " 💡 Conceptual Quiz    Abbreviations      DE  Differential Equation    IVP  Initial Value Problem      True or False   👍👎   Every first-order ordinary differential equation can be solved using the method of separation of variables.    False. Only first-order ordinary differential equation that are separable can be solved using the method of separation of variables.     👍👎   If a differential equation is separable, its solution will always be an explicit function of .    False. The solution to a separable differential equation is sometimes implicit function of the independent variable.     👍👎   The method of separation of variables can be applied to some second order differential equations, but not all of them.    False. The method of separation of variables is only applicable to first-order separable differential equations.     👍👎   Any differential equation that can be written in the form , is separable.    True. Any differential equation that can be written in the form can also be rewritten in the separable form .     👍👎   The differential equation, below, is separable .    The correct answer is:  A. It is always separable.  This differential equation is the same as , which shows that the equation is separable since the function of can be constant.   The equation is separable because it is first-order and can be written in the separable form .     👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form .     👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form      👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form      👍👎   The differential equation, , can be solved using the separation of variables method.    The differential equation is first order, but it is equivalent to , which can not be written in the form .    Check to see that the differential equation is first order and separable.     👍👎   The differential equation, , can be solved using the separation of variables method.    The differential equation is not first order, so it is not separable and cannot be solved using the separation of variables method.    Check to see that the differential equation is first order and separable.     📖❓ SOV and Nonlinear Equations   The separation of variables method cannot be applied to non-linear differential equations.    Being able to solve non-linear differential equations is one of the strengths of the separation of variables method.      Multiple Choice   Initial Step   What is the first step to verify the differential equation below is separable?       Integrating both sides with respect to .    Incorrect. Integration should come after the equation is verified to be separable.      Check to make sure the equation is first order.    Correct! The first step to verify the equation is separable is to make sure it is first order.      Combine the fractions on the left-side of the equation.    Incorrect. First of all, is not a fraction. Even if it was this would not be the first step to verify separability.      Isolate on one side of the equation.    Incorrect. Isolating is required to verify the equation is separable, but there is one other detail to check first.       Select the Separable Equations   Click on each of the separable differential equations below.                                      A differential equation is separable if you can rearrange it to express it as a product of functions involving only and separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.     When is it Separable?   What can you say about any differential equation that can be written in the form ?      It is always separable.      It is never separable.      It might be separable, depending on .      It is not a valid equation because it does have a term.       Explicit or Implicit?   Which of the following equations represent an implicit solution to a differential equation?   Assume is the dependent variable and is the independent variable.       No, this is an explicit solution since is written as a function of .     Correct. You can't isolate without solving a nonlinear equation, so this is an implicit solution.     Yes, this matches the example you just saw and defines only implicitly.     No, this is an explicit expression for as a function of .      When Does SOV Apply?   Which two properties must a differential equation satisfy in order to solve it using the separation of variables method?      The equation must be linear and separable.    Incorrect. Separable is required, but the equation does not need to be linear.      The equation must be first-order and linear.    Incorrect. First-order is required, but the equation does not need to be linear for the separation of variables method to be applied.      The equation must be second-order and separable.    Incorrect. Separable is required, but the equation cannot be second-order for the separation of variables method to be applied.      The equation must be first-order and separable.    Correct! The separation of variables method applies only to first-order differential equations thatare separable.       Combining Constants   Which of the following are valid ways to combine constants when finalizing your solution? Select ALL that apply.      where .   Correct, since       where .   Correct, since       where .   Incorrect, you should not combine constants here since .  Your solution should be written as       where .   Incorrect, you should not combine constants here since .  Your solution should be       where .   Incorrect, you should not combine constants here since is not constant. Instead your solution should be left as       where .   Correct, since         Short-Answer Questions   Not Separable   Give an example of a differential equation that is not separable.     An example of a differential equation that is not separable is . This equation is not separable because the terms involving and are not easily separable onto different sides of the equation. In this case, the method of separation of variables cannot be applied because the terms involving and are not easily separable.     Where Does Separation of Variables Come From?   Explain why you think separation of variables is an appropriate name for the method in this chapter.     The method of separation of variables is named as such because it involves isolating all terms involving to one side and all terms involving to the other. This effectively separates the variables and onto different sides of the equation, allowing for the integration of each side independently. The name \"separation of variables\" reflects the process of isolating the variables onto different sides of the equation.     What Could go Wrong?   Ignoring the fact that the following equation is not separable, suppose we applied the separation of variables process to . What breaks down leading up to the integrate step ?     The next step in the process says to divide both sides by the function of . In our case, this is , so we would get . Now, multiplying both sides by and integrating would yield . The integral on the left side is fine, but the integral on the right side is where the process breaks down since the integral wants to integrate with respect to . Therefore, you are stuck unless you knew as a function of . However, if this were the case, you would have already solved the problem!     Implicit vs. Explicit   Some differential equations solved using separation of variables yield explicit solutions, while others yield implicit solutions. Give your interpretation of the difference between an implicit and explicit solution. Provide an example of an implicitly and explicitly defined function.     An implicit solution is one where the relationship between and is not explicitly defined. For example, the solution is an implicit solution. An explicit solution, on the other hand, is one where is defined explicitly as a function of . For example, the solution is an explicit solution.     Thinking in Cases   All first order linear differential equations with dependent variable, , can be written in the form where and are known functions of . What must be true about and for a first-order linear differential equation to be separable?   Make some general assumptions about and and think about how you could break this question into different cases about what and could be to guarantee separability.      Attempting to isolate the derivative on the left, we get: Since, and can only contain the variable or constants, then this form is only separable in the following cases:  Both and are constant. Then    and is anything. Then    is anything and . Then       Attempting to isolate the derivative on the left, we get: Since, and can only contain the variable or constants, then this form is only separable in the following cases:  Both and are constant. Then    and is anything. Then    is anything and . Then         "
+},
+{
+  "id": "sov-cq-tf",
+  "level": "2",
+  "url": "sov-concept-quiz.html#sov-cq-tf",
+  "type": "Exercise",
+  "number": "1",
+  "title": "True or False.",
+  "body": " True or False   👍👎   Every first-order ordinary differential equation can be solved using the method of separation of variables.    False. Only first-order ordinary differential equation that are separable can be solved using the method of separation of variables.     👍👎   If a differential equation is separable, its solution will always be an explicit function of .    False. The solution to a separable differential equation is sometimes implicit function of the independent variable.     👍👎   The method of separation of variables can be applied to some second order differential equations, but not all of them.    False. The method of separation of variables is only applicable to first-order separable differential equations.     👍👎   Any differential equation that can be written in the form , is separable.    True. Any differential equation that can be written in the form can also be rewritten in the separable form .     👍👎   The differential equation, below, is separable .    The correct answer is:  A. It is always separable.  This differential equation is the same as , which shows that the equation is separable since the function of can be constant.   The equation is separable because it is first-order and can be written in the separable form .     👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form .     👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form      👍👎   The differential equation, below, is separable .     The equation is separable because it is first-order and can be written in the separable form      👍👎   The differential equation, , can be solved using the separation of variables method.    The differential equation is first order, but it is equivalent to , which can not be written in the form .    Check to see that the differential equation is first order and separable.     👍👎   The differential equation, , can be solved using the separation of variables method.    The differential equation is not first order, so it is not separable and cannot be solved using the separation of variables method.    Check to see that the differential equation is first order and separable.     📖❓ SOV and Nonlinear Equations   The separation of variables method cannot be applied to non-linear differential equations.    Being able to solve non-linear differential equations is one of the strengths of the separation of variables method.    "
+},
+{
+  "id": "sov-cq-mc",
+  "level": "2",
+  "url": "sov-concept-quiz.html#sov-cq-mc",
+  "type": "Exercise",
+  "number": "2",
+  "title": "Multiple Choice.",
+  "body": " Multiple Choice   Initial Step   What is the first step to verify the differential equation below is separable?       Integrating both sides with respect to .    Incorrect. Integration should come after the equation is verified to be separable.      Check to make sure the equation is first order.    Correct! The first step to verify the equation is separable is to make sure it is first order.      Combine the fractions on the left-side of the equation.    Incorrect. First of all, is not a fraction. Even if it was this would not be the first step to verify separability.      Isolate on one side of the equation.    Incorrect. Isolating is required to verify the equation is separable, but there is one other detail to check first.       Select the Separable Equations   Click on each of the separable differential equations below.                                      A differential equation is separable if you can rearrange it to express it as a product of functions involving only and separately. Look for equations that can be manipulated into this form, even if they do not initially appear separable.     When is it Separable?   What can you say about any differential equation that can be written in the form ?      It is always separable.      It is never separable.      It might be separable, depending on .      It is not a valid equation because it does have a term.       Explicit or Implicit?   Which of the following equations represent an implicit solution to a differential equation?   Assume is the dependent variable and is the independent variable.       No, this is an explicit solution since is written as a function of .     Correct. You can't isolate without solving a nonlinear equation, so this is an implicit solution.     Yes, this matches the example you just saw and defines only implicitly.     No, this is an explicit expression for as a function of .      When Does SOV Apply?   Which two properties must a differential equation satisfy in order to solve it using the separation of variables method?      The equation must be linear and separable.    Incorrect. Separable is required, but the equation does not need to be linear.      The equation must be first-order and linear.    Incorrect. First-order is required, but the equation does not need to be linear for the separation of variables method to be applied.      The equation must be second-order and separable.    Incorrect. Separable is required, but the equation cannot be second-order for the separation of variables method to be applied.      The equation must be first-order and separable.    Correct! The separation of variables method applies only to first-order differential equations thatare separable.       Combining Constants   Which of the following are valid ways to combine constants when finalizing your solution? Select ALL that apply.      where .   Correct, since       where .   Correct, since       where .   Incorrect, you should not combine constants here since .  Your solution should be written as       where .   Incorrect, you should not combine constants here since .  Your solution should be       where .   Incorrect, you should not combine constants here since is not constant. Instead your solution should be left as       where .   Correct, since       "
+},
+{
+  "id": "sov-cq-sa",
+  "level": "2",
+  "url": "sov-concept-quiz.html#sov-cq-sa",
+  "type": "Exercise",
+  "number": "3",
+  "title": "Short-Answer Questions.",
+  "body": " Short-Answer Questions   Not Separable   Give an example of a differential equation that is not separable.     An example of a differential equation that is not separable is . This equation is not separable because the terms involving and are not easily separable onto different sides of the equation. In this case, the method of separation of variables cannot be applied because the terms involving and are not easily separable.     Where Does Separation of Variables Come From?   Explain why you think separation of variables is an appropriate name for the method in this chapter.     The method of separation of variables is named as such because it involves isolating all terms involving to one side and all terms involving to the other. This effectively separates the variables and onto different sides of the equation, allowing for the integration of each side independently. The name \"separation of variables\" reflects the process of isolating the variables onto different sides of the equation.     What Could go Wrong?   Ignoring the fact that the following equation is not separable, suppose we applied the separation of variables process to . What breaks down leading up to the integrate step ?     The next step in the process says to divide both sides by the function of . In our case, this is , so we would get . Now, multiplying both sides by and integrating would yield . The integral on the left side is fine, but the integral on the right side is where the process breaks down since the integral wants to integrate with respect to . Therefore, you are stuck unless you knew as a function of . However, if this were the case, you would have already solved the problem!     Implicit vs. Explicit   Some differential equations solved using separation of variables yield explicit solutions, while others yield implicit solutions. Give your interpretation of the difference between an implicit and explicit solution. Provide an example of an implicitly and explicitly defined function.     An implicit solution is one where the relationship between and is not explicitly defined. For example, the solution is an implicit solution. An explicit solution, on the other hand, is one where is defined explicitly as a function of . For example, the solution is an explicit solution.     Thinking in Cases   All first order linear differential equations with dependent variable, , can be written in the form where and are known functions of . What must be true about and for a first-order linear differential equation to be separable?   Make some general assumptions about and and think about how you could break this question into different cases about what and could be to guarantee separability.      Attempting to isolate the derivative on the left, we get: Since, and can only contain the variable or constants, then this form is only separable in the following cases:  Both and are constant. Then    and is anything. Then    is anything and . Then       Attempting to isolate the derivative on the left, we get: Since, and can only contain the variable or constants, then this form is only separable in the following cases:  Both and are constant. Then    and is anything. Then    is anything and . Then       "
+},
+{
+  "id": "sov-practice-drills",
+  "level": "1",
+  "url": "sov-practice-drills.html",
+  "type": "Subsection",
+  "number": "",
+  "title": "🏋️‍♂️ Practice Drills",
+  "body": " 🏋️‍♂️ Practice Drills    Verify the solution   Verify that is a solution to the initial value problem then find the paticular solution.       Now, let's find with the initial condition :   So the (approximate) particular solution is:      Show the differential equations is separable      To see that this equation is separable, we need to check that it can be rearranged in separable form . Isolating we get and it should be clear that there is no way to separate and by multiplication in the numerator, so this equation is not separable .     Separable Form   Determine whether the given differential equation is separable or not. As demonstrated in the examples, if the equation is separable, use parentheses to explicitly show the separable form.       not separable; there's no way to separate th an inside the sine term.     not separable       This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .     separable        We can rearrange as follows. Hence, this DE is separable .     separable        We can rearrange as follows. Hence, this DE is separable .     separable         not separable; there's no way to separate and via multiplication\/division     not separable        not separable; this DE is second order, and DEs must be first order to be separable     not separable      "
+},
+{
+  "id": "sov-drills-1",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-1",
+  "type": "Exercise",
+  "number": "1",
+  "title": "Verify the solution.",
+  "body": " Verify the solution   Verify that is a solution to the initial value problem then find the paticular solution.       Now, let's find with the initial condition :   So the (approximate) particular solution is:    "
+},
+{
+  "id": "sov-drills-2",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-2",
+  "type": "Exercise",
+  "number": "2",
+  "title": "Show the differential equations is separable.",
+  "body": " Show the differential equations is separable      To see that this equation is separable, we need to check that it can be rearranged in separable form . Isolating we get and it should be clear that there is no way to separate and by multiplication in the numerator, so this equation is not separable .   "
+},
+{
+  "id": "sov-drills-3-1",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-1",
+  "type": "Exercise",
+  "number": "3",
+  "title": "",
+  "body": "    not separable; there's no way to separate th an inside the sine term.     not separable   "
+},
+{
+  "id": "sov-drills-3-2",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-2",
+  "type": "Exercise",
+  "number": "4",
+  "title": "",
+  "body": "   This doesn't look separable; but if we use a property of logarithms we can re-write as follows. Hence, this DE is separable .     separable    "
+},
+{
+  "id": "sov-drills-3-3",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-3",
+  "type": "Exercise",
+  "number": "5",
+  "title": "",
+  "body": "   We can rearrange as follows. Hence, this DE is separable .     separable    "
+},
+{
+  "id": "sov-drills-3-4",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-4",
+  "type": "Exercise",
+  "number": "6",
+  "title": "",
+  "body": "   We can rearrange as follows. Hence, this DE is separable .     separable    "
+},
+{
+  "id": "sov-drills-3-5",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-5",
+  "type": "Exercise",
+  "number": "7",
+  "title": "",
+  "body": "    not separable; there's no way to separate and via multiplication\/division     not separable   "
+},
+{
+  "id": "sov-drills-3-6",
+  "level": "2",
+  "url": "sov-practice-drills.html#sov-drills-3-6",
+  "type": "Exercise",
+  "number": "8",
+  "title": "",
+  "body": "    not separable; this DE is second order, and DEs must be first order to be separable     not separable   "
+},
+{
+  "id": "sov-problems-main",
+  "level": "1",
+  "url": "sov-problems-main.html",
+  "type": "Subsection",
+  "number": "",
+  "title": "✍🏻 Problems",
+  "body": " ✍🏻 Problems    Solve the Differential Equations (Step-By-Step)   Solve each of the following differential equations using the separation of variables method. Press Activate to submit your answers and get instant feedback.    Determine the Separable Form   Write each differential equation in the separable form . Type your answer for into the left box and into the right box.                                                             Move the term to the right and factor out .     Isolate the derivative and group the terms as shown below.     We isolate the derivative and group the terms as shown below. .       Reorder the Steps   Reorder the steps required to solve the differential equation, , using the separation of variables method.    Check for 1st-order.            Step-By-Step Initial-Valued Problem   Use separation of variables to solve the initial value problem .      Select the variable that you are solving for:            Select the order of the equation:                    Select the correct separable form:                           Select the next step following the correct answer to (c).                       Select the result after integrating correct answer to (d).                       Select the correct general solution.                       Select the correct particular solution.                              Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.        Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.        Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.      Level 1   Solve using separation of variables, if possible.              This equation is not obviously separable as written, so we begin by solving for : This is now in separable form.  We now separate and integrate: Multiplying through and isolating gives the general solution:                                  Level 2   Solve using separation of variables, if possible.                                  Note: since, in general , we CANNOT simplify the solution to                            For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:              When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.            Separation of variables gives:           Initial Value Problems   Solve each of the following initial value problems using separation of variables, if possible.      Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is             First we find the general solution: Using the initial condition : So the solution to the initial value problem is:             First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .     , or        First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .     , or      Nested Differential Equations   Find a non-zero function that satisfies each of the following differential equations.   For each equation, expand the derivative on the left side using the product rule. Then use algebra to find another differential equation nested within the original one.       We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.       We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.     ( is some function of )   We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.     Applications   Cooking Temperature  A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)?   We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM           "
+},
+{
+  "id": "c3-warm-ups-ww-1",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-ww-1",
+  "type": "Exercise",
+  "number": "1",
+  "title": "Determine the Separable Form.",
+  "body": " Determine the Separable Form   Write each differential equation in the separable form . Type your answer for into the left box and into the right box.                                                             Move the term to the right and factor out .     Isolate the derivative and group the terms as shown below.     We isolate the derivative and group the terms as shown below. .     "
+},
+{
+  "id": "c3-warm-ups-ordering-1",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-ordering-1",
+  "type": "Exercise",
+  "number": "2",
+  "title": "Reorder the Steps.",
+  "body": " Reorder the Steps   Reorder the steps required to solve the differential equation, , using the separation of variables method.    Check for 1st-order.          "
+},
+{
+  "id": "c3-warm-ups-click-2",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-click-2",
+  "type": "Exercise",
+  "number": "3",
+  "title": "Step-By-Step Initial-Valued Problem.",
+  "body": " Step-By-Step Initial-Valued Problem   Use separation of variables to solve the initial value problem .      Select the variable that you are solving for:            Select the order of the equation:                    Select the correct separable form:                           Select the next step following the correct answer to (c).                       Select the result after integrating correct answer to (d).                       Select the correct general solution.                       Select the correct particular solution.                        "
+},
+{
+  "id": "c3-warm-ups-ww-2",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-ww-2",
+  "type": "Exercise",
+  "number": "4",
+  "title": "<span class=\"process-math\">\\(\\ds y'= e^{2x} - 5x\\)<\/span>.",
+  "body": "     Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.   "
+},
+{
+  "id": "c3-warm-ups-ww-3",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-ww-3",
+  "type": "Exercise",
+  "number": "5",
+  "title": "<span class=\"process-math\">\\(\\dfrac{dy}{dx} = xy^2\\)<\/span>.",
+  "body": "    Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.   "
+},
+{
+  "id": "c3-warm-ups-ww-4",
+  "level": "2",
+  "url": "sov-problems-main.html#c3-warm-ups-ww-4",
+  "type": "Exercise",
+  "number": "6",
+  "title": "<span class=\"process-math\">\\(\\ds\\frac{dy}{dx} - y\\cos(x) = y\\)<\/span>.",
+  "body": "    Give the order and separable form:                            Separate variables and integrate to both sides:                         Now, compute the integrals (we have provided the constants):                       Don t forget the absolute value on the left antiderivative.  Combine constants and use for the final combined constant.                                                        Use the property to obtain the final combined constant.   "
+},
+{
+  "id": "sov-problems-2-3",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-3",
+  "type": "Exercise",
+  "number": "7",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "sov-problems-2-4",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-4",
+  "type": "Exercise",
+  "number": "8",
+  "title": "",
+  "body": "   This equation is not obviously separable as written, so we begin by solving for : This is now in separable form.  We now separate and integrate: Multiplying through and isolating gives the general solution:     "
+},
+{
+  "id": "sov-problems-2-5",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-5",
+  "type": "Exercise",
+  "number": "9",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-6",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-6",
+  "type": "Exercise",
+  "number": "10",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-7",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-7",
+  "type": "Exercise",
+  "number": "11",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-8",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-8",
+  "type": "Exercise",
+  "number": "12",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-9",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-9",
+  "type": "Exercise",
+  "number": "13",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-10",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-10",
+  "type": "Exercise",
+  "number": "14",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-11",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-11",
+  "type": "Exercise",
+  "number": "15",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-12",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-12",
+  "type": "Exercise",
+  "number": "16",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-2-13",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-2-13",
+  "type": "Exercise",
+  "number": "17",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "sov-problems-3-3",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-3",
+  "type": "Exercise",
+  "number": "18",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "sov-problems-3-4",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-4",
+  "type": "Exercise",
+  "number": "19",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "sov-problems-3-5",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-5",
+  "type": "Exercise",
+  "number": "20",
+  "title": "",
+  "body": "     Note: since, in general , we CANNOT simplify the solution to          "
+},
+{
+  "id": "sov-problems-3-6",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-6",
+  "type": "Exercise",
+  "number": "21",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "sov-problems-3-7",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-7",
+  "type": "Exercise",
+  "number": "22",
+  "title": "",
+  "body": "    For the integral on the left hand side, we will need to do a substitution. If we le the and therefor Then we have the following:          "
+},
+{
+  "id": "sov-problems-3-8",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-8",
+  "type": "Exercise",
+  "number": "23",
+  "title": "",
+  "body": "   When we separate the variables and integrate both sides, we get  Since the equation cannot readily be solved for as an explicit function of , we are done.        "
+},
+{
+  "id": "sov-problems-3-9",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-3-9",
+  "type": "Exercise",
+  "number": "24",
+  "title": "",
+  "body": "   Separation of variables gives:         "
+},
+{
+  "id": "sov-problems-4-3",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-4-3",
+  "type": "Exercise",
+  "number": "25",
+  "title": "",
+  "body": "   Informally, we divide both side of the differential equation by and multiply each side by to get      and hence The condition yields , so the desired solution is         "
+},
+{
+  "id": "sov-problems-4-4",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-4-4",
+  "type": "Exercise",
+  "number": "26",
+  "title": "",
+  "body": "   First we find the general solution: Using the initial condition : So the solution to the initial value problem is:         "
+},
+{
+  "id": "sov-problems-4-5",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-4-5",
+  "type": "Exercise",
+  "number": "27",
+  "title": "",
+  "body": "   First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .     , or    "
+},
+{
+  "id": "sov-problems-4-6",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-4-6",
+  "type": "Exercise",
+  "number": "28",
+  "title": "",
+  "body": "   First we find the general solution: Then we use the initial conditio . Hence, the solution i , or .     , or    "
+},
+{
+  "id": "sov-problems-5-3",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-5-3",
+  "type": "Exercise",
+  "number": "29",
+  "title": "",
+  "body": "   We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.   "
+},
+{
+  "id": "sov-problems-5-4",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-5-4",
+  "type": "Exercise",
+  "number": "30",
+  "title": "",
+  "body": "   We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.   "
+},
+{
+  "id": "sov-problems-5-5",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-5-5",
+  "type": "Exercise",
+  "number": "31",
+  "title": "",
+  "body": " ( is some function of )   We want to find a non-zero function such that Applying the product rule to the left side of this equation gives Subtracting from both sides gives , which implies that This is a separable differential equation that we can solve with separation of variables: But, is just a constant, so we can write this as Since the question asks for a non-zero function, we can take . Thus, satisfies the given differential equation.   "
+},
+{
+  "id": "sov-problems-6-2",
+  "level": "2",
+  "url": "sov-problems-main.html#sov-problems-6-2",
+  "type": "Exercise",
+  "number": "32",
+  "title": "",
+  "body": " Cooking Temperature  A 4-lb roast, initially at , is placed in a oven at 5:00 PM After 75 minutes it is found that the temperature of the roast is F. When will the roast be (medium rate)?   We take time in minutes, with corresponding to 5:00 PM We also assume (somewhat unrealistically) that at any instant the temperature of the roast is uniform throughout. We have , , and . Hence Now , implies that , so . We also know that when . Substitution of these values in the preceding equation yields Hence we finally solve the equation for (min), the total cooking time required.Because the roast was placed in the oven at 5:00 PM, it it should be removed at about 6:45 PM        "
+},
+{
+  "id": "product-rule",
+  "level": "1",
+  "url": "product-rule.html",
+  "type": "Section",
+  "number": "6.1",
+  "title": "Product Rule, A Review",
+  "body": " Product Rule, A Review  Since the integrating factor method relies heavily on the product rule, let's make sure we remember how it works.  In calculus, the product rule tells us how to take the derivative of two multiplied functions. If and are differentiable, then .  To refresh your memory of how it works, try the following practice problems.   📖❓ Remembering the Product Rule   Compute each of the derivatives below. Assume is a function of .                Use y' for the derivative of in question 2.                  Using the product rule:             The Product Rule in Reverse  Now that we've recalled how the product rule works, let's try running it in reverse.  Suppose you're given the expression:  . Can this be written as the derivative of a product? That is, can you find functions and so that   Here's a tip: the product rule always combines four pieces, two functions and their derivatives. If you can spot and in the terms, the rest should fall into place. In this case, trying and works out perfectly.  Let's get some practice with this reverse thinking.    Rewrite each expression as a derivative of a product:       First, select an and in different terms, like so   .  For this to work, should be , next to our chosen . However,   So this labeling doesn't work and we instead try the labels   .  Noting that is next to and is next to confirms this is a valid product rule. Therefore, we can reverse the product rule as  .   To make this easier, let's separate the terms as .  So, as before, we first set and   , then verify the derivatives of and are in the other terms,  . Therefore,  .     Let's now try expressions involving a variable function, like . These are the ones we'll actually encounter when solving differential equations.    Rewrite each expression in the form .       Since and are in separate terms, setting to gives you and for free since  . The only thing you need to check is which is sitting right next to . Therefore, we have  .   Again, set to and the rest fall into place as  . The only thing left to do is verify the derivative of : .  So, we can reverse the product rule as  .      📖❓ What's Missing in the Product Rule   Fill in the missing parts of each product rule below.                                Correct!        Incorrect, try again.          Correct!        Incorrect, try again.          Correct!        Incorrect, expecting to see the independent variable .        Incorrect, use the natural log instead.        Incorrect, try again.          Correct!        Incorrect, don't forget the chain rule.          Correct!        Put in the other blank!        The variable should be a capitol .        Incorrect, try again.          Correct!        Put in the other blank!        Incorrect, try again.        While reversing the product rule isn't a standard technique, practicing it a few times helps build the intuition you'll need when working with integrating factors.   "
+},
+{
+  "id": "product-rule-3",
+  "level": "2",
+  "url": "product-rule.html#product-rule-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "product rule "
+},
+{
+  "id": "chkpt-product-rule-review-1",
+  "level": "2",
+  "url": "product-rule.html#chkpt-product-rule-review-1",
+  "type": "Checkpoint",
+  "number": "63",
+  "title": "📖❓  Remembering the Product Rule.",
+  "body": " 📖❓ Remembering the Product Rule   Compute each of the derivatives below. Assume is a function of .                Use y' for the derivative of in question 2.                  Using the product rule:           "
+},
+{
+  "id": "product-rule-in-reverse-9",
+  "level": "2",
+  "url": "product-rule.html#product-rule-in-reverse-9",
+  "type": "🌌 Example",
+  "number": "64",
+  "title": "",
+  "body": "  Rewrite each expression as a derivative of a product:       First, select an and in different terms, like so   .  For this to work, should be , next to our chosen . However,   So this labeling doesn't work and we instead try the labels   .  Noting that is next to and is next to confirms this is a valid product rule. Therefore, we can reverse the product rule as  .   To make this easier, let's separate the terms as .  So, as before, we first set and   , then verify the derivatives of and are in the other terms,  . Therefore,  .    "
+},
+{
+  "id": "reversed-product-rule-example",
+  "level": "2",
+  "url": "product-rule.html#reversed-product-rule-example",
+  "type": "🌌 Example",
+  "number": "65",
+  "title": "",
+  "body": "  Rewrite each expression in the form .       Since and are in separate terms, setting to gives you and for free since  . The only thing you need to check is which is sitting right next to . Therefore, we have  .   Again, set to and the rest fall into place as  . The only thing left to do is verify the derivative of : .  So, we can reverse the product rule as  .    "
+},
+{
+  "id": "chkpt-reversed-product-rule-2",
+  "level": "2",
+  "url": "product-rule.html#chkpt-reversed-product-rule-2",
+  "type": "Checkpoint",
+  "number": "66",
+  "title": "📖❓  What’s Missing in the Product Rule.",
+  "body": " 📖❓ What's Missing in the Product Rule   Fill in the missing parts of each product rule below.                                Correct!        Incorrect, try again.          Correct!        Incorrect, try again.          Correct!        Incorrect, expecting to see the independent variable .        Incorrect, use the natural log instead.        Incorrect, try again.          Correct!        Incorrect, don't forget the chain rule.          Correct!        Put in the other blank!        The variable should be a capitol .        Incorrect, try again.          Correct!        Put in the other blank!        Incorrect, try again.       "
+},
+{
+  "id": "completing-prod-rule",
+  "level": "1",
+  "url": "completing-prod-rule.html",
+  "type": "Section",
+  "number": "6.2",
+  "title": "Completing the Product Rule",
+  "body": " Completing the Product Rule  In algebra, a clever rearrangement of terms can make an equation easier to solve. For instance, to solve , we complete the square by adding (since ) to both sides: , which gives a single perfect square:   This grouping is helpful because a square root immediately reveals the solution.  Some first-order differential equations benefit from a similar idea. Instead of forming a single square, we aim to group the left-hand side as a single derivative .  For example, take the equation: .  As you will soon learn, multiplying both sides by actually completes the product rule in a similar way that adding completed the square: .  Applying the product rule in reverse, gives a single derivative on the left: .  This new form makes solving easier since direct integration can be used.  This process of multiplying by the right function to complete the product rule is the heart of the integrating factor method and it raises an important question:  How do we know what function to multiply by? That's what we'll figure out in the next section.   Completing the Square vs Completing the Product Rule   Here's how the two processes line up:      Completing the Square  Completing the Product Rule   Goal  Solve for  Solve for  Equation     Missing Piece  (added)  (multiplied)    Completed Form      Grouped Form      Solution Step  Take square root  Integrate        📖❓ Reading Questions   📖❓ Purpose of Adding   In the analogy, what role does the number play in the quadratic equation?      The missing piece that allows the quadratic expression to be rewritten as a perfect square.    Correct! The number 9 completes the square, making it factorable.      The solution to the quadratic equation.    Incorrect. The number 9 is introduced to complete the square, not as a solution.      The coefficient of the linear term.    Incorrect. The coefficient of the linear term in the quadratic equation is 6, not 9.      A randomly chosen constant added to balance the equation.    Incorrect. The number 9 is carefully selected to form a perfect square trinomial.       📖❓ Purpose of Multiply   Why do we multiply both sides of by ?      To complete a product rule within this equation.    Correct! Multiplying by allows us to rewrite the left-hand side as a perfect derivative.      To eliminate the derivative term entirely.    Incorrect. The goal is not to eliminate the derivative, but to structure the equation so it can be integrated directly.      To make the right-hand side equal to zero.    Incorrect. The right-hand side is transformed, but it does not become zero.      It makes the equation linear.    Incorrect. The equation already linear. Moreover, multiplying by any function of will not change the equation's linearity.       📖❓ Recognizing an Incomplete Product Rule   Why do we say the differential equation contains an incomplete product rule?      It lacks a function needed to reverse a product rule.    Correct! The equation is missing an essential function that would allow it to be rewritten using the product rule.      Because we haven't used the product rule yet.    Incorrect. The issue is not that the product rule hasn't been applied, but that the equation is not structured as a product rule.      It has a free term of .    Incorrect. While the free term is , the issue is related to the structure of the left-hand side.      It is not in standard form.    Incorrect. The equation actually is in standard form.       📖❓ Equivalent Equations   The differential equation,   is equivalent to which of the following equations? Hint: use the forward product rule in the answer choices.          Incorrect. This equation does not account for the logarithmic term in the original differential equation.         Incorrect. This equation does not account for the logarithmic term in the original differential equation.         Correct! Applying the product rule to the left side of the equation yields the original differential equation.         Incorrect. This equation does not account for the logarithmic term in the original differential equation.       📖❓ Goal of Completing the Product Rule   How does reversing the product rule help solve this equation? .     It groups terms on one side of the equation into a single derivative.  Correct! The product rule combines terms on the left side of the equation into a single derivative.    It computes the derivative of a product of two functions.  Incorrect. In this situation, the product rule is not used to take a derivative of a product of two functions.    It solves the differential equation directly.  Incorrect. The product rule can help solve some differential equations, but it does not solve them alone.    It allows it to be easily solved by direct integration.  Correct! Recognizing a perfect derivative lets us solve the equation by integration.    It converts a nonlinear equation into a linear one.  Incorrect. The equation is already linear; reversing the product rule does not change its nature.      📖❓ Seeing the Pattern   Given that you can multiply the equation   by the function to transform it into   What function would you think to multiply onto the equation   to accomplish the same goal?           Incorrect. Review the example carefully.           Incorrect. Review the example carefully.           That's correct! Multiplying by will allow you to complete the product rule on the left side of the equation.           Incorrect. Review the example carefully.       "
+},
+{
+  "id": "completing-prod-rule-4",
+  "level": "2",
+  "url": "completing-prod-rule.html#completing-prod-rule-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "first-order differential equations "
+},
+{
+  "id": "completing-prod-rule-9",
+  "level": "2",
+  "url": "completing-prod-rule.html#completing-prod-rule-9",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "integrating factor method "
+},
+{
+  "id": "analogy-summary",
+  "level": "2",
+  "url": "completing-prod-rule.html#analogy-summary",
+  "type": "🗺️ Summary",
+  "number": "67",
+  "title": "Completing the Square vs Completing the Product Rule.",
+  "body": " Completing the Square vs Completing the Product Rule   Here's how the two processes line up:      Completing the Square  Completing the Product Rule   Goal  Solve for  Solve for  Equation     Missing Piece  (added)  (multiplied)    Completed Form      Grouped Form      Solution Step  Take square root  Integrate      "
+},
+{
+  "id": "completing-prod-rule-cyu-1",
+  "level": "2",
+  "url": "completing-prod-rule.html#completing-prod-rule-cyu-1",
+  "type": "Checkpoint",
+  "number": "68",
+  "title": "📖❓ Reading Questions.",
+  "body": " 📖❓ Reading Questions   📖❓ Purpose of Adding   In the analogy, what role does the number play in the quadratic equation?      The missing piece that allows the quadratic expression to be rewritten as a perfect square.    Correct! The number 9 completes the square, making it factorable.      The solution to the quadratic equation.    Incorrect. The number 9 is introduced to complete the square, not as a solution.      The coefficient of the linear term.    Incorrect. The coefficient of the linear term in the quadratic equation is 6, not 9.      A randomly chosen constant added to balance the equation.    Incorrect. The number 9 is carefully selected to form a perfect square trinomial.       📖❓ Purpose of Multiply   Why do we multiply both sides of by ?      To complete a product rule within this equation.    Correct! Multiplying by allows us to rewrite the left-hand side as a perfect derivative.      To eliminate the derivative term entirely.    Incorrect. The goal is not to eliminate the derivative, but to structure the equation so it can be integrated directly.      To make the right-hand side equal to zero.    Incorrect. The right-hand side is transformed, but it does not become zero.      It makes the equation linear.    Incorrect. The equation already linear. Moreover, multiplying by any function of will not change the equation's linearity.       📖❓ Recognizing an Incomplete Product Rule   Why do we say the differential equation contains an incomplete product rule?      It lacks a function needed to reverse a product rule.    Correct! The equation is missing an essential function that would allow it to be rewritten using the product rule.      Because we haven't used the product rule yet.    Incorrect. The issue is not that the product rule hasn't been applied, but that the equation is not structured as a product rule.      It has a free term of .    Incorrect. While the free term is , the issue is related to the structure of the left-hand side.      It is not in standard form.    Incorrect. The equation actually is in standard form.       📖❓ Equivalent Equations   The differential equation,   is equivalent to which of the following equations? Hint: use the forward product rule in the answer choices.          Incorrect. This equation does not account for the logarithmic term in the original differential equation.         Incorrect. This equation does not account for the logarithmic term in the original differential equation.         Correct! Applying the product rule to the left side of the equation yields the original differential equation.         Incorrect. This equation does not account for the logarithmic term in the original differential equation.       📖❓ Goal of Completing the Product Rule   How does reversing the product rule help solve this equation? .     It groups terms on one side of the equation into a single derivative.  Correct! The product rule combines terms on the left side of the equation into a single derivative.    It computes the derivative of a product of two functions.  Incorrect. In this situation, the product rule is not used to take a derivative of a product of two functions.    It solves the differential equation directly.  Incorrect. The product rule can help solve some differential equations, but it does not solve them alone.    It allows it to be easily solved by direct integration.  Correct! Recognizing a perfect derivative lets us solve the equation by integration.    It converts a nonlinear equation into a linear one.  Incorrect. The equation is already linear; reversing the product rule does not change its nature.      📖❓ Seeing the Pattern   Given that you can multiply the equation   by the function to transform it into   What function would you think to multiply onto the equation   to accomplish the same goal?           Incorrect. Review the example carefully.           Incorrect. Review the example carefully.           That's correct! Multiplying by will allow you to complete the product rule on the left side of the equation.           Incorrect. Review the example carefully.      "
+},
+{
+  "id": "if-integrating-factor",
+  "level": "1",
+  "url": "if-integrating-factor.html",
+  "type": "Section",
+  "number": "6.3",
+  "title": "The Integrating Factor",
+  "body": " The Integrating Factor  In the last section, we explored how rewriting the left-hand side of a differential equation as a single derivative (i.e., completing the product rule ) made it easier to solve. But here's the catch: most equations aren't initially set-up for this.  For example, take the equation   It's not a complete product rule, but it can be if we multiply both sides by : .  Now, we can reverse product rule on the left, giving us , which is just one integration away from the solution. The function, , that we multiplied onto the equation is known as the integrating factor .   But, where did come from? Can we always find such a function? How?   Finding the Right Function to Multiply  To figure out where came from, let's return to our example:   To complete the product rule, we need to multiply the equation by a function. We don't yet know what that function is, so let's call it and multiply both sides of the equation by it: .  If completes a product rule on the left, then if should match the form . Setting the labels: , so , and looking for functions and that complete the pattern, we match as follows: .  This suggests that , and taking the derivative of the first of these means we also have .  Setting the two versions of equal, an interesting equation emerges: .  📌 Note  The absolute value disappears because any sign change is absorbed into the constant .   That's a differential equation. And since it's separable, we know how to solve it: .  When selecting an integrating factor, we are free to choose any nonzero value for . However, we usually choose to keep things simple, so, our integrating factor is:   This is the function we were looking for. It completes the product rule, allowing us to write the left-hand side of the equation as a single derivative and solve by integration.   Reading Questions   📖❓ Integrating Factor Dependence   In the example above, we derived the integrating factor for the equation . Based on this derivation, select the correct ending to the statement:  Of the values in the equation, the integrating factor depends on .       only the value .   Correct! The integrating factor depends only on the coefficient of , which is .     only the value .   Incorrect. The integrating factor does not depend on the free term , but rather on the coefficient of , which is .     both and .   Incorrect. The integrating factor does not depend on the free term , but rather only on the coefficient of , which is .     neither nor .   Incorrect. The integrating factor does depend on the coefficient of , which is .       📖❓ Integrating Factor Equation   To solve the differential equation , you multiply both sides by the integrating factor, , to get Which separable differential equation do you solve to find ?      Correct!     Incorrect     Incorrect. This is not a separable equation.     Incorrect. This equation has too many variables.        A Formula for Any Equation  In the last example, we figured out the integrating factor by treating the left-hand side as a product rule and labeling the parts. Let's now extend that reasoning to any first-order linear differential equation.  We'll start with defining the standard form for these equations:   Standard Form (First-Order, Linear)   A differential equation is said to be in standard form if it can be written as: where and are known functions of the independent variable , and is the unknown function (dependent variable) we want to find.     Where does this standard form come from?   All first-order linear differential equations have a , , and free term. Therefore, they can be written as . Dividing both sides by the leading coefficient, , and renaming the and constant coefficients as and , gives the standard form .    Multiplying both sides of the general standard form by a function leads us to the following formula for the integrating factor:   ✳️ Integrating Factor: General Formula  For a first-order linear equation written in standard form the integrating factor is given by .    Derivation of the General Integrating Factor   Our goal is to multiply both sides of a standard-form equation by a function so that the left-hand side becomes the derivative of a product.  Just like before, we assume that multiplying by gives us something that matches the product rule. So we try:   For the left-hand side to be a product rule, we need it to match: .  As before, we set and . Then the rest of the labels follow:   Since , we also know . Setting these equal gives the condition:   This is exactly the same kind of differential equation we solved earlier, just with a general function instead of a constant. It's still separable, and solving it gives us the general formula for the integrating factor:   Just like before, any nonzero constant works, but we typically choose to simplify our computations. This gives us a general formula for the integrating factor:      Try Out the Formula  With the integrating formula in hand, let's practice finding a few with some examples. Remember, the formula assumes the equation is in standard form . Once in this form, it is easy to identify as the coefficient of and apply it to the formula.  Find the integrating factor for the following differential equations:     The equation is in standard form and the coefficient of is , so and the integrating factor is:         This equation is not in standard form because of in the coefficient of . Dividing through by (since ) puts it in standard form:   Now, we can easily see that . Plugging this into the formula:        The variables in this equation are and , so the formula adjusts accordingly: .  Also, this equation is not in standard form, so move the term to the left: .  Then divide through by and note as the coefficient of :   Using , calculate the integral of used in the formula:   To integrate this, we can split the fraction and integrate each term:   📌 Note  Remember, constants of integration are omitted for integrating factors.   Thus, the integrating factor is simplified and given as follows:       📖❓ Reading Questions   Integrating Factor Dependence   Suppose you want to compute integrating factor for the differential equation . After rewriting it in standard form, which parts of the equation does the integrating factor depend on?       Correct! The integrating factor depends on the coefficient of , which is .       Correct! To put the equation in standard form, we divide by , so the integrating factor will depend on this coefficient.       Incorrect. The integrating factor does not depend on the free term.       Incorrect. The integrating factor does not depend on , but it does depend on the coefficient of .       Give the Integrating Factor   What is the integrating factor for the equation ?           Incorrect. This is not the correct expression for the integrating factor.           Correct! The integrating factor is .           Incorrect. The correct integrating factor should involve the integral of the coefficient of , which is , not .           Incorrect. This is not the correct form for the integrating factor.       Find the Integrating Factor (WebWorK Here For Mathquill?)   The integrating factor for the equation     is given by the function      e^(x^3)        Correct! For this equation, , therefore the integrating factor is .        Fill-In the Integrating Factor 1 (WebWorK Here For Mathquill?)   Rewrite the differential equation     in the standard first-order linear form and identify , and the integrating factor, .                        1\/x  2+1\/x  x        Correct! The equation is rearranged as showing that .         Correct! .         Correct! The integrating factor is .        Fill-In the Integrating Factor 2 (WebWorK Here For Mathquill?)   Rewrite the differential equation     in the standard first-order linear form and identify , and the integrating factor, .                        2*x  2  e^(x^2)        Correct! The equation is rearranged as showing that .         Incorrect. Double-check your algebra when rearranging the equation.         Correct! The integrating factor is .        "
+},
+{
+  "id": "if-integrating-factor-5",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-integrating-factor-5",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "integrating factor "
+},
+{
+  "id": "if-derivation-specific-rq-bundle",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-derivation-specific-rq-bundle",
+  "type": "Checkpoint",
+  "number": "69",
+  "title": "Reading Questions.",
+  "body": " Reading Questions   📖❓ Integrating Factor Dependence   In the example above, we derived the integrating factor for the equation . Based on this derivation, select the correct ending to the statement:  Of the values in the equation, the integrating factor depends on .       only the value .   Correct! The integrating factor depends only on the coefficient of , which is .     only the value .   Incorrect. The integrating factor does not depend on the free term , but rather on the coefficient of , which is .     both and .   Incorrect. The integrating factor does not depend on the free term , but rather only on the coefficient of , which is .     neither nor .   Incorrect. The integrating factor does depend on the coefficient of , which is .       📖❓ Integrating Factor Equation   To solve the differential equation , you multiply both sides by the integrating factor, , to get Which separable differential equation do you solve to find ?      Correct!     Incorrect     Incorrect. This is not a separable equation.     Incorrect. This equation has too many variables.     "
+},
+{
+  "id": "if-standard-form",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-standard-form",
+  "type": "📙 Definition",
+  "number": "70",
+  "title": "Standard Form (First-Order, Linear).",
+  "body": " Standard Form (First-Order, Linear)   A differential equation is said to be in standard form if it can be written as: where and are known functions of the independent variable , and is the unknown function (dependent variable) we want to find.   "
+},
+{
+  "id": "std-form-explained",
+  "level": "2",
+  "url": "if-integrating-factor.html#std-form-explained",
+  "type": "🧠 Derivation",
+  "number": "71",
+  "title": "<em class=\"emphasis\">Where does this standard form come from?<\/em>",
+  "body": " Where does this standard form come from?   All first-order linear differential equations have a , , and free term. Therefore, they can be written as . Dividing both sides by the leading coefficient, , and renaming the and constant coefficients as and , gives the standard form .   "
+},
+{
+  "id": "integrating-factor-general-formula-2",
+  "level": "2",
+  "url": "if-integrating-factor.html#integrating-factor-general-formula-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "integrating factor "
+},
+{
+  "id": "int-factor-explained",
+  "level": "2",
+  "url": "if-integrating-factor.html#int-factor-explained",
+  "type": "🧠 Derivation",
+  "number": "72",
+  "title": "<em class=\"emphasis\">Derivation of the General Integrating Factor<\/em>.",
+  "body": " Derivation of the General Integrating Factor   Our goal is to multiply both sides of a standard-form equation by a function so that the left-hand side becomes the derivative of a product.  Just like before, we assume that multiplying by gives us something that matches the product rule. So we try:   For the left-hand side to be a product rule, we need it to match: .  As before, we set and . Then the rest of the labels follow:   Since , we also know . Setting these equal gives the condition:   This is exactly the same kind of differential equation we solved earlier, just with a general function instead of a constant. It's still separable, and solving it gives us the general formula for the integrating factor:   Just like before, any nonzero constant works, but we typically choose to simplify our computations. This gives us a general formula for the integrating factor:   "
+},
+{
+  "id": "if-formula-examples-4",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-formula-examples-4",
+  "type": "🌌 Example",
+  "number": "73",
+  "title": "",
+  "body": "   The equation is in standard form and the coefficient of is , so and the integrating factor is:    "
+},
+{
+  "id": "if-formula-examples-5",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-formula-examples-5",
+  "type": "🌌 Example",
+  "number": "74",
+  "title": "",
+  "body": "    This equation is not in standard form because of in the coefficient of . Dividing through by (since ) puts it in standard form:   Now, we can easily see that . Plugging this into the formula:    "
+},
+{
+  "id": "if-formula-examples-6",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-formula-examples-6",
+  "type": "🌌 Example",
+  "number": "75",
+  "title": "",
+  "body": "   The variables in this equation are and , so the formula adjusts accordingly: .  Also, this equation is not in standard form, so move the term to the left: .  Then divide through by and note as the coefficient of :   Using , calculate the integral of used in the formula:   To integrate this, we can split the fraction and integrate each term:   📌 Note  Remember, constants of integration are omitted for integrating factors.   Thus, the integrating factor is simplified and given as follows:    "
+},
+{
+  "id": "if-integrating-factor-cyu-bundle",
+  "level": "2",
+  "url": "if-integrating-factor.html#if-integrating-factor-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "76",
+  "title": "📖❓ Reading Questions.",
+  "body": " 📖❓ Reading Questions   Integrating Factor Dependence   Suppose you want to compute integrating factor for the differential equation . After rewriting it in standard form, which parts of the equation does the integrating factor depend on?       Correct! The integrating factor depends on the coefficient of , which is .       Correct! To put the equation in standard form, we divide by , so the integrating factor will depend on this coefficient.       Incorrect. The integrating factor does not depend on the free term.       Incorrect. The integrating factor does not depend on , but it does depend on the coefficient of .       Give the Integrating Factor   What is the integrating factor for the equation ?           Incorrect. This is not the correct expression for the integrating factor.           Correct! The integrating factor is .           Incorrect. The correct integrating factor should involve the integral of the coefficient of , which is , not .           Incorrect. This is not the correct form for the integrating factor.       Find the Integrating Factor (WebWorK Here For Mathquill?)   The integrating factor for the equation     is given by the function      e^(x^3)        Correct! For this equation, , therefore the integrating factor is .        Fill-In the Integrating Factor 1 (WebWorK Here For Mathquill?)   Rewrite the differential equation     in the standard first-order linear form and identify , and the integrating factor, .                        1\/x  2+1\/x  x        Correct! The equation is rearranged as showing that .         Correct! .         Correct! The integrating factor is .        Fill-In the Integrating Factor 2 (WebWorK Here For Mathquill?)   Rewrite the differential equation     in the standard first-order linear form and identify , and the integrating factor, .                        2*x  2  e^(x^2)        Correct! The equation is rearranged as showing that .         Incorrect. Double-check your algebra when rearranging the equation.         Correct! The integrating factor is .       "
+},
+{
+  "id": "if-method",
+  "level": "1",
+  "url": "if-method.html",
+  "type": "Section",
+  "number": "6.4",
+  "title": "Integrating Factor Method",
+  "body": " Integrating Factor Method   Let's now bring everything together into a clear, repeatable process. First with a recap, then a step-by-step guide to the Integrating Factor Method and finally, a series of examples that show how to apply this method to solve first-order linear differential equations.    Method Steps  Before jumping into the official method, let's recap the story so far ...    📌  All first-order linear differential equation have a standard form .    📌  Once in standard form, the equation can be multiplied by an integrating factor to complete a product rule on the left-hand side.    📌  A Complete product rule is a sum of two terms that can be grouped inside a single derivative via a reversed product rule.    More concretely, the process was broken down in a previous example as follows:    Standard Form:   Find & Multiply by    Complete Product Rule:   Reverse Product Rule    Grouped Derivative:   Direct Integration    This essentially outlines the complete the complete integrating factor method process.   Integrating Factor (IF) Method  Given a first-order linear equation in standard form:   the general solution can be found through the following three-step process :   Step 1: Find the Integrating Factor  Identify and compute the integrating factor :   .   Step 2: Multiply by to Complete the Product Rule  Multiply both sides of equation by and reverse the product rule on the left side.   .   Step 3: Solve Using Direct Integration  Integrate both sides of equation and solve for to find the general solution.        📖❓ Checking When the Method Applies   Which type of equations can always be solved using the IF method?     First-order linear equations.  Correct! That's the specific class this method is designed for.    First-order separable equations.  Incorrect. This method only applies to first-order equations.    Any linear equation.  Incorrect. This method only applies to first-order equations.    Any differential equation that contains .  Too broad. The method is specific to first-order linear equations.      📖❓ Before Finding the Integrating Factor   Suppose you're given the equation: . What should you do before computing an integrating factor?     Rewrite the equation in standard form by dividing through by .  Correct! Standard form is required before identifying .    Group the left side as a single derivative using the product rule.  Not quite. Grouping comes after multiplying by the integrating factor.     Compute the integrating factor.    Incorrect. The integrating factor depends on , which must first be identified in standard form.      Integrate both sides of the equation.    Incorrect. Integration comes after multiplying by the integrating factor.       📖❓ Multiplying by the Integrating Factor   Imagine you multiplied this differential equation by its integrating factor. . Which of the following statements is true?     The and terms can now be grouped as a single derivative.   Correct! Multiplying by the integrating factor allows us to rewrite the left-hand side as a single derivative, completing the product rule.     The integrating factor is .   Incorrect. comes from , so it is part of the integrating factor, but not the entire integrating factor.     The solution is equal to the integrating factor.   Incorrect. The solution is not equal to the integrating factor, but rather, the integrating factor is used to help find the solution.     The integrating factor is .   Correct! The integrating factor is .       📖❓ Purpose of the Integrating Factor   Which statement describes the purpose of the multiplying both sides of a differential equation by an integrating factor?      To eliminate the dependent variable.      To convert the equation into a separable form.      To solve for the constant of integration.      To transform the equation into a direct integration problem.         Full Solutions Using the Method  With the three-step method in hand, we're ready to solve some full equations from start to finish. These examples show how the integrating factor method handles a variety of situations, from clean equations already in standard form to messy ones that need rearranging.   Already in Standard Form   Find the general solution to the equation   .    It is already in standard form, so we proceed with the integrating factor method.   Step 1 . Identify and compute  📌 Note  Recall, we ignore the integration constant for the integrating factor.      Step 2 . Multiply both sides by to complete the product rule on the left.    Step 3 , Finally, we integrate:      Rearranging to Standard Form   Solve the equation   .    This equation is first-order and linear, but not in standard form, so we divide both sides by and move the to the same side as the term: . Now the IF method applies.   Step 1 . Identify and compute : .   Step 2 . Multiply by to complete the product rule on the left: .   Step 3 . Here, the integral on the right is computed with -substitution:          Verify the Solution  We have found the general solution, but it is worth remembering that we can verify our solution by substituting back into the original equation.          The same result on the left & right confirms our solution.      Requires Integration by Parts   Solve the equation: .    Put the equation in standard form, identify , and compute :   Multiply by and reverse the product rule on the left side.   Now, integrate both sides and use integration by parts on the right.              Finally, solve for :      An Initial-Valued Problem   Solve the initial value problem. .    Put the equation in standard form by replacing with and moving the term to the left:  . Multiplying this by allows us to identify and compute :   Multiply by and complete the product rule on the left side. .  Integrate both sides and use -substitution:              Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.     These examples demonstrate the versatility of the Integrating Factor Method . Regardless of the complexity of the given equation, this three-step approach provides a reliable solution strategy for any first-order linear differential equation.   "
+},
+{
+  "id": "if-method-2-1",
+  "level": "2",
+  "url": "if-method.html#if-method-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Integrating Factor Method "
+},
+{
+  "id": "if-integrating-factor-recap-3",
+  "level": "2",
+  "url": "if-method.html#if-integrating-factor-recap-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "standard form integrating factor "
+},
+{
+  "id": "if-method",
+  "level": "2",
+  "url": "if-method.html#if-method",
+  "type": "✍🏻 Method",
+  "number": "1",
+  "title": "Integrating Factor (IF) Method.",
+  "body": " Integrating Factor (IF) Method  Given a first-order linear equation in standard form:   the general solution can be found through the following three-step process :   Step 1: Find the Integrating Factor  Identify and compute the integrating factor :   .   Step 2: Multiply by to Complete the Product Rule  Multiply both sides of equation by and reverse the product rule on the left side.   .   Step 3: Solve Using Direct Integration  Integrate both sides of equation and solve for to find the general solution.    "
+},
+{
+  "id": "if-method-steps-chkpt-bundle",
+  "level": "2",
+  "url": "if-method.html#if-method-steps-chkpt-bundle",
+  "type": "Checkpoint",
+  "number": "77",
+  "title": ".",
+  "body": "   📖❓ Checking When the Method Applies   Which type of equations can always be solved using the IF method?     First-order linear equations.  Correct! That's the specific class this method is designed for.    First-order separable equations.  Incorrect. This method only applies to first-order equations.    Any linear equation.  Incorrect. This method only applies to first-order equations.    Any differential equation that contains .  Too broad. The method is specific to first-order linear equations.      📖❓ Before Finding the Integrating Factor   Suppose you're given the equation: . What should you do before computing an integrating factor?     Rewrite the equation in standard form by dividing through by .  Correct! Standard form is required before identifying .    Group the left side as a single derivative using the product rule.  Not quite. Grouping comes after multiplying by the integrating factor.     Compute the integrating factor.    Incorrect. The integrating factor depends on , which must first be identified in standard form.      Integrate both sides of the equation.    Incorrect. Integration comes after multiplying by the integrating factor.       📖❓ Multiplying by the Integrating Factor   Imagine you multiplied this differential equation by its integrating factor. . Which of the following statements is true?     The and terms can now be grouped as a single derivative.   Correct! Multiplying by the integrating factor allows us to rewrite the left-hand side as a single derivative, completing the product rule.     The integrating factor is .   Incorrect. comes from , so it is part of the integrating factor, but not the entire integrating factor.     The solution is equal to the integrating factor.   Incorrect. The solution is not equal to the integrating factor, but rather, the integrating factor is used to help find the solution.     The integrating factor is .   Correct! The integrating factor is .       📖❓ Purpose of the Integrating Factor   Which statement describes the purpose of the multiplying both sides of a differential equation by an integrating factor?      To eliminate the dependent variable.      To convert the equation into a separable form.      To solve for the constant of integration.      To transform the equation into a direct integration problem.      "
+},
+{
+  "id": "if-method-example-1",
+  "level": "2",
+  "url": "if-method.html#if-method-example-1",
+  "type": "🌌 Example",
+  "number": "78",
+  "title": "Already in Standard Form.",
+  "body": " Already in Standard Form   Find the general solution to the equation   .    It is already in standard form, so we proceed with the integrating factor method.   Step 1 . Identify and compute  📌 Note  Recall, we ignore the integration constant for the integrating factor.      Step 2 . Multiply both sides by to complete the product rule on the left.    Step 3 , Finally, we integrate:    "
+},
+{
+  "id": "if-method-example-2",
+  "level": "2",
+  "url": "if-method.html#if-method-example-2",
+  "type": "🌌 Example",
+  "number": "79",
+  "title": "Rearranging to Standard Form.",
+  "body": " Rearranging to Standard Form   Solve the equation   .    This equation is first-order and linear, but not in standard form, so we divide both sides by and move the to the same side as the term: . Now the IF method applies.   Step 1 . Identify and compute : .   Step 2 . Multiply by to complete the product rule on the left: .   Step 3 . Here, the integral on the right is computed with -substitution:          Verify the Solution  We have found the general solution, but it is worth remembering that we can verify our solution by substituting back into the original equation.          The same result on the left & right confirms our solution.    "
+},
+{
+  "id": "if-method-example-3",
+  "level": "2",
+  "url": "if-method.html#if-method-example-3",
+  "type": "🌌 Example",
+  "number": "80",
+  "title": "Requires Integration by Parts.",
+  "body": " Requires Integration by Parts   Solve the equation: .    Put the equation in standard form, identify , and compute :   Multiply by and reverse the product rule on the left side.   Now, integrate both sides and use integration by parts on the right.              Finally, solve for :    "
+},
+{
+  "id": "if-method-example-4",
+  "level": "2",
+  "url": "if-method.html#if-method-example-4",
+  "type": "🌌 Example",
+  "number": "81",
+  "title": "An Initial-Valued Problem.",
+  "body": " An Initial-Valued Problem   Solve the initial value problem. .    Put the equation in standard form by replacing with and moving the term to the left:  . Multiplying this by allows us to identify and compute :   Multiply by and complete the product rule on the left side. .  Integrate both sides and use -substitution:              Finally, we apply the initial condition to determine the constant .   We can then write the particular solution to the initial value problem.    "
+},
+{
+  "id": "c4-exercises",
+  "level": "1",
+  "url": "c4-exercises.html",
+  "type": "Section",
+  "number": "6.5",
+  "title": "Exercises",
+  "body": " Exercises   ᯓ★❓ Quick-Answer Questions    True-False   👍👎   The differential equation, below, is in standard form.     This differential equation is not in the form .    Check to see that the differential equation is in the form .     👍👎  The integrating factor method can be applied to the differential equation .  Since the term, , is nonlinear, the differential equation is nonlinear and the integrating factor method does not apply here.     Multiple-Choice   Integration Technique Used   What integration technique is used to evaluate ?     Substitution.  Substitution isn't the best choice for this integral.    Integration by parts.  Correct! Integration by parts handles products like .    Partial fraction decomposition.  Partial fractions don't apply here.    The product rule.  The product rule is for differentiation, not integration.      When to Use Direct Integration   What method is used to solve a differential equation of the form ?     Direct integration.  Correct! Integrate both sides with respect to .    Separation of variables.  Separation isn't needed—the equation integrates directly.    Substitution.  Substitution isn't the primary method here.    Partial fractions.  Partial fractions are sometimes used inside integration, but the method here is simply direct integration.      Conditions for Using the Integrating Factor Method   What properties must a differential equation have for the integrating factor method to apply?     First order.  Correct! IF method is for first-order equations.    Separable.  Separable equations don't require the integrating factor method.    Linear.  Correct! The IF method works only for linear equations.    Quadratic.  “Quadratic” refers to algebraic equations, not differential equations.      Choosing the Integrating Factor   For the linear equation , what is the integrating factor?      Correct! The integrating factor is built from .     This would come from , not —wrong choice.     Watch the sign—the integrating factor has .     The integrating factor isn't just an arbitrary exponential—it comes from integrating .      Purpose of Multiplying by the Integrating Factor   Why do we multiply a first-order linear equation by its integrating factor?     To rewrite the equation so it can be integrated directly.  Correct! The integrating factor allows the left-hand side to become , which is integrable.    To convert the equation into a separable equation.  Not quite—although integration becomes possible, the equation doesn't become separable.    To set up the product rule for solving the equation.  The product rule is reversed here, not applied to expand further.    To make the equation factorable.  The integrating factor rewrites the equation into an integrable form, not just a “factorable” one.      Next Step After Using the Integrating Factor   You rewrote as . What should you do next?     Apply the product rule to expand the left-hand side.  The product rule was already reversed to reach this form; expanding again would undo progress.    Integrate both sides to solve for .  Correct! Once the left-hand side is a single derivative, integration gives the solution for .    Multiply by another integrating factor.  Only one integrating factor is needed. Multiplying by another one is unnecessary.    Differentiate both sides to simplify the expression.  Further differentiation is not needed; integration is the next step.      Choosing the IF for a Given Equation   Find the integrating factor for .      Not quite—check the exponent carefully.     This is not the exponential integrating factor needed.     Correct! The integrating factor comes from .     This is not the correct integrating factor.      Sequence of IF Method Steps   Which of the following best represents a succinct version of the integrating factor method? Let be the integrating factor.     standard form—compute —multiply —integrate—isolate  Correct! That's the sequence every time.    compute —multiply —differentiate—isolate  Differentiation is not used.    integrate—compute —multiply —standard form—isolate.  Correct steps, wrong order.    isolate—standard form—compute —multiply —integrate.  Correct steps, wrong order.       Short-Answer   Classification of DEs for the Integrating Factor Method   What type of differential equations can be solved using the integrating factor method?     The integrating factor method applies to first-order linear differential equations.     Equations Outside Separation and IF Methods   Classify all first-order differential equations that cannot be solved by either separation of variables or the integrating factor method. Provide an example of such an equation.    These are nonlinear and non-separable first-order equations. They fall outside both common solution techniques.  Examples include:       Rewrite into Standard Linear Form   Rewrite the differential equation below in the standard form . Identify and , state its order, and determine whether it is linear.          Order: first  Classification: linear         Other   Identifying Equations for the IF Method   Which of the following differential equations can be solved using the integrating factor method?                       A first-order linear equation has and only to the first power and not inside nonlinear functions.    Four of these equations are linear and first-order—they can be solved by the integrating factor method.        🏗️ Warm-ups & Drills   Which Method Applies   For each differential equation below, identify which statement applies and explain how you know. You do not need to solve any of the equations.    Can be solved by separating variables, but not using an integrating factor.  Can be solved using an integrating factor, but not by separating variables.  Can be solved both by using an integrating factor and by separating variables.  Cannot be solved using either technique.         This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable. After isolating the derivative: we see that and cannot be separated by multiplication or division.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.    b. Can be solved using an integrating factor, but not by separating variables.         This DE is first order but not linear because the dependent variable appears inside the nonlinear term .  It is also not separable. After isolating the derivative: there's no way to write the right-hand side as a product of a function of and a function of .  Therefore, this DE cannot be solved using either technique.    d. Cannot be solved using either technique.         This DE is first order and linear, so it can be solved using an integrating factor.  It is also separable. Solving for the derivative: Here, we can separate the variables: .  Therefore, this DE can be solved both by using an integrating factor and by separating variables.    c. Can be solved both by using integrating factor and by separating variables.         This DE is first order but not linear because the dependent variable is raised to a power ( ).  It is separable. Solving for the derivative: allows us to separate variables: .  Therefore, this DE can be solved by separating variables, but not using an integrating factor.    a. Can be solved by separating variables, but not using an integrating factor.         This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable. Solving for the derivative: shows no way to separate and into separate multiplicative terms.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.    b. Can be solved using an integrating factor, but not by separating variables.       ✍🏻 Solve the Differential Equations   General Solution   Use an integrating factor to find the general solution to each equation.      Standard form: , so . Integrating factor: .   Integrate:           Standard form: . Integrating factor: .    (detailed)  We put the equation in standard form to identify and compute the integrating factor.     Multiply by and reverse the product rule on the left side.   Next, integrate both sides and use -substitution on the right side.          Finally, solve for :           Already in standard form: . Integrating factor: .           Standard form: . Integrating factor: .           Treat as dependent: with . Integrating factor: .           Rewrite: with . Integrating factor: .    (detailed)  As always, start by putting the equation in standard form: .   Find Integrating Factor,       Multiply by       Complete the Product Rule       Integrate Both Sides       Isolate       General Solution   .           Standard form with . Integrating factor: .           Standard form: with . Integrating factor: .          Initial-Value Problems   Solve each initial value problem.        Standard form: . Integrating factor: .   Apply :   Final solution:             Divide by : . Integrating factor: .   Apply :   Final solution:             Standard form with . Integrating factor: .   Apply :   Final solution:          "
+},
+{
+  "id": "c4-quick-answer-tf",
+  "level": "2",
+  "url": "c4-quick-answer.html#c4-quick-answer-tf",
+  "type": "Reading Question",
+  "number": "6.5.1",
+  "title": "True-False.",
+  "body": " True-False   👍👎   The differential equation, below, is in standard form.     This differential equation is not in the form .    Check to see that the differential equation is in the form .     👍👎  The integrating factor method can be applied to the differential equation .  Since the term, , is nonlinear, the differential equation is nonlinear and the integrating factor method does not apply here.   "
+},
+{
+  "id": "c4-quick-answer-mc",
+  "level": "2",
+  "url": "c4-quick-answer.html#c4-quick-answer-mc",
+  "type": "Reading Question",
+  "number": "6.5.2",
+  "title": "Multiple-Choice.",
+  "body": " Multiple-Choice   Integration Technique Used   What integration technique is used to evaluate ?     Substitution.  Substitution isn't the best choice for this integral.    Integration by parts.  Correct! Integration by parts handles products like .    Partial fraction decomposition.  Partial fractions don't apply here.    The product rule.  The product rule is for differentiation, not integration.      When to Use Direct Integration   What method is used to solve a differential equation of the form ?     Direct integration.  Correct! Integrate both sides with respect to .    Separation of variables.  Separation isn't needed—the equation integrates directly.    Substitution.  Substitution isn't the primary method here.    Partial fractions.  Partial fractions are sometimes used inside integration, but the method here is simply direct integration.      Conditions for Using the Integrating Factor Method   What properties must a differential equation have for the integrating factor method to apply?     First order.  Correct! IF method is for first-order equations.    Separable.  Separable equations don't require the integrating factor method.    Linear.  Correct! The IF method works only for linear equations.    Quadratic.  “Quadratic” refers to algebraic equations, not differential equations.      Choosing the Integrating Factor   For the linear equation , what is the integrating factor?      Correct! The integrating factor is built from .     This would come from , not —wrong choice.     Watch the sign—the integrating factor has .     The integrating factor isn't just an arbitrary exponential—it comes from integrating .      Purpose of Multiplying by the Integrating Factor   Why do we multiply a first-order linear equation by its integrating factor?     To rewrite the equation so it can be integrated directly.  Correct! The integrating factor allows the left-hand side to become , which is integrable.    To convert the equation into a separable equation.  Not quite—although integration becomes possible, the equation doesn't become separable.    To set up the product rule for solving the equation.  The product rule is reversed here, not applied to expand further.    To make the equation factorable.  The integrating factor rewrites the equation into an integrable form, not just a “factorable” one.      Next Step After Using the Integrating Factor   You rewrote as . What should you do next?     Apply the product rule to expand the left-hand side.  The product rule was already reversed to reach this form; expanding again would undo progress.    Integrate both sides to solve for .  Correct! Once the left-hand side is a single derivative, integration gives the solution for .    Multiply by another integrating factor.  Only one integrating factor is needed. Multiplying by another one is unnecessary.    Differentiate both sides to simplify the expression.  Further differentiation is not needed; integration is the next step.      Choosing the IF for a Given Equation   Find the integrating factor for .      Not quite—check the exponent carefully.     This is not the exponential integrating factor needed.     Correct! The integrating factor comes from .     This is not the correct integrating factor.      Sequence of IF Method Steps   Which of the following best represents a succinct version of the integrating factor method? Let be the integrating factor.     standard form—compute —multiply —integrate—isolate  Correct! That's the sequence every time.    compute —multiply —differentiate—isolate  Differentiation is not used.    integrate—compute —multiply —standard form—isolate.  Correct steps, wrong order.    isolate—standard form—compute —multiply —integrate.  Correct steps, wrong order.     "
+},
+{
+  "id": "c4-quick-answer-sa",
+  "level": "2",
+  "url": "c4-quick-answer.html#c4-quick-answer-sa",
+  "type": "Reading Question",
+  "number": "6.5.3",
+  "title": "Short-Answer.",
+  "body": " Short-Answer   Classification of DEs for the Integrating Factor Method   What type of differential equations can be solved using the integrating factor method?     The integrating factor method applies to first-order linear differential equations.     Equations Outside Separation and IF Methods   Classify all first-order differential equations that cannot be solved by either separation of variables or the integrating factor method. Provide an example of such an equation.    These are nonlinear and non-separable first-order equations. They fall outside both common solution techniques.  Examples include:       Rewrite into Standard Linear Form   Rewrite the differential equation below in the standard form . Identify and , state its order, and determine whether it is linear.          Order: first  Classification: linear       "
+},
+{
+  "id": "c4-quick-answer-other",
+  "level": "2",
+  "url": "c4-quick-answer.html#c4-quick-answer-other",
+  "type": "Reading Question",
+  "number": "6.5.4",
+  "title": "Other.",
+  "body": " Other   Identifying Equations for the IF Method   Which of the following differential equations can be solved using the integrating factor method?                       A first-order linear equation has and only to the first power and not inside nonlinear functions.    Four of these equations are linear and first-order—they can be solved by the integrating factor method.    "
+},
+{
+  "id": "which-method-1",
+  "level": "2",
+  "url": "c4-exercises-3.html#which-method-1",
+  "type": "Exercise",
+  "number": "6.5.1",
+  "title": "",
+  "body": "     This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable. After isolating the derivative: we see that and cannot be separated by multiplication or division.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.    b. Can be solved using an integrating factor, but not by separating variables.   "
+},
+{
+  "id": "which-method-2",
+  "level": "2",
+  "url": "c4-exercises-3.html#which-method-2",
+  "type": "Exercise",
+  "number": "6.5.2",
+  "title": "",
+  "body": "     This DE is first order but not linear because the dependent variable appears inside the nonlinear term .  It is also not separable. After isolating the derivative: there's no way to write the right-hand side as a product of a function of and a function of .  Therefore, this DE cannot be solved using either technique.    d. Cannot be solved using either technique.   "
+},
+{
+  "id": "which-method-3",
+  "level": "2",
+  "url": "c4-exercises-3.html#which-method-3",
+  "type": "Exercise",
+  "number": "6.5.3",
+  "title": "",
+  "body": "     This DE is first order and linear, so it can be solved using an integrating factor.  It is also separable. Solving for the derivative: Here, we can separate the variables: .  Therefore, this DE can be solved both by using an integrating factor and by separating variables.    c. Can be solved both by using integrating factor and by separating variables.   "
+},
+{
+  "id": "which-method-4",
+  "level": "2",
+  "url": "c4-exercises-3.html#which-method-4",
+  "type": "Exercise",
+  "number": "6.5.4",
+  "title": "",
+  "body": "     This DE is first order but not linear because the dependent variable is raised to a power ( ).  It is separable. Solving for the derivative: allows us to separate variables: .  Therefore, this DE can be solved by separating variables, but not using an integrating factor.    a. Can be solved by separating variables, but not using an integrating factor.   "
+},
+{
+  "id": "which-method-5",
+  "level": "2",
+  "url": "c4-exercises-3.html#which-method-5",
+  "type": "Exercise",
+  "number": "6.5.5",
+  "title": "",
+  "body": "     This DE is first order and linear, so it can be solved using an integrating factor.  It is not separable. Solving for the derivative: shows no way to separate and into separate multiplicative terms.  Therefore, this DE can be solved using an integrating factor, but not by separating variables.    b. Can be solved using an integrating factor, but not by separating variables.   "
+},
+{
+  "id": "gen-sol-1",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-1",
+  "type": "Exercise",
+  "number": "6.5.1",
+  "title": "",
+  "body": "   Standard form: , so . Integrating factor: .   Integrate:       "
+},
+{
+  "id": "gen-sol-2",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-2",
+  "type": "Exercise",
+  "number": "6.5.2",
+  "title": "",
+  "body": "   Standard form: . Integrating factor: .    (detailed)  We put the equation in standard form to identify and compute the integrating factor.     Multiply by and reverse the product rule on the left side.   Next, integrate both sides and use -substitution on the right side.          Finally, solve for :       "
+},
+{
+  "id": "gen-sol-3",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-3",
+  "type": "Exercise",
+  "number": "6.5.3",
+  "title": "",
+  "body": "   Already in standard form: . Integrating factor: .       "
+},
+{
+  "id": "gen-sol-4",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-4",
+  "type": "Exercise",
+  "number": "6.5.4",
+  "title": "",
+  "body": "   Standard form: . Integrating factor: .       "
+},
+{
+  "id": "gen-sol-5",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-5",
+  "type": "Exercise",
+  "number": "6.5.5",
+  "title": "",
+  "body": "   Treat as dependent: with . Integrating factor: .       "
+},
+{
+  "id": "gen-sol-6",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-6",
+  "type": "Exercise",
+  "number": "6.5.6",
+  "title": "",
+  "body": "   Rewrite: with . Integrating factor: .    (detailed)  As always, start by putting the equation in standard form: .   Find Integrating Factor,       Multiply by       Complete the Product Rule       Integrate Both Sides       Isolate       General Solution   .       "
+},
+{
+  "id": "gen-sol-7",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-7",
+  "type": "Exercise",
+  "number": "6.5.7",
+  "title": "",
+  "body": "   Standard form with . Integrating factor: .       "
+},
+{
+  "id": "gen-sol-8",
+  "level": "2",
+  "url": "c4-exercises-4.html#gen-sol-8",
+  "type": "Exercise",
+  "number": "6.5.8",
+  "title": "",
+  "body": "   Standard form: with . Integrating factor: .       "
+},
+{
+  "id": "c4-ivp-1",
+  "level": "2",
+  "url": "c4-exercises-4.html#c4-ivp-1",
+  "type": "Exercise",
+  "number": "6.5.9",
+  "title": "",
+  "body": "     Standard form: . Integrating factor: .   Apply :   Final solution:       "
+},
+{
+  "id": "c4-ivp-2",
+  "level": "2",
+  "url": "c4-exercises-4.html#c4-ivp-2",
+  "type": "Exercise",
+  "number": "6.5.10",
+  "title": "",
+  "body": "     Divide by : . Integrating factor: .   Apply :   Final solution:       "
+},
+{
+  "id": "c4-ivp-3",
+  "level": "2",
+  "url": "c4-exercises-4.html#c4-ivp-3",
+  "type": "Exercise",
+  "number": "6.5.11",
+  "title": "",
+  "body": "     Standard form with . Integrating factor: .   Apply :   Final solution:       "
+},
+{
+  "id": "slope-fields",
+  "level": "1",
+  "url": "slope-fields.html",
+  "type": "Section",
+  "number": "7.1",
+  "title": "Slope Fields",
+  "body": " Slope Fields   When working with first-order differential equations, you can gain insight into solutions without fully solving them. By focusing on how the solutions change, you can use a slope field to visualize the path of any potential solution.  A slope field visually represents the slopes that a solution curve must follow at each point in the plane, shown as short arrows pointing the way a solution would travel—like a leaf carried by a stream.  The pattern created by a slope field provides a visual representation of the family of solutions to the differential equation. A slope field doesn't show just one solution—it shows them all. From any starting point, a unique curve threads through, always guided by the tiny arrows.    From Equation to Slope  Every first-order differential equation combines , , and . By rearranging terms, we can always write it as: where collects all terms. For example:   When it is possible to isolate , we write:   Here is the slope generator : give it any point and it outputs the slope the solution must have there. For instance, if and ,   Since is the tangent slope of at , this number tells you the direction the graph is heading at .   Quick Slope Check   For , find the slope at .    Rearranging gives , so . Substitute:   Any solution through leaves that point with slope .     📖❓ Using the slope generator   Suppose we have the differential equation . What is the slope of any solution curve passing through ?      Substitute into : . That's the tangent slope there.     This would be the slope if y were positive, but here y = -2 changes the result.     Check your math—substitute carefully into .     This would only account for the term—don't forget the part.       Sketching a Slope Field  To sketch a slope field by hand:   Select a small grid of points in the -plane.  Compute at each point.  Draw a short line segment at the point with that slope.   For example, take Computing nine slopes on a grid yields:                     Sketching by hand is great for intuition but tedious when you need more points. Computer-generated slope fields fill in the gaps, revealing a dense web of arrows that paints the full picture. In , the solution curve through flows smoothly along the arrows, like an object carried by a current.       Slope field for    A slope field turns an equation into a navigational chart. Each arrow is an instruction every solution must obey. The entire field represents the whole family of solutions, letting you spot patterns in how solutions behave, without ever solving for explicitly. Next, we'll look at autonomous equations , whose slope fields reveal even more structure.    📖❓ What does a slope field represent?   Which statement best describes what a slope field shows for a first-order differential equation?     It shows the general flow pattern of any solution.  A slope field visualizes the slope each solution must take through every point—like a map of directional instructions for all solutions.    It shows the general flow pattern of a specific solution.  A slope field doesn't display one solution—it encodes the entire family of solutions.    It gives the formulas for all solutions to the equation.  No formulas appear in a slope field; it's a picture of slopes, not algebraic expressions.    It plots the solution curve for any solution.  A slope field shows the direction a solution must go, not the actual solution curve.     "
+},
+{
+  "id": "slope-fields-2-1",
+  "level": "2",
+  "url": "slope-fields.html#slope-fields-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "slope field "
+},
+{
+  "id": "slope-fields-eqn-to-slope-6",
+  "level": "2",
+  "url": "slope-fields.html#slope-fields-eqn-to-slope-6",
+  "type": "🌌 Example",
+  "number": "82",
+  "title": "Quick Slope Check.",
+  "body": " Quick Slope Check   For , find the slope at .    Rearranging gives , so . Substitute:   Any solution through leaves that point with slope .   "
+},
+{
+  "id": "slope-fields-cyu-2",
+  "level": "2",
+  "url": "slope-fields.html#slope-fields-cyu-2",
+  "type": "Checkpoint",
+  "number": "83",
+  "title": "📖❓  Using the slope generator.",
+  "body": " 📖❓ Using the slope generator   Suppose we have the differential equation . What is the slope of any solution curve passing through ?      Substitute into : . That's the tangent slope there.     This would be the slope if y were positive, but here y = -2 changes the result.     Check your math—substitute carefully into .     This would only account for the term—don't forget the part.    "
+},
+{
+  "id": "y-t-slope-field-16x16",
+  "level": "2",
+  "url": "slope-fields.html#y-t-slope-field-16x16",
+  "type": "Figure",
+  "number": "84",
+  "title": "",
+  "body": "    Slope field for  "
+},
+{
+  "id": "slope-fields-cyu-1",
+  "level": "2",
+  "url": "slope-fields.html#slope-fields-cyu-1",
+  "type": "Checkpoint",
+  "number": "85",
+  "title": "📖❓  What does a slope field represent?",
+  "body": " 📖❓ What does a slope field represent?   Which statement best describes what a slope field shows for a first-order differential equation?     It shows the general flow pattern of any solution.  A slope field visualizes the slope each solution must take through every point—like a map of directional instructions for all solutions.    It shows the general flow pattern of a specific solution.  A slope field doesn't display one solution—it encodes the entire family of solutions.    It gives the formulas for all solutions to the equation.  No formulas appear in a slope field; it's a picture of slopes, not algebraic expressions.    It plots the solution curve for any solution.  A slope field shows the direction a solution must go, not the actual solution curve.    "
+},
+{
+  "id": "autonomous-eqns",
+  "level": "1",
+  "url": "autonomous-eqns.html",
+  "type": "Section",
+  "number": "7.2",
+  "title": "Autonomous Equations",
+  "body": " Autonomous Equations   When the first-order differential equation contains no explicit terms, it reduces to: This is called an autonomous differential equation .   Autonomous means self-governing. In these equations, the rate of change of depends only on itself, not on time . The system's behavior is determined entirely by its current state. Think of a spring: it pushes back the same way no matter the time of day. Only how far it's compressed matters, not what time it is.    Slope Fields of Autonomous Equations  Autonomous equations have a distinctive look in their slope fields. Consider:  . Here, the slope at any point depends only on . Moving up or down (changing ) changes the slope, but sliding left or right (changing ) does not. The result is a striped slope field—each horizontal line has the same slope pattern all the way across.   illustrates this. As you go up the plane, the slope segments gradually rotate, reflecting how changes with . But moving sideways leaves the segments fixed—the slopes don't shift with .   Symmetry in the slope field for        Rotating slope segments for changing and fixed slope segments for changing         Horizontal shift symmetry of solutions to autonomous differential equations     This symmetry isn't just in the slope field, it shows up in the solutions themselves. As seen in , if you know one solution curve for an autonomous equation, you can create others simply by shifting that solution horizontally. That's because the equation doesn't know what time it is; it only cares about .    📖❓ Autonomous Equations   📖❓ What does a slope field represent?   Suppose you compute the slope of an autonomous differential equation be at the point . What is the slope at ?      This is incorrect. The slope depends only on , not on .     This is incorrect. The slope function is , so doesn't affect the result.     No, remember that the slope at a point depends solely on .     Correct. Since at both points, the slope is the same: , regardless of .    Impossible to answer.  This is incorrect. The value of is determined entirely by , so this is answerable.      📖❓ Shifting Solutions   Suppose is a solution to the autonomous equation . Which of the following must also be a solution?      Exactly—autonomous equations ignore the clock. Shifting in time just slides the solution along the -axis.     Adding to changes the function itself—this doesn't preserve the solution.     Scaling is not guaranteed to produce another solution unless the DE is linear, which this one may not be.     Flipping time is not generally a symmetry—it changes how evolves.      "
+},
+{
+  "id": "autonomous-eqns-2-1",
+  "level": "2",
+  "url": "autonomous-eqns.html#autonomous-eqns-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "autonomous differential equation "
+},
+{
+  "id": "autonomous-slope-symmetry",
+  "level": "2",
+  "url": "autonomous-eqns.html#autonomous-slope-symmetry",
+  "type": "Figure",
+  "number": "86",
+  "title": "",
+  "body": " Symmetry in the slope field for        Rotating slope segments for changing and fixed slope segments for changing         Horizontal shift symmetry of solutions to autonomous differential equations    "
+},
+{
+  "id": "autonomous-eqns-cyu-bundle",
+  "level": "2",
+  "url": "autonomous-eqns.html#autonomous-eqns-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "87",
+  "title": "📖❓ Autonomous Equations.",
+  "body": " 📖❓ Autonomous Equations   📖❓ What does a slope field represent?   Suppose you compute the slope of an autonomous differential equation be at the point . What is the slope at ?      This is incorrect. The slope depends only on , not on .     This is incorrect. The slope function is , so doesn't affect the result.     No, remember that the slope at a point depends solely on .     Correct. Since at both points, the slope is the same: , regardless of .    Impossible to answer.  This is incorrect. The value of is determined entirely by , so this is answerable.      📖❓ Shifting Solutions   Suppose is a solution to the autonomous equation . Which of the following must also be a solution?      Exactly—autonomous equations ignore the clock. Shifting in time just slides the solution along the -axis.     Adding to changes the function itself—this doesn't preserve the solution.     Scaling is not guaranteed to produce another solution unless the DE is linear, which this one may not be.     Flipping time is not generally a symmetry—it changes how evolves.     "
+},
+{
+  "id": "equilibrium-solns",
+  "level": "1",
+  "url": "equilibrium-solns.html",
+  "type": "Section",
+  "number": "7.3",
+  "title": "Equilibrium Solutions",
+  "body": " Equilibrium Solutions   Autonomous equations tell us that the direction of change depends only on the current state, not the current time. That pattern shows up in their slope fields as horizontal stripes of identical slope behavior. Now we'll focus on one especially important feature of those fields: the horizontal lines where the slope is zero. Along those lines, the system simply stops changing. These constant solutions are called equilibrium solutions .    Flat Lines and Fixed Behavior  Consider the slope field for the autonomous equation:  . Since this is autonomous, the slope depends only on . At certain -values, something special happens: the slope becomes exactly zero.       Slope field for    In the slope field, those points appear as rows of perfectly horizontal segments . That's no accident—where , the solution curve doesn't move. If a solution starts there, it stays there forever. These flat lines are the equilibrium solutions .  To find them, we set (the slope) to zero and solve for . In this example: So the equilibrium solutions are the constant functions and .  These constant solutions act like anchors in the system: other solutions either drift toward them or get pushed away. We'll explore that stability behavior in the next section.   📖❓ Observing the Slope Field   Look at the slope field below. Which constant solutions do you see? In other words, what -values have perfectly horizontal segments?                    What the Slope Field Tells You  What about the other values of ? Between the equilibria at and , the slopes are positive. For example: so the slope is positive and solutions rise. The slope field shows this: between and , the little segments tilt upward.  Above , things flip. Try : which is negative, so solutions decrease. The slope field confirms it—segments tilt downward. The same downward pull appears below .  The slope field acts like a behavior map : equilibrium solutions mark where the system is still, while the tilts around them reveal which way nearby solutions move.    How to Find Equilibrium Solutions  Finding equilibrium solutions is always the same quick process:   Assuming is constant and , then and so: .  The equation is algebraic. Solve it for .  For each you found, is an equilibrium solution.   Let's do a quick example. Consider: Assuming , thenthis equation becaomes: So, and the equilibrium solutions are:   Mark these on the slope field with horizontal lines. Then check the arrows just above and below each line to see how other solutions evolve—whether they're pulled in or pushed away. We will build more on this in the next section.   📖❓ Select the Equilibrium Solutions   Determine the equilibrium solutions for the equation: . Select all that apply.    Yes! ✅  ❌  Yes! ✅  ❌  ❌     "
+},
+{
+  "id": "equilibrium-solns-2-1",
+  "level": "2",
+  "url": "equilibrium-solns.html#equilibrium-solns-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "equilibrium solutions "
+},
+{
+  "id": "slope-field-1-ysqrd",
+  "level": "2",
+  "url": "equilibrium-solns.html#slope-field-1-ysqrd",
+  "type": "Figure",
+  "number": "88",
+  "title": "",
+  "body": "    Slope field for  "
+},
+{
+  "id": "equilibrium-solns-behavior-6",
+  "level": "2",
+  "url": "equilibrium-solns.html#equilibrium-solns-behavior-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "equilibrium solutions "
+},
+{
+  "id": "equilibrium-solutions-chkpt-1",
+  "level": "2",
+  "url": "equilibrium-solns.html#equilibrium-solutions-chkpt-1",
+  "type": "Checkpoint",
+  "number": "89",
+  "title": "📖❓  Observing the Slope Field.",
+  "body": " 📖❓ Observing the Slope Field   Look at the slope field below. Which constant solutions do you see? In other words, what -values have perfectly horizontal segments?                 "
+},
+{
+  "id": "equilibrium-solns-chkpt-2",
+  "level": "2",
+  "url": "equilibrium-solns.html#equilibrium-solns-chkpt-2",
+  "type": "Checkpoint",
+  "number": "90",
+  "title": "📖❓  Select the Equilibrium Solutions.",
+  "body": " 📖❓ Select the Equilibrium Solutions   Determine the equilibrium solutions for the equation: . Select all that apply.    Yes! ✅  ❌  Yes! ✅  ❌  ❌   "
+},
+{
+  "id": "classifying-equilibria",
+  "level": "1",
+  "url": "classifying-equilibria.html",
+  "type": "Section",
+  "number": "7.4",
+  "title": "Classifying Equilibrium Solutions",
+  "body": " Classifying Equilibrium Solutions   Equilibrium solutions mark the places where a system comes to rest. But not all equilibrium solutions are alike, some attract nearby solutions, others repel them, and some do a bit of both. In this section, we'll learn how to classify these points by examining the slope field, the sign of , and a tool called a phase line .    Types of Equilibria  Suppose is an equilibrium solution of an autonomous equation . If you nudge a solution slightly above or below , it might drift back, move away, or react differently on each side. What it does determines the type of equilibrium it is.  There are three common types:   Stable (sink): Solutions move toward the equilibrium from both sides.  Unstable (source): Solutions move away from the equilibrium on both sides.  Semi-stable (node): Solutions move toward the equilibrium on one side and away from it on the other.   In a slope field, a sink looks like arrows converging toward a horizontal line, a source shows arrows diverging away, and a node is a mix: converging on one side, diverging on the other. Next, we'll look at different ways to determine these behaviors.    Classification via the Phase Line  Slope fields show a lot of information at once, but for autonomous equations we can simplify. Since the slope depends only on , we can compress the slope field into a simple vertical diagram of just -values. This is called a phase line .  On a phase line:   Equilibria are marked with solid dots.  Regions where get upward arrows.  Regions where get downward arrows.   The arrows summarize how changes: whether solutions are rising or falling. Follow the arrows up or down and you'll see where solutions eventually settle—or whether they're pushed away.   Slope Field (left) and Phase Line (right) for             Growth and Decay   Find and classify the equilibrium solutions of the autonomous equation:     First, set : giving equilibrium solutions at and .  These values split the -axis into three regions. We test the sign of in each:          Region  Test Point   Sign of       Positive       Negative       Positive              Now we can classify the equilibria based on the phase line:  Solutions move away from , so it is a source .  Solutions move toward , so it is a sink .       📖❓ Match the Equilibria     Suppose an autonomous equation has three equilibrium solutions at .  Based on the provided phase line, drag each equilibrium solution to its corresponding classification type.    Phase Line              Sink     Source     Node    None of these       Classification via the Linearization Method  There's another way to classify equilibria: use a quick calculus check on .  Notice in that the sign of flips as you pass through an equilibrium. The pattern of that flip tells you what kind of point it is:   At the source , , goes from negative → positive (increases).  At the sink , , goes from positive → negative (decreases).   The important observation is that increases through sources and decreases through sinks. This is true in general, so we can classify equilibrium solutions by looking at the sign of at the equilibrium points.                 If , then is an equilibrium. To classify it:   If , it's a sink (stable).  If , it's a source (unstable).  If , the test is inconclusive—you'll need more investigation.   This is called the linearization method , because it looks at the linear (slope) behavior of near the equilibrium.    Consider the autonomous equation: Find and classify the equilibrium solutions using linearization.    First, solve : so and are equilibria.  Then compute the derivative: At each equilibrium:  → sink (stable).  → source (unstable).        📖❓ Classifying Equilibrium Solutions   📖❓ Stability Check   The autonomous equation has equilibrium solutions at and . Create a simple phase line to classify these equilibria.    is a sink, source  is a source, sink  Both are sinks  Both are sources  is a node, sink  is a source, node     📖❓ Comparing Equilibria   The equation has equilibrium solutions at and .  Compute and use the linearization method to determine which of these equilibria pulls nearby solutions toward it .      Correct. Since and , then is a sink and pulls solutions toward it.     Incorrect. Since and , then is a source and repels solutions.      "
+},
+{
+  "id": "classifying-equilibria-2-1",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "phase line "
+},
+{
+  "id": "classifying-equilibria-phase-line-2",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-phase-line-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "phase line "
+},
+{
+  "id": "phase-line-plot",
+  "level": "2",
+  "url": "classifying-equilibria.html#phase-line-plot",
+  "type": "Figure",
+  "number": "91",
+  "title": "",
+  "body": " Slope Field (left) and Phase Line (right) for           "
+},
+{
+  "id": "classifying-equilibria-phase-line-ex-1",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-phase-line-ex-1",
+  "type": "🌌 Example",
+  "number": "92",
+  "title": "Growth and Decay.",
+  "body": " Growth and Decay   Find and classify the equilibrium solutions of the autonomous equation:     First, set : giving equilibrium solutions at and .  These values split the -axis into three regions. We test the sign of in each:          Region  Test Point   Sign of       Positive       Negative       Positive              Now we can classify the equilibria based on the phase line:  Solutions move away from , so it is a source .  Solutions move toward , so it is a sink .     "
+},
+{
+  "id": "classifying-equilibria-chkpt-1",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-chkpt-1",
+  "type": "Checkpoint",
+  "number": "93",
+  "title": "📖❓  Match the Equilibria.",
+  "body": " 📖❓ Match the Equilibria     Suppose an autonomous equation has three equilibrium solutions at .  Based on the provided phase line, drag each equilibrium solution to its corresponding classification type.    Phase Line              Sink     Source     Node    None of these    "
+},
+{
+  "id": "linearization-figure",
+  "level": "2",
+  "url": "classifying-equilibria.html#linearization-figure",
+  "type": "Figure",
+  "number": "94",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "classifying-equilibria-linearization-6-3",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-linearization-6-3",
+  "type": "Figure",
+  "number": "95",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "classifying-equilibria-linearization-9",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-linearization-9",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "linearization method "
+},
+{
+  "id": "classifying-equilibria-linearization-ex-1",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-linearization-ex-1",
+  "type": "🌌 Example",
+  "number": "96",
+  "title": "",
+  "body": "  Consider the autonomous equation: Find and classify the equilibrium solutions using linearization.    First, solve : so and are equilibria.  Then compute the derivative: At each equilibrium:  → sink (stable).  → source (unstable).     "
+},
+{
+  "id": "classifying-equilibria-cyu-bundle",
+  "level": "2",
+  "url": "classifying-equilibria.html#classifying-equilibria-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "97",
+  "title": "📖❓ Classifying Equilibrium Solutions.",
+  "body": " 📖❓ Classifying Equilibrium Solutions   📖❓ Stability Check   The autonomous equation has equilibrium solutions at and . Create a simple phase line to classify these equilibria.    is a sink, source  is a source, sink  Both are sinks  Both are sources  is a node, sink  is a source, node     📖❓ Comparing Equilibria   The equation has equilibrium solutions at and .  Compute and use the linearization method to determine which of these equilibria pulls nearby solutions toward it .      Correct. Since and , then is a sink and pulls solutions toward it.     Incorrect. Since and , then is a source and repels solutions.     "
+},
+{
+  "id": "parameter-analysis",
+  "level": "1",
+  "url": "parameter-analysis.html",
+  "type": "Section",
+  "number": "7.5",
+  "title": "Parameter Analysis",
+  "body": " Parameter Analysis      Many mathematical models include one or more parameters —constants that represent things like birth rates, drug dosage, resource limits, or physical constants. These parameters aren't just placeholders—they often control the qualitative behavior of the system. Small changes in a parameter's value can cause major shifts in the solution's behavior. Understanding those changes is the goal of parameter analysis .  In this section, we focus on the most important modeling insight: how equilibria and their stability depend on parameters . When a parameter crosses a critical threshold, the model's behavior can shift dramatically—this is called a bifurcation .    Bifurcation Analysis  A bifurcation is a qualitative change in the system's dynamics caused by varying a parameter. In the context of differential equations, it usually means that the number or stability of equilibrium solutions changes at certain critical values.  Consider the one-parameter system: where is a parameter. As changes:   Existing equilibria may change from stable to unstable (or vice versa).  New equilibria may appear or disappear altogether.  In some cases, the long-term behavior of the entire system changes.   The basic workflow for bifurcation analysis is:   Find equilibria: Solve for in terms of the parameter .  Classify stability: Compute at each equilibrium. The sign determines whether the equilibrium is a sink (stable) or a source (unstable).  Track changes: See how the equilibria and their stability change as varies. Identify critical values where the behavior flips.   Consider the parameterized system: .  First, we find the equilibria: .  To see how the equilibria depend on , solve for equilibrium:  For : two equilibria exist ( ).  For : a single equilibrium ( ).  For : no real equilibria.    Stability analysis shows that one branch is stable and the other is unstable when . The bifurcation diagram reveals a collision of equilibria at , called a saddle-node bifurcation .  The results are often summarized in a bifurcation diagram —a picture showing:  The equilibria plotted against .  Solid lines for stable equilibria, dashed lines for unstable ones.  Critical parameter values where the diagram changes shape.     shows the bifurcation diagram for the previous example.   Bifurcation diagram for      Bifurcation diagrams are a cornerstone of modeling—they show, at a glance, how a system's behavior shifts as conditions change.    Why Parameter Analysis Matters in Modeling  Why should we care about bifurcations? Because in applied problems, parameters represent real things : a harvest rate in an ecology model, a dosage in a drug model, or an investment threshold in an economics model. Changing those parameters changes the system.  The most important modeling insight:   Stable equilibria correspond to long-term states the system will settle into.  Bifurcation points are thresholds where those long-term states shift—suddenly and sometimes irreversibly.   For example:   In epidemiology, there's often a threshold vaccination rate: below it, disease spreads (unstable equilibrium); above it, the disease dies out (stable equilibrium).  In ecology, a critical harvest rate might push a fish population from stable sustainability to collapse.     📖❓ Parameter Analysis   Spot the Bifurcation   The model changes behavior as varies. What happens when crosses zero?     Two equilibria collide and disappear.  Correct—this is the hallmark of a saddle-node bifurcation.    The system gains an oscillation.  This model is one-dimensional; it cannot generate oscillations.    The system's slope changes sign but equilibria stay the same.  No—the set of equilibria itself changes.      "
+},
+{
+  "id": "parameter-analysis-2-2",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "parameters parameter analysis "
+},
+{
+  "id": "parameter-analysis-2-3",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-2-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "bifurcation "
+},
+{
+  "id": "parameter-analysis-bifurcation-2",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-bifurcation-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "bifurcation "
+},
+{
+  "id": "parameter-analysis-bifurcation-10",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-bifurcation-10",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "saddle-node bifurcation "
+},
+{
+  "id": "parameter-analysis-bifurcation-11",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-bifurcation-11",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "bifurcation diagram "
+},
+{
+  "id": "saddle-node-bifurcation-diagram",
+  "level": "2",
+  "url": "parameter-analysis.html#saddle-node-bifurcation-diagram",
+  "type": "Figure",
+  "number": "98",
+  "title": "",
+  "body": " Bifurcation diagram for     "
+},
+{
+  "id": "parameter-analysis-cyu-bundle",
+  "level": "2",
+  "url": "parameter-analysis.html#parameter-analysis-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "99",
+  "title": "📖❓  Parameter Analysis.",
+  "body": " 📖❓ Parameter Analysis   Spot the Bifurcation   The model changes behavior as varies. What happens when crosses zero?     Two equilibria collide and disappear.  Correct—this is the hallmark of a saddle-node bifurcation.    The system gains an oscillation.  This model is one-dimensional; it cannot generate oscillations.    The system's slope changes sign but equilibria stay the same.  No—the set of equilibria itself changes.     "
+},
+{
+  "id": "logistical-models",
+  "level": "1",
+  "url": "logistical-models.html",
+  "type": "Section",
+  "number": "7.6",
+  "title": "Logistical Models",
+  "body": " Logistical Models       The Logistic Model  One of the most famous autonomous differential equations is the logistic model , which describes population growth when there are limited resources. The equation is:   where is the population at time , is the growth rate, and is the carrying capacity , the maximum population that the environment can sustain.  This equation has two equilibrium points:   (extinction),  (population stabilizes at carrying capacity).   The phase line for this model shows:   At , the equilibrium is unstable, any small population increase leads to growth.  At , the equilibrium is stable, populations near this value settle toward it.  When , populations increase.  When , populations decrease.   This model captures how populations grow rapidly when small, slow down as they approach the carrying capacity, and eventually level off.   Logistic Model Analysis   Consider the logistic equation .  Identify the equilibrium points.  Sketch the phase line and classify the stability of each equilibrium.  Explain how this model describes long-term population behavior.      The equilibrium points are and .  On the phase line:   is a source (unstable).  is a sink (stable).   Populations grow when between and , and shrink when above . The model predicts eventual stabilization at the carrying capacity.    The logistic model is sometimes written in a slightly different form:   where is the carrying capacity and is the growth-rate constant. This form emphasizes that growth is proportional to both the current population and the remaining resource capacity .  This is still a first-order autonomous differential equation, but unlike the exponential model, it is nonlinear since the right-hand side is not a linear function of .  The analysis is the same: the equilibria are and . The phase line tells us their stability, just like before.   A Modified Logistic Model  Let's now consider a variation on the logistic model that includes an important ecological detail, what happens to very small populations. The standard logistic model assumes that populations always grow when small, but in reality, sparse populations can have difficulty finding mates, making growth negative at low levels.  As an example, consider pine squirrels in the Rocky Mountains. These animals are territorial, and both overcrowding and underpopulation can limit their growth:   If the population is too large , territorial conflict slows growth or even causes decline.  If the population is too small , individuals may not find mates, also resulting in decline.  If the population is exactly zero, it stays at zero forever.   Let's model this situation. We define:   = time,  = squirrel population at time ,  = growth-rate coefficient,  = carrying capacity (too large),  = sparsity threshold (too small).   We want the growth rate to satisfy the following:   if or ,  if ,  .   A function with this behavior might look like:   This is the modified logistic model . It adjusts the standard model to account for low-population risks.  Let's analyze it. The equilibrium points occur where the right-hand side equals zero:   (extinction),  (sparsity threshold),  (carrying capacity).   The phase line tells us:   is a stable equilibrium (a sink).  is an unstable equilibrium (a source).  is a stable equilibrium (a sink).   This model better captures real-world behavior by showing that small populations might go extinct if they fall below the sparsity threshold.   Modified Logistic Model Analysis  Consider the differential equation:   Find all equilibrium solutions.  Sketch the phase line and label the stability of each equilibrium.  Explain how this model improves on the standard logistic model.     Equilibrium points: , , .  Phase line summary:   is a sink (stable).  is a source (unstable).  is a sink (stable).   Between and , populations decrease. Between and , populations increase. Above , populations decrease. This reflects the idea that populations only grow when they're within a safe range, not too small and not too large.     "
+},
+{
+  "id": "the-logistical-model-10",
+  "level": "2",
+  "url": "logistical-models.html#the-logistical-model-10",
+  "type": "🌌 Example",
+  "number": "100",
+  "title": "Logistic Model Analysis.",
+  "body": " Logistic Model Analysis   Consider the logistic equation .  Identify the equilibrium points.  Sketch the phase line and classify the stability of each equilibrium.  Explain how this model describes long-term population behavior.      The equilibrium points are and .  On the phase line:   is a source (unstable).  is a sink (stable).   Populations grow when between and , and shrink when above . The model predicts eventual stabilization at the carrying capacity.   "
+},
+{
+  "id": "modified-logistical-model-17",
+  "level": "2",
+  "url": "logistical-models.html#modified-logistical-model-17",
+  "type": "Checkpoint",
+  "number": "101",
+  "title": "Modified Logistic Model Analysis.",
+  "body": " Modified Logistic Model Analysis  Consider the differential equation:   Find all equilibrium solutions.  Sketch the phase line and label the stability of each equilibrium.  Explain how this model improves on the standard logistic model.     Equilibrium points: , , .  Phase line summary:   is a sink (stable).  is a source (unstable).  is a sink (stable).   Between and , populations decrease. Between and , populations increase. Above , populations decrease. This reflects the idea that populations only grow when they're within a safe range, not too small and not too large.   "
+},
+{
+  "id": "c5-exercises",
+  "level": "1",
+  "url": "c5-exercises.html",
+  "type": "Section",
+  "number": "7.7",
+  "title": "Chapter 5 Exercises",
+  "body": " Chapter 5 Exercises   ᯓ★❓ Quick-Answer Questions   Multiple-Choice   Does time matter here?   For the autonomous equation , the slope field shows a slope of at . What is the slope at ?      The slope doesn't magically flatten; it's determined by .     The sign doesn't flip when changes—time isn't part of the slope function.     Correct! Autonomous equations ignore entirely. If , the slope is always , no matter the time.    Impossible to know  It's absolutely possible—you just evaluate at .      Horizontal Shift Symmetry   Fill in the blank: If is a solution to an autonomous equation, then _______ is also guaranteed to be a solution.      Correct—autonomous equations allow time-shifted versions of any solution.     No—scaling the solution doesn't necessarily work unless the equation is linear.     No—adding a constant changes in a way that won't satisfy the DE.     Raising the solution to a power doesn't preserve the equation's behavior.      Time Shifts in Practice   A biologist models population growth with the autonomous equation They find a solution curve that fits data collected in spring. Which of the following will always produce another valid solution?      Yes! Sliding the solution along the t-axis still solves the equation.     Scaling won't necessarily satisfy the same DE.     Adding to changes the values in a way that usually breaks the equation.     Reversing time is not the same as sliding it—it usually won't satisfy the DE.     Equilibrium Identification   For the equation which of the following is an equilibrium solution?          Stability Classification   For the same equation which of the following best describes the equilibrium at ?    Stable (sink)  Unstable (source)  Semi-stable (node)  Not an equilibrium point     Short-Answer   📖❓ Phase Line Practice    Sketch a phase line for the equation Then classify each equilibrium solution as a sink, source, or node.    Review Questions    What is an autonomous differential equation?  How do you find equilibrium solutions for an autonomous equation?  What does the phase line represent, and how is it useful?  How can you determine the stability of an equilibrium solution using the phase line?   Answer each question briefly:         Exercises  Practice Problems  Try these problems to reinforce your understanding:  Sketch the slope field for .  Identify the equilibrium solutions and their stability.  Draw the phase line for the equation and describe the long-term behavior of solutions.     Exploring Nonlinear Dynamics  Consider the nonlinear equation .  Find the equilibrium solutions.  Sketch the phase line and indicate the stability of each equilibrium.  Discuss how this equation might model a system with multiple stable states.      Exploring Chaos in Autonomous Systems  Consider the equation .  Identify the equilibrium solutions.  Discuss whether this system exhibits chaotic behavior or not.  Sketch the phase line and describe the long-term behavior of solutions.      Exploring Real-World Applications  Consider a population of rabbits modeled by the equation , where is the growth rate and is the carrying capacity.  Identify the equilibrium solutions.  Sketch the phase line and describe the stability of each equilibrium.  Discuss how this model can help predict population dynamics over time.      Find the Equilibrium Solution   Find the equilibrium solutions for the autonomous differential equation .    To find equilibrium solutions, we set . This gives us the solution . So, is the only equilibrium solution for this equation.  This means that if the solution starts at , it will remain at zero for all time. If it starts anywhere else, it will either increase or decrease away from zero.    Finding Equilibrium Points   Find all equilibrium solutions of the autonomous differential equation .    To find the equilibrium solutions, we set the right-hand side equal to zero:   Factoring gives us:   This has solutions:       These are the equilibrium solutions where the slope is zero. At these points, the solution does not change over time.    Phase Line Sketching   Sketch a phase line for the equation Then classify each equilibrium point as a sink, source, or node.     "
+},
+{
+  "id": "c5-quick-answer-2-1",
+  "level": "2",
+  "url": "c5-quick-answer.html#c5-quick-answer-2-1",
+  "type": "Reading Question",
+  "number": "7.7.1",
+  "title": "Multiple-Choice.",
+  "body": "Multiple-Choice   Does time matter here?   For the autonomous equation , the slope field shows a slope of at . What is the slope at ?      The slope doesn't magically flatten; it's determined by .     The sign doesn't flip when changes—time isn't part of the slope function.     Correct! Autonomous equations ignore entirely. If , the slope is always , no matter the time.    Impossible to know  It's absolutely possible—you just evaluate at .      Horizontal Shift Symmetry   Fill in the blank: If is a solution to an autonomous equation, then _______ is also guaranteed to be a solution.      Correct—autonomous equations allow time-shifted versions of any solution.     No—scaling the solution doesn't necessarily work unless the equation is linear.     No—adding a constant changes in a way that won't satisfy the DE.     Raising the solution to a power doesn't preserve the equation's behavior.      Time Shifts in Practice   A biologist models population growth with the autonomous equation They find a solution curve that fits data collected in spring. Which of the following will always produce another valid solution?      Yes! Sliding the solution along the t-axis still solves the equation.     Scaling won't necessarily satisfy the same DE.     Adding to changes the values in a way that usually breaks the equation.     Reversing time is not the same as sliding it—it usually won't satisfy the DE.     Equilibrium Identification   For the equation which of the following is an equilibrium solution?          Stability Classification   For the same equation which of the following best describes the equilibrium at ?    Stable (sink)  Unstable (source)  Semi-stable (node)  Not an equilibrium point    "
+},
+{
+  "id": "c5-quick-answer-2-2",
+  "level": "2",
+  "url": "c5-quick-answer.html#c5-quick-answer-2-2",
+  "type": "Reading Question",
+  "number": "7.7.2",
+  "title": "Short-Answer.",
+  "body": "Short-Answer   📖❓ Phase Line Practice    Sketch a phase line for the equation Then classify each equilibrium solution as a sink, source, or node.    Review Questions    What is an autonomous differential equation?  How do you find equilibrium solutions for an autonomous equation?  What does the phase line represent, and how is it useful?  How can you determine the stability of an equilibrium solution using the phase line?   Answer each question briefly:     "
+},
+{
+  "id": "c5-exercises-3-2",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-2",
+  "type": "Exercise",
+  "number": "7.7.1",
+  "title": "Practice Problems.",
+  "body": "Practice Problems  Try these problems to reinforce your understanding:  Sketch the slope field for .  Identify the equilibrium solutions and their stability.  Draw the phase line for the equation and describe the long-term behavior of solutions.    "
+},
+{
+  "id": "c5-exercises-3-3",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-3",
+  "type": "Exercise",
+  "number": "7.7.2",
+  "title": "Exploring Nonlinear Dynamics.",
+  "body": "Exploring Nonlinear Dynamics  Consider the nonlinear equation .  Find the equilibrium solutions.  Sketch the phase line and indicate the stability of each equilibrium.  Discuss how this equation might model a system with multiple stable states.     "
+},
+{
+  "id": "c5-exercises-3-4",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-4",
+  "type": "Exercise",
+  "number": "7.7.3",
+  "title": "Exploring Chaos in Autonomous Systems.",
+  "body": "Exploring Chaos in Autonomous Systems  Consider the equation .  Identify the equilibrium solutions.  Discuss whether this system exhibits chaotic behavior or not.  Sketch the phase line and describe the long-term behavior of solutions.     "
+},
+{
+  "id": "c5-exercises-3-5",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-5",
+  "type": "Exercise",
+  "number": "7.7.4",
+  "title": "Exploring Real-World Applications.",
+  "body": "Exploring Real-World Applications  Consider a population of rabbits modeled by the equation , where is the growth rate and is the carrying capacity.  Identify the equilibrium solutions.  Sketch the phase line and describe the stability of each equilibrium.  Discuss how this model can help predict population dynamics over time.     "
+},
+{
+  "id": "c5-exercises-3-6",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-6",
+  "type": "Exercise",
+  "number": "7.7.5",
+  "title": "Find the Equilibrium Solution.",
+  "body": "Find the Equilibrium Solution   Find the equilibrium solutions for the autonomous differential equation .    To find equilibrium solutions, we set . This gives us the solution . So, is the only equilibrium solution for this equation.  This means that if the solution starts at , it will remain at zero for all time. If it starts anywhere else, it will either increase or decrease away from zero.   "
+},
+{
+  "id": "c5-exercises-3-7",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-7",
+  "type": "Exercise",
+  "number": "7.7.6",
+  "title": "Finding Equilibrium Points.",
+  "body": "Finding Equilibrium Points   Find all equilibrium solutions of the autonomous differential equation .    To find the equilibrium solutions, we set the right-hand side equal to zero:   Factoring gives us:   This has solutions:       These are the equilibrium solutions where the slope is zero. At these points, the solution does not change over time.   "
+},
+{
+  "id": "c5-exercises-3-8",
+  "level": "2",
+  "url": "c5-exercises-3.html#c5-exercises-3-8",
+  "type": "Exercise",
+  "number": "7.7.7",
+  "title": "Phase Line Sketching.",
+  "body": "Phase Line Sketching   Sketch a phase line for the equation Then classify each equilibrium point as a sink, source, or node.   "
+},
+{
+  "id": "whats-a-numerical-soln",
+  "level": "1",
+  "url": "whats-a-numerical-soln.html",
+  "type": "Section",
+  "number": "8.1",
+  "title": "What is a Numerical Solution?",
+  "body": " What is a Numerical Solution?   Most of what we've done, so far, has been focused on finding exact solutions to differential equations, like . This kind of solution is called an analytic solution , or sometimes a closed-form solution . It is valuable because it expresses as a formula-like structure that you can plug in any value of and instantly get the exact -value.  However, many differential equations, such as   simply don't have a tidy closed-form solution. In those cases, we switch tools. Instead of searching for an exact formula, we use a numerical method . A numerical method doesn't hand you as a formula—it builds an approximation , one step at a time, starting from what you know and using the differential equation to predict what happens next. The result is a numerical solution .    📖❓ Analytic Solution, AKA …  What is another name for an analytic solution?    Closed-form solution  Yes , a closed-form solution is another name for an analytic solution.    Approximate solution  No , an approximate solution refers to a numerical solution.    Continuous solution  Not all analytic solutions are continuous , and not all continuous solutions are analytic.    Systematic solution  While you may solve analytically using a systematic process, this is not a name for an analytic solution.    Analytic means a symbolic expression using functions, not a numerical approximation or a rule.    Analytic vs. Numerical Solutions  To see the difference between analytic and numerical solutions, consider the initial value problem:   Analytically, this equation has the elegant solution:    . With this formula, you can calculate the exact value at any time. For example, gives .          The same equation can also be solved numerically. Instead of a formula, we produce a table of -values and approximate -values:      (approx)  0.00 1.0000  0.25 1.2500  0.50 1.5625  0.75 1.9531  … …     Plot the  points           📖❓ Recognizing a Numerical Solution  When you say you've found a numerical solution to an initial value problem, what do you actually have?    A list of values approximating at specific times  Correct—numerical solutions are tables of approximate values, not formulas.    A formula expressing using functions like or  No, that describes an analytic solution.    An exact solution valid for all  No, numerical solutions are approximations.    A graph showing all possible solutions  No, that describes a slope field, not a numerical solution.     The analytic solution gives a smooth curve for every . The numerical solution gives dots —a sequence of approximations. Connect those dots and you get a picture of the solution's shape, even though no formula was found.   Precision vs Practicality  Numerical solutions are approximations . They carry small errors, but in exchange, they let us handle equations that analytic methods can't touch. This trade-off between perfect precision and practical usefulness is at the heart of numerical methods.    Analytic vs. Numerical Solution Summary                   Closed-form solutions  Approximate solutions        formula in   Table of & values       Exact  Approximate       Curve  Points       Why Do We Need Numerical Methods?  At first glance, analytic solutions might seem better than numerical ones. But there are important reasons why numerical methods aren't just useful—they're essential:   Many equations simply don't have a closed-form solution.  Even when they do, the formula might be so complicated it's impractical.  Numerical methods are easier to tweak if the model or data changes.    📖❓ Why use numerical methods?  Which of the following are good reasons to use a numerical method?    They can approximate a solution when no closed-form solution exists.  True—sometimes they're the only option.    They can be automated on a computer.  True—they're ideal for computer simulations.    They are easier to adjust when the equation changes.  True—numerical methods adapt easily to model tweaks.    They produce more accurate solutions than analytic methods.  No—analytic solutions are exact when they exist.      "
+},
+{
+  "id": "whats-a-numerical-soln-2-1",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-2-1",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "analytic solution closed-form solution "
+},
+{
+  "id": "whats-a-numerical-soln-2-4",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-2-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "numerical method approximation numerical solution "
+},
+{
+  "id": "whats-a-numerical-soln-chkpt-1",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-chkpt-1",
+  "type": "Checkpoint",
+  "number": "102",
+  "title": "📖❓ Analytic Solution, AKA ….",
+  "body": " 📖❓ Analytic Solution, AKA …  What is another name for an analytic solution?    Closed-form solution  Yes , a closed-form solution is another name for an analytic solution.    Approximate solution  No , an approximate solution refers to a numerical solution.    Continuous solution  Not all analytic solutions are continuous , and not all continuous solutions are analytic.    Systematic solution  While you may solve analytically using a systematic process, this is not a name for an analytic solution.    Analytic means a symbolic expression using functions, not a numerical approximation or a rule.  "
+},
+{
+  "id": "whats-a-numerical-soln-chkpt-2",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-chkpt-2",
+  "type": "Checkpoint",
+  "number": "103",
+  "title": "📖❓ Recognizing a Numerical Solution.",
+  "body": " 📖❓ Recognizing a Numerical Solution  When you say you've found a numerical solution to an initial value problem, what do you actually have?    A list of values approximating at specific times  Correct—numerical solutions are tables of approximate values, not formulas.    A formula expressing using functions like or  No, that describes an analytic solution.    An exact solution valid for all  No, numerical solutions are approximations.    A graph showing all possible solutions  No, that describes a slope field, not a numerical solution.    "
+},
+{
+  "id": "whats-a-numerical-soln-process-precision-v-practical",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-process-precision-v-practical",
+  "type": "📝",
+  "number": "104",
+  "title": "Precision vs Practicality.",
+  "body": " Precision vs Practicality  Numerical solutions are approximations . They carry small errors, but in exchange, they let us handle equations that analytic methods can't touch. This trade-off between perfect precision and practical usefulness is at the heart of numerical methods.  "
+},
+{
+  "id": "whats-a-numerical-soln-analytic-v-numerical-note",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-analytic-v-numerical-note",
+  "type": "Table",
+  "number": "105",
+  "title": "Analytic vs. Numerical Solution Summary",
+  "body": " Analytic vs. Numerical Solution Summary                   Closed-form solutions  Approximate solutions        formula in   Table of & values       Exact  Approximate       Curve  Points    "
+},
+{
+  "id": "whats-a-numerical-soln-chkpt-3",
+  "level": "2",
+  "url": "whats-a-numerical-soln.html#whats-a-numerical-soln-chkpt-3",
+  "type": "Checkpoint",
+  "number": "106",
+  "title": "📖❓ Why use numerical methods?",
+  "body": " 📖❓ Why use numerical methods?  Which of the following are good reasons to use a numerical method?    They can approximate a solution when no closed-form solution exists.  True—sometimes they're the only option.    They can be automated on a computer.  True—they're ideal for computer simulations.    They are easier to adjust when the equation changes.  True—numerical methods adapt easily to model tweaks.    They produce more accurate solutions than analytic methods.  No—analytic solutions are exact when they exist.    "
+},
+{
+  "id": "eulers-method-one-step",
+  "level": "1",
+  "url": "eulers-method-one-step.html",
+  "type": "Section",
+  "number": "8.2",
+  "title": "Thinking in Steps: How Euler’s Method Works One Step at a Time",
+  "body": " Thinking in Steps: How Euler's Method Works One Step at a Time   This shift towards numerical approximation is not just a workaround but a powerful approach that expands our capacity to solve differential equations arising in complex systems where exact solutions are not readily derivable. Euler's method, as we will see, is the entry point into this expansive field of computational mathematics, demonstrating how straightforward concepts can approximate solutions to complex problems.    Iterative Methods—Thinking in Steps  Most numerical methods are iterative , which means they don't try to solve the whole problem at once. Instead, they repeat the same small task again and again.  That task is simple: use the information you already have to generate new information. Do it once, you get the next step. Do it a hundred times, you build a whole solution.  So, the key to understanding an iterative method is by learning its task.   📖❓ What does iterative mean?   Euler's method (and most numerical methods) are described as iterative . What does that mean in practice?     It repeats a single simple step many times to build up a solution.  Correct — iterative methods loop the same calculation to generate new information.    It always produces the exact solution in one step.  No — that's the opposite of iterative thinking. Iteration builds up an approximate solution step by step.    It skips steps and jumps straight to the final answer.  No — iterative methods never skip. They accumulate results step by step.    It uses only algebra, not calculus, to solve equations.  Not quite — Euler's method uses the slope from calculus, but applies it in a repetitive way.       Euler's Method Task  For Euler's method, the repeated task can be summed up like this:   from a known point, move to a nearby point along the direction of the slope.   Think of following a hiking trail using only a compass—you don't know exactly where the trail ends, but if you keep stepping in the right direction, you'll trace the path. In Euler's method, that direction is the slope from the differential equation.  More precisely, if is a point on the solution and you know the slope there, you can predict where the next point will be.  To understand this one step, we'll answer two guiding questions:   What does it mean to move in the direction of a slope?  Given a point, slope, and step size, what is the formula for the next point?     Moving in the Direction of a Slope  First question: What does it mean to move in the direction of a slope? Suppose you're at the point and the slope there is .  Slope is rise over run : for every unit you move horizontally ( run ), you move a certain amount vertically ( rise ). From , a slope of means that for every 2 units of run, you rise 3 units, like so: .  So moving from in a direction with slope , lands you at . See .   Rise Clarification   Rise doesn't always mean up —if the slope is negative, rise is actually a fall. We'll keep calling it rise for simplicity, but remember it might point downward.   Of course, there's nothing special about using a run of 2. We could have used (rise would then be 6) or even (rise would be ). All of the following fractions   describe the same slope, which can be visualized in .  In Euler's method, we intentionally choose a small run called the step size, . Therefore, for a small run, , you get the corresponding rise by:   So given a direction (slope) to move and the step size ( ) to take, this formula gives you the rise. Next, we'll see how this simple relationship is the core of Euler's one-step move.    Same Slope, Different Rise and Runs    Rise , run       Rise , run       Rise , run          📖❓ Calculating the Rise   Suppose the slope at a point is and you take a step size of . What is the rise over that step?      Yes — rise = slope × step size = .     That's the slope itself, not the rise for the small step.     That's the step size (run), not the rise.     Double-check the multiplication — slope × step size is much smaller.       The Movement Rule  Now that we've decided how to take a step, we can write it as a formula.  From basic geometry, a new point is just the old point plus the changes:  . Euler's method sets the run to the step size and the rise to . Substituting those gives the update rule:  . This single equation captures the whole one-step task: start at the current point, find the slope, take a step of size in that direction, and you land at the next point. Euler's method is simply this step repeated many times.   📖❓ Understanding the Movement Formula   What does the term represent in Euler's movement rule?     The change in over the chosen step.  Correct — the slope tells the direction, and scales it into a small rise.    The next value.  No — the update is handled separately as .    The slope of the entire solution curve.  Careful — this is the slope at a single point, not the whole curve.    The error made by Euler's method in each step.  Not true — is the predicted rise, not the error.       📖❓ Big Picture of Euler's Step   Which statement best describes what Euler's method does one step at a time ?     From a current point, it uses the slope to predict the next point.  Correct — Euler's method is nothing more than this step, done over and over.    It finds one term of the exact general solution.  No — finding terms of the solution would be an analytic method.    It moves to a nearby point on the solution curve.  No — if you knew where the solution curve was, you would already have the solution to the equation.    It approximates the roots of the characteristic equation.  No — Euler's approximates points of the solution, not the roots of the characteristic equation.     "
+},
+{
+  "id": "eulers-method-one-step-cyu-iterative",
+  "level": "2",
+  "url": "eulers-method-one-step.html#eulers-method-one-step-cyu-iterative",
+  "type": "Checkpoint",
+  "number": "107",
+  "title": "📖❓  What does “iterative” mean?",
+  "body": " 📖❓ What does iterative mean?   Euler's method (and most numerical methods) are described as iterative . What does that mean in practice?     It repeats a single simple step many times to build up a solution.  Correct — iterative methods loop the same calculation to generate new information.    It always produces the exact solution in one step.  No — that's the opposite of iterative thinking. Iteration builds up an approximate solution step by step.    It skips steps and jumps straight to the final answer.  No — iterative methods never skip. They accumulate results step by step.    It uses only algebra, not calculus, to solve equations.  Not quite — Euler's method uses the slope from calculus, but applies it in a repetitive way.    "
+},
+{
+  "id": "eulers-method-one-step-direction-5",
+  "level": "2",
+  "url": "eulers-method-one-step.html#eulers-method-one-step-direction-5",
+  "type": "📝",
+  "number": "108",
+  "title": "“Rise” Clarification.",
+  "body": " Rise Clarification   Rise doesn't always mean up —if the slope is negative, rise is actually a fall. We'll keep calling it rise for simplicity, but remember it might point downward.  "
+},
+{
+  "id": "multiple-rise-run",
+  "level": "2",
+  "url": "eulers-method-one-step.html#multiple-rise-run",
+  "type": "Figure",
+  "number": "109",
+  "title": "",
+  "body": " Same Slope, Different Rise and Runs    Rise , run       Rise , run       Rise , run        "
+},
+{
+  "id": "eulers-method-one-step-cyu-rise-calc",
+  "level": "2",
+  "url": "eulers-method-one-step.html#eulers-method-one-step-cyu-rise-calc",
+  "type": "Checkpoint",
+  "number": "110",
+  "title": "📖❓  Calculating the Rise.",
+  "body": " 📖❓ Calculating the Rise   Suppose the slope at a point is and you take a step size of . What is the rise over that step?      Yes — rise = slope × step size = .     That's the slope itself, not the rise for the small step.     That's the step size (run), not the rise.     Double-check the multiplication — slope × step size is much smaller.    "
+},
+{
+  "id": "eulers-method-one-step-cyu-rule-concept",
+  "level": "2",
+  "url": "eulers-method-one-step.html#eulers-method-one-step-cyu-rule-concept",
+  "type": "Checkpoint",
+  "number": "111",
+  "title": "📖❓  Understanding the Movement Formula.",
+  "body": " 📖❓ Understanding the Movement Formula   What does the term represent in Euler's movement rule?     The change in over the chosen step.  Correct — the slope tells the direction, and scales it into a small rise.    The next value.  No — the update is handled separately as .    The slope of the entire solution curve.  Careful — this is the slope at a single point, not the whole curve.    The error made by Euler's method in each step.  Not true — is the predicted rise, not the error.    "
+},
+{
+  "id": "eulers-method-one-step-cyu-summary",
+  "level": "2",
+  "url": "eulers-method-one-step.html#eulers-method-one-step-cyu-summary",
+  "type": "Checkpoint",
+  "number": "112",
+  "title": "📖❓  Big Picture of Euler’s Step.",
+  "body": " 📖❓ Big Picture of Euler's Step   Which statement best describes what Euler's method does one step at a time ?     From a current point, it uses the slope to predict the next point.  Correct — Euler's method is nothing more than this step, done over and over.    It finds one term of the exact general solution.  No — finding terms of the solution would be an analytic method.    It moves to a nearby point on the solution curve.  No — if you knew where the solution curve was, you would already have the solution to the equation.    It approximates the roots of the characteristic equation.  No — Euler's approximates points of the solution, not the roots of the characteristic equation.    "
+},
+{
+  "id": "eulers-method-full",
+  "level": "1",
+  "url": "eulers-method-full.html",
+  "type": "Section",
+  "number": "8.3",
+  "title": "Euler’s Method: The Full Process",
+  "body": " Euler's Method: The Full Process   In the previous section, we zoomed in on the single step at the heart of Euler's method: move forward by a small amount in , and adjust by times the slope. Now we'll zoom out. By repeating that step again and again, we can march across an interval, building an approximate solution point by point.    A Concrete Step Through Euler's Method  Before writing any formulas, it helps to see what Euler's Method feels like. Think of Euler's method like crossing a landscape with only a compass. You know where you start. At each step, you check your direction (the slope from the differential equation), take a small stride that way, then check again. That back-and-forth of step, check, adjust is the rhythm of the method.   The Goal  Suppose we have the initial value problem . Let's approximate the solution at the equally-spaced -values: . This tells us that our goal is to approximate the -values at the following points:  . Luckily, the first value is just the initial condition, , so we add it to the list: . Starting at , Euler's method finds the rest of the points, one-by-one.    Approximating the Next Point  From , we need to get to . Clearly, the run is , but we also need the slope for our movement direction. This comes directly from the differential equation: .  Moving from with a slope of and a run of is given by: .  Therefore, the next point is and our approximation list becomes: .    Approximating the Rest of the Points  To get the third and fourth point, we just repeat what we just did.  At , we get the slope from: .  Using this slope and the same run, we get the third point: .  Now we are at and the slope we move this time is: .  and our final point is given by: .  With this, our approximation is now complete: .  A plot of the process is given in .   (left) Euler's method approximation of the solution to with step size . (right) Plot of each point in the approximation.         (approx)                                        Euler's Method  Now let's generalize the concrete example. As we do, check the footnotes for the concrete version of each equation and step.  Consider an initial value problem:  .  We divide into equally spaced values (a distance apart):      Using the shorthand , our goal is to approximate the points:      The first point, , is known since it is the initial condition. The remaining points are approximated using the movement rule , where cur is and new is :  . The slope is found from in the differential equation, so the rule becomes:   Extracting just the -coordinate, gives the update rule for Euler's method:   That's it. All of the values in the table of can be found with this formula.   Match Euler's Method Parts to their Meaning   Assume the current approximation using Euler's Method is denoted by . In this context, match the mathematical expression with its meaning.    These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.      The value of the next approximation.     The value of the previous approximation.     The distance between and .     The slope of the solution at the current approximation.     The value of the current approximation.     The rise (or fall) in the value from the current approximation to the next approximation.      Euler's Method  Given an initial value problem   approximate the solution with the following steps:   Select step size  Choosing a step size determines where for .   Apply Euler's update rule  For to , compute      Desipte being based on relatively simple idea, Euler's method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.    Examples   Euler's Method Example   Use Euler's method to approximate the solution to the differential equation over the interval with a step size of .     . The step size is , so the approximation locations are .   . The initial condition gives the first value in our approximation, .  Now, we can use the formula to find , and as follows:            The simplified calculations are summarized in the following table:                                Thus, the approximate solution to the initial-value problem is   We can visualize the approximation by plotting the points and connecting them with line segments. The exact solution to the initial-value problem is given by   The following plot shows the approximation and the exact solution.     The red curve is the exact solution, while the green points are the approximated values at . The blue line segments connect the points in the approximation, showing how Euler's method steps through the solution.  The following plot shows the approximation and the exact solution, with a grid for better visualization.                Analytical and Numerical Solutions   Consider the differential equation .   Find the analytical solution to this equation using the method of separation of variables.    Use Euler's method with a step size of to approximate the solution at .    Compare the analytical solution with the numerical approximation obtained from Euler's method.       To solve the differential equation using the method of separation of variables, we separate the variables as follows: Integrating both sides gives: Exponentiating both sides results in: Since the initial condition, , gives , the analytical solution is:   Next, we apply Euler's method to approximate the solution at . The general formula for Euler's method is: where and . So, we can update the formula as:   For , we contruct the following table:                                            Since , the approximation we are looking for is .  Comparing this with the analytical solution at , we see the true value is: Although there is some error between the two values, it is more due to the step size we chose, rather than the method itself. A smaller step size would yield a more accurate approximation. For example, using gives the approximation: .     Example: Euler's Method with   Use Euler's method to approximate the solution to over to using step size .    The formula is:            0 0.0 -2.0 -3.0    1 0.5 -3.0 -3.0    2 1.0 -3.0 -1.5    Thus, the approximate values are:     Euler's method runs on an intuitive idea: use the slope at each point to predict the next point. It's simple, but that simplicity is its strength. This method is often the first stepping stone into the world of numerical methods and the same pattern of predict, step, repeat forms the backbone of many other techniques.   "
+},
+{
+  "id": "eulers-method-concrete-table-plot",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-concrete-table-plot",
+  "type": "Figure",
+  "number": "113",
+  "title": "",
+  "body": " (left) Euler's method approximation of the solution to with step size . (right) Plot of each point in the approximation.         (approx)                           "
+},
+{
+  "id": "eulers-method-concrete-6",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-concrete-6",
+  "type": "🎮 Interactive",
+  "number": "114",
+  "title": "<code class=\"code-inline tex2jax_ignore\">[provisional cross-reference: WORK-IN-PROGRESS]<\/code>.",
+  "body": "        "
+},
+{
+  "id": "eulers-method-chkpt-1",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-chkpt-1",
+  "type": "Checkpoint",
+  "number": "115",
+  "title": "Match Euler’s Method Parts to their Meaning.",
+  "body": " Match Euler's Method Parts to their Meaning   Assume the current approximation using Euler's Method is denoted by . In this context, match the mathematical expression with its meaning.    These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.      The value of the next approximation.     The value of the previous approximation.     The distance between and .     The slope of the solution at the current approximation.     The value of the current approximation.     The rise (or fall) in the value from the current approximation to the next approximation.    "
+},
+{
+  "id": "euler-method",
+  "level": "2",
+  "url": "eulers-method-full.html#euler-method",
+  "type": "✍🏻 Method",
+  "number": "2",
+  "title": "Euler’s Method.",
+  "body": " Euler's Method  Given an initial value problem   approximate the solution with the following steps:   Select step size  Choosing a step size determines where for .   Apply Euler's update rule  For to , compute     "
+},
+{
+  "id": "eulers-method-example-1",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-example-1",
+  "type": "🌌 Example",
+  "number": "116",
+  "title": "Euler’s Method Example.",
+  "body": " Euler's Method Example   Use Euler's method to approximate the solution to the differential equation over the interval with a step size of .     . The step size is , so the approximation locations are .   . The initial condition gives the first value in our approximation, .  Now, we can use the formula to find , and as follows:            The simplified calculations are summarized in the following table:                                Thus, the approximate solution to the initial-value problem is   We can visualize the approximation by plotting the points and connecting them with line segments. The exact solution to the initial-value problem is given by   The following plot shows the approximation and the exact solution.     The red curve is the exact solution, while the green points are the approximated values at . The blue line segments connect the points in the approximation, showing how Euler's method steps through the solution.  The following plot shows the approximation and the exact solution, with a grid for better visualization.              "
+},
+{
+  "id": "eulers-method-example-2",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-example-2",
+  "type": "🌌 Example",
+  "number": "117",
+  "title": "Analytical and Numerical Solutions.",
+  "body": " Analytical and Numerical Solutions   Consider the differential equation .   Find the analytical solution to this equation using the method of separation of variables.    Use Euler's method with a step size of to approximate the solution at .    Compare the analytical solution with the numerical approximation obtained from Euler's method.       To solve the differential equation using the method of separation of variables, we separate the variables as follows: Integrating both sides gives: Exponentiating both sides results in: Since the initial condition, , gives , the analytical solution is:   Next, we apply Euler's method to approximate the solution at . The general formula for Euler's method is: where and . So, we can update the formula as:   For , we contruct the following table:                                            Since , the approximation we are looking for is .  Comparing this with the analytical solution at , we see the true value is: Although there is some error between the two values, it is more due to the step size we chose, rather than the method itself. A smaller step size would yield a more accurate approximation. For example, using gives the approximation: .   "
+},
+{
+  "id": "eulers-method-example-3",
+  "level": "2",
+  "url": "eulers-method-full.html#eulers-method-example-3",
+  "type": "🌌 Example",
+  "number": "118",
+  "title": "Example: Euler’s Method with <span class=\"process-math\">\\(h = 0.5\\)<\/span>.",
+  "body": " Example: Euler's Method with   Use Euler's method to approximate the solution to over to using step size .    The formula is:            0 0.0 -2.0 -3.0    1 0.5 -3.0 -3.0    2 1.0 -3.0 -1.5    Thus, the approximate values are:    "
+},
+{
+  "id": "c6-exercises",
+  "level": "1",
+  "url": "c6-exercises.html",
+  "type": "Section",
+  "number": "8.4",
+  "title": "Chapter 6 Exercises",
+  "body": " Chapter 6 Exercises    Euler's Method   Approximate the solution to the differential equation  over the interval with a step size of .    fd     Use Euler's Method to approximate the solution to the initial-value problem,  at the -values (spaced 0.5 apart).    Euler's method works by replacing in with it's forward-difference approximation, giving us and if we let be the space between the -values (0.5), then we have   To see how this is helpful, we isolate as follows and the final step gives the approximation formula   Note that we already know from , so to find the rest of the approximation points, we plug into , as shown below.           Approximation Formula   Approximation                                                            Basic Euler's Method   Consider the initial-valued problem and answer the following:    Compute 2 iterations of Euler's method using step size .   %         What is the meaning of your answer in part (a)?  What is the meaning of your answer in part \\ref{Q1a}?        Compute 2 iterations of Euler's method using step size .            What is the meaning of your answer in part (b)?  What is the meaning of your answer in part \\ref{Q1b}?        Find the analytic solution to the IVP. Use your solution to compare the exact value of with and your answers from parts (a) and (b).  This DE is first order and linear, so we can solve it using an integrating factor. (There are other solution techniques, as well.)\\\\ We begin by putting the DE in the standard form for a first-order linear DE so that we can identif . We can see tha Then we can find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq14-1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: We would like to integrate both sides of the equation so we can isolat . On the right hand side, we will need to use integration by parts. We choos an as follows: by taking the derivative o an by taking the antiderivative o : Now we proceed by integrating as follows. Now we use the initial condition to find the value o . Hence, the solution is We can use this to fin  Note that the two numerical approximations wer (found using ) an (found using ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.            Basic Euler's Method   Consider the initial-valued problem and answer the following:    Use Euler's method to approximate using step size .   Hence          Use Euler's method to approximate using step size .   Hence          Which of the approximations above do you trust more?  Which of the approximations above do you trust more?        Find the analytic solution to the IVP. Use it to compute the exact value of and compare with your answers from parts (a) and (b).  There are multiple solution techniques that will work to solve this DE. We will separate variables here. Now we can apply the initial condition to find the value of the constant . Therefore the solution is We can use this to find  Note that the two numerical approximations wer (found usin ) an (found usin ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.            "
+},
+{
+  "id": "c6-exercises-2-2",
+  "level": "2",
+  "url": "c6-exercises-2.html#c6-exercises-2-2",
+  "type": "Exercise",
+  "number": "8.4.1",
+  "title": "",
+  "body": " Approximate the solution to the differential equation  over the interval with a step size of .    fd   "
+},
+{
+  "id": "c6-exercises-2-3",
+  "level": "2",
+  "url": "c6-exercises-2.html#c6-exercises-2-3",
+  "type": "Exercise",
+  "number": "8.4.2",
+  "title": "",
+  "body": " Use Euler's Method to approximate the solution to the initial-value problem,  at the -values (spaced 0.5 apart).    Euler's method works by replacing in with it's forward-difference approximation, giving us and if we let be the space between the -values (0.5), then we have   To see how this is helpful, we isolate as follows and the final step gives the approximation formula   Note that we already know from , so to find the rest of the approximation points, we plug into , as shown below.           Approximation Formula   Approximation                                                          "
+},
+{
+  "id": "c6-exercises-2-4",
+  "level": "2",
+  "url": "c6-exercises-2.html#c6-exercises-2-4",
+  "type": "Exercise",
+  "number": "8.4.3",
+  "title": "Basic Euler’s Method.",
+  "body": " Basic Euler's Method   Consider the initial-valued problem and answer the following:    Compute 2 iterations of Euler's method using step size .   %         What is the meaning of your answer in part (a)?  What is the meaning of your answer in part \\ref{Q1a}?        Compute 2 iterations of Euler's method using step size .            What is the meaning of your answer in part (b)?  What is the meaning of your answer in part \\ref{Q1b}?        Find the analytic solution to the IVP. Use your solution to compare the exact value of with and your answers from parts (a) and (b).  This DE is first order and linear, so we can solve it using an integrating factor. (There are other solution techniques, as well.)\\\\ We begin by putting the DE in the standard form for a first-order linear DE so that we can identif . We can see tha Then we can find the integrating facto  Now we multiply both sides of the DE by the integrating factor. Now we recall the product rule for derivatives: We note that the two terms on the left hand side of equation (\\ref{eq14-1}) are the result of taking the derivative of the product. Hence we can undo the product rule as follows: We would like to integrate both sides of the equation so we can isolat . On the right hand side, we will need to use integration by parts. We choos an as follows: by taking the derivative o an by taking the antiderivative o : Now we proceed by integrating as follows. Now we use the initial condition to find the value o . Hence, the solution is We can use this to fin  Note that the two numerical approximations wer (found using ) an (found using ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.          "
+},
+{
+  "id": "c6-exercises-2-5",
+  "level": "2",
+  "url": "c6-exercises-2.html#c6-exercises-2-5",
+  "type": "Exercise",
+  "number": "8.4.4",
+  "title": "Basic Euler’s Method.",
+  "body": " Basic Euler's Method   Consider the initial-valued problem and answer the following:    Use Euler's method to approximate using step size .   Hence          Use Euler's method to approximate using step size .   Hence          Which of the approximations above do you trust more?  Which of the approximations above do you trust more?        Find the analytic solution to the IVP. Use it to compute the exact value of and compare with your answers from parts (a) and (b).  There are multiple solution techniques that will work to solve this DE. We will separate variables here. Now we can apply the initial condition to find the value of the constant . Therefore the solution is We can use this to find  Note that the two numerical approximations wer (found usin ) an (found usin ). Both are reasonable approximations, but the approximation using the smaller step size is closer to the exact answer.          "
+},
+{
+  "id": "linear-constant-coeffs",
+  "level": "1",
+  "url": "linear-constant-coeffs.html",
+  "type": "Section",
+  "number": "9.1",
+  "title": "The LHCC Equation",
+  "body": " The LHCC Equation   Before learning how to solve Linear Homogeneous Constant Coefficient (LHCC) differential equations, it's important to identify these equations and understand the nature of their structure. In this section, we'll define what it means for a differential equation to be homogeneous, review how constant coefficients affect the form of the equation, and formally define what qualifies as an LHCC equation.    Linear Differential Equations & Forcing Functions  Recall that a differential equation is called linear if it only contains linear terms, meaning the dependent variable and its derivatives appear to the first power without multiplication or composed with one another.  An equation is nonlinear nonlinear if it includes terms like , , , or , where the dependent variable is raised to a power or multiplied by one of its derivatives.  A general -th order linear differential equation looks like this:   The coefficients and the right-hand side depend only on the independent variable, which we're calling . While we previously referred to as a free term, in this context, it is known as the forcing function .  Forcing functions are not always easily identifiable on the right-hand side of a differential equation. Sometimes, terms and their derivatives may be mixed in, or parts of the forcing function may appear on the left.  For example, the equation the forcing function is not immediately clear. Rearranging it into standard form: reveals that the forcing function is .   📖❓ Identifying the Forcing Function   What is the forcing function in the differential equation?       Correct! The forcing function is the entire right-hand side of the equation.  `   This is the coefficient of the term, not the forcing function.     This is only part of the forcing function.     This is only part of the forcing function.       Constant Coefficients  A linear differential equation has constant coefficients if all the coefficients are constants rather than functions of the independent variable .  So, a linear differential equation with constant coefficients looks like:  . Here are a few examples of linear equations with constant coefficients:  , And here are some that do not have constant coefficients:  .  📖❓ Identifying Constant Coefficient Equations   Select all the linear differential equations that have constant coefficients.           Correct! All coefficients are constant.           Incorrect. The coefficient of is , which is not constant.           Correct! All coefficients are constant.           Incorrect. The coefficient is not a constant.        Homogeneous  A linear differential equation is homogeneous if the right-hand side is zero—that is, there is no forcing term. Otherwise, it is nonhomogeneous .  For example, the following equations are homogeneous:   These are nonhomogeneous because of the (boxed) right-hand side:    📖❓ Identifying Homogeneous Equations   Which of the following equations is homogeneous?         Correct! The right-hand side is zero, so the equation is homogeneous.         Incorrect. This equation looks homogeneous, but homogeneity only applies to linear equations.         Incorrect. The equation has a non-zero free term, making it non-homogeneous.         Incorrect. The right-hand side has a non-zero function of , so this is non-homogeneous.        The LHCC Equation  Putting it all together, we arrive at the definition of an LHCC equation.    A linear homogeneous differential equation with constant coefficients (LHCC) has the form:   where all coefficients are constants.    The following equations are examples of LHCC equations:  .   🤔💭 Reading Questions   🤔💭 Matching Equations with Properties   Match each differential equation to its correct classification.    Good work! Recognizing equation types helps determine the best solution method.      Linear, Homogeneous, Constant Coefficients     Linear, Homogeneous, Nonconstant Coefficient      Linear, Nonhomogeneous, Constant Coefficient      Nonlinear      "
+},
+{
+  "id": "forcing-functions-on-linear-eqns-2",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#forcing-functions-on-linear-eqns-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "linear "
+},
+{
+  "id": "forcing-functions-on-linear-eqns-3",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#forcing-functions-on-linear-eqns-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "nonlinear "
+},
+{
+  "id": "forcing-functions-on-linear-eqns-6",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#forcing-functions-on-linear-eqns-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "forcing function "
+},
+{
+  "id": "chkpt-identifying-forcing-function-1",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#chkpt-identifying-forcing-function-1",
+  "type": "Checkpoint",
+  "number": "119",
+  "title": "📖❓  Identifying the Forcing Function.",
+  "body": " 📖❓ Identifying the Forcing Function   What is the forcing function in the differential equation?       Correct! The forcing function is the entire right-hand side of the equation.  `   This is the coefficient of the term, not the forcing function.     This is only part of the forcing function.     This is only part of the forcing function.    "
+},
+{
+  "id": "constant-coefficients-2",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#constant-coefficients-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "constant coefficients "
+},
+{
+  "id": "chkpt-linear-constant-coeffs-2",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#chkpt-linear-constant-coeffs-2",
+  "type": "Checkpoint",
+  "number": "120",
+  "title": "📖❓  Identifying Constant Coefficient Equations.",
+  "body": " 📖❓ Identifying Constant Coefficient Equations   Select all the linear differential equations that have constant coefficients.           Correct! All coefficients are constant.           Incorrect. The coefficient of is , which is not constant.           Correct! All coefficients are constant.           Incorrect. The coefficient is not a constant.     "
+},
+{
+  "id": "homogeneous-2",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#homogeneous-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "homogeneous nonhomogeneous "
+},
+{
+  "id": "chkpt-identifying-lhcc-1",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#chkpt-identifying-lhcc-1",
+  "type": "Checkpoint",
+  "number": "121",
+  "title": "📖❓  Identifying Homogeneous Equations.",
+  "body": " 📖❓ Identifying Homogeneous Equations   Which of the following equations is homogeneous?         Correct! The right-hand side is zero, so the equation is homogeneous.         Incorrect. This equation looks homogeneous, but homogeneity only applies to linear equations.         Incorrect. The equation has a non-zero free term, making it non-homogeneous.         Incorrect. The right-hand side has a non-zero function of , so this is non-homogeneous.     "
+},
+{
+  "id": "def-lhcc-eqn",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#def-lhcc-eqn",
+  "type": "📙 Definition",
+  "number": "122",
+  "title": "",
+  "body": "  A linear homogeneous differential equation with constant coefficients (LHCC) has the form:   where all coefficients are constants.   "
+},
+{
+  "id": "linear-constant-coeffs-cyu-bundle",
+  "level": "2",
+  "url": "linear-constant-coeffs.html#linear-constant-coeffs-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "123",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Matching Equations with Properties   Match each differential equation to its correct classification.    Good work! Recognizing equation types helps determine the best solution method.      Linear, Homogeneous, Constant Coefficients     Linear, Homogeneous, Nonconstant Coefficient      Linear, Nonhomogeneous, Constant Coefficient      Nonlinear     "
+},
+{
+  "id": "exponential-solns",
+  "level": "1",
+  "url": "exponential-solns.html",
+  "type": "Section",
+  "number": "9.2",
+  "title": "Exponential Solutions",
+  "body": " Exponential Solutions   Now that we can identify LHCC equations, it's time to ask a deeper question: what kinds of functions satisfy these equations? As it turns out, exponential functions are not just one possible answer, they are the natural solution.  In this section, we'll explore what makes exponentials so special. You'll see why other functions fail to work, why exponentials succeed, and how this leads us to a powerful tool called the characteristic equation .    Derivatives & Like-Terms   ↩️☝ Recall: Functions that are their own derivatives   What is the only function that is equal to its own derivative?      Correct!     Incorrect. , not .     Incorrect. , not .     Incorrect. , not .      ↩️☝ Recall: Like Terms   Terms are like-terms if they differ only by a coefficient and can be combined via addition and subtraction.  For example, the pairs and are like-terms and can be combined\/simplifed as shown here: .  Which of the following are like-terms with ?      Correct! is a like-term with and .     Correct! is a like-term with and .     Incorrect. is not a like-term with .     Incorrect. is not a like-term with .     Incorrect. is not a like-term with .      ↩️☝ Recall: Functions that are like terms with their own derivatives   Which of the functions is a like-term with its own derivative?      Correct! & ARE like terms and can be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.       Motivating the Exponential Solution  Consider the simple linear homogeneous constant coefficient differential equation: .  For the moment, forget that it is a differential equation and imagine that it is just two functions that simplify to zero after subtraction. That is, they cancelled out with each other. Algebra tells you that only like-terms simplify via subtraction. For example, since all three are like-terms. However, does not simplify at all since none are like-terms.   Logically, if is the solution, then this equation says and must be like-terms since they subtract to zero. This leads to the next big question:   What function is a like-term with its derivative?   You may recall from calculus that the derivative of an exponential function is another exponential function. For example, if , then , which are like-terms. This unique property makes exponentials ideal candidates for solutions.  To illustrate this, let's substitute different functions into a first-order LHCC equation and see which ones cancel.    Case 1:       Case 2:       Case 3:      Only the exponential function produces like-terms that cancel perfectly. Again, suggesting that exponential functions are ideal solutions to LHCC equations.   📖❓ Valid Function Choices   Consider the differential equation, where is a constant.  Logically explain why it is impossible for to be a solution to this equation no matter what value takes.      Multiple Exponential Solutions   Verify that and are solutions to the differential equation   but that , , and are not.    First, let's check the first two exponential functions:                  As you can see, the exponential functions produce like-terms that cancel out and simplify to zero.  Let's see what happens when we plug in non-exponential functions:                  In this case, the non-exponential functions produce non-like-terms that cannot be simplified and are not solutions.  Finally, let's check the exponential function, :          In this case, we get like-terms, but the coefficients do not sum to zero and the terms do not cancel. Therefore, is not a solution.    These examples show that exponentials are the only functions that reliably cancel out to yield zero when substituted into an LHCC equation. Even among exponentials, only those with specific exponents will satisfy a given equation. Next, we'll introduce the characteristic equation, an algebraic tool that helps us identify exactly which exponential functions will work.    The Characteristic Equation   We now know that exponential functions are strong candidates for solutions to LHCC equations. But how do we find the values of that work? The answer lies in forming a polynomial equation called the characteristic equation .   Let's try this with a few concrete examples. First, suppose  . Substituting gives   Since , the equation reduces to   This algebraic equation, , is the characteristic equation . It tells us that is a solution.  For second-order equations, we follow the same substitution process. For example, for   we substitute into , , and , resulting in   Setting the polynomial equal to zero gives the characteristic equation:   Solving this gives   so the general solution is    📖❓ Match the Characteristic Equation   Match each characteristic equation to its differential equation.                             Characteristic Equation & Exponential Solutions   For each of the following equations, determine the characteristic equation and the exponential solutions that satisfy it.     1.         Assuming , we have  . Thus, the characteristic equation is  , and the only exponential solution is        2.         Assuming , we have   Thus, the characteristic equation is   and the exponential solutions are           🤔💭 Reading Questions   🤔💭 Exponential Like Terms   The functions are all like-terms, which if added together, would simplify to one term.     True  Correct! Computing the derivatives, you get , which are all like-terms.   False Incorrect.     🤔💭 Select the Exponential Solutions   The differential equation , has which of the following exponential solutions? (Select all that Apply)                  Hint: The characteristic equation is .     "
+},
+{
+  "id": "exponential-solns-prereading-question-bundle",
+  "level": "2",
+  "url": "exponential-solns.html#exponential-solns-prereading-question-bundle",
+  "type": "Checkpoint",
+  "number": "124",
+  "title": "Derivatives &amp; Like-Terms.",
+  "body": " Derivatives & Like-Terms   ↩️☝ Recall: Functions that are their own derivatives   What is the only function that is equal to its own derivative?      Correct!     Incorrect. , not .     Incorrect. , not .     Incorrect. , not .      ↩️☝ Recall: Like Terms   Terms are like-terms if they differ only by a coefficient and can be combined via addition and subtraction.  For example, the pairs and are like-terms and can be combined\/simplifed as shown here: .  Which of the following are like-terms with ?      Correct! is a like-term with and .     Correct! is a like-term with and .     Incorrect. is not a like-term with .     Incorrect. is not a like-term with .     Incorrect. is not a like-term with .      ↩️☝ Recall: Functions that are like terms with their own derivatives   Which of the functions is a like-term with its own derivative?      Correct! & ARE like terms and can be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.     Incorrect. & ARE NOT like terms and cannot be combined by addition.     "
+},
+{
+  "id": "motivating-exponentials-3",
+  "level": "2",
+  "url": "exponential-solns.html#motivating-exponentials-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "like-terms "
+},
+{
+  "id": "chkpt-exponential-solns-1",
+  "level": "2",
+  "url": "exponential-solns.html#chkpt-exponential-solns-1",
+  "type": "Checkpoint",
+  "number": "125",
+  "title": "📖❓  Valid Function Choices.",
+  "body": " 📖❓ Valid Function Choices   Consider the differential equation, where is a constant.  Logically explain why it is impossible for to be a solution to this equation no matter what value takes.    "
+},
+{
+  "id": "lhcc-soln-example-1",
+  "level": "2",
+  "url": "exponential-solns.html#lhcc-soln-example-1",
+  "type": "🌌 Example",
+  "number": "126",
+  "title": "Multiple Exponential Solutions.",
+  "body": " Multiple Exponential Solutions   Verify that and are solutions to the differential equation   but that , , and are not.    First, let's check the first two exponential functions:                  As you can see, the exponential functions produce like-terms that cancel out and simplify to zero.  Let's see what happens when we plug in non-exponential functions:                  In this case, the non-exponential functions produce non-like-terms that cannot be simplified and are not solutions.  Finally, let's check the exponential function, :          In this case, we get like-terms, but the coefficients do not sum to zero and the terms do not cancel. Therefore, is not a solution.   "
+},
+{
+  "id": "characteristic-equation-9",
+  "level": "2",
+  "url": "exponential-solns.html#characteristic-equation-9",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "characteristic equation "
+},
+{
+  "id": "chkpt-exponential-solns-11",
+  "level": "2",
+  "url": "exponential-solns.html#chkpt-exponential-solns-11",
+  "type": "Checkpoint",
+  "number": "127",
+  "title": "📖❓  Match the Characteristic Equation.",
+  "body": " 📖❓ Match the Characteristic Equation   Match each characteristic equation to its differential equation.                            "
+},
+{
+  "id": "characteristic-equation-21",
+  "level": "2",
+  "url": "exponential-solns.html#characteristic-equation-21",
+  "type": "🌌 Example",
+  "number": "128",
+  "title": "Characteristic Equation &amp; Exponential Solutions.",
+  "body": "Characteristic Equation & Exponential Solutions   For each of the following equations, determine the characteristic equation and the exponential solutions that satisfy it.     1.         Assuming , we have  . Thus, the characteristic equation is  , and the only exponential solution is        2.         Assuming , we have   Thus, the characteristic equation is   and the exponential solutions are        "
+},
+{
+  "id": "exponential-solns-cyu-bundle",
+  "level": "2",
+  "url": "exponential-solns.html#exponential-solns-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "129",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Exponential Like Terms   The functions are all like-terms, which if added together, would simplify to one term.     True  Correct! Computing the derivatives, you get , which are all like-terms.   False Incorrect.     🤔💭 Select the Exponential Solutions   The differential equation , has which of the following exponential solutions? (Select all that Apply)                  Hint: The characteristic equation is .    "
+},
+{
+  "id": "second-order-lhcc-eqns",
+  "level": "1",
+  "url": "second-order-lhcc-eqns.html",
+  "type": "Section",
+  "number": "9.3",
+  "title": "Second-Order Equations",
+  "body": " Second-Order Equations   Second-order linear homogeneous constant coefficient (LHCC) equations appear in many applications across physics, engineering, and applied mathematics. These equations have the general form:   where , , and are constants. In this section, we'll explore how the solutions depend on the roots of the associated characteristic equation, and how different types of roots give rise to different forms of the general solution.    📖❓ Classifying Characteristic Equations   Review quadratic equations and answer the following question.  Match the type of roots with the corresponding quadratic equation.    Good work! The discriminant helps classify root types.     Real unequal roots     Real repeated roots     Complex roots       Fundamental Solutions  To solve , we begin by forming the characteristic equation as we did in the previous section. For this case, the characteristic equation is the quadratic    Solving this equation using the quadratic formula yields:   Each root corresponds to an exponential solution—either or . These are called the fundamental solutions of the differential equation.    The General Solution  Once we have the fundamental solutions, the superposition principle tells us that   is a solution to for any constants and .  However, if the roots and are equal, then and are like-terms. In that case, the expression above collapses into a single term, and the solution is incomplete. This issue relates to linear dependence , which also depends on the interval where the solutions are defined.   To create a second, independent solution, we multiply the second term by , giving:   This guarantees complete general solution with independent terms. There are three distinct scenarios to consider, based on the discriminant of the characteristic equation:   Each case leads to a different form of the solution, broken down as follows.    Case 1 : Real, Non-Repeating Solutions  If is positive, then characteristic equation has the two unequal real solutions:  , so the general solution is  .   Case 2 : Two Complex Solutions  If is negative, the characteristic equation has two complex conjugate solutions:   The corresponding general solution is:   However, it is common to express this using sine and cosine (via ):     Case 3 : Real, Repeating Solutions  If is zero, then the characteristic equation has a repeated root:   In this case, the general solution is:     Summary & Examples  The form of the general solution to a second-order LHCC equation depends entirely on the roots of its characteristic equation. Here's a summary of the three cases.   ✳️ 2nd-Order LHCC General Solution Cases  Let , be the roots of the characteristic equation for a nd-order LHCC equation .   Case 1         Case 2         Case 3            📖❓ Match the Characteristic & General Solutions   Match the characteristic solutions to the corresponding general solution.                              Case 1 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Factoring gives:   So the roots are and , giving the general solution:        The characteristic equation is:   Using the quadratic formula:   Since the roots are unequal and real, the general solution is:   where and .       Case 2 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Applying the quadratic formula:   So , , and the general solution is:        The characteristic equation is:   This gives , so and . The general solution is:   or simply:        Case 3 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Factoring gives:   So is a repeated root, and the general solution is:        The characteristic equation is:   Using the quadratic formula:   This is a repeated root, so the general solution is:        These examples illustrate how second-order LHCC equations are solved using the standard , repeating , and complex cases discussed above. In the next section, we will see that a similar process can be generalized to higher-order LHCC equations.    🤔💭 Reading Questions   🤔💭 Solving the characteristic equation   If the characteristic equation for an LHCC equation is , what is the general solution?          Correct! The solution has a multiplicity of 2.         Incorrect. The solution has a multiplicity of 2.         Incorrect. Ensure you solve the charactistic equation correctly.         Incorrect. The characteristic equation does not have complex solutions.      🤔💭 Purely Imaginary Characteristic Solutions   If a characteristic equation has roots , the general solution is .    Correct! The complex exponentials transform into sine and cosine terms.     🤔💭 Matching Equations to Solutions   Match each characteristic equation to its corresponding general solution.    Great work! The general solution is based on the characteristic solutions.                      "
+},
+{
+  "id": "chkpt-second-order-lhcc-eqns-1",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#chkpt-second-order-lhcc-eqns-1",
+  "type": "Checkpoint",
+  "number": "130",
+  "title": "📖❓  Classifying Characteristic Equations.",
+  "body": " 📖❓ Classifying Characteristic Equations   Review quadratic equations and answer the following question.  Match the type of roots with the corresponding quadratic equation.    Good work! The discriminant helps classify root types.     Real unequal roots     Real repeated roots     Complex roots     "
+},
+{
+  "id": "second-order-lhcc-fundamental-solns-6",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-fundamental-solns-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "fundamental solutions "
+},
+{
+  "id": "second-order-lhcc-general-soln-2",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-general-soln-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "superposition principle "
+},
+{
+  "id": "second-order-lhcc-general-soln-5",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-general-soln-5",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "linear dependence "
+},
+{
+  "id": "chkpt-second-order-lhcc-eqns-2",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#chkpt-second-order-lhcc-eqns-2",
+  "type": "Checkpoint",
+  "number": "131",
+  "title": "📖❓  Match the Characteristic &amp; General Solutions.",
+  "body": " 📖❓ Match the Characteristic & General Solutions   Match the characteristic solutions to the corresponding general solution.                             "
+},
+{
+  "id": "second-order-lhcc-examples-5",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-examples-5",
+  "type": "🌌 Example",
+  "number": "132",
+  "title": "Case 1 Examples.",
+  "body": "Case 1 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Factoring gives:   So the roots are and , giving the general solution:        The characteristic equation is:   Using the quadratic formula:   Since the roots are unequal and real, the general solution is:   where and .      "
+},
+{
+  "id": "second-order-lhcc-examples-6",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-examples-6",
+  "type": "🌌 Example",
+  "number": "133",
+  "title": "Case 2 Examples.",
+  "body": "Case 2 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Applying the quadratic formula:   So , , and the general solution is:        The characteristic equation is:   This gives , so and . The general solution is:   or simply:       "
+},
+{
+  "id": "second-order-lhcc-examples-7",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-examples-7",
+  "type": "🌌 Example",
+  "number": "134",
+  "title": "Case 3 Examples.",
+  "body": "Case 3 Examples   Find the general solution to each second-order LHCC equation.      The characteristic equation is:   Factoring gives:   So is a repeated root, and the general solution is:        The characteristic equation is:   Using the quadratic formula:   This is a repeated root, so the general solution is:       "
+},
+{
+  "id": "second-order-lhcc-eqns-cyu-bundle",
+  "level": "2",
+  "url": "second-order-lhcc-eqns.html#second-order-lhcc-eqns-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "135",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Solving the characteristic equation   If the characteristic equation for an LHCC equation is , what is the general solution?          Correct! The solution has a multiplicity of 2.         Incorrect. The solution has a multiplicity of 2.         Incorrect. Ensure you solve the charactistic equation correctly.         Incorrect. The characteristic equation does not have complex solutions.      🤔💭 Purely Imaginary Characteristic Solutions   If a characteristic equation has roots , the general solution is .    Correct! The complex exponentials transform into sine and cosine terms.     🤔💭 Matching Equations to Solutions   Match each characteristic equation to its corresponding general solution.    Great work! The general solution is based on the characteristic solutions.                     "
+},
+{
+  "id": "higher-order-lhcc",
+  "level": "1",
+  "url": "higher-order-lhcc.html",
+  "type": "Section",
+  "number": "9.4",
+  "title": "Higher-Order Equations",
+  "body": " Higher-Order Equations   Like second-order linear homogeneous constant coefficient (LHCC) equations, we solve higher-order equations by finding the roots of a characteristic equation. However, with higher-order comes higher-degree characteristic polynomials and an increased number of roots. While this results in additional terms, determining which ones go into in the general solution is similar to the second-order case.    📖❓ Just One Root   Suppose the characteristic equation of an LHCC equation has a single root, . Select the correct statement.      The equation is st order with general solution .  Correct! The order of the equation is because there is only one root, and the general solution is given by the exponential function with that root.    The equation is st order with general solution .  Incorrect. The root is negative, so the general solution should involve , not .    The equation is nd order with general solution .  Incorrect. The order of the equation is determined by the number of roots, which is in this case, not .    The equation can have any order with general solution .  Incorrect. The order of the equation is determined by the number of roots, which is in this case, not .      The Characteristic Equation  The standard th-order LHCC equation has the form:   To find solutions, we assume . Substituting this into the equation yields:   Since , we obtain the characteristic equation :   This is a polynomial of degree , and solving it gives us the roots that define the structure of the general solution. Similar to second-order equations, each root contributes a different term in the general solution, as detailed next.   📖❓ Degree of the Characteristic Equation   The order of an LHCC differential equation is equal to the degree of its characteristic equation    This is true, since the order of each derivative in the differential equation translates directly to a corresponding power of in the characteristic equation.      Real and Distinct Roots  Every real root that is distinct from others contributes a single term of the form to the general solution, where is a constant.  For example, if the characteristic equation has roots , & that only appear once, then part of the general solution is: .    Repeated Roots  Every root that repeats times (multiplicity ) contributes to the general solution.  For example, if is a triple root, then part of the general solution will be:   Note: If the repeated root is , then , and reduces to: .    Complex Roots  Every complex root, (conjugate pair), contributes to the general solution. There may be multiple pairs, each contributing their own term.    From Characteristic Roots to General Solution  For a general th-order LHCC equation, the full general solution includes exactly terms—one for each root of the characteristic polynomial. The form of each term depends on the type of root (real or complex) and whether it repeats. These rules are summarized in .   Characteristic Root Contribution to the General Solution      root type  contribution to general solution    real (multiplicity )     real (multiplicity )     complex ( )      Let's practice building general solutions from the roots of the characteristic equation.   From Charateristic Roots to General Solution   For each set of characteristic roots, write the general solution of the LHCC equation.            Three different real roots:     A complex conjugate pair and a double real root at :     A triple root and single root:     Two complex conjugate pairs:         🤔💭 Reading Questions   🤔💭 3rd-Order General Solution   Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solutions: .          Correct! This is the form when there are three distinct real roots.         Incorrect.         Incorrect.         Incorrect.      🤔💭 Two Complex Pair Roots   Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .        Correct! This is the form when the characteristic equation has complex roots.       Incorrect.       Incorrect. Not enough constants.       Incorrect.      🤔💭 All Three Root Types   Suppose the characteristic equation of a fifth-order LHCC equation has the following roots:   Which of the following correctly represents the structure of the general solution?         Correct! The triple root at contributes three terms, ; the single real root contributes ; and the complex conjugate pair gives rise to the sinusoidal term multiplied by .         Incorrect. The triple root at should contribute three terms, not just one.         Incorrect. This only includes two of the three terms needed for the triple root at .         Incorrect. The complex roots must be expressed as , not as standalone sine and cosine terms.       🤔💭 Multiple Repeating Roots   Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .          Incorrect. This form does not account for the multiplicity of the roots.         Incorrect. The multiplicity should be reflected for each root.         Correct! This is the form when there are repeated real roots with appropriate multiplicity.         Incorrect. Make sure to account for the cubic multiplicity for .      "
+},
+{
+  "id": "chkpt-higher-order-lhcc-1",
+  "level": "2",
+  "url": "higher-order-lhcc.html#chkpt-higher-order-lhcc-1",
+  "type": "Checkpoint",
+  "number": "136",
+  "title": "📖❓  Just One Root.",
+  "body": " 📖❓ Just One Root   Suppose the characteristic equation of an LHCC equation has a single root, . Select the correct statement.      The equation is st order with general solution .  Correct! The order of the equation is because there is only one root, and the general solution is given by the exponential function with that root.    The equation is st order with general solution .  Incorrect. The root is negative, so the general solution should involve , not .    The equation is nd order with general solution .  Incorrect. The order of the equation is determined by the number of roots, which is in this case, not .    The equation can have any order with general solution .  Incorrect. The order of the equation is determined by the number of roots, which is in this case, not .    "
+},
+{
+  "id": "characteristic-equation-6",
+  "level": "2",
+  "url": "higher-order-lhcc.html#characteristic-equation-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "characteristic equation "
+},
+{
+  "id": "higher-order-lhcc-2",
+  "level": "2",
+  "url": "higher-order-lhcc.html#higher-order-lhcc-2",
+  "type": "Checkpoint",
+  "number": "137",
+  "title": "📖❓  Degree of the Characteristic Equation.",
+  "body": " 📖❓ Degree of the Characteristic Equation   The order of an LHCC differential equation is equal to the degree of its characteristic equation    This is true, since the order of each derivative in the differential equation translates directly to a corresponding power of in the characteristic equation.   "
+},
+{
+  "id": "lhcc-contribution-to-general-solution",
+  "level": "2",
+  "url": "higher-order-lhcc.html#lhcc-contribution-to-general-solution",
+  "type": "Table",
+  "number": "138",
+  "title": "Characteristic Root Contribution to the General Solution",
+  "body": " Characteristic Root Contribution to the General Solution      root type  contribution to general solution    real (multiplicity )     real (multiplicity )     complex ( )     "
+},
+{
+  "id": "lhcc-roots-to-general-solution",
+  "level": "2",
+  "url": "higher-order-lhcc.html#lhcc-roots-to-general-solution",
+  "type": "🌌 Example",
+  "number": "139",
+  "title": "From Charateristic Roots to General Solution.",
+  "body": " From Charateristic Roots to General Solution   For each set of characteristic roots, write the general solution of the LHCC equation.            Three different real roots:     A complex conjugate pair and a double real root at :     A triple root and single root:     Two complex conjugate pairs:      "
+},
+{
+  "id": "higher-order-lhcc-cyu-bundle",
+  "level": "2",
+  "url": "higher-order-lhcc.html#higher-order-lhcc-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "140",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 3rd-Order General Solution   Give the general solution for a 3rd-order LHCC equation whose characteristic equation has the solutions: .          Correct! This is the form when there are three distinct real roots.         Incorrect.         Incorrect.         Incorrect.      🤔💭 Two Complex Pair Roots   Give the general solution for a 4th-order LHCC equation whose characteristic equation has the solutions: .        Correct! This is the form when the characteristic equation has complex roots.       Incorrect.       Incorrect. Not enough constants.       Incorrect.      🤔💭 All Three Root Types   Suppose the characteristic equation of a fifth-order LHCC equation has the following roots:   Which of the following correctly represents the structure of the general solution?         Correct! The triple root at contributes three terms, ; the single real root contributes ; and the complex conjugate pair gives rise to the sinusoidal term multiplied by .         Incorrect. The triple root at should contribute three terms, not just one.         Incorrect. This only includes two of the three terms needed for the triple root at .         Incorrect. The complex roots must be expressed as , not as standalone sine and cosine terms.       🤔💭 Multiple Repeating Roots   Give the general solution for a 5th-order LHCC equation whose characteristic equation has the solutions: .          Incorrect. This form does not account for the multiplicity of the roots.         Incorrect. The multiplicity should be reflected for each root.         Correct! This is the form when there are repeated real roots with appropriate multiplicity.         Incorrect. Make sure to account for the cubic multiplicity for .     "
+},
+{
+  "id": "solving-high-order-lhccs",
+  "level": "1",
+  "url": "solving-high-order-lhccs.html",
+  "type": "Section",
+  "number": "9.5",
+  "title": "Solving High-Order LHCC Equations",
+  "body": " Solving High-Order LHCC Equations   As the previous section demonstrated, constructing the general solution of a LHCC equation is fairly straightforward given the roots of the characteristic equation. However, solving high-degree polynomial equations can be quite challenging. While there are strategies to tackle this by hand, sometimes computational tools are necessary to obtain the solutions. Below, we will outline some common approaches    Factoring  Some high-degree characteristic polynomials can be factored by hand using classic algebraic techniques. Factoring is the fastest way to solve these problems when it works. We'll start by reviewing common methods of factoring and apply them to characteristic equations that appear in LHCC differential equations.  Here are a few algebraic strategies you may find helpful:  🧮 Factoring Techniques                                Let's now apply these tools to solve higher-order LHCC equations by factoring their characteristic equations.   Solving LHCC Equations by Factoring the Characteristic Equation   These examples show how to find the general solution to higher-order LHCC equations using a variety of factoring techniques to find the roots of the characteristic equation.   1.     The characteristic equation is:   Applying the difference of squares:       2.    The characteristic equation is:   Factoring out the common term , followed by a differences of squares gives:         3.     This factors as a difference of squares twice:         4.    The characteristic equation is:   Use the substitution, , to reveal a quadratic in disguise:   Reverse the substitution, , back into :         5.    The characteristic equation is:   Take out and use standard factoring:         6.    The characteristic equation is:   We can factor this by grouping and recognizing a sum of cubes:            Rational Root Theorem  When the characteristic polynomial is hard to factor by inspection, the Rational Root Theorem provides a systematic way to search for rational (fractional) solutions. Once you find a root, you can use polynomial division to reduce the polynomial to a lower degree. From there, you can repeat the process or apply other factoring techniques.  While this method is reliable, it can be tedious by hand and prone to errors. That's why technology often comes in handy.    Using Technology: Factoring High-Degree Polynomials  Not all characteristic polynomials can be factored easily — and some can't be factored at all using simple algebra. In these cases, it's perfectly reasonable to turn to technology.  Computer algebra systems (CAS), online factoring tools, and symbolic solvers can quickly find the roots of even complicated polynomials. Once you have the roots, you can build the general solution using the framework you learned earlier.  For example, suppose you want to solve the following LHCC equation:  . The first step is to write down the characteristic equation:   This is challenging to solve by hand, but we can use the tool below to factor it.  Type 2*r^4 + 9*r^3 + r^2 - 21*r + 9 into the text box and press enter.   Polynomial Factoring Calculator Directions   Directions:  Enter a polynomial in the box below.  Use r for the variable, * for multiplication, and ^ for exponents.  Press enter to see the factored form and approximate values.  Note: It only factors polynomials with fractional (rational) roots.       After entering the polynomial, you should see the factored form:   From here the roots are easily identified as:   Therefore, the general solution is:    📖❓ Solving a High-Order LHCC Equation With a Factoring Tool   Find the general solution to the LHCC equation by using the factoring tool to find the characteristic roots.      Characteristic Roots:   General Solution:   Use c1 , c2 , c3 as the arbitrary constants of integration.                  First, write down the characteristic equation: . Plugging this into to the factoring tool shows that it factors as . Solving for , we get . Therefore, the general solution is: .       Using Technology: Approximating Roots  Some characteristic equations are too messy to factor, even with software. When this happens, a numerical root finder can provide decimal approximations of the roots, allowing us to write down the structure of the general solution.  Consider the fifth-order LHCC equation:   The characteristic equation is: This polynomial has no obvious factoring pattern, and standard techniques fail. Fortunately, numerical approximation tools can help.  Try entering r^5 - 4*r^3 + 3*r^2 - 1 into the same factoring tool above. You should get the following approximations for three real roots:   and the complex pair:   using the standard root-to-solution rules, the general solution is:    📖❓ Decimal Roots in the General Solution   Suppose you find the characteristic roots are approximately .  Which of the following best describes the general solution?        Correct! The real root gives a standalone exponential, and the complex pair contributes an oscillatory term with the same .       Incorrect. The sine and cosine must be multiplied by .       Incorrect. This would be appropriate if were a triple root.       This mixes formats and includes a non-real exponential.     Regardless of the method you choose to find the roots, the general solution is relatively easy to construct once you have them.   "
+},
+{
+  "id": "factoring-6",
+  "level": "2",
+  "url": "solving-high-order-lhccs.html#factoring-6",
+  "type": "🌌 Example",
+  "number": "141",
+  "title": "Solving LHCC Equations by Factoring the Characteristic Equation.",
+  "body": " Solving LHCC Equations by Factoring the Characteristic Equation   These examples show how to find the general solution to higher-order LHCC equations using a variety of factoring techniques to find the roots of the characteristic equation.   1.     The characteristic equation is:   Applying the difference of squares:       2.    The characteristic equation is:   Factoring out the common term , followed by a differences of squares gives:         3.     This factors as a difference of squares twice:         4.    The characteristic equation is:   Use the substitution, , to reveal a quadratic in disguise:   Reverse the substitution, , back into :         5.    The characteristic equation is:   Take out and use standard factoring:         6.    The characteristic equation is:   We can factor this by grouping and recognizing a sum of cubes:         "
+},
+{
+  "id": "factoring-tool",
+  "level": "2",
+  "url": "solving-high-order-lhccs.html#factoring-tool",
+  "type": "🎮 Interactive",
+  "number": "142",
+  "title": "Polynomial Factoring Calculator Directions.",
+  "body": " Polynomial Factoring Calculator Directions   Directions:  Enter a polynomial in the box below.  Use r for the variable, * for multiplication, and ^ for exponents.  Press enter to see the factored form and approximate values.  Note: It only factors polynomials with fractional (rational) roots.     "
+},
+{
+  "id": "chkpt-solving-high-order-lhccs-1",
+  "level": "2",
+  "url": "solving-high-order-lhccs.html#chkpt-solving-high-order-lhccs-1",
+  "type": "Checkpoint",
+  "number": "143",
+  "title": "📖❓  Solving a High-Order LHCC Equation With a Factoring Tool.",
+  "body": " 📖❓ Solving a High-Order LHCC Equation With a Factoring Tool   Find the general solution to the LHCC equation by using the factoring tool to find the characteristic roots.      Characteristic Roots:   General Solution:   Use c1 , c2 , c3 as the arbitrary constants of integration.                  First, write down the characteristic equation: . Plugging this into to the factoring tool shows that it factors as . Solving for , we get . Therefore, the general solution is: .    "
+},
+{
+  "id": "rq-solving-high-order-lhccs-5",
+  "level": "2",
+  "url": "solving-high-order-lhccs.html#rq-solving-high-order-lhccs-5",
+  "type": "Checkpoint",
+  "number": "144",
+  "title": "📖❓  Decimal Roots in the General Solution.",
+  "body": " 📖❓ Decimal Roots in the General Solution   Suppose you find the characteristic roots are approximately .  Which of the following best describes the general solution?        Correct! The real root gives a standalone exponential, and the complex pair contributes an oscillatory term with the same .       Incorrect. The sine and cosine must be multiplied by .       Incorrect. This would be appropriate if were a triple root.       This mixes formats and includes a non-real exponential.    "
+},
+{
+  "id": "c7-exercises",
+  "level": "1",
+  "url": "c7-exercises.html",
+  "type": "Section",
+  "number": "9.6",
+  "title": "Chapter 7 Exercises",
+  "body": " Chapter 7 Exercises   ᯓ★❓ Quick-Answer Questions    True-False  Select all the true statements below   Select all the true statements below.      An LHCC equation must have constant coefficients.    Correct! Constant coefficients are one of the defining features of LHCC equations.      An LHCC equation could contain the independent variable, .    Incorrect, LHCC equations are linear, meaning they cannot contain non-linear terms like .      is an LHCC equation.    Correct! This is a first-order linear homogeneous differential equation.      A non-homogeneous equation has a non-zero free term.    Correct! If the free term is not zero, the equation is non-homogeneous.      Linear or Nonlinear   The equation is linear.    Incorrect. The term makes this equation nonlinear because the function and its derivative are multiplied together.    Polynomial Solutions   Polynomial functions are commonly solutions to LHCC equations.    Incorrect. Polynomial functions do not satisfy LHCC equations because their derivatives do not remain proportional to the original function.    Understanding Second-Order LHCC Equations   A second-order LHCC equation has the form , where and are constants.    Correct! Second-order LHCC equations involve a second derivative and have constant coefficients.      Multiple-Choice   True-or-False   The hundredth derivative of is a like-term with .    True Correct!  False Incorrect.    Building Solutions   If and are solutions to a second-order LHCC equation, then is also a solution.    Correct! By the superposition principle, this combination is also a solution.    Match the Label to the DE   Match each label on the left to an appropriate DE on the right.  Key: L = linear, H = homogeneous, CC = constant coefficient   Note: Multiple matches can be correct, but there is only one perfect matching where all are correct.      CC     LH, order 1     LHCC     LH, order 2     LCC     L      Select the LHCC Equations  Select all of the LHCC Differential Equations.                                        There are only 4 LHCC equations in this set.    Identifying Homogeneous Equations   Which of the following equations is homogeneous?           Incorrect. The right-hand side is , which makes the equation nonhomogeneous.           Incorrect. The term on the right-hand side makes the equation nonhomogeneous.           Correct! The equation is homogeneous because the right-hand side is zero.           Incorrect. The term on the right-hand side makes the equation nonhomogeneous.      Characteristic equation for first-order LHCC   What is the characteristic equation for ?           Correct! The characteristic equation is .           Incorrect. Check the sign of the coefficient of .           Incorrect. The characteristic equation for a first-order LHCC is linear, not quadratic.           Incorrect. Make sure to use the correct coefficients from the original equation.      Identify the first-order LHCC equation   Which of the following is a first-order LHCC equation?           Incorrect. This is a second-order equation.           Correct! This is a first-order linear homogeneous equation with constant coefficients.           Incorrect. This equation is not homogeneous.           Incorrect. This is not a constant coefficient equation.      Match the DE to Its Characteristic Equation   Match each LHCC differential equation on the left to its corresponding characteristic equation on the right.   Note: Each DE has a unique characteristic equation.                       The Characteristic Equation   What is the characteristic equation of the differential equation ?           Incorrect. Check the coefficients in the original equation.           Correct! The characteristic equation is formed by replacing with , with , and with 1.           Incorrect. Be careful with the sign of the free term.      Give the general form  Give the general form of a second-order LHCC equation if the characteristic equation has the solution: .     Incorrect. Complex roots require both cosine and sine terms.     Incorrect. This form is used for repeated real roots.     Incorrect. This form is used for distinct real roots.     Correct! This form is used when the roots are complex.     Give the general form  Give the general form of a second-order LHCC equation if the characteristic equation has the solutions and .     Correct! This form is used when the characteristic equation has distinct real roots.     Incorrect. This form is used for repeated real roots.     Incorrect. This form is also used for repeated real roots.     Incorrect. This form is used for complex roots.     Roots of the characteristic equation  What are the roots of the characteristic equation ?    and  Correct! The roots are and .    and  Incorrect. Check the signs of the roots.    and  Incorrect. Ensure you solve the quadratic equation correctly.    and  Incorrect. Revisit the quadratic formula to solve for the roots.     General solution for second-order LHCC  What is the general solution for ?     Correct! The general solution is .     Incorrect. Check the signs of the exponents.     Incorrect. Make sure to use the correct roots.     Incorrect. Revisit the roots of the characteristic equation.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!     Classifying Practice   Select each classification label that applies to the equation      Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the free term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, all terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.     Natural Solutions   Why do exponentials naturally arise as solutions to LHCC equations?     Because their derivatives preserve the same functional form.  Correct! Exponentials are eigenfunctions of the derivative operator.    Because polynomial solutions cannot satisfy these equations.  Incorrect. Polynomial solutions can satisfy LHCC equations.    Because sine and cosine functions do not work.  Incorrect. Sine and cosine functions are also solutions to LHCC equations.    Because they minimize the characteristic equation.  Incorrect. Exponentials are not solutions because they minimize the characteristic equation.      What exponential term is in the solution   What is the fundamental exponential solution for the equation ?           Correct! Solving gives . So is the exponential term in the solution.           Incorrect. Check the signs when solving the characteristic equation.           Incorrect. Ensure you are solving the characteristic equation correctly.           Incorrect. Write down the characteristic equation and solve for .      Structure of the General Solution   What is the general solution of a second-order LHCC equation if the characteristic equation has unequal real solutions and ?           Incorrect. The constants must be different for each term.           Correct! Each fundamental solution is multiplied by an arbitrary constant.           Incorrect. The general solution includes arbitrary constants.      Differential & Characteristic Equation Mathching   Match characteristic solution to the term it would correspond to in the general solution of an LHCC equation.     ( repeats 2 times )            ( repeats 4 times )                    📖❓ General Solution from Repeated Roots   Suppose the characteristic equation has a triple root at . What is the corresponding part of the general solution?        Correct! Each repeated root contributes an extra power of .       Incorrect. These are distinct roots, not repeated instances of .       Incorrect. The powers should stop at for a triple root.       This form is correct for a root at , not .      📖❓ When to Use a Factoring Tool   Which of the following is the best reason to use a factoring tool or computer algebra system when solving an LHCC equation?     The characteristic equation is high degree and does not factor easily by hand.  Correct! Technology saves time and avoids algebraic errors.    You already know all the roots from memory.  Then you wouldn't need to factor at all.    You want to verify that exponentials are like-terms.  That's a useful idea, but not the purpose of a factoring tool.    The roots are all real and distinct.  That makes constructing the solution easier—but you still need the roots first.      📖❓ Interpreting Mixed Roots   A characteristic equation has the following roots: . What is the correct form of the general solution?        Correct! The double root at 0 gives and , and the complex pair gives the oscillatory exponential term.       Incorrect. The sine and cosine terms must be multiplied by .       While technically valid, this form is not simplified. Use real-valued functions.       These roots do not match the ones given.       Short-Answer   Definition of Homogeneity   What makes a differential equation homogeneous?       Other    Select the linear differential equations that have constant coefficients .   Identify and ignore the free term when determining if the coefficients are constant.                                    Select the linear homogeneous differential equations with constant coefficients .                                                   🏗️ Warm-ups & Drills  Identifying LHCC Equations  Identify the Linear Equations   Click on the equations that are linear.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the Linear Homogeneous Equations   Click on the linear and homogeneous equations.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the Linear Constant Coefficient Equations   Click on the linear equations with constant coefficients.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the LHCC Equations   Click on the LHCC equations.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.      Differential Equation Characteristic Equation   Give the characteristic equation corresponding to each differential equation below.   Use for the variable in your answer. Don't forget the sign.         characteristic equation:                  characteristic equation:                  characteristic equation:               Factor the Characteristic Equation   Fully factor each characteristic equation.  ⚠️ Warning: The numbers on these problems are randomly generated when you press Activate . So, click Activate before you start!     nd Degree                  rd Degree                  th Degree                  rd Degree                    Charateristic Polynomials   From Charateristic Roots General Solution   Suppose the solutions to a characteristic equation for an LHCC equation are given below. In each case, find the corresponding general solution.      Since we have three different real numbers, we use the standard case to get the general solution as        A complex conjugate pair and a single solutions, means we use a combination of the complex and standard cases .        The solution repeats three times and the single gives the general solution        The two separate complex conjugate pairs implies we use the complex case for both to get        Two 's and five 's means the general solution is        One complex pair, two 's, and a single , gives us        ✍🏻 Solve the Differential Equations  Verifying Superposition    Consider the second-order LHCC equation:   Suppose we have already determined that and are solutions. Show that their linear combination   is also a solution for arbitrary constants and .     Differentiating :   Substituting into :   Since the equation holds for all values of and , this confirms that their linear combination is also a solution.     Find the general solution for a linear, homogeneous DEwith constant coefficients which has the given characteristic equation                                The characteristic equation is: . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .      The characteristic equation is: . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .                                  General Solution                                                         LHCC Equation General Solution   Find the general solution to each of the equations below.      The characteristic equation is:   Solving gives . Since this is a first-order equation, the general solution is:        The characteristic equation is:   Factoring gives:   So the roots are and . Thus:        The characteristic equation is:   Factoring gives:   So the roots are , , and . Therefore:        LHCC Equation General Solution   Find the general solution to each of the equations below.      The characteristic equation is:   Solving gives . Since this is a first-order equation, the general solution is:        The characteristic equation is:   Factoring gives:   So the roots are and . Thus:        The characteristic equation is:   Factoring gives:   So the roots are , , and . Therefore:                                                                                                                           The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Factoring out an from the equation, we get:   Therefore, the roots are and . The general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get and . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get . Therefore, the general solution is:            The characteristic equation is:   Solving for , we get and . Therefore, the general solution is:           Solve the following initial value problems    an that satisfy thegiven initial conditions.   We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.      o                   Solve the following initial value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution      or        We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq15}) and (\\ref{eq16}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq15}) and then substitute into equation (\\ref{eq16}) as follows.   Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.      o         We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq17}) and (\\ref{eq18}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq17}) and then substitute into equation (\\ref{eq18}) as follows.   Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.            We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation).   Sinc is a repeated real root, the general solution is   In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative.   Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows.     We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution           or         Beyond the Basics  The General Solution to First-Order LHCC Equations   Derive the general solution to a first order linear homogeneous constant coefficient (LHCC) equation of the form: , where are constants.    The characteristic equation this equation is .  So, the only fundamental solution to this equation is: .  Therefore, the general solution must be where is an arbitrary constant.     Suppose an LHCC equation has as a solution. Can you conclude anything specific about the structure of such an LHCC equation?    Boundary Value Problems   Solve the following boundary value problems. Explain whetheryou found a unique solution, an infinite number of solutions, or no solution.     Consider the following differential equation: .  Notice that instead of initial conditions at only, there is one at . This is call a boundary-valued problem (BVP) because it has conditions over two different -values. Now, for this equation find the following, if possible:    General solution.  This DE is linear, homogeneous, and has constant coefficients, so we can start by solving the characteristic equation. Thus, the general solution is      (o )      The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. Hence, the (unique) particular solution is     the unique solution i       The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, the first condition leads t while the second condition leads t These cannot both be true, so there is no solution .    no solution      The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, both of the conditions lead t and we don't learn anything abou Thus could still take on any value, and therefore there are an infinite number of solutions of the form     there are an infinite number of solutions of the for          If possible, solve the following boundary value problem:    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution             Show why is needed in the general solution for repeated roots of the CE             "
+},
+{
+  "id": "c7-quick-answer-2",
+  "level": "2",
+  "url": "c7-quick-answer.html#c7-quick-answer-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "L H CC "
+},
+{
+  "id": "drill-identifying-lhcc",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-identifying-lhcc",
+  "type": "Reading Question",
+  "number": "9.6.1",
+  "title": "Identifying LHCC Equations.",
+  "body": "Identifying LHCC Equations  Identify the Linear Equations   Click on the equations that are linear.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the Linear Homogeneous Equations   Click on the linear and homogeneous equations.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the Linear Constant Coefficient Equations   Click on the linear equations with constant coefficients.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    Identify the LHCC Equations   Click on the LHCC equations.                                            Remember, a linear equation cannot contain products or compositions of and its derivatives.    "
+},
+{
+  "id": "drill-give-characteristic-eqn-1",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-give-characteristic-eqn-1",
+  "type": "Reading Question",
+  "number": "9.6.2",
+  "title": "<span class=\"process-math\">\\(y'' + 5y' - y = 0\\)<\/span>.",
+  "body": "     characteristic equation:            "
+},
+{
+  "id": "drill-give-characteristic-eqn-2",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-give-characteristic-eqn-2",
+  "type": "Reading Question",
+  "number": "9.6.3",
+  "title": "<span class=\"process-math\">\\(w''' - 7.1w'' + 0.1w = 0\\)<\/span>.",
+  "body": "     characteristic equation:            "
+},
+{
+  "id": "drill-give-characteristic-eqn-3",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-give-characteristic-eqn-3",
+  "type": "Reading Question",
+  "number": "9.6.4",
+  "title": "<span class=\"process-math\">\\(2 p'' + 5p' = 0\\)<\/span>.",
+  "body": "     characteristic equation:            "
+},
+{
+  "id": "drill-factor-characteristic-eqn-1",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-factor-characteristic-eqn-1",
+  "type": "Reading Question",
+  "number": "9.6.5",
+  "title": "<span class=\"process-math\">\\(2\\)<\/span>nd Degree.",
+  "body": " nd Degree                "
+},
+{
+  "id": "drill-factor-characteristic-eqn-2",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-factor-characteristic-eqn-2",
+  "type": "Reading Question",
+  "number": "9.6.6",
+  "title": "<span class=\"process-math\">\\(3\\)<\/span>rd Degree.",
+  "body": " rd Degree                "
+},
+{
+  "id": "drill-factor-characteristic-eqn-3",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-factor-characteristic-eqn-3",
+  "type": "Reading Question",
+  "number": "9.6.7",
+  "title": "<span class=\"process-math\">\\(4\\)<\/span>th Degree.",
+  "body": " th Degree                "
+},
+{
+  "id": "drill-factor-characteristic-eqn-4",
+  "level": "2",
+  "url": "c7-exercises-3.html#drill-factor-characteristic-eqn-4",
+  "type": "Reading Question",
+  "number": "9.6.8",
+  "title": "<span class=\"process-math\">\\(3\\)<\/span>rd Degree.",
+  "body": " rd Degree                "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-3",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-3",
+  "type": "Exercise",
+  "number": "9.6.1",
+  "title": "",
+  "body": "   Since we have three different real numbers, we use the standard case to get the general solution as    "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-4",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-4",
+  "type": "Exercise",
+  "number": "9.6.2",
+  "title": "",
+  "body": "   A complex conjugate pair and a single solutions, means we use a combination of the complex and standard cases .    "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-5",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-5",
+  "type": "Exercise",
+  "number": "9.6.3",
+  "title": "",
+  "body": "   The solution repeats three times and the single gives the general solution    "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-6",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-6",
+  "type": "Exercise",
+  "number": "9.6.4",
+  "title": "",
+  "body": "   The two separate complex conjugate pairs implies we use the complex case for both to get    "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-7",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-7",
+  "type": "Exercise",
+  "number": "9.6.5",
+  "title": "",
+  "body": "   Two 's and five 's means the general solution is    "
+},
+{
+  "id": "lhcc-from-char-roots-to-general-solution-8",
+  "level": "2",
+  "url": "c7-exercises-4.html#lhcc-from-char-roots-to-general-solution-8",
+  "type": "Exercise",
+  "number": "9.6.6",
+  "title": "",
+  "body": "   One complex pair, two 's, and a single , gives us    "
+},
+{
+  "id": "c7-exercises-5-2",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-2",
+  "type": "Exercise",
+  "number": "9.6.1",
+  "title": "Verifying Superposition.",
+  "body": "Verifying Superposition    Consider the second-order LHCC equation:   Suppose we have already determined that and are solutions. Show that their linear combination   is also a solution for arbitrary constants and .     Differentiating :   Substituting into :   Since the equation holds for all values of and , this confirms that their linear combination is also a solution.   "
+},
+{
+  "id": "c7-exercises-5-3-2",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-2",
+  "type": "Exercise",
+  "number": "9.6.2",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-3-3",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-3",
+  "type": "Exercise",
+  "number": "9.6.3",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-3-4",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-4",
+  "type": "Exercise",
+  "number": "9.6.4",
+  "title": "<span class=\"process-math\">\\(\\ds y^{(4)} - 5y'' + 4y = 0\\)<\/span>.",
+  "body": "  The characteristic equation is: . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .   "
+},
+{
+  "id": "c7-exercises-5-3-5",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-5",
+  "type": "Exercise",
+  "number": "9.6.5",
+  "title": "<span class=\"process-math\">\\(\\ds y^{(4)} - 5y'' + 4y = 0\\)<\/span>.",
+  "body": "  The characteristic equation is: . Let , then we can rewrite the equation as: . Solving for , we get: . Thus, gives , and gives . The general solution is: .   "
+},
+{
+  "id": "c7-exercises-5-3-6",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-6",
+  "type": "Exercise",
+  "number": "9.6.6",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-3-7",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-3-7",
+  "type": "Exercise",
+  "number": "9.6.7",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-2",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-2",
+  "type": "Exercise",
+  "number": "9.6.8",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-3",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-3",
+  "type": "Exercise",
+  "number": "9.6.9",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-4",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-4",
+  "type": "Exercise",
+  "number": "9.6.10",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-5",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-5",
+  "type": "Exercise",
+  "number": "9.6.11",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "c7-exercises-5-4-6",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-6",
+  "type": "Exercise",
+  "number": "9.6.12",
+  "title": "LHCC Equation General Solution.",
+  "body": "LHCC Equation General Solution   Find the general solution to each of the equations below.      The characteristic equation is:   Solving gives . Since this is a first-order equation, the general solution is:        The characteristic equation is:   Factoring gives:   So the roots are and . Thus:        The characteristic equation is:   Factoring gives:   So the roots are , , and . Therefore:       "
+},
+{
+  "id": "c7-exercises-5-4-7",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-7",
+  "type": "Exercise",
+  "number": "9.6.13",
+  "title": "LHCC Equation General Solution.",
+  "body": "LHCC Equation General Solution   Find the general solution to each of the equations below.      The characteristic equation is:   Solving gives . Since this is a first-order equation, the general solution is:        The characteristic equation is:   Factoring gives:   So the roots are and . Thus:        The characteristic equation is:   Factoring gives:   So the roots are , , and . Therefore:       "
+},
+{
+  "id": "c7-exercises-5-4-8",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-8",
+  "type": "Exercise",
+  "number": "9.6.14",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-9",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-9",
+  "type": "Exercise",
+  "number": "9.6.15",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-10",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-10",
+  "type": "Exercise",
+  "number": "9.6.16",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-11",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-11",
+  "type": "Exercise",
+  "number": "9.6.17",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-12",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-12",
+  "type": "Exercise",
+  "number": "9.6.18",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-13",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-13",
+  "type": "Exercise",
+  "number": "9.6.19",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-14",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-14",
+  "type": "Exercise",
+  "number": "9.6.20",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-15",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-15",
+  "type": "Exercise",
+  "number": "9.6.21",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c7-exercises-5-4-16",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-16",
+  "type": "Exercise",
+  "number": "9.6.22",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 9y' + 2y = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-17",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-17",
+  "type": "Exercise",
+  "number": "9.6.23",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 3y'' + 4y' = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Factoring out an from the equation, we get:   Therefore, the roots are and . The general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-18",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-18",
+  "type": "Exercise",
+  "number": "9.6.24",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 4y'' -36y = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-19",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-19",
+  "type": "Exercise",
+  "number": "9.6.25",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds y''- y' - 11y = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-20",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-20",
+  "type": "Exercise",
+  "number": "9.6.26",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 2\\frac{d^2 \\theta}{dt^2} -6\\frac{d\\theta}{dt} - 8\\theta = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get and . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-21",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-21",
+  "type": "Exercise",
+  "number": "9.6.27",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds w'' + 6w' + 9w = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-22",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-22",
+  "type": "Exercise",
+  "number": "9.6.28",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds m'' = 2m' - m\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-23",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-23",
+  "type": "Exercise",
+  "number": "9.6.29",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds y'' + 4y' + 53y = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-24",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-24",
+  "type": "Exercise",
+  "number": "9.6.30",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds z''=-36z\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-25",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-25",
+  "type": "Exercise",
+  "number": "9.6.31",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds y'' = -24y' - 144y\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-26",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-26",
+  "type": "Exercise",
+  "number": "9.6.32",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds \\frac{d^2w}{dx^2} - 49w = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-4-27",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-4-27",
+  "type": "Exercise",
+  "number": "9.6.33",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds z''- z' - 42z = 0\\)<\/span>.",
+  "body": "   The characteristic equation is:   Solving for , we get and . Therefore, the general solution is:        "
+},
+{
+  "id": "c7-exercises-5-5-2",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-2",
+  "type": "Exercise",
+  "number": "9.6.34",
+  "title": "",
+  "body": "  an that satisfy thegiven initial conditions.   We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq7}) and (\\ref{eq8}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq7}) and then substitute into equation (\\ref{eq8}) as follows. Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.      o    "
+},
+{
+  "id": "c7-exercises-5-5-3",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-3",
+  "type": "Exercise",
+  "number": "9.6.35",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "c7-exercises-5-5-4",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-4",
+  "type": "Exercise",
+  "number": "9.6.36",
+  "title": "",
+  "body": " Solve the following initial value problem.    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution      or    "
+},
+{
+  "id": "c7-exercises-5-5-5",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-5",
+  "type": "Exercise",
+  "number": "9.6.37",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 4y'' -36y = 0, \\quad y(0) = 4, \\quad y'(0) = -6\\)<\/span>.",
+  "body": "   We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq15}) and (\\ref{eq16}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq15}) and then substitute into equation (\\ref{eq16}) as follows.   Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.      o     "
+},
+{
+  "id": "c7-exercises-5-5-6",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-6",
+  "type": "Exercise",
+  "number": "9.6.38",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds 2\\frac{d^2 \\theta}{dt^2} -6\\frac{d\\theta}{dt} - 8\\theta = 0,\\quad \\theta(0) = 12, \\quad \\theta'(0) = -2\\)<\/span>.",
+  "body": "   We already have the general solution . In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq17}) and (\\ref{eq18}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq17}) and then substitute into equation (\\ref{eq18}) as follows.   Hence, we have the solution  Note: it's not clear whether the independent variable i o , so you could replace th 's wit 's.        "
+},
+{
+  "id": "c7-exercises-5-5-7",
+  "level": "2",
+  "url": "c7-exercises-5.html#c7-exercises-5-5-7",
+  "type": "Exercise",
+  "number": "9.6.39",
+  "title": "<span class=\"process-math\">\\(\\quad\\ds \\frac{d^2z}{dx^2} - 4\\frac{dz}{dx} + 4z = 0,\\quad z(1) = 1,\\quad z'(1) = 1\\)<\/span>.",
+  "body": "   We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation).   Sinc is a repeated real root, the general solution is   In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative.   Now we can see what comes of the first initial condition    Now we can use the other initial condition    Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows.     We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed by writing the characteristic equation and then solving it (either by factoring or using the quadratic equation). Sinc is a repeated real root, the general solution is In order to use the initial conditions, we will eventually need the first derivative, so let's find that now. Note that we will use the product rule to take the derivative. Now we can see what comes of the first initial condition  Now we can use the other initial condition  Notice that the resulting equations, (\\ref{eq13}) and (\\ref{eq14}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown and . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq13}) and then substitute into equation (\\ref{eq14}) as follows. Hence, we have the solution           or     "
+},
+{
+  "id": "exercises--2",
+  "level": "2",
+  "url": "exercises-.html#exercises--2",
+  "type": "Exercise",
+  "number": "9.6.1",
+  "title": "The General Solution to First-Order LHCC Equations.",
+  "body": "The General Solution to First-Order LHCC Equations   Derive the general solution to a first order linear homogeneous constant coefficient (LHCC) equation of the form: , where are constants.    The characteristic equation this equation is .  So, the only fundamental solution to this equation is: .  Therefore, the general solution must be where is an arbitrary constant.   "
+},
+{
+  "id": "exercises--3",
+  "level": "2",
+  "url": "exercises-.html#exercises--3",
+  "type": "Exercise",
+  "number": "9.6.2",
+  "title": "",
+  "body": " Suppose an LHCC equation has as a solution. Can you conclude anything specific about the structure of such an LHCC equation?   "
+},
+{
+  "id": "exercises--4-3",
+  "level": "2",
+  "url": "exercises-.html#exercises--4-3",
+  "type": "Exercise",
+  "number": "9.6.3",
+  "title": "",
+  "body": "  Consider the following differential equation: .  Notice that instead of initial conditions at only, there is one at . This is call a boundary-valued problem (BVP) because it has conditions over two different -values. Now, for this equation find the following, if possible:    General solution.  This DE is linear, homogeneous, and has constant coefficients, so we can start by solving the characteristic equation. Thus, the general solution is      (o )      The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. Hence, the (unique) particular solution is     the unique solution i       The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, the first condition leads t while the second condition leads t These cannot both be true, so there is no solution .    no solution      The solution with boundary conditions: and .  We can begin with the general solution we found previously. When we apply the first condition we have the following. And using the second condition yields the following. In this case, both of the conditions lead t and we don't learn anything abou Thus could still take on any value, and therefore there are an infinite number of solutions of the form     there are an infinite number of solutions of the for        "
+},
+{
+  "id": "exercises--4-4",
+  "level": "2",
+  "url": "exercises-.html#exercises--4-4",
+  "type": "Exercise",
+  "number": "9.6.4",
+  "title": "",
+  "body": " If possible, solve the following boundary value problem:    We begin by verifying the following: the DE is linear,  the DE is homogeneous, and  the DE has constant coefficients. Since all of the conditions are true, we can safely proceed to find the general solution. We write down and then solve the characteristic equation, as follows. Since an are distinct, real roots, the general solution is given by Now we can see what comes of the first boundary condition  Now we can use the other boundary condition  Notice that the resulting equations, (\\ref{eq11}) and (\\ref{eq12}) constitute a system of two linear equations in two unknowns, and we should be able to solve for the unknown an . There are multiple ways to achieve this. One possibility is to solve for in equation (\\ref{eq11}) and then substitute into equation (\\ref{eq12}) as follows. Hence, we have the solution         "
+},
+{
+  "id": "tba",
+  "level": "2",
+  "url": "exercises-.html#tba",
+  "type": "Exercise",
+  "number": "9.6.5",
+  "title": "",
+  "body": "  Show why is needed in the general solution for repeated roots of the CE           "
+},
+{
+  "id": "lncc-equation",
+  "level": "1",
+  "url": "lncc-equation.html",
+  "type": "Section",
+  "number": "10.1",
+  "title": "The LNCC Equation",
+  "body": " The LNCC Equation   You already know that a linear homogeneous constant coefficient (LHCC) equation has the form:   All the terms are on the left, and the right-hand side is zero. This equation is called homogeneous because the solution only includes terms that cancel each other out.  A linear nonhomogeneous constant coefficient (LNCC) equation looks almost the same, except the right-hand side is now a function:   The function is called the forcing function because it introduces an external input that forces the system to respond in a particular way.    📖❓ Homogeneous vs Nonhomogeneous   Which structure or property of a differential equation separates homogeneous from nonhomogeneous equations?      The presence of a non-zero forcing function.    Correct! A non-zero free term on the right-hand side of the equation indicates a nonhomogeneous equation.      The dependent variable.    Incorrect. The dependent variable is present in both homogeneous and nonhomogeneous equations.      The order of the equation.    Incorrect. Both homogeneous and nonhomogeneous equations can have the same order.      The linearity of the equation.    Incorrect. Both homogeneous and nonhomogeneous equations can be linear.       Guessing a Solution that Accounts for the Forcing Function   Note: For brevity, we will refer to the left side of equation as 🍄. Also, when we say plug into 🍄 , we mean calculate and substitute , , into , then simplify.   Imagine you had to make your best guess as to which function, , satisfies the equation  . Remember, after differentiating your guess and plugging it into 🍄, all terms must simplify to . That is,  . Logically, for the sum of three terms to simplify to , they must share a similar structure as (i.e., a degree polynomial). or contain terms that completely cancel out, but we will ignore these for now.    📖❓ Select the most appropriate solution   Based on this logic, which function is the only possible candidate for the solution to the LNCC equation?  .  Hint: Think about the type of functions you need to add together to get .            Incorrect. This function does not resemble the forcing function.           Incorrect. Plugging into will not give you an term you need to match the forcing function, .           Correct! This 3rd degree polynomial has the same polynomial structure as the forcing function, .           Incorrect. Plugging into will leave you with an term that does not exist in the forcing function, .      In this context, a similar function-type to means our guess should also be a degree polynomial. Since we don't know which one, we use the general degree form:   Plugging this into 🍄 and taking some derivatives, we get   This is not , but maybe we can find and values that get us there. Setting the expression equal to , we have   Matching the and , gives us the system:   Substituting and into completes the solution:     Confirming our Guess  Let's double-check that the function, , we found really satisfies the equation.   This confirms as a solution. In fact, it is the most important solution because it accounts for the specific forcing function and must be included in every solution to equation . Such solutions are called particular solutions , but they are only part of the whole story.    The Hidden Parts of Nonhomogeneous Solutions  We established that the particular solution, , is what you plug into 🍄 to get . However, there could be additional terms you can plug into 🍄 that cancel out after taking derivatives and simplifying. Specifically,   We already know how to find these functions since they are just the solutions to the homogeneous version of the same equation:   This LHCC equation is solved using its characteristic equation:   This homogeneous solution, we'll call , is given by   and is the other half of LNCC solution. They provide the terms that cancel out when plugged into 🍄 and have no impact on the forcing function at all.    Combining the Parts Into a General Solution  To summarize, the general solution of equation consists of two parts:  The homogeneous part: (canceling terms), and  The particular part: (account for )  and we write it as the sum of these parts:  . Finally, let's see how the different parts of the general solution behave when plugged into the left side of the equation. First, let's plug in    and regroup the and terms:   Now, we will now show that the homogeneous terms, 1️⃣, simplify to zero:  Next, we will show that the particular terms, 2️⃣, simplify to :   So, adding the results of 1️⃣ and 2️⃣, leaves us with the forcing function, .     The General Solution to LNCC Equations  Let's summarize what we've learned so far:   ✳️ LNCC General Solution Structure   A linear nonhomogeneous constant coefficient (LNCC) equation has the form:   Its general solution is built from two parts:      is the solution to the corresponding homogeneous (LHCC) equation:    the particular solution that produces the forcing function .      📖❓ Contructing the General Solution   Suppose the homogeneous and particular solutions of an LNCC equation are given by . Select the general solution for such an equation.       .    Incorrect. This is only the particular solution, not the complete general solution.       .    Incorrect. One of the terms in this expression is incorrect.       .    Correct! The general solution is the sum of the homogeneous and particular solutions.       .    Incorrect. You do not multiply the particular solution by a constant.      Here's a quick example to help solidify this concept.  Finding the general solution, given    Find the general solution to the differential equation given that the particular solution is known to be .     The general solution has the form:   Since is given, we only need to solve the homogeneous equation:   Using the characteristic equation:   The homogeneous solution is:   Therefore, the general solution is:     While the structure of LNCC solutions is now clear, actually determining requires a systematic approach. The next section introduces the Method of Undetermined Coefficients, a technique for efficiently constructing when has a specific form.    🤔💭 Reading Questions   🤔💭 Role of the Particular Solution   Which statement best describes the role of the particular solution to an LNCC equation?      Part of the general solution that accounts for the forcing function.    Correct! The particular solution is chosen to match the form of and account for its influence in the equation.      General solution of the LNCC equation.    Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.      Roots of the characteristic equation.    Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.      Coefficients of the differential equation.    Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.       🤔💭 Particular Solution Properties   Which statements are true about the particular solution, , of       It is part of the general solution.   selected.     All of its terms simplify to when plugged into the equation.   selected.     It is constructed from the roots of a characteristic equation.   selected.     It mimics the structure of the forcing function, .   selected.     It contains constants of integration (e.g., , , etc.).   selected.      🤔💭 Homogeneous Solution Properties   Which statements are true about the homogeneous solution, , of       It is part of the general solution.   selected.     All of its terms simplify to when plugged into the equation.   selected.     It is constructed from the roots of a characteristic equation.   selected.     It mimics the structure of the forcing function, .   selected.     It contains constants of integration (e.g., , , etc.).   selected.      "
+},
+{
+  "id": "lncc-equation-2-6",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-equation-2-6",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "forcing function "
+},
+{
+  "id": "lncc-equation-chkpt-1",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-equation-chkpt-1",
+  "type": "Checkpoint",
+  "number": "145",
+  "title": "📖❓  Homogeneous vs Nonhomogeneous.",
+  "body": " 📖❓ Homogeneous vs Nonhomogeneous   Which structure or property of a differential equation separates homogeneous from nonhomogeneous equations?      The presence of a non-zero forcing function.    Correct! A non-zero free term on the right-hand side of the equation indicates a nonhomogeneous equation.      The dependent variable.    Incorrect. The dependent variable is present in both homogeneous and nonhomogeneous equations.      The order of the equation.    Incorrect. Both homogeneous and nonhomogeneous equations can have the same order.      The linearity of the equation.    Incorrect. Both homogeneous and nonhomogeneous equations can be linear.     "
+},
+{
+  "id": "lncc-equation-chkpt-2",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-equation-chkpt-2",
+  "type": "Checkpoint",
+  "number": "146",
+  "title": "📖❓  Select the most appropriate solution.",
+  "body": " 📖❓ Select the most appropriate solution   Based on this logic, which function is the only possible candidate for the solution to the LNCC equation?  .  Hint: Think about the type of functions you need to add together to get .            Incorrect. This function does not resemble the forcing function.           Incorrect. Plugging into will not give you an term you need to match the forcing function, .           Correct! This 3rd degree polynomial has the same polynomial structure as the forcing function, .           Incorrect. Plugging into will leave you with an term that does not exist in the forcing function, .     "
+},
+{
+  "id": "particular-check-4",
+  "level": "2",
+  "url": "lncc-equation.html#particular-check-4",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "particular solutions "
+},
+{
+  "id": "lncc-equation-chkpt-3",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-equation-chkpt-3",
+  "type": "Checkpoint",
+  "number": "147",
+  "title": "📖❓  Contructing the General Solution.",
+  "body": " 📖❓ Contructing the General Solution   Suppose the homogeneous and particular solutions of an LNCC equation are given by . Select the general solution for such an equation.       .    Incorrect. This is only the particular solution, not the complete general solution.       .    Incorrect. One of the terms in this expression is incorrect.       .    Correct! The general solution is the sum of the homogeneous and particular solutions.       .    Incorrect. You do not multiply the particular solution by a constant.     "
+},
+{
+  "id": "lncc-general-solution-6",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-general-solution-6",
+  "type": "🌌 Example",
+  "number": "148",
+  "title": "Finding the general solution, given <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": "Finding the general solution, given    Find the general solution to the differential equation given that the particular solution is known to be .     The general solution has the form:   Since is given, we only need to solve the homogeneous equation:   Using the characteristic equation:   The homogeneous solution is:   Therefore, the general solution is:    "
+},
+{
+  "id": "lncc-equation-cyu-bundle",
+  "level": "2",
+  "url": "lncc-equation.html#lncc-equation-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "149",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Role of the Particular Solution   Which statement best describes the role of the particular solution to an LNCC equation?      Part of the general solution that accounts for the forcing function.    Correct! The particular solution is chosen to match the form of and account for its influence in the equation.      General solution of the LNCC equation.    Incorrect. The general solution of the homogeneous equation is called the complementary solution, not the particular solution.      Roots of the characteristic equation.    Incorrect. The characteristic equation is related to the complementary solution and does not involve the particular solution.      Coefficients of the differential equation.    Incorrect. The particular solution addresses the specific form of and is part of solving the non-homogeneous equation, but its purpose isn't simplification.       🤔💭 Particular Solution Properties   Which statements are true about the particular solution, , of       It is part of the general solution.   selected.     All of its terms simplify to when plugged into the equation.   selected.     It is constructed from the roots of a characteristic equation.   selected.     It mimics the structure of the forcing function, .   selected.     It contains constants of integration (e.g., , , etc.).   selected.      🤔💭 Homogeneous Solution Properties   Which statements are true about the homogeneous solution, , of       It is part of the general solution.   selected.     All of its terms simplify to when plugged into the equation.   selected.     It is constructed from the roots of a characteristic equation.   selected.     It mimics the structure of the forcing function, .   selected.     It contains constants of integration (e.g., , , etc.).   selected.     "
+},
+{
+  "id": "selecting-the-particular-soln",
+  "level": "1",
+  "url": "selecting-the-particular-soln.html",
+  "type": "Section",
+  "number": "10.2",
+  "title": "Selecting the Particular Solution Form",
+  "body": " Selecting the Particular Solution Form   In the previous section, we saw that the general solution to a linear nonhomogeneous constant coefficient (LNCC) equation has two parts: the homogeneous solution  and the particular solution  . The homogeneous solution is found using the characteristic equation, while the particular solution is constructed by (1) selecting a form similar to the forcing function, , and (2) determining the coefficients of that form.  In this section, we focus on selecting a form for . The key idea is to match the structural form of the forcing function , so that when it is substituted into the differential equation, all the resulting terms simplify to .    Selecting Basic Forms  The first step in choosing is recognizing the structure of . Since and its derivatives must eventually simplify to match , should have a similar form. If is a polynomial, exponential, sine, or cosine function, then should be too.   provides a guide for selecting an initial form of based on the type of . In each case, represent the undetermined coefficients we'll solve for later.    forms based on , where are known constants. must be determined. Degree 4+ polynomials follow a similar pattern.        Forcing Function Type,  Particular Solution Form,    1  (constant)     2      3      4      5      6       One important note: even if a term is missing in , you should still include it in if it's part of the general form. For example:   🔸  If , the term is missing, but must still include it: .    🔸  If , then . Even though isn't in , it's needed because its derivative produces cosine terms.    Selecting Basic Forms of   Use to determine the appropriate form of in each case.      Since is exponential, we use : .         This matches . Even though doesn't appear in , we include it: .          is a degree 2 polynomial, so from : .         Move the constant to the right side: . Now is constant ( ): .         4th degree polynomials are not represented in the table, but follow a similar pattern: .        📖❓ Matching single term forcing functions to the particular form   Drag each forcing function on the left to the initial selection of on the right.                                                When Guessing Works (and When It Doesn't)  This method of guessing the particular solution based on the forcing function is very effective. However, it does have its limitations. In particular, it only applies when can be written as a sum or product of:   Polynomials, like  Exponentials, like  Sine and cosine functions, like  Any sum or product of these function types   Functions such as , , or fall outside this category. For those, we'll need a different method entirely. But for the allowed types, this method offers a fast and reliable way to select .   📖❓ When to Guess   Which types of forcing functions are suitable for the Method of Undetermined Coefficients?      Polynomial functions like  Correct! Polynomial functions are suitable for this method.    Exponential functions like  Correct! Exponential functions are also suitable.    Sine or cosine functions like or  Correct! Sine and cosine functions are suitable as well.    Functions like or  Not quite. The method does not apply to logarithmic or tangent functions.       Combining Basic Forms via Addition  If is a sum of different function types, say a polynomial plus an exponential, then should be a sum of the corresponding matching forms.   Initial form of   Use to identify the appropriate form of in each case.      This matches is exponential plus constant, so: .         Both terms have the same argument, , the form is the standard  .         This combines exponential and sine, so we need: .         Cosines with different arguments requires the sum of two forms:         📖❓ Sum of particular solution forms   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Incorrect. Derivatives of this form will not yield a term.     Incorrect. This form is missing a term.     Incorrect. This form is inappropriate since the forcing function is not a product of an exponential function and sine or cosine functions.     Correct! Although the forcing function does not contain a cosine term, the derivatives of cosine terms can still produce sine terms.       Combining Basic Forms via Multiplication  If the forcing function is a product of basic function types—such as a polynomial times an exponential—then the particular solution must also be a product of their matching forms. For example, the differential equation  , has a forcing function that is a quadratic times an exponential, so we start with: .  However, be careful: multiplying by just makes new coefficients:   Since each pair can be merged as single coefficient, we just relabel them:   We'll use this simplification trick often. It keeps the form of clean and will make solving for , and much easier later.   📖❓ Product of particular solution forms   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Correct! The forcing function is the product of a 2nd degree polynomial and an exponential function, so the particular solution should be the product the most general 2nd degree polynomial and an exponential function.     Incorrect. Although this form perfectly matches the form of the forcing function, the solution could potentially include and free terms.     Incorrect. The term also needs a coefficient.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .     Initial form of - Products of Forms   For each of the following forcing functions, select an appropriate initial form of . Simplify by combining or eliminating any redundant constants.      This is an exponential times a cosine: . However, distributing shows that it is redundant and we relabel as: .         The forcing function simplifies: , so:          This is a 3rd degree polynomial times a cosine. So, initially we set: .  Multiplying the polynomial onto sine and cosine, gives us .  Distributing and shows that they are redundant, so we relabel as follows:          Here, both terms involve powers of times trig functions. But we don't need separate guesses—one form covers both:   This form includes the term and also handles automatically.       With these examples and the table as a guide, you're now equipped to handle both additive and multiplicative combinations in . Next, we'll deal with one last wrinkle: what to do if accidentally overlaps with the homogeneous solution .   📖❓ Matching Forcing Function (with Products) to   By dragging from left to right, match the forcing functions to the appropriate initial form of .                                             Modifying Particular Solutions  We now know how to choose a form for based on the structure of , but there's one final complication: If a term in a term in the homogeneous solution , then that term cannot contribute to generating . Instead, it will give zero, since that is what terms in do when substituted into the differential equation.  To fix this, we multiply the overlapping part of by . If there's still overlap, we multiply by again—repeating until shares no like-terms with .  For example, consider: The homogeneous solution and the initial particular solution are: .  Notice that and in contain the like terms: and . This means that plugging into the left side of the equation will simplify to , not , as required.  So we modify by multiplying the conflicting term by :   Now, has no terms in common with , ensuring that they are independent.   Modification Rule for the Particular Solution  If any term in your guess for also appears in , multiply that term by the independent variable . Repeat as needed until all overlapping terms are eliminated.    📖❓ Handling Like Terms   What should you do if contains a term also present in ?     Multiply the term in by the independent variable.    Delete the term from .    Multiply the term in by the independent variable.    Use integration to eliminate the term.     Let's work through some examples where modification is required, and see how this rule plays out.  Modifying the Initial Form of   For each LNCC equation below:  Find the homogeneous solution .  Select the initial form of .  Modify to ensure it has no overlap with .            The characteristic equation is , which has a repeated root: . So, .     The natural guess for to match is .    Since is in , we multiply by :   But, is still in , so we repeat: .              Since the characteristic equation is , the roots are: and .    The guess for is .    Only the and terms conflict. Modify them: .              The characteristic equation , has roots: , leading to .    The initial guess for is .    No modification is needed since doesn't appear in .               The characteristic equation , has the repeated solution , so .    The initial guess for is: .    Multiplying out and helps show that and are conflicting terms. Multiplying all terms by gives the correct form: .          Now that we know how to construct an appropriate and independent form for , the last step is to determine the values of the unknown coefficients.   📖❓ Select the Correct Form of   Consider the linear non-homogeneous constant coefficient equation . Given that the homogeneous solution is , select the form of the particular solution after any necessary modifications.       Incorrect. This would be the correct initial form for the particular solution, but not the final form.      Incorrect. Don't create the particular solution form based on the homogeneous solution.      Incorrect. This form indicates the forcing function contains the product of a first degree polynomial and an exponential function.      Correct! The initial form would be , but a like-term is also in . One multiplication by resolves this.       🤔💭 Reading Questions   🤔💭 Match Forcing Function to Form   Match each forcing function to its correct initial form of .                                   🤔💭 What is the Next Move?   Which statement best describes the next action you should take when the particular solution, , has a like-term with the homogeneous solution, ?     This is normal, move on.  Incorrect. The cannot have terms in common with .    Remove the like-term from .  Incorrect. No terms in should ever be removed.    Multiply the like-term in by .  Correct!    Multiply the like-term in by .  Incorrect. The particular solution should be modified, not the homogeneous solution.      Modify   If an equation has the forcing function and homogeneous solution, , select the correct modified form of ?      Incorrect. The form of should be modified until there are no terms in common with .     Correct! The modified form of is .     Incorrect. The form of should be modified until there are no terms in common with .     Incorrect. The form of should be modified until there are no terms in common with .      🤔💭 Match the Scenario to the Correct Action   The homogeneous solution to the LNCC equation is given by .  On the left side are initial forms for various forcing functions, .  Drag each initial form to its correct modified form on the right.       No modification needed                          🤔💭 REVIEW: Valid Forcing Functions for Undetermined Coefficients   Which of the following are valid types of forcing functions for the Method of Undetermined Coefficients?            "
+},
+{
+  "id": "yp-forms-table",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#yp-forms-table",
+  "type": "Table",
+  "number": "150",
+  "title": "<span class=\"process-math\">\\(y_p\\)<\/span> forms based on <span class=\"process-math\">\\(f(x)\\text{,}\\)<\/span> where <span class=\"process-math\">\\(a, b, c, d, \\alpha, \\beta\\)<\/span> are known constants. <span class=\"process-math\">\\(A, B, C, D\\)<\/span> must be determined. Degree 4+ polynomials follow a similar pattern.",
+  "body": "  forms based on , where are known constants. must be determined. Degree 4+ polynomials follow a similar pattern.        Forcing Function Type,  Particular Solution Form,    1  (constant)     2      3      4      5      6      "
+},
+{
+  "id": "selecting-basic-forms-for-yp-8",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-basic-forms-for-yp-8",
+  "type": "🌌 Example",
+  "number": "151",
+  "title": "Selecting Basic Forms of <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " Selecting Basic Forms of   Use to determine the appropriate form of in each case.      Since is exponential, we use : .         This matches . Even though doesn't appear in , we include it: .          is a degree 2 polynomial, so from : .         Move the constant to the right side: . Now is constant ( ): .         4th degree polynomials are not represented in the table, but follow a similar pattern: .      "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-1",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-1",
+  "type": "Checkpoint",
+  "number": "152",
+  "title": "📖❓  Matching single term forcing functions to the particular form.",
+  "body": " 📖❓ Matching single term forcing functions to the particular form   Drag each forcing function on the left to the initial selection of on the right.                                             "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-2",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-2",
+  "type": "Checkpoint",
+  "number": "153",
+  "title": "📖❓  When to Guess <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " 📖❓ When to Guess   Which types of forcing functions are suitable for the Method of Undetermined Coefficients?      Polynomial functions like  Correct! Polynomial functions are suitable for this method.    Exponential functions like  Correct! Exponential functions are also suitable.    Sine or cosine functions like or  Correct! Sine and cosine functions are suitable as well.    Functions like or  Not quite. The method does not apply to logarithmic or tangent functions.    "
+},
+{
+  "id": "adding-yp-forms-3",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#adding-yp-forms-3",
+  "type": "🌌 Example",
+  "number": "154",
+  "title": "Initial form of <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " Initial form of   Use to identify the appropriate form of in each case.      This matches is exponential plus constant, so: .         Both terms have the same argument, , the form is the standard  .         This combines exponential and sine, so we need: .         Cosines with different arguments requires the sum of two forms:       "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-3",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-3",
+  "type": "Checkpoint",
+  "number": "155",
+  "title": "📖❓  Sum of particular solution forms.",
+  "body": " 📖❓ Sum of particular solution forms   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Incorrect. Derivatives of this form will not yield a term.     Incorrect. This form is missing a term.     Incorrect. This form is inappropriate since the forcing function is not a product of an exponential function and sine or cosine functions.     Correct! Although the forcing function does not contain a cosine term, the derivatives of cosine terms can still produce sine terms.    "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-4",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-4",
+  "type": "Checkpoint",
+  "number": "156",
+  "title": "📖❓  Product of particular solution forms.",
+  "body": " 📖❓ Product of particular solution forms   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Correct! The forcing function is the product of a 2nd degree polynomial and an exponential function, so the particular solution should be the product the most general 2nd degree polynomial and an exponential function.     Incorrect. Although this form perfectly matches the form of the forcing function, the solution could potentially include and free terms.     Incorrect. The term also needs a coefficient.     Incorrect. The extra coefficient is unnecessary, as it can be absorbed into the constants and .    "
+},
+{
+  "id": "product-forms-simplifying-9",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#product-forms-simplifying-9",
+  "type": "🌌 Example",
+  "number": "157",
+  "title": "Initial form of <span class=\"process-math\">\\(y_p\\)<\/span> - Products of Forms.",
+  "body": "Initial form of - Products of Forms   For each of the following forcing functions, select an appropriate initial form of . Simplify by combining or eliminating any redundant constants.      This is an exponential times a cosine: . However, distributing shows that it is redundant and we relabel as: .         The forcing function simplifies: , so:          This is a 3rd degree polynomial times a cosine. So, initially we set: .  Multiplying the polynomial onto sine and cosine, gives us .  Distributing and shows that they are redundant, so we relabel as follows:          Here, both terms involve powers of times trig functions. But we don't need separate guesses—one form covers both:   This form includes the term and also handles automatically.      "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-5",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-5",
+  "type": "Checkpoint",
+  "number": "158",
+  "title": "📖❓  Matching Forcing Function (with Products) to <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " 📖❓ Matching Forcing Function (with Products) to   By dragging from left to right, match the forcing functions to the appropriate initial form of .                                          "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-6",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-6",
+  "type": "Checkpoint",
+  "number": "159",
+  "title": "📖❓  Handling Like Terms.",
+  "body": " 📖❓ Handling Like Terms   What should you do if contains a term also present in ?     Multiply the term in by the independent variable.    Delete the term from .    Multiply the term in by the independent variable.    Use integration to eliminate the term.    "
+},
+{
+  "id": "modifying-yp-11",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#modifying-yp-11",
+  "type": "🌌 Example",
+  "number": "160",
+  "title": "Modifying the Initial Form of <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": "Modifying the Initial Form of   For each LNCC equation below:  Find the homogeneous solution .  Select the initial form of .  Modify to ensure it has no overlap with .            The characteristic equation is , which has a repeated root: . So, .     The natural guess for to match is .    Since is in , we multiply by :   But, is still in , so we repeat: .              Since the characteristic equation is , the roots are: and .    The guess for is .    Only the and terms conflict. Modify them: .              The characteristic equation , has roots: , leading to .    The initial guess for is .    No modification is needed since doesn't appear in .               The characteristic equation , has the repeated solution , so .    The initial guess for is: .    Multiplying out and helps show that and are conflicting terms. Multiplying all terms by gives the correct form: .         "
+},
+{
+  "id": "selecting-the-particular-soln-chkpt-7",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-chkpt-7",
+  "type": "Checkpoint",
+  "number": "161",
+  "title": "📖❓  Select the Correct Form of <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " 📖❓ Select the Correct Form of   Consider the linear non-homogeneous constant coefficient equation . Given that the homogeneous solution is , select the form of the particular solution after any necessary modifications.       Incorrect. This would be the correct initial form for the particular solution, but not the final form.      Incorrect. Don't create the particular solution form based on the homogeneous solution.      Incorrect. This form indicates the forcing function contains the product of a first degree polynomial and an exponential function.      Correct! The initial form would be , but a like-term is also in . One multiplication by resolves this.    "
+},
+{
+  "id": "selecting-the-particular-soln-cyu-bundle",
+  "level": "2",
+  "url": "selecting-the-particular-soln.html#selecting-the-particular-soln-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "162",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Match Forcing Function to Form   Match each forcing function to its correct initial form of .                                   🤔💭 What is the Next Move?   Which statement best describes the next action you should take when the particular solution, , has a like-term with the homogeneous solution, ?     This is normal, move on.  Incorrect. The cannot have terms in common with .    Remove the like-term from .  Incorrect. No terms in should ever be removed.    Multiply the like-term in by .  Correct!    Multiply the like-term in by .  Incorrect. The particular solution should be modified, not the homogeneous solution.      Modify   If an equation has the forcing function and homogeneous solution, , select the correct modified form of ?      Incorrect. The form of should be modified until there are no terms in common with .     Correct! The modified form of is .     Incorrect. The form of should be modified until there are no terms in common with .     Incorrect. The form of should be modified until there are no terms in common with .      🤔💭 Match the Scenario to the Correct Action   The homogeneous solution to the LNCC equation is given by .  On the left side are initial forms for various forcing functions, .  Drag each initial form to its correct modified form on the right.       No modification needed                          🤔💭 REVIEW: Valid Forcing Functions for Undetermined Coefficients   Which of the following are valid types of forcing functions for the Method of Undetermined Coefficients?           "
+},
+{
+  "id": "uc-method",
+  "level": "1",
+  "url": "uc-method.html",
+  "type": "Section",
+  "number": "10.3",
+  "title": "Undetermined Coefficients Method",
+  "body": " Undetermined Coefficients Method   In the last sections, we learned how to choose a form for the particular solution by matching it to the forcing function , and how to modify when it overlaps with the homogeneous solution .  Now, we'll finish the process by finding the exact values of the unknown coefficients in . This final step is called the Method of Undetermined Coefficients , and it uses substitution and simplification to solve for the unknowns.    Determining the Coefficients  With properly chosen and modified, the final step is to determine the values of the unknown coefficients. This step is purely algebraic: we plug into the differential equation, simplify, and match coefficients to solve for the unknowns.  We will walk through this process using a concrete example. To solve we first find by solving the homogeneous equation .  The characteristic equation is which factors as . This gives a repeated root , so   Now, pick to match . Since is a quadratic polynomial, we guess  Since has no terms in common with , no modification is needed.   Substituting and its derivatives, , into the equation and collecting like-terms gives .  Matching the underlined coefficients leads to the following system of equations and solution for , , and :                Therefore, and we can now write the general solution as .  Assuming the forcing function is of the type found in , this process should always lead to a single solution. If not, then double check your work and make sure the form of was selected and modified correctly.   📖❓ Not A Step in Finding   Which of the following is NOT a step in finding the undetermined coefficients of the particular solution?     Applying the initial conditions.  Correct! The initial conditions are used to solve for the unknown constants in the general solution, not the particular solution.    Plugging into the differential equation.  Incorrect. This is the first step in determining the coefficients.    Collecting and matching like-terms.  Incorrect. This is a crucial step for setting up the system of equations used to find the undetermined coefficients: , , ...    Solving a system of equations.  Incorrect. This is the final step in finding the coefficients.       Undetermined Coefficient Method Steps  Let's summarize the entire process of using the Method of Undetermined Coefficients. Your goal is to find the full general solution by first solving the homogeneous equation and then selecting, modifying, and finding .  Undetermined Coefficients  The general solution for the linear nonhomogeneous constant coefficient equation, , is determined from the following steps:    Step 1: Solve the homogeneous equation to get  Find the homogeneous solution by solving the characteristic equation from .    Step 2: Select the form of  Use to select a starting form for based on . The constants , , , ... are the undetermined coefficients .    Step 3: Modify if it conflicts with  Check for conflicting terms already in . If present, multiply these terms by . Repeat until no terms are shared.    Step 4: Find the Undetermined Coefficients of  Substitute and its derivatives into . Simplify and match coefficients of like terms to set up a system of equations. Solving this system gives the coefficients, , , , ....    Step 5: Give the Solution  Write the general solution as and apply any initial conditions, if given.     You'll follow these same five steps for any forcing function that fits the method. Now let's apply this process to some worked examples to see how it all comes together.    📖❓ Not A Step in the Undetermined Coefficient Method   What are the main steps for finding using the method of undetermined coefficients?     Select a form ➜ modify it, if necessary ➜ find its coefficients.  Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.    Select a form ➜ integrate it ➜ find its coefficients.  Incorrect. Integration is not a part of the method of undetermined coefficients.    Select a form ➜ find its coefficients ➜ differentiate it.  Incorrect. The focus is on selecting and solving for , not guessing the homogeneous solution.    Select a form ➜ differentiate it ➜ verify the solution.  Incorrect. Integration is not a step in this method; it's about solving for coefficients of .      📖❓ Final Step of the Method   In the final step of the method, after substituting and simplifying, what do you do next?    Graph and to verify behavior.  Use initial conditions to determine integration constants.  Match coefficients of like terms and solve for unknown constants in .  Integrate to eliminate forcing terms.       Worked Examples  Apply the method of undetermined coefficients to find the general solution of the following linear nonhomogeneous differential equations.   First-Order LNCC with an Initial Condition   Find the general solution of        characteristic equation:     homogeneous solution:        initial :     ➜ No modification needed.     compute :     substitute , :     group powers of :     Match coefficients:                   particular solution:        general solution:     apply :     final solution:        Exponential Forcing Function   Find the general solution of        characteristic equation:       homogeneous solution:        initial :      Since and are like terms, we modify :    modified :        compute , :       substitute , , :     group like terms:       match coefficients:     particular solution:        general solution:        Trigonometric Forcing Function   Find the general solution of        characteristic equation:     homogeneous solution:        initial :      and are not like terms ➜ No modification needed.     compute and :       substitute , :        group like-terms:     Match coefficients:                   particular solution:          Second-Order LNCC with Modification   Find the general solution of        characteristic equation:       homogeneous solution:        initial :      Since and share an term, we modify this term in :    modified :        compute , :       substitute , , :     The terms cancel, but you can group the , , and free terms:       match coefficients:                     particular solution:        general solution:        Forcing Function as a Product   Find the general solution of        characteristic equation:     homogeneous solution:        initial :     ➜ No modification needed.    Note: This part can be a bit intense. The product rule is used multiple times and after each step, we regroup the , , , and terms.   compute and :   substitute , :   group like-terms:     Match coefficients:                     Substituting and into the first two equations gives:                   particular solution:    General solution:     These examples illustrate the systematic nature of this method. No matter how complex the forcing function, the steps remain consistent: identify the homogeneous solution, propose a form for the particular solution, modify it if necessary, compute derivatives, substitute into the differential equation, and match coefficients to solve for unknowns.    🤔💭 Reading Questions   🤔💭 SOV and Nonlinear Equations   The separation of variables method cannot be applied to non-linear differential equations.    Being able to solve non-linear differential equations is one of the strengths of the separation of variables method.     🤔💭 Sort the Steps in Order   CONVERT TO PARSONS.. Suppose you want to use separation of variables method to determine the general solution of the differential equation .  Match the scrambled tasks (on the left) to the task order (on the right) that it should be performed to use this method.    Review the SOV Method .      Equation is 1st-order ✅                                                                        🤔💭 Combining Constants   Which of the following are valid ways to combine constants when finalizing your solution? Select ALL that apply.      where .   Correct, since       where .   Correct, since       where .   Incorrect, you should not combine constants here since .  Your solution should be written as       where .   Incorrect, you should not combine constants here since .  Your solution should be       where .   Incorrect, you should not combine constants here since is not constant. Instead your solution should be left as       where .   Correct, since        "
+},
+{
+  "id": "uc-method-2-2",
+  "level": "2",
+  "url": "uc-method.html#uc-method-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Method of Undetermined Coefficients "
+},
+{
+  "id": "uc-method-chkpt-1",
+  "level": "2",
+  "url": "uc-method.html#uc-method-chkpt-1",
+  "type": "Checkpoint",
+  "number": "163",
+  "title": "📖❓  Not A Step in Finding <span class=\"process-math\">\\(y_p\\)<\/span>.",
+  "body": " 📖❓ Not A Step in Finding   Which of the following is NOT a step in finding the undetermined coefficients of the particular solution?     Applying the initial conditions.  Correct! The initial conditions are used to solve for the unknown constants in the general solution, not the particular solution.    Plugging into the differential equation.  Incorrect. This is the first step in determining the coefficients.    Collecting and matching like-terms.  Incorrect. This is a crucial step for setting up the system of equations used to find the undetermined coefficients: , , ...    Solving a system of equations.  Incorrect. This is the final step in finding the coefficients.    "
+},
+{
+  "id": "uc-method",
+  "level": "2",
+  "url": "uc-method.html#uc-method",
+  "type": "✍🏻 Method",
+  "number": "3",
+  "title": "Undetermined Coefficients.",
+  "body": "Undetermined Coefficients  The general solution for the linear nonhomogeneous constant coefficient equation, , is determined from the following steps:    Step 1: Solve the homogeneous equation to get  Find the homogeneous solution by solving the characteristic equation from .    Step 2: Select the form of  Use to select a starting form for based on . The constants , , , ... are the undetermined coefficients .    Step 3: Modify if it conflicts with  Check for conflicting terms already in . If present, multiply these terms by . Repeat until no terms are shared.    Step 4: Find the Undetermined Coefficients of  Substitute and its derivatives into . Simplify and match coefficients of like terms to set up a system of equations. Solving this system gives the coefficients, , , , ....    Step 5: Give the Solution  Write the general solution as and apply any initial conditions, if given.    "
+},
+{
+  "id": "uc-method-steps-chkpt-bundle",
+  "level": "2",
+  "url": "uc-method.html#uc-method-steps-chkpt-bundle",
+  "type": "Checkpoint",
+  "number": "164",
+  "title": "",
+  "body": "  📖❓ Not A Step in the Undetermined Coefficient Method   What are the main steps for finding using the method of undetermined coefficients?     Select a form ➜ modify it, if necessary ➜ find its coefficients.  Correct! The process involves making an educated guess, substituting it, and solving for unknown coefficients.    Select a form ➜ integrate it ➜ find its coefficients.  Incorrect. Integration is not a part of the method of undetermined coefficients.    Select a form ➜ find its coefficients ➜ differentiate it.  Incorrect. The focus is on selecting and solving for , not guessing the homogeneous solution.    Select a form ➜ differentiate it ➜ verify the solution.  Incorrect. Integration is not a step in this method; it's about solving for coefficients of .      📖❓ Final Step of the Method   In the final step of the method, after substituting and simplifying, what do you do next?    Graph and to verify behavior.  Use initial conditions to determine integration constants.  Match coefficients of like terms and solve for unknown constants in .  Integrate to eliminate forcing terms.    "
+},
+{
+  "id": "uc-method-examples-3",
+  "level": "2",
+  "url": "uc-method.html#uc-method-examples-3",
+  "type": "🌌 Example",
+  "number": "165",
+  "title": "First-Order LNCC with an Initial Condition.",
+  "body": " First-Order LNCC with an Initial Condition   Find the general solution of        characteristic equation:     homogeneous solution:        initial :     ➜ No modification needed.     compute :     substitute , :     group powers of :     Match coefficients:                   particular solution:        general solution:     apply :     final solution:      "
+},
+{
+  "id": "uc-method-examples-4",
+  "level": "2",
+  "url": "uc-method.html#uc-method-examples-4",
+  "type": "🌌 Example",
+  "number": "166",
+  "title": "Exponential Forcing Function.",
+  "body": " Exponential Forcing Function   Find the general solution of        characteristic equation:       homogeneous solution:        initial :      Since and are like terms, we modify :    modified :        compute , :       substitute , , :     group like terms:       match coefficients:     particular solution:        general solution:      "
+},
+{
+  "id": "uc-method-examples-5",
+  "level": "2",
+  "url": "uc-method.html#uc-method-examples-5",
+  "type": "🌌 Example",
+  "number": "167",
+  "title": "Trigonometric Forcing Function.",
+  "body": " Trigonometric Forcing Function   Find the general solution of        characteristic equation:     homogeneous solution:        initial :      and are not like terms ➜ No modification needed.     compute and :       substitute , :        group like-terms:     Match coefficients:                   particular solution:        "
+},
+{
+  "id": "uc-method-examples-6",
+  "level": "2",
+  "url": "uc-method.html#uc-method-examples-6",
+  "type": "🌌 Example",
+  "number": "168",
+  "title": "Second-Order LNCC with <span class=\"process-math\">\\(y_p\\)<\/span> Modification.",
+  "body": " Second-Order LNCC with Modification   Find the general solution of        characteristic equation:       homogeneous solution:        initial :      Since and share an term, we modify this term in :    modified :        compute , :       substitute , , :     The terms cancel, but you can group the , , and free terms:       match coefficients:                     particular solution:        general solution:      "
+},
+{
+  "id": "uc-method-examples-7",
+  "level": "2",
+  "url": "uc-method.html#uc-method-examples-7",
+  "type": "🌌 Example",
+  "number": "169",
+  "title": "Forcing Function as a Product.",
+  "body": " Forcing Function as a Product   Find the general solution of        characteristic equation:     homogeneous solution:        initial :     ➜ No modification needed.    Note: This part can be a bit intense. The product rule is used multiple times and after each step, we regroup the , , , and terms.   compute and :   substitute , :   group like-terms:     Match coefficients:                     Substituting and into the first two equations gives:                   particular solution:    General solution:    "
+},
+{
+  "id": "uc-method-cyu-bundle",
+  "level": "2",
+  "url": "uc-method.html#uc-method-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "170",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 SOV and Nonlinear Equations   The separation of variables method cannot be applied to non-linear differential equations.    Being able to solve non-linear differential equations is one of the strengths of the separation of variables method.     🤔💭 Sort the Steps in Order   CONVERT TO PARSONS.. Suppose you want to use separation of variables method to determine the general solution of the differential equation .  Match the scrambled tasks (on the left) to the task order (on the right) that it should be performed to use this method.    Review the SOV Method .      Equation is 1st-order ✅                                                                        🤔💭 Combining Constants   Which of the following are valid ways to combine constants when finalizing your solution? Select ALL that apply.      where .   Correct, since       where .   Correct, since       where .   Incorrect, you should not combine constants here since .  Your solution should be written as       where .   Incorrect, you should not combine constants here since .  Your solution should be       where .   Incorrect, you should not combine constants here since is not constant. Instead your solution should be left as       where .   Correct, since       "
+},
+{
+  "id": "c8-exercises",
+  "level": "1",
+  "url": "c8-exercises.html",
+  "type": "Section",
+  "number": "10.4",
+  "title": "Chapter 8 Exercises",
+  "body": " Chapter 8 Exercises   ᯓ★❓ Quick-Answer Questions    Multiple-Choice  Modifying the Initial Guess  When solving , the initial guess for is modified to because overlaps with .                 Purpose of the Method   What is the main purpose of the Method of Undetermined Coefficients?    To solve the homogeneous solution directly.  To determine the coefficients in the particular solution .  To find the characteristic equation roots.  To verify initial conditions are satisfied.    When It Works   The Method of Undetermined Coefficients applies when is:    A polynomial, exponential, sine, or cosine function.  A logarithmic function like .  A tangent function like .  A sum or product of polynomials, exponentials, and trig functions.    Choose   Suppose . Which of the following is the correct selection for ?      Incorrect. Remember to consider whether overlaps with any terms in .     Correct! Since is a term in , we need to multiply the particular solution by to ensure independence.     Incorrect. This form is more suited for a polynomial right-hand side like .     Incorrect. A constant form of would only be appropriate if were a constant.     Selecting the particular form   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Correct! Since the forcing function is a 2nd degree polynomial, the particular solution should be the most general 2nd degree polynomial.     Incorrect. The forcing function does not contain an exponential function, so neither should the particular solution.     Incorrect. This form is missing a free term.     Incorrect. While this form technically works, the term is unnecessary and makes the problem more difficult.     Select the correct form   What is the most appropriate form for the particular solution to ?           Correct! The forcing function is a first degree polynomial, so the particular solution should generalize this form as .           Incorrect. The forcing function is a polynomial, not an exponential function.           Incorrect. The forcing function is a polynomial, not a trigonometric function.           Incorrect. The forcing function is not a constant.      Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!     Classifying Practice   Select each classification label that applies to the equation      Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the free term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, all terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.       Short-Answer    Suppose you knew that the final form of the particular solution of an LHCC equation was . Using only this information, list out everything you can deduce about the differential equation.     Why do we modify the particular solution by multiplying it by when solving LNCC equations?  Why do we modify the particular solution by multiplying it by when solving LNCC equations?    We modify by multiplying it by to ensure that the particular solution does not share any terms with the homogeneous solution . This adjustment makes and independent, ensuring that the general solution properly represents the nonhomogeneous term of the differential equation.    In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?  In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?      represents the solution to the homogeneous equation (where the nonhomogeneous term is zero), while represents a particular solution that accounts for the nonhomogeneous term. It is important that they are independent so that their combined terms accurately reflect the behavior of both the homogeneous and nonhomogeneous parts of the original differential equation.      Describe the difference between a homogeneous and a non-homogeneous differential equation.    A differential equation is termed \"homogeneous\" if all the terms of the equation are either derivatives of the unknown function or multiples of the unknown function itself, and the equation can be set equal to zero. In other words, there are no terms in the equation that are solely functions of the independent variable or constants. For example, the equation is homogeneous because all its terms involve or its derivatives and the equation is set equal to zero. A differential equation is termed \"non-homogeneous\" if it contains terms that are solely functions of the independent variable or constants which are not multiples of the unknown function or its derivatives. For example, the equation is non-homogeneous because of the term on the right side, which is not a derivative or multiple of . The distinction between homogeneous and non-homogeneous differential equations is crucial as the methods used to solve them can differ.        🏗️ Warm-ups & Drills   Write Down the Form of    For each forcing function , write down the correct form of the particular solution . Don't solve for coefficients, just show the form of .                            Drop the redundant guess that would duplicate another term. Final form:          Only need the highest-degree polynomial guess:          Ignore the exponential, guess for , then tack the exponential back on:          Product of a quadratic polynomial and cosine. Write separate polynomials for sine and cosine:          Exponential times linear polynomial times cosine. Separate terms for sine and cosine:                            Distinct terms (plain exponential, exponential times trig, and plain trig):       Find the Initial Form of   For each differential equation below, determine the correct form of the particular solution . Do NOT solve for coefficients like .        First, solve the homogeneous equation to find . The characteristic equation is: Since the roots are distinct and real, .  The forcing term is , a constant plus a trig function. Our initial guess is: No duplicates with occur, so this guess stands.             Solve the homogeneous equation . Distinct real roots give .  The forcing term is a 2nd-degree polynomial plus a cosine. Our guess is: None of these terms repeat .             Solve . So, .  The forcing term has and . Our first guess is: Since appears in , we multiply that term by :              Solve . Distinct real roots give .  The forcing term is (a first-degree polynomial) and . Guess: No repeats with .             Solve . Complex roots give .  The forcing term has and . Guess: None of these terms appear in .             Solve . Double root gives .  Forcing term: . First guess: .  Since appears in , modify → . But is also in , so we multiply again: .             Solve . Complex roots give .  Forcing term: . First guess: The and terms duplicate , so we multiply that piece by :              Particular Solution   In these exercises, go one step beyond identifying the form of and actually solve for the coefficients and write down a particular solution.  Remember:  Find first, to identify duplicates.  Guess based on the forcing term.  Modify if there's overlap with .  Plug into the DE, solve for the coefficients, and write the final .         First solve the homogeneous equation . Thus, .  The forcing term is . Guess .  Substitute into the DE: Matching coefficients gives .  Therefore:         The homogeneous equation is the same as above: .  Since the forcing term is , try .  Differentiate and substitute into the DE, collecting coefficients of and . Solve for and . The system yields:   Thus:         Again, .  The forcing term is a cubic polynomial. Guess: .  Differentiate, substitute into the DE, and match coefficients. Solving yields: .  So:         The homogeneous solution is .  A naive guess would be , but already appears in .  Modify guess to .  Substitute into the DE, solve for , and find .  Therefore:        ✍🏻 Solve the Differential Equations   General Solutions – Method of Undetermined Coefficients   Find the general solution to each differential equation using the five-step Method of Undetermined Coefficients:   Find the homogeneous solution .  Guess a form for based on the forcing function.  Modify if it overlaps with .  Substitute into the DE and solve for coefficients.  Write the general solution .       Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is a polynomial of degree 2. Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE:  Matching coefficients: , , . So . Step 5. Write the general solution:        Step 1: Since the right-hand side is a polynomial of degree 1, we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Collect like-terms and solve for and :   Step 5: Write the particular solution: .          Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Because appears in , multiply by : .  Step 4. Substitute into the DE:  Plugging in and matching coefficients gives: , , . Step 5. Write the general solution:            Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE:  Matching coefficients from the DE gives and . Step 5. Write the general solution:            Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Because appears in , multiply by , then check again. . Still overlap (the term is also in ), so multiply by another : .  Step 4. Substitute into the DE, collect terms, and match coefficients:  Solve: , , . So . Step 5. Write the general solution:            Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Both and appear in , so multiply those terms by : .  Step 4. Substitute into the DE, collect terms, and match coefficients:  So . Step 5. Write the general solution:            Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. No overlap with , so no modification is needed.  Step 4. Substitute into the DE:  So . Step 5. General solution:            Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is a degree‑2 polynomial. Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE and match coefficients:  Compare coefficients: , , . So . Step 5. General solution:            Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. No overlap with since is not in .  Step 4. Substitute into the DE:  Collect like terms, match coefficients, and solve to find: , . So . Step 5. General solution:            Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. Both and appear in , so multiply guess by : .  Step 4. Substitute into the DE and match coefficients to find: , .  Step 5. General solution:            Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. Because appears in , multiply that term by : .  Step 4. Substitute into the DE, collect terms, and solve for coefficients: , , .  Step 5. General solution:            Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is a combination:  (poly × exponential)  (trig)  (poly × trig)  We guess each piece separately and combine: Then form .  Step 3. Adjustments already applied: term multiplied by to avoid overlap.  Step 4. Substitute into the DE. Match coefficients for each independent function:  From , solve for .  From and , solve for .  (Algebra omitted for brevity here but systematically done.)  Step 5. General solution:      (Coefficients determined by straightforward substitution.)          Step 1. Homogeneous equation: . So .  Step 2. Forcing has two pieces:  → guess  → guess    Step 3. No overlap with because those terms include or polynomials in front.  Step 4. Substitute all into the DE, match coefficients for each independent function, and solve for .  Step 5. General solution:            Step 1. Homogeneous equation: . So .  Step 2. Forcing has two pieces, same type as previous problem. Guess terms similar to uc-gen-12 but multiply by if overlap occurs:   Step 3. Adjustment made for overlap: multiplied terms by .  Step 4. Substitute and match coefficients for all six unknowns.  Step 5. General solution:            Step 1. Solve homogeneous equation : So .  Step 2. Forcing function is . Guess because of double overlap (every term has ).  Step 3. Multiplied guess by (since and are in ).  Step 4. Substitute, match coefficients for , , and , and solve for .  Step 5. General solution:         Initial Value Problems – Easy to Moderate   These IVPs involve either first-order linear DEs or simpler second-order equations with single forcing terms. Follow the UC workflow:   Find (the homogeneous solution).  Guess (the particular solution).  Adjust if it overlaps with .  Substitute and solve for coefficients.  Write .  Apply initial condition(s) to find the specific solution.       Step 1. Homogeneous: .  Step 2. Forcing is constant 6 → guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Use : . .        Step 1. Homog: .  Step 2. Guess (poly deg 2).  Step 3. No overlap.  Step 4. Sub in: match coefficients → , , .  Step 5. General: .  Step 6. Use : . .        Step 1. Rewrite: , homog: .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply : . .        Step 1. Homog: . .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply ICs: So .       Initial Value Problems – Advanced   These IVPs involve second-order DEs with multi-term forcing functions (polynomials, exponentials, trig). They require careful handling of overlaps and sometimes multiple adjustments to .      Step 1. Homog: .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply ICs: Solve → . .         Will involve guessing a composite = (At+B) + C t e^{3t} + D t e^{-2t}. (Detailed algebra mirrors earlier UC workflow.)            Harder forcing combo. Guess: Steps follow the same UC workflow; coefficients solved systematically.           "
+},
+{
+  "id": "c8-quick-answer-mc",
+  "level": "2",
+  "url": "c8-quick-answer.html#c8-quick-answer-mc",
+  "type": "Reading Question",
+  "number": "10.4.1",
+  "title": "Multiple-Choice.",
+  "body": " Multiple-Choice  Modifying the Initial Guess  When solving , the initial guess for is modified to because overlaps with .                 Purpose of the Method   What is the main purpose of the Method of Undetermined Coefficients?    To solve the homogeneous solution directly.  To determine the coefficients in the particular solution .  To find the characteristic equation roots.  To verify initial conditions are satisfied.    When It Works   The Method of Undetermined Coefficients applies when is:    A polynomial, exponential, sine, or cosine function.  A logarithmic function like .  A tangent function like .  A sum or product of polynomials, exponentials, and trig functions.    Choose   Suppose . Which of the following is the correct selection for ?      Incorrect. Remember to consider whether overlaps with any terms in .     Correct! Since is a term in , we need to multiply the particular solution by to ensure independence.     Incorrect. This form is more suited for a polynomial right-hand side like .     Incorrect. A constant form of would only be appropriate if were a constant.     Selecting the particular form   Select the initial form of the particular solution for an LNCC equation with forcing function: .      Correct! Since the forcing function is a 2nd degree polynomial, the particular solution should be the most general 2nd degree polynomial.     Incorrect. The forcing function does not contain an exponential function, so neither should the particular solution.     Incorrect. This form is missing a free term.     Incorrect. While this form technically works, the term is unnecessary and makes the problem more difficult.     Select the correct form   What is the most appropriate form for the particular solution to ?           Correct! The forcing function is a first degree polynomial, so the particular solution should generalize this form as .           Incorrect. The forcing function is a polynomial, not an exponential function.           Incorrect. The forcing function is a polynomial, not a trigonometric function.           Incorrect. The forcing function is not a constant.      Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, each of the terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Correct!     Classifying Practice   Select each classification label that applies to the equation      Linear  Incorrect, is a nonlinear term.    Homogeneous  Technically, only linear equations can be labeled as homogeneous or not. Since the equation is nonlinear, we do not select it.    Constant Coefficients  Technically, only linear equations can be labeled as having constant coefficients or not. Since the equation is nonlinear, we do not select it.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, both terms are linear.    Homogeneous  Incorrect, the free term, , is non-zero.    Constant Coefficients  Correct, each coefficient is constant.    LHCC  Incorrect.     Classifying Practice   Select each classification label that applies to the equation      Linear  Correct, all terms are linear.    Homogeneous  Correct, the free term is zero.    Constant Coefficients  Incorrect, the term coefficient, , is not constant.    LHCC  Incorrect.     "
+},
+{
+  "id": "c8-quick-answer-sa",
+  "level": "2",
+  "url": "c8-quick-answer.html#c8-quick-answer-sa",
+  "type": "Reading Question",
+  "number": "10.4.2",
+  "title": "Short-Answer.",
+  "body": " Short-Answer    Suppose you knew that the final form of the particular solution of an LHCC equation was . Using only this information, list out everything you can deduce about the differential equation.     Why do we modify the particular solution by multiplying it by when solving LNCC equations?  Why do we modify the particular solution by multiplying it by when solving LNCC equations?    We modify by multiplying it by to ensure that the particular solution does not share any terms with the homogeneous solution . This adjustment makes and independent, ensuring that the general solution properly represents the nonhomogeneous term of the differential equation.    In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?  In the general solution of an LNCC equation, what roles do and play, and why is it important that they are independent?      represents the solution to the homogeneous equation (where the nonhomogeneous term is zero), while represents a particular solution that accounts for the nonhomogeneous term. It is important that they are independent so that their combined terms accurately reflect the behavior of both the homogeneous and nonhomogeneous parts of the original differential equation.      Describe the difference between a homogeneous and a non-homogeneous differential equation.    A differential equation is termed \"homogeneous\" if all the terms of the equation are either derivatives of the unknown function or multiples of the unknown function itself, and the equation can be set equal to zero. In other words, there are no terms in the equation that are solely functions of the independent variable or constants. For example, the equation is homogeneous because all its terms involve or its derivatives and the equation is set equal to zero. A differential equation is termed \"non-homogeneous\" if it contains terms that are solely functions of the independent variable or constants which are not multiples of the unknown function or its derivatives. For example, the equation is non-homogeneous because of the term on the right side, which is not a derivative or multiple of . The distinction between homogeneous and non-homogeneous differential equations is crucial as the methods used to solve them can differ.    "
+},
+{
+  "id": "c8-exercises-3-2-3",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-3",
+  "type": "Exercise",
+  "number": "10.4.1",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c8-exercises-3-2-4",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-4",
+  "type": "Exercise",
+  "number": "10.4.2",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c8-exercises-3-2-5",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-5",
+  "type": "Exercise",
+  "number": "10.4.3",
+  "title": "",
+  "body": "     Drop the redundant guess that would duplicate another term. Final form:    "
+},
+{
+  "id": "c8-exercises-3-2-6",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-6",
+  "type": "Exercise",
+  "number": "10.4.4",
+  "title": "",
+  "body": "     Only need the highest-degree polynomial guess:    "
+},
+{
+  "id": "c8-exercises-3-2-7",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-7",
+  "type": "Exercise",
+  "number": "10.4.5",
+  "title": "",
+  "body": "     Ignore the exponential, guess for , then tack the exponential back on:    "
+},
+{
+  "id": "c8-exercises-3-2-8",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-8",
+  "type": "Exercise",
+  "number": "10.4.6",
+  "title": "",
+  "body": "     Product of a quadratic polynomial and cosine. Write separate polynomials for sine and cosine:    "
+},
+{
+  "id": "c8-exercises-3-2-9",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-9",
+  "type": "Exercise",
+  "number": "10.4.7",
+  "title": "",
+  "body": "     Exponential times linear polynomial times cosine. Separate terms for sine and cosine:    "
+},
+{
+  "id": "c8-exercises-3-2-10",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-10",
+  "type": "Exercise",
+  "number": "10.4.8",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c8-exercises-3-2-11",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-11",
+  "type": "Exercise",
+  "number": "10.4.9",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c8-exercises-3-2-12",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-2-12",
+  "type": "Exercise",
+  "number": "10.4.10",
+  "title": "",
+  "body": "   Distinct terms (plain exponential, exponential times trig, and plain trig):    "
+},
+{
+  "id": "c8-exercises-3-3-3",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-3",
+  "type": "Exercise",
+  "number": "10.4.11",
+  "title": "",
+  "body": "   First, solve the homogeneous equation to find . The characteristic equation is: Since the roots are distinct and real, .  The forcing term is , a constant plus a trig function. Our initial guess is: No duplicates with occur, so this guess stands.      "
+},
+{
+  "id": "c8-exercises-3-3-4",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-4",
+  "type": "Exercise",
+  "number": "10.4.12",
+  "title": "",
+  "body": "     Solve the homogeneous equation . Distinct real roots give .  The forcing term is a 2nd-degree polynomial plus a cosine. Our guess is: None of these terms repeat .      "
+},
+{
+  "id": "c8-exercises-3-3-5",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-5",
+  "type": "Exercise",
+  "number": "10.4.13",
+  "title": "",
+  "body": "     Solve . So, .  The forcing term has and . Our first guess is: Since appears in , we multiply that term by :       "
+},
+{
+  "id": "c8-exercises-3-3-6",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-6",
+  "type": "Exercise",
+  "number": "10.4.14",
+  "title": "",
+  "body": "     Solve . Distinct real roots give .  The forcing term is (a first-degree polynomial) and . Guess: No repeats with .      "
+},
+{
+  "id": "c8-exercises-3-3-7",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-7",
+  "type": "Exercise",
+  "number": "10.4.15",
+  "title": "",
+  "body": "     Solve . Complex roots give .  The forcing term has and . Guess: None of these terms appear in .      "
+},
+{
+  "id": "c8-exercises-3-3-8",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-8",
+  "type": "Exercise",
+  "number": "10.4.16",
+  "title": "",
+  "body": "     Solve . Double root gives .  Forcing term: . First guess: .  Since appears in , modify → . But is also in , so we multiply again: .      "
+},
+{
+  "id": "c8-exercises-3-3-9",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-9",
+  "type": "Exercise",
+  "number": "10.4.17",
+  "title": "",
+  "body": "     Solve . Complex roots give .  Forcing term: . First guess: The and terms duplicate , so we multiply that piece by :       "
+},
+{
+  "id": "c8-exercises-3-3-10",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-3-10",
+  "type": "Exercise",
+  "number": "10.4.18",
+  "title": "",
+  "body": "   "
+},
+{
+  "id": "c8-exercises-3-4-3",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-4-3",
+  "type": "Exercise",
+  "number": "10.4.19",
+  "title": "",
+  "body": "   First solve the homogeneous equation . Thus, .  The forcing term is . Guess .  Substitute into the DE: Matching coefficients gives .  Therefore:    "
+},
+{
+  "id": "c8-exercises-3-4-4",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-4-4",
+  "type": "Exercise",
+  "number": "10.4.20",
+  "title": "",
+  "body": "   The homogeneous equation is the same as above: .  Since the forcing term is , try .  Differentiate and substitute into the DE, collecting coefficients of and . Solve for and . The system yields:   Thus:    "
+},
+{
+  "id": "c8-exercises-3-4-5",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-4-5",
+  "type": "Exercise",
+  "number": "10.4.21",
+  "title": "",
+  "body": "   Again, .  The forcing term is a cubic polynomial. Guess: .  Differentiate, substitute into the DE, and match coefficients. Solving yields: .  So:    "
+},
+{
+  "id": "c8-exercises-3-4-6",
+  "level": "2",
+  "url": "c8-exercises-3.html#c8-exercises-3-4-6",
+  "type": "Exercise",
+  "number": "10.4.22",
+  "title": "",
+  "body": "   The homogeneous solution is .  A naive guess would be , but already appears in .  Modify guess to .  Substitute into the DE, solve for , and find .  Therefore:    "
+},
+{
+  "id": "uc-gen-1",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-1",
+  "type": "Exercise",
+  "number": "10.4.1",
+  "title": "",
+  "body": "   Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is a polynomial of degree 2. Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE:  Matching coefficients: , , . So . Step 5. Write the general solution:    "
+},
+{
+  "id": "uc-gen-2",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-2",
+  "type": "Exercise",
+  "number": "10.4.2",
+  "title": "",
+  "body": "   Step 1: Since the right-hand side is a polynomial of degree 1, we guess: .  Step 2: Differentiate the guessed solution:   Step 3: Substitute into the original equation:   Step 4: Collect like-terms and solve for and :   Step 5: Write the particular solution: .    "
+},
+{
+  "id": "uc-gen-3",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-3",
+  "type": "Exercise",
+  "number": "10.4.3",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Because appears in , multiply by : .  Step 4. Substitute into the DE:  Plugging in and matching coefficients gives: , , . Step 5. Write the general solution:      "
+},
+{
+  "id": "uc-gen-4",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-4",
+  "type": "Exercise",
+  "number": "10.4.4",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE:  Matching coefficients from the DE gives and . Step 5. Write the general solution:      "
+},
+{
+  "id": "uc-gen-5",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-5",
+  "type": "Exercise",
+  "number": "10.4.5",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Because appears in , multiply by , then check again. . Still overlap (the term is also in ), so multiply by another : .  Step 4. Substitute into the DE, collect terms, and match coefficients:  Solve: , , . So . Step 5. Write the general solution:      "
+},
+{
+  "id": "uc-gen-6",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-6",
+  "type": "Exercise",
+  "number": "10.4.6",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is . Guess .  Step 3. Both and appear in , so multiply those terms by : .  Step 4. Substitute into the DE, collect terms, and match coefficients:  So . Step 5. Write the general solution:      "
+},
+{
+  "id": "uc-gen-7",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-7",
+  "type": "Exercise",
+  "number": "10.4.7",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. No overlap with , so no modification is needed.  Step 4. Substitute into the DE:  So . Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-8",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-8",
+  "type": "Exercise",
+  "number": "10.4.8",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is a degree‑2 polynomial. Guess .  Step 3. No overlap with , so no modification needed.  Step 4. Substitute into the DE and match coefficients:  Compare coefficients: , , . So . Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-9",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-9",
+  "type": "Exercise",
+  "number": "10.4.9",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. No overlap with since is not in .  Step 4. Substitute into the DE:  Collect like terms, match coefficients, and solve to find: , . So . Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-10",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-10",
+  "type": "Exercise",
+  "number": "10.4.10",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. Both and appear in , so multiply guess by : .  Step 4. Substitute into the DE and match coefficients to find: , .  Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-11",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-11",
+  "type": "Exercise",
+  "number": "10.4.11",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. Forcing function is . Guess .  Step 3. Because appears in , multiply that term by : .  Step 4. Substitute into the DE, collect terms, and solve for coefficients: , , .  Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-12",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-12",
+  "type": "Exercise",
+  "number": "10.4.12",
+  "title": "",
+  "body": "     Step 1. Solve the homogeneous equation : So .  Step 2. The forcing function is a combination:  (poly × exponential)  (trig)  (poly × trig)  We guess each piece separately and combine: Then form .  Step 3. Adjustments already applied: term multiplied by to avoid overlap.  Step 4. Substitute into the DE. Match coefficients for each independent function:  From , solve for .  From and , solve for .  (Algebra omitted for brevity here but systematically done.)  Step 5. General solution:      (Coefficients determined by straightforward substitution.)    "
+},
+{
+  "id": "uc-gen-13",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-13",
+  "type": "Exercise",
+  "number": "10.4.13",
+  "title": "",
+  "body": "     Step 1. Homogeneous equation: . So .  Step 2. Forcing has two pieces:  → guess  → guess    Step 3. No overlap with because those terms include or polynomials in front.  Step 4. Substitute all into the DE, match coefficients for each independent function, and solve for .  Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-14",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-14",
+  "type": "Exercise",
+  "number": "10.4.14",
+  "title": "",
+  "body": "     Step 1. Homogeneous equation: . So .  Step 2. Forcing has two pieces, same type as previous problem. Guess terms similar to uc-gen-12 but multiply by if overlap occurs:   Step 3. Adjustment made for overlap: multiplied terms by .  Step 4. Substitute and match coefficients for all six unknowns.  Step 5. General solution:      "
+},
+{
+  "id": "uc-gen-15",
+  "level": "2",
+  "url": "c8-exercises-4.html#uc-gen-15",
+  "type": "Exercise",
+  "number": "10.4.15",
+  "title": "",
+  "body": "     Step 1. Solve homogeneous equation : So .  Step 2. Forcing function is . Guess because of double overlap (every term has ).  Step 3. Multiplied guess by (since and are in ).  Step 4. Substitute, match coefficients for , , and , and solve for .  Step 5. General solution:      "
+},
+{
+  "id": "c8-ivp-1",
+  "level": "2",
+  "url": "c8-exercises-4.html#c8-ivp-1",
+  "type": "Exercise",
+  "number": "10.4.16",
+  "title": "",
+  "body": "   Step 1. Homogeneous: .  Step 2. Forcing is constant 6 → guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Use : . .    "
+},
+{
+  "id": "c8-ivp-2",
+  "level": "2",
+  "url": "c8-exercises-4.html#c8-ivp-2",
+  "type": "Exercise",
+  "number": "10.4.17",
+  "title": "",
+  "body": "   Step 1. Homog: .  Step 2. Guess (poly deg 2).  Step 3. No overlap.  Step 4. Sub in: match coefficients → , , .  Step 5. General: .  Step 6. Use : . .    "
+},
+{
+  "id": "c8-ivp-3",
+  "level": "2",
+  "url": "c8-exercises-4.html#c8-ivp-3",
+  "type": "Exercise",
+  "number": "10.4.18",
+  "title": "",
+  "body": "   Step 1. Rewrite: , homog: .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply : . .    "
+},
+{
+  "id": "c8-ivp-4",
+  "level": "2",
+  "url": "c8-exercises-4.html#c8-ivp-4",
+  "type": "Exercise",
+  "number": "10.4.19",
+  "title": "",
+  "body": "   Step 1. Homog: . .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply ICs: So .    "
+},
+{
+  "id": "ivp-5",
+  "level": "2",
+  "url": "c8-exercises-4.html#ivp-5",
+  "type": "Exercise",
+  "number": "10.4.20",
+  "title": "",
+  "body": "   Step 1. Homog: .  Step 2. Guess .  Step 3. No overlap.  Step 4. Substitute: .  Step 5. General: .  Step 6. Apply ICs: Solve → . .    "
+},
+{
+  "id": "ivp-6",
+  "level": "2",
+  "url": "c8-exercises-4.html#ivp-6",
+  "type": "Exercise",
+  "number": "10.4.21",
+  "title": "",
+  "body": "    Will involve guessing a composite = (At+B) + C t e^{3t} + D t e^{-2t}. (Detailed algebra mirrors earlier UC workflow.)        "
+},
+{
+  "id": "ivp-7",
+  "level": "2",
+  "url": "c8-exercises-4.html#ivp-7",
+  "type": "Exercise",
+  "number": "10.4.22",
+  "title": "",
+  "body": "   Harder forcing combo. Guess: Steps follow the same UC workflow; coefficients solved systematically.        "
+},
+{
+  "id": "lt-derivative-transfer",
+  "level": "1",
+  "url": "lt-derivative-transfer.html",
+  "type": "Section",
+  "number": "11.1",
+  "title": "Derivative Transfer via Integration by Parts",
+  "body": " Derivative Transfer via Integration by Parts   Before we apply the Laplace transform to solve differential equations, we need to understand its foundational mechanism: transferring derivatives within an integral. This section begins with a quick refresher on integration by parts (IBP), emphasizing how derivatives applied to one function can be shifted to another. This transfer process is the key that unlocks the Laplace transform method.    Differentiation and Integration Essentials   Let's quickly review two essential tools: how exponentials behave under differentiation, and the integration by parts formula we will use throughout this chapter.    📖❓ Exponential Derivatives   Match each exponential function with its derivative with respect to . Assume is constant.                           📖❓ Integration by Parts   Click on the correct integration by parts formula.                        Review of Integration by Parts (IBP)  Integration by parts is a core calculus technique that allows us to transfer derivatives from one function to another inside an integral. Its most common form is: .  When and are functions of , we get a version of IBP which makes the transfer of derivatives more clear:   This simple idea of shifting derivatives is the basis for the Laplace transform method. We'll see it in action when one of the functions is .   📖❓ Derivative Transfer Technique   Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?     Chain Rule   Incorrect. The chain rule is used for function compositions, not transferring derivatives within an integral.     L'Hôpital's Rule   Incorrect. L'Hôpital's Rule helps evaluate indeterminate limits, not manipulate derivatives inside integrals.     Integration by Parts   Correct! Integration by parts is the key tool that shifts derivatives between functions inside integrals.     Implicit Differentiation   Incorrect. Implicit differentiation helps with equations where the dependent variable isn't isolated.        Using Exponentials to Transfer Derivatives   👀 Review: Derivative of   Let be a constant. Which function is equal to the derivative ?       Correct! The derivative of with respect to is by the chain rule.       Incorrect. You're missing the from the chain rule.       Incorrect. The sign should be negative because the exponent is .       Incorrect. This form appears when integrating, not differentiating. Try applying the chain rule.      Let's now see why exponentials make this derivative transfer especially useful. Suppose we choose and . Differentiating gives and . Applying integration by parts yields:   Notice the key point: the derivative on has been completely removed. Instead, we get two terms: a boundary term and a new integral without .  This trade is usually worth it since in the context of Laplace transforms, the term will often vanish and is the given initial condition.    🤔💭 Derivative Transfer Reading Questions   📖❓ Key Concepts Behind Laplace Transforms   Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?     Chain Rule   Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.     Product Rule   No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.     Integration by Parts   Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.     Properties of Exponential Functions   Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.       📖❓ IBP on   Select the result of applying integration by parts to .   Don't think of this as a Calculus exercise. Instead, try to think about transferring derivatives.        Incorrect. A correct application of integration by parts must include the right choice of and . Try again.       Incorrect. Be sure you're transferring the derivative and integrating the right part.       Incorrect. This result skips important parts of the integration by parts formula.       Correct! Integration by parts with and gives this result.       "
+},
+{
+  "id": "lt-derivative-transfer-prereading-questions-bundle",
+  "level": "2",
+  "url": "lt-derivative-transfer.html#lt-derivative-transfer-prereading-questions-bundle",
+  "type": "Checkpoint",
+  "number": "171",
+  "title": "Differentiation and Integration Essentials.",
+  "body": " Differentiation and Integration Essentials   Let's quickly review two essential tools: how exponentials behave under differentiation, and the integration by parts formula we will use throughout this chapter.    📖❓ Exponential Derivatives   Match each exponential function with its derivative with respect to . Assume is constant.                           📖❓ Integration by Parts   Click on the correct integration by parts formula.                      "
+},
+{
+  "id": "derivative-transfer-chkpt-1",
+  "level": "2",
+  "url": "lt-derivative-transfer.html#derivative-transfer-chkpt-1",
+  "type": "Checkpoint",
+  "number": "172",
+  "title": "📖❓  Derivative Transfer Technique.",
+  "body": " 📖❓ Derivative Transfer Technique   Which concept from calculus allows you to transfer the derivative of one function to another inside an integral?     Chain Rule   Incorrect. The chain rule is used for function compositions, not transferring derivatives within an integral.     L'Hôpital's Rule   Incorrect. L'Hôpital's Rule helps evaluate indeterminate limits, not manipulate derivatives inside integrals.     Integration by Parts   Correct! Integration by parts is the key tool that shifts derivatives between functions inside integrals.     Implicit Differentiation   Incorrect. Implicit differentiation helps with equations where the dependent variable isn't isolated.     "
+},
+{
+  "id": "p4-c1-s1-1-rq3",
+  "level": "2",
+  "url": "lt-derivative-transfer.html#p4-c1-s1-1-rq3",
+  "type": "Checkpoint",
+  "number": "173",
+  "title": "👀 Review: Derivative of <span class=\"process-math\">\\(e^{-st}\\)<\/span>.",
+  "body": " 👀 Review: Derivative of   Let be a constant. Which function is equal to the derivative ?       Correct! The derivative of with respect to is by the chain rule.       Incorrect. You're missing the from the chain rule.       Incorrect. The sign should be negative because the exponent is .       Incorrect. This form appears when integrating, not differentiating. Try applying the chain rule.     "
+},
+{
+  "id": "lt-derivative-transfer-cyu-bundle",
+  "level": "2",
+  "url": "lt-derivative-transfer.html#lt-derivative-transfer-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "174",
+  "title": "🤔💭 Derivative Transfer Reading Questions.",
+  "body": " 🤔💭 Derivative Transfer Reading Questions   📖❓ Key Concepts Behind Laplace Transforms   Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?     Chain Rule   Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.     Product Rule   No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.     Integration by Parts   Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.     Properties of Exponential Functions   Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.       📖❓ IBP on   Select the result of applying integration by parts to .   Don't think of this as a Calculus exercise. Instead, try to think about transferring derivatives.        Incorrect. A correct application of integration by parts must include the right choice of and . Try again.       Incorrect. Be sure you're transferring the derivative and integrating the right part.       Incorrect. This result skips important parts of the integration by parts formula.       Correct! Integration by parts with and gives this result.      "
+},
+{
+  "id": "lt-definition",
+  "level": "1",
+  "url": "lt-definition.html",
+  "type": "Section",
+  "number": "11.2",
+  "title": "Defining the Laplace Transform",
+  "body": " Defining the Laplace Transform   We've seen how integration by parts transfers derivatives from one function to another inside an integral. Now we take the next step: defining a transform that systematically applies this principle.  In this section, we'll see how this transform is constructed and how it converts functions of into functions of . You'll also see how to compute Laplace transforms from the definition.    Why Use the Laplace Transform?  To see where we're headed, imagine you need to solve the differential equation   Suppose you multiply both sides by and integrate with respect to :   The left-hand side contains a derivative inside the integral. From the previous section, you know we can transfer this derivative to the exponential function. Doing so removes the derivative from , essentially allowing you to use algebra to isolate it.  This is the idea behind the Laplace transform and the motivation for its definition.    Definition of the Laplace Transform  Laplace Transform   Given a function defined for , its Laplace transform, denoted , is defined by provided the integral converges. The result is a new function, typically written as a capitalized version of the variable you are transforming. In this case:      📖❓ Spot the Error in the Definition   Click on the incorrect part of the Laplace transform definition.                       Working with Improper Integrals  Notice that the Laplace transform involves an improper integral: the upper limit is . In calculus, we handle this by replacing with a variable , computing the definite integral, and then taking the limit as : .  When calculating Laplace transforms, you first compute the integral with respect to , treating as a constant. Then you compute the limit of the result as approaches .  The Laplace transform exists if this limit produces a finite value. Often, exponential decay from guarantees convergence when is large enough.   📖❓ Convergence Requirement for Laplace Transforms   To compute an improper integral, you write it as a limit of a definite integral. For example, .  Select variables\/constants would you expect to see after computing the integral, , but before taking the limit.       The variable is a constant in so it will also appear in the antiderivative.     The variable gets plugged into after you find the antiderivative.     Since the variable of integration is , you plug the limits of integration, and , into once you have the antiderivative.    (integration constant)  We are computing a definite integral, not an indefinite one.        👀 Quick Review: Exponential Properties  To get through the transform rule derivations, you'll need to be familiar with some key exponential properties that will appear throughtout this chapter.   Exponential Antiderivative  For any constant , we have: . While this can be found by substituting , it is such a common antiderivative that you should just know it without this extra step.    Exponential End Behavior  The end behavior can be seen from the most basic exponential function:             In general, the end behavior depends on whether the power goes to or :      In this section, we will take limits as . Your goal will be to figure out if causes the power to go to or . Only then will you know where goes.   📖❓ Checkpoint: Exponential Properties   Exponential Antiderivative   Evaluate:            Exponential End Behavior   Determine if each limit is -ထ, , or ထ.  Click on one of the three options next to each limit to select your answer.  Assume is a positive constant.                                                                          Figure out the Limits   Give each limit by filling in one of the following: 0 , inf ( ), -inf ( ).    If then  and    Assume that is a positive constant.  If then  and    Assume that is a negative constant.  If then  and         -\\s*inf  .*  Incorrect. Where would times something that goes to must go?      .*  Incorrect. Think about where goes as goes to , then decide where should go.     -\\s*inf  .*  Incorrect. If is positive, then is a negative number times something that goes to .      .*  Incorrect. Think about where goes as goes to , then decide where should go.     inf  .*  Incorrect. If is negative, then is a positive number times something that goes to .     inf  .*  Incorrect. Think about where goes as goes to , then decide where should go.         First Examples of Laplace Transforms  Let's see how the definition works by computing Laplace transforms for simple functions. We'll start with a constant function and a linear function.   First Look at Laplace Transforms  Find the Laplace transform of    (constant function)     By the definition above, we have the improper integral .  Assuming and are constant, we integrate with respect to : .  🔍 Next, we compute the limit of as (with constant):  🔍 Since the limit only controls , we can think of as a number (like ). This means that is also a number that can be pulled out of the limit using the limit property from calculus:     We find the limit using the end behavior of the exponential . There are two possiblities:  is excluded since it would lead to    is positive:    is negative:     Since we only get convergence when is positive, we must require in the Laplace transform of : .         Applying the definition and writing the integral as a limit, we have .   🔍 Computing with integration by parts, gives us  🔍 Choosing integration by parts gives      Next, we compute the limit of as :   🔍 As long as , both and go to zero  🔍 Assuming , the limits are computed by:            where denotes L'Hôpital's Rule was applied to the limit.   Therefore, the Laplace transform of is .       These examples show the typical process: set up the improper integral, compute it as a definite integral, then take the limit as . You'll see how emerges naturally from this process.  In upcoming sections, we'll build a library of Laplace transforms for the most common functions and learn properties that make these computations even faster.   "
+},
+{
+  "id": "laplace-transform-definition",
+  "level": "2",
+  "url": "lt-definition.html#laplace-transform-definition",
+  "type": "📙 Definition",
+  "number": "175",
+  "title": "Laplace Transform.",
+  "body": "Laplace Transform   Given a function defined for , its Laplace transform, denoted , is defined by provided the integral converges. The result is a new function, typically written as a capitalized version of the variable you are transforming. In this case:    "
+},
+{
+  "id": "lt-definition-chkpt-1",
+  "level": "2",
+  "url": "lt-definition.html#lt-definition-chkpt-1",
+  "type": "Checkpoint",
+  "number": "176",
+  "title": "📖❓  Spot the Error in the Definition.",
+  "body": " 📖❓ Spot the Error in the Definition   Click on the incorrect part of the Laplace transform definition.                     "
+},
+{
+  "id": "lt-definition-chkpt-2",
+  "level": "2",
+  "url": "lt-definition.html#lt-definition-chkpt-2",
+  "type": "Checkpoint",
+  "number": "177",
+  "title": "📖❓  Convergence Requirement for Laplace Transforms.",
+  "body": " 📖❓ Convergence Requirement for Laplace Transforms   To compute an improper integral, you write it as a limit of a definite integral. For example, .  Select variables\/constants would you expect to see after computing the integral, , but before taking the limit.       The variable is a constant in so it will also appear in the antiderivative.     The variable gets plugged into after you find the antiderivative.     Since the variable of integration is , you plug the limits of integration, and , into once you have the antiderivative.    (integration constant)  We are computing a definite integral, not an indefinite one.    "
+},
+{
+  "id": "lt-definition-5-5",
+  "level": "2",
+  "url": "lt-definition-5.html#lt-definition-5-5",
+  "type": "Reading Question",
+  "number": "11.2.1",
+  "title": "📖❓  Checkpoint: Exponential Properties.",
+  "body": "📖❓ Checkpoint: Exponential Properties   Exponential Antiderivative   Evaluate:            Exponential End Behavior   Determine if each limit is -ထ, , or ထ.  Click on one of the three options next to each limit to select your answer.  Assume is a positive constant.                                                                          Figure out the Limits   Give each limit by filling in one of the following: 0 , inf ( ), -inf ( ).    If then  and    Assume that is a positive constant.  If then  and    Assume that is a negative constant.  If then  and         -\\s*inf  .*  Incorrect. Where would times something that goes to must go?      .*  Incorrect. Think about where goes as goes to , then decide where should go.     -\\s*inf  .*  Incorrect. If is positive, then is a negative number times something that goes to .      .*  Incorrect. Think about where goes as goes to , then decide where should go.     inf  .*  Incorrect. If is negative, then is a positive number times something that goes to .     inf  .*  Incorrect. Think about where goes as goes to , then decide where should go.      "
+},
+{
+  "id": "laplace-first-examples",
+  "level": "2",
+  "url": "lt-definition.html#laplace-first-examples",
+  "type": "🌌 Example",
+  "number": "178",
+  "title": "First Look at Laplace Transforms.",
+  "body": " First Look at Laplace Transforms  Find the Laplace transform of    (constant function)     By the definition above, we have the improper integral .  Assuming and are constant, we integrate with respect to : .  🔍 Next, we compute the limit of as (with constant):  🔍 Since the limit only controls , we can think of as a number (like ). This means that is also a number that can be pulled out of the limit using the limit property from calculus:     We find the limit using the end behavior of the exponential . There are two possiblities:  is excluded since it would lead to    is positive:    is negative:     Since we only get convergence when is positive, we must require in the Laplace transform of : .         Applying the definition and writing the integral as a limit, we have .   🔍 Computing with integration by parts, gives us  🔍 Choosing integration by parts gives      Next, we compute the limit of as :   🔍 As long as , both and go to zero  🔍 Assuming , the limits are computed by:            where denotes L'Hôpital's Rule was applied to the limit.   Therefore, the Laplace transform of is .      "
+},
+{
+  "id": "common-transforms",
+  "level": "1",
+  "url": "common-transforms.html",
+  "type": "Section",
+  "number": "11.3",
+  "title": "Common Transforms",
+  "body": " Common Transforms   Now that we've defined the Laplace transform, the next step is to build a basic toolkit of common transforms. These are formulas for frequently encountered functions like constants, exponentials, powers of , and trigonometric functions. Learning these transforms will allow you to compute Laplace transforms quickly, without evaluating integrals from scratch each time.  We'll derive these formulas using straightforward examples and then generalize the results. You'll see how the Laplace transform simplifies when applied to each type of function and how certain patterns repeat across different cases.    Exponential Functions Pre-Reading Questions  Exponential Integration Rules   Match each exponential integrand with its antiderivative. Assume is a constant.                      How is Treated During Integration?   In the Laplace transform integral, the variable is treated as a during the integration process.     constant   Correct! When evaluating the integral, is treated as a constant, since the integration is with respect to .     variable   No, even though is a variable overall, it is treated as a constant during the integration.     coefficient   No, while acts like a coefficient in , it's conceptually treated as a constant in the integration.     limit   No, is not a limit of integration, it appears inside the integrand.      Choosing and in   Which functions should you choose as and when applying integration by parts to ?       Correct! This choice simplifies with each integration by parts.       No, this makes integration more difficult. We want to differentiate and integrate the exponential.       These choices are not aligned with the integrand .        Laplace Transform of a Constant  We begin with the simplest case: the constant function . By the definition of the Laplace transform,   This integral converges when and leads to our first Laplace transform rule:    📜 Laplace Transform of     💡 Derivation of L  By definition, we have .  Assuming and are constant, we integrate with respect to : .  Next, we compute the limit of as (with constant):   Taking , must go to if is positive, leaving us with the transform of : .     Although this transform is specific to the contant function , we will see later that it will serve as the transform formula for all constant functions.    Laplace Transform of Exponentials  To get the transform formula for exponentials of the form , where is a constant, we will first find it for :     Using the definition of the Laplace transform we get .   🔍 Focusing just on the integral, we let and apply -substitution:  👉 Using -substitution with the integral is compute as .     Now, we compute the limit of this expression as : .  As before, goes to if the power of the exponential function goes to . This only happens if is negative. That is, or .  So, as long as , then and the transform becomes .    Replacing with an in this solution leads to the general formula:  For any constant , the Laplace transform of is given by:   📜 Laplace Transform of     💡Derivation of L  By definition, .  For the integral, let and apply -substitution:   Now, we compute the limit of this expression as : .  As before, goes to if is negative. That is, or .  So, as long as , then and the transform becomes .      📖❓ Give the Transform         Correct! The Laplace transform of is .       No, this would be the transform of . Double-check the sign of the exponent.       No, should not appear in the final expression, only .       No, the numerator should be 1, not 3. This is not a scaled exponential.        Laplace Transform of Powers of  Now let's consider power functions, where is a non-negative integer.   We already found the transforms for and since    We could find next, but it is more instructive to show following relationship:     Applying the definition and writing the integral as a limit, we have .   Applying integration by parts to shows:   integration by parts gives      Noticing that the improper integral is just , we have , but if , so we have the relationship  Again, if , the limit goes to . So we must have . Applying L'Hôpital's rule twice, we get     .   You can use this work as a template for a general recursive relationship:     Replacing with in the previous solution, we have .   🔍 Apply integration by parts to   integration by parts gives      Noticing that the improper integral is just , we have .   🔍 Since if , we have  The reasoning is the same as in previous solution except we apply L'Hôpital's rule n times. So we have     .   To get the general formula we apply this relationship repeatedly for increasing :   This pattern suggests that, in general, we have  , which can be summarized as follows   📜 Laplace Transform of     💡Derivation of L  Most of the ideas were described above, but the formal derivation follows by induction on , which we will not cover here.       Laplace Transforms of Sine and Cosine  Finally, we derive the Laplace transforms of and .  To make the derivation easier, we will find the transform of first.     Applying the definition and writing the integral as a limit, we have .  Treating constant, we apply integration by parts to as follows:  , Integration by Parts  1st Integration by Parts 2nd Integration by Parts    but this requires a second integration by parts: .  Since the integral reappeared, we actually have . Evaluating the limits of integration and solving for , we find   Finally, the limit of as is the sum of the limits    🔍 Since & if , we can conclude that  👉 If , then we know that as and both and oscillate between and , Thus, their product must approach zero. That is,    .    leads to the following general formula:   📜 Laplace Transform of      💡Derivation of L & L  The derivation of L mirrors the solution to . Just swap with and with .  The derivation of L follows a similar approach to L and is left as exercise for you to try on your own.      "
+},
+{
+  "id": "lt-common-transforms-prereading-questions-bundle",
+  "level": "2",
+  "url": "common-transforms.html#lt-common-transforms-prereading-questions-bundle",
+  "type": "Checkpoint",
+  "number": "179",
+  "title": "Exponential Functions Pre-Reading Questions.",
+  "body": " Exponential Functions Pre-Reading Questions  Exponential Integration Rules   Match each exponential integrand with its antiderivative. Assume is a constant.                      How is Treated During Integration?   In the Laplace transform integral, the variable is treated as a during the integration process.     constant   Correct! When evaluating the integral, is treated as a constant, since the integration is with respect to .     variable   No, even though is a variable overall, it is treated as a constant during the integration.     coefficient   No, while acts like a coefficient in , it's conceptually treated as a constant in the integration.     limit   No, is not a limit of integration, it appears inside the integrand.      Choosing and in   Which functions should you choose as and when applying integration by parts to ?       Correct! This choice simplifies with each integration by parts.       No, this makes integration more difficult. We want to differentiate and integrate the exponential.       These choices are not aligned with the integrand .      "
+},
+{
+  "id": "lap-L1-2-2",
+  "level": "2",
+  "url": "common-transforms.html#lap-L1-2-2",
   "type": "Proof",
   "number": "1",
-  "title": "🫣 Solution to the Riccati Equation.",
-  "body": "🫣 Solution to the Riccati Equation  The solution to is described by where denotes a Bessel function defined as   "
+  "title": "💡 Derivation of L<span class=\"process-math\">\\(_1\\)<\/span>.",
+  "body": " 💡 Derivation of L  By definition, we have .  Assuming and are constant, we integrate with respect to : .  Next, we compute the limit of as (with constant):   Taking , must go to if is positive, leaving us with the transform of : .  "
 },
 {
-  "id": "chpt-homogeneous-eqns",
-  "level": "1",
-  "url": "chpt-homogeneous-eqns.html",
-  "type": "Chapter",
-  "number": "9",
-  "title": "Homogeneous Equations",
-  "body": " Homogeneous Equations   Stepping beyond first-order problems, we turn to equations involving higher derivatives—especially the important class of linear equations with constant coefficients. This part shows why these equations are so useful, and how systematic methods lead to powerful, general solutions.  Up to this point, we've focused mostly on first-order equations. Now it's time to take the next step: equations involving second derivatives and beyond. Among these, one class stands out for its importance and simplicity—the linear homogeneous differential equations with constant coefficients (often shortened to LHCC equations).  In this chapter, we'll pin down exactly what those words mean: linear , homogeneous , and constant coefficient . Then we'll discover why exponential functions are the natural “building blocks” for their solutions, and how the characteristic equation turns a differential equation into an algebra problem we can solve systematically.  By the end, you'll have a clear strategy for solving LHCC equations of any order—a foundation that will carry directly into the next chapter, where we'll look at what happens when these equations are no longer homogeneous.     "
-},
-{
-  "id": "chpt-undetermined-coefficients",
-  "level": "1",
-  "url": "chpt-undetermined-coefficients.html",
-  "type": "Chapter",
-  "number": "10",
-  "title": "Nonhomogeneous Equations",
-  "body": " Nonhomogeneous Equations   In the last chapter, we studied linear homogeneous constant coefficient (LHCC) equations—problems where the right-hand side was always zero. Their solutions came entirely from exponential functions uncovered by the characteristic equation.  Now we take the next step: linear nonhomogeneous constant coefficient (LNCC) equations. These look similar, but with one crucial change—there's a non-zero function on the right-hand side, called the forcing function . This function represents whatever is driving or influencing the system: an external force, an input, a signal, or some other effect.  Solving these equations involves blending two ideas. First, we find the homogeneous solution , which behaves just like the solutions from the previous chapter. Then we construct a particular solution that accounts for the forcing function. Add them together, and you have the general solution .  In this chapter, we'll learn how to recognize that structure and then develop a powerful tool—the Method of Undetermined Coefficients —to systematically build the particular solution. This will open the door to solving a huge range of real-world problems.     "
-},
-{
-  "id": "chpt-laplace-transforms",
-  "level": "1",
-  "url": "chpt-laplace-transforms.html",
-  "type": "Chapter",
-  "number": "11",
-  "title": "Laplace Transforms",
-  "body": " Laplace Transforms   The Laplace transform opens a new path for solving differential equations: it turns calculus problems into algebra problems, handles initial conditions seamlessly, and works beautifully with inputs that turn on, off, or switch over time. This part builds the method step by step.  The Laplace transform is one of the most powerful tools for solving differential equations—and one of the most surprising. Instead of wrestling with derivatives directly, we temporarily move the problem into a new setting called the Laplace domain . In that space, derivatives turn into algebraic terms, and the differential equation becomes something much friendlier: an algebraic equation for a new unknown, .  The real magic is that once we solve for , we can “come back” by applying the inverse Laplace transform and recover , the solution to the original problem. Along the way, initial conditions fold neatly into the process, and tricky features like discontinuous inputs become far easier to handle.  This chapter lays the foundation for everything Laplace-related. We'll define the Laplace transform from scratch, explore why it works, and build a library of key transforms and properties. With those tools in hand, we'll be ready to use the Laplace method to solve differential equations in the chapters ahead.     "
-},
-{
-  "id": "chpt-laplace-transform-method",
-  "level": "1",
-  "url": "chpt-laplace-transform-method.html",
-  "type": "Chapter",
-  "number": "12",
-  "title": "Laplace Transform Method",
-  "body": " Laplace Transform Method   Imagine turning a differential equation into an algebra problem instead. That's exactly what the Laplace transform method does. It unfolds in the same three steps:   Forward transform. Apply the Laplace transform (term-by-term) to a differential equation and get an algebraic equation in .  Algebra in the Laplace domain. Isolate and prepare it for next step.  Backward transform. Apply the inverse Laplace transform to the prepared to turn it back into as the solution to the origianl differential equation.   Throughout the chapter, we will zoom in on each step and guide you with a roadmap like the one below.   Laplace Transform Method Slideshow. Press Next to take a step!             "
-},
-{
-  "id": "lt-slideshow-fig",
+  "id": "exponential-function-transform-3",
   "level": "2",
-  "url": "chpt-laplace-transform-method.html#lt-slideshow-fig",
-  "type": "Figure",
-  "number": "40",
+  "url": "common-transforms.html#exponential-function-transform-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
   "title": "",
-  "body": " Laplace Transform Method Slideshow. Press Next to take a step!         "
+  "body": "power of the exponential function "
 },
 {
-  "id": "chpt-piecewise-forcing-functions",
-  "level": "1",
-  "url": "chpt-piecewise-forcing-functions.html",
-  "type": "Chapter",
-  "number": "13",
-  "title": "Piecewise Forcing Functions",
-  "body": " Piecewise Forcing Functions   Real-world systems rarely behave in one smooth, unbroken motion. Machines switch on, circuits reset, and forces might act for only a moment before stopping. These situations call for piecewise functions —functions defined by different rules over different time intervals.  When piecewise functions appear as the “inputs” or forcing terms in a differential equation, the Laplace transform method is still up to the task—but we need one more tool: the unit step function . This mathematical ON–OFF switch lets us rewrite piecewise functions into a single, clean expression.  In this chapter, you'll learn how to express any piecewise function using unit step notation, how to handle different types of switches (turning on, turning off, or staying on for just a window of time), and how to apply special Laplace transform rules for step functions. By the end, you'll be able to solve differential equations with inputs that start, stop, and change just like the systems they model.     "
+  "id": "lap-L2-2-2",
+  "level": "2",
+  "url": "common-transforms.html#lap-L2-2-2",
+  "type": "Proof",
+  "number": "1",
+  "title": "💡Derivation of L<span class=\"process-math\">\\(_2\\)<\/span>.",
+  "body": " 💡Derivation of L  By definition, .  For the integral, let and apply -substitution:   Now, we compute the limit of this expression as : .  As before, goes to if is negative. That is, or .  So, as long as , then and the transform becomes .  "
 },
 {
-  "id": "chpt-1st-order-linear-systems",
-  "level": "1",
-  "url": "chpt-1st-order-linear-systems.html",
-  "type": "Chapter",
-  "number": "14",
-  "title": "First-Order Linear Systems",
-  "body": " First-Order Linear Systems   Many real-world problems involve several quantities changing together. This part introduces systems of differential equations, starting with linear systems and moving toward nonlinear ones, giving you tools to understand and analyze how multiple variables interact dynamically.  Up to now, we've mostly dealt with differential equations one at a time—one equation, one unknown function. But many real-world situations don't work that way. Populations interact, chemicals react, and mechanical parts move together. To describe these systems, we need more than a single equation—we need a system of differential equations.  A system is simply a collection of differential equations that must be solved together because their unknowns are linked. Some systems are “uncoupled,” meaning each equation can be solved on its own. Others are “coupled,” where the variables feed into each other's equations and evolve together.  In this chapter, we'll build the foundations for working with systems. We'll start by looking at simple cases, then move into coupled systems and see how tools like the phase plane help us visualize the relationships between variables. By the end, you'll have the groundwork needed to understand and solve first-order linear systems.     "
+  "id": "exponential-function-transform-chkpt-1",
+  "level": "2",
+  "url": "common-transforms.html#exponential-function-transform-chkpt-1",
+  "type": "Checkpoint",
+  "number": "180",
+  "title": "📖❓  Give the Transform.",
+  "body": " 📖❓ Give the Transform         Correct! The Laplace transform of is .       No, this would be the transform of . Double-check the sign of the exponent.       No, should not appear in the final expression, only .       No, the numerator should be 1, not 3. This is not a scaled exponential.     "
 },
 {
-  "id": "chpt-nonlinear-systems",
+  "id": "common-t-sqrd-details-2-1",
+  "level": "2",
+  "url": "common-transforms.html#common-t-sqrd-details-2-1",
+  "type": "Proof",
+  "number": "1",
+  "title": "Applying integration by parts to <span class=\"process-math\">\\(I\\)<\/span> shows:.",
+  "body": "Applying integration by parts to shows:   integration by parts gives   "
+},
+{
+  "id": "lt-example-tsqrd-LH-details",
+  "level": "2",
+  "url": "common-transforms.html#lt-example-tsqrd-LH-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "but <span class=\"process-math\">\\(L=0\\)<\/span> if <span class=\"process-math\">\\(s \\gt 0\\text{,}\\)<\/span> so we have the relationship.",
+  "body": "but if , so we have the relationship  Again, if , the limit goes to . So we must have . Applying L'Hôpital's rule twice, we get   "
+},
+{
+  "id": "lt-example-tnth-IVP-details",
+  "level": "2",
+  "url": "common-transforms.html#lt-example-tnth-IVP-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "🔍 Apply integration by parts to <span class=\"process-math\">\\(I\\)<\/span>.",
+  "body": "🔍 Apply integration by parts to   integration by parts gives   "
+},
+{
+  "id": "lt-example-tnth-LH-details",
+  "level": "2",
+  "url": "common-transforms.html#lt-example-tnth-LH-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "🔍 Since <span class=\"process-math\">\\(L=0\\)<\/span> if <span class=\"process-math\">\\(s \\gt 0\\text{,}\\)<\/span> we have.",
+  "body": "🔍 Since if , we have  The reasoning is the same as in previous solution except we apply L'Hôpital's rule n times. So we have   "
+},
+{
+  "id": "lap-L3-2-2",
+  "level": "2",
+  "url": "common-transforms.html#lap-L3-2-2",
+  "type": "Proof",
+  "number": "1",
+  "title": "💡Derivation of L<span class=\"process-math\">\\(_3\\)<\/span>.",
+  "body": " 💡Derivation of L  Most of the ideas were described above, but the formal derivation follows by induction on , which we will not cover here.  "
+},
+{
+  "id": "lt-example-4-details",
+  "level": "2",
+  "url": "common-transforms.html#lt-example-4-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "🔍 Since <span class=\"process-math\">\\(L_1 \\to 0\\)<\/span> &amp; <span class=\"process-math\">\\(L_2 \\to 0\\)<\/span> if <span class=\"process-math\">\\(s \\gt 0\\text{,}\\)<\/span> we can conclude that.",
+  "body": "🔍 Since & if , we can conclude that  👉 If , then we know that as and both and oscillate between and , Thus, their product must approach zero. That is,   "
+},
+{
+  "id": "lap-L4-L5-2-3",
+  "level": "2",
+  "url": "common-transforms.html#lap-L4-L5-2-3",
+  "type": "Proof",
+  "number": "1",
+  "title": "💡Derivation of L<span class=\"process-math\">\\(_4\\)<\/span> &amp; L<span class=\"process-math\">\\(_5\\)<\/span>.",
+  "body": " 💡Derivation of L & L  The derivation of L mirrors the solution to . Just swap with and with .  The derivation of L follows a similar approach to L and is left as exercise for you to try on your own.  "
+},
+{
+  "id": "lt-properties",
   "level": "1",
-  "url": "chpt-nonlinear-systems.html",
-  "type": "Chapter",
-  "number": "15",
+  "url": "lt-properties.html",
+  "type": "Section",
+  "number": "11.4",
+  "title": "Transform Properties and Rules",
+  "body": " Transform Properties and Rules   So far, we've built a small library of Laplace transforms for basic functions. But how do we handle functions that are combinations of these basic functions? This is where the properties of Laplace transform comes in.  In this section, we'll learn how the Laplace transform interacts with sums, products, exponentials, derivatives, and powers of . Each property gives us a shortcut: a way to break down complex functions into simpler parts using the transforms we already know.  These properties will be your main tools for solving differential equations quickly and efficiently.    👀❓ Integral Properties   Select all the true statements related to properties of indefinite integrals.      This is the linearity property of integrals.     Since we are integrating with respect to , we can treat as a constant.     In calculus, you had to integrate this using integration by parts.     Be careful, .      Linearity: Sums and Constant Multiples  Like integrals, the Laplace transform is linear. This means we can take apart sums and pull out constant multiples. In particular, if the Laplace transforms of and exist, then we have the following linearity property:   This property allows us to break complex expressions into smaller pieces, each of which can be transformed using our basic table.   Transforming a Sum of Functions   Compute the Laplace transform .    We apply the linearity property to break the transform down as follows:   Then, using the common transforms, L , L ( ) , and L ( ) , we get   We use , because it guarantees that is also true.      📖❓ Invalid Uses of Linearity   Which of the following are NOT correct applications of the linearity property?       Linearity does not apply to a product of functions.     The linearity property does not extend to powers of functions.     This is a correct use of the linearity property.     This is correct since .      📖❓ Transform of            Correct! Use linearity: transform each term individually and add them together.       No, the transform of includes in the numerator, and the constant should be added.       No, the frequency of is 1, not 7, and the free term transforms to .       No, the free term should yield , and it should be added.         Derivatives of Functions (Derivative Transfer)  One of the most powerful features of the Laplace transform is its ability to transform differential equations into algebraic equations. This means we need a way to remove the derivatives from the unknown in our differential equation. The following property perfectly encapsulates this idea:   In short, this property uses integration by parts to transfer the derivative from to . This results in a factor of (chain rule on ) and as follows:  .  Click here for more details   To show that , we start with the definition of the Laplace transform:   .  Applying integration by parts to once in with integration by parts gives   Recall that a requirement for the Laplace transform of to exist is that .  Thus, setting the limit to zero gives us the desired result .     📖❓ Fill-In the Missing Number   Give the number that goes into the blank.            An integer variable may be initialized to a value.     .*  Try to figure out the function in this case.      Notice that this property is also recursive, meaning it shows us how to handle higher-order derivatives as well. For example,   To summarize, we now have the following new properties:   where .    📖❓ Transform of with an Initial Condition   What is the Laplace transform of given that ?      The Laplace transform of with is .     This is missing the initial condition .     This answer is missing a factor of .     This answer appears to have a sign error.      📖❓ Transform of with Initial Conditions   What is the Laplace transform of given that and ?       The Laplace transform of is .      Careful, use .      No, the subtraction term is , not .       No, the sign should be negative already in the formula; the constant subtracted is .         Multiplication by (Exponential Shifting)  It turns out that as long as we know the Laplace transform of , , then we also know the Laplace transform of since  . So multiplying a function by shifts its Laplace transform horizontally by .   Laplace Transform of an Exponential Function  Use the exponential shifting property to compute the following           To apply the shifting property , we identify and as follows:   By definition, , so .  Finally, substituting for in the formula for , we have .               In this case, and . For , we have .  By definition, , so .  Substituting for in , we have , where .               In this case, and . So .  By definition, , so .  Substituting for in gives .       By applying a similar strategy to the functions , , and , we can add the following three Laplace transforms to our list of common transforms:     📖❓ Shifting a Transform of Sine            Correct! The translation property shifts the transform of by 5, giving .       No, the frequency is 2, not 5, and the shift should be by 5, not 2.       No, the shift should be , not .       No, this has both the wrong frequency and an incorrect value in the denominator.       📖❓ Shifting a Transform of a Power Function            Correct! First use the rule , then apply the translation property to shift to .       No, the correct shift is , not .       No, check both the coefficient and exponent, leads to in the numerator and in the denominator.       No, this expression is incorrect both in sign and power.       📖❓ Shifting a Transform of Cosine            Correct! The Laplace transform of is , and the translation property shifts to .       No, the shift should be . This answer incorrectly uses .       No, the cosine frequency is 5, but the exponential shift is , not . Also, is , not .       No, the correct frequency is 5, so the denominator should be .       📖❓ Shifted Transform of Some Function   Hypothetically, if , then ?       No, the translation property requires replacing with , not .       No, the shift must be applied to every instance of in the original transform.       No, the original expression has and . Shift both to and respectively.       Correct! Apply the translation property by shifting each in the original transform to .         Multiplication by (Derivatives in )  When a function is multiplied by , its Laplace transform becomes the -th derivative of the original transform (up to a sign): .  Click here for a derivation   To show that , we start on the right side and show that it leads to the left side.        If , then this property becomes    📖❓ Apply the Laplace Derivative Rule   Hypothetically, if , then         Incorrect. You forgot to apply the negative from the derivative rule properly.       Correct!        Incorrect. The Laplace transform of should be the negative derivative of , not this combination.       Incorrect. The rule gives only a sine term, no cosine remains after differentiation.       Examples of the Laplace Derivative Property  Use the Laplace derivative property to compute           To apply the Laplace derivative property , we identify and :   By definition, , so and the quotient rule gives us   Therefore, .               In this case, and , so   By definition, , so and two derivatives of this function gives us   Therefore, .       This property lets us handle polynomial factors in without integrating directly. Instead, we differentiate the Laplace transform with respect to .   "
+},
+{
+  "id": "lt-properties-prep-1",
+  "level": "2",
+  "url": "lt-properties.html#lt-properties-prep-1",
+  "type": "Checkpoint",
+  "number": "181",
+  "title": "👀❓ Integral Properties.",
+  "body": " 👀❓ Integral Properties   Select all the true statements related to properties of indefinite integrals.      This is the linearity property of integrals.     Since we are integrating with respect to , we can treat as a constant.     In calculus, you had to integrate this using integration by parts.     Be careful, .    "
+},
+{
+  "id": "lt-linearity-property-example",
+  "level": "2",
+  "url": "lt-properties.html#lt-linearity-property-example",
+  "type": "🌌 Example",
+  "number": "182",
+  "title": "Transforming a Sum of Functions.",
+  "body": " Transforming a Sum of Functions   Compute the Laplace transform .    We apply the linearity property to break the transform down as follows:   Then, using the common transforms, L , L ( ) , and L ( ) , we get   We use , because it guarantees that is also true.   "
+},
+{
+  "id": "lt-linearity-property-prereading-questions-bundle",
+  "level": "2",
+  "url": "lt-properties.html#lt-linearity-property-prereading-questions-bundle",
+  "type": "Checkpoint",
+  "number": "183",
+  "title": "",
+  "body": "  📖❓ Invalid Uses of Linearity   Which of the following are NOT correct applications of the linearity property?       Linearity does not apply to a product of functions.     The linearity property does not extend to powers of functions.     This is a correct use of the linearity property.     This is correct since .      📖❓ Transform of            Correct! Use linearity: transform each term individually and add them together.       No, the transform of includes in the numerator, and the constant should be added.       No, the frequency of is 1, not 7, and the free term transforms to .       No, the free term should yield , and it should be added.      "
+},
+{
+  "id": "lt-derivative-transfer-details",
+  "level": "2",
+  "url": "lt-properties.html#lt-derivative-transfer-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "Click here for more details.",
+  "body": " Click here for more details   To show that , we start with the definition of the Laplace transform:   .  Applying integration by parts to once in with integration by parts gives   Recall that a requirement for the Laplace transform of to exist is that .  Thus, setting the limit to zero gives us the desired result .   "
+},
+{
+  "id": "lt-properties-chkpt-3",
+  "level": "2",
+  "url": "lt-properties.html#lt-properties-chkpt-3",
+  "type": "Checkpoint",
+  "number": "184",
+  "title": "📖❓  Fill-In the Missing Number.",
+  "body": " 📖❓ Fill-In the Missing Number   Give the number that goes into the blank.            An integer variable may be initialized to a value.     .*  Try to figure out the function in this case.     "
+},
+{
+  "id": "lt-derivative-transfer-property-prereading-questions-bundle",
+  "level": "2",
+  "url": "lt-properties.html#lt-derivative-transfer-property-prereading-questions-bundle",
+  "type": "Checkpoint",
+  "number": "185",
+  "title": "",
+  "body": "  📖❓ Transform of with an Initial Condition   What is the Laplace transform of given that ?      The Laplace transform of with is .     This is missing the initial condition .     This answer is missing a factor of .     This answer appears to have a sign error.      📖❓ Transform of with Initial Conditions   What is the Laplace transform of given that and ?       The Laplace transform of is .      Careful, use .      No, the subtraction term is , not .       No, the sign should be negative already in the formula; the constant subtracted is .      "
+},
+{
+  "id": "lt-exp-shifting-property-example",
+  "level": "2",
+  "url": "lt-properties.html#lt-exp-shifting-property-example",
+  "type": "🌌 Example",
+  "number": "186",
+  "title": "Laplace Transform of an Exponential Function.",
+  "body": " Laplace Transform of an Exponential Function  Use the exponential shifting property to compute the following           To apply the shifting property , we identify and as follows:   By definition, , so .  Finally, substituting for in the formula for , we have .               In this case, and . For , we have .  By definition, , so .  Substituting for in , we have , where .               In this case, and . So .  By definition, , so .  Substituting for in gives .      "
+},
+{
+  "id": "lt-exp-shifting-property-prereading-questions-bundle",
+  "level": "2",
+  "url": "lt-properties.html#lt-exp-shifting-property-prereading-questions-bundle",
+  "type": "Checkpoint",
+  "number": "187",
+  "title": "",
+  "body": "  📖❓ Shifting a Transform of Sine            Correct! The translation property shifts the transform of by 5, giving .       No, the frequency is 2, not 5, and the shift should be by 5, not 2.       No, the shift should be , not .       No, this has both the wrong frequency and an incorrect value in the denominator.       📖❓ Shifting a Transform of a Power Function            Correct! First use the rule , then apply the translation property to shift to .       No, the correct shift is , not .       No, check both the coefficient and exponent, leads to in the numerator and in the denominator.       No, this expression is incorrect both in sign and power.       📖❓ Shifting a Transform of Cosine            Correct! The Laplace transform of is , and the translation property shifts to .       No, the shift should be . This answer incorrectly uses .       No, the cosine frequency is 5, but the exponential shift is , not . Also, is , not .       No, the correct frequency is 5, so the denominator should be .       📖❓ Shifted Transform of Some Function   Hypothetically, if , then ?       No, the translation property requires replacing with , not .       No, the shift must be applied to every instance of in the original transform.       No, the original expression has and . Shift both to and respectively.       Correct! Apply the translation property by shifting each in the original transform to .      "
+},
+{
+  "id": "lt-laplace-derivatives-details",
+  "level": "2",
+  "url": "lt-properties.html#lt-laplace-derivatives-details",
+  "type": "Proof",
+  "number": "1",
+  "title": "Click here for a derivation.",
+  "body": " Click here for a derivation   To show that , we start on the right side and show that it leads to the left side.      "
+},
+{
+  "id": "lt-properties-chkpt-10",
+  "level": "2",
+  "url": "lt-properties.html#lt-properties-chkpt-10",
+  "type": "Checkpoint",
+  "number": "188",
+  "title": "📖❓  Apply the Laplace Derivative Rule.",
+  "body": " 📖❓ Apply the Laplace Derivative Rule   Hypothetically, if , then         Incorrect. You forgot to apply the negative from the derivative rule properly.       Correct!        Incorrect. The Laplace transform of should be the negative derivative of , not this combination.       Incorrect. The rule gives only a sine term, no cosine remains after differentiation.     "
+},
+{
+  "id": "lt-laplace-derivatives-examples",
+  "level": "2",
+  "url": "lt-properties.html#lt-laplace-derivatives-examples",
+  "type": "🌌 Example",
+  "number": "189",
+  "title": "Examples of the Laplace Derivative Property.",
+  "body": " Examples of the Laplace Derivative Property  Use the Laplace derivative property to compute           To apply the Laplace derivative property , we identify and :   By definition, , so and the quotient rule gives us   Therefore, .               In this case, and , so   By definition, , so and two derivatives of this function gives us   Therefore, .      "
+},
+{
+  "id": "lt-reference-guide",
+  "level": "1",
+  "url": "lt-reference-guide.html",
+  "type": "Section",
+  "number": "11.5",
+  "title": "The Laplace Transform Reference Guide",
+  "body": " The Laplace Transform Reference Guide   In this final section, we summarize everything we've done. Below, you will find tables for the most common Laplace transforms and the properties used to combine and manipulate them. These will provide a useful resource in the next chapter where we begin solving differential equations using the Laplace transform method.    Laplace Transform Tables  We have done a lot of work computing common transforms and deriving the properties of the Laplace transform. Now, we can summarize all of this information in tables for quick reference.  We begin with the specific transforms of exponentials, polynomial terms, sine\/cosine, and the products of these functions. In later chapters, we will encounter new types of functions that we need to transform, so this table will continue to grow as we go.     Table of Common Laplace Transforms          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       L       L       L       L       L       L       L           📖❓ What's Missing in each Transform?   Select the missing piece from each Laplace transform.                                                The next set of transforms are more general rules you can apply in different situations.     Table of Laplace Transform Rules         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       R       R       R       R          Finally, we list the Laplace transform properties. It is short for now, but we will add more to this table later.     Table of Laplace Transform Properties         Property Type  Property    P  Linearity          Next Step: Solving Differential Equations  Everything you've learned in this chapter prepares you to solve differential equations using the Laplace transform. In the next chapter, you will see how these tools turn the process of solving differential equations into solving simple algebraic equations, especially when initial conditions are involved.    🤔💭 Reading Questions   🤔💭 Transform of    ?       Correct! This follows the formula with .       Incorrect. That's the transform of , not .       Incorrect. The frequency coefficient must appear in the numerator.       This is mathematically correct but not simplified. Choose the version with in the denominator.       🤔💭 Transform of    ?       Incorrect. The numerator for cosine should be , not the frequency.       Incorrect. The denominator should be , not .       Correct! Cosine is even, so = , and its transform is .       Incorrect. Both the numerator and denominator are wrong for cosine transforms.       "
+},
+{
+  "id": "lt-table-common",
+  "level": "2",
+  "url": "lt-reference-guide.html#lt-table-common",
+  "type": "Table",
+  "number": "190",
+  "title": "Table of Common Laplace Transforms",
+  "body": " Table of Common Laplace Transforms          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       L       L       L       L       L       L       L       "
+},
+{
+  "id": "lt-reference-guide-chkpt-1",
+  "level": "2",
+  "url": "lt-reference-guide.html#lt-reference-guide-chkpt-1",
+  "type": "Checkpoint",
+  "number": "191",
+  "title": "📖❓  What’s Missing in each Transform?",
+  "body": " 📖❓ What's Missing in each Transform?   Select the missing piece from each Laplace transform.                                               "
+},
+{
+  "id": "lt-table-rules",
+  "level": "2",
+  "url": "lt-reference-guide.html#lt-table-rules",
+  "type": "Table",
+  "number": "192",
+  "title": "Table of Laplace Transform Rules",
+  "body": " Table of Laplace Transform Rules         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       R       R       R       R       "
+},
+{
+  "id": "lt-table-properties",
+  "level": "2",
+  "url": "lt-reference-guide.html#lt-table-properties",
+  "type": "Table",
+  "number": "193",
+  "title": "Table of Laplace Transform Properties",
+  "body": " Table of Laplace Transform Properties         Property Type  Property    P  Linearity     "
+},
+{
+  "id": "lt-reference-guide-cyu-bundle",
+  "level": "2",
+  "url": "lt-reference-guide.html#lt-reference-guide-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "194",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Transform of    ?       Correct! This follows the formula with .       Incorrect. That's the transform of , not .       Incorrect. The frequency coefficient must appear in the numerator.       This is mathematically correct but not simplified. Choose the version with in the denominator.       🤔💭 Transform of    ?       Incorrect. The numerator for cosine should be , not the frequency.       Incorrect. The denominator should be , not .       Correct! Cosine is even, so = , and its transform is .       Incorrect. Both the numerator and denominator are wrong for cosine transforms.      "
+},
+{
+  "id": "c9-exercises",
+  "level": "1",
+  "url": "c9-exercises.html",
+  "type": "Section",
+  "number": "11.6",
+  "title": "Chapter 9 Exercises",
+  "body": " Chapter 9 Exercises   ᯓ★❓ Quick-Answer Questions    Multiple-Choice  Key Concepts Behind Laplace Transforms   Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?     Chain Rule   Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.     Product Rule   No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.     Integration by Parts   Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.     Properties of Exponential Functions   Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.       📖❓ Limit of   What is the value of ?       No, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero.       Correct, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero. This can also be verified with L'Hôpital's rule.       No, goes to . So the limit cannot have in its value.       No, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero.       📖❓ Fill in the Missing Value         3   Correct! The Laplace transform of is .     1   No, the exponent of is 3, not 1.     0   No, would imply a transform of 1, not .     -3   No, that would correspond to . Watch the sign.       📖❓ Laplace Transform of           Correct! This matches the rule: with .       No, that's the transform of , not .       No, the transform of is not a constant.       No, the numerator should be , not .       📖❓ Laplace Transform of           Correct! The Laplace transform of is .       No, that's the transform of , not .       No, is not a constant.       No, double-check the exponent in the denominator, it should be , not .          🏗️ Drill: Forward Transforms   Transforming Single Functions   Compute each Laplace Transform using the .                                                                                             Transforming Combined Functions   Compute each Laplace Transform using the and\/or .      We will use properties in the table as follows.        We will use properties in the table as follows.        Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both and we can simply multiply those together to get the desired Laplace transform. However, this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property , with and    We need to know what is before we can proceed. Let's go back to the naming system we have instituted. If we have a capital that is the Laplace transform of a function lower case We identified that function previously: We use to find its Laplace transform. Then we continue finding by taking two derivatives (using the quotient rule for derivatives; details are omitted here).                Use the first shifting theorem: .            Use the integration by parts method: .            Apply the second shifting theorem: .                                  For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .              For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.             Definition of the Laplace Transform  Using the Definition   Use to compute each of the following Laplace Transforms.        Let's use the definition:  Note: cannot be   When , the integral becomes Therefore, we must have for this integral to be finite.    By Integration by parts :   As long as , the limit becomes:  If , then as , we would have and so This shows the Laplace transform would not exist if . Therefore, we must require .   Hence, we have , under the condition that .                                          To compute this, we use the definition of the Laplace transform.             By the above definition, we have At this point, we need to assume that . .  Next, we integrate using the substitution .               We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need  Thus, .             Use the properties of the Laplace transform the fact that to show that .   We start by applying the definition of the Laplace transform: . Rather than directly integrating, we will use a modified to express cosine in terms of  Substituting this into the integral gives: Therefore, the Laplace transform of is:      Answer the following:  Compute the Laplace transform of .  Use (a) as a guide to show , for any constant .     As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:      By the definition of the Laplace transform: . Answer the following questions related to the Laplace transform of .   Use integration by parts to show that .   Select and . Then      Use this to show that .   Substitute from (b) into the limit from (a).      In order for to exist, what must be true?    The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .         "
+},
+{
+  "id": "c9-quick-answer-2-1",
+  "level": "2",
+  "url": "c9-quick-answer.html#c9-quick-answer-2-1",
+  "type": "Reading Question",
+  "number": "11.6.1",
+  "title": "Multiple-Choice.",
+  "body": " Multiple-Choice  Key Concepts Behind Laplace Transforms   Which two core mathematical ideas does the Laplace transform method rely on to solve differential equations?     Chain Rule   Incorrect. The chain rule is not central to the Laplace transform method. Think about a process that lets you transfer derivatives.     Product Rule   No, the product rule is not a key idea in the Laplace transform method. Consider an integration-based technique.     Integration by Parts   Correct! Integration by parts allows derivatives to be transferred between functions inside an integral, a foundational technique in the Laplace method.     Properties of Exponential Functions   Correct! The method uses properties of exponential functions, especially their predictable behavior under differentiation and integration.       📖❓ Limit of   What is the value of ?       No, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero.       Correct, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero. This can also be verified with L'Hôpital's rule.       No, goes to . So the limit cannot have in its value.       No, exponential growth ( ) grows faster than polynomial growth ( ) as . This pulls the ratio, , to zero.       📖❓ Fill in the Missing Value         3   Correct! The Laplace transform of is .     1   No, the exponent of is 3, not 1.     0   No, would imply a transform of 1, not .     -3   No, that would correspond to . Watch the sign.       📖❓ Laplace Transform of           Correct! This matches the rule: with .       No, that's the transform of , not .       No, the transform of is not a constant.       No, the numerator should be , not .       📖❓ Laplace Transform of           Correct! The Laplace transform of is .       No, that's the transform of , not .       No, is not a constant.       No, double-check the exponent in the denominator, it should be , not .      "
+},
+{
+  "id": "c9-exercises-3-2-3",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-3",
+  "type": "Exercise",
+  "number": "11.6.1",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-4",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-4",
+  "type": "Exercise",
+  "number": "11.6.2",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-5",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-5",
+  "type": "Exercise",
+  "number": "11.6.3",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-6",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-6",
+  "type": "Exercise",
+  "number": "11.6.4",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-7",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-7",
+  "type": "Exercise",
+  "number": "11.6.5",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-8",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-8",
+  "type": "Exercise",
+  "number": "11.6.6",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-9",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-9",
+  "type": "Exercise",
+  "number": "11.6.7",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-2-10",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-2-10",
+  "type": "Exercise",
+  "number": "11.6.8",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-3-3-3",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-3",
+  "type": "Exercise",
+  "number": "11.6.9",
+  "title": "",
+  "body": "   We will use properties in the table as follows.    "
+},
+{
+  "id": "c9-exercises-3-3-4",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-4",
+  "type": "Exercise",
+  "number": "11.6.10",
+  "title": "",
+  "body": "   We will use properties in the table as follows.    "
+},
+{
+  "id": "c9-exercises-3-3-5",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-5",
+  "type": "Exercise",
+  "number": "11.6.11",
+  "title": "",
+  "body": "   Before we begin, we note that it's very tempting to think that because we know the Laplace transforms of both and we can simply multiply those together to get the desired Laplace transform. However, this is not the case, just as similar statements were not true for finding the derivatives and integrals of the products of functions. Rather, we will need to use property , with and    We need to know what is before we can proceed. Let's go back to the naming system we have instituted. If we have a capital that is the Laplace transform of a function lower case We identified that function previously: We use to find its Laplace transform. Then we continue finding by taking two derivatives (using the quotient rule for derivatives; details are omitted here).    "
+},
+{
+  "id": "c9-exercises-3-3-6",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-6",
+  "type": "Exercise",
+  "number": "11.6.12",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c9-exercises-3-3-7",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-7",
+  "type": "Exercise",
+  "number": "11.6.13",
+  "title": "",
+  "body": "   Use the first shifting theorem: .        "
+},
+{
+  "id": "c9-exercises-3-3-8",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-8",
+  "type": "Exercise",
+  "number": "11.6.14",
+  "title": "",
+  "body": "   Use the integration by parts method: .        "
+},
+{
+  "id": "c9-exercises-3-3-9",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-9",
+  "type": "Exercise",
+  "number": "11.6.15",
+  "title": "",
+  "body": "   Apply the second shifting theorem: .        "
+},
+{
+  "id": "c9-exercises-3-3-10",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-10",
+  "type": "Exercise",
+  "number": "11.6.16",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c9-exercises-3-3-11",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-11",
+  "type": "Exercise",
+  "number": "11.6.17",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c9-exercises-3-3-12",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-12",
+  "type": "Exercise",
+  "number": "11.6.18",
+  "title": "",
+  "body": "   For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. Then we have the following. Note that when we use the quotient rule to take the derivative o .          "
+},
+{
+  "id": "c9-exercises-3-3-13",
+  "level": "2",
+  "url": "c9-exercises-3.html#c9-exercises-3-3-13",
+  "type": "Exercise",
+  "number": "11.6.19",
+  "title": "",
+  "body": "   For this solution, we will need to use property L14 wit We will need to know the Laplace transform for this function, so let's do that now. In using L14, we will also need the second derivative o so we work to compute that now. Note that we will use the chain rule when we take the derivative o . Then we have the following.         "
+},
+{
+  "id": "c9-exercises-4-2-3",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-3",
+  "type": "Exercise",
+  "number": "11.6.1",
+  "title": "",
+  "body": "     Let's use the definition:  Note: cannot be   When , the integral becomes Therefore, we must have for this integral to be finite.    By Integration by parts :   As long as , the limit becomes:  If , then as , we would have and so This shows the Laplace transform would not exist if . Therefore, we must require .   Hence, we have , under the condition that .          "
+},
+{
+  "id": "c9-exercises-4-2-4",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-4",
+  "type": "Exercise",
+  "number": "11.6.2",
+  "title": "",
+  "body": "              "
+},
+{
+  "id": "c9-exercises-4-2-5",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-5",
+  "type": "Exercise",
+  "number": "11.6.3",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "c9-exercises-4-2-6",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-6",
+  "type": "Exercise",
+  "number": "11.6.4",
+  "title": "",
+  "body": "     To compute this, we use the definition of the Laplace transform.         "
+},
+{
+  "id": "c9-exercises-4-2-7",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-7",
+  "type": "Exercise",
+  "number": "11.6.5",
+  "title": "",
+  "body": "   By the above definition, we have At this point, we need to assume that . .  Next, we integrate using the substitution .           "
+},
+{
+  "id": "c9-exercises-4-2-8",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-2-8",
+  "type": "Exercise",
+  "number": "11.6.6",
+  "title": "",
+  "body": "   We use the definition of Laplace transform to get us started. As before, we need restrict some values of in order for this improper integral to exist . In this case, we will need , in the exponent, to be non-zero and negative. That is, we need  Thus, .          "
+},
+{
+  "id": "c9-exercises-4-3",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-3",
+  "type": "Exercise",
+  "number": "11.6.7",
+  "title": "",
+  "body": " Use the properties of the Laplace transform the fact that to show that .   We start by applying the definition of the Laplace transform: . Rather than directly integrating, we will use a modified to express cosine in terms of  Substituting this into the integral gives: Therefore, the Laplace transform of is:    "
+},
+{
+  "id": "c9-exercises-4-4",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-4",
+  "type": "Exercise",
+  "number": "11.6.8",
+  "title": "",
+  "body": " Answer the following:  Compute the Laplace transform of .  Use (a) as a guide to show , for any constant .     As with cosine, we begin with the definition of the Laplace transform, and rewrite sine using Euler's formula, Substituting this into the integral, we get: Thus, the Laplace transform of is:    "
+},
+{
+  "id": "c9-exercises-4-5",
+  "level": "2",
+  "url": "c9-exercises-4.html#c9-exercises-4-5",
+  "type": "Exercise",
+  "number": "11.6.9",
+  "title": "",
+  "body": " By the definition of the Laplace transform: . Answer the following questions related to the Laplace transform of .   Use integration by parts to show that .   Select and . Then      Use this to show that .   Substitute from (b) into the limit from (a).      In order for to exist, what must be true?    The limit, , must converge. That is, as gets large, the ratio, , flattens out to some number. In order to maintain this ratio, growth rate of must be less than or equal to .       "
+},
+{
+  "id": "lt-method-step1",
+  "level": "1",
+  "url": "lt-method-step1.html",
+  "type": "Section",
+  "number": "12.1",
+  "title": "Step 1 — Into the Laplace Domain",
+  "body": " Step 1 — Into the Laplace Domain   The first step of the Laplace transform method is to convert a differential equation—where the unknown appears through derivatives—into an algebraic equation in the Laplace domain. This transformation makes it easier to isolate the unknown and move toward a solution.    Crossing Into the Laplace Domain  In terms of the roadmap, we can visualize this first step as follows:  Step 1️⃣: Into the Laplace Domain (Forward Transform)                             Simply put, forward transforming a differential equation into the Laplace domain means applying the Laplace transform to both sides of the equation. The result is an algebraic equation where the derivatives have been converted into powers of and the new unknown is .    Basic Mechanics of the Forward Transform  Symbolically, applying the forward Laplace transform to the differential equation amounts to applying it to both sides of the equation as follows: .  Using the linearity property we can see that the transform applies to each term:  . Letting and applying rule R for and common transform L , we get:  . This is where the initial conditions come into play. Substituting the initial conditions and simplifying gives the desired Laplace domain equation:  . Our new unknown is and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation is actually hiding inside . So, by solving for you are also solving for at the same time!  Let's practice this with a one more example.   Forward Transforming Equations   Forward transform the following equations into the Laplace domain:     First applying the Laplace transform to both sides:  . Now, use the linearity property :  . Let , and apply rule R & R and common transform L   . Finally, plug in the initial conditions, and clean up:  .    📖❓ Select the Forward Transform   Which of the following represents the correct Laplace transform of the equation ?      This is the correct transformation using the Laplace transform and applying initial conditions.     This answer is missing a term.     Double check the signs of the initial conditions.     This answer is missing a term.     Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process.    What is Going on Behind the Scenes?   📖❓ Applying the Laplace Transform to an Equation    Fill-in-the-blanks:   The process of applying a Laplace transform to a differential equation involves multiplying the equation by and with respect to .      integrating   No, this misses the parameter in the exponential. It should be .     integrating   Correct! The Laplace transform involves multiplying the original function by and then integrating with respect to .     integrating   No, the exponent should have a negative sign: .     differentiating   No, the Laplace transform requires integration, not differentiation.     differentiating   No, the transform uses and integration, not the variable directly or differentiation.      Since the Laplace transform only applies to functions, applying a forward transform to a differential equation , really means we are taking the Laplace transform to both sides of that equation. So, applying a forward transformation to the initial-value problem implies that we multiply both sides of the equation by and integrate from to :              Next, we use the linearity of the integral:      After applying integration by parts to , the derivative is transferred from to , resulting in a factor of and an evaluation of at and :              The details for computing are given here .  Since the two integrals are , the symbolic and mathematical paths come back together as .  By transforming our equation into this new form, we have momentarily stored inside the function . Therefore, solving for indirectly also solves for .    Step 1 — Into the Laplace Domain Summary  Apply to each term of the differential equation; derivatives become powers of and initial conditions drop in as constants, leaving an algebraic equation in .   "
+},
+{
+  "id": "lt-forward-lt-example",
+  "level": "2",
+  "url": "lt-method-step1.html#lt-forward-lt-example",
+  "type": "🌌 Example",
+  "number": "196",
+  "title": "Forward Transforming Equations.",
+  "body": " Forward Transforming Equations   Forward transform the following equations into the Laplace domain:     First applying the Laplace transform to both sides:  . Now, use the linearity property :  . Let , and apply rule R & R and common transform L   . Finally, plug in the initial conditions, and clean up:  .  "
+},
+{
+  "id": "lt-method-step1-chkpt-1",
+  "level": "2",
+  "url": "lt-method-step1.html#lt-method-step1-chkpt-1",
+  "type": "Checkpoint",
+  "number": "197",
+  "title": "📖❓ Select the Forward Transform.",
+  "body": " 📖❓ Select the Forward Transform   Which of the following represents the correct Laplace transform of the equation ?      This is the correct transformation using the Laplace transform and applying initial conditions.     This answer is missing a term.     Double check the signs of the initial conditions.     This answer is missing a term.    "
+},
+{
+  "id": "lt-method-step1-chkpt-2",
+  "level": "2",
+  "url": "lt-method-step1.html#lt-method-step1-chkpt-2",
+  "type": "Checkpoint",
+  "number": "198",
+  "title": "📖❓ Applying the Laplace Transform to an Equation.",
+  "body": " 📖❓ Applying the Laplace Transform to an Equation    Fill-in-the-blanks:   The process of applying a Laplace transform to a differential equation involves multiplying the equation by and with respect to .      integrating   No, this misses the parameter in the exponential. It should be .     integrating   Correct! The Laplace transform involves multiplying the original function by and then integrating with respect to .     integrating   No, the exponent should have a negative sign: .     differentiating   No, the Laplace transform requires integration, not differentiation.     differentiating   No, the transform uses and integration, not the variable directly or differentiation.     "
+},
+{
+  "id": "lt-method-step2",
+  "level": "1",
+  "url": "lt-method-step2.html",
+  "type": "Section",
+  "number": "12.2",
+  "title": "Step 2 — Solving in the Laplace Domain",
+  "body": " Step 2 — Solving in the Laplace Domain   Once we've applied the Laplace transform to a differential equation, we're left with a new algebraic equation involving . Solving this equation is usually easier than solving the original differential equation, but we still need to work carefully. In this section, you'll learn how to isolate , clean it up using algebra, and get it into a form that matches the inverse transform table.    What It Means to Solve in the Laplace Domain  After transforming a differential equation into the Laplace domain, you're left with an algebraic equation involving . We will call this the Laplace-domain equation. In this setting, your new unknown is now represented by its Laplace transform, .  Your goal is twofold: first, solve for using algebra, and second, rewrite so it matches known inverse transform forms. That prepares it for the final step of returning to the original domain.  Step 2️⃣: Solve for & Prepare it for an Inverse Transform                  📖❓ What are we solving for?   What variable do you solve for in the Laplace-domain equation?      , the Laplace transform of   Exactly! You're solving for , which represents the Laplace transform of .     , the dependent variable of the differential equation  Not yet. You'll get by inverting later.     , the Laplace-domain variable  Nope. is a variable, not the unknown you're solving for.     , the independent variable of the differential equation  🥺       Solving for  The first step after transforming your differential equation into a Laplace-domain equation is to solve for . This means using standard algebra to isolate on one side of the equation. Here is a quick example.   Solving a Laplace-Domain Equation   Solve the Laplace-domain equation for :     Start by moving all non- terms to the right-hand side:   Now, factor from the remaining terms on the left-hand side:   Finally, divide both sides by the quadratic expression to isolate :       Preparing for the Inverse Transform   Once you've solved for , the next step is to prepare it for returning to the original domain. This means rewriting as a combination of expressions that match known Laplace transforms, so we can use the inverse transform to find .  The inverse Laplace transform works by reversing the process of the forward transform. This can be done using the same table of transforms —but in reverse. Our goal is to express as a sum of terms that match entries in the -domain column.    Preparation Guidelines  After isolating from the transformed equation, you typically are left with a messy combination of rational functions in the variable .  Since we can only invert functions in the -domain column of the table of common Laplace transforms , it helps to list them out to guide us on how to prepare .                      To invert , it must first be written as the sum of one or more of these terms. However, since the first row is a special case of the second when , we can reduce the list down to the following function types:   Fortunately, there is a technique that was designed for this exact task. Recall that partial fraction decomposition (PFD) guarantees that any rational function can be written as the sum of rational terms with linear or quadratic factors in the denominator.  Therefore, if the denominator of has degree three or higher, PFD will always be your first step toward preparing for a backward transform out of the Laplace domain.    Dealing with Quadratic Denominators  After partial fraction decomposition, will be the sum of rational terms with either a linear or quadratic factor in the denominator. If they are all linear then you are done and you can move on to inverting . In contrast, if at least one term has a quadratic denominator then it will be of the form . where we have omitted the numerator since will be not be important to this discussion.  Notice that the denominator is not nicely factored like you see in the transform table. To achieve this, we need to complete the square .  Note that if the quadratic denominator term was the result of partial fraction decomposition, then it cannot be reduced further and you should skip directly to completing the square of the denominator. However, if started with this form, then you should first check to see if the denominator is factorable. If so, then use PFD. Otherwise, complete the square of the denominator so that it resembles the form in the table:    📖❓ Complete the Square   Give the correct form after completing the square of the denominator:       Correct     Incorrect     Incorrect     Incorrect        Preparation Examples  In the following examples, we prepare for an inverse Laplace transform by writing it as the sum of the following types of terms: .   Partial Fraction Decomposition Examples   Distinct Linear Factors    Since the denominator can be factored as , we apply partial fraction decomposition:   To find and , we multiply both sides by the common denominator, , eliminating all the fractions and leaving us with .  Strategically selecting as and leads directly to and :             This completes the preparation of for an inverse transform. .     Repeated Linear Factor    Factor the quadratic denominator:  . Decompose into partial fractions:   Multiply both sides by , and solve for and by selecting convenient values for :          The prepared form of is      Three Linear Factors    Since the degree of the denominator is greater than , we use PFD and we factor the denominator as so that has the form .  Multiply both sides by to get and choose convenient values for so that             Therefore, the prepared form of is       📖❓ Partial Fraction Decomposition   Complete the partial fraction decomposition:       Correct!     Incorrect     Incorrect     Incorrect      Completing the Square Examples   Completing the Square Example    A quick calculation of the discriminant shows the denominator is not factorable: .  So we complete the square of the denominator: .  Substituting this into gives the prepared form , which is a perfect match with L with .      Mixed Technique Examples   Completing the Square Example    Since the degree of the denominator is greater than , we use PFD and factor the denominator: .  Decompose into partial fractions: and multiply both sides by to get .  Strategically selecting values for , we get                                    Therefore, the prepared Laplace domain solution is .     Completing the Square Example    Partial fraction decomposition gives: .  Multiply both sides by to get .  When you have multiple quadratic terms involved, it is usually easier to match coefficients rather than choosing values of . So let's multiply out the right and match the corresponding terms to find , , , and :   Matching the coefficients leads to the following system: which has the solution: , , and .  Therefore, the prepared Laplace domain solution is given by: .      📖❓ Preparing   What should be done to prepare for an inverse? ?     Complete the square of the denominator  Correct!    Partial fraction decomposition  Is the denominator factorable?    Cancel out the in the numerator and denominator.  Canceling out the in the function is not a valid operation.    Cancel out the in the numerator and denominator.  Canceling out the in the function is not a valid operation.       Step 2 — Solving in the Laplace Domain Summary  Treat the transformed equation as pure algebra: isolate , then reshape it so every term matches an entry in the inverse-transform table.   "
+},
+{
+  "id": "lt-laplace-step-2-chkpt-1",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-laplace-step-2-chkpt-1",
+  "type": "Checkpoint",
+  "number": "199",
+  "title": "📖❓ What are we solving for?",
+  "body": " 📖❓ What are we solving for?   What variable do you solve for in the Laplace-domain equation?      , the Laplace transform of   Exactly! You're solving for , which represents the Laplace transform of .     , the dependent variable of the differential equation  Not yet. You'll get by inverting later.     , the Laplace-domain variable  Nope. is a variable, not the unknown you're solving for.     , the independent variable of the differential equation  🥺    "
+},
+{
+  "id": "lt-solve-basic-example",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-solve-basic-example",
+  "type": "🌌 Example",
+  "number": "200",
+  "title": "Solving a Laplace-Domain Equation.",
+  "body": " Solving a Laplace-Domain Equation   Solve the Laplace-domain equation for :     Start by moving all non- terms to the right-hand side:   Now, factor from the remaining terms on the left-hand side:   Finally, divide both sides by the quadratic expression to isolate :    "
+},
+{
+  "id": "lt-laplace-preparing-for-inverse-3-7",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-laplace-preparing-for-inverse-3-7",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "partial fraction decomposition (PFD) "
+},
+{
+  "id": "lt-laplace-step-2-chkpt-2",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-laplace-step-2-chkpt-2",
+  "type": "Checkpoint",
+  "number": "201",
+  "title": "📖❓ Complete the Square.",
+  "body": " 📖❓ Complete the Square   Give the correct form after completing the square of the denominator:       Correct     Incorrect     Incorrect     Incorrect    "
+},
+{
+  "id": "lt-example-pfd-1",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-example-pfd-1",
+  "type": "🌌 Example",
+  "number": "202",
+  "title": "Distinct Linear Factors.",
+  "body": " Distinct Linear Factors    Since the denominator can be factored as , we apply partial fraction decomposition:   To find and , we multiply both sides by the common denominator, , eliminating all the fractions and leaving us with .  Strategically selecting as and leads directly to and :             This completes the preparation of for an inverse transform. .   "
+},
+{
+  "id": "lt-example-pfd-2",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-example-pfd-2",
+  "type": "🌌 Example",
+  "number": "203",
+  "title": "Repeated Linear Factor.",
+  "body": " Repeated Linear Factor    Factor the quadratic denominator:  . Decompose into partial fractions:   Multiply both sides by , and solve for and by selecting convenient values for :          The prepared form of is    "
+},
+{
+  "id": "lt-example-pfd-3",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-example-pfd-3",
+  "type": "🌌 Example",
+  "number": "204",
+  "title": "Three Linear Factors.",
+  "body": " Three Linear Factors    Since the degree of the denominator is greater than , we use PFD and we factor the denominator as so that has the form .  Multiply both sides by to get and choose convenient values for so that             Therefore, the prepared form of is    "
+},
+{
+  "id": "lt-laplace-step-2-chkpt-3",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-laplace-step-2-chkpt-3",
+  "type": "Checkpoint",
+  "number": "205",
+  "title": "📖❓ Partial Fraction Decomposition.",
+  "body": " 📖❓ Partial Fraction Decomposition   Complete the partial fraction decomposition:       Correct!     Incorrect     Incorrect     Incorrect    "
+},
+{
+  "id": "lt-completing-square-example-1",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-completing-square-example-1",
+  "type": "🌌 Example",
+  "number": "206",
+  "title": "Completing the Square Example.",
+  "body": " Completing the Square Example    A quick calculation of the discriminant shows the denominator is not factorable: .  So we complete the square of the denominator: .  Substituting this into gives the prepared form , which is a perfect match with L with .   "
+},
+{
+  "id": "lt-mixed-examples-1",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-mixed-examples-1",
+  "type": "🌌 Example",
+  "number": "207",
+  "title": "Completing the Square Example.",
+  "body": " Completing the Square Example    Since the degree of the denominator is greater than , we use PFD and factor the denominator: .  Decompose into partial fractions: and multiply both sides by to get .  Strategically selecting values for , we get                                    Therefore, the prepared Laplace domain solution is .   "
+},
+{
+  "id": "lt-mixed-examples-2",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-mixed-examples-2",
+  "type": "🌌 Example",
+  "number": "208",
+  "title": "Completing the Square Example.",
+  "body": " Completing the Square Example    Partial fraction decomposition gives: .  Multiply both sides by to get .  When you have multiple quadratic terms involved, it is usually easier to match coefficients rather than choosing values of . So let's multiply out the right and match the corresponding terms to find , , , and :   Matching the coefficients leads to the following system: which has the solution: , , and .  Therefore, the prepared Laplace domain solution is given by: .   "
+},
+{
+  "id": "lt-laplace-step-2-chkpt-4",
+  "level": "2",
+  "url": "lt-method-step2.html#lt-laplace-step-2-chkpt-4",
+  "type": "Checkpoint",
+  "number": "209",
+  "title": "📖❓ Preparing <span class=\"process-math\">\\(Y(s)\\)<\/span>.",
+  "body": " 📖❓ Preparing   What should be done to prepare for an inverse? ?     Complete the square of the denominator  Correct!    Partial fraction decomposition  Is the denominator factorable?    Cancel out the in the numerator and denominator.  Canceling out the in the function is not a valid operation.    Cancel out the in the numerator and denominator.  Canceling out the in the function is not a valid operation.    "
+},
+{
+  "id": "lt-method-step3",
+  "level": "1",
+  "url": "lt-method-step3.html",
+  "type": "Section",
+  "number": "12.3",
+  "title": "Step 3 — Leaving the Laplace Domain",
+  "body": " Step 3 — Leaving the Laplace Domain   Up to this point, we've been working inside the Laplace domain — a mathematical space where differential equations are replaced by algebraic ones. We used forward Laplace transforms to move from to , solved for , and simplified it to match known inverse forms.  Now, it's time to take the final step: returning to the original domain where the solution is a function of time. To do this, we apply the inverse Laplace transform , denoted , which undoes the effect of the forward transform.    What Is the Inverse Laplace Transform?  Symbolically, the inverse Laplace transform works much like the inverse of a standard function. For example, we can release from inside the cosine by applying the inverse cosine:   Similarly, we can release from inside a Laplace transform by applying its inverse:   This is the idea behind the final step of the Laplace transform method as it takes us back into the original domain by releasing the contained inside . Visually, this looks like:  Step 3️⃣: Out of the Laplace Domain (Backward Transform)                              📖❓ What does the inverse transform do?   What is the purpose of the inverse Laplace transform in solving a differential equation?     It recovers the original function from its Laplace-transformed version .  Correct! The inverse transform brings us back to the time domain.    It rewrites a differential equation using algebra.  That's what the forward transform does.    It simplifies partial fractions.  Partial fraction decomposition helps prepare for the inverse, but isn't the transform itself.    It evaluates the Laplace transform of .  This describes the forward transform, not the inverse.       Using the Table to Invert  During the forward step, we used the table to map functions of in the -domain column, like or , into functions of in the -domain column. Now, we'll do the opposite: match terms in to the forms in the -domain column and map them back to functions in the -domain column.  For example, suppose we have the following in the Laplace domain:   To return back this to the original domain we apply the inverse to both sides:   We have , but it needs to be a function of . For that, we match to one of the forms in the -domain column of the table .  We see the best match is L with , so we get:   Inverses using the Laplace Transform Table   Apply the inverse transform to reveal the solution, , in the original domain.         This matches L with . So, .           This matches L with and . So, .           Noting that and using L with , we get .          📖❓ Use the Transform Table   For each , use the table of transforms to determine .                                           📖❓ Table Matching Checkpoint  Which of the following is the correct inverse Laplace transform of ?     Correct! This matches L 6 with , .     This is missing the exponential factor .     This flips and . Be careful when matching the form.     This would require in the numerator and instead of .      So far, we've only dealt with expressions that match a single row in the transform table. But most Laplace domain solutions are a sum of multiple terms. Fortunately, we don't need to invert the entire thing at once. We'll use linearity to handle those in the next section.    Linearity of the Inverse Laplace Transform  Most Laplace-domain solutions are not single terms. Instead, they're sums of several expressions. Fortunately, like the forward transform, the inverse Laplace transform is also linear. This means that inverse transforms of sums and constant multiples of functions can be broken down into smaller, more manageable steps.  Assuming and are functions in the Laplace domain, then we have:   Here's an example of this linearity property in action.   Inverse Transform of a Sum   Find if .    We break this into two parts and use the transform table to invert each one.   The first term matches L and gives . The second term matches L with , giving . So the solution is:      📖❓ Apply Linearity  Suppose . What is ?     Perfect! The first term matches and the second is a sine with .     Double check the sign in . It corresponds to , not .     The second term matches a sine form, not cosine.     corresponds to , not a polynomial term.     Linearity makes inverting multi-term expressions much more manageable. Sometimes you'll run into expressions that don't quite match anything in the table. They're close—but not perfect. In the next section, we'll look at how to make small algebraic adjustments that bring those expressions into a form we can invert.    Minor Adjustments for a Perfect Match   Sometimes, the Laplace-domain function is close to a known table form—but not quite there. In these cases, a few algebraic adjustments will help reveal the match. These are not major rewrites, just small nudges: splitting a numerator, factoring out constants, or rewriting terms to expose a recognizable pattern.    Separate Fractions to Match Multiple Forms  Suppose your function has a sum in the numerator, like . The denominator matches both sine and cosine forms in the table, but the numerator doesn't match any of the entries. The fix? Separate the addition in the numerator:  . Then factor constants and attempt to match with the table again:  . The first term perfectly matches, the second term needs in the numerator. Missing numbers in the numerator is common with inverse transforms, but there is an easy fix. We multiply numerator and denominator by the missing number:  🚩 Multiplying by   is just a special form of ; multiplying by it doesn't change the fraction.   . With these minor adjustments, the inverse transform becomes straightforward: .   📖❓ Splitting to Match Table Forms   Which of the following functions can be split into separate terms that match known inverse Laplace transforms?       Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function already matches and does not require splitting.        Adding and Subtracting to Match Shifts  Some forms contain a shift, like . For example, the form looks similar to L , but the numerator should be . This can be fixed by subtracting and adding , like so:  🚩 Adding   is just a special form of ; adding it to the numerator doesn't change the fraction.    Now you can separate the fraction as before:   These can be a little tricky so here's a few additional examples to prepare you for what you may encounter.  Handling Coefficients on   Find if     The first term needs in the numerator, but before adding and subtracting , let's get out of the way by factoring it out:  . Now, splitting the fraction inside the parentheses and distributing the gives us  . Finally, the backward transform is given by  .    📖❓ Give the Numerator of the Split Fractions   After adjusting the numerator to match L and separating the fractions, type-in the numerators of the separated fractions?                          The answers you enter should be fully simplified.      s\\s*-\\s*1|-1\\s*\\+\\s*s  .*  Incorrect     2|-\\s*1\\s*\\+\\s*3  .*  Incorrect      Complete the Square First   Find if     Completing the square for the denominator of gives: .  The form of the denominator and the in the numerator indicates that we are trying to match L ( , ), but we need in the numerator. So we add and subtract , then split the fraction:  . Since the second term needs a in the numerator, we multiply it by :  . From here, the inverse transform comes from the table:  .    📖❓ Give the Next Step   What is the next step toward finding the inverse of ?      Factor the denominator   Incorrect. The quadratic cannot be factored; try something else.     Complete the square in the denominator   Correct! Completing the square helps you match the form needed to invert with L .     Cancel out the in the numerator and denominator.   Canceling parts of rational expressions like this isn't valid.     Differentiate the entire function   Nope—this isn't a derivative problem.       With practice, these adjustments become intuitive, greatly simplifying the process of leaving the Laplace domain to recover the solution to the original differential equation.    Step 3 — Leaving the Laplace Domain Summary  Apply the inverse transform term-by-term to , converting the algebraic answer back into the time-domain solution .    🤔💭 Reading Questions   🤔💭 Adjusting the Numerator   Select the number that belongs in both blanks to directly apply the inverse.       Correct!     Incorrect.     Incorrect.     Incorrect.      🤔💭 Find the Inverse Transform         Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.       "
+},
+{
+  "id": "lt-method-step3-2-2",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "inverse Laplace transform "
+},
+{
+  "id": "lt-method-step3-chkpt-1",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-chkpt-1",
+  "type": "Checkpoint",
+  "number": "210",
+  "title": "📖❓  What does the inverse transform do?",
+  "body": " 📖❓ What does the inverse transform do?   What is the purpose of the inverse Laplace transform in solving a differential equation?     It recovers the original function from its Laplace-transformed version .  Correct! The inverse transform brings us back to the time domain.    It rewrites a differential equation using algebra.  That's what the forward transform does.    It simplifies partial fractions.  Partial fraction decomposition helps prepare for the inverse, but isn't the transform itself.    It evaluates the Laplace transform of .  This describes the forward transform, not the inverse.    "
+},
+{
+  "id": "lt-inverse-table-usage-10",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-inverse-table-usage-10",
+  "type": "🌌 Example",
+  "number": "211",
+  "title": "Inverses using the Laplace Transform Table.",
+  "body": "Inverses using the Laplace Transform Table   Apply the inverse transform to reveal the solution, , in the original domain.         This matches L with . So, .           This matches L with and . So, .           Noting that and using L with , we get .       "
+},
+{
+  "id": "lt-inverse-table-usage-chkpt-bundle",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-inverse-table-usage-chkpt-bundle",
+  "type": "Checkpoint",
+  "number": "212",
+  "title": "",
+  "body": "  📖❓ Use the Transform Table   For each , use the table of transforms to determine .                                           📖❓ Table Matching Checkpoint  Which of the following is the correct inverse Laplace transform of ?     Correct! This matches L 6 with , .     This is missing the exponential factor .     This flips and . Be careful when matching the form.     This would require in the numerator and instead of .     "
+},
+{
+  "id": "lt-inverse-linearity-example",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-inverse-linearity-example",
+  "type": "🌌 Example",
+  "number": "213",
+  "title": "Inverse Transform of a Sum.",
+  "body": " Inverse Transform of a Sum   Find if .    We break this into two parts and use the transform table to invert each one.   The first term matches L and gives . The second term matches L with , giving . So the solution is:    "
+},
+{
+  "id": "lt-method-step3-chkpt-4",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-chkpt-4",
+  "type": "Checkpoint",
+  "number": "214",
+  "title": "📖❓  Apply Linearity.",
+  "body": " 📖❓ Apply Linearity  Suppose . What is ?     Perfect! The first term matches and the second is a sine with .     Double check the sign in . It corresponds to , not .     The second term matches a sine form, not cosine.     corresponds to , not a polynomial term.    "
+},
+{
+  "id": "lt-method-step3-chkpt-5",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-chkpt-5",
+  "type": "Checkpoint",
+  "number": "215",
+  "title": "📖❓ Splitting to Match Table Forms.",
+  "body": " 📖❓ Splitting to Match Table Forms   Which of the following functions can be split into separate terms that match known inverse Laplace transforms?       Incorrect. This function already matches a known sine form and doesn't require splitting.       Correct! This function can be split as , matching cosine and sine forms.       Incorrect. This function already matches and does not require splitting.     "
+},
+{
+  "id": "lt-inverse-minor-adjustments-4-8",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-inverse-minor-adjustments-4-8",
+  "type": "🌌 Example",
+  "number": "216",
+  "title": "Handling Coefficients on <span class=\"process-math\">\\(s\\)<\/span>.",
+  "body": "Handling Coefficients on   Find if     The first term needs in the numerator, but before adding and subtracting , let's get out of the way by factoring it out:  . Now, splitting the fraction inside the parentheses and distributing the gives us  . Finally, the backward transform is given by  .  "
+},
+{
+  "id": "lt-method-step3-chkpt-6",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-chkpt-6",
+  "type": "Checkpoint",
+  "number": "217",
+  "title": "📖❓ Give the Numerator of the Split Fractions.",
+  "body": " 📖❓ Give the Numerator of the Split Fractions   After adjusting the numerator to match L and separating the fractions, type-in the numerators of the separated fractions?                          The answers you enter should be fully simplified.      s\\s*-\\s*1|-1\\s*\\+\\s*s  .*  Incorrect     2|-\\s*1\\s*\\+\\s*3  .*  Incorrect     "
+},
+{
+  "id": "lt-inverse-minor-adjustments-4-10",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-inverse-minor-adjustments-4-10",
+  "type": "🌌 Example",
+  "number": "218",
+  "title": "Complete the Square First.",
+  "body": "Complete the Square First   Find if     Completing the square for the denominator of gives: .  The form of the denominator and the in the numerator indicates that we are trying to match L ( , ), but we need in the numerator. So we add and subtract , then split the fraction:  . Since the second term needs a in the numerator, we multiply it by :  . From here, the inverse transform comes from the table:  .  "
+},
+{
+  "id": "lt-method-step3-chkpt-7",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-chkpt-7",
+  "type": "Checkpoint",
+  "number": "219",
+  "title": "📖❓ Give the Next Step.",
+  "body": " 📖❓ Give the Next Step   What is the next step toward finding the inverse of ?      Factor the denominator   Incorrect. The quadratic cannot be factored; try something else.     Complete the square in the denominator   Correct! Completing the square helps you match the form needed to invert with L .     Cancel out the in the numerator and denominator.   Canceling parts of rational expressions like this isn't valid.     Differentiate the entire function   Nope—this isn't a derivative problem.     "
+},
+{
+  "id": "lt-method-step3-cyu-bundle",
+  "level": "2",
+  "url": "lt-method-step3.html#lt-method-step3-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "220",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Adjusting the Numerator   Select the number that belongs in both blanks to directly apply the inverse.       Correct!     Incorrect.     Incorrect.     Incorrect.      🤔💭 Find the Inverse Transform         Correct! The function can be split as , which corresponds to and .       Incorrect.       Incorrect.       Incorrect.      "
+},
+{
+  "id": "lt-method-steps-examples",
+  "level": "1",
+  "url": "lt-method-steps-examples.html",
+  "type": "Section",
+  "number": "12.4",
+  "title": "Summary &amp; Worked Examples",
+  "body": " Summary & Worked Examples   This closing section is where the entire Laplace transform method comes together. You have already practiced each of the three steps in isolation. Now we will zoom out, remind ourselves of the big picture, and then run walk through a variety of examples that illustrate how the method is applied from start to finish. These examples are meant to reinforce the process and highlight common patterns, strategies, and adjustments along the way.    Laplace Transform Method— Quick Recap  Here is a visual of the full Laplace transform method. Each step corresponds to a move in the roadmap , and together they form a complete strategy for solving initial value problems. Notice that every arrow answers one of three guiding questions:   How do we translate the differential equation into the Laplace domain?  How do we isolate and tidy up so it matches the inverse table?  How do we return to the original time domain to reveal ?    Laplace Method Roadmap                              Laplace Transform Method (Three-Step Roadmap)  Given an -th-order IVP the particular solution is obtained through the following workflow:    Step 1— Forward Transform  Apply term-by-term. Powers of replace derivatives, and the initial conditions drop in automatically. The result is a single algebraic (Laplace-domain) equation.    Step 2— Solve & Prepare  Isolate , then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.    Step 3— Inverse Transform  Apply term-by-term. The hidden original-domain solution is released, and the IVP is solved.      Recap Checkpoint Questions   Answer the following questions referring to the steps above.    📖❓ Laplace Method Snapshot   Which option best represents the Laplace transform process?     Forward Transform → Find → Prepare → Apply Inverse   Correct! The Laplace Transform Method involves applying the forward transform, solving for , preparing for the backward transform, and applying the inverse transform to find .     Differentiate → Forward Transform → Find → Verify Solution   Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.     Forward Transform → Integrate → Verify Solution   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.     Forward Transform → Apply Inverse → Apply Initial Conditions   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.       📖❓ Match Each Move  Drag each task to the step it belongs to.    Apply initial conditions  Match terms of the table  Step 1 — Forward Transform    Isolate  Partial-fraction decomposition  Step 2 — Solve & Prepare    Match terms of the table  Step 3 — Inverse Transform      📖❓ Algebra Tools Checklist  Select every technique that may appear in Step 2 .   Completing the square  Partial-fraction decomposition  Integration by parts  Chain Rule   Step 2 is 100 % algebra; no calculus needed.    The three-step outline provides the general strategy. If you ever feel lost, come back to this outline and roadmap. Regardless of the equation, the steps you take to navigate them will always follow one of these three lines.    Worked Examples  The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action. Here is a break down of what to expect:   Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.  Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines\/cosines.  Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.   Basic Second-Order, Homogeneous   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    First, isolate using algebra:      Isolated   Factor the denominator:   Use partial fraction decomposition:   Multiply through by the denominator:   Strategically selecting -values gives and :    :      :      Updating the Laplace solution, we have      Prepared     Using the table, the solution is:     Nonhomogeneous Forcing Function    Solve the initial value problem:      Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Notice each term of is already in the transform table form:   Take the inverse Laplace transform:   Therefore, the solution is:      📖❓ Order the Steps  Put these phrases in the order they occur when you solved Example 2.   Rewrite as table terms 3  Isolate 2  Transform the differential equation 1  Apply 4    Forcing with a Polynomial   Solve the initial value problem:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Break into recognizable pieces:   Each term now matches an entry in the Laplace transform table.   Take the inverse Laplace transform term by term:   Therefore, the solution is:     Repeated Root in the Characteristic Equation   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Separate the numerator:   Now each term matches an entry in the Laplace table.   Take the inverse Laplace transform term by term:   So     Third-Order Equation   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Isolate :      This denominator factors by grouping:   Before jumping to PFD, simplify as much as possible first:   Now PFD is a little easier. Here is the general form:   Applying the standard process gives: ,   So the prepared is:    Take the inverse Laplace transform term by term:   giving us the solution:     Sinusoidal Forcing with Exponential Growth   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Rewrite into pieces that match table entries:   Each piece is now recognizable for inverse transforming.   Take the inverse Laplace transform of each term:   Therefore, the solution is:     These examples highlight how the Laplace Transform Method simplifies solving differential equations by converting them into algebraic equations and then back into the time domain. By mastering these steps, you can tackle a wide range of initial-value problems with ease and precision.    🤔💭 Reading Questions   🤔💭 Who Does What?  Match each step with its primary role.   Turns the DE into an algebra problem Step 1 — Forward Transform  Makes every term inverse-friendly Step 2 — Solve & Prepare  Reveals Step 3 — Inverse Transform     🤔💭 Where Do ICs Appear?  Initial conditions influence only Step 1.   True Right — after Step 1 they are baked into .  False     "
+},
+{
+  "id": "lt-method",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method",
+  "type": "✍🏻 Method",
+  "number": "4",
+  "title": "Laplace Transform Method (Three-Step Roadmap).",
+  "body": " Laplace Transform Method (Three-Step Roadmap)  Given an -th-order IVP the particular solution is obtained through the following workflow:    Step 1— Forward Transform  Apply term-by-term. Powers of replace derivatives, and the initial conditions drop in automatically. The result is a single algebraic (Laplace-domain) equation.    Step 2— Solve & Prepare  Isolate , then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.    Step 3— Inverse Transform  Apply term-by-term. The hidden original-domain solution is released, and the IVP is solved.    "
+},
+{
+  "id": "lt-method-steps-examples-quick-recap-chkpt-bundle",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-examples-quick-recap-chkpt-bundle",
+  "type": "Checkpoint",
+  "number": "221",
+  "title": "Recap Checkpoint Questions.",
+  "body": " Recap Checkpoint Questions   Answer the following questions referring to the steps above.    📖❓ Laplace Method Snapshot   Which option best represents the Laplace transform process?     Forward Transform → Find → Prepare → Apply Inverse   Correct! The Laplace Transform Method involves applying the forward transform, solving for , preparing for the backward transform, and applying the inverse transform to find .     Differentiate → Forward Transform → Find → Verify Solution   Not quite. The Laplace Transform Method does not involve differentiating the equation but rather applying the forward transform to convert it into an algebraic form.     Forward Transform → Integrate → Verify Solution   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to verify the solution.     Forward Transform → Apply Inverse → Apply Initial Conditions   Incorrect. The Laplace Transform Method involves applying the forward transform to simplify the differential equation, not to check the solution.       📖❓ Match Each Move  Drag each task to the step it belongs to.    Apply initial conditions  Match terms of the table  Step 1 — Forward Transform    Isolate  Partial-fraction decomposition  Step 2 — Solve & Prepare    Match terms of the table  Step 3 — Inverse Transform      📖❓ Algebra Tools Checklist  Select every technique that may appear in Step 2 .   Completing the square  Partial-fraction decomposition  Integration by parts  Chain Rule   Step 2 is 100 % algebra; no calculus needed.   "
+},
+{
+  "id": "lt-method-steps-worked-examples-4",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-4",
+  "type": "🌌 Example",
+  "number": "222",
+  "title": "Basic Second-Order, Homogeneous.",
+  "body": "Basic Second-Order, Homogeneous   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    First, isolate using algebra:      Isolated   Factor the denominator:   Use partial fraction decomposition:   Multiply through by the denominator:   Strategically selecting -values gives and :    :      :      Updating the Laplace solution, we have      Prepared     Using the table, the solution is:    "
+},
+{
+  "id": "lt-method-steps-worked-examples-5",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-5",
+  "type": "🌌 Example",
+  "number": "223",
+  "title": "Nonhomogeneous Forcing Function.",
+  "body": "Nonhomogeneous Forcing Function    Solve the initial value problem:      Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Notice each term of is already in the transform table form:   Take the inverse Laplace transform:   Therefore, the solution is:    "
+},
+{
+  "id": "lt-checkpoint-timeline",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-checkpoint-timeline",
+  "type": "Checkpoint",
+  "number": "224",
+  "title": "📖❓ Order the Steps.",
+  "body": " 📖❓ Order the Steps  Put these phrases in the order they occur when you solved Example 2.   Rewrite as table terms 3  Isolate 2  Transform the differential equation 1  Apply 4   "
+},
+{
+  "id": "lt-method-steps-worked-examples-7",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-7",
+  "type": "🌌 Example",
+  "number": "225",
+  "title": "Forcing with a Polynomial.",
+  "body": "Forcing with a Polynomial   Solve the initial value problem:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Break into recognizable pieces:   Each term now matches an entry in the Laplace transform table.   Take the inverse Laplace transform term by term:   Therefore, the solution is:    "
+},
+{
+  "id": "lt-method-steps-worked-examples-8",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-8",
+  "type": "🌌 Example",
+  "number": "226",
+  "title": "Repeated Root in the Characteristic Equation.",
+  "body": "Repeated Root in the Characteristic Equation   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Separate the numerator:   Now each term matches an entry in the Laplace table.   Take the inverse Laplace transform term by term:   So    "
+},
+{
+  "id": "lt-method-steps-worked-examples-9",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-9",
+  "type": "🌌 Example",
+  "number": "227",
+  "title": "Third-Order Equation.",
+  "body": "Third-Order Equation   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Isolate :      This denominator factors by grouping:   Before jumping to PFD, simplify as much as possible first:   Now PFD is a little easier. Here is the general form:   Applying the standard process gives: ,   So the prepared is:    Take the inverse Laplace transform term by term:   giving us the solution:    "
+},
+{
+  "id": "lt-method-steps-worked-examples-10",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-worked-examples-10",
+  "type": "🌌 Example",
+  "number": "228",
+  "title": "Sinusoidal Forcing with Exponential Growth.",
+  "body": "Sinusoidal Forcing with Exponential Growth   Solve the initial value problem using the Laplace transform:     Specific-Roadmap                              Laplace Domain Equation    Isolate :      Isolated    Rewrite into pieces that match table entries:   Each piece is now recognizable for inverse transforming.   Take the inverse Laplace transform of each term:   Therefore, the solution is:    "
+},
+{
+  "id": "lt-method-steps-examples-cyu-bundle",
+  "level": "2",
+  "url": "lt-method-steps-examples.html#lt-method-steps-examples-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "229",
+  "title": "🤔💭 Reading Questions.",
+  "body": " 🤔💭 Reading Questions   🤔💭 Who Does What?  Match each step with its primary role.   Turns the DE into an algebra problem Step 1 — Forward Transform  Makes every term inverse-friendly Step 2 — Solve & Prepare  Reveals Step 3 — Inverse Transform     🤔💭 Where Do ICs Appear?  Initial conditions influence only Step 1.   True Right — after Step 1 they are baked into .  False    "
+},
+{
+  "id": "c10-exercises",
+  "level": "1",
+  "url": "c10-exercises.html",
+  "type": "Section",
+  "number": "12.5",
+  "title": "Chapter 10 Exercises",
+  "body": " Chapter 10 Exercises   ᯓ★❓ Quick-Answer Questions   True-False  Which of the following is NOT a technique mentioned for preparing for the backward transform?    Which of the following is NOT a technique mentioned for preparing for the backward transform?      Completing the square   Incorrect. Completing the square is a technique used to rewrite as a sum of known Laplace transforms.     Partial fraction decomposition   Incorrect. Partial fraction decomposition is another technique used to prepare for the inverse transform.     Integration by Parts   Correct! Integration by parts is not a technique used to prepare for the backward transform.     Rewriting as a sum of -functions   Incorrect. Rewriting is a technique used in Step 2b.      Which of the statements are true?    Which of the statements are true?       The forward Laplace transform converts a differential equation into an algebraic equation    This statement is true. The forward Laplace transform simplifies the differential equation by converting it into an algebraic equation in terms of .      In Step 2, you isolate .    This statement is false. In Step 2, you solve for , not .       Step 2 involves applying the backward Laplace transform     This statement is false. Step 2 involves solving for as a function of .       Step 2 involves rewriting to match forms in the common Laplace transform table     This statement is true. Step 2 prepares for the backward transform by breaking it into known forms found in the table of common Laplace transforms.       The final step involves applying the inverse Laplace transform to recover the solution     This statement is true. The final step of the Laplace Transform Method involves applying the inverse Laplace transform to recover the solution .      Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution    Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution      True   Incorrect.     False   Correct! The Laplace Transform Method accounts for initial conditions in Step 1.      The expression matches the form required to apply the inverse Laplace transform found in the common transform table    True. This expression matches the form in the table and can be directly transformed.      True or False: The inverse Laplace transform is always a unique function.     True      Multiple-Choice  What is the goal of Step 2 in the Laplace Transform Method?    What is the goal of Step 2 in the Laplace Transform Method?      To apply the forward Laplace transform   Incorrect. Applying the forward transform is done in Step 1.     To solve for   Incorrect. Solving for is not the goal of Step 2.     To rewrite as a sum of -functions found in the table of common transforms   Correct! Step 2 involves breaking down into simpler components that match known Laplace transforms.     To find the particular solution to the differential equation   Incorrect. Finding the particular solution is the ultimate goal of the Laplace Transform Method, not just Step 2.      Which of the following is the main purpose of Step 2 in the Laplace Transform Method?    Which of the following is the main purpose of Step 2 in the Laplace Transform Method?      To solve the algebraic equation for   Incorrect. Solving for happens in Step 2.     To prepare for the inverse Laplace transform by rewriting it as a sum of known forms   Correct! Step 2 involves breaking down into simpler components that match known Laplace transforms.     To apply the forward Laplace transform   Incorrect. Applying the forward transform happens in Step 1.     To account for initial conditions   Incorrect. Initial conditions are accounted for in Step 1.      Which step is likely to involve completing the square?    Which step is likely to involve completing the square?      Step 1: Apply the Forward Transform   Incorrect. Completing the square is not part of applying the forward transform.     Step 2: Solve for   Incorrect. Completing the square typically happens in Step 2.     Step 2: Prepare for the Backward Transform   Correct! Completing the square is a technique used in Step 2 to simplify .     Step 3: Apply the Backward Transform   Incorrect. Completing the square should be done before applying the backward transform.       📖❓ Select the Forward Transform  Which of the following represents the correct Laplace transform of the equation ?     This is the correct transformation of the given differential equation.     Where are the initial conditions?     Close, but this answer is off by a sign.     Look closely at the initial conditions.      📖❓ Select the Forward Transform    What is the Laplace transform of the initial-value problem ?       This is the correct transformation of the initial-value problem.     Double-check the signs and the initial condition terms.     This answer is missing the initial condition terms on the left-hand side.     This only represents the transform of and does not account for the left-hand side of the equation.      📖❓ Splitting Fractions   Which expression helps reveal the table match for ?      Yes! Now each term matches a separate entry in the Laplace table.     This doesn't help you match any table entries more clearly.     This breaks the numerator improperly.     This has an incorrect decomposition.      📖❓    In the Laplace Transform Method, the inverse transform      converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.       📖❓   What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with L .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.       📖❓    Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?       Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.       📖❓             Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.       📖❓          Incorrect.       Incorrect.       Correct!       Incorrect.            Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.      What is the Laplace transform of ?                  In the equation , what is the Laplace transform of the right-hand side?                  📖❓ Direct Inverse           Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.      📖❓            Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.      📖❓            No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.      📖❓            Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .      📖❓            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .      📖❓          Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .            Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.            Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .      , which matches the form in the table when       Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.        Which of the following is true about the inverse Laplace transform?     It converts a function from the frequency domain to the time domain.     It is a method to solve algebraic equations.     It is used to differentiate a function with respect to time.     It only works for polynomials.       Other    After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation        Correct! The backward Laplace transform reverts back to the solution .      Remember that the inverse Laplace transform recovers the solution from .        ?   After completing the square of the denominator: missing number         Correct!      Incorrect. Write it down carefully      Please review the reading.        📖❓ Match the Next Step in the Method  Drag the task, on the left, that directly follows the task on the right.   Review the Steps.     ... The result is your solution.  After applying the inverse laplace transform to ...    ... Use algebra to isolate it.  A forward transform you get an algebraic equation involving ...    ... Rewrite it as a sum of expressions resembling common Laplace transforms.  Once you have isolated ...    ... Apply the Laplace Transform to it  Given an initial-valued problem ...       Explain the significance of completing the square in finding inverse Laplace transforms.     Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.      Why is partial fraction decomposition helpful in finding inverse Laplace transforms?     Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Why is the Laplace Transform Method considered a powerful tool for solving differential equations?     What role does the table of common Laplace transforms play in the Laplace Transform Method?      Explain how the Laplace transform simplifies solving linear differential equations. Include a discussion of how initial conditions are incorporated into the transformed equation.    The Laplace transform converts a linear differential equation into an algebraic equation in the -domain. This simplification occurs because the transform converts derivatives into polynomials of , reducing the differential equation to a solvable algebraic equation. Initial conditions are directly incorporated into the transformed equation, modifying the transformed terms to include constants that reflect the initial values of the function and its derivatives. This allows the solution of the equation to be found more easily in the -domain, before applying the inverse Laplace transform to return to the time domain.     Multiple Choice: Which of the following is NOT a property of the Laplace transform?  The Laplace transform is linear.  The Laplace transform converts a derivative into a polynomial in .  The Laplace transform can only be applied to functions defined for all time.  The Laplace transform of shifts by in the -domain.      The correct answer is: \"The Laplace transform can only be applied to functions defined for all time.\" The Laplace transform can be applied to functions defined for .     Fill in the blank: The Laplace transform of the second derivative is given by .    The Laplace transform of the second derivative is given by .        🏗️ Warm-ups & Drills  Forward Transform the Equation   Forward transform the following initial-value problem into the Laplace Domain. Don't Solve for .      Applying the Laplace Transform to both sides:      Match the Sine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.                          Match the Cosine Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.                    Match the Power Form   Rewrite each of the following into the form , by filling in the appropriate values in the boxes.                            Inverse Transforms   Apply the inverse transform to revert each Laplace solution back into a function of .      The in the denominator tells us that we need . Before we do, let's factor out : .       Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so        This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so                 The form of this denominator is and has no in the numerator. Therefore,        The denominator, , indicates an and a term. Therefore,        The in the denominator tells us that we need . Before we do, let's factor out : .           The form of this denominator is and has no in the numerator. Therefore,   The denominator, , indicates an and a term. Therefore,        Rewrite as to get:   The first term matches L with , , and the second term matches L after multiplying by :        🏗️ Drill: Preparing & Invert   Prepare each Laplace-domain solution for an inverse transformation, then transform it back into a function of .   Backward Transforms- Level 1                                                                                                            This expression matches the form with , so the inverse Laplace transform is .     Backward Transforms- Level 2                   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .                                                 The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .       Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:        First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:                      Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .            Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .            As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like-terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.          Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form, it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill, so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.                                               Backward Transforms- Level 3                   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .                                   Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details     Equating coefficients gives us four equations in four unknowns.     With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.      In the Laplace Domain: Isolate, Prepare & Invert   Isolate , prepare it for inversion, and invert it.                       Solving Differential Equations   Solve each of the following initial-value problems using Laplace Transforms.      We begin by taking the Laplace transform and substituting in the initial conditions. Now we aim to solve for so we use algebra to rearrange as follows. We need to do a partial fraction decomposition before we can take the inverse LT. Equating the coefficients of like-terms yields, we can solve for  , an . Hence we have Now we need only take the inverse LT to find the solution.             We begin by taking the Laplace transform and substituting in the initial conditions. Now we aim to solve for so we use algebra to rearrange as follows. We need to do a partial fraction decomposition before we can take the inverse LT. Equating the coefficients of like-terms yields, we can solve for  , an . Hence, we have \\begin{equation} Y(s) = \\dfrac{-1}{s+1} + \\dfrac{3s+5}{s^2 - 2s + 5}. \\label{Y_of_s} \\end{equation} We need to take the inverse Laplace Transform to fin We need to complete the square on the irreducible quadratic term as follows. We need to transform the second term, as follows, so we can use L8 and L7 on the Laplace transform table. We are now prepared to take the inverse LT of equation \\ref{Y_of_s} to get the solution to the IVP.             Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like-terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .            Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .            Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:        Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:        Applying the Laplace transform:   Solving for and then applying the inverse Laplace transform gives the solution.       Applying the Laplace transform and solving the algebraic equation will yield the solution in the -domain, which can then be inverted to find .       We intend to use Laplace transforms to solve this IVP, but we need to verify that this is an appropriate technique. We can verify that this is  the DE is linear,  the DE has constant coefficients, and  initial conditions are provided.    Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that is the dependent variable and is the independent variable, so our goal is to find a function that satisfies the DE and the initial conditions.   Margin note: We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.   We begin by taking the Laplace transform of both sides of the DE, using linearity as needed.   Now we use the provided initial conditions.   Next we will use algebra to solve for    We need to find the inverse Laplace transform of both sides of the equation. In order to do that, we apply partial fraction decomposition to the rational function on the right hand side, giving   We have a repeated linear factor, , and two other linear factors, so the form of the partial fraction decomposition can be written as   (PFD details...can be omitted?)    Hence, we have   Now we are prepared to take the inverse Laplace transform.   Thus, we have found the desired unknown function   Optional: verify the solution    We also verify the initial conditions:        *       *        . Applying to both sides:    . Next, we isolate on one side of the equation:    . We need to express as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, is ready to go, but requires partial fraction decomposition. We start by writing down the form of the decomposition,  Now, we find and by plugging in values of :        :             :             Thus, the prepared is    . Finally, we apply the backward step to get the solution:         . Applying to both sides: where and  ,  .  So the complete forward transform is    . Next, we isolate on one side of the equation:    . Now, we need to express as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in as a single fraction, like so . Plugging this back into the equation for gives the new , and we are ready to apply partial fraction decomposition. The form of the decomposition is Now, we find and by plugging in values of ,        :             :             :                   Thus, the prepared is    . Finally, we perform the backward step to get the solution:         . Applying to both sides: where and  ,  .  So the complete forward transform is:    . Next, we isolate on one side of the equation:    . Now, we need to express as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition, Now, we find and by plugging in values of ,    :            :            :            So the updated is . Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.    . Now for the backward step to get the solution:       "
+},
+{
+  "id": "c10-quick-answer-tf",
+  "level": "2",
+  "url": "c10-quick-answer.html#c10-quick-answer-tf",
+  "type": "Reading Question",
+  "number": "12.5.1",
+  "title": "True-False.",
+  "body": "True-False  Which of the following is NOT a technique mentioned for preparing for the backward transform?    Which of the following is NOT a technique mentioned for preparing for the backward transform?      Completing the square   Incorrect. Completing the square is a technique used to rewrite as a sum of known Laplace transforms.     Partial fraction decomposition   Incorrect. Partial fraction decomposition is another technique used to prepare for the inverse transform.     Integration by Parts   Correct! Integration by parts is not a technique used to prepare for the backward transform.     Rewriting as a sum of -functions   Incorrect. Rewriting is a technique used in Step 2b.      Which of the statements are true?    Which of the statements are true?       The forward Laplace transform converts a differential equation into an algebraic equation    This statement is true. The forward Laplace transform simplifies the differential equation by converting it into an algebraic equation in terms of .      In Step 2, you isolate .    This statement is false. In Step 2, you solve for , not .       Step 2 involves applying the backward Laplace transform     This statement is false. Step 2 involves solving for as a function of .       Step 2 involves rewriting to match forms in the common Laplace transform table     This statement is true. Step 2 prepares for the backward transform by breaking it into known forms found in the table of common Laplace transforms.       The final step involves applying the inverse Laplace transform to recover the solution     This statement is true. The final step of the Laplace Transform Method involves applying the inverse Laplace transform to recover the solution .      Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution    Similar to other methods, this method applies the initial conditions to the general solution to find a particular solution      True   Incorrect.     False   Correct! The Laplace Transform Method accounts for initial conditions in Step 1.      The expression matches the form required to apply the inverse Laplace transform found in the common transform table    True. This expression matches the form in the table and can be directly transformed.      True or False: The inverse Laplace transform is always a unique function.     True     "
+},
+{
+  "id": "c10-quick-answer-mc",
+  "level": "2",
+  "url": "c10-quick-answer.html#c10-quick-answer-mc",
+  "type": "Reading Question",
+  "number": "12.5.2",
+  "title": "Multiple-Choice.",
+  "body": "Multiple-Choice  What is the goal of Step 2 in the Laplace Transform Method?    What is the goal of Step 2 in the Laplace Transform Method?      To apply the forward Laplace transform   Incorrect. Applying the forward transform is done in Step 1.     To solve for   Incorrect. Solving for is not the goal of Step 2.     To rewrite as a sum of -functions found in the table of common transforms   Correct! Step 2 involves breaking down into simpler components that match known Laplace transforms.     To find the particular solution to the differential equation   Incorrect. Finding the particular solution is the ultimate goal of the Laplace Transform Method, not just Step 2.      Which of the following is the main purpose of Step 2 in the Laplace Transform Method?    Which of the following is the main purpose of Step 2 in the Laplace Transform Method?      To solve the algebraic equation for   Incorrect. Solving for happens in Step 2.     To prepare for the inverse Laplace transform by rewriting it as a sum of known forms   Correct! Step 2 involves breaking down into simpler components that match known Laplace transforms.     To apply the forward Laplace transform   Incorrect. Applying the forward transform happens in Step 1.     To account for initial conditions   Incorrect. Initial conditions are accounted for in Step 1.      Which step is likely to involve completing the square?    Which step is likely to involve completing the square?      Step 1: Apply the Forward Transform   Incorrect. Completing the square is not part of applying the forward transform.     Step 2: Solve for   Incorrect. Completing the square typically happens in Step 2.     Step 2: Prepare for the Backward Transform   Correct! Completing the square is a technique used in Step 2 to simplify .     Step 3: Apply the Backward Transform   Incorrect. Completing the square should be done before applying the backward transform.       📖❓ Select the Forward Transform  Which of the following represents the correct Laplace transform of the equation ?     This is the correct transformation of the given differential equation.     Where are the initial conditions?     Close, but this answer is off by a sign.     Look closely at the initial conditions.      📖❓ Select the Forward Transform    What is the Laplace transform of the initial-value problem ?       This is the correct transformation of the initial-value problem.     Double-check the signs and the initial condition terms.     This answer is missing the initial condition terms on the left-hand side.     This only represents the transform of and does not account for the left-hand side of the equation.      📖❓ Splitting Fractions   Which expression helps reveal the table match for ?      Yes! Now each term matches a separate entry in the Laplace table.     This doesn't help you match any table entries more clearly.     This breaks the numerator improperly.     This has an incorrect decomposition.      📖❓    In the Laplace Transform Method, the inverse transform      converts a differential equation into an algebraic equation.   No, this describes the forward Laplace transform.     solves the algebraic equation for .   No, solving for happens after applying the forward transform.     recovers the original function from .   Correct! The inverse Laplace transform brings us back to the original function .     eliminates initial conditions from the equation.   No, initial conditions are incorporated into the transformed equation, not eliminated.       📖❓   What is the next step needed to compute ?    Look-up the inverse Laplace transform in the table.   Incorrect. This function is not directly in the table.     Factor the denominator.   Incorrect. Factoring the denominator is not necessary at this stage.     Rewrite the numerator, then split the fraction like so: .   Correct! The numerator needs an to match with L .     Split the fraction directly, like so:   Incorrect. The next step is to decompose the function into simpler forms.       📖❓    Which of the following -functions require adjustment to match one of the common inverse Laplace transforms?       Incorrect. This function already matches a known cosine form and does not require any missing constants.       Correct! This function would require a missing constant adjustment to match the sine form, with the numerator needing to be .       Incorrect. This function already matches a known form and does not require any missing constants.       📖❓             Correct! Factoring out and placing the missing constant gives the correct form: .       Incorrect. The correct answer requires factoring and rebalancing, giving .       Incorrect. The sine form, not cosine, matches this function.       📖❓          Incorrect.       Incorrect.       Correct!       Incorrect.            Correct! The inverse Laplace transform matches the forms in the table.       No, this does not match the correct inverse Laplace transform.       Incorrect. This does not account for all terms in the inverse Laplace transform.      What is the Laplace transform of ?                  In the equation , what is the Laplace transform of the right-hand side?                  📖❓ Direct Inverse           Correct! The inverse Laplace transform of is .       No, the correct transform for is , not .       No, this is not the correct inverse transform for the given expression.       No, this is not an inverse transform expression.      📖❓            Correct! The inverse Laplace transform of is indeed .       No, the correct answer is , not .       No, the exponent should be , not .       No, this is not the correct inverse Laplace transform.      📖❓            No, this is incorrect. The correct answer is .       Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is the original function in the -domain, not its inverse transform.      📖❓            Correct! The inverse Laplace transform of is .       No, the correct inverse Laplace transform is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .      📖❓            Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, this is not the correct inverse transform for the given expression.       No, the correct inverse transform for is .      📖❓          Correct! The inverse Laplace transform of is .       No, the correct answer is , not .       No, the correct inverse transform is , not .       No, the correct answer is , not .            Correct! The inverse Laplace transform is .       Incorrect. This does not match the correct inverse Laplace transform.       Incorrect. This does not include the full inverse Laplace transform.            Correct! The inverse Laplace transform of this expression is .       Incorrect. The correct inverse Laplace transform is .       Incorrect. The correct inverse Laplace transform is .      , which matches the form in the table when       Correct! The correct value for is .       Incorrect. The correct value is , not 5.       Incorrect. The correct value is , not 3.        Which of the following is true about the inverse Laplace transform?     It converts a function from the frequency domain to the time domain.     It is a method to solve algebraic equations.     It is used to differentiate a function with respect to time.     It only works for polynomials.      "
+},
+{
+  "id": "c10-quick-answer-other",
+  "level": "2",
+  "url": "c10-quick-answer.html#c10-quick-answer-other",
+  "type": "Reading Question",
+  "number": "12.5.3",
+  "title": "Other.",
+  "body": "Other    After applying the backward Laplace transform in Step 3, you obtain , the to the differential equation        Correct! The backward Laplace transform reverts back to the solution .      Remember that the inverse Laplace transform recovers the solution from .        ?   After completing the square of the denominator: missing number         Correct!      Incorrect. Write it down carefully      Please review the reading.        📖❓ Match the Next Step in the Method  Drag the task, on the left, that directly follows the task on the right.   Review the Steps.     ... The result is your solution.  After applying the inverse laplace transform to ...    ... Use algebra to isolate it.  A forward transform you get an algebraic equation involving ...    ... Rewrite it as a sum of expressions resembling common Laplace transforms.  Once you have isolated ...    ... Apply the Laplace Transform to it  Given an initial-valued problem ...       Explain the significance of completing the square in finding inverse Laplace transforms.     Completing the square is a technique used to transform quadratic expressions in the denominator into a form that matches known inverse Laplace transforms, particularly those involving sine and cosine functions.      Why is partial fraction decomposition helpful in finding inverse Laplace transforms?     Partial fraction decomposition breaks down complex rational functions into simpler fractions that correspond to known inverse Laplace transforms, making the transformation process easier.    Why is the Laplace Transform Method considered a powerful tool for solving differential equations?     What role does the table of common Laplace transforms play in the Laplace Transform Method?      Explain how the Laplace transform simplifies solving linear differential equations. Include a discussion of how initial conditions are incorporated into the transformed equation.    The Laplace transform converts a linear differential equation into an algebraic equation in the -domain. This simplification occurs because the transform converts derivatives into polynomials of , reducing the differential equation to a solvable algebraic equation. Initial conditions are directly incorporated into the transformed equation, modifying the transformed terms to include constants that reflect the initial values of the function and its derivatives. This allows the solution of the equation to be found more easily in the -domain, before applying the inverse Laplace transform to return to the time domain.     Multiple Choice: Which of the following is NOT a property of the Laplace transform?  The Laplace transform is linear.  The Laplace transform converts a derivative into a polynomial in .  The Laplace transform can only be applied to functions defined for all time.  The Laplace transform of shifts by in the -domain.      The correct answer is: \"The Laplace transform can only be applied to functions defined for all time.\" The Laplace transform can be applied to functions defined for .     Fill in the blank: The Laplace transform of the second derivative is given by .    The Laplace transform of the second derivative is given by .    "
+},
+{
+  "id": "c10-exercises-3-2",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-2",
+  "type": "Exercise",
+  "number": "12.5.1",
+  "title": "Forward Transform the Equation.",
+  "body": "Forward Transform the Equation   Forward transform the following initial-value problem into the Laplace Domain. Don't Solve for .      Applying the Laplace Transform to both sides:     "
+},
+{
+  "id": "c10-exercises-3-3-3",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-3-3",
+  "type": "Exercise",
+  "number": "12.5.2",
+  "title": "",
+  "body": "     "
+},
+{
+  "id": "c10-exercises-3-3-4",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-3-4",
+  "type": "Exercise",
+  "number": "12.5.3",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-3-5",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-3-5",
+  "type": "Exercise",
+  "number": "12.5.4",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-4-3",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-4-3",
+  "type": "Exercise",
+  "number": "12.5.5",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-4-4",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-4-4",
+  "type": "Exercise",
+  "number": "12.5.6",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-5-3",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-5-3",
+  "type": "Exercise",
+  "number": "12.5.7",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-5-4",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-5-4",
+  "type": "Exercise",
+  "number": "12.5.8",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-5-5",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-5-5",
+  "type": "Exercise",
+  "number": "12.5.9",
+  "title": "",
+  "body": "       "
+},
+{
+  "id": "c10-exercises-3-6-3",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-3",
+  "type": "Exercise",
+  "number": "12.5.10",
+  "title": "",
+  "body": "   The in the denominator tells us that we need . Before we do, let's factor out : .   "
+},
+{
+  "id": "c10-exercises-3-6-4",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-4",
+  "type": "Exercise",
+  "number": "12.5.11",
+  "title": "",
+  "body": "   Since the denominator has the form, , and there is no in the numerator, we should apply . As before, it is helpful to first factor out the constant , . According to , we are missing in the numerator. Let's put it there by multiplying by , like so    "
+},
+{
+  "id": "c10-exercises-3-6-5",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-5",
+  "type": "Exercise",
+  "number": "12.5.12",
+  "title": "",
+  "body": "   This denominator has the form , which matches with . . In this case, the numerator is missing a . We can introduce it by multiplying by , like so    "
+},
+{
+  "id": "c10-exercises-3-6-6",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-6",
+  "type": "Exercise",
+  "number": "12.5.13",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-3-6-7",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-7",
+  "type": "Exercise",
+  "number": "12.5.14",
+  "title": "",
+  "body": "   The form of this denominator is and has no in the numerator. Therefore,    "
+},
+{
+  "id": "c10-exercises-3-6-8",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-8",
+  "type": "Exercise",
+  "number": "12.5.15",
+  "title": "",
+  "body": "   The denominator, , indicates an and a term. Therefore,    "
+},
+{
+  "id": "c10-exercises-3-6-9",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-9",
+  "type": "Exercise",
+  "number": "12.5.16",
+  "title": "",
+  "body": "   The in the denominator tells us that we need . Before we do, let's factor out : .       "
+},
+{
+  "id": "c10-exercises-3-6-10",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-10",
+  "type": "Exercise",
+  "number": "12.5.17",
+  "title": "",
+  "body": "   The form of this denominator is and has no in the numerator. Therefore,   The denominator, , indicates an and a term. Therefore,    "
+},
+{
+  "id": "c10-exercises-3-6-11",
+  "level": "2",
+  "url": "c10-exercises-3.html#c10-exercises-3-6-11",
+  "type": "Exercise",
+  "number": "12.5.18",
+  "title": "",
+  "body": "   Rewrite as to get:   The first term matches L with , , and the second term matches L after multiplying by :    "
+},
+{
+  "id": "c10-exercises-4-3-2",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-2",
+  "type": "Exercise",
+  "number": "12.5.1",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-4-3-3",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-3",
+  "type": "Exercise",
+  "number": "12.5.2",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-4-3-4",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-4",
+  "type": "Exercise",
+  "number": "12.5.3",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-3-5",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-5",
+  "type": "Exercise",
+  "number": "12.5.4",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-3-6",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-6",
+  "type": "Exercise",
+  "number": "12.5.5",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-3-7",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-7",
+  "type": "Exercise",
+  "number": "12.5.6",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-4-3-8",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-8",
+  "type": "Exercise",
+  "number": "12.5.7",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-3-9",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-9",
+  "type": "Exercise",
+  "number": "12.5.8",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c10-exercises-4-3-10",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-10",
+  "type": "Exercise",
+  "number": "12.5.9",
+  "title": "",
+  "body": "         "
+},
+{
+  "id": "c10-exercises-4-3-11",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-3-11",
+  "type": "Exercise",
+  "number": "12.5.10",
+  "title": "",
+  "body": "   This expression matches the form with , so the inverse Laplace transform is .   "
+},
+{
+  "id": "c10-exercises-4-4-2",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-2",
+  "type": "Exercise",
+  "number": "12.5.11",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-3",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-3",
+  "type": "Exercise",
+  "number": "12.5.12",
+  "title": "",
+  "body": "   This expression can be split into two parts: and . The first part corresponds to and the second part corresponds to , so the inverse Laplace transform is .   "
+},
+{
+  "id": "c10-exercises-4-4-4",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-4",
+  "type": "Exercise",
+  "number": "12.5.13",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-5",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-5",
+  "type": "Exercise",
+  "number": "12.5.14",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-6",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-6",
+  "type": "Exercise",
+  "number": "12.5.15",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-7",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-7",
+  "type": "Exercise",
+  "number": "12.5.16",
+  "title": "",
+  "body": "   The discriminant of the denominator is: , indicating that completing the square is necessary: . Rewriting as: . Therefore, .   "
+},
+{
+  "id": "c10-exercises-4-4-8",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-8",
+  "type": "Exercise",
+  "number": "12.5.17",
+  "title": "",
+  "body": "   Completing the square for the denominator of gives: . However, the numerator does not match . To resolve this, we rewrite as and group terms: , Now, apply the inverse Laplace transform:    "
+},
+{
+  "id": "c10-exercises-4-4-9",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-9",
+  "type": "Exercise",
+  "number": "12.5.18",
+  "title": "",
+  "body": "   First, factor the quadratic denominator: Now decompose into partial fractions: Multiply both sides by , and solve for and by selecting convenient values for :        The partial fraction decomposition is: Therefore:    "
+},
+{
+  "id": "c10-exercises-4-4-10",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-10",
+  "type": "Exercise",
+  "number": "12.5.19",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-11",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-11",
+  "type": "Exercise",
+  "number": "12.5.20",
+  "title": "",
+  "body": "   Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .        "
+},
+{
+  "id": "c10-exercises-4-4-12",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-12",
+  "type": "Exercise",
+  "number": "12.5.21",
+  "title": "",
+  "body": "   Decompose into partial fractions: . Find and : . Use the inverse Laplace transform: .        "
+},
+{
+  "id": "c10-exercises-4-4-13",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-13",
+  "type": "Exercise",
+  "number": "12.5.22",
+  "title": "",
+  "body": "   As in the previous examples, the denominator is a second-degree polynomial; therefore it is sensible for us to begin by completing the square in the denominator as we did in the previous two examples.   Take a careful look at the denominator here. It's really close to matching or , but it is not a match because of the negative sign in front of the We need to change course when this happens. Another algebraic manipulation that we might consider is a partial fraction decomposition.   Margin note: If you need to review partial fraction decomposition, go HERE.    We revert to the original expression, but this time, instead of completing the square, we factor the denominator.   Since each of the factors in the denominator is a distinct linear factor, we know that the form of the partial fraction decomposition is   Our next goal is to determine the coefficients and in this equations. There are multiple ways to achieve this and we demonstrate just one here. We multiply both sides of the equation by the least common denominator, , and then expand and collect like-terms, as shown.   At this point, we have a polynomial on the left hand side and a polynomial on the right hand side. The only way these can be equal to each other is if the corresponding coefficients are equal. That is, the coefficient on on the left hand side is 1, while the coefficient on on the right hand side of the equation is . Since the polynomials are equal, we know that these are equal. That is, Similarly, if we equate the constants, we have Thus, we have the following system of two linear equations in terms of two unknown variables, and .   There are many ways to solve such an equation, and you are encouraged to choose the solution technique you like the most. Here we will solve the first equation for , and then substitute into the second equation, hence we have   Remember that our goal is to take the inverse Laplace transform. Our algebraic manipulation was helpful because we took a more complex expression and rewrote it as two simpler fractions. We can now use to find the inverse Laplace transform as follows.    "
+},
+{
+  "id": "c10-exercises-4-4-14",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-14",
+  "type": "Exercise",
+  "number": "12.5.23",
+  "title": "",
+  "body": "     Since has a quadratic function in the denominator, it makes sense that we would try to match it with one of the forms above, however, the form of the numerator suggests matching it with the second expression.  As we mentioned earlier, we'll try to make the denominator match first. Since both of the forms we're trying to match are of the form we will complete the square first: (If you still don't remember how to complete the square, look up that primer and do the previous exercises in that section above.)  Let's rewrite the given expression as follows.   We've got the denominator in exactly the right form, it looks just like with and . As in the previous section, once we've gotten the denominator in shape, we turn our attention to the numerator. If we look back at the two forms we are trying to match, we see that our expression has an in the numerator, so it's more like . It would be exactly right if we had in the numerator, which in this case would be .  What we do have in the numerator is ; and we would like it to be which means if we added 4, we'd have exactly the right thing. If we want to add 4, we'll need to compensate by also subtracting 4, like this:   Great! Now we can split this single fraction into two separate fractions: We're almost there! The first fraction is a perfect match for the form (with and ); but we still have another expression that is not yet a match. The remaining fraction looks like it could eventually match the form . We would need to have a 5 in the numerator, and we currently have a 4. But we can fix that as we did in the previous section: Now let's put it all together. Here's everything we did:   As mentioned before, being able to use appropriate algebra to \"match\" forms is really important when we work with Laplace Transforms. Since it's really just algebra, now is a great time to practice that skill, so when we are in the middle of studying Laplace Transforms, you can just focus on the \"new\" stuff.   "
+},
+{
+  "id": "c10-exercises-4-4-15",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-15",
+  "type": "Exercise",
+  "number": "12.5.24",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-16",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-16",
+  "type": "Exercise",
+  "number": "12.5.25",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-4-17",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-4-17",
+  "type": "Exercise",
+  "number": "12.5.26",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-5-2",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-5-2",
+  "type": "Exercise",
+  "number": "12.5.27",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-5-3",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-5-3",
+  "type": "Exercise",
+  "number": "12.5.28",
+  "title": "",
+  "body": "   First, factor the denominator as . Then, decompose the expression into . Solving for and , you get the inverse Laplace transform as .   "
+},
+{
+  "id": "c10-exercises-4-5-4",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-5-4",
+  "type": "Exercise",
+  "number": "12.5.29",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-5-5",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-5-5",
+  "type": "Exercise",
+  "number": "12.5.30",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c10-exercises-4-5-6",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-5-6",
+  "type": "Exercise",
+  "number": "12.5.31",
+  "title": "",
+  "body": "   Note that as the quadratic term in the denominator does not factor, the denominator contains an irreducible quadratic factor and a repeated linear factor. We'll proceed by simplifying this complicated fraction with a Partial Fraction Decomposition of the form   You may also consider using technology to find a partial fraction decomposition. You should get  Click here for the details     Equating coefficients gives us four equations in four unknowns.     With the partial fraction decomposition in hand, we are prepared to take the inverse Laplace transform, using the same types of algebraic manipulations demonstrated in the previous examples.    "
+},
+{
+  "id": "c10-exercises-4-6-3",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-6-3",
+  "type": "Exercise",
+  "number": "12.5.32",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-4-6-4",
+  "level": "2",
+  "url": "c10-exercises-4.html#c10-exercises-4-6-4",
+  "type": "Exercise",
+  "number": "12.5.33",
+  "title": "",
+  "body": "        "
+},
+{
+  "id": "c10-exercises-5-3",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-3",
+  "type": "Exercise",
+  "number": "12.5.1",
+  "title": "",
+  "body": "   We begin by taking the Laplace transform and substituting in the initial conditions. Now we aim to solve for so we use algebra to rearrange as follows. We need to do a partial fraction decomposition before we can take the inverse LT. Equating the coefficients of like-terms yields, we can solve for  , an . Hence we have Now we need only take the inverse LT to find the solution.         "
+},
+{
+  "id": "c10-exercises-5-4",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-4",
+  "type": "Exercise",
+  "number": "12.5.2",
+  "title": "",
+  "body": "   We begin by taking the Laplace transform and substituting in the initial conditions. Now we aim to solve for so we use algebra to rearrange as follows. We need to do a partial fraction decomposition before we can take the inverse LT. Equating the coefficients of like-terms yields, we can solve for  , an . Hence, we have \\begin{equation} Y(s) = \\dfrac{-1}{s+1} + \\dfrac{3s+5}{s^2 - 2s + 5}. \\label{Y_of_s} \\end{equation} We need to take the inverse Laplace Transform to fin We need to complete the square on the irreducible quadratic term as follows. We need to transform the second term, as follows, so we can use L8 and L7 on the Laplace transform table. We are now prepared to take the inverse LT of equation \\ref{Y_of_s} to get the solution to the IVP.         "
+},
+{
+  "id": "c10-exercises-5-5",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-5",
+  "type": "Exercise",
+  "number": "12.5.3",
+  "title": "",
+  "body": "   Apply the Laplace transform to both sides of the equation: . Using the properties of the Laplace transform for derivatives, we have: . Substitute the initial conditions and : . Combine like-terms: . Solve for : . Factor the denominator: . Use partial fraction decomposition to find the inverse Laplace transform: . Solve for and : . Finally, take the inverse Laplace transform to find : .        "
+},
+{
+  "id": "c10-exercises-5-6",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-6",
+  "type": "Exercise",
+  "number": "12.5.4",
+  "title": "",
+  "body": "   Apply the Laplace transform to both sides: . Use the properties of the Laplace transform: . Substitute the initial condition : . Solve for : . Use partial fraction decomposition: . Find and : . Inverse Laplace transform gives: .        "
+},
+{
+  "id": "c10-exercises-5-7",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-7",
+  "type": "Exercise",
+  "number": "12.5.5",
+  "title": "",
+  "body": "   Applying the Laplace transform to both sides, we get:   Substituting the initial condition , the equation becomes:   Rearranging and solving for :    We can now decompose the second term using partial fractions:   Solving for and , we get and . Therefore:    Taking the inverse Laplace transform, we obtain the solution:    "
+},
+{
+  "id": "c10-exercises-5-8",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-8",
+  "type": "Exercise",
+  "number": "12.5.6",
+  "title": "",
+  "body": "   Applying the Laplace transform:   Substituting the initial conditions:   Solving for :   After rearranging and solving, the inverse Laplace transform gives:    "
+},
+{
+  "id": "c10-exercises-5-9",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-9",
+  "type": "Exercise",
+  "number": "12.5.7",
+  "title": "",
+  "body": "   Applying the Laplace transform:   Solving for and then applying the inverse Laplace transform gives the solution.   "
+},
+{
+  "id": "c10-exercises-5-10",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-10",
+  "type": "Exercise",
+  "number": "12.5.8",
+  "title": "",
+  "body": "   Applying the Laplace transform and solving the algebraic equation will yield the solution in the -domain, which can then be inverted to find .   "
+},
+{
+  "id": "c10-exercises-5-11",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-11",
+  "type": "Exercise",
+  "number": "12.5.9",
+  "title": "",
+  "body": "   We intend to use Laplace transforms to solve this IVP, but we need to verify that this is an appropriate technique. We can verify that this is  the DE is linear,  the DE has constant coefficients, and  initial conditions are provided.    Hence, it is appropriate to proceed with the Laplace transform solution technique. We also note that is the dependent variable and is the independent variable, so our goal is to find a function that satisfies the DE and the initial conditions.   Margin note: We could actually use the method of undetermined coefficients. You are encouraged to do this and verify that the solution is the same.   We begin by taking the Laplace transform of both sides of the DE, using linearity as needed.   Now we use the provided initial conditions.   Next we will use algebra to solve for    We need to find the inverse Laplace transform of both sides of the equation. In order to do that, we apply partial fraction decomposition to the rational function on the right hand side, giving   We have a repeated linear factor, , and two other linear factors, so the form of the partial fraction decomposition can be written as   (PFD details...can be omitted?)    Hence, we have   Now we are prepared to take the inverse Laplace transform.   Thus, we have found the desired unknown function   Optional: verify the solution    We also verify the initial conditions:    "
+},
+{
+  "id": "c10-exercises-5-12",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-12",
+  "type": "Exercise",
+  "number": "12.5.10",
+  "title": "",
+  "body": "   *   "
+},
+{
+  "id": "c10-exercises-5-13",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-13",
+  "type": "Exercise",
+  "number": "12.5.11",
+  "title": "",
+  "body": "   *   "
+},
+{
+  "id": "c10-exercises-5-14",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-14",
+  "type": "Exercise",
+  "number": "12.5.12",
+  "title": "",
+  "body": "    . Applying to both sides:    . Next, we isolate on one side of the equation:    . We need to express as a sum of functions that match known forms in the Laplace transform table. We see from the last equation, is ready to go, but requires partial fraction decomposition. We start by writing down the form of the decomposition,  Now, we find and by plugging in values of :        :             :             Thus, the prepared is    . Finally, we apply the backward step to get the solution:    "
+},
+{
+  "id": "c10-exercises-5-15",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-15",
+  "type": "Exercise",
+  "number": "12.5.13",
+  "title": "",
+  "body": "    . Applying to both sides: where and  ,  .  So the complete forward transform is    . Next, we isolate on one side of the equation:    . Now, we need to express as a sum of functions that match known forms in the Laplace transform table. This can be simplified slightly by first combining the terms in as a single fraction, like so . Plugging this back into the equation for gives the new , and we are ready to apply partial fraction decomposition. The form of the decomposition is Now, we find and by plugging in values of ,        :             :             :                   Thus, the prepared is    . Finally, we perform the backward step to get the solution:    "
+},
+{
+  "id": "c10-exercises-5-16",
+  "level": "2",
+  "url": "c10-exercises-5.html#c10-exercises-5-16",
+  "type": "Exercise",
+  "number": "12.5.14",
+  "title": "",
+  "body": "    . Applying to both sides: where and  ,  .  So the complete forward transform is:    . Next, we isolate on one side of the equation:    . Now, we need to express as a sum of functions that match known forms in the Laplace transform table, which requires partial fraction decomposition. We start by writing down the form of the decomposition, Now, we find and by plugging in values of ,    :            :            :            So the updated is . Note, the second term is not yet ready and we need to complete the square of its denominator before we can do the backward step.    . Now for the backward step to get the solution:    "
+},
+{
+  "id": "basic-unit-step-function",
+  "level": "1",
+  "url": "basic-unit-step-function.html",
+  "type": "Section",
+  "number": "13.1",
+  "title": "The Basic Unit Step Function",
+  "body": " The Basic Unit Step Function   In differential equations, we often need a simple mathematical switch that can turn a function on or off at a specific time. The simplest of these is the unit step function Also called the Heaviside function. , which jumps from to at a chosen point.    Unit Step Function   📖❓ Function Output   Consider the functions defined by            Give the output of and for the following values of .                                            Unit Step Function    The unit step function is denoted and is defined as: This function flips on at .            Think of the unit step function as an ON–OFF switch. Before , the switch is (OFF); after , it is (ON). When you multiply another function by , that function is either turned OFF (multiplied by 0) or turned ON (multiplied by 1).   📖❓ Unit Step Function Outputs   The unit step function accepts any real number as input. Which of the following best describes its possible outputs?    Only 0  Only 1  Only 0 and 1  Any positive number  Any real number     Switching ON a Parabola at   Consider the function . Describe the difference between and and give a graph of both.    The function, , is a parabola defined for all .  Because when and otherwise, multiplying by  switches off the parabola for and switches it on at . In piecewise form:   and here are the graphs:  Graph of ( left ) and ( right ).                 This example shows how multiplying by acts like a switch: the parabola is OFF for , then instantly turns ON at .   📖❓ Output of   Let . Find the value of at each point:         (a)       (b)       (c)       (d)       Remember: is before and afterward.           Saying that a Function is ON or OFF  Throughout this chapter, we'll often refer to a function as ON or OFF . Here's what we mean:  The unit step function itself is ON when it equals and OFF when it equals .  A function multiplied by the unit step is ON when multiplied by and OFF when multiplied by .     The unit step function is the foundation for all step function work in this chapter. Next, we'll see how to shift the step so it can turn things on at times other than .   "
+},
+{
+  "id": "prereading-1-unit-step",
+  "level": "2",
+  "url": "basic-unit-step-function.html#prereading-1-unit-step",
+  "type": "Checkpoint",
+  "number": "230",
+  "title": "📖❓  Function Output.",
+  "body": " 📖❓ Function Output   Consider the functions defined by            Give the output of and for the following values of .                                          "
+},
+{
+  "id": "def-unit-step",
+  "level": "2",
+  "url": "basic-unit-step-function.html#def-unit-step",
+  "type": "📙 Definition",
+  "number": "231",
+  "title": "Unit Step Function.",
+  "body": " Unit Step Function    The unit step function is denoted and is defined as: This function flips on at .           "
+},
+{
+  "id": "chkpt-1-unit-step",
+  "level": "2",
+  "url": "basic-unit-step-function.html#chkpt-1-unit-step",
+  "type": "Checkpoint",
+  "number": "232",
+  "title": "📖❓  Unit Step Function Outputs.",
+  "body": " 📖❓ Unit Step Function Outputs   The unit step function accepts any real number as input. Which of the following best describes its possible outputs?    Only 0  Only 1  Only 0 and 1  Any positive number  Any real number   "
+},
+{
+  "id": "unit-step-func-6",
+  "level": "2",
+  "url": "basic-unit-step-function.html#unit-step-func-6",
+  "type": "🌌 Example",
+  "number": "233",
+  "title": "Switching ON a Parabola at <span class=\"process-math\">\\(t = 0\\)<\/span>.",
+  "body": " Switching ON a Parabola at   Consider the function . Describe the difference between and and give a graph of both.    The function, , is a parabola defined for all .  Because when and otherwise, multiplying by  switches off the parabola for and switches it on at . In piecewise form:   and here are the graphs:  Graph of ( left ) and ( right ).                "
+},
+{
+  "id": "chkpt-2-unit-step",
+  "level": "2",
+  "url": "basic-unit-step-function.html#chkpt-2-unit-step",
+  "type": "Checkpoint",
+  "number": "235",
+  "title": "📖❓  Output of <span class=\"process-math\">\\(f(t) \\cdot u_c(t)\\)<\/span>.",
+  "body": " 📖❓ Output of   Let . Find the value of at each point:         (a)       (b)       (c)       (d)       Remember: is before and afterward.         "
+},
+{
+  "id": "note-on-off-language",
+  "level": "2",
+  "url": "basic-unit-step-function.html#note-on-off-language",
+  "type": "📝",
+  "number": "236",
+  "title": "Saying that a Function is ON or OFF.",
+  "body": " Saying that a Function is ON or OFF  Throughout this chapter, we'll often refer to a function as ON or OFF . Here's what we mean:  The unit step function itself is ON when it equals and OFF when it equals .  A function multiplied by the unit step is ON when multiplied by and OFF when multiplied by .    "
+},
+{
+  "id": "unit-step-functions",
+  "level": "1",
+  "url": "unit-step-functions.html",
+  "type": "Section",
+  "number": "13.2",
+  "title": "Unit Step Function Variants",
+  "body": " Unit Step Function Variants   The basic unit step switches a function on at . But what if you need the switch to flip later, flip off, or even turn on for just a short while? This paragraphs introduces three key variants:   — switches ON at a chosen time .  — switches OFF at time .  — switches ON for a window from to .   Together, these act like a complete toolkit for modeling stepwise ON\/OFF behavior in real systems.    Shifted Unit Step Function  Prep-Questions   📖❓ True or False: Shifting a Function   The graph of is the same as the graph of shifted right units.    Replacing with in shifts the graph of ANY function 3 units to the right, not just .     📖❓ When Does It Switch?   The unit step function jumps from (OFF) to (ON) at  .        Sometimes you need the step to turn ON at a different time. The shifted unit step function , written , is simply the basic step shifted right (if ) or left (if ):   📜 Shifted Unit Step Function     Before , is OFF; after , it turns ON. is not a new function, it is just the shorthand for a shifted version of .              Exploring the Effect of  Consider the product of the parabolic function and the shifted unit step function . Use the tool to see how changing affects the ON\/OFF behavior of the parabola. Instructions   Hover over the labels , and to highlight its graph.  Drag the value of , initially at , along the axis.         📖❓ Effect of on a Function   What does multiplying a function by do?     It forces OFF before , then switches it ON at .  Exactly! Multiplying by means the function is 0 before and normal after.    It multiplies by .  Not quite. is not a scaling factor, it's a switching function.    It adds to .  Nope, does not alter the function's output directly. It controls when it turns on.    It delays by 5 seconds.  Close, but that's what happens when you write . Multiplying by just turns it ON at .      So, to activate a function at , simply multiply it by . This switch-like behavior will be useful later when we write piecewise functions in terms of .    Reversed Unit Step Function  Prep-Questions   📖❓ When Does It Switch?   Recall that   Complete the logical statement by filling-in the missing numbers.  Since    before , and  after ,  then, the expression    before , and  after ,           📖❓ Understanding ON\/OFF Language   What does it mean when we say a function is \"OFF\" for ?      That becomes negative for .    OFF doesn't mean negative. It means the function is multiplied by , it's gone.      That stops increasing after .    Not quite. Saying a function is OFF means it's zeroed out, not just leveled off.      That is multiplied by 0 for all .    Exactly. OFF means the function is inactive, because it's being multiplied by 0.      That is undefined for .    Nope, OFF doesn't mean undefined. The function is still defined, but turned off by multiplication with .       What if you need the opposite behavior — a switch that turns a function OFF at ?  This reverse behavior can be built using the unit step function itself. Since jumps from 0 to 1 at , we can reverse the switch with the subtraction: .   📜 Reversed Unit Step Function    Before , is ON; after , it turns OFF.           Switching OFF an Exponential   Describe the product, below, and express it in piecewise form.      Here, the exponential function is ON before and switches OFF afterward. In piecewise form, this looks like:             📖❓ Reversed Switch Logic   Which of the following is equivalent to the function        This would turn ON at , but here we want it to turn OFF there.       Correct! is ON before and OFF afterward, matching the piecewise definition.       This starts a different function at . It's neither nor OFF before then.       This is just a shifted version of , not a piecewise function that shuts off.      With both and in hand, you can now switch functions ON or OFF exactly when you need. Next, we will cover the last switch that turns ON functions for a limited window of time, over a finite interval.    Windowed Unit Step Function  Prep-Questions   📖❓ True or False: Interval Notation   The interval includes but not .    The square bracket means included and the parenthesis means excluded , so is in the interval, but is not.     📖❓ When Is the Window ON?   Let's compare two unit step functions:   Fill in the blanks with the value of and for the following intervals:                          Now use these values to fill in the values for the expression .                                  The final variant combines the first two ideas to create a time window where a function is ON for a limited interval, then turns OFF again.  We can build this behavior by subtracting two step functions:  turns ON at .  turns ON at , flipping us back to OFF since we are subtracting.  So the difference is the ON-window we need.   📜 Windowed Unit Step Function    Between and , is ON and OFF otherwise.          This windowed switch models limited bursts of activity — like a force that acts for a few seconds, then disappears.   Exploring the Effect of and                         📖❓ Selecting the ON-Interval Expression   Which expression represents a function, , that is active (ON) on the interval and elsewhere?      Correct!     Incorrect     Incorrect     Incorrect      As with previous step functions, this step function switches ON any function over the interval and OFF everywhere else.   Switching ON a Sine Wave for a While   Write the function that equals only on and is elsewhere, using step functions.    Since this function is only on a finite window, we multiply it by the following difference of shifted unit step functions: .  In piecewise form, this function is   and its graph is given by          Explore the Product   Instructions:   Hover over to hightlight the graph of .  Hovering over or highlights their individual graph.  Drag the value of and along the axis.        Together, these three step function variants give you complete control over when a function is active. In the next section, we'll combine them to rewrite entire piecewise functions in a single, neat formula.    🤔💭 Unit Step Function Variants Reading Questions   🤔💭 What Does Do?   The unit step function is multiplied by another function . What does do in this context?     It switches ON at and keeps it ON forever.  Correct — equals 0 before and 1 afterward.    It switches OFF at .  Not quite — that would be .    It reverses the direction of at .  No — there's no reverse here, just ON\/OFF switching.    It multiplies by after .  No — is either 0 or 1; it doesn't add factors of .      "
+},
+{
+  "id": "shifted-step-2",
+  "level": "2",
+  "url": "unit-step-functions.html#shifted-step-2",
+  "type": "Checkpoint",
+  "number": "237",
+  "title": "Prep-Questions.",
+  "body": "Prep-Questions   📖❓ True or False: Shifting a Function   The graph of is the same as the graph of shifted right units.    Replacing with in shifts the graph of ANY function 3 units to the right, not just .     📖❓ When Does It Switch?   The unit step function jumps from (OFF) to (ON) at  .       "
+},
+{
+  "id": "shifted-step-3",
+  "level": "2",
+  "url": "unit-step-functions.html#shifted-step-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "shifted unit step function "
+},
+{
+  "id": "shifted-step-5",
+  "level": "2",
+  "url": "unit-step-functions.html#shifted-step-5",
+  "type": "🎮❓ Interactive Question",
+  "number": "238",
+  "title": "Exploring the Effect of <span class=\"process-math\">\\(c\\)<\/span>.",
+  "body": " Exploring the Effect of  Consider the product of the parabolic function and the shifted unit step function . Use the tool to see how changing affects the ON\/OFF behavior of the parabola. Instructions   Hover over the labels , and to highlight its graph.  Drag the value of , initially at , along the axis.         📖❓ Effect of on a Function   What does multiplying a function by do?     It forces OFF before , then switches it ON at .  Exactly! Multiplying by means the function is 0 before and normal after.    It multiplies by .  Not quite. is not a scaling factor, it's a switching function.    It adds to .  Nope, does not alter the function's output directly. It controls when it turns on.    It delays by 5 seconds.  Close, but that's what happens when you write . Multiplying by just turns it ON at .     "
+},
+{
+  "id": "reversed-step-2",
+  "level": "2",
+  "url": "unit-step-functions.html#reversed-step-2",
+  "type": "Checkpoint",
+  "number": "239",
+  "title": "Prep-Questions.",
+  "body": "Prep-Questions   📖❓ When Does It Switch?   Recall that   Complete the logical statement by filling-in the missing numbers.  Since    before , and  after ,  then, the expression    before , and  after ,           📖❓ Understanding ON\/OFF Language   What does it mean when we say a function is \"OFF\" for ?      That becomes negative for .    OFF doesn't mean negative. It means the function is multiplied by , it's gone.      That stops increasing after .    Not quite. Saying a function is OFF means it's zeroed out, not just leveled off.      That is multiplied by 0 for all .    Exactly. OFF means the function is inactive, because it's being multiplied by 0.      That is undefined for .    Nope, OFF doesn't mean undefined. The function is still defined, but turned off by multiplication with .      "
+},
+{
+  "id": "reversed-step-6",
+  "level": "2",
+  "url": "unit-step-functions.html#reversed-step-6",
+  "type": "🌌 Example",
+  "number": "240",
+  "title": "Switching OFF an Exponential.",
+  "body": " Switching OFF an Exponential   Describe the product, below, and express it in piecewise form.      Here, the exponential function is ON before and switches OFF afterward. In piecewise form, this looks like:           "
+},
+{
+  "id": "chkpt-1-reversed-unit-step",
+  "level": "2",
+  "url": "unit-step-functions.html#chkpt-1-reversed-unit-step",
+  "type": "Checkpoint",
+  "number": "241",
+  "title": "📖❓ Reversed Switch Logic.",
+  "body": " 📖❓ Reversed Switch Logic   Which of the following is equivalent to the function        This would turn ON at , but here we want it to turn OFF there.       Correct! is ON before and OFF afterward, matching the piecewise definition.       This starts a different function at . It's neither nor OFF before then.       This is just a shifted version of , not a piecewise function that shuts off.     "
+},
+{
+  "id": "windowed-step-2",
+  "level": "2",
+  "url": "unit-step-functions.html#windowed-step-2",
+  "type": "Checkpoint",
+  "number": "242",
+  "title": "Prep-Questions.",
+  "body": "Prep-Questions   📖❓ True or False: Interval Notation   The interval includes but not .    The square bracket means included and the parenthesis means excluded , so is in the interval, but is not.     📖❓ When Is the Window ON?   Let's compare two unit step functions:   Fill in the blanks with the value of and for the following intervals:                          Now use these values to fill in the values for the expression .                                 "
+},
+{
+  "id": "windowed-step-7",
+  "level": "2",
+  "url": "unit-step-functions.html#windowed-step-7",
+  "type": "🎮❓ Interactive Question",
+  "number": "243",
+  "title": "Exploring the Effect of <span class=\"process-math\">\\(c\\)<\/span> and <span class=\"process-math\">\\(d\\)<\/span>.",
+  "body": " Exploring the Effect of and                         📖❓ Selecting the ON-Interval Expression   Which expression represents a function, , that is active (ON) on the interval and elsewhere?      Correct!     Incorrect     Incorrect     Incorrect     "
+},
+{
+  "id": "windowed-step-9",
+  "level": "2",
+  "url": "unit-step-functions.html#windowed-step-9",
+  "type": "🌌 Example",
+  "number": "244",
+  "title": "Switching ON a Sine Wave for a While.",
+  "body": " Switching ON a Sine Wave for a While   Write the function that equals only on and is elsewhere, using step functions.    Since this function is only on a finite window, we multiply it by the following difference of shifted unit step functions: .  In piecewise form, this function is   and its graph is given by        "
+},
+{
+  "id": "windowed-step-10",
+  "level": "2",
+  "url": "unit-step-functions.html#windowed-step-10",
+  "type": "🎮 Interactive",
+  "number": "245",
+  "title": "Explore the Product <span class=\"process-math\">\\(f(t) \\cdot (u_c(t)-u_d(t))\\)<\/span>.",
+  "body": " Explore the Product   Instructions:   Hover over to hightlight the graph of .  Hovering over or highlights their individual graph.  Drag the value of and along the axis.       "
+},
+{
+  "id": "unit-step-functions-cyu-bundle",
+  "level": "2",
+  "url": "unit-step-functions.html#unit-step-functions-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "246",
+  "title": "🤔💭 Unit Step Function Variants Reading Questions.",
+  "body": " 🤔💭 Unit Step Function Variants Reading Questions   🤔💭 What Does Do?   The unit step function is multiplied by another function . What does do in this context?     It switches ON at and keeps it ON forever.  Correct — equals 0 before and 1 afterward.    It switches OFF at .  Not quite — that would be .    It reverses the direction of at .  No — there's no reverse here, just ON\/OFF switching.    It multiplies by after .  No — is either 0 or 1; it doesn't add factors of .     "
+},
+{
+  "id": "piecewise-functions",
+  "level": "1",
+  "url": "piecewise-functions.html",
+  "type": "Section",
+  "number": "13.3",
+  "title": "Piecewise Functions",
+  "body": " Piecewise Functions   Piecewise functions can feel disorganized at first since they are defined in separate chunks across different intervals. But there's a powerful way to express them as a clean formula: by using step functions to switch each piece ON or OFF at the right time.    What Makes a Function Piecewise?  A piecewise function is any function built from different parts over specific regions of its domain. For example:            Each piece has its own behavior, but together they create the entire function. The question is: can we rewrite these separate pieces so that the whole function is described with one equation, instead of a case-by-case breakdown?    Thinking in Terms of Switches   📖❓ Match Step Functions to Their Piecewise Definitions   By dragging from left to right, match the function on the left to the equivalent piecewise function on the right. Note that, .                       Every step function you've seen can be thought of as a simple ON–OFF switch:   With these step functions, you can literally program when each part of a function is ON and when it is OFF.  For example, the three pieces of above can be controlled like this:    Three pieces of                       Rewriting a Piecewise Function in Step Form   📖❓ Matching Step Types to Intervals   Match each time interval to the type of unit step expression that would activate a function over that range.    These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.                       shows three non-overlapping regions. That means for any value of , only one piece of the function is active. Because of this, we can write as a single sum:  . Let's test this step-function version by plugging in a few values and seeing which terms turn ON and which turn OFF.   Like the piecewise form, plugging a specific value into was the same as plugging it into just one of its three pieces. This observation highlights why the unit step form is equivalent to the piecewise form.   📜 Converting Piecewise Form to Unit Step Form  Here's a strategy for converting any piecewise function into step form:  Find the intervals where each piece is active.  Match the active interval for each piece to its step function switch:     Piece  Active Interval  Step Function Switch                    Multiply the piece by its switch, then add them all together.      📖❓ Which Term Matches the Interval?   You're converting a piecewise function into step form. Which term below correctly captures a piece of the function that is active only for ?       This turns ON before and OFF after. We want something that activates at and deactivates at .       This starts at and keeps going. It doesn't define an interval, it defines a forever switch.       Exactly. This is the window function that's ON from to and OFF otherwise.       Close, but this would result in on , not . Try reversing the order of the terms.      Now you're ready to try a few full conversions yourself.   Using to Turn ON Sine    Rewrite the function using a unit step function.     Since turns ON at , we multiply it by :   Plugging in , confirms we arrived at the correct piecewise function: and has the following graph    Graph of            Converting to Unit Step Form   Rewrite the following piecewise functions using unit step notation:            The first piece is active before , so we use . The second piece starts at , so we use . So:   We can also combine terms with the same step: .    There are three pieces:  is ON from → use  is ON from → use  is ON for → use , though it contributes nothing    Putting it together:   Distribute and combine like unit step terms:     From here on out, we'll use this compact step-function form whenever we need to handle piecewise forcing functions. This also unlocks the Laplace transform method for problems that contain piecewise forcing functions.    🤔💭 Piecewise Functions Reading Questions   🤔💭 Piecewise to Laplace   Match each unit-step form to its corresponding piecewise form.                               "
+},
+{
+  "id": "unit-step-switch-mindset-2",
+  "level": "2",
+  "url": "piecewise-functions.html#unit-step-switch-mindset-2",
+  "type": "Checkpoint",
+  "number": "247",
+  "title": "📖❓  Match Step Functions to Their Piecewise Definitions.",
+  "body": " 📖❓ Match Step Functions to Their Piecewise Definitions   By dragging from left to right, match the function on the left to the equivalent piecewise function on the right. Note that, .                      "
+},
+{
+  "id": "intro-piecewise-function-pieces",
+  "level": "2",
+  "url": "piecewise-functions.html#intro-piecewise-function-pieces",
+  "type": "Figure",
+  "number": "248",
+  "title": "",
+  "body": " Three pieces of                    "
+},
+{
+  "id": "prep-1-piecewise-to-step",
+  "level": "2",
+  "url": "piecewise-functions.html#prep-1-piecewise-to-step",
+  "type": "Checkpoint",
+  "number": "249",
+  "title": "📖❓  Matching Step Types to Intervals.",
+  "body": " 📖❓ Matching Step Types to Intervals   Match each time interval to the type of unit step expression that would activate a function over that range.    These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.                     "
+},
+{
+  "id": "chkpt-1-piecewise-to-step",
+  "level": "2",
+  "url": "piecewise-functions.html#chkpt-1-piecewise-to-step",
+  "type": "Checkpoint",
+  "number": "250",
+  "title": "📖❓  Which Term Matches the Interval?",
+  "body": " 📖❓ Which Term Matches the Interval?   You're converting a piecewise function into step form. Which term below correctly captures a piece of the function that is active only for ?       This turns ON before and OFF after. We want something that activates at and deactivates at .       This starts at and keeps going. It doesn't define an interval, it defines a forever switch.       Exactly. This is the window function that's ON from to and OFF otherwise.       Close, but this would result in on , not . Try reversing the order of the terms.     "
+},
+{
+  "id": "piecewise-rewriting-11",
+  "level": "2",
+  "url": "piecewise-functions.html#piecewise-rewriting-11",
+  "type": "🌌 Example",
+  "number": "251",
+  "title": "Using <span class=\"process-math\">\\(u_c(t)\\)<\/span> to Turn ON Sine.",
+  "body": " Using to Turn ON Sine    Rewrite the function using a unit step function.     Since turns ON at , we multiply it by :   Plugging in , confirms we arrived at the correct piecewise function: and has the following graph    Graph of          "
+},
+{
+  "id": "piecewise-to-step-ex-1",
+  "level": "2",
+  "url": "piecewise-functions.html#piecewise-to-step-ex-1",
+  "type": "🌌 Example",
+  "number": "253",
+  "title": "Converting to Unit Step Form.",
+  "body": " Converting to Unit Step Form   Rewrite the following piecewise functions using unit step notation:            The first piece is active before , so we use . The second piece starts at , so we use . So:   We can also combine terms with the same step: .    There are three pieces:  is ON from → use  is ON from → use  is ON for → use , though it contributes nothing    Putting it together:   Distribute and combine like unit step terms:    "
+},
+{
+  "id": "piecewise-functions-cyu-bundle",
+  "level": "2",
+  "url": "piecewise-functions.html#piecewise-functions-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "254",
+  "title": "🤔💭 Piecewise Functions Reading Questions.",
+  "body": " 🤔💭 Piecewise Functions Reading Questions   🤔💭 Piecewise to Laplace   Match each unit-step form to its corresponding piecewise form.                              "
+},
+{
+  "id": "laplace-step-rules",
+  "level": "1",
+  "url": "laplace-step-rules.html",
+  "type": "Section",
+  "number": "13.4",
+  "title": "Laplace Transform Rules for Step Functions",
+  "body": " Laplace Transform Rules for Step Functions   Up to this point, you've seen how unit step functions can switch pieces of a function ON and OFF at the right times. But to actually use these functions in solving differential equations, we need to understand how they behave when we take their Laplace transform.  This section develops the Laplace transform rules for unit step functions:   – how to transform a single step switch.  – how to transform a function that is switched ON at .  – how to transform a shifted function that starts at .   These rules are the backbone for handling piecewise functions with Laplace methods.    Transform of   📖❓ How Do Inputs Shift?   The function is the same as shifted left by 2 units.    Replacing with shifts the graph to the left by units. This is the opposite direction compared to .    We begin with the Laplace transform of a single shifted unit step switch, . Finding its transform lays the groundwork for the more general rules that follow.  The Laplace transform of a shifted unit step function is as follows:   📜 Laplace Transform of     💡 Derivation of  Start with the definition of the Laplace transform:   Recall that: which means the integrand is zero until and equals afterward.  That trims our integral down since:   Evaluate the improper integral as a limit:   As long as , the term goes to zero as , leaving:      This result shows that the shifted unit step function introduces an exponential factor in the Laplace domain. You will use it to transform terms of the form , where is a constant. For example,    📖❓ Finding the Laplace Transform of   What is the Laplace transform of ?       Close, but is a variable in the Laplace domain, it doesn't get replaced by a number here.       That's the formula: , and here .       That's the transform of , not a step function. The exponential in appears in the numerator, not the exponent of the input.       That's an incorrect inversion of the formula. The exponential should be in the numerator, and in the denominator.        Transform of  The next rule provides a formula for the product of a step function and a function of and will be the primary tool used when forward transforming a piecewise function.   📜 Laplace Transform of    💡 Derivation of  Start with the Laplace transform definition:   Since for , the integral simplifies to:   This new integral looks a lot like the Laplace transform of , but it starts at instead of . Luckily, we can shift the graph of to the left units to force the integral start back at .  Note: Shifting a function units to the left means adding to all of the inputs:   Using this idea, leads to the desired transform:   Details   : Shifting to the left units makes it and starts the integral at .   : Exponential Property    : Factor out the constant, , as we are integrating in .   Therefore,      Let's try this on a few examples to see how the rule works in practice.   Transform of   Compute the Laplace transform of .    For this problem, we have . So the rule becomes: , where, in our case, , so .  Plugging and into the rule shows us that   So all we have left to do is compute : and plug it into (⭐), to complete the transform:     Check Your Understanding   📖❓ Apply the Rule for   What is the Laplace transform of ?       Close, but we must shift the input inside the function, not leave it as .       Correct. The shift rule says to replace with inside the function and multiply by .       Be careful, shifts the function right, but the rule calls for when we delay the function using .       This uses the right format, but doesn't evaluate the Laplace transform. We're looking for a formula that includes the exponential shift.       📖❓ Next Step for the Rule   Suppose you want use L to find . You note that and update the rule as follows: . What's the best next step from here?     Identify , find .  Correct — you need to compute .    Find .  Finding isn't needed for this rule.    Find .  This does not help you compute .    Rewrite the rule by moving to the denominator as .  You could do this, but there is a better answer.        Transform of  Finally, we cover the last rule that will be particularly useful for inverting expressions in the Laplace domain (i.e., step 3 ) that are associated with step functions.   📜 Laplace Transform of     Derivation of  In terms of the definition of the Laplace transform, we want to show:   To show this, we will start with the integral on the left and show it leads to the integral on the right.   Details   : on makes the lower limit of the integral .   : Shifting to the left units makes it and starts the integral at .   : Use the exponential property and factor out the constant, , as we are integrating in .   Thus, we have shown where .     Although you can use this for forward transforms, its main utility is for backward transforms since it only requires you to match terms that look like where is one of the common Laplace transforms from the same table. We will explore later when we invert terms in the Laplace domain containing .   📖❓ Identify the Shifted Input   Select the expression that goes in the blank.       Good! The rule requires replacing with when multiplying by .     Not quite — you need to shift the input to because the step turns ON at .     Incorrect, try again.     Incorrect, try again.     With these three rules, we can now transform any piecewise function both into and out of the Laplace domain. In the next section, we'll begin applying these rules to solve differential equations with piecewise forcing functions.    🤔💭 Laplace Transform Rules for Step Functions Reading Questions   🤔💭 Match the -Domain Function  Which function goes into the blank?      Yes!     No — try again.     No — try again.     No — try again.      "
+},
+{
+  "id": "prep-3-lap-uc-ftuc",
+  "level": "2",
+  "url": "laplace-step-rules.html#prep-3-lap-uc-ftuc",
+  "type": "Checkpoint",
+  "number": "255",
+  "title": "📖❓  How Do Inputs Shift?",
+  "body": " 📖❓ How Do Inputs Shift?   The function is the same as shifted left by 2 units.    Replacing with shifts the graph to the left by units. This is the opposite direction compared to .   "
+},
+{
+  "id": "lap-uc-2-2",
+  "level": "2",
+  "url": "laplace-step-rules.html#lap-uc-2-2",
+  "type": "Proof",
+  "number": "1",
+  "title": "💡 Derivation of <span class=\"process-math\">\\(\\lap{u_c(t)}\\)<\/span>.",
+  "body": " 💡 Derivation of  Start with the definition of the Laplace transform:   Recall that: which means the integrand is zero until and equals afterward.  That trims our integral down since:   Evaluate the improper integral as a limit:   As long as , the term goes to zero as , leaving:   "
+},
+{
+  "id": "chkpt-1-lap-uc",
+  "level": "2",
+  "url": "laplace-step-rules.html#chkpt-1-lap-uc",
+  "type": "Checkpoint",
+  "number": "256",
+  "title": "📖❓ Finding the Laplace Transform of <span class=\"process-math\">\\(u_c(t)\\)<\/span>.",
+  "body": " 📖❓ Finding the Laplace Transform of   What is the Laplace transform of ?       Close, but is a variable in the Laplace domain, it doesn't get replaced by a number here.       That's the formula: , and here .       That's the transform of , not a step function. The exponential in appears in the numerator, not the exponent of the input.       That's an incorrect inversion of the formula. The exponential should be in the numerator, and in the denominator.     "
+},
+{
+  "id": "laplace-ft-uc-2",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-ft-uc-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": ""
+},
+{
+  "id": "laplace-ft-uc-5",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-ft-uc-5",
+  "type": "🌌 Example",
+  "number": "257",
+  "title": "Transform of <span class=\"process-math\">\\((2 - t)\\cdot u_3(t)\\)<\/span>.",
+  "body": " Transform of   Compute the Laplace transform of .    For this problem, we have . So the rule becomes: , where, in our case, , so .  Plugging and into the rule shows us that   So all we have left to do is compute : and plug it into (⭐), to complete the transform:    "
+},
+{
+  "id": "laplace-ft-uc-6",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-ft-uc-6",
+  "type": "Checkpoint",
+  "number": "258",
+  "title": "Check Your Understanding.",
+  "body": "Check Your Understanding   📖❓ Apply the Rule for   What is the Laplace transform of ?       Close, but we must shift the input inside the function, not leave it as .       Correct. The shift rule says to replace with inside the function and multiply by .       Be careful, shifts the function right, but the rule calls for when we delay the function using .       This uses the right format, but doesn't evaluate the Laplace transform. We're looking for a formula that includes the exponential shift.       📖❓ Next Step for the Rule   Suppose you want use L to find . You note that and update the rule as follows: . What's the best next step from here?     Identify , find .  Correct — you need to compute .    Find .  Finding isn't needed for this rule.    Find .  This does not help you compute .    Rewrite the rule by moving to the denominator as .  You could do this, but there is a better answer.     "
+},
+{
+  "id": "laplace-ftc-uc-2",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-ftc-uc-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": ""
+},
+{
+  "id": "laplace-ftc-uc-5",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-ftc-uc-5",
+  "type": "Checkpoint",
+  "number": "259",
+  "title": "📖❓ Identify the Shifted Input.",
+  "body": " 📖❓ Identify the Shifted Input   Select the expression that goes in the blank.       Good! The rule requires replacing with when multiplying by .     Not quite — you need to shift the input to because the step turns ON at .     Incorrect, try again.     Incorrect, try again.    "
+},
+{
+  "id": "laplace-step-rules-cyu-bundle",
+  "level": "2",
+  "url": "laplace-step-rules.html#laplace-step-rules-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "260",
+  "title": "🤔💭 Laplace Transform Rules for Step Functions Reading Questions.",
+  "body": " 🤔💭 Laplace Transform Rules for Step Functions Reading Questions   🤔💭 Match the -Domain Function  Which function goes into the blank?      Yes!     No — try again.     No — try again.     No — try again.     "
+},
+{
+  "id": "transforming-piecewise-functions",
+  "level": "1",
+  "url": "transforming-piecewise-functions.html",
+  "type": "Section",
+  "number": "13.5",
+  "title": "Transforming Piecewise Functions",
+  "body": " Transforming Piecewise Functions   Until now, you've learned how step functions act like ON–OFF switches, and you've built the three key Laplace rules (L , L , and L ) that describe how those switches behave under the Laplace transform. With these tools, we're ready for the real payoff: transforming entire piecewise functions .    General Strategy  The game plan for handling a piecewise function in the Laplace domain is always the same three steps.   📜 Laplace Transform of a Piecewise Function  To find for a piecewise function:  Rewrite using unit step functions.  Combine and simplify terms so you have the fewest possible -switches.  Apply the Laplace rules ( L , L , L ) one piece at a time.     That's it. Once each term is transformed, you can add them up thanks to linearity. You'll be left with a fully transformed piecewise function living in the Laplace domain.  📖❓ Strategy for Transforming a Piecewise Function  What's Should you do First?   To take the Laplace transform of a piecewise function, you should first rewrite it in terms of unit step functions.    That's the foundation of this method! Once a piecewise function is rewritten using step functions, you can apply the shift rule to each piece.    Matching Activation Intervals to Switches   On the left are activation intervals for a piecewise function. Drag each interval to the unit step switch that activates it.    These patterns should be second nature now, this matching is what allows us to build the step-based expression for the Laplace transform.                         Piecewise Functions in the Laplace Domain  Let's apply this strategy to the forcing function of our model problem, :   Write using step functions. The pieces, intervals and switches for are:      Piece  Active Interval  Step Function Switch                   Multiply each piece by its switch, then sum:  . Combine like switch terms:  . Now, we are ready to find the Laplace transform of . Taking the Laplace transform of both sides and using linearity, we get transforms: .  1️⃣ Apply L with: & :   2️⃣ Apply L with: & :   3️⃣ Apply L with: :   Writing these together under one sum completes the Laplace transform:     Examples  These worked examples illustrate how the three step-function Laplace rules combine into one powerful method for handling any piecewise function you might encounter.   Transforming a 2-Part Piecewise Function   Find the Laplace transform of     First, determine the step function switches   Now, contruct and combine the terms:   Apply the Laplace transform to both terms:          Simplifying completes the transform: .     Transforming a 3-Part Piecewise Function   Find the Laplace transform of     Write each piece using step functions:   Combine like terms:   Transform each term:   Term 1: Apply L 10 with and . Then , so: .  Term 2: Apply L 10 with and . Then , so: .   Combine the pieces: .     "
+},
+{
+  "id": "transforming-piecewise-functions-general-strategy-5",
+  "level": "2",
+  "url": "transforming-piecewise-functions.html#transforming-piecewise-functions-general-strategy-5",
+  "type": "Checkpoint",
+  "number": "261",
+  "title": "📖❓  Strategy for Transforming a Piecewise Function.",
+  "body": "📖❓ Strategy for Transforming a Piecewise Function  What's Should you do First?   To take the Laplace transform of a piecewise function, you should first rewrite it in terms of unit step functions.    That's the foundation of this method! Once a piecewise function is rewritten using step functions, you can apply the shift rule to each piece.    Matching Activation Intervals to Switches   On the left are activation intervals for a piecewise function. Drag each interval to the unit step switch that activates it.    These patterns should be second nature now, this matching is what allows us to build the step-based expression for the Laplace transform.                      "
+},
+{
+  "id": "transforming-piecewise-functions-examples-3",
+  "level": "2",
+  "url": "transforming-piecewise-functions.html#transforming-piecewise-functions-examples-3",
+  "type": "🌌 Example",
+  "number": "262",
+  "title": "Transforming a 2-Part Piecewise Function.",
+  "body": " Transforming a 2-Part Piecewise Function   Find the Laplace transform of     First, determine the step function switches   Now, contruct and combine the terms:   Apply the Laplace transform to both terms:          Simplifying completes the transform: .   "
+},
+{
+  "id": "transforming-piecewise-functions-examples-4",
+  "level": "2",
+  "url": "transforming-piecewise-functions.html#transforming-piecewise-functions-examples-4",
+  "type": "🌌 Example",
+  "number": "263",
+  "title": "Transforming a 3-Part Piecewise Function.",
+  "body": " Transforming a 3-Part Piecewise Function   Find the Laplace transform of     Write each piece using step functions:   Combine like terms:   Transform each term:   Term 1: Apply L 10 with and . Then , so: .  Term 2: Apply L 10 with and . Then , so: .   Combine the pieces: .   "
+},
+{
+  "id": "piecewise-laplace-method",
+  "level": "1",
+  "url": "piecewise-laplace-method.html",
+  "type": "Section",
+  "number": "13.6",
+  "title": "Laplace Method with Piecewise Forcing Terms",
+  "body": " Laplace Method with Piecewise Forcing Terms   This is the moment where everything you've learned about Laplace transforms, step functions, and piecewise rewriting comes together. We'll now use the Laplace method to solve differential equations whose forcing terms switch ON and OFF across time.  The big picture is the same familiar three-step Laplace method you already know:  Step 1: Forward transform the differential equation into the Laplace domain.  Step 2: Solve for algebraically and prepare it for inversion.  Step 3: Apply the inverse Laplace transform to recover .  The only twist is that our forcing term is now piecewise, so the process begins with a setup step of rewriting the forcing term using step functions.    A Model Problem  Let's solve this initial value problem to see the full method in action: where the forcing term switches ON for just one second:   You'll recognize the roadmap: forward transform → solve in the Laplace domain → inverse transform. But watch how the step function representation drives every stage of the solution.  🗺️ A Roadmap Overview                          Setup: Piecewise Form to Step Form  The piecewise function, , must be expressed in step function form before we can take its transform. Since has only one non-zero piece on the activation interval, , the only switch we need is :     Step 1 — Into the Laplace Domain  We are now ready to apply to both sides, term-by-term, using linearity:   Using rules R with and L , gives the Laplace-domain equation:  .   Step 2 — Solving in the Laplace Domain  Factor out from the left side and divide to isolate it:   This is the Laplace-domain solution. Next, we rewrite into a form that matches the inverse Laplace table.  In general, any exponential terms in (i.e., and ) will return to the original domain as unit step functions using L . Therefore, you should prioritize collecting exponentials whenever you see them. For our equation, this looks like:   📖❓ Matching Exponential Factors   What do exponential terms in the Laplace domain, like , correspond to in the original-domain solution, ?     A term with the step function switch, .  Correct — always brings in and a shift by .    A term with a coefficient of .  No — the exponential doesn't change coefficients like that.    An exponential term .  No — doesn't translate to .    A term containing .  No — perhaps you thought this looked like the forward transform ?      To match the form in L , its a good habit to define the shorthand: so that our prepared becomes: .  Since we'll also need in step 3, let's compute it now:   🔎 Here are the Details  Decompose: .  Multiply by and collect the , , and free terms: .  Matching coefficients gives the system: which has solution . Thus: and so the inverse is: .     Step 3 — Leaving the Laplace Domain  We now apply to both sides of the prepared  :   Applying L , our solution becomes: .  We use (from step 2) to plug in and , leading to the solution:    This problem demonstrates how the same Laplace method process can be applied to equations with piecewise forcing terms. With practice, you'll see that problems with piecewise forcing terms are no different from any other Laplace method problem.    Additional Examples  To cement the idea, here are a few more examples. Notice in each, that the three-step strategy stays exactly the same.    Solve the initial value problem where the forcing term is given by:      Setup: Piecewise Form to Step Form  Since the only nonzero piece of is on , the equation becomes: .    Step 1 — Into the Laplace Domain  Take the Laplace transform of both sides: .  Using the initial conditions with R and L we get: .    Step 2 — Solve for  Next, we isolate : .  and prepare for inversion by collecting the exponential terms: .  Lastly, we compute so it will be ready for step 3: ,  🔎 Here are the details  Decompose: .  Multiply through and collect the , , and free terms: .  Matching coefficients gives the system: which has solution . Thus: and .     Step 3 — Leave the Laplace Domain  Apply to each term of the prepared :   Substituting in , gives the final solution:        Let's solve this initial value problem: with a piecewise forcing term:     We'll follow the Laplace roadmap: forward transform → solve in the Laplace domain → inverse transform . The step function form of will guide us.   Setup — Write g(t) Using Step Functions  First, express the piecewise forcing term in step function form:     Step 1 — Into the Laplace Domain  Apply to both sides:   With and the derivative rule:   Transforming each piece of :   The Laplace-domain equation becomes:     Step 2 — Solve in the Laplace Domain  Isolate :   Distribute and write as pieces of the form : .  Identify the rational parts: , which completes the prepared : .  The partial fractions decomposition of and needed for step 3 are:   🔎 Partial Fraction Details   Multiplying through and grouping terms:   Leads to:   and so    Multiplying through and grouping terms:   Leads to:   Thus,      Step 3 — Leave the Laplace Domain  Apply to both sides of the prepared  :   Using L updates our solution to:   Inverting each gives :   Plugging in the 's, we get the final solution:        Consider the initial value problem:     The forcing function starts as and then abruptly switches to a constant at . We'll lean on the Laplace roadmap: forward transform → solve for → return to .   Setup — Step Function Form  First, we rewrite the forcing term with step functions so we can apply Laplace rules directly:   Combine the terms grouped by their switches:     Step 1 — Into the Laplace Domain  Apply to both sides:   Use the derivative rules with on the left, and the step\/exponential rules on the right:     Step 2 — Solve in the Laplace Domain  Factor and isolate :   Since , distribute and reorganize:   Separate the terms into rational pieces to prepare for the inverse transform:   Now .  Both and need partial fraction decomposition.  🔎 Partial Fraction Details  For , the general form is:   Multiplying through:   Selecting values of finds , , and :                                With these constants, we can write as:   Now, for , we have:   Multiplying through:   Selecting values of finds , , , and :                                To find , we plug in the values of , , and :   With these constants, we can write as:      Step 3 — Leave the Laplace Domain  Apply to both sides of the prepared  :   Using L updates our solution to:   Inverting and gives:   Finally, substitute and to get the final solution:       "
+},
+{
+  "id": "piecewise-laplace-method-2-2",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-2-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Step 1: Step 2: Step 3: "
+},
+{
+  "id": "piecewise-laplace-method-model-roadmap",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-model-roadmap",
+  "type": "Proof",
+  "number": "1",
+  "title": "🗺️ A Roadmap Overview.",
+  "body": "🗺️ A Roadmap Overview                        "
+},
+{
+  "id": "chkpt-piecewise-laplace-2",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#chkpt-piecewise-laplace-2",
+  "type": "Checkpoint",
+  "number": "264",
+  "title": "📖❓  Matching Exponential Factors.",
+  "body": " 📖❓ Matching Exponential Factors   What do exponential terms in the Laplace domain, like , correspond to in the original-domain solution, ?     A term with the step function switch, .  Correct — always brings in and a shift by .    A term with a coefficient of .  No — the exponential doesn't change coefficients like that.    An exponential term .  No — doesn't translate to .    A term containing .  No — perhaps you thought this looked like the forward transform ?    "
+},
+{
+  "id": "piecewise-laplace-method-model-step-2-10",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-model-step-2-10",
+  "type": "Proof",
+  "number": "1",
+  "title": "🔎 Here are the Details.",
+  "body": "🔎 Here are the Details  Decompose: .  Multiply by and collect the , , and free terms: .  Matching coefficients gives the system: which has solution . Thus: and so the inverse is: .  "
+},
+{
+  "id": "piecewise-laplace-method-example-1",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-example-1",
+  "type": "🌌 Example",
+  "number": "265",
+  "title": "",
+  "body": "  Solve the initial value problem where the forcing term is given by:      Setup: Piecewise Form to Step Form  Since the only nonzero piece of is on , the equation becomes: .    Step 1 — Into the Laplace Domain  Take the Laplace transform of both sides: .  Using the initial conditions with R and L we get: .    Step 2 — Solve for  Next, we isolate : .  and prepare for inversion by collecting the exponential terms: .  Lastly, we compute so it will be ready for step 3: ,  🔎 Here are the details  Decompose: .  Multiply through and collect the , , and free terms: .  Matching coefficients gives the system: which has solution . Thus: and .     Step 3 — Leave the Laplace Domain  Apply to each term of the prepared :   Substituting in , gives the final solution:     "
+},
+{
+  "id": "piecewise-laplace-method-example-2",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-example-2",
+  "type": "🌌 Example",
+  "number": "266",
+  "title": "",
+  "body": "  Let's solve this initial value problem: with a piecewise forcing term:     We'll follow the Laplace roadmap: forward transform → solve in the Laplace domain → inverse transform . The step function form of will guide us.   Setup — Write g(t) Using Step Functions  First, express the piecewise forcing term in step function form:     Step 1 — Into the Laplace Domain  Apply to both sides:   With and the derivative rule:   Transforming each piece of :   The Laplace-domain equation becomes:     Step 2 — Solve in the Laplace Domain  Isolate :   Distribute and write as pieces of the form : .  Identify the rational parts: , which completes the prepared : .  The partial fractions decomposition of and needed for step 3 are:   🔎 Partial Fraction Details   Multiplying through and grouping terms:   Leads to:   and so    Multiplying through and grouping terms:   Leads to:   Thus,      Step 3 — Leave the Laplace Domain  Apply to both sides of the prepared  :   Using L updates our solution to:   Inverting each gives :   Plugging in the 's, we get the final solution:     "
+},
+{
+  "id": "piecewise-laplace-method-example-3",
+  "level": "2",
+  "url": "piecewise-laplace-method.html#piecewise-laplace-method-example-3",
+  "type": "🌌 Example",
+  "number": "267",
+  "title": "",
+  "body": "  Consider the initial value problem:     The forcing function starts as and then abruptly switches to a constant at . We'll lean on the Laplace roadmap: forward transform → solve for → return to .   Setup — Step Function Form  First, we rewrite the forcing term with step functions so we can apply Laplace rules directly:   Combine the terms grouped by their switches:     Step 1 — Into the Laplace Domain  Apply to both sides:   Use the derivative rules with on the left, and the step\/exponential rules on the right:     Step 2 — Solve in the Laplace Domain  Factor and isolate :   Since , distribute and reorganize:   Separate the terms into rational pieces to prepare for the inverse transform:   Now .  Both and need partial fraction decomposition.  🔎 Partial Fraction Details  For , the general form is:   Multiplying through:   Selecting values of finds , , and :                                With these constants, we can write as:   Now, for , we have:   Multiplying through:   Selecting values of finds , , , and :                                To find , we plug in the values of , , and :   With these constants, we can write as:      Step 3 — Leave the Laplace Domain  Apply to both sides of the prepared  :   Using L updates our solution to:   Inverting and gives:   Finally, substitute and to get the final solution:     "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9",
+  "level": "1",
+  "url": "chpt-piecewise-forcing-functions-9.html",
+  "type": "Section",
+  "number": "13.7",
+  "title": "Chapter 11 Exercises",
+  "body": " Chapter 11 Exercises   ᯓ★❓ Quick-Answer Questions   True-False  Key Strategy Summary   When applying the Laplace transform to a piecewise function, the key strategy is to rewrite each piece using unit step functions and then apply the shift rule.    This strategy allows you to use a single formula for the entire function and apply Laplace transforms systematically.     Multiple-Choice  Choosing the Right Switch   Suppose a function is ON for . Which expression correctly switches it ON at that point?       This turns OFF at , which is the opposite of what we want.       That's right, flips ON at and stays ON from there.       Close! This is also correct, but we prefer to write it as for clarity in this context.       This turns ON from to , then OFF. Not what we want here.      Unit Step Behavior   What is the only possible set of values that any unit step function can take?     {1 only}  Unit step functions are OFF before , so they can also be 0.    {0, 1}  Correct! Unit step functions are always either 0 (OFF) or 1 (ON).    {any real number}  No, unit step functions are discrete switches, not continuous functions.    {any nonnegative number}  Even though the values are nonnegative, only 0 and 1 are ever used.     Rewriting an ON Interval   Which expression represents a function that is ON from to and OFF otherwise?      This expression turns ON at and back OFF at .     This stays ON after , but never switches OFF at .     This is ON before , but never turns ON at .     That would actually be negative during the interval from to , not what we want.     Multiplying by a Step Function   What is the effect of multiplying a function by ?     It shifts 6 units to the left.  Shifting the input would require , not multiplication by .    It keeps OFF before and turns it ON at .  Correct. acts as a switch that activates at .    It subtracts 6 from the output of .  Step functions don't affect the output directly, they control when the function is active.    It delays by 6 units.  Delaying would require rewriting the input as , not just multiplying by .     Equivalent to Piecewise Form   Which step-function expression is equivalent to the piecewise function       This turns 3 ON at and OFF again at .     This turns ON at , not .     This would be ON before , but it wouldn't stop at , it's ON too early.     This is ON at , but it stays ON forever, it doesn't turn OFF at .     Reading a Step Expression   Which interval does activate over?      is ON before and OFF afterward.     That would be true of , not its reversal.    only  This is a step function, not a spike, it applies to intervals, not points.     Again, that's when turns ON, not when its complement is active.     Laplace of a Shifted Step   What is ?      This is the standard formula for the Laplace transform of .     This is the transform of , not a step function.     This isn't a correct transformation of a step function, it doesn't match the form.     This inverts the formula incorrectly, look carefully at the units and exponents.     Using the Shift Rule   Suppose . What is ?      This is the shift rule in action: delay the function, then shift its input left.     The exponent should be negative, delaying adds .     This shifts the function right but doesn't match the form used in the shift rule.     The Laplace transform applies to the whole product, you can't apply it to one piece separately.     Shifting Inside the Transform   Which of the following is equal to ?      This follows directly from the shift rule, replace with .     We must shift the input, becomes .     You can't break apart the transform like this, it applies to the whole product.     That's the shifted polynomial, but we want the Laplace transform of that expression, not the polynomial itself.     Interpreting a Full Step Form   The function is written as: What can you infer about the original piecewise function?      It had three intervals: , , and .   Each change in step function corresponds to a new piece of the function.    It is active only for .  No, activates the function at .    It is always equal to .  Only the first term is , and it gets overridden by the later terms.    The function turns off completely at .  It doesn't turn OFF at , it switches to a new expression.     Transform of a function that turns off  Which of the following expressions is equivalent to the Laplace transform of ?                                         Compute: step function activation  Compute .                                         Compute: step-off function  Compute .                                         Compute: windowed linear function  What is ?                                          Piecewise to Laplace   A function is defined as: What is in terms of step functions?      Perfect. This captures ON from to and turning ON at .      Incorrect. This function corresponds to        Incorrect. This function corresponds to        Incorrect. This function corresponds to         Other  Matching Shifts of   Consider the function . Match each of the shifted versions of with the correct description of how its graph is affected.      Horizontal shift by 1 (→)    Vertical shift by -1 (↓)     Horizontal shift by -1 (←)     Vertical shift by 1 (↑)     Horizontal & vertical shift by 1 (↗)     Shifted Unit-Step Function   The unit step function, defined by jumps from to at  .  Now consider the shifted version of the unit step function and give the output of this function for the following values of .         (a)        (b)        (c)        (d)        So jumps from to at  .            Multiplying a Function by   Consider the parabola multiplied by two different shifted unit step functions: . Describe the ON\/OFF behavior of the parabola in each case.     Multiplying the parabola by forces it OFF before , and ON after . Whereas, multiplying by forces it OFF before , and ON after .        🏗️ Unit Step Functions    Let be the shifted unit step function and . Then compute the following values      Since (positive), .       Since (negative), .        .        .     , where   Since we know that so .     , where   Since we know that so .     Sketch & Transform the Step Functions   Sketch the graph of the given function and determine its Laplacetransform.      Since is shifted to the right by , the jump in the graph occurs at (see below). Additionally, multiplying by reflects the graph about the -axis and scales it by , as shown below.            Use the shifting property of the unit step function: .                    We start by distributing: .  Applying the Laplace transform to this gives us .  The first term uses a standard Laplace transform: .  The second term requires the new rule with , which gives us            Putting it all together, we arrive at the desired transformation:        🏗️ Piecewise Functions    Rewrite the step function forms in piecewise form.      Since switches OFF at , this function is ON before and OFF afterward:         turns ON at , so:        Express each function below in terms of unit step functions and then compute its Laplace transform.        Since this piecewise function is of the form .  To compute using the transform rule with , we first label :   Since , then and we have .         We can rewrite this function as .  Now we compute         Computing each of the common Laplace transforms, we get         The function is initially and then becomes at . So the piecewise function, , is equivalent to and therefore, the piecewise function, , can be written as , and has the following graph     Graph of                           Piecewise Inverse Transforms    Find the inverse Laplace transform of each function.      This is already in the form with and .  The inverse transform of is , since this matches the standard form: .  Applying the shift rule:        We identify this as , where This matches the form for :   So the inverse is:                                             vspace{1cm}          Solving Differential Equations   Solve each of the following initial-value problems using Laplace Transforms.       Roadmap-Summary               2️⃣ Solve for                  3️⃣ Prepare for                Step 1: Apply the Laplace Transform .            Step 2: Solve for .             Step 3: Prepare for the Inverse Transform .  The exponential factor indicates a delay. Focus on the base transform:  From the table, this matches the transform of . Therefore:   The delay is applied using the shift theorem.   Step 4: Take the Inverse Transform .     Therefore, the solution is:                             where    Roadmap-Summary               2️⃣ Solve for                 3️⃣ Prepare for              Prepare the Forcing Function for Step 1  We begin by rewriting using unit step functions. Since equals 1 on and 0 elsewhere, we express it as: This transforms the differential equation into:    Step 1: Apply the Laplace Transform to Both Sides  Apply the Laplace transform to both sides: Using standard rules:    Step 2: Solve for  Factor out : Then divide:    Step 3: Prepare for an Inverse Transform  Step 3 focuses on rewriting to match inverse Laplace rules. We separate the exponentials:   Let the rational part be: Then:   This means the inverse will take the form: but we must first identify using partial fractions. The details are shown below:  Partial Fraction Decomposition of  Write: Multiply by and group: Match coefficients:          So:     This completes Step 3. We'll now apply the inverse transform.   Step 4: Invert to Recover  We now compute: By rule , this gives: where:   Substitute:   This is the complete solution for all .       where     Step 1 — Into the Laplace Domain  Recall that our first step is to apply the Laplace transform of both sides:   It's clear how to handle the left-side, but the right-side requires the transform of a piecewise function. Before we can use the rules we derived in this chapter, we first need to write in unit step form.  Apply the Laplace transform to both sides of the differential equation:   The forcing function is active only from to , so we rewrite it using a unit step window:   Apply the Laplace transform to both sides of the DE: On the left-hand side, using , we have:   On the right-hand side, distribute the Laplace transform: Use the shift rule for each term: Now apply linearity and known transforms: So:   Combining both sides, we arrive at the Laplace equation: This completes Step 1.  Now that we've built the Laplace equation, the remaining steps are familiar. We'll solve for , simplify, and invert. But there's one twist: the presence of terms means we'll need special care when taking the inverse Laplace transform. Let's explore that next.    Step 2 — Solving in the Laplace Domain    Step 3 — Leaving the Laplace Domain  Once we've solved for in the Laplace domain, the final challenge is to take the inverse Laplace transform. When the forcing function was continuous, this step relied on partial fractions and matching terms from the Laplace table. That still works here, but now we'll also see terms involving exponentials like .  These exponentials come directly from transforming unit step expressions. To move back to the -domain, we need a new tool: a rule that undoes the exponential shift.       where    Roadmap-Summary               2️⃣ Solve for                 3️⃣ Prepare for               Preparation — Forcing Function in Step Form  We begin by rewriting with unit step functions. Since it equals on , on , and after :   which simplifies to:     Step 1 — Into the Laplace Domain  Take the Laplace transform of both sides: Using the initial conditions and , the left side becomes: Apply L to each step term: This gives the Laplace-domain equation:     Step 2 — Solve for  Factor out and divide through by :   To prepare for inversion, write:  where  We'll find so we can invert .   Partial Fraction Decomposition of  Decompose: Multiply through: Sub in convenient -values:  At : →  At : →  Thus:   Take the inverse Laplace:      Step 3 — Back to the Time Domain  Each exponential factor in corresponds to a shifted version of multiplied by the appropriate step function using L .   Substitute into each term:   This simplifies to the complete solution for all . It clearly shows how each piece of the forcing term triggers its own shifted response in the solution.       Using the Definition of the Laplace Transform   Use the definition of Laplace Transform to find the Laplace Transform of :               "
+},
+{
+  "id": "c11-quick-answer-tf",
+  "level": "2",
+  "url": "c11-quick-answer.html#c11-quick-answer-tf",
+  "type": "Reading Question",
+  "number": "13.7.1",
+  "title": "True-False.",
+  "body": "True-False  Key Strategy Summary   When applying the Laplace transform to a piecewise function, the key strategy is to rewrite each piece using unit step functions and then apply the shift rule.    This strategy allows you to use a single formula for the entire function and apply Laplace transforms systematically.    "
+},
+{
+  "id": "c11-quick-answer-mc",
+  "level": "2",
+  "url": "c11-quick-answer.html#c11-quick-answer-mc",
+  "type": "Reading Question",
+  "number": "13.7.2",
+  "title": "Multiple-Choice.",
+  "body": "Multiple-Choice  Choosing the Right Switch   Suppose a function is ON for . Which expression correctly switches it ON at that point?       This turns OFF at , which is the opposite of what we want.       That's right, flips ON at and stays ON from there.       Close! This is also correct, but we prefer to write it as for clarity in this context.       This turns ON from to , then OFF. Not what we want here.      Unit Step Behavior   What is the only possible set of values that any unit step function can take?     {1 only}  Unit step functions are OFF before , so they can also be 0.    {0, 1}  Correct! Unit step functions are always either 0 (OFF) or 1 (ON).    {any real number}  No, unit step functions are discrete switches, not continuous functions.    {any nonnegative number}  Even though the values are nonnegative, only 0 and 1 are ever used.     Rewriting an ON Interval   Which expression represents a function that is ON from to and OFF otherwise?      This expression turns ON at and back OFF at .     This stays ON after , but never switches OFF at .     This is ON before , but never turns ON at .     That would actually be negative during the interval from to , not what we want.     Multiplying by a Step Function   What is the effect of multiplying a function by ?     It shifts 6 units to the left.  Shifting the input would require , not multiplication by .    It keeps OFF before and turns it ON at .  Correct. acts as a switch that activates at .    It subtracts 6 from the output of .  Step functions don't affect the output directly, they control when the function is active.    It delays by 6 units.  Delaying would require rewriting the input as , not just multiplying by .     Equivalent to Piecewise Form   Which step-function expression is equivalent to the piecewise function       This turns 3 ON at and OFF again at .     This turns ON at , not .     This would be ON before , but it wouldn't stop at , it's ON too early.     This is ON at , but it stays ON forever, it doesn't turn OFF at .     Reading a Step Expression   Which interval does activate over?      is ON before and OFF afterward.     That would be true of , not its reversal.    only  This is a step function, not a spike, it applies to intervals, not points.     Again, that's when turns ON, not when its complement is active.     Laplace of a Shifted Step   What is ?      This is the standard formula for the Laplace transform of .     This is the transform of , not a step function.     This isn't a correct transformation of a step function, it doesn't match the form.     This inverts the formula incorrectly, look carefully at the units and exponents.     Using the Shift Rule   Suppose . What is ?      This is the shift rule in action: delay the function, then shift its input left.     The exponent should be negative, delaying adds .     This shifts the function right but doesn't match the form used in the shift rule.     The Laplace transform applies to the whole product, you can't apply it to one piece separately.     Shifting Inside the Transform   Which of the following is equal to ?      This follows directly from the shift rule, replace with .     We must shift the input, becomes .     You can't break apart the transform like this, it applies to the whole product.     That's the shifted polynomial, but we want the Laplace transform of that expression, not the polynomial itself.     Interpreting a Full Step Form   The function is written as: What can you infer about the original piecewise function?      It had three intervals: , , and .   Each change in step function corresponds to a new piece of the function.    It is active only for .  No, activates the function at .    It is always equal to .  Only the first term is , and it gets overridden by the later terms.    The function turns off completely at .  It doesn't turn OFF at , it switches to a new expression.     Transform of a function that turns off  Which of the following expressions is equivalent to the Laplace transform of ?                                         Compute: step function activation  Compute .                                         Compute: step-off function  Compute .                                         Compute: windowed linear function  What is ?                                          Piecewise to Laplace   A function is defined as: What is in terms of step functions?      Perfect. This captures ON from to and turning ON at .      Incorrect. This function corresponds to        Incorrect. This function corresponds to        Incorrect. This function corresponds to       "
+},
+{
+  "id": "c11-quick-answer-other",
+  "level": "2",
+  "url": "c11-quick-answer.html#c11-quick-answer-other",
+  "type": "Reading Question",
+  "number": "13.7.3",
+  "title": "Other.",
+  "body": " Other  Matching Shifts of   Consider the function . Match each of the shifted versions of with the correct description of how its graph is affected.      Horizontal shift by 1 (→)    Vertical shift by -1 (↓)     Horizontal shift by -1 (←)     Vertical shift by 1 (↑)     Horizontal & vertical shift by 1 (↗)     Shifted Unit-Step Function   The unit step function, defined by jumps from to at  .  Now consider the shifted version of the unit step function and give the output of this function for the following values of .         (a)        (b)        (c)        (d)        So jumps from to at  .            Multiplying a Function by   Consider the parabola multiplied by two different shifted unit step functions: . Describe the ON\/OFF behavior of the parabola in each case.     Multiplying the parabola by forces it OFF before , and ON after . Whereas, multiplying by forces it OFF before , and ON after .    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-2",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-2",
+  "type": "Exercise",
+  "number": "13.7.1",
+  "title": "",
+  "body": "   Since (positive), .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-3",
+  "type": "Exercise",
+  "number": "13.7.2",
+  "title": "",
+  "body": "   Since (negative), .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-4",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-4",
+  "type": "Exercise",
+  "number": "13.7.3",
+  "title": "",
+  "body": "    .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-5",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-5",
+  "type": "Exercise",
+  "number": "13.7.4",
+  "title": "",
+  "body": "    .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-6",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-6",
+  "type": "Exercise",
+  "number": "13.7.5",
+  "title": "",
+  "body": " , where   Since we know that so .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-2-7",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-2-7",
+  "type": "Exercise",
+  "number": "13.7.6",
+  "title": "",
+  "body": " , where   Since we know that so .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-3",
+  "type": "Exercise",
+  "number": "13.7.7",
+  "title": "",
+  "body": "   Since is shifted to the right by , the jump in the graph occurs at (see below). Additionally, multiplying by reflects the graph about the -axis and scales it by , as shown below.        "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-4",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-4",
+  "type": "Exercise",
+  "number": "13.7.8",
+  "title": "",
+  "body": "   Use the shifting property of the unit step function: .    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-5",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-5",
+  "type": "Exercise",
+  "number": "13.7.9",
+  "title": "",
+  "body": "   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-6",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-6",
+  "type": "Exercise",
+  "number": "13.7.10",
+  "title": "",
+  "body": "   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-7",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-7",
+  "type": "Exercise",
+  "number": "13.7.11",
+  "title": "",
+  "body": "   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-3-3-8",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-3.html#chpt-piecewise-forcing-functions-9-3-3-8",
+  "type": "Exercise",
+  "number": "13.7.12",
+  "title": "",
+  "body": "   We start by distributing: .  Applying the Laplace transform to this gives us .  The first term uses a standard Laplace transform: .  The second term requires the new rule with , which gives us            Putting it all together, we arrive at the desired transformation:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-2-2",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-2-2",
+  "type": "Exercise",
+  "number": "13.7.1",
+  "title": "",
+  "body": "   Since switches OFF at , this function is ON before and OFF afterward:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-2-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-2-3",
+  "type": "Exercise",
+  "number": "13.7.2",
+  "title": "",
+  "body": "    turns ON at , so:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-3-2",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-3-2",
+  "type": "Exercise",
+  "number": "13.7.3",
+  "title": "",
+  "body": "     Since this piecewise function is of the form .  To compute using the transform rule with , we first label :   Since , then and we have .   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-3-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-3-3",
+  "type": "Exercise",
+  "number": "13.7.4",
+  "title": "",
+  "body": "     We can rewrite this function as .  Now we compute         Computing each of the common Laplace transforms, we get   "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-3-4",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-3-4",
+  "type": "Exercise",
+  "number": "13.7.5",
+  "title": "",
+  "body": "     The function is initially and then becomes at . So the piecewise function, , is equivalent to and therefore, the piecewise function, , can be written as , and has the following graph     Graph of          "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-4-3-5",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-4.html#chpt-piecewise-forcing-functions-9-4-3-5",
+  "type": "Exercise",
+  "number": "13.7.6",
+  "title": "",
+  "body": "            "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-2",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-2",
+  "type": "Exercise",
+  "number": "13.7.1",
+  "title": "",
+  "body": "   This is already in the form with and .  The inverse transform of is , since this matches the standard form: .  Applying the shift rule:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-3",
+  "type": "Exercise",
+  "number": "13.7.2",
+  "title": "",
+  "body": "   We identify this as , where This matches the form for :   So the inverse is:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-4",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-4",
+  "type": "Exercise",
+  "number": "13.7.3",
+  "title": "",
+  "body": "           "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-5",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-5",
+  "type": "Exercise",
+  "number": "13.7.4",
+  "title": "",
+  "body": "           "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-6",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-6",
+  "type": "Exercise",
+  "number": "13.7.5",
+  "title": "",
+  "body": "           "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-5-2-7",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-5.html#chpt-piecewise-forcing-functions-9-5-2-7",
+  "type": "Exercise",
+  "number": "13.7.6",
+  "title": "",
+  "body": "    vspace{1cm}       "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-3",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-3",
+  "type": "Exercise",
+  "number": "13.7.1",
+  "title": "",
+  "body": "    Roadmap-Summary               2️⃣ Solve for                  3️⃣ Prepare for                Step 1: Apply the Laplace Transform .            Step 2: Solve for .             Step 3: Prepare for the Inverse Transform .  The exponential factor indicates a delay. Focus on the base transform:  From the table, this matches the transform of . Therefore:   The delay is applied using the shift theorem.   Step 4: Take the Inverse Transform .     Therefore, the solution is:    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-4",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-4",
+  "type": "Exercise",
+  "number": "13.7.2",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-5",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-5",
+  "type": "Exercise",
+  "number": "13.7.3",
+  "title": "",
+  "body": "          "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-6",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-6",
+  "type": "Exercise",
+  "number": "13.7.4",
+  "title": "",
+  "body": "  where    Roadmap-Summary               2️⃣ Solve for                 3️⃣ Prepare for              Prepare the Forcing Function for Step 1  We begin by rewriting using unit step functions. Since equals 1 on and 0 elsewhere, we express it as: This transforms the differential equation into:    Step 1: Apply the Laplace Transform to Both Sides  Apply the Laplace transform to both sides: Using standard rules:    Step 2: Solve for  Factor out : Then divide:    Step 3: Prepare for an Inverse Transform  Step 3 focuses on rewriting to match inverse Laplace rules. We separate the exponentials:   Let the rational part be: Then:   This means the inverse will take the form: but we must first identify using partial fractions. The details are shown below:  Partial Fraction Decomposition of  Write: Multiply by and group: Match coefficients:          So:     This completes Step 3. We'll now apply the inverse transform.   Step 4: Invert to Recover  We now compute: By rule , this gives: where:   Substitute:   This is the complete solution for all .    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-7",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-7",
+  "type": "Exercise",
+  "number": "13.7.5",
+  "title": "",
+  "body": "  where     Step 1 — Into the Laplace Domain  Recall that our first step is to apply the Laplace transform of both sides:   It's clear how to handle the left-side, but the right-side requires the transform of a piecewise function. Before we can use the rules we derived in this chapter, we first need to write in unit step form.  Apply the Laplace transform to both sides of the differential equation:   The forcing function is active only from to , so we rewrite it using a unit step window:   Apply the Laplace transform to both sides of the DE: On the left-hand side, using , we have:   On the right-hand side, distribute the Laplace transform: Use the shift rule for each term: Now apply linearity and known transforms: So:   Combining both sides, we arrive at the Laplace equation: This completes Step 1.  Now that we've built the Laplace equation, the remaining steps are familiar. We'll solve for , simplify, and invert. But there's one twist: the presence of terms means we'll need special care when taking the inverse Laplace transform. Let's explore that next.    Step 2 — Solving in the Laplace Domain    Step 3 — Leaving the Laplace Domain  Once we've solved for in the Laplace domain, the final challenge is to take the inverse Laplace transform. When the forcing function was continuous, this step relied on partial fractions and matching terms from the Laplace table. That still works here, but now we'll also see terms involving exponentials like .  These exponentials come directly from transforming unit step expressions. To move back to the -domain, we need a new tool: a rule that undoes the exponential shift.    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-6-8",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-6.html#chpt-piecewise-forcing-functions-9-6-8",
+  "type": "Exercise",
+  "number": "13.7.6",
+  "title": "",
+  "body": "  where    Roadmap-Summary               2️⃣ Solve for                 3️⃣ Prepare for               Preparation — Forcing Function in Step Form  We begin by rewriting with unit step functions. Since it equals on , on , and after :   which simplifies to:     Step 1 — Into the Laplace Domain  Take the Laplace transform of both sides: Using the initial conditions and , the left side becomes: Apply L to each step term: This gives the Laplace-domain equation:     Step 2 — Solve for  Factor out and divide through by :   To prepare for inversion, write:  where  We'll find so we can invert .   Partial Fraction Decomposition of  Decompose: Multiply through: Sub in convenient -values:  At : →  At : →  Thus:   Take the inverse Laplace:      Step 3 — Back to the Time Domain  Each exponential factor in corresponds to a shifted version of multiplied by the appropriate step function using L .   Substitute into each term:   This simplifies to the complete solution for all . It clearly shows how each piece of the forcing term triggers its own shifted response in the solution.    "
+},
+{
+  "id": "chpt-piecewise-forcing-functions-9-7-2",
+  "level": "2",
+  "url": "chpt-piecewise-forcing-functions-9-7.html#chpt-piecewise-forcing-functions-9-7-2",
+  "type": "Exercise",
+  "number": "13.7.1",
+  "title": "",
+  "body": " Use the definition of Laplace Transform to find the Laplace Transform of :             "
+},
+{
+  "id": "intro-systems",
+  "level": "1",
+  "url": "intro-systems.html",
+  "type": "Section",
+  "number": "14.1",
+  "title": "Introduction to Systems",
+  "body": " Introduction to Systems   When we first started studying differential equations, we focused on one equation and one dependent variable . But the real world is rarely that simple. Populations of predators and prey change together, chemical reactions involve several substances interacting, and mechanical systems often involve multiple moving parts.  In this chapter, we'll explore what happens when more than one quantity is changing at once — and how we can describe that with systems of differential equations .    What Are Systems?  A system of differential equations is exactly what it sounds like: a collection of differential equations that must be solved together . Instead of tracking a single unknown function, we track several unknowns — and they may influence each other.  For example, consider two unknown functions, and , governed by:   Here and describe how each quantity changes over time — possibly depending on the other quantity. This setup is common in science and engineering because many real-world situations involve several connected variables evolving at the same time.   How Are They Different?  Unlike single equations, systems can include interaction . One variable might depend on another — or they might depend on each other. This can produce richer behaviors like oscillations, balance points, or feedback loops. Solving systems sometimes calls for new tools, like matrix methods, but the ideas will still build on what you already know.  For example, here are some linear systems that have varying levels of dependency between the equations.                         The uncoupled system is no more than two independent differential equations that you have solved before. Far more interesting are the coupled systems, where changes in one variable directly influence changes in the other.     Uncoupled Systems  Let's start simple. Suppose we have two unknowns, and , but they don't influence each other:   These are called uncoupled because the -equation has no and the -equation has no . There's no interaction — they're basically two separate problems packaged together.   📖❓ Example of an Uncoupled System   Solve the uncoupled system:     Each equation can be solved on its own:   Even though they evolve separately, we think of the combined solution as a pair :   You might imagine describing a cup of coffee cooling while describes a soda warming up — two unrelated processes happening side by side.   Solution trajectories in the phase plane for the uncoupled system , . Arrows indicate the direction of motion as time increases.         📖❓ Uncoupled or Not?   The following system is uncoupled:      "
+},
+{
+  "id": "ex-uncoupled",
+  "level": "2",
+  "url": "intro-systems.html#ex-uncoupled",
+  "type": "🌌 Example",
+  "number": "271",
+  "title": "📖❓  Example of an Uncoupled System.",
+  "body": " 📖❓ Example of an Uncoupled System   Solve the uncoupled system:     Each equation can be solved on its own:   Even though they evolve separately, we think of the combined solution as a pair :   You might imagine describing a cup of coffee cooling while describes a soda warming up — two unrelated processes happening side by side.   Solution trajectories in the phase plane for the uncoupled system , . Arrows indicate the direction of motion as time increases.       "
+},
+{
+  "id": "intro-systems-chkpt-1",
+  "level": "2",
+  "url": "intro-systems.html#intro-systems-chkpt-1",
+  "type": "Checkpoint",
+  "number": "273",
+  "title": "📖❓  Uncoupled or Not?",
+  "body": " 📖❓ Uncoupled or Not?   The following system is uncoupled:    "
+},
+{
+  "id": "variable-interactions",
+  "level": "1",
+  "url": "variable-interactions.html",
+  "type": "Section",
+  "number": "14.2",
+  "title": "Interactions Between Variables",
+  "body": " Interactions Between Variables   In the last section, we saw uncoupled systems , where each equation evolved completely on its own. But many real-world systems aren't so tidy. Often one quantity affects another — or they push on each other in both directions.  In this section, we'll step up the complexity: first looking at systems where one variable drives another, and then meeting the case where both variables interact fully.    Partially Coupled Systems  Suppose we have two variables, and , but this time depends on . In other words, evolves independently, while  listens to .  Here's an example:   Notice what's happening: follows a simple exponential decay. Meanwhile, is influenced by two things — its own decay and whatever value has at the time. This is called a partially coupled system: one-way interaction.   Solving a Partially Coupled System   Solve the system:      Step 1: Solve the independent equation for . This is a familiar exponential decay:    Step 2: Substitute into the -equation:   This is a linear first-order equation. Use an integrating factor to solve:   Multiply by and rewrite the left side as a derivative:   Integrate:   Solve for :   Use the initial condition :   So the solution is:    decays smoothly, while rises briefly (pulled by ) before eventually decaying as well. This one-way influence is the hallmark of a partially coupled system.     📖❓ Partially Coupled Equations   📖❓ Partial Coupling is One-Way   In a partially coupled system, one variable affects the other, but not vice versa.    Exactly. In these systems, one equation is independent and can be solved first. The second equation depends on the first.     📖❓ Which Should You Solve First?   You are given the system: Which equation should you solve first?     , because it depends on both variables.  Not quite. You need to know before you can solve for .    It doesn't matter, either can be solved independently.  Actually, only evolves independently. depends on it.    , because it is independent of .  Correct. Solve the independent equation for first, then use that in the equation for .    Neither equation can be solved until both are known.  Actually, this is a one-way system, drives , not the other way around.        Fully Coupled Systems (Conceptual)  We've seen systems where nothing interacts (uncoupled) and where one quantity drives another (partially coupled). Now we reach the most intricate case: fully coupled systems .  In a fully coupled system, both variables affect each other. Neither equation stands alone — any change in alters 's future, and feeds back into .  Consider:   Here, and are fully entangled — you can't solve one without the other. Instead of peeling off one equation at a time, we'll eventually treat the system as a single object.   📖❓ What Makes It Fully Coupled ?   What must be true for a system to be fully coupled?     Both equations involve both variables.    Each equation has only one variable.  That would actually make the system uncoupled.    One equation is independent, and the other depends on it.  That's partially coupled, not fully coupled.       🤔💭 Understanding Partially Coupled Systems   🤔💭 Identify the Coupling   Consider the system: Which of the following statements are true?     evolves independently of .    is influenced by .    Both variables depend on each other equally.    This is a partially coupled system.    You must solve the equation first.      🤔💭 Solving Strategy   What is the best way to solve a partially coupled system?     Solve the independent equation first, then substitute into the other equation.    Solve both equations at the same time using elimination.  You could do that, but it's much simpler to solve the independent one first.    Write the system as one second-order DE before solving.  That's unnecessary for partially coupled systems — keep it simple.      🤔💭 Spot the Coupling   Consider the system:   Which of these statements are true?     depends on .    depends on .    This is a partially coupled system.  Not quite — both equations are entangled, which makes it fully coupled.    You can solve for first, then plug into .  Because depends on as well, you can't isolate them that easily.      "
+},
+{
+  "id": "ex-partially-coupled",
+  "level": "2",
+  "url": "variable-interactions.html#ex-partially-coupled",
+  "type": "🌌 Example",
+  "number": "274",
+  "title": "Solving a Partially Coupled System.",
+  "body": " Solving a Partially Coupled System   Solve the system:      Step 1: Solve the independent equation for . This is a familiar exponential decay:    Step 2: Substitute into the -equation:   This is a linear first-order equation. Use an integrating factor to solve:   Multiply by and rewrite the left side as a derivative:   Integrate:   Solve for :   Use the initial condition :   So the solution is:    decays smoothly, while rises briefly (pulled by ) before eventually decaying as well. This one-way influence is the hallmark of a partially coupled system.   "
+},
+{
+  "id": "variable-interactions-partially-coupled-chkpt-bundle",
+  "level": "2",
+  "url": "variable-interactions.html#variable-interactions-partially-coupled-chkpt-bundle",
+  "type": "Checkpoint",
+  "number": "275",
+  "title": "📖❓  Partially Coupled Equations.",
+  "body": " 📖❓ Partially Coupled Equations   📖❓ Partial Coupling is One-Way   In a partially coupled system, one variable affects the other, but not vice versa.    Exactly. In these systems, one equation is independent and can be solved first. The second equation depends on the first.     📖❓ Which Should You Solve First?   You are given the system: Which equation should you solve first?     , because it depends on both variables.  Not quite. You need to know before you can solve for .    It doesn't matter, either can be solved independently.  Actually, only evolves independently. depends on it.    , because it is independent of .  Correct. Solve the independent equation for first, then use that in the equation for .    Neither equation can be solved until both are known.  Actually, this is a one-way system, drives , not the other way around.     "
+},
+{
+  "id": "fully-coupled-conceptual-3",
+  "level": "2",
+  "url": "variable-interactions.html#fully-coupled-conceptual-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "both "
+},
+{
+  "id": "variable-interactions-chkpt-3",
+  "level": "2",
+  "url": "variable-interactions.html#variable-interactions-chkpt-3",
+  "type": "Checkpoint",
+  "number": "276",
+  "title": "📖❓  What Makes It “Fully Coupled”?",
+  "body": " 📖❓ What Makes It Fully Coupled ?   What must be true for a system to be fully coupled?     Both equations involve both variables.    Each equation has only one variable.  That would actually make the system uncoupled.    One equation is independent, and the other depends on it.  That's partially coupled, not fully coupled.    "
+},
+{
+  "id": "variable-interactions-cyu-bundle",
+  "level": "2",
+  "url": "variable-interactions.html#variable-interactions-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "277",
+  "title": "🤔💭 Understanding Partially Coupled Systems.",
+  "body": " 🤔💭 Understanding Partially Coupled Systems   🤔💭 Identify the Coupling   Consider the system: Which of the following statements are true?     evolves independently of .    is influenced by .    Both variables depend on each other equally.    This is a partially coupled system.    You must solve the equation first.      🤔💭 Solving Strategy   What is the best way to solve a partially coupled system?     Solve the independent equation first, then substitute into the other equation.    Solve both equations at the same time using elimination.  You could do that, but it's much simpler to solve the independent one first.    Write the system as one second-order DE before solving.  That's unnecessary for partially coupled systems — keep it simple.      🤔💭 Spot the Coupling   Consider the system:   Which of these statements are true?     depends on .    depends on .    This is a partially coupled system.  Not quite — both equations are entangled, which makes it fully coupled.    You can solve for first, then plug into .  Because depends on as well, you can't isolate them that easily.     "
+},
+{
+  "id": "linear-systems-basics",
+  "level": "1",
+  "url": "linear-systems-basics.html",
+  "type": "Section",
+  "number": "14.3",
+  "title": "Linear System Basics",
+  "body": " Linear System Basics   After exploring uncoupled, partially coupled, and fully coupled systems, we now turn to the most tractable and widely used class: linear systems with constant coefficients .  Their algebraic form is simple enough for exact analysis, yet flexible enough to model everything from harmonic oscillators to interacting populations. Our first task is to define what “linear” means and show how a short piece of matrix notation can replace a page-full of equations.    What Makes a System Linear?  A system is linear if every equation is linear with respect to its dependent variables (all to the power of one). For two variables and general form is   where , , , and are constants. The system is therefore autonomous (no explicit ) and planar (two-dimensional).    Select of linearity of each equation, then select the linearity of the system.       linear — nonlinear    linear — nonlinear      The system as a whole is: linear — nonlinear         The Matrix Formulation  Writing the same system once more,   define the coefficient matrix and state vector   Matrix multiplication then packages both equations into the single vector equation   This compact format presents the system as a single equation, linking directly to linear algebra tools like eigenvalues, which we will explore later.    From Two to Dimensions  For variables a constant-coefficient linear system reads   The dimension of the system equals the length of . Our focus this chapter remains on the planar case ( ) where geometry and algebra meet most clearly.  The number of dependent variables is called the dimension of the system. For example, the three-dimensional system:    Give the coefficient matrix, , for the following system:                                3  \\-\\s*2  0  0  0  1  3  \\-\\s*1  2      🤔💭 Linear System Basics   📖❓ Linear or Not?   Decide whether each system is linear or nonlinear.         The product and the square make this nonlinear.        The term makes this nonlinear.      📖❓ Identify Each System   Select the linear systems.                   📖❓ Benefits   Choose all advantages of writing .     It condenses multiple equations into one.    It links the system to eigenvalues and eigenvectors.    It turns any nonlinear system into a linear one.    It eliminates the need for initial conditions.      "
+},
+{
+  "id": "linear-definition-5",
+  "level": "2",
+  "url": "linear-systems-basics.html#linear-definition-5",
+  "type": "Checkpoint",
+  "number": "278",
+  "title": "",
+  "body": "  Select of linearity of each equation, then select the linearity of the system.       linear — nonlinear    linear — nonlinear      The system as a whole is: linear — nonlinear      "
+},
+{
+  "id": "coeff-matrix-chkpt-1",
+  "level": "2",
+  "url": "linear-systems-basics.html#coeff-matrix-chkpt-1",
+  "type": "Checkpoint",
+  "number": "279",
+  "title": "",
+  "body": "  Give the coefficient matrix, , for the following system:                                3  \\-\\s*2  0  0  0  1  3  \\-\\s*1  2   "
+},
+{
+  "id": "linear-systems-basics-cyu-bundle",
+  "level": "2",
+  "url": "linear-systems-basics.html#linear-systems-basics-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "280",
+  "title": "🤔💭 Linear System Basics.",
+  "body": " 🤔💭 Linear System Basics   📖❓ Linear or Not?   Decide whether each system is linear or nonlinear.         The product and the square make this nonlinear.        The term makes this nonlinear.      📖❓ Identify Each System   Select the linear systems.                   📖❓ Benefits   Choose all advantages of writing .     It condenses multiple equations into one.    It links the system to eigenvalues and eigenvectors.    It turns any nonlinear system into a linear one.    It eliminates the need for initial conditions.     "
+},
+{
+  "id": "solving-linear-systems",
+  "level": "1",
+  "url": "solving-linear-systems.html",
+  "type": "Section",
+  "number": "14.4",
+  "title": "Solving Linear Systems",
+  "body": " Solving Linear Systems    We've explored what linear systems are, how to visualize their behavior, and how to write them in compact matrix form. Now it's time to actually solve them.  We'll start with a method that mirrors how we solved single constant-coefficient equations: we guess exponential solutions. This guess transforms the differential system into an algebra problem — one that will lead naturally to eigenvalues and eigenvectors.    Guessing Exponential Solutions  Recall how we solved single first-order linear equations like by guessing solutions of the form . We'll try the same idea for systems.  Consider the system:   Let's guess that and share the same exponential rate :    Clearly, if , then we would have the trivial solution, so let's assume and are not both zero.   Differentiating gives:   Substituting into the system:   Divide through by (which is never zero):   This leaves an algebraic system involving the unknowns: , , and . It turns out that these unknowns have a very special relationship. To see this, flip the system around:   Now, convert this into a matrix system:   This is the eigenvalue equation  for the coefficient matrix   This tells us something powerful:  Linear systems often have solutions made of exponentials.  The allowed exponential rates are the eigenvalues of .  The corresponding coefficients and form the eigenvectors .     Solving a Simple Linear System   Solve the system:     Write in matrix form with .  Guess . Substituting gives .  Find eigenvalues of by solving .   Set equal to zero: . Factor:   Find eigenvectors for each eigenvalue.   For r = 3: Solve . From the first row: . Choose , giving eigenvector .  For r = -1: Solve . From the first row: . Choose , giving eigenvector .   Write the general solution.   Substitute the eigenvectors:   Or written componentwise:   The constants and will be found from initial conditions.     Complex Eigenvalues and Spirals   Consider the system:   Solve the system and describe the behavior of solutions.    Write .  Find eigenvalues by solving .   Set equal to zero: . Using the quadratic formula:   The eigenvalues are — complex conjugates. The real part ( ) means solutions grow exponentially; the imaginary part ( ) means they also rotate: the system's trajectories spiral outward.  Find an eigenvector for (the other is its conjugate). Solving gives an eigenvector .  Write the solution.  We form the real solution by taking the real and imaginary parts:   The exponential factor causes growth; the sine and cosine produce rotation. The system's phase portrait shows spirals moving outward from the origin.      🤔💭 Solving Linear Systems Reading Questions   📖❓ Eigenvalues and Behavior   Suppose the eigenvalues of a system are . What does this tell you about the solutions?     They spiral inward toward the origin.    They spiral outward away from the origin.  The negative real part means decay, not growth.    They move straight toward the origin with no oscillation.  The imaginary part implies rotation (spiraling).      "
+},
+{
+  "id": "ex-worked-linear-system",
+  "level": "2",
+  "url": "solving-linear-systems.html#ex-worked-linear-system",
+  "type": "🌌 Example",
+  "number": "281",
+  "title": "Solving a Simple Linear System.",
+  "body": " Solving a Simple Linear System   Solve the system:     Write in matrix form with .  Guess . Substituting gives .  Find eigenvalues of by solving .   Set equal to zero: . Factor:   Find eigenvectors for each eigenvalue.   For r = 3: Solve . From the first row: . Choose , giving eigenvector .  For r = -1: Solve . From the first row: . Choose , giving eigenvector .   Write the general solution.   Substitute the eigenvectors:   Or written componentwise:   The constants and will be found from initial conditions.   "
+},
+{
+  "id": "ex-complex-eigenvalues",
+  "level": "2",
+  "url": "solving-linear-systems.html#ex-complex-eigenvalues",
+  "type": "🌌 Example",
+  "number": "282",
+  "title": "Complex Eigenvalues and Spirals.",
+  "body": " Complex Eigenvalues and Spirals   Consider the system:   Solve the system and describe the behavior of solutions.    Write .  Find eigenvalues by solving .   Set equal to zero: . Using the quadratic formula:   The eigenvalues are — complex conjugates. The real part ( ) means solutions grow exponentially; the imaginary part ( ) means they also rotate: the system's trajectories spiral outward.  Find an eigenvector for (the other is its conjugate). Solving gives an eigenvector .  Write the solution.  We form the real solution by taking the real and imaginary parts:   The exponential factor causes growth; the sine and cosine produce rotation. The system's phase portrait shows spirals moving outward from the origin.   "
+},
+{
+  "id": "solving-linear-systems-cyu-bundle",
+  "level": "2",
+  "url": "solving-linear-systems.html#solving-linear-systems-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "283",
+  "title": "🤔💭 Solving Linear Systems Reading Questions.",
+  "body": " 🤔💭 Solving Linear Systems Reading Questions   📖❓ Eigenvalues and Behavior   Suppose the eigenvalues of a system are . What does this tell you about the solutions?     They spiral inward toward the origin.    They spiral outward away from the origin.  The negative real part means decay, not growth.    They move straight toward the origin with no oscillation.  The imaginary part implies rotation (spiraling).     "
+},
+{
+  "id": "second-order-to-system",
+  "level": "1",
+  "url": "second-order-to-system.html",
+  "type": "Section",
+  "number": "14.5",
+  "title": "Second-Order Equations to First-Order Systems",
+  "body": " Second-Order Equations to First-Order Systems   So far, we've looked at systems that involve multiple variables like and . But what if you start with just a single second-order differential equation? It turns out you can rewrite it as a system of first-order equations.    Turning a Second-Order Equation into a System  For example, consider the second-order equation:   This equation involves only one dependent variable, , but it's second-order. To convert it into a system, we introduce a new variable:   That means . And since , we can rewrite the original equation as:   Now we have a system of two first-order equations:    📖❓ Derivative Substitution   In order to rewrite a second-order equation as a system, we can replace with a new variable and then express as the derivative of that new variable.    Correct. Introducing and allows us to write as and form a system.      🤔💭 Second-Order Equations to First-Order Systems   📖❓ Understanding Converted Systems   When you convert a second-order equation into a first-order system, which of the following are always true?     The system has two first-order equations.  Yes. One for and one for .    The system involves two new variables: one for , one for .  Exactly. This substitution is the key step.    The resulting system is always uncoupled.  Not true. The new variables often depend on each other.    The system represents the same solutions as the original equation.  Correct. It's just a different form of the same information.    You can only use this method for linear equations.  This method also works for nonlinear second-order equations.      📖❓ Match Equations to Their Systems   Match each second-order differential equation to the correct system using and .    Each system reflects and an expression for based on .                       📖❓ From Second Order to System   What is the correct system corresponding to if we define , ?     ,  That would be true if the original equation were . Double-check which variable is being multiplied by 4.    ,  Too many terms, there's no in the original equation.    ,  Yes! is exactly what we want.    ,  This system doesn't reflect the original equation at all.      "
+},
+{
+  "id": "second-order-to-system-chkpt-1",
+  "level": "2",
+  "url": "second-order-to-system.html#second-order-to-system-chkpt-1",
+  "type": "Checkpoint",
+  "number": "284",
+  "title": "📖❓ Derivative Substitution.",
+  "body": " 📖❓ Derivative Substitution   In order to rewrite a second-order equation as a system, we can replace with a new variable and then express as the derivative of that new variable.    Correct. Introducing and allows us to write as and form a system.   "
+},
+{
+  "id": "second-order-to-system-cyu-bundle",
+  "level": "2",
+  "url": "second-order-to-system.html#second-order-to-system-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "285",
+  "title": "🤔💭 Second-Order Equations to First-Order Systems.",
+  "body": " 🤔💭 Second-Order Equations to First-Order Systems   📖❓ Understanding Converted Systems   When you convert a second-order equation into a first-order system, which of the following are always true?     The system has two first-order equations.  Yes. One for and one for .    The system involves two new variables: one for , one for .  Exactly. This substitution is the key step.    The resulting system is always uncoupled.  Not true. The new variables often depend on each other.    The system represents the same solutions as the original equation.  Correct. It's just a different form of the same information.    You can only use this method for linear equations.  This method also works for nonlinear second-order equations.      📖❓ Match Equations to Their Systems   Match each second-order differential equation to the correct system using and .    Each system reflects and an expression for based on .                       📖❓ From Second Order to System   What is the correct system corresponding to if we define , ?     ,  That would be true if the original equation were . Double-check which variable is being multiplied by 4.    ,  Too many terms, there's no in the original equation.    ,  Yes! is exactly what we want.    ,  This system doesn't reflect the original equation at all.     "
+},
+{
+  "id": "numerical-solutions-for-linear-systems",
+  "level": "1",
+  "url": "numerical-solutions-for-linear-systems.html",
+  "type": "Section",
+  "number": "14.6",
+  "title": "Euler’s Method",
+  "body": " Euler's Method   We've explored what linear systems are, how to visualize their behavior, and even how to write them neatly in vector form. Now it's time to start solving them.  We'll begin with the classic trick that worked for single equations — guessing exponential solutions — then finish by showing how to approximate solutions step by step with a numerical method.    Numerical Solutions for Linear Systems  Not every system is easy to solve exactly. Sometimes, you just want to see what the solution looks like — or approximate it for a while. That's where numerical methods shine.  One of the simplest is Euler's Method , which you've seen for single equations. We'll now apply it to systems.  Suppose we have:   With initial conditions , , and a step size of .   Euler's Method for a System   Use Euler's method to take two steps for the system above.     Step 1: At , we have , . The derivatives are , .  Update:    Step 2: At , we have , . Now , .  Update again:   We now have approximate values after two steps:   Each step shows how and  talk to each other as time progresses.    Euler's Method may be simple, but it makes the flow of information between variables visible: each update for affects on the next step, and vice versa.    🤔💭 Numerical Solutions for Linear Systems Reading Questions   🤔💭 Numerical Methods for Systems   Euler's Method Thinking   What does Euler's Method do when applied to a system of DEs?     It updates each variable step by step using its derivative at the current point.    It shows how the variables influence each other from one step to the next.    It provides the exact solution in one step.  Euler's Method is an approximation technique, not an exact one-step solution.    It can only be used for uncoupled systems.  Euler's Method works for any system, coupled or not.      Interpreting Numerical Results   When we use Euler's Method on a system, what do the computed points represent?     They are approximate values of the solution at specific time steps.    They are exact values that replace the need for solving the system algebraically.  They're approximate — we still use exact methods when possible.    They are estimates of the system's coefficients.  Euler's Method updates and , not the coefficients.       "
+},
+{
+  "id": "ex-euler-system",
+  "level": "2",
+  "url": "numerical-solutions-for-linear-systems.html#ex-euler-system",
+  "type": "🌌 Example",
+  "number": "286",
+  "title": "Euler’s Method for a System.",
+  "body": " Euler's Method for a System   Use Euler's method to take two steps for the system above.     Step 1: At , we have , . The derivatives are , .  Update:    Step 2: At , we have , . Now , .  Update again:   We now have approximate values after two steps:   Each step shows how and  talk to each other as time progresses.   "
+},
+{
+  "id": "numerical-solutions-for-linear-systems-cyu-bundle",
+  "level": "2",
+  "url": "numerical-solutions-for-linear-systems.html#numerical-solutions-for-linear-systems-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "287",
+  "title": "🤔💭 Numerical Solutions for Linear Systems Reading Questions.",
+  "body": " 🤔💭 Numerical Solutions for Linear Systems Reading Questions   🤔💭 Numerical Methods for Systems   Euler's Method Thinking   What does Euler's Method do when applied to a system of DEs?     It updates each variable step by step using its derivative at the current point.    It shows how the variables influence each other from one step to the next.    It provides the exact solution in one step.  Euler's Method is an approximation technique, not an exact one-step solution.    It can only be used for uncoupled systems.  Euler's Method works for any system, coupled or not.      Interpreting Numerical Results   When we use Euler's Method on a system, what do the computed points represent?     They are approximate values of the solution at specific time steps.    They are exact values that replace the need for solving the system algebraically.  They're approximate — we still use exact methods when possible.    They are estimates of the system's coefficients.  Euler's Method updates and , not the coefficients.      "
+},
+{
+  "id": "qualitative-methods-for-linear-systems",
+  "level": "1",
+  "url": "qualitative-methods-for-linear-systems.html",
+  "type": "Section",
+  "number": "14.7",
+  "title": "Qualitative Methods",
+  "body": " Qualitative Methods     Phase Planes and Direction Fields  One of the best ways to understand a system — especially a linear one — is to see it .  The phase plane is a two-dimensional space where we plot one variable on the horizontal axis and the other on the vertical axis. A solution to the system becomes a trajectory — a path through the plane traced as time flows.  To see the push of the system without fully solving it, we can draw a direction field (or slope field): at each point , we sketch a small arrow showing the vector .   Phase Portrait of an Uncoupled System   Consider the uncoupled system:   In the phase plane, every trajectory moves straight toward the origin — and are simply decaying independently, so the arrows point inward along both axes.    For more interesting systems — like ones with partial or full coupling — the direction field can show curved paths, spirals, or saddle-shaped flows. This visual approach helps us predict system behavior even before we dive into equations.    Visualization Tools  So far, we've seen examples of systems where variables evolve independently or influence each other. Now let's step back and look at how to visualize a system as a whole.  The phase plane is a two-dimensional space where we plot one variable on the horizontal axis and the other on the vertical axis. A solution to a system like   becomes a curve in the plane: a path that the system traces over time. We often call this a trajectory .  Instead of plotting and separately, we visualize the pair moving through the plane.  To understand how the system behaves without solving it, we can draw a slope field or direction field : a grid of arrows showing the direction of motion at each point.  Each arrow represents the vector at a point . Together, they show how the system wants to evolve.   Phase Portrait of an Uncoupled System   Consider the system:   The phase portrait shows straight-line motion toward the origin along both axes, because each variable decays independently.    In more interesting systems, like partially coupled ones, the slope field reveals how the variables influence each other.   Phase Portrait of a Partially Coupled System   For the system:   The phase portrait shows decaying, and temporarily increasing in response before decaying, reflecting the one-way interaction.    Phase portraits help us understand the big picture: where solutions are headed, whether they spiral, diverge, or settle down.  Euler's Method Visualized   This interactive slope field shows the direction of motion for the system , . Each arrow represents the vector at that location.                📤 Wrap-Up  Summary    The phase plane shows a system's behavior as a path in the plane.  A slope field shows the direction of motion at each point, based on the system's right-hand sides.  These tools help us understand how the variables interact, even before solving the system.        Qualitative Behavior of Systems  Once we start looking at direction fields, patterns emerge:  Some systems push every solution toward a single point (stable equilibrium). Others send trajectories outward (unstable). Some cause spirals, as if the solution is both rotating and growing or shrinking at the same time.  Even without solving a system, we can often describe these behaviors by looking at the arrows in the phase plane:   Straight decay : trajectories slide smoothly toward the origin.  Saddles : some trajectories are drawn in, others are pushed away.  Spirals : solutions curve inward or outward in looping paths.   Later, we'll connect these patterns to the algebra of the system's coefficients. But even now, these big picture behaviors help us think about what the math is saying.    🤔💭 Qualitative Methods for Linear Systems Reading Questions   🤔💭 Linear or Not?   Decide whether each system is linear or nonlinear.         The product and the square make this nonlinear.        The term makes this nonlinear.      🤔💭 Defining Features   What must be true for a system to be called linear ?     The unknowns and their derivatives appear without products, powers, or nonlinear functions.    All coefficients must be positive.  Sign of coefficients doesn't determine linearity — their form does.    The system must contain exactly two equations.  Systems can have more than two equations and still be linear.      🤔💭 What Does the Phase Plane Show?   Select all statements that describe what a phase plane diagram shows.     The trajectory of the system as moves through time.    The direction of motion at each point (if we draw a direction field).    Only the values of over time, ignoring .  The phase plane shows both variables as a path in 2D space.    Exact solutions for every initial condition.  The phase plane shows motion qualitatively — we don't always solve for explicit formulas.      🤔💭 Recognizing Patterns   Match each description to the type of behavior it suggests.     Trajectories loop inward toward the origin → Spiral sink    Some arrows point toward the origin, others point away → Saddle    All trajectories move straight toward the origin → Stable node    Trajectories go in circles forever → This always means the system is nonlinear.  Not true — linear systems can also produce closed loops or spirals.      🤔💭 Benefits of Vector Form   Why might we rewrite a system as ?     It organizes the system neatly as a single equation.    It connects the system to linear algebra tools like eigenvalues.    It makes the system nonlinear.  No — writing it in vector form doesn't change linearity.    It means we no longer have to think about and separately.  Vector form is a tool for structure, but we still care about each variable's behavior.      "
+},
+{
+  "id": "ex-phase-plane",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#ex-phase-plane",
+  "type": "🌌 Example",
+  "number": "288",
+  "title": "Phase Portrait of an Uncoupled System.",
+  "body": " Phase Portrait of an Uncoupled System   Consider the uncoupled system:   In the phase plane, every trajectory moves straight toward the origin — and are simply decaying independently, so the arrows point inward along both axes.   "
+},
+{
+  "id": "ex-slopefield-uncoupled",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#ex-slopefield-uncoupled",
+  "type": "🌌 Example",
+  "number": "289",
+  "title": "Phase Portrait of an Uncoupled System.",
+  "body": " Phase Portrait of an Uncoupled System   Consider the system:   The phase portrait shows straight-line motion toward the origin along both axes, because each variable decays independently.   "
+},
+{
+  "id": "ex-slopefield-partial",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#ex-slopefield-partial",
+  "type": "🌌 Example",
+  "number": "290",
+  "title": "Phase Portrait of a Partially Coupled System.",
+  "body": " Phase Portrait of a Partially Coupled System   For the system:   The phase portrait shows decaying, and temporarily increasing in response before decaying, reflecting the one-way interaction.   "
+},
+{
+  "id": "visualizing-systems-13",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#visualizing-systems-13",
+  "type": "🎮 Interactive",
+  "number": "291",
+  "title": "Euler’s Method Visualized.",
+  "body": "Euler's Method Visualized   This interactive slope field shows the direction of motion for the system , . Each arrow represents the vector at that location.        "
+},
+{
+  "id": "visualizing-systems-14",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#visualizing-systems-14",
+  "type": "Figure",
+  "number": "292",
+  "title": "",
+  "body": "  "
+},
+{
+  "id": "qualitative-methods-for-linear-systems-cyu-bundle",
+  "level": "2",
+  "url": "qualitative-methods-for-linear-systems.html#qualitative-methods-for-linear-systems-cyu-bundle",
+  "type": "Checkpoint",
+  "number": "293",
+  "title": "🤔💭 Qualitative Methods for Linear Systems Reading Questions.",
+  "body": " 🤔💭 Qualitative Methods for Linear Systems Reading Questions   🤔💭 Linear or Not?   Decide whether each system is linear or nonlinear.         The product and the square make this nonlinear.        The term makes this nonlinear.      🤔💭 Defining Features   What must be true for a system to be called linear ?     The unknowns and their derivatives appear without products, powers, or nonlinear functions.    All coefficients must be positive.  Sign of coefficients doesn't determine linearity — their form does.    The system must contain exactly two equations.  Systems can have more than two equations and still be linear.      🤔💭 What Does the Phase Plane Show?   Select all statements that describe what a phase plane diagram shows.     The trajectory of the system as moves through time.    The direction of motion at each point (if we draw a direction field).    Only the values of over time, ignoring .  The phase plane shows both variables as a path in 2D space.    Exact solutions for every initial condition.  The phase plane shows motion qualitatively — we don't always solve for explicit formulas.      🤔💭 Recognizing Patterns   Match each description to the type of behavior it suggests.     Trajectories loop inward toward the origin → Spiral sink    Some arrows point toward the origin, others point away → Saddle    All trajectories move straight toward the origin → Stable node    Trajectories go in circles forever → This always means the system is nonlinear.  Not true — linear systems can also produce closed loops or spirals.      🤔💭 Benefits of Vector Form   Why might we rewrite a system as ?     It organizes the system neatly as a single equation.    It connects the system to linear algebra tools like eigenvalues.    It makes the system nonlinear.  No — writing it in vector form doesn't change linearity.    It means we no longer have to think about and separately.  Vector form is a tool for structure, but we still care about each variable's behavior.     "
+},
+{
+  "id": "c12-exercises",
+  "level": "1",
+  "url": "c12-exercises.html",
+  "type": "Section",
+  "number": "14.8",
+  "title": "Chapter 12 Exercises",
+  "body": " Chapter 12 Exercises   ᯓ★❓ Quick-Answer Questions    True-False   📖❓ Which Variable Drives Which?   Consider the system:   Select all true statements:     evolves independently of .    depends on .    This is an uncoupled system.  Not quite — notice that shows up in the equation.    You must solve for before you can solve for .  Actually, you can solve first since it's independent.      Interdependence  What makes a system fully coupled? How does that affect how we approach the problem?    📖❓ Classify the System   Match each system to the correct classification.   Assume both and are functions of .     Systems are classified by whether variables influence each other and how. Look for dependencies in the right-hand sides.       Uncoupled      Partially Coupled     Fully Coupled      📖❓ Identifying Features   Select all statements that are true about partially coupled systems.     One equation is independent and can be solved first.  Yes, this is a defining feature of partial coupling.    Both equations must be solved simultaneously.  No, only fully coupled systems require that.    The dependent equation uses the solution of the independent one.  Exactly. You substitute into the second equation to solve for .    Partial coupling means both variables evolve independently.  That describes an uncoupled system, not a partially coupled one.    Only one of the equations involves both variables.  Correct. The coupling only appears in one direction.    The second variable can be solved without knowing the first.  Nope, you need to solve for .      📖❓ Select the True Statements   Which of the following statements are true for the system:      The rate of change of depends on .    The variable has no effect on how changes.    The rate of change of depends only on .    This is an example of a coupled system.    This system has two independent variables.      📖❓ Independent Solutions   In an uncoupled system, how do we find the solution for the whole system?     Solve each equation separately, then combine the answers into a pair .    Rewrite the system as a second-order equation for just one variable.  You could do this in some cases, but for uncoupled systems it's simpler to solve each one directly.    Use Euler's Method only — they cannot be solved exactly.  Uncoupled systems are straightforward to solve exactly.         Exercises    Solve the following systems of differential equations.        We can take the LT of each DE. The result is two algebraic equations in two unknowns an We will solve the equations simultaneously as shown below. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition for   Hence, Now we need only find the inverse LT of equations. This, the solution to this system is We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions.              We can take the LT of each DE, starting with the first DE. We will then solve for  Now we take the LT of the second DE. We will substitute in for using the result we found above. We now substitute this back into equation. We need only take the inverse LT of each function in order to solve for the desired functions an   Thus, the solution to this system is We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions.              We can take the LT of each DE, starting with the first DE. We will then solve for  Now we take the LT of the second DE. We will substitute in for using the result we found above. We now substitute this back into equation. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition for   Hence, Now we need only find the inverse LT of equations. Thus, the solution to this system is We can verify that this is the solution. Hence, the solution satisfies both DEs and both initial conditions.            Suppose a mixture containing 0.3 kg of sugar per liter runs into a tank initially filled with 400 L of water containing 2 kg of sugar. The liquid enters at 10 L\/min,the mixture is kept uniform by stirring, and the mixture flows out at the same rate.  Answer the following:  Find the mass of sugar in the tank after minutes.  Find the concentration of sugar in the tank after 10 minutes.  Use your answer to question to determine the concentration of sugar in the tank after a long time. Does your answer make sense in terms of the physical scenario? Explain.       A brine solution of salt flows at a constant rate of 4 L\/min into a large tank that initially he of pure water. The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L\/min. Suppose the concentration of salt in the brine entering the tank is kg\/L. Then  Determine the mass of the salt in the tank afte minutes.  What is the concentration of salt after one hour?              From a Second-Order Equation to a System   Rewrite the second-order equation as a system of first-order equations.    Let and . Then:   and   So the system becomes:       Two large tanks, each holding 100 L of liquid, are interconnected by pipes, with the liquid flowing from tank 1 into tank 2 at a rate of 3 L\/min and from tank 2 into tank 1 at a rate of 1 L\/min. The liquid inside each tank is kept well-stirred. A brine solution with salt concentration of 0.01 kg\/L flows into tank 1 at a rate of 4 L\/min. The (diluted) solution flows out of the system from tank 1 at 2 L\/min and from tank 2 at 2 L\/min.Initially, tank 1 contains pure water and tank 2 contains 6 kg of salt.     Write a system of differential equations for (the amount of salt, in kg, in tank 1 at tim )an (the amount of salt, in kg, in tank 2 at tim ).    We consider the rate of change in the amount of salt in tank 1. Similarly, we consider the rate of change in the amount of salt in tank 2. Hence, our system is:            How many initial conditions will you need to find a particularsolution? Write the initial conditions.    There are two first-order DEs, so we will need two initial conditions. They are:     two an       Why can't we solve each of the DEs you found individually usingtechniques we already know?    We can't solve this system using techniques we already know becaus an are both unknown functions, and each DE contains BOTH of the unknowns. All of the techniques we have so far help us solve for a single unknown function.     an are both unknown functions, and each DE contains BOTH of the unknowns      A simplified mathematical model for an arms race between two countries whose expenditures for % defense are expressed by the variable an is given by the linear system where and are constants that measure the trust (or distrust!) each country has for the other.  What might be appropriate units for and ?  How can we interpret the fact that the coefficient of is positive in the equation for ? Does it make sense? Would the DE make sense if the coefficient was negative instead?  How can we interpret the fact that the coefficient of is negative in the equation for ? Does it make sense? Would the DE make sense if the coefficient was positive instead?  Suppose country X trusts country Y, but country Y doesn't trust country X. What can we say abou and ? Should they be positive, negative or zero?  Rewrite the system of differential equations in matrix form by using the vector Notice that for this system, the right hand side should be of the for   Write the initial conditions in a vector, also. That is, complete the following.                     Suppose compartments A and B are filled with fluids and are separated by a permeable membrane. The figure is a compartmental representation of the exterior and interior of a cell. Suppose, too, that a nutrient necessary for cell growth passes through the membrane.    A model for the concentration and of the nutrient in compartments A and B, respectively, at time is given by the linear system of differential equations: where and are the volumes of the compartments, and is a permeability factor. Let and .  In the first equation, explain why it makes sense for to have a positive coefficient an to have a negative coefficient.  Notice that if we add these two equations, we get or, equivalently, Explain what this means and why it makes sense.  Rewrite the system of differential equations in matrix form by using the vector   Write the initial conditions in a vector, also. That is, complete the following.                A tank contains 100 liters of water. Salt is being added at a rate of 5 grams per minute. If the mixture is kept uniform by stirring and salt is being removed from the tank at a rate of 2 liters per minute, set up the differential equation that models the amount of salt \\(y(t)\\) in the tank at any time \\(t\\).   Let \\(y(t)\\) be the amount of salt in the tank at time \\(t\\). The rate of change of salt with respect to time, \\(\\frac{dy}{dt}\\), is given by the rate of salt coming in minus the rate of salt going out. The rate of salt coming in is 5 grams\/minute. The concentration of salt in the tank is \\(\\frac{y(t)}{100 - 2t}\\) and thus the rate at which salt is removed from the tank is \\(2 \\times \\frac{y(t)}{100 - 2t}\\). Therefore, the differential equation is:       Euler's Method for Systems   Given the initial-valued system approximate and using two iterations of Euler's method with a step size .     Euler's Method for Systems   Consider the initial-valued system Approximate and using .     Therefore an            Reduction of Order   Reduce each of the following to a system of first-order differential equations.                                    We have one second-order and one first-order DE, which means we will need three variables to generate a systemof three first-order DEs.\\\\ Let  an . Then we have the following. Substituting into the first DE yields the following. Substituting into the second DE yields the following. Then equations (\\ref{eq14-9}), (\\ref{eq14-10}) and (\\ref{eq14-11}) constitute a system of first-order DEs in the variable  , and , as below:      where an       Euler's Method for Higher Order Systems   Use Euler's method to approximate for the solution to the IVP using a step size of .    First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-12} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-13} \\end{equation} Substituting equations (\\ref{eq14-12}) and (\\ref{eq14-13}) into the DE yields the following. Then equations (\\ref{eq14-12}) and (\\ref{eq14-14}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore an This mean (and, even though we were not asked for it specifically ).          Euler's Method   Approximate the solution to the IVP using Euler's Method with (a) and .    First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-15} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-16} \\end{equation} Substituting equations (\\ref{eq14-14}) and (\\ref{eq14-15}) into the DE yields the following. Then equations (\\ref{eq14-15}) and (\\ref{eq14-17}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).        Euler's Method   Approximate if is the solution to IVP:     We will use the system of DEs developed in part \\ref{partA_euler} Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).\\\\ %        "
+},
+{
+  "id": "c12-quick-answer-tf",
+  "level": "2",
+  "url": "c12-quick-answer.html#c12-quick-answer-tf",
+  "type": "Reading Question",
+  "number": "14.8.1",
+  "title": "True-False.",
+  "body": " True-False   📖❓ Which Variable Drives Which?   Consider the system:   Select all true statements:     evolves independently of .    depends on .    This is an uncoupled system.  Not quite — notice that shows up in the equation.    You must solve for before you can solve for .  Actually, you can solve first since it's independent.      Interdependence  What makes a system fully coupled? How does that affect how we approach the problem?    📖❓ Classify the System   Match each system to the correct classification.   Assume both and are functions of .     Systems are classified by whether variables influence each other and how. Look for dependencies in the right-hand sides.       Uncoupled      Partially Coupled     Fully Coupled      📖❓ Identifying Features   Select all statements that are true about partially coupled systems.     One equation is independent and can be solved first.  Yes, this is a defining feature of partial coupling.    Both equations must be solved simultaneously.  No, only fully coupled systems require that.    The dependent equation uses the solution of the independent one.  Exactly. You substitute into the second equation to solve for .    Partial coupling means both variables evolve independently.  That describes an uncoupled system, not a partially coupled one.    Only one of the equations involves both variables.  Correct. The coupling only appears in one direction.    The second variable can be solved without knowing the first.  Nope, you need to solve for .      📖❓ Select the True Statements   Which of the following statements are true for the system:      The rate of change of depends on .    The variable has no effect on how changes.    The rate of change of depends only on .    This is an example of a coupled system.    This system has two independent variables.      📖❓ Independent Solutions   In an uncoupled system, how do we find the solution for the whole system?     Solve each equation separately, then combine the answers into a pair .    Rewrite the system as a second-order equation for just one variable.  You could do this in some cases, but for uncoupled systems it's simpler to solve each one directly.    Use Euler's Method only — they cannot be solved exactly.  Uncoupled systems are straightforward to solve exactly.     "
+},
+{
+  "id": "c12-exercises-3-2-2",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-2-2",
+  "type": "Exercise",
+  "number": "14.8.1",
+  "title": "",
+  "body": "     We can take the LT of each DE. The result is two algebraic equations in two unknowns an We will solve the equations simultaneously as shown below. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition for   Hence, Now we need only find the inverse LT of equations. This, the solution to this system is We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions.        "
+},
+{
+  "id": "c12-exercises-3-2-3",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-2-3",
+  "type": "Exercise",
+  "number": "14.8.2",
+  "title": "",
+  "body": "     We can take the LT of each DE, starting with the first DE. We will then solve for  Now we take the LT of the second DE. We will substitute in for using the result we found above. We now substitute this back into equation. We need only take the inverse LT of each function in order to solve for the desired functions an   Thus, the solution to this system is We can verify our solution. Hence, the solution satisfies both DEs and both initial conditions.        "
+},
+{
+  "id": "c12-exercises-3-2-4",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-2-4",
+  "type": "Exercise",
+  "number": "14.8.3",
+  "title": "",
+  "body": "     We can take the LT of each DE, starting with the first DE. We will then solve for  Now we take the LT of the second DE. We will substitute in for using the result we found above. We now substitute this back into equation. We need only take the inverse LT of each function in order to solve for the desired function an This means we will need to find a partial fraction decomposition for each.  Hence, Similarly, we will find a partial fraction decomposition for   Hence, Now we need only find the inverse LT of equations. Thus, the solution to this system is We can verify that this is the solution. Hence, the solution satisfies both DEs and both initial conditions.        "
+},
+{
+  "id": "c12-exercises-3-3",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-3",
+  "type": "Exercise",
+  "number": "14.8.4",
+  "title": "",
+  "body": "  Suppose a mixture containing 0.3 kg of sugar per liter runs into a tank initially filled with 400 L of water containing 2 kg of sugar. The liquid enters at 10 L\/min,the mixture is kept uniform by stirring, and the mixture flows out at the same rate.  Answer the following:  Find the mass of sugar in the tank after minutes.  Find the concentration of sugar in the tank after 10 minutes.  Use your answer to question to determine the concentration of sugar in the tank after a long time. Does your answer make sense in terms of the physical scenario? Explain.     "
+},
+{
+  "id": "c12-exercises-3-4",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-4",
+  "type": "Exercise",
+  "number": "14.8.5",
+  "title": "",
+  "body": " A brine solution of salt flows at a constant rate of 4 L\/min into a large tank that initially he of pure water. The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L\/min. Suppose the concentration of salt in the brine entering the tank is kg\/L. Then  Determine the mass of the salt in the tank afte minutes.  What is the concentration of salt after one hour?            "
+},
+{
+  "id": "ex-second-order-to-system",
+  "level": "2",
+  "url": "c12-exercises-3.html#ex-second-order-to-system",
+  "type": "Exercise",
+  "number": "14.8.6",
+  "title": "From a Second-Order Equation to a System.",
+  "body": " From a Second-Order Equation to a System   Rewrite the second-order equation as a system of first-order equations.    Let and . Then:   and   So the system becomes:    "
+},
+{
+  "id": "c12-exercises-3-6-2",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-6-2",
+  "type": "Exercise",
+  "number": "14.8.7",
+  "title": "",
+  "body": "  Write a system of differential equations for (the amount of salt, in kg, in tank 1 at tim )an (the amount of salt, in kg, in tank 2 at tim ).    We consider the rate of change in the amount of salt in tank 1. Similarly, we consider the rate of change in the amount of salt in tank 2. Hence, our system is:         "
+},
+{
+  "id": "c12-exercises-3-6-3",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-6-3",
+  "type": "Exercise",
+  "number": "14.8.8",
+  "title": "",
+  "body": "  How many initial conditions will you need to find a particularsolution? Write the initial conditions.    There are two first-order DEs, so we will need two initial conditions. They are:     two an    "
+},
+{
+  "id": "c12-exercises-3-6-4",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-6-4",
+  "type": "Exercise",
+  "number": "14.8.9",
+  "title": "",
+  "body": "  Why can't we solve each of the DEs you found individually usingtechniques we already know?    We can't solve this system using techniques we already know becaus an are both unknown functions, and each DE contains BOTH of the unknowns. All of the techniques we have so far help us solve for a single unknown function.     an are both unknown functions, and each DE contains BOTH of the unknowns   "
+},
+{
+  "id": "c12-exercises-3-7",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-7",
+  "type": "Exercise",
+  "number": "14.8.10",
+  "title": "",
+  "body": " A simplified mathematical model for an arms race between two countries whose expenditures for % defense are expressed by the variable an is given by the linear system where and are constants that measure the trust (or distrust!) each country has for the other.  What might be appropriate units for and ?  How can we interpret the fact that the coefficient of is positive in the equation for ? Does it make sense? Would the DE make sense if the coefficient was negative instead?  How can we interpret the fact that the coefficient of is negative in the equation for ? Does it make sense? Would the DE make sense if the coefficient was positive instead?  Suppose country X trusts country Y, but country Y doesn't trust country X. What can we say abou and ? Should they be positive, negative or zero?  Rewrite the system of differential equations in matrix form by using the vector Notice that for this system, the right hand side should be of the for   Write the initial conditions in a vector, also. That is, complete the following.             "
+},
+{
+  "id": "c12-exercises-3-8-2",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-8-2",
+  "type": "Exercise",
+  "number": "14.8.11",
+  "title": "",
+  "body": "  Suppose compartments A and B are filled with fluids and are separated by a permeable membrane. The figure is a compartmental representation of the exterior and interior of a cell. Suppose, too, that a nutrient necessary for cell growth passes through the membrane.    A model for the concentration and of the nutrient in compartments A and B, respectively, at time is given by the linear system of differential equations: where and are the volumes of the compartments, and is a permeability factor. Let and .  In the first equation, explain why it makes sense for to have a positive coefficient an to have a negative coefficient.  Notice that if we add these two equations, we get or, equivalently, Explain what this means and why it makes sense.  Rewrite the system of differential equations in matrix form by using the vector   Write the initial conditions in a vector, also. That is, complete the following.              "
+},
+{
+  "id": "c12-exercises-3-8-3",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-8-3",
+  "type": "Exercise",
+  "number": "14.8.12",
+  "title": "",
+  "body": " A tank contains 100 liters of water. Salt is being added at a rate of 5 grams per minute. If the mixture is kept uniform by stirring and salt is being removed from the tank at a rate of 2 liters per minute, set up the differential equation that models the amount of salt \\(y(t)\\) in the tank at any time \\(t\\).   Let \\(y(t)\\) be the amount of salt in the tank at time \\(t\\). The rate of change of salt with respect to time, \\(\\frac{dy}{dt}\\), is given by the rate of salt coming in minus the rate of salt going out. The rate of salt coming in is 5 grams\/minute. The concentration of salt in the tank is \\(\\frac{y(t)}{100 - 2t}\\) and thus the rate at which salt is removed from the tank is \\(2 \\times \\frac{y(t)}{100 - 2t}\\). Therefore, the differential equation is:    "
+},
+{
+  "id": "c12-exercises-3-9",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-9",
+  "type": "Exercise",
+  "number": "14.8.13",
+  "title": "Euler’s Method for Systems.",
+  "body": " Euler's Method for Systems   Given the initial-valued system approximate and using two iterations of Euler's method with a step size .   "
+},
+{
+  "id": "c12-exercises-3-10",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-10",
+  "type": "Exercise",
+  "number": "14.8.14",
+  "title": "Euler’s Method for Systems.",
+  "body": " Euler's Method for Systems   Consider the initial-valued system Approximate and using .     Therefore an          "
+},
+{
+  "id": "c12-exercises-3-11-3",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-11-3",
+  "type": "Exercise",
+  "number": "14.8.15",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c12-exercises-3-11-4",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-11-4",
+  "type": "Exercise",
+  "number": "14.8.16",
+  "title": "",
+  "body": "             "
+},
+{
+  "id": "c12-exercises-3-11-5",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-11-5",
+  "type": "Exercise",
+  "number": "14.8.17",
+  "title": "",
+  "body": "     We have one second-order and one first-order DE, which means we will need three variables to generate a systemof three first-order DEs.\\\\ Let  an . Then we have the following. Substituting into the first DE yields the following. Substituting into the second DE yields the following. Then equations (\\ref{eq14-9}), (\\ref{eq14-10}) and (\\ref{eq14-11}) constitute a system of first-order DEs in the variable  , and , as below:      where an    "
+},
+{
+  "id": "c12-exercises-3-12",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-12",
+  "type": "Exercise",
+  "number": "14.8.18",
+  "title": "Euler’s Method for Higher Order Systems.",
+  "body": " Euler's Method for Higher Order Systems   Use Euler's method to approximate for the solution to the IVP using a step size of .    First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-12} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-13} \\end{equation} Substituting equations (\\ref{eq14-12}) and (\\ref{eq14-13}) into the DE yields the following. Then equations (\\ref{eq14-12}) and (\\ref{eq14-14}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore an This mean (and, even though we were not asked for it specifically ).        "
+},
+{
+  "id": "c12-exercises-3-13",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-13",
+  "type": "Exercise",
+  "number": "14.8.19",
+  "title": "Euler’s Method.",
+  "body": " Euler's Method   Approximate the solution to the IVP using Euler's Method with (a) and .    First we convert the second-order DE to a system of two first-order DEs. Let and . Then \\begin{equation} u' = y' = v\\label{eq14-15} \\end{equation} and \\begin{equation} v' = (y')' = y''.\\label{eq14-16} \\end{equation} Substituting equations (\\ref{eq14-14}) and (\\ref{eq14-15}) into the DE yields the following. Then equations (\\ref{eq14-15}) and (\\ref{eq14-17}) constitute a system of first-order DEs in the variable and . Note that we can also convert the initial conditions to the new variables: Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).      "
+},
+{
+  "id": "c12-exercises-3-14",
+  "level": "2",
+  "url": "c12-exercises-3.html#c12-exercises-3-14",
+  "type": "Exercise",
+  "number": "14.8.20",
+  "title": "Euler’s Method.",
+  "body": " Euler's Method   Approximate if is the solution to IVP:     We will use the system of DEs developed in part \\ref{partA_euler} Now we can use Euler's method as follows. Therefore , which mean (and, even though we were not asked for it specifically, we also know ).\\\\ %      "
+},
+{
+  "id": "NEEDS-A-LABEL",
+  "level": "1",
+  "url": "NEEDS-A-LABEL.html",
+  "type": "Section",
+  "number": "15.1",
   "title": "Nonlinear Systems",
-  "body": " Nonlinear Systems      Linear systems give us a structured, predictable world—but the real world is rarely that neat. Most systems in nature are nonlinear : predator and prey populations affect each other in complex ways, economic models spiral or stabilize depending on feedback loops, and mechanical systems exhibit unexpected behavior when forces get too large.  Nonlinear systems bring both challenges and fascination. They can behave in ways linear systems never will—showing sudden jumps, oscillations, or even chaotic motion. Traditional algebraic tools often fall short here, so we rely more heavily on qualitative analysis, numerical methods, and geometric thinking to make sense of what's happening.  This chapter introduces the core ideas you'll need to begin exploring nonlinear systems. While the techniques are more limited and the solutions less tidy, the insights they reveal are essential for understanding the complex, interconnected systems that define much of the world around us.     "
+  "body": " Nonlinear Systems     "
 },
 {
   "id": "review-like-terms",
@@ -1481,7 +7682,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-quadratic-eqns.html#quad-example-double-root",
   "type": "🌌 Example",
-  "number": "41",
+  "number": "295",
   "title": "Repeated Root.",
   "body": " Repeated Root  Solve .    Factoring: Try factoring directly:   This gives a repeated root, also called a double root.  Quadratic formula:   Completing the square:        "
 },
@@ -1490,7 +7691,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-quadratic-eqns.html#quad-example-real-roots",
   "type": "🌌 Example",
-  "number": "42",
+  "number": "296",
   "title": "Two Real Roots.",
   "body": " Two Real Roots  Solve .    Factoring:   Quadratic formula:        "
 },
@@ -1499,7 +7700,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-quadratic-eqns.html#quad-example-complex-roots",
   "type": "🌌 Example",
-  "number": "43",
+  "number": "297",
   "title": "Complex Roots.",
   "body": " Complex Roots  Solve .    Quadratic formula:   Completing the square:        "
 },
@@ -1526,7 +7727,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-completing-the-sqr.html#review-completing-the-sqr-6",
   "type": "🌌 Example",
-  "number": "44",
+  "number": "298",
   "title": "<em class=\"emphasis\">Complete the Square of each Quadratic<\/em>.",
   "body": " Complete the Square of each Quadratic   (a)   Since , we add and substract .     (b)   Since , we add and substract .     (c)   Since , we add and substract .      "
 },
@@ -1607,7 +7808,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-point-slope.html#review-point-slope-5",
   "type": "🌌 Example",
-  "number": "45",
+  "number": "299",
   "title": "Writing a Line from Two Points.",
   "body": " Writing a Line from Two Points   Given the points and :  Write the equation of the line in point-slope form.  Solve the equation for .      First, find the slope:   Now plug into the point-slope form using either point:   Solving for gives:    "
 },
@@ -1652,7 +7853,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-point-on-a-line.html#review-point-on-a-line-3",
   "type": "🌌 Example",
-  "number": "46",
+  "number": "300",
   "title": "Finding a Point Given <span class=\"process-math\">\\(x\\)<\/span>.",
   "body": " Finding a Point Given   The line is given by the equation: Find the coordinates of the point on with .    Substitute into the equation and solve for :   So the desired point is .    "
 },
@@ -1706,7 +7907,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-exponents-logarithms.html#r-01-04-exp_logs_ex_01",
   "type": "🌌 Example",
-  "number": "47",
+  "number": "301",
   "title": "",
   "body": " Solve for :    We might begin by isolating the exponential that contains and then taking the natural log of both sides.   It's worth noting that we cannot break up that log on the right hand side. There's no \"rule\" that helps when we have addition inside a logarithm.  There is another way to approach this if notice that appears inside both exponential terms. The answers may look different, but they are equivalent and both are correct.   "
 },
@@ -1715,7 +7916,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-exponents-logarithms.html#r-01-04-exp_logs_ex_02",
   "type": "🌌 Example",
-  "number": "48",
+  "number": "302",
   "title": "",
   "body": " Solve for :    We'll carefully apply the rules above. We want to get our hands on , and right now its inside a logarithm. In order to undo that, we'll exponentiate both sides.    "
 },
@@ -1724,7 +7925,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-exponents-logarithms.html#eulers-formula",
   "type": "📙 Definition",
-  "number": "49",
+  "number": "303",
   "title": "Euler’s Formula.",
   "body": " Euler's Formula   Euler’s formula relates complex exponentials to trigonometric functions. For any real number :   As a result, we also have:   This identity is fundamental in solving linear differential equations with complex roots.   "
 },
@@ -1778,7 +7979,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-function-notation.html#function-notation-example-1",
   "type": "🌌 Example",
-  "number": "50",
+  "number": "304",
   "title": "Evaluating a Function.",
   "body": " Evaluating a Function  Suppose . To find , substitute :   This tells us that when the input is 4, the function outputs 11.  "
 },
@@ -1787,7 +7988,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-function-notation.html#function-notation-example-2",
   "type": "🌌 Example",
-  "number": "51",
+  "number": "305",
   "title": "Function Composition.",
   "body": " Function Composition  Consider and . The composition means we evaluate first, then plug the result into :   This compact notation is especially useful in modeling layered or dependent processes.  "
 },
@@ -1796,7 +7997,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-function-notation.html#function-notation-example-3",
   "type": "🌌 Example",
-  "number": "52",
+  "number": "306",
   "title": "Function Notation in Initial Value Problems.",
   "body": " Function Notation in Initial Value Problems  Solve the initial value problem: First, find the general solution: Now use the initial condition: So the particular solution is:   "
 },
@@ -1832,7 +8033,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-function-notation.html#function-notation-example-4",
   "type": "🌌 Example",
-  "number": "53",
+  "number": "307",
   "title": "Breaking Down an Equation.",
   "body": " Breaking Down an Equation  Consider: This is a first-order differential equation. The rate of change of depends on both and . We can separate the variables: Recognizing this structure makes it easier to solve.  "
 },
@@ -1859,7 +8060,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-polynomial-eqns.html#review-polynomial-eqns-5",
   "type": "🌌 Example",
-  "number": "54",
+  "number": "308",
   "title": "Example: Solving a Polynomial Equation.",
   "body": " Example: Solving a Polynomial Equation   Solve the equation:     Try rational roots. Testing gives: So is a factor. Divide the polynomial to find: Factoring the quadratic: The roots are .   "
 },
@@ -1868,7 +8069,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-polynomial-eqns.html#review-polynomial-eqns-7",
   "type": "🌌 Example",
-  "number": "55",
+  "number": "309",
   "title": "",
   "body": "   Factor and solve the following polynomial equations:                            The degree of each equation tells you how many factors you should have.            difference of squares     set each factor to 0     solutions                difference of squares     solutions                common factor      standard quadratic factoring     solutions                common factor     solutions      Technically, and represents 4 repeated factors.              common factor      difference of squares     solutions                common factor      difference of squares     solutions                difference of squares      difference of squares     set each factor to 0     solutions         "
 },
@@ -1886,7 +8087,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-rational-functions.html#rational-function",
   "type": "📙 Definition",
-  "number": "56",
+  "number": "310",
   "title": "Rational Function.",
   "body": "Rational Function  A rational function is a function that is the division of two polynomials.  For example, the following are rational functions in the variables , , and , respectively: .  "
 },
@@ -1922,7 +8123,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-pfd.html#review-pfd-6",
   "type": "🌌 Example",
-  "number": "57",
+  "number": "311",
   "title": "",
   "body": " Find the partial fraction decomposition form for each.      First, factor the denominator: The denominator has the following factors:   (linear, single)   (linear, single)  Hence, the FORM of the partial fraction decomposition is:        Since the denominator is already factored, we see that the denominator has the following factors:   (linear, double)   (linear, distinct)  Hence, the FORM of the partial fraction decomposition is:        Here we need to finish factoring the denominator: Now we see that the denominator has the following factors:   (linear, double)   (linear, double)  Hence, the FORM of the partial fraction decomposition is:        Here we need to finish factoring the denominator: Now we see that (which is linear), is a factor (three times) of the denominator. Hence, the FORM of the partial fraction decomposition is:      "
 },
@@ -1931,7 +8132,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "review-pfd.html#review-pfd-7",
   "type": "🌌 Example",
-  "number": "58",
+  "number": "312",
   "title": "",
   "body": " Find the partial fraction decomposition of .   Factor the denominator as . The partial fraction decomposition is:   Multiply through by and solve for , , and .   Expanding and comparing coefficients, we find:   Therefore, the partial fraction decomposition is:    "
 },
@@ -2246,7 +8447,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "calculus-review-differentiation.html#rr_derivative_review",
   "type": "🌌 Example",
-  "number": "59",
+  "number": "313",
   "title": "Find the derivative of <span class=\"process-math\">\\(h(x) = (x^5 + 4)\\sin(e^x)\\)<\/span>.",
   "body": " Find the derivative of  We have a product of functions, so we will need to use the product rule. We also have a composition of functions because is inside of an sine function, so we will need to use the chain rule. Here's how it works.   "
 },
@@ -2273,7 +8474,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "calculus-review-product-rule.html#calculus-review-product-rule-8",
   "type": "Checkpoint",
-  "number": "60",
+  "number": "314",
   "title": "",
   "body": " Compute the derivative of the function        "
 },
@@ -2291,7 +8492,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "calculus-review-usub.html#r-01-02-usub_ex_01",
   "type": "🌌 Example",
-  "number": "61",
+  "number": "315",
   "title": "Compute <span class=\"process-math\">\\(\\ds \\int \\, \\cos x\\sin x \\ dx\\)<\/span>.",
   "body": " Compute  Since the derivative of is which \"looks like\" , then -substitution (with ) works well. Note, would also work.             "
 },
@@ -2300,7 +8501,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "calculus-review-usub.html#r-01-02-usub_ex_02",
   "type": "🌌 Example",
-  "number": "62",
+  "number": "316",
   "title": "Compute <span class=\"process-math\">\\(\\ds \\int \\frac{1}{x}\\cdot \\ln(15x) dx\\)<\/span>.",
   "body": " Compute  Substitution is a good choice here because we have a natural log function and we have which is the derivative of natural log. So we would choose          We usually pause to confirm that the new integral is simpler than the original. In this case it certainly is, so we proceed to integrate and then change back to the original variable, .  "
 },
@@ -2354,7 +8555,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "calculus-review-improper-integrals.html#ex_improper_integral_01",
   "type": "🌌 Example",
-  "number": "64",
+  "number": "318",
   "title": "Compute <span class=\"process-math\">\\(\\int_1^{\\infty} \\frac{1}{x^2}dx\\)<\/span>.",
   "body": " Compute     "
 },
@@ -2393,6 +8594,456 @@ var ptx_lunr_docs = [
   "number": "",
   "title": "",
   "body": "dependent variable independent variable free term "
+},
+{
+  "id": "quick-ref-solns",
+  "level": "1",
+  "url": "quick-ref-solns.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Solutions to Differential Equations",
+  "body": "Solutions to Differential Equations  Key Terms & Concepts   ✳️ Solutions & Initial Conditions    Satisfying a DE  A function satisfies a DE if substituting it into the dependent variable results in the equation simplifying to a true statement (e.g., ).    A function that satisfies the DE.    General Solution  The common form (template) of all the solutions in the family. It contains constants that can take any value.    Particular Solution  A single solution obtained by assigning specific values to the constants in the general solution.    Family of Solutions  The collection of all possible particular solutions.   Initial Conditions  Known values of the solution or its derivatives at a specific point, used to determine a particular solution from the general solution.        ✳️ Direct Integration    Direct Integration  A method to solve differential equations of the form: by integrating both sides with respect to the independent variable .        "
+},
+{
+  "id": "quick-ref-sov",
+  "level": "1",
+  "url": "quick-ref-sov.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Separation of Variables",
+  "body": "Separation of Variables  Key Terms & Concepts   ✳️ First-Order Differential Equations    First-Order Differential Equation  Every first-order differential equation can be written in the form . This just means that all the terms in the equation have been moved to the left-hand side, which can only contain the independent variable, , the dependent variable, , and its derivative, .        ✳️ Separation of Variables    First-Order Separable Differential Equation  These equations can be written as:    Separation of Variables Method  A solution technique for separable equations. It involves isolating and terms on opposite sides, followed by integration.        "
+},
+{
+  "id": "quick-ref-if",
+  "level": "1",
+  "url": "quick-ref-if.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Integrating Factor",
+  "body": "Integrating Factor  Key Terms & Concepts   ✳️ Integrating Factor    First-Order Linear Differential Equation  These equations take the standard form:    Integrating Factor  A function, , multiplied onto the standard form, above, to reverse the product rule, leading to the equation, , with the solution    Integrating Factor Method  A solution method for first-order linear equations that uses an integrating factor to convert the equation into a form solvable by direct integration.        "
+},
+{
+  "id": "quick-ref-qm",
+  "level": "1",
+  "url": "quick-ref-qm.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Qualitative Methods",
+  "body": "Qualitative Methods  Key Terms & Concepts   "
+},
+{
+  "id": "quick-ref-nm",
+  "level": "1",
+  "url": "quick-ref-nm.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Numerical Methods",
+  "body": "Numerical Methods  Key Terms & Concepts   "
+},
+{
+  "id": "quick-ref-lhcc",
+  "level": "1",
+  "url": "quick-ref-lhcc.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Linear Homogeneous Differential Equations with Constant Coefficients",
+  "body": "Linear Homogeneous Differential Equations with Constant Coefficients   The LHCC chapter (Linear Homogeneous Differential Equations with Constant Coefficients) in \"Linear Constant Coefficient Methods\" introduces a systematic method to solve higher-order linear differential equations. Here's a summary based on the content:   Key Terms & Concepts   ✳️ Summary of the Key Ideas     Linear Homogeneous Differential Equations with Constant Coefficients (LHCC)   These are differential equations where each term consists of a derivative of the unknown function multiplied by a constant.  The general form of an LHCC equation is: .     The Characteristic Equation   By assuming a solution of the form , an LHCC can be reduced to a characteristic polynomial in .  The solutions to the characteristic equation determine the form of the general solution.     Solution Types   Let be a solution to the characteristic equation (CE).  If is different from all other solutions of the CE, then is a term of the general solution.  If is equal to, say, three other solutions of the CE, then are terms of the general solution.  If or , then the general solution contains .        LHCC Method  The general solution to a linear homogeneous differential equation with constant coefficients (LHCC) of the form can be found through the following steps...   Step 1: Solve the Characteristic Equation  Solve the characteristic equation (CE)    Step 2: Write Down the General Solution     Real & Different:   .   Real & Repeated:  (multiplicity ) .   Complex:   .   For mixed root types , combine the corresponding terms to form the complete general solution.         Substituting transforms the differential equation into an algebraic equation for .  The characteristic equation is a polynomial equation whose roots determine the fundamental solutions.  An n -th order LHCC equation always has n solutions, corresponding to the n roots of its characteristic equation.  Each real root leads to a solution of the form .   In the next subsection, we will explore how to construct the general solution by combining these exponential solutions appropriately.  The key ideas are:   The superposition principle allows us to sum independent solutions to form the general solution.  The number of fundamental solutions matches the order of the differential equation.  The general solution consists of all fundamental solutions, each multiplied by an arbitrary constant.    ✳️ Properties of LHCC Solutions  The solutions to any -th order linear homogeneous differential equation, have the following properties:   Exponential Solutions  The order of equation tells us that it has exactly solutions, each assuming the form, , where and are numbers specific to this equation.    Linearly Independent  The solutions to an -th order LHCC equation are linearly independent, meaning no two solutions can be combined into a single term.    General Solution  Let be the linearly independent exponential solutions, then the general solution is formed by for any constants .      ✳️ Key Takeaways    If and are solutions to an LHCC equation, then is also a solution for any constants and .  The general solution to an LHCC equation consists of a linear combination of all its independent solutions.  The number of independent solutions corresponds to the order of the equation.  An LHCC equation often has multiple exponential solutions, determined by solving the characteristic equation.  The principle of superposition states that any linear combination of these solutions is also a solution.  The general solution is formed by summing all independent exponential solutions with arbitrary coefficients.  The solutions to LHCC equations are exponential functions because their derivatives preserve the same functional form.  The concept of like-terms helps explain why other function types (polynomials, trigonometric functions) do not work.  By substituting an exponential into the equation, we obtain a polynomial equation for , which determines the general solution.     In this subsection, we developed a framework for solving Linear Homogeneous Constant Coefficient (LHCC) equations . We began by exploring why exponential functions serve as the fundamental solutions to these equations, using the concept of like-terms to justify their role.  We then introduced the characteristic equation , which transforms the problem of solving a differential equation into solving a polynomial equation. This method allows us to systematically determine the correct set of fundamental solutions for any LHCC equation.  With this foundation in place, we are now ready to introduce a powerful tool for systematically finding these solutions: the characteristic equation . This algebraic approach allows us to determine the exponential solutions efficiently and will serve as the backbone of our solution methods moving forward.  To build intuition, we will carefully examine the three defining properties of LHCC equations: linearity , homogeneity , and constant coefficients . Each of these characteristics influences the types of solutions that emerge and dictates the methods we use to solve them. By clearly defining and identifying LHCC equations, we lay the groundwork for developing powerful solution techniques in the sections that follow.  Unlike many other types of differential equations, LHCC equations have a highly structured solution method. Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. Through examples and analysis, we will discover that exponential functions play a central role in solving LHCC equations. By assuming solutions of the form and substituting into the equation, we obtain an algebraic equation for , the characteristic equation . The solutions to this characteristic equation directly determine the general solution to the differential equation.  Unlike many other types of differential equations, LHCC equations have a highly structured solution method. Their solutions take on a predictable form, allowing us to develop a systematic approach for solving them. Through examples and analysis, we will discover that exponential functions play a central role in solving LHCC equations. By assuming solutions of the form and substituting into the equation, we obtain an algebraic equation for , the characteristic equation . The solutions to this characteristic equation directly determine the general solution to the differential equation.  Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (7th order)        (5th order)       The key takeaways from this subsection are:    Exponential functions naturally emerge as solutions to LHCC equations due to their unique differentiation properties.  The characteristic equation provides a systematic way to determine the fundamental solutions.  The general solution consists of all independent exponential solutions, each multiplied by an arbitrary constant.  The number of solutions matches the order of the differential equation.   In summary, a differential equation is classified as an LHCC equation if it satisfies three criteria:   It is linear : each term involves or its derivatives to the first power only.  It is homogeneous : the right-hand side is zero.  It has constant coefficients : the coefficients of and its derivatives do not depend on .   "
+},
+{
+  "id": "quick-ref-lhcc-3-2",
+  "level": "2",
+  "url": "quick-ref-lhcc.html#quick-ref-lhcc-3-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Linear Homogeneous Differential Equations with Constant Coefficients (LHCC) The Characteristic Equation Solution Types "
+},
+{
+  "id": "lhcc-method",
+  "level": "2",
+  "url": "quick-ref-lhcc.html#lhcc-method",
+  "type": "✍🏻 Method",
+  "number": "5",
+  "title": "LHCC Method.",
+  "body": "LHCC Method  The general solution to a linear homogeneous differential equation with constant coefficients (LHCC) of the form can be found through the following steps...   Step 1: Solve the Characteristic Equation  Solve the characteristic equation (CE)    Step 2: Write Down the General Solution     Real & Different:   .   Real & Repeated:  (multiplicity ) .   Complex:   .   For mixed root types , combine the corresponding terms to form the complete general solution.      "
+},
+{
+  "id": "quick-ref-lhcc-13",
+  "level": "2",
+  "url": "quick-ref-lhcc.html#quick-ref-lhcc-13",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "linearity homogeneity constant coefficients "
+},
+{
+  "id": "higher-order-lhcc-general-solution-examples",
+  "level": "2",
+  "url": "quick-ref-lhcc.html#higher-order-lhcc-general-solution-examples",
+  "type": "Table",
+  "number": "319",
+  "title": "Examples of LHCC General Solutions",
+  "body": "Examples of LHCC General Solutions     Characteristic Equation  Solutions   General Solution      (3rd order)        (3rd order)        (4th order)        (4th order)        (7th order)        (5th order)      "
+},
+{
+  "id": "quick-ref-uc",
+  "level": "1",
+  "url": "quick-ref-uc.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Undermined Coefficients",
+  "body": "Undermined Coefficients  Key Terms & Concepts   ✳️ Summary of the Key Ideas    The method of undetermined coefficients is used to solve non-homogeneous linear differential equations.  The general solution to a non-homogeneous equation is the sum of the general solution to the corresponding homogeneous equation and a particular solution.  The method involves guessing the form of the particular solution based on the form of the non-homogeneous term and solving for the coefficients.  The method is applicable when the non-homogeneous term can be expressed as a linear combination of known functions.        LHCC Equation  An LHCC equation is a Linear Homogeneous Differential Equations with Constant Coefficients and have the form .   Characteristic Equation     LHCC General Solutions         LNCC Equation  An LNCC equation is a Linear Nonhomogeneous Differential Equations with Constant Coefficients and have the form .   Forcing Function  A forcing function is the free term in , denoted by .   Particular Solution  A particular solution, , is a function that can be plugged into and all the terms combine to give the forcing function, .   Homogeneous Solution  A homogeneous solution, , is a function such that, when it is plugged into all the terms cancel to zero. That is, is the solution to the homogeneous version of ( ).   General Solutions  The general solution to is the sum of the homogeneous and particular solutions, that is .               LHS  LHS    1     No    2     No    3     No    4     No    5     No    6     Yes    Based on this table, we note that the correct solution is and   Row 1 shows that a free term alone could never produce an term.    Derivatives reduce the power of a polynomial, so the highest power term (highlighted in blue) comes from the term.       Rows 3 & 4 illustrate the solution can't have a or higher-degree term.    Row 6 shows the solution ( ) needed an term and free term even though the right-hand side, , has only an term.     LNCC Equations   Comparison of a homogeneous equation ( left ) and a nonhomogeneous equation ( right ). In both, the solutions must simplify in a specific way when substituted into the equation.               row 1        type  Form    1  (constant)      row 2        type  Form    2       row 3        type  Form    3       row 4        type  Form    4       row 5        type  Form    5       row 6        type  Form    6        "
+},
+{
+  "id": "lhcc-vs-lcc-solution-type",
+  "level": "2",
+  "url": "quick-ref-uc.html#lhcc-vs-lcc-solution-type",
+  "type": "Figure",
+  "number": "320",
+  "title": "",
+  "body": " Comparison of a homogeneous equation ( left ) and a nonhomogeneous equation ( right ). In both, the solutions must simplify in a specific way when substituted into the equation.             "
+},
+{
+  "id": "yp-forms-table-row-1",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-1",
+  "type": "Table",
+  "number": "321",
+  "title": "row 1",
+  "body": "row 1        type  Form    1  (constant)     "
+},
+{
+  "id": "yp-forms-table-row-2",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-2",
+  "type": "Table",
+  "number": "322",
+  "title": "row 2",
+  "body": "row 2        type  Form    2      "
+},
+{
+  "id": "yp-forms-table-row-3",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-3",
+  "type": "Table",
+  "number": "323",
+  "title": "row 3",
+  "body": "row 3        type  Form    3      "
+},
+{
+  "id": "yp-forms-table-row-4",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-4",
+  "type": "Table",
+  "number": "324",
+  "title": "row 4",
+  "body": "row 4        type  Form    4      "
+},
+{
+  "id": "yp-forms-table-row-5",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-5",
+  "type": "Table",
+  "number": "325",
+  "title": "row 5",
+  "body": "row 5        type  Form    5      "
+},
+{
+  "id": "yp-forms-table-row-6",
+  "level": "2",
+  "url": "quick-ref-uc.html#yp-forms-table-row-6",
+  "type": "Table",
+  "number": "326",
+  "title": "row 6",
+  "body": "row 6        type  Form    6      "
+},
+{
+  "id": "quick-ref-lt",
+  "level": "1",
+  "url": "quick-ref-lt.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Laplace Transforms",
+  "body": "Laplace Transforms  Key Terms & Concepts  In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:   ✳️ Summary of the Key Ideas     Differential Algebraic Equations . The Laplace transform converts a differential equation into an algebraic equation, simplifying the solution process by eliminating derivatives.   Laplace Transform Concept . Applying the Laplace transform to a differential equation involves transforming each term by multiplying by and integrating with respect to from to , but is often simplified by directly applying the Laplace operator, .   Linearity Property . The Laplace transform is linear, meaning it distributes across addition and subtraction, and allows for constants to be factored out. This property is essential for transforming complex equations.   Transforming Initial Conditions . Initial conditions are incorporated directly into the Laplace-transformed equation, modifying the transformed terms to include initial values, making it easier to solve the resulting algebraic equation.   Common Function Transforms . The Laplace transforms of common functions, such as exponentials, sines, cosines, and polynomials, are essential tools in transforming differential equations and are summarized in the provided table.   Transforming Derivatives . The Laplace transform of a derivative, or higher, transfers the derivative onto the Laplace variable , reducing the order of the equation while introducing initial condition terms.   Multiplication by and . When multiplying a function by an exponential , the Laplace transform shifts by in the -domain, and multiplying by corresponds to differentiating the transform times with respect to , introducing a sign change.   Transforming the Entire Equation . The process of applying the Laplace transform to an entire differential equation with initial conditions involves systematically transforming each term and leads to a simplified algebraic equation in the -domain, ready for solving.      Assume , , are constant, and  Common Laplace Transforms  L  L  L  L  L  L  L  L  Laplace Transform of Derivatives  L  L  L  L   Common Laplace Transforms. are constant,     -functions  -functions                                                                Laplace Transforms Properties,     Properties                               Table of Common Laplace Transforms          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       L       L       L       L       L       L       L       R       R       R       R       R         L        L         L        L         L        L         L        L         L        L         L        L         L        L         L        L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L         R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R         R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R         R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R         R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R         R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R        "
+},
+{
+  "id": "quick-ref-lt-2-3",
+  "level": "2",
+  "url": "quick-ref-lt.html#quick-ref-lt-2-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "Differential Algebraic Equations Laplace Transform Concept Linearity Property Transforming Initial Conditions Common Function Transforms Transforming Derivatives Multiplication by and Transforming the Entire Equation "
+},
+{
+  "id": "lt-table-common-rules-merged0",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-table-common-rules-merged0",
+  "type": "Table",
+  "number": "327",
+  "title": "<em class=\"emphasis\">Common Laplace Transforms. <span class=\"process-math\">\\(a, b\\)<\/span> are constant, <span class=\"process-math\">\\(n = 1, 2, \\ldots\\)<\/span><\/em>",
+  "body": "Common Laplace Transforms. are constant,     -functions  -functions                                                               "
+},
+{
+  "id": "lt-properties-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-properties-table",
+  "type": "Table",
+  "number": "328",
+  "title": "<em class=\"emphasis\">Laplace Transforms Properties, <span class=\"process-math\">\\({\\small \\lap{ y(t) } = Y(t), \\ \\lap{ z(t) } = Z(t)}\\)<\/span><\/em>",
+  "body": "Laplace Transforms Properties,     Properties                            "
+},
+{
+  "id": "lt-table-common-rules-merged",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-table-common-rules-merged",
+  "type": "Table",
+  "number": "329",
+  "title": "Table of Common Laplace Transforms",
+  "body": " Table of Common Laplace Transforms          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       L       L       L       L       L       L       L       R       R       R       R       R       "
+},
+{
+  "id": "lt-L1-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L1-table",
+  "type": "Table",
+  "number": "330",
+  "title": "L<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L2-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L2-table",
+  "type": "Table",
+  "number": "331",
+  "title": "L<span class=\"process-math\">\\(_2\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L3-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L3-table",
+  "type": "Table",
+  "number": "332",
+  "title": "L<span class=\"process-math\">\\(_3\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L4-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L4-table",
+  "type": "Table",
+  "number": "333",
+  "title": "L<span class=\"process-math\">\\(_4\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L5-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L5-table",
+  "type": "Table",
+  "number": "334",
+  "title": "L<span class=\"process-math\">\\(_5\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L6-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L6-table",
+  "type": "Table",
+  "number": "335",
+  "title": "L<span class=\"process-math\">\\(_6\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L7-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L7-table",
+  "type": "Table",
+  "number": "336",
+  "title": "L<span class=\"process-math\">\\(_7\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L8-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L8-table",
+  "type": "Table",
+  "number": "337",
+  "title": "L<span class=\"process-math\">\\(_8\\)<\/span>",
+  "body": " L        L       "
+},
+{
+  "id": "lt-L1-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L1-header-table",
+  "type": "Table",
+  "number": "338",
+  "title": "L<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L2-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L2-header-table",
+  "type": "Table",
+  "number": "339",
+  "title": "L<span class=\"process-math\">\\(_2\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L3-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L3-header-table",
+  "type": "Table",
+  "number": "340",
+  "title": "L<span class=\"process-math\">\\(_3\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L4-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L4-header-table",
+  "type": "Table",
+  "number": "341",
+  "title": "L<span class=\"process-math\">\\(_4\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L5-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L5-header-table",
+  "type": "Table",
+  "number": "342",
+  "title": "L<span class=\"process-math\">\\(_5\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L6-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L6-header-table",
+  "type": "Table",
+  "number": "343",
+  "title": "L<span class=\"process-math\">\\(_6\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L7-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L7-header-table",
+  "type": "Table",
+  "number": "344",
+  "title": "L<span class=\"process-math\">\\(_7\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-L8-header-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-L8-header-table",
+  "type": "Table",
+  "number": "345",
+  "title": "L<span class=\"process-math\">\\(_8\\)<\/span>",
+  "body": " L          Function  ( -Domain)     Laplace Transform  ( -Domain)      Existence  Condition     L       "
+},
+{
+  "id": "lt-R1-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-R1-table",
+  "type": "Table",
+  "number": "346",
+  "title": "R<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       "
+},
+{
+  "id": "lt-R2-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-R2-table",
+  "type": "Table",
+  "number": "347",
+  "title": "R<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       "
+},
+{
+  "id": "lt-R3-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-R3-table",
+  "type": "Table",
+  "number": "348",
+  "title": "R<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       "
+},
+{
+  "id": "lt-R4-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-R4-table",
+  "type": "Table",
+  "number": "349",
+  "title": "R<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       "
+},
+{
+  "id": "lt-R5-table",
+  "level": "2",
+  "url": "quick-ref-lt.html#lt-R5-table",
+  "type": "Table",
+  "number": "350",
+  "title": "R<span class=\"process-math\">\\(_1\\)<\/span>",
+  "body": " R         Function ( -Domain)  Laplace Transform ( -Domain)  Existence       Condition    R       "
+},
+{
+  "id": "quick-ref-ltm",
+  "level": "1",
+  "url": "quick-ref-ltm.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Laplace Transforms",
+  "body": "Laplace Transforms  Key Terms & Concepts  In this section, we introduced the concept of the forward Laplace transform and derived some common Laplace transforms that we will use throughtout this chapter. The following points summarize the essential concepts from the forward Laplace transform section:   ✳️ Summary of the Key Ideas   Laplace Transform Method    Common Forms: A table of common Laplace transforms is provided, which doubles as a reference for inverse transforms. The focus is on recognizing forms that match the table entries for functions like , and others.   Direct Computation: When the function of directly matches a form in the common Laplace transform table, the inverse Laplace transform can be easily computed.   Modifying Functions: When a function doesn't match a known form, minor modifications, such as multiplying by missing constants or splitting fractions, can help.   Completing the Square: When dealing with quadratic expressions in the denominator, especially when the discriminant is negative, completing the square can transform the expression into a form that matches known inverse Laplace transforms. Several examples demonstrate this technique.   Partial Fraction Decomposition: For more complex rational functions, partial fraction decomposition breaks down the function into simpler fractions that match the common transform forms.     Matching Guide: -function Inverse Transform      Denominator Form  Example  Transform           L            L            L            L            L            L            L            L      Tips for Preparing the Backward Transform  Completing the square is an essential technique for transforming quadratic expressions that don't directly match a form in the table of common Laplace transforms. However, it's not the only strategy available. In this section, we'll explore another important technique: partial fraction decomposition. This method is useful for breaking down complex fractions into simpler components that can each be matched with forms in the Laplace transform table.  Two other forms we may wish to match when we study Laplace transforms are As before, we work toward making the denominator match first , and then we sort out the numerator second.  When we want to take the inverse Laplace transform of a rational function with a second-degree polynomial in the denominator, we may complete the square or we may do a partial fraction decomposition. How will we know which is appropriate? Here are a few guidelines for you to consider.  Does the denominator factor in an obvious way? If so, factor the denominator and do a partial fraction decomposition if necessary.  If the denominator does not factor in an obvious way, try completing the square.  If you end up with addition outside of the parentheses, as in then you should aim to match and\/or .  If instead you end up with subtraction outside the parentheses, as in then you should factor and do a partial fraction decomposition. You may consider using the quadratic formula if the factorization is not obvious to you.  If you end up with no terms outside the parentheses, as in then use .      "
+},
+{
+  "id": "quick-ref-ltm-2-3",
+  "level": "2",
+  "url": "quick-ref-ltm.html#quick-ref-ltm-2-3",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": " Laplace Transform Method  Common Forms: Direct Computation: Modifying Functions: Completing the Square: Partial Fraction Decomposition: "
+},
+{
+  "id": "backward-lt-rules-of-thumb",
+  "level": "2",
+  "url": "quick-ref-ltm.html#backward-lt-rules-of-thumb",
+  "type": "Table",
+  "number": "351",
+  "title": "Matching Guide: <span class=\"process-math\">\\(s\\)<\/span>-function <span class=\"process-math\">\\(\\rightarrow\\)<\/span> Inverse Transform",
+  "body": " Matching Guide: -function Inverse Transform      Denominator Form  Example  Transform           L            L            L            L            L            L            L            L     "
+},
+{
+  "id": "quick-ref-ltp",
+  "level": "1",
+  "url": "quick-ref-ltp.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "Laplace Transforms",
+  "body": " Laplace Transforms   ✳️ Summary of the Key Ideas    PIECEWISE AND UNIT STEP STUFF      "
+},
+{
+  "id": "quick-ref-ltp-2",
+  "level": "2",
+  "url": "quick-ref-ltp.html#quick-ref-ltp-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": " PIECEWISE AND UNIT STEP STUFF  "
+},
+{
+  "id": "quick-ref-linsys1",
+  "level": "1",
+  "url": "quick-ref-linsys1.html",
+  "type": "Subsubsection",
+  "number": "",
+  "title": "First-Order Linear Systems",
+  "body": "First-Order Linear Systems  Key Terms & Concepts   "
 },
 {
   "id": "formula-sheets",

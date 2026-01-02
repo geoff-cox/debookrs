@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette:                              *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DE-BOOK Euler’s Method: The Full Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="vmi.instructure.com/external/figures/de-book-icon.png">
+<meta property="book:title" content="Exploring Differential Equations">
+<meta property="book:author" content="Geoffrey W. Cox, Ph.D.">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.11.5';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.42217a82c75796c8.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.7e141ad8414abf4a.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.f4ab138da65f4203.css">
+<script src="_static/pretext/js/pretext-webwork/2.20/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="debookrs" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://www.vmi.edu/"><img src="external/figures/de-book-icon.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="main.html"><span class="title">Exploring Differential Equations</span> <span class="subtitle">An Interactive, Student-Centered Approach</span></a></h1>
+<p class="byline">Geoffrey W. Cox, Ph.D.</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-10.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="eulers-method-one-step.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chpt-eulers-method.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="c6-exercises.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand\DLGray{\color{Gray}}
+\newcommand\DLO{\color{BurntOrange}}
+\newcommand\DLRa{\color{WildStrawberry}}
+\newcommand\DLGa{\color{Green}}
+\newcommand\DLGb{\color{PineGreen}}
+\newcommand\DLBa{\color{RoyalBlue}}
+\newcommand\DLBb{\color{Cerulean}}
+\newcommand\ds{\displaystyle}
+\newcommand\ddx{\frac{d}{dx}}
+\newcommand\os{\overset}
+\newcommand\us{\underset}
+\newcommand\ob{\overbrace}
+\newcommand\obt{\overbracket}
+\newcommand\ub{\underbrace}
+\newcommand\ubt{\underbracket}
+\newcommand\ul{\underline}
+\newcommand\laplacesym{\mathscr{L}}
+\newcommand\lap[1]{\laplacesym\left\{#1\right\}}
+\newcommand\ilap[1]{\laplacesym^{-1}\left\{#1\right\}}
+\newcommand\tikznode[3][]
+	{\tikz[remember picture,baseline=(#2.base)]
+		\node[minimum size=0pt,inner sep=0pt,#1](#2){#3};
+	}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\newcommand{\sfrac}[2]{{#1}/{#2}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 focused" data-preexpanded-levels="0" data-max-levels="3"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-preface"><div class="toc-title-box"><a href="preface.html" class="internal"><span class="title">Preface</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-what-is-a-de.html" class="internal"><span class="codenumber">1</span> <span class="title">What is a Differential Equation?</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="connection-to-alg-calc.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Connection to Algebra &amp; Calculus</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="de-defn.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Differential Equation Definition</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="variables.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Dependent &amp; Independent Variables</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="terms-coeffs.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Terms, &amp; Coefficients</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="exercises-wad.html" class="internal"><span class="codenumber">1.5</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="wad-concept-quiz.html" class="internal"><span class="title">💡 Conceptual Quiz</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="wad-concept-quiz.html#wad-cq" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="wad-practice-drills.html" class="internal"><span class="title">🏋️‍♂️ Practice Drills</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="wad-practice-drills.html#wad-drills" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-classification.html" class="internal"><span class="codenumber">2</span> <span class="title">Classification</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="order.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Order</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="linear-terms.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Linear &amp; Nonlinear Terms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="linearity.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Linearity</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="exercises-class.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="class-concept-quiz.html" class="internal"><span class="title">💡 Conceptual Quiz</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="class-concept-quiz.html#class-cq" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="class-practice-drills.html" class="internal"><span class="title">🏋️‍♂️ Practice Drills</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="class-practice-drills.html#class-drills" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="class-problems-main.html" class="internal"><span class="title">✍🏻 Problems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="class-problems-main.html#class-problems" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-solns.html" class="internal"><span class="codenumber">3</span> <span class="title">Solutions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="solns-to-eqns.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Solutions to Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="verifying-solutions.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Verifying Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="general-particular-solutions.html" class="internal"><span class="codenumber">3.3</span> <span class="title">General, Particular &amp; Family of Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="initial-valued-problems.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Initial-Value Problems (IVPs)</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="visualizing-solutions.html" class="internal"><span class="codenumber">3.5</span> <span class="title">Visualizing Solutions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="solns-exercises.html" class="internal"><span class="codenumber">3.6</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="solns-concept-quiz.html" class="internal"><span class="title">💡 Conceptual Quiz</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-concept-quiz.html#solns-cq" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="solns-practice-drills.html" class="internal"><span class="title">🏋️‍♂️ Practice Drills</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-practice-drills.html#solns-drills" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="solns-problems-main.html" class="internal"><span class="title">✍🏻 Problems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="solns-problems-main.html#solns-problems" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-direct-integration.html" class="internal"><span class="codenumber">4</span> <span class="title">Direct Integration</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="antiderivatives.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Antiderivatives as Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="di-method.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Solutions by Direct Integration</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c30-exercises.html" class="internal"><span class="codenumber">4.3</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="c3-concept-quiz.html" class="internal"><span class="title">💡 Conceptual Quiz</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c3-concept-quiz.html#c3-cq" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="c3-practice-drills.html" class="internal"><span class="title">🏋️‍♂️ Practice Drills</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c3-practice-drills.html#c3-drills" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="c3-problems-main.html" class="internal"><span class="title">✍🏻 Problems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c3-problems-main.html#c3-problems" class="internal"><span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c3-problems-main.html#c3-problems-main-3" class="internal"><span class="title">Preview of a Future Method</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-separable-variables.html" class="internal"><span class="codenumber">5</span> <span class="title">Separation of Variables</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="separable-form.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Separable Form</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="showing-separability.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Showing Separability</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sec-sov-method.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Separation of Variables (SOV) Method</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="sov-implicit-solns.html" class="internal"><span class="codenumber">5.4</span> <span class="title">Implicit General Solutions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c3-exercises.html" class="internal"><span class="codenumber">5.5</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sov-concept-quiz.html" class="internal"><span class="title">💡 Conceptual Quiz</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sov-concept-quiz.html#sov-cq" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sov-practice-drills.html" class="internal"><span class="title">🏋️‍♂️ Practice Drills</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sov-practice-drills.html#sov-drills" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="sov-problems-main.html" class="internal"><span class="title">✍🏻 Problems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sov-problems-main.html#sov-problems" class="internal"><span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-integrating-factor.html" class="internal"><span class="codenumber">6</span> <span class="title">Integrating Factor</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="product-rule.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Product Rule, A Review</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="completing-prod-rule.html" class="internal"><span class="codenumber">6.2</span> <span class="title">Completing the Product Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="if-integrating-factor.html" class="internal"><span class="codenumber">6.3</span> <span class="title">The Integrating Factor</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="if-method.html" class="internal"><span class="codenumber">6.4</span> <span class="title">Integrating Factor Method</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c4-exercises.html" class="internal"><span class="codenumber">6.5</span> <span class="title">Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c4-quick-answer.html" class="internal"><span class="codenumber">6.5</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c4-exercises-3.html" class="internal"><span class="codenumber">6.5</span> <span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c4-exercises-4.html" class="internal"><span class="codenumber">6.5</span> <span class="title">✍🏻  Solve the Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-qualitative.html" class="internal"><span class="codenumber">7</span> <span class="title">Qualitative Methods</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="slope-fields.html" class="internal"><span class="codenumber">7.1</span> <span class="title">Slope Fields</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="autonomous-eqns.html" class="internal"><span class="codenumber">7.2</span> <span class="title">Autonomous Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="equilibrium-solns.html" class="internal"><span class="codenumber">7.3</span> <span class="title">Equilibrium Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="classifying-equilibria.html" class="internal"><span class="codenumber">7.4</span> <span class="title">Classifying Equilibrium Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="parameter-analysis.html" class="internal"><span class="codenumber">7.5</span> <span class="title">Parameter Analysis</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="logistical-models.html" class="internal"><span class="codenumber">7.6</span> <span class="title">Logistical Models</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c5-exercises.html" class="internal"><span class="codenumber">7.7</span> <span class="title">Chapter 5 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c5-quick-answer.html" class="internal"><span class="codenumber">7.7</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c5-exercises-3.html" class="internal"><span class="codenumber">7.7</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chpt-eulers-method.html" class="internal"><span class="codenumber">8</span> <span class="title">Numerical Methods</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="whats-a-numerical-soln.html" class="internal"><span class="codenumber">8.1</span> <span class="title">What is a Numerical Solution?</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="eulers-method-one-step.html" class="internal"><span class="codenumber">8.2</span> <span class="title">Thinking in Steps: How Euler’s Method Works One Step at a Time</span></a></div></li>
+<li class="toc-item toc-section active"><div class="toc-title-box"><a href="eulers-method-full.html" class="internal"><span class="codenumber">8.3</span> <span class="title">Euler’s Method: The Full Process</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c6-exercises.html" class="internal"><span class="codenumber">8.4</span> <span class="title">Chapter 6 Exercises</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c6-exercises-2.html" class="internal"><span class="codenumber">8.4</span> <span class="title">Euler’s Method</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-homogeneous-eqns.html" class="internal"><span class="codenumber">9</span> <span class="title">Homogeneous Equations (LHCC)</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="linear-constant-coeffs.html" class="internal"><span class="codenumber">9.1</span> <span class="title">The LHCC Equation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="exponential-solns.html" class="internal"><span class="codenumber">9.2</span> <span class="title">Exponential Solutions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="second-order-lhcc-eqns.html" class="internal"><span class="codenumber">9.3</span> <span class="title">Second-Order Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="higher-order-lhcc.html" class="internal"><span class="codenumber">9.4</span> <span class="title">Higher-Order Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="solving-high-order-lhccs.html" class="internal"><span class="codenumber">9.5</span> <span class="title">Solving High-Order LHCC Equations</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c7-exercises.html" class="internal"><span class="codenumber">9.6</span> <span class="title">Chapter 7 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c7-quick-answer.html" class="internal"><span class="codenumber">9.6</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c7-exercises-3.html" class="internal"><span class="codenumber">9.6</span> <span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c7-exercises-4.html" class="internal"><span class="codenumber">9.6</span> <span class="title">Charateristic Polynomials</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c7-exercises-5.html" class="internal"><span class="codenumber">9.6</span> <span class="title">✍🏻  Solve the Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="exercises-.html" class="internal"><span class="codenumber">9.6</span> <span class="title">Beyond the Basics</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-undetermined-coefficients.html" class="internal"><span class="codenumber">10</span> <span class="title">Nonhomogeneous Equations (LNCC)</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lncc-equation.html" class="internal"><span class="codenumber">10.1</span> <span class="title">The LNCC Equation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="selecting-the-particular-soln.html" class="internal"><span class="codenumber">10.2</span> <span class="title">Selecting the Particular Solution Form</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="uc-method.html" class="internal"><span class="codenumber">10.3</span> <span class="title">Undetermined Coefficients Method</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c8-exercises.html" class="internal"><span class="codenumber">10.4</span> <span class="title">Chapter 8 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c8-quick-answer.html" class="internal"><span class="codenumber">10.4</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c8-exercises-3.html" class="internal"><span class="codenumber">10.4</span> <span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c8-exercises-4.html" class="internal"><span class="codenumber">10.4</span> <span class="title">✍🏻  Solve the Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-laplace-transforms.html" class="internal"><span class="codenumber">11</span> <span class="title">Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-derivative-transfer.html" class="internal"><span class="codenumber">11.1</span> <span class="title">Derivative Transfer via Integration by Parts</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="lt-definition.html" class="internal"><span class="codenumber">11.2</span> <span class="title">Defining the Laplace Transform</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="lt-definition-5.html" class="internal"><span class="codenumber">11.2</span> <span class="title">👀 Quick Review: Exponential Properties</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="common-transforms.html" class="internal"><span class="codenumber">11.3</span> <span class="title">Common Transforms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-properties.html" class="internal"><span class="codenumber">11.4</span> <span class="title">Transform Properties and Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-reference-guide.html" class="internal"><span class="codenumber">11.5</span> <span class="title">The Laplace Transform Reference Guide</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c9-exercises.html" class="internal"><span class="codenumber">11.6</span> <span class="title">Chapter 9 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c9-quick-answer.html" class="internal"><span class="codenumber">11.6</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c9-exercises-3.html" class="internal"><span class="codenumber">11.6</span> <span class="title">🏗️ Drill: Forward Transforms</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c9-exercises-4.html" class="internal"><span class="codenumber">11.6</span> <span class="title">Definition of the Laplace Transform</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-laplace-transform-method.html" class="internal"><span class="codenumber">12</span> <span class="title">Laplace Transform Method</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-method-step1.html" class="internal"><span class="codenumber">12.1</span> <span class="title">Step 1 — Into the Laplace Domain</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-method-step2.html" class="internal"><span class="codenumber">12.2</span> <span class="title">Step 2 — Solving in the Laplace Domain</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-method-step3.html" class="internal"><span class="codenumber">12.3</span> <span class="title">Step 3 — Leaving the Laplace Domain</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="lt-method-steps-examples.html" class="internal"><span class="codenumber">12.4</span> <span class="title">Summary &amp; Worked Examples</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c10-exercises.html" class="internal"><span class="codenumber">12.5</span> <span class="title">Chapter 10 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c10-quick-answer.html" class="internal"><span class="codenumber">12.5</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c10-exercises-3.html" class="internal"><span class="codenumber">12.5</span> <span class="title">🏗️ Warm-ups &amp; Drills</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c10-exercises-4.html" class="internal"><span class="codenumber">12.5</span> <span class="title">🏗️ Drill: Preparing &amp; Invert</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c10-exercises-5.html" class="internal"><span class="codenumber">12.5</span> <span class="title">Solving Differential Equations</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-piecewise-forcing-functions.html" class="internal"><span class="codenumber">13</span> <span class="title">Piecewise Forcing Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="basic-unit-step-function.html" class="internal"><span class="codenumber">13.1</span> <span class="title">The Basic Unit Step Function</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="unit-step-functions.html" class="internal"><span class="codenumber">13.2</span> <span class="title">Unit Step Function Variants</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="piecewise-functions.html" class="internal"><span class="codenumber">13.3</span> <span class="title">Piecewise Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="laplace-step-rules.html" class="internal"><span class="codenumber">13.4</span> <span class="title">Laplace Transform Rules for Step Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="transforming-piecewise-functions.html" class="internal"><span class="codenumber">13.5</span> <span class="title">Transforming Piecewise Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="piecewise-laplace-method.html" class="internal"><span class="codenumber">13.6</span> <span class="title">Laplace Method with Piecewise Forcing Terms</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9.html" class="internal"><span class="codenumber">13.7</span> <span class="title">Chapter 11 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c11-quick-answer.html" class="internal"><span class="codenumber">13.7</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9-3.html" class="internal"><span class="codenumber">13.7</span> <span class="title">🏗️ Unit Step Functions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9-4.html" class="internal"><span class="codenumber">13.7</span> <span class="title">🏗️ Piecewise Functions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9-5.html" class="internal"><span class="codenumber">13.7</span> <span class="title">Piecewise Inverse Transforms</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9-6.html" class="internal"><span class="codenumber">13.7</span> <span class="title">Solving Differential Equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="chpt-piecewise-forcing-functions-9-7.html" class="internal"><span class="codenumber">13.7</span> <span class="title">Using the Definition of the Laplace Transform</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-1st-order-linear-systems.html" class="internal"><span class="codenumber">14</span> <span class="title">First-Order Linear Systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="intro-systems.html" class="internal"><span class="codenumber">14.1</span> <span class="title">Introduction to Systems</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="variable-interactions.html" class="internal"><span class="codenumber">14.2</span> <span class="title">Interactions Between Variables</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="linear-systems-basics.html" class="internal"><span class="codenumber">14.3</span> <span class="title">Linear System Basics</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="solving-linear-systems.html" class="internal"><span class="codenumber">14.4</span> <span class="title">Solving Linear Systems</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="second-order-to-system.html" class="internal"><span class="codenumber">14.5</span> <span class="title">Second-Order Equations to First-Order Systems</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="numerical-solutions-for-linear-systems.html" class="internal"><span class="codenumber">14.6</span> <span class="title">Euler’s Method</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="qualitative-methods-for-linear-systems.html" class="internal"><span class="codenumber">14.7</span> <span class="title">Qualitative Methods</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="c12-exercises.html" class="internal"><span class="codenumber">14.8</span> <span class="title">Chapter 12 Exercises</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-reading-questions"><div class="toc-title-box"><a href="c12-quick-answer.html" class="internal"><span class="codenumber">14.8</span> <span class="title">ᯓ★❓ Quick-Answer Questions</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="c12-exercises-3.html" class="internal"><span class="codenumber">14.8</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chpt-nonlinear-systems.html" class="internal"><span class="codenumber">15</span> <span class="title">Nonlinear Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="NEEDS-A-LABEL.html" class="internal"><span class="codenumber">15.1</span> <span class="title">Nonlinear Systems</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="review-topics.html" class="internal"><span class="codenumber">A</span> <span class="title">Review: Algebra Topics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-like-terms.html" class="internal"><span class="codenumber">A.1</span> <span class="title">Like-Terms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-quadratic-eqns.html" class="internal"><span class="codenumber">A.2</span> <span class="title">Quadratic Equations</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="review-completing-the-sqr.html" class="internal"><span class="codenumber">A.3</span> <span class="title">Completing the Square</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="review-completing-the-sqr-7.html" class="internal"><span class="codenumber">A.3</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="review-point-slope.html" class="internal"><span class="codenumber">A.4</span> <span class="title">Equation of a Line in Point-Slope Form</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="review-point-slope-6.html" class="internal"><span class="codenumber">A.4</span> <span class="title">Practice Writing Equations of Lines</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="review-point-on-a-line.html" class="internal"><span class="codenumber">A.5</span> <span class="title">Finding a Point on a Line</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="review-point-on-a-line-5.html" class="internal"><span class="codenumber">A.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-trig-identities.html" class="internal"><span class="codenumber">A.6</span> <span class="title">Trigonometric Identities</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-exponents-logarithms.html" class="internal"><span class="codenumber">A.7</span> <span class="title">Exponential and Logarithmic Functions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="review-script-notation.html" class="internal"><span class="codenumber">A.8</span> <span class="title">Subscript Notation</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="review-script-notation-7.html" class="internal"><span class="codenumber">A.8</span> <span class="title">Practice</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-function-notation.html" class="internal"><span class="codenumber">A.9</span> <span class="title">Function Notation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-polynomial-eqns.html" class="internal"><span class="codenumber">A.10</span> <span class="title">Solving Polynomial Equations</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-rational-functions.html" class="internal"><span class="codenumber">A.11</span> <span class="title">Rational Functions</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="review-pfd.html" class="internal"><span class="codenumber">A.12</span> <span class="title">Partial Fraction Decomposition</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="review-pfd-8.html" class="internal"><span class="codenumber">A.12</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-piecewise-functions.html" class="internal"><span class="codenumber">A.13</span> <span class="title">Piecewise Defined Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-recursive-functions.html" class="internal"><span class="codenumber">A.14</span> <span class="title">Recursive functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-interrelated-functions.html" class="internal"><span class="codenumber">A.15</span> <span class="title">Interrelated functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="review-units.html" class="internal"><span class="codenumber">A.16</span> <span class="title">Units, Mass, Volume, Concentration</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="calculus-review.html" class="internal"><span class="codenumber">B</span> <span class="title">Review: Calculus Topics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-limts.html" class="internal"><span class="codenumber">B.1</span> <span class="title">Limits at infinity</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-lhopitals-rule.html" class="internal"><span class="codenumber">B.2</span> <span class="title">L’Hospital’s Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-differentiation.html" class="internal"><span class="codenumber">B.3</span> <span class="title">Differentiation</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-product-rule.html" class="internal"><span class="codenumber">B.4</span> <span class="title">Product Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-usub.html" class="internal"><span class="codenumber">B.5</span> <span class="title"><span class="process-math">\(u\)</span>-substitution</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="calculus-review-ibp.html" class="internal"><span class="codenumber">B.6</span> <span class="title">Integration by parts</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="breakdown-of-formula.html" class="internal"><span class="title">Breaking Down the Integration by Parts Formula</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="integration-by-parts-example.html" class="internal"><span class="title">Example: Applying Integration by Parts</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="analogy-for-laplace.html" class="internal"><span class="title">Laplace Transform and Integration by Parts: An Analogy</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="calculus-review-improper-integrals.html" class="internal"><span class="codenumber">B.7</span> <span class="title">Improper Integrals</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="codenumber">C</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-5.html" class="internal"><span class="codenumber">D</span> <span class="title">Solutions to Selected Exercises</span></a></div></li>
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="resources.html" class="internal"><span class="codenumber">E</span> <span class="title">Resources</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="quick-references.html" class="internal"><span class="codenumber">E.1</span> <span class="title">Quick References</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-basics.html" class="internal"><span class="title">Basics</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-basics.html#quick-ref-basics-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-solns.html" class="internal"><span class="title">Solutions to Differential Equations</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-solns.html#quick-ref-solns-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-sov.html" class="internal"><span class="title">Separation of Variables</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-sov.html#quick-ref-sov-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-if.html" class="internal"><span class="title">Integrating Factor</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-if.html#quick-ref-if-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-qm.html" class="internal"><span class="title">Qualitative Methods</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-qm.html#quick-ref-qm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-nm.html" class="internal"><span class="title">Numerical Methods</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-nm.html#quick-ref-nm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-lhcc.html" class="internal"><span class="title">Linear Homogeneous Differential Equations with Constant Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-lhcc.html#quick-ref-lhcc-3" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-uc.html" class="internal"><span class="title">Undermined Coefficients</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet">
+<div class="toc-title-box"><a href="quick-ref-uc.html#quick-ref-uc-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="quick-ref-uc.html#quick-ref-uc-2-7" class="internal"><span class="title">LNCC Equations</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-lt.html" class="internal"><span class="title">Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-lt.html#quick-ref-lt-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-ltm.html" class="internal"><span class="title">Laplace Transforms</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-ltm.html#quick-ref-ltm-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="quick-ref-ltp.html" class="internal"><span class="title">Laplace Transforms</span></a></div></li>
+<li class="toc-item toc-subsubsection">
+<div class="toc-title-box"><a href="quick-ref-linsys1.html" class="internal"><span class="title">First-Order Linear Systems</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-worksheet"><div class="toc-title-box"><a href="quick-ref-linsys1.html#quick-ref-linsys1-2" class="internal"><span class="title">Key Terms &amp; Concepts</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="formula-sheets.html" class="internal"><span class="codenumber">E.2</span> <span class="title">Formula Sheets</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-7.html" class="internal"><span class="codenumber">F</span> <span class="title">Selected Hints</span></a></div></li>
+<li class="toc-item toc-solutions"><div class="toc-title-box"><a href="backmatter-8.html" class="internal"><span class="codenumber">G</span> <span class="title">Selected Solutions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="backmatter-9.html" class="internal"><span class="codenumber">H</span> <span class="title">List of Symbols</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-10.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-11.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="eulers-method-full"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">8.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Euler’s Method: The Full Process</span>
+</h2>
+<section class="introduction" id="eulers-method-full-2"><div class="para" id="eulers-method-full-2-1">In the previous section, we zoomed in on the single “step” at the heart of Euler’s method: move forward by a small amount <span class="process-math">\(h\)</span> in <span class="process-math">\(t\text{,}\)</span> and adjust <span class="process-math">\(y\)</span> by <span class="process-math">\(h\)</span> times the slope. Now we’ll zoom out. By repeating that step again and again, we can march across an interval, building an approximate solution point by point.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-full-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="paragraphs" id="eulers-method-concrete"><h2 class="heading"><span class="title">A Concrete Step Through Euler’s Method.</span></h2>
+<div class="para" id="eulers-method-concrete-2">Before writing any formulas, it helps to <em class="emphasis">see</em> what Euler’s Method feels like. Think of Euler’s method like crossing a landscape with only a compass. You know where you start. At each step, you check your direction (the slope from the differential equation), take a small stride that way, then check again. That back-and-forth of “step, check, adjust” is the rhythm of the method.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<section class="paragraphs" id="eulers-method-concrete-3"><h3 class="heading"><span class="title">The Goal.</span></h3>
+<div class="para logical" id="eulers-method-concrete-3-2">
+<div class="para">Suppose we have the initial value problem</div>
+<div class="displaymath process-math" id="concrete-euler-eqn">
+\begin{equation}
+y'(t) = 6t + y(t), \quad y(0) = -2, \quad t \text{ in } [0, 1.5]\text{.}\tag{0}
+\end{equation}
+</div>
+<div class="para">Let’s approximate the solution at the equally-spaced <span class="process-math">\(t\)</span>-values: <span class="process-math">\(0, 0.5, 1, 1.5\text{.}\)</span> This tells us that our goal is to approximate the <span class="process-math">\(y\)</span>-values at the following points:</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="eulers-method-concrete-3-3">
+\begin{equation*}
+\text{Approximation} = \big\{\ (\ 0\ ,\ ?\ ),\ (\ 0.5\ ,\ ?\ ),\ (\ 1\ ,\ ?\ ),\ (\ 1.5\ ,\ ?\ )\ \big\}\text{.}
+\end{equation*}
+</div>
+<div class="para logical" id="eulers-method-concrete-3-4">
+<div class="para">Luckily, the first <span class="process-math">\(y\)</span> value is just the initial condition, <span class="process-math">\(y(0) = -2\text{,}\)</span> so we add it to the list:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-3-4-3">
+\begin{equation*}
+\text{Approximation} = \left\{\ (0,-2)\ ,\ (0.5,\ ?\ )\ ,\ (1,\ ?\ )\ ,\ (1.5,\ ?\ )\ \right\}\text{.}
+\end{equation*}
+</div>
+<div class="para">Starting at <span class="process-math">\((0,-2)\text{,}\)</span> Euler’s method finds the rest of the points, one-by-one.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: The Goal"><a href="#eulers-method-concrete-3" title="Copy heading and permalink for Paragraphs: The Goal" aria-label="Copy heading and permalink for Paragraphs: The Goal">🔗</a></div></section><section class="paragraphs" id="eulers-method-concrete-4"><h3 class="heading"><span class="title">Approximating the Next Point.</span></h3>
+<div class="para logical" id="eulers-method-concrete-4-2">
+<div class="para">From <span class="process-math">\((0, -2)\text{,}\)</span> we need to get to <span class="process-math">\((0.5,?)\text{.}\)</span> Clearly, the run is <span class="process-math">\(0.5\text{,}\)</span> but we also need the slope for our movement direction. This comes directly from the differential equation:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-4-2-4">
+\begin{equation*}
+\text{slope at}\ (0,-2)\ \os{\large t=0}{\quad\longrightarrow\quad} y'(0) = 6(0) + y(0) = -2\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-4-3">
+<div class="para">Moving from <span class="process-math">\((0, -2)\)</span> with a slope of <span class="process-math">\(-2\)</span> and a run of <span class="process-math">\(0.5\)</span> is given by:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-4-3-4">
+\begin{equation*}
+(0, -2) \rightarrow (0 + \text{run}, -2 + \text{slope} \times \text{run}) = (0.5, -2 + -2 \cdot 0.5) = (0.5, -3)\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-4-4">
+<div class="para">Therefore, the next point is <span class="process-math">\((0.5, -3)\)</span> and our approximation list becomes:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-4-4-2">
+\begin{equation*}
+\text{Approximation} = \left\{\ (0,-2)\ ,\ (0.5,-3)\ ,\ (1,\ ?\ )\ ,\ (1.5,\ ?\ )\ \right\}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Approximating the Next Point"><a href="#eulers-method-concrete-4" title="Copy heading and permalink for Paragraphs: Approximating the Next Point" aria-label="Copy heading and permalink for Paragraphs: Approximating the Next Point">🔗</a></div></section><section class="paragraphs" id="eulers-method-concrete-5"><h3 class="heading"><span class="title">Approximating the Rest of the Points.</span></h3>
+<div class="para" id="eulers-method-concrete-5-2">To get the third and fourth point, we just repeat what we just did.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-5-3">
+<div class="para">At <span class="process-math">\((0.5, -3)\text{,}\)</span> we get the slope from:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-5-3-2">
+\begin{equation*}
+\text{slope at}\ (0.5, -3)\ \os{\large t=0.5}{\quad\longrightarrow\quad} y'(0.5) = 6(0.5) + y(0.5) = 3 + (-3) = 0\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-5-4">
+<div class="para">Using this slope and the same run, we get the third point:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-5-4-1">
+\begin{equation*}
+(0.5 + \text{run}, -3 + \text{slope} \times \text{run}) = (1, -3 + 0 \cdot 0.5) = (1, -3)\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-5-5">
+<div class="para">Now we are at <span class="process-math">\((1, -3)\)</span> and the slope we move this time is:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-5-5-2">
+\begin{equation*}
+\text{slope at}\ (1, -3)\ \os{\large t=0}{\quad\longrightarrow\quad} y'(1) = 6(1) + y(1) = 6 + (-3) = 3\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-5-6">
+<div class="para">and our final point is given by:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-5-6-1">
+\begin{equation*}
+(1 + \text{run}, -3 + \text{slope} \times \text{run}) = (1.5, -3 + 3 \cdot 0.5) = (1.5, -1.5)\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-concrete-5-7">
+<div class="para">With this, our approximation is now complete:</div>
+<div class="displaymath process-math" id="eulers-method-concrete-5-7-1">
+\begin{equation*}
+\text{Approximation} = \left\{\ (0,-2)\ ,\ (0.5,-3)\ ,\ (1,-3)\ ,\ (1.5,-1.5)\ \right\}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-concrete-5-8">A plot of the process is given in <a href="eulers-method-full.html#eulers-method-concrete-table-plot" class="xref" data-knowl="./knowl/xref/eulers-method-concrete-table-plot.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 113">Figure 113</a>.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-5-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="eulers-method-concrete-table-plot"><div class="sidebyside"><div class="sbsrow" style="margin-left:4%;margin-right:4%;grid-template-columns:32.6086956521739% 58.695652173913%;column-gap:8%;">
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para" id="eulers-method-concrete-table-plot-2-1">
+<table class="tabular">
+<tr>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(t\)</span></td>
+<td class="c m b1 r0 l0 t0 lines">
+<span class="process-math">\(y\)</span> (approx)</td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-2.0\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.5\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-3.0\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(1\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-3.0\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(1.5\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-1.5\)</span></td>
+</tr>
+</table>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-table-plot-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para" id="eulers-method-concrete-table-plot-2-2">
+<img src="generated/latex-image/eulers-method-concrete-table-plot-2-2-1.svg" role="img" class="contained"><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-table-plot-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">113<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>(left) Euler’s method approximation of the solution to <a href="eulers-method-full.html#concrete-euler-eqn" class="xref" data-knowl="./knowl/xref/concrete-euler-eqn.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 0">(0)</a> with step size <span class="process-math">\(0.5\text{.}\)</span> (right) Plot of each point in the approximation.<div class="autopermalink" data-description="Figure 113"><a href="#eulers-method-concrete-table-plot" title="Copy heading and permalink for Figure 113" aria-label="Copy heading and permalink for Figure 113">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Paragraphs: Approximating the Rest of the Points"><a href="#eulers-method-concrete-5" title="Copy heading and permalink for Paragraphs: Approximating the Rest of the Points" aria-label="Copy heading and permalink for Paragraphs: Approximating the Rest of the Points">🔗</a></div></section><details id="eulers-method-concrete-6" class="corollary theorem-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">🎮 Interactive</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">114</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><code class="code-inline tex2jax_ignore">[provisional cross-reference: WORK-IN-PROGRESS]</code>.</span>
+</h3></summary><article class="corollary theorem-like knowl__content"><div class="para" id="eulers-method-concrete-6-2">
+<code class="code-inline tex2jax_ignore">[provisional cross-reference: WORK-IN-PROGRESS]</code><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;grid-template-columns:50% 50%;column-gap:0%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="para logical" id="eulers-method-concrete-6-3-1">
+<div class="displaymath process-math" id="eulers-method-concrete-6-3-1-1">
+\begin{equation*}
+y' = y + t, \quad y(0) = 1
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-concrete-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--top top" style=""><iframe id="euler-ivp-tool" width="300" height="300" src="euler-ivp-tool-if.html" data-dark-mode-enabled="true"></iframe></div>
+</div></div>
+<div class="autopermalink" data-description="🎮 Interactive 114: [provisional cross-reference: WORK-IN-PROGRESS]"><a href="#eulers-method-concrete-6" title="Copy heading and permalink for 🎮 Interactive 114: [provisional cross-reference: WORK-IN-PROGRESS]" aria-label="Copy heading and permalink for 🎮 Interactive 114: [provisional cross-reference: WORK-IN-PROGRESS]">🔗</a></div></article></details><div class="autopermalink" data-description="Paragraphs: A Concrete Step Through Euler’s Method"><a href="#eulers-method-concrete" title="Copy heading and permalink for Paragraphs: A Concrete Step Through Euler’s Method" aria-label="Copy heading and permalink for Paragraphs: A Concrete Step Through Euler’s Method">🔗</a></div></section><section class="paragraphs" id="eulers-method-definition"><h2 class="heading"><span class="title">Euler’s Method.</span></h2>
+<div class="para" id="eulers-method-definition-2">Now let’s generalize the concrete example. As we do, check the footnotes for the concrete version of each equation and step.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-definition-3">
+<div class="para">Consider an initial value problem:<details class="ptx-footnote" aria-live="polite" id="eulers-method-definition-3-1"><summary class="ptx-footnote__number" title="Footnote 3"><sup> 3 </sup></summary><div class="ptx-footnote__contents" id="eulers-method-definition-3-1"><div class="displaymath process-math" id="eulers-method-definition-3-1-1">
+\begin{equation*}
+y'(t) = 6t + y(t), \quad y(0) = -2, \quad t\ \text{in}\ [0, 1.5]
+\end{equation*}
+</div></div></details>
+</div>
+<div class="displaymath process-math" id="eulers-method-definition-3-2">
+\begin{equation*}
+y'(t) = f(t, y), \quad y(t_0) = y_0, \quad t\ \text{in}\  [t_0, t_N]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-definition-4">We divide <span class="process-math">\([t_0, t_N]\)</span> into equally spaced values (a distance <span class="process-math">\(h\)</span> apart): <details class="ptx-footnote" aria-live="polite" id="eulers-method-definition-4-3"><summary class="ptx-footnote__number" title="Footnote 4"><sup> 4 </sup></summary><div class="ptx-footnote__contents" id="eulers-method-definition-4-3"><div class="displaymath process-math" id="eulers-method-definition-4-3-1">
+\begin{equation*}
+\us{\ds t_0}{\us{\uparrow}{0}},\ 
+\us{\ds t_1}{\us{\uparrow}{0.5}},\ 
+\us{\ds t_2}{\us{\uparrow}{1}},\ 
+\us{\ds t_3}{\us{\uparrow}{1.5}}\qquad h = 0.5
+\end{equation*}
+</div></div></details><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/point-slope-movement-rule.html ./knowl/xref/eulers-method-concrete-table-plot.html" id="eulers-method-definition-5">
+\begin{equation*}
+t_0,\ t_1,\ t_2,\ \ldots,\ t_N, \quad\text{where}\quad t_{k+1} = t_k + h
+\end{equation*}
+</div>
+<div class="para" id="eulers-method-definition-6">Using the shorthand <span class="process-math">\(y_k = y(t_k)\text{,}\)</span> our goal is to approximate the points: <details class="ptx-footnote" aria-live="polite" id="eulers-method-definition-6-2"><summary class="ptx-footnote__number" title="Footnote 5"><sup> 5 </sup></summary><div class="ptx-footnote__contents" id="eulers-method-definition-6-2"><div class="displaymath process-math" id="eulers-method-definition-6-2-1">
+\begin{equation*}
+\text{Approximation} = \{\ (0,?),\ (0.5,?),\ (1,?),\ (1.5,?)\ \big\}
+\end{equation*}
+</div></div></details><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/point-slope-movement-rule.html ./knowl/xref/eulers-method-concrete-table-plot.html" id="eulers-method-definition-7">
+\begin{equation*}
+(t_0, y_0), (t_1, y_1), \ldots, (t_N, y_N).
+\end{equation*}
+</div>
+<div class="para" id="eulers-method-definition-8">The first point, <span class="process-math">\((t_0, y_0)\text{,}\)</span> is known since it is the initial condition. The remaining points are approximated using the <a href="eulers-method-one-step.html#point-slope-movement-rule" class="xref" data-knowl="./knowl/xref/point-slope-movement-rule.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 0">movement rule</a>, where “cur” is <span class="process-math">\(k\)</span> and “new” is <span class="process-math">\(k+1\text{:}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/point-slope-movement-rule.html ./knowl/xref/eulers-method-concrete-table-plot.html" id="eulers-method-definition-9">
+\begin{equation*}
+(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot\text{slope})\text{.}
+\end{equation*}
+</div>
+<div class="para" id="eulers-method-definition-10">The slope is found from <span class="process-math">\(f(t_k, y_k)\)</span><details class="ptx-footnote" aria-live="polite" id="eulers-method-definition-10-2"><summary class="ptx-footnote__number" title="Footnote 6"><sup> 6 </sup></summary><div class="ptx-footnote__contents" id="eulers-method-definition-10-2"><div class="displaymath process-math" id="eulers-method-definition-10-2-1">
+\begin{equation*}
+6t + y(t)
+\end{equation*}
+</div></div></details> in the differential equation, so the rule becomes:<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/point-slope-movement-rule.html ./knowl/xref/eulers-method-concrete-table-plot.html" id="eulers-method-definition-11">
+\begin{equation*}
+(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
+\end{equation*}
+</div>
+<div class="para logical" id="eulers-method-definition-12">
+<div class="para">Extracting just the <span class="process-math">\(y\)</span>-coordinate, gives the update rule for Euler’s method:</div>
+<div class="displaymath process-math" id="eulers-method-definition-12-2">
+\begin{equation*}
+y_{k+1} = y_k + h\cdot f(t_k, y_k).
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-definition-13">That’s it. All of the <span class="process-math">\(y\)</span> values in the table of <a href="eulers-method-full.html#eulers-method-concrete-table-plot" class="xref" data-knowl="./knowl/xref/eulers-method-concrete-table-plot.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 113">Figure 113</a> can be found with this formula.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="eulers-method-chkpt-1" class="exercise exercise-like born-hidden-knowl"><summary class="knowl__link"><h3 class="heading">
+<span class="type">Checkpoint</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">115</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Match Euler’s Method Parts to their Meaning.</span>
+</h3></summary><article class="exercise exercise-like knowl__content"><div class="ptx-runestone-container"><div class="runestone cardsort_section"><ul data-component="dragndrop" data-question_label="" style="visibility: hidden;" id="rs-eulers-method-chkpt-1">
+<span data-subcomponent="question"><div class="para" id="eulers-method-chkpt-1-2-1">Assume the current approximation using Euler’s Method is denoted by <span class="process-math">\(y_k\text{.}\)</span> In this context, match the mathematical expression with its meaning.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-chkpt-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></span><span data-subcomponent="feedback"><div class="para" id="eulers-method-chkpt-1-3-1">These pairings are essential when converting a piecewise function into unit step form. The form you choose depends entirely on where each piece is active.</div></span><li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag1" data-category="1"><span class="process-math">\(y_{k+1}\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag1" data-category="1">The <span class="process-math">\(y\)</span> value of the next approximation.</li>
+<li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag2" data-category="2"><span class="process-math">\(y_{k-1}\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag2" data-category="2">The <span class="process-math">\(y\)</span> value of the previous approximation.</li>
+<li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag3" data-category="3"><span class="process-math">\(h\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag3" data-category="3">The distance between <span class="process-math">\(t_k\)</span> and <span class="process-math">\(t_{k+1}\text{.}\)</span>
+</li>
+<li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag4" data-category="4"><span class="process-math">\(f(t_k, y_k)\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag4" data-category="4">The slope of the solution at the current approximation.</li>
+<li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag5" data-category="5"><span class="process-math">\(t_k\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag5" data-category="5">The <span class="process-math">\(t\)</span> value of the current approximation.</li>
+<li data-subcomponent="draggable" id="rs-eulers-method-chkpt-1_drag6" data-category="6"><span class="process-math">\(h \cdot f(t_k, y_k)\)</span></li>
+<li data-subcomponent="dropzone" for="rs-eulers-method-chkpt-1_drag6" data-category="6">The rise (or fall) in the <span class="process-math">\(y\)</span> value from the current approximation to the next approximation.</li>
+</ul></div></div>
+<div class="autopermalink" data-description="Checkpoint 115: Match Euler’s Method Parts to their Meaning"><a href="#eulers-method-chkpt-1" title="Copy heading and permalink for Checkpoint 115: Match Euler’s Method Parts to their Meaning" aria-label="Copy heading and permalink for Checkpoint 115: Match Euler’s Method Parts to their Meaning">🔗</a></div></article></details><article class="exploration project-like" id="euler-method"><h3 class="heading">
+<span class="type">✍🏻 Method</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Euler’s Method.</span>
+</h3>
+<div class="para" id="euler-method-2">Given an initial value problem<div class="autopermalink" data-description="Paragraph"><a href="#euler-method-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="euler-method-3">
+\begin{equation*}
+y' = f(t, y), \quad y(t_0) = y_0, \quad t_0 \le t \le t_N
+\end{equation*}
+</div>
+<div class="para" id="euler-method-4">approximate the solution with the following steps:<div class="autopermalink" data-description="Paragraph"><a href="#euler-method-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<dl class="description-list narrow">
+<dt id="eulers-method-step-1">Select step size<div class="autopermalink" data-description="Item: Select step size"><a href="#eulers-method-step-1" title="Copy heading and permalink for Item: Select step size" aria-label="Copy heading and permalink for Item: Select step size">🔗</a></div>
+</dt>
+<dd><div class="para" id="eulers-method-step-1-2">Choosing a step size <span class="process-math">\(h\)</span> determines <span class="process-math">\(t_0,\ t_1,\ t_2,\ ...,\ t_{N}\)</span> where <span class="process-math">\(t_k = t_0 + kh\)</span> for <span class="process-math">\(k = 0, 1, 2, ..., N\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-step-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="eulers-method-step-2">Apply Euler’s update rule<div class="autopermalink" data-description="Item: Apply Euler’s update rule"><a href="#eulers-method-step-2" title="Copy heading and permalink for Item: Apply Euler’s update rule" aria-label="Copy heading and permalink for Item: Apply Euler’s update rule">🔗</a></div>
+</dt>
+<dd><div class="para logical" id="eulers-method-step-2-2">
+<div class="para">For <span class="process-math">\(k = 0\)</span> to <span class="process-math">\(N - 1\text{,}\)</span> compute</div>
+<div class="displaymath process-math" id="eulers-method-step-2-2-3">
+\begin{equation*}
+y_{k+1} = y_k + h \cdot f(t_k, y_k).
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-step-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+</dl>
+<div class="autopermalink" data-description="✍🏻 Method 2: Euler’s Method"><a href="#euler-method" title="Copy heading and permalink for ✍🏻 Method 2: Euler’s Method" aria-label="Copy heading and permalink for ✍🏻 Method 2: Euler’s Method">🔗</a></div></article><div class="para" id="eulers-method-definition-16">Desipte being based on relatively simple idea, Euler’s method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-definition-16" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Euler’s Method"><a href="#eulers-method-definition" title="Copy heading and permalink for Paragraphs: Euler’s Method" aria-label="Copy heading and permalink for Paragraphs: Euler’s Method">🔗</a></div></section><section class="paragraphs" id="eulers-method-examples"><h2 class="heading"><span class="title">Examples.</span></h2>
+<article class="example example-like" id="eulers-method-example-1"><h3 class="heading">
+<span class="type">🌌 Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">116</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Euler’s Method Example.</span>
+</h3>
+<div class="para logical" id="eulers-method-example-1-2-1">
+<div class="para">Use Euler’s method to approximate the solution to the differential equation</div>
+<div class="displaymath process-math" id="eulers-method-example-1-2-1-1">
+\begin{equation*}
+y' = t + y, \quad y(0) = -\frac{7}{8}
+\end{equation*}
+</div>
+<div class="para">over the interval <span class="process-math">\([0, 1.5]\)</span> with a step size of <span class="process-math">\(h = 0.5\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eulers-method-example-1-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="eulers-method-example-1-3-1">
+<a href="eulers-method-full.html#eulers-method-step-1" class="xref" data-knowl="./knowl/xref/eulers-method-step-1.html" data-reveal-label="Reveal" data-close-label="Close" title="Item: Select step size">Select step size</a>. The step size is <span class="process-math">\(h = 0.5\text{,}\)</span> so the approximation locations are <span class="process-math">\(t_0 = 0, t_1 = 0.5, t_2 = 1.0, t_3 = 1.5\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-example-1-3-2">
+<a href="eulers-method-full.html#eulers-method-step-2" class="xref" data-knowl="./knowl/xref/eulers-method-step-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Item: Apply Euler’s update rule">Apply Euler’s update rule</a>. The initial condition gives the first value in our approximation, <span class="process-math">\(y_0 = -\frac{7}{8} = -0.875\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-example-1-3-3">
+<div class="para">Now, we can use the formula</div>
+<div class="displaymath process-math" id="eulers-method-example-1-3-3-1">
+\begin{equation*}
+y_{k+1} = y_k + h\left(t_k + y_k\right)
+\end{equation*}
+</div>
+<div class="para">to find <span class="process-math">\(y_1\text{,}\)</span> <span class="process-math">\(y_2\)</span> and <span class="process-math">\(y_3\)</span> as follows:</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;grid-template-columns:5% 8% 82% 5%;column-gap:0%;">
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para" id="eulers-method-example-1-3-4-1"><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div></div>
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para logical" id="eulers-method-example-1-3-4-2">
+<div class="displaymath process-math" id="eulers-method-example-1-3-4-2-1">
+\begin{align*}
+\text{G}	\amp\text{iven} \\
+k		\amp = 0 \\
+k		\amp = 1 \\
+k		\amp = 2 
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para logical" id="eulers-method-example-1-3-4-3">
+<div class="displaymath process-math" id="eulers-method-example-1-3-4-3-1">
+\begin{align*}
+y_0	\amp = -0.875 \\
+y_1	\amp = y_0 + h\left(t_0 + y_0\right) = -0.875 + 0.5\left(0 - 0.875\right) \\
+y_2	\amp = y_1 + h\left(t_1 + y_1\right) = -1.3125 + 0.5\left(0.5 - 1.3125\right) \\
+y_3	\amp = y_2 + h\left(t_2 + y_2\right) = -1.5625 + 0.5\left(1.0 - 1.5625\right) 
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--middle middle" style=""><div class="para" id="eulers-method-example-1-3-4-4"><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div></div>
+</div></div>
+<div class="para" id="eulers-method-example-1-3-5">The simplified calculations are summarized in the following table:<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(k\)</span></td>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(t_k\)</span></td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(y_k\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(0.0\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-0.875\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(1\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(0.5\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-0.75\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(2\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(1.0\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-0.5\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(1.5\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(-0.125\)</span></td>
+</tr>
+</table></div>
+<div class="para logical" id="eulers-method-example-1-3-7">
+<div class="para">Thus, the approximate solution to the initial-value problem is</div>
+<div class="displaymath process-math" id="eulers-method-example-1-3-7-1">
+\begin{equation*}
+y(0) \approx -\frac{7}{8}, \quad y(0.5) \approx -\frac{3}{4}, \quad y(1.0) \approx -\frac{1}{2}, \quad y(1.5) \approx -\frac{1}{8}.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-example-1-3-8">
+<div class="para">We can visualize the approximation by plotting the points <span class="process-math">\((t_k, y_k)\)</span> and connecting them with line segments. The exact solution to the initial-value problem is given by</div>
+<div class="displaymath process-math" id="eulers-method-example-1-3-8-2">
+\begin{equation*}
+y(t) = \frac{1}{8}e^t - t - 1.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-example-1-3-9">The following plot shows the approximation and the exact solution.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/sageplot/sageplot-euler-approximation.svg" role="img" class="contained"></div>
+<div class="para" id="eulers-method-example-1-3-11">The red curve is the exact solution, while the green points are the approximated values at <span class="process-math">\(t = 0, 0.5, 1.0, 1.5\text{.}\)</span> The blue line segments connect the points in the approximation, showing how Euler’s method steps through the solution.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-example-1-3-12">The following plot shows the approximation and the exact solution, with a grid for better visualization.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eulers-method-example-1-3-13">
+<div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/sageplot/sageplot-polynomial-approximation.svg" role="img" class="contained"></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/eulers-method-example-1-3-14.svg" role="img" class="contained"></div>
+<div class="para logical" id="eulers-method-example-1-3-15">
+<div class="displaymath process-math" id="eulers-method-example-1-3-15-1">
+\begin{align*}
+y'(t_k) 										\amp = (y(t_k))^2 - t_k \\
+\frac{y(t_{k+1}) - y(t_k)}{h}	\amp = (y(t_k))^2 - t_k \\
+\frac{y_{k+1} - y_k}{h}	\amp = (y_k)^2 - t_k \\
+y(t_{k+1}) - y(t_k) 							\amp = h\left((y(t_k))^2 - t_k\right) \\
+y(t_{k+1}) 									\amp = y(t_k) + h\left((y(t_k))^2 - t_k\right) 
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-1-3-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 116.1"><a href="#eulers-method-example-1-3" title="Copy heading and permalink for Solution 116.1" aria-label="Copy heading and permalink for Solution 116.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="🌌 Example 116: Euler’s Method Example"><a href="#eulers-method-example-1" title="Copy heading and permalink for 🌌 Example 116: Euler’s Method Example" aria-label="Copy heading and permalink for 🌌 Example 116: Euler’s Method Example">🔗</a></div></article><article class="example example-like" id="eulers-method-example-2"><h3 class="heading">
+<span class="type">🌌 Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">117</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Analytical and Numerical Solutions.</span>
+</h3>
+<div class="para logical" id="eulers-method-example-2-2-1">
+<div class="para">Consider the differential equation</div>
+<div class="displaymath process-math" id="eulers-method-example-2-2-1-1">
+\begin{equation*}
+y' + 4ty = 0, \, y(0) = 1\text{.}
+\end{equation*}
+</div>
+<ol class="decimal" id="eulers-method-example-2-2-1-2">
+<li id="eulers-method-example-2-2-1-2-1">
+<div class="para" id="eulers-method-example-2-2-1-2-1-1">Find the analytical solution to this equation using the method of separation of variables.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-2-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eulers-method-example-2-2-1-2-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eulers-method-example-2-2-1-2-2">
+<div class="para" id="eulers-method-example-2-2-1-2-2-1">Use Euler’s method with a step size of <span class="process-math">\(h = 0.1\)</span> to approximate the solution at <span class="process-math">\(t = 0.5\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-2-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eulers-method-example-2-2-1-2-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="eulers-method-example-2-2-1-2-3">
+<div class="para" id="eulers-method-example-2-2-1-2-3-1">Compare the analytical solution with the numerical approximation obtained from Euler’s method.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-2-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#eulers-method-example-2-2-1-2-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eulers-method-example-2-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="eulers-method-example-2-3-1">
+<div class="para">To solve the differential equation</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-1-1">
+\begin{equation*}
+y' + 4ty = 0
+\end{equation*}
+</div>
+<div class="para">using the method of separation of variables, we separate the variables as follows:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-1-2">
+\begin{equation*}
+\frac{dy}{y} = -4t \, dt
+\end{equation*}
+</div>
+<div class="para">Integrating both sides gives:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-1-3">
+\begin{equation*}
+\ln |y| = -2t^2 + C
+\end{equation*}
+</div>
+<div class="para">Exponentiating both sides results in:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-1-4">
+\begin{equation*}
+y = Ce^{-2t^2}
+\end{equation*}
+</div>
+<div class="para">Since the initial condition, <span class="process-math">\(y(0) = 1\text{,}\)</span> gives <span class="process-math">\(C = 1\text{,}\)</span> the analytical solution is:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-1-7">
+\begin{equation*}
+y(t) = e^{-2t^2}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-example-2-3-2">
+<div class="para">Next, we apply Euler’s method to approximate the solution at <span class="process-math">\(t = 0.5\text{.}\)</span> The general formula for Euler’s method is:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-2-2">
+\begin{equation*}
+y_{k+1} = y_k + h f(t_k, y_k)
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(f(t, y) = -4ty\)</span> and <span class="process-math">\(h=0.1\text{.}\)</span> So, we can update the formula as:</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-3">
+\begin{equation*}
+y_{k+1} = y_k - 0.4 t_k y_k \quad \text{where}\ y_0 = 1.
+\end{equation*}
+</div>
+<div class="para" id="eulers-method-example-2-3-4">For <span class="process-math">\(k = 0, 1, \ldots, 4\text{,}\)</span> we contruct the following table:<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(k\)</span></td>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(t_k\)</span></td>
+<td class="c m b1 r1 l0 t0 lines"><span class="process-math">\(y_k\)</span></td>
+<td class="c m b1 r0 l0 t0 lines"><span class="process-math">\(y_{k+1}\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.0\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(y_0 = {\DLBa 1}\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(y_1 = {\DLBa 1} + 0.1(-4 \cdot 0.0 \cdot {\DLBa 1}) = {\DLGa 1}\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(1\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.1\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(y_1 = {\DLBa 1}\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(y_2 = {\DLBa 1} + 0.1(-4 \cdot 0.1 \cdot {\DLBa 1}) = {\DLGa 0.96}\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(2\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.2\)</span></td>
+<td class="l m b0 r1 l0 t0 lines"><span class="process-math">\(y_2 = {\DLBa 0.96}\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(y_3 = {\DLBa 0.96} + 0.1(-4 \cdot 0.2 \cdot {\DLBa 0.96}) = {\DLGa 0.8832}\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.3\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(y_3 = {\DLBa 0.8832}\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(y_4 = {\DLBa 0.8832} + 0.1(-4 \cdot 0.3 \cdot {\DLBa 0.8832}) \approx {\DLGa 0.7772}\)</span></td>
+</tr>
+<tr>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(4\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(0.4\)</span></td>
+<td class="c m b0 r1 l0 t0 lines"><span class="process-math">\(y_4 = {\DLBa 0.7772}\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(y_5 = {\DLBa 0.7772} + 0.1(-4 \cdot 0.4 \cdot {\DLBa 0.7772}) \approx {\DLGa 0.6529}\)</span></td>
+</tr>
+</table></div>
+<div class="para" id="eulers-method-example-2-3-6">Since <span class="process-math">\(t_5=0.5\text{,}\)</span> the approximation we are looking for is <span class="process-math">\(y_5 \approx 0.6529\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="eulers-method-example-2-3-7">
+<div class="para">Comparing this with the analytical solution at <span class="process-math">\(t = 0.5\text{,}\)</span> we see the true value is:</div>
+<div class="displaymath process-math" id="eulers-method-example-2-3-7-2">
+\begin{equation*}
+y(0.5) = e^{-2(0.5)^2} = e^{-0.5} \approx 0.6065.
+\end{equation*}
+</div>
+<div class="para">Although there is some error between the two values, it is more due to the step size we chose, rather than the method itself. A smaller step size would yield a more accurate approximation. For example, using <span class="process-math">\(h = 0.001\)</span> gives the approximation: <span class="process-math">\(y(0.5) \approx 0.6069\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-2-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 117.1"><a href="#eulers-method-example-2-3" title="Copy heading and permalink for Solution 117.1" aria-label="Copy heading and permalink for Solution 117.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="🌌 Example 117: Analytical and Numerical Solutions"><a href="#eulers-method-example-2" title="Copy heading and permalink for 🌌 Example 117: Analytical and Numerical Solutions" aria-label="Copy heading and permalink for 🌌 Example 117: Analytical and Numerical Solutions">🔗</a></div></article><article class="example example-like" id="eulers-method-example-3"><h3 class="heading">
+<span class="type">🌌 Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">118</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Example: Euler’s Method with <span class="process-math">\(h = 0.5\)</span>.</span>
+</h3>
+<div class="para logical" id="eulers-method-example-3-2-1">
+<div class="para">Use Euler’s method to approximate the solution to</div>
+<div class="displaymath process-math" id="eulers-method-example-3-2-1-1">
+\begin{equation*}
+y'(t) = 6t + y(t), \quad y(0) = -2
+\end{equation*}
+</div>
+<div class="para">over <span class="process-math">\(t = 0\)</span> to <span class="process-math">\(1.5\)</span> using step size <span class="process-math">\(h = 0.5\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eulers-method-example-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="eulers-method-example-3-3-1">The formula is:<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="eulers-method-example-3-3-2">
+\begin{equation*}
+y_{k+1} = y_k + 0.5 \cdot (6t_k + y_k)
+\end{equation*}
+</div>
+<div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b1 r1 l0 t0 lines"><span class="process-math">\(k\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(t_k\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(y_k\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(y_{k+1} = y_k + 0.5(6t_k + y_k)\)</span></td>
+</tr>
+<tr>
+<td class="l m b0 r1 l0 t0 lines">0</td>
+<td class="l m b0 r0 l0 t0 lines">0.0</td>
+<td class="l m b0 r0 l0 t0 lines">-2.0</td>
+<td class="l m b0 r0 l0 t0 lines">-3.0</td>
+</tr>
+<tr>
+<td class="l m b0 r1 l0 t0 lines">1</td>
+<td class="l m b0 r0 l0 t0 lines">0.5</td>
+<td class="l m b0 r0 l0 t0 lines">-3.0</td>
+<td class="l m b0 r0 l0 t0 lines">-3.0</td>
+</tr>
+<tr>
+<td class="l m b0 r1 l0 t0 lines">2</td>
+<td class="l m b0 r0 l0 t0 lines">1.0</td>
+<td class="l m b0 r0 l0 t0 lines">-3.0</td>
+<td class="l m b0 r0 l0 t0 lines">-1.5</td>
+</tr>
+</table></div>
+<div class="para" id="eulers-method-example-3-3-4">Thus, the approximate values are:<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-example-3-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="displaymath process-math" id="eulers-method-example-3-3-5">
+\begin{equation*}
+y(0) \approx -2,\quad y(0.5) \approx -3,\quad y(1.0) \approx -3,\quad y(1.5) \approx -1.5
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Solution 118.1"><a href="#eulers-method-example-3-3" title="Copy heading and permalink for Solution 118.1" aria-label="Copy heading and permalink for Solution 118.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="🌌 Example 118: Example: Euler’s Method with h = 0.5"><a href="#eulers-method-example-3" title="Copy heading and permalink for 🌌 Example 118: Example: Euler’s Method with h = 0.5" aria-label="Copy heading and permalink for 🌌 Example 118: Example: Euler’s Method with h = 0.5">🔗</a></div></article><div class="para" id="eulers-method-examples-5">Euler’s method runs on an intuitive idea: use the slope at each point to “predict” the next point. It’s simple, but that simplicity is its strength. This method is often the first stepping stone into the world of numerical methods and the same pattern of “predict, step, repeat” forms the backbone of many other techniques.<div class="autopermalink" data-description="Paragraph"><a href="#eulers-method-examples-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Paragraphs: Examples"><a href="#eulers-method-examples" title="Copy heading and permalink for Paragraphs: Examples" aria-label="Copy heading and permalink for Paragraphs: Examples">🔗</a></div></section><div class="autopermalink" data-description="Section 8.3: Euler’s Method: The Full Process"><a href="#eulers-method-full" title="Copy heading and permalink for Section 8.3: Euler’s Method: The Full Process" aria-label="Copy heading and permalink for Section 8.3: Euler’s Method: The Full Process">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="eulers-method-one-step.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="c6-exercises.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:coxgeoff@vmi.edu" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
