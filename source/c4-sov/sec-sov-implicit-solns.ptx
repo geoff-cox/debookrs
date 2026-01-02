@@ -1,0 +1,359 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="sov-implicit-solns">
+	<title>Implicit General Solutions</title>
+
+	<paragraphs label="sov-implicit-solns-examples-implicit">
+		<title>Implicit Solutions</title>
+
+		<p>
+			Notice that <xref ref="sov-step-3" text="custom">Step 3</xref> of the SOV method states: <q>If possible, explicitly solve for <m>y</m>. If not, leave the solution in implicit form.</q>
+			In the examples we've seen, it was always possible to explicitly isolate <m>y</m> after integrating. However, in some cases, this is not possible (or practical) and we call such solutions <em>implicit solutions</em>. The next example illustrates this situation.
+		</p>
+
+		<example label="sov-implicit-solns-implicit-solution">
+
+			<statement>
+				<p>
+					Solve the initial-value problem for <m>Q</m>
+					<me>
+						Q Q' + e^Q Q' = t, \quad Q(2) = 0
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					Notice the variables separate naturally once we factor out <m>Q'</m>:
+					<me>
+						(Q + e^Q)\frac{dQ}{dt} = t
+					</me>.
+				</p>
+
+				<p>
+					Now the SOV method proceeds as usual:
+					<md>
+						<mrow> (Q + e^Q)\ dQ \amp = t\ dt </mrow>
+						<mrow> \int(Q + e^Q)\ dQ \amp = \int t\ dt </mrow>
+						<mrow>\frac{Q^2}{2} + e^Q \amp = \frac{t^2}{2} + c_1</mrow>
+						<mrow>Q^2 + 2e^Q \amp = t^2 + 2c_1.</mrow>
+					</md>
+				</p>
+
+				<p>
+					The general implicit solution is:
+					<me>Q^2 + 2e^Q = t^2 + c.\qquad (c=2c_1)</me>
+				</p>
+
+				<p>
+					Although we can't isolate <m>Q</m> neatly, we can still find <m>c</m> using <m>Q(2) = 0</m>:
+					<md>
+						<mrow>\text{set}\ t=2, Q=0: \quad (0)^2 + 2e^0 \amp = 2^2 + c</mrow>
+						<mrow>2 \amp = 4 + c \quad\Rightarrow\quad c=-2.</mrow>
+					</md>
+				</p>
+
+				<p>
+					Thus, the particular implicit solution is:
+					<me>Q^2 + 2e^Q = t^2 - 2.</me>
+				</p>
+			</solution>
+		</example>
+
+		<exercise label="sov-implicit-solns-cyu-1">
+			<title><e component="emoji">📖❓</e> Select the Implicit Solutions</title>
+
+			<statement>
+				<p>
+					Let <m>y</m> be a function of the independent variable, <m>t</m>, and <m>c</m> is an integration constant. If each expression below is a general solution to some DE, Click on the <em>implicit solutions</em>.
+				</p>
+			</statement>
+
+			<areas>
+
+				<tabular>
+					<row>
+						<cell><area correct="no"><m>\large y = t\tan(t) + c</m></area></cell><cell/>
+						<cell><area correct="yes"><m>\large y^2 + \ln y = t + c</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+					<row>
+						<cell><area correct="yes"><m>\large y = t + \cos(y)</m></area></cell><cell/>
+						<cell><area correct="no"><m>\large y = \sqrt{\sin(t^2+25)}</m></area></cell>
+					</row>
+					<row><cell><m/></cell></row>
+				</tabular>
+			</areas>
+		</exercise>
+	</paragraphs>
+
+	<paragraphs label="sov-method-examples-absolute-values">
+		<title>Handling Absolute Values in General Solutions</title>
+
+		<exercise label="sov-implicit-solns-cyu-2">
+			<title><e component="emoji">📖❓</e> Review the Absolute Value</title>
+
+			<statement>
+				<p>
+					Select the solutions to the equation
+					<me>
+						|x| = 14
+					</me>.
+				</p>
+			</statement>
+
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\pm 14</m></statement>
+				</choice>
+				<choice correct="yes">
+					<statement><m>-14</m></statement>
+				</choice>
+				<choice correct="no">
+					<statement><m>7</m></statement>
+				</choice>
+				<choice correct="no">
+					<statement><m>1</m></statement>
+				</choice>
+				<choice correct="no">
+					<statement><m>0</m></statement>
+				</choice>
+			</choices>
+		</exercise>
+
+		<p>
+			When solving differential equations, it's common to encounter absolute values in the general solution. For instance, suppose you want to solve for <m>y</m>, but arrive at:
+			<men xml:id="sov-abs-value-eqn">
+				|y| = e^{\sin(x) + c}.
+			</men>
+		</p>
+
+		<p>
+			To fully isolate <m>y</m>, you need to replace the absolute value with <q><m>\pm</m></q>, like so:
+			<men xml:id="sov-abs-value-eqn-solution">
+				y = \pm e^{\sin(x) + c}.
+			</men>
+			To understand why, consider a simplified problem with the same goal:
+			<me>|y| = 5.</me>
+			Clearly, both <m>5</m> and <m>-5</m> satisfy this equation, so <m>\ |y| = 5\ \Rightarrow\ y=\pm 5</m>.
+		</p>
+
+		<example>
+
+			<statement>
+				<p>
+					Find the general solution to the differential equation
+					<me>
+						x\frac{dy}{dx} + 10x^2y = 6x^2
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					Start by verifying the equation is separable:
+					<md>
+						<mrow>x\frac{dy}{dx} + 10x^2y \amp= 6x^2</mrow>
+						<mrow>\frac{dy}{dx} + 10xy \amp= 6x</mrow>
+						<mrow>\frac{dy}{dx} \amp= 6x - 10xy = 2x(3 - 5y).</mrow>
+					</md>
+				</p>
+
+				<p>
+					Now, we apply the separation of variables method.
+				</p>
+
+				<sbsgroup widths="35% 55%" valign="middle" margins="5%">
+
+					<sidebyside>
+						<p>Separate variables</p>
+						<p><me> \frac{1}{3 - 5y}dy = 2x\ dx </me></p>
+					</sidebyside>
+
+					<sidebyside>
+						<p>
+							u-sub 
+							<m>
+								\quad\left.
+								\begin{array}{c}
+									u = 3-5y\\
+									du = -5dx
+								\end{array}
+								\right| \rightarrow
+							</m>
+						</p>
+						<p><me>\int \frac{1}{3 - 5y}dy = \int 2x\ dx</me></p>
+					</sidebyside>
+
+					<sidebyside>
+						<p>Isolate up to <m>|3 - 5y|</m></p>
+						<p>
+							<md>
+								<mrow> \ln|3 - 5y|	\amp = x^2 + c_1 </mrow>
+								<mrow> |3 - 5y|		\amp = e^{x^2 + c_1}</mrow>
+							</md>
+						</p>
+					</sidebyside>
+
+				</sbsgroup>
+
+				<p>
+					At this point, we replace the absolute value with <m>\pm</m>:
+					<me>
+						3 - 5y = \pm e^{x^2 + c_1}.
+					</me>
+				</p>
+
+				<p>
+					With <m>y</m> free, we can fully isolate it and combine constants:
+					<md>
+						<mrow>-5y \amp = \pm e^{c_1} e^{x^2} - 3</mrow>
+						<mrow>y \amp = \frac{\pm e^{c_1}}{-5} e^{x^2} + \frac{3}{5}.</mrow>
+					</md>
+				</p>
+
+				<p>
+					Setting the combined constant, <m>c=\dfrac{\pm e^{c_1}}{5}</m>, we get the general solution:
+					<me>y = ce^{x^2} + \frac{3}{5}</me>.
+				</p>
+
+			</solution>
+		</example>
+
+	</paragraphs>
+
+	<paragraphs label="sov-method-pm-in-the-gen-soln">
+		<title>IVPs with <q><m>\pm</m></q> in the General Solution</title>
+
+		<p>
+			For some initial-value problems, the particular solution can be expressed explicitly even when there is an implicit general solution. To see this, consider the following example:
+		</p>
+
+		<example label="implicit-solution-with-initial-condition">
+
+			<statement>
+				<p>
+					Solve the initial-value problem
+					<me>
+						\frac{dy}{dx} = \frac{\cos x}{y}, \quad y(0) = -5
+					</me>.
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					Applying the SOV method
+					<md>
+						<mrow> \frac{dy}{dx} \amp = (\cos x)\cdot\frac{1}{y} </mrow>
+						<mrow> y\ dy \amp = \cos(x)\ dx </mrow>
+						<mrow> \int y\ dy \amp = \int \cos(x)\ dx </mrow>
+						<mrow>\frac{y^2}{2} \amp = \sin(x) + c_1</mrow>
+					</md>
+					we arrive at the implicit general solution:
+					<me>y^2 = 2\sin(x) + c</me>
+					where <m>c=2c_1</m>.
+				</p>
+
+				<p>
+					Explicitly solving for <m>y</m>, shows our general solution has two branches:
+					<me>
+						y(x) 
+						= \pm\sqrt{2\sin(x) + c} 
+						= \left\{
+							\begin{array}{c}
+							 	-\sqrt{2\sin(x) + c} \\
+								\sqrt{2\sin(x) + c}
+							\end{array}
+							\right.
+					</me>
+				</p>
+
+				<p>
+					Since our solution must satisfy <m>y(0)=-5</m>, which has a negative <m>y</m>-value, our particular solution must come from the negative branch:
+					<me>y(x) = -\sqrt{2\sin x + c}.</me>
+				</p>
+
+				<p>
+					Finally, we find <m>c</m> with the initial condition <m>y(0) = -5</m>:
+					<me>-5 = -\sqrt{2\sin(0) + c} \ \Rightarrow\ c = 25.</me>
+				</p>
+
+				<p>
+					Thus, the explicit particular solution is:
+					<me>y = -\sqrt{2\sin x + 25}.</me>
+				</p>
+
+			</solution>
+		</example>
+
+		<p>
+			The separation of variables method is a flexible and powerful tool for solving a wide range of differential equations, including nonlinear ones. As you've seen, the method is systematic: separate, integrate, and isolate. While the mechanics of the method are straightforward, the complexity often lies in the algebraic manipulation and integration.
+		</p>
+
+		<exercise label="sov-implicit-solns-cyu-3">
+			<title><e component="emoji">📖❓</e> Reorder the Solution</title>
+
+			<statement>
+				<p>
+					Reorder the scrambled steps used to solve <me>\frac{dq}{dt} - 3qt^2 = 2q</me> using the <xref ref="sov-method" text="title"/> method.
+				</p>
+			</statement>
+
+			<blocks>
+				<block order="1">
+					<p>
+						Equation is 1st-order ✅
+					</p>
+				</block>
+				<block order="2">
+					<p>
+						<m>\dfrac{dq}{dt} = q(2 + 3t^2)</m>
+					</p>
+				</block>
+				<block order="3">
+					<p>
+						<m>\dfrac{1}{q}\ dq = (2 + 3t^2)\ dt</m>
+					</p>
+				</block>
+				<block order="4">
+					<p>
+						<m>\ds\int \frac{1}{q} dq = \int (2 + 3t^2) dt</m>
+					</p>
+				</block>
+				<block order="5">
+					<p>
+						<line><m>\ln|q| = 2t^2 + t^3 + c</m></line>
+					</p>
+				</block>
+				<block order="6">
+					<p>
+						<line><m>|q| = e\vphantom{|}^{\large 2t^2 + t^3 + c}</m></line>
+					</p>
+				</block>
+				<block order="7">
+					<p>
+						<line><m>q = \pm e^c e\vphantom{|}^{\large 2t^2 + t^3}</m></line>
+					</p>
+				</block>
+				<block order="8">
+					<p>
+						<line><m>q = c e\vphantom{|}^{\large 2t^2 + t^3}</m></line>
+					</p>
+				</block>
+			</blocks>
+
+		</exercise>
+
+	</paragraphs>
+
+</section>

@@ -1,0 +1,462 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="product-rule">
+	<title>Product Rule, A Review</title>	
+
+	<p>
+		Since the integrating factor method relies heavily on the product rule, let's make sure we remember how it works.
+	</p>
+
+	<p>
+		In calculus, the <term>product rule</term> tells us how to take the derivative of two multiplied functions. If <m>f(x)</m> and <m>g(x)</m> are differentiable, then
+		<me>
+			\frac{d}{dx} \left[ f(x) \cdot g(x) \right] = f(x) \cdot g'(x) + f'(x) \cdot g(x)
+		</me>.
+	</p>
+
+	<p>
+		To refresh your memory of how it works, try the following practice problems.
+	</p>
+
+	<exercise label="chkpt-product-rule-review-1">
+		<title><e component="emoji">📖❓</e>  Remembering the Product Rule</title>
+
+		<introduction>
+			<p>
+				Compute each of the derivatives below. Assume <m>y</m> is a function of <m>x</m>.
+			</p>
+			<me>
+				1. \quad \left[x^6 e^{3x}\right]' \hspace{5em} 2. \quad \frac{d}{dx}\left[e^{x^3} y\right]
+			</me>
+		</introduction>
+			
+		<webwork xml:id="chkpt-product-rule-review-1-ww">
+			<pg-code>
+				Context()->variables->add(y => 'Real');
+				Context()->variables->{namePattern} = qr/[a-z][a-z0-9_]*'*/i;
+					Context()->variables->add("y'"=>"Real");
+				$f1 = Formula("x^6");	$g1 = Formula("e^{3x}");
+				$df1 = $f1->D('x');		$dg1 = $g1->D('x');
+				$f2 = Formula("e^{x^3}");	$g2 = Formula("y");
+				$df2 = $f2->D('x');			$dg2 = Formula("y'");
+
+				$ans1 = $f1 * $dg1 + $df1 * $g1;
+				$ans2 = $f2 * $dg2 + $df2 * $g2;
+			</pg-code>
+
+			<statement>
+				<p>
+					<ol marker="1.">
+						<li><m>\displaystyle\frac{d}{dx}\left[x^6 e^{3x}\right] = </m> <var name="$ans1" width="25" /></li>
+						<li><m>\displaystyle\left[e^{x^3} y\right]' = </m> <var name="$ans2" width="25" /></li>
+					</ol>
+					Use <c>y'</c> for the derivative of <m>y</m> in question 2.
+				</p>
+			</statement>
+		</webwork>
+
+		<solution>
+			<p>
+				Using the product rule:
+				<ol>
+					<li>
+						<me>
+							\left[ x^6 e^{3x} \right]'
+								= x^6 \cdot 3e^{3x} + 6x^5 \cdot e^{3x}
+						</me>
+					</li>
+					<li>
+						<me>
+							\frac{d}{dx}\left[ e^{x^3} y(x) \right]
+								= e^{x^3} \cdot y'(x) + 3x^2 e^{x^3} \cdot y(x)
+						</me>
+					</li>
+				</ol>
+			</p>
+		</solution>
+
+	</exercise>
+
+	<paragraphs label="product-rule-in-reverse">
+		<title>The Product Rule in Reverse</title>
+
+		<p>
+			Now that we've recalled how the product rule works, let's try running it in reverse.
+		</p>
+
+		<p>
+			Suppose you're given the expression:
+		</p>
+
+		<men xml:id="product-rule-in-reverse-eqn-1">
+			\frac{1}{x} \sin x + \cos x \ln x
+		</men>.
+
+		<p>
+			Can this be written as the derivative of a product? That is, can you find functions <m>f(x)</m> and <m>g(x)</m> so that
+		</p>
+
+		<me>
+			\frac{d}{dx} \left[ f(x) g(x) \right] = \frac{1}{x} \sin x + \cos x \ln x?
+		</me>
+
+		<p>
+			Here's a tip: the product rule always combines four pieces, two functions and their derivatives. If you can spot <m>f</m> and <m>g</m> in the terms, the rest should fall into place. In this case, trying <m>f(x) = \sin x</m> and <m>g(x) = \ln x</m> works out perfectly.
+		</p>
+
+		<p>
+			Let's get some practice with this reverse thinking.
+		</p>
+
+		<example>
+			
+			<statement>
+				<p>
+					Rewrite each expression as a derivative of a product:
+					<me>
+						1. \quad e^{x}\cos x + e^{x}\sin x \hspace{5em} 2. \quad \frac{e^{x^2}}{x} + 2 x \ln x e^{x^2}
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					<solution>
+
+						<p>
+							First, select an <m>f</m> and <m>g</m> in different terms, like so
+						</p>
+
+						<p>
+							<me>
+								e^x\
+								\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}\cos x}}}
+								+
+								\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}e^x}}}\
+								\sin x
+							</me>.
+						</p>
+
+						<p>
+							For this to work, <m>f'</m> should be <m>\sin x</m>, next to our chosen <m>g</m>. However,
+							<me>
+								f' = [\cos x]' = -\sin x \ne \sin x \quad ❌
+							</me>
+						</p>
+
+						<p>
+							So this labeling doesn't work and we instead try the labels
+						</p>
+
+						<p>
+							<me>
+								\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}e^x}}}\
+								\cos x
+								+
+								e^x\
+								\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}\sin x}}}
+							</me>.
+						</p>
+
+						<p>
+							Noting that <m>f' = [e^x]' = e^x</m> is next to <m>g</m> and <m>g' = [\sin x]' = \cos x</m> is next to <m>f</m> confirms this is a valid product rule. Therefore, we can reverse the product rule as
+						</p>
+
+						<me>
+							e^x \cos x + e^x \sin x = [e^x \sin x]'
+						</me>.
+
+
+					</solution>
+
+					<solution>
+
+						<p>
+							To make this easier, let's separate the terms as
+							<me>
+								\frac{1}{x} e^{x^2} + \ln x (2 x e^{x^2})
+							</me>.
+						</p>
+						
+						<p>
+							So, as before, we first set <m>f</m> and <m>g</m>
+						</p>
+
+						<me>
+							\frac{1}{x}\
+							\underset{\Large f}{ \underset{\uparrow}{\ul{\vphantom{|}e^{x^2}}}}
+							+
+							\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}\ln x}}}\
+							2 x e^{x^2}
+						</me>,
+
+						<p>
+							then verify the derivatives of <m>f</m> and <m>g</m> are in the other terms,
+						</p>
+
+						<me>
+							f' = \left[e^{x^2}\right]' = 2 x e^{x^2} \quad ✅ \qquad g' = \left[\ln x\right]' = \frac{1}{x} \quad ✅
+						</me>.
+
+						<p>
+							Therefore,
+						</p>
+
+						<me>
+							\frac{e^{x^2}}{x} + 2 x \ln x e^{x^2} = \left[e^{x^2} \ln x\right]'
+						</me>.
+					</solution>
+				</p>
+			</solution>
+			
+		</example>
+
+		<p>
+			Let's now try expressions involving a variable function, like <m>y(x)</m>. These are the ones we'll actually encounter when solving differential equations.
+		</p>
+
+		<example xml:id="reversed-product-rule-example">
+
+			<statement>
+				<p>
+					Rewrite each expression in the form <m>[f(x) y(x)]'</m>.
+					<me>
+						1. \quad e^{9x}\frac{dy}{dx} + 9y e^{9x} \hspace{5em} 2. \quad e^{1/x}y' - \frac{e^{1/x}}{x^2}y
+					</me>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					<solution>
+						<p>
+							Since <m>dy/dx</m> and <m>y</m> are in separate terms, setting <m>g</m> to <m>y</m> gives you <m>g'</m> and <m>f</m> for free since
+						</p>
+
+						<me>
+							\underset{\Large f}{ \underset{\uparrow}{\ul{e^{9x}}}}\
+							\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}}
+							+
+							\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}\
+							(9 e^{9x})
+						</me>.
+
+						<p>
+							The only thing you need to check is
+							<me>
+								f' = [e^{9x}]' = 9e^{9x} \quad ✅
+							</me>
+							which is sitting right next to <m>g</m>. Therefore, we have
+						</p>
+
+						<me>
+							e^{9x}\frac{dy}{dx} + 9 e^{9x} y = \left[e^{9x} y\right]'
+						</me>.
+
+					</solution>
+
+					<solution>
+
+						<p>
+							Again, set <m>g</m> to <m>y</m> and the rest fall into place as
+						</p>
+
+						<me>
+							\underset{\Large f}{ \underset{\uparrow}{\ul{e^{1/x}}}}\
+							\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}y'}}}
+							+
+							\left(-\frac{e^{1/x}}{x^2}\right)\
+							\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
+						</me>.
+
+						<p>
+							The only thing left to do is verify the derivative of <m>f</m>:
+							<me>
+								f' = \left[e^{1/x}\right]' = e^{1/x}\left[\frac{1}{x}\right]^\prime = e^{1/x}\left(-\frac{1}{x^2}\right) = -\frac{e^{1/x}}{x^2} \quad ✅
+							</me>.
+						</p>
+
+						<p>
+							So, we can reverse the product rule as
+						</p>
+
+						<me>
+							e^{1/x}y' - \frac{e^{1/x}}{x^2}y = \left[e^{1/x} y\right]'
+						</me>.
+
+					</solution>
+				</p>
+			</solution>
+			
+		</example>
+
+		<exercise label="chkpt-reversed-product-rule-2">
+			<title><e component="emoji">📖❓</e>  What's Missing in the Product Rule</title>
+			<statement>
+				<p>
+					Fill in the missing parts of each product rule below.
+				</p>
+				<p>
+					<m>\ds\frac{d}{dx}\left[x^2 \cos x\right] = </m>
+					<m>x^2 \cdot</m> <var width="3px"/> <m>+</m> <var  width="3px"/> <m>\cdot \cos x</m>
+				</p>
+				<p>
+					<m>\ds\frac{d}{dx}\big[e^{3x} </m> <var width="3px"/> <m>\big] = </m>
+					<m>\ds\frac{1}{x} \cdot e^{3x} + </m> <var  width="3px"/> <m> e^{3x} \cdot \ln x </m>
+				</p>
+				<p>
+					<m>\ds\frac{d}{dx}\big[ </m> <var width="3px"/> <m> \cdot </m> <var width="3px"/> <m>\big] = </m>
+					<m>\ds\frac{dP}{dt} \cdot t + P </m>
+				</p>
+			</statement>
+			<setup>
+				<var>
+					<condition string="\s*-\s*sin\s*\(?x\)?\s*">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, try again.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+				<var>
+					<condition string="\s*2\s*\*\s*x\s*">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, try again.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+				<var>
+					<condition string="\s*ln\s*\(?x\)?\s*">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string="\s*ln\s*">
+						<feedback>
+							<p>
+								<line>Incorrect, expecting to see the independent variable <m>x</m>.</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*log.*">
+						<feedback>
+							<p>
+								<line>Incorrect, use the natural log instead.</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, try again.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+				<var>
+					<condition number="3">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, don't forget the chain rule.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+				<var>
+					<condition string="P">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string="t">
+						<feedback>
+							<p>
+								<line>Put <m>t</m> in the other blank!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string="p">
+						<feedback>
+							<p>
+								<line>The variable should be a capitol <m>P</m>.</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, try again.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+				<var>
+					<condition string="t">
+						<feedback>
+							<p>
+								<line>Correct!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string="P">
+						<feedback>
+							<p>
+								<line>Put <m>P</m> in the other blank!</line>
+							</p>
+						</feedback>
+					</condition>
+					<condition string=".*">
+						<feedback>
+							<p>
+								<line>Incorrect, try again.</line>
+							</p>
+						</feedback>
+					</condition>
+				</var>
+			</setup>
+		</exercise>
+
+		<p>
+			While reversing the product rule isn't a standard technique, practicing it a few times helps build the intuition you'll need when working with integrating factors.
+		</p>
+	</paragraphs>
+
+</section>

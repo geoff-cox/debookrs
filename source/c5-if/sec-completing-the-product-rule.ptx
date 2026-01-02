@@ -1,0 +1,476 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0"
+-->
+<section label="completing-prod-rule">
+	<title>Completing the Product Rule</title>	
+
+	<p>
+		In algebra, a clever rearrangement of terms can make an equation easier to solve. For instance, to solve
+		<me>
+			\os{\large\text{incomplete square}}{\qquad \ob{\ x^2 + 6x\ } = -1}
+		</me>,
+		we complete the square by adding <m>9</m> (since <m>(6/2)^2 = 9</m>) to both sides:
+		<me>
+			\ub{x^2 + 6x + 9}_{\large\text{complete square}} = -1 + 9
+		</me>,
+		which gives a single perfect square:
+		<me>
+			(x + 3)^2 = 8.
+		</me>
+	</p>
+
+	<p>
+		This grouping is helpful because a square root immediately reveals the solution.
+	</p>
+
+	<p>
+		Some <term>first-order differential equations</term> benefit from a similar idea. Instead of forming a single square, we aim to group the left-hand side as a <em>single derivative</em>.
+	</p>
+
+	<p>
+		For example, take the equation:
+		<me>
+			\os{\large\text{incomplete product rule}}{\qquad \ob{\ \frac{dy}{dx} + 6 y\ } = -1}
+		</me>.
+	</p>
+
+	<p>
+		As you will soon learn, multiplying both sides by <m>e^{6x}</m> actually <q>completes the product rule</q> in a similar way that adding <m>9</m> completed the square:
+		<me>
+			\ub{e^{6x} \frac{dy}{dx} + 6e^{6x} y}_{\large\text{complete product rule}} = -e^{6x}
+		</me>.
+	</p>
+
+	<p>
+		Applying the product rule in reverse, gives a single derivative on the left:
+		<me>
+			\frac{d}{dx} \left[ e^{6x} y \right] = -e^{6x}
+		</me>.
+	</p>
+
+	<p>This new form makes solving easier since direct integration can be used.</p>
+
+	<p>
+		This process of multiplying by the right function to complete the product rule is the heart of the <term>integrating factor method</term> and it raises an important question:
+	</p>
+
+	<p><em>How do we know what function to multiply by?</em> That's what we'll figure out in the next section.</p>
+
+	<identity label="analogy-summary">
+		<title>Completing the Square vs Completing the Product Rule</title>
+		<statement>
+			<p>
+				Here's how the two processes line up:
+				<tabular halign="center">
+					<col right="minor"/>
+					<col right="minor"/>
+					<row bottom="minor">
+						<cell/>
+						<cell>Completing the Square</cell>
+						<cell>Completing the Product Rule</cell>
+					</row>
+					<row><cell>Goal</cell> <cell>Solve for <m>x</m></cell> <cell>Solve for <m>y</m></cell></row>
+					<row><cell>Equation</cell> <cell><m>x^2 + 6x = -1</m></cell> <cell><m>\frac{dy}{dx} + 6y = -1</m></cell></row>
+					<row>
+						<cell>Missing Piece</cell>
+						<cell><m>9</m> (added)</cell>
+						<cell><m>e^{6x}</m> (multiplied)</cell>
+					</row>
+					<row>
+						<cell>Completed Form</cell>
+						<cell><m>x^2 + 6x + 9 = 8</m></cell>
+						<cell><m>e^{6x} \frac{dy}{dx} + 6e^{6x} y = -e^{6x}</m></cell>
+					</row>
+					<row>
+						<cell>Grouped Form</cell>
+						<cell><m>(x + 3)^2 = 8</m></cell>
+						<cell><m>\frac{d}{dx} [e^{6x} y] = -e^{6x}</m></cell>
+					</row>
+					<row>
+						<cell>Solution Step</cell>
+						<cell>Take square root</cell>
+						<cell>Integrate</cell>
+					</row>
+				</tabular>
+			</p>
+		</statement>
+	</identity>
+
+	<exercise label="completing-prod-rule-cyu-1">
+		<title><e component="emoji">📖❓</e> Reading Questions</title>
+
+		<task label="completing-prod-rule-cyu-1-task-1">
+			<title><e component="emoji">📖❓</e>  Purpose of Adding <m>9</m></title>
+			<statement>
+				<p>
+					In the analogy, what role does the number <m>9</m> play in the quadratic equation?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							The missing piece that allows the quadratic expression to be rewritten as a perfect square.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The number 9 completes the square, making it factorable.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							The solution to the quadratic equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The number 9 is introduced to complete the square, not as a solution.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							The coefficient of the linear term.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The coefficient of the linear term in the quadratic equation is 6, not 9.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							A randomly chosen constant added to balance the equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The number 9 is carefully selected to form a perfect square trinomial.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="completing-prod-rule-cyu-1-task-2">
+			<title><e component="emoji">📖❓</e>  Purpose of Multiply <m>e^{6x}</m></title>
+			<statement>
+				<p>
+					Why do we multiply both sides of
+					<me>
+						\frac{dy}{dx} + 6y = -1
+					</me>
+					by <m>e^{6x}</m>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							To complete a product rule within this equation.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! Multiplying by <m>e^{6x}</m> allows us to rewrite the left-hand side as a perfect derivative.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To eliminate the derivative term entirely.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The goal is not to eliminate the derivative, but to structure the equation so it can be integrated directly.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							To make the right-hand side equal to zero.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The right-hand side is transformed, but it does not become zero.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It makes the equation linear.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The equation already linear. Moreover, multiplying by any function of <m>x</m> will not change the equation's linearity.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="completing-prod-rule-cyu-1-task-3">
+			<title><e component="emoji">📖❓</e> Recognizing an Incomplete Product Rule</title>
+			<statement>
+				<p>
+					Why do we say the differential equation
+					<me>
+						\frac{dy}{dx} + 6y = -1
+					</me>
+					contains an incomplete product rule?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>
+						<p>
+							It lacks a function needed to reverse a product rule.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The equation is missing an essential function that would allow it to be rewritten using the product rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							Because we haven't used the product rule yet.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The issue is not that the product rule hasn't been applied, but that the equation is not structured as a product rule.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It has a free term of <m>-1</m>.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. While the free term is <m>-1</m>, the issue is related to the structure of the left-hand side.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							It is not in standard form.
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The equation actually is in standard form.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+	
+		<task label="completing-prod-rule-cyu-1-task-4">
+			<title><e component="emoji">📖❓</e> Equivalent Equations</title>
+			<statement>
+				<p>
+					The differential equation,
+				</p>
+
+				<me>
+					\frac{dQ}{dz}\ln z + \frac{Q}{z} = \tan\left(z^2\right)
+				</me>
+
+				<p>
+					is equivalent to which of the following equations? <em>Hint: use the forward product rule in the answer choices.</em>
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<m>\quad\ds\frac{d}{dz} \left[ Q z \right] = \tan\left(z^2\right)</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<m>\quad\ds\frac{dQ}{dz} = \tan\left(z^2\right)</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<m>\quad\ds\frac{d}{dz} \left[ Q \ln z \right] = \tan\left(z^2\right)</m>
+					</statement>
+					<feedback>
+						<p>
+							Correct! Applying the product rule to the left side of the equation yields the original differential equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<m>\quad\ds\frac{d}{dz} \left[ \frac{Q}{z} \right] = \tan\left(z^2\right)</m>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This equation does not account for the logarithmic term in the original differential equation.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="completing-prod-rule-cyu-1-task-5">
+			<title><e component="emoji">📖❓</e> Goal of Completing the Product Rule</title>
+			<statement>
+				<p>
+					How does reversing the product rule help solve this equation?
+					<me>
+						\frac{dy}{dx} \cdot e^{5x^2} + 10x e^{5x^2} \cdot y = 3x
+					</me>.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>It groups terms on one side of the equation into a single derivative.</statement>
+					<feedback>Correct! The product rule combines terms on the left side of the equation into a single derivative.</feedback>
+				</choice>
+				<choice>
+					<statement>It computes the derivative of a product of two functions.</statement>
+					<feedback>Incorrect. In this situation, the product rule is not used to take a derivative of a product of two functions.</feedback>
+				</choice>
+				<choice>
+					<statement>It solves the differential equation directly.</statement>
+					<feedback>Incorrect. The product rule can help solve some differential equations, but it does not solve them alone.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>It allows it to be easily solved by direct integration.</statement>
+					<feedback>Correct! Recognizing a perfect derivative lets us solve the equation by integration.</feedback>
+				</choice>
+				<choice>
+					<statement>It converts a nonlinear equation into a linear one.</statement>
+					<feedback>Incorrect. The equation is already linear; reversing the product rule does not change its nature.</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="completing-prod-rule-cyu-1-task-6">
+			<title><e component="emoji">📖❓</e> Seeing the Pattern</title>
+			<statement>
+			
+				<p>
+					Given that you can multiply the equation 
+				</p>
+				
+				<me>
+					\frac{dy}{dx} + 6y = -1
+				</me>
+
+				<p>
+					by the function <m>e^{6x}</m> to transform it into
+				</p>
+
+				<me>
+					\frac{d}{dx}\left[e^{6x}y\right] = -e^{6x}
+				</me>
+
+				<p>
+					What function would you think to multiply onto the equation
+				</p>
+
+				<me>
+					\frac{dy}{dx} - 8y = 3x
+				</me>
+
+				<p>
+					to accomplish the same goal?
+				</p>
+				
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds e^{3x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds e^{8x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+					<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad\ds e^{-8x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							That's correct! Multiplying by <m>e^{8x}</m> will allow you to complete the product rule on the left side of the equation.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds \frac38 x</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. Review the example carefully.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+	</exercise>
+
+</section>

@@ -13,100 +13,76 @@
 <section label="if-integrating-factor">
 	<title>The Integrating Factor</title>	
 
-	<introduction>
+	<p>
+		In the last section, we explored how rewriting the left-hand side of a differential equation as a single derivative (i.e., <q>completing the product rule</q>) made it easier to solve. But here's the catch: most equations aren't initially set-up for this.
+	</p>
 
-		<p>
-			In the last section, we explored how rewriting the left-hand side of a differential equation as a single derivative (i.e., <q>completing the product rule</q>) made it easier to solve. But here's the catch: most equations aren't initially set-up for this.
-		</p>
-
-		<p>
-			For example, take the equation
-		</p>
-
+	<p>
+		For example, take the equation
 		<me>
 			\frac{dy}{dx} + 2y = 5.
 		</me>
+	</p>
 
-		<p>
-			As it is, it's not a complete product rule, but it can be if we multiply both sides by <m>e^{2x}</m>:
-		</p>
-
+	<p>
+		It's not a complete product rule, but it can be if we multiply both sides by <m>e^{2x}</m>:
 		<me>
 			e^{2x} \frac{dy}{dx} + 2e^{2x} y = 5e^{2x}
 		</me>.
+	</p>
 
-		<p>
-			Now, we can reverse product rule on the left, giving us
-		</p>
-
+	<p>
+		Now, we can reverse product rule on the left, giving us
 		<me>
 			\frac{d}{dx} \left[ e^{2x} y \right] = 5e^{2x}
 		</me>,
+		which is just one integration away from the solution. The function, <m>e^{2x}</m>, that we multiplied onto the equation is known as the <term>integrating factor</term>.
+	</p>
 
-		<p>
-			which is just one integration away from the solution. The function, <m>e^{2x}</m>, that we multiplied onto the equation is known as the <term>integrating factor</term>. And the natural question is:
-		</p>
+	<p>
+		<em>But, where did <m>e^{2x}</m> come from?</em> Can we always find such a function? How?
+	</p>
 
-		<p>
-			<em>Where did <m>e^{2x}</m> come from?</em> Can we always find such a function? How?
-		</p>
-
-		<p>
-			This section answers these questions and prepares you for next solution technique, the <term>integrating factor method</term>.
-		</p>
-	</introduction>
-
-	<subsection label="if-derivation-specific">
+	<paragraphs label="if-derivation-specific">
 		<title>Finding the Right Function to Multiply</title>
+
 		<p>
 			To figure out where <m>e^{2x}</m> came from, let's return to our example:
+			<me>
+				\frac{dy}{dx} + 2y = 5.
+			</me>
 		</p>
-
-		<me>
-			\frac{dy}{dx} + 2y = 5.
-		</me>
 
 		<p>
 			To complete the product rule, we need to multiply the equation by a function. We don't yet know what that function is, so let's call it <m>\mu(x)</m> and multiply both sides of the equation by it:
+			<me>
+				\mu(x)\ \frac{dy}{dx} + 2\mu(x)\ y = 5\mu(x)
+			</me>.
 		</p>
-
-		<me>
-			\mu(x)\,\frac{dy}{dx} + 2\mu(x)\,y = 5\mu(x).
-		</me>
 
 		<p>
 			If <m>\mu(x)</m> completes a product rule on the left, then if should match the form <m>fg'+f'g</m>. Setting the labels: <m>g = y</m>, so <m>g' = dy/dx</m>, and looking for functions <m>f</m> and <m>f'</m> that complete the pattern, we match as follows:
+			<me>
+				\underset{\Large f}{ \underset{\uparrow}{\ul{\mu(x)}}}\
+				\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}} +
+				\underset{\Large f^\prime}{ \underset{\uparrow}{\ul{2\mu(x)}}}\
+				\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
+			</me>.
 		</p>
-
-		<me>
-			\underset{\Large f}{ \underset{\uparrow}{\ul{\mu(x)}}}\
-			\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}} +
-			\underset{\Large f^\prime}{ \underset{\uparrow}{\ul{2\mu(x)}}}\
-			\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
-		</me>.
 
 		<p>
 			This suggests that
-		</p>
-
-		<me>
-			f = \mu(x) \quad\text{and}\quad f' = 2\mu(x)
-		</me>,
-
-		<p>
+			<me>
+				f = \mu(x) \quad\text{and}\quad f' = 2\mu(x)
+			</me>,
 			and taking the derivative of the first of these means we also have <m>f' = \mu'(x)</m>.
 		</p>
 
 		<p>
 			Setting the two versions of <m>f'</m> equal, an interesting equation emerges:
-		</p>
-
-		<men xml:id="if-condition-equation">
-			\mu'(x) = 2\mu(x)
-		</men>.
-
-		<p>
-			That's a differential equation. And since it's separable, we know exactly how to solve it:
+			<men xml:id="if-condition-equation">
+				\mu'(x) = 2\mu(x)
+			</men>.
 		</p>
 
 		<aside><title>📌 Note</title>
@@ -115,27 +91,27 @@
 			</p>
 		</aside>
 
-		<md>
-			
-			<mrow> \frac{1}{\mu} \frac{d\mu}{dx} = 2 \quad \Rightarrow \quad \int \frac{1}{\mu}\ d\mu \amp = \int 2\ dx </mrow>
-			<mrow> \ln|\mu| \amp = 2x + c_1 </mrow>
-			<mrow> \mu(x) \amp = ce^{2x} </mrow>
-		</md>.
+		<p>
+			That's a differential equation. And since it's separable, we know how to solve it:
+			<md>
+				
+				<mrow> \frac{1}{\mu} \frac{d\mu}{dx} = 2 \quad \Rightarrow \quad \int \frac{1}{\mu}\ d\mu \amp = \int 2\ dx </mrow>
+				<mrow> \ln|\mu| \amp = 2x + c_1 </mrow>
+				<mrow> \mu(x) \amp = ce^{2x} </mrow>
+			</md>.
+		</p>
 
 		<p>
 			When selecting an integrating factor, we are free to choose any nonzero value for <m>c</m>. However, we usually choose <m>c = 1</m> to keep things simple, so, our integrating factor is:
+			<me>\mu(x) = e^{2x}.</me>
 		</p>
-
-		<me>
-			\mu(x) = e^{2x}.
-		</me>
 
 		<p>
 			This is the function we were looking for. It completes the product rule, allowing us to write the left-hand side of the equation as a single derivative and solve by integration.
 		</p>
 
 		<exercise label="if-derivation-specific-rq-bundle">
-			<title></title>
+			<title>Reading Questions</title>
 
 			<task label="if-derivation-specific-chkpt-1">
 				<title><e component="emoji">📖❓</e>  Integrating Factor Dependence</title>
@@ -188,6 +164,7 @@
 					</choice>
 				</choices>
 			</task>
+
 			<task label="if-derivation-specific-chkpt-2">
 				<title><e component="emoji">📖❓</e>  Integrating Factor Equation</title>
 				<statement>
@@ -222,10 +199,12 @@
 					</choice>
 				</choices>
 			</task>
-		</exercise>
-	</subsection>
 
-	<subsection label="if-general-formula">
+		</exercise>
+
+	</paragraphs>
+
+	<paragraphs label="if-general-formula">
 		<title>A Formula for Any Equation</title>
 
 		<p>
@@ -238,85 +217,44 @@
 
 		<definition xml:id="if-standard-form">
 			<title>Standard Form (First-Order, Linear)</title>
+
 			<statement>
 				<p>
 					A differential equation is said to be in <term>standard form</term> if it can be written as:
-				</p>
-				<me>
-					\frac{dy}{dx} + P(x)\,y = Q(x),
-				</me>
-				<p>
+					<me>
+						\frac{dy}{dx} + P(x)\,y = Q(x),
+					</me>
 					where <m>P(x)</m> and <m>Q(x)</m> are known functions of the independent variable <m>x</m>, and <m>y</m> is the unknown function (dependent variable) we want to find.
 				</p>
-				<theorem xml:id="std-form-explained0"><title><em>Where does the Standard Form come from?</em></title>
-					<statement>
-						<p>
-							All first-order linear differential equations have a <m>y'</m>, <m>y</m>, and free term. Therefore, they can be written as
-							<me>
-								A(x)y' + B(x)y = C(x)
-							</me>.
-							Dividing both sides by the leading coefficient, <m>A(x)</m>, and renaming the <m>y</m> and constant coefficients as <m>P</m> and <m>Q</m>, gives the standard form
-							<me>
-								y' + \us{P(x)}{\ub{\frac{B(x)}{A(x)}}}y	= \us{Q(x)}{\ub{\frac{C(x)}{A(x)}}}	
-								\quad \implies \quad
-								y' + P(x)y	= Q(x)
-							</me>.
-						</p>
-					</statement>
-				</theorem>
 			</statement>
 		</definition>
-	
-		<p>
-			Our goal is to multiply both sides of a standard-form equation by a function <m>\mu(x)</m> so that the left-hand side becomes the derivative of a product.
-		</p>
+
+		<theorem xml:id="std-form-explained">
+			<title><em>Where does this standard form come from?</em></title>
+
+			<statement>
+				<p>
+					All first-order linear differential equations have a <m>y'</m>, <m>y</m>, and free term. Therefore, they can be written as
+					<me>
+						A(x)y' + B(x)y = C(x)
+					</me>.
+					Dividing both sides by the leading coefficient, <m>A(x)</m>, and renaming the <m>y</m> and constant coefficients as <m>P</m> and <m>Q</m>, gives the standard form
+					<me>
+						y' + \us{P(x)}{\ub{\frac{B(x)}{A(x)}}}y	= \us{Q(x)}{\ub{\frac{C(x)}{A(x)}}}	
+						\quad \implies \quad
+						y' + P(x)y	= Q(x)
+					</me>.
+				</p>
+			</statement>
+
+		</theorem>
 
 		<p>
-			Just like before, we assume that multiplying by <m>\mu(x)</m> gives us something that matches the product rule. So we try:
+			Multiplying both sides of the general standard form by a function <m>\mu</m> leads us to the following formula for the integrating factor: 
 		</p>
 
-		<me>
-			\mu(x)\,\frac{dy}{dx} + \mu(x)\,P(x)\,y = \mu(x)\,Q(x).
-		</me>
-
-		<p>
-			For the left-hand side to be a product rule, we need it to match: <m>fg'+f'g</m>.
-		</p>
-
-		<p>
-			As before, we set <m>g = y</m> and <m>g' = dy/dx</m>. Then the rest of the labels follow:
-		</p>
-
-		<me>
-			\underset{\Large f}{ \underset{\uparrow}{\ul{\mu(x)}}}\
-			\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}} +
-			\underset{\Large f^\prime}{ \underset{\uparrow}{\ul{\mu(x)\,P(x)}}}\
-			\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
-		</me>
-
-		<p>
-			Since <m>f = \mu(x)</m>, we also know <m>f' = \mu'(x)</m>. Setting these equal gives the condition:
-		</p>
-
-		<men xml:id="if-sov-eqn">
-			\mu'(x) = P(x)\,\mu(x)
-		</men>
-
-		<p>
-			This is exactly the same kind of differential equation we solved earlier, just with a general function <m>P(x)</m> instead of a constant. It's still separable, and solving it gives us the general formula for the integrating factor:
-		</p>
-
-		<md>
-			<mrow> \frac{1}{\mu} \frac{d\mu}{dx} = P(x) \quad \Rightarrow \quad \int \frac{1}{\mu} \, d\mu \amp = \int P(x) \, dx </mrow>
-			<mrow> \ln|\mu| \amp = \int P(x)\, dx + C </mrow>
-			<mrow> \mu(x) \amp = ce^{\int P(x)\, dx} </mrow>
-		</md>
-
-		<p>
-			Just like before, any nonzero constant <m>c</m> works, but we typically choose <m>c = 1</m> to simplify our computations. This gives us a general formula for the integrating factor:
-		</p>
-
-		<assemblage xml:id="integrating-factor-general-formula"><title>✳️ Integrating Factor: General Formula</title>
+		<assemblage xml:id="integrating-factor-general-formula">
+			<title>✳️ Integrating Factor: General Formula</title>
 			<p>
 				For a first-order linear equation written in standard form
 				<me>
@@ -328,44 +266,92 @@
 				</m>.
 			</p>
 		</assemblage>
-	</subsection>
 
-	<subsection label="if-formula-examples">
+		<theorem xml:id="int-factor-explained">
+			<title><em>Derivation of the General Integrating Factor</em></title>
+
+			<statement>
+
+				<p>
+					Our goal is to multiply both sides of a standard-form equation by a function <m>\mu(x)</m> so that the left-hand side becomes the derivative of a product.
+				</p>
+
+				<p>
+					Just like before, we assume that multiplying by <m>\mu(x)</m> gives us something that matches the product rule. So we try:
+				</p>
+
+				<me>
+					\mu(x)\,\frac{dy}{dx} + \mu(x)\,P(x)\,y = \mu(x)\,Q(x).
+				</me>
+
+				<p>
+					For the left-hand side to be a product rule, we need it to match: <m>fg'+f'g</m>.
+				</p>
+
+				<p>
+					As before, we set <m>g = y</m> and <m>g' = dy/dx</m>. Then the rest of the labels follow:
+				</p>
+
+				<me>
+					\underset{\Large f}{ \underset{\uparrow}{\ul{\mu(x)}}}\
+					\underset{\Large g'}{ \underset{\uparrow}{\ul{\vphantom{|}\frac{dy}{dx}}}} +
+					\underset{\Large f^\prime}{ \underset{\uparrow}{\ul{\mu(x)\,P(x)}}}\
+					\underset{\Large g}{ \underset{\uparrow}{\ul{\vphantom{|}y}}}
+				</me>
+
+				<p>
+					Since <m>f = \mu(x)</m>, we also know <m>f' = \mu'(x)</m>. Setting these equal gives the condition:
+				</p>
+
+				<men xml:id="if-sov-eqn">
+					\mu'(x) = P(x)\,\mu(x)
+				</men>
+
+				<p>
+					This is exactly the same kind of differential equation we solved earlier, just with a general function <m>P(x)</m> instead of a constant. It's still separable, and solving it gives us the general formula for the integrating factor:
+				</p>
+
+				<md>
+					<mrow> \frac{1}{\mu} \frac{d\mu}{dx} = P(x) \quad \Rightarrow \quad \int \frac{1}{\mu} \, d\mu \amp = \int P(x) \, dx </mrow>
+					<mrow> \ln|\mu| \amp = \int P(x)\, dx + C </mrow>
+					<mrow> \mu(x) \amp = ce^{\int P(x)\, dx} </mrow>
+				</md>
+
+				<p>
+					Just like before, any nonzero constant <m>c</m> works, but we typically choose <m>c = 1</m> to simplify our computations. This gives us a general formula for the integrating factor:
+				</p>
+
+			</statement>
+			
+		</theorem>
+
+	</paragraphs>
+
+	<paragraphs label="if-formula-examples">
 		<title>Try Out the Formula</title>
 
 		<p>
 			With the integrating formula in hand, let's practice finding a few with some examples. Remember, the formula assumes the equation is in <xref ref="if-standard-form" text="custom">standard form</xref>. Once in this form, it is easy to identify <m>P(x)</m> as the coefficient of <m>y</m> and apply it to the formula.
 		</p>
 
+		<p>
+			Find the integrating factor for the following differential equations:
+		</p>
+
 		<example>
-			<title>Constant Coefficient</title>
-			<statement>
-				<p>
-				Find the integrating factor for
-				</p>
-				<me>
-				\frac{dy}{dx} + 4y = x.
-				</me>
-			</statement>
+			<statement><p><m>\quad\dfrac{dy}{dx} + 4y = x</m></p></statement>
 			<solution>
 				<p>
 					The equation is in standard form and the coefficient of <m>y</m> is <m>4</m>, so <m>P(x) = 4</m> and the integrating factor is:
+					<me>
+						\mu(x) = e^{\large\int 4\ dx} = e^{4x}.
+					</me>
 				</p>
-				<me>
-					\mu(x) = e^{\large\int 4\ dx} = e^{4x}.
-				</me>
 			</solution>
 		</example>
 
 		<example>
-			<title>Logarithmic Result</title>
-			<statement>
-				<p>
-					Find the integrating factor for
-					<me>
-						x\frac{dy}{dx} + 2y = x^4, \quad x > 0
-					</me>.
-				</p>
+			<statement><p><m>x\dfrac{dy}{dx} + 2y = x^4, \quad x &gt; 0</m></p>
 			</statement>
 			<solution>
 				<p>
@@ -377,23 +363,15 @@
 
 				<p>
 					Now, we can easily see that <m>P(x) = 2/x</m>. Plugging this into the formula:
+					<me>
+						\mu(x) = e^{\large\int \frac{2}{x}\ dx} = e^{2\ln |x|} = e^{\ln x^2} = x^2.
+					</me>
 				</p>
-				<me>
-					\mu(x) = e^{\large\int \frac{2}{x}\ dx} = e^{2\ln |x|} = e^{\ln x^2} = x^2.
-				</me>
 			</solution>
 		</example>
 
 		<example>
-			<title>Non-Standard Form</title>
-			<statement>
-				<p>
-					Find the integrating factor for
-				<me>
-					z^2\,\frac{dR}{dz} = \ln z - (1 - 3z)R, \quad z > 0
-				</me>.
-				</p>
-			</statement>
+			<statement><p><m>z^2\ \frac{dR}{dz} = \ln z - (1 - 3z)R,\quad z &gt; 0</m></p></statement>
 			<solution>
 				<p>
 					The variables in this equation are <m>z</m> and <m>R</m>, so the formula adjusts accordingly:
@@ -401,384 +379,372 @@
 						\mu(z) = e^{\large\int P(z)\, dz}
 					</me>.
 				</p>
+
 				<p>
 					Also, this equation is not in standard form, so move the <m>R</m> term to the left:
+					<me>
+						z^2\,\frac{dR}{dz} + (1 - 3z)R = \ln z
+					</me>.
 				</p>
-				<me>
-					z^2\,\frac{dR}{dz} + (1 - 3z)R = \ln z
-				</me>.
+
 				<p>
 					Then divide through by <m>z^2</m> and note <m>P(z)</m> as the coefficient of <m>R</m>:
+					<me>
+						\frac{dR}{dz} + \os{\large P(z)}{\boxed{\left(\frac{1 - 3z}{z^2}\right)}}\ R = \frac{\ln z}{z^2}
+					</me>
 				</p>
-				<me>
-					\frac{dR}{dz} + \os{\large P(z)}{\boxed{\left(\frac{1 - 3z}{z^2}\right)}}\ R = \frac{\ln z}{z^2}
-				</me>
+
 				<p>
 					Using <m>P(z)</m>, calculate the integral of <m>P(z)</m> used in the formula:
+					<me>
+						\int P(z)\ dz = \int \frac{1 - 3z}{z^2}\ dz
+					</me>
 				</p>
-				<me>
-					\int P(z)\ dz = \int \frac{1 - 3z}{z^2}\ dz
-				</me>
+
 				<p>
 					To integrate this, we can split the fraction and integrate each term:
+					<md>
+						<mrow> \int \left( \frac{1}{z^2} - \frac{3}{z} \right) dz = -\frac{1}{z} - 3\ln|z|, \quad z > 0 </mrow>
+					</md>
 				</p>
+
 				<aside><title>📌 Note</title>
 					<p>
 						Remember, constants of integration are omitted for integrating factors.
 					</p>
 				</aside>
-				<md>
-					<mrow> \int \left( \frac{1}{z^2} - \frac{3}{z} \right) dz = -\frac{1}{z} - 3\ln|z|, \quad z > 0 </mrow>
-				</md>
+
 				<p>
 					Thus, the integrating factor is simplified and given as follows:
+					<me>
+						\mu(z) = e^{-\sfrac{1}{z} - 3\ln z} = e^{-\sfrac{1}{z}} \cdot e^{-3\ln z} = e^{-\sfrac{1}{z}} z^{-3}.
+					</me>
 				</p>
-				<me>
-					\mu(z) = e^{-\sfrac{1}{z} - 3\ln z} = e^{-\sfrac{1}{z}} \cdot e^{-3\ln z} = e^{-\sfrac{1}{z}} z^{-3}.
-				</me>
 			</solution>
 		</example>
-	</subsection>
 
-	<!-- ================================================================ -->
-	<!-- WRAP-UP + READING QUESTIONS                                      -->
-	<!-- ================================================================ -->
-	<subsection label="if-integrating-factor-wrap-up">
-		<title>📤 Wrap-Up</title>
+	</paragraphs>
 
-		<assemblage label="if-integrating-factor-wrap-up-takeaways">
-			<p>
-				🗝️ <m>\textbf{Key Takeaways...}</m>
+	<exercise label="if-integrating-factor-cyu-bundle">
+		<title><e component="emoji">📖❓</e> Reading Questions</title>
+
+		<task label="if-integrating-factor-cyu-1">
+			<title>Integrating Factor Dependence</title>
+			<statement>
+				<p>
+					Suppose you want to compute integrating factor for the differential equation
+					<me>
+						-4\frac{dy}{dx} + 6xy = 15.5
+					</me>.
+					After rewriting it in standard form, which parts of the equation does the integrating factor depend on?
+				</p>
+			</statement>
+			<choices randomize="yes" multiple-correct="yes">
+				<choice correct="yes">
+					<statement><m>\quad 6x</m></statement>
+					<feedback>
+						<p>
+							Correct! The integrating factor depends on the coefficient of <m>y</m>, which is <m>6x</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\quad -4</m></statement>
+					<feedback>
+						<p>
+							Correct! To put the equation in standard form, we divide by <m>-4</m>, so the integrating factor will depend on this coefficient.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\quad 15.5</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The integrating factor does not depend on the free term.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement><m>\quad y</m></statement>
+					<feedback>
+						<p>
+							Incorrect. The integrating factor does not depend on <m>y</m>, but it does depend on the coefficient of <m>y</m>.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="if-integrating-factor-cyu-2">
+			<title>Give the Integrating Factor</title>
+			<statement>
+				<p>
+					What is the integrating factor for the equation
+					<me>
+						y' + 3y = e^x
+					</me>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\mu(x) = e^{e^{3x}}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This is not the correct expression for the integrating factor.
+						</p>
+					</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement>
+						<p>
+							<m>\quad\mu(x) = e^{3x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Correct! The integrating factor is <m>e^{3x}</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\mu(x) = e^{x^2/2}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. The correct integrating factor should involve the integral of the coefficient of <m>y</m>, which is <m>3</m>, not <m>x</m>.
+						</p>
+					</feedback>
+				</choice>
+				<choice>
+					<statement>
+						<p>
+							<m>\quad\ds\mu(x) = e^{x}</m>
+						</p>
+					</statement>
+					<feedback>
+						<p>
+							Incorrect. This is not the correct form for the integrating factor.
+						</p>
+					</feedback>
+				</choice>
+			</choices>
+		</task>
+
+		<task label="if-integrating-factor-cyu-3">
+			<title>Find the Integrating Factor (WebWorK Here For Mathquill?)</title>
+			<statement>
+				<p>
+					The integrating factor for the equation
+				</p>
+
+				<p>
+					<me>
+						\frac{dy}{dx} + 3x^2y = \cos x
+					</me>
+				</p>
+
+				<p>
+					is given by the function <m>\quad\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
+				</p>
+			</statement>
+			<setup>
+				<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^3)	</de-expression></de-object>
+			</setup>
+			<evaluation>
+				<evaluate name="mu_field">
+					<test correct="yes">
+						<mathcmp obj="mu" />
+						<feedback>
+							<p>
+								Correct! For this equation, <m>P(x) = 3x^2</m>, therefore the integrating factor is
+								<me>
+									\mu(x) = e^{\large\int 3x^2 dx} = e^{x^3}
+								</me>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+			</evaluation>
+		</task>
+
+		<task label="if-integrating-factor-cyu-4">
+			<title>Fill-In the Integrating Factor 1 (WebWorK Here For Mathquill?)</title>
+			<statement>
+				<p>
+					Rewrite the differential equation
+				</p>
+
+				<p>
+					<me>
+						-x y' = y + 2x + 1
+					</me>
+				</p>
+
+				<p>
+					in the standard first-order linear form
+					<me>
+						y' + P(x)y = Q(x)
+					</me>
+					and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
+				</p>
+
 				<ul marker="square">
-					<li>The integrating factor <m>\mu(x)</m> is the function we multiply onto the entire equation to complete the product rule.</li>
-					<li>For an equation in standard form, <m>\ y' + P(x)y = Q(x)\ </m>, a valid integrating factor, <m>\mu(x)</m>, can be found by solving the separable differential equation: <me>\mu'(x) = P(x)\mu(x)</me>.</li>
-					<li>Solving gives the general formula: <me>\mu(x) = e^{\int P(x)\, dx}</me>.</li>
+					<li>
+						<p>
+							<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
+						</p>
+					</li>
 				</ul>
-			</p>
-		</assemblage>
-		<paragraphs label="if-integrating-factor-cyu">
-			<title>Check Your Understanding</title>
 
-			<exercise label="if-integrating-factor-cyu-bundle">
-				<title><e component="emoji">🤔💭</e> Reading Questions</title>
+			</statement>
+			<setup>
+				<de-object name="P" context="formula"><de-expression reduce="yes">	1/x	</de-expression></de-object>
+				<de-object name="Q" context="formula"><de-expression reduce="yes">	2+1/x	</de-expression></de-object>
+				<de-object name="mu" context="formula"><de-expression reduce="yes">	x	</de-expression></de-object>
+			</setup>
+			<evaluation>
+				<evaluate name="P_field">
+					<test correct="yes">
+						<mathcmp obj="P" />
+						<feedback>
+							<p>
+								Correct! The equation is rearranged as
+								<me>
+									y' + \frac{1}{x}y = 2 + \frac{1}{x}
+								</me>
+								showing that <m>P(x) = \frac{1}{x}</m>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+				<evaluate name="Q_field">
+					<test correct="yes">
+						<mathcmp obj="Q" />
+						<feedback>
+							<p>
+								Correct! <m>Q(x) = 2 + \frac{1}{x}</m>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+				<evaluate name="mu_field">
+					<test correct="yes">
+						<mathcmp obj="mu" />
+						<feedback>
+							<p>
+								Correct! The integrating factor is
+								<me>
+									\mu(x) = e^{\large\int \frac{1}{x} dx} = e^{\ln x} = x
+								</me>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+			</evaluation>
+		</task>
 
-				<task label="if-integrating-factor-cyu-1">
-					<title>Integrating Factor Dependence</title>
-					<statement>
+		<task label="if-integrating-factor-cyu-5">
+			<title>Fill-In the Integrating Factor 2 (WebWorK Here For Mathquill?)</title>
+			<statement>
+				<p>
+					Rewrite the differential equation
+				</p>
+
+				<p>
+					<me>
+						2y' = 4 - 4xy
+					</me>
+				</p>
+
+				<p>
+					in the standard first-order linear form
+					<me>
+						y' + P(x)y = Q(x)
+					</me>
+					and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
+				</p>
+
+				<ul marker="square">
+					<li>
 						<p>
-							Suppose you want to compute integrating factor for the differential equation
-							<me>
-								-4\frac{dy}{dx} + 6xy = 15.5
-							</me>.
-							After rewriting it in standard form, which parts of the equation does the integrating factor depend on?
+							<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
 						</p>
-					</statement>
-					<choices randomize="yes" multiple-correct="yes">
-						<choice correct="yes">
-							<statement><m>\quad 6x</m></statement>
-							<feedback>
-								<p>
-									Correct! The integrating factor depends on the coefficient of <m>y</m>, which is <m>6x</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement><m>\quad -4</m></statement>
-							<feedback>
-								<p>
-									Correct! To put the equation in standard form, we divide by <m>-4</m>, so the integrating factor will depend on this coefficient.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>\quad 15.5</m></statement>
-							<feedback>
-								<p>
-									Incorrect. The integrating factor does not depend on the free term.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement><m>\quad y</m></statement>
-							<feedback>
-								<p>
-									Incorrect. The integrating factor does not depend on <m>y</m>, but it does depend on the coefficient of <m>y</m>.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-
-				<task label="if-integrating-factor-cyu-2">
-					<title>Give the Integrating Factor</title>
-					<statement>
+					</li>
+					<li>
 						<p>
-							What is the integrating factor for the equation
-							<me>
-								y' + 3y = e^x
-							</me>?
+							<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
 						</p>
-					</statement>
-					<choices randomize="yes">
-						<choice>
-							<statement>
-								<p>
-									<m>\quad\ds\mu(x) = e^{e^{3x}}</m>
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This is not the correct expression for the integrating factor.
-								</p>
-							</feedback>
-						</choice>
-						<choice correct="yes">
-							<statement>
-								<p>
-									<m>\quad\mu(x) = e^{3x}</m>
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Correct! The integrating factor is <m>e^{3x}</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<p>
-									<m>\quad\ds\mu(x) = e^{x^2/2}</m>
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. The correct integrating factor should involve the integral of the coefficient of <m>y</m>, which is <m>3</m>, not <m>x</m>.
-								</p>
-							</feedback>
-						</choice>
-						<choice>
-							<statement>
-								<p>
-									<m>\quad\ds\mu(x) = e^{x}</m>
-								</p>
-							</statement>
-							<feedback>
-								<p>
-									Incorrect. This is not the correct form for the integrating factor.
-								</p>
-							</feedback>
-						</choice>
-					</choices>
-				</task>
-
-				<task label="if-integrating-factor-cyu-3">
-					<title>Find the Integrating Factor (WebWorK Here For Mathquill?)</title>
-					<statement>
+					</li>
+					<li>
 						<p>
-							The integrating factor for the equation
+							<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
 						</p>
+					</li>
+				</ul>
+			</statement>
+			<setup>
+				<de-object name="P" context="formula"><de-expression reduce="yes">	2*x	</de-expression></de-object>
+				<de-object name="Q" context="formula"><de-expression reduce="yes">	2	</de-expression></de-object>
+				<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^2)	</de-expression></de-object>
+			</setup>
+			<evaluation>
+				<evaluate name="P_field">
+					<test correct="yes">
+						<mathcmp obj="P" />
+						<feedback>
+							<p>
+								Correct! The equation is rearranged as
+								<me>
+									y' + 2xy = 2
+								</me>
+								showing that <m>P(x) = 2x</m>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+				<evaluate name="Q_field">
+					<test correct="yes">
+						<mathcmp obj="Q" />
+						<feedback>
+							<p>
+								Incorrect. Double-check your algebra when rearranging the equation.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+				<evaluate name="mu_field">
+					<test correct="yes">
+						<mathcmp obj="mu" />
+						<feedback>
+							<p>
+								Correct! The integrating factor is
+								<me>
+									\mu(x) = e^{\large\int 2x dx} = e^{x^2}
+								</me>.
+							</p>
+						</feedback>
+					</test>
+				</evaluate>
+			</evaluation>
+		</task>
 
-						<p>
-							<me>
-								\frac{dy}{dx} + 3x^2y = \cos x
-							</me>
-						</p>
+	</exercise>
 
-						<p>
-							is given by the function <m>\quad\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-						</p>
-					</statement>
-					<setup>
-						<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^3)	</de-expression></de-object>
-					</setup>
-					<evaluation>
-						<evaluate name="mu_field">
-							<test correct="yes">
-								<mathcmp obj="mu" />
-								<feedback>
-									<p>
-										Correct! For this equation, <m>P(x) = 3x^2</m>, therefore the integrating factor is
-										<me>
-											\mu(x) = e^{\large\int 3x^2 dx} = e^{x^3}
-										</me>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-					</evaluation>
-				</task>
-
-				<task label="if-integrating-factor-cyu-4">
-					<title>Fill-In the Integrating Factor 1 (WebWorK Here For Mathquill?)</title>
-					<statement>
-						<p>
-							Rewrite the differential equation
-						</p>
-
-						<p>
-							<me>
-								-x y' = y + 2x + 1
-							</me>
-						</p>
-
-						<p>
-							in the standard first-order linear form
-							<me>
-								y' + P(x)y = Q(x)
-							</me>
-							and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
-						</p>
-
-						<ul marker="square">
-							<li>
-								<p>
-									<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-								</p>
-							</li>
-						</ul>
-
-					</statement>
-					<setup>
-						<de-object name="P" context="formula"><de-expression reduce="yes">	1/x	</de-expression></de-object>
-						<de-object name="Q" context="formula"><de-expression reduce="yes">	2+1/x	</de-expression></de-object>
-						<de-object name="mu" context="formula"><de-expression reduce="yes">	x	</de-expression></de-object>
-					</setup>
-					<evaluation>
-						<evaluate name="P_field">
-							<test correct="yes">
-								<mathcmp obj="P" />
-								<feedback>
-									<p>
-										Correct! The equation is rearranged as
-										<me>
-											y' + \frac{1}{x}y = 2 + \frac{1}{x}
-										</me>
-										showing that <m>P(x) = \frac{1}{x}</m>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-						<evaluate name="Q_field">
-							<test correct="yes">
-								<mathcmp obj="Q" />
-								<feedback>
-									<p>
-										Correct! <m>Q(x) = 2 + \frac{1}{x}</m>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-						<evaluate name="mu_field">
-							<test correct="yes">
-								<mathcmp obj="mu" />
-								<feedback>
-									<p>
-										Correct! The integrating factor is
-										<me>
-											\mu(x) = e^{\large\int \frac{1}{x} dx} = e^{\ln x} = x
-										</me>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-					</evaluation>
-				</task>
-
-				<task label="if-integrating-factor-cyu-5">
-					<title>Fill-In the Integrating Factor 2 (WebWorK Here For Mathquill?)</title>
-					<statement>
-						<p>
-							Rewrite the differential equation
-						</p>
-
-						<p>
-							<me>
-								2y' = 4 - 4xy
-							</me>
-						</p>
-
-						<p>
-							in the standard first-order linear form
-							<me>
-								y' + P(x)y = Q(x)
-							</me>
-							and identify <m>P(x)</m>, <m>Q(x)</m> and the integrating factor, <m>\mu(x)</m>.
-						</p>
-
-						<ul marker="square">
-							<li>
-								<p>
-									<m>P(x) = </m> <fillin name="P_field" mode="math" ansobj="P" />
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>Q(x) = </m> <fillin name="Q_field" mode="math" ansobj="Q" />
-								</p>
-							</li>
-							<li>
-								<p>
-									<m>\mu(x) = </m> <fillin name="mu_field" mode="math" ansobj="mu" />
-								</p>
-							</li>
-						</ul>
-					</statement>
-					<setup>
-						<de-object name="P" context="formula"><de-expression reduce="yes">	2*x	</de-expression></de-object>
-						<de-object name="Q" context="formula"><de-expression reduce="yes">	2	</de-expression></de-object>
-						<de-object name="mu" context="formula"><de-expression reduce="yes">	e^(x^2)	</de-expression></de-object>
-					</setup>
-					<evaluation>
-						<evaluate name="P_field">
-							<test correct="yes">
-								<mathcmp obj="P" />
-								<feedback>
-									<p>
-										Correct! The equation is rearranged as
-										<me>
-											y' + 2xy = 2
-										</me>
-										showing that <m>P(x) = 2x</m>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-						<evaluate name="Q_field">
-							<test correct="yes">
-								<mathcmp obj="Q" />
-								<feedback>
-									<p>
-										Incorrect. Double-check your algebra when rearranging the equation.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-						<evaluate name="mu_field">
-							<test correct="yes">
-								<mathcmp obj="mu" />
-								<feedback>
-									<p>
-										Correct! The integrating factor is
-										<me>
-											\mu(x) = e^{\large\int 2x dx} = e^{x^2}
-										</me>.
-									</p>
-								</feedback>
-							</test>
-						</evaluate>
-					</evaluation>
-				</task>
-			</exercise>
-		</paragraphs>
-	</subsection>
 </section>
