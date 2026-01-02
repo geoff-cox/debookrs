@@ -533,7 +533,7 @@
 			<!-- <xi:include href="c10-lt/sec-lt-definition.ptx" /> -->
 			<!-- <xi:include href="c10-lt/sec-common-transforms.ptx" /> -->
 			<!-- <xi:include href="c10-lt/sec-lt-properties.ptx" /> -->
-			<!-- <xi:include href="c10-lt/sec-lt-library.ptx" /> -->
+			<xi:include href="c10-lt/sec-lt-library.ptx" />
 			<!-- <xi:include href="c10-lt/exercises-lt.ptx" /> -->
 
 			<objectives label="laplace-transforms-takeaways">
@@ -596,28 +596,33 @@
 
 			<objectives label="laplace-transform-method-takeaways">
 				<ul marker="square">
-					<li>The Laplace transform method begins by converting a differential equation into an algebraic equation in the Laplace domain.</li>
-					<li>Applying a Laplace transform to a differential equation means applying it to both sides, then term by term, using linearity.</li>
-					<li>Derivatives of <m>y(t)</m> become powers of <m>s</m> multiplied by <m>Y(s)</m>, along with terms involving initial conditions.</li>
-					<li>The right-hand side of the equation is transformed using the known transforms from the -COMMENTED-
-						<!-- <xref ref="lt-table-common" text="custom">table of common Laplace transforms</xref>. -->
+					<li>The three-step Laplace roadmap never changes and most of the variety comes from the algebra you need in the Laplace domain.
+							<tabular halign="center">
+								<row>
+									<cell bottom="minor"><m>t</m>-domain</cell><cell><m>\laplacesym</m></cell><cell bottom="minor">Laplace-domain</cell>
+								</row>
+								<row>
+									<cell>differential equation in <m>y(t)</m></cell><cell>⟶</cell><cell>Converted equation in <m>Y(s)</m></cell>
+								</row>
+								<row>
+									<cell></cell><cell></cell><cell>￬ (<em>isolate</em>)</cell>
+								</row>
+								<row>
+									<cell></cell><cell></cell><cell><m>Y(s) =</m> messy</cell>
+								</row>
+								<row>
+									<cell></cell><cell><m>\laplacesym^{-1}</m></cell><cell>￬ (<em>prepare</em>)</cell>
+								</row>
+								<row>
+									<cell>Solution for <m>y(t) =\ ...</m></cell><cell>←</cell><cell><m>Y(s) =</m> prepared</cell>
+								</row>
+							</tabular>
 					</li>
-					<li>Once in the Laplace domain, the function <m>y(t)</m> is stored inside <m>Y(s)</m>, setting the stage for solving algebraically.</li>
-					<li>
-						The three-step Laplace roadmap never changes; the variety comes from the algebra you need in Step 2.
+					<li>The differential equation in the <m>t</m>-domain is transformed using the <xref ref="lt-table-common" text="custom">table of common Laplace transforms</xref>.
 					</li>
-					<li>
-						Forward transform ⟶ algebra-only world ⟶ isolate <m>Y(s)</m> ⟶ prepare ⟶ inverse transform.
-					</li>
-					<li>The inverse Laplace transform <m>\ilap{\phantom{f}}</m> recovers the solution to the differential equation you are trying to solve. <m>y(t)</m>.</li>
-					<li>Once the terms of <m>Y(s)</m> match the forms in the transform table, the inverse is the function of <m>t</m> in the same row.</li>
-					<li>If <m>Y(s)</m> is a sum of terms, use linearity to invert each part separately.</li>
-					<li>If <m>Y(s)</m> is close but doesn't match a table entry, try splitting the numerator, factoring constants, or completing the square.</li>
+					<li>Once transformed, solve for <m>Y(s)</m> and prepare it for the inverse transform with techniques such as partial fraction decomposition and completing the square.</li>
+					<li>Once <m>Y(s)</m> is ready, apply the inverse by matching its terms to the middle column of the <xref ref="lt-table-common" text="custom">transforms table</xref>.</li>
 					<li>Always look at the denominator when matching forms in the table, they provide the best way to identify the correct form to match.</li>
-					<li>Once you have a Laplace-domain equation, your goal is to isolate <m>Y(s)</m>.</li>
-					<li>After solving for <m>Y(s)</m>, you need to rewrite it in a form that matches known inverse transforms.</li>
-					<li>Partial fraction decomposition helps split complicated rational expressions into easier pieces.</li>
-					<li>Quadratic terms in the denominator often require completing the square.</li>
 				</ul>
 			</objectives>
 
@@ -650,36 +655,61 @@
 
 			<objectives label="piecewise-forcing-functions-takeaways">
 				<ul marker="square">
-					<li>When there is a piecewise forcing term, always start the Laplace method process by rewriting it using step functions.</li>
-					<li>Use the same three Laplace steps you already know: forward transform, solve for <m>Y(s)</m>, and invert.</li>
-					<li>Look for and combine exponential factors like <m>e^{-cs}</m> in <m>Y(s)</m>; they signal pieces that will map back to <m>u_c(t)</m> terms in <m>y(t)</m>.</li>
-					<li>Step functions are mathematical ON/OFF switches that let you control which piece is active.</li>
-					<li>By multiplying each piece by the right step expression, you can combine them into one neat formula.</li>
-					<li>Rewrite piecewise functions in step form before doing anything else — this unifies the cases into one formula.</li>
-					<li>Combine like step terms to minimize how many Laplace transforms you have to compute.</li>
-					<li>Apply -COMMENTED-
-						<!-- <xref ref="lt-L9" text="custom">L<sub>9</sub></xref>, <xref ref="lt-L10" text="custom">L<sub>10</sub></xref>, and <xref ref="lt-L11" text="custom">L<sub>11</sub></xref> term by term, using the linearity property. -->
+					<li>Step functions are mathematical ON/OFF switches that lets you control when a function is active.</li>
+					<li><p>The unit step function <m>u(t)</m> is given by
+							<me>
+								u(t) =
+									\left\{
+									\begin{array}{ll}
+										1, \amp t \ge 0 \\
+										0, \amp t \lt 0
+									\end{array}
+									\right.
+							</me>
+							jumps from <m>0</m> to <m>1</m> at <m>t=0</m>. We say it activates at <m>t=0</m>.
+							</p>
 					</li>
-					<li>The unit step function <m>u(t)</m> jumps from <m>0</m> to <m>1</m> at <m>t=0</m>.</li>
-					<li>Multiplying by <m>u(t)</m> <q>turns off</q> a function before <m>t=0</m> and <q>turns it on</q> after.</li>
-					<li>
-						<p>
-							Multiplying by <m>u_c(t)</m> activates a function only for <m>t \ge c</m>: 
+					<li>To active a function at <m>t=0</m>, multiply it by <m>u(t)</m>.</li>
+					<li><p>You can change the activation point by shifting <m>u(t)</m> horizontally:
+							<me>
+								u_c(t) = u(t-c) =
+									\left\{
+									\begin{array}{ll}
+										0, \amp t \lt c \\
+										1, \amp t \ge c
+									\end{array}
+									\right.
+							</me>
+							</p>
+					</li>
+					<li><p>Multiplying by <m>u_c(t)</m> activates a function at <m>t = c</m>: 
 							<me>f(t)\,u_c(t) = \begin{cases}0,&amp; t \lt c\\ f(t),&amp; t \ge c\end{cases}</me>.
-						</p>
+							</p>
 					</li>
-					<li>
-						<p>
-							<m>1 - u_c(t)</m> turns a function OFF at <m>t=c</m>:
-							<me>f(t)\,(1 - u_c(t)) = \begin{cases}f(t),&amp; t \lt c\\ 0,&amp; t \ge c\end{cases}</me>.
-						</p>
+					<li><p>By default, <m>u_c(t)</m> is an OFF-ON switch, but you can turn it into an ON-OFF switch with:
+							<me>
+								1-u_c(t) =
+									\left\{
+									\begin{array}{ll}
+										1, \amp t \lt c \\
+										0, \amp t \ge c
+									\end{array}
+									\right.
+							</me>
+							</p>
 					</li>
-					<li>
-						<p>
-							To keep a function ON only on a window, multiply:
-							<me>f(t)\,(u_c(t) - u_d(t)) = \begin{cases}f(t),&amp; c \le t \lt d\\ 0,&amp; \text{otherwise}\end{cases}</me>.
-						</p>
+					<li><p>So multiplying by <m>1-u_c(t)</m> deactivates an active function at <m>t = c</m>:
+								<me>f(t)\,(1 - u_c(t)) = \begin{cases}f(t),&amp; t \lt c\\ 0,&amp; t \ge c\end{cases}</me>.
+							</p>
 					</li>
+					<li><p>To activate a function ON only on a window, multiply:
+								<me>f(t)\,(u_c(t) - u_d(t)) = \begin{cases}f(t),&amp; c \le t \lt d\\ 0,&amp; \text{otherwise}\end{cases}</me>.
+							</p>
+					</li>
+					<li>When a differential equation has a piecewise forcing term, start the Laplace method process by rewriting it using step functions.</li>
+					<li>Combine like step terms to minimize how many Laplace transforms you have to compute.</li>
+					<li>After rewriting the forcing function, apply the same three Laplace steps you already know: forward transform, solve for <m>Y(s)</m>, and invert.</li>
+
 				</ul>
 			</objectives>
 
@@ -777,6 +807,6 @@
 
 		</chapter>
 
-		<!-- <xi:include href="aa-bookends/back-matter.ptx" /> -->
+		<xi:include href="aa-bookends/back-matter-dev.ptx" />
 	</book>
 </pretext>
