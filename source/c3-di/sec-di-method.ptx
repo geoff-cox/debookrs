@@ -10,33 +10,35 @@
   Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
 -->
-<section label="di-method">
+<section label="direct-integration">
 	<title>Solutions by Direct Integration</title>
 
-	<p>
-		In the previous section, we saw how finding the antiderivative of <m>x^2</m> can be rephrased as solving the differential equation
-		<me>
-			y'(x) = x^2.
-		</me>
-	</p>
-
-	<aside>
-		<title>Link to Algebra</title>
+	<introduction>
 		<p>
-			Just as taking the square root of both sides of the equation
-			<me>x^2 = 9</me>
-			helps isolate <m>x</m>, integrating both sides of
-			<me>y' = x^2</me>
-			helps isolate the unknown function, <m>y</m>.
-		</p>	
-	</aside>
+			In the previous section, we saw how finding the antiderivative of <m>x^2</m> can be rephrased as solving the differential equation
+			<me>
+				y'(x) = x^2.
+			</me>
+		</p>
 
-	<p>
-		To find <m>y</m>, we would like a way to <q>remove</q> the derivative from <m>y'</m>. The fundamental theorem of calculus tells us that this is possible by integrating both sides with respect to <m>x</m>.
-	</p>
+		<aside>
+			<title>Link to Algebra</title>
+			<p>
+				Just as taking the square root of both sides of the equation
+				<me>x^2 = 9</me>
+				helps isolate <m>x</m>, integrating both sides of
+				<me>y' = x^2</me>
+				helps isolate the unknown function, <m>y</m>.
+			</p>	
+		</aside>
 
-	<paragraphs>
-		<title>Solving <m>\dfrac{dy}{dx} = f(x)</m></title>
+		<p>
+			To find <m>y</m>, we would like a way to <q>remove</q> the derivative from <m>y'</m>. The fundamental theorem of calculus tells us that this is possible by integrating both sides with respect to <m>x</m>.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>Solving <m>y' = f(x)</m></title>
 
 		<p>
 			Let's use integration to solve the following equation:
@@ -66,10 +68,10 @@
 			The constants of integration are combined into a single constant <m>c</m>. This merging constants like this is standard way to simplify the solution.
 		</p>
 
-	</paragraphs>
+	</subsection>
 
-	<paragraphs>
-		<title>Solving <m>\dfrac{d}{dx}[g(x,y)] = f(x)</m></title>
+	<subsection>
+		<title>Solving <m>[g(x,y)]^{\prime} = f(x)</m></title>
 
 		<p>
 			Let's extend this idea to solve the equation:
@@ -102,259 +104,264 @@
 			where <m>c = c_2-c_1</m> is the combined arbitrary constant.
 		</p>
 
-	</paragraphs>
+	</subsection>
 
-	<assemblage xml:id="direct-integration">
-		<title>Direct Integration</title>
-		<p>
-			If a differential equation can be expressed in one of the forms:
-			<men xml:id="direct-integration-equation">
-				\frac{dy}{dx} = f(x) \quad\text{or}\quad \frac{d}{dx}\left[g(x,y)\right] = f(x)
-			</men>,
-			then the general solution can be found by
-			<ol marker="(1)">
-				<li>integrating both sides with respect to <m>x</m>, and</li>
-				<li>solving for <m>y</m>.</li>
-			</ol>
-		</p>
-	</assemblage>
+	<subsection>
+		<title>Direct Integration Approach</title>
 
-	<example xml:id="direct-integration-example-2">
-
-		<statement>
+		<assemblage xml:id="di-method">
+			<title>Direct Integration</title>
 			<p>
-				Find the general solution to the differential equation
-				<me>
-					\frac{1}{\cos x}\frac{d}{dx}\Big[y\sin(2x)\Big] - 1 = \sec x
-				</me>
+				If a differential equation can be expressed in one of the forms:
+				<men xml:id="direct-integration-equation">
+					\frac{dy}{dx} = f(x) \quad\text{or}\quad \frac{d}{dx}\left[g(x,y)\right] = f(x)
+				</men>,
+				then the general solution can be found by
+				<ol marker="(1)">
+					<li>integrating both sides with respect to <m>x</m>, and</li>
+					<li>solving for <m>y</m>.</li>
+				</ol>
 			</p>
-		</statement>
+		</assemblage>
 
-		<solution>
-			<p>
-				First, we get the derivative by itself on the left-hand side
-				<aside><title>☝️ Recall the Identity</title>
-					<p>
-						<me>
-							\sec x = \frac{1}{\cos x}
-						</me>
-					</p>
-				</aside>
-				<md>
-					<mrow>
-						\frac{d}{dx}\Big[ y \sin(2x) \Big] \amp = \cos x\left( 1 + \frac{1}{\cos x} \right)
-					</mrow>
-					<mrow>
-						\frac{d}{dx}
-						\Big[
-							\us{\textcolor{BurntOrange}{g(x,y)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{y\sin(2x)}}}
-						\Big]
-						\amp = \us{\textcolor{BurntOrange}{f(x)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{\cos x + 1}}}
-					</mrow>
-				</md>
-			</p>
+		<example xml:id="direct-integration-example-2">
 
-			<p>
-				Now, we integrate by sides with respect to <m>x</m>, releasing <m>y</m> from the derivative and allowing us to isolate the general solution.
-				<md>
-					<mrow>
-						\int \frac{d}{dx}\Big[y\sin(2x)\Big]dx \amp = \int \left(\cos x + 1\right) \ dx
-					</mrow>
-					<mrow>
-						y\sin(2x) + c_1 \amp = \sin x + x + c_2
-					</mrow>
-					<mrow>
-						y	\amp = \frac{\sin x + x + c}{\sin(2x)}\qquad (c = c_2 - c_1)
-					</mrow>
-				</md>.
-			</p>
-		</solution>
-
-	</example>
-
-	<example xml:id="direct-integration-example-3">
-
-		<statement>
-			<p>
-				Show why direct integration doesn't apply to the equation: 
-				<me>
-					\frac{dy}{dx} - y = x
-				</me>
-			</p>
-		</statement>
-
-		<solution>
-			<p>
-				Isolating the derivative gives:
-				<me>
-					\frac{dy}{dx} = x + y.
-				</me>
-				Since the derivative is with respect to <m>x</m>, we must integrate both sides with respect to <m>x</m> as well:
-				<md>
-					<mrow>\int\frac{dy}{dx}\ dx	\amp = \int (x + y)\ dx</mrow>
-					<mrow>										y	\amp = \int x\ dx + \int y\ dx</mrow>
-					<mrow>										y	\amp = \frac12 x^2 + \int y\ dx \quad \leftarrow\text{stuck}</mrow>
-				</md>.
-			</p>
-
-			<p>
-				The integral left behind cannot be computed because we are integrating with respect to <m>x</m>, not <m>y</m>. 
-				We know that <m>y</m> is a function of <m>x</m>, but we don't know which one (if we did then we would already have the solution!) 
-			</p>
-		</solution>
-
-	</example>
-
-	<p>
-		Direct integration is a simple way of solving differential equations, provided the structure allows it. If your equation can be written as
-		<me>
-			\frac{d}{dx}[x\ \text{and}\ y\ \text{terms}] = \text{only}\ x\ \text{terms}
-		</me>,
-		you're in business. Just integrate both sides and solve for <m>y</m>.
-	</p>
-
-	<exercise label="c3-2-cyu-1">
-			
-		<task label="c3-2-cyu-1-chkpt-1">
-			<title>How could you Find <m>y</m>?</title>
 			<statement>
 				<p>
-					How could you solve for <m>y</m> in the equation
+					Find the general solution to the differential equation
 					<me>
-						\frac12\frac{dy}{dx} - \tan(2x) = x
-					</me>?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><p>Isolate <m>\frac{dy}{dx}</m> &amp; integrate both sides with respect to <m>x</m>.</p></statement>
-					<feedback><p> Correct! </p></feedback>
-				</choice>
-				<choice>
-					<statement><p>Differentiate both sides with respect to <m>x</m>.</p></statement>
-					<feedback><p>Incorrect, differentiating both sides only puts another derivative on <m>\frac{dy}{dx}</m>.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p>Isolate <m>\frac{dy}{dx}</m> &amp; integrate both sides with respect to <m>y</m>.</p></statement>
-					<feedback><p>Incorrect, the integration is not with respect to <m>y</m>.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p>Find the antiderivative of <m>\tan(2x)</m>.</p></statement>
-					<feedback><p>Incorrect, the solution is the antiderivative of <m>2\tan(2x) + 2x</m>, not just <m>\tan(2x)</m>.</p></feedback>
-				</choice>
-			</choices>
-		</task>
-
-		<task label="c3-2-cyu-1-chkpt-2">
-			<title>Solution ⇄ Antiderivative</title>
-			<statement>
-				<p>
-					The solution to the differential equation
-					<me>
-						\frac13 y'- 7x + x^2 = 1
+						\frac{1}{\cos x}\frac{d}{dx}\Big[y\sin(2x)\Big] - 1 = \sec x
 					</me>
-					is the integral of which function?
 				</p>
 			</statement>
-			<choices randomize="yes">
-				
-				<choice>
-					<statement><p><m>\quad y</m></p></statement>
-					<feedback><p>Incorrect. <m>y</m> is the solution to the differential equation.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p><m>\quad 21x - 3x^2 + 1</m></p></statement>
-					<feedback><p>Incorrect, perhaps check your algebra.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p><m>\quad 7x - x^2 - 1</m></p></statement>
-					<feedback><p>Incorrect, perhaps check your algebra.</p></feedback>
-				</choice>
 
-				<choice correct="yes">
-					<statement><p><m>\quad 21x - 3x^2 + 3</m></p></statement>
-					<feedback>
+			<solution>
+				<p>
+					First, we get the derivative by itself on the left-hand side
+					<aside><title>☝️ Recall the Identity</title>
 						<p>
-							Correct! Isolating <m>y'</m> gives
 							<me>
-								y' = 21x - 3x^2 + 3
-							</me>,
-							so the solution is <m>\int (21x - 3x^2 + 3)\ dx</m>.
+								\sec x = \frac{1}{\cos x}
+							</me>
 						</p>
-					</feedback>
-				</choice>
+					</aside>
+					<md>
+						<mrow>
+							\frac{d}{dx}\Big[ y \sin(2x) \Big] \amp = \cos x\left( 1 + \frac{1}{\cos x} \right)
+						</mrow>
+						<mrow>
+							\frac{d}{dx}
+							\Big[
+								\us{\textcolor{BurntOrange}{g(x,y)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{y\sin(2x)}}}
+							\Big]
+							\amp = \us{\textcolor{BurntOrange}{f(x)}}{\us{\textcolor{BurntOrange}{\uparrow}}{\ul{\cos x + 1}}}
+						</mrow>
+					</md>
+				</p>
 
-			</choices>
-		</task>
+				<p>
+					Now, we integrate by sides with respect to <m>x</m>, releasing <m>y</m> from the derivative and allowing us to isolate the general solution.
+					<md>
+						<mrow>
+							\int \frac{d}{dx}\Big[y\sin(2x)\Big]dx \amp = \int \left(\cos x + 1\right) \ dx
+						</mrow>
+						<mrow>
+							y\sin(2x) + c_1 \amp = \sin x + x + c_2
+						</mrow>
+						<mrow>
+							y	\amp = \frac{\sin x + x + c}{\sin(2x)}\qquad (c = c_2 - c_1)
+						</mrow>
+					</md>.
+				</p>
+			</solution>
 
-		<task label="c3-2-cyu-1-chkpt-3">
-			<title>Does Direct Integration Apply?</title>
+		</example>
+
+		<example xml:id="direct-integration-example-3">
+
 			<statement>
 				<p>
-					Direct integration could be used to solve the equation
+					Show why direct integration doesn't apply to the equation: 
 					<me>
-						\frac{d}{dx}\left[y^2 + x^3\right] = \sqrt{x}
-					</me>.
+						\frac{dy}{dx} - y = x
+					</me>
 				</p>
 			</statement>
-			<choices>
-				<choice correct="yes">
-					<statement><p> True </p></statement>
-					<feedback><p> Correct! </p></feedback>
-				</choice>
-				<choice>
-					<statement><p> False </p></statement>
-					<feedback><p>Incorrect. This equation is in the form <xref ref="direct-integration-equation"/>.</p></feedback>
-				</choice>
-			</choices>
-		</task>
 
-		<task label="c3-2-cyu-1-chkpt-4">
-			<title>Why Doesn't Direct Integration Apply Here?</title>
-			<statement>
+			<solution>
 				<p>
-					Give the reason direct integration cannot be applied to the equation
+					Isolating the derivative gives:
 					<me>
-						\frac{d}{dx}\left[\frac{x}{y^2}\right] = \sin(x+y)
-					</me>.
+						\frac{dy}{dx} = x + y.
+					</me>
+					Since the derivative is with respect to <m>x</m>, we must integrate both sides with respect to <m>x</m> as well:
+					<md>
+						<mrow>\int\frac{dy}{dx}\ dx	\amp = \int (x + y)\ dx</mrow>
+						<mrow>										y	\amp = \int x\ dx + \int y\ dx</mrow>
+						<mrow>										y	\amp = \frac12 x^2 + \int y\ dx \quad \leftarrow\text{stuck}</mrow>
+					</md>.
 				</p>
-			</statement>
 
-			<choices randomize="yes">
-				<choice>
-					<statement><p>There is a fraction in the derivative.</p></statement>
-					<feedback><p>Incorrect, direct integration doesn't care about fractions.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p>The <m>y</m> term is squared.</p></statement>
-					<feedback><p>Incorrect, direct integration can handle this.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p>There is a sine term on the right side of the equation.</p></statement>
-					<feedback><p>Incorrect, the sine is not the issue here.</p></feedback>
-				</choice>
-				<choice correct="yes">
-					<statement><p>The right-hand side contains <m>y</m>.</p></statement>
-					<feedback><p>Correct! Direct integration only works when the right-hand side contains only the independent variable, in this case <m>x</m>.</p></feedback>
-				</choice>
-			</choices>
-		</task>
+				<p>
+					The integral left behind cannot be computed because we are integrating with respect to <m>x</m>, not <m>y</m>. 
+					We know that <m>y</m> is a function of <m>x</m>, but we don't know which one (if we did then we would already have the solution!) 
+				</p>
+			</solution>
 
-		<task label="c3-2-cyu-1-chkpt-5">
-			<title>Combining Constants</title>
-			<statement><p>Combining constants is a common practice in differential equations.</p></statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><p> True</p></statement>
-					<feedback><p>Correct! Combining constants is an easy way to simplify a solution and is a standard practice in differential equations.</p></feedback>
-				</choice>
-				<choice>
-					<statement><p> False </p></statement>
-					<feedback><p>Incorrect, revisit the examples above.</p></feedback>
-				</choice>
-			</choices>
-		</task>
+		</example>
 
-	</exercise>
+		<p>
+			Direct integration is a simple way of solving differential equations, provided the structure allows it. If your equation can be written as
+			<me>
+				\frac{d}{dx}[x\ \text{and}\ y\ \text{terms}] = \text{only}\ x\ \text{terms}
+			</me>,
+			you're in business. Just integrate both sides and solve for <m>y</m>.
+		</p>
+
+		<exercise label="c3-2-cyu-1">
+				
+			<task label="c3-2-cyu-1-chkpt-1">
+				<title>How could you Find <m>y</m>?</title>
+				<statement>
+					<p>
+						How could you solve for <m>y</m> in the equation
+						<me>
+							\frac12\frac{dy}{dx} - \tan(2x) = x
+						</me>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Isolate <m>\frac{dy}{dx}</m> &amp; integrate both sides with respect to <m>x</m>.</p></statement>
+						<feedback><p> Correct! </p></feedback>
+					</choice>
+					<choice>
+						<statement><p>Differentiate both sides with respect to <m>x</m>.</p></statement>
+						<feedback><p>Incorrect, differentiating both sides only puts another derivative on <m>\frac{dy}{dx}</m>.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>Isolate <m>\frac{dy}{dx}</m> &amp; integrate both sides with respect to <m>y</m>.</p></statement>
+						<feedback><p>Incorrect, the integration is not with respect to <m>y</m>.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>Find the antiderivative of <m>\tan(2x)</m>.</p></statement>
+						<feedback><p>Incorrect, the solution is the antiderivative of <m>2\tan(2x) + 2x</m>, not just <m>\tan(2x)</m>.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c3-2-cyu-1-chkpt-2">
+				<title>Solution ⇄ Antiderivative</title>
+				<statement>
+					<p>
+						The solution to the differential equation
+						<me>
+							\frac13 y'- 7x + x^2 = 1
+						</me>
+						is the integral of which function?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					
+					<choice>
+						<statement><p><m>\quad y</m></p></statement>
+						<feedback><p>Incorrect. <m>y</m> is the solution to the differential equation.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\quad 21x - 3x^2 + 1</m></p></statement>
+						<feedback><p>Incorrect, perhaps check your algebra.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p><m>\quad 7x - x^2 - 1</m></p></statement>
+						<feedback><p>Incorrect, perhaps check your algebra.</p></feedback>
+					</choice>
+
+					<choice correct="yes">
+						<statement><p><m>\quad 21x - 3x^2 + 3</m></p></statement>
+						<feedback>
+							<p>
+								Correct! Isolating <m>y'</m> gives
+								<me>
+									y' = 21x - 3x^2 + 3
+								</me>,
+								so the solution is <m>\int (21x - 3x^2 + 3)\ dx</m>.
+							</p>
+						</feedback>
+					</choice>
+
+				</choices>
+			</task>
+
+			<task label="c3-2-cyu-1-chkpt-3">
+				<title>Does Direct Integration Apply?</title>
+				<statement>
+					<p>
+						Direct integration could be used to solve the equation
+						<me>
+							\frac{d}{dx}\left[y^2 + x^3\right] = \sqrt{x}
+						</me>.
+					</p>
+				</statement>
+				<choices>
+					<choice correct="yes">
+						<statement><p> True </p></statement>
+						<feedback><p> Correct! </p></feedback>
+					</choice>
+					<choice>
+						<statement><p> False </p></statement>
+						<feedback><p>Incorrect. This equation is in the form <xref ref="direct-integration-equation"/>.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c3-2-cyu-1-chkpt-4">
+				<title>Why Doesn't Direct Integration Apply Here?</title>
+				<statement>
+					<p>
+						Give the reason direct integration cannot be applied to the equation
+						<me>
+							\frac{d}{dx}\left[\frac{x}{y^2}\right] = \sin(x+y)
+						</me>.
+					</p>
+				</statement>
+
+				<choices randomize="yes">
+					<choice>
+						<statement><p>There is a fraction in the derivative.</p></statement>
+						<feedback><p>Incorrect, direct integration doesn't care about fractions.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>The <m>y</m> term is squared.</p></statement>
+						<feedback><p>Incorrect, direct integration can handle this.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>There is a sine term on the right side of the equation.</p></statement>
+						<feedback><p>Incorrect, the sine is not the issue here.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p>The right-hand side contains <m>y</m>.</p></statement>
+						<feedback><p>Correct! Direct integration only works when the right-hand side contains only the independent variable, in this case <m>x</m>.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="c3-2-cyu-1-chkpt-5">
+				<title>Combining Constants</title>
+				<statement><p>Combining constants is a common practice in differential equations.</p></statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p> True</p></statement>
+						<feedback><p>Correct! Combining constants is an easy way to simplify a solution and is a standard practice in differential equations.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p> False </p></statement>
+						<feedback><p>Incorrect, revisit the examples above.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+		</exercise>
+
+	</subsection>
 
 </section>

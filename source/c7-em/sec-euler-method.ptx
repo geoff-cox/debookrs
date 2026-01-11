@@ -19,11 +19,12 @@
         </p>
 	</introduction>
 
-	<paragraphs label="eulers-method-concrete">
+	<subsection label="eulers-method-concrete">
 		<title>A Concrete Step Through Euler's Method</title>
+
 		<p>
 			Before writing any formulas, it helps to <em>see</em> what Euler's Method feels like. Think of Euler's method like crossing a landscape with only a compass. You know where you start. At each step, you check your direction (the slope from the differential equation), take a small stride that way, then check again. That back-and-forth of <q>step, check, adjust</q> is the rhythm of the method.
-        </p>
+    </p>
 
 		<paragraphs>
 			<title>The Goal</title>
@@ -33,12 +34,11 @@
 				<men xml:id="concrete-euler-eqn">
 					y'(t) = 6t + y(t), \quad y(0) = -2, \quad t \text{ in } [0, 1.5]
 				</men>.
-				Let's approximate the solution at the equally-spaced <m>t</m>-values: <m>0, 0.5, 1, 1.5</m>. This tells us that our goal is to approximate the <m>y</m>-values at the following points:   
+				Let's approximate the solution at the equally-spaced <m>t</m>-values: <m>0, 0.5, 1, 1.5</m>. This tells us that our goal is to approximate the <m>y</m>-values at the following points:
+				<me>
+					\text{Approximation} = \big\{\ (\ 0\ ,\ ?\ ),\ (\ 0.5\ ,\ ?\ ),\ (\ 1\ ,\ ?\ ),\ (\ 1.5\ ,\ ?\ )\ \big\}
+				</me>.
 			</p>
-
-			<me>
-				\text{Approximation} = \big\{\ (\ 0\ ,\ ?\ ),\ (\ 0.5\ ,\ ?\ ),\ (\ 1\ ,\ ?\ ),\ (\ 1.5\ ,\ ?\ )\ \big\}
-			</me>.
 
 			<p>
 				Luckily, the first <m>y</m> value is just the initial condition, <m>y(0) = -2</m>, so we add it to the list:
@@ -222,9 +222,9 @@
 				</interactive>
 			</sidebyside>
 		</corollary>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="eulers-method-definition">
+	<subsection label="eulers-method-definition">
 		<title>Euler's Method</title>
 			<p>
 				Now let's generalize the concrete example. As we do, check the footnotes for the concrete version of each equation and step. 
@@ -247,11 +247,10 @@
 						\us{\ds t_3}{\us{\uparrow}{1.5}}\qquad h = 0.5
 					</me>
 				</fn>
+				<me>
+					t_0,\ t_1,\ t_2,\ \ldots,\ t_N, \quad\text{where}\quad t_{k+1} = t_k + h
+				</me>
 			</p>
-
-			<me>
-				t_0,\ t_1,\ t_2,\ \ldots,\ t_N, \quad\text{where}\quad t_{k+1} = t_k + h
-			</me>
 
 			<p>
 				Using the shorthand <m>y_k = y(t_k)</m>, our goal is to approximate the points:
@@ -260,27 +259,24 @@
 						\text{Approximation} = \{\ (0,?),\ (0.5,?),\ (1,?),\ (1.5,?)\ \big\}
 					</me>
 				</fn>
-        	</p>
-
-			<me>
-				(t_0, y_0), (t_1, y_1), \ldots, (t_N, y_N).
-			</me>
+				<me>
+					(t_0, y_0), (t_1, y_1), \ldots, (t_N, y_N).
+				</me>
+      </p>
 
 			<p>
 				The first point, <m>(t_0, y_0)</m>, is known since it is the initial condition. The remaining points are approximated using the <xref ref="point-slope-movement-rule" text="custom">movement rule</xref>, where <q>cur</q> is <m>k</m> and <q>new</q> is <m>k+1</m>:
+				<me>
+					(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot\text{slope})
+				</me>.
 			</p>
-
-			<me>
-				(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot\text{slope})
-			</me>.
 
 			<p>
 				The slope is found from <m>f(t_k, y_k)</m><fn><me>6t + y(t)</me></fn> in the differential equation, so the rule becomes:
+				<me>
+					(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
+				</me>
 			</p>
-
-			<me>
-				(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
-			</me>
 
 			<p>
 				Extracting just the <m>y</m>-coordinate, gives the update rule for Euler's method:
@@ -362,9 +358,9 @@
 			<p>
 				Desipte being based on relatively simple idea, Euler's method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.
 			</p>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="eulers-method-examples">
+	<subsection label="eulers-method-examples">
 		<title>Examples</title>
 
 		<example label="eulers-method-example-1">
@@ -761,6 +757,6 @@
 		<p>
 			Euler's method runs on an intuitive idea: use the slope at each point to <q>predict</q> the next point. It's simple, but that simplicity is its strength. This method is often the first stepping stone into the world of numerical methods and the same pattern of <q>predict, step, repeat</q> forms the backbone of many other techniques.
 		</p>
-	</paragraphs>
+	</subsection>
 
 </section>

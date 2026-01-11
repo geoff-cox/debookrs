@@ -19,8 +19,9 @@
 		</p>
 	</introduction>
 
-	<paragraphs label="eulers-method-one-step-thinking">
+	<subsection label="eulers-method-one-step-thinking">
 		<title>Iterative Methods—Thinking in Steps</title>
+
 		<p>
 			Most numerical methods are <em>iterative</em>, which means they don't try to solve the whole problem at once. Instead, they repeat the same small task again and again. 
 		</p>
@@ -59,10 +60,11 @@
 				</choice>
 			</choices>
 		</exercise>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="eulers-method-one-step-task">
+	<subsection label="eulers-method-one-step-task">
 		<title>Euler's Method Task</title>
+
 		<p>
 			For Euler's method, the repeated task can be summed up like this:
 		</p>
@@ -81,16 +83,17 @@
 
 		<p>
 			To understand this <q>one step,</q> we'll answer two guiding questions:
+			<ol>
+				<li>What does it mean to move in the direction of a slope?</li>
+				<li>Given a point, slope, and step size, what is the formula for the next point?</li>
+			</ol>
 		</p>
 
-		<ol>
-			<li>What does it mean to move in the direction of a slope?</li>
-			<li>Given a point, slope, and step size, what is the formula for the next point?</li>
-		</ol>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="eulers-method-one-step-direction">
+	<subsection label="eulers-method-one-step-direction">
 		<title>Moving in the Direction of a Slope</title>
+
 		<p>
 			First question: <q>What does it mean to move in the direction of a slope?</q>  
 			Suppose you're at the point <m>(1,1)</m> and the slope there is <m>\frac{3}{2}</m>.
@@ -116,31 +119,25 @@
 
 		<p>
 			Of course, there's nothing special about using a <q>run</q> of 2. We could have used <m>4</m> (rise would then be 6) or even <m>\pi</m> (rise would be <m>\frac{3}{2}\pi</m>). All of the following fractions
-		</p>
-
-		<me>
-			\left(\frac{\text{rise}}{\text{run}}\right)\quad\quad \frac32,\ \frac{6}{4},\ \frac{3\pi}{2\pi},\ \frac{\frac32}{1},\ \ldots,
-		</me>
-
-		<p>
+			<me>
+				\left(\frac{\text{rise}}{\text{run}}\right)\quad\quad \frac32,\ \frac{6}{4},\ \frac{3\pi}{2\pi},\ \frac{\frac32}{1},\ \ldots,
+			</me>
 			describe the same slope, which can be visualized in <xref ref="multiple-rise-run"/>.
 		</p>
 
 		<p>
-			In Euler's method, we intentionally choose a <em>small run</em> called the step size, <m>h</m>. Therefore, for a small run, <m>h</m>, you get the corresponding rise by:  
+			In Euler's method, we intentionally choose a <em>small run</em> called the step size, <m>h</m>. Therefore, for a small run, <m>h</m>, you get the corresponding rise by: 
+			<me>
+				\text{slope} = \frac{\text{rise}}{h}  \quad\Rightarrow\quad \text{rise} = \text{slope} \times h 
+			</me>
 		</p>
-
-		<me>
-			\text{slope} = \frac{\text{rise}}{h}  \quad\Rightarrow\quad \text{rise} = \text{slope} \times h 
-		</me>
 
 		<p>
 			So given a direction (slope) to move and the step size (<m>h</m>) to take, this formula gives you the rise. Next, we'll see how this simple relationship is the core of Euler's one-step move.
+			<me>
+				\text{rise} = \text{slope} \cdot h.
+			</me>
 		</p>
-
-		<me>
-			\text{rise} = \text{slope} \cdot h.
-		</me>
 
 		<figure xml:id="multiple-rise-run">
 			<caption>Same Slope, Different Rise and Runs</caption>
@@ -376,9 +373,9 @@
 			</choices>
 		</exercise>
 
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="eulers-method-one-step-rule">
+	<subsection label="eulers-method-one-step-rule">
 		<title>The Movement Rule</title>
 
 		<p>
@@ -387,19 +384,17 @@
 
 		<p>
 			From basic geometry, a new point is just the old point plus the changes:
+			<me>
+				(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + \text{run}, \ y_{\text{cur}} + \text{rise})
+			</me>.
 		</p>
-
-		<me>
-			(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + \text{run}, \ y_{\text{cur}} + \text{rise})
-		</me>.
 
 		<p>
 			Euler's method sets the <q>run</q> to the step size <m>h</m> and the <q>rise</q> to <m>h \times \text{slope}</m>. Substituting those gives the update rule:
+			<men xml:id="point-slope-movement-rule">
+				(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})
+			</men>.
 		</p>
-
-		<men xml:id="point-slope-movement-rule">
-			(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})
-		</men>.
 
 		<p>
 			This single equation captures the whole one-step task: start at the current point, find the slope, take a step of size <m>h</m> in that direction, and you land at the next point. Euler's method is simply this step repeated many times.
@@ -432,33 +427,32 @@
 			</choices>
 		</exercise>
 
-	</paragraphs>
-
-	<exercise label="eulers-method-one-step-cyu-summary">
-		<title><e component="emoji">📖❓</e>  Big Picture of Euler's Step</title>
-		<statement>
-			<p>
-				Which statement best describes what Euler's method does <em>one step at a time</em>?
-			</p>
-		</statement>
-		<choices randomize="yes">
-			<choice correct="yes">
-				<statement>From a current point, it uses the slope to predict the next point.</statement>
-				<feedback>Correct — Euler's method is nothing more than this step, done over and over.</feedback>
-			</choice>
-			<choice>
-				<statement>It finds one term of the exact general solution.</statement>
-				<feedback>No — finding terms of the solution would be an analytic method.</feedback>
-			</choice>
-			<choice>
-				<statement>It moves to a nearby point on the solution curve.</statement>
-				<feedback>No — if you knew where the solution curve was, you would already have the solution to the equation.</feedback>
-			</choice>
-			<choice>
-				<statement>It approximates the roots of the characteristic equation.</statement>
-				<feedback>No — Euler's approximates points of the solution, not the roots of the characteristic equation.</feedback>
-			</choice>
-		</choices>
-	</exercise>
+		<exercise label="eulers-method-one-step-cyu-summary">
+			<title><e component="emoji">📖❓</e>  Big Picture of Euler's Step</title>
+			<statement>
+				<p>
+					Which statement best describes what Euler's method does <em>one step at a time</em>?
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement>From a current point, it uses the slope to predict the next point.</statement>
+					<feedback>Correct — Euler's method is nothing more than this step, done over and over.</feedback>
+				</choice>
+				<choice>
+					<statement>It finds one term of the exact general solution.</statement>
+					<feedback>No — finding terms of the solution would be an analytic method.</feedback>
+				</choice>
+				<choice>
+					<statement>It moves to a nearby point on the solution curve.</statement>
+					<feedback>No — if you knew where the solution curve was, you would already have the solution to the equation.</feedback>
+				</choice>
+				<choice>
+					<statement>It approximates the roots of the characteristic equation.</statement>
+					<feedback>No — Euler's approximates points of the solution, not the roots of the characteristic equation.</feedback>
+				</choice>
+			</choices>
+		</exercise>
+	</subsection>
 
 </section>
