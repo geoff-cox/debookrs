@@ -27,47 +27,46 @@
 		</p>
 	</introduction>
 
-	<exercise label="lt-properties-prep-1">
-		<title>👀❓ Integral Properties</title>
-		<statement>
-			<p>
-				Select all the true statements related to properties of indefinite integrals.
-			</p>
-		</statement>
-		<choices randomize="yes">
-			<choice correct="yes">
-				<statement><m>\ds \int 5e^t + \cos t\ dt = 5\int e^t\ dt + \int \cos t\ dt</m></statement>
-				<feedback>This is the linearity property of integrals.</feedback>
-			</choice>
-			<choice correct="yes">
-				<statement><m>\ds \int 5e^s\cos t\ dt = 5e^s\cdot\int \cos t\ dt</m></statement>
-				<feedback>Since we are integrating with respect to <m>t</m>, we can treat <m>5e^s</m> as a constant.</feedback>
-			</choice>
-			<choice correct="no">
-				<statement><m>\ds \int 5e^t\cos t\ dt = 5\int e^t\ dt\cdot\int \cos t\ dt</m></statement>
-				<feedback>In calculus, you had to integrate this using integration by parts.</feedback>
-			</choice>
-			<choice correct="no">
-				<statement><m>\ds \int \frac{d}{dt}\left[\cos t\right]\ dt = \sin t + C</m></statement>
-				<feedback>
-					Be careful, <m>\int \frac{d}{dt}\left[\cos t\right]\ dt = \cos t + C</m>.
-				</feedback>
-			</choice>
-		</choices>
-	</exercise>
-
-	<paragraphs label="linearity-of-lts">
+	<subsection label="linearity-of-lts">
 		<title>Linearity: Sums and Constant Multiples</title>
+
+		<exercise label="lt-properties-prep-1">
+			<title>👀❓ Integral Properties</title>
+			<statement>
+				<p>
+					Select all the true statements related to properties of indefinite integrals.
+				</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><m>\ds \int 5e^t + \cos t\ dt = 5\int e^t\ dt + \int \cos t\ dt</m></statement>
+					<feedback>This is the linearity property of integrals.</feedback>
+				</choice>
+				<choice correct="yes">
+					<statement><m>\ds \int 5e^s\cos t\ dt = 5e^s\cdot\int \cos t\ dt</m></statement>
+					<feedback>Since we are integrating with respect to <m>t</m>, we can treat <m>5e^s</m> as a constant.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement><m>\ds \int 5e^t\cos t\ dt = 5\int e^t\ dt\cdot\int \cos t\ dt</m></statement>
+					<feedback>In calculus, you had to integrate this using integration by parts.</feedback>
+				</choice>
+				<choice correct="no">
+					<statement><m>\ds \int \frac{d}{dt}\left[\cos t\right]\ dt = \sin t + C</m></statement>
+					<feedback>
+						Be careful, <m>\int \frac{d}{dt}\left[\cos t\right]\ dt = \cos t + C</m>.
+					</feedback>
+				</choice>
+			</choices>
+		</exercise>
 
 		<p>
 			Like integrals, the Laplace transform is linear. This means we can take apart sums and pull out constant multiples. In particular, if the Laplace transforms of <m>f(t)</m> and <m>g(t)</m> exist, then we have the following linearity property:
+			<md>
+				<mrow xml:id="lt-P1">
+					\text{P}_{1}:\quad\lap{af(t) \pm bg(t)} = a \lap{f(t)} \pm b \lap{g(t)}\quad (a, b\ \text{constants})
+				</mrow>.
+			</md>
 		</p>
-
-		<md>
-			<mrow xml:id="lt-P1">
-				\text{P}_{1}:\quad\lap{af(t) \pm bg(t)} = a \lap{f(t)} \pm b \lap{g(t)}\quad (a, b\ \text{constants})
-			</mrow>.
-		</md>
 
 		<p>
 			This property allows us to break complex expressions into smaller pieces, each of which can be transformed using our basic table.
@@ -189,85 +188,81 @@
 				</choices>
 			</task>
 		</exercise>
-	</paragraphs>
 
-	<paragraphs label="lt-derivative-transfer-property">
+	</subsection>
+
+	<subsection label="lt-derivative-transfer-property">
 		<title>Derivatives of Functions (Derivative Transfer)</title>
 
 		<p>
 			One of the most powerful features of the Laplace transform is its ability to transform differential equations into algebraic equations. This means we need a way to <q>remove</q> the derivatives from the unknown in our differential equation. The following property perfectly encapsulates this idea:
+			<me>\lap{f'(t)} = s \lap{f(t)} - f(0), \qquad s \gt 0</me>
 		</p>
-
-		<me>
-			\lap{f'(t)} = s \lap{f(t)} - f(0), \qquad s \gt 0
-		</me>
 
 		<p>
 			In short, this property uses integration by parts to transfer the derivative from <m>f'(t)</m> to <m>e^{-st}</m>. This results in a factor of <m>-s</m> (chain rule on <m>e^{-st}</m>) and <m>f(0)</m> as follows:
+			<me>
+				\lap{f'(t)} = \int_0^\infty e^{-st} f'(t)\ dt \quad \os{\Large\text{IBP}}{\longrightarrow} \quad -(-s)\ub{\int_0^\infty e^{-st} f(t)\ dt}_{\large\lap{f(t)}} - f(0).
+			</me>
 		</p>
 
-		<me>
-			\lap{f'(t)} = \int_0^\infty e^{-st} f'(t)\ dt \quad \os{\Large\text{IBP}}{\longrightarrow} \quad -(-s)\ub{\int_0^\infty e^{-st} f(t)\ dt}_{\large\lap{f(t)}} - f(0)
-		</me>.
-	
 		<proof xml:id="lt-derivative-transfer-details">
 			<title>Click here for more details</title>
-			<statement>
-				<p>
-					To show that
-					<me>
-						\lap{f'(t)} = s\lap{f(t)} - f(0), \quad s \gt 0
-					</me>,
-					we start with the definition of the Laplace transform:
-				</p>
 
-				<p>
-					<me>
-						\lap{ f'(t) } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot f'(t)\ dt}_{I}
-					</me>.
-				</p>
+			<p>
+				To show that
+				<me>
+					\lap{f'(t)} = s\lap{f(t)} - f(0), \quad s \gt 0
+				</me>,
+				we start with the definition of the Laplace transform:
+			</p>
 
-				<p>
-					Applying integration by parts to <m>I</m> once in <m>\lap{ f'(t) }</m> with
-					<md>
-						<mrow> u = e^{-st},			\quad\amp	dv = f'(t)\ dt,	</mrow>
-						<mrow> du = -se^{-st}\ dt,	\quad\amp	v = f(t)		</mrow>
-					</md>
-					integration by parts gives
-					<md>
-						<mrow>
-							\lap{ t^{n} }
-							\amp = \lim_{b \to \infty} \left[f(t)e^{-sb}\Bigg|_0^b - \int_0^b f(t)\cdot\left(-se^{-st}\right)\ dt\right]
-						</mrow>
-						<mrow>
-							\amp = \lim_{b \to \infty} \left[\left(f(b)e^{-sb} - f(0)e^{0}\right) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
-						</mrow>
-						<mrow>
-							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb} - f(0) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
-						</mrow>
-						<mrow>
-							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\lim_{b \to \infty} \left[\int_0^b e^{-st}\cdot f(t)\ dt\right]
-						</mrow>
-						<mrow>
-							\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\ub{\int_\infty^b e^{-st}\cdot f(t)\ dt}_{\large\lap{f(t)}}
-						</mrow>.
-					</md>
-				</p>
+			<p>
+				<me>
+					\lap{ f'(t) } = \lim_{b \to \infty} \ub{\int_0^b e^{-st} \cdot f'(t)\ dt}_{I}
+				</me>.
+			</p>
 
-				<p>
-					Recall that a requirement for the Laplace transform of <m>f(t)</m> to exist is that
-					<me>
-						\lim_{b \to \infty} \left[f(b)e^{-sb}\right] = 0, \quad s \gt 0
-					</me>.
-				</p>
+			<p>
+				Applying integration by parts to <m>I</m> once in <m>\lap{ f'(t) }</m> with
+				<md>
+					<mrow> u = e^{-st},			\quad\amp	dv = f'(t)\ dt,	</mrow>
+					<mrow> du = -se^{-st}\ dt,	\quad\amp	v = f(t)		</mrow>
+				</md>
+				integration by parts gives
+				<md>
+					<mrow>
+						\lap{ t^{n} }
+						\amp = \lim_{b \to \infty} \left[f(t)e^{-sb}\Bigg|_0^b - \int_0^b f(t)\cdot\left(-se^{-st}\right)\ dt\right]
+					</mrow>
+					<mrow>
+						\amp = \lim_{b \to \infty} \left[\left(f(b)e^{-sb} - f(0)e^{0}\right) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
+					</mrow>
+					<mrow>
+						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb} - f(0) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
+					</mrow>
+					<mrow>
+						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\lim_{b \to \infty} \left[\int_0^b e^{-st}\cdot f(t)\ dt\right]
+					</mrow>
+					<mrow>
+						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\ub{\int_\infty^b e^{-st}\cdot f(t)\ dt}_{\large\lap{f(t)}}
+					</mrow>.
+				</md>
+			</p>
 
-				<p>
-					Thus, setting the limit to zero gives us the desired result
-					<me>
-						\lap{ f'(t) } = s\lap{f(t)} - f(0)
-					</me>.
-				</p>
-			</statement>
+			<p>
+				Recall that a requirement for the Laplace transform of <m>f(t)</m> to exist is that
+				<me>
+					\lim_{b \to \infty} \left[f(b)e^{-sb}\right] = 0, \quad s \gt 0
+				</me>.
+			</p>
+
+			<p>
+				Thus, setting the limit to zero gives us the desired result
+				<me>
+					\lap{ f'(t) } = s\lap{f(t)} - f(0)
+				</me>.
+			</p>
 		</proof>
 
 		<exercise label="lt-properties-chkpt-3">
@@ -413,20 +408,17 @@
 				</choices>
 			</task>
 		</exercise>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="lt-exp-shifting-property">
+	<subsection label="lt-exp-shifting-property">
 		<title>Multiplication by <m>e^{at}</m> (Exponential Shifting)</title>
 
 		<p>
 			It turns out that as long as we know the Laplace transform of <m>f(t)</m>,
 			<me>F(s) = \lap{f(t)}</me>,
 			then we also know the Laplace transform of <m>e^{at}f(t)</m> since
+			<men xml:id="lt-R4">\text{R}_{4}:\quad\lap{e^{at} f(t)} = F(s-a), \quad a\ \text{is a constant}.</men>
 		</p>
-
-		<me xml:id="lt-R4">
-			\text{R}_{4}:\quad\lap{e^{at} f(t)} = F(s-a), \quad a \text{ is a constant}
-		</me>.
 
 		<p>
 			So multiplying a function by <m>e^{at}</m> shifts its Laplace transform horizontally by <m>a</m>. 
@@ -544,21 +536,20 @@
 
 		<p>
 			By applying a similar strategy to the functions <m>t^n</m>, <m>\cos(bt)</m>, and <m>\sin(bt)</m>, we can add the following three Laplace transforms to our list of common transforms:
+			<mdn label="lt-exp-shifting-property-P6-P8">
+				<mrow xml:id="lt-L6">
+					\text{L}_{6}:\quad\amp\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2 + b^2}, \quad s \gt a
+				</mrow>
+
+				<mrow xml:id="lt-L7">
+					\text{L}_{7}:\quad\amp\lap{e^{at}\sin(bt)} = \frac{b}{(s-a)^2 + b^2}, \quad s \gt a
+				</mrow>
+
+				<mrow xml:id="lt-L8">
+					\text{L}_{8}:\quad\amp\lap{e^{at}t^n} = \frac{n!}{(s-a)^{n+1}}, \quad s \gt a
+				</mrow>
+			</mdn>
 		</p>
-
-		<md label="lt-exp-shifting-property-P6-P8">
-			<mrow xml:id="lt-L6">
-				\text{L}_{6}:\quad\amp\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2 + b^2}, \quad s \gt a
-			</mrow>
-
-			<mrow xml:id="lt-L7">
-				\text{L}_{7}:\quad\amp\lap{e^{at}\sin(bt)} = \frac{b}{(s-a)^2 + b^2}, \quad s \gt a
-			</mrow>
-
-			<mrow xml:id="lt-L8">
-				\text{L}_{8}:\quad\amp\lap{e^{at}t^n} = \frac{n!}{(s-a)^{n+1}}, \quad s \gt a
-			</mrow>
-		</md>
 
 		<exercise label="lt-exp-shifting-property-prereading-questions-bundle"> 
 			<task label="lt-exp-shifting-property-prereading-questions-1">
@@ -733,9 +724,9 @@
 				</choices>
 			</task>
 		</exercise>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="lt-laplace-derivatives">
+	<subsection label="lt-laplace-derivatives">
 		<title>Multiplication by <m>t^n</m> (Derivatives in <m>s</m>)</title>
 
 		<p>
@@ -786,11 +777,10 @@
 
 		<p>
 			If <m>F(s) = \lap{ f(t) }</m>, then this property becomes
+			<men xml:id="lt-R5">
+				\text{R}_{5}:\quad\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}\Big[F(s)\Big],\quad s &gt; 0,\quad n = 1, 2, 3, \ldots
+			</men>
 		</p>
-
-		<me xml:id="lt-R5">
-			\text{R}_{5}:\quad\lap{t^n f(t)} = (-1)^n \frac{d^n}{ds^n}\Big[F(s)\Big],\quad s &gt; 0,\quad n = 1, 2, 3, \ldots
-		</me>
 
 		<exercise label="lt-properties-chkpt-10">
 			<title><e component="emoji">📖❓</e>  Apply the Laplace Derivative Rule</title>
@@ -930,6 +920,6 @@
 		<p>
 			This property lets us handle polynomial factors in <m>t</m> without integrating directly. Instead, we differentiate the Laplace transform with respect to <m>s</m>.
 		</p>
-	</paragraphs>
+	</subsection>
 
 </section>

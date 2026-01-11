@@ -12,14 +12,16 @@
 -->
 <section label="piecewise-functions">
 	<title>Piecewise Functions</title>
+
 	<introduction>
 		<p>
 			Piecewise functions can feel disorganized at first since they are defined in separate <q>chunks</q> across different intervals. But there's a powerful way to express them as a clean formula: by using step functions to switch each piece ON or OFF at the right time.
 		</p>
 	</introduction>
 
-	<paragraphs label="piecewise-definition">
+	<subsection label="piecewise-definition">
 		<title>What Makes a Function Piecewise?</title>
+
 		<p>
 			A <em>piecewise function</em> is any function built from different parts over specific regions of its domain. For example:
 		</p>
@@ -116,9 +118,9 @@
 		<p>
 			Each piece has its own behavior, but together they create the entire function. The question is: can we rewrite these separate pieces so that the whole function is described with <em>one</em> equation, instead of a case-by-case breakdown?
 		</p>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="unit-step-switch-mindset">
+	<subsection label="unit-step-switch-mindset">
 		<title>Thinking in Terms of Switches</title>
 
 		<exercise>
@@ -150,15 +152,14 @@
 
 		<p>
 			Every step function you've seen can be thought of as a simple ON–OFF switch:
+			<me>
+				\begin{array}{clllll}
+					u_c(t)			\amp\rightarrow\amp\text{ON:}\amp [c,\infty)	\amp\text{OFF:}\amp\text{elsewhere}\\
+					u_c(t)-u_d(t)	\amp\rightarrow\amp\text{ON:}\amp [c,d)			\amp\text{OFF:}\amp\text{elsewhere}\\
+					1 - u_c(t)		\amp\rightarrow\amp\text{ON:}\amp (-\infty,c)	\amp\text{OFF:}\amp\text{elsewhere}
+				\end{array}
+			</me>
 		</p>
-
-		<me>
-			\begin{array}{clllll}
-				u_c(t)			\amp\rightarrow\amp\text{ON:}\amp [c,\infty)	\amp\text{OFF:}\amp\text{elsewhere}\\
-				u_c(t)-u_d(t)	\amp\rightarrow\amp\text{ON:}\amp [c,d)			\amp\text{OFF:}\amp\text{elsewhere}\\
-				1 - u_c(t)		\amp\rightarrow\amp\text{ON:}\amp (-\infty,c)	\amp\text{OFF:}\amp\text{elsewhere}
-			\end{array}
-		</me>
 
 		<p>
 			With these step functions, you can literally <q>program</q> when each part of a function is ON and when it is OFF.
@@ -166,15 +167,14 @@
 
 		<p>
 			For example, the three pieces of <m>g(t)</m> above can be controlled like this:
+			<me>
+				\begin{array}{clllll}
+					{\DLBb \sin t\ \big(1 - u_0(t)\big)}		\amp\rightarrow\amp \sin t	\amp\text{is ON:}\amp {\DLBb (-\infty,0)}	\amp\text{OFF:}\amp\text{elsewhere}\\
+					{\DLGa 2e^{-t}\ \big(u_0(t) - u_2(t)\big)}	\amp\rightarrow\amp 2e^{-t}	\amp\text{is ON:}\amp {\DLGa [0,2)}		\amp\text{OFF:}\amp\text{elsewhere}\\
+					{\DLO 1.5\ u_2(t)}							\amp\rightarrow\amp 1.5		\amp\text{is ON:}\amp {\DLO [2,\infty)}	\amp\text{OFF:}\amp\text{elsewhere}
+				\end{array}
+			</me>
 		</p>
-
-		<me>
-			\begin{array}{clllll}
-				{\DLBb \sin t\ \big(1 - u_0(t)\big)}		\amp\rightarrow\amp \sin t	\amp\text{is ON:}\amp {\DLBb (-\infty,0)}	\amp\text{OFF:}\amp\text{elsewhere}\\
-				{\DLGa 2e^{-t}\ \big(u_0(t) - u_2(t)\big)}	\amp\rightarrow\amp 2e^{-t}	\amp\text{is ON:}\amp {\DLGa [0,2)}		\amp\text{OFF:}\amp\text{elsewhere}\\
-				{\DLO 1.5\ u_2(t)}							\amp\rightarrow\amp 1.5		\amp\text{is ON:}\amp {\DLO [2,\infty)}	\amp\text{OFF:}\amp\text{elsewhere}
-			\end{array}
-		</me>
 
 		<figure xml:id="intro-piecewise-function-pieces">
 			<caption> Three pieces of <m>g(t)</m> </caption>
@@ -388,9 +388,9 @@
 				</figure>
 			</sidebyside>
 		</figure>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="piecewise-rewriting">
+	<subsection label="piecewise-rewriting">
 		<title>Rewriting a Piecewise Function in Step Form</title>
 
 		<exercise label="prep-1-piecewise-to-step">
@@ -427,46 +427,42 @@
 
 		<p>
 			<xref ref="intro-piecewise-function-pieces"/> shows three non-overlapping regions. That means for any value of <m>t</m>, only one piece of the function is active. Because of this, we can write <m>g(t)</m> as a single sum:
+			<me>g(t) = \sin t\ \big( 1 - u_0(t) \big) + 2e^{-t}\ \big( u_0(t) - u_2(t) \big) +  1.5\ u_2(t).</me>
 		</p>
-
-		<me>
-			g(t) = \sin t\ \big( 1 - u_0(t) \big) + 2e^{-t}\ \big( u_0(t) - u_2(t) \big) +  1.5\ u_2(t)
-		</me>.
 
 		<p>
 			Let's test this step-function version by plugging in a few <m>t</m> values and seeing which terms turn ON and which turn OFF.
+			<md alignment="alignat">
+				<mrow> t=-2:\quad\amp
+					g(-2) 
+					{}={} \amp\us{\large\text{ON}}{\ul{\sin(-2)\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{2}\cdot\big(0\big)}}\amp
+					{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(0\big)}}
+					{}={} \amp \sin(-2)
+				</mrow>
+				<mrow> t=0: \quad\amp
+					\hphantom{-}g(1)
+					{}={} \amp\us{\large\text{OFF}}{\ul{\sin(0)\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{ON}}{\ul{2e^{0}\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
+					{}={} \amp 2e^{0}
+				</mrow>
+				<mrow> t=1: \quad\amp
+					\hphantom{-}g(2)
+					{}={} \amp\us{\large\text{OFF}}{\ul{\sin(1)\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{ON}}{\ul{2e^{-1}\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
+					{}={} \amp 2e^{-1}
+				</mrow>
+				<mrow> t=4: \quad\amp
+					\hphantom{-}g(4)
+					{}={} \amp\us{\large\text{OFF}}{\ul{\sin(4)\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{-4}\cdot\big(1\big)}}\amp
+					{}+{} \amp\us{\large\text{ON}}{\ul{1.5\cdot\big(1\big)}}
+					{}={} \amp 1.5
+				</mrow>
+			</md>
 		</p>
-
-		<md alignment="alignat">
-			<mrow> t=-2:\quad\amp
-				g(-2) 
-				{}={} \amp\us{\large\text{ON}}{\ul{\sin(-2)\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{2}\cdot\big(0\big)}}\amp
-				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(0\big)}}
-				{}={} \amp \sin(-2)
-			</mrow>
-			<mrow> t=0: \quad\amp
-				\hphantom{-}g(1)
-				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(0)\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{ON}}{\ul{2e^{0}\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
-				{}={} \amp 2e^{0}
-			</mrow>
-			<mrow> t=1: \quad\amp
-				\hphantom{-}g(2)
-				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(1)\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{ON}}{\ul{2e^{-1}\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{OFF}}{\ul{1.5\cdot\big(1\big)}}
-				{}={} \amp 2e^{-1}
-			</mrow>
-			<mrow> t=4: \quad\amp
-				\hphantom{-}g(4)
-				{}={} \amp\us{\large\text{OFF}}{\ul{\sin(4)\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{OFF}}{\ul{2e^{-4}\cdot\big(1\big)}}\amp
-				{}+{} \amp\us{\large\text{ON}}{\ul{1.5\cdot\big(1\big)}}
-				{}={} \amp 1.5
-			</mrow>
-		</md>
 
 		<p>
 			Like the piecewise form, plugging a specific <m>t</m> value into <m>g(t)</m> was the same as plugging it into just one of its three pieces. This observation highlights why the unit step form is equivalent to the piecewise form.
@@ -766,77 +762,77 @@
 		<p>
 			From here on out, we'll use this compact step-function form whenever we need to handle piecewise forcing functions. This also unlocks the Laplace transform method for problems that contain piecewise forcing functions.
 		</p>
-	</paragraphs>
 
-	<exercise label="piecewise-functions-cyu-bundle">
-		<title><e component="emoji">🤔💭</e> Piecewise Functions Reading Questions</title>
+		<exercise label="piecewise-functions-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> Piecewise Functions Reading Questions</title>
 
-		<task label="piecewise-functions-cyu-1">
-			<title><e component="emoji">🤔💭</e> Piecewise to Laplace</title>
-			<statement>
-				<p>
-					Match each unit-step form to its corresponding piecewise form.
-				</p>
-			</statement>
-			<cardsort>
-				<match>
-					<premise><m>4(u_2(t) - u_5(t)) + (t - 5)u_5(t)</m></premise>
-					<response>
-					<me>\small
-						\left\{
-						\begin{array}{ll}
-							0, 		\amp t \lt 2 \\
-							4, 		\amp 2 \le t \lt 5 \\
-							t - 5,	\amp t \ge 5
-						\end{array}
-						\right.
-					</me>
-					</response>
-				</match>
-				<match>
-					<premise><m>4(1 - u_2(t)) + (t - 5)u_5(t)</m></premise>
-					<response>
-							<me>\small
-								\left\{
-								\begin{array}{ll}
-									4, 		\amp t \lt 2 \\
-									0, 		\amp 2 \le t \lt 5 \\
-									t - 5,	\amp t \ge 5
-								\end{array}
-								\right.
-							</me>
-					</response>
-				</match>
-				<match>
-					<premise><m>4 u_2(t) + (t - 5) u_5(t)</m></premise>
-					<response>
-							<me>\small
-								\left\{
-								\begin{array}{ll}
-									0, 			\amp t \lt 2 \\
-									4, 			\amp 2 \le t \lt 5 \\
-									4 + t - 5,	\amp t \ge 5
-								\end{array}
-								\right.
-							</me>
-					</response>
-				</match>
-				<match>
-					<premise><m>4(u_0(t) - u_2(t)) + (t - 5) u_2(t)</m></premise>
-					<response>
-							<me>\small
-								\left\{
-								\begin{array}{ll}
-									0, 		\amp t \lt 0 \\
-									4, 		\amp 0 \le t \lt 2 \\
-									t - 5,	\amp t \ge 2
-								\end{array}
-								\right.
-							</me>
-					</response>
-				</match>
-			</cardsort>
-		</task>
-	</exercise>
+			<task label="piecewise-functions-cyu-1">
+				<title><e component="emoji">🤔💭</e> Piecewise to Laplace</title>
+				<statement>
+					<p>
+						Match each unit-step form to its corresponding piecewise form.
+					</p>
+				</statement>
+				<cardsort>
+					<match>
+						<premise><m>4(u_2(t) - u_5(t)) + (t - 5)u_5(t)</m></premise>
+						<response>
+						<me>\small
+							\left\{
+							\begin{array}{ll}
+								0, 		\amp t \lt 2 \\
+								4, 		\amp 2 \le t \lt 5 \\
+								t - 5,	\amp t \ge 5
+							\end{array}
+							\right.
+						</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4(1 - u_2(t)) + (t - 5)u_5(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										4, 		\amp t \lt 2 \\
+										0, 		\amp 2 \le t \lt 5 \\
+										t - 5,	\amp t \ge 5
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4 u_2(t) + (t - 5) u_5(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										0, 			\amp t \lt 2 \\
+										4, 			\amp 2 \le t \lt 5 \\
+										4 + t - 5,	\amp t \ge 5
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+					<match>
+						<premise><m>4(u_0(t) - u_2(t)) + (t - 5) u_2(t)</m></premise>
+						<response>
+								<me>\small
+									\left\{
+									\begin{array}{ll}
+										0, 		\amp t \lt 0 \\
+										4, 		\amp 0 \le t \lt 2 \\
+										t - 5,	\amp t \ge 2
+									\end{array}
+									\right.
+								</me>
+						</response>
+					</match>
+				</cardsort>
+			</task>
+		</exercise>
+	</subsection>
 
 </section>

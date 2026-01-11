@@ -13,13 +13,14 @@
 <section xml:id="solving-linear-systems">
 	<title>Solving Linear Systems</title>
 
-	<xref provisional="WORK-IN-PROGRESS"/>
-
 	<introduction>
+		<p><xref provisional="WORK-IN-PROGRESS"/></p>
+
 		<p>
 			We've explored what linear systems are, how to visualize their behavior, and how to write them in compact matrix form. 
 			Now it's time to actually <em>solve</em> them.
 		</p>
+
 		<p>
 			We'll start with a method that mirrors how we solved single constant-coefficient equations: 
 			we guess exponential solutions. This guess transforms the differential system into an algebra problem — 
@@ -27,33 +28,27 @@
 		</p>
 	</introduction>
 
-	<paragraphs xml:id="guessing-exponentials">
+	<subsection xml:id="guessing-exponentials">
 		<title>Guessing Exponential Solutions</title>
 
 		<p>
-			Recall how we solved single first-order linear equations like <m>y' = ky</m> by 
-			guessing solutions of the form <m>y(t) = Ce^{kt}</m>.  
-			We'll try the same idea for systems.
+			Recall how we solved single first-order linear equations like <m>y' = ky</m> by guessing solutions of the form <m>y(t) = Ce^{kt}</m>. We'll try the same idea for systems.
 		</p>
 
 		<p>
 			Consider the system:
+			<men xml:id="guess-exponential-system">
+				\begin{array}{l}
+				\dfrac{dx}{dt} = 3x + 4y\\
+				\dfrac{dy}{dt} = -4x + 3y
+				\end{array}
+			</men>
 		</p>
-
-		<men xml:id="guess-exponential-system">
-			\begin{array}{l}
-			\dfrac{dx}{dt} = 3x + 4y\\
-			\dfrac{dy}{dt} = -4x + 3y
-			\end{array}
-		</men>
 
 		<p>
 			Let's guess that <m>x(t)</m> and <m>y(t)</m> share the same exponential rate <m>r</m>:
+			<me>x(t) = Ce^{rt}, \qquad y(t) = De^{rt}.</me>
 		</p>
-
-		<me>
-			x(t) = Ce^{rt}, \qquad y(t) = De^{rt}.
-		</me>
 
 		<aside>
 			<p>
@@ -63,68 +58,57 @@
 
 		<p>
 			Differentiating gives:
+			<me>x' = Cr e^{rt}, \qquad y' = Dr e^{rt}.</me>
 		</p>
-
-		<me>
-			x' = Cr e^{rt}, \qquad y' = Dr e^{rt}.
-		</me>
 
 		<p>
 			Substituting into the system:
+			<md alignment="alignat">
+				<mrow>Cr e^{rt} \amp {}={} \amp 3Ce^{rt} \amp {}+{} \amp 4De^{rt}</mrow>
+				<mrow>Dr e^{rt} \amp {}={} \amp -4Ce^{rt} \amp {}+{} \amp 3De^{rt}</mrow>
+			</md>
 		</p>
-
-		<md alignment="alignat">
-			<mrow>Cr e^{rt} \amp {}={} \amp 3Ce^{rt} \amp {}+{} \amp 4De^{rt}</mrow>
-			<mrow>Dr e^{rt} \amp {}={} \amp -4Ce^{rt} \amp {}+{} \amp 3De^{rt}</mrow>
-		</md>
 
 		<p>
 			Divide through by <m>e^{rt}</m> (which is never zero):
+			<md alignment="alignat">
+				<mrow>Cr \amp {}={} \amp 3C \amp {}+{} \amp 4D</mrow>
+				<mrow>Dr \amp {}={} \amp -4C \amp {}+{} \amp 3D</mrow>
+			</md>
 		</p>
-
-		<md alignment="alignat">
-			<mrow>Cr \amp {}={} \amp 3C \amp {}+{} \amp 4D</mrow>
-			<mrow>Dr \amp {}={} \amp -4C \amp {}+{} \amp 3D</mrow>
-		</md>
 
 		<p>
 			This leaves an algebraic system involving the unknowns: <m>C</m>, <m>D</m>, and <m>r</m>. It turns out that these unknowns have a very special relationship. To see this, flip the system around:
+			<md alignment="alignat">
+				<mrow>3{\DLBb C} \amp {}+{} \amp 4{\DLGb D} \amp {}={} \amp r{\DLBb C}   </mrow>
+				<mrow>-4{\DLBb C} \amp {}+{} \amp 3{\DLGb D} \amp {}={} \amp r{\DLGb D} </mrow>.
+			</md>
 		</p>
-
-		<md alignment="alignat">
-			<mrow>3{\DLBb C} \amp {}+{} \amp 4{\DLGb D} \amp {}={} \amp r{\DLBb C}   </mrow>
-			<mrow>-4{\DLBb C} \amp {}+{} \amp 3{\DLGb D} \amp {}={} \amp r{\DLGb D} </mrow>.
-		</md>
 
 		<p>
 			Now, convert this into a <m>2 \times 2</m> matrix system:
+			<me>
+				\begin{bmatrix}
+					3 \amp 4\\
+					-4 \amp 3
+				\end{bmatrix}
+				\begin{bmatrix}
+					{\DLBb C}\\
+					{\DLGb D}
+				\end{bmatrix}
+				= r
+				\begin{bmatrix}
+					{\DLBb C}\\
+					{\DLGb D}
+				\end{bmatrix}
+			</me>
 		</p>
-
-		<me>
-			\begin{bmatrix}
-				3 \amp 4\\
-				-4 \amp 3
-			\end{bmatrix}
-			\begin{bmatrix}
-				{\DLBb C}\\
-				{\DLGb D}
-			\end{bmatrix}
-			= r
-			\begin{bmatrix}
-				{\DLBb C}\\
-				{\DLGb D}
-			\end{bmatrix}
-		</me>
 
 		<p>
 			This is the <em>eigenvalue equation</em> <m>A \vec{v} = r \vec{v}</m> for the coefficient matrix
+			<me>A = \begin{bmatrix} 3 \amp 4 \\ -4 \amp 3 \end{bmatrix}.</me>
 		</p>
 
-		<me>
-			A = \begin{bmatrix} 3 \amp 4 \\ -4 \amp 3 \end{bmatrix}.
-		</me>
-
-		
 		<p>
 			This tells us something powerful:  
 			<ul marker="disc">
@@ -295,32 +279,32 @@
 				</p>
 			</solution>
 		</example>
-	</paragraphs>
 
-	<exercise label="solving-linear-systems-cyu-bundle">
-		<title><e component="emoji">🤔💭</e> Solving Linear Systems Reading Questions</title>
+		<exercise label="solving-linear-systems-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> Solving Linear Systems Reading Questions</title>
 
-		<task label="solving-linear-systems-cyu-1">
-			<title><e component="emoji">📖❓</e> Eigenvalues and Behavior</title>
-			<statement>
-				<p>
-					Suppose the eigenvalues of a system are <m>r = -2 \pm 3i</m>. What does this tell you about the solutions?
-				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><p>They spiral inward toward the origin.</p></statement>
-				</choice>
-				<choice correct="no">
-					<statement><p>They spiral outward away from the origin.</p></statement>
-					<feedback><p>The negative real part means decay, not growth.</p></feedback>
-				</choice>
-				<choice correct="no">
-					<statement><p>They move straight toward the origin with no oscillation.</p></statement>
-					<feedback><p>The imaginary part implies rotation (spiraling).</p></feedback>
-				</choice>
-			</choices>
-		</task>
-	</exercise>
+			<task label="solving-linear-systems-cyu-1">
+				<title><e component="emoji">📖❓</e> Eigenvalues and Behavior</title>
+				<statement>
+					<p>
+						Suppose the eigenvalues of a system are <m>r = -2 \pm 3i</m>. What does this tell you about the solutions?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>They spiral inward toward the origin.</p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p>They spiral outward away from the origin.</p></statement>
+						<feedback><p>The negative real part means decay, not growth.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>They move straight toward the origin with no oscillation.</p></statement>
+						<feedback><p>The imaginary part implies rotation (spiraling).</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
 
 </section>

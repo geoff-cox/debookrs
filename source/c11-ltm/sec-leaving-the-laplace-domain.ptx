@@ -23,17 +23,16 @@
 		</p>
 	</introduction>
 
-	<paragraphs label="lt-inverse-concept">
+	<subsection label="lt-inverse-concept">
 		<title>What Is the Inverse Laplace Transform?</title>
 
 		<p>
-			Symbolically, the inverse Laplace transform works much like the inverse of a standard function. For example, we can release <m>y(t)</m> from inside the cosine by applying the inverse cosine:  
+			Symbolically, the inverse Laplace transform works much like the inverse of a standard function. For example, we can release <m>y(t)</m> from inside the cosine by applying the inverse cosine:
+			<md>
+				<mrow> \cos(y(t)) = t^2	\amp\quad\Rightarrow\quad \cos^{-1}(\cos(y(t))) = \cos^{-1}(t^2) </mrow>
+				<mrow>					\amp\quad\Rightarrow\quad y(t) = \cos^{-1}(t^2) </mrow>
+			</md>
 		</p>
-
-		<md>
-			<mrow> \cos(y(t)) = t^2	\amp\quad\Rightarrow\quad \cos^{-1}(\cos(y(t))) = \cos^{-1}(t^2) </mrow>
-			<mrow>					\amp\quad\Rightarrow\quad y(t) = \cos^{-1}(t^2) </mrow>
-		</md>
 		
 		<p>
 			Similarly, we can release <m>y(t)</m> from inside a Laplace transform by applying its inverse:
@@ -111,9 +110,9 @@
 				</choice>
 			</choices>
 		</exercise>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="lt-inverse-table-usage">
+	<subsection label="lt-inverse-table-usage">
 		<title>Using the Table to Invert <m>Y(s)</m></title>
 
 		<p>
@@ -122,17 +121,13 @@
 
 		<p>
 			For example, suppose we have the following <m>Y(s)</m> in the Laplace domain:
+			<me>Y(s) = \frac{1}{s - 5}</me>
 		</p>
-
-		<me>Y(s) = \frac{1}{s - 5}</me>
 
 		<p>
 			To return back this to the original domain we apply the inverse to both sides:
+			<me>\ilap{Y(s)} = \ilap{\frac{1}{s - 5}} \quad\Rightarrow\quad y(t) = \ilap{\frac{1}{s - 5}}</me>
 		</p>
-
-		<me>
-			\ilap{Y(s)} = \ilap{\frac{1}{s - 5}} \quad\Rightarrow\quad y(t) = \ilap{\frac{1}{s - 5}}
-		</me>
 
 		<p>
 			We have <m>y(t)</m>, but it needs to be a function of <m>t</m>. For that, we match <m>\frac{1}{s - 5}</m> to one of the forms in the <m>s</m>-domain column of the <xref ref="lt-table-common" text="custom">table</xref>. 
@@ -140,9 +135,8 @@
 		
 		<p>
 			We see the best match is <xref ref="lt-L2-table" text="custom">L<m>_2</m></xref> with <m>a = 5</m>, so we get:
+			<me>y(t) = e^{5t}</me>
 		</p>
-
-		<me>y(t) = e^{5t}</me>
 
 		<example><title>Inverses using the Laplace Transform Table</title>
 			<statement>
@@ -286,9 +280,9 @@
 		<p>
 			So far, we've only dealt with expressions that match a single row in the transform table. But most Laplace domain solutions are a sum of multiple terms. Fortunately, we don't need to invert the entire thing at once. We'll use linearity to handle those in the next section.
 		</p>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="lt-inverse-linearity">
+	<subsection label="lt-inverse-linearity">
 		<title>Linearity of the Inverse Laplace Transform</title>
 
 		<p>
@@ -297,13 +291,8 @@
 
 		<p>
 			Assuming <m>f(s)</m> and <m>g(s)</m> are functions in the Laplace domain, then we have:
+			<men xml:id="lt-P2">\text{P}_{2}:\quad\ilap{af(s) \pm bg(s)} = a\ilap{f(s)} \pm b\ilap{g(s)}\quad (a, b\ \text{constants}).</men>
 		</p>
-
-		<md>
-			<mrow xml:id="lt-P2">
-				\text{P}_{2}:\quad\ilap{af(s) \pm bg(s)} = a\ilap{f(s)} \pm b\ilap{g(s)}\quad (a, b\ \text{constants})
-			</mrow>.
-		</md>
 
 		<p>
 			Here's an example of this linearity property in action.
@@ -362,41 +351,44 @@
 		<p>
 			Linearity makes inverting multi-term expressions much more manageable. Sometimes you'll run into expressions that don't quite match anything in the table. They're close—but not perfect. In the next section, we'll look at how to make small algebraic adjustments that bring those expressions into a form we can invert.
 		</p>
-	</paragraphs>
+	</subsection>
 
-	<paragraphs label="lt-inverse-minor-adjustments">
+	<subsection label="lt-inverse-minor-adjustments">
 		<title>Minor Adjustments for a Perfect Match</title>
+
 		<introduction>
 			<p>
 				Sometimes, the Laplace-domain function <m>Y(s)</m> is close to a known table form—but not quite there. In these cases, a few algebraic adjustments will help reveal the match. These are not major rewrites, just small nudges: splitting a numerator, factoring out constants, or rewriting terms to expose a recognizable pattern.
 			</p>
 		</introduction>
 
-		<paragraphs>
+		<subsubsection>
 			<title>Separate Fractions to Match Multiple Forms</title>
 
 			<p>
 				Suppose your function has a sum in the numerator, like
 				<me>Y(s) = \frac{2s + 5}{s^2 + 4}</me>.
 				The denominator matches both sine and cosine forms in the table, but the numerator doesn't match any of the entries. The fix? Separate the addition in the numerator:
+				<me>Y(s) = \frac{2s}{s^2 + 4} + \frac{5}{s^2 + 4}.</me>
 			</p>
-
-			<me>
-			Y(s) = \frac{2s}{s^2 + 4} + \frac{5}{s^2 + 4}
-			</me>.
 
 			<p>
 				Then factor constants and attempt to match with the table again:
+				<me>
+					Y(s) 
+					= 2\ \us{\ds<xref ref="lt-L5-table" text="custom">\text{L}_5</xref>\text{✔️}}{\ul{\frac{s}{s^2 + 4}}}
+					+ 5\ \us{\ds\text{almost}\ <xref ref="lt-L4-table" text="custom">\text{L}_4</xref>}{\ul{\frac{1}{s^2 + 4}}.}\!
+				</me>
 			</p>
-
-			<me>
-				Y(s) 
-				= 2\ \us{\ds<xref ref="lt-L5-table" text="custom">\text{L}_5</xref>\text{✔️}}{\ul{\frac{s}{s^2 + 4}}}
-				+ 5\ \us{\ds\text{almost}\ <xref ref="lt-L4-table" text="custom">\text{L}_4</xref>}{\ul{\frac{1}{s^2 + 4}}}\!
-			</me>.
 
 			<p> 
 				The first term perfectly matches, the second term needs <m>b=2</m> in the numerator. Missing numbers in the numerator is common with inverse transforms, but there is an easy fix. We multiply numerator and denominator by the missing number:
+				<me>
+					Y(s) 
+					= 2\frac{s}{s^2 + 4} + 5\frac{1}{s^2 + 4} \cdot \us{\ds 🚩}{\boxed{\frac{2}{2}}} 
+					= 2\ \us{\ds<xref ref="lt-L5-table" text="custom">\text{L}_5</xref>\text{✔️}}{\ul{\frac{s}{s^2 + 4}}} 
+					+ \frac{5}{2}\ \us{\ds<xref ref="lt-L4-table" text="custom">\text{L}_4</xref>\text{✔️}}{\ul{\frac{2}{s^2 + 4}}.}
+				</me>
 			</p>
 
 			<aside><title>🚩 Multiplying by <m>1</m></title>
@@ -404,13 +396,6 @@
 					<m>\sfrac22</m> is just a special form of <m>1</m>; multiplying by it doesn't change the fraction.
 				</p>
 			</aside>
-
-			<me>	
-				Y(s) 
-				= 2\frac{s}{s^2 + 4} + 5\frac{1}{s^2 + 4} \cdot \us{\ds 🚩}{\boxed{\frac{2}{2}}} 
-				= 2\ \us{\ds<xref ref="lt-L5-table" text="custom">\text{L}_5</xref>\text{✔️}}{\ul{\frac{s}{s^2 + 4}}} 
-				+ \frac{5}{2}\ \us{\ds<xref ref="lt-L4-table" text="custom">\text{L}_4</xref>\text{✔️}}{\ul{\frac{2}{s^2 + 4}}}
-			</me>.
 
 			<p>
 				With these minor adjustments, the inverse transform becomes straightforward:
@@ -454,15 +439,16 @@
 				</choices>
 			</exercise>
 
-		</paragraphs>
+		</subsubsection>
 
-		<paragraphs>
+		<subsubsection>
 			<title>Adding and Subtracting to Match Shifts</title>
 
 			<p>
 				Some forms contain a shift, like <m>(s - a)</m>. For example, the form
 				<me>Y(s) = \frac{s + 1}{(s - 2)^2 + 9}</me>
 				looks similar to <xref ref="lt-L8-table" text="custom">L<m>_8</m></xref>, but the numerator should be <m>s-2</m>. This can be fixed by subtracting <m>2</m> and adding <m>2</m>, like so:
+				<me>Y(s) = \frac{s - \os{\ds🚩}{\overline{2 + 2}} + 1}{(s - 2)^2 + 9} = \frac{s - 2 + 3}{(s - 2)^2 + 9}.</me>
 			</p>
 
 			<aside><title>🚩 Adding <m>0</m></title>
@@ -471,19 +457,14 @@
 				</p>
 			</aside>
 
-			<me>
-				Y(s) = \frac{s - \os{\ds🚩}{\overline{2 + 2}} + 1}{(s - 2)^2 + 9} = \frac{s - 2 + 3}{(s - 2)^2 + 9}
-			</me>
-
 			<p>
 				Now you can separate the fraction as before:
+				<me>
+					Y(s)
+					= \us{\ds<xref ref="lt-L8-table" text="custom">\text{L}_8</xref>\text{✔️}}{\ul{\frac{s - 2}{(s - 2)^2 + 9}}}
+					+ \us{\ds<xref ref="lt-L7-table" text="custom">\text{L}_7</xref>\text{✔️}}{\ul{\frac{3}{(s - 2)^2 + 9}}}
+				</me>
 			</p>
-
-			<me>
-				Y(s)
-				= \us{\ds<xref ref="lt-L8-table" text="custom">\text{L}_8</xref>\text{✔️}}{\ul{\frac{s - 2}{(s - 2)^2 + 9}}}
-				+ \us{\ds<xref ref="lt-L7-table" text="custom">\text{L}_7</xref>\text{✔️}}{\ul{\frac{3}{(s - 2)^2 + 9}}}
-			</me>
 
 			<p>
 				These can be a little tricky so here's a few additional examples to prepare you for what you may encounter.
@@ -672,90 +653,90 @@
 				</choices>
 			</exercise>
 
-		</paragraphs>
+			<p>
+				With practice, these adjustments become intuitive, greatly simplifying the process of leaving the Laplace domain to recover the solution to the original differential equation.
+			</p>
 
-		<p>
-			With practice, these adjustments become intuitive, greatly simplifying the process of leaving the Laplace domain to recover the solution to the original differential equation.
-		</p>
-	</paragraphs>
-	
-	<assemblage>
-		<title>Step 3 — Leaving the Laplace Domain Summary</title>
-		<p>
-			Apply the inverse transform <m>\laplacesym^{-1}</m> term-by-term to <m>Y(s)</m>, converting the algebraic answer back into the time-domain solution <m>y(t)</m>.
-		</p>
-	</assemblage>
-
-	<exercise label="lt-method-step3-cyu-bundle">
-		<title><e component="emoji">🤔💭</e> Reading Questions</title>
-
-		<task label="lt-method-step3-cyu-1">
-			<title><e component="emoji">🤔💭</e> Adjusting the Numerator</title>
-			<statement>
+			<assemblage>
+				<title>Step 3 — Leaving the Laplace Domain Summary</title>
 				<p>
-					Select the number that belongs in both blanks to directly apply the inverse. 
-					<me>\ilap{\frac{5}{s^4}} = \frac{5}{<fillin characters="1"/>}\ilap{\frac{<fillin characters="1"/>}{s^4}} </me>
+					Apply the inverse transform <m>\laplacesym^{-1}</m> term-by-term to <m>Y(s)</m>, converting the algebraic answer back into the time-domain solution <m>y(t)</m>.
 				</p>
-			</statement>
-			<choices randomize="yes">
-				<choice correct="yes">
-					<statement><m>6</m></statement>
-					<feedback>Correct!</feedback>
-				</choice>
-				<choice>
-					<statement><m>9</m></statement>
-					<feedback>Incorrect.</feedback>
-				</choice>
-				<choice>
-					<statement><m>3</m></statement>
-					<feedback>Incorrect.</feedback>
-				</choice>
-				<choice>
-					<statement><m>24</m></statement>
-					<feedback>Incorrect.</feedback>
-				</choice>
-			</choices>
-		</task>
-		<task label="lt-method-step3-cyu-2">
-			<title><e component="emoji">🤔💭</e> Find the Inverse Transform</title>
-			<statement>
-				<me>Y(s) = \frac{s + 2}{s^2 + 1} \quad\Rightarrow\quad y(t) = <fillin characters="15"/></me>
-			</statement>
-			<choices randomize="yes">
-				<choice>
-					<statement><m>\cos(t) + 2\sin(t)</m></statement>
-					<feedback>
+			</assemblage>
+
+			<exercise label="lt-method-step3-cyu-bundle">
+				<title><e component="emoji">🤔💭</e> Reading Questions</title>
+
+				<task label="lt-method-step3-cyu-1">
+					<title><e component="emoji">🤔💭</e> Adjusting the Numerator</title>
+					<statement>
 						<p>
-							Correct! The function can be split as <m>\ds\frac{s}{s^2 + 1} + 2\frac{1}{s^2 + 1}</m>, which corresponds to <m>\cos(t)</m> and <m>\sin(t)</m>.
+							Select the number that belongs in both blanks to directly apply the inverse. 
+							<me>\ilap{\frac{5}{s^4}} = \frac{5}{<fillin characters="1"/>}\ilap{\frac{<fillin characters="1"/>}{s^4}} </me>
 						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\cos(2t) + \sin(2t)</m></statement>
-					<feedback>
-						<p>
-							Incorrect.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\cos(t) + 2\sin(2t)</m></statement>
-					<feedback>
-						<p>
-							Incorrect.
-						</p>
-					</feedback>
-				</choice>
-				<choice>
-					<statement><m>\cos(t) + \sin(2t)</m></statement>
-					<feedback>
-						<p>
-							Incorrect.
-						</p>
-					</feedback>
-				</choice>
-			</choices>
-		</task>
-	</exercise>
+					</statement>
+					<choices randomize="yes">
+						<choice correct="yes">
+							<statement><m>6</m></statement>
+							<feedback>Correct!</feedback>
+						</choice>
+						<choice>
+							<statement><m>9</m></statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+						<choice>
+							<statement><m>3</m></statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+						<choice>
+							<statement><m>24</m></statement>
+							<feedback>Incorrect.</feedback>
+						</choice>
+					</choices>
+				</task>
+				<task label="lt-method-step3-cyu-2">
+					<title><e component="emoji">🤔💭</e> Find the Inverse Transform</title>
+					<statement>
+						<me>Y(s) = \frac{s + 2}{s^2 + 1} \quad\Rightarrow\quad y(t) = <fillin characters="15"/></me>
+					</statement>
+					<choices randomize="yes">
+						<choice>
+							<statement><m>\cos(t) + 2\sin(t)</m></statement>
+							<feedback>
+								<p>
+									Correct! The function can be split as <m>\ds\frac{s}{s^2 + 1} + 2\frac{1}{s^2 + 1}</m>, which corresponds to <m>\cos(t)</m> and <m>\sin(t)</m>.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\cos(2t) + \sin(2t)</m></statement>
+							<feedback>
+								<p>
+									Incorrect.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\cos(t) + 2\sin(2t)</m></statement>
+							<feedback>
+								<p>
+									Incorrect.
+								</p>
+							</feedback>
+						</choice>
+						<choice>
+							<statement><m>\cos(t) + \sin(2t)</m></statement>
+							<feedback>
+								<p>
+									Incorrect.
+								</p>
+							</feedback>
+						</choice>
+					</choices>
+				</task>
+			</exercise>
+		</subsubsection>
+
+	</subsection>
 	
 </section>

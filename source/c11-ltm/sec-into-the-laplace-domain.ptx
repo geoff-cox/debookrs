@@ -19,94 +19,86 @@
 		</p>
 	</introduction>
 
-    <paragraphs label="lt-method-step1-overview">
-        <title>Crossing Into the Laplace Domain</title>
+	<subsection label="lt-method-step1-overview">
+			<title>Crossing Into the Laplace Domain</title>
 
-        <p>
-            In terms of the roadmap, we can visualize this first step as follows:
-        </p>
-
-		<assemblage xml:id="lt-roadmap-step-1"><title>Step 1️⃣: Into the Laplace Domain (Forward Transform)</title>
 			<p>
-				<sidebyside widths="32% 18% 42%" valign="middle">
-					<p>
-						<me>\ul{\qquad\textbf{Original Domain}\qquad}</me>
-					</p>
-					<p/>
-					<p>
-						<me>\DLBa\textbf{Laplace Domain}</me>
-					</p>
-				</sidebyside>
-				<sidebyside widths="32% 18% 42%" valign="top">
-					<p>
-						<md>
-							<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
-							<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
-							<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
-						</md>
-					</p>
-					<p>
-						<md>
-							<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
-							<mrow>\text{Apply}\ \laplacesym</mrow>
-							<mrow/>
-						</md>
-					</p>
-					<p>
-						<assemblage>
-							<p>
-								<md>
-									<mrow>\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
-									<mrow>\DLBa\dotsm</mrow>
-								</md>
-							</p>
-						</assemblage>
-					</p>
-				</sidebyside>
+					In terms of the roadmap, we can visualize this first step as follows:
 			</p>
-		</assemblage>
+
+	<assemblage xml:id="lt-roadmap-step-1"><title>Step 1️⃣: Into the Laplace Domain (Forward Transform)</title>
+		<p>
+			<sidebyside widths="32% 18% 42%" valign="middle">
+				<p>
+					<me>\ul{\qquad\textbf{Original Domain}\qquad}</me>
+				</p>
+				<p/>
+				<p>
+					<me>\DLBa\textbf{Laplace Domain}</me>
+				</p>
+			</sidebyside>
+			<sidebyside widths="32% 18% 42%" valign="top">
+				<p>
+					<md>
+						<mrow>\os{\vphantom{m}}{y'' - 9y = 10e^{2t}}</mrow>
+						<mrow>y(0) = 1,\quad y'(0) = -7</mrow>
+						<mrow>\os{\large 🔺 🔺 🔺 🔺 🔺}{\text{Differential Equation}}</mrow>
+					</md>
+				</p>
+				<p>
+					<md>
+						<mrow>\underrightarrow{\text{1️⃣ Forward}}</mrow>
+						<mrow>\text{Apply}\ \laplacesym</mrow>
+						<mrow/>
+					</md>
+				</p>
+				<p>
+					<assemblage>
+						<p>
+							<md>
+								<mrow>\DLBa s^2Y - 9Y - s + 7 = \frac{10}{s - 2}</mrow>
+								<mrow>\DLBa\dotsm</mrow>
+							</md>
+						</p>
+					</assemblage>
+				</p>
+			</sidebyside>
+		</p>
+	</assemblage>
+
+	<p>
+		Simply put, forward transforming a differential equation into the Laplace domain means applying the Laplace transform to both sides of the equation. The result is an algebraic equation where the derivatives have been converted into powers of <m>s</m> and the new unknown is <m>Y</m>.
+	</p>
+	</subsection>
+
+	<subsection xml:id="lt-forward-mechanics">
+		<title>Basic Mechanics of the Forward Transform</title>
 
 		<p>
-			Simply put, forward transforming a differential equation into the Laplace domain means applying the Laplace transform to both sides of the equation. The result is an algebraic equation where the derivatives have been converted into powers of <m>s</m> and the new unknown is <m>Y</m>.
+				Symbolically, applying the forward Laplace transform to the differential equation
+	<me>
+		y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
+	</me>
+	amounts to applying it to both sides of the equation as follows:
+	<me>
+		\lap{y'' - 9y} = \lap{10e^{2t}}
+	</me>.
 		</p>
-    </paragraphs>
-
-	<paragraphs xml:id="lt-forward-mechanics">
-		<title>Basic Mechanics of the Forward Transform</title>
-        <p>
-            Symbolically, applying the forward Laplace transform to the differential equation
-			<me>
-				y'' - 9y = 10e^{2t}, \quad y(0) = 1,\quad y'(0) = -7
-			</me>
-			amounts to applying it to both sides of the equation as follows:
-			<me>
-				\lap{y'' - 9y} = \lap{10e^{2t}}
-			</me>.
-        </p>
 
 		<p>
 			Using the <xref ref="lt-P1" text="custom">linearity property</xref> we can see that the transform applies to each term:
+			<me>\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}.</me>
 		</p>
-
-		<me>
-			\lap{y''} - 9\lap{y} = 10\lap{e^{2t}}
-		</me>.
 
 		<p>
 			Letting <m>Y(s) = \lap{y(t)}</m> and applying rule <xref ref="lt-R2" text="custom">R<m>_2</m></xref> for <m>\lap{y''}</m> and common transform <xref ref="lt-L2" text="custom">L<m>_2</m></xref>, we get:
+			<me>s^2 Y(s) - s y(0) - y'(0) - 9 Y(s) = 10 \left(\frac{1}{s-2}\right).</me>
 		</p>
-
-		<me>
-			s^2 Y(s) - s y(0) - y'(0) - 9 Y(s) = 10 \left(\frac{1}{s-2}\right)
-		</me>.
 		
 		<p>
 			This is where the initial conditions come into play. Substituting the initial conditions and simplifying gives the desired Laplace domain equation:
+			<me>s^2Y - 9Y - s + 7 = \frac{10}{s - 2}.</me>
 		</p>
-
-		<me>
-			s^2Y - 9Y - s + 7 = \frac{10}{s - 2}
-		</me>.
 
 		<p>
 			Our new unknown is <m>Y</m> and since the derivatives have been eliminated, we can use algebra to solve for it. In fact, the solution to our differential equation is actually hiding inside <m>Y</m>. So, by solving for <m>Y</m> you are also solving for <m>y(t)</m> at the same time!
@@ -192,12 +184,12 @@
 			</choices>
 		</exercise>
 
-        <p>
-            Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
-        </p>
-	</paragraphs>
+		<p>
+				Now that you've seen the mechanical steps involved with applying the Laplace transform to a differential equation, it is important to take a moment to see what's happening behind the scenes during this process. 
+		</p>
+	</subsection>
 
-	<paragraphs label="lt-forward-intro">
+	<subsection label="lt-forward-intro">
 		<title>What is Going on Behind the Scenes?</title>
 
 		<exercise label="lt-method-step1-chkpt-2">
@@ -312,9 +304,9 @@
 			</p>
 		</sidebyside>
 		
-        <p>
-            The details for computing <m>I_2 = \lap{e^{7t}}</m> are given <xref ref="common-exp-7t-details" text="custom">here</xref>.
-        </p>
+		<p>
+				The details for computing <m>I_2 = \lap{e^{7t}}</m> are given <xref ref="common-exp-7t-details" text="custom">here</xref>.
+		</p>
 
 		<p>
 			Since the two integrals are <m>\lap{y} = Y(s)</m>, the symbolic and mathematical paths come back together as  
@@ -326,13 +318,13 @@
 		<p>
 			By transforming our equation into this new form, we have momentarily stored <m>y(t)</m> inside the function <m>Y</m>. Therefore, solving for <m>Y</m> indirectly also solves for <m>y(t)</m>.
 		</p>
-	</paragraphs>
-	
-	<assemblage>
-		<title>Step 1 — Into the Laplace Domain Summary</title>
-		<p>
-			Apply <m>\laplacesym</m> to each term of the differential equation; derivatives become powers of <m>s</m> and initial conditions drop in as constants, leaving an algebraic equation in <m>Y(s)</m>.
-		</p>
-	</assemblage>
+
+		<assemblage>
+			<title>Step 1 — Into the Laplace Domain Summary</title>
+			<p>
+				Apply <m>\laplacesym</m> to each term of the differential equation; derivatives become powers of <m>s</m> and initial conditions drop in as constants, leaving an algebraic equation in <m>Y(s)</m>.
+			</p>
+		</assemblage>
+	</subsection>
 
 </section>
