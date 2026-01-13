@@ -1,0 +1,86 @@
+#############################################
+###       Generated from PreTeXt source      
+###       on 2025-10-31T16:10:03-04:00       
+###   A recent stable commit (2022-07-01):   
+### 6c761d3dba23af92cba35001c852aac04ae99a5f 
+###                                          
+###         https://pretextbook.org          
+###                                          
+#############################################
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Level()
+## KEYWORDS()
+## TitleText1()
+## EditionText1()
+## AuthorText1()
+## Section1(not reported)
+## Problem1(8)
+## Author()
+## Institution()
+## Language(en-US)
+
+DOCUMENT();
+
+############################################################
+# Load Macros
+############################################################
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "AnswerFormatHelp.pl",
+  "contextIntegers.pl",
+  "contextLimitedPowers.pl",
+  "contextPolynomialFactors.pl",
+  "PGcourse.pl",
+);
+COMMENT('Authored in PreTeXt');
+
+############################################################
+# Header
+############################################################
+TEXT(beginproblem());
+
+############################################################
+# PG Setup Code
+############################################################
+#  Vertex form
+Context("Numeric");
+Context()->variables->add(r=>'Real');
+
+# (r-1)(r+1)(r-3)(r+3) = (r^2-1)(r^2-9) = r^4 - 10r^2 + 9
+$r1 = random(-1, 1, 2) * random(4, 6, 1);
+$r2 = random(1, 3, 1);
+$expanded = Compute("r^3 - $r1 r^2 - $r2**2 r + $r1 * $r2**2")->reduce;
+$factored_str = "(r - $r1)(r - $r2)(r + $r2)";
+
+# (r-4)(r+1)(r-1) = (r-4)(r^2-1) = r^3 - 4r^2 - r + 4
+Context("PolynomialFactors-Strict");
+Context()->flags->set(singleFactors => 0);
+LimitedPowers::OnlyIntegers(
+	minPower => 0,
+	maxPower => 1,
+	message  => "either 0 or 1 for each factor",
+);
+Context()->variables->add(r=>'Real');
+
+$factored = Compute($factored_str)->reduce;
+
+############################################################
+# Body
+############################################################
+
+BEGIN_PGML
+Fully factor each characteristic equation.
+
+⚠️ _Warning: The numbers on these problems are randomly generated when you press "Activate". So, click "Activate" before you start!_
+
+[`\displaystyle [$expanded]\ =\ `]    [_]{$factored}{8}
+END_PGML
+
+############################################################
+# End Problem
+############################################################
+
+ENDDOCUMENT();
