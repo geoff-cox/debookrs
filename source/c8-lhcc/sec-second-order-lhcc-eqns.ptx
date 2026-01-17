@@ -14,314 +14,328 @@
 	<title>Second-Order Equations</title>
 
 	<introduction>
-		<p>
-			Second-order linear homogeneous constant coefficient (LHCC) equations appear in many applications across physics, engineering, and applied mathematics. These equations have the general form:
-			<men xml:id="second-order-lhcc-de">
-				a y'' + b y' + c y = 0
-			</men>
-		</p>
-
-		<p>
-			where <m>a</m>, <m>b</m>, and <m>c</m> are constants. In this section, we'll explore how the solutions depend on the roots of the associated characteristic equation, and how different types of roots give rise to different forms of the general solution.
-		</p>
-	</introduction>
-
-	<subsection label="second-order-lhcc-fundamental-solns">
-		<title>Fundamental Solutions</title>
-
-		<exercise label="chkpt-second-order-lhcc-eqns-1">
-			<title><e component="emoji">📖❓</e>  Classifying Characteristic Equations</title>
-			<statement>
-				<p>
-					Review <xref ref="solving-the-quadratic-equation" text="custom">quadratic equations</xref> and answer the following question.
-				</p>
-				<p>
-					Match the type of roots with the corresponding quadratic equation.
-				</p>
-			</statement>
-			<feedback>
-				<p>
-					Good work! The discriminant helps classify root types.
-				</p>
-			</feedback>
-			<cardsort>
-				<match>
-					<premise>Real unequal roots</premise>
-					<response><m>r^2 - 4r + 3 = 0</m></response>
-				</match>
-				<match>
-					<premise>Real repeated roots</premise>
-					<response><m>r^2 - 6r + 9 = 0</m></response>
-				</match>
-				<match>
-					<premise>Complex roots</premise>
-					<response><m>r^2 + 4 = 0</m></response>
-				</match>
-			</cardsort>
-		</exercise>
-
-		<p>
-			To solve <xref ref="second-order-lhcc-de"/>, we begin by forming the characteristic equation as we did in the previous section. For this case, the characteristic equation is the <xref ref="solving-the-quadratic-equation" text="custom">quadratic</xref>
-			<men xml:id="second-order-lhcc-characteristic-equation">
-				a r^2 + b r + c = 0
-			</men>
-		</p>
-
-		<p>
-			Solving this equation using the <xref ref="quadratic-formula" text="custom">quadratic formula</xref> yields:
-			<men xml:id="second-order-lhcc-char-eqn-solns">
-				r_1 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}, \quad r_2 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}
-			</men>
-		</p>
-
-		<p>
-			Each root corresponds to an exponential solution—either <m>e^{r_1 x}</m> or <m>e^{r_2 x}</m>. These are called the <term>fundamental solutions</term> of the differential equation.
-		</p>
-	</subsection>
-
-	<subsection label="second-order-lhcc-general-soln">
-		<title>The General Solution</title>
-
-		<p>
-			Once we have the fundamental solutions, the <term>superposition principle</term> tells us that
-			<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</me>
-			is a solution to <xref ref="second-order-lhcc-de"/> for any constants <m>c_1</m> and <m>c_2</m>.
-		</p>
-
-		<p>
-			However, if the roots <m>r_1</m> and <m>r_2</m> are equal, then <m>e^{r_1 x}</m> and <m>e^{r_2 x}</m> are like-terms. In that case, the expression above collapses into a single term, and the solution is incomplete.<fn>This issue relates to <term>linear dependence</term>, which also depends on the interval where the solutions are defined.</fn>
-		</p>
-
-		<p>
-			To create a second, independent solution, we multiply the second term by <m>x</m>, giving:
-			<me>y = c_1 e^{r x} + c_2 x e^{r x}.</me>
-		</p>
-
-		<p>
-			This guarantees complete general solution with independent terms. There are three distinct scenarios to consider, based on the discriminant of the characteristic equation:
-			<me>\Delta = b^2 - 4ac</me>
-		</p>
-
-		<p>
-			Each case leads to a different form of the solution, broken down as follows.
-		</p>
-	</subsection>
-
-	<subsection label="second-order-lhcc-case-1">
-		<title>Case 1 <m>(\Delta &gt; 0)</m>: Real, Non-Repeating Solutions</title>
-
-		<p>
-			If <m>\Delta</m> is positive, then characteristic equation has the two unequal real solutions:
-			<me>
-				r_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a} \quad \text{and} \quad
-				r_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a},
-			</me>
-		</p>
-
-		<p>
-			so the general solution is
-			<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}.</me>
-		</p>
-	</subsection>
-
-	<subsection label="second-order-lhcc-case-2">
-		<title>Case 2 <m>(\Delta &lt; 0)</m>: Two Complex Solutions</title>
-		<p>
-			If <m>\Delta</m> is negative, the characteristic equation has two complex conjugate solutions:
-			<me>r_1 = \alpha + i \beta, \qquad r_2 = \alpha - i \beta</me>
-		</p>
-
-		<p>
-			The corresponding general solution is:
-			<me>y = c_1 e^{(\alpha + i \beta)x} + c_2 e^{(\alpha - i \beta)x}</me>
-		</p>
-
-		<p>
-			However, it is common to express this using sine and cosine (via <xref ref="eulers-formula" text="title"/>):
-			<me>y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</me>
-		</p>
-	</subsection>
-
-	<subsection label="second-order-lhcc-case-3">
-		<title>Case 3 <m>(\Delta = 0)</m>: Real, Repeating Solutions</title>
-
-		<p>
-			If <m>\Delta</m> is zero, then the characteristic equation has a repeated root:
-		<me>r_1 = r_2 = \frac{-b}{2a}</me>
-		</p>
-
-		<p>
-			In this case, the general solution is:
-			<me>y = c_1 e^{r x} + c_2 x e^{r x}</me>
-		</p>
-	</subsection>
-
-	<subsection label="second-order-lhcc-examples">
-		<title>Summary &amp; Examples</title>
-
-		<p>
-			The form of the general solution to a second-order LHCC equation depends entirely on the roots of its characteristic equation. Here's a summary of the three cases.
-		</p>
-
-		<assemblage xml:id="second-order-lhcc-general-solution-cases">
-			<title>✳️ 2nd-Order LHCC General Solution Cases</title>
-			<p>
-				Let <m>r_1</m>, <m>r_2</m> be the roots of the <xref ref="second-order-lhcc-characteristic-equation" text="custom">characteristic equation</xref> for a <xref ref="second-order-lhcc-de"  text="custom"><m>2</m>nd-order LHCC equation</xref>.
-				<dl width="narrow">
-					<li xml:id="lhcc-case-1">
-						<title>Case 1 <m>(\Delta &gt; 0)</m> <m>\small \text{unequal real roots}</m></title>
-						<sidebyside widths="30% 70%">
-							<p><m>r_1 \ne r_2</m></p>
-							<p><m>\ds y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</m></p>
-						</sidebyside>
-					</li>
-					<li xml:id="lhcc-case-2">
-						<title>Case 2 <m>(\Delta &lt; 0)</m> <m>\small \text{complex roots}</m></title>
-						<sidebyside widths="30% 70%">
-							<p><m>r = \alpha \pm i\beta</m></p>
-							<p><m>\ds y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</m></p>
-						</sidebyside>
-					</li>
-					<li xml:id="lhcc-case-3">
-						<title>Case 3 <m>(\Delta = 0)</m> <m>\small \text{repeated real root}</m></title>
-						<sidebyside widths="30% 70%">
-							<p><m>r_1 = r_2</m></p>
-							<p><m>\ds y = c_1 e^{r x} + c_2 x e^{r x}</m></p>
-						</sidebyside>
-					</li>
-				</dl>
-			</p>
-		</assemblage>
-
-		<exercise label="chkpt-second-order-lhcc-eqns-2">
-			<title><e component="emoji">📖❓</e>  Match the Characteristic &amp; General Solutions</title>
-			<statement>
-				<p>
-					Match the characteristic solutions to the corresponding general solution.
-				</p>
-			</statement>
-			<cardsort>
-				<match>
-					<premise><m>\small r = 5 </m></premise>
-					<response><m>\small C e^{5x} </m></response>
-				</match>
-				<match>
-					<premise><m>\small r_1 = 2, \ r_2 = 3 </m></premise>
-					<response><m>\small C_1 e^{2x} + C_2 e^{3x} </m></response>
-				</match>
-				<match>
-					<premise><m>\small r_1 = -1, \ r_2 = -4 </m></premise>
-					<response><m>\small C_1 e^{-x} + C_2 e^{-4x} </m></response>
-				</match>
-				<match>
-					<premise><m>\small r_1 = 3 + 2i, \ r_2 = 3 - 2i </m></premise>
-					<response><m>\small e^{3x} (C_1 \cos(2x) + C_2 \sin(2x)) </m></response>
-				</match>
-				<match>
-					<premise><m>\small r_1 = -2, \ r_2 = -2 </m></premise>
-					<response><m>\small (C_1 + C_2 x) e^{-2x} </m></response>
-				</match>
-				<match>
-					<premise><m>\small r_1 = -1 + i, \ r_2 = -1 - i </m></premise>
-					<response><m>\small e^{-x} (C_1 \cos(x) + C_2 \sin(x)) </m></response>
-				</match>
-			</cardsort>
-		</exercise>
-
-		<example><title>Case 1 Examples</title>
-			<statement>
-			<p>Find the general solution to each second-order LHCC equation.</p>
-
-			<sidebyside widths="45% 55%">
-				<p>
-					<m>\ds y'' - 5y' + 6y = 0</m>
+		<stack>
+					<p>
+						Second-order linear homogeneous constant coefficient (LHCC) equations appear in many applications across physics, engineering, and applied mathematics. These equations have the general form:
+									<men xml:id="second-order-lhcc-de">
+										a y'' + b y' + c y = 0
+									</men>
+								</p>
+						
+								<p>
+									where <m>a</m>, <m>b</m>, and <m>c</m> are constants. In this section, we'll explore how the solutions depend on the roots of the associated characteristic equation, and how different types of roots give rise to different forms of the general solution.
+								</p>
+							</introduction>
+						
+							<subsection label="second-order-lhcc-fundamental-solns">
+								<title>Fundamental Solutions</title>
+						
+								<exercise label="chkpt-second-order-lhcc-eqns-1">
+									<title><e component="emoji">📖❓</e>  Classifying Characteristic Equations</title>
+									<statement>
+										<p>
+											Review <xref ref="solving-the-quadratic-equation" text="custom">quadratic equations</xref> and answer the following question.
+										</p>
+										<p>
+											Match the type of roots with the corresponding quadratic equation.
+										</p>
+									</statement>
+									<feedback>
+										<p>
+											Good work! The discriminant helps classify root types.
+										</p>
+									</feedback>
+									<cardsort>
+										<match>
+											<premise>Real unequal roots</premise>
+											<response><m>r^2 - 4r + 3 = 0</m></response>
+										</match>
+										<match>
+											<premise>Real repeated roots</premise>
+											<response><m>r^2 - 6r + 9 = 0</m></response>
+										</match>
+										<match>
+											<premise>Complex roots</premise>
+											<response><m>r^2 + 4 = 0</m></response>
+										</match>
+									</cardsort>
+								</exercise>
+						
+								<p>
+									To solve <xref ref="second-order-lhcc-de"/>, we begin by forming the characteristic equation as we did in the previous section. For this case, the characteristic equation is the <xref ref="solving-the-quadratic-equation" text="custom">quadratic</xref>
+									<men xml:id="second-order-lhcc-characteristic-equation">
+										a r^2 + b r + c = 0
+									</men>
+								</p>
+						
+								<p>
+									Solving this equation using the <xref ref="quadratic-formula" text="custom">quadratic formula</xref> yields:
+									<men xml:id="second-order-lhcc-char-eqn-solns">
+										r_1 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}, \quad r_2 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}
+									</men>
+								</p>
+						
+								<p>
+									Each root corresponds to an exponential solution—either <m>e^{r_1 x}</m> or <m>e^{r_2 x}</m>. These are called the <term>fundamental solutions</term> of the differential equation.
+								</p>
+							</subsection>
+						
+							<subsection label="second-order-lhcc-general-soln">
+								<title>The General Solution</title>
+						
+								<p>
+									Once we have the fundamental solutions, the <term>superposition principle</term> tells us that
+									<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</me>
+									is a solution to <xref ref="second-order-lhcc-de"/> for any constants <m>c_1</m> and <m>c_2</m>.
+								</p>
+						
+								<p>
+									However, if the roots <m>r_1</m> and <m>r_2</m> are equal, then <m>e^{r_1 x}</m> and <m>e^{r_2 x}</m> are like-terms. In that case, the expression above collapses into a single term, and the solution is incomplete.<fn>This issue relates to <term>linear dependence</term>, which also depends on the interval where the solutions are defined.</fn>
+								</p>
+						
+								<p>
+									To create a second, independent solution, we multiply the second term by <m>x</m>, giving:
+									<me>y = c_1 e^{r x} + c_2 x e^{r x}.</me>
+								</p>
+						
+								<p>
+									This guarantees a complete general solution with independent terms. There are three distinct scenarios to consider, based on the discriminant of the characteristic equation:
+									<me>\Delta = b^2 - 4ac</me>
+								</p>
+						
+								<p>
+									Each case leads to a different form of the solution, broken down as follows.
+								</p>
+							</subsection>
+						
+							<subsection label="second-order-lhcc-case-1">
+								<title>Case 1 <m>(\Delta &gt; 0)</m>: Real, Non-Repeating Solutions</title>
+						
+								<p>
+									If <m>\Delta</m> is positive, then the characteristic equation has the two unequal real solutions:
+									<me>
+										r_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a} \quad \text{and} \quad
+										r_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+								</me>
+								</p>
+						
+								<p>
+									so the general solution is
+									<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}.</me>
+								</p>
+							</subsection>
+						
+							<subsection label="second-order-lhcc-case-2">
+								<title>Case 2 <m>(\Delta &lt; 0)</m>: Two Complex Solutions</title>
+								<p>
+									If <m>\Delta</m> is negative, the characteristic equation has two complex conjugate solutions:
+									<me>r_1 = \alpha + i \beta, \qquad r_2 = \alpha - i \beta</me>
+								</p>
+						
+								<p>
+									The corresponding general solution is:
+									<me>y = c_1 e^{(\alpha + i \beta)x} + c_2 e^{(\alpha - i \beta)x}</me>
+								</p>
+						
+								<p>
+									However, it is common to express this using sine and cosine (via <xref ref="eulers-formula" text="title"/>):
+									<me>y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</me>
+								</p>
+							</subsection>
+						
+							<subsection label="second-order-lhcc-case-3">
+								<title>Case 3 <m>(\Delta = 0)</m>: Real, Repeating Solutions</title>
+						
+								<p>
+									If <m>\Delta</m> is zero, then the characteristic equation has a repeated root:
+								<me>r_1 = r_2 = \frac{-b}{2a}</me>
+								</p>
+						
+								<p>
+									In this case, the general solution is:
+									<me>y = c_1 e^{r x} + c_2 x e^{r x}</me>
+								</p>
+							</subsection>
+						
+							<subsection label="second-order-lhcc-examples">
+								<title>Summary &amp; Examples</title>
+						
+								<p>
+									The form of the general solution to a second-order LHCC equation depends entirely on the roots of its characteristic equation. Here's a summary of the three cases.
+								</p>
+						
+								<assemblage xml:id="second-order-lhcc-general-solution-cases">
+									<title>✳️ 2nd-Order LHCC General Solution Cases</title>
+									<p>
+										Let <m>r_1</m>, <m>r_2</m> be the roots of the <xref ref="second-order-lhcc-characteristic-equation" text="custom">characteristic equation</xref> for a <xref ref="second-order-lhcc-de"  text="custom"><m>2</m>nd-order LHCC equation</xref>.
+										<dl width="narrow">
+											<li xml:id="lhcc-case-1">
+												<title>Case 1 <m>(\Delta &gt; 0)</m> <m>\small \text{unequal real roots}</m></title>
+												<sidebyside widths="30% 70%">
+													<p><m>r_1 \ne r_2</m></p>
+													<p><m>\ds y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</m></p>
+												</sidebyside>
+											</li>
+											<li xml:id="lhcc-case-2">
+												<title>Case 2 <m>(\Delta &lt; 0)</m> <m>\small \text{complex roots}</m></title>
+												<sidebyside widths="30% 70%">
+													<p><m>r = \alpha \pm i\beta</m></p>
+													<p><m>\ds y = e^{\alpha x} (c_1 \cos(\beta x) + c_2 \sin(\beta x))</m></p>
+												</sidebyside>
+											</li>
+											<li xml:id="lhcc-case-3">
+												<title>Case 3 <m>(\Delta = 0)</m> <m>\small \text{repeated real root}</m></title>
+												<sidebyside widths="30% 70%">
+													<p><m>r_1 = r_2</m></p>
+													<p><m>\ds y = c_1 e^{r x} + c_2 x e^{r x}</m></p>
+												</sidebyside>
+											</li>
+										</dl>
+									</p>
+								</assemblage>
+						
+								<exercise label="chkpt-second-order-lhcc-eqns-2">
+									<title><e component="emoji">📖❓</e>  Match the Characteristic &amp; General Solutions</title>
+									<statement>
+										<p>
+											Match the characteristic solutions to the corresponding general solution.
+										</p>
+									</statement>
+									<cardsort>
+										<match>
+											<premise><m>\small r = 5 </m></premise>
+											<response><m>\small C e^{5x} </m></response>
+										</match>
+										<match>
+											<premise><m>\small r_1 = 2, \ r_2 = 3 </m></premise>
+											<response><m>\small C_1 e^{2x} + C_2 e^{3x} </m></response>
+										</match>
+										<match>
+											<premise><m>\small r_1 = -1, \ r_2 = -4 </m></premise>
+											<response><m>\small C_1 e^{-x} + C_2 e^{-4x} </m></response>
+										</match>
+										<match>
+											<premise><m>\small r_1 = 3 + 2i, \ r_2 = 3 - 2i </m></premise>
+											<response><m>\small e^{3x} (C_1 \cos(2x) + C_2 \sin(2x)) </m></response>
+										</match>
+										<match>
+											<premise><m>\small r_1 = -2, \ r_2 = -2 </m></premise>
+											<response><m>\small (C_1 + C_2 x) e^{-2x} </m></response>
+										</match>
+										<match>
+											<premise><m>\small r_1 = -1 + i, \ r_2 = -1 - i </m></premise>
+											<response><m>\small e^{-x} (C_1 \cos(x) + C_2 \sin(x)) </m></response>
+										</match>
+									</cardsort>
+								</exercise>
+						
+								<example><title>Case 1 Examples</title>
+									<statement>
+									<p>Find the general solution to each second-order LHCC equation.</p>
+						
+									<sidebyside widths="45% 55%">
+										<p>
+											<m>\ds y'' - 5y' + 6y = 0</m>
+					</p>
 					<solution>
-						<p>The characteristic equation is:</p>
-						<me>r^2 - 5r + 6 = 0</me>
-						<p>Factoring gives:</p>
-						<me>(r - 2)(r - 3) = 0</me>
-						<p>So the roots are <m>r_1 = 2</m> and <m>r_2 = 3</m>, giving the general solution:</p>
-						<me>y = c_1 e^{2x} + c_2 e^{3x}</me>
-					</solution>
-				</p>
-				<p>
-					<m>\ds 5y'' + 13y' - 2y = 0</m>
+											<p>The characteristic equation is:</p>
+											<me>r^2 - 5r + 6 = 0</me>
+											<p>Factoring gives:</p>
+											<me>(r - 2)(r - 3) = 0</me>
+											<p>So the roots are <m>r_1 = 2</m> and <m>r_2 = 3</m>, giving the general solution:</p>
+											<me>y = c_1 e^{2x} + c_2 e^{3x}</me>
+										</solution>
+				</stack>
+				<stack>
+					<p>
+						<m>\ds 5y'' + 13y' - 2y = 0</m>
+					</p>
 					<solution>
-						<p>The characteristic equation is:</p>
-						<me>5r^2 + 13r - 2 = 0</me>
-						<p>Using the quadratic formula:</p>
-						<md>
-							<mrow>r \amp = \frac{-13 \pm \sqrt{13^2 - 4(5)(-2)}}{2 \cdot 5}</mrow>
-							<mrow>\amp = \frac{-13 \pm \sqrt{201}}{10}</mrow>
-						</md>
-						<p>Since the roots are unequal and real, the general solution is:</p>
-						<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</me>
-						<p>where <m>r_1 = \frac{-13 - \sqrt{201}}{10}</m> and <m>r_2 = \frac{-13 + \sqrt{201}}{10}</m>.</p>
-					</solution>
-				</p>
+											<p>The characteristic equation is:</p>
+											<me>5r^2 + 13r - 2 = 0</me>
+											<p>Using the quadratic formula:</p>
+											<md>
+												<mrow>r \amp = \frac{-13 \pm \sqrt{13^2 - 4(5)(-2)}}{2 \cdot 5}</mrow>
+												<mrow>\amp = \frac{-13 \pm \sqrt{201}}{10}</mrow>
+											</md>
+											<p>Since the roots are unequal and real, the general solution is:</p>
+											<me>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}</me>
+											<p>where <m>r_1 = \frac{-13 - \sqrt{201}}{10}</m> and <m>r_2 = \frac{-13 + \sqrt{201}}{10}</m>.</p>
+										</solution>
+				</stack>
 			</sidebyside>
 			</statement>
 		</example>
 
 		<example><title>Case 2 Examples</title>
 			<statement>
-				<p>Find the general solution to each second-order LHCC equation.</p>
-				<sidebyside widths="50% 50%">
+				<stack>
 					<p>
-						<m>\ds \omega'' + 4\omega' + 5\omega = 0</m>
-						<solution>
-							<p>The characteristic equation is:</p>
-							<me>r^2 + 4r + 5 = 0</me>
-							<p>Applying the quadratic formula:</p>
-							<md>
-								<mrow>r \amp = \frac{-4 \pm \sqrt{16 - 20}}{2} = \frac{-4 \pm \sqrt{-4}}{2}</mrow>
-								<mrow>\amp = -2 \pm i</mrow>
-							</md>
-							<p>So <m>\alpha = -2</m>, <m>\beta = 1</m>, and the general solution is:</p>
-							<me>\omega(t) = e^{-2t}(c_1 \cos t + c_2 \sin t)</me>
-						</solution>
+						Find the general solution to each second-order LHCC equation.</p>
+										<sidebyside widths="50% 50%">
+											<p>
+												<m>\ds \omega'' + 4\omega' + 5\omega = 0</m>
 					</p>
+					<solution>
+												<p>The characteristic equation is:</p>
+												<me>r^2 + 4r + 5 = 0</me>
+												<p>Applying the quadratic formula:</p>
+												<md>
+													<mrow>r \amp = \frac{-4 \pm \sqrt{16 - 20}}{2} = \frac{-4 \pm \sqrt{-4}}{2}</mrow>
+													<mrow>\amp = -2 \pm i</mrow>
+												</md>
+												<p>So <m>\alpha = -2</m>, <m>\beta = 1</m>, and the general solution is:</p>
+												<me>\omega(t) = e^{-2t}(c_1 \cos t + c_2 \sin t)</me>
+											</solution>
+				</stack>
+					<stack>
 					<p>
 						<m>\ds y'' + 25y = 0</m>
-						<solution>
-							<p>The characteristic equation is:</p>
-							<me>r^2 + 25 = 0</me>
-							<p>This gives <m>r = \pm 5i</m>, so <m>\alpha = 0</m> and <m>\beta = 5</m>. The general solution is:</p>
-							<me>y = e^{0x}\left(c_1\cos(5x) + c_2\sin(5x)\right)</me>
-							<p>or simply:</p>
-							<me>y = c_1 \cos(5x) + c_2 \sin(5x)</me>
-						</solution>
 					</p>
+					<solution>
+												<p>The characteristic equation is:</p>
+												<me>r^2 + 25 = 0</me>
+												<p>This gives <m>r = \pm 5i</m>, so <m>\alpha = 0</m> and <m>\beta = 5</m>. The general solution is:</p>
+												<me>y = e^{0x}\left(c_1\cos(5x) + c_2\sin(5x)\right)</me>
+												<p>or simply:</p>
+												<me>y = c_1 \cos(5x) + c_2 \sin(5x)</me>
+											</solution>
+				</stack>
 				</sidebyside>
 			</statement>
 		</example>
 
 		<example><title>Case 3 Examples</title>
 			<statement>
-				<p>Find the general solution to each second-order LHCC equation.</p>
-				<sidebyside widths="45% 55%">
+				<stack>
 					<p>
-						<m>\ds y'' + 4y' + 4y = 0</m>
-						<solution>
-							<p>The characteristic equation is:</p>
-							<me>r^2 + 4r + 4 = 0</me>
-							<p>Factoring gives:</p>
-							<me>(r + 2)^2 = 0</me>
-							<p>So <m>r = -2</m> is a repeated root, and the general solution is:</p>
-							<me>y = c_1 e^{-2x} + c_2 x e^{-2x}</me>
-						</solution>
+						Find the general solution to each second-order LHCC equation.</p>
+										<sidebyside widths="45% 55%">
+											<p>
+												<m>\ds y'' + 4y' + 4y = 0</m>
 					</p>
+					<solution>
+												<p>The characteristic equation is:</p>
+												<me>r^2 + 4r + 4 = 0</me>
+												<p>Factoring gives:</p>
+												<me>(r + 2)^2 = 0</me>
+												<p>So <m>r = -2</m> is a repeated root, and the general solution is:</p>
+												<me>y = c_1 e^{-2x} + c_2 x e^{-2x}</me>
+											</solution>
+				</stack>
+					<stack>
 					<p>
 						<m>\ds 16\frac{d^2q}{dt^2} - 8\frac{dq}{dt} + q = 0</m>
-						<solution>
-							<p>The characteristic equation is:</p>
-							<me>16r^2 - 8r + 1 = 0</me>
-							<p>Using the quadratic formula:</p>
-							<me>r \amp = \frac{8 \pm \sqrt{64 - 64}}{32} = \frac{8}{32} = \frac{1}{4}</me>
-							<p>This is a repeated root, so the general solution is:</p>
-							<me>q(t) = c_1 e^{\frac{1}{4}t} + c_2 t e^{\frac{1}{4}t}</me>
-						</solution>
 					</p>
+					<solution>
+												<p>The characteristic equation is:</p>
+												<me>16r^2 - 8r + 1 = 0</me>
+												<p>Using the quadratic formula:</p>
+												<me>r \amp = \frac{8 \pm \sqrt{64 - 64}}{32} = \frac{8}{32} = \frac{1}{4}</me>
+												<p>This is a repeated root, so the general solution is:</p>
+												<me>q(t) = c_1 e^{\frac{1}{4}t} + c_2 t e^{\frac{1}{4}t}</me>
+											</solution>
+				</stack>
 				</sidebyside>
 			</statement>
 		</example>
@@ -363,7 +377,7 @@
 								<m>\quad y = c_1 e^{2x} + c_2 e^{-2x}</m>
 							</p>
 						</statement>
-						<feedback>Incorrect. Ensure you solve the charactistic equation correctly.</feedback>
+						<feedback>Incorrect. Ensure you solve the characteristic equation correctly.</feedback>
 					</choice>
 					<choice correct="no">
 						<statement>
@@ -409,6 +423,7 @@
 						<response><m>y = c_1 e^{2x} + c_2 e^{-2x}</m></response>
 					</match>
 					<match>
+						<premise><m>r^2 - 16 = 0</m></premise>
 						<response><m>y = c_1 e^{4x} + c_2 e^{-4x}</m></response>
 					</match>
 					<match>
