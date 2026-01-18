@@ -11,148 +11,135 @@
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
 -->
 <section xml:id="numerical-solutions-for-linear-systems">
-    <title>Numerical Solutions for Linear Systems</title>
+	<title>Numerical Solutions for Linear Systems</title>
 
-    <introduction>
-        <p>
-            We've explored what linear systems are, how to visualize their behavior, and even how to write them neatly in vector form.  
-            When an exact solution is hard—or when we only need an approximation—we can compute solutions numerically.  
-        </p>
+	<introduction>
+		<p>
+			We've explored what linear systems are, how to visualize their behavior, and even how to write them neatly in vector form.  
+			When an exact solution is hard—or when we only need an approximation—we can compute solutions numerically.  
+		</p>
 
-        <p>
-            We'll approximate solutions step by step with Euler's Method and use those steps to see how the variables influence each other.
-        </p>
-    </introduction>
+		<p>
+			We'll approximate solutions step by step with Euler's Method and use those steps to see how the variables influence each other.
+		</p>
+	</introduction>
 
-    <subsection xml:id="numerical-methods">
-        <title>Euler's Method</title>
+	<subsection xml:id="numerical-methods">
+		<title>Euler's Method</title>
 
-        <p>
-            Not every system is easy to solve exactly.  
-            Sometimes, you just want to <em>see</em> what the solution looks like — or approximate it for a while.  
-            That's where numerical methods shine.
-        </p>
+		<p>
+			Not every system is easy to solve exactly.  
+			Sometimes, you just want to <em>see</em> what the solution looks like — or approximate it for a while.  
+			That's where numerical methods shine.
+		</p>
 
-        <p>
-            One of the simplest is <em>Euler's Method</em>, which you've seen for single equations.  
-            We'll now apply it to systems.
-        </p>
+		<p>
+			One of the simplest is <em>Euler's Method</em>, which you've seen for single equations.  
+			We'll now apply it to systems.
+		</p>
 
-        <p>
-          Suppose we have:
-					<md>
-						<mrow>\frac{dx}{dt} \amp = x + y</mrow>
-						<mrow>\frac{dy}{dt} \amp = -x + y</mrow>
-					</md>
-          with initial conditions <m>x(0) = 1</m>, <m>y(0) = 0</m>, and a step size of <m>h = 0.1</m>.
-        </p>
+		<p>
+			Suppose we have:
+			<md>
+				<mrow>\frac{dx}{dt} \amp = x + y</mrow>
+				<mrow>\frac{dy}{dt} \amp = -x + y</mrow>
+			</md>
+			with initial conditions <m>x(0) = 1</m>, <m>y(0) = 0</m>, and a step size of <m>h = 0.1</m>.
+		</p>
 
-        <example xml:id="ex-euler-system">
-            <title>Euler's Method for a System</title>
-            <statement>
-                <p>
-                    Use Euler's method to take two steps for the system above.
-                </p>
-            </statement>
-            <solution>
-                <p>
-                    <term>Step 1:</term> At <m>t = 0</m>, we have <m>x_0 = 1</m>, <m>y_0 = 0</m>.  
-                    The derivatives are <m>x' = 1 + 0 = 1</m>, <m>y' = -1 + 0 = -1</m>.
-                </p>
+		<example xml:id="ex-euler-system">
+			<title>Euler's Method for a System</title>
 
-                <p>
-                    Update:
-                </p>
+			<statement>
+				<p>
+					Use Euler's method to take two steps for the system above.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>Step 1:</term> At <m>t = 0</m>, we have <m>x_0 = 1</m>, <m>y_0 = 0</m>.  
+					The derivatives are <m>x' = 1 + 0 = 1</m>, <m>y' = -1 + 0 = -1</m>.
+				</p>
 
-                <me>
-                    x_1 = 1 + 0.1(1) = 1.1, \qquad y_1 = 0 + 0.1(-1) = -0.1.
-                </me>
+				<p>
+					Update: <me>x_1 = 1 + 0.1(1) = 1.1, \qquad y_1 = 0 + 0.1(-1) = -0.1</me>.
+				</p>
 
-                <p>
-                    <term>Step 2:</term> At <m>t = 0.1</m>, we have <m>x_1 = 1.1</m>, <m>y_1 = -0.1</m>.  
-                    Now <m>x' = 1.1 + (-0.1) = 1.0</m>, <m>y' = -1.1 + (-0.1) = -1.2</m>.
-                </p>
+				<p>
+					<term>Step 2:</term> At <m>t = 0.1</m>, we have <m>x_1 = 1.1</m>, <m>y_1 = -0.1</m>.  
+					Now <m>x' = 1.1 + (-0.1) = 1.0</m>, <m>y' = -1.1 + (-0.1) = -1.2</m>.
+				</p>
 
-                <p>
-                    Update again:
-                </p>
+				<p>
+					Update again: <me>x_2 = 1.1 + 0.1(1.0) = 1.2, \qquad y_2 = -0.1 + 0.1(-1.2) = -0.22</me>.
+				</p>
 
-                <me>
-                    x_2 = 1.1 + 0.1(1.0) = 1.2, \qquad y_2 = -0.1 + 0.1(-1.2) = -0.22.
-                </me>
+				<p>
+					We now have approximate values after two steps:
+					<me>(x(0.2), y(0.2)) \approx (1.2, -0.22).</me>
+				</p>
 
-                <p>
-                    We now have approximate values after two steps:
-                </p>
+				<p>
+					Each step shows how <m>x</m> and <m>y</m> <q>talk</q> to each other over time.
+				</p>
+			</solution>
+		</example>
 
-                <me>
-                    (x(0.2), y(0.2)) \approx (1.2, -0.22).
-                </me>
+		<p>
+			Euler's Method may be simple, but it makes the <em>flow of information</em> between variables visible: each update for <m>x</m> affects <m>y</m> on the next step, and vice versa.
+		</p>
 
-                <p>
-                    Each step shows how <m>x</m> and <m>y</m> <q>talk</q> to each other as time progresses.
-                </p>
-            </solution>
-        </example>
+		<exercise label="numerical-solutions-for-linear-systems-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> Numerical Solutions for Linear Systems Reading Questions</title>
+	
+			<task label="rq-num-1">
+				<title>Euler's Method Thinking</title>
+				<statement>
+					<p>
+						What does Euler's Method do when applied to a system of DEs? (Select all that apply.)
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>It updates each variable step by step using its derivative at the current point.</p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p>It shows how the variables influence each other from one step to the next.</p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p>It provides the exact solution in one step.</p></statement>
+						<feedback><p>Euler's Method is an approximation technique, not an exact one-step solution.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It can only be used for uncoupled systems.</p></statement>
+						<feedback><p>Euler's Method works for any system, coupled or not.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+	
+			<task label="rq-num-2">
+				<title>Interpreting Numerical Results</title>
+				<statement>
+					<p>
+						When we use Euler's Method on a system, what do the computed points <m>(x_n, y_n)</m> represent?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>They are approximate values of the solution at specific time steps.</p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p>They are exact values that replace the need for solving the system algebraically.</p></statement>
+						<feedback><p>They're approximate — we still use exact methods when possible.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>They are estimates of the system's coefficients.</p></statement>
+						<feedback><p>Euler's Method updates <m>x</m> and <m>y</m>, not the coefficients.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
 
-        <p>
-          Euler's Method may be simple, but it makes the <em>flow of information</em> between variables visible: each update for <m>x</m> affects <m>y</m> on the next step, and vice versa.
-        </p>
-
-			<exercise label="numerical-solutions-for-linear-systems-cyu-bundle">
-					<title><e component="emoji">🤔💭</e> Numerical Solutions for Linear Systems Reading Questions</title>
-
-					<task label="numerical-solutions-for-linear-systems-cyu-1">
-							<title><e component="emoji">🤔💭</e> Numerical Methods for Systems</title>
-
-							<task label="rq-num-1">
-									<title>Euler's Method Thinking</title>
-									<statement>
-											<p>
-													What does Euler's Method do when applied to a system of DEs? (Select all that apply.)
-											</p>
-									</statement>
-									<choices randomize="yes">
-											<choice correct="yes">
-									<statement><p>It updates each variable step by step using its derivative at the current point.</p></statement>
-											</choice>
-											<choice correct="yes">
-													<statement><p>It shows how the variables influence each other from one step to the next.</p></statement>
-											</choice>
-											<choice correct="no">
-													<statement><p>It provides the exact solution in one step.</p></statement>
-													<feedback><p>Euler's Method is an approximation technique, not an exact one-step solution.</p></feedback>
-											</choice>
-											<choice correct="no">
-													<statement><p>It can only be used for uncoupled systems.</p></statement>
-													<feedback><p>Euler's Method works for any system, coupled or not.</p></feedback>
-											</choice>
-									</choices>
-							</task>
-
-							<task label="rq-num-2">
-									<title>Interpreting Numerical Results</title>
-									<statement>
-											<p>
-													When we use Euler's Method on a system, what do the computed points <m>(x_n, y_n)</m> represent?
-											</p>
-									</statement>
-									<choices randomize="yes">
-											<choice correct="yes">
-													<statement><p>They are approximate values of the solution at specific time steps.</p></statement>
-											</choice>
-											<choice correct="no">
-													<statement><p>They are exact values that replace the need for solving the system algebraically.</p></statement>
-													<feedback><p>They're approximate — we still use exact methods when possible.</p></feedback>
-											</choice>
-											<choice correct="no">
-													<statement><p>They are estimates of the system's coefficients.</p></statement>
-													<feedback><p>Euler's Method updates <m>x</m> and <m>y</m>, not the coefficients.</p></feedback>
-											</choice>
-									</choices>
-							</task>
-					</task>
-			</exercise>
-    </subsection>
+	</subsection>
 
 </section>
