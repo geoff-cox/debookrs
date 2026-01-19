@@ -131,7 +131,7 @@
 		</p>
 
 		<p>
-			This integral converges when <m>s \lt 0</m> and leads to our first Laplace transform rule:
+			This integral converges when <m>s \gt 0</m> and leads to our first Laplace transform rule:
 			<!-- <md>
 				<mrow xml:id="lt-L1">
 					\text{L}_1:\quad\lap{1} = \frac{1}{s}, \quad s \gt 0
@@ -188,7 +188,7 @@
 		</assemblage>
 
 		<p>
-			Although this transform is specific to the contant function <m>1</m>, we will see later that it will serve as the transform formula for all constant functions. 
+			Although this transform is specific to the constant function <m>1</m>, we will see later that it will serve as the transform formula for all constant functions. 
 		</p>
 	</subsection>
 
@@ -212,7 +212,7 @@
 				</p>
 
 				<p>
-					<proof xml:id="lt-example-2-details"><title>🔍 Focusing just on the integral, we let <m>u=7-s</m> and apply <m>u</m>-substitution:</title>
+					<proof xml:id="lt-example-2-details"><title>🔍 Focusing just on the integral, we let <m>u=(7-s)t</m> and apply <m>u</m>-substitution:</title>
 						<p>
 							👉 Using <m>u</m>-substitution with
 							<md>
@@ -223,17 +223,17 @@
 									du	\amp = (7-s)dt \quad \Rightarrow \quad dt = \frac{du}{7-s}
 								</mrow>
 							</md>
-							the integral is compute as
+							the integral is computed as
 							<md>
 								<mrow>
-									\int_0^b e^{(7-s)t}\ dt	= \int_{t=0}^{t=b} e^{u}\frac{du}{7-s}
-									\amp = \frac{1}{7-s}\int_{t=0}^{t=b} e^{u}\ du
+									\int_0^b e^{(7-s)t}\ dt	= \int_{u=0}^{u=(7-s)b} e^{u}\frac{du}{7-s}
+									\amp = \frac{1}{7-s}\int_{0}^{(7-s)b} e^{u}\ du
 								</mrow>
 								<mrow>
-									\amp = \frac{1}{7-s} \left[ e^{u} - 1 \right]\Bigg|_{t=0}^{t=b}
+									\amp = \frac{1}{7-s} \left[ e^{u} \right]\Bigg|_{0}^{(7-s)b}
 								</mrow>
 								<mrow>
-									\amp = \frac{1}{7-s} \left[ e^{7-s} - 1 \right]\Bigg|_{0}^{b}
+									\amp = \frac{1}{7-s} \left( e^{(7-s)b} - 1 \right)
 								</mrow>
 							</md>.
 						</p>
@@ -630,7 +630,7 @@
 				</p>
 
 				<p>
-					Treating <m>s</m> constant, we apply integration by parts to <m>I</m> as follows:
+					Treating <m>s</m> as constant, we apply integration by parts to <m>I</m> as follows:
 				</p>
 
 				<me>
@@ -707,7 +707,7 @@
 				<p>
 					<proof xml:id="lt-example-4-details"><title>🔍 Since <m>L_1 \to 0</m> &amp; <m>L_2 \to 0</m> if <m>s \gt 0</m>, we can conclude that</title>
 						<p>
-							👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, Thus, their product must approach zero. That is,
+							👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, thus their product must approach zero. That is,
 							<me>
 								\lim_{b \to \infty} e^{-sb} \cos(3b) = 0 \quad \text{and} \quad \lim_{b \to \infty} e^{-sb} \sin(3b) = 0
 							</me>
@@ -722,29 +722,29 @@
 		</p>
 
 		<p>
-			 leads to the following general formula:
+			This computation, along with a similar one for sine, leads to the following general formulas:
 		</p>
 
 		<assemblage xml:id="lap-L4-L5">
-			<title>📜 Laplace Transform of <m>t^n</m></title>
+			<title>📜 Laplace Transforms of Sine and Cosine</title>
 			<p>
 				<md>
 					<mrow xml:id="lt-L4">
-						\text{L}_4:\quad\lap{\cos(bt)} = \frac{s}{s^2 + b^2}, \quad s \gt 0
+						\text{L}_4:\quad\lap{\sin(bt)} = \frac{b}{s^2 + b^2}, \quad s \gt 0
 					</mrow>.
 				</md>
 				<md>
 					<mrow xml:id="lt-L5">
-						\text{L}_5:\quad\lap{\sin(bt)} = \frac{b}{s^2 + b^2}, \quad s \gt 0
+						\text{L}_5:\quad\lap{\cos(bt)} = \frac{s}{s^2 + b^2}, \quad s \gt 0
 					</mrow>,
 				</md>
 				<proof>
 					<title>💡Derivation of L<m>_4</m> &amp; L<m>_5</m></title>
 					<p>
-						The derivation of L<m>_4</m> mirrors the solution to <m>\lap{\cos(3t)}</m>. Just swap <m>3</m> with <m>b</m> and <m>9</m> with <m>b^2</m>. 
+						The derivation of L<m>_5</m> mirrors the solution to <m>\lap{\cos(3t)}</m>. Just swap <m>3</m> with <m>b</m> and <m>9</m> with <m>b^2</m>. 
 					</p>
 					<p>
-						The derivation of L<m>_5</m> follows a similar approach to L<m>_4</m> and is left as exercise for you to try on your own.
+						The derivation of L<m>_4</m> follows a similar approach to L<m>_5</m> and is left as an exercise for you to try on your own.
 					</p>
 				</proof>
 			</p>

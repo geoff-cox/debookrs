@@ -15,7 +15,7 @@
 
 	<introduction>
 		<p>
-			So far, we've built a small library of Laplace transforms for basic functions. But how do we handle functions that are combinations of these basic functions? This is where the properties of Laplace transform comes in.
+			So far, we've built a small library of Laplace transforms for basic functions. But how do we handle functions that are combinations of these basic functions? This is where the properties of the Laplace transform come in.
 		</p>
 
 		<p>
@@ -232,8 +232,8 @@
 				integration by parts gives
 				<md>
 					<mrow>
-						\lap{ t^{n} }
-						\amp = \lim_{b \to \infty} \left[f(t)e^{-sb}\Bigg|_0^b - \int_0^b f(t)\cdot\left(-se^{-st}\right)\ dt\right]
+						\lap{ f'(t) }
+						\amp = \lim_{b \to \infty} \left[f(t)e^{-st}\Bigg|_0^b - \int_0^b f(t)\cdot\left(-se^{-st}\right)\ dt\right]
 					</mrow>
 					<mrow>
 						\amp = \lim_{b \to \infty} \left[\left(f(b)e^{-sb} - f(0)e^{0}\right) + s\int_0^b e^{-st}\cdot f(t)\ dt\right]
@@ -245,7 +245,7 @@
 						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\lim_{b \to \infty} \left[\int_0^b e^{-st}\cdot f(t)\ dt\right]
 					</mrow>
 					<mrow>
-						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\ub{\int_\infty^b e^{-st}\cdot f(t)\ dt}_{\large\lap{f(t)}}
+						\amp = \lim_{b \to \infty} \left[f(b)e^{-sb}\right] - f(0) +  s\lap{f(t)}
 					</mrow>.
 				</md>
 			</p>
@@ -525,7 +525,7 @@
 							<p>
 								Substituting <m>s-2</m> for <m>s</m> in <m>F(s)</m> gives
 								<me>
-									\lap{ e^{2t} \sin(\pi t) } = F(s-2) = \frac{6}{(s-2)^4}, \quad s \gt 2
+									\lap{ e^{2t} t^3 } = F(s-2) = \frac{6}{(s-2)^4}, \quad s \gt 2
 								</me>.
 							</p>
 						</solution>
@@ -535,10 +535,10 @@
 		</example>
 
 		<p>
-			By applying a similar strategy to the functions <m>t^n</m>, <m>\cos(bt)</m>, and <m>\sin(bt)</m>, we can add the following three Laplace transforms to our list of common transforms:
+			By applying a similar strategy to the functions <m>t^n</m>, <m>\sin(bt)</m>, and <m>\cos(bt)</m>, we can add the following three Laplace transforms to our list of common transforms:
 			<mdn label="lt-exp-shifting-property-P6-P8">
 				<mrow xml:id="lt-L6">
-					\text{L}_{6}:\quad\amp\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2 + b^2}, \quad s \gt a
+					\text{L}_{6}:\quad\amp\lap{e^{at}t^n} = \frac{n!}{(s-a)^{n+1}}, \quad s \gt a
 				</mrow>
 
 				<mrow xml:id="lt-L7">
@@ -546,7 +546,7 @@
 				</mrow>
 
 				<mrow xml:id="lt-L8">
-					\text{L}_{8}:\quad\amp\lap{e^{at}t^n} = \frac{n!}{(s-a)^{n+1}}, \quad s \gt a
+					\text{L}_{8}:\quad\amp\lap{e^{at}\cos(bt)} = \frac{s-a}{(s-a)^2 + b^2}, \quad s \gt a
 				</mrow>
 			</mdn>
 		</p>
