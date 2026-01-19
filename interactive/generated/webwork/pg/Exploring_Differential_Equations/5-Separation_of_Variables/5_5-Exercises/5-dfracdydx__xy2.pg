@@ -1,0 +1,138 @@
+#############################################
+###       Generated from PreTeXt source      
+###       on 2026-01-15T15:05:35-05:00       
+###   A recent stable commit (2022-07-01):   
+### 6c761d3dba23af92cba35001c852aac04ae99a5f 
+###                                          
+###         https://pretextbook.org          
+###                                          
+#############################################
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Level()
+## KEYWORDS()
+## TitleText1()
+## EditionText1()
+## AuthorText1()
+## Section1(not reported)
+## Problem1(5)
+## Author()
+## Institution()
+## Language(en-US)
+
+DOCUMENT();
+
+############################################################
+# Load Macros
+############################################################
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "AnswerFormatHelp.pl",
+  "niceTables.pl",
+  "contextForm.pl",
+  "PGcourse.pl",
+);
+COMMENT('Authored in PreTeXt');
+COMMENT('Solve a separable DE using separation of variables.');
+
+############################################################
+# Header
+############################################################
+TEXT(beginproblem());
+
+############################################################
+# PG Setup Code
+############################################################
+Context()->variables->add(y => 'Real');
+Context()->variables->add(c => 'Real');
+
+$order = 1;
+$f = Formula("x");
+$g = Formula("y^2");
+$g_inv = Formula("1/y^2");
+$F = Formula("1/2*x^2");
+$G = Formula("-1/y");
+$y_gen = Formula("1/(-1/2*x^2+c)");
+
+############################################################
+# Body
+############################################################
+
+BEGIN_PGML
+Solve each of the following differential equations using the separation of variables method. Press [|Activate|]* to submit your answers and get instant feedback.
+
+Give the order and separable form:
+
+>> [@DataTable(
+  [
+    [PGML('[`_{}`]'),
+    ],
+    [PGML('[`\text{order:}`]'),
+     PGML('[_]{$order}{5}'),
+     PGML(''),
+     PGML('[`\displaystyle \frac{dy}{dx} = `]'),
+     PGML('[_]{$f}{10}'),
+     PGML('[_]{$g}{10}'),
+    ],
+    [PGML('[`_{}`]'),
+    ],
+  ],
+      align => 'r',
+      valign => 'middle',);@]* <<
+
+Separate variables and integrate to both sides:
+
+>> [@DataTable(
+  [
+    [PGML('[`_{}`]'),
+    ],
+    [PGML('[`\displaystyle\int`]'),
+     PGML('[_]{$g_inv}{10}'),
+     PGML('[`\displaystyle dy = \int `]'),
+     PGML('[_]{$f}{10}'),
+     PGML('[`dx`]'),
+    ],
+    [PGML('[`_{}`]'),
+    ],
+  ],
+      align => '*{1}{c}',
+      valign => 'middle',);@]* <<
+
+Now, compute the integrals (we have provided the constants):
+
+>> [@DataTable(
+  [
+    [PGML('[`_{}`]'),
+    ],
+    [PGML('[_]{$G}{10}'),
+     PGML('[` + c_1 = `]'),
+     PGML('[_]{$F}{10}'),
+     PGML('[` + c_2`]'),
+    ],
+    [PGML('[`_{}`]'),
+    ],
+  ],
+      align => '*{1}{c}',
+      valign => 'middle',);@]* <<
+
+_Don't forget the absolute value on the left antiderivative._
+
+Combine constants and use [`c`] for the final combined constant.
+
+>> [@DataTable(
+  [
+    [PGML('[`y(x) = `] [_]{$y_gen}{10}'),
+    ],
+  ],
+      align => 'r',
+      valign => 'middle',);@]* <<
+
+END_PGML
+
+############################################################
+# End Problem
+############################################################
+
+ENDDOCUMENT();
