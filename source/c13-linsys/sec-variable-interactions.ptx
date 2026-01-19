@@ -15,12 +15,12 @@
 
 	<introduction>
 		<p>
-			In the last section, we saw <em>uncoupled systems</em>, where each equation evolved completely on its own. 
-			But many real-world systems aren't so tidy. Often one quantity affects another — or they push on each other in both directions. 
+			In the last section, we saw <em>uncoupled systems</em>, in which each equation evolved independently. 
+			But many real-world systems aren't so tidy. Often, one quantity affects another, or they push on each other in both directions. 
 		</p>
 
 		<p>
-			In this section, we'll step up the complexity: first looking at systems where one variable drives another, and then meeting the case where both variables interact fully.
+			In this section, we'll step up the complexity: first, looking at systems where one variable drives another, and then meeting the case where both variables interact fully.
 		</p>
 	</introduction>
 
@@ -51,78 +51,70 @@
 			<statement>
 				<p>
 					Solve the system:
+					<md>
+						<mrow>\frac{dx}{dt} \amp = -x \qquad x(0) = 1</mrow>
+						<mrow>\frac{dy}{dt} \amp = -2y + x \qquad y(0) = 0</mrow>
+					</md>
 				</p>
-				<md>
-					<mrow>\frac{dx}{dt} \amp = -x \qquad x(0) = 1</mrow>
-					<mrow>\frac{dy}{dt} \amp = -2y + x \qquad y(0) = 0</mrow>
-				</md>
 			</statement>
 
 			<solution>
 				<p>
 					<term>Step 1:</term> Solve the independent equation for <m>x</m>.  
 					This is a familiar exponential decay:
+					<me>
+						\frac{dx}{dt} = -x \quad \Rightarrow \quad x(t) = e^{-t}.
+					</me>
 				</p>
-
-				<me>
-					\frac{dx}{dt} = -x \quad \Rightarrow \quad x(t) = e^{-t}.
-				</me>
 
 				<p>
 					<term>Step 2:</term> Substitute <m>x(t) = e^{-t}</m> into the <m>y</m>-equation:
+					<me>
+						\frac{dy}{dt} = -2y + e^{-t}.
+					</me>
 				</p>
-
-				<me>
-					\frac{dy}{dt} = -2y + e^{-t}.
-				</me>
 
 				<p>
 					This is a linear first-order equation. Use an integrating factor to solve:
+					<me>
+						y' + 2y = e^{-t}, \qquad \mu(t) = e^{2t}.
+					</me>
 				</p>
-
-				<me>
-					y' + 2y = e^{-t}, \qquad \mu(t) = e^{2t}.
-				</me>
 
 				<p>
 					Multiply by <m>e^{2t}</m> and rewrite the left side as a derivative:
+					<me>
+						\frac{d}{dt}\left(e^{2t} y \right) = e^{t}.
+					</me>
 				</p>
-
-				<me>
-					\frac{d}{dt}\left(e^{2t} y \right) = e^{t}.
-				</me>
 
 				<p>
 					Integrate:
+					<me>
+						e^{2t} y = \int e^{t} dt = e^{t} + C.
+					</me>
 				</p>
-
-				<me>
-					e^{2t} y = \int e^{t} dt = e^{t} + C.
-				</me>
 
 				<p>
 					Solve for <m>y(t)</m>:
+					<me>
+						y(t) = e^{-t} + C e^{-2t}.
+					</me>
 				</p>
-
-				<me>
-					y(t) = e^{-t} + C e^{-2t}.
-				</me>
 
 				<p>
 					Use the initial condition <m>y(0) = 0</m>:
+					<me>
+						0 = 1 + C \quad \Rightarrow \quad C = -1.
+					</me>
 				</p>
-
-				<me>
-					0 = 1 + C \quad \Rightarrow \quad C = -1.
-				</me>
 
 				<p>
 					So the solution is:
+					<me>
+						x(t) = e^{-t}, \qquad y(t) = e^{-t} - e^{-2t}.
+					</me>
 				</p>
-
-				<me>
-					x(t) = e^{-t}, \qquad y(t) = e^{-t} - e^{-2t}.
-				</me>
 
 				<p>
 					<m>x(t)</m> decays smoothly, while <m>y(t)</m> rises briefly (pulled by <m>x</m>) before eventually decaying as well.  
@@ -133,6 +125,7 @@
 
 		<exercise label="variable-interactions-partially-coupled-chkpt-bundle">
 			<title><e component="emoji">📖❓</e>  Partially Coupled Equations</title>
+
 			<task label="variable-interactions-chkpt-1">
 				<title><e component="emoji">📖❓</e>  Partial Coupling is One-Way</title>
 				<statement correct="yes">
@@ -165,7 +158,7 @@
 						<feedback><p>Not quite. You need to know <m>x(t)</m> before you can solve for <m>y(t)</m>.</p></feedback>
 					</choice>
 					<choice>
-						<statement><p>It doesn't matter, either can be solved independently.</p></statement>
+						<statement><p>It doesn't matter; either can be solved independently.</p></statement>
 						<feedback><p>Actually, only <m>x</m> evolves independently. <m>y</m> depends on it.</p></feedback>
 					</choice>
 					<choice correct="yes">
@@ -242,7 +235,7 @@
 							<mrow> \frac{dx}{dt} \amp = -x </mrow>
 							<mrow> \frac{dy}{dt} \amp = -3y + x </mrow>
 						</md>
-						Which of the following statements are true? (Select all that apply.)
+						Which of the following statements are true?
 					</p>
 				</statement>
 				<choices randomize="yes">
@@ -279,7 +272,7 @@
 						<feedback><p>You <em>could</em> do that, but it's much simpler to solve the independent one first.</p></feedback>
 					</choice>
 					<choice correct="no">
-						<statement><p>Write the system as one second-order DE before solving.</p></statement>
+						<statement><p>Write the system as a second-order DE before solving.</p></statement>
 						<feedback><p>That's unnecessary for partially coupled systems — keep it simple.</p></feedback>
 					</choice>
 				</choices>
@@ -295,7 +288,7 @@
 						<mrow>\frac{dy}{dt} \amp = 4x - 2y</mrow>
 					</md>
 					<p>
-						Which of these statements are true? (Select all that apply.)
+						Which of these statements are true?
 					</p>
 				</statement>
 				<choices randomize="yes">
