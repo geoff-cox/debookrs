@@ -93,30 +93,30 @@
 					y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_1y' + a_0y = g(t),
 				</me>
 				the particular solution is obtained through the following workflow:
-						<dl>
-				<li xml:id="lt-step-1">
-					<title>Step 1— Forward Transform</title>
-					<p>
-						Apply <m>\laplacesym</m> term-by-term.  
-						Powers of <m>s</m> replace derivatives, and the initial conditions drop in automatically.  
-						The result is a single algebraic (Laplace-domain) equation.
-					</p>
-				</li>
-
-				<li xml:id="lt-step-2">
-					<title>Step 2— Solve &amp; Prepare <m>Y(s)</m></title>
-					<p>
-						Isolate <m>Y(s)</m>, then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.
-					</p>
-				</li>
-
-				<li xml:id="lt-step-3">
-					<title>Step 3— Inverse Transform</title>
-					<p>
-						Apply <m>\laplacesym^{-1}</m> term-by-term.	The hidden original-domain solution <m>y(t)</m> is released, and the IVP is solved.
-					</p>
-				</li>
-			</dl>
+				<dl>
+					<li xml:id="lt-step-1">
+						<title>Step 1— Forward Transform</title>
+						<p>
+							Apply <m>\laplacesym</m> term-by-term.  
+							Powers of <m>s</m> replace derivatives, and the initial conditions drop in automatically.  
+							The result is a single algebraic (Laplace-domain) equation.
+						</p>
+					</li>
+	
+					<li xml:id="lt-step-2">
+						<title>Step 2— Solve &amp; Prepare <m>Y(s)</m></title>
+						<p>
+							Isolate <m>Y(s)</m>, then reshape it so every term matches an entry in the transform table. This may require tools like partial-fraction decomposition and completing the square.
+						</p>
+					</li>
+	
+					<li xml:id="lt-step-3">
+						<title>Step 3— Inverse Transform</title>
+						<p>
+							Apply <m>\laplacesym^{-1}</m> term-by-term.	The hidden original-domain solution <m>y(t)</m> is released, and the IVP is solved.
+						</p>
+					</li>
+				</dl>
 			</p>
 		</exploration>
 
@@ -215,13 +215,14 @@
 
 		<p>
 			The examples below walk through the full process, showing how to transform a differential equation, solve in the Laplace domain, and recover the final solution using the inverse transform. Each is annotated to show where each step begins and ends, so you can clearly see the roadmap in action. Here is a break down of what to expect:
-				<ul>
-			<li>Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.</li>
-			<li>Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines/cosines.</li>
-			<li>Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.</li>
-		</ul>
+			<ul>
+				<li>Examples 1–2 ⟶ pure practice: constant-coefficient, homogeneous equations.</li>
+				<li>Examples 3–4 ⟶ common forcing terms: exponentials, polynomials, and sines/cosines.</li>
+				<li>Examples 5–6 ⟶ algebra heavyweights: repeated roots, mixed techniques, and higher order.</li>
+			</ul>
 		</p>
-		<example><title>Basic Second-Order, Homogeneous</title>
+		<example>
+			<title>Basic Second-Order, Homogeneous</title>
 			<statement>
 				<p>
 					Solve the initial value problem using the Laplace transform:
@@ -321,18 +322,17 @@
 
 				<p>
 					Use partial fraction decomposition:
+					<me>
+						\frac{2s + 9}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}
+					</me>
 				</p>
-				<me>
-					\frac{2s + 9}{(s + 2)(s + 3)} = \frac{A}{s + 2} + \frac{B}{s + 3}
-				</me>
 
 				<p>
 					Multiply through by the denominator:
+					<me>
+						2s + 9 = A(s + 3) + B(s + 2)
+					</me>
 				</p>
-
-				<me>
-					2s + 9 = A(s + 3) + B(s + 2)
-				</me>
 
 				<p>
 					Strategically selecting <m>s</m>-values gives <m>A</m> and <m>B</m>:
@@ -365,10 +365,12 @@
 					<p>Prepared <m>Y</m></p>
 				</sidebyside>
 
-				<p><em><xref ref="lt-step-3" text="title"/></em></p>
-				<md>
-					<mrow>y(t) = \ilap{Y(s)} = 5\ilap{\frac{1}{s + 2}} - 3\ilap{\frac{1}{s + 3}}</mrow>
-				</md>
+				<p>
+					<em><xref ref="lt-step-3" text="title"/></em>
+					<md>
+						<mrow>y(t) = \ilap{Y(s)} = 5\ilap{\frac{1}{s + 2}} - 3\ilap{\frac{1}{s + 3}}</mrow>
+					</md>
+				</p>
 
 				<p>
 					Using the table, the solution is:
@@ -475,13 +477,17 @@
 					</me>
 				</p>
 
-				<p>Take the inverse Laplace transform:</p>
-				<md>
-					<mrow>y(t) = \ilap{\frac{1}{(s-1)^2}} + \ilap{\frac{1}{(s-1)^3}}</mrow>
-				</md>
+				<p>
+					Take the inverse Laplace transform:
+					<md>
+						<mrow>y(t) = \ilap{\frac{1}{(s-1)^2}} + \ilap{\frac{1}{(s-1)^3}}</mrow>
+					</md>
+				</p>
 
-				<p>Therefore, the solution is:</p>
-				<me>y(t) = t e^{t} + \frac12 t^2 e^{t}</me>
+				<p>
+					Therefore, the solution is:
+					<me>y(t) = t e^{t} + \frac12 t^2 e^{t}</me>
+				</p>
 			</solution>
 		</example>
 
@@ -500,10 +506,10 @@
 			<statement>
 				<p>
 					Solve the initial value problem:
+					<me>
+						y'' + y = t^2, \quad y(0) = 1,\quad y'(0) = 0
+					</me>
 				</p>
-				<me>
-					y'' + y = t^2, \quad y(0) = 1,\quad y'(0) = 0
-				</me>
 			</statement>
 
 			<solution>
@@ -580,22 +586,25 @@
 				<p><em><xref ref="lt-step-2" text="title"/></em></p>
 				<p>
 					Break <m>Y(s)</m> into recognizable pieces:
+					<me>
+						Y(s) = \frac{s}{s^2 + 1} + \frac{2}{s^3(s^2 + 1)} = \frac{3s}{s^2 + 1} - \frac{2}{s} + \frac{2}{s^3}.
+					</me>
 				</p>
-
-				<me>
-					Y(s) = \frac{s}{s^2 + 1} + \frac{2}{s^3(s^2 + 1)} = \frac{3s}{s^2 + 1} - \frac{2}{s} + \frac{2}{s^3}.
-				</me>
 
 				<p>Each term now matches an entry in the Laplace transform table.</p>
 
 				<p><em><xref ref="lt-step-3" text="title"/></em></p>
-				<p>Take the inverse Laplace transform term by term:</p>
-				<md>
-					<mrow>y(t) = \ilap{\frac{3s}{s^2 + 1}} - \ilap{\frac{2}{s}} + \ilap{\frac{2}{s^3}}</mrow>
-				</md>
+				<p>
+					Take the inverse Laplace transform term by term:
+					<md>
+						<mrow>y(t) = \ilap{\frac{3s}{s^2 + 1}} - \ilap{\frac{2}{s}} + \ilap{\frac{2}{s^3}}</mrow>
+					</md>
+				</p>
 
-				<p>Therefore, the solution is:</p>
-				<me>y(t) = 3\cos(t) + t^2 - 2</me>
+				<p>
+					Therefore, the solution is:
+					<me>y(t) = 3\cos(t) + t^2 - 2</me>
+				</p>
 			</solution>
 		</example>
 
@@ -603,10 +612,10 @@
 			<statement>
 				<p>
 					Solve the initial value problem using the Laplace transform:
+					<me>
+						y'' + 6y' + 9y = 0, \quad y(0) = 3,\quad y'(0) = -3
+					</me>
 				</p>
-				<me>
-					y'' + 6y' + 9y = 0, \quad y(0) = 3,\quad y'(0) = -3
-				</me>
 			</statement>
 
 			<solution>
@@ -681,22 +690,26 @@
 				</sidebyside>
 
 				<p><em><xref ref="lt-step-2" text="title"/></em></p>
-				<p>Separate the numerator:</p>
-
-				<me>
-					Y(s) = \frac{3(s + 3) - 24}{(s + 3)^2} = \frac{3}{s + 3} - \frac{24}{(s + 3)^2}.
-				</me>
+				<p>
+					Separate the numerator:
+					<me>
+						Y(s) = \frac{3(s + 3) - 24}{(s + 3)^2} = \frac{3}{s + 3} - \frac{24}{(s + 3)^2}.
+					</me>
+				</p>
 
 				<p>Now each term matches an entry in the Laplace table.</p>
 
 				<p><em><xref ref="lt-step-3" text="title"/></em></p>
-				<p>Take the inverse Laplace transform term by term:</p>
-				<md>
-					<mrow>y(t) = \ilap{\frac{3}{s + 3}} - \ilap{\frac{24}{(s + 3)^2}}</mrow>
-				</md>
+				<p>
+					Take the inverse Laplace transform term by term:
+					<md>
+						<mrow>y(t) = \ilap{\frac{3}{s + 3}} - \ilap{\frac{24}{(s + 3)^2}}</mrow>
+					</md>
+				</p>
 
-				<p>So</p>
-				<me>y(t) = (3 - 24t)e^{-3t}</me>
+				<p>
+					So <me>y(t) = (3 - 24t)e^{-3t}</me>
+				</p>
 			</solution>
 		</example>
 
@@ -704,10 +717,10 @@
 			<statement>
 				<p>
 					Solve the initial value problem using the Laplace transform:
+					<me>
+						y''' + y'' - y' - y = 0,\quad y(0) = -1,\quad y'(0) = 0,\quad y''(0) = -1
+					</me>
 				</p>
-				<me>
-					y''' + y'' - y' - y = 0,\quad y(0) = -1,\quad y'(0) = 0,\quad y''(0) = -1
-				</me>
 			</statement>
 
 			<solution>
@@ -784,44 +797,51 @@
 				</p>
 
 				<p><em><xref ref="lt-step-2" text="title"/></em></p>
-				<p>This denominator factors by grouping:</p>
-				<md>
-					<mrow> s^3 + s^2 - s - 1	\amp = s^2(s + 1) - (s + 1)</mrow>
-					<mrow>						\amp = (s^2 - 1)(s + 1) = (s - 1)(s + 1)^2</mrow>.
-				</md>
+				<p>
+					This denominator factors by grouping:
+					<md>
+						<mrow> s^3 + s^2 - s - 1	\amp = s^2(s + 1) - (s + 1)</mrow>
+						<mrow>						\amp = (s^2 - 1)(s + 1) = (s - 1)(s + 1)^2</mrow>.
+					</md>
+				</p>
 
-				<p>Before jumping to PFD, simplify <m>Y</m> as much as possible first:</p>
-				<me>
-					Y(s) = \frac{-s^2 - s}{(s - 1)(s + 1)^2} = \frac{-s(s + 1)}{(s - 1)(s + 1)^2} = \frac{-s}{(s - 1)(s + 1)}
-				</me>
+				<p>
+					Before jumping to PFD, simplify <m>Y</m> as much as possible first:</p>
+					<me>
+						Y(s) = \frac{-s^2 - s}{(s - 1)(s + 1)^2} = \frac{-s(s + 1)}{(s - 1)(s + 1)^2} = \frac{-s}{(s - 1)(s + 1)}
+					</me>
+				</p>
 
 				<p>
 					Now PFD is a little easier. Here is the general form:
+					<me>
+						Y(s) = \frac{-s}{(s - 1)(s + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1}
+					</me>
 				</p>
-
-				<me>
-					Y(s) = \frac{-s}{(s - 1)(s + 1)} = \frac{A}{s - 1} + \frac{B}{s + 1}
-				</me>
 
 				<p>
 					Applying the standard process gives: <m>A = -\sfrac12</m>, <m>B = -\sfrac12</m>
 				</p>
+
 				<p>
 					So the prepared <m>Y</m> is:
+					<me>
+						Y(s) = \frac{-\sfrac12}{s - 1} + \frac{-\sfrac12}{s + 1}
+					</me>
 				</p>
-
-				<me>
-					Y(s) = \frac{-\sfrac12}{s - 1} + \frac{-\sfrac12}{s + 1}
-				</me>
 				
 				<p><em><xref ref="lt-step-3" text="title"/></em></p>
-				<p>Take the inverse Laplace transform term by term:</p>
-				<md>
-					<mrow>y(t) = -\frac12\ilap{\frac{1}{s - 1}} - \frac12\ilap{\frac{1}{s + 1}}</mrow>
-				</md>
+				<p>
+					Take the inverse Laplace transform term by term:
+					<md>
+						<mrow>y(t) = -\frac12\ilap{\frac{1}{s - 1}} - \frac12\ilap{\frac{1}{s + 1}}</mrow>
+					</md>
+				</p>
 
-				<p>giving us the solution:</p>
-				<me>y(t) = -\frac12e^{t} - \frac12e^{-t}</me>
+				<p>
+					giving us the solution:
+					<me>y(t) = -\frac12e^{t} - \frac12e^{-t}</me>
+				</p>
 			</solution>
 		</example>
 
@@ -829,10 +849,10 @@
 			<statement>
 				<p>
 					Solve the initial value problem using the Laplace transform:
+					<me>
+						y'' + 2y = e^t \cos(3t), \quad y(0) = 0, \quad y'(0) = 0
+					</me>.
 				</p>
-				<me>
-					y'' + 2y = e^t \cos(3t), \quad y(0) = 0, \quad y'(0) = 0
-				</me>
 			</statement>
 
 			<solution>
