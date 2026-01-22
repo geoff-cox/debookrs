@@ -1,3 +1,15 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
 <section label="transforming-piecewise-functions">
 	<title>Transforming Piecewise Functions</title>
 	<introduction>
@@ -51,7 +63,7 @@
 			</statement>
 			<feedback>
 				<p>
-				These patterns should be second nature now, this matching is what allows us to build the step-based expression for the Laplace transform.
+				These patterns should be second nature now; this matching is what allows us to build the step-based expression for the Laplace transform.
 				</p>
 			</feedback>
 			<cardsort>
@@ -140,7 +152,7 @@
 		<title>Examples</title>
 		
 		<p>
-			These worked examples illustrate how the three step-function Laplace rules combine into one powerful method for handling any piecewise function you might encounter.
+			The following examples illustrate a method for handling any piecewise function you might encounter.
 		</p>
 
 		<example>
@@ -174,12 +186,11 @@
 
 				<p>
 					Now, contruct <m>g(t)</m> and combine the <m>u_1(t)</m> terms:
+					<md>
+						<mrow> g(t)	\amp = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t) </mrow>.
+						<mrow>		\amp = e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)</mrow>.
+					</md>
 				</p>
-
-				<md>
-					<mrow> g(t)	\amp = e^{-t} \cdot \left(1 - u_{1}(t)\right) + 3 \cdot u_{1}(t) </mrow>.
-					<mrow>		\amp = e^{-t} + \left(-e^{-t} + 3\right) \cdot u_{1}(t)</mrow>.
-				</md>
 
 				<p>
 					Apply the Laplace transform to both terms:
@@ -227,47 +238,51 @@
 		<example>
 			<title>Transforming a 3-Part Piecewise Function</title>
 			<statement>
-			<p>
-				Find the Laplace transform of
-				<me>
-					h(t) = \left\{
-					\begin{array}{ll}
-						0, 	\amp t \lt 2 \\
-						t,	\amp 2 \le t \lt 5 \\
-						4,	\amp t \ge 5
-					\end{array}
-					\right.
-				</me>
-			</p>
+				<p>
+					Find the Laplace transform of
+					<me>
+						h(t) = \left\{
+						\begin{array}{ll}
+							0, 	\amp t \lt 2 \\
+							t,	\amp 2 \le t \lt 5 \\
+							4,	\amp t \ge 5
+						\end{array}
+						\right.
+					</me>
+				</p>
 			</statement>
 			<solution><title><m>\rightarrow \lap{h(t)}</m></title>
 				<p>
 					Write each piece using step functions:
+					<md>
+						<mrow> h(t) \amp = t \cdot (u_{2}(t) - u_{5}(t)) + 4 \cdot u_{5}(t) </mrow>.
+					</md>
 				</p>
-				<md>
-					<mrow> h(t) \amp = t \cdot (u_{2}(t) - u_{5}(t)) + 4 \cdot u_{5}(t) </mrow>.
-				</md>
 
 				<p>
 					Combine like terms:
+					<md>
+						<mrow> h(t) \amp = t \, u_{2}(t) - t \, u_{5}(t) + 4 \, u_{5}(t) </mrow>
+						<mrow> \amp = t \, u_{2}(t) + (4 - t) u_{5}(t) </mrow>.
+					</md>
 				</p>
-				<md>
-					<mrow> h(t) \amp = t \, u_{2}(t) - t \, u_{5}(t) + 4 \, u_{5}(t) </mrow>
-					<mrow> \amp = t \, u_{2}(t) + (4 - t) u_{5}(t) </mrow>.
-				</md>
 
 				<p>
 					Transform each term:
-				<ul marker="disc">
-					<li><term>Term 1:</term> Apply <xref ref="lt-L10" text="custom">L<sub>10</sub></xref> with <m>c=2</m> and <m>f(t)=t</m>. Then <m>f(t+2)=t+2</m>, so:
-						<me>\lap{t \, u_{2}(t)} = e^{-2s}\lap{t+2} = e^{-2s}\left( \frac{1}{s^2} + \frac{2}{s} \right)</me>.
-					</li>
-
-					<li><term>Term 2:</term> Apply <xref ref="lt-L10" text="custom">L<sub>10</sub></xref> with <m>c=5</m> and <m>f(t)=4-t</m>. Then <m>f(t+5)=4-(t+5)=-t-1</m>, so:
-						<me>\lap{(4-t) u_{5}(t)} = e^{-5s}\lap{-t-1} = e^{-5s}\left(-\frac{1}{s^2} - \frac{1}{s}\right)</me>.
-					</li>
-				</ul>
-
+					<ul marker="disc">
+						<li>
+							<p>
+								<term>Term 1:</term> Apply <xref ref="lt-L10" text="custom">L<sub>10</sub></xref> with <m>c=2</m> and <m>f(t)=t</m>. Then <m>f(t+2)=t+2</m>, so:
+								<me>\lap{t \, u_{2}(t)} = e^{-2s}\lap{t+2} = e^{-2s}\left( \frac{1}{s^2} + \frac{2}{s} \right)</me>.
+							</p>
+						</li>
+						<li>
+							<p>
+								<term>Term 2:</term> Apply <xref ref="lt-L10" text="custom">L<sub>10</sub></xref> with <m>c=5</m> and <m>f(t)=4-t</m>. Then <m>f(t+5)=4-(t+5)=-t-1</m>, so:
+								<me>\lap{(4-t) u_{5}(t)} = e^{-5s}\lap{-t-1} = e^{-5s}\left(-\frac{1}{s^2} - \frac{1}{s}\right)</me>.
+							</p>
+						</li>
+					</ul>
 				</p>
 
 				<p>
