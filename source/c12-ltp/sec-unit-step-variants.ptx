@@ -126,57 +126,24 @@
 							
 								% === Function plots on [tmin, c] ===
 								\draw[ultra thick]	plot[domain=\tmin:\c-0.1, variable=\t]	(\t, {\uL{\t}});
+									
+								% === Function plots on [c, tmax] ===
+								\draw[ultra thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
 								
-									% === Transitions ===
-									\def\c{1.5}
-									\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-									\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-									\node[font=\small, below] at ({\c}, -0.1) {$c$};
-									
-									% === Midpoints ===
-									\def\Lmid{{(\tmin + \c)*0.5-0.7}}
-									\def\Rmid{{(\c + \tmax)*0.5}}
-	
-									% === Function definitions ===
-									\newcommand{\uL}[1]{0}	\def\uLtex{0}
-									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								% === Points at t=c ===
+								\draw[very thick]	(\c,{\uL{\c}})	circle[radius=5pt];
+								\fill[very thick]	(\c,{\uR{\c}})	circle[radius=5pt];
 								
-									% === Axes ===
-									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
-	
-									% === Tick marks/numeric labels ===
-									\foreach \t in \tticks {
-										\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
-									%	\node[below, font=\scriptsize] at (\t,-0.08) {\t};	% t labels	
-									}
-									\foreach \y in \yticks {
-										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-									%	\node[right, font=\scriptsize] at (0,\y) {\y};	% y labels
-									}
-								
-									% === Function plots on [tmin, c] ===
-									\draw[ultra thick]	plot[domain=\tmin:\c-0.1, variable=\t]	(\t, {\uL{\t}});
-									
-									% === Function plots on [c, tmax] ===
-									\draw[ultra thick]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
-									
-									% === Points at t=c ===
-									\draw[very thick]	(\c,{\uL{\c}})	circle[radius=5pt];
-									\fill[very thick]	(\c,{\uR{\c}})	circle[radius=5pt];
-									
-									% === Labels ===
-									%\node[\OFColor, font=\scriptsize, above] at (\Lmid	, 0		) {$u_c(t) = 0$};
-									%\node[\ONColor, font=\scriptsize, above] at (\Rmid	, 1		) {$u_c(t) = 1$};
-									\node[\OFColor, font=\scriptsize, below] at (\Lmid	, \ymax	) {$\text{OFF}$};
-									\node[\ONColor, font=\scriptsize, below] at (\Rmid	, 1		) {$\text{ON}$};
-								\end{tikzpicture}
-							</latex-image>
-						</image>
-					</p>
-				</sidebyside>
-			</p>
+								% === Labels ===
+								%\node[\OFColor, font=\scriptsize, above] at (\Lmid	, 0		) {$u_c(t) = 0$};
+								%\node[\ONColor, font=\scriptsize, above] at (\Rmid	, 1		) {$u_c(t) = 1$};
+								\node[\OFColor, font=\scriptsize, below] at (\Lmid	, \ymax	) {$\text{OFF}$};
+								\node[\ONColor, font=\scriptsize, below] at (\Rmid	, 1		) {$\text{ON}$};
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+			</sidebyside>
 	<!-- <p>
 		We also define the following special shifted unit step functions:
 		<me>
@@ -184,41 +151,6 @@
 		</me>.
 		Think about this notation as a switch that is always ON and always OFF, respectively.
 	</p> -->
-		</assemblage>
-
-		<proposition>
-			<title>Exploring the Effect of <m>c</m></title>
-	
-			<p>
-				Consider the product of the parabolic function and the shifted unit step function
-				<me>
-					\left(\frac{1}{5}t^2 - 1\right) u_c(t)
-				</me>.
-				Use the tool to see how changing <m>c</m> affects the ON/OFF behavior of the parabola.
-				<proof><title>Instructions</title>
-					<ul marker="square">
-						<li>Hover over the labels <m>g(t)</m>, <m>\left(\frac15 t^2 - 1\right)</m> and <m>u_c(t)</m> to highlight its graph.</li>
-						<li>Drag the value of <m>c</m>, initially at <m>(0,0)</m>, along the <m>t</m> axis.</li>
-					</ul>
-				</proof>
-			</p>
-	
-			<sidebyside width="85%" margins="5% 10%">
-				<interactive xml:id="unit-step-2"
-					platform="jsxgraph"
-					aspect="5:2"
-					dark-mode-enabled="yes"
-					source="
-						code/jsxgraph/jsx-core/board.js
-						code/jsxgraph/jsx-core/piecewise.js
-						code/jsxgraph/jsx-core/utils.js code/jsxgraph/unit-step-interactives/unit-step-2.js"
-				>
-					<slate xml:id="unit-step-2-plot1" surface="jsxboard" aspect="5:2" />
-					<static>
-						<image source="code/jsxgraph/img-labels/t.png" width="70%"> Need to Add </image>
-					</static>
-				</interactive>
-			</sidebyside>
 		</assemblage>
 
 		<proposition>
