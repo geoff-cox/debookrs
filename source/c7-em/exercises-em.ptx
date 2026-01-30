@@ -14,6 +14,13 @@
 <section label="em-exercises">
 	<title>Exercises</title>
 
+	<aside>
+		<title>Note on Variables</title>
+		<p>
+			In these exercises, you'll see both <m>t</m> and <m>x</m> used as the independent variable in differential equations. This is common in mathematics—the choice of variable name doesn't change the method! Whether you see <m>y' = f(t, y)</m> or <m>y' = f(x, y)</m>, Euler's method works exactly the same way. The important thing is to consistently use the variable indicated in each problem.
+		</p>
+	</aside>
+
 	<!-- <exercises label="em-concept-quiz">
 		<title><e component="emoji">💡</e> Conceptual Quiz</title>
 		
@@ -46,9 +53,21 @@
 				<p>over the interval <m>[0, 1]</m> with a step size of <m>h = 0.5</m>.</p>
 			</statement>
 
+			<hint>
+				<p>
+					Start with the given initial condition <m>y_0 = -1</m> at <m>t_0 = 0</m>. Use Euler's update formula: <m>y_{k+1} = y_k + h \cdot f(t_k, y_k)</m>, where <m>f(t, y) = y^2 - t</m>. You'll need to compute two steps to reach <m>t = 1</m>.
+				</p>
+			</hint>
+
 			<solution>
 				<p>
-					Solution omitted.
+					Using Euler's method with <m>h = 0.5</m>:
+					<ul>
+						<li><m>t_0 = 0</m>, <m>y_0 = -1</m></li>
+						<li><m>y_1 = y_0 + 0.5 \cdot (y_0^2 - t_0) = -1 + 0.5 \cdot (1 - 0) = -0.5</m></li>
+						<li><m>y_2 = y_1 + 0.5 \cdot (y_1^2 - t_1) = -0.5 + 0.5 \cdot (0.25 - 0.5) = -0.625</m></li>
+					</ul>
+					Therefore, <m>y(0.5) \approx -0.5</m> and <m>y(1) \approx -0.625</m>.
 				</p>
 			</solution>
 		</exercise>
@@ -65,6 +84,12 @@
 				</p>
 			</statement>
 			<solution>
+				<note>
+					<title>Alternative Derivation Approach</title>
+					<p>
+						The solution below uses a forward-difference approximation to derive Euler's formula. This is an alternative to the geometric "slope and step size" approach used in the main text. Both methods arrive at the same formula, but this algebraic approach provides another perspective on why Euler's method works.
+					</p>
+				</note>
 				<p>
 					Euler's method works by replacing <m>y'(x)</m> in <xref ref="euler-ex-01-de"/> with its forward-difference approximation, giving us
 					<me>
@@ -392,6 +417,105 @@
 					</li>
 				</ol>
 			</p>
+		</exercise>
+
+		<exercise label="em-problem-05">
+			<title>Comparing Step Sizes</title>
+
+			<introduction>
+				<p>
+					Consider the initial-value problem
+					<me>
+						y' = -y, \quad y(0) = 1
+					</me>
+					on the interval <m>[0, 1]</m>.
+				</p>
+			</introduction>
+
+			<p>
+				<ol>
+					<li>
+						Use Euler's method with step size <m>h = 0.5</m> to approximate <m>y(1)</m>.
+						<solution>
+							<p>
+								<md>
+									<mrow>  \mbox{With } h = 0.5\text{:} \amp </mrow>
+									<mrow>  y_0 \amp = 1 </mrow>
+									<mrow>  y_1 \amp = y_0 + 0.5(-y_0) = 1 + 0.5(-1) = 0.5 </mrow>
+									<mrow>  y_2 \amp = y_1 + 0.5(-y_1) = 0.5 + 0.5(-0.5) = 0.25 </mrow>
+								</md>
+								Thus, <m>y(1) \approx 0.25</m>.
+							</p>
+						</solution>
+						<answer><p><m>y(1) \approx 0.25</m></p></answer>
+					</li>
+					<li>
+						Use Euler's method with step size <m>h = 0.25</m> to approximate <m>y(1)</m>.
+						<solution>
+							<p>
+								<md>
+									<mrow>  \mbox{With } h = 0.25\text{:} \amp </mrow>
+									<mrow>  y_0 \amp = 1 </mrow>
+									<mrow>  y_1 \amp = y_0 + 0.25(-y_0) = 1 - 0.25 = 0.75 </mrow>
+									<mrow>  y_2 \amp = y_1 + 0.25(-y_1) = 0.75 - 0.1875 = 0.5625 </mrow>
+									<mrow>  y_3 \amp = y_2 + 0.25(-y_2) = 0.5625 - 0.140625 = 0.421875 </mrow>
+									<mrow>  y_4 \amp = y_3 + 0.25(-y_3) \approx 0.421875 - 0.105469 = 0.316406 </mrow>
+								</md>
+								Thus, <m>y(1) \approx 0.316</m>.
+							</p>
+						</solution>
+						<answer><p><m>y(1) \approx 0.316</m></p></answer>
+					</li>
+					<li>
+						The exact solution is <m>y(t) = e^{-t}</m>. Calculate <m>y(1)</m> exactly and compare with your approximations from parts (a) and (b). Which approximation is closer to the true value?
+						<solution>
+							<p>
+								The exact value is <m>y(1) = e^{-1} \approx 0.368</m>. The approximation with <m>h = 0.25</m> gives <m>0.316</m>, which is closer to <m>0.368</m> than the approximation with <m>h = 0.5</m>, which gives <m>0.25</m>. This demonstrates that smaller step sizes generally produce more accurate results.
+							</p>
+						</solution>
+						<answer><p><m>y(1) = e^{-1} \approx 0.368</m>; the smaller step size <m>h = 0.25</m> gives a more accurate approximation.</p></answer>
+					</li>
+				</ol>
+			</p>
+		</exercise>
+
+		<exercise label="em-problem-06">
+			<title>Conceptual Understanding</title>
+
+			<statement>
+				<p>
+					Answer the following questions about Euler's method:
+				</p>
+				<p>
+					<ol>
+						<li>
+							Why does decreasing the step size <m>h</m> generally improve the accuracy of Euler's method? Explain in terms of the geometry of the solution curve.
+						</li>
+						<li>
+							Suppose you're using Euler's method and notice that your approximation seems to drift further from the true solution as you take more steps. What might be happening, and what could you do to improve the approximation?
+						</li>
+						<li>
+							Can Euler's method produce the exact solution for any differential equation? If so, give an example. If not, explain why not.
+						</li>
+					</ol>
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					<ol>
+						<li>
+							Euler's method approximates the solution curve by following straight-line segments in the direction of the slope. When the step size is large, these straight segments can deviate significantly from the curved solution, especially if the curvature is high. Smaller steps mean the straight-line approximation stays closer to the actual curve before each correction, reducing the accumulated error.
+						</li>
+						<li>
+							This drifting behavior suggests error accumulation. Each step of Euler's method introduces a small error (called local truncation error), and these errors can compound over many steps. To improve the approximation, you could: (1) use a smaller step size, (2) use a more accurate numerical method, or (3) check your calculations for arithmetic errors.
+						</li>
+						<li>
+							Yes, Euler's method can produce exact solutions for certain differential equations. For example, if <m>y' = c</m> (constant), the solution is a straight line <m>y = ct + y_0</m>, and Euler's method follows this line exactly. More generally, any differential equation whose solution is piecewise linear will be solved exactly by Euler's method with appropriate step placement. However, for most differential equations with curved solutions, Euler's method only produces approximations.
+						</li>
+					</ol>
+				</p>
+			</solution>
 		</exercise>
 
 	</exercises>
