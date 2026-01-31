@@ -412,29 +412,32 @@
 					to find <m>y_1</m>, <m>y_2</m> and <m>y_3</m> as follows:
 				</p>
 
-				<sidebyside widths="5% 8% 82% 5%" valign="middle">
-					<p/>
-					<p>
-						<md>
-							<mrow> \text{Given}	\amp </mrow>
-							<mrow> k		\amp = 0 </mrow>
-							<mrow> k		\amp = 1 </mrow>
-							<mrow> k		\amp = 2 </mrow>
-						</md>
-					</p>
-					<p>
-						<md>
-							<mrow> y_0	\amp = -0.875 </mrow>
-							<mrow> y_1	\amp = y_0 + h\left(t_0 + y_0\right) = -0.875 + 0.5\left(0 - 0.875\right) = -1.3125 </mrow>
-							<mrow> y_2	\amp = y_1 + h\left(t_1 + y_1\right) = -1.3125 + 0.5\left(0.5 - 1.3125\right) = -1.71875 </mrow>
-							<mrow> y_3	\amp = y_2 + h\left(t_2 + y_2\right) = -1.71875 + 0.5\left(1.0 - 1.71875\right) = -2.078125 </mrow>
-						</md>
-					</p>
-					<p/>
-				</sidebyside>
+				<tabular>
+					<row>
+						<cell colspan="4">Given <m>{\DLBa y_0}	= {\DLBa - 0.875}</m></cell>
+					</row>
+					<row>
+						<cell><m>k = 0</m></cell><cell><m>{\DLGa y_1}</m></cell><cell><m>=</m></cell><cell><m>{\DLBa y_0} + h\left(t_0 + {\DLBa y_0}\right)</m></cell>
+					</row>
+					<row>
+						<cell/><cell/><cell><m>=</m></cell><cell><m>{\DLBa - 0.875} + 0.5\left(0 {\DLBa - 0.875}\right) = {\DLGa - 1.3125}</m></cell>
+					</row>
+					<row>
+						<cell><m>k = 1</m></cell><cell><m>{\DLO y_2}</m></cell><cell><m>=</m></cell><cell><m>{\DLGa y_1} + h\left(t_1 + {\DLGa y_1}\right)</m></cell>
+					</row>
+					<row>
+						<cell/><cell/><cell><m>=</m></cell><cell><m>{\DLGa - 1.3125} + 0.5\left(0.5 {\DLGa - 1.3125}\right) = {\DLO - 1.71875}</m></cell>
+					</row>
+					<row>
+						<cell><m>k = 2</m></cell><cell><m>y_3</m></cell><cell><m>=</m></cell><cell><m>{\DLO y_2} + h\left(t_2 + {\DLO y_2}\right)</m></cell>
+					</row>
+					<row>
+						<cell/><cell/><cell><m>=</m></cell><cell><m>{\DLO - 1.71875} + 0.5\left(1.0 {\DLO - 1.71875}\right) = -2.078125</m></cell>
+					</row>
+				</tabular>
 
 				<p>
-					The simplified calculations are summarized in the following table:
+					The approximate solution to the initial-value problem is given in the <m>y_k</m> column of the following table:
 				</p>
 
 				<tabular>
@@ -469,13 +472,6 @@
 				</tabular>
 
 				<p>
-					Thus, the approximate solution to the initial-value problem is
-					<me>
-						y(0) \approx -0.875, \quad y(0.5) \approx -1.3125, \quad y(1.0) \approx -1.71875, \quad y(1.5) \approx -2.078125.
-					</me>
-				</p>
-
-				<p>
 					We can visualize the approximation by plotting the points <m>(t_k, y_k)</m> and connecting them with line segments. The exact solution to the initial-value problem is given by
 					<me>
 						y(t) = \frac{1}{8}e^t - t - 1.
@@ -483,57 +479,15 @@
 				</p>
 
 				<p>
-					The following plot shows the approximation and the exact solution.
+					The following plot shows the approximation and the exact solution. Notice how the Euler approximation captures the general trend of the solution, although it slightly underestimates the values due to the curvature of the exact solution.
 				</p>
 
-				<image xml:id="sageplot-euler-approximation">
+				<figure xml:id="">
+					<caption>
+						The red curve is the exact solution, while the green points are the approximated values at <m>t = 0, 0.5, 1.0, 1.5</m>.
+					</caption>
 
-					<sageplot variant="2d">
-						y = lambda x : (1/8)*exp(x)-x-1
-						euler = lambda x, y, dx : y + dx*(x + y)
-						y0 = -7/8
-						x0, h, xF = 0, 0.5, 1.5
-						ymin, ymax = -3, 1
-
-						y_data = [(x0, y0)]
-						yp = y0
-
-						for xp in xsrange(x0, xF, h):
-							yp = euler(xp, yp, h)
-							y_data.append((xp + h, yp))
-
-						xticks = [0, 0.5, 1, 1.5, 2]
-						yticks = [i for i in range(ymin, ymax)]
-
-						grid_rgbcolor = (0.9, 0.9, 0.9)
-						grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
-
-						for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
-							grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
-						for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
-							grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
-
-						y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
-						yn_plot = list_plot(y_data, markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
-						y_plot + yn_plot + grid
-
-					</sageplot>
-				</image>
-
-				<p>
-					The red curve is the exact solution, while the green points are the approximated values at <m>t = 0, 0.5, 1.0, 1.5</m>. Notice how the Euler approximation captures the general trend of the solution, although it slightly underestimates the values due to the curvature of the exact solution.
-				</p>
-
-				<p>
-					The blue line segments connect the points in the approximation, showing how Euler's method steps through the solution.
-				</p>
-
-				<p>
-					The following plot shows the approximation and the exact solution, with a grid for better visualization.
-				</p>
-
-				<p>
-					<image xml:id="sageplot-polynomial-approximation">
+					<image xml:id="sageplot-euler-approximation">
 
 						<sageplot variant="2d">
 							y = lambda x : (1/8)*exp(x)-x-1
@@ -554,67 +508,26 @@
 
 							grid_rgbcolor = (0.9, 0.9, 0.9)
 							grid = plot([], ymin=ymin, ymax=ymax, fontsize=16, ticks=[xticks, yticks],)
-							
 
 							for gx in xsrange(x0, xF, 0.25, include_endpoint=True):
 								grid += line([(gx, ymin),(gx, ymax)], rgbcolor=grid_rgbcolor)
 							for gy in xsrange(ymin, ymax, 1, include_endpoint=True):
 								grid += line([(x0,  gy),(xF, gy)], rgbcolor=grid_rgbcolor)
 
-							y_plot = plot(y, x0, xF, rgbcolor='red', thickness=1,)
-							yn_plot = list_plot(y_data,  markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=40)
+							y_plot = plot(y, x0, xF, rgbcolor='red', thickness=2,)
+							yn_plot = list_plot(y_data, markeredgecolor="black", rgbcolor=(0.2,0.8,0.1), pointsize=50)
 							y_plot + yn_plot + grid
 
 						</sageplot>
 					</image>
-				</p>
+				</figure>
 
-				<image width="100%">
-					<latex-image>
-						% User Defined Parameters
-						\def\a{0} 		% interval start
-						\def\b{1} 		% interval end
-						\def\h{0.2} 	% stepsize
-						\def\round{2}	% decimal rounding
-						\def\s{5}  		% scaling factor
-
-						\begin{tikzpicture}[scale=\s]
-
-							\pgfkeys{/pgf/number format/.cd,fixed,precision=\round}
-						
-							% Calculate number of partitions
-							\pgfmathsetmacro{\N}{(\b-\a)/\h}
-							
-							% Draw the x-axis
-							\draw[-&gt;,thick] (\a - 2*\h/\s,0) -- (\b + 2*\h/\s,0) node[right] {$x$};
-
-							% Draw the partition points and labels
-							\foreach \i in {0,...,\N}
-							{
-								\pgfmathsetmacro{\currentPoint}{\a + \i*\h}
-								\draw (\currentPoint,0.1/\s) -- (\currentPoint,-0.1/\s) node[below] {$\pgfmathprintnumber{\currentPoint}$};
-								\draw 							(\currentPoint,-0.5/\s) node[below] {$t_{\i}$};
-
-							}
-							
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-
-				<p>
-					<md>
-						<mrow> y'(t_k) 										\amp = (y(t_k))^2 - t_k </mrow>
-						<mrow> \frac{y(t_{k+1}) - y(t_k)}{h}	\amp = (y(t_k))^2 - t_k </mrow>
-						<mrow> \frac{y_{k+1} - y_k}{h}	\amp = (y_k)^2 - t_k </mrow>
-						<mrow> y(t_{k+1}) - y(t_k) 							\amp = h\left((y(t_k))^2 - t_k\right) </mrow>
-						<mrow> y(t_{k+1}) 									\amp = y(t_k) + h\left((y(t_k))^2 - t_k\right) </mrow>
-					</md>
-				</p>
 			</solution>
 		</example>
 
 		<example label="eulers-method-example-2">
 			<title>Analytical and Numerical Solutions</title>
+
 			<statement>
 				<p>
 					Consider the differential equation
@@ -734,64 +647,10 @@
 			</solution>
 		</example>
 
-		<example label="eulers-method-example-3">
-			<title>Example: Euler's Method with <m>h = 0.5</m></title>
-		<statement>
-			<p>
-				Use Euler's method to approximate the solution to
-				<me>
-				y'(t) = 6t + y(t), \quad y(0) = -2
-				</me>
-				over <m>t = 0</m> to <m>1.5</m> using step size <m>h = 0.5</m>.
-			</p>
-		</statement>
-		<solution>
-			<p>The formula is:</p>
-			<me>
-			y_{k+1} = y_k + 0.5 \cdot (6t_k + y_k)
-			</me>
-			<tabular>
-			<col right="minor" /><col /><col /><col />
-			<row bottom="minor">
-				<cell><m>k</m></cell>
-				<cell><m>t_k</m></cell>
-				<cell><m>y_k</m></cell>
-				<cell><m>y_{k+1} = y_k + 0.5(6t_k + y_k)</m></cell>
-			</row>
-			<row>
-				<cell>0</cell><cell>0.0</cell><cell>-2.0</cell><cell>-3.0</cell>
-			</row>
-			<row>
-				<cell>1</cell><cell>0.5</cell><cell>-3.0</cell><cell>-3.0</cell>
-			</row>
-			<row>
-				<cell>2</cell><cell>1.0</cell><cell>-3.0</cell><cell>-1.5</cell>
-			</row>
-			</tabular>
-			<p>Thus, the approximate values are:</p>
-			<me>
-			y(0) \approx -2,\quad y(0.5) \approx -3,\quad y(1.0) \approx -3,\quad y(1.5) \approx -1.5
-			</me>
-
-			</solution>
-		</example>
-
 		<p>
 			Euler's method runs on an intuitive idea: use the slope at each point to <q>predict</q> the next point. It's simple, but that simplicity is its strength. This method is often the first stepping stone into the world of numerical methods, and the same <q>predict, step, repeat</q> pattern forms the backbone of many other techniques.
 		</p>
 		
-		<assemblage>
-			<title>Key Takeaways: Euler's Method</title>
-			<p>
-				<ul>
-					<li><alert>Fundamental concept:</alert> Euler's method approximates solutions by following the slope given by the differential equation, taking small steps from one point to the next.</li>
-					<li><alert>The update formula:</alert> <m>y_{k+1} = y_k + h \cdot f(t_k, y_k)</m> captures the entire process in a single equation.</li>
-					<li><alert>Step size matters:</alert> Smaller step sizes (<m>h</m>) generally produce more accurate approximations but require more computational steps.</li>
-					<li><alert>Trade-offs:</alert> Euler's method is simple and intuitive, but it's also a relatively crude approximation. More sophisticated methods (which we'll see later) can achieve better accuracy with the same step size.</li>
-					<li><alert>Wide applicability:</alert> Even when an analytic solution is impossible to find, Euler's method can still provide useful approximations, making it invaluable for real-world problems.</li>
-				</ul>
-			</p>
-		</assemblage>
 	</subsection>
 
 </section>
