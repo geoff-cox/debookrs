@@ -6,7 +6,7 @@
 import re
 from xml.sax.saxutils import escape
 
-# Matches invalid characters disallowed in xml:id values (letters, digits, underscores only).
+# Matches invalid characters that are not letters, digits, or underscores.
 XML_ID_INVALID_CHARS = re.compile(r"[^A-Za-z0-9_]")
 DEFAULT_BOOK_ID = "book_default"
 
@@ -18,7 +18,8 @@ def sanitize_xml_id(value: str) -> str:
 
     Enforces xml:id naming rules: must start with a letter or underscore, followed
     by any combination of letters, digits, or underscores. Returns an empty
-    string when no valid characters remain after sanitization.
+    string when no valid characters remain after sanitization (callers can apply
+    fallbacks as needed).
     """
     sanitized = XML_ID_INVALID_CHARS.sub("_", value.strip())
     if not sanitized:
