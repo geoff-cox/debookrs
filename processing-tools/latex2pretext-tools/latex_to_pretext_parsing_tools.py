@@ -39,8 +39,8 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     if files_lines is None:
         files_lines = []
     sanitized_id = sanitize_xml_id(book_id)
-    sanitized_title_id = sanitize_xml_id(book_title)
-    safe_book_id = sanitized_id or sanitized_title_id or DEFAULT_BOOK_ID
+    fallback_id_from_title = sanitize_xml_id(book_title)
+    safe_book_id = sanitized_id or fallback_id_from_title or DEFAULT_BOOK_ID
     safe_book_title = escape(book_title)
     new_lines = files_lines.copy()
     new_lines.extend(
