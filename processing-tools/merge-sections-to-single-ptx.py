@@ -73,8 +73,8 @@ def main() -> None:
         return
 
     output_path = Path(output_file)
-    if output_path.is_absolute() or ".." in output_path.parts:
-        print("Output file must be a relative path without parent directory references.")
+    if output_path.is_absolute():
+        print("Output file must be a relative path.")
         return
     resolved_output_path = output_path.resolve()
     resolved_cwd = Path.cwd().resolve()
