@@ -10,7 +10,13 @@ from xml.sax.saxutils import escape
 # Helper Functions
 
 def add_header(book_id: str, book_title: str, files_lines: list[str] | None = None) -> list[str]:
-    """Return a PreTeXt header block appended to existing lines."""
+    """Return a PreTeXt header block appended to existing lines.
+
+    Args:
+        book_id: Source identifier; sanitized to a valid xml:id.
+        book_title: Title text escaped for XML element content.
+        files_lines: Existing lines to prepend before the header.
+    """
     if files_lines is None:
         files_lines = []
     safe_book_id = re.sub(r"[^A-Za-z0-9_.-]", "_", book_id.strip())
