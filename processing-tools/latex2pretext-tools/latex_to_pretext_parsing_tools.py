@@ -14,6 +14,9 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     if files_lines is None:
         files_lines = []
     safe_book_id = escape(book_id)
+    safe_book_id = re.sub(r"[^A-Za-z0-9_.-]", "_", safe_book_id)
+    if not re.match(r"^[A-Za-z_]", safe_book_id):
+        safe_book_id = f"_{safe_book_id}"
     safe_book_title = escape(book_title)
     new_lines = files_lines.copy()
     new_lines.extend(
