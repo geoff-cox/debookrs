@@ -52,10 +52,10 @@ def get_line_type(line: str) -> str:
         return "index"
     if re.search(r"^\\verb\|.*?\|$", line):
         return "single_verb"
-    if re.search(r"^\\verb\|.*?\|\s*\w+[\\\\$]", line):
+    if re.search(r"^\\verb\|.*?\|\s*\w+[\\$]", line):
         return "single_verb_w_text"
     if (
-        re.search(r"^\\verb\|.*\|$", line) or re.search(r"^\\verb\|.*\|\s*[\\\\$]", line)
+        re.search(r"^\\verb\|.*\|$", line) or re.search(r"^\\verb\|.*\|\s*[\\$]", line)
     ):
         return "multi_verb"
     if re.search(r"\\ps \\verb", line):
