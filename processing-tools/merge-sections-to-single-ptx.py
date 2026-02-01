@@ -27,7 +27,7 @@ def process_includes(content: str, base_path: str | Path) -> str:
     """Recursively replace xi:include tags with their referenced content."""
     base_dir = Path(base_path)
     search_pos = 0
-    match = INCLUDE_PATTERN.search(content, search_pos)
+    match = INCLUDE_PATTERN.search(content)
     while match:
         include_file = match.group(1)
         include_file_path = (base_dir / include_file).resolve()
