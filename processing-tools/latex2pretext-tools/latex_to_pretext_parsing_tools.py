@@ -6,8 +6,20 @@
 import re
 from xml.sax.saxutils import escape
 
+XML_ID_INVALID_CHARS = re.compile(r"[^A-Za-z0-9_]")
+
 ######################################################################################
 # Helper Functions
+
+def sanitize_xml_id(value: str) -> str:
+    """Sanitize user input into a valid xml:id string."""
+    sanitized = XML_ID_INVALID_CHARS.sub("_", value.strip())
+    if not sanitized:
+        return ""
+    if not re.match(r"^[A-Za-z_]", sanitized):
+        sanitized = f"_{sanitized}"
+    return sanitized
+
 
 def add_header(book_id: str, book_title: str, files_lines: list[str] | None = None) -> list[str]:
     """Return a PreTeXt header block appended to existing lines.
@@ -19,11 +31,11 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     """
     if files_lines is None:
         files_lines = []
-    safe_book_id = re.sub(r"[^A-Za-z0-9_]", "_", book_id.strip())
+    safe_book_id = sanitize_xml_id(book_id)
+    if not safe_book_id:
+        safe_book_id = sanitize_xml_id(book_title)
     if not safe_book_id:
         safe_book_id = "book_generated"
-    if not re.match(r"^[A-Za-z_]", safe_book_id):
-        safe_book_id = f"_{safe_book_id}"
     safe_book_title = escape(book_title)
     new_lines = files_lines.copy()
     new_lines.extend(
