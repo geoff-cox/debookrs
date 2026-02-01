@@ -26,10 +26,7 @@ def write_file(file_path: str | Path, content: str) -> None:
 def process_includes(content: str, base_path: str | Path) -> str:
     """Recursively replace xi:include tags with their referenced content."""
     base_dir = Path(base_path)
-    while True:
-        match = INCLUDE_PATTERN.search(content)
-        if not match:
-            break
+    while match := INCLUDE_PATTERN.search(content):
         include_file = match.group(1)
         include_file_path = (base_dir / include_file).resolve()
         include_dir = include_file_path.parent
@@ -74,7 +71,6 @@ def main() -> None:
 
     output_path = Path(output_file).expanduser()
     resolved_output_path = output_path.resolve()
-    resolved_cwd = Path.cwd().resolve()
     if resolved_output_path.exists() and resolved_output_path.is_dir():
         print("Output file path must point to a file, not a directory.")
         return
