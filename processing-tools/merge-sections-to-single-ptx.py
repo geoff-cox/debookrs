@@ -38,6 +38,9 @@ def process_includes(content: str, base_path: str | Path) -> str:
             content = content.replace(match.group(0), included_content, 1)
         else:
             print(f"Warning: Included file {include_file} not found at {include_file_path}")
+            # Remove or neutralize the unresolved include to avoid an infinite loop
+            placeholder = f"<!-- Missing include: {include_file} -->"
+            content = content.replace(match.group(0), placeholder, 1)
         match = INCLUDE_PATTERN.search(content, match.start() + 1)
     return content
 
