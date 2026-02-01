@@ -23,25 +23,25 @@ def load_replacements(json_path: Path) -> list[tuple[str, str, bool]]:
             raise ValueError("JSON must be a list of replacement rules.")
 
         replacements = []
-        for i, item in enumerate(data):
+        for i, item in enumerate(data, start=1):
             if not isinstance(item, dict):
-                raise ValueError(f"Item {i+1} in JSON is not a dictionary.")
+                raise ValueError(f"Item {i} in JSON is not a dictionary.")
 
             find = item.get("find")
             replace = item.get("replace")
             use_regex = item.get("regex", False)
 
             if not isinstance(find, str) or not isinstance(replace, str):
-                raise ValueError(f"Item {i+1} must contain string 'find' and 'replace' fields.")
+                raise ValueError(f"Item {i} must contain string 'find' and 'replace' fields.")
             if not isinstance(use_regex, bool):
-                raise ValueError(f"Item {i+1} has non-boolean 'regex' field.")
+                raise ValueError(f"Item {i} has non-boolean 'regex' field.")
 
             # Validate regex syntax early
             if use_regex:
                 try:
                     re.compile(find)
                 except re.error as exc:
-                    raise ValueError(f"Invalid regex in item {i+1}: {exc}") from exc
+                    raise ValueError(f"Invalid regex in item {i}: {exc}") from exc
 
             replacements.append((find, replace, use_regex))
 

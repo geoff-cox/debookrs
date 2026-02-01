@@ -145,8 +145,7 @@ def get_line_type(line: str) -> str:
 # get tab depth
 def get_tab_depth(line: str) -> int:
     """Return the number of leading tab characters in a line."""
-    match = re.match(r"^\t+", line)
-    return len(match.group(0)) if match else 0
+    return len(line) - len(line.lstrip("\t"))
 
 def is_troy_chapter(lines: list[str]) -> bool:
     """Detect whether a chapter uses Troy-specific LaTeX macros."""

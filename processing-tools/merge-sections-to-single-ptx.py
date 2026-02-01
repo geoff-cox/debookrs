@@ -75,9 +75,6 @@ def main() -> None:
     output_path = Path(output_file).expanduser()
     resolved_output_path = output_path.resolve()
     resolved_cwd = Path.cwd().resolve()
-    if resolved_output_path == resolved_cwd:
-        print("Output file path must point to a file, not the current directory.")
-        return
     if resolved_output_path.exists() and resolved_output_path.is_dir():
         print("Output file path must point to a file, not a directory.")
         return
