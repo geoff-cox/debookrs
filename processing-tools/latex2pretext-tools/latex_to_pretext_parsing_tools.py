@@ -1,197 +1,158 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-## Python Latex to PreText Parser
+"""Utility helpers for converting LaTeX input into PreTeXt-friendly output."""
 
-#### Import Libraries
-
-import re # regular expressions
+import re
 
 ######################################################################################
-#### Helper Functions
+# Helper Functions
 
-def add_header(book_id,book_title,files_lines = []):
+def add_header(book_id, book_title, files_lines=None):
+    """Return a PreTeXt header block appended to existing lines."""
+    if files_lines is None:
+        files_lines = []
     new_lines = files_lines.copy()
-    new_lines.append('<?xml version="1.0" encoding="UTF-8"?>\n')
-    new_lines.append('\n')
-    new_lines.append('<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">\n')
-    new_lines.append('\n')
-    new_lines.append('<xi:include href="./sections/book-info.ptx" />\n')
-    new_lines.append('\n')
-    new_lines.append('<book xml:id="'+ book_id + '">\n')
-    new_lines.append('<title>' + book_title + '</title>\n')
-    new_lines.append('\n')
-    
+    new_lines.extend(
+        [
+            '<?xml version="1.0" encoding="UTF-8"?>\n',
+            "\n",
+            '<pretext xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">\n',
+            "\n",
+            '<xi:include href="./sections/book-info.ptx" />\n',
+            "\n",
+            f'<book xml:id="{book_id}">\n',
+            f"<title>{book_title}</title>\n",
+            "\n",
+        ]
+    )
     return new_lines
 
 def add_footer(files_lines):
+    """Append closing PreTeXt tags to the provided line list."""
     new_lines = files_lines.copy()
-    new_lines.append('</book>\n')
-    new_lines.append('\n')
-    new_lines.append('</pretext>\n')
-    
+    new_lines.extend(["</book>\n", "\n", "</pretext>\n"])
     return new_lines
 
 def get_line_type(line):
-    # is line a comment?
-    if re.search(r'^%', line) != None or re.search('^<!--', line) != None:
-        return 'comment'
-    # is line a blank line?
-    if line == '\n':
-        return 'blank'
-    # is line the beginning of an example?
-    if re.search(r'\\begin\{Example\}', line) != None or re.search(r'\<example xml:', line) != None:
-        return 'b_example'
-    # is line the end of an example?
-    if re.search(r'\\end\{Example\}', line) != None or re.search(r'\</example\>', line) != None:
-        return 'e_example'
-    # is line a section header?
-    if re.search(r'\\section', line) != None or re.search(r'\<section xml:', line) != None:
-        return 'section'
-    # is line a section footer?
-    if re.search(r'\</section\>', line) != None:
-        return 'e_section'
-    # is line a standalone \index?
-    if re.search(r'^\\index', line) != None:
-        return 'index'
-    # is line a single-line \verb?
-    if re.search(r'^\\verb\|.*?\|$', line) != None:
-        return 'single_verb'
-    # is line a single-line \verb with text?
-    if re.search(r'^\\verb\|.*?\|\s*\w+[\\\\$]', line) != None:
-        return 'single_verb_w_text'
-    # is line a multi-line \verb?
-    if re.search(r'^\\verb\|.*\|$', line) != None or re.search(r'^\\verb\|.*\|\s*[\\\\$]', line) != None:
-        return 'multi_verb'
-    elif re.search(r'\\ps \\verb', line) != None:
-        return 'in_verb'
-    # is line a <pre>?
-    if re.search(r'^.*\<pre\>.*\</pre\>.+$|^.+\<pre\>.*\</pre\>.*$', line) != None:
-        return 'inline_pre'
-    # is line a <p>?
-    if re.search(r'\<p\>', line) != None:
-        return 'b_paragraph'
-    # is line a <\p>?
-    if re.search(r'\</p\>', line) != None:
-        return 'e_paragraph'
-    # is line a <pre>?
-    if re.search(r'^\<pre\>', line) != None:
-        return 'b_pre'
-    # is line a <\pre>?
-    if re.search(r'\</pre\>$', line) != None:
-        return 'e_pre'
-    # is line a <sidebyside>?
-    if re.search(r'^\<sidebyside', line) != None:
-        return 'b_sidebyside'
-    # is line a <\sidebyside>?
-    if re.search(r'\</sidebyside\>$', line) != None:
-        return 'e_sidebyside'
-    # is line a <program>?
-    if re.search(r'^\<program', line) != None:
-        return 'b_program'
-    # is line a <\program>?
-    if re.search(r'\</program\>$', line) != None:
-        return 'e_program'
-    # is line a <input>?
-    if re.search(r'^\<input', line) != None:
-        return 'b_input'
-    # is line a <\input>?
-    if re.search(r'\</input\>$', line) != None:
-        return 'e_input'
-    # is line a <title>?
-    if re.search(r'\<title\>', line) != None:
-        return 'title'
-    # is line a subsection header?
-    if re.search(r'\\noindent \\large \\textsf\{', line) != None or re.search(r'\<paragraphs xml:', line) != None or re.search(r'\\subsection\{', line) != None:
-        return 'b_subsection'
-    # is line a subsection footer?
-    if re.search(r'\</paragraphs\>', line) != None or re.search(r'\</paragraphs/>', line) != None:
-        return 'e_subsection'
-    # is line a display math \[ header?
-    if re.search(r'^\s*\\\[\s*$', line) != None or re.search(r'\<md\>', line) != None:
-        return 'b_dmath'
-    # is line a display math \] footer?
-    if re.search(r'^\s*\\\]\s*$', line) != None or re.search(r'\</md\>', line) != None:
-        return 'e_dmath'# is line none of the above?
-    # is line a math array header?
-    if re.search(r'\\begin\{array', line) != None:
-        return 'b_array'
-    # is line a math array footer?
-    if re.search(r'\\end\{array', line) != None:
-        return 'e_array'
-    # is line a math align header?
-    if re.search(r'\\begin\{align', line) != None:
-        return 'b_align'
-    # is line a math align footer?
-    if re.search(r'\\end\{align', line) != None:
-        return 'e_align'
-    # is line an table header?
-    if re.search(r'\\begin\{table', line) != None or re.search(r'\<table', line) != None:
-        return 'b_table'
-    # is line an table footer?
-    if re.search(r'\\end\{table', line) != None or re.search(r'\</table', line) != None:
-        return 'e_table'
-    # is line an tabular header?
-    if re.search(r'\\begin\{tabular', line) != None or re.search(r'\<tabular', line) != None:
-        return 'b_tabular'
-    # is line an tabular footer?
-    if re.search(r'\\end\{tabular', line) != None or re.search(r'\</tabular', line) != None:
-        return 'e_tabular'
-    # is line an enumerate header?
-    if re.search(r'\\begin\{enumerate', line) != None:
-        return 'b_enumerate'
-    # is line an enumerate footer?
-    if re.search(r'\\end\{enumerate', line) != None:
-        return 'e_enumerate'
-    # is line an itemize header?
-    if re.search(r'\\begin\{itemize', line) != None:
-        return 'b_itemize'
-    # is line an itemize footer?
-    if re.search(r'\\end\{itemize', line) != None:
-        return 'e_itemize'
-    # is line an ordered list header?
-    if re.search(r'\<ol\>', line) != None:
-        return 'b_olist'
-    # is line an ordered list footer?
-    if re.search(r'\</ol\>', line) != None:
-        return 'e_olist'
-    # is line an unordered list header?
-    if re.search(r'\<ul\>', line) != None:
-        return 'b_ulist'
-    # is line an unordered list footer?
-    if re.search(r'\</ul\>', line) != None:
-        return 'e_ulist'
-    # is line an \item[?]?
-    if re.search(r'\\item\[.*?\]', line) != None:
-        return 'item_w_arg'
-    # is line an \item?
-    if re.search(r'\\item', line) != None:
-        return 'item'
-    # is line an <row>?
-    if re.search(r'\<row', line) != None:
-        return 'b_row'
-    # is line an </row>?
-    if re.search(r'\</row', line) != None:
-        return 'e_row'
-    # is line an <li>?
-    if re.search(r'\<li\>', line) != None:
-        return 'b_item'
-    # is line an </li>?
-    if re.search(r'\</li\>', line) != None:
-        return 'e_item'
-    return 'other' # is line none of the above?
+    """Classify a line of input for the LaTeX-to-PreTeXt parser."""
+    if re.search(r"^%", line) is not None or re.search(r"^<!--", line) is not None:
+        return "comment"
+    if line == "\n":
+        return "blank"
+    if re.search(r"\\begin\{Example\}", line) is not None or re.search(r"<example xml:", line) is not None:
+        return "b_example"
+    if re.search(r"\\end\{Example\}", line) is not None or re.search(r"</example>", line) is not None:
+        return "e_example"
+    if re.search(r"\\section", line) is not None or re.search(r"<section xml:", line) is not None:
+        return "section"
+    if re.search(r"</section>", line) is not None:
+        return "e_section"
+    if re.search(r"^\\index", line) is not None:
+        return "index"
+    if re.search(r"^\\verb\|.*?\|$", line) is not None:
+        return "single_verb"
+    if re.search(r"^\\verb\|.*?\|\s*\w+[\\\\$]", line) is not None:
+        return "single_verb_w_text"
+    if (
+        re.search(r"^\\verb\|.*\|$", line) is not None
+        or re.search(r"^\\verb\|.*\|\s*[\\\\$]", line) is not None
+    ):
+        return "multi_verb"
+    if re.search(r"\\ps \\verb", line) is not None:
+        return "in_verb"
+    if re.search(r"^.*<pre>.*</pre>.+$|^.+<pre>.*</pre>.*$", line) is not None:
+        return "inline_pre"
+    if re.search(r"<p>", line) is not None:
+        return "b_paragraph"
+    if re.search(r"</p>", line) is not None:
+        return "e_paragraph"
+    if re.search(r"^<pre>", line) is not None:
+        return "b_pre"
+    if re.search(r"</pre>$", line) is not None:
+        return "e_pre"
+    if re.search(r"^<sidebyside", line) is not None:
+        return "b_sidebyside"
+    if re.search(r"</sidebyside>$", line) is not None:
+        return "e_sidebyside"
+    if re.search(r"^<program", line) is not None:
+        return "b_program"
+    if re.search(r"</program>$", line) is not None:
+        return "e_program"
+    if re.search(r"^<input", line) is not None:
+        return "b_input"
+    if re.search(r"</input>$", line) is not None:
+        return "e_input"
+    if re.search(r"<title>", line) is not None:
+        return "title"
+    if (
+        re.search(r"\\noindent \\large \\textsf\{", line) is not None
+        or re.search(r"<paragraphs xml:", line) is not None
+        or re.search(r"\\subsection\{", line) is not None
+    ):
+        return "b_subsection"
+    if re.search(r"</paragraphs>", line) is not None or re.search(r"</paragraphs/>", line) is not None:
+        return "e_subsection"
+    if re.search(r"^\s*\\\[\s*$", line) is not None or re.search(r"<md>", line) is not None:
+        return "b_dmath"
+    if re.search(r"^\s*\\\]\s*$", line) is not None or re.search(r"</md>", line) is not None:
+        return "e_dmath"
+    if re.search(r"\\begin\{array", line) is not None:
+        return "b_array"
+    if re.search(r"\\end\{array", line) is not None:
+        return "e_array"
+    if re.search(r"\\begin\{align", line) is not None:
+        return "b_align"
+    if re.search(r"\\end\{align", line) is not None:
+        return "e_align"
+    if re.search(r"\\begin\{table", line) is not None or re.search(r"<table", line) is not None:
+        return "b_table"
+    if re.search(r"\\end\{table", line) is not None or re.search(r"</table", line) is not None:
+        return "e_table"
+    if re.search(r"\\begin\{tabular", line) is not None or re.search(r"<tabular", line) is not None:
+        return "b_tabular"
+    if re.search(r"\\end\{tabular", line) is not None or re.search(r"</tabular", line) is not None:
+        return "e_tabular"
+    if re.search(r"\\begin\{enumerate", line) is not None:
+        return "b_enumerate"
+    if re.search(r"\\end\{enumerate", line) is not None:
+        return "e_enumerate"
+    if re.search(r"\\begin\{itemize", line) is not None:
+        return "b_itemize"
+    if re.search(r"\\end\{itemize", line) is not None:
+        return "e_itemize"
+    if re.search(r"<ol>", line) is not None:
+        return "b_olist"
+    if re.search(r"</ol>", line) is not None:
+        return "e_olist"
+    if re.search(r"<ul>", line) is not None:
+        return "b_ulist"
+    if re.search(r"</ul>", line) is not None:
+        return "e_ulist"
+    if re.search(r"\\item\[.*?\]", line) is not None:
+        return "item_w_arg"
+    if re.search(r"\\item", line) is not None:
+        return "item"
+    if re.search(r"<row", line) is not None:
+        return "b_row"
+    if re.search(r"</row", line) is not None:
+        return "e_row"
+    if re.search(r"<li>", line) is not None:
+        return "b_item"
+    if re.search(r"</li>", line) is not None:
+        return "e_item"
+    return "other"
 
 # get tab depth
 def get_tab_depth(line):
-    start_tabs = re.findall("^\t+", line)
-    if start_tabs == []:
-        return 0
-    else:
-        return len(re.findall("\t", start_tabs[0]))
+    """Return the number of leading tab characters in a line."""
+    match = re.match(r"^\t+", line)
+    return len(match.group(0)) if match else 0
 
 def is_troy_chapter(lines):
+    """Detect whether a chapter uses Troy-specific LaTeX macros."""
     for line in lines[:5]:
-        if re.search(r'\\settikzpagecorners', line) != None:
+        if re.search(r"\\settikzpagecorners", line) is not None:
             return True
     return False
 
