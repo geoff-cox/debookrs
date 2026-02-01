@@ -9,7 +9,7 @@ from xml.sax.saxutils import escape
 ######################################################################################
 # Helper Functions
 
-def add_header(book_id, book_title, files_lines: list[str] | None = None) -> list[str]:
+def add_header(book_id: str, book_title: str, files_lines: list[str] | None = None) -> list[str]:
     """Return a PreTeXt header block appended to existing lines."""
     if files_lines is None:
         files_lines = []
