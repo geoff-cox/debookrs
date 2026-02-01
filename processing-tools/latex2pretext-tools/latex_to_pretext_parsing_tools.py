@@ -6,7 +6,7 @@
 import re
 from xml.sax.saxutils import escape
 
-# Matches characters disallowed in xml:id values (letters, digits, underscores only).
+# Matches invalid characters disallowed in xml:id values (letters, digits, underscores only).
 XML_ID_INVALID_CHARS = re.compile(r"[^A-Za-z0-9_]")
 DEFAULT_BOOK_ID = "book_default"
 
@@ -34,7 +34,7 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     Args:
         book_id: Source identifier; sanitized to a valid xml:id.
         book_title: Title text escaped for XML element content.
-        files_lines: Existing lines to prepend before the header.
+        files_lines: Existing lines to which the header will be appended.
     """
     if files_lines is None:
         files_lines = []
