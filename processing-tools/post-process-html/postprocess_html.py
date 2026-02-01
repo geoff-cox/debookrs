@@ -49,10 +49,16 @@ def load_replacements(json_path: Path) -> list[tuple[str, str, bool]]:
 
     except FileNotFoundError:
         sys.exit(f"Error: JSON file '{json_path}' not found.")
-    except json.JSONDecodeError as e:
-        sys.exit(f"Error parsing JSON: {e}")
+    except PermissionError as exc:
+        sys.exit(f"Error: permission denied reading '{json_path}': {exc}")
+    except UnicodeDecodeError as exc:
+        sys.exit(f"Error: unable to decode '{json_path}' as UTF-8: {exc}")
+    except json.JSONDecodeError as exc:
+        sys.exit(f"Error parsing JSON: {exc}")
+    except OSError as exc:
+        sys.exit(f"Error reading JSON file '{json_path}': {exc}")
     except Exception as exc:
-        sys.exit(f"Unexpected error reading JSON: {exc}")
+        sys.exit(f"Unexpected error reading JSON ({type(exc).__name__}): {exc}")
 
 def get_html_files(root_dir: Path) -> list[Path]:
     """Collect all HTML files beneath the provided root directory."""
@@ -65,22 +71,33 @@ def process_html_file(file_path: Path, replacements: list[tuple[str, str, bool]]
     """
     try:
         content = file_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        print(f"Error reading {file_path}: {exc}")
+        return False
 
-        original_content = content
+    original_content = content
+    try:
         for find, replace, use_regex in replacements:
             if use_regex:
                 content = re.sub(find, replace, content)
             else:
                 content = content.replace(find, replace)
-
-        if content != original_content:
-            file_path.write_text(content, encoding="utf-8")
-            print(f"Updated: {file_path}")
-            return True
+    except re.error as exc:
+        print(f"Error applying replacements to {file_path}: {exc}")
         return False
     except Exception as exc:
-        print(f"Error processing {file_path}: {exc}")
+        print(f"Error processing replacements for {file_path}: {exc}")
         return False
+
+    if content != original_content:
+        try:
+            file_path.write_text(content, encoding="utf-8")
+        except OSError as exc:
+            print(f"Error writing {file_path}: {exc}")
+            return False
+        print(f"Updated: {file_path}")
+        return True
+    return False
 
 def main() -> None:
     """CLI entry point for applying HTML post-processing rules."""

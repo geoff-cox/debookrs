@@ -76,13 +76,18 @@ def main() -> None:
     if output_path.is_absolute() or ".." in output_path.parts:
         print("Output file must be a relative path without parent directory references.")
         return
+    resolved_output_path = output_path.resolve()
+    resolved_cwd = Path.cwd().resolve()
+    if resolved_cwd not in resolved_output_path.parents and resolved_output_path != resolved_cwd:
+        print("Output file must be within the current working directory.")
+        return
 
     base_path = input_file.parent
     main_content = read_file(input_file)
     de_modularized_content = process_includes(main_content, base_path)
 
-    write_file(output_path, de_modularized_content)
-    print(f"\nDe-modularized file created: {output_path}")
+    write_file(resolved_output_path, de_modularized_content)
+    print(f"\nDe-modularized file created: {resolved_output_path}")
 
 if __name__ == "__main__":
     main()

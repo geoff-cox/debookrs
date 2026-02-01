@@ -8,7 +8,7 @@ import re
 ######################################################################################
 # Helper Functions
 
-def add_header(book_id, book_title, files_lines: list | None = None):
+def add_header(book_id, book_title, files_lines: list[str] | None = None) -> list[str]:
     """Return a PreTeXt header block appended to existing lines."""
     if files_lines is None:
         files_lines = []
@@ -28,13 +28,13 @@ def add_header(book_id, book_title, files_lines: list | None = None):
     )
     return new_lines
 
-def add_footer(files_lines):
+def add_footer(files_lines: list[str]) -> list[str]:
     """Append closing PreTeXt tags to the provided line list."""
     new_lines = files_lines.copy()
     new_lines.extend(["</book>\n", "\n", "</pretext>\n"])
     return new_lines
 
-def get_line_type(line):
+def get_line_type(line: str) -> str:
     """Classify a line of input for the LaTeX-to-PreTeXt parser."""
     if re.search(r"^%", line) or re.search(r"^<!--", line):
         return "comment"
@@ -143,15 +143,15 @@ def get_line_type(line):
     return "other"
 
 # get tab depth
-def get_tab_depth(line):
+def get_tab_depth(line: str) -> int:
     """Return the number of leading tab characters in a line."""
     match = re.match(r"^\t+", line)
     return len(match.group(0)) if match else 0
 
-def is_troy_chapter(lines):
+def is_troy_chapter(lines: list[str]) -> bool:
     """Detect whether a chapter uses Troy-specific LaTeX macros."""
     for line in lines[:5]:
-        if re.search(r"\\settikzpagecorners", line) is not None:
+        if re.search(r"\\settikzpagecorners", line):
             return True
     return False
 
