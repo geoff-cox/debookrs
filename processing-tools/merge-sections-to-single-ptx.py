@@ -72,10 +72,7 @@ def main() -> None:
         print("Output file name cannot be empty.")
         return
 
-    output_path = Path(output_file)
-    if output_path.is_absolute():
-        print("Output file must be a relative path.")
-        return
+    output_path = Path(output_file).expanduser()
     resolved_output_path = output_path.resolve()
     resolved_cwd = Path.cwd().resolve()
     if not resolved_output_path.is_relative_to(resolved_cwd):
