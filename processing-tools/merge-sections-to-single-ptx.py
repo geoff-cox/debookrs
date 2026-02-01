@@ -26,7 +26,8 @@ def write_file(file_path: str | Path, content: str) -> None:
 def process_includes(content: str, base_path: str | Path) -> str:
     """Recursively replace xi:include tags with their referenced content."""
     base_dir = Path(base_path)
-    while match := INCLUDE_PATTERN.search(content):
+    match = INCLUDE_PATTERN.search(content)
+    while match:
         include_file = match.group(1)
         include_file_path = (base_dir / include_file).resolve()
         include_dir = include_file_path.parent
@@ -37,6 +38,7 @@ def process_includes(content: str, base_path: str | Path) -> str:
             content = content.replace(match.group(0), included_content, 1)
         else:
             print(f"Warning: Included file {include_file} not found at {include_file_path}")
+        match = INCLUDE_PATTERN.search(content, match.start() + 1)
     return content
 
 
@@ -67,6 +69,9 @@ def main() -> None:
     output_file = input("\nEnter the name for the de-modularized .ptx file: ").strip()
     if not output_file:
         print("Output file name cannot be empty.")
+        return
+    if output_file in {".", ".."}:
+        print("Output file name must be a valid file path.")
         return
 
     output_path = Path(output_file).expanduser()
