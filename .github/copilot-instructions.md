@@ -1,24 +1,26 @@
-# Copilot Instructions
+# Copilot Instructions — Exploring Differential Equations (PreTeXt)
 
 ## Repo summary
-- Repository for “Exploring Differential Equations,” an open-access PreTeXt textbook and modern, student-centered introduction to differential equations.
-- Core content is modular PreTeXt XML; outputs configured via publication files and project manifest.
-- Supporting tooling lives under `processing-tools/` (TTS audit docs, HTML post-processing, LaTeX-to-PreTeXt helpers).
+- Repository for “Exploring Differential Equations,” an open-access PreTeXt XML textbook (student-centered intro to differential equations).
+- Core content is modular PreTeXt XML in `source/`.
+- Builds and outputs are controlled by `project.ptx` and `publication/*.ptx`.
+- Supporting scripts live in `processing-tools/` (TTS audits, post-processing, LaTeX→PreTeXt helpers).
 
 ## High-level info
 - Type: PreTeXt XML textbook project.
 - Languages: PreTeXt XML (`.ptx`), Python, JavaScript, CSS/SCSS, Markdown.
-- Tooling/runtime: PreTeXt CLI (Python), npm used by PreTeXt to build themes, optional LaTeX for PDF builds.
+- Tooling/runtime: PreTeXt CLI (Python). PreTeXt may invoke npm for theme/CSS builds. Optional LaTeX for PDF.
 
-## Layout / architecture
-- `project.ptx`: PreTeXt project manifest (targets: `web`, `dev`, `pdf`, `runestone`).
+## Layout / architecture (where to look)
+- `project.ptx`: PreTeXt project manifest (targets like `web`, `dev`, `pdf`, `runestone`).
 - `source/`: main PreTeXt sources (`main.ptx`, `main-dev.ptx`, chapter folders).
-- `publication/`: publication configs (`publication.ptx` for web, `runestone.ptx` for runestone).
+  - Sections: `source/{chapterID}-{chapterTitle}/sec-{sectionTitle}.ptx`
+  - Exercises: `source/{chapterID}-{chapterTitle}/exercises-{sectionTitle}.ptx`
+- `publication/`: publication configs (`publication.ptx` for web/dev/pdf, `runestone.ptx` for Runestone).
 - `assets/`: custom styles, JS interactives, data.
-- `processing-tools/`: scripts/docs for TTS audits (`processing-tools/tts`) and conversion utilities.
-- `requirements.txt`: PreTeXt CLI dependency.
+- `processing-tools/`: TTS audits and conversion utilities.
 
-## Root file list
+## Root file list (major)
 - `README.md`
 - `project.ptx`
 - `requirements.txt`
@@ -28,51 +30,30 @@
 - `publication/`
 - `source/`
 
-## Build / test / lint / run (validated)
-> Run these in order; later steps depend on earlier ones.
-- **Install deps:** `python -m pip install -r requirements.txt` (success, ~1–2 min).
-- **Check CLI:** `python -m pretext --version` → `2.36.0` (success, <1s).
-- **Build web target:** `python -m pretext build -t web` (failed, ~1–2 min).
-  - Error: WebWork server URL resolution failed (`https://webwork-ptx.aimath.org`).
-  - Expected in offline environments; no repo-local workaround found beyond network access or adjusting WebWork settings in `publication/publication.ptx`.
-- **Lint/tests:** none discovered (no lint/test configs, no CI workflows).
+## Editing guardrails (agent safety)
+- Preserve PreTeXt structure and identifiers: do not change `xml:id`, `label`, `ref`, target names, or publication parameters unless explicitly requested.
+- Do not pretty-print/reflow XML wholesale.
+- Avoid modifying generated output dirs (e.g., `web/`, `print/`) unless the task explicitly targets them.
 
-## Dependencies
-- Python: `pretext==2.36.0` (from `requirements.txt`; file header notes generation with PreTeXt 2.25.1).
-- PreTeXt build triggers npm to build CSS themes.
+## Build / run (expected commands)
+- Install deps:
+  - `python -m pip install -r requirements.txt`
+- Check PreTeXt:
+  - `python -m pretext --version`
+- Build targets (common):
+  - Web: `python -m pretext build -t web`
+  - Dev: `python -m pretext build -t dev`
+  - PDF: `python -m pretext build -t pdf`
 
-## Key snippet
-`project.ptx` target names:
-```
-		<target	
-			name="web"
-			format="html"
-			publication="publication.ptx"
-			output-dir="web"
-			deploy-dir="interactive"
-		>
-		    <stringparams author.deprecations.all="yes"/>
-		</target>
-		<target
-			name="dev"
-			format="html"
-			publication="publication.ptx"
-			source="main-dev.ptx"
-		>
-			<stringparams author.deprecations.all="yes" author.tools="yes" html.css.extra="external/custom-style/custom-styles.css" />
-		</target>
-		<target	
-			name="pdf"
-			format="pdf"
-			source="main.ptx"
-			publication="publication.ptx"
-			output-dir="print"
-			output-filename="debookrs.pdf"
-			latex-engine="pdflatex"
-			deploy-dir="pdf"
-			/>
-```
-Runestone target: `platform="runestone"` with `source="main.ptx"` and `publication="runestone.ptx"` (see `project.ptx`).
+## Known environment-dependent issues
+- Web builds may fail in offline or restricted-network environments if external services are required (e.g., WebWork server URL resolution).
+  - If this occurs, inspect `publication/publication.ptx` for WebWork-related configuration.
+  - To locate the setting quickly: search `publication/` for the WebWork host string.
 
-## Guidance
-- Trust these instructions first; only search the repo if something is missing or unclear.
+## Key snippet (project.ptx targets)
+(Keep this excerpt up to date if targets change.)
+
+## Guidance (how to proceed on tasks)
+- Trust this file for repo navigation and build entry points.
+- When editing content, follow local conventions in nearby `.ptx` files (terminology, tagging patterns, exercise formats).
+- If something is unclear, search the repo for similar patterns (same chapter/section type) before inventing a new structure.
