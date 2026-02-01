@@ -16,10 +16,10 @@ DEFAULT_BOOK_ID = "book_default"
 def sanitize_xml_id(value: str) -> str:
     """Sanitize user input into a valid xml:id string.
 
-    Enforces xml:id naming rules: must start with a letter or underscore, followed
-    by any combination of letters, digits, or underscores. Returns an empty
-    string when no valid characters remain after sanitization (callers can apply
-    fallbacks as needed).
+    Enforces a PreTeXt-friendly subset of xml:id naming rules: must start with a
+    letter or underscore (excluding colons), followed by any combination of
+    letters, digits, or underscores. Returns an empty string when no valid
+    characters remain after sanitization (callers can apply fallbacks as needed).
     """
     sanitized = XML_ID_INVALID_CHARS.sub("_", value.strip())
     if not sanitized:
