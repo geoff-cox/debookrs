@@ -36,110 +36,109 @@ def add_footer(files_lines):
 
 def get_line_type(line):
     """Classify a line of input for the LaTeX-to-PreTeXt parser."""
-    if re.search(r"^%", line) is not None or re.search(r"^<!--", line) is not None:
+    if re.search(r"^%", line) or re.search(r"^<!--", line):
         return "comment"
     if line == "\n":
         return "blank"
-    if re.search(r"\\begin\{Example\}", line) is not None or re.search(r"<example xml:", line) is not None:
+    if re.search(r"\\begin\{Example\}", line) or re.search(r"<example xml:", line):
         return "b_example"
-    if re.search(r"\\end\{Example\}", line) is not None or re.search(r"</example>", line) is not None:
+    if re.search(r"\\end\{Example\}", line) or re.search(r"</example>", line):
         return "e_example"
-    if re.search(r"\\section", line) is not None or re.search(r"<section xml:", line) is not None:
+    if re.search(r"\\section", line) or re.search(r"<section xml:", line):
         return "section"
-    if re.search(r"</section>", line) is not None:
+    if re.search(r"</section>", line):
         return "e_section"
-    if re.search(r"^\\index", line) is not None:
+    if re.search(r"^\\index", line):
         return "index"
-    if re.search(r"^\\verb\|.*?\|$", line) is not None:
+    if re.search(r"^\\verb\|.*?\|$", line):
         return "single_verb"
-    if re.search(r"^\\verb\|.*?\|\s*\w+[\\\\$]", line) is not None:
+    if re.search(r"^\\verb\|.*?\|\s*\w+[\\\\$]", line):
         return "single_verb_w_text"
     if (
-        re.search(r"^\\verb\|.*\|$", line) is not None
-        or re.search(r"^\\verb\|.*\|\s*[\\\\$]", line) is not None
+        re.search(r"^\\verb\|.*\|$", line) or re.search(r"^\\verb\|.*\|\s*[\\\\$]", line)
     ):
         return "multi_verb"
-    if re.search(r"\\ps \\verb", line) is not None:
+    if re.search(r"\\ps \\verb", line):
         return "in_verb"
-    if re.search(r"^.*<pre>.*</pre>.+$|^.+<pre>.*</pre>.*$", line) is not None:
+    if re.search(r"^.*<pre>.*</pre>.+$|^.+<pre>.*</pre>.*$", line):
         return "inline_pre"
-    if re.search(r"<p>", line) is not None:
+    if re.search(r"<p>", line):
         return "b_paragraph"
-    if re.search(r"</p>", line) is not None:
+    if re.search(r"</p>", line):
         return "e_paragraph"
-    if re.search(r"^<pre>", line) is not None:
+    if re.search(r"^<pre>", line):
         return "b_pre"
-    if re.search(r"</pre>$", line) is not None:
+    if re.search(r"</pre>$", line):
         return "e_pre"
-    if re.search(r"^<sidebyside", line) is not None:
+    if re.search(r"^<sidebyside", line):
         return "b_sidebyside"
-    if re.search(r"</sidebyside>$", line) is not None:
+    if re.search(r"</sidebyside>$", line):
         return "e_sidebyside"
-    if re.search(r"^<program", line) is not None:
+    if re.search(r"^<program", line):
         return "b_program"
-    if re.search(r"</program>$", line) is not None:
+    if re.search(r"</program>$", line):
         return "e_program"
-    if re.search(r"^<input", line) is not None:
+    if re.search(r"^<input", line):
         return "b_input"
-    if re.search(r"</input>$", line) is not None:
+    if re.search(r"</input>$", line):
         return "e_input"
-    if re.search(r"<title>", line) is not None:
+    if re.search(r"<title>", line):
         return "title"
     if (
-        re.search(r"\\noindent \\large \\textsf\{", line) is not None
-        or re.search(r"<paragraphs xml:", line) is not None
-        or re.search(r"\\subsection\{", line) is not None
+        re.search(r"\\noindent \\large \\textsf\{", line)
+        or re.search(r"<paragraphs xml:", line)
+        or re.search(r"\\subsection\{", line)
     ):
         return "b_subsection"
-    if re.search(r"</paragraphs>", line) is not None or re.search(r"</paragraphs/>", line) is not None:
+    if re.search(r"</paragraphs>", line) or re.search(r"</paragraphs/>", line):
         return "e_subsection"
-    if re.search(r"^\s*\\\[\s*$", line) is not None or re.search(r"<md>", line) is not None:
+    if re.search(r"^\s*\\\[\s*$", line) or re.search(r"<md>", line):
         return "b_dmath"
-    if re.search(r"^\s*\\\]\s*$", line) is not None or re.search(r"</md>", line) is not None:
+    if re.search(r"^\s*\\\]\s*$", line) or re.search(r"</md>", line):
         return "e_dmath"
-    if re.search(r"\\begin\{array", line) is not None:
+    if re.search(r"\\begin\{array", line):
         return "b_array"
-    if re.search(r"\\end\{array", line) is not None:
+    if re.search(r"\\end\{array", line):
         return "e_array"
-    if re.search(r"\\begin\{align", line) is not None:
+    if re.search(r"\\begin\{align", line):
         return "b_align"
-    if re.search(r"\\end\{align", line) is not None:
+    if re.search(r"\\end\{align", line):
         return "e_align"
-    if re.search(r"\\begin\{table", line) is not None or re.search(r"<table", line) is not None:
+    if re.search(r"\\begin\{table", line) or re.search(r"<table", line):
         return "b_table"
-    if re.search(r"\\end\{table", line) is not None or re.search(r"</table", line) is not None:
+    if re.search(r"\\end\{table", line) or re.search(r"</table", line):
         return "e_table"
-    if re.search(r"\\begin\{tabular", line) is not None or re.search(r"<tabular", line) is not None:
+    if re.search(r"\\begin\{tabular", line) or re.search(r"<tabular", line):
         return "b_tabular"
-    if re.search(r"\\end\{tabular", line) is not None or re.search(r"</tabular", line) is not None:
+    if re.search(r"\\end\{tabular", line) or re.search(r"</tabular", line):
         return "e_tabular"
-    if re.search(r"\\begin\{enumerate", line) is not None:
+    if re.search(r"\\begin\{enumerate", line):
         return "b_enumerate"
-    if re.search(r"\\end\{enumerate", line) is not None:
+    if re.search(r"\\end\{enumerate", line):
         return "e_enumerate"
-    if re.search(r"\\begin\{itemize", line) is not None:
+    if re.search(r"\\begin\{itemize", line):
         return "b_itemize"
-    if re.search(r"\\end\{itemize", line) is not None:
+    if re.search(r"\\end\{itemize", line):
         return "e_itemize"
-    if re.search(r"<ol>", line) is not None:
+    if re.search(r"<ol>", line):
         return "b_olist"
-    if re.search(r"</ol>", line) is not None:
+    if re.search(r"</ol>", line):
         return "e_olist"
-    if re.search(r"<ul>", line) is not None:
+    if re.search(r"<ul>", line):
         return "b_ulist"
-    if re.search(r"</ul>", line) is not None:
+    if re.search(r"</ul>", line):
         return "e_ulist"
-    if re.search(r"\\item\[.*?\]", line) is not None:
+    if re.search(r"\\item\[.*?\]", line):
         return "item_w_arg"
-    if re.search(r"\\item", line) is not None:
+    if re.search(r"\\item", line):
         return "item"
-    if re.search(r"<row", line) is not None:
+    if re.search(r"<row", line):
         return "b_row"
-    if re.search(r"</row", line) is not None:
+    if re.search(r"</row", line):
         return "e_row"
-    if re.search(r"<li>", line) is not None:
+    if re.search(r"<li>", line):
         return "b_item"
-    if re.search(r"</li>", line) is not None:
+    if re.search(r"</li>", line):
         return "e_item"
     return "other"
 
