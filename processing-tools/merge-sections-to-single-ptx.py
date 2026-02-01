@@ -78,8 +78,11 @@ def main() -> None:
         return
     resolved_output_path = output_path.resolve()
     resolved_cwd = Path.cwd().resolve()
-    if resolved_cwd not in resolved_output_path.parents and resolved_output_path.parent != resolved_cwd:
+    if resolved_cwd not in resolved_output_path.parents and resolved_output_path != resolved_cwd:
         print("Output file must be within the current working directory.")
+        return
+    if resolved_output_path.is_dir():
+        print("Output file path must point to a file, not a directory.")
         return
 
     base_path = input_file.parent
