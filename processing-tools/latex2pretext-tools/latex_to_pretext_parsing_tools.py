@@ -13,8 +13,8 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     """Return a PreTeXt header block appended to existing lines."""
     if files_lines is None:
         files_lines = []
-    safe_book_id = escape(str(book_id), {'"': "&quot;", "'": "&apos;"})
-    safe_book_title = escape(str(book_title))
+    safe_book_id = escape(book_id)
+    safe_book_title = escape(book_title)
     new_lines = files_lines.copy()
     new_lines.extend(
         [
