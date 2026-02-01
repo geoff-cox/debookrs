@@ -4,6 +4,7 @@
 """Utility helpers for converting LaTeX input into PreTeXt-friendly output."""
 
 import re
+from xml.sax.saxutils import escape
 
 ######################################################################################
 # Helper Functions
@@ -12,6 +13,8 @@ def add_header(book_id, book_title, files_lines: list[str] | None = None) -> lis
     """Return a PreTeXt header block appended to existing lines."""
     if files_lines is None:
         files_lines = []
+    safe_book_id = escape(str(book_id), {'"': "&quot;", "'": "&apos;"})
+    safe_book_title = escape(str(book_title))
     new_lines = files_lines.copy()
     new_lines.extend(
         [
@@ -21,8 +24,8 @@ def add_header(book_id, book_title, files_lines: list[str] | None = None) -> lis
             "\n",
             '<xi:include href="./sections/book-info.ptx" />\n',
             "\n",
-            f'<book xml:id="{book_id}">\n',
-            f"<title>{book_title}</title>\n",
+            f'<book xml:id="{safe_book_id}">\n',
+            f"<title>{safe_book_title}</title>\n",
             "\n",
         ]
     )

@@ -50,8 +50,8 @@ def load_replacements(json_path: Path) -> list[tuple[str, str, bool]]:
 
         return replacements
 
-    except FileNotFoundError:
-        sys.exit(f"Error: JSON file '{json_path}' not found.")
+    except FileNotFoundError as exc:
+        sys.exit(f"Error: JSON file '{json_path}' not found: {exc}")
     except PermissionError as exc:
         sys.exit(f"Error: permission denied reading '{json_path}': {exc}")
     except UnicodeDecodeError as exc:

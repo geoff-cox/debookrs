@@ -26,7 +26,8 @@ def write_file(file_path: str | Path, content: str) -> None:
 def process_includes(content: str, base_path: str | Path) -> str:
     """Recursively replace xi:include tags with their referenced content."""
     base_dir = Path(base_path)
-    match = INCLUDE_PATTERN.search(content)
+    search_pos = 0
+    match = INCLUDE_PATTERN.search(content, search_pos)
     while match:
         include_file = match.group(1)
         include_file_path = (base_dir / include_file).resolve()
@@ -35,13 +36,14 @@ def process_includes(content: str, base_path: str | Path) -> str:
         if include_file_path.exists():
             included_content = read_file(include_file_path)
             included_content = process_includes(included_content, include_dir)
-            content = content.replace(match.group(0), included_content, 1)
+            content = content[: match.start()] + included_content + content[match.end() :]
+            search_pos = match.start() + len(included_content)
         else:
             print(f"Warning: Included file {include_file} not found at {include_file_path}")
-            # Remove or neutralize the unresolved include to avoid an infinite loop
             placeholder = f"<!-- Missing include: {include_file} -->"
-            content = content.replace(match.group(0), placeholder, 1)
-        match = INCLUDE_PATTERN.search(content, match.start() + 1)
+            content = content[: match.start()] + placeholder + content[match.end() :]
+            search_pos = match.start() + len(placeholder)
+        match = INCLUDE_PATTERN.search(content, search_pos)
     return content
 
 
