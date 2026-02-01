@@ -8,7 +8,7 @@ import re
 ######################################################################################
 # Helper Functions
 
-def add_header(book_id, book_title, files_lines=None):
+def add_header(book_id, book_title, files_lines: list | None = None):
     """Return a PreTeXt header block appended to existing lines."""
     if files_lines is None:
         files_lines = []

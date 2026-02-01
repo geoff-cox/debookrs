@@ -72,12 +72,17 @@ def main() -> None:
         print("Output file name cannot be empty.")
         return
 
+    output_path = Path(output_file)
+    if output_path.is_absolute() or ".." in output_path.parts:
+        print("Output file must be a relative path without parent directory references.")
+        return
+
     base_path = input_file.parent
     main_content = read_file(input_file)
     de_modularized_content = process_includes(main_content, base_path)
 
-    write_file(output_file, de_modularized_content)
-    print(f"\nDe-modularized file created: {output_file}")
+    write_file(output_path, de_modularized_content)
+    print(f"\nDe-modularized file created: {output_path}")
 
 if __name__ == "__main__":
     main()
