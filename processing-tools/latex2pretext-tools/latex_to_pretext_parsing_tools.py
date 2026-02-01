@@ -16,9 +16,9 @@ DEFAULT_BOOK_ID = "book_default"
 def sanitize_xml_id(value: str) -> str:
     """Sanitize user input into a valid xml:id string.
 
-    Enforces xml:id naming rules: must start with a letter/underscore and contain
-    only letters, digits, and underscores. Returns an empty string when no valid
-    characters remain after sanitization.
+    Enforces xml:id naming rules: must start with a letter or underscore, followed
+    by any combination of letters, digits, or underscores. Returns an empty
+    string when no valid characters remain after sanitization.
     """
     sanitized = XML_ID_INVALID_CHARS.sub("_", value.strip())
     if not sanitized:
@@ -39,8 +39,8 @@ def add_header(book_id: str, book_title: str, files_lines: list[str] | None = No
     if files_lines is None:
         files_lines = []
     sanitized_id = sanitize_xml_id(book_id)
-    fallback_id_from_title = sanitize_xml_id(book_title)
-    safe_book_id = sanitized_id or fallback_id_from_title or DEFAULT_BOOK_ID
+    fallback_title_id = sanitize_xml_id(book_title)
+    safe_book_id = sanitized_id or fallback_title_id or DEFAULT_BOOK_ID
     safe_book_title = escape(book_title)
     new_lines = files_lines.copy()
     new_lines.extend(
