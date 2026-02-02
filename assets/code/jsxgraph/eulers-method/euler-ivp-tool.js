@@ -188,55 +188,60 @@
 
   // === RESET BUTTON ===
   // Create a reset button that clears the board and restarts the interactive
-  if (!resetButton) {
-    resetButton = document.createElement('button');
-    resetButton.textContent = 'Reset';
-    resetButton.style.position = 'absolute';
-    resetButton.style.top = '10px';
-    resetButton.style.right = '10px';
-    resetButton.style.zIndex = '1000';
-    resetButton.style.padding = '8px 16px';
-    resetButton.style.backgroundColor = '#f0f0f0';
-    resetButton.style.border = '1px solid #ccc';
-    resetButton.style.borderRadius = '4px';
-    resetButton.style.cursor = 'pointer';
+  
+  // Helper function to create and style the reset button
+  function createResetButton() {
+    const btn = document.createElement('button');
+    btn.textContent = 'Reset';
+    btn.style.position = 'absolute';
+    btn.style.top = '10px';
+    btn.style.right = '10px';
+    btn.style.zIndex = '1000';
+    btn.style.padding = '8px 16px';
+    btn.style.backgroundColor = '#f0f0f0';
+    btn.style.border = '1px solid #ccc';
+    btn.style.borderRadius = '4px';
+    btn.style.cursor = 'pointer';
+    return btn;
+  }
+  
+  // Handle reset button click
+  function handleReset() {
+    const container = document.getElementById(boardId + '-plot1');
     
+    // Free the old board and remove the reset button
+    JXG.JSXGraph.freeBoard(board);
+    if (resetButton && resetButton.parentNode) {
+      container.removeChild(resetButton);
+    }
+    resetButton = null;
+    
+    // Recreate the board
+    board = JXG.JSXGraph.initBoard(boardId + '-plot1', {
+      boundingbox: [xmin, ymax, xmax, ymin],
+      axis: true,
+      showCopyright: false,
+      showNavigation: false,
+      pan: { enabled: false },
+      zoom: { enabled: false },
+    });
+    
+    // Reinitialize the interactive elements
+    initializeBoard();
+    
+    // Recreate and attach the reset button
+    resetButton = createResetButton();
+    resetButton.addEventListener('click', handleReset);
+    container.appendChild(resetButton);
+  }
+  
+  // Initial button creation
+  if (!resetButton) {
     const container = document.getElementById(boardId + '-plot1');
     container.style.position = 'relative';
+    
+    resetButton = createResetButton();
+    resetButton.addEventListener('click', handleReset);
     container.appendChild(resetButton);
-
-    resetButton.addEventListener('click', () => {
-      // Free the old board and remove the reset button
-      JXG.JSXGraph.freeBoard(board);
-      container.removeChild(resetButton);
-      resetButton = null;
-      
-      // Recreate the board
-      board = JXG.JSXGraph.initBoard(boardId + '-plot1', {
-        boundingbox: [xmin, ymax, xmax, ymin],
-        axis: true,
-        showCopyright: false,
-        showNavigation: false,
-        pan: { enabled: false },
-        zoom: { enabled: false },
-      });
-      
-      // Reinitialize the interactive elements
-      initializeBoard();
-      
-      // Recreate the reset button
-      resetButton = document.createElement('button');
-      resetButton.textContent = 'Reset';
-      resetButton.style.position = 'absolute';
-      resetButton.style.top = '10px';
-      resetButton.style.right = '10px';
-      resetButton.style.zIndex = '1000';
-      resetButton.style.padding = '8px 16px';
-      resetButton.style.backgroundColor = '#f0f0f0';
-      resetButton.style.border = '1px solid #ccc';
-      resetButton.style.borderRadius = '4px';
-      resetButton.style.cursor = 'pointer';
-      container.appendChild(resetButton);
-    });
   }
 })();
