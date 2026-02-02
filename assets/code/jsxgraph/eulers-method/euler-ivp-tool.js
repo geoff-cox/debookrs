@@ -21,6 +21,9 @@
     zoom: { enabled: false },
   });
 
+  // Store reset button outside board container
+  let resetButton = null;
+
   function initializeBoard() {
     let state = {
       started: false,
@@ -29,7 +32,9 @@
       guessPreview: null,
       directionLines: [],
       wrongGuesses: [],
-      locked: false
+      locked: false,
+      moveHandler: null,
+      upHandler: null
     };
 
     // board.create('image', [
@@ -43,12 +48,12 @@
 
     const ghostPoint = board.create('point', [t0, y0], {
       name: '', size: 6, color: 'blue', fillColor: 'lightblue',
-      visible: !showInitialPoint, fixed: true
+      visible: true, fixed: true
     });
 
     const startPoint = board.create('point', [t0, y0], {
       name: '', size: 6, color: 'green', fillColor: 'green',
-      visible: showInitialPoint, fixed: true
+      visible: false, fixed: true
     });
 
     ghostPoint.on('up', () => {
@@ -58,6 +63,7 @@
         startPoint.setAttribute({ visible: true });
         showSlopeSegment(t0, y0);
         enableNextGuess();
+        board.update();
       }
     });
 
@@ -84,25 +90,40 @@
       state.guessPreview = board.create('point', [tNext, yNext], {
         name: '', size: 5, opacity: 0.5,
         color: 'orange', fillColor: 'orange',
-        visible: false, fixed: true
+        visible: false, fixed: false
       });
 
-      board.on('move', function (e) {
+      // Remove old handlers if they exist
+      if (state.moveHandler) {
+        board.off('move', state.moveHandler);
+      }
+      if (state.upHandler) {
+        board.off('up', state.upHandler);
+      }
+
+      // Create new handlers
+      state.moveHandler = function (evt) {
         if (!state.started || state.locked) return;
-        const coords = board.getUsrCoordsOfMouse(e);
+        
+        const coords = board.getUsrCoordsOfMouse(evt);
         const snappedY = Math.round(coords[1] / snapRadius) * snapRadius;
         const x = snapToVertical ? tNext : coords[0];
-        state.guessPreview.moveTo([x, snappedY]);
+        
+        state.guessPreview.moveTo([x, snappedY], 0);
         state.guessPreview.setAttribute({ visible: true });
-      });
+        board.update();
+      };
 
-      board.on('up', function (e) {
+      state.upHandler = function (evt) {
         if (!state.started || state.locked) return;
-        const coords = board.getUsrCoordsOfMouse(e);
+        
+        const coords = board.getUsrCoordsOfMouse(evt);
         const snappedY = Math.round(coords[1] / snapRadius) * snapRadius;
         const x = snapToVertical ? tNext : coords[0];
 
         if (Math.abs(snappedY - yNext) <= snapRadius && Math.abs(x - tNext) <= snapRadius) {
+          state.guessPreview.setAttribute({ visible: false });
+          
           const newPoint = board.create('point', [tNext, yNext], {
             name: '', size: 4, color: 'green', fillColor: 'green', fixed: true
           });
@@ -118,43 +139,82 @@
           state.currentIndex++;
           showSlopeSegment(tNext, yNext);
 
+          // Remove event handlers before potentially adding new ones
+          board.off('move', state.moveHandler);
+          board.off('up', state.upHandler);
+          state.moveHandler = null;
+          state.upHandler = null;
+
           if (tNext + h <= xmax) {
             enableNextGuess();
           }
+          
+          board.update();
         } else {
           const wrong = board.create('point', [x, snappedY], {
             name: '', size: 4, strokeColor: 'red', strokeWidth: 2,
             fillColor: 'white', fixed: true
           });
           state.wrongGuesses.push(wrong);
+          board.update();
         }
-      });
+      };
+
+      // Add the handlers
+      board.on('move', state.moveHandler);
+      board.on('up', state.upHandler);
     }
   }
 
   initializeBoard();
 
   // === RESET BUTTON ===
-  const resetButton = document.createElement('button');
-  resetButton.textContent = 'Reset';
-  resetButton.style.position = 'absolute';
-  resetButton.style.top = '10px';
-  resetButton.style.right = '10px';
-  resetButton.style.zIndex = 10;
-  document.getElementById(boardId + '-plot1').appendChild(resetButton);
-
-  resetButton.addEventListener('click', () => {
-    JXG.JSXGraph.freeBoard(board);
+  if (!resetButton) {
+    resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset';
+    resetButton.style.position = 'absolute';
+    resetButton.style.top = '10px';
+    resetButton.style.right = '10px';
+    resetButton.style.zIndex = '1000';
+    resetButton.style.padding = '8px 16px';
+    resetButton.style.backgroundColor = '#f0f0f0';
+    resetButton.style.border = '1px solid #ccc';
+    resetButton.style.borderRadius = '4px';
+    resetButton.style.cursor = 'pointer';
+    
     const container = document.getElementById(boardId + '-plot1');
-    container.innerHTML = '';
-    board = JXG.JSXGraph.initBoard(boardId + '-plot1', {
-      boundingbox: [xmin, ymax, xmax, ymin],
-      axis: true,
-      showCopyright: false,
-      showNavigation: false,
-      pan: { enabled: false },
-      zoom: { enabled: false },
+    container.style.position = 'relative';
+    container.appendChild(resetButton);
+
+    resetButton.addEventListener('click', () => {
+      JXG.JSXGraph.freeBoard(board);
+      container.removeChild(resetButton);
+      resetButton = null;
+      
+      board = JXG.JSXGraph.initBoard(boardId + '-plot1', {
+        boundingbox: [xmin, ymax, xmax, ymin],
+        axis: true,
+        showCopyright: false,
+        showNavigation: false,
+        pan: { enabled: false },
+        zoom: { enabled: false },
+      });
+      
+      initializeBoard();
+      
+      // Recreate the reset button
+      resetButton = document.createElement('button');
+      resetButton.textContent = 'Reset';
+      resetButton.style.position = 'absolute';
+      resetButton.style.top = '10px';
+      resetButton.style.right = '10px';
+      resetButton.style.zIndex = '1000';
+      resetButton.style.padding = '8px 16px';
+      resetButton.style.backgroundColor = '#f0f0f0';
+      resetButton.style.border = '1px solid #ccc';
+      resetButton.style.borderRadius = '4px';
+      resetButton.style.cursor = 'pointer';
+      container.appendChild(resetButton);
     });
-    initializeBoard();
-  });
+  }
 })();
