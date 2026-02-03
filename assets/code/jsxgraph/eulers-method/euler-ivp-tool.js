@@ -77,7 +77,7 @@
     // Display the slope direction at a given point
     function showSlopeSegment(t, y) {
       const slope = f(t, y);
-      const dx = 0.4;
+      const dx = 0.25;
       const dy = slope * dx;
       const line = board.create('arrow', [[t - dx, y - dy], [t + dx, y + dy]], {
         straightFirst: false,
