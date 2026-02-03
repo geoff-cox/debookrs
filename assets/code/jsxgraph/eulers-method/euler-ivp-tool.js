@@ -95,6 +95,14 @@
     function enableNextGuess() {
       const { t, y } = state.points[state.currentIndex];
       if (shouldStopGuesses(t, state.currentIndex)) {
+        if (state.moveHandler) {
+          board.off('move', state.moveHandler);
+          state.moveHandler = null;
+        }
+        if (state.upHandler) {
+          board.off('up', state.upHandler);
+          state.upHandler = null;
+        }
         state.locked = true;
         return;
       }
