@@ -74,6 +74,10 @@
       }
     });
 
+    function shouldStopGuesses(t, index) {
+      return index > 5 || t >= 2;
+    }
+
     // Display the slope direction at a given point
     function showSlopeSegment(t, y) {
       const slope = f(t, y);
@@ -90,6 +94,10 @@
     // Enable the user to guess the next point
     function enableNextGuess() {
       const { t, y } = state.points[state.currentIndex];
+      if (shouldStopGuesses(t, state.currentIndex)) {
+        state.locked = true;
+        return;
+      }
       const tNext = t + h;
       const yNext = y + h * f(t, y); // Correct y-value using Euler's method
       const snapRadius = 0.25;       // Grid snap tolerance
@@ -161,7 +169,6 @@
           state.moveHandler = null;
           state.upHandler = null;
 
-          // Enable next guess if we haven't reached the end
           if (tNext + h <= xmax) {
             enableNextGuess();
           }
