@@ -53,7 +53,7 @@
     // Create the initial "ghost" point that users click to start
     const ghostPoint = board.create('point', [t0, y0], {
       name: '', size: 6, color: 'blue', fillColor: 'lightblue',
-      visible: true, fixed: true
+      visible: !showInitialPoint, fixed: true
     });
 
     // Create the actual starting point (shown after clicking ghost point)
