@@ -101,7 +101,7 @@
       state.guessPreview = board.create('point', [tNext, yNext], {
         name: '', size: 5, opacity: 0.5,
         color: 'orange', fillColor: 'orange',
-        visible: false, fixed: false
+        visible: false, fixed: true
       });
 
       // Remove old event handlers to prevent accumulation
