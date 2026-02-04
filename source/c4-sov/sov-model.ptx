@@ -1,0 +1,209 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="sov-modeling">
+	<title>Modeling with Separation of Variables</title>
+
+	<introduction>
+		<p>
+			Separation of variables is one of the most versatile techniques for solving first-order differential equations. It applies when the rate of change can be expressed as a product of separate functions of the independent and dependent variables. This structure appears naturally in many growth and decay processes.
+		</p>
+
+		<p>
+			In this section, we'll model population growth using the logistic equation, a classic example where separation of variables provides insight into how populations evolve over time.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Bacterial Growth with Limited Resources</title>
+
+		<p>
+			Consider a bacterial colony growing in a petri dish with limited nutrients. Initially, when the population is small, growth is approximately exponential. However, as resources become scarce and the dish becomes crowded, the growth rate slows down.
+		</p>
+
+		<p>
+			How can we model this transition from exponential growth to a steady state?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The growth rate is proportional to both the current population and the remaining capacity.</li>
+			<li>There is a maximum sustainable population (carrying capacity) <m>K</m>.</li>
+			<li>The environment provides constant resources per unit time.</li>
+			<li>There is no immigration or emigration.</li>
+			<li>All individuals have equal reproductive potential.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>P(t)</m> represent the population at time <m>t</m>. The rate of change <m>\frac{dP}{dt}</m> should:
+		</p>
+		<ul>
+			<li>Increase with <m>P</m> (more individuals produce more offspring)</li>
+			<li>Decrease as <m>P</m> approaches <m>K</m> (limited resources slow growth)</li>
+		</ul>
+
+		<p>
+			The logistic equation captures this behavior:
+			<me>
+				\frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right)
+			</me>
+		</p>
+
+		<p>
+			This can be rewritten as:
+			<me>
+				\frac{dP}{dt} = \frac{r}{K}P(K - P)
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>r > 0</m>: intrinsic growth rate (growth rate when population is small)</li>
+			<li><m>K > 0</m>: carrying capacity (maximum sustainable population)</li>
+			<li><m>P_0</m>: initial population at <m>t = 0</m></li>
+		</ul>
+
+		<p>
+			<term>Solving by Separation of Variables:</term>
+		</p>
+
+		<p>
+			Separate the variables:
+			<me>
+				\frac{dP}{P(K-P)} = \frac{r}{K}\ dt
+			</me>
+		</p>
+
+		<p>
+			Using partial fractions on the left side and integrating both sides yields:
+			<me>
+				P(t) = \frac{K}{1 + Ae^{-rt}}
+			</me>
+			where <m>A = \frac{K - P_0}{P_0}</m>.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Lab Activity: Yeast Population Growth</title>
+
+		<p>
+			<term>Objective:</term> Observe logistic growth in a yeast culture and estimate model parameters.
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Active dry yeast</li>
+			<li>Sugar solution (nutrient source)</li>
+			<li>Test tubes or small bottles</li>
+			<li>Hemocytometer or turbidity meter (or use visual density scale)</li>
+			<li>Warm water bath (optimal: 30-35°C)</li>
+			<li>Timer</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Prepare a sugar solution: dissolve 5g sugar in 100mL warm water.</li>
+			<li>Add 1g active dry yeast and mix well.</li>
+			<li>Divide into multiple test tubes (for repeated measurements).</li>
+			<li>Every 30 minutes for 4-6 hours, measure the yeast density (cell count or turbidity).</li>
+			<li>Record: Time (hours), Population measure (cells/mL or turbidity units).</li>
+		</ol>
+
+		<p>
+			<term>Alternative Simplified Version:</term>
+		</p>
+		<p>
+			Use provided data from a controlled experiment (data set available from instructor).
+		</p>
+
+		<p>
+			<term>Data Analysis:</term>
+		</p>
+		<ol>
+			<li>Plot population versus time. Describe the curve's shape.</li>
+			<li>Does the population appear to level off? Estimate the carrying capacity <m>K</m> from your graph.</li>
+			<li>In the early phase (first 2-3 measurements), does growth appear exponential? Estimate the initial growth rate <m>r</m>.</li>
+			<li>Compute <m>\ln\left(\frac{K-P_0}{P_0}\right) - rt</m> for each data point. If the model is correct, this should equal <m>\ln\left(\frac{K-P}{P}\right)</m>.</li>
+			<li>Plot <m>\ln\left(\frac{K-P}{P}\right)</m> versus <m>t</m>. Is it approximately linear? The slope should be <m>-r</m>.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>What happens to <m>P(t)</m> as <m>t \to \infty</m>? Verify this using both the differential equation and the solution.</li>
+			<li>Find the time at which the population reaches half the carrying capacity (<m>P = K/2</m>).</li>
+			<li>At what population level is the growth rate <m>\frac{dP}{dt}</m> maximized? (Hint: find <m>\frac{d}{dP}\left[\frac{dP}{dt}\right]</m> and set it to zero.)</li>
+			<li>If the initial population <m>P_0 > K</m> (starting above carrying capacity), what happens? Sketch the solution.</li>
+			<li>How does doubling <m>r</m> affect the time to reach carrying capacity? How does doubling <m>K</m> affect it?</li>
+			<li>Compare the logistic model to exponential growth (<m>\frac{dP}{dt} = rP</m>). When are they similar? When do they differ significantly?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions: Real-World Applications</title>
+
+		<p>
+			The logistic model appears in many contexts:
+		</p>
+		<ul>
+			<li>Epidemiology: spread of disease in a population</li>
+			<li>Ecology: fish populations in a lake, predator-prey dynamics</li>
+			<li>Technology adoption: how innovations spread through a market</li>
+			<li>Chemical reactions: autocatalytic processes</li>
+		</ul>
+
+		<p>
+			Research one of these applications and explain how the logistic equation applies.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Submit a comprehensive report (3-4 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the logistic equation from the stated assumptions.</li>
+			<li>Complete solution using separation of variables (show all steps).</li>
+			<li>Your experimental data with clear graphs and analysis.</li>
+			<li>Parameter estimation: values of <m>r</m>, <m>K</m>, and <m>P_0</m> with explanation of methods used.</li>
+			<li>Comparison between your data and the theoretical logistic curve (include both on the same graph).</li>
+			<li>Answers to analytical questions with detailed explanations.</li>
+			<li>Discussion of model limitations and factors not accounted for (e.g., death rate, mutations, environmental changes).</li>
+			<li>Brief exploration of one real-world application of the logistic model.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			The logistic equation demonstrates the power of separation of variables to solve differential equations that model real-world constraints. Unlike exponential growth, which continues indefinitely, logistic growth captures the realistic scenario where growth eventually stabilizes. This model has been fundamental in understanding everything from bacterial colonies to human populations, and illustrates how a simple differential equation can capture complex behavior.
+		</p>
+	</conclusion>
+
+</section>

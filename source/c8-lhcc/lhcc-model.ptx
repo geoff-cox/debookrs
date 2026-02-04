@@ -1,0 +1,245 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="lhcc-modeling">
+	<title>Modeling with Homogeneous Linear Equations</title>
+
+	<introduction>
+		<p>
+			Linear homogeneous constant coefficient (LHCC) equations model systems where forces or rates depend linearly on the state and its derivatives, with no external driving. These equations appear in mechanical vibrations, electrical circuits, and many other applications where natural oscillations occur.
+		</p>
+
+		<p>
+			In this section, we'll model a damped mass-spring system and explore the three distinct types of motion that can result: overdamping, critical damping, and underdamping.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Suspension System Design</title>
+
+		<p>
+			Automobile suspension systems use springs and shock absorbers (dampers) to provide a smooth ride. When a car hits a bump, the suspension compresses and then returns to equilibrium. The question is: how quickly should it return, and should it oscillate?
+		</p>
+
+		<p>
+			Different damping levels produce qualitatively different behaviors, each appropriate for different applications.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The spring obeys Hooke's law: <m>F_s = -kx</m></li>
+			<li>Damping is proportional to velocity: <m>F_d = -c\frac{dx}{dt}</m></li>
+			<li>The mass is constant</li>
+			<li>No external forces act on the system</li>
+			<li>Motion is vertical (one-dimensional)</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>x(t)</m> represent the displacement from equilibrium. Newton's second law gives:
+			<me>
+				m\frac{d^2x}{dt^2} = -kx - c\frac{dx}{dt}
+			</me>
+		</p>
+
+		<p>
+			Rearranging to standard form:
+			<me>
+				\frac{d^2x}{dt^2} + \frac{c}{m}\frac{dx}{dt} + \frac{k}{m}x = 0
+			</me>
+		</p>
+
+		<p>
+			This is a second-order linear homogeneous equation with constant coefficients.
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>m</m>: mass (kg)</li>
+			<li><m>k</m>: spring constant (N/m)</li>
+			<li><m>c</m>: damping coefficient (N·s/m or kg/s)</li>
+			<li><m>\omega_0 = \sqrt{k/m}</m>: natural frequency (rad/s)</li>
+			<li><m>\zeta = \frac{c}{2\sqrt{km}}</m>: damping ratio (dimensionless)</li>
+		</ul>
+
+		<p>
+			The characteristic equation is:
+			<me>
+				r^2 + \frac{c}{m}r + \frac{k}{m} = 0
+			</me>
+		</p>
+
+		<p>
+			The discriminant determines the type of motion:
+		</p>
+		<ul>
+			<li><term>Overdamped</term> (<m>\zeta > 1</m>): Two distinct real roots, no oscillation</li>
+			<li><term>Critically damped</term> (<m>\zeta = 1</m>): Repeated real root, fastest return without overshoot</li>
+			<li><term>Underdamped</term> (<m>0 &lt; \zeta &lt; 1</m>): Complex roots, damped oscillation</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Physical Activity: Spring-Mass-Damper System</title>
+
+		<p>
+			<term>Objective:</term> Build physical systems demonstrating different damping regimes.
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Springs (slinky or coil springs)</li>
+			<li>Masses (washers, weights)</li>
+			<li>Damping materials (cardboard, foam, or water)</li>
+			<li>Stopwatch</li>
+			<li>Ruler or motion sensor</li>
+			<li>Optional: video recording device</li>
+		</ul>
+
+		<p>
+			<term>Setup Variations:</term>
+		</p>
+
+		<ol>
+			<li><term>Underdamped:</term> Mass-spring in air (minimal damping)</li>
+			<li><term>Increased Damping:</term> Attach cardboard fins or foam to increase air resistance</li>
+			<li><term>Heavy Damping:</term> Mass-spring system moving through water or oil</li>
+		</ol>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>For each setup, pull the mass down a fixed distance and release.</li>
+			<li>Record the motion (video or position measurements over time).</li>
+			<li>Count oscillations (if any) and measure the period.</li>
+			<li>Measure the decay time (time to reduce amplitude by half).</li>
+			<li>Note whether the system overshoots equilibrium.</li>
+		</ol>
+
+		<p>
+			<term>Analysis:</term>
+		</p>
+		<ol>
+			<li>Plot displacement versus time for each damping level.</li>
+			<li>Classify each system as underdamped, critically damped, or overdamped.</li>
+			<li>For underdamped cases, measure the damped frequency and compare with the natural frequency.</li>
+			<li>Estimate the damping ratio <m>\zeta</m> from the logarithmic decrement method (if applicable).</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Computational Activity</title>
+
+		<p>
+			Use the exact solutions to generate plots:
+		</p>
+
+		<p>
+			<term>Case 1: Underdamped (<m>\zeta = 0.2</m>)</term>
+		</p>
+		<me>
+			x(t) = e^{-\zeta\omega_0 t}(A\cos(\omega_d t) + B\sin(\omega_d t))
+		</me>
+		<p>where <m>\omega_d = \omega_0\sqrt{1-\zeta^2}</m></p>
+
+		<p>
+			<term>Case 2: Critically Damped (<m>\zeta = 1</m>)</term>
+		</p>
+		<me>
+			x(t) = e^{-\omega_0 t}(A + Bt)
+		</me>
+
+		<p>
+			<term>Case 3: Overdamped (<m>\zeta = 2</m>)</term>
+		</p>
+		<me>
+			x(t) = Ae^{r_1 t} + Be^{r_2 t}
+		</me>
+		<p>where <m>r_1, r_2</m> are negative real roots.</p>
+
+		<p>
+			For each case with <m>\omega_0 = 1</m>, <m>x(0) = 1</m>, <m>x'(0) = 0</m>:
+		</p>
+		<ol>
+			<li>Solve for constants <m>A</m> and <m>B</m></li>
+			<li>Plot <m>x(t)</m> for <m>0 \leq t \leq 20</m></li>
+			<li>Compare the three cases on one graph</li>
+			<li>Which returns to equilibrium fastest? Which overshoots?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Verify that <m>x(t) = e^{-\zeta\omega_0 t}\cos(\omega_d t)</m> satisfies the differential equation for underdamped motion.</li>
+			<li>Show that critical damping occurs when <m>c = 2\sqrt{km}</m>.</li>
+			<li>For underdamped motion, derive the relationship between consecutive peak amplitudes (logarithmic decrement).</li>
+			<li>Why is critical damping preferred for car suspensions and door closers?</li>
+			<li>In what applications would you want underdamping? Overdamping?</li>
+			<li>How does doubling the mass affect the natural frequency? The damping ratio?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Design Challenge</title>
+
+		<p>
+			You are designing a suspension system for a 1000 kg vehicle. The spring constant is <m>k = 40000</m> N/m.
+		</p>
+
+		<ol>
+			<li>Calculate the natural frequency <m>\omega_0</m>.</li>
+			<li>For a comfortable ride, you want <m>\zeta = 0.7</m> (underdamped but not too oscillatory). What damping coefficient <m>c</m> is needed?</li>
+			<li>If the car hits a bump causing an initial displacement of 0.1 m, how long until the displacement is less than 0.01 m?</li>
+			<li>Compare this design with a critically damped system. Which returns to equilibrium faster?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a detailed report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the damped harmonic oscillator equation from Newton's laws.</li>
+			<li>Solution of the characteristic equation for all three damping cases.</li>
+			<li>Physical experiment description with photos/diagrams and data.</li>
+			<li>Classification of your experimental systems by damping type.</li>
+			<li>Graphs comparing the three damping regimes (both experimental and theoretical).</li>
+			<li>Parameter estimation for your physical systems.</li>
+			<li>Complete solution to the design challenge with justification.</li>
+			<li>Discussion of real-world applications where each damping type is preferred.</li>
+			<li>Analysis of how parameter changes affect system behavior.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Linear homogeneous constant coefficient equations provide exact, predictable solutions for a wide class of physical systems. The damped harmonic oscillator is fundamental in engineering design, from vehicle suspensions to building earthquake resistance, from electrical filters to quantum mechanics. Understanding how the characteristic equation's roots determine system behavior—whether oscillatory, exponential, or critical—is essential for controlling and optimizing these systems. The mathematical classification (overdamped, critically damped, underdamped) directly translates to observable physical phenomena, demonstrating the power of differential equations in engineering and science.
+		</p>
+	</conclusion>
+
+</section>

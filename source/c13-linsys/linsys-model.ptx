@@ -1,0 +1,257 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="linsys-modeling">
+	<title>Modeling with Linear Systems</title>
+
+	<introduction>
+		<p>
+			Many real-world systems involve multiple interacting components, each with its own state variable. Linear systems of differential equations model these coupled dynamics, where the rate of change of each variable depends on all the variables in the system.
+		</p>
+
+		<p>
+			In this section, we'll model predator-prey interactions—a classic ecological system where two populations influence each other's growth rates.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Predator-Prey Dynamics</title>
+
+		<p>
+			Consider a simplified ecosystem with rabbits (prey) and foxes (predators). Rabbits reproduce and provide food for foxes. Foxes need rabbits to survive and reproduce. How do these populations evolve over time?
+		</p>
+
+		<p>
+			This interaction can lead to oscillating population cycles—when rabbits are abundant, fox populations grow; as foxes increase, rabbit populations decline; with fewer rabbits, fox populations then decline; and the cycle repeats.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>Without predators, prey population grows exponentially.</li>
+			<li>Predators encounter prey at a rate proportional to both populations.</li>
+			<li>Without prey, predator population declines exponentially.</li>
+			<li>The environment has unlimited resources (for a linear model).</li>
+			<li>No age structure or spatial distribution.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>R(t)</m> = rabbit population and <m>F(t)</m> = fox population at time <m>t</m> (in months).
+		</p>
+
+		<p>
+			<term>Linearized Lotka-Volterra Equations:</term>
+		</p>
+
+		<p>
+			Near an equilibrium point, we can linearize the system:
+			<md>
+				<mrow> \frac{dR}{dt} \amp = aR - bRF </mrow>
+				<mrow> \frac{dF}{dt} \amp = -cF + dRF </mrow>
+			</md>
+		</p>
+
+		<p>
+			For small perturbations around equilibrium <m>(R^*, F^*)</m>, let <m>r = R - R^*</m> and <m>f = F - F^*</m>:
+			<md>
+				<mrow> \frac{dr}{dt} \amp = -bF^* r + aR^* f </mrow>
+				<mrow> \frac{df}{dt} \amp = dF^* r - cR^* f </mrow>
+			</md>
+		</p>
+
+		<p>
+			Or in matrix form:
+			<me>
+				\frac{d}{dt}\begin{pmatrix} r \\ f \end{pmatrix} = \begin{pmatrix} -bF^* \amp -aR^* \\ dF^* \amp -cR^* \end{pmatrix}\begin{pmatrix} r \\ f \end{pmatrix}
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters (Example):</term>
+		</p>
+		<ul>
+			<li><m>a = 0.5</m>: rabbit growth rate (/month)</li>
+			<li><m>b = 0.02</m>: predation rate (/(rabbit·month))</li>
+			<li><m>c = 0.3</m>: fox death rate (/month)</li>
+			<li><m>d = 0.01</m>: fox reproduction efficiency (/(fox·month))</li>
+		</ul>
+
+		<p>
+			Equilibrium: <m>R^* = c/d = 30</m> rabbits, <m>F^* = a/b = 25</m> foxes.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Solution via Eigenanalysis</title>
+
+		<p>
+			The linearized system has coefficient matrix:
+			<me>
+				A = \begin{pmatrix} -0.5 \amp -15 \\ 0.25 \amp -15 \end{pmatrix}
+			</me>
+		</p>
+
+		<p>
+			<term>Characteristic equation:</term>
+			<me>
+				\det(A - \lambda I) = (\lambda + 0.5)(\lambda + 15) + 3.75 = 0
+			</me>
+		</p>
+
+		<p>
+			Solving gives eigenvalues (which may be complex), determining the nature of the equilibrium:
+		</p>
+		<ul>
+			<li>Real, both negative: stable node (populations return to equilibrium)</li>
+			<li>Real, opposite signs: saddle point (unstable)</li>
+			<li>Complex with negative real part: stable spiral (damped oscillations)</li>
+			<li>Pure imaginary: center (perpetual oscillations)</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Computational Activity</title>
+
+		<p>
+			<term>Objective:</term> Simulate predator-prey dynamics and analyze phase portraits.
+		</p>
+
+		<p>
+			<term>Part 1: Time Series</term>
+		</p>
+
+		<ol>
+			<li>Solve the system numerically using the parameters above.</li>
+			<li>Start with initial conditions: <m>R(0) = 40</m>, <m>F(0) = 20</m>.</li>
+			<li>Plot <m>R(t)</m> and <m>F(t)</m> separately versus time for 0-50 months.</li>
+			<li>Do the populations oscillate? If so, estimate the period.</li>
+			<li>Do the oscillations grow, decay, or remain constant?</li>
+		</ol>
+
+		<p>
+			<term>Part 2: Phase Portrait</term>
+		</p>
+
+		<ol>
+			<li>Plot <m>F</m> versus <m>R</m> (phase space trajectory).</li>
+			<li>Mark the equilibrium point <m>(R^*, F^*)</m>.</li>
+			<li>Try several different initial conditions and plot their trajectories.</li>
+			<li>Classify the equilibrium: node, spiral, center, or saddle?</li>
+		</ol>
+
+		<p>
+			<term>Part 3: Parameter Exploration</term>
+		</p>
+
+		<ol>
+			<li>Increase predation efficiency: <m>b = 0.03</m>. How does this affect dynamics?</li>
+			<li>Increase fox death rate: <m>c = 0.4</m>. How does the equilibrium shift?</li>
+			<li>Can you find parameters that lead to population extinction (trajectory reaching zero)?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Data Collection Activity</title>
+
+		<p>
+			<term>Objective:</term> Analyze real predator-prey data and fit a model.
+		</p>
+
+		<p>
+			<term>Historical Data Set:</term> Hudson Bay Company fur trading records (1900-1920) for lynx (predator) and hare (prey).
+		</p>
+
+		<p>
+			<term>Tasks:</term>
+		</p>
+		<ol>
+			<li>Obtain or use provided data set of lynx and hare populations over time.</li>
+			<li>Plot both populations versus time. Do you observe cyclical behavior?</li>
+			<li>Estimate the period of oscillation.</li>
+			<li>Plot hare vs. lynx in phase space. Does it form a closed loop?</li>
+			<li>Estimate parameters <m>a, b, c, d</m> that roughly match the observed behavior.</li>
+			<li>Simulate your model and compare with actual data.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Find the equilibrium point <m>(R^*, F^*)</m> for the nonlinear Lotka-Volterra equations by setting both derivatives to zero.</li>
+			<li>Calculate the eigenvalues of the linearized system matrix at equilibrium. What do they tell you about stability?</li>
+			<li>Show that for the nonlinear system, the quantity <m>E = dR - c\ln R + bF - a\ln F</m> is conserved (constant along trajectories). What does this imply about the phase portrait?</li>
+			<li>If the prey growth rate <m>a</m> doubles, how does the equilibrium fox population change?</li>
+			<li>In the linearized model, under what parameter conditions would you expect:
+				<ul>
+					<li>Both populations to return to equilibrium without oscillating?</li>
+					<li>Damped oscillations?</li>
+					<li>Sustained oscillations?</li>
+				</ul>
+			</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions: More Complex Models</title>
+
+		<p>
+			Modify the basic model to include:
+		</p>
+
+		<ul>
+			<li><term>Prey carrying capacity:</term> Replace <m>aR</m> with <m>aR(1-R/K)</m> (logistic growth)</li>
+			<li><term>Alternative food source:</term> Modify fox equation to allow survival without prey</li>
+			<li><term>Multiple predators or prey:</term> Extend to three or more species</li>
+			<li><term>Harvesting:</term> Add constant removal terms for hunting/fishing</li>
+		</ul>
+
+		<p>
+			Implement one extension and analyze how it changes the dynamics.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a comprehensive report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the predator-prey system from biological principles.</li>
+			<li>Linearization around the equilibrium point with full matrix formulation.</li>
+			<li>Eigenvalue calculation and stability analysis.</li>
+			<li>Time series plots showing population oscillations.</li>
+			<li>Phase portraits for multiple initial conditions.</li>
+			<li>Parameter exploration results with discussion of biological interpretation.</li>
+			<li>Analysis of real lynx-hare data with model fitting.</li>
+			<li>Answers to all analytical questions.</li>
+			<li>Implementation and analysis of at least one model extension.</li>
+			<li>Discussion of model limitations and suggestions for improvement.</li>
+			<li>Brief review of other systems modeled by coupled linear equations (chemical reactions, competing species, disease spread, economics).</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Linear systems of differential equations reveal the rich dynamics that emerge from coupled interactions. The predator-prey model demonstrates how simple rules—prey reproduce, predators consume prey—can generate complex oscillatory behavior. This mathematical framework extends far beyond ecology: coupled chemical reactions, multi-compartment pharmacokinetics, interacting markets in economics, and coupled oscillators in physics all follow similar structures. Understanding eigenvalues, phase portraits, and stability provides insight into whether systems converge to equilibrium, oscillate indefinitely, or spiral out of control. These tools are fundamental in biology, engineering, economics, and any field where multiple processes interact dynamically.
+		</p>
+	</conclusion>
+
+</section>

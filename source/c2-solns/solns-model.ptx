@@ -1,0 +1,187 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="solns-modeling">
+	<title>Modeling and Verifying Solutions</title>
+
+	<introduction>
+		<p>
+			Understanding what it means for a function to be a solution to a differential equation is crucial for modeling. In real-world applications, we often have data or observations and need to verify whether a proposed mathematical model actually describes the phenomenon we're studying.
+		</p>
+
+		<p>
+			In this section, we'll model a classic physics problem and learn how to verify that our solution makes sense both mathematically and physically.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Free Fall with Air Resistance</title>
+
+		<p>
+			When an object falls through air, two forces act on it:
+		</p>
+		<ul>
+			<li>Gravity: <m>F_g = mg</m> (downward)</li>
+			<li>Air resistance: <m>F_r = -bv</m> (upward, proportional to velocity)</li>
+		</ul>
+
+		<p>
+			At low speeds, air resistance is approximately proportional to velocity. We want to model how the velocity changes as the object falls.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The object starts from rest at <m>t = 0</m>.</li>
+			<li>Air resistance is proportional to velocity: <m>F_r = bv</m> where <m>b > 0</m>.</li>
+			<li>The acceleration due to gravity is constant: <m>g = 9.8 \text{ m/s}^2</m>.</li>
+			<li>The object's mass <m>m</m> remains constant.</li>
+			<li>We ignore other factors like wind, buoyancy, or changes in air density.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>v(t)</m> be the velocity of the object at time <m>t</m> (positive downward). By Newton's second law:
+			<me>
+				m\frac{dv}{dt} = mg - bv
+			</me>
+		</p>
+
+		<p>
+			Dividing by <m>m</m>:
+			<me>
+				\frac{dv}{dt} = g - \frac{b}{m}v
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>g = 9.8 \text{ m/s}^2</m>: gravitational acceleration</li>
+			<li><m>m</m>: mass of the object (kg)</li>
+			<li><m>b</m>: drag coefficient (kg/s), depends on object shape and air density</li>
+			<li><m>v_{\text{terminal}} = \frac{mg}{b}</m>: the terminal velocity (maximum velocity reached)</li>
+		</ul>
+
+		<p>
+			As time goes on, the velocity approaches <m>v_{\text{terminal}}</m>, where the forces balance and <m>\frac{dv}{dt} = 0</m>.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Verification Activity: Coffee Filter Drop</title>
+
+		<p>
+			<term>Objective:</term> Collect data on falling objects and verify whether our model accurately predicts their motion.
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Coffee filters (identical, flat-bottom type)</li>
+			<li>Stopwatch or video recording device</li>
+			<li>Measuring tape or meter stick</li>
+			<li>Optional: motion sensor or app for tracking position</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Drop a single coffee filter from a height of 2-3 meters and time how long it takes to hit the ground.</li>
+			<li>Repeat 5 times and calculate the average fall time.</li>
+			<li>Repeat the experiment with 2, 3, 4, and 5 stacked coffee filters (increasing mass while keeping shape constant).</li>
+			<li>For each stack size, calculate the average velocity: <m>v_{\text{avg}} = \frac{\text{height}}{\text{time}}</m>.</li>
+			<li>Record all data in a table: Number of filters, Mass, Height, Time, Average velocity.</li>
+		</ol>
+
+		<p>
+			<term>Analysis Questions:</term>
+		</p>
+		<ol>
+			<li>Does a single coffee filter appear to reach terminal velocity during its fall? How can you tell?</li>
+			<li>Plot average velocity versus mass. What pattern emerges?</li>
+			<li>The terminal velocity formula is <m>v_{\text{terminal}} = \frac{mg}{b}</m>. If <m>b</m> is approximately constant (same shape for all stacks), how should terminal velocity depend on mass?</li>
+			<li>Estimate the drag coefficient <m>b</m> from your data by assuming the coffee filters reached terminal velocity.</li>
+			<li>How would the motion differ if you dropped the filters on the Moon (no air)?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Solution Verification</title>
+
+		<p>
+			The general solution to our differential equation <m>\frac{dv}{dt} = g - \frac{b}{m}v</m> is:
+			<me>
+				v(t) = \frac{mg}{b}\left(1 - e^{-\frac{b}{m}t}\right)
+			</me>
+		</p>
+
+		<p>
+			Let's verify this is indeed a solution:
+		</p>
+
+		<p>
+			<term>Verification Steps:</term>
+		</p>
+		<ol>
+			<li>Compute the derivative: <m>\frac{dv}{dt} = \frac{mg}{b} \cdot \frac{b}{m}e^{-\frac{b}{m}t} = ge^{-\frac{b}{m}t}</m></li>
+			<li>Substitute into the right side: <m>g - \frac{b}{m}v = g - \frac{b}{m} \cdot \frac{mg}{b}(1 - e^{-\frac{b}{m}t}) = g - g(1 - e^{-\frac{b}{m}t}) = ge^{-\frac{b}{m}t}</m></li>
+			<li>Since both sides equal <m>ge^{-\frac{b}{m}t}</m>, the solution is verified.</li>
+			<li>Check initial condition: <m>v(0) = \frac{mg}{b}(1 - e^0) = 0</m> ✓</li>
+			<li>Check long-term behavior: As <m>t \to \infty</m>, <m>e^{-\frac{b}{m}t} \to 0</m>, so <m>v(t) \to \frac{mg}{b} = v_{\text{terminal}}</m> ✓</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>What happens to the solution if <m>b = 0</m> (no air resistance)? Does this match free fall?</li>
+			<li>For what value of <m>t</m> does the velocity reach 95% of terminal velocity?</li>
+			<li>How would doubling the mass affect the terminal velocity? The time to reach terminal velocity?</li>
+			<li>If you drop two objects of the same mass but different shapes, which will have a higher terminal velocity? Why?</li>
+			<li>Compare coffee filter data with the theoretical solution. What factors might explain any discrepancies?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a report (2-3 pages) including:
+		</p>
+
+		<ol>
+			<li>A derivation of the differential equation from Newton's laws.</li>
+			<li>Your experimental data presented clearly with graphs.</li>
+			<li>An estimate of the drag coefficient <m>b</m> based on your measurements.</li>
+			<li>A verification that the proposed solution satisfies the differential equation and initial conditions.</li>
+			<li>A comparison between your experimental results and the theoretical predictions.</li>
+			<li>A discussion of the model's limitations and how it could be improved.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Verifying solutions is a critical skill in modeling. It ensures that our mathematical expressions actually represent the physical reality we're trying to describe. This example of free fall with air resistance shows how differential equations can capture the balance between competing forces and how solutions can be validated both analytically and experimentally.
+		</p>
+	</conclusion>
+
+</section>

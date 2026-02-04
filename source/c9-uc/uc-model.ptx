@@ -1,0 +1,266 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="uc-modeling">
+	<title>Modeling Forced Systems with Undetermined Coefficients</title>
+
+	<introduction>
+		<p>
+			When a system is subjected to external forcing, the differential equation becomes nonhomogeneous. The method of undetermined coefficients allows us to find particular solutions when the forcing function has a special form. These forced systems exhibit both transient and steady-state behavior.
+		</p>
+
+		<p>
+			In this section, we'll model a driven mechanical oscillator and explore the phenomenon of resonance—one of the most important concepts in engineering and physics.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Resonance in Bridges and Buildings</title>
+
+		<p>
+			When soldiers march across a bridge in lockstep, their synchronized footsteps create a periodic driving force. If the frequency of their steps matches the bridge's natural frequency, the amplitude of oscillation can grow dangerously large—a phenomenon called resonance.
+		</p>
+
+		<p>
+			How can we predict when resonance will occur and how severe it will be?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The system behaves as a linear spring-mass-damper.</li>
+			<li>The external force is periodic: <m>F(t) = F_0\cos(\omega t)</m>.</li>
+			<li>Damping is present but may be small.</li>
+			<li>Parameters remain constant.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			The equation of motion with external forcing is:
+			<me>
+				m\frac{d^2x}{dt^2} + c\frac{dx}{dt} + kx = F_0\cos(\omega t)
+			</me>
+		</p>
+
+		<p>
+			In standard form:
+			<me>
+				\frac{d^2x}{dt^2} + 2\zeta\omega_0\frac{dx}{dt} + \omega_0^2 x = \frac{F_0}{m}\cos(\omega t)
+			</me>
+		</p>
+
+		<p>
+			where:
+		</p>
+		<ul>
+			<li><m>\omega_0 = \sqrt{k/m}</m>: natural frequency</li>
+			<li><m>\zeta = \frac{c}{2\sqrt{km}}</m>: damping ratio</li>
+			<li><m>\omega</m>: driving frequency</li>
+		</ul>
+
+		<p>
+			<term>General Solution Structure:</term>
+		</p>
+		<me>
+			x(t) = x_h(t) + x_p(t)
+		</me>
+		<ul>
+			<li><m>x_h(t)</m>: homogeneous solution (transient, dies out due to damping)</li>
+			<li><m>x_p(t)</m>: particular solution (steady-state response)</li>
+		</ul>
+
+		<p>
+			<term>Steady-State Solution:</term>
+		</p>
+
+		<p>
+			Using undetermined coefficients, the particular solution has the form:
+			<me>
+				x_p(t) = A\cos(\omega t) + B\sin(\omega t)
+			</me>
+			or equivalently:
+			<me>
+				x_p(t) = R\cos(\omega t - \phi)
+			</me>
+		</p>
+
+		<p>
+			The amplitude of steady-state oscillation is:
+			<me>
+				R = \frac{F_0/m}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2\zeta\omega_0\omega)^2}}
+			</me>
+		</p>
+
+		<p>
+			<term>Resonance occurs when <m>\omega \approx \omega_0</m></term>, giving maximum amplitude:
+			<me>
+				R_{\text{max}} \approx \frac{F_0}{2\zeta m\omega_0^2} = \frac{F_0}{c\omega_0}
+			</me>
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Physical Activity: Driven Oscillator</title>
+
+		<p>
+			<term>Objective:</term> Observe resonance in a physical system and measure frequency response.
+		</p>
+
+		<p>
+			<term>Setup 1: Mass-Spring System with Oscillating Support</term>
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Spring and mass</li>
+			<li>Mechanical oscillator or manual shaking apparatus</li>
+			<li>Frequency control (metronome or signal generator)</li>
+			<li>Ruler for amplitude measurement</li>
+			<li>Video camera</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Suspend the mass-spring system.</li>
+			<li>Determine the natural frequency by releasing from rest and timing oscillations.</li>
+			<li>Drive the system by shaking the support at various frequencies (start far from <m>\omega_0</m>).</li>
+			<li>For each driving frequency, wait for steady state and measure the amplitude.</li>
+			<li>Record: Driving frequency, Steady-state amplitude.</li>
+			<li>Test frequencies both below and above <m>\omega_0</m>, with extra measurements near <m>\omega_0</m>.</li>
+		</ol>
+
+		<p>
+			<term>Setup 2: Resonance Demonstration (Simpler)</term>
+		</p>
+
+		<p>
+			Use coupled pendulums of different lengths driven by one oscillating pendulum. Observe which pendulum responds most strongly based on length matching.
+		</p>
+
+		<p>
+			<term>Analysis:</term>
+		</p>
+		<ol>
+			<li>Plot steady-state amplitude versus driving frequency (frequency response curve).</li>
+			<li>Identify the resonant frequency (where amplitude is maximum).</li>
+			<li>Compare the resonant frequency with the natural frequency <m>\omega_0</m>.</li>
+			<li>Estimate the damping ratio from the sharpness of the resonance peak.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Computational Activity</title>
+
+		<p>
+			Simulate the forced oscillator equation numerically:
+		</p>
+
+		<ol>
+			<li>Set parameters: <m>m = 1</m>, <m>k = 4</m> (so <m>\omega_0 = 2</m>), <m>F_0 = 1</m></li>
+			<li>Test three damping levels: <m>\zeta = 0.1, 0.3, 0.7</m></li>
+			<li>For each damping level, simulate with driving frequencies: <m>\omega = 0.5, 1.0, 1.5, 2.0, 2.5, 3.0</m></li>
+			<li>Plot <m>x(t)</m> for several periods to see both transient and steady-state behavior</li>
+			<li>Measure the steady-state amplitude for each case</li>
+			<li>Create a frequency response plot (amplitude vs. <m>\omega</m>) for each damping level</li>
+		</ol>
+
+		<p>
+			<term>Observations:</term>
+		</p>
+		<ul>
+			<li>How does damping affect the resonance peak?</li>
+			<li>How long does it take to reach steady state?</li>
+			<li>What happens when <m>\omega = \omega_0</m> exactly?</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Verify that <m>x_p(t) = R\cos(\omega t - \phi)</m> satisfies the nonhomogeneous differential equation by direct substitution.</li>
+			<li>Derive the condition for maximum amplitude by taking <m>\frac{dR}{d\omega} = 0</m>.</li>
+			<li>Show that in the limit of zero damping (<m>\zeta \to 0</m>), the resonant amplitude becomes infinite.</li>
+			<li>For very low frequencies (<m>\omega \ll \omega_0</m>), what is the approximate steady-state amplitude? How does it relate to the static displacement <m>F_0/k</m>?</li>
+			<li>For very high frequencies (<m>\omega \gg \omega_0</m>), what happens to the amplitude?</li>
+			<li>Calculate the quality factor <m>Q = 1/(2\zeta)</m>. How does <m>Q</m> relate to the sharpness of the resonance?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Engineering Case Studies</title>
+
+		<p>
+			Research one of these famous resonance-related incidents:
+		</p>
+		<ul>
+			<li><term>Tacoma Narrows Bridge (1940):</term> Collapsed due to wind-induced resonance</li>
+			<li><term>Millennium Bridge, London (2000):</term> Closed shortly after opening due to pedestrian-induced wobbling</li>
+			<li><term>Tuned mass dampers:</term> Used in skyscrapers (e.g., Taipei 101) to counteract wind and earthquake oscillations</li>
+		</ul>
+
+		<p>
+			Explain how the resonance phenomenon contributed to the problem and how engineers addressed it.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Design Problem</title>
+
+		<p>
+			A machine with mass 100 kg sits on an elastic foundation with stiffness <m>k = 10^5</m> N/m. The machine vibrates at 10 Hz during operation.
+		</p>
+
+		<ol>
+			<li>Calculate the natural frequency of the system.</li>
+			<li>Is the system near resonance? If so, what problems might occur?</li>
+			<li>Design a damping system (<m>c</m> value) to limit the amplitude to less than 2 mm, given <m>F_0 = 500</m> N.</li>
+			<li>Alternatively, how much mass would you need to add to shift the natural frequency away from the operating frequency?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Submit a comprehensive report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the forced oscillator equation and solution using undetermined coefficients.</li>
+			<li>Analytical derivation of the resonance condition and maximum amplitude formula.</li>
+			<li>Experimental setup description with frequency response data and graphs.</li>
+			<li>Comparison of experimental resonance frequency with theoretical predictions.</li>
+			<li>Computational simulation results showing frequency response for different damping levels.</li>
+			<li>Answers to all analytical questions with detailed work.</li>
+			<li>Case study analysis of a real resonance-related engineering problem.</li>
+			<li>Complete solution to the design problem with recommendations.</li>
+			<li>Discussion of how resonance is both a challenge (structural failure) and a tool (MRI machines, musical instruments).</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Resonance is one of the most important phenomena in science and engineering. While it can be destructive when unwanted (bridge collapses, machine failures), it's also intentionally exploited in countless applications (radio tuning, MRI imaging, musical instruments, atomic clocks). The method of undetermined coefficients provides the tools to analyze forced systems and predict resonance behavior. Understanding how forcing frequency, natural frequency, and damping interact is essential for designing safe structures and efficient devices. This mathematical framework has saved lives and enabled technologies, demonstrating the real-world impact of differential equations.
+		</p>
+	</conclusion>
+
+</section>

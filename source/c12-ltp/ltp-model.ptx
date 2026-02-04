@@ -1,0 +1,306 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="ltp-modeling">
+	<title>Modeling Systems with Piecewise Forcing</title>
+
+	<introduction>
+		<p>
+			Many real-world systems experience forcing that changes abruptly—switches turn on and off, loads are applied and removed, and control systems activate at specific times. Piecewise forcing functions model these discontinuous inputs, and the Laplace transform with unit step functions provides an elegant solution method.
+		</p>
+
+		<p>
+			In this section, we'll model a temperature control system with intermittent heating—a scenario found in thermostats, incubators, and industrial processes.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Thermostat Control System</title>
+
+		<p>
+			A room is heated by a system that turns on when temperature drops below a setpoint and off when it exceeds another setpoint. This on-off control creates a piecewise forcing function.
+		</p>
+
+		<p>
+			How does the room temperature evolve under this intermittent heating? Can we predict cycling behavior?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>Room temperature is uniform (well-mixed air).</li>
+			<li>Heat loss to the outside is proportional to temperature difference (Newton's law of cooling).</li>
+			<li>The heater provides constant power when on.</li>
+			<li>Outside temperature remains constant.</li>
+			<li>No internal heat sources (people, appliances, sunlight).</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>T(t)</m> be the room temperature (°C) at time <m>t</m> (minutes). The rate of temperature change is:
+			<me>
+				C\frac{dT}{dt} = -k(T - T_{\text{out}}) + H(t)
+			</me>
+		</p>
+
+		<p>
+			where:
+		</p>
+		<ul>
+			<li><m>C</m>: thermal capacity (J/°C)</li>
+			<li><m>k</m>: heat loss coefficient (J/(min·°C))</li>
+			<li><m>T_{\text{out}}</m>: outside temperature (°C)</li>
+			<li><m>H(t)</m>: heating rate (J/min), piecewise function</li>
+		</ul>
+
+		<p>
+			Simplifying by dividing by <m>C</m>:
+			<me>
+				\frac{dT}{dt} = -\alpha(T - T_{\text{out}}) + h(t)
+			</me>
+			where <m>\alpha = k/C</m> and <m>h(t) = H(t)/C</m>.
+		</p>
+
+		<p>
+			<term>Piecewise Heating Schedule:</term>
+		</p>
+
+		<p>
+			<term>Scenario 1: Single On-Off Cycle</term>
+		</p>
+
+		<p>
+			Heater on for interval <m>[t_1, t_2]</m>:
+			<me>
+				h(t) = h_0[u(t-t_1) - u(t-t_2)]
+			</me>
+		</p>
+
+		<p>
+			<term>Scenario 2: Periodic Cycling</term>
+		</p>
+
+		<p>
+			Heater on for time <m>T_{\text{on}}</m>, off for time <m>T_{\text{off}}</m>, repeating:
+			<me>
+				h(t) = h_0 \sum_{n=0}^{\infty} [u(t - nT) - u(t - nT - T_{\text{on}})]
+			</me>
+			where <m>T = T_{\text{on}} + T_{\text{off}}</m> is the period.
+		</p>
+
+		<p>
+			<term>Parameters (Example):</term>
+		</p>
+		<ul>
+			<li><m>\alpha = 0.05</m> /min (time constant 20 min)</li>
+			<li><m>T_{\text{out}} = 5</m>°C</li>
+			<li><m>h_0 = 2</m>°C/min (heating rate)</li>
+			<li><m>T(0) = 15</m>°C</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Solution Using Laplace Transforms</title>
+
+		<p>
+			<term>Example: Heater On from <m>t_1 = 0</m> to <m>t_2 = 10</m> min</term>
+		</p>
+
+		<p>
+			The differential equation is:
+			<me>
+				\frac{dT}{dt} + \alpha T = \alpha T_{\text{out}} + h_0[u(t) - u(t-10)]
+			</me>
+		</p>
+
+		<p>
+			Taking Laplace transform with <m>T(0) = 15</m>:
+			<md>
+				<mrow> s\mathcal{L}\{T\} - 15 + \alpha\mathcal{L}\{T\} \amp = \frac{\alpha T_{\text{out}}}{s} + h_0\left(\frac{1}{s} - \frac{e^{-10s}}{s}\right) </mrow>
+				<mrow> \mathcal{L}\{T\} \amp = \frac{15}{s+\alpha} + \frac{\alpha T_{\text{out}}}{s(s+\alpha)} + \frac{h_0(1-e^{-10s})}{s(s+\alpha)} </mrow>
+			</md>
+		</p>
+
+		<p>
+			Using partial fractions and inverse transform yields:
+			<me>
+				T(t) = \begin{cases}
+					T_{\text{out}} + (15-T_{\text{out}})e^{-\alpha t} + \frac{h_0}{\alpha}(1-e^{-\alpha t}) \amp 0 \leq t &lt; 10 \\
+					\text{(different expression)} \amp t \geq 10
+				\end{cases}
+			</me>
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Simulation Activity</title>
+
+		<p>
+			<term>Objective:</term> Explore temperature dynamics under various control strategies.
+		</p>
+
+		<p>
+			<term>Part 1: Single Heating Cycle</term>
+		</p>
+
+		<ol>
+			<li>Simulate with parameters given above, heater on from <m>t = 0</m> to <m>t = 30</m> min.</li>
+			<li>Plot temperature versus time for 0-120 minutes.</li>
+			<li>What is the maximum temperature reached?</li>
+			<li>After the heater turns off, how long until temperature drops back to initial value?</li>
+		</ol>
+
+		<p>
+			<term>Part 2: Bang-Bang Control</term>
+		</p>
+
+		<p>
+			Implement a simple thermostat:
+		</p>
+		<ul>
+			<li>Turn heater ON when <m>T &lt; 18</m>°C</li>
+			<li>Turn heater OFF when <m>T > 22</m>°C</li>
+			<li>Otherwise, maintain previous state</li>
+		</ul>
+
+		<ol>
+			<li>Simulate for 300 minutes starting at <m>T(0) = 15</m>°C.</li>
+			<li>Plot temperature and heater state (on/off) versus time.</li>
+			<li>Does the system reach a steady oscillation? If so, what are the period and amplitude?</li>
+			<li>What percentage of time is the heater on at steady state?</li>
+		</ol>
+
+		<p>
+			<term>Part 3: Design Optimization</term>
+		</p>
+
+		<p>
+			Desired: maintain temperature between 19°C and 21°C.
+		</p>
+
+		<ol>
+			<li>Test different heating rates: <m>h_0 = 1, 2, 3</m>°C/min.</li>
+			<li>For each, adjust the thermostat setpoints to minimize cycling frequency while staying in range.</li>
+			<li>Which design provides the most stable temperature with minimal cycling?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Experimental Activity (Optional)</title>
+
+		<p>
+			<term>Simple Home Experiment:</term>
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Cup of hot water</li>
+			<li>Thermometer</li>
+			<li>Microwave or hot plate (for reheating)</li>
+			<li>Timer</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Heat water to ~60°C and place in room temperature environment.</li>
+			<li>Record temperature every 2 minutes as it cools.</li>
+			<li>After 20 minutes, reheat briefly in microwave (10-20 seconds).</li>
+			<li>Continue temperature measurements.</li>
+			<li>Reheat again at 40 minutes.</li>
+		</ol>
+
+		<p>
+			<term>Analysis:</term>
+		</p>
+		<ol>
+			<li>Plot temperature versus time.</li>
+			<li>Identify the cooling time constant <m>1/\alpha</m> from the exponential decay segments.</li>
+			<li>Compare with a continuous heating model.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>For a step heating input starting at <m>t=0</m>, find the steady-state temperature (as <m>t \to \infty</m>).</li>
+			<li>Show that after heating stops, the temperature decays exponentially toward <m>T_{\text{out}}</m>.</li>
+			<li>For periodic heating with period <m>T</m>, derive the steady-state maximum and minimum temperatures.</li>
+			<li>What is the optimal heating power <m>h_0</m> to maintain average temperature at 20°C with 10% duty cycle (heater on 10% of time)?</li>
+			<li>How does improving insulation (decreasing <m>\alpha</m>) affect cycling frequency?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Advanced Topic: Proportional Control</title>
+
+		<p>
+			Instead of on-off control, use proportional heating:
+			<me>
+				h(t) = K_p(T_{\text{set}} - T(t))
+			</me>
+		</p>
+
+		<p>
+			This gives:
+			<me>
+				\frac{dT}{dt} = -(\alpha + K_p)T + \alpha T_{\text{out}} + K_p T_{\text{set}}
+			</me>
+		</p>
+
+		<p>
+			<term>Tasks:</term>
+		</p>
+		<ol>
+			<li>Solve this equation for <m>T(t)</m>.</li>
+			<li>Find the steady-state temperature.</li>
+			<li>Compare proportional control with bang-bang control: which is smoother? Which is more energy efficient?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Submit a comprehensive report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the thermal model with piecewise heating.</li>
+			<li>Solution using Laplace transforms for a single heating pulse.</li>
+			<li>Simulation results for single heating cycle with analysis of temperature evolution.</li>
+			<li>Bang-bang control simulation showing steady-state cycling behavior.</li>
+			<li>Design optimization results comparing different heating rates and setpoints.</li>
+			<li>If conducted, experimental data with parameter estimation.</li>
+			<li>Answers to all analytical questions.</li>
+			<li>Comparison of bang-bang versus proportional control strategies.</li>
+			<li>Discussion of practical applications (HVAC systems, ovens, incubators, greenhouses).</li>
+			<li>Recommendations for energy-efficient temperature control.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Piecewise forcing functions model the reality of intermittent control—switches, valves, and relays that turn on and off rather than operating continuously. The unit step function and Laplace transform provide powerful tools for analyzing these systems mathematically. Understanding how systems respond to discontinuous inputs is essential in control engineering, where trade-offs between stability, energy efficiency, and component wear must be balanced. The simple thermostat model illustrates principles that scale up to industrial process control, power grid management, and automated manufacturing.
+		</p>
+	</conclusion>
+
+</section>

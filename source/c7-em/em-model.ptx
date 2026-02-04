@@ -1,0 +1,236 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="em-modeling">
+	<title>Numerical Modeling with Euler's Method</title>
+
+	<introduction>
+		<p>
+			Many differential equations cannot be solved analytically, yet we still need solutions for practical applications. Euler's method provides a straightforward numerical approach to approximate solutions by following the tangent line direction step by step.
+		</p>
+
+		<p>
+			In this section, we'll model a nonlinear pendulum—a system whose differential equation cannot be solved in closed form—and use Euler's method to understand its motion.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: The Nonlinear Pendulum</title>
+
+		<p>
+			A pendulum consists of a mass attached to a rigid rod or string, free to swing. For large angles, the motion is governed by a nonlinear differential equation. Unlike the simple harmonic motion approximation (<m>\sin\theta \approx \theta</m>), the true pendulum exhibits complex behavior.
+		</p>
+
+		<p>
+			How does the period of oscillation depend on amplitude for large swings?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The pendulum rod is rigid and massless.</li>
+			<li>All mass is concentrated at the bob.</li>
+			<li>There is no friction or air resistance.</li>
+			<li>The pivot point is fixed.</li>
+			<li>Motion is constrained to a vertical plane.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>\theta(t)</m> be the angle from vertical at time <m>t</m>. The torque equation gives:
+			<me>
+				\frac{d^2\theta}{dt^2} + \frac{g}{L}\sin\theta = 0
+			</me>
+		</p>
+
+		<p>
+			where <m>L</m> is the length of the pendulum and <m>g = 9.8 \text{ m/s}^2</m>.
+		</p>
+
+		<p>
+			This is a second-order nonlinear differential equation. To apply Euler's method, we convert it to a system of first-order equations:
+			<md>
+				<mrow> \frac{d\theta}{dt} \amp = \omega </mrow>
+				<mrow> \frac{d\omega}{dt} \amp = -\frac{g}{L}\sin\theta </mrow>
+			</md>
+		</p>
+
+		<p>
+			where <m>\omega</m> is the angular velocity.
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>g = 9.8 \text{ m/s}^2</m>: gravitational acceleration</li>
+			<li><m>L</m>: length of pendulum (m)</li>
+			<li><m>\theta_0</m>: initial angle (radians)</li>
+			<li><m>\omega_0</m>: initial angular velocity (radians/s)</li>
+		</ul>
+
+		<p>
+			<term>Euler's Method for Systems:</term>
+		</p>
+
+		<p>
+			Starting from initial conditions <m>(\theta_0, \omega_0)</m>, update using:
+			<md>
+				<mrow> \theta_{n+1} \amp = \theta_n + h\omega_n </mrow>
+				<mrow> \omega_{n+1} \amp = \omega_n - h\frac{g}{L}\sin\theta_n </mrow>
+			</md>
+			where <m>h</m> is the time step size.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Numerical Simulation Activity</title>
+
+		<p>
+			<term>Objective:</term> Implement Euler's method to simulate pendulum motion and investigate how period depends on amplitude.
+		</p>
+
+		<p>
+			<term>Implementation:</term>
+		</p>
+
+		<p>
+			Use a computational tool (spreadsheet, Python, MATLAB, or provided code template):
+		</p>
+
+		<ol>
+			<li>Set parameters: <m>g = 9.8</m>, <m>L = 1.0</m> (gives period <m>\approx 2</m> seconds for small angles)</li>
+			<li>Set initial conditions: <m>\omega_0 = 0</m>, various <m>\theta_0</m> values</li>
+			<li>Choose time step: <m>h = 0.01</m> (or smaller for better accuracy)</li>
+			<li>Implement the update formulas</li>
+			<li>Run simulation for sufficient time to observe several complete oscillations</li>
+		</ol>
+
+		<p>
+			<term>Part 1: Small Angle Approximation</term>
+		</p>
+
+		<ol>
+			<li>Simulate with <m>\theta_0 = 0.1</m> radians (<m>\approx 5.7°</m>)</li>
+			<li>Plot <m>\theta(t)</m> and <m>\omega(t)</m></li>
+			<li>Measure the period <m>T</m> (time for one complete oscillation)</li>
+			<li>Compare with the small-angle formula: <m>T_0 = 2\pi\sqrt{\frac{L}{g}}</m></li>
+		</ol>
+
+		<p>
+			<term>Part 2: Large Amplitude Effects</term>
+		</p>
+
+		<ol>
+			<li>Repeat simulations for <m>\theta_0 = 0.2, 0.5, 1.0, 1.5, 2.0</m> radians</li>
+			<li>For each, measure the period <m>T</m></li>
+			<li>Create a table: <m>\theta_0</m>, <m>T</m>, <m>T/T_0</m></li>
+			<li>Plot period versus initial amplitude</li>
+		</ol>
+
+		<p>
+			<term>Part 3: Phase Space Portrait</term>
+		</p>
+
+		<ol>
+			<li>For several initial amplitudes, plot <m>\omega</m> versus <m>\theta</m> (phase portrait)</li>
+			<li>Observe the shape of the trajectories—they should be closed loops for oscillatory motion</li>
+			<li>What happens as <m>\theta_0</m> approaches <m>\pi</m> (upside-down position)?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Physical Pendulum Activity</title>
+
+		<p>
+			<term>Optional Experimental Validation:</term>
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Pendulum (string and mass, or rigid rod)</li>
+			<li>Protractor</li>
+			<li>Stopwatch</li>
+			<li>Meter stick</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Measure the length <m>L</m> of your pendulum.</li>
+			<li>For various starting angles (5°, 15°, 30°, 45°, 60°), release from rest and time 10 complete oscillations.</li>
+			<li>Calculate the period: <m>T = \text{total time}/10</m></li>
+			<li>Compare experimental periods with your Euler's method simulations.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>How does the step size <m>h</m> affect the accuracy of Euler's method? Test with <m>h = 0.1, 0.01, 0.001</m>.</li>
+			<li>For the small-angle approximation (<m>\sin\theta \approx \theta</m>), the equation becomes <m>\frac{d^2\theta}{dt^2} + \frac{g}{L}\theta = 0</m>. Solve this analytically and compare with your numerical solution.</li>
+			<li>Energy should be conserved: <m>E = \frac{1}{2}mL^2\omega^2 + mgL(1-\cos\theta)</m>. Calculate <m>E</m> at each time step in your simulation. How well is energy conserved? Why might it drift?</li>
+			<li>What happens if you start the pendulum with <m>\theta_0 = \pi</m> (exactly upside down)? Is this a stable or unstable equilibrium?</li>
+			<li>For what initial angle does the period equal <m>1.1 T_0</m> (10% longer than the small-angle period)?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions</title>
+
+		<p>
+			Modify your code to explore:
+		</p>
+		<ul>
+			<li><term>Damping:</term> Add a term <m>-b\omega</m> to model air resistance. How does the amplitude decay?</li>
+			<li><term>Driving force:</term> Add <m>F_0\cos(\omega_d t)</m> to model a periodically driven pendulum. Can you observe resonance?</li>
+			<li><term>Chaotic pendulum:</term> For strong driving and damping, the pendulum can exhibit chaotic motion. Explore parameter ranges where chaos occurs.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Submit a comprehensive report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the pendulum differential equation from Newton's laws or energy principles.</li>
+			<li>Explanation of how the second-order equation is converted to a system of first-order equations.</li>
+			<li>Description of your Euler's method implementation (include code snippets or pseudocode).</li>
+			<li>Graphs of <m>\theta(t)</m> and <m>\omega(t)</m> for multiple amplitudes.</li>
+			<li>Period versus amplitude data and graph, with comparison to small-angle theory.</li>
+			<li>Phase space portraits showing closed orbits.</li>
+			<li>Energy conservation analysis throughout your simulations.</li>
+			<li>Discussion of numerical accuracy and how step size affects results.</li>
+			<li>If conducted, comparison with experimental pendulum data.</li>
+			<li>Exploration of at least one extension (damping, driving, or chaos).</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Euler's method, though simple, is a powerful tool for understanding differential equations that resist analytical solution. The nonlinear pendulum demonstrates why numerical methods are essential in applied mathematics—the real world often gives us equations we cannot solve exactly, yet we can still extract meaningful predictions through careful numerical approximation. This approach extends to weather prediction, rocket trajectories, circuit simulation, and countless other applications where exact solutions are unattainable.
+		</p>
+	</conclusion>
+
+</section>
