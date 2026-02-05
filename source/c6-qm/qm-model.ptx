@@ -1,0 +1,221 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="qm-modeling">
+	<title>Qualitative Modeling and Phase Line Analysis</title>
+
+	<introduction>
+		<p>
+			Sometimes we don't need an exact formula for a solution—understanding the qualitative behavior is enough. Qualitative methods allow us to analyze differential equations that may be difficult or impossible to solve analytically, yet still extract valuable information about long-term behavior, equilibria, and stability.
+		</p>
+
+		<p>
+			In this section, we'll model a predator-prey system and use phase line analysis to understand its dynamics without finding explicit solutions.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Harvesting a Fish Population</title>
+
+		<p>
+			A lake contains a fish population that grows logistically when left alone. However, commercial fishing removes fish at a constant rate. How does harvesting affect the long-term sustainability of the population?
+		</p>
+
+		<p>
+			This question can be answered using qualitative analysis without solving the differential equation explicitly.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>Without harvesting, the population follows the logistic model.</li>
+			<li>Fish are harvested at a constant rate <m>h</m> (fish per year) regardless of population size.</li>
+			<li>The carrying capacity <m>K</m> and growth rate <m>r</m> remain constant.</li>
+			<li>Environmental conditions are stable.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>P(t)</m> be the fish population at time <m>t</m>. The logistic growth with constant harvesting is:
+			<me>
+				\frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right) - h
+			</me>
+		</p>
+
+		<p>
+			This can be rewritten as:
+			<me>
+				\frac{dP}{dt} = -\frac{r}{K}P^2 + rP - h
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>r > 0</m>: intrinsic growth rate</li>
+			<li><m>K > 0</m>: carrying capacity</li>
+			<li><m>h \geq 0</m>: harvesting rate</li>
+		</ul>
+
+		<p>
+			<term>Equilibrium Solutions:</term> Set <m>\frac{dP}{dt} = 0</m> and solve:
+			<me>
+				rP\left(1 - \frac{P}{K}\right) = h
+			</me>
+		</p>
+
+		<p>
+			This gives a quadratic equation in <m>P</m>. The number and nature of equilibria depend on <m>h</m>:
+		</p>
+		<ul>
+			<li>If <m>h = 0</m>: equilibria at <m>P = 0</m> (unstable) and <m>P = K</m> (stable)</li>
+			<li>If <m>0 &lt; h &lt; \frac{rK}{4}</m>: two equilibria, one stable and one unstable</li>
+			<li>If <m>h = \frac{rK}{4}</m>: one equilibrium (semi-stable)</li>
+			<li>If <m>h > \frac{rK}{4}</m>: no equilibria (population crashes to zero)</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Qualitative Analysis Activity</title>
+
+		<p>
+			<term>Objective:</term> Use phase line diagrams to understand how harvesting affects population dynamics.
+		</p>
+
+		<p>
+			<term>Part 1: Phase Line Construction</term>
+		</p>
+
+		<p>
+			For each harvesting scenario below, construct a phase line diagram:
+		</p>
+		<ol>
+			<li>No harvesting: <m>h = 0</m>, <m>r = 0.5</m>, <m>K = 1000</m></li>
+			<li>Light harvesting: <m>h = 50</m>, <m>r = 0.5</m>, <m>K = 1000</m></li>
+			<li>Moderate harvesting: <m>h = 125</m>, <m>r = 0.5</m>, <m>K = 1000</m></li>
+			<li>Heavy harvesting: <m>h = 150</m>, <m>r = 0.5</m>, <m>K = 1000</m></li>
+		</ol>
+
+		<p>
+			For each:
+		</p>
+		<ul>
+			<li>Find equilibrium points (where <m>\frac{dP}{dt} = 0</m>)</li>
+			<li>Determine stability (check sign of <m>\frac{dP}{dt}</m> on either side)</li>
+			<li>Draw the phase line with arrows indicating direction of change</li>
+			<li>Sketch several solution curves <m>P(t)</m> for different initial conditions</li>
+		</ul>
+
+		<p>
+			<term>Part 2: Critical Harvesting Rate</term>
+		</p>
+
+		<p>
+			Calculate <m>h_{\text{max}} = \frac{rK}{4}</m> for your parameters. This is the <term>maximum sustainable yield</term>—the highest harvesting rate that maintains a stable population.
+		</p>
+
+		<p>
+			<term>Questions:</term>
+		</p>
+		<ol>
+			<li>What happens if <m>h > h_{\text{max}}</m>? Why is this outcome independent of initial population?</li>
+			<li>For <m>h &lt; h_{\text{max}}</m>, which equilibrium is stable? What does this mean for management?</li>
+			<li>Why is harvesting at exactly <m>h_{\text{max}}</m> risky even though an equilibrium exists?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Simulation Activity</title>
+
+		<p>
+			Use a computational tool (spreadsheet, Desmos, Python, MATLAB) to simulate the differential equation:
+		</p>
+
+		<p>
+			<term>Setup:</term>
+		</p>
+		<ol>
+			<li>Choose parameters: <m>r = 0.5</m>, <m>K = 1000</m></li>
+			<li>Test different harvesting rates: <m>h = 0, 50, 100, 125, 130</m></li>
+			<li>For each <m>h</m>, simulate with initial populations: <m>P_0 = 100, 500, 900</m></li>
+			<li>Plot <m>P(t)</m> for each case on the same axes (different colors)</li>
+		</ol>
+
+		<p>
+			<term>Analysis:</term>
+		</p>
+		<ol>
+			<li>Compare your simulations with your phase line predictions. Do they match?</li>
+			<li>For which <m>h</m> values does the population collapse regardless of <m>P_0</m>?</li>
+			<li>Identify the threshold where behavior changes qualitatively.</li>
+			<li>How long does it take the population to reach equilibrium (approximately) for different <m>h</m> values?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Derive the formula for <m>h_{\text{max}} = \frac{rK}{4}</m> by finding the maximum of <m>rP(1 - P/K)</m>.</li>
+			<li>At what population level does the maximum growth rate occur (without harvesting)? How does this relate to <m>h_{\text{max}}</m>?</li>
+			<li>If fishery managers want a safety margin, what harvesting rate should they choose (in terms of <m>h_{\text{max}}</m>)? Justify your answer.</li>
+			<li>How would climate change affecting <m>r</m> or <m>K</m> impact sustainable harvesting?</li>
+			<li>Modify the model for proportional harvesting: <m>\frac{dP}{dt} = rP(1-P/K) - eP</m> where <m>e</m> is the effort (fraction of population harvested). Analyze equilibria and stability.</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Real-World Context</title>
+
+		<p>
+			Research a historical example of overfishing (e.g., Atlantic cod collapse, California sardine fishery). Analyze:
+		</p>
+		<ul>
+			<li>What were the estimated parameters (<m>K</m>, <m>r</m>, harvesting rates)?</li>
+			<li>How does the historical data compare with model predictions?</li>
+			<li>What management strategies could have prevented collapse?</li>
+			<li>What are the limitations of this simple model?</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Submit a comprehensive report (3-4 pages) that includes:
+		</p>
+
+		<ol>
+			<li>Derivation of the harvesting model with clear explanation of assumptions.</li>
+			<li>Complete phase line analysis for all four harvesting scenarios with diagrams.</li>
+			<li>Simulation results with graphs comparing different harvesting rates and initial conditions.</li>
+			<li>Calculation and interpretation of maximum sustainable yield.</li>
+			<li>Answers to all analytical questions with detailed reasoning.</li>
+			<li>Case study analysis of a real fishery with application of the model.</li>
+			<li>Discussion of model limitations and potential improvements (e.g., age structure, multiple species, environmental variability).</li>
+			<li>Policy recommendations for sustainable harvesting based on your analysis.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Qualitative methods reveal essential features of differential equations without requiring explicit solutions. The harvested logistic model demonstrates how small changes in parameters can lead to dramatically different outcomes—a lesson crucial for resource management. Phase line analysis provides intuitive understanding of stability and long-term behavior, making it an invaluable tool for applied mathematics, ecology, economics, and engineering.
+		</p>
+	</conclusion>
+
+</section>

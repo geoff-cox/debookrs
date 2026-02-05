@@ -1,0 +1,209 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="if-modeling">
+	<title>Modeling with Integrating Factors</title>
+
+	<introduction>
+		<p>
+			The integrating factor method extends our ability to solve first-order linear differential equations beyond what separation of variables can handle. This technique is particularly useful when modeling systems where the rate of change depends linearly on the quantity itself plus an external forcing function.
+		</p>
+
+		<p>
+			In this section, we'll model a classic electrical circuit problem that naturally leads to a first-order linear differential equation.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: RC Circuit Charging</title>
+
+		<p>
+			Consider a simple electrical circuit consisting of a resistor (R) and a capacitor (C) connected to a voltage source <m>V_s(t)</m>. When the circuit is connected, current flows and the capacitor charges.
+		</p>
+
+		<p>
+			How does the voltage across the capacitor change over time?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The resistor has constant resistance <m>R</m> (ohms, <m>\Omega</m>).</li>
+			<li>The capacitor has constant capacitance <m>C</m> (farads, F).</li>
+			<li>The voltage source <m>V_s(t)</m> can vary with time.</li>
+			<li>The circuit operates at low frequencies where ideal component behavior holds.</li>
+			<li>There are no other circuit elements (e.g., inductors).</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>V_C(t)</m> be the voltage across the capacitor at time <m>t</m>. By Kirchhoff's voltage law, the sum of voltage drops around the circuit equals the source voltage:
+			<me>
+				V_s(t) = V_R + V_C
+			</me>
+		</p>
+
+		<p>
+			The voltage across the resistor is <m>V_R = IR</m> where <m>I</m> is the current. For a capacitor, <m>I = C\frac{dV_C}{dt}</m>. Substituting:
+			<me>
+				V_s(t) = RC\frac{dV_C}{dt} + V_C
+			</me>
+		</p>
+
+		<p>
+			Rearranging to standard form:
+			<me>
+				\frac{dV_C}{dt} + \frac{1}{RC}V_C = \frac{1}{RC}V_s(t)
+			</me>
+		</p>
+
+		<p>
+			This is a first-order linear differential equation with <m>p(t) = \frac{1}{RC}</m> and <m>q(t) = \frac{1}{RC}V_s(t)</m>.
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>R</m>: resistance (typically 1-1000 <m>k\Omega</m>)</li>
+			<li><m>C</m>: capacitance (typically 1-1000 <m>\mu F</m>)</li>
+			<li><m>\tau = RC</m>: time constant (seconds), characterizes how quickly the capacitor charges</li>
+			<li><m>V_s(t)</m>: source voltage (volts)</li>
+		</ul>
+
+		<p>
+			<term>Solution for Constant Voltage Source:</term>
+		</p>
+
+		<p>
+			For <m>V_s(t) = V_0</m> (constant), using integrating factor <m>\mu(t) = e^{t/(RC)}</m>:
+			<me>
+				V_C(t) = V_0\left(1 - e^{-t/(RC)}\right) + V_C(0)e^{-t/(RC)}
+			</me>
+		</p>
+
+		<p>
+			If <m>V_C(0) = 0</m> (capacitor initially uncharged):
+			<me>
+				V_C(t) = V_0\left(1 - e^{-t/\tau}\right)
+			</me>
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Lab Activity: RC Circuit Experiment</title>
+
+		<p>
+			<term>Objective:</term> Build an RC circuit, measure the charging behavior, and estimate the time constant.
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>Breadboard and wires</li>
+			<li>Resistors (e.g., 1 <m>k\Omega</m>, 10 <m>k\Omega</m>)</li>
+			<li>Capacitors (e.g., 100 <m>\mu F</m>, 470 <m>\mu F</m>)</li>
+			<li>DC power supply or battery (5-9V)</li>
+			<li>Multimeter or oscilloscope</li>
+			<li>Switch</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Build the circuit: Connect resistor and capacitor in series with the voltage source and switch.</li>
+			<li>Set the voltage source to a known value (e.g., <m>V_0 = 5V</m>).</li>
+			<li>Discharge the capacitor completely by shorting it briefly (carefully!).</li>
+			<li>Close the switch and immediately start timing.</li>
+			<li>Measure and record <m>V_C</m> every 5-10 seconds for 1-2 minutes (or until <m>V_C</m> approaches <m>V_0</m>).</li>
+			<li>Repeat with different combinations of <m>R</m> and <m>C</m>.</li>
+		</ol>
+
+		<p>
+			<term>Safety Note:</term> Use low voltages (5-12V). Discharge capacitors before handling.
+		</p>
+
+		<p>
+			<term>Data Analysis:</term>
+		</p>
+		<ol>
+			<li>Plot <m>V_C</m> versus time for each <m>R</m>-<m>C</m> combination.</li>
+			<li>For each trial, find the time when <m>V_C = 0.632 V_0</m> (this equals <m>\tau</m>). Compare to <m>\tau = RC</m>.</li>
+			<li>Transform the data: plot <m>\ln(V_0 - V_C)</m> versus <m>t</m>. This should be linear with slope <m>-1/\tau</m>.</li>
+			<li>Use the slope to estimate <m>\tau</m> and compare with the theoretical value.</li>
+			<li>How does changing <m>R</m> affect the charging time? How about changing <m>C</m>?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Verify that the solution <m>V_C(t) = V_0(1 - e^{-t/\tau})</m> satisfies the differential equation and initial condition <m>V_C(0) = 0</m>.</li>
+			<li>What percentage of the final voltage is reached after one time constant (<m>t = \tau</m>)? After <m>2\tau</m>? After <m>5\tau</m>?</li>
+			<li>If the voltage source suddenly switches off at time <m>t_1</m>, what differential equation governs the discharge? Solve it.</li>
+			<li>For a sinusoidal voltage source <m>V_s(t) = V_0\sin(\omega t)</m>, the differential equation becomes nonhomogeneous. What would you expect the steady-state solution to look like?</li>
+			<li>In what real-world applications would you want a large time constant? A small one?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions: Applications</title>
+
+		<p>
+			RC circuits appear in many applications:
+		</p>
+		<ul>
+			<li><term>Timing circuits:</term> Used in electronics to create delays (e.g., camera flashes, LED blinkers).</li>
+			<li><term>Filters:</term> Block or pass certain frequency components of signals.</li>
+			<li><term>Smoothing:</term> Convert pulsed DC to steady DC (power supplies).</li>
+			<li><term>Neural modeling:</term> The charging/discharging of neurons is often modeled with RC circuit equations.</li>
+		</ul>
+
+		<p>
+			Choose one application and research how the RC circuit model is used in practice.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a detailed report (3-4 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the RC circuit differential equation from Kirchhoff's laws.</li>
+			<li>Complete solution using the integrating factor method (show all steps).</li>
+			<li>Circuit diagrams and photos of your experimental setup.</li>
+			<li>Data tables and graphs for each <m>R</m>-<m>C</m> combination tested.</li>
+			<li>Analysis comparing experimental time constants with theoretical predictions.</li>
+			<li>Discussion of sources of error and model limitations.</li>
+			<li>Answers to all analytical questions.</li>
+			<li>A brief exploration of one real-world application of RC circuits with explanation of how the time constant affects performance.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			The integrating factor method is essential for solving first-order linear differential equations with variable coefficients or forcing functions. The RC circuit model demonstrates how this mathematical technique applies to real electrical systems. Understanding this model is crucial in electronics, signal processing, and even biological systems where similar charge-discharge dynamics occur. The time constant <m>\tau = RC</m> provides immediate insight into system behavior without fully solving the equation—a valuable engineering concept.
+		</p>
+	</conclusion>
+
+</section>

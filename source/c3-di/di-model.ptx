@@ -1,0 +1,198 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="di-modeling">
+	<title>Modeling with Direct Integration</title>
+
+	<introduction>
+		<p>
+			Direct integration is our first systematic method for solving differential equations. It applies when the rate of change depends only on the independent variable, not on the function itself. While this might seem restrictive, many important real-world phenomena can be modeled this way.
+		</p>
+
+		<p>
+			In this section, we'll model projectile motion, a classic problem where direct integration naturally applies.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Projectile Motion</title>
+
+		<p>
+			When you throw a ball into the air, its motion is governed by gravity. If we ignore air resistance, the acceleration is constant and equals <m>g = 9.8 \text{ m/s}^2</m> downward.
+		</p>
+
+		<p>
+			Can we predict the ball's height and velocity at any time, given its initial conditions?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>Air resistance is negligible.</li>
+			<li>Gravitational acceleration is constant: <m>g = 9.8 \text{ m/s}^2</m>.</li>
+			<li>The motion is vertical (one-dimensional).</li>
+			<li>Initial height is <m>h_0</m> and initial velocity is <m>v_0</m> (positive upward).</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>h(t)</m> represent the height at time <m>t</m>, and <m>v(t) = \frac{dh}{dt}</m> the velocity. The acceleration is:
+			<me>
+				a(t) = \frac{dv}{dt} = -g
+			</me>
+		</p>
+
+		<p>
+			This is a first-order differential equation for velocity. Since the right side depends only on time (in fact, it's constant), we can solve by direct integration:
+			<md>
+				<mrow> \int \frac{dv}{dt}\ dt \amp = \int -g\ dt </mrow>
+				<mrow> v(t) \amp = -gt + C_1 </mrow>
+			</md>
+		</p>
+
+		<p>
+			Using the initial condition <m>v(0) = v_0</m>:
+			<me>
+				v(t) = v_0 - gt
+			</me>
+		</p>
+
+		<p>
+			Now <m>v(t) = \frac{dh}{dt}</m>, so we have another first-order equation:
+			<me>
+				\frac{dh}{dt} = v_0 - gt
+			</me>
+		</p>
+
+		<p>
+			Integrating again:
+			<md>
+				<mrow> \int \frac{dh}{dt}\ dt \amp = \int (v_0 - gt)\ dt </mrow>
+				<mrow> h(t) \amp = v_0t - \frac{1}{2}gt^2 + C_2 </mrow>
+			</md>
+		</p>
+
+		<p>
+			Using <m>h(0) = h_0</m>:
+			<me>
+				h(t) = h_0 + v_0t - \frac{1}{2}gt^2
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>g = 9.8 \text{ m/s}^2</m>: gravitational acceleration</li>
+			<li><m>h_0</m>: initial height (m)</li>
+			<li><m>v_0</m>: initial velocity (m/s, positive upward)</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Data Collection Activity: Ball Toss</title>
+
+		<p>
+			<term>Objective:</term> Measure projectile motion and compare with the theoretical model.
+		</p>
+
+		<p>
+			<term>Materials:</term>
+		</p>
+		<ul>
+			<li>A ball (tennis ball, baseball, etc.)</li>
+			<li>Video recording device (smartphone camera works well)</li>
+			<li>Measuring tape or meter stick</li>
+			<li>Video analysis software or app (e.g., Tracker, PhyPhox, or manual frame-by-frame analysis)</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Set up a camera on a tripod to record vertical motion against a measured background (e.g., a wall with marked heights).</li>
+			<li>Toss the ball straight up and record the motion.</li>
+			<li>Using video analysis, track the ball's position at equal time intervals (e.g., every 0.1 seconds).</li>
+			<li>Create a data table: Time (s), Height (m), Velocity (m/s - estimated from consecutive positions).</li>
+			<li>Repeat 2-3 times for reliability.</li>
+		</ol>
+
+		<p>
+			<term>Analysis Questions:</term>
+		</p>
+		<ol>
+			<li>Plot height versus time. Does it follow a parabolic path?</li>
+			<li>Plot velocity versus time. Is it linear?</li>
+			<li>From your velocity plot, estimate the acceleration (slope of the line). How does it compare to <m>g = 9.8 \text{ m/s}^2</m>?</li>
+			<li>At what time does the ball reach its maximum height? What is the velocity at that instant?</li>
+			<li>Use your position data to estimate the initial height <m>h_0</m> and initial velocity <m>v_0</m>.</li>
+			<li>Using these values, plot the theoretical curve <m>h(t) = h_0 + v_0t - \frac{1}{2}gt^2</m> on the same graph as your data. How well do they match?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>If the ball is thrown with twice the initial velocity, how does this affect the maximum height reached? The time to reach maximum height?</li>
+			<li>Derive a formula for the maximum height in terms of <m>v_0</m> and <m>g</m>.</li>
+			<li>If the ball is thrown downward (negative <m>v_0</m>), how does the model change?</li>
+			<li>What happens to the solution if we include air resistance? Would direct integration still work?</li>
+			<li>Explain why this problem requires integrating <em>twice</em>. What does each integration represent physically?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions: Horizontal Projectile Motion</title>
+
+		<p>
+			For a ball thrown at an angle, we can decompose the motion into horizontal and vertical components:
+		</p>
+		<ul>
+			<li>Horizontal: <m>\frac{d^2x}{dt^2} = 0</m> (constant velocity)</li>
+			<li>Vertical: <m>\frac{d^2y}{dt^2} = -g</m></li>
+		</ul>
+
+		<p>
+			Both equations can be solved by direct integration!
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Write a report (2-3 pages) that includes:
+		</p>
+
+		<ol>
+			<li>Derivation of the position and velocity equations using direct integration.</li>
+			<li>Your experimental setup description with diagrams or photos.</li>
+			<li>Data tables and graphs comparing experimental data with theoretical predictions.</li>
+			<li>Analysis of how well the model fits reality, including discussion of any discrepancies.</li>
+			<li>Answers to the analytical questions.</li>
+			<li>A brief exploration of what happens when assumptions are violated (e.g., air resistance).</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			Direct integration is powerful for problems where acceleration (or any higher derivative) is a known function of time. Projectile motion is the quintessential example, and the model we developed has been used for centuries—from predicting cannon trajectories to landing spacecraft. The success of this simple model, despite ignoring many factors, demonstrates the value of well-chosen assumptions in mathematical modeling.
+		</p>
+	</conclusion>
+
+</section>

@@ -1,0 +1,250 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="lt-modeling">
+	<title>Modeling with Laplace Transforms</title>
+
+	<introduction>
+		<p>
+			The Laplace transform converts differential equations into algebraic equations, making them easier to solve, especially when dealing with piecewise or discontinuous forcing functions. This transform-based approach is fundamental in engineering, particularly in control systems and signal processing.
+		</p>
+
+		<p>
+			In this section, we'll use the Laplace transform to analyze a pharmaceutical delivery problem where drug concentration must be carefully controlled.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Drug Dosing and Pharmacokinetics</title>
+
+		<p>
+			When a drug is administered (orally or by injection), it enters the bloodstream, distributes through the body, and is gradually eliminated by metabolism and excretion. The concentration must remain within a therapeutic window—high enough to be effective but not so high as to be toxic.
+		</p>
+
+		<p>
+			How should we schedule doses to maintain safe and effective drug levels?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The drug distributes instantaneously and uniformly (one-compartment model).</li>
+			<li>Elimination follows first-order kinetics: rate proportional to concentration.</li>
+			<li>Drug is administered as instantaneous doses (impulses) or as infusions.</li>
+			<li>The body's volume of distribution is constant.</li>
+			<li>No drug-drug interactions or changing physiology.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>C(t)</m> be the drug concentration in blood (mg/L) at time <m>t</m> (hours). The rate of change is:
+			<me>
+				\frac{dC}{dt} = -kC + I(t)
+			</me>
+		</p>
+
+		<p>
+			where:
+		</p>
+		<ul>
+			<li><m>k > 0</m>: elimination rate constant (1/hour), related to half-life by <m>t_{1/2} = \ln(2)/k</m></li>
+			<li><m>I(t)</m>: input rate (mg/(L·hour)), representing drug administration</li>
+		</ul>
+
+		<p>
+			<term>Case 1: Single Bolus Dose</term>
+		</p>
+
+		<p>
+			For an instantaneous dose <m>D</m> mg at <m>t = 0</m>, distributed in volume <m>V</m> L:
+			<me>
+				I(t) = \frac{D}{V}\delta(t)
+			</me>
+			where <m>\delta(t)</m> is the Dirac delta function.
+		</p>
+
+		<p>
+			Taking the Laplace transform with <m>C(0) = 0</m>:
+			<md>
+				<mrow> sC(s) \amp = -kC(s) + \frac{D}{V} </mrow>
+				<mrow> C(s) \amp = \frac{D/V}{s + k} </mrow>
+			</md>
+		</p>
+
+		<p>
+			Inverse transform gives:
+			<me>
+				C(t) = \frac{D}{V}e^{-kt}
+			</me>
+		</p>
+
+		<p>
+			<term>Case 2: Repeated Doses</term>
+		</p>
+
+		<p>
+			Doses <m>D</m> given every <m>\tau</m> hours. After <m>n</m> doses, the concentration accumulates:
+			<me>
+				C(t) = \frac{D}{V}e^{-kt}\left(1 + e^{-k\tau} + e^{-2k\tau} + \cdots + e^{-(n-1)k\tau}\right)
+			</me>
+		</p>
+
+		<p>
+			At steady state (many doses), using geometric series:
+			<me>
+				C_{\text{max}} = \frac{D/V}{1 - e^{-k\tau}}, \quad C_{\text{min}} = C_{\text{max}}e^{-k\tau}
+			</me>
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Simulation Activity</title>
+
+		<p>
+			<term>Objective:</term> Determine optimal dosing regimen to maintain concentration in therapeutic range.
+		</p>
+
+		<p>
+			<term>Given Parameters:</term>
+		</p>
+		<ul>
+			<li>Drug: Amoxicillin (common antibiotic)</li>
+			<li>Elimination half-life: <m>t_{1/2} = 1</m> hour (so <m>k = \ln(2) \approx 0.693</m>/hour)</li>
+			<li>Volume of distribution: <m>V = 30</m> L</li>
+			<li>Therapeutic range: 5-20 mg/L</li>
+			<li>Available doses: 250 mg or 500 mg</li>
+		</ul>
+
+		<p>
+			<term>Tasks:</term>
+		</p>
+		<ol>
+			<li>Simulate a single 500 mg dose. Plot <m>C(t)</m> for 8 hours. How long does concentration stay in the therapeutic range?</li>
+			<li>Test dosing regimens:
+				<ul>
+					<li>250 mg every 4 hours</li>
+					<li>500 mg every 6 hours</li>
+					<li>500 mg every 8 hours</li>
+				</ul>
+			</li>
+			<li>For each regimen, plot <m>C(t)</m> showing at least 5 doses.</li>
+			<li>Calculate <m>C_{\text{max}}</m> and <m>C_{\text{min}}</m> at steady state for each regimen.</li>
+			<li>Which regimen keeps concentration in the therapeutic window?</li>
+		</ol>
+
+		<p>
+			<term>Advanced: Loading Dose</term>
+		</p>
+
+		<p>
+			To reach steady state immediately, use a loading dose <m>D_L</m> followed by maintenance doses <m>D_M</m>. Calculate:
+			<me>
+				D_L = D_M \cdot \frac{1}{1 - e^{-k\tau}}
+			</me>
+		</p>
+
+		<p>
+			Simulate this strategy and compare with regular dosing.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Laplace Transform Application</title>
+
+		<p>
+			<term>Problem:</term> Constant infusion <m>I(t) = I_0</m> starting at <m>t = 0</m>, with <m>C(0) = 0</m>.
+		</p>
+
+		<p>
+			<term>Solution using Laplace transform:</term>
+		</p>
+		<md>
+			<mrow> sC(s) \amp = -kC(s) + \frac{I_0}{s} </mrow>
+			<mrow> C(s) \amp = \frac{I_0}{s(s+k)} </mrow>
+			<mrow> \amp = \frac{I_0}{k}\left(\frac{1}{s} - \frac{1}{s+k}\right) \quad \text{(partial fractions)} </mrow>
+		</md>
+
+		<p>
+			Inverse transform:
+			<me>
+				C(t) = \frac{I_0}{k}(1 - e^{-kt})
+			</me>
+		</p>
+
+		<p>
+			Steady-state concentration: <m>C_{\infty} = I_0/k</m>.
+		</p>
+
+		<p>
+			<term>Exercise:</term> For therapeutic range 5-20 mg/L and <m>k = 0.693</m>/hour, what infusion rate <m>I_0</m> maintains <m>C = 12</m> mg/L at steady state?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Verify the solution <m>C(t) = \frac{D}{V}e^{-kt}</m> by substituting into the differential equation with impulse input.</li>
+			<li>Show that the time to reach 95% of steady-state concentration during infusion is approximately <m>3/k</m>.</li>
+			<li>Derive the formula for <m>C_{\text{max}}</m> at steady state for repeated doses.</li>
+			<li>How does increasing the dosing interval <m>\tau</m> affect the fluctuation between <m>C_{\text{max}}</m> and <m>C_{\text{min}}</m>?</li>
+			<li>For a drug with longer half-life (<m>t_{1/2} = 6</m> hours), how would the dosing schedule change?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Extensions and Applications</title>
+
+		<ul>
+			<li><term>Two-compartment model:</term> Central (blood) and peripheral (tissue) compartments with exchange between them.</li>
+			<li><term>Nonlinear kinetics:</term> Saturable elimination (Michaelis-Menten kinetics) for drugs like phenytoin.</li>
+			<li><term>Population pharmacokinetics:</term> Variability in parameters across patients.</li>
+			<li><term>Therapeutic drug monitoring:</term> Using measured concentrations to adjust dosing.</li>
+		</ul>
+
+		<p>
+			Research one of these topics and explain how it complicates the modeling.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a detailed report (3-4 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the pharmacokinetic model with clear explanation of assumptions.</li>
+			<li>Complete Laplace transform solutions for both impulse and infusion inputs.</li>
+			<li>Simulation results for multiple dosing regimens with graphs showing concentration versus time.</li>
+			<li>Analysis of which dosing regimen maintains therapeutic levels most effectively.</li>
+			<li>Calculation of loading and maintenance doses for immediate steady state.</li>
+			<li>Comparison of intermittent dosing versus continuous infusion.</li>
+			<li>Answers to all analytical questions.</li>
+			<li>Discussion of practical considerations (patient compliance, convenience, cost).</li>
+			<li>Brief exploration of one extension topic.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			The Laplace transform is particularly powerful for systems with discontinuous inputs, making it ideal for pharmacokinetics where drugs are administered as discrete doses. This mathematical framework enables rational drug dosing design, ensuring safety and efficacy. Understanding these models is crucial in pharmacy, medicine, and pharmaceutical research. The same techniques apply to chemical engineering (batch processes), environmental science (pollutant transport), and any system involving pulsed or interrupted inputs.
+		</p>
+	</conclusion>
+
+</section>

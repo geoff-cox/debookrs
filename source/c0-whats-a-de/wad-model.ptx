@@ -1,0 +1,167 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="wad-modeling">
+	<title>Modeling with Differential Equations</title>
+
+	<introduction>
+		<p>
+			Differential equations are more than just mathematical abstractions—they are the language we use to describe how things change in the real world. From population growth to cooling coffee, from falling objects to chemical reactions, differential equations provide a framework for understanding and predicting dynamic behavior.
+		</p>
+
+		<p>
+			In this section, we'll explore how to translate a real-world scenario into a differential equation. This process, called <term>mathematical modeling</term>, involves identifying variables, making assumptions, and using logic and physical principles to construct an equation that captures the essence of the problem.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Newton's Law of Cooling</title>
+
+		<p>
+			Imagine you've just poured yourself a hot cup of coffee at temperature <m>180^\circ F</m> and placed it on a table in a room where the temperature is <m>70^\circ F</m>. You know from experience that the coffee will cool down over time, but can we predict exactly how the temperature changes?
+		</p>
+
+		<p>
+			This scenario can be modeled using Newton's Law of Cooling, which states that the rate at which an object's temperature changes is proportional to the difference between its temperature and the ambient (room) temperature.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<p>
+			Before we can build our model, we need to make some simplifying assumptions:
+		</p>
+
+		<ul>
+			<li>The room temperature remains constant at <m>70^\circ F</m>.</li>
+			<li>The coffee is well-mixed, so its temperature is uniform throughout.</li>
+			<li>Heat loss occurs only through the exposed surface of the coffee.</li>
+			<li>The rate of cooling is proportional to the temperature difference between the coffee and the room.</li>
+			<li>External factors like wind or humidity are negligible.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let's define our variables:
+		</p>
+
+		<ul>
+			<li><m>T(t)</m>: the temperature of the coffee at time <m>t</m> (in minutes)</li>
+			<li><m>T_{\text{room}}</m>: the constant room temperature (<m>70^\circ F</m>)</li>
+			<li><m>k</m>: a positive constant representing the cooling rate</li>
+		</ul>
+
+		<p>
+			The rate of temperature change is the derivative <m>\frac{dT}{dt}</m>. According to Newton's Law of Cooling, this rate is proportional to the temperature difference:
+			<me>
+				\frac{dT}{dt} = -k(T - T_{\text{room}})
+			</me>
+		</p>
+
+		<p>
+			The negative sign indicates that temperature <em>decreases</em> when <m>T > T_{\text{room}}</m>. For our specific problem:
+			<me>
+				\frac{dT}{dt} = -k(T - 70)
+			</me>
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>k > 0</m>: The cooling constant, which depends on properties like the surface area of the coffee, the material of the cup, and air circulation. Larger <m>k</m> means faster cooling.</li>
+			<li><m>T_{\text{room}} = 70</m>: The ambient temperature in degrees Fahrenheit.</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Data Collection Activity</title>
+
+		<p>
+			<term>Objective:</term> Estimate the cooling constant <m>k</m> by collecting real temperature data.
+		</p>
+
+		<p>
+			<term>Materials Needed:</term>
+		</p>
+		<ul>
+			<li>A cup of hot water (or coffee)</li>
+			<li>A thermometer (digital or analog)</li>
+			<li>A timer or stopwatch</li>
+			<li>A room-temperature environment</li>
+		</ul>
+
+		<p>
+			<term>Procedure:</term>
+		</p>
+		<ol>
+			<li>Heat water to approximately <m>180^\circ F</m> and pour it into a cup.</li>
+			<li>Measure and record the room temperature.</li>
+			<li>Record the initial temperature of the water at <m>t = 0</m>.</li>
+			<li>Measure and record the water temperature every 2 minutes for 20 minutes.</li>
+			<li>Create a table with columns: Time (min), Temperature (°F), Temperature Difference <m>(T - T_{\text{room}})</m>.</li>
+		</ol>
+
+		<p>
+			<term>Analysis Questions:</term>
+		</p>
+		<ol>
+			<li>Plot the temperature <m>T</m> versus time <m>t</m>. What pattern do you observe?</li>
+			<li>Plot the temperature difference <m>(T - T_{\text{room}})</m> versus time. Does this appear exponential?</li>
+			<li>Based on your data, estimate the cooling constant <m>k</m>. (Hint: Use the fact that <m>T(t) - T_{\text{room}} = (T_0 - T_{\text{room}})e^{-kt}</m>, which we'll learn to derive in later chapters.)</li>
+			<li>How would the cooling rate change if you used a metal cup instead of a ceramic one?</li>
+			<li>What happens to the temperature as <m>t \to \infty</m>? Does this match your intuition?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<p>
+			Work through these questions to deepen your understanding:
+		</p>
+
+		<ol>
+			<li>If the room temperature were <m>80^\circ F</m> instead of <m>70^\circ F</m>, how would this affect the differential equation?</li>
+			<li>What if the coffee were initially at <m>60^\circ F</m> (colder than the room)? Would it warm up? How would the differential equation change?</li>
+			<li>Explain why the parameter <m>k</m> must be positive. What would happen if <m>k</m> were negative?</li>
+			<li>Suppose you have two cups of coffee, one at <m>180^\circ F</m> and one at <m>160^\circ F</m>. Which one cools faster initially? Why?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a brief report (1-2 pages) that includes:
+		</p>
+
+		<ol>
+			<li>A summary of the modeling process, including your assumptions and the derived differential equation.</li>
+			<li>Your experimental data presented in both table and graph form.</li>
+			<li>An estimate of the cooling constant <m>k</m> with an explanation of your estimation method.</li>
+			<li>A discussion of how well the model fits your data and any discrepancies you observed.</li>
+			<li>Suggestions for improving the model or the experiment.</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			This modeling exercise demonstrates how differential equations arise naturally from real-world phenomena. By identifying variables, making reasonable assumptions, and applying physical principles, we translated a everyday experience into a mathematical model. In future chapters, we'll learn techniques to solve this and other differential equations analytically.
+		</p>
+	</conclusion>
+
+</section>

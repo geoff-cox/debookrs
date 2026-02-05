@@ -1,0 +1,306 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="ltm-modeling">
+	<title>Solving Real-World Problems with the Laplace Transform Method</title>
+
+	<introduction>
+		<p>
+			The Laplace transform method is particularly effective for solving initial value problems with complex or piecewise forcing functions. By transforming the problem into the <m>s</m>-domain, we can handle discontinuities and impulses that would be difficult to manage in the time domain.
+		</p>
+
+		<p>
+			In this section, we'll model an impact absorption system—relevant to automotive safety, packaging design, and protective equipment.
+		</p>
+	</introduction>
+
+	<subsection>
+		<title>The Problem: Crash Test and Impact Absorption</title>
+
+		<p>
+			When a vehicle crashes into a barrier, the impact creates a sudden force. The vehicle's crumple zones and safety systems are designed to extend the duration of the impact, reducing the peak force and protecting occupants.
+		</p>
+
+		<p>
+			How can we model and optimize impact absorption systems using differential equations?
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Assumptions</title>
+
+		<ul>
+			<li>The vehicle's front can be modeled as a spring-damper system.</li>
+			<li>The crash force is approximated as a rectangular pulse or exponential decay.</li>
+			<li>Motion is one-dimensional (head-on collision).</li>
+			<li>The vehicle mass is concentrated at a point.</li>
+			<li>The barrier is rigid (fixed wall).</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Building the Model</title>
+
+		<p>
+			Let <m>x(t)</m> be the displacement of the vehicle's center of mass. The equation of motion is:
+			<me>
+				m\frac{d^2x}{dt^2} + c\frac{dx}{dt} + kx = F(t)
+			</me>
+		</p>
+
+		<p>
+			where <m>F(t)</m> represents the impact force.
+		</p>
+
+		<p>
+			<term>Scenario 1: Rectangular Pulse</term>
+		</p>
+
+		<p>
+			The impact force lasts for duration <m>T</m>:
+			<me>
+				F(t) = \begin{cases}
+					F_0 \amp 0 \leq t \leq T \\
+					0 \amp t > T
+				\end{cases}
+			</me>
+		</p>
+
+		<p>
+			Using the unit step function <m>u(t)</m>:
+			<me>
+				F(t) = F_0[u(t) - u(t-T)]
+			</me>
+		</p>
+
+		<p>
+			<term>Scenario 2: Impulse (Instantaneous Impact)</term>
+		</p>
+
+		<p>
+			For a very short impact (e.g., hammer blow):
+			<me>
+				F(t) = I\delta(t)
+			</me>
+			where <m>I</m> is the impulse (force × time) in N·s.
+		</p>
+
+		<p>
+			<term>Parameters:</term>
+		</p>
+		<ul>
+			<li><m>m = 1500</m> kg: vehicle mass</li>
+			<li><m>k</m>: effective stiffness of crumple zone (N/m)</li>
+			<li><m>c</m>: damping coefficient (N·s/m)</li>
+			<li><m>F_0</m>: peak impact force (N)</li>
+			<li><m>T</m>: impact duration (s)</li>
+		</ul>
+	</subsection>
+
+	<subsection>
+		<title>Solution Using Laplace Transforms</title>
+
+		<p>
+			<term>Example: Impulse Response</term>
+		</p>
+
+		<p>
+			For <m>F(t) = I\delta(t)</m> with <m>x(0) = 0</m>, <m>x'(0) = 0</m>:
+		</p>
+
+		<p>
+			Taking Laplace transform:
+			<me>
+				m[s^2X(s)] + c[sX(s)] + kX(s) = I
+			</me>
+		</p>
+
+		<p>
+			Solving for <m>X(s)</m>:
+			<me>
+				X(s) = \frac{I}{ms^2 + cs + k}
+			</me>
+		</p>
+
+		<p>
+			For underdamped case (<m>c^2 &lt; 4mk</m>), using partial fractions and inverse transform:
+			<me>
+				x(t) = \frac{I}{m\omega_d}e^{-\zeta\omega_0 t}\sin(\omega_d t)
+			</me>
+			where <m>\omega_d = \omega_0\sqrt{1-\zeta^2}</m>.
+		</p>
+
+		<p>
+			<term>Maximum Displacement:</term>
+		</p>
+
+		<p>
+			The peak displacement occurs at <m>t_{\text{max}} = \pi/\omega_d</m>:
+			<me>
+				x_{\text{max}} = \frac{I}{m\omega_d}e^{-\pi\zeta/\sqrt{1-\zeta^2}}
+			</me>
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Computational Activity</title>
+
+		<p>
+			<term>Objective:</term> Compare impact responses for different system designs.
+		</p>
+
+		<p>
+			<term>Base Parameters:</term>
+		</p>
+		<ul>
+			<li><m>m = 1500</m> kg</li>
+			<li><m>v_0 = 15</m> m/s (impact speed, ~54 km/h)</li>
+			<li><m>I = mv_0 = 22500</m> N·s (impulse)</li>
+		</ul>
+
+		<p>
+			<term>Test Three Designs:</term>
+		</p>
+		<ol>
+			<li><term>Stiff System:</term> <m>k = 500000</m> N/m, <m>c = 10000</m> N·s/m</li>
+			<li><term>Soft System:</term> <m>k = 100000</m> N/m, <m>c = 8000</m> N·s/m</li>
+			<li><term>Optimized System:</term> <m>k = 200000</m> N/m, <m>c = 15000</m> N·s/m</li>
+		</ol>
+
+		<p>
+			For each design:
+		</p>
+		<ol>
+			<li>Calculate <m>\omega_0</m>, <m>\zeta</m>, and <m>\omega_d</m></li>
+			<li>Use Laplace transform to find <m>x(t)</m> (or use the formula above)</li>
+			<li>Plot displacement and velocity for 0.5 seconds after impact</li>
+			<li>Calculate maximum displacement and maximum deceleration</li>
+			<li>Determine which design minimizes peak acceleration while keeping displacement reasonable</li>
+		</ol>
+
+		<p>
+			<term>Safety Criterion:</term> Peak deceleration should not exceed 50 <m>g</m> (490 m/s²).
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Piecewise Forcing Activity</title>
+
+		<p>
+			<term>Scenario:</term> A two-stage impact where the vehicle first crushes a soft bumper, then contacts a stiffer frame.
+		</p>
+
+		<p>
+			<term>Force Profile:</term>
+			<me>
+				F(t) = \begin{cases}
+					F_1 \amp 0 \leq t &lt; t_1 \\
+					F_2 \amp t_1 \leq t &lt; t_2 \\
+					0 \amp t \geq t_2
+				\end{cases}
+			</me>
+		</p>
+
+		<p>
+			Express using step functions:
+			<me>
+				F(t) = F_1[u(t) - u(t-t_1)] + F_2[u(t-t_1) - u(t-t_2)]
+			</me>
+		</p>
+
+		<p>
+			Take Laplace transform and solve for <m>X(s)</m>, then find <m>x(t)</m>.
+		</p>
+
+		<p>
+			<term>Tasks:</term>
+		</p>
+		<ol>
+			<li>Implement this two-stage model with <m>F_1 = 50000</m> N, <m>F_2 = 100000</m> N, <m>t_1 = 0.05</m> s, <m>t_2 = 0.1</m> s.</li>
+			<li>Compare with a constant force equal to the average: <m>F_{\text{avg}} = (F_1 + F_2)/2</m>.</li>
+			<li>Which profile results in lower peak acceleration?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Analytical Questions</title>
+
+		<ol>
+			<li>Verify the solution for impulse response by direct substitution into the differential equation (using properties of the delta function).</li>
+			<li>Show that for a step input <m>F(t) = F_0u(t)</m>, the steady-state displacement is <m>F_0/k</m>.</li>
+			<li>Derive the relationship between impact duration <m>T</m> and peak force <m>F_0</m> for a given impulse <m>I = F_0 T</m>.</li>
+			<li>How does increasing damping affect maximum displacement? Is there an optimal <m>\zeta</m>?</li>
+			<li>For a rigid barrier (infinite <m>k</m>), what happens to the solution? Does it make physical sense?</li>
+		</ol>
+	</subsection>
+
+	<subsection>
+		<title>Design Challenge</title>
+
+		<p>
+			Design a crash absorption system for a 1200 kg vehicle traveling at 60 km/h (16.7 m/s) such that:
+		</p>
+		<ul>
+			<li>Peak deceleration ≤ 40 <m>g</m></li>
+			<li>Maximum intrusion (displacement) ≤ 0.6 m</li>
+			<li>The system returns to near-equilibrium within 0.5 s</li>
+		</ul>
+
+		<p>
+			Determine appropriate values for <m>k</m> and <m>c</m>, and verify your design with simulations.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Real-World Context</title>
+
+		<p>
+			Research modern vehicle safety systems:
+		</p>
+		<ul>
+			<li>Crumple zones and energy absorption</li>
+			<li>Airbag deployment timing</li>
+			<li>Seatbelt pretensioners</li>
+			<li>Crash test standards (NCAP ratings)</li>
+		</ul>
+
+		<p>
+			Explain how engineers use mathematical models to optimize these systems.
+		</p>
+	</subsection>
+
+	<subsection>
+		<title>Final Report</title>
+
+		<p>
+			Prepare a comprehensive report (4-5 pages) including:
+		</p>
+
+		<ol>
+			<li>Derivation of the impact absorption model.</li>
+			<li>Complete Laplace transform solution for both impulse and rectangular pulse inputs.</li>
+			<li>Comparison of three design configurations with graphs and data tables.</li>
+			<li>Analysis of two-stage impact model.</li>
+			<li>Complete solution to the design challenge with justification of parameter choices.</li>
+			<li>Answers to all analytical questions.</li>
+			<li>Discussion of real vehicle safety systems and how they relate to the model.</li>
+			<li>Limitations of the model and suggestions for improvement (e.g., nonlinear springs, multi-body dynamics).</li>
+		</ol>
+	</subsection>
+
+	<conclusion>
+		<p>
+			The Laplace transform method excels at handling piecewise and impulsive forcing functions that arise in impact problems. This mathematical framework has been instrumental in automotive safety design, helping engineers create systems that protect lives. The same principles apply to packaging design, helmet design, earthquake protection for buildings, and any application where sudden forces must be managed. Understanding how spring stiffness, damping, and force profiles interact enables rational design decisions that balance competing objectives like maximum deceleration, intrusion distance, and cost.
+		</p>
+	</conclusion>
+
+</section>
