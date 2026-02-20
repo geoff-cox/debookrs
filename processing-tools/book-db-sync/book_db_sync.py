@@ -473,7 +473,15 @@ def main() -> None:
             print(f"Initialized database schema at {db_path}")
             return
 
-        chapters, sections = parse_main(main_path)
+        try:
+            chapters, sections = parse_main(main_path)
+        except FileNotFoundError:
+            print(f"Error: main PreTeXt file not found at '{main_path}'. "
+                  "Check the --source-root and --main arguments.")
+            raise SystemExit(1)
+        except ET.ParseError as exc:
+            print(f"Error: Failed to parse XML in main PreTeXt file '{main_path}': {exc}")
+            raise SystemExit(1)
         active_hrefs = {section["href"] for section in sections}
 
         upsert_chapters(conn, chapters)
