@@ -11,7 +11,7 @@ This tool provides a beginner-friendly database workflow for the PreTeXt book.
 ## Author-focused strategy
 
 1. Treat `source/main.ptx` as the canonical table-of-contents structure.
-2. Track each chapter include (`<xi:include href="..." />`) in a `sections` table.
+2. Track each section include (`<xi:include href="..." />`) in a `sections` table.
 3. Store the full text of each included `.ptx` file in the database.
 4. Keep sync fingerprints (`source_sha256`, `last_synced_sha256`) so two-way sync can detect conflicts.
 5. Resolve conflicts explicitly (`--prefer source` or `--prefer db`) when both sides changed.
