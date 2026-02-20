@@ -348,6 +348,7 @@ def sync_bidirectional(
                 )
                 pushed += 1
             else:
+                print(f"Conflict detected for {href}. Re-run with --prefer source or --prefer db.")
                 conflicts += 1
             continue
 
