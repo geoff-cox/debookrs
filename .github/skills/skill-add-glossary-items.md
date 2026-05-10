@@ -7,8 +7,8 @@
 - secTitle: Refers to the section name used in FILENAME.
 
 ## Stage 1: FILENAME Sweep
-- You will sweep the content [FILENAME] looking for important terms that is important to the topic and may be referenced later.
-- For each [TERM] found, generate a concise [TERM-DESCRIPTION] based on the surrounding prose.
+- You will sweep the content [FILENAME] looking for important terms that are important to the topic and may be referenced later.
+- For each [TERM] found, generate a concise [TERM-DESCRIPTION] based on the surrounding prose. Enhance terms with one or more simple mathematical examples or visual cues that link the term to its description.
 
 ## Stage 2: Glossary Population
 - For each [TERM] and [TERM-DESCRIPTION] pair, generate a glossary item using the format:
