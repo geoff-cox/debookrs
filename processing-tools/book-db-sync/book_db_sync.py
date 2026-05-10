@@ -256,7 +256,13 @@ def sync_bidirectional(
 
     for section in sections:
         href = section["href"]
-        source_content, source_mtime, source_hash = read_source_file(source_root, href)
+        try:
+            source_content, source_mtime, source_hash = read_source_file(source_root, href)
+        except (FileNotFoundError, OSError, UnicodeDecodeError) as e:
+            raise SystemExit(
+                f"Error reading source file for href '{href}' at '{source_root / href}': "
+                f"{e.__class__.__name__}: {e}"
+            )
         xml_id, title = parse_section_metadata(source_content)
 
         row = conn.execute(
