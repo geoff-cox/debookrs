@@ -10,7 +10,7 @@
 - You will sweep the content [FILENAME] looking for important terms that are important to the topic and may be referenced later.
 - For each [TERM] found, generate a concise [TERM-DESCRIPTION] based on the surrounding prose. 
 Enhance terms with one or more simple examples that link the term to its description. 
-Use a similar formatting to the glossary items currently in the glossary.
+- Use existing glossary items for the style and formatting of new glossary items.
 
 ## Stage 2: Glossary Population
 - For each [TERM] and [TERM-DESCRIPTION] pair, generate a glossary item using the format:
