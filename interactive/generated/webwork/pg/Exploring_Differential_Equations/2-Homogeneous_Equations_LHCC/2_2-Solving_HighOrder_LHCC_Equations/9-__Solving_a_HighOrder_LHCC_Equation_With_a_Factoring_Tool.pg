@@ -1,0 +1,98 @@
+#############################################
+###       Generated from PreTeXt source      
+###       on 2026-05-13T19:36:52-04:00       
+###   A recent stable commit (2022-07-01):   
+### 6c761d3dba23af92cba35001c852aac04ae99a5f 
+###                                          
+###         https://pretextbook.org          
+###                                          
+#############################################
+## DBsubject()
+## DBchapter()
+## DBsection()
+## Level()
+## KEYWORDS()
+## TitleText1()
+## EditionText1()
+## AuthorText1()
+## Section1(not reported)
+## Problem1(9)
+## Author()
+## Institution()
+## Language(en-US)
+
+DOCUMENT();
+
+############################################################
+# Load Macros
+############################################################
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "AnswerFormatHelp.pl",
+  "parserImplicitEquation.pl",
+  "contextForm.pl",
+  "PGcourse.pl",
+);
+COMMENT('Authored in PreTeXt');
+
+############################################################
+# Header
+############################################################
+TEXT(beginproblem());
+
+############################################################
+# PG Setup Code
+############################################################
+Context("ImplicitEquation");
+Context()->variables->{namePattern} = qr/[a-z][a-z0-9_]*'*/i;
+Context()->variables->add( t=>'Real', c1=>'Real', c2=>'Real', c3=>'Real');
+
+$roots = List("1, 2, 3");
+$genSoln = Formula("c1*e^(t) + c2*e^(2*t) + c3*e^(3*t)")->reduce();
+
+############################################################
+# Body
+############################################################
+
+BEGIN_PGML
+Characteristic Roots: [`r = `] [_]{$roots}{25}
+
+General Solution: [`y(t) = `] [_]{$genSoln}{25}
+
+_Use [|c1|]*, [|c2|]*, [|c3|]* as the arbitrary constants of integration._
+
+END_PGML
+
+############################################################
+# Solution
+############################################################
+
+BEGIN_PGML_SOLUTION
+First, write down the characteristic equation:
+
+[```
+\begin{gathered}
+ r^3 - 6r^2 + 11r - 6 = 0 \text{.}
+\end{gathered}
+```]
+
+Plugging this into the factoring tool shows that it factors as [` (r-3)(r-2)(r-1) \text{.}`] Solving for [`r\text{,}`] we get
+
+[```
+\begin{gathered}
+ r = 1, \quad r = 2, \quad r = 3 \text{.}
+\end{gathered}
+```]
+
+Therefore, the general solution is:
+
+[``` y = c_1 e^{x} + c_2 e^{2x} + c_3 e^{3x} \text{.}```]
+
+END_PGML_SOLUTION
+
+############################################################
+# End Problem
+############################################################
+
+ENDDOCUMENT();
