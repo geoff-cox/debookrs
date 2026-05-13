@@ -1,7 +1,10 @@
-# skill-add-glossary-items.md — Generate glossary items for a section
+# skill-add-glossary-items.md
+Generate glossary items for a section
 
 ## Notation
 - FILENAME = `./source/c*-*/sec-secTitle.ptx`
+
+Section file to be modified.
 
 ## Inputs you will receive
 - secTitle: Refers to the section name used in FILENAME.
