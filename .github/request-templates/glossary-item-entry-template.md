@@ -5,11 +5,7 @@ Open a PR that applies the skill inside
 to add glossary item entries to `source/aa-bookends/glossary.ptx`
 for the following sections in chapter X:
 
-* section1
-* section2
-* section3
-* section4
-* section5
+
 
 Notes:
 
