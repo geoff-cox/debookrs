@@ -129,83 +129,81 @@
 		</p>
 
 		<exercise label="equilibrium-solutions-chkpt-1">
-			<title><e component="emoji">📖❓</e>  Observing the Slope Field </title>
+			<title><e component="emoji">📖❓</e> Observing the Slope Field </title>
 			<statement>
 				<p>
 					Look at the slope field below. Which constant solutions do you see? In other words, what <m>y</m>-values have perfectly horizontal segments?
 				</p>
 				<sidebyside widths="50%" margin="25%" valign="middle">
-					<p>
-						<image>
-							<latex-image>
-								\begin{tikzpicture}[declare function={f(\x,\y) = (2-\y) * (1.5+\y);}, scale=0.6]
+					<image>
+						<latex-image>
+							\begin{tikzpicture}[declare function={f(\x,\y) = (2-\y) * (1.5+\y);}, scale=0.6]
 
-									\pgfkeys{/pgf/number format/.cd,
-										fixed,
-										precision=1
-									}
-									\def\tmin{-3.25} \def\tmax{3.25}
-									\def\ymin{-3.25} \def\ymax{3.25}
-									\def\tstep{0.25}  \def\ystep{0.25}
-									\def\arrowscale{0.2} % length of slope arrows
-									\def\segmentwt{0.6pt} % thickness of slope segments
+								\pgfkeys{/pgf/number format/.cd,
+									fixed,
+									precision=1
+								}
+								\def\tmin{-3.25} \def\tmax{3.25}
+								\def\ymin{-3.25} \def\ymax{3.25}
+								\def\tstep{0.25}  \def\ystep{0.25}
+								\def\arrowscale{0.2} % length of slope arrows
+								\def\segmentwt{0.6pt} % thickness of slope segments
 
-									% stepsize along t-axis and y-axis
-									\pgfmathsetmacro{\tL}{\tmin + \tstep}
-									\pgfmathsetmacro{\tR}{\tmax - \tstep}
-									\pgfmathsetmacro{\yL}{\ymin + \ystep}
-									\pgfmathsetmacro{\yR}{\ymax - \ystep}
-									\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
-									\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
+								% stepsize along t-axis and y-axis
+								\pgfmathsetmacro{\tL}{\tmin + \tstep}
+								\pgfmathsetmacro{\tR}{\tmax - \tstep}
+								\pgfmathsetmacro{\yL}{\ymin + \ystep}
+								\pgfmathsetmacro{\yR}{\ymax - \ystep}
+								\pgfmathsetmacro{\nt}{(\tR-\tL)/\tstep}
+								\pgfmathsetmacro{\ny}{(\yR-\yL)/\ystep}
 
-									% Axes
-									\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
-									\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
+								% Axes
+								\draw[-&gt;] (\tmin, 0) -- (\tmax+0.3, 0) node[xshift=-0.1cm, font=\tiny, below] {$t$};
+								\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.3) node[yshift=-0.1cm, font=\tiny, left] {$y$};
 
-									% Bounding box
-									\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+								% Bounding box
+								\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
 
-									% Tick marks and labels on t-axis
-									\pgfmathtruncatemacro{\tLint}{\tL}
-									\pgfmathtruncatemacro{\tRint}{\tR}
-									\foreach \t in {\tLint,...,\tRint} {
-										\pgfmathparse{\t &lt; 0}
-										\ifnum\pgfmathresult=1	 % shift negative ticks
-											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
-											node[font=\tiny, below, xshift=-0.01cm] {\t};
-										\else
-											\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
-											node[font=\tiny, below] {\t};
-										\fi
-									}
+								% Tick marks and labels on t-axis
+								\pgfmathtruncatemacro{\tLint}{\tL}
+								\pgfmathtruncatemacro{\tRint}{\tR}
+								\foreach \t in {\tLint,...,\tRint} {
+									\pgfmathparse{\t &lt; 0}
+									\ifnum\pgfmathresult=1	 % shift negative ticks
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below, xshift=-0.01cm] {\t};
+									\else
+										\draw (\t,\ymin-0.06) -- (\t,\ymin+0.06)
+										node[font=\tiny, below] {\t};
+									\fi
+								}
 
-									% Tick marks and labels on y-axis
-									\pgfmathtruncatemacro{\yLint}{\yL}
-									\pgfmathtruncatemacro{\yRint}{\yR}
-									\foreach \y in {\yLint,...,\yRint}
-										\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
-										node[font=\tiny, left] {\y};
+								% Tick marks and labels on y-axis
+								\pgfmathtruncatemacro{\yLint}{\yL}
+								\pgfmathtruncatemacro{\yRint}{\yR}
+								\foreach \y in {\yLint,...,\yRint}
+									\draw (\tmin-0.06,\y) -- (\tmin+0.1,\y)
+									node[font=\tiny, left] {\y};
 
-									% slope field: just draw a vector at each point
-									\foreach \i in {0,...,\nt}
-									\foreach \j in {0,...,\ny}{
+								% slope field: just draw a vector at each point
+								\foreach \i in {0,...,\nt}
+								\foreach \j in {0,...,\ny}{
 
-										\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
-										\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
-										\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+									\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+									\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+									\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
 
-										% Normalize direction vector (1, slope) to fixed length
-										\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
-										\pgfmathsetmacro{\dt}{\arrowscale / \len}
-										\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+									% Normalize direction vector (1, slope) to fixed length
+									\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+									\pgfmathsetmacro{\dt}{\arrowscale / \len}
+									\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
 
-										\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
-									}
+									\draw[teal!75, line width=\segmentwt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+								}
 
-								\end{tikzpicture}
-							</latex-image>
-						</image>
-					</p>
+							\end{tikzpicture}
+						</latex-image>
+					</image>
 				</sidebyside>
 			</statement>
 			<choices randomize="yes">
