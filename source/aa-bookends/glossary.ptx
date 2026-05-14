@@ -1018,6 +1018,123 @@
   </gi>
 
   <!-- ============================================================ -->
+  <!-- Step Functions & Piecewise Terms                             -->
+  <!-- ============================================================ -->
+
+  <gi xml:id="gi-unit-step-function">
+    <title>unit step function (Heaviside function)</title>
+    <p>
+      The basic ON-OFF switch that jumps from <m>0</m> to <m>1</m> at <m>t=0</m>:
+      <me>
+        u(t)=\begin{cases}
+          1, &amp; t\ge 0\\
+          0, &amp; t&lt;0
+        \end{cases}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-shifted-unit-step-function">
+    <title>shifted unit step function</title>
+    <p>
+      A <xref ref="gi-unit-step-function" text="title"/> that turns ON at <m>t=c</m> instead of at <m>t=0</m>:
+      <me>
+        u_c(t)=u(t-c)=\begin{cases}
+          1, &amp; t\ge c\\
+          0, &amp; t&lt;c
+        \end{cases}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-reversed-unit-step-function">
+    <title>reversed unit step function</title>
+    <p>
+      A step switch that is ON before <m>t=c</m> and OFF afterward:
+      <me>
+        1-u_c(t)=\begin{cases}
+          1, &amp; t&lt;c\\
+          0, &amp; t\ge c
+        \end{cases}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-windowed-unit-step-function">
+    <title>windowed unit step function</title>
+    <p>
+      A switch that is ON only on a finite interval, built from two <xref ref="gi-shifted-unit-step-function" text="custom">shifted unit step functions</xref>:
+      <me>
+        u_c(t)-u_d(t)=\begin{cases}
+          1, &amp; c\le t&lt;d\\
+          0, &amp; \text{otherwise}
+        \end{cases}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-piecewise-function">
+    <title>piecewise function</title>
+    <p>
+      A function defined by different formulas on different parts of its domain. For example,
+      <me>
+        g(t)=\begin{cases}
+          \sin t, &amp; t&lt;0\\
+          2e^{-t}, &amp; 0\le t&lt;2\\
+          1.5, &amp; t\ge 2
+        \end{cases}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-unit-step-form">
+    <title>unit step form</title>
+    <p>
+      A way to rewrite a <xref ref="gi-piecewise-function" text="title"/> as a single expression using step-function switches, such as
+      <me>
+        g(t)=2t\bigl(u_0(t)-u_1(t)\bigr)+3\bigl(u_1(t)-u_4(t)\bigr)
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-piecewise-forcing-term">
+    <title>piecewise forcing term</title>
+    <p>
+      A <xref ref="gi-forcing-term-function" text="title"/> whose formula changes across intervals of time. It is typically rewritten in <xref ref="gi-unit-step-form" text="title"/> before applying the <xref ref="gi-laplace-transform" text="title"/>.
+    </p>
+  </gi>
+
+  <gi xml:id="gi-laplace-step-rule-uc">
+    <title>Laplace step rule for <m>u_c(t)</m></title>
+    <p>
+      The <xref ref="gi-laplace-transform" text="title"/> of a shifted unit step function:
+      <me>
+        \lap{u_c(t)}=\frac{e^{-cs}}{s},\qquad s&gt;0
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-laplace-step-rule-ft-uc">
+    <title>Laplace step rule for <m>f(t)u_c(t)</m></title>
+    <p>
+      A rule for transforming a function that turns ON at <m>t=c</m>:
+      <me>
+        \lap{f(t)u_c(t)}=e^{-cs}\lap{f(t+c)}
+      </me>
+    </p>
+  </gi>
+
+  <gi xml:id="gi-laplace-step-rule-ftc-uc">
+    <title>Laplace step rule for <m>f(t-c)u_c(t)</m></title>
+    <p>
+      A rule for transforming a shifted function that starts at <m>t=c</m>:
+      <me>
+        \lap{f(t-c)u_c(t)}=e^{-cs}F(s),\qquad F(s)=\lap{f(t)}
+      </me>
+    </p>
+  </gi>
+
+  <!-- ============================================================ -->
   <!-- Laplace Transform Terms                                      -->
   <!-- ============================================================ -->
 
