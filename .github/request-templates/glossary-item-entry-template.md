@@ -3,7 +3,7 @@
 Open a PR that applies the skill inside 
 `.github/skills/skill-add-glossary-items.md` 
 to add glossary item entries to `source/aa-bookends/glossary.ptx`
-for the following sections in chapter X:
+for the following sections:
 
 
 
