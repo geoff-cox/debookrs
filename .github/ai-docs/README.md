@@ -37,10 +37,12 @@ This split avoids a single overloaded instruction file while keeping related gui
 │   │   └── project-docs.md
 │   ├── skills/
 │   │   ├── glossary-items.md
+│   │   ├── glossary-xrefs.md
 │   │   └── index-tags.md
 │   └── prompts/
 │       ├── section-list.md
 │       ├── add-glossary-items.md
+│       ├── add-glossary-xrefs.md
 │       └── add-index-tags.md
 └── workflows/
     └── ...
@@ -57,7 +59,22 @@ This split avoids a single overloaded instruction file while keeping related gui
 - Working on JSXGraph, Runestone, Parsons, or slideshows: `tasks/interactives-runestone.md`.
 - Drafting READMEs, reports, talks, tutorials, or licensing text: `tasks/project-docs.md`.
 - Adding glossary entries: `skills/glossary-items.md`.
+- Linking section uses to glossary entries: `skills/glossary-xrefs.md`.
 - Adding index entries: `skills/index-tags.md`.
+
+## Common workflows
+
+### Adding glossary entries
+
+Use `skills/glossary-items.md` with `prompts/add-glossary-items.md` when sweeping section files for important terms and adding new entries to `source/aa-bookends/glossary.ptx`.
+
+### Adding glossary cross-references
+
+Use `skills/glossary-xrefs.md` with `prompts/add-glossary-xrefs.md` after glossary entries already exist. This workflow sweeps specified section files and adds `<xref>` tags at useful narrative points where glossary terms are used. It should verify every `ref` target, avoid over-linking, and skip unsafe contexts such as titles, displayed equations, generated interactive blocks, exercises, and solutions unless explicitly requested.
+
+### Adding index entries
+
+Use `skills/index-tags.md` with `prompts/add-index-tags.md` when sweeping section files for concepts that should appear in the textbook index.
 
 ## Output expectations
 
