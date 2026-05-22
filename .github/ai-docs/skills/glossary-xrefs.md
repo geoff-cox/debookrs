@@ -19,7 +19,7 @@ Add glossary cross-references at useful narrative points without cluttering the 
 Use the project’s existing convention if nearby files already show one. If there is no clear local convention, use an inline `<xref>` that preserves the visible term:
 
 ```xml
-<xref ref="gi-term-slug">visible term</xref>
+<xref ref="gi-term-slug" text="custom">visible term</xref>
 ```
 
 Use the exact `xml:id` from the matching glossary entry as the `ref` value.
