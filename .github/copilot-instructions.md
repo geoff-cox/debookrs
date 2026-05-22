@@ -42,7 +42,7 @@ python -m pretext build -t dev
 python -m pretext build -t pdf
 ```
 
-Some builds can fail in restricted-network environments because of external services such as WebWork. When this happens, diagnose the configuration instead of rewriting unrelated source.
+Some builds can fail in restricted-network environments because of external services such as WeBWorK. When this happens, diagnose the configuration instead of rewriting unrelated source.
 
 ## Task guidance
 
