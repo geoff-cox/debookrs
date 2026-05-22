@@ -1,59 +1,51 @@
-# Copilot Instructions — Exploring Differential Equations (PreTeXt)
+# Copilot Instructions — Exploring Differential Equations
 
-## Repo summary
-- Repository for “Exploring Differential Equations,” an open-access PreTeXt XML textbook (student-centered intro to differential equations).
-- Core content is modular PreTeXt XML in `source/`.
-- Builds and outputs are controlled by `project.ptx` and `publication/*.ptx`.
-- Supporting scripts live in `processing-tools/` (TTS audits, post-processing, LaTeX→PreTeXt helpers).
+This repository contains *Exploring Differential Equations*, an open-access, student-centered differential equations textbook written in PreTeXt and published through PreTeXt/Runestone workflows.
 
-## High-level info
-- Type: PreTeXt XML textbook project.
-- Languages: PreTeXt XML (`.ptx`), Python, JavaScript, CSS/SCSS, Markdown.
-- Tooling/runtime: PreTeXt CLI (Python). PreTeXt may invoke npm for theme/CSS builds. Optional LaTeX for PDF.
+## Repository map
 
-## Layout / architecture (where to look)
-- `project.ptx`: PreTeXt project manifest (targets like `web`, `dev`, `pdf`, `runestone`).
-- `source/`: main PreTeXt sources (`main.ptx`, `main-dev.ptx`, chapter folders).
-  - Sections: `source/{chapterID}-{chapterTitle}/sec-{sectionTitle}.ptx`
-  - Exercises: `source/{chapterID}-{chapterTitle}/exercises-{sectionTitle}.ptx`
-- `publication/`: publication configs (`publication.ptx` for web/dev/pdf, `runestone.ptx` for Runestone).
-- `assets/`: custom styles, JS interactives, data.
-- `processing-tools/`: TTS audits and conversion utilities.
+- `project.ptx` — PreTeXt project manifest and build targets.
+- `source/` — modular textbook source. Most authoring work happens here.
+- `publication/` — publication and Runestone configuration.
+- `assets/` — custom JavaScript, CSS/SCSS, images, data, and interactive assets.
+- `processing-tools/` — scripts for TTS, audits, conversion, refactoring, and post-processing.
+- `.github/instructions/` — path-specific Copilot instructions.
+- `.github/ai-docs/` — task guides, skills, and prompt templates for human-initiated AI work.
 
-## Root file list (major)
-- `README.md`
-- `project.ptx`
-- `requirements.txt`
-- `common-regex-commands.md`
-- `assets/`
-- `processing-tools/`
-- `publication/`
-- `source/`
+## Default behavior
 
-## Editing guardrails (agent safety)
-- Preserve PreTeXt structure and identifiers: do not change `xml:id`, `label`, `ref`, target names, or publication parameters unless explicitly requested.
-- Do not pretty-print/reflow XML wholesale.
-- Avoid modifying generated output dirs (e.g., `web/`, `print/`) unless the task explicitly targets them.
+- Preserve PreTeXt structure, IDs, labels, references, and build configuration unless a task explicitly requests changes.
+- Do not wholesale reformat XML. Make minimal, local, reviewable edits.
+- Prefer complete replacement snippets or small patch plans over vague advice.
+- When editing prose, write for college sophomores in an introductory differential equations course.
+- Keep the voice clear, student-facing, and conversational without becoming chatty.
+- Check mathematical claims carefully; flag assumptions when a statement is only conditionally true.
 
-## Build / run (expected commands)
-- Install deps:
-  - `python -m pip install -r requirements.txt`
-- Check PreTeXt:
-  - `python -m pretext --version`
-- Build targets (common):
-  - Web: `python -m pretext build -t web`
-  - Dev: `python -m pretext build -t dev`
-  - PDF: `python -m pretext build -t pdf`
+## PreTeXt conventions
 
-## Known environment-dependent issues
-- Web builds may fail in offline or restricted-network environments if external services are required (e.g., WebWork server URL resolution).
-  - If this occurs, inspect `publication/publication.ptx` for WebWork-related configuration.
-  - To locate the setting quickly: search `publication/` for the WebWork host string.
+- Inline math uses `<m>...</m>`.
+- Display math uses `<me>...</me>`.
+- Multi-line aligned derivations use `<md>` with one `<mrow>` per line.
+- In `<md>`, use `\amp =` rather than `&=`.
+- Keep `<term>` for important first-use terminology and use `<em>` sparingly.
+- Avoid editing generated output directories unless the task explicitly targets them.
 
-## Key snippet (project.ptx targets)
-(Keep this excerpt up to date if targets change.)
+## Build and validation
 
-## Guidance (how to proceed on tasks)
-- Trust this file for repo navigation and build entry points.
-- When editing content, follow local conventions in nearby `.ptx` files (terminology, tagging patterns, exercise formats).
-- If something is unclear, search the repo for similar patterns (same chapter/section type) before inventing a new structure.
+Common commands:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pretext --version
+python -m pretext build -t web
+python -m pretext build -t dev
+python -m pretext build -t pdf
+```
+
+Some builds can fail in restricted-network environments because of external services such as WeBWorK. When this happens, diagnose the configuration instead of rewriting unrelated source.
+
+## Task guidance
+
+Use the task guides in `.github/ai-docs/tasks/` for section writing, review sections, questions and assessment, TTS narration, tooling, interactives, and project documentation. Use `.github/ai-docs/skills/` for focused repeatable skills such as glossary and index work. Use `.github/ai-docs/prompts/` for reusable request templates.
+
+The path-specific files in `.github/instructions/` are intentionally short. Do not duplicate large task guides there; keep automatic Copilot context compact and use the task guides only when relevant.
