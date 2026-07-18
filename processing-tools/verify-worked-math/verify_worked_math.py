@@ -35,11 +35,13 @@ from sympy import (
     diff,
     exp,
     laplace_transform,
+    log,
     simplify,
     sin,
     solveset,
     sqrt,
     symbols,
+    tan,
 )
 
 x, t, s, y, b, c = symbols("x t s y b c")
@@ -315,6 +317,73 @@ for _name, _lhs, _rhs in _PFD:
             (lambda L=_lhs, Rr=_rhs: is_zero(L - Rr)),
         )
     )
+
+
+# ----------------------------------------------------------------------
+# H8 answer backfill (chapters 3, 4, 13)
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c3 rewrite-and-solve: y=(c-1/x)sec x satisfies [y cos x]'=1/x^2",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff((c - 1 / x) / cos(x) * cos(x), x) - 1 / x**2),
+    ),
+    Check(
+        "c3 rewrite-and-solve: y=1/(2x^3)+c/x^5 satisfies [y x^5]'=x",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff((1 / (2 * x**3) + c / x**5) * x**5, x) - x),
+    ),
+    Check(
+        "c3 rewrite-and-solve: y=(x/2)e^(2x)+cx satisfies [y/x]'=e^(2x)",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(((x / 2) * exp(2 * x) + c * x) / x, x) - exp(2 * x)),
+    ),
+    Check(
+        "c4 Level 1: y=Ce^(x^3/3) solves y'=x^2 y",
+        "source/c4-sov/exercises-sov.ptx",
+        lambda: (lambda Y: is_zero(diff(Y, x) - x**2 * Y))(c * exp(x**3 / 3)),
+    ),
+    Check(
+        "c4 Level 1: y=-ln(C-e^x) solves y'=e^(x+y)",
+        "source/c4-sov/exercises-sov.ptx",
+        lambda: (lambda Y: is_zero(diff(Y, x) - exp(x + Y)))(-log(c - exp(x))),
+    ),
+    Check(
+        "c4 Level 1: y=2-Ce^(-x) solves y'=2-y",
+        "source/c4-sov/exercises-sov.ptx",
+        lambda: (lambda Y: is_zero(diff(Y, x) - (2 - Y)))(2 - c * exp(-x)),
+    ),
+    Check(
+        "c4 Level 1: y=-1/(tan x + c) solves y'=y^2 sec^2 x",
+        "source/c4-sov/exercises-sov.ptx",
+        lambda: (lambda Y: is_zero(diff(Y, x) - Y**2 / cos(x) ** 2))(
+            -1 / (tan(x) + c)
+        ),
+    ),
+    Check(
+        "c13 sugar tank: S=120-118e^(-t/40) solves S'=3-S/40, S(0)=2",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda S: is_zero(diff(S, t) - (3 - S / 40)) and S.subs(t, 0) == 2
+        )(120 - 118 * exp(-t / 40)),
+    ),
+    Check(
+        "c13 brine tank: S=0.2(100+t)-2e7/(100+t)^3 solves S'=0.8-3S/(100+t), S(0)=0",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda S: is_zero(diff(S, t) - (R(4, 5) - 3 * S / (100 + t)))
+            and S.subs(t, 0) == 0
+        )(R(1, 5) * (100 + t) - 2 * 10**7 / (100 + t) ** 3),
+    ),
+    Check(
+        "c13 Euler: y'=3z, z'=y+z^2 from (2,3,-4), h=0.1, 2 steps -> (1.17, -1.479)",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: euler_system(
+            [lambda tk, yk, zk: 3 * zk, lambda tk, yk, zk: yk + zk**2],
+            2, [R(3), R(-4)], R(1, 10), 2,
+        ) == [R(117, 100), R(-1479, 1000)],
+    ),
+]
 
 
 def main() -> int:

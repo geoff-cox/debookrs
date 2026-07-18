@@ -660,11 +660,35 @@
 					</ol>
 				</p>
 			</statement>
+			<solution>
+				<p>
+					(a) Let <m>S(t)</m> be the mass of sugar (kg) in the tank. The volume stays at 400 L since inflow and outflow rates match. Then
+					<md>
+						<mrow> \frac{dS}{dt} \amp = \underbrace{(0.3)(10)}_{\text{rate in}} - \underbrace{\frac{S}{400}(10)}_{\text{rate out}} = 3 - \frac{S}{40} </mrow>
+					</md>
+					with <m>S(0) = 2</m>. This first-order linear (and separable) equation has equilibrium <m>S = 120</m>, so
+					<me>
+						S(t) = 120 - 118e^{-t/40}.
+					</me>
+					(Check: <m>S(0) = 120 - 118 = 2</m> ✓.)
+				</p>
+				<p>
+					(b) <m>S(10) = 120 - 118e^{-1/4} \approx 28.10</m> kg, so the concentration is <m>\dfrac{S(10)}{400} \approx 0.070</m> kg/L.
+				</p>
+				<p>
+					(c) As <m>t \to \infty</m>, <m>S \to 120</m> kg, so the concentration approaches <m>\dfrac{120}{400} = 0.3</m> kg/L — exactly the concentration of the incoming mixture. This makes sense: after a long time the original contents have essentially washed out, and the tank matches what is being pumped in.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					(a) <m>S(t) = 120 - 118e^{-t/40}</m> kg; (b) <m>\approx 0.070</m> kg/L; (c) <m>0.3</m> kg/L, the inflow concentration.
+				</p>
+			</answer>
 		</exercise>
 
 		<exercise>
 			<statement>
-				A brine solution of salt flows at a constant rate of 4 L/min into a large tank that initially is pure water.  The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L/min. Suppose the concentration of salt in the brine entering the tank is <m>0.2</m> kg/L. Then
+				A brine solution of salt flows at a constant rate of 4 L/min into a large tank that initially holds 100 L of pure water.  The solution inside the tank is kept well-stirred and flows out of the tank at a rate of 3 L/min. Suppose the concentration of salt in the brine entering the tank is <m>0.2</m> kg/L. Then
 				<p>
 				<ol marker="(a)">
 					<li>Determine the mass of the salt in the tank after <m>t </m> minutes.</li>
@@ -674,12 +698,36 @@
 			</statement>
 			<solution>
 				<p>
-					
+					(a) Let <m>S(t)</m> be the mass of salt (kg). The volume is <em>not</em> constant here: 4 L/min enters but only 3 L/min leaves, so <m>V(t) = 100 + t</m>. Then
+					<md>
+						<mrow> \frac{dS}{dt} \amp = \underbrace{(0.2)(4)}_{\text{rate in}} - \underbrace{\frac{S}{100+t}(3)}_{\text{rate out}} = 0.8 - \frac{3S}{100+t} </mrow>
+					</md>
+					with <m>S(0) = 0</m>. In standard form, <m>S' + \frac{3}{100+t}S = 0.8</m>, with integrating factor
+					<me>
+						\mu(t) = e^{\int \frac{3}{100+t}\,dt} = (100+t)^3.
+					</me>
+					Then
+					<md>
+						<mrow> \left[(100+t)^3 S\right]' \amp = 0.8(100+t)^3 </mrow>
+						<mrow> (100+t)^3 S \amp = 0.2(100+t)^4 + c </mrow>
+						<mrow> S(t) \amp = 0.2(100+t) + \frac{c}{(100+t)^3} </mrow>
+					</md>
+					and <m>S(0) = 0</m> gives <m>c = -0.2(100)^4 = -2\times 10^7</m>. Hence
+					<me>
+						S(t) = 0.2(100+t) - \frac{2\times 10^7}{(100+t)^3}.
+					</me>
+				</p>
+				<p>
+					(b) After one hour, <m>t = 60</m> and <m>V = 160</m> L:
+					<me>
+						S(60) = 0.2(160) - \frac{2\times 10^7}{160^3} \approx 32 - 4.88 = 27.12 \text{ kg}
+					</me>
+					so the concentration is <m>\dfrac{S(60)}{160} \approx 0.17</m> kg/L.
 				</p>
 			</solution>
 			<answer>
 				<p>
-					
+					(a) <m>\ds S(t) = 0.2(100+t) - \frac{2\times 10^7}{(100+t)^3}</m> kg; (b) <m>\approx 0.17</m> kg/L.
 				</p>
 			</answer>
 		</exercise>
@@ -832,7 +880,7 @@
 					<li>
 						Rewrite the system of differential equations in matrix form by using the vector
 						<m>\vec{X} = \begin{bmatrix} x\\y \end{bmatrix}.</m>
-						Notice that for this system, the right hand side should be of the for <m>A\vec{X} + \vec{B}.</m>
+						Notice that for this system, the right hand side should be of the form <m>A\vec{X} + \vec{B}.</m>
 					</li>
 					<li>
 						Write the initial conditions as a vector as well. That is, complete the following.
@@ -841,6 +889,31 @@
 				</ol>
 				</p>
 			</statement>
+			<solution>
+				<p>
+					(a) Since <m>x</m> and <m>y</m> are defense expenditures over time, natural units are currency per year (say, billions of dollars per year), with <m>t</m> in years.
+				</p>
+				<p>
+					(b) The positive coefficient on <m>y</m> means country X <em>increases</em> its spending in response to country Y's spending — an escalation driven by distrust, which is the essence of an arms race. A negative coefficient would model a country that responds to a rival's buildup by <em>reducing</em> its own spending (appeasement or forced disarmament) — possible, but it describes a different political situation.
+				</p>
+				<p>
+					(c) The negative coefficient on <m>y</m> in its own equation is self-restraint: the larger Y's current budget, the harder it is to grow it further (economic burden). A positive coefficient would mean Y's spending feeds on itself, growing without any brake — a runaway model that is harder to justify.
+				</p>
+				<p>
+					(d) The constants shift each country's baseline spending. If X trusts Y, then <m>a \lt 0</m> (X reduces spending independent of Y's behavior); if Y distrusts X, then <m>b \gt 0</m>.
+				</p>
+				<p>
+					(e) <m>\ds \frac{d\vec{X}}{dt} = \begin{bmatrix} -1 \amp 2 \\ 4 \amp -3 \end{bmatrix}\vec{X} + \begin{bmatrix} a \\ b \end{bmatrix}</m>
+				</p>
+				<p>
+					(f) <m>\ds \vec{X}(0) = \begin{bmatrix} 1 \\ 4 \end{bmatrix}</m>
+				</p>
+			</solution>
+			<answer>
+				<p>
+					(e) <m>\ds \frac{d\vec{X}}{dt} = \begin{bmatrix} -1 \amp 2 \\ 4 \amp -3 \end{bmatrix}\vec{X} + \begin{bmatrix} a \\ b \end{bmatrix}</m>; (f) <m>\ds \vec{X}(0) = \begin{bmatrix} 1 \\ 4 \end{bmatrix}</m>
+				</p>
+			</answer>
 		</exercise>
 
 		<exercisegroup>
@@ -853,12 +926,12 @@
 							<caption></caption>
 							<image width="50%" source="./figures/concentration.png"/>
 						</figure>
-						A model for the concentration <m>x(t)</m> and <m>y(t)</m> of the nutrient in compartments A and B, respectively, at time <m>t</m> is given by the linear system of differential equations:
+						A model for the amounts <m>x(t)</m> and <m>y(t)</m> of the nutrient in compartments A and B, respectively, at time <m>t</m> is given by the linear system of differential equations:
 						<md>
-							<mrow>\frac{dx}{dt}	=\amp \frac{\kappa}{V_A}(y-x), </mrow>
-							<mrow>\frac{dy}{dt}	=\amp \frac{\kappa}{V_B}(x-y). </mrow>
+							<mrow>\frac{dx}{dt}	=\amp \kappa\left(\frac{y}{V_B}-\frac{x}{V_A}\right), </mrow>
+							<mrow>\frac{dy}{dt}	=\amp \kappa\left(\frac{x}{V_A}-\frac{y}{V_B}\right). </mrow>
 						</md>
-						where <m>V_A</m> and <m>V_B</m> are the volumes of the compartments, and <m>\kappa &gt; 0 </m> is a	permeability factor.
+						where <m>V_A</m> and <m>V_B</m> are the volumes of the compartments (so <m>\sfrac{x}{V_A}</m> and <m>\sfrac{y}{V_B}</m> are the concentrations), and <m>\kappa &gt; 0 </m> is a	permeability factor.
 						Let <m>x(0) = x_0</m> and <m>y(0) = y_0</m>.
 						<ol>
 							<li>
@@ -877,12 +950,31 @@
 								<m>\vec{X} = \begin{bmatrix} x\\y \end{bmatrix}.</m>
 							</li>
 							<li>
-								Write the initial conditions as a vector as well. That is, complete the following. 
+								Write the initial conditions as a vector as well. That is, complete the following.
 								<m>\vec{X}(0) = \begin{bmatrix} ?\\? \end{bmatrix}</m>
 							</li>
 						</ol>
 					</p>
 				</statement>
+				<solution>
+					<p>
+						(a) The nutrient diffuses across the membrane from higher concentration to lower concentration. The concentration in B is <m>\sfrac{y}{V_B}</m>, and the higher it is, the faster nutrient flows <em>into</em> A — so <m>y</m> appears with a positive coefficient. The concentration in A, <m>\sfrac{x}{V_A}</m>, pushes nutrient <em>out</em> of A, so <m>x</m> appears with a negative coefficient.
+					</p>
+					<p>
+						(b) <m>\frac{d}{dt}[x+y] = 0</m> says the total amount of nutrient <m>x + y</m> never changes — the membrane only moves nutrient between the compartments; none is created or destroyed. So <m>x(t) + y(t) = x_0 + y_0</m> for all time.
+					</p>
+					<p>
+						(c) <m>\ds \frac{d\vec{X}}{dt} = \kappa\begin{bmatrix} -\sfrac{1}{V_A} \amp \sfrac{1}{V_B} \\ \sfrac{1}{V_A} \amp -\sfrac{1}{V_B} \end{bmatrix}\vec{X}</m>
+					</p>
+					<p>
+						(d) <m>\ds \vec{X}(0) = \begin{bmatrix} x_0 \\ y_0 \end{bmatrix}</m>
+					</p>
+				</solution>
+				<answer>
+					<p>
+						(c) <m>\ds \frac{d\vec{X}}{dt} = \kappa\begin{bmatrix} -\sfrac{1}{V_A} \amp \sfrac{1}{V_B} \\ \sfrac{1}{V_A} \amp -\sfrac{1}{V_B} \end{bmatrix}\vec{X}</m>; (d) <m>\ds \vec{X}(0) = \begin{bmatrix} x_0 \\ y_0 \end{bmatrix}</m>
+					</p>
+				</answer>
 			</exercise>
 
 			<exercise>
@@ -919,6 +1011,21 @@
 						approximate <m>y(2.2)</m> and <m>z(2.2)</m> using two iterations of Euler's method with a step size <m>h = 0.1</m>.
 					</p>
 				</statement>
+				<solution>
+					<p>
+						With <m>f_1(t,y,z) = 3z</m> and <m>f_2(t,y,z) = y + z^2</m>:
+						<md>
+							<mrow> \mbox{Iteration 1: } \amp \amp y_1 \amp = 3 + 0.1\cdot 3(-4) = 1.8 </mrow>
+							<mrow> \amp \amp z_1 \amp = -4 + 0.1\cdot\big(3 + (-4)^2\big) = -2.1 </mrow>
+							<mrow> \mbox{Iteration 2: } \amp \amp y_2 \amp = 1.8 + 0.1\cdot 3(-2.1) = 1.17 </mrow>
+							<mrow> \amp \amp z_2 \amp = -2.1 + 0.1\cdot\big(1.8 + (-2.1)^2\big) = -1.479 </mrow>
+						</md>
+						Therefore <m>y(2.2) \approx 1.17</m> and <m>z(2.2) \approx -1.479</m>.
+					</p>
+				</solution>
+				<answer>
+					<p><m>y(2.2) \approx 1.17</m>, <m>z(2.2) \approx -1.479</m></p>
+				</answer>
 		</exercise>
 
 		<exercise>
@@ -989,12 +1096,37 @@
 				<statement>
 					<m>y'' - 4y' + 4y = 0 </m>
 				</statement>
+				<solution>
+					<p>
+						Let <m>u = y</m> and <m>v = y'</m>. Then <m>u' = v</m>, and substituting into the equation gives <m>v' - 4v + 4u = 0</m>, so:
+						<md>
+							<mrow> u' \amp = v </mrow>
+							<mrow> v' \amp = 4v - 4u </mrow>
+						</md>
+					</p>
+				</solution>
+				<answer>
+					<p><m>u' = v,\quad v' = 4v - 4u</m> where <m>u = y</m> and <m>v = y'</m></p>
+				</answer>
 			</exercise>
 
 			<exercise>
 				<statement>
 					<m>x^2 y''' = 2y' </m>
 				</statement>
+				<solution>
+					<p>
+						This is third-order, so we need three variables. Let <m>u = y</m>, <m>v = y'</m>, and <m>w = y''</m>. Then <m>u' = v</m>, <m>v' = w</m>, and substituting into the equation gives <m>x^2 w' = 2v</m>, so:
+						<md>
+							<mrow> u' \amp = v </mrow>
+							<mrow> v' \amp = w </mrow>
+							<mrow> w' \amp = \frac{2v}{x^2} </mrow>
+						</md>
+					</p>
+				</solution>
+				<answer>
+					<p><m>u' = v,\quad v' = w,\quad w' = \dfrac{2v}{x^2}</m> where <m>u = y</m>, <m>v = y'</m>, and <m>w = y''</m></p>
+				</answer>
 			</exercise>
 
 			<exercise>
