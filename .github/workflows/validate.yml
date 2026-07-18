@@ -1,0 +1,33 @@
+# Fast validation gate for pull requests.
+#
+# Runs in seconds (no PreTeXt build, no LaTeX): XML well-formedness over
+# all source .ptx files, duplicate xml:id/label detection across the
+# main.ptx build set, a placeholder-marker ratchet, and the SymPy
+# verification of worked mathematics. The full PreTeXt build workflow
+# (PreTeXt-CLI Actions) remains available via manual dispatch.
+name: Validate Source
+on:
+    pull_request:
+        branches: ["*"]
+    workflow_dispatch:
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+
+            - name: Validate PreTeXt source (well-formedness, ids, placeholders)
+              run: python3 processing-tools/validate-source/validate_source.py
+
+            - name: Install SymPy
+              run: pip install sympy
+
+            - name: Verify worked mathematics
+              run: python3 processing-tools/verify-worked-math/verify_worked_math.py
