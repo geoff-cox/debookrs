@@ -29,6 +29,7 @@ from typing import Callable
 from sympy import (
     E,
     FiniteSet,
+    Heaviside,
     I,
     Rational as R,
     cos,
@@ -389,8 +390,6 @@ REGISTRY += [
 # ----------------------------------------------------------------------
 # H8 part 2 — chapter 12 backfill (step transforms, inverses, IVPs)
 # ----------------------------------------------------------------------
-from sympy import Heaviside as _U
-
 _tp, _sp = symbols("tp sp", positive=True)
 
 
@@ -404,12 +403,12 @@ REGISTRY += [
     Check(
         "c12 window: L{u(t-1)-u(t-4)} = (e^-s - e^-4s)/s",
         "source/c12-ltp/exercises-ltp.ptx",
-        lambda: _lap_p(_U(_tp - 1) - _U(_tp - 4), (exp(-_sp) - exp(-4 * _sp)) / _sp),
+        lambda: _lap_p(Heaviside(_tp - 1) - Heaviside(_tp - 4), (exp(-_sp) - exp(-4 * _sp)) / _sp),
     ),
     Check(
         "c12: L{(t-1)^2 u(t-3)} = e^-3s (2/s^3 + 4/s^2 + 4/s)",
         "source/c12-ltp/exercises-ltp.ptx",
-        lambda: _lap_p((_tp - 1) ** 2 * _U(_tp - 3),
+        lambda: _lap_p((_tp - 1) ** 2 * Heaviside(_tp - 3),
                        exp(-3 * _sp) * (2 / _sp**3 + 4 / _sp**2 + 4 / _sp)),
     ),
     Check(
@@ -421,33 +420,33 @@ REGISTRY += [
         "c12 piecewise g: 2u1 - u2 + 2u3 takes values 0,2,1,3",
         "source/c12-ltp/exercises-ltp.ptx",
         lambda: [
-            (2 * _U(v - 1) - _U(v - 2) + 2 * _U(v - 3))
+            (2 * Heaviside(v - 1) - Heaviside(v - 2) + 2 * Heaviside(v - 3))
             for v in (R(1, 2), R(3, 2), R(5, 2), 4)
         ] == [0, 2, 1, 3],
     ),
     Check(
         "c12 inverse: L{u2 e^(t-2)} = e^-2s/(s-1)",
         "source/c12-ltp/exercises-ltp.ptx",
-        lambda: _lap_p(_U(_tp - 2) * exp(_tp - 2), exp(-2 * _sp) / (_sp - 1)),
+        lambda: _lap_p(Heaviside(_tp - 2) * exp(_tp - 2), exp(-2 * _sp) / (_sp - 1)),
     ),
     Check(
         "c12 inverse: h(t) matches (e^-2s - 3e^-4s)/(s+2)",
         "source/c12-ltp/exercises-ltp.ptx",
         lambda: _lap_p(
-            _U(_tp - 2) * exp(-2 * (_tp - 2)) - 3 * _U(_tp - 4) * exp(-2 * (_tp - 4)),
+            Heaviside(_tp - 2) * exp(-2 * (_tp - 2)) - 3 * Heaviside(_tp - 4) * exp(-2 * (_tp - 4)),
             (exp(-2 * _sp) - 3 * exp(-4 * _sp)) / (_sp + 2)),
     ),
     Check(
         "c12 inverse: (1/3)u3 sin(3(t-3)) matches e^-3s/(s^2+9)",
         "source/c12-ltp/exercises-ltp.ptx",
-        lambda: _lap_p(R(1, 3) * _U(_tp - 3) * sin(3 * (_tp - 3)),
+        lambda: _lap_p(R(1, 3) * Heaviside(_tp - 3) * sin(3 * (_tp - 3)),
                        exp(-3 * _sp) / (_sp**2 + 9)),
     ),
     Check(
         "c12 inverse: u1(-6e^-(t-1) + 7e^-2(t-1)) matches e^-s(s-5)/((s+1)(s+2))",
         "source/c12-ltp/exercises-ltp.ptx",
         lambda: _lap_p(
-            _U(_tp - 1) * (-6 * exp(-(_tp - 1)) + 7 * exp(-2 * (_tp - 1))),
+            Heaviside(_tp - 1) * (-6 * exp(-(_tp - 1)) + 7 * exp(-2 * (_tp - 1))),
             exp(-_sp) * (_sp - 5) / ((_sp + 1) * (_sp + 2))),
     ),
     Check(
