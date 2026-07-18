@@ -322,8 +322,6 @@ for _name, _lhs, _rhs in _PFD:
 # ----------------------------------------------------------------------
 # H8 answer backfill (chapters 3, 4, 13)
 # ----------------------------------------------------------------------
-C = symbols("C")
-
 REGISTRY += [
     Check(
         "c3 rewrite-and-solve: y=(c-1/x)sec x satisfies [y cos x]'=1/x^2",
@@ -343,17 +341,17 @@ REGISTRY += [
     Check(
         "c4 Level 1: y=Ce^(x^3/3) solves y'=x^2 y",
         "source/c4-sov/exercises-sov.ptx",
-        lambda: (lambda Y: is_zero(diff(Y, x) - x**2 * Y))(C * exp(x**3 / 3)),
+        lambda: (lambda Y: is_zero(diff(Y, x) - x**2 * Y))(c * exp(x**3 / 3)),
     ),
     Check(
         "c4 Level 1: y=-ln(C-e^x) solves y'=e^(x+y)",
         "source/c4-sov/exercises-sov.ptx",
-        lambda: (lambda Y: is_zero(diff(Y, x) - exp(x + Y)))(-log(C - exp(x))),
+        lambda: (lambda Y: is_zero(diff(Y, x) - exp(x + Y)))(-log(c - exp(x))),
     ),
     Check(
         "c4 Level 1: y=2-Ce^(-x) solves y'=2-y",
         "source/c4-sov/exercises-sov.ptx",
-        lambda: (lambda Y: is_zero(diff(Y, x) - (2 - Y)))(2 - C * exp(-x)),
+        lambda: (lambda Y: is_zero(diff(Y, x) - (2 - Y)))(2 - c * exp(-x)),
     ),
     Check(
         "c4 Level 1: y=-1/(tan x + c) solves y'=y^2 sec^2 x",
