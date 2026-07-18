@@ -28,6 +28,7 @@ from typing import Callable
 
 from sympy import (
     E,
+    FiniteSet,
     I,
     Rational as R,
     cos,
@@ -165,7 +166,7 @@ REGISTRY = [
         "c8 example: roots of 5r^2+13r-2 are (-13±sqrt(209))/10",
         "source/c8-lhcc/sec-second-order-lhcc-eqns.ptx",
         lambda: solveset(5 * x**2 + 13 * x - 2, x)
-        == {(-13 - sqrt(209)) / 10, (-13 + sqrt(209)) / 10},
+        == FiniteSet((-13 - sqrt(209)) / 10, (-13 + sqrt(209)) / 10),
     ),
     # ------------------------------------------------------------------
     # Chapter 7 — Euler's Method
@@ -253,7 +254,7 @@ REGISTRY = [
         "PEQ: x^4-25 factors with roots ±sqrt(5), ±i*sqrt(5)",
         "source/aa-bookends/a1-algebra/PEQ-polynomial-equations.ptx",
         lambda: solveset(x**4 - 25, x)
-        == {sqrt(5), -sqrt(5), I * sqrt(5), -I * sqrt(5)},
+        == FiniteSet(sqrt(5), -sqrt(5), I * sqrt(5), -I * sqrt(5)),
     ),
     # ------------------------------------------------------------------
     # Appendix A2 — Calculus review
