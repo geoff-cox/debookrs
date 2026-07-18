@@ -1,6 +1,6 @@
 # Exploring Differential Equations
 
-_A modern, student-centered introduction to differential equations._
+_An interactive, student-centered introduction to differential equations._
 
 ![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)
 [![PreTeXt](https://img.shields.io/badge/PreTeXt-Project-blue.svg)](https://pretextbook.org)
@@ -35,8 +35,8 @@ As long as you:
 
 ### Attribution Format
 
-> “Exploring Differential Equations” by Geoffrey Cox, licensed under CC BY-SA 4.0.  
-> [https://github.com/yourusername/book-repo](https://github.com/yourusername/book-repo)
+> “Exploring Differential Equations” by Geoffrey W. Cox, licensed under CC BY-SA 4.0.  
+> [https://github.com/geoff-cox/debookrs](https://github.com/geoff-cox/debookrs)
 
 ## Contributing
 
@@ -56,6 +56,6 @@ Thanks to the [PreTeXt Project](https://pretextbook.org) community for providing
 
 ## Contact
 
-**Author:** Geoffrey Cox  
+**Author:** Geoffrey W. Cox, Ph.D.  
 **Email:** coxgeoff@vmi.edu  
-**Repository:** [https://github.com/yourusername/book-repo](https://github.com/geoff-cox/debookrs)
+**Repository:** [https://github.com/geoff-cox/debookrs](https://github.com/geoff-cox/debookrs)
