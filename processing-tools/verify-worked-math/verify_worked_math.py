@@ -522,6 +522,22 @@ REGISTRY += [
 ]
 
 
+# ----------------------------------------------------------------------
+# H6 — existence & uniqueness example (chapter 2)
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c2 E&U example: y=x^3 and y=0 both solve y'=3y^(2/3), y(0)=0",
+        "source/c2-solns/sec-initial-valued-problems.ptx",
+        lambda: (
+            # (x^3)^(2/3) = x^2 for all real x, so y' = 3x^2 = 3 y^(2/3)
+            all(3 * v**2 == 3 * ((v**3) ** 2) ** R(1, 3) for v in (-2, R(-1, 2), R(1, 2), 2))
+            and 0 == 3 * 0
+        ),
+    ),
+]
+
+
 def main() -> int:
     failures = 0
     for check in REGISTRY:
