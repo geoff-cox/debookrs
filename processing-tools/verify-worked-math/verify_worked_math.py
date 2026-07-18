@@ -28,6 +28,7 @@ from typing import Callable
 
 from sympy import (
     E,
+    Matrix,
     FiniteSet,
     Heaviside,
     I,
@@ -475,6 +476,48 @@ REGISTRY += [
             and w4.subs(t, 4) == 0 and diff(w4, t).subs(t, 4) == 0
             and w0.subs(t, 0) == 1 and diff(w0, t).subs(t, 0) == 0
         )(cos(t), 1 - cos(t - 2), -(1 - cos(t - 4))),
+    ),
+]
+
+
+# ----------------------------------------------------------------------
+# H5 — chapter 13 eigenvalue exercise group
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c13 eig drill: A=[[4,2],[1,3]] has eigenpairs (2,(1,-1)) and (5,(2,1))",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda A: A * Matrix([1, -1]) == 2 * Matrix([1, -1])
+            and A * Matrix([2, 1]) == 5 * Matrix([2, 1])
+        )(Matrix([[4, 2], [1, 3]])),
+    ),
+    Check(
+        "c13 eig: general solution of x'=x+2y, y'=3x satisfies the system",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda X, Y: is_zero(diff(X, t) - (X + 2 * Y))
+            and is_zero(diff(Y, t) - 3 * X)
+        )(C1 * exp(3 * t) + 2 * C2 * exp(-2 * t),
+          C1 * exp(3 * t) - 3 * C2 * exp(-2 * t)),
+    ),
+    Check(
+        "c13 eig IVP: x=2e^3t+e^-t, y=4e^3t-2e^-t solves x'=x+y, y'=4x+y with (3,2)",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda X, Y: is_zero(diff(X, t) - (X + Y))
+            and is_zero(diff(Y, t) - (4 * X + Y))
+            and X.subs(t, 0) == 3 and Y.subs(t, 0) == 2
+        )(2 * exp(3 * t) + exp(-t), 4 * exp(3 * t) - 2 * exp(-t)),
+    ),
+    Check(
+        "c13 eig complex: spiral-sink general solution satisfies x'=-x-2y, y'=2x-y",
+        "source/c13-linsys/exercises-linsys.ptx",
+        lambda: (
+            lambda X, Y: is_zero(diff(X, t) - (-X - 2 * Y))
+            and is_zero(diff(Y, t) - (2 * X - Y))
+        )(exp(-t) * (C1 * cos(2 * t) + C2 * sin(2 * t)),
+          exp(-t) * (C1 * sin(2 * t) - C2 * cos(2 * t))),
     ),
 ]
 
