@@ -73,15 +73,23 @@ def parse_ptx(path: Path):
 
 
 def build_set(main: Path):
-    """Files reachable from main.ptx via xi:include (XML includes only)."""
+    """Files reachable from main.ptx via xi:include (XML includes only).
+
+    Returns (files, missing): missing holds include targets that do not
+    exist on disk, which the caller must treat as failures.
+    """
     seen = []
+    missing = []
     queue = [main]
     visited = set()
     while queue:
         f = queue.pop()
-        if f in visited or not f.exists():
+        if f in visited:
             continue
         visited.add(f)
+        if not f.exists():
+            missing.append(f)
+            continue
         seen.append(f)
         if f.suffix != ".ptx":
             continue
@@ -92,7 +100,7 @@ def build_set(main: Path):
             if 'parse="text"' in rest:
                 continue
             queue.append((f.parent / href).resolve())
-    return seen
+    return seen, missing
 
 
 def main() -> int:
@@ -104,13 +112,17 @@ def main() -> int:
     for f in all_ptx:
         try:
             trees[f] = parse_ptx(f)
-        except ET.ParseError as exc:
+        except (ET.ParseError, UnicodeDecodeError, ValueError) as exc:
             failures.append(f"not well-formed: {f.relative_to(REPO)}: {exc}")
     print(f"well-formedness: {len(all_ptx) - sum(1 for m in failures)}"
           f"/{len(all_ptx)} files parse")
 
-    included = [f for f in build_set(MAIN) if f.suffix == ".ptx"]
-    print(f"build set: {len(included)} files reachable from main.ptx")
+    reachable, missing = build_set(MAIN)
+    included = [f for f in reachable if f.suffix == ".ptx"]
+    for f in missing:
+        failures.append(f"missing xi:include target: {f.relative_to(REPO)}")
+    print(f"build set: {len(included)} files reachable from main.ptx, "
+          f"{len(missing)} missing include target(s)")
 
     # 2. duplicate xml:id / label within the build set
     where = defaultdict(list)
@@ -133,7 +145,11 @@ def main() -> int:
     # 3. placeholder ratchet
     baseline = {}
     if BASELINE_FILE.exists():
-        baseline = json.loads(BASELINE_FILE.read_text())
+        try:
+            baseline = json.loads(BASELINE_FILE.read_text())
+        except json.JSONDecodeError as exc:
+            failures.append(f"malformed baseline {BASELINE_FILE.name}: {exc}")
+            baseline = {}
     current = {}
     for f in included:
         text = f.read_text(encoding="utf-8")
