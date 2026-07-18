@@ -386,6 +386,100 @@ REGISTRY += [
 ]
 
 
+# ----------------------------------------------------------------------
+# H8 part 2 — chapter 12 backfill (step transforms, inverses, IVPs)
+# ----------------------------------------------------------------------
+from sympy import Heaviside as _U
+
+_tp, _sp = symbols("tp sp", positive=True)
+
+
+def _lap_p(f_t, F_s):
+    """laplace_matches with positive-symbol assumptions (Heaviside-safe)."""
+    got = laplace_transform(f_t, _tp, _sp, noconds=True)
+    return is_zero(got - F_s)
+
+
+REGISTRY += [
+    Check(
+        "c12 window: L{u(t-1)-u(t-4)} = (e^-s - e^-4s)/s",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(_U(_tp - 1) - _U(_tp - 4), (exp(-_sp) - exp(-4 * _sp)) / _sp),
+    ),
+    Check(
+        "c12: L{(t-1)^2 u(t-3)} = e^-3s (2/s^3 + 4/s^2 + 4/s)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p((_tp - 1) ** 2 * _U(_tp - 3),
+                       exp(-3 * _sp) * (2 / _sp**3 + 4 / _sp**2 + 4 / _sp)),
+    ),
+    Check(
+        "c12: L{t e^3t u(t+pi/4)} = 1/(s-3)^2 (step already on)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(_tp * exp(3 * _tp), 1 / (_sp - 3) ** 2),
+    ),
+    Check(
+        "c12 piecewise g: 2u1 - u2 + 2u3 takes values 0,2,1,3",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: [
+            (2 * _U(v - 1) - _U(v - 2) + 2 * _U(v - 3))
+            for v in (R(1, 2), R(3, 2), R(5, 2), 4)
+        ] == [0, 2, 1, 3],
+    ),
+    Check(
+        "c12 inverse: L{u2 e^(t-2)} = e^-2s/(s-1)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(_U(_tp - 2) * exp(_tp - 2), exp(-2 * _sp) / (_sp - 1)),
+    ),
+    Check(
+        "c12 inverse: h(t) matches (e^-2s - 3e^-4s)/(s+2)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(
+            _U(_tp - 2) * exp(-2 * (_tp - 2)) - 3 * _U(_tp - 4) * exp(-2 * (_tp - 4)),
+            (exp(-2 * _sp) - 3 * exp(-4 * _sp)) / (_sp + 2)),
+    ),
+    Check(
+        "c12 inverse: (1/3)u3 sin(3(t-3)) matches e^-3s/(s^2+9)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(R(1, 3) * _U(_tp - 3) * sin(3 * (_tp - 3)),
+                       exp(-3 * _sp) / (_sp**2 + 9)),
+    ),
+    Check(
+        "c12 inverse: u1(-6e^-(t-1) + 7e^-2(t-1)) matches e^-s(s-5)/((s+1)(s+2))",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: _lap_p(
+            _U(_tp - 1) * (-6 * exp(-(_tp - 1)) + 7 * exp(-2 * (_tp - 1))),
+            exp(-_sp) * (_sp - 5) / ((_sp + 1) * (_sp + 2))),
+    ),
+    Check(
+        "c12 IVP: z(t) solves z''+3z'+2z=e^-3t U(t-2), z(0)=2, z'(0)=-3 (regionwise)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: (
+            lambda zh, zp: is_zero(diff(zh, t, 2) + 3 * diff(zh, t) + 2 * zh)
+            and is_zero(diff(zh + zp, t, 2) + 3 * diff(zh + zp, t) + 2 * (zh + zp)
+                        - exp(-3 * t))
+            and zp.subs(t, 2) == 0 and simplify(diff(zp, t).subs(t, 2)) == 0
+            and zh.subs(t, 0) == 2 and diff(zh, t).subs(t, 0) == -3
+        )(
+            exp(-t) + exp(-2 * t),
+            exp(-6) * (R(1, 2) * exp(-(t - 2)) - exp(-2 * (t - 2))
+                       + R(1, 2) * exp(-3 * (t - 2))),
+        ),
+    ),
+    Check(
+        "c12 IVP: w(t) solves w''+w=U(t-2)-U(t-4), w(0)=1, w'(0)=0 (regionwise)",
+        "source/c12-ltp/exercises-ltp.ptx",
+        lambda: (
+            lambda w0, w2, w4: is_zero(diff(w0, t, 2) + w0)
+            and is_zero(diff(w0 + w2, t, 2) + (w0 + w2) - 1)
+            and is_zero(diff(w0 + w2 + w4, t, 2) + (w0 + w2 + w4))
+            and w2.subs(t, 2) == 0 and diff(w2, t).subs(t, 2) == 0
+            and w4.subs(t, 4) == 0 and diff(w4, t).subs(t, 4) == 0
+            and w0.subs(t, 0) == 1 and diff(w0, t).subs(t, 0) == 0
+        )(cos(t), 1 - cos(t - 2), -(1 - cos(t - 4))),
+    ),
+]
+
+
 def main() -> int:
     failures = 0
     for check in REGISTRY:
