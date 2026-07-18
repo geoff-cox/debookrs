@@ -56,61 +56,8 @@
 		</example>
 
 		<p>
-			For more interesting systems — like ones with partial or full coupling — the direction field can show curved paths, spirals, or saddle-shaped flows. This visual approach helps us predict system behavior even before we dive into equations.
-		</p>
-	</subsection>
-
-	<subsection label="visualizing-systems">
-		<title>Visualization Tools</title>
-
-		<p>
-			So far, we've seen examples of systems in which variables evolve independently or influence one another. Now let's step back and look at how to visualize a system as a whole.
-		</p>
-
-		<p>
-			The <em>phase plane</em> is a two-dimensional space where we plot one variable on the horizontal axis and the other on the vertical axis. A solution to a system like
-			<md>
-				<mrow> \frac{dx}{dt} \amp = -x </mrow>
-				<mrow> \frac{dy}{dt} \amp = -2y </mrow>
-			</md>
-		</p>
-
-		<p>
 			<idx><h>phase portrait</h></idx>
-			Such a solution becomes a curve in the <m>(x, y)</m> plane: a path that the system traces over time. We often call this a <em>trajectory</em>.
-		</p>
-
-		<p>
-			Instead of plotting <m>x(t)</m> and <m>y(t)</m> separately, we visualize the pair <m>(x(t), y(t))</m> moving through the plane.
-		</p>
-
-		<p>
-			To understand how the system behaves without solving it, we can draw a <em>slope field</em> or <em>direction field</em>: a grid of arrows showing the direction of motion at each point.
-		</p>
-
-		<p>
-			Each arrow represents the vector <m>(dx/dt, dy/dt)</m> at a point <m>(x, y)</m>. Together, they show how the system is evolving.
-		</p>
-
-		<example xml:id="ex-slopefield-uncoupled">
-			<title>Phase Portrait of an Uncoupled System</title>
-
-			<statement>
-				<p>
-					Consider the system:
-					<md>
-						<mrow> \frac{dx}{dt} \amp = -x </mrow>
-						<mrow> \frac{dy}{dt} \amp = -2y </mrow>
-					</md>
-				</p>
-				<p>
-					The phase portrait shows trajectories curving toward the origin (the axes themselves are straight-line trajectories), because each variable decays independently at its own rate.
-				</p>
-			</statement>
-		</example>
-
-		<p>
-			In more interesting systems, such as partially coupled ones, the slope field reveals how the variables interact.
+			For more interesting systems — like ones with partial or full coupling — the direction field can show curved paths, spirals, or saddle-shaped flows. This visual approach helps us predict system behavior even before we dive into equations.
 		</p>
 
 		<example xml:id="ex-slopefield-partial">
@@ -135,7 +82,7 @@
 		</p>
 
 		<corollary>
-			<title>Euler's Method Visualized</title>
+			<title>Exploring a Direction Field</title>
 
 			<statement>
 				<p>
@@ -202,7 +149,7 @@
 		</p>
 
 		<p>
-			Later, we'll connect these patterns to the algebra of the system's coefficients. But even now, these <q>big-picture</q> behaviors help us think about what the math is saying.
+			These <q>big-picture</q> behaviors are not accidents — they are completely determined by the algebra of the system's coefficients. The next subsection makes that connection precise using the eigenvalues from <xref ref="solving-linear-systems" text="title"/>.
 		</p>
 
 		<exercise label="qualitative-methods-for-linear-systems-cyu-bundle">
@@ -330,5 +277,80 @@
 			</task>
 		</exercise>
 	</subsection>
-	
+
+	<subsection xml:id="eigenvalues-and-phase-portraits">
+		<title>Connecting Eigenvalues to Phase Portraits</title>
+
+		<p>
+			<idx><h>phase portrait</h><h>classification by eigenvalues</h></idx>
+			In <xref ref="solving-linear-systems" text="title"/>, we saw that the general solution of <m>\vec{X}' = A\vec{X}</m> is built from terms like <m>\vec{v}e^{rt}</m>, where <m>r</m> is an eigenvalue of <m>A</m>. Those eigenvalues are exactly what the phase portrait is showing us: each exponential rate controls whether trajectories grow, decay, or rotate. So once you know the eigenvalues, you know the shape of the picture — no plotting required.
+		</p>
+
+		<p>
+			For a <m>2\times 2</m> system with eigenvalues <m>r_1</m> and <m>r_2</m>, the standard cases are:
+		</p>
+
+		<tabular halign="center" top="minor" bottom="minor" left="minor" right="minor">
+			<row header="yes" bottom="minor">
+				<cell>Eigenvalues</cell>
+				<cell>Phase Portrait</cell>
+				<cell>Behavior of Trajectories</cell>
+			</row>
+			<row>
+				<cell>real, both negative (<m>r_2 \lt r_1 \lt 0</m>)</cell>
+				<cell>node (sink)</cell>
+				<cell>all trajectories slide into the origin</cell>
+			</row>
+			<row>
+				<cell>real, both positive (<m>0 \lt r_1 \lt r_2</m>)</cell>
+				<cell>node (source)</cell>
+				<cell>all trajectories flow away from the origin</cell>
+			</row>
+			<row>
+				<cell>real, opposite signs (<m>r_1 \lt 0 \lt r_2</m>)</cell>
+				<cell>saddle</cell>
+				<cell>drawn in along one eigenvector, flung out along the other</cell>
+			</row>
+			<row>
+				<cell>complex, <m>r = a \pm bi</m> with <m>a \lt 0</m></cell>
+				<cell>spiral sink</cell>
+				<cell>trajectories loop inward as they decay</cell>
+			</row>
+			<row>
+				<cell>complex, <m>r = a \pm bi</m> with <m>a \gt 0</m></cell>
+				<cell>spiral source</cell>
+				<cell>trajectories loop outward as they grow</cell>
+			</row>
+			<row>
+				<cell>purely imaginary, <m>r = \pm bi</m></cell>
+				<cell>center</cell>
+				<cell>trajectories orbit the origin in closed loops</cell>
+			</row>
+		</tabular>
+
+		<p>
+			The reading is straightforward: the <em>real part</em> of each eigenvalue controls growth (<m>e^{at}</m> grows when <m>a \gt 0</m>, decays when <m>a \lt 0</m>), and a nonzero <em>imaginary part</em> contributes rotation (through the <m>\cos(bt)</m> and <m>\sin(bt)</m> factors in the real form of the solution).
+		</p>
+
+		<p>
+			Let's revisit the two systems we solved earlier through this lens:
+			<ul marker="square">
+				<li>
+					<p>
+						In <xref ref="ex-worked-linear-system" text="type-global"/>, the eigenvalues were <m>r_1 = 3</m> and <m>r_2 = -1</m> — real with opposite signs. The phase portrait is a <em>saddle</em>: solutions starting along the eigenvector <m>\begin{bmatrix}1\\-2\end{bmatrix}</m> decay toward the origin, while every other solution is eventually carried off in the direction of <m>\begin{bmatrix}1\\2\end{bmatrix}</m> by the dominant <m>e^{3t}</m> term.
+					</p>
+				</li>
+				<li>
+					<p>
+						In <xref ref="ex-complex-eigenvalues" text="type-global"/>, the eigenvalues were <m>r = 2 \pm 5i</m> — complex with positive real part. The phase portrait is a <em>spiral source</em>: the <m>e^{2t}</m> factor pushes trajectories outward while the <m>\cos(5t)</m> and <m>\sin(5t)</m> factors rotate them.
+					</p>
+				</li>
+			</ul>
+		</p>
+
+		<p>
+			This connection runs both ways. Eigenvalues predict the picture, and a glance at a phase portrait tells you the character of the eigenvalues — spirals mean complex eigenvalues, saddles mean real eigenvalues of opposite signs, and so on. You'll practice both directions in the exercises.
+		</p>
+	</subsection>
+
 </section>
