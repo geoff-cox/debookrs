@@ -56,7 +56,7 @@ Four quick-ref worksheets are empty or stubs (`c5-qref-qm`, `c6-qref-nm`, `c12-q
 The "List of Symbols" appendix renders empty — `<notation-list/>` exists but zero `<notation>` elements exist anywhere in the source; "Formula Sheets" is a bare title; all three `<solutions>` divisions are commented out (no answer key ships even though exercises carry answers); no colophon in the production back matter (only in the orphaned dev variant); no bibliography. Either populate each (add `<notation>` at first use of each symbol; un-comment `<solutions>` once H1/H8 land) or remove the empty shells.
 
 ### H16. Add alt-text/descriptions to all images and interactives
-Coverage today is zero: 63 of 63 `<image>` elements and 9 of 9 `<interactive>` elements lack any `@alt` or `<description>` (the only 8 `<description>`s in the book are WeBWorK problem descriptions). For a published, student-facing textbook this is the largest accessibility (WCAG/508) gap. Worst-offender files: `c12-ltp/sec-unit-step-variants.ptx` (8), `a1-algebra/M-piecewise-functions.ptx` (10), `c6-qm/sec-classifying-equilibrium-solutions.ptx` (6). Add a CI lint so regressions can't ship. Two "Need to Add" placeholder strings currently sit where descriptions belong (`sec-euler-method.ptx:228`, `sec-qualitative-methods-systems.ptx:154,174`).
+Coverage today is zero: 63 of 63 `<image>` elements and 9 of 9 `<interactive>` elements lack any `@alt` or `<description>` (the only 8 `<description>`s in the book are WeBWorK problem descriptions). For a published, student-facing textbook this is the largest accessibility (WCAG/508) gap. Worst-offender files: `c12-ltp/sec-unit-step-variants.ptx` (8), `aa-bookends/a1-algebra/M-piecewise-functions.ptx` (10), `c6-qm/sec-classifying-equilibrium-solutions.ptx` (6). Add a CI lint so regressions can't ship. Two "Need to Add" placeholder strings currently sit where descriptions belong (`sec-euler-method.ptx:228`, `sec-qualitative-methods-systems.ptx:154,174`).
 
 ### H17. Complete reading checkpoints in uncovered sections
 38 of 62 sections have reading checkpoints, but coverage is inverted: the *early* chapters are barest — all of ch. 0 (4 sections), ch. 1 (3), ch. 4 (4), plus `sec-verifying-solns` (the core verify-by-substitution skill, zero checkpoints) and `sec-euler-method` (the chapter's central section, one checkpoint). Bring these up to the density chs. 8–12 already achieve.
@@ -153,12 +153,12 @@ Auto-generate a spaced-repetition deck (Anki/CSV) from the 134-entry `glossary.p
 | 21 | `c13-linsys/exercises-linsys.ptx:1002` | Garbled chained equation `y''+x=12x'+2yt=\cos t` | Two separate equations (per the solution) |
 | 22 | `c13-linsys/exercises-linsys.ptx:623` | `e^{2t}` should be `e^{−2t}` (coefficient 0; benign) | Fix exponent |
 | 23 | `c13-linsys/sec-introduction-to-systems.ptx:150` | Figure plots `y(0)=1.3`; example uses `1.2` | Align figure with example |
-| 24 | `a1-algebra/CSQ-completing-sq.ptx:33,42` | Summary box: `(x − b/2)²` for `x²+bx+c` | `(x + b/2)²` (intro and examples are correct) |
-| 25 | `a1-algebra/PEQ-polynomial-equations.ptx:268 vs 414–433` | Poses `x⁴−32=0`, solves `x⁴−25=0` | Align statement and solution |
-| 26 | `a1-algebra/L-pfd.ptx` (multiple) | Wrong PFD forms, contradictions, placeholder answers | Full rebuild — see H2 |
-| 27 | `a2-calculus/G-improper-integrals.ptx:102` | Leftover `1/3` from previous problem | `1/s` |
-| 28 | `a3-quickref/c8-qref-uc.ptx:56–59` | Particular solution denoted `y_h` | `y_p` |
-| 29 | `a3-quickref/c9-qref-lt.ptx:140` | Header `Y(t), Z(t)` | `Y(s), Z(s)` |
+| 24 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx:33,42` | Summary box: `(x − b/2)²` for `x²+bx+c` | `(x + b/2)²` (intro and examples are correct) |
+| 25 | `aa-bookends/a1-algebra/PEQ-polynomial-equations.ptx:268 vs 414–433` | Poses `x⁴−32=0`, solves `x⁴−25=0` | Align statement and solution |
+| 26 | `aa-bookends/a1-algebra/L-pfd.ptx` (multiple) | Wrong PFD forms, contradictions, placeholder answers | Full rebuild — see H2 |
+| 27 | `aa-bookends/a2-calculus/G-improper-integrals.ptx:102` | Leftover `1/3` from previous problem | `1/s` |
+| 28 | `aa-bookends/a3-quickref/c8-qref-uc.ptx:56–59` | Particular solution denoted `y_h` | `y_p` |
+| 29 | `aa-bookends/a3-quickref/c9-qref-lt.ptx:140` | Header `Y(t), Z(t)` | `Y(s), Z(s)` |
 | 30 | `c11-ltm/exercises-ltm.ptx:~1942–2051` | Entire PFD derivation printed twice in one solution | Delete duplicate |
 | 31 | `c7-em/exercises-em.ptx` (em-problem-03) | Part cross-references wrong ((b)/(c) mix-ups) | Renumber references |
 | 32 | `c13-linsys/exercises-linsys.ptx:359,474,641` | `x(t)`/`y(t)` answers concatenated in one `<m>` with no separator | Split/format |
