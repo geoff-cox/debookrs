@@ -346,6 +346,57 @@
 		</task>
 	</exercise>
 
+	<p>
+		<idx><h>existence and uniqueness</h></idx>
+		Before moving on, it's worth pausing on two questions we've been quietly taking for granted: does an initial value problem always <em>have</em> a solution, and if it does, is that solution the <em>only</em> one? For most of the equations in this book the answer to both is yes, and there is a classical result that says exactly when:
+	</p>
 
+	<assemblage xml:id="existence-uniqueness">
+		<title>✳️ Existence &amp; Uniqueness (Informal)</title>
+		<p>
+			Consider the first-order initial value problem
+			<me>
+				\frac{dy}{dx} = f(x, y), \qquad y(x_0) = y_0.
+			</me>
+			If <m>f</m> is continuous and changes smoothly with respect to <m>y</m> near the starting point <m>(x_0, y_0)</m><fn>The precise condition is that <m>f</m> and its partial derivative <m>\frac{\partial f}{\partial y}</m> (the derivative treating <m>x</m> as constant) are both continuous on a rectangle containing <m>(x_0, y_0)</m>. This result is known as the Picard–Lindelöf theorem.</fn>, then the initial value problem has <em>exactly one</em> solution on some interval around <m>x_0</m>.
+		</p>
+	</assemblage>
+
+	<p>
+		Both conclusions matter. <em>Existence</em> says the problem is not asking for the impossible — some solution curve really does pass through the initial point. <em>Uniqueness</em> says the initial condition pins down the entire future (and past) of the solution: two solutions that agree at one point must agree everywhere they are both defined. Uniqueness is also why an order-<m>n</m> equation needs <m>n</m> initial conditions: its general solution carries <m>n</m> arbitrary constants, and each condition determines one of them, just as we saw with <m>y(0)</m> and <m>y'(0)</m> above.
+	</p>
+
+	<p>
+		When the smoothness hypothesis fails, uniqueness really can break. Here is the classic cautionary example.
+	</p>
+
+	<example xml:id="example-non-unique-ivp">
+		<title>An IVP with More Than One Solution</title>
+		<statement>
+			<p>
+				Show that the initial value problem
+				<me>
+					\frac{dy}{dx} = 3y^{2/3}, \qquad y(0) = 0
+				</me>
+				has at least two different solutions.
+			</p>
+		</statement>
+		<solution>
+			<p>
+				The constant function <m>y_1(x) = 0</m> works: both sides are <m>0</m>, and <m>y_1(0) = 0</m>. But so does <m>y_2(x) = x^3</m>: substituting gives
+				<me>
+					y_2' = 3x^2 \qquad \text{and} \qquad 3y_2^{2/3} = 3\left(x^3\right)^{2/3} = 3x^2,
+				</me>
+				and <m>y_2(0) = 0</m>. Two genuinely different solutions pass through the same initial point (in fact, infinitely many do — a solution can follow <m>y = 0</m> for a while and then peel off onto a shifted cubic).
+			</p>
+			<p>
+				The culprit is the hypothesis: <m>f(x,y) = 3y^{2/3}</m> is continuous, but it does not change smoothly with respect to <m>y</m> at <m>y = 0</m> — its <m>y</m>-derivative <m>2y^{-1/3}</m> blows up there. Right where the guarantee fails, uniqueness fails with it.
+			</p>
+		</solution>
+	</example>
+
+	<p>
+		The takeaway: when you solve an IVP built from reasonably smooth functions — which describes nearly every model in this book — you can trust that the particular solution you found is <em>the</em> solution. But the guarantee has hypotheses, and the example above shows they are not just legal fine print.
+	</p>
 
 </section>
