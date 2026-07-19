@@ -29,3 +29,14 @@ Use these conventions in all new or revised content; align outliers when a task 
 - **Phase lines**: equilibria are solid (filled) dots; regions get up/down arrows.
 - **Slope fields**: the marks are "segments" (they have no arrowheads); direction fields for systems (ch. 13) have arrows.
 - **Variable names**: variable letters deliberately vary by application (`P` for population, `T` for temperature, etc.); see the "Different Letters, Same Roles" box in ch. 0. Within any one example or exercise, keep dependent/independent variable names internally consistent.
+
+## Markup conventions
+
+- **Section skeleton**: a typical section is 🎧 Listen aside (`component="web"`) → motivating prose → definitions/derivations → worked examples → at least one reading checkpoint. New sections should follow this shape.
+- **Checkpoint emoji cues**: a reading-question bundle `<exercise>` title carries `<e component="emoji">🤔💭</e>`; each individual checkpoint `<exercise>`/`<task>` title carries `<e component="emoji">📖❓</e>`; "Recall:" flashback items use `<e component="emoji">↩️☝</e>`; 👀 marks quick-review asides. Every student-facing checkpoint must have a title with one of these cues.
+- **True/False items**: encode the claim in `<statement>` with a two-choice True/False `<choices>` block (exactly one `correct="yes"`), and do NOT set `randomize="yes"` on a True/False pair — the choices must render in True, False order. "Select all the TRUE statements" items are instead multi-select items (see next rule).
+- **Multi-select items**: any `<choices>` block with two or more `correct="yes"` choices MUST set `multiple-correct="yes"` (the attribute is `multiple-correct` — not `multiple` or `select`), otherwise it renders as single-select radio buttons.
+- **Repurposed block elements** (renamed in `book-info.ptx` — do not "fix" these or use them for their conventional meaning): `<corollary>` = 🎮 Interactive wrapper, `<theorem>` = 🧠 Derivation, `<lemma>` = 👀 Quick Review, `<identity>` = 🗺️ Summary, `<exploration>` = ✍🏻 Method, `<assemblage>` = ✳️ callout box.
+- **`label` vs `xml:id`**: use `label` on exercises/tasks/choices (interactive runestone-style components) and on chapter/section divisions; use `xml:id` on elements that are `<xref>` targets (figures, examples, assemblages, glossary items). Both share ONE id namespace checked by `processing-tools/validate-source/validate_source.py` — never reuse a string across either attribute.
+- **Exercises divisions**: a chapter-level exercises file is a `<section>` (e.g. `<section label="sov-exercises">`), not a `<subsection>`.
+- **No layout hacks**: do not add `\phantom{...}` spacer hacks with placeholder prose; if vertical space is unavoidable use a `\vphantom{...}` strut, and prefer structural spacing (separate `<p>`, `<sidebyside>` margins) over math-mode spacers.
