@@ -114,26 +114,26 @@
 	// --- layout ---
 	const qX = 4.6, mX = 11.8;
 	const nodes = {
-		start: makeNode(qX, 11.3, 6.4, 1.1,
+		start: makeNode(qX, 11.3, 6.0, 1.3,
 			'<b>Start:</b> a differential equation to solve', 'question'),
-		q1: makeNode(qX, 9.3, 6.4, 1.3,
+		q1: makeNode(qX, 9.3, 6.0, 1.3,
 			'Is the equation <b>first order</b>?<br>(highest derivative is y&prime;)', 'question'),
-		mHigher: makeNode(mX, 9.3, 7.0, 1.3,
+		mHigher: makeNode(mX, 9.3, 6.0, 1.3,
 			'<b>Higher-order equation</b><br>new tools coming in later chapters', 'method'),
-		q2: makeNode(qX, 7.1, 6.4, 1.3,
+		q2: makeNode(qX, 7.1, 6.0, 1.3,
 			'Is it <b>already a derivative</b>?<br>d&frasl;dx[ &hellip; ] = f(x)', 'question'),
-		mDI: makeNode(mX, 7.1, 7.0, 1.3,
+		mDI: makeNode(mX, 7.1, 6.0, 1.3,
 			'<b>Direct Integration</b><br>integrate both sides', 'method'),
-		q3: makeNode(qX, 4.9, 6.4, 1.3,
+		q3: makeNode(qX, 4.9, 6.0, 1.3,
 			'Is it <b>separable</b>?<br>y&prime; = f(x)&middot;g(y)', 'question'),
-		mSOV: makeNode(mX, 4.9, 7.0, 1.3,
+		mSOV: makeNode(mX, 4.9, 6.0, 1.3,
 			'<b>Separation of Variables</b><br>separate, then integrate', 'method'),
-		q4: makeNode(qX, 2.7, 6.4, 1.3,
+		q4: makeNode(qX, 2.7, 6.0, 1.3,
 			'Is it <b>linear</b>?<br>y&prime; + P(x)y = Q(x)', 'question'),
-		mIF: makeNode(mX, 2.7, 7.0, 1.3,
+		mIF: makeNode(mX, 2.7, 6.0, 1.3,
 			'<b>Integrating Factor</b><br>multiply by &mu;(x) = e<sup>&int;P(x)dx</sup>', 'method'),
-		mNone: makeNode(qX, 0.7, 8.6, 1.2,
-			'<b>No formula method (yet)</b> &mdash; try qualitative or numerical tools', 'method'),
+		mNone: makeNode(qX, 0.7, 6.0, 1.3,
+			'<b>No formula method (yet)</b><br>try qualitative or numerical tools', 'method'),
 	};
 
 	const edges = {
@@ -208,12 +208,12 @@
 		return btn;
 	}
 
-	makeButton(12.2, 11.55, 1.7, 0.9, 'Yes', '#c9e7cd', () => answer('yes'));
-	makeButton(14.2, 11.55, 1.7, 0.9, 'No', '#f6cfcf', () => answer('no'));
-	makeButton(13.2, 10.35, 2.2, 0.8, 'Reset', '#e2e2e2', reset);
+	makeButton(9.7,  11.3, 1.6, 0.9, 'Yes', '#c9e7cd', () => answer('yes'));
+	makeButton(11.7, 11.3, 1.6, 0.9, 'No', '#f6cfcf', () => answer('no'));
+	makeButton(13.7, 11.3, 1.6, 0.9, 'Reset', '#e2e2e2', reset);
 
-	board.create('text', [13.2, 0.7,
-		'If an equation is <i>both</i> separable and linear,<br>either tool works &mdash; pick the faster one.'], {
+	board.create('text', [12.2, 0.7,
+		'If an equation is <i>both</i> separable and<br>linear, either method works.'], {
 		anchorX: 'middle',
 		anchorY: 'middle',
 		fixed: true,
