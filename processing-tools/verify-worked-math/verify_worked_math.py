@@ -27,6 +27,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 from sympy import (
+    DiracDelta,
     E,
     Matrix,
     FiniteSet,
@@ -535,6 +536,211 @@ REGISTRY += [
             # y = 0: y' = 0 and 3*(0^2)^(1/3) = 0
             and 3 * (0**2) ** R(1, 3) == 0
         ),
+    ),
+]
+
+
+# ----------------------------------------------------------------------
+# H9 — cumulative mixed-method reviews (chapters 5, 9, 12)
+# ----------------------------------------------------------------------
+REGISTRY += [
+    # --- Chapter 5 review: choosing a first-order method ---
+    Check(
+        "c5 review R1: y=2x^3-2x^2+x+1 solves y'=6x^2-4x+1, y(1)=2",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) - (6 * x**2 - 4 * x + 1)) and Y.subs(x, 1) == 2
+        )(2 * x**3 - 2 * x**2 + x + 1),
+    ),
+    Check(
+        "c5 review R2: y=sqrt(9-x^2) solves y'=-x/y, y(0)=3",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) + x / Y) and Y.subs(x, 0) == 3
+        )(sqrt(9 - x**2)),
+    ),
+    Check(
+        "c5 review R3: y=2-e^(-2x) solves y'+2y=4, y(0)=1 (both-methods bridge)",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) + 2 * Y - 4) and Y.subs(x, 0) == 1
+        )(2 - exp(-2 * x)),
+    ),
+    Check(
+        "c5 review R4: y=x^2/4+C1/x^2 solves xy'+2y=x^2",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(x * diff(Y, x) + 2 * Y - x**2)
+        )(x**2 / 4 + C1 / x**2),
+    ),
+    Check(
+        "c5 review R5: y=ln(e^x+c) solves y'=e^(x-y)",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) - exp(x - Y))
+        )(log(exp(x) + c)),
+    ),
+    Check(
+        "c5 review R6: y=e^(-x)(sin x+C1) solves e^x y'+e^x y=cos x",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(exp(x) * diff(Y, x) + exp(x) * Y - cos(x))
+        )(exp(-x) * (sin(x) + C1)),
+    ),
+    Check(
+        "c5 review quiz 7 feedback: x^2 y=2x^2+C i.e. y=2+C1/x^2 solves x^2 y'+2xy=4x",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (
+            lambda Y: is_zero(x**2 * diff(Y, x) + 2 * x * Y - 4 * x)
+        )(2 + C1 / x**2),
+    ),
+    # --- Chapter 9 review: constant-coefficient equations ---
+    Check(
+        "c9 review P1: y=C1 e^(3x)+C2 e^(-2x) solves y''-y'-6y=0",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) - diff(Y, x) - 6 * Y)
+        )(C1 * exp(3 * x) + C2 * exp(-2 * x)),
+    ),
+    Check(
+        "c9 review P2: y=e^(-2x)(C1 cos 3x+C2 sin 3x) solves y''+4y'+13y=0",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) + 4 * diff(Y, x) + 13 * Y)
+        )(exp(-2 * x) * (C1 * cos(3 * x) + C2 * sin(3 * x))),
+    ),
+    Check(
+        "c9 review P3: y=(C1+C2 x)e^(-3x) solves y''+6y'+9y=0",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) + 6 * diff(Y, x) + 9 * Y)
+        )((C1 + C2 * x) * exp(-3 * x)),
+    ),
+    Check(
+        "c9 review P4: y=C1 e^x+C2 e^(2x)+2x+3 solves y''-3y'+2y=4x",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) - 3 * diff(Y, x) + 2 * Y - 4 * x)
+        )(C1 * exp(x) + C2 * exp(2 * x) + 2 * x + 3),
+    ),
+    Check(
+        "c9 review P5: y=C1 e^(2x)+C2 e^(-2x)+2xe^(2x) solves y''-4y=8e^(2x)",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) - 4 * Y - 8 * exp(2 * x))
+        )(C1 * exp(2 * x) + C2 * exp(-2 * x) + 2 * x * exp(2 * x)),
+    ),
+    Check(
+        "c9 review P6: y=7e^(2x)-2 solves y'-2y=4, y(0)=5",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) - 2 * Y - 4) and Y.subs(x, 0) == 5
+        )(7 * exp(2 * x) - 2),
+    ),
+    Check(
+        "c9 review P7: y=C1 cos x+C2 sin x-(5/3)sin 2x solves y''+y=5 sin 2x",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 2) + Y - 5 * sin(2 * x))
+        )(C1 * cos(x) + C2 * sin(x) - R(5, 3) * sin(2 * x)),
+    ),
+    Check(
+        "c9 review quiz 3 feedback: y=2+C1 e^(-3x) solves y'+3y=6",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x) + 3 * Y - 6)
+        )(2 + C1 * exp(-3 * x)),
+    ),
+    Check(
+        "c9 review quiz 6 feedback: y=C1 ln x+C2 solves x y''+y'=0",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(x * diff(Y, x, 2) + diff(Y, x))
+        )(C1 * log(x) + C2),
+    ),
+    Check(
+        "c9 review quiz 7 feedback: y=c1+c2 e^x+c3 e^(-x) solves y'''-y'=0",
+        "source/c9-uc/review-constant-coefficient.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, x, 3) - diff(Y, x))
+        )(C1 + C2 * exp(x) + symbols("C3") * exp(-x)),
+    ),
+    # --- Chapter 12 review: full-toolkit method selection ---
+    Check(
+        "c12 review L1: y=3e^(-2t) solves y'+2y=0, y(0)=3; Y(s)=3/(s+2)",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t) + 2 * Y) and Y.subs(t, 0) == 3
+            and laplace_matches(Y, 3 / (s + 2))
+        )(3 * exp(-2 * t)),
+    ),
+    Check(
+        "c12 review L2: y=1-cos t solves y''+y=1, y(0)=y'(0)=0; PFD of 1/(s(s^2+1))",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t, 2) + Y - 1)
+            and Y.subs(t, 0) == 0 and diff(Y, t).subs(t, 0) == 0
+            and is_zero(1 / (s * (s**2 + 1)) - (1 / s - s / (s**2 + 1)))
+        )(1 - cos(t)),
+    ),
+    Check(
+        "c12 review L3: y=(1-e^(-(t-2)))u_2(t) solves y'+y=u_2(t), y(0)=0",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(
+                simplify(diff(Y, t) + Y - Heaviside(t - 2)).replace(
+                    DiracDelta(t - 2), 0
+                )
+            )
+            and is_zero(1 / (s * (s + 1)) - (1 / s - 1 / (s + 1)))
+        )(Heaviside(t - 2) * (1 - exp(-(t - 2)))),
+    ),
+    Check(
+        "c12 review L4: y=2-3e^t+e^(3t) solves y''-4y'+3y=6, y(0)=y'(0)=0; PFD",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t, 2) - 4 * diff(Y, t) + 3 * Y - 6)
+            and Y.subs(t, 0) == 0 and diff(Y, t).subs(t, 0) == 0
+            and is_zero(
+                6 / (s * (s - 1) * (s - 3)) - (2 / s - 3 / (s - 1) + 1 / (s - 3))
+            )
+        )(2 - 3 * exp(t) + exp(3 * t)),
+    ),
+    Check(
+        "c12 review L5: y=4e^(-t^2) solves y'=-2ty, y(0)=4",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t) + 2 * t * Y) and Y.subs(t, 0) == 4
+        )(4 * exp(-(t**2))),
+    ),
+    Check(
+        "c12 review L6: y=e^(-t)(c1 cos 2t+c2 sin 2t) solves y''+2y'+5y=0",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t, 2) + 2 * diff(Y, t) + 5 * Y)
+        )(exp(-t) * (C1 * cos(2 * t) + C2 * sin(2 * t))),
+    ),
+    Check(
+        "c12 review quiz 3 feedback: y_p=2e^t solves y''+3y'+2y=12e^t; L{12e^t}=12/(s-1)",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t, 2) + 3 * diff(Y, t) + 2 * Y - 12 * exp(t))
+            and laplace_matches(12 * exp(t), 12 / (s - 1))
+        )(2 * exp(t)),
+    ),
+    Check(
+        "c12 review quiz 4 feedback: y=C1 e^(-t^2/2) solves y'+ty=0",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t) + t * Y)
+        )(C1 * exp(-(t**2) / 2)),
+    ),
+    Check(
+        "c12 review quiz 5 feedback: y=c1 cos 3t+c2 sin 3t solves y''+9y=0",
+        "source/c12-ltp/review-choosing-a-method.ptx",
+        lambda: (
+            lambda Y: is_zero(diff(Y, t, 2) + 9 * Y)
+        )(C1 * cos(3 * t) + C2 * sin(3 * t)),
     ),
 ]
 

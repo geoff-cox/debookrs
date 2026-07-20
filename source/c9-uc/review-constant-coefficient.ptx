@@ -1,0 +1,459 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section xml:id="cc-mixed-review">
+	<title>Mixed Review: Choosing Your Method</title>
+
+	<introduction>
+		<p>
+			The last two chapters more than doubled your toolkit. On top of the first-order methods—direct integration, separation of variables, and the integrating factor—you can now solve any <xref ref="def-lhcc-eqn" text="custom">LHCC equation</xref> with the characteristic equation, and any LNCC equation whose forcing function fits the <xref ref="uc-method-exploration" text="custom">Method of Undetermined Coefficients</xref>. With more tools comes a new burden: an exam problem won't tell you which one to pull out. This review practices making that call.
+		</p>
+
+		<p>
+			The decision comes down to three questions: <em>What is the order? Is the equation linear with constant coefficients? What does the forcing function look like?</em> The table below extends the <q>which method?</q> flowchart from the <xref ref="fo-mixed-review" text="custom">first-order mixed review</xref> to cover everything you know so far.
+		</p>
+
+		<tabular halign="left" top="minor" bottom="minor" left="minor" right="minor">
+			<col width="42%" />
+			<col width="58%" />
+			<row header="yes" bottom="medium">
+				<cell>If the equation is …</cell>
+				<cell>then …</cell>
+			</row>
+			<row>
+				<cell><p><em>first order</em></p></cell>
+				<cell><p>walk the <xref ref="fo-mixed-review" text="custom">first-order flowchart</xref>: direct integration <m>\rightarrow</m> separation of variables <m>\rightarrow</m> integrating factor.</p></cell>
+			</row>
+			<row>
+				<cell><p>linear, constant coefficients, forcing <m>= 0</m> (<em>LHCC</em>, any order)</p></cell>
+				<cell><p>solve the <xref ref="characteristic-equation" text="custom">characteristic equation</xref> and build the general solution from its roots.</p></cell>
+			</row>
+			<row>
+				<cell><p>linear, constant coefficients, forcing <m>f(x)</m> built from polynomials, exponentials, sines, and cosines (<em>LNCC</em>)</p></cell>
+				<cell><p>build <m>y = y_h + y_p</m>: characteristic equation for <m>y_h</m>, then <xref ref="uc-method-exploration" text="custom">undetermined coefficients</xref> for <m>y_p</m>.</p></cell>
+			</row>
+			<row>
+				<cell><p>anything else: variable coefficients, a nonlinear term, or a forcing function outside that family</p></cell>
+				<cell><p>none of our formula methods apply yet—reach for qualitative or numerical tools, and watch for the Laplace transform in <xref ref="chpt-laplace-transforms" text="custom">upcoming chapters</xref>.</p></cell>
+			</row>
+		</tabular>
+
+		<p>
+			One habit worth keeping: a first-order linear equation with constant coefficients, like <m>y' + 3y = 6</m>, belongs to <em>both</em> toolkits. The integrating factor method and <m>y_h + y_p</m> reasoning give the same answer—being able to see it both ways is a good sign you understand each method.
+		</p>
+	</introduction>
+
+	<exercises label="cc-review-quiz">
+		<title><e component="emoji">💡</e> Which Method? Quiz</title>
+
+		<introduction>
+			<p>
+				For each differential equation, choose the best plan of attack. <em>Do not solve any of the equations</em>—practice making the call the way you would on an exam.
+			</p>
+		</introduction>
+
+		<exercise label="cc-review-wm">
+
+			<task label="cc-review-wm-01">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<me>y'' - 5y' + 6y = 0</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Characteristic equation—this is an LHCC equation.</statement>
+						<feedback>Correct! Linear, constant coefficients, zero forcing. The characteristic equation <m>r^2 - 5r + 6 = 0</m> hands you the general solution.</feedback>
+					</choice>
+					<choice>
+						<statement>Undetermined coefficients, to find <m>y_p</m>.</statement>
+						<feedback>The forcing function is <m>0</m>, so there is no <m>y_p</m> to find—the homogeneous solution is the whole story.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor.</statement>
+						<feedback>The integrating factor method is a first-order tool; this equation is second order.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables.</statement>
+						<feedback>Separation of variables is a first-order tool; this equation is second order.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-02">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<me>y'' - 5y' + 6y = e^{x}</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Characteristic equation for <m>y_h</m>, then undetermined coefficients with guess <m>y_p = Ae^{x}</m>.</statement>
+						<feedback>Correct! This is an LNCC equation whose forcing function <m>e^x</m> is in the undetermined-coefficients family, and <m>e^x</m> does not overlap <m>y_h = C_1 e^{2x} + C_2 e^{3x}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Characteristic equation alone—the general solution comes entirely from its roots.</statement>
+						<feedback>The roots only produce <m>y_h</m>. With a nonzero forcing function you also need a particular solution: <m>y = y_h + y_p</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor with <m>\mu = e^{\int -5\, dx}</m>.</statement>
+						<feedback>The integrating factor method is a first-order tool; this equation is second order.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Check the table: linear, constant coefficients, and <m>e^x</m> is squarely in the undetermined-coefficients family.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-03">
+				<title>Two Toolkits, One Equation</title>
+				<statement>
+					<p>
+						Which statement is true about the equation below?
+						<me>y' + 3y = 6</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Both the integrating factor method and <m>y_h + y_p</m> reasoning (undetermined coefficients) apply.</statement>
+						<feedback>Correct! It's first-order linear, so <m>\mu = e^{3x}</m> works—and it's also an LNCC equation with constant forcing, so <m>y_h = Ce^{-3x}</m> plus the constant guess <m>y_p = A</m> works too. Both give <m>y = 2 + Ce^{-3x}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Only the integrating factor method applies, because the equation is first order.</statement>
+						<feedback>First order doesn't disqualify the new machinery: this is a linear constant-coefficient equation with constant forcing, so <m>y_h + y_p</m> reasoning applies just as well.</feedback>
+					</choice>
+					<choice>
+						<statement>Only undetermined coefficients applies, because the forcing function is a constant.</statement>
+						<feedback>Undetermined coefficients works here, but so does the integrating factor method—the equation is first-order linear.</feedback>
+					</choice>
+					<choice>
+						<statement>Neither method applies.</statement>
+						<feedback>Quite the opposite—this equation belongs to both toolkits. Check the linearity and coefficient tests again.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-04">
+				<title>Know the Limits of the Guess</title>
+				<statement>
+					<p>
+						<me>y'' + 4y = \tan x</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>The characteristic equation gives <m>y_h</m>, but none of our methods produce <m>y_p</m>.</statement>
+						<feedback>Correct! The forcing function <m>\tan x</m> is not built from polynomials, exponentials, sines, and cosines, so undetermined coefficients has no form to guess. Equations like this need a method beyond our current toolkit (its name, for the curious: <em>variation of parameters</em>).</feedback>
+					</choice>
+					<choice>
+						<statement>Undetermined coefficients with guess <m>y_p = A\tan x + B\sec x</m>.</statement>
+						<feedback>Tempting, but derivatives of <m>\tan x</m> generate an endless stream of new function types—the guess never closes. Undetermined coefficients only works for forcing functions whose derivative families are finite: polynomials, exponentials, sines, and cosines.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables.</statement>
+						<feedback>Separation of variables is a first-order tool; this equation is second order.</feedback>
+					</choice>
+					<choice>
+						<statement>No method applies, not even for <m>y_h</m>.</statement>
+						<feedback>The homogeneous side is a perfectly good LHCC equation—<m>y_h = C_1\cos 2x + C_2 \sin 2x</m>. It's only the particular solution that's out of reach.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-05">
+				<title>Check the Fine Print</title>
+				<statement>
+					<p>
+						<me>y'' + y^2 = 0</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>None of our methods apply—the equation is nonlinear.</statement>
+						<feedback>Correct! The <m>y^2</m> term makes this nonlinear, and the characteristic equation shortcut is built on linearity. Substituting <m>y = e^{rx}</m> here would give <m>r^2 e^{rx} + e^{2rx} = 0</m>, which no constant <m>r</m> can satisfy.</feedback>
+					</choice>
+					<choice>
+						<statement>Characteristic equation: <m>r^2 + r^2 = 0</m>.</statement>
+						<feedback>Careful—<m>y^2</m> is the <em>square of the function</em>, not a second derivative. The equation is nonlinear, and the characteristic equation only applies to linear constant-coefficient equations.</feedback>
+					</choice>
+					<choice>
+						<statement>Undetermined coefficients.</statement>
+						<feedback>Undetermined coefficients builds particular solutions for <em>linear</em> equations with forcing; here the equation is nonlinear with no forcing at all.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration, twice.</statement>
+						<feedback>Integrating twice would need the right side free of <m>y</m>; the <m>y^2</m> term blocks that.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-06">
+				<title>Check the Fine Print</title>
+				<statement>
+					<p>
+						<me>x\, y'' + y' = 0</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>The characteristic-equation method does not apply—the coefficients are not constant.</statement>
+						<feedback>Correct! The leading coefficient is <m>x</m>, not a constant, so the exponential-guess machinery breaks down. (If you're curious: the substitution <m>v = y'</m> turns this into the separable first-order equation <m>x v' + v = 0</m>, leading to <m>y = C\ln x + D</m> for <m>x \gt 0</m>.)</feedback>
+					</choice>
+					<choice>
+						<statement>Characteristic equation: <m>xr^2 + r = 0</m>.</statement>
+						<feedback>A characteristic equation must have constant coefficients—an <m>x</m> inside means the method was never valid to begin with.</feedback>
+					</choice>
+					<choice>
+						<statement>Undetermined coefficients.</statement>
+						<feedback>Undetermined coefficients assumes constant coefficients and a nonzero forcing function; this equation has neither.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor, directly on <m>y''</m>.</statement>
+						<feedback>The integrating factor method as we know it handles <em>first-order</em> linear equations. (There is a first-order equation hiding here, though—what happens if you rename <m>y'</m> as a new unknown?)</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="cc-review-wm-07">
+				<title>Any Order Welcome</title>
+				<statement>
+					<p>
+						<me>y''' - y' = 0</me>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Characteristic equation—it works for LHCC equations of any order.</statement>
+						<feedback>Correct! <m>r^3 - r = r(r-1)(r+1) = 0</m> gives roots <m>0, 1, -1</m>, so <m>y = C_1 + C_2 e^{x} + C_3 e^{-x}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>No method applies—the characteristic equation only handles second-order equations.</statement>
+						<feedback>The characteristic equation scales to any order: an order-<m>n</m> LHCC equation gives a degree-<m>n</m> polynomial with <m>n</m> roots and <m>n</m> terms in the general solution.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration, three times.</statement>
+						<feedback>After one integration you'd have <m>y'' - y = C</m>, which still involves <m>y</m>—direct integration can't finish the job.</feedback>
+					</choice>
+					<choice>
+						<statement>Undetermined coefficients.</statement>
+						<feedback>The forcing function is <m>0</m>, so there is no particular solution to build—the characteristic equation alone gives the general solution.</feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</exercises>
+
+	<exercises label="cc-review-problems">
+		<title><e component="emoji">✍🏻</e> Mixed Problem Set</title>
+
+		<exercisegroup cols="2" label="cc-review-mixed">
+			<title>Choose, Then Solve</title>
+
+			<introduction>
+				<p>
+					Find the general solution of each equation (or the particular solution where initial conditions are given). No method is announced—begin each solution by naming the method you chose and the feature of the equation that told you it applies.
+				</p>
+			</introduction>
+
+			<exercise label="cc-review-mixed-1">
+				<statement>
+					<p>
+						<m>y'' - y' - 6y = 0</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> linear, constant coefficients, zero forcing—an LHCC equation, so we solve the characteristic equation.
+					</p>
+					<p>
+						<me>r^2 - r - 6 = (r - 3)(r + 2) = 0 \quad\implies\quad r = 3,\ -2</me>
+					</p>
+					<p>
+						Two distinct real roots contribute two exponentials:
+						<me>y = C_1 e^{3x} + C_2 e^{-2x}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>Characteristic equation; <m>y = C_1 e^{3x} + C_2 e^{-2x}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-2">
+				<statement>
+					<p>
+						<m>y'' + 4y' + 13y = 0</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> LHCC equation, so we solve the characteristic equation.
+					</p>
+					<p>
+						<me>r^2 + 4r + 13 = 0 \quad\implies\quad r = \frac{-4 \pm \sqrt{16 - 52}}{2} = \frac{-4 \pm \sqrt{-36}}{2} = -2 \pm 3i</me>
+					</p>
+					<p>
+						Complex roots <m>\alpha \pm \beta i = -2 \pm 3i</m> contribute an exponential envelope times sines and cosines:
+						<me>y = e^{-2x}\left(C_1 \cos 3x + C_2 \sin 3x\right)</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>Characteristic equation (complex roots); <m>y = e^{-2x}\left(C_1 \cos 3x + C_2 \sin 3x\right)</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-3">
+				<statement>
+					<p>
+						<m>y'' + 6y' + 9y = 0</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> LHCC equation, so we solve the characteristic equation.
+					</p>
+					<p>
+						<me>r^2 + 6r + 9 = (r + 3)^2 = 0 \quad\implies\quad r = -3 \text{ (repeated)}</me>
+					</p>
+					<p>
+						A repeated root contributes <m>e^{rx}</m> and <m>xe^{rx}</m>:
+						<me>y = \left(C_1 + C_2 x\right) e^{-3x}</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>Characteristic equation (repeated root); <m>y = \left(C_1 + C_2 x\right)e^{-3x}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-4">
+				<statement>
+					<p>
+						<m>y'' - 3y' + 2y = 4x</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> linear with constant coefficients and polynomial forcing—an LNCC equation, so we build <m>y = y_h + y_p</m> using undetermined coefficients.
+					</p>
+					<p>
+						<em>Homogeneous part:</em> <m>r^2 - 3r + 2 = (r-1)(r-2) = 0</m>, so <m>y_h = C_1 e^{x} + C_2 e^{2x}</m>.
+					</p>
+					<p>
+						<em>Particular part:</em> the forcing <m>4x</m> is a first-degree polynomial, so guess <m>y_p = Ax + B</m>. Substituting (<m>y_p'' = 0</m>, <m>y_p' = A</m>):
+						<md>
+							<mrow>0 - 3A + 2(Ax + B) \amp = 4x</mrow>
+							<mrow>2A x + \left(2B - 3A\right) \amp = 4x</mrow>
+						</md>
+						Matching coefficients: <m>2A = 4</m> gives <m>A = 2</m>, and <m>2B - 3A = 0</m> gives <m>B = 3</m>.
+					</p>
+					<p>
+						<me>y = C_1 e^{x} + C_2 e^{2x} + 2x + 3</me>
+					</p>
+				</solution>
+				<answer>
+					<p>Undetermined coefficients; <m>y = C_1 e^{x} + C_2 e^{2x} + 2x + 3</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-5">
+				<statement>
+					<p>
+						<m>y'' - 4y = 8e^{2x}</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> LNCC equation with exponential forcing—undetermined coefficients, but watch for overlap with <m>y_h</m>.
+					</p>
+					<p>
+						<em>Homogeneous part:</em> <m>r^2 - 4 = 0</m> gives <m>r = \pm 2</m>, so <m>y_h = C_1 e^{2x} + C_2 e^{-2x}</m>.
+					</p>
+					<p>
+						<em>Particular part:</em> the natural guess <m>Ae^{2x}</m> collides with the <m>C_1 e^{2x}</m> term of <m>y_h</m>, so multiply by <m>x</m>: guess <m>y_p = Axe^{2x}</m>. Then
+						<md>
+							<mrow>y_p' \amp = Ae^{2x}\left(1 + 2x\right)</mrow>
+							<mrow>y_p'' \amp = Ae^{2x}\left(4 + 4x\right)</mrow>
+						</md>
+						and substituting,
+						<me>y_p'' - 4y_p = Ae^{2x}\left(4 + 4x\right) - 4Axe^{2x} = 4Ae^{2x} = 8e^{2x} \quad\implies\quad A = 2</me>.
+					</p>
+					<p>
+						<me>y = C_1 e^{2x} + C_2 e^{-2x} + 2xe^{2x}</me>
+					</p>
+				</solution>
+				<answer>
+					<p>Undetermined coefficients with an overlap adjustment; <m>y = C_1 e^{2x} + C_2 e^{-2x} + 2xe^{2x}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-6">
+				<statement>
+					<p>
+						<m>y' - 2y = 4, \quad y(0) = 5</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> don't let two chapters of second-order machinery hide the obvious—this is a <em>first-order linear</em> equation. The integrating factor method applies (and so does <m>y_h + y_p</m> reasoning; we show both).
+					</p>
+					<p>
+						<em>Integrating factor route:</em> <m>\mu = e^{\int -2\, dx} = e^{-2x}</m>, so
+						<md>
+							<mrow>\frac{d}{dx}\left[e^{-2x} y\right] \amp = 4e^{-2x}</mrow>
+							<mrow>e^{-2x} y \amp = -2e^{-2x} + C</mrow>
+							<mrow>y \amp = -2 + Ce^{2x}</mrow>
+						</md>
+					</p>
+					<p>
+						<em>The <m>y_h + y_p</m> view:</em> the characteristic equation <m>r - 2 = 0</m> gives <m>y_h = Ce^{2x}</m>, and the constant guess <m>y_p = A</m> forces <m>-2A = 4</m>, so <m>y_p = -2</m>. Same general solution.
+					</p>
+					<p>
+						Applying <m>y(0) = 5</m>: <m>5 = -2 + C</m>, so <m>C = 7</m> and
+						<me>y = 7e^{2x} - 2</me>.
+					</p>
+				</solution>
+				<answer>
+					<p>Integrating factor (or first-order <m>y_h + y_p</m>); <m>y = 7e^{2x} - 2</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="cc-review-mixed-7">
+				<statement>
+					<p>
+						<m>y'' + y = 5\sin 2x</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> LNCC equation with sinusoidal forcing—undetermined coefficients. The forcing frequency (<m>2</m>) differs from the natural frequency in <m>y_h</m> (<m>1</m>), so no overlap adjustment is needed.
+					</p>
+					<p>
+						<em>Homogeneous part:</em> <m>r^2 + 1 = 0</m> gives <m>r = \pm i</m>, so <m>y_h = C_1 \cos x + C_2 \sin x</m>.
+					</p>
+					<p>
+						<em>Particular part:</em> guess <m>y_p = A\sin 2x + B\cos 2x</m>. Then <m>y_p'' = -4A\sin 2x - 4B\cos 2x</m>, and
+						<me>y_p'' + y_p = -3A\sin 2x - 3B\cos 2x = 5\sin 2x</me>
+						forces <m>A = -\frac{5}{3}</m> and <m>B = 0</m>.
+					</p>
+					<p>
+						<me>y = C_1 \cos x + C_2 \sin x - \frac{5}{3}\sin 2x</me>
+					</p>
+				</solution>
+				<answer>
+					<p>Undetermined coefficients; <m>y = C_1 \cos x + C_2 \sin x - \dfrac{5}{3}\sin 2x</m>.</p>
+				</answer>
+			</exercise>
+		</exercisegroup>
+	</exercises>
+</section>

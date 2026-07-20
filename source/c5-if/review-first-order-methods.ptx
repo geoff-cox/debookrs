@@ -1,0 +1,487 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section xml:id="fo-mixed-review">
+	<title>Mixed Review: Choosing Your Method</title>
+
+	<introduction>
+		<p>
+			You now own three solution methods: <xref ref="di-method" text="custom">direct integration</xref>, <xref ref="sov-method" text="custom">separation of variables</xref>, and the <xref ref="if-method-exploration" text="custom">integrating factor method</xref>. Each one was introduced in its own chapter, where every practice problem conveniently matched the method being taught. Exams are rarely so polite. A typical exam problem hands you an equation and asks only: <q>solve it.</q> Deciding <em>which</em> tool fits is a skill of its own, and this review is where you practice it.
+		</p>
+
+		<p>
+			The flowchart below organizes the decision. Each method has an entrance requirement: direct integration needs the equation to already be a single derivative, separation of variables needs the form <m>\frac{dy}{dx} = f(x)\cdot g(y)</m>, and the integrating factor method needs a first-order <em>linear</em> equation <m>y' + P(x)y = Q(x)</m>. Think of an equation you'd like to classify, then walk the chart by answering each highlighted question with the <c>Yes</c>/<c>No</c> buttons; press <c>Reset</c> to start over with a new equation.
+		</p>
+
+		<figure xml:id="method-flowchart">
+			<caption>The <q>Which Method?</q> flowchart. Answer each highlighted question with the <c>Yes</c>/<c>No</c> buttons to find the right tool; press <c>Reset</c> to start over with a new equation.</caption>
+			<sidebyside width="90%">
+				<p>
+					<interactive xml:id="method-flowchart-interactive"
+						platform="jsxgraph"
+						aspect="1.3:1"
+						dark-mode-enabled="yes"
+						source="code/jsxgraph/method-flowchart/method-flowchart.js"
+					>
+						<slate xml:id="method-flowchart-plot1" surface="jsxboard" aspect="1.31:1" />
+						<instructions>
+							<p>
+								Interactive decision-tree flowchart for choosing a first-order solution method. Starting from a given differential equation, it asks in order: Is the equation first order? If no, higher-order tools come in later chapters. Is it already a derivative of the form d/dx of something equals f of x? If yes, use direct integration. Is it separable? If yes, use separation of variables. Is it linear? If yes, use the integrating factor method; if no, use qualitative or numerical tools. Yes and No buttons advance the highlighted question and the chosen path is highlighted in green.
+							</p>
+						</instructions>
+					</interactive>
+				</p>
+			</sidebyside>
+		</figure>
+
+		<p>
+			Two notes before you start practicing.
+			<ul>
+				<li>
+					<p>
+						Some equations qualify for more than one method. If an equation is both separable and linear, either tool reaches the same general solution—pick whichever integrals look friendlier.
+					</p>
+				</li>
+				<li>
+					<p>
+						If an equation fails every test in the chart, that doesn't mean it's hopeless—it means none of our <em>formula</em> methods apply. The next two chapters build tools for exactly this situation: <xref ref="chpt-qualitative" text="custom">qualitative methods</xref> to describe how solutions behave, and <xref ref="chpt-eulers-method" text="custom">Euler's method</xref> to approximate them numerically.
+					</p>
+				</li>
+			</ul>
+		</p>
+
+		<p>
+			The <xref ref="if-drill-which-method" text="custom">Which Method Applies</xref> drills earlier in this chapter are the perfect companion to the flowchart—work them alongside this review if you haven't already.
+		</p>
+	</introduction>
+
+	<exercises label="fo-review-quiz">
+		<title><e component="emoji">💡</e> Which Method? Quiz</title>
+
+		<introduction>
+			<p>
+				For each differential equation, choose the best plan of attack. <em>Do not solve any of the equations</em>—the goal is to make the call quickly, the way you would when first reading an exam problem.
+			</p>
+		</introduction>
+
+		<exercise label="fo-review-wm">
+
+			<task label="fo-review-wm-01">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<md>\frac{dy}{dx} = x^2 e^{-x}</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Direct integration.</statement>
+						<feedback>Correct! The right-hand side involves only <m>x</m>, so integrating both sides gives the general solution.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables (and direct integration won't work).</statement>
+						<feedback>Separation technically applies with <m>g(y) = 1</m>, but there's nothing to separate—the equation is already set up to integrate directly.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor, since the equation is linear.</statement>
+						<feedback>The equation is linear, but with no <m>y</m> term at all there's nothing for an integrating factor to fix—just integrate both sides.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Look again: the right-hand side is a function of <m>x</m> alone.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-02">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<md>\frac{dy}{dx} = x y^2</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Separation of variables.</statement>
+						<feedback>Correct! The right side is the product <m>f(x)\cdot g(y)</m> with <m>f(x) = x</m> and <m>g(y) = y^2</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor.</statement>
+						<feedback>The <m>y^2</m> term makes this equation nonlinear, so the integrating factor method does not apply.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration.</statement>
+						<feedback>The right side involves <m>y</m>, so we cannot simply integrate both sides with respect to <m>x</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Check the separability test: can the right side be written as (a function of <m>x</m>) <m>\times</m> (a function of <m>y</m>)?</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-03">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<md>y' + 3y = e^{2x}</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Integrating factor.</statement>
+						<feedback>Correct! The equation is first-order linear, already in standard form with <m>P(x) = 3</m>, and it is not separable.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables.</statement>
+						<feedback>Isolating the derivative gives <m>y' = e^{2x} - 3y</m>, a <em>difference</em>, not a product of an <m>x</m>-part and a <m>y</m>-part. Not separable.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration.</statement>
+						<feedback>The left side is not the derivative of a single expression as written—that's exactly what multiplying by an integrating factor will fix.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Check the linearity test: <m>y</m> and <m>y'</m> each appear once, to the first power.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-04">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<md>x\, y' = y + x^2 \sin x</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Integrating factor.</statement>
+						<feedback>Correct! Dividing by <m>x</m> gives the standard form <m>y' - \frac{1}{x}y = x\sin x</m>, which is linear but not separable.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables.</statement>
+						<feedback>Isolating the derivative gives <m>y' = \frac{y}{x} + x\sin x</m>, a sum that cannot be factored into <m>f(x)\cdot g(y)</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration.</statement>
+						<feedback>The right side involves <m>y</m>, so both sides cannot be integrated as-is.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Try dividing both sides by <m>x</m> and rearranging into standard linear form.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-05">
+				<title>Pick the Method</title>
+				<statement>
+					<p>
+						<md>\frac{dy}{dx} = \left(1 + y^2\right) e^{x}</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Separation of variables.</statement>
+						<feedback>Correct! The right side factors as <m>f(x)\cdot g(y)</m> with <m>f(x) = e^x</m> and <m>g(y) = 1 + y^2</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor.</statement>
+						<feedback>The <m>y^2</m> term makes the equation nonlinear, so the integrating factor method is out.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration.</statement>
+						<feedback>The right side involves <m>y</m>, so we cannot simply integrate both sides.</feedback>
+					</choice>
+					<choice>
+						<statement>None of our methods apply.</statement>
+						<feedback>Check the separability test—the right side is already factored for you.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-06">
+				<title>More Than One Way</title>
+				<statement>
+					<p>
+						<md>\frac{dy}{dx} = 2y</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>Either separation of variables or an integrating factor—both apply.</statement>
+						<feedback>Correct! It separates as <m>\frac{dy}{y} = 2\,dx</m>, and rewriting it as <m>y' - 2y = 0</m> shows it's also first-order linear. Both routes give <m>y = Ce^{2x}</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables only.</statement>
+						<feedback>Separation works, but so does an integrating factor: <m>y' - 2y = 0</m> is first-order linear with <m>Q(x) = 0</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor only.</statement>
+						<feedback>An integrating factor works, but so does separation: <m>\frac{dy}{y} = 2\,dx</m>.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration only.</statement>
+						<feedback>The right side involves <m>y</m>, so direct integration is the one method that <em>doesn't</em> apply here.</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-07">
+				<title>The Fastest Route</title>
+				<statement>
+					<p>
+						This equation can be solved by more than one of our methods. Which observation gives the <em>fastest</em> route to the solution?
+						<md>x^2 y' + 2x y = 4x</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>The left side is already the derivative <m>\frac{d}{dx}\left[x^2 y\right]</m>, so integrate both sides directly.</statement>
+						<feedback>Correct! The left side is a completed product rule, so direct integration gives <m>x^2 y = 2x^2 + C</m> in one step. Always scan for this shortcut first.</feedback>
+					</choice>
+					<choice>
+						<statement>Divide by <m>x^2</m> to reach standard form, then compute the integrating factor <m>\mu(x)</m>.</statement>
+						<feedback>This works—but the integrating factor you'd build is <m>x^2</m>, which the equation already has in place! Recognizing the completed product rule skips the whole computation.</feedback>
+					</choice>
+					<choice>
+						<statement>Isolate <m>y'</m> and separate the variables.</statement>
+						<feedback>Surprisingly, this works too: <m>y' = \frac{2(2 - y)}{x}</m> is separable. But it's the slowest route—look at the left side of the original equation again.</feedback>
+					</choice>
+					<choice>
+						<statement>No method applies without more information.</statement>
+						<feedback>Look at the left side: does it match the expanded form of a product rule?</feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="fo-review-wm-08">
+				<title>Know When to Fold</title>
+				<statement>
+					<p>
+						<md>y' = y^2 + x</md>
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement>None of our formula methods apply.</statement>
+						<feedback>Correct! The <m>y^2</m> term rules out linearity, and <m>y^2 + x</m> is a sum that won't factor into <m>f(x)\cdot g(y)</m>. Equations like this are why the next two chapters develop qualitative and numerical tools.</feedback>
+					</choice>
+					<choice>
+						<statement>Separation of variables.</statement>
+						<feedback>The right side <m>y^2 + x</m> is a sum, not a product of an <m>x</m>-part and a <m>y</m>-part—it cannot be separated.</feedback>
+					</choice>
+					<choice>
+						<statement>Integrating factor.</statement>
+						<feedback>The <m>y^2</m> term makes the equation nonlinear, so the integrating factor method does not apply.</feedback>
+					</choice>
+					<choice>
+						<statement>Direct integration.</statement>
+						<feedback>The right side involves <m>y</m>, so both sides cannot simply be integrated with respect to <m>x</m>.</feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</exercises>
+
+	<exercises label="fo-review-problems">
+		<title><e component="emoji">✍🏻</e> Mixed Problem Set</title>
+
+		<exercisegroup cols="2" label="fo-review-mixed">
+			<title>Choose, Then Solve</title>
+
+			<introduction>
+				<p>
+					Solve each equation. No method is announced—begin each solution by naming the method you chose and the feature of the equation that told you it applies.
+				</p>
+			</introduction>
+
+			<exercise label="fo-review-mixed-1">
+				<statement>
+					<p>
+						<m>\dfrac{dy}{dx} = 6x^2 - 4x + 1, \quad y(1) = 2</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> the right-hand side involves only <m>x</m>, so this is a job for <em>direct integration</em>.
+					</p>
+					<p>
+						Integrating both sides,
+						<md>y = \int \left(6x^2 - 4x + 1\right) dx = 2x^3 - 2x^2 + x + C</md>.
+					</p>
+					<p>
+						Applying <m>y(1) = 2</m>:
+						<md>2 = 2(1)^3 - 2(1)^2 + 1 + C = 1 + C \quad\implies\quad C = 1</md>.
+					</p>
+					<p>
+						The particular solution is <m>y = 2x^3 - 2x^2 + x + 1</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>Direct integration; <m>y = 2x^3 - 2x^2 + x + 1</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="fo-review-mixed-2">
+				<statement>
+					<p>
+						<m>\dfrac{dy}{dx} = -\dfrac{x}{y}, \quad y(0) = 3</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> the right side factors as <m>(-x)\cdot\frac{1}{y}</m>, and the <m>\frac{1}{y}</m> factor makes the equation nonlinear—so <em>separation of variables</em> is the tool.
+					</p>
+					<p>
+						Separating and integrating,
+						<md>
+							<mrow>y\, dy \amp = -x\, dx</mrow>
+							<mrow>\frac{y^2}{2} \amp = -\frac{x^2}{2} + C_1</mrow>
+							<mrow>x^2 + y^2 \amp = C \qquad (C = 2C_1)</mrow>
+						</md>
+					</p>
+					<p>
+						Applying <m>y(0) = 3</m> gives <m>C = 9</m>, so the solution satisfies <m>x^2 + y^2 = 9</m>. Solving for <m>y</m> and choosing the branch through <m>(0, 3)</m>:
+						<md>y = \sqrt{9 - x^2}</md>.
+					</p>
+					<p>
+						The solution curve is the upper half of a circle of radius <m>3</m>, defined for <m>-3 \lt x \lt 3</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>Separation of variables; <m>x^2 + y^2 = 9</m>, so <m>y = \sqrt{9 - x^2}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="fo-review-mixed-3">
+				<statement>
+					<p>
+						<m>y' + 2y = 4, \quad y(0) = 1</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> this equation passes <em>two</em> tests. It is first-order linear (standard form with <m>P = 2</m>, <m>Q = 4</m>), and isolating the derivative gives <m>y' = 4 - 2y = -2(y - 2)</m>, which is separable. Either method works; we show both.
+					</p>
+					<p>
+						<em>Integrating factor route:</em> <m>\mu = e^{\int 2\, dx} = e^{2x}</m>, so
+						<md>
+							<mrow>\frac{d}{dx}\left[e^{2x} y\right] \amp = 4e^{2x}</mrow>
+							<mrow>e^{2x} y \amp = 2e^{2x} + C</mrow>
+							<mrow>y \amp = 2 + Ce^{-2x}</mrow>
+						</md>
+					</p>
+					<p>
+						<em>Separation route:</em>
+						<md>
+							<mrow>\frac{dy}{y - 2} \amp = -2\, dx</mrow>
+							<mrow>\ln|y - 2| \amp = -2x + C_1</mrow>
+							<mrow>y \amp = 2 + Ce^{-2x}</mrow>
+						</md>
+						where <m>C = \pm e^{C_1}</m> absorbs the sign, as usual.
+					</p>
+					<p>
+						Both routes agree. Applying <m>y(0) = 1</m>: <m>1 = 2 + C</m>, so <m>C = -1</m> and
+						<md>y = 2 - e^{-2x}</md>.
+					</p>
+				</solution>
+				<answer>
+					<p>Both separation of variables and the integrating factor method apply; <m>y = 2 - e^{-2x}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="fo-review-mixed-4">
+				<statement>
+					<p>
+						<m>x y' + 2y = x^2, \quad x \gt 0</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> dividing by <m>x</m> gives the standard linear form <m>y' + \frac{2}{x}y = x</m>. The right side of <m>y' = x - \frac{2}{x}y</m> is a difference, not a product, so separation fails—this is an <em>integrating factor</em> problem.
+					</p>
+					<p>
+						The integrating factor is
+						<md>\mu(x) = e^{\int \frac{2}{x} dx} = e^{2\ln x} = x^2</md>.
+					</p>
+					<p>
+						Multiplying the standard form by <m>x^2</m> completes the product rule:
+						<md>
+							<mrow>x^2 y' + 2x y \amp = x^3</mrow>
+							<mrow>\frac{d}{dx}\left[x^2 y\right] \amp = x^3</mrow>
+							<mrow>x^2 y \amp = \frac{x^4}{4} + C</mrow>
+							<mrow>y \amp = \frac{x^2}{4} + \frac{C}{x^2}</mrow>
+						</md>
+					</p>
+				</solution>
+				<answer>
+					<p>Integrating factor (<m>\mu = x^2</m>); <m>y = \dfrac{x^2}{4} + \dfrac{C}{x^2}</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="fo-review-mixed-5">
+				<statement>
+					<p>
+						<m>\dfrac{dy}{dx} = e^{\,x - y}</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> the exponent rule <m>e^{x-y} = e^x \cdot e^{-y}</m> reveals a product of an <m>x</m>-part and a <m>y</m>-part, so the equation is <em>separable</em>. (It is not linear: <m>y</m> sits inside an exponential.)
+					</p>
+					<p>
+						Separating and integrating,
+						<md>
+							<mrow>e^{y}\, dy \amp = e^{x}\, dx</mrow>
+							<mrow>e^{y} \amp = e^{x} + C</mrow>
+						</md>
+					</p>
+					<p>
+						Solving for <m>y</m> gives the general solution
+						<md>y = \ln\!\left(e^{x} + C\right)</md>.
+					</p>
+				</solution>
+				<answer>
+					<p>Separation of variables; <m>y = \ln\!\left(e^x + C\right)</m>.</p>
+				</answer>
+			</exercise>
+
+			<exercise label="fo-review-mixed-6">
+				<statement>
+					<p>
+						<m>e^x y' + e^x y = \cos x</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<em>Method selection:</em> before reaching for the integrating factor machinery, scan the left side: <m>e^x y' + e^x y</m> is exactly the expanded product rule for <m>\frac{d}{dx}\left[e^x y\right]</m>. The product rule is already complete, so <em>direct integration</em> finishes the job.
+					</p>
+					<p>
+						<md>
+							<mrow>\frac{d}{dx}\left[e^{x} y\right] \amp = \cos x</mrow>
+							<mrow>e^{x} y \amp = \sin x + C</mrow>
+							<mrow>y \amp = e^{-x}\left(\sin x + C\right)</mrow>
+						</md>
+					</p>
+					<p>
+						Had we not noticed, dividing by <m>e^x</m> would give standard form <m>y' + y = e^{-x}\cos x</m>, whose integrating factor <m>\mu = e^{x}</m> rebuilds the original equation—a longer road to the same place.
+					</p>
+				</solution>
+				<answer>
+					<p>Direct integration (the left side is <m>\frac{d}{dx}\left[e^x y\right]</m>); <m>y = e^{-x}\left(\sin x + C\right)</m>.</p>
+				</answer>
+			</exercise>
+		</exercisegroup>
+	</exercises>
+</section>
