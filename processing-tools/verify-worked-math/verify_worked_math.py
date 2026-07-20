@@ -745,6 +745,18 @@ REGISTRY += [
 ]
 
 
+# ----------------------------------------------------------------------
+# H10 — de-duplication pass: a copy-paste answer error corrected in c11
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c11 composite drill: L{ e^(2t) sin 4t } = 4/((s-2)^2+16) (fixed copy-paste answer)",
+        "source/c11-ltm/exercises-ltm.ptx",
+        lambda: laplace_matches(exp(2 * t) * sin(4 * t), 4 / ((s - 2) ** 2 + 16)),
+    ),
+]
+
+
 def main() -> int:
     failures = 0
     for check in REGISTRY:
