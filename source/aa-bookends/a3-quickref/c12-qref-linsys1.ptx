@@ -14,7 +14,129 @@
 
 	<worksheet><title>Key Terms &amp; Concepts</title>
 
+		<p>
+			<assemblage><title>✳️ Systems of Differential Equations</title>
+				<p>
+					<dl>
+						<li xml:id="summary-linsys-system"><title>System of Differential Equations</title>
+							<p>
+								A collection of differential equations that must be solved <em>together</em> because they track several unknowns that may influence each other. A two-variable first-order system has the form
+								<md>
+									<mrow>\frac{dx}{dt} \amp= a x + b y,</mrow>
+									<mrow>\frac{dy}{dt} \amp= c x + d y.</mrow>
+								</md>
+							</p>
+						</li>
+						<li xml:id="summary-linsys-coupling"><title>Coupling</title>
+							<p>
+								A system is <term>uncoupled</term> when neither equation contains the other's variable, <term>partially coupled</term> when the interaction runs one way, and <term>fully coupled</term> when both variables affect each other so that neither equation stands alone.
+							</p>
+						</li>
+						<li xml:id="summary-linsys-linear"><title>Linear System</title>
+							<p>
+								A system is <term>linear</term> if every equation is linear in its dependent variables — the unknowns and their derivatives appear without products, powers, or nonlinear functions. The <term>dimension</term> of the system is the number of dependent variables.
+							</p>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		</p>
 
+		<p>
+			<assemblage><title>✳️ Matrix Form</title>
+				<p>
+					<dl>
+						<li xml:id="summary-linsys-matrix-form"><title>Coefficient Matrix &amp; State Vector</title>
+							<p>
+								Collecting the constants into the <term>coefficient matrix</term> <m>A</m> and the unknowns into the <term>state vector</term> <m>\vec{X}</m> writes the whole system as one compact equation:
+								<md>
+									\frac{d\vec{X}}{dt} = A\vec{X}, \qquad
+									A = \begin{bmatrix} a \amp b \\ c \amp d \end{bmatrix}, \qquad
+									\vec{X} = \begin{bmatrix} x \\ y \end{bmatrix}.
+								</md>
+							</p>
+						</li>
+						<li xml:id="summary-linsys-second-order"><title>Second-Order Equation to a System</title>
+							<p>
+								Any higher-order equation becomes a first-order system by naming the derivatives as new variables. For <m>y'' + 3y' + 2y = 0</m>, let <m>u = y</m> and <m>v = y'</m>:
+								<md>
+									<mrow>u' \amp= v,</mrow>
+									<mrow>v' \amp= -2u - 3v.</mrow>
+								</md>
+							</p>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		</p>
+
+		<p>
+			<assemblage><title>✳️ The Eigenvalue Method</title>
+				<p>
+					<dl>
+						<li xml:id="summary-linsys-eigen"><title>Eigenvalues &amp; Eigenvectors</title>
+							<p>
+								Substituting the guess <m>\vec{X}(t) = \vec{v}\,e^{rt}</m> into <m>\vec{X}' = A\vec{X}</m> gives the eigenvalue equation
+								<md>
+									A\vec{v} = r\vec{v}.
+								</md>
+								The allowed exponential rates <m>r</m> are the <term>eigenvalues</term> of <m>A</m>; the matching vectors <m>\vec{v}</m> are the <term>eigenvectors</term>.
+							</p>
+						</li>
+						<li xml:id="summary-linsys-characteristic"><title>Characteristic Equation</title>
+							<p>
+								The eigenvalues are the roots of
+								<md>
+									\det(A - rI) = 0.
+								</md>
+							</p>
+						</li>
+						<li xml:id="summary-linsys-general-soln"><title>General Solution</title>
+							<p>
+								For real, distinct eigenvalues <m>r_1, r_2</m> with eigenvectors <m>\vec{v}_1, \vec{v}_2</m>,
+								<md>
+									\vec{X}(t) = C_1 \vec{v}_1 e^{r_1 t} + C_2 \vec{v}_2 e^{r_2 t}.
+								</md>
+								For a complex pair <m>r = a \pm bi</m>, the real part <m>a</m> sets a growth factor <m>e^{at}</m> and the imaginary part <m>b</m> produces rotation through <m>\cos(bt)</m> and <m>\sin(bt)</m>.
+							</p>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		</p>
+
+		<p>
+			<assemblage><title>✳️ Qualitative Behavior in the Phase Plane</title>
+				<p>
+					A solution traces a <term>trajectory</term> through the <term>phase plane</term> (the <m>xy</m>-plane); the collection of all trajectories is the <term>phase portrait</term>. For a <m>2 \times 2</m> system with distinct eigenvalues, the eigenvalues classify the equilibrium at the origin:
+				</p>
+				<p>
+					<dl>
+						<li><title>Real, both negative <m>(r_1 &lt; r_2 &lt; 0)</m></title>
+							<p>Node (sink) — every trajectory slides into the origin.</p>
+						</li>
+						<li><title>Real, both positive <m>(0 &lt; r_1 &lt; r_2)</m></title>
+							<p>Node (source) — every trajectory flows away from the origin.</p>
+						</li>
+						<li><title>Real, opposite signs <m>(r_1 &lt; 0 &lt; r_2)</m></title>
+							<p>Saddle — drawn in along one eigenvector, flung out along the other.</p>
+						</li>
+						<li><title>Complex <m>r = a \pm bi</m>, <m>a &lt; 0</m></title>
+							<p>Spiral sink — trajectories loop inward as they decay.</p>
+						</li>
+						<li><title>Complex <m>r = a \pm bi</m>, <m>a &gt; 0</m></title>
+							<p>Spiral source — trajectories loop outward as they grow.</p>
+						</li>
+						<li><title>Purely imaginary <m>r = \pm bi</m></title>
+							<p>Center — trajectories orbit the origin in closed loops.</p>
+						</li>
+					</dl>
+				</p>
+				<p>
+					In short: the <em>real part</em> of each eigenvalue controls growth or decay, and a nonzero <em>imaginary part</em> adds rotation.
+				</p>
+			</assemblage>
+		</p>
 
 	</worksheet>
 
