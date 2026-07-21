@@ -10,16 +10,126 @@
   Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
 -->
-<subsubsection xml:id="quick-ref-ltp">
-	<title>Laplace Transforms</title>
+<subsubsection xml:id="quick-ref-ltp"><title>Piecewise Forcing Functions</title>
+
+	<worksheet><title>Key Terms &amp; Concepts</title>
 
 		<p>
-			<assemblage><title>✳️ Summary of the Key Ideas</title>
+			<assemblage><title>✳️ Piecewise &amp; Unit Step Functions</title>
 				<p>
-					<term> <em> PIECEWISE AND UNIT STEP STUFF </em> </term>
-						
+					<dl>
+						<li xml:id="summary-ltp-piecewise"><title>Piecewise Function</title>
+							<p>
+								A function built from different parts over specific regions of its domain. Each piece has its own behavior, but together they create the entire function.
+							</p>
+						</li>
+						<li xml:id="summary-ltp-unit-step"><title>Unit Step Function</title>
+							<p>
+								The <q>ON&#8211;OFF switch</q> that turns on at <m>t = c</m>:
+								<me>
+									u_c(t) = \begin{cases} 0, &amp; t \lt c \\ 1, &amp; t \ge c \end{cases}
+								</me>
+								with <m>u_0(t) = u(t)</m>.
+							</p>
+						</li>
+						<li xml:id="summary-ltp-switches"><title>ON–OFF Switches</title>
+							<p>
+								Combinations of unit steps turn pieces on over an interval:
+								<md>
+									<mrow>u_c(t) \amp\quad\text{ON for } [c, \infty),</mrow>
+									<mrow>u_c(t) - u_d(t) \amp\quad\text{ON for } [c, d),</mrow>
+									<mrow>1 - u_c(t) \amp\quad\text{ON for } (-\infty, c).</mrow>
+								</md>
+							</p>
+						</li>
+					</dl>
 				</p>
 			</assemblage>
 		</p>
+
+		<p>
+			<assemblage><title>✳️ Writing a Piecewise Function with Switches</title>
+				<p>
+					Multiply each piece by the switch for its active interval, then add the results. For a three-part function with cut points <m>c \lt d</m>:
+					<md>
+						<mrow>P(t) \text{ on } t \lt c \amp\ \longrightarrow\ P(t)\,\big(1 - u_c(t)\big),</mrow>
+						<mrow>Q(t) \text{ on } c \le t \lt d \amp\ \longrightarrow\ Q(t)\,\big(u_c(t) - u_d(t)\big),</mrow>
+						<mrow>R(t) \text{ on } t \ge d \amp\ \longrightarrow\ R(t)\,u_d(t).</mrow>
+					</md>
+				</p>
+			</assemblage>
+		</p>
+
+		<p>
+			<assemblage><title>✳️ Transform Rules for Step Functions</title>
+				<p>
+					<dl>
+						<li xml:id="summary-ltp-L9"><title>L<m>_9</m> — Transform of a Unit Step</title>
+							<p>
+								<me>
+									\lap{u_c(t)} = \frac{e^{-cs}}{s}, \qquad s \gt 0.
+								</me>
+							</p>
+						</li>
+						<li xml:id="summary-ltp-L10"><title>L<m>_{10}</m> — Forward Transform of <m>f(t)\,u_c(t)</m></title>
+							<p>
+								Used to transform a piecewise term. Replace <m>t</m> by <m>t + c</m> inside the function:
+								<me>
+									\lap{f(t)\,u_c(t)} = e^{-cs}\,\lap{f(t + c)}.
+								</me>
+							</p>
+						</li>
+						<li xml:id="summary-ltp-L11"><title>L<m>_{11}</m> — Shifted Function <m>f(t - c)\,u_c(t)</m></title>
+							<p>
+								Best suited to <em>inverse</em> transforms, where you match terms that look like <m>e^{-cs}F(s)</m>:
+								<me>
+									\lap{f(t - c)\,u_c(t)} = e^{-cs}F(s), \qquad F(s) = \lap{f(t)}.
+								</me>
+							</p>
+						</li>
+						<li xml:id="summary-ltp-inverse"><title>Reading L<m>_{11}</m> Backward</title>
+							<p>
+								An exponential factor <m>e^{-cs}</m> always brings in a switch <m>u_c(t)</m> and a shift by <m>c</m>:
+								<me>
+									\ilap{e^{-cs}F(s)} = f(t - c)\,u_c(t).
+								</me>
+							</p>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		</p>
+
+		<p>
+			<assemblage><title>✳️ Laplace Method with Piecewise Forcing</title>
+				<p>
+					The big picture is the same three-step Laplace method, with one setup step first.
+					<dl width="narrow">
+						<li xml:id="summary-ltp-setup"><title>Setup</title>
+							<p>
+								Rewrite the forcing term <m>g(t)</m> in unit step form, combining terms so you have the fewest possible switches.
+							</p>
+						</li>
+						<li xml:id="summary-ltp-step-1"><title>Step 1 — Forward Transform</title>
+							<p>
+								Transform the equation into the Laplace domain term-by-term, using the derivative rules with the initial conditions and <m>L_9</m> for the steps.
+							</p>
+						</li>
+						<li xml:id="summary-ltp-step-2"><title>Step 2 — Solve for <m>Y(s)</m></title>
+							<p>
+								Solve algebraically, then prepare each part as <m>F(s)\,e^{-cs}</m> — collect the exponential factors, partial-fraction decompose <m>F(s)</m>, and precompute <m>f(t) = \ilap{F(s)}</m>.
+							</p>
+						</li>
+						<li xml:id="summary-ltp-step-3"><title>Step 3 — Inverse Transform</title>
+							<p>
+								Invert each <m>F(s)\,e^{-cs}</m> with <m>L_{11}</m> to <m>f(t - c)\,u_c(t)</m>, recovering <m>y(t)</m>.
+							</p>
+						</li>
+					</dl>
+				</p>
+			</assemblage>
+		</p>
+
+	</worksheet>
 
 </subsubsection>
