@@ -745,6 +745,58 @@ REGISTRY += [
 ]
 
 
+# ----------------------------------------------------------------------
+# H10 — de-duplication pass: corrected/added answers
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c11 composite drill: L{ e^(2t) sin 4t } = 4/((s-2)^2+16) (fixed copy-paste answer)",
+        "source/c11-ltm/exercises-ltm.ptx",
+        lambda: laplace_matches(exp(2 * t) * sin(4 * t), 4 / ((s - 2) ** 2 + 16)),
+    ),
+    Check(
+        "c11 composite drill: combined y(t)=e^(2t)sin4t+(1/12)t^4 e^(-7t) -> Y(s)",
+        "source/c11-ltm/exercises-ltm.ptx",
+        lambda: laplace_matches(
+            exp(2 * t) * sin(4 * t) + R(1, 12) * t**4 * exp(-7 * t),
+            4 / ((s - 2) ** 2 + 16) + 2 / (s + 7) ** 5,
+        ),
+    ),
+    # New first-order direct-integration drills added to c3 (replacing the
+    # out-of-scope second-order drills that were re-homed to c2).
+    Check(
+        "c3 drill A1: y=2x^3+C solves dy/dx=6x^2",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(2 * x**3 + C1, x) - 6 * x**2),
+    ),
+    Check(
+        "c3 drill A2: y=(1/4)e^{4x}+C solves dy/dx=e^{4x}",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(R(1, 4) * exp(4 * x) + C1, x) - exp(4 * x)),
+    ),
+    Check(
+        "c3 drill A3: y=-(1/3)cos(3x)+C solves dy/dx=sin(3x)",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(-R(1, 3) * cos(3 * x) + C1, x) - sin(3 * x)),
+    ),
+    Check(
+        "c3 drill A4: y=ln|x|+C solves dy/dx=1/x",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(log(x) + C1, x) - 1 / x),
+    ),
+    Check(
+        "c3 drill B5: y=2x^2+C/x^2 solves d/dx[x^2 y]=8x^3",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(x**2 * (2 * x**2 + C1 / x**2), x) - 8 * x**3),
+    ),
+    Check(
+        "c3 drill B6: y=1+Ce^{-x} solves d/dx[e^x y]=e^x",
+        "source/c3-di/exercises-di.ptx",
+        lambda: is_zero(diff(exp(x) * (1 + C1 * exp(-x)), x) - exp(x)),
+    ),
+]
+
+
 def main() -> int:
     failures = 0
     for check in REGISTRY:
