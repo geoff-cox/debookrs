@@ -754,6 +754,14 @@ REGISTRY += [
         "source/c11-ltm/exercises-ltm.ptx",
         lambda: laplace_matches(exp(2 * t) * sin(4 * t), 4 / ((s - 2) ** 2 + 16)),
     ),
+    Check(
+        "c11 composite drill: combined y(t)=e^(2t)sin4t+(1/12)t^4 e^(-7t) -> Y(s)",
+        "source/c11-ltm/exercises-ltm.ptx",
+        lambda: laplace_matches(
+            exp(2 * t) * sin(4 * t) + R(1, 12) * t**4 * exp(-7 * t),
+            4 / ((s - 2) ** 2 + 16) + 2 / (s + 7) ** 5,
+        ),
+    ),
     # New first-order direct-integration drills added to c3 (replacing the
     # out-of-scope second-order drills that were re-homed to c2).
     Check(
