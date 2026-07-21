@@ -27,6 +27,31 @@
 			Before writing any formulas, it helps to <em>see</em> what Euler's method feels like. Think of Euler's method like crossing a landscape with only a compass. You know where you start. At each step, you check your direction (the slope from the differential equation), take a small stride that way, then check again. That back-and-forth of <q>step, check, adjust</q> is the rhythm of the method.
     </p>
 
+		<exercise label="eulers-method-chkpt-2">
+			<title><e component="emoji">📖❓</e> One Step of Euler's Method</title>
+			<statement>
+				<p>In the <q>step, check, adjust</q> rhythm just described, what does a single step of Euler's method do?</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><p>It checks the current slope (from the differential equation), takes a small stride in that direction, then re-checks the slope at the new point.</p></statement>
+					<feedback><p>This is exactly the <q>check direction, stride, check again</q> rhythm.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>It follows the exact solution curve to the next point, so no error is introduced.</p></statement>
+					<feedback><p>Each step moves along a straight line, not the true curve, which is why error can accumulate.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>It uses the slope at the destination point rather than at the current point.</p></statement>
+					<feedback><p>The slope is always taken at the current point before stepping.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>It advances all the way to the final <m>t</m>-value in a single stride.</p></statement>
+					<feedback><p>One step advances by only <m>h</m>; you repeat the step to cross the interval.</p></feedback>
+				</choice>
+			</choices>
+		</exercise>
+
 		<paragraphs>
 			<title>The Goal</title>
 			
@@ -383,6 +408,31 @@
 			<p>
 				Despite being based on a relatively simple idea, Euler's method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.
 			</p>
+
+		<exercise label="eulers-method-chkpt-3">
+			<title><e component="emoji">📖❓</e> One Euler Update</title>
+			<statement>
+				<p>For the initial value problem <m>y' = y + t</m>, <m>y(0) = 1</m> with step size <m>h = 0.5</m>, the update rule is <m>y_{k+1} = y_k + h\,f(t_k, y_k)</m> with <m>f(t, y) = y + t</m>. What is <m>y_1</m>, the approximation at <m>t = 0.5</m>?</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><p><m>1.5</m></p></statement>
+					<feedback><p><m>y_1 = 1 + 0.5\,(1 + 0) = 1.5</m>.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p><m>2.0</m></p></statement>
+					<feedback><p>This forgets to multiply the slope by <m>h</m>: it computes <m>1 + (1+0)</m> instead of <m>1 + 0.5\,(1+0)</m>.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p><m>1.0</m></p></statement>
+					<feedback><p>This uses only <m>t</m> for the slope, <m>1 + 0.5(0)</m>, instead of <m>f = y + t = 1</m>.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p><m>0.5</m></p></statement>
+					<feedback><p>This reports the change <m>h\,f = 0.5</m> rather than the new value <m>y_0 + h\,f</m>.</p></feedback>
+				</choice>
+			</choices>
+		</exercise>
 	</subsection>
 
 	<subsection label="eulers-method-examples">
@@ -653,6 +703,31 @@
 				</p>
 			</solution>
 		</example>
+
+		<exercise label="eulers-method-chkpt-4">
+			<title><e component="emoji">📖❓</e> Effect of Step Size</title>
+			<statement>
+				<p>In Example 2 (<m>y' + 4ty = 0</m>) the true value is <m>y(0.5) \approx 0.6065</m>. Euler's method gave <m>\approx 0.6529</m> with <m>h = 0.1</m> and <m>\approx 0.6069</m> with <m>h = 0.001</m>. What does this illustrate?</p>
+			</statement>
+			<choices randomize="yes">
+				<choice correct="yes">
+					<statement><p>Decreasing the step size <m>h</m> generally makes the approximation more accurate.</p></statement>
+					<feedback><p>The smaller step (<m>0.6069</m>) lands much closer to the true value (<m>0.6065</m>).</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>Increasing the step size <m>h</m> generally makes the approximation more accurate.</p></statement>
+					<feedback><p>The larger step <m>h = 0.1</m> gave the worse estimate (<m>0.6529</m>).</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>The step size has no effect on accuracy.</p></statement>
+					<feedback><p>The two step sizes gave clearly different errors.</p></feedback>
+				</choice>
+				<choice>
+					<statement><p>Euler's method returns the exact value regardless of step size.</p></statement>
+					<feedback><p>Even <m>h = 0.001</m> is only an approximation, not exact.</p></feedback>
+				</choice>
+			</choices>
+		</exercise>
 
 		<p>
 			Euler's method runs on an intuitive idea: use the slope at each point to <q>predict</q> the next point. It's simple, but that simplicity is its strength. This method is often the first stepping stone into the world of <xref ref="gi-numerical-method" text="custom">numerical methods</xref>, and the same <q>predict, step, repeat</q> pattern forms the backbone of many other techniques.
