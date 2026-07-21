@@ -16,8 +16,8 @@ one of two shapes seen in history::
     H8 (part 1): Backfill missing answers ... (#192)      # multi-part task
 
 The matcher therefore looks for the id as a standalone token anywhere in the
-subject (left boundary = start or non-alphanumeric; right boundary = not a
-digit, so ``H1`` never matches ``H10``), and records the ``(#NNN)`` pull
+subject (both boundaries = start/end of string or a non-alphanumeric, so
+``H1`` never matches ``H10`` or ``H1b``), and records the ``(#NNN)`` pull
 request number when present. A task with two or more matching commits (e.g.
 ``H8``) is reported done with every pull request listed.
 
@@ -94,8 +94,8 @@ def parse_tasks(report_text):
 
 def match_status(task_id, subjects):
     """Return a list of pull-request labels for commits completing task_id."""
-    # id as a standalone token: not preceded by an alphanumeric, not followed by a digit.
-    token = re.compile(r"(?<![0-9A-Za-z])" + re.escape(task_id) + r"(?![0-9])")
+    # id as a standalone token: not preceded or followed by an alphanumeric.
+    token = re.compile(r"(?<![0-9A-Za-z])" + re.escape(task_id) + r"(?![0-9A-Za-z])")
     pr = re.compile(r"\(#(\d+)\)")
     hits = []
     for h, subj in subjects:
