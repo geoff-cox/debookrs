@@ -28,21 +28,29 @@ DESC_TAGS = {"shortdescription", "description"}
 
 
 def reachable_files(start):
-    """Return the ordered set of .ptx files reachable via xi:include from start."""
+    """Return the ordered list of .ptx files reachable via xi:include from start.
+
+    Only ``.ptx`` includes are traversed and counted; ``parse="text"`` includes
+    (``.tex``/``.txt``/Sage code) are skipped so they don't inflate the count.
+    A missing or XML-invalid ``.ptx`` is a hard error, not a silent skip, so the
+    lint can't under-report coverage for a file it failed to read.
+    """
     seen, order, stack = set(), [], [start.resolve()]
     while stack:
         f = stack.pop()
-        if f in seen or not f.exists():
+        if f in seen or f.suffix != ".ptx":
             continue
         seen.add(f)
-        order.append(f)
+        if not f.exists():
+            raise SystemExit(f"error: xi:include target not found: {f}")
         try:
             tree = etree.parse(str(f))
-        except etree.XMLSyntaxError:
-            continue
+        except etree.XMLSyntaxError as e:
+            raise SystemExit(f"error: cannot parse {f}: {e}")
+        order.append(f)
         for inc in tree.iter(XI):
             href = inc.get("href")
-            if href:
+            if href and (f.parent / href).suffix == ".ptx":
                 stack.append((f.parent / href).resolve())
     return order
 
