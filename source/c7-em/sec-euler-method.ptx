@@ -30,24 +30,44 @@
 		<exercise label="eulers-method-chkpt-2">
 			<title><e component="emoji">📖❓</e> One Step of Euler's Method</title>
 			<statement>
-				<p>In the <q>step, check, adjust</q> rhythm just described, what does a single step of Euler's method do?</p>
+				<p>
+					In the <q>step, check, adjust</q> rhythm just described, what does a single step of Euler's
+					method do?
+				</p>
 			</statement>
 			<choices randomize="yes">
 				<choice correct="yes">
-					<statement><p>It checks the current slope (from the differential equation), takes a small stride in that direction, then re-checks the slope at the new point.</p></statement>
-					<feedback><p>This is exactly the <q>check direction, stride, check again</q> rhythm.</p></feedback>
+					<statement><p>
+						It checks the current slope (from the differential equation), takes a small step in that
+						direction, then re-checks the slope at the new point.
+					</p></statement>
+					<feedback><p>
+						This is exactly the <q>check direction, stride, check again</q> rhythm.
+					</p></feedback>
 				</choice>
 				<choice>
-					<statement><p>It follows the exact solution curve to the next point, so no error is introduced.</p></statement>
-					<feedback><p>Each step moves along a straight line, not the true curve, which is why error can accumulate.</p></feedback>
+					<statement><p>
+						It follows the exact solution curve to the next point, so no error is introduced.
+					</p></statement>
+					<feedback><p>
+						Each step moves along a straight line, not the true curve, which is why error can accumulate.
+					</p></feedback>
 				</choice>
 				<choice>
-					<statement><p>It uses the slope at the destination point rather than at the current point.</p></statement>
-					<feedback><p>The slope is always taken at the current point before stepping.</p></feedback>
+					<statement><p>
+						It uses the slope at the destination point rather than at the current point.
+					</p></statement>
+					<feedback><p>
+						The slope is always taken at the current point before stepping.
+					</p></feedback>
 				</choice>
 				<choice>
-					<statement><p>It advances all the way to the final <m>t</m>-value in a single stride.</p></statement>
-					<feedback><p>One step advances by only <m>h</m>; you repeat the step to cross the interval.</p></feedback>
+					<statement><p>
+						It advances all the way to the final <m>t</m>-value in a single stride.
+					</p></statement>
+					<feedback><p>
+						One step advances by only <m>h</m>; you repeat the step to cross the interval.
+					</p></feedback>
 				</choice>
 			</choices>
 		</exercise>
@@ -270,153 +290,157 @@
 				This method is named after the Swiss mathematician Leonhard Euler (1707-1783), one of the most prolific mathematicians in history. Euler made groundbreaking contributions to calculus, graph theory, mechanics, and many other areas. Despite losing sight in one eye early in his career and becoming completely blind later in life, Euler continued his mathematical work by dictating to his assistants. His method for approximating solutions to differential equations, developed in the 18th century, remains a cornerstone of numerical analysis today.
 			</p>
 		</note>
-		
-			<p>
-				Now let's generalize the concrete example. As we do, check the footnotes for the concrete version of each equation and step. 
-			</p>
+	
+		<p>
+			Now let's generalize the concrete example. As we do, check the footnotes for the concrete version of each equation and step. 
+		</p>
 
-			<p>
-				Consider an initial value problem:<fn><md>y'(t) = 6t + y(t), \quad y(0) = -2, \quad t\ \text{in}\ [0, 1.5]</md></fn>
-				<md>
-					y'(t) = f(t, y), \quad y(t_0) = y_0, \quad t\ \text{in}\  [t_0, t_N]
-				</md>.
-			</p>
+		<p>
+			Consider an initial value problem:<fn><md>y'(t) = 6t + y(t), \quad y(0) = -2, \quad t\ \text{in}\ [0, 1.5]</md></fn>
+			<md>
+				y'(t) = f(t, y), \quad y(t_0) = y_0, \quad t\ \text{in}\  [t_0, t_N]
+			</md>.
+		</p>
 
-			<p>
-				We divide <m>[t_0, t_N]</m> into equally spaced values (a distance <m>h</m> apart):
-				<fn>
-					<md>
-						\us{\ds t_0}{\us{\uparrow}{0}},\ 
-						\us{\ds t_1}{\us{\uparrow}{0.5}},\ 
-						\us{\ds t_2}{\us{\uparrow}{1}},\ 
-						\us{\ds t_3}{\us{\uparrow}{1.5}}\qquad h = 0.5
-					</md>
-				</fn>
+		<p>
+			We divide <m>[t_0, t_N]</m> into equally spaced values (a distance <m>h</m> apart):
+			<fn>
 				<md>
-					t_0,\ t_1,\ t_2,\ \ldots,\ t_N, \quad\text{where}\quad t_{k+1} = t_k + h
+					\us{\ds t_0}{\us{\uparrow}{0}},\ 
+					\us{\ds t_1}{\us{\uparrow}{0.5}},\ 
+					\us{\ds t_2}{\us{\uparrow}{1}},\ 
+					\us{\ds t_3}{\us{\uparrow}{1.5}}\qquad h = 0.5
 				</md>
-			</p>
+			</fn>
+			<md>
+				t_0,\ t_1,\ t_2,\ \ldots,\ t_N, \quad\text{where}\quad t_{k+1} = t_k + h
+			</md>
+		</p>
 
-			<p>
-				Using the shorthand <m>y_k = y(t_k)</m>, our goal is to approximate the points:
-				<fn>
-					<md>
-						\text{Approximation} = \{\ (0,?),\ (0.5,?),\ (1,?),\ (1.5,?)\ \big\}
-					</md>
-				</fn>
+		<p>
+			Using the shorthand <m>y_k = y(t_k)</m>, our goal is to approximate the points:
+			<fn>
 				<md>
-					(t_0, y_0), (t_1, y_1), \ldots, (t_N, y_N).
+					\text{Approximation} = \{\ (0,?),\ (0.5,?),\ (1,?),\ (1.5,?)\ \big\}
 				</md>
-      </p>
+			</fn>
+			<md>
+				(t_0, y_0), (t_1, y_1), \ldots, (t_N, y_N).
+			</md>
+		</p>
 
+		<p>
+			The first point, <m>(t_0, y_0)</m>, is known since it is the initial condition. The remaining points are approximated using the <xref ref="point-slope-movement-rule" text="custom">movement rule</xref>, where <q>cur</q> is <m>k</m> and <q>new</q> is <m>k+1</m>:
+			<md>
+				(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot\text{slope})
+			</md>.
+		</p>
+
+		<p>
+			The slope is found from <m>f(t_k, y_k)</m><fn><md>6t + y(t)</md></fn> in the differential equation, so the rule becomes:
+			<md>
+				(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
+			</md>
+		</p>
+
+		<p>
+			<idx><h>update rule</h></idx>
+			Extracting just the <m>y</m>-coordinate gives the update rule for Euler's method:
+			<md>
+				y_{k+1} = y_k + h\cdot f(t_k, y_k).
+			</md>
+		</p>
+
+		<p>
+			That's it. All of the <m>y</m> values in the table of <xref ref="eulers-method-concrete-table-plot"/> can be found with this formula.
+		</p>
+
+		<exercise label="eulers-method-chkpt-1">
+			<title>Match Euler's Method Parts to their Meaning</title>
+			<statement>
+				<p>
+					Assume the current approximation using Euler's Method is denoted by <m>y_k</m>. In this context, match the mathematical expression with its meaning.
+				</p>
+			</statement>
+			<cardsort>
+				<match>
+					<premise><m>y_{k+1}</m></premise>
+					<response>The <m>y</m> value of the next approximation.</response>
+				</match>
+				<match>
+					<premise><m>y_{k-1}</m></premise>
+					<response>The <m>y</m> value of the previous approximation.</response>
+				</match>
+				<match>
+					<premise><m>h</m></premise>
+					<response>The distance between <m>t_k</m> and <m>t_{k+1}</m>.</response>
+				</match>
+				<match>
+					<premise><m>f(t_k, y_k)</m></premise>
+					<response>The slope of the solution at the current approximation.</response>
+				</match>
+				<match>
+					<premise><m>t_k</m></premise>
+					<response>The <m>t</m> value of the current approximation.</response>
+				</match>
+				<match>
+					<premise><m>h \cdot f(t_k, y_k)</m></premise>
+					<response>The rise (or fall) in the <m>y</m> value from the current approximation to the next approximation.</response>
+				</match>
+			</cardsort>
+		</exercise>
+
+		<exploration xml:id="euler-method">
+			<title>Euler's Method</title>
 			<p>
-				The first point, <m>(t_0, y_0)</m>, is known since it is the initial condition. The remaining points are approximated using the <xref ref="point-slope-movement-rule" text="custom">movement rule</xref>, where <q>cur</q> is <m>k</m> and <q>new</q> is <m>k+1</m>:
-				<md>
-					(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot\text{slope})
-				</md>.
+				Given an initial value problem
 			</p>
-
+			<md>
+				y' = f(t, y), \quad y(t_0) = y_0, \quad t_0 \le t \le t_N
+			</md>
 			<p>
-				The slope is found from <m>f(t_k, y_k)</m><fn><md>6t + y(t)</md></fn> in the differential equation, so the rule becomes:
-				<md>
-					(t_{k+1},\ y_{k+1}) = (t_k + h,\ y_k + h\cdot f(t_k, y_k)).
-				</md>
+				approximate the solution with the following steps:
 			</p>
-
-			<p>
-				<idx><h>update rule</h></idx>
-				Extracting just the <m>y</m>-coordinate gives the update rule for Euler's method:
-				<md>
-					y_{k+1} = y_k + h\cdot f(t_k, y_k).
-				</md>
-			</p>
-
-			<p>
-				That's it. All of the <m>y</m> values in the table of <xref ref="eulers-method-concrete-table-plot"/> can be found with this formula.
-			</p>
-
-			<exercise label="eulers-method-chkpt-1">
-				<title>Match Euler's Method Parts to their Meaning</title>
-				<statement>
+			<dl width="narrow">
+				<li xml:id="eulers-method-step-1"><title>Select step size</title>
+					<p>Choosing a step size <m>h</m> determines <m>t_0,\ t_1,\ t_2,\ ...,\ t_{N}</m> where <m>t_k = t_0 + kh</m> for <m>k = 0, 1, 2, ..., N</m>.</p>
+				</li>
+				<li xml:id="eulers-method-step-2"><title>Apply Euler's update rule</title>
 					<p>
-						Assume the current approximation using Euler's Method is denoted by <m>y_k</m>. In this context, match the mathematical expression with its meaning.
+						For <m>k = 0</m> to <m>N - 1</m>, compute
+						<md>
+						y_{k+1} = y_k + h \cdot f(t_k, y_k).
+						</md>
 					</p>
-				</statement>
-				<cardsort>
-					<match>
-						<premise><m>y_{k+1}</m></premise>
-						<response>The <m>y</m> value of the next approximation.</response>
-					</match>
-					<match>
-						<premise><m>y_{k-1}</m></premise>
-						<response>The <m>y</m> value of the previous approximation.</response>
-					</match>
-					<match>
-						<premise><m>h</m></premise>
-						<response>The distance between <m>t_k</m> and <m>t_{k+1}</m>.</response>
-					</match>
-					<match>
-						<premise><m>f(t_k, y_k)</m></premise>
-						<response>The slope of the solution at the current approximation.</response>
-					</match>
-					<match>
-						<premise><m>t_k</m></premise>
-						<response>The <m>t</m> value of the current approximation.</response>
-					</match>
-					<match>
-						<premise><m>h \cdot f(t_k, y_k)</m></premise>
-						<response>The rise (or fall) in the <m>y</m> value from the current approximation to the next approximation.</response>
-					</match>
-				</cardsort>
-			</exercise>
+				</li>
+			</dl>
+		</exploration>
 
-			<exploration xml:id="euler-method">
-				<title>Euler's Method</title>
-				<p>
-					Given an initial value problem
-				</p>
-				<md>
-					y' = f(t, y), \quad y(t_0) = y_0, \quad t_0 \le t \le t_N
-				</md>
-				<p>
-					approximate the solution with the following steps:
-				</p>
-				<dl width="narrow">
-					<li xml:id="eulers-method-step-1"><title>Select step size</title>
-						<p>Choosing a step size <m>h</m> determines <m>t_0,\ t_1,\ t_2,\ ...,\ t_{N}</m> where <m>t_k = t_0 + kh</m> for <m>k = 0, 1, 2, ..., N</m>.</p>
-					</li>
-					<li xml:id="eulers-method-step-2"><title>Apply Euler's update rule</title>
-						<p>
-							For <m>k = 0</m> to <m>N - 1</m>, compute
-							<md>
-							y_{k+1} = y_k + h \cdot f(t_k, y_k).
-							</md>
-						</p>
-					</li>
-				</dl>
-			</exploration>
-
-			<warning>
-				<title>Common Mistakes with Euler's Method</title>
-				<p>
-					Watch out for these typical errors when applying Euler's method:
-					<ul>
-						<li><alert>Forgetting to update <m>t</m>:</alert> Remember that both <m>t_k</m> and <m>y_k</m> change at each step. Always compute <m>t_{k+1} = t_k + h</m> before using it in the slope calculation.</li>
-						<li><alert>Using the wrong slope:</alert> Make sure to evaluate <m>f(t_k, y_k)</m> at the <em>current</em> point, not the next point.</li>
-						<li><alert>Rounding too early:</alert> Carry extra decimal places during calculations and only round your final answer to avoid accumulated rounding errors.</li>
-						<li><alert>Confusing <m>h</m> with the number of steps:</alert> The step size <m>h</m> is the distance between consecutive <m>t</m>-values, not the total number of steps you take.</li>
-					</ul>
-				</p>
-			</warning>
-
+		<warning>
+			<title>Common Mistakes with Euler's Method</title>
 			<p>
-				Despite being based on a relatively simple idea, Euler's method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.
+				Watch out for these typical errors when applying Euler's method:
+				<ul>
+					<li><alert>Forgetting to update <m>t</m>:</alert> Remember that both <m>t_k</m> and <m>y_k</m> change at each step. Always compute <m>t_{k+1} = t_k + h</m> before using it in the slope calculation.</li>
+					<li><alert>Using the wrong slope:</alert> Make sure to evaluate <m>f(t_k, y_k)</m> at the <em>current</em> point, not the next point.</li>
+					<li><alert>Rounding too early:</alert> Carry extra decimal places during calculations and only round your final answer to avoid accumulated rounding errors.</li>
+					<li><alert>Confusing <m>h</m> with the number of steps:</alert> The step size <m>h</m> is the distance between consecutive <m>t</m>-values, not the total number of steps you take.</li>
+				</ul>
 			</p>
+		</warning>
+
+		<p>
+			Despite being based on a relatively simple idea, Euler's method reveals something profound: with nothing more than a starting point and slope formula, you can approximate a solution that no closed-form equation could describe.
+		</p>
 
 		<exercise label="eulers-method-chkpt-3">
 			<title><e component="emoji">📖❓</e> One Euler Update</title>
 			<statement>
-				<p>For the initial value problem <m>y' = y + t</m>, <m>y(0) = 1</m> with step size <m>h = 0.5</m>, the update rule is <m>y_{k+1} = y_k + h\,f(t_k, y_k)</m> with <m>f(t, y) = y + t</m>. What is <m>y_1</m>, the approximation at <m>t = 0.5</m>?</p>
+				<p>
+					For the initial value problem <m>y' = y + t</m>, <m>y(0) = 1</m> with step size
+					<m>h = 0.5</m>, the update rule is <m>y_{k+1} = y_k + h\,f(t_k, y_k)</m> with
+					<m>f(t, y) = y + t</m>. What is <m>y_1</m>, the approximation at <m>t = 0.5</m>?
+				</p>
 			</statement>
 			<choices randomize="yes">
 				<choice correct="yes">
@@ -425,15 +449,22 @@
 				</choice>
 				<choice>
 					<statement><p><m>2.0</m></p></statement>
-					<feedback><p>This forgets to multiply the slope by <m>h</m>: it computes <m>1 + (1+0)</m> instead of <m>1 + 0.5\,(1+0)</m>.</p></feedback>
+					<feedback><p>
+						This forgets to multiply the slope by <m>h</m>: it computes <m>1 + (1+0)</m> 
+						instead of <m>1 + 0.5\,(1+0)</m>.
+					</p></feedback>
 				</choice>
 				<choice>
 					<statement><p><m>1.0</m></p></statement>
-					<feedback><p>This uses only <m>t</m> for the slope, <m>1 + 0.5(0)</m>, instead of <m>f = y + t = 1</m>.</p></feedback>
+					<feedback><p>
+						This uses only <m>t</m> for the slope, <m>1 + 0.5(0)</m>, instead of <m>f = y + t = 1</m>.
+					</p></feedback>
 				</choice>
 				<choice>
 					<statement><p><m>0.5</m></p></statement>
-					<feedback><p>This reports the change <m>h\,f = 0.5</m> rather than the new value <m>y_0 + h\,f</m>.</p></feedback>
+					<feedback><p>
+						This reports the change <m>h\,f = 0.5</m> rather than the new value <m>y_0 + h\,f</m>.
+					</p></feedback>
 				</choice>
 			</choices>
 		</exercise>
@@ -712,23 +743,37 @@
 		<exercise label="eulers-method-chkpt-4">
 			<title><e component="emoji">📖❓</e> Effect of Step Size</title>
 			<statement>
-				<p>In Example 2 (<m>y' + 4ty = 0</m>) the true value is <m>y(0.5) \approx 0.6065</m>. Euler's method gave <m>\approx 0.6529</m> with <m>h = 0.1</m> and <m>\approx 0.6069</m> with <m>h = 0.001</m>. What does this illustrate?</p>
+				<p>
+					In Example 2 (<m>y' + 4ty = 0</m>) the true value is <m>y(0.5) \approx 0.6065</m>. Euler's
+					method gave <m>\approx 0.6529</m> with <m>h = 0.1</m> and <m>\approx 0.6069</m> with
+					<m>h = 0.001</m>. What does this illustrate?
+				</p>
 			</statement>
 			<choices randomize="yes">
 				<choice correct="yes">
-					<statement><p>Decreasing the step size <m>h</m> generally makes the approximation more accurate.</p></statement>
-					<feedback><p>The smaller step (<m>0.6069</m>) lands much closer to the true value (<m>0.6065</m>).</p></feedback>
+					<statement><p>
+						Decreasing the step size <m>h</m> generally makes the approximation more accurate.
+					</p></statement>
+					<feedback><p>
+						The smaller step (<m>0.6069</m>) lands much closer to the true value (<m>0.6065</m>).
+					</p></feedback>
 				</choice>
 				<choice>
-					<statement><p>Increasing the step size <m>h</m> generally makes the approximation more accurate.</p></statement>
-					<feedback><p>The larger step <m>h = 0.1</m> gave the worse estimate (<m>0.6529</m>).</p></feedback>
+					<statement><p>
+						Increasing the step size <m>h</m> generally makes the approximation more accurate.
+					</p></statement>
+					<feedback><p>
+						The larger step <m>h = 0.1</m> gave the worse estimate (<m>0.6529</m>).
+					</p></feedback>
 				</choice>
 				<choice>
 					<statement><p>The step size has no effect on accuracy.</p></statement>
 					<feedback><p>The two step sizes gave clearly different errors.</p></feedback>
 				</choice>
 				<choice>
-					<statement><p>Euler's method returns the exact value regardless of step size.</p></statement>
+					<statement><p>
+						Euler's method returns the exact value regardless of step size.
+					</p></statement>
 					<feedback><p>Even <m>h = 0.001</m> is only an approximation, not exact.</p></feedback>
 				</choice>
 			</choices>
