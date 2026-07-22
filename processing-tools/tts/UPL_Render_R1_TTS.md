@@ -13,7 +13,7 @@ The raw *.ptx files are preprocessed into TTS-friendly PTX/XML-ish text files.
 - Adds:
 	- Remove attributes label="..." and xml:id="..." (and optionally more)
 	- Strip emojis from all text nodes
-- Keeps pacing/context tags like <p>, <aside>, sectioning, and preserves <m>/<me>.
+- Keeps pacing/context tags like <p>, <aside>, sectioning, and preserves <m>/<md>.
 
 Hard constraints:
 - Preserve meaning, order, and intent exactly.

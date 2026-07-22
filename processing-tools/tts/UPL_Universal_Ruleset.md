@@ -18,7 +18,7 @@ This ruleset applies to **all audit modes (A–D)** and **all render passes (R1)
 4. **Do not change PTX structure.** No changes to tag layout, nesting, IDs, attributes, or markup structure.
 5. **Do not edit inside markup or math.**
    - Do not change anything inside PTX tags: `<...>`
-   - Do not change anything inside math: `<m>...</m>`, `<me>...</me>`, `<md>...</md>`
+   - Do not change anything inside math: `<m>...</m>`, `<md>...</md>`, `<md>...</md>`
 6. **If uncertain, do not decide.** Mark it **ATTN** with a brief reason.
 
 ## Zone Type (content classification)

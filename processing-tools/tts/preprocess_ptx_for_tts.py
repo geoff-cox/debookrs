@@ -8,7 +8,7 @@ Adds:
 - Remove attributes label="..." and xml:id="..." (and optionally more)
 - Strip emojis from all text nodes
 
-Keeps pacing/context tags like <p>, <aside>, sectioning, and preserves <m>/<me>.
+Keeps pacing/context tags like <p>, <aside>, sectioning, and preserves <m>/<md>.
 
 Usage example:
 
@@ -236,7 +236,7 @@ def _remove_element_preserve_tail(el: etree._Element) -> None:
 def drop_empty_elements(root: etree._Element) -> int:
     """
     Drop elements that have no meaningful text and no children.
-    Avoid dropping math tags (<m>, <me>) even if empty (rare but safer).
+    Avoid dropping math tags (<m>, <md>) even if empty (rare but safer).
     Avoid dropping pacing tags; empties there can be harmless.
     IMPORTANT: preserve .tail when removing, otherwise you delete real text
     (e.g., <e component="emoji">📌</e> tail contains the sentence).

@@ -71,30 +71,30 @@
 					<title>💡 Derivation of <m>\lap{u_c(t)}</m></title>
 					<p>
 						Start with the definition of the Laplace transform:
-						<me>
+						<md>
 							\lap{u_c(t)} = \int_{0}^{\infty} u_c(t) \, e^{-st} \, dt.
-						</me>
+						</md>
 					</p>
 
 					<p>
 						Recall that:
-						<me>
+						<md>
 							u_c(t) =
 							\begin{cases}
 							0, \amp t \lt c \\
 							1, \amp t \ge c
 							\end{cases}
-						</me>
+						</md>
 						which means the integrand is zero until <m>t=c</m> and equals <m>e^{-st}</m> afterward.
 					</p>
 
 					<p>
 						That trims our integral down since:
-						<me>
+						<md>
 							\lap{u_c(t)}
 							= \os{\large t\ \lt\ c}{\overline{\int_0^{c} (0)\ e^{-st}\ dt}} + \os{\large t\ \ge\ c}{\overline{\int_c^{\infty} (1)\ e^{-st}\ dt}}
 							= \int_c^{\infty} e^{-st}\ dt
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -111,9 +111,9 @@
 
 					<p>
 						As long as <m>s \gt 0</m>, the term <m>e^{-sb}</m> goes to zero as <m>b \to \infty</m>, leaving:
-						<me>
+						<md>
 							\lap{u_c(t)} = \frac{e^{-cs}}{s}.
-						</me>
+						</md>
 					</p>
 				</proof>
 			</p>
@@ -121,9 +121,9 @@
 
 		<p>
 			This result shows that the shifted unit step function introduces an exponential factor <m>e^{-cs}</m> in the Laplace domain. You will use it to transform terms of the form <m>k u_{c}(t)</m>, where <m>k</m> is a constant. For example,
-			<me>
+			<md>
 				\lap{6 u_3(t)} = 6\lap{u_3(t)} = \frac{6e^{-3s}}{s}
-			</me>
+			</md>
 		</p>
 		
 		<exercise label="chkpt-1-lap-uc">
@@ -189,16 +189,16 @@
 				<proof><title>💡 Derivation of <m>\lap{f(t)\ u_c(t)}</m></title>
 					<p>
 						Start with the Laplace transform definition:
-						<me>
+						<md>
 							\lap{f(t) u_c(t)} = \int_{0}^{\infty} f(t) u_c(t) e^{-st}\ dt.
-						</me>
+						</md>
 					</p>
 
 					<p>
 						Since <m>u_c(t) = 0</m> for <m>t \lt c</m>, the integral simplifies to:
-						<me>
+						<md>
 							\lap{f(t)\cdot u_c(t)} = \int_c^\infty f(t)\ e^{-st}\ dt.
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -207,9 +207,9 @@
 
 					<p>
 						Note: Shifting a function <m>c</m> units to the left means adding <m>c</m> to all of the <m>t</m> inputs:
-						<me>
+						<md>
 							\text{before shift:}\quad f(t)\ e^{-st}\qquad\text{after shift:}\quad f(t + c)\ e^{-s(t + c)}
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -233,7 +233,7 @@
 
 					<proof><title><m>\DLBb \text{A}, \text{B}, \text{C}</m> Details</title>
 						<p>
-							<term><m>\DLBb \text{A}\ </m></term>: Shifting <m>f(t)e^{-st}</m> to the left <m>c</m> units makes it <me>f(t + c)\ e^{-s(t + c)}</me> and starts the integral at <m>t=0</m>.
+							<term><m>\DLBb \text{A}\ </m></term>: Shifting <m>f(t)e^{-st}</m> to the left <m>c</m> units makes it <md>f(t + c)\ e^{-s(t + c)}</md> and starts the integral at <m>t=0</m>.
 						</p>
 
 						<p>
@@ -247,9 +247,9 @@
 
 					<p>
 						Therefore,
-						<me>
+						<md>
 							\lap{f(t) \, u_c(t)} = e^{-cs} \lap{f(t + c)}.
-						</me>
+						</md>
 					</p>
 				</proof>
 			</p>
@@ -269,31 +269,31 @@
 			<solution><title><m>\rightarrow \lap{(2-t)\cdot u_3(t)}</m></title>
 				<p>
 					For this problem, we have <m>c=3</m>. So the rule becomes:
-					<me>
+					<md>
 						\lap{f(t)\cdot u_3(t)} = e^{-3s} \lap{f(t + 3)}
-					</me>,
+					</md>,
 					where, in our case, <m>f(t) = 2-t</m>, so
-					<me>
+					<md>
 						f(t+3) = 2-(t+3) = -t-1
-					</me>.
+					</md>.
 				</p>
 
 				<p>
 					Plugging <m>f(t)</m> and <m>f(t+3)</m> into the rule shows us that
-					<me>
+					<md>
 						\lap{(2-t)\cdot u_3(t)} = e^{-3s} \lap{-t-1}. \qquad \text{(⭐)}
-					</me>
+					</md>
 				</p>
 
 				<p>
 					So all we have left to do is compute <m>\lap{-t-1}</m>:
-					<me>
+					<md>
 						\lap{-t-1} = -\lap{t}-\lap{1} = -\frac1{s^2}-\frac1{s}
-					</me>
+					</md>
 					and plug it into (⭐), to complete the transform:
-					<me>
+					<md>
 						\lap{(2-t)\, u_3(t)} = -e^{-2s}\left(\frac{1 + s}{s^2}\right).
-					</me>
+					</md>
 				</p>
 			</solution>
 		</example>
@@ -347,12 +347,12 @@
 				<statement>
 					<p>
 						Suppose you want use <xref ref="lt-L10" text="custom">L<m>_{10}</m></xref> to find
-						<me>\lap{15t^2 u_2(t)}</me>.
+						<md>\lap{15t^2 u_2(t)}</md>.
 					</p>
 
 					<p>
 						You note that <m>c=2</m> and update the rule as follows:
-						<me>\lap{f(t)u_2(t)} = e^{-2s}\lap{f(t+2)}</me>.
+						<md>\lap{f(t)u_2(t)} = e^{-2s}\lap{f(t+2)}</md>.
 						What's the best next step from here?
 					</p>
 				</statement>
@@ -367,7 +367,7 @@
 					</choice>
 					<choice>
 						<statement>Find <m>\ilap{e^{-2s}}</m>.</statement>
-						<feedback>This does not help you compute <me>\lap{15t^2 u_2(t)}</me>.</feedback>
+						<feedback>This does not help you compute <md>\lap{15t^2 u_2(t)}</md>.</feedback>
 					</choice>
 					<choice>
 						<statement>Rewrite the rule by moving <m>e^{-2s}</m> to the denominator as <m>e^{2s}</m>.</statement>
@@ -439,9 +439,9 @@
 
 					<p>
 						Thus, we have shown
-						<me>
+						<md>
 							\lap{f(t-c) u_c(t)} = e^{-cs} F(s)
-						</me>
+						</md>
 						where <m>F(s) = \lap{f(t)}</m>.
 					</p>
 				</proof>
@@ -450,7 +450,7 @@
 
 		<p>
 			Although you can use this for forward transforms, its main utility is for backward transforms since it only requires you to match terms that look like
-			<me>e^{-cs}F(s)</me>
+			<md>e^{-cs}F(s)</md>
 			where <m>F(s)</m> is one of the common Laplace transforms from the same table. We will explore later when we invert terms in the Laplace domain containing <m>e^{-cs}</m>.
 		</p>
 
@@ -459,9 +459,9 @@
 			<statement>
 				<p>
 					Select the expression that goes in the blank.
-					<me>
+					<md>
 						\lap{t^2 \cdot u_3(t)} = e^{-3s}\lap{<fillin characters="2" />}
-					</me>
+					</md>
 				</p>
 			</statement>
 			<choices randomize="yes">
@@ -495,9 +495,9 @@
 				<title><e component="emoji">📖❓</e> Match the <m>t</m>-Domain Function</title>
 				<statement>
 					Which function goes into the blank?
-					<me>
+					<md>
 						\lap{<fillin characters="4" />} = e^{-2s} \left( \dfrac{1}{s^2} + \dfrac{2}{s} \right)
-					</me>
+					</md>
 				</statement>
 				<choices randomize="yes">
 					<choice correct="yes">

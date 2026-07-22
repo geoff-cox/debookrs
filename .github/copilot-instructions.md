@@ -24,7 +24,7 @@ This repository contains *Exploring Differential Equations*, an open-access, stu
 ## PreTeXt conventions
 
 - Inline math uses `<m>...</m>`.
-- Display math uses `<me>...</me>`.
+- Display math uses `<md>...</md>`.
 - Multi-line aligned derivations use `<md>` with one `<mrow>` per line.
 - In `<md>`, use `\amp =` rather than `&=`.
 - Keep `<term>` for important first-use terminology and use `<em>` sparingly.

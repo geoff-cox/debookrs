@@ -10,7 +10,7 @@ Identify basic spelling/grammar fixes that are safe candidates for manual find/r
 
 ## Mode-specific rules (deltas)
 - Recommendations only. Do not rewrite PTX.
-- Never change anything inside PTX markup `<...>` or math `<m>/<me>/<md>`.
+- Never change anything inside PTX markup `<...>` or math `<m>/<md>/<md>`.
 - Scan **all Zone Types**. Do not skip exercises/checkpoints/solutions; instead label Zone + Risk.
 - If the change could affect meaning/assessment integrity, mark **ATTN** and do not push the replacement as "Recommended".
 

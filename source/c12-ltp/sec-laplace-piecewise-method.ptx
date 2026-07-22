@@ -35,16 +35,16 @@
 
 		<p>
 			Let's solve this initial value problem to see the full method in action:
-			<me>
+			<md>
 				y'' + 4y = g(t), \qquad y(0) = 0,\ y'(0) = 0
-			</me>
+			</md>
 			where the forcing term switches ON for just one second:
-			<me>
+			<md>
 				g(t) = \begin{cases}
 				1, \amp 1 \le t \lt 2 \\
 				0, \amp \text{otherwise}.
 				\end{cases}
-			</me>
+			</md>
 		</p>
 
 		<p>
@@ -54,9 +54,9 @@
 		<proof label="piecewise-laplace-method-model-roadmap"><title>🗺️ A Roadmap Overview</title>
 			<p>
 				<sidebyside widths="40% 14% 38%" valign="middle">
-					<p><me>\small\ul{\qquad\ \textbf{Original Domain}\ \qquad}</me></p>
+					<p><md>\small\ul{\qquad\ \textbf{Original Domain}\ \qquad}</md></p>
 					<p/>
-					<p><me>\small\DLBa\textbf{2️⃣ Laplace Domain}</me></p>
+					<p><md>\small\DLBa\textbf{2️⃣ Laplace Domain}</md></p>
 				</sidebyside>
 				<sidebyside widths="40% 14% 38%" valign="top">
 					<p>
@@ -105,9 +105,9 @@
 
 			<p>
 				The piecewise function, <m>g(t)</m>, must be expressed in step function form before we can take its transform. Since <m>g(t)</m> has only one non-zero piece on the activation interval, <m>1 \le t \lt 2</m>, the only switch we need is <m>u_1(t) - u_2(t)</m>:
-				<me>
+				<md>
 					g(t) = 1 \cdot (u_1(t) - u_2(t)) = u_1(t) - u_2(t)
-				</me>
+				</md>
 			</p>
 		</paragraphs>
 		
@@ -122,7 +122,7 @@
 
 			<p>
 				Using rules <xref ref="lt-R2" text="custom">R<m>_{2}</m></xref> with <m>y(0) = 0,\ y'(0) = 0</m> and <xref ref="lt-L9" text="custom">L<m>_{9}</m></xref>, gives the Laplace-domain equation:
-				<me>s^2Y(s) + 4Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}.</me>
+				<md>s^2Y(s) + 4Y(s) = \frac{e^{-s}}{s} - \frac{e^{-2s}}{s}.</md>
 			</p>
 		</paragraphs>
 
@@ -170,57 +170,57 @@
 					</choice>
 					<choice>
 						<statement>A term containing <m>\dfrac{1}{t+4}</m>.</statement>
-						<feedback>No — perhaps you thought this looked like the forward transform <me>\lap{e^{-4t}} = \frac{1}{s+4}</me>?</feedback>
+						<feedback>No — perhaps you thought this looked like the forward transform <md>\lap{e^{-4t}} = \frac{1}{s+4}</md>?</feedback>
 					</choice>
 				</choices>
 			</exercise>
 
-			<me>
+			<md>
 				Y(s) = \frac{1}{s(s^2 + 4)}e^{-s} - \frac{1}{s(s^2 + 4)}e^{-2s}
-			</me>
+			</md>
 
 			<p>
 				To match the form in <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref>, it's a good habit to define the shorthand:
-				<me>
+				<md>
 					F(s) = \frac{1}{s(s^2 + 4)}
-				</me>
+				</md>
 				so that our prepared <m>Y(s)</m> becomes:
-				<me>
+				<md>
 					\text{(prepared)}\qquad Y(s) = F(s)e^{-s} - F(s)e^{-2s}
-				</me>.
+				</md>.
 			</p>
 
 			<p>
 				Since we'll also need <m>f(t) = \ilap{F(s)}</m> in step 3, let's compute it now:
-				<me>f(t) = \ilap{F(s)} = \frac14\left(1 - \cos(2t)\right).</me>
+				<md>f(t) = \ilap{F(s)} = \frac14\left(1 - \cos(2t)\right).</md>
 			</p>
 
 			<proof><title>🔎 Here are the Details</title>
 				<p>
 					Decompose:
-					<me>
+					<md>
 						F(s) = \frac{1}{s(s^2 + 4)} = \frac{A}{s} + \frac{Bs + C}{s^2 + 4}
-					</me>.
+					</md>.
 				</p>
 				<p>
 					Multiply by <m>s(s^2 + 4)</m> and collect the <m>s^2</m>, <m>s</m>, and free terms:
-					<me>
+					<md>
 						1 = A(s^2 + 4) + (Bs + C)s = (A + B)s^2 + Cs + 4A
-					</me>.
+					</md>.
 				</p>
 				<p>
 					Matching coefficients gives the system:
-					<me>
+					<md>
 						A+B=0,\quad C=0,\quad 4A=1
-					</me>
+					</md>
 					which has solution <m>A=\sfrac14, B=-\sfrac14, C=0</m>. Thus:
-					<me>
+					<md>
 						F(s) = \frac14\cdot\frac{1}{s} - \frac14\cdot\frac{s}{s^2 + 4}
-					</me>
+					</md>
 					and so the inverse is:
-					<me>
+					<md>
 						f(t) = \ilap{F(s)} = \frac14 - \frac14\cos(2t) = \frac14\left(1 - \cos(2t)\right)
-					</me>.
+					</md>.
 				</p>
 			</proof>
 		</paragraphs>
@@ -230,24 +230,24 @@
 
 			<p>
 				We now apply <m>\laplacesym^{-1}</m> to both sides of the <q>prepared</q> <m>Y(s)</m>:
-				<me>
+				<md>
 					\ilap{Y(s)} = \ilap{F(s)e^{-s}} - \ilap{F(s)e^{-2s}}
-				</me>
+				</md>
 			</p>
 
 			<p>
 				Applying <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref>, our solution becomes:
-				<me>
+				<md>
 					y(t) = f(t - 1)\cdot u_1(t) - f(t - 2)\cdot u_2(t)
-				</me>.
+				</md>.
 			</p>
 
 			<p>
 				We use <m>f(t)</m> (from step 2) to plug in <m>f(t - 1)</m> and <m>f(t - 2)</m>, leading to the solution:
-				<me>
+				<md>
 					y(t) = \frac14\Big(1 - \cos\big(2(t - 1)\big)\Big)u_1(t)
 						- \frac14\Big(1 - \cos\big(2(t - 2)\big)\Big)u_2(t)
-				</me>
+				</md>
 			</p>
 		</paragraphs>
 
@@ -267,17 +267,17 @@
 			<statement>
 				<p>
 					Solve the initial value problem
-					<me>
+					<md>
 						y'' + 2y' = g(t), \qquad y(0) = 0,\quad y'(0) = 1
-					</me>
+					</md>
 					where the forcing term is given by:
-					<me>
+					<md>
 						g(t) = 
 						\begin{cases}
 							3, \amp t \ge 5\\
 							0, \amp \text{otherwise}.
 						\end{cases}
-					</me>
+					</md>
 				</p>
 			</statement>
 
@@ -286,7 +286,7 @@
 					<title>Setup: Piecewise Form to Step Form</title>
 					<p>
 						Since the only nonzero piece of <m>g</m> is <m>3</m> on <m>t \ge 5</m>, the equation becomes:
-						<me>y'' + 2y' = 3u_5(t)</me>.
+						<md>y'' + 2y' = 3u_5(t)</md>.
 					</p>
 				</paragraphs>
 
@@ -294,14 +294,14 @@
 					<title>Step 1 — Into the Laplace Domain</title>
 					<p>
 						Take the Laplace transform of both sides:
-						<me>
+						<md>
 							\lap{y''} + 2\lap{y'} = 3\lap{u_5(t)}
-						</me>.
+						</md>.
 					</p>
 
 					<p>
 						Using the initial conditions with <xref ref="lt-R1" text="custom">R<m>_1</m></xref> and <xref ref="lt-L9" text="custom">L<m>_9</m></xref> we get:
-						<me>s^2 Y(s) - s + 2s Y(s) = \frac{3e^{-5s}}{s}</me>.
+						<md>s^2 Y(s) - s + 2s Y(s) = \frac{3e^{-5s}}{s}</md>.
 					</p>
 				</paragraphs>
 
@@ -309,47 +309,47 @@
 					<title>Step 2 — Solve for <m>Y(s)</m></title>
 					<p>
 						Next, we isolate <m>Y(s)</m>:
-						<me>Y(s) = \frac{1}{s(s + 2)}\left(\frac{3e^{-5s}}{s} + s\right)</me>.
+						<md>Y(s) = \frac{1}{s(s + 2)}\left(\frac{3e^{-5s}}{s} + s\right)</md>.
 					</p>
 
 					<p>
 						and prepare for inversion by collecting the exponential terms:
-						<me>
+						<md>
 							\text{(prepared)}\quad Y(s) = F(s)e^{-5s} + \frac{1}{s + 2}, \quad\text{where}\quad F(s) = \frac{3}{s^2(s + 2)}
-						</me>.
+						</md>.
 					</p>
 
 					<p>
 						Lastly, we compute <m>f(t) = \ilap{F(s)}</m> so it will be ready for step 3:
-						<me>f(t) = -\frac34 + \frac32t + \frac34e^{-2t}</me>,	
+						<md>f(t) = -\frac34 + \frac32t + \frac34e^{-2t}</md>,	
 					</p>
 
 					<proof><title>🔎 Here are the details</title>
 						<p>
 							Decompose:
-							<me>
+							<md>
 								F(s) = \frac{3}{s^2(s + 2)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s + 2}
-							</me>.
+							</md>.
 						</p>
 						<p>
 							Multiply through and collect the <m>s^2</m>, <m>s</m>, and free terms:
-							<me>
+							<md>
 								3 = As(s + 2) + B(s + 2) + Cs^2 = (A+C)s^2 + (2A+B)s + 2B
-							</me>.
+							</md>.
 						</p>
 						<p>
 							Matching coefficients gives the system:
-							<me>
+							<md>
 								A+C=0,\quad 2A+B=0,\quad 2B=3
-							</me>
+							</md>
 							which has solution <m>A=-\sfrac34, B=\sfrac32, C=\sfrac34</m>. Thus:
-							<me>
+							<md>
 								F(s) = \frac{-\sfrac34}{s} + \frac{\sfrac32}{s^2} + \frac{\sfrac34}{s + 2}
-							</me>
+							</md>
 							and
-							<me>
+							<md>
 								f(t) = \ilap{F(s)} = -\frac34 + \frac32t + \frac34e^{-2t}
-							</me>.
+							</md>.
 						</p>
 					</proof>
 				</paragraphs>
@@ -369,9 +369,9 @@
 						Substituting in <m>f(t-5)</m>, gives the final solution:
 					</p>
 
-					<me>
+					<md>
 						y(t) = \left(-\frac34 + \frac32(t-5) + \frac34e^{-2(t-5)}\right)u_5(t) + e^{-2t}
-					</me>
+					</md>
 				</paragraphs>
 			</solution>
 		</example>
@@ -380,18 +380,18 @@
 			<statement>
 				<p>
 					Let's solve this initial value problem:
-					<me>
+					<md>
 						2y' + y = g(t), \qquad y(0) = 0
-					</me>
+					</md>
 					with a piecewise forcing term:
-					<me>
+					<md>
 						g(t) =
 						\begin{cases}
 							3, \amp 0 \le t \lt 2 \\
 							1, \amp 2 \le t \lt 4 \\
 							t - 4, \amp t \ge 4
 						\end{cases}
-					</me>
+					</md>
 				</p>
 			</statement>
 
@@ -419,16 +419,16 @@
 					<title>Step 1 — Into the Laplace Domain</title>
 					<p>
 						Apply <m>\laplacesym</m> to both sides:
-						<me>
+						<md>
 							2\lap{y'} + \lap{y} = \lap{g(t)}.
-						</me>
+						</md>
 					</p>
 
 					<p>
 						With <m>y(0)=0</m> and the derivative rule:
-						<me>
+						<md>
 							2(sY(s)) + Y(s) = \lap{g(t)}.
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -444,9 +444,9 @@
 
 					<p>
 						The Laplace-domain equation becomes:
-						<me>
+						<md>
 							2sY(s) + Y(s) = \frac{3}{s} - \frac{2e^{-2s}}{s} + \frac{e^{-4s}}{s^2}.
-						</me>
+						</md>
 					</p>
 				</paragraphs>
 
@@ -463,36 +463,36 @@
 
 					<p>
 						Distribute and write <m>Y(s)</m> as pieces of the form <m>F(s)e^{-cs}</m>:
-						<me>
+						<md>
 							Y(s) = \frac{2}{2s + 1} + \frac{3}{s(2s + 1)} - \frac{2}{s(2s + 1)}e^{-2s} + \frac{1}{s^2(2s + 1)}e^{-4s}
-						</me>.
+						</md>.
 					</p>
 
 					<p>
 						Identify the rational parts:
-						<me>
+						<md>
 							F_1(s) = \frac{2}{2s+1}, \quad
 							F_2(s) = \frac{1}{s(2s+1)}, \quad
 							F_3(s) = \frac{1}{s^2(2s+1)}
-						</me>,
+						</md>,
 						which completes the prepared <m>Y(s)</m>:
-						<me>
+						<md>
 							\text{(prepared)}\quad Y(s) = F_1(s) + 3F_2(s) - 2F_2(s)e^{-2s} + F_3(s)e^{-4s}
-						</me>.
+						</md>.
 					</p>
 
 					<p>
 						The partial fractions decomposition of <m>F_2(s)</m> and <m>F_3(s)</m> needed for step 3 are:
-						<me>
+						<md>
 							F_2(s) = \frac{1}{s} - \frac{2}{2s+1}, \qquad
 							F_3(s) = \frac{-2}{s} + \frac{1}{s^2} + \frac{4}{2s+1}.
-						</me>
+						</md>
 					</p>
 
 					<proof><title> 🔎 Partial Fraction Details</title>
-						<me>
+						<md>
 							F_2(s):\qquad\frac{1}{s(2s + 1)} = \frac{A}{s} + \frac{B}{2s + 1}
-						</me>
+						</md>
 
 						<p>
 							Multiplying through and grouping <m>s</m> terms:
@@ -503,19 +503,19 @@
 
 						<p>
 							Leads to:
-							<me>2A + B = 0,\quad A = 1 \quad\Rightarrow\quad A = 1,\quad B = -2</me>
+							<md>2A + B = 0,\quad A = 1 \quad\Rightarrow\quad A = 1,\quad B = -2</md>
 						</p>
 
 						<p>
 							and so
-							<me>
+							<md>
 								F_2 = \frac{1}{s} - \frac{2}{2s + 1}
-							</me>
+							</md>
 						</p>
 
-						<me>
+						<md>
 							F_3(s):\qquad F_3(s) = \frac{1}{s^2(2s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{2s + 1}
-						</me>
+						</md>
 
 						<p>
 							Multiplying through and grouping <m>s</m> terms:
@@ -532,16 +532,16 @@
 
 						<p>
 							Leads to:
-							<me>
+							<md>
 								2A + C = 0,\quad A + 2B = 0,\quad B = 1 \quad\Rightarrow\quad A = -2,\ B = 1,\ C = 4
-							</me>
+							</md>
 						</p>
 
 						<p>
 							Thus,
-							<me>
+							<md>
 								F_3(s) = \frac{-2}{s} + \frac{1}{s^2} + \frac{4}{2s + 1}
-							</me>
+							</md>
 						</p>
 					</proof>
 				</paragraphs>
@@ -562,9 +562,9 @@
 
 					<p>
 						Using <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref> updates our solution to:
-						<me>
+						<md>
 							y(t) = f_1(t) + 3f_2(t) - 2f_2(t-2)u_2(t) + f_3(t-4)u_4(t)
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -596,14 +596,14 @@
 			<statement>
 				<p>
 					Consider the initial value problem:
-					<me>
+					<md>
 						\frac{d^2y}{dt^2} - 4\frac{dy}{dt} - 5y =
 						\begin{cases}
 							e^{-t}, \amp 0 \le t \lt 1 \\
 							1, \amp t \ge 1
 						\end{cases},
 						\qquad y(0) = 0,\ \frac{dy}{dt}(0) = 0.
-					</me>
+					</md>
 				</p>
 			</statement>
 
@@ -616,16 +616,16 @@
 					<title>Setup — Step Function Form</title>
 					<p>
 						First, we rewrite the forcing term with step functions so we can apply Laplace rules directly:
-						<me>
+						<md>
 							g(t) = e^{-t}(u_0(t) - u_1(t)) + 1 \cdot u_1(t).
-						</me>
+						</md>
 					</p>
 
 					<p>
 						Combine the terms grouped by their switches:
-						<me>
+						<md>
 							g(t) = e^{-t}u_0(t) + \big(1 - e^{-t}\big)u_1(t).
-						</me>
+						</md>
 					</p>
 				</paragraphs>
 
@@ -633,9 +633,9 @@
 					<title>Step 1 — Into the Laplace Domain</title>
 					<p>
 						Apply <m>\laplacesym</m> to both sides:
-						<me>
+						<md>
 							\lap{\frac{d^2y}{dt^2}} - 4\lap{\frac{dy}{dt}} - 5\lap{y} = \lap{e^{-t}u_0(t)} + \lap{(1 - e^{-t})u_1(t)}.
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -653,16 +653,16 @@
 					<title>Step 2 — Solve in the Laplace Domain</title>
 					<p>
 						Factor and isolate <m>Y(s)</m>:
-						<me>
+						<md>
 							Y(s) = \frac{1}{s^2 - 4s - 5} \left[\frac{1}{s + 1} + \left(\frac{1}{s} - \frac{1}{s + 1}\right)e^{-s}\right].
-						</me>
+						</md>
 					</p>
 
 					<p>
 						Since <m>s^2 - 4s - 5 = (s + 1)(s - 5)</m>, distribute and reorganize:
-						<me>
+						<md>
 							Y(s) = \frac{1}{(s + 1)(s - 5)} \left[\frac{1}{s + 1} + \frac{1}{s(s + 1)}e^{-s}\right].
-						</me>
+						</md>
 					</p>
 
 					<p>
@@ -677,9 +677,9 @@
 
 					<p>
 						Now
-						<me>
+						<md>
 							\text{(prepared)}\qquad Y(s) = F_1(s) + F_2(s)e^{-s}
-						</me>.
+						</md>.
 					</p>
 
 					<p>
@@ -689,9 +689,9 @@
 					<proof><title>🔎 Partial Fraction Details</title>
 						<p>
 								For <m>F_1(s)</m>, the general form is:
-								<me>
+								<md>
 									\frac{1}{(s + 1)^2(s - 5)} = \frac{A}{s + 1} + \frac{B}{(s + 1)^2} + \frac{C}{s - 5}
-								</me>
+								</md>
 						</p>
 
 						<p>
@@ -739,15 +739,15 @@
 							With these constants, we can write <m>F_1</m> as:
 						</p>
 
-						<me>
+						<md>
 							F_1(s) = \frac{-\frac{1}{36}}{s + 1} - \frac{\frac{1}{6}}{(s + 1)^2} + \frac{\frac{1}{36}}{s - 5}
-						</me>
+						</md>
 
 						<p>
 							Now, for <m>F_2(s)</m>, we have:
-							<me>
+							<md>
 								F_2(s) = \frac{1}{s(s + 1)^2(s - 5)} = \frac{A}{s} + \frac{B}{s + 1} + \frac{C}{(s + 1)^2} + \frac{D}{s - 5}
-							</me>
+							</md>
 						</p>
 
 						<p>
@@ -793,17 +793,17 @@
 
 						<p>
 							To find <m>C</m>, we plug in the values of <m>A</m>, <m>B</m>, and <m>D</m>:
-							<me>
+							<md>
 								1 = \frac{16}{5} - \frac{4}{3} + C(-4) + \frac{1}{45} \implies
 								C = \frac{2}{9}
-							</me>
+							</md>
 						</p>
 
 						<p>
 							With these constants, we can write <m>F_2</m> as:
-							<me>
+							<md>
 								F_2(s) = \frac{-\frac{1}{5}}{s} + \frac{\frac{1}{6}}{s + 1} + \frac{\frac{2}{9}}{(s + 1)^2} + \frac{\frac{1}{180}}{s - 5}
-							</me>
+							</md>
 						</p>
 					</proof>
 				</paragraphs>
@@ -812,16 +812,16 @@
 					<title>Step 3 — Leave the Laplace Domain</title>
 					<p>
 						Apply <m>\laplacesym^{-1}</m> to both sides of the <q>prepared</q> <m>Y(s)</m>:
-						<me>
+						<md>
 							\ilap{Y(s)} = \ilap{F_1(s)} + \ilap{F_2(s)e^{-s}}
-						</me>
+						</md>
 					</p>
 
 					<p>
 						Using <xref ref="lt-L11" text="custom">L<m>_{11}</m></xref> updates our solution to:
-						<me>
+						<md>
 							y(t) = f_1(t) + f_2(t-1)u_1(t)
-						</me>
+						</md>
 					</p>
 
 					<p>

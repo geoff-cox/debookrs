@@ -56,14 +56,14 @@ Examples:
 
 ## Formula handling
 
-Use `<m>` for inline formulas and `<me>` for displayed formulas. Avoid LaTeX text artifacts such as `\mbox{\bf ...}` when prose outside the math environment is clearer.
+Use `<m>` for inline formulas and `<md>` for displayed formulas. Avoid LaTeX text artifacts such as `\mbox{\bf ...}` when prose outside the math environment is clearer.
 
 Prefer:
 
 ```xml
 <p>
     The slope-intercept form of a line is
-    <me>y = mx+b.</me>
+    <md>y = mx+b.</md>
 </p>
 ```
 
