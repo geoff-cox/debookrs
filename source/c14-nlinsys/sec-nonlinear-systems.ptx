@@ -10,8 +10,407 @@
   Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
 -->
-<section label="nonlinear-systems"> <title>Nonlinear Systems</title>
-    <p>
-        <xref provisional="FUTURE-WORK"/>
-    </p>
+<section label="nonlinear-systems">
+	<title>What Makes a System Nonlinear</title>
+
+	<introduction>
+		<p>
+			<idx><h>nonlinear system</h></idx>
+			In <xref ref="chpt-1st-order-linear-systems" text="title"/>, every system we met could be written as <m>\vec{X}' = A\vec{X}</m> for one constant matrix <m>A</m>. That single line is what made the eigenvalue method work: one matrix, one characteristic equation, one formula covering every solution at once.
+		</p>
+
+		<p>
+			Most systems that come out of a real model are not that obliging. The moment two quantities interact through a <em>product</em> — predators eating prey, susceptible people meeting infected ones, two species drawing on the same food supply — the equations pick up a term like <m>xy</m>, and the matrix disappears. This section is about recognizing when that has happened, being precise about which tools we lose, and locating the points that organize everything else: the equilibria.
+		</p>
+	</introduction>
+
+	<subsection label="recognizing-nonlinear-systems">
+		<title>Recognizing a Nonlinear System</title>
+
+		<p>
+			The test is the one we used for a single equation in <xref ref="chpt-classification" text="title"/>, now applied to both equations at once.
+		</p>
+
+		<definition xml:id="def-nonlinear-system">
+			<title>Nonlinear System</title>
+			<idx><h>nonlinear system</h></idx>
+			<idx><h>system of differential equations</h><h>nonlinear</h></idx>
+			<statement>
+				<p>
+					A first-order system
+					<md>
+						<mrow>\frac{dx}{dt} \amp = f(x,y)</mrow>
+						<mrow>\frac{dy}{dt} \amp = g(x,y)</mrow>
+					</md>
+					is <term>linear</term> when <m>f</m> and <m>g</m> are sums of constant multiples of <m>x</m> and <m>y</m> (plus, possibly, a function of <m>t</m> alone). It is <term>nonlinear</term> when either right-hand side contains a product of unknowns, a power of an unknown, or an unknown inside a function such as <m>\sin(x)</m>, <m>e^{y}</m>, or <m>\ln(x)</m>.
+				</p>
+				<p>
+					<notation><usage><m>f(x,y)</m></usage><description>right-hand side of the first equation of a system</description></notation>
+					<notation><usage><m>g(x,y)</m></usage><description>right-hand side of the second equation of a system</description></notation>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			Reading a system this way takes only a few seconds:
+		</p>
+
+		<tabular halign="left" top="minor" bottom="minor" left="minor" right="minor">
+			<row header="yes" bottom="minor">
+				<cell>System</cell>
+				<cell>Verdict</cell>
+				<cell>Why</cell>
+			</row>
+			<row>
+				<cell><m>x' = 3x - 2y, \quad y' = x + y</m></cell>
+				<cell>linear</cell>
+				<cell>every term is a constant times <m>x</m> or <m>y</m></cell>
+			</row>
+			<row>
+				<cell><m>x' = x - xy, \quad y' = xy - 2y</m></cell>
+				<cell>nonlinear</cell>
+				<cell>the product <m>xy</m> appears</cell>
+			</row>
+			<row>
+				<cell><m>x' = y, \quad y' = -\sin(x)</m></cell>
+				<cell>nonlinear</cell>
+				<cell><m>x</m> sits inside <m>\sin</m></cell>
+			</row>
+			<row>
+				<cell><m>x' = x(1 - x), \quad y' = -y</m></cell>
+				<cell>nonlinear</cell>
+				<cell><m>x(1-x) = x - x^2</m> contains <m>x^2</m></cell>
+			</row>
+			<row>
+				<cell><m>x' = -x + t^2, \quad y' = 4x - y</m></cell>
+				<cell>linear</cell>
+				<cell><m>t^2</m> is a power of the <em>independent</em> variable, which is allowed</cell>
+			</row>
+		</tabular>
+
+		<p>
+			That last row is worth pausing on. Nonlinearity is about how the <em>unknowns</em> enter, never about how <m>t</m> enters. A coefficient may be as complicated a function of <m>t</m> as you like and the system stays linear.
+		</p>
+
+		<aside>
+			<title>The Letters Will Change</title>
+			<p>
+				Nonlinear systems are usually written with the letters of the model rather than with <m>x</m> and <m>y</m>: <m>R</m> and <m>F</m> for rabbits and foxes, <m>S</m> and <m>I</m> for an epidemic. As everywhere in this book, the letters change but the structure does not — the first slot holds whatever quantity you listed first.
+			</p>
+		</aside>
+	</subsection>
+
+	<subsection label="what-nonlinearity-costs">
+		<title>What Nonlinearity Costs Us</title>
+
+		<p>
+			Three tools we have leaned on stop working. It is worth being precise about which three, because almost everything else survives.
+		</p>
+
+		<ul marker="square">
+			<li>
+				<p>
+					<term>Superposition is gone.</term> If <m>\vec{X}_1</m> and <m>\vec{X}_2</m> both solve a linear system, so does <m>C_1\vec{X}_1 + C_2\vec{X}_2</m>. For a nonlinear system that fails: adding two solutions of <m>x' = x - xy</m> does not produce a third, because the <m>xy</m> term does not distribute across the sum.
+				</p>
+			</li>
+			<li>
+				<p>
+					<term>There is no coefficient matrix.</term> Without a matrix <m>A</m> there is no <m>\det(A - rI) = 0</m> to solve, so there are no eigenvalues <em>for the system as a whole</em>. Eigenvalues will come back in <xref ref="linearization-and-the-jacobian" text="title"/>, but attached to a single equilibrium point rather than to the system.
+				</p>
+			</li>
+			<li>
+				<p>
+					<term>Closed-form solutions are the exception.</term> The systems in this chapter have no formula for <m>x(t)</m> and <m>y(t)</m> in terms of elementary functions. That is not a gap in our technique; for most nonlinear systems no such formula exists.
+				</p>
+			</li>
+		</ul>
+
+		<p>
+			What survives is everything geometric and everything numerical. The phase plane still works. Direction fields still work. Trajectories still cannot cross one another. Euler's method still marches forward exactly as it did in <xref ref="numerical-methods" text="title"/>. So the plan for this chapter is to lean on the tools that survive:
+			<ol marker="1.">
+				<li>Find the equilibrium points (this section).</li>
+				<li>Use <xref ref="gi-nullcline" text="custom">nullclines</xref> to map the flow between them (<xref ref="nullclines-and-the-phase-plane" text="title"/>).</li>
+				<li>Zoom in on each equilibrium, where the system <em>is</em> nearly linear, and classify it with eigenvalues (<xref ref="linearization-and-the-jacobian" text="title"/>).</li>
+			</ol>
+		</p>
+
+		<p>
+			The payoff is a complete qualitative picture — where the system settles, what it runs away from, whether it oscillates — assembled without ever solving anything.
+		</p>
+	</subsection>
+
+	<subsection label="finding-equilibria-systems">
+		<title>Finding Equilibrium Points</title>
+
+		<p>
+			<idx><h>equilibrium point</h></idx>
+			<idx><h>critical point</h></idx>
+			In <xref ref="chpt-qualitative" text="title"/>, an equilibrium of <m>y' = f(y)</m> was a value <m>c</m> with <m>f(c) = 0</m>: start there and you never move. In the plane the idea is identical, except that <em>both</em> derivatives must vanish at once.
+		</p>
+
+		<definition xml:id="def-equilibrium-point">
+			<title>Equilibrium Point of a System</title>
+			<idx><h>equilibrium point</h></idx>
+			<statement>
+				<p>
+					A point <m>(x^*, y^*)</m> is an <term>equilibrium point</term> (also called a <term>critical point</term>) of the system <m>x' = f(x,y)</m>, <m>y' = g(x,y)</m> when
+					<md>
+						f(x^*, y^*) = 0 \quad \text{and} \quad g(x^*, y^*) = 0 .
+					</md>
+					The constant functions <m>x(t) = x^*</m>, <m>y(t) = y^*</m> are then a solution of the system, and the point sits in the phase plane as a single motionless dot.
+				</p>
+				<p>
+					<notation><usage><m>(x^*, y^*)</m></usage><description>equilibrium point of a system</description></notation>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			Here is the first real difference from the linear case. A linear system <m>\vec{X}' = A\vec{X}</m> with <m>\det A \neq 0</m> has exactly one equilibrium, the origin. A nonlinear system can have several — and where they sit, plus how they compete for nearby trajectories, is the whole story.
+		</p>
+
+		<p>
+			Finding them is an algebra problem, not a calculus problem: solve two equations in two unknowns. The reliable technique is to <em>factor</em> each equation and then take every combination of the resulting cases.
+		</p>
+
+		<example xml:id="ex-lv-equilibria">
+			<title>Equilibria of a Predator-Prey Model</title>
+			<statement>
+				<p>
+					Rabbits <m>R(t)</m> and foxes <m>F(t)</m> in a meadow are modeled by
+					<md>
+						<mrow>\frac{dR}{dt} \amp = 0.5R - 0.02RF</mrow>
+						<mrow>\frac{dF}{dt} \amp = -0.3F + 0.01RF</mrow>
+					</md>
+					with <m>R</m> and <m>F</m> counted in animals and <m>t</m> in months. Find every equilibrium point.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Factor each right-hand side:
+					<md>
+						<mrow>0.5R - 0.02RF \amp = R(0.5 - 0.02F)</mrow>
+						<mrow>-0.3F + 0.01RF \amp = F(-0.3 + 0.01R)</mrow>
+					</md>
+				</p>
+				<p>
+					The first expression is zero when <m>R = 0</m> or <m>F = 0.5/0.02 = 25</m>. The second is zero when <m>F = 0</m> or <m>R = 0.3/0.01 = 30</m>. Both must hold at once, so we test all four pairings:
+					<ul marker="disc">
+						<li><m>R = 0</m> with <m>F = 0</m>: the point <m>(0,0)</m>. Valid.</li>
+						<li><m>R = 0</m> with <m>R = 30</m>: contradictory, no point.</li>
+						<li><m>F = 25</m> with <m>F = 0</m>: contradictory, no point.</li>
+						<li><m>F = 25</m> with <m>R = 30</m>: the point <m>(30, 25)</m>. Valid.</li>
+					</ul>
+				</p>
+				<p>
+					So there are two equilibria: <m>(R,F) = (0,0)</m> and <m>(R,F) = (30,25)</m>.
+				</p>
+				<p>
+					Both mean something. At <m>(0,0)</m> the meadow is empty and stays empty. At <m>(30,25)</m> the two populations balance exactly: rabbits are eaten as fast as they are born, and foxes die as fast as they reproduce, so <m>30</m> rabbits and <m>25</m> foxes coexist indefinitely. Whether a slightly-off population <em>returns</em> to that balance is a question we cannot answer yet — that is <xref ref="linearization-and-the-jacobian" text="title"/>.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(R,F) = (0,0)</m> and <m>(R,F) = (30,25)</m>.
+				</p>
+			</answer>
+		</example>
+
+		<p>
+			Notice what the factoring bought us. Had we instead written <m>0.5R = 0.02RF</m> and divided through by <m>R</m>, we would have lost the equilibrium at the origin — exactly the lost-solutions trap from <xref ref="chpt-separable-variables" text="title"/>. Factor, then case-split. Never divide by an unknown.
+		</p>
+
+		<example xml:id="ex-competing-equilibria">
+			<title>Equilibria of Two Competing Species</title>
+			<statement>
+				<p>
+					Two species share a single food supply. Measured in thousands of individuals,
+					<md>
+						<mrow>\frac{dx}{dt} \amp = x(3 - x - 2y)</mrow>
+						<mrow>\frac{dy}{dt} \amp = y(2 - x - y)</mrow>
+					</md>
+					Each species would grow logistically on its own; each term carrying the other letter is the cost of competition. Find every equilibrium point.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Both equations arrive already factored. The first vanishes when
+					<md>
+						x = 0 \quad \text{or} \quad 3 - x - 2y = 0,
+					</md>
+					and the second vanishes when
+					<md>
+						y = 0 \quad \text{or} \quad 2 - x - y = 0 .
+					</md>
+					Four pairings again:
+					<ul marker="disc">
+						<li><m>x = 0</m> with <m>y = 0</m>: the point <m>(0,0)</m> — neither species present.</li>
+						<li><m>x = 0</m> with <m>2 - x - y = 0</m>: gives <m>y = 2</m>, the point <m>(0,2)</m> — only species <m>y</m>.</li>
+						<li><m>3 - x - 2y = 0</m> with <m>y = 0</m>: gives <m>x = 3</m>, the point <m>(3,0)</m> — only species <m>x</m>.</li>
+						<li><m>3 - x - 2y = 0</m> with <m>2 - x - y = 0</m>: subtracting the second from the first gives <m>1 - y = 0</m>, so <m>y = 1</m>, and then <m>x = 2 - y = 1</m>. The point <m>(1,1)</m> — coexistence.</li>
+					</ul>
+				</p>
+				<p>
+					Four equilibria: <m>(0,0)</m>, <m>(3,0)</m>, <m>(0,2)</m>, and <m>(1,1)</m>.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(0,0)</m>, <m>(3,0)</m>, <m>(0,2)</m>, and <m>(1,1)</m>.
+				</p>
+			</answer>
+		</example>
+
+		<p>
+			Four equilibria in one small model — and no linear system of two equations can produce more than one. That difference is why nonlinear models describe outcomes linear ones cannot: an ecosystem that could settle into either of two very different states, a disease that either dies out or explodes, a switch that stays wherever you last flipped it.
+		</p>
+
+		<aside>
+			<title>When the Algebra Fights Back</title>
+			<p>
+				Both examples factored cleanly. Many models do not. The system <m>x' = x - y^3</m>, <m>y' = x^2 - y</m> leads to <m>x^6 = x</m>, and plenty of systems lead to equations with no algebraic solution at all. In those cases we locate equilibria numerically, or read them off the phase plane as the crossings we build in the next section. The definition never changes; only the arithmetic gets harder.
+			</p>
+		</aside>
+
+		<exercise label="nonlinear-systems-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> What Makes a System Nonlinear Reading Questions</title>
+
+			<task label="nonlinear-systems-cyu-1">
+				<title><e component="emoji">📖❓</e> Spot the Nonlinear Systems</title>
+				<statement>
+					<p>
+						Select every system below that is <em>nonlinear</em>.
+					</p>
+				</statement>
+				<choices randomize="yes" multiple-correct="yes">
+					<choice correct="yes">
+						<statement><p><m>x' = 2x - xy, \ y' = y + x</m></p></statement>
+						<feedback><p>Yes — <m>xy</m> is a product of two unknowns.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>x' = y, \ y' = -\sin(x) - y</m></p></statement>
+						<feedback><p>Yes — the unknown <m>x</m> sits inside <m>\sin</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>x' = -3x + 7y, \ y' = x - y</m></p></statement>
+						<feedback><p>Every term is a constant times an unknown, so this system is linear.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>x' = x + e^{t}, \ y' = 2x - 5y</m></p></statement>
+						<feedback><p>The <m>e^t</m> involves the <em>independent</em> variable, which is allowed. This system is linear.</p></feedback>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>x' = x(4 - x), \ y' = xy</m></p></statement>
+						<feedback><p>Yes — expanding the first gives <m>4x - x^2</m>, and the second is a product.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nonlinear-systems-cyu-2">
+				<title><e component="emoji">📖❓</e> What Does an Equilibrium Require?</title>
+				<statement>
+					<p>
+						A point <m>(x^*, y^*)</m> is an equilibrium point of <m>x' = f(x,y)</m>, <m>y' = g(x,y)</m> exactly when
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p><m>f(x^*,y^*) = 0</m> <em>and</em> <m>g(x^*,y^*) = 0</m>.</p></statement>
+						<feedback><p>Correct — both derivatives must vanish, or the point would still be moving.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>f(x^*,y^*) = 0</m> <em>or</em> <m>g(x^*,y^*) = 0</m>.</p></statement>
+						<feedback><p>If only one is zero, one variable is still changing and the point drifts.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>f(x^*,y^*) = g(x^*,y^*)</m>.</p></statement>
+						<feedback><p>Equal derivatives are not zero derivatives — both could equal <m>7</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>x^* = y^* = 0</m>.</p></statement>
+						<feedback><p>That is the only option for most <em>linear</em> systems. Nonlinear equilibria can sit anywhere.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nonlinear-systems-cyu-3">
+				<title><e component="emoji">📖❓</e> Count the Equilibria</title>
+				<statement>
+					<p>
+						How many equilibrium points does <m>x' = x(2-y)</m>, <m>y' = y(x-1)</m> have?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Two: <m>(0,0)</m> and <m>(1,2)</m>.</p></statement>
+						<feedback><p>Correct. The first equation needs <m>x=0</m> or <m>y=2</m>; the second needs <m>y=0</m> or <m>x=1</m>. Only <m>(0,0)</m> and <m>(1,2)</m> satisfy both.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>One: only <m>(0,0)</m>.</p></statement>
+						<feedback><p>Check the pairing <m>y = 2</m> with <m>x = 1</m> — it works too.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Four, one for each factor.</p></statement>
+						<feedback><p>All four pairings must be <em>tested</em>, but two of them are contradictory: <m>x=0</m> with <m>x=1</m>, and <m>y=2</m> with <m>y=0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Infinitely many, along the lines <m>x=0</m> and <m>y=0</m>.</p></statement>
+						<feedback><p>A point on the <m>x</m>-axis away from the origin still has <m>x' = x(2-0) = 2x \neq 0</m>.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nonlinear-systems-cyu-4">
+				<title><e component="emoji">📖❓</e> Which Tools Survive?</title>
+				<statement>
+					<p>
+						Select every statement that is true about a nonlinear system.
+					</p>
+				</statement>
+				<choices randomize="yes" multiple-correct="yes">
+					<choice correct="yes">
+						<statement><p>The phase plane and direction fields still describe its motion.</p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p>Euler's method still approximates its solutions step by step.</p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p>It may have more than one equilibrium point.</p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p>Adding two solutions produces another solution.</p></statement>
+						<feedback><p>Superposition is exactly what nonlinearity destroys.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Its behavior is set by the eigenvalues of one coefficient matrix.</p></statement>
+						<feedback><p>There is no single coefficient matrix. Eigenvalues return in the next sections, but one equilibrium at a time.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nonlinear-systems-cyu-5">
+				<title><e component="emoji">📖❓</e> Why Factor Instead of Divide?</title>
+				<statement>
+					<p>
+						To find the equilibria of <m>x' = 4x - x^2</m>, why should you factor to <m>x(4-x) = 0</m> rather than write <m>4x = x^2</m> and divide both sides by <m>x</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Dividing by <m>x</m> assumes <m>x \neq 0</m> and throws away the equilibrium at <m>x = 0</m>.</p></statement>
+						<feedback><p>Exactly — the same lost-solutions trap you met with separation of variables.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Dividing produces the wrong value for the other equilibrium.</p></statement>
+						<feedback><p>Dividing does give <m>x = 4</m> correctly. The problem is what it silently discards.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Factoring is required whenever a system is nonlinear.</p></statement>
+						<feedback><p>Factoring is a reliable habit, not a rule — plenty of equilibria are found other ways.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
 </section>
