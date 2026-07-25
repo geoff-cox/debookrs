@@ -132,6 +132,21 @@ def rounds_to(value, printed, places) -> bool:
     return round(R(value) * scale) == round(R(printed) * scale)
 
 
+def step_count(span, h) -> int:
+    """Steps needed to cover ``span`` with step size ``h``.
+
+    Raises when ``h`` does not divide ``span`` exactly. Truncating here
+    would silently stop the march short of the interval's end and then
+    compare against the exact value at the far end, reporting a wrong
+    "error" that still looks plausible. A crashed check is a failed
+    check, so raising surfaces the mistake instead of burying it.
+    """
+    n = R(span) / R(h)
+    if n.q != 1:
+        raise ValueError(f"step size {h} does not evenly divide the interval {span}")
+    return int(n)
+
+
 REGISTRY = [
     # ------------------------------------------------------------------
     # Chapter 13 — First-Order Linear Systems
@@ -1087,8 +1102,7 @@ EM_EXACT = exp(t) / 8 - t - 1           # y(t) = (1/8)e^t - t - 1
 def em_error(method, h_den):
     """|approximation - exact| at t = 1.5 for step size h = 1/h_den."""
     h = R(1, h_den)
-    n = int(R(3, 2) / h)
-    approx = method(EM_F, 0, EM_Y0, h, n)
+    approx = method(EM_F, 0, EM_Y0, h, step_count(R(3, 2), h))
     return abs(approx - EM_EXACT.subs(t, R(3, 2)))
 
 
@@ -1108,7 +1122,10 @@ REGISTRY += [
         "c7 Euler convergence table: y_N for h = 1/2, 1/4, 1/8, 1/16, 1/32",
         "source/c7-em/sec-euler-accuracy.ptx",
         lambda: all(
-            rounds_to(euler(EM_F, 0, EM_Y0, R(1, d), int(R(3, 2) * d)), printed, 6)
+            rounds_to(
+                euler(EM_F, 0, EM_Y0, R(1, d), step_count(R(3, 2), R(1, d))),
+                printed, 6,
+            )
             for d, printed in [
                 (2, R(-2078125, 1000000)),
                 (4, R(-2023163, 1000000)),
@@ -1179,7 +1196,10 @@ REGISTRY += [
         "c7 Heun convergence table: y_N for h = 1/2, 1/4, 1/8, 1/16",
         "source/c7-em/sec-euler-accuracy.ptx",
         lambda: all(
-            rounds_to(heun(EM_F, 0, EM_Y0, R(1, d), int(R(3, 2) * d)), printed, 6)
+            rounds_to(
+                heun(EM_F, 0, EM_Y0, R(1, d), step_count(R(3, 2), R(1, d))),
+                printed, 6,
+            )
             for d, printed in [
                 (2, R(-1963623, 1000000)),
                 (4, R(-1947015, 1000000)),
