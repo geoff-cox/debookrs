@@ -15,7 +15,7 @@ git checkout 6a956a6 -- assets/<path>
 Original locations are preserved by the subfolder layout (`figures/…` came from
 `assets/figures/…`, and so on).
 
-## Contents (20 files)
+## Contents (21 files)
 
 ### figures/ (3)
 
@@ -35,6 +35,12 @@ Test scaffolding for embedding matplotlib output in an iframe. Nothing in
 | `test.html` | Test harness page (`<iframe src="dark_figure.png">`). |
 | `dark_figure.png` | Output of that test — a plain sine curve on a transparent background. |
 | `matplotlib-figs.py` | The script that generates it. ⚠️ Differs from `assets/code/matplotlib-figs.py` (which stays), so it is a variant, not an exact duplicate. |
+
+### js-slates/ (1)
+
+| File | Why it's here |
+|---|---|
+| `poly-factor-tool.js` | **0-byte stub** — an empty file, no implementation. The working versions of that tool (two `.doenetml` files and a `.ggb`) are in `assets_unused/`. |
 
 ### audio/readings/c1/ (13) and c2/ (1)
 

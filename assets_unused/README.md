@@ -18,7 +18,7 @@ git mv assets_unused/figures/approx-fig-01.png assets/figures/
 Original locations are preserved by the subfolder layout (`figures/…` came from
 `assets/figures/…`, and so on).
 
-## Contents (87 files)
+## Contents (86 files)
 
 ### figures/ (58)
 
@@ -57,13 +57,16 @@ source** for exactly the applied topics the audit wants to add:
 `y' = t + y` data; these may be exactly that, and the generator lives in
 `assets/code/data-generator/`.
 
-### doenet/ (2), geogebra/ (1), js-slates/ (1)
+### doenet/ (2), geogebra/ (1)
 
-Three implementations of the same **polynomial factoring tool**
-(`poly-factoring-tool1/2.doenetml`, `polynomial-factoring-tool.ggb`,
-`poly-factor-tool.js`). The algebra appendix has
+Two working implementations of the same **polynomial factoring tool**:
+`poly-factoring-tool1.doenetml` (4.8 KB), `poly-factoring-tool2.doenetml`
+(4.3 KB) and `polynomial-factoring-tool.ggb` (139 KB). The algebra appendix has
 `a1-algebra/PEQ-polynomial-equations.ptx` with no interactive; **M8** asks for
 more dynamic exercises.
+
+> A third file, `js-slates/poly-factor-tool.js`, was a **0-byte stub** — no
+> implementation — so it is in `assets_to_delete/` rather than here.
 
 ### audio/readings/ (9)
 
