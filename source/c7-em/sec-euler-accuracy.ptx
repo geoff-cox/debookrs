@@ -1,0 +1,698 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="euler-accuracy">
+	<title>How Good Is Euler's Method?</title>
+
+	<introduction>
+		<p>
+			So far our only statement about accuracy has been <q>smaller <m>h</m> is better.</q> That is true, but it is not much to plan with. If you halve the step size you double the work — do you get twice the accuracy, or four times, or barely any?
+		</p>
+
+		<p>
+			This section answers that question, and then uses the answer to build something better. It turns out that a small change to how each step is taken buys far more accuracy than shrinking <m>h</m> ever will.
+		</p>
+	</introduction>
+
+	<subsection label="euler-error-two-kinds">
+		<title>Two Kinds of Error</title>
+
+		<p>
+			<idx><h>error</h><h>local truncation</h></idx>
+			<idx><h>error</h><h>global</h></idx>
+			There are two different errors worth separating, and confusing them is the usual source of trouble.
+		</p>
+
+		<definition xml:id="def-local-global-error">
+			<title>Local and Global Error</title>
+			<idx><h>local truncation error</h></idx>
+			<idx><h>global error</h></idx>
+			<statement>
+				<p>
+					The <term>local truncation error</term> is the error a single step introduces, assuming the step started from the exact value.
+				</p>
+				<p>
+					The <term>global error</term> is the gap between the approximation and the true solution at the end of the run, after all the steps have been taken:
+					<md>
+						\text{global error at } t_N = \left| y_N - y(t_N) \right| .
+					</md>
+				</p>
+				<p>
+					<notation><usage><m>y(t_N)</m></usage><description>exact solution value at the final step</description></notation>
+					<notation><usage><m>y_N</m></usage><description>Euler approximation at the final step</description></notation>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			The global error is the one you actually care about, but the local error is the one we can reason about, so we start there.
+		</p>
+
+		<p>
+			Recall where Euler's approximation comes from: at <m>(t_k, y_k)</m> we read off the slope <m>f(t_k, y_k)</m> and then <em>hold that slope fixed</em> for the whole step. But the true solution's slope is not fixed — it changes as we move, at a rate given by the second derivative <m>y''</m>. Over a step of length <m>h</m>, the true slope drifts by roughly
+			<md>
+				\left(\text{rate of change of slope}\right) \times \left(\text{run}\right) = y'' \, h .
+			</md>
+		</p>
+
+		<p>
+			So Euler spends the whole step using the slope from the starting corner, while the true slope has been sliding away from it. On average across the step it is off by about half that drift, <m>\tfrac{1}{2} y'' h</m>. Multiply an average slope error by the run <m>h</m> to get the error in <m>y</m>:
+			<md>
+				\text{local truncation error} \approx \frac{1}{2}\, y''\, h^2 .
+			</md>
+			One step is off by an amount proportional to <m>h^2</m>. That looks encouraging — halve <m>h</m> and each step becomes four times as accurate.
+		</p>
+
+		<p>
+			Except that we do not take one step. Covering a fixed interval from <m>t_0</m> to <m>t_N</m> takes
+			<md>
+				N = \frac{t_N - t_0}{h}
+			</md>
+			steps, and halving <m>h</m> doubles <m>N</m>. Accumulating <m>N</m> errors of size <m>\tfrac12 y'' h^2</m> gives, very roughly,
+			<md>
+				\text{global error} \ \approx \ \underbrace{\frac{t_N - t_0}{h}}_{\text{number of steps}} \times \underbrace{\frac{1}{2} y'' h^2}_{\text{error per step}} \ = \ \frac{1}{2}\,(t_N - t_0)\, y''\, h .
+			</md>
+			One power of <m>h</m> cancels. The <m>h^2</m> accuracy we won on each step is spent paying for the extra steps, and what survives is proportional to <m>h</m>.
+		</p>
+
+		<assemblage xml:id="euler-is-first-order">
+			<title><e component="emoji">✳️</e> Euler's Method Is First Order</title>
+			<p>
+				Each Euler step commits an error proportional to <m>h^2</m>, but a fixed interval needs <m>N \propto 1/h</m> steps, so the errors that survive to the end are proportional to <m>h</m>:
+				<md>
+					\text{local} \sim h^2, \qquad \text{global} \sim h .
+				</md>
+				A method whose global error is proportional to <m>h</m> is called a <term>first-order</term> method. The practical consequence: <em>halving the step size roughly halves the final error</em> — it does not quarter it.
+			</p>
+		</assemblage>
+
+		<aside>
+			<title>Why <q>Roughly</q>?</title>
+			<p>
+				Two things are being swept under the rug. The second derivative <m>y''</m> is not one number — it changes along the solution, so the per-step errors are not all the same size. And an error made early does not simply sit there; the differential equation carries it forward and can magnify it, so the errors compound rather than merely add. Both effects change the <em>constant</em> out front. Neither changes the power of <m>h</m>, which is what <q>first order</q> is claiming.
+			</p>
+		</aside>
+	</subsection>
+
+	<subsection label="euler-error-in-practice">
+		<title>Watching the Error Halve</title>
+
+		<p>
+			A claim about powers of <m>h</m> is easy to test. We need a problem whose exact solution we know, so we can measure the error rather than guess at it — and we already have one.
+		</p>
+
+		<p>
+			In <xref ref="eulers-method-example-1" text="type-global"/> we ran Euler's method on
+			<md>
+				y' = t + y, \qquad y(0) = -\frac{7}{8}
+			</md>
+			out to <m>t = 1.5</m>. This equation is linear, so the integrating-factor method of <xref ref="chpt-integrating-factor" text="title"/> solves it exactly. Writing it as <m>y' - y = t</m> gives the integrating factor <m>\mu = e^{-t}</m>, and
+			<md>
+				<mrow>\left(e^{-t} y\right)' \amp = t e^{-t}</mrow>
+				<mrow>e^{-t} y \amp = -(t+1)e^{-t} + C</mrow>
+				<mrow>y \amp = C e^{t} - t - 1 .</mrow>
+			</md>
+			The initial condition <m>y(0) = -\frac78</m> forces <m>C - 1 = -\frac78</m>, so <m>C = \frac18</m> and
+			<md>
+				y(t) = \frac{1}{8}e^{t} - t - 1, \qquad\text{so}\qquad y(1.5) = \frac{1}{8}e^{1.5} - 2.5 \approx -1.939789 .
+			</md>
+		</p>
+
+		<example xml:id="ex-euler-error-halving">
+			<title>Does the Error Really Halve?</title>
+			<statement>
+				<p>
+					Run Euler's method on <m>y' = t + y</m>, <m>y(0) = -\frac78</m> out to <m>t = 1.5</m> with step sizes <m>h = 0.5, 0.25, 0.125, 0.0625</m>, and <m>0.03125</m>. Compare each final value against the exact <m>y(1.5) \approx -1.939789</m>, and check what happens to the error each time <m>h</m> is halved.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The <m>h = 0.5</m> row is the run we already did by hand in <xref ref="eulers-method-example-1" text="type-global"/>, which ended at <m>y_3 = -2.078125</m>. The rest are the same arithmetic with more steps:
+				</p>
+
+				<tabular top="minor" bottom="minor">
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="center" />
+					<row header="yes" bottom="minor">
+						<cell><m>h</m></cell>
+						<cell>steps <m>N</m></cell>
+						<cell><m>y_N</m></cell>
+						<cell>error</cell>
+						<cell>previous error <m>\div</m> this error</cell>
+					</row>
+					<row>
+						<cell><m>0.5</m></cell>
+						<cell><m>3</m></cell>
+						<cell><m>-2.078125</m></cell>
+						<cell><m>0.138336</m></cell>
+						<cell>—</cell>
+					</row>
+					<row>
+						<cell><m>0.25</m></cell>
+						<cell><m>6</m></cell>
+						<cell><m>-2.023163</m></cell>
+						<cell><m>0.083374</m></cell>
+						<cell><m>1.66</m></cell>
+					</row>
+					<row>
+						<cell><m>0.125</m></cell>
+						<cell><m>12</m></cell>
+						<cell><m>-1.986264</m></cell>
+						<cell><m>0.046475</m></cell>
+						<cell><m>1.79</m></cell>
+					</row>
+					<row>
+						<cell><m>0.0625</m></cell>
+						<cell><m>24</m></cell>
+						<cell><m>-1.964444</m></cell>
+						<cell><m>0.024656</m></cell>
+						<cell><m>1.88</m></cell>
+					</row>
+					<row>
+						<cell><m>0.03125</m></cell>
+						<cell><m>48</m></cell>
+						<cell><m>-1.952505</m></cell>
+						<cell><m>0.012716</m></cell>
+						<cell><m>1.94</m></cell>
+					</row>
+				</tabular>
+
+				<p>
+					Every halving of <m>h</m> cuts the error by a factor in the last column, and that factor is climbing toward <m>2</m>: <m>1.66</m>, <m>1.79</m>, <m>1.88</m>, <m>1.94</m>. First order predicted exactly this. The factor is not <em>equal</em> to <m>2</m> because <q>proportional to <m>h</m></q> is a statement about the trend as <m>h</m> shrinks; at <m>h = 0.5</m>, with only three steps across the interval, the higher-order effects we dropped are still large enough to see. As <m>h</m> gets small they fade and the ratio settles on <m>2</m>.
+				</p>
+
+				<p>
+					Notice also the price. Going from the first row to the last cut the error by a factor of about <m>11</m> — and cost <m>16</m> times as many steps. That is the frustrating arithmetic of a first-order method, and the reason the next subsection exists.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					The error falls by factors of <m>1.66</m>, <m>1.79</m>, <m>1.88</m>, and <m>1.94</m> — approaching <m>2</m>, exactly as a first-order method predicts.
+				</p>
+			</answer>
+		</example>
+
+		<exercise label="euler-accuracy-cyu-bundle-1">
+			<title><e component="emoji">🤔💭</e> Euler Accuracy Reading Questions</title>
+
+			<task label="euler-accuracy-cyu-1">
+				<title><e component="emoji">📖❓</e> Local Versus Global</title>
+				<statement>
+					<p>
+						What is the difference between the local truncation error and the global error?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Local error is what one step introduces; global error is the gap that remains after all the steps.</p></statement>
+						<feedback><p>Correct — and the global error is the one you care about in practice.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Local error happens near <m>t_0</m>; global error happens near <m>t_N</m>.</p></statement>
+						<feedback><p>Both refer to size, not location. A local error is committed at every step, including the last one.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Local error comes from arithmetic slips; global error comes from the method.</p></statement>
+						<feedback><p>Both are the method's own error. Arithmetic slips are a separate problem entirely.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>They are two names for the same quantity.</p></statement>
+						<feedback><p>They scale with different powers of <m>h</m> — <m>h^2</m> and <m>h</m> — so they cannot be the same thing.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="euler-accuracy-cyu-2">
+				<title><e component="emoji">📖❓</e> Where the Extra Power Goes</title>
+				<statement>
+					<p>
+						Each Euler step has error proportional to <m>h^2</m>, yet the global error is only proportional to <m>h</m>. What accounts for the lost power of <m>h</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Covering a fixed interval takes <m>N = (t_N - t_0)/h</m> steps, so shrinking <m>h</m> increases the number of errors being accumulated.</p></statement>
+						<feedback><p>Correct — one factor of <m>h</m> is spent paying for the extra steps.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The local errors partly cancel each other out.</p></statement>
+						<feedback><p>They generally do not cancel; for this equation they all push the same direction and compound.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Rounding in the arithmetic eats the extra accuracy.</p></statement>
+						<feedback><p>Rounding is a real but separate effect, and far too small to account for a whole power of <m>h</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The second derivative <m>y''</m> shrinks as <m>h</m> shrinks.</p></statement>
+						<feedback><p><m>y''</m> belongs to the solution curve. It has nothing to do with the step size you chose.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="euler-accuracy-cyu-3">
+				<title><e component="emoji">📖❓</e> Predict the New Error</title>
+				<statement>
+					<p>
+						Euler's method with <m>h = 0.1</m> gives a global error of about <m>0.08</m>. Roughly what should you expect from <m>h = 0.05</m>?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>About <m>0.04</m>.</p></statement>
+						<feedback><p>Correct — first order means halving <m>h</m> roughly halves the error.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>About <m>0.02</m>.</p></statement>
+						<feedback><p>Quartering would be the behavior of a <em>second</em>-order method. Euler is first order.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>About <m>0.16</m>.</p></statement>
+						<feedback><p>A smaller step size makes the approximation better, not worse.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>0</m> — the approximation becomes exact.</p></statement>
+						<feedback><p>No finite step size makes Euler exact on a curved solution.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="euler-accuracy-cyu-4">
+				<title><e component="emoji">📖❓</e> Which Problems Are Hardest?</title>
+				<statement>
+					<p>
+						The local error is about <m>\frac12 y'' h^2</m>. For a fixed step size, on which solution curve will Euler's method do best?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>A nearly straight one, where <m>y''</m> is small.</p></statement>
+						<feedback><p>Correct. In the extreme, if the solution is an exact straight line then <m>y'' = 0</m> and Euler is exact.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>A sharply curving one, where <m>y''</m> is large.</p></statement>
+						<feedback><p>Sharp curvature is exactly what makes the held-fixed slope go stale fastest.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>A steep one, where <m>y'</m> is large.</p></statement>
+						<feedback><p>Steepness alone is fine — Euler follows a steep straight line perfectly. It is the <em>changing</em> slope that costs accuracy.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It makes no difference; the error depends only on <m>h</m>.</p></statement>
+						<feedback><p>The <m>y''</m> factor is what sets the size of the constant out front.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="euler-accuracy-cyu-5">
+				<title><e component="emoji">📖❓</e> Reading the Ratio Column</title>
+				<statement>
+					<p>
+						In <xref ref="ex-euler-error-halving" text="type-global"/> the error ratios were <m>1.66</m>, <m>1.79</m>, <m>1.88</m>, <m>1.94</m> rather than a clean <m>2</m> every time. What is the right reading of that?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>First order describes the trend as <m>h</m> shrinks, so the ratio approaches <m>2</m> rather than equalling it at every step size.</p></statement>
+						<feedback><p>Correct — and the ratios climbing steadily toward <m>2</m> is the evidence.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The computation contains an arithmetic error.</p></statement>
+						<feedback><p>The pattern is exactly what the theory predicts; nothing is wrong.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Euler's method is not really first order.</p></statement>
+						<feedback><p>It is — a ratio converging to <m>2</m> is the signature of first order.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The exact solution must be wrong.</p></statement>
+						<feedback><p>The exact solution checks out by substitution: <m>y = \frac18 e^t - t - 1</m> satisfies both the equation and the initial condition.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
+	<subsection label="improved-euler">
+		<title>A Better Step: Improved Euler</title>
+
+		<p>
+			<idx><h>Improved Euler's method</h></idx>
+			<idx><h>Heun's method</h></idx>
+			Shrinking <m>h</m> is not the only lever. Look again at <em>why</em> Euler loses accuracy: it reads the slope at the left-hand corner of the step and then commits to it all the way across. By the time we arrive, that slope is stale.
+		</p>
+
+		<p>
+			Here is a cheap fix. Take the Euler step, but treat the result as a <em>guess</em> rather than an answer. At the guessed landing point we can read a second slope — the one the equation says applies at the far end of the step. Now redo the step using the <em>average</em> of the two slopes, which represents the whole interval far better than either endpoint alone.
+		</p>
+
+		<definition xml:id="def-improved-euler">
+			<title>Improved Euler (Heun's Method)</title>
+			<idx><h>Improved Euler's method</h></idx>
+			<idx><h>Heun's method</h></idx>
+			<idx><h>predictor-corrector</h></idx>
+			<statement>
+				<p>
+					For <m>y' = f(t,y)</m> with step size <m>h</m>, each step of <term>Improved Euler</term> (also called <term>Heun's method</term>) has two parts:
+					<md>
+						<mrow>\text{predict:} \amp \qquad \tilde{y}_{k+1} = y_k + h\, f(t_k, y_k)</mrow>
+						<mrow>\text{correct:} \amp \qquad y_{k+1} = y_k + \frac{h}{2}\Big[\, f(t_k, y_k) + f\big(t_{k+1}, \tilde{y}_{k+1}\big) \Big]</mrow>
+					</md>
+					The predictor <m>\tilde{y}_{k+1}</m> is thrown away once it has served its purpose, which is to supply a place to measure the second slope.
+				</p>
+				<p>
+					<notation><usage><m>\tilde{y}_{k+1}</m></usage><description>Improved Euler predictor value</description></notation>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			This is the <term>predictor-corrector</term> idea, and it is the promised payoff of the <q>predict, step, repeat</q> pattern from <xref ref="eulers-method-full" text="title"/>: Euler is not a dead end but the first member of a family, and the family grows by being smarter about which slope to trust.
+		</p>
+
+		<example xml:id="ex-heun-comparison">
+			<title>Euler, Improved Euler, and the Exact Solution</title>
+			<statement>
+				<p>
+					Apply Improved Euler to <m>y' = t + y</m>, <m>y(0) = -\frac78</m> with <m>h = 0.5</m> over <m>[0, 1.5]</m> — the same problem, same step size, and same three steps as <xref ref="eulers-method-example-1" text="type-global"/>. Compare against plain Euler and against the exact solution <m>y = \frac18 e^t - t - 1</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>Step 1</term> (from <m>t_0 = 0</m>, <m>y_0 = -0.875</m>). The starting slope is
+					<md>
+						f(0, -0.875) = 0 + (-0.875) = -0.875 .
+					</md>
+					Predict with an ordinary Euler step:
+					<md>
+						\tilde{y}_1 = -0.875 + 0.5(-0.875) = -1.3125 .
+					</md>
+					Read the slope at that guessed landing point:
+					<md>
+						f(0.5, -1.3125) = 0.5 + (-1.3125) = -0.8125 .
+					</md>
+					Average the two slopes and take the real step:
+					<md>
+						y_1 = -0.875 + \frac{0.5}{2}\Big[(-0.875) + (-0.8125)\Big] = -0.875 - 0.421875 = -1.296875 .
+					</md>
+					Plain Euler gave <m>-1.3125</m> here; the exact value is <m>-1.293910</m>.
+				</p>
+
+				<p>
+					<term>Step 2</term> (from <m>t_1 = 0.5</m>, <m>y_1 = -1.296875</m>).
+					<md>
+						<mrow>f(0.5, -1.296875) \amp = -0.796875</mrow>
+						<mrow>\tilde{y}_2 \amp = -1.296875 + 0.5(-0.796875) = -1.6953125</mrow>
+						<mrow>f(1.0, -1.6953125) \amp = -0.6953125</mrow>
+						<mrow>y_2 \amp = -1.296875 + 0.25\Big[(-0.796875) + (-0.6953125)\Big] = -1.669921875</mrow>
+					</md>
+				</p>
+
+				<p>
+					<term>Step 3</term> (from <m>t_2 = 1.0</m>, <m>y_2 = -1.669921875</m>).
+					<md>
+						<mrow>f(1.0, -1.669921875) \amp = -0.669921875</mrow>
+						<mrow>\tilde{y}_3 \amp = -1.669921875 + 0.5(-0.669921875) = -2.0048828125</mrow>
+						<mrow>f(1.5, -2.0048828125) \amp = -0.5048828125</mrow>
+						<mrow>y_3 \amp = -1.669921875 + 0.25\Big[(-0.669921875) + (-0.5048828125)\Big] = -1.963623</mrow>
+					</md>
+				</p>
+
+				<p>
+					Laying the three runs side by side:
+				</p>
+
+				<tabular top="minor" bottom="minor">
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="center" right="minor" />
+					<col halign="center" />
+					<row header="yes" bottom="minor">
+						<cell><m>t</m></cell>
+						<cell>Euler</cell>
+						<cell>Improved Euler</cell>
+						<cell>exact</cell>
+					</row>
+					<row>
+						<cell><m>0.0</m></cell>
+						<cell><m>-0.875000</m></cell>
+						<cell><m>-0.875000</m></cell>
+						<cell><m>-0.875000</m></cell>
+					</row>
+					<row>
+						<cell><m>0.5</m></cell>
+						<cell><m>-1.312500</m></cell>
+						<cell><m>-1.296875</m></cell>
+						<cell><m>-1.293910</m></cell>
+					</row>
+					<row>
+						<cell><m>1.0</m></cell>
+						<cell><m>-1.718750</m></cell>
+						<cell><m>-1.669922</m></cell>
+						<cell><m>-1.660215</m></cell>
+					</row>
+					<row bottom="minor">
+						<cell><m>1.5</m></cell>
+						<cell><m>-2.078125</m></cell>
+						<cell><m>-1.963623</m></cell>
+						<cell><m>-1.939789</m></cell>
+					</row>
+					<row>
+						<cell>error at <m>t=1.5</m></cell>
+						<cell><m>0.138336</m></cell>
+						<cell><m>0.023834</m></cell>
+						<cell><m>0</m></cell>
+					</row>
+				</tabular>
+
+				<p>
+					Same equation, same step size, same three steps — and about <m>6</m> times less error.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					Improved Euler gives <m>y_3 \approx -1.963623</m> against Euler's <m>-2.078125</m>, with the exact value <m>-1.939789</m>. The errors are <m>0.023834</m> and <m>0.138336</m>.
+				</p>
+			</answer>
+		</example>
+
+		<p>
+			The gain is not a one-off. Repeating the step-size experiment of <xref ref="ex-euler-error-halving" text="type-global"/> with Improved Euler:
+		</p>
+
+		<tabular top="minor" bottom="minor">
+			<col halign="center" right="minor" />
+			<col halign="center" right="minor" />
+			<col halign="center" right="minor" />
+			<col halign="center" />
+			<row header="yes" bottom="minor">
+				<cell><m>h</m></cell>
+				<cell><m>y_N</m></cell>
+				<cell>error</cell>
+				<cell>previous error <m>\div</m> this error</cell>
+			</row>
+			<row>
+				<cell><m>0.5</m></cell>
+				<cell><m>-1.963623</m></cell>
+				<cell><m>0.023834</m></cell>
+				<cell>—</cell>
+			</row>
+			<row>
+				<cell><m>0.25</m></cell>
+				<cell><m>-1.947015</m></cell>
+				<cell><m>0.007226</m></cell>
+				<cell><m>3.30</m></cell>
+			</row>
+			<row>
+				<cell><m>0.125</m></cell>
+				<cell><m>-1.941779</m></cell>
+				<cell><m>0.001990</m></cell>
+				<cell><m>3.63</m></cell>
+			</row>
+			<row>
+				<cell><m>0.0625</m></cell>
+				<cell><m>-1.940311</m></cell>
+				<cell><m>0.000522</m></cell>
+				<cell><m>3.81</m></cell>
+			</row>
+		</tabular>
+
+		<p>
+			Now the ratios climb toward <m>4</m>, not <m>2</m>. Halving <m>h</m> <em>quarters</em> the error: Improved Euler is a <term>second-order</term> method, with global error proportional to <m>h^2</m>. Averaging the two slopes cancels the leading error term that plain Euler leaves behind.
+		</p>
+
+		<p>
+			It is fair to object that Improved Euler does twice the work per step, since it evaluates <m>f</m> twice instead of once. So compare honestly, by counting slope evaluations rather than steps:
+		</p>
+
+		<assemblage xml:id="heun-vs-euler-cost">
+			<title><e component="emoji">✳️</e> Same Accuracy, a Quarter of the Work</title>
+			<p>
+				To reach an error near <m>0.024</m> on this problem:
+				<ul marker="disc">
+					<li>Euler needs <m>h = 0.0625</m>: <m>24</m> steps, <m>24</m> slope evaluations, error <m>0.024656</m>.</li>
+					<li>Improved Euler needs only <m>h = 0.5</m>: <m>3</m> steps, <m>6</m> slope evaluations, error <m>0.023834</m>.</li>
+				</ul>
+				Doubling the work per step is a bargain when it buys you a whole extra power of <m>h</m>. This is why serious solvers are built on higher-order methods rather than on very small steps.
+			</p>
+		</assemblage>
+
+		<aside>
+			<title>Where This Goes Next</title>
+			<p>
+				Improved Euler is the second rung of a long ladder. Sample the slope at four well-chosen places inside the step instead of two, average them with the right weights, and you get the classical fourth-order Runge-Kutta method — global error proportional to <m>h^4</m>, and the default workhorse in most scientific software. The pattern never changes: predict, sample slopes, combine, step, repeat.
+			</p>
+		</aside>
+
+		<exercise label="euler-accuracy-cyu-bundle-2">
+			<title><e component="emoji">🤔💭</e> Improved Euler Reading Questions</title>
+
+			<task label="improved-euler-cyu-1">
+				<title><e component="emoji">📖❓</e> What the Predictor Is For</title>
+				<statement>
+					<p>
+						In Improved Euler, what is the predictor <m>\tilde{y}_{k+1}</m> used for?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>It supplies a location at which to read a second slope; the value itself is then discarded.</p></statement>
+						<feedback><p>Correct — the predictor is scaffolding, not an answer.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It is the method's answer for <m>y_{k+1}</m>.</p></statement>
+						<feedback><p>That would just be plain Euler. The corrector step replaces it.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It is averaged with <m>y_k</m> to give <m>y_{k+1}</m>.</p></statement>
+						<feedback><p>The averaging is done on the two <em>slopes</em>, not on the two <m>y</m>-values.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It estimates the local truncation error.</p></statement>
+						<feedback><p>Comparing predictor and corrector <em>can</em> be used that way by adaptive solvers, but that is not its role here.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="improved-euler-cyu-2">
+				<title><e component="emoji">📖❓</e> Which Slopes Get Averaged?</title>
+				<statement>
+					<p>
+						The corrector step averages which two slopes?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p><m>f(t_k, y_k)</m> and <m>f(t_{k+1}, \tilde{y}_{k+1})</m> — the slope where we start and the slope where the predictor lands.</p></statement>
+						<feedback><p>Correct: one slope from each end of the step.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>f(t_k, y_k)</m> and <m>f(t_{k+1}, y_{k+1})</m>.</p></statement>
+						<feedback><p>That would need <m>y_{k+1}</m> before computing it — circular. The predictor exists precisely to break that circle.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>f(t_k, y_k)</m> and <m>f(t_k, \tilde{y}_{k+1})</m>.</p></statement>
+						<feedback><p>The second slope must be read at the far end of the step, <m>t_{k+1}</m>, or it tells you nothing new about how the slope drifts.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The slopes at the two previous steps, <m>t_{k-1}</m> and <m>t_k</m>.</p></statement>
+						<feedback><p>Looking backward describes a different family of methods. Improved Euler looks forward within the current step.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="improved-euler-cyu-3">
+				<title><e component="emoji">📖❓</e> Second-Order Arithmetic</title>
+				<statement>
+					<p>
+						Improved Euler with <m>h = 0.2</m> produces an error of about <m>0.008</m>. Roughly what should <m>h = 0.1</m> give?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>About <m>0.002</m>.</p></statement>
+						<feedback><p>Correct — second order means halving <m>h</m> divides the error by about <m>4</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>About <m>0.004</m>.</p></statement>
+						<feedback><p>That is first-order behavior. Improved Euler does better than that.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>About <m>0.008</m>, unchanged.</p></statement>
+						<feedback><p>A smaller step size does improve the result — substantially, for a second-order method.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>About <m>0.0005</m>.</p></statement>
+						<feedback><p>Dividing by <m>16</m> is fourth-order behavior, which is Runge-Kutta territory.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="improved-euler-cyu-4">
+				<title><e component="emoji">📖❓</e> Counting the Real Cost</title>
+				<statement>
+					<p>
+						Why is it fairer to compare the two methods by counting slope evaluations rather than counting steps?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Improved Euler evaluates <m>f</m> twice per step, so equal step counts do not mean equal work.</p></statement>
+						<feedback><p>Correct — and even after paying that double cost, it still wins comfortably.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Because the two methods use different step sizes.</p></statement>
+						<feedback><p>They can be run at the same step size, as the worked example does. The asymmetry is the work inside each step.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Because Improved Euler takes more steps to cover the same interval.</p></statement>
+						<feedback><p>At the same <m>h</m> both take the same number of steps across an interval.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Because evaluating <m>f</m> is free.</p></statement>
+						<feedback><p>It is usually the most expensive part of the whole computation, which is exactly why we count it.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="improved-euler-cyu-5">
+				<title><e component="emoji">📖❓</e> Why Averaging Helps</title>
+				<statement>
+					<p>
+						What is the underlying reason averaging the two slopes beats using only the starting slope?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>The true slope changes across the step, so a value from one end misrepresents the interval; the average tracks the drift.</p></statement>
+						<feedback><p>Correct — and it is exactly that drift, measured by <m>y''</m>, that produced the local error in the first place.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The average of two numbers is always closer to the truth than either one.</p></statement>
+						<feedback><p>Not in general — it depends on where the two numbers sit relative to the truth. Here it works because the slopes bracket the step.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Averaging removes rounding error.</p></statement>
+						<feedback><p>Rounding is not the issue; the same gain appears in exact arithmetic.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It makes the step size effectively smaller.</p></statement>
+						<feedback><p>The step size is unchanged — that is the point. The improvement comes from a better slope, not a shorter step.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
+</section>
