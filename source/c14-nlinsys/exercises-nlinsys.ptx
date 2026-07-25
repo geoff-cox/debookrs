@@ -1,0 +1,654 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="nlinsys-exercises">
+	<title>Exercises</title>
+
+	<exercises label="nlinsys-concept-quiz">
+		<title><e component="emoji">💡</e> Conceptual Quiz</title>
+
+		<exercise label="nlinsys-cq">
+			<title>Multiple-Choice</title>
+
+			<task label="nlinsys-cq-mc-1">
+				<title>One Matrix or Many?</title>
+				<statement>
+					<p>
+						A linear system <m>\vec{X}' = A\vec{X}</m> is described by a single coefficient matrix. How many matrices does classifying a nonlinear system with three equilibria require?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Three — one Jacobian evaluated at each equilibrium.</p></statement>
+						<feedback><p>Correct. The linearization is local, so each equilibrium gets its own matrix and possibly its own type.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>One — the Jacobian, evaluated once.</p></statement>
+						<feedback><p><m>J(x,y)</m> is computed once symbolically, but it must then be <em>evaluated</em> separately at each equilibrium.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>None — nonlinear systems have no matrices.</p></statement>
+						<feedback><p>They have no single coefficient matrix, but the Jacobian is very much a matrix.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Six — two per equilibrium, one for each variable.</p></statement>
+						<feedback><p>Both variables are handled by the two rows of one <m>2\times 2</m> matrix.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nlinsys-cq-mc-2">
+				<title>What Nullclines Do Not Tell You</title>
+				<statement>
+					<p>
+						You sketch nullclines and find that the flow circles an equilibrium. Which question remains unanswered?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Whether nearby trajectories approach the equilibrium, leave it, or loop around it forever.</p></statement>
+						<feedback><p>Correct — circulation is consistent with a spiral sink, a spiral source, and a center alike.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Where the equilibrium is.</p></statement>
+						<feedback><p>The equilibrium is exactly the crossing you sketched.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Which direction the flow travels in each region.</p></statement>
+						<feedback><p>That is precisely what the sign test in each region tells you.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Whether the system is nonlinear.</p></statement>
+						<feedback><p>You knew that from the equations before drawing anything.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nlinsys-cq-mc-3">
+				<title>The Borderline Case</title>
+				<statement>
+					<p>
+						A Jacobian at an equilibrium has eigenvalues <m>r = \pm 2i</m>. What is the correct conclusion about the nonlinear system there?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Nothing yet — the linearization is inconclusive, and the nonlinear terms must be examined.</p></statement>
+						<feedback><p>Correct. Zero real part is exactly the case the linearization cannot settle.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It is a center, so trajectories are closed loops.</p></statement>
+						<feedback><p>That is what the <em>linearization</em> predicts. The nonlinear system may spiral in or out instead.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It is stable, since the real part is not positive.</p></statement>
+						<feedback><p>A zero real part gives no margin either way — cubic terms can push the trajectory outward.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It is a saddle.</p></statement>
+						<feedback><p>Saddles come from real eigenvalues of opposite signs.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nlinsys-cq-mc-4">
+				<title>Why Superposition Fails</title>
+				<statement>
+					<p>
+						Why can you not add two solutions of <m>x' = x - xy</m>, <m>y' = xy - 2y</m> to get a third solution?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>The <m>xy</m> terms do not distribute across a sum: <m>(x_1+x_2)(y_1+y_2) \neq x_1y_1 + x_2y_2</m>.</p></statement>
+						<feedback><p>Correct — the cross terms are exactly what breaks superposition.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The system has two equilibria instead of one.</p></statement>
+						<feedback><p>Multiple equilibria are a <em>consequence</em> of nonlinearity, not the reason superposition fails.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The solutions are not known in closed form.</p></statement>
+						<feedback><p>Superposition would still be a valid principle even for solutions we could not write down.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The two equations are coupled.</p></statement>
+						<feedback><p>Linear systems can be fully coupled and still obey superposition.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nlinsys-cq-mc-5">
+				<title>Reading a Sign Pair</title>
+				<statement>
+					<p>
+						In one region of the phase plane, <m>x' \lt 0</m> and <m>y' \lt 0</m>. Which arrow belongs there?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Down and to the left.</p></statement>
+						<feedback><p>Correct — both coordinates are decreasing.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Down and to the right.</p></statement>
+						<feedback><p>Rightward motion would need <m>x' \gt 0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Up and to the left.</p></statement>
+						<feedback><p>Upward motion would need <m>y' \gt 0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Straight down.</p></statement>
+						<feedback><p>Straight down requires <m>x' = 0</m> — that happens only on an <m>x</m>-nullcline.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nlinsys-cq-mc-6">
+				<title>Equilibria on an Axis</title>
+				<statement>
+					<p>
+						Why are Jacobians at equilibria lying on a coordinate axis often triangular?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>One variable is zero there, which kills an off-diagonal partial derivative built from interaction terms.</p></statement>
+						<feedback><p>Correct — and a triangular matrix hands you its eigenvalues on the diagonal.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Jacobians are always triangular.</p></statement>
+						<feedback><p>The coexistence equilibria in this chapter give full matrices.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Because the equilibrium is stable.</p></statement>
+						<feedback><p>Shape and stability are unrelated — triangular matrices come in both kinds.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Because partial derivatives with respect to <m>y</m> are always zero on the <m>x</m>-axis.</p></statement>
+						<feedback><p>Not in general; <m>f_y = -2x</m> is nonzero at <m>(3,0)</m> in the competing-species model.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</exercises>
+
+	<exercises label="nlinsys-drills">
+		<title><e component="emoji">🏋️‍♂️</e> Practice Drills</title>
+
+		<exercisegroup>
+			<title>Finding Equilibria</title>
+
+			<introduction>
+				<p>
+					Factor each right-hand side and test every pairing of cases, as in <xref ref="ex-lv-equilibria" text="type-global"/>.
+				</p>
+			</introduction>
+
+			<exercise label="nlinsys-drill-eq-1">
+				<statement>
+					<p>
+						Find every equilibrium point of
+						<md>
+							<mrow>\frac{dx}{dt} \amp = x - xy</mrow>
+							<mrow>\frac{dy}{dt} \amp = xy - 2y</mrow>
+						</md>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Factor: <m>x' = x(1 - y)</m> and <m>y' = y(x - 2)</m>.
+					</p>
+					<p>
+						The first is zero when <m>x = 0</m> or <m>y = 1</m>; the second is zero when <m>y = 0</m> or <m>x = 2</m>. Testing the four pairings: <m>x=0</m> with <m>y=0</m> gives <m>(0,0)</m>; <m>x=0</m> with <m>x=2</m> is contradictory; <m>y=1</m> with <m>y=0</m> is contradictory; <m>y=1</m> with <m>x=2</m> gives <m>(2,1)</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>(0,0)</m> and <m>(2,1)</m>.
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise label="nlinsys-drill-eq-2">
+				<statement>
+					<p>
+						Find every equilibrium point of
+						<md>
+							<mrow>\frac{dx}{dt} \amp = x(6 - x - 2y)</mrow>
+							<mrow>\frac{dy}{dt} \amp = y(4 - x - y)</mrow>
+						</md>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						The first equation is zero when <m>x = 0</m> or <m>x + 2y = 6</m>; the second when <m>y = 0</m> or <m>x + y = 4</m>.
+					</p>
+					<p>
+						Pairing the cases: <m>(0,0)</m>; <m>x = 0</m> with <m>x+y=4</m> gives <m>(0,4)</m>; <m>x+2y=6</m> with <m>y=0</m> gives <m>(6,0)</m>; and <m>x+2y=6</m> with <m>x+y=4</m> gives <m>y = 2</m>, then <m>x = 2</m>, so <m>(2,2)</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>(0,0)</m>, <m>(6,0)</m>, <m>(0,4)</m>, and <m>(2,2)</m>.
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise label="nlinsys-drill-eq-3">
+				<statement>
+					<p>
+						Find the nullclines and every equilibrium point of
+						<md>
+							<mrow>\frac{dx}{dt} \amp = y - x^2</mrow>
+							<mrow>\frac{dy}{dt} \amp = x - y</mrow>
+						</md>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						The <m>x</m>-nullcline is the parabola <m>y = x^2</m>; the <m>y</m>-nullcline is the line <m>y = x</m>.
+					</p>
+					<p>
+						They cross where <m>x^2 = x</m>, so <m>x(x-1) = 0</m> and <m>x = 0</m> or <m>x = 1</m>. The equilibria are <m>(0,0)</m> and <m>(1,1)</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>x</m>-nullcline <m>y = x^2</m>; <m>y</m>-nullcline <m>y = x</m>; equilibria <m>(0,0)</m> and <m>(1,1)</m>.
+					</p>
+				</answer>
+			</exercise>
+		</exercisegroup>
+
+		<exercisegroup>
+			<title>Building and Reading Jacobians</title>
+
+			<introduction>
+				<p>
+					Compute partial derivatives, then evaluate and classify using the table in <xref ref="the-jacobian" text="title"/>.
+				</p>
+			</introduction>
+
+			<exercise label="nlinsys-drill-jac-1">
+				<statement>
+					<p>
+						Compute the Jacobian matrix <m>J(x,y)</m> for
+						<md>
+							<mrow>\frac{dx}{dt} \amp = x^2 y - 3x</mrow>
+							<mrow>\frac{dy}{dt} \amp = x + y^2</mrow>
+						</md>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						With <m>f = x^2y - 3x</m>: <m>f_x = 2xy - 3</m> and <m>f_y = x^2</m>. With <m>g = x + y^2</m>: <m>g_x = 1</m> and <m>g_y = 2y</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>J(x,y) = \begin{bmatrix} 2xy - 3 \amp x^2 \\ 1 \amp 2y \end{bmatrix}</m>
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise label="nlinsys-drill-jac-2">
+				<statement>
+					<p>
+						Classify the equilibrium in each case, given the Jacobian evaluated there.
+						<md>
+							<mrow>\text{(a)} \quad \amp \begin{bmatrix} -3 \amp 1 \\ 0 \amp -2 \end{bmatrix}
+							\qquad \text{(b)} \quad \begin{bmatrix} 1 \amp 2 \\ -2 \amp 1 \end{bmatrix}
+							\qquad \text{(c)} \quad \begin{bmatrix} 0 \amp 3 \\ -3 \amp 0 \end{bmatrix}</mrow>
+						</md>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						(a) The matrix is triangular, so the eigenvalues are the diagonal entries <m>r = -3</m> and <m>r = -2</m>. Both real and negative: a stable node.
+					</p>
+					<p>
+						(b) <m>\det(J - rI) = (1-r)^2 + 4 = 0</m> gives <m>r = 1 \pm 2i</m>. Complex with positive real part: an unstable spiral source.
+					</p>
+					<p>
+						(c) <m>\det(J - rI) = r^2 + 9 = 0</m> gives <m>r = \pm 3i</m>. Purely imaginary, so the linearization predicts a center — but the verdict is inconclusive for the nonlinear system.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						(a) stable node (<m>r = -3, -2</m>); (b) spiral source (<m>r = 1 \pm 2i</m>); (c) linearized center (<m>r = \pm 3i</m>), inconclusive.
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise label="nlinsys-drill-jac-3">
+				<statement>
+					<p>
+						For the system of <xref ref="nlinsys-drill-eq-3" text="type-global"/>, <m>x' = y - x^2</m> and <m>y' = x - y</m>, classify both equilibria.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						The Jacobian is
+						<md>
+							J(x,y) = \begin{bmatrix} -2x \amp 1 \\ 1 \amp -1 \end{bmatrix}.
+						</md>
+					</p>
+					<p>
+						At <m>(0,0)</m>: <m>J = \begin{bmatrix} 0 \amp 1 \\ 1 \amp -1 \end{bmatrix}</m>, so <m>\det(J - rI) = (-r)(-1-r) - 1 = r^2 + r - 1 = 0</m> and <m>r = \frac{-1 \pm \sqrt{5}}{2} \approx 0.618, -1.618</m>. Opposite signs: a saddle.
+					</p>
+					<p>
+						At <m>(1,1)</m>: <m>J = \begin{bmatrix} -2 \amp 1 \\ 1 \amp -1 \end{bmatrix}</m>, so <m>\det(J - rI) = (-2-r)(-1-r) - 1 = r^2 + 3r + 1 = 0</m> and <m>r = \frac{-3 \pm \sqrt{5}}{2} \approx -0.382, -2.618</m>. Both negative: a stable node.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						<m>(0,0)</m> is a saddle (<m>r = \frac{-1 \pm \sqrt{5}}{2}</m>); <m>(1,1)</m> is a stable node (<m>r = \frac{-3 \pm \sqrt{5}}{2}</m>).
+					</p>
+				</answer>
+			</exercise>
+
+			<exercise label="nlinsys-drill-jac-4">
+				<statement>
+					<p>
+						A damped pendulum of unit length satisfies <m>x' = y</m>, <m>y' = -\sin(x) - \tfrac{1}{2}y</m>, where <m>x</m> is the angle from straight down and <m>y</m> the angular velocity. Find all equilibria and compute <m>J(x,y)</m>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Equilibria need <m>y = 0</m> and <m>-\sin(x) - \tfrac12 y = 0</m>. With <m>y = 0</m> the second condition reduces to <m>\sin(x) = 0</m>, so <m>x = n\pi</m> for any integer <m>n</m>. The equilibria are <m>(n\pi, 0)</m>: the pendulum hanging straight down (<m>n</m> even) or balanced straight up (<m>n</m> odd).
+					</p>
+					<p>
+						With <m>f = y</m> and <m>g = -\sin(x) - \tfrac12 y</m>: <m>f_x = 0</m>, <m>f_y = 1</m>, <m>g_x = -\cos(x)</m>, <m>g_y = -\tfrac12</m>.
+					</p>
+				</solution>
+				<answer>
+					<p>
+						Equilibria <m>(n\pi, 0)</m>; <m>J(x,y) = \begin{bmatrix} 0 \amp 1 \\ -\cos(x) \amp -\frac{1}{2} \end{bmatrix}</m>.
+					</p>
+				</answer>
+			</exercise>
+		</exercisegroup>
+	</exercises>
+
+	<exercises label="nlinsys-problems">
+		<title><e component="emoji">✍🏻</e> Problems</title>
+
+		<exercise label="nlinsys-problem-competing">
+			<title>Competitive Exclusion</title>
+			<statement>
+				<p>
+					Two species compete for one resource, in thousands of individuals:
+					<md>
+						<mrow>\frac{dx}{dt} \amp = x(6 - x - 2y)</mrow>
+						<mrow>\frac{dy}{dt} \amp = y(4 - x - y)</mrow>
+					</md>
+				</p>
+				<p>
+					<ol marker="(a)">
+						<li>List the equilibria (you found them in <xref ref="nlinsys-drill-eq-2" text="type-global"/>).</li>
+						<li>Compute <m>J(x,y)</m>.</li>
+						<li>Classify each equilibrium.</li>
+						<li>Describe, in a sentence or two, what the classification predicts for the two species.</li>
+					</ol>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>(a)</term> The equilibria are <m>(0,0)</m>, <m>(6,0)</m>, <m>(0,4)</m>, and <m>(2,2)</m>.
+				</p>
+				<p>
+					<term>(b)</term> Expanding gives <m>f = 6x - x^2 - 2xy</m> and <m>g = 4y - xy - y^2</m>, so
+					<md>
+						J(x,y) = \begin{bmatrix} 6 - 2x - 2y \amp -2x \\ -y \amp 4 - x - 2y \end{bmatrix}.
+					</md>
+				</p>
+				<p>
+					<term>(c)</term> At <m>(0,0)</m>, <m>J = \begin{bmatrix} 6 \amp 0 \\ 0 \amp 4 \end{bmatrix}</m>, diagonal, with <m>r = 6, 4</m>: an unstable node.
+				</p>
+				<p>
+					At <m>(6,0)</m>, <m>J = \begin{bmatrix} -6 \amp -12 \\ 0 \amp -2 \end{bmatrix}</m>, triangular, with <m>r = -6, -2</m>: a stable node.
+				</p>
+				<p>
+					At <m>(0,4)</m>, <m>J = \begin{bmatrix} -2 \amp 0 \\ -4 \amp -4 \end{bmatrix}</m>, triangular, with <m>r = -2, -4</m>: a stable node.
+				</p>
+				<p>
+					At <m>(2,2)</m>, <m>J = \begin{bmatrix} -2 \amp -4 \\ -2 \amp -2 \end{bmatrix}</m>, and
+					<md>
+						\det(J - rI) = (-2-r)^2 - 8 = r^2 + 4r - 4 = 0,
+					</md>
+					so <m>r = -2 \pm 2\sqrt{2} \approx 0.828, -4.828</m>. Opposite signs: a saddle.
+				</p>
+				<p>
+					<term>(d)</term> Both single-species states are stable and the coexistence state is a saddle, so the long-run outcome is one species surviving and the other dying out — which one depends on the starting populations. Coexistence at <m>(2,2)</m> is possible in principle but any disturbance destroys it.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(0,0)</m> unstable node (<m>r = 6, 4</m>); <m>(6,0)</m> stable node (<m>r = -6, -2</m>); <m>(0,4)</m> stable node (<m>r = -2, -4</m>); <m>(2,2)</m> saddle (<m>r = -2 \pm 2\sqrt{2}</m>). One species excludes the other; which one depends on the initial populations.
+				</p>
+			</answer>
+		</exercise>
+
+		<exercise label="nlinsys-problem-pendulum">
+			<title>The Damped Pendulum</title>
+			<statement>
+				<p>
+					Continue with <m>x' = y</m>, <m>y' = -\sin(x) - \tfrac{1}{2}y</m> from <xref ref="nlinsys-drill-jac-4" text="type-global"/>.
+				</p>
+				<p>
+					<ol marker="(a)">
+						<li>Classify the equilibrium at <m>(0,0)</m>.</li>
+						<li>Classify the equilibrium at <m>(\pi,0)</m>.</li>
+						<li>Explain how each classification matches the physical behavior of a real pendulum.</li>
+					</ol>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>(a)</term> At <m>(0,0)</m>, <m>\cos(0) = 1</m>, so
+					<md>
+						J(0,0) = \begin{bmatrix} 0 \amp 1 \\ -1 \amp -\frac{1}{2} \end{bmatrix},
+						\qquad \det(J - rI) = r^2 + \tfrac{1}{2}r + 1 = 0 .
+					</md>
+					The quadratic formula gives <m>r = \frac{-\frac12 \pm \sqrt{\frac14 - 4}}{2} = -\tfrac14 \pm \tfrac{\sqrt{15}}{4} i \approx -0.25 \pm 0.968 i</m>. Complex with negative real part: a stable spiral sink.
+				</p>
+				<p>
+					<term>(b)</term> At <m>(\pi,0)</m>, <m>\cos(\pi) = -1</m>, so
+					<md>
+						J(\pi,0) = \begin{bmatrix} 0 \amp 1 \\ 1 \amp -\frac{1}{2} \end{bmatrix},
+						\qquad \det(J - rI) = r^2 + \tfrac{1}{2}r - 1 = 0 .
+					</md>
+					Here <m>r = -\tfrac14 \pm \tfrac{\sqrt{17}}{4} \approx 0.781, -1.281</m>. Real with opposite signs: a saddle.
+				</p>
+				<p>
+					<term>(c)</term> The point <m>(0,0)</m> is the pendulum hanging straight down. Nudge it and it swings back and forth with shrinking amplitude until it stops — oscillation plus decay, which is exactly what a spiral sink looks like. The point <m>(\pi, 0)</m> is the pendulum balanced straight up. In principle it can be balanced there, and in principle there is one perfectly-tuned nudge that brings it back (the saddle's stable direction), but any other disturbance sends it falling away. That is the definition of a saddle.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					(a) Spiral sink, <m>r = -\frac14 \pm \frac{\sqrt{15}}{4}i</m>. (b) Saddle, <m>r = -\frac14 \pm \frac{\sqrt{17}}{4}</m>. (c) Hanging down is stable with damped oscillation; balanced upright is unstable.
+				</p>
+			</answer>
+		</exercise>
+
+		<exercise label="nlinsys-problem-cubic">
+			<title>What the Linearization Missed</title>
+			<statement>
+				<p>
+					For a constant <m>a</m>, consider
+					<md>
+						<mrow>\frac{dx}{dt} \amp = -y + a\,x(x^2+y^2)</mrow>
+						<mrow>\frac{dy}{dt} \amp = x + a\,y(x^2+y^2)</mrow>
+					</md>
+				</p>
+				<p>
+					<ol marker="(a)">
+						<li>Show that <m>J(0,0)</m> is the same matrix for every value of <m>a</m>, and find its eigenvalues.</li>
+						<li>Let <m>\rho = x^2 + y^2</m>. Compute <m>d\rho/dt</m> and simplify.</li>
+						<li>Use part (b) to classify the origin when <m>a \lt 0</m>, when <m>a \gt 0</m>, and when <m>a = 0</m>.</li>
+						<li>What does this show about the reliability of the linearization?</li>
+					</ol>
+				</p>
+			</statement>
+			<hint>
+				<p>
+					For part (b), differentiate <m>\rho = x^2+y^2</m> to get <m>d\rho/dt = 2x\,x' + 2y\,y'</m>, then substitute the system.
+				</p>
+			</hint>
+			<solution>
+				<p>
+					<term>(a)</term> Every term carrying <m>a</m> is cubic, and each of its partial derivatives is a sum of quadratic terms, so all of them vanish at the origin. What remains is
+					<md>
+						J(0,0) = \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix},
+						\qquad \det(J - rI) = r^2 + 1 = 0, \qquad r = \pm i,
+					</md>
+					independent of <m>a</m>.
+				</p>
+				<p>
+					<term>(b)</term> Substituting,
+					<md>
+						<mrow>\frac{d\rho}{dt} \amp = 2x\left(-y + a x \rho\right) + 2y\left(x + a y \rho\right)</mrow>
+						<mrow> \amp = -2xy + 2a x^2 \rho + 2xy + 2a y^2 \rho</mrow>
+						<mrow> \amp = 2a\rho\left(x^2 + y^2\right) = 2a\rho^2 .</mrow>
+					</md>
+					The linear terms cancel, leaving a quantity whose sign is the sign of <m>a</m>.
+				</p>
+				<p>
+					<term>(c)</term> Since <m>\rho^2 \gt 0</m> away from the origin:
+					<ul marker="disc">
+						<li>If <m>a \lt 0</m>, then <m>d\rho/dt \lt 0</m>, so the distance to the origin strictly decreases — a stable spiral sink.</li>
+						<li>If <m>a \gt 0</m>, then <m>d\rho/dt \gt 0</m>, so the distance strictly increases — an unstable spiral source.</li>
+						<li>If <m>a = 0</m>, then <m>d\rho/dt = 0</m>, so <m>\rho</m> is constant and trajectories are exact circles — a true center. (With <m>a = 0</m> the system is linear.)</li>
+					</ul>
+				</p>
+				<p>
+					<term>(d)</term> One linearization, three different outcomes. When the eigenvalues are purely imaginary, the linearization has no margin left to absorb the discarded terms, so the nonlinear terms decide the answer. A linearized center is a question, not a verdict.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					(a) <m>J(0,0) = \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix}</m>, <m>r = \pm i</m>, for every <m>a</m>. (b) <m>d\rho/dt = 2a\rho^2</m>. (c) Spiral sink for <m>a \lt 0</m>, spiral source for <m>a \gt 0</m>, true center for <m>a = 0</m>. (d) A purely imaginary pair makes the linearization inconclusive.
+				</p>
+			</answer>
+		</exercise>
+
+		<exercise label="nlinsys-problem-sir">
+			<title>The Epidemic Threshold</title>
+			<statement>
+				<p>
+					In the SIR model of <xref ref="nlinsys-modeling" text="title"/>, a population of constant size <m>N</m> splits into susceptible and infected groups following
+					<md>
+						<mrow>\frac{dS}{dt} \amp = -\frac{\beta S I}{N}</mrow>
+						<mrow>\frac{dI}{dt} \amp = \frac{\beta S I}{N} - \gamma I</mrow>
+					</md>
+					with <m>\beta \gt 0</m> the transmission rate, <m>\gamma \gt 0</m> the recovery rate, and <m>R_0 = \beta/\gamma</m>.
+				</p>
+				<p>
+					<ol marker="(a)">
+						<li>Show that every point with <m>I = 0</m> is an equilibrium, so the model has a whole line of them.</li>
+						<li>Compute <m>J(S,I)</m> and evaluate it at a point <m>(S,0)</m> on that line.</li>
+						<li>Find the eigenvalues at <m>(S,0)</m> and explain why one of them is zero.</li>
+						<li>Show that an outbreak grows exactly when <m>S \gt N/R_0</m>, and interpret that threshold.</li>
+					</ol>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>(a)</term> Both right-hand sides carry a factor of <m>I</m>: <m>S' = -\beta SI/N</m> and <m>I' = I\left(\beta S/N - \gamma\right)</m>. Setting <m>I = 0</m> makes both zero regardless of <m>S</m>, so every point <m>(S,0)</m> is an equilibrium. Physically: with nobody infected, nothing moves, whatever the number of susceptibles.
+				</p>
+				<p>
+					<term>(b)</term> With <m>f = -\beta SI/N</m> and <m>g = \beta SI/N - \gamma I</m>:
+					<md>
+						J(S,I) = \begin{bmatrix} -\dfrac{\beta I}{N} \amp -\dfrac{\beta S}{N} \\[6pt] \dfrac{\beta I}{N} \amp \dfrac{\beta S}{N} - \gamma \end{bmatrix},
+						\qquad
+						J(S,0) = \begin{bmatrix} 0 \amp -\dfrac{\beta S}{N} \\[6pt] 0 \amp \dfrac{\beta S}{N} - \gamma \end{bmatrix}.
+					</md>
+				</p>
+				<p>
+					<term>(c)</term> The evaluated matrix is triangular, so its eigenvalues are the diagonal entries:
+					<md>
+						r_1 = 0, \qquad r_2 = \frac{\beta S}{N} - \gamma .
+					</md>
+					The zero eigenvalue is forced by the geometry of part (a). Moving along the line of equilibria costs nothing, so there is a direction in which the system neither grows nor decays — and a direction of zero growth is exactly what a zero eigenvalue records. It also means the linearization cannot classify these points on its own; the useful information is all in <m>r_2</m>.
+				</p>
+				<p>
+					<term>(d)</term> A handful of infections grows when <m>I' \gt 0</m>. Since <m>I' = I\left(\beta S/N - \gamma\right)</m> and <m>I \gt 0</m>, this happens exactly when
+					<md>
+						\frac{\beta S}{N} - \gamma \gt 0
+						\quad \Longleftrightarrow \quad
+						S \gt \frac{\gamma N}{\beta} = \frac{N}{R_0},
+					</md>
+					which is the sign condition on <m>r_2</m> from part (c).
+				</p>
+				<p>
+					The interpretation is the reason <m>R_0</m> is famous. An outbreak takes off only if the susceptible pool exceeds the fraction <m>1/R_0</m> of the population. Vaccinating a fraction <m>p</m> of the population pushes <m>S</m> down to <m>N(1-p)</m>, so the outbreak is prevented once <m>1 - p \lt 1/R_0</m>, that is once
+					<md>
+						p \gt 1 - \frac{1}{R_0},
+					</md>
+					the herd-immunity threshold. With <m>R_0 = 2.5</m> that is <m>p \gt 0.6</m>: vaccinate <m>60\%</m> and the epidemic cannot start, even though <m>40\%</m> of the population remains susceptible.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					(a) Both equations carry a factor <m>I</m>, so <m>I = 0</m> makes both vanish for any <m>S</m>. (b)–(c) <m>J(S,0)</m> is triangular with eigenvalues <m>r_1 = 0</m> and <m>r_2 = \beta S/N - \gamma</m>; the zero comes from the line of equilibria. (d) <m>I' \gt 0</m> exactly when <m>S \gt N/R_0</m>; vaccinating a fraction <m>p \gt 1 - 1/R_0</m> prevents an outbreak.
+				</p>
+			</answer>
+		</exercise>
+
+		<exercise label="nlinsys-problem-euler">
+			<title>Stepping Through a Nonlinear System</title>
+			<statement>
+				<p>
+					No formula exists for the solutions of
+					<md>
+						<mrow>\frac{dx}{dt} \amp = x - xy</mrow>
+						<mrow>\frac{dy}{dt} \amp = xy - 2y</mrow>
+					</md>
+					so we approximate. Starting from <m>x(0) = 3</m>, <m>y(0) = 1</m>, take two steps of Euler's method with <m>h = 0.1</m>, using the update from <xref ref="numerical-methods" text="title"/>. Then explain how the result compares with the equilibrium you found in <xref ref="nlinsys-drill-eq-1" text="type-global"/>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>Step 1.</term> At <m>(x_0, y_0) = (3, 1)</m>:
+					<md>
+						x' = 3 - 3(1) = 0, \qquad y' = 3(1) - 2(1) = 1 .
+					</md>
+					So
+					<md>
+						x_1 = 3 + 0.1(0) = 3, \qquad y_1 = 1 + 0.1(1) = 1.1 .
+					</md>
+				</p>
+				<p>
+					<term>Step 2.</term> At <m>(x_1, y_1) = (3, 1.1)</m>:
+					<md>
+						x' = 3 - 3(1.1) = -0.3, \qquad y' = 3(1.1) - 2(1.1) = 1.1 .
+					</md>
+					So
+					<md>
+						x_2 = 3 + 0.1(-0.3) = 2.97, \qquad y_2 = 1.1 + 0.1(1.1) = 1.21 .
+					</md>
+				</p>
+				<p>
+					<term>Comparison.</term> The equilibrium is <m>(2,1)</m>. We started to its upper right at <m>(3,1)</m>, and after two steps the prey count has begun to fall while the predator count is rising — motion up and to the left, which is what the nullclines predict in that region. The trajectory is circling the equilibrium counterclockwise rather than heading into it, consistent with the linearized center found for this family of models.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(x_1,y_1) = (3, 1.1)</m> and <m>(x_2,y_2) = (2.97, 1.21)</m>. The steps move up and to the left, circling the equilibrium <m>(2,1)</m> counterclockwise rather than approaching it.
+				</p>
+			</answer>
+		</exercise>
+	</exercises>
+
+</section>

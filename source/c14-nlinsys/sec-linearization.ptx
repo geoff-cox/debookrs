@@ -1,0 +1,502 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="linearization-and-the-jacobian">
+	<title>Linearization and the Jacobian</title>
+
+	<introduction>
+		<p>
+			<idx><h>linearization</h><h>of a system</h></idx>
+			Nullclines told us that trajectories near <m>(30,25)</m> circulate counterclockwise, but not whether they spiral in, spiral out, or close into loops. To answer that we need a sharper instrument, and the idea behind it is one you already used in <xref ref="chpt-qualitative" text="title"/>.
+		</p>
+
+		<p>
+			There, to classify an equilibrium <m>y = c</m> of <m>y' = f(y)</m>, we did not study <m>f</m> globally. We checked the single number <m>f'(c)</m>: negative meant a sink, positive meant a source. Replacing a curve by its tangent line near the point of interest turned a hard question into an easy one.
+		</p>
+
+		<p>
+			This section does the same thing in two dimensions. Zoomed in far enough, a smooth nonlinear system is nearly linear — and we know everything about linear systems. The matrix that does the zooming is the <term>Jacobian</term>.
+		</p>
+	</introduction>
+
+	<subsection xml:id="the-jacobian">
+		<title>The Jacobian Matrix</title>
+
+		<p>
+			In one variable, the tangent-line approximation near <m>y = c</m> reads <m>f(y) \approx f(c) + f'(c)(y - c)</m>. At an equilibrium <m>f(c) = 0</m>, so writing <m>u = y - c</m> for the displacement from equilibrium gives <m>u' \approx f'(c)\,u</m> — a linear equation whose solution <m>u = u_0 e^{f'(c)t}</m> decays exactly when <m>f'(c) \lt 0</m>.
+		</p>
+
+		<p>
+			With two variables there are four partial derivatives instead of one derivative, because each of <m>f</m> and <m>g</m> can respond to a nudge in either <m>x</m> or <m>y</m>. Collect them in a matrix.
+		</p>
+
+		<definition xml:id="def-jacobian">
+			<title>The Jacobian Matrix</title>
+			<idx><h>Jacobian matrix</h></idx>
+			<idx><h>linearization</h><h>of a system</h></idx>
+			<statement>
+				<p>
+					For the system <m>x' = f(x,y)</m>, <m>y' = g(x,y)</m>, the <term>Jacobian matrix</term> is
+					<md>
+						J(x,y) = \begin{bmatrix}
+							\dfrac{\partial f}{\partial x} \amp \dfrac{\partial f}{\partial y} \\[8pt]
+							\dfrac{\partial g}{\partial x} \amp \dfrac{\partial g}{\partial y}
+						\end{bmatrix}.
+					</md>
+					Evaluated at an equilibrium point <m>(x^*,y^*)</m>, the constant matrix <m>J(x^*,y^*)</m> is the <term>linearization</term> of the system there.
+				</p>
+				<p>
+					<notation><usage><m>J</m></usage><description>Jacobian matrix of a nonlinear system</description></notation>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			<idx><h>partial derivative</h></idx>
+			Each entry is a <em>partial</em> derivative: differentiate with respect to one variable while treating the other as a constant. Reading the matrix row by row keeps the bookkeeping straight — the top row is <q>how <m>f</m> responds,</q> the bottom row is <q>how <m>g</m> responds.</q>
+		</p>
+
+		<p>
+			Now put displacements <m>u = x - x^*</m> and <m>v = y - y^*</m> in place of <m>x</m> and <m>y</m>. Because <m>f</m> and <m>g</m> both vanish at the equilibrium, the constant terms drop out and what remains is
+			<md>
+				\frac{d}{dt}\begin{bmatrix} u \\ v \end{bmatrix} \approx J(x^*,y^*) \begin{bmatrix} u \\ v \end{bmatrix},
+			</md>
+			which is exactly the linear system <m>\vec{X}' = A\vec{X}</m> from <xref ref="chpt-1st-order-linear-systems" text="title"/> with <m>A = J(x^*,y^*)</m>. Every eigenvalue tool from that chapter applies — locally, near this one point.
+		</p>
+
+		<assemblage xml:id="jacobian-classification">
+			<title><e component="emoji">✳️</e> Classifying an Equilibrium</title>
+			<p>
+				<ol marker="1.">
+					<li>Find the equilibrium points by solving <m>f = 0</m> and <m>g = 0</m>.</li>
+					<li>Compute the four partial derivatives once, symbolically, to get <m>J(x,y)</m>.</li>
+					<li>Evaluate <m>J</m> at one equilibrium to get a matrix of numbers.</li>
+					<li>Find its eigenvalues from <m>\det(J - rI) = 0</m> and read the type from <xref ref="eigenvalues-and-phase-portraits" text="title"/>.</li>
+					<li>Repeat step 3 for each remaining equilibrium — different points typically give different types.</li>
+				</ol>
+			</p>
+		</assemblage>
+
+		<p>
+			For the record, the classification we borrow is the one built in <xref ref="chpt-1st-order-linear-systems" text="title"/>:
+		</p>
+
+		<tabular halign="center" top="minor" bottom="minor" left="minor" right="minor">
+			<row header="yes" bottom="minor">
+				<cell>Eigenvalues of <m>J(x^*,y^*)</m></cell>
+				<cell>Type</cell>
+				<cell>Stability</cell>
+			</row>
+			<row>
+				<cell>real, both negative</cell>
+				<cell>node (sink)</cell>
+				<cell>stable</cell>
+			</row>
+			<row>
+				<cell>real, both positive</cell>
+				<cell>node (source)</cell>
+				<cell>unstable</cell>
+			</row>
+			<row>
+				<cell>real, opposite signs</cell>
+				<cell>saddle</cell>
+				<cell>unstable</cell>
+			</row>
+			<row>
+				<cell>complex, <m>r = a \pm bi</m> with <m>a \lt 0</m></cell>
+				<cell>spiral sink</cell>
+				<cell>stable</cell>
+			</row>
+			<row>
+				<cell>complex, <m>r = a \pm bi</m> with <m>a \gt 0</m></cell>
+				<cell>spiral source</cell>
+				<cell>unstable</cell>
+			</row>
+			<row>
+				<cell>purely imaginary, <m>r = \pm bi</m></cell>
+				<cell>center (linearized)</cell>
+				<cell><em>inconclusive</em> — see <xref ref="when-linearization-fails" text="title"/></cell>
+			</row>
+		</tabular>
+
+		<p>
+			Only the last row is new, and it is a warning rather than a verdict. Everything above it transfers to the nonlinear system unchanged.
+		</p>
+	</subsection>
+
+	<subsection label="classifying-competing-species">
+		<title>A Full Classification: Two Competing Species</title>
+
+		<p>
+			We already found four equilibria for the competing-species model in <xref ref="ex-competing-equilibria" text="type-global"/>. Now we can say what happens at each of them.
+		</p>
+
+		<example xml:id="ex-competing-classification">
+			<title>Classifying All Four Equilibria</title>
+			<statement>
+				<p>
+					For
+					<md>
+						<mrow>\frac{dx}{dt} \amp = x(3 - x - 2y) = 3x - x^2 - 2xy</mrow>
+						<mrow>\frac{dy}{dt} \amp = y(2 - x - y) = 2y - xy - y^2</mrow>
+					</md>
+					classify each of the equilibria <m>(0,0)</m>, <m>(3,0)</m>, <m>(0,2)</m>, and <m>(1,1)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>The Jacobian.</term> Expand first, then take partial derivatives:
+					<md>
+						<mrow>f_x \amp = 3 - 2x - 2y, \amp\quad f_y \amp = -2x,</mrow>
+						<mrow>g_x \amp = -y, \amp\quad g_y \amp = 2 - x - 2y,</mrow>
+					</md>
+					so
+					<md>
+						J(x,y) = \begin{bmatrix} 3 - 2x - 2y \amp -2x \\ -y \amp 2 - x - 2y \end{bmatrix}.
+					</md>
+				</p>
+
+				<p>
+					<term>At <m>(0,0)</m>.</term>
+					<md>
+						J(0,0) = \begin{bmatrix} 3 \amp 0 \\ 0 \amp 2 \end{bmatrix}
+					</md>
+					This matrix is diagonal, so the eigenvalues are the diagonal entries: <m>r_1 = 3</m>, <m>r_2 = 2</m>. Both are real and positive, so the origin is an <term>unstable node</term>. Sensible: with both populations tiny, neither competition term matters and both species grow.
+				</p>
+
+				<p>
+					<term>At <m>(3,0)</m>.</term>
+					<md>
+						J(3,0) = \begin{bmatrix} 3 - 6 \amp -6 \\ 0 \amp 2 - 3 \end{bmatrix} = \begin{bmatrix} -3 \amp -6 \\ 0 \amp -1 \end{bmatrix}
+					</md>
+					The matrix is triangular, so again the eigenvalues sit on the diagonal: <m>r_1 = -3</m>, <m>r_2 = -1</m>. Both negative, so this is a <term>stable node</term>. Species <m>x</m> alone at its carrying capacity is a state the system settles into.
+				</p>
+
+				<p>
+					<term>At <m>(0,2)</m>.</term>
+					<md>
+						J(0,2) = \begin{bmatrix} 3 - 4 \amp 0 \\ -2 \amp 2 - 4 \end{bmatrix} = \begin{bmatrix} -1 \amp 0 \\ -2 \amp -2 \end{bmatrix}
+					</md>
+					Triangular again, with eigenvalues <m>r_1 = -1</m> and <m>r_2 = -2</m>: another <term>stable node</term>. Species <m>y</m> alone is also a possible destination.
+				</p>
+
+				<p>
+					<term>At <m>(1,1)</m>.</term>
+					<md>
+						J(1,1) = \begin{bmatrix} 3 - 4 \amp -2 \\ -1 \amp 2 - 3 \end{bmatrix} = \begin{bmatrix} -1 \amp -2 \\ -1 \amp -1 \end{bmatrix}
+					</md>
+					This one needs the characteristic equation:
+					<md>
+						\det\begin{bmatrix} -1-r \amp -2 \\ -1 \amp -1-r \end{bmatrix} = (-1-r)^2 - 2 = r^2 + 2r - 1 = 0 .
+					</md>
+					The quadratic formula gives <m>r = -1 \pm \sqrt{2}</m>, that is <m>r_1 \approx -2.414</m> and <m>r_2 \approx 0.414</m>. Real with opposite signs, so the coexistence point is a <term>saddle</term> — unstable.
+				</p>
+
+				<p>
+					<term>The story.</term> Two stable destinations, one unstable equilibrium sitting between them, and an unstable origin pushing everything away from extinction. Coexistence at <m>(1,1)</m> is mathematically possible but physically fragile: any disturbance sends the system off along the saddle's unstable direction to whichever single-species state it is nearer. Ecologists call this <term>competitive exclusion</term>, and the two-attractor structure that produces it is out of reach for any linear system.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(0,0)</m>: unstable node (<m>r = 3, 2</m>). <m>(3,0)</m>: stable node (<m>r = -3, -1</m>). <m>(0,2)</m>: stable node (<m>r = -1, -2</m>). <m>(1,1)</m>: saddle (<m>r = -1 \pm \sqrt{2}</m>).
+				</p>
+			</answer>
+		</example>
+
+		<aside>
+			<title>Free Eigenvalues</title>
+			<p>
+				Three of the four matrices above were diagonal or triangular, so their eigenvalues could be read straight off the diagonal with no characteristic equation at all. This is not luck. At an equilibrium sitting on an axis, one population is zero, which kills one of the off-diagonal partial derivatives. Expect the axis equilibria to be the easy ones.
+			</p>
+		</aside>
+	</subsection>
+
+	<subsection label="classifying-predator-prey">
+		<title>Back to the Rabbits and Foxes</title>
+
+		<example xml:id="ex-lv-classification">
+			<title>Classifying the Predator-Prey Equilibria</title>
+			<statement>
+				<p>
+					Classify the equilibria <m>(0,0)</m> and <m>(30,25)</m> of
+					<md>
+						<mrow>\frac{dR}{dt} \amp = 0.5R - 0.02RF</mrow>
+						<mrow>\frac{dF}{dt} \amp = -0.3F + 0.01RF</mrow>
+					</md>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>The Jacobian.</term>
+					<md>
+						<mrow>f_R \amp = 0.5 - 0.02F, \amp\quad f_F \amp = -0.02R,</mrow>
+						<mrow>g_R \amp = 0.01F, \amp\quad g_F \amp = -0.3 + 0.01R,</mrow>
+					</md>
+					so
+					<md>
+						J(R,F) = \begin{bmatrix} 0.5 - 0.02F \amp -0.02R \\ 0.01F \amp -0.3 + 0.01R \end{bmatrix}.
+					</md>
+				</p>
+
+				<p>
+					<term>At the origin.</term>
+					<md>
+						J(0,0) = \begin{bmatrix} 0.5 \amp 0 \\ 0 \amp -0.3 \end{bmatrix}
+					</md>
+					Eigenvalues <m>r_1 = 0.5</m> and <m>r_2 = -0.3</m>: real, opposite signs, so the empty meadow is a <term>saddle</term>. The interpretation is exact: introduce a few rabbits and they grow at rate <m>0.5</m> (the unstable direction); introduce a few foxes with no rabbits to eat and they die off at rate <m>0.3</m> (the stable direction).
+				</p>
+
+				<p>
+					<term>At the coexistence point.</term> Substituting <m>R = 30</m>, <m>F = 25</m>, both diagonal entries vanish:
+					<md>
+						J(30,25) = \begin{bmatrix} 0.5 - 0.5 \amp -0.6 \\ 0.25 \amp -0.3 + 0.3 \end{bmatrix} = \begin{bmatrix} 0 \amp -0.6 \\ 0.25 \amp 0 \end{bmatrix}
+					</md>
+					The characteristic equation is
+					<md>
+						\det\begin{bmatrix} -r \amp -0.6 \\ 0.25 \amp -r \end{bmatrix} = r^2 + 0.15 = 0,
+					</md>
+					giving <m>r = \pm i\sqrt{0.15} \approx \pm 0.387 i</m>. Purely imaginary — a linearized <em>center</em>.
+				</p>
+
+				<p>
+					So the linearization predicts closed orbits: populations that cycle forever without settling down or blowing up, with period <m>2\pi/\sqrt{0.15} \approx 16.2</m> months. That is consistent with the counterclockwise circulation the nullclines showed in <xref ref="fig-lv-nullclines" text="type-global"/>, and it now supplies the timing the nullclines could not.
+				</p>
+
+				<p>
+					But a purely imaginary pair is the one case the table flags as inconclusive. The next subsection explains why, and what happens to be true here.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>(0,0)</m> is a saddle (<m>r = 0.5, -0.3</m>). <m>(30,25)</m> has <m>r = \pm i\sqrt{0.15}</m>, a linearized center — the borderline case.
+				</p>
+			</answer>
+		</example>
+	</subsection>
+
+	<subsection xml:id="when-linearization-fails">
+		<title>When Linearization Is Not Enough</title>
+
+		<p>
+			Linearization throws away everything except the first-order behavior at a point. Usually the discarded higher-order terms are too small near the equilibrium to matter. The exception is when the first-order behavior is <em>neutral</em> — when the real part of an eigenvalue is exactly zero, so nothing in the linear picture is growing or decaying and the discarded terms are the only thing left to decide the outcome.
+		</p>
+
+		<assemblage xml:id="linearization-verdict">
+			<title><e component="emoji">✳️</e> When the Linearization Can Be Trusted</title>
+			<p>
+				If every eigenvalue of <m>J(x^*,y^*)</m> has nonzero real part, the nonlinear system behaves near <m>(x^*,y^*)</m> exactly as its linearization does: same type, same stability. If any eigenvalue has zero real part — a purely imaginary pair, or a zero eigenvalue — the linearization is <em>inconclusive</em> and the nonlinear terms must be examined directly.
+			</p>
+		</assemblage>
+
+		<p>
+			The following pair of systems shows why the warning is not hypothetical. Both have the same Jacobian at the origin, hence the same linearized prediction, and they behave in opposite ways.
+		</p>
+
+		<example xml:id="ex-center-ambiguity">
+			<title>Same Linearization, Opposite Fates</title>
+			<statement>
+				<p>
+					Consider
+					<md>
+						<mrow>\text{(A)} \quad x' \amp = -y - x^3, \amp\quad y' \amp = x - y^3</mrow>
+						<mrow>\text{(B)} \quad x' \amp = -y + x^3, \amp\quad y' \amp = x + y^3</mrow>
+					</md>
+					Show that both linearize to a center at the origin, then determine what each system actually does.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>The linearizations agree.</term> For system (A), <m>f_x = -3x^2</m>, <m>f_y = -1</m>, <m>g_x = 1</m>, <m>g_y = -3y^2</m>. At the origin every cubic term vanishes, leaving
+					<md>
+						J(0,0) = \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix},
+						\qquad \det(J - rI) = r^2 + 1 = 0, \qquad r = \pm i .
+					</md>
+					System (B) differs only in the signs of the cubic terms, which also vanish at the origin, so it produces the identical matrix and the identical eigenvalues.
+				</p>
+				<p>
+					<term>Watch the distance from the origin instead.</term> Let <m>\rho = x^2 + y^2</m>, the squared distance. Differentiating and substituting the system for (A):
+					<md>
+						<mrow>\frac{d\rho}{dt} \amp = 2x x' + 2y y'</mrow>
+						<mrow> \amp = 2x(-y - x^3) + 2y(x - y^3)</mrow>
+						<mrow> \amp = -2xy - 2x^4 + 2xy - 2y^4</mrow>
+						<mrow> \amp = -2(x^4 + y^4) .</mrow>
+					</md>
+					The <m>xy</m> terms — the entire linear part — cancel, and what remains is negative at every point except the origin. So <m>\rho</m> strictly decreases: trajectories spiral <em>inward</em>. The origin is a stable spiral sink.
+				</p>
+				<p>
+					The same computation for (B) gives <m>d\rho/dt = +2(x^4 + y^4) \gt 0</m>: trajectories spiral <em>outward</em>, and the origin is an unstable spiral source.
+				</p>
+				<p>
+					Two systems, one Jacobian, opposite stability. The cubic terms the linearization discarded were the deciding factor — precisely because the linear part contributed nothing to growth or decay.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					Both have <m>J(0,0) = \begin{bmatrix} 0 \amp -1 \\ 1 \amp 0 \end{bmatrix}</m> with <m>r = \pm i</m>. System (A) is a stable spiral (<m>d\rho/dt \lt 0</m>); system (B) is an unstable spiral (<m>d\rho/dt \gt 0</m>).
+				</p>
+			</answer>
+		</example>
+
+		<p>
+			<idx><h>conserved quantity</h></idx>
+			What about the rabbits and foxes? There the linearized center turns out to be a genuine center. The predator-prey system has a <term>conserved quantity</term> — a combination of <m>R</m> and <m>F</m> that stays constant along every trajectory — and its level curves are closed loops around <m>(30,25)</m>. Establishing that takes a separate argument, which is the point: the linearization raised the question, but could not answer it.
+		</p>
+
+		<aside>
+			<title>A Structural Warning About Centers</title>
+			<p>
+				Even when a center is real, it is fragile. Modify the predator-prey model slightly — add crowding among the rabbits, say <m>R' = 0.5R - 0.02RF - 0.001R^2</m> — and the center becomes a spiral sink. Models that predict perfect, permanent cycles are almost always resting on an exactly-balanced assumption that reality does not honor.
+			</p>
+		</aside>
+
+		<exercise label="linearization-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> Linearization Reading Questions</title>
+
+			<task label="linearization-cyu-1">
+				<title><e component="emoji">📖❓</e> What Goes in the Jacobian?</title>
+				<statement>
+					<p>
+						The entry in row 1, column 2 of <m>J(x,y)</m> is
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p><m>\partial f / \partial y</m></p></statement>
+						<feedback><p>Correct — row 1 is <m>f</m>, column 2 is <m>y</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>\partial g / \partial x</m></p></statement>
+						<feedback><p>That is row 2, column 1.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>\partial f / \partial x</m></p></statement>
+						<feedback><p>That is row 1, column 1.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>f(x,y) \cdot g(x,y)</m></p></statement>
+						<feedback><p>The Jacobian holds derivatives, not products of the functions themselves.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="linearization-cyu-2">
+				<title><e component="emoji">📖❓</e> Where Do You Evaluate It?</title>
+				<statement>
+					<p>
+						To classify an equilibrium, the Jacobian must be evaluated
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>at that equilibrium point.</p></statement>
+						<feedback><p>Correct — the linearization is local, so each equilibrium gets its own matrix.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>at the origin, always.</p></statement>
+						<feedback><p>Only if the origin happens to be the equilibrium you are studying.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>at any convenient point; the answer is the same everywhere.</p></statement>
+						<feedback><p>The entries depend on <m>x</m> and <m>y</m>. Different points give genuinely different matrices — that is why one system can have a saddle and a node at once.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>at <m>t = 0</m>.</p></statement>
+						<feedback><p>The Jacobian depends on position in the phase plane, not on time.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="linearization-cyu-3">
+				<title><e component="emoji">📖❓</e> Read the Eigenvalues</title>
+				<statement>
+					<p>
+						At an equilibrium, <m>J</m> has eigenvalues <m>r = -2</m> and <m>r = 5</m>. The equilibrium is a
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>saddle, and it is unstable.</p></statement>
+						<feedback><p>Correct — real eigenvalues of opposite signs give a saddle, and the positive one guarantees instability.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>stable node.</p></statement>
+						<feedback><p>A stable node needs <em>both</em> eigenvalues negative.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>spiral source.</p></statement>
+						<feedback><p>Spirals require complex eigenvalues. These are real.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>center.</p></statement>
+						<feedback><p>A center needs purely imaginary eigenvalues.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="linearization-cyu-4">
+				<title><e component="emoji">📖❓</e> Which Verdicts Are Trustworthy?</title>
+				<statement>
+					<p>
+						Select every case where the linearization's verdict carries over to the nonlinear system.
+					</p>
+				</statement>
+				<choices randomize="yes" multiple-correct="yes">
+					<choice correct="yes">
+						<statement><p><m>r = -1, -4</m></p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>r = -0.2 \pm 3i</m></p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>r = 2, -7</m></p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>r = \pm 4i</m></p></statement>
+						<feedback><p>Purely imaginary: zero real part, so the verdict is inconclusive.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>r = 0, -3</m></p></statement>
+						<feedback><p>A zero eigenvalue also has zero real part, so this case is inconclusive too.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="linearization-cyu-5">
+				<title><e component="emoji">📖❓</e> Why Two Systems Can Share a Jacobian</title>
+				<statement>
+					<p>
+						In <xref ref="ex-center-ambiguity" text="type-global"/>, why do systems (A) and (B) produce the same Jacobian at the origin?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>They differ only in cubic terms, whose partial derivatives vanish at the origin.</p></statement>
+						<feedback><p>Correct — the linearization sees only first-order behavior, and the cubic terms contribute none of it there.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>They are the same system written two ways.</p></statement>
+						<feedback><p>They are genuinely different: one spirals inward and the other outward.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Every nonlinear system has the same Jacobian at the origin.</p></statement>
+						<feedback><p>Not at all — the competing-species model has a completely different one.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The Jacobian ignores the second equation.</p></statement>
+						<feedback><p>The bottom row of the Jacobian comes entirely from the second equation.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
+</section>

@@ -1,0 +1,364 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share — copy and redistribute the material in any medium or format.
+    • Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section label="nullclines-and-the-phase-plane">
+	<title>Nullclines and the Phase Plane</title>
+
+	<introduction>
+		<p>
+			<idx><h>nullcline</h></idx>
+			Knowing <em>where</em> the equilibria sit is only half a picture. We also want to know what the flow does between them: which way trajectories travel, whether they circle, and which equilibrium they head toward.
+		</p>
+
+		<p>
+			Drawing a full direction field by hand means evaluating <m>(f,g)</m> at dozens of points. <term>Nullclines</term> give us the same information for a fraction of the work. They are the phase-plane cousin of the phase line from <xref ref="chpt-qualitative" text="title"/>: a few curves that carve the plane into regions, with the direction of motion constant in sign throughout each region.
+		</p>
+	</introduction>
+
+	<subsection label="what-is-a-nullcline">
+		<title>Curves Where One Variable Stops</title>
+
+		<p>
+			An equilibrium needs both derivatives to vanish. A nullcline asks for only one at a time.
+		</p>
+
+		<definition xml:id="def-nullcline">
+			<title>Nullclines</title>
+			<idx><h>nullcline</h></idx>
+			<idx><h>nullcline</h><h>x-nullcline</h></idx>
+			<idx><h>nullcline</h><h>y-nullcline</h></idx>
+			<statement>
+				<p>
+					For the system <m>x' = f(x,y)</m>, <m>y' = g(x,y)</m>:
+					<ul marker="disc">
+						<li>The <term>x-nullclines</term> are the curves where <m>f(x,y) = 0</m>. Crossing one, <m>x</m> is momentarily not changing, so the motion there is purely <em>vertical</em>.</li>
+						<li>The <term>y-nullclines</term> are the curves where <m>g(x,y) = 0</m>. There <m>y</m> is momentarily not changing, so the motion is purely <em>horizontal</em>.</li>
+					</ul>
+				</p>
+			</statement>
+		</definition>
+
+		<p>
+			Two consequences follow immediately, and they are what make nullclines worth drawing.
+		</p>
+
+		<ul marker="square">
+			<li>
+				<p>
+					<term>Equilibria are the crossings.</term> A point where an <m>x</m>-nullcline meets a <m>y</m>-nullcline has <m>f = 0</m> and <m>g = 0</m> — the definition of an equilibrium point. Two <m>x</m>-nullclines crossing each other is <em>not</em> enough; the curves must come from different equations.
+				</p>
+			</li>
+			<li>
+				<p>
+					<term>Signs are constant in between.</term> Because <m>f</m> can only change sign by passing through zero, the sign of <m>x'</m> is the same everywhere inside a region bounded by <m>x</m>-nullclines. The same is true of <m>y'</m>. So a single test point per region determines the direction of the flow across the entire region.
+				</p>
+			</li>
+		</ul>
+
+		<p>
+			The result is a coarse map of the phase plane: four possible arrow directions (up-right, up-left, down-left, down-right), one per region, sketched from a handful of arithmetic checks.
+		</p>
+	</subsection>
+
+	<subsection label="nullclines-worked">
+		<title>Mapping the Flow: A Worked Example</title>
+
+		<p>
+			We return to the rabbits and foxes of <xref ref="ex-lv-equilibria" text="type-global"/>:
+			<md>
+				<mrow>\frac{dR}{dt} \amp = R(0.5 - 0.02F)</mrow>
+				<mrow>\frac{dF}{dt} \amp = F(-0.3 + 0.01R)</mrow>
+			</md>
+			Only the biologically meaningful quadrant <m>R \geq 0</m>, <m>F \geq 0</m> concerns us.
+		</p>
+
+		<example xml:id="ex-lv-nullclines">
+			<title>Nullclines of the Predator-Prey Model</title>
+			<statement>
+				<p>
+					Find the nullclines of the rabbit-fox system and use them to determine the direction of motion in each region of the first quadrant.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<term>Step 1: the nullclines.</term> Setting <m>dR/dt = 0</m> gives <m>R = 0</m> (the vertical axis) or <m>F = 25</m> (a horizontal line). Setting <m>dF/dt = 0</m> gives <m>F = 0</m> (the horizontal axis) or <m>R = 30</m> (a vertical line).
+				</p>
+				<p>
+					The two axes are nullclines as well as boundaries, which matches the biology: with no rabbits, or no foxes, one population is stuck at zero forever. Inside the quadrant, the interesting curves are the line <m>F = 25</m> (where <m>R</m> pauses) and the line <m>R = 30</m> (where <m>F</m> pauses). They cross at <m>(30,25)</m> — the coexistence equilibrium.
+				</p>
+				<p>
+					<term>Step 2: sign of each derivative.</term> Read the factored form directly:
+					<md>
+						<mrow>R' \amp \gt 0 \text{ when } F \lt 25, \amp\quad R' \amp \lt 0 \text{ when } F \gt 25,</mrow>
+						<mrow>F' \amp \gt 0 \text{ when } R \gt 30, \amp\quad F' \amp \lt 0 \text{ when } R \lt 30 .</mrow>
+					</md>
+					(Both statements assume <m>R \gt 0</m> and <m>F \gt 0</m>, so the leading factors are positive.)
+				</p>
+				<p>
+					<term>Step 3: assemble the four regions.</term>
+				</p>
+				<tabular halign="center" top="minor" bottom="minor" left="minor" right="minor">
+					<row header="yes" bottom="minor">
+						<cell>Region</cell>
+						<cell>Sign of <m>R'</m></cell>
+						<cell>Sign of <m>F'</m></cell>
+						<cell>Motion</cell>
+					</row>
+					<row>
+						<cell><m>R \lt 30</m>, <m>F \lt 25</m></cell>
+						<cell>+</cell>
+						<cell><m>-</m></cell>
+						<cell>right and down</cell>
+					</row>
+					<row>
+						<cell><m>R \gt 30</m>, <m>F \lt 25</m></cell>
+						<cell>+</cell>
+						<cell>+</cell>
+						<cell>right and up</cell>
+					</row>
+					<row>
+						<cell><m>R \gt 30</m>, <m>F \gt 25</m></cell>
+						<cell><m>-</m></cell>
+						<cell>+</cell>
+						<cell>left and up</cell>
+					</row>
+					<row>
+						<cell><m>R \lt 30</m>, <m>F \gt 25</m></cell>
+						<cell><m>-</m></cell>
+						<cell><m>-</m></cell>
+						<cell>left and down</cell>
+					</row>
+				</tabular>
+				<p>
+					Follow those four rows around the table and the arrows chase each other counterclockwise about <m>(30,25)</m>. That is the predator-prey cycle in its rawest form: plentiful rabbits feed a fox boom, the fox boom eats the rabbits down, the starving foxes decline, and the rabbits recover to start again.
+				</p>
+			</solution>
+			<answer>
+				<p>
+					<m>R</m>-nullclines: <m>R = 0</m> and <m>F = 25</m>. <m>F</m>-nullclines: <m>F = 0</m> and <m>R = 30</m>. The flow circulates counterclockwise around the crossing at <m>(30,25)</m>.
+				</p>
+			</answer>
+		</example>
+
+		<figure xml:id="fig-lv-nullclines">
+			<caption>Nullclines of the rabbit-fox system in the first quadrant. The line <m>F = 25</m> (where <m>R' = 0</m>) and the line <m>R = 30</m> (where <m>F' = 0</m>) cross at the coexistence equilibrium <m>(30,25)</m> and split the quadrant into four regions. The arrow in each region shows the direction of motion there; together they circulate counterclockwise.</caption>
+			<image width="65%">
+				<shortdescription>Phase-plane sketch with rabbits on the horizontal axis and foxes on the vertical axis, showing a horizontal nullcline at F = 25 and a vertical nullcline at R = 30 crossing at the equilibrium point (30, 25), with one direction arrow drawn in each of the four regions.</shortdescription>
+				<description>
+					<p>The horizontal axis is labeled R (rabbits) and runs from 0 to about 55; the vertical axis is labeled F (foxes) and runs from 0 to about 45. A horizontal line at F = 25 marks where the rabbit population stops changing, and a vertical line at R = 30 marks where the fox population stops changing. The two lines cross at a marked dot at (30, 25); a second dot marks the origin. In the lower-left region the arrow points down and to the right; in the lower-right region it points up and to the right; in the upper-right region it points up and to the left; in the upper-left region it points down and to the left. Read in order, the four arrows circulate counterclockwise around (30, 25).</p>
+				</description>
+				<latex-image>
+					\begin{tikzpicture}[scale=1.1]
+
+						% axes (1 unit = 10 animals)
+						\draw[-stealth, thick] (-0.2,0) -- (5.6,0) node[below right] {$R$ (rabbits)};
+						\draw[-stealth, thick] (0,-0.2) -- (0,4.6) node[above left] {$F$ (foxes)};
+
+						% tick labels
+						\draw (3,0.08) -- (3,-0.08) node[below, font=\small] {$30$};
+						\draw (0.08,2.5) -- (-0.08,2.5) node[left, font=\small] {$25$};
+
+						% nullclines
+						\draw[teal, very thick] (-0.1,2.5) -- (5.3,2.5) node[right, font=\small] {$F=25$};
+						\draw[red, very thick] (3,-0.1) -- (3,4.3) node[above, font=\small] {$R=30$};
+
+						% equilibria
+						\filldraw[black] (0,0) circle (2.5pt);
+						\filldraw[black] (3,2.5) circle (2.5pt);
+						\draw (3,2.5) node[above right, font=\small] {$(30,25)$};
+
+						% direction arrows, one per region
+						\draw[-stealth, very thick] (1.4,1.4) -- (1.9,0.9);
+						\draw[-stealth, very thick] (4.2,1.0) -- (4.7,1.5);
+						\draw[-stealth, very thick] (4.4,3.4) -- (3.9,3.9);
+						\draw[-stealth, very thick] (1.6,3.6) -- (1.1,3.1);
+
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
+
+		<p>
+			Two cautions about what this picture does and does not say. First, nullclines give <em>directions</em>, not speeds: an arrow says <q>up and to the right,</q> not how steeply. Second — and this is the important one — a counterclockwise circulation is consistent with closed loops, with an inward spiral, and with an outward spiral. Nullclines cannot tell those three apart. Settling that question is what <xref ref="linearization-and-the-jacobian" text="title"/> is for.
+		</p>
+	</subsection>
+
+	<subsection label="nullclines-competing">
+		<title>Nullclines That Are Not Straight Lines</title>
+
+		<p>
+			Nothing in the definition requires a nullcline to be a line. For the competing species of <xref ref="ex-competing-equilibria" text="type-global"/>,
+			<md>
+				<mrow>\frac{dx}{dt} \amp = x(3 - x - 2y)</mrow>
+				<mrow>\frac{dy}{dt} \amp = y(2 - x - y)</mrow>
+			</md>
+			the <m>x</m>-nullclines are <m>x = 0</m> and the line <m>x + 2y = 3</m>; the <m>y</m>-nullclines are <m>y = 0</m> and the line <m>x + y = 2</m>. Four curves, and their crossings are precisely the four equilibria we already found — a useful check on the algebra.
+		</p>
+
+		<p>
+			Change the model slightly, to <m>x' = x(3 - x^2 - 2y)</m>, and the <m>x</m>-nullcline becomes the parabola <m>y = (3-x^2)/2</m>. The method does not change at all: draw the curves, pick one test point per region, record the two signs.
+		</p>
+
+		<assemblage xml:id="nullcline-recipe">
+			<title><e component="emoji">✳️</e> The Nullcline Recipe</title>
+			<p>
+				<ol marker="1.">
+					<li>Set <m>f(x,y) = 0</m> and sketch every resulting curve. These are the <m>x</m>-nullclines: motion across them is vertical.</li>
+					<li>Set <m>g(x,y) = 0</m> and sketch every resulting curve. These are the <m>y</m>-nullclines: motion across them is horizontal.</li>
+					<li>Mark each crossing of an <m>x</m>-nullcline with a <m>y</m>-nullcline. Those are the equilibria.</li>
+					<li>In each region, test one convenient point to get the signs of <m>f</m> and <m>g</m>, and draw the corresponding arrow.</li>
+				</ol>
+			</p>
+		</assemblage>
+
+		<exercise label="nullclines-cyu-bundle">
+			<title><e component="emoji">🤔💭</e> Nullclines Reading Questions</title>
+
+			<task label="nullclines-cyu-1">
+				<title><e component="emoji">📖❓</e> What Happens on an x-Nullcline?</title>
+				<statement>
+					<p>
+						A trajectory crosses an <m>x</m>-nullcline. At the moment of crossing, its motion is
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>purely vertical.</p></statement>
+						<feedback><p>Correct — <m>x' = 0</m> there, so only <m>y</m> is changing.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>purely horizontal.</p></statement>
+						<feedback><p>That describes a <m>y</m>-nullcline, where <m>y' = 0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>zero — the trajectory stops.</p></statement>
+						<feedback><p>Only if it is also on a <m>y</m>-nullcline. One vanishing derivative is not an equilibrium.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>at <m>45^\circ</m> to the axes.</p></statement>
+						<feedback><p>Nothing forces a particular angle; what is forced is that the horizontal component is zero.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nullclines-cyu-2">
+				<title><e component="emoji">📖❓</e> Where Are the Equilibria?</title>
+				<statement>
+					<p>
+						Which crossings in a nullcline sketch are equilibrium points?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Crossings of an <m>x</m>-nullcline with a <m>y</m>-nullcline.</p></statement>
+						<feedback><p>Correct — those are the points where <m>f</m> and <m>g</m> both vanish.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Every crossing of any two nullclines.</p></statement>
+						<feedback><p>Two <m>x</m>-nullclines crossing gives <m>f = 0</m> twice over, and says nothing about <m>g</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Only crossings that lie on an axis.</p></statement>
+						<feedback><p>The coexistence equilibrium <m>(30,25)</m> is a crossing well inside the quadrant.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>Only crossings at the origin.</p></statement>
+						<feedback><p>That would be true of most linear systems, not of nonlinear ones.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nullclines-cyu-3">
+				<title><e component="emoji">📖❓</e> Find the Nullclines</title>
+				<statement>
+					<p>
+						For <m>x' = x(4 - y)</m>, <m>y' = y(x - 3)</m>, select every nullcline listed below.
+					</p>
+				</statement>
+				<choices randomize="yes" multiple-correct="yes">
+					<choice correct="yes">
+						<statement><p><m>x = 0</m> (an <m>x</m>-nullcline)</p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>y = 4</m> (an <m>x</m>-nullcline)</p></statement>
+					</choice>
+					<choice correct="yes">
+						<statement><p><m>x = 3</m> (a <m>y</m>-nullcline)</p></statement>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>y = 3</m> (a <m>y</m>-nullcline)</p></statement>
+						<feedback><p>Setting <m>y' = y(x-3) = 0</m> gives <m>y = 0</m> or <m>x = 3</m>, not <m>y = 3</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p><m>x = 4</m> (an <m>x</m>-nullcline)</p></statement>
+						<feedback><p>Setting <m>x' = x(4-y) = 0</m> gives <m>x = 0</m> or <m>y = 4</m>.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nullclines-cyu-4">
+				<title><e component="emoji">📖❓</e> Reading a Region</title>
+				<statement>
+					<p>
+						In one region of a phase plane a test point gives <m>f \lt 0</m> and <m>g \gt 0</m>. Trajectories in that region move
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>up and to the left.</p></statement>
+						<feedback><p>Correct: <m>x' \lt 0</m> means leftward, <m>y' \gt 0</m> means upward.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>up and to the right.</p></statement>
+						<feedback><p>Rightward motion needs <m>f \gt 0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>down and to the left.</p></statement>
+						<feedback><p>Downward motion needs <m>g \lt 0</m>.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>It cannot be determined without solving the system.</p></statement>
+						<feedback><p>The two signs are exactly what determines the direction — no solving required.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+
+			<task label="nullclines-cyu-5">
+				<title><e component="emoji">📖❓</e> How Much Do Nullclines Settle?</title>
+				<statement>
+					<p>
+						A nullcline sketch shows the flow circulating counterclockwise around an equilibrium. What can you conclude?
+					</p>
+				</statement>
+				<choices randomize="yes">
+					<choice correct="yes">
+						<statement><p>Nearby trajectories rotate around it, but they could spiral in, spiral out, or close into loops.</p></statement>
+						<feedback><p>Correct — nullclines give direction only. Distinguishing the three cases requires linearization.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The equilibrium is stable.</p></statement>
+						<feedback><p>An outward spiral also circulates. Circulation alone says nothing about stability.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The trajectories are exact closed loops.</p></statement>
+						<feedback><p>Closed loops are only one of the three possibilities consistent with the picture.</p></feedback>
+					</choice>
+					<choice correct="no">
+						<statement><p>The system must be linear.</p></statement>
+						<feedback><p>Circulation happens in both linear and nonlinear systems.</p></feedback>
+					</choice>
+				</choices>
+			</task>
+		</exercise>
+	</subsection>
+
+</section>

@@ -39,8 +39,10 @@ from sympy import (
     exp,
     laplace_transform,
     log,
+    pi,
     simplify,
     sin,
+    solve,
     solveset,
     sqrt,
     symbols,
@@ -89,6 +91,28 @@ def laplace_matches(f_t, F_s) -> bool:
     """L{f(t)} equals the claimed F(s)."""
     got = laplace_transform(f_t, t, s, noconds=True)
     return is_zero(got - F_s)
+
+
+def jacobian(f, g, v1, v2):
+    """Jacobian matrix of the planar system v1' = f, v2' = g."""
+    return Matrix([[diff(f, v1), diff(f, v2)], [diff(g, v1), diff(g, v2)]])
+
+
+def equilibria(f, g, v1, v2):
+    """Set of (v1, v2) pairs solving f = g = 0, as simplified expressions."""
+    sols = solve([f, g], [v1, v2], dict=True)
+    return {(simplify(sol[v1]), simplify(sol[v2])) for sol in sols}
+
+
+def eigs_at(f, g, v1, v2, point):
+    """Eigenvalues of the Jacobian of (f, g) evaluated at ``point``."""
+    Jp = jacobian(f, g, v1, v2).subs({v1: point[0], v2: point[1]})
+    return FiniteSet(*[simplify(e) for e in Jp.eigenvals()])
+
+
+def radial_rate(f, g, v1, v2):
+    """d/dt of rho = v1^2 + v2^2 along the system, simplified."""
+    return simplify(2 * v1 * f + 2 * v2 * g)
 
 
 REGISTRY = [
@@ -793,6 +817,241 @@ REGISTRY += [
         "c3 drill B6: y=1+Ce^{-x} solves d/dx[e^x y]=e^x",
         "source/c3-di/exercises-di.ptx",
         lambda: is_zero(diff(exp(x) * (1 + C1 * exp(-x)), x) - exp(x)),
+    ),
+]
+
+
+# ----------------------------------------------------------------------
+# M3 — Chapter 14, Nonlinear Systems
+#
+# The chapter's printed equilibria, Jacobians, and eigenvalues. Every
+# entry re-derives the value a student reads, not an intermediate step.
+# ----------------------------------------------------------------------
+# Predator-prey (rabbits R, foxes F) as printed in sec-nonlinear-systems
+# and sec-linearization; x and y stand in for R and F.
+LV_F = R(1, 2) * x - R(1, 50) * x * y
+LV_G = -R(3, 10) * y + R(1, 100) * x * y
+
+# Competing species, worked example (sec-nonlinear-systems, sec-linearization)
+COMP_F = x * (3 - x - 2 * y)
+COMP_G = y * (2 - x - y)
+
+# Competing species, Problems tier (exercises-nlinsys)
+COMP2_F = x * (6 - x - 2 * y)
+COMP2_G = y * (4 - x - y)
+
+# Damped pendulum: x is the angle, y the angular velocity
+PEND_F = y
+PEND_G = -sin(x) - y / 2
+
+REGISTRY += [
+    Check(
+        "c14 predator-prey equilibria are exactly (0,0) and (30,25)",
+        "source/c14-nlinsys/sec-nonlinear-systems.ptx",
+        lambda: equilibria(LV_F, LV_G, x, y) == {(0, 0), (30, 25)},
+    ),
+    Check(
+        "c14 predator-prey J(30,25) = [[0,-0.6],[0.25,0]] with r = +/- i*sqrt(0.15)",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: jacobian(LV_F, LV_G, x, y).subs({x: 30, y: 25})
+        == Matrix([[0, R(-3, 5)], [R(1, 4), 0]])
+        and eigs_at(LV_F, LV_G, x, y, (30, 25))
+        == FiniteSet(I * sqrt(R(15, 100)), -I * sqrt(R(15, 100))),
+    ),
+    Check(
+        "c14 predator-prey J(0,0) is a saddle: r = 0.5 and r = -0.3",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: eigs_at(LV_F, LV_G, x, y, (0, 0))
+        == FiniteSet(R(1, 2), R(-3, 10)),
+    ),
+    Check(
+        "c14 predator-prey cycle period 2*pi/sqrt(0.15) = 16.2 months",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: abs(float(2 * pi / sqrt(R(15, 100))) - 16.2) < 0.05,
+    ),
+    Check(
+        "c14 competing species equilibria are (0,0), (3,0), (0,2), (1,1)",
+        "source/c14-nlinsys/sec-nonlinear-systems.ptx",
+        lambda: equilibria(COMP_F, COMP_G, x, y)
+        == {(0, 0), (3, 0), (0, 2), (1, 1)},
+    ),
+    Check(
+        "c14 competing species J(x,y) = [[3-2x-2y, -2x], [-y, 2-x-2y]]",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: jacobian(COMP_F, COMP_G, x, y).expand()
+        == Matrix([[3 - 2 * x - 2 * y, -2 * x], [-y, 2 - x - 2 * y]]),
+    ),
+    Check(
+        "c14 competing species (0,0) unstable node: r = 3, 2",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: eigs_at(COMP_F, COMP_G, x, y, (0, 0)) == FiniteSet(3, 2),
+    ),
+    Check(
+        "c14 competing species (3,0) stable node: r = -3, -1",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: eigs_at(COMP_F, COMP_G, x, y, (3, 0)) == FiniteSet(-3, -1),
+    ),
+    Check(
+        "c14 competing species (0,2) stable node: r = -1, -2",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: eigs_at(COMP_F, COMP_G, x, y, (0, 2)) == FiniteSet(-1, -2),
+    ),
+    Check(
+        "c14 competing species (1,1) saddle: r = -1 +/- sqrt(2)",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: eigs_at(COMP_F, COMP_G, x, y, (1, 1))
+        == FiniteSet(-1 + sqrt(2), -1 - sqrt(2)),
+    ),
+    Check(
+        "c14 cautionary pair: both have J(0,0)=[[0,-1],[1,0]], r = +/- i",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: all(
+            eigs_at(-y + sgn * x**3, x + sgn * y**3, x, y, (0, 0))
+            == FiniteSet(I, -I)
+            for sgn in (1, -1)
+        ),
+    ),
+    Check(
+        "c14 cautionary pair: d(rho)/dt = -2(x^4+y^4) inward, +2(x^4+y^4) outward",
+        "source/c14-nlinsys/sec-linearization.ptx",
+        lambda: is_zero(
+            radial_rate(-y - x**3, x - y**3, x, y) + 2 * (x**4 + y**4)
+        )
+        and is_zero(
+            radial_rate(-y + x**3, x + y**3, x, y) - 2 * (x**4 + y**4)
+        ),
+    ),
+    Check(
+        "c14 drill: equilibria of x'=x-xy, y'=xy-2y are (0,0) and (2,1)",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: equilibria(x - x * y, x * y - 2 * y, x, y) == {(0, 0), (2, 1)},
+    ),
+    Check(
+        "c14 drill: equilibria of x'=x(6-x-2y), y'=y(4-x-y)",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: equilibria(COMP2_F, COMP2_G, x, y)
+        == {(0, 0), (6, 0), (0, 4), (2, 2)},
+    ),
+    Check(
+        "c14 drill: equilibria of x'=y-x^2, y'=x-y are (0,0) and (1,1)",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: equilibria(y - x**2, x - y, x, y) == {(0, 0), (1, 1)},
+    ),
+    Check(
+        "c14 drill: J(x,y) for x'=x^2y-3x, y'=x+y^2 is [[2xy-3, x^2],[1, 2y]]",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: jacobian(x**2 * y - 3 * x, x + y**2, x, y).expand()
+        == Matrix([[2 * x * y - 3, x**2], [1, 2 * y]]),
+    ),
+    Check(
+        "c14 drill: y'=x-y, x'=y-x^2 -> (0,0) saddle r=(-1+/-sqrt5)/2",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: eigs_at(y - x**2, x - y, x, y, (0, 0))
+        == FiniteSet(R(-1, 2) + sqrt(5) / 2, R(-1, 2) - sqrt(5) / 2),
+    ),
+    Check(
+        "c14 drill: y'=x-y, x'=y-x^2 -> (1,1) stable node r=(-3+/-sqrt5)/2",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: eigs_at(y - x**2, x - y, x, y, (1, 1))
+        == FiniteSet(R(-3, 2) + sqrt(5) / 2, R(-3, 2) - sqrt(5) / 2),
+    ),
+    Check(
+        "c14 drill: given matrices classify as stable node, spiral source, center",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: FiniteSet(*Matrix([[-3, 1], [0, -2]]).eigenvals())
+        == FiniteSet(-3, -2)
+        and FiniteSet(*Matrix([[1, 2], [-2, 1]]).eigenvals())
+        == FiniteSet(1 + 2 * I, 1 - 2 * I)
+        and FiniteSet(*Matrix([[0, 3], [-3, 0]]).eigenvals())
+        == FiniteSet(3 * I, -3 * I),
+    ),
+    Check(
+        "c14 problem: competing species (6,4) classification of all four equilibria",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: eigs_at(COMP2_F, COMP2_G, x, y, (0, 0)) == FiniteSet(6, 4)
+        and eigs_at(COMP2_F, COMP2_G, x, y, (6, 0)) == FiniteSet(-6, -2)
+        and eigs_at(COMP2_F, COMP2_G, x, y, (0, 4)) == FiniteSet(-2, -4)
+        and eigs_at(COMP2_F, COMP2_G, x, y, (2, 2))
+        == FiniteSet(-2 + 2 * sqrt(2), -2 - 2 * sqrt(2)),
+    ),
+    Check(
+        "c14 problem: pendulum equilibria (n*pi, 0) satisfy both equations",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: all(
+            is_zero(PEND_F.subs({x: n * pi, y: 0}))
+            and is_zero(PEND_G.subs({x: n * pi, y: 0}))
+            for n in (-1, 0, 1, 2)
+        ),
+    ),
+    Check(
+        "c14 problem: pendulum (0,0) spiral sink r = -1/4 +/- i*sqrt(15)/4",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: eigs_at(PEND_F, PEND_G, x, y, (0, 0))
+        == FiniteSet(
+            R(-1, 4) + I * sqrt(15) / 4, R(-1, 4) - I * sqrt(15) / 4
+        ),
+    ),
+    Check(
+        "c14 problem: pendulum (pi,0) saddle r = -1/4 +/- sqrt(17)/4",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: eigs_at(PEND_F, PEND_G, x, y, (pi, 0))
+        == FiniteSet(R(-1, 4) + sqrt(17) / 4, R(-1, 4) - sqrt(17) / 4),
+    ),
+    Check(
+        "c14 problem: x'=-y+a*x*rho, y'=x+a*y*rho has d(rho)/dt = 2a*rho^2",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: (
+            lambda a, rho: is_zero(
+                radial_rate(-y + a * x * rho, x + a * y * rho, x, y)
+                - 2 * a * rho**2
+            )
+            and eigs_at(
+                -y + a * x * (x**2 + y**2),
+                x + a * y * (x**2 + y**2),
+                x, y, (0, 0),
+            )
+            == FiniteSet(I, -I)
+        )(symbols("a"), x**2 + y**2),
+    ),
+    Check(
+        "c14 problem: SIR J(S,0) is triangular with r = 0 and beta*S/N - gamma",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: (
+            lambda S, Inf, beta, gamma, N: (
+                lambda Jp: Jp == Matrix(
+                    [[0, -beta * S / N], [0, beta * S / N - gamma]]
+                )
+                and FiniteSet(*[simplify(e) for e in Jp.eigenvals()])
+                == FiniteSet(0, beta * S / N - gamma)
+            )(
+                jacobian(
+                    -beta * S * Inf / N,
+                    beta * S * Inf / N - gamma * Inf,
+                    S,
+                    Inf,
+                ).subs({Inf: 0})
+            )
+        )(*symbols("S I_pop beta gamma N", positive=True)),
+    ),
+    Check(
+        "c14 problem: SIR growth threshold beta*S/N - gamma > 0 <=> S > N/R0",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: (
+            lambda S, beta, gamma, N: is_zero(
+                solve(beta * S / N - gamma, S)[0] - N / (beta / gamma)
+            )
+        )(*symbols("S beta gamma N", positive=True)),
+    ),
+    Check(
+        "c14 problem: two Euler steps of x'=x-xy, y'=xy-2y from (3,1), h=0.1",
+        "source/c14-nlinsys/exercises-nlinsys.ptx",
+        lambda: euler_system(
+            [
+                lambda tk, u, v: u - u * v,
+                lambda tk, u, v: u * v - 2 * v,
+            ],
+            0, [R(3), R(1)], R(1, 10), 2,
+        ) == [R(297, 100), R(121, 100)],
     ),
 ]
 
