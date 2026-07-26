@@ -16,7 +16,7 @@ when you need them.
 | [`check-descriptions/`](#check-descriptions) | Accessibility: every image and interactive must be described | `python3 processing-tools/check-descriptions/check_descriptions.py` | `lxml` |
 | [`audit-status/`](#audit-status) | Reports which audit tasks are done, and refreshes the report's status table | `python3 processing-tools/audit-status/audit_status.py` | — |
 | [`tts/`](#tts) | Strips PreTeXt down to narration-ready text, plus the audit/render prompt pack | `python3 processing-tools/tts/preprocess_ptx_for_tts.py SRC DST` | `lxml` |
-| [`post-process-html/`](#post-process-html) | Applies find/replace rules to built HTML | `python3 processing-tools/post-process-html/postprocess_html.py replacements.json DIR` | — |
+| [`post-process-html/`](#post-process-html) | Applies find/replace rules to built HTML | `python3 processing-tools/post-process-html/postprocess_html.py processing-tools/replacements.json DIR` | — |
 | [`book-db-sync/`](#book-db-sync) | Two-way sync between section files and a SQLite database | `python3 processing-tools/book-db-sync/book_db_sync.py {init,pull,push,sync}` | — |
 | [`merge-sections-to-single-ptx.py`](#merge-sections-to-single-ptx) | Flattens `xi:include`s into one file | `python3 processing-tools/merge-sections-to-single-ptx.py` (interactive) | — |
 | [`latex2pretext-tools/`](#latex2pretext-tools) | The LaTeX → PreTeXt conversion toolchain | notebooks, run by hand | Jupyter, `tkinter` |
@@ -203,15 +203,19 @@ python3 processing-tools/merge-sections-to-single-ptx.py
 
 ### latex2pretext-tools
 
-The toolchain used to convert this book's earlier LaTeX source into PreTeXt.
+The toolchain used to convert this book's earlier LaTeX source into PreTeXt. All
+four files live in `latex2pretext-tools/`:
 
-- `latex_to_pretext_parsing_tools.py` — a library of ~30 parsing helpers
-  (sections, examples, lists, tables, display math, `verbatim`, indentation and
-  `<p>`-tag repair). It has no `__main__`; the notebooks import it.
-- `latex_to_pretext_parser.ipynb` — the main conversion run.
-- `Create-Specific-Sections.ipynb` — converts selected sections rather than a
-  whole book.
-- `Debugging_Script.ipynb` — a scratch notebook for inspecting conversion output.
+- [`latex_to_pretext_parsing_tools.py`](latex2pretext-tools/latex_to_pretext_parsing_tools.py)
+  — a library of ~30 parsing helpers (sections, examples, lists, tables, display
+  math, `verbatim`, indentation and `<p>`-tag repair). It has no `__main__`; the
+  notebooks import it.
+- [`latex_to_pretext_parser.ipynb`](latex2pretext-tools/latex_to_pretext_parser.ipynb)
+  — the main conversion run.
+- [`Create-Specific-Sections.ipynb`](latex2pretext-tools/Create-Specific-Sections.ipynb)
+  — converts selected sections rather than a whole book.
+- [`Debugging_Script.ipynb`](latex2pretext-tools/Debugging_Script.ipynb)
+  — a scratch notebook for inspecting conversion output.
 
 The notebooks use `tkinter` file dialogs to pick input, so they need a desktop
 session. This is migration tooling rather than part of the routine authoring
