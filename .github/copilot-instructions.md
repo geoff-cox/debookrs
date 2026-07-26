@@ -8,7 +8,7 @@ This repository contains *Exploring Differential Equations*, an open-access, stu
 - `source/` — modular textbook source. Most authoring work happens here.
 - `publication/` — publication and Runestone configuration.
 - `assets/` — custom JavaScript, CSS/SCSS, images, data, and interactive assets.
-- `processing-tools/` — scripts for TTS, audits, conversion, refactoring, and post-processing.
+- `processing-tools/` — scripts for TTS, audits, conversion, refactoring, and post-processing. See `processing-tools/README.md` for what each tool does and how to run it.
 - `.github/instructions/` — path-specific Copilot instructions.
 - `.github/ai-docs/` — task guides, skills, and prompt templates for human-initiated AI work.
 
