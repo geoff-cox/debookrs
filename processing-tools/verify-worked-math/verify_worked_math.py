@@ -132,6 +132,16 @@ def rounds_to(value, printed, places) -> bool:
     return round(R(value) * scale) == round(R(printed) * scale)
 
 
+def is_exact_equation(M, N, v1, v2) -> bool:
+    """The equation M + N y' = 0 passes the exactness test dM/dy = dN/dx."""
+    return is_zero(diff(M, v2) - diff(N, v1))
+
+
+def is_potential_for(F, M, N, v1, v2) -> bool:
+    """F is a potential function for M + N y' = 0, i.e. F_x = M and F_y = N."""
+    return is_zero(diff(F, v1) - M) and is_zero(diff(F, v2) - N)
+
+
 def step_count(span, h) -> int:
     """Steps needed to cover ``span`` with step size ``h``.
 
@@ -1223,6 +1233,70 @@ REGISTRY += [
         "source/c7-em/sec-euler-accuracy.ptx",
         lambda: rounds_to(em_error(heun, 2).evalf(30), R(23834, 1000000), 6)
         and rounds_to(em_error(euler, 16).evalf(30), R(24656, 1000000), 6),
+    ),
+]
+
+
+# ----------------------------------------------------------------------
+# M6 — first-order unit, "Preview: Other Tools You May Meet"
+#
+# The three previewed methods are not taught, but every solution the
+# preview prints is still a claim the book makes, so each is verified.
+# ----------------------------------------------------------------------
+REGISTRY += [
+    Check(
+        "c5 preview exact: (2xy+3)+(x^2-1)y'=0 is exact, F = x^2 y + 3x - y",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: is_exact_equation(2 * x * y + 3, x**2 - 1, x, y)
+        and is_potential_for(x**2 * y + 3 * x - y, 2 * x * y + 3, x**2 - 1, x, y),
+    ),
+    Check(
+        "c5 preview Bernoulli: y = 1/(x+1+Ce^x) solves y' + y = x y^2",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (lambda yb: is_zero(diff(yb, x) + yb - x * yb**2))(
+            1 / (x + 1 + C1 * exp(x))
+        ),
+    ),
+    Check(
+        "c5 preview Bernoulli: substitution v = 1/y turns y'+y=xy^2 into v'-v=-x",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (lambda v: is_zero(simplify(diff(v, x) - v + x)))(x + 1 + C1 * exp(x)),
+    ),
+    Check(
+        "c5 preview ratio form: v=y/x turns y'=(y-x)/(y+x) into x v' = -(1+v^2)/(1+v)",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (lambda v: is_zero(
+            simplify(((v - 1) / (v + 1) - v) + (1 + v**2) / (1 + v))
+        ))(symbols("v")),
+    ),
+    Check(
+        "c5 preview drill 1a: y' + y/x = x y^2 is Bernoulli (n=2), y = 1/(Cx - x^2)",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (lambda yb: is_zero(diff(yb, x) + yb / x - x * yb**2))(
+            1 / (C1 * x - x**2)
+        ),
+    ),
+    Check(
+        "c5 preview drill 1b: y'=(x^2+y^2)/(xy) depends only on the ratio y/x",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: (lambda v: simplify(
+            ((x**2 + y**2) / (x * y)).subs(y, v * x)
+        ).free_symbols == {v})(symbols("v")),
+    ),
+    Check(
+        "c5 preview drill 1c: (3x^2+y)+(x-2y)y'=0 is exact, F = x^3 + xy - y^2",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: is_exact_equation(3 * x**2 + y, x - 2 * y, x, y)
+        and is_potential_for(x**3 + x * y - y**2, 3 * x**2 + y, x - 2 * y, x, y),
+    ),
+    Check(
+        "c5 preview drill 2: (A) exact with F = xy^2+x^2+y; (B) not exact",
+        "source/c5-if/review-first-order-methods.ptx",
+        lambda: is_exact_equation(y**2 + 2 * x, 2 * x * y + 1, x, y)
+        and is_potential_for(
+            x * y**2 + x**2 + y, y**2 + 2 * x, 2 * x * y + 1, x, y
+        )
+        and not is_exact_equation(y**2 + 2 * x, x * y + 1, x, y),
     ),
 ]
 
