@@ -1270,7 +1270,11 @@ REGISTRY += [
         ))(symbols("v")),
     ),
     Check(
-        "c5 preview drill 1a: y' + y/x = x y^2 is Bernoulli (n=2), y = 1/(Cx - x^2)",
+        # The drill only asks which method fits, so the book does not print a
+        # solution here. This guards the choice of equation: it really is a
+        # Bernoulli (n=2) with a clean closed form, which is why it was picked
+        # over one whose solution needs an exponential integral.
+        "c5 preview drill 1a equation is a solvable Bernoulli, n=2 (solution not printed)",
         "source/c5-if/review-first-order-methods.ptx",
         lambda: (lambda yb: is_zero(diff(yb, x) + yb / x - x * yb**2))(
             1 / (C1 * x - x**2)
