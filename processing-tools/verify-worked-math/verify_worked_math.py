@@ -115,6 +115,38 @@ def radial_rate(f, g, v1, v2):
     return simplify(2 * v1 * f + 2 * v2 * g)
 
 
+def heun(f, t0, y0, h, n):
+    """Improved Euler (Heun) for scalar y' = f(t, y); returns y_n as a Rational."""
+    tk, yk = R(t0), y0
+    for _ in range(n):
+        s1 = f(tk, yk)
+        s2 = f(tk + R(h), yk + R(h) * s1)
+        yk = yk + R(h) * (s1 + s2) / 2
+        tk = tk + R(h)
+    return yk
+
+
+def rounds_to(value, printed, places) -> bool:
+    """The exact value agrees with what the book prints, to the printed precision."""
+    scale = 10**places
+    return round(R(value) * scale) == round(R(printed) * scale)
+
+
+def step_count(span, h) -> int:
+    """Steps needed to cover ``span`` with step size ``h``.
+
+    Raises when ``h`` does not divide ``span`` exactly. Truncating here
+    would silently stop the march short of the interval's end and then
+    compare against the exact value at the far end, reporting a wrong
+    "error" that still looks plausible. A crashed check is a failed
+    check, so raising surfaces the mistake instead of burying it.
+    """
+    n = R(span) / R(h)
+    if n.q != 1:
+        raise ValueError(f"step size {h} does not evenly divide the interval {span}")
+    return int(n)
+
+
 REGISTRY = [
     # ------------------------------------------------------------------
     # Chapter 13 — First-Order Linear Systems
@@ -1052,6 +1084,145 @@ REGISTRY += [
             ],
             0, [R(3), R(1)], R(1, 10), 2,
         ) == [R(297, 100), R(121, 100)],
+    ),
+]
+
+
+# ----------------------------------------------------------------------
+# M5 — Chapter 7, Euler error analysis and the Improved Euler preview
+#
+# Every printed number in sec-euler-accuracy.ptx: the exact solution, the
+# two convergence tables, and the hand-worked Heun steps.
+# ----------------------------------------------------------------------
+EM_F = lambda tk, yk: tk + yk           # y' = t + y
+EM_Y0 = R(-7, 8)                        # y(0) = -7/8
+EM_EXACT = exp(t) / 8 - t - 1           # y(t) = (1/8)e^t - t - 1
+
+
+def em_error(method, h_den):
+    """|approximation - exact| at t = 1.5 for step size h = 1/h_den."""
+    h = R(1, h_den)
+    approx = method(EM_F, 0, EM_Y0, h, step_count(R(3, 2), h))
+    return abs(approx - EM_EXACT.subs(t, R(3, 2)))
+
+
+REGISTRY += [
+    Check(
+        "c7 exact solution y=(1/8)e^t-t-1 solves y'=t+y with y(0)=-7/8",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: is_zero(diff(EM_EXACT, t) - (t + EM_EXACT))
+        and is_zero(EM_EXACT.subs(t, 0) - R(-7, 8)),
+    ),
+    Check(
+        "c7 printed exact value y(1.5) = -1.939789",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: rounds_to(EM_EXACT.subs(t, R(3, 2)).evalf(30), R(-1939789, 1000000), 6),
+    ),
+    Check(
+        "c7 Euler convergence table: y_N for h = 1/2, 1/4, 1/8, 1/16, 1/32",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: all(
+            rounds_to(
+                euler(EM_F, 0, EM_Y0, R(1, d), step_count(R(3, 2), R(1, d))),
+                printed, 6,
+            )
+            for d, printed in [
+                (2, R(-2078125, 1000000)),
+                (4, R(-2023163, 1000000)),
+                (8, R(-1986264, 1000000)),
+                (16, R(-1964444, 1000000)),
+                (32, R(-1952505, 1000000)),
+            ]
+        ),
+    ),
+    Check(
+        "c7 Euler convergence table: printed errors 0.138336 ... 0.012716",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: all(
+            rounds_to(em_error(euler, d).evalf(30), printed, 6)
+            for d, printed in [
+                (2, R(138336, 1000000)),
+                (4, R(83374, 1000000)),
+                (8, R(46475, 1000000)),
+                (16, R(24656, 1000000)),
+                (32, R(12716, 1000000)),
+            ]
+        ),
+    ),
+    Check(
+        "c7 Euler error ratios 1.66, 1.79, 1.88, 1.94 (first order: -> 2)",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: all(
+            rounds_to(
+                (em_error(euler, d) / em_error(euler, 2 * d)).evalf(30), printed, 2
+            )
+            for d, printed in [
+                (2, R(166, 100)),
+                (4, R(179, 100)),
+                (8, R(188, 100)),
+                (16, R(194, 100)),
+            ]
+        ),
+    ),
+    Check(
+        "c7 Heun worked example: exact step values -1.296875, -1.669921875",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: heun(EM_F, 0, EM_Y0, R(1, 2), 1) == R(-1296875, 1000000)
+        and heun(EM_F, 0, EM_Y0, R(1, 2), 2) == R(-1669921875, 1000000000),
+    ),
+    Check(
+        "c7 Heun worked example: printed y_3 = -1.963623 at t=1.5, h=0.5",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: rounds_to(heun(EM_F, 0, EM_Y0, R(1, 2), 3), R(-1963623, 1000000), 6),
+    ),
+    Check(
+        "c7 Heun worked example: printed predictors -1.3125, -1.6953125, -2.0048828125",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: (
+            lambda predictor: predictor(R(0), EM_Y0) == R(-13125, 10000)
+            and predictor(R(1, 2), heun(EM_F, 0, EM_Y0, R(1, 2), 1))
+            == R(-16953125, 10000000)
+            and predictor(R(1), heun(EM_F, 0, EM_Y0, R(1, 2), 2))
+            == R(-20048828125, 10000000000)
+        )(lambda tk, yk: yk + R(1, 2) * EM_F(tk, yk)),
+    ),
+    Check(
+        "c7 comparison table: exact y(0.5), y(1.0) print as -1.293910, -1.660215",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: rounds_to(EM_EXACT.subs(t, R(1, 2)).evalf(30), R(-1293910, 1000000), 6)
+        and rounds_to(EM_EXACT.subs(t, 1).evalf(30), R(-1660215, 1000000), 6),
+    ),
+    Check(
+        "c7 Heun convergence table: y_N for h = 1/2, 1/4, 1/8, 1/16",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: all(
+            rounds_to(
+                heun(EM_F, 0, EM_Y0, R(1, d), step_count(R(3, 2), R(1, d))),
+                printed, 6,
+            )
+            for d, printed in [
+                (2, R(-1963623, 1000000)),
+                (4, R(-1947015, 1000000)),
+                (8, R(-1941779, 1000000)),
+                (16, R(-1940311, 1000000)),
+            ]
+        ),
+    ),
+    Check(
+        "c7 Heun error ratios 3.30, 3.63, 3.81 (second order: -> 4)",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: all(
+            rounds_to(
+                (em_error(heun, d) / em_error(heun, 2 * d)).evalf(30), printed, 2
+            )
+            for d, printed in [(2, R(330, 100)), (4, R(363, 100)), (8, R(381, 100))]
+        ),
+    ),
+    Check(
+        "c7 cost claim: Heun h=0.5 (6 evals) matches Euler h=0.0625 (24 evals)",
+        "source/c7-em/sec-euler-accuracy.ptx",
+        lambda: rounds_to(em_error(heun, 2).evalf(30), R(23834, 1000000), 6)
+        and rounds_to(em_error(euler, 16).evalf(30), R(24656, 1000000), 6),
     ),
 ]
 

@@ -816,6 +816,50 @@
     </p>
   </gi>
 
+  <gi xml:id="gi-local-truncation-error">
+    <title>local truncation error</title>
+    <p>
+      The error a single step of a <xref ref="gi-numerical-method" text="title"/> introduces, assuming the step began from the exact value. For <xref ref="gi-eulers-method" text="title"/> it is approximately <m>\frac12 y'' h^2</m>, since the step holds the starting slope fixed while the true slope drifts.
+    </p>
+  </gi>
+
+  <gi xml:id="gi-global-error">
+    <title>global error</title>
+    <p>
+      The gap between the approximation and the exact solution at the end of a run, after every step has been taken:
+      <md>
+        \left| y_N - y(t_N) \right| .
+      </md>
+      It is not simply one <xref ref="gi-local-truncation-error" text="title"/>, because a fixed interval takes <m>N=(t_N-t_0)/h</m> steps and the errors accumulate.
+    </p>
+  </gi>
+
+  <gi xml:id="gi-order-of-a-method">
+    <title>order of a method</title>
+    <p>
+      The power of <m>h</m> that the <xref ref="gi-global-error" text="title"/> is proportional to. A <term>first-order</term> method such as <xref ref="gi-eulers-method" text="title"/> has global error proportional to <m>h</m>, so halving the <xref ref="gi-step-size" text="title"/> roughly halves the error. A <term>second-order</term> method such as <xref ref="gi-improved-euler" text="title"/> has global error proportional to <m>h^2</m>, so halving the step size quarters the error.
+    </p>
+  </gi>
+
+  <gi xml:id="gi-improved-euler">
+    <title>Improved Euler's method (Heun's method)</title>
+    <p>
+      A second-order <xref ref="gi-numerical-method" text="title"/> that corrects Euler's stale-slope problem by averaging the slope at the start of the step with the slope where an ordinary Euler step would land:
+      <md>
+        <mrow>\tilde{y}_{k+1} \amp = y_k + h\,f(t_k,y_k)</mrow>
+        <mrow>y_{k+1} \amp = y_k + \frac{h}{2}\Big[f(t_k,y_k) + f\big(t_{k+1},\tilde{y}_{k+1}\big)\Big]</mrow>
+      </md>
+      See <xref ref="gi-predictor-corrector" text="title"/>.
+    </p>
+  </gi>
+
+  <gi xml:id="gi-predictor-corrector">
+    <title>predictor-corrector</title>
+    <p>
+      A numerical scheme that first <em>predicts</em> a value with a cheap step, uses that prediction only to gather more information (typically a second slope), and then <em>corrects</em> the step using what it learned. <xref ref="gi-improved-euler" text="title"/> is the simplest example; the predicted value itself is discarded.
+    </p>
+  </gi>
+
 
   <!-- ============================================================ -->
   <!-- Homogeneous Equations Terms                                  -->

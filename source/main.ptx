@@ -412,6 +412,7 @@
 			<xi:include href="c7-em/sec-what-is-a-numerical-solution.ptx" />
 			<xi:include href="c7-em/sec-euler-intro-thinking-in-steps.ptx" />
 			<xi:include href="c7-em/sec-euler-method.ptx" />
+			<xi:include href="c7-em/sec-euler-accuracy.ptx" />
 			<!-- <xi:include href="c7-em/em-model.ptx" /> -->
 			<xi:include href="c7-em/exercises-em.ptx" />
 
@@ -424,6 +425,11 @@
 					<li>Choosing a step size <m>h</m> sets the <q>run</q> = <m>h</m> and <q>rise</q> = slope <m>\times\ h</m>.</li>
 					<li><p>Euler's method is based on the movement rule <md>(t_{\text{new}}, y_{\text{new}}) = (t_{\text{cur}} + h,\ y_{\text{cur}} + h \times \text{slope})</md>, so each step is given by: <m>y_{k+1} = y_k + h f(t_k, y_k)</m>.</p></li>
 					<li>Smaller step sizes usually mean better accuracy — but more steps.</li>
+					<li><p>Holding the starting slope fixed across a step costs about <m>\frac12 y'' h^2</m>, but covering a fixed interval takes <m>N = (t_N - t_0)/h</m> steps, so one power of <m>h</m> is spent on the extra steps. Euler is a <term>first-order</term> method: its <term>global error</term> is proportional to <m>h</m>, so halving <m>h</m> roughly halves the final error rather than quartering it.</p></li>
+					<li><p><term>Improved Euler</term> (Heun's method) predicts with an ordinary Euler step, reads a second slope where the predictor lands, and re-steps using the average of the two:
+							<md>y_{k+1} = y_k + \frac{h}{2}\Big[\, f(t_k, y_k) + f\big(t_{k+1},\ y_k + h f(t_k, y_k)\big) \Big].</md>
+							It is <term>second order</term> — halving <m>h</m> quarters the error — which is worth far more than the doubled cost per step.</p></li>
+					<li>Accuracy is bought more cheaply by using a better method than by using a smaller step size.</li>
 				</ul>
 			</outcomes>
 
