@@ -177,11 +177,13 @@ def main() -> int:
         for p in sorted(shrunk):
             print(f"  {p}: baseline {baseline[p]} -> now {current.get(p, 0)}")
     if stale:
-        print(f"note: {len(stale)} baseline entr(ies) name files outside the build "
-              "set - drop them, or re-including the file will ship its markers "
-              "without failing this check:")
+        one = len(stale) == 1
+        noun = "entry names a file" if one else "entries name files"
+        print(f"note: {len(stale)} baseline {noun} outside the build set. Remove "
+              f"{'it' if one else 'them'}: if such a file is included again later, "
+              "its markers ship without failing this check.")
         for p in sorted(stale):
-            print(f"  {p}: allowance {stale[p]}, file not built")
+            print(f"  {p}: allowance {stale[p]}, file not in the build set")
     print(f"placeholders: {sum(current.values())} markers in {len(current)} files "
           f"(baseline total {sum(baseline.values())})")
 
