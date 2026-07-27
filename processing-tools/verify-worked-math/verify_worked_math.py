@@ -1305,6 +1305,133 @@ REGISTRY += [
 ]
 
 
+# ----------------------------------------------------------------------
+# M4 — the "Modeling with..." sections, now in the build set
+#
+# These files shipped unguarded because they were commented out of
+# main.ptx when the registry was written. Every closed-form solution and
+# linearization they print is checked here.
+# ----------------------------------------------------------------------
+def euler_pendulum_energy_ratio(theta0, h, t_end, g_over_L=1.0):
+    """Explicit Euler on theta'=w, w'=-(g/L)sin(theta); returns E_end / E_0.
+
+    The undamped pendulum conserves energy exactly, so the true ratio is 1.
+    Explicit Euler does not, which is the point em-model.ptx now makes.
+    """
+    import math
+    th, w = float(theta0), 0.0
+    energy = lambda a, b: 0.5 * b * b + g_over_L * (1.0 - math.cos(a))
+    e0 = energy(th, w)
+    for _ in range(int(round(t_end / h))):
+        th, w = th + h * w, w + h * (-g_over_L * math.sin(th))
+    return energy(th, w) / e0
+
+
+REGISTRY += [
+    Check(
+        "c13 model: Lotka-Volterra Jacobian has zero diagonal at (c/d, a/b)",
+        "source/c13-linsys/linsys-model.ptx",
+        lambda: (lambda a, b, c, d, R, F: (
+            lambda J: simplify(J.subs({R: c / d, F: a / b}))
+            == Matrix([[0, -b * c / d], [a * d / b, 0]])
+        )(jacobian(a * R - b * R * F, -c * F + d * R * F, R, F)))(
+            *symbols("a b c d R F", positive=True)
+        ),
+    ),
+    Check(
+        "c13 model: printed A = [[0,-0.6],[0.25,0]] from a=0.5,b=0.02,c=0.3,d=0.01",
+        "source/c13-linsys/linsys-model.ptx",
+        lambda: (lambda a, b, c, d: Matrix(
+            [[0, -b * (c / d)], [d * (a / b), 0]]
+        ) == Matrix([[0, R(-3, 5)], [R(1, 4), 0]]))(
+            R(1, 2), R(2, 100), R(3, 10), R(1, 100)
+        ),
+    ),
+    Check(
+        "c13 model: printed characteristic equation r^2 + 0.15 = 0, r = +/- i sqrt(0.15)",
+        "source/c13-linsys/linsys-model.ptx",
+        lambda: (lambda A, r: is_zero(
+            A.charpoly(r).as_expr() - (r**2 + R(15, 100))
+        ) and FiniteSet(*[simplify(v) for v in A.eigenvals()])
+            == FiniteSet(I * sqrt(R(15, 100)), -I * sqrt(R(15, 100))))(
+            Matrix([[0, R(-3, 5)], [R(1, 4), 0]]), symbols("r")
+        ),
+    ),
+    Check(
+        "c13 model: printed cycle period 2*pi/sqrt(0.15) = 16.2 months",
+        "source/c13-linsys/linsys-model.ptx",
+        lambda: abs(float(2 * pi / sqrt(R(15, 100))) - 16.2) < 0.05,
+    ),
+    Check(
+        "c7 model: explicit Euler adds energy to the undamped pendulum "
+        "(x5.9, x2.5, x1.2 at h=0.1, 0.05, 0.01)",
+        "source/c7-em/em-model.ptx",
+        lambda: all(
+            abs(euler_pendulum_energy_ratio(0.5, h, 20.0) - printed) < 0.05
+            for h, printed in ((0.1, 5.9), (0.05, 2.5), (0.01, 1.2))
+        )
+        # and the drift is always outward, never inward
+        and all(
+            euler_pendulum_energy_ratio(0.5, h, 20.0) > 1.0
+            for h in (0.1, 0.05, 0.01, 0.005)
+        ),
+    ),
+    Check(
+        "c5 model: V_C = V_0(1-e^{-t/RC}) + V_C(0)e^{-t/RC} solves the RC circuit",
+        "source/c5-if/if-model.ptx",
+        lambda: (lambda Rr, Cc, V0, Vc0: (
+            lambda v: is_zero(diff(v, t) + v / (Rr * Cc) - V0 / (Rr * Cc))
+            and is_zero(v.subs(t, 0) - Vc0)
+        )(V0 * (1 - exp(-t / (Rr * Cc))) + Vc0 * exp(-t / (Rr * Cc))))(
+            *symbols("R_res C_cap V_0 Vc0", positive=True)
+        ),
+    ),
+    Check(
+        "c8 model: all three damping regimes solve x'' + 2*zeta*w0*x' + w0^2 x = 0",
+        "source/c8-lhcc/lhcc-model.ptx",
+        lambda: (lambda z, w0, A, B: (
+            lambda ode: is_zero(
+                ode(exp(-z * w0 * t) * (A * cos(w0 * sqrt(1 - z**2) * t)
+                                        + B * sin(w0 * sqrt(1 - z**2) * t)), z)
+            )
+            and is_zero(ode(exp(-w0 * t) * (A + B * t), 1))
+            and is_zero(
+                ode(A * exp(w0 * (-z + sqrt(z**2 - 1)) * t)
+                    + B * exp(-w0 * (z + sqrt(z**2 - 1)) * t), z)
+            )
+        )(lambda x_, zz: simplify(
+            diff(x_, t, 2) + 2 * zz * w0 * diff(x_, t) + w0**2 * x_
+        )))(*symbols("zeta omega_0 A B", positive=True)),
+    ),
+    Check(
+        "c10 model: single dose C = (D/V)e^{-kt} solves C' = -kC, and L{C} = (D/V)/(s+k)",
+        "source/c10-lt/lt-model.ptx",
+        lambda: (lambda D, V, k: (
+            lambda C: is_zero(diff(C, t) + k * C)
+            and is_zero(C.subs(t, 0) - D / V)
+            and laplace_matches(C, (D / V) / (s + k))
+        )((D / V) * exp(-k * t)))(*symbols("D_dose V_vol k_el", positive=True)),
+    ),
+    Check(
+        "c10 model: infusion C = (I0/k)(1-e^{-kt}) solves C' = I0 - kC, C(0) = 0",
+        "source/c10-lt/lt-model.ptx",
+        lambda: (lambda I0, k: (
+            lambda C: is_zero(diff(C, t) - (I0 - k * C)) and is_zero(C.subs(t, 0))
+        )((I0 / k) * (1 - exp(-k * t))))(*symbols("I_0 k_el", positive=True)),
+    ),
+    Check(
+        "c10 model: C_max = (D/V)/(1-e^{-k*tau}) is the steady state, C_min + D/V = C_max",
+        "source/c10-lt/lt-model.ptx",
+        lambda: (lambda D, V, k, tau: (
+            lambda q, Cmax: is_zero(Cmax * q + D / V - Cmax)
+            and is_zero(Cmax * (1 - q) - D / V)
+        )(exp(-k * tau), (D / V) / (1 - exp(-k * tau))))(
+            *symbols("D_dose V_vol k_el tau_int", positive=True)
+        ),
+    ),
+]
+
+
 def main() -> int:
     failures = 0
     for check in REGISTRY:
