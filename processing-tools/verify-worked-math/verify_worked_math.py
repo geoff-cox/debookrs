@@ -1370,9 +1370,13 @@ REGISTRY += [
             abs(euler_pendulum_energy_ratio(0.5, h, 20.0) - printed) < 0.05
             for h, printed in ((0.1, 5.9), (0.05, 2.5), (0.01, 1.2))
         )
-        # and the drift is always outward, never inward
+        # The drift is always outward, never inward. The margin is stated
+        # rather than testing against a bare 1.0: the smallest of these ratios
+        # is about 1.10 at h = 0.005, so 1.01 documents that the check is
+        # nowhere near marginal while still failing loudly if a future change
+        # made Euler conserve energy (or lose it).
         and all(
-            euler_pendulum_energy_ratio(0.5, h, 20.0) > 1.0
+            euler_pendulum_energy_ratio(0.5, h, 20.0) > 1.01
             for h in (0.1, 0.05, 0.01, 0.005)
         ),
     ),
