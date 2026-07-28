@@ -67,17 +67,21 @@
 		</p>
 
 		<p>
-			For small perturbations around equilibrium <m>(R^*, F^*)</m>, let <m>r = R - R^*</m> and <m>f = F - F^*</m>:
+			For small perturbations around the equilibrium <m>(R^*, F^*)</m>, let <m>u = R - R^*</m> and <m>v = F - F^*</m>. The coefficients come from the <xref ref="gi-jacobian-matrix" text="custom">Jacobian matrix</xref> of the system,
 			<md>
-				<mrow> \frac{dr}{dt} \amp = -bF^* r + aR^* f </mrow>
-				<mrow> \frac{df}{dt} \amp = dF^* r - cR^* f </mrow>
+				J(R,F) = \begin{bmatrix} a - bF \amp -bR \\ dF \amp -c + dR \end{bmatrix},
+			</md>
+			evaluated at the equilibrium. Substituting <m>R^* = c/d</m> and <m>F^* = a/b</m> makes <em>both diagonal entries vanish</em>, since <m>a - bF^* = a - a = 0</m> and <m>-c + dR^* = -c + c = 0</m>:
+			<md>
+				<mrow> \frac{du}{dt} \amp = -bR^*\, v </mrow>
+				<mrow> \frac{dv}{dt} \amp = dF^*\, u </mrow>
 			</md>
 		</p>
 
 		<p>
 			Or in matrix form:
 			<md>
-				\frac{d}{dt}\begin{pmatrix} r \\ f \end{pmatrix} = \begin{pmatrix} -bF^* \amp +aR^* \\ dF^* \amp -cR^* \end{pmatrix}\begin{pmatrix} r \\ f \end{pmatrix}
+				\frac{d}{dt}\begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} 0 \amp -bR^* \\ dF^* \amp 0 \end{bmatrix}\begin{bmatrix} u \\ v \end{bmatrix}
 			</md>
 		</p>
 
@@ -100,28 +104,35 @@
 		<title>Solution via Eigenanalysis</title>
 
 		<p>
-			The linearized system has coefficient matrix:
+			With <m>R^* = 30</m> and <m>F^* = 25</m>, the linearized system has coefficient matrix
 			<md>
-				A = \begin{pmatrix} -0.5 \amp 15 \\ 0.25 \amp -9 \end{pmatrix}
-			</md>
+				<mrow>A \amp = \begin{bmatrix} 0 \amp -bR^* \\ dF^* \amp 0 \end{bmatrix}</mrow>
+				<mrow>  \amp = \begin{bmatrix} 0 \amp -0.6 \\ 0.25 \amp 0 \end{bmatrix}</mrow>
+			</md>.
 		</p>
 
 		<p>
 			<term>Characteristic equation:</term>
 			<md>
-				\det(A - \lambda I) = (\lambda + 0.5)(\lambda + 15) + 3.75 = 0
-			</md>
+				<mrow>\det(A - rI) \amp = \det\begin{bmatrix} -r \amp -0.6 \\ 0.25 \amp -r \end{bmatrix}</mrow>
+				<mrow>  \amp = r^2 + 0.15 = 0</mrow>
+			</md>,
+			so <m>r = \pm i\sqrt{0.15} \approx \pm 0.387 i</m>.
 		</p>
 
 		<p>
-			Solving gives eigenvalues (which may be complex), determining the nature of the equilibrium:
+			The eigenvalues are <em>purely imaginary</em>, which puts this equilibrium in the last row of the classification table:
 		</p>
 		<ul>
 			<li>Real, both negative: stable node (populations return to equilibrium)</li>
 			<li>Real, opposite signs: saddle point (unstable)</li>
 			<li>Complex with negative real part: stable spiral (damped oscillations)</li>
-			<li>Pure imaginary: center (perpetual oscillations)</li>
+			<li>Pure imaginary: <em>center</em> in the linearized system — perpetual oscillations, which is the row we land in here</li>
 		</ul>
+
+		<p>
+			So the <em>linearized</em> system has closed orbits around <m>(30, 25)</m> with period <m>2\pi/\sqrt{0.15} \approx 16.2</m> months, predicting populations that cycle rather than settle. Whether the full nonlinear model does the same is a further question, and two cautions apply — both taken up in <xref ref="linearization-and-the-jacobian" text="title"/>, where this model is worked in full. A purely imaginary pair is the one case in which linearization is <em>inconclusive</em>: the discarded nonlinear terms decide whether the orbits really close, spiral in, or spiral out. And even a genuine center is fragile — add mild crowding among the rabbits and it becomes a spiral sink.
+		</p>
 	</subsection>
 
 	<subsection>
