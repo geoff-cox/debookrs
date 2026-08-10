@@ -239,7 +239,7 @@ def drop_empty_elements(root: etree._Element) -> int:
     Avoid dropping math tags (<m>, <md>) even if empty (rare but safer).
     Avoid dropping pacing tags; empties there can be harmless.
     IMPORTANT: preserve .tail when removing, otherwise you delete real text
-    (e.g., <e component="emoji">📌</e> tail contains the sentence).
+    (e.g., 📌 tail contains the sentence).
     """
     dropped = 0
     for el in list(root.iter()):
