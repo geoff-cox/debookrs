@@ -162,12 +162,28 @@ def main() -> int:
             failures.append(
                 f"placeholder markers increased in {path}: {count} > baseline {allowed}"
             )
-    shrunk = {p: c for p, c in baseline.items() if current.get(p, 0) < c}
+    # A baseline entry for a file outside the build set is a *stale allowance*:
+    # the file contributes no markers today, so it looks like an improvement, but
+    # the allowance is still on the books. Re-including that file later lets its
+    # markers ship without the ratchet noticing, because count == allowed. Report
+    # the two cases separately so that trap stays visible.
+    included_paths = {str(f.relative_to(REPO)) for f in included}
+    shrunk = {p: c for p, c in baseline.items()
+              if p in included_paths and current.get(p, 0) < c}
+    stale = {p: c for p, c in baseline.items() if p not in included_paths}
     if shrunk:
         print("note: placeholder counts dropped below baseline in "
               f"{len(shrunk)} file(s) - tighten placeholder-baseline.json:")
         for p in sorted(shrunk):
             print(f"  {p}: baseline {baseline[p]} -> now {current.get(p, 0)}")
+    if stale:
+        one = len(stale) == 1
+        noun = "entry names a file" if one else "entries name files"
+        print(f"note: {len(stale)} baseline {noun} outside the build set. Remove "
+              f"{'it' if one else 'them'}: if such a file is included again later, "
+              "its markers ship without failing this check.")
+        for p in sorted(stale):
+            print(f"  {p}: allowance {stale[p]}, file not in the build set")
     print(f"placeholders: {sum(current.values())} markers in {len(current)} files "
           f"(baseline total {sum(baseline.values())})")
 

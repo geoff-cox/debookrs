@@ -148,9 +148,19 @@
 
 		<ol>
 			<li>For several initial amplitudes, plot <m>\omega</m> versus <m>\theta</m> (phase portrait)</li>
-			<li>Observe the shape of the trajectories<mdash />they should be closed loops for oscillatory motion</li>
+			<li>The <em>true</em> trajectories of the undamped pendulum are closed loops, because the total energy never changes. Check whether the loops your simulation draws actually close.</li>
 			<li>What happens as <m>\theta_0</m> approaches <m>\pi</m> (upside-down position)?</li>
 		</ol>
+
+		<aside>
+			<title>Your Loops Will Not Close</title>
+			<p>
+				They should — and they won't. Explicit Euler does not conserve energy; it quietly <em>adds</em> a little at every step, so the phase-plane trajectory spirals slowly outward instead of retracing itself. Starting from <m>\theta_0 = 0.5</m> with <m>g/L = 1</m> and running to <m>t = 20</m>, the total energy grows by a factor of about <m>5.9</m> at <m>h = 0.1</m>, about <m>2.5</m> at <m>h = 0.05</m>, and about <m>1.2</m> at <m>h = 0.01</m>.
+			</p>
+			<p>
+				That pattern is the point. The drift is an artifact of the <em>method</em>, not of the pendulum, and it shrinks as <m>h</m> shrinks — exactly the first-order behavior of <xref ref="euler-accuracy" text="title"/>. Treat the gap between your spiral and the true closed loop as a measurement of Euler's error, and say so in your report rather than reporting closed orbits you did not actually get.
+			</p>
+		</aside>
 	</subsection>
 
 	<subsection>
@@ -219,8 +229,8 @@
 			<li>Description of your Euler's method implementation (include code snippets or pseudocode).</li>
 			<li>Graphs of <m>\theta(t)</m> and <m>\omega(t)</m> for multiple amplitudes.</li>
 			<li>Period versus amplitude data and graph, with comparison to small-angle theory.</li>
-			<li>Phase space portraits showing closed orbits.</li>
-			<li>Energy conservation analysis throughout your simulations.</li>
+			<li>Phase space portraits, with a comment on how nearly your computed orbits close.</li>
+			<li>Energy analysis throughout your simulations: report how far the total energy drifts, and how that drift responds to the step size.</li>
 			<li>Discussion of numerical accuracy and how step size affects results.</li>
 			<li>If conducted, comparison with experimental pendulum data.</li>
 			<li>Exploration of at least one extension (damping, driving, or chaos).</li>
