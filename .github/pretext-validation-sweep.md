@@ -1,32 +1,66 @@
 # PreTeXt Schema Validation Sweep — Build Checklist
 
 **Repo:** `debookrs` (*Exploring Differential Equations*)
-**Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`)
-**Scope:** 1,449 parsed messages across 82 source files
-**Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by severity
+**Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
+**Scope:** 3,142 messages / 1,012 distinct edit sites across 124 source files
+**Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`
 
 ---
 
-## Read this first: the log is incomplete
+## Read this first: this checklist was written against a stale, truncated log
 
-`jing` **aborted** partway through the assembled source:
+Two things were wrong with the run that produced the original numbers. Both are now fixed; the numbers throughout the phase sections below have **not** been rewritten and should be read as historical.
+
+**1. The log was truncated, but not for the reason stated.** `jing` does abort partway through the assembled source:
 
 ```
-fatal: exception "org.apache.xerces.impl.io.MalformedByteSequenceException" thrown:
-       Invalid byte 2 of 4-byte UTF-8 sequence.
-    file: c7-em/exercises-em.ptx
-    path: /pretext/book/chapter[8]/section[6]/exercises/exercise[2]/solution/note/title
-    line: 24884
+fatal: ... MalformedByteSequenceException ... Invalid byte 2 of 4-byte UTF-8 sequence.
+    file: c7-em/exercises-em.ptx     line: 24884
     text: <title>Alternative Derivation Approach</title>
 ```
 
-Consequences, and they matter for how you plan this work:
+The abort is real and reproducible. **The stated cause is not.** There is no malformed byte:
 
-- **Schema coverage stops at chapter 8.** All 1,213 `jing` errors fall in chapters 1–8. Chapters 9–15, the appendices, glossary, and back matter were **never schema-checked**.
-- The `validation-plus` stylesheet *did* reach chapters 9–15 and found 236 issues there and elsewhere, so those chapters are not clean — they are simply un-inspected by the schema half.
-- **1,450 is a floor, not a ceiling.** Chapters 1–8 average ~152 schema errors each. If chapters 9–15 are comparable, expect the true total to land somewhere near 2,000–2,300 once the sweep can run to completion.
+- All 141 `.ptx` files are valid UTF-8 with no BOM, and so is every other text file in the repo. Same at every recent commit.
+- The *assembled* `logs/main-assembled.xml` also decodes as clean UTF-8 end to end.
+- Line 24884 is **pure ASCII** — not one byte above `0x7F`. The nearest 4-byte character is 1,575 bytes away. There is no mangled emoji to retype.
+- `jing -e UTF-8` fails identically, and no astral character straddles an 8 KiB read-buffer boundary.
 
-So: fix the encoding fault first, re-run, and re-plan against the full log. Don't burn effort estimating from the current numbers.
+This is a `jing`/Xerces reader fault, not a content defect. **Do not go hunting for corrupted characters — you will not find any, and you risk editing correct content.** Use the other engine instead:
+
+```bash
+pretext validate --dev --engine salve      # no Java needed; reaches the back matter
+```
+
+`salve` completes the whole book: **2,906 schema messages** vs the 1,214 `jing` managed before dying at chapter 8.
+
+**2. The work order targets work that is already done.** The original log predates commits `817a537` / `44e1303` ("validation-fixing-pass-1", 120 files, +6,447/−3,910), but this checklist was committed after them. Every file at the top of the old queue has since been fixed:
+
+| File | This checklist said | Actually remaining |
+|---|---:|---:|
+| `c4-sov/exercises-sov.ptx` | 208 | **6** |
+| `c5-if/exercises-if.ptx` | 161 | **4** |
+| `c1-classification/exercises-class.ptx` | 99 | **6** |
+| `c5-if/review-first-order-methods.ptx` | 94 | **5** |
+| `c2-solns/exercises-solns.ptx` | 88 | **4** |
+| `c6-qm/exercises-qm.ptx` | 67 | **3** |
+
+Step 1.1 ("start with `c5-if/exercises-if.ptx` (153)") now sends you to a file with four errors left.
+
+**Where the work actually is.** 77% of schema errors sit in chapters the truncated log never reached — the Laplace chapters and the appendices, neither of which appears in the work order below:
+
+| Area | Schema messages | In the old log? |
+|---|---:|---|
+| `aa-bookends` (appendices) | 874 | no |
+| `c10-lt` | 415 | no |
+| `c9-uc` | 256 | no |
+| `c11-ltm` | 241 | no |
+| `c12-ltp` | 194 | no |
+| chapters 1–8 combined | 674 | yes |
+
+**Count messages, not edits.** 2,906 schema messages collapse to **903 distinct containers** (~3.2 messages per real edit) — one bad `<solution>` placement re-reports at every following sibling position. Rank by the `edit_sites` column in the CSV, not `total`: `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` throws 188 messages from a 169-line file and is nowhere near the top by actual work.
+
+**What survives from this document:** the rule taxonomy, the guardrails, the canonical shapes, and the per-phase edit patterns are all still correct and still the right way to do the edits — `R1-p-wrapper` remains ~71% of the schema half. Only the counts, the file ordering, and Phase 0 were wrong.
 
 ---
 
@@ -44,28 +78,39 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 
 ---
 
-## Phase 0 — Unblock the validator ⛔ BLOCKER
+## Phase 0 — Unblock the validator ✅ DONE
 
-- [ ] **0.1** Locate the malformed bytes:
-      ```bash
-      # Whole-tree scan for invalid UTF-8
-      for f in $(find source -name '*.ptx'); do
-        iconv -f UTF-8 -t UTF-8 "$f" >/dev/null 2>&1 || echo "BAD: $f"
-      done
-      # Byte-level look at the known offender
-      grep -n "Alternative Derivation Approach" source/c7-em/exercises-em.ptx
-      sed -n '<line>p' source/c7-em/exercises-em.ptx | hexdump -C | head -40
-      ```
-- [ ] **0.2** Identify the corrupted sequence. A truncated 4-byte sequence almost always means a **mangled emoji** — likely a title cue that lost a byte in an editor round-trip. Compare against an intact instance of the same emoji elsewhere in the repo.
-- [ ] **0.3** Repair by retyping the character, not by deleting it, unless the surrounding text shows the emoji was never intended.
-- [ ] **0.4** Confirm every `.ptx` file is clean UTF-8 and has no BOM:
-      ```bash
-      find source -name '*.ptx' -exec file {} \; | grep -v 'UTF-8 Unicode text$' | grep -v 'ASCII text$'
-      ```
-- [ ] **0.5** Re-run `pretext validate --dev`, save as `logs/main-validation-02.txt`, and confirm `jing` now reaches chapter 15 / the back matter.
-- [ ] **0.6** **Re-triage.** Regenerate the per-file inventory against the new log. Chapters 9–15 will add a new work queue that this checklist has no counts for.
+Superseded — see "Read this first" above. The blocker was never an encoding fault; it was `jing`. Recorded here so nobody re-opens the emoji hunt.
 
-> **Do not start Phase 1 until 0.5 passes.** Every later phase is verified by re-running the validator; if it still aborts at chapter 8 you have no feedback loop past that point.
+- [x] **0.1** Whole-tree UTF-8 scan — **all 141 `.ptx` files clean, no BOM**, and clean at every recent commit. Nothing to repair.
+- [x] **0.2** No mangled emoji exists. Line 24884 is pure ASCII; nearest 4-byte character is 1,575 bytes away.
+- [x] **0.3** ~~Repair by retyping~~ — nothing to retype. `jing -e UTF-8` fails identically; no astral char straddles a read-buffer boundary. It is a `jing`/Xerces reader fault.
+- [x] **0.4** `logs/main-assembled.xml` also decodes as clean UTF-8 end to end, so assembly is not corrupting anything either.
+- [x] **0.5** **Switch engines** — this is the actual fix:
+      ```bash
+      pretext validate --dev --engine salve      # needs no Java; installs via npm on first use
+      ```
+      Reaches the back matter. 2,906 schema messages vs `jing`'s 1,214.
+- [x] **0.6** **Re-triaged.** `validation-inventory.csv` regenerated against the complete log: 3,142 messages / 1,012 edit sites / 124 files, with an `edit_sites` column added.
+
+> If you must use `jing` (e.g. to diff against an old log), remember it stops at chapter 8 and silently tells you chapters 9–15 are clean. They are not — they hold 77% of the errors.
+
+### Where to actually start
+
+Rank by `edit_sites` in the CSV. The real head of the queue:
+
+| File | Sites | Msgs | Dominant rule |
+|---|---:|---:|---|
+| `c10-lt/sec-lt-properties.ptx` | 46 | 121 | R1×114 |
+| `c9-uc/sec-selecting-the-particular-soln.ptx` | 40 | 124 | R1×103, R3R4×17 |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69 |
+| `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48 |
+| `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
+| `c11-ltm/sec-laplace-transform-method.ptx` | 22 | 56 | R1×35 |
+| `c1-classification/exercises-class.ptx` | 22 | 22 | mixed, no cascade |
+| `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100 |
+
+`c10-lt/sec-lt-properties.ptx` is the right calibration file: biggest real workload, 94% one rule, and it sits in the Laplace block where the next four files repeat the same shape.
 
 ---
 
@@ -440,34 +485,36 @@ A sentence-ending period sits between `</mrow>` and `</md>`.
 
 ## Work order summary
 
-| Phase | Rule | Count | Risk | Notes |
+Counts below are from the **complete** `--engine salve` run (schema half unless noted).
+
+| Phase | Rule | Msgs | Risk | Notes |
 |---|---|---:|---|---|
-| 0 | UTF-8 fatal | 1 | ⛔ blocker | Unblocks ch. 9–15 |
-| 1 | `<p>` wrappers | 769 | Low | Clears 66 cascade errors free |
-| 2 | Exercise skeleton | 88 | Medium | Judgment on feedback placement |
-| 3 | Lists need `<p>` | 93 | Low | Mostly `*-model.ptx` |
-| 4 | Runestone models | 171 | **High** | Restructuring, verify per file |
-| 5 | Division nesting | 21 | Medium | Watch xrefs |
-| 6 | `<var>` → `<fillin>` | 18 | Medium | Fixes a live render bug |
-| 7 | Figures / sidebyside | 81 | Medium | 12 cause silent content loss |
-| 8 | Text & a11y | 169 | Low | Batchable, exclude math |
-| 9 | Re-validate | — | — | New backlog expected |
+| 0 | Validator blocked | — | ✅ done | Engine switch, not an encoding fix |
+| 1 | `<p>` wrappers | 2,065 | Low | +78 `<evaluation>` cascades clear free |
+| 2 | Exercise skeleton | 178 | Medium | R2×9, R3R4×169; judgment on feedback placement |
+| 3 | Lists need `<p>` | 155 | Low | Now spread well beyond `*-model.ptx` |
+| 4 | Runestone models | 59 | **High** | R6×6, R7×53 — smaller than the old 171 |
+| 5 | Division nesting | 59 | Medium | R8×43, R12×16; watch xrefs |
+| 6 | `<var>` → `<fillin>` | 12 | Medium | Live render bug; 6 elements, one file |
+| 7 | Figures / sidebyside | 128 | Medium | **Grew** from 81; 12 still cause silent content loss |
+| 8 | Text & a11y | 169 | Low | Unchanged; the validation-plus half was always accurate |
+| 9 | Re-validate | — | — | — |
 
-Do not reorder. Phase 1 changes what Phases 2 and 4 see, and Phase 0 changes what all of them see.
+Phase 1 still dominates at **71%** of the schema half, so the ordering logic holds: it changes what Phases 2 and 4 see. Phase 4 shrank (the old 171 was largely `jing` cascade noise); Phase 7 grew once the back matter became visible. `R99-misc` is 239 and unbudgeted — 54 of those are bare `Invalid content (ChoiceError)` from `salve`, which are worth re-checking under `jing` on a per-file basis for a clearer message.
 
-### Top 10 files by total violations
+### Top 10 files — ranked by `edit_sites`, not message count
 
-| File | Total | Dominant rules |
-|---|---:|---|
-| `c4-sov/exercises-sov.ptx` | 208 | R1×157, R14×15, R3×11, R6×11 |
-| `c5-if/exercises-if.ptx` | 161 | R1×153 |
-| `c1-classification/exercises-class.ptx` | 99 | R6×26, R1×20, R2×15, R14×14 |
-| `c5-if/review-first-order-methods.ptx` | 94 | R1×81, R7×7 |
-| `c2-solns/exercises-solns.ptx` | 88 | R6×38, R7×33 |
-| `c6-qm/exercises-qm.ptx` | 67 | R1×52, R5×5 |
-| `c7-em/sec-what-is-a-numerical-solution.ptx` | 49 | R1×40 |
-| `c6-qm/sec-classifying-equilibrium-solutions.ptx` | 46 | R1×28, R15×5 |
-| `c5-if/sec-if-method.ptx` | 42 | R1×32, R11×8 |
-| `c7-em/sec-euler-intro-thinking-in-steps.ptx` | 42 | R1×36 |
+| File | Sites | Msgs | Dominant rules |
+|---|---:|---:|---|
+| `c10-lt/sec-lt-properties.ptx` | 46 | 121 | R1×114, R11×5 |
+| `c9-uc/sec-selecting-the-particular-soln.ptx` | 40 | 124 | R1×103, R3R4×17, R7×4 |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69, R99×17 |
+| `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48, R5×2 |
+| `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
+| `c11-ltm/sec-laplace-transform-method.ptx` | 22 | 56 | R1×35, R7×2 |
+| `c1-classification/exercises-class.ptx` | 22 | 22 | mixed; no cascade inflation |
+| `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100, R8×2 |
+| `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | 48 | R1, R15×6 |
+| `c12-ltp/ltp-model.ptx` | 21 | 29 | R13×14, R5 |
 
-Full matrix in `validation-inventory.csv`.
+Full matrix in `validation-inventory.csv`. Sort by `edit_sites`; `total` overstates files whose errors are one structural defect echoing down a sibling list.
