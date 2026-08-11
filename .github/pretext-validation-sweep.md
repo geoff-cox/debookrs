@@ -2,8 +2,9 @@
 
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
-**Scope:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`
+**Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
+**Current:** **2,737** messages — 2,503 schema + 234 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,626 actionable.
+**Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
 
@@ -74,11 +75,32 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 
 - **Never** change `xml:id`, `label`, `ref`, or `component` values. `label` and `xml:id` share one namespace checked by `processing-tools/validate-source/validate_source.py`.
 - **No wholesale reformatting.** Local, reviewable edits that preserve surrounding indentation. A diff that touches 400 lines to fix 3 violations is a failed edit.
+- **Watch the line endings.** **18 of the 139 files in `source/` use CRLF**, the other 121 use LF. A script that reads and writes in Python's default text mode silently converts CRLF to LF and rewrites *every line in the file* — `CSQ-completing-sq.ptx` produced a 169-line diff for a 12-line change that way, failing the guardrail above. Read and write with `newline=''`, and **check `git diff --stat` after every scripted edit**: if the changed-line count is near the file's total line count, you converted the endings rather than fixing the errors. Find the CRLF files with:
+      ```bash
+      for f in $(git ls-files 'source/**/*.ptx'); do git show HEAD:"$f" | head -5 | grep -q $'\r' && echo "$f"; done
+      ```
 - **Do not "fix" the renamed elements.** `<corollary>` = 🎮 Interactive, `<theorem>` = 🧠 Derivation, `<lemma>` = 👀 Quick Review, `<identity>` = 🗺️ Summary, `<exploration>` = ✍🏻 Method, `<assemblage>` = ✳️ callout. These are deliberate (`book-info.ptx`).
 - **Preserve emoji cues in titles** (🤔💭, 📖❓, ↩️☝, 👀, 🎧). They are 4-byte UTF-8 — handle with care given Phase 0.
 - **Never invent content.** If a `<statement>` is empty or a `<feedback>` has no text, flag it in the report; do not write pedagogy to satisfy a schema.
 - **Math conventions hold:** `\amp =` not `&=`, one `<mrow>` per line, `bmatrix` not `pmatrix`.
 - **Commit per phase per chapter**, not per file and not one giant commit. Message format: `fix(validate): R1 p-wrappers in c4-sov`.
+
+---
+
+## Counts move in both directions — always re-validate
+
+**A file's error list is not a to-do list. It is a snapshot of where the parser gave up.** Fixing one error routinely *reveals* others that were never reported, because a failing element makes its parent's content model fail before the siblings are ever checked. Both files below got worse before they got better:
+
+| File | What was masked | How it surfaced |
+|---|---|---|
+| `c9-uc/sec-selecting-the-particular-soln.ptx` | **24** `<feedback>` elements needing `<p>` | A failing sibling `<statement>` collapsed the whole `<choice>` model, so `<feedback>` was never reached. None of the 24 were in the baseline log. |
+| `c10-lt/sec-lt-properties.ptx` | 1 `<proof>` `<statement>` in a non-standard shape | Hidden behind the enclosing `<p>` error until that was fixed. |
+
+Practical consequences:
+
+- **Fix every instance of a rule in a container, not just the flagged ones.** In `c9-uc`, wrapping the 33 flagged `<statement>`s while ignoring the 24 unflagged `<feedback>`s would have "fixed" 103 errors and introduced 24 new ones. Both went in one pass, so the count only fell.
+- **Never report a file's result from the baseline log.** Re-run the validator and count again. The expected drop is *not* the file's message count.
+- **A rising count after an edit is not automatically a mistake** — it is often the reverse cascade. Read the new messages before reverting.
 
 ---
 
@@ -103,18 +125,58 @@ Superseded — see "Read this first" above. The blocker was never an encoding fa
 
 Rank by `edit_sites` in the CSV. The real head of the queue:
 
-| File | Sites | Msgs | Dominant rule |
-|---|---:|---:|---|
-| `c10-lt/sec-lt-properties.ptx` | 46 | 121 | R1×114 |
-| `c9-uc/sec-selecting-the-particular-soln.ptx` | 40 | 124 | R1×103, R3R4×17 |
-| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69 |
-| `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48 |
-| `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
-| `c11-ltm/sec-laplace-transform-method.ptx` | 22 | 56 | R1×35 |
-| `c1-classification/exercises-class.ptx` | 22 | 22 | mixed, no cascade |
-| `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100 |
+### Progress
 
-`c10-lt/sec-lt-properties.ptx` is the right calibration file: biggest real workload, 94% one rule, and it sits in the Laplace block where the next four files repeat the same shape.
+**Book-wide: 3,142 → 2,737** (2,503 schema + 234 validation-plus), as of the last full `--engine salve` run.
+
+| File | Msgs before | after | Sites | Notes |
+|---|---:|---:|---:|---|
+| `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
+| `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
+| `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
+
+### Queue
+
+Ranked by messages actually actionable — the `deferred` column is the blocked class described below, which no amount of mechanical work will clear.
+
+| File | Msgs | Deferred | Actionable |
+|---|---:|---:|---:|
+| `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 114 | 0 | 114 |
+| `c9-uc/sec-uc-method.ptx` | 108 | 3 | 105 |
+| `c10-lt/exercises-lt.ptx` | 102 | 0 | 102 |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | 5 | 86 |
+| `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | 0 | 90 |
+| `aa-bookends/a1-algebra/PSF-point-slope-form.ptx` | 75 | 0 | 75 |
+| `aa-bookends/a1-algebra/POL-point-on-a-line.ptx` | 74 | 0 | 74 |
+| `c5-if/sec-product-rule.ptx` | 72 | 0 | 72 |
+| `c10-lt/sec-lt-library.ptx` | 72 | 0 | 72 |
+| `c7-em/sec-what-is-a-numerical-solution.ptx` | 70 | 0 | 70 |
+
+Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
+
+---
+
+## ⛔ Blocked on the author: worked solutions inside layout containers
+
+**111 messages across 24 files (~4% of everything remaining) cannot be fixed mechanically.** They are all one authoring pattern: a worked solution placed inside a container that cannot legally hold it. Three variants seen so far:
+
+| Variant | Example | Why it fails |
+|---|---|---|
+| `<solution>` inside `<sidebyside>` | `c9-uc/sec-selecting-the-particular-soln.ptx` (17) | `<sidebyside>` is legal under `<statement>`, but each panel is `<p><solution>…</solution></p>`, and `<solution>` may be in neither a `<statement>` nor a `<p>` |
+| `<sidebyside>` inside `<p>` | `c10-lt/sec-lt-properties.ptx` (5) | the `<sidebyside>` itself is inside a `<p>` within the `<example>` |
+| `<solution>` inside `<li>` | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` (8) | an `<example>` uses a `<dl>` whose `<li>`s hold `<solution>`; the `<dl>`-not-allowed error is the cascade from it |
+
+Heaviest files: `c9-uc/sec-selecting-the-particular-soln` (17), `c11-ltm/sec-laplace-transform-method` (12), `c11-ltm/sec-solving-the-laplace-domain-eqn` (10), `c5-if/sec-if-method` (8), `aa-bookends/a1-algebra/M-piecewise-functions` (7).
+
+**Every available fix trades something away**, which is why this needs the author rather than a rule:
+
+1. **Match `E-usub.ptx`** — `<sidebyside>` becomes a direct child of `<example>` with plain `<p>` panels, dropping the `<statement>`/`<solution>` tags. This is the repo's one existing working example+sidebyside pattern and it validates clean today (`E-usub`'s own errors are elsewhere — an `<aside>` sidebyside and `<solution>` inside `<ol>/<li>`). Preserves column widths, needs no new labels. **Cost: solutions render always-visible instead of click-to-reveal.**
+2. **Split into separate examples** — matches the dominant convention (92 of 96 examples) and restores solution knowls. **Cost: loses the side-by-side layout, needs invented labels.**
+3. **One `<statement>` + one `<solution>` per example** — conventional, no new labels. **Cost: separates each problem from its worked solution, which is what the layout exists to prevent.**
+
+⚠️ Note for anyone reaching for `<task>` as the tidy PreTeXt answer: **there is no `<example>` containing a `<task>` anywhere in this book.** That shape would be introducing a new pattern here, not following one.
+
+Until this is decided, treat these messages as out of scope and report them separately from the per-file count, so a file at "8 remaining" is not mistaken for unfinished mechanical work.
 
 ---
 
@@ -146,26 +208,33 @@ Everything inside them goes in a `<p>` (or another block: `<ol>` wrapped per Pha
 
 `<md>` counts as inline for this purpose — it must live **inside** a `<p>`, never as a direct child of `<statement>`/`<solution>`/`<feedback>`.
 
-### Why the count is inflated (and that's good news)
+### Why the count is inflated (mostly good news)
 
-Three separate error signatures collapse into this one fix:
+The first three signatures below collapse into this one fix. The fourth does not — see the correction under the table.
 
 | Signature | Count | Relationship |
 |---|---:|---|
 | `element "statement" incomplete` | 278 | direct |
 | `text not allowed here` (block expected) | 184 | direct |
 | `element "m" not allowed here` | 190 | direct |
-| `element "exercise" incomplete; missing required element "evaluation"` | 66 | **cascade** |
+| `element "exercise" incomplete; missing required element "evaluation"` | 66 | **separate defect — see below** |
 
-That last row is not a separate defect. When a `<statement>` contains bare inline content, `jing` falls through to the Runestone *fill-in-the-blank* branch of the `<exercise>` content model, which requires `<evaluation>`. 46 of the 66 sit on exercises that already have a flagged `<statement>`. **Add the `<p>` and the "missing evaluation" error disappears.** Do not add `<evaluation>` elements.
+> ⚠️ **Corrected 2026-08 — the `<evaluation>` row does not clear for free.** This document previously said "add the `<p>` and the 'missing evaluation' error disappears." That is wrong, and following it will leave the errors in place and make you think the file is done.
+>
+> The mechanism described is right as far as it goes: when the `<exercise>` content model fails, the validator falls through to the Runestone *fill-in-the-blank* branch, which wants `<evaluation>`, and reports against that branch. Under `salve` the message reads `<evaluation> is not allowed here.` with a path pointing at `</exercise>` — which is why it looks unrelated to anything you can see.
+>
+> But the `<statement>` is usually not what broke the content model. In `CSQ-completing-sq.ptx` **all 12 survived the `<p>` wrappers**; their real cause was **child order** (see Phase 2C). The schema fixes `statement → hint → answer → solution`, and those exercises ran `statement → solution → answer`. Reordering cleared all 12.
+>
+> **What to do:** when an exercise reports a missing or misplaced `<evaluation>`, check its child order first, then its `<statement>`. **Do not add `<evaluation>` elements** — that part of the original advice still holds. Re-validate before believing the count.
 
 ### Checklist
 
-- [ ] **1.1** Start with `c5-if/exercises-if.ptx` (153) — highest density, most uniform pattern. Use it to calibrate the edit shape.
-- [ ] **1.2** Then `c4-sov/exercises-sov.ptx` (157), `c5-if/review-first-order-methods.ptx` (81), `c6-qm/exercises-qm.ptx` (52), `c7-em/sec-what-is-a-numerical-solution.ptx` (40), `c7-em/sec-euler-intro-thinking-in-steps.ptx` (36), `c5-if/sec-if-method.ptx` (32), `c2-solns/sec-visualizing-solns.ptx` (32).
-- [ ] **1.3** Work the remaining files from `validation-inventory.csv`, column `R1-p-wrapper`, descending.
-- [ ] **1.4** Highest concentration is inside `<choice>/<statement>` (~340 hits). A `<choice>` needs `<statement><p>…</p></statement>` — inline content directly under `<choice>` is also invalid.
-- [ ] **1.5** Re-validate after each file. Expect the file's error count to drop by more than its `R1` count because of the cascade.
+- [ ] ~~**1.1** Start with `c5-if/exercises-if.ptx` (153)~~ — ⚠️ **stale, do not follow.** That file has ~4 errors left; these counts predate `validation-fixing-pass-1`. **Use the Queue table near the top of this document instead.**
+- [ ] ~~**1.2** Then `c4-sov/exercises-sov.ptx` (157), `c5-if/review-first-order-methods.ptx` (81), …~~ — stale for the same reason.
+- [ ] **1.3** Work the remaining files from `validation-inventory.csv`, column `R1-p-wrapper`, descending — cross-checked against a *fresh* log, since the CSV is a baseline snapshot.
+- [ ] **1.4** Highest concentration is inside `<choice>/<statement>` (~340 hits). A `<choice>` needs `<statement><p>…</p></statement>` — inline content directly under `<choice>` is also invalid. **Fix the `<choice>`'s `<feedback>` in the same pass**, flagged or not: it takes block content too, and it is routinely masked by the failing `<statement>` (24 such in `c9-uc/sec-selecting-the-particular-soln.ptx`).
+- [ ] **1.5** Re-validate after each file. **The drop will not equal the file's `R1` count in either direction** — cascades clear extra errors for free, while masked siblings surface new ones. See "Counts move in both directions" above.
+- [ ] **1.6** The canonical one-line shape `<statement><p>…</p></statement>` keeps the diff at 1:1 for single-line inline content, which makes review trivial and satisfies the no-reformatting guardrail. Use it where the original was a single line.
 
 ### Automation note
 
@@ -239,8 +308,11 @@ element "answer" not allowed here; expected the element end-tag or element "solu
 
 Order is fixed: **`<statement>` → `<hint>` → `<answer>` → `<solution>`**. An `<answer>` after a `<solution>` is a schema error even though both are legal children.
 
+**This is also the real fix for most `<evaluation>` errors** (see the corrected note in Phase 1). Wrong child order breaks the `<exercise>` content model, and the validator reports the failure against the Runestone fill-in-the-blank branch instead of naming the ordering. So wherever `R1-cascade-evaluation` is non-zero in the inventory, check child order here — do not assume Phase 1 covered it.
+
 - [ ] **2.8** Reorder in place. Do not merge or rewrite the content.
-- [ ] **2.9** Files: `c2-solns/exercises-solns.ptx` (4), `c6-qm/exercises-qm.ptx` (4), `c3-di/exercises-di.ptx` (3).
+- [ ] **2.9** Files: `c2-solns/exercises-solns.ptx` (4), `c6-qm/exercises-qm.ptx` (4), `c3-di/exercises-di.ptx` (3), `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` (6 ✅ done).
+- [ ] **2.10** ⚠️ **Scope any scripted swap to a single `<exercise>`.** A naive `(<solution>.*?</solution>)(\s*)(<answer>.*?</answer>)` with `re.S` will expand the non-greedy `.*?` across *other* elements to find a match — in `CSQ-completing-sq.ptx` it reached past three `<solution>`s in an unrelated `<example>` and moved an exercise's `<answer>` into a list item ~50 lines away. **The result was still well-formed XML, so parsing did not catch it.** Match `<exercise>.*?</exercise>` first, swap inside that block, and assert the file's `<answer>`/`<solution>` counts are unchanged afterwards.
 
 ### Canonical shape
 
@@ -418,6 +490,7 @@ The paired errors say the schema wants `<caption>` **before** the panel content 
 - [ ] **7.4** For each JSXGraph interactive currently inside a `<sidebyside>`, pull it out to its own block and put any accompanying caption in a `<p>` above or below.
 - [ ] **7.5** Confirm each fix in **both** the `web` and `pdf` targets — this is the one class where HTML looks fine and print silently drops content.
 - [ ] **7.6** Treat `sidebyside-single-panel` as advisory. Where a single panel is doing real width control, leave it and note the exception; don't chase the warning at the cost of layout.
+- [ ] **7.7** ⚠️ **Do not confuse this phase with the blocked class.** Everything in 7B is a *validation-plus advisory* about how a `<sidebyside>` is configured. Separately there are **111 schema errors** where a `<sidebyside>` is in an illegal *position* (inside a `<p>`) or holds an illegal *child* (`<solution>`). Those are an authoring decision, not a layout fix — see "⛔ Blocked on the author" near the top. Fixing 7B will not clear them, and vice versa.
 
 ---
 
@@ -494,7 +567,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | Phase | Rule | Msgs | Risk | Notes |
 |---|---|---:|---|---|
 | 0 | Validator blocked | — | ✅ done | Engine switch, not an encoding fix |
-| 1 | `<p>` wrappers | 2,065 | Low | +78 `<evaluation>` cascades clear free |
+| 1 | `<p>` wrappers | 2,065 | Low | `<evaluation>` errors do **not** clear free — they are Phase 2C child order |
 | 2 | Exercise skeleton | 178 | Medium | R2×9, R3R4×169; judgment on feedback placement |
 | 3 | Lists need `<p>` | 155 | Low | Now spread well beyond `*-model.ptx` |
 | 4 | Runestone models | 59 | **High** | R6×6, R7×53 — smaller than the old 171 |
@@ -508,10 +581,12 @@ Phase 1 still dominates at **71%** of the schema half, so the ordering logic hol
 
 ### Top 10 files — ranked by `edit_sites`, not message count
 
+Baseline figures, kept for the rule mix. **For what to pick up next, use the Queue table near the top of this document** — the first three rows here are done.
+
 | File | Sites | Msgs | Dominant rules |
 |---|---:|---:|---|
-| `c10-lt/sec-lt-properties.ptx` | 46 | 121 | R1×114, R11×5 |
-| `c9-uc/sec-selecting-the-particular-soln.ptx` | 40 | 124 | R1×103, R3R4×17, R7×4 |
+| `c10-lt/sec-lt-properties.ptx` ✅ | 46 | 121 | R1×114, R11×5 |
+| `c9-uc/sec-selecting-the-particular-soln.ptx` ✅ | 40 | 124 | R1×103, R3R4×17, R7×4 |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69, R99×17 |
 | `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48, R5×2 |
 | `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
@@ -520,5 +595,6 @@ Phase 1 still dominates at **71%** of the schema half, so the ordering logic hol
 | `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100, R8×2 |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | 48 | R1, R15×6 |
 | `c12-ltp/ltp-model.ptx` | 21 | 29 | R13×14, R5 |
+| `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` ✅ | 11 | 190 | R1×172, 2C×6 — the cascade-inflation case |
 
 Full matrix in `validation-inventory.csv`. Sort by `edit_sites`; `total` overstates files whose errors are one structural defect echoing down a sibling list.
