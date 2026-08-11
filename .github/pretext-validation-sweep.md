@@ -2,14 +2,16 @@
 
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
-**Scope:** 3,142 messages / 1,012 distinct edit sites across 124 source files
+**Scope:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`
 
 ---
 
 ## Read this first: this checklist was written against a stale, truncated log
 
-Two things were wrong with the run that produced the original numbers. Both are now fixed; the numbers throughout the phase sections below have **not** been rewritten and should be read as historical.
+Two things were wrong with the run that produced the original numbers. Both are now fixed.
+
+**Which counts in this document are current:** Phase 0, the "Where to actually start" table, the Work order summary, and the Top 10 files table are all regenerated from the complete run. The counts embedded in the **Phase 1–8 body sections** were left alone and are historical — treat their headline figures (e.g. "769 violations · 53% of everything") as stale, but their rules, examples, and edit patterns as current.
 
 **1. The log was truncated, but not for the reason stated.** `jing` does abort partway through the assembled source:
 
@@ -58,7 +60,9 @@ Step 1.1 ("start with `c5-if/exercises-if.ptx` (153)") now sends you to a file w
 | `c12-ltp` | 194 | no |
 | chapters 1–8 combined | 674 | yes |
 
-**Count messages, not edits.** 2,906 schema messages collapse to **903 distinct containers** (~3.2 messages per real edit) — one bad `<solution>` placement re-reports at every following sibling position. Rank by the `edit_sites` column in the CSV, not `total`: `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` throws 188 messages from a 169-line file and is nowhere near the top by actual work.
+**Count messages, not edits.** 2,906 schema messages collapse to **904 distinct containers** (~3.2 messages per real edit) — one bad `<solution>` placement re-reports at every following sibling position. Rank by the `edit_sites` column in the CSV, not `total`: `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` throws 188 messages from a 169-line file and is nowhere near the top by actual work.
+
+Two edit-site figures appear in this document and they are not in conflict: **904** counts containers touched by the *schema* half only, while the **1,012** in the header is the CSV's `edit_sites` column summed, which also counts the 108 containers whose only messages come from `validation-plus` (ragged tabulars, long shortdescriptions, unicode, sidebyside advisories).
 
 **What survives from this document:** the rule taxonomy, the guardrails, the canonical shapes, and the per-phase edit patterns are all still correct and still the right way to do the edits — `R1-p-wrapper` remains ~71% of the schema half. Only the counts, the file ordering, and Phase 0 were wrong.
 
