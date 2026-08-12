@@ -96,6 +96,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 |---|---|---|
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | **24** `<feedback>` elements needing `<p>` | A failing sibling `<statement>` collapsed the whole `<choice>` model, so `<feedback>` was never reached. None of the 24 were in the baseline log. |
 | `c10-lt/sec-lt-properties.ptx` | 1 `<proof>` `<statement>` in a non-standard shape | Hidden behind the enclosing `<p>` error until that was fixed. |
+| `c10-lt/exercises-lt.ptx` | **25** inline `<statement>`s needing `<p>` | The validator reported 20. The other 25 sit inside `<exercises label="lt-drills">` and `<exercises label="lt-problems">`, both rejected outright by the R8 error below, so the parser never descended into them. All 45 were wrapped in one pass; the 25 would otherwise surface as a regression the day R8 is resolved. **2 of the 25 were themselves nearly missed** — a single-line match pattern skipped two `<statement>`s whose open tag and content sat on different lines. Re-running the validator could not have caught it, because masked errors are invisible by definition. Enumerate the *source* for every instance of a rule; do not trust the message list as the work list. |
 
 Practical consequences:
 
@@ -128,7 +129,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,517** (2,284 schema + 233 validation-plus), as of the last full `--engine salve` run.
+**Book-wide: 3,142 → 2,417** (2,184 schema + 233 validation-plus), as of the last full `--engine salve` run.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -137,6 +138,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
 | `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 115 | **0** ✅ | 13 | R1×9 + 4 bare `<md>`, **2C×3**, R13×2 — first file fully cleared |
 | `c9-uc/sec-uc-method.ptx` | 109 | **3** ✅ | 37 | R1×18 statements + 7 `<md>`, **R7×12**; remainder is the blocked class below |
+| `c10-lt/exercises-lt.ptx` | 102 | **2** ✅ | 45 | R1×45 (**25 of them masked**); remainder is the R8 blocked class below |
 
 ### Queue
 
@@ -180,6 +182,31 @@ Heaviest files: `c9-uc/sec-selecting-the-particular-soln` (17), `c11-ltm/sec-lap
 ⚠️ Note for anyone reaching for `<task>` as the tidy PreTeXt answer: **there is no `<example>` containing a `<task>` anywhere in this book.** That shape would be introducing a new pattern here, not following one.
 
 Until this is decided, treat these messages as out of scope and report them separately from the per-file count, so a file at "8 remaining" is not mistaken for unfinished mechanical work.
+
+---
+
+## ⛔ Blocked on the author: multiple `<exercises>` divisions per section
+
+**43 messages across 16 files.** This is R8, and it is not a scattering of mistakes — it is how *every* exercises file in the book is built. All 15 `source/**/exercises-*.ptx` files use **two or three sibling `<exercises>` divisions** (`…-concept-quiz`, `…-drills`, `…-problems`), and **not one of them uses `<subexercises>`**. The schema rejects the pattern.
+
+Two shapes appear, and they are not the same problem:
+
+| Shape | Example | Flagged |
+|---|---|---|
+| `<exercises>` nested inside a `<subsection>` | `c1-classification/exercises-class.ptx`, `c3-di`, `c4-sov` | every one |
+| Sibling `<exercises>` divisions inside one `<section>` | `c10-lt/exercises-lt.ptx`, `c5-if/exercises-if.ptx` | varies — `exercises-lt` flags only the 2nd and 3rd, `exercises-if` flags all three |
+
+Phase 5A's fix ("promote each nested `<exercises>` to a sibling `<section>`") addresses only the first shape. It does **not** help the second, where the divisions are already siblings in a section.
+
+The candidate fixes all change how the book is organized:
+
+1. **One `<exercises>` holding `<subexercises>` parts** — the schema-blessed way to name sub-groups, and it preserves every `label`. **Cost: introduces a structure used nowhere in this book, and changes numbering/rendering in all 16 files.**
+2. **Split each division into its own `<section>`** — matches Phase 5A. **Cost: three sections per chapter's exercises instead of one, and the chapter's section numbering shifts.**
+3. **Keep one `<exercises>` and drop the grouping** — simplest. **Cost: loses the quiz/drills/problems distinction, which is pedagogical, not cosmetic.**
+
+No `<xref>` anywhere in `source/` references `lt-concept-quiz`, `lt-drills`, or `lt-problems`, so at least the labels are not load-bearing for cross-references — but they are for the reader.
+
+⚠️ **This class masks mechanical work.** The schema does not descend into a rejected element, so R1 errors inside the 2nd and 3rd divisions are invisible. `c10-lt/exercises-lt.ptx` reported 20 inline `<statement>`s and actually had 45. When sweeping one of these files, fix every instance in the file rather than only the flagged ones, or the remainder will surface the day this is decided — and verify by enumerating the source, since the validator cannot confirm work it cannot see.
 
 ---
 
