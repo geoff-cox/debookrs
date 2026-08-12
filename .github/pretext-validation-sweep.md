@@ -129,7 +129,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,417** (2,184 schema + 233 validation-plus), as of the last full `--engine salve` run.
+**Book-wide: 3,142 → 2,328** (2,095 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -139,6 +139,12 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 | `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 115 | **0** ✅ | 13 | R1×9 + 4 bare `<md>`, **2C×3**, R13×2 — first file fully cleared |
 | `c9-uc/sec-uc-method.ptx` | 109 | **3** ✅ | 37 | R1×18 statements + 7 `<md>`, **R7×12**; remainder is the blocked class below |
 | `c10-lt/exercises-lt.ptx` | 102 | **2** ✅ | 45 | R1×45 (**25 of them masked**); remainder is the R8 blocked class below |
+| `c8-lhcc/sec-second-order-lhcc-eqns.ptx` | 6 | **0** ✅ | 3 | model pattern ×3 examples |
+| `c8-lhcc/sec-solving-higher-order-lhcc-eqns.ptx` | 6 | **2** ✅ | 5 | model ×1 (6 problems); +4 R1 unmasked by it; remainder `<proof>`/`<interactive>` in a `<p>` |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | **41** | 28 | model ×1 (`<sbsgroup>`); +27 R1 unmasked; remainder is other classes |
+| `c1-classification/sec-linear-terms.ptx` | 4 | **3** | 1 | model ×1; remainder is `<sidebyside>` inside `<areas>` (Phase 4A) |
+
+Applying the model is **not** a net-negative-only operation: it unmasks R1 errors that were hidden inside the illegal containers. `sec-solving-higher-order-lhcc-eqns` went 6 → 10 after the conversion before dropping to 2, and `sec-leaving-the-laplace-domain` surfaced 27. Sweep the file's R1 in the same pass.
 
 ### Queue
 
@@ -161,9 +167,70 @@ Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completi
 
 ---
 
-## ⛔ Blocked on the author: worked solutions inside layout containers
+## ✅ DECIDED: worked solutions inside layout containers
 
-**111 messages across 24 files (~4% of everything remaining) cannot be fixed mechanically.** They are all one authoring pattern: a worked solution placed inside a container that cannot legally hold it. Three variants seen so far:
+**The author resolved this in `efc1267`** ("fixed the sidebyside-solution schema violation"), working on `c9-uc/sec-selecting-the-particular-soln.ptx`. That commit is the specification — read it before touching any file in this class:
+
+```bash
+git show efc1267 -- source/c9-uc/sec-selecting-the-particular-soln.ptx
+```
+
+### The chosen pattern: paired `<ol marker="(a)">` lists
+
+None of the three options previously drafted below was taken. The author's fix converts the side-by-side layout into **two parallel enumerated lists** — problems in the `<statement>`, worked solutions in a sibling `<solution>` — so that item (a) in one is item (a) in the other:
+
+```xml
+<example>
+  <title>…unchanged…</title>
+
+  <statement>
+    <p>
+      …lead-in sentence…
+      <ol marker="(a)" cols="2">
+        <li><m>…problem 1…</m></li>
+        <li><m>…problem 2…</m></li>
+      </ol>
+    </p>
+  </statement>
+
+  <solution>
+    <p>
+      <ol marker="(a)">
+        <li><p>…problem 1's worked solution…</p></li>
+        <li><p>…problem 2's worked solution…</p></li>
+      </ol>
+    </p>
+  </solution>
+</example>
+```
+
+Why this beats the three options drafted below: `<solution>` becomes a sibling of `<statement>`, so **solutions stay click-to-reveal knowls** (option 1 lost that), the example is **not split** (option 2), the problem/solution pairing survives via the list marker (option 3 lost it), and **no labels need inventing**. The `<sidebyside>` and its `widths`/`margins`/`valign` disappear.
+
+Notes for applying it:
+
+- `cols="2"` goes on the statement's `<ol>` only where the problems are short one-liners; the solution's `<ol>` takes none.
+- A `\ds` that existed only to enlarge a side-by-side panel can be dropped when the problem moves into a list item.
+- **Move text verbatim.** `efc1267` also made a few content corrections in passing (renaming `y_p` to `u_p` and `\omega_p` to match each example's dependent variable, and rewording a redundant-constants explanation). Those are authoring changes, not part of the structural fix — do not imitate them elsewhere.
+- Panels are not always problem-left/solution-right. In `c8-lhcc/sec-second-order-lhcc-eqns.ptx` each panel holds a problem *and* its own solution. The target shape is the same either way.
+
+### Scope
+
+The class is **168 messages across 37 files** in the current log, in 40 distinct structural signatures — larger and more varied than the 111/24 first recorded. Only part of it is the exact shape `efc1267` fixed:
+
+| Shape | Messages | Status |
+|---|---:|---|
+| `<solution>` inside `<sidebyside>` — the model's shape | ~~17, in 4 files~~ | **✅ 0 — all 4 files converted** |
+| `<solution>` inside `<ol>/<li>` inside a `<p>` | 40 | related; the list already exists, so the fix is to lift `<solution>` out to a sibling rather than build a list |
+| `<sidebyside>` inside a `<p>` (no `<solution>` involved) | ~77 | a *placement* problem, not a solutions problem — the `<p>` wrapper is the defect |
+| `<solution>` inside `<dl>/<li>`, `<statement>` misplacement, others | remainder | assorted; judge per site |
+
+**Do not assume one script clears the class.** Work shape by shape, and re-validate between them.
+
+---
+
+### Superseded — the options considered before `efc1267`
+
+Kept for the reasoning only. Three variants of the underlying pattern were seen:
 
 | Variant | Example | Why it fails |
 |---|---|---|
@@ -181,7 +248,7 @@ Heaviest files: `c9-uc/sec-selecting-the-particular-soln` (17), `c11-ltm/sec-lap
 
 ⚠️ Note for anyone reaching for `<task>` as the tidy PreTeXt answer: **there is no `<example>` containing a `<task>` anywhere in this book.** That shape would be introducing a new pattern here, not following one.
 
-Until this is decided, treat these messages as out of scope and report them separately from the per-file count, so a file at "8 remaining" is not mistaken for unfinished mechanical work.
+~~Until this is decided, treat these messages as out of scope and report them separately from the per-file count.~~ **Resolved by `efc1267` — see the decided pattern above.** Files still carrying this class are ordinary work now, not blocked work, so a file reported at "3 remaining" because of it is unfinished, not done.
 
 ---
 
