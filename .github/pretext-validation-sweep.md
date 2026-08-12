@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,737** messages — 2,503 schema + 234 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,626 actionable.
+**Current:** **2,216** messages — 1,983 schema + 233 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,105 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -75,6 +75,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 
 - **Never** change `xml:id`, `label`, `ref`, or `component` values. `label` and `xml:id` share one namespace checked by `processing-tools/validate-source/validate_source.py`.
 - **No wholesale reformatting.** Local, reviewable edits that preserve surrounding indentation. A diff that touches 400 lines to fix 3 violations is a failed edit.
+- **Nested content is indented one level deeper than its parent.** This is the author's stated preference and it governs every element the sweep adds, removes, or moves — a new `<p>` wrapper indents its contents one deeper, and unwrapping one pulls them one shallower. Where an edit lands next to pre-existing markup that breaks the rule (prose sitting level with its `<p>`, `<mrow>` level with its `<md>`), bring the surrounding block into line so the element being edited is not left internally inconsistent. That is the one sanctioned exception to "no wholesale reformatting", and it stays scoped to the block being touched.
 - **Watch the line endings.** **18 of the 139 files in `source/` use CRLF**, the other 121 use LF. A script that reads and writes in Python's default text mode silently converts CRLF to LF and rewrites *every line in the file* — `CSQ-completing-sq.ptx` produced a 169-line diff for a 12-line change that way, failing the guardrail above. Read and write with `newline=''`, and **check `git diff --stat` after every scripted edit**: if the changed-line count is near the file's total line count, you converted the endings rather than fixing the errors. Find the CRLF files with:
       ```bash
       for f in $(git ls-files 'source/**/*.ptx'); do git show HEAD:"$f" | head -5 | grep -q $'\r' && echo "$f"; done
@@ -82,6 +83,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 - **Do not "fix" the renamed elements.** `<corollary>` = 🎮 Interactive, `<theorem>` = 🧠 Derivation, `<lemma>` = 👀 Quick Review, `<identity>` = 🗺️ Summary, `<exploration>` = ✍🏻 Method, `<assemblage>` = ✳️ callout. These are deliberate (`book-info.ptx`).
 - **Preserve emoji cues in titles** (🤔💭, 📖❓, ↩️☝, 👀, 🎧). They are 4-byte UTF-8 — handle with care given Phase 0.
 - **Never invent content.** If a `<statement>` is empty or a `<feedback>` has no text, flag it in the report; do not write pedagogy to satisfy a schema.
+- **`<feedback>` with bare inline text is valid — do not sweep it.** The schema is an explicit `<choice>`: `<oneOrMore><ref name="BlockSolution"/></oneOrMore>` **or** `<ref name="TextLong"/>`. So `<feedback>Correct!</feedback>` is as legal as `<feedback><p>Correct!</p></feedback>`, and wrapping one changes no validation count. **471 such elements across 36 files** currently use the inline form. Adding `<p>` to them is a house-style choice the author can make deliberately; it is not sweep work, and a tool that reports it as a schema error is wrong. Verify against `/root/.ptx/<version>/core/schema/pretext-dev.rng` before treating any "X requires block content" claim as real — several elements take either form.
 - **Math conventions hold:** `\amp =` not `&=`, one `<mrow>` per line, `bmatrix` not `pmatrix`.
 - **Commit per phase per chapter**, not per file and not one giant commit. Message format: `fix(validate): R1 p-wrappers in c4-sov`.
 
@@ -95,6 +97,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 |---|---|---|
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | **24** `<feedback>` elements needing `<p>` | A failing sibling `<statement>` collapsed the whole `<choice>` model, so `<feedback>` was never reached. None of the 24 were in the baseline log. |
 | `c10-lt/sec-lt-properties.ptx` | 1 `<proof>` `<statement>` in a non-standard shape | Hidden behind the enclosing `<p>` error until that was fixed. |
+| `c10-lt/exercises-lt.ptx` | **25** inline `<statement>`s needing `<p>` | The validator reported 20. The other 25 sit inside `<exercises label="lt-drills">` and `<exercises label="lt-problems">`, both rejected outright by the R8 error below, so the parser never descended into them. All 45 were wrapped in one pass; the 25 would otherwise surface as a regression the day R8 is resolved. **2 of the 25 were themselves nearly missed** — a single-line match pattern skipped two `<statement>`s whose open tag and content sat on different lines. Re-running the validator could not have caught it, because masked errors are invisible by definition. Enumerate the *source* for every instance of a rule; do not trust the message list as the work list. |
 
 Practical consequences:
 
@@ -127,13 +130,29 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,737** (2,503 schema + 234 validation-plus), as of the last full `--engine salve` run.
+**Book-wide: 3,142 → 2,216** (1,983 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
 | `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
+| `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 115 | **0** ✅ | 13 | R1×9 + 4 bare `<md>`, **2C×3**, R13×2 — first file fully cleared |
+| `c9-uc/sec-uc-method.ptx` | 109 | **3** ✅ | 37 | R1×18 statements + 7 `<md>`, **R7×12**; remainder is the blocked class below |
+| `c10-lt/exercises-lt.ptx` | 102 | **2** ✅ | 45 | R1×45 (**25 of them masked**); remainder is the R8 blocked class below |
+| `c8-lhcc/sec-second-order-lhcc-eqns.ptx` | 6 | **0** ✅ | 3 | model pattern ×3 examples |
+| `c8-lhcc/sec-solving-higher-order-lhcc-eqns.ptx` | 6 | **2** ✅ | 5 | model ×1 (6 problems); +4 R1 unmasked by it; remainder `<proof>`/`<interactive>` in a `<p>` |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | **41** | 28 | model ×1 (`<sbsgroup>`); +27 R1 unmasked; remainder is other classes |
+| `c1-classification/sec-linear-terms.ptx` | 4 | **3** | 1 | model ×1; remainder is `<sidebyside>` inside `<areas>` (Phase 4A) |
+| `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
+| `aa-bookends/a2-calculus/F-ibp.ptx` | 13 | **5** | 2 | inline `<exercise>` ×2; remainder incl. a pre-existing `<section>`→`<subsubsection>` level skip |
+| `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **6** | 4 | `<li>`→`<exercise>` ×4; R1 unmasked by it |
+| `aa-bookends/a2-calculus/E-usub.ptx` | 4 | **3** | 3 | `<li>`→`<exercise>` ×3 |
+| `aa-bookends/a1-algebra/O-interrelated-functions.ptx` | 3 | **1** | 3 | `<li>`→`<exercise>` ×3 |
+| `aa-bookends/a1-algebra/N-recursive-functions.ptx` | 3 | **3** | 9 | inline `<exercise>` ×6 + division ×3; R8 avoided by keeping only the final block a division |
+| `aa-bookends/a2-calculus/G-improper-integrals.ptx` | 2 | **0** ✅ | 2 | `<li>`→`<exercise>` ×2 |
+
+Applying the model is **not** a net-negative-only operation: it unmasks R1 errors that were hidden inside the illegal containers. `sec-solving-higher-order-lhcc-eqns` went 6 → 10 after the conversion before dropping to 2, and `sec-leaving-the-laplace-domain` surfaced 27. Sweep the file's R1 in the same pass.
 
 ### Queue
 
@@ -141,9 +160,6 @@ Ranked by messages actually actionable — the `deferred` column is the blocked 
 
 | File | Msgs | Deferred | Actionable |
 |---|---:|---:|---:|
-| `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 114 | 0 | 114 |
-| `c9-uc/sec-uc-method.ptx` | 108 | 3 | 105 |
-| `c10-lt/exercises-lt.ptx` | 102 | 0 | 102 |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | 5 | 86 |
 | `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | 0 | 90 |
 | `aa-bookends/a1-algebra/PSF-point-slope-form.ptx` | 75 | 0 | 75 |
@@ -156,9 +172,95 @@ Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completi
 
 ---
 
-## ⛔ Blocked on the author: worked solutions inside layout containers
+## ✅ DECIDED: worked solutions inside layout containers
 
-**111 messages across 24 files (~4% of everything remaining) cannot be fixed mechanically.** They are all one authoring pattern: a worked solution placed inside a container that cannot legally hold it. Three variants seen so far:
+**The author resolved this in `efc1267`** ("fixed the sidebyside-solution schema violation"), working on `c9-uc/sec-selecting-the-particular-soln.ptx`. That commit is the specification — read it before touching any file in this class:
+
+```bash
+git show efc1267 -- source/c9-uc/sec-selecting-the-particular-soln.ptx
+```
+
+### The chosen pattern: paired `<ol marker="(a)">` lists
+
+None of the three options previously drafted below was taken. The author's fix converts the side-by-side layout into **two parallel enumerated lists** — problems in the `<statement>`, worked solutions in a sibling `<solution>` — so that item (a) in one is item (a) in the other:
+
+```xml
+<example>
+  <title>…unchanged…</title>
+
+  <statement>
+    <p>
+      …lead-in sentence…
+      <ol marker="(a)" cols="2">
+        <li><m>…problem 1…</m></li>
+        <li><m>…problem 2…</m></li>
+      </ol>
+    </p>
+  </statement>
+
+  <solution>
+    <p>
+      <ol marker="(a)">
+        <li><p>…problem 1's worked solution…</p></li>
+        <li><p>…problem 2's worked solution…</p></li>
+      </ol>
+    </p>
+  </solution>
+</example>
+```
+
+Why this beats the three options drafted below: `<solution>` becomes a sibling of `<statement>`, so **solutions stay click-to-reveal knowls** (option 1 lost that), the example is **not split** (option 2), the problem/solution pairing survives via the list marker (option 3 lost it), and **no labels need inventing**. The `<sidebyside>` and its `widths`/`margins`/`valign` disappear.
+
+Notes for applying it:
+
+- `cols="2"` goes on the statement's `<ol>` only where the problems are short one-liners; the solution's `<ol>` takes none.
+- A `\ds` that existed only to enlarge a side-by-side panel can be dropped when the problem moves into a list item.
+- **Move text verbatim.** `efc1267` also made a few content corrections in passing (renaming `y_p` to `u_p` and `\omega_p` to match each example's dependent variable, and rewording a redundant-constants explanation). Those are authoring changes, not part of the structural fix — do not imitate them elsewhere.
+- Panels are not always problem-left/solution-right. In `c8-lhcc/sec-second-order-lhcc-eqns.ptx` each panel holds a problem *and* its own solution. The target shape is the same either way.
+
+### Scope
+
+The class is **168 messages across 37 files** in the current log, in 40 distinct structural signatures — larger and more varied than the 111/24 first recorded. Only part of it is the exact shape `efc1267` fixed:
+
+| Shape | Messages | Status |
+|---|---:|---|
+| `<solution>` inside `<sidebyside>` — the model's shape | ~~17, in 4 files~~ | **✅ 0 — all 4 files converted** |
+| `<solution>` inside `<ol>/<li>` inside a `<p>` | 50 | **✅ 7 files done** — see the `<exercises>` pattern below; ~39 remain, mostly `A-limits` |
+| `<sidebyside>` inside a `<p>` (no `<solution>` involved) | ~77 | a *placement* problem, not a solutions problem — the `<p>` wrapper is the defect |
+| `<solution>` inside `<dl>/<li>`, `<statement>` misplacement, others | remainder | assorted; judge per site |
+
+**Do not assume one script clears the class.** Work shape by shape, and re-validate between them.
+
+### `<solution>`/`<answer>` inside an `<ol>/<li>` → `<exercises>`
+
+The `efc1267` model does **not** apply here. These lists are bare section content with no `<example>` to rearrange inside, so a container has to be introduced. Every problem in this shape carries an `<answer>` as well as a `<solution>` — 15/15 in `P-units-mass-balance`, 13/13 in `A-limits` — which is exercise-shaped, not example-shaped, and matches `SBN-subscript-notation` in the same appendix. So each `<li>` becomes an `<exercise>`:
+
+```xml
+<exercises>
+  <introduction><p>…the lead-in text that preceded the list…</p></introduction>
+  <exercise>
+    <statement><p>…the li's problem text…</p></statement>
+    <answer>…</answer>          <!-- phase 2C order: answer before solution -->
+    <solution>…</solution>
+  </exercise>
+  …
+</exercises>
+```
+
+Four traps, all of which cost a re-run when first hit:
+
+1. **The moved content usually needs a `<p>`.** An `<li>`'s text is inline, so dropping it straight into a `<statement>` produces a fresh R1 error per item. `O-interrelated-functions` went 3 → 103 that way. Wrap inline content as you move it — and remember **`<md>` does not count as a block child**; a `<statement>` holding text plus `<md>` still needs the `<p>`.
+2. **An `<exercises>` division must be the section's last content.** It cannot precede a `<subsubsection>`. Check what follows the list before converting.
+3. **Two `<exercises>` in one section is the R8 error.** A file with two separate practice lists gets one R8 message for the second. `N-recursive-functions` is in this state deliberately — the alternative was leaving 53 errors — but it is a judgment call: its *first* list is explanatory ("as in the example below"), not practice, so an author may prefer that one become an `<example>` and the division count drop back to one.
+4. **Nested lists do not convert.** Where the solution-bearing `<ol>` is itself inside an `<li>` of an outer `<ol>` (`A-limits`, 26 messages), an `<exercises>` cannot legally go there. Those need the outer grouping restructured first, by hand.
+
+Done: `P-units-mass-balance` (21→7), `F-ibp` (13→7), `O-interrelated-functions` (3→1), `G-improper-integrals` (2→**0**), `E-usub` (4→3), `B-lhospital` (5→6, R1 unmasked), `N-recursive-functions` (→4). Remaining messages in these files are other classes — mostly `<sidebyside>` placement.
+
+---
+
+### Superseded — the options considered before `efc1267`
+
+Kept for the reasoning only. Three variants of the underlying pattern were seen:
 
 | Variant | Example | Why it fails |
 |---|---|---|
@@ -176,7 +278,32 @@ Heaviest files: `c9-uc/sec-selecting-the-particular-soln` (17), `c11-ltm/sec-lap
 
 ⚠️ Note for anyone reaching for `<task>` as the tidy PreTeXt answer: **there is no `<example>` containing a `<task>` anywhere in this book.** That shape would be introducing a new pattern here, not following one.
 
-Until this is decided, treat these messages as out of scope and report them separately from the per-file count, so a file at "8 remaining" is not mistaken for unfinished mechanical work.
+~~Until this is decided, treat these messages as out of scope and report them separately from the per-file count.~~ **Resolved by `efc1267` — see the decided pattern above.** Files still carrying this class are ordinary work now, not blocked work, so a file reported at "3 remaining" because of it is unfinished, not done.
+
+---
+
+## ⛔ Blocked on the author: multiple `<exercises>` divisions per section
+
+**43 messages across 16 files.** This is R8, and it is not a scattering of mistakes — it is how *every* exercises file in the book is built. All 15 `source/**/exercises-*.ptx` files use **two or three sibling `<exercises>` divisions** (`…-concept-quiz`, `…-drills`, `…-problems`), and **not one of them uses `<subexercises>`**. The schema rejects the pattern.
+
+Two shapes appear, and they are not the same problem:
+
+| Shape | Example | Flagged |
+|---|---|---|
+| `<exercises>` nested inside a `<subsection>` | `c1-classification/exercises-class.ptx`, `c3-di`, `c4-sov` | every one |
+| Sibling `<exercises>` divisions inside one `<section>` | `c10-lt/exercises-lt.ptx`, `c5-if/exercises-if.ptx` | varies — `exercises-lt` flags only the 2nd and 3rd, `exercises-if` flags all three |
+
+Phase 5A's fix ("promote each nested `<exercises>` to a sibling `<section>`") addresses only the first shape. It does **not** help the second, where the divisions are already siblings in a section.
+
+The candidate fixes all change how the book is organized:
+
+1. **One `<exercises>` holding `<subexercises>` parts** — the schema-blessed way to name sub-groups, and it preserves every `label`. **Cost: introduces a structure used nowhere in this book, and changes numbering/rendering in all 16 files.**
+2. **Split each division into its own `<section>`** — matches Phase 5A. **Cost: three sections per chapter's exercises instead of one, and the chapter's section numbering shifts.**
+3. **Keep one `<exercises>` and drop the grouping** — simplest. **Cost: loses the quiz/drills/problems distinction, which is pedagogical, not cosmetic.**
+
+No `<xref>` anywhere in `source/` references `lt-concept-quiz`, `lt-drills`, or `lt-problems`, so at least the labels are not load-bearing for cross-references — but they are for the reader.
+
+⚠️ **This class masks mechanical work.** The schema does not descend into a rejected element, so R1 errors inside the 2nd and 3rd divisions are invisible. `c10-lt/exercises-lt.ptx` reported 20 inline `<statement>`s and actually had 45. When sweeping one of these files, fix every instance in the file rather than only the flagged ones, or the remainder will surface the day this is decided — and verify by enumerating the source, since the validator cannot confirm work it cannot see.
 
 ---
 
@@ -418,8 +545,9 @@ Card-sort and matching leaves hold **text and inline elements**. No `<p>`, no `<
 
 - [ ] **4.5** Strip `<p>` / `<line>` wrappers; join line fragments into running inline text.
 - [ ] **4.6** `<md>` inside a `<response>` needs to become `<m>` inline, or the item needs restructuring — flag for author review rather than silently downgrading display math.
-- [ ] **4.7** Files: `c2-solns/exercises-solns.ptx` (33), `c5-if/sec-product-rule.ptx` (17), `c5-if/review-first-order-methods.ptx` (7).
+- [ ] **4.7** Files: `c2-solns/exercises-solns.ptx` (33), `c5-if/sec-product-rule.ptx` (17), `c5-if/review-first-order-methods.ptx` (7), `c9-uc/sec-uc-method.ptx` (12) ✅ done.
 - [ ] **4.8** One `element "blocks" not allowed here; expected element "cardsort" or "matching"` in `c4-sov/sec-sov-method.ptx` — a `<blocks>` element outside its required parent. Determine the intended interaction type before editing.
+- [ ] **4.9** ⚠️ **This phase runs opposite to Phase 1.** Phase 1 *adds* `<p>` wrappers; here you *remove* them. A file can need both — `c9-uc/sec-uc-method.ptx` took 25 added `<p>` (18 `<statement>`, 7 `<md>`) and 12 removed in one pass. Read the failing element before reaching for the Phase 1 script, or it will "fix" a card-sort by wrapping it deeper into the error.
 
 ---
 
@@ -589,7 +717,7 @@ Baseline figures, kept for the rule mix. **For what to pick up next, use the Que
 | `c9-uc/sec-selecting-the-particular-soln.ptx` ✅ | 40 | 124 | R1×103, R3R4×17, R7×4 |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69, R99×17 |
 | `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48, R5×2 |
-| `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
+| `c9-uc/sec-uc-method.ptx` ✅ | 23 | 109 | R1×93, R7×12 |
 | `c11-ltm/sec-laplace-transform-method.ptx` | 22 | 56 | R1×35, R7×2 |
 | `c1-classification/exercises-class.ptx` | 22 | 22 | mixed; no cascade inflation |
 | `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100, R8×2 |
