@@ -129,7 +129,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,328** (2,095 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 2,219** (1,986 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -220,11 +220,36 @@ The class is **168 messages across 37 files** in the current log, in 40 distinct
 | Shape | Messages | Status |
 |---|---:|---|
 | `<solution>` inside `<sidebyside>` — the model's shape | ~~17, in 4 files~~ | **✅ 0 — all 4 files converted** |
-| `<solution>` inside `<ol>/<li>` inside a `<p>` | 40 | related; the list already exists, so the fix is to lift `<solution>` out to a sibling rather than build a list |
+| `<solution>` inside `<ol>/<li>` inside a `<p>` | 50 | **✅ 7 files done** — see the `<exercises>` pattern below; ~39 remain, mostly `A-limits` |
 | `<sidebyside>` inside a `<p>` (no `<solution>` involved) | ~77 | a *placement* problem, not a solutions problem — the `<p>` wrapper is the defect |
 | `<solution>` inside `<dl>/<li>`, `<statement>` misplacement, others | remainder | assorted; judge per site |
 
 **Do not assume one script clears the class.** Work shape by shape, and re-validate between them.
+
+### `<solution>`/`<answer>` inside an `<ol>/<li>` → `<exercises>`
+
+The `efc1267` model does **not** apply here. These lists are bare section content with no `<example>` to rearrange inside, so a container has to be introduced. Every problem in this shape carries an `<answer>` as well as a `<solution>` — 15/15 in `P-units-mass-balance`, 13/13 in `A-limits` — which is exercise-shaped, not example-shaped, and matches `SBN-subscript-notation` in the same appendix. So each `<li>` becomes an `<exercise>`:
+
+```xml
+<exercises>
+  <introduction><p>…the lead-in text that preceded the list…</p></introduction>
+  <exercise>
+    <statement><p>…the li's problem text…</p></statement>
+    <answer>…</answer>          <!-- phase 2C order: answer before solution -->
+    <solution>…</solution>
+  </exercise>
+  …
+</exercises>
+```
+
+Four traps, all of which cost a re-run when first hit:
+
+1. **The moved content usually needs a `<p>`.** An `<li>`'s text is inline, so dropping it straight into a `<statement>` produces a fresh R1 error per item. `O-interrelated-functions` went 3 → 103 that way. Wrap inline content as you move it — and remember **`<md>` does not count as a block child**; a `<statement>` holding text plus `<md>` still needs the `<p>`.
+2. **An `<exercises>` division must be the section's last content.** It cannot precede a `<subsubsection>`. Check what follows the list before converting.
+3. **Two `<exercises>` in one section is the R8 error.** A file with two separate practice lists gets one R8 message for the second. `N-recursive-functions` is in this state deliberately — the alternative was leaving 53 errors — but it is a judgment call: its *first* list is explanatory ("as in the example below"), not practice, so an author may prefer that one become an `<example>` and the division count drop back to one.
+4. **Nested lists do not convert.** Where the solution-bearing `<ol>` is itself inside an `<li>` of an outer `<ol>` (`A-limits`, 26 messages), an `<exercises>` cannot legally go there. Those need the outer grouping restructured first, by hand.
+
+Done: `P-units-mass-balance` (21→7), `F-ibp` (13→7), `O-interrelated-functions` (3→1), `G-improper-integrals` (2→**0**), `E-usub` (4→3), `B-lhospital` (5→6, R1 unmasked), `N-recursive-functions` (→4). Remaining messages in these files are other classes — mostly `<sidebyside>` placement.
 
 ---
 
