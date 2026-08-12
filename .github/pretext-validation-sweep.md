@@ -75,6 +75,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 
 - **Never** change `xml:id`, `label`, `ref`, or `component` values. `label` and `xml:id` share one namespace checked by `processing-tools/validate-source/validate_source.py`.
 - **No wholesale reformatting.** Local, reviewable edits that preserve surrounding indentation. A diff that touches 400 lines to fix 3 violations is a failed edit.
+- **Nested content is indented one level deeper than its parent.** This is the author's stated preference and it governs every element the sweep adds, removes, or moves — a new `<p>` wrapper indents its contents one deeper, and unwrapping one pulls them one shallower. Where an edit lands next to pre-existing markup that breaks the rule (prose sitting level with its `<p>`, `<mrow>` level with its `<md>`), bring the surrounding block into line so the element being edited is not left internally inconsistent. That is the one sanctioned exception to "no wholesale reformatting", and it stays scoped to the block being touched.
 - **Watch the line endings.** **18 of the 139 files in `source/` use CRLF**, the other 121 use LF. A script that reads and writes in Python's default text mode silently converts CRLF to LF and rewrites *every line in the file* — `CSQ-completing-sq.ptx` produced a 169-line diff for a 12-line change that way, failing the guardrail above. Read and write with `newline=''`, and **check `git diff --stat` after every scripted edit**: if the changed-line count is near the file's total line count, you converted the endings rather than fixing the errors. Find the CRLF files with:
       ```bash
       for f in $(git ls-files 'source/**/*.ptx'); do git show HEAD:"$f" | head -5 | grep -q $'\r' && echo "$f"; done
@@ -127,13 +128,15 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,737** (2,503 schema + 234 validation-plus), as of the last full `--engine salve` run.
+**Book-wide: 3,142 → 2,517** (2,284 schema + 233 validation-plus), as of the last full `--engine salve` run.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
 | `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
+| `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 115 | **0** ✅ | 13 | R1×9 + 4 bare `<md>`, **2C×3**, R13×2 — first file fully cleared |
+| `c9-uc/sec-uc-method.ptx` | 109 | **3** ✅ | 37 | R1×18 statements + 7 `<md>`, **R7×12**; remainder is the blocked class below |
 
 ### Queue
 
@@ -418,7 +421,8 @@ Card-sort and matching leaves hold **text and inline elements**. No `<p>`, no `<
 
 - [ ] **4.5** Strip `<p>` / `<line>` wrappers; join line fragments into running inline text.
 - [ ] **4.6** `<md>` inside a `<response>` needs to become `<m>` inline, or the item needs restructuring — flag for author review rather than silently downgrading display math.
-- [ ] **4.7** Files: `c2-solns/exercises-solns.ptx` (33), `c5-if/sec-product-rule.ptx` (17), `c5-if/review-first-order-methods.ptx` (7).
+- [ ] **4.7** Files: `c2-solns/exercises-solns.ptx` (33), `c5-if/sec-product-rule.ptx` (17), `c5-if/review-first-order-methods.ptx` (7), `c9-uc/sec-uc-method.ptx` (12) ✅ done.
+- [ ] **4.9** ⚠️ **This phase runs opposite to Phase 1.** Phase 1 *adds* `<p>` wrappers; here you *remove* them. A file can need both — `c9-uc/sec-uc-method.ptx` took 25 added `<p>` (18 `<statement>`, 7 `<md>`) and 12 removed in one pass. Read the failing element before reaching for the Phase 1 script, or it will "fix" a card-sort by wrapping it deeper into the error.
 - [ ] **4.8** One `element "blocks" not allowed here; expected element "cardsort" or "matching"` in `c4-sov/sec-sov-method.ptx` — a `<blocks>` element outside its required parent. Determine the intended interaction type before editing.
 
 ---
@@ -589,7 +593,7 @@ Baseline figures, kept for the rule mix. **For what to pick up next, use the Que
 | `c9-uc/sec-selecting-the-particular-soln.ptx` ✅ | 40 | 124 | R1×103, R3R4×17, R7×4 |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 33 | 91 | R1×69, R99×17 |
 | `aa-bookends/a1-algebra/L-pfd.ptx` | 28 | 57 | R1×48, R5×2 |
-| `c9-uc/sec-uc-method.ptx` | 23 | 109 | R1×93, R7×12 |
+| `c9-uc/sec-uc-method.ptx` ✅ | 23 | 109 | R1×93, R7×12 |
 | `c11-ltm/sec-laplace-transform-method.ptx` | 22 | 56 | R1×35, R7×2 |
 | `c1-classification/exercises-class.ptx` | 22 | 22 | mixed; no cascade inflation |
 | `c10-lt/exercises-lt.ptx` | 21 | 102 | R1×100, R8×2 |
