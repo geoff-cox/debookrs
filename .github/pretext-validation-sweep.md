@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,737** messages — 2,503 schema + 234 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,626 actionable.
+**Current:** **2,219** messages — 1,986 schema + 233 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,108 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -83,6 +83,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 - **Do not "fix" the renamed elements.** `<corollary>` = 🎮 Interactive, `<theorem>` = 🧠 Derivation, `<lemma>` = 👀 Quick Review, `<identity>` = 🗺️ Summary, `<exploration>` = ✍🏻 Method, `<assemblage>` = ✳️ callout. These are deliberate (`book-info.ptx`).
 - **Preserve emoji cues in titles** (🤔💭, 📖❓, ↩️☝, 👀, 🎧). They are 4-byte UTF-8 — handle with care given Phase 0.
 - **Never invent content.** If a `<statement>` is empty or a `<feedback>` has no text, flag it in the report; do not write pedagogy to satisfy a schema.
+- **`<feedback>` with bare inline text is valid — do not sweep it.** The schema is an explicit `<choice>`: `<oneOrMore><ref name="BlockSolution"/></oneOrMore>` **or** `<ref name="TextLong"/>`. So `<feedback>Correct!</feedback>` is as legal as `<feedback><p>Correct!</p></feedback>`, and wrapping one changes no validation count. **471 such elements across 36 files** currently use the inline form. Adding `<p>` to them is a house-style choice the author can make deliberately; it is not sweep work, and a tool that reports it as a schema error is wrong. Verify against `/root/.ptx/<version>/core/schema/pretext-dev.rng` before treating any "X requires block content" claim as real — several elements take either form.
 - **Math conventions hold:** `\amp =` not `&=`, one `<mrow>` per line, `bmatrix` not `pmatrix`.
 - **Commit per phase per chapter**, not per file and not one giant commit. Message format: `fix(validate): R1 p-wrappers in c4-sov`.
 
@@ -152,9 +153,6 @@ Ranked by messages actually actionable — the `deferred` column is the blocked 
 
 | File | Msgs | Deferred | Actionable |
 |---|---:|---:|---:|
-| `aa-bookends/a1-algebra/SBN-subscript-notation.ptx` | 114 | 0 | 114 |
-| `c9-uc/sec-uc-method.ptx` | 108 | 3 | 105 |
-| `c10-lt/exercises-lt.ptx` | 102 | 0 | 102 |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | 5 | 86 |
 | `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | 0 | 90 |
 | `aa-bookends/a1-algebra/PSF-point-slope-form.ptx` | 75 | 0 | 75 |
@@ -541,8 +539,8 @@ Card-sort and matching leaves hold **text and inline elements**. No `<p>`, no `<
 - [ ] **4.5** Strip `<p>` / `<line>` wrappers; join line fragments into running inline text.
 - [ ] **4.6** `<md>` inside a `<response>` needs to become `<m>` inline, or the item needs restructuring — flag for author review rather than silently downgrading display math.
 - [ ] **4.7** Files: `c2-solns/exercises-solns.ptx` (33), `c5-if/sec-product-rule.ptx` (17), `c5-if/review-first-order-methods.ptx` (7), `c9-uc/sec-uc-method.ptx` (12) ✅ done.
-- [ ] **4.9** ⚠️ **This phase runs opposite to Phase 1.** Phase 1 *adds* `<p>` wrappers; here you *remove* them. A file can need both — `c9-uc/sec-uc-method.ptx` took 25 added `<p>` (18 `<statement>`, 7 `<md>`) and 12 removed in one pass. Read the failing element before reaching for the Phase 1 script, or it will "fix" a card-sort by wrapping it deeper into the error.
 - [ ] **4.8** One `element "blocks" not allowed here; expected element "cardsort" or "matching"` in `c4-sov/sec-sov-method.ptx` — a `<blocks>` element outside its required parent. Determine the intended interaction type before editing.
+- [ ] **4.9** ⚠️ **This phase runs opposite to Phase 1.** Phase 1 *adds* `<p>` wrappers; here you *remove* them. A file can need both — `c9-uc/sec-uc-method.ptx` took 25 added `<p>` (18 `<statement>`, 7 `<md>`) and 12 removed in one pass. Read the failing element before reaching for the Phase 1 script, or it will "fix" a card-sort by wrapping it deeper into the error.
 
 ---
 
