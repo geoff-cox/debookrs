@@ -183,65 +183,64 @@
 							</row>
 						</tabular>
 					</p>
-					<p>
-						<image width="100%">
-							<shortdescription>On t-y axes, the four Euler's-method points (0, -2), (0.5, -3), (1, -3), and (1.5, -1.5); the first three carry a short arrow showing the slope used to reach the next point (slopes -2, 0, and 3).</shortdescription>
-							<latex-image>
-									\begin{tikzpicture}[samples=50]
+					<image width="100%">
+						<shortdescription>On t-y axes, the four Euler's-method points (0, -2), (0.5, -3), (1, -3), and (1.5, -1.5); the first three carry a short arrow showing the slope used to reach the next point (slopes -2, 0, and 3).</shortdescription>
+						<latex-image>
+								\begin{tikzpicture}[samples=50]
+			
+									% === colors ===
+									\def\fColor{blue}			\def\fFill{\fColor!15}
+									\def\gColor{green!60!black}	\def\gFill{\gColor!15}
+
+									% === figure/domain/tick bounds ===
+									\def\tmin{-0.2}	\def\tmax{1.8}
+									\def\ymin{-4.9}	\def\ymax{1.8}
+									\def\tticks{1, 2}
+									\def\yticks{2, 4}
+									\def\dyA{-2} \def\dyB{0} \def\dyC{3}
+									\def\h{0.5} \def\s{0.5}
+
+
+									% === Function definitions ===
+									\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
+									\def\ta{0}	\def\b{2}
+									\def\c{1.13}
+
+									\begin{axis}[
+										width=24cm, height=8cm, scale=0.25,
+										xlabel={$t$}, ylabel={$y$},
+										%title={Euler's Method Step 1},
+										title style={font=\small},
+										grid=both,
+										%tick style={thick},
+										line width=1pt,
+										axis lines=middle,
+										xtick distance=0.5, ytick distance=2,
+										minor x tick num=0, minor y tick num=1,
+										xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
+										xticklabel style={yshift=1.5em, font=\scriptsize},
+										yticklabel style={font=\scriptsize},
+									]
+									
+										% Read and plot data from file
+										\addplot+ [only marks] coordinates {
+											(0.0,-2.0)
+											(0.5,-3.0)
+											(1.0,-3.0)
+											(1.5,-1.5)
+										};
+										\addplot+ [black, no marks, -&gt;] (0.0, -2.0) -- ({0.0+\h*\s}, {-2.0+\dyA*\h*\s});
+										\addplot+ [black, no marks, -&gt;] (0.5, -3.0) -- ({0.5+\h*\s}, {-3.0+\dyB*\h*\s});
+										\addplot+ [black, no marks, -&gt;] (1.0, -3.0) -- ({1.0+\h*\s}, {-3.0+\dyC*\h*\s});
+
+										\node[font=\scriptsize] at (0.22,	-4.3)	{slope: $-2$};
+										\node[font=\scriptsize] at (0.68,	-4.3)	{slope: $0$};
+										\node[font=\scriptsize] at (1.18,	-4.3)	{slope: $3$};
+									\end{axis}
+								\end{tikzpicture}
+						</latex-image>
+					</image>
 				
-										% === colors ===
-										\def\fColor{blue}			\def\fFill{\fColor!15}
-										\def\gColor{green!60!black}	\def\gFill{\gColor!15}
-
-										% === figure/domain/tick bounds ===
-										\def\tmin{-0.2}	\def\tmax{1.8}
-										\def\ymin{-4.9}	\def\ymax{1.8}
-										\def\tticks{1, 2}
-										\def\yticks{2, 4}
-										\def\dyA{-2} \def\dyB{0} \def\dyC{3}
-										\def\h{0.5} \def\s{0.5}
-
-
-										% === Function definitions ===
-										\newcommand{\f}[1]{e^(#1)}	\def\ftex{e^t}
-										\def\ta{0}	\def\b{2}
-										\def\c{1.13}
-
-										\begin{axis}[
-											width=24cm, height=8cm, scale=0.25,
-											xlabel={$t$}, ylabel={$y$},
-											%title={Euler's Method Step 1},
-											title style={font=\small},
-											grid=both,
-											%tick style={thick},
-											line width=1pt,
-											axis lines=middle,
-											xtick distance=0.5, ytick distance=2,
-											minor x tick num=0, minor y tick num=1,
-											xmin=\tmin, xmax=\tmax, ymin=\ymin, ymax=\ymax,
-											xticklabel style={yshift=1.5em, font=\scriptsize},
-											yticklabel style={font=\scriptsize},
-										]
-										
-											% Read and plot data from file
-											\addplot+ [only marks] coordinates {
-												(0.0,-2.0)
-												(0.5,-3.0)
-												(1.0,-3.0)
-												(1.5,-1.5)
-											};
-											\addplot+ [black, no marks, -&gt;] (0.0, -2.0) -- ({0.0+\h*\s}, {-2.0+\dyA*\h*\s});
-											\addplot+ [black, no marks, -&gt;] (0.5, -3.0) -- ({0.5+\h*\s}, {-3.0+\dyB*\h*\s});
-											\addplot+ [black, no marks, -&gt;] (1.0, -3.0) -- ({1.0+\h*\s}, {-3.0+\dyC*\h*\s});
-
-											\node[font=\scriptsize] at (0.22,	-4.3)	{slope: $-2$};
-											\node[font=\scriptsize] at (0.68,	-4.3)	{slope: $0$};
-											\node[font=\scriptsize] at (1.18,	-4.3)	{slope: $3$};
-										\end{axis}
-									\end{tikzpicture}
-							</latex-image>
-						</image>
-					</p>
 				</sidebyside>
 			</figure>
 		</paragraphs>
