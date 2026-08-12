@@ -603,84 +603,82 @@
 					and has the following graph
 				</p>
 				
-				<p>
-					<sidebyside width="90%" margins="0%">
-						<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
-							<image>
-								<shortdescription>Graph of sine t times u-sub-pi-over-2 of t: 0, or OFF, until t equals pi over 2, where sine t switches on for t at least pi over 2.</shortdescription>
-								<latex-image>
-									\begin{tikzpicture}[samples=200, scale=0.7]
-										% === colors ===
-										\def\OFColor{blue}				\def\OFFill{\OFColor!15}
-										\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
+				<sidebyside width="90%" margins="0%">
+					<figure xml:id="tsqrd-off-then-on-at-pi-over-2"><caption> Graph of <m>\sin (t) \cdot u_{\sfrac{\pi}{2}}(t)</m> </caption>
+						<image>
+							<shortdescription>Graph of sine t times u-sub-pi-over-2 of t: 0, or OFF, until t equals pi over 2, where sine t switches on for t at least pi over 2.</shortdescription>
+							<latex-image>
+								\begin{tikzpicture}[samples=200, scale=0.7]
+									% === colors ===
+									\def\OFColor{blue}				\def\OFFill{\OFColor!15}
+									\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
 
-										% === figure/domain/tick bounds ===
-										\def\tmin{-4}	\def\tmax{7}
-										\def\ymin{-1.6}	\def\ymax{1.6}
-										\def\tticks{
-											{-pi}		/ $-\pi$,
-											{-pi*0.5}	/ $-\frac{\pi}{2}$,
-											{pi*0.5}	/ $\frac{\pi}{2}$,
-											{pi}		/ $\pi$,
-											{3*pi*0.5}	/ $\frac{3\pi}{2}$,
-											{2*pi}		/ $2\pi$
-										}
-										\def\yticks{
-											-1 / $-1$,
-											1  / $1$,
-										}
+									% === figure/domain/tick bounds ===
+									\def\tmin{-4}	\def\tmax{7}
+									\def\ymin{-1.6}	\def\ymax{1.6}
+									\def\tticks{
+										{-pi}		/ $-\pi$,
+										{-pi*0.5}	/ $-\frac{\pi}{2}$,
+										{pi*0.5}	/ $\frac{\pi}{2}$,
+										{pi}		/ $\pi$,
+										{3*pi*0.5}	/ $\frac{3\pi}{2}$,
+										{2*pi}		/ $2\pi$
+									}
+									\def\yticks{
+										-1 / $-1$,
+										1  / $1$,
+									}
+								
+									% === Transitions ===
+									\def\c{pi*0.5}
+									\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+									\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+									%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
+									\node[font=\small, below] at ({\c}, -0.7) {$c$};
+
+									% === Function definitions ===
+									\newcommand{\f}[1]{sin(#1 r)}	\def\ftex{\sin(t)}
+									\newcommand{\uL}[1]{0}	\def\uLtex{0}
+									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
+									\draw[-&gt;] (0, \ymin) -- (0, \ymax);
+									\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
 									
-										% === Transitions ===
-										\def\c{pi*0.5}
-										\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-										\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-										%\draw[very thin, dashed]	(\c		, \ymin) 		-- (\c		, \ymax);
-										\node[font=\small, below] at ({\c}, -0.7) {$c$};
+									% === Tick marks/numeric labels ===
+									\foreach \t /\n in \tticks {
+										\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
+									}
 
-										% === Function definitions ===
-										\newcommand{\f}[1]{sin(#1 r)}	\def\ftex{\sin(t)}
-										\newcommand{\uL}[1]{0}	\def\uLtex{0}
-										\newcommand{\uR}[1]{1}	\def\uRtex{1}
-									
-										% === Axes ===
-										\draw[-&gt;] (\tmin, 0) -- (\tmax, 0);
-										\draw[-&gt;] (0, \ymin) -- (0, \ymax);
-										\node[font=\scriptsize, below] at (\tmax - 0.1 , 0) {$t$};
-										
-										% === Tick marks/numeric labels ===
-										\foreach \t /\n in \tticks {
-											\draw[gray, shift={(\t,0)}] (0pt,2pt) -- (0pt,-2pt) node[black, below, font=\scriptsize] {\n};
-										}
-	
-										\foreach \t /\n in \yticks {
-											\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
-										}
+									\foreach \t /\n in \yticks {
+										\draw[gray, shift={(0,\t)}] (2pt,0pt) -- (-2pt,0pt) node[black, left, font=\scriptsize] {\n};
+									}
 
-										% === Function plots on [tmin, c] ===
-										\draw[\OFColor, very thick, &lt;-]		plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
-										\draw[\OFColor!50, thin, dashed, &lt;-]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\f{\t}});
+									% === Function plots on [tmin, c] ===
+									\draw[\OFColor, very thick, &lt;-]		plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
+									\draw[\OFColor!50, thin, dashed, &lt;-]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\f{\t}});
 
-										% === Function plots on [c, tmax] ===
-										\draw[\OFColor, very thick, -&gt;]		plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
-										\draw[\ONColor!50, thin, dashed, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, {\uR{\t}});
+									% === Function plots on [c, tmax] ===
+									\draw[\OFColor, very thick, -&gt;]		plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
+									\draw[\ONColor!50, thin, dashed, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, {\uR{\t}});
 
-										% === Points at t=c ===
-										\draw[\OFColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
-										\fill[\OFColor]			(\c,{\f{\c}})	circle[radius=3pt];
+									% === Points at t=c ===
+									\draw[\OFColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+									\fill[\OFColor]			(\c,{\f{\c}})	circle[radius=3pt];
 
-										% === Labels ===
-										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5},	1)	{$u(t) = 0$};
-										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5},	1)	{$u(t) = 1$};
-										\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, \ymin)	{$\text{OFF}$};
-										\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, \ymin)	{$\text{ON}$};
-										\node[font=\scriptsize, above] at (-1.2, 0)	{$\ftex\cdot\color{\OFColor}{0}$};
-										\node[font=\scriptsize, above] at (4.3, 0)	{$\ftex\cdot\color{\ONColor}{1}$};
-									\end{tikzpicture}
-								</latex-image>
-							</image>
-						</figure>
-					</sidebyside>
-				</p>
+									% === Labels ===
+									\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5},	1)	{$u(t) = 0$};
+									\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5},	1)	{$u(t) = 1$};
+									\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, \ymin)	{$\text{OFF}$};
+									\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, \ymin)	{$\text{ON}$};
+									\node[font=\scriptsize, above] at (-1.2, 0)	{$\ftex\cdot\color{\OFColor}{0}$};
+									\node[font=\scriptsize, above] at (4.3, 0)	{$\ftex\cdot\color{\ONColor}{1}$};
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					</figure>
+				</sidebyside>
 			</solution>
 		</example>
 
