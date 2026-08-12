@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,219** messages — 1,986 schema + 233 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,108 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **2,216** messages — 1,983 schema + 233 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,105 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -130,7 +130,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,219** (1,986 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 2,216** (1,983 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -144,6 +144,13 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 | `c8-lhcc/sec-solving-higher-order-lhcc-eqns.ptx` | 6 | **2** ✅ | 5 | model ×1 (6 problems); +4 R1 unmasked by it; remainder `<proof>`/`<interactive>` in a `<p>` |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | **41** | 28 | model ×1 (`<sbsgroup>`); +27 R1 unmasked; remainder is other classes |
 | `c1-classification/sec-linear-terms.ptx` | 4 | **3** | 1 | model ×1; remainder is `<sidebyside>` inside `<areas>` (Phase 4A) |
+| `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
+| `aa-bookends/a2-calculus/F-ibp.ptx` | 13 | **5** | 2 | inline `<exercise>` ×2; remainder incl. a pre-existing `<section>`→`<subsubsection>` level skip |
+| `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **6** | 4 | `<li>`→`<exercise>` ×4; R1 unmasked by it |
+| `aa-bookends/a2-calculus/E-usub.ptx` | 4 | **3** | 3 | `<li>`→`<exercise>` ×3 |
+| `aa-bookends/a1-algebra/O-interrelated-functions.ptx` | 3 | **1** | 3 | `<li>`→`<exercise>` ×3 |
+| `aa-bookends/a1-algebra/N-recursive-functions.ptx` | 3 | **3** | 9 | inline `<exercise>` ×6 + division ×3; R8 avoided by keeping only the final block a division |
+| `aa-bookends/a2-calculus/G-improper-integrals.ptx` | 2 | **0** ✅ | 2 | `<li>`→`<exercise>` ×2 |
 
 Applying the model is **not** a net-negative-only operation: it unmasks R1 errors that were hidden inside the illegal containers. `sec-solving-higher-order-lhcc-eqns` went 6 → 10 after the conversion before dropping to 2, and `sec-leaving-the-laplace-domain` surfaced 27. Sweep the file's R1 in the same pass.
 
