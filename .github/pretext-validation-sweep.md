@@ -3,9 +3,9 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **1,045 schema messages**, measured on this branch at `40d8fc9`, down from **945** before the R8 conversion and **1,685** immediately after it — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **923 schema messages**, measured on this branch at `006177d`, down from **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
-⚠️ **Say which engine produced a number.** The 945 → 1,045 figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
+⚠️ **Say which engine produced a number.** These figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -137,9 +137,12 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Since then: the R8 conversion, at `40d8fc9`.** All 16 exercises files moved to the `<exercises>`/`<exercisegroup>` shape; **R8 is 40 → 0**, and the schema half went 945 → 1,685 → **1,045** on the harness described in the header (the rise is the reverse cascade, not a regression — the conversion made 743 previously-masked errors visible and 596 of them were swept). Five of the sixteen files are now clean. Full accounting in the R8 section below.
 
+**Latest: the quick-reference appendix, at `006177d`.** All twelve `aa-bookends/a3-quickref/*.ptx` files went **121 → 0**, taking the book-wide schema half to **923** on the same harness. That is the current figure the header quotes. Details in the quick-reference section below.
+
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
 | the 16 `exercises-*.ptx` / `review-*.ptx` files | 89 | **189** | 16 files | R8×40 → 0; the rise is unmasked Phase 2/4 work — see the R8 section |
+| the 12 `aa-bookends/a3-quickref/*.ptx` files | 121 | **0** ✅ | 12 files | one shared structural defect; `c9-qref-lt` alone was 90, 88 of them `<md>` in a `<cell>` |
 | `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
@@ -162,11 +165,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `40d8fc9`, schema half only, same harness as the header. The R8 blocker is gone, so nothing here is deferred on a decision any more — but three classes inside the exercises files do need the author, and they are listed at the end of the R8 section.
+Regenerated at `006177d`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | untouched by any sweep so far — start here |
 | `c5-if/sec-product-rule.ptx` | 72 | Phase 6 `<var>` → `<fillin>` plus `<line>` in `<premise>`/`<response>` ×17 |
 | `aa-bookends/a1-algebra/L-pfd.ptx` | 51 | `<evaluation>` cascade — check child order first (Phase 2C) |
 | `aa-bookends/a2-calculus/A-limits.ptx` | 34 | `<solution>` inside a nested `<ol>/<li>`; needs the outer grouping restructured by hand |
@@ -174,10 +176,14 @@ Regenerated at `40d8fc9`, schema half only, same harness as the header. The R8 b
 | `c2-solns/exercises-solns.ptx` | 30 | `<line>` inside a `<sidebyside>` panel — author call |
 | `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
 | `c1-classification/exercises-class.ptx` | 23 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
-| `c7-em/exercises-em.ptx` | 23 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
-| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 23 | untouched |
+| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 23 | untouched by any sweep so far |
+| `c7-em/exercises-em.ptx` | 22 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
+| `c12-ltp/sec-piecewise-functions.ptx` | 21 | untouched |
+| `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` — author call |
 
-`aa-bookends/a3-quickref/c9-qref-lt.ptx` has been the largest single file for three sweeps running and has never been opened. It is the highest-value target left.
+**`aa-bookends/a3-quickref/` is finished: 121 → 0, all twelve files.** See the section below for what that took, since the same shapes recur elsewhere.
+
+`c5-if/sec-product-rule.ptx` is the largest single file left, and it is the one where the schema fix and a live student-facing render bug are the same edit (Phase 6).
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
@@ -412,6 +418,34 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 3. **`<paragraphs>` inside a `<solution>`** — 12 in `c12-ltp/exercises-ltp.ptx`, used as titled steps ("Step 1: Apply the Laplace Transform"). `<paragraphs>` is a division-level element; PreTeXt has no titled block for this inside a solution, so the heading has to become something else.
 
 And one that is mechanical but was left for a later pass so it can be verified on its own: **`<area>` nested inside `<ol>/<li>`** in `c4-sov` — `<areas>` accepts `<p>`, `<cline>` and `<tabular>`, and an `<area>` inside a list item's paragraph is out of reach of that model, so the numbered steps need restructuring the way Phase 4A restructured the `<sidebyside>` wrappers.
+
+---
+
+## ✅ DONE: the quick-reference appendix — 121 → 0
+
+All twelve `aa-bookends/a3-quickref/*.ptx` files were rejected outright, for one shared reason rather than twelve. Worth reading before touching any other division, because three of the shapes recur across the book.
+
+**The structural defect.** `<section label="quick-references">` in `back-matter.ptx` opened with an `<aside>`. That puts a section on the *blocks* branch of the `Section` model, which admits **no subdivisions at all** — so every included file's root was rejected, and everything inside it was invisible. Eleven roots were `<subsubsection>`, which is not a legal child of a `<section>` under any branch; the twelfth was a `<subsection>`. And each root's only content was a `<worksheet>`, while every division branch requires block content *before* a worksheet.
+
+**The fix: `Printout = Worksheet | Handout` is itself a subdivision.** A section can therefore hold twelve sibling `<worksheet>`s and require no block content. Each file is now a bare `<worksheet>` carrying the division's `xml:id` and title; its own title was the same generic "Key Terms &amp; Concepts" in all twelve, so that heading went and the reader still sees the chapter topic. The `<aside>` moved into an `<introduction>`, in `back-matter.ptx` and `back-matter-dev.ptx` alike.
+
+None of the twelve `quick-ref-*` ids is referenced by any `<xref>`, so nothing broke.
+
+**What it unmasked, and the reusable lessons:**
+
+| Shape | Sites | Fix |
+|---|---:|---|
+| `<md>` in a `<cell>` | 110 | A cell takes inline content. Inline `<m>`, with `\ds` **only** where the expression carries a `\frac`, so fractions keep their display size — the convention two tables in `c9-qref-lt` already used |
+| `<p>` wrapping nothing but an `<assemblage>` | 23 | Drop the wrapper; a block in a `<p>` is an error |
+| `@halign` on a `<table>` | 3 | Not allowed there. In all three the enclosing `<tabular>` already carried `halign="center"`, so it drops with no rendering change |
+| bare `<term>` in an `<assemblage>` | 1 | An assemblage takes `BlockText+`; the term is inline, so it gets a `<p>` |
+| `<dl>` in an `<exploration>` | 1 | Like `<ol>` and `<ul>`, a `<dl>` is not block content — wrap in `<p>` |
+| `<dl>` item with no `<title>` | 1 | `DefinitionListItem` is `MetaDataTitle + BlockStatement+`; in a description list the title **is** the term. `c2-qref-solns` had lost one and it was restored as "Solution" from its `@xml:id` and body — the one place in the pass where visible text was added rather than moved |
+| `<subsection>` inside a `<worksheet>` | 1 | A worksheet takes `PrintoutBlock+` = `(BlockDivision \| Paragraphs)`. `<paragraphs>` is the titled block for exactly this and converts a title-plus-blocks subsection verbatim |
+
+⚠️ **`\ds` is not optional cosmetics here.** Converting display `<md>` to inline `<m>` in a table cell shrinks a fraction to inline size. The `\ds` keeps it. Converting without it is the silent half of the "two-step change" the `<cell>` note above warns about.
+
+⚠️ **`c9-qref-lt` was the book's largest file for three sweeps at 90 messages, 88 of them this one `<md>` class.** Message count tracked one repeated mistake, not difficulty — the whole file took one substitution pass. Rank by `edit_sites`, as this document keeps saying.
 
 ---
 
