@@ -30,25 +30,23 @@
 					Consider the functions defined by
 				</p>
 
-				<p>
-					<sidebyside valign="middle" margin="25%">
-						<p>
-							<md>
-								f(t) = t^2 - 1
-							</md>
-						</p>
-						
-						<p>
-							<md>
-								g(t) = \left\{
-								\begin{array}{ll}
-									1,	\amp t \ge 0\\
-									0,	\amp \text{otherwise}.
-								\end{array} \right.
-							</md>
-						</p>
-					</sidebyside>
-				</p>
+				<sidebyside valign="middle" margin="25%">
+					<p>
+						<md>
+							f(t) = t^2 - 1
+						</md>
+					</p>
+					
+					<p>
+						<md>
+							g(t) = \left\{
+							\begin{array}{ll}
+								1,	\amp t \ge 0\\
+								0,	\amp \text{otherwise}.
+							\end{array} \right.
+						</md>
+					</p>
+				</sidebyside>
 
 				<p>
 					Give the output of <m>f(t)</m> and <m>g(t)</m> for the following values of <m>t</m>.
@@ -109,65 +107,64 @@
 						This function <q>flips on</q> at <m>t=0</m>.
 					</p>
 					<p/>
-					<p>
-						<image>
-							<shortdescription>Graph of the unit step function u of t: 0, or OFF, for t less than 0, jumping up to 1, or ON, at t = 0 and staying there.</shortdescription>
-							<latex-image>
-								\begin{tikzpicture}[samples=100, scale=0.5]
-			
-									% === colors ===
-									\def\OFColor{blue}				\def\OFFill{\OFColor!15}
-									\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
+					<image>
+						<shortdescription>Graph of the unit step function u of t: 0, or OFF, for t less than 0, jumping up to 1, or ON, at t = 0 and staying there.</shortdescription>
+						<latex-image>
+							\begin{tikzpicture}[samples=100, scale=0.5]
+		
+								% === colors ===
+								\def\OFColor{blue}				\def\OFFill{\OFColor!15}
+								\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
 
-									% === figure/domain/tick bounds ===
-									\def\tmin{-3.5}	\def\tmax{3.5}
-									\def\ymin{-1}	\def\ymax{1.8}
-									\def\tticks{-3, -2, -1, 1, 2, 3}
-									\def\yticks{1}
-								
-									% === Transitions ===
-									\def\c{0}
-									\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-									\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+								% === figure/domain/tick bounds ===
+								\def\tmin{-3.5}	\def\tmax{3.5}
+								\def\ymin{-1}	\def\ymax{1.8}
+								\def\tticks{-3, -2, -1, 1, 2, 3}
+								\def\yticks{1}
+							
+								% === Transitions ===
+								\def\c{0}
+								\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+								\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
 
-									% === Function definitions ===
-									\newcommand{\uL}[1]{0}	\def\uLtex{0}
-									\newcommand{\uR}[1]{1}	\def\uRtex{1}
+								% === Function definitions ===
+								\newcommand{\uL}[1]{0}	\def\uLtex{0}
+								\newcommand{\uR}[1]{1}	\def\uRtex{1}
+							
+								% === Axes ===
+								\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+								\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+								\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
+		
+								% === Tick marks/numeric labels ===
+								\foreach \t in \tticks {
+									\draw[gray]	(\t,0.1) -- (\t,-0.1);				% t ticks
+									\node[below, font=\scriptsize] at (\t,0) {\t};	% t labels	
+								}
+								\foreach \y in \yticks {
+									\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+									\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
+								}
+							
+								% === Function plots on [tmin, c] ===
+								\draw[\OFColor, very thick, &lt;-]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
 								
-									% === Axes ===
-									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-									\node[font=\scriptsize, below] at (\tmax - 0.1	, 0) {$t$};
-			
-									% === Tick marks/numeric labels ===
-									\foreach \t in \tticks {
-										\draw[gray]	(\t,0.1) -- (\t,-0.1);				% t ticks
-										\node[below, font=\scriptsize] at (\t,0) {\t};	% t labels	
-									}
-									\foreach \y in \yticks {
-										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-										\node[left, font=\scriptsize] at (0.1,\y) {\y};	% y labels
-									}
+								% === Function plots on [c, tmax] ===
+								\draw[\ONColor, very thick, -&gt;]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
 								
-									% === Function plots on [tmin, c] ===
-									\draw[\OFColor, very thick, &lt;-]	plot[domain=\tmin:\c-0.06, variable=\t]	(\t, {\uL{\t}});
-									
-									% === Function plots on [c, tmax] ===
-									\draw[\ONColor, very thick, -&gt;]	plot[domain=\c:\tmax, variable=\t]		(\t, {\uR{\t}});
-									
-									% === Points at t=c ===
-									\draw[\OFColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
-									\fill[\ONColor]			(\c,{\uR{\c}})	circle[radius=3pt];
-									
-									% === Labels ===
-									\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, 0		) {$u(t) = 0$};
-									\node[\ONColor, font=\scriptsize, below] at ({(\c + \tmax)*0.5}, \ymax	) {$u(t) = 1$};
-									\node[\OFColor, font=\scriptsize, below] at ({(\tmin + \c)*0.5}, \ymax	) {$\text{OFF}$};
-									\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, 0		) {$\text{ON}$};
-								\end{tikzpicture}
-							</latex-image>
-						</image>
-					</p>
+								% === Points at t=c ===
+								\draw[\OFColor, thick]	(\c,{\uL{\c}})	circle[radius=3pt];
+								\fill[\ONColor]			(\c,{\uR{\c}})	circle[radius=3pt];
+								
+								% === Labels ===
+								\node[\OFColor, font=\scriptsize, above] at ({(\tmin + \c)*0.5}, 0		) {$u(t) = 0$};
+								\node[\ONColor, font=\scriptsize, below] at ({(\c + \tmax)*0.5}, \ymax	) {$u(t) = 1$};
+								\node[\OFColor, font=\scriptsize, below] at ({(\tmin + \c)*0.5}, \ymax	) {$\text{OFF}$};
+								\node[\ONColor, font=\scriptsize, above] at ({(\c + \tmax)*0.5}, 0		) {$\text{ON}$};
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				
 					<p/>
 				</sidebyside>
 			</statement>
@@ -230,117 +227,115 @@
 
 				<figure xml:id="unit-step-parabola"><caption>Graph of <m>g(t)</m> (<em>left</em>) and <m>g(t)\cdot u(t)</m> (<em>right</em>).</caption>
 					<sidebyside width="40%" margin="5%">
-						<p>
-							<image>
-								<shortdescription>Graph of the parabola g of t equals one-fifth t squared minus 1, drawn as a full upward-opening parabola for all t.</shortdescription>
-								<latex-image>
-									\begin{tikzpicture}[samples=200, scale=0.65]
-										% === colors ===
-										\def\OFColor{blue}				\def\OFFill{\OFColor!15}
-										
-										% === figure/domain/tick bounds ===
-										\def\tmin{-3.5}	\def\tmax{3.5}
-										\def\ymin{-1.5}	\def\ymax{1.8}
-										\def\tticks{-3, -2, -1, 1, 2, 3}
-										\def\yticks{-1, 1}
-
-										% === Function definitions ===
-										\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
-
-										% === Axes ===
-										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-										\node[font=\small, above] at (\tmax - 0.1	, 0) {$t$};
-				
-										% === Tick marks/numeric labels ===
-										\foreach \t in \tticks {
-											\draw[gray]	(\t,0.1) -- (\t,-0.1);				% t ticks
-											\node[below, font=\small] at (\t,-0.08) {\t};	% t labels	
-										}
-										\foreach \y in \yticks {
-											\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
-											\node[left, font=\small] at (0.1,\y) {\y};	% y labels
-										}
-										
-										% === Function plots on [tmin, tmax] ===
-										\draw[\OFColor!60, ultra thick, &lt;-&gt;]	plot[domain=\tmin:\tmax, variable=\t] (\t, {\f{\t}});
-										
-										% === Labels ===
-										\node[font=\small] at (1.5, 1.1	) {$\ftex$};
-										\draw[-&gt;, thick] (1.6, 0.9) -- (2.3 , 0.2);
-									\end{tikzpicture}
-								</latex-image>
-							</image>
-						</p>
-						<p>
-							<image>
-								<shortdescription>Graph of g of t times u of t: 0 for t less than 0, then the parabola one-fifth t squared minus 1 switched on at t = 0.</shortdescription>
-								<latex-image>
-									\begin{tikzpicture}[samples=200, scale=0.65]
-										% === colors ===
-										\def\OFColor{blue}				\def\OFFill{\OFColor!15}
-										\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
-
-										% === figure/domain/tick bounds ===
-										\def\tmin{-3.5}	\def\tmax{3.5}
-										\def\ymin{-1.5}	\def\ymax{1.8}
-										\def\tticks{-3, -2, -1, 1, 2, 3}
-										\def\yticks{-1, 1}
-
-										% === Midpoints ===
-										\def\Lmid{{(\tmin + \c)*0.5}}
-										\def\Rmid{{(\c + \tmax)*0.5}}
+						<image>
+							<shortdescription>Graph of the parabola g of t equals one-fifth t squared minus 1, drawn as a full upward-opening parabola for all t.</shortdescription>
+							<latex-image>
+								\begin{tikzpicture}[samples=200, scale=0.65]
+									% === colors ===
+									\def\OFColor{blue}				\def\OFFill{\OFColor!15}
 									
-										% === Transitions ===
-										\def\c{0}
-										\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
-										\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
-										
-										% === Function definitions ===
-										\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
-										\newcommand{\uL}[1]{0}				\def\uLtex{0}
-										\newcommand{\uR}[1]{1}				\def\uRtex{1}
-									
-										% === Axes ===
-										\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
-										\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
-										\node[font=\small, above] at (\tmax - 0.1	, 0) {$t$};
-				
-										% === Tick marks/numeric labels ===
-										\foreach \t in \tticks {
-											\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
-											\node[below, font=\small] at (\t,-0.08) {\t};	% t labels	
-										}
-										\foreach \y in \yticks {
-											\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
-											\node[left, font=\small] at (0.1,\y) {\y};	% y labels
-										}
-									
-										% === Function plots on [tmin, c] ===
-										\draw[\OFColor!60, ultra thick, &lt;-]			plot[domain=\tmin:\c-0.1, variable=\t] (\t, {\uL{\t}});
-										
-										% === Function plots on [c, tmax] ===
-										\draw[\OFColor!60, ultra thick, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
-										
-										% === Points at t=c ===
-										\fill[\OFColor!60]			(\c,{\f{\c}})	circle[radius=4pt];
-										\draw[\OFColor!60, very thick]	(\c,{\uL{\c}})	circle[radius=4pt];
-										
-										% === Labels ===
-										\node[\OFColor, font=\small, above] at (\Lmid, \ymin) {$\text{OFF}$};
-										\node[\ONColor, font=\small, above] at (\Rmid, \ymin) {$\text{ON}$};
+									% === figure/domain/tick bounds ===
+									\def\tmin{-3.5}	\def\tmax{3.5}
+									\def\ymin{-1.5}	\def\ymax{1.8}
+									\def\tticks{-3, -2, -1, 1, 2, 3}
+									\def\yticks{-1, 1}
 
-										\node[			font=\small] at (-2.3, 1.3)	{$\left(\ftex\right)$};
-										\node[\OFColor,	font=\small] at (-1.1, 1.32)	{$\cdot 0$};
-										\node[			font=\small] at (1.5, 1.1	)	{$\left(\ftex\right)$};
-										\node[\ONColor,	font=\small] at (2.7, 1.12	)	{$\cdot 1$};
-										
-										\draw[-&gt;, thick] (-2.3	, 0.9) -- (-2.3 , 0.05);
-										\draw[-&gt;, thick] (1.6	, 0.9) -- (2.3 , 0.2);
-									\end{tikzpicture}
-								</latex-image>
-							</image>
-						</p>
+									% === Function definitions ===
+									\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
+
+									% === Axes ===
+									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+									\node[font=\small, above] at (\tmax - 0.1	, 0) {$t$};
+			
+									% === Tick marks/numeric labels ===
+									\foreach \t in \tticks {
+										\draw[gray]	(\t,0.1) -- (\t,-0.1);				% t ticks
+										\node[below, font=\small] at (\t,-0.08) {\t};	% t labels	
+									}
+									\foreach \y in \yticks {
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);			% y ticks
+										\node[left, font=\small] at (0.1,\y) {\y};	% y labels
+									}
+									
+									% === Function plots on [tmin, tmax] ===
+									\draw[\OFColor!60, ultra thick, &lt;-&gt;]	plot[domain=\tmin:\tmax, variable=\t] (\t, {\f{\t}});
+									
+									% === Labels ===
+									\node[font=\small] at (1.5, 1.1	) {$\ftex$};
+									\draw[-&gt;, thick] (1.6, 0.9) -- (2.3 , 0.2);
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					
+						<image>
+							<shortdescription>Graph of g of t times u of t: 0 for t less than 0, then the parabola one-fifth t squared minus 1 switched on at t = 0.</shortdescription>
+							<latex-image>
+								\begin{tikzpicture}[samples=200, scale=0.65]
+									% === colors ===
+									\def\OFColor{blue}				\def\OFFill{\OFColor!15}
+									\def\ONColor{green!60!black}	\def\ONFill{\ONColor!15}
+
+									% === figure/domain/tick bounds ===
+									\def\tmin{-3.5}	\def\tmax{3.5}
+									\def\ymin{-1.5}	\def\ymax{1.8}
+									\def\tticks{-3, -2, -1, 1, 2, 3}
+									\def\yticks{-1, 1}
+
+									% === Midpoints ===
+									\def\Lmid{{(\tmin + \c)*0.5}}
+									\def\Rmid{{(\c + \tmax)*0.5}}
+								
+									% === Transitions ===
+									\def\c{0}
+									\fill[\OFFill]				(\tmin	, \ymin) rectangle (\c		, \ymax);
+									\fill[\ONFill]				(\c		, \ymin) rectangle (\tmax	, \ymax);
+									
+									% === Function definitions ===
+									\newcommand{\f}[1]{0.2*#1*#1 - 1}	\def\ftex{\frac15 x^2 - 1}
+									\newcommand{\uL}[1]{0}				\def\uLtex{0}
+									\newcommand{\uR}[1]{1}				\def\uRtex{1}
+								
+									% === Axes ===
+									\draw[-&gt;] (\tmin	,0		) -- (\tmax	,0		);
+									\draw[-&gt;] (0		,\ymin	) -- (0		,\ymax	);
+									\node[font=\small, above] at (\tmax - 0.1	, 0) {$t$};
+			
+									% === Tick marks/numeric labels ===
+									\foreach \t in \tticks {
+										\draw[gray]	(\t,0.1) -- (\t,-0.1);					% t ticks
+										\node[below, font=\small] at (\t,-0.08) {\t};	% t labels	
+									}
+									\foreach \y in \yticks {
+										\draw[gray]	(0.1,\y) -- (-0.1,\y);				% y ticks
+										\node[left, font=\small] at (0.1,\y) {\y};	% y labels
+									}
+								
+									% === Function plots on [tmin, c] ===
+									\draw[\OFColor!60, ultra thick, &lt;-]			plot[domain=\tmin:\c-0.1, variable=\t] (\t, {\uL{\t}});
+									
+									% === Function plots on [c, tmax] ===
+									\draw[\OFColor!60, ultra thick, -&gt;]	plot[domain=\c:\tmax, variable=\t] (\t, {\f{\t}});
+									
+									% === Points at t=c ===
+									\fill[\OFColor!60]			(\c,{\f{\c}})	circle[radius=4pt];
+									\draw[\OFColor!60, very thick]	(\c,{\uL{\c}})	circle[radius=4pt];
+									
+									% === Labels ===
+									\node[\OFColor, font=\small, above] at (\Lmid, \ymin) {$\text{OFF}$};
+									\node[\ONColor, font=\small, above] at (\Rmid, \ymin) {$\text{ON}$};
+
+									\node[			font=\small] at (-2.3, 1.3)	{$\left(\ftex\right)$};
+									\node[\OFColor,	font=\small] at (-1.1, 1.32)	{$\cdot 0$};
+									\node[			font=\small] at (1.5, 1.1	)	{$\left(\ftex\right)$};
+									\node[\ONColor,	font=\small] at (2.7, 1.12	)	{$\cdot 1$};
+									
+									\draw[-&gt;, thick] (-2.3	, 0.9) -- (-2.3 , 0.05);
+									\draw[-&gt;, thick] (1.6	, 0.9) -- (2.3 , 0.2);
+								\end{tikzpicture}
+							</latex-image>
+						</image>
+					
 					</sidebyside>
 				</figure>
 			</solution>

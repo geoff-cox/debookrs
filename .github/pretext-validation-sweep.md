@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,216** messages — 1,983 schema + 233 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,105 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **2,586** messages — 2,359 schema + 227 validation-plus, measured on this branch. `main` itself stands at **2,663** (2,432 + 231), so the branch is 77 below it. The absolute figure rose because `main` advanced mid-sweep: `f4ff673` ("ch2 validation sweep") leaves `c1-classification/exercises-class.ptx` at 468 messages. **Always state which commit a book-wide number was measured on** — comparing against a stale `main` reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -130,7 +130,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,216** (1,983 schema + 233 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 2,586** (2,359 schema + 227 validation-plus), against a `main` that itself sits at 2,663, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -230,6 +230,28 @@ The class is **168 messages across 37 files** in the current log, in 40 distinct
 | `<solution>` inside `<dl>/<li>`, `<statement>` misplacement, others | remainder | assorted; judge per site |
 
 **Do not assume one script clears the class.** Work shape by shape, and re-validate between them.
+
+### Block elements inside a `<p>` — `<sidebyside>`, `<image>`
+
+`<p>` holds inline content. A block element inside one is an error, and the fix is always to make it a **sibling** of the `<p>`, never to delete it. Two shapes occur:
+
+- the `<p>` wraps nothing else, so the wrapper is simply dropped;
+- the `<p>` mixes prose or `<md>` with the block, so it is split — the other content keeps its `<p>`, and the block is lifted out between them.
+
+Moved blocks dedent one level. **Expect the diff to be large relative to the number of edits** — the moved content *is* the diff. That is not the CRLF trap; check `git diff --numstat` against the file's line count if unsure.
+
+⚠️ **Count every element when deciding whether a block is a direct child.** A transform that tracked only `<p>` and `<sidebyside>` nesting read a `<sidebyside>` buried in `<ol>/<li>/<answer>` as a direct child of the outer `<p>`, and hoisting it tore the list apart. Mask comment bodies first so tags inside them are never counted, and refuse to write a file that no longer parses.
+
+Cleared 77 → 2. The 2 survivors are nested `<sidebyside>` inside `<sidebyside>`, which is a layout decision, not a mechanical fix.
+
+### `<caption>` comes first in a `<figure>`
+
+The schema orders `MetaDataCaption` before the interactive slot, so a `<figure>` whose `<caption>` trails its `<image>` is invalid. **5 figures across 4 files in `c6-qm`**, pre-existing and unrelated to any sweep work — but easy to miss, because a figure that is already failing for another reason hides it. Reordering is the whole fix.
+
+A separate shape reports under the same `<image> is not allowed here` message: an `<image>` wrapped in a `<p>`, usually a `<sidebyside>` panel written as `<p><image/></p>` where the panel should just be the `<image>`. **12 sites across 6 files.** The two together took that message from 18 to 1 — 18 is the count of the *message*, not of either shape.
+
+⚠️ **Carry the panel width when you unwrap a single-panel `<sidebyside>` around an image.** `<sidebyside widths="50%"><image width="100%"/></sidebyside>` renders at half the text width, because the image fills the *panel*. Drop the panel and `width="100%"` now means the full text width — the figure silently doubles. Move the panel's width onto the image.
+
 
 ### `<solution>`/`<answer>` inside an `<ol>/<li>` → `<exercises>`
 
@@ -524,7 +546,7 @@ element "sidebyside" not allowed here; expected element "cline", "p" or "tabular
 
 A `<sidebyside>` inside `<areas>` is the root cause; the 46 `<area>` errors and 18 `<line>`/`<tabular>` errors beneath it are cascades from the failed parse.
 
-- [ ] **4.1** Remove the `<sidebyside>` wrapper from inside `<areas>`. For side-by-side *layout* of clickable terms, use `<tabular>` or a single `<p>` with the terms inline.
+- [x] **4.1** Remove the `<sidebyside>` wrapper from inside `<areas>`. For side-by-side *layout* of clickable terms, use `<tabular>` or a single `<p>` with the terms inline. ✅ done — 25 wrappers across 8 files. The layout attributes they carried (`width`, `widths`, `margins`) are gone with them; where the columns mattered, `<tabular>` is the replacement and that is a per-exercise judgment.
 - [ ] **4.2** `<cline>` is the element for a line of clickable content — use it rather than `<line>`, which belongs to `<poem>`/`<program>`.
 - [ ] **4.3** Files: `c2-solns/exercises-solns.ptx` (38), `c1-classification/exercises-class.ptx` (26), `c4-sov/exercises-sov.ptx` (11), `c1-classification/sec-linear-terms.ptx`.
 - [ ] **4.4** Re-validate these files individually — the cascade means one structural fix should clear a dozen errors, and if it doesn't, the fix was wrong.
