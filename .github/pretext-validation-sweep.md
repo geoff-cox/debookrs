@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **851 schema messages**, measured on this branch at `b362b64`, down from **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **546 schema messages**, measured on this branch at `f9c2ad9`, down from **923** at the merge of #225 and **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **Say which engine produced a number.** These figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
@@ -139,7 +139,26 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Then: the quick-reference appendix, at `006177d`.** All twelve `aa-bookends/a3-quickref/*.ptx` files went **121 → 0**, taking the book-wide schema half to **923** on the same harness. Details in the quick-reference section below.
 
-**Latest: Phase 6, at `b362b64`.** `c5-if/sec-product-rule.ptx` went **72 → 0** and no `<var>` remains outside a `<webwork>` in the book, taking the schema half to **851**. That is the current figure the header quotes.
+**Then: Phase 6, at `b362b64`.** `c5-if/sec-product-rule.ptx` went **72 → 0** and no `<var>` remains outside a `<webwork>` in the book.
+
+**Latest: the book-wide mechanical classes, at `f9c2ad9`.** **923 → 546**, and 21 files went to zero — including *every* `*-model.ptx`. That is the current figure the header quotes.
+
+| Pass | Sites | Book-wide |
+|---|---:|---|
+| Phase 6 fill-in-the-blanks (`sec-product-rule`) | 1 file | 923 → 851 |
+| `L-pfd` child order + two example shapes | 27 | 851 → 800 |
+| **Phase 3** — `<ol>`/`<ul>`/`<dl>` need a `<p>` | 146 in 24 files | 800 → 634 |
+| `<md>` directly in a `<cell>` | 33 in 6 files | 634 → 609 |
+| `<md>` needing a `<p>` in block-content elements | 76 in 23 files | 609 → 566 |
+| `<p>` wrapping nothing but a `<tabular>` | 20 in 9 files | 566 → 546 |
+
+⚠️ **Three over-reaches in this batch, none of which the message count would have caught.** All three are the same failure: assuming a content model instead of reading it.
+
+- A `<p>` was wrapped around `front-matter`'s `<support><ul>`, taking it 3 → 4. **`<support>` is paragraph-like and admits no `<p>` at all.** The skip list now comes from the grammar — every element whose model refs `List` directly: `<outcomes>`, `<objectives>`, `<headnote>`, `<list>`, `<stack>`, `<sidebyside>`, `<subslide>`, `<support>`.
+- Three `<cell><p><md>…</md></p></cell>` in `sec-order.ptx` were converted to inline `<m>`. **`TableCell` has a paragraph branch**, so that is legal display math — the file was clean before *and* after, and only reading the schema revealed that the math had silently shrunk. Only an `<md>` whose *direct parent* is `<cell>` is an error.
+- Widening the general "wrap runs of inline siblings" pass to more parents **broke well-formedness in nine files**: that pass assumes an element whose open and close tags sit on their own lines, which does not hold for `<example>` and friends. Reverted rather than patched.
+
+**Every transform now re-parses its own output and refuses to write a file that no longer parses.** Do the same with anything new — `git diff` will not tell you, and neither will the message count.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -167,24 +186,26 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `b362b64`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
+Regenerated at `f9c2ad9`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `aa-bookends/a1-algebra/L-pfd.ptx` | 51 | `<evaluation>` cascade — check child order first (Phase 2C) |
-| `aa-bookends/a2-calculus/A-limits.ptx` | 34 | `<solution>` inside a nested `<ol>/<li>`; needs the outer grouping restructured by hand |
-| `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children — author call |
+| `aa-bookends/a2-calculus/A-limits.ptx` | 34 | `<solution>` inside a nested `<ol>/<li>` — the outer grouping needs restructuring by hand |
 | `c2-solns/exercises-solns.ptx` | 30 | `<line>` inside a `<sidebyside>` panel — author call |
-| `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
-| `c1-classification/exercises-class.ptx` | 23 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
-| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 23 | untouched by any sweep so far |
-| `c7-em/exercises-em.ptx` | 22 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
-| `c12-ltp/sec-piecewise-functions.ptx` | 21 | untouched |
+| `c3-di/exercises-di.ptx` | 25 | WeBWorK trailing children; text after `</mrow>` |
+| `c4-sov/exercises-sov.ptx` | 24 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children — author call |
+| `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
 | `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` — author call |
+| `c1-classification/exercises-class.ptx` | 21 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
+| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 21 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
+| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` inside a `<sidebyside>` panel — author call |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 16 | assorted |
+
+⛔ **`EXL-exp-logs.ptx` needs the author.** Its 18 table cells hold `<md><mrow xml:id="…">…</mrow></md>`, and **`<m>` accepts no `xml:id`** — its content model is bare mixed content. Two of those ids, `exp_rule_02e` and `exp_rule_04e`, are live `<xref>` targets, so the usual `<md>` → `<m>` conversion would break them. Keeping referenceable display math inside a cell means restructuring the table.
 
 **`aa-bookends/a3-quickref/` is finished: 121 → 0, all twelve files.** See the section below for what that took, since the same shapes recur elsewhere.
 
-**Phase 6 is finished** — `sec-product-rule` went 72 → 0 and no `<var>` remains outside a `<webwork>` in the book. `aa-bookends/a1-algebra/L-pfd.ptx` is the largest single file left at 51, and it is an `<evaluation>` cascade: check child order first (Phase 2C) before believing the message.
+**Phases 3 and 6 are finished, and every `*-model.ptx` is clean.** What is left is concentrated in the exercises files and is mostly judgement rather than mechanism: `<solution>`/`<answer>` placement (123), `<line>` used for line breaks (50), `<feedback>` at task level (24), and `<paragraphs>` inside a `<solution>` (28).
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
@@ -860,7 +881,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | 0 | Validator blocked | — | ✅ done | Engine switch, not an encoding fix |
 | 1 | `<p>` wrappers | 2,065 | Low | `<evaluation>` errors do **not** clear free — they are Phase 2C child order |
 | 2 | Exercise skeleton | 178 | Medium | R2×9, R3R4×169; judgment on feedback placement |
-| 3 | Lists need `<p>` | 155 | Low | Now spread well beyond `*-model.ptx` |
+| 3 | Lists need `<p>` | 155 | ✅ done | 146 sites, 24 files. Skip every parent whose model refs `List` directly, and skip lists whose items carry a `<solution>` — those are the `<exercises>` class |
 | 4 | Runestone models | 59 | **High** | R6×6, R7×53 — smaller than the old 171 |
 | 5 | Division nesting | 59 | ✅ 5A done | **R8×40 → 0**, all 16 exercises files; R12×16 remains. 5A's "promote to a sibling `<section>`" is superseded — see the R8 decision |
 | 6 | `<var>` → `<fillin>` | 12 | ✅ done | Was a live render bug. The `<setup>` grading had to move to `<evaluation>` too — 6.1 alone would not have fixed it |
