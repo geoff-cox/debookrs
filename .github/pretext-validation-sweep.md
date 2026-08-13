@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,586** messages — 2,359 schema + 227 validation-plus, measured on this branch. `main` itself stands at **2,663** (2,432 + 231), so the branch is 77 below it. The absolute figure rose because `main` advanced mid-sweep: `f4ff673` ("ch2 validation sweep") leaves `c1-classification/exercises-class.ptx` at 468 messages. **Always state which commit a book-wide number was measured on** — comparing against a stale `main` reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **1,617** messages — 1,390 schema + 227 validation-plus, measured on this branch at `a8e1c83` (`main` was 2,586 at `545f04e`). **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -76,6 +76,7 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 - **Never** change `xml:id`, `label`, `ref`, or `component` values. `label` and `xml:id` share one namespace checked by `processing-tools/validate-source/validate_source.py`.
 - **No wholesale reformatting.** Local, reviewable edits that preserve surrounding indentation. A diff that touches 400 lines to fix 3 violations is a failed edit.
 - **Nested content is indented one level deeper than its parent.** This is the author's stated preference and it governs every element the sweep adds, removes, or moves — a new `<p>` wrapper indents its contents one deeper, and unwrapping one pulls them one shallower. Where an edit lands next to pre-existing markup that breaks the rule (prose sitting level with its `<p>`, `<mrow>` level with its `<md>`), bring the surrounding block into line so the element being edited is not left internally inconsistent. That is the one sanctioned exception to "no wholesale reformatting", and it stays scoped to the block being touched.
+- **Never assume the indent character.** 44 of the 45 files in the `<statement>` pass are tab-indented and one, `c0-whats-a-de/sec-terms-coeffs.ptx`, uses spaces. A transform that hardcodes `\t` puts inserted elements at column 0 there and prepends stray tabs to space-indented content. **Derive the unit from the file** (count `^\t+\S` against `^ +\S` lines, and take the step from the distinct space widths), take each block's lead indent verbatim from its own first content line, and fall back to the enclosing tag's indent when the content starts on the open-tag line. Assert before writing: no `^<p>$` at column 0, and no `^\t+ +\S` line that was not already there. Both remaining edge cases in that pass were caught by those two assertions rather than by review.
 - **Watch the line endings.** **18 of the 139 files in `source/` use CRLF**, the other 121 use LF. A script that reads and writes in Python's default text mode silently converts CRLF to LF and rewrites *every line in the file* — `CSQ-completing-sq.ptx` produced a 169-line diff for a 12-line change that way, failing the guardrail above. Read and write with `newline=''`, and **check `git diff --stat` after every scripted edit**: if the changed-line count is near the file's total line count, you converted the endings rather than fixing the errors. Find the CRLF files with:
       ```bash
       for f in $(git ls-files 'source/**/*.ptx'); do git show HEAD:"$f" | head -5 | grep -q $'\r' && echo "$f"; done
@@ -130,7 +131,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,586** (2,359 schema + 227 validation-plus), against a `main` that itself sits at 2,663, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 1,617** (1,390 schema + 227 validation-plus), measured at `a8e1c83`, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -230,6 +231,25 @@ The class is **168 messages across 37 files** in the current log, in 40 distinct
 | `<solution>` inside `<dl>/<li>`, `<statement>` misplacement, others | remainder | assorted; judge per site |
 
 **Do not assume one script clears the class.** Work shape by shape, and re-validate between them.
+
+### R1 `<statement>` — the payoff for enumerating the source
+
+**706 sites across 45 files, clearing 939 schema messages.** The validator reported only **122** of the 706. The rest were masked: a failing ancestor stops the parser before it reaches the statements inside, so most of the class was invisible until the containers above it were fixed.
+
+That ratio — 122 visible, 706 real, 939 messages cleared — is the strongest argument in this document for **enumerating the source rather than working the message list**. Had the pass followed the log, it would have fixed 122 sites and left 584 to surface later as an apparent regression.
+
+Two shapes, both already dominant in the book:
+
+```xml
+<statement><m>(6, -1)</m> and <m>(2, -9)</m></statement>
+<statement><p><m>(6, -1)</m> and <m>(2, -9)</m></p></statement>   <!-- single-line -->
+```
+
+and the multi-line form, where the `<p>` takes its own lines and the content indents one level deeper.
+
+⚠️ **A statement can also hold loose prose *alongside* block content.** An enumeration that skips any `<statement>` containing a block child misses these — 5 sites, four of them prose heads before an `<ol>` or `<md>`, one a trailing period after a display `<md>`. Test for text at depth 0 inside the element, not merely for the absence of block children.
+
+⚠️ **An empty `<statement/>` is not this class.** `c1-classification/exercises-class.ptx` has 12 `<task>` elements whose statement is genuinely empty — the prompt is in the `<title>`, the content in `<areas>`. They produce **432 messages, 36 apiece**, and are every statement message left in the book. Wrapping an empty element in an empty `<p>` games the schema without fixing anything; per the guardrails these need a real statement or a restructure, and that is the author's call.
 
 ### Block elements inside a `<p>` — `<sidebyside>`, `<image>`
 
