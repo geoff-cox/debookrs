@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **2,136** messages — 1,909 schema + 227 validation-plus. Of those, **111 are blocked on an author decision** (see the blocked-class section), leaving ~2,025 actionable. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **2,586** messages — 2,359 schema + 227 validation-plus, measured on this branch. `main` itself stands at **2,663** (2,432 + 231), so the branch is 77 below it. The absolute figure rose because `main` advanced mid-sweep: `f4ff673` ("ch2 validation sweep") leaves `c1-classification/exercises-class.ptx` at 468 messages. **Always state which commit a book-wide number was measured on** — comparing against a stale `main` reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -130,7 +130,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 2,136** (1,909 schema + 227 validation-plus), as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 2,586** (2,359 schema + 227 validation-plus), against a `main` that itself sits at 2,663, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
