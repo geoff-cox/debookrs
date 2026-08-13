@@ -246,7 +246,11 @@ Cleared 77 → 2. The 2 survivors are nested `<sidebyside>` inside `<sidebyside>
 
 ### `<caption>` comes first in a `<figure>`
 
-The schema orders `MetaDataCaption` before the interactive slot, so a `<figure>` whose `<caption>` trails its `<image>` is invalid. **18 sites**, pre-existing and unrelated to any sweep work — but easy to miss, because a figure that is already failing for another reason hides it. Reordering is the whole fix. Related: `<image>` wrapped in a `<p>` inside a `<sidebyside>` panel — the panel should be the `<image>` itself.
+The schema orders `MetaDataCaption` before the interactive slot, so a `<figure>` whose `<caption>` trails its `<image>` is invalid. **5 figures across 4 files in `c6-qm`**, pre-existing and unrelated to any sweep work — but easy to miss, because a figure that is already failing for another reason hides it. Reordering is the whole fix.
+
+A separate shape reports under the same `<image> is not allowed here` message: an `<image>` wrapped in a `<p>`, usually a `<sidebyside>` panel written as `<p><image/></p>` where the panel should just be the `<image>`. **12 sites across 6 files.** The two together took that message from 18 to 1 — 18 is the count of the *message*, not of either shape.
+
+⚠️ **Carry the panel width when you unwrap a single-panel `<sidebyside>` around an image.** `<sidebyside widths="50%"><image width="100%"/></sidebyside>` renders at half the text width, because the image fills the *panel*. Drop the panel and `width="100%"` now means the full text width — the figure silently doubles. Move the panel's width onto the image.
 
 
 ### `<solution>`/`<answer>` inside an `<ol>/<li>` → `<exercises>`
