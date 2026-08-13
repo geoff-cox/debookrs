@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **923 schema messages**, measured on this branch at `006177d`, down from **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **851 schema messages**, measured on this branch at `b362b64`, down from **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **Say which engine produced a number.** These figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
@@ -137,7 +137,9 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Since then: the R8 conversion, at `40d8fc9`.** All 16 exercises files moved to the `<exercises>`/`<exercisegroup>` shape; **R8 is 40 → 0**, and the schema half went 945 → 1,685 → **1,045** on the harness described in the header (the rise is the reverse cascade, not a regression — the conversion made 743 previously-masked errors visible and 596 of them were swept). Five of the sixteen files are now clean. Full accounting in the R8 section below.
 
-**Latest: the quick-reference appendix, at `006177d`.** All twelve `aa-bookends/a3-quickref/*.ptx` files went **121 → 0**, taking the book-wide schema half to **923** on the same harness. That is the current figure the header quotes. Details in the quick-reference section below.
+**Then: the quick-reference appendix, at `006177d`.** All twelve `aa-bookends/a3-quickref/*.ptx` files went **121 → 0**, taking the book-wide schema half to **923** on the same harness. Details in the quick-reference section below.
+
+**Latest: Phase 6, at `b362b64`.** `c5-if/sec-product-rule.ptx` went **72 → 0** and no `<var>` remains outside a `<webwork>` in the book, taking the schema half to **851**. That is the current figure the header quotes.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -165,11 +167,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `006177d`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
+Regenerated at `b362b64`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c5-if/sec-product-rule.ptx` | 72 | Phase 6 `<var>` → `<fillin>` plus `<line>` in `<premise>`/`<response>` ×17 |
 | `aa-bookends/a1-algebra/L-pfd.ptx` | 51 | `<evaluation>` cascade — check child order first (Phase 2C) |
 | `aa-bookends/a2-calculus/A-limits.ptx` | 34 | `<solution>` inside a nested `<ol>/<li>`; needs the outer grouping restructured by hand |
 | `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children — author call |
@@ -183,7 +184,7 @@ Regenerated at `006177d`, schema half only, same harness as the header. Nothing 
 
 **`aa-bookends/a3-quickref/` is finished: 121 → 0, all twelve files.** See the section below for what that took, since the same shapes recur elsewhere.
 
-`c5-if/sec-product-rule.ptx` is the largest single file left, and it is the one where the schema fix and a live student-facing render bug are the same edit (Phase 6).
+**Phase 6 is finished** — `sec-product-rule` went 72 → 0 and no `<var>` remains outside a `<webwork>` in the book. `aa-bookends/a1-algebra/L-pfd.ptx` is the largest single file left at 51, and it is an `<evaluation>` cascade: check child order first (Phase 2C) before believing the message.
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
@@ -414,7 +415,7 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 **Three of these need the author, not a rule:**
 
 1. **WeBWorK exercises with `<hint>`/`<answer>`/`<solution>` after `</webwork>`** — about 7 exercises. `<webwork>` accepts `<hint>` and `<solution>` *inside* it, so those can move; there is no `AnswerWW`, so the `<answer>` has no legal home. Folding it into the solution or dropping it (WeBWorK grades the answer itself) is an authoring call. Moving only the hint and solution clears nothing, so this is left whole.
-2. **`<line>` used for line breaks inside a `<sidebyside>` panel** — 36 across `c2-solns`, `c11-ltm`, `c8-lhcc`, plus more outside the exercises files (`c5-if/sec-product-rule.ptx` ×17). `<line>` belongs to `<poem>` and `<program>`. The replacement depends on what the stacked lines are: `<md>`/`<mrow>` for equation steps, a list for an answer key, or running text. Each choice changes the layout.
+2. **`<line>` used for line breaks inside a `<sidebyside>` panel** — 36 across `c2-solns`, `c11-ltm`, `c8-lhcc`. (`sec-product-rule`'s 17 are gone: they were inside `<feedback>`, not a panel, and became plain paragraphs with the Phase 6 conversion.) `<line>` belongs to `<poem>` and `<program>`. The replacement depends on what the stacked lines are: `<md>`/`<mrow>` for equation steps, a list for an answer key, or running text. Each choice changes the layout.
 3. **`<paragraphs>` inside a `<solution>`** — 12 in `c12-ltp/exercises-ltp.ptx`, used as titled steps ("Step 1: Apply the Laplace Transform"). `<paragraphs>` is a division-level element; PreTeXt has no titled block for this inside a solution, so the heading has to become something else.
 
 And one that is mechanical but was left for a later pass so it can be verified on its own: **`<area>` nested inside `<ol>/<li>`** in `c4-sov` — `<areas>` accepts `<p>`, `<cline>` and `<tabular>`, and an `<area>` inside a list item's paragraph is out of reach of that model, so the numbered steps need restructuring the way Phase 4A restructured the `<sidebyside>` wrappers.
@@ -713,20 +714,41 @@ Card-sort and matching leaves hold **text and inline elements**. No `<p>`, no `<
 
 ---
 
-## Phase 6 — `<var>` is WeBWorK-only
+## Phase 6 — `<var>` is WeBWorK-only ✅ DONE
 
-**18 violations · all in `c5-if/sec-product-rule.ptx`**
+**`c5-if/sec-product-rule.ptx` 72 → 0. No `<var>` remains outside a `<webwork>` anywhere in the book.**
 
 ```
 The <var> element is exclusive to a WeBWorK problem, and so must only appear
 within a <webwork> element, not here. It will be ignored.
 ```
 
-These are blank-slot prompts (`<var width="3px"/>`) inside math, and **they currently render as nothing** — a live student-facing bug, not just a schema complaint.
+The blank slots really did render as nothing — the exercise asked students to fill in gaps that were not on the page. Under `salve` this file reported it as **54 bare `Invalid content (ChoiceError)`**, which is the "worth re-checking under `jing` for a clearer message" note in the Work order summary: the clearer message was this one.
 
-- [ ] **6.1** Replace each `<var width="3px"/>` with `<fillin characters="3"/>`.
-- [ ] **6.2** `<fillin>` cannot sit inside `<m>`. Restructure `<m>x^2 \cdot</m> <fillin characters="3"/> <m>+ \cdots</m>` as alternating inline math and fill-ins, or move the whole prompt into a proper Runestone fill-in exercise with `<evaluation>`.
-- [ ] **6.3** Check the rendered output for these two exercises specifically — this file is one where the schema fix and the pedagogy fix are the same edit.
+- [x] **6.1** ~~Replace each `<var width="3px"/>` with `<fillin characters="3"/>`~~ — done, but **size the blank to its answer**, not to a fixed 3. `characters="3"` fits `t` and `P`; it does not fit `-sin(x)`. Now `characters="8"` for the three blanks taking an expression, `characters="3"` for the digit and the two single symbols, with `mode="number"` on the numeric one. (`width="3px"` was never meaningful — three pixels.)
+- [x] **6.2** `<fillin>` cannot sit inside `<m>` — it did not have to here: the source already alternated `<m>x^2 \cdot</m> <var/> <m>+</m>`, so the swap was direct.
+- [x] **6.3** The grading moved too, which 6.1 alone would not have achieved. **The whole `<setup>` of `<var>`/`<condition>` pairs was also WeBWorK vocabulary**, and the schema's `<setup>` is for JS imports and `<de-object>`s — nothing to do with grading. The real home is `<evaluation>`:
+
+```xml
+<statement>
+  <p><m>x^2 \cdot</m> <fillin characters="8"/> <m>+</m> <fillin characters="8"/> <m>\cdot \cos x</m></p>
+</statement>
+<evaluation>
+  <evaluate>                                  <!-- one per blank, in statement order -->
+    <test correct="yes">
+      <strcmp>\s*-\s*sin\s*\(?x\)?\s*</strcmp>   <!-- or <numcmp value="3"/> -->
+      <feedback><p>Correct!</p></feedback>
+    </test>
+    <test><strcmp>.*</strcmp><feedback><p>Incorrect, try again.</p></feedback></test>
+  </evaluate>
+</evaluation>
+```
+
+`c1-classification/sec-order.ptx` was already doing this and validating clean — **read it before writing a fill-in-the-blank by hand.** The conversion is name-for-name: `<var>` → `<evaluate>`, `<condition string=…>` → `<test>` + `<strcmp>`, `<condition number=…>` → `<test>` + `<numcmp value=…>`, `correct="yes"` on the branch whose feedback says "Correct!". Every regex and every word of feedback moves verbatim.
+
+⚠️ The 17 `<line>` wrappers inside that feedback went with it. `<line>` belongs to `<poem>` and `<program>`; a feedback body is a paragraph. This is the same misuse catalogued in the `<line>` item under the R8 section — it turns up wherever someone wanted a line break.
+
+⚠️ **Still worth rendering.** This is the one fix in the sweep so far that changes what a student can actually do on the page, and nothing here has been checked in a built target.
 
 ---
 
@@ -841,7 +863,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | 3 | Lists need `<p>` | 155 | Low | Now spread well beyond `*-model.ptx` |
 | 4 | Runestone models | 59 | **High** | R6×6, R7×53 — smaller than the old 171 |
 | 5 | Division nesting | 59 | ✅ 5A done | **R8×40 → 0**, all 16 exercises files; R12×16 remains. 5A's "promote to a sibling `<section>`" is superseded — see the R8 decision |
-| 6 | `<var>` → `<fillin>` | 12 | Medium | Live render bug; 6 elements, one file |
+| 6 | `<var>` → `<fillin>` | 12 | ✅ done | Was a live render bug. The `<setup>` grading had to move to `<evaluation>` too — 6.1 alone would not have fixed it |
 | 7 | Figures / sidebyside | 128 | Medium | **Grew** from 81; 12 still cause silent content loss |
 | 8 | Text & a11y | 169 | Low | Unchanged; the validation-plus half was always accurate |
 | 9 | Re-validate | — | — | — |
