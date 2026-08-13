@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **1,617** messages — 1,390 schema + 227 validation-plus, measured on this branch at `a8e1c83` (`main` was 2,586 at `545f04e`). **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **1,144** messages — 917 schema + 227 validation-plus, measured on this branch at `5e8259e` (`main` was 1,617 at `1784089`). **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -131,7 +131,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 ### Progress
 
-**Book-wide: 3,142 → 1,617** (1,390 schema + 227 validation-plus), measured at `a8e1c83`, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
+**Book-wide: 3,142 → 1,144** (917 schema + 227 validation-plus), measured at `5e8259e`, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -264,6 +264,12 @@ Moved blocks dedent one level. **Expect the diff to be large relative to the num
 
 Cleared 77 → 2. The 2 survivors are nested `<sidebyside>` inside `<sidebyside>`, which is a layout decision, not a mechanical fix.
 
+### A `<cell>` takes inline content — `<md>` in a table cell is an error
+
+Converting any grid into a `<tabular>` is a **two-step** change. Moving the panels into `<cell>` elements is the obvious half; the half that is easy to miss is that a cell takes inline content, so display `<md>` has to become inline `<m>`. Converting three `<sbsgroup>` grids and stopping at step one traded 3 errors for about 50 and pushed the book-wide count **up** by 22. With the math converted, the same three files went 94 → 31.
+
+This is also why **`<md> is not allowed here` is the largest class left (229)** — a good share of it is display math sitting in table cells that were built this way already.
+
 ### `<caption>` comes first in a `<figure>`
 
 The schema orders `MetaDataCaption` before the interactive slot, so a `<figure>` whose `<caption>` trails its `<image>` is invalid. **5 figures across 4 files in `c6-qm`**, pre-existing and unrelated to any sweep work — but easy to miss, because a figure that is already failing for another reason hides it. Reordering is the whole fix.
@@ -339,7 +345,8 @@ Phase 5A's fix ("promote each nested `<exercises>` to a sibling `<section>`") ad
 
 The candidate fixes all change how the book is organized:
 
-1. **One `<exercises>` holding `<subexercises>` parts** — the schema-blessed way to name sub-groups, and it preserves every `label`. **Cost: introduces a structure used nowhere in this book, and changes numbering/rendering in all 16 files.**
+1. ~~**One `<exercises>` holding `<subexercises>` parts**~~ — **not available.** `<subexercises>` is not defined in `pretext-dev.rng` at 2.48.1; the book has zero of them. Disregard this option.
+1. **One `<exercises>` holding titled `<exercisegroup>`s** — the shape the author's own `c0-whats-a-de/exercises-wad.ptx` and `c1-classification/exercises-class.ptx` already use, and `<exercisegroup>` appears 73 times in the book, 65 of them titled. **Blocker: `<exercisegroup>` cannot nest.** Only **1 of the 15** affected files (`c6-qm/exercises-qm.ptx`) has divisions containing nothing but `<exercise>`; the other 14 already hold groups of their own, so wrapping a division in a new group is invalid. Collapsing their three levels — division → group → exercise — into the two the schema allows means choosing which heading to lose, which is per-file editorial work rather than a sweep. Applying it to `c5-if/exercises-if.ptx` cleared its 3 R8 messages and introduced 3 `<exercisegroup> is not allowed here` in their place.
 2. **Split each division into its own `<section>`** — matches Phase 5A. **Cost: three sections per chapter's exercises instead of one, and the chapter's section numbering shifts.**
 3. **Keep one `<exercises>` and drop the grouping** — simplest. **Cost: loses the quiz/drills/problems distinction, which is pedagogical, not cosmetic.**
 
