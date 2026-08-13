@@ -137,9 +137,12 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Since then: the R8 conversion, at `40d8fc9`.** All 16 exercises files moved to the `<exercises>`/`<exercisegroup>` shape; **R8 is 40 → 0**, and the schema half went 945 → 1,685 → **1,045** on the harness described in the header (the rise is the reverse cascade, not a regression — the conversion made 743 previously-masked errors visible and 596 of them were swept). Five of the sixteen files are now clean. Full accounting in the R8 section below.
 
+**Latest: the quick-reference appendix, at `006177d`.** All twelve `aa-bookends/a3-quickref/*.ptx` files went **121 → 0**, taking the book-wide schema half to **923** on the same harness. That is the current figure the header quotes. Details in the quick-reference section below.
+
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
 | the 16 `exercises-*.ptx` / `review-*.ptx` files | 89 | **189** | 16 files | R8×40 → 0; the rise is unmasked Phase 2/4 work — see the R8 section |
+| the 12 `aa-bookends/a3-quickref/*.ptx` files | 121 | **0** ✅ | 12 files | one shared structural defect; `c9-qref-lt` alone was 90, 88 of them `<md>` in a `<cell>` |
 | `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
