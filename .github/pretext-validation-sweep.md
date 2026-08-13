@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **546 schema messages**, measured on this branch at `f9c2ad9`, down from **923** at the merge of #225 and **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **540 schema messages**, measured on this branch at `8b155e1`, down from **923** at the merge of #225 and **1,044** at the merge of #224 and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **Say which engine produced a number.** These figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
@@ -141,7 +141,7 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Then: Phase 6, at `b362b64`.** `c5-if/sec-product-rule.ptx` went **72 → 0** and no `<var>` remains outside a `<webwork>` in the book.
 
-**Latest: the book-wide mechanical classes, at `f9c2ad9`.** **923 → 546**, and 21 files went to zero — including *every* `*-model.ptx`. That is the current figure the header quotes.
+**Then: the book-wide mechanical classes, at `f9c2ad9`.** **923 → 546**, and 21 files went to zero — including *every* `*-model.ptx`.
 
 | Pass | Sites | Book-wide |
 |---|---:|---|
@@ -159,6 +159,33 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 - Widening the general "wrap runs of inline siblings" pass to more parents **broke well-formedness in nine files**: that pass assumes an element whose open and close tags sit on their own lines, which does not hold for `<example>` and friends. Reverted rather than patched.
 
 **Every transform now re-parses its own output and refuses to write a file that no longer parses.** Do the same with anything new — `git diff` will not tell you, and neither will the message count.
+
+**Latest: review of #226, at `8b155e1`. 546 → 540.**
+
+| Pass | Sites | Book-wide |
+|---|---:|---|
+| reversed `<p>` wrappers around `<answer>`/`<feedback>` — a regression of the previous batch | 9 in 3 files | 546 → 544 |
+| lead-in and the block it introduces merged into one `<p>` (rendering shape, not an error) | 144 in 37 files | 544 → 544 |
+| `EXL-exp-logs` practice list → `<example>`s; `<statement>` added to all nine examples | 16 | 544 → 541 |
+| the two other examples book-wide owning a `<solution>` with no `<statement>` | 2 | 541 → 540 |
+
+⚠️ **A "fix" can be worse than what it replaced, and the count will not always say so.** The previous batch's single-line branch took the whole source *line* as the `<md>` body, so where an `<md>` shared its line with its parent's tags the parent was swept into the new `<p>`:
+
+```xml
+<answer><md>x = z^3</md></answer>        <!-- before -->
+<p><answer><md>x = z^3</md></answer></p> <!-- after: worse -->
+```
+
+That is invalid nesting *and* leaves the bare `<md>` exactly where it started. **The file's count did not move** (21 → 21), because the enclosing `<li>` was already failing and masked it. Copilot caught it on the PR; nothing in the harness would have. When a transform emits a wrapper, assert the wrapper's *child* is what you meant to wrap.
+
+Two content models worth recording, both found the hard way:
+
+- **`Feedback` has an inline branch, but it is `TextLong`** — whose `TextLongContent` refs `MathInline` and **not** `MathDisplay`. So inline feedback is fine until it contains an `<md>`, at which point the block branch is forced and the `<p>` goes *inside* the `<feedback>`.
+- **`ExampleLike` takes `BlockStatement+` **or** `Statement, Hint*, Answer*, Solution*`.** Loose `<p>` plus `<solution>` is neither: **the moment an `<example>` owns a solution, its prompt needs an explicit `<statement>`.** Converting the `EXL-exp-logs` list to examples took the file 21 → 27 before this was found, and it was firing on two *pre-existing* examples the pass never touched. A book-wide sweep found only 11 sites total, all now fixed.
+
+**`<p>` takes `TextParagraph`, and `TextParagraphItem` refs both `MathDisplay` and `List`** — so a `<md>`, `<ol>`, `<ul>` or `<dl>` may live inside the paragraph that introduces it. Per the author, when a lead-in runs on into its block, that is where it belongs; splitting them across two `<p>` renders the equation as an orphaned paragraph. Scoped to a clear continuation: lead-in ends in a colon, next `<p>` holds that one block and nothing else, lead-in is pure prose, only whitespace between them.
+
+⛔ **Two continuation buckets still need the author.** 12 colon-cued sites whose lead-in already carries its own display math, and ~150 whose lead-in ends in something other than a colon — often mid-LaTeX, so whether they are continuations is a judgement per site rather than a pattern.
 
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
@@ -186,7 +213,7 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `f9c2ad9`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
+Regenerated at `8b155e1`, schema half only, same harness as the header. Nothing here is deferred on a decision; the classes that do need the author are listed at the end of the R8 section and in the quick-reference section below.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
@@ -197,7 +224,7 @@ Regenerated at `f9c2ad9`, schema half only, same harness as the header. Nothing 
 | `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
 | `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` — author call |
 | `c1-classification/exercises-class.ptx` | 21 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
-| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 21 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
+| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` inside a `<sidebyside>` panel — author call |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 16 | assorted |
 
