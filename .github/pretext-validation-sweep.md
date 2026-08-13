@@ -3,7 +3,9 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **1,144** messages — 917 schema + 227 validation-plus, measured on this branch at `5e8259e` (`main` was 1,617 at `1784089`). **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **1,045 schema messages**, measured on this branch at `40d8fc9`, down from **945** before the R8 conversion and **1,685** immediately after it — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+
+⚠️ **Say which engine produced a number.** The 945 → 1,045 figures are the *schema* half only, from `salve` against `pretext-dev.rng` over an assembly built by resolving `<xi:include>` textually — not from `pretext validate`, which was not installable here (`pdfcropmargins` fails to build). That harness reads 945 where `pretext validate --engine salve` read 917 at the same commit, a ~3% gap from assembly details, and it reports no validation-plus advisories at all. **Comparisons within one harness are sound; comparisons across harnesses are not.** Re-baseline with `pretext validate --dev --engine salve` before quoting a book-wide number in a report.
 **Companion data:** `validation-inventory.csv` — per-file × per-rule counts, sorted by `edit_sites`. Baseline figures; the Progress and Queue tables below are current.
 
 ---
@@ -133,8 +135,11 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Book-wide: 3,142 → 1,144** (917 schema + 227 validation-plus), measured at `5e8259e`, as of the last full `--engine salve` run — with every `<xi:include>` active. Note that a commented-out include is not built and therefore not validated: `efc1267` had five chapter-9 sections commented out, which depresses the count for reasons unrelated to any fix. Always confirm `grep -c '<!-- *<xi:include' source/main.ptx` is 0 before quoting a book-wide number.
 
+**Since then: the R8 conversion, at `40d8fc9`.** All 16 exercises files moved to the `<exercises>`/`<exercisegroup>` shape; **R8 is 40 → 0**, and the schema half went 945 → 1,685 → **1,045** on the harness described in the header (the rise is the reverse cascade, not a regression — the conversion made 743 previously-masked errors visible and 596 of them were swept). Five of the sixteen files are now clean. Full accounting in the R8 section below.
+
 | File | Msgs before | after | Sites | Notes |
 |---|---:|---:|---:|---|
+| the 16 `exercises-*.ptx` / `review-*.ptx` files | 89 | **189** | 16 files | R8×40 → 0; the rise is unmasked Phase 2/4 work — see the R8 section |
 | `c10-lt/sec-lt-properties.ptx` | 121 | **5** ✅ | 46 | R1×58; remainder is the blocked class below |
 | `c9-uc/sec-selecting-the-particular-soln.ptx` | 124 | **17** ✅ | 40 | R1×57 (24 of them masked), R7×4 |
 | `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 190 | **8** ✅ | 11 | R1×12, **2C×6**, R13×2 |
@@ -157,17 +162,22 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Ranked by messages actually actionable — the `deferred` column is the blocked class described below, which no amount of mechanical work will clear.
+Regenerated at `40d8fc9`, schema half only, same harness as the header. The R8 blocker is gone, so nothing here is deferred on a decision any more — but three classes inside the exercises files do need the author, and they are listed at the end of the R8 section.
 
-| File | Msgs | Deferred | Actionable |
-|---|---:|---:|---:|
-| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 91 | 5 | 86 |
-| `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | 0 | 90 |
-| `aa-bookends/a1-algebra/PSF-point-slope-form.ptx` | 75 | 0 | 75 |
-| `aa-bookends/a1-algebra/POL-point-on-a-line.ptx` | 74 | 0 | 74 |
-| `c5-if/sec-product-rule.ptx` | 72 | 0 | 72 |
-| `c10-lt/sec-lt-library.ptx` | 72 | 0 | 72 |
-| `c7-em/sec-what-is-a-numerical-solution.ptx` | 70 | 0 | 70 |
+| File | Msgs | Dominant class |
+|---|---:|---|
+| `aa-bookends/a3-quickref/c9-qref-lt.ptx` | 90 | untouched by any sweep so far — start here |
+| `c5-if/sec-product-rule.ptx` | 72 | Phase 6 `<var>` → `<fillin>` plus `<line>` in `<premise>`/`<response>` ×17 |
+| `aa-bookends/a1-algebra/L-pfd.ptx` | 51 | `<evaluation>` cascade — check child order first (Phase 2C) |
+| `aa-bookends/a2-calculus/A-limits.ptx` | 34 | `<solution>` inside a nested `<ol>/<li>`; needs the outer grouping restructured by hand |
+| `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children — author call |
+| `c2-solns/exercises-solns.ptx` | 30 | `<line>` inside a `<sidebyside>` panel — author call |
+| `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
+| `c1-classification/exercises-class.ptx` | 23 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
+| `c7-em/exercises-em.ptx` | 23 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
+| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 23 | untouched |
+
+`aa-bookends/a3-quickref/c9-qref-lt.ptx` has been the largest single file for three sweeps running and has never been opened. It is the highest-value target left.
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
@@ -330,29 +340,78 @@ Heaviest files: `c9-uc/sec-selecting-the-particular-soln` (17), `c11-ltm/sec-lap
 
 ---
 
-## ⛔ Blocked on the author: multiple `<exercises>` divisions per section
+## ✅ DECIDED: multiple `<exercises>` divisions per section (R8)
 
-**43 messages across 16 files.** This is R8, and it is not a scattering of mistakes — it is how *every* exercises file in the book is built. All 15 `source/**/exercises-*.ptx` files use **two or three sibling `<exercises>` divisions** (`…-concept-quiz`, `…-drills`, `…-problems`), and **not one of them uses `<subexercises>`**. The schema rejects the pattern.
+**The author resolved this. R8 is 40 → 0 across all 16 exercises files.** The shape is the one `c1-classification/exercises-class.ptx` already used, stated by the author as two swaps:
 
-Two shapes appear, and they are not the same problem:
+- `<section>` → `<exercises>`
+- `<subsection>` → `<exercisegroup>`
 
-| Shape | Example | Flagged |
-|---|---|---|
-| `<exercises>` nested inside a `<subsection>` | `c1-classification/exercises-class.ptx`, `c3-di`, `c4-sov` | every one |
-| Sibling `<exercises>` divisions inside one `<section>` | `c10-lt/exercises-lt.ptx`, `c5-if/exercises-if.ptx` | varies — `exercises-lt` flags only the 2nd and 3rd, `exercises-if` flags all three |
+and one requirement: **every `<exercisegroup>`, and every `<exercise>` that holds `<task>`s, gets an appropriate `<introduction>`.** For an exercisegroup the schema *requires* one — `ExerciseGroup` refs `IntroductionStatementNoNumber` outside any `<optional>` — so this is not a style preference.
 
-Phase 5A's fix ("promote each nested `<exercises>` to a sibling `<section>`") addresses only the first shape. It does **not** help the second, where the divisions are already siblings in a section.
+### The rules the conversion followed
 
-The candidate fixes all change how the book is organized:
+`<exercisegroup>` cannot nest, and 13 of the 14 remaining files had divisions holding groups of their own. The author chose **promote the inner groups**:
 
-1. ~~**One `<exercises>` holding `<subexercises>` parts**~~ — **not available.** `<subexercises>` is not defined in `pretext-dev.rng` at 2.48.1; the book has zero of them. Disregard this option.
-1. **One `<exercises>` holding titled `<exercisegroup>`s** — the shape the author's own `c0-whats-a-de/exercises-wad.ptx` and `c1-classification/exercises-class.ptx` already use, and `<exercisegroup>` appears 73 times in the book, 65 of them titled. **Blocker: `<exercisegroup>` cannot nest.** Only **1 of the 15** affected files (`c6-qm/exercises-qm.ptx`) has divisions containing nothing but `<exercise>`; the other 14 already hold groups of their own, so wrapping a division in a new group is invalid. Collapsing their three levels — division → group → exercise — into the two the schema allows means choosing which heading to lose, which is per-file editorial work rather than a sweep. Applying it to `c5-if/exercises-if.ptx` cleared its 3 R8 messages and introduced 3 `<exercisegroup> is not allowed here` in their place.
-2. **Split each division into its own `<section>`** — matches Phase 5A. **Cost: three sections per chapter's exercises instead of one, and the chapter's section numbering shifts.**
-3. **Keep one `<exercises>` and drop the grouping** — simplest. **Cost: loses the quiz/drills/problems distinction, which is pedagogical, not cosmetic.**
+| Case | What happens |
+|---|---|
+| Division's own `<exercisegroup>` **with** a title | promoted to a top-level group; the division's emoji cue (💡 / 🏋️‍♂️ / ✍🏻) is prefixed to its title, so the quiz/drills/problems band is still visible |
+| Division's own `<exercisegroup>` **without** a title | promoted, still untitled — it shows no heading today either |
+| Run of loose `<exercise>`s **at the head** of a division | becomes a group carrying the division's `label` and title; that heading is what sits above them today |
+| Run of loose `<exercise>`s **after** a group | left loose. An `<exercise>` is a legal child of `<exercises>`, so it keeps rendering with no heading of its own — and needs no invented introduction |
+| `<aside>` or prose at the head of a division | folded into that group's `<introduction>` (an exercisegroup takes no `<aside>` of its own) |
+| Section-level prose | becomes the `<exercises>` division's own `<introduction>` |
+| `<title>Exercises</title>` on the section | dropped — an `<exercises>` division titles itself |
 
-No `<xref>` anywhere in `source/` references `lt-concept-quiz`, `lt-drills`, or `lt-problems`, so at least the labels are not load-bearing for cross-references — but they are for the reader.
+Nothing gains a heading it does not already have, and nothing loses one except the division heading itself, which the emoji cue carries forward.
 
-⚠️ **This class masks mechanical work.** The schema does not descend into a rejected element, so R1 errors inside the 2nd and 3rd divisions are invisible. `c10-lt/exercises-lt.ptx` reported 20 inline `<statement>`s and actually had 45. When sweeping one of these files, fix every instance in the file rather than only the flagged ones, or the remainder will surface the day this is decided — and verify by enumerating the source, since the validator cannot confirm work it cannot see.
+Labels: the division labels (`lt-drills`, `uc-problems`, …) are dropped except where they land on the lead group. Only **`fo-review-other-methods`** is referenced by an `<xref>` (twice, `text="title"`), and it is kept, on a titled group. `validate_source.py` confirms 1,727 unique ids with no duplicates after the change.
+
+Two things worth knowing for any future division work:
+
+- **`@cols` on an `<exercisegroup>` takes 2–6.** Five groups carried `cols="1"`, which is invalid and made the entire group fail. One column is the default; drop the attribute.
+- A `<section>` *can* legally hold several `<exercises>` divisions — but only on the branch that starts with a `<subsection>`. That is why the mixed shapes flagged inconsistently.
+
+### ⚠️ It unmasked 743 errors, and that was the point
+
+The schema does not descend into a rejected element, so every error inside the 2nd and 3rd divisions was invisible. Clearing R8 took the book from 942 to 1,685 messages before any of it was swept. **This is the reverse cascade, not a regression.** Sweeping the mechanical part of it brought the book to **1,045**:
+
+| Class swept in the same pass | Sites |
+|---|---:|
+| `<answer>` moved before `<solution>` (schema order `statement → hint → answer → solution`) — this is what the 396 `<evaluation>` messages were reporting | 235 |
+| bare `<m>`, `<md>`, `<ol>` inside `<answer>`/`<solution>`/`<hint>` wrapped in `<p>` (R1) | 34 |
+| `<premise>`/`<response>` line and `<p>` wrappers flattened to inline text (Phase 4B) | 10 |
+| `<p>`-wrapped `<line>` inside `<areas>` → `<cline>` children of `<areas>` | 6 |
+| `cols="1"` dropped | 5 |
+| empty `<introduction/>` removed (30 messages from 3 sites) | 3 |
+| `\mbox{…}` prose trailing a `<md>` moved out into the enclosing `<p>` | 3 |
+| `<mrow>` continuation lines re-closed inside their own row | 3 |
+| `</p>` closing mid-sentence in a `<statement>` | 2 |
+
+⚠️ **`<intertext>` is not the fix for prose after the last `<mrow>`.** The schema requires every intertext to be *sandwiched* between mrows — it cannot lead, cannot trail, and two cannot be adjacent. A trailing one trades one error for eight. Trailing prose belongs after `</md>`, in the enclosing `<p>`.
+
+### What is left in those files — 189 messages, and it is not R8
+
+Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/review-choosing-a-method`, `c14-nlinsys`, and `c5-if/review-first-order-methods` is at 1.
+
+| File | Left | Dominant class |
+|---|---:|---|
+| `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside an `<ol>/<li>` in `<areas>`; WeBWorK exercises with trailing `<hint>`/`<answer>`/`<solution>` |
+| `c2-solns/exercises-solns.ptx` | 30 | `<line>` inside a `<sidebyside>` panel (18) |
+| `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
+| `c7-em/exercises-em.ptx` | 23 | `<stack>` and a bare `<p>` where a `<statement>` belongs |
+| `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` (12) |
+| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` inside a `<sidebyside>` panel (12) |
+| `c8-lhcc/exercises-lhcc.ptx` | 18 | `<line>` (6); WeBWorK trailing children |
+| `c13-linsys`, `c10-lt`, `c5-if`, `c9-uc` | 19 | assorted `<md>` placement, `<proof>`, `<response>` |
+
+**Three of these need the author, not a rule:**
+
+1. **WeBWorK exercises with `<hint>`/`<answer>`/`<solution>` after `</webwork>`** — about 7 exercises. `<webwork>` accepts `<hint>` and `<solution>` *inside* it, so those can move; there is no `AnswerWW`, so the `<answer>` has no legal home. Folding it into the solution or dropping it (WeBWorK grades the answer itself) is an authoring call. Moving only the hint and solution clears nothing, so this is left whole.
+2. **`<line>` used for line breaks inside a `<sidebyside>` panel** — 36 across `c2-solns`, `c11-ltm`, `c8-lhcc`, plus more outside the exercises files (`c5-if/sec-product-rule.ptx` ×17). `<line>` belongs to `<poem>` and `<program>`. The replacement depends on what the stacked lines are: `<md>`/`<mrow>` for equation steps, a list for an answer key, or running text. Each choice changes the layout.
+3. **`<paragraphs>` inside a `<solution>`** — 12 in `c12-ltp/exercises-ltp.ptx`, used as titled steps ("Step 1: Apply the Laplace Transform"). `<paragraphs>` is a division-level element; PreTeXt has no titled block for this inside a solution, so the heading has to become something else.
+
+And one that is mechanical but was left for a later pass so it can be verified on its own: **`<area>` nested inside `<ol>/<li>`** in `c4-sov` — `<areas>` accepts `<p>`, `<cline>` and `<tabular>`, and an `<area>` inside a list item's paragraph is out of reach of that model, so the numbered steps need restructuring the way Phase 4A restructured the `<sidebyside>` wrappers.
 
 ---
 
@@ -604,14 +663,13 @@ Card-sort and matching leaves hold **text and inline elements**. No `<p>`, no `<
 
 **21 violations**
 
-### 5A. `<exercises>` cannot nest inside `<subsection>` (19)
+### 5A. ~~`<exercises>` cannot nest inside `<subsection>`~~ ✅ DONE — superseded by the R8 decision
 
-Matches the existing repo convention: *a chapter-level exercises file is a `<section>`, not a `<subsection>`.*
+~~Promote each nested `<exercises>` to a sibling `<section>`.~~ **Do not do this.** The author chose the `<exercises>`/`<exercisegroup>` shape instead — see "✅ DECIDED: multiple `<exercises>` divisions per section (R8)" above. The `<subsection>` wrappers in `c2-solns`, `c3-di` and `c4-sov` are gone, converted to `<exercisegroup>`s, and no exercises file uses `<section>` any more.
 
-- [ ] **5.1** Promote each nested `<exercises>` to a sibling `<section>`, **preserving its `label`** (`class-cq`, `class-drills`, …).
-- [ ] **5.2** Verify no `<xref>` breaks: `grep -rn 'ref="class-cq"' source/` for each label before and after.
-- [ ] **5.3** Also flagged: `<aside>` as a direct child of `<exercises>` (`c4-sov/exercises-sov.ptx`). An `<exercises>` division takes only `title`, `idx`, `introduction`, `exercise`, `exercisegroup`, `subexercises`, `interactive`, `conclusion`. Move the aside into the `<introduction>`.
-- [ ] **5.4** Files: `c5-if/review-first-order-methods.ptx` (3), `c3-di/exercises-di.ptx` (3), `c1-classification/exercises-class.ptx`, `c5-if/exercises-if.ptx`, `c6-qm/exercises-qm.ptx`.
+- [x] **5.1** ~~Promote to a sibling `<section>`~~ — replaced by the R8 conversion, which drops the division labels rather than preserving them.
+- [x] **5.2** Xrefs verified: of the 41 division labels, only `fo-review-other-methods` is referenced (twice, `text="title"`), and it survives on a titled `<exercisegroup>`. `validate_source.py` reports 1,727 unique ids, no duplicates.
+- [x] **5.3** `<aside>` as a direct child of a division — moved into the group's `<introduction>` by the conversion, in `c4-sov`, `c5-if`, `c6-qm`, `c8-lhcc`, `c9-uc`, `c10-lt`, `c11-ltm`, `c12-ltp`, `c13-linsys`. An `<exercisegroup>` takes no `<aside>` either, and its `<introduction>` does.
 
 ### 5B. `<paragraphs>` after `<subsection>` (2)
 
@@ -748,7 +806,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | 2 | Exercise skeleton | 178 | Medium | R2×9, R3R4×169; judgment on feedback placement |
 | 3 | Lists need `<p>` | 155 | Low | Now spread well beyond `*-model.ptx` |
 | 4 | Runestone models | 59 | **High** | R6×6, R7×53 — smaller than the old 171 |
-| 5 | Division nesting | 59 | Medium | R8×43, R12×16; watch xrefs |
+| 5 | Division nesting | 59 | ✅ 5A done | **R8×40 → 0**, all 16 exercises files; R12×16 remains. 5A's "promote to a sibling `<section>`" is superseded — see the R8 decision |
 | 6 | `<var>` → `<fillin>` | 12 | Medium | Live render bug; 6 elements, one file |
 | 7 | Figures / sidebyside | 128 | Medium | **Grew** from 81; 12 still cause silent content loss |
 | 8 | Text & a11y | 169 | Low | Unchanged; the validation-plus half was always accurate |
