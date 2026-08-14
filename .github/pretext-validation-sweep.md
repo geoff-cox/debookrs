@@ -319,7 +319,7 @@ Regenerated at `a5f802a`, schema half only, same harness as the header. The WeBW
 
 **Phases 3, 6 and 8D are finished, `<paragraphs>`-in-a-`<solution>` is cleared, and every `*-model.ptx` is clean.** Regenerated at `a5f802a`, the largest remaining classes are `<solution>`/`<answer>` placement (**77**, spread thin across 24 files — the biggest single file holds 5), `<md>` placement (39), `<line>` used for line breaks (**32 across 8 files**, shape decided — see the R8 section), `<feedback>` at task level (24), and blocks inside a `<p>` (21). 390 messages now sit in **67 files**.
 
-⚠️ **`<solution>`/`<answer>` placement is no longer a per-file job.** It was concentrated in the exercises files when this line was first written; it is now 85 messages over 25 files with a modal count of 1–4 each. Working it file-by-file down the Queue will be slow. It is worth one book-wide enumeration of the *shapes* first — `<solution>` in a `<conclusion>`, `<answer>` trailing a `<solution>`, `<solution>` under an `<li>` — since each shape has an established fix in this document.
+⚠️ **`<solution>`/`<answer>` placement is no longer a per-file job.** It was concentrated in the exercises files when this line was first written; it is now **77 messages over 24 files** with a modal count of 1–4 each. Working it file-by-file down the Queue will be slow. It is worth one book-wide enumeration of the *shapes* first — `<solution>` in a `<conclusion>`, `<answer>` trailing a `<solution>`, `<solution>` under an `<li>` — since each shape has an established fix in this document.
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
@@ -484,10 +484,24 @@ Four traps, all of which cost a re-run when first hit:
 
 Done: `P-units-mass-balance` (21→7), `F-ibp` (13→7), `O-interrelated-functions` (3→1), `G-improper-integrals` (2→**0**), `E-usub` (4→3), `B-lhospital` (5→6, R1 unmasked), `N-recursive-functions` (→4), `A-limits` (32→**0**, the nested case). Remaining messages in these files are other classes — mostly `<sidebyside>` placement.
 
-⚠️ **Two content defects surfaced in `A-limits` and were deliberately left alone — they need the author.** Both are pre-existing and neither is a schema error, so fixing them would be an authoring change smuggled into a structural pass, which `efc1267`'s note above warns against:
+⚠️ **Content defects surfaced in `A-limits` and were deliberately left alone — they need the author.** All are pre-existing and none is a schema error, so fixing them would be an authoring change smuggled into a structural pass, which `efc1267`'s note above warns against:
 
 - **Missing `=` after `\amp`.** In the last two solutions (`\frac{1}{s+7}e^{(-7-s)b}` and `\frac{1}{s-a}e^{(a-s)b}`), the first three `<mrow>`s read `\amp \lim…`, `\amp \frac{1}{s+7}…`, `\amp \frac{1}{s+7}\cdot 0…` where every parallel problem reads `\amp = …`. Only the final row of each carries the `=`. The alignment column therefore has no relation symbol in it.
 - **`<m>s>3</m>`** — a bare `>` where the other twelve problems use `\gt`. Well-formed XML and valid schema; just inconsistent with the rest of the book.
+- 🔴 **The last problem's condition is reversed.** It asks for `\lim_{b\to\infty}[\frac{1}{s-a}e^{(a-s)b} + \frac{1}{a-s}]` "where `s \lt a`". If `s \lt a` then `a-s \gt 0`, the exponential diverges, and `1/(s-a)` is negative — so the limit is `-\infty`, not the stated `\frac{1}{a-s}`. Both the answer and the derivation (`\frac{1}{s-a}\cdot 0 + \frac{1}{a-s}`) assume `e^{(a-s)b} \to 0`, which needs **`s \gt a`**. Flagged by the Copilot reviewer on #227 and verified. It is the same problem that carries the missing `=`.
+
+### 🔴 Verified math errors elsewhere, all flagged and none fixed
+
+The Copilot reviewer on #227 read the mathematics of the content these passes moved, and found four genuine errors that the schema cannot see. All were **pre-existing** — the passes that touched these files proved their math multisets unchanged, so each was faithfully preserved, not introduced. All are the author's to correct.
+
+| File | Where | The error |
+|---|---|---|
+| `aa-bookends/a2-calculus/A-limits.ptx` | last task | condition `s \lt a` should be `s \gt a` (above) |
+| `c12-ltp/exercises-ltp.ptx` | roadmap at ~L1508, and ~L1696, ~L1898 | the roadmap's final answer disagrees with the derivation below it. `F(s) = \frac{1}{s(s^2+9)}` inverts to `\frac19(1 - \cos 3t)`, so both coefficients should be `\frac19`; the roadmap shows `\frac13` and `\frac16` |
+| `c12-ltp/exercises-ltp.ptx` | ~L1861 | `g(t) = 3(u_0 - u_1) + (1-3)(u_4)` — the last term is `-2u_4`, which would make the forcing `-2` after `t=4` rather than the stated `1`. The very next line simplifies it to `+ u_4`, so the `(1-3)` factor is the typo |
+| `c12-ltp/sec-laplace-piecewise-method.ptx` | ~L301, and ~L444, ~L560, ~L628, ~L813 | with `y(0)=0, y'(0)=1`, `\lap{y''} = s^2Y - 1`, but the line reads `s^2 Y(s) - s`. That `- s` is the transform for `y(0)=1, y'(0)=0`, and the rest of the derivation follows from it |
+
+📌 **A structural sweep is a good time to catch these and a bad time to fix them.** Moving a block puts its mathematics in a diff where a reader — or a review bot — will actually look at it, which is why four errors that had survived every previous pass surfaced at once here. But correcting them is authoring: it changes what a student reads, and the person who wrote the pedagogy should make the call. Record them, do not quietly repair them.
 
 ---
 
