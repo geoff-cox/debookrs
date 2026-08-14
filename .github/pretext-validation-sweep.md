@@ -488,20 +488,24 @@ Done: `P-units-mass-balance` (21→7), `F-ibp` (13→7), `O-interrelated-functio
 
 - **Missing `=` after `\amp`.** In the last two solutions (`\frac{1}{s+7}e^{(-7-s)b}` and `\frac{1}{s-a}e^{(a-s)b}`), the first three `<mrow>`s read `\amp \lim…`, `\amp \frac{1}{s+7}…`, `\amp \frac{1}{s+7}\cdot 0…` where every parallel problem reads `\amp = …`. Only the final row of each carries the `=`. The alignment column therefore has no relation symbol in it.
 - **`<m>s>3</m>`** — a bare `>` where the other twelve problems use `\gt`. Well-formed XML and valid schema; just inconsistent with the rest of the book.
-- 🔴 **The last problem's condition is reversed.** It asks for `\lim_{b\to\infty}[\frac{1}{s-a}e^{(a-s)b} + \frac{1}{a-s}]` "where `s \lt a`". If `s \lt a` then `a-s \gt 0`, the exponential diverges, and `1/(s-a)` is negative — so the limit is `-\infty`, not the stated `\frac{1}{a-s}`. Both the answer and the derivation (`\frac{1}{s-a}\cdot 0 + \frac{1}{a-s}`) assume `e^{(a-s)b} \to 0`, which needs **`s \gt a`**. Flagged by the Copilot reviewer on #227 and verified. It is the same problem that carries the missing `=`.
+- ✅ **The last problem's condition was reversed — fixed at the author's request.** It asks for `\lim_{b\to\infty}[\frac{1}{s-a}e^{(a-s)b} + \frac{1}{a-s}]`, and read "where `s \lt a`". If `s \lt a` then `a-s \gt 0`, the exponential diverges and `1/(s-a)` is negative, so the limit would be `-\infty`, not the stated `\frac{1}{a-s}`. Both the answer and the derivation assume `e^{(a-s)b} \to 0`, which needs **`s \gt a`** — and the two concrete cases in the same exercise (`s \gt 3` with `e^{(3-s)b}`, `s \gt -7` with `e^{(-7-s)b}`) already follow that pattern. Now `s \gt a`. It is the same problem that still carries the missing `=`.
 
-### 🔴 Verified math errors elsewhere, all flagged and none fixed
+### ✅ Four math errors, found by review and fixed on the author's instruction
 
-The Copilot reviewer on #227 read the mathematics of the content these passes moved, and found four genuine errors that the schema cannot see. All were **pre-existing** — the passes that touched these files proved their math multisets unchanged, so each was faithfully preserved, not introduced. All are the author's to correct.
+The Copilot reviewer on #227 read the mathematics of the content these passes moved and found four genuine errors the schema cannot see. All were **pre-existing** — the passes that touched these files proved their math multisets unchanged, so each was preserved faithfully, not introduced. All four were flagged rather than repaired, and then fixed in a separate commit once the author asked for it.
 
-| File | Where | The error |
+| File | The error | The fix |
 |---|---|---|
-| `aa-bookends/a2-calculus/A-limits.ptx` | last task | condition `s \lt a` should be `s \gt a` (above) |
-| `c12-ltp/exercises-ltp.ptx` | roadmap at ~L1508, and ~L1696, ~L1898 | the roadmap's final answer disagrees with the derivation below it. `F(s) = \frac{1}{s(s^2+9)}` inverts to `\frac19(1 - \cos 3t)`, so both coefficients should be `\frac19`; the roadmap shows `\frac13` and `\frac16` |
-| `c12-ltp/exercises-ltp.ptx` | ~L1861 | `g(t) = 3(u_0 - u_1) + (1-3)(u_4)` — the last term is `-2u_4`, which would make the forcing `-2` after `t=4` rather than the stated `1`. The very next line simplifies it to `+ u_4`, so the `(1-3)` factor is the typo |
-| `c12-ltp/sec-laplace-piecewise-method.ptx` | ~L301, and ~L444, ~L560, ~L628, ~L813 | with `y(0)=0, y'(0)=1`, `\lap{y''} = s^2Y - 1`, but the line reads `s^2 Y(s) - s`. That `- s` is the transform for `y(0)=1, y'(0)=0`, and the rest of the derivation follows from it |
+| `A-limits.ptx`, last task | condition `s \lt a` contradicts the answer and derivation | → `s \gt a` |
+| `exercises-ltp.ptx` ~L1508 | the roadmap's answer disagrees with **this same exercise's** derivation 140 lines below it, which concludes `\frac19` and `\frac19` | roadmap → `\frac19`, `\frac19` |
+| `exercises-ltp.ptx` ~L1861 | `3(u_0 - u_1) + (1-3)(u_4)` is `-2u_4`, contradicting the next line's `+ u_4` | → `+ 1 \cdot u_4(t)` |
+| `sec-laplace-piecewise-method.ptx` L301 + 5 downstream lines | with `y(0)=0, y'(0)=1`, `\lap{y''} = s^2Y - 1`, not `s^2Y - s` | corrected, and the whole of Example 1 recomputed |
 
-📌 **A structural sweep is a good time to catch these and a bad time to fix them.** Moving a block puts its mathematics in a diff where a reader — or a review bot — will actually look at it, which is why four errors that had survived every previous pass surfaced at once here. But correcting them is authoring: it changes what a student reads, and the person who wrote the pedagogy should make the call. Record them, do not quietly repair them.
+⚠️ **Two of the reviewer's "this also appears at" pointers were wrong, and following them blindly would have corrupted correct mathematics.** It listed `exercises-ltp` L1696/L1898 as more `\frac13`/`\frac16` roadmaps — they are a restated differential equation and a `Y(s)` expression, neither containing the error. It listed four more `s^2Y - s` sites in `sec-laplace-piecewise-method` — a grep for `s\^2\s*Y` finds only three transform lines in that file, and the other two have `y(0)=y'(0)=0` so they carry no boundary terms at all. **Verify each cited site independently; a review bot's primary finding can be right while its "same issue elsewhere" list is invented.**
+
+📌 **Only one of the four was a one-character fix.** The `s^2Y - s` error is upstream of an entire worked example: correcting it changes `Y(s)`'s homogeneous term from `\frac{1}{s+2}` to `\frac{1}{s(s+2)}`, whose inverse is `\frac12(1 - e^{-2t})` rather than `e^{-2t}`, so six lines move. `F(s) = \frac{3}{s^2(s+2)}` is untouched, which is why the partial-fraction `<proof>` beneath it stayed valid as written. **Check where a wrong transform propagates before calling it a typo** — and verify the result: the corrected solution satisfies `y'' + 2y' = 0` with `y(0)=0, y'(0)=1` before `t=5`, and the added `f(t-5)` satisfies `f'' + 2f' = 3` with `f(0)=f'(0)=0`, so the forcing switches on smoothly.
+
+📌 **A structural sweep is a good time to catch these.** Moving a block puts its mathematics in a diff where a reader — or a review bot — will actually look at it, which is why four errors that had survived every previous pass surfaced at once. It is still not the place to *fix* them unprompted: correcting mathematics changes what a student reads, so it stays the author's call and belongs in its own commit, as these did.
 
 ---
 
