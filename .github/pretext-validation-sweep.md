@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **390 schema messages**, measured on this branch at `a5f802a`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **366 schema messages**, measured on this branch at `2a2f3cf`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -115,6 +115,8 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 - **Never invent content.** If a `<statement>` is empty or a `<feedback>` has no text, flag it in the report; do not write pedagogy to satisfy a schema.
 - **`<feedback>` with bare inline text is valid — do not sweep it.** The schema is an explicit `<choice>`: `<oneOrMore><ref name="BlockSolution"/></oneOrMore>` **or** `<ref name="TextLong"/>`. So `<feedback>Correct!</feedback>` is as legal as `<feedback><p>Correct!</p></feedback>`, and wrapping one changes no validation count. **471 such elements across 36 files** currently use the inline form. Adding `<p>` to them is a house-style choice the author can make deliberately; it is not sweep work, and a tool that reports it as a schema error is wrong. Verify against `/root/.ptx/<version>/core/schema/pretext-dev.rng` before treating any "X requires block content" claim as real — several elements take either form.
 - **Math conventions hold:** `\amp =` not `&=`, one `<mrow>` per line, `bmatrix` not `pmatrix`.
+
+  ⚠️ **`\amp =`, not `=\amp`** — the marker goes *before* the relation so the `=` signs form an aligned column with proper binary-relation spacing. Measured on `main` at `32b54cf`: **2,551 rows use `\amp =` across 81 files**, and **53 use `=\amp` across 5** (`A-limits` 28, `c10-lt/exercises-lt` 16, `c13-linsys/exercises-linsys` 6, `c11-ltm/exercises-ltm` 2, `c4-sov/exercises-sov` 1). The `A-limits` 28 all arrived in one commit that was adding genuinely missing `=` signs and flipped the already-correct rows along with them — an easy thing to do with a find-and-replace. Neither form is a schema error, so nothing flags them; **grep for `=\\amp` after any bulk edit to alignment math.**
 - **Commit per phase per chapter**, not per file and not one giant commit. Message format: `fix(validate): R1 p-wrappers in c4-sov`.
 
 ---
@@ -282,6 +284,7 @@ Two content models worth recording, both found the hard way:
 | `c2-solns/exercises-solns.ptx` | 30 | **0** ✅ | 8 | three author decisions: `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
 | `c3-di/exercises-di.ptx` | 25 | **0** ✅ | 9 | per-task `<solution>`/`<answer>` split out of 3 `<conclusion>`s; 8D ×5; WeBWorK ×1 |
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **0** ✅ | 5 | 8D sweep — `</mrow>` closed early, math continuing outside the row |
+| `c4-sov/exercises-sov.ptx` | 24 | **0** ✅ | 11 | 2A `<feedback>`×5, `<hint>` in a `<statement>`, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
 | `c12-ltp/sec-laplace-piecewise-method.ptx` | 14 | **1** | 14 | `<paragraphs>` ×12 → `<term>` labels; 2 `<tabular>` unmasked by it |
 | `c12-ltp/exercises-ltp.ptx` | 21 | **8** | 17 | `<paragraphs>` ×12, `<identity>`, 2 nested `<solution>`, 2 `<p>` wrappers |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
@@ -296,11 +299,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `a5f802a`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `2a2f3cf`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c4-sov/exercises-sov.ptx` | 24 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children (**decided**) |
 | `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
 | `c1-classification/exercises-class.ptx` | 19 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
@@ -600,6 +602,8 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 
 **All three that needed the author are now decided; only two `<line>` sub-cases remain open.**
 
+0. ⚠️ **A `<feedback>` in a *free-response* task has nowhere to go but `<solution>`.** Phase 2A assumes a `<choices>` to reattach it to; `c4-sov`'s `sov-cq-sa` has five `<feedback>`s in `FreeResponse` tasks (`statement, response?, hint*, answer*, solution*` — no `Feedback` branch at all, and no choices in sight). Four held a model answer and became `<solution>`. **Check for an existing `<solution>` first**: the fifth was byte-identical to the one already beside it, so converting would have printed the same worked solution twice in one task — it was deleted instead. Two other shapes turned up in the same file and are worth knowing: a `<hint>` nested *inside* a `<statement>` (it belongs after `<response/>`), and a `<hint>` inside an exercisegroup's `<introduction>` (a division introduction takes block content; the author chose to drop the wrapper and keep the paragraph as intro prose).
+
 1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2 exercises); roughly 5 remain, in `c3-di`, `c4-sov` and `c8-lhcc`.
 2. ✅ **PARTLY DECIDED — `<line>` used for line breaks.** `<line>` belongs to `<poem>` and `<program>`. **The class is 50 messages across 9 files, not the 36 across 3 recorded here before** — `c4-sov/sec-sov-implicit-solns` (4), `c8-lhcc/sec-exponential-solns` (4), `c7-em/sec-what-is-a-numerical-solution` (2), `a2-calculus/E-usub` (2), `c12-ltp/sec-unit-step-variants` (1) and `a2-calculus/D-product-rule` (1) were never listed, and none of them is in a `<sidebyside>`. 18 are now cleared; **32 remain across 8 files.** The sites are **not one class**, and reading them is what settled it — each wants a different replacement:
    - **Answer key** (`c2-solns`, 18) — ✅ **done.** Nine yes/no verdicts in a 3×3 grid of `<sidebyside>` panels became `<p><ol marker="a." cols="3">`, one `<li>` per verdict. Letters are now generated, so they cannot drift from the `<areas>` list; the fill order changes from down-the-column to across-the-row, which the author accepted. `BlockText` has no `List` branch, so the `<ol>` still needs its `<p>`. **Verify the key against the `<area correct=…>` flags as you convert** — a scripted assert caught nothing here, but the two lists are independent transcriptions of the same truth and nothing else checks them.
@@ -628,7 +632,11 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 
 ⚠️ **A `<solution>` parked in a `<conclusion>` is a third shape, and it is mechanical.** `ConclusionStatement` is `BlockStatement+` and admits no `<solution>`; a `<task>`'s FreeResponse branch is `statement, response?, hint*, answer*, solution*`, which is where such solutions belong. In `c2-solns` the conclusion held four solutions titled (a)–(d) for a three-task exercise, and moving them needed no re-indentation at all — a `<conclusion>`'s child and a `<task>`'s child sit at the same depth. **Count the solutions against the tasks before moving any**: the orphan (d) had never had a matching question at any commit back through #200, and the author chose to delete it rather than have a question written for it.
 
-And one that is mechanical but was left for a later pass so it can be verified on its own: **`<area>` nested inside `<ol>/<li>`** in `c4-sov` — `<areas>` accepts `<p>`, `<cline>` and `<tabular>`, and an `<area>` inside a list item's paragraph is out of reach of that model, so the numbered steps need restructuring the way Phase 4A restructured the `<sidebyside>` wrappers.
+✅ **`<area>` nested inside `<ol>/<li>` — done in `c4-sov` at the author's direction.** The precise rule is narrower than "areas accepts `<p>`, `<cline>` and `<tabular>`": `<areas>` takes `ParagraphAreas | ClineAreas | Tabular`, and **`ParagraphAreas` is a one-level flavour** — an ordinary `<p>` nested inside it (in an `<li>`, say) reverts to the normal grammar and admits no `<area>`. That is why the outer `<p>` validated while the `<area>`s inside the list items did not. The fix is to hoist each `<li>`'s contents to be direct children of `<areas>`.
+
+⚠️ **`<cline>` is not a general substitute.** `ClineAreas` is `mixed { Area* }` — text and `<area>` only, **no `<m>`**. Any step whose separators or options are inline math has to be a `<p>` or a `<tabular>`.
+
+📌 **Hoisting a list out of `<areas>` destroys its markers, and the prose may depend on them.** `sov-warm-ups-click-2` cross-references "the correct answer to (c)" and "…to (d)". Its `<ol>` carried no `@marker`, so it was rendering **1., 2., 3.** and those references pointed at labels the page never showed — a pre-existing rendering bug that only surfaced because the restructure forced the labels to be written out. The author chose **(a)–(g)**, which satisfies the schema and repairs the references together. **Read the surrounding prose for label references before flattening any list.**
 
 ---
 
