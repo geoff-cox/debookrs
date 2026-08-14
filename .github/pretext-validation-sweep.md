@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **465 schema messages**, measured on this branch at `faa192c`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **440 schema messages**, measured on this branch at `09c16ed`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -213,6 +213,20 @@ The drop was exactly the file's message count — no reverse cascade, and nothin
 | orphan solution (d) + its now-childless `<conclusion>` deleted | 1 | — |
 | WeBWorK `<solution>` moved inside `<webwork>`, `<answer>` dropped | 2 exercises | 468 → 465 |
 
+**Then: `c3-di/exercises-di.ptx` — 25 → 0, at `09c16ed`. 465 → 440.** Four classes, three of them shapes already settled elsewhere in this document — the first file in a while that needed no new decision.
+
+| Pass | Sites | Book-wide |
+|---|---:|---|
+| per-task `<solution>`/`<answer>` split out of three `<conclusion>`s | 10 items in 3 exercises | 465 → 447 |
+| period between `</mrow>` and `</md>` moved inside the final `<mrow>` (8D) | 5 | 447 → 442 |
+| WeBWorK `<solution>` moved inside `<webwork>`, `<answer>` dropped | 1 exercise | 442 → 440 |
+
+The `<conclusion>` shape here differs from `c2-solns`'s in a way worth knowing: the conclusion held **one** `<solution>` and **one** `<answer>`, each wrapping an `<ol>` whose items are the per-task breakdown — five items for five tasks, four for four, and one bare pair for the single-task exercise. So the split is per `<li>`, not per `<solution>`. **Assert item count against task count before writing**; that check is the only thing standing between a clean split and solutions silently attached to the wrong questions.
+
+All three Runestone branches in play accept the result, which is why the split works at all: `MultipleChoice` (after `<choices>`), `TrueFalse` (after `<feedback>`) and `FreeResponse` (after `<response>`) each end `… Hint*, Answer*, Solution*`.
+
+📌 **`di-cq-sa`'s solution is the text deleted as the orphan (d) from `c2-solns` in `faa192c`.** Here it has its matching task — `di-cq-sa-01`, "…what is the obstacle?" — which confirms the `c2-solns` copy was a stray duplicate rather than a question that went missing. Worth remembering the next time an orphan turns up: **grep the book for the solution's text before concluding a question was lost.**
+
 ⚠️ **A "fix" can be worse than what it replaced, and the count will not always say so.** The previous batch's single-line branch took the whole source *line* as the `<md>` body, so where an `<md>` shared its line with its parent's tags the parent was swept into the new `<p>`:
 
 ```xml
@@ -247,6 +261,7 @@ Two content models worth recording, both found the hard way:
 | `c1-classification/sec-linear-terms.ptx` | 4 | **3** | 1 | model ×1; remainder is `<sidebyside>` inside `<areas>` (Phase 4A) |
 | `aa-bookends/a2-calculus/A-limits.ptx` | 32 | **0** ✅ | 13 | outer `<ol>`→`<exercises>`, inner `<ol>`→`<task>`s, 2C×13; the nested-list case |
 | `c2-solns/exercises-solns.ptx` | 30 | **0** ✅ | 8 | three author decisions: `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
+| `c3-di/exercises-di.ptx` | 25 | **0** ✅ | 9 | per-task `<solution>`/`<answer>` split out of 3 `<conclusion>`s; 8D ×5; WeBWorK ×1 |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
 | `aa-bookends/a2-calculus/F-ibp.ptx` | 13 | **5** | 2 | inline `<exercise>` ×2; remainder incl. a pre-existing `<section>`→`<subsubsection>` level skip |
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **6** | 4 | `<li>`→`<exercise>` ×4; R1 unmasked by it |
@@ -259,11 +274,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `faa192c`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `09c16ed`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c3-di/exercises-di.ptx` | 25 | WeBWorK trailing children (**decided**); text after `</mrow>` (8D) |
 | `c4-sov/exercises-sov.ptx` | 24 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children (**decided**) |
 | `c1-classification/exercises-class.ptx` | 21 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
@@ -967,8 +981,22 @@ text not allowed here; expected the element end-tag or element "intertext" or "m
 
 A sentence-ending period sits between `</mrow>` and `</md>`.
 
-- [ ] **8.10** Move the period **inside** the final `<mrow>` (`\amp = 7.`) or wrap trailing prose in `<intertext>`.
-- [ ] **8.11** Files: `c3-di/exercises-di.ptx` (5), `c1-classification/exercises-class.ptx` (2), `c3-di/sec-di-method.ptx`.
+- [ ] **8.10** Move the period **inside** the final `<mrow>` (`\amp = 7.`). ⚠️ **Not `<intertext>`** — the schema requires every intertext to be sandwiched *between* mrows, so a trailing one trades 1 error for 8. See the R8 section.
+- [x] **8.11** ~~Files: `c3-di/exercises-di.ptx` (5), `c1-classification/exercises-class.ptx` (2), `c3-di/sec-di-method.ptx`.~~ `exercises-di` is done (5 sites, cleared at `09c16ed`).
+- [ ] **8.12** ⚠️ **Re-scoped — the class is roughly three times the size recorded above, and it is the cheapest work left in the book.** A `grep -rn '</mrow>\s*\.\s*$' source/ --include=*.ptx` finds **21 sites still open across 9 files**, against the 8 messages this phase was budgeted for:
+
+      | File | Sites |
+      |---|---:|
+      | `c10-lt/sec-common-transforms.ptx` | 6 |
+      | `c12-ltp/sec-transforming-piecewise-functions.ptx` | 4 |
+      | `c10-lt/exercises-lt.ptx` | 3 |
+      | `c12-ltp/sec-piecewise-transform-rules.ptx` | 2 |
+      | `c1-classification/exercises-class.ptx` | 2 |
+      | `c3-di/sec-di-method.ptx`, and one each in the three `c11-ltm/sec-*` files | 4 |
+
+      Two things make this worth doing as one book-wide pass rather than file-by-file. It is a **one-line regex substitution per site** with no structural change — `(<mrow>.*?)(\s*)</mrow>\s*\.\s*$` → `\1.\2</mrow>` — and it is **self-verifying**: the `<mrow>` text multiset before and after should differ by exactly the sites touched, each by one appended `.`, and the prose token multiset should not change at all. Both checks caught nothing in `exercises-di`, which is the point — they are cheap enough to run every time.
+
+      ⚠️ **Do not confuse this with a period after `</md>`.** `<md>…</md>.` inside a `<p>` is perfectly legal and there are 8 of them in the book — the regex above will not match them, but a looser one will.
 
 ---
 
