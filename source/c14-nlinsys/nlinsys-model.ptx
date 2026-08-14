@@ -38,13 +38,15 @@
 	<subsection>
 		<title>Assumptions</title>
 
-		<ul>
-			<li>The population is well-mixed (everyone has equal contact probability).</li>
-			<li>Total population is constant (no births, deaths, or migration).</li>
-			<li>Infection occurs through contact between susceptible and infected individuals.</li>
-			<li>Recovery confers permanent immunity.</li>
-			<li>The disease has a constant transmission rate and recovery rate.</li>
-		</ul>
+		<p>
+			<ul>
+				<li>The population is well-mixed (everyone has equal contact probability).</li>
+				<li>Total population is constant (no births, deaths, or migration).</li>
+				<li>Infection occurs through contact between susceptible and infected individuals.</li>
+				<li>Recovery confers permanent immunity.</li>
+				<li>The disease has a constant transmission rate and recovery rate.</li>
+			</ul>
+		</p>
 	</subsection>
 
 	<subsection>
@@ -52,31 +54,31 @@
 
 		<p>
 			Let:
+			<ul>
+				<li><m>S(t)</m> = number of susceptible individuals</li>
+				<li><m>I(t)</m> = number of infected individuals</li>
+				<li><m>R(t)</m> = number of recovered individuals</li>
+				<li><m>N = S + I + R</m> = total population (constant)</li>
+			</ul>
 		</p>
-		<ul>
-			<li><m>S(t)</m> = number of susceptible individuals</li>
-			<li><m>I(t)</m> = number of infected individuals</li>
-			<li><m>R(t)</m> = number of recovered individuals</li>
-			<li><m>N = S + I + R</m> = total population (constant)</li>
-		</ul>
 
 		<p>
 			<term>SIR Differential Equations:</term>
+			<md>
+				<mrow> \frac{dS}{dt} \amp = -\frac{\beta SI}{N} </mrow>
+				<mrow> \frac{dI}{dt} \amp = \frac{\beta SI}{N} - \gamma I </mrow>
+				<mrow> \frac{dR}{dt} \amp = \gamma I </mrow>
+			</md>
 		</p>
-		<md>
-			<mrow> \frac{dS}{dt} \amp = -\frac{\beta SI}{N} </mrow>
-			<mrow> \frac{dI}{dt} \amp = \frac{\beta SI}{N} - \gamma I </mrow>
-			<mrow> \frac{dR}{dt} \amp = \gamma I </mrow>
-		</md>
 
 		<p>
 			<term>Parameters:</term>
+			<ul>
+				<li><m>\beta</m>: transmission rate (contacts per day × probability of transmission per contact)</li>
+				<li><m>\gamma</m>: recovery rate (1/day), so <m>1/\gamma</m> is the average infectious period</li>
+				<li><m>R_0 = \beta/\gamma</m>: basic reproduction number (average number of new infections from one infected person)</li>
+			</ul>
 		</p>
-		<ul>
-			<li><m>\beta</m>: transmission rate (contacts per day × probability of transmission per contact)</li>
-			<li><m>\gamma</m>: recovery rate (1/day), so <m>1/\gamma</m> is the average infectious period</li>
-			<li><m>R_0 = \beta/\gamma</m>: basic reproduction number (average number of new infections from one infected person)</li>
-		</ul>
 
 		<p>
 			<term>Key Insight:</term> An epidemic occurs (infections increase) only if <m>R_0 > 1</m> and <m>S(0)</m> is large enough.
@@ -99,11 +101,11 @@
 
 		<p>
 			<term>Nullclines:</term>
+			<ul>
+				<li><m>\frac{dS}{dt} = 0</m> when <m>I = 0</m> or <m>S = 0</m></li>
+				<li><m>\frac{dI}{dt} = 0</m> when <m>I = 0</m> or <m>S = N/R_0</m></li>
+			</ul>
 		</p>
-		<ul>
-			<li><m>\frac{dS}{dt} = 0</m> when <m>I = 0</m> or <m>S = 0</m></li>
-			<li><m>\frac{dI}{dt} = 0</m> when <m>I = 0</m> or <m>S = N/R_0</m></li>
-		</ul>
 
 		<p>
 			The vertical line <m>S = N/R_0</m> separates regions where <m>I</m> increases (left side, epidemic) from regions where <m>I</m> decreases (right side, no epidemic).
@@ -123,25 +125,27 @@
 
 		<p>
 			<term>Base Parameters:</term>
+			<ul>
+				<li><m>N = 10000</m> people</li>
+				<li><m>\beta = 0.5</m> /day (so <m>R_0 = 2.5</m> if <m>\gamma = 0.2</m>)</li>
+				<li><m>\gamma = 0.2</m> /day (infectious period = 5 days)</li>
+				<li>Initial: <m>S(0) = 9990</m>, <m>I(0) = 10</m>, <m>R(0) = 0</m></li>
+			</ul>
 		</p>
-		<ul>
-			<li><m>N = 10000</m> people</li>
-			<li><m>\beta = 0.5</m> /day (so <m>R_0 = 2.5</m> if <m>\gamma = 0.2</m>)</li>
-			<li><m>\gamma = 0.2</m> /day (infectious period = 5 days)</li>
-			<li>Initial: <m>S(0) = 9990</m>, <m>I(0) = 10</m>, <m>R(0) = 0</m></li>
-		</ul>
 
 		<p>
 			<term>Part 1: Natural Progression</term>
 		</p>
 
-		<ol>
-			<li>Simulate the system for 100 days.</li>
-			<li>Plot <m>S(t)</m>, <m>I(t)</m>, and <m>R(t)</m> on the same graph.</li>
-			<li>When does the infection peak? What is the maximum number of infected individuals?</li>
-			<li>What fraction of the population is eventually infected (final <m>R</m> value)?</li>
-			<li>Create a phase plane plot (<m>I</m> vs. <m>S</m>).</li>
-		</ol>
+		<p>
+			<ol>
+				<li>Simulate the system for 100 days.</li>
+				<li>Plot <m>S(t)</m>, <m>I(t)</m>, and <m>R(t)</m> on the same graph.</li>
+				<li>When does the infection peak? What is the maximum number of infected individuals?</li>
+				<li>What fraction of the population is eventually infected (final <m>R</m> value)?</li>
+				<li>Create a phase plane plot (<m>I</m> vs. <m>S</m>).</li>
+			</ol>
+		</p>
 
 		<p>
 			<term>Part 2: Vaccination Campaign</term>
@@ -151,12 +155,14 @@
 			Vaccinating a fraction <m>p</m> of the population reduces initial susceptibles: <m>S(0) = N(1-p)</m>, <m>R(0) = Np</m>.
 		</p>
 
-		<ol>
-			<li>Test vaccination levels: <m>p = 0, 0.2, 0.4, 0.6, 0.8</m>.</li>
-			<li>For each, simulate and record the peak infection level and final attack rate (total infected).</li>
-			<li>Calculate the herd immunity threshold: <m>p_c = 1 - 1/R_0</m>. Does this match your simulations?</li>
-			<li>Plot peak infections versus vaccination coverage.</li>
-		</ol>
+		<p>
+			<ol>
+				<li>Test vaccination levels: <m>p = 0, 0.2, 0.4, 0.6, 0.8</m>.</li>
+				<li>For each, simulate and record the peak infection level and final attack rate (total infected).</li>
+				<li>Calculate the herd immunity threshold: <m>p_c = 1 - 1/R_0</m>. Does this match your simulations?</li>
+				<li>Plot peak infections versus vaccination coverage.</li>
+			</ol>
+		</p>
 
 		<p>
 			<term>Part 3: Social Distancing</term>
@@ -164,14 +170,13 @@
 
 		<p>
 			Reducing contact rate decreases <m>\beta</m>. Model intervention starting at day 30:
+			<ol>
+				<li>Reduce <m>\beta</m> from 0.5 to 0.3 at <m>t = 30</m>.</li>
+				<li>Compare with no intervention.</li>
+				<li>How much does this "flatten the curve"?</li>
+				<li>What if intervention starts at day 10 instead? Day 50?</li>
+			</ol>
 		</p>
-
-		<ol>
-			<li>Reduce <m>\beta</m> from 0.5 to 0.3 at <m>t = 30</m>.</li>
-			<li>Compare with no intervention.</li>
-			<li>How much does this "flatten the curve"?</li>
-			<li>What if intervention starts at day 10 instead? Day 50?</li>
-		</ol>
 	</subsection>
 
 	<subsection>
@@ -183,38 +188,40 @@
 
 		<p>
 			<term>Data Sources:</term>
+			<ul>
+				<li>COVID-19 data from a specific region (early outbreak phase)</li>
+				<li>Historical flu pandemic data</li>
+				<li>Measles outbreak in an unvaccinated community</li>
+			</ul>
 		</p>
-		<ul>
-			<li>COVID-19 data from a specific region (early outbreak phase)</li>
-			<li>Historical flu pandemic data</li>
-			<li>Measles outbreak in an unvaccinated community</li>
-		</ul>
 
 		<p>
 			<term>Tasks:</term>
+			<ol>
+				<li>Obtain cumulative case data (or infected count) over time.</li>
+				<li>Estimate population size <m>N</m>.</li>
+				<li>Estimate <m>\gamma</m> from known infectious period for the disease.</li>
+				<li>Fit <m>\beta</m> by comparing model simulations with data (trial and error or optimization).</li>
+				<li>Calculate <m>R_0</m> from fitted parameters.</li>
+				<li>Plot data and model fit together.</li>
+				<li>Discuss goodness of fit and model limitations.</li>
+			</ol>
 		</p>
-		<ol>
-			<li>Obtain cumulative case data (or infected count) over time.</li>
-			<li>Estimate population size <m>N</m>.</li>
-			<li>Estimate <m>\gamma</m> from known infectious period for the disease.</li>
-			<li>Fit <m>\beta</m> by comparing model simulations with data (trial and error or optimization).</li>
-			<li>Calculate <m>R_0</m> from fitted parameters.</li>
-			<li>Plot data and model fit together.</li>
-			<li>Discuss goodness of fit and model limitations.</li>
-		</ol>
 	</subsection>
 
 	<subsection>
 		<title>Analytical Questions</title>
 
-		<ol>
-			<li>Show that <m>\frac{d}{dt}(S+I+R) = 0</m>, confirming constant total population.</li>
-			<li>Prove that <m>S(t)</m> is always decreasing (never increases). What is the physical interpretation?</li>
-			<li>Derive the final size equation: <m>R_\infty = N - S_\infty</m> where <m>S_\infty</m> satisfies <m>S_\infty = S_0 e^{-R_0(R_\infty/N)}</m>.</li>
-			<li>For <m>R_0 = 2.5</m>, calculate the herd immunity threshold <m>1 - 1/R_0</m>. Why is this the minimum vaccination coverage needed?</li>
-			<li>How does doubling the infectious period (<m>1/\gamma</m>) affect <m>R_0</m> and outbreak dynamics?</li>
-			<li>The SIR model has no equilibrium with <m>I > 0</m>. Why does this mean epidemics are transient, not sustained?</li>
-		</ol>
+		<p>
+			<ol>
+				<li>Show that <m>\frac{d}{dt}(S+I+R) = 0</m>, confirming constant total population.</li>
+				<li>Prove that <m>S(t)</m> is always decreasing (never increases). What is the physical interpretation?</li>
+				<li>Derive the final size equation: <m>R_\infty = N - S_\infty</m> where <m>S_\infty</m> satisfies <m>S_\infty = S_0 e^{-R_0(R_\infty/N)}</m>.</li>
+				<li>For <m>R_0 = 2.5</m>, calculate the herd immunity threshold <m>1 - 1/R_0</m>. Why is this the minimum vaccination coverage needed?</li>
+				<li>How does doubling the infectious period (<m>1/\gamma</m>) affect <m>R_0</m> and outbreak dynamics?</li>
+				<li>The SIR model has no equilibrium with <m>I > 0</m>. Why does this mean epidemics are transient, not sustained?</li>
+			</ol>
+		</p>
 	</subsection>
 
 	<subsection>
@@ -222,15 +229,14 @@
 
 		<p>
 			Explore variations of the SIR model:
+			<ul>
+				<li><term>SEIR model:</term> Add exposed (E) compartment for latent period before infectiousness</li>
+				<li><term>SIRS model:</term> Allow temporary immunity (R individuals become S again)</li>
+				<li><term>Age-structured model:</term> Different transmission rates for different age groups</li>
+				<li><term>Spatial model:</term> Track disease spread across connected regions</li>
+				<li><term>Stochastic effects:</term> Include randomness in small populations</li>
+			</ul>
 		</p>
-
-		<ul>
-			<li><term>SEIR model:</term> Add exposed (E) compartment for latent period before infectiousness</li>
-			<li><term>SIRS model:</term> Allow temporary immunity (R individuals become S again)</li>
-			<li><term>Age-structured model:</term> Different transmission rates for different age groups</li>
-			<li><term>Spatial model:</term> Track disease spread across connected regions</li>
-			<li><term>Stochastic effects:</term> Include randomness in small populations</li>
-		</ul>
 
 		<p>
 			Implement one extension and analyze how it changes predictions.
@@ -244,18 +250,20 @@
 			You are a public health advisor. A new disease with <m>R_0 = 3</m> and 7-day infectious period emerges.
 		</p>
 
-		<ol>
-			<li>What vaccination coverage is needed for herd immunity?</li>
-			<li>If only 50% coverage is achievable, what contact reduction (decrease in <m>\beta</m>) is needed to compensate?</li>
-			<li>Compare two strategies:
-				<ul>
-					<li>Strategy A: 60% vaccination, no other measures</li>
-					<li>Strategy B: 40% vaccination + 30% reduction in contacts</li>
-				</ul>
-				Which prevents more infections?
-			</li>
-			<li>What is the optimal timing for interventions if they can only be sustained for 60 days?</li>
-		</ol>
+		<p>
+			<ol>
+				<li>What vaccination coverage is needed for herd immunity?</li>
+				<li>If only 50% coverage is achievable, what contact reduction (decrease in <m>\beta</m>) is needed to compensate?</li>
+				<li>Compare two strategies:
+					<ul>
+						<li>Strategy A: 60% vaccination, no other measures</li>
+						<li>Strategy B: 40% vaccination + 30% reduction in contacts</li>
+					</ul>
+					Which prevents more infections?
+				</li>
+				<li>What is the optimal timing for interventions if they can only be sustained for 60 days?</li>
+			</ol>
+		</p>
 	</subsection>
 
 	<subsection>
@@ -263,22 +271,21 @@
 
 		<p>
 			Submit a comprehensive report (5-6 pages) including:
+			<ol>
+				<li>Derivation of the SIR model from first principles.</li>
+				<li>Analysis of equilibria and phase plane structure.</li>
+				<li>Derivation of the epidemic threshold and <m>R_0</m> interpretation.</li>
+				<li>Simulation results for natural progression with detailed graphs.</li>
+				<li>Analysis of vaccination campaign effectiveness with herd immunity calculations.</li>
+				<li>Social distancing intervention results showing timing effects.</li>
+				<li>Real-world data fitting with parameter estimates and discussion of fit quality.</li>
+				<li>Answers to all analytical questions with complete derivations.</li>
+				<li>Implementation and analysis of at least one model extension.</li>
+				<li>Policy recommendations from the policy analysis activity with justifications.</li>
+				<li>Critical discussion of model assumptions and limitations.</li>
+				<li>Reflection on the role of mathematical modeling in public health decision-making.</li>
+			</ol>
 		</p>
-
-		<ol>
-			<li>Derivation of the SIR model from first principles.</li>
-			<li>Analysis of equilibria and phase plane structure.</li>
-			<li>Derivation of the epidemic threshold and <m>R_0</m> interpretation.</li>
-			<li>Simulation results for natural progression with detailed graphs.</li>
-			<li>Analysis of vaccination campaign effectiveness with herd immunity calculations.</li>
-			<li>Social distancing intervention results showing timing effects.</li>
-			<li>Real-world data fitting with parameter estimates and discussion of fit quality.</li>
-			<li>Answers to all analytical questions with complete derivations.</li>
-			<li>Implementation and analysis of at least one model extension.</li>
-			<li>Policy recommendations from the policy analysis activity with justifications.</li>
-			<li>Critical discussion of model assumptions and limitations.</li>
-			<li>Reflection on the role of mathematical modeling in public health decision-making.</li>
-		</ol>
 	</subsection>
 
 	<conclusion>
