@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **416 schema messages**, measured on this branch at `0440e41`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **416 schema messages**, measured on this branch at `65dd3f0`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -232,6 +232,9 @@ All three Runestone branches in play accept the result, which is why the split w
 | punctuation after the last `<mrow>` → moved inside it | 19 | 440 → 416 |
 | `</mrow>` closed early → re-closed after its continuation | 5 | — |
 | duplicate / stray punctuation deleted | 3 | — |
+| re-enabled `<aside>` folded into its `<exercisegroup>`'s `<introduction>` | 1 | 417 → 416 |
+
+⚠️ **Un-commenting a block can reintroduce a schema error, and nothing warns you.** `76cc4fb` restored the "Abbreviations" `<aside>` at the head of `solns-concept-quiz` — content the author wants — and took `exercises-solns.ptx` from 0 straight back to 1, because an `<exercisegroup>` takes no `<aside>`. The R8 conversion had already met this in nine files and settled it: **fold the aside into the division's `<introduction>`**, which does accept it. Commented-out markup in this book is not inert; it is un-validated markup waiting to be switched on. When restoring any, re-run the validator on that file before assuming it still reads 0.
 
 📌 **`di-cq-sa`'s solution is the text deleted as the orphan (d) from `c2-solns` in `faa192c`.** Here it has its matching task — `di-cq-sa-01`, "…what is the obstacle?" — which confirms the `c2-solns` copy was a stray duplicate rather than a question that went missing. Worth remembering the next time an orphan turns up: **grep the book for the solution's text before concluding a question was lost.**
 
@@ -283,7 +286,7 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `0440e41`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `65dd3f0`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
