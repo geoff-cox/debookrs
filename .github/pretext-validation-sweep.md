@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **440 schema messages**, measured on this branch at `09c16ed`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **416 schema messages**, measured on this branch at `0440e41`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -225,6 +225,14 @@ The `<conclusion>` shape here differs from `c2-solns`'s in a way worth knowing: 
 
 All three Runestone branches in play accept the result, which is why the split works at all: `MultipleChoice` (after `<choices>`), `TrueFalse` (after `<feedback>`) and `FreeResponse` (after `<response>`) each end `… Hint*, Answer*, Solution*`.
 
+**Then: the Phase 8D sweep, at `0440e41`. 440 → 416.** 27 sites across 10 files, all loose text inside an `<md>`. `aa-bookends/a2-calculus/B-lhospital.ptx` went to **0** and "Text is not allowed here" fell from 25 messages to 1 book-wide. It is written up in Phase 8D below, including why the grep this document previously recommended found the wrong 21 sites.
+
+| Pass | Sites | Book-wide |
+|---|---:|---|
+| punctuation after the last `<mrow>` → moved inside it | 19 | 440 → 416 |
+| `</mrow>` closed early → re-closed after its continuation | 5 | — |
+| duplicate / stray punctuation deleted | 3 | — |
+
 📌 **`di-cq-sa`'s solution is the text deleted as the orphan (d) from `c2-solns` in `faa192c`.** Here it has its matching task — `di-cq-sa-01`, "…what is the obstacle?" — which confirms the `c2-solns` copy was a stray duplicate rather than a question that went missing. Worth remembering the next time an orphan turns up: **grep the book for the solution's text before concluding a question was lost.**
 
 ⚠️ **A "fix" can be worse than what it replaced, and the count will not always say so.** The previous batch's single-line branch took the whole source *line* as the `<md>` body, so where an `<md>` shared its line with its parent's tags the parent was swept into the new `<p>`:
@@ -262,6 +270,7 @@ Two content models worth recording, both found the hard way:
 | `aa-bookends/a2-calculus/A-limits.ptx` | 32 | **0** ✅ | 13 | outer `<ol>`→`<exercises>`, inner `<ol>`→`<task>`s, 2C×13; the nested-list case |
 | `c2-solns/exercises-solns.ptx` | 30 | **0** ✅ | 8 | three author decisions: `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
 | `c3-di/exercises-di.ptx` | 25 | **0** ✅ | 9 | per-task `<solution>`/`<answer>` split out of 3 `<conclusion>`s; 8D ×5; WeBWorK ×1 |
+| `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **0** ✅ | 5 | 8D sweep — `</mrow>` closed early, math continuing outside the row |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
 | `aa-bookends/a2-calculus/F-ibp.ptx` | 13 | **5** | 2 | inline `<exercise>` ×2; remainder incl. a pre-existing `<section>`→`<subsubsection>` level skip |
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **6** | 4 | `<li>`→`<exercise>` ×4; R1 unmasked by it |
@@ -274,18 +283,18 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `09c16ed`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `0440e41`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
 | `c4-sov/exercises-sov.ptx` | 24 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children (**decided**) |
-| `c1-classification/exercises-class.ptx` | 21 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
 | `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` — author call |
+| `c1-classification/exercises-class.ptx` | 19 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
 | `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
-| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 16 | assorted |
 | `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as **running text**; WeBWorK trailing children (**decided**) |
+| `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 15 | assorted |
 | `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
 | `c12-ltp/sec-laplace-piecewise-method.ptx` | 14 | assorted |
 | **`main.ptx`** | **13** | 7× `<audio>` in a `<p>` inside a chapter-intro `<aside>`; one `<tabular>`/`<interactive>` block — see below |
@@ -296,7 +305,7 @@ Regenerated at `09c16ed`, schema half only, same harness as the header. The WeBW
 
 **`aa-bookends/a3-quickref/` is finished: 121 → 0, all twelve files.** See the section below for what that took, since the same shapes recur elsewhere.
 
-**Phases 3 and 6 are finished, and every `*-model.ptx` is clean.** Regenerated at `faa192c`, the largest remaining classes are `<solution>`/`<answer>` placement (**85**, spread thin across 25 files — the biggest single file holds 5), `<md>` placement (39), `<line>` used for line breaks (**32 across 8 files**, and its shape is decided — see the R8 section), loose text where a block belongs (30), `<paragraphs>` inside a `<solution>` (28), and `<feedback>` at task level (24).
+**Phases 3, 6 and 8D are finished, and every `*-model.ptx` is clean.** Regenerated at `0440e41`, the largest remaining classes are `<solution>`/`<answer>` placement (**77**, spread thin across 24 files — the biggest single file holds 5), `<md>` placement (39), `<line>` used for line breaks (**32 across 8 files**, shape decided — see the R8 section), `<paragraphs>` inside a `<solution>` (28), `<feedback>` at task level (24), and blocks inside a `<p>` (21). 416 messages now sit in **69 files**.
 
 ⚠️ **`<solution>`/`<answer>` placement is no longer a per-file job.** It was concentrated in the exercises files when this line was first written; it is now 85 messages over 25 files with a modal count of 1–4 each. Working it file-by-file down the Queue will be slow. It is worth one book-wide enumeration of the *shapes* first — `<solution>` in a `<conclusion>`, `<answer>` trailing a `<solution>`, `<solution>` under an `<li>` — since each shape has an established fix in this document.
 
@@ -981,22 +990,40 @@ text not allowed here; expected the element end-tag or element "intertext" or "m
 
 A sentence-ending period sits between `</mrow>` and `</md>`.
 
-- [ ] **8.10** Move the period **inside** the final `<mrow>` (`\amp = 7.`). ⚠️ **Not `<intertext>`** — the schema requires every intertext to be sandwiched *between* mrows, so a trailing one trades 1 error for 8. See the R8 section.
-- [x] **8.11** ~~Files: `c3-di/exercises-di.ptx` (5), `c1-classification/exercises-class.ptx` (2), `c3-di/sec-di-method.ptx`.~~ `exercises-di` is done (5 sites, cleared at `09c16ed`).
-- [ ] **8.12** ⚠️ **Re-scoped — the class is roughly three times the size recorded above, and it is the cheapest work left in the book.** A `grep -rn '</mrow>\s*\.\s*$' source/ --include=*.ptx` finds **21 sites still open across 9 files**, against the 8 messages this phase was budgeted for:
+- [x] **8.10** Move the punctuation **inside** the final `<mrow>` (`\amp = 7.`). ⚠️ **Not `<intertext>`** — the schema requires every intertext to be sandwiched *between* mrows, so a trailing one trades 1 error for 8. See the R8 section.
+- [x] **8.11** ~~Files: `c3-di/exercises-di.ptx` (5), `c1-classification/exercises-class.ptx` (2), `c3-di/sec-di-method.ptx`.~~ Superseded by 8.12.
+- [x] **8.12 ✅ DONE at `0440e41` — 27 sites across 10 files, book-wide 440 → 416.** `aa-bookends/a2-calculus/B-lhospital.ptx` went to **0**, and "Text is not allowed here" fell from 25 messages to **1** book-wide. Zero loose-text sites remain inside any `<md>`/`<mdn>`.
 
-      | File | Sites |
-      |---|---:|
-      | `c10-lt/sec-common-transforms.ptx` | 6 |
-      | `c12-ltp/sec-transforming-piecewise-functions.ptx` | 4 |
-      | `c10-lt/exercises-lt.ptx` | 3 |
-      | `c12-ltp/sec-piecewise-transform-rules.ptx` | 2 |
-      | `c1-classification/exercises-class.ptx` | 2 |
-      | `c3-di/sec-di-method.ptx`, and one each in the three `c11-ltm/sec-*` files | 4 |
+### ⚠️ The grep this document recommended was wrong in both directions
 
-      Two things make this worth doing as one book-wide pass rather than file-by-file. It is a **one-line regex substitution per site** with no structural change — `(<mrow>.*?)(\s*)</mrow>\s*\.\s*$` → `\1.\2</mrow>` — and it is **self-verifying**: the `<mrow>` text multiset before and after should differ by exactly the sites touched, each by one appended `.`, and the prose token multiset should not change at all. Both checks caught nothing in `exercises-di`, which is the point — they are cheap enough to run every time.
+The previous revision of 8.12 told you to find these with `grep -rn '</mrow>\s*\.\s*$'`. **Do not.** It reported 21 sites; enumerating the source with a parser — every `<mrow>` whose *tail* carries non-whitespace — found **27**, and the two sets were not nested:
 
-      ⚠️ **Do not confuse this with a period after `</md>`.** `<md>…</md>.` inside a `<p>` is perfectly legal and there are 8 of them in the book — the regex above will not match them, but a looser one will.
+- it **missed a comma** in `c10-lt/sec-common-transforms.ptx` (`</mrow>,`), because the pattern hard-codes a period;
+- it **missed five sites** in `B-lhospital.ptx` where the loose text is *math*, not punctuation;
+- it **counted one site** in `sec-transforming-piecewise-functions.ptx` that sits mid-`<md>`, not trailing, and needs the opposite fix.
+
+The lesson is the one this document keeps repeating, now with a case where it bit the document's own advice: **enumerate the source with a parser, not a regex over lines.** `md.iter()` → `[k for k in md if k.tag in ('mrow','intertext')]` → check `k.tail`.
+
+### The class is four sub-classes, not one
+
+| Sub-class | Sites | Fix |
+|---|---:|---|
+| punctuation after the **last** `<mrow>` | 19 | move it inside that `<mrow>` — 8D proper |
+| `</mrow>` closed early, the row's math continuing outside it | 5 | move `</mrow>` to the end of the continuation |
+| the enclosing `<md>` **already** carries the sentence's punctuation | 2 | **delete** the inner mark — moving it renders two periods |
+| stray punctuation between two `<mrow>`s of one derivation | 1 | **delete** |
+
+All five mis-closed rows are in `B-lhospital`, and the *correct* pattern already appears lower in the same `<md>` — later rows close after their continuation. When a file contradicts itself like that, the rows that validate are the specification.
+
+The two "already punctuated" sites are the trap worth remembering: `<mrow>…</mrow>.` followed by `</md>.` is **two** marks, one illegal and one legal. Moving the illegal one inward satisfies the schema and puts a visible double period on the page — a fix the message count would call a success.
+
+### How to verify a punctuation move
+
+**Strip every tag and every whitespace character; the remaining stream must be byte-identical.** Moving a mark across a tag boundary cannot change it, and neither can re-closing an `<mrow>`. In this pass 7 of the 10 files came out identical and the other three differed by exactly the one deleted period each. That single check subsumes the mrow/prose multiset checks the previous revision suggested, and it catches a mark that lands in the wrong row — which the multiset check does not.
+
+⚠️ **A period after `</md>` is legal.** `<md>…</md>.` inside a `<p>` is fine and there are 8 in the book. A parser-based enumeration never sees them; a looser regex will.
+
+📌 The one remaining "Text is not allowed here" is unrelated: `a1-algebra/N-recursive-functions.ptx` uses an `<answer>` inside a `<p>` to hold a "Side note" paragraph. That is an `<answer>` misplacement, not an `<md>` problem.
 
 ---
 
@@ -1032,7 +1059,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | 5 | Division nesting | 59 | ✅ 5A done | **R8×40 → 0**, all 16 exercises files; R12×16 remains. 5A's "promote to a sibling `<section>`" is superseded — see the R8 decision |
 | 6 | `<var>` → `<fillin>` | 12 | ✅ done | Was a live render bug. The `<setup>` grading had to move to `<evaluation>` too — 6.1 alone would not have fixed it |
 | 7 | Figures / sidebyside | 128 | Medium | **Grew** from 81; 12 still cause silent content loss |
-| 8 | Text & a11y | 169 | Low | Unchanged; the validation-plus half was always accurate |
+| 8 | Text & a11y | 169 | Low | **8D done** (27 sites, 10 files, at `0440e41`); 8A/8B/8C are the validation-plus half and untouched — this harness does not report them at all |
 | 9 | Re-validate | — | — | — |
 
 Phase 1 still dominates at **71%** of the schema half, so the ordering logic holds: it changes what Phases 2 and 4 see. Phase 4 shrank (the old 171 was largely `jing` cascade noise); Phase 7 grew once the back matter became visible. `R99-misc` is 239 and unbudgeted — 54 of those are bare `Invalid content (ChoiceError)` from `salve`, which are worth re-checking under `jing` on a per-file basis for a clearer message.
