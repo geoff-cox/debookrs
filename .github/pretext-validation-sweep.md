@@ -545,9 +545,9 @@ So the rule is not just "verify a claimed convention before acting on it" but th
 
 ---
 
-### 🔴 `c11-ltm/exercises-ltm.ptx` — one worked solution is wrong four times over
+### ✅ `c11-ltm/exercises-ltm.ptx` — one worked solution was wrong four times over, fixed on the author's instruction
 
-Found while converting that exercise's `<line>` steps to a `<tabular>`. **Nothing here was changed by that pass**: the numbers were copied across character-for-character, and the conversion is verified content-preserving. This is the last exercise in the file, `x'' - 4x' + 13x = 54e^{-t}`, `x(0) = x'(0) = 0`.
+Found while converting that exercise's `<line>` steps to a `<tabular>`; **that pass changed none of it** — the numbers were carried across character-for-character — and the mathematics was corrected in a separate commit once the author asked. This is the last exercise in the file, `x'' - 4x' + 13x = 54e^{-t}`, `x(0) = x'(0) = 0`.
 
 Its own setup is right — `X(s) = 54/[(s+1)(s^2-4s+13)]`, decomposed as `A/(s+1) + (Bs+C)/(s^2-4s+13)`, so `54 = A(s^2-4s+13) + (Bs+C)(s+1)`. Then:
 
@@ -562,7 +562,11 @@ Its own setup is right — `X(s) = 54/[(s+1)(s^2-4s+13)]`, decomposed as `A/(s+1
 
 `x(t) = 3e^{-t} - 3e^{2t}\cos(3t) + 3e^{2t}\sin(3t)`,
 
-which satisfies both initial conditions. Verified by hand and again with `sympy.apart`; the printed answer fails them badly (`x(0) = 622`, `x'(0) = 706`, against `0` and `0`).
+which satisfies both initial conditions. The old answer failed them badly — `x(0) = 622`, `x'(0) = 706`, against `0` and `0`.
+
+**All nine rewritten lines were checked mechanically, not just the answer.** Each substitution line was re-derived from `54 = A(s^2-4s+13) + (Bs+C)(s+1)` with `sympy.solve`; every line of the completing-the-square chain was asserted equal to `X(s)`; and the final `x(t)` was checked three ways — `laplace_transform` back to `X(s)`, both initial conditions, and substitution into the DE. 📌 **A worked solution is a chain, so verify every rung.** Checking only the final answer would have passed a chain with a broken middle, which is exactly the state this exercise was already in: its last two lines each contradicted the line above.
+
+One authoring touch travelled with the fix: the `s = -1` row now writes the substitution in full, `A\Big[(-1)^2 - 4(-1) + 13\Big] + \big(B(-1) + C\big)(-1 + 1)`, using the `\Big[…\Big]` this file already uses elsewhere. The missing group *was* the first error, so making it visible is part of the correction rather than decoration.
 
 📌 **Two of the four are internal contradictions**, which is what makes this reportable without any appeal to taste: the file's own next line disagrees with the one before it. **When a worked solution is long, check each line against its neighbour before checking it against the mathematics** — it is faster, and it finds the errors that survive proofreading precisely because each line looks plausible alone.
 
