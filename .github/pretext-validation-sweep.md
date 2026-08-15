@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **345 schema messages**, measured on this branch at `0889084`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **326 schema messages**, measured on this branch at `5c10d84`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -195,6 +195,8 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 
 **Every transform now re-parses its own output and refuses to write a file that no longer parses.** Do the same with anything new — `git diff` will not tell you, and neither will the message count.
 
+⚠️ **Two edits keyed on the same line clobber each other, and only re-parsing catches it.** In `exercises-class` the `<feedback>`→`<solution>` retag and the insertion of a new `<answer>` before it both anchored on the task's tail line; applied as separate edits they produced `<feedback>…</solution>`. A line-addressed transform must merge every edit that targets one line into a single replacement — collect edits keyed by line and assert the keys are unique before applying.
+
 **Latest: review of #226, at `8b155e1`. 546 → 540.**
 
 | Pass | Sites | Book-wide |
@@ -292,6 +294,7 @@ Two content models worth recording, both found the hard way:
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **0** ✅ | 5 | 8D sweep — `</mrow>` closed early, math continuing outside the row |
 | `c4-sov/exercises-sov.ptx` | 24 | **0** ✅ | 11 | 2A `<feedback>`×5, `<hint>` in a `<statement>`, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
 | `c7-em/exercises-em.ptx` | 21 | **0** ✅ | 3 | `<ol>` of parts → `<task>`s in 3 exercises; 21 messages from 3 defects |
+| `c1-classification/exercises-class.ptx` | 19 | **0** ✅ | 5 | aggregate key → per-task `<answer>`, task `<feedback>` → `<solution>`; 2C order ×1 |
 | `c12-ltp/sec-laplace-piecewise-method.ptx` | 14 | **1** | 14 | `<paragraphs>` ×12 → `<term>` labels; 2 `<tabular>` unmasked by it |
 | `c12-ltp/exercises-ltp.ptx` | 21 | **8** | 17 | `<paragraphs>` ×12, `<identity>`, 2 nested `<solution>`, 2 `<p>` wrappers |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
@@ -306,11 +309,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `0889084`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c1-classification/exercises-class.ptx` | 19 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
 | `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
 | `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as **running text**; WeBWorK trailing children (**decided**) |
@@ -749,7 +751,9 @@ element "feedback" not allowed here;
 expected the element end-tag or element "answer", "hint" or "solution"
 ```
 
-`<feedback>` is a sibling of the `<choice>`'s `<statement>`, **inside** the `<choice>`. It is never a child of `<task>` or `<exercise>`.
+`<feedback>` is a sibling of the `<choice>`'s `<statement>`, **inside** the `<choice>`. It is never a child of `<exercise>`.
+
+⚠️ **Whether a `<task>` may hold a `<feedback>` depends on which branch it is on, and the two look identical in the source.** `Areas` and `FillInBlank` end in `interleave { Feedback?, Hint*, Answer*, Solution* }` — feedback is legal *and* order is free. `MultipleChoice` and `Matching` end in the sequence `Hint*, Answer*, Solution*` with **no Feedback at all**. So in `c1-classification/exercises-class.ptx` the `<feedback>`s on `<areas>` tasks are fine and the ones on `<choices>`/`<cardsort>` tasks are errors, in the same exercise, indented identically. **Look at the task's interaction element before deciding.** The same split explains why only one of that file's seven solution-before-answer exercises was flagged: the interleaving branches do not care about order, the plain-statement branch does.
 
 ```xml
 <!-- WRONG -->
