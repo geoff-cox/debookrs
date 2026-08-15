@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **292 schema messages**, measured on this branch after `exercises-lhcc` was cleared, down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **274 schema messages**, measured on this branch after `EXL-exp-logs` was cleared, down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -314,7 +314,7 @@ Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBW
 | File | Msgs | Dominant class |
 |---|---:|---|
 | ~~`c11-ltm/exercises-ltm.ptx`~~ | **0** ✅ | cleared — `<line>` equation steps → the file's own `<tabular>`, aggregate key → per-task answer/solution, 2 `<aside>` and a `<proof>` out of their `<p>`, `<m>` inside `<md>` |
-| `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
+| ~~`aa-bookends/a1-algebra/EXL-exp-logs.ptx`~~ | **0** ✅ | cleared — it was never blocked; each `<md>` in a cell just needed a `<p>`, see below |
 | ~~`c8-lhcc/exercises-lhcc.ptx`~~ | **0** ✅ | cleared — `<line>` running text → `<ul>`, `<ol>` of parts → `<task>`s, `<hint>` out of a `<statement>` |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 15 | assorted |
 | `c12-ltp/sec-unit-step-variants.ptx` | 12 | assorted |
@@ -323,7 +323,7 @@ Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBW
 
 ⚠️ **`main.ptx` carries 13 of its own and has never appeared in this queue.** It is not an artifact of textual assembly — the messages land on real `main.ptx` lines. Seven are the same shape repeated in seven chapter introductions: `<aside component="web"><title>🎧 Listen</title><p><audio …/></p></aside>`, where `<audio>` is a block element and the `<p>` around it is the defect. That is the mechanical "block element inside a `<p>`" class this document already covers, so it should be cheap — but **check `Aside`'s model before dropping the wrapper**, per the `<support>` over-reach recorded above. The remaining 6 are one `<tabular>`/`<interactive>` region around lines 1169–1200, including a `width` attribute that is not allowed where it sits.
 
-⛔ **`EXL-exp-logs.ptx` needs the author.** Its 18 table cells hold `<md><mrow xml:id="…">…</mrow></md>`, and **`<m>` accepts no `xml:id`** — its content model is bare mixed content. Two of those ids, `exp_rule_02e` and `exp_rule_04e`, are live `<xref>` targets, so the usual `<md>` → `<m>` conversion would break them. Keeping referenceable display math inside a cell means restructuring the table.
+✅ **`EXL-exp-logs.ptx` did not need the author, and the block was mine.** The reasoning above was sound as far as it went — `<m>` really does accept no `xml:id`, and `exp_rule_02e` and `exp_rule_04e` really are live `<xref>` targets — but it assumed a cell can only hold inline content. `TableCell` is a choice of `TableCellText | LongLine+ | Paragraph+`, so `<cell><p><md>…</md></p></cell>` is legal and the `<mrow xml:id>`s never had to move. **18 → 0**, 18 lines changed, all 22 ids and every xref intact. See the corrected `<cell>` rule below.
 
 **`aa-bookends/a3-quickref/` is finished: 121 → 0, all twelve files.** See the section below for what that took, since the same shapes recur elsewhere.
 
@@ -426,11 +426,17 @@ Moved blocks dedent one level. **Expect the diff to be large relative to the num
 
 Cleared 77 → 2. The 2 survivors are nested `<sidebyside>` inside `<sidebyside>`, which is a layout decision, not a mechanical fix.
 
-### A `<cell>` takes inline content — `<md>` in a table cell is an error
+### A bare `<md>` in a table cell is an error — but a `<p>` fixes it, and that matters when the math is labelled
 
-Converting any grid into a `<tabular>` is a **two-step** change. Moving the panels into `<cell>` elements is the obvious half; the half that is easy to miss is that a cell takes inline content, so display `<md>` has to become inline `<m>`. Converting three `<sbsgroup>` grids and stopping at step one traded 3 errors for about 50 and pushed the book-wide count **up** by 22. With the math converted, the same three files went 94 → 31.
+Converting any grid into a `<tabular>` is a **two-step** change. Moving the panels into `<cell>` elements is the obvious half; the half that is easy to miss is that a bare cell takes inline content, so display `<md>` has to become inline `<m>`. Converting three `<sbsgroup>` grids and stopping at step one traded 3 errors for about 50 and pushed the book-wide count **up** by 22. With the math converted, the same three files went 94 → 31.
 
 This is also why **`<md> is not allowed here` is the largest class left (229)** — a good share of it is display math sitting in table cells that were built this way already.
+
+🔧 **Correction — "a cell takes inline content" is only one third of `TableCell`, and the omission blocked a file for three passes.** `TableCell` is a **choice**: `TableCellText` (the inline form above) **or** `LongLine+` **or** `Paragraph+`. So `<cell><p><md>…</md></p></cell>` is perfectly legal, and where the display math is *labelled* that is the fix to reach for, because `<md><mrow xml:id="…">` is the canonical way to number and reference an equation while `<m>` accepts no `xml:id` at all.
+
+`aa-bookends/a1-algebra/EXL-exp-logs.ptx` sat in the Queue marked ⛔ **blocked, needs the author** on exactly this reasoning: 18 cells holding `<md><mrow xml:id="…">`, three of the ids live `<xref>` targets, and "the usual `<md>` → `<m>` conversion would break them, so keeping referenceable display math in a cell means restructuring the table." It did not. Adding a `<p>` around each `<md>` took the file **18 → 0** with all 22 ids and every xref untouched — an 18-line diff, no author decision, no table restructured.
+
+📌 **Read the whole content model before recording something as blocked.** The rule above was written from the failing case and never checked against the other two branches of the same `<choice>`; that half-rule then propagated into the Queue as a hard block. When a fix looks like it needs the author, the question to ask first is *which branches of this pattern did I not look at*.
 
 ### `<caption>` comes first in a `<figure>`
 
