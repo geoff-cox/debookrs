@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **326 schema messages**, measured on this branch at `5c10d84`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **307 schema messages**, measured on this branch after `exercises-ltm` was cleared, down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -313,9 +313,9 @@ Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBW
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
+| ~~`c11-ltm/exercises-ltm.ptx`~~ | **0** ✅ | cleared — `<line>` equation steps → the file's own `<tabular>`, aggregate key → per-task answer/solution, 2 `<aside>` and a `<proof>` out of their `<p>`, `<m>` inside `<md>` |
 | `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
-| `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as **running text**; WeBWorK trailing children (**decided**) |
+| `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as **running text** (the last open `<line>` sub-case); WeBWorK trailing children (**decided**) |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 15 | assorted |
 | `c12-ltp/sec-unit-step-variants.ptx` | 12 | assorted |
 | `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
@@ -545,6 +545,29 @@ So the rule is not just "verify a claimed convention before acting on it" but th
 
 ---
 
+### 🔴 `c11-ltm/exercises-ltm.ptx` — one worked solution is wrong four times over
+
+Found while converting that exercise's `<line>` steps to a `<tabular>`. **Nothing here was changed by that pass**: the numbers were copied across character-for-character, and the conversion is verified content-preserving. This is the last exercise in the file, `x'' - 4x' + 13x = 54e^{-t}`, `x(0) = x'(0) = 0`.
+
+Its own setup is right — `X(s) = 54/[(s+1)(s^2-4s+13)]`, decomposed as `A/(s+1) + (Bs+C)/(s^2-4s+13)`, so `54 = A(s^2-4s+13) + (Bs+C)(s+1)`. Then:
+
+| # | Where | What went wrong |
+|---|---|---|
+| 1 | `s = -1` | written `54 = A(-1)^2 - 4(-1) + 13`, i.e. **the bracket around `(s^2-4s+13)` is missing**, so `A` multiplies only the first term. It reduces to `54 = A + 17` and `A = 37`. With the bracket, `54 = 18A` and **`A = 3`** |
+| 2 | `s = 1` | `s^2-4s+13` at `s=1` is `10`, but the line reads `37(-10)` — **wrong sign** |
+| 3 | `s = 1` | the same line then gives `54 = 2B - 1224`, which solves to `B = 639` — but the next line records **`B = 585`**. The step contradicts its own result |
+| 4 | the backward step | the line above it correctly has `585·(s-2)/((s-2)^2+9) + (743/3)·3/((s-2)^2+9)`, yet the inverse transform is written `37e^{-t} + 585\cos(3t) + (743/3)\sin(3t)` — **the `e^{2t}` from the `(s-2)` shift is dropped**, again contradicting the line above |
+
+**Correct throughout:** `A = 3`, `B = -3`, `C = 15`, giving `X(s) = 3/(s+1) - 3(s-2)/((s-2)^2+9) + 3·3/((s-2)^2+9)` and
+
+`x(t) = 3e^{-t} - 3e^{2t}\cos(3t) + 3e^{2t}\sin(3t)`,
+
+which satisfies both initial conditions. Verified by hand and again with `sympy.apart`; the printed answer fails them badly (`x(0) = 622`, `x'(0) = 706`, against `0` and `0`).
+
+📌 **Two of the four are internal contradictions**, which is what makes this reportable without any appeal to taste: the file's own next line disagrees with the one before it. **When a worked solution is long, check each line against its neighbour before checking it against the mathematics** — it is faster, and it finds the errors that survive proofreading precisely because each line looks plausible alone.
+
+---
+
 ### Superseded — the options considered before `efc1267`
 
 Kept for the reasoning only. Three variants of the underlying pattern were seen:
@@ -630,20 +653,22 @@ The schema does not descend into a rejected element, so every error inside the 2
 | ~~`c3-di/exercises-di.ptx`~~ | **0** ✅ | cleared at `09c16ed` — per-task split out of 3 `<conclusion>`s, 8D×5, WeBWorK×1 |
 | ~~`c7-em/exercises-em.ptx`~~ | **0** ✅ | cleared at `0889084` — `<ol>` of parts → `<task>`s in 3 exercises |
 | ~~`c1-classification/exercises-class.ptx`~~ | **0** ✅ | cleared at `5c10d84` — aggregate key → per-task `<answer>`, `<feedback>` → `<solution>` |
-| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as equation steps (12) — **open**, see below |
+| ~~`c11-ltm/exercises-ltm.ptx`~~ | **0** ✅ | cleared — `<line>` equation steps ×12 → the file's own `<tabular>`, aggregate key ×2, blocks in a `<p>` ×3, `<m>` in `<md>` ×2 |
 | `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as running text (6) — **open**; WeBWorK trailing children |
 | `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
 | `c12-ltp/exercises-ltp.ptx` | 8 | remainder after the `<paragraphs>` pass |
 | `c13-linsys` 8, `c10-lt` 5, `c5-if` 2, `c9-uc` 1 | 16 | assorted `<md>` placement, `<proof>`, `<response>` |
 
-**All three that needed the author are now decided; only two `<line>` sub-cases remain open.**
+**All three that needed the author are now decided; one `<line>` sub-case remains open** — running text in `c8-lhcc`.
 
 0. ⚠️ **A `<feedback>` in a *free-response* task has nowhere to go but `<solution>`.** Phase 2A assumes a `<choices>` to reattach it to; `c4-sov`'s `sov-cq-sa` has five `<feedback>`s in `FreeResponse` tasks (`statement, response?, hint*, answer*, solution*` — no `Feedback` branch at all, and no choices in sight). Four held a model answer and became `<solution>`. **Check for an existing `<solution>` first**: the fifth was byte-identical to the one already beside it, so converting would have printed the same worked solution twice in one task — it was deleted instead. Two other shapes turned up in the same file and are worth knowing: a `<hint>` nested *inside* a `<statement>` (it belongs after `<response/>`), and a `<hint>` inside an exercisegroup's `<introduction>` (a division introduction takes block content; the author chose to drop the wrapper and keep the paragraph as intro prose).
 
 1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2), `c3-di` (1) and `c4-sov` (4). **Only `c8-lhcc` still carries this shape.**
 2. ✅ **PARTLY DECIDED — `<line>` used for line breaks.** `<line>` belongs to `<poem>` and `<program>`. **The class is 50 messages across 9 files, not the 36 across 3 recorded here before** — `c4-sov/sec-sov-implicit-solns` (4), `c8-lhcc/sec-exponential-solns` (4), `c7-em/sec-what-is-a-numerical-solution` (2), `a2-calculus/E-usub` (2), `c12-ltp/sec-unit-step-variants` (1) and `a2-calculus/D-product-rule` (1) were never listed, and none of them is in a `<sidebyside>`. 18 are now cleared; **32 remain across 8 files.** The sites are **not one class**, and reading them is what settled it — each wants a different replacement:
    - **Answer key** (`c2-solns`, 18) — ✅ **done.** Nine yes/no verdicts in a 3×3 grid of `<sidebyside>` panels became `<p><ol marker="a." cols="3">`, one `<li>` per verdict. Letters are now generated, so they cannot drift from the `<areas>` list; the fill order changes from down-the-column to across-the-row, which the author accepted. `BlockText` has no `List` branch, so the `<ol>` still needs its `<p>`. **Verify the key against the `<area correct=…>` flags as you convert** — a scripted assert caught nothing here, but the two lists are independent transcriptions of the same truth and nothing else checks them.
-   - **Equation steps** (`c11-ltm/exercises-ltm.ptx`, 12) — still open. These are `<line><m>54 = A(-1)^2 - 4(-1) + 13</m></line>` stacked inside `<sidebyside widths="15% 65% 20%">`, with `<line><m>\vphantom{A}</m></line>` used as a vertical spacer. An `<md>`/`<mrow>` is the obvious replacement, but the three-column layout (`s=-1:` in the narrow left panel, the algebra in the middle) is doing real work and `\vphantom` spacers do not survive the move.
+   - **Equation steps** (`c11-ltm/exercises-ltm.ptx`, 12) — ✅ **done, and it was never a design question.** These were `<line><m>54 = A(-1)^2 - 4(-1) + 13</m></line>` stacked inside `<sidebyside widths="15% 65% 20%">`, with `<line><m>\vphantom{A}</m></line>` as a vertical spacer. **The file writes this exact content legally, twice, in the two exercises immediately above** — a four-column `<tabular>` (`right/right/center/left`: the `s=1 :` label, the left-hand side, a lone `=`, the right-hand side), each introduced by the *verbatim identical* sentence "Now, we find `A, B,` and `C` by plugging in values of `s`". The three broken `<sidebyside>` blocks became one such tabular, rows in the same order. The `\vphantom` spacers simply go: their only job was to push the result down one line, which a blank first cell does structurally. Everything else is character-for-character preserved.
+
+     📌 **This is the third time "count how the book already writes it" has closed a supposedly open question** (after `<paragraphs>`-in-a-solution at 124-to-24 and the `<line>` answer keys). The tell is the same each time: an author writing the same content twice in one file and reaching for a layout hack only on the third. **Search for the surrounding prose, not the broken markup** — the identical introductory sentence is what found both precedents here, and no search for `<line>` or `<sidebyside>` would have.
    - **Running text** (`c8-lhcc/exercises-lhcc.ptx`, 6) — still open, and *not* in a `<sidebyside>` at all: three stacked clauses inside a `<solution>`'s `<p>` ("the DE is linear, / the DE is homogeneous, and / the DE has constant coefficients."). A `<ul>` is the natural shape; running them into one sentence is the alternative.
    - **The other 14**, in the six files listed above, are unexamined. Read each before assuming it belongs to one of the three shapes above — that assumption is exactly what made this look like a 36-message single-decision class in the first place.
 3. ✅ **DECIDED — `<paragraphs>` inside a `<solution>` becomes the book's own `<p><term>Step N …</term>.</p>`.** Done at `a5f802a`: 416 → 390, and zero `<paragraphs>` remain inside any `<solution>`.
@@ -781,7 +806,17 @@ expected the element end-tag or element "answer", "hint" or "solution"
 
 `<feedback>` is a sibling of the `<choice>`'s `<statement>`, **inside** the `<choice>`. It is never a child of `<exercise>`.
 
-⚠️ **Whether a `<task>` may hold a `<feedback>` depends on which branch it is on, and the two look identical in the source.** `Areas` and `FillInBlank` end in `interleave { Feedback?, Hint*, Answer*, Solution* }` — feedback is legal *and* order is free. `MultipleChoice` and `Matching` end in the sequence `Hint*, Answer*, Solution*` with **no Feedback at all**. So in `c1-classification/exercises-class.ptx` the `<feedback>`s on `<areas>` tasks are fine and the ones on `<choices>`/`<cardsort>` tasks are errors, in the same exercise, indented identically. **Look at the task's interaction element before deciding.** The same split explains why only one of that file's seven solution-before-answer exercises was flagged: the interleaving branches do not care about order, the plain-statement branch does.
+⚠️ **Whether a `<task>` may hold a `<feedback>` depends on which branch it is on, and the two look identical in the source.** There are **three** behaviours, not two:
+
+| Branch | Where `<feedback>` may sit |
+|---|---|
+| `Areas`, `FillInBlank` | ends `interleave { Feedback?, Hint*, Answer*, Solution* }` — legal, and **order is free** |
+| `Matching` (`<cardsort>`) | `… StatementExercise, Feedback?, Matches, Hint*, Answer*, Solution*` — legal, but **only before the `<cardsort>`** |
+| `MultipleChoice` (`<choices>`) | `… StatementExercise, Choice, Hint*, Answer*, Solution*` — **no Feedback branch at all** |
+
+So in `c1-classification/exercises-class.ptx` the `<feedback>`s on `<areas>` tasks are fine and the ones on `<choices>`/`<cardsort>` tasks are errors, in the same exercise, indented identically. **Look at the task's interaction element before deciding.** The same split explains why only one of that file's seven solution-before-answer exercises was flagged: the interleaving branches do not care about order, the plain-statement branch does.
+
+🔧 **Correction — this box previously said `Matching` has "no Feedback at all", and that is wrong.** `Matching` does carry a `Feedback?`, immediately *before* `<matches>`. The `exercises-class` cardsort feedback was illegal because of its **position** (it sat after `</cardsort>`), not because the branch lacks the element — the author's decision to turn it into a `<solution>` still stands, but the general rule does not. `c11-ltm/exercises-ltm.ptx`'s `ltm-cq-07` is the proof: it carries a `<feedback>` between `<statement>` and `<cardsort>` and has always validated. **The cheap fix for a stray cardsort feedback is to move it above the `<cardsort>`, which keeps it as feedback; converting it to a solution changes when the student sees it.**
 
 ```xml
 <!-- WRONG -->
