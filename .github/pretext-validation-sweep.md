@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **366 schema messages**, measured on this branch at `2a2f3cf`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **345 schema messages**, measured on this branch at `0889084`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -64,6 +64,8 @@ Step 1.1 ("start with `c5-if/exercises-if.ptx` (153)") now sends you to a file w
 | `c11-ltm` | 241 | no |
 | `c12-ltp` | 194 | no |
 | chapters 1–8 combined | 674 | yes |
+
+⚠️ **A failed `<choice>` is reported against every branch, so one defect can name elements the file does not contain.** `c7-em/exercises-em.ptx` read 21 messages from **3** broken exercises — six apiece: twice "expected `<task>` or `<webwork>`", twice "expected `<myopenmath>` or `<task>`", twice "`<stack>` is not allowed here". There is no `<stack>` anywhere in that file (`grep -c "<stack"` is 0) and the cited line is `</exercise>`. The exercises simply had `<introduction>` followed by a bare `<p>`, matching no branch of `Exercise`. **Never chase an element named in a "not allowed here" message without grepping for it first** — and note this is the reverse of the usual inflation: not one defect echoing down a sibling list, but one defect echoing across the branches of a single `<choice>`.
 
 **Count messages, not edits.** 2,906 schema messages collapse to **904 distinct containers** (~3.2 messages per real edit) — one bad `<solution>` placement re-reports at every following sibling position. Rank by the `edit_sites` column in the CSV, not `total`: `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` throws 188 messages from a 169-line file and is nowhere near the top by actual work.
 
@@ -289,6 +291,7 @@ Two content models worth recording, both found the hard way:
 | `c3-di/exercises-di.ptx` | 25 | **0** ✅ | 9 | per-task `<solution>`/`<answer>` split out of 3 `<conclusion>`s; 8D ×5; WeBWorK ×1 |
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **0** ✅ | 5 | 8D sweep — `</mrow>` closed early, math continuing outside the row |
 | `c4-sov/exercises-sov.ptx` | 24 | **0** ✅ | 11 | 2A `<feedback>`×5, `<hint>` in a `<statement>`, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
+| `c7-em/exercises-em.ptx` | 21 | **0** ✅ | 3 | `<ol>` of parts → `<task>`s in 3 exercises; 21 messages from 3 defects |
 | `c12-ltp/sec-laplace-piecewise-method.ptx` | 14 | **1** | 14 | `<paragraphs>` ×12 → `<term>` labels; 2 `<tabular>` unmasked by it |
 | `c12-ltp/exercises-ltp.ptx` | 21 | **8** | 17 | `<paragraphs>` ×12, `<identity>`, 2 nested `<solution>`, 2 `<p>` wrappers |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
@@ -303,11 +306,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `2a2f3cf`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `0889084`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
 | `c1-classification/exercises-class.ptx` | 19 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
 | `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
@@ -639,6 +641,8 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 ✅ **`<area>` nested inside `<ol>/<li>` — done in `c4-sov` at the author's direction.** The precise rule is narrower than "areas accepts `<p>`, `<cline>` and `<tabular>`": `<areas>` takes `ParagraphAreas | ClineAreas | Tabular`, and **`ParagraphAreas` is a one-level flavour** — an ordinary `<p>` nested inside it (in an `<li>`, say) reverts to the normal grammar and admits no `<area>`. That is why the outer `<p>` validated while the `<area>`s inside the list items did not. The fix is to hoist each `<li>`'s contents to be direct children of `<areas>`.
 
 ⚠️ **`<cline>` is not a general substitute.** `ClineAreas` is `mixed { Area* }` — text and `<area>` only, **no `<m>`**. Any step whose separators or options are inline math has to be a `<p>` or a `<tabular>`.
+
+📌 **An unmarked `<ol>` of exercise parts is a latent cross-reference bug, and it has now turned up twice.** Both `c4-sov`'s click exercise and `c7-em`'s three `em-problem-0*` exercises cite their parts as "(a)"/"(c)" in prose while their `<ol>` carried no `@marker` — so each rendered **1., 2., 3.** and the references pointed at labels the page never showed. Where the list becomes `<task>`s the bug fixes itself, because tasks render (a), (b), (c)…; in `c7-em` the cited parts lined up exactly and no labels had to be chosen. Where the list is *not* becoming tasks — as in `<areas>` below — the labels must be written out by hand and that is an author's call. **Either way, read the prose for letter references before touching a list of parts.**
 
 📌 **Hoisting a list out of `<areas>` destroys its markers, and the prose may depend on them.** `sov-warm-ups-click-2` cross-references "the correct answer to (c)" and "…to (d)". Its `<ol>` carried no `@marker`, so it was rendering **1., 2., 3.** and those references pointed at labels the page never showed — a pre-existing rendering bug that only surfaced because the restructure forced the labels to be written out. The author chose **(a)–(g)**, which satisfies the schema and repairs the references together. **Read the surrounding prose for label references before flattening any list.**
 
