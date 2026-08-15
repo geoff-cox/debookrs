@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **274 schema messages**, measured on this branch after `EXL-exp-logs` was cleared, down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **234 schema messages**, measured on this branch with `main` merged in at `18e873a`. That splits two ways: this branch's three files account for **326 → 274** (`exercises-ltm` 19, `exercises-lhcc` 15, `EXL-exp-logs` 18), and the author's own `self-fixes` commit for **274 → 234** — it cleared `exercises-wad` 14 → 0, `sec-showing-separability` 10 → 0, `sec-piecewise-functions` 10 → 5, `exercises-linsys` 8 → 3 and three more files outright. Down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -318,7 +318,7 @@ Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBW
 | ~~`c8-lhcc/exercises-lhcc.ptx`~~ | **0** ✅ | cleared — `<line>` running text → `<ul>`, `<ol>` of parts → `<task>`s, `<hint>` out of a `<statement>` |
 | `c11-ltm/sec-leaving-the-laplace-domain.ptx` | 15 | assorted |
 | `c12-ltp/sec-unit-step-variants.ptx` | 12 | assorted |
-| `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
+| ~~`c0-whats-a-de/exercises-wad.ptx`~~ | **0** ✅ | cleared by the author in `18e873a` |
 | **`main.ptx`** | **13** | 7× `<audio>` in a `<p>` inside a chapter-intro `<aside>`; one `<tabular>`/`<interactive>` block — see below |
 
 ⚠️ **`main.ptx` carries 13 of its own and has never appeared in this queue.** It is not an artifact of textual assembly — the messages land on real `main.ptx` lines. Seven are the same shape repeated in seven chapter introductions: `<aside component="web"><title>🎧 Listen</title><p><audio …/></p></aside>`, where `<audio>` is a block element and the `<p>` around it is the defect. That is the mechanical "block element inside a `<p>`" class this document already covers, so it should be cheap — but **check `Aside`'s model before dropping the wrapper**, per the `<support>` over-reach recorded above. The remaining 6 are one `<tabular>`/`<interactive>` region around lines 1169–1200, including a `width` attribute that is not allowed where it sits.
@@ -665,7 +665,7 @@ The schema does not descend into a rejected element, so every error inside the 2
 | ~~`c1-classification/exercises-class.ptx`~~ | **0** ✅ | cleared at `5c10d84` — aggregate key → per-task `<answer>`, `<feedback>` → `<solution>` |
 | ~~`c11-ltm/exercises-ltm.ptx`~~ | **0** ✅ | cleared — `<line>` equation steps ×12 → the file's own `<tabular>`, aggregate key ×2, blocks in a `<p>` ×3, `<m>` in `<md>` ×2 |
 | ~~`c8-lhcc/exercises-lhcc.ptx`~~ | **0** ✅ | cleared — `<line>` running text ×6 → `<ul>`, `<ol>` of parts → 4 `<task>`s (×8), `<hint>` in a `<statement>` |
-| `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
+| ~~`c0-whats-a-de/exercises-wad.ptx`~~ | **0** ✅ | cleared by the author in `18e873a` |
 | `c12-ltp/exercises-ltp.ptx` | 8 | remainder after the `<paragraphs>` pass |
 | `c13-linsys` 8, `c10-lt` 5, `c5-if` 2, `c9-uc` 1 | 16 | assorted `<md>` placement, `<proof>`, `<response>` |
 
