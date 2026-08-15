@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **390 schema messages**, measured on this branch at `a5f802a`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
+**Current:** **326 schema messages**, measured on this branch at `5c10d84`, down from **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first. **Always state which commit a book-wide number was measured on** — `main` moves during a sweep, and comparing against a stale baseline reads as a regression that never happened. This figure and the one in the Progress section are the same number; if they ever disagree, the Progress section is the one regenerated per sweep.
 
 ⚠️ **527, not 540, is the number `2c89a89` reads — and no fix caused the drop.** The 540 in this document's previous revision was measured at `8b155e1`, a commit that no longer exists (PR #226 was squash-merged as `838a2a0`). Rebuilding the harness from scratch and measuring at `838a2a0` *and* at `2c89a89` gives **527 at both**, so `2c89a89` ("formatted main") changed nothing the schema can see, and the 13-message gap is harness drift, not content. Rebuild instructions are in the Rebuilding the harness section below; the drift is the same hazard the box above describes, one level down. **Re-measure a baseline with your own harness before quoting a delta.**
 
@@ -65,6 +65,8 @@ Step 1.1 ("start with `c5-if/exercises-if.ptx` (153)") now sends you to a file w
 | `c12-ltp` | 194 | no |
 | chapters 1–8 combined | 674 | yes |
 
+⚠️ **A failed `<choice>` is reported against every branch, so one defect can name elements the file does not contain.** `c7-em/exercises-em.ptx` read 21 messages from **3** broken exercises — six apiece: twice "expected `<task>` or `<webwork>`", twice "expected `<myopenmath>` or `<task>`", twice "`<stack>` is not allowed here". There is no `<stack>` anywhere in that file (`grep -c "<stack"` is 0) and the cited line is `</exercise>`. The exercises simply had `<introduction>` followed by a bare `<p>`, matching no branch of `Exercise`. **Never chase an element named in a "not allowed here" message without grepping for it first** — and note this is the reverse of the usual inflation: not one defect echoing down a sibling list, but one defect echoing across the branches of a single `<choice>`.
+
 **Count messages, not edits.** 2,906 schema messages collapse to **904 distinct containers** (~3.2 messages per real edit) — one bad `<solution>` placement re-reports at every following sibling position. Rank by the `edit_sites` column in the CSV, not `total`: `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` throws 188 messages from a 169-line file and is nowhere near the top by actual work.
 
 Two edit-site figures appear in this document and they are not in conflict: **904** counts containers touched by the *schema* half only, while the **1,012** in the header is the CSV's `edit_sites` column summed, which also counts the 108 containers whose only messages come from `validation-plus` (ragged tabulars, long shortdescriptions, unicode, sidebyside advisories).
@@ -115,6 +117,12 @@ Carry these into each phase; they come from `.github/copilot-instructions.md` an
 - **Never invent content.** If a `<statement>` is empty or a `<feedback>` has no text, flag it in the report; do not write pedagogy to satisfy a schema.
 - **`<feedback>` with bare inline text is valid — do not sweep it.** The schema is an explicit `<choice>`: `<oneOrMore><ref name="BlockSolution"/></oneOrMore>` **or** `<ref name="TextLong"/>`. So `<feedback>Correct!</feedback>` is as legal as `<feedback><p>Correct!</p></feedback>`, and wrapping one changes no validation count. **471 such elements across 36 files** currently use the inline form. Adding `<p>` to them is a house-style choice the author can make deliberately; it is not sweep work, and a tool that reports it as a schema error is wrong. Verify against `/root/.ptx/<version>/core/schema/pretext-dev.rng` before treating any "X requires block content" claim as real — several elements take either form.
 - **Math conventions hold:** `\amp =` not `&=`, one `<mrow>` per line, `bmatrix` not `pmatrix`.
+
+  ⚠️ **`\amp =`, not `=\amp`** — the marker goes *before* the relation so the `=` opens the right-hand cell and gets binary-relation spacing on both sides. ✅ **Normalised book-wide at `89a8765`: 53 rows across 5 files** (`A-limits` 28, `c10-lt/exercises-lt` 16, `c13-linsys/exercises-linsys` 6, `c11-ltm/exercises-ltm` 2, `c4-sov/exercises-sov` 1); `=\amp` is now **0**. The `A-limits` 28 had all arrived in one commit that was adding genuinely missing `=` signs and flipped the already-correct rows along with them — easy to do with a find-and-replace, and **nothing flags it, because neither form is a schema error**. Grep for `=\\amp` after any bulk edit to alignment math.
+
+  ⚠️ **Match only the literal `=\amp`, with no separating whitespace.** A looser search (`(=|\\implies|\\le|…)\s*\\amp`) finds six more sites, and **every one of them is correct as it stands**: four in `c10-lt/sec-common-transforms` are a raw `\begin{array}{crcl}` whose third column *is* the `=`, alone between two `\amp`; one is a row ending `I = \amp` where moving the `=` changes which cell aligns with the next row; one is `\implies` used as a trailing connector in `c4-sov/sec-sov-method`. A relation separated from `\amp` by a space is a signal that the layout is deliberate — read it before touching it.
+
+  📌 **The verification for a transposition has to ignore whitespace.** Swapping `=` and `\amp` necessarily moves the space that sat between them, so the usual "strip tags and whitespace, expect byte-identical" check fails on the space alone. Delete every `\amp` *and* every whitespace character, require the line to be byte-identical, and separately require the per-line `\amp` count to be unchanged. That pair pins the edit to the intended swap.
 - **Commit per phase per chapter**, not per file and not one giant commit. Message format: `fix(validate): R1 p-wrappers in c4-sov`.
 
 ---
@@ -186,6 +194,8 @@ Rank by `edit_sites` in the CSV. The real head of the queue:
 - Widening the general "wrap runs of inline siblings" pass to more parents **broke well-formedness in nine files**: that pass assumes an element whose open and close tags sit on their own lines, which does not hold for `<example>` and friends. Reverted rather than patched.
 
 **Every transform now re-parses its own output and refuses to write a file that no longer parses.** Do the same with anything new — `git diff` will not tell you, and neither will the message count.
+
+⚠️ **Two edits keyed on the same line clobber each other, and only re-parsing catches it.** In `exercises-class` the `<feedback>`→`<solution>` retag and the insertion of a new `<answer>` before it both anchored on the task's tail line; applied as separate edits they produced `<feedback>…</solution>`. A line-addressed transform must merge every edit that targets one line into a single replacement — collect edits keyed by line and assert the keys are unique before applying.
 
 **Latest: review of #226, at `8b155e1`. 546 → 540.**
 
@@ -282,6 +292,9 @@ Two content models worth recording, both found the hard way:
 | `c2-solns/exercises-solns.ptx` | 30 | **0** ✅ | 8 | three author decisions: `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
 | `c3-di/exercises-di.ptx` | 25 | **0** ✅ | 9 | per-task `<solution>`/`<answer>` split out of 3 `<conclusion>`s; 8D ×5; WeBWorK ×1 |
 | `aa-bookends/a2-calculus/B-lhospital.ptx` | 5 | **0** ✅ | 5 | 8D sweep — `</mrow>` closed early, math continuing outside the row |
+| `c4-sov/exercises-sov.ptx` | 24 | **0** ✅ | 11 | 2A `<feedback>`×5, `<hint>` in a `<statement>`, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
+| `c7-em/exercises-em.ptx` | 21 | **0** ✅ | 3 | `<ol>` of parts → `<task>`s in 3 exercises; 21 messages from 3 defects |
+| `c1-classification/exercises-class.ptx` | 19 | **0** ✅ | 5 | aggregate key → per-task `<answer>`, task `<feedback>` → `<solution>`; 2C order ×1 |
 | `c12-ltp/sec-laplace-piecewise-method.ptx` | 14 | **1** | 14 | `<paragraphs>` ×12 → `<term>` labels; 2 `<tabular>` unmasked by it |
 | `c12-ltp/exercises-ltp.ptx` | 21 | **8** | 17 | `<paragraphs>` ×12, `<identity>`, 2 nested `<solution>`, 2 `<p>` wrappers |
 | `aa-bookends/a1-algebra/P-units-mass-balance.ptx` | 21 | **7** | 15 | `<li>`→`<exercise>` ×15; remainder is `<sidebyside>` placement |
@@ -296,13 +309,10 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `a5f802a`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `5c10d84`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
-| `c4-sov/exercises-sov.ptx` | 24 | `<area>` inside `<ol>/<li>`; WeBWorK trailing children (**decided**) |
-| `c7-em/exercises-em.ptx` | 21 | `<stack>`; a bare `<p>` where a `<statement>` belongs |
-| `c1-classification/exercises-class.ptx` | 19 | Phase 2A `<feedback>` at task level, 2B `<solution>` after tasks |
 | `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as **equation steps** — the one `<line>` sub-case still open, see below |
 | `aa-bookends/a1-algebra/EXL-exp-logs.ptx` | 18 | `<md><mrow xml:id="…">` in cells — **blocked**, see below |
 | `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as **running text**; WeBWorK trailing children (**decided**) |
@@ -505,6 +515,32 @@ The Copilot reviewer on #227 read the mathematics of the content these passes mo
 
 📌 **Only one of the four was a one-character fix.** The `s^2Y - s` error is upstream of an entire worked example: correcting it changes `Y(s)`'s homogeneous term from `\frac{1}{s+2}` to `\frac{1}{s(s+2)}`, whose inverse is `\frac12(1 - e^{-2t})` rather than `e^{-2t}`, so six lines move. `F(s) = \frac{3}{s^2(s+2)}` is untouched, which is why the partial-fraction `<proof>` beneath it stayed valid as written. **Check where a wrong transform propagates before calling it a typo** — and verify the result: the corrected solution satisfies `y'' + 2y' = 0` with `y(0)=0, y'(0)=1` before `t=5`, and the added `f(t-5)` satisfies `f'' + 2f' = 3` with `f(0)=f'(0)=0`, so the forcing switches on smoothly.
 
+### 🔴 Four more content findings from the #228 review, all pre-existing
+
+Same pattern as #227: the reviewer read the mathematics of content these passes moved. All four were checked by hand — **three hold, the fourth does not** — all four predate this branch (confirmed against `origin/main`), and none is a schema error. (A fifth thread on that review was about this document's own stale R8 table; that one was mine and is fixed in `5738ad3`.)
+
+| File | Where | The finding |
+|---|---|---|
+| `c10-lt/exercises-lt.ptx` | the `<answer>` at ~L951 | the exercise asks for `\lap{\sin(-4t)}`; sine is odd, and **the worked solution derives `-4/(s^2+16)` twice** — but the answer reads `+4/(s^2+16)`. Answer contradicts statement and solution |
+| `c4-sov/exercises-sov.ptx` | the `<hint>` at ~L1445, and 2 more | "Use the property `e^{A+B} = e^A \cdot e^B` to obtain the final combined constant" is attached to `y' = e^{2x} - 4x`, which is solved by direct integration and forms no exponential of a sum. **The same hint appears three times in the file**, so it is a copy-paste that fits some of its hosts and not others |
+| `c4-sov/exercises-sov.ptx` | the solutions at ~L1590 and ~L1717 | ✅ **fixed on author's instruction** — see the note below the table. Dividing by `g(y)` dropped the equilibrium solution `y = 0`; only the nonzero family was presented. **The book states this exact rule and these two break it** — `sec-sov-method.ptx` L89 is a subsection "Lost Solutions: check `g(y) = 0` before you divide", L101 an alert to solve `g(y) = 0` first, and three exercises further down this same file follow it (L1779, L1854, and L1871/1879, which is the identical `y^2` shape and does report `y = 0`). The two sites differ in severity: at L1590 (`dy/dx = xy^2`) the loss reaches the grader, since `$y_gen = Formula("1/(-1/2*x^2+c)")` is nonzero for every finite `c`; at L1717 (`dy/dx - y\cos(x) = y`) `$y_gen = Formula("c*e^(x+sin(x))")` already admits `c = 0`, so only the closing sentence "where `C = \pm e^c` is an arbitrary constant" excludes it — a one-clause prose fix, with L1779 as the house wording |
+
+✅ **The equilibrium finding is fixed.** Both solutions now qualify the division (`Dividing both sides by y^2, which is valid where y \neq 0`) and close the gap, following the two house forms already in the file:
+
+* **`sov-warm-ups-ww-3`** gets a fourth step, `Recover the Lost Solution:`, matching the file's own `Order and Separable Form:` / `Separate Variables:` / `Integrate:` / `Solve for y:` labelling, and a display carrying both `y = 1/(-x^2/2 + c)` and `y = 0` — because here no value of `c` reaches zero, so the equilibrium has to be stated separately (the L1871 pattern).
+* **`sov-warm-ups-ww-4`** keeps its single closing sentence, corrected: `C = \pm e^c` is never zero, dividing by `y` set that solution aside, and allowing `C = 0` recovers it (the L1779 pattern).
+
+⚠️ **The `pg-code` was deliberately not touched, and that leaves one gap.** `ww-3`'s answer box checks against `$y_gen = Formula("1/(-1/2*x^2+c)")`, so the grader still accepts only the nonzero family; making it accept the equilibrium too needs a second box or a list-valued answer, which is an exercise redesign rather than a correction. The exposition is now right; the *grading* of that one box is a separate call for the author.
+
+⚠️ **The fourth finding's premise was wrong, and checking it took one command.** The review asked for lowercase `c` to be changed to `C` "contrary to the source convention requiring uppercase `C` (and `C_1`, `C_2`, …)". **There is no such convention.** Book-wide the split is `+ c` **167** against `+ C` **309**, *within `exercises-sov.ptx` itself* it is **30 against 29**, and the parenthetical about subscripts runs the other way outright — book-wide `c_1`/`c_2` **993** against `C_1`/`C_2` **219**.
+
+Two further checks killed it outright, and both are worth copying the next time a consistency claim shows up:
+
+* **The exercises are already internally consistent**, which is what the edit claimed to repair. Single-letter constant tokens per flagged exercise: `sov-warm-ups-click-2` 13 lowercase / 0 uppercase, `sov-warm-ups-ww-2` 9/0, `sov-warm-ups-ww-3` 16/0, `sov-warm-ups-ww-4` 15/1 — and that lone `C` is `C = \pm e^c` after absorbing the sign, a *different* constant, deliberately renamed.
+* **The edit would have broken the exercises.** Three of the four statements print "Combine constants and use `c` for the final combined constant" (L1430, L1545, L1667) and two declare it to the grader as `Context()->variables->add(c => 'Real')` (L1488, L1609). Renaming the choices to `C` contradicts the instruction on the student's screen and the variable the answer checker knows about.
+
+So the rule is not just "verify a claimed convention before acting on it" but the stronger one: **a styling suggestion can be a live bug**, because in WeBWorK exercises the prose, the choices and the `pg-code` are one artifact. See the #227 entry for the same lesson about that reviewer's "this also appears at" line pointers.
+
 📌 **A structural sweep is a good time to catch these.** Moving a block puts its mathematics in a diff where a reader — or a review bot — will actually look at it, which is why four errors that had survived every previous pass surfaced at once. It is still not the place to *fix* them unprompted: correcting mathematics changes what a student reads, so it stays the author's call and belongs in its own commit, as these did.
 
 ---
@@ -583,24 +619,28 @@ The schema does not descend into a rejected element, so every error inside the 2
 
 ⚠️ **`<intertext>` is not the fix for prose after the last `<mrow>`.** The schema requires every intertext to be *sandwiched* between mrows — it cannot lead, cannot trail, and two cannot be adjacent. A trailing one trades one error for eight. Trailing prose belongs after `</md>`, in the enclosing `<p>`.
 
-### What is left in those files — 189 messages, and it is not R8
+### What is left in those files — 73 messages, and it is not R8
 
-Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/review-choosing-a-method`, `c14-nlinsys`, and `c5-if/review-first-order-methods` is at 1.
+**Regenerated at `8fc68c1`.** Six of the sixteen are now clean: `c6-qm`, `c14-nlinsys`, `c9-uc/review-constant-coefficient`, `c12-ltp/review-choosing-a-method`, `c2-solns/exercises-solns`, `c3-di/exercises-di`, `c4-sov/exercises-sov`, `c7-em/exercises-em` and `c1-classification/exercises-class` — nine, in fact.
 
 | File | Left | Dominant class |
 |---|---:|---|
-| `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside an `<ol>/<li>` in `<areas>`; WeBWorK exercises with trailing `<hint>`/`<answer>`/`<solution>` |
+| ~~`c4-sov/exercises-sov.ptx`~~ | **0** ✅ | cleared at `2a2f3cf` — 2A `<feedback>`×5, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
 | ~~`c2-solns/exercises-solns.ptx`~~ | **0** ✅ | cleared at `faa192c` — `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
-| `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
-| `c7-em/exercises-em.ptx` | 23 | `<stack>` and a bare `<p>` where a `<statement>` belongs |
-| `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` (12) |
-| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` inside a `<sidebyside>` panel (12) |
-| `c8-lhcc/exercises-lhcc.ptx` | 18 | `<line>` (6); WeBWorK trailing children |
-| `c13-linsys`, `c10-lt`, `c5-if`, `c9-uc` | 19 | assorted `<md>` placement, `<proof>`, `<response>` |
+| ~~`c3-di/exercises-di.ptx`~~ | **0** ✅ | cleared at `09c16ed` — per-task split out of 3 `<conclusion>`s, 8D×5, WeBWorK×1 |
+| ~~`c7-em/exercises-em.ptx`~~ | **0** ✅ | cleared at `0889084` — `<ol>` of parts → `<task>`s in 3 exercises |
+| ~~`c1-classification/exercises-class.ptx`~~ | **0** ✅ | cleared at `5c10d84` — aggregate key → per-task `<answer>`, `<feedback>` → `<solution>` |
+| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as equation steps (12) — **open**, see below |
+| `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as running text (6) — **open**; WeBWorK trailing children |
+| `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
+| `c12-ltp/exercises-ltp.ptx` | 8 | remainder after the `<paragraphs>` pass |
+| `c13-linsys` 8, `c10-lt` 5, `c5-if` 2, `c9-uc` 1 | 16 | assorted `<md>` placement, `<proof>`, `<response>` |
 
 **All three that needed the author are now decided; only two `<line>` sub-cases remain open.**
 
-1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2 exercises); roughly 5 remain, in `c3-di`, `c4-sov` and `c8-lhcc`.
+0. ⚠️ **A `<feedback>` in a *free-response* task has nowhere to go but `<solution>`.** Phase 2A assumes a `<choices>` to reattach it to; `c4-sov`'s `sov-cq-sa` has five `<feedback>`s in `FreeResponse` tasks (`statement, response?, hint*, answer*, solution*` — no `Feedback` branch at all, and no choices in sight). Four held a model answer and became `<solution>`. **Check for an existing `<solution>` first**: the fifth was byte-identical to the one already beside it, so converting would have printed the same worked solution twice in one task — it was deleted instead. Two other shapes turned up in the same file and are worth knowing: a `<hint>` nested *inside* a `<statement>` (it belongs after `<response/>`), and a `<hint>` inside an exercisegroup's `<introduction>` (a division introduction takes block content; the author chose to drop the wrapper and keep the paragraph as intro prose).
+
+1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2), `c3-di` (1) and `c4-sov` (4). **Only `c8-lhcc` still carries this shape.**
 2. ✅ **PARTLY DECIDED — `<line>` used for line breaks.** `<line>` belongs to `<poem>` and `<program>`. **The class is 50 messages across 9 files, not the 36 across 3 recorded here before** — `c4-sov/sec-sov-implicit-solns` (4), `c8-lhcc/sec-exponential-solns` (4), `c7-em/sec-what-is-a-numerical-solution` (2), `a2-calculus/E-usub` (2), `c12-ltp/sec-unit-step-variants` (1) and `a2-calculus/D-product-rule` (1) were never listed, and none of them is in a `<sidebyside>`. 18 are now cleared; **32 remain across 8 files.** The sites are **not one class**, and reading them is what settled it — each wants a different replacement:
    - **Answer key** (`c2-solns`, 18) — ✅ **done.** Nine yes/no verdicts in a 3×3 grid of `<sidebyside>` panels became `<p><ol marker="a." cols="3">`, one `<li>` per verdict. Letters are now generated, so they cannot drift from the `<areas>` list; the fill order changes from down-the-column to across-the-row, which the author accepted. `BlockText` has no `List` branch, so the `<ol>` still needs its `<p>`. **Verify the key against the `<area correct=…>` flags as you convert** — a scripted assert caught nothing here, but the two lists are independent transcriptions of the same truth and nothing else checks them.
    - **Equation steps** (`c11-ltm/exercises-ltm.ptx`, 12) — still open. These are `<line><m>54 = A(-1)^2 - 4(-1) + 13</m></line>` stacked inside `<sidebyside widths="15% 65% 20%">`, with `<line><m>\vphantom{A}</m></line>` used as a vertical spacer. An `<md>`/`<mrow>` is the obvious replacement, but the three-column layout (`s=-1:` in the narrow left panel, the algebra in the middle) is doing real work and `\vphantom` spacers do not survive the move.
@@ -628,7 +668,13 @@ Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/rev
 
 ⚠️ **A `<solution>` parked in a `<conclusion>` is a third shape, and it is mechanical.** `ConclusionStatement` is `BlockStatement+` and admits no `<solution>`; a `<task>`'s FreeResponse branch is `statement, response?, hint*, answer*, solution*`, which is where such solutions belong. In `c2-solns` the conclusion held four solutions titled (a)–(d) for a three-task exercise, and moving them needed no re-indentation at all — a `<conclusion>`'s child and a `<task>`'s child sit at the same depth. **Count the solutions against the tasks before moving any**: the orphan (d) had never had a matching question at any commit back through #200, and the author chose to delete it rather than have a question written for it.
 
-And one that is mechanical but was left for a later pass so it can be verified on its own: **`<area>` nested inside `<ol>/<li>`** in `c4-sov` — `<areas>` accepts `<p>`, `<cline>` and `<tabular>`, and an `<area>` inside a list item's paragraph is out of reach of that model, so the numbered steps need restructuring the way Phase 4A restructured the `<sidebyside>` wrappers.
+✅ **`<area>` nested inside `<ol>/<li>` — done in `c4-sov` at the author's direction.** The precise rule is narrower than "areas accepts `<p>`, `<cline>` and `<tabular>`": `<areas>` takes `ParagraphAreas | ClineAreas | Tabular`, and **`ParagraphAreas` is a one-level flavour** — an ordinary `<p>` nested inside it (in an `<li>`, say) reverts to the normal grammar and admits no `<area>`. That is why the outer `<p>` validated while the `<area>`s inside the list items did not. The fix is to hoist each `<li>`'s contents to be direct children of `<areas>`.
+
+⚠️ **`<cline>` is not a general substitute.** `ClineAreas` is `mixed { Area* }` — text and `<area>` only, **no `<m>`**. Any step whose separators or options are inline math has to be a `<p>` or a `<tabular>`.
+
+📌 **An unmarked `<ol>` of exercise parts is a latent cross-reference bug, and it has now turned up twice.** Both `c4-sov`'s click exercise and `c7-em`'s three `em-problem-0*` exercises cite their parts as "(a)"/"(c)" in prose while their `<ol>` carried no `@marker` — so each rendered **1., 2., 3.** and the references pointed at labels the page never showed. Where the list becomes `<task>`s the bug fixes itself, because tasks render (a), (b), (c)…; in `c7-em` the cited parts lined up exactly and no labels had to be chosen. Where the list is *not* becoming tasks — as in `<areas>` below — the labels must be written out by hand and that is an author's call. **Either way, read the prose for letter references before touching a list of parts.**
+
+📌 **Hoisting a list out of `<areas>` destroys its markers, and the prose may depend on them.** `sov-warm-ups-click-2` cross-references "the correct answer to (c)" and "…to (d)". Its `<ol>` carried no `@marker`, so it was rendering **1., 2., 3.** and those references pointed at labels the page never showed — a pre-existing rendering bug that only surfaced because the restructure forced the labels to be written out. The author chose **(a)–(g)**, which satisfies the schema and repairs the references together. **Read the surrounding prose for label references before flattening any list.**
 
 ---
 
@@ -733,7 +779,9 @@ element "feedback" not allowed here;
 expected the element end-tag or element "answer", "hint" or "solution"
 ```
 
-`<feedback>` is a sibling of the `<choice>`'s `<statement>`, **inside** the `<choice>`. It is never a child of `<task>` or `<exercise>`.
+`<feedback>` is a sibling of the `<choice>`'s `<statement>`, **inside** the `<choice>`. It is never a child of `<exercise>`.
+
+⚠️ **Whether a `<task>` may hold a `<feedback>` depends on which branch it is on, and the two look identical in the source.** `Areas` and `FillInBlank` end in `interleave { Feedback?, Hint*, Answer*, Solution* }` — feedback is legal *and* order is free. `MultipleChoice` and `Matching` end in the sequence `Hint*, Answer*, Solution*` with **no Feedback at all**. So in `c1-classification/exercises-class.ptx` the `<feedback>`s on `<areas>` tasks are fine and the ones on `<choices>`/`<cardsort>` tasks are errors, in the same exercise, indented identically. **Look at the task's interaction element before deciding.** The same split explains why only one of that file's seven solution-before-answer exercises was flagged: the interleaving branches do not care about order, the plain-statement branch does.
 
 ```xml
 <!-- WRONG -->
