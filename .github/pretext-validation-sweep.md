@@ -3,7 +3,7 @@
 **Repo:** `debookrs` (*Exploring Differential Equations*)
 **Source log:** `logs/main-validation.txt` (PreTeXt 2.48.1, `pretext-dev.rng`) — note `logs/` is gitignored, so regenerate it locally; it is never committed
 **Scope at baseline:** 3,142 messages / 1,012 distinct edit sites across 124 source files (schema + validation-plus)
-**Current:** **188 schema messages**, measured on this branch at `37bc3ba`, down from **234** at `5bd78e3` (the merge of #229). Down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first.
+**Current:** **179 schema messages**, measured on this branch at `487fbb5`, down from **234** at `5bd78e3` (the merge of #229). Down from **326** at `94922f8` (the merge of #228), **527** at `2c89a89`, from **923** at the merge of #225 and **1,044** at the merge of #224, and from **1,685** at the peak of the R8 conversion — see the R8 section for why the number had to rise first.
 
 ✅ **A from-scratch harness rebuild read 234 at `5bd78e3` and 326 at `94922f8`, both exactly as recorded.** Two sweeps in a row have now reproduced the previous sweep's number, so the drift warned about below is not inevitable and the four rebuild steps as written are sufficient. Two details are load-bearing and were not obvious: drop the XML declaration from *every* included file and prepend exactly one to the assembly (four files here carry their own, and leaving the first in place lands it mid-document and costs a spurious message), and offset the line map by that prepended line or every message maps one line early.
 
@@ -247,6 +247,15 @@ All three Runestone branches in play accept the result, which is why the split w
 | `<identity>` and 2 nested `<solution>` retagged `<proof>`; 2 block-only `<p>` wrappers dissolved | 5 | — |
 | prose-plus-`<tabular>` `<p>`s split, unmasked by the above | 2 | 392 → 390 |
 
+**Then: the `<solution>`/`<answer>` enumeration, at `487fbb5`. 188 → 179.** The class was 49 messages and the biggest thing left; enumerating it by parent tag turned it into seven shapes, five of which already had a fix in this document. Two were cleared here, one is newly blocked, and the rest are known conversions. Full table in the `<solution>`/`<answer>` section below.
+
+| Pass | Sites | Book-wide |
+|---|---:|---|
+| `QEQ-quadratic-equations` — 3 examples to the Statement branch + 2C order; 2 `<li>` → inline `<exercise>` | 8 in 1 file | 188 → 180 |
+| the last nested `<solution>` in the book → `<proof>` | 1 | 180 → 179 |
+
+Also run and clean: **the book-wide attribute-value screen** recommended in "Two invalid tokens" — 2,081 attribute occurrences checked against the schema's enumerations, 0 out of range, so that class is closed.
+
 **Then: `main.ptx` and four small classes, at `37bc3ba`. 234 → 188.** Nine files to zero, including **`main.ptx` 13 → 0** — the Queue head, and the first time the root file has been worked. Every class here was found by enumerating the source rather than reading the message list, and two of them were larger than the log showed. Written up under "Two invalid tokens" and in the `main.ptx` box in the Queue.
 
 | Pass | Sites | Book-wide |
@@ -327,7 +336,7 @@ Applying the model is **not** a net-negative-only operation: it unmasks R1 error
 
 ### Queue
 
-Regenerated at `37bc3ba`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
+Regenerated at `487fbb5`, schema half only, same harness as the header. The WeBWorK and `<line>` rows are **no longer blocked** — both classes were decided when `exercises-solns` was cleared; see the two ✅ DECIDED boxes in the R8 section.
 
 | File | Msgs | Dominant class |
 |---|---:|---|
@@ -337,10 +346,11 @@ Regenerated at `37bc3ba`, schema half only, same harness as the header. The WeBW
 | ~~**`main.ptx`**~~ | **0** ✅ | cleared at `02050b9` — `<audio>` ×7, the slideshow `<figure>`, `width` on a `<slate>`, `<tabular>` in an `<li>`; see below |
 | ~~`c11-ltm/sec-leaving-the-laplace-domain.ptx`~~ | **1** | 15 → 1 at `fc2d78f` — `randomize` ×2, `<sub>` ×1. The survivor is the `<assemblage>` panel below, **blocked** |
 | ~~`c0-whats-a-de/exercises-wad.ptx`~~ | **0** ✅ | cleared by the author in `18e873a` |
+| ~~`aa-bookends/a1-algebra/QEQ-quadratic-equations.ptx`~~ | **0** ✅ | cleared at `2f2a703` — 3 examples to the Statement branch + 2C order, 2 `<li>` → inline `<exercise>` |
 | `c12-ltp/sec-unit-step-variants.ptx` | 12 | assorted — now the Queue head |
 | `c11-ltm/sec-laplace-transform-method.ptx` | 11 | 7 of the 11 are the `<assemblage>` panel below — **blocked** |
-| `c10-lt/sec-lt-properties.ptx` | 10 | assorted |
-| `c10-lt/sec-lt-definition.ptx`, `c10-lt/sec-common-transforms.ptx`, `c12-ltp/exercises-ltp.ptx`, `aa-bookends/a1-algebra/QEQ-quadratic-equations.ptx`, `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 8 each | assorted |
+| `c10-lt/sec-lt-properties.ptx` | 10 | 5 are `<solution>` in a `<sidebyside>` panel — the `efc1267` class |
+| `c10-lt/sec-lt-definition.ptx`, `c10-lt/sec-common-transforms.ptx`, `c12-ltp/exercises-ltp.ptx`, `aa-bookends/a1-algebra/CSQ-completing-sq.ptx` | 8 each | assorted; `sec-common-transforms` is the `<solution>`-as-knowl shape below |
 
 ✅ **`main.ptx` is clear — 13 → 0, and its 13 were four unrelated defects, not one.** It had never appeared in this queue and its messages are not assembly artifacts; they land on real `main.ptx` lines. What it took:
 
@@ -392,11 +402,37 @@ The value chosen was `yes` in all three: each is a four-option multiple-choice w
 
 **2. `<sub>` inside an `<xref>`'s custom text.** `<sub>` and `<sup>` **do not exist in the PreTeXt schema at all** — `grep '"sub"'` over `pretext.rng` and `pretext-dev.rng` returns nothing. They are HTML that leaked into the source. An `<xref>` takes `TextShort`, which admits only `Character | Generator | Verbatim | Group | MathInline | Music`, so the fix is the book's own `L<m>_n</m>` — **71 sites already write it that way**, including 11 in `sec-leaving-the-laplace-domain` itself and one in `sec-transforming-piecewise-functions` 240 lines above the two broken ones. Both files were contradicting themselves. Use braces for two-digit subscripts (`L<m>_{10}</m>`): that is the form at all 23 pre-existing two-digit sites (7 `L<m>_{10}</m>`, 16 `L<m>_{11}</m>`), against 0 unbraced. No `<sub>` or `<sup>` remains in `source/`.
 
-📌 **Both classes were found by enumerating attribute *values* and element *names* book-wide, not by reading the message list.** `grep -rho 'randomize="[^"]*"' source/ | sort | uniq -c` takes a second and finds every site including the masked one; the validator saw 2 of the 3 `<sub>`s. **This is worth one sweep over every schema-constrained attribute value in the book** — the enumerable classes are cheap to find and cheap to fix, and they are exactly the ones that hide other work behind them.
+📌 **Both classes were found by enumerating attribute *values* and element *names* book-wide, not by reading the message list.** `grep -rho 'randomize="[^"]*"' source/ | sort | uniq -c` takes a second and finds every site including the masked one; the validator saw 2 of the 3 `<sub>`s.
 
-**Phases 3, 6 and 8D are finished, `<paragraphs>`-in-a-`<solution>` is cleared, every `*-model.ptx` is clean, and `<audio>` is 0 book-wide.** Regenerated at `37bc3ba`, the largest remaining classes are `<solution>`/`<answer>` placement (**49**), `<line>` used for line breaks (14, in the six section files never examined — see the R8 section), `<proof>` placement (12), the `<assemblage>` panel below (11), then `<p>`, `<interactive>`, `<md>` and `<statement>` at 8 apiece and `<tabular>` at 7. **188 messages now sit in 49 files.**
+✅ **The book-wide attribute-value sweep this section recommended has been run, and it is clean.** Pull every `<attribute name="X">` out of both schema files, keep the names whose *every* declaration constrains them to a `<choice>` of literal `<value>`s (66 of the 76 that are enumerated anywhere), then check every attribute in `source/` against that union. **2,081 attribute occurrences screened, 0 out of enumeration.** So `randomize="true"` was the last of its kind and this class is closed.
 
-⚠️ **`<solution>`/`<answer>` placement is the one class still worth a book-wide pass, and it is now half of everything left.** At 49 messages it is 26% of the total and more than four times the next class; it is spread thin, with the biggest single file holding 8. Working it file-by-file down the Queue will be slow. Enumerate the *shapes* first — `<solution>` in a `<conclusion>`, `<answer>` trailing a `<solution>`, `<solution>`/`<answer>` under an `<li>` (`QEQ-quadratic-equations` has both, 8 messages) — since each shape has an established fix in this document.
+Two things make the screen sound rather than merely convenient, and both matter if you re-run it: skip any attribute name that is *ever* declared unconstrained, so a context-sensitive constraint can never produce a false positive; and skip `<list>`-valued attributes such as `valigns`, whose content is a space-separated token list rather than a single enumerated value. It is a one-command check — worth re-running after any bulk edit, for the same reason as `grep '=\\amp'`.
+
+**Phases 3, 6 and 8D are finished, `<paragraphs>`-in-a-`<solution>` is cleared, every `*-model.ptx` is clean, `<audio>` is 0 book-wide, and the attribute-value screen is clean.** Regenerated at `487fbb5`, the largest remaining classes are `<solution>`/`<answer>` placement (**40**, now enumerated into seven shapes — see below), `<line>` used for line breaks (14, in the six section files never examined — see the R8 section), `<proof>` placement (12), the `<assemblage>` panel below (11), then `<p>`, `<interactive>`, `<md>` and `<statement>` at 8 apiece and `<tabular>` at 7. **179 messages now sit in 48 files.**
+
+### ✅ The `<solution>`/`<answer>` placement class, enumerated
+
+**The shape enumeration this document kept recommending has now been done, and it turns the biggest remaining class into a short list.** A parser walk over every `<solution>` and `<answer>` in the book classifies each by its parent and by the nearest exercise-like ancestor. **1,050 of the 1,094 are already in a legal home** — 747 in an `<exercise>`, 177 in a `<task>`, 126 in an `<example>`, 9 in a `<webwork>`. Only **44** are misplaced, in these shapes:
+
+| Shape | Sites | Status |
+|---|---:|---|
+| `<solution>`/`<answer>` under an `<ol>`/`<ul>`/`<dl>` `<li>` | 19 | the `<li>` → `<exercise>` conversion — **established**, see the `<exercises>` section |
+| `<solution>` in a `<p>` that is a `<sidebyside>` panel | 7 | the `efc1267` paired-`<ol>` pattern — **decided**, 5 of them in `c10-lt/sec-lt-properties` |
+| ~~`<p>` holding only `<solution>` + `<answer>` inside an `<example>`~~ | ~~6~~ | ✅ **0** — all in `QEQ-quadratic-equations`, cleared at `2f2a703` |
+| `<solution>` as a knowl beside an `<md>` at subsection level | 4 | **needs a decision** — see below |
+| `<answer>` in a section-level `<p>` of running prose | 2 | `N-recursive-functions` (the "Side note" the 8D section mentions) and `O-interrelated-functions` |
+| `<answer>` in an `<li>`'s `<p>` beside an `<m>` | 2 | `D-product-rule`; the `<li>` conversion again |
+| ~~nested `<solution>` inside a `<solution>`~~ | ~~1~~ | ✅ **0** — `c5-if/sec-if-method` L383, retagged `<proof>` at `487fbb5` |
+
+📌 **Enumerating by *parent tag plus ancestor chain* is what made this tractable**, and it is worth reusing for any class that spans many files. The message text is identical across all seven shapes, so the log cannot distinguish them and a file-by-file walk rediscovers the same shape repeatedly. One `iter()` sorts 44 sites into seven buckets, five of which already have a fix written down.
+
+⛔ **`<solution>` used as a knowl beside a formula needs the author — 4 sites in `c10-lt/sec-common-transforms.ptx`.** Each is `<p><md>…</md><solution>…</solution></p>` at *subsection* level: a display transform formula with a click-to-reveal derivation hanging off it. `Solution` is not a `BlockDivision`, so it cannot be a direct child of a subsection, and the enclosing `<p>` is illegal too — there is no legal home for a `<solution>` outside an exercise-like host.
+
+**The obvious fix does not work, and it is worth recording why.** The settled rule elsewhere in this document is "a stray `<solution>` holding a derivation becomes a `<proof>`" — that is what cleared `c12-ltp` at `a5f802a` and `c5-if` at `487fbb5`. **It fails here: `Proof` is `MetaDataTitleOptional + (BlockStatement | Case)+`, and `BlockStatement` does not reach `Proof`, so a proof cannot contain a proof.** All four of these already contain nested `<proof>` elements — one contains two — so retagging the outer element produces a fresh error in place of the old one. `<aside>` and `<assemblage>` fail for the same reason: `AsideLike` is `BlockText+` and `Assemblage` is `BlockText | SideBySideNoNumber | SideBySideGroupNoNumber`, neither of which reaches `Proof` either.
+
+What the content actually wants is a titled derivation block that *hosts* a proof, and in this book that is `<theorem>` — renamed **🧠 Derivation** in `book-info.ptx`. Wrapping each formula and its derivation in one is a semantic call, and one of the four (`common-exp-7t-details`) is a live `<xref>` target from `c11-ltm/sec-into-the-laplace-domain.ptx` L305, so whatever container is chosen has to keep that `xml:id`. The inner `lt-example-2-details` is likewise xref'd from within the same file.
+
+📌 **"Retag it as the element the book uses elsewhere" is not automatically safe — check that the new parent admits the existing children.** This is the mirror of the `TableCell` correction: there, reading only the failing branch made a fixable file look blocked; here, reading only the precedent would have made a blocked file look fixable.
 
 📌 **Below that one class the count is flat.** Nine classes sit between 7 and 14, and the median file holds 2 messages. Two sweeps running, the cheapest remaining win has been a *class* spanning many files rather than a file — `<audio>` was 15 messages over 6 files and took one transform; `main.ptx`, the Queue head, was 13 messages and took four unrelated fixes. **Pick by class, not by Queue position**, and use the Queue to check what a class touches.
 
@@ -1272,7 +1308,7 @@ Counts below are from the **complete** `--engine salve` run (schema half unless 
 | 8 | Text & a11y | 169 | Low | **8D done** (27 sites, 10 files, at `0440e41`); 8A/8B/8C are the validation-plus half and untouched — this harness does not report them at all |
 | 9 | Re-validate | — | — | — |
 
-⚠️ **"Phase 1 dominates at 71%" was true at baseline and is no longer true.** At `37bc3ba` the schema half is 188 across 49 files, `<solution>`/`<answer>` placement is the largest class at 49, and no other class exceeds 14. The ordering logic below still explains why the sweep ran in this order; it is no longer a statement about where the remaining work is.
+⚠️ **"Phase 1 dominates at 71%" was true at baseline and is no longer true.** At `487fbb5` the schema half is 179 across 48 files, `<solution>`/`<answer>` placement is the largest class at 40, and no other class exceeds 14. The ordering logic below still explains why the sweep ran in this order; it is no longer a statement about where the remaining work is.
 
 At baseline, Phase 1 dominated at **71%** of the schema half, so the ordering logic held: it changes what Phases 2 and 4 see. Phase 4 shrank (the old 171 was largely `jing` cascade noise); Phase 7 grew once the back matter became visible. `R99-misc` is 239 and unbudgeted — 54 of those are bare `Invalid content (ChoiceError)` from `salve`, which are worth re-checking under `jing` on a per-file basis for a clearer message.
 
