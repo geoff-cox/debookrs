@@ -515,6 +515,18 @@ The Copilot reviewer on #227 read the mathematics of the content these passes mo
 
 📌 **Only one of the four was a one-character fix.** The `s^2Y - s` error is upstream of an entire worked example: correcting it changes `Y(s)`'s homogeneous term from `\frac{1}{s+2}` to `\frac{1}{s(s+2)}`, whose inverse is `\frac12(1 - e^{-2t})` rather than `e^{-2t}`, so six lines move. `F(s) = \frac{3}{s^2(s+2)}` is untouched, which is why the partial-fraction `<proof>` beneath it stayed valid as written. **Check where a wrong transform propagates before calling it a typo** — and verify the result: the corrected solution satisfies `y'' + 2y' = 0` with `y(0)=0, y'(0)=1` before `t=5`, and the added `f(t-5)` satisfies `f'' + 2f' = 3` with `f(0)=f'(0)=0`, so the forcing switches on smoothly.
 
+### 🔴 Four more content findings from the #228 review, all pre-existing
+
+Same pattern as #227: the reviewer read the mathematics of content these passes moved. All four were verified by hand, all four predate this branch (confirmed against `origin/main`), and none is a schema error.
+
+| File | Where | The finding |
+|---|---|---|
+| `c10-lt/exercises-lt.ptx` | the `<answer>` at ~L951 | the exercise asks for `\lap{\sin(-4t)}`; sine is odd, and **the worked solution derives `-4/(s^2+16)` twice** — but the answer reads `+4/(s^2+16)`. Answer contradicts statement and solution |
+| `c4-sov/exercises-sov.ptx` | the `<hint>` at ~L1445, and 2 more | "Use the property `e^{A+B} = e^A \cdot e^B` to obtain the final combined constant" is attached to `y' = e^{2x} - 4x`, which is solved by direct integration and forms no exponential of a sum. **The same hint appears three times in the file**, so it is a copy-paste that fits some of its hosts and not others |
+| `c4-sov/exercises-sov.ptx` | the solution at ~L1590, and 1 more | separating `dy/y^2 = x\,dx` divides by `y^2` and so drops the equilibrium solution `y = 0`; only the nonzero family is presented |
+
+⚠️ **The fourth finding's premise was wrong, and checking it took one command.** The review asked for lowercase `c` to be changed to `C` "contrary to the source convention requiring uppercase `C`". **There is no such convention.** Book-wide the split is `+ c` **167** against `+ C` **309**, and *within `exercises-sov.ptx` itself* it is **30 against 29** — with subscripted constants running the other way, `c_1`/`c_2` **79** against `C_1`/`C_2` **62**. A mixed usage that old is a house style question for the author, not a defect, and "consistent with the convention" is a claim to verify before acting on. See the #227 entry for the same lesson about that reviewer's "this also appears at" line pointers.
+
 📌 **A structural sweep is a good time to catch these.** Moving a block puts its mathematics in a diff where a reader — or a review bot — will actually look at it, which is why four errors that had survived every previous pass surfaced at once. It is still not the place to *fix* them unprompted: correcting mathematics changes what a student reads, so it stays the author's call and belongs in its own commit, as these did.
 
 ---
@@ -593,26 +605,28 @@ The schema does not descend into a rejected element, so every error inside the 2
 
 ⚠️ **`<intertext>` is not the fix for prose after the last `<mrow>`.** The schema requires every intertext to be *sandwiched* between mrows — it cannot lead, cannot trail, and two cannot be adjacent. A trailing one trades one error for eight. Trailing prose belongs after `</md>`, in the enclosing `<p>`.
 
-### What is left in those files — 189 messages, and it is not R8
+### What is left in those files — 73 messages, and it is not R8
 
-Five files are clean: `c6-qm`, `c9-uc/review-constant-coefficient`, `c12-ltp/review-choosing-a-method`, `c14-nlinsys`, and `c5-if/review-first-order-methods` is at 1.
+**Regenerated at `8fc68c1`.** Six of the sixteen are now clean: `c6-qm`, `c14-nlinsys`, `c9-uc/review-constant-coefficient`, `c12-ltp/review-choosing-a-method`, `c2-solns/exercises-solns`, `c3-di/exercises-di`, `c4-sov/exercises-sov`, `c7-em/exercises-em` and `c1-classification/exercises-class` — nine, in fact.
 
 | File | Left | Dominant class |
 |---|---:|---|
-| `c4-sov/exercises-sov.ptx` | 32 | `<area>` inside an `<ol>/<li>` in `<areas>`; WeBWorK exercises with trailing `<hint>`/`<answer>`/`<solution>` |
+| ~~`c4-sov/exercises-sov.ptx`~~ | **0** ✅ | cleared at `2a2f3cf` — 2A `<feedback>`×5, WeBWorK×4, `<area>` in `<ol>`, group `<hint>` |
 | ~~`c2-solns/exercises-solns.ptx`~~ | **0** ✅ | cleared at `faa192c` — `<line>` answer keys ×18, orphan solution, WeBWorK `<answer>` |
-| `c3-di/exercises-di.ptx` | 26 | WeBWorK trailing children; text after `</mrow>` |
-| `c7-em/exercises-em.ptx` | 23 | `<stack>` and a bare `<p>` where a `<statement>` belongs |
-| `c12-ltp/exercises-ltp.ptx` | 21 | `<paragraphs>` inside a `<solution>` (12) |
-| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` inside a `<sidebyside>` panel (12) |
-| `c8-lhcc/exercises-lhcc.ptx` | 18 | `<line>` (6); WeBWorK trailing children |
-| `c13-linsys`, `c10-lt`, `c5-if`, `c9-uc` | 19 | assorted `<md>` placement, `<proof>`, `<response>` |
+| ~~`c3-di/exercises-di.ptx`~~ | **0** ✅ | cleared at `09c16ed` — per-task split out of 3 `<conclusion>`s, 8D×5, WeBWorK×1 |
+| ~~`c7-em/exercises-em.ptx`~~ | **0** ✅ | cleared at `0889084` — `<ol>` of parts → `<task>`s in 3 exercises |
+| ~~`c1-classification/exercises-class.ptx`~~ | **0** ✅ | cleared at `5c10d84` — aggregate key → per-task `<answer>`, `<feedback>` → `<solution>` |
+| `c11-ltm/exercises-ltm.ptx` | 19 | `<line>` as equation steps (12) — **open**, see below |
+| `c8-lhcc/exercises-lhcc.ptx` | 15 | `<line>` as running text (6) — **open**; WeBWorK trailing children |
+| `c0-whats-a-de/exercises-wad.ptx` | 14 | assorted |
+| `c12-ltp/exercises-ltp.ptx` | 8 | remainder after the `<paragraphs>` pass |
+| `c13-linsys` 8, `c10-lt` 5, `c5-if` 2, `c9-uc` 1 | 16 | assorted `<md>` placement, `<proof>`, `<response>` |
 
 **All three that needed the author are now decided; only two `<line>` sub-cases remain open.**
 
 0. ⚠️ **A `<feedback>` in a *free-response* task has nowhere to go but `<solution>`.** Phase 2A assumes a `<choices>` to reattach it to; `c4-sov`'s `sov-cq-sa` has five `<feedback>`s in `FreeResponse` tasks (`statement, response?, hint*, answer*, solution*` — no `Feedback` branch at all, and no choices in sight). Four held a model answer and became `<solution>`. **Check for an existing `<solution>` first**: the fifth was byte-identical to the one already beside it, so converting would have printed the same worked solution twice in one task — it was deleted instead. Two other shapes turned up in the same file and are worth knowing: a `<hint>` nested *inside* a `<statement>` (it belongs after `<response/>`), and a `<hint>` inside an exercisegroup's `<introduction>` (a division introduction takes block content; the author chose to drop the wrapper and keep the paragraph as intro prose).
 
-1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2 exercises); roughly 5 remain, in `c3-di`, `c4-sov` and `c8-lhcc`.
+1. ✅ **DECIDED — WeBWorK `<hint>`/`<answer>`/`<solution>` after `</webwork>`: move the hint and solution inside, drop the `<answer>`.** `WebWorkAuthored` reads `… pg-code?, statement, hint?, solution?`, so hint and solution have a legal home one level in; there is no `AnswerWW`, so the `<answer>` does not, anywhere. The author chose to drop it — WeBWorK grades and reveals the answer itself, and in practice the answer text is not lost: in both `c2-solns` exercises the value was already restated in the closing line of the solution *and* in the `pg-code` `$rhs`. **Check that before deleting** — where an answer is not recoverable from the solution, fold it in as the solution's first `<p>` instead of dropping it. Note the schema allows **at most one** hint and one solution per `<webwork>`. Done in `c2-solns` (2), `c3-di` (1) and `c4-sov` (4). **Only `c8-lhcc` still carries this shape.**
 2. ✅ **PARTLY DECIDED — `<line>` used for line breaks.** `<line>` belongs to `<poem>` and `<program>`. **The class is 50 messages across 9 files, not the 36 across 3 recorded here before** — `c4-sov/sec-sov-implicit-solns` (4), `c8-lhcc/sec-exponential-solns` (4), `c7-em/sec-what-is-a-numerical-solution` (2), `a2-calculus/E-usub` (2), `c12-ltp/sec-unit-step-variants` (1) and `a2-calculus/D-product-rule` (1) were never listed, and none of them is in a `<sidebyside>`. 18 are now cleared; **32 remain across 8 files.** The sites are **not one class**, and reading them is what settled it — each wants a different replacement:
    - **Answer key** (`c2-solns`, 18) — ✅ **done.** Nine yes/no verdicts in a 3×3 grid of `<sidebyside>` panels became `<p><ol marker="a." cols="3">`, one `<li>` per verdict. Letters are now generated, so they cannot drift from the `<areas>` list; the fill order changes from down-the-column to across-the-row, which the author accepted. `BlockText` has no `List` branch, so the `<ol>` still needs its `<p>`. **Verify the key against the `<area correct=…>` flags as you convert** — a scripted assert caught nothing here, but the two lists are independent transcriptions of the same truth and nothing else checks them.
    - **Equation steps** (`c11-ltm/exercises-ltm.ptx`, 12) — still open. These are `<line><m>54 = A(-1)^2 - 4(-1) + 13</m></line>` stacked inside `<sidebyside widths="15% 65% 20%">`, with `<line><m>\vphantom{A}</m></line>` used as a vertical spacer. An `<md>`/`<mrow>` is the obvious replacement, but the three-column layout (`s=-1:` in the narrow left panel, the algebra in the middle) is doing real work and `\vphantom` spacers do not survive the move.
