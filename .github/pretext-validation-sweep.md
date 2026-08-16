@@ -247,7 +247,7 @@ All three Runestone branches in play accept the result, which is why the split w
 | `<identity>` and 2 nested `<solution>` retagged `<proof>`; 2 block-only `<p>` wrappers dissolved | 5 | — |
 | prose-plus-`<tabular>` `<p>`s split, unmasked by the above | 2 | 392 → 390 |
 
-**Then: the `<solution>`/`<answer>` enumeration, at `487fbb5`. 188 → 179.** The class was 49 messages and the biggest thing left; enumerating it by parent tag turned it into seven shapes, five of which already had a fix in this document. Two were cleared here, one is newly blocked, and the rest are known conversions. Full table in the `<solution>`/`<answer>` section below.
+**Then: the `<solution>`/`<answer>` enumeration, at `487fbb5`. 188 → 179.** The class was 49 messages and the biggest thing left; enumerating it by parent tag turned 42 misplaced sites into six shapes, most of which already had a fix in this document. Two shapes were cleared here (7 sites), one is newly blocked, and the rest are known conversions. Full table in the `<solution>`/`<answer>` section below.
 
 | Pass | Sites | Book-wide |
 |---|---:|---|
@@ -408,23 +408,25 @@ The value chosen was `yes` in all three: each is a four-option multiple-choice w
 
 Two things make the screen sound rather than merely convenient, and both matter if you re-run it: skip any attribute name that is *ever* declared unconstrained, so a context-sensitive constraint can never produce a false positive; and skip `<list>`-valued attributes such as `valigns`, whose content is a space-separated token list rather than a single enumerated value. It is a one-command check — worth re-running after any bulk edit, for the same reason as `grep '=\\amp'`.
 
-**Phases 3, 6 and 8D are finished, `<paragraphs>`-in-a-`<solution>` is cleared, every `*-model.ptx` is clean, `<audio>` is 0 book-wide, and the attribute-value screen is clean.** Regenerated at `487fbb5`, the largest remaining classes are `<solution>`/`<answer>` placement (**40**, now enumerated into seven shapes — see below), `<line>` used for line breaks (14, in the six section files never examined — see the R8 section), `<proof>` placement (12), the `<assemblage>` panel below (11), then `<p>`, `<interactive>`, `<md>` and `<statement>` at 8 apiece and `<tabular>` at 7. **179 messages now sit in 48 files.**
+**Phases 3, 6 and 8D are finished, `<paragraphs>`-in-a-`<solution>` is cleared, every `*-model.ptx` is clean, `<audio>` is 0 book-wide, and the attribute-value screen is clean.** Regenerated at `487fbb5`, the largest remaining classes are `<solution>`/`<answer>` placement (**40** messages from 35 sites, now enumerated into four shapes — see below), `<line>` used for line breaks (14, in the six section files never examined — see the R8 section), `<proof>` placement (12), the `<assemblage>` panel below (11), then `<p>`, `<interactive>`, `<md>` and `<statement>` at 8 apiece and `<tabular>` at 7. **179 messages now sit in 48 files.**
 
 ### ✅ The `<solution>`/`<answer>` placement class, enumerated
 
-**The shape enumeration this document kept recommending has now been done, and it turns the biggest remaining class into a short list.** A parser walk over every `<solution>` and `<answer>` in the book classifies each by its parent and by the nearest exercise-like ancestor. **1,050 of the 1,094 are already in a legal home** — 747 in an `<exercise>`, 177 in a `<task>`, 126 in an `<example>`, 9 in a `<webwork>`. Only **44** are misplaced, in these shapes:
+**The shape enumeration this document kept recommending has now been done, and it turns the biggest remaining class into a short list.** A parser walk over every `<solution>` and `<answer>` in the book classifies each by its parent and by the nearest exercise-like ancestor. Measured at `487fbb5`: **1,067 of the 1,102 are already in a legal home** — 749 in an `<exercise>`, 177 in a `<task>`, 132 in an `<example>`, 9 in a `<webwork>`. Only **35** are misplaced, in four shapes:
 
 | Shape | Sites | Status |
 |---|---:|---|
-| `<solution>`/`<answer>` under an `<ol>`/`<ul>`/`<dl>` `<li>` | 19 | the `<li>` → `<exercise>` conversion — **established**, see the `<exercises>` section |
+| `<solution>`/`<answer>` under an `<ol>`/`<ul>`/`<dl>` `<li>` (20 direct, 2 inside the `<li>`'s `<p>`) | 22 | the `<li>` → `<exercise>` conversion — **established**, see the `<exercises>` section |
 | `<solution>` in a `<p>` that is a `<sidebyside>` panel | 7 | the `efc1267` paired-`<ol>` pattern — **decided**, 5 of them in `c10-lt/sec-lt-properties` |
-| ~~`<p>` holding only `<solution>` + `<answer>` inside an `<example>`~~ | ~~6~~ | ✅ **0** — all in `QEQ-quadratic-equations`, cleared at `2f2a703` |
 | `<solution>` as a knowl beside an `<md>` at subsection level | 4 | **needs a decision** — see below |
 | `<answer>` in a section-level `<p>` of running prose | 2 | `N-recursive-functions` (the "Side note" the 8D section mentions) and `O-interrelated-functions` |
-| `<answer>` in an `<li>`'s `<p>` beside an `<m>` | 2 | `D-product-rule`; the `<li>` conversion again |
+
+Cleared from this class in the same pass: **6** `<p>`s holding only `<solution>` + `<answer>` inside an `<example>` (all in `QEQ-quadratic-equations`, at `2f2a703`) and **1** nested `<solution>` (`c5-if/sec-if-method`, at `487fbb5`) — 42 misplaced before, 35 after.
+
+⚠️ **The first version of this table did not add up, and the numbers are the whole point of it.** It read "1,050 of 1,094" with a shape table summing to 41 — three separate errors: the legal subtotals were transcribed from a pre-fix run, the total was computed against a different run again, and the `<li>` bucket was written as 19 when the six `<li>` signatures sum to 22. Caught on review, not by any check here. **When a table's job is to be a baseline, assert its arithmetic before publishing it** — print the parts, the sum, and the total from the same run, and check they reconcile. Every figure above now comes from one walk at one commit and reconciles: 1,067 + 35 = 1,102.
 | ~~nested `<solution>` inside a `<solution>`~~ | ~~1~~ | ✅ **0** — `c5-if/sec-if-method` L383, retagged `<proof>` at `487fbb5` |
 
-📌 **Enumerating by *parent tag plus ancestor chain* is what made this tractable**, and it is worth reusing for any class that spans many files. The message text is identical across all seven shapes, so the log cannot distinguish them and a file-by-file walk rediscovers the same shape repeatedly. One `iter()` sorts 44 sites into seven buckets, five of which already have a fix written down.
+📌 **Enumerating by *parent tag plus ancestor chain* is what made this tractable**, and it is worth reusing for any class that spans many files. The message text is identical across every shape, so the log cannot distinguish them and a file-by-file walk rediscovers the same shape repeatedly. One `iter()` sorts the 35 remaining sites into four buckets, three of which already have a fix written down.
 
 ⛔ **`<solution>` used as a knowl beside a formula needs the author — 4 sites in `c10-lt/sec-common-transforms.ptx`.** Each is `<p><md>…</md><solution>…</solution></p>` at *subsection* level: a display transform formula with a click-to-reveal derivation hanging off it. `Solution` is not a `BlockDivision`, so it cannot be a direct child of a subsection, and the enclosing `<p>` is illegal too — there is no legal home for a `<solution>` outside an exercise-like host.
 
@@ -434,7 +436,7 @@ What the content actually wants is a titled derivation block that *hosts* a proo
 
 📌 **"Retag it as the element the book uses elsewhere" is not automatically safe — check that the new parent admits the existing children.** This is the mirror of the `TableCell` correction: there, reading only the failing branch made a fixable file look blocked; here, reading only the precedent would have made a blocked file look fixable.
 
-📌 **Below that one class the count is flat.** Nine classes sit between 7 and 14, and the median file holds 2 messages. Two sweeps running, the cheapest remaining win has been a *class* spanning many files rather than a file — `<audio>` was 15 messages over 6 files and took one transform; `main.ptx`, the Queue head, was 13 messages and took four unrelated fixes. **Pick by class, not by Queue position**, and use the Queue to check what a class touches.
+📌 **Below that one class the count is flat.** Nine classes sit between 7 and 14, and the median file holds 2 messages. Two sweeps running, the cheapest remaining win has been a *class* spanning many files rather than a file — `<audio>` was 15 messages over 7 files and took one transform; `main.ptx`, the Queue head, was 13 messages and took four unrelated fixes. **Pick by class, not by Queue position**, and use the Queue to check what a class touches.
 
 Rank by `edit_sites`, not `total`, when picking from the full CSV. `CSQ-completing-sq.ptx` was 190 messages from **11 real edit sites** in a 169-line file — three quarters of an hour's work looked like a week's.
 
