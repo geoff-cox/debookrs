@@ -235,102 +235,100 @@
 			Sketching by hand is great for intuition, but tedious when you need more points. Computer-generated slope fields fill in the gaps, revealing a dense web of segments that paints the full picture. In <xref ref="y-t-slope-field-16x16"/>, the solution curve through <m>(0,\frac12)</m> flows smoothly along the segments, like an object carried by a current.
 		</p>
 
-		<sidebyside widths="44%" margins="28% 28%" valign="middle">
-			<figure xml:id="y-t-slope-field-16x16">
-				<caption>Slope field for <m>y' = y - t</m></caption>
-				<image>
-					<shortdescription>Dense slope field for y-prime equals y minus t over t and y from -4 to 4, with one solution curve through the point (0, one-half) traced in magenta.</shortdescription>
-					<latex-image>
-						\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
+		<figure xml:id="y-t-slope-field-16x16">
+			<caption>Slope field for <m>y' = y - t</m></caption>
+			<image width="44%">
+				<shortdescription>Dense slope field for y-prime equals y minus t over t and y from -4 to 4, with one solution curve through (0, one-half).</shortdescription>
+				<latex-image>
+					\begin{tikzpicture}[declare function={f(\x,\y)=\y-\x;}, scale=0.4]
 
-							\pgfkeys{/pgf/number format/.cd,
-								fixed,
-								precision=1
-							}
-							\def\tmin{-4} \def\tmax{4}
-							\def\ymin{-4} \def\ymax{4}
-							\def\tmargin{0.5} \def\ymargin{0.5} % extra space around the grid
-							\def\nt{14}  \def\ny{14}
-							\def\arrowscale{0.4} % length of slope arrows
+						\pgfkeys{/pgf/number format/.cd,
+							fixed,
+							precision=1
+						}
+						\def\tmin{-4} \def\tmax{4}
+						\def\ymin{-4} \def\ymax{4}
+						\def\tmargin{0.5} \def\ymargin{0.5} % extra space around the grid
+						\def\nt{14}  \def\ny{14}
+						\def\arrowscale{0.4} % length of slope arrows
 
-							% stepsize along t-axis and y-axis
-							\pgfmathsetmacro{\tL}{\tmin + \tmargin}
-							\pgfmathsetmacro{\tR}{\tmax - \tmargin}
-							\pgfmathsetmacro{\yL}{\ymin + \ymargin}
-							\pgfmathsetmacro{\yR}{\ymax - \ymargin}
-							\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
-							\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
+						% stepsize along t-axis and y-axis
+						\pgfmathsetmacro{\tL}{\tmin + \tmargin}
+						\pgfmathsetmacro{\tR}{\tmax - \tmargin}
+						\pgfmathsetmacro{\yL}{\ymin + \ymargin}
+						\pgfmathsetmacro{\yR}{\ymax - \ymargin}
+						\pgfmathsetmacro{\tstep}{(\tR-\tL)/\nt}
+						\pgfmathsetmacro{\ystep}{(\yR-\yL)/\ny}
 
-							% Draw grid lines
-							\foreach \i in {0,...,\nt} {
-								\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
-								\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
-							}
-							\foreach \j in {0,...,\ny} {
-								\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
-								\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
-							}
+						% Draw grid lines
+						\foreach \i in {0,...,\nt} {
+							\pgfmathsetmacro{\tk}{\tL + \i * \tstep}
+							\draw[thin, gray!50] (\tk, \ymin) -- (\tk, \ymax);
+						}
+						\foreach \j in {0,...,\ny} {
+							\pgfmathsetmacro{\yk}{\yL + \j * \ystep}
+							\draw[thin, gray!50] (\tmin, \yk) -- (\tmax, \yk);
+						}
 
-							% Axes
-							\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
-							\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
+						% Axes
+						\draw[-&gt;] (\tmin, 0) -- (\tmax+0.6, 0) node[xshift=-0.1cm, font=\scriptsize, below] {$t$};
+						\draw[-&gt;] (0, \ymin) -- (0, \ymax+0.6) node[yshift=-0.1cm, font=\scriptsize, left] {$y$};
 
-							% Bounding box
-							\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
+						% Bounding box
+						\draw[gray!50] (\tmin,\ymin) rectangle (\tmax,\ymax);
 
-							% Tick marks and labels on t-axis
-							\pgfmathtruncatemacro{\tLint}{\tL}
-							\pgfmathtruncatemacro{\tRint}{\tR}
-							\foreach \t in {\tLint,...,\tRint} {
-							\pgfmathparse{\t &lt; 0}
-							\ifnum\pgfmathresult=1	 % shift negative ticks
-								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
-								node[font=\tiny, below, xshift=-0.1cm] {\t};
-							\else
-								\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
-								node[font=\tiny, below] {\t};
-							\fi
-							}
+						% Tick marks and labels on t-axis
+						\pgfmathtruncatemacro{\tLint}{\tL}
+						\pgfmathtruncatemacro{\tRint}{\tR}
+						\foreach \t in {\tLint,...,\tRint} {
+						\pgfmathparse{\t &lt; 0}
+						\ifnum\pgfmathresult=1	 % shift negative ticks
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below, xshift=-0.1cm] {\t};
+						\else
+							\draw (\t,\ymin-0.1) -- (\t,\ymin+0.1)
+							node[font=\tiny, below] {\t};
+						\fi
+						}
 
-							% Tick marks and labels on y-axis
-							\pgfmathtruncatemacro{\yLint}{\yL}
-							\pgfmathtruncatemacro{\yRint}{\yR}
-							\foreach \y in {\yLint,...,\yRint}
-								\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
-								node[font=\tiny, left] {\y};
+						% Tick marks and labels on y-axis
+						\pgfmathtruncatemacro{\yLint}{\yL}
+						\pgfmathtruncatemacro{\yRint}{\yR}
+						\foreach \y in {\yLint,...,\yRint}
+							\draw (\tmin-0.1,\y) -- (\tmin+0.1,\y)
+							node[font=\tiny, left] {\y};
 
-							% Title
-							%\node[above, font=\small\bfseries] at (current bounding box.north) 
-							%	{Slope field for \quad $y' = x + y$};
+						% Title
+						%\node[above, font=\small\bfseries] at (current bounding box.north) 
+						%	{Slope field for \quad $y' = x + y$};
 
-							% slope field: just draw a vector at each point
-							\foreach \i in {0,...,\nt}
-							\foreach \j in {0,...,\ny}{
+						% slope field: just draw a vector at each point
+						\foreach \i in {0,...,\nt}
+						\foreach \j in {0,...,\ny}{
 
-								\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
-								\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
-								\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
+							\pgfmathsetmacro{\tpt}{\tL + \i * \tstep}
+							\pgfmathsetmacro{\ypt}{\yL + \j * \ystep}
+							\pgfmathsetmacro{\slope}{f(\tpt,\ypt)}
 
-								% Normalize direction vector (1, slope) to fixed length
-								\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
-								\pgfmathsetmacro{\dt}{\arrowscale / \len}
-								\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
+							% Normalize direction vector (1, slope) to fixed length
+							\pgfmathsetmacro{\len}{sqrt(1 + (\slope)^2)}
+							\pgfmathsetmacro{\dt}{\arrowscale / \len}
+							\pgfmathsetmacro{\dy}{\arrowscale * \slope / \len}
 
-								%\draw[teal!60, arrows = {-Stealth[width=4pt, length=4pt, inset=3pt]}, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
-								\draw[teal!75, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
-								%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
-							}
+							%\draw[teal!60, arrows = {-Stealth[width=4pt, length=4pt, inset=3pt]}, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							\draw[teal!75, line width=0.8pt, shift={(\tpt,\ypt)}] (-0.5*\dt, -0.5*\dy) -- (0.5*\dt, 0.5*\dy);
+							%\draw[fill=white!50] (\tpt,\ypt) circle (1.5pt);
+						}
 
-							% Optional solution curve
-							\def\yo{0.5}
-							\draw[magenta, thick, samples=100] 
-								plot[domain=\tmin:2.74] (\x, {\x - \yo*exp(\x) + 1});
+						% Optional solution curve
+						\def\yo{0.5}
+						\draw[magenta, thick, samples=100] 
+							plot[domain=\tmin:2.74] (\x, {\x - \yo*exp(\x) + 1});
 
-						\end{tikzpicture}
-					</latex-image>
-				</image>
-			</figure>
-		</sidebyside>
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+		</figure>
 
 		<p>
 			A slope field turns an equation into a navigational chart. Each segment is an instruction every solution must obey. The entire field represents the whole family of solutions, letting you spot patterns in how solutions behave, without ever solving for <m>y</m> explicitly. Next, we'll look at <em><xref ref="gi-autonomous-differential-equation" text="custom">autonomous equations</xref></em>, whose slope fields reveal even more structure.

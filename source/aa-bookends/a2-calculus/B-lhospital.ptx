@@ -11,199 +11,203 @@
   Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
 -->
 <section xml:id="calculus-review-lhopitals-rule">
-<title>L'Hospital's Rule</title>
+  <title>L'Hospital's Rule</title>
 
-<p>
-Consider the following three limits.
+  <p>
+    Consider the following three limits.
+    <md>
+      (1)\quad\lim_{x\to\infty} \frac{x^2 + 4x}{x} \qquad
+					(2)\quad\lim_{x\to\infty} \frac{x}{x^2 + 4x} \qquad
+					(3)\quad\lim_{x\to\infty} \frac{x^2 + 4x}{x^2}
+    </md>
+    Typically when we evaluate limits, we first attempt a direct substitution.
+    <em>Note that all three evaluate to the indeterminate form
+		<m>\ds\frac{\infty}{\infty}</m>. Since these are all rational functions, we have
+		some algebraic techniques we can try. Here's one way each can be evaluated. </em>
+    <md>
+      <mrow>	(1)\quad\amp\lim_{x\to\infty} \frac{x^2 + 4x}{x}														= \lim_{x\to\infty} \frac{x(x + 4)}{x}
+									= \lim_{x\to\infty} \left[ x+4 \right]
+									= \infty											</mrow>
+      <mrow/>
+      <mrow>	(2)\quad\amp\lim_{x\to\infty} \frac{x}{x^2 + 4x}														= \lim_{x\to\infty} \frac{x}{x(x + 4)}
+									= \lim_{x\to\infty} \frac{1}{x + 4}
+									= 0													</mrow>
+      <mrow/>
+      <mrow>	(3)\quad\amp\lim_{x\to\infty} \frac{x^2 + 4x}{x^2}				
+									= \lim_{x\to\infty} \left[ 1 + \frac{4}{x}\right]			
+									= 1 + 0														
+									= 1													</mrow>
+    </md>
+    Is this result surprising to you?
+    Each had the same value, <m>\ds\frac{\infty}{\infty}</m>, when we did direct
+    substitution, but each has a different final answer.
+    That's what it means to be indeterminate.
+    We can't tell what the answer is just based on knowing that direct
+    substitution yields <m>\ds\frac{\infty}{\infty}</m>.
+  </p>
 
-	<md> 	(1)\quad\lim_{x\to\infty} \frac{x^2 + 4x}{x} \qquad
-			(2)\quad\lim_{x\to\infty} \frac{x}{x^2 + 4x} \qquad
-			(3)\quad\lim_{x\to\infty} \frac{x^2 + 4x}{x^2} 						</md>
-		
-Typically when we evaluate limits, we first attempt a direct substitution.
-<em>Note that all three evaluate to the indeterminate form
-<m>\ds\frac{\infty}{\infty}</m>. Since these are all rational functions, we have
-some algebraic techniques we can try. Here's one way each can be evaluated. </em>
+  <p>
+    We can do algebra when we have rational functions, but that doesn't work as
+    well when we have exponential and trig functions.
+    One technique you might consider using when you have indeterminate forms
+    like <m>\ds\frac{0}{0}</m> or <m>\ds\frac{\infty}{\infty}</m> is
+    L'Hospital's Rule.
+    Here's a reminder.
+  </p>
 
-<md>
-	<mrow>	(1)\quad\amp\lim_{x\to\infty} \frac{x^2 + 4x}{x}														= \lim_{x\to\infty} \frac{x(x + 4)}{x}
-							= \lim_{x\to\infty} \left[ x+4 \right]
-							= \infty											</mrow>
-	<mrow/>
-	<mrow>	(2)\quad\amp\lim_{x\to\infty} \frac{x}{x^2 + 4x}														= \lim_{x\to\infty} \frac{x}{x(x + 4)}
-							= \lim_{x\to\infty} \frac{1}{x + 4}
-							= 0													</mrow>
-	<mrow/>
-	<mrow>	(3)\quad\amp\lim_{x\to\infty} \frac{x^2 + 4x}{x^2}				
-							= \lim_{x\to\infty} \left[ 1 + \frac{4}{x}\right]			
-							= 1 + 0														
-							= 1													</mrow>
-</md>
+  <assemblage>
+		<title>✳️ L'Hospital's Rule</title>
+    <p>
+      Suppose <m>f</m> and <m>g</m> are
+      differentiable functions and we want to evaluate
+      <md>
+        \lim_{x \to c} \frac{f(x)}{g(x)}
+      </md>
+      If direct substitution yields an indeterminate form <m>\ds\frac{0}{0}</m>
+      or <m>\pm \frac{\infty}{\infty},</m> then
+      <md>
+        \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)},
+      </md>
+      assuming that the limit exists.
+    </p>
+  </assemblage>
 
-Is this result surprising to you? Each had the same value, <m>\ds\frac{\infty}{\infty}</m>,
-when we did direct substitution, but each has a different final answer. That's what
-it means to be indeterminate. We can't tell what the answer is just based on knowing
-that direct substitution yields <m>\ds\frac{\infty}{\infty}</m>.
+  <p>
+    Here's how it works for one of the limits above.
+    <md>
+      <mrow>\lim_{x\to\infty} \frac{x^2 + 4x}{x^2}	
+				\amp = \lim_{x\to\infty} \frac{\frac{d}{dx}\big( x^2 + 4x \big)}{\frac{d}{dx}\big(x^2\big)}
+										\text{ (by L'Hospital's Rule)} 				</mrow>
+      <mrow>	\amp = \lim_{x\to\infty} \frac{2x + 4}{2x}							</mrow>
+      <mrow>	\amp = \lim_{x\to\infty} \frac{\frac{d}{dx}\big( 2x + 4 \big)}{\frac{d}{dx}\big( 2x \big)}
+										\text{ (by L'Hospital's Rule)}				</mrow>
+      <mrow>	\amp = \lim_{x\to\infty} \frac{2+0}{2}								</mrow>
+      <mrow>	\amp = \lim_{x\to\infty} 1											</mrow>
+      <mrow>	\amp = 1																</mrow>
+    </md>
+    Recall that we MUST check to make sure that the limit is one of those
+    indeterminate forms before we use L'Hospital's Rule.
+    (And note that we did get the same answer we got before...which is good!)
+  </p>
 
-</p>
+  <exercises>
+    <introduction>
+      <p>
+        <term>Evaluate each of the following limits. Use L'Hospital's Rule only if it
+				applies.</term>
+      </p>
+    </introduction>
 
-<p>
-We can do algebra when we have rational functions, but that doesn't work as well
-when we have exponential and trig functions. One technique you might consider using when you have indeterminate forms like <m>\ds\frac{0}{0}</m> or <m>\ds\frac{\infty}{\infty}</m>
-is L'Hospital's Rule. Here's a reminder.
-</p>
-<sidebyside widths="90%" margins="auto" valign="middle">
-<p>
-<em> L'Hospital's Rule. </em> Suppose <m>f</m> and <m>g</m> are
-differentiable functions and we want to evaluate
+    <exercise>
+      <statement>
+        <p>
+          <m>\ds \lim_{b\to \infty} \frac{b}{e^b}</m>
+        </p>
+      </statement>
 
-<md> \lim_{x \to c} \frac{f(x)}{g(x)} </md>
+      <answer>
+        <p>
+          <m> 0 </m>
+        </p>
+      </answer>
 
-If direct substitution yields an indeterminate form <m>\ds\frac{0}{0}</m> or
-<m>\pm \frac{\infty}{\infty},</m> then
+      <solution>
+        <p>
+          <m>\ds \lim_{b\to \infty} \frac{b}{e^b}
+					= \ub{\lim_{b\to \infty} \frac{1}{e^b}}_\left(= \frac{1}{\infty}\right) = 0	</m>
+        </p>
+      </solution>
+    </exercise>
 
-<md> \lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}, </md>
+    <exercise>
+      <statement>
+        <p>
+          <m>\ds\ds \lim_{b\to \infty} be^{-3b}</m>
+        </p>
+      </statement>
 
-assuming that the limit exists.
-</p>
-</sidebyside>
+      <answer>
+        <p>
+          <m> 0 </m>
+        </p>
+      </answer>
 
-<p>
-Here's how it works for one of the limits above.
+      <solution>
+        <p>
+          <m> \ds \lim_{b\to \infty} be^{-3b}
+					= \ub{\lim_{b\to \infty} \frac{b}{e^{3b}}}_\left(= \frac{\infty}{\infty}\right)
+					= \ub{\lim_{b\to \infty} \frac{1}{3e^{3b}}}_\left(= \frac{1}{\infty}\right)
+					= 0																			</m>
+        </p>
+      </solution>
+    </exercise>
 
-<md>	
-	<mrow>\lim_{x\to\infty} \frac{x^2 + 4x}{x^2}	
-			\amp = \lim_{x\to\infty} \frac{\frac{d}{dx}\big( x^2 + 4x \big)}{\frac{d}{dx}\big(x^2\big)}
-									\text{ (by L'Hospital's Rule)} 				</mrow>
-	<mrow>	\amp = \lim_{x\to\infty} \frac{2x + 4}{2x}							</mrow>
-	<mrow>	\amp = \lim_{x\to\infty} \frac{\frac{d}{dx}\big( 2x + 4 \big)}{\frac{d}{dx}\big( 2x \big)}
-									\text{ (by L'Hospital's Rule)}				</mrow>
-	<mrow>	\amp = \lim_{x\to\infty} \frac{2+0}{2}								</mrow>
-	<mrow>	\amp = \lim_{x\to\infty} 1											</mrow>
-	<mrow>	\amp = 1																</mrow>
-</md>
-	
-Recall that we MUST check to make sure that the limit is one of those indeterminate
-forms before we use L'Hospital's Rule. (And note that we did get the same answer we
-got before...which is good!)
-</p>
+    <exercise>
+      <statement>
+        <p>
+          <m>\ds \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b} - \frac{1}{25}e^{-5b} - \frac{1}{25} \right]</m>
+        </p>
+      </statement>
 
-<p>
-If you want a more complete discussion and some examples, you can find more in
-your Calculus 1 book, which is available for free online (just search for "APEX calculus").
-</p>
+      <answer>
+        <p>
+          <m>\ds - \frac{1}{25} </m>
+        </p>
+      </answer>
 
-<exercises>
-	<introduction>
-		<p>
-			<term>Evaluate each of the following limits. Use L'Hospital's Rule only if it
-			applies.</term>
-		</p>
-	</introduction>
-	<exercise>
-		<statement>
-			<p>
-				 <m>\ds \lim_{b\to \infty} \frac{b}{e^b}</m>
-			</p>
-		</statement>
-		<answer>
-			<p>
-				<m> 0 </m>
-			</p>
-		</answer>
-		<solution>
-				<p>
-			<m>\ds \lim_{b\to \infty} \frac{b}{e^b}
-				= \ub{\lim_{b\to \infty} \frac{1}{e^b}}_\left(= \frac{1}{\infty}\right) = 0	</m>
+      <solution>
+        <p>
+          <md>
+            <mrow> \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b} - \frac{1}{25}e^{-5b} - \frac{1}{25} \right]
+					\amp = \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b}\right]
+							- \lim_{b\to \infty} \left[\frac{1}{25}e^{-5b}\right]
+								- \lim_{b\to \infty} \left[\frac{1}{25} \right]</mrow>
+            <mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ be^{-5b}\right]
+							- \frac{1}{25}\lim_{b\to \infty} \left[e^{-5b}\right] - \frac{1}{25}</mrow>
+            <mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ \frac{b}{e^{5b}}\right]
+							- \frac{1}{25}\cdot 0 - \frac{1}{25}</mrow>
+            <mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ \frac{1}{5e^{5b}}\right]
+							-0 - \frac{1}{25}</mrow>
+            <mrow>\amp = -\frac{1}{5}\cdot 0 - \frac{1}{25}</mrow>
+            <mrow>\amp = 0 - \frac{1}{25}</mrow>
+            <mrow>\amp = - \frac{1}{25}</mrow>
+          </md>
+        </p>
+      </solution>
+    </exercise>
 
-				</p>
-		</solution>
-	</exercise>
-	<exercise>
-		<statement>
-			<p>
-				 <m>\ds\ds \lim_{b\to \infty} be^{-3b}</m>
-			</p>
-		</statement>
-		<answer>
-			<p>
-				<m> 0 </m>
-			</p>
-		</answer>
-		<solution>
-				<p>
-			<m> \ds \lim_{b\to \infty} be^{-3b}
-				= \ub{\lim_{b\to \infty} \frac{b}{e^{3b}}}_\left(= \frac{\infty}{\infty}\right)
-				= \ub{\lim_{b\to \infty} \frac{1}{3e^{3b}}}_\left(= \frac{1}{\infty}\right)
-				= 0																			</m>
+    <exercise>
+      <statement>
+        <p>
+          <m>\ds \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb} - \frac{1}{s^2}e^{-sb} - \frac{1}{s^2} \right],</m>
+          where <m>s</m> is a constant and <m>s \gt 0</m>
+        </p>
+      </statement>
 
-				</p>
-		</solution>
-	</exercise>
-	<exercise>
-		<statement>
-			<p>
-				 <m>\ds \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b} - \frac{1}{25}e^{-5b} - \frac{1}{25} \right]</m>
-			</p>
-		</statement>
-		<answer>
-			<p>
-				<m>\ds - \frac{1}{25} </m>
-			</p>
-		</answer>
-		<solution>
-				<p>
-			<md>
-				<mrow> \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b} - \frac{1}{25}e^{-5b} - \frac{1}{25} \right]
-				\amp = \lim_{b\to \infty} \left[ -\frac{1}{5}be^{-5b}\right]
-						- \lim_{b\to \infty} \left[\frac{1}{25}e^{-5b}\right]
-							- \lim_{b\to \infty} \left[\frac{1}{25} \right]</mrow>
-				<mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ be^{-5b}\right]
-						- \frac{1}{25}\lim_{b\to \infty} \left[e^{-5b}\right] - \frac{1}{25}</mrow>
-				<mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ \frac{b}{e^{5b}}\right]
-						- \frac{1}{25}\cdot 0 - \frac{1}{25}</mrow>
-				<mrow>\amp = -\frac{1}{5}\lim_{b\to \infty} \left[ \frac{1}{5e^{5b}}\right]
-						-0 - \frac{1}{25}</mrow>
-				<mrow>\amp = -\frac{1}{5}\cdot 0 - \frac{1}{25}</mrow>
-				<mrow>\amp = 0 - \frac{1}{25}</mrow>
-				<mrow>\amp = - \frac{1}{25}</mrow>
-			</md>
+      <answer>
+        <p>
+          <m>\ds - \frac{1}{s^2} </m>
+        </p>
+      </answer>
 
-				</p>
-		</solution>
-	</exercise>
-	<exercise>
-		<statement>
-			<p>
-				 <m>\ds \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb} - \frac{1}{s^2}e^{-sb} - \frac{1}{s^2} \right],</m>
-					where <m>s</m> is a constant and <m>s \gt 0</m>
-			</p>
-		</statement>
-		<answer>
-			<p>
-				<m>\ds - \frac{1}{s^2} </m>
-			</p>
-		</answer>
-		<solution>
-				<p>
-			<md>
-				<mrow> \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb} - \frac{1}{s^2}e^{-sb} - \frac{1}{s^2} \right]
-				\amp = \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb}\right]
-						- \lim_{b\to \infty} \left[ \frac{1}{s^2}e^{-sb}\right]
-							- \lim_{b\to \infty} \left[\frac{1}{s^2} \right]</mrow>
-				<mrow>\amp = -\frac{1}{s}\lim_{b\to \infty} \left[ \frac{b}{e^{sb}}\right]
-						- \frac{1}{s^2}\lim_{b\to \infty} \left[ e^{-sb}\right]
-							- \frac{1}{s^2}</mrow>
-				<mrow>\amp = -\frac{1}{s}\lim_{b\to \infty} \left[ \frac{1}{se^{sb}}\right]
-						- \frac{1}{s^2}\cdot 0
-							- \frac{1}{s^2}</mrow>
-				<mrow>\amp = -\frac{1}{s}\cdot 0 - \frac{1}{s^2}</mrow>
-				<mrow>\amp = - \frac{1}{s^2}</mrow>
-			</md>
-
-				</p>
-		</solution>
-	</exercise>
-</exercises>
-
+      <solution>
+        <p>
+          <md>
+            <mrow> \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb} - \frac{1}{s^2}e^{-sb} - \frac{1}{s^2} \right]
+					\amp = \lim_{b\to \infty} \left[ -\frac{1}{s}be^{-sb}\right]
+							- \lim_{b\to \infty} \left[ \frac{1}{s^2}e^{-sb}\right]
+								- \lim_{b\to \infty} \left[\frac{1}{s^2} \right]</mrow>
+            <mrow>\amp = -\frac{1}{s}\lim_{b\to \infty} \left[ \frac{b}{e^{sb}}\right]
+							- \frac{1}{s^2}\lim_{b\to \infty} \left[ e^{-sb}\right]
+								- \frac{1}{s^2}</mrow>
+            <mrow>\amp = -\frac{1}{s}\lim_{b\to \infty} \left[ \frac{1}{se^{sb}}\right]
+							- \frac{1}{s^2}\cdot 0
+								- \frac{1}{s^2}</mrow>
+            <mrow>\amp = -\frac{1}{s}\cdot 0 - \frac{1}{s^2}</mrow>
+            <mrow>\amp = - \frac{1}{s^2}</mrow>
+          </md>
+        </p>
+      </solution>
+    </exercise>
+  </exercises>
 </section>
