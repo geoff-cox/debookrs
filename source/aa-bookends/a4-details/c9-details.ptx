@@ -1,0 +1,345 @@
+<!-- LICENSING
+  This file is part of the textbook "Exploring Differential Equations, An Interactive, Student-Centered Approach" by Geoffrey Cox.
+  License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  You are free to:
+    • Share - copy and redistribute the material in any medium or format.
+    • Adapt - remix, transform, and build upon the material for any purpose, even commercially.
+  Under the following terms:
+    • Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+    • ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license.
+  Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  Recommended attribution: "Exploring Differential Equations" by Geoffrey Cox, licensed CC BY-SA 4.0.
+-->
+<section xml:id="c9-details">
+	<title>Laplace Transforms</title>
+
+	<paragraphs xml:id="lt-example-1-details">
+    <title>🔍 Limit comments</title>
+    <p>
+      Since the limit only controls <m>b</m>, we can think of <m>s</m> as a number (like <m>2</m>). This means that <m>\ds-\frac{5}{s}</m> is also a number that can be pulled out of the limit using the limit property from calculus:
+      <md>\ds\lim_{x \to \infty} c \cdot f(x) = c \cdot \lim_{x \to \infty} f(x), \quad c\ \text{is constant}</md>
+    </p>
+	</paragraphs>
+
+  <paragraphs xml:id="lt-example-t-IVP-details">
+    <title>🔍 Integration by parts details</title>
+    <p>
+      Choosing
+      <md>
+        <mrow> u = t,	\quad\amp	dv = e^{-st}dt, 		</mrow>
+        <mrow> du = dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+      </md>
+      integration by parts gives
+      <md>
+        <mrow>
+          \int_0^b e^{-st} \cdot t\ dt
+            \amp = -\frac{t}{s}e^{-st} - \int_0^b \left( -\frac{1}{s}e^{-st} \right) dt
+        </mrow>
+        <mrow> 	
+            \amp = \left[-\frac{t}{s}e^{-st}\right]_0^b+ \frac{1}{s}\int_0^b e^{-st} dt
+        </mrow>
+        <mrow> 	
+            \amp = \left(-\frac{t}{s}e^{-st}- \frac{1}{s^2}e^{-st}\right) \Bigg|_0^b
+        </mrow>
+        <mrow> 	
+            \amp = \left(-\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb}\right) - \left(0 - \frac{1}{s^2}\right)
+        </mrow>
+        <mrow> 	
+            \amp = -\frac{b}{s}e^{-sb} - \frac{1}{s^2}e^{-sb} + \frac{1}{s^2}
+        </mrow>
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-t-LH-details">
+    <title>🔍 Limit comments </title>
+    <p>
+      Assuming <m>s \gt 0</m>, the limits are computed by:
+      <ul marker="square">
+        <li>
+          <p>
+            <m>
+              \ds L_1 
+              = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+              \,\us{LH}{=}\, \lim_{b \to \infty}\frac{1}{se^{sb}}
+              = \frac{1}{s}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+            </m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>
+              \ds L_2
+              = \lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}} = 0
+            </m>
+          </p>
+        </li>
+      </ul>
+      where <m>LH</m> denotes L'Hôpital's Rule.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-L1-derivation-details">
+    <title>💡 Derivation of L<m>_1</m></title>
+    <p>
+      By definition, we have
+      <md>
+        \lap{1} = \int_0^{\infty} e^{-st} \cdot 1\ dt = \lim_{b \to \infty} \ub{\int_0^b e^{-st}dt}_{I}
+      </md>.
+    </p>
+    <p>
+      Assuming <m>s</m> and <m>b</m> are constant, we integrate <m>I</m> with respect to <m>t</m>:
+      <md>
+        I = \int_0^b e^{-st}dt = -\frac{1}{s}e^{-st}\Big|_{t=0}^{t=b} = -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+      </md>.
+    </p>
+    <p>
+      Next, we compute the limit of <m>I</m> as <m>b \to \infty</m> (with <m>s</m> constant):
+      <md>
+        <mrow>
+          \lim_{b \to \infty} I 
+          \amp = \lim_{b \to \infty} -\frac{1}{s}\left[ e^{-sb} - 1 \right]
+        </mrow>
+        <mrow>
+          \amp = -\frac{1}{s} \lim_{b \to \infty} \Big[ e^{-sb} - 1 \Big] 
+          = -\frac{1}{s} \Big[ \ub{\lim_{b \to \infty} e^{-sb}}_{L} - 1 \Big]
+        </mrow>
+      </md>
+    </p>
+    <p>
+      Taking <m>b\to\infty</m>, <m>L</m> must go to <m>0</m> if <m>s</m> is positive, leaving us with the transform of <m>1</m>:
+      <md>
+        \lap{1} = -\frac{1}{s} [0 - 1] = \frac{1}{s} \quad \text{for } s \gt 0
+      </md>.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-2-details">
+    <title>🔍 <m>u</m>-substitution details</title>
+    <p>
+      👉 Using <m>u</m>-substitution with
+      <md>
+        <mrow>
+          u	\amp = \ob{(7-s)}^{\text{constant}}t
+        </mrow>
+        <mrow>
+          du	\amp = (7-s)dt \quad \Rightarrow \quad dt = \frac{du}{7-s}
+        </mrow>
+      </md>
+      the integral is computed as
+      <md>
+        <mrow>
+          \int_0^b e^{(7-s)t}\ dt	= \int_{u=0}^{u=(7-s)b} e^{u}\frac{du}{7-s}
+          \amp = \frac{1}{7-s}\int_{u=0}^{u=(7-s)b} e^{u}\ du
+        </mrow>
+        <mrow>
+          \amp = \frac{1}{7-s} \left[ e^{u} \right]\Bigg|_{u=0}^{u=(7-s)b}
+        </mrow>
+        <mrow>
+          \amp = \frac{1}{7-s} \left[ e^{(7-s)b} - 1 \right]
+        </mrow>
+      </md>.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-L2-derivation-details">
+    <title>💡 Derivation of L<m>_2</m></title>
+    <p>
+      By definition,
+      <md>
+        \lap{ e^{at} }
+        = \int_0^{\infty} e^{-st} \cdot e^{at}\ dt
+        = \lim_{b \to \infty}\int_0^b e^{(a-s)t}\ dt
+      </md>.
+    </p>
+    <p>
+      For the integral, let <m>u=a-s</m> and apply <m>u</m>-substitution:
+      <md>
+        <mrow>
+          \int_0^b e^{(a-s)t}\, dt
+          <xref text="custom" ref="lt-example-2-details"><m>\os{\large ❔}{=}</m></xref> 
+          \frac{1}{a-s} e^{(a-s)t} \Bigg|_0^b
+          \amp = \frac{1}{a-s} \left( e^{(a-s)b} - e^{0} \right)
+        </mrow>
+        <mrow>
+          \amp = \frac{1}{a-s} \left( e^{(a-s)b} - 1 \right)
+        </mrow>
+      </md>
+    </p>
+    <p>
+      Now, we compute the limit of this expression as <m>b \to \infty</m>:
+      <md>
+        <mrow>
+          \lim_{b \to \infty} \frac{1}{a-s} \left( e^{(a-s)b} - 1 \right)
+          \amp = \frac{1}{a-s} \Bigg[ \ub{\lim_{b \to \infty} e^{(a-s)b}}_{L} - \lim_{b \to \infty} 1 \Bigg]
+        </mrow>
+      </md>.
+    </p>
+    <p>
+      As before, <m>L</m> goes to <m>0</m> if <m>a-s</m> is negative. That is, <m>\ a-s \lt 0\ </m> or <m>\ a \lt s</m>. 
+    </p>
+    <p>
+      So, as long as <m>s \gt a</m>, then <m>L \to 0</m> and the transform becomes 
+      <md>
+        \lap{e^{at}} = \frac{1}{s - a}, \quad s \gt a
+      </md>.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-power-function-transform-ibp-1-details">
+		<title>🔍 Applying integration by parts to <m>I</m> shows: </title>
+    <p>
+      <md>
+        <mrow> u = t^2,		\quad\amp	dv = e^{-st}dt, 		</mrow>
+        <mrow> du = 2t\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+      </md>
+      <xref ref="gi-integration-by-parts" text="custom">Integration by parts</xref> gives
+      <md>
+        <mrow>
+          \int_0^b e^{-st} \cdot t^2\ dt
+            \amp = t^2 \cdot \left( -\frac{1}{s}e^{-st} \right)\Bigg|_0^b - \int_0^b \left( -\frac{1}{s}e^{-st} \right) 2t\ dt
+        </mrow>
+        <mrow> 	
+            \amp = -\frac{b^2}{s}e^{-sb} + \frac{2}{s} \int_0^b e^{-st} \cdot t\ dt
+        </mrow>
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-tsqrd-LH-details">
+		<title>🔍 Limit comments</title>
+    <p>
+      Again, if <m>s \lt 0</m>, the limit goes to <m>+\infty</m>. So we must have <m>s \gt 0</m>. Applying L'Hôpital's rule twice, we get
+      <md>
+        <mrow>
+          L = \lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b^2}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}\
+          \amp\us{LH}{=}\ \lim_{b \to \infty}\frac{2b}{se^{sb}}\
+          = \frac{2}{s}\lim_{b \to \infty}\frac{\os{\infty}{\os{\uparrow}{\boxed{b}}}}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+        </mrow>
+        <mrow>
+          \amp\us{LH}{=}\ \frac{2}{s}\lim_{b \to \infty}\frac{1}{se^{sb}}
+          = \frac{2}{s^2}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+          = 0
+        </mrow>
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-tnth-IVP-details">
+    <title>🔍 Integration by parts details</title>
+    <p>
+      Using the substitution:
+      <md>
+        <mrow> u = t^n,				\quad\amp	dv = e^{-st}dt, 		</mrow>
+        <mrow> du = nt^{n-1}\ dt,	\quad\amp	v = -\frac{1}{s}e^{-st}	</mrow>
+      </md>, 
+      integration by parts gives
+      <md>
+        <mrow>
+          \lap{ t^{n} }
+          \amp = \lim_{b \to \infty} \left[-\frac{t^{n}}{s}e^{-sb}\Bigg|_0^b - \int_0^b \left(-\frac{1}{s}e^{-st}\right)\cdot nt^{n-1}\ dt\right]
+        </mrow>
+        <mrow>
+          \amp = \lim_{b \to \infty} \left[\left(-\frac{b^n}{s}e^{-sb} - 0\right) + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+        </mrow>
+        <mrow>
+          \amp = \lim_{b \to \infty} \left[-\frac{b^n}{e^{sb}} + \frac{n}{s}\int_0^b e^{-st}\cdot t^{n-1}\ dt\right]
+        </mrow>
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-tnth-LH-details">
+    <title>🔍 Limit comments</title>
+    <p>
+      The reasoning is the same as in <xref ref="lt-example-tnth-IVP-details" text="custom">previous solution</xref> except we apply L'Hôpital's rule <em>n</em> times. So we have
+      <md>
+        <mrow>
+          \lim_{b \to \infty}\frac{b^n}{e^{sb}}\
+          \amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+          \lim_{b \to \infty}\frac{nb^{n-1}}{se^{sb}}
+          = \frac{n}{s}\lim_{b \to \infty}\frac{b^{n-1}}{e^{sb}}
+        </mrow>
+        <mrow>
+          \amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+          \frac{n}{s}\lim_{b \to \infty}\frac{(n-1)b^{n-2}}{se^{sb}}
+          = \frac{n(n-1)}{s^2}\lim_{b \to \infty}\frac{b^{n-2}}{e^{sb}}
+        </mrow>
+        <mrow>
+          \amp \qquad\qquad \vdots \quad LH\ \ n-2 \text{ more times}
+        </mrow>
+        <mrow>
+          \amp\os{\large\left(\frac{\infty}{\infty}\right)}{\us{LH}{=}}
+          \frac{n!}{s^n}\lim_{b \to \infty}\frac{1}{se^{sb}}
+          = \frac{n!}{s^{n+1}}\lim_{b \to \infty}\frac{1}{\us{\infty}{\us{\downarrow}{\boxed{e^{sb}}}}}
+          = 0
+        </mrow>
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-L3-derivation-details">
+    <title>💡 Derivation of L<m>_3</m></title>
+    <p>
+      Most of the ideas were described above, but the formal derivation follows by induction on <m>n</m>, which we will not cover here.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-example-4-details">
+    <title>🔍 Limit comments</title>
+    <p>
+      👉 If <m>s &gt; 0</m>, then we know that <m>e^{-sb} \to 0</m> as <m>b \to \infty</m> and both <m>\cos(3b)</m> and <m>\sin(3b)</m> oscillate between <m>-1</m> and <m>1</m>, thus their product must approach zero. That is,
+      <md>
+        \lim_{b \to \infty} e^{-sb} \cos(3b) = 0 \quad \text{and} \quad \lim_{b \to \infty} e^{-sb} \sin(3b) = 0
+      </md>
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-L4-derivation-details">
+    <title>💡 Derivation of L<m>_4</m> &amp; L<m>_5</m></title>
+    <p>
+      The derivation of L<m>_5</m> mirrors the solution to <m>\lap{\cos(3t)}</m>. Just swap <m>3</m> with <m>b</m> and <m>9</m> with <m>b^2</m>. 
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="why-s-cannot-be-zero">
+    <title>Note: <m>s</m> cannot be <m>0</m></title>
+    <p>
+      When <m>s=0</m>, the integral becomes
+      <md>
+        <mrow>
+          \amp 
+          = \lim_{b \to \infty} \int_0^b t\ dt
+          = \lim_{b \to \infty} \dfrac{t^2}{2}\Big|_0^b
+          = \dfrac{1}{2} \lim_{b \to \infty} b^2 = \infty.
+        </mrow>
+      </md>
+      Therefore, we must have <m>s\ne 0</m> for this integral to be finite.
+    </p>
+  </paragraphs>
+
+  <paragraphs xml:id="lt-exercise-1b-limit-comments">
+		<title>Limit comments</title>
+    <p>
+      If <m>s \lt 0</m>, then as <m>b \to \infty</m>, we would have <m>e^{-sb} \to \infty</m> and so
+      <md>\lim_{b \to \infty} \os{\infty}{\os{\uparrow}{\boxed{b}}}\ \us{\infty}{\us{\downarrow}{\boxed{e^{-sb}}}} = \infty.</md>
+      This shows the Laplace transform would not exist if <m>s \lt 0</m>. Therefore, we must require <m>s \gt 0</m>.
+    </p>
+  </paragraphs>
+
+  <!-- <paragraphs xml:id="lt-L1-derivation-details">
+
+  </paragraphs> -->
+
+  <!-- <paragraphs xml:id="lt-L1-derivation-details">
+
+  </paragraphs> -->
+
+  <!-- <paragraphs xml:id="lt-L1-derivation-details">
+
+  </paragraphs> -->
+
+  <!-- <paragraphs xml:id="lt-L1-derivation-details">
+
+  </paragraphs> -->
+</section>
