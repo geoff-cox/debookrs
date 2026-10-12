@@ -513,7 +513,7 @@
 		</p>
 
 		<p>
-			To fix this, we multiply the overlapping part of <m>y_p</m> by <m>x</m>. If there's still overlap, we multiply by <m>x</m> again<mdash />repeating until <m>y_p</m> shares no like terms with <m>y_h</m>.
+			To fix this, we multiply every term of the form in <m>y_p</m> that contains the overlapping term by <m>x</m>, not just the overlapping term itself. If there's still overlap, we multiply by <m>x</m> again<mdash />repeating until <m>y_p</m> shares no like terms with <m>y_h</m>.
 		</p>
 
 		<p>
@@ -530,7 +530,7 @@
 		</p>
 
 		<p>
-			So we modify <m>y_p</m> by multiplying the conflicting term by <m>x</m>:
+			So we modify <m>y_p</m> by multiplying its form, here just the single term <m>A e^{3x}</m>, by <m>x</m>:
 			<md> y_p = A x e^{3x} </md>
 		</p>
 
@@ -542,9 +542,15 @@
 			<title>Modification Rule for the Particular Solution</title>
 
 			<p>
-				If any term in your guess for <m>y_p</m> also appears in <m>y_h</m>, multiply that term by the independent variable <m>x</m>. Repeat as needed until all overlapping terms are eliminated.
+				If any term in your guess for <m>y_p</m> also appears in <m>y_h</m>, multiply every term of the form that contains it (the group of terms in <m>y_p</m> chosen to match one part of <m>f(x)</m>) by the independent variable <m>x</m>, and leave the other forms in <m>y_p</m> alone. Repeat as needed until all overlapping terms are eliminated.
 			</p>
 		</assemblage>
+
+		<p>
+			Multiplying the whole form matters when only part of it overlaps. For instance, if <m>y_h</m> contains a constant <m>c_1</m> but no <m>x</m> term and the guess is <m>y_p = Ax + B</m>, only <m>B</m> overlaps, but the whole polynomial gets the <m>x</m>:
+			<md> y_p = x(Ax + B) = Ax^2 + Bx </md>.
+			Multiplying only <m>B</m> would give <m>Ax + Bx = (A + B)x</m>, which leaves just one coefficient and no way to match the <m>x</m>-terms of <m>f(x)</m>.
+		</p>
 
 		<exercise label="selecting-the-particular-soln-chkpt-6">
 			<title>📖❓  Handling Like Terms</title>
@@ -554,7 +560,10 @@
 			</statement>
 			<choices randomize="yes">
 				<choice correct="yes">
-					<statement><p>Multiply the term in <m>y_p</m> by the independent variable.</p></statement>
+					<statement><p>Multiply every term of the form in <m>y_p</m> that contains it by the independent variable.</p></statement>
+				</choice>
+				<choice correct="no">
+					<statement><p>Multiply only that one term in <m>y_p</m> by the independent variable.</p></statement>
 				</choice>
 				<choice correct="no">
 					<statement><p>Delete the term from <m>y_p</m>.</p></statement>
@@ -807,11 +816,15 @@
 					</choice>
 					<choice>
 						<statement><p>Remove the like-term from <m>y_p</m>.</p></statement>
-						<feedback><p>Incorrect. No terms in <m>y_h</m> should ever be removed.</p></feedback>
+						<feedback><p>Incorrect. Removing a term from <m>y_p</m> leaves no way to produce that part of <m>f(x)</m>.</p></feedback>
 					</choice>
 					<choice correct="yes">
-						<statement><p>Multiply the like-term in <m>y_p</m> by <m>x</m>.</p></statement>
-						<feedback><p>Correct!</p></feedback>
+						<statement><p>Multiply every term of the form in <m>y_p</m> that contains the like-term by <m>x</m>.</p></statement>
+						<feedback><p>Correct! Every term of that form gets the <m>x</m>, not just the like-term.</p></feedback>
+					</choice>
+					<choice>
+						<statement><p>Multiply only the like-term in <m>y_p</m> by <m>x</m>.</p></statement>
+						<feedback><p>Incorrect. Multiply the whole form: <m>Ax + B</m> becomes <m>Ax^2 + Bx</m>. Multiplying only <m>B</m> gives <m>Ax + Bx = (A + B)x</m>, which loses a coefficient.</p></feedback>
 					</choice>
 					<choice>
 						<statement><p>Multiply the like-term in <m>y_h</m> by <m>x</m>.</p></statement>
@@ -857,7 +870,7 @@
 				<statement>
 					<p>
 						The homogeneous solution to the LNCC equation
-						<md>y'' - 2y' + y = f(x)</md>
+						<md>y'' - 4y' + 4y = f(x)</md>
 						is given by
 						<md>y_h = c_1 e^{2x} + c_2 x e^{2x}</md>.
 					</p>
