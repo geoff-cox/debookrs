@@ -51,7 +51,7 @@
 				<title>Modifying the Initial Guess</title>
 
 				<statement>
-					<p>When solving <m>y'' - 2y' + y = e^x</m>, the initial guess <m>Ae^x</m> for <m>y_p</m> is modified to <m>Ax^2 e^x</m> because both <m>e^x</m> and <m>xe^x</m> overlap with the homogeneous solution <m>y_h =</m> <fillin characters="10" />.</p>
+					<p>When solving <m>y'' - 2y' + y = e^x</m>, the initial guess <m>Ae^x</m> for <m>y_p</m> must be multiplied by <m>x</m> twice, becoming <m>Ax^2 e^x</m>, because of repeated overlap with the homogeneous solution <m>y_h =</m> <fillin characters="10" />.</p>
 				</statement>
 				<choices randomize="yes">
 					<choice correct="yes">
@@ -157,7 +157,7 @@
 					</choice>
 					<choice>
 						<statement><p><m>\ds\quad y_p = Ax^3 + Bx^2 + Cx + D</m></p></statement>
-						<feedback>Incorrect. The initial form matches the degree of <m>f(x)</m>, so the <m>x^3</m> term does not belong. Higher powers of <m>x</m> enter <m>y_p</m> only through the modification step, when the whole form <m>Ax^2 + Bx + C</m> is multiplied by <m>x</m> (once for each repetition of the overlap) because it shares a term with <m>y_h</m>. Padding the guess with <m>x^3</m> does not always work: for <m>y'' = 5x^2 + 3x</m> no choice of <m>A</m>, <m>B</m>, <m>C</m>, <m>D</m> works, because the particular solution needs an <m>x^4</m> term.</feedback>
+						<feedback>Incorrect. The initial form matches the degree of <m>f(x)</m>, so the <m>x^3</m> term does not belong. Higher powers of <m>x</m> enter <m>y_p</m> only through the modification step: if the form <m>Ax^2 + Bx + C</m> shares a term with <m>y_h</m>, the whole form is multiplied by <m>x</m>, and again if the new form still shares a term. Padding the guess with <m>x^3</m> does not always work: for <m>y'' = 5x^2 + 3x</m> no choice of <m>A</m>, <m>B</m>, <m>C</m>, <m>D</m> works, because the particular solution needs an <m>x^4</m> term.</feedback>
 					</choice>
 				</choices>
 			</task>
@@ -352,7 +352,7 @@
 				<response />
 				<answer>
 					<p>
-						The starting form must have been <m>Ae^x</m>, so the forcing function is a nonzero multiple of <m>e^x</m>: <m>f(x) = ke^x</m> with <m>k \neq 0</m>. The form was multiplied by <m>x</m> exactly once, so <m>e^x</m> appears in <m>y_h</m> but <m>xe^x</m> does not. That means <m>r = 1</m> is a root of the characteristic equation with multiplicity exactly one. For a second-order equation, the characteristic equation is <m>(r-1)(r-b) = 0</m> with <m>b \neq 1</m>, so <m>y_h = c_1 e^x + c_2 e^{bx}</m>.
+						The starting form must have been <m>Ae^x</m>, so the forcing function is a nonzero multiple of <m>e^x</m>: <m>f(x) = ke^x</m> with <m>k \neq 0</m>. The form was multiplied by <m>x</m> exactly once, so <m>e^x</m> appears in <m>y_h</m> but <m>xe^x</m> does not. That means <m>r = 1</m> is a root of the characteristic equation with multiplicity exactly one. For a second-order equation, the other root <m>r_2</m> is real (complex roots come in conjugate pairs) and <m>r_2 \neq 1</m>, so the characteristic equation is <m>a(r-1)(r-r_2) = 0</m> and <m>y_h = c_1 e^x + c_2 e^{r_2 x}</m>. After dividing by the leading coefficient, the equation has the form <m>y'' - (1+r_2)y' + r_2 y = ke^x</m>.
 					</p>
 				</answer>
 			</task>
@@ -518,13 +518,13 @@
 			<answer><p><m> z_p = A + B\cos(2\theta) + C\sin(2\theta) </m></p></answer>
 			<solution>
 				<p>
-					First, solve the homogeneous equation <m>3z'' - 4z' - 12z = 0</m> to find <m>z_c</m>. 
+					First, solve the homogeneous equation <m>3z'' - 4z' - 12z = 0</m> to find <m>z_h</m>. 
 					The characteristic equation is:
 					<md>
 						<mrow> 3r^2 - 4r - 12 \amp = 0 </mrow>
 						<mrow> r \amp = \frac{2 \pm 2\sqrt{10}}{3} </mrow>
 					</md>
-					Since the roots are distinct and real, <m>z_c = c_1 e^{\frac{2 + 2\sqrt{10}}{3}\theta} + c_2 e^{\frac{2 - 2\sqrt{10}}{3}\theta}</m>.
+					Since the roots are distinct and real, <m>z_h = c_1 e^{\frac{2 + 2\sqrt{10}}{3}\theta} + c_2 e^{\frac{2 - 2\sqrt{10}}{3}\theta}</m>.
 				</p>
 				<p>
 					The forcing term is <m>17 + 2\cos(2\theta)</m>, a constant plus a trig function. 
@@ -532,7 +532,7 @@
 					<md>
 						z_p = A + B\cos(2\theta) + C\sin(2\theta)
 					</md>
-					No duplicates with <m>z_c</m> occur, so this guess stands.
+					No duplicates with <m>z_h</m> occur, so this guess stands.
 				</p>
 			</solution>
 		</exercise>
@@ -548,12 +548,12 @@
 					<mrow> r^2 - 3r - 17 \amp = 0 </mrow>
 					<mrow> r \amp = \frac{3 \pm \sqrt{77}}{2} </mrow>
 				</md>
-				Distinct real roots give <m>y_c = c_1 e^{\frac{3 + \sqrt{77}}{2}x} + c_2 e^{\frac{3 - \sqrt{77}}{2}x}</m>.
+				Distinct real roots give <m>y_h = c_1 e^{\frac{3 + \sqrt{77}}{2}x} + c_2 e^{\frac{3 - \sqrt{77}}{2}x}</m>.
 			</p>
 			<p>
 				The forcing term is a 2nd-degree polynomial plus a cosine. Our guess is:
 				<md>y_p = (Ax^2 + Bx + C) + (D\cos x + E\sin x)</md>
-				None of these terms repeat <m>y_c</m>.
+				None of these terms repeat <m>y_h</m>.
 			</p>
 			</solution>
 		</exercise>
@@ -570,12 +570,12 @@
 						<mrow> (r+4)(r-3) \amp = 0 </mrow>
 						<mrow> r \amp = -4, 3 </mrow>
 					</md>
-					So, <m>y_c = c_1 e^{-4t} + c_2 e^{3t}</m>.
+					So, <m>y_h = c_1 e^{-4t} + c_2 e^{3t}</m>.
 				</p>
 				<p>
 					The forcing term has <m>4e^{3t}</m> and <m>\cos(2t)</m>. Our first guess is:
 					<md> y_p = Ae^{3t} + B\cos(2t) + C\sin(2t) </md>
-					Since <m>e^{3t}</m> appears in <m>y_c</m>, we multiply that term by <m>t</m>:
+					Since <m>e^{3t}</m> appears in <m>y_h</m>, we multiply that term by <m>t</m>:
 					<md> y_p = Ate^{3t} + B\cos(2t) + C\sin(2t) </md>
 				</p>
 			</solution>
@@ -594,13 +594,13 @@
 						<mrow> r^2 - 4 \amp = 0 </mrow>
 						<mrow> r \amp = \pm 2 </mrow>
 					</md>
-					Distinct real roots give <m>y_c = c_1 e^{2t} + c_2 e^{-2t}</m>.
+					Distinct real roots give <m>y_h = c_1 e^{2t} + c_2 e^{-2t}</m>.
 				</p>
 				<p>
 					The forcing term is <m>2t</m> (a first-degree polynomial) and <m>e^{2t}\sin(3t)</m>.
 					Guess:
 					<md> y_p = (At + B) + e^{2t}\big(C\cos(3t) + D\sin(3t)\big) </md>
-					No repeats with <m>y_c</m>.
+					No repeats with <m>y_h</m>.
 				</p>
 			</solution>
 		</exercise>
@@ -618,13 +618,13 @@
 						<mrow> r^2 - 4r + 13 \amp = 0 </mrow>
 						<mrow> r \amp = 2 \pm 3i </mrow>
 					</md>
-					Complex roots give <m>w_c = c_1 e^{2x}\cos(3x) + c_2 e^{2x}\sin(3x)</m>.
+					Complex roots give <m>w_h = c_1 e^{2x}\cos(3x) + c_2 e^{2x}\sin(3x)</m>.
 				</p>
 				<p>
 					The forcing term has <m>e^{3x}</m> and <m>x^2e^{-x}</m>.
 					Guess:
 					<md> w_p = Ae^{3x} + (Bx^2 + Cx + D)e^{-x} </md>
-					None of these terms appear in <m>w_c</m>.
+					None of these terms appear in <m>w_h</m>.
 				</p>
 			</solution>
 		</exercise>
@@ -642,15 +642,15 @@
 						<mrow> r^2 - 2r + 1 \amp = 0 </mrow>
 						<mrow> r \amp = 1 \text{ (double root)} </mrow>
 					</md>
-					Double root gives <m>y_c = c_1 e^{x} + c_2 x e^{x}</m>.
+					Double root gives <m>y_h = c_1 e^{x} + c_2 x e^{x}</m>.
 				</p>
 				<p>
 					Forcing term: <m>x^2 + e^x</m>.  
 					First guess: <m>(Ax^2 + Bx + C) + De^x</m>.
 				</p>
 				<p>
-					Since <m>e^x</m> appears in <m>y_c</m>, modify <m>De^x</m> → <m>Dxe^x</m>.  
-					But <m>xe^x</m> is also in <m>y_c</m>, so we multiply again: <m>D x^2 e^x</m>.
+					Since <m>e^x</m> appears in <m>y_h</m>, modify <m>De^x</m> → <m>Dxe^x</m>.  
+					But <m>xe^x</m> is also in <m>y_h</m>, so we multiply again: <m>D x^2 e^x</m>.
 				</p>
 			</solution>
 		</exercise>
@@ -668,13 +668,13 @@
 						<mrow> r^2 - 4r + 5 \amp = 0 </mrow>
 						<mrow> r \amp = 2 \pm i </mrow>
 					</md>
-					Complex roots give <m>z_c = c_1 e^{2t}\cos t + c_2 e^{2t}\sin t</m>.
+					Complex roots give <m>z_h = c_1 e^{2t}\cos t + c_2 e^{2t}\sin t</m>.
 				</p>
 				<p>
 					Forcing term: <m>te^{2t} + 2e^{2t}\sin t</m>.  
 					First guess: 
 					<md> z_p = (At + B)e^{2t} + e^{2t}(C\cos t + D\sin t) </md>
-					The <m>e^{2t}\cos t</m> and <m>e^{2t}\sin t</m> terms duplicate <m>z_c</m>, so we multiply that piece by <m>t</m>:
+					The <m>e^{2t}\cos t</m> and <m>e^{2t}\sin t</m> terms duplicate <m>z_h</m>, so we multiply that piece by <m>t</m>:
 					<md> z_p = (At + B)e^{2t} + e^{2t}(Ct\cos t + Dt\sin t) </md>
 				</p>
 			</solution>
@@ -692,14 +692,14 @@
 						<mrow> 7r^2 - r + 2 \amp = 0 </mrow>
 						<mrow> r \amp = \frac{1 \pm i\sqrt{55}}{14} </mrow>
 					</md>
-					Complex roots give <m>y_c = c_1 e^{x/14}\cos\left(\frac{\sqrt{55}}{14}x\right) + c_2 e^{x/14}\sin\left(\frac{\sqrt{55}}{14}x\right)</m>.
+					Complex roots give <m>y_h = c_1 e^{x/14}\cos\left(\frac{\sqrt{55}}{14}x\right) + c_2 e^{x/14}\sin\left(\frac{\sqrt{55}}{14}x\right)</m>.
 				</p>
 				<p>
 					The forcing term is <m>(x^3 + x^2)\sin(4x)</m>, a cubic polynomial times <m>\sin(4x)</m>, so it is a single form.
 					Use the highest power, <m>x^3</m>, and give the cosine and the sine each their own full cubic polynomial:
 					<md> y_p = (Ax^3 + Bx^2 + Cx + D)\cos(4x) + (Ex^3 + Fx^2 + Gx + H)\sin(4x) </md>
 					Separate guesses for <m>x^3\sin(4x)</m> and <m>x^2\sin(4x)</m> would give the <m>x^2</m>, <m>x</m>, and constant terms two letters each. The single cubic form already contains them.
-					Since <m>\pm 4i</m> are not roots, none of these terms appear in <m>y_c</m>, so this guess stands.
+					The terms in <m>y_h</m> carry the factor <m>e^{x/14}</m> and have frequency <m>\frac{\sqrt{55}}{14}</m>, not <m>4</m>, so none of the terms in this guess appear in <m>y_h</m> and the guess stands.
 				</p>
 			</solution>
 		</exercise>
@@ -716,9 +716,9 @@
 			<p>
 				Remember:
 				<ul>
-					<li>Find <m>y_c</m> first, to identify duplicates.</li>
+					<li>Find <m>y_h</m> first, to identify duplicates.</li>
 					<li>Guess <m>y_p</m> based on the forcing term.</li>
-					<li>Modify <m>y_p</m> if there's overlap with <m>y_c</m>.</li>
+					<li>Modify <m>y_p</m> if there's overlap with <m>y_h</m>.</li>
 					<li>Plug into the DE, solve for the coefficients, and write the final <m>y_p</m>.</li>
 				</ul>
 			</p>
@@ -736,7 +736,7 @@
 						<mrow> (r - 6)(r + 2) \amp = 0 </mrow>
 						<mrow> r \amp = -2, 6 </mrow>
 					</md>
-					Thus, <m>y_c = c_1 e^{-2t} + c_2 e^{6t}</m>.
+					Thus, <m>y_h = c_1 e^{-2t} + c_2 e^{6t}</m>.
 				</p>
 				<p>
 					With a forcing term of <m>3e^{5t}</m>, we guess <m>y_p = A e^{5t}</m>.
@@ -763,7 +763,7 @@
 			<solution>
 				<p>
 					The homogeneous equation is the same as above: 
-					<m>y_c = c_1 e^{-2t} + c_2 e^{6t}</m>.
+					<m>y_h = c_1 e^{-2t} + c_2 e^{6t}</m>.
 				</p>
 				<p>
 					Since the forcing term is <m>\sin(2t)</m>, try <m>y_p = A \cos(2t) + B \sin(2t)</m>.
@@ -786,7 +786,7 @@
 			<answer><p><m>y_p = -\frac{1}{6} t^3 + \frac{1}{6} t^2 - \frac{1}{9} t - \frac{5}{27}</m></p></answer>
 			<solution>
 				<p>
-					Again, <m>y_c = c_1 e^{-2t} + c_2 e^{6t}</m>.
+					Again, <m>y_h = c_1 e^{-2t} + c_2 e^{6t}</m>.
 				</p>
 				<p>
 					The forcing term is a cubic polynomial. Guess:
@@ -810,10 +810,10 @@
 			<answer><p><m>y_p = \frac{1}{8} t e^{6t}</m></p></answer>
 			<solution>
 				<p>
-					The homogeneous solution is <m>y_c = c_1 e^{-2t} + c_2 e^{6t}</m>.
+					The homogeneous solution is <m>y_h = c_1 e^{-2t} + c_2 e^{6t}</m>.
 				</p>
 				<p>
-					A naive guess would be <m>y_p = A e^{6t}</m>, but <m>e^{6t}</m> already appears in <m>y_c</m>.
+					A naive guess would be <m>y_p = A e^{6t}</m>, but <m>e^{6t}</m> already appears in <m>y_h</m>.
 					</p>
 				<p>
 					Modify guess to <m>y_p = At e^{6t}</m>.
@@ -1030,7 +1030,7 @@
 				</p>
 	
 				<p>
-					<term>Step 3.</term> Because <m>e^{2x}</m> appears in <m>y_h</m>, multiply the form <m>C e^{2x}</m> (the part of <m>y_p</m> matching <m>12 e^{2x}</m>) by <m>x</m>, then check again; the pair <m>A \cos x + B \sin x</m> shares no term with <m>y_h</m> and is left alone.
+					<term>Step 3.</term> Because <m>e^{2x}</m> appears in <m>y_h</m>, multiply the form <m>C e^{2x}</m> (the part of <m>y_p</m> matching <m>12 e^{2x}</m>) by <m>x</m>, then check again; the pair <m>A \cos x + B \sin x</m> shares no term with <m>y_h</m> and is left alone:
 					<m>y_p = (A \cos x + B \sin x) + C x e^{2x}</m>.
 					Still overlap (the term <m>x e^{2x}</m> is also in <m>y_h</m>), so multiply that form by another <m>x</m>:
 					<m>y_p = (A \cos x + B \sin x) + C x^2 e^{2x}</m>.
@@ -1316,7 +1316,7 @@
 					<li><m>9 t^2 e^{10t}</m> (poly <times/> exponential): guess <m>(A t^2 + B t + C) e^{10t}</m></li>
 					<li><m>\cos t - t \sin t</m> (degree-1 poly <times/> trig, frequency 1): guess <m>(Dt + E)\cos t + (Ft + G)\sin t</m></li>
 				</ul>
-				The terms <m>\cos t</m> and <m>- t \sin t</m> share one sine-cosine form, so we do not guess them separately. Separate guesses <m>D \cos t + E \sin t</m> and <m>(Ft + G)\sin t + (Ht + I)\cos t</m> would put two coefficients on <m>\cos t</m> and two on <m>\sin t</m>, and the coefficients could not be determined. The starting guess is
+				The terms <m>\cos t</m> and <m>- t \sin t</m> share one sine-cosine form, so we do not guess them separately. Separate guesses for <m>\cos t</m> and for <m>- t \sin t</m> would each bring their own <m>\cos t</m> and <m>\sin t</m> terms, so <m>\cos t</m> and <m>\sin t</m> would each carry two coefficients, and those coefficients could not be pinned down uniquely. The starting guess is
 				<md>y_p = (A t^2 + B t + C) e^{10t} + (Dt + E)\cos t + (Ft + G)\sin t</md>
 			</p>
 
@@ -1365,9 +1365,8 @@
 			</p>
 
 			<p>
-				<term>Step 3.</term> The terms <m>D \cos \frac{t}{2}</m> and <m>F \sin \frac{t}{2}</m> of the second form appear in <m>y_h</m>, so multiply every term of that form by <m>t</m>:
-				<m>(C t^2 + D t) \cos \frac{t}{2} + (E t^2 + F t) \sin \frac{t}{2}</m>.
-				The first form carries the factor <m>e^{-2t}</m>, so none of its terms appear in <m>y_h</m> and it stays as is.
+				<term>Step 3.</term> The terms <m>D \cos \frac{t}{2}</m> and <m>F \sin \frac{t}{2}</m> of the second form appear in <m>y_h</m>, so multiply every term of that form by <m>t</m>. Its new terms (<m>t \cos \frac{t}{2}</m>, <m>t \sin \frac{t}{2}</m>, <m>t^2 \cos \frac{t}{2}</m>, <m>t^2 \sin \frac{t}{2}</m>) are not in <m>y_h</m>, so one factor of <m>t</m> is enough. The first form carries the factor <m>e^{-2t}</m>, so none of its terms appear in <m>y_h</m> and it stays as is:
+				<md>y_p = (A \cos \frac{t}{2} + B \sin \frac{t}{2}) e^{-2t} + (C t^2 + D t) \cos \frac{t}{2} + (E t^2 + F t) \sin \frac{t}{2}</md>
 			</p>
 
 			<p>
@@ -1402,7 +1401,7 @@
 			</p>
 
 			<p>
-				<term>Step 2.</term> The forcing has the same two pieces as uc-gen-13, but <m>y_h</m> is different here, so the overlap check comes out differently. Starting forms:
+				<term>Step 2.</term> The forcing has the same two pieces as the previous exercise, but <m>y_h</m> is different here, so the overlap check comes out differently. Starting forms:
 				<ul>
 					<li><m>e^{-2t} \sin \left( \frac{t}{2} \right)</m> → guess <m>(A \cos \frac{t}{2} + B \sin \frac{t}{2}) e^{-2t}</m></li>
 					<li><m>6 t \cos \left( \frac{t}{2} \right)</m> → guess <m>(C t + D) \cos \frac{t}{2} + (E t + F) \sin \frac{t}{2}</m></li>
@@ -1429,7 +1428,7 @@
 
 			<p>
 				<term>Step 5.</term> General solution:
-				<md>y(t) = e^{-2t}\big(c_1 \cos \frac{t}{2} + c_2 \sin \frac{t}{2}\big) - \frac{1}{4} t e^{-2t} \cos \frac{t}{2} + \left(\frac{3}{10} t - \frac{6}{25}\right) \cos \frac{t}{2} + \left(\frac{3}{20} t - \frac{39}{200}\right) \sin \frac{t}{2}</md>
+				<md>y(t) = e^{-2t}\left(c_1 \cos \frac{t}{2} + c_2 \sin \frac{t}{2}\right) - \frac{1}{4} t e^{-2t} \cos \frac{t}{2} + \left(\frac{3}{10} t - \frac{6}{25}\right) \cos \frac{t}{2} + \left(\frac{3}{20} t - \frac{39}{200}\right) \sin \frac{t}{2}</md>
 			</p>
 			</solution>
 		</exercise>
@@ -1618,8 +1617,8 @@
 				<p>
 					<term>Step 6.</term> Apply ICs:
 					<md>
-						<mrow>c_1 + c_2 + \frac{1}{18} = 0</mrow>
-						<mrow>3c_1 - 2c_2 - \frac{1}{3} + \frac{3}{5} + \frac{1}{5} = 0</mrow>
+						<mrow>c_1 + c_2 + \frac{1}{18} \amp = 0</mrow>
+						<mrow>3c_1 - 2c_2 - \frac{1}{3} + \frac{3}{5} + \frac{1}{5} \amp = 0</mrow>
 					</md>
 					Solve → <m>c_1 = -\frac{26}{225}, c_2 = \frac{3}{50}</m>.
 					<m>y(t) = -\frac{26}{225} e^{3t} + \frac{3}{50} e^{-2t} - \frac{1}{3}t + \frac{1}{18} + \frac{3}{5}te^{3t} + \frac{1}{5}te^{-2t}</m>.
@@ -1666,13 +1665,13 @@
 				</p>
 				<p>
 					<term>Step 5.</term> General:
-					<md>y = e^{-2t}\big(c_1 \cos \frac{t}{2} + c_2 \sin \frac{t}{2}\big) - \frac{1}{4} t e^{-2t} \cos \frac{t}{2} + \big(\frac{3}{10} t - \frac{6}{25}\big) \cos \frac{t}{2} + \big(\frac{3}{20} t - \frac{39}{200}\big) \sin \frac{t}{2}</md>
+					<md>y = e^{-2t}\left(c_1 \cos \frac{t}{2} + c_2 \sin \frac{t}{2}\right) - \frac{1}{4} t e^{-2t} \cos \frac{t}{2} + \left(\frac{3}{10} t - \frac{6}{25}\right) \cos \frac{t}{2} + \left(\frac{3}{20} t - \frac{39}{200}\right) \sin \frac{t}{2}</md>
 				</p>
 				<p>
 					<term>Step 6.</term> Apply ICs:
 					<md>
-						<mrow>c_1 - \frac{6}{25} = -1</mrow>
-						<mrow>-2c_1 + \frac{1}{2}c_2 - \frac{1}{4} + \frac{3}{10} - \frac{39}{400} = 0</mrow>
+						<mrow>c_1 - \frac{6}{25} \amp = -1</mrow>
+						<mrow>-2c_1 + \frac{1}{2}c_2 - \frac{1}{4} + \frac{3}{10} - \frac{39}{400} \amp = 0</mrow>
 					</md>
 					Solve → <m>c_1 = -\frac{19}{25}, c_2 = -\frac{589}{200}</m>.
 					<m>y(t) = e^{-2t}\big(-\frac{19}{25} \cos \frac{t}{2} - \frac{589}{200} \sin \frac{t}{2}\big) - \frac{1}{4} t e^{-2t} \cos \frac{t}{2} + \big(\frac{3}{10} t - \frac{6}{25}\big) \cos \frac{t}{2} + \big(\frac{3}{20} t - \frac{39}{200}\big) \sin \frac{t}{2}</m>.
